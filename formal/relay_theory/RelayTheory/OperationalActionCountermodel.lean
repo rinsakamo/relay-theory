@@ -37,11 +37,13 @@ def SourceSensitive (m : OutwardResponseModel) : Prop :=
 
 theorem sensitiveModel_sourceSensitive :
     SourceSensitive sensitiveModel := by
-  decide
+  intro h
+  exact Bool.noConfusion h
 
 theorem fixedModel_not_sourceSensitive :
     ¬ SourceSensitive fixedModel := by
-  decide
+  intro h
+  exact h rfl
 
 /--
 Only focal membership is supplied.  The view does not say that an Action
@@ -71,30 +73,49 @@ def Attributable
     (view : FocalView) : Prop :=
   SourceSensitive m ∧ OutwardRelativeTo view
 
+theorem sensitive_outward_attributable :
+    Attributable sensitiveModel outwardView := by
+  exact ⟨sensitiveModel_sourceSensitive, ⟨rfl, rfl⟩⟩
+
+theorem fixed_outward_not_attributable :
+    ¬ Attributable fixedModel outwardView := by
+  intro h
+  exact fixedModel_not_sourceSensitive h.1
+
 theorem matchedRealizedTrace_separatedByAttribution :
     realizedSignature sensitiveModel = realizedSignature fixedModel ∧
     Attributable sensitiveModel outwardView ∧
     ¬ Attributable fixedModel outwardView := by
-  constructor
-  · exact sameRealizedSignature
-  constructor <;> decide
+  exact ⟨sameRealizedSignature,
+    sensitive_outward_attributable,
+    fixed_outward_not_attributable⟩
 
 theorem focalReindexingChangesOutwardAttribution :
     Attributable sensitiveModel outwardView ∧
     ¬ Attributable sensitiveModel internalView := by
-  constructor <;> decide
+  constructor
+  · exact sensitive_outward_attributable
+  · intro h
+    exact Bool.noConfusion h.2.2
 
 /-- Validation/acceptance remains an explicit context, separate from attribution. -/
 def Accepted (ctx : Bit) : Prop :=
   ctx = true
 
+theorem false_not_accepted : ¬ Accepted false := by
+  intro h
+  exact Bool.noConfusion h
+
+theorem true_accepted : Accepted true := by
+  rfl
+
 theorem attributionAndAcceptanceAreOrthogonal :
     Attributable sensitiveModel outwardView ∧
     ¬ Accepted false ∧
     Accepted true := by
-  constructor
-  · decide
-  constructor <;> decide
+  exact ⟨sensitive_outward_attributable,
+    false_not_accepted,
+    true_accepted⟩
 
 /--
 A decorative Action flag can vary while the lower-level attribution result is
