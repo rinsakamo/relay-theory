@@ -283,11 +283,34 @@ Ownership remains unresolved until those distinctions are separated and tested.
 
 ### Skill
 
-Candidate reduction:
+Within the scoped operational H-001 role tested by #41, Skill-like competence is currently **derived rather than primitive**.
 
-> A recurrent, reusable, compressed interaction/change pattern or competence over a relevant context class.
+The retained lower-level account is:
 
-Observed recurrence and compression alone are insufficient if a memorized replay and a transferable mapping share the same realized training traces.
+> A response mapping that satisfies an explicit task/evaluation criterion over a declared context class.
+
+The finite #41 discriminator compares two mappings with the same observed training signature on the sole observed context:
+
+```text
+general(false) = false
+replay(false)  = false
+```
+
+Under the explicit identity task over the full Boolean context class:
+
+```text
+success(c,r) iff r = c
+```
+
+the general mapping succeeds on both contexts while replay fails on the unvisited `true` context.
+
+Therefore observed recurrence, training success, or realized trace compression does not establish the tested competence distinction.
+
+Competence is task-relative: the same replay mapping becomes competent under a different explicit constant-false task criterion. It is also representation-invariant in this scope: extensionally equal response mappings have the same competence status under the same task criterion.
+
+A decorative `skillFlag` can vary without changing competence and therefore adds no independent information.
+
+This result does **not** reduce learning mechanism, sample efficiency, motor chunking, hierarchical composition, arbitrary cross-world transfer, expertise, automaticity, practice history, compression/resource efficiency, human semantic know-how, Skill acquisition, or Skill crystallization. Those stronger meanings require separate justification if RelayTheory needs them.
 
 ### Emotion-like structure
 
