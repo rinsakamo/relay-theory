@@ -76,13 +76,41 @@ If primitive Action is removed but an `interaction_kind = self_action` flag is r
 
 The same test applies to Skill, Ownership, Cognition, Emotion, and similar terms.
 
-## 7. Test across boundaries
+## 7. Reject relational trivialization
+
+Reducing a concept to a generic noun such as Relation, State, Transition, Graph, or Constraint is not enough by itself.
+
+A reduction is vacuous if the lower-level structure is allowed to carry an arbitrary label equivalent to the deleted concept, for example:
+
+- `owns(a, b)`;
+- `perceives(a, b)`;
+- `action_transition`;
+- `skill_relation`.
+
+When a claim is specifically **structural**, require a stronger test:
+
+> The derived distinction should be recoverable from the lower-level structure under semantics-free renaming / isomorphism, except for asymmetries that are independently grounded or explicitly designated.
+
+If two low-level models are structurally isomorphic but the proposed derived concept classifies them differently only because names or labels changed, the reduction is incomplete.
+
+This test does not prohibit indexical or perspective-relative parameters. It requires their role to be explicit.
+
+For example, a distinguished subsystem parameter may be:
+
+- an analysis-relative index;
+- an independently grounded evidence source;
+- a derived closure;
+- or a genuine primitive designation.
+
+The theory must say which, rather than hiding the distinction inside a generic relation label.
+
+## 8. Test across boundaries
 
 When possible, test claims in more than one substrate or world.
 
 A useful primitive should not depend on Minecraft-native affordance names, a particular LLM API, or one implementation's data model unless the theory explicitly claims that scope.
 
-## 8. Promotion rule
+## 9. Promotion rule
 
 Promote a candidate primitive only when:
 
@@ -92,7 +120,7 @@ Promote a candidate primitive only when:
 4. evidence provenance is explicit;
 5. the scope of the primitive is stated.
 
-## 9. Revision rule
+## 10. Revision rule
 
 Theory may be changed by:
 
@@ -104,7 +132,7 @@ Theory may be changed by:
 
 Backward compatibility with old terminology is not a theoretical requirement.
 
-## 10. Exit classifications
+## 11. Exit classifications
 
 Research Issues should prefer explicit outcomes such as:
 
