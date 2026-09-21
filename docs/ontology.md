@@ -49,22 +49,6 @@ This candidate is under direct pressure in #10: generic Relation may belong to t
 
 Relations must not carry arbitrary high-level semantic labels merely to preserve a rejected primitive.
 
-### Interaction
-
-A coupling or dependence through which components participate in possible transitions.
-
-Interaction is intentionally lower-level than Action.
-
-It is under active reduction in #6, including whether interaction-like structure can be derived from counterfactual dependence under explicit model classes.
-
-### Change
-
-A difference between relevant configurations, states, or relations across an ordering / transition.
-
-Change is intentionally descriptive before it is agentive.
-
-It is under active reduction in #6 because a sufficiently explicit transition account may make Change derivable.
-
 ### Grounding
 
 The traceable connection between a representation / relation and the state, observation, body interface, memory, or other source that constrains it.
@@ -81,11 +65,45 @@ Authority is not synonymous with grounding, causal authorship, control, or owner
 
 Its primitive status is under active reduction in #7.
 
+## Derived dynamical terms
+
+### Interaction
+
+Interaction-like coupling is not currently treated as an independent primitive.
+
+Under an explicit dynamical / intervention model class, it is derived as source-to-target sensitivity of admissible successor structure.
+
+Examples:
+
+- deterministic model — successor-value sensitivity;
+- nondeterministic model — successor-set sensitivity;
+- stochastic model — successor-distribution sensitivity;
+- causal / interventional model — sensitivity under admissible intervention or mechanism replacement.
+
+The exact dependence operator is model-class relative. Observational transition structure may be insufficient to identify causal direction.
+
+### Change
+
+Change is not currently treated as an independent primitive.
+
+Given ordered configurations and an explicitly justified equivalence criterion, descriptive Change is derived as non-equivalence:
+
+```text
+Change_Q(x,y)
+  := not (x ≡_Q y)
+```
+
+The unresolved theoretical burden belongs to configuration identity, ordering, and the equivalence / observation criterion rather than to a separate Change object.
+
 ### Trace
 
-Provenance sufficient to connect realized changes, grounding sources, authority transitions, and intermediate interactions.
+Trace is not currently treated as independent system ontology.
 
-Trace is under strong pressure in #6 because realized traces can be represented as paths through richer transition structure and are insufficient by themselves to identify several agency distinctions.
+A realized trace is a path / record through an explicit transition or admissibility structure, optionally carrying separately justified provenance / grounding annotations.
+
+This distinction matters because #1 showed that a realized path is insufficient to identify several agency distinctions that depend on unrealized alternatives.
+
+The lower-level status of configuration / transition / intervention structure is owned by #13 and is not settled by this reduction.
 
 ## Conditionally derived structural terms
 
