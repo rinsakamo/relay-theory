@@ -32,16 +32,17 @@ World     ≈ relative exterior
 Boundary  ≈ crossing cut / interface
 ```
 
-Current unresolved primitive candidates include:
+No member of the original flat bootstrap candidate set currently survives unchanged as an independent primitive within the operational H-001 scope.
 
-```text
-Grounding
-Authority
-```
+This is **not** a primitive-free-theory conclusion. The unresolved frontier has moved downward into configuration / transition / admissibility / intervention / provenance / rule-context questions, with the dynamical-formal boundary owned by #13.
 
-Both remain provisional and are under active reduction.
+Generic Relation is formal representation substrate rather than ontology.
 
-Generic Relation is no longer treated as an ontology primitive. Relational notation, functions, graphs, predicates, kernels, and equivalent encodings belong to the formal representation substrate when they preserve the same structural distinctions.
+The scoped #7 result likewise treats:
+- Grounding-like source anchoring as a derived evidence judgment over explicit dependence / provenance criteria;
+- operational Authority as a derived context-relative admissibility / acceptance judgment.
+
+Full semantic grounding, epistemic justification, normative legitimacy, and ownership title are not claimed solved by that reduction.
 
 The scoped result from #6 removes three former candidates from that flat list:
 
@@ -68,7 +69,7 @@ Action
   ↓
 Effect
   ↓
-grounded interaction / dependence / change
+source-anchored dependence / admissible transition structure
 ```
 
 Ownership is also under decomposition. The earlier shorthand:
