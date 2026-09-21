@@ -115,7 +115,13 @@ Issue #6 established a model-class-constrained reduction:
 
 Therefore Interaction, Change, and Trace are no longer treated as independent flat primitive candidates in the current ontology.
 
-This does **not** promote State / Configuration / Transition / Intervention to primitive status. Their ontology-vs-formal-substrate status is owned by #13.
+Issue #13 further classifies State / Configuration / Transition / Intervention-style machinery as formal model/evaluation substrate within the agency-local H-001 scope.
+
+This classification is not based on assuming observational dynamics are sufficient. #22 provides a Level-B finite counterexample in which two models have the same complete observational signature but different intervention responses, and proves that no recovery function from the observational signature alone can reproduce both selected intervention responses.
+
+The independent counterfactual information is therefore retained where required. The #13 re-encoding test separately shows that the named observational/counterfactual presentation is losslessly interconvertible with a generic response profile, so the information gap does not by itself earn a named ontology primitive.
+
+This does **not** settle intrinsic temporal orientation, general physical causation, or cosmological Time.
 
 ### Current constraint — generic Relation
 
@@ -179,6 +185,8 @@ A primitive-Self account regains force only if an intrinsic Self-relative distin
 - #6 terminal reconciliation: https://github.com/rinsakamo/relay-theory/issues/6#issuecomment-5762446402
 - #10 terminal reconciliation: https://github.com/rinsakamo/relay-theory/issues/10#issuecomment-5762524282
 - #7 terminal reconciliation: https://github.com/rinsakamo/relay-theory/issues/7#issuecomment-5762587015
+- #13 dynamical-substrate owner: https://github.com/rinsakamo/relay-theory/issues/13
+- #22 intervention information-gap formalization: https://github.com/rinsakamo/relay-theory/pull/22
 - Historical RelayLM `relay-theory` lane: provenance only
 - RelaySelf experiments may be linked individually when their evidence is relevant
 
