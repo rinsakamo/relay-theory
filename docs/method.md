@@ -66,6 +66,16 @@ A theoretical claim should identify where its support comes from:
 
 Historical prompts and old branch states are provenance, not current authority.
 
+### External scientific literature
+
+External scientific papers and comparable sources that materially support a RelayTheory research transaction must be registered in the permanent [Reference Literature Registry](https://github.com/rinsakamo/relay-theory/issues/23).
+
+Research Issues / PRs should link to the relevant registry entry instead of maintaining isolated ad hoc bibliographies.
+
+The registry should capture stable bibliographic identity, exact version/date where relevant, the related RelayTheory owner, the source's role, scoped relevance, important limitations, and read status. Deduplicate by DOI, arXiv ID, exact title, or canonical URL.
+
+Registration records provenance, not authority. A cited paper does not automatically establish RelayTheory ontology or justify generalization beyond the source's scope. Abstract-only inspection and secondary summaries must not be presented as equivalent to full primary-source evidence.
+
 ## 6. Avoid semantic smuggling
 
 A reduction fails if it deletes a concept by simply renaming it.
