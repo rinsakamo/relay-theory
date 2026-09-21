@@ -1,4 +1,5 @@
 import RelayTheory.InterventionCountermodel
+import RelayTheory.PredictiveCapacity
 
 /-!
 # RelayTheory formal scaffold
