@@ -37,17 +37,21 @@ Whether a focal locus exhibits **Self-like organization** remains a derived-clas
 
 Its selection is scope-relative formal machinery. RelayTheory does not currently treat “the universe under analysis” as an additional agency primitive.
 
+## Formal representation substrate
+
+### Relation notation
+
+Generic Relation is not currently treated as RelayTheory ontology.
+
+Relational notation, functions, predicates, graphs, matrices, kernels, tuple sets, and equivalent structural encodings are formal presentation choices when translations preserve the distinctions used by the theory.
+
+Specific structures — for example dependence, provenance, admissibility, temporal ordering, or normative title — must earn their semantics independently. They are not licensed merely by being named relation types.
+
+This classification follows #10 and does not assert metaphysical anti-relationalism.
+
 ## Candidate primitives
 
 The following remain research candidates, not settled fundamentals.
-
-### Relation
-
-A structured dependency or connection among states or entities.
-
-This candidate is under direct pressure in #10: generic Relation may belong to the formal substrate rather than the ontology.
-
-Relations must not carry arbitrary high-level semantic labels merely to preserve a rejected primitive.
 
 ### Grounding
 

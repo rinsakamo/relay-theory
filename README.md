@@ -35,12 +35,13 @@ Boundary  ≈ crossing cut / interface
 Current unresolved primitive candidates include:
 
 ```text
-Relation
 Grounding
 Authority
 ```
 
-All remain provisional and are under active reduction.
+Both remain provisional and are under active reduction.
+
+Generic Relation is no longer treated as an ontology primitive. Relational notation, functions, graphs, predicates, kernels, and equivalent encodings belong to the formal representation substrate when they preserve the same structural distinctions.
 
 The scoped result from #6 removes three former candidates from that flat list:
 

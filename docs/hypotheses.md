@@ -117,6 +117,16 @@ Therefore Interaction, Change, and Trace are no longer treated as independent fl
 
 This does **not** promote State / Configuration / Transition / Intervention to primitive status. Their ontology-vs-formal-substrate status is owned by #13.
 
+### Current constraint — generic Relation
+
+Issue #10 established that generic Relation belongs to the formal representation substrate rather than the current RelayTheory ontology.
+
+Function, graph-relation, characteristic-map, adjacency, predicate, kernel, and equivalent encodings can preserve the same structural distinctions. The theoretically relevant content belongs to independently justified structures such as dependence, provenance, admissibility, ordering, or title — not to the generic noun Relation.
+
+Therefore Relation is no longer treated as an independent flat primitive candidate.
+
+This does **not** settle the ontology status of specific grounding / authority / dynamical structures, and it does not assert metaphysical anti-relationalism.
+
 ### Ownership constraint
 
 Ownership is separately constrained because the term conflates at least:
@@ -155,6 +165,7 @@ A primitive-Self account regains force only if an intrinsic Self-relative distin
 - #1 formal countermodels: https://github.com/rinsakamo/relay-theory/issues/1#issuecomment-5761516750
 - #5 terminal reconciliation: https://github.com/rinsakamo/relay-theory/issues/5#issuecomment-5762361501
 - #6 terminal reconciliation: https://github.com/rinsakamo/relay-theory/issues/6#issuecomment-5762446402
+- #10 terminal reconciliation: https://github.com/rinsakamo/relay-theory/issues/10#issuecomment-5762524282
 - Historical RelayLM `relay-theory` lane: provenance only
 - RelaySelf experiments may be linked individually when their evidence is relevant
 
