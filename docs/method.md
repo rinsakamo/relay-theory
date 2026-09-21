@@ -143,6 +143,14 @@ Research Issues should prefer explicit outcomes such as:
 
 A null result is useful when it closes a possible reduction.
 
+## 12. Operational forge protocol
+
+The conceptual method in this document is executed under the repository-local [forge protocol](../.ai/forge-protocol.md).
+
+The forge protocol adds transaction requirements such as Grand Null first, independent-information tests, duplicate-owner search, fresh-authority gates, claim levels, exact-head / merge-head validation for applicable claims, proof-shape versus counterexample separation, explicit anti-overclaim boundaries, and terminal reconciliation.
+
+These operational constraints do not make a theory true. They prevent the repository from promoting claims beyond their evidence.
+
 ## Principle
 
 **Breaking the ontology is progress only when the remaining account still explains the evidence.**
