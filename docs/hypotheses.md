@@ -35,7 +35,7 @@ Suggested values:
 
 ### Claim
 
-High-level concepts such as Skill, Action, Cognition, Perception, and Ownership may be derivable from lower-level grounded interaction / dependence / change structure rather than requiring independent primitive semantics.
+High-level concepts such as Skill, Action, Cognition, Perception, and Ownership may be derivable from lower-level source-anchored dependence / admissible transition structure structure rather than requiring independent primitive semantics.
 
 Current candidate reductions include:
 
@@ -127,6 +127,18 @@ Therefore Relation is no longer treated as an independent flat primitive candida
 
 This does **not** settle the ontology status of specific grounding / authority / dynamical structures, and it does not assert metaphysical anti-relationalism.
 
+### Current constraint — Grounding and Authority
+
+Issue #7 established a scoped `BOTH DERIVED BUT DISTINCT` result for the H-001 operational role.
+
+- Grounding-like source anchoring is a derived judgment over explicit source identity, dependence, provenance/evidence structure, and a stated criterion.
+- operational Authority is a derived context-relative judgment over explicit admissibility / acceptance behavior.
+- the two remain orthogonal: unauthorized-but-grounding and authorized-but-inert cases are both coherent.
+
+Therefore Grounding and Authority are no longer treated as independent flat primitive candidates **within this operational scope**.
+
+This does **not** claim to reduce full semantic/reference grounding, epistemic justification, normative legitimacy, or ownership/title. Those stronger meanings must not be packed back into the operational terms.
+
 ### Ownership constraint
 
 Ownership is separately constrained because the term conflates at least:
@@ -166,6 +178,7 @@ A primitive-Self account regains force only if an intrinsic Self-relative distin
 - #5 terminal reconciliation: https://github.com/rinsakamo/relay-theory/issues/5#issuecomment-5762361501
 - #6 terminal reconciliation: https://github.com/rinsakamo/relay-theory/issues/6#issuecomment-5762446402
 - #10 terminal reconciliation: https://github.com/rinsakamo/relay-theory/issues/10#issuecomment-5762524282
+- #7 terminal reconciliation: https://github.com/rinsakamo/relay-theory/issues/7#issuecomment-5762587015
 - Historical RelayLM `relay-theory` lane: provenance only
 - RelaySelf experiments may be linked individually when their evidence is relevant
 
