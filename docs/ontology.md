@@ -49,25 +49,53 @@ Specific structures — for example dependence, provenance, admissibility, tempo
 
 This classification follows #10 and does not assert metaphysical anti-relationalism.
 
-## Candidate primitives
+## Current primitive frontier
 
-The following remain research candidates, not settled fundamentals.
+No member of the original flat bootstrap candidate set currently survives **unchanged** as an independent primitive within the operational H-001 scope.
 
-### Grounding
+This is not a claim that RelayTheory has proved a primitive-free ontology.
 
-The traceable connection between a representation / relation and the state, observation, body interface, memory, or other source that constrains it.
+The unresolved frontier has moved downward into questions such as:
 
-Grounding is descriptive and must not be identified with Authority merely because both connect sources to state.
+- configuration identity and equivalence;
+- transition / admissibility structure;
+- intervention / causal structure;
+- source / provenance representation;
+- rule / validation context.
 
-Its primitive status is under active reduction in #7.
+Issue #13 owns the dynamical / admissibility ontology-vs-formal-substrate question.
 
-### Authority
+Stronger semantic or normative notions must receive separate justification if H-001 later requires them.
 
-The rule or constraint determining which source may establish, revise, validate, or accept a state or relation.
+## Derived source and validation terms
 
-Authority is not synonymous with grounding, causal authorship, control, or ownership.
+### Grounding-like source anchoring
 
-Its primitive status is under active reduction in #7.
+The operational role previously called Grounding is not currently treated as an independent primitive.
+
+A source-anchoring judgment must expose:
+
+- target;
+- source;
+- scope / time;
+- explicit dependence and/or provenance evidence;
+- any additional evidential criterion required by the claim.
+
+Different grounding-like claims can therefore diverge. Historical provenance, current source sensitivity, and epistemic reliability are not interchangeable.
+
+Full semantic/reference grounding — aboutness, meaning, truth conditions, intentional reference — is not claimed reduced by this operational result and must not be hidden inside source anchoring.
+
+### Authority-like operational admissibility
+
+Operational Authority is not currently treated as an independent primitive.
+
+It is derived relative to an explicit rule / validation context and a scoped proposal class from the system's admissibility / acceptance behavior.
+
+Authority is therefore not an intrinsic property of a source: the same source and physical dynamics can have different operational authority under different validation contexts.
+
+Operational acceptance is not the same as legal, moral, social, institutional, or other normative legitimacy. Normative ownership/title likewise remains distinct.
+
+The two derived notions remain orthogonal: a source may causally/provenance-anchor a state without being admissible, and may be admissible without producing the current state.
 
 ## Derived dynamical terms
 
@@ -157,7 +185,7 @@ The following terms are useful descriptions but are **not currently primitive**.
 
 Candidate reduction:
 
-> Exterior-to-locus grounded dependence / interaction that modifies locus-accessible state.
+> Exterior-to-locus source-sensitive / source-anchored dependence that modifies locus-accessible state.
 
 A realized update alone is insufficient. The reduction must distinguish a channel that is sensitive to exterior state from replay / injection that happens to produce the same observed update.
 
@@ -173,7 +201,7 @@ This definition is provisional. Mere internal physical change is insufficient if
 
 Candidate reduction:
 
-> A locus-to-exterior interaction/change whose relevant outward contribution is attributable, authorized, and traceable to the focal locus.
+> A locus-to-exterior transition whose relevant outward contribution is counterfactually attributable to the locus and admissible under the explicit validation context.
 
 A realized outward change alone is insufficient. Action-like attribution may require counterfactual dependence on internal selection rather than a primitive Action flag.
 
@@ -211,7 +239,7 @@ A useful current hypothesis is:
 
 ```text
 Exterior / environment ↔ Body   physical interaction
-Body → focal locus              embodied / interoceptive grounding
+Body → focal locus              embodied / interoceptive source anchoring
 focal locus ↔ focal locus       cognition-like interaction
 focal locus → Body → exterior   embodied outward interaction
 ```
