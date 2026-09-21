@@ -96,7 +96,9 @@ locus    ↔ locus           cognition-like
 locus    → exterior        action-like
 ```
 
-None of these reductions are accepted merely because they are simpler. They must survive falsification.
+Within the operational H-001 scope, #35 now gives Action-like attribution a narrower derived form: counterfactual sensitivity of an exterior target to a source inside the supplied focal locus. Whether that response is accepted or authorized remains a separate explicit validation-context question. This does not reduce intentional action, reasons, responsibility, authorship, or free will.
+
+The remaining high-level reductions are not accepted merely because they are simpler. They must survive falsification.
 
 ## Research rule
 
