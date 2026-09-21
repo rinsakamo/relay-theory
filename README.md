@@ -1,12 +1,12 @@
 # RelayTheory
 
-**RelayTheory** is an implementation-independent research project for reducing cognitive and agent-like systems to smaller relational primitives.
+**RelayTheory** is an implementation-independent research project for reducing cognitive and agent-like systems to smaller structural commitments.
 
 Its central question is not merely how to implement concepts such as cognition, action, skill, memory, emotion, or ownership, but:
 
 > **Which of those concepts actually need to exist as primitives?**
 
-RelayTheory studies whether apparently high-level structures can instead be derived from grounded interaction among **Self**, **World**, their **Boundary**, and observable **Change**.
+RelayTheory studies whether apparently high-level structures can instead be derived from lower-level grounded relations, transitions, dependence, and relative partitions.
 
 ## Current research direction
 
@@ -21,12 +21,20 @@ The current direction is intentionally provisional. Concepts such as:
 
 may not require independent primitive semantics.
 
-A current candidate basis includes:
+The candidate basis is no longer a flat list.
+
+Current formal evaluation uses a **focal locus / center** as an index parameter. The center is not, by itself, an ontological Self claim.
+
+Relative to an ambient scope and focal locus:
 
 ```text
-Self
-World
-Boundary
+World     ≈ relative exterior
+Boundary  ≈ crossing cut / interface
+```
+
+Current unresolved primitive candidates include:
+
+```text
 Relation
 Interaction
 Change
@@ -35,9 +43,17 @@ Authority
 Trace
 ```
 
-These are **candidate primitives**, not a frozen ontology.
+All remain provisional and are under active reduction.
 
-A motivating reduction is:
+The structural result from #5 is scoped:
+
+- Self-relative / de-se claims require an explicit center;
+- bare symmetric structure cannot in general select one unique Self;
+- the center can be an evaluation parameter rather than a global primitive Self entity type;
+- World and Boundary are conditionally derivable once the center and ambient scope are fixed;
+- which organization warrants a Self-like description remains a derived-classification question.
+
+A motivating high-level reduction remains:
 
 ```text
 Skill
@@ -46,10 +62,10 @@ Action
   ↓
 Effect
   ↓
-Self–World interaction producing change
+grounded interaction / dependence / change
 ```
 
-Likewise, ownership may be derivable from grounded and authorized provenance rather than stored as an independent primitive:
+Ownership is also under decomposition. The earlier shorthand:
 
 ```text
 Ownership
@@ -57,12 +73,14 @@ Ownership
 Authority + Grounding + Trace
 ```
 
-And familiar cognitive categories may describe interaction topology rather than separate fundamental mechanisms:
+does not recover every sense of ownership; causal authorship, control authority, incorporation, and normative title can diverge.
+
+Likewise, familiar cognitive categories may describe relative interaction topology rather than separate fundamental mechanisms:
 
 ```text
-World ↔ Self   perception-like / grounding interaction
-Self  ↔ Self   cognition-like interaction
-Self  ↔ World  outward / action-like interaction
+exterior → focal locus     perception-like
+locus    ↔ locus           cognition-like
+locus    → exterior        action-like
 ```
 
 None of these reductions are accepted merely because they are simpler. They must survive falsification.
@@ -75,11 +93,13 @@ A concept should not be promoted to a primitive merely because it is intuitive, 
 
 The goal is not to eliminate useful high-level language. The goal is to determine whether that language describes fundamental structure or recurring structure.
 
+A generic Relation / State / Transition label is not a successful reduction if it merely stores the deleted semantics under another name.
+
 ## Grand Null
 
 A useful default null hypothesis is:
 
-> High-level concepts such as Skill, Action, Cognition, Perception, Emotion, and Ownership require independent primitive semantics and cannot be recovered from grounded Self–World interaction and change alone.
+> High-level concepts such as Skill, Action, Cognition, Perception, Emotion, and Ownership require independent primitive semantics and cannot be recovered from lower-level grounded structure alone.
 
 Individual hypotheses should define narrower nulls and explicit discriminating evidence.
 
@@ -119,6 +139,6 @@ See:
 
 RelayTheory is experimental.
 
-Definitions are expected to be deleted, merged, renamed, or reduced when a smaller explanation survives available evidence.
+Definitions are expected to be deleted, merged, renamed, split, or reduced when a smaller explanation survives available evidence.
 
 **Breaking the ontology is progress.**
