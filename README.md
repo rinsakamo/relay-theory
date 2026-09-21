@@ -34,7 +34,13 @@ Boundary  ≈ crossing cut / interface
 
 No member of the original flat bootstrap candidate set currently survives unchanged as an independent primitive within the operational H-001 scope.
 
-This is **not** a primitive-free-theory conclusion. The unresolved frontier has moved downward into configuration / transition / admissibility / intervention / provenance / rule-context questions, with the dynamical-formal boundary owned by #13.
+This is **not** a primitive-free-theory conclusion.
+
+Within the agency-local H-001 scope, #13 classifies configuration carriers, transition encodings, observation/equivalence probes, counterfactual response families, and operational admissibility/rule contexts as **explicit formal model/evaluation substrate rather than RelayTheory ontology primitives**.
+
+Those pieces may still carry independent information relative to one another. In particular, #22 proves that complete observational response does not in general determine intervention response. The reduction is therefore not "observations are enough"; it is that the richer response structure can remain explicit model semantics without promoting names such as State, Transition, or Intervention into ontology.
+
+Intrinsic temporal orientation, physical causal structure, semantic grounding, and normative structure remain separate questions where independently required.
 
 Generic Relation is formal representation substrate rather than ontology.
 
@@ -50,7 +56,7 @@ The scoped result from #6 removes three former candidates from that flat list:
 - Trace is a realized path / evidence representation;
 - Interaction is derived as model-class-relative sensitivity of admissible successor structure.
 
-The lower-level status of configuration / transition / intervention structure remains open in #13 and is not promoted here.
+The #13 result keeps configuration / transition / intervention structure explicit where required, but treats it as model/evaluation semantics in this agency-local scope. It does not decide intrinsic Time or cosmological temporal orientation; those remain under the Time reconstruction frontier in #15.
 
 The structural result from #5 is scoped:
 

@@ -55,17 +55,49 @@ No member of the original flat bootstrap candidate set currently survives **unch
 
 This is not a claim that RelayTheory has proved a primitive-free ontology.
 
-The unresolved frontier has moved downward into questions such as:
+Within the agency-local H-001 scope, #13 now classifies the generic dynamical machinery below the derived agency terms as **formal model/evaluation substrate rather than RelayTheory ontology primitives**.
 
-- configuration identity and equivalence;
-- transition / admissibility structure;
-- intervention / causal structure;
-- source / provenance representation;
-- rule / validation context.
+This includes, when a chosen model requires them:
 
-Issue #13 owns the dynamical / admissibility ontology-vs-formal-substrate question.
+- configuration carriers / identifiers;
+- transition or successor encodings;
+- observation / equivalence probes;
+- counterfactual or intervention response families;
+- operational admissibility / validation contexts.
 
-Stronger semantic or normative notions must receive separate justification if H-001 later requires them.
+These components need not be mutually reconstructible. #22 formally shows that complete observational response can be identical while intervention response differs. Independent information relative to a smaller model is therefore retained when the claim needs it.
+
+That information gap does not by itself promote a named primitive. #13's re-encoding test shows the named observational/counterfactual fields used by #22 are losslessly equivalent to a semantics-free response profile; the semantic roles are supplied by the surrounding model/evaluation context.
+
+This scoped result does **not** classify intrinsic temporal orientation, physical causation in general, semantic grounding, epistemic justification, normative legitimacy, or ownership/title. Such stronger structure requires separate evidence; Time/cosmology reconstruction remains under #15.
+
+## Formal dynamical and counterfactual substrate
+
+RelayTheory may quantify over dynamical models without treating the representation vocabulary of those models as agency ontology.
+
+A model may expose deterministic maps, nondeterministic successor sets, stochastic kernels, causal/interventional response families, validation rules, or equivalent encodings. What matters to a scoped RelayTheory claim is the invariant discriminating content preserved by the chosen semantics, not the noun used to store it.
+
+The #22 countermodel establishes a real information gap:
+
+```text
+observational response
+  -/-> 
+counterfactual intervention response
+```
+
+The #13 re-encoding result establishes a separate representation fact:
+
+```text
+named observe / intervention fields
+  <-> 
+generic response profile
+```
+
+without information loss.
+
+Therefore "formal substrate" does **not** mean "discard counterfactual information." It means that required lower-level information is carried explicitly by the model semantics rather than promoted merely because a current encoding names it State, Transition, Intervention, or Admissibility.
+
+Evaluation parameters and model semantics can still be theory-essential for a particular theorem while remaining non-ontological in this scoped classification.
 
 ## Derived source and validation terms
 
@@ -135,7 +167,7 @@ A realized trace is a path / record through an explicit transition or admissibil
 
 This distinction matters because #1 showed that a realized path is insufficient to identify several agency distinctions that depend on unrealized alternatives.
 
-The lower-level status of configuration / transition / intervention structure is owned by #13 and is not settled by this reduction.
+The lower-level configuration / transition / intervention machinery is classified by #13 as formal model/evaluation substrate within the agency-local scope. The required information must remain explicit; only its promotion to a named ontology primitive is rejected.
 
 ## Conditionally derived structural terms
 
