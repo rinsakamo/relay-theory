@@ -3,6 +3,7 @@ import RelayTheory.PredictiveCapacity
 import RelayTheory.LossyWorkload
 import RelayTheory.PresentSliceCountermodel
 import RelayTheory.LocalPresentReindexing
+import RelayTheory.TemporalOrientationAsymmetry
 
 /-!
 # RelayTheory formal scaffold
