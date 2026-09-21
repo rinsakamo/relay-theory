@@ -103,6 +103,20 @@ Therefore Self, World, and Boundary are no longer treated as three independent f
 
 This does **not** settle phenomenal selfhood, personal identity, or which organization warrants a Self-like derived classification.
 
+### Current constraint — dynamical terms
+
+Issue #6 established a model-class-constrained reduction:
+
+- Change is derived as non-equivalence across ordered configurations once an explicit equivalence criterion is fixed;
+- Trace is a realized path / evidence representation through richer transition structure;
+- Interaction is derived as source-to-target sensitivity of admissible successor structure;
+- the exact dependence operator is model-class relative across deterministic, nondeterministic, stochastic, and interventional models;
+- observational transition structure alone may not identify causal direction under confounding.
+
+Therefore Interaction, Change, and Trace are no longer treated as independent flat primitive candidates in the current ontology.
+
+This does **not** promote State / Configuration / Transition / Intervention to primitive status. Their ontology-vs-formal-substrate status is owned by #13.
+
 ### Ownership constraint
 
 Ownership is separately constrained because the term conflates at least:
@@ -140,6 +154,7 @@ A primitive-Self account regains force only if an intrinsic Self-relative distin
 - RelayTheory issue #1
 - #1 formal countermodels: https://github.com/rinsakamo/relay-theory/issues/1#issuecomment-5761516750
 - #5 terminal reconciliation: https://github.com/rinsakamo/relay-theory/issues/5#issuecomment-5762361501
+- #6 terminal reconciliation: https://github.com/rinsakamo/relay-theory/issues/6#issuecomment-5762446402
 - Historical RelayLM `relay-theory` lane: provenance only
 - RelaySelf experiments may be linked individually when their evidence is relevant
 
