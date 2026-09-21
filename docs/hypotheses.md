@@ -145,6 +145,27 @@ Therefore Grounding and Authority are no longer treated as independent flat prim
 
 This does **not** claim to reduce full semantic/reference grounding, epistemic justification, normative legitimacy, or ownership/title. Those stronger meanings must not be packed back into the operational terms.
 
+### Current constraint — operational Action
+
+Issue #35 establishes a scoped operational Action reduction.
+
+A finite matched pair has the same realized source/exterior signature while differing only in counterfactual response of the exterior target to the internal source:
+
+- source-sensitive response — changing the source changes the exterior response;
+- fixed response — changing the source does not change the exterior response.
+
+With the same outward focal view, the lower-level attribution predicate separates the pair without an Action flag.
+
+Additional controls show:
+
+- the same sensitive response becomes non-outward when the focal partition is reindexed;
+- attribution remains fixed while explicit acceptance/admissibility changes;
+- a decorative Action label can vary without changing the attribution result.
+
+Therefore the tested operational H-001 Action role is reconstructed from **counterfactual source sensitivity + supplied focal partition**, with validation/admissibility kept separate.
+
+This is not a reduction of intentional agency, reasons-responsiveness, conscious willing, moral/legal responsibility, normative authorship, or free will.
+
 ### Ownership constraint
 
 Ownership is separately constrained because the term conflates at least:
@@ -187,6 +208,8 @@ A primitive-Self account regains force only if an intrinsic Self-relative distin
 - #7 terminal reconciliation: https://github.com/rinsakamo/relay-theory/issues/7#issuecomment-5762587015
 - #13 dynamical-substrate owner: https://github.com/rinsakamo/relay-theory/issues/13
 - #22 intervention information-gap formalization: https://github.com/rinsakamo/relay-theory/pull/22
+- #35 operational Action reduction owner: https://github.com/rinsakamo/relay-theory/issues/35
+- #36 operational Action finite formalization: https://github.com/rinsakamo/relay-theory/pull/36
 - Historical RelayLM `relay-theory` lane: provenance only
 - RelaySelf experiments may be linked individually when their evidence is relevant
 
