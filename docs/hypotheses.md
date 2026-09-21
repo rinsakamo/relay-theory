@@ -187,6 +187,28 @@ Therefore the tested operational H-001 Perception role is reconstructed from **c
 
 This is not a reduction of phenomenal perception, conscious awareness, semantic aboutness/reference, perceptual objecthood, epistemic justification/reliability, modality-specific sensing, or every illusion/veridical distinction.
 
+### Current constraint — operational Cognition
+
+Issue #39 establishes a scoped operational Cognition reduction.
+
+Three finite models share the same realized source/intermediate/response signature while separating two lower-level conditions:
+
+- **active** — the internal intermediate is counterfactually sensitive to the internal source and changes a later response;
+- **replay** — the intermediate is not source-sensitive;
+- **inert** — the intermediate is source-sensitive but does not change the later response.
+
+Only the active model satisfies the lower-level Cognition-like predicate.
+
+Additional controls show:
+
+- the later response can remain inside the focal locus, so no exterior Action-like response is required;
+- focal reindexing can remove the internal-to-internal classification;
+- a decorative Cognition label can vary without changing the derived result.
+
+Therefore the tested operational H-001 Cognition role is reconstructed from **internal source sensitivity + downstream response relevance + supplied focal partition**.
+
+This is intentionally a broad functional class. Simple control circuitry may satisfy it. The result is not a reduction of semantic thought, rational inference, logical validity, awareness/consciousness, phenomenal thought, deliberation, intentionality, intelligence, or long-horizon planning.
+
 ### Ownership constraint
 
 Ownership is separately constrained because the term conflates at least:
@@ -233,6 +255,8 @@ A primitive-Self account regains force only if an intrinsic Self-relative distin
 - #36 operational Action finite formalization: https://github.com/rinsakamo/relay-theory/pull/36
 - #37 operational Perception reduction owner: https://github.com/rinsakamo/relay-theory/issues/37
 - #38 operational Perception finite formalization: https://github.com/rinsakamo/relay-theory/pull/38
+- #39 operational Cognition reduction owner: https://github.com/rinsakamo/relay-theory/issues/39
+- #40 operational Cognition finite formalization: https://github.com/rinsakamo/relay-theory/pull/40
 - Historical RelayLM `relay-theory` lane: provenance only
 - RelaySelf experiments may be linked individually when their evidence is relevant
 
