@@ -49,7 +49,7 @@ theorem secondHeavy_prefers_secondBit :
   decide
 
 /--
-The same history space and the same one-bit representation budget admit
+The same history space and the same one-bit representation budget yield
 opposite strict representation rankings when only the declared positive
 future-query weights are swapped.
 -/
