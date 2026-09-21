@@ -296,7 +296,38 @@ Owners may define specialized outcomes, but prefer explicit terminal classes suc
 
 The name matters less than making the discriminating evidence explicit.
 
-## 16. Repository principle
+## 16. Reference literature registry
+
+External scientific literature materially used by RelayTheory research must be registered in the permanent [Reference Literature Registry](https://github.com/rinsakamo/relay-theory/issues/23).
+
+The registry is provenance infrastructure, not theory authority.
+
+When a paper, preprint, book chapter, standard, technical report, or comparable external scientific source materially informs a research transaction:
+
+1. search the registry for an existing entry using DOI, arXiv ID, exact title, or canonical URL;
+2. if absent, add a registry entry before terminal reconciliation;
+3. record stable bibliographic identity and exact version/date when relevant;
+4. link the related RelayTheory Issue, hypothesis, formalization, or PR;
+5. state the source's role, such as background, supporting evidence, counterexample source, competing account, formalization inspiration, or implementation/experiment precedent;
+6. state the exact scoped claim or question for which the source is relevant;
+7. record important assumptions, limitations, population/domain, and whether the source was read in full, partially inspected, or only discovered;
+8. link the research Issue / PR back to the registry entry rather than maintaining an isolated ad hoc bibliography.
+
+Do not duplicate an existing source entry merely because a new research owner uses it. Add the new relation / relevance to the existing registry entry.
+
+Do not treat:
+
+- a citation as repository authority;
+- an abstract alone as equivalent to full-paper evidence;
+- a secondary summary as equivalent to the primary source;
+- a paper's terminology as automatic RelayTheory ontology;
+- an external source as authorization to generalize beyond its studied population, assumptions, or domain.
+
+The registry stores bibliographic metadata, stable links, and scoped relevance notes. Do not reproduce copyrighted full text there.
+
+A transaction that materially relies on external scientific literature is not fully reconciled until the corresponding registry provenance is present.
+
+## 17. Repository principle
 
 > **Break the ontology before growing it. Preserve only distinctions that survive declared probes, counterexamples, formalization, and scope boundaries.**
 
