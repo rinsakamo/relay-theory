@@ -100,6 +100,8 @@ Within the operational H-001 scope, #35 now gives Action-like attribution a narr
 
 #37 likewise derives operational Perception-like uptake as counterfactual sensitivity of an internal target to a source outside the supplied focal locus. An inverted but source-sensitive channel remains perception-like under this operational criterion, so veridicality, semantic truth, and epistemic reliability are separate claims.
 
+#39 derives a scoped operational Cognition-like role as source-sensitive internal transformation whose intermediate state changes at least one later response family. The later response may remain internal, so this role does not collapse into Action. This is deliberately a broad functional class: a simple control circuit may satisfy it. Semantic thought, rationality, awareness, deliberation, and intelligence remain separate claims.
+
 The remaining high-level reductions are not accepted merely because they are simpler. They must survive falsification.
 
 ## Research rule
