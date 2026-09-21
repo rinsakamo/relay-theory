@@ -50,6 +50,12 @@ A candidate primitive must remain provisional until competing reductions have be
 
 High-level terms such as Skill, Action, Cognition, Perception, Emotion, and Ownership must not be treated as primitives unless evidence requires independent semantics.
 
+## Forge protocol
+
+Research transactions are governed by [`.ai/forge-protocol.md`](forge-protocol.md).
+
+The forge protocol defines Grand Null discipline, independent-information tests, structural anti-trivialization, duplicate-owner checks, claim levels, formal validation boundaries, anti-overclaim rules, fresh-authority gates, and terminal reconciliation. `docs/method.md` explains the research method; the forge protocol is the operational transaction authority.
+
 ## Repository workflow
 
 Use Issues for falsifiable questions and research transactions.
