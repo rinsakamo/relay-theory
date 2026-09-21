@@ -37,12 +37,12 @@ theorem forgetNames_assignNames (p : GenericResponseProfile) :
 The named #22 presentation and a generic two-channel response profile are
 losslessly interconvertible.
 -/
-def namedModelEquivGenericProfile :
-    BinaryMechanismModel ≃ GenericResponseProfile where
-  toFun := forgetNames
-  invFun := assignNames
-  left_inv := assignNames_forgetNames
-  right_inv := forgetNames_assignNames
+theorem namedAndGenericAreMutualInverses :
+    (∀ m : BinaryMechanismModel, assignNames (forgetNames m) = m) ∧
+    (∀ p : GenericResponseProfile, forgetNames (assignNames p) = p) := by
+  constructor
+  · exact assignNames_forgetNames
+  · exact forgetNames_assignNames
 
 /--
 The independent-information witness from #22 survives after the semantic field
