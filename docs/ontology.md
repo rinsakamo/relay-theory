@@ -233,11 +233,25 @@ This result does **not** reduce phenomenal perception / qualia, conscious awaren
 
 ### Cognition
 
-Candidate reduction:
+Within the scoped operational H-001 role tested by #39, Cognition-like transformation is currently **derived rather than primitive**.
 
-> Locus-internal dependence / interaction that transforms locus-accessible relations, representations, or choice structure.
+The retained lower-level account is:
 
-This definition is provisional. Mere internal physical change is insufficient if it lacks the relevant causal / relational role.
+> A source-sensitive transformation between states inside the supplied focal locus whose intermediate state changes at least one later scoped response family.
+
+The finite #39 discriminator separates three models with the same realized source/intermediate/response signature:
+
+- **active** — internal source sensitivity plus downstream response relevance;
+- **replay** — downstream relevance without source-sensitive internal transformation;
+- **inert** — source-sensitive internal transformation without downstream response relevance.
+
+Only the active model satisfies the scoped Cognition-like predicate.
+
+The later response may itself remain inside the focal locus, so operational Cognition-like classification does not require an exterior Action-like consequence.
+
+Focal reindexing can remove the internal-to-internal classification, and a decorative `cognitionFlag` adds no independent information.
+
+This functional role is deliberately broad. A thermostat, control circuit, or biochemical network may also instantiate the same structural pattern. Therefore the result does **not** identify this operational role with semantic thought, rational inference, logical validity, awareness / consciousness, phenomenal thought, deliberation, intentionality, intelligence, or long-horizon planning. Those stronger meanings require separate justification if RelayTheory needs them.
 
 ### Action
 
