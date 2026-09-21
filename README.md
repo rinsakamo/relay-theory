@@ -102,6 +102,8 @@ Within the operational H-001 scope, #35 now gives Action-like attribution a narr
 
 #39 derives a scoped operational Cognition-like role as source-sensitive internal transformation whose intermediate state changes at least one later response family. The later response may remain internal, so this role does not collapse into Action. This is deliberately a broad functional class: a simple control circuit may satisfy it. Semantic thought, rationality, awareness, deliberation, and intelligence remain separate claims.
 
+#41 derives a scoped operational Skill-like competence as a response mapping satisfying an explicit task criterion over a declared context class. A general mapping and replay mapping can share the same successful observed training trace yet diverge on an unvisited context, so recurrence / observed success alone is insufficient. Competence is also task-relative rather than an intrinsic Skill bit on the mapping.
+
 The remaining high-level reductions are not accepted merely because they are simpler. They must survive falsification.
 
 ## Research rule

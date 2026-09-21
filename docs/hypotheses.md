@@ -209,6 +209,28 @@ Therefore the tested operational H-001 Cognition role is reconstructed from **in
 
 This is intentionally a broad functional class. Simple control circuitry may satisfy it. The result is not a reduction of semantic thought, rational inference, logical validity, awareness/consciousness, phenomenal thought, deliberation, intentionality, intelligence, or long-horizon planning.
 
+### Current constraint — operational Skill
+
+Issue #41 establishes a scoped operational Skill reduction in the task-relative competence sense.
+
+Two policies have the same observed training signature on context `false`:
+
+- **general** — returns the context itself;
+- **replay** — always returns `false`.
+
+Under the explicit identity task over the full Boolean context class, the general policy is competent while replay fails on the unvisited `true` context.
+
+Additional controls show:
+
+- observed training success does not identify competence over the declared context class;
+- the same mapping can be competent under one explicit task criterion and not another;
+- extensionally equal mappings preserve competence under the same task;
+- a decorative Skill label can vary without changing the result.
+
+Therefore the tested operational H-001 Skill role is reconstructed from **response mapping + declared context/task class + explicit evaluation criterion** rather than a primitive Skill object.
+
+This is not a reduction of learning, sample efficiency, hierarchical composition, arbitrary cross-world transfer, expertise, automaticity, compression/resource efficiency, human know-how, Skill acquisition, or crystallization.
+
 ### Ownership constraint
 
 Ownership is separately constrained because the term conflates at least:
@@ -257,6 +279,8 @@ A primitive-Self account regains force only if an intrinsic Self-relative distin
 - #38 operational Perception finite formalization: https://github.com/rinsakamo/relay-theory/pull/38
 - #39 operational Cognition reduction owner: https://github.com/rinsakamo/relay-theory/issues/39
 - #40 operational Cognition finite formalization: https://github.com/rinsakamo/relay-theory/pull/40
+- #41 operational Skill reduction owner: https://github.com/rinsakamo/relay-theory/issues/41
+- #42 operational Skill finite formalization: https://github.com/rinsakamo/relay-theory/pull/42
 - Historical RelayLM `relay-theory` lane: provenance only
 - RelaySelf experiments may be linked individually when their evidence is relevant
 
