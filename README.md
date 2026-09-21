@@ -98,6 +98,8 @@ locus    → exterior        action-like
 
 Within the operational H-001 scope, #35 now gives Action-like attribution a narrower derived form: counterfactual sensitivity of an exterior target to a source inside the supplied focal locus. Whether that response is accepted or authorized remains a separate explicit validation-context question. This does not reduce intentional action, reasons, responsibility, authorship, or free will.
 
+#37 likewise derives operational Perception-like uptake as counterfactual sensitivity of an internal target to a source outside the supplied focal locus. An inverted but source-sensitive channel remains perception-like under this operational criterion, so veridicality, semantic truth, and epistemic reliability are separate claims.
+
 The remaining high-level reductions are not accepted merely because they are simpler. They must survive falsification.
 
 ## Research rule

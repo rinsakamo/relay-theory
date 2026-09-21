@@ -215,11 +215,21 @@ The following terms are useful descriptions but are **not currently primitive**.
 
 ### Perception
 
-Candidate reduction:
+Within the scoped operational H-001 role tested by #37, Perception-like uptake is currently **derived rather than primitive**.
 
-> Exterior-to-locus source-sensitive / source-anchored dependence that modifies locus-accessible state.
+The retained lower-level account is:
 
-A realized update alone is insufficient. The reduction must distinguish a channel that is sensitive to exterior state from replay / injection that happens to produce the same observed update.
+> Counterfactual sensitivity of a target inside the supplied focal locus to a source outside that locus.
+
+The finite #37 discriminator keeps the realized exterior/internal signature fixed while changing only the exterior-to-internal response family. The source-sensitive model is perception-like under the inward focal view; the replay/constant model is not.
+
+Inwardness is evaluation-relative rather than an intrinsic edge type: the same source-sensitive response is inward under one supplied focal view and non-perception-like under an internal reindexing.
+
+Operational uptake does not imply veridicality, semantic truth, or epistemic reliability. An inverted exterior-to-internal channel remains source-sensitive and inward while disagreeing with the exterior source on the realized value.
+
+A decorative `perceptionFlag` can vary without changing the derived operational classification and therefore adds no independent information in this scope.
+
+This result does **not** reduce phenomenal perception / qualia, conscious awareness, semantic aboutness or reference, perceptual objecthood, epistemic justification or reliability, modality-specific sensing, or every distinction between illusion and veridical perception. Those stronger meanings require separate justification if RelayTheory needs them.
 
 ### Cognition
 

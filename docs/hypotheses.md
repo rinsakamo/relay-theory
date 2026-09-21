@@ -166,6 +166,27 @@ Therefore the tested operational H-001 Action role is reconstructed from **count
 
 This is not a reduction of intentional agency, reasons-responsiveness, conscious willing, moral/legal responsibility, normative authorship, or free will.
 
+### Current constraint — operational Perception
+
+Issue #37 establishes a scoped operational Perception reduction.
+
+A finite matched pair has the same realized exterior/internal signature while differing only in counterfactual response of the internal target to the exterior source:
+
+- source-sensitive response — changing the exterior source changes the internal response;
+- replay/constant response — changing the exterior source does not change the internal response.
+
+With the same inward focal view, the lower-level Perception-like predicate separates the pair without a Perception flag.
+
+Additional controls show:
+
+- the same source-sensitive response becomes non-perception-like when the focal partition is reindexed;
+- an inverted but source-sensitive inward channel remains operationally perception-like, so veridicality / semantic truth / epistemic reliability are separate;
+- a decorative Perception label can vary without changing the derived classification.
+
+Therefore the tested operational H-001 Perception role is reconstructed from **counterfactual exterior-to-internal sensitivity + supplied focal partition**.
+
+This is not a reduction of phenomenal perception, conscious awareness, semantic aboutness/reference, perceptual objecthood, epistemic justification/reliability, modality-specific sensing, or every illusion/veridical distinction.
+
 ### Ownership constraint
 
 Ownership is separately constrained because the term conflates at least:
@@ -210,6 +231,8 @@ A primitive-Self account regains force only if an intrinsic Self-relative distin
 - #22 intervention information-gap formalization: https://github.com/rinsakamo/relay-theory/pull/22
 - #35 operational Action reduction owner: https://github.com/rinsakamo/relay-theory/issues/35
 - #36 operational Action finite formalization: https://github.com/rinsakamo/relay-theory/pull/36
+- #37 operational Perception reduction owner: https://github.com/rinsakamo/relay-theory/issues/37
+- #38 operational Perception finite formalization: https://github.com/rinsakamo/relay-theory/pull/38
 - Historical RelayLM `relay-theory` lane: provenance only
 - RelaySelf experiments may be linked individually when their evidence is relevant
 
