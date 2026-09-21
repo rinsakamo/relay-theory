@@ -231,11 +231,21 @@ This definition is provisional. Mere internal physical change is insufficient if
 
 ### Action
 
-Candidate reduction:
+Within the scoped operational H-001 role tested by #35, Action-like attribution is currently **derived rather than primitive**.
 
-> A locus-to-exterior transition whose relevant outward contribution is counterfactually attributable to the locus and admissible under the explicit validation context.
+The retained lower-level account is:
 
-A realized outward change alone is insufficient. Action-like attribution may require counterfactual dependence on internal selection rather than a primitive Action flag.
+> Counterfactual sensitivity of a target outside the supplied focal locus to a source inside that locus.
+
+The finite #35 discriminator keeps the realized outward signature fixed while changing only the source-to-target response family. The sensitive model is attributable under the outward focal view; the fixed-response model is not.
+
+Outwardness is evaluation-relative rather than an intrinsic transition type: the same sensitive response is outward under one supplied focal view and non-outward under another.
+
+Operational acceptance / authorization is not part of the attribution definition. It remains an explicit validation-context judgment, so attributable-but-unaccepted and attributable-and-accepted cases can coexist.
+
+A decorative `actionFlag` can vary without changing the derived attribution result and therefore adds no independent information to this scoped operational classification.
+
+This result does **not** reduce intention, reasons-responsiveness, conscious willing, moral or legal responsibility, normative authorship, or free will. Those stronger meanings require separate justification if RelayTheory needs them.
 
 ### Ownership
 
