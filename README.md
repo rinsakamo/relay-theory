@@ -36,14 +36,19 @@ Current unresolved primitive candidates include:
 
 ```text
 Relation
-Interaction
-Change
 Grounding
 Authority
-Trace
 ```
 
 All remain provisional and are under active reduction.
+
+The scoped result from #6 removes three former candidates from that flat list:
+
+- Change is derived as non-equivalence across ordered configurations;
+- Trace is a realized path / evidence representation;
+- Interaction is derived as model-class-relative sensitivity of admissible successor structure.
+
+The lower-level status of configuration / transition / intervention structure remains open in #13 and is not promoted here.
 
 The structural result from #5 is scoped:
 
