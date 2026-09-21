@@ -17,6 +17,11 @@ chosen focal event.
 def StrictPrecedes (x y : Event) : Prop :=
   x = false ∧ y = true
 
+instance strictPrecedesDecidable (x y : Event) :
+    Decidable (StrictPrecedes x y) := by
+  unfold StrictPrecedes
+  infer_instance
+
 /--
 Deictic classification relative to an explicitly supplied focal event.
 No separate local-Present field appears in this query surface.
@@ -33,19 +38,19 @@ def classify (focal x : Event) : DeicticClass :=
 
 theorem false_is_here_from_false_focal :
     classify false false = .here := by
-  rfl
+  simp [classify]
 
 theorem true_is_future_from_false_focal :
     classify false true = .future := by
-  rfl
+  simp [classify, StrictPrecedes]
 
 theorem false_is_past_from_true_focal :
     classify true false = .past := by
-  rfl
+  simp [classify, StrictPrecedes]
 
 theorem true_is_here_from_true_focal :
     classify true true = .here := by
-  rfl
+  simp [classify]
 
 /--
 The same event changes deictic class when only the focal evaluation parameter
@@ -65,14 +70,16 @@ theorem no_focal_independent_classifier
     (hFalseFocal : ∀ x, intrinsic x = classify false x)
     (hTrueFocal : ∀ x, intrinsic x = classify true x) :
     False := by
-  have hFalse := hFalseFocal false
-  have hTrue := hTrueFocal false
-  have hEq : DeicticClass.here = DeicticClass.past := by
+  have hFalseHere : intrinsic false = DeicticClass.here := by
     calc
-      DeicticClass.here = intrinsic false := by
-        simpa using hFalse.symm
-      _ = DeicticClass.past := by
-        simpa using hTrue
+      intrinsic false = classify false false := hFalseFocal false
+      _ = DeicticClass.here := false_is_here_from_false_focal
+  have hTruePast : intrinsic false = DeicticClass.past := by
+    calc
+      intrinsic false = classify true false := hTrueFocal false
+      _ = DeicticClass.past := false_is_past_from_true_focal
+  have hEq : DeicticClass.here = DeicticClass.past :=
+    hFalseHere.symm.trans hTruePast
   have hNe : DeicticClass.here ≠ DeicticClass.past := by
     decide
   exact hNe hEq
