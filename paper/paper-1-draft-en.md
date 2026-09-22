@@ -36,7 +36,7 @@ The central rule is:
 
 Its positive counterpart is:
 
-> **A claim of operational distinctness requires a difference that is relevant to the represented target and detectable by the admitted tests.**
+> **Within a declared evidential regime, a claim of operational distinctness requires a difference that is relevant to the represented target and detectable by the admitted tests.**
 
 The target domain is not reconstructed from observation, and the reference map is not derived from the tests. The result therefore does not eliminate identity from the target domain. Instead, it constrains what may count as evidence for an individuation claim once the semantic target of that claim has been fixed.
 
@@ -96,7 +96,7 @@ O(q,r(a)) \neq O(q,r(b)).
 
 The induced relation is operational and test-relative. It is not a definition of metaphysical numerical identity.
 
-**Formal inequality is evidence of representational difference; it is not, by itself, evidence of target-level individuality.**
+**Formal inequality is evidence of representational difference; it is not, by itself, evidence of target-level individuality. Which differences are target-relevant depends on the target of the claim.**
 
 ## 3. Representational Multiplicity Is Insufficient
 
@@ -131,6 +131,14 @@ The disciplined order is instead
 \]
 
 This is not a new equivalence theory. It is a restriction on what may be used as evidence when moving from formal structure to an individuation claim.
+
+### 3.1 Worked example: duplicate records and target relativity
+
+Consider two database rows with different row identifiers. If the target of the analysis is the **records themselves**, the row identifiers may legitimately distinguish two records. If the target is instead the **person represented by each record**, distinct row identifiers do not by themselves establish two persons: duplicate records may refer to the same person.
+
+In the notation above, the same representational feature can therefore be evidentially relevant under one choice of target domain and irrelevant under another. The framework does not classify row identifiers, labels, or constructors as intrinsically meaningless. It requires their evidential role to be stated relative to the target of the individuation claim.
+
+This example also clarifies what *target-relevant* means in the present paper. It is not a hidden metaphysical predicate supplied by the theorem. Relevance is fixed by the declared representation-to-target semantics and test regime. The formal result concerns what follows **after** those semantics are stated.
 
 ## 4. Distinguishability Relative to a Test Family
 
