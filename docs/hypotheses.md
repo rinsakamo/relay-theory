@@ -565,6 +565,53 @@ Pointwise-equal full perturbation profiles preserve the derived stability judgme
 
 This gives `Crystallization` a possible discriminator stronger than generic retention only if future work independently justifies why such a stability surface is the relevant one. It does not establish `Crystallization = stability`, biological consolidation, compression, or a common Crystal substrate.
 
+### Terminal synthesis — common retained reusable structure
+
+Issue #55 reaches the following terminal classification:
+
+```text
+READOUT_RELATIVE_FAMILY
+/
+FORMATION_CARRIER_READOUT_SPLIT
+/
+COMMON_CRYSTAL_SUBSTRATE_NOT_EARNED
+```
+
+with secondary constraint:
+
+```text
+CRYSTALLIZATION_NOT_CANONICALLY_DETERMINED
+```
+
+Across the validated children:
+
+- Memory-like reconstruction is a readout-correctness role and does not imply formation provenance (#69);
+- operational Skill-like competence and its tested refinements are reconstructed from explicit response/evaluation surfaces (#91);
+- Habit-like default tendency is independent of competence but reconstructed from explicit selection weights (#95);
+- Concept-like current grouping reduces directly to existing probe-relative equivalence and is probe-family-relative (#98);
+- a naive Belief-like predictive-correctness/provenance child was withheld because its first formal shape duplicated the already-forged correctness/provenance structure rather than introducing an independent discriminator;
+- formation dependence is not determined by final retained state (#60);
+- ordinary retention does not determine declared perturbation stability (#84);
+- current probe-equivalence does not imply future-stable equivalence without explicit compatibility (#57).
+
+The surviving cross-cutting decomposition is:
+
+```text
+FORMATION / PROVENANCE
+        ×
+RETAINED CARRIER / DYNAMICS
+        ×
+CURRENT ROLE / READOUT
+```
+
+A weaker statement survives: multiple familiar operational categories can be described as different judgments over explicit lower-level structures and evaluation surfaces.
+
+The stronger common-substrate claim does not earn a new ontology object. The remaining universal candidate — a generic response/distinction-bearing carrier capable of supporting arbitrary readouts — is already formal/evaluation substrate and would make `Crystal` a renaming rather than a discriminating structure.
+
+Likewise, current evidence does not privilege one conjunction of formation, retention, stability, future closure, and reuse as **the** Crystallization predicate. Such a criterion may be defined later for a narrower purpose, but it would be a derived explicit criterion unless new discriminating evidence appears.
+
+This terminal result does not reduce semantic memory, semantic concepts, epistemic Belief, procedural memory, human expertise, understanding, or biological consolidation.
+
 ### Current constraint — prequalified Selfhood
 
 Issue #43 tests whether operational H-001 needs a prior Self-like eligibility predicate for the supplied focal locus.
