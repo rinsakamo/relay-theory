@@ -129,14 +129,23 @@ The disciplined order is
 \text{supported operational distinction, if any}.
 \]
 
-\subsection{Worked example: duplicate records and target relativity}
+\subsection{Scientific case: molecular individuation with unique molecular identifiers}
 
-Consider two database rows with different row identifiers. If the target of analysis is the \emph{records themselves}, the row identifiers may legitimately distinguish two records. If the target is instead the \emph{person represented by each record}, distinct row identifiers do not by themselves establish two persons: duplicate records may refer to the same person.
+High-throughput sequencing provides a concrete scientific case in which representational multiplicity and target multiplicity come apart. Sequencing workflows commonly amplify DNA or RNA molecules before detection. Consequently, several sequencing reads can descend from one pre-amplification molecule. Counting read records is therefore not, by itself, the same task as counting original molecules.
 
-Thus the same representational feature can be evidentially relevant under one target domain and irrelevant under another. The framework does not classify row identifiers, labels, or constructors as intrinsically meaningless. It requires their evidential role to be stated relative to the target of the individuation claim.
+Unique molecular identifiers (UMIs) were introduced to address precisely this problem. \citet{Kivioja2012UMI} used molecular identifiers to distinguish individual DNA or RNA molecules before amplification and thereby support absolute molecule counting. In the terminology of the present framework, a natural target domain is the set of pre-amplification molecules, while the observed representations are downstream sequencing reads. Different read records, file identifiers, or sequencing coordinates can distinguish representations without establishing that the reads originated from different target molecules.
 
-This also clarifies the phrase \emph{target-relevant}. It is not a hidden metaphysical predicate supplied by the theorem. Relevance is fixed by the declared representation-to-target semantics and test regime. The formal result concerns what follows after those semantics are stated.
+A UMI has a different evidential status from an arbitrary read identifier. The important difference is not that one string is called an ``identifier'' and another is not. A UMI is introduced by the experimental protocol at the molecular stage, before PCR amplification. Copies descended from the same tagged molecule can therefore inherit information that is experimentally linked to that source molecule. The identifier participates in the measurement process that connects a downstream read to the target of the counting claim.
 
+This does not make the UMI an infallible identity oracle. \citet{SmithHegerSudbery2017UMITools} emphasize that UMI sequences themselves are subject to sequencing error and show that naive treatment of UMI values can misidentify PCR duplicates. Their UMI-tools method uses the structure of observed UMI sequences to correct such errors and improve molecular quantification. Thus even an experimentally introduced molecular identifier must be interpreted within a declared error model and analysis procedure.
+
+The lesson is not that UMIs are intrinsically ``real'' identifiers while read IDs are merely conventional. The same formal kind of feature---a token attached to a representation---can have different evidential roles depending on how it is connected to the target of the claim.
+
+\begin{quote}
+\textbf{The evidential status of an identifier depends not on identifierhood itself, but on the declared experimental and semantic link between that identifier and the target being individuated.}
+\end{quote}
+
+This case also gives the identity-token negative control below a positive scientific contrast. If a token is excluded from target-relevant semantics, arbitrary reassignment should not change the tested classification. If experimental practice supplies a target-relevant link, as UMI protocols are designed to do for pre-amplification molecules, the token may legitimately contribute to an individuation inference. Errors in that link then belong in the evidential model rather than being hidden by the label ``identifier.''
 \section{Test-Relative Distinguishability}
 
 Let \(A_c\subseteq A_f\). Under fixed exact outcome semantics,
