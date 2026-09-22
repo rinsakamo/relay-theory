@@ -697,6 +697,20 @@ Pointwise-equal full profiles preserve the result, and a decorative robustness f
 
 This result does not extend automatically to probabilistic success, expected loss, bounded degradation, adversarial risk, distribution shift, or other approximate/stochastic notions. Those require explicit measure / metric / threshold / distribution structure and separate testing.
 
+Issue #74 tests the first bounded deterministic extension without introducing probability. Over the same two-variation #64 response surface, the exact profile has failure count 0 while the brittle profile has failure count 1. The brittle profile fails exact robustness and budget 0, but passes an explicit failure budget of 1.
+
+Therefore exact robustness and bounded qualification are distinct:
+
+```text
+BudgetQualified(profile,budget)
+  :=
+FailureCount(profile) <= budget
+```
+
+The same profile can fail or pass solely when the declared budget changes, while the same budget can separate different profiles. Pointwise-equal full profiles preserve both failure count and qualification, and a decorative approximate-robustness label adds no information.
+
+The scoped classification is **BOUNDED ROBUSTNESS RECONSTRUCTIBLE UNDER LOSS/THRESHOLD SURFACE** for this finite failure-count/budget evaluator. This does not generalize the count metric into a universal loss function and does not establish probabilistic or stochastic robustness.
+
 The #41/#47/#53 results do **not** reduce learning mechanism, sample efficiency, biological motor chunking, unique or intrinsic hierarchical composition, arbitrary cross-world transfer, expertise, automaticity, practice history, general compression/resource efficiency, human semantic know-how, Skill acquisition, or Skill crystallization dynamics. Those stronger meanings require separate justification if RelayTheory needs them.
 
 Issue #60 now adds a distinct process-versus-state constraint relevant to #55. In its finite model, two experience-to-state maps produce the same actual retained state and the same current readout while differing under a counterfactual experience change. A #41-competent policy can also coexist with the experience-insensitive formation map. Therefore neither final retained structure nor operational competence determines an experience-sensitive formation process in this scope.

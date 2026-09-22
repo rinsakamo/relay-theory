@@ -278,6 +278,26 @@ EXACT ROBUSTNESS DERIVED AS CONTEXT EXPANSION
 
 This applies only to deterministic universal success over the declared variation class. Probabilistic, approximate, graded, adversarial, and distributional robustness remain unresolved and may require additional explicit evaluation structure.
 
+Issue #74 then tests a deterministic bounded-failure surface. Reusing the #64 profiles, the exact profile has zero failures and the brittle profile has one failure over the declared two-variation evaluation. The brittle profile is not exactly robust, fails budget 0, and passes budget 1.
+
+Thus approximate qualification is threshold-relative and is reconstructed in this finite instance from:
+
+```text
+response profile
++ explicit failure aggregation
++ explicit budget
+```
+
+Pointwise-equal profiles preserve the aggregation and qualification, and a decorative approximate-robustness flag changes nothing.
+
+Current scoped classification:
+
+```text
+BOUNDED ROBUSTNESS RECONSTRUCTIBLE UNDER LOSS/THRESHOLD SURFACE
+```
+
+This classification is only for the explicit finite failure-count/budget evaluator. Probability distributions, expected loss, stochastic dynamics, adversarial optimization, continuous perturbation metrics, and semantic error severity remain unresolved.
+
 The #41/#47/#53 results are not a reduction of learning, sample efficiency, biological motor chunking, unique or intrinsic hierarchical composition, arbitrary cross-world transfer, expertise, automaticity, general compression/resource efficiency, human know-how, Skill acquisition, or crystallization dynamics.
 
 ### Current constraint — formation process vs final retained state
