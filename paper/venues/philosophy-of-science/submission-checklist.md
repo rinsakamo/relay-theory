@@ -20,7 +20,8 @@
 - [x] Double-spaced body.
 - [x] Ragged-right review copy.
 - [x] Chicago author-date bibliography style selected.
-- [ ] Rebuild the **exact current anonymized review source** and visually inspect every page before upload.
+- [x] Rebuild the **exact current anonymized review source**: Paper 1 Review CI run #4 / exact head `c46dab5a3355e74af3f61711bc5e0a7dc1fcccde` generated an 18-page PDF and passed the blind-source and final LaTeX audits.
+- [ ] Manually visually inspect every page of that exact final PDF immediately before upload.
 
 ## Claims and novelty
 
@@ -38,7 +39,7 @@
 - [x] Public development has exact-head and merge-head Lean validation on its formal branch history.
 - [x] No `sorry`, `admit`, `native_decide`, or project-local axioms in the validated formal surface.
 - [x] Anonymous manifest states the formal scope and limitations.
-- [ ] Decide whether executable anonymized Lean source is needed at initial submission or only on editorial request.
+- [x] Initial artifact policy decided: submit the anonymous manifest only; prepare executable scrubbed Lean source if requested by the editor/reviewers or required by the live portal.
 
 ## AI-use transparency
 
@@ -62,4 +63,4 @@
 
 ## Decision gate
 
-**Current state:** manuscript-development complete enough for a first-journal decision; exact-source final compile and the anonymous executable-artifact decision remain before actual submission.
+**Current state:** exact-source blind review CI is GREEN and the initial artifact policy is fixed. Remaining pre-upload gates are manual visual inspection of the exact final PDF, live-portal instruction re-check, submission metadata, and confirmation that the manuscript is not under review elsewhere.
