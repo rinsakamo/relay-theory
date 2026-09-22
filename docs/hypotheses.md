@@ -362,10 +362,36 @@ relative to an explicit institutional rule surface
 
 The institutional initial assignment and rule are **inputs**. #58 does not derive them from physics and does not establish institutional, legal, or moral legitimacy.
 
+Issue #61 then tests a narrower physical/operational possession split.
+
+Four finite profiles hold the realized carrier/object/request/use snapshot fixed while independently varying:
+
+```text
+custody-like transport coupling
+  = object-location sensitivity
+    to a declared carrier/location probe
+
+access-like use capability
+  = use-outcome sensitivity
+    to a declared claimant-associated request probe
+```
+
+All four `CustodyLike × AccessLike` combinations are realized.
+
+The same transaction also separates:
+
+- access-like capability from #46 current revision privilege in both directions;
+- custody/access structure from #58 registry title;
+- the derived roles from a decorative possession label.
+
+Therefore one obligatorily aligned possession variable is too coarse for these tested operational roles.
+
+This result does not define legal possession or arbitrary physical custody. It only establishes that the tested transport-coupling, use-capability, revision-authority, and registry-title roles carry independently variable information.
+
 Still unresolved or outside these scoped Ownership results:
 
 - focal incorporation / membership;
-- possession / custody / access;
+- arbitrary physical containment / exclusivity / durable custody beyond the tested role;
 - broader normative, social, legal, or economic legitimacy;
 - responsibility and consent;
 - copyright authorship;
@@ -423,6 +449,8 @@ A primitive-Self account regains force only if an intrinsic Self-relative distin
 - #49 Ownership authorship/control finite formalization: https://github.com/rinsakamo/relay-theory/pull/49
 - #58 registry-mediated Ownership title owner: https://github.com/rinsakamo/relay-theory/issues/58
 - #59 registry-mediated title finite formalization: https://github.com/rinsakamo/relay-theory/pull/59
+- #61 possession custody/access decomposition owner: https://github.com/rinsakamo/relay-theory/issues/61
+- #63 custody/access finite formalization: https://github.com/rinsakamo/relay-theory/pull/63
 - Historical RelayLM `relay-theory` lane: provenance only
 - RelaySelf experiments may be linked individually when their evidence is relevant
 
