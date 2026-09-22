@@ -69,7 +69,7 @@ These components need not be mutually reconstructible. #22 formally shows that c
 
 That information gap does not by itself promote a named primitive. #13's re-encoding test shows the named observational/counterfactual fields used by #22 are losslessly equivalent to a semantics-free response profile; the semantic roles are supplied by the surrounding model/evaluation context.
 
-This scoped result does **not** classify intrinsic temporal orientation, physical causation in general, semantic grounding, epistemic justification, normative legitimacy, or ownership/title. Such stronger structure requires separate evidence; Time/cosmology reconstruction remains under #15.
+This scoped result does **not** classify intrinsic temporal orientation, physical causation in general, semantic grounding, epistemic justification, normative legitimacy, or ownership/title. Such stronger structure requires separate evidence. The historical Time/Cosmology migration audit under #15 is now terminal; any stronger physical claim requires a new current owner and evidence rather than inheritance from historical vocabulary.
 
 ## Formal dynamical and counterfactual substrate
 
@@ -100,6 +100,8 @@ Therefore "formal substrate" does **not** mean "discard counterfactual informati
 Evaluation parameters and model semantics can still be theory-essential for a particular theorem while remaining non-ontological in this scoped classification.
 
 ## Temporal reconstruction constraints
+
+The current temporal decomposition is the surviving result of the scoped historical Time audit under #15. That audit is terminal for migration purposes; the structures below remain independently constrained current results rather than one migrated historical `Time` object.
 
 Time reconstruction remains separate from the agency-local substrate classification above.
 

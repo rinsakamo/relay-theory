@@ -56,7 +56,9 @@ The scoped result from #6 removes three former candidates from that flat list:
 - Trace is a realized path / evidence representation;
 - Interaction is derived as model-class-relative sensitivity of admissible successor structure.
 
-The #13 result keeps configuration / transition / intervention structure explicit where required, but treats it as model/evaluation semantics in this agency-local scope. It does not decide intrinsic Time or cosmological temporal orientation; those remain under the Time reconstruction frontier in #15.
+The #13 result keeps configuration / transition / intervention structure explicit where required, but treats it as model/evaluation semantics in this agency-local scope. It does not decide intrinsic Time or physical cosmological structure.
+
+#15 has now completed the scoped historical reconstruction pass across Cognition, Information, Time, and Cosmology. Historical RelayTheory material is retained as provenance/quarry, while surviving distinctions were either re-forged in smaller current form, rejected, or left as explicit reopen conditions requiring new evidence. No wholesale historical ontology migration was earned. The terminal historical disposition is **SCOPED HISTORICAL RECONSTRUCTION COMPLETE / SURVIVORS RE-FORGED SMALLER / NO WHOLESALE ONTOLOGY MIGRATION**.
 
 The scoped Time reconstruction now adds a separate constraint from #45. In a finite three-event merge order, two selected local lineages can each be total and jointly cover the event carrier while the ambient precedence relation remains non-total. Two injective scalar linearizations preserve every ambient precedence constraint yet order the incomparable pair in opposite ways.
 
