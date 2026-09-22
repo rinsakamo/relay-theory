@@ -104,7 +104,13 @@ current revision privilege
 
 including generation without revision privilege and revision privilege without generation. A decorative high-level label adds no information to either derived judgment.
 
-Therefore causal authorship-like attribution and current control/revision authority must not be represented as one obligatorily aligned Ownership value in this tested operational scope. This is only a **partial decomposition**: focal incorporation, possession/custody, access rights, normative/social/legal title, responsibility, and bodily ownership remain separate unresolved meanings.
+Therefore causal authorship-like attribution and current control/revision authority must not be represented as one obligatorily aligned Ownership value in this tested operational scope.
+
+The scoped #51 finite result adds a persistence constraint. A time-indexed history can transfer revision privilege from A to B while holding both the realized state and A's generation sensitivity fixed. A separate replacement history can keep the realized Boolean value fixed while current generation sensitivity moves from A to B. Cross-snapshot continuity also changes when the explicit evaluation criterion changes from strict snapshot identity to a declared successor-lineage criterion.
+
+So neither current control nor current causal attribution is a timeless Ownership property, and cross-replacement persistence is not determined until the relevant identity/lineage criterion is supplied. A decorative continuity flag adds no information to these scoped judgments.
+
+Ownership therefore remains only **partially decomposed**: focal incorporation, possession/custody, access rights, normative/social/legal title, responsibility, bodily ownership, and any stronger metaphysical identity claim remain separate unresolved meanings.
 
 Likewise, familiar cognitive categories may describe relative interaction topology rather than separate fundamental mechanisms:
 
