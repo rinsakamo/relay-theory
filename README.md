@@ -118,7 +118,19 @@ Thus physical causal/control structure alone does not determine this title sense
 
 Accordingly, custody-like coupling, access-like capability, current revision authority, and registry-mediated title must not be collapsed into one possession/Ownership variable in this finite operational scope.
 
-Ownership remains only **partially decomposed**: focal incorporation, broader physical containment/exclusivity questions, broader legal/moral/social legitimacy, responsibility, consent, bodily ownership, and identity-sensitive persistence remain separate unresolved meanings.
+#51 adds a persistence/transfer constraint for the already-separated operational attribution senses. Its finite time-indexed witness shows that revision privilege can transfer while realized state and generation-side attribution remain fixed, and that current generation-side attribution can change across replacement while the realized Boolean value remains fixed. The same cross-snapshot pair can be rejected by strict snapshot identity yet accepted by an explicitly supplied successor-lineage criterion.
+
+Therefore, in this tested operational surface:
+
+```text
+current causal/provenance attribution
+current revision privilege
+cross-snapshot continuity
+```
+
+must not be collapsed into one timeless Ownership attribute. The first two are time/context-relative lower-level judgments; the third is criterion-relative to an explicitly supplied identity/lineage standard. This does not choose a metaphysically correct identity criterion or settle normative title succession. Architecture consequence: **NONE**.
+
+Ownership remains only **partially decomposed**: focal incorporation, broader physical containment/exclusivity questions, broader legal/moral/social legitimacy, responsibility, consent, bodily ownership, and stronger identity/title-persistence questions remain separate unresolved meanings.
 
 Likewise, familiar cognitive categories may describe relative interaction topology rather than separate fundamental mechanisms:
 

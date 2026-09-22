@@ -406,6 +406,28 @@ Therefore one obligatorily aligned possession variable is too coarse for these t
 
 This result does not define legal possession or arbitrary physical custody. It only establishes that the tested transport-coupling, use-capability, revision-authority, and registry-title roles carry independently variable information.
 
+Issue #51 then tests persistence of the already-separated operational attribution senses through transfer/replacement.
+
+Its finite time-indexed witness shows:
+
+- revision privilege can transfer A -> B while the realized state and A's generation sensitivity remain fixed;
+- current generation sensitivity can transfer A -> B across replacement while the realized Boolean value remains fixed;
+- strict snapshot identity and an explicitly declared successor-lineage criterion can disagree on the same cross-snapshot pair;
+- declared lineage continuity does not imply persistence of the earlier source's current generation-side attribution;
+- a decorative continuity flag adds no information.
+
+Therefore, for this scoped operational surface:
+
+```text
+current causal attribution
+current revision privilege
+cross-snapshot continuity
+```
+
+must not be collapsed into one timeless Ownership attribute.
+
+The first two are time/context-relative lower-level judgments. The third is criterion-relative to an explicitly supplied identity/lineage standard. This supports **PERSISTENCE_CRITERION_RELATIVE / RECONSTRUCTIBLE_UNDER_IDENTITY_CRITERION** for the tested attribution surface, not a metaphysical identity theory and not a reduction of normative title succession.
+
 Still unresolved or outside these scoped Ownership results:
 
 - focal incorporation / membership;
@@ -414,7 +436,7 @@ Still unresolved or outside these scoped Ownership results:
 - responsibility and consent;
 - copyright authorship;
 - bodily ownership and Selfhood;
-- identity-sensitive persistence through arbitrary replacement.
+- normative/title persistence through arbitrary replacement and broader identity questions.
 
 Primitive status for any surviving Ownership sense must be tested only after these remaining distinctions are separately specified.
 

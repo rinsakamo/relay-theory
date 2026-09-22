@@ -481,6 +481,28 @@ registry-mediated institutional title
 
 This does not turn either role into legal possession. `CustodyLike` here is only transport/location coupling under the declared probe, and `AccessLike` is only use-outcome sensitivity under the declared request probe.
 
+#51 adds a separate persistence result for the operational attribution senses already split by #46.
+
+Its finite time-indexed witness establishes:
+
+- revision privilege can transfer A -> B while the realized state and A's generation sensitivity remain fixed;
+- current generation sensitivity can move A -> B across replacement while the realized Boolean value remains fixed;
+- strict snapshot identity and an explicitly declared successor-lineage criterion can disagree on the same cross-snapshot pair;
+- declared lineage continuity does not imply persistence of the earlier source's current generation-side attribution;
+- a decorative continuity flag adds no information to these scoped judgments.
+
+Therefore:
+
+```text
+current causal attribution
+current revision privilege
+cross-snapshot continuity
+```
+
+are not one timeless Ownership attribute in this finite operational surface. The first two are time/context-relative response judgments. Cross-snapshot continuity is evaluated relative to an explicitly supplied identity/lineage criterion.
+
+This earns a scoped **persistence-criterion-relative** result. It does not select a metaphysically privileged identity criterion and does not reduce legal/normative title succession.
+
 Ownership therefore remains only **partially decomposed**. Still unresolved or outside these scoped results:
 
 - focal-locus incorporation / “part of me”;
@@ -491,7 +513,7 @@ Ownership therefore remains only **partially decomposed**. Still unresolved or o
 - copyright authorship;
 - bodily ownership phenomenology;
 - Selfhood or personal identity;
-- persistence of title through arbitrary object replacement without an independently supplied identity criterion.
+- normative/title persistence through arbitrary object replacement and broader identity questions.
 
 Those meanings require separate criteria and owners if RelayTheory needs them.
 
