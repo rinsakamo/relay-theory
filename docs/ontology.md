@@ -884,7 +884,7 @@ retained carrier / dynamics
 current role / readout
 ```
 
-Memory-like reconstruction, operational Skill-like competence, Habit-like tendency, and Concept-like grouping occupy different derived/readout roles in their tested scopes. Formation provenance, ordinary retention, perturbation stability, and future closure remain separately constrained and must not be hidden inside an object type.
+Memory-like reconstruction, operational Skill-like competence, Habit-like tendency, Concept-like grouping, and minimal Belief-like predictive correctness occupy different derived/readout roles in their tested scopes. #102 reduces the last of these to ordinary task-relative response evaluation under an explicit prediction target/criterion rather than a Belief object. Formation provenance, ordinary retention, perturbation stability, and future closure remain separately constrained and must not be hidden inside an object type.
 
 The weakest proposed common carrier — an arbitrary response/distinction-bearing structure capable of supporting multiple explicit readouts — is already formal representation/evaluation substrate. Calling it `Crystal` or `RelayCrystal` would add no ontology information.
 
