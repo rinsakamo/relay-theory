@@ -240,7 +240,39 @@ Ownership is separately constrained because the term conflates at least:
 - focal-locus incorporation / membership;
 - normative or social title.
 
-Primitive status should not be tested until those distinctions are separated.
+Issue #46 now establishes the first scoped decomposition result.
+
+A finite lower-level response model holds the realized current state fixed while independently varying:
+
+```text
+generation sensitivity
+  = generated state changes under an explicit source/intervention value
+
+revision privilege
+  = a fixed nontrivial successor proposal is accepted
+    in the declared revision context
+```
+
+All four Boolean combinations are realized, including:
+
+- generation-sensitive without current revision privilege;
+- current revision privilege without generation sensitivity.
+
+The discriminator contains no primitive Ownership/authorship/control classification field, and toggling a decorative high-level flag changes neither derived judgment.
+
+Therefore the local Grand Null that causal authorship-like attribution and current control/revision authority must be one obligatorily aligned relation fails in this finite operational scope.
+
+This supports **partial decomposition**, not a reduction of Ownership as a whole.
+
+Still unresolved and not packed into either lower-level judgment:
+
+- focal incorporation / membership;
+- possession / custody / access;
+- normative, social, legal, or economic title;
+- responsibility, consent, and institutional legitimacy;
+- bodily ownership and Selfhood.
+
+Primitive status for any surviving Ownership sense must be tested only after these remaining distinctions are separately specified.
 
 ### Discriminating evidence
 
@@ -281,6 +313,8 @@ A primitive-Self account regains force only if an intrinsic Self-relative distin
 - #40 operational Cognition finite formalization: https://github.com/rinsakamo/relay-theory/pull/40
 - #41 operational Skill reduction owner: https://github.com/rinsakamo/relay-theory/issues/41
 - #42 operational Skill finite formalization: https://github.com/rinsakamo/relay-theory/pull/42
+- #46 Ownership authorship/control decomposition owner: https://github.com/rinsakamo/relay-theory/issues/46
+- #49 Ownership authorship/control finite formalization: https://github.com/rinsakamo/relay-theory/pull/49
 - Historical RelayLM `relay-theory` lane: provenance only
 - RelaySelf experiments may be linked individually when their evidence is relevant
 
