@@ -243,7 +243,24 @@ RECONSTRUCTIBLE UNDER INTERVENTION SURFACE
 
 This does not establish that intrinsic or uniquely privileged hierarchical decomposition exists. A stronger independence result would require two systems with the same full declared intervention/recombination response family but a remaining operational distinction that is not carried by a hierarchy-equivalent label.
 
-The #41/#47 results are not a reduction of learning, sample efficiency, biological motor chunking, unique or intrinsic hierarchical composition, arbitrary cross-world transfer, expertise, automaticity, compression/resource efficiency, human know-how, Skill acquisition, or crystallization.
+Issue #53 then separates the first explicit resource-sensitive axis from #41 competence.
+
+Using an explicit finite cost field, the paired cases establish:
+
+- the same competent response mapping can have different declared costs;
+- equal declared costs can coexist with different #41 identity-task competence;
+- a combined resource-sensitive judgment is reconstructed as competence plus `cost <= declared budget`;
+- a decorative crystallization flag does not alter competence, budget qualification, or the combined result.
+
+Current scoped classification:
+
+```text
+COMPETENCE–RESOURCE ORTHOGONAL
+```
+
+This classification is only about the tested explicit cost metric. It does not identify compression in general with that metric or reduce learning-time crystallization. Current `PredictiveCapacity` and `LossyWorkload` results separately show that exact representation sufficiency is response-surface-relative and lossy representation preference can reverse when declared future-query weights change.
+
+The #41/#47/#53 results are not a reduction of learning, sample efficiency, biological motor chunking, unique or intrinsic hierarchical composition, arbitrary cross-world transfer, expertise, automaticity, general compression/resource efficiency, human know-how, Skill acquisition, or crystallization dynamics.
 
 ### Ownership constraint
 
@@ -329,6 +346,8 @@ A primitive-Self account regains force only if an intrinsic Self-relative distin
 - #42 operational Skill finite formalization: https://github.com/rinsakamo/relay-theory/pull/42
 - #47 hierarchical Skill decomposition residual owner: https://github.com/rinsakamo/relay-theory/issues/47
 - #50 intervention-indexed Skill decomposition formalization: https://github.com/rinsakamo/relay-theory/pull/50
+- #53 Skill competence/resource orthogonality owner: https://github.com/rinsakamo/relay-theory/issues/53
+- #54 Skill competence/resource finite formalization: https://github.com/rinsakamo/relay-theory/pull/54
 - #46 Ownership authorship/control decomposition owner: https://github.com/rinsakamo/relay-theory/issues/46
 - #49 Ownership authorship/control finite formalization: https://github.com/rinsakamo/relay-theory/pull/49
 - Historical RelayLM `relay-theory` lane: provenance only
