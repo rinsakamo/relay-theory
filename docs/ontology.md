@@ -874,6 +874,29 @@ Issue #69 further prevents `Memory` from becoming a monolithic retained-state ty
 
 Issue #84 adds a separate retention-versus-stability boundary. The same formed state can be ordinarily retained in two matched systems while only one preserves the relevant readout across an explicitly declared perturbation family. Stability is therefore not licensed merely by calling a state retained. The perturbation family remains evaluation/model structure, and no `Crystal` or `Crystallization` primitive follows from this separation.
 
+Issue #55 is now terminal for the proposed common retained reusable structure. Its tested operational categories do not support a new `Crystal` ontology family. The surviving organization is cross-cutting:
+
+```text
+formation / provenance
+×
+retained carrier / dynamics
+×
+current role / readout
+```
+
+Memory-like reconstruction, operational Skill-like competence, Habit-like tendency, Concept-like grouping, and minimal Belief-like predictive correctness occupy different derived/readout roles in their tested scopes. #102 reduces the last of these to ordinary task-relative response evaluation under an explicit prediction target/criterion rather than a Belief object. Formation provenance, ordinary retention, perturbation stability, and future closure remain separately constrained and must not be hidden inside an object type.
+
+The weakest proposed common carrier — an arbitrary response/distinction-bearing structure capable of supporting multiple explicit readouts — is already formal representation/evaluation substrate. Calling it `Crystal` or `RelayCrystal` would add no ontology information.
+
+Accordingly:
+
+```text
+COMMON_CRYSTAL_SUBSTRATE_NOT_EARNED
+CRYSTALLIZATION_NOT_CANONICALLY_DETERMINED
+```
+
+Current RelayTheory therefore contains no `Crystal` primitive. A future narrower Crystallization criterion would need to state explicitly which formation, retention, stability, closure, and reuse properties it evaluates.
+
 ### Emotion-like structure
 
 Candidate reduction:
