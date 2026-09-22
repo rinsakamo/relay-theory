@@ -428,14 +428,51 @@ must not be collapsed into one timeless Ownership attribute.
 
 The first two are time/context-relative lower-level judgments. The third is criterion-relative to an explicitly supplied identity/lineage standard. This supports **PERSISTENCE_CRITERION_RELATIVE / RECONSTRUCTIBLE_UNDER_IDENTITY_CRITERION** for the tested attribution surface, not a metaphysical identity theory and not a reduction of normative title succession.
 
+Issue #71 then tests the residual focal-incorporation / “part of me” phrase.
+
+The finite witness separates analytic membership in the supplied focal locus from a declared bidirectional functional-integration role.
+
+Four matched candidate components share the same realized component/focal-target snapshot while realizing all four:
+
+```text
+insideFocal × FunctionallyIntegrated
+=
+00, 01, 10, 11
+```
+
+where the functional role is reconstructed directly from:
+
+```text
+focal-source -> component sensitivity
+AND
+component -> focal-target sensitivity
+```
+
+One-way outbound-only and inbound-only controls fail the declared bidirectional role.
+
+Cross-checks against #61 also establish that custody-like transport coupling and access-like use capability do not force bidirectional functional integration, while bidirectional functional integration need not carry the tested custody-like transport role.
+
+Therefore the tested residual incorporation phrase splits:
+
+```text
+analytic focal membership
+!=
+bidirectional functional integration
+```
+
+and the latter is reconstructible from the explicit response surface in this finite scope without an incorporation bit.
+
+This does not reduce phenomenal body ownership, body schema, biological individuality, personal identity, or persistence through replacement.
+
 Still unresolved or outside these scoped Ownership results:
 
-- focal incorporation / membership;
+- phenomenal body ownership / body schema;
+- biological or organismic individuality;
 - arbitrary physical containment / exclusivity / durable custody beyond the tested role;
 - broader normative, social, legal, or economic legitimacy;
 - responsibility and consent;
 - copyright authorship;
-- bodily ownership and Selfhood;
+- Selfhood / personal identity;
 - normative/title persistence through arbitrary replacement and broader identity questions.
 
 Primitive status for any surviving Ownership sense must be tested only after these remaining distinctions are separately specified.
@@ -491,6 +528,8 @@ A primitive-Self account regains force only if an intrinsic Self-relative distin
 - #59 registry-mediated title finite formalization: https://github.com/rinsakamo/relay-theory/pull/59
 - #61 possession custody/access decomposition owner: https://github.com/rinsakamo/relay-theory/issues/61
 - #63 custody/access finite formalization: https://github.com/rinsakamo/relay-theory/pull/63
+- #71 focal membership/integration decomposition owner: https://github.com/rinsakamo/relay-theory/issues/71
+- #72 focal membership/integration finite formalization: https://github.com/rinsakamo/relay-theory/pull/72
 - Historical RelayLM `relay-theory` lane: provenance only
 - RelaySelf experiments may be linked individually when their evidence is relevant
 
