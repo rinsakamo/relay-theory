@@ -737,6 +737,8 @@ Issue #60 now adds a distinct process-versus-state constraint relevant to #55. I
 
 This does **not** promote formation history, provenance, learning, or Crystallization into ontology. It only blocks their silent identification with the current retained state. Any later Crystallization claim must earn whatever additional formation, provenance, stabilization, or future-closure information it requires rather than hiding it inside a retained-state label.
 
+Issue #69 further prevents `Memory` from becoming a monolithic retained-state type by separating accurate reconstruction from local experience-sensitive formation. Each can occur without the other under the same finite carrier and explicit readout, while a positive control satisfies both. These remain derived operational judgments over formation/readout structure, not current ontology primitives. A later common-substrate account must preserve this distinction rather than hiding it in a Memory/Crystal label.
+
 ### Emotion-like structure
 
 Candidate reduction:
