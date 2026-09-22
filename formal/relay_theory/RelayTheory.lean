@@ -1,3 +1,4 @@
+import RelayTheory.ProbeFamilyExtensionNonVacuity
 import RelayTheory.CriterionGroundingNonVacuity
 import RelayTheory.NonVacuityBasisWitness
 import RelayTheory.GroundedPresentationDistinguishability
