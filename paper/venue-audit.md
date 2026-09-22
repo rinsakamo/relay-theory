@@ -46,7 +46,9 @@ For a `Philosophy of Science` submission branch:
 3. use 12pt, double spacing, journal margin settings, and ragged-right text for the review copy;
 4. preserve anonymous author metadata;
 5. switch bibliography style to the journal's Chicago requirements or template;
-6. keep the Lean artifact/repository statement anonymized or separated as required by blind-review policy.
+6. keep the Lean artifact/repository statement anonymized or separated as required by blind-review policy;
+7. replace public theorem identifiers with neutral review labels;
+8. include a non-identifying acknowledgement of generative-AI assistance, because current Cambridge publishing-ethics guidance requires disclosure when AI is used to generate manuscript text.
 
 ### Risk
 
@@ -134,3 +136,12 @@ Create a separate venue-specific branch/file only after selecting the first subm
 - anonymous artifact/repository wording.
 
 The underlying theoretical claim should not be broadened to fit a venue.
+
+
+### AI-tool disclosure and blind artifact labels
+
+The current Philosophy of Science review copy uses neutral mechanized-result labels `R1`--`R15` rather than the public theorem identifiers. This reduces direct searchability into the public formal-development repository during anonymous review.
+
+The current Cambridge publishing-ethics policy requires disclosure when an AI tool has been used to generate manuscript text. The review copy therefore contains an anonymous `Acknowledgements` section identifying OpenAI ChatGPT / GPT-5.6 Sol, the access date, and the manuscript-development tasks for which it was used. The matching non-blind cover-letter draft carries the same disclosure.
+
+This disclosure is compatible with blind review because it does not contain author, affiliation, repository, or project identifiers.
