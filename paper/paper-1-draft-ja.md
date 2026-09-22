@@ -139,7 +139,7 @@ $$
 a\equiv_A b
 \quad\Longleftrightarrow\quad
 \forall q\in A,\;
-O(q,r$a$)=O(q,r$b$)
+O(q,r(a))=O(q,r(b))
 $$
 
 と定義する。
@@ -156,7 +156,7 @@ $$
 a\mathrel{\#_A}b
 \quad\Longleftrightarrow\quad
 \exists q\in A:
-O(q,r$a$)\neq O(q,r$b$)
+O(q,r(a))\neq O(q,r(b))
 $$
 
 と定義する。
@@ -194,7 +194,7 @@ $$
 しかし、
 
 $$
-r$a$=r$b$
+r(a)=r(b)
 $$
 
 である。
@@ -210,7 +210,7 @@ $$
 から
 
 $$
-r$a$\neq r$b$
+r(a)\neq r(b)
 $$
 
 を推論できないことを直接示している。
@@ -316,7 +316,7 @@ $$
 二つの表現が
 
 $$
-r$a$=r$b$
+r(a)=r(b)
 $$
 
 を満たすなら、対象だけに依存するすべてのテストは同じ結果を返す。
