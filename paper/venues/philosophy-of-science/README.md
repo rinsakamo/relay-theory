@@ -102,7 +102,16 @@ The job passed:
 - final LaTeX warning / citation / layout audit;
 - PDF text smoke checks for title, Acknowledgements, and formal result labels.
 
-A final manual visual inspection of the exact 18-page PDF should still be performed immediately before upload, because CI checks text/log/layout diagnostics rather than human page appearance.
+The exact CI artifact from run #6 was downloaded and rendered at 160 dpi. All 18 pages were inspected page-by-page on 2026-09-22. No clipping, overlap, black/broken glyphs, missing sections, or reference-layout defects were observed.
+
+Artifact details:
+
+- run: `#6 / 35742873397`
+- head: `8a521862be76f0526422bf343f7fa2d036b26ac3`
+- artifact ID: `10699848683`
+- artifact name: `paper-1-philosophy-of-science-review-pdf`
+- PDF pages: `18`
+- PDF SHA-256 after artifact extraction: `1662175011fe0f1760ab19499cde1f4cf1a86ae47ad6b0cc3e9cd22bd1061da2`
 
 
 ## Initial artifact policy
