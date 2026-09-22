@@ -68,6 +68,10 @@ This does not establish that all Time is a partial order or that physical simult
 
 Strict total extensions nevertheless exist. Therefore the obstruction is not to serialization itself; it is to treating one serialization as **intrinsically preferred by the source structure** without additional symmetry-breaking information. Any stronger preferred global order must explicitly earn the extra distinction that resolves structurally exchangeable incomparable events.
 
+#73 separates ordering from metric-like duration. A fixed strict chain `a < b < c` admits two injective scalar clocks that preserve and reflect exactly the same complete event order while assigning different interval magnitudes. Both induced duration assignments are positive on ordered pairs and additive along the finite chain.
+
+Therefore even a completely fixed total order does **not** by itself determine the spacing between events in this tested surface. A duration-like quantity requires additional scale/spacing information beyond mere ordering; the finite clocks are witnesses to that information gap, not a claim about physical proper time or discreteness.
+
 The structural result from #5 is scoped:
 
 - Self-relative / de-se claims require an explicit center;
