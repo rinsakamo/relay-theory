@@ -126,3 +126,20 @@ Rationale:
 - a scrubbed executable Lean package can be exported and independently revalidated if an editor or reviewer requests it.
 
 If the live submission portal explicitly requires executable supplementary source, revisit this decision before upload.
+
+
+## DOI-complete exact review copy — 2026-09-23
+
+After adding full DOI URLs to the bibliography source, the blind review copy was rebuilt and revalidated at exact head `1ee8022a7fc740ec8e11c27b7e59aa489373ddbb`.
+
+- workflow: `Paper 1 Review CI`
+- run: `#11 / 35743934031`
+- result: **SUCCESS**
+- artifact ID: `10702765379`
+- artifact digest: `sha256:ff5e95c1a245a79f5153947412a692448210ecfa41cbc3990a059853a3cfaa92`
+- extracted PDF SHA-256: `e9b30a5ab4fcffcae3df37a02827af2c67a8456fd1138a431ba621653b1a321a`
+- pages: `18`
+
+The exact CI artifact was rendered at 140 dpi and all 18 pages were inspected. The DOI URLs render in the reference list, and no clipping, overlap, broken glyphs, missing text, or reference-layout defects were observed.
+
+This supersedes the earlier run #6 visual-validation record for the current submission copy.
