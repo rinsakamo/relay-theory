@@ -176,3 +176,33 @@ The manuscript also includes a non-identifying Acknowledgements section disclosi
 ### Remaining blocker
 
 The **final anonymized review source still needs one last compile/render pass** after these venue-specific edits. Earlier review-format and venue-neutral versions compiled cleanly, but publication-final status should not be claimed until the exact anonymized source currently in the branch has been rebuilt and visually inspected.
+
+
+## Exact anonymized review-copy validation — 2026-09-22
+
+The current Philosophy of Science blind source has now passed an exact-head GitHub Actions build.
+
+- exact head: `c46dab5a3355e74af3f61711bc5e0a7dc1fcccde`
+- workflow: `Paper 1 Review CI`
+- run: `#4 / 35742256009`
+- job: `review-copy`
+- result: **SUCCESS**
+- output: **18-page PDF**
+
+Validated gates:
+
+- exact PR-head checkout;
+- blind-source identifier audit;
+- abstract <=100 words;
+- neutral result labels `R1`--`R15`;
+- LaTeX + standard BibTeX build;
+- no final LaTeX warnings, overfull/underfull boxes, or undefined citations/references under the CI audit;
+- PDF smoke checks for title, Acknowledgements, and result labels.
+
+### Artifact policy
+
+For initial blind review, use the anonymous artifact manifest rather than an executable copy of the public Lean development. Export a scrubbed executable package only if requested by the editor/reviewers or required by the live submission portal.
+
+### Remaining manual gate
+
+The exact final PDF still requires a human visual page-by-page inspection immediately before upload. This is an editorial presentation check, not a theoretical or compilation blocker.
