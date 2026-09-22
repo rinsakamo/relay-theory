@@ -589,7 +589,7 @@ Across the validated children:
 - operational Skill-like competence and its tested refinements are reconstructed from explicit response/evaluation surfaces (#91);
 - Habit-like default tendency is independent of competence but reconstructed from explicit selection weights (#95);
 - Concept-like current grouping reduces directly to existing probe-relative equivalence and is probe-family-relative (#98);
-- a naive Belief-like predictive-correctness/provenance child was withheld because its first formal shape duplicated the already-forged correctness/provenance structure rather than introducing an independent discriminator;
+- Belief-like predictive correctness reduces to #41 task-relative response evaluation under an explicit prediction target/criterion, while #60 keeps that correctness orthogonal to experience-sensitive formation (#102);
 - formation dependence is not determined by final retained state (#60);
 - ordinary retention does not determine declared perturbation stability (#84);
 - current probe-equivalence does not imply future-stable equivalence without explicit compatibility (#57).
