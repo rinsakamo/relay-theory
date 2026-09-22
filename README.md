@@ -124,6 +124,8 @@ Within the operational H-001 scope, #35 now gives Action-like attribution a narr
 
 #47 adds a narrower constraint on hierarchical / reusable Skill interpretations. Two systems can have the same ordinary response mapping and the same ordinary competence while differing under an independently declared counterfactual probe. In the finite tested case, that additional distinction is fully represented by the intervention-indexed response family `Context × Probe -> Response`; no hierarchy object or decomposition flag is required. Perturbation sensitivity therefore does not by itself establish an intrinsic Skill hierarchy.
 
+#53 separates the first explicit resource-sensitive axis from #41 competence. Two candidates can have the same response mapping and competence but different declared costs, while equal declared cost can coexist with different competence. In this finite scope, a resource-sensitive qualification is reconstructed as task-relative competence plus an explicit cost/budget criterion; a decorative crystallization label adds no information. This does not identify compression or crystallization in general with one cost field.
+
 The remaining high-level reductions are not accepted merely because they are simpler. They must survive falsification.
 
 ## Research rule
