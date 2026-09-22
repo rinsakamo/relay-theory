@@ -21,8 +21,8 @@ The manuscript uses Lean as a dependency audit rather than as a source of deep m
 | R8 | A difference in a target-sensitive outcome entails a difference in the corresponding target values under the declared semantics. |
 | R9 | The concrete positive-control target-sensitive response difference is established. |
 | R10 | The corresponding positive-control target difference is derived from the response difference. |
-| R11 | Adding a semantically inert identity-like token leaves the base target-sensitive classification unchanged. |
-| R12 | Arbitrary reassignment of semantically inert identity-like tokens preserves the tested classification. |
+| R11 | For any token carrier type, adding a semantically inert identity-like token leaves the base target-sensitive classification unchanged. |
+| R12 | For any token carrier type, arbitrary reassignment of semantically inert identity-like tokens preserves the tested classification. |
 | R13 | Different identity-like token values do not separate two same-reference encodings. |
 | R14 | Assigning the same identity-like token cannot hide a target-sensitive difference already exposed by the admitted tests. |
 | R15 | Decorative access metadata that does not change the admitted test profile does not change the tested classification. |
@@ -35,7 +35,8 @@ The mechanization assumes:
 - an explicit target domain;
 - a representation-to-target map;
 - declared exact test semantics;
-- declared test accessibility.
+- declared test accessibility;
+- a token carrier whose internal structure is not inspected by target-sensitive semantics.
 
 It does **not** derive target ontology, metaphysical numerical identity, a uniquely correct test regime, noisy/statistical inference, or interventional equivalence from observational equivalence.
 
