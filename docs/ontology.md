@@ -345,7 +345,19 @@ Competence is task-relative: the same replay mapping becomes competent under a d
 
 A decorative `skillFlag` can vary without changing competence and therefore adds no independent information.
 
-This result does **not** reduce learning mechanism, sample efficiency, motor chunking, hierarchical composition, arbitrary cross-world transfer, expertise, automaticity, practice history, compression/resource efficiency, human semantic know-how, Skill acquisition, or Skill crystallization. Those stronger meanings require separate justification if RelayTheory needs them.
+Issue #47 tests the first residual hierarchical / reusable-decomposition pressure without introducing a Skill tree. Its finite matched pair has the same ordinary response mapping and the same ordinary #41 competence, but differs under one independently declared counterfactual probe. Thus ordinary extensional equality does **not** determine the full intervention-indexed response family.
+
+In the tested case, however, the missing distinction is reconstructed directly by:
+
+```text
+Context × Probe -> Response
+```
+
+Pointwise-equal full profiles preserve the perturbation-sensitive classification, and a decorative `hierarchyFlag` does not alter it. The current scoped consequence is therefore **RECONSTRUCTIBLE UNDER INTERVENTION SURFACE**: perturbation sensitivity does not by itself establish an intrinsic hierarchical Skill object.
+
+To earn independent decomposition structure, a stronger countermodel would need to preserve the entire declared intervention/recombination response family while still requiring a different operational classification for reasons not encoded by a hierarchy-equivalent label.
+
+The #41/#47 results do **not** reduce learning mechanism, sample efficiency, biological motor chunking, unique or intrinsic hierarchical composition, arbitrary cross-world transfer, expertise, automaticity, practice history, compression/resource efficiency, human semantic know-how, Skill acquisition, or Skill crystallization. Those stronger meanings require separate justification if RelayTheory needs them.
 
 ### Emotion-like structure
 

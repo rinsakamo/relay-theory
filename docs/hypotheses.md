@@ -229,7 +229,21 @@ Additional controls show:
 
 Therefore the tested operational H-001 Skill role is reconstructed from **response mapping + declared context/task class + explicit evaluation criterion** rather than a primitive Skill object.
 
-This is not a reduction of learning, sample efficiency, hierarchical composition, arbitrary cross-world transfer, expertise, automaticity, compression/resource efficiency, human know-how, Skill acquisition, or crystallization.
+Issue #47 then tests a residual claim: whether hierarchical / reusable decomposition adds operational information beyond that extensional competence surface.
+
+A finite paired profile has the same ordinary context-to-response mapping and the same ordinary identity-task competence in both systems, while a separately declared counterfactual probe produces different responses. Therefore ordinary extensional equality does not determine intervention-indexed response.
+
+The tested difference is nevertheless fully represented by an explicit `Context × Probe -> Response` family. Pointwise-equal full profiles preserve the derived perturbation-sensitive distinction, and a decorative hierarchy label can vary without changing it.
+
+Current scoped classification:
+
+```text
+RECONSTRUCTIBLE UNDER INTERVENTION SURFACE
+```
+
+This does not establish that intrinsic or uniquely privileged hierarchical decomposition exists. A stronger independence result would require two systems with the same full declared intervention/recombination response family but a remaining operational distinction that is not carried by a hierarchy-equivalent label.
+
+The #41/#47 results are not a reduction of learning, sample efficiency, biological motor chunking, unique or intrinsic hierarchical composition, arbitrary cross-world transfer, expertise, automaticity, compression/resource efficiency, human know-how, Skill acquisition, or crystallization.
 
 ### Ownership constraint
 
@@ -313,6 +327,8 @@ A primitive-Self account regains force only if an intrinsic Self-relative distin
 - #40 operational Cognition finite formalization: https://github.com/rinsakamo/relay-theory/pull/40
 - #41 operational Skill reduction owner: https://github.com/rinsakamo/relay-theory/issues/41
 - #42 operational Skill finite formalization: https://github.com/rinsakamo/relay-theory/pull/42
+- #47 hierarchical Skill decomposition residual owner: https://github.com/rinsakamo/relay-theory/issues/47
+- #50 intervention-indexed Skill decomposition formalization: https://github.com/rinsakamo/relay-theory/pull/50
 - #46 Ownership authorship/control decomposition owner: https://github.com/rinsakamo/relay-theory/issues/46
 - #49 Ownership authorship/control finite formalization: https://github.com/rinsakamo/relay-theory/pull/49
 - Historical RelayLM `relay-theory` lane: provenance only
