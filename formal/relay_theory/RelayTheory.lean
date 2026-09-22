@@ -19,6 +19,7 @@ import RelayTheory.PresentSliceCountermodel
 import RelayTheory.LocalPresentReindexing
 import RelayTheory.TemporalOrientationAsymmetry
 import RelayTheory.LocalLineageGlobalOrderCountermodel
+import RelayTheory.GlobalOrderSymmetryObstruction
 
 /-!
 # RelayTheory formal scaffold

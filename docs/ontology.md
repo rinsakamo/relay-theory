@@ -152,6 +152,15 @@ A scalar linearization may be a useful representation while still adding compari
 
 This result does **not** establish that temporal precedence is a RelayTheory ontology primitive, that all physical Time is partially ordered, that incomparability means simultaneity, that spacetime admits no physically preferred foliation, or that relativity has been derived. Any stronger global temporal structure must supply independent discriminating information.
 
+#66 adds a symmetry constraint on any such stronger structure. In the same three-event merge fixture, the source automorphism `a ↔ b`, `c ↦ c` preserves every ambient precedence fact. A universally quantified formal obstruction shows that no strict total order on the carrier can both remain invariant under that source automorphism and totalize the structurally exchangeable pair.
+
+Two strict total extensions still exist and both preserve ambient precedence. Each necessarily breaks the source symmetry. Therefore, in this finite scope:
+
+> **A preferred global total order cannot be reconstructed invariantly from a source structure that still treats the relevant incomparable events as symmetry-equivalent.**
+
+This does not make symmetry-breaking itself a Time primitive. It states an information requirement: any preferred extension must contain, inherit, or derive additional structure that distinguishes the events it newly orders. That extra structure may come from a law, boundary condition, field, measurement convention, or another independently justified source; the present result does not choose among those possibilities.
+
+
 ## Derived source and validation terms
 
 ### Grounding-like source anchoring

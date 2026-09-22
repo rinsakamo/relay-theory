@@ -64,6 +64,10 @@ Moreover, substituting either scalar serialization for the ambient partial order
 
 This does not establish that all Time is a partial order or that physical simultaneity is conventional. Local Present remains a focal-index role under #30, strict orientation still requires independently represented asymmetry under #33, and any stronger global temporal or spacetime structure must earn its own discriminating content.
 
+#66 sharpens the remaining global-order question. On the same symmetric merge fixture, the source admits a nontrivial automorphism that exchanges the two incomparable events while preserving every ambient precedence fact. No strict total order can remain invariant under that source symmetry: totality must choose one direction for the pair, and invariance would force the opposite direction too.
+
+Strict total extensions nevertheless exist. Therefore the obstruction is not to serialization itself; it is to treating one serialization as **intrinsically preferred by the source structure** without additional symmetry-breaking information. Any stronger preferred global order must explicitly earn the extra distinction that resolves structurally exchangeable incomparable events.
+
 The structural result from #5 is scoped:
 
 - Self-relative / de-se claims require an explicit center;
