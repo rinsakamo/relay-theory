@@ -40,7 +40,7 @@ A model may introduce two variables, constructors, identifiers, records, or carr
 
 The problem is evidential: when is a difference between representations a legitimate reason to claim a difference in what they represent?
 
-Representation independence in programming-language semantics already requires clients of an abstract data type to depend on exposed behavior rather than a particular internal representation \citep{Mitchell1986RepresentationIndependence}. Observational equivalence and bisimulation likewise compare systems relative to specified interactions \citep{HennessyMilner1985,Rutten2000UniversalCoalgebra}. Philosophical work on identity and discernibility separates mathematical discernibility from broader questions about identity and the adequacy of the descriptive language \citep{LadymanLinneboPettigrew2012}. Practice-oriented philosophy of science emphasizes how individuation depends on concrete experimental and epistemic practices \citep{BuenoChenFagan2018,Waters2018AskNot,Love2018ExperimentalPractice}.
+Scientific-representation accounts already treat representation as directional and inferential: models are used to draw inferences about target systems \citep{Suarez2004Inferential,Contessa2007Surrogative}, and \citet{Nguyen2017RepresentationEquivalence} explicitly analyzes equivalence in terms of whether models license the same claims about the same targets. Representation independence in programming-language semantics constrains dependence on implementation details \citep{Mitchell1986RepresentationIndependence}. Observational equivalence and bisimulation compare systems relative to specified interactions \citep{HennessyMilner1985,Rutten2000UniversalCoalgebra}. Philosophical work on identity and discernibility separates mathematical discernibility from broader questions about identity and language adequacy \citep{LadymanLinneboPettigrew2012}. Practice-oriented philosophy of science studies individuation through experimental and epistemic practices \citep{BuenoChenFagan2018,Waters2018AskNot,Love2018ExperimentalPractice,Chen2018ExperimentalIndividuation}.
 
 This paper targets a narrower transition: from a formal difference to an individuation claim.
 
@@ -202,6 +202,18 @@ The mechanization claim is therefore narrow: the artifact makes it mechanically 
 
 \section{Relation to Existing Work}
 
+\subsection{Scientific representation and target-directed inference}
+
+The closest prior work is the inferential literature on scientific representation.
+
+\citet{Suarez2004Inferential} characterizes scientific representation by its directionality toward a target and its capacity to support surrogate inference. \citet{Contessa2007Surrogative} develops an interpretational account in which a representational vehicle is interpreted in terms of a target so that valid surrogative inferences can be drawn.
+
+\citet{Nguyen2017RepresentationEquivalence} is especially close to the present paper: model and theoretical equivalence are analyzed by attending to how models are used to draw inferences about target systems, including whether models license the same claims about the same targets.
+
+Accordingly, this paper claims no novelty for target-directed inference, model-to-target licensing, or the separation of representational vehicles from targets.
+
+The narrower question is individuation-specific: when a formal difference is offered as evidence for an individuation claim, does it enter through the declared target-relevant semantics or only through the representation apparatus? The Lean artifact makes that distinction executable through explicit negative controls.
+
 \subsection{Representation independence}
 
 Mitchell's representation-independence result is a close technical neighbor \citep{Mitchell1986RepresentationIndependence}. The present paper adopts a related caution but applies it to a different inference target: not whether two implementations are contextually interchangeable, but whether a formal difference may count as evidence that represented targets are operationally distinct.
@@ -214,19 +226,29 @@ The difference is inferential: a difference visible only in the representation l
 
 \subsection{Identity and discernibility}
 
-\citet{LadymanLinneboPettigrew2012} show that identity-and-discernibility questions can be factorized into the adequacy of a formal language and mathematical discernibility within that language. This constrains the present claim: discernibility alone should not be advertised as solving numerical identity.
+\citet{LadymanLinneboPettigrew2012} factorize identity-and-discernibility questions into the adequacy of a formal language and mathematical discernibility within that language. This constrains the present claim: discernibility alone should not be advertised as solving numerical identity.
 
 Work on weak discernibility likewise illustrates why notions of discernibility should not be conflated with unrestricted metaphysical identity \citep{DieksVersteegh2008}.
 
 \subsection{Individuation in scientific practice}
 
-Practice-oriented accounts ask how scientists count, track, manipulate, and distinguish entities for specific purposes \citep{BuenoChenFagan2018,Waters2018AskNot,Love2018ExperimentalPractice}. The present paper shares the emphasis on explicit epistemic practice, but adds a narrower formal constraint: the representational apparatus must not supply unacknowledged evidence for the target-level individuation claim.
+Practice-oriented accounts ask how scientists count, track, manipulate, and distinguish entities for specific purposes \citep{BuenoChenFagan2018,Waters2018AskNot,Love2018ExperimentalPractice}. \citet{Chen2018ExperimentalIndividuation} is especially relevant in distinguishing ontological and epistemological modes of experimental individuation, including the presentation of individuals in experimental practice.
+
+The present use of representation is more formal than Chen's experimental notion of presentation. The contribution claimed here is narrower: when an individuation practice is represented by an explicit formal test regime, the representation apparatus must not supply unacknowledged evidence for target-level plurality.
+
+\subsection{Redundant and surplus representational structure}
+
+The negative controls do not imply that representation-level or redundant structure is useless. \citet{NguyenTehWells2020Surplus} show, in gauge theory, that structure regarded as surplus in one sense may still be essential for representing a rich collection of physically relevant local fields.
+
+Thus the present claim is evidential rather than eliminativist: a representation-only difference does not by itself support the tested target-level individuation claim. It does not follow that such structure should be removed from the formalism.
 
 \subsection{Novelty boundary}
 
-The paper does not claim novelty for observational equivalence, bisimulation, representation independence, test-relative classification, the distinction between discernibility and numerical identity, or practice-relative individuation.
+The paper does not claim novelty for target-directed scientific representation, surrogative inference, observational equivalence, bisimulation, representation independence, test-relative classification, discernibility versus numerical identity, practice-relative individuation, or surplus representational structure.
 
-The proposed contribution lies in their intersection: a representation-safe evidential discipline for formal individuation arguments, together with mechanized negative controls showing that representation-only differences and semantically inert identity-like tokens cannot supply hidden evidence for the tested target-sensitive classification.
+The strongest defensible novelty claim is conjunctive and methodological: an individuation-specific admissibility rule that separates representation-only differences from target-relevant discriminators, together with a machine-checked dependency audit containing explicit negative controls for representation-sensitive probes and semantically inert identity-like tokens.
+
+If prior work is shown to formulate this same package explicitly, the novelty claim should be weakened further.
 
 \section{Objections and Scope}
 
