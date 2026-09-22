@@ -119,13 +119,11 @@ The carrier is intentionally tiny and the proofs are elementary.
 3. **The word "individual" must remain carefully scoped.** Prefer "individuation claim," "operational distinction," and "separately resolved cases" over unrestricted individuality language.
 4. **Mechanization must be sold as auditability, not theorem depth.**
 5. **Scientific application value has been strengthened with a UMI sequencing case.** The manuscript now uses molecular counting to show both sides of the evidential rule: multiple downstream reads need not imply multiple source molecules, while a pre-amplification UMI can become target-relevant through experimental provenance. The case preserves the error-model caveat via UMI-tools rather than treating a barcode as an identity oracle.
-6. **The identity token is Boolean.** Generalizing token type would strengthen presentation but is not required for the current negative control.
+6. **Token-carrier specificity is addressed.** The core token invariance results are now polymorphic over an arbitrary token carrier. A Boolean pair remains only as a concrete witness for the different-token negative control.
 
-## Optional strengthening before submission
+## Formal strengthening completed
 
-A useful but nonessential Lean strengthening would parameterize the identity-like token by an arbitrary type rather than Bool. This would show that the invariance is structural rather than tied to the two-element token carrier.
-
-Do this only if reviewers or final polishing make the Bool-specific presentation look distracting. It is not required for the current logical claim.
+The identity-like token carrier has been generalized from a Boolean-specific presentation to an arbitrary Lean type. The invariance theorem therefore states a structural dependency fact: when token metadata is absent from target-sensitive semantics, changing values from any token carrier cannot alter the tested classification. A Boolean pair is retained only as a concrete negative-control witness.
 
 ## Submission-readiness criterion
 
@@ -251,3 +249,17 @@ Primary sources:
 - Smith, Heger, and Sudbery (2017), *Genome Research*: UMI-tools, PCR-duplicate identification, and correction for UMI sequencing errors.
 
 The case directly addresses the possible misreading that the identity-token negative control makes all identifiers evidentially irrelevant. Identifierhood alone does no work; evidential status depends on the declared experimental/semantic connection to the target. The case does not expand the metaphysical claim; it is a scientific-practice instantiation of the existing evidential rule.
+
+
+## UMI-to-framework mapping
+
+The UMI case is now explicitly mapped onto the formal vocabulary:
+
+- (P): downstream read records;
+- (T): pre-amplification source molecules;
+- (r): physical/source assignment from a read to its source molecule;
+- (Q): source-relevant measurements/queries;
+- (A): the subset used by the analysis;
+- (O): target-sensitive outcomes.
+
+The text explicitly states that real UMI source assignment is noisy and inferred rather than read directly from barcode equality. This prevents the case from silently treating the exact formal map (r) as an empirically given identity oracle.
