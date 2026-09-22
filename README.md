@@ -110,7 +110,11 @@ Therefore causal authorship-like attribution and current control/revision author
 
 Thus physical causal/control structure alone does not determine this title sense. In the tested finite registry, however, the recognized claimant is reconstructed from an explicit institutional initial assignment + transfer-admissibility rule + proposal, without an additional Ownership/title bit. This does not derive normativity from physics or establish that the institution is legitimate.
 
-Ownership remains only **partially decomposed**: focal incorporation, possession/custody/access, broader legal/moral/social legitimacy, responsibility, consent, bodily ownership, and identity-sensitive persistence remain separate unresolved meanings.
+#61 further splits the physical/operational “possession” bundle. Four matched profiles share the same realized carrier/object/request/use snapshot while independently realizing custody-like transport coupling and access-like use capability in all four Boolean combinations. Access-like capability also separates both ways from #46 current revision privilege, and identical custody/access structure can coexist with different #58 registry-title outcomes.
+
+Accordingly, custody-like coupling, access-like capability, current revision authority, and registry-mediated title must not be collapsed into one possession/Ownership variable in this finite operational scope.
+
+Ownership remains only **partially decomposed**: focal incorporation, broader physical containment/exclusivity questions, broader legal/moral/social legitimacy, responsibility, consent, bodily ownership, and identity-sensitive persistence remain separate unresolved meanings.
 
 Likewise, familiar cognitive categories may describe relative interaction topology rather than separate fundamental mechanisms:
 
