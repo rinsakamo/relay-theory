@@ -140,6 +140,8 @@ Accordingly, “inside the focal partition” and “bidirectionally integrated 
 
 Ownership remains only **partially decomposed**: stronger body-ownership phenomenology/body schema, organismic or biological individuality, broader physical containment/exclusivity questions, broader legal/moral/social legitimacy, responsibility, consent, and stronger identity/title-persistence questions remain separate unresolved meanings.
 
+The broad H-001 agency-reduction program now has a terminal issue-level classification of **PARTIAL REDUCTION**. Operational Action, Perception, Cognition, and task-relative Skill are reconstructible under explicit lower-level response / partition / task surfaces, and no original flat bootstrap candidate survives unchanged as an independent primitive in that tested scope. But realized trace alone is insufficient, intervention information can be independent of observation, and normative/phenomenal/identity semantics are not recovered from physical interaction/change alone. Narrower residual questions continue separately.
+
 Likewise, familiar cognitive categories may describe relative interaction topology rather than separate fundamental mechanisms:
 
 ```text
