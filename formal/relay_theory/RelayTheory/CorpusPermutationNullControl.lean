@@ -42,6 +42,12 @@ def ZeroCoverage
     (target : Row → Bool) : Prop :=
   ∀ row, derive (grounded row) ≠ target row
 
+/-- Local conjunction form because Lean core exposes Injective/Surjective separately. -/
+def Bijective
+    {α β : Type}
+    (f : α → β) : Prop :=
+  Function.Injective f ∧ Function.Surjective f
+
 /-- The declared row permutation is an involution. -/
 theorem swapFirstInvolutive
     (row : Row) :
@@ -66,7 +72,7 @@ theorem swapFirstSurjective :
   exact ⟨swapFirst row, swapFirstInvolutive row⟩
 
 theorem swapFirstBijective :
-    Function.Bijective swapFirst := by
+    Bijective swapFirst := by
   exact ⟨swapFirstInjective, swapFirstSurjective⟩
 
 /--
@@ -106,7 +112,7 @@ has zero pointwise coverage under exactly the same frozen derive function.
 theorem realVsPermutedCoverageContrast :
     FullCoverage realTarget ∧
     ZeroCoverage permutedTarget ∧
-    Function.Bijective swapFirst := by
+    Bijective swapFirst := by
   exact ⟨
     realTargetFullCoverage,
     permutedTargetZeroCoverage,
