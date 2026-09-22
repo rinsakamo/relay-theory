@@ -260,6 +260,24 @@ COMPETENCE–RESOURCE ORTHOGONAL
 
 This classification is only about the tested explicit cost metric. It does not identify compression in general with that metric or reduce learning-time crystallization. Current `PredictiveCapacity` and `LossyWorkload` results separately show that exact representation sufficiency is response-surface-relative and lossy representation preference can reverse when declared future-query weights change.
 
+Issue #64 then tests whether exact deterministic robustness adds a new Skill-like distinction beyond #41 competence. Two profiles share the same nominal mapping and nominal identity-task competence while differing under a separately declared variation. Thus nominal competence does not determine robustness over a larger evaluation surface.
+
+However the exact robustness predicate is mechanically equivalent to the same competence schema over an enlarged product context:
+
+```text
+Context × Variation
+```
+
+with the ordinary success criterion lifted to ignore the variation coordinate except through the response. Pointwise-equal full profiles preserve the result and a decorative robustness label adds no information.
+
+Current scoped classification:
+
+```text
+EXACT ROBUSTNESS DERIVED AS CONTEXT EXPANSION
+```
+
+This applies only to deterministic universal success over the declared variation class. Probabilistic, approximate, graded, adversarial, and distributional robustness remain unresolved and may require additional explicit evaluation structure.
+
 The #41/#47/#53 results are not a reduction of learning, sample efficiency, biological motor chunking, unique or intrinsic hierarchical composition, arbitrary cross-world transfer, expertise, automaticity, general compression/resource efficiency, human know-how, Skill acquisition, or crystallization dynamics.
 
 ### Current constraint — formation process vs final retained state
