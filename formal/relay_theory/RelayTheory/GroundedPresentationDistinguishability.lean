@@ -199,6 +199,98 @@ theorem decorativeInterfaceTag_irrelevant
   rfl
 
 /--
+An explicit identity-like token carried by a presentation. The token is
+deliberately absent from grounding and grounded response semantics so that the
+formalization can test whether such a field can do hidden classification work.
+-/
+abbrev IdentityToken := Bool
+
+structure TokenizedPresentation where
+  presentation : Presentation
+  identityToken : IdentityToken
+deriving DecidableEq
+
+def tokenizedGround (tokenized : TokenizedPresentation) : Referent :=
+  ground tokenized.presentation
+
+def observeTokenizedGrounded
+    (tokenized : TokenizedPresentation)
+    (probe : Probe) : Outcome :=
+  response probe (tokenizedGround tokenized)
+
+def TokenizedGroundedIndistAt
+    (interface : Interface)
+    (left right : TokenizedPresentation) : Prop :=
+  ∀ probe, accessible interface probe →
+    observeTokenizedGrounded left probe =
+      observeTokenizedGrounded right probe
+
+/--
+Adding an explicit identity token does not change the grounded classification:
+for fixed presentations, the tokenized relation is definitionally the same as
+the original grounded indistinguishability relation.
+-/
+theorem tokenizedGroundedIndist_iff_base
+    (interface : Interface)
+    (left right : Presentation)
+    (leftToken rightToken : IdentityToken) :
+    TokenizedGroundedIndistAt
+      interface
+      ⟨left, leftToken⟩
+      ⟨right, rightToken⟩ ↔
+    GroundedIndistAt interface left right := by
+  rfl
+
+/--
+Arbitrary reassignment of explicit identity tokens cannot change the grounded
+operational classification when the presentations, grounding, admitted probes,
+and grounded response semantics are fixed.
+-/
+theorem identityToken_variation_preserves_groundedClassification
+    (interface : Interface)
+    (left right : Presentation)
+    (leftToken₁ leftToken₂ rightToken₁ rightToken₂ : IdentityToken) :
+    TokenizedGroundedIndistAt
+      interface
+      ⟨left, leftToken₁⟩
+      ⟨right, rightToken₁⟩ ↔
+    TokenizedGroundedIndistAt
+      interface
+      ⟨left, leftToken₂⟩
+      ⟨right, rightToken₂⟩ := by
+  rfl
+
+/--
+Concrete negative control: different explicit identity tokens do not separate
+two encodings that share the same grounding.
+-/
+theorem differentIdentityTokens_sameGroundedClassification :
+    TokenizedGroundedIndistAt
+      .fine
+      ⟨.encodedA, false⟩
+      ⟨.encodedB, true⟩ := by
+  exact
+    (tokenizedGroundedIndist_iff_base
+      .fine .encodedA .encodedB false true).2
+      sameReferent_encodings_groundedlyIndistinguishable
+
+/--
+Positive contrast: an identity token cannot mask a target-sensitive grounded
+difference already exposed by the admitted probes.
+-/
+theorem identityTokenCannotMask_groundedDifference :
+    ¬ TokenizedGroundedIndistAt
+      .fine
+      ⟨.encodedA, true⟩
+      ⟨.encodedC, true⟩ := by
+  intro hTokenized
+  have hBase :
+      GroundedIndistAt .fine .encodedA .encodedC :=
+    (tokenizedGroundedIndist_iff_base
+      .fine .encodedA .encodedC true true).1 hTokenized
+  exact fine_distinguishable hBase
+
+/--
 Scoped bundle: presentation metadata can differ without grounded separation;
 coarse access can fail to distinguish; richer grounded access can distinguish;
 and the positive-control referent difference is derived from a grounded
