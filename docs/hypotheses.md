@@ -278,6 +278,26 @@ Therefore the local Grand Null that causal authorship-like attribution and curre
 
 This supports **partial decomposition**, not a reduction of Ownership as a whole.
 
+Issue #51 further tests persistence through transfer/replacement. Its finite time-indexed witness shows:
+
+- revision privilege can transfer A -> B while the realized state and A's generation sensitivity remain fixed;
+- current generation sensitivity can transfer A -> B across a replacement history while the realized Boolean value remains fixed;
+- strict snapshot identity and an explicitly declared successor-lineage criterion can disagree on the same cross-snapshot pair;
+- declared lineage continuity does not imply persistence of the earlier source's current generation-side attribution;
+- a decorative continuity flag adds no information to these scoped judgments.
+
+Therefore, in this finite operational surface:
+
+```text
+current causal attribution
+current revision privilege
+cross-snapshot continuity
+```
+
+must not be collapsed into one timeless Ownership attribute.
+
+The first two are time/context-relative lower-level judgments. The third is criterion-relative to an explicitly supplied identity/lineage standard. This earns a scoped **persistence-criterion-relative** result, not a metaphysical theory of identity and not a reduction of normative title succession.
+
 Still unresolved and not packed into either lower-level judgment:
 
 - focal incorporation / membership;
@@ -331,6 +351,8 @@ A primitive-Self account regains force only if an intrinsic Self-relative distin
 - #50 intervention-indexed Skill decomposition formalization: https://github.com/rinsakamo/relay-theory/pull/50
 - #46 Ownership authorship/control decomposition owner: https://github.com/rinsakamo/relay-theory/issues/46
 - #49 Ownership authorship/control finite formalization: https://github.com/rinsakamo/relay-theory/pull/49
+- #51 Ownership attribution-persistence owner: https://github.com/rinsakamo/relay-theory/issues/51
+- #52 Ownership persistence finite formalization: https://github.com/rinsakamo/relay-theory/pull/52
 - Historical RelayLM `relay-theory` lane: provenance only
 - RelaySelf experiments may be linked individually when their evidence is relevant
 
