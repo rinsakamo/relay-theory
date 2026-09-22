@@ -300,6 +300,26 @@ BOUNDED ROBUSTNESS RECONSTRUCTIBLE UNDER LOSS/THRESHOLD SURFACE
 
 This classification is only for the explicit finite failure-count/budget evaluator. Probability distributions, expected loss, stochastic dynamics, adversarial optimization, continuous perturbation metrics, and semantic error severity remain unresolved.
 
+Issue #78 then tests the first finite distribution-weighted extension. Two response profiles have the same #74 unweighted failure count but fail on opposite variations. Two fixed positive equal-total weight surfaces, `(2,1)` and `(1,2)`, reverse which profile has lower weighted failure while the profiles remain fixed.
+
+Thus:
+
+```text
+unweighted failure count
+  -/->
+distribution-weighted risk
+```
+
+but the tested weighted judgment is reconstructed from the response profile, explicit binary loss, explicit finite variation weights, and an explicit threshold/comparison. Pointwise-equal profiles preserve weighted risk under fixed weights, and a decorative probabilistic-robustness flag changes nothing.
+
+Current scoped classification:
+
+```text
+DISTRIBUTION-WEIGHTED ROBUSTNESS RECONSTRUCTIBLE UNDER MEASURE/LOSS SURFACE
+```
+
+This is a finite weighted surface only. It does not settle stochastic transition dynamics, arbitrary probability spaces, continuous distributions, Bayesian uncertainty/calibration, unknown distribution shift, adversarial optimization, or semantic error severity.
+
 The #41/#47/#53 results are not a reduction of learning, sample efficiency, biological motor chunking, unique or intrinsic hierarchical composition, arbitrary cross-world transfer, expertise, automaticity, general compression/resource efficiency, human know-how, Skill acquisition, or crystallization dynamics.
 
 ### Current constraint — formation process vs final retained state
