@@ -118,7 +118,7 @@ The carrier is intentionally tiny and the proofs are elementary.
 2. **Reference assignment remains exogenous.** This must stay visible throughout the manuscript.
 3. **The word "individual" must remain carefully scoped.** Prefer "individuation claim," "operational distinction," and "separately resolved cases" over unrestricted individuality language.
 4. **Mechanization must be sold as auditability, not theorem depth.**
-5. **Application value is currently methodological.** A reviewer may ask for a non-toy worked example. Add one only if it clarifies the inference discipline without widening the ontology claim.
+5. **Scientific application value has been strengthened with a UMI sequencing case.** The manuscript now uses molecular counting to show both sides of the evidential rule: multiple downstream reads need not imply multiple source molecules, while a pre-amplification UMI can become target-relevant through experimental provenance. The case preserves the error-model caveat via UMI-tools rather than treating a barcode as an identity oracle.
 6. **The identity token is Boolean.** Generalizing token type would strengthen presentation but is not required for the current negative control.
 
 ## Optional strengthening before submission
@@ -157,7 +157,7 @@ The current positive rule is also scoped to a **declared evidential regime**, av
 1. **Incremental-novelty risk remains real.** Nguyen (2017) already places licensed claims about shared targets at the center of representation/equivalence. Chen (2018) already treats experimental individuation and presentation. The paper must continue to sell the conjunction of individuation-specific admissibility and mechanized anti-smuggling controls, not any broad representational thesis.
 2. **The formal mathematics is intentionally elementary.** The paper is stronger as a formal-methodological / philosophy-of-science note than as a mathematics or theoretical-CS theorem paper.
 3. **Reference assignment remains exogenous.** This is now explicit rather than hidden.
-4. **The worked example is illustrative, not empirical evidence.** It improves clarity but does not broaden the theorem.
+4. **The manuscript now contains a scientific-practice case rather than only a toy illustration.** UMI-based molecular counting connects the formal distinction to sequencing practice, while remaining an application of the evidential framework rather than an empirical validation of the Lean theorem.
 5. **Venue fit now matters more than another theoretical extension.** Further ontology or additional test regimes would likely weaken Paper 1 by widening scope.
 
 ### Current judgment
@@ -239,3 +239,15 @@ The final bibliography update added full DOI URLs for every current reference wi
 The exact artifact was rendered at 140 dpi and all pages were reviewed. Full DOI URLs are visible in the references. No clipping, overlapping text, broken glyphs, missing content, or bibliography-layout defects were found.
 
 This is now the current review-copy validation record. Any later manuscript or bibliography edit invalidates this exact-artifact record and must rerun the same CI + visual-inspection cycle.
+
+
+## Scientific-case strengthening — UMI sequencing
+
+The database-row illustration has been replaced by a sequencing-based molecular-biology case.
+
+Primary sources:
+
+- Kivioja et al. (2012), *Nature Methods*: UMI-based absolute counting of DNA/RNA molecules.
+- Smith, Heger, and Sudbery (2017), *Genome Research*: UMI-tools, PCR-duplicate identification, and correction for UMI sequencing errors.
+
+The case directly addresses the possible misreading that the identity-token negative control makes all identifiers evidentially irrelevant. Identifierhood alone does no work; evidential status depends on the declared experimental/semantic connection to the target. The case does not expand the metaphysical claim; it is a scientific-practice instantiation of the existing evidential rule.
