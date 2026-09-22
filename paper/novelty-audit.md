@@ -43,7 +43,7 @@ representation
 -> licensed claims about target
 ```
 
-The remaining distinction is that Paper 1 applies an explicit admissibility question specifically to **individuation claims** and tests representation-only discriminators with a machine-checked negative-control artifact.
+The remaining distinction is that Paper 1 asks an individuation-specific admissibility question about **differences inside the representation itself**. The revised manuscript now makes the missing dependency explicit as an evidential bridge from a representation-level feature to a target-level property, and couples that bridge criterion to a relabeling-invariance diagnostic and machine-checked dependency controls.
 
 ### Chen 2018 — Experimental Individuation: Creation and Presentation
 
@@ -66,11 +66,13 @@ The strongest defensible contribution after this search is conjunctive:
 ```text
 individuation-specific evidential admissibility
 +
-explicit representation/target/test factorization
+explicit representation-feature / target-property bridge
 +
-representation-sensitive negative control
+relabeling-invariance diagnostic
 +
-explicit identity-like-token invariance control
+representation/target/test factorization
++
+representation-sensitive and token-invariance negative controls
 +
 machine-checkable dependency audit
 ```
@@ -83,7 +85,7 @@ That sentence is **not** a proof of novelty. A venue-specific literature review 
 
 Use:
 
-> a representation-safe evidential discipline for formal individuation claims
+> an individuation-specific evidential admissibility framework with explicit target bridges
 
 Avoid:
 
@@ -101,8 +103,10 @@ Avoid:
 
 The paper remains potentially publishable as a narrow formal-methodological note if the contribution is presented as:
 
-1. a precise individuation-specific inference rule;
-2. a set of explicit counterexamples/negative controls preventing presentation identity from doing hidden work;
-3. a Lean artifact that audits those dependencies.
+1. a necessary-condition rule for when representation-level differences may enter individuation inferences;
+2. an explicit evidential-bridge dependency rather than an unanalyzed appeal to "target relevance";
+3. a relabeling-invariance diagnostic that can be applied to identifier-like features;
+4. a scientific UMI case separating bookkeeping identifiers from experimentally grounded tags;
+5. a Lean artifact that audits the bridge and anti-smuggling dependencies.
 
-The novelty case is substantially weaker if the mechanization is removed; without it, much of the conceptual content lies very close to existing work on scientific representation, equivalence, and practice-relative individuation.
+The conceptual novelty remains incremental and should not be sold as a new theory of representation. The mechanization strengthens auditability, while the bridge/relabeling formulation carries the main methodological contribution.
