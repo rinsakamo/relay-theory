@@ -87,12 +87,33 @@ This disclosure is intentionally non-identifying.
 
 ## Final rebuild status
 
-**Pending one exact-source rebuild.**
+**Exact-source CI: PASS.**
 
-The current blind source differs from the previously validated review-format build only by editorial anonymization and disclosure changes:
+The current anonymized review source was validated at exact PR head `c46dab5a3355e74af3f61711bc5e0a7dc1fcccde` by **Paper 1 Review CI**, run #4 (`35742256009`).
 
-- public theorem identifiers -> neutral labels `R1`--`R15`;
-- claim-to-artifact map rewritten using those labels;
-- anonymous Acknowledgements section added for AI-tool disclosure.
+The job passed:
 
-These changes are not intended to alter the formal or bibliographic content, but the exact current source should still be rebuilt and visually inspected before upload to the submission system.
+- exact-head checkout verification;
+- blind-source identifier audit;
+- abstract-length check;
+- presence of all anonymous result labels `R1`--`R15`;
+- full LaTeX + BibTeX build;
+- 18-page PDF generation;
+- final LaTeX warning / citation / layout audit;
+- PDF text smoke checks for title, Acknowledgements, and formal result labels.
+
+A final manual visual inspection of the exact 18-page PDF should still be performed immediately before upload, because CI checks text/log/layout diagnostics rather than human page appearance.
+
+
+## Initial artifact policy
+
+For the initial blind submission, the planned reviewer-facing formal supplement is the **anonymous artifact manifest**, not an executable copy of the public Lean source.
+
+Rationale:
+
+- the current journal guidance does not require supplementary executable material at initial submission;
+- the public source is searchable and could weaken anonymous review;
+- the manuscript's formal claims are already represented by neutral labels `R1`--`R15`;
+- a scrubbed executable Lean package can be exported and independently revalidated if an editor or reviewer requests it.
+
+If the live submission portal explicitly requires executable supplementary source, revisit this decision before upload.
