@@ -796,6 +796,30 @@ in the tested formal sense.
 
 This does not reduce semantic concepts, conceptual understanding, linguistic grounding, prototype/exemplar structure, concept learning, or a privileged ontology of categories.
 
+Issue #102 places a narrow Belief/prediction-like correctness role on the same derived/readout side. No new Belief-specific formal predicate is required. Reinterpret #41's existing task-relative surface as:
+
+```text
+Context   -> cue
+Response  -> prediction
+Policy    -> predictor
+Criterion -> declared outcome/correctness relation
+```
+
+Then predictive correctness is ordinary task-relative response evaluation. The mapping itself may encode a definite prediction while failing the criterion, so prediction content and correctness remain distinct.
+
+#60 already proves that a #41-competent mapping can coexist with experience-insensitive formation. Conversely, current authority separately provides an experience-sensitive formation map and a #41-incompetent replay mapping; pairing those independent fields yields experience-sensitive formation without predictive correctness. Therefore **predictive correctness and formation provenance are orthogonal in this tested scope**.
+
+Scoped classification:
+
+```text
+BELIEF-LIKE PREDICTIVE CORRECTNESS
+REDUCES TO TASK-RELATIVE RESPONSE EVALUATION
+/
+PREDICTIVE CORRECTNESS ORTHOGONAL TO FORMATION PROVENANCE IN SCOPE
+```
+
+This does not reduce propositional belief, semantic content, epistemic justification, confidence/credence, probabilistic belief, full world models, counterfactual reasoning, conscious belief, or predictive-model learning.
+
 This result does not extend automatically to probabilistic success, expected loss, bounded degradation, adversarial risk, distribution shift, or other approximate/stochastic notions. Those require explicit measure / metric / threshold / distribution structure and separate testing.
 
 Issue #74 tests the first bounded deterministic extension without introducing probability. Over the same two-variation #64 response surface, the exact profile has failure count 0 while the brittle profile has failure count 1. The brittle profile fails exact robustness and budget 0, but passes an explicit failure budget of 1.
