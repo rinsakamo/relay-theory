@@ -21,7 +21,7 @@
 - [x] Ragged-right review copy.
 - [x] Chicago author-date bibliography style selected.
 - [x] Rebuild the **exact current anonymized review source**: Paper 1 Review CI run #4 / exact head `c46dab5a3355e74af3f61711bc5e0a7dc1fcccde` generated an 18-page PDF and passed the blind-source and final LaTeX audits.
-- [ ] Manually visually inspect every page of that exact final PDF immediately before upload.
+- [x] Manually visually inspect all 18 pages of the exact CI artifact PDF: rendered at 160 dpi on 2026-09-22; no clipping, overlap, broken glyphs, missing sections, or reference-layout defects found.
 
 ## Claims and novelty
 
@@ -63,4 +63,4 @@
 
 ## Decision gate
 
-**Current state:** exact-source blind review CI is GREEN and the initial artifact policy is fixed. Remaining pre-upload gates are manual visual inspection of the exact final PDF, live-portal instruction re-check, submission metadata, and confirmation that the manuscript is not under review elsewhere.
+**Current state:** exact-source blind review CI and page-by-page visual inspection are complete, and the initial artifact policy is fixed. Remaining pre-upload gates are the live-portal instruction re-check, submission metadata, and confirmation that the manuscript is not under review elsewhere.
