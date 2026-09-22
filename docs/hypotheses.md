@@ -262,6 +262,28 @@ This classification is only about the tested explicit cost metric. It does not i
 
 The #41/#47/#53 results are not a reduction of learning, sample efficiency, biological motor chunking, unique or intrinsic hierarchical composition, arbitrary cross-world transfer, expertise, automaticity, general compression/resource efficiency, human know-how, Skill acquisition, or crystallization dynamics.
 
+### Current constraint — formation process vs final retained state
+
+Issue #60 tests the first process-versus-structure boundary needed by #55.
+
+A finite pair uses only an explicit experience-to-retained-state map. The two maps have the same actual final retained state and the same current identity readout, but one is counterfactually sensitive to experience while the other is constant across the experience coordinate. Therefore:
+
+```text
+same current retained state / readout
+  -/->
+same experience-dependent formation structure
+```
+
+The same transaction combines the experience-insensitive formation map with #41's already-proved competent `generalPolicy`. Thus, in this finite product model:
+
+```text
+operational Skill-like competence
+  -/->
+experience-sensitive retained-state formation
+```
+
+This constrains the #55 Crystallization hypothesis: process semantics cannot be recovered from the final retained state alone unless the required formation/provenance information is explicitly represented. It does not establish that such information is an ontology primitive, nor that a common retained substrate exists across Memory / Skill / Concept / Habit / Belief.
+
 ### Current constraint — prequalified Selfhood
 
 Issue #43 tests whether operational H-001 needs a prior Self-like eligibility predicate for the supplied focal locus.
