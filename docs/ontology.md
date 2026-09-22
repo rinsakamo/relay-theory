@@ -183,6 +183,26 @@ The formal reconstruction obstruction is exact: one deterministic recovery funct
 
 This does not promote a clock or metric to ontology merely because order is insufficient. It establishes only that any duration-like magnitude requires additional scale/spacing information not present in pure order. The result does not establish physical proper time, Lorentzian geometry, continuity, discreteness, relativity, or a universal temporal metric.
 
+#81 adds a branching-continuation constraint. In a minimal three-event fork,
+
+```text
+root < left
+root < right
+left || right
+```
+
+the source admits an automorphism exchanging `left` and `right` while fixing `root` and preserving every ambient precedence fact.
+
+A branch continuation is defined only as a selected subset that contains the root, is chain-like under ambient precedence, and contains at least one proper successor of the root. Both `{root,left}` and `{root,right}` satisfy that same criterion.
+
+No valid continuation subset can remain invariant under the branch-exchange automorphism: invariance would force both incomparable branch events into the same selected subset, contradicting chainhood.
+
+Therefore, in this finite branching surface:
+
+> **Ambient branching order does not by itself select one intrinsic continuation lineage when the candidate branches remain symmetry-equivalent in the source structure.**
+
+This is a lineage-selection result, not a personal-identity result. It does not determine which branch is “the same observer,” whether identity can split, or whether any physical process literally branches. Any distinguished continuation requires additional branch-discriminating information when the retained source structure leaves the alternatives symmetric.
+
 
 
 ## Derived source and validation terms
