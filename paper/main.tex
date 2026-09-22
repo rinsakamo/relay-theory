@@ -7,6 +7,8 @@
 \usepackage{microtype}
 \usepackage{amsmath,amssymb}
 \usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
 \usepackage{enumitem}
 \usepackage{natbib}
 \usepackage[hidelinks]{hyperref}
@@ -18,6 +20,7 @@
 
 \newcommand{\Indist}{\mathrel{\equiv}}
 \newcommand{\Dist}{\mathrel{\#}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 
 \begin{document}
 \maketitle
@@ -271,26 +274,26 @@ Correct. It assumes fixed exact semantics and literal test-family inclusion.
 
 \begin{center}
 \small
-\begin{tabular}{p{0.49\linewidth}p{0.43\linewidth}}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.44\linewidth}Y@{}}
 \toprule
 Manuscript claim & Lean theorem \\
 \midrule
-Equal reference preserves each target-sensitive observation & \texttt{sameGrounding\_sameGroundedObservation} \\
-Equal reference preserves the full target-sensitive profile & \texttt{sameGrounding\_sameGroundedProfile} \\
-Representation-sensitive metadata can separate same-reference encodings & \texttt{encodingProbe\_separates\_sameGrounding} \\
-Same-reference encodings remain target-sensitively indistinguishable & \texttt{sameReferent\_encodings\_groundedlyIndistinguishable} \\
-Restricted tests may fail to separate a pair & \texttt{coarse\_indistinguishable} \\
-A richer admitted test family may separate that pair & \texttt{fine\_distinguishable} \\
-Target-sensitive outcome difference entails target difference & \texttt{groundedOutcomeDifference\_impliesGroundDifference} \\
-Positive-control target difference is derived from the outcome difference & \texttt{derivedGroundDifference} \\
-Test-family inclusion preserves fine-to-coarse indistinguishability & \texttt{groundedIndist\_of\_access\_inclusion} \\
-Decorative access metadata is irrelevant & \texttt{decorativeInterfaceTag\_irrelevant} \\
-Tokenized and base classifications coincide & \texttt{tokenizedGroundedIndist\_iff\_base} \\
-Arbitrary identity-token reassignment preserves classification & \texttt{identityToken\_variation\_preserves\_groundedClassification} \\
-Different tokens do not separate same-reference encodings & \texttt{differentIdentityTokens\_sameGroundedClassification} \\
-Same token cannot hide target-sensitive difference & \texttt{identityTokenCannotMask\_groundedDifference} \\
+Equal reference preserves each target-sensitive observation & \path{sameGrounding_sameGroundedObservation} \\
+Equal reference preserves the full target-sensitive profile & \path{sameGrounding_sameGroundedProfile} \\
+Representation-sensitive metadata can separate same-reference encodings & \path{encodingProbe_separates_sameGrounding} \\
+Same-reference encodings remain target-sensitively indistinguishable & \path{sameReferent_encodings_groundedlyIndistinguishable} \\
+Restricted tests may fail to separate a pair & \path{coarse_indistinguishable} \\
+A richer admitted test family may separate that pair & \path{fine_distinguishable} \\
+Target-sensitive outcome difference entails target difference & \path{groundedOutcomeDifference_impliesGroundDifference} \\
+Positive-control target difference is derived from the outcome difference & \path{derivedGroundDifference} \\
+Test-family inclusion preserves fine-to-coarse indistinguishability & \path{groundedIndist_of_access_inclusion} \\
+Decorative access metadata is irrelevant & \path{decorativeInterfaceTag_irrelevant} \\
+Tokenized and base classifications coincide & \path{tokenizedGroundedIndist_iff_base} \\
+Arbitrary identity-token reassignment preserves classification & \path{identityToken_variation_preserves_groundedClassification} \\
+Different tokens do not separate same-reference encodings & \path{differentIdentityTokens_sameGroundedClassification} \\
+Same token cannot hide target-sensitive difference & \path{identityTokenCannotMask_groundedDifference} \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{center}
 
 \section{Discussion}
