@@ -551,6 +551,28 @@ and a decorative `decorativeCrystallized` flag changes neither competence, budge
 
 The current scoped conclusion is therefore **COMPETENCE–RESOURCE ORTHOGONAL** for this explicit finite cost metric. This does not identify "compression" in general with one cost field, nor does it reduce learning-time crystallization. Current `PredictiveCapacity` and `LossyWorkload` results independently reinforce that representation sufficiency and lossy representation preference are relative to a declared response/workload surface.
 
+Issue #64 tests exact deterministic robustness under an explicit variation coordinate. Its matched profiles agree on every nominal response and are both competent on the nominal identity-task surface, but differ on an admitted non-nominal variation. Nominal competence therefore does **not** determine exact robustness.
+
+The additional result is stronger than a new robustness label. With:
+
+```text
+Profile : Context -> Variation -> Response
+```
+
+exact robustness is proved equivalent to ordinary competence after pairing the evaluation coordinates:
+
+```text
+ExpandedContext := Context × Variation
+
+ExactRobust(success, profile)
+  <->
+Competent(liftedSuccess, asExpandedPolicy(profile))
+```
+
+Pointwise-equal full profiles preserve the result, and a decorative robustness flag adds no information. The scoped consequence is therefore **EXACT ROBUSTNESS DERIVED AS CONTEXT EXPANSION** for deterministic universal success over the declared variation class.
+
+This result does not extend automatically to probabilistic success, expected loss, bounded degradation, adversarial risk, distribution shift, or other approximate/stochastic notions. Those require explicit measure / metric / threshold / distribution structure and separate testing.
+
 The #41/#47/#53 results do **not** reduce learning mechanism, sample efficiency, biological motor chunking, unique or intrinsic hierarchical composition, arbitrary cross-world transfer, expertise, automaticity, practice history, general compression/resource efficiency, human semantic know-how, Skill acquisition, or Skill crystallization dynamics. Those stronger meanings require separate justification if RelayTheory needs them.
 
 Issue #60 now adds a distinct process-versus-state constraint relevant to #55. In its finite model, two experience-to-state maps produce the same actual retained state and the same current readout while differing under a counterfactual experience change. A #41-competent policy can also coexist with the experience-insensitive formation map. Therefore neither final retained structure nor operational competence determines an experience-sensitive formation process in this scope.
