@@ -15,8 +15,8 @@ structure Institution where
   acceptsTransfer : Claimant → Claimant → Bool
 
 structure TransferProposal where
-  from : Claimant
-  to : Claimant
+  sourceClaimant : Claimant
+  targetClaimant : Claimant
 
 /--
 Replay one proposed transfer against the declared institutional rule.
@@ -24,8 +24,8 @@ Replay one proposed transfer against the declared institutional rule.
 def currentRecognized
     (institution : Institution)
     (proposal : TransferProposal) : Claimant :=
-  if institution.acceptsTransfer proposal.from proposal.to
-  then proposal.to
+  if institution.acceptsTransfer proposal.sourceClaimant proposal.targetClaimant
+  then proposal.targetClaimant
   else institution.initialAssignment
 
 /--
@@ -39,8 +39,8 @@ def RegistryTitle
   currentRecognized institution proposal = claimant
 
 def transferFalseToTrue : TransferProposal where
-  from := false
-  to := true
+  sourceClaimant := false
+  targetClaimant := true
 
 def acceptingInstitution : Institution where
   initialAssignment := false
