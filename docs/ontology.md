@@ -273,13 +273,48 @@ This result does **not** reduce intention, reasons-responsiveness, conscious wil
 
 ### Ownership
 
-Candidate reduction:
+Ownership is currently treated as an overloaded family under decomposition rather than one accepted primitive.
 
-> A family of attributions currently under decomposition, including causal authorship, control/revision authority, focal-locus incorporation, and normative/social title.
+The first scoped split is now earned by #46:
 
-The previous shorthand `Authority + Grounding + Trace` is not sufficient for all senses of Ownership.
+> **Causal/provenance authorship-like attribution and current revision authority are independently variable in the tested finite operational model class.**
 
-Ownership remains unresolved until those distinctions are separated and tested.
+The formal discriminator contains no Ownership/authorship/control classification field. It derives two judgments from independently interpretable lower-level response structure:
+
+```text
+generation-side attribution
+  <- counterfactual sensitivity of generated state
+     to an explicit source/intervention value
+
+current revision privilege
+  <- explicit acceptance of a fixed nontrivial
+     successor proposal in the declared context
+```
+
+Four profiles hold the realized current state fixed while realizing all four Boolean combinations of those judgments. In particular:
+
+- generation-sensitive but not revision-enabled;
+- revision-enabled but not generation-sensitive.
+
+A decorative high-level flag can vary without changing either result.
+
+Therefore a monolithic Ownership account that requires causal authorship-like attribution and current control/revision authority to coincide is falsified for this scoped operational surface.
+
+The previous shorthand `Authority + Grounding + Trace` remains insufficient for all senses of Ownership.
+
+This result is only a **partial decomposition**. It does not settle or identify:
+
+- focal-locus incorporation / “part of me”;
+- possession or physical custody;
+- access rights;
+- normative, social, legal, or economic title;
+- consent;
+- moral responsibility;
+- copyright authorship;
+- bodily ownership phenomenology;
+- Selfhood or personal identity.
+
+Those meanings require separate criteria and owners if RelayTheory needs them.
 
 ### Skill
 
