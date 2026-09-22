@@ -588,6 +588,44 @@ Overlapping-candidate and symmetric-duplicate cases are not required to refute u
 
 This result does not settle biological life, metabolism, autopoiesis, reproduction, evolutionary individuality, unique organism boundaries in nature, phenomenal Selfhood, Body, personal identity, consciousness, or the grounding/origin of acceptable-state criteria.
 
+Issue #119 then tests the stronger residual left by #112: whether plurality itself is licensed by candidate multiplicity or instead must be earned from independently grounded distinctions.
+
+#120 validates the first new discriminator. Two presentation encodings can be distinguishable by presentation metadata while grounding to the same formal ambient referent; every grounded referent probe then preserves equality. In the positive control, a grounded probe outcome difference derives a difference in the grounding result rather than assuming that inequality at the start.
+
+Thus the original bare reduction is too strong:
+
+```text
+any accessible outcome difference
+  -/->
+earned plurality
+```
+
+The surviving scoped structure is:
+
+```text
+Presentation
++ independently justified Grounding
++ finite grounded probe family
++ actual grounded response profile
+  ->
+Interface-relative referent resolution
+```
+
+with #57 supplying the probe-family-relative equivalence/refinement pattern. Presentation-only differences and decorative Interface labels add no result. #26 separately establishes that generic finitude does not imply finite operational distinguishability, so finitude/cardinality itself is not an individuation source; only an actual grounded difference in access structure can contribute.
+
+Current scoped classification:
+
+```text
+CANDIDATE_MULTIPLICITY_DOES_NOT_ENTAIL_INDIVIDUAL_MULTIPLICITY
+/
+BARE_ACCESSIBLE_DISTINGUISHABILITY_INSUFFICIENT
+/
+GROUNDED_INTERFACE_RELATIVE_RESOLUTION_RECONSTRUCTIBLE
+/
+PRIMITIVE_PLURALITY_FACT_NOT_REQUIRED_FOR_TESTED_OPERATIONAL_RESOLUTION
+```
+
+The final line is deliberately operational. The validated result reconstructs a resolution/partition over candidate presentations without a primitive plurality bit. It does not prove metaphysical numerical identity, biological organism boundaries, personal identity, phenomenal Selfhood, or a universally privileged Interface. Cross-time continuity remains separately criterion-relative under #51 and observation/intervention access remains non-equivalent under #22.
 Issue #74 then tests a deterministic bounded-failure surface. Reusing the #64 profiles, the exact profile has zero failures and the brittle profile has one failure over the declared two-variation evaluation. The brittle profile is not exactly robust, fails budget 0, and passes budget 1.
 
 Thus approximate qualification is threshold-relative and is reconstructed in this finite instance from:
