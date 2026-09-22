@@ -769,6 +769,28 @@ In this scoped finite role, default tendency is **derived from the explicit sele
 
 This does not reduce learned or psychological Habit. Formation/provenance, practice history, procedural memory, automaticity, value/reward, compulsion, and stochastic action-selection semantics remain separate questions.
 
+Issue #98 tests a Concept/category-like current-role surface by reusing the existing probe-relative equivalence machinery rather than introducing a Concept type. With one fixed retained carrier and two declared singleton probe families, the same retained states can be equivalent under one probe family and distinguished under another. An anchor class is simply the induced probe-equivalence class.
+
+Therefore:
+
+```text
+retained carrier alone
+  -/->
+unique Concept-like partition
+
+while
+
+Concept-like operational class membership
+  <-
+retained carrier
++ explicit probe family
++ induced probe-relative equivalence / quotient
+```
+
+Extensionally identical probe families induce the same equivalence and class membership. No independent Concept label or category-membership table is required in this finite scope.
+
+The scoped classification is **CONCEPT-LIKE EQUIVALENCE RECONSTRUCTIBLE UNDER PROBE-RELATIVE QUOTIENT / CATEGORY ROLE PROBE-RELATIVE**. This does not establish semantic concepts, human conceptual understanding, abstraction learning, concept acquisition history, language/symbol grounding, prototype/exemplar structure, or a privileged ontology of categories. It also does not imply experience-sensitive formation.
+
 This result does not extend automatically to probabilistic success, expected loss, bounded degradation, adversarial risk, distribution shift, or other approximate/stochastic notions. Those require explicit measure / metric / threshold / distribution structure and separate testing.
 
 Issue #74 tests the first bounded deterministic extension without introducing probability. Over the same two-variation #64 response surface, the exact profile has failure count 0 while the brittle profile has failure count 1. The brittle profile fails exact robustness and budget 0, but passes an explicit failure budget of 1.
