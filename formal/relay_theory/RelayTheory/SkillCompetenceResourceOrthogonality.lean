@@ -73,7 +73,7 @@ theorem sameCost_differentCompetence :
 theorem budgetSeparatesEqualCompetence :
     FitsBudget 1 compactGeneral ∧
     ¬ FitsBudget 1 expensiveGeneral := by
-  constructor <;> decide
+  simp [FitsBudget, compactGeneral, expensiveGeneral]
 
 theorem equalBudgetDoesNotDetermineCompetence :
     FitsBudget 1 compactGeneral ∧
@@ -85,8 +85,8 @@ theorem equalBudgetDoesNotDetermineCompetence :
       OperationalSkillCountermodel.identitySuccess
       compactReplay.policy := by
   exact ⟨
-    by decide,
-    by decide,
+    by simp [FitsBudget, compactGeneral],
+    by simp [FitsBudget, compactReplay],
     OperationalSkillCountermodel.generalPolicy_competent_identityTask,
     OperationalSkillCountermodel.replayPolicy_not_competent_identityTask
   ⟩
@@ -107,11 +107,12 @@ theorem combinedJudgmentReconstructed :
   constructor
   · exact ⟨
       OperationalSkillCountermodel.generalPolicy_competent_identityTask,
-      by decide
+      by simp [FitsBudget, compactGeneral]
     ⟩
   constructor
   · intro h
-    exact (by decide : ¬ FitsBudget 1 expensiveGeneral) h.2
+    exact (by
+      simp [FitsBudget, expensiveGeneral] : ¬ FitsBudget 1 expensiveGeneral) h.2
   · intro h
     exact OperationalSkillCountermodel.replayPolicy_not_competent_identityTask h.1
 
