@@ -1,3 +1,4 @@
+import RelayTheory.NestedRecoveryScaleCountermodel
 import RelayTheory.NestedCandidateScaleCountermodel
 import RelayTheory.HomeostaticRecoveryCountermodel
 import RelayTheory.EmotionAppraisalModulationCountermodel
