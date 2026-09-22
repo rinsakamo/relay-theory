@@ -132,9 +132,9 @@ Do this only if reviewers or final polishing make the Bool-specific presentation
 Paper 1 is ready for venue selection only when all of the following hold:
 
 - English manuscript is the canonical working text.
-- LaTeX compiles cleanly.
+- LaTeX compiles cleanly. **PASS (2026-09-22):** `pdflatex -> bibtex8 -> pdflatex -> pdflatex`, 9 pages, bibliography resolved, no LaTeX warnings, overfull boxes, underfull boxes, or undefined citations in the final pass.
 - Every mechanically attributed claim maps to an actual Lean theorem.
-- Bibliography metadata is checked.
-- Related Work survives a deeper novelty search.
-- No sentence claims derivation of metaphysical identity or target ontology.
-- Hostile review finds no unacknowledged use of presentation identity as evidence.
+- Bibliography metadata is checked. **PASS for the current bibliography:** titles/authors/venues/pages/DOIs were cross-checked against ACM, Cambridge, Springer, Oxford Academic, ScienceDirect/authoritative institutional records, and BJPS metadata during the 2026-09-22 audit.
+- Related Work survives a deeper novelty search. **PASS WITH NARROWED CLAIM:** closest prior art materially reduced the novelty surface; the remaining claim is the individuation-specific admissibility rule plus mechanized anti-smuggling controls.
+- No sentence claims derivation of metaphysical identity or target ontology. **PASS in the current English/LaTeX draft.**
+- Hostile review finds no unacknowledged use of presentation identity as evidence. **PASS for the current theorem-to-prose mapping; final venue-specific review still required.**
