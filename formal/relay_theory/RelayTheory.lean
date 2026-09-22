@@ -1,3 +1,4 @@
+import RelayTheory.PartitionGroundingNonVacuity
 import RelayTheory.ProbeFamilyExtensionNonVacuity
 import RelayTheory.CriterionGroundingNonVacuity
 import RelayTheory.NonVacuityBasisWitness
