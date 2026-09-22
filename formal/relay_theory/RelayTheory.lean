@@ -30,6 +30,7 @@ import RelayTheory.LocalLineageGlobalOrderCountermodel
 import RelayTheory.GlobalOrderSymmetryObstruction
 import RelayTheory.BranchLineageContinuationObstruction
 import RelayTheory.TemporalOrderMetricIndependence
+import RelayTheory.LocalIntervalDurationReconstruction
 
 /-!
 # RelayTheory formal scaffold
