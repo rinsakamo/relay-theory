@@ -354,6 +354,37 @@ RECONSTRUCTIBLE UNDER EXPLICIT SELECTION WEIGHTS
 
 This does not establish human/animal Habit, acquisition or practice history, procedural memory, automaticity, compulsion, addiction, value/reward, reinforcement-learning semantics, conscious preference, intention, or stochastic-policy semantics. Current tendency also does not establish experience-sensitive formation without an explicit formation bridge.
 
+Issue #97 then tests a current Concept-like equivalence role over an explicit finite response surface:
+
+```text
+Profile : Item -> Probe -> Response
+
+EquivalentUnder(profile, probe, a, b)
+  := profile(a,probe) = profile(b,probe)
+```
+
+One fixed profile makes the two distinct Boolean items equivalent under `probe=false` and distinguished under `probe=true`. The retained/current response profile does not change; only the declared probe changes.
+
+Therefore:
+
+```text
+same current response structure
++ different declared probe
+  ->
+different induced category relation
+```
+
+For each fixed probe, `EquivalentUnder` is reflexive, symmetric, and transitive. Pointwise-equal full profiles preserve every probe-relative equivalence judgment, and changing a decorative Concept flag while holding the profile fixed changes nothing.
+
+Current scoped classification:
+
+```text
+CONCEPT-LIKE EQUIVALENCE RECONSTRUCTIBLE UNDER EXPLICIT PROBE
+CATEGORY ROLE IS PROBE-RELATIVE
+```
+
+This places the tested Concept-like role on the current-role/readout side of #55's decomposition. It does not establish semantic concepts, understanding, abstraction quality, language/symbol grounding, prototypes/exemplars, ontology learning, representation compression, or concept acquisition history. In particular, a useful current quotient does not establish experience-sensitive formation.
+
 Issue #74 then tests a deterministic bounded-failure surface. Reusing the #64 profiles, the exact profile has zero failures and the brittle profile has one failure over the declared two-variation evaluation. The brittle profile is not exactly robust, fails budget 0, and passes budget 1.
 
 Thus approximate qualification is threshold-relative and is reconstructed in this finite instance from:
