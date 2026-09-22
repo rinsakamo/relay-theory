@@ -183,6 +183,33 @@ The formal reconstruction obstruction is exact: one deterministic recovery funct
 
 This does not promote a clock or metric to ontology merely because order is insufficient. It establishes only that any duration-like magnitude requires additional scale/spacing information not present in pure order. The result does not establish physical proper time, Lorentzian geometry, continuity, discreteness, relativity, or a universal temporal metric.
 
+#90 adds the corresponding positive reconstruction boundary on the same finite chain. Instead of supplying a complete global clock or duration table, the model supplies only two independent local interval magnitudes on the immediate steps:
+
+```text
+a < b < c
+
+wAB
+wBC
+```
+
+together with an explicit additive composition law. The derived global interval assignment is then:
+
+```text
+Δ(a,b) = wAB
+Δ(b,c) = wBC
+Δ(a,c) = wAB + wBC
+```
+
+with zero used only as the declared total-function encoding outside the forward interval surface.
+
+The formal result proves existence and extensional uniqueness of the admissible global duration assignment for fixed local weights and composition law. It also proves that the mapping from local weights to the reconstructed global table is injective: changing the local metric payload changes the global duration.
+
+Therefore, in this finite additive chain surface:
+
+> **The complete global duration table is reconstructible from explicit local interval weights plus additive composition, while the local metric information itself remains independent of temporal order.**
+
+This is a reduction of redundant global representation, not a reduction of metric information to order. The local weights are supplied information, and additivity is an explicit composition assumption. The result does not establish physical proper time, path independence on arbitrary branching/merging structures, Lorentzian geometry, a universal scale, continuity, discreteness, or a preferred clock.
+
 #81 adds a branching-continuation constraint. In a minimal three-event fork,
 
 ```text
