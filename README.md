@@ -184,6 +184,20 @@ Within the operational H-001 scope, #35 now gives Action-like attribution a narr
 
 #84 separates ordinary retention from stability under an explicit perturbation family. Two systems share the same formation, formed state, ordinary post-formation state, and ordinary readout. Both retain the state under the no-perturbation condition, but only one preserves the declared readout across the full Boolean perturbation surface. Thus ordinary retention does not determine perturbation stability. This supplies a possible discriminator stronger than generic retention, but does not identify Crystallization with stability or earn RelayCrystal ontology.
 
+#55 now reaches a terminal synthesis for the common retained-structure hypothesis. The tested operational family is best described as a **readout-relative family** rather than a set of intrinsic stored object types. Memory-like reconstruction, operational Skill, Habit-like tendency, and Concept-like grouping each factor through explicit lower-level structure plus a declared evaluation/readout surface, while formation/provenance and retention/stability remain independently variable cross-cutting axes. A minimal Belief-like predictive-correctness child was withheld because its first discriminator duplicated the already-forged correctness/provenance shape rather than adding new structure.
+
+The surviving decomposition is therefore:
+
+```text
+FORMATION / PROVENANCE
+        ×
+RETAINED CARRIER / DYNAMICS
+        ×
+CURRENT ROLE / READOUT
+```
+
+No nontrivial common `Crystal` / `RelayCrystal` substrate has been earned beyond generic response/distinction-bearing formal substrate. Promoting that generic carrier would violate anti-trivialization. Likewise, current evidence does not select one canonical Crystallization predicate: experience-sensitive formation, ordinary retention, perturbation stability, future closure, and reuse are separable properties. The terminal classification is **READOUT_RELATIVE_FAMILY / FORMATION_CARRIER_READOUT_SPLIT / COMMON_CRYSTAL_SUBSTRATE_NOT_EARNED**, with **CRYSTALLIZATION_NOT_CANONICALLY_DETERMINED** as a secondary constraint.
+
 #43 tests the remaining Self-like qualification question. In the operational H-001 scope, an arbitrary focal locus can be evaluated directly from raw inward / internal / outward response structure; no prior `Eligible(Self)` or `isSelf` gate is required. A derived operational agency-locus profile can summarize a declared bundle of those responses, but it is explicitly weaker than phenomenal, personal, biological, or persistent Selfhood.
 
 The remaining high-level reductions are not accepted merely because they are simpler. They must survive falsification.
