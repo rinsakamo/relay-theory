@@ -769,6 +769,10 @@ In this scoped finite role, default tendency is **derived from the explicit sele
 
 This does not reduce learned or psychological Habit. Formation/provenance, practice history, procedural memory, automaticity, value/reward, compulsion, and stochastic action-selection semantics remain separate questions.
 
+Issue #97 tests a separate Concept-like current-role axis. The formal input contains only an item/probe response profile and defines equivalence as equality of responses under the selected probe. The same fixed profile induces different partitions when the probe changes, while pointwise-equal profiles preserve all judgments and a decorative Concept flag is irrelevant.
+
+Thus the tested operational category role is **derived from explicit response structure plus the declared probe**, not from a Concept primitive. The resulting partition is probe-relative rather than an intrinsic class bit of the retained carrier. This does not reduce semantic concepts, understanding, symbols/language, prototype or exemplar structure, abstraction learning, ontology learning, or formation history.
+
 This result does not extend automatically to probabilistic success, expected loss, bounded degradation, adversarial risk, distribution shift, or other approximate/stochastic notions. Those require explicit measure / metric / threshold / distribution structure and separate testing.
 
 Issue #74 tests the first bounded deterministic extension without introducing probability. Over the same two-variation #64 response surface, the exact profile has failure count 0 while the brittle profile has failure count 1. The brittle profile fails exact robustness and budget 0, but passes an explicit failure budget of 1.
