@@ -206,3 +206,19 @@ For initial blind review, use the anonymous artifact manifest rather than an exe
 ### Remaining manual gate
 
 The exact final PDF still requires a human visual page-by-page inspection immediately before upload. This is an editorial presentation check, not a theoretical or compilation blocker.
+
+
+## Exact CI artifact visual inspection — 2026-09-22
+
+The PDF uploaded directly by the successful Paper 1 Review CI run was downloaded from GitHub Actions and inspected rather than reconstructed from a separate local source.
+
+- workflow run: `#6 / 35742873397`
+- exact head: `8a521862be76f0526422bf343f7fa2d036b26ac3`
+- artifact ID: `10699848683`
+- artifact: `paper-1-philosophy-of-science-review-pdf`
+- PDF pages: `18`
+- PDF SHA-256: `1662175011fe0f1760ab19499cde1f4cf1a86ae47ad6b0cc3e9cd22bd1061da2`
+
+The artifact was rendered to PNG at 160 dpi and all 18 pages were inspected. No clipped text, overlaps, black squares, broken glyphs, missing section text, or reference-page layout defects were found. The R1--R15 claim-to-artifact map, Acknowledgements / AI disclosure, and both reference pages render cleanly.
+
+This closes the manuscript build/layout gate for the current Philosophy of Science review copy. Any later textual change to the blind manuscript must rerun the same CI and visual-review cycle.
