@@ -133,7 +133,7 @@ theorem nestedDistinctQualifiers :
   ⟩
 
 theorem noUniqueQualifier :
-    ¬ ∃! k : CandidateKey, Qualifies k := by
+    ¬ (∃! k : CandidateKey, Qualifies k) := by
   intro h
   rcases h with ⟨winner, hwinner, hunique⟩
   have hInner : CandidateKey.inner = winner :=
@@ -150,7 +150,7 @@ surface.
 theorem classificationSelectionSplit :
     Qualifies .inner ∧
     Qualifies .outer ∧
-    ¬ ∃! k : CandidateKey, Qualifies k := by
+    ¬ (∃! k : CandidateKey, Qualifies k) := by
   exact ⟨innerQualifies, outerQualifies, noUniqueQualifier⟩
 
 end NestedCandidateScaleCountermodel
