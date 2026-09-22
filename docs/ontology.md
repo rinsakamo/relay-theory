@@ -410,7 +410,31 @@ Pointwise-equal full profiles preserve the perturbation-sensitive classification
 
 To earn independent decomposition structure, a stronger countermodel would need to preserve the entire declared intervention/recombination response family while still requiring a different operational classification for reasons not encoded by a hierarchy-equivalent label.
 
-The #41/#47 results do **not** reduce learning mechanism, sample efficiency, biological motor chunking, unique or intrinsic hierarchical composition, arbitrary cross-world transfer, expertise, automaticity, practice history, compression/resource efficiency, human semantic know-how, Skill acquisition, or Skill crystallization. Those stronger meanings require separate justification if RelayTheory needs them.
+Issue #53 tests a separate compression/resource-pressure question using an explicit declared cost rather than a compression or crystallization primitive. Its finite models establish both directions of non-determination:
+
+```text
+same competence
+  -/->
+same explicit resource cost
+
+same explicit resource cost
+  -/->
+same competence
+```
+
+Two candidates can implement the same competent response mapping while carrying different declared costs. Conversely, equal-cost general and replay policies differ in #41 identity-task competence. A resource-sensitive operational judgment is reconstructed directly as:
+
+```text
+task-relative competence
++
+explicit cost <= declared budget
+```
+
+and a decorative `decorativeCrystallized` flag changes neither competence, budget qualification, nor the combined judgment.
+
+The current scoped conclusion is therefore **COMPETENCE–RESOURCE ORTHOGONAL** for this explicit finite cost metric. This does not identify "compression" in general with one cost field, nor does it reduce learning-time crystallization. Current `PredictiveCapacity` and `LossyWorkload` results independently reinforce that representation sufficiency and lossy representation preference are relative to a declared response/workload surface.
+
+The #41/#47/#53 results do **not** reduce learning mechanism, sample efficiency, biological motor chunking, unique or intrinsic hierarchical composition, arbitrary cross-world transfer, expertise, automaticity, practice history, general compression/resource efficiency, human semantic know-how, Skill acquisition, or Skill crystallization dynamics. Those stronger meanings require separate justification if RelayTheory needs them.
 
 ### Emotion-like structure
 
