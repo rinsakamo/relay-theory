@@ -134,6 +134,18 @@ High-throughput sequencing provides a concrete scientific case in which represen
 
 Unique molecular identifiers (UMIs) were introduced to address precisely this problem. \citet{Kivioja2012UMI} used molecular identifiers to distinguish individual DNA or RNA molecules before amplification and thereby support absolute molecule counting. In the terminology of the present framework, a natural target domain is the set of pre-amplification molecules, while the observed representations are downstream sequencing reads. Different read records, file identifiers, or sequencing coordinates can distinguish representations without establishing that the reads originated from different target molecules.
 
+In the notation of Section~2, the application can be idealized as follows:
+\begin{itemize}[leftmargin=*]
+\item \(P\): downstream sequencing-read records;
+\item \(T\): pre-amplification source molecules;
+\item \(r(p)\): the source molecule from which read \(p\) descends;
+\item \(Q\): source-relevant measurements or queries admitted by the analysis, including experimentally introduced molecular tags and alignment context;
+\item \(A\subseteq Q\): the subset actually used by a particular deduplication or counting procedure;
+\item \(O(q,t)\): the outcome associated with source molecule \(t\) under query \(q\).
+\end{itemize}
+
+The mapping is deliberately idealized. In an actual UMI workflow, the source assignment \(r\) is not read directly from token equality: it is inferred through the experimental protocol together with sequencing, alignment, and error assumptions. The exact formal framework therefore audits which declared differences may support the individuation inference; it does not replace the statistical or experimental work required to establish the source assignment.
+
 A UMI has a different evidential status from an arbitrary read identifier. The important difference is not that one string is called an ``identifier'' and another is not. A UMI is introduced by the experimental protocol at the molecular stage, before PCR amplification. Copies descended from the same tagged molecule can therefore inherit information that is experimentally linked to that source molecule. The identifier participates in the measurement process that connects a downstream read to the target of the counting claim.
 
 This does not make the UMI an infallible identity oracle. \citet{SmithHegerSudbery2017UMITools} emphasize that UMI sequences themselves are subject to sequencing error and show that naive treatment of UMI values can misidentify PCR duplicates. Their UMI-tools method uses the structure of observed UMI sequences to correct such errors and improve molecular quantification. Thus even an experimentally introduced molecular identifier must be interpreted within a declared error model and analysis procedure.
@@ -187,7 +199,7 @@ The formal model therefore adds an explicit token to each representation. The to
 
 Result \texttt{R11} shows that the tokenized and base classifications coincide for fixed underlying representations.
 
-The central negative-control result, \texttt{R12},
+The central negative-control result, \texttt{R12}, is polymorphic in the token carrier and
 proves
 \[
 \begin{aligned}
