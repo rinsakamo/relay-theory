@@ -113,6 +113,71 @@ theorem encodingProbe_separates_sameGrounding :
   · rfl
 
 /--
+A structural bridge from a presentation-level feature to a referent-level
+property. The Lean object records factorization through ground; it does not by
+itself supply the empirical or scientific justification for accepting that
+factorization in an application.
+-/
+structure GroundingBridge (feature : Presentation → Bool) where
+  targetProperty : Referent → Bool
+  sound : ∀ presentation,
+    feature presentation = targetProperty (ground presentation)
+
+/--
+If a presentation-level feature is bridged to a referent-level property, equal
+grounding forces equal feature values.
+-/
+theorem bridgedFeature_sameGrounding_sameValue
+    {feature : Presentation → Bool}
+    (bridge : GroundingBridge feature)
+    {left right : Presentation}
+    (hGround : ground left = ground right) :
+    feature left = feature right := by
+  calc
+    feature left = bridge.targetProperty (ground left) := bridge.sound left
+    _ = bridge.targetProperty (ground right) :=
+      congrArg bridge.targetProperty hGround
+    _ = feature right := (bridge.sound right).symm
+
+/--
+A difference in a bridged presentation-level feature entails a difference in
+the grounding result. The bridge is the explicit dependency that licenses the
+step from presentation feature to referent-level distinction.
+-/
+theorem bridgedFeatureDifference_impliesGroundDifference
+    {feature : Presentation → Bool}
+    (bridge : GroundingBridge feature)
+    {left right : Presentation}
+    (hFeature : feature left ≠ feature right) :
+    ground left ≠ ground right := by
+  intro hGround
+  exact hFeature (bridgedFeature_sameGrounding_sameValue bridge hGround)
+
+/--
+The deliberately presentation-sensitive encoding probe cannot be supplied with
+a grounding bridge: it separates two presentations that have equal grounding.
+-/
+theorem encodingProbe_hasNoGroundingBridge :
+    ¬ Nonempty (GroundingBridge encodingProbe) := by
+  intro hBridge
+  rcases hBridge with ⟨bridge⟩
+  have hSame : encodingProbe .encodedA = encodingProbe .encodedB :=
+    bridgedFeature_sameGrounding_sameValue
+      bridge encodedA_encodedB_sameGrounding
+  exact encodingProbe_separates_sameGrounding.1 hSame
+
+/-- A positive-control feature that exactly tracks the grounding result. -/
+def groundFeature : Presentation → Bool := fun presentation =>
+  ground presentation
+
+/-- The positive-control ground-tracking feature has an explicit bridge. -/
+theorem groundFeature_hasGroundingBridge :
+    Nonempty (GroundingBridge groundFeature) := by
+  refine ⟨{ targetProperty := fun referent => referent, sound := ?_ }⟩
+  intro presentation
+  rfl
+
+/--
 Presentation-sensitive separation does not survive the grounded observation
 surface for two encodings of the same referent.
 -/
