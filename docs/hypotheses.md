@@ -404,6 +404,38 @@ CATEGORY_ROLE_IS_PROBE_RELATIVE
 
 This does not establish semantic concepts, understanding, symbols/language, prototypes or exemplars, concept acquisition, abstraction quality, grounding, or a privileged category ontology.
 
+Issue #102 then tests the final original #55 readout-side category: a narrow Belief/prediction-like correctness role. The candidate role adds no new formal structure beyond #41 once the existing response mapping is explicitly interpreted as a predictor and the task criterion as the declared outcome/correctness relation.
+
+Thus:
+
+```text
+predictive mapping
+  !=
+predictive correctness
+```
+
+and, in the tested operational scope:
+
+```text
+Belief-like predictive correctness
+  =
+task-relative response evaluation
+under an explicit prediction/outcome criterion
+```
+
+Formation provenance remains separate. #60 already supplies a correct/competent mapping with experience-insensitive formation, while the existing experience-sensitive formation and #41-incompetent replay mapping provide the converse independent product control.
+
+Current scoped classification:
+
+```text
+BELIEF-LIKE PREDICTIVE CORRECTNESS
+REDUCES TO TASK-RELATIVE RESPONSE EVALUATION
+/
+PREDICTIVE CORRECTNESS ORTHOGONAL TO FORMATION PROVENANCE IN SCOPE
+```
+
+No new Belief-specific Lean module is introduced because the result is a direct specialization/composition of already validated #41/#60 structure. This does not settle propositional belief, semantic content, truth justification, confidence/credence, probabilistic belief, full world models, or learned predictive-model formation.
+
 Issue #74 then tests a deterministic bounded-failure surface. Reusing the #64 profiles, the exact profile has zero failures and the brittle profile has one failure over the declared two-variation evaluation. The brittle profile is not exactly robust, fails budget 0, and passes budget 1.
 
 Thus approximate qualification is threshold-relative and is reconstructed in this finite instance from:
