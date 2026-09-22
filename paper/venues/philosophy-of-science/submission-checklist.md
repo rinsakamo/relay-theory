@@ -20,6 +20,7 @@
 - [x] Double-spaced body.
 - [x] Ragged-right review copy.
 - [x] Chicago author-date bibliography style selected.
+- [x] Bibliography source includes full `https://doi.org/...` URLs for all 13 current references with DOIs; exact PDF rebuild still required to verify the rendered output.
 - [x] Rebuild the **exact current anonymized review source**: Paper 1 Review CI run #4 / exact head `c46dab5a3355e74af3f61711bc5e0a7dc1fcccde` generated an 18-page PDF and passed the blind-source and final LaTeX audits.
 - [x] Manually visually inspect all 18 pages of the exact CI artifact PDF: rendered at 160 dpi on 2026-09-22; no clipping, overlap, broken glyphs, missing sections, or reference-layout defects found.
 
@@ -52,13 +53,18 @@
 
 ## Submission-system checks
 
-- [ ] Re-open the live Philosophy of Science author instructions immediately before submission.
+- [ ] Supply the author's truthful **Funding Statement** for the typeset manuscript; do not infer or invent this.
+- [ ] Supply the author's truthful **Declarations / competing-interests statement**; do not infer or invent this.
+- [ ] Supply non-blind author metadata: full author name, affiliation, contact details, and ORCID if desired.
+
+- [x] Re-opened the live Philosophy of Science author instructions on 2026-09-22; current Article limit is 9,000 words inclusive of abstract/footnotes/in-text citations/figures/tables/print appendices, with references excluded.
 - [ ] Confirm manuscript is not under review elsewhere.
 - [ ] Confirm all submission metadata.
 - [ ] Add author / affiliation only in the non-blind submission fields as required.
 - [ ] Decide whether any public preprint/repository disclosure is required at submission.
 - [ ] Ensure every reviewer-facing supplementary file is anonymous.
-- [ ] Upload final PDF and any source files requested by the portal.
+- [ ] Upload final PDF and any source files requested by Editorial Manager.
+- [ ] View and approve the PDF built by Editorial Manager before final submission; the journal will not forward the manuscript until this approval.
 - [ ] Do not upload the public repository link as blind-review material.
 
 ## Decision gate
