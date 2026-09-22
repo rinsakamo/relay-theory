@@ -376,6 +376,18 @@ BRIDGE NON-CANONICAL WITHOUT ADDITIONAL STRUCTURE
 
 This does not settle semantic bridge grounding, ontology matching, empirical zero-shot transfer, embodiment change, distribution shift, abstraction quality, learning, or universal Skill identity.
 
+Issue #91 then performs the Skill-lane synthesis without introducing a new theorem. The validated child results jointly support:
+
+```text
+OPERATIONAL SKILL DERIVED
+/
+BROADER SKILL UNDERDETERMINED
+```
+
+For the tested operational family, every discriminating result is carried by explicit response/evaluation structure: task criterion, intervention surface, cost/budget, variation, loss/threshold, distribution weights, cross-world bridges, or support condition. Decorative Skill-like labels add no information in the tested cases.
+
+This synthesis is intentionally not a universal reduction of Skill. Acquisition and learning dynamics, sample efficiency, practice history, procedural memory, habit, crystallization/retained reusable structure, semantic know-how, expertise, biological motor chunking, psychological automaticity, and canonical bridge grounding remain separate unresolved questions. #55 owns the retained/common-structure question; #60 already blocks inferring experience-sensitive formation from operational competence alone.
+
 The #41/#47/#53 results are not a reduction of learning, sample efficiency, biological motor chunking, unique or intrinsic hierarchical composition, bridge grounding / semantic cross-world correspondence, expertise, automaticity, general compression/resource efficiency, human know-how, Skill acquisition, or crystallization dynamics.
 
 ### Current constraint — formation process vs final retained state
