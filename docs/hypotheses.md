@@ -303,6 +303,57 @@ This does **not** reduce psychological automaticity. Support-off competence does
 
 No additional Lean module is introduced for #88 because the scoped result is a direct restriction/specialization of already validated #41/#64 competence structure rather than a new discriminator.
 
+Issue #95 then tests a narrow Habit-like default-tendency role using explicit finite response-selection weights:
+
+```text
+SelectionWeight : Context -> Response -> Nat
+```
+
+Two operational judgments are kept separate:
+
+```text
+Capable(success, weights)
+  := every context has some positive-weight
+     task-successful response
+
+FalseDominant(weights)
+  := in every context,
+     weight(false) > weight(true)
+```
+
+Four explicit profiles realize every Boolean combination:
+
+```text
+Capable × FalseDominant
+=
+00, 01, 10, 11
+```
+
+Therefore:
+
+```text
+task capability
+  -/->
+default selection tendency
+
+default selection tendency
+  -/->
+task capability
+```
+
+The tested tendency is nevertheless reconstructible from the explicit weight surface + declared comparison target. Pointwise-equal full weight surfaces preserve it, a finite common positive rescaling preserves the tested dominance/absence-of-dominance cases, and a decorative Habit label adds no information.
+
+Current scoped classification:
+
+```text
+COMPETENCE_TENDENCY_ORTHOGONAL
+
+HABIT-LIKE DEFAULT TENDENCY
+RECONSTRUCTIBLE UNDER EXPLICIT SELECTION WEIGHTS
+```
+
+This does not establish human/animal Habit, acquisition or practice history, procedural memory, automaticity, compulsion, addiction, value/reward, reinforcement-learning semantics, conscious preference, intention, or stochastic-policy semantics. Current tendency also does not establish experience-sensitive formation without an explicit formation bridge.
+
 Issue #74 then tests a deterministic bounded-failure surface. Reusing the #64 profiles, the exact profile has zero failures and the brittle profile has one failure over the declared two-variation evaluation. The brittle profile is not exactly robust, fails budget 0, and passes budget 1.
 
 Thus approximate qualification is threshold-relative and is reconstructed in this finite instance from:
