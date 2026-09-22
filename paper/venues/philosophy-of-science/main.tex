@@ -11,6 +11,7 @@
 \usepackage{amsmath,amssymb}
 \usepackage{booktabs}
 \usepackage{tabularx}
+\usepackage{longtable}
 \usepackage{array}
 \usepackage{enumitem}
 \usepackage{setspace}
@@ -37,6 +38,7 @@
 \begin{abstract}
 A formal model can contain multiple representations without thereby supporting multiple target-level individuals. We ask when a formal difference may legitimately support an operational individuation claim. We separate representations, a representation-to-target map, admitted tests, and target-sensitive outcomes. A Lean development audits this separation: representation-sensitive differences and semantically inert identity-like tokens do not alter the tested classification unless they enter the declared target semantics, while richer target-sensitive tests can refine it. The contribution is an individuation-specific evidential discipline, not a new equivalence theory or a derivation of metaphysical identity.
 \end{abstract}
+\newpage
 
 \section{Introduction}
 
@@ -124,11 +126,11 @@ is invalid.
 
 The disciplined order is
 \[
+\begin{aligned}
 \text{multiple representations}
-\to
-\text{target-sensitive tests}
-\to
-\text{supported operational distinction, if any}.
+&\to \text{target-sensitive tests} \\
+&\to \text{supported operational distinction, if any}.
+\end{aligned}
 \]
 
 \subsection{Worked example: duplicate records and target relativity}
@@ -185,11 +187,11 @@ The central negative-control theorem,
 \path{identityToken_variation_preserves_groundedClassification},
 proves
 \[
-\text{identity-like token changes}
-\land
-\text{target-relevant semantics fixed}
-\Longrightarrow
-\text{operational classification fixed}.
+\begin{aligned}
+&\text{identity-like token changes} \\
+&\land \text{ target-relevant semantics fixed} \\
+&\Longrightarrow \text{ operational classification fixed}.
+\end{aligned}
 \]
 
 The theorem \path{differentIdentityTokens_sameGroundedClassification} shows that different token values do not separate two same-reference encodings. The positive contrast \path{identityTokenCannotMask_groundedDifference} shows that the same token cannot hide a target-sensitive difference already exposed by the admitted tests.
@@ -283,29 +285,22 @@ Correct. It assumes fixed exact semantics and literal test-family inclusion.
 
 \section{Claim-to-Artifact Map}
 
-\begin{center}
-\small
-\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.44\linewidth}Y@{}}
-\toprule
-Manuscript claim & Lean theorem \\
-\midrule
-Equal reference preserves each target-sensitive observation & \path{sameGrounding_sameGroundedObservation} \\
-Equal reference preserves the full target-sensitive profile & \path{sameGrounding_sameGroundedProfile} \\
-Representation-sensitive metadata can separate same-reference encodings & \path{encodingProbe_separates_sameGrounding} \\
-Same-reference encodings remain target-sensitively indistinguishable & \path{sameReferent_encodings_groundedlyIndistinguishable} \\
-Restricted tests may fail to separate a pair & \path{coarse_indistinguishable} \\
-A richer admitted test family may separate that pair & \path{fine_distinguishable} \\
-Target-sensitive outcome difference entails target difference & \path{groundedOutcomeDifference_impliesGroundDifference} \\
-Positive-control target difference is derived from the outcome difference & \path{derivedGroundDifference} \\
-Test-family inclusion preserves fine-to-coarse indistinguishability & \path{groundedIndist_of_access_inclusion} \\
-Decorative access metadata is irrelevant & \path{decorativeInterfaceTag_irrelevant} \\
-Tokenized and base classifications coincide & \path{tokenizedGroundedIndist_iff_base} \\
-Arbitrary identity-token reassignment preserves classification & \path{identityToken_variation_preserves_groundedClassification} \\
-Different tokens do not separate same-reference encodings & \path{differentIdentityTokens_sameGroundedClassification} \\
-Same token cannot hide target-sensitive difference & \path{identityTokenCannotMask_groundedDifference} \\
-\bottomrule
-\end{tabularx}
-\end{center}
+\begin{itemize}[leftmargin=*]
+\item Equal reference preserves each target-sensitive observation: \path{sameGrounding_sameGroundedObservation}.
+\item Equal reference preserves the full target-sensitive profile: \path{sameGrounding_sameGroundedProfile}.
+\item Representation-sensitive metadata can separate same-reference encodings: \path{encodingProbe_separates_sameGrounding}.
+\item Same-reference encodings remain target-sensitively indistinguishable: \path{sameReferent_encodings_groundedlyIndistinguishable}.
+\item Restricted tests may fail to separate a pair: \path{coarse_indistinguishable}.
+\item A richer admitted test family may separate that pair: \path{fine_distinguishable}.
+\item Target-sensitive outcome difference entails target difference: \path{groundedOutcomeDifference_impliesGroundDifference}.
+\item Positive-control target difference is derived from the outcome difference: \path{derivedGroundDifference}.
+\item Test-family inclusion preserves fine-to-coarse indistinguishability: \path{groundedIndist_of_access_inclusion}.
+\item Decorative access metadata is irrelevant: \path{decorativeInterfaceTag_irrelevant}.
+\item Tokenized and base classifications coincide: \path{tokenizedGroundedIndist_iff_base}.
+\item Arbitrary identity-token reassignment preserves classification: \path{identityToken_variation_preserves_groundedClassification}.
+\item Different tokens do not separate same-reference encodings: \path{differentIdentityTokens_sameGroundedClassification}.
+\item The same token cannot hide a target-sensitive difference: \path{identityTokenCannotMask_groundedDifference}.
+\end{itemize}
 
 \section{Discussion}
 
@@ -339,6 +334,7 @@ The narrower conclusion is enough:
 \textbf{Differences in representation should count as evidence of differences in what is represented only when an explicit target-relevant evidential link justifies that inference.}
 \end{quote}
 
+\clearpage
 \bibliographystyle{chicago}
 \bibliography{references}
 
