@@ -130,7 +130,11 @@ cross-snapshot continuity
 
 must not be collapsed into one timeless Ownership attribute. The first two are time/context-relative lower-level judgments; the third is criterion-relative to an explicitly supplied identity/lineage standard. This does not choose a metaphysically correct identity criterion or settle normative title succession. Architecture consequence: **NONE**.
 
-Ownership remains only **partially decomposed**: focal incorporation, broader physical containment/exclusivity questions, broader legal/moral/social legitimacy, responsibility, consent, bodily ownership, and stronger identity/title-persistence questions remain separate unresolved meanings.
+#71 further splits the residual focal-incorporation phrase. Analytic membership in the supplied focal locus and bidirectional functional integration are independently variable: finite matched components share the same realized component/focal-target snapshot while realizing all four membership × integration combinations. Outbound-only and inbound-only coupling each fail the declared bidirectional role, and #61 custody/access roles do not force it.
+
+Accordingly, “inside the focal partition” and “bidirectionally integrated into focal response” must not be collapsed into one part-of-me / incorporation bit. The functional role is reconstructed from raw response structure in this finite scope, but it is explicitly weaker than phenomenal body ownership, body schema, biological individuality, or personal identity.
+
+Ownership remains only **partially decomposed**: stronger body-ownership phenomenology/body schema, organismic or biological individuality, broader physical containment/exclusivity questions, broader legal/moral/social legitimacy, responsibility, consent, and stronger identity/title-persistence questions remain separate unresolved meanings.
 
 Likewise, familiar cognitive categories may describe relative interaction topology rather than separate fundamental mechanisms:
 
