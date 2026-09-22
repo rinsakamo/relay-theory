@@ -10,6 +10,7 @@ import RelayTheory.LossyWorkload
 import RelayTheory.PresentSliceCountermodel
 import RelayTheory.LocalPresentReindexing
 import RelayTheory.TemporalOrientationAsymmetry
+import RelayTheory.LocalLineageGlobalOrderCountermodel
 
 /-!
 # RelayTheory formal scaffold
