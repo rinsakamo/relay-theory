@@ -418,11 +418,64 @@ explicit institutional initial assignment
 
 This is **not** a reduction of normativity to physics. The institutional base assignment and rule surface are explicit contextual inputs, and the result does not establish their legitimacy.
 
-Ownership therefore remains only **partially decomposed**. Still unresolved or outside this scoped registry result:
+#61 adds a third scoped decomposition result for the physical/operational “possession” bundle.
+
+The finite response surface contains no possession/custody/access classification input. It instead exposes two independent response families:
+
+```text
+carrier/location probe
+  -> object location
+
+claimant-associated request
+  -> use outcome
+```
+
+The scoped operational judgments are:
+
+```text
+CustodyLike
+  := object location is sensitive
+     to the declared carrier/location probe
+
+AccessLike
+  := use outcome is sensitive
+     to the declared claimant-associated request probe
+```
+
+Four matched profiles share the same realized carrier/object/request/use snapshot while realizing every Boolean combination:
+
+```text
+CustodyLike × AccessLike
+=
+00, 01, 10, 11
+```
+
+Additional matched controls establish:
+
+- access-like use capability without #46 current revision privilege;
+- #46 current revision privilege without access-like use capability;
+- identical custody/access response structure with different #58 registry-title outcomes;
+- the same registry-title result while custody/access roles differ;
+- decorative possession-label deletion.
+
+Therefore, in this finite operational scope:
+
+```text
+custody-like transport coupling
+!=
+access-like use capability
+!=
+current revision authority
+!=
+registry-mediated institutional title
+```
+
+This does not turn either role into legal possession. `CustodyLike` here is only transport/location coupling under the declared probe, and `AccessLike` is only use-outcome sensitivity under the declared request probe.
+
+Ownership therefore remains only **partially decomposed**. Still unresolved or outside these scoped results:
 
 - focal-locus incorporation / “part of me”;
-- possession or physical custody;
-- access rights;
+- arbitrary physical containment, exclusivity, or durable custody beyond the tested transport-coupling role;
 - broader normative, social, legal, or economic legitimacy beyond the declared registry;
 - consent;
 - moral responsibility;
