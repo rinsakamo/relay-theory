@@ -971,7 +971,44 @@ The same dynamics can be viable under one acceptable-state criterion and non-via
 
 Accordingly, no independent Viability bit/object is required in this scope.
 
-This result does **not** identify viability with reward or value, and it does not yet reconstruct homeostasis as active restoration after leaving the acceptable region. Biological life, organismic individuality, metabolism, reproduction, autopoiesis, allostasis, death, and evolutionary fitness remain separate questions.
+This result does **not** identify viability with reward or value. Biological life, organismic individuality, metabolism, reproduction, autopoiesis, allostasis, death, and evolutionary fitness remain separate questions.
+
+### Active-recovery-like status
+
+Issue #110 tests the stronger finite operational distinction between remaining acceptable and leaving then returning to an explicitly declared acceptable region.
+
+The retained lower-level surface is:
+
+```text
+postPerturb  : Perturbation -> State
+postResponse : Perturbation -> State
+acceptable   : State -> Prop
+```
+
+with the derived judgment:
+
+```text
+ActiveRecovery
+  :=
+exists perturbation p,
+  not acceptable(postPerturb(p))
+  and acceptable(postResponse(p))
+```
+
+The validated countermodel separates three profiles: preventive, recovery, and failing. Preventive robustness can hold without ActiveRecovery; ActiveRecovery can hold while ImmediateRobust fails; preventive and recovery profiles can have the same FinalRobust result while differing in whether an outside-to-inside path occurred. They can also share the same designated baseline path while differing under another perturbation.
+
+The same two-stage transition surface changes ActiveRecovery classification when only the explicit acceptable-state criterion changes, so the judgment remains criterion-relative. A decorative Homeostasis flag does not affect either ActiveRecovery or FinalRobustness.
+
+Accordingly, in this finite operational scope:
+
+```text
+RECOVERY_DISTINCT_FROM_VIABILITY_ROBUSTNESS
+/
+ACTIVE_RECOVERY_RECONSTRUCTIBLE_FROM
+ORDERED TWO-STAGE TRANSITION + ACCEPTABILITY CRITERION
+```
+
+No independent Homeostasis/Recovery primitive is required for the tested role. The result does **not** establish biological homeostasis in full, adaptive/allostatic regulation, endogenous controller architecture, metabolism, autopoiesis, organismic individuality, energetic cost, reproduction, learning, intent, reward/value, phenomenal feeling, or evolutionary fitness.
 
 ## Body
 
