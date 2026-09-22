@@ -312,13 +312,43 @@ Therefore the local Grand Null that causal authorship-like attribution and curre
 
 This supports **partial decomposition**, not a reduction of Ownership as a whole.
 
-Still unresolved and not packed into either lower-level judgment:
+Issue #58 then tests one narrower normative/institutional surface: registry-mediated title.
+
+Its finite witness keeps the #46 physical/control profile and the transfer proposal fixed while varying only an explicit institutional transfer-admissibility rule. The current recognized claimant changes with that rule surface.
+
+The same transaction also realizes:
+
+- current revision privilege without registry title;
+- registry title without current revision privilege;
+- rejected transfer without title change;
+- decorative Ownership/title label deletion.
+
+Therefore physical causal/control structure is insufficient to determine this title sense.
+
+However, after an explicit institutional initial assignment, transfer rule, and proposal are supplied, the finite current recognized claimant is reconstructed without an additional Ownership/title primitive.
+
+This yields the scoped constraint:
+
+```text
+physical reduction fails for registry title
+
+but
+
+registry title is reconstructible
+relative to an explicit institutional rule surface
+```
+
+The institutional initial assignment and rule are **inputs**. #58 does not derive them from physics and does not establish institutional, legal, or moral legitimacy.
+
+Still unresolved or outside these scoped Ownership results:
 
 - focal incorporation / membership;
 - possession / custody / access;
-- normative, social, legal, or economic title;
-- responsibility, consent, and institutional legitimacy;
-- bodily ownership and Selfhood.
+- broader normative, social, legal, or economic legitimacy;
+- responsibility and consent;
+- copyright authorship;
+- bodily ownership and Selfhood;
+- identity-sensitive persistence through arbitrary replacement.
 
 Primitive status for any surviving Ownership sense must be tested only after these remaining distinctions are separately specified.
 
@@ -369,6 +399,8 @@ A primitive-Self account regains force only if an intrinsic Self-relative distin
 - #44 operational agency-locus finite formalization: https://github.com/rinsakamo/relay-theory/pull/44
 - #46 Ownership authorship/control decomposition owner: https://github.com/rinsakamo/relay-theory/issues/46
 - #49 Ownership authorship/control finite formalization: https://github.com/rinsakamo/relay-theory/pull/49
+- #58 registry-mediated Ownership title owner: https://github.com/rinsakamo/relay-theory/issues/58
+- #59 registry-mediated title finite formalization: https://github.com/rinsakamo/relay-theory/pull/59
 - Historical RelayLM `relay-theory` lane: provenance only
 - RelaySelf experiments may be linked individually when their evidence is relevant
 
