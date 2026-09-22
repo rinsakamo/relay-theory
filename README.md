@@ -116,6 +116,8 @@ Within the operational H-001 scope, #35 now gives Action-like attribution a narr
 
 #41 derives a scoped operational Skill-like competence as a response mapping satisfying an explicit task criterion over a declared context class. A general mapping and replay mapping can share the same successful observed training trace yet diverge on an unvisited context, so recurrence / observed success alone is insufficient. Competence is also task-relative rather than an intrinsic Skill bit on the mapping.
 
+#47 adds a narrower constraint on hierarchical / reusable Skill interpretations. Two systems can have the same ordinary response mapping and the same ordinary competence while differing under an independently declared counterfactual probe. In the finite tested case, that additional distinction is fully represented by the intervention-indexed response family `Context × Probe -> Response`; no hierarchy object or decomposition flag is required. Perturbation sensitivity therefore does not by itself establish an intrinsic Skill hierarchy.
+
 The remaining high-level reductions are not accepted merely because they are simpler. They must survive falsification.
 
 ## Research rule
