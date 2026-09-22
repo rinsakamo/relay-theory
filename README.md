@@ -86,7 +86,19 @@ Ownership
 Authority + Grounding + Trace
 ```
 
-does not recover every sense of ownership; causal authorship, control authority, incorporation, and normative title can diverge.
+does not recover every sense of ownership.
+
+The scoped #46 finite result now separates the first two candidate senses. Holding the realized current state fixed, lower-level generation response and revision-acceptance response realize all four combinations of:
+
+```text
+generation-sensitive causal/provenance attribution
+×
+current revision privilege
+```
+
+including generation without revision privilege and revision privilege without generation. A decorative high-level label adds no information to either derived judgment.
+
+Therefore causal authorship-like attribution and current control/revision authority must not be represented as one obligatorily aligned Ownership value in this tested operational scope. This is only a **partial decomposition**: focal incorporation, possession/custody, access rights, normative/social/legal title, responsibility, and bodily ownership remain separate unresolved meanings.
 
 Likewise, familiar cognitive categories may describe relative interaction topology rather than separate fundamental mechanisms:
 
