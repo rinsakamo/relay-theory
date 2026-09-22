@@ -503,15 +503,84 @@ are not one timeless Ownership attribute in this finite operational surface. The
 
 This earns a scoped **persistence-criterion-relative** result. It does not select a metaphysically privileged identity criterion and does not reduce legal/normative title succession.
 
+#71 adds a fourth scoped decomposition result for the residual focal-incorporation / “part of me” phrase.
+
+It separates:
+
+```text
+analytic focal membership
+```
+
+from:
+
+```text
+bidirectional functional integration
+```
+
+The first is explicit evaluation structure inherited from #5: a candidate component is either inside or outside the supplied focal locus. It is not by itself a Selfhood or body-ownership judgment.
+
+The second is reconstructed in the finite #71 model from two independently stated response families:
+
+```text
+focal-source probe
+  -> candidate component response
+
+candidate-component probe
+  -> focal target response
+```
+
+with:
+
+```text
+FunctionallyIntegrated
+  :=
+outbound response sensitivity
+AND
+inbound response sensitivity
+```
+
+Four matched components share the same realized component/focal-target snapshot while realizing every combination:
+
+```text
+insideFocal × FunctionallyIntegrated
+=
+00, 01, 10, 11
+```
+
+Therefore analytic focal membership does not determine the tested functional-integration role, and the tested functional role does not determine analytic membership.
+
+Additional controls establish:
+
+- outbound-only coupling is insufficient for the declared bidirectional role;
+- inbound-only coupling is insufficient;
+- #61 custody-like transport coupling can exist without bidirectional functional integration;
+- bidirectional functional integration can exist without #61 custody-like transport coupling;
+- #61 access-like capability can exist without bidirectional functional integration;
+- a decorative incorporation label adds no information.
+
+Thus, in this finite operational scope:
+
+```text
+analytic focal membership
+!=
+bidirectional functional integration
+!=
+custody-like transport coupling
+!=
+access-like use capability
+```
+
+This scoped functional result does **not** establish phenomenal body ownership or identify every ordinary meaning of “part of me”.
+
 Ownership therefore remains only **partially decomposed**. Still unresolved or outside these scoped results:
 
-- focal-locus incorporation / “part of me”;
+- phenomenal body ownership / body schema;
+- biological or organismic individuality;
 - arbitrary physical containment, exclusivity, or durable custody beyond the tested transport-coupling role;
 - broader normative, social, legal, or economic legitimacy beyond the declared registry;
 - consent;
 - moral responsibility;
 - copyright authorship;
-- bodily ownership phenomenology;
 - Selfhood or personal identity;
 - normative/title persistence through arbitrary object replacement and broader identity questions.
 
