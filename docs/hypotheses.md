@@ -494,7 +494,48 @@ REDUCES_TO_EXISTING_COMPETENCE_ROBUSTNESS_SEMANTICS
 
 No Viability-specific Lean module is introduced because the tested judgment is a direct specialization of already validated #41/#64 structure.
 
-This does **not** reduce homeostasis as active recovery, adaptive/allostatic regulation, biological life, organismic individuality, metabolism, reproduction, autopoiesis, reward/value, death, or evolutionary fitness.
+This does **not** reduce adaptive/allostatic regulation, biological life, organismic individuality, metabolism, reproduction, autopoiesis, reward/value, death, or evolutionary fitness.
+
+Issue #110 then tests the stronger finite active-recovery distinction with explicitly separated post-perturbation and post-response stages.
+
+Let:
+
+```text
+postPerturb  : Perturbation -> State
+postResponse : Perturbation -> State
+acceptable   : State -> Prop
+```
+
+and derive:
+
+```text
+ImmediateRobust
+FinalRobust
+ActiveRecovery
+```
+
+where ActiveRecovery requires at least one perturbation whose ordered path is outside the declared acceptable region immediately after perturbation and inside it after the later response.
+
+The validated finite profiles establish:
+
+- preventive robustness without ActiveRecovery;
+- ActiveRecovery without ImmediateRobust;
+- equal FinalRobustness with different recovery-path histories;
+- a failing profile with neither final restoration nor ActiveRecovery;
+- the same designated baseline path in preventive and recovery profiles while a non-baseline perturbation separates them;
+- criterion relativity under the same two-stage transition surface;
+- deletion of a decorative Homeostasis flag without changing the derived judgments.
+
+Current scoped classification:
+
+```text
+RECOVERY_DISTINCT_FROM_VIABILITY_ROBUSTNESS
+/
+ACTIVE_RECOVERY_RECONSTRUCTIBLE_FROM
+ORDERED TWO-STAGE TRANSITION + ACCEPTABILITY CRITERION
+```
+
+This result does not establish biological homeostasis in full, adaptive/allostatic regulation, endogenous controller architecture, metabolism, autopoiesis, organismic individuality, energetic cost, reproduction, learning, intent, reward/value, phenomenal feeling, or evolutionary fitness.
 
 Issue #74 then tests a deterministic bounded-failure surface. Reusing the #64 profiles, the exact profile has zero failures and the brittle profile has one failure over the declared two-variation evaluation. The brittle profile is not exactly robust, fails budget 0, and passes budget 1.
 
