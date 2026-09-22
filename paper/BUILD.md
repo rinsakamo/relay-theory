@@ -23,7 +23,7 @@ pdflatex -interaction=nonstopmode -halt-on-error main.tex
 ## Validation result — 2026-09-22
 
 - PDF generated successfully.
-- 9 pages.
+- 10 pages.
 - Bibliography resolved successfully with `plainnat`.
 - Final LaTeX pass: no warnings.
 - No overfull boxes.
