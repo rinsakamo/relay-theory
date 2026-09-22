@@ -769,6 +769,33 @@ In this scoped finite role, default tendency is **derived from the explicit sele
 
 This does not reduce learned or psychological Habit. Formation/provenance, practice history, procedural memory, automaticity, value/reward, compulsion, and stochastic action-selection semantics remain separate questions.
 
+Issue #98 places a narrow Concept-like current equivalence role on the same derived/readout side rather than introducing a Concept object. Current repository authority already defines probe-relative equivalence in #57:
+
+```text
+ProbeEq(P, x, y)
+  :=
+every probe admitted by P
+gives the same output on x and y
+```
+
+For the tested Concept-like role, class membership is just this existing equivalence relation relative to an explicit probe family. Changing the admitted probe family can change the induced partition while the retained/current carrier is unchanged.
+
+Accordingly, **Concept-like current grouping is derived from carrier + declared probe family + existing probe-equivalence semantics** in this scope. A Concept-specific wrapper module was deliberately not retained because it added no independent discriminator.
+
+This current grouping is not automatically persistent. #57 already shows that an ordinary future map can break a current probe-equivalence unless an explicit compatibility / pullback-closure condition is supplied.
+
+Therefore:
+
+```text
+current grouping
+!=
+future-stable grouping
+```
+
+in the tested formal sense.
+
+This does not reduce semantic concepts, conceptual understanding, linguistic grounding, prototype/exemplar structure, concept learning, or a privileged ontology of categories.
+
 This result does not extend automatically to probabilistic success, expected loss, bounded degradation, adversarial risk, distribution shift, or other approximate/stochastic notions. Those require explicit measure / metric / threshold / distribution structure and separate testing.
 
 Issue #74 tests the first bounded deterministic extension without introducing probability. Over the same two-variation #64 response surface, the exact profile has failure count 0 while the brittle profile has failure count 1. The brittle profile fails exact robustness and budget 0, but passes an explicit failure budget of 1.

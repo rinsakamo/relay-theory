@@ -354,6 +354,56 @@ RECONSTRUCTIBLE UNDER EXPLICIT SELECTION WEIGHTS
 
 This does not establish human/animal Habit, acquisition or practice history, procedural memory, automaticity, compulsion, addiction, value/reward, reinforcement-learning semantics, conscious preference, intention, or stochastic-policy semantics. Current tendency also does not establish experience-sensitive formation without an explicit formation bridge.
 
+Issue #98 then tests the narrow current Concept-like equivalence role against already-merged #57 probe-relative equivalence.
+
+The key reduction is direct:
+
+```text
+Concept-like current class membership
+  :=
+ProbeEq(declared probe family, anchor, candidate)
+```
+
+The same retained/current carrier pair may be equivalent under one declared probe family and distinguished under another. Therefore:
+
+```text
+retained carrier alone
+  -/->
+unique Concept-like partition
+```
+
+and the tested grouping is reconstructed from:
+
+```text
+carrier
++ declared probe family
++ existing ProbeEq semantics
+```
+
+No Concept-specific formal primitive or category table is required. PR #100 supplied a mechanically coherent finite instantiation and passed exact-head formal-core run #168, but was intentionally closed unmerged because its central construction merely renamed the already-merged #57 relation.
+
+#57 also supplies the separate temporal/dynamical constraint:
+
+```text
+current probe-relative equivalence
+  -/->
+automatic future-stable equivalence
+```
+
+without explicit future compatibility / pullback closure.
+
+Thus the tested current grouping and persistence/stability of that grouping must remain distinct.
+
+Current scoped classification:
+
+```text
+CONCEPT_LIKE_EQUIVALENCE_REDUCES_TO_EXISTING_PROBE_EQ
+/
+CATEGORY_ROLE_IS_PROBE_RELATIVE
+```
+
+This does not establish semantic concepts, understanding, symbols/language, prototypes or exemplars, concept acquisition, abstraction quality, grounding, or a privileged category ontology.
+
 Issue #74 then tests a deterministic bounded-failure surface. Reusing the #64 profiles, the exact profile has zero failures and the brittle profile has one failure over the declared two-variation evaluation. The brittle profile is not exactly robust, fails budget 0, and passes budget 1.
 
 Thus approximate qualification is threshold-relative and is reconstructed in this finite instance from:
