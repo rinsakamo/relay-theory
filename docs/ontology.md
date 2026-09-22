@@ -754,6 +754,8 @@ This does **not** promote formation history, provenance, learning, or Crystalliz
 
 Issue #69 further prevents `Memory` from becoming a monolithic retained-state type by separating accurate reconstruction from local experience-sensitive formation. Each can occur without the other under the same finite carrier and explicit readout, while a positive control satisfies both. These remain derived operational judgments over formation/readout structure, not current ontology primitives. A later common-substrate account must preserve this distinction rather than hiding it in a Memory/Crystal label.
 
+Issue #84 adds a separate retention-versus-stability boundary. The same formed state can be ordinarily retained in two matched systems while only one preserves the relevant readout across an explicitly declared perturbation family. Stability is therefore not licensed merely by calling a state retained. The perturbation family remains evaluation/model structure, and no `Crystal` or `Crystallization` primitive follows from this separation.
+
 ### Emotion-like structure
 
 Candidate reduction:
