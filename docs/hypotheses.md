@@ -262,6 +262,23 @@ This classification is only about the tested explicit cost metric. It does not i
 
 The #41/#47/#53 results are not a reduction of learning, sample efficiency, biological motor chunking, unique or intrinsic hierarchical composition, arbitrary cross-world transfer, expertise, automaticity, general compression/resource efficiency, human know-how, Skill acquisition, or crystallization dynamics.
 
+### Current constraint — prequalified Selfhood
+
+Issue #43 tests whether operational H-001 needs a prior Self-like eligibility predicate for the supplied focal locus.
+
+A finite raw-response profile contains no Self / Action / Perception / Cognition classification fields. The derived operational agency-locus predicate is expressed directly as a conjunction of:
+
+- exterior-to-internal sensitivity;
+- internal source-to-intermediate sensitivity;
+- intermediate-to-downstream sensitivity;
+- internal-to-exterior sensitivity.
+
+The fully responsive profile satisfies the declared bundle. Inert and partial profiles fail because specific lower-level response structure is absent. A decorative Self label can vary without changing the result.
+
+Therefore current operational H-001 does **not** require a prequalified `Eligible(Self)` gate before evaluating the focal response structure.
+
+This is **not** a derivation of phenomenal or person-level Selfhood. The resulting agency-locus profile is deliberately a weaker operational summary. Consciousness, personal identity, persistence, organismic individuality, autopoiesis, internal de-se representation, body ownership, and personhood remain outside this result.
+
 ### Ownership constraint
 
 Ownership is separately constrained because the term conflates at least:
@@ -348,6 +365,8 @@ A primitive-Self account regains force only if an intrinsic Self-relative distin
 - #50 intervention-indexed Skill decomposition formalization: https://github.com/rinsakamo/relay-theory/pull/50
 - #53 Skill competence/resource orthogonality owner: https://github.com/rinsakamo/relay-theory/issues/53
 - #54 Skill competence/resource finite formalization: https://github.com/rinsakamo/relay-theory/pull/54
+- #43 Self-like qualification / operational agency-locus owner: https://github.com/rinsakamo/relay-theory/issues/43
+- #44 operational agency-locus finite formalization: https://github.com/rinsakamo/relay-theory/pull/44
 - #46 Ownership authorship/control decomposition owner: https://github.com/rinsakamo/relay-theory/issues/46
 - #49 Ownership authorship/control finite formalization: https://github.com/rinsakamo/relay-theory/pull/49
 - Historical RelayLM `relay-theory` lane: provenance only

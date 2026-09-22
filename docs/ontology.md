@@ -251,16 +251,39 @@ Privileged grounding, embodiment, authority, ownership, or other semantics must 
 
 ### Self-like organization
 
-“Self” is no longer treated here as one undifferentiated primitive question.
+“Self” is not treated here as one undifferentiated primitive question.
 
-The current structural result from #5 is:
+#5 established that a center / focal locus is required for Self-relative evaluation, while the center itself is an evaluation parameter rather than a Selfhood claim.
 
-- a center / locus is required for Self-relative evaluation;
-- the center is an evaluation parameter, not by itself a Selfhood claim;
-- no prior `Eligible(Self)` predicate has been shown necessary;
-- which organization warrants a Self-like description remains unresolved.
+#43 sharpens the remaining operational question:
 
-A future Self-like classification must therefore be derived from independently testable lower-level organization or survive as a narrower primitive only after those reductions fail.
+> H-001 does not currently require a locus to pass a prior `Eligible(Self)` / `isSelf` gate before Action-like, Perception-like, Cognition-like, or other focal response structure can be evaluated.
+
+A finite raw-response model shows that an **operational agency-locus profile** can be derived directly from independently stated response sensitivities:
+
+- exterior-to-internal sensitivity;
+- internal source-to-intermediate sensitivity;
+- intermediate-to-downstream sensitivity;
+- internal-to-exterior sensitivity.
+
+A fully responsive focal profile satisfies the declared operational bundle; an inert profile and a profile missing outward sensitivity fail for explicit structural reasons. A decorative `selfFlag` can toggle without changing that result.
+
+This does **not** derive metaphysical Selfhood.
+
+The operational agency-locus profile is intentionally weaker than:
+
+- phenomenal selfhood;
+- consciousness;
+- personal identity;
+- persistence across time or substrate replacement;
+- organismic individuality / autopoiesis;
+- internal de-se self-representation;
+- body ownership;
+- moral or legal personhood.
+
+Those stronger notions require separate discriminating criteria if RelayTheory needs them.
+
+Accordingly, prequalified Selfhood is not currently required for the operational H-001 scaffold, while stronger Selfhood remains unresolved rather than promoted or denied.
 
 ## Derived agency candidates
 

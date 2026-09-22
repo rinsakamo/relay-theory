@@ -126,6 +126,8 @@ Within the operational H-001 scope, #35 now gives Action-like attribution a narr
 
 #53 separates the first explicit resource-sensitive axis from #41 competence. Two candidates can have the same response mapping and competence but different declared costs, while equal declared cost can coexist with different competence. In this finite scope, a resource-sensitive qualification is reconstructed as task-relative competence plus an explicit cost/budget criterion; a decorative crystallization label adds no information. This does not identify compression or crystallization in general with one cost field.
 
+#43 tests the remaining Self-like qualification question. In the operational H-001 scope, an arbitrary focal locus can be evaluated directly from raw inward / internal / outward response structure; no prior `Eligible(Self)` or `isSelf` gate is required. A derived operational agency-locus profile can summarize a declared bundle of those responses, but it is explicitly weaker than phenomenal, personal, biological, or persistent Selfhood.
+
 The remaining high-level reductions are not accepted merely because they are simpler. They must survive falsification.
 
 ## Research rule
