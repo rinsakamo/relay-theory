@@ -1,0 +1,31 @@
+name: paper2-retrieval-selftest
+
+on:
+  pull_request:
+    paths:
+      - "scripts/paper2_openalex_enumerate.py"
+      - "research/paper2/retrieval_v1.json"
+      - ".github/workflows/paper2-retrieval-selftest.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "scripts/paper2_openalex_enumerate.py"
+      - "research/paper2/retrieval_v1.json"
+      - ".github/workflows/paper2-retrieval-selftest.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile enumerator
+        run: python -m py_compile scripts/paper2_openalex_enumerate.py
+      - name: Run deterministic self-test
+        run: python scripts/paper2_openalex_enumerate.py --self-test
