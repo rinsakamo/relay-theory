@@ -160,6 +160,30 @@ Two strict total extensions still exist and both preserve ambient precedence. Ea
 
 This does not make symmetry-breaking itself a Time primitive. It states an information requirement: any preferred extension must contain, inherit, or derive additional structure that distinguishes the events it newly orders. That extra structure may come from a law, boundary condition, field, measurement convention, or another independently justified source; the present result does not choose among those possibilities.
 
+#73 adds a separate metric-information constraint. Fix one complete strict chain:
+
+```text
+a < b < c
+```
+
+Two injective scalar clocks,
+
+```text
+0, 1, 2
+0, 1, 3
+```
+
+both preserve and reflect exactly that same strict order. Their induced interval assignments are positive on all strict comparisons and additive along the finite chain, yet disagree on `b -> c` and `a -> c`.
+
+Therefore, in this finite clock/interval surface:
+
+> **Complete temporal ordering does not by itself determine metric-like duration.**
+
+The formal reconstruction obstruction is exact: one deterministic recovery function given the identical source-order relation cannot return both extensionally different admissible duration assignments.
+
+This does not promote a clock or metric to ontology merely because order is insufficient. It establishes only that any duration-like magnitude requires additional scale/spacing information not present in pure order. The result does not establish physical proper time, Lorentzian geometry, continuity, discreteness, relativity, or a universal temporal metric.
+
+
 
 ## Derived source and validation terms
 
