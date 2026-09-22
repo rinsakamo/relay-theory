@@ -32,7 +32,7 @@ The venue-specific copy is deliberately separate so formatting changes do not al
 - double-spaced body;
 - ragged-right review text;
 - review margins adapted to the journal guidance used in the 2026-09-22 venue audit;
-- abstract: **88 words**, below the current 100-word limit;
+- abstract: **94 words**, below the current 100-word limit;
 - article body: roughly **2,600 words**, well below the current Article word limit;
 - Chicago author-date bibliography style;
 - title/abstract separated from the main text for readable review pagination.
@@ -51,20 +51,20 @@ pdflatex -interaction=nonstopmode -halt-on-error main.tex
 pdflatex -interaction=nonstopmode -halt-on-error main.tex
 ```
 
-Result for the review-format source before the final R1--R15 / Acknowledgements anonymization pass:
+Result for the review-format source before the final R1--R19 / Acknowledgements anonymization pass:
 
 - PDF generated successfully;
 - 18 review-format pages;
 - final LaTeX pass has no overfull/underfull boxes and no undefined citations/references;
 - all rendered pages were visually inspected;
-- public theorem identifiers are removed from the blind review copy and replaced by neutral labels R1--R15;
+- public theorem identifiers are removed from the blind review copy and replaced by neutral labels R1--R19;
 - the only non-LaTeX diagnostic in the validation environment is a `bibtex8` style warning for the editor-only Bueno–Chen–Fagan volume under `chicago.bst`; the rendered bibliography entry is correct.
 
 A standard environment with ordinary `bibtex` can use it instead of `bibtex8`.
 
 ## Blind-review boundary
 
-The review copy refers to the Lean development only through neutral result labels R1--R15. Public theorem identifiers, repository names, repository URLs, issue/PR numbers, and author metadata are excluded from the blind manuscript.
+The review copy refers to the Lean development only through neutral result labels R1--R19. Public theorem identifiers, repository names, repository URLs, issue/PR numbers, and author metadata are excluded from the blind manuscript.
 
 An anonymous artifact manifest is maintained in this venue workspace. Do not insert the public repository URL or public theorem identifiers into materials sent for blind review.
 
@@ -96,7 +96,7 @@ The job passed:
 - exact-head checkout verification;
 - blind-source identifier audit;
 - abstract-length check;
-- presence of all anonymous result labels `R1`--`R15`;
+- presence of all anonymous result labels `R1`--`R19`;
 - full LaTeX + BibTeX build;
 - 18-page PDF generation;
 - final LaTeX warning / citation / layout audit;
@@ -122,7 +122,7 @@ Rationale:
 
 - the current journal guidance does not require supplementary executable material at initial submission;
 - the public source is searchable and could weaken anonymous review;
-- the manuscript's formal claims are already represented by neutral labels `R1`--`R15`;
+- the manuscript's formal claims are already represented by neutral labels `R1`--`R19`;
 - a scrubbed executable Lean package can be exported and independently revalidated if an editor or reviewer requests it.
 
 If the live submission portal explicitly requires executable supplementary source, revisit this decision before upload.
@@ -143,3 +143,21 @@ After adding full DOI URLs to the bibliography source, the blind review copy was
 The exact CI artifact was rendered at 140 dpi and all 18 pages were inspected. The DOI URLs render in the reference list, and no clipping, overlap, broken glyphs, missing text, or reference-layout defects were observed.
 
 This supersedes the earlier run #6 visual-validation record for the current submission copy.
+
+
+## Evidential-bridge revision — 2026-09-23
+
+The manuscript has undergone a structural revision after a hostile-review pass.
+
+Key changes:
+
+- title narrowed from "support" to **"admissible evidence"**;
+- an explicit representation-feature / target-property evidential bridge is now part of the formal framework;
+- declaration of a bridge is explicitly separated from independent scientific warrant for that bridge;
+- the relabeling-invariance audit is promoted to a central practical diagnostic;
+- UMI-based molecular counting now includes the concrete read-count versus molecule-count contrast and keeps source-assignment/error uncertainty explicit;
+- Nguyen (2017) is treated as the principal conceptual comparator;
+- the reviewer-response-style objections section has been replaced by ordinary Scope and Limitations;
+- the anonymous formal surface is extended to R1--R19.
+
+All earlier exact-PDF validation records are historical after this revision. The new exact head must pass Lean CI, Paper 1 Review CI, and a fresh page-by-page visual inspection before publication-readiness is claimed.
