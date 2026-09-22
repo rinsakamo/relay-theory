@@ -746,7 +746,32 @@ Pointwise-equal full profiles preserve weighted failure under fixed weights, an 
 
 The scoped classification is **DISTRIBUTION-WEIGHTED ROBUSTNESS RECONSTRUCTIBLE UNDER MEASURE/LOSS SURFACE**. The equal-total integer weights may be normalized to finite distributions, but the formal result does not require general probability theory. It does not settle continuous measures, stochastic transition dynamics, Bayesian uncertainty/calibration, unknown distribution shift, adversarial optimization, or semantic error severity.
 
-The #41/#47/#53 results do **not** reduce learning mechanism, sample efficiency, biological motor chunking, unique or intrinsic hierarchical composition, arbitrary cross-world transfer, expertise, automaticity, practice history, general compression/resource efficiency, human semantic know-how, Skill acquisition, or Skill crystallization dynamics. Those stronger meanings require separate justification if RelayTheory needs them.
+Issue #86 tests the first exact cross-world transfer surface without introducing a transferable-Skill object. A source identity policy is transported through an explicit target-to-source context bridge and source-to-target response bridge, then evaluated by an explicit target criterion.
+
+With identity and Boolean-flip as the two correspondence maps, the finite transaction separates bridge alignment:
+
+```text
+context bridge   response bridge   target competence
+identity         identity          yes
+identity         flip              no
+flip             identity          no
+flip             flip              yes
+```
+
+The source policy itself remains competent and unchanged throughout. Therefore source competence does not determine target-world transfer. In this tested finite scope, the transfer judgment is reconstructed from:
+
+```text
+source response mapping
++ explicit context correspondence
++ explicit response correspondence
++ target task/evaluation criterion
+```
+
+Identity and flip are both self-inverse correspondences, so bare reversibility/cardinality does not canonically select one bridge. Pointwise-equal source/bridge surfaces preserve transfer, and a decorative transferable-Skill flag adds no information.
+
+The scoped classification is **CROSS-WORLD TRANSFER RECONSTRUCTIBLE UNDER EXPLICIT BRIDGE / BRIDGE NON-CANONICAL WITHOUT ADDITIONAL STRUCTURE**. This does not establish which bridge is semantically correct, grounded, learned, or privileged in a real domain.
+
+The #41/#47/#53 results do **not** reduce learning mechanism, sample efficiency, biological motor chunking, unique or intrinsic hierarchical composition, bridge grounding / semantic cross-world correspondence, expertise, automaticity, practice history, general compression/resource efficiency, human semantic know-how, Skill acquisition, or Skill crystallization dynamics. Those stronger meanings require separate justification if RelayTheory needs them.
 
 Issue #60 now adds a distinct process-versus-state constraint relevant to #55. In its finite model, two experience-to-state maps produce the same actual retained state and the same current readout while differing under a counterfactual experience change. A #41-competent policy can also coexist with the experience-insensitive formation map. Therefore neither final retained structure nor operational competence determines an experience-sensitive formation process in this scope.
 

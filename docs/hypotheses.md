@@ -320,7 +320,40 @@ DISTRIBUTION-WEIGHTED ROBUSTNESS RECONSTRUCTIBLE UNDER MEASURE/LOSS SURFACE
 
 This is a finite weighted surface only. It does not settle stochastic transition dynamics, arbitrary probability spaces, continuous distributions, Bayesian uncertainty/calibration, unknown distribution shift, adversarial optimization, or semantic error severity.
 
-The #41/#47/#53 results are not a reduction of learning, sample efficiency, biological motor chunking, unique or intrinsic hierarchical composition, arbitrary cross-world transfer, expertise, automaticity, general compression/resource efficiency, human know-how, Skill acquisition, or crystallization dynamics.
+Issue #86 then tests finite exact cross-world transfer. The source identity policy and target identity task remain fixed while only the explicit context/response correspondence maps vary. Coordinated identity/identity and flip/flip bridge pairs yield target competence; mismatched identity/flip or flip/identity pairs yield target failure.
+
+Therefore:
+
+```text
+source competence
+  -/->
+cross-world transfer
+```
+
+without explicit correspondence structure. In the tested finite scope:
+
+```text
+cross-world transfer
+  <-
+source mapping
++ context bridge
++ response bridge
++ target criterion
+```
+
+Both identity and flip bridges are self-inverse, so bare reversible carrier matching does not determine a unique cross-world correspondence. Pointwise-equal source/bridge surfaces preserve the derived transfer result, and a decorative transferable-Skill label adds no information.
+
+Current scoped classification:
+
+```text
+CROSS-WORLD TRANSFER RECONSTRUCTIBLE UNDER EXPLICIT BRIDGE
+/
+BRIDGE NON-CANONICAL WITHOUT ADDITIONAL STRUCTURE
+```
+
+This does not settle semantic bridge grounding, ontology matching, empirical zero-shot transfer, embodiment change, distribution shift, abstraction quality, learning, or universal Skill identity.
+
+The #41/#47/#53 results are not a reduction of learning, sample efficiency, biological motor chunking, unique or intrinsic hierarchical composition, bridge grounding / semantic cross-world correspondence, expertise, automaticity, general compression/resource efficiency, human know-how, Skill acquisition, or crystallization dynamics.
 
 ### Current constraint — formation process vs final retained state
 
