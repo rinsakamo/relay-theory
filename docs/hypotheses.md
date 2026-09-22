@@ -378,6 +378,24 @@ accurate current reconstruction
 
 This does not define full causal provenance or episodic Memory. It constrains #55 to state explicitly which Memory-like evaluation surface is being factored through any proposed common retained structure.
 
+### Current constraint — ordinary retention vs declared perturbation stability
+
+Issue #84 tests whether a stability distinction remains after experience, formation, current retained content, ordinary evolution, and ordinary readout are fixed.
+
+The finite matched pair uses one experience-derived retained state and two post-formation evolution profiles. Both preserve the state under the declared ordinary/no-perturbation condition, but only one preserves the readout across the full declared Boolean perturbation family.
+
+Therefore:
+
+```text
+ordinary retention
+  -/->
+readout stability under a declared perturbation family
+```
+
+Pointwise-equal full perturbation profiles preserve the derived stability judgment, so no stability label carries the distinction.
+
+This gives `Crystallization` a possible discriminator stronger than generic retention only if future work independently justifies why such a stability surface is the relevant one. It does not establish `Crystallization = stability`, biological consolidation, compression, or a common Crystal substrate.
+
 ### Current constraint — prequalified Selfhood
 
 Issue #43 tests whether operational H-001 needs a prior Self-like eligibility predicate for the supplied focal locus.
