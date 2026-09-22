@@ -353,9 +353,24 @@ A decorative high-level flag can vary without changing either result.
 
 Therefore a monolithic Ownership account that requires causal authorship-like attribution and current control/revision authority to coincide is falsified for this scoped operational surface.
 
+Issue #51 adds a second scoped constraint on persistence through transfer/replacement.
+
+A finite time-indexed model shows:
+
+- the realized state can remain fixed while revision privilege transfers from A to B;
+- generation sensitivity can remain with A while that revision transfer occurs;
+- in a separate replacement history, the realized value can remain fixed while current generation sensitivity changes from A to B;
+- the same cross-snapshot pair can fail strict snapshot identity while satisfying an explicitly declared successor-lineage criterion;
+- declared lineage continuity does not force current generation-side attribution to remain with the earlier source;
+- a decorative continuity flag can vary without changing the lower-level time-indexed judgments.
+
+Thus current causal attribution and current revision privilege are time/context-relative judgments, while cross-replacement persistence is **criterion-relative** to an explicit identity/lineage standard in this tested surface. No independent persistent-Ownership bit is required for these finite distinctions.
+
+This does not establish a metaphysically privileged identity criterion. The criterion remains an explicit evaluation/model parameter whose independent justification is outside this result.
+
 The previous shorthand `Authority + Grounding + Trace` remains insufficient for all senses of Ownership.
 
-This result is only a **partial decomposition**. It does not settle or identify:
+The combined result remains only a **partial decomposition**. It does not settle or identify:
 
 - focal-locus incorporation / “part of me”;
 - possession or physical custody;
