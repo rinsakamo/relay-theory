@@ -26,7 +26,7 @@ The point is elementary, but formal arguments can violate it in subtle ways. A m
 
 The problem is evidential: **when is a difference between representations a legitimate reason to claim a difference in what they represent?**
 
-This question sits near several mature research traditions. Programming-language semantics has long studied representation independence: clients of an abstract data type should depend on exposed behavior rather than on a particular internal representation (Mitchell 1986). Process semantics and coalgebra study observational or behavioral equivalence relative to specified interactions (Hennessy and Milner 1985; Rutten 2000). Philosophical work on identity and discernibility separates logical discernibility from broader questions about identity and explicitly factorizes the adequacy of a descriptive language from mathematical discernibility within that language (Ladyman, Linnebo, and Pettigrew 2012). Practice-oriented philosophy of science likewise emphasizes how individuation depends on concrete experimental and epistemic practices rather than on a single context-free metaphysical criterion (Bueno, Chen, and Fagan 2018; Waters 2018; Love 2018).
+This question sits near several mature research traditions. Scientific-representation accounts already treat representation as directional and inferential: models are used to draw warranted inferences about target systems (Suárez 2004; Contessa 2007), and Nguyen (2017) explicitly analyzes model and theoretical equivalence in terms of whether models license the same claims about the same targets. Programming-language semantics studies representation independence (Mitchell 1986). Process semantics and coalgebra study observational or behavioral equivalence relative to specified interactions (Hennessy and Milner 1985; Rutten 2000). Philosophical work on identity and discernibility factorizes questions about the adequacy of a descriptive language from mathematical discernibility within that language (Ladyman, Linnebo, and Pettigrew 2012). Practice-oriented philosophy of science studies individuation through experimental and epistemic practices (Bueno, Chen, and Fagan 2018; Waters 2018; Love 2018; Chen 2018).
 
 This paper does not replace those frameworks. Its target is narrower: the evidential transition from a formal difference to an individuation claim.
 
@@ -243,15 +243,29 @@ The mechanization claim is therefore narrow:
 
 ## 8. Relation to Existing Work
 
-### 8.1 Representation independence
+### 8.1 Scientific representation and target-directed inference
+
+The closest prior work is not observational equivalence itself but the inferential literature on scientific representation.
+
+Suárez (2004) characterizes scientific representation in terms of directionality toward a target and the capacity to support surrogate inference. Contessa (2007) develops an interpretational account in which a user interprets a representational vehicle in terms of a target so that valid surrogative inferences can be drawn. These accounts already establish that representation is not exhausted by formal resemblance between a vehicle and its target.
+
+Nguyen (2017) is especially close to the present paper. He connects scientific representation with model and theoretical equivalence and proposes that equivalence should depend on how models are used to draw inferences about target systems—specifically, whether they license the same claims about the same targets.
+
+Accordingly, this paper does **not** claim novelty for target-directed inference, for the idea that representations license claims about targets, or for separating representational vehicles from target systems.
+
+The narrower question here is individuation-specific:
+
+> **When a formal difference is offered as evidence for an individuation claim, has the difference entered through the declared target-relevant semantics, or only through the representation apparatus?**
+
+The Lean artifact operationalizes that question with explicit negative controls. This is the principal remaining distinction from the scientific-representation literature.
+
+### 8.2 Representation independence
 
 Mitchell (1986) studies representation independence for abstract data types: clients should depend on behavior exposed through the abstraction boundary rather than on implementation representation.
 
 The present paper adopts a related caution but applies it to a different inference target. The question is not whether two implementations are contextually interchangeable for clients. It is whether a formal difference may count as evidence that represented targets are operationally distinct.
 
-The novelty claim is therefore not representation independence itself. It is the use of explicit representation/target/test factorization as an evidential admissibility condition for individuation claims.
-
-### 8.2 Observational and behavioral equivalence
+### 8.3 Observational and behavioral equivalence
 
 Observational equivalence and bisimulation already provide mature accounts of when systems should count as behaviorally equivalent relative to specified observations or interactions. Hennessy and Milner (1985) develop observational congruence for concurrent programs, while Rutten (2000) develops a broad coalgebraic theory of systems and bisimulation.
 
@@ -259,29 +273,49 @@ The relation \(\equiv_A\) used here is mathematically modest by comparison. No n
 
 The difference is inferential: when an observed difference is used to support an individuation claim, a difference visible only in the representation layer is not automatically admissible evidence of target-level distinctness.
 
-### 8.3 Identity and discernibility
+### 8.4 Identity and discernibility
 
 Ladyman, Linnebo, and Pettigrew (2012) show that identity-and-discernibility questions can be factorized into the adequacy of a formal language and mathematical discernibility within that language. Their analysis is an important constraint on the present paper: discernibility relations alone should not be advertised as solving numerical identity.
 
-The present framework is compatible with that separation and narrower in ambition. It does not offer a new taxonomy of logical discernibility. It makes a specific evidential distinction between properties of the representation and target-relevant differences exposed by declared tests.
+The present framework is compatible with that separation and narrower in ambition. It does not offer a new taxonomy of logical discernibility. It asks which formal differences may be used as evidence for a declared target-level individuation claim.
 
 Work on weak discernibility in philosophy of physics likewise illustrates why discernibility and unrestricted numerical identity should not be conflated (Dieks and Versteegh 2008).
 
-### 8.4 Individuation in scientific practice
+### 8.5 Individuation in scientific practice
 
 Practice-oriented work shifts attention from the abstract question "What is an individual?" toward how scientists count, track, manipulate, and distinguish entities in inquiry. Bueno, Chen, and Fagan (2018) develop this program across multiple sciences. Waters (2018) asks how and for what purposes scientists individuate, while Love (2018) emphasizes problem-relative individuation in developmental biology.
 
-The present paper shares the idea that individuation can depend on explicitly specified epistemic or experimental practices. Its contribution is narrower and formal: when a practice is represented by a declared test family, the model must still distinguish differences generated by the representation apparatus from differences linked to the target of the individuation claim.
+Chen (2018) is particularly relevant because it distinguishes ontological and epistemological modes of experimental individuation, describing the latter in terms of the presentation of individuals in experimental practice. The present use of *representation* is more formal and should not be conflated with Chen's experimental notion of presentation, but the comparison reinforces the need to separate what an experiment or formalism presents from stronger claims about what individuals exist.
 
-### 8.5 Novelty boundary
+The present paper's contribution, if any, is narrower: when an individuation practice is represented by an explicit formal test regime, the representation apparatus itself must not supply unacknowledged evidence for target-level plurality.
 
-The paper does not claim novelty for observational equivalence, bisimulation, representation independence, test-relative classification, the distinction between discernibility and numerical identity, or practice-relative individuation.
+### 8.6 Redundant and surplus representational structure
 
-The proposed contribution lies in their intersection:
+The argument should also not be read as saying that representation-level or redundant structure is useless. Nguyen, Teh, and Wells (2020) show, in the context of gauge theory, that structure regarded as surplus in one sense may still be essential for representing a sufficiently rich collection of physically relevant local fields.
 
-> **a representation-safe evidential discipline for formal individuation arguments, together with mechanized negative controls showing that representation-only differences and semantically inert identity-like tokens cannot supply hidden evidence for the tested target-sensitive classification.**
+That result blocks an overly strong reading of the present negative controls. The claim here is only evidential:
 
-If prior work is shown to entail this complete package as an explicit individuation methodology, the novelty claim should be weakened.
+> **A representation-only difference does not by itself support the tested target-level individuation claim.**
+
+It does not follow that every such difference should be deleted from the formalism, or that representational redundancy can never have explanatory, computational, or representational value.
+
+### 8.7 Novelty boundary
+
+The paper does not claim novelty for:
+
+- target-directed scientific representation or surrogative inference;
+- observational equivalence, bisimulation, or behavioral equivalence;
+- representation independence;
+- test-relative classification;
+- the distinction between discernibility and numerical identity;
+- practice-relative or experimental individuation;
+- the existence or possible usefulness of surplus representational structure.
+
+The strongest defensible novelty claim is therefore conjunctive and methodological:
+
+> **an individuation-specific admissibility rule that separates representation-only differences from target-relevant discriminators, together with a machine-checked dependency audit containing explicit negative controls for representation-sensitive probes and semantically inert identity-like tokens.**
+
+This is a narrower claim than earlier versions of the manuscript. If prior work is shown to formulate this same package explicitly, the novelty claim should be weakened further.
 
 ## 9. Objections and Scope
 
