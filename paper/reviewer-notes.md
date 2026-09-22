@@ -165,3 +165,14 @@ The current positive rule is also scoped to a **declared evidential regime**, av
 The manuscript is ready to move from theory development to **venue selection and venue-specific editorial adaptation**.
 
 It is not yet marked publication-final because author metadata, venue template, abstract/word limits, repository/archive statement, and any venue-specific artifact requirements remain unset.
+
+
+## Venue-specific blind-review audit — 2026-09-22
+
+The Philosophy of Science adaptation now removes public Lean theorem identifiers from the reviewer-facing manuscript and replaces them with neutral labels `R1`--`R15`. The claim-to-artifact map remains readable, while direct linkage to the public development is withheld from blind review.
+
+The manuscript also includes a non-identifying Acknowledgements section disclosing generative-AI assistance, consistent with current Cambridge publishing-ethics guidance.
+
+### Remaining blocker
+
+The **final anonymized review source still needs one last compile/render pass** after these venue-specific edits. Earlier review-format and venue-neutral versions compiled cleanly, but publication-final status should not be claimed until the exact anonymized source currently in the branch has been rebuilt and visually inspected.
