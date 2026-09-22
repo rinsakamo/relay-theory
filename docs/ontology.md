@@ -769,7 +769,7 @@ In this scoped finite role, default tendency is **derived from the explicit sele
 
 This does not reduce learned or psychological Habit. Formation/provenance, practice history, procedural memory, automaticity, value/reward, compulsion, and stochastic action-selection semantics remain separate questions.
 
-Issue #98 places a narrow Concept-like current equivalence role on the same derived/readout side rather than introducing a Concept object. Current repository authority already defines probe-relative equivalence in #57:
+Issue #97 places a narrow Concept-like current equivalence role on the same derived/readout side rather than introducing a Concept object. Current repository authority already defines probe-relative equivalence in #57:
 
 ```text
 ProbeEq(P, x, y)
