@@ -57,16 +57,16 @@ Result after the layout fixes:
 - 18 review-format pages;
 - final LaTeX pass has no overfull/underfull boxes and no undefined citations/references;
 - all rendered pages were visually inspected;
-- the long Lean theorem identifiers are line-breakable;
+- public theorem identifiers are removed from the blind review copy and replaced by neutral labels R1--R15;
 - the only non-LaTeX diagnostic in the validation environment is a `bibtex8` style warning for the editor-only Bueno–Chen–Fagan volume under `chicago.bst`; the rendered bibliography entry is correct.
 
 A standard environment with ordinary `bibtex` can use it instead of `bibtex8`.
 
 ## Blind-review boundary
 
-The review copy refers to a Lean development and theorem names because those are part of the evidential argument, but it intentionally does **not** identify the public repository or authorship.
+The review copy refers to the Lean development only through neutral result labels R1--R15. Public theorem identifiers, repository names, repository URLs, issue/PR numbers, and author metadata are excluded from the blind manuscript.
 
-Before actual submission, decide how the supplementary formal artifact should be supplied under the journal's anonymous-review policy. Do not insert a self-identifying repository link into the review manuscript before that decision.
+An anonymous artifact manifest is maintained in this venue workspace. Do not insert the public repository URL or public theorem identifiers into materials sent for blind review.
 
 ## Remaining pre-submission decisions
 
@@ -76,3 +76,10 @@ Before actual submission, decide how the supplementary formal artifact should be
 - do one final journal-portal check immediately before submission because submission requirements can change.
 
 No journal submission has been made from this workspace.
+
+
+## AI-tool disclosure
+
+The current Cambridge publishing-ethics policy requires disclosure when generative AI is used to generate manuscript text. The blind review copy therefore includes an anonymous AI Tool Disclosure naming OpenAI ChatGPT / GPT-5.6 Sol, the access date, and the purposes for which it was used, while stating that the author independently verified the manuscript and remains responsible for the content.
+
+This disclosure is intentionally non-identifying.
