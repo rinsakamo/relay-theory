@@ -354,6 +354,36 @@ RECONSTRUCTIBLE UNDER EXPLICIT SELECTION WEIGHTS
 
 This does not establish human/animal Habit, acquisition or practice history, procedural memory, automaticity, compulsion, addiction, value/reward, reinforcement-learning semantics, conscious preference, intention, or stochastic-policy semantics. Current tendency also does not establish experience-sensitive formation without an explicit formation bridge.
 
+Issue #98 then tests a structural Concept/category-like role using the already-forged probe-relative equivalence relation. The retained carrier is fixed while the admitted comparison surface changes. The same state pair is equivalent under one declared probe family and distinguished under another, with a different pair showing the converse separation.
+
+Thus:
+
+```text
+retained carrier alone
+  -/->
+unique category partition
+```
+
+but, in the tested finite current-state scope:
+
+```text
+Concept-like class
+  =
+probe-relative equivalence class
+```
+
+for the declared probe family and anchor. Extensional equality of probe families preserves the induced equivalence/class result, and no independent Concept/category label carries the answer.
+
+Current scoped classification:
+
+```text
+CONCEPT-LIKE EQUIVALENCE RECONSTRUCTIBLE UNDER PROBE-RELATIVE QUOTIENT
+/
+CATEGORY ROLE PROBE-RELATIVE
+```
+
+This does not settle semantic concepts, understanding, abstraction learning, concept acquisition, language grounding, prototypes/exemplars, or privileged ontology. Current category structure also does not establish formation provenance.
+
 Issue #74 then tests a deterministic bounded-failure surface. Reusing the #64 profiles, the exact profile has zero failures and the brittle profile has one failure over the declared two-variation evaluation. The brittle profile is not exactly robust, fails budget 0, and passes budget 1.
 
 Thus approximate qualification is threshold-relative and is reconstructed in this finite instance from:
