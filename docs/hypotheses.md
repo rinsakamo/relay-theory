@@ -280,6 +280,29 @@ EXACT ROBUSTNESS DERIVED AS CONTEXT EXPANSION
 
 This applies only to deterministic universal success over the declared variation class. Probabilistic, approximate, graded, adversarial, and distributional robustness remain unresolved and may require additional explicit evaluation structure.
 
+Issue #88 then tests a narrower automaticity-like support-independence role. Let the full response surface be:
+
+```text
+Context × Support -> Response
+```
+
+The proposed support-off judgment is ordinary #41 competence after restricting the evaluation class to the explicit `support = false` slice. If success is required across both support values, the result is exactly the #64 expanded-context pattern with `Support` in the variation coordinate.
+
+Therefore the tested operational role requires no additional automaticity primitive:
+
+```text
+SUPPORT-INDEPENDENT COMPETENCE DERIVED
+
+AUTOMATICITY-LIKE SUPPORT INDEPENDENCE
+COLLAPSES TO CONTEXT-RELATIVE COMPETENCE
+```
+
+A supported-competent profile may fail on the support-off slice, so supported competence alone does not determine support-independent competence. The missing information is the response under the explicitly selected support condition.
+
+This does **not** reduce psychological automaticity. Support-off competence does not imply learned acquisition, unconscious execution, attention independence, absence of deliberation, low latency, low resource cost, procedural memory, habit, practice history, or expertise. #53 keeps resource cost separate, and #60 keeps competence separate from experience-sensitive formation.
+
+No additional Lean module is introduced for #88 because the scoped result is a direct restriction/specialization of already validated #41/#64 competence structure rather than a new discriminator.
+
 Issue #74 then tests a deterministic bounded-failure surface. Reusing the #64 profiles, the exact profile has zero failures and the brittle profile has one failure over the declared two-variation evaluation. The brittle profile is not exactly robust, fails budget 0, and passes budget 1.
 
 Thus approximate qualification is threshold-relative and is reconstructed in this finite instance from:
