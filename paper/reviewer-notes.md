@@ -40,7 +40,7 @@ The underlying mathematical ideas are mature.
 
 **Current response:** No novelty claim for the equivalence relation. The proposed contribution is the inference discipline governing when a formal distinction is admissible evidence for an individuation claim, plus machine-checkable anti-smuggling controls.
 
-**Status:** Addressed provisionally. Requires deeper literature search before submission.
+**Status:** Deepened on 2026-09-22. The novelty claim has been narrowed substantially after finding Suárez (2004), Contessa (2007), and especially Nguyen (2017). No novelty is now claimed for target-directed inference or for models licensing claims about targets. Remaining candidate novelty is individuation-specific evidential admissibility plus the mechanized anti-smuggling controls.
 
 ### 4. "Operational distinguishability is not individuality."
 
@@ -114,7 +114,7 @@ The carrier is intentionally tiny and the proofs are elementary.
 
 ## Remaining publication risks
 
-1. **Novelty risk remains the main blocker.** A deeper search must test whether existing work already formulates the complete representation/target/test/evidential-admissibility package for individuation.
+1. **Novelty risk remains the main publication risk, but the first deeper pass is complete.** The closest identified prior art is Suárez (2004), Contessa (2007), Nguyen (2017), Chen (2018), and Nguyen, Teh, and Wells (2020). The manuscript must claim only the individuation-specific admissibility rule plus mechanized negative controls, not target-directed inference in general.
 2. **Reference assignment remains exogenous.** This must stay visible throughout the manuscript.
 3. **The word "individual" must remain carefully scoped.** Prefer "individuation claim," "operational distinction," and "separately resolved cases" over unrestricted individuality language.
 4. **Mechanization must be sold as auditability, not theorem depth.**
