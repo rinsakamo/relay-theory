@@ -1,3 +1,7 @@
+import RelayTheory.PartitionGroundingNonVacuity
+import RelayTheory.ProbeFamilyExtensionNonVacuity
+import RelayTheory.CriterionGroundingNonVacuity
+import RelayTheory.NonVacuityBasisWitness
 import RelayTheory.GroundedPresentationDistinguishability
 import RelayTheory.NestedRecoveryScaleCountermodel
 import RelayTheory.NestedCandidateScaleCountermodel
