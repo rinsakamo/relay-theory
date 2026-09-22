@@ -29,7 +29,9 @@ Suggested values:
 
 ## H-001 — High-level agency reduction
 
-**Status:** `CONSTRAINED`
+**Status:** `PARTIALLY_SUPPORTED`
+
+**Terminal issue classification:** `PARTIAL REDUCTION`
 
 **Issue:** #1 — Test whether high-level agency concepts reduce to grounded interaction and change
 
@@ -84,7 +86,7 @@ Therefore the following stronger subclaim is falsified:
 
 > High-level agency semantics can be recovered from the actually realized interaction/change history alone.
 
-H-001 remains open because the broader reduction may still survive if the missing distinctions are recoverable from lower-level **transition, dependence, counterfactual, admissibility, or contextual/task structure** without reintroducing the high-level concept under another name.
+The broader H-001 program therefore tests recovery from lower-level **transition, dependence, counterfactual, admissibility, and contextual/task structure** rather than realized history alone.
 
 This constraint does **not** promote any such structure to primitive status.
 
@@ -496,6 +498,44 @@ Still unresolved or outside these scoped Ownership results:
 - normative/title persistence through arbitrary replacement and broader identity questions.
 
 Primitive status for any surviving Ownership sense must be tested only after these remaining distinctions are separately specified.
+
+### Terminal synthesis — PARTIAL REDUCTION
+
+Issue #1 has reached its stated exit condition.
+
+The accumulated finite/formal results support the following scoped conclusions:
+
+- operational Action-like attribution is reconstructed from counterfactual source sensitivity plus the supplied focal partition;
+- operational Perception-like uptake is reconstructed from exterior-to-internal sensitivity plus the supplied focal partition;
+- operational Cognition-like function is reconstructed from internal source sensitivity plus downstream response relevance;
+- task-relative Skill-like competence is reconstructed from response mapping plus declared context/task/evaluation surface, with later robustness/resource refinements likewise represented by explicit evaluation structure;
+- current operational H-001 does not require a prequalified Selfhood gate;
+- the original flat Self / World / Boundary / Relation / Interaction / Change / Grounding / Authority / Trace candidate set does not survive unchanged as an independent primitive set in the tested agency-local scope.
+
+At the same time, stronger reduction claims fail or remain outside the result:
+
+- realized interaction/change history alone is insufficient;
+- observational response alone does not in general determine intervention response;
+- monolithic Ownership does not survive: authorship-like attribution, revision authority, custody-like coupling, access-like capability, registry-mediated title, cross-snapshot continuity, analytic focal membership, and bidirectional functional integration carry independently variable information;
+- registry-mediated title is **not** determined by physical causal/control structure alone and is reconstructed only relative to an explicit institutional rule surface;
+- phenomenal Selfhood/body ownership, biological individuality, broader normative legitimacy, responsibility/consent, and other stronger meanings remain separate research questions.
+
+Therefore the broad issue-level outcome is:
+
+```text
+PARTIAL REDUCTION
+
+operational agency categories
+  -> substantially reconstructible from lower-level explicit structure
+
+but
+
+grounded physical interaction/change alone
+  -/->
+all higher-level normative / phenomenal / identity semantics
+```
+
+This closes the broad H-001 Issue without claiming a primitive-free theory. Narrower residual questions continue in their own Issues and may further constrain or extend these results.
 
 ### Discriminating evidence
 
