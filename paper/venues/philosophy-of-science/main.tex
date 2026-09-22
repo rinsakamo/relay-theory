@@ -1,0 +1,345 @@
+% Philosophy of Science review-copy adaptation.
+% Venue-neutral source remains paper/main.tex.
+% Abstract is <=100 words; author metadata intentionally omitted for anonymous review.
+\documentclass[12pt]{article}
+
+\usepackage[top=4cm,bottom=4cm,left=3cm,right=2.5cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{setspace}
+\usepackage{footmisc}
+\usepackage{natbib}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+
+\title{When Does a Formal Difference Support an Individuation Claim?\\
+\large Representation, Target Relevance, and Restricted Tests}
+\author{}
+\date{}
+
+\newcommand{\Indist}{\mathrel{\equiv}}
+\newcommand{\Dist}{\mathrel{\#}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\doublespacing
+\renewcommand{\footnotelayout}{\doublespacing\normalsize}
+
+\begin{document}
+\raggedright
+\maketitle
+
+\begin{abstract}
+A formal model can contain multiple representations without thereby supporting multiple target-level individuals. We ask when a formal difference may legitimately support an operational individuation claim. We separate representations, a representation-to-target map, admitted tests, and target-sensitive outcomes. A Lean development audits this separation: representation-sensitive differences and semantically inert identity-like tokens do not alter the tested classification unless they enter the declared target semantics, while richer target-sensitive tests can refine it. The contribution is an individuation-specific evidential discipline, not a new equivalence theory or a derivation of metaphysical identity.
+\end{abstract}
+
+\section{Introduction}
+
+A formal model can contain two representations without thereby representing two individuals.
+
+A model may introduce two variables, constructors, identifiers, records, or carrier elements and later appeal to their formal inequality as evidence that two target-level individuals exist. In that pattern, representational multiplicity risks doing the ontological work that the argument was supposed to justify.
+
+The problem is evidential: when is a difference between representations a legitimate reason to claim a difference in what they represent?
+
+Scientific-representation accounts already treat representation as directional and inferential: models are used to draw inferences about target systems \citep{Suarez2004Inferential,Contessa2007Surrogative}, and \citet{Nguyen2017RepresentationEquivalence} explicitly analyzes equivalence in terms of whether models license the same claims about the same targets. Representation independence in programming-language semantics constrains dependence on implementation details \citep{Mitchell1986RepresentationIndependence}. Observational equivalence and bisimulation compare systems relative to specified interactions \citep{HennessyMilner1985,Rutten2000UniversalCoalgebra}. Philosophical work on identity and discernibility separates mathematical discernibility from broader questions about identity and language adequacy \citep{LadymanLinneboPettigrew2012}. Practice-oriented philosophy of science studies individuation through experimental and epistemic practices \citep{BuenoChenFagan2018,Waters2018AskNot,Love2018ExperimentalPractice,Chen2018ExperimentalIndividuation}.
+
+This paper targets a narrower transition: from a formal difference to an individuation claim.
+
+\begin{quote}
+\textbf{Do not infer a difference in what is represented merely from a difference in representation.}
+\end{quote}
+
+Its positive counterpart is:
+
+\begin{quote}
+\textbf{Within a declared evidential regime, a claim of operational distinctness requires a difference that is relevant to the represented target and detectable by the admitted tests.}
+\end{quote}
+
+The target domain is not reconstructed from observation, and the reference map is not derived from the tests. The result therefore does not eliminate identity from the target domain. Instead, it constrains what may count as evidence once the semantic target of an individuation claim has been fixed.
+
+\subsection{Contributions}
+
+The paper makes three deliberately limited contributions.
+
+\begin{enumerate}[leftmargin=*]
+\item \textbf{Representation-safe individuation discipline.} Formal inequality, constructor choice, list position, identifiers, and similar representation features are not automatically admissible individuation evidence.
+\item \textbf{Test-relative refinement without metaphysical overclaim.} Operational indistinguishability is defined relative to a declared test family, and the expected refinement law is verified under test-family inclusion.
+\item \textbf{Mechanized anti-smuggling controls.} A Lean development checks negative and positive controls, including an explicit identity-like token whose arbitrary reassignment leaves the target-sensitive classification unchanged when target-relevant semantics are fixed.
+\end{enumerate}
+
+The mathematics is intentionally small. The role of mechanization is to make the dependency structure auditable.
+
+\section{Formal Setting}
+
+Let \(P\) be a set of representations. Distinct elements of \(P\) are not assumed to represent distinct individuals.
+
+Let \(T\) be a target domain and let
+\[
+r : P \to T
+\]
+be a representation-to-target map. The map \(r\) is a semantic input, not a conclusion.
+
+Let \(Q\) be a class of tests. A concrete analysis must declare whether its tests are observations, measurements, queries, interventions, or some other class.
+
+For \(q\in Q\) and \(t\in T\), let \(O(q,t)\) denote the outcome of applying \(q\) to \(t\). For an admitted test family \(A\subseteq Q\), define
+\[
+a \Indist_A b
+\quad\Longleftrightarrow\quad
+\forall q\in A,\;
+O(q,r(a)) = O(q,r(b)).
+\]
+
+Correspondingly,
+\[
+a \Dist_A b
+\quad\Longleftrightarrow\quad
+\exists q\in A:
+O(q,r(a)) \neq O(q,r(b)).
+\]
+
+The induced relation is operational and test-relative. It is not a definition of metaphysical numerical identity.
+
+\begin{quote}
+\textbf{Formal inequality is evidence of representational difference; it is not, by itself, evidence of target-level individuality. Which differences are target-relevant depends on the target of the claim.}
+\end{quote}
+
+\section{Representational Multiplicity Is Insufficient}
+
+The Lean model contains an explicit negative control. Two constructors are formally distinct and are separated by a deliberately representation-sensitive function, yet both map to the same target value.
+
+The theorem \texttt{encodingProbe\_separates\_sameGrounding} checks representation-sensitive separation together with equal reference. The theorem \texttt{sameGrounding\_sameGroundedObservation} proves that equal reference forces equal outcome for every target-sensitive probe in the model, while \texttt{sameGrounding\_sameGroundedProfile} lifts the result to the complete response profile.
+
+The concrete theorem \texttt{sameReferent\_encodings\_groundedlyIndistinguishable} establishes that the same-reference encodings remain indistinguishable under the richer target-sensitive regime even though the representation-sensitive control separates them.
+
+Thus the inference
+\[
+a\neq b \Longrightarrow r(a)\neq r(b)
+\]
+is invalid.
+
+The disciplined order is
+\[
+\text{multiple representations}
+\to
+\text{target-sensitive tests}
+\to
+\text{supported operational distinction, if any}.
+\]
+
+\subsection{Worked example: duplicate records and target relativity}
+
+Consider two database rows with different row identifiers. If the target of analysis is the \emph{records themselves}, the row identifiers may legitimately distinguish two records. If the target is instead the \emph{person represented by each record}, distinct row identifiers do not by themselves establish two persons: duplicate records may refer to the same person.
+
+Thus the same representational feature can be evidentially relevant under one target domain and irrelevant under another. The framework does not classify row identifiers, labels, or constructors as intrinsically meaningless. It requires their evidential role to be stated relative to the target of the individuation claim.
+
+This also clarifies the phrase \emph{target-relevant}. It is not a hidden metaphysical predicate supplied by the theorem. Relevance is fixed by the declared representation-to-target semantics and test regime. The formal result concerns what follows after those semantics are stated.
+
+\section{Test-Relative Distinguishability}
+
+Let \(A_c\subseteq A_f\). Under fixed exact outcome semantics,
+\[
+a\Indist_{A_f} b
+\Longrightarrow
+a\Indist_{A_c} b.
+\]
+
+The theorem \texttt{groundedIndist\_of\_access\_inclusion} proves this inclusion property. The converse need not hold: \texttt{coarse\_indistinguishable} and \texttt{fine\_distinguishable} provide a concrete pair that is unresolved by the restricted regime and separated by the richer regime.
+
+The interpretation is deliberately limited:
+
+\begin{quote}
+\textbf{Under fixed exact semantics, enlarging the admitted test family can refine the induced indistinguishability relation.}
+\end{quote}
+
+This is not a theorem about noisy evidence, statistical updating, model revision, or measurement disturbance.
+
+Finiteness is likewise not proposed as the source of individuality. It makes the complete countermodel auditable.
+
+\section{From Outcome Difference to Target Difference}
+
+The theorem \texttt{groundedOutcomeDifference\_impliesGroundDifference} establishes, for the target-sensitive response function of the formal model,
+\[
+O(q,r(a))\neq O(q,r(b))
+\Longrightarrow
+r(a)\neq r(b).
+\]
+
+The theorem \texttt{identityProbe\_groundedDifference} supplies the concrete response difference, and \texttt{derivedGroundDifference} derives the corresponding target inequality.
+
+This does not create the target carrier. It shows only that the positive-control target difference is derived from an admitted response difference rather than imported from representation identity.
+
+\section{Explicit Identity-Token Invariance}
+
+A natural objection is that identity seems dispensable only because no identity-like field was represented.
+
+The formal model therefore adds an explicit token to each representation. The token is deliberately absent from the representation-to-target map, probe accessibility, and target-sensitive response semantics.
+
+The theorem \texttt{tokenizedGroundedIndist\_iff\_base} shows that the tokenized and base classifications coincide for fixed underlying representations.
+
+The central negative-control theorem,
+\path{identityToken_variation_preserves_groundedClassification},
+proves
+\[
+\text{identity-like token changes}
+\land
+\text{target-relevant semantics fixed}
+\Longrightarrow
+\text{operational classification fixed}.
+\]
+
+The theorem \path{differentIdentityTokens_sameGroundedClassification} shows that different token values do not separate two same-reference encodings. The positive contrast \path{identityTokenCannotMask_groundedDifference} shows that the same token cannot hide a target-sensitive difference already exposed by the admitted tests.
+
+The core proof is definitionally simple because the token is intentionally absent from the target-sensitive semantics. That simplicity is the point of the control: it turns the prose claim that an identity label is not doing hidden work into an executable dependency check.
+
+\section{Mechanization as an Anti-Smuggling Audit}
+
+The formal results are elementary enough to prove on paper. Lean is useful because a prose argument can disclaim dependence on representation identity while a hidden identifier, constructor distinction, or data-structure choice enters a later definition.
+
+The artifact makes it inspectable that:
+\begin{itemize}[leftmargin=*]
+\item the representation-sensitive probe is isolated as a negative control;
+\item target-sensitive observation factors through the explicit reference map;
+\item coarse and fine regimes differ in admitted target-sensitive probes rather than labels;
+\item decorative interface metadata does not alter access;
+\item the explicit identity-like token does not enter target-sensitive classification semantics;
+\item the positive target difference is derived from a target-sensitive outcome difference rather than constructor inequality.
+\end{itemize}
+
+The CI rejects \texttt{sorry}, \texttt{admit}, \texttt{native\_decide}, and project-local \texttt{axiom} declarations, builds the Lean project, independently kernel-checks compiled modules, and audits theorem axioms against a pinned allow-list.
+
+The mechanization claim is therefore narrow: the artifact makes it mechanically checkable that inadmissible representation-level distinctions do not do hidden work in the tested individuation argument.
+
+\section{Relation to Existing Work}
+
+\subsection{Scientific representation and target-directed inference}
+
+The closest prior work is the inferential literature on scientific representation.
+
+\citet{Suarez2004Inferential} characterizes scientific representation by its directionality toward a target and its capacity to support surrogate inference. \citet{Contessa2007Surrogative} develops an interpretational account in which a representational vehicle is interpreted in terms of a target so that valid surrogative inferences can be drawn.
+
+\citet{Nguyen2017RepresentationEquivalence} is especially close to the present paper: model and theoretical equivalence are analyzed by attending to how models are used to draw inferences about target systems, including whether models license the same claims about the same targets.
+
+Accordingly, this paper claims no novelty for target-directed inference, model-to-target licensing, or the separation of representational vehicles from targets.
+
+The narrower question is individuation-specific: when a formal difference is offered as evidence for an individuation claim, does it enter through the declared target-relevant semantics or only through the representation apparatus? The Lean artifact makes that distinction executable through explicit negative controls.
+
+\subsection{Representation independence}
+
+Mitchell's representation-independence result is a close technical neighbor \citep{Mitchell1986RepresentationIndependence}. The present paper adopts a related caution but applies it to a different inference target: not whether two implementations are contextually interchangeable, but whether a formal difference may count as evidence that represented targets are operationally distinct.
+
+\subsection{Observational and behavioral equivalence}
+
+Observational equivalence and bisimulation already provide mature accounts of behavioral equivalence relative to specified interactions \citep{HennessyMilner1985,Rutten2000UniversalCoalgebra}. The relation used here is mathematically modest by comparison. No new general equivalence theory is claimed.
+
+The difference is inferential: a difference visible only in the representation layer is not automatically admissible evidence of target-level distinctness.
+
+\subsection{Identity and discernibility}
+
+\citet{LadymanLinneboPettigrew2012} factorize identity-and-discernibility questions into the adequacy of a formal language and mathematical discernibility within that language. This constrains the present claim: discernibility alone should not be advertised as solving numerical identity.
+
+Work on weak discernibility likewise illustrates why notions of discernibility should not be conflated with unrestricted metaphysical identity \citep{DieksVersteegh2008}.
+
+\subsection{Individuation in scientific practice}
+
+Practice-oriented accounts ask how scientists count, track, manipulate, and distinguish entities for specific purposes \citep{BuenoChenFagan2018,Waters2018AskNot,Love2018ExperimentalPractice}. \citet{Chen2018ExperimentalIndividuation} is especially relevant in distinguishing ontological and epistemological modes of experimental individuation, including the presentation of individuals in experimental practice.
+
+The present use of representation is more formal than Chen's experimental notion of presentation. The contribution claimed here is narrower: when an individuation practice is represented by an explicit formal test regime, the representation apparatus must not supply unacknowledged evidence for target-level plurality.
+
+\subsection{Redundant and surplus representational structure}
+
+The negative controls do not imply that representation-level or redundant structure is useless. \citet{NguyenTehWells2020Surplus} show, in gauge theory, that structure regarded as surplus in one sense may still be essential for representing a rich collection of physically relevant local fields.
+
+Thus the present claim is evidential rather than eliminativist: a representation-only difference does not by itself support the tested target-level individuation claim. It does not follow that such structure should be removed from the formalism.
+
+\subsection{Novelty boundary}
+
+The paper does not claim novelty for target-directed scientific representation, surrogative inference, observational equivalence, bisimulation, representation independence, test-relative classification, discernibility versus numerical identity, practice-relative individuation, or surplus representational structure.
+
+The strongest defensible novelty claim is conjunctive and methodological: an individuation-specific admissibility rule that separates representation-only differences from target-relevant discriminators, together with a machine-checked dependency audit containing explicit negative controls for representation-sensitive probes and semantically inert identity-like tokens.
+
+If prior work is shown to formulate this same package explicitly, the novelty claim should be weakened further.
+
+\section{Objections and Scope}
+
+\paragraph{The identity problem has merely been moved into the target domain.}
+Partly correct. The target domain and reference map are explicit semantic inputs. The paper does not derive target ontology. Its claim is conditional: once target semantics and reference assignment are fixed, representation identity need not be used as additional evidence for the operational distinctions supported by the declared tests.
+
+\paragraph{The identity-token theorem is trivial.}
+Mathematically, the central invariance is definitional. That is why it functions as a negative control. It does not show that every identity-relevant variable is decorative; it shows that a field absent from target-relevant semantics cannot independently alter the tested classification.
+
+\paragraph{Operational distinguishability is not individuality.}
+Agreed. The paper does not identify equivalence classes with metaphysical individuals. It studies when an operational individuation claim is evidentially licensed.
+
+\paragraph{Observation and intervention are not equivalent.}
+Agreed. The framework is parameterized by a declared test class, and no theorem licenses inference from observation-only equivalence to intervention-sensitive equivalence.
+
+\paragraph{The refinement theorem ignores uncertainty.}
+Correct. It assumes fixed exact semantics and literal test-family inclusion.
+
+\section{Claim-to-Artifact Map}
+
+\begin{center}
+\small
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.44\linewidth}Y@{}}
+\toprule
+Manuscript claim & Lean theorem \\
+\midrule
+Equal reference preserves each target-sensitive observation & \path{sameGrounding_sameGroundedObservation} \\
+Equal reference preserves the full target-sensitive profile & \path{sameGrounding_sameGroundedProfile} \\
+Representation-sensitive metadata can separate same-reference encodings & \path{encodingProbe_separates_sameGrounding} \\
+Same-reference encodings remain target-sensitively indistinguishable & \path{sameReferent_encodings_groundedlyIndistinguishable} \\
+Restricted tests may fail to separate a pair & \path{coarse_indistinguishable} \\
+A richer admitted test family may separate that pair & \path{fine_distinguishable} \\
+Target-sensitive outcome difference entails target difference & \path{groundedOutcomeDifference_impliesGroundDifference} \\
+Positive-control target difference is derived from the outcome difference & \path{derivedGroundDifference} \\
+Test-family inclusion preserves fine-to-coarse indistinguishability & \path{groundedIndist_of_access_inclusion} \\
+Decorative access metadata is irrelevant & \path{decorativeInterfaceTag_irrelevant} \\
+Tokenized and base classifications coincide & \path{tokenizedGroundedIndist_iff_base} \\
+Arbitrary identity-token reassignment preserves classification & \path{identityToken_variation_preserves_groundedClassification} \\
+Different tokens do not separate same-reference encodings & \path{differentIdentityTokens_sameGroundedClassification} \\
+Same token cannot hide target-sensitive difference & \path{identityTokenCannotMask_groundedDifference} \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\section{Discussion}
+
+The framework distinguishes three levels: representation facts, target-semantic facts, and licensed evidential claims. The error targeted here occurs when a representation fact is promoted directly to an individuation conclusion without an explicit target-semantic link.
+
+This suggests a compact audit question:
+
+\begin{quote}
+\textbf{If the representation-level identifier were arbitrarily reassigned while all target-relevant semantics were held fixed, would the individuation conclusion change?}
+\end{quote}
+
+If the answer is yes, the argument should explain why the identifier itself is target-relevant evidence rather than an implementation convenience.
+
+\section{Conclusion}
+
+Multiple representations do not imply multiple individuals.
+
+The paper's positive rule is:
+
+\begin{quote}
+\textbf{A claim of operational distinctness requires target-relevant evidence that actually distinguishes the cases under the declared test conditions.}
+\end{quote}
+
+The formal model separates representation, target reference, admitted tests, and outcomes. Negative controls show that representation-sensitive differences can exist without target-sensitive separation. A richer test family can reveal a distinction hidden under a poorer one. The positive control derives a target difference from an admitted target-sensitive outcome difference rather than constructor inequality. Identity-token invariance makes explicit that a semantically inert identity-like field contributes no independent information to the tested classification.
+
+None of these results derives metaphysical numerical identity, shows that finite access creates individuals, or establishes a universally privileged test family.
+
+The narrower conclusion is enough:
+
+\begin{quote}
+\textbf{Differences in representation should count as evidence of differences in what is represented only when an explicit target-relevant evidential link justifies that inference.}
+\end{quote}
+
+\bibliographystyle{chicago}
+\bibliography{references}
+
+\end{document}
