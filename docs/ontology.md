@@ -731,6 +731,21 @@ The same profile can fail or pass solely when the declared budget changes, while
 
 The scoped classification is **BOUNDED ROBUSTNESS RECONSTRUCTIBLE UNDER LOSS/THRESHOLD SURFACE** for this finite failure-count/budget evaluator. This does not generalize the count metric into a universal loss function and does not establish probabilistic or stochastic robustness.
 
+Issue #78 adds an explicit finite variation-weight surface while reusing #74's binary failure loss. Two profiles have equal unweighted failure count but fail on opposite variation values. Under equal-total weight assignments `(2,1)` and `(1,2)`, the strict weighted-risk ranking reverses when only the declared weights are swapped.
+
+Therefore unweighted bounded robustness does not determine distribution-weighted risk. In the tested finite scope, however, the missing distinction is reconstructed from:
+
+```text
+response profile
++ explicit pointwise binary loss
++ declared finite variation weights
++ threshold / comparison rule
+```
+
+Pointwise-equal full profiles preserve weighted failure under fixed weights, an explicit weighted budget reconstructs the finite qualification, and a decorative probabilistic-robustness label adds no information.
+
+The scoped classification is **DISTRIBUTION-WEIGHTED ROBUSTNESS RECONSTRUCTIBLE UNDER MEASURE/LOSS SURFACE**. The equal-total integer weights may be normalized to finite distributions, but the formal result does not require general probability theory. It does not settle continuous measures, stochastic transition dynamics, Bayesian uncertainty/calibration, unknown distribution shift, adversarial optimization, or semantic error severity.
+
 The #41/#47/#53 results do **not** reduce learning mechanism, sample efficiency, biological motor chunking, unique or intrinsic hierarchical composition, arbitrary cross-world transfer, expertise, automaticity, practice history, general compression/resource efficiency, human semantic know-how, Skill acquisition, or Skill crystallization dynamics. Those stronger meanings require separate justification if RelayTheory needs them.
 
 Issue #60 now adds a distinct process-versus-state constraint relevant to #55. In its finite model, two experience-to-state maps produce the same actual retained state and the same current readout while differing under a counterfactual experience change. A #41-competent policy can also coexist with the experience-insensitive formation map. Therefore neither final retained structure nor operational competence determines an experience-sensitive formation process in this scope.
