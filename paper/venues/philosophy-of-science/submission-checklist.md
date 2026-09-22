@@ -20,9 +20,9 @@
 - [x] Double-spaced body.
 - [x] Ragged-right review copy.
 - [x] Chicago author-date bibliography style selected.
-- [x] Bibliography source includes full `https://doi.org/...` URLs for all 13 current references with DOIs; exact PDF rebuild still required to verify the rendered output.
-- [x] Rebuild the **exact current anonymized review source**: Paper 1 Review CI run #4 / exact head `c46dab5a3355e74af3f61711bc5e0a7dc1fcccde` generated an 18-page PDF and passed the blind-source and final LaTeX audits.
-- [x] Manually visually inspect all 18 pages of the exact CI artifact PDF: rendered at 160 dpi on 2026-09-22; no clipping, overlap, broken glyphs, missing sections, or reference-layout defects found.
+- [x] Bibliography source includes full `https://doi.org/...` URLs for all 13 current references with DOIs; run #11 rebuilt the exact review PDF and the rendered references were visually verified.
+- [x] Rebuild the **exact current anonymized review source** after DOI completion: Paper 1 Review CI run #11 / exact head `1ee8022a7fc740ec8e11c27b7e59aa489373ddbb` generated an 18-page PDF and passed all blind-source, bibliography, and final LaTeX audits.
+- [x] Manually visually inspect all 18 pages of the DOI-complete exact CI artifact PDF: run #11 artifact ID `10702765379`, rendered at 140 dpi on 2026-09-23; no clipping, overlap, broken glyphs, missing sections, or reference-layout defects found.
 
 ## Claims and novelty
 
@@ -69,4 +69,4 @@
 
 ## Decision gate
 
-**Current state:** exact-source blind review CI and page-by-page visual inspection are complete, and the initial artifact policy is fixed. Remaining pre-upload gates are the live-portal instruction re-check, submission metadata, and confirmation that the manuscript is not under review elsewhere.
+**Current state:** the DOI-complete blind review copy has passed exact-source CI and page-by-page visual inspection, and the initial artifact policy is fixed. Remaining pre-upload gates require author-supplied facts / portal interaction: funding and declarations statements, non-blind author metadata, confirmation of publication/concurrent-review eligibility, and final Editorial Manager PDF approval.
