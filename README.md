@@ -58,6 +58,12 @@ The scoped result from #6 removes three former candidates from that flat list:
 
 The #13 result keeps configuration / transition / intervention structure explicit where required, but treats it as model/evaluation semantics in this agency-local scope. It does not decide intrinsic Time or cosmological temporal orientation; those remain under the Time reconstruction frontier in #15.
 
+The scoped Time reconstruction now adds a separate constraint from #45. In a finite three-event merge order, two selected local lineages can each be total and jointly cover the event carrier while the ambient precedence relation remains non-total. Two injective scalar linearizations preserve every ambient precedence constraint yet order the incomparable pair in opposite ways.
+
+Moreover, substituting either scalar serialization for the ambient partial order changes an ambient `ELSEWHERE` relation into opposite `PAST` / `FUTURE` classifications. Therefore local one-dimensionality and serializability do **not** by themselves earn one intrinsic global total time in this tested scope.
+
+This does not establish that all Time is a partial order or that physical simultaneity is conventional. Local Present remains a focal-index role under #30, strict orientation still requires independently represented asymmetry under #33, and any stronger global temporal or spacetime structure must earn its own discriminating content.
+
 The structural result from #5 is scoped:
 
 - Self-relative / de-se claims require an explicit center;
