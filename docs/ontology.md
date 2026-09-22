@@ -500,6 +500,10 @@ The current scoped conclusion is therefore **COMPETENCE–RESOURCE ORTHOGONAL** 
 
 The #41/#47/#53 results do **not** reduce learning mechanism, sample efficiency, biological motor chunking, unique or intrinsic hierarchical composition, arbitrary cross-world transfer, expertise, automaticity, practice history, general compression/resource efficiency, human semantic know-how, Skill acquisition, or Skill crystallization dynamics. Those stronger meanings require separate justification if RelayTheory needs them.
 
+Issue #60 now adds a distinct process-versus-state constraint relevant to #55. In its finite model, two experience-to-state maps produce the same actual retained state and the same current readout while differing under a counterfactual experience change. A #41-competent policy can also coexist with the experience-insensitive formation map. Therefore neither final retained structure nor operational competence determines an experience-sensitive formation process in this scope.
+
+This does **not** promote formation history, provenance, learning, or Crystallization into ontology. It only blocks their silent identification with the current retained state. Any later Crystallization claim must earn whatever additional formation, provenance, stabilization, or future-closure information it requires rather than hiding it inside a retained-state label.
+
 ### Emotion-like structure
 
 Candidate reduction:
