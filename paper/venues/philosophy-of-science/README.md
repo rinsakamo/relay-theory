@@ -37,7 +37,7 @@ The venue-specific copy is deliberately separate so formatting changes do not al
 - Chicago author-date bibliography style;
 - title/abstract separated from the main text for readable review pagination.
 
-## Successful local build
+## Previous successful local build
 
 Validated on 2026-09-22 with:
 
@@ -51,7 +51,7 @@ pdflatex -interaction=nonstopmode -halt-on-error main.tex
 pdflatex -interaction=nonstopmode -halt-on-error main.tex
 ```
 
-Result after the layout fixes:
+Result for the review-format source before the final R1--R15 / Acknowledgements anonymization pass:
 
 - PDF generated successfully;
 - 18 review-format pages;
@@ -83,3 +83,16 @@ No journal submission has been made from this workspace.
 The current Cambridge publishing-ethics policy requires disclosure when generative AI is used to generate manuscript text. The blind review copy therefore includes an anonymous AI Tool Disclosure naming OpenAI ChatGPT / GPT-5.6 Sol, the access date, and the purposes for which it was used, while stating that the author independently verified the manuscript and remains responsible for the content.
 
 This disclosure is intentionally non-identifying.
+
+
+## Final rebuild status
+
+**Pending one exact-source rebuild.**
+
+The current blind source differs from the previously validated review-format build only by editorial anonymization and disclosure changes:
+
+- public theorem identifiers -> neutral labels `R1`--`R15`;
+- claim-to-artifact map rewritten using those labels;
+- anonymous Acknowledgements section added for AI-tool disclosure.
+
+These changes are not intended to alter the formal or bibliographic content, but the exact current source should still be rebuilt and visually inspected before upload to the submission system.
