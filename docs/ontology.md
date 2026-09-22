@@ -1061,6 +1061,55 @@ The extra information required for unique individuation is **not** thereby shown
 
 This result does not establish biological life, metabolism, autopoiesis, energetic self-production, reproduction, evolutionary individuality, unique biological organism boundaries, phenomenal Selfhood, Body identity, personal identity, or an intrinsic/correct acceptable-state criterion.
 
+### Finite Interface-relative individuality resolution
+
+Issue #119 asks a stronger question than #112's unique candidate-scale selection:
+
+```text
+multiple candidate / presentation descriptions
+  ?->
+multiple individuals
+```
+
+The current result rejects that inference by notation alone.
+
+#120 introduces an explicit factorization:
+
+```text
+Presentation
+  -> Grounding
+  -> grounded referent-sensitive probe
+  -> Outcome
+```
+
+Two presentation encodings may differ under presentation metadata while grounding to the same formal ambient referent. In that case every grounded referent probe preserves equality. Conversely, a grounded outcome difference implies a difference in the grounding result, so the referent difference is derived from the discriminator rather than assumed as a primitive individuality premise.
+
+Together with #57's probe-family-relative equivalence/refinement, this yields a scoped operational resolution:
+
+```text
+GroundedIndistAt(I,a,b)
+  :=
+every I-accessible grounded probe
+returns the same outcome on a and b
+```
+
+and richer grounded access refines rather than arbitrarily rewrites the induced partition.
+
+Current ontology treatment:
+
+```text
+CANDIDATE_MULTIPLICITY_DOES_NOT_ENTAIL_INDIVIDUAL_MULTIPLICITY
+/
+BARE_ACCESSIBLE_DISTINGUISHABILITY_INSUFFICIENT
+/
+GROUNDED_INTERFACE_RELATIVE_RESOLUTION_RECONSTRUCTIBLE
+/
+PRIMITIVE_PLURALITY_FACT_NOT_REQUIRED_FOR_TESTED_OPERATIONAL_RESOLUTION
+```
+
+Presentation-only differences, decorative Interface metadata, and generic finitude/cardinality do not by themselves supply individuation. #26 independently blocks generic finitude from implying finite operational distinguishability, so the relevant input is the actual independently grounded access profile, not finitude as a primitive selector.
+
+This is a reduction of the tested **operational resolution** role. It does not establish that each induced class is a metaphysically, biologically, phenomenally, legally, or personally distinct individual. Cross-time identity remains criterion-relative under #51, observational and intervention access remain distinct under #22, and no universally privileged Interface or probe family is established.
 ## Body
 
 Body is deliberately not equated with the focal cognitive locus.
