@@ -715,6 +715,19 @@ Competent(liftedSuccess, asExpandedPolicy(profile))
 
 Pointwise-equal full profiles preserve the result, and a decorative robustness flag adds no information. The scoped consequence is therefore **EXACT ROBUSTNESS DERIVED AS CONTEXT EXPANSION** for deterministic universal success over the declared variation class.
 
+Issue #88 specializes the same competence machinery to an explicit auxiliary-support coordinate. In the tested operational role:
+
+```text
+SupportOffCompetent(profile)
+  :=
+ordinary task competence
+on the declared support = false slice
+```
+
+and competence across both support values is ordinary competence over `Context × Support`.
+
+Thus **support-independent competence is derived rather than primitive** in this scope. No automaticity object or label is needed. This says nothing by itself about psychological automaticity, consciousness/attention, deliberation, learning history, procedural memory, habit, latency, resource cost, or expertise.
+
 This result does not extend automatically to probabilistic success, expected loss, bounded degradation, adversarial risk, distribution shift, or other approximate/stochastic notions. Those require explicit measure / metric / threshold / distribution structure and separate testing.
 
 Issue #74 tests the first bounded deterministic extension without introducing probability. Over the same two-variation #64 response surface, the exact profile has failure count 0 while the brittle profile has failure count 1. The brittle profile fails exact robustness and budget 0, but passes an explicit failure budget of 1.
