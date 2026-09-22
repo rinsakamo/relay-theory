@@ -1010,6 +1010,57 @@ ORDERED TWO-STAGE TRANSITION + ACCEPTABILITY CRITERION
 
 No independent Homeostasis/Recovery primitive is required for the tested role. The result does **not** establish biological homeostasis in full, adaptive/allostatic regulation, endogenous controller architecture, metabolism, autopoiesis, organismic individuality, energetic cost, reproduction, learning, intent, reward/value, phenomenal feeling, or evolutionary fitness.
 
+### Organism-like maintained-unit individuality
+
+Issue #112 separates candidate-local maintained-unit **classification** from unique **selection / individuation**.
+
+The tested lower-level qualification surface is built only from already-explicit structure:
+
+```text
+candidate locus L
++ bidirectional functional integration
++ explicit acceptable-state criterion
++ final criterion-relative robustness
++ ordered active recovery
+```
+
+A scoped maintained-unit judgment can therefore be written as a derived conjunction over those inputs. It is an evaluation result for the supplied candidate, not an independent `Organism`, `Individual`, `alive`, or `selfMaintaining` field.
+
+#113 provides the first finite obstruction to uniqueness: two distinct properly nested loci can share the same integration and criterion-relative robustness surfaces and both qualify.
+
+#116 strengthens the obstruction using one shared ambient two-stage trajectory. The inner candidate projects the core state; the outer candidate projects core plus an additional shell coordinate, and the outer projection is genuinely sensitive to shell change. Nevertheless both nested candidates satisfy the tested integration, final-robustness, and active-recovery roles under the same explicit criterion.
+
+Therefore, in the validated finite scope:
+
+```text
+tested maintained-unit classification
+  -> reconstructible under explicit criterion
+
+but
+
+integration
++ criterion-relative viability
++ active recovery
+  -/->
+unique candidate scale
+```
+
+Current ontology treatment:
+
+```text
+PARTIAL_REDUCTION
+/
+ORGANISM_LIKE_STATUS_CRITERION_RELATIVE
+/
+UNIQUE_INDIVIDUATION_REQUIRES_EXTRA_INFORMATION
+/
+MAINTENANCE_INTEGRATION_INSUFFICIENT_FOR_UNIQUE_INDIVIDUATION
+```
+
+The extra information required for unique individuation is **not** thereby shown to be a primitive Individual/Organism fact. A future theory may test explicit closure, exclusivity, resource/material-flow, lineage, or another independently grounded asymmetry, but none is selected by the current evidence and none should be added merely to force uniqueness.
+
+This result does not establish biological life, metabolism, autopoiesis, energetic self-production, reproduction, evolutionary individuality, unique biological organism boundaries, phenomenal Selfhood, Body identity, personal identity, or an intrinsic/correct acceptable-state criterion.
+
 ## Body
 
 Body is deliberately not equated with the focal cognitive locus.

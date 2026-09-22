@@ -537,6 +537,57 @@ ORDERED TWO-STAGE TRANSITION + ACCEPTABILITY CRITERION
 
 This result does not establish biological homeostasis in full, adaptive/allostatic regulation, endogenous controller architecture, metabolism, autopoiesis, organismic individuality, energetic cost, reproduction, learning, intent, reward/value, phenomenal feeling, or evolutionary fitness.
 
+Issue #112 then asks the separate individuation question: if several candidate loci can be evaluated, does the tested lower-level maintenance structure itself select one unique maintained individual?
+
+#113 first constructs two distinct properly nested candidate loci:
+
+```text
+L_inner ⊂ L_outer
+```
+
+Both receive the same validated #71 bidirectional functional-integration profile and the same #108-style criterion-relative robustness surface. Both satisfy the same derived qualification, so the finite model proves that there is no unique qualifier under that surface.
+
+#116 then consumes the completed #110 result and strengthens the test. One ambient state contains core and shell coordinates, with inner and outer candidate views projected from the same ambient trajectory. The outer view genuinely depends on the shell coordinate, so it is not a decorative enlargement. Both nested candidates nevertheless satisfy:
+
+```text
+functional integration
++
+final criterion-relative robustness
++
+active recovery
+```
+
+under the same explicit acceptable-state criterion, while no unique recovery-qualified candidate is selected.
+
+The two competing #112 pressures therefore split:
+
+```text
+tested maintained-unit classification
+  = reconstructible from explicit lower-level structure and criterion
+  without an Organism/Individual bit
+
+unique individuation
+  = not determined by the tested integration/viability/recovery structure
+```
+
+Current scoped classification:
+
+```text
+PARTIAL_REDUCTION
+/
+ORGANISM_LIKE_STATUS_CRITERION_RELATIVE
+/
+UNIQUE_INDIVIDUATION_REQUIRES_EXTRA_INFORMATION
+/
+MAINTENANCE_INTEGRATION_INSUFFICIENT_FOR_UNIQUE_INDIVIDUATION
+```
+
+This does not establish that the required extra individuation information is primitive. It only shows that it is absent from the tested qualification surface. Closure, exclusivity, resource/material throughput, lineage, or another candidate selector would each need its own independent discriminator before use.
+
+Overlapping-candidate and symmetric-duplicate cases are not required to refute uniqueness once the validated nested witness already supplies two simultaneously qualified scales. They remain possible future probes only if a stronger proposed selector claims to resolve the nested case.
+
+This result does not settle biological life, metabolism, autopoiesis, reproduction, evolutionary individuality, unique organism boundaries in nature, phenomenal Selfhood, Body, personal identity, consciousness, or the grounding/origin of acceptable-state criteria.
+
 Issue #74 then tests a deterministic bounded-failure surface. Reusing the #64 profiles, the exact profile has zero failures and the brittle profile has one failure over the declared two-variation evaluation. The brittle profile is not exactly robust, fails budget 0, and passes budget 1.
 
 Thus approximate qualification is threshold-relative and is reconstructed in this finite instance from:
