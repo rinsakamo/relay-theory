@@ -324,6 +324,40 @@ experience-sensitive retained-state formation
 
 This constrains the #55 Crystallization hypothesis: process semantics cannot be recovered from the final retained state alone unless the required formation/provenance information is explicitly represented. It does not establish that such information is an ontology primitive, nor that a common retained substrate exists across Memory / Skill / Concept / Habit / Belief.
 
+### Current constraint — reconstruction correctness vs formation provenance
+
+Issue #69 splits two candidate Memory-like operational roles before any common-substrate theorem.
+
+Using the same Boolean experience/state carrier and one identity readout, the finite controls establish:
+
+```text
+constant formation:
+  reconstructs actual past = true
+  locally experience-sensitive = false
+
+inverted formation:
+  reconstructs actual past = false
+  locally experience-sensitive = true
+
+identity formation:
+  reconstructs actual past = true
+  locally experience-sensitive = true
+```
+
+Therefore neither role implies the other:
+
+```text
+accurate current reconstruction
+  -/->
+local formation provenance
+
+local formation provenance
+  -/->
+accurate current reconstruction
+```
+
+This does not define full causal provenance or episodic Memory. It constrains #55 to state explicitly which Memory-like evaluation surface is being factored through any proposed common retained structure.
+
 ### Current constraint — prequalified Selfhood
 
 Issue #43 tests whether operational H-001 needs a prior Self-like eligibility predicate for the supplied focal locus.
