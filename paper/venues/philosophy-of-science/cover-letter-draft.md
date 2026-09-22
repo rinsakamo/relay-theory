@@ -4,9 +4,9 @@
 
 Dear Editors,
 
-Please consider the manuscript **“When Does a Formal Difference Support an Individuation Claim? Representation, Target Relevance, and Restricted Tests”** for publication as an Article in *Philosophy of Science*.
+Please consider the manuscript **“When Is a Formal Difference Admissible Evidence for an Individuation Claim? Representation, Evidential Bridges, and Restricted Tests”** for publication as an Article in *Philosophy of Science*.
 
-The manuscript addresses a formal-methodological question at the intersection of scientific representation, individuation, and observational equivalence: when may a difference inside a formal representation legitimately count as evidence for a difference in the represented target? The contribution is intentionally narrow. It does not propose a new equivalence theory or derive metaphysical numerical identity. Instead, it formulates an individuation-specific evidential admissibility rule and uses a small Lean development as a dependency audit, including explicit negative controls for representation-sensitive discriminators and semantically inert identity-like tokens.
+The manuscript addresses a formal-methodological question at the intersection of scientific representation, individuation, and observational equivalence: when may a difference inside a formal representation legitimately count as evidence for a difference in the represented target? The contribution is intentionally narrow. It does not propose a new equivalence theory or derive metaphysical numerical identity. Instead, it formulates a necessary-condition framework for individuation-specific evidential admissibility. The manuscript makes explicit the bridge required for a representation-level feature to bear on a target-level property, develops a relabeling-invariance diagnostic, illustrates the distinction with UMI-based molecular counting, and uses a small Lean development as a dependency audit.
 
 The manuscript engages directly with work on scientific representation and target-directed inference, representation independence, behavioral equivalence, identity and discernibility, and scientific individuation. The closest prior art is treated explicitly in the Related Work section, and the novelty claim has been narrowed accordingly.
 
