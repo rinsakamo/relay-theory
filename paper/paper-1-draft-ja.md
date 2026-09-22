@@ -530,45 +530,75 @@ test class は分析ごとに宣言される。
 
 observation-only equivalence と intervention-sensitive equivalence は別の test regimes として扱うべきであり、一方から他方を自動的に推論しない。
 
-## 9. 未解決の最小形式課題
+## 9. 追加形式検証：identity-token invariance
 
-現在の formalization には、論文の中心 claim をさらに強く検査する余地が一つ残る。
+前節で残した最小の反論は、次のものであった。
 
-現状では、unused identity token はそもそも formal model に導入されていない。
+> identity-like field を単にモデルから省略しただけでは、その field が本当に分類に不要だとは言えない。
 
-したがって、
+この反論に対して、現在の Lean formalization では identity-like token を明示的にモデルへ追加した。
 
-> identity token を使わずに分類できる
+`TokenizedPresentation` は、元の `Presentation` と独立した Boolean token を保持する。
 
-ことと、
+ただし grounding、probe accessibility、grounded response semantics は token を参照しない。
 
-> identity token を追加し、それだけを変更しても分類結果が不変である
+この条件の下で、
 
-ことは厳密には異なる。
+`identityToken_variation_preserves_groundedClassification`
 
-この差を埋めるための最小追加形式化は、presentation に decorative identity token を追加し、target semantics と admitted tests を固定したまま token のみを変更しても $\equiv_A$ が不変であることを示すことである。
+は、左右の token を任意に付け替えても grounded operational classification が変化しないことを示す。
 
-期待される discriminator は次の形になる。
+概念的には、
 
 $$
-\text{identity token changes}
+\text{identity-like token changes}
 \quad\land\quad
-\text{target-relevant evidence fixed}
+\text{target-relevant semantics fixed}
 \quad\Longrightarrow\quad
-\text{operational classification fixed}.
+\text{grounded operational classification fixed}
 $$
 
-一方で、
+である。
+
+さらに、
+
+`differentIdentityTokens_sameGroundedClassification`
+
+は、異なる token を持つ二つの encoding が同じ grounding を持つ場合、それらが grounded classification 上は区別されない concrete negative control を与える。
+
+一方、
+
+`identityTokenCannotMask_groundedDifference`
+
+は、target-sensitive grounded difference が存在する場合、同じ token を与えてもその差を隠せないことを確認する。
+
+したがって現在の formal evidence は、
 
 $$
-\text{target-relevant outcome changes}
+\text{decorative identity-like metadata}
+\not\Rightarrow
+\text{operational distinction}
 $$
 
-なら classification が変わりうる。
+と
 
-この追加結果が得られれば、「identity を単にモデルから省略しただけではないか」という反論に対して、より直接的な formal answer を与えられる。
+$$
+\text{target-relevant grounded difference}
+\Rightarrow
+\text{operational distinction can be supported}
+$$
 
-現時点では、この stronger invariance claim を機械検証済み結果としては扱わない。
+を同じモデル内で分離する。
+
+この結果は、「identity 一般が不要である」ことを証明するものではない。
+
+token が semantically inert であるという条件は明示的な前提であり、target domain 自体の structure や reference map は依然としてモデル入力である。
+
+したがって、ここで得られる結論はより限定される。
+
+**明示的に追加された identity-like field であっても、対象関連の意味論に寄与しないなら、検討中の grounded operational classification に独立情報を追加しない。**
+
+この theorem は exact-head `bb24963bfa9b1e91c29f92f5dc401ede4601ef4e` で Lean build、independent kernel check、axiom audit を通過し、PR #125 として `main` commit `335f5e8d429f1b3652455b89fa8280febef2b80c` に merge された。merge 後の formal source blob は exact-head で検証された blob と同一である。
 
 ## 10. 結論
 
