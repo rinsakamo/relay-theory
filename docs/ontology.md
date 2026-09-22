@@ -784,6 +784,18 @@ Identity and flip are both self-inverse correspondences, so bare reversibility/c
 
 The scoped classification is **CROSS-WORLD TRANSFER RECONSTRUCTIBLE UNDER EXPLICIT BRIDGE / BRIDGE NON-CANONICAL WITHOUT ADDITIONAL STRUCTURE**. This does not establish which bridge is semantically correct, grounded, learned, or privileged in a real domain.
 
+Issue #91 synthesizes the validated Skill-specific reductions and separates the scoped operational role from the broader everyday term. In the tested operational family, competence and the examined robustness/transfer/support refinements are reconstructed from explicit response plus task/intervention/loss/weight/bridge/support evaluation surfaces. No independent Skill flag or object survives these tests.
+
+The canonical scoped classification is therefore:
+
+```text
+OPERATIONAL SKILL DERIVED
+/
+BROADER SKILL UNDERDETERMINED
+```
+
+The second line is essential. Current RelayTheory has **not** reduced Skill acquisition, learning dynamics, sample efficiency, practice history, procedural memory, habit, crystallization or retained reusable structure, semantic know-how, human expertise, talent, intelligence, creativity, biological motor chunking, psychological automaticity, or canonical grounding of cross-world correspondences. #55 remains the owner for the retained/common-structure question, and #60 independently shows that operational competence does not establish experience-sensitive formation.
+
 The #41/#47/#53 results do **not** reduce learning mechanism, sample efficiency, biological motor chunking, unique or intrinsic hierarchical composition, bridge grounding / semantic cross-world correspondence, expertise, automaticity, practice history, general compression/resource efficiency, human semantic know-how, Skill acquisition, or Skill crystallization dynamics. Those stronger meanings require separate justification if RelayTheory needs them.
 
 Issue #60 now adds a distinct process-versus-state constraint relevant to #55. In its finite model, two experience-to-state maps produce the same actual retained state and the same current readout while differing under a counterfactual experience change. A #41-competent policy can also coexist with the experience-insensitive formation map. Therefore neither final retained structure nor operational competence determines an experience-sensitive formation process in this scope.
