@@ -109,9 +109,9 @@ The induced relation is operational and test-relative. It is not a definition of
 
 The Lean model contains an explicit negative control. Two constructors are formally distinct and are separated by a deliberately representation-sensitive function, yet both map to the same target value.
 
-The theorem \texttt{encodingProbe\_separates\_sameGrounding} checks representation-sensitive separation together with equal reference. The theorem \texttt{sameGrounding\_sameGroundedObservation} proves that equal reference forces equal outcome for every target-sensitive probe in the model, while \texttt{sameGrounding\_sameGroundedProfile} lifts the result to the complete response profile.
+The mechanized result \texttt{R1} checks representation-sensitive separation together with equal reference. Result \texttt{R2} proves that equal reference forces equal outcome for every target-sensitive probe in the model, while \texttt{R3} lifts the result to the complete response profile.
 
-The concrete theorem \texttt{sameReferent\_encodings\_groundedlyIndistinguishable} establishes that the same-reference encodings remain indistinguishable under the richer target-sensitive regime even though the representation-sensitive control separates them.
+The concrete result \texttt{R4} establishes that the same-reference encodings remain indistinguishable under the richer target-sensitive regime even though the representation-sensitive control separates them.
 
 Thus the inference
 \[
@@ -145,7 +145,7 @@ a\Indist_{A_f} b
 a\Indist_{A_c} b.
 \]
 
-The theorem \texttt{groundedIndist\_of\_access\_inclusion} proves this inclusion property. The converse need not hold: \texttt{coarse\_indistinguishable} and \texttt{fine\_distinguishable} provide a concrete pair that is unresolved by the restricted regime and separated by the richer regime.
+Result \texttt{R5} proves this inclusion property. The converse need not hold: \texttt{R6} and \texttt{R7} provide a concrete pair that is unresolved by the restricted regime and separated by the richer regime.
 
 The interpretation is deliberately limited:
 
@@ -159,14 +159,14 @@ Finiteness is likewise not proposed as the source of individuality. It makes the
 
 \section{From Outcome Difference to Target Difference}
 
-The theorem \texttt{groundedOutcomeDifference\_impliesGroundDifference} establishes, for the target-sensitive response function of the formal model,
+Result \texttt{R8} establishes, for the target-sensitive response function of the formal model,
 \[
 O(q,r(a))\neq O(q,r(b))
 \Longrightarrow
 r(a)\neq r(b).
 \]
 
-The theorem \texttt{identityProbe\_groundedDifference} supplies the concrete response difference, and \texttt{derivedGroundDifference} derives the corresponding target inequality.
+Result \texttt{R9} supplies the concrete response difference, and \texttt{R10} derives the corresponding target inequality.
 
 This does not create the target carrier. It shows only that the positive-control target difference is derived from an admitted response difference rather than imported from representation identity.
 
@@ -176,10 +176,9 @@ A natural objection is that identity seems dispensable only because no identity-
 
 The formal model therefore adds an explicit token to each representation. The token is deliberately absent from the representation-to-target map, probe accessibility, and target-sensitive response semantics.
 
-The theorem \texttt{tokenizedGroundedIndist\_iff\_base} shows that the tokenized and base classifications coincide for fixed underlying representations.
+Result \texttt{R11} shows that the tokenized and base classifications coincide for fixed underlying representations.
 
-The central negative-control theorem,
-\path{identityToken_variation_preserves_groundedClassification},
+The central negative-control result, \texttt{R12},
 proves
 \[
 \begin{aligned}
@@ -189,7 +188,7 @@ proves
 \end{aligned}
 \]
 
-The theorem \path{differentIdentityTokens_sameGroundedClassification} shows that different token values do not separate two same-reference encodings. The positive contrast \path{identityTokenCannotMask_groundedDifference} shows that the same token cannot hide a target-sensitive difference already exposed by the admitted tests.
+Result \texttt{R13} shows that different token values do not separate two same-reference encodings. The positive contrast \texttt{R14} shows that the same token cannot hide a target-sensitive difference already exposed by the admitted tests.
 
 The core proof is definitionally simple because the token is intentionally absent from the target-sensitive semantics. That simplicity is the point of the control: it turns the prose claim that an identity label is not doing hidden work into an executable dependency check.
 
@@ -280,21 +279,24 @@ Correct. It assumes fixed exact semantics and literal test-family inclusion.
 
 \section{Claim-to-Artifact Map}
 
+For blind review, the mechanized results are referred to only by neutral labels. The labels correspond to an anonymized artifact manifest prepared separately from the public development.
+
 \begin{itemize}[leftmargin=*]
-\item Equal reference preserves each target-sensitive observation: \path{sameGrounding_sameGroundedObservation}.
-\item Equal reference preserves the full target-sensitive profile: \path{sameGrounding_sameGroundedProfile}.
-\item Representation-sensitive metadata can separate same-reference encodings: \path{encodingProbe_separates_sameGrounding}.
-\item Same-reference encodings remain target-sensitively indistinguishable: \path{sameReferent_encodings_groundedlyIndistinguishable}.
-\item Restricted tests may fail to separate a pair: \path{coarse_indistinguishable}.
-\item A richer admitted test family may separate that pair: \path{fine_distinguishable}.
-\item Target-sensitive outcome difference entails target difference: \path{groundedOutcomeDifference_impliesGroundDifference}.
-\item Positive-control target difference is derived from the outcome difference: \path{derivedGroundDifference}.
-\item Test-family inclusion preserves fine-to-coarse indistinguishability: \path{groundedIndist_of_access_inclusion}.
-\item Decorative access metadata is irrelevant: \path{decorativeInterfaceTag_irrelevant}.
-\item Tokenized and base classifications coincide: \path{tokenizedGroundedIndist_iff_base}.
-\item Arbitrary identity-token reassignment preserves classification: \path{identityToken_variation_preserves_groundedClassification}.
-\item Different tokens do not separate same-reference encodings: \path{differentIdentityTokens_sameGroundedClassification}.
-\item The same token cannot hide a target-sensitive difference: \path{identityTokenCannotMask_groundedDifference}.
+\item \texttt{R1}: representation-sensitive metadata can separate same-reference encodings.
+\item \texttt{R2}: equal reference preserves each target-sensitive observation.
+\item \texttt{R3}: equal reference preserves the full target-sensitive profile.
+\item \texttt{R4}: same-reference encodings remain target-sensitively indistinguishable.
+\item \texttt{R5}: test-family inclusion preserves fine-to-coarse indistinguishability.
+\item \texttt{R6}: restricted tests may fail to separate a pair.
+\item \texttt{R7}: a richer admitted test family may separate that pair.
+\item \texttt{R8}: target-sensitive outcome difference entails target difference.
+\item \texttt{R9}: the positive-control response difference is established.
+\item \texttt{R10}: the positive-control target difference is derived from that response difference.
+\item \texttt{R11}: tokenized and base classifications coincide when the token is semantically inert.
+\item \texttt{R12}: arbitrary identity-token reassignment preserves classification.
+\item \texttt{R13}: different identity tokens do not separate same-reference encodings.
+\item \texttt{R14}: the same identity token cannot hide a target-sensitive difference.
+\item \texttt{R15}: decorative access metadata is irrelevant to the admitted test profile.
 \end{itemize}
 
 \section{Discussion}
@@ -328,6 +330,10 @@ The narrower conclusion is enough:
 \begin{quote}
 \textbf{Differences in representation should count as evidence of differences in what is represented only when an explicit target-relevant evidential link justifies that inference.}
 \end{quote}
+
+\section*{AI Tool Disclosure}
+
+The author used OpenAI ChatGPT (GPT-5.6 Sol, accessed through ChatGPT on 22 September 2026) to assist with drafting, restructuring, translation, literature-search query formulation, and editorial revision. The author independently checked the arguments, references, formal claims, and final manuscript and takes full responsibility for the content.
 
 \clearpage
 \bibliographystyle{chicago}
