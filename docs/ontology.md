@@ -378,17 +378,58 @@ Therefore a monolithic Ownership account that requires causal authorship-like at
 
 The previous shorthand `Authority + Grounding + Trace` remains insufficient for all senses of Ownership.
 
-This result is only a **partial decomposition**. It does not settle or identify:
+#58 now adds a second scoped decomposition result for **registry-mediated institutional title**.
+
+The finite institutional surface contains only:
+
+```text
+initial assignment
+transfer-admissibility rule
+transfer proposal
+```
+
+and derives a current recognized claimant by applying the declared rule to the proposal. A scoped registry-title judgment is equality with that derived claimant; no primitive `owner`, `owns`, or `titleHolder` input is used.
+
+Matched cases establish:
+
+- the same #46 physical/control profile and same proposal can yield different registry-title outcomes under different institutional rules;
+- current revision privilege can exist without registry title;
+- registry title can exist without current revision privilege;
+- a rejected transfer leaves the initial assignment unchanged;
+- a decorative Ownership/title flag adds no information.
+
+Therefore:
+
+```text
+physical causal/control structure alone
+  -/->
+registry-mediated institutional title
+```
+
+while, in this finite scope:
+
+```text
+registry-mediated title
+  <-
+explicit institutional initial assignment
++ transfer rule
++ transfer event
+```
+
+This is **not** a reduction of normativity to physics. The institutional base assignment and rule surface are explicit contextual inputs, and the result does not establish their legitimacy.
+
+Ownership therefore remains only **partially decomposed**. Still unresolved or outside this scoped registry result:
 
 - focal-locus incorporation / “part of me”;
 - possession or physical custody;
 - access rights;
-- normative, social, legal, or economic title;
+- broader normative, social, legal, or economic legitimacy beyond the declared registry;
 - consent;
 - moral responsibility;
 - copyright authorship;
 - bodily ownership phenomenology;
-- Selfhood or personal identity.
+- Selfhood or personal identity;
+- persistence of title through arbitrary object replacement without an independently supplied identity criterion.
 
 Those meanings require separate criteria and owners if RelayTheory needs them.
 
