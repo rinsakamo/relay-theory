@@ -217,7 +217,7 @@ The PDF uploaded directly by the successful Paper 1 Review CI run was downloaded
 - PDF pages: `18`
 - PDF SHA-256: `1662175011fe0f1760ab19499cde1f4cf1a86ae47ad6b0cc3e9cd22bd1061da2`
 
-The artifact was rendered to PNG at 160 dpi and all 18 pages were inspected. No clipped text, overlaps, black squares, broken glyphs, missing section text, or reference-page layout defects were found. The R1--R15 claim-to-artifact map, Acknowledgements / AI disclosure, and both reference pages render cleanly.
+The artifact was rendered to PNG at 160 dpi and all 18 pages were inspected. No clipped text, overlaps, black squares, broken glyphs, missing section text, or reference-page layout defects were found. The R1--R19 claim-to-artifact map, Acknowledgements / AI disclosure, and both reference pages render cleanly.
 
 This closes the manuscript build/layout gate for the current Philosophy of Science review copy. Any later textual change to the blind manuscript must rerun the same CI and visual-review cycle.
 
