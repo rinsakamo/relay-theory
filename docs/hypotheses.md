@@ -354,7 +354,7 @@ RECONSTRUCTIBLE UNDER EXPLICIT SELECTION WEIGHTS
 
 This does not establish human/animal Habit, acquisition or practice history, procedural memory, automaticity, compulsion, addiction, value/reward, reinforcement-learning semantics, conscious preference, intention, or stochastic-policy semantics. Current tendency also does not establish experience-sensitive formation without an explicit formation bridge.
 
-Issue #97 then tests the narrow current Concept-like equivalence role against already-merged #57 probe-relative equivalence.
+Issue #98 then tests the narrow current Concept-like equivalence role against already-merged #57 probe-relative equivalence.
 
 The key reduction is direct:
 
