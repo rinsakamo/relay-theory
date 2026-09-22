@@ -132,9 +132,36 @@ Do this only if reviewers or final polishing make the Bool-specific presentation
 Paper 1 is ready for venue selection only when all of the following hold:
 
 - English manuscript is the canonical working text.
-- LaTeX compiles cleanly. **PASS (2026-09-22):** `pdflatex -> bibtex8 -> pdflatex -> pdflatex`, 9 pages, bibliography resolved, no LaTeX warnings, overfull boxes, underfull boxes, or undefined citations in the final pass.
+- LaTeX compiles cleanly. **PASS (2026-09-22):** `pdflatex -> bibtex8 -> pdflatex -> pdflatex`, 10 pages, bibliography resolved, no LaTeX warnings, overfull boxes, underfull boxes, or undefined citations in the final pass.
 - Every mechanically attributed claim maps to an actual Lean theorem.
 - Bibliography metadata is checked. **PASS for the current bibliography:** titles/authors/venues/pages/DOIs were cross-checked against ACM, Cambridge, Springer, Oxford Academic, ScienceDirect/authoritative institutional records, and BJPS metadata during the 2026-09-22 audit.
 - Related Work survives a deeper novelty search. **PASS WITH NARROWED CLAIM:** closest prior art materially reduced the novelty surface; the remaining claim is the individuation-specific admissibility rule plus mechanized anti-smuggling controls.
 - No sentence claims derivation of metaphysical identity or target ontology. **PASS in the current English/LaTeX draft.**
 - Hostile review finds no unacknowledged use of presentation identity as evidence. **PASS for the current theorem-to-prose mapping; final venue-specific review still required.**
+
+
+## Compiled-manuscript hostile review — 2026-09-22
+
+The compiled 10-page manuscript was reviewed after the target-relativity worked example was added.
+
+### Result
+
+No new correctness blocker was found.
+
+The strongest previously ambiguous point—what counts as `target-relevant`—is now made explicitly claim-relative. The duplicate-record example shows that the same row identifier can legitimately individuate records while failing, by itself, to individuate the persons represented by those records. The manuscript therefore does not classify labels or identifiers as intrinsically meaningless.
+
+The current positive rule is also scoped to a **declared evidential regime**, avoiding an unrestricted claim that one universal test family determines individuality.
+
+### Residual publication risks
+
+1. **Incremental-novelty risk remains real.** Nguyen (2017) already places licensed claims about shared targets at the center of representation/equivalence. Chen (2018) already treats experimental individuation and presentation. The paper must continue to sell the conjunction of individuation-specific admissibility and mechanized anti-smuggling controls, not any broad representational thesis.
+2. **The formal mathematics is intentionally elementary.** The paper is stronger as a formal-methodological / philosophy-of-science note than as a mathematics or theoretical-CS theorem paper.
+3. **Reference assignment remains exogenous.** This is now explicit rather than hidden.
+4. **The worked example is illustrative, not empirical evidence.** It improves clarity but does not broaden the theorem.
+5. **Venue fit now matters more than another theoretical extension.** Further ontology or additional test regimes would likely weaken Paper 1 by widening scope.
+
+### Current judgment
+
+The manuscript is ready to move from theory development to **venue selection and venue-specific editorial adaptation**.
+
+It is not yet marked publication-final because author metadata, venue template, abstract/word limits, repository/archive statement, and any venue-specific artifact requirements remain unset.
