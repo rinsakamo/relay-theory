@@ -199,6 +199,86 @@ theorem decorativeInterfaceTag_irrelevant
   rfl
 
 /--
+A presentation may carry arbitrary identity-like metadata. The token carrier is
+fully polymorphic: no property of the token type is used by grounded semantics.
+-/
+structure TokenizedPresentation (Token : Type) where
+  presentation : Presentation
+  token : Token
+
+/-- Grounded observation ignores identity-like metadata by construction. -/
+def tokenizedObserveGrounded {Token : Type}
+    (value : TokenizedPresentation Token)
+    (probe : Probe) : Outcome :=
+  observeGrounded value.presentation probe
+
+def TokenizedGroundedIndistAt {Token : Type}
+    (interface : Interface)
+    (left right : TokenizedPresentation Token) : Prop :=
+  ∀ probe, accessible interface probe →
+    tokenizedObserveGrounded left probe =
+      tokenizedObserveGrounded right probe
+
+/--
+For any token carrier, adding semantically inert identity-like metadata leaves
+the base grounded classification unchanged.
+-/
+theorem tokenizedGroundedIndist_iff_base
+    {Token : Type}
+    (interface : Interface)
+    (left right : TokenizedPresentation Token) :
+    TokenizedGroundedIndistAt interface left right ↔
+      GroundedIndistAt interface left.presentation right.presentation := by
+  rfl
+
+/--
+For any token carrier, arbitrary reassignment of semantically inert tokens
+preserves the grounded classification of fixed underlying presentations.
+-/
+theorem identityToken_variation_preserves_groundedClassification
+    {Token : Type}
+    (interface : Interface)
+    (left right : Presentation)
+    (leftToken rightToken leftToken' rightToken' : Token) :
+    TokenizedGroundedIndistAt interface
+        ⟨left, leftToken⟩ ⟨right, rightToken⟩ ↔
+      TokenizedGroundedIndistAt interface
+        ⟨left, leftToken'⟩ ⟨right, rightToken'⟩ := by
+  rfl
+
+/--
+Concrete negative control: two different Boolean token values do not separate
+the two same-reference encodings.
+-/
+theorem differentIdentityTokens_sameGroundedClassification :
+    TokenizedGroundedIndistAt .fine
+      (TokenizedPresentation.mk .encodedA false)
+      (TokenizedPresentation.mk .encodedB true) := by
+  exact
+    (tokenizedGroundedIndist_iff_base .fine
+      (TokenizedPresentation.mk .encodedA false)
+      (TokenizedPresentation.mk .encodedB true)).2
+      sameReferent_encodings_groundedlyIndistinguishable
+
+/--
+For any token carrier, assigning the same token cannot mask a grounded
+difference that the admitted tests already expose.
+-/
+theorem identityTokenCannotMask_groundedDifference
+    {Token : Type}
+    (token : Token) :
+    ¬ TokenizedGroundedIndistAt .fine
+      (TokenizedPresentation.mk .encodedA token)
+      (TokenizedPresentation.mk .encodedC token) := by
+  intro hTokenized
+  have hBase :
+      GroundedIndistAt .fine .encodedA .encodedC :=
+    (tokenizedGroundedIndist_iff_base .fine
+      (TokenizedPresentation.mk .encodedA token)
+      (TokenizedPresentation.mk .encodedC token)).1 hTokenized
+  exact fine_distinguishable hBase
+
+/--
 Scoped bundle: presentation metadata can differ without grounded separation;
 coarse access can fail to distinguish; richer grounded access can distinguish;
 and the positive-control referent difference is derived from a grounded
