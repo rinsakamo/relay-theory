@@ -222,3 +222,20 @@ The PDF uploaded directly by the successful Paper 1 Review CI run was downloaded
 The artifact was rendered to PNG at 160 dpi and all 18 pages were inspected. No clipped text, overlaps, black squares, broken glyphs, missing section text, or reference-page layout defects were found. The R1--R15 claim-to-artifact map, Acknowledgements / AI disclosure, and both reference pages render cleanly.
 
 This closes the manuscript build/layout gate for the current Philosophy of Science review copy. Any later textual change to the blind manuscript must rerun the same CI and visual-review cycle.
+
+
+## DOI-complete exact CI artifact visual inspection — 2026-09-23
+
+The final bibliography update added full DOI URLs for every current reference with a DOI. The resulting exact blind review copy was validated again rather than relying on the previous PDF.
+
+- exact head: `1ee8022a7fc740ec8e11c27b7e59aa489373ddbb`
+- workflow run: `#11 / 35743934031`
+- CI result: **SUCCESS**
+- artifact ID: `10702765379`
+- artifact digest: `sha256:ff5e95c1a245a79f5153947412a692448210ecfa41cbc3990a059853a3cfaa92`
+- extracted PDF SHA-256: `e9b30a5ab4fcffcae3df37a02827af2c67a8456fd1138a431ba621653b1a321a`
+- pages: `18`
+
+The exact artifact was rendered at 140 dpi and all pages were reviewed. Full DOI URLs are visible in the references. No clipping, overlapping text, broken glyphs, missing content, or bibliography-layout defects were found.
+
+This is now the current review-copy validation record. Any later manuscript or bibliography edit invalidates this exact-artifact record and must rerun the same CI + visual-inspection cycle.
