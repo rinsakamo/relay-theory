@@ -104,7 +104,13 @@ current revision privilege
 
 including generation without revision privilege and revision privilege without generation. A decorative high-level label adds no information to either derived judgment.
 
-Therefore causal authorship-like attribution and current control/revision authority must not be represented as one obligatorily aligned Ownership value in this tested operational scope. This is only a **partial decomposition**: focal incorporation, possession/custody, access rights, normative/social/legal title, responsibility, and bodily ownership remain separate unresolved meanings.
+Therefore causal authorship-like attribution and current control/revision authority must not be represented as one obligatorily aligned Ownership value in this tested operational scope.
+
+#58 further separates a scoped **registry-mediated institutional title** sense. The same #46 physical/control profile and the same transfer proposal can produce different recognized claimants under different explicit institutional transfer rules. Conversely, current revision privilege can occur without registry title and registry title can occur without current revision privilege.
+
+Thus physical causal/control structure alone does not determine this title sense. In the tested finite registry, however, the recognized claimant is reconstructed from an explicit institutional initial assignment + transfer-admissibility rule + proposal, without an additional Ownership/title bit. This does not derive normativity from physics or establish that the institution is legitimate.
+
+Ownership remains only **partially decomposed**: focal incorporation, possession/custody/access, broader legal/moral/social legitimacy, responsibility, consent, bodily ownership, and identity-sensitive persistence remain separate unresolved meanings.
 
 Likewise, familiar cognitive categories may describe relative interaction topology rather than separate fundamental mechanisms:
 
