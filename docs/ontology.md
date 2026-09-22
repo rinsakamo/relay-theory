@@ -755,6 +755,20 @@ and competence across both support values is ordinary competence over `Context Ã
 
 Thus **support-independent competence is derived rather than primitive** in this scope. No automaticity object or label is needed. This says nothing by itself about psychological automaticity, consciousness/attention, deliberation, learning history, procedural memory, habit, latency, resource cost, or expertise.
 
+Issue #95 tests a separate Habit-like default-tendency axis rather than support independence. Its finite carrier is an explicit response-selection weight surface:
+
+```text
+Context -> Response -> Nat
+```
+
+The tested default-tendency judgment compares relative weights between candidate responses, while competence-like capability asks only whether a positive-weight successful response is available.
+
+All four capability Ã— tendency combinations are realized. Thus the two roles are independently variable.
+
+In this scoped finite role, default tendency is **derived from the explicit selection-weight surface** rather than represented by a Habit primitive. Extensional equality of the full weight surface preserves the tendency judgment, and a finite common positive rescaling control shows the tested role depends on relative selection structure rather than the particular 1/2 encoding.
+
+This does not reduce learned or psychological Habit. Formation/provenance, practice history, procedural memory, automaticity, value/reward, compulsion, and stochastic action-selection semantics remain separate questions.
+
 This result does not extend automatically to probabilistic success, expected loss, bounded degradation, adversarial risk, distribution shift, or other approximate/stochastic notions. Those require explicit measure / metric / threshold / distribution structure and separate testing.
 
 Issue #74 tests the first bounded deterministic extension without introducing probability. Over the same two-variation #64 response surface, the exact profile has failure count 0 while the brittle profile has failure count 1. The brittle profile fails exact robustness and budget 0, but passes an explicit failure budget of 1.
