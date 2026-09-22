@@ -99,6 +99,59 @@ Therefore "formal substrate" does **not** mean "discard counterfactual informati
 
 Evaluation parameters and model semantics can still be theory-essential for a particular theorem while remaining non-ontological in this scoped classification.
 
+## Temporal reconstruction constraints
+
+Time reconstruction remains separate from the agency-local substrate classification above.
+
+Current scoped results distinguish at least:
+
+```text
+local Present
+  -> focal event / evaluation index
+     [#30]
+
+global co-present slice
+  -/-> causal/process order + focal event
+     [#26 / #29]
+
+strict temporal orientation
+  -> requires independently represented asymmetry
+     in the declared surface
+     [#33]
+
+local lineage totality
+  -/-> ambient global totality
+     [#45]
+```
+
+The finite #45 discriminator uses a three-event merge order:
+
+```text
+a -> c
+b -> c
+
+a || b
+```
+
+with selected local lineages `{a,c}` and `{b,c}`. Each lineage is total under the same ambient precedence relation and together they cover the event carrier, while the ambient relation remains non-total.
+
+The same partial structure admits two injective scalar linearizations preserving every ambient precedence constraint:
+
+```text
+a < b < c
+b < a < c
+```
+
+Their disagreement is not harmless if the serialization is substituted for temporal semantics. Relative to focal `a`, ambient `b` is `ELSEWHERE`; the two scalar serializations instead classify it as opposite `FUTURE` and `PAST` cases.
+
+Therefore, within this finite deictic/order scope:
+
+> **Local one-dimensionality and the existence of scalar serializations do not by themselves determine or require one intrinsic global total time.**
+
+A scalar linearization may be a useful representation while still adding comparisons absent from the source partial structure.
+
+This result does **not** establish that temporal precedence is a RelayTheory ontology primitive, that all physical Time is partially ordered, that incomparability means simultaneity, that spacetime admits no physically preferred foliation, or that relativity has been derived. Any stronger global temporal structure must supply independent discriminating information.
+
 ## Derived source and validation terms
 
 ### Grounding-like source anchoring
