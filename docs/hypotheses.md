@@ -881,6 +881,49 @@ A primitive-Self account regains force only if an intrinsic Self-relative distin
 - Historical RelayLM `relay-theory` lane: provenance only
 - RelaySelf experiments may be linked individually when their evidence is relevant
 
+## Historical corpus reconstruction disposition
+
+Issue #15 is terminal for the current migration/audit pass over the former RelayLM `relay-theory` corpus.
+
+The four audited pillars reached scoped epistemic stops:
+
+```text
+Cognition
+  -> operational agency/cognitive roles largely reduced or split
+     into explicit response/evaluation/provenance structures;
+     no wholesale object taxonomy migration earned
+
+Information
+  -> current useful residue re-forged as
+     distinguishability / recoverability / representation relations
+     where independently required;
+     no Information-substance primitive earned
+
+Time
+  -> split into focal/deictic index, order, orientation,
+     optional totalization, metric payload, and lineage selection;
+     no single historical Time object migrated
+
+Cosmology
+  -> audited historical Grand Null remains dominant;
+     generic accessibility structure is already representable,
+     while physical horizon/cosmology claims require fresh evidence
+```
+
+Cross-domain similarities remain structural diagrams, not evidence of one shared mechanism or ontology.
+
+Current terminal classification:
+
+```text
+SCOPED_HISTORICAL_RECONSTRUCTION_COMPLETE
+SURVIVORS_REFORGED_SMALLER
+NO_WHOLESALE_ONTOLOGY_MIGRATION
+```
+
+Historical material remains provenance/quarry. Reopening a pillar requires a new current discriminator, independently needed formal structure, or fresh scientific evidence handled under #23 where applicable.
+
+Architecture consequence: **NONE.**
+
 ## Registry rule
 
 Do not mark a hypothesis supported because its ontology is elegant.
