@@ -945,6 +945,34 @@ without an independent Emotion state/object.
 
 This does **not** reduce phenomenal emotion, subjective feeling, valence as qualia, named human emotions, consciousness, biological homeostasis, endocrine/neural mechanisms, reward or reinforcement learning, long-term mood, emotional memory, emotion acquisition/development, or the ontology of viability/value itself. Those stronger questions require separate evidence if RelayTheory needs them.
 
+### Viability-like status
+
+Within the narrow operational role tested by #108, viability status is **derived and criterion-relative** rather than primitive.
+
+The retained lower-level surface is:
+
+```text
+responseUnder : Perturbation -> State
+acceptable    : State -> Prop
+```
+
+with:
+
+```text
+ViabilityRobust
+  :=
+forall perturbation p,
+  acceptable(responseUnder(p))
+```
+
+This is ordinary task-relative competence over the declared perturbation class, with acceptable-state membership serving as the success criterion. When a separate nominal context is retained, it is equivalently the existing exact-robustness pattern over an explicit variation coordinate.
+
+The same dynamics can be viable under one acceptable-state criterion and non-viable under another. Conversely, the same criterion can classify different dynamics differently. Sharing one nominal/current acceptable state is insufficient to establish robustness across perturbations.
+
+Accordingly, no independent Viability bit/object is required in this scope.
+
+This result does **not** identify viability with reward or value, and it does not yet reconstruct homeostasis as active restoration after leaving the acceptable region. Biological life, organismic individuality, metabolism, reproduction, autopoiesis, allostasis, death, and evolutionary fitness remain separate questions.
+
 ## Body
 
 Body is deliberately not equated with the focal cognitive locus.

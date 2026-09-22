@@ -448,6 +448,54 @@ The appraisal coordinate is an explicit model/evaluation input. #106 does not es
 
 This does not reduce phenomenal emotion, subjective feeling, valence qualia, named emotions, consciousness, biological homeostasis, reward/RL, long-term mood, emotional memory, or emotion acquisition.
 
+Issue #108 then tests the minimal operational viability role.
+
+Let:
+
+```text
+responseUnder : Perturbation -> State
+acceptable    : State -> Prop
+```
+
+and evaluate:
+
+```text
+ViabilityRobust(responseUnder, acceptable)
+  :=
+forall perturbation p,
+  acceptable(responseUnder(p))
+```
+
+This is not new formal structure. It is #41 task-relative competence under the substitution:
+
+```text
+Context  := Perturbation
+Policy   := responseUnder
+Success  := acceptable
+```
+
+and, when perturbation is represented as a variation coordinate around a nominal context, it is the #64 exact-robustness pattern.
+
+Finite matched cases give two independent relativities:
+
+- same response dynamics + different acceptable-state criterion -> different viability judgment;
+- same acceptable-state criterion + different perturbation response -> different viability judgment.
+
+Two profiles may also share the same nominal/current acceptable state while differing on the full perturbation surface, so current acceptable status does not determine viability robustness.
+
+Current scoped classification:
+
+```text
+VIABILITY_STATUS_IS_CRITERION_RELATIVE
+/
+OPERATIONAL_VIABILITY_ROBUSTNESS
+REDUCES_TO_EXISTING_COMPETENCE_ROBUSTNESS_SEMANTICS
+```
+
+No Viability-specific Lean module is introduced because the tested judgment is a direct specialization of already validated #41/#64 structure.
+
+This does **not** reduce homeostasis as active recovery, adaptive/allostatic regulation, biological life, organismic individuality, metabolism, reproduction, autopoiesis, reward/value, death, or evolutionary fitness.
+
 Issue #74 then tests a deterministic bounded-failure surface. Reusing the #64 profiles, the exact profile has zero failures and the brittle profile has one failure over the declared two-variation evaluation. The brittle profile is not exactly robust, fails budget 0, and passes budget 1.
 
 Thus approximate qualification is threshold-relative and is reconstructed in this finite instance from:
