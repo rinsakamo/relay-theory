@@ -1,11 +1,11 @@
 # Working Draft — Paper 1
 
 > **Status:** Primary English working manuscript. Non-authoritative.
-> **Scope:** Evidential conditions for operational individuation under restricted tests.
+> **Scope:** Evidential conditions for operational individuation claims under restricted tests.
 > **Repository provenance:** #119–#122, formal strengthening #124/#125, and the current formal artifact on main.
 > **Formal boundary:** The target domain and representation-to-target map are explicit model inputs. This paper does not derive target ontology or metaphysical numerical identity from observation.
 
-# Evidential Conditions for Operational Individuation
+# When Does a Formal Difference Support an Individuation Claim?
 ## Representation, Target Relevance, and Restricted Tests
 
 ## Abstract
