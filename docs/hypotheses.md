@@ -404,6 +404,50 @@ CATEGORY_ROLE_IS_PROBE_RELATIVE
 
 This does not establish semantic concepts, understanding, symbols/language, prototypes or exemplars, concept acquisition, abstraction quality, grounding, or a privileged category ontology.
 
+Issue #106 then tests a narrow Emotion-like appraisal-modulation role on #95's existing finite selection-weight carrier.
+
+Define:
+
+```text
+AppraisalModulates(weights)
+  :=
+exists response r,
+  weights(false,r) != weights(true,r)
+```
+
+Four explicit profiles realize all:
+
+```text
+FalseDominant × AppraisalModulates
+=
+00, 01, 10, 11
+```
+
+while all four remain task-capable under #95's identity criterion.
+
+Additional controls establish:
+
+- same complete baseline-appraisal profile with different alternate-appraisal response;
+- Habit-like default tendency does not determine appraisal modulation;
+- appraisal modulation does not determine Habit-like default tendency;
+- task competence does not determine appraisal modulation;
+- pointwise-equal full appraisal-conditioned selection surfaces preserve the modulation judgment;
+- a decorative Emotion label changes neither modulation nor Habit-like tendency.
+
+Therefore the tested operational distinction is reconstructible from the explicit context/appraisal-conditioned selection surface rather than an Emotion primitive.
+
+Current scoped classification:
+
+```text
+APPRAISAL_MODULATION_DISTINCT_FROM_HABIT_TENDENCY
+/
+EMOTION_LIKE_MODULATION_RECONSTRUCTIBLE_UNDER_EXPLICIT_SELECTION_SURFACE
+```
+
+The appraisal coordinate is an explicit model/evaluation input. #106 does not establish that viability, value, reward, or homeostatic state is primitive, nor that the coordinate is biologically or phenomenally emotional.
+
+This does not reduce phenomenal emotion, subjective feeling, valence qualia, named emotions, consciousness, biological homeostasis, reward/RL, long-term mood, emotional memory, or emotion acquisition.
+
 Issue #74 then tests a deterministic bounded-failure surface. Reusing the #64 profiles, the exact profile has zero failures and the brittle profile has one failure over the declared two-variation evaluation. The brittle profile is not exactly robust, fails budget 0, and passes budget 1.
 
 Thus approximate qualification is threshold-relative and is reconstructed in this finite instance from:

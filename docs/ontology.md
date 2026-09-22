@@ -901,11 +901,49 @@ Current RelayTheory therefore contains no `Crystal` primitive. A future narrower
 
 ### Emotion-like structure
 
-Candidate reduction:
+Within the scoped operational role tested by #106, Emotion-like appraisal modulation is currently **derived rather than primitive**.
 
-> A recurrent pattern that changes which relations or future interactions remain actionable, often under viability/value constraints.
+The retained lower-level surface is the same explicit response-selection carrier used by #95:
 
-Whether this requires an independent primitive is unresolved.
+```text
+SelectionWeight : Appraisal -> Response -> Nat
+```
+
+The tested modulation judgment is:
+
+```text
+AppraisalModulates(weights)
+  :=
+exists response r,
+  weights(false, r) != weights(true, r)
+```
+
+Four finite profiles realize every combination:
+
+```text
+Habit-like FalseDominant × AppraisalModulates
+=
+00, 01, 10, 11
+```
+
+Therefore the tested appraisal-modulation role and #95's Habit-like default tendency are independently variable.
+
+Matched profile pairs can share the entire baseline-appraisal selection surface while differing only under the alternate appraisal, so one realized/baseline choice profile does not determine the modulation.
+
+All four profiles remain task-capable under the same #95 identity criterion. Thus task competence does not determine the appraisal-modulation role either.
+
+Pointwise equality of the full appraisal-conditioned selection surface preserves the modulation judgment, and a decorative `emotionFlag` adds no information.
+
+Accordingly, in this finite scope:
+
+```text
+Emotion-like operational modulation
+  -> explicit appraisal-conditioned response/selection structure
+```
+
+without an independent Emotion state/object.
+
+This does **not** reduce phenomenal emotion, subjective feeling, valence as qualia, named human emotions, consciousness, biological homeostasis, endocrine/neural mechanisms, reward or reinforcement learning, long-term mood, emotional memory, emotion acquisition/development, or the ontology of viability/value itself. Those stronger questions require separate evidence if RelayTheory needs them.
 
 ## Body
 
