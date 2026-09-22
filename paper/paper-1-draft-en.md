@@ -138,6 +138,17 @@ High-throughput sequencing provides a concrete scientific case in which represen
 
 Unique molecular identifiers (UMIs) were introduced to address precisely this problem. Kivioja et al. (2012) used molecular identifiers to distinguish individual DNA or RNA molecules before amplification and thereby support absolute molecule counting. In the terminology of the present framework, a natural target domain is the set of pre-amplification molecules, while the observed representations are downstream sequencing reads. Different read records, file identifiers, or sequencing coordinates can distinguish representations without establishing that the reads originated from different target molecules.
 
+In the notation of Section 2, the application can be idealized as follows:
+
+- \(P\): downstream sequencing-read records;
+- \(T\): pre-amplification source molecules;
+- \(r(p)\): the source molecule from which read \(p\) descends;
+- \(Q\): source-relevant measurements or queries admitted by the analysis, including experimentally introduced molecular tags and alignment context;
+- \(A\subseteq Q\): the subset actually used by a particular deduplication or counting procedure;
+- \(O(q,t)\): the outcome associated with source molecule \(t\) under query \(q\).
+
+The mapping is deliberately idealized. In an actual UMI workflow, the source assignment \(r\) is not read directly from token equality: it is inferred through the experimental protocol together with sequencing, alignment, and error assumptions. The exact formal framework therefore audits which declared differences may support the individuation inference; it does not replace the statistical or experimental work required to establish the source assignment.
+
 A UMI has a different evidential status from an arbitrary read identifier. The important difference is not that one string is called an identifier and another is not. A UMI is introduced by the experimental protocol at the molecular stage, before PCR amplification. Copies descended from the same tagged molecule can therefore inherit information that is experimentally linked to that source molecule. The identifier participates in the measurement process that connects a downstream read to the target of the counting claim.
 
 This does not make the UMI an infallible identity oracle. Smith, Heger, and Sudbery (2017) emphasize that UMI sequences themselves are subject to sequencing error and show that naive treatment of UMI values can misidentify PCR duplicates. Their UMI-tools method uses the structure of observed UMI sequences to correct such errors and improve molecular quantification. Thus even an experimentally introduced molecular identifier must be interpreted within a declared error model and analysis procedure.
@@ -214,13 +225,15 @@ A natural objection remains:
 
 > Perhaps the model appears to avoid primitive identity only because no identity-like field was represented explicitly.
 
-The formal model therefore adds a tokenized representation containing the original presentation together with an explicit Boolean identity-like token.
+The formal model therefore adds a tokenized representation containing the original presentation together with an explicit identity-like token drawn from an arbitrary carrier type.
 
 The token is deliberately absent from the representation-to-target map, probe accessibility, and target-sensitive response semantics. This is a controlled negative test. If the token is irrelevant to the declared evidential surface, changing it should not change the induced classification.
 
 The theorem *tokenizedGroundedIndist_iff_base* shows that, for fixed underlying presentations, tokenized indistinguishability is equivalent to the original target-sensitive indistinguishability.
 
 The central theorem, *identityToken_variation_preserves_groundedClassification*, proves that arbitrary reassignment of the identity-like tokens on either side leaves the tested classification unchanged:
+
+The theorem is polymorphic in the token carrier: the result does not depend on the token being Boolean, numeric, textual, or otherwise structured.
 
 \[
 \text{identity-like token changes}
