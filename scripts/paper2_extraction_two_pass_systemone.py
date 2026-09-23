@@ -46,6 +46,7 @@ from paper2_extraction_procedure_validate import (
 MANIFEST_VERSION = "paper2-two-pass-systemone-v1"
 DECISION_VERSION = "paper2-systemone-decision-v1"
 MAX_SPANS = 3
+MAX_SYSTEMONE_QUESTIONS = 64
 NODE_SLOTS = ("n1", "n2", "n3")
 RELATION_SLOTS = ("r1", "r2")
 SCOPE_FIELDS = ("conditions", "population", "substrate", "task", "temporal_scope")
@@ -108,6 +109,24 @@ def validate_manifest(manifest: Any) -> dict[str, Any]:
         fail("manifest.bounded_surface.max_nodes")
     if bounded.get("max_relations") != len(RELATION_SLOTS):
         fail("manifest.bounded_surface.max_relations")
+    systemone = manifest.get("systemone_pass")
+    if not isinstance(systemone, dict):
+        fail("manifest.systemone_pass")
+    if systemone.get("max_questions") != MAX_SYSTEMONE_QUESTIONS:
+        fail("manifest.systemone_pass.max_questions")
+
+    limitations = manifest.get("known_limitations")
+    if not isinstance(limitations, dict):
+        fail("manifest.known_limitations")
+    for key in (
+        "semantic_entailment_mechanically_verified",
+        "construct_label_suppression_for_real_sources_qualified",
+        "real_pilot_authorized",
+        "systemone_probability_calibration_claimed",
+    ):
+        if limitations.get(key) is not False:
+            fail(f"manifest.known_limitations.{key}")
+
     scope = manifest.get("qualification_scope")
     if not isinstance(scope, dict):
         fail("manifest.qualification_scope")
@@ -206,6 +225,11 @@ def build_questions(source: dict[str, Any]) -> dict[str, Any]:
                 YES_NO,
                 f"Does source span {sid} ground {slot}?",
             )
+    if len(questions) > MAX_SYSTEMONE_QUESTIONS:
+        fail(
+            f"SystemOne question count {len(questions)} exceeds "
+            f"frozen maximum {MAX_SYSTEMONE_QUESTIONS}"
+        )
     return questions
 
 
@@ -680,6 +704,20 @@ def run_case(
 def self_test(manifest_path: Path) -> None:
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     validate_manifest(manifest)
+
+    # Surface bound — even the maximum admitted 3-span source stays within 64 questions.
+    max_source = {
+        "schema_version": "paper2-extraction-source-bundle-v1",
+        "bundle_id": "B9099",
+        "source_language": "en",
+        "source_spans": [
+            {"span_id": "s1", "text": "Synthetic span one."},
+            {"span_id": "s2", "text": "Synthetic span two."},
+            {"span_id": "s3", "text": "Synthetic span three."},
+        ],
+    }
+    if len(build_questions(max_source)) != 51:
+        raise AssertionError("maximum v1 question surface must be exactly 51")
 
     # P1 — explicit relation.
     p1 = synthetic_source("Synthetic state A depends on synthetic state B.")
