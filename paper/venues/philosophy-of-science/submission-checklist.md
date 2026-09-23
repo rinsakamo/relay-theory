@@ -19,7 +19,7 @@
 - [x] 12pt review text.
 - [x] Double-spaced body.
 - [x] Ragged-right review copy.
-- [x] Abstract followed by a page break, matching the journal's non-template accepted-manuscript structure guidance.
+- [x] Initial anonymous source follows the explicit initial-submission sequence: title → abstract → main text, with no forced page break between abstract and Introduction.
 - [x] Submission-facing section/subsection titles use headline capitalization.
 - [x] Venue-source tables use full-size 12pt text (no `\\small` overrides).
 - [x] Reference page ranges are normalized to Chicago-style abbreviated inclusive numbers where applicable.

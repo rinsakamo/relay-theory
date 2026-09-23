@@ -1,3 +1,7 @@
+## Philosophy of Science initial-submission precedence correction — 2026-09-23
+
+The accepted-manuscript guidance suggests an abstract page break for non-template final manuscripts, but the journal's more specific initial anonymous-submission instructions require the first page to contain title → abstract → text in sequence. The anonymous review source therefore does not force a page break after the abstract. Accepted-manuscript back-matter/style requirements remain recorded separately for the post-acceptance version.
+
 ## Philosophy of Science final-CI repair — 2026-09-23
 
 The accepted-style 12pt table normalization exposed underfull-box warnings in the formal-audit table. Its prose columns are now ragged-right, preserving full-size text without layout warnings. The review workflow was also updated to match the current anonymous-review policy: it now requires the AI disclosure footnote and fails if an Acknowledgements section appears in the anonymous PDF.
