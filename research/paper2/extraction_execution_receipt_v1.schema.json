@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/rinsakamo/relay-theory/blob/main/research/paper2/extraction_execution_receipt_v1.schema.json",
+  "title": "Paper 2 extraction execution receipt v1",
+  "description": "Audit receipt for two externally isolated ClaimIR extraction passes. Isolation flags are attestations, not proof of runtime separation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "owner_issue",
+    "status",
+    "run_package",
+    "extractor",
+    "passes"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "paper2-extraction-execution-receipt-v1"
+    },
+    "owner_issue": {
+      "const": 147
+    },
+    "status": {
+      "const": "CANDIDATES_FROZEN_BEFORE_COMPARISON"
+    },
+    "run_package": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "merge_sha",
+        "prompt_sha256",
+        "package_schema"
+      ],
+      "properties": {
+        "merge_sha": {
+          "const": "31346f0c128876201e0407bb5cbb6102428b60e8"
+        },
+        "prompt_sha256": {
+          "const": "dfbbf50c0cfad985abb091560a1d2db6d35f5e768d574841c151afd27a2e78f6"
+        },
+        "package_schema": {
+          "const": "paper2-extraction-run-package-v1"
+        }
+      }
+    },
+    "extractor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identity",
+        "revision",
+        "configuration_sha256",
+        "configuration_note"
+      ],
+      "properties": {
+        "identity": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision": {
+          "type": "string",
+          "minLength": 1
+        },
+        "configuration_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "configuration_note": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "passes": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "pass_id",
+          "run_id",
+          "context_id",
+          "started_at",
+          "completed_at",
+          "isolation_attestation",
+          "candidates"
+        ],
+        "properties": {
+          "pass_id": {
+            "enum": [
+              "A",
+              "B"
+            ]
+          },
+          "run_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "context_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "started_at": {
+            "type": "string",
+            "minLength": 1
+          },
+          "completed_at": {
+            "type": "string",
+            "minLength": 1
+          },
+          "isolation_attestation": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "fresh_context",
+              "other_pass_output_visible",
+              "other_bundle_output_visible",
+              "basis_or_decomposition_visible",
+              "procedure_modified_after_first_output",
+              "attestation_scope"
+            ],
+            "properties": {
+              "fresh_context": {
+                "const": true
+              },
+              "other_pass_output_visible": {
+                "const": false
+              },
+              "other_bundle_output_visible": {
+                "const": false
+              },
+              "basis_or_decomposition_visible": {
+                "const": false
+              },
+              "procedure_modified_after_first_output": {
+                "const": false
+              },
+              "attestation_scope": {
+                "const": "executor_attestation_not_independent_proof"
+              }
+            }
+          },
+          "candidates": {
+            "type": "array",
+            "minItems": 5,
+            "maxItems": 5,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "bundle_id",
+                "source_text_sha256",
+                "bundle_sha256",
+                "candidate_path",
+                "candidate_sha256"
+              ],
+              "properties": {
+                "bundle_id": {
+                  "pattern": "^B000[1-5]$",
+                  "type": "string"
+                },
+                "source_text_sha256": {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                },
+                "bundle_sha256": {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                },
+                "candidate_path": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "candidate_sha256": {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
