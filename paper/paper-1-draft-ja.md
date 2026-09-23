@@ -5,11 +5,11 @@
 > **形式的境界:** target domain と representation-to-target assignment はモデル入力である。structural factorization 自体は scientific warrant を与えない。
 
 # 形式的な差は、いつ個体化推論に入ることができるのか？
-## Target Factorization、Restricted Tests、そして UMI の事例
+## Target Factorization、Restricted Tests、そして Unique Molecular Identifier (UMI) の事例
 
 ## 要旨
 
-表現間の形式的な差は、それだけでは target-level individuation を正当化しない。本稿は、structural target-factorization condition と、それを受け入れるために必要な scientific warrant を分離し、test-specific factorization を通じて representation-level observation と target-level test outcome を接続する。UMI sequencing の事例では、software read identifier、latent molecular tag、noisy observed tag string を区別する。また counterfactual relevance audit において、無害な全単射的 renaming と assignment-changing perturbation を区別する。小規模な Lean artifact により、構造依存関係と test-relative refinement を検査する。本枠組みが与えるのは individuation inference の必要条件であり、証拠一般や numerical identity の完全な理論ではない。
+表現間の形式的な差は、それだけでは target-level individuation を正当化しない。本稿は、structural target-factorization condition と、それを受け入れるために必要な scientific warrant を分離し、test-specific factorization を通じて representation-level observation と target-level test outcome を接続する。unique molecular identifier (UMI) の事例では、software read ID、latent molecular tag、noisy observed tag を区別する。また、本稿で counterfactual relevance audit と呼ぶ分析において、無害な全単射的 renaming と assignment-changing perturbation を区別する。Lean による小規模な machine-checked formalization により、構造依存関係と test-relative refinement を検査する。本枠組みが与えるのは individuation inference の必要条件であり、証拠一般や numerical identity の完全な理論ではない。
 
 ## 1. はじめに
 
@@ -29,7 +29,7 @@
 
 formal artifact が扱うのは第一層だけである。構造依存関係を監査可能にするが、第二層を作り出すものではない。
 
-この分離から、実用的な **counterfactual relevance audit** が得られる。identifier-like feature について、まずどの種類の変更を考えているのかを問う。label を一貫して全単射的に rename しただけなら、label が符号化している構造だけに依存する推論は変わるべきではない。一方、representation 間で label assignment を入れ替える操作は、その assignment 自体が科学的に ground された関係を記録しているなら、証拠を変化させうる。assignment perturbation によって結論が変わるなら、その assignment が単なる representational detail ではなく target-relevant である理由を説明しなければならない。
+この分離から、本稿で **counterfactual relevance audit** と呼ぶ実用的な分析が得られる。identifier-like feature について、まずどの種類の変更を考えているのかを問う。label を一貫して全単射的に rename しただけなら、label が符号化している構造だけに依存する推論は変わるべきではない。一方、representation 間で label assignment を入れ替える操作は、その assignment 自体が科学的に ground された関係を記録しているなら、証拠を変化させうる。assignment perturbation によって結論が変わるなら、その assignment が単なる representational detail ではなく target-relevant である理由を説明しなければならない。
 
 本稿では unique molecular identifier (UMI) を用いてこの点を示す。software read identifier と molecular tag は、どちらも string として表現できる。しかし evidential role は異なる。一方は bookkeeping metadata であり、他方は downstream read と pre-amplification template molecule を結ぶ実験的生成過程に参加しうる。UMI の事例は exact formal model の限界も示す。observed UMI string には error が入りうるため、experimentally assigned tag と observed read-level tag を区別しなければならない。
 
@@ -43,7 +43,7 @@ formal artifact が扱うのは第一層だけである。構造依存関係を�
 
 3. **Counterfactual relevance audit.** pure renaming と evidence-changing reassignment を区別し、identifier assignment が隠れた individuating work をしている場合を診断する。
 
-4. **Scientific case を伴う mechanized dependency audit.** 小規模な Lean development により structural claim を検査し、UMI の事例により latent target-linked tag、noisy observed tag、representation-only identifier が実践上どう異なるかを示す。
+4. **Scientific case を伴う machine-checked dependency analysis.** 小規模な Lean formalization により structural claim を検査し、UMI の事例により latent target-linked tag、noisy observed tag、representation-only identifier が実践上どう異なるかを示す。
 
 ## 2. 形式的設定
 
@@ -75,7 +75,7 @@ target-level property を
 \phi:T\to V
 \]
 
-とする。**target-factorization condition** を
+とする。本稿では、次を **target-factorization condition** と呼ぶ。
 
 \[
 F_r(f,\phi)
@@ -156,9 +156,9 @@ r(a)\neq r(b)
 
 ここでも式は自分自身を正当化しない。scientific application は measurement や protocol がなぜ \(B_r(q)\) を妥当な approximation または idealization にするのかを説明しなければならない。
 
-### 2.4 Admitted test family
+### 2.4 Selected test family
 
-\(A\subseteq Q\) を、ある analysis が admit する test family とする。exact framework では、admission には target claim との relevance と、representation-level observation と target-level response の間の独立に正当化可能な structural link の両方が必要である。
+\(A\subseteq Q\) を、ある analysis のために選択された test family とする。exact framework では、選択には target claim との relevance と、representation-level observation と target-level response の間の独立に正当化可能な structural link の両方が必要である。
 
 \[
 a\equiv_A b
@@ -186,7 +186,7 @@ a\mathrel{\#_A}b
 
 ### 3.1 Representation multiplicity は molecule multiplicity ではない
 
-high-throughput sequencing では、一つの template molecule から PCR amplification により複数の downstream read record が生成されうる。したがって、
+high-throughput sequencing では、一つの template molecule から polymerase chain reaction (PCR) amplification により複数の downstream read record が生成されうる。したがって、
 
 \[
 100\ \text{read records}
@@ -288,13 +288,13 @@ audit は次の二問にまとめられる。
 
 これにより、無害な renaming と evidence destruction を同じ counterfactual として扱うことを避けられる。
 
-## 5. Mechanized Dependency Audit
+## 5. Machine-Checked Dependency Analysis
 
-Lean artifact は意図的に小さい。その役割は dependency structure を executable にすることである。
+Lean formalization は意図的に小さい。その役割は、記述された dependency structure を machine-checkable にすることである。
 
-fixture には三つの presentation、referent carrier への grounding map、target-sensitive probe、coarse / fine test regime、representation-sensitive negative control、semantically inert token metadata が含まれる。
+formal model には三つの representation、representation-to-target map、target-sensitive test、coarse / fine test regime、representation-sensitive negative control、semantically inert token metadata が含まれる。
 
-feature-level factorization は value carrier に関して polymorphic である。representation-level feature は structural factorization object を通じてのみ target-level property と対応づけられる。artifact は、grounding が同じなら factorized feature の値も同じであること、およびそのような feature の値が異なれば grounding も異なることを検査する。また、representation-sensitive encoding probe は same-grounding presentation を分離するため target factorization を満たせない一方、positive-control ground-tracking feature は満たせることも検査する。
+feature-level factorization は任意の value domain に対して定義される。representation-level feature は、指定された structural factorization を通じてのみ target-level property と対応づけられる。formalization は、同じ target に割り当てられた二つの representation が、factorized feature について同じ値を取ること、およびそのような feature の値が異なれば target assignment も異なることを検査する。また、同じ target に割り当てられた二つの representation を分離するような representation-sensitive test は target factorization を満たせない一方、target assignment から直接定義された positive-control feature は満たせることも検査する。
 
 test layer も同じ構造に接続される。observation-factorization object は presentation-level observed outcome が各 probe について grounded referent の target-level response と一致することを表す。built-in grounded observation surface はこの条件を満たし、structurally factorized observed probe の差は grounding difference を含意する。
 
@@ -342,7 +342,7 @@ UMI の事例から、より一般的な methodological consequence が得られ
 
 同じ規律は、object identification より一段高い methodological level、すなわち measured capacity を記述する theoretical construct にも適用できる。異なる construct label は、それ自体が representational vocabulary 上の差である。その nominal plurality は、それだけでは measured capacity の plurality を成立させない。
 
-\(C\) を theoretical construct label の集合とし、\(\sigma(c)\) を、construct \(c\) に結びついた claim について label suppression と normalization を行った後に残る operational structural signature とする。この signature には、claim を再構成するために必要な measurement role、probe、criterion、temporal relation、resource condition、その他の dependency が含まれうる。
+\(C\) を theoretical construct label の集合とし、\(\sigma(c)\) を、construct \(c\) に結びついた claim について label suppression と normalization を行った後に残る 本稿で operational structural signature と呼ぶ構造的シグネチャ とする。この signature には、claim を再構成するために必要な measurement role、test、criterion、temporal relation、resource condition、その他の dependency が含まれうる。
 
 この signature は一意であるとも完全であるとも仮定しない。その構成要素は、construct label や source authority を復元する前に、宣言された measurement question によって固定されなければならない。そうしなければ、好ましい distinction を保存または消去するように比較手続きを事後的に調整できてしまう。
 
@@ -360,9 +360,9 @@ c_1\neq c_2
 \sigma(c_1)\neq\sigma(c_2)
 \]
 
-は、capacity distinction をさらに検討する根拠となりうる candidate discriminating structure を構成する。しかし、この第二の差も ontological / psychological independence の十分条件ではない。上述した target choice、measurement warrant、admitted test の要件を引き続き満たさなければならない。
+は、capacity distinction をさらに検討する根拠となりうる candidate discriminating structure を構成する。しかし、この第二の差も ontological / psychological independence の十分条件ではない。上述した target choice、measurement warrant、selected test の要件を引き続き満たさなければならない。
 
-逆に、異なる名前を持つ二つの construct が common measurement basis の下で同じ normalized structural signature を与えるなら、名前の差そのものは capacity plurality の追加 evidence を与えない。これは historical construct が synonymous、explanatorily interchangeable、あるいは useless であるという意味ではない。意味するのは、その label がそれ自体では declared measurement surface 上の independent status を獲得していない、ということだけである。
+逆に、異なる名前を持つ二つの construct が common measurement basis の下で同じ normalized structural signature を与えるなら、名前の差そのものは capacity plurality の追加 evidence を与えない。これは historical construct が synonymous、explanatorily interchangeable、あるいは useless であるという意味ではない。意味するのは、その label がそれ自体では specified measurement framework 上の independent status を獲得していない、ということだけである。
 
 得られる原則は次である。
 
@@ -390,7 +390,7 @@ c_1\neq c_2
 
 blind review copy では mechanized claim を neutral label にまとめる。R1--R15 は元の presentation/target、test-family、semantically inert-token control を扱う。R16--R19 は generic target factorization とその positive / negative control を扱う。R20 は grounded observation surface に対する test-specific observation factorization を確立し、R21 はその factorization の下で observed difference が grounding difference を含意することを検査する。
 
-小さな theorem が多数あること自体は novelty claim ではない。この collection は executable dependency surface である。
+小さな theorem が多数あること自体は novelty claim ではない。この collection は dependency structure の machine-checkable な記録である。
 
 ## 10. 結論
 
