@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/rinsakamo/relay-theory/blob/main/research/paper2/extraction_openai_runner_config_v1.schema.json",
+  "title": "Paper 2 OpenAI-compatible local extraction runner config v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "extractor_identity",
+    "extractor_revision",
+    "base_url",
+    "model",
+    "temperature",
+    "top_p",
+    "max_tokens",
+    "timeout_seconds",
+    "response_format",
+    "api_key_env"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "paper2-openai-runner-config-v1"
+    },
+    "extractor_identity": {
+      "type": "string",
+      "minLength": 1
+    },
+    "extractor_revision": {
+      "type": "string",
+      "minLength": 1
+    },
+    "base_url": {
+      "type": "string",
+      "pattern": "^https?://"
+    },
+    "model": {
+      "type": "string",
+      "minLength": 1
+    },
+    "temperature": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 2
+    },
+    "top_p": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "maximum": 1
+    },
+    "max_tokens": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "timeout_seconds": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 3600
+    },
+    "response_format": {
+      "enum": [
+        "none",
+        "json_object"
+      ]
+    },
+    "api_key_env": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}\n
