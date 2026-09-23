@@ -246,7 +246,7 @@ def validate_receipt(
                 try:
                     candidate_path.relative_to(receipt_path.parent.resolve())
                 except ValueError as exc:
-                    fail(f"pass {pass_id} {bundle}: candidate path escapes receipt directory") from exc
+                    raise ReceiptError(f"pass {pass_id} {bundle}: candidate path escapes receipt directory") from exc
                 validate_candidate_file(candidate_path, bundle, candidate_sha)
 
         if bundles != EXPECTED_BUNDLES:
