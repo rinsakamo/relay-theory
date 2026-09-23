@@ -4,7 +4,10 @@
   "status": "SYNTHETIC_PHYSICAL_QUALIFICATION_ONLY",
   "real_paper_text_forbidden": true,
   "real_scientific_transaction_consumed": false,
-  "replicates": ["A", "B"],
+  "replicates": [
+    "A",
+    "B"
+  ],
   "process_policy": "separate_owned_llama_cpp_process_lifetime_per_replicate",
   "expected_server_launch_count": 2,
   "per_replicate_probes": {
@@ -28,7 +31,7 @@
   },
   "normal_probe": {
     "temperature": 0.2,
-    "top_p": 1.0,
+    "top_p": 1,
     "max_tokens": 64,
     "reasoning_effort": "none",
     "cache_prompt": false
@@ -41,5 +44,23 @@
   },
   "success_classification": "SYSTEMONE_RUNTIME_SYNTHETICALLY_QUALIFIED",
   "failure_classification": "SYSTEMONE_RUNTIME_NOT_QUALIFIED",
-  "real_pilot_authorized_by_this_artifact": false
+  "real_pilot_authorized_by_this_artifact": false,
+  "target_source": {
+    "repository_url": "https://github.com/kishida/llama.cpp",
+    "branch_observed_at_freeze": "jev",
+    "revision": "07183d010f5cf5d021a2550775f42fb4b4270e06",
+    "tree": "4a654218342c2e179c0cd143e359632bff02bc22",
+    "systemone_route": "/v1/systemone",
+    "route_source_paths": [
+      "tools/server/server-jev.h",
+      "tools/server/server-jev.cpp"
+    ],
+    "selection_basis": "fresh_jev_branch_tip; delta from bc7d2f9470d619af30956ff274063777823ba331 is docs-only"
+  },
+  "cache_boundary": {
+    "cache_prompt": false,
+    "cross_request_cache_reuse_required": false,
+    "relaylm_3006_cache_correctness_dependency": false,
+    "cache_correctness_claimed_by_this_preflight": false
+  }
 }
