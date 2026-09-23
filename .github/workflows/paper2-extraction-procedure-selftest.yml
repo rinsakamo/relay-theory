@@ -1,0 +1,39 @@
+name: paper2-extraction-procedure-selftest
+
+on:
+  pull_request:
+    paths:
+      - "research/paper2/extraction_procedure_v1.json"
+      - "research/paper2/extraction_source_bundle_v1.schema.json"
+      - "research/paper2/extraction_source_bundle_v1.example.json"
+      - "research/paper2/extraction_candidate_v1.schema.json"
+      - "research/paper2/extraction_candidate_v1.example.json"
+      - "scripts/paper2_extraction_procedure_validate.py"
+      - ".github/workflows/paper2-extraction-procedure-selftest.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "research/paper2/extraction_procedure_v1.json"
+      - "research/paper2/extraction_source_bundle_v1.schema.json"
+      - "research/paper2/extraction_source_bundle_v1.example.json"
+      - "research/paper2/extraction_candidate_v1.schema.json"
+      - "research/paper2/extraction_candidate_v1.example.json"
+      - "scripts/paper2_extraction_procedure_validate.py"
+      - ".github/workflows/paper2-extraction-procedure-selftest.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile extraction procedure validator
+        run: python -m py_compile scripts/paper2_extraction_procedure_validate.py
+      - name: Validate procedure and destructive controls
+        run: python scripts/paper2_extraction_procedure_validate.py --self-test
