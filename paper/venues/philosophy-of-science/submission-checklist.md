@@ -26,7 +26,7 @@
 - [x] Chicago author-date bibliography style selected.
 - [x] Anonymous review manuscript ends with **References**; acknowledgements are omitted for blind review.
 - [x] Accepted-manuscript back-matter order is fixed as **References → Acknowledgements → Declarations → Funding Statement**; factual Declarations/Funding text remains author-supplied.
-- [x] Bibliography source contains 19 references; all 19 include DOI fields and full `https://doi.org/...` URLs.
+- [x] Bibliography source contains 22 references; all 22 include DOI fields and full `https://doi.org/...` URLs.
 - [x] Rebuild the **exact current anonymized review source** after DOI completion: Paper 1 Review CI run #11 / exact head `1ee8022a7fc740ec8e11c27b7e59aa489373ddbb` generated an 18-page PDF and passed all blind-source, bibliography, and final LaTeX audits.
 - [x] Manually visually inspect all 18 pages of the DOI-complete exact CI artifact PDF: run #11 artifact ID `10702765379`, rendered at 140 dpi on 2026-09-23; no clipping, overlap, broken glyphs, missing sections, or reference-layout defects found. This validation is historical after the later cross-domain narrative revision.
 - [x] Exact final anonymous review source validated at manuscript head `36abe07d3041171465907bb6288d09209f512fa7`: Paper 1 Review CI run `35858767105` PASS; exact PDF artifact `10749180124`; 34 pages; abstract 99 words; blind-source audit PASS; anonymous-Acknowledgements omission PASS; AI-disclosure-footnote PASS; final LaTeX warning/layout audit PASS.
@@ -48,7 +48,7 @@
 - [x] Public development has exact-head and merge-head Lean validation on its formal branch history.
 - [x] No `sorry`, `admit`, `native_decide`, or project-local axioms in the validated formal surface.
 - [x] Anonymous manifest states the formal scope and limitations.
-- [x] Initial artifact policy decided: submit the anonymous manifest only; prepare executable scrubbed Lean source if requested by the editor/reviewers or required by the live portal.
+- [x] Reviewer-facing formal artifact policy updated after external review: submit the anonymous standalone Lean supplement together with its R1–R23 map; keep non-blind repository provenance out of the review package.
 
 ## AI-use transparency
 
@@ -78,21 +78,7 @@
 
 ## Decision gate
 
-**Current state:** the external-review revision is validated at manuscript head `64d2cce792e0f1cbd0d779e74f843ca73fdbd49b`. RelayTheory Lean CI run `35868847321`, English Review CI run `35868847305`, and Japanese Review CI run `35868847382` all PASS. The anonymous English review PDF is 37 pages; exact artifact `10754490791` was rendered at 160 dpi and all 37 pages were visually inspected with no clipping, overlap, broken glyphs, malformed tables, missing sections, or reference-layout defects. The anonymous Lean supplement artifact is `10753741728` and builds independently with the pinned Lean 4.33.1 toolchain. No manuscript-text or formal-artifact blocker remains. Before actual submission, only author-supplied Funding/Declarations and non-blind metadata, publication/concurrent-review eligibility confirmations, upload of the requested files, and approval of the Editorial Manager-built PDF remain.
-
-
-## External-review closure — 2026-09-23
-
-- [x] Central theorem stated as fiber invariance ⇔ universal difference soundness ⇔ quotient descent, conditional on fixed proposed target assignment.
-- [x] Direct DEKI comparison added: Frigg & Nguyen (2020); Nguyen & Frigg (2022).
-- [x] Suárez (2024) contemporary inferential account directly compared.
-- [x] Anonymous standalone Lean supplement added with pinned Lean 4.33.1, no external package dependencies, build instructions, and R1–R23 map.
-- [x] CI audits supplement for identity leakage and banned proof shortcuts, builds it, and uploads it as a separate anonymous artifact.
-- [x] Structural family admissibility explicitly distinguished from statistical multiple-testing correction.
-- [x] Counterfactual re-encoding audit sharpened with a decision-rule automorphism criterion.
-- [x] Exact revised anonymous PDF rebuilt and visually inspected: English Review CI `35868847305` PASS; artifact `10754490791`; 37 pages; all pages inspected at 160 dpi with no layout defects.
-- [x] Exact anonymous Lean supplement validated and uploaded by Lean CI `35868847321`; artifact `10753741728`; pinned Lean 4.33.1; standalone `lake build` PASS.
-
+**Current state:** the external-review revision is fully validated. The manuscript/formal source at current branch head has the same source blobs as the previously validated revision (`main.tex` blob `e23af883c9e09c3c1f0b7bab5cb1e833a4b96802`; formal source blob `0761c54a8d5980c7590eb52d8eb32a2281be9240`). Current exact-head validation is GREEN: RelayTheory Lean CI `35872842737`, English Review CI `35872842776`, and Japanese Review CI `35872842748`. The anonymous English review PDF artifact `10755094683` is 37 pages and was rendered at 160 dpi; all 37 pages were visually inspected with no clipping, overlap, broken glyphs, malformed tables, missing sections, or reference-layout defects. The anonymous Lean supplement artifact `10755334252` builds independently with the pinned Lean 4.33.1 toolchain and passed identity-leak / banned-proof-shortcut audits. No manuscript-text or formal-artifact blocker remains. Before actual submission, only author-supplied Funding/Declarations and non-blind metadata, publication/concurrent-review eligibility confirmations, upload of the requested files, and approval of the Editorial Manager-built PDF remain.
 
 ## External-review closure — 2026-09-23
 
@@ -103,4 +89,5 @@
 - [x] CI audits supplement for identity leakage and banned proof shortcuts, builds it, and uploads it as a separate anonymous artifact.
 - [x] Structural family admissibility explicitly distinguished from statistical multiple-testing correction.
 - [x] Counterfactual re-encoding audit sharpened with a decision-rule automorphism criterion.
-- [ ] Rebuild exact revised anonymous PDF and visually inspect every page after this revision.
+- [x] Exact revised anonymous PDF rebuilt and visually inspected: English Review CI `35872842776` PASS; artifact `10755094683`; 37 pages; all pages inspected at 160 dpi with no layout defects.
+- [x] Exact anonymous Lean supplement validated and uploaded by Lean CI `35872842737`; artifact `10755334252`; pinned Lean 4.33.1; standalone `lake build` PASS.
