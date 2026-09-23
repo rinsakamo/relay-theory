@@ -117,7 +117,7 @@ def validate_candidate_file(
     try:
         validate_candidate(candidate, placeholder_source)
     except CandidateContractError as exc:
-        fail(f"{candidate_path}: invalid extraction candidate: {exc}") from exc
+        raise ReceiptError(f"{candidate_path}: invalid extraction candidate: {exc}") from exc
 
 
 def validate_receipt(
