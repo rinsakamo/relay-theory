@@ -1,3 +1,13 @@
+## Conditional-acceptance revision — 2026-09-24
+
+A further independent re-review judged the manuscript **Accept subject to minor revisions** and identified three remaining pre-submission clarifications. All three were incorporated without adding a new case, empirical study, or formal extension:
+
+- Abstract and Conclusion now restrict quotient descent explicitly to a representation-level feature used as a **universally sound difference discriminator over the declared scope**, matching the necessary-and-sufficient theorem in the body;
+- the existing UMI stress test now maps concrete failure modes to the audit dispositions: software read ID → structural failure, noisy observed UMI → observation-bridge failure, unsupported error-aware model → scientific underdetermination, independently warranted protocol/model → scoped pass;
+- the counterfactual section now states that an over-rich declared structure with a trivial automorphism group can make invariance formally satisfied but diagnostically uninformative, so independent warrant also applies to the granularity of the declared structure.
+
+The reviewer-side inability to execute `lake build` is not a repository blocker: the project CI independently builds the anonymous supplement under pinned Lean 4.33.1 and audits it for identity leakage and banned proof shortcuts.
+
 ## Final minor revision after re-review — 2026-09-24
 
 The second external review judged the manuscript suitable for submission after minor edits. Three pre-submission wording changes were adopted:
