@@ -121,7 +121,11 @@ jobs:
 
           pdftotext main.pdf main.txt
           grep -F "When May a Formal Difference" main.txt
-          grep -F "Acknowledgements" main.txt
+          grep -F "AI tool disclosure:" main.txt
+          if grep -F "Acknowledgements" main.txt; then
+            echo "Anonymous review PDF unexpectedly contains an Acknowledgements section." >&2
+            exit 1
+          fi
           grep -F "R12" main.txt
 
           {
@@ -131,6 +135,8 @@ jobs:
             printf -- '- PDF pages: %s\n' "$PAGES"
             echo '- Abstract: <=100 words'
             echo '- Blind-source audit: PASS'
+            echo '- Anonymous acknowledgements omission: PASS'
+            echo '- AI disclosure footnote: PASS'
             echo '- Final LaTeX warning/layout audit: PASS'
           } >> "$GITHUB_STEP_SUMMARY"
 
