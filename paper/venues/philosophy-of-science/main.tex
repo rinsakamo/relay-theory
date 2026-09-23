@@ -40,7 +40,7 @@ Formal differences between representations do not license target-level individua
 \end{abstract}
 \section{Introduction}
 
-Formal representations routinely contain more distinctions than the target-level claims for which they are used. Different variable names, database records, file-level identifiers, labels, and constructors can all be formally distinguishable even when those differences do not track distinct target-level individuals.\footnote{AI tool disclosure: The author used OpenAI ChatGPT (GPT-5.6 Sol, accessed via the ChatGPT service on 22--23 September 2026) to assist with drafting, restructuring, translation, literature-search query formulation, and editorial revision. The author independently checked the arguments, references, formal claims, and final manuscript and takes full responsibility for the content.}
+Formal representations routinely contain more distinctions than the target-level claims for which they are used. Different variable names, database records, file-level identifiers, labels, and constructors can all be formally distinguishable even when those differences do not track distinct target-level individuals.\footnote{AI tool disclosure: The author used OpenAI ChatGPT, using the GPT-5.6 Sol model as displayed in the ChatGPT service at the time of use, on 22--23 September 2026, to assist with drafting, restructuring, translation, literature-search query formulation, and editorial revision. The author independently verified the arguments, references, formal claims, and final manuscript and takes full responsibility for the accuracy, integrity, and originality of the content.}
 
 A familiar bibliographic example makes the problem concrete. A scholarly work may be represented by distinct bibliographic records across services such as OpenAlex, Crossref, or PubMed. Let \(P\) be a set of bibliographic records, let \(T\) be a declared target domain of scholarly works, and let
 \[
@@ -87,6 +87,8 @@ This separation motivates what we call a practical \textbf{counterfactual releva
 The bibliographic case makes the logic easy to see, but by itself it could be dismissed as a bookkeeping or data-integration problem. Section~3 therefore uses molecular counting as a cross-domain scientific stress test. The same distinction then returns in evidence synthesis, where reports, studies, estimates, and independent evidence units must not be conflated. The progression is deliberate: intuitive record linkage, experimental measurement, and finally literature-scale inference.
 
 Accordingly, the novelty claim is narrow. The paper does not claim target-directed representation, invariance, quotient mathematics, or practice-relative individuation as new in isolation. Its contribution is to combine these ingredients in a single feature-level audit that separates quotient descent, test-specific transfer, independent scientific warrant, and representation-preserving counterfactual checks for individuation inferences.
+
+The payoff is therefore diagnostic rather than theorem-theoretic. The audit turns a familiar structural fact into a local conservativity test that identifies exactly where an individuation argument must introduce target assignment, observational bridging, independent warrant, and permissible representational structure, thereby distinguishing representational leakage from an ordinary evidential gap.
 
 \subsection{Contributions}
 
@@ -265,7 +267,7 @@ Let \(A\subseteq Q\) be a family of tests selected for an analysis. Define \text
 
 Thus selection alone does no evidential work. For a particular independently specified test \(q\), the test-specific theorem requires only \(B_r(q)\). The stronger condition \(\operatorname{Adm}_r(A)\) is used when the inference is allowed to report that \emph{some} test in \(A\) separates the pair without an additional witness-selection rule.
 
-The family-wide requirement is therefore a conservative sufficient condition, not a necessary condition for every particular witnessed inference. Its methodological purpose is to prevent an analysis from searching for a discriminator first and supplying structural admissibility only post hoc. Scientific warrant for the relevant tests must still be supplied independently and may not be self-licensed by the formal difference being promoted.
+The family-wide requirement is therefore a conservative sufficient condition, not a necessary condition for every particular witnessed inference. Its methodological purpose is to block one structural form of post hoc licensing: searching for a discriminator first and establishing admissibility only for the selected witness. Scientific warrant for the relevant tests must still be supplied independently and may not be self-licensed by the formal difference being promoted.
 
 This use of a \emph{test family} is structural, not statistical. \(\operatorname{Adm}_r(A)\) does not control family-wise error, false-discovery rate, selective inference, or researcher degrees of freedom. Those are distinct problems that arise when test outcomes or witness selection are stochastic or data-adaptive; the exact deterministic formal core here supplies no multiplicity correction.
 
