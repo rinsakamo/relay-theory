@@ -579,13 +579,9 @@ def main() -> int:
     if args.mode == "counts":
         result = counts_mode(client, config)
     else:
-        if not args.allow_large_run:
-            parser.error("manifest mode requires --allow-large-run")
-        result = manifest_mode(
-            client,
-            config,
-            args.output,
-            max_pages=args.max_pages_per_channel,
+        parser.error(
+            "legacy manifest path is disabled; use "
+            "scripts/paper2_openalex_manifest.py"
         )
 
     rendered = json.dumps(result, ensure_ascii=False, indent=2) + "\n"
