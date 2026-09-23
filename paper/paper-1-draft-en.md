@@ -5,11 +5,11 @@
 > **Formal boundary:** The target domain and representation-to-target assignment are model inputs. Structural factorization does not itself supply scientific warrant.
 
 # When May a Formal Difference Enter an Individuation Inference?
-## Target Factorization, Restricted Tests, and a UMI Case
+## Target Factorization, Restricted Tests, and a Unique Molecular Identifier Case
 
 ## Abstract
 
-Formal differences between representations do not by themselves license target-level individuation. We separate a structural target-factorization condition from the scientific warrant required to accept it, and connect representation-level observations to target-level test outcomes through test-specific factorization. A UMI sequencing case distinguishes software read identifiers, latent molecular tags, and noisy observed tag strings. We also distinguish harmless bijective renaming from assignment-changing perturbations in a counterfactual relevance audit. A small Lean artifact checks the structural dependencies and test-relative refinement. The framework gives necessary conditions for individuation inferences, not a complete theory of evidence or numerical identity.
+Formal differences between representations do not by themselves license target-level individuation. We separate a structural target-factorization condition from the scientific warrant required to accept it, and connect representation-level observations to target-level test outcomes through test-specific factorization. A unique molecular identifier (UMI) sequencing case distinguishes software read identifiers, latent molecular tags, and noisy observed tag strings. We also distinguish harmless bijective renaming from assignment-changing perturbations in what we call a counterfactual relevance audit. A small machine-checked formalization in Lean checks the structural dependencies and test-relative refinement. The framework gives necessary conditions for individuation inferences, not a complete theory of evidence or numerical identity.
 
 ## 1. Introduction
 
@@ -29,7 +29,7 @@ Second, there is a **scientific-warrant condition**. Writing down a factorizatio
 
 The formal artifact addresses only the first layer. It makes structural dependencies auditable. It does not manufacture the second.
 
-This separation motivates a practical **counterfactual relevance audit**. For an identifier-like feature, ask what kind of change is being considered. A consistent bijective renaming of labels should not change an inference that depends only on the structure those labels encode. By contrast, reassigning labels across representations can alter evidence if the assignment itself records a scientifically grounded relation. If the conclusion changes under an assignment perturbation, the argument must explain why that assignment is target-relevant rather than merely representational.
+This separation motivates what we call a practical **counterfactual relevance audit**. For an identifier-like feature, ask what kind of change is being considered. A consistent bijective renaming of labels should not change an inference that depends only on the structure those labels encode. By contrast, reassigning labels across representations can alter evidence if the assignment itself records a scientifically grounded relation. If the conclusion changes under an assignment perturbation, the argument must explain why that assignment is target-relevant rather than merely representational.
 
 The paper develops this point using unique molecular identifiers (UMIs). A software read identifier and a molecular tag can both be represented as strings. Yet their evidential roles differ because one is bookkeeping metadata while the other can participate in an experimental chain linking downstream reads to pre-amplification template molecules. The UMI case also exposes an important limit of the exact formal model: observed UMI strings can contain errors, so the experimentally assigned tag and the observed read-level tag must be distinguished.
 
@@ -43,7 +43,7 @@ The paper makes four limited contributions.
 
 3. **A counterfactual relevance audit.** The paper distinguishes pure renaming from evidence-changing reassignment and uses that distinction to diagnose when identifier assignments are doing hidden work.
 
-4. **A mechanized dependency audit with a scientific case.** A small Lean development checks the structural claims, while the UMI case shows how latent target-linked tags, noisy observed tags, and representation-only identifiers come apart in practice.
+4. **A machine-checked dependency analysis with a scientific case.** A small Lean formalization checks the structural claims, while the UMI case shows how latent target-linked tags, noisy observed tags, and representation-only identifiers come apart in practice.
 
 ## 2. Formal Setting
 
@@ -75,7 +75,7 @@ and a target-level property be
 \phi:T\to V.
 \]
 
-Define a **target-factorization condition**
+We call the following a **target-factorization condition**
 
 \[
 F_r(f,\phi)
@@ -148,9 +148,9 @@ This yields a single inference chain rather than two disconnected modules:
 
 Again, the equation does not justify itself. A scientific application must explain why the measurement or protocol makes \(B_r(q)\) a defensible approximation or idealization.
 
-### 2.4 Admitted test families
+### 2.4 Selected test families
 
-Let \(A\subseteq Q\) be a family of tests admitted by an analysis. In the exact framework, admission requires both relevance to the target claim and an independently defensible structural link between representation-level observation and target-level response.
+Let \(A\subseteq Q\) be a family of tests selected for an analysis. In the exact framework, inclusion requires both relevance to the target claim and an independently defensible structural link between representation-level observation and target-level response.
 
 Define
 
@@ -178,7 +178,7 @@ This is a theorem about fixed exact semantics and set inclusion. It is not a the
 
 ### 3.1 Representation multiplicity is not molecule multiplicity
 
-High-throughput sequencing supplies a concrete instance of the problem. PCR amplification can generate several downstream read records from one template molecule. Therefore
+High-throughput sequencing supplies a concrete instance of the problem. Polymerase chain reaction (PCR) amplification can generate several downstream read records from one template molecule. Therefore
 
 \[
 100\ \text{read records}
@@ -278,19 +278,19 @@ The audit can thus be stated as two questions:
 
 This formulation avoids treating harmless renaming and evidence destruction as the same counterfactual.
 
-## 5. Mechanized Dependency Audit
+## 5. Machine-Checked Dependency Analysis
 
-The Lean artifact is intentionally small. Its role is to make the dependency structure executable.
+The Lean formalization is intentionally small. Its role is to make the stated dependency structure machine-checkable.
 
-The fixture contains three presentations, a grounding map into a referent carrier, target-sensitive probes, coarse and fine test regimes, a representation-sensitive negative control, and semantically inert token metadata.
+The formal model contains three representations, a representation-to-target map, target-sensitive tests, coarse and fine test regimes, a representation-sensitive negative control, and semantically inert token metadata.
 
-The feature-level factorization is now polymorphic in the value carrier. A representation-level feature can be paired with a target-level property only through a structural factorization object. The artifact checks that equal grounding forces equal values of every factorized feature and that a difference in such a feature entails a grounding difference. It also checks that the deliberately representation-sensitive encoding probe cannot satisfy target factorization because it separates two presentations with the same grounding, while a positive-control ground-tracking feature can.
+The feature-level factorization is defined over an arbitrary value domain. A representation-level feature can be paired with a target-level property only through the specified structural factorization. The formalization checks that two representations assigned to the same target receive the same value for every factorized feature, and that a difference in such a feature entails different target assignments. It also checks that a deliberately representation-sensitive test cannot satisfy target factorization when it separates two representations assigned to the same target, while a positive-control feature defined directly from the target assignment can.
 
-The test layer is connected to the same structure. An observation-factorization object states that a presentation-level observed outcome agrees with the target-level response of the grounded referent for each probe. The built-in grounded observation surface satisfies this condition, and a difference on any structurally factorized observed probe entails a grounding difference.
+The test layer is connected to the same structure. A formal observation-factorization condition states that a representation-level observed outcome agrees with the target-level response of its assigned target for each test. The corresponding target-linked observation function satisfies this condition, and a difference on any observed test outcome satisfying the factorization entails different target assignments.
 
-The remaining results are negative controls and monotonicity checks. Same-reference re-encodings preserve the grounded observation profile. A richer admitted test family can separate a pair left unresolved by a restricted family. Arbitrary reassignment of a token absent from target-sensitive semantics does not alter classification.
+The remaining results are negative controls and monotonicity checks. Re-encodings assigned to the same target preserve the target-linked observation profile. A richer selected test family can separate a pair left unresolved by a restricted family. Arbitrary reassignment of a token absent from target-sensitive semantics does not alter classification.
 
-These proofs are elementary. The mechanization claim is correspondingly modest: a reviewer can inspect whether a supposedly target-relevant discriminator actually enters through the declared target map and factorization, rather than through a hidden constructor, label, or metadata field.
+These proofs are elementary. The machine-checking claim is correspondingly modest: a reviewer can inspect whether a supposedly target-relevant discriminator actually enters through the declared target map and factorization, rather than through a hidden encoding choice, label, or metadata field.
 
 ## 6. Relation to Existing Work
 
@@ -316,7 +316,7 @@ Suárez (2004) and Contessa (2007) already emphasize directionality, interpretat
 
 Practice-oriented work on individuation likewise constrains the claim. Bueno, Chen, and Fagan (2018), Waters (2018), and Love (2018) emphasize that counting, tracking, manipulation, and individuality depend on scientific purposes and practices. Chen (2018) distinguishes ontological and epistemological modes of experimental individuation and explicitly treats presentation as part of practice.
 
-Accordingly, this paper does not claim that presentation and individuation have only now been distinguished. Its contribution is a compact formal audit for a recurrent failure mode within such practices: allowing presentation-level distinctions to do target-level individuating work without making the dependency explicit.
+Accordingly, this paper does not claim that representation and individuation have only now been distinguished. Its contribution is a compact formal audit for a recurrent failure mode within such practices: allowing representation-level distinctions to do target-level individuating work without making the dependency explicit.
 
 ### 6.3 Technical neighbors
 
@@ -332,9 +332,9 @@ The UMI case supports a broader methodological consequence. The evidential force
 
 The same discipline can be applied at a higher methodological level to the theoretical constructs used to describe measured capacities. Distinct construct labels are themselves differences in a representational vocabulary. Their nominal plurality does not, by itself, establish plurality in the measured capacities.
 
-Let \(C\) be a set of theoretical construct labels, and let \(\sigma(c)\) denote the operational structural signature retained after label suppression and normalization of the claim associated with construct \(c\). Such a signature may include the measurement roles, probes, criteria, temporal relations, resource conditions, or other dependencies required to reconstruct the claim.
+Let \(C\) be a set of theoretical construct labels, and let \(\sigma(c)\) denote what we call the operational structural signature retained after label suppression and normalization of the claim associated with construct \(c\). Such a signature may include the measurement roles, tests, criteria, temporal relations, resource conditions, or other dependencies required to reconstruct the claim.
 
-The signature is neither presumed unique nor assumed complete. Its components must be fixed by the declared measurement question before construct labels or source authority are restored; otherwise the comparison could be tuned retrospectively to preserve or erase a preferred distinction.
+The signature is neither presumed unique nor assumed complete. Its components must be fixed by the declared measurement question before construct labels or source identity and provenance are restored; otherwise the comparison could be tuned retrospectively to preserve or erase a preferred distinction.
 
 Then the methodological point is asymmetric:
 
@@ -350,15 +350,15 @@ while
 \sigma(c_1)\neq\sigma(c_2)
 \]
 
-constitutes candidate discriminating structure that may justify further investigation of a capacity distinction. Even this second difference is not sufficient for ontological or psychological independence; it remains subject to the same requirements of target choice, measurement warrant, and admitted tests developed above.
+constitutes candidate discriminating structure that may justify further investigation of a capacity distinction. Even this second difference is not sufficient for ontological or psychological independence; it remains subject to the same requirements of target choice, measurement warrant, and selected tests developed above.
 
-Conversely, if two differently named constructs yield the same normalized structural signature under a common measurement basis, the difference in names contributes no additional evidence for capacity plurality. This does not imply that the historical constructs are synonymous, explanatorily interchangeable, or useless. It means only that the labels have not, by themselves, earned independent status on the declared measurement surface.
+Conversely, if two differently named constructs yield the same normalized structural signature under a common measurement basis, the difference in names contributes no additional evidence for capacity plurality. This does not imply that the historical constructs are synonymous, explanatorily interchangeable, or useless. It means only that the labels have not, by themselves, earned independent status within the specified measurement framework.
 
 The resulting principle is:
 
 > **Nominal plurality is not evidential plurality. Preserve the discriminating structure that warrants a distinction, not merely the names of the distinguished things.**
 
-This consequence suggests a separate research question for cognitive science and other construct-rich fields: after authority and construct labels are withheld from the analysis, operational claims can be normalized onto a common measurement basis and compared by the discriminating structure that survives. The present paper does not answer which named cognitive capacities remain distinct under such a procedure, nor does it assume that any common basis is complete. It supplies the evidential discipline that such a comparison would need.
+This consequence suggests a separate research question for cognitive science and other construct-rich fields: after source attribution and construct labels are withheld from the analysis, operational claims can be normalized onto a common measurement basis and compared by the discriminating structure that survives. The present paper does not answer which named cognitive capacities remain distinct under such a procedure, nor does it assume that any common basis is complete. It supplies the evidential discipline that such a comparison would need.
 
 ## 8. Scope and Limitations
 
@@ -378,21 +378,21 @@ Finally, operational separation is not metaphysical numerical identity, and sync
 
 ## 9. Formal Audit Summary
 
-For the blind review copy, the mechanized claims are grouped under neutral labels. R1--R15 cover the original presentation/target, test-family, and semantically inert-token controls. R16--R19 cover generic target factorization and its positive/negative controls. R20 establishes test-specific observation factorization for the grounded observation surface, and R21 checks that an observed difference under such a factorization entails a grounding difference.
+For the blind review copy, the machine-checked claims are grouped under neutral labels. R1--R15 cover the original representation/target, test-family, and semantically inert-token controls. R16--R19 cover generic target factorization and its positive/negative controls. R20 establishes test-specific observation factorization for the target-linked observation function, and R21 checks that an observed difference under such a factorization entails different target assignments.
 
-The number of small theorems is not itself a novelty claim. The collection is an executable dependency surface.
+The number of small theorems is not itself a novelty claim. The collection is a machine-checkable record of the dependency structure.
 
 ## 10. Conclusion
 
 A formal difference may enter an individuation inference only through a justified path from representation to target.
 
-The formal contribution separates two questions that are often compressed into one. **Structural target factorization** asks whether the feature or observed test outcome actually depends on the target assignment in the claimed way. **Scientific warrant** asks why that dependency model should be trusted in the application. The first can be mechanically audited; the second cannot be obtained by declaration.
+The formal contribution separates two questions that are often compressed into one. **Structural target factorization** asks whether the feature or observed test outcome actually depends on the target assignment in the claimed way. **Scientific warrant** asks why that dependency model should be trusted in the application. The first can be machine-checked; the second cannot be obtained by declaration.
 
 UMI-based molecular counting illustrates the distinction. Unique read IDs distinguish downstream records. Latent molecular tags can track tagged templates because of the pre-amplification protocol. Observed UMI strings are noisy measurements of those latent tags and require an error model. The fact that all three may appear as strings is irrelevant to their evidential role.
 
-The practical lesson is therefore neither to ignore identifiers nor to trust target-linked identifiers merely because they appear grounded. It is narrower:
+The practical lesson is therefore neither to ignore identifiers nor to trust target-linked identifiers merely because they appear target-linked. It is narrower:
 
-> **When an individuation claim depends on a formal difference, expose the target factorization and the scientific reason for accepting it; then evaluate the claim relative to an explicitly admitted observational or interventional regime.**
+> **When an individuation claim depends on a formal difference, expose the target factorization and the scientific reason for accepting it; then evaluate the claim relative to an explicitly specified observational or interventional regime.**
 
 ## References
 
