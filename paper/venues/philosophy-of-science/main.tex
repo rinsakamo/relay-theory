@@ -84,7 +84,7 @@ be a representation-to-target assignment. Distinct elements of \(P\) are not ass
 
 The assignment \(r\) is a modeling input. The paper does not infer \(r\) from raw observations and does not derive the ontology of \(T\). In applications where source assignment is uncertain, the framework audits a proposed assignment model rather than solving the source-assignment problem.
 
-The exact formal core is restricted to one target value per representation. Many-to-many, distributed, and probabilistic correspondence are natural extensions, but they are outside the present claim.
+The exact formal core is restricted to one target value per representation. Many-to-many, distributed, and probabilistic correspondences are natural extensions, but they are outside the present claim.
 
 \subsection{Structural target factorization}
 
@@ -159,7 +159,7 @@ B_r(q)
 r(a)\neq r(b).
 \]
 
-The point is now one inference chain rather than two disconnected modules:
+This yields a single inference chain rather than two disconnected modules:
 
 \[
 \begin{aligned}
@@ -216,7 +216,7 @@ A unique software identifier assigned to each read can distinguish all 100 recor
 
 \subsection{The target is a tagged template, not a string}
 
-For the present case, the cleanest target domain is not an abstract molecule identity read directly from a barcode. Let \(T\) contain \textbf{tagged template molecules after UMI assignment and before PCR amplification}.
+For the present case, the cleanest target domain is not a domain of abstract molecular identities read directly from barcodes. Let \(T\) contain \textbf{tagged template molecules after UMI assignment and before PCR amplification}.
 
 Let
 
@@ -286,7 +286,7 @@ The phrase relabeling invariance can hide two importantly different perturbation
 
 Suppose a bijection \(\pi:U\to U\) is applied consistently to every label value. \emph{ACGT} might become \emph{17}, \emph{TGCA} might become \emph{42}, and every occurrence is changed coherently.
 
-Such a transformation preserves equality and inequality structure. An inference that depends only on grouping by label value should be invariant under this change. If changing the spelling or encoding of the labels changes the conclusion, the argument is representation-sensitive in a suspicious way.
+Such a transformation preserves equality and inequality structure. An inference that depends only on grouping by label value should be invariant under this change. If changing only the spelling or encoding of the labels changes the conclusion, the argument exhibits a representation dependence that requires explanation.
 
 \subsection{Assignment perturbation}
 
@@ -327,7 +327,7 @@ These proofs are elementary. The mechanization claim is correspondingly modest: 
 
 The closest conceptual comparison is \citet{Nguyen2017RepresentationEquivalence}. Nguyen argues that questions of scientific representation and theoretical equivalence should attend to how models are used to draw inferences about target systems, including whether models license the same claims about the same targets.
 
-The present paper accepts rather than contests that target-directed perspective. Its unit of analysis is different.
+The present paper accepts rather than challenges that target-directed perspective. Its unit of analysis is different.
 
 Nguyen's comparison is naturally read at the level of models, their representational use, and the claims they license about target systems. The present problem arises \textbf{inside an individuation inference} when a specific difference in the representing apparatus is recruited as a premise. Even when two representations are both used to reason about a declared target, it does not follow that every formal difference between them is evidence about that target.
 
@@ -359,9 +359,11 @@ Nor does failure to support individuation imply that a representational distinct
 
 The UMI case supports a broader methodological consequence. The evidential force of an identifier does not derive from its status as an identifier. It derives from an independently warranted relation between the identifier's assignment and the target.
 
-The same discipline can be applied one level above object identification, to the theoretical constructs used to describe measured capacities. Distinct construct labels are themselves differences in a representational vocabulary. Their nominal plurality does not, by itself, establish plurality in the measured capacities.
+The same discipline can be applied at a higher methodological level to the theoretical constructs used to describe measured capacities. Distinct construct labels are themselves differences in a representational vocabulary. Their nominal plurality does not, by itself, establish plurality in the measured capacities.
 
 Let \(C\) be a set of theoretical construct labels, and let \(\sigma(c)\) denote the operational structural signature retained after label suppression and normalization of the claim associated with construct \(c\). Such a signature may include the measurement roles, probes, criteria, temporal relations, resource conditions, or other dependencies required to reconstruct the claim.
+
+The signature is neither presumed unique nor assumed complete. Its components must be fixed by the declared measurement question before construct labels or source authority are restored; otherwise the comparison could be tuned retrospectively to preserve or erase a preferred distinction.
 
 The methodological point is asymmetric:
 \[
@@ -373,9 +375,9 @@ while
 \[
 \sigma(c_1)\neq\sigma(c_2)
 \]
-provides candidate discriminating structure that may justify further investigation of a capacity distinction. Even this second difference is not sufficient for ontological or psychological independence; it remains subject to the same requirements of target choice, measurement warrant, and admitted tests developed above.
+constitutes candidate discriminating structure that may justify further investigation of a capacity distinction. Even this second difference is not sufficient for ontological or psychological independence; it remains subject to the same requirements of target choice, measurement warrant, and admitted tests developed above.
 
-Conversely, if two differently named constructs yield the same normalized structural signature under a common measurement basis, the difference in names contributes no additional evidence for capacity plurality. This does not imply that the historical constructs are synonymous, explanatorily interchangeable, or useless. It means only that their labels have not, by themselves, earned independent status on the declared measurement surface.
+Conversely, if two differently named constructs yield the same normalized structural signature under a common measurement basis, the difference in names contributes no additional evidence for capacity plurality. This does not imply that the historical constructs are synonymous, explanatorily interchangeable, or useless. It means only that the labels have not, by themselves, earned independent status on the declared measurement surface.
 
 \begin{quote}
 \textbf{Nominal plurality is not evidential plurality. Preserve the discriminating structure that warrants a distinction, not merely the names of the distinguished things.}
@@ -391,7 +393,7 @@ First, \(T\) and \(r\) are inputs. The theory does not derive target ontology or
 
 Second, exact target factorization is a structural idealization. Real measurements are noisy, probabilistic, and model-dependent. The UMI example makes this limitation explicit by separating latent assigned tags from observed tag strings.
 
-Third, structural factorization is not epistemic warrant. A badly chosen \(r\) can make irrelevant features appear target-factorized. Scientific justification for the target assignment, measurement model, and test relevance remains external to the Lean theorem.
+Third, structural factorization is not epistemic warrant. A badly chosen \(r\) can make irrelevant features appear target-factorized. Scientific justification for the target assignment, measurement model, and test relevance remains external to the Lean development.
 
 Fourth, the formal core uses a function \(r:P\to T\). Many-to-many, distributed, and probabilistic representation-target relations are not treated.
 
@@ -413,10 +415,10 @@ The formal contribution separates two questions that are often compressed into o
 
 UMI-based molecular counting illustrates the distinction. Unique read IDs distinguish downstream records. Latent molecular tags can track tagged templates because of the pre-amplification protocol. Observed UMI strings are noisy measurements of those latent tags and require an error model. The fact that all three may appear as strings is irrelevant to their evidential role.
 
-The practical lesson is therefore not ignore identifiers and not trust grounded identifiers. It is narrower:
+The practical lesson is therefore neither to ignore identifiers nor to trust target-linked identifiers merely because they appear grounded. It is narrower:
 
 \begin{quote}
-\textbf{When an individuation claim depends on a formal difference, expose the target factorization and the scientific reason for accepting it; then test the claim only under an explicitly admitted observational or interventional regime.}
+\textbf{When an individuation claim depends on a formal difference, expose the target factorization and the scientific reason for accepting it; then evaluate the claim relative to an explicitly admitted observational or interventional regime.}
 \end{quote}
 % FUNDING_AND_DECLARATIONS: Before submission, add truthful Funding Statement
 % and Declarations / competing-interests sections using author-supplied facts.
