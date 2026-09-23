@@ -1,0 +1,86 @@
+{
+  "schema_version": "paper2-sampling-v1",
+  "owner_issue": 158,
+  "coordination_issue": 130,
+  "authority": {
+    "eligibility": "paper2-eligibility-v1.1 (#133)",
+    "retrieval": "paper2-retrieval-v1 (#133/#143)",
+    "claim_ir": "paper2-claim-ir-v1 (#145)",
+    "null_control": "#140"
+  },
+  "design": {
+    "phase_design": "two-phase_probability_sample",
+    "population": "unique works in frozen retrieval-v1 manifest after Top50 calibration exclusion",
+    "primary_work_draw": "deterministic_hash_rank_simple_random_sample",
+    "primary_inference": "primary draw only",
+    "diagnostic_fills_pooled_into_primary": false
+  },
+  "randomization": {
+    "algorithm": "SHA-256 UTF-8 with NUL separators; lexicographic digest order; canonical_work_id tie-break",
+    "work_seed": "relaytheory-paper2-sampling-v1-work-seed",
+    "claim_seed": "relaytheory-paper2-sampling-v1-claim-seed",
+    "null_seed": "relaytheory-paper2-sampling-v1-null-seed"
+  },
+  "calibration_exclusion": {
+    "source": "research/paper2/retrieval_v1.json seeds",
+    "rule": "exclude any work matching a Top50 seed by normalized DOI, arXiv identity, ISBN identity when available, or conservative normalized title+publication-year equality"
+  },
+  "claim_sampling": {
+    "max_claims_per_work": 3,
+    "selection": "retain all when <=3; otherwise deterministic SHA-256 rank using work_id + source_locator + exact_source_span_digest",
+    "requires_complete_candidate_enumeration_before_cap": true
+  },
+  "diagnostics": {
+    "retrieval_channel_membership_classes": ["R1","R2","R3","R1R2","R1R3","R2R3","R1R2R3"],
+    "citation_bands": [
+      {"label":"1-9","min":1,"max":9},
+      {"label":"10-99","min":10,"max":99},
+      {"label":"100-999","min":100,"max":999},
+      {"label":"1000-9999","min":1000,"max":9999},
+      {"label":">=10000","min":10000,"max":null}
+    ],
+    "year": "retain publication year; any report bands must be frozen from pre-outcome bibliographic metadata",
+    "field_topic": "diagnostic/balance/sensitivity only; never a hard eligibility criterion in v1"
+  },
+  "precision": {
+    "confidence_reference": 0.95,
+    "conservative_p": 0.5,
+    "target_half_widths": [0.05,0.03,0.02,0.01],
+    "design_effect_sensitivity": [1,2,5,10],
+    "note": "normal/binomial-style references only; clustered literature is not IID"
+  },
+  "null_schedule": {
+    "permutations": 100,
+    "method": "deterministic SHA-256-ranked single-cycle target rotation per permutation index",
+    "preserves_target_multiset": true,
+    "derangement_required_when_n_gt_1": true,
+    "primary_p_value": false
+  },
+  "outcome_taxonomy": [
+    "VERIFIED_PASS","RESIDUAL","SOURCE_INACCESSIBLE","ELIGIBILITY_EXCLUDED",
+    "ELIGIBILITY_UNCERTAIN","EXTRACTION_FAILURE","IR_VALIDATION_FAILURE",
+    "WITNESS_GENERATION_FAILURE","FORMAL_VERIFICATION_FAILURE"
+  ],
+  "estimand": {
+    "primary": "N_verified_real / N_analyzable_heldout_claims",
+    "required_secondary": [
+      "per-work selected-claim coverage",
+      "paper-balanced mean coverage",
+      "paper-cluster uncertainty"
+    ],
+    "raw_counts_required": true
+  },
+  "replacement": {
+    "primary_reserve_same_transaction": true,
+    "ad_hoc_redraw_forbidden": true,
+    "attrition_rows_retained": true
+  },
+  "freeze_state": {
+    "real_sampling_authorized": false,
+    "final_work_draw_n": null,
+    "final_reserve_work_n": null,
+    "final_analyzable_claim_target": null,
+    "stopping_rule": "NOT_YET_FROZEN",
+    "authorization_condition": "freeze precision/cost tradeoff using basis-blind operational data before any held-out decomposition outcome is inspected"
+  }
+}
