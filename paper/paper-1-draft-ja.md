@@ -39,7 +39,7 @@ formal artifact が扱うのは第一層だけである。構造依存関係を�
 
 1. **Structural target factorization.** representation-level feature が target を形式的に追跡していると言えるのは、その feature が宣言された representation-to-target map を介して factorize するときだけである。これは structural admissibility condition であり、epistemic warrant ではない。
 
-2. **Test-family admissibility.** representation-level observation と target-level response を一つの inference chain に置く。selected family が target-level separation を支えられるのは、inference が用いる separating test が宣言された target-response factorization を満たす場合だけである。
+2. **Test-family admissibility.** representation-level observation と target-level response を一つの inference chain に置く。selected family が target-level separation を支えられるのは、その family に含まれるすべての test が宣言された target-response factorization を満たす場合だけである。
 
 3. **Counterfactual relevance audit.** structure-preserving re-encoding と evidence-changing reassignment を区別し、identifier assignment や encoding が隠れた individuating work をしている場合を診断する。
 
@@ -308,7 +308,7 @@ read-level feature が molecular individuation inference に入るためには�
 
 ### 4.1 Structure-preserving re-encoding
 
-\(U\) を identifier-like field の value domain、\(\mathcal S\) を inference が evidentially relevant と宣言した \(U\) 上の relation の集合とする。re-encoding \(\pi:U\to U\) が \(\mathcal S\) に相対して **structure-preserving** であるとは、\(\pi\) が bijection であり、各 declared relation を保存することをいう。\(k\)-ary relation \(S\in\mathcal S\) について、
+\(U\) を identifier-like field の value domain、\(\mathcal S\) を inference が evidentially relevant と宣言した \(U\) 上の relation の集合とし、利用する function や metric も必要なら relational encoding として含める。re-encoding \(\pi:U\to U\) が \(\mathcal S\) に相対して **structure-preserving** であるとは、\(\pi\) が bijection であり、各 declared relation を保存することをいう。\(k\)-ary relation \(S\in\mathcal S\) について、
 
 \(\mathcal S\) の選択自体も counterfactual comparison より前に固定され、独立に motivate されなければならない。そうでなければ、望ましくない transformation を non-preserving にするためだけに、desired conclusion を encode する relation を後から追加できてしまう。
 

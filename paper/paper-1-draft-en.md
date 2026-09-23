@@ -39,7 +39,7 @@ The paper makes four limited contributions.
 
 1. **Structural target factorization.** A representation-level feature is formally target-tracking only when it factors through the declared representation-to-target map. This is a structural admissibility condition, not an epistemic warrant.
 
-2. **Test-family admissibility.** Representation-level observations and target-level responses are placed in one inference chain. A selected family can support target-level separation only when every separating test used in the inference has the declared target-response factorization.
+2. **Test-family admissibility.** Representation-level observations and target-level responses are placed in one inference chain. A selected family can support target-level separation only when every test in that family has the declared target-response factorization.
 
 3. **A counterfactual relevance audit.** The paper distinguishes structure-preserving re-encoding from evidence-changing reassignment and uses that distinction to diagnose when identifier assignments or encodings are doing hidden work.
 
@@ -298,7 +298,7 @@ The phrase relabeling invariance can hide two importantly different perturbation
 
 ### 4.1 Structure-preserving re-encoding
 
-Let \(U\) be the value domain of an identifier-like field, and let \(\mathcal S\) denote the relations on \(U\) that the inference declares evidentially relevant. A re-encoding \(\pi:U\to U\) is **structure-preserving relative to \(\mathcal S\)** when it is bijective and preserves each declared relation. For a \(k\)-ary relation \(S\in\mathcal S\),
+Let \(U\) be the value domain of an identifier-like field, and let \(\mathcal S\) denote the relations on \(U\) that the inference declares evidentially relevant, including relational encodings of any functions or metrics it uses. A re-encoding \(\pi:U\to U\) is **structure-preserving relative to \(\mathcal S\)** when it is bijective and preserves each declared relation. For a \(k\)-ary relation \(S\in\mathcal S\),
 
 The choice of \(\mathcal S\) must itself be fixed and independently motivated before the counterfactual comparison. Otherwise an analyst could make an inconvenient transformation non-preserving merely by adding a relation that encodes the desired conclusion.
 
