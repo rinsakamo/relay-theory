@@ -9,7 +9,7 @@
 
 ## 要旨
 
-表現間に形式的な差があるという事実だけでは、target-level の individuation は正当化されない。exact deterministic な representation-to-target model の内部では、structural eligibility は fiber invariance によって特徴づけられる。すなわち、eligible feature は declared assignment が誘導する quotient を介して descend しなければならず、その一方で scientific warrant は独立に必要である。さらに、representation-level observation を structurally admissible な test family を通じて target-level outcome に接続し、再利用可能な individuation-inference audit を定式化する。複数領域の事例で枠組みを例示し、機械検証された証明によって quotient descent と family-level separation を確認する。より一般的な methodological lesson は条件付きであり、formal distinction を target-level distinction に用いるには、declared target への warranted route が必要である。本枠組みはその assignment 自体を発見せず、unrestricted numerical identity も確立しない。
+表現間に形式的な差があるという事実だけでは、target-level の individuation は正当化されない。exact deterministic な representation-to-target model の内部で、declared scope 全体にわたり universally sound な difference discriminator として用いる feature は fiber-invariant でなければならず、したがって target-induced quotient を介して descend しなければならない。その一方で scientific warrant は独立に必要である。さらに、representation-level observation を structurally admissible な test family を通じて target-level outcome に接続し、individuation-inference audit を定式化する。複数領域の事例で枠組みを例示し、機械検証された証明によって quotient descent と family-level separation を確認する。より一般的な methodological lesson は条件付きであり、formal distinction を target-level distinction に用いるには、declared target への warranted route が必要である。本枠組みはその assignment 自体を発見せず、unrestricted numerical identity も確立しない。
 
 ## 1. はじめに
 
@@ -386,6 +386,8 @@ read-level feature が molecular individuation inference に入るためには�
 
 このため、この事例は哲学的にも有用である。二つの field がともに identifier であり、ともに string であり、ともに record を区別できたとしても、target を追跡するよう設計された causal and measurement history に参加するのはそのうち一方だけかもしれない。
 
+同じ事例は audit disposition の違いも明示する。source-molecule fiber 内で変化する software read ID は structural test に失敗し、その差は target quotient を介して descend しない。sequencing noise の下にある raw observed UMI string は別の仕方で observation-to-target bridge に失敗しうる。すなわち observed string inequality が latent tag inequality を再現するとは限らない。tagging / error assumption が independent support を欠く error-aware UMI model は、formal に admissible でも scientifically underdetermined のままである。relevant protocol、error model、contextual assumption が独立に warrant されて初めて inference は scoped pass を得る。これらは declared target model に相対した inference の disposition であり、UMI technology 一般についての主張ではない。
+
 
 
 ## 4. Counterfactual Relevance Audit
@@ -405,6 +407,8 @@ S(\pi(u_1),\ldots,\pi(u_k))
 が成立する。
 
 \(\mathcal S\) の選択自体も独立に motivate されなければならない。confirmatory use では counterfactual comparison より前に固定し、adaptive に \(\mathcal S\) を学習するなら learning / selection rule を audited inference に含める。そうでなければ、望ましくない transformation を non-preserving にするためだけに、desired conclusion を encode する relation を後から追加できてしまう。
+
+declared structure が豊かすぎて \(\operatorname{Aut}(U,\mathcal S)\) が trivial になる場合、invariance check は形式的には満たされても diagnostic leverage をほとんど持たないことがある。したがって independent-warrant requirement は、含めた relation だけでなく \(\mathcal S\) 自体の granularity にも適用される。
 
 inference が equality class だけを利用するなら、任意の bijection は harmless renaming である。しかし sequence geometry、edit distance、neighborhood structure、order その他の relation を利用するなら、arbitrary bijection は無害とは限らない。error-aware UMI analysis で sequence distance を破壊しながら string を arbitrary number に写す変換は、evidential structure の pure re-encoding ではない。
 
@@ -577,7 +581,7 @@ blind review copy では machine-checked claim を neutral label にまとめる
 
 formal difference が individuation inference に入るためには、representation から target への justified path が必要である。
 
-exact deterministic core は簡潔に述べられる。**declared functional representation-to-target model の内部では、target-level で利用するために structurally eligible な representation-level evidence は、proposed target assignment が誘導する quotient を介して descend しなければならない。** within-fiber distinction は construction により捨てられる。selected test が separation を支持できるのは、その observation-to-target link が structurally admissible な場合に限られる。そして、どちらの condition も model を受け入れるための scientific warrant を作り出しはしない。より一般的な methodological lesson はこれより弱く、formal distinction を target-level distinction の支持に使うには、declared target への independently warranted route が必要だということである。
+exact deterministic core は簡潔に述べられる。**declared functional representation-to-target model の内部で、declared scope 全体にわたり universally sound な difference discriminator として用いる representation-level feature は fiber-invariant でなければならず、したがって proposed target assignment が誘導する quotient を介して descend しなければならない。** within-fiber distinction は construction により捨てられる。selected test が separation を支持できるのは、その observation-to-target link が structurally admissible な場合に限られる。そして、どちらの condition も model を受け入れるための scientific warrant を作り出しはしない。より一般的な methodological lesson はこれより弱く、formal distinction を target-level distinction の支持に使うには、declared target への independently warranted route が必要だということである。
 
 したがって individuation-inference audit は、target assignment や metaphysical individual を発見する procedure ではない。それは、explicitly declared target model と test regime に相対して、structural failure、scientific underdetermination、scoped pass を区別する reusable dependency check である。
 
