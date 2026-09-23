@@ -1,0 +1,31 @@
+name: paper2-extraction-calibration-selftest
+
+on:
+  pull_request:
+    paths:
+      - "research/paper2/extraction_calibration_v1.json"
+      - "scripts/paper2_extraction_calibration_validate.py"
+      - ".github/workflows/paper2-extraction-calibration-selftest.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "research/paper2/extraction_calibration_v1.json"
+      - "scripts/paper2_extraction_calibration_validate.py"
+      - ".github/workflows/paper2-extraction-calibration-selftest.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile calibration validator
+        run: python -m py_compile scripts/paper2_extraction_calibration_validate.py
+      - name: Validate frozen pre-extraction manifest
+        run: python scripts/paper2_extraction_calibration_validate.py
