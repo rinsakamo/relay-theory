@@ -243,7 +243,7 @@ r(a)\neq r(b)
 1. **Target model と scope を宣言する。** \(P\)、\(T\)、proposed assignment \(r\)、selected test family \(A\)、結論の強さを固定する。固定されていなければ audit は underdetermined である。
 2. **Quotient descent を検査する。** candidate discriminator が \(r\) の各 fiber 上で一定かを問う。within-fiber difference は target-level use に対する structural failure である。
 3. **Observation bridge を検査する。** pre-specified test \(q\) なら \(B_r(q)\) を確立する。analysis が \(A\) から arbitrary separating witness を選べるなら、より強い \(\operatorname{Adm}_r(A)\) を確立するか、independently fixed な witness-selection rule を与える。
-4. **Independent warrant と representation structure を検査する。** \(r\)、factorization、selected family、inference が利用する representation-level relation / function / metric（以下 \(\mathcal S\) と表す）を受け入れる scientific reason を明示する。これらは non-self-licensing であり、preferred result を保存するために後から選ばれてはならない。
+4. **Independent warrant と representation structure を検査する。** \(r\)、factorization、selected family、inference が利用する representation-level relation / function / metric（以下 \(\mathcal S\) と表す）を受け入れる scientific reason を明示する。これらは non-self-licensing でなければならない。confirmatory use では discriminating comparison より前に固定し、adaptive に学習・選択するなら、その selection rule 自体を inference の一部として監査する。
 5. **Counterfactual と scope を検査する。** structure-preserving re-encoding に対する invariance を調べる。assignment perturbation で結論が変わるなら、その sensitivity を evidentially relevant にする grounded relation を示す。最後に、結論を selected observational / interventional regime が支える範囲より強くしない。
 
 audit の disposition は三つに整理できる。quotient / factorization condition の違反は **structural failure**。構造的には coherent でも independent warrant が足りなければ **scientifically underdetermined**。両層を通過した場合は **scoped pass** であり、declared target model と regime に相対して license されるだけで、unrestricted numerical identity を確立するわけではない。
@@ -352,7 +352,7 @@ entity resolution は、しばしば unique entity identifier が存在しない
 
 \(U\) を identifier-like field の value domain、\(\mathcal S\) を inference が evidentially relevant と宣言した \(U\) 上の relation の集合とし、利用する function や metric も必要なら relational encoding として含める。re-encoding \(\pi:U\to U\) が \(\mathcal S\) に相対して **structure-preserving** であるとは、\(\pi\) が bijection であり、各 declared relation を保存することをいう。\(k\)-ary relation \(S\in\mathcal S\) について、
 
-\(\mathcal S\) の選択自体も counterfactual comparison より前に固定され、独立に motivate されなければならない。そうでなければ、望ましくない transformation を non-preserving にするためだけに、desired conclusion を encode する relation を後から追加できてしまう。
+\(\mathcal S\) の選択自体も独立に motivate されなければならない。confirmatory use では counterfactual comparison より前に固定し、adaptive に \(\mathcal S\) を学習するなら learning / selection rule を audited inference に含める。そうでなければ、望ましくない transformation を non-preserving にするためだけに、desired conclusion を encode する relation を後から追加できてしまう。
 
 \[
 S(u_1,\ldots,u_k)
