@@ -43,7 +43,7 @@ representation
 -> licensed claims about target
 ```
 
-The remaining distinction is that Paper 1 asks an individuation-specific admissibility question about **differences inside the representation itself**. The revised manuscript now makes the missing dependency explicit as an evidential bridge from a representation-level feature to a target-level property, and couples that bridge criterion to a relabeling-invariance diagnostic and machine-checked dependency controls.
+The remaining distinction is that Paper 1 asks an individuation-specific admissibility question about **differences inside the representation itself**. The revised manuscript now makes the missing dependency explicit as an target factorization from a representation-level feature to a target-level property, and couples that bridge criterion to a counterfactual relevance audit and machine-checked dependency controls.
 
 ### Chen 2018 — Experimental Individuation: Creation and Presentation
 
@@ -68,7 +68,7 @@ individuation-specific evidential admissibility
 +
 explicit representation-feature / target-property bridge
 +
-relabeling-invariance diagnostic
+counterfactual relevance audit
 +
 representation/target/test factorization
 +
@@ -85,7 +85,7 @@ That sentence is **not** a proof of novelty. A venue-specific literature review 
 
 Use:
 
-> an individuation-specific evidential admissibility framework with explicit target bridges
+> an individuation-specific evidential admissibility framework with explicit target factorization
 
 Avoid:
 
@@ -104,9 +104,9 @@ Avoid:
 The paper remains potentially publishable as a narrow formal-methodological note if the contribution is presented as:
 
 1. a necessary-condition rule for when representation-level differences may enter individuation inferences;
-2. an explicit evidential-bridge dependency rather than an unanalyzed appeal to "target relevance";
-3. a relabeling-invariance diagnostic that can be applied to identifier-like features;
+2. an explicit target-factorization dependency rather than an unanalyzed appeal to "target relevance";
+3. a counterfactual relevance audit that can be applied to identifier-like features;
 4. a scientific UMI case separating bookkeeping identifiers from experimentally grounded tags;
 5. a Lean artifact that audits the bridge and anti-smuggling dependencies.
 
-The conceptual novelty remains incremental and should not be sold as a new theory of representation. The mechanization strengthens auditability, while the bridge/relabeling formulation carries the main methodological contribution.
+The conceptual novelty remains incremental and should not be sold as a new theory of representation. The mechanization strengthens auditability, while target factorization, test-specific observation factorization, and the counterfactual relevance audit carry the main methodological contribution.
