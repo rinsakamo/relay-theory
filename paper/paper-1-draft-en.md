@@ -326,7 +326,39 @@ The present mathematics is substantially more modest than these mature framework
 
 Nor does failure to support individuation imply that a representational distinction is dispensable. Surplus structure can remain useful or even necessary for other representational tasks (Nguyen, Teh, and Wells 2020).
 
-## 7. Scope and Limitations
+## 7. Broader Implication: From Identifiers to Theoretical Constructs
+
+The UMI case supports a broader methodological consequence. The evidential force of an identifier does not derive from its status as an identifier. It derives from an independently warranted relation between the identifier's assignment and the target.
+
+The same discipline can be applied one level above object identification, to the theoretical constructs used to describe measured capacities. Distinct construct labels are themselves differences in a representational vocabulary. Their nominal plurality does not, by itself, establish plurality in the measured capacities.
+
+Let \(C\) be a set of theoretical construct labels, and let \(\sigma(c)\) denote the operational structural signature retained after label suppression and normalization of the claim associated with construct \(c\). Such a signature may include the measurement roles, probes, criteria, temporal relations, resource conditions, or other dependencies required to reconstruct the claim.
+
+Then the methodological point is asymmetric:
+
+\[
+c_1\neq c_2
+\quad\not\Rightarrow\quad
+\text{distinct measured capacities},
+\]
+
+while
+
+\[
+\sigma(c_1)\neq\sigma(c_2)
+\]
+
+provides candidate discriminating structure that may justify further investigation of a capacity distinction. Even this second difference is not sufficient for ontological or psychological independence; it remains subject to the same requirements of target choice, measurement warrant, and admitted tests developed above.
+
+Conversely, if two differently named constructs yield the same normalized structural signature under a common measurement basis, the difference in names contributes no additional evidence for capacity plurality. This does not imply that the historical constructs are synonymous, explanatorily interchangeable, or useless. It means only that their labels have not, by themselves, earned independent status on the declared measurement surface.
+
+The resulting principle is:
+
+> **Nominal plurality is not evidential plurality. Preserve the discriminating structure that warrants a distinction, not merely the names of the distinguished things.**
+
+This consequence suggests a separate research question for cognitive science and other construct-rich fields: after authority and construct labels are withheld from the analysis, operational claims can be normalized onto a common measurement basis and compared by the discriminating structure that survives. The present paper does not answer which named cognitive capacities remain distinct under such a procedure, nor does it assume that any common basis is complete. It supplies the evidential discipline that such a comparison would need.
+
+## 8. Scope and Limitations
 
 The framework deliberately leaves several problems open.
 
@@ -342,13 +374,13 @@ Fifth, observation and intervention are not equated. Different test classes can 
 
 Finally, operational separation is not metaphysical numerical identity, and synchronic discrimination does not establish diachronic persistence.
 
-## 8. Formal Audit Summary
+## 9. Formal Audit Summary
 
 For the blind review copy, the mechanized claims are grouped under neutral labels. R1--R15 cover the original presentation/target, test-family, and semantically inert-token controls. R16--R19 cover generic target factorization and its positive/negative controls. R20 establishes test-specific observation factorization for the grounded observation surface, and R21 checks that an observed difference under such a factorization entails a grounding difference.
 
 The number of small theorems is not itself a novelty claim. The collection is an executable dependency surface.
 
-## 9. Conclusion
+## 10. Conclusion
 
 A formal difference may enter an individuation inference only through a justified path from representation to target.
 
