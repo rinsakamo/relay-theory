@@ -135,6 +135,31 @@ def FiberInvariant {P T V : Type}
       feature left = feature right
 
 /--
+A representation-level difference is universally sound for the proposed target
+assignment when every feature difference entails a target-assignment difference.
+This is the contrapositive form of fiber invariance under classical logic.
+-/
+def DifferenceSound {P T V : Type}
+    (r : P → T)
+    (feature : P → V) : Prop :=
+  ∀ ⦃left right : P⦄,
+    feature left ≠ feature right →
+      r left ≠ r right
+
+theorem fiberInvariant_iff_differenceSound
+    {P T V : Type}
+    (r : P → T)
+    (feature : P → V) :
+    FiberInvariant r feature ↔ DifferenceSound r feature := by
+  constructor
+  · intro hFiber left right hFeature hTarget
+    exact hFeature (hFiber hTarget)
+  · intro hSound left right hTarget
+    apply Classical.byContradiction
+    intro hFeature
+    exact hSound hFeature hTarget
+
+/--
 A feature is fiber-invariant exactly when it descends to the quotient induced
 by the target assignment. This characterizes which representation-level
 distinctions survive after same-target presentations are identified.
@@ -168,6 +193,42 @@ theorem fiberInvariant_iff_descends_toTargetQuotient
         exact Quotient.sound hSame
       _ = feature right :=
         (hFactor right).symm
+
+/--
+Universal soundness of feature differences is equivalent to quotient descent.
+Together with fiberInvariant_iff_differenceSound, this yields the manuscript's
+three-way characterization relative to a fixed target assignment.
+-/
+theorem differenceSound_iff_descends_toTargetQuotient
+    {P T V : Type}
+    (r : P → T)
+    (feature : P → V) :
+    DifferenceSound r feature ↔
+      ∃ quotientFeature : TargetQuotient r → V,
+        ∀ presentation,
+          feature presentation =
+            quotientFeature (Quotient.mk _ presentation) := by
+  exact Iff.trans
+    (fiberInvariant_iff_differenceSound r feature).symm
+    (fiberInvariant_iff_descends_toTargetQuotient r feature)
+
+/--
+Packaged three-way equivalence used as the anonymous manuscript result R23.
+-/
+theorem fiberInvariant_differenceSound_descends_equivalent
+    {P T V : Type}
+    (r : P → T)
+    (feature : P → V) :
+    (FiberInvariant r feature ↔ DifferenceSound r feature) ∧
+    (DifferenceSound r feature ↔
+      ∃ quotientFeature : TargetQuotient r → V,
+        ∀ presentation,
+          feature presentation =
+            quotientFeature (Quotient.mk _ presentation)) := by
+  exact ⟨
+    fiberInvariant_iff_differenceSound r feature,
+    differenceSound_iff_descends_toTargetQuotient r feature
+  ⟩
 
 /--
 A structural target-factorization condition for a presentation-level feature.
