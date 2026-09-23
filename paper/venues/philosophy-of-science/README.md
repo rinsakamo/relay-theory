@@ -175,3 +175,20 @@ A second hostile-review pass triggered another structural revision.
 - the anonymous formal surface is now R1--R21.
 
 All earlier exact-PDF validation records are historical for this revision. Fresh Lean CI, review-copy CI, and visual inspection are required.
+
+
+## Construct-level bridge — 2026-09-23
+
+The review manuscript now contains a short broader-implication section, **From Identifiers to Theoretical Constructs**.
+
+It generalizes the evidential discipline without adding a second scientific case:
+
+- identifierhood does not create evidential force;
+- construct-label plurality does not by itself establish measured-capacity plurality;
+- normalized structural differences are treated only as candidate discriminating evidence;
+- no named cognitive construct is declared reducible or identical;
+- no common measurement basis is assumed complete.
+
+This addition is intended to connect the UMI case to a broader philosophy-of-science consequence while leaving any corpus-scale cognitive-capacity comparison to a separate study.
+
+The addition invalidates the previous exact-PDF record and requires a fresh exact-head CI + visual-inspection cycle.
