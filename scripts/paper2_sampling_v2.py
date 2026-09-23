@@ -56,6 +56,18 @@ def load_protocol(path: Path) -> dict[str, Any]:
         raise ValueError("sampling-v2 weighting must remain sqrt(N_d)")
     if primary.get("integer_apportionment") != "hamilton_largest_remainder":
         raise ValueError("sampling-v2 integer apportionment must remain Hamilton")
+    authority = value.get("retrieval_authority", {})
+    measurement = authority.get("era_count_measurement", {})
+    if measurement.get("method") != "one_shot_bucket_counts_with_union_before_after_bracket":
+        raise ValueError("sampling-v2 era-count method must remain one-shot bracketed counts")
+    if measurement.get("transport_attempts_per_query") != 1:
+        raise ValueError("sampling-v2 era-count transport attempts must remain exactly one")
+    if measurement.get("cursor_paging_used") is not False:
+        raise ValueError("sampling-v2 era-count measurement must not use cursor paging")
+    if measurement.get("meta_count_equality_across_requests_required") is not False:
+        raise ValueError("sampling-v2 must record live provider drift rather than require equality")
+    if measurement.get("measurement_buckets_are_final_sampling_eras") is not False:
+        raise ValueError("diagnostic measurement buckets must not become final eras implicitly")
     if value.get("real_corpus_selection_authorized") is not False:
         raise ValueError("real corpus selection must remain blocked in this transaction")
     return value
