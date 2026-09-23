@@ -192,3 +192,12 @@ It generalizes the evidential discipline without adding a second scientific case
 This addition is intended to connect the UMI case to a broader philosophy-of-science consequence while leaving any corpus-scale cognitive-capacity comparison to a separate study.
 
 The addition invalidates the previous exact-PDF record and requires a fresh exact-head CI + visual-inspection cycle.
+
+
+## Final copy-edit and Japanese translation — 2026-09-23
+
+A final academic terminology/grammar pass has been applied to the English manuscript. The construct-level bridge now explicitly requires the structural-signature components to be fixed by the declared measurement question before construct labels or source authority are restored, preventing post-hoc tuning.
+
+`paper/paper-1-draft-ja.md` is now a complete Japanese translation synchronized to the final argument. It is a reading/audit translation; the English manuscript remains the submission authority.
+
+Any previous exact-PDF validation is superseded by this textual revision and must be rerun before submission.
