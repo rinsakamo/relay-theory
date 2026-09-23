@@ -451,7 +451,7 @@ def fetch_page(
     if not isinstance(results, list) or not isinstance(meta, dict):
         raise RuntimeError("provider page missing results/meta")
     next_cursor = meta.get("next_cursor")
-    if next_cursor == cursor and results:
+    if next_cursor == cursor:
         raise RuntimeError("provider returned a repeated cursor")
     return {"results": results, "next_cursor": next_cursor}
 
@@ -516,14 +516,6 @@ def ingest_page(
               stable_ids_json,cited_by_count,first_author,first_seen_at,last_seen_at
             ) VALUES(?,?,?,?,?,?,?,?,?,?,?)
             ON CONFLICT(work_id) DO UPDATE SET
-              provider_work_id=COALESCE(excluded.provider_work_id,works.provider_work_id),
-              title=excluded.title,
-              publication_year=excluded.publication_year,
-              doi=excluded.doi,
-              arxiv=excluded.arxiv,
-              stable_ids_json=excluded.stable_ids_json,
-              cited_by_count=excluded.cited_by_count,
-              first_author=excluded.first_author,
               last_seen_at=excluded.last_seen_at
             """,
             work_rows.values(),
@@ -727,7 +719,9 @@ def integrity_qc(conn: sqlite3.Connection) -> dict[str, Any]:
     }
 
 
-def validate_integrity_for_completion(qc: dict[str, Any]) -> None:
+def validate_integrity_for_completion(
+    qc: dict[str, Any], *, expected_checkpoint_count: int
+) -> None:
     if qc["sqlite_integrity_check"] != ["ok"]:
         raise RuntimeError(f"SQLite integrity_check failed: {qc['sqlite_integrity_check']}")
     if qc["foreign_key_violations"] != 0:
@@ -739,6 +733,10 @@ def validate_integrity_for_completion(qc: dict[str, Any]) -> None:
     }
     if any(duplicate_counts.values()):
         raise RuntimeError("duplicate constraint violation detected")
+    if len(qc["checkpoints"]) != expected_checkpoint_count:
+        raise RuntimeError(
+            "cannot complete manifest with missing retrieval-source checkpoints"
+        )
     if any(row["status"] != "COMPLETE" for row in qc["checkpoints"]):
         raise RuntimeError("cannot complete manifest with unfinished checkpoint")
 
@@ -973,7 +971,7 @@ def run_manifest(
     counts_path: Path,
     config_path: Path,
     output: Path,
-    run_id: str,
+    run_id: str | None,
     resume: bool,
     max_pages_total: int | None,
     logical_digest: bool,
@@ -991,6 +989,9 @@ def run_manifest(
         raise ValueError(f"output exists; refusing fresh overwrite: {output}")
     if resume and not output.exists():
         raise ValueError(f"resume requested but output does not exist: {output}")
+
+    if not resume and not run_id:
+        raise ValueError("fresh manifest transaction requires a run_id")
 
     conn = init_db(output)
     actual_run_id = initialize_or_resume(
@@ -1048,7 +1049,9 @@ def run_manifest(
                 cursor = page["next_cursor"]
 
         qc = integrity_qc(conn)
-        validate_integrity_for_completion(qc)
+        validate_integrity_for_completion(
+            qc, expected_checkpoint_count=len(source_specs(config, seed_topics))
+        )
         logical = logical_manifest_digest(conn) if logical_digest else None
         unique = qc["N_unique_works"]
         counts_n = int(counts["N_frame"])
@@ -1188,20 +1191,29 @@ def self_test(config: dict[str, Any]) -> None:
             conn.execute("SELECT COUNT(*) FROM works").fetchone()[0],
             conn.execute("SELECT COUNT(*) FROM work_r2_queries").fetchone()[0],
         )
+        original_metadata = conn.execute(
+            "SELECT title,cited_by_count FROM works WHERE work_id='W1'"
+        ).fetchone()
         with conn:
             conn.execute(
                 "UPDATE checkpoints SET status='RUNNING',next_cursor='*' "
                 "WHERE channel='R2' AND source_index=0"
             )
+        drifted_w1 = dict(w1)
+        drifted_w1["display_name"] = "Provider drifted title"
+        drifted_w1["cited_by_count"] = 999
         ingest_page(
             conn,
             spec=r2a,
             config=config,
             seed_topics=seed_topics,
             request_cursor="*",
-            results=[w1],
+            results=[drifted_w1],
             next_cursor=None,
         )
+        assert conn.execute(
+            "SELECT title,cited_by_count FROM works WHERE work_id='W1'"
+        ).fetchone() == original_metadata
         after = (
             conn.execute("SELECT COUNT(*) FROM works").fetchone()[0],
             conn.execute("SELECT COUNT(*) FROM work_r2_queries").fetchone()[0],
