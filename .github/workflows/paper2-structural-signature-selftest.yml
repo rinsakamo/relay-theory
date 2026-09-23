@@ -1,0 +1,46 @@
+name: paper2-structural-signature-selftest
+
+on:
+  pull_request:
+    paths:
+      - "research/paper2/structural_signature_v1.*"
+      - "research/paper2/claim_ir_v1.schema.json"
+      - "scripts/paper2_structural_signature_*.py"
+      - "scripts/paper2_claim_ir_validate.py"
+      - ".github/workflows/paper2-structural-signature-selftest.yml"
+  push:
+    branches: [main]
+    paths:
+      - "research/paper2/structural_signature_v1.*"
+      - "research/paper2/claim_ir_v1.schema.json"
+      - "scripts/paper2_structural_signature_*.py"
+      - "scripts/paper2_claim_ir_validate.py"
+      - ".github/workflows/paper2-structural-signature-selftest.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile validator
+        run: python -m py_compile scripts/paper2_structural_signature_*.py
+      - name: Parse JSON schema and example
+        run: |
+          python -m json.tool research/paper2/structural_signature_v1.schema.json >/dev/null
+          python -m json.tool research/paper2/structural_signature_v1.example.json >/dev/null
+      - name: Run destructive deterministic self-test
+        run: python scripts/paper2_structural_signature_validate.py --self-test
+      - name: Validate example and replay preserved structure
+        run: |
+          python scripts/paper2_structural_signature_validate.py \
+            --input research/paper2/structural_signature_v1.example.json \
+            --canonical-output /tmp/paper2-structural-signature-v1.canonical.json \
+            --replay-output /tmp/paper2-structural-signature-v1.replay.json
+          test -s /tmp/paper2-structural-signature-v1.canonical.json
+          test -s /tmp/paper2-structural-signature-v1.replay.json
