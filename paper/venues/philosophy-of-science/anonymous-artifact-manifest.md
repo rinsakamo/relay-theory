@@ -9,31 +9,33 @@ The manuscript uses Lean as a dependency audit rather than as a source of deep m
 
 ## Result labels
 
-| Label | Mechanized claim |
-| --- | --- |
-| R1 | A representation-sensitive discriminator can separate two representations that have the same target reference. |
-| R2 | Equal target reference preserves each target-sensitive observation. |
-| R3 | Equal target reference preserves the complete target-sensitive observation profile. |
-| R4 | Same-reference encodings remain indistinguishable under the admitted target-sensitive regime. |
-| R5 | If one admitted test family is included in another, indistinguishability under the richer family implies indistinguishability under the poorer family. |
-| R6 | A concrete pair is indistinguishable under the restricted test family. |
-| R7 | The same pair is distinguishable under the richer test family. |
-| R8 | A difference in a target-sensitive outcome entails a difference in the corresponding target values under the declared semantics. |
-| R9 | The concrete positive-control target-sensitive response difference is established. |
-| R10 | The corresponding positive-control target difference is derived from the response difference. |
-| R11 | For any token carrier type, adding a semantically inert identity-like token leaves the base target-sensitive classification unchanged. |
-| R12 | For any token carrier type, arbitrary reassignment of semantically inert identity-like tokens preserves the tested classification. |
-| R13 | Different identity-like token values do not separate two same-reference encodings. |
-| R14 | Assigning the same identity-like token cannot hide a target-sensitive difference already exposed by the admitted tests. |
-| R15 | Decorative access metadata that does not change the admitted test profile does not change the tested classification. |
-| R16 | For a feature with an explicit target factorization, equal target assignment forces equal feature values. |
-| R17 | A difference in a target-factorized representation-level feature entails a difference in target assignment. |
-| R18 | The deliberately representation-sensitive encoding discriminator cannot have a target factorization because it separates two representations assigned to the same target. |
-| R19 | A positive-control feature defined directly from the target assignment satisfies target factorization. |
-| R20 | The target-linked representation-level observation function satisfies test-specific observation factorization. |
-| R21 | Under observation factorization, a difference in an observed test outcome entails a difference in target assignment. |
-| R22 | If every test in a selected family satisfies the declared observation-to-target factorization, separation by that family entails different target assignments. |
-| R23 | For arbitrary representation, target, and value types, a feature is constant on target fibers if and only if it descends to the quotient induced by the target map. |
+The executable anonymous supplement contains the exact theorem names below.
+
+| Label | Anonymous theorem | Mechanized claim |
+| --- | --- | --- |
+| R1 | `encodedA_encodedB_sameGrounding` | Two encodings can have the same target assignment. |
+| R2 | `encodingProbe_separates_sameGrounding` | A representation-sensitive discriminator can still separate those encodings. |
+| R3 | `sameGrounding_sameGroundedObservation` | Equal target assignment preserves every target-sensitive observation. |
+| R4 | `sameGrounding_sameGroundedProfile` | Equal target assignment preserves the full target-sensitive response profile. |
+| R5 | `coarse_indistinguishable` | A restricted selected test family can leave a pair unresolved. |
+| R6 | `fine_distinguishable` | A richer selected test family can separate the same pair. |
+| R7 | `fine_indist_implies_coarse_indist` | Test-family inclusion induces the expected monotonicity. |
+| R8 | `identityProbe_groundedDifference` | The positive-control target-sensitive observation difference is established. |
+| R9 | `groundedOutcomeDifference_impliesGroundDifference` | A target-sensitive outcome difference entails a target-assignment difference. |
+| R10 | `derivedGroundDifference` | The positive-control target difference is derived from the response difference. |
+| R11 | `decorativeInterfaceTag_irrelevant` | Decorative interface metadata is semantically inert. |
+| R12 | `tokenizedGroundedIndist_iff_base` | Adding identity-like token metadata preserves the base classification. |
+| R13 | `identityToken_variation_preserves_groundedClassification` | Arbitrary reassignment of semantically inert tokens preserves classification. |
+| R14 | `differentIdentityTokens_sameGroundedClassification` | Different token values do not create separation for same-target encodings. |
+| R15 | `identityTokenCannotMask_groundedDifference` | Equal token values cannot mask a grounded difference already exposed by tests. |
+| R16 | `groundFeature_hasGroundingBridge` | A positive-control target-derived feature satisfies target factorization. |
+| R17 | `bridgedFeature_sameGrounding_sameValue` | A target-factorized feature is constant on equal-target fibers. |
+| R18 | `bridgedFeatureDifference_impliesGroundDifference` | A target-factorized feature difference entails a target-assignment difference. |
+| R19 | `encodingProbe_hasNoGroundingBridge` | A representation-sensitive discriminator that splits a fiber cannot factor through the target. |
+| R20 | `observeGrounded_hasObservationFactorization` | The target-linked observation surface satisfies test-specific factorization. |
+| R21 | `factorizedObservedDifference_impliesGroundDifference` | Test-specific observation factorization licenses target separation. |
+| R22 | `familyFactorizedObservedDifference_impliesGroundDifference` | Family-level factorization licenses witnessed separation. |
+| R23 | `fiberInvariant_differenceSound_descends_equivalent` | Fiber invariance, universal difference soundness, and quotient descent are equivalent relative to a fixed target assignment. |
 
 ## Formal scope
 
@@ -46,7 +48,7 @@ The mechanization assumes:
 - declared test accessibility;
 - a token carrier whose internal structure is not inspected by target-sensitive semantics;
 - a generic structural target-factorization object for arbitrary feature-value carriers;
-- a generic target-induced quotient and fiber-invariance characterization over arbitrary representation, target, and feature-value types;
+- a generic target-induced quotient, fiber-invariance condition, and universal difference-soundness condition over arbitrary representation, target, and feature-value types;
 - a test-specific observation-factorization object connecting representation-level observed outcomes to target-level responses.
 - a family-level admissibility condition requiring that factorization for every selected test used by the inference.
 
@@ -54,10 +56,10 @@ It does **not** derive target ontology, establish the representation-to-target a
 
 ## Validation boundary
 
-The underlying formal development is checked without `sorry`, `admit`, `native_decide`, or project-local axioms. The repository validation also builds the Lean project, performs an independent kernel check, and audits theorem axioms against a pinned allow-list.
+The underlying formal development is checked without `sorry`, `admit`, `native_decide`, or project-local axioms. Repository CI builds both the non-blind formal core and the standalone anonymous supplement. It also rejects repository/author-identity leakage from the anonymous supplement before upload.
 
 For anonymous peer review, the public development and public theorem identifiers are intentionally not linked from this manifest.
 
 ## Submission-package note
 
-If the journal or editor requests executable anonymous source during review, export a scrubbed Lean source package whose public identifiers and repository metadata have been removed, and validate that exported package independently before submission. Do not point reviewers to the public repository during blind review.
+Attach the directory `anonymous-lean-supplement` as a separate supplementary file for review. It contains `Paper1Audit.lean`, `lean-toolchain`, `lakefile.lean`, `README.md`, and `RESULT_MAP.md`. The package is independently buildable with `lake build` and contains no public-repository metadata.
