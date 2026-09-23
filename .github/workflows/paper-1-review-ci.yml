@@ -61,7 +61,7 @@ jobs:
               raise SystemExit(f"abstract exceeds 100 words: {len(words)}")
 
           labels = set(re.findall(r"\\texttt\{R(\d+)\}", text))
-          expected = {str(i) for i in range(1, 22)}
+          expected = {str(i) for i in range(1, 23)}
           missing = sorted(expected - labels, key=int)
           if missing:
               raise SystemExit(f"missing anonymous result labels: {missing}")

@@ -5,7 +5,7 @@
 
 ## Purpose
 
-The manuscript uses Lean as a dependency audit rather than as a source of deep mathematical novelty. During blind review, machine-checked results are referred to by neutral labels `R1`--`R21`.
+The manuscript uses Lean as a dependency audit rather than as a source of deep mathematical novelty. During blind review, machine-checked results are referred to by neutral labels `R1`--`R22`.
 
 ## Result labels
 
@@ -32,6 +32,7 @@ The manuscript uses Lean as a dependency audit rather than as a source of deep m
 | R19 | A positive-control feature defined directly from the target assignment satisfies target factorization. |
 | R20 | The target-linked representation-level observation function satisfies test-specific observation factorization. |
 | R21 | Under observation factorization, a difference in an observed test outcome entails a difference in target assignment. |
+| R22 | If every test in a selected family satisfies the declared observation-to-target factorization, separation by that family entails different target assignments. |
 
 ## Formal scope
 
@@ -45,6 +46,7 @@ The mechanization assumes:
 - a token carrier whose internal structure is not inspected by target-sensitive semantics;
 - a generic structural target-factorization object for arbitrary feature-value carriers;
 - a test-specific observation-factorization object connecting representation-level observed outcomes to target-level responses.
+- a family-level admissibility condition requiring that factorization for every selected test used by the inference.
 
 It does **not** derive target ontology, establish the representation-to-target assignment, manufacture epistemic warrant for a declared factorization, derive metaphysical numerical identity, select a uniquely correct test regime, model noisy/statistical inference, or infer interventional equivalence from observational equivalence.
 

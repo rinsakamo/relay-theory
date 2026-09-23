@@ -230,6 +230,50 @@ theorem factorizedObservedDifference_impliesGroundDifference
     _ = observed right probe :=
       (bridge.sound right probe).symm
 
+
+/--
+A selected test family is admissible for an observed surface when every
+accessible probe in that family satisfies target-response factorization.
+This is the finite counterpart of requiring B_r(q) for every q in A.
+-/
+def FamilyObservationFactorization
+    (observed : Presentation → Probe → Outcome)
+    (interface : Interface) : Prop :=
+  ∀ probe, accessible interface probe →
+    ∀ presentation,
+      observed presentation probe =
+        response probe (ground presentation)
+
+/-- Separation by at least one test in the selected family. -/
+def ObservedDistAt
+    (observed : Presentation → Probe → Outcome)
+    (interface : Interface)
+    (left right : Presentation) : Prop :=
+  ∃ probe, accessible interface probe ∧
+    observed left probe ≠ observed right probe
+
+/--
+If every selected test has the declared target-response factorization, then
+separation by that family entails different target assignments.
+-/
+theorem familyFactorizedObservedDifference_impliesGroundDifference
+    {observed : Presentation → Probe → Outcome}
+    {interface : Interface}
+    (hFamily : FamilyObservationFactorization observed interface)
+    {left right : Presentation}
+    (hDifference : ObservedDistAt observed interface left right) :
+    ground left ≠ ground right := by
+  rcases hDifference with ⟨probe, hAccessible, hDifferent⟩
+  intro hGround
+  apply hDifferent
+  calc
+    observed left probe = response probe (ground left) :=
+      hFamily probe hAccessible left
+    _ = response probe (ground right) :=
+      congrArg (response probe) hGround
+    _ = observed right probe :=
+      (hFamily probe hAccessible right).symm
+
 /--
 Presentation-sensitive separation does not survive the grounded observation
 surface for two encodings of the same referent.
