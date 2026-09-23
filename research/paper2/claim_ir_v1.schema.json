@@ -1,0 +1,340 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/rinsakamo/relay-theory/blob/main/research/paper2/claim_ir_v1.schema.json",
+  "title": "Paper 2 ClaimIR v1",
+  "description": "Analysis data contract for source-grounded, authority-blinded claim decomposition. This is research infrastructure, not ontology.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "claim_id",
+    "provenance",
+    "extraction",
+    "claim_core"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "paper2-claim-ir-v1"
+    },
+    "claim_id": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9._-]{0,63}$"
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "paper_id",
+        "source_language",
+        "source_spans",
+        "authors",
+        "institutions",
+        "venue",
+        "citation_count",
+        "construct_labels"
+      ],
+      "properties": {
+        "paper_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_language": {
+          "type": "string",
+          "minLength": 2
+        },
+        "source_spans": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "span_id",
+              "locator"
+            ],
+            "properties": {
+              "span_id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              },
+              "locator": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "authors": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "institutions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "venue": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "citation_count": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "construct_labels": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "extraction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "extractor",
+        "extractor_version",
+        "procedure_version",
+        "extracted_at",
+        "manual_review_status"
+      ],
+      "properties": {
+        "extractor": {
+          "type": "string",
+          "minLength": 1
+        },
+        "extractor_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "procedure_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "extracted_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "manual_review_status": {
+          "enum": [
+            "unreviewed",
+            "reviewed",
+            "adjudicated"
+          ]
+        }
+      }
+    },
+    "claim_core": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "claim_type",
+        "modality",
+        "scope",
+        "nodes",
+        "relations"
+      ],
+      "properties": {
+        "claim_type": {
+          "enum": [
+            "relation",
+            "criterion",
+            "mapping",
+            "comparison",
+            "counterfactual",
+            "definition",
+            "constraint",
+            "other"
+          ]
+        },
+        "modality": {
+          "enum": [
+            "descriptive",
+            "necessary",
+            "sufficient",
+            "probabilistic",
+            "definitional",
+            "counterfactual",
+            "comparative",
+            "other"
+          ]
+        },
+        "scope": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "conditions",
+            "population",
+            "substrate",
+            "task",
+            "temporal_scope"
+          ],
+          "properties": {
+            "conditions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "population": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "substrate": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "task": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "temporal_scope": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "nodes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "role",
+              "description",
+              "source_span_ids",
+              "grounding"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              },
+              "role": {
+                "enum": [
+                  "condition",
+                  "available_information",
+                  "state_or_structure",
+                  "intervention",
+                  "response_or_outcome",
+                  "criterion",
+                  "probe",
+                  "partition",
+                  "other"
+                ]
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1
+              },
+              "source_span_ids": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "pattern": "^[a-z][a-z0-9_]*$"
+                },
+                "uniqueItems": true
+              },
+              "grounding": {
+                "enum": [
+                  "explicit",
+                  "normalized"
+                ]
+              }
+            }
+          }
+        },
+        "relations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "kind",
+              "arguments",
+              "description",
+              "source_span_ids",
+              "grounding"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              },
+              "kind": {
+                "enum": [
+                  "equals",
+                  "differs",
+                  "depends_on",
+                  "changes",
+                  "predicts",
+                  "maps_to",
+                  "satisfies",
+                  "distinguishes",
+                  "precedes",
+                  "constrains",
+                  "equivalent",
+                  "other"
+                ]
+              },
+              "arguments": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "pattern": "^[a-z][a-z0-9_]*$"
+                }
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1
+              },
+              "source_span_ids": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "pattern": "^[a-z][a-z0-9_]*$"
+                },
+                "uniqueItems": true
+              },
+              "grounding": {
+                "enum": [
+                  "explicit",
+                  "normalized"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

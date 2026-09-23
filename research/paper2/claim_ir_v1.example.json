@@ -1,0 +1,89 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "C0001",
+  "provenance": {
+    "paper_id": "example:paper:001",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "example section 1, sentence 1"
+      },
+      {
+        "span_id": "s2",
+        "locator": "example section 1, sentence 2"
+      }
+    ],
+    "authors": [
+      "Example Author"
+    ],
+    "institutions": [
+      "Example Laboratory"
+    ],
+    "venue": "Example Journal",
+    "citation_count": 123,
+    "construct_labels": [
+      "working memory"
+    ]
+  },
+  "extraction": {
+    "extractor": "manual-fixture",
+    "extractor_version": "1",
+    "procedure_version": "claim-ir-v1-fixture",
+    "extracted_at": "2026-09-23T00:00:00Z",
+    "manual_review_status": "adjudicated"
+  },
+  "claim_core": {
+    "claim_type": "relation",
+    "modality": "descriptive",
+    "scope": {
+      "conditions": [
+        "two separated observations"
+      ],
+      "population": [],
+      "substrate": [],
+      "task": [
+        "delayed response task"
+      ],
+      "temporal_scope": [
+        "earlier observation to later response"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "earlier_information",
+        "role": "available_information",
+        "description": "information available at an earlier observation",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "later_response",
+        "role": "response_or_outcome",
+        "description": "response observed at a later time",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "explicit"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "depends_on",
+        "arguments": [
+          "later_response",
+          "earlier_information"
+        ],
+        "description": "variation in the earlier information is associated with variation in the later response",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
