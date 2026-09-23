@@ -1,3 +1,13 @@
+## Final minor revision after re-review — 2026-09-24
+
+The second external review judged the manuscript suitable for submission after minor edits. Three pre-submission wording changes were adopted:
+
+- AI disclosure now records GPT-5.6 Sol as the model displayed in the ChatGPT service at the time of use and explicitly assigns the author responsibility for accuracy, integrity, and originality;
+- the Introduction now states that the payoff is diagnostic rather than theorem-theoretic, framing the contribution as a local conservativity audit that locates where target assignment, observational bridging, independent warrant, and permissible representational structure enter;
+- Section 2.4 now says the family-level condition blocks one structural form of post-hoc licensing, rather than claiming to prevent discriminator search in general.
+
+No new theory, empirical case, probabilistic extension, or construct-level expansion was added.
+
 ## Anonymous external-review response — 2026-09-23
 
 A fresh external review recommended Major Revision while judging the mathematical core correct and the paper potentially publishable. The high-value pre-submission points were incorporated without expanding Paper 1 into a probabilistic or empirical follow-up:
