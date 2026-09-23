@@ -1,3 +1,13 @@
+## Philosophy of Science accepted-style polish — 2026-09-23
+
+The venue source was additionally normalized toward the journal's accepted-manuscript conventions without broadening the paper:
+- page break after the abstract;
+- headline capitalization for submission-facing section/subsection titles;
+- removal of table-level \small overrides so table text remains full-size;
+- Chicago-style abbreviated inclusive page ranges in the BibTeX source where applicable.
+
+These edits are formatting-only; the venue-neutral manuscript prose and formal claims are unchanged.
+
 ## Philosophy of Science final-compliance revision — 2026-09-23
 
 The submission-facing source was aligned to the current journal instructions after a fresh official-policy audit:
