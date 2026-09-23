@@ -1,0 +1,83 @@
+{
+  "schema_version": "paper2-extraction-procedure-v1",
+  "owner_issue": 147,
+  "status": "FROZEN_BEFORE_EXTRACTION",
+  "claim_ir_schema": "paper2-claim-ir-v1",
+  "source_bundle_schema": "paper2-extraction-source-bundle-v1",
+  "candidate_schema": "paper2-extraction-candidate-v1",
+  "passes": [
+    "A",
+    "B"
+  ],
+  "input_contract": {
+    "same_canonical_bundle_bytes_for_both_passes": true,
+    "opaque_bundle_id_only": true,
+    "source_text_surface": "abstract_only",
+    "authority_metadata_visible": false,
+    "title_visible": false,
+    "authors_visible": false,
+    "institutions_visible": false,
+    "venue_visible": false,
+    "citation_count_visible": false,
+    "registry_metadata_visible": false,
+    "construct_label_list_visible": false,
+    "basis_visible": false,
+    "decomposition_outcome_visible": false,
+    "other_pass_output_visible": false
+  },
+  "execution_contract": {
+    "fresh_context_per_pass": true,
+    "cross_pass_messages_forbidden": true,
+    "cross_pass_files_forbidden": true,
+    "other_claim_outputs_forbidden": true,
+    "post_hoc_prompt_edits_between_passes_forbidden": true,
+    "same_procedure_version_required": true,
+    "extractor_identity_and_version_recorded_after_output": true,
+    "candidate_must_validate_before_assembly": true
+  },
+  "output_contract": {
+    "extractor_outputs_claim_core_only": true,
+    "provenance_added_after_extraction": true,
+    "extraction_metadata_added_after_extraction": true,
+    "claim_core_must_be_source_span_grounded": true,
+    "no_basis_or_decomposition_fields": true,
+    "no_authority_metadata_fields": true
+  },
+  "adjudication_contract": {
+    "begins_only_after_both_passes_are_frozen": true,
+    "source_text_visible": true,
+    "a_and_b_visible": true,
+    "basis_visible": false,
+    "decomposition_outcome_visible": false,
+    "adjudication_must_record_reason_codes": true,
+    "adjudication_must_not_prefer_easier_decomposition": true
+  },
+  "forbidden_information_classes": [
+    "author_identity",
+    "institution",
+    "venue",
+    "citation_prestige",
+    "registry_comment",
+    "source_construct_label_list",
+    "basis_mapping",
+    "basis_witness",
+    "decomposition_success",
+    "decomposition_failure",
+    "coverage_score",
+    "residual_classification",
+    "other_pass_output",
+    "other_claim_output"
+  ],
+  "run_sequence": [
+    "freeze canonical source bundle bytes",
+    "execute pass A in fresh isolated context",
+    "validate and freeze candidate A",
+    "execute pass B in fresh isolated context without A",
+    "validate and freeze candidate B",
+    "assemble provenance-bearing ClaimIR A and B outside extractor",
+    "validate ClaimIR A and B",
+    "compare blinded projections before basis decomposition",
+    "adjudicate disagreements from source text only if required",
+    "only after agreement report is frozen may decomposition begin"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "schema_version": "paper2-extraction-candidate-v1",
+  "bundle_id": "B0001",
+  "claim_core": {
+    "claim_type": "relation",
+    "modality": "descriptive",
+    "scope": {
+      "conditions": [
+        "under the stated condition"
+      ],
+      "population": [],
+      "substrate": [],
+      "task": [],
+      "temporal_scope": [
+        "earlier measurement to later response"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "earlier_variable",
+        "role": "available_information",
+        "description": "an observed variable at the earlier measurement",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "later_response",
+        "role": "response_or_outcome",
+        "description": "a response at the later measurement",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "explicit"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "depends_on",
+        "arguments": [
+          "later_response",
+          "earlier_variable"
+        ],
+        "description": "the later response varies with the earlier observed variable under the stated condition",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
