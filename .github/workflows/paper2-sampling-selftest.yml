@@ -1,0 +1,35 @@
+name: paper2-sampling-selftest
+
+on:
+  pull_request:
+    paths:
+      - "scripts/paper2_sampling_protocol.py"
+      - "research/paper2/sampling_v1.json"
+      - "research/paper2/sample_manifest_v1.schema.json"
+      - ".github/workflows/paper2-sampling-selftest.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "scripts/paper2_sampling_protocol.py"
+      - "research/paper2/sampling_v1.json"
+      - "research/paper2/sample_manifest_v1.schema.json"
+      - ".github/workflows/paper2-sampling-selftest.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile sampling protocol
+        run: python -m py_compile scripts/paper2_sampling_protocol.py
+      - name: Run deterministic synthetic self-test
+        run: python scripts/paper2_sampling_protocol.py --self-test
+      - name: Render precision plan
+        run: python scripts/paper2_sampling_protocol.py --plan > /tmp/paper2-sampling-plan.json

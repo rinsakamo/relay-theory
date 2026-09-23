@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/rinsakamo/relay-theory/research/paper2/sample_manifest_v1.schema.json",
+  "title": "Paper 2 held-out sample manifest v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version","sample_protocol_version","generation_timestamp",
+    "eligibility_protocol_version","population_manifest_digest",
+    "population_manifest_run_id","sample_seed","stratum_definition",
+    "allocation_rule","selected_works"
+  ],
+  "properties": {
+    "schema_version": {"const":"paper2-sample-manifest-v1"},
+    "sample_protocol_version": {"const":"paper2-sampling-v1"},
+    "eligibility_protocol_version": {"const":"paper2-eligibility-v1.1"},
+    "generation_timestamp": {"type":"string","format":"date-time"},
+    "population_manifest_digest": {"type":"string","pattern":"^[0-9a-f]{64}$"},
+    "population_manifest_run_id": {"type":"string","minLength":1},
+    "sample_seed": {"type":"string","minLength":1},
+    "stratum_definition": {"type":"object","additionalProperties":true},
+    "allocation_rule": {"type":"string","minLength":1},
+    "calibration_works_excluded": {"type":"integer","minimum":0},
+    "selected_works": {
+      "type":"array",
+      "items": {
+        "type":"object",
+        "additionalProperties":false,
+        "required":[
+          "canonical_work_id","sampling_rank","rank_key","stratum",
+          "retrieval_channel_membership","citation_band","publication_year","sample_role"
+        ],
+        "properties":{
+          "canonical_work_id":{"type":"string","minLength":1},
+          "sampling_rank":{"type":"integer","minimum":1},
+          "rank_key":{"type":"string","pattern":"^[0-9a-f]{64}$"},
+          "stratum":{"enum":["R1","R2","R3","R1R2","R1R3","R2R3","R1R2R3"]},
+          "retrieval_channel_membership":{
+            "type":"array","minItems":1,"maxItems":3,"uniqueItems":true,
+            "items":{"enum":["R1","R2","R3"]}
+          },
+          "citation_band":{"enum":["1-9","10-99","100-999","1000-9999",">=10000"]},
+          "publication_year":{"type":["integer","null"]},
+          "sample_role":{"enum":["PRIMARY","RESERVE","DIAGNOSTIC"]}
+        }
+      }
+    }
+  }
+}
