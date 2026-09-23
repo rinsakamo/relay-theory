@@ -21,6 +21,29 @@ by an independent pre-submission reviewer.
   family-level transfer, independent warrant, negative controls, and
   structure-preserving counterfactual checks.
 
+## 2026-09-23 external-review literature closure
+
+The Paper 1 novelty claim was re-audited against three contemporary sources identified
+by an independent pre-submission reviewer.
+
+- **Frigg & Nguyen (2020), _Modelling Nature_** and **Nguyen & Frigg (2022),
+  _Scientific Representation_**: DEKI already provides a general account of
+  scientific representation using denotation, exemplification, keying-up, and
+  imputation. Paper 1 therefore does not claim novelty for feature transfer from a
+  representational vehicle to a target. Its narrower contribution is a feature-level
+  conservativity audit: conditional on a proposed target assignment and independent
+  warrant, when may a particular feature difference serve as a sound target
+  discriminator?
+- **Suárez (2024), _Inference and Representation_**: contemporary inferentialism
+  locates representational force and inferential capacity in relational, contextual,
+  normative practice. Paper 1 does not compete with that theory of warrant. It
+  separates a structural exact-deterministic condition from the external scientific
+  warrant needed to accept the target model.
+- The surviving novelty claim is therefore the integrated audit protocol combining
+  target-relative quotient descent, universal difference soundness, test-specific /
+  family-level transfer, independent warrant, negative controls, and
+  structure-preserving counterfactual checks.
+
 # Paper 1 — Novelty Audit
 
 > Internal working note. Non-authoritative.  
