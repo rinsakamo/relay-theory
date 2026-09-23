@@ -1,0 +1,43 @@
+name: paper2-openai-local-runner-selftest
+
+on:
+  pull_request:
+    paths:
+      - "research/paper2/extraction_openai_runner_config_v1.schema.json"
+      - "research/paper2/extraction_openai_runner_config_v1.example.json"
+      - "scripts/paper2_extraction_openai_runner.py"
+      - "scripts/paper2_extraction_bundle_prepare.py"
+      - "scripts/paper2_extraction_procedure_validate.py"
+      - "scripts/paper2_extraction_receipt_validate.py"
+      - ".github/workflows/paper2-openai-local-runner-selftest.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "research/paper2/extraction_openai_runner_config_v1.schema.json"
+      - "research/paper2/extraction_openai_runner_config_v1.example.json"
+      - "scripts/paper2_extraction_openai_runner.py"
+      - "scripts/paper2_extraction_bundle_prepare.py"
+      - "scripts/paper2_extraction_procedure_validate.py"
+      - "scripts/paper2_extraction_receipt_validate.py"
+      - ".github/workflows/paper2-openai-local-runner-selftest.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile local extraction runner
+        run: |
+          python -m py_compile scripts/paper2_extraction_bundle_prepare.py
+          python -m py_compile scripts/paper2_extraction_procedure_validate.py
+          python -m py_compile scripts/paper2_extraction_receipt_validate.py
+          python -m py_compile scripts/paper2_extraction_openai_runner.py
+      - name: Run mock OpenAI-compatible end-to-end self-test
+        run: python scripts/paper2_extraction_openai_runner.py --self-test
