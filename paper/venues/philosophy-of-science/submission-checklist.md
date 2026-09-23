@@ -26,10 +26,11 @@
 - [x] Chicago author-date bibliography style selected.
 - [x] Anonymous review manuscript ends with **References**; acknowledgements are omitted for blind review.
 - [x] Accepted-manuscript back-matter order is fixed as **References → Acknowledgements → Declarations → Funding Statement**; factual Declarations/Funding text remains author-supplied.
-- [x] Bibliography source includes full `https://doi.org/...` URLs for all 13 current references with DOIs; run #11 rebuilt the exact review PDF and the rendered references were visually verified.
+- [x] Bibliography source contains 19 references; all 19 include DOI fields and full `https://doi.org/...` URLs.
 - [x] Rebuild the **exact current anonymized review source** after DOI completion: Paper 1 Review CI run #11 / exact head `1ee8022a7fc740ec8e11c27b7e59aa489373ddbb` generated an 18-page PDF and passed all blind-source, bibliography, and final LaTeX audits.
 - [x] Manually visually inspect all 18 pages of the DOI-complete exact CI artifact PDF: run #11 artifact ID `10702765379`, rendered at 140 dpi on 2026-09-23; no clipping, overlap, broken glyphs, missing sections, or reference-layout defects found. This validation is historical after the later cross-domain narrative revision.
-- [ ] Rebuild and visually inspect the exact current anonymized review source after the final Philosophy of Science compliance edit (AI footnote + cover-letter synchronization).
+- [x] Exact final anonymous review source validated at manuscript head `36abe07d3041171465907bb6288d09209f512fa7`: Paper 1 Review CI run `35858767105` PASS; exact PDF artifact `10749180124`; 34 pages; abstract 99 words; blind-source audit PASS; anonymous-Acknowledgements omission PASS; AI-disclosure-footnote PASS; final LaTeX warning/layout audit PASS.
+- [x] Manually visually inspect all 34 pages of exact artifact `10749180124` at 160 dpi on 2026-09-23: no clipping, overlap, broken glyphs, malformed tables, missing sections, or reference-layout defects found.
 
 ## Claims and novelty
 
@@ -65,7 +66,7 @@
 - [ ] Supply the author's truthful **Declarations / competing-interests statement**; do not infer or invent this.
 - [ ] Supply non-blind author metadata: full author name, affiliation, contact details, and ORCID if desired.
 
-- [x] Re-opened the live Philosophy of Science author instructions on 2026-09-22; current Article limit is 9,000 words inclusive of abstract/footnotes/in-text citations/figures/tables/print appendices, with references excluded.
+- [x] Re-opened the live Philosophy of Science author instructions and publishing-ethics pages on 2026-09-23; current Article limit is 9,000 words inclusive of abstract/footnotes/in-text citations/figures/tables/print appendices, with references excluded.
 - [ ] Confirm manuscript is not under review elsewhere.
 - [ ] Confirm all submission metadata.
 - [ ] Add author / affiliation only in the non-blind submission fields as required.
@@ -77,4 +78,4 @@
 
 ## Decision gate
 
-**Current state:** the anonymous review source is structurally aligned with the current Philosophy of Science instructions: 99-word abstract, anonymous author field, no Acknowledgements section, AI disclosure in a non-identifying footnote, and References as the final review-manuscript section. The exact post-edit source still requires fresh CI/PDF validation. Author-supplied Funding/Declarations, non-blind metadata, publication/concurrent-review eligibility, and final Editorial Manager PDF approval remain required.
+**Current state:** the anonymous review manuscript is final and validated: 99-word abstract, anonymous author field, no Acknowledgements section, AI disclosure in a non-identifying footnote, References as the final review-manuscript section, exact-source CI PASS, and 34-page visual inspection PASS. No manuscript-text blocker remains. Before actual submission, only author-supplied Funding/Declarations and non-blind metadata, publication/concurrent-review eligibility confirmations, upload of the requested files, and approval of the Editorial Manager-built PDF remain.
