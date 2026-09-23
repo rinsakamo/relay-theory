@@ -483,6 +483,68 @@ def require_real_sampling_authority(protocol: dict[str, Any]) -> tuple[int, int]
     return primary_n, reserve_n
 
 
+
+def hash_uniform_index(
+    size: int,
+    seed: str,
+    replicate: int,
+    draw_position: int,
+) -> int:
+    """Deterministically map SHA-256 output to an unbiased index by rejection."""
+    if size < 1:
+        raise ValueError("bootstrap cluster count must be positive")
+    if replicate < 0 or draw_position < 0:
+        raise ValueError("bootstrap coordinates must be nonnegative")
+    space = 1 << 256
+    limit = space - (space % size)
+    counter = 0
+    while True:
+        value = int(
+            sha_rank(
+                "paper2-paper-cluster-bootstrap-v1",
+                seed,
+                str(replicate),
+                str(draw_position),
+                str(counter),
+            ),
+            16,
+        )
+        if value < limit:
+            return value % size
+        counter += 1
+
+
+def paper_cluster_bootstrap_indices(
+    n_clusters: int,
+    replicate: int,
+    seed: str,
+) -> list[int]:
+    if n_clusters < 2:
+        raise ValueError("paper-cluster bootstrap requires at least two clusters")
+    return [
+        hash_uniform_index(n_clusters, seed, replicate, draw_position)
+        for draw_position in range(n_clusters)
+    ]
+
+
+def type7_quantile(values: list[float], q: float) -> float:
+    """R/NumPy-style Type-7 linear quantile, implemented with stdlib only."""
+    if not values:
+        raise ValueError("quantile requires at least one value")
+    if not 0.0 <= q <= 1.0:
+        raise ValueError("quantile probability must be in [0,1]")
+    ordered = sorted(float(x) for x in values)
+    if len(ordered) == 1:
+        return ordered[0]
+    h = (len(ordered) - 1) * q
+    lo = math.floor(h)
+    hi = math.ceil(h)
+    if lo == hi:
+        return ordered[lo]
+    weight = h - lo
+    return ordered[lo] * (1.0 - weight) + ordered[hi] * weight
+
+
 def synthetic_retrieval_config() -> dict[str, Any]:
     seeds = [
         {"number": i, "title": f"Calibration {i}", "year": 2000 + i, "doi": None, "arxiv": None, "isbn": None}
@@ -563,6 +625,10 @@ def make_synthetic_manifest(path: Path, row_order: list[int]) -> None:
 
 def self_test(protocol: dict[str, Any]) -> None:
     assert protocol["freeze_state"]["real_sampling_authorized"] is False
+    assert protocol["statistical_units"]["iid_claim_interpretation_forbidden"] is True
+    assert protocol["denominator_contract"]["pipeline_failure_as_residual_forbidden"] is True
+    assert protocol["uncertainty"]["paper_cluster_bootstrap"]["replicates"] == 2000
+    assert protocol["expansion_policy"]["result_dependent_sample_expansion_forbidden"] is True
     try:
         require_real_sampling_authority(protocol)
         raise AssertionError("real sampling authority gate failed open")
@@ -643,6 +709,16 @@ def self_test(protocol: dict[str, Any]) -> None:
             assert set(mapping) == set(row_ids)
             assert set(mapping.values()) == set(row_ids)
             assert all(k != v for k, v in mapping.items())
+
+    bootstrap_seed = protocol["uncertainty"]["paper_cluster_bootstrap"]["seed"]
+    b0 = paper_cluster_bootstrap_indices(7, 0, bootstrap_seed)
+    b0_again = paper_cluster_bootstrap_indices(7, 0, bootstrap_seed)
+    b1 = paper_cluster_bootstrap_indices(7, 1, bootstrap_seed)
+    assert b0 == b0_again
+    assert len(b0) == 7 and all(0 <= x < 7 for x in b0)
+    assert len(b1) == 7 and all(0 <= x < 7 for x in b1)
+    assert type7_quantile([0.0, 1.0], 0.5) == 0.5
+    assert type7_quantile([0.0, 1.0, 2.0, 3.0], 0.25) == 0.75
 
     plan = precision_plan(protocol)
     by_h = {row["half_width"]: row["nominal_independent_n"] for row in plan["coverage_precision"]}
