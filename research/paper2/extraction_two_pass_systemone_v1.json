@@ -1,0 +1,62 @@
+{
+  "schema_version": "paper2-two-pass-systemone-v1",
+  "owner_issue": 160,
+  "status": "SYNTHETIC_QUALIFICATION_ONLY",
+  "claim_ir_schema": "paper2-claim-ir-v1",
+  "candidate_schema": "paper2-extraction-candidate-v1",
+  "decision_schema": "paper2-systemone-decision-v1",
+  "normal_pass": {
+    "purpose": "semantic_interpretation_only",
+    "free_text_allowed": true,
+    "claim_ir_generation_forbidden": true,
+    "basis_visible": false,
+    "decomposition_outcome_visible": false
+  },
+  "systemone_pass": {
+    "wire_endpoint": "/v1/systemone",
+    "question_type": "choice",
+    "state_contains_original_source": true,
+    "state_contains_normal_interpretation": true,
+    "source_is_authoritative": true,
+    "normal_interpretation_is_advisory": true,
+    "free_text_claim_ir_generation_forbidden": true,
+    "max_questions": 64
+  },
+  "bounded_surface": {
+    "max_source_spans": 3,
+    "max_nodes": 3,
+    "max_relations": 2,
+    "relation_arity": "one_or_two",
+    "scope_values": "selected_source_span_text_only",
+    "node_descriptions": "deterministic_selected_source_span_text",
+    "relation_descriptions": "deterministic_kind_and_argument_template"
+  },
+  "compiler": {
+    "deterministic": true,
+    "repairs_invalid_decisions": false,
+    "assigns_node_ids": [
+      "n1",
+      "n2",
+      "n3"
+    ],
+    "assigns_relation_ids": [
+      "r1",
+      "r2"
+    ],
+    "validates_with_existing_candidate_validator": true
+  },
+  "qualification_scope": {
+    "synthetic_sources_only": true,
+    "real_paper_text_forbidden": true,
+    "consumed_147_sample_forbidden": true,
+    "real_model_calls_forbidden": true,
+    "basis_decomposition_forbidden": true,
+    "corpus_claims_forbidden": true
+  },
+  "known_limitations": {
+    "semantic_entailment_mechanically_verified": false,
+    "construct_label_suppression_for_real_sources_qualified": false,
+    "real_pilot_authorized": false,
+    "systemone_probability_calibration_claimed": false
+  }
+}
