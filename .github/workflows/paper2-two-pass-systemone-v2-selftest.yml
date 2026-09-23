@@ -1,0 +1,44 @@
+name: paper2-two-pass-systemone-v2-selftest
+
+on:
+  pull_request:
+    paths:
+      - "research/paper2/extraction_two_pass_systemone_v2.json"
+      - "research/paper2/extraction_systemone_decision_v2.schema.json"
+      - "scripts/paper2_extraction_two_pass_systemone_v2.py"
+      - "scripts/paper2_extraction_procedure_validate.py"
+      - "scripts/paper2_claim_ir_validate.py"
+      - ".github/workflows/paper2-two-pass-systemone-v2-selftest.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "research/paper2/extraction_two_pass_systemone_v2.json"
+      - "research/paper2/extraction_systemone_decision_v2.schema.json"
+      - "scripts/paper2_extraction_two_pass_systemone_v2.py"
+      - "scripts/paper2_extraction_procedure_validate.py"
+      - "scripts/paper2_claim_ir_validate.py"
+      - ".github/workflows/paper2-two-pass-systemone-v2-selftest.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile hardened two-pass qualification
+        run: |
+          python -m py_compile scripts/paper2_extraction_procedure_validate.py
+          python -m py_compile scripts/paper2_claim_ir_validate.py
+          python -m py_compile scripts/paper2_extraction_two_pass_systemone_v2.py
+      - name: Revalidate frozen candidate and ClaimIR contracts
+        run: |
+          python scripts/paper2_extraction_procedure_validate.py --self-test
+          python scripts/paper2_claim_ir_validate.py --self-test
+      - name: Run hardened synthetic Normal to SystemOne qualification
+        run: python scripts/paper2_extraction_two_pass_systemone_v2.py --self-test

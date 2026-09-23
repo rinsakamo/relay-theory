@@ -1,0 +1,74 @@
+{
+  "schema_version": "paper2-two-pass-systemone-v2",
+  "owner_issue": 162,
+  "status": "SYNTHETIC_HARDENING_ONLY",
+  "supersedes_for_future_real_use": "paper2-two-pass-systemone-v1",
+  "claim_ir_schema": "paper2-claim-ir-v1",
+  "candidate_schema": "paper2-extraction-candidate-v1",
+  "decision_schema": "paper2-systemone-decision-v2",
+  "normal_pass": {
+    "purpose": "semantic_interpretation_only",
+    "free_text_allowed": true,
+    "claim_ir_generation_forbidden": true,
+    "basis_visible": false,
+    "decomposition_outcome_visible": false
+  },
+  "systemone_pass": {
+    "wire_endpoint": "/v1/systemone",
+    "question_type": "choice",
+    "state_contains_original_source": true,
+    "state_contains_normal_interpretation": true,
+    "source_is_authoritative": true,
+    "normal_interpretation_is_advisory": true,
+    "free_text_claim_ir_generation_forbidden": true,
+    "explicit_unresolved_choice": "__unresolved__",
+    "answer_type_required": "choice",
+    "max_questions": 64,
+    "response_model_if_present_must_match_request": true,
+    "nonzero_output_tokens_forbidden_when_reported": true,
+    "probabilities_and_confidence_are_optional_audit_metadata": true
+  },
+  "bounded_surface": {
+    "max_source_spans": 3,
+    "source_unit_policy": "presegmented_atomic_evidence_units",
+    "max_nodes": 3,
+    "max_relations": 2,
+    "relation_arity": "one_or_two_unique_arguments",
+    "node_anchor_policy": "exactly_one_anchor_span_in_node_grounding",
+    "relation_argument_anchor_policy": "distinct_arguments_require_distinct_anchor_spans",
+    "scope_values": "deterministic_source_span_references",
+    "node_descriptions": "deterministic_role_and_anchor_template",
+    "relation_descriptions": "deterministic_kind_and_argument_template"
+  },
+  "compiler": {
+    "deterministic": true,
+    "repairs_invalid_decisions": false,
+    "assigns_node_ids": [
+      "n1",
+      "n2",
+      "n3"
+    ],
+    "assigns_relation_ids": [
+      "r1",
+      "r2"
+    ],
+    "validates_with_existing_candidate_validator": true,
+    "validates_full_claim_ir_before_qualification": true
+  },
+  "qualification_scope": {
+    "synthetic_sources_only": true,
+    "real_paper_text_forbidden": true,
+    "real_147_source_text_forbidden_in_synthetic_qualification": true,
+    "real_model_calls_forbidden": true,
+    "basis_decomposition_forbidden": true,
+    "corpus_claims_forbidden": true
+  },
+  "known_limitations": {
+    "normal_pass_model_qualified": false,
+    "semantic_entailment_mechanically_verified": false,
+    "construct_label_suppression_for_real_sources_qualified": false,
+    "real_pilot_authorized": false,
+    "systemone_probability_calibration_claimed": false,
+    "real_source_segmentation_frozen": false
+  }
+}
