@@ -9,7 +9,7 @@
 
 ## Abstract
 
-Formal differences between representations do not license target-level individuation. We characterize structural eligibility by fiber invariance: an eligible feature must descend through the quotient induced by a representation-to-target assignment, while scientific warrant remains independent. We connect representation-level observations to target-level outcomes through structurally admissible test families and formulate a reusable individuation-inference audit. Cross-domain cases illustrate the framework, and machine-checked proofs verify quotient descent and family-level separation. The framework audits inferences relative to declared assignments; it neither discovers those assignments nor supplies a complete theory of evidence or numerical identity.
+Formal differences between representations do not license target-level individuation. Within an exact deterministic representation-to-target model, structural eligibility is characterized by fiber invariance: an eligible feature must descend through the quotient induced by the declared assignment, while scientific warrant remains independent. We connect representation-level observations to target-level outcomes through structurally admissible test families and formulate a reusable individuation-inference audit. Cross-domain cases illustrate the framework, and machine-checked proofs verify quotient descent and family-level separation. The broader methodological lesson is conditional: formal distinctions require a warranted route to the declared target; the framework neither discovers that assignment nor establishes unrestricted numerical identity.
 
 ## 1. Introduction
 
@@ -21,7 +21,7 @@ A familiar bibliographic example makes the problem concrete. A scholarly work ma
 r:P\to T
 \]
 
-be a record-to-work assignment. For records \(A,B\in P\),
+be a record-to-work assignment. For records \(A,B\in P\), let \(\operatorname{ID}\) denote a service-qualified record identifier. Then
 
 \[
 \operatorname{ID}(A)\neq\operatorname{ID}(B)
@@ -31,10 +31,10 @@ r(A)\neq r(B).
 
 The identifier inequality is unquestionably a difference between records. It becomes evidence for a difference between scholarly targets only if the target model and its warrant make it so. This is the ordinary entity-resolution problem in a particularly transparent setting: record multiplicity need not be entity multiplicity (Aleshin-Guendel and Steorts 2024).
 
-The converse shortcut also fails. If raw identifier values are local to different namespaces, reused, copied, or attached incorrectly, then
+The converse shortcut also fails. If unqualified identifier values are local to different namespaces, reused, copied, or attached incorrectly, write \(\operatorname{rawID}\) for the unqualified value. Then
 
 \[
-\operatorname{ID}(A)=\operatorname{ID}(B)
+\operatorname{rawID}(A)=\operatorname{rawID}(B)
 \quad\not\Rightarrow\quad
 r(A)=r(B).
 \]
@@ -62,6 +62,8 @@ The formal artifact addresses only the first layer. It makes structural dependen
 This separation motivates what we call a practical **counterfactual relevance audit**. For an identifier-like feature, ask what kind of change is being considered. A structure-preserving re-encoding should not change an inference when it preserves every representation-level relation that the inference declares evidentially relevant. By contrast, reassigning values across representations can alter evidence if the assignment itself records a scientifically grounded relation. If the conclusion changes under an assignment perturbation, the argument must explain why that assignment is target-relevant rather than merely representational.
 
 The bibliographic case makes the logic easy to see, but by itself it could be dismissed as a bookkeeping or data-integration problem. Section 3 therefore uses molecular counting as a cross-domain scientific stress test. The same distinction then returns in evidence synthesis, where reports, studies, estimates, and independent evidence units must not be conflated. The progression is deliberate: intuitive record linkage, experimental measurement, and finally literature-scale inference.
+
+Accordingly, the novelty claim is narrow. The paper does not claim target-directed representation, invariance, quotient mathematics, or practice-relative individuation as new in isolation. Its contribution is to combine these ingredients in a single feature-level audit that separates quotient descent, test-specific transfer, independent scientific warrant, and representation-preserving counterfactual checks for individuation inferences.
 
 ### 1.1 Contributions
 
@@ -374,13 +376,13 @@ The phrase relabeling invariance can hide two importantly different perturbation
 
 Let \(U\) be the value domain of an identifier-like field, and let \(\mathcal S\) denote the relations on \(U\) that the inference declares evidentially relevant, including relational encodings of any functions or metrics it uses. A re-encoding \(\pi:U\to U\) is **structure-preserving relative to \(\mathcal S\)** when it is bijective and preserves each declared relation. For a \(k\)-ary relation \(S\in\mathcal S\),
 
-The choice of \(\mathcal S\) must itself be independently motivated. For confirmatory use it should be fixed before the counterfactual comparison; if \(\mathcal S\) is learned adaptively, the learning or selection rule must be included in the audited inference. Otherwise an analyst could make an inconvenient transformation non-preserving merely by adding a relation that encodes the desired conclusion.
-
 \[
 S(u_1,\ldots,u_k)
 \quad\Longleftrightarrow\quad
 S(\pi(u_1),\ldots,\pi(u_k)).
 \]
+
+The choice of \(\mathcal S\) must itself be independently motivated. For confirmatory use it should be fixed before the counterfactual comparison; if \(\mathcal S\) is learned adaptively, the learning or selection rule must be included in the audited inference. Otherwise an analyst could make an inconvenient transformation non-preserving merely by adding a relation that encodes the desired conclusion.
 
 When an inference uses only equality classes, every bijection is a harmless renaming. When it uses sequence geometry, edit distance, neighborhood structure, order, or another relation on label values, an arbitrary bijection need not be harmless. In an error-aware UMI analysis, mapping strings to arbitrary numbers while destroying sequence distance is not a pure re-encoding of the evidential structure.
 
@@ -457,7 +459,7 @@ Nor does failure to support individuation imply that a representational distinct
 
 ### 7.1 Reports, studies, and evidence units
 
-Evidence synthesis provides a third scale at which the same distinction matters. In systematic reviews and meta-analyses, bibliographic reports are not automatically independent study or evidence units. One study can generate multiple reports, and one report can provide multiple outcomes, time points, subgroup analyses, or effect estimates. Conversely, apparently distinct reports can reuse overlapping participants or the same underlying study. Duplicate inclusion can therefore distort a synthesis when representational multiplicity is mistaken for independent evidence multiplicity (Tramèr et al. 1997; von Elm et al. 2004).
+Evidence synthesis provides a third scale at which the same distinction matters. In systematic reviews and meta-analyses, bibliographic reports are not automatically independent study or evidence units. One study can generate multiple reports, and one report can provide multiple outcomes, time points, subgroup analyses, or effect estimates. Apparently distinct reports can also derive from the same underlying study. This report-to-study case fits the present functional model directly: multiple reports may map to one study. By contrast, partially overlapping cohorts are not, in general, representable as a simple one-representation-to-one-target partition; they require an overlap, covariance, or other dependence model beyond the present \(r:P\to T\) core. Duplicate inclusion can therefore distort a synthesis when representational multiplicity is mistaken for independent evidence multiplicity (Tramèr et al. 1997; von Elm et al. 2004).
 
 The relevant implications are deliberately modest:
 
@@ -473,7 +475,7 @@ The relevant implications are deliberately modest:
 
 These are not claims that the quantities are always unequal. They deny only the automatic inference from one level of multiplicity to another.
 
-The target of individuation may be a publication, a study, a cohort, a comparison, an outcome, or an independent evidence contribution, depending on the synthesis question. The present framework does not prescribe a meta-analytic model. It requires the analyst to declare the relevant assignment between extracted representations and evidence units, make dependence assumptions explicit, and supply independent methodological warrant for that assignment.
+The target of individuation may be a publication, a study, a cohort, a comparison, an outcome, or an independent evidence contribution, depending on the synthesis question. The present framework does not prescribe a meta-analytic model. Where the relevant relation is well represented by a functional assignment—for example, reports to an underlying study—it requires the analyst to declare that assignment and supply independent methodological warrant for it. More complex dependence structures, including partial cohort overlap, should be modeled explicitly rather than forced into the present functional core.
 
 ### 7.2 From evidence units to theoretical constructs
 
@@ -537,7 +539,7 @@ The number of small theorems is not itself a novelty claim. The collection is a 
 
 A formal difference may enter an individuation inference only through a justified path from representation to target.
 
-The structural core can now be stated compactly: **representation-level evidence structurally eligible for target-level use must descend through the quotient induced by the proposed target assignment**. Within-fiber distinctions are discarded by construction; selected tests can support separation only when their observation-to-target links are structurally admissible; and neither condition manufactures the scientific warrant for accepting the model.
+The exact deterministic core can now be stated compactly: **within a declared functional representation-to-target model, representation-level evidence structurally eligible for target-level use must descend through the quotient induced by the proposed target assignment**. Within-fiber distinctions are discarded by construction; selected tests can support separation only when their observation-to-target links are structurally admissible; and neither condition manufactures the scientific warrant for accepting the model. The broader methodological lesson is weaker and more general: a formal distinction may support a target-level distinction only through an independently warranted route to the declared target.
 
 The resulting individuation-inference audit is therefore not a procedure for discovering target assignments or metaphysical individuals. It is a reusable dependency check that distinguishes structural failure, scientific underdetermination, and a scoped pass relative to an explicitly declared target model and test regime.
 

@@ -9,7 +9,7 @@
 
 ## 要旨
 
-表現間に形式的な差があるという事実だけでは、target-level の individuation は正当化されない。本稿では、structural eligibility を fiber invariance によって特徴づける。すなわち、eligible feature は representation-to-target assignment が誘導する quotient を介して descend しなければならず、その一方で scientific warrant は独立に必要である。さらに、representation-level observation を structurally admissible な test family を通じて target-level outcome に接続し、再利用可能な individuation-inference audit を定式化する。複数領域の事例によって枠組みを例示し、機械検証された証明によって quotient descent と family-level separation を確認する。本枠組みは declared assignment に相対して inference を監査するものであり、その assignment 自体を発見するものでも、evidence や numerical identity についての完全な理論を与えるものでもない。
+表現間に形式的な差があるという事実だけでは、target-level の individuation は正当化されない。exact deterministic な representation-to-target model の内部では、structural eligibility は fiber invariance によって特徴づけられる。すなわち、eligible feature は declared assignment が誘導する quotient を介して descend しなければならず、その一方で scientific warrant は独立に必要である。さらに、representation-level observation を structurally admissible な test family を通じて target-level outcome に接続し、再利用可能な individuation-inference audit を定式化する。複数領域の事例で枠組みを例示し、機械検証された証明によって quotient descent と family-level separation を確認する。より一般的な methodological lesson は条件付きであり、formal distinction を target-level distinction に用いるには、declared target への warranted route が必要である。本枠組みはその assignment 自体を発見せず、unrestricted numerical identity も確立しない。
 
 ## 1. はじめに
 
@@ -21,7 +21,7 @@
 r:P\to T
 \]
 
-を record-to-work assignment とする。二つの record \(A,B\in P\) について、
+を record-to-work assignment とする。二つの record \(A,B\in P\) について、\(\operatorname{ID}\) を service-qualified record identifier とする。このとき、
 
 \[
 \operatorname{ID}(A)\neq\operatorname{ID}(B)
@@ -31,10 +31,10 @@ r(A)\neq r(B).
 
 identifier が異なることは、record が異なることを確かに示す。しかし、それが scholarly target の差についての evidence になるのは、target model とその warrant がその関係を正当化するときだけである。これは entity resolution の問題を非常に分かりやすい形で表したものであり、record multiplicity は entity multiplicity を自動的には意味しない (Aleshin-Guendel and Steorts 2024)。
 
-逆向きの近道も成立しない。raw identifier value が異なる namespace に局所的な値であったり、再利用・複製されたり、誤って付与されたりするなら、
+逆向きの近道も成立しない。unqualified identifier value が異なる namespace に局所的な値であったり、再利用・複製されたり、誤って付与されたりするなら、その unqualified value を \(\operatorname{rawID}\) と書く。このとき、
 
 \[
-\operatorname{ID}(A)=\operatorname{ID}(B)
+\operatorname{rawID}(A)=\operatorname{rawID}(B)
 \quad\not\Rightarrow\quad
 r(A)=r(B).
 \]
@@ -62,6 +62,8 @@ formal artifact が扱うのは第一の層だけである。それは structura
 この分離から、実践的な **counterfactual relevance audit** が導かれる。identifier-like feature について、どの種類の変更を考えているのかを問う。structure-preserving re-encoding は、inference が evidentially relevant と宣言した representation-level relation をすべて保存するなら、結論を変えるべきではない。一方、representation 間で value を再割当てすることは、その assignment 自体が scientifically grounded な relation を記録しているなら evidence を変えうる。assignment perturbation によって結論が変わるなら、その assignment がなぜ単なる representational difference ではなく target-relevant なのかを説明しなければならない。
 
 bibliographic case だけなら、これは bookkeeping や data integration の話に見えるかもしれない。そこで Section 3 では molecular counting を cross-domain scientific stress test として用いる。その後、同じ区別を evidence synthesis に戻し、report、study、estimate、independent evidence unit を混同してはならないことを示す。流れは意図的である。直感的な record linkage から experimental measurement へ進み、最後に literature-scale inference へ戻る。
+
+したがって novelty claim は狭い。本稿は target-directed representation、invariance、quotient mathematics、practice-relative individuation のいずれか単独を新規性として主張しない。貢献は、それらを一つの feature-level audit に統合し、quotient descent、test-specific transfer、independent scientific warrant、representation-preserving counterfactual check を individuation inference の中で分離することである。
 
 ### 1.1 貢献
 
@@ -378,8 +380,6 @@ read-level feature が molecular individuation inference に入るためには�
 
 \(U\) を identifier-like field の value domain、\(\mathcal S\) を inference が evidentially relevant と宣言した \(U\) 上の relation の集合とし、利用する function や metric も必要なら relational encoding として含める。re-encoding \(\pi:U\to U\) が \(\mathcal S\) に相対して **structure-preserving** であるとは、\(\pi\) が bijection であり、各 declared relation を保存することをいう。\(k\)-ary relation \(S\in\mathcal S\) について、
 
-\(\mathcal S\) の選択自体も独立に motivate されなければならない。confirmatory use では counterfactual comparison より前に固定し、adaptive に \(\mathcal S\) を学習するなら learning / selection rule を audited inference に含める。そうでなければ、望ましくない transformation を non-preserving にするためだけに、desired conclusion を encode する relation を後から追加できてしまう。
-
 \[
 S(u_1,\ldots,u_k)
 \quad\Longleftrightarrow\quad
@@ -387,6 +387,8 @@ S(\pi(u_1),\ldots,\pi(u_k))
 \]
 
 が成立する。
+
+\(\mathcal S\) の選択自体も独立に motivate されなければならない。confirmatory use では counterfactual comparison より前に固定し、adaptive に \(\mathcal S\) を学習するなら learning / selection rule を audited inference に含める。そうでなければ、望ましくない transformation を non-preserving にするためだけに、desired conclusion を encode する relation を後から追加できてしまう。
 
 inference が equality class だけを利用するなら、任意の bijection は harmless renaming である。しかし sequence geometry、edit distance、neighborhood structure、order その他の relation を利用するなら、arbitrary bijection は無害とは限らない。error-aware UMI analysis で sequence distance を破壊しながら string を arbitrary number に写す変換は、evidential structure の pure re-encoding ではない。
 
@@ -463,7 +465,7 @@ invariance 自体を新規な philosophical criterion として主張するわ�
 
 ### 7.1 Report、study、evidence unit
 
-evidence synthesis は、同じ区別が重要になる第三の scale を与える。systematic review や meta-analysis では、bibliographic report がそのまま independent study や independent evidence unit であるとは限らない。一つの study から複数の report が生じることがあり、一つの report が複数の outcome、time point、subgroup analysis、effect estimate を含むこともある。逆に、見かけ上は異なる report が overlapping participant や同じ underlying study を再利用している場合もある。representation multiplicity を independent evidence multiplicity と取り違えて duplicate inclusion を行えば、synthesis を歪めうる (Tramèr et al. 1997; von Elm et al. 2004)。
+evidence synthesis は、同じ区別が重要になる第三の scale を与える。systematic review や meta-analysis では、bibliographic report がそのまま independent study や independent evidence unit であるとは限らない。一つの study から複数の report が生じることがあり、一つの report が複数の outcome、time point、subgroup analysis、effect estimate を含むこともある。見かけ上は異なる report が同じ underlying study に由来することもある。この report-to-study case は present functional model に直接収まり、複数の report が一つの study に map しうる。これに対して partially overlapping cohort は一般には単純な one-representation-to-one-target partition として表せず、present \(r:P\to T\) core の外側にある overlap、covariance、その他の dependence model を必要とする。representation multiplicity を independent evidence multiplicity と取り違えて duplicate inclusion を行えば、synthesis を歪めうる (Tramèr et al. 1997; von Elm et al. 2004)。
 
 ここで必要な含意は限定的である。
 
@@ -479,7 +481,7 @@ evidence synthesis は、同じ区別が重要になる第三の scale を与え
 
 これは両者が常に異なるという主張ではない。一つの level の multiplicity から別の level の multiplicity を自動的に推論することを否定しているだけである。
 
-individuation の target は、synthesis question に応じて publication、study、cohort、comparison、outcome、independent evidence contribution のいずれにもなりうる。本枠組みは特定の meta-analytic model を規定しない。要求するのは、extracted representation と evidence unit の間の assignment を宣言し、dependence assumption を明示し、その assignment に独立した methodological warrant を与えることである。
+individuation の target は、synthesis question に応じて publication、study、cohort、comparison、outcome、independent evidence contribution のいずれにもなりうる。本枠組みは特定の meta-analytic model を規定しない。relevant relation が functional assignment で適切に表せる場合、たとえば report から underlying study への対応では、その assignment を宣言し、独立した methodological warrant を与えることを要求する。partial cohort overlap のようなより複雑な dependence structure は、present functional core に無理に押し込まず明示的に model すべきである。
 
 ### 7.2 Evidence unit から theoretical construct へ
 
@@ -543,7 +545,7 @@ blind review copy では machine-checked claim を neutral label にまとめる
 
 formal difference が individuation inference に入るためには、representation から target への justified path が必要である。
 
-structural core は簡潔に述べられる。**target-level で利用するために structurally eligible な representation-level evidence は、proposed target assignment が誘導する quotient を介して descend しなければならない。** within-fiber distinction は construction により捨てられる。selected test が separation を支持できるのは、その observation-to-target link が structurally admissible な場合に限られる。そして、どちらの condition も model を受け入れるための scientific warrant を作り出しはしない。
+exact deterministic core は簡潔に述べられる。**declared functional representation-to-target model の内部では、target-level で利用するために structurally eligible な representation-level evidence は、proposed target assignment が誘導する quotient を介して descend しなければならない。** within-fiber distinction は construction により捨てられる。selected test が separation を支持できるのは、その observation-to-target link が structurally admissible な場合に限られる。そして、どちらの condition も model を受け入れるための scientific warrant を作り出しはしない。より一般的な methodological lesson はこれより弱く、formal distinction を target-level distinction の支持に使うには、declared target への independently warranted route が必要だということである。
 
 したがって individuation-inference audit は、target assignment や metaphysical individual を発見する procedure ではない。それは、explicitly declared target model と test regime に相対して、structural failure、scientific underdetermination、scoped pass を区別する reusable dependency check である。
 

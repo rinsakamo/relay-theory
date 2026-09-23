@@ -1,3 +1,12 @@
+## Post-review claim-discipline revision — 2026-09-23
+
+A fresh reviewer pass after the cross-domain reframing identified four scope/precision issues and one editorial-order defect. The manuscript now:
+- scopes quotient descent explicitly to the exact deterministic functional core in the Abstract and Conclusion, while stating the broader anti-smuggling lesson separately;
+- distinguishes service-qualified record identifiers from unqualified raw identifier values (rawID);
+- states the narrow novelty claim in the Introduction rather than leaving it implicit in Related Work;
+- limits the direct meta-analysis mapping to functional cases such as multiple reports from one study, and marks partially overlapping cohorts as requiring a richer dependence model beyond r:P->T;
+- restores the formula-before-commentary order in the counterfactual structure-preservation definition.
+
 ## Cross-domain narrative revision — 2026-09-23
 
 Paper 1 was reorganized around a three-stage explanatory progression:

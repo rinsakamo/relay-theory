@@ -14,7 +14,7 @@
 
 ## Journal format
 
-- [x] Abstract <=100 words (current review abstract: 89 words).
+- [x] Abstract <=100 words (current review abstract: 99 words).
 - [x] Article length comfortably below the current Article word limit.
 - [x] 12pt review text.
 - [x] Double-spaced body.
