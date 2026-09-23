@@ -14,7 +14,7 @@
 
 ## Journal format
 
-- [x] Abstract <=100 words (current review abstract: 88 words).
+- [x] Abstract <=100 words (current review abstract: 89 words).
 - [x] Article length comfortably below the current Article word limit.
 - [x] 12pt review text.
 - [x] Double-spaced body.
@@ -22,7 +22,8 @@
 - [x] Chicago author-date bibliography style selected.
 - [x] Bibliography source includes full `https://doi.org/...` URLs for all 13 current references with DOIs; run #11 rebuilt the exact review PDF and the rendered references were visually verified.
 - [x] Rebuild the **exact current anonymized review source** after DOI completion: Paper 1 Review CI run #11 / exact head `1ee8022a7fc740ec8e11c27b7e59aa489373ddbb` generated an 18-page PDF and passed all blind-source, bibliography, and final LaTeX audits.
-- [x] Manually visually inspect all 18 pages of the DOI-complete exact CI artifact PDF: run #11 artifact ID `10702765379`, rendered at 140 dpi on 2026-09-23; no clipping, overlap, broken glyphs, missing sections, or reference-layout defects found.
+- [x] Manually visually inspect all 18 pages of the DOI-complete exact CI artifact PDF: run #11 artifact ID `10702765379`, rendered at 140 dpi on 2026-09-23; no clipping, overlap, broken glyphs, missing sections, or reference-layout defects found. This validation is historical after the later cross-domain narrative revision.
+- [ ] Rebuild and visually inspect the exact current anonymized review source after the cross-domain narrative revision.
 
 ## Claims and novelty
 
@@ -69,4 +70,4 @@
 
 ## Decision gate
 
-**Current state:** the DOI-complete blind review copy has passed exact-source CI and page-by-page visual inspection, and the initial artifact policy is fixed. Remaining pre-upload gates require author-supplied facts / portal interaction: funding and declarations statements, non-blind author metadata, confirmation of publication/concurrent-review eligibility, and final Editorial Manager PDF approval.
+**Current state:** the manuscript has been revised after the previously validated blind review copy. The earlier exact-source CI and visual inspection remain historical evidence only; the exact current review source must be rebuilt and visually inspected before submission. Author-supplied funding/declarations, non-blind metadata, publication/concurrent-review eligibility, and final Editorial Manager PDF approval also remain required.

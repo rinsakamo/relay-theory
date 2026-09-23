@@ -5,45 +5,75 @@
 > **形式的境界:** target domain と representation-to-target assignment はモデル入力である。structural factorization 自体は scientific warrant を与えない。
 
 # 形式的な差は、いつ個体化推論に入ることができるのか？
-## Target Factorization、Restricted Tests、そして Unique Molecular Identifier (UMI) の事例
+## Target Factorization、Restricted Tests、そして Cross-Domain Audits
 
 ## 要旨
 
-表現間の形式的な差は、それだけでは target-level individuation を正当化しない。本稿は structural eligibility を fiber invariance により特徴づける。feature は representation-to-target assignment が誘導する quotient を介して descend しなければならないが、scientific warrant は独立に必要である。representation-level observation は structurally admissible な test family を通じて target-level outcome に接続され、再利用可能な individuation-inference audit として整理される。UMI case は read ID、latent molecular tag、noisy observation を区別し、database-record microcase は同じ構造が別領域にも現れることを示す。Lean は quotient descent と family-level separation を検査する。本枠組みは assignment に相対して inference を監査するが、その assignment 自体を発見せず、証拠一般や numerical identity の完全な理論も与えない。
+表現間に形式的な差があるという事実だけでは、target-level の individuation は正当化されない。本稿では、structural eligibility を fiber invariance によって特徴づける。すなわち、eligible feature は representation-to-target assignment が誘導する quotient を介して descend しなければならず、その一方で scientific warrant は独立に必要である。さらに、representation-level observation を structurally admissible な test family を通じて target-level outcome に接続し、再利用可能な individuation-inference audit を定式化する。複数領域の事例によって枠組みを例示し、機械検証された証明によって quotient descent と family-level separation を確認する。本枠組みは declared assignment に相対して inference を監査するものであり、その assignment 自体を発見するものでも、evidence や numerical identity についての完全な理論を与えるものでもない。
 
 ## 1. はじめに
 
-形式的表現には、それが支える target-level claim よりも多くの区別が含まれることがある。二つの変数は異なる名前を持ち、二つの record は異なる database identifier を持ち、二つの sequencing read は異なる file-level identifier を持ち、二つの constructor は形式的に不等でありうる。しかし、その差が二つの異なる target-level individual を追跡しているとは限らない。
+形式的な representation は、それを用いて行う target-level の主張より多くの区別を含むことがある。異なる変数名、database record、file-level identifier、label、constructor は、形式的には区別できても、その差が distinct target-level individual を追跡しているとは限らない。
 
-問題は、そのような representation-level structure が無用だということではない。それは computation、bookkeeping、locality、provenance、model construction に不可欠な場合がある。問題は、その構造上の差が individuation inference の前提として使われるときに生じる。
+この問題は、身近な論文データベースを考えると直感的に分かる。一つの scholarly work が、OpenAlex、Crossref、PubMed などのサービス上で別々の bibliographic record として表現されることがある。\(P\) を bibliographic record の集合、\(T\) を宣言された scholarly work の target domain とし、
 
-本稿が問うのは、意図的に狭い次の問いである。
+\[
+r:P\to T
+\]
 
-> **表現内部の形式的な差は、いつ、表現対象を operationally distinct と扱う推論に入ることができるのか？**
+を record-to-work assignment とする。二つの record \(A,B\in P\) について、
 
-ここでの答えには、混同すべきでない二つの層がある。
+\[
+\operatorname{ID}(A)\neq\operatorname{ID}(B)
+\quad\not\Rightarrow\quad
+r(A)\neq r(B).
+\]
 
-第一は **structural condition** である。representation-level feature は、宣言された target assignment を介して factorize しなければならない。あるいは representation-level observation が、宣言された test の下で target-level response と一致しなければならない。そのような factorization がなければ、形式的な差は表現上の差にとどまる。
+identifier が異なることは、record が異なることを確かに示す。しかし、それが scholarly target の差についての evidence になるのは、target model とその warrant がその関係を正当化するときだけである。これは entity resolution の問題を非常に分かりやすい形で表したものであり、record multiplicity は entity multiplicity を自動的には意味しない (Aleshin-Guendel and Steorts 2024)。
 
-第二は **scientific-warrant condition** である。factorization を式として書いたことは、それが真であり、信頼でき、証拠として十分であることを意味しない。experiment、causal process、measurement、calibration、semantic practice が、その factorization を target relation の妥当なモデルとして扱うことを独立に正当化しなければならない。
+逆向きの近道も成立しない。raw identifier value が異なる namespace に局所的な値であったり、再利用・複製されたり、誤って付与されたりするなら、
 
-formal artifact が扱うのは第一層だけである。構造依存関係を監査可能にするが、第二層を作り出すものではない。
+\[
+\operatorname{ID}(A)=\operatorname{ID}(B)
+\quad\not\Rightarrow\quad
+r(A)=r(B).
+\]
 
-この分離から、本稿で **counterfactual relevance audit** と呼ぶ実用的な分析が得られる。identifier-like feature について、まずどの種類の変更を考えているのかを問う。inference が evidentially relevant と宣言した representation-level relation をすべて保存する structure-preserving re-encoding なら、結論は変わるべきではない。一方、representation 間で value assignment を入れ替える操作は、その assignment 自体が科学的に ground された関係を記録しているなら、証拠を変化させうる。assignment perturbation によって結論が変わるなら、その assignment が単なる representational detail ではなく target-relevant である理由を説明しなければならない。
+database が外部から付与した metadata も、自動的に target property になるわけではない。topic label、category、その他の externally assigned tag は、同じ work の record 間で異なることもあれば、異なる work の record 間で一致することもある。そのような field が target-level evidence になるには、declared target との関係が独立に正当化されなければならない。
 
-本稿では unique molecular identifier (UMI) を用いてこの点を示す。software read identifier と molecular tag は、どちらも string として表現できる。しかし evidential role は異なる。一方は bookkeeping metadata であり、他方は downstream read と pre-amplification template molecule を結ぶ実験的生成過程に参加しうる。UMI の事例は exact formal model の限界も示す。observed UMI string には error が入りうるため、experimentally assigned tag と observed read-level tag を区別しなければならない。
+この bibliographic example は target choice の重要性も示す。同じ preprint と journal publication を、ある counting question では一つの research work としてまとめ、別の question では異なる publication version として扱うことができる。したがって record multiplicity は work multiplicity を決定せず、publication-version multiplicity も research-work multiplicity を決定しない。identifier や label を解釈する前に、何を target として individuate するのかを宣言する必要がある。
+
+二つの bibliographic record は形式的に異なっていても、それだけで二つの異なる論文を表すとは限らない。同様に、二つの theoretical label が異なっていても、それだけで二つの異なる measured capacity が存在することは確立されない。
+
+問題は representation-level structure が無用だということではない。それは computation、bookkeeping、locality、provenance、search、model construction に不可欠かもしれない。問題が生じるのは、その structure 内の差が individuation inference の premise として使われるときである。
+
+本稿は、意図的に狭い問いを扱う。
+
+> **representation 内の formal difference は、どのような場合に、represented target を operationally distinct と扱う inference に入ることができるのか。**
+
+本稿の答えには、混同すべきでない二つの層がある。
+
+第一は **structural condition** である。representation-level feature は declared target assignment を介して factor しなければならない。あるいは representation-level observation が、declared test のもとで target-level response と一致しなければならない。そのような factorization がなければ、その formal difference は representation 内の差にとどまる。
+
+第二は **scientific-warrant condition** である。factorization を書けること自体は、それが真であり、信頼でき、evidentially adequate であることを意味しない。experimental、causal、measurement、calibration、semantic practice が、その factorization を target relation の妥当な model として扱うことを独立に正当化しなければならない。
+
+formal artifact が扱うのは第一の層だけである。それは structural dependency を監査可能にするが、第二の層を作り出すものではない。
+
+この分離から、実践的な **counterfactual relevance audit** が導かれる。identifier-like feature について、どの種類の変更を考えているのかを問う。structure-preserving re-encoding は、inference が evidentially relevant と宣言した representation-level relation をすべて保存するなら、結論を変えるべきではない。一方、representation 間で value を再割当てすることは、その assignment 自体が scientifically grounded な relation を記録しているなら evidence を変えうる。assignment perturbation によって結論が変わるなら、その assignment がなぜ単なる representational difference ではなく target-relevant なのかを説明しなければならない。
+
+bibliographic case だけなら、これは bookkeeping や data integration の話に見えるかもしれない。そこで Section 3 では molecular counting を cross-domain scientific stress test として用いる。その後、同じ区別を evidence synthesis に戻し、report、study、estimate、independent evidence unit を混同してはならないことを示す。流れは意図的である。直感的な record linkage から experimental measurement へ進み、最後に literature-scale inference へ戻る。
 
 ### 1.1 貢献
 
-本稿の貢献は四つに限定される。
+本稿の貢献は、限定的に四点である。
 
-1. **Structural admissibility の quotient characterization.** representation-level feature が target-level use に structurally eligible であるためには、proposed representation-to-target map の各 fiber 上で一定でなければならない。これは、同じ target に割り当てられた representation を同一視する quotient を介して descend することと同値である。
+1. **structural admissibility の quotient characterization。** representation-level feature が target-level で structural に利用可能であるためには、proposed representation-to-target map の各 fiber 上で constant でなければならない。同値に、同じ target に assignment された representation を同一視する quotient へ descend しなければならない。
 
-2. **Test-family admissibility.** representation-level observation と target-level response を一つの inference chain に置く。selected family の全 test に declared target-response factorization を要求することは、追加の witness-selection assumption なしに existential family-level separation を license する conservative sufficient condition である。
+2. **test-family admissibility。** representation-level observation と target-level response を一つの inference chain に置く。selected family 内の全 test が declared target-response factorization を持つことを要求すれば、追加の witness-selection assumption なしに、その family による existential separation を license するための conservative sufficient condition が得られる。
 
-3. **再利用可能な individuation-inference audit.** within-fiber leakage、observation-to-target bridging、independent warrant、structure-preserving re-encoding、assignment sensitivity、regime overreach を一つの protocol として監査する。
+3. **再利用可能な individuation-inference audit。** within-fiber leakage、observation-to-target bridge、independent warrant、structure-preserving re-encoding、assignment sensitivity、regime overreach を検査する protocol として structural condition をまとめる。
 
-4. **Cross-domain case を伴う machine-checked dependency analysis.** Lean は quotient descent と family-level separation を検査する。主たる UMI case と短い database-record microcase は、同じ failure pattern が異なる領域に現れることを示す。
+4. **machine-checked dependency analysis と cross-domain case。** 機械検証された証明により quotient descent と family-level separation を確認する。bibliographic record を motivating case、molecular counting を cross-domain scientific stress test、evidence synthesis を study-level / claim-level analysis へ拡張する事例として用いる。
 
 ## 2. 形式的設定
 
@@ -248,23 +278,23 @@ r(a)\neq r(b)
 
 audit の disposition は三つに整理できる。quotient / factorization condition の違反は **structural failure**。構造的には coherent でも independent warrant が足りなければ **scientifically underdetermined**。両層を通過した場合は **scoped pass** であり、declared target model と regime に相対して license されるだけで、unrestricted numerical identity を確立するわけではない。
 
-## 3. 科学的事例: UMI による分子カウント
+## 3. Scientific Stress Test: Unique Molecular Identifier による分子カウント
 
-### 3.1 Representation multiplicity は molecule multiplicity ではない
+### 3.1 多数の read が多数の source molecule を意味しない理由
 
-high-throughput sequencing では、一つの template molecule から polymerase chain reaction (PCR) amplification により複数の downstream read record が生成されうる。したがって、
+**unique molecular identifier (UMI)** とは、amplification より前に導入される短い sequence tag であり、downstream observation がどの template molecule に由来するかについての情報を保持できるようにするためのものである。UMI は molecule が本来的に持つ identity ではない。protocol によって生成・付与される tag であり、その evidential value は assignment、propagation、observation、modeling の仕方に依存する。Kivioja et al. (2012) は、この種の tag を absolute molecule counting に利用できることを示した。
+
+**polymerase chain reaction (PCR; ポリメラーゼ連鎖反応)** は、一つの template molecule から多数の copy を生成しうる amplification process である。それらの copy から複数の sequencing read record が生じうる。したがって、
 
 \[
 100\ \text{read records}
 \not\Rightarrow
-100\ \text{source molecules}
+100\ \text{source molecules}.
 \]
 
-である。
+各 read に unique software identifier を付ければ100個の record はすべて区別できるが、それだけでは100個の pre-amplification molecule を推論する独立の理由にはならない。逆に UMI が等しいことも target identity の絶対的保証ではない。有限の tag space では、異なる template が同じ tag value を受け取る collision が起こりうるからである。
 
-各 read に一意な software identifier を付ければ100個の record をすべて区別できる。しかし、それだけでは100個の pre-amplification molecule を推論する独立の理由にはならない。
-
-Kivioja et al. (2012) は amplification 前に molecule を label する unique molecular identifier を用い、absolute molecule counting を行う方法を導入した。Smith, Heger, and Sudbery (2017) は、得られた UMI string にも error-aware analysis が必要な理由を示した。UMI sequence 自体に sequencing error が入りうるため、token equality を素朴に扱うと PCR duplicate を誤って識別しうる。
+Smith, Heger, and Sudbery (2017) が示すように、observed UMI string には sequencing error も入りうるため、error-aware analysis が必要になる。したがってこの事例では、**record identity、protocol-generated tag identity、source-molecule identity** という三つの概念を明確に分離する必要がある。
 
 ### 3.2 Target は string ではなく tagged template である
 
@@ -338,11 +368,7 @@ read-level feature が molecular individuation inference に入るためには�
 
 このため、この事例は哲学的にも有用である。二つの field がともに identifier であり、ともに string であり、ともに record を区別できたとしても、target を追跡するよう設計された causal and measurement history に参加するのはそのうち一方だけかもしれない。
 
-## 4. Cross-Domain Microcase: Database Entity Resolution
 
-entity resolution は、しばしば unique entity identifier が存在しない状況で duplicate record を link し、common entity を表す record partition を推定する問題として扱われる (Aleshin-Guendel and Steorts 2024)。したがって同じ構造は molecular counting の外にも現れる。異なる row ID を持つ二つの database row が、同じ customer を指すと proposed されているとする。\(r\) が両 row を同じ customer に写すなら、row-ID inequality は一つの fiber 内で変化するため quotient descent に失敗し、それだけでは two-customer inference を支えられない。
-
-別の field が evidentially relevant になるには追加の semantics が必要である。separately governed な upstream source registry によって維持された customer identifier は customer target を介して factorize しうる一方、copied email address、display name、locally generated row key はそうとは限らない。同じ entity-resolution procedure が生成した master identifier は、その procedure 自身の clustering を独立には warrant できない。duplicate、shared value、stale assignment、entry error は必要な dependency を破壊しうる。ここで特定の entity-resolution system を endorsement する意図はない。非生物学的 domain でも、どの distinction が target quotient を生き残るか、どの observation link が warrant されるか、どれが単なる representational bookkeeping か、という同じ audit question が現れることを示すための microcase である。
 
 ## 4. Counterfactual Relevance Audit
 
@@ -407,7 +433,7 @@ test layer も同じ構造に接続される。formal observation-factorization 
 
 Nguyen の比較は、model、その representational use、target system について license される claim の水準で自然に理解できる。本稿の問題は、**individuation inference の内部**で、representing apparatus の特定の差が premise として使われるときに生じる。二つの representation が同じ target について reasoning するために使われていたとしても、その内部のすべての formal difference が target についての evidence になるわけではない。
 
-同じ一人の person に関する二つの database record が、それぞれ異なる row ID を持つとする。その row-ID inequality は representational vehicle の実在する差である。target-directed account は、両 record が同じ person について claim を行うために使われることを問題なく認められる。本稿の局所的な問いは別である。その row-ID inequality 自体を、「二人の person がいる」という claim の evidence として使ってよいのか。target-factorization test の答えは、その差が person difference を追跡する理由を与える scientifically / semantically justified target property がない限り、否である。
+同じ scholarly work を記述することが分かっている二つの bibliographic record が、それぞれ異なる service-local identifier を持つとする。その identifier inequality は representational vehicle の実在する差である。target-directed account は、両 record が同じ work について claim を行うために使われることを問題なく認められる。本稿の局所的な問いは別である。その identifier inequality 自体を、「二つの scholarly work がある」という claim の evidence として使ってよいのか。target-factorization test の答えは、その差が work-level difference を追跡する理由を与える scientifically / semantically justified target property がない限り、否である。
 
 同じ区別は UMI workflow にも現れる。software read ID と observed UMI field は、どちらも source molecule について claim を行う representation の内部にある。しかし両者が target-directed representational practice に属しているという事実だけでは、各 feature difference が molecular counting に evidentially relevant かどうかは決まらない。feature generation から target property への、より局所的な dependency account が必要である。
 
@@ -433,17 +459,53 @@ invariance 自体を新規な philosophical criterion として主張するわ�
 
 また、individuation を支えない representational distinction が不要だということにもならない。surplus structure は別の representational task に有用または必要でありうる (Nguyen, Teh, and Wells 2020)。
 
-## 7. Outlook: Construct-Level Comparison
+## 7. Outlook: Evidence Synthesis と Construct-Level Comparison
 
-UMI の事例は、より広い methodological question を示唆する。ただしこの extension は prospective であり、現在の formal model によって確立された result ではない。別の研究として、同じ anti-smuggling discipline を measured capacity を記述する theoretical construct に適用できるかを問える。
+### 7.1 Report、study、evidence unit
 
-\(\sigma(c)\) は、construct label を suppress し、その claim を normalize した後に残る measurement role、test、criterion、temporal relation、resource condition その他の dependency を表す **operational structural signature** の shorthand としてのみ用いる。この signature は一意でも完全でもあると仮定せず、その構成要素は construct label や source identity / provenance を復元する前に declared measurement question によって固定されなければならない。
+evidence synthesis は、同じ区別が重要になる第三の scale を与える。systematic review や meta-analysis では、bibliographic report がそのまま independent study や independent evidence unit であるとは限らない。一つの study から複数の report が生じることがあり、一つの report が複数の outcome、time point、subgroup analysis、effect estimate を含むこともある。逆に、見かけ上は異なる report が overlapping participant や同じ underlying study を再利用している場合もある。representation multiplicity を independent evidence multiplicity と取り違えて duplicate inclusion を行えば、synthesis を歪めうる (Tramèr et al. 1997; von Elm et al. 2004)。
 
-この procedure の下では、異なる construct name だけでは distinct measured capacity の evidence にならない。surviving signature difference は candidate discriminating structure だが ontological / psychological independence の十分条件ではなく、matching signature も synonymy や explanatory interchangeability を意味しない。
+ここで必要な含意は限定的である。
 
-> **Nominal plurality is not evidential plurality. 区別されたものの名前だけではなく、その区別を warrant する discriminating structure を保存せよ。**
+\[
+\text{report count}
+\not\Rightarrow
+\text{study count},
+\qquad
+\text{effect-estimate count}
+\not\Rightarrow
+\text{independent-evidence count}.
+\]
 
-この proposal の検証には、別の corpus、normalization protocol、common measurement basis、empirical analysis が必要である。本稿が与えるのは、その比較が満たすべき evidential discipline だけである。
+これは両者が常に異なるという主張ではない。一つの level の multiplicity から別の level の multiplicity を自動的に推論することを否定しているだけである。
+
+individuation の target は、synthesis question に応じて publication、study、cohort、comparison、outcome、independent evidence contribution のいずれにもなりうる。本枠組みは特定の meta-analytic model を規定しない。要求するのは、extracted representation と evidence unit の間の assignment を宣言し、dependence assumption を明示し、その assignment に独立した methodological warrant を与えることである。
+
+### 7.2 Evidence unit から theoretical construct へ
+
+bibliographic record、molecular measurement、evidence synthesis という流れは、さらに広い methodological question を動機づける。ただし、ここから先は prospective extension であり、present formal model が確立した結果ではない。別の corpus study では、paper を claim に分解し、claim を measured capacity に関する evidence として比較するときにも、同じ anti-smuggling discipline が適用できるかを検討できる。
+
+\(\sigma(c)\) は、ここでは *operational structural signature* の shorthand としてのみ用いる。すなわち construct label を抑制し、関連 claim を normalize した後に残る measurement role、test、criterion、temporal relation、resource condition、その他の dependency である。この signature は unique とも complete とも仮定しない。また、その component は construct label や source identity / provenance を復元する前に、declared measurement question によって固定されなければならない。
+
+この scale では、bibliographic identity、study/evidence identity、claim identity、capacity identity はそれぞれ異なる individuation relation であり、一つに潰してはならない。一つの paper が複数の operational claim を含むこともあり、複数の paper が materially the same operational structure に normalize される claim を表すこともありうる。したがって、
+
+\[
+\text{paper count}
+\not\Rightarrow
+\text{claim count},
+\qquad
+\text{claim-label count}
+\not\Rightarrow
+\text{capacity count}.
+\]
+
+ここでも矢印が否定しているのは automatic inference であり、すべての case で equality や inequality を主張しているわけではない。
+
+このような procedure のもとでは、異なる construct name だけでは異なる measured capacity の evidence にならない。surviving signature difference は candidate discriminating structure であって、ontological または psychological independence の sufficient evidence ではない。逆に matching signature も synonymy や explanatory interchangeability を意味しない。
+
+> **Nominal plurality is not evidential plurality. 区別されたものの名前ではなく、その区別を warrant する discriminating structure を保存せよ。**
+
+この proposal の検証には、別の corpus、normalization protocol、common measurement basis、empirical analysis が必要である。本稿が提供するのは、そのような比較が満たすべき evidential discipline だけである。
 
 ## 8. 射程と限界
 
@@ -479,15 +541,17 @@ blind review copy では machine-checked claim を neutral label にまとめる
 
 ## 10. 結論
 
-形式的な差が individuation inference に入るためには、representation から target への justified path を経由しなければならない。
+formal difference が individuation inference に入るためには、representation から target への justified path が必要である。
 
-structural core は簡潔に述べられる。**target-level use に structurally eligible な representation-level evidence は、proposed target assignment が誘導する quotient を介して descend しなければならない。** within-fiber distinction はその構成上捨てられ、selected test が separation を支えられるのは、その observation-to-target link が structurally admissible な場合だけである。そして、どちらの条件も model を受け入れる scientific warrant を作り出さない。
+structural core は簡潔に述べられる。**target-level で利用するために structurally eligible な representation-level evidence は、proposed target assignment が誘導する quotient を介して descend しなければならない。** within-fiber distinction は construction により捨てられる。selected test が separation を支持できるのは、その observation-to-target link が structurally admissible な場合に限られる。そして、どちらの condition も model を受け入れるための scientific warrant を作り出しはしない。
 
-したがって individuation-inference audit は target assignment や metaphysical individual を発見する procedure ではない。これは、structural failure、scientific underdetermination、declared target model と test regime に相対した scoped pass を区別する再利用可能な dependency check である。
+したがって individuation-inference audit は、target assignment や metaphysical individual を発見する procedure ではない。それは、explicitly declared target model と test regime に相対して、structural failure、scientific underdetermination、scoped pass を区別する reusable dependency check である。
 
-UMI-based molecular counting が主たる scientific case を与え、database-record microcase は同じ audit structure が barcode biology に固有ではないことを示す。どちらの domain でも identifierhood 自体には evidential force はない。重要なのは、その difference が target quotient を生き残り、target-level claim への independently warranted route を持つかどうかである。
+三つの事例は異なる役割を持つ。bibliographic record は、record identity と work identity が同じではないという問題を直感的に示す。molecular counting は、同じ dependency problem が experimental measurement にも残ることを示し、read identity、tag identity、source-molecule identity を分離する必要を明らかにする。evidence synthesis は、この audit を広く適用可能な methodological setting へ戻し、report、study、estimate、independent evidence unit が一致しない場合を扱う。最後に construct-level outlook が、同じ discipline を paper から claim、さらに measured capacity へ prospective に延長する。
 
-> **individuation claim が formal difference に依存するなら、その difference が target quotient を生き残ることを要求し、observation-to-target bridge と independent warrant を明示し、結論を declared test regime の範囲内に保て。**
+これらすべての case で、identifierhood、labelhood、multiplicity それ自体には evidential force はない。重要なのは、relevant difference が target quotient を survive し、target-level claim への independently warranted route を持つかどうかである。
+
+> **individuation claim が formal difference に依存するなら、その difference が target quotient を survive することを要求し、observation-to-target bridge とその independent warrant を明示し、結論を declared test regime の内部に保て。**
 
 ## 参考文献
 
@@ -524,3 +588,7 @@ Smith, Tom, Andreas Heger, and Ian Sudbery. 2017. "UMI-tools: Modeling Sequencin
 Suárez, Mauricio. 2004. "An Inferential Conception of Scientific Representation." *Philosophy of Science* 71(5): 767–779. DOI: 10.1086/421415.
 
 Waters, C. Kenneth. 2018. "Ask Not 'What Is an Individual?'" In *Individuation, Process, and Scientific Practices*, 91–113. Oxford University Press. DOI: 10.1093/oso/9780190636814.003.0005.
+
+Tramèr, Martin R., D. John M. Reynolds, R. Andrew Moore, and Henry J. McQuay. 1997. "Impact of Covert Duplicate Publication on Meta-analysis: A Case Study." *BMJ* 315(7109): 635–640. DOI: 10.1136/bmj.315.7109.635.
+
+von Elm, Erik, Greta Poglia, Bernhard Walder, and Martin R. Tramèr. 2004. "Different Patterns of Duplicate Publication: An Analysis of Articles Used in Systematic Reviews." *JAMA* 291(8): 974–980. DOI: 10.1001/jama.291.8.974.

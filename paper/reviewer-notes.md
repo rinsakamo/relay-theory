@@ -1,3 +1,13 @@
+## Cross-domain narrative revision — 2026-09-23
+
+Paper 1 was reorganized around a three-stage explanatory progression:
+
+1. **Bibliographic records** provide the intuitive motivating case: record identifiers and externally assigned metadata do not automatically determine scholarly-work identity.
+2. **Molecular counting with unique molecular identifiers (UMIs)** is retained as a removable cross-domain scientific stress test. UMI and polymerase chain reaction (PCR) are expanded and explained at first use; the case now explicitly separates record identity, protocol-generated tag identity, and source-molecule identity.
+3. **Evidence synthesis / meta-analysis** returns the audit to a broadly applicable methodological setting: report count does not determine study count, and effect-estimate count does not determine independent-evidence count. This supplies the methodological bridge to a downstream corpus study of paper, claim, and capacity individuation.
+
+The title and abstract were generalized so that no narrow domain term carries the paper's framing. The former standalone generic database-entity-resolution microcase was removed as redundant after promotion of the bibliographic example into the Introduction. The formal core and machine-checked result labels are unchanged.
+
 ## Final terminology / grammar pass — 2026-09-23
 
 The submission-facing English manuscript received a final academic copy-edit. The pass standardizes terminology around target factorization, scientific warrant, test-specific observation factorization, and counterfactual relevance; removes several awkward or potentially overstrong phrasings; and adds the final construct-comparison safeguard:

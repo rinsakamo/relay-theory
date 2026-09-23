@@ -15,7 +15,7 @@
 \usepackage[hidelinks]{hyperref}
 
 \title{When May a Formal Difference Enter an Individuation Inference?\\
-\large Target Factorization, Restricted Tests, and a Unique Molecular Identifier Case}
+\large Target Factorization, Restricted Tests, and Cross-Domain Audits}
 \author{Anonymous working draft}
 \date{}
 
@@ -27,14 +27,38 @@
 
 \begin{abstract}
 
-Formal differences between representations do not license target-level individuation. We characterize structural eligibility by fiber invariance: eligible features must descend through the quotient induced by a representation-to-target assignment, while scientific warrant remains independent. We connect observations to target-level outcomes through structurally admissible test families and state a reusable individuation-inference audit. A UMI case distinguishes read IDs, latent molecular tags, and noisy observations; a database-record microcase shows the same structure elsewhere. Lean checks quotient descent and family-level separation. The framework audits inferences relative to assignments; it neither discovers those assignments nor supplies a complete theory of evidence or numerical identity.
+Formal differences between representations do not license target-level individuation. We characterize structural eligibility by fiber invariance: an eligible feature must descend through the quotient induced by a representation-to-target assignment, while scientific warrant remains independent. We connect representation-level observations to target-level outcomes through structurally admissible test families and formulate a reusable individuation-inference audit. Cross-domain cases illustrate the framework, and machine-checked proofs verify quotient descent and family-level separation. The framework audits inferences relative to declared assignments; it neither discovers those assignments nor supplies a complete theory of evidence or numerical identity.
 
 \end{abstract}
 \section{Introduction}
 
-Formal representations routinely contain more distinctions than the target-level claims for which they are used. Two variables can have different names, two records can have different database identifiers, two sequencing reads can have different file-level identifiers, and two constructors can be formally unequal even when those differences do not track two distinct target-level individuals.
+Formal representations routinely contain more distinctions than the target-level claims for which they are used. Different variable names, database records, file-level identifiers, labels, and constructors can all be formally distinguishable even when those differences do not track distinct target-level individuals.
 
-The problem is not that such representation-level structure is useless. It may be indispensable for computation, bookkeeping, locality, provenance, or model construction. The problem arises when a difference in that structure is used as a premise in an individuation inference.
+A familiar bibliographic example makes the problem concrete. A scholarly work may be represented by distinct bibliographic records across services such as OpenAlex, Crossref, or PubMed. Let \(P\) be a set of bibliographic records, let \(T\) be a declared target domain of scholarly works, and let
+\[
+r:P\to T
+\]
+be a record-to-work assignment. For records \(A,B\in P\),
+\[
+\operatorname{ID}(A)\neq\operatorname{ID}(B)
+\quad\not\Rightarrow\quad
+r(A)\neq r(B).
+\]
+The identifier inequality is unquestionably a difference between records. It becomes evidence for a difference between scholarly targets only if the target model and its warrant make it so. This is the ordinary entity-resolution problem in a particularly transparent setting: record multiplicity need not be entity multiplicity \citep{AleshinGuendelSteorts2024EntityResolution}.
+
+The converse shortcut also fails. If raw identifier values are local to different namespaces, reused, copied, or attached incorrectly, then
+\[
+\operatorname{ID}(A)=\operatorname{ID}(B)
+\quad\not\Rightarrow\quad
+r(A)=r(B).
+\]
+Nor are database-assigned metadata automatically target properties. A topic label, category, or other externally assigned tag can differ across records of the same work or coincide across records of different works. Such a field becomes target-level evidence only through a justified relation to the declared target.
+
+The bibliographic example also exposes target choice. A preprint and a journal publication may be grouped as one research work for one counting question and treated as distinct publication versions for another. Record multiplicity therefore does not determine work multiplicity, and publication-version multiplicity does not determine research-work multiplicity. The target must be stated before the identifier or label is interpreted.
+
+Two bibliographic records can be formally distinct without representing two distinct papers, just as two theoretical labels can be distinct without thereby establishing two distinct measured capacities.
+
+The problem is not that representation-level structure is useless. It may be indispensable for computation, bookkeeping, locality, provenance, search, or model construction. The problem arises when a difference in that structure is used as a premise in an individuation inference.
 
 This paper asks a deliberately narrow question:
 
@@ -52,7 +76,7 @@ The formal artifact addresses only the first layer. It makes structural dependen
 
 This separation motivates what we call a practical \textbf{counterfactual relevance audit}. For an identifier-like feature, ask what kind of change is being considered. A structure-preserving re-encoding should not change an inference when it preserves every representation-level relation that the inference declares evidentially relevant. By contrast, reassigning values across representations can alter evidence if the assignment itself records a scientifically grounded relation. If the conclusion changes under an assignment perturbation, the argument must explain why that assignment is target-relevant rather than merely representational.
 
-The paper develops this point using unique molecular identifiers (UMIs). A software read identifier and a molecular tag can both be represented as strings. Yet their evidential roles differ because one is bookkeeping metadata while the other can participate in an experimental chain linking downstream reads to pre-amplification template molecules. The UMI case also exposes an important limit of the exact formal model: observed UMI strings can contain errors, so the experimentally assigned tag and the observed read-level tag must be distinguished.
+The bibliographic case makes the logic easy to see, but by itself it could be dismissed as a bookkeeping or data-integration problem. Section~3 therefore uses molecular counting as a cross-domain scientific stress test. The same distinction then returns in evidence synthesis, where reports, studies, estimates, and independent evidence units must not be conflated. The progression is deliberate: intuitive record linkage, experimental measurement, and finally literature-scale inference.
 
 \subsection{Contributions}
 
@@ -62,7 +86,7 @@ The paper makes four limited contributions.
 \item \textbf{A quotient characterization of structural admissibility.} A representation-level feature is structurally eligible for target-level use only if it is constant on each fiber of the proposed representation-to-target map. Equivalently, it must descend to the quotient that identifies representations assigned to the same target.
 \item \textbf{Test-family admissibility.} Representation-level observations and target-level responses are placed in one inference chain. Requiring every test in a selected family to have the declared target-response factorization gives a conservative sufficient condition for licensing existential separation by that family without an additional witness-selection assumption.
 \item \textbf{A reusable individuation-inference audit.} The paper turns the structural conditions into a protocol that checks within-fiber leakage, observation-to-target bridging, independent warrant, structure-preserving re-encoding, assignment sensitivity, and regime overreach.
-\item \textbf{A machine-checked dependency analysis with cross-domain cases.} Lean checks quotient descent and family-level separation. The main UMI case and a shorter database-record microcase show how the same failure pattern appears in distinct domains.
+\item \textbf{A machine-checked dependency analysis with cross-domain cases.} Machine-checked proofs verify quotient descent and family-level separation. Bibliographic records provide the motivating case, molecular counting provides a cross-domain scientific stress test, and evidence synthesis shows how the same discipline scales to study- and claim-level analysis.
 \end{enumerate}
 
 \section{Formal Setting}
@@ -267,11 +291,13 @@ The preceding conditions can be used as a reusable audit protocol. This is not a
 
 The audit has three useful dispositions. A violated quotient or factorization condition is a \textbf{structural failure}. Structural coherence without adequate independent warrant is \textbf{scientifically underdetermined}. A claim that passes both layers is a \textbf{scoped pass}: it is licensed relative to the declared target model and regime, not established as unrestricted numerical identity.
 
-\section{Scientific Case: UMI-Based Molecular Counting}
+\section{Scientific Stress Test: Molecular Counting with Unique Molecular Identifiers}
 
-\subsection{Representation multiplicity is not molecule multiplicity}
+\subsection{Why many reads need not mean many source molecules}
 
-High-throughput sequencing supplies a concrete instance of the problem. Polymerase chain reaction (PCR) amplification can generate several downstream read records from one template molecule. Therefore
+A \textbf{unique molecular identifier (UMI)} is a short sequence tag introduced before amplification so that downstream observations can retain information about the template molecule from which they arose. It is not an intrinsic identity carried by the molecule; it is a protocol-generated tag whose evidential value depends on how it is assigned, propagated, observed, and modeled. \citet{Kivioja2012UMI} demonstrated how such tags can support absolute molecule counting.
+
+\textbf{Polymerase chain reaction (PCR)} is an amplification process that can generate many copies from a template molecule. Those copies may in turn produce multiple sequencing read records. Therefore
 
 \[
 100\ \text{read records}
@@ -279,9 +305,9 @@ High-throughput sequencing supplies a concrete instance of the problem. Polymera
 100\ \text{source molecules}.
 \]
 
-A unique software identifier assigned to each read can distinguish all 100 records while providing no independent reason to infer 100 pre-amplification molecules.
+A unique software identifier assigned to each read can distinguish all 100 records while providing no independent reason to infer 100 pre-amplification molecules. Conversely, UMI equality is not an absolute guarantee of target identity because distinct templates can receive the same finite tag value by collision.
 
-\citet{Kivioja2012UMI} introduced unique molecular identifiers to support absolute molecule counting by labeling molecules before amplification. \citet{SmithHegerSudbery2017UMITools} show why the resulting strings still require error-aware analysis: UMI sequences can contain sequencing errors, and naive equality-based treatment can misidentify PCR duplicates.
+\citet{SmithHegerSudbery2017UMITools} show why observed UMI strings also require error-aware analysis: UMI sequences can contain sequencing errors, and naive equality-based treatment can misidentify PCR duplicates. The case therefore separates three notions that are easy to conflate: record identity, protocol-generated tag identity, and source-molecule identity.
 
 \subsection{The target is a tagged template, not a string}
 
@@ -368,11 +394,7 @@ A read-level feature may enter a molecular individuation inference only through 
 
 This is also why the case is useful philosophically. Two fields can both be identifiers, both be strings, and both distinguish records, yet only one participates in a causal and measurement history designed to track pre-amplification templates.
 
-\section{Cross-Domain Microcase: Database Entity Resolution}
 
-Entity resolution is explicitly concerned with linking duplicate records and estimating partitions of records that refer to common entities, often without unique entity identifiers \citep{AleshinGuendelSteorts2024EntityResolution}. The same structural issue therefore appears outside molecular counting. Suppose two database rows have distinct row IDs but are proposed to refer to the same customer. If \(r\) maps both rows to that customer, row-ID inequality varies within one fiber of \(r\); it therefore fails quotient descent and cannot by itself support a two-customer inference.
-
-A different field may be evidentially relevant only through additional semantics. An upstream customer identifier maintained by a separately governed source registry can potentially factor through the customer target, while a copied email address, display name, or locally generated row key may not. A master identifier produced by the same entity-resolution procedure cannot independently warrant that procedure's own clustering. Duplicates, shared values, stale assignments, and entry errors can break the required dependency. The point is not to endorse a particular entity-resolution system, but to show that the audit asks the same questions in a non-biological domain: which distinctions survive the target quotient, which observation links are warranted, and which are merely representational bookkeeping.
 
 \section{Counterfactual Relevance Audit}
 
@@ -437,7 +459,7 @@ The present paper accepts rather than challenges that target-directed perspectiv
 
 Nguyen's comparison is naturally read at the level of models, their representational use, and the claims they license about target systems. The present problem arises \textbf{inside an individuation inference} when a specific difference in the representing apparatus is recruited as a premise. Even when two representations are both used to reason about a declared target, it does not follow that every formal difference between them is evidence about that target.
 
-Consider two database records known to concern the same person. Their distinct row IDs are genuine differences in the representational vehicles. A target-directed account can readily acknowledge that the records are used to make claims about the same person. The local question addressed here is different: may the inequality of those row IDs itself be used to support the claim that there are two people? The target-factorization test says no unless a scientifically or semantically justified target property explains why row-ID difference tracks person difference.
+Consider two bibliographic records known to describe the same scholarly work. Their distinct service-local identifiers are genuine differences in the representational vehicles. A target-directed account can readily acknowledge that the records are used to make claims about the same work. The local question addressed here is different: may identifier inequality itself support the claim that there are two scholarly works? The target-factorization test says no unless a scientifically or semantically justified target property explains why that identifier difference tracks work-level difference.
 
 The same distinction matters in the UMI case. Both a software read ID and an observed UMI field occur inside representations used to make claims about source molecules. The fact that both belong to a target-directed representational practice does not determine whether each difference is evidentially relevant to molecular counting. That requires a more local account of the dependency from feature generation to target property.
 
@@ -463,11 +485,43 @@ The distinctive use is methodological: combine target-induced quotient descent, 
 
 Nor does failure to support individuation imply that a representational distinction is dispensable. Surplus structure can remain useful or even necessary for other representational tasks \citep{NguyenTehWells2020Surplus}.
 
-\section{Outlook: Construct-Level Comparison}
+\section{Outlook: Evidence Synthesis and Construct-Level Comparison}
 
-The UMI case motivates a broader methodological question, but this extension is prospective and is not a result established by the present formal model. A separate study can ask whether the same anti-smuggling discipline applies to theoretical constructs used to describe measured capacities.
+\subsection{Reports, studies, and evidence units}
+
+Evidence synthesis provides a third scale at which the same distinction matters. In systematic reviews and meta-analyses, bibliographic reports are not automatically independent study or evidence units. One study can generate multiple reports, and one report can provide multiple outcomes, time points, subgroup analyses, or effect estimates. Conversely, apparently distinct reports can reuse overlapping participants or the same underlying study. Duplicate inclusion can therefore distort a synthesis when representational multiplicity is mistaken for independent evidence multiplicity \citep{Tramer1997DuplicateMetaAnalysis,VonElm2004DuplicatePublication}.
+
+The relevant implications are deliberately modest:
+\[
+\text{report count}
+\not\Rightarrow
+\text{study count},
+\qquad
+\text{effect-estimate count}
+\not\Rightarrow
+\text{independent-evidence count}.
+\]
+These are not claims that the quantities are always unequal. They deny only the automatic inference from one level of multiplicity to another.
+
+The target of individuation may be a publication, a study, a cohort, a comparison, an outcome, or an independent evidence contribution, depending on the synthesis question. The present framework does not prescribe a meta-analytic model. It requires the analyst to declare the relevant assignment between extracted representations and evidence units, make dependence assumptions explicit, and supply independent methodological warrant for that assignment.
+
+\subsection{From evidence units to theoretical constructs}
+
+The progression from bibliographic records to molecular measurement and evidence synthesis motivates a broader methodological question, but this extension is prospective and is not a result established by the present formal model. A separate corpus study can ask whether the same anti-smuggling discipline applies when papers are decomposed into claims and claims are compared as evidence about measured capacities.
 
 Let \(\sigma(c)\) serve only as shorthand for an \emph{operational structural signature}: the measurement roles, tests, criteria, temporal relations, resource conditions, and other dependencies retained after a construct label is suppressed and its associated claim is normalized. The signature is not assumed unique or complete, and its components must be fixed by the declared measurement question before construct labels or source identity and provenance are restored.
+
+At this scale, bibliographic identity, study/evidence identity, claim identity, and capacity identity are different individuation relations and must not be collapsed into one another. One paper may contribute several operational claims; several papers may express claims that normalize to materially the same operational structure. Consequently,
+\[
+\text{paper count}
+\not\Rightarrow
+\text{claim count},
+\qquad
+\text{claim-label count}
+\not\Rightarrow
+\text{capacity count}.
+\]
+Again, these arrows deny an automatic inference; they do not assert equality or inequality in every case.
 
 Under such a procedure, different construct names alone would provide no evidence of different measured capacities. A surviving signature difference would be candidate discriminating structure, not sufficient evidence of ontological or psychological independence; matching signatures would likewise not imply synonymy or explanatory interchangeability.
 
@@ -527,7 +581,9 @@ The structural core can now be stated compactly: \textbf{representation-level ev
 
 The resulting individuation-inference audit is therefore not a procedure for discovering target assignments or metaphysical individuals. It is a reusable dependency check that distinguishes structural failure, scientific underdetermination, and a scoped pass relative to an explicitly declared target model and test regime.
 
-UMI-based molecular counting supplies the main scientific case, while the database-record microcase shows that the same audit structure is not specific to barcode biology. In both domains, identifierhood itself has no evidential force. What matters is whether the relevant difference survives the target quotient and has an independently warranted route to the target-level claim.
+The three cases play different roles. Bibliographic records make the problem intuitively obvious: record identity is not work identity. Molecular counting shows that the same dependency issue survives in an experimental measurement setting: read identity, tag identity, and source-molecule identity must be distinguished. Evidence synthesis then returns the audit to a broadly applicable methodological setting, where report, study, estimate, and independent evidence units can diverge. The construct-level outlook extends the same discipline prospectively from papers to claims and measured capacities.
+
+Across all of these cases, identifierhood, labelhood, or multiplicity alone has no evidential force. What matters is whether the relevant difference survives the target quotient and has an independently warranted route to the target-level claim.
 
 \begin{quote}
 \textbf{When an individuation claim depends on a formal difference, require that the difference survive the target quotient, expose the observation-to-target bridge and its independent warrant, and keep the conclusion within the declared test regime.}
