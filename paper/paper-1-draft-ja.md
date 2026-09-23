@@ -396,13 +396,13 @@ blind review copy では machine-checked claim を neutral label にまとめる
 
 形式的な差が individuation inference に入るためには、representation から target への justified path を経由しなければならない。
 
-formal contribution は、しばしば一つに圧縮される二つの問いを分離する。**Structural target factorization** は、feature または observed test outcome が主張された仕方で target assignment に実際に依存しているかを問う。**Scientific warrant** は、その dependency model を application でなぜ信頼してよいのかを問う。前者は mechanically audit できるが、後者は宣言だけでは得られない。
+formal contribution は、しばしば一つに圧縮される二つの問いを分離する。**Structural target factorization** は、feature または observed test outcome が主張された仕方で target assignment に実際に依存しているかを問う。**Scientific warrant** は、その dependency model を application でなぜ信頼してよいのかを問う。前者は machine-check できるが、後者は宣言だけでは得られない。
 
 UMI-based molecular counting はこの区別を示す。unique read ID は downstream record を区別する。latent molecular tag は pre-amplification protocol によって tagged template を追跡しうる。observed UMI string はその latent tag の noisy measurement であり、error model を必要とする。三者がすべて string として現れうるということは、その evidential role には関係しない。
 
 したがって実践的な教訓は、identifier を無視せよということでも、target-linked に見える identifier をそれだけで信頼せよということでもない。より限定された次の原則である。
 
-> **individuation claim が形式的な差に依存するなら、その target factorization と、それを受け入れる科学的理由を明示せよ。そのうえで、明示的に admit された observational / interventional regime に相対して claim を評価せよ。**
+> **individuation claim が形式的な差に依存するなら、その target factorization と、それを受け入れる科学的理由を明示せよ。そのうえで、明示的に specified された observational / interventional regime に相対して claim を評価せよ。**
 
 ## 参考文献
 
