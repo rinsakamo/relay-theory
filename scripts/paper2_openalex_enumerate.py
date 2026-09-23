@@ -61,9 +61,15 @@ def oql_quote(value: str) -> str:
 
 
 def text_clause(value: str, exact: bool = False) -> str:
+    """Match OpenAlex Works-search scope: title + abstract + available full text."""
     if exact:
-        return f'title/abstract has ("{oql_quote(value)}")'
-    return f"title/abstract has ({value})"
+        quoted = f'"{oql_quote(value)}"'
+        return (
+            f"(title/abstract has ({quoted}) or full text has ({quoted}))"
+        )
+    return (
+        f"(title/abstract has ({value}) or full text has ({value}))"
+    )
 
 
 class OpenAlexClient:
@@ -460,7 +466,9 @@ def self_test(config: dict[str, Any]) -> None:
     assert "citation count >= (1)" in q
     assert "topic is (T1 or T2)" in q
     assert "title/abstract has (memory)" in q
+    assert "full text has (memory)" in q
     assert 'title/abstract has ("extended mind")' in q
+    assert 'full text has ("extended mind")' in q
     forbidden = {
         "basis_elements",
         "basis_mapping",
