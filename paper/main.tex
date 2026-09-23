@@ -60,7 +60,7 @@ The paper makes four limited contributions.
 
 \begin{enumerate}[leftmargin=*]
 \item \textbf{A quotient characterization of structural admissibility.} A representation-level feature is structurally eligible for target-level use only if it is constant on each fiber of the proposed representation-to-target map. Equivalently, it must descend to the quotient that identifies representations assigned to the same target.
-\item \textbf{Test-family admissibility.} Representation-level observations and target-level responses are placed in one inference chain. A selected family can support target-level separation only when every test in that family has the declared target-response factorization.
+\item \textbf{Test-family admissibility.} Representation-level observations and target-level responses are placed in one inference chain. Requiring every test in a selected family to have the declared target-response factorization gives a conservative sufficient condition for licensing existential separation by that family without an additional witness-selection assumption.
 \item \textbf{A reusable individuation-inference audit.} The paper turns the structural conditions into a protocol that checks within-fiber leakage, observation-to-target bridging, independent warrant, structure-preserving re-encoding, assignment sensitivity, and regime overreach.
 \item \textbf{A machine-checked dependency analysis with cross-domain cases.} Lean checks quotient descent and family-level separation. The main UMI case and a shorter database-record microcase show how the same failure pattern appears in distinct domains.
 \end{enumerate}
@@ -217,9 +217,9 @@ Let \(A\subseteq Q\) be a family of tests selected for an analysis. Define \text
 \forall q\in A,\;B_r(q).
 \]
 
-Thus selection alone does no evidential work: every test actually used by the exact inference must satisfy the declared observation-to-target factorization. Scientific warrant for including such a test must be supplied independently and may not be self-licensed by the formal difference the test is being used to promote.
+Thus selection alone does no evidential work. For a particular independently specified test \(q\), the test-specific theorem requires only \(B_r(q)\). The stronger condition \(\operatorname{Adm}_r(A)\) is used when the inference is allowed to report that \emph{some} test in \(A\) separates the pair without an additional witness-selection rule.
 
-The family-wide requirement is deliberately stronger than validating only a separating witness after outcomes are known. It prevents an analysis from selecting a discriminator first and supplying structural admissibility only post hoc.
+The family-wide requirement is therefore a conservative sufficient condition, not a necessary condition for every particular witnessed inference. Its methodological purpose is to prevent an analysis from searching for a discriminator first and supplying structural admissibility only post hoc. Scientific warrant for the relevant tests must still be supplied independently and may not be self-licensed by the formal difference being promoted.
 
 Define
 
@@ -260,7 +260,7 @@ The preceding conditions can be used as a reusable audit protocol. This is not a
 \begin{enumerate}[leftmargin=*]
 \item \textbf{Declare the target model and scope.} Specify \(P\), \(T\), the proposed assignment \(r\), the selected test family \(A\), and the strength of the intended conclusion. If these are not fixed, the audit is underdetermined.
 \item \textbf{Check quotient descent.} Ask whether each candidate representation-level discriminator is constant on the fibers of \(r\). A within-fiber difference is a structural failure for target-level use.
-\item \textbf{Check the observation bridge.} For a test-family inference, establish \(\operatorname{Adm}_r(A)\). If an admitted test lacks the declared observation-to-target factorization, family-level separation is not licensed by the exact model.
+\item \textbf{Check the observation bridge.} For a pre-specified test \(q\), establish \(B_r(q)\). If the analysis may select an arbitrary separating witness from \(A\), establish the stronger \(\operatorname{Adm}_r(A)\) or supply an independently fixed witness-selection rule.
 \item \textbf{Check independent warrant and representation structure.} State the scientific reason for accepting \(r\), the relevant factorization, the selected family, and the representation-level structure \(\mathcal S\) used by the inference. These commitments must be non-self-licensing and fixed before the discriminating comparison rather than chosen to preserve a preferred result.
 \item \textbf{Run the counterfactual and scope checks.} Test invariance under structure-preserving re-encodings; if assignment perturbations change the conclusion, identify the grounded relation that makes that sensitivity evidentially relevant. Finally, keep the conclusion no stronger than the selected observational or interventional regime supports.
 \end{enumerate}
@@ -509,7 +509,7 @@ R5--R7 & A richer selected test family can refine an operational partition left 
 R8--R10 & A target-linked outcome difference can support a target-assignment difference in the positive control. & Deterministic target response under the declared test. \\
 R11--R15 & Semantically inert identity-like tokens or decorative access metadata do not alter the tested classification. & Those fields are absent from the declared target-sensitive semantics. \\
 R16--R19 & Generic feature factorization preserves equality within each fiber of the target map; a representation-sensitive negative control fails factorization. & Proposed representation-to-target map and explicit feature factorization. \\
-R20--R22 & Representation-level observed outcomes can support target separation only under test-specific factorization; family-level separation is licensed only when every selected test is admissible. & Exact agreement between observed outcomes and target responses for each test used by the selected family. \\
+R20--R22 & Test-specific factorization licenses witnessed target separation; all-test family admissibility is a sufficient condition for existential family-level separation without additional witness selection. & Exact agreement between observed outcomes and target responses for the relevant test or, under the family-wide rule, every selected test. \\
 R23 & Fiber invariance is equivalent to descent through the quotient induced by an arbitrary representation-to-target map. & Only the target-induced equivalence relation; no domain-specific representation or target type. \\
 \bottomrule
 \end{tabularx}

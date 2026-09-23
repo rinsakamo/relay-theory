@@ -39,7 +39,7 @@ formal artifact が扱うのは第一層だけである。構造依存関係を�
 
 1. **Structural admissibility の quotient characterization.** representation-level feature が target-level use に structurally eligible であるためには、proposed representation-to-target map の各 fiber 上で一定でなければならない。これは、同じ target に割り当てられた representation を同一視する quotient を介して descend することと同値である。
 
-2. **Test-family admissibility.** representation-level observation と target-level response を一つの inference chain に置く。selected family が target-level separation を支えられるのは、その family に含まれるすべての test が宣言された target-response factorization を満たす場合だけである。
+2. **Test-family admissibility.** representation-level observation と target-level response を一つの inference chain に置く。selected family の全 test に declared target-response factorization を要求することは、追加の witness-selection assumption なしに existential family-level separation を license する conservative sufficient condition である。
 
 3. **再利用可能な individuation-inference audit.** within-fiber leakage、observation-to-target bridging、independent warrant、structure-preserving re-encoding、assignment sensitivity、regime overreach を一つの protocol として監査する。
 
@@ -202,9 +202,9 @@ r(a)\neq r(b)
 
 と定義する。
 
-selection 自体には evidential force はない。exact inference で実際に使われるすべての test が、宣言された observation-to-target factorization を満たさなければならない。その test を含める scientific warrant は独立に与えられなければならず、test が target level に昇格させようとしている formal difference 自体によって self-license されてはならない。
+selection 自体には evidential force はない。independently specified な特定の test \(q\) については test-specific theorem は \(B_r(q)\) だけを要求する。より強い \(\operatorname{Adm}_r(A)\) は、追加の witness-selection rule なしに「\(A\) のどれかが pair を分離した」と報告できる inference に用いる。
 
-family-wide requirement は、outcome を見た後で separating witness だけを validate するより意図的に強い。先に discriminator を選び、その test だけに structural admissibility を事後的に与えることを防ぐためである。
+したがって family-wide requirement は every particular witnessed inference の necessary condition ではなく、conservative sufficient condition である。その methodological purpose は、先に discriminator を探索してから structural admissibility を post hoc に与えることを防ぐ点にある。relevant test の scientific warrant は引き続き独立に与えられ、formal difference 自体によって self-license されてはならない。
 
 \[
 a\equiv_A b
@@ -242,7 +242,7 @@ r(a)\neq r(b)
 
 1. **Target model と scope を宣言する。** \(P\)、\(T\)、proposed assignment \(r\)、selected test family \(A\)、結論の強さを固定する。固定されていなければ audit は underdetermined である。
 2. **Quotient descent を検査する。** candidate discriminator が \(r\) の各 fiber 上で一定かを問う。within-fiber difference は target-level use に対する structural failure である。
-3. **Observation bridge を検査する。** test-family inference では \(\operatorname{Adm}_r(A)\) を確立する。admitted test が declared observation-to-target factorization を欠くなら、exact model は family-level separation を license しない。
+3. **Observation bridge を検査する。** pre-specified test \(q\) なら \(B_r(q)\) を確立する。analysis が \(A\) から arbitrary separating witness を選べるなら、より強い \(\operatorname{Adm}_r(A)\) を確立するか、independently fixed な witness-selection rule を与える。
 4. **Independent warrant と representation structure を検査する。** \(r\)、factorization、selected family、inference が利用する representation-level structure \(\mathcal S\) を受け入れる scientific reason を明示する。これらは non-self-licensing であり、preferred result を保存するために後から選ばれてはならない。
 5. **Counterfactual と scope を検査する。** structure-preserving re-encoding に対する invariance を調べる。assignment perturbation で結論が変わるなら、その sensitivity を evidentially relevant にする grounded relation を示す。最後に、結論を selected observational / interventional regime が支える範囲より強くしない。
 
@@ -472,7 +472,7 @@ blind review copy では machine-checked claim を neutral label にまとめる
 | R8--R10 | positive control で target-linked outcome difference が target-assignment difference を支えうること。 | declared test の deterministic target response。 |
 | R11--R15 | semantically inert identity-like token や decorative access metadata が tested classification を変えないこと。 | それらの field が declared target-sensitive semantics に含まれないこと。 |
 | R16--R19 | generic feature factorization が target map の各 fiber 内で equality を保存し、representation-sensitive negative control が factorization に失敗すること。 | proposed representation-to-target map と explicit feature factorization。 |
-| R20--R22 | representation-level observed outcome が target separation を支えられるのは test-specific factorization の下だけであり、family-level separation は selected test がすべて admissible な場合だけ license されること。 | selected family が用いる各 test について observed outcome と target response が exact に一致すること。 |
+| R20--R22 | test-specific factorization が witnessed target separation を license し、all-test family admissibility は追加の witness selection なしの existential family-level separation に対する sufficient condition であること。 | relevant test、または family-wide rule の下では selected test 全体について observed outcome と target response が exact に一致すること。 |
 | R23 | fiber invariance が、arbitrary representation-to-target map が誘導する quotient を介した descent と同値であること。 | target-induced equivalence relation のみ。domain-specific な representation / target type を仮定しない。 |
 
 小さな theorem が多数あること自体は novelty claim ではない。この collection は dependency structure の machine-checkable な記録である。neutral result label の完全な集合は R1--R23 である。
