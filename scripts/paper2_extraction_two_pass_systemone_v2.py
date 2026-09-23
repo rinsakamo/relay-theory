@@ -69,7 +69,9 @@ SYSTEMONE_PASS_KEYS = {
     "state_contains_normal_interpretation", "source_is_authoritative",
     "normal_interpretation_is_advisory", "free_text_claim_ir_generation_forbidden",
     "explicit_unresolved_choice", "answer_type_required",
-    "response_model_must_match_request", "zero_output_tokens_required",
+    "response_model_if_present_must_match_request",
+    "nonzero_output_tokens_forbidden_when_reported",
+    "probabilities_and_confidence_are_optional_audit_metadata",
     "max_questions",
 }
 BOUNDED_KEYS = {
@@ -179,8 +181,9 @@ def validate_manifest(manifest: Any) -> dict[str, Any]:
         "free_text_claim_ir_generation_forbidden": True,
         "explicit_unresolved_choice": UNRESOLVED,
         "answer_type_required": "choice",
-        "response_model_must_match_request": True,
-        "zero_output_tokens_required": True,
+        "response_model_if_present_must_match_request": True,
+        "nonzero_output_tokens_forbidden_when_reported": True,
+        "probabilities_and_confidence_are_optional_audit_metadata": True,
         "max_questions": MAX_SYSTEMONE_QUESTIONS,
     }
     if systemone != required_systemone:
@@ -412,26 +415,27 @@ def build_systemone_request(
 
 
 def _answer_choice(answer: Any, question: dict[str, Any], name: str) -> str:
-    item = expect_exact_keys(
-        answer,
-        {"type", "choice", "probabilities", "confidence"},
-        f"answer {name}",
-    )
-    if item["type"] != "choice":
+    if not isinstance(answer, dict):
+        fail(f"answer {name}: expected object")
+    if answer.get("type") != "choice":
         fail(f"answer {name}: type must be choice")
-    choice = item["choice"]
-    if not isinstance(choice, str):
+    choice = answer.get("choice")
+    if not isinstance(choice, str) or not choice:
         fail(f"answer {name}: missing choice")
     criteria = question.get("criteria")
     if not isinstance(criteria, dict) or choice not in criteria:
         fail(f"answer {name}: choice outside frozen criteria: {choice!r}")
 
-    probabilities = item["probabilities"]
-    if not isinstance(probabilities, dict) or set(probabilities) != set(criteria):
-        fail(f"answer {name}: probability keys must match criteria exactly")
-    for key, value in probabilities.items():
-        _probability(value, f"answer {name}.probabilities.{key}")
-    _probability(item["confidence"], f"answer {name}.confidence")
+    probabilities = answer.get("probabilities")
+    if probabilities is not None:
+        if not isinstance(probabilities, dict) or set(probabilities) != set(criteria):
+            fail(f"answer {name}: probability keys must match criteria exactly")
+        for key, value in probabilities.items():
+            _probability(value, f"answer {name}.probabilities.{key}")
+
+    confidence = answer.get("confidence")
+    if confidence is not None:
+        _probability(confidence, f"answer {name}.confidence")
     return choice
 
 
@@ -441,16 +445,21 @@ def parse_systemone_response(
 ) -> dict[str, str]:
     if not isinstance(response_payload, dict):
         fail("SystemOne response: expected object")
-    if response_payload.get("model") != request_payload["model"]:
+    response_model = response_payload.get("model")
+    if response_model is not None and response_model != request_payload["model"]:
         fail("SystemOne response model does not match request model")
+
     usage = response_payload.get("usage")
-    if not isinstance(usage, dict):
-        fail("SystemOne response.usage: expected object")
-    _non_negative_int(usage.get("input_tokens"), "SystemOne usage.input_tokens")
-    if _non_negative_int(
-        usage.get("output_tokens"), "SystemOne usage.output_tokens"
-    ) != 0:
-        fail("SystemOne output_tokens must be zero")
+    if usage is not None:
+        if not isinstance(usage, dict):
+            fail("SystemOne response.usage: expected object when present")
+        if "input_tokens" in usage:
+            _non_negative_int(usage["input_tokens"], "SystemOne usage.input_tokens")
+        if "output_tokens" in usage:
+            if _non_negative_int(
+                usage["output_tokens"], "SystemOne usage.output_tokens"
+            ) != 0:
+                fail("SystemOne output_tokens must be zero when reported")
 
     answers = response_payload.get("answers")
     if not isinstance(answers, dict):
@@ -1149,7 +1158,8 @@ def self_test(manifest_path: Path, decision_schema_path: Path) -> None:
     if canonical_json_bytes(n8a) != canonical_json_bytes(n8b):
         raise AssertionError("N8 modality perturbation changed extra fields")
 
-    # RelaySelf-style wire contract: type=choice and zero output tokens.
+    # RelaySelf-style wire contract: type=choice; nonzero output tokens fail
+    # when usage is reported, while optional observational metadata may be absent.
     bad_type = response_for(n2_request, relation_answers(p1))
     bad_type["answers"]["claim_type"]["type"] = "score"
     expect_invalid(
@@ -1167,6 +1177,13 @@ def self_test(manifest_path: Path, decision_schema_path: Path) -> None:
         lambda: parse_systemone_response(n2_request, wrong_model),
         "N11 response model mismatch",
     )
+    minimal_wire = response_for(n2_request, relation_answers(p1))
+    del minimal_wire["model"]
+    del minimal_wire["usage"]
+    for answer in minimal_wire["answers"].values():
+        answer.pop("probabilities", None)
+        answer.pop("confidence", None)
+    parse_systemone_response(n2_request, minimal_wire)
 
     # Schema/Python parity control: schema requires unique relation arguments.
     relation_args_schema = (
