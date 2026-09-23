@@ -9,7 +9,7 @@
 
 ## Abstract
 
-Formal differences between representations do not by themselves license target-level individuation. We characterize target-admissible features by fiber invariance: they must descend through the quotient induced by a representation-to-target assignment. We connect representation-level observations to target-level outcomes through structurally admissible test families and state a reusable individuation-inference audit. A UMI case distinguishes read IDs, latent molecular tags, and noisy observations; a database-record microcase shows the same structure across domains. A Lean formalization checks quotient descent and family-level separation. The framework audits individuation inferences relative to proposed assignments; it neither discovers them nor supplies a complete theory of evidence or numerical identity.
+Formal differences between representations do not license target-level individuation. We characterize features structurally eligible for target-level use by fiber invariance: they must descend through the quotient induced by a representation-to-target assignment. We connect observations to target-level outcomes through structurally admissible test families and state a reusable individuation-inference audit. A UMI case distinguishes read IDs, latent molecular tags, and noisy observations; a database-record microcase shows the same structure across domains. A Lean formalization checks quotient descent and family-level separation. The framework audits individuation inferences relative to assignments; it neither discovers them nor supplies a complete theory of evidence or numerical identity.
 
 ## 1. Introduction
 
@@ -37,7 +37,7 @@ The paper develops this point using unique molecular identifiers (UMIs). A softw
 
 The paper makes four limited contributions.
 
-1. **A quotient characterization of structural admissibility.** A representation-level feature is target-admissible only if it is constant on each fiber of the proposed representation-to-target map. Equivalently, it must descend to the quotient that identifies representations assigned to the same target.
+1. **A quotient characterization of structural admissibility.** A representation-level feature is structurally eligible for target-level use only if it is constant on each fiber of the proposed representation-to-target map. Equivalently, it must descend to the quotient that identifies representations assigned to the same target.
 
 2. **Test-family admissibility.** Representation-level observations and target-level responses are placed in one inference chain. A selected family can support target-level separation only when every test in that family has the declared target-response factorization.
 
@@ -473,7 +473,7 @@ The number of small theorems is not itself a novelty claim. The collection is a 
 
 A formal difference may enter an individuation inference only through a justified path from representation to target.
 
-The structural core can now be stated compactly: **target-admissible representation-level evidence must descend through the quotient induced by the proposed target assignment**. Within-fiber distinctions are discarded by construction; selected tests can support separation only when their observation-to-target links are structurally admissible; and neither condition manufactures the scientific warrant for accepting the model.
+The structural core can now be stated compactly: **representation-level evidence structurally eligible for target-level use must descend through the quotient induced by the proposed target assignment**. Within-fiber distinctions are discarded by construction; selected tests can support separation only when their observation-to-target links are structurally admissible; and neither condition manufactures the scientific warrant for accepting the model.
 
 The resulting individuation-inference audit is therefore not a procedure for discovering target assignments or metaphysical individuals. It is a reusable dependency check that distinguishes structural failure, scientific underdetermination, and a scoped pass relative to an explicitly declared target model and test regime.
 

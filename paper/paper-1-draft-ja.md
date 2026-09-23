@@ -9,7 +9,7 @@
 
 ## 要旨
 
-表現間の形式的な差は、それだけでは target-level individuation を正当化しない。本稿は target-admissible feature を fiber invariance により特徴づける。すなわち、representation-to-target assignment が誘導する quotient を介して descend しなければならない。representation-level observation は structurally admissible な test family を通じて target-level outcome に接続され、再利用可能な individuation-inference audit として整理される。UMI case は read ID、latent molecular tag、noisy observation を区別し、database-record microcase は同じ構造が別領域にも現れることを示す。Lean formalization は quotient descent と family-level separation を検査する。本枠組みは proposed assignment に相対して individuation inference を監査するが、その assignment 自体を発見せず、証拠一般や numerical identity の完全な理論も与えない。
+表現間の形式的な差は、それだけでは target-level individuation を正当化しない。本稿は target-level use に structurally eligible な feature を fiber invariance により特徴づける。すなわち、representation-to-target assignment が誘導する quotient を介して descend しなければならない。representation-level observation は structurally admissible な test family を通じて target-level outcome に接続され、再利用可能な individuation-inference audit として整理される。UMI case は read ID、latent molecular tag、noisy observation を区別し、database-record microcase は同じ構造が別領域にも現れることを示す。Lean formalization は quotient descent と family-level separation を検査する。本枠組みは proposed assignment に相対して individuation inference を監査するが、その assignment 自体を発見せず、証拠一般や numerical identity の完全な理論も与えない。
 
 ## 1. はじめに
 
@@ -37,7 +37,7 @@ formal artifact が扱うのは第一層だけである。構造依存関係を�
 
 本稿の貢献は四つに限定される。
 
-1. **Structural admissibility の quotient characterization.** representation-level feature が target-admissible であるためには、proposed representation-to-target map の各 fiber 上で一定でなければならない。これは、同じ target に割り当てられた representation を同一視する quotient を介して descend することと同値である。
+1. **Structural admissibility の quotient characterization.** representation-level feature が target-level use に structurally eligible であるためには、proposed representation-to-target map の各 fiber 上で一定でなければならない。これは、同じ target に割り当てられた representation を同一視する quotient を介して descend することと同値である。
 
 2. **Test-family admissibility.** representation-level observation と target-level response を一つの inference chain に置く。selected family が target-level separation を支えられるのは、その family に含まれるすべての test が宣言された target-response factorization を満たす場合だけである。
 
@@ -481,7 +481,7 @@ blind review copy では machine-checked claim を neutral label にまとめる
 
 形式的な差が individuation inference に入るためには、representation から target への justified path を経由しなければならない。
 
-structural core は簡潔に述べられる。**target-admissible な representation-level evidence は、proposed target assignment が誘導する quotient を介して descend しなければならない。** within-fiber distinction はその構成上捨てられ、selected test が separation を支えられるのは、その observation-to-target link が structurally admissible な場合だけである。そして、どちらの条件も model を受け入れる scientific warrant を作り出さない。
+structural core は簡潔に述べられる。**target-level use に structurally eligible な representation-level evidence は、proposed target assignment が誘導する quotient を介して descend しなければならない。** within-fiber distinction はその構成上捨てられ、selected test が separation を支えられるのは、その observation-to-target link が structurally admissible な場合だけである。そして、どちらの条件も model を受け入れる scientific warrant を作り出さない。
 
 したがって individuation-inference audit は target assignment や metaphysical individual を発見する procedure ではない。これは、structural failure、scientific underdetermination、declared target model と test regime に相対した scoped pass を区別する再利用可能な dependency check である。
 
