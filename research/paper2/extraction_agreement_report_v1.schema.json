@@ -1,0 +1,207 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/rinsakamo/relay-theory/blob/main/research/paper2/extraction_agreement_report_v1.schema.json",
+  "title": "Paper 2 extraction agreement report v1",
+  "description": "Basis-blind A/B structural agreement report generated after receipt validation and provenance restoration.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "owner_issue",
+    "status",
+    "receipt_sha256",
+    "extractor",
+    "rows",
+    "aggregate"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "paper2-extraction-agreement-report-v1"
+    },
+    "owner_issue": {
+      "const": 147
+    },
+    "status": {
+      "const": "AGREEMENT_REPORTED_BEFORE_DECOMPOSITION"
+    },
+    "receipt_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "extractor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identity",
+        "revision",
+        "configuration_sha256"
+      ],
+      "properties": {
+        "identity": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision": {
+          "type": "string",
+          "minLength": 1
+        },
+        "configuration_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "rows": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "bundle_id",
+          "paper_id",
+          "candidate_sha256_a",
+          "candidate_sha256_b",
+          "claim_ir_sha256_a",
+          "claim_ir_sha256_b",
+          "comparison"
+        ],
+        "properties": {
+          "bundle_id": {
+            "type": "string",
+            "pattern": "^B000[1-5]$"
+          },
+          "paper_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "candidate_sha256_a": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "candidate_sha256_b": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "claim_ir_sha256_a": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "claim_ir_sha256_b": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "comparison": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "aggregate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "n",
+        "same_claim_type",
+        "same_modality",
+        "source_span_exact",
+        "node_structure_exact",
+        "relation_structure_exact",
+        "node_descriptions_exact",
+        "relation_descriptions_exact",
+        "overall_exact_structural_equivalence",
+        "overall_exact_full_equivalence",
+        "scope_exact_by_field"
+      ],
+      "properties": {
+        "n": {
+          "const": 5
+        },
+        "same_claim_type": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5
+        },
+        "same_modality": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5
+        },
+        "source_span_exact": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5
+        },
+        "node_structure_exact": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5
+        },
+        "relation_structure_exact": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5
+        },
+        "node_descriptions_exact": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5
+        },
+        "relation_descriptions_exact": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5
+        },
+        "overall_exact_structural_equivalence": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5
+        },
+        "overall_exact_full_equivalence": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5
+        },
+        "scope_exact_by_field": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "conditions",
+            "population",
+            "substrate",
+            "task",
+            "temporal_scope"
+          ],
+          "properties": {
+            "conditions": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 5
+            },
+            "population": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 5
+            },
+            "substrate": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 5
+            },
+            "task": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 5
+            },
+            "temporal_scope": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 5
+            }
+          }
+        }
+      }
+    }
+  }
+}
