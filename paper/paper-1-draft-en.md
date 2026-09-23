@@ -1,45 +1,49 @@
 # Working Draft — Paper 1
 
 > **Status:** Primary English working manuscript. Non-authoritative.
-> **Scope:** Necessary evidential conditions for operational individuation claims under declared target semantics and restricted tests.
-> **Formal boundary:** The target domain and representation-to-target map are model inputs. The paper audits proposed evidential links; it does not derive target ontology, latent source assignment, or metaphysical numerical identity.
+> **Scope:** Necessary structural and evidential-dependency conditions for operational individuation inferences.
+> **Formal boundary:** The target domain and representation-to-target assignment are model inputs. Structural factorization does not itself supply scientific warrant.
 
-# When Is a Formal Difference Admissible Evidence for an Individuation Claim?
-## Representation, Evidential Bridges, and Restricted Tests
+# When May a Formal Difference Enter an Individuation Inference?
+## Target Factorization, Restricted Tests, and a UMI Case
 
 ## Abstract
 
-A formal difference between representations is not by itself evidence that represented targets are distinct. We formulate an individuation-specific admissibility framework separating representation features, target reference, evidential bridges, and admitted tests. A representation-level feature may contribute only when an independently justified experimental, causal, measurement, or semantic bridge connects it to the target; declaration alone does not supply warrant. A UMI sequencing case contrasts arbitrary read identifiers with experimentally grounded molecular tags. A small Lean artifact audits bridge dependence, relabeling invariance, and test-relative refinement. The framework states necessary, not sufficient, conditions for operational individuation claims.
+Formal differences between representations do not by themselves license target-level individuation. We separate a structural target-factorization condition from the scientific warrant required to accept it, and connect representation-level observations to target-level test outcomes through test-specific factorization. A UMI sequencing case distinguishes software read identifiers, latent molecular tags, and noisy observed tag strings. We also distinguish harmless bijective renaming from assignment-changing perturbations in a counterfactual relevance audit. A small Lean artifact checks the structural dependencies and test-relative refinement. The framework gives necessary conditions for individuation inferences, not a complete theory of evidence or numerical identity.
 
 ## 1. Introduction
 
-A formal model can contain two different representations without thereby providing evidence for two different target-level individuals. Variables, constructors, row identifiers, memory addresses, labels, and carrier elements can differ because of how a model is encoded rather than because the represented world contains two individuals.
+Formal representations routinely contain more distinctions than the target-level claims for which they are used. Two variables can have different names, two records can have different database identifiers, two sequencing reads can have different file-level identifiers, and two constructors can be formally unequal even when those differences do not track two distinct target-level individuals.
 
-The problem addressed here is therefore not a general metaphysics of identity. It is an evidential question:
+The problem is not that such representation-level structure is useless. It may be indispensable for computation, bookkeeping, locality, provenance, or model construction. The problem arises when a difference in that structure is used as a premise in an individuation inference.
 
-> **When may a difference inside a representation be used as evidence for an operational individuation claim about the represented target?**
+This paper asks a deliberately narrow question:
 
-The negative answer is straightforward but easy to violate: representation-level inequality alone is insufficient. The positive answer requires more structure. A representation-level feature can contribute to an individuation inference only when a defensible evidential bridge connects that feature to the target of the claim, and the resulting target-relevant difference is detectable under the tests admitted by the analysis.
+> **When may a formal difference inside a representation enter an inference that treats represented targets as operationally distinct?**
 
-The condition is **necessary, not sufficient**. A target-linked feature can still be unreliable, confounded, noisy, or badly calibrated. The framework therefore does not turn target relevance into complete epistemic warrant. It asks a prior dependency question: has the argument shown why this formal difference is evidence about the target at all?
+The answer developed here has two layers that should not be conflated.
 
-This yields a practical audit:
+First, there is a **structural condition**. A representation-level feature must factor through the declared target assignment, or a representation-level observation must agree with a target-level response under the declared test. Without such factorization, the formal difference is only a difference in the representation.
 
-> **If a representation-level identifier were arbitrarily reassigned while all independently justified target-relevant relations were held fixed, should the individuation conclusion change?**
+Second, there is a **scientific-warrant condition**. Writing down a factorization does not make it true, reliable, or evidentially adequate. The experimental, causal, measurement, calibration, or semantic practice must independently justify treating that factorization as a good model of the target relation.
 
-If the answer is yes, the argument owes an account of the evidential bridge from that identifier to the target. If no such bridge can be supplied, the identifier is doing representational rather than target-level work.
+The formal artifact addresses only the first layer. It makes structural dependencies auditable. It does not manufacture the second.
 
-This question is adjacent to established work on scientific representation, theoretical equivalence, representation independence, observational equivalence, discernibility, and experimental individuation. The closest conceptual comparison is Nguyen's target-directed account of scientific representation and theoretical equivalence: models can be compared by the claims they license about the same targets. The present paper asks a narrower downstream question: when a **difference in the representation itself** is offered as evidence for an individuation claim, what must connect that difference to the target before the inference is admissible?
+This separation motivates a practical **counterfactual relevance audit**. For an identifier-like feature, ask what kind of change is being considered. A consistent bijective renaming of labels should not change an inference that depends only on the structure those labels encode. By contrast, reassigning labels across representations can alter evidence if the assignment itself records a scientifically grounded relation. If the conclusion changes under an assignment perturbation, the argument must explain why that assignment is target-relevant rather than merely representational.
+
+The paper develops this point using unique molecular identifiers (UMIs). A software read identifier and a molecular tag can both be represented as strings. Yet their evidential roles differ because one is bookkeeping metadata while the other can participate in an experimental chain linking downstream reads to pre-amplification template molecules. The UMI case also exposes an important limit of the exact formal model: observed UMI strings can contain errors, so the experimentally assigned tag and the observed read-level tag must be distinguished.
 
 ### 1.1 Contributions
 
-The paper makes three limited contributions.
+The paper makes four limited contributions.
 
-1. **An explicit evidential-bridge condition.** It separates representation-level features from target-level properties and makes the bridge between them an explicit dependency. Declaring a bridge exposes the dependency; scientific justification for that bridge must come from the relevant experimental, causal, measurement, or semantic practice.
+1. **Structural target factorization.** A representation-level feature is formally target-tracking only when it factors through the declared representation-to-target map. This is a structural admissibility condition, not an epistemic warrant.
 
-2. **A relabeling-invariance diagnostic with a scientific case.** The counterfactual reassignment test detects when identifiers or labels are doing hidden individuating work. A UMI sequencing case shows why two syntactically similar identifiers can differ epistemically: ordinary read identifiers distinguish records, whereas pre-amplification molecular tags can acquire target relevance through the experimental protocol.
+2. **Test-specific observation factorization.** Representation-level observations and target-level responses are placed in one inference chain. A difference in an observed outcome can support target-level separation only when the observation is structurally linked to the target response for that test.
 
-3. **A mechanized dependency audit.** A small Lean development checks the bridge logic, test-family refinement, and negative controls for representation-sensitive and semantically inert identity-like features. The mathematics is intentionally elementary; the purpose is to make dependency claims executable rather than to claim a new general equivalence theory.
+3. **A counterfactual relevance audit.** The paper distinguishes pure renaming from evidence-changing reassignment and uses that distinction to diagnose when identifier assignments are doing hidden work.
+
+4. **A mechanized dependency audit with a scientific case.** A small Lean development checks the structural claims, while the UMI case shows how latent target-linked tags, noisy observed tags, and representation-only identifiers come apart in practice.
 
 ## 2. Formal Setting
 
@@ -51,68 +55,110 @@ Let \(P\) be a set of representations and \(T\) a target domain. Let
 r:P\to T
 \]
 
-be a representation-to-target map. Distinct elements of \(P\) are not assumed to represent distinct elements of \(T\).
+be a representation-to-target assignment. Distinct elements of \(P\) are not assumed to represent distinct elements of \(T\).
 
-The map \(r\) is a semantic/modeling input. This paper does not infer \(r\) from observations. In applications where source assignment is itself uncertain, the framework audits a proposed assignment model rather than solving the source-assignment problem.
+The assignment \(r\) is a modeling input. The paper does not infer \(r\) from raw observations and does not derive the ontology of \(T\). In applications where source assignment is uncertain, the framework audits a proposed assignment model rather than solving the source-assignment problem.
 
-The formal core is restricted to one target value per representation. Many-to-many and probabilistic correspondence relations are natural extensions, but they are not required for the present dependency claim.
+The exact formal core is restricted to one target value per representation. Many-to-many, distributed, and probabilistic correspondence are natural extensions, but they are outside the present claim.
 
-### 2.2 Representation features and evidential bridges
+### 2.2 Structural target factorization
 
-Let a representation-level feature be a function
+Let a representation-level feature be
 
 \[
 f:P\to V
 \]
 
-and let a target-level property be
+and a target-level property be
 
 \[
 \phi:T\to V.
 \]
 
-For the exact setting used here, say that \(f\) has a **target bridge** to \(\phi\) when
+Define a **target-factorization condition**
 
 \[
-W(f,\phi)
+F_r(f,\phi)
 \quad\Longleftrightarrow\quad
 \forall p\in P,\; f(p)=\phi(r(p)).
 \]
 
-This factorization matters because it distinguishes two claims that are otherwise easy to conflate:
+If \(F_r(f,\phi)\) holds, then
 
 \[
 f(a)\neq f(b)
-\]
-
-is only a representation-level difference, whereas
-
-\[
-W(f,\phi)\land f(a)\neq f(b)
-\]
-
-supports the target-level conclusion
-
-\[
+\quad\Longrightarrow\quad
 r(a)\neq r(b).
 \]
 
-The proof is elementary: if \(r(a)=r(b)\), then \(\phi(r(a))=\phi(r(b))\), and the bridge forces \(f(a)=f(b)\).
+The proof is elementary: equal target assignments force equal values of every feature that factors through the target. The value of the condition is therefore not mathematical depth but dependency exposure.
 
-The important point is not the mathematics but the dependency. **Declaration does not create epistemic warrant.** In a scientific application, accepting \(W(f,\phi)\) requires an independent reason grounded in the relevant experiment, causal chain, measurement procedure, calibration, or semantics. The formal bridge records the claimed connection so that the argument can be audited.
+Crucially, \(F_r(f,\phi)\) is **not itself an evidential warrant**. It says what would have to be structurally true for \(f\) to track a target property under \(r\). Whether a scientific application is entitled to accept that model depends on evidence external to the formal identity.
 
-### 2.3 Admitted tests
+This distinction also blocks a trivialization. If \(r\) is chosen so finely that it encodes every representational distinction, many features can be made to factor through it. That does not establish that such an \(r\) is scientifically appropriate. The target assignment and its justification remain substantive inputs.
 
-Let \(Q\) be a class of target-sensitive tests. Depending on the application, a test may be an observation, measurement, query, or intervention; the framework does not identify these classes.
+### 2.3 Test-specific observation factorization
 
-For \(q\in Q\) and \(t\in T\), let \(O(q,t)\) be the outcome of test \(q\) on target \(t\). Let \(A\subseteq Q\) be the family admitted by a particular analysis. “Admitted” does not mean “declared at will”: the analysis must independently justify why those tests bear on the target and claim at issue.
+The previous feature-level condition can be connected directly to tests.
+
+Let \(Q\) be a class of tests, let
+
+\[
+\widehat O:Q\times P\to Y
+\]
+
+be the outcome actually read from the representation, and let
+
+\[
+O:Q\times T\to Y
+\]
+
+be the target-level response posited by the model.
+
+For a particular test \(q\), define
+
+\[
+B_r(q)
+\quad\Longleftrightarrow\quad
+\forall p\in P,\;
+\widehat O(q,p)=O(q,r(p)).
+\]
+
+This is a test-specific structural factorization. Under it,
+
+\[
+B_r(q)
+\land
+\widehat O(q,a)\neq \widehat O(q,b)
+\quad\Longrightarrow\quad
+r(a)\neq r(b).
+\]
+
+The point is now one inference chain rather than two disconnected modules:
+
+\[
+\text{representation-level observation}
+\to
+\text{target factorization}
+\to
+\text{target-level response}
+\to
+\text{operational separation}.
+\]
+
+Again, the equation does not justify itself. A scientific application must explain why the measurement or protocol makes \(B_r(q)\) a defensible approximation or idealization.
+
+### 2.4 Admitted test families
+
+Let \(A\subseteq Q\) be a family of tests admitted by an analysis. In the exact framework, admission requires both relevance to the target claim and an independently defensible structural link between representation-level observation and target-level response.
 
 Define
 
 \[
 a\equiv_A b
 \quad\Longleftrightarrow\quad
-\forall q\in A,\;O(q,r(a))=O(q,r(b)),
+\forall q\in A,\;
+\widehat O(q,a)=\widehat O(q,b),
 \]
 
 and
@@ -120,134 +166,199 @@ and
 \[
 a\mathrel{\#_A}b
 \quad\Longleftrightarrow\quad
-\exists q\in A:\;O(q,r(a))\neq O(q,r(b)).
+\exists q\in A:\;
+\widehat O(q,a)\neq\widehat O(q,b).
 \]
 
-These relations are operational and test-relative. They are not definitions of metaphysical numerical identity.
+If \(A_c\subseteq A_f\), indistinguishability under \(A_f\) implies indistinguishability under \(A_c\). The converse need not hold.
+
+This is a theorem about fixed exact semantics and set inclusion. It is not a theorem that accumulating noisy evidence can never reverse a classification.
 
 ## 3. Scientific Case: UMI-Based Molecular Counting
 
-High-throughput sequencing gives a direct example of the inference problem. PCR amplification can produce many downstream reads from one pre-amplification DNA or RNA molecule. A hypothetical data set containing 100 read records therefore does not, merely by containing 100 records, support the conclusion that 100 source molecules were present.
+### 3.1 Representation multiplicity is not molecule multiplicity
 
-Kivioja et al. (2012) introduced unique molecular identifiers (UMIs) to support molecule counting by attaching molecular tags before amplification. Smith, Heger, and Sudbery (2017) later showed why the tags still require error-aware analysis: UMI sequences can themselves contain sequencing errors, and naive use of token equality can misidentify PCR duplicates.
-
-The case contrasts two formally similar features.
-
-An ordinary software read identifier is assigned to a read record for data handling. Its inequality distinguishes two representations:
+High-throughput sequencing supplies a concrete instance of the problem. PCR amplification can generate several downstream read records from one template molecule. Therefore
 
 \[
-f_{\mathrm{readID}}(a)\neq f_{\mathrm{readID}}(b).
+100\ \text{read records}
+\not\Rightarrow
+100\ \text{source molecules}.
 \]
 
-That difference alone supplies no bridge to source-molecule plurality.
+A unique software identifier assigned to each read can distinguish all 100 records while providing no independent reason to infer 100 pre-amplification molecules.
 
-A pre-amplification UMI is different because the experimental procedure is designed to connect the tag to a source molecule before the representational multiplicity created by PCR arises. In the idealized formal model, the protocol supplies the candidate bridge between an observed tag feature and a target-level molecular property.
+Kivioja et al. (2012) introduced unique molecular identifiers to support absolute molecule counting by labeling molecules before amplification. Smith, Heger, and Sudbery (2017) show why the resulting strings still require error-aware analysis: UMI sequences can contain sequencing errors, and naive equality-based treatment can misidentify PCR duplicates.
 
-The idealization can be mapped as follows: \(P\) is the set of downstream read records; \(T\) is the set of pre-amplification source molecules; \(r(p)\) is the source molecule of read \(p\); and admitted tests include the experimentally introduced tag together with the alignment and contextual information used by the analysis.
+### 3.2 The target is a tagged template, not a string
 
-Crucially, actual investigators do not directly observe \(r\). Source assignment is inferred through the protocol, alignment, barcode statistics, and error assumptions. The framework therefore does **not** reconstruct molecular deduplication from raw data. It audits a proposed source-assignment and evidential model: which observed differences have an independently defensible route to the source molecules, and which differences merely distinguish downstream records?
+For the present case, the cleanest target domain is not an abstract molecule identity read directly from a barcode. Let \(T\) contain **tagged template molecules after UMI assignment and before PCR amplification**.
 
-The UMI case also prevents an overly simple conclusion. Target relevance is not infallibility. Barcode collisions, sequencing errors, and other failure modes mean that “same UMI” and “different UMI” cannot be treated as unrestricted numerical-identity rules. Experimental provenance makes the tag evidentially relevant; the error model determines how strongly particular tag observations support a molecular-counting inference.
-
-## 4. Test-Relative Distinguishability
-
-Let \(A_c\subseteq A_f\). Under fixed exact outcome semantics,
+Let
 
 \[
-a\equiv_{A_f} b
-\Longrightarrow
-a\equiv_{A_c} b.
+u:T\to U
 \]
 
-The converse need not hold. A pair may be unresolved under a restricted family and distinguished after an additional target-sensitive test is admitted.
+denote the latent UMI assigned to a tagged template molecule. Downstream read records form \(P\), and \(r(p)\) denotes the tagged template from which read \(p\) descends.
 
-The interpretation is deliberately narrow:
+If sequencing were error-free and if the observed UMI field on every read exactly reproduced the assigned molecular tag, then the observed tag feature \(\widehat u:P\to U\) would satisfy
 
-> **Under fixed exact semantics, enlarging a justified test family can refine the induced operational classification.**
+\[
+\widehat u(p)=u(r(p)).
+\]
 
-This is not a theorem that more empirical evidence can never reverse a judgment. Noise, statistical updating, changing models, and measurement disturbance are outside the exact semantics used by the formal fixture.
+That is precisely a target-factorization condition.
+
+Real data are more difficult. The observed read-level string need not equal the latent assigned tag. A sequencing error may alter one base; PCR or library effects may complicate the observation process; two distinct molecules may also receive the same UMI value by collision. Thus the real inferential chain is better pictured as
+
+\[
+\text{tagged template}
+\to
+\text{latent assigned UMI}
+\to
+\text{amplification}
+\to
+\text{noisy observed UMI on reads}.
+\]
+
+The exact formal factorization captures the no-error dependency skeleton. It does not replace the error model connecting the latent assigned tag to the observed read-level string.
+
+### 3.3 A minimal synthetic example
+
+Consider two tagged templates:
+
+- \(m_1\) has latent assigned UMI *ACGT* and produces three reads observed as *ACGT*, *ACGT*, and *ACGC*;
+- \(m_2\) has latent assigned UMI *TGCA* and produces three reads observed as *TGCA*, *TGCA*, and *TGCA*.
+
+There are six read records but only two tagged templates in this synthetic example. The *ACGC* observation represents one sequencing error from the latent tag of \(m_1\).
+
+A naive rule that equates distinct observed UMI strings with distinct source molecules can split \(m_1\) into two apparent groups and return three groups. An error-aware procedure can instead treat *ACGC* as evidence compatible with the *ACGT* source. Conversely, UMI collisions can merge evidence from distinct templates if tag identity is treated as sufficient.
+
+The example makes three layers explicit:
+
+1. unique read IDs individuate six records;
+2. latent assigned UMIs are protocol-generated properties of tagged templates;
+3. observed UMI strings are noisy measurements of those latent tags.
+
+Only the second layer satisfies the exact target factorization in the idealized model. The third requires an error model. The first is representation-level bookkeeping unless some independent target link is supplied.
+
+### 3.4 What the framework diagnoses
+
+The framework therefore does not say UMI difference means molecule difference. It says something narrower.
+
+A read-level feature may enter a molecular individuation inference only through a justified model of how that feature was generated from the target. For UMIs, the experimental tagging protocol, genomic or transcript context, and error model supply the relevant scientific work. The string type itself supplies none.
+
+This is also why the case is useful philosophically. Two fields can both be identifiers, both be strings, and both distinguish records, yet only one participates in a causal and measurement history designed to track pre-amplification templates.
+
+## 4. Counterfactual Relevance Audit
+
+The phrase relabeling invariance can hide two importantly different perturbations.
+
+### 4.1 Pure renaming
+
+Suppose a bijection \(\pi:U\to U\) is applied consistently to every label value. *ACGT* might become *17*, *TGCA* might become *42*, and every occurrence is changed coherently.
+
+Such a transformation preserves equality and inequality structure. An inference that depends only on grouping by label value should be invariant under this change. If changing the spelling or encoding of the labels changes the conclusion, the argument is representation-sensitive in a suspicious way.
+
+### 4.2 Assignment perturbation
+
+A different operation reassigns label values across representations while holding the independently specified target state fixed. This can alter which reads share a recorded tag or which records are grouped together.
+
+Sensitivity to this operation is not automatically an error. It shows that the **assignment itself is evidentially active** and therefore needs justification.
+
+For a software-generated read ID, using arbitrary ID assignment to infer source-molecule plurality would be illegitimate unless some additional target link were established.
+
+For UMIs, by contrast, the recorded assignment is intended to preserve information about a physical tagging event. Randomly reassigning observed tags across reads destroys evidence about that event. The correct conclusion is therefore not that UMI-based inference should be invariant under arbitrary reassignment. It is that any legitimate sensitivity must be explained by the experimental provenance and error model.
+
+The audit can thus be stated as two questions:
+
+1. Is the inference invariant under **representation-preserving renaming**?
+2. If it is sensitive to **assignment-changing perturbation**, what scientific relation makes that assignment target-relevant?
+
+This formulation avoids treating harmless renaming and evidence destruction as the same counterfactual.
 
 ## 5. Mechanized Dependency Audit
 
-The Lean artifact is a dependency audit, not a claim of deep mathematical novelty.
+The Lean artifact is intentionally small. Its role is to make the dependency structure executable.
 
-The finite model contains three presentations, an explicit grounding map into a referent carrier, a representation-sensitive negative-control probe, two target-sensitive probes, coarse and fine access regimes, and an arbitrary identity-like token carrier.
+The fixture contains three presentations, a grounding map into a referent carrier, target-sensitive probes, coarse and fine test regimes, a representation-sensitive negative control, and semantically inert token metadata.
 
-The new bridge layer makes the central dependency explicit. A presentation-level Boolean feature may be paired with a target-level Boolean property only through a bridge that factors the feature through the grounding map. The artifact checks four bridge facts: equal grounding forces equality of a bridged feature; a difference in a bridged feature entails a grounding difference; the deliberately representation-sensitive encoding probe admits no such bridge because it separates two same-grounding presentations; and a positive-control feature that directly tracks grounding does admit one.
+The feature-level factorization is now polymorphic in the value carrier. A representation-level feature can be paired with a target-level property only through a structural factorization object. The artifact checks that equal grounding forces equal values of every factorized feature and that a difference in such a feature entails a grounding difference. It also checks that the deliberately representation-sensitive encoding probe cannot satisfy target factorization because it separates two presentations with the same grounding, while a positive-control ground-tracking feature can.
 
-The older negative controls remain useful but secondary. Same-reference re-encodings have the same target-sensitive profile. A restricted test family can fail to separate a pair that a richer family separates. Arbitrary reassignment of a semantically inert identity-like token leaves the tested classification unchanged for any token carrier type.
+The test layer is connected to the same structure. An observation-factorization object states that a presentation-level observed outcome agrees with the target-level response of the grounded referent for each probe. The built-in grounded observation surface satisfies this condition, and a difference on any structurally factorized observed probe entails a grounding difference.
 
-These results are intentionally simple. Their role is to expose hidden dependencies. If the model claims that an identifier is irrelevant, the formal definitions make it possible to check whether that identifier actually enters the target map, bridge, test accessibility, or outcome semantics.
+The remaining results are negative controls and monotonicity checks. Same-reference re-encodings preserve the grounded observation profile. A richer admitted test family can separate a pair left unresolved by a restricted family. Arbitrary reassignment of a token absent from target-sensitive semantics does not alter classification.
+
+These proofs are elementary. The mechanization claim is correspondingly modest: a reviewer can inspect whether a supposedly target-relevant discriminator actually enters through the declared target map and factorization, rather than through a hidden constructor, label, or metadata field.
 
 ## 6. Relation to Existing Work
 
-### 6.1 Scientific representation and theoretical equivalence
+### 6.1 Nguyen and target-directed representation
 
-Suárez (2004) and Contessa (2007) already treat scientific representation as target-directed and inferential. Nguyen (2017) is the closest comparison for the present argument: he connects scientific representation with model and theoretical equivalence by asking whether models license the same claims about the same target systems.
+The closest conceptual comparison is Nguyen (2017). Nguyen argues that questions of scientific representation and theoretical equivalence should attend to how models are used to draw inferences about target systems, including whether models license the same claims about the same targets.
 
-The present paper does not claim novelty for target-directed inference or same-target claim licensing. Its narrower question begins when a **formal difference inside a representation** is itself offered as evidence for target plurality. Two models may be used to license claims about the same target while still differing in numerous representation-level features. The issue here is whether any such feature is admissible in an individuation inference. The bridge condition isolates that dependency: the feature must have a justified route to a target-level property rather than merely be formally discriminating.
+The present paper accepts rather than contests that target-directed perspective. Its unit of analysis is different.
 
-### 6.2 Individuation in scientific practice
+Nguyen's comparison is naturally read at the level of models, their representational use, and the claims they license about target systems. The present problem arises **inside an individuation inference** when a specific difference in the representing apparatus is recruited as a premise. Even when two representations are both used to reason about a declared target, it does not follow that every formal difference between them is evidence about that target.
 
-Practice-oriented work asks how scientists count, track, separate, manipulate, and present entities in concrete experimental settings (Bueno, Chen, and Fagan 2018; Waters 2018; Love 2018). Chen (2018) distinguishes ontological and epistemological modes of experimental individuation and explicitly treats presentation as part of individuation practice.
+Consider two database records known to concern the same person. Their distinct row IDs are genuine differences in the representational vehicles. A target-directed account can readily acknowledge that the records are used to make claims about the same person. The local question addressed here is different: may the inequality of those row IDs itself be used to support the claim that there are two people? The target-factorization test says no unless a scientifically or semantically justified target property explains why row-ID difference tracks person difference.
 
-The present framework does not claim that the distinction between presentation and individuation is new. It supplies a narrower formal audit for one recurrent inferential risk: when a representational device is used in an individuation practice, what justifies treating differences in that device as evidence about the target?
+The same distinction matters in the UMI case. Both a software read ID and an observed UMI field occur inside representations used to make claims about source molecules. The fact that both belong to a target-directed representational practice does not determine whether each difference is evidentially relevant to molecular counting. That requires a more local account of the dependency from feature generation to target property.
+
+The contribution is therefore not a rival theory of scientific representation, nor a new criterion of theoretical equivalence. It is a **feature-level dependency audit** for a particular inferential move within an already target-directed practice.
+
+The converse limitation is equally important. Target factorization is not sufficient for representational adequacy. A formally factorized feature may arise from a bad target model, a mistaken reference assignment, or an unreliable measurement process. Nothing in the present framework settles those broader questions.
+
+### 6.2 Inferential representation and experimental individuation
+
+Suárez (2004) and Contessa (2007) already emphasize directionality, interpretation, and surrogate inference in scientific representation. The present framework does not claim that connecting a representation to a target is novel. It isolates one narrower dependency: what must be true before a **difference internal to the representational vehicle** can enter an individuation inference.
+
+Practice-oriented work on individuation likewise constrains the claim. Bueno, Chen, and Fagan (2018), Waters (2018), and Love (2018) emphasize that counting, tracking, manipulation, and individuality depend on scientific purposes and practices. Chen (2018) distinguishes ontological and epistemological modes of experimental individuation and explicitly treats presentation as part of practice.
+
+Accordingly, this paper does not claim that presentation and individuation have only now been distinguished. Its contribution is a compact formal audit for a recurrent failure mode within such practices: allowing presentation-level distinctions to do target-level individuating work without making the dependency explicit.
 
 ### 6.3 Technical neighbors
 
-Representation independence (Mitchell 1986) constrains dependence on implementation details; observational and behavioral equivalence (Hennessy and Milner 1985; Rutten 2000) classify systems relative to specified interactions; and work on identity and discernibility cautions against equating formal discernibility with unrestricted numerical identity (Ladyman, Linnebo, and Pettigrew 2012; Dieks and Versteegh 2008).
+Representation independence in programming-language semantics constrains dependence on implementation details (Mitchell 1986). Observational and behavioral equivalence classify systems relative to specified interactions (Hennessy and Milner 1985; Rutten 2000). Work on identity and discernibility warns against identifying formal discernibility with unrestricted numerical identity (Ladyman, Linnebo, and Pettigrew 2012; Dieks and Versteegh 2008).
 
-The present relation is mathematically modest by comparison. Its contribution is methodological and individuation-specific: **representation-level discrimination is not admissible target-level evidence unless the dependency is exposed and justified.**
+The present mathematics is substantially more modest than these mature frameworks. The distinctive use is methodological: combine target factorization, restricted tests, and counterfactual assignment analysis to audit individuation inferences.
 
-Nor does the negative result imply that representation-only or surplus structure is useless. Such structure may be indispensable for other representational, computational, or local purposes (Nguyen, Teh, and Wells 2020).
+Nor does failure to support individuation imply that a representational distinction is dispensable. Surplus structure can remain useful or even necessary for other representational tasks (Nguyen, Teh, and Wells 2020).
 
 ## 7. Scope and Limitations
 
 The framework deliberately leaves several problems open.
 
-First, \(T\) and \(r\) are inputs. The paper does not derive the target ontology or solve uncertain source assignment. In the UMI case, the actual read-to-molecule relation is latent and must be inferred by scientific methods outside the exact formal core.
+First, \(T\) and \(r\) are inputs. The theory does not derive target ontology or solve uncertain source assignment.
 
-Second, the bridge condition is exact and deterministic. Real scientific warrants can be probabilistic, error-prone, and model-dependent. The exact bridge should therefore be read as a dependency skeleton, not a complete theory of evidence.
+Second, exact target factorization is a structural idealization. Real measurements are noisy, probabilistic, and model-dependent. The UMI example makes this limitation explicit by separating latent assigned tags from observed tag strings.
 
-Third, target relevance and test discrimination are necessary but not sufficient for epistemic warrant. Reliability, calibration, confounding, background assumptions, and statistical decision rules can still defeat an individuation inference.
+Third, structural factorization is not epistemic warrant. A badly chosen \(r\) can make irrelevant features appear target-factorized. Scientific justification for the target assignment, measurement model, and test relevance remains external to the Lean theorem.
 
-Fourth, the formal core uses a function \(r:P\to T\). Many-to-many, distributed, and probabilistic representation-target relations are outside the current scope.
+Fourth, the formal core uses a function \(r:P\to T\). Many-to-many, distributed, and probabilistic representation-target relations are not treated.
 
-Fifth, observation and intervention are not equated. Different test classes can induce different operational partitions, and no result licenses an inference from observational equivalence to interventional equivalence.
+Fifth, observation and intervention are not equated. Different test classes can induce different operational partitions.
 
-Finally, operational distinguishability is not metaphysical numerical identity, and synchronic discrimination does not by itself establish diachronic persistence.
+Finally, operational separation is not metaphysical numerical identity, and synchronic discrimination does not establish diachronic persistence.
 
-## 8. Relabeling Invariance as a Practical Audit
+## 8. Formal Audit Summary
 
-The framework can be used without reproducing the entire formalism.
+For the blind review copy, the mechanized claims are grouped under neutral labels. R1--R15 cover the original presentation/target, test-family, and semantically inert-token controls. R16--R19 cover generic target factorization and its positive/negative controls. R20 establishes test-specific observation factorization for the grounded observation surface, and R21 checks that an observed difference under such a factorization entails a grounding difference.
 
-For any identifier-like feature used in an individuation argument, ask two questions. First, would arbitrary reassignment of that feature alter the conclusion if the independently justified target relations were held fixed? Second, if it would, what experimental, causal, measurement, or semantic bridge explains why?
+The number of small theorems is not itself a novelty claim. The collection is an executable dependency surface.
 
-This separates two failure modes.
+## 9. Conclusion
 
-A **representation-only discriminator** changes the encoding or bookkeeping while leaving the target-relevant model fixed. Such a feature cannot acquire evidential force merely from formal inequality.
+A formal difference may enter an individuation inference only through a justified path from representation to target.
 
-A **bridged discriminator** participates in a justified process connecting the representation to the target. Its values may therefore contribute evidence, but only subject to the reliability and error assumptions of that bridge.
+The formal contribution separates two questions that are often compressed into one. **Structural target factorization** asks whether the feature or observed test outcome actually depends on the target assignment in the claimed way. **Scientific warrant** asks why that dependency model should be trusted in the application. The first can be mechanically audited; the second cannot be obtained by declaration.
 
-The UMI case instantiates the distinction. Read IDs fail the molecular relabeling audit; pre-amplification UMIs are designed to survive it because changing the tag while holding the actual tagging history fixed would change the recorded evidence about that history. The force comes from the experimental provenance, not from identifierhood.
+UMI-based molecular counting illustrates the distinction. Unique read IDs distinguish downstream records. Latent molecular tags can track tagged templates because of the pre-amplification protocol. Observed UMI strings are noisy measurements of those latent tags and require an error model. The fact that all three may appear as strings is irrelevant to their evidential role.
 
-## 9. Formal Audit Summary
+The practical lesson is therefore not ignore identifiers and not trust grounded identifiers. It is narrower:
 
-The public development contains a broader set of elementary checks than the argument needs in the main text. For anonymous review, the claims are grouped under neutral labels.
-
-R1--R4 cover the separation between representation-sensitive discrimination and same-reference target-sensitive invariance. R5--R7 cover test-family inclusion and the coarse/fine witness. R8--R10 cover target-sensitive outcome differences and the positive-control target distinction. R11--R15 cover token and access-metadata invariance. R16--R19 cover the new bridge layer: same-grounding preservation for bridged features, bridge-licensed inference from feature difference to grounding difference, failure of a bridge for the representation-only encoding probe, and existence of a bridge for a positive-control ground-tracking feature.
-
-The claim is not that nineteen elementary results constitute a new mathematical theory. The collection is an executable audit surface: it records which assumptions each individuation step actually depends on.
-
-## 10. Conclusion
-
-A formal difference is not admissible evidence for an individuation claim merely because it distinguishes two representations.
-
-The missing step is an evidential bridge. A representation-level feature may contribute to target-level individuation only when an independently justified experimental, causal, measurement, or semantic relation connects that feature to the target. A difference must then survive the relevant admitted tests. These are necessary conditions, not a complete epistemology of individuation.
-
-UMI-based molecular counting shows why the distinction matters. A read identifier and a molecular barcode can have the same formal type while playing very different evidential roles. The difference is explained by provenance and error-aware measurement practice, not by the syntax of an identifier.
-
-The formal contribution is correspondingly modest: make the bridge explicit, make relabeling invariance testable, and make hidden dependence on representation-level identity mechanically auditable.
+> **When an individuation claim depends on a formal difference, expose the target factorization and the scientific reason for accepting it; then test the claim only under an explicitly admitted observational or interventional regime.**
 
 ## References
 
