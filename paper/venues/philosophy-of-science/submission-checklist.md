@@ -92,3 +92,15 @@
 - [x] Counterfactual re-encoding audit sharpened with a decision-rule automorphism criterion.
 - [x] Exact revised anonymous PDF rebuilt and visually inspected: English Review CI `35868847305` PASS; artifact `10754490791`; 37 pages; all pages inspected at 160 dpi with no layout defects.
 - [x] Exact anonymous Lean supplement validated and uploaded by Lean CI `35868847321`; artifact `10753741728`; pinned Lean 4.33.1; standalone `lake build` PASS.
+
+
+## External-review closure — 2026-09-23
+
+- [x] Central theorem stated as fiber invariance ⇔ universal difference soundness ⇔ quotient descent, conditional on fixed proposed target assignment.
+- [x] Direct DEKI comparison added: Frigg & Nguyen (2020); Nguyen & Frigg (2022).
+- [x] Suárez (2024) contemporary inferential account directly compared.
+- [x] Anonymous standalone Lean supplement added with pinned Lean 4.33.1, no external package dependencies, build instructions, and R1–R23 map.
+- [x] CI audits supplement for identity leakage and banned proof shortcuts, builds it, and uploads it as a separate anonymous artifact.
+- [x] Structural family admissibility explicitly distinguished from statistical multiple-testing correction.
+- [x] Counterfactual re-encoding audit sharpened with a decision-rule automorphism criterion.
+- [ ] Rebuild exact revised anonymous PDF and visually inspect every page after this revision.
