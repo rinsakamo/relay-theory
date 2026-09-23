@@ -162,13 +162,12 @@ r(a)\neq r(b).
 The point is now one inference chain rather than two disconnected modules:
 
 \[
+\begin{aligned}
 \text{representation-level observation}
-\to
-\text{target factorization}
-\to
-\text{target-level response}
-\to
-\text{operational separation}.
+&\to \text{target factorization}\\
+&\to \text{target-level response}\\
+&\to \text{operational separation}.
+\end{aligned}
 \]
 
 Again, the equation does not justify itself. A scientific application must explain why the measurement or protocol makes \(B_r(q)\) a defensible approximation or idealization.
@@ -238,13 +237,12 @@ That is precisely a target-factorization condition.
 Real data are more difficult. The observed read-level string need not equal the latent assigned tag. A sequencing error may alter one base; PCR or library effects may complicate the observation process; two distinct molecules may also receive the same UMI value by collision. Thus the real inferential chain is better pictured as
 
 \[
+\begin{aligned}
 \text{tagged template}
-\to
-\text{latent assigned UMI}
-\to
-\text{amplification}
-\to
-\text{noisy observed UMI on reads}.
+&\to \text{latent assigned UMI}\\
+&\to \text{amplification}\\
+&\to \text{noisy observed UMI}.
+\end{aligned}
 \]
 
 The exact formal factorization captures the no-error dependency skeleton. It does not replace the error model connecting the latent assigned tag to the observed read-level string.
