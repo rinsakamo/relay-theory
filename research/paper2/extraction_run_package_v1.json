@@ -1,0 +1,98 @@
+{
+  "schema_version": "paper2-extraction-run-package-v1",
+  "owner_issue": 147,
+  "status": "READY_FOR_INDEPENDENT_EXECUTION_NOT_EXECUTED",
+  "authority": {
+    "sample_freeze_merge": "757258f474ff55376313d85ea97e980b4b601988",
+    "procedure_freeze_merge": "645c0fb7ac074b67673fffe63787be4af640a2eb",
+    "claim_ir_schema": "paper2-claim-ir-v1",
+    "source_bundle_schema": "paper2-extraction-source-bundle-v1",
+    "candidate_schema": "paper2-extraction-candidate-v1",
+    "prompt_version": "paper2-extraction-prompt-v1",
+    "prompt_sha256_utf8": "dfbbf50c0cfad985abb091560a1d2db6d35f5e768d574841c151afd27a2e78f6"
+  },
+  "normalization": {
+    "unicode": "NFKC",
+    "whitespace": "collapse_all_unicode_whitespace_to_single_ascii_space_and_strip",
+    "text_digest": "sha256(normalized_utf8)",
+    "bundle_serialization": "json_utf8_ensure_ascii_false_sort_keys_true_separators_comma_colon_trailing_newline"
+  },
+  "execution": {
+    "passes": [
+      "A",
+      "B"
+    ],
+    "same_bundle_bytes_required_across_passes": true,
+    "same_prompt_bytes_required_across_passes": true,
+    "same_extractor_identity_and_configuration_required_across_passes": true,
+    "fresh_context_per_bundle_per_pass": true,
+    "cross_pass_visibility_forbidden": true,
+    "cross_bundle_visibility_forbidden": true,
+    "basis_and_decomposition_visibility_forbidden": true,
+    "record_extractor_identity_after_candidate_freeze": true,
+    "decomposition_blocked_until_comparison_report_frozen": true
+  },
+  "raw_text_policy": {
+    "raw_abstracts_committed_to_repository": false,
+    "reason": "Primary-source text remains external; repository authority stores stable source identity, normalization rule, and digest only.",
+    "local_input_format": "JSON object mapping sample_id to raw abstract text",
+    "generated_extractor_input": "one paper2-extraction-source-bundle-v1 JSON file per bundle_id"
+  },
+  "sources": [
+    {
+      "bundle_id": "B0001",
+      "sample_id": "CAL-BEER-1995",
+      "stable_identity": "doi:10.1016/0004-3702(94)00005-L",
+      "canonical_url": "https://doi.org/10.1016/0004-3702(94)00005-L",
+      "source_locator": "Abstract",
+      "registry_comment_id": 5785752118,
+      "abstract_sha256_nfkc_ws1": "528a74b69cb13a0fdd2e8a3103cd2153f6ecf8bfd4b438dfc97e41c2f675f5f7"
+    },
+    {
+      "bundle_id": "B0002",
+      "sample_id": "CAL-FRISTON-2010",
+      "stable_identity": "doi:10.1038/nrn2787",
+      "canonical_url": "https://doi.org/10.1038/nrn2787",
+      "source_locator": "Abstract",
+      "registry_comment_id": 5785745312,
+      "abstract_sha256_nfkc_ws1": "69ce9c6b61fead1a23978551ba6bb89f8a53c131b9991a691bce33bb4d5d86fc"
+    },
+    {
+      "bundle_id": "B0003",
+      "sample_id": "CAL-TISHBY-2000",
+      "stable_identity": "arxiv:physics/0004057",
+      "canonical_url": "https://arxiv.org/abs/physics/0004057",
+      "source_locator": "Abstract",
+      "registry_comment_id": 5785751270,
+      "abstract_sha256_nfkc_ws1": "6cc85b78f20e0c0c9e187c7a539ece5c69c8d6d28047938d15ade98c472f7f30"
+    },
+    {
+      "bundle_id": "B0004",
+      "sample_id": "CAL-KOLCHINSKY-WOLPERT-2018",
+      "stable_identity": "doi:10.1098/rsfs.2018.0041",
+      "canonical_url": "https://doi.org/10.1098/rsfs.2018.0041",
+      "source_locator": "Abstract",
+      "registry_comment_id": 5785753999,
+      "abstract_sha256_nfkc_ws1": "5d594172877dbe699dc9344e438c9756d3f1b817fc3be152516db02dbc2af244"
+    },
+    {
+      "bundle_id": "B0005",
+      "sample_id": "CAL-COWAN-2001",
+      "stable_identity": "doi:10.1017/S0140525X01003922",
+      "canonical_url": "https://doi.org/10.1017/S0140525X01003922",
+      "source_locator": "Abstract",
+      "registry_comment_id": 5785763969,
+      "abstract_sha256_nfkc_ws1": "97b2d1746a2c12c6859e2a0dfc911a7345cad7890535d9a6c2cf570d03d476f7"
+    }
+  ],
+  "forbidden_before_both_passes_frozen": [
+    "editing source membership",
+    "editing source normalization",
+    "editing prompt text",
+    "editing bundle-id mapping",
+    "viewing pass A while producing pass B",
+    "viewing pass B while producing pass A",
+    "viewing basis or decomposition outcomes",
+    "changing extractor configuration between A and B"
+  ]
+}
