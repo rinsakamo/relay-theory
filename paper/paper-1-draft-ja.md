@@ -9,7 +9,7 @@
 
 ## 要旨
 
-表現間の形式的な差は、それだけでは target-level individuation を正当化しない。本稿は target-level use に structurally eligible な feature を fiber invariance により特徴づける。すなわち、representation-to-target assignment が誘導する quotient を介して descend しなければならない。representation-level observation は structurally admissible な test family を通じて target-level outcome に接続され、再利用可能な individuation-inference audit として整理される。UMI case は read ID、latent molecular tag、noisy observation を区別し、database-record microcase は同じ構造が別領域にも現れることを示す。Lean formalization は quotient descent と family-level separation を検査する。本枠組みは proposed assignment に相対して individuation inference を監査するが、その assignment 自体を発見せず、証拠一般や numerical identity の完全な理論も与えない。
+表現間の形式的な差は、それだけでは target-level individuation を正当化しない。本稿は structural eligibility を fiber invariance により特徴づける。feature は representation-to-target assignment が誘導する quotient を介して descend しなければならないが、scientific warrant は独立に必要である。representation-level observation は structurally admissible な test family を通じて target-level outcome に接続され、再利用可能な individuation-inference audit として整理される。UMI case は read ID、latent molecular tag、noisy observation を区別し、database-record microcase は同じ構造が別領域にも現れることを示す。Lean は quotient descent と family-level separation を検査する。本枠組みは assignment に相対して inference を監査するが、その assignment 自体を発見せず、証拠一般や numerical identity の完全な理論も与えない。
 
 ## 1. はじめに
 
