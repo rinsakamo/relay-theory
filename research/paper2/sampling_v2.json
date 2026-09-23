@@ -1,0 +1,84 @@
+{
+  "schema_version": "paper2-sampling-v2",
+  "owner_issue": 167,
+  "coordination_issue": 130,
+  "supersedes": {
+    "paper2-sampling-v1": "primary work-selection rule only"
+  },
+  "inherits_from_v1": [
+    "Top50 calibration exclusion",
+    "max 3 selected claims per work",
+    "explicit denominator discipline",
+    "paper-level dependence and 2000-replicate cluster bootstrap",
+    "pipeline-failure versus scientific-residual separation",
+    "J=100 null-control schedule under #140",
+    "no result-dependent stopping or expansion"
+  ],
+  "target_surface": "temporally stratified citation-ranked high-impact cognitive-capacity literature under frozen retrieval-v1 and eligibility-v1.1 semantics",
+  "retrieval_authority": {
+    "provider": "OpenAlex",
+    "retrieval_schema": "paper2-retrieval-v1",
+    "counts_artifact_sha256": "9b1d59c816a547d053fb5a34d7bd6da549d12bb43814b11095f863b4103ef40e",
+    "union_oql_sha256": "5156ddf574e15f4b82f090dd8bf870775a31c50f292a48fd374967b4776157ab",
+    "historical_N_frame": 31550631,
+    "full_manifest_required": false,
+    "provider_state_at_sampling_must_be_recorded": true
+  },
+  "primary_work_target": {
+    "K": 1000,
+    "minimum_per_included_era": 50,
+    "weight": "sqrt(N_d)",
+    "formula": "k_d = 50 + Hamilton((1000 - 50*D) * sqrt(N_d) / sum_j sqrt(N_j))",
+    "integer_apportionment": "hamilton_largest_remainder",
+    "exact_remainder_tie_break": "declared frozen era order",
+    "sum_k_d_must_equal_K": true
+  },
+  "within_era_ranking": {
+    "primary_sort": "cited_by_count descending",
+    "tie_break": "canonical OpenAlex Work ID ascending after complete citation-count tie closure",
+    "eligibility": "paper2-eligibility-v1.1 (#133)",
+    "quota_fill": "screen from rank 1 downward until k_d INCLUDE works",
+    "formal_model_required": false,
+    "citation_is_epistemic_weight": false
+  },
+  "screening_states": [
+    "INCLUDE",
+    "EXCLUDE",
+    "ELIGIBILITY_UNCERTAIN",
+    "SOURCE_INACCESSIBLE",
+    "CALIBRATION_EXCLUDED"
+  ],
+  "reserve": {
+    "source": "continuation of the same frozen within-era citation ranking after primary quota fill",
+    "ad_hoc_replacement_forbidden": true,
+    "exact_limit": "NOT_YET_FROZEN"
+  },
+  "era_policy": {
+    "boundaries": "NOT_YET_FROZEN_PENDING_PROVIDER_YEAR_COUNTS",
+    "partial_current_decade": "MUST_BE_EXPLICITLY_FROZEN",
+    "unknown_year": "MUST_BE_EXPLICITLY_FROZEN",
+    "pre_1950": "MUST_BE_EXPLICITLY_FROZEN",
+    "silent_year_exclusion_forbidden": true
+  },
+  "sensitivity": {
+    "candidate": "equal quota per frozen era",
+    "primary_replacement_after_outcomes_forbidden": true
+  },
+  "real_corpus_selection_authorized": false,
+  "anti_circularity": {
+    "allowed_sampling_inputs": [
+      "frozen retrieval-v1 semantics",
+      "publication year",
+      "citation count",
+      "canonical bibliographic identity",
+      "frozen eligibility-v1.1 disposition",
+      "pre-outcome source-access and operational cost information"
+    ],
+    "forbidden_sampling_inputs": [
+      "held-out ClaimIR content",
+      "decomposition PASS or RESIDUAL",
+      "real/null coverage",
+      "basis-specific ease of reconstruction"
+    ]
+  }
+}
