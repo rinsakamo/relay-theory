@@ -23,9 +23,10 @@
     "free_text_claim_ir_generation_forbidden": true,
     "explicit_unresolved_choice": "__unresolved__",
     "answer_type_required": "choice",
-    "response_model_must_match_request": true,
-    "zero_output_tokens_required": true,
-    "max_questions": 64
+    "max_questions": 64,
+    "response_model_if_present_must_match_request": true,
+    "nonzero_output_tokens_forbidden_when_reported": true,
+    "probabilities_and_confidence_are_optional_audit_metadata": true
   },
   "bounded_surface": {
     "max_source_spans": 3,
@@ -42,8 +43,15 @@
   "compiler": {
     "deterministic": true,
     "repairs_invalid_decisions": false,
-    "assigns_node_ids": ["n1", "n2", "n3"],
-    "assigns_relation_ids": ["r1", "r2"],
+    "assigns_node_ids": [
+      "n1",
+      "n2",
+      "n3"
+    ],
+    "assigns_relation_ids": [
+      "r1",
+      "r2"
+    ],
     "validates_with_existing_candidate_validator": true,
     "validates_full_claim_ir_before_qualification": true
   },
