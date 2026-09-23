@@ -67,6 +67,7 @@ def validate_attempt(attempt_value: Any, claim_ir: dict[str, Any], source_labels
         unique_strings(assumption["source_refs"], f"{apath}.source_refs", nonempty=True)
 
     macros = expect_list(attempt["derived_macros"], f"{context}.derived_macros")
+    macro_witness_ids: list[str] = []
     for index, item in enumerate(macros):
         mpath = f"{context}.derived_macros[{index}]"
         macro = expect_object(item, mpath)
@@ -82,7 +83,7 @@ def validate_attempt(attempt_value: Any, claim_ir: dict[str, Any], source_labels
             fail(f"{mpath}.expansion.coordinate_ids: unknown {unknown_coords}")
         if unknown_rels:
             fail(f"{mpath}.expansion.relation_ids: unknown {unknown_rels}")
-        expect_string(expansion["witness_schema_id"], f"{mpath}.expansion.witness_schema_id")
+        macro_witness_ids.append(expect_string(expansion["witness_schema_id"], f"{mpath}.expansion.witness_schema_id"))
 
     outcome = expect_object(attempt["outcome"], f"{context}.outcome")
     status = outcome.get("status")
@@ -90,7 +91,8 @@ def validate_attempt(attempt_value: Any, claim_ir: dict[str, Any], source_labels
         fail(f"{context}.outcome.status: unexpected value")
     if status == "PASS":
         exact_keys(outcome, PASS_OUTCOME_KEYS, f"{context}.outcome")
-        validate_witness(outcome["witness"], f"{context}.outcome.witness", require_verified=True)
+        pass_witness = validate_witness(outcome["witness"], f"{context}.outcome.witness", require_verified=True)
+        witness_schema_ids = {pass_witness["generic_schema_id"]}
     else:
         exact_keys(outcome, RESIDUAL_OUTCOME_KEYS, f"{context}.outcome")
         residual = expect_object(outcome["residual"], f"{context}.outcome.residual")
@@ -104,8 +106,14 @@ def validate_attempt(attempt_value: Any, claim_ir: dict[str, Any], source_labels
         unique_strings(residual["unmet_obligations"], f"{context}.outcome.residual.unmet_obligations", nonempty=True)
         expect_string(residual["details"], f"{context}.outcome.residual.details")
         attempts = expect_list(outcome["witness_attempts"], f"{context}.outcome.witness_attempts")
+        witness_schema_ids: set[str] = set()
         for index, witness in enumerate(attempts):
-            validate_witness(witness, f"{context}.outcome.witness_attempts[{index}]", require_verified=False)
+            checked = validate_witness(witness, f"{context}.outcome.witness_attempts[{index}]", require_verified=False)
+            witness_schema_ids.add(checked["generic_schema_id"])
+
+    for witness_schema_id in macro_witness_ids:
+        if witness_schema_id not in witness_schema_ids:
+            fail(f"{context}.derived_macros: witness_schema_id is not traceable to the recorded outcome witness")
 
     # Structural expansion is mandatory; a macro is never a substitute.
     if macros and (not basis_ids or not relation_ids):
