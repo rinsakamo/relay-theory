@@ -44,6 +44,14 @@ NORMAL_PROBES_PER_REPLICATE = 1
 SYSTEMONE_PROBES_PER_REPLICATE = 1
 EXPECTED_PROBES = 4
 EXPECTED_SYSTEMONE_QUESTIONS = 54
+EXPECTED_JEV_REMOTE = "https://github.com/kishida/llama.cpp"
+EXPECTED_JEV_REVISION = "07183d010f5cf5d021a2550775f42fb4b4270e06"
+EXPECTED_JEV_TREE = "4a654218342c2e179c0cd143e359632bff02bc22"
+EXPECTED_SYSTEMONE_ROUTE = "/v1/systemone"
+EXPECTED_ROUTE_SOURCE_PATHS = (
+    "tools/server/server-jev.h",
+    "tools/server/server-jev.cpp",
+)
 
 
 class RuntimePreflightError(RuntimeError):
@@ -96,9 +104,48 @@ def validate_manifest(manifest: Any) -> dict[str, Any]:
         fail("systemone_probe missing")
     if systemone.get("expected_question_count") != EXPECTED_SYSTEMONE_QUESTIONS:
         fail("SystemOne question count drift")
+    target = manifest.get("target_source")
+    if not isinstance(target, dict):
+        fail("target_source missing")
+    if target.get("repository_url") != EXPECTED_JEV_REMOTE:
+        fail("target_source repository drift")
+    if target.get("branch_observed_at_freeze") != "jev":
+        fail("target_source branch drift")
+    if target.get("revision") != EXPECTED_JEV_REVISION:
+        fail("target_source revision drift")
+    if target.get("tree") != EXPECTED_JEV_TREE:
+        fail("target_source tree drift")
+    if target.get("systemone_route") != EXPECTED_SYSTEMONE_ROUTE:
+        fail("target_source SystemOne route drift")
+    if tuple(target.get("route_source_paths", [])) != EXPECTED_ROUTE_SOURCE_PATHS:
+        fail("target_source route source paths drift")
+
+    cache = manifest.get("cache_boundary")
+    if not isinstance(cache, dict):
+        fail("cache_boundary missing")
+    if cache.get("cache_prompt") is not False:
+        fail("cache_prompt must remain false")
+    if cache.get("cross_request_cache_reuse_required") is not False:
+        fail("cross-request cache reuse must remain unnecessary")
+    if cache.get("relaylm_3006_cache_correctness_dependency") is not False:
+        fail("#162 runtime preflight must remain independent of RelayLM #3006")
+    if cache.get("cache_correctness_claimed_by_this_preflight") is not False:
+        fail("runtime preflight may not claim cache correctness")
+
     if manifest.get("real_pilot_authorized_by_this_artifact") is not False:
         fail("runtime qualification may not authorize real pilot by itself")
     return manifest
+
+
+def _canonical_remote(value: str | None) -> str | None:
+    if value is None:
+        return None
+    result = value.strip()
+    if result.startswith("git@github.com:"):
+        result = "https://github.com/" + result[len("git@github.com:"):]
+    if result.endswith(".git"):
+        result = result[:-4]
+    return result.rstrip("/")
 
 
 def _git_remote(root: Path) -> str | None:
@@ -111,6 +158,74 @@ def _git_remote(root: Path) -> str | None:
     )
     value = completed.stdout.strip()
     return value or None
+
+
+def _inspect_source_identity(root: Path) -> dict[str, Any]:
+    status = subprocess.run(
+        ["git", "status", "--porcelain"],
+        cwd=root,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    if status.returncode != 0:
+        fail("could not inspect Jev source git status")
+    if status.stdout.strip():
+        fail("Jev source checkout must be clean")
+
+    revision = physical._collect_llama_revision(root)
+    tree_result = subprocess.run(
+        ["git", "rev-parse", "HEAD^{tree}"],
+        cwd=root,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    if tree_result.returncode != 0:
+        fail("could not inspect Jev source tree")
+    tree = tree_result.stdout.strip()
+
+    route_hits: list[str] = []
+    for relative in EXPECTED_ROUTE_SOURCE_PATHS:
+        path = root / relative
+        if path.is_file() and EXPECTED_SYSTEMONE_ROUTE in path.read_text(
+            encoding="utf-8", errors="replace"
+        ):
+            route_hits.append(relative)
+
+    return {
+        "remote": _canonical_remote(_git_remote(root)),
+        "revision": revision,
+        "tree": tree,
+        "systemoneRoute": EXPECTED_SYSTEMONE_ROUTE,
+        "routeSourceHits": route_hits,
+    }
+
+
+def _validate_source_identity(
+    identity: dict[str, Any],
+    *,
+    enforce_exact_pin: bool,
+) -> None:
+    if identity.get("remote") != EXPECTED_JEV_REMOTE:
+        fail(
+            "Jev source remote mismatch: "
+            f"expected={EXPECTED_JEV_REMOTE} actual={identity.get('remote')}"
+        )
+    hits = identity.get("routeSourceHits")
+    if not isinstance(hits, list) or not hits:
+        fail("Jev source does not contain /v1/systemone route marker")
+    if enforce_exact_pin:
+        if identity.get("revision") != EXPECTED_JEV_REVISION:
+            fail(
+                "Jev source revision mismatch: "
+                f"expected={EXPECTED_JEV_REVISION} actual={identity.get('revision')}"
+            )
+        if identity.get("tree") != EXPECTED_JEV_TREE:
+            fail(
+                "Jev source tree mismatch: "
+                f"expected={EXPECTED_JEV_TREE} actual={identity.get('tree')}"
+            )
 
 
 def _post_json(url: str, payload: dict[str, Any], timeout: float) -> dict[str, Any]:
@@ -265,7 +380,13 @@ def _qualify_one(
 
     server_binary = llama_cpp_root / "build" / "bin" / "llama-server"
     physical._require_llama_cpp_paths(llama_cpp_root, server_binary)
-    revision = physical._collect_llama_revision(llama_cpp_root)
+    source_identity = _inspect_source_identity(llama_cpp_root)
+    _validate_source_identity(
+        source_identity,
+        enforce_exact_pin=require_gpu,
+    )
+    revision = source_identity["revision"]
+    assert isinstance(revision, str)
     version = physical._collect_server_version(server_binary)
     actual_sha = physical._verify_artifact(artifact_path, artifact_sha256)
     gpu = physical._collect_gpu_identity(required=require_gpu)
@@ -314,6 +435,8 @@ def _qualify_one(
                 "root": str(llama_cpp_root),
                 "remote": remote,
                 "revision": revision,
+                "tree": source_identity["tree"],
+                "systemoneRouteSourceHits": source_identity["routeSourceHits"],
                 **version,
             },
             "artifact": {
@@ -385,7 +508,7 @@ def run_preflight(
             fail("synthetic probe count mismatch")
 
         a, b = results
-        for key in ("revision", "buildNumber"):
+        for key in ("revision", "tree", "buildNumber"):
             if a["llamaCpp"][key] != b["llamaCpp"][key]:
                 fail(f"A/B llama.cpp {key} mismatch")
         if a["artifact"]["sha256"] != b["artifact"]["sha256"]:
@@ -424,7 +547,7 @@ def _run_text(command: list[str], cwd: Path) -> str:
     return completed.stdout
 
 
-def _init_git(path: Path) -> str:
+def _init_git(path: Path, *, remote: str | None = None) -> str:
     path.mkdir(parents=True, exist_ok=True)
     _run_text(["git", "init", "-q"], path)
     _run_text(["git", "config", "user.email", "selftest@example.invalid"], path)
@@ -432,6 +555,8 @@ def _init_git(path: Path) -> str:
     (path / "README").write_text("selftest\n", encoding="utf-8")
     _run_text(["git", "add", "README"], path)
     _run_text(["git", "commit", "-qm", "selftest"], path)
+    if remote is not None:
+        _run_text(["git", "remote", "add", "origin", remote], path)
     return _run_text(["git", "rev-parse", "HEAD"], path).strip()
 
 
@@ -544,9 +669,28 @@ def self_test(manifest_path: Path) -> None:
         repo = root / "relay-theory"
         _init_git(repo)
         llama = root / "llama.cpp"
-        _init_git(llama)
+        _init_git(llama, remote=EXPECTED_JEV_REMOTE + ".git")
+        route_path = llama / EXPECTED_ROUTE_SOURCE_PATHS[0]
+        route_path.parent.mkdir(parents=True, exist_ok=True)
+        route_path.write_text(
+            f'static constexpr const char * route = "{EXPECTED_SYSTEMONE_ROUTE}";\n',
+            encoding="utf-8",
+        )
+        _run_text(["git", "add", str(route_path.relative_to(llama))], llama)
+        _run_text(["git", "commit", "-qm", "add synthetic SystemOne route"], llama)
         server = llama / "build" / "bin" / "llama-server"
         _fake_server(server)
+        observed = _inspect_source_identity(llama)
+        _validate_source_identity(observed, enforce_exact_pin=False)
+        mismatched = dict(observed)
+        mismatched["revision"] = "0" * 40
+        try:
+            _validate_source_identity(mismatched, enforce_exact_pin=True)
+        except RuntimePreflightError:
+            pass
+        else:
+            raise AssertionError("exact Jev revision mismatch unexpectedly accepted")
+
         artifact = root / "fake.gguf"
         artifact.write_bytes(b"fake systemone artifact")
         sha = sha256_file(artifact)
