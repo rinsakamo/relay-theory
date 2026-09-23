@@ -427,7 +427,9 @@ individuation の practice-oriented work も本稿の主張を制約する。Bue
 
 programming-language semantics における representation independence は implementation detail への依存を制約する (Mitchell 1986)。observational / behavioral equivalence は specified interaction に相対して system を分類する (Hennessy and Milner 1985; Rutten 2000)。identity and discernibility の研究は formal discernibility を unrestricted numerical identity と同一視することに警告する (Ladyman, Linnebo, and Pettigrew 2012; Dieks and Versteegh 2008)。
 
-本稿の数学は、これらの成熟した framework よりはるかに控えめである。特徴的なのはその methodological use、すなわち target factorization、restricted test、counterfactual assignment analysis を組み合わせて individuation inference を監査する点にある。
+invariance 自体を新規な philosophical criterion として主張するわけではない。Liu (2015) は、epistemic representation が relevant representational convention に対して invariant であるべきだと明示的に論じている。本稿の quotient theorem も新しい数学や scientific representation 一般の新理論として提示するものではない。その役割は、proposed target assignment に相対した individuation inference において、same-target presentation を同一視した後にどの representation-level feature が残るかを特徴づけることにある。
+
+特徴的なのはその methodological use、すなわち target-induced quotient descent、structurally admissible test family、independent scientific warrant、counterfactual assignment analysis を一つの auditable individuation protocol に統合する点にある。
 
 また、individuation を支えない representational distinction が不要だということにもならない。surplus structure は別の representational task に有用または必要でありうる (Nguyen, Teh, and Wells 2020)。
 
@@ -488,6 +490,8 @@ UMI-based molecular counting が主たる scientific case を与え、database-r
 > **individuation claim が formal difference に依存するなら、その difference が target quotient を生き残ることを要求し、observation-to-target bridge と independent warrant を明示し、結論を declared test regime の範囲内に保て。**
 
 ## 参考文献
+
+Liu, Chuang. 2015. “Invariance and Scientific Representation.” *Frontiers of Philosophy in China* 10(4): 647–667. DOI: 10.3868/s030-004-015-0051-5.
 
 Bueno, Otávio, Ruey-Lin Chen, and Melinda B. Fagan, eds. 2018. *Individuation, Process, and Scientific Practices*. Oxford University Press. DOI: 10.1093/oso/9780190636814.001.0001.
 

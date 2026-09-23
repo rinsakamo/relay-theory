@@ -419,7 +419,9 @@ Accordingly, this paper does not claim that representation and individuation hav
 
 Representation independence in programming-language semantics constrains dependence on implementation details (Mitchell 1986). Observational and behavioral equivalence classify systems relative to specified interactions (Hennessy and Milner 1985; Rutten 2000). Work on identity and discernibility warns against identifying formal discernibility with unrestricted numerical identity (Ladyman, Linnebo, and Pettigrew 2012; Dieks and Versteegh 2008).
 
-The present mathematics is substantially more modest than these mature frameworks. The distinctive use is methodological: combine target factorization, restricted tests, and counterfactual assignment analysis to audit individuation inferences.
+Invariance itself is not a new philosophical criterion here. Liu (2015) explicitly argues that epistemic representation should be invariant with respect to relevant representational conventions. The quotient theorem in the present paper is therefore not offered as novel mathematics or as a new general theory of scientific representation. Its narrower role is to characterize, for an individuation inference relative to a proposed target assignment, exactly which representation-level features survive identification of same-target presentations.
+
+The distinctive use is methodological: combine target-induced quotient descent, structurally admissible test families, independent scientific warrant, and counterfactual assignment analysis in one auditable individuation protocol.
 
 Nor does failure to support individuation imply that a representational distinction is dispensable. Surplus structure can remain useful or even necessary for other representational tasks (Nguyen, Teh, and Wells 2020).
 
@@ -480,6 +482,8 @@ UMI-based molecular counting supplies the main scientific case, while the databa
 > **When an individuation claim depends on a formal difference, require that the difference survive the target quotient, expose the observation-to-target bridge and its independent warrant, and keep the conclusion within the declared test regime.**
 
 ## References
+
+Liu, Chuang. 2015. “Invariance and Scientific Representation.” *Frontiers of Philosophy in China* 10(4): 647–667. DOI: 10.3868/s030-004-015-0051-5.
 
 Bueno, Otávio, Ruey-Lin Chen, and Melinda B. Fagan, eds. 2018. *Individuation, Process, and Scientific Practices*. Oxford University Press. DOI: 10.1093/oso/9780190636814.001.0001.
 
