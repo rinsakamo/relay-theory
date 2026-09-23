@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/rinsakamo/relay-theory/blob/main/research/paper2/extraction_systemone_decision_v2.schema.json",
+  "title": "Paper 2 SystemOne Decision Record v2",
+  "description": "Hardened finite decision record for deterministic compilation into paper2-extraction-candidate-v1. Synthetic qualification infrastructure; not ontology.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "bundle_id", "claim_type", "modality", "scope", "nodes", "relations"],
+  "properties": {
+    "schema_version": {"const": "paper2-systemone-decision-v2"},
+    "bundle_id": {"type": "string", "pattern": "^B[0-9]{4}$"},
+    "claim_type": {
+      "enum": ["relation", "criterion", "mapping", "comparison", "counterfactual", "definition", "constraint", "other"]
+    },
+    "modality": {
+      "enum": ["descriptive", "necessary", "sufficient", "probabilistic", "definitional", "counterfactual", "comparative", "other"]
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["conditions", "population", "substrate", "task", "temporal_scope"],
+      "properties": {
+        "conditions": {"type": "array", "items": {"type": "string", "pattern": "^s[0-9]+$"}, "uniqueItems": true},
+        "population": {"type": "array", "items": {"type": "string", "pattern": "^s[0-9]+$"}, "uniqueItems": true},
+        "substrate": {"type": "array", "items": {"type": "string", "pattern": "^s[0-9]+$"}, "uniqueItems": true},
+        "task": {"type": "array", "items": {"type": "string", "pattern": "^s[0-9]+$"}, "uniqueItems": true},
+        "temporal_scope": {"type": "array", "items": {"type": "string", "pattern": "^s[0-9]+$"}, "uniqueItems": true}
+      }
+    },
+    "nodes": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["slot", "role", "anchor_span_id", "source_span_ids", "grounding"],
+        "properties": {
+          "slot": {"enum": ["n1", "n2", "n3"]},
+          "role": {
+            "enum": ["condition", "available_information", "state_or_structure", "intervention", "response_or_outcome", "criterion", "probe", "partition", "other"]
+          },
+          "anchor_span_id": {"type": "string", "pattern": "^s[0-9]+$"},
+          "source_span_ids": {
+            "type": "array",
+            "minItems": 1,
+            "items": {"type": "string", "pattern": "^s[0-9]+$"},
+            "uniqueItems": true
+          },
+          "grounding": {"enum": ["explicit", "normalized"]}
+        }
+      }
+    },
+    "relations": {
+      "type": "array",
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["slot", "kind", "arguments", "source_span_ids", "grounding"],
+        "properties": {
+          "slot": {"enum": ["r1", "r2"]},
+          "kind": {
+            "enum": ["equals", "differs", "depends_on", "changes", "predicts", "maps_to", "satisfies", "distinguishes", "precedes", "constrains", "equivalent", "other"]
+          },
+          "arguments": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 2,
+            "uniqueItems": true,
+            "items": {"enum": ["n1", "n2", "n3"]}
+          },
+          "source_span_ids": {
+            "type": "array",
+            "minItems": 1,
+            "items": {"type": "string", "pattern": "^s[0-9]+$"},
+            "uniqueItems": true
+          },
+          "grounding": {"enum": ["explicit", "normalized"]}
+        }
+      }
+    }
+  }
+}
