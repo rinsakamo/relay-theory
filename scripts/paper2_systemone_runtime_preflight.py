@@ -235,6 +235,18 @@ def _server_command(
     )
 
 
+def _port_is_reusably_free(host: str, port: int) -> bool:
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    try:
+        sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        sock.bind((host, port))
+        return True
+    except OSError:
+        return False
+    finally:
+        sock.close()
+
+
 def _qualify_one(
     *,
     replicate: str,
@@ -248,8 +260,8 @@ def _qualify_one(
 ) -> dict[str, Any]:
     if replicate not in {"A", "B"}:
         fail("replicate must be A or B")
-    if not physical._port_is_free(physical.DEFAULT_HOST, port):
-        fail(f"{physical.DEFAULT_HOST}:{port} is occupied")
+    if not _port_is_reusably_free(physical.DEFAULT_HOST, port):
+        fail(f"{physical.DEFAULT_HOST}:{port} is occupied by a live listener")
 
     server_binary = llama_cpp_root / "build" / "bin" / "llama-server"
     physical._require_llama_cpp_paths(llama_cpp_root, server_binary)
