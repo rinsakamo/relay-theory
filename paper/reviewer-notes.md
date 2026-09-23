@@ -1,5 +1,25 @@
 ## Anonymous external-review response — 2026-09-23
 
+A fresh external review recommended Major Revision while judging the mathematical core correct and the paper potentially publishable. The high-value pre-submission points were incorporated without expanding Paper 1 into a probabilistic or empirical follow-up:
+
+- recast the central structural result as the three-way equivalence
+  fiber invariance ⇔ universal soundness of difference inference ⇔ quotient descent,
+  explicitly conditional on a fixed proposed target assignment;
+- add direct comparison with Frigg & Nguyen's DEKI account (2020), Nguyen & Frigg
+  (2022), and Suárez's 2024 inferential account;
+- add an anonymous, standalone, pinned Lean supplement with build instructions and
+  a one-to-one R1–R23 result map;
+- distinguish structural test-family admissibility from FWER/FDR/selective-inference
+  multiple-testing correction;
+- sharpen counterfactual invariance with an explicit decision-rule condition
+  D(pi·X)=D(X) for representation-structure automorphisms.
+
+The review's suggested UMI real-data study, full probabilistic extension, and expanded
+warrant taxonomy remain follow-up work because they exceed the exact deterministic
+scope of Paper 1.
+
+## Anonymous external-review response — 2026-09-23
+
 A fresh external review recommended Major Revision while judging the mathematical
 core correct and the paper potentially publishable. The high-value pre-submission
 points were incorporated without expanding Paper 1 into a probabilistic or empirical
