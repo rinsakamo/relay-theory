@@ -35,7 +35,7 @@
 
 \begin{abstract}
 
-Formal differences between representations do not license target-level individuation. Within an exact deterministic representation-to-target model, structural eligibility is characterized by fiber invariance: an eligible feature must descend through the quotient induced by the declared assignment, while scientific warrant remains independent. We connect representation-level observations to target-level outcomes through structurally admissible test families and formulate a reusable individuation-inference audit. Cross-domain cases illustrate the framework, and machine-checked proofs verify quotient descent and family-level separation. The broader methodological lesson is conditional: formal distinctions require a warranted route to the declared target; the framework neither discovers that assignment nor establishes unrestricted numerical identity.
+Formal differences between representations do not license target-level individuation. Within an exact deterministic representation-to-target model, a feature used as a universally sound difference discriminator over the declared scope must be fiber-invariant and hence descend through the target-induced quotient, while scientific warrant remains independent. We connect representation-level observations to target-level outcomes through structurally admissible test families and formulate an individuation-inference audit. Cross-domain cases illustrate it; machine-checked proofs verify quotient descent and family-level separation. The broader methodological lesson is conditional: formal distinctions require a warranted route to the declared target; the framework neither discovers that assignment nor establishes unrestricted numerical identity.
 
 \end{abstract}
 \section{Introduction}
@@ -419,6 +419,8 @@ A read-level feature may enter a molecular individuation inference only through 
 
 This is also why the case is useful philosophically. Two fields can both be identifiers, both be strings, and both distinguish records, yet only one participates in a causal and measurement history designed to track pre-amplification templates.
 
+The same case makes the audit's diagnostic dispositions explicit. A software read ID that varies within a source-molecule fiber fails the structural test: its difference does not descend through the target quotient. A raw observed UMI string under sequencing noise can instead fail the observation-to-target bridge, because observed string inequality need not reproduce latent tag inequality. An error-aware UMI model whose tagging or error assumptions lack independent support remains scientifically underdetermined even if its structure is formally admissible. Only when the relevant protocol, error model, and contextual assumptions are independently warranted does the inference receive a scoped pass. These are dispositions of the inference relative to the declared target model, not claims about UMI technology in general.
+
 
 
 \section{Counterfactual Relevance Audit}
@@ -435,6 +437,8 @@ S(\pi(u_1),\ldots,\pi(u_k)).
 \]
 
 The choice of \(\mathcal S\) must itself be independently motivated. For confirmatory use it should be fixed before the counterfactual comparison; if \(\mathcal S\) is learned adaptively, the learning or selection rule must be included in the audited inference. Otherwise an analyst could make an inconvenient transformation non-preserving merely by adding a relation that encodes the desired conclusion.
+
+If the declared structure is so rich that \(\operatorname{Aut}(U,\mathcal S)\) is trivial, the invariance check may be formally satisfied while providing little diagnostic leverage. The independent-warrant requirement therefore applies not only to the included relations, but also to the granularity of \(\mathcal S\) itself.
 
 When an inference uses only equality classes, \(\mathcal S\) contains no structure beyond equality and every bijection is a harmless renaming. When an inference uses sequence geometry, edit distance, neighborhood structure, order, or another relation on label values, an arbitrary bijection need not be harmless. In an error-aware UMI analysis, for example, mapping strings to arbitrary numbers while destroying sequence distance is not a pure re-encoding of the evidential structure.
 
@@ -614,7 +618,7 @@ The number of small theorems is not itself a novelty claim. The collection is a 
 
 A formal difference may enter an individuation inference only through a justified path from representation to target.
 
-The exact deterministic core can now be stated compactly: \textbf{within a declared functional representation-to-target model, representation-level evidence structurally eligible for target-level use must descend through the quotient induced by the proposed target assignment}. Within-fiber distinctions are discarded by construction; selected tests can support separation only when their observation-to-target links are structurally admissible; and neither condition manufactures the scientific warrant for accepting the model. The broader methodological lesson is weaker and more general: a formal distinction may support a target-level distinction only through an independently warranted route to the declared target.
+The exact deterministic core can now be stated compactly: \textbf{within a declared functional representation-to-target model, a representation-level feature used as a universally sound difference discriminator over the declared scope must be fiber-invariant and therefore descend through the quotient induced by the proposed target assignment}. Within-fiber distinctions are discarded by construction; selected tests can support separation only when their observation-to-target links are structurally admissible; and neither condition manufactures the scientific warrant for accepting the model. The broader methodological lesson is weaker and more general: a formal distinction may support a target-level distinction only through an independently warranted route to the declared target.
 
 The resulting individuation-inference audit is therefore not a procedure for discovering target assignments or metaphysical individuals. It is a reusable dependency check that distinguishes structural failure, scientific underdetermination, and a scoped pass relative to an explicitly declared target model and test regime.
 
