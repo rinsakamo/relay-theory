@@ -31,13 +31,41 @@
     "requires_complete_candidate_enumeration_before_cap": true
   },
   "diagnostics": {
-    "retrieval_channel_membership_classes": ["R1","R2","R3","R1R2","R1R3","R2R3","R1R2R3"],
+    "retrieval_channel_membership_classes": [
+      "R1",
+      "R2",
+      "R3",
+      "R1R2",
+      "R1R3",
+      "R2R3",
+      "R1R2R3"
+    ],
     "citation_bands": [
-      {"label":"1-9","min":1,"max":9},
-      {"label":"10-99","min":10,"max":99},
-      {"label":"100-999","min":100,"max":999},
-      {"label":"1000-9999","min":1000,"max":9999},
-      {"label":">=10000","min":10000,"max":null}
+      {
+        "label": "1-9",
+        "min": 1,
+        "max": 9
+      },
+      {
+        "label": "10-99",
+        "min": 10,
+        "max": 99
+      },
+      {
+        "label": "100-999",
+        "min": 100,
+        "max": 999
+      },
+      {
+        "label": "1000-9999",
+        "min": 1000,
+        "max": 9999
+      },
+      {
+        "label": ">=10000",
+        "min": 10000,
+        "max": null
+      }
     ],
     "year": "retain publication year; any report bands must be frozen from pre-outcome bibliographic metadata",
     "field_topic": "diagnostic/balance/sensitivity only; never a hard eligibility criterion in v1"
@@ -45,8 +73,18 @@
   "precision": {
     "confidence_reference": 0.95,
     "conservative_p": 0.5,
-    "target_half_widths": [0.05,0.03,0.02,0.01],
-    "design_effect_sensitivity": [1,2,5,10],
+    "target_half_widths": [
+      0.05,
+      0.03,
+      0.02,
+      0.01
+    ],
+    "design_effect_sensitivity": [
+      1,
+      2,
+      5,
+      10
+    ],
     "note": "normal/binomial-style references only; clustered literature is not IID"
   },
   "null_schedule": {
@@ -57,9 +95,15 @@
     "primary_p_value": false
   },
   "outcome_taxonomy": [
-    "VERIFIED_PASS","RESIDUAL","SOURCE_INACCESSIBLE","ELIGIBILITY_EXCLUDED",
-    "ELIGIBILITY_UNCERTAIN","EXTRACTION_FAILURE","IR_VALIDATION_FAILURE",
-    "WITNESS_GENERATION_FAILURE","FORMAL_VERIFICATION_FAILURE"
+    "VERIFIED_PASS",
+    "RESIDUAL",
+    "SOURCE_INACCESSIBLE",
+    "ELIGIBILITY_EXCLUDED",
+    "ELIGIBILITY_UNCERTAIN",
+    "EXTRACTION_FAILURE",
+    "IR_VALIDATION_FAILURE",
+    "WITNESS_GENERATION_FAILURE",
+    "FORMAL_VERIFICATION_FAILURE"
   ],
   "estimand": {
     "primary": "N_verified_real / N_analyzable_heldout_claims",
@@ -81,6 +125,94 @@
     "final_reserve_work_n": null,
     "final_analyzable_claim_target": null,
     "stopping_rule": "NOT_YET_FROZEN",
-    "authorization_condition": "freeze precision/cost tradeoff using basis-blind operational data before any held-out decomposition outcome is inspected"
+    "authorization_condition": "freeze precision/cost tradeoff using basis-blind operational data before any held-out decomposition outcome is inspected",
+    "forbidden_sizing_inputs": [
+      "#147 extraction-faithfulness empirical outcomes",
+      "held-out decomposition PASS/RESIDUAL outcomes",
+      "real/null coverage results"
+    ],
+    "allowed_sizing_inputs": [
+      "pre-outcome bibliographic metadata",
+      "independent #158 basis-blind eligibility/source-access operational measurements",
+      "declared runtime/source-acquisition cost",
+      "the predeclared precision/DEFF sensitivity table"
+    ]
+  },
+  "statistical_units": {
+    "primary_sampling_unit": "canonical bibliographic work",
+    "claim_analysis_unit": "selected held-out ClaimIR row under the frozen within-work cap",
+    "minimum_dependence_cluster": "canonical_work_id",
+    "iid_claim_interpretation_forbidden": true
+  },
+  "sampling_weights": {
+    "primary_work_draw": "equal-probability hash-ranked draw from the declared held-out work population",
+    "work_level_population_weighting": "equal weights for PRIMARY work rows unless a future version explicitly introduces disproportionate primary strata",
+    "claim_level_population_weighting": "not claimed",
+    "claim_level_scope": "coverage under the frozen capped-claim protocol, not a census-weighted estimate over every claim in every eligible paper",
+    "diagnostic_rows_pooled_into_primary": false
+  },
+  "denominator_contract": {
+    "scientific_terminal_outcomes": [
+      "VERIFIED_PASS",
+      "RESIDUAL"
+    ],
+    "excluded_or_preterminal_states": [
+      "SOURCE_INACCESSIBLE",
+      "ELIGIBILITY_EXCLUDED",
+      "ELIGIBILITY_UNCERTAIN",
+      "EXTRACTION_FAILURE",
+      "IR_VALIDATION_FAILURE",
+      "WITNESS_GENERATION_FAILURE",
+      "FORMAL_VERIFICATION_FAILURE"
+    ],
+    "primary_analyzable_denominator": "selected held-out claims that are eligible, source-accessible, extraction-successful, IR-valid, and reach a scientific terminal outcome under the frozen decomposition stack",
+    "pipeline_failure_as_residual_forbidden": true,
+    "no_valid_witness_rule": "RESIDUAL requires completion of the frozen semantic witness-search/decomposition contract with no accepted witness; generator, tooling, or formal-execution failure alone remains a failure-layer state"
+  },
+  "two_phase_reporting": {
+    "eligibility_prevalence": {
+      "point_estimate": "N_INCLUDED / (N_INCLUDED + N_EXCLUDED) among determinately adjudicated sampled works",
+      "unresolved_states": [
+        "ELIGIBILITY_UNCERTAIN",
+        "SOURCE_INACCESSIBLE"
+      ],
+      "lower_bound": "N_INCLUDED / N_drawn_heldout_works",
+      "upper_bound": "(N_INCLUDED + N_ELIGIBILITY_UNCERTAIN + N_SOURCE_INACCESSIBLE) / N_drawn_heldout_works",
+      "basis_coverage_conditioned_on_eligibility": true
+    },
+    "required_separation": [
+      "Pr(eligible | retrieval frame)",
+      "Pr(verified decomposition | eligible, analyzable, frozen held-out claim protocol)"
+    ]
+  },
+  "uncertainty": {
+    "nominal_iid_reference": {
+      "method": "Wilson score interval",
+      "confidence": 0.95,
+      "role": "reference only",
+      "iid_interpretation_forbidden": true
+    },
+    "paper_cluster_bootstrap": {
+      "role": "secondary uncertainty analysis",
+      "cluster_unit": "canonical_work_id",
+      "replicates": 2000,
+      "seed": "relaytheory-paper2-sampling-v1-paper-cluster-bootstrap",
+      "draws_per_replicate": "number of analyzable work clusters, sampled with replacement",
+      "within_cluster_rule": "all selected analyzable claims from a resampled work travel together",
+      "statistics": [
+        "claim-weighted C_real",
+        "paper-balanced mean selected-claim coverage"
+      ],
+      "uniform_index_method": "SHA-256 rejection mapping to [0, n_clusters) using replicate and draw position",
+      "interval": "2.5th and 97.5th percentiles using Type-7 linear quantiles",
+      "unavailable_if_fewer_than_clusters": 2
+    },
+    "additional_lineage_clusters": "do not fabricate laboratory/framework/dataset lineage clusters unless an outcome-blind metadata contract is separately frozen"
+  },
+  "expansion_policy": {
+    "result_dependent_early_stopping_forbidden": true,
+    "result_dependent_sample_expansion_forbidden": true,
+    "sequential_expansion_authorized": false,
+    "future_expansion_rule": "requires a versioned protocol change frozen before any real held-out decomposition outcome is inspected"
   }
 }
