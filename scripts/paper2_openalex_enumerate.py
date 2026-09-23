@@ -357,7 +357,7 @@ def stream_query(
     select = "id,doi,display_name,publication_year,cited_by_count,topics"
     while cursor:
         payload = client.run_oql(
-            query, per_page=200, cursor=cursor, select=select
+            query, per_page=100, cursor=cursor, select=select
         )
         for item in payload.get("results", []):
             yield item
@@ -409,60 +409,10 @@ def manifest_mode(
     *,
     max_pages: int | None,
 ) -> dict[str, Any]:
-    counts = counts_mode(client, config)
-    topic_ids = counts["seed_topics_v1"]
-    floor = int(config["citation_floor"])
-    conn = init_db(output)
-
-    tc = topic_clause(topic_ids)
-    if tc:
-        query = base_count_query(tc, floor)
-        topic_set = set(topic_ids)
-        for work in stream_query(client, query, max_pages=max_pages):
-            oid = upsert_work(conn, work)
-            matched = sorted(
-                topic_set
-                & {
-                    short_openalex_id(topic["id"])
-                    for topic in work.get("topics", [])
-                    if topic.get("id")
-                }
-            )
-            for tid in matched:
-                add_retrieval(conn, oid, "R1", f"seed_topic:{tid}")
-        conn.commit()
-
-    for text in config["text_queries"]:
-        query = base_count_query(text_clause(text), floor)
-        for work in stream_query(client, query, max_pages=max_pages):
-            oid = upsert_work(conn, work)
-            add_retrieval(conn, oid, "R2", f"text:{text}")
-        conn.commit()
-
-    for anchor in config["anchor_queries"]:
-        query = base_count_query(text_clause(anchor, exact=True), floor)
-        for work in stream_query(client, query, max_pages=max_pages):
-            oid = upsert_work(conn, work)
-            add_retrieval(conn, oid, "R3", f"anchor:{anchor}")
-        conn.commit()
-
-    unique = conn.execute("SELECT COUNT(*) FROM works").fetchone()[0]
-    retrievals = conn.execute("SELECT COUNT(*) FROM retrievals").fetchone()[0]
-    conn.execute(
-        "INSERT OR REPLACE INTO metadata(key, value) VALUES(?, ?)",
-        ("provider_snapshot", json.dumps(counts, ensure_ascii=False)),
+    raise RuntimeError(
+        "legacy manifest implementation is disabled; "
+        "use scripts/paper2_openalex_manifest.py"
     )
-    conn.commit()
-    conn.close()
-    return {
-        "database": str(output),
-        "unique_works_materialized": unique,
-        "retrieval_attributions": retrievals,
-        "provider_count_N_frame": counts["N_frame"],
-        "max_pages_per_channel": max_pages,
-        "complete": max_pages is None,
-    }
-
 
 def self_test(config: dict[str, Any]) -> None:
     numbers = [seed["number"] for seed in config["seeds"]]
@@ -498,7 +448,7 @@ def self_test(config: dict[str, Any]) -> None:
     client.request_json = capture_request  # type: ignore[method-assign]
     client.run_oql(
         "works where title has (memory)",
-        per_page=200,
+        per_page=100,
         cursor="cursor-token",
         select="id,display_name",
     )
@@ -506,6 +456,7 @@ def self_test(config: dict[str, Any]) -> None:
     assert captured["method"] == "POST"
     assert request_body["oql"] == "works where title has (memory)"
     assert isinstance(request_body["per_page"], int)
+    assert request_body["per_page"] == 100
     assert "per-page" not in request_body
     assert request_body["cursor"] == "cursor-token"
     assert request_body["select"] == "id,display_name"
