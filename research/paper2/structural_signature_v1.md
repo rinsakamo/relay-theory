@@ -37,7 +37,7 @@ The canonical structural digest includes:
 - deterministic/stochastic/approximate settings and declared threshold/loss/etc.;
 - bridge assumptions.
 
-Readable macro labels, local attempt/relation IDs, analyzer identity, terminal outcome, and witness packaging are not part of the structural digest. They remain fully validated and replayable in the containing artifact. Ordered relation arguments remain semantic and are never sorted away. A relation marked unordered is canonicalized as a set of arguments.
+Readable macro labels, local attempt/relation IDs, analyzer identity, terminal outcome, and witness packaging are not part of the structural digest. They remain fully validated and replayable in the containing artifact. Ordered relation arguments remain semantic and are never sorted away. A relation marked unordered is canonicalized as a set of arguments. ClaimIR node/relation IDs are treated as presentation tokens under the #147 comparison convention, including when referenced by basis-coordinate provenance; their structural signatures, not their local names, enter the structural digest.
 
 ## Explicit absence semantics
 
@@ -79,7 +79,7 @@ The schema does not add a new scientific primitive for P/Q/Pi/C or for uncertain
 
 A `RESIDUAL` requires a versioned residual kind, failure layer, unmet obligation(s), details, and any witness attempts. A single opaque `RESIDUAL` label is invalid.
 
-Derived macros are readability only. If a macro is present, it must expand to concrete coordinate IDs, relation IDs, and a witness schema ID; it cannot replace the underlying structural expansion.
+Derived macros are readability only. If a macro is present, it must expand to concrete coordinate IDs, relation IDs, and a witness schema ID; that witness schema ID must resolve to a witness actually recorded on the attempt outcome. A macro cannot replace the underlying structural expansion.
 
 ## Canonicalization and replay
 
