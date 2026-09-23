@@ -67,7 +67,7 @@ jobs:
           EOF
 
           pandoc paper/paper-1-draft-ja.md \
-            --from markdown+tex_math_dollars+raw_tex \
+            --from markdown+tex_math_dollars+tex_math_single_backslash+raw_tex \
             --pdf-engine=xelatex \
             --include-in-header=/tmp/paper1-ja-header.tex \
             -V papersize=a4 \
