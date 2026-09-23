@@ -141,6 +141,10 @@ def canonical_digest(value: Any) -> str:
     return hashlib.sha256(canonical_json_bytes(value)).hexdigest()
 
 
+def file_digest(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
 def validate_manifest(manifest: Any) -> dict[str, Any]:
     root = expect_exact_keys(manifest, MANIFEST_TOP_KEYS, "manifest")
     if root["schema_version"] != MANIFEST_VERSION:
@@ -265,11 +269,28 @@ def validate_decision_schema(schema: Any) -> dict[str, Any]:
     if set(props["modality"]["enum"]) != MODALITIES:
         fail("decision_schema.modality enum drift")
 
-    node = props["nodes"]["items"]
+    scope = props["scope"]
+    if scope.get("additionalProperties") is not False:
+        fail("decision_schema.scope additionalProperties")
+    if set(scope["required"]) != set(SCOPE_FIELDS):
+        fail("decision_schema.scope required drift")
+    for field in SCOPE_FIELDS:
+        field_schema = scope["properties"][field]
+        if field_schema.get("uniqueItems") is not True:
+            fail(f"decision_schema scope {field} must be unique")
+
+    nodes_schema = props["nodes"]
+    if nodes_schema.get("minItems") != 1 or nodes_schema.get("maxItems") != len(NODE_SLOTS):
+        fail("decision_schema node cardinality drift")
+    node = nodes_schema["items"]
+    if node.get("additionalProperties") is not False:
+        fail("decision_schema node additionalProperties")
     if set(node["required"]) != {
         "slot", "role", "anchor_span_id", "source_span_ids", "grounding"
     }:
         fail("decision_schema node required drift")
+    if set(node["properties"]["slot"]["enum"]) != set(NODE_SLOTS):
+        fail("decision_schema node slot drift")
     if set(node["properties"]["role"]["enum"]) != ROLES:
         fail("decision_schema node role drift")
     if set(node["properties"]["grounding"]["enum"]) != GROUNDING:
@@ -277,11 +298,23 @@ def validate_decision_schema(schema: Any) -> dict[str, Any]:
     if node["properties"]["source_span_ids"].get("uniqueItems") is not True:
         fail("decision_schema node source spans must be unique")
 
-    relation = props["relations"]["items"]
+    relations_schema = props["relations"]
+    if relations_schema.get("maxItems") != len(RELATION_SLOTS):
+        fail("decision_schema relation cardinality drift")
+    relation = relations_schema["items"]
+    if relation.get("additionalProperties") is not False:
+        fail("decision_schema relation additionalProperties")
+    if set(relation["properties"]["slot"]["enum"]) != set(RELATION_SLOTS):
+        fail("decision_schema relation slot drift")
     if set(relation["properties"]["kind"]["enum"]) != RELATIONS:
         fail("decision_schema relation kind drift")
-    if relation["properties"]["arguments"].get("uniqueItems") is not True:
+    args = relation["properties"]["arguments"]
+    if args.get("minItems") != 1 or args.get("maxItems") != 2:
+        fail("decision_schema relation arity drift")
+    if args.get("uniqueItems") is not True:
         fail("decision_schema relation arguments must be unique")
+    if set(args["items"]["enum"]) != set(NODE_SLOTS):
+        fail("decision_schema relation argument vocabulary drift")
     if relation["properties"]["source_span_ids"].get("uniqueItems") is not True:
         fail("decision_schema relation source spans must be unique")
     return root
@@ -428,8 +461,12 @@ def _answer_choice(answer: Any, question: dict[str, Any], name: str) -> str:
 
     probabilities = answer.get("probabilities")
     if probabilities is not None:
-        if not isinstance(probabilities, dict) or set(probabilities) != set(criteria):
-            fail(f"answer {name}: probability keys must match criteria exactly")
+        if not isinstance(probabilities, dict):
+            fail(f"answer {name}: probabilities must be object when present")
+        if not set(probabilities).issubset(criteria):
+            fail(f"answer {name}: probability key outside criteria")
+        if choice not in probabilities:
+            fail(f"answer {name}: selected choice missing from probabilities")
         for key, value in probabilities.items():
             _probability(value, f"answer {name}.probabilities.{key}")
 
@@ -800,6 +837,13 @@ def audit_record(
         "owner_issue": 162,
         "manifest_sha256": canonical_digest(manifest),
         "decision_schema_sha256": canonical_digest(decision_schema),
+        "compiler_file_sha256": file_digest(Path(__file__)),
+        "candidate_validator_file_sha256": file_digest(
+            Path(__file__).with_name("paper2_extraction_procedure_validate.py")
+        ),
+        "claim_ir_validator_file_sha256": file_digest(
+            Path(__file__).with_name("paper2_claim_ir_validate.py")
+        ),
         "source_bundle_sha256": canonical_digest(source),
         "normal_interpretation_sha256": hashlib.sha256(
             interpretation.encode("utf-8")
@@ -1185,12 +1229,32 @@ def self_test(manifest_path: Path, decision_schema_path: Path) -> None:
         answer.pop("confidence", None)
     parse_systemone_response(n2_request, minimal_wire)
 
+    # Inactive slots may report unresolved on irrelevant subquestions without
+    # forcing a false global failure. Only decisions that become semantically
+    # active are required to resolve.
+    inactive_unresolved = node_only_answers(p3)
+    for name in list(inactive_unresolved):
+        if name.startswith("n2__") or name.startswith("n3__"):
+            if not name.endswith("__active"):
+                inactive_unresolved[name] = UNRESOLVED
+        if name.startswith("r1__") or name.startswith("r2__"):
+            if not name.endswith("__active"):
+                inactive_unresolved[name] = UNRESOLVED
+    inactive_request = build_systemone_request(
+        p3, "One state is described.", "synthetic-systemone"
+    )
+    inactive_response = response_for(inactive_request, inactive_unresolved)
+    inactive_answers = parse_systemone_response(inactive_request, inactive_response)
+    inactive_decision = decision_from_answers(p3, inactive_answers)
+    if len(inactive_decision["nodes"]) != 1 or inactive_decision["relations"]:
+        raise AssertionError("N12 inactive unresolved altered compiled structure")
+
     # Schema/Python parity control: schema requires unique relation arguments.
     relation_args_schema = (
         schema["properties"]["relations"]["items"]["properties"]["arguments"]
     )
     if relation_args_schema.get("uniqueItems") is not True:
-        raise AssertionError("N12 schema lost relation argument uniqueness")
+        raise AssertionError("N13 schema lost relation argument uniqueness")
 
     # Full ClaimIR parity control: a duplicate candidate argument must be caught
     # before full assembly, matching paper2_claim_ir_validate unique_strings.
@@ -1198,7 +1262,13 @@ def self_test(manifest_path: Path, decision_schema_path: Path) -> None:
     duplicate_candidate["claim_core"]["relations"][0]["arguments"] = ["n1", "n1"]
     expect_invalid(
         lambda: _validate_candidate_claimir_parity(duplicate_candidate),
-        "N13 candidate/full-ClaimIR parity",
+        "N14 candidate/full-ClaimIR parity",
+    )
+    duplicate_claim = assemble_synthetic_claim(p1, p1_candidate)
+    duplicate_claim["claim_core"]["relations"][0]["arguments"] = ["n1", "n1"]
+    expect_invalid(
+        lambda: validate_claim_ir(duplicate_claim),
+        "N15 full ClaimIR duplicate relation argument",
     )
 
     # Local HTTP mock uses the same response shape expected above.
