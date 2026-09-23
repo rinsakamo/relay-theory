@@ -65,6 +65,8 @@ The bibliographic case makes the logic easy to see, but by itself it could be di
 
 Accordingly, the novelty claim is narrow. The paper does not claim target-directed representation, invariance, quotient mathematics, or practice-relative individuation as new in isolation. Its contribution is to combine these ingredients in a single feature-level audit that separates quotient descent, test-specific transfer, independent scientific warrant, and representation-preserving counterfactual checks for individuation inferences.
 
+The payoff is therefore diagnostic rather than theorem-theoretic. The audit turns a familiar structural fact into a local conservativity test that identifies exactly where an individuation argument must introduce target assignment, observational bridging, independent warrant, and permissible representational structure, thereby distinguishing representational leakage from an ordinary evidential gap.
+
 ### 1.1 Contributions
 
 The paper makes four limited contributions.
@@ -242,7 +244,7 @@ Let \(A\subseteq Q\) be a family of tests selected for an analysis. Define **str
 
 Thus selection alone does no evidential work. For a particular independently specified test \(q\), the test-specific theorem requires only \(B_r(q)\). The stronger condition \(\operatorname{Adm}_r(A)\) is used when the inference is allowed to report that *some* test in \(A\) separates the pair without an additional witness-selection rule.
 
-The family-wide requirement is therefore a conservative sufficient condition, not a necessary condition for every particular witnessed inference. Its methodological purpose is to prevent an analysis from searching for a discriminator first and supplying structural admissibility only post hoc. Scientific warrant for the relevant tests must still be supplied independently and may not be self-licensed by the formal difference being promoted.
+The family-wide requirement is therefore a conservative sufficient condition, not a necessary condition for every particular witnessed inference. Its methodological purpose is to block one structural form of post hoc licensing: searching for a discriminator first and establishing admissibility only for the selected witness. Scientific warrant for the relevant tests must still be supplied independently and may not be self-licensed by the formal difference being promoted.
 
 This use of a *test family* is structural, not statistical. \(\operatorname{Adm}_r(A)\) does not control family-wise error, false-discovery rate, selective inference, or researcher degrees of freedom. Those are distinct problems that arise when test outcomes or witness selection are stochastic or data-adaptive; the exact deterministic formal core here supplies no multiplicity correction.
 
