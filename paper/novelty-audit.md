@@ -110,3 +110,18 @@ The paper remains potentially publishable as a narrow formal-methodological note
 5. a Lean artifact that audits the bridge and anti-smuggling dependencies.
 
 The conceptual novelty remains incremental and should not be sold as a new theory of representation. The mechanization strengthens auditability, while target factorization, test-specific observation factorization, and the counterfactual relevance audit carry the main methodological contribution.
+
+
+## Broader construct-level consequence
+
+The current manuscript now draws one broader implication from the identifier analysis:
+
+```text
+distinct construct labels
+  -/->
+distinct measured capacities
+```
+
+The corresponding positive direction is deliberately weaker. A difference in normalized operational structural signatures is **candidate discriminating evidence**, not proof of independent psychological or ontological kinds.
+
+This extension should be presented as a methodological consequence of the Paper 1 framework, not as a second independent novelty claim. It motivates later concept-neutral comparison of cognitive-capacity claims while preserving the anti-overclaim boundary: no named construct is declared reducible or identical in Paper 1, and no common basis is assumed complete.
