@@ -23,7 +23,8 @@ import paper2_openalex_enumerate as retrieval  # type: ignore
 
 SCHEMA_VERSION = "paper2-sampling-v2"
 EXPECTED_COUNTS_SHA256 = "9b1d59c816a547d053fb5a34d7bd6da549d12bb43814b11095f863b4103ef40e"
-EXPECTED_UNION_OQL_SHA256 = "5156ddf574e15f4b82f090dd8bf870775a31c50f292a48fd374967b4776157ab"
+EXPECTED_UNION_OQL_UTF8_SHA256 = "35f6a79454cb8a279cc397cfa1eea2c07cca15141744060cce3cf4454bad63b6"
+EXPECTED_UNION_OQL_JQ_R_SHA256 = "5156ddf574e15f4b82f090dd8bf870775a31c50f292a48fd374967b4776157ab"
 HISTORICAL_N_FRAME = 31_550_631
 
 
@@ -80,11 +81,17 @@ def validate_counts_artifact(path: Path) -> dict[str, Any]:
     union = value.get("union_oql")
     if not isinstance(union, str) or not union.strip():
         raise ValueError("counts artifact missing union_oql")
-    union_digest = sha256_bytes(union.encode("utf-8"))
-    if union_digest != EXPECTED_UNION_OQL_SHA256:
+    union_utf8_digest = sha256_bytes(union.encode("utf-8"))
+    if union_utf8_digest != EXPECTED_UNION_OQL_UTF8_SHA256:
         raise ValueError(
-            "union_oql digest mismatch: expected frozen #143 query "
-            f"{EXPECTED_UNION_OQL_SHA256}, got {union_digest}"
+            "union_oql UTF-8 string digest mismatch: expected exact JSON-string "
+            f"bytes {EXPECTED_UNION_OQL_UTF8_SHA256}, got {union_utf8_digest}"
+        )
+    union_jq_r_digest = sha256_bytes((union + "\n").encode("utf-8"))
+    if union_jq_r_digest != EXPECTED_UNION_OQL_JQ_R_SHA256:
+        raise ValueError(
+            "union_oql jq -r line digest mismatch: expected historical #143 "
+            f"representation {EXPECTED_UNION_OQL_JQ_R_SHA256}, got {union_jq_r_digest}"
         )
     return value
 
@@ -179,7 +186,8 @@ def measure_era_counts(
         "provider": "OpenAlex",
         "access_timestamp": retrieval.utc_now(),
         "retrieval_counts_artifact_sha256": EXPECTED_COUNTS_SHA256,
-        "union_oql_sha256": EXPECTED_UNION_OQL_SHA256,
+        "union_oql_utf8_sha256": EXPECTED_UNION_OQL_UTF8_SHA256,
+        "union_oql_jq_r_sha256": EXPECTED_UNION_OQL_JQ_R_SHA256,
         "historical_N_frame_2026_09_23": HISTORICAL_N_FRAME,
         "current_provider_union_count": provider_count,
         "year_group_pages": page_count,
@@ -257,6 +265,10 @@ def self_test(protocol: dict[str, Any]) -> None:
     assert p["minimum_per_included_era"] == 50
     assert p["weight"] == "sqrt(N_d)"
     assert protocol["real_corpus_selection_authorized"] is False
+    authority = protocol["retrieval_authority"]
+    assert authority["union_oql_utf8_sha256"] == EXPECTED_UNION_OQL_UTF8_SHA256
+    assert authority["union_oql_jq_r_sha256"] == EXPECTED_UNION_OQL_JQ_R_SHA256
+    assert sha256_bytes(b"synthetic") != sha256_bytes(b"synthetic\n")
 
     parsed_years, parsed_unknown = parse_year_group_rows([
         {"key": 1959, "count": 10},
