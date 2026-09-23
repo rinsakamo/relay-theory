@@ -1,0 +1,77 @@
+{
+  "schema_version": "paper2-two-pass-real-protocol-v1",
+  "owner_issue": 162,
+  "status": "PREEXECUTION_FREEZE_IN_PROGRESS",
+  "sample_authority": {
+    "calibration_mode": "same_surface_five_item_calibration",
+    "calibration_source_authority": "research/paper2/extraction_run_package_v1.json",
+    "calibration_items": [
+      "CAL-BEER-1995",
+      "CAL-FRISTON-2010",
+      "CAL-TISHBY-2000",
+      "CAL-KOLCHINSKY-WOLPERT-2018",
+      "CAL-COWAN-2001"
+    ],
+    "primary_heldout_owner_issue": 167,
+    "primary_heldout_selection_local_to_162": false,
+    "primary_target_works": 1000,
+    "max_selected_claims_per_work_inherited_from_158": 3
+  },
+  "preprocessing": {
+    "mask_policy": "research/paper2/extraction_label_mask_v1.json",
+    "raw_abstracts_committed": false,
+    "deterministic_segmentation_before_masking": true,
+    "focus_selection_after_normal_pass": true,
+    "focus_max_units": 3,
+    "silent_truncation_forbidden": true
+  },
+  "normal_pass": {
+    "prompt_path": "research/paper2/extraction_normal_prompt_v1.md",
+    "prompt_sha256_utf8": "a63aa5b0480653f0dbba018789b6e537bde252a12ce7abf8a58f9b198096ca99",
+    "model_family": "Gemma-4-12B-Instruct-Q4_K_M",
+    "model_artifact_sha256": "c088a44859de42a1966851b552ba628c0ff4419b87c4622539d69430f40024ed",
+    "temperature": 0.2,
+    "top_p": 1.0,
+    "max_tokens": 1024,
+    "reasoning_effort": "none",
+    "cache_prompt": false,
+    "response_format": "plain_text",
+    "context_length": 8192,
+    "output_role": "advisory_semantic_interpretation_only"
+  },
+  "systemone": {
+    "decision_contract": "paper2-two-pass-systemone-v2",
+    "endpoint": "/v1/systemone",
+    "focus_stage": "finite_selection_of_up_to_three_masked_evidence_units",
+    "structural_stage": "paper2-systemone-decision-v2",
+    "probabilities_and_confidence": "audit_metadata_only",
+    "exact_runtime_identity": "NOT_YET_LOCALLY_ATTESTED"
+  },
+  "replicate_isolation": {
+    "replicates": ["A", "B"],
+    "policy": "separate_owned_llama_cpp_process_lifetime_per_replicate",
+    "same_model_artifact_required": true,
+    "same_normal_prompt_required": true,
+    "same_masked_source_bytes_required": true,
+    "same_configs_required": true,
+    "cross_replicate_visibility_forbidden": true,
+    "cache_reuse_across_replicates_forbidden": true,
+    "retry_after_first_scientific_call_forbidden": true
+  },
+  "adjudication": {
+    "source_only": true,
+    "basis_visible": false,
+    "decomposition_outcome_visible": false,
+    "structural_validity_is_not_semantic_entailment": true
+  },
+  "freeze_requirements_remaining": {
+    "calibration_raw_and_masked_digests": "NOT_YET_FROZEN",
+    "calibration_alias_lists": "NOT_YET_FROZEN",
+    "real_source_segmentation_outputs": "NOT_YET_FROZEN",
+    "systemone_runtime_repository_revision_build": "NOT_YET_LOCALLY_ATTESTED",
+    "systemone_runtime_model_binding": "NOT_YET_LOCALLY_ATTESTED",
+    "owned_process_launch_contract": "NOT_YET_LOCALLY_ATTESTED"
+  },
+  "real_pilot_authorized": false,
+  "basis_decomposition_authorized": false
+}
