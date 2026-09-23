@@ -133,7 +133,7 @@ class OpenAlexClient:
         cursor: str | None = None,
         select: str | None = None,
     ) -> dict[str, Any]:
-        body: dict[str, Any] = {"oql": query, "per-page": per_page}
+        body: dict[str, Any] = {"oql": query, "per_page": per_page}
         if cursor is not None:
             body["cursor"] = cursor
         if select:
@@ -480,6 +480,35 @@ def self_test(config: dict[str, Any]) -> None:
     assert "full text has (memory)" in q
     assert 'title/abstract has ("extended mind")' in q
     assert 'full text has ("extended mind")' in q
+    captured: dict[str, Any] = {}
+
+    def capture_request(
+        url: str,
+        *,
+        method: str = "GET",
+        body: dict[str, Any] | None = None,
+        retries: int = 5,
+    ) -> dict[str, Any]:
+        captured.update(
+            {"url": url, "method": method, "body": body, "retries": retries}
+        )
+        return {"meta": {"count": 0}}
+
+    client = OpenAlexClient(api_key=None, mailto=None, pause=0)
+    client.request_json = capture_request  # type: ignore[method-assign]
+    client.run_oql(
+        "works where title has (memory)",
+        per_page=200,
+        cursor="cursor-token",
+        select="id,display_name",
+    )
+    request_body = captured["body"]
+    assert captured["method"] == "POST"
+    assert request_body["oql"] == "works where title has (memory)"
+    assert isinstance(request_body["per_page"], int)
+    assert "per-page" not in request_body
+    assert request_body["cursor"] == "cursor-token"
+    assert request_body["select"] == "id,display_name"
     forbidden = {
         "basis_elements",
         "basis_mapping",
