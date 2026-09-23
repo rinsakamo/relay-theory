@@ -78,7 +78,7 @@
 
 ## Decision gate
 
-**Current state:** the externally reviewed manuscript/formal source is fully validated. At validation head `4a20763ce382dc4be3e8e497507690e7fae82565`, RelayTheory Lean CI `35873770567`, English Review CI `35873770536`, and Japanese Review CI `35873770566` all PASS. The anonymous English review PDF artifact `10757245747` is byte-equivalent in size to the visually inspected revision and contains the same manuscript source blob (`main.tex` `e23af883c9e09c3c1f0b7bab5cb1e833a4b96802`); the 37-page revision was rendered at 160 dpi and every page was inspected with no clipping, overlap, broken glyphs, malformed tables, missing sections, or reference-layout defects. The anonymous Lean supplement artifact `10756480648` builds independently with pinned Lean 4.33.1 and passed identity-leak / banned-proof-shortcut audits. This checklist update is bookkeeping only and does not change the validated manuscript or formal source. No manuscript-text or formal-artifact blocker remains. Before actual submission, only author-supplied Funding/Declarations and non-blind metadata, publication/concurrent-review eligibility confirmations, upload of the requested files, and approval of the Editorial Manager-built PDF remain.
+**Current state:** the manuscript was changed after the last validated artifact to incorporate the three final minor edits requested in re-review: stronger AI disclosure wording, explicit diagnostic/local-conservativity novelty framing, and narrower wording for structural post-hoc licensing. The previous PDF/visual validation is therefore historical only. Fresh exact-head Lean / English / Japanese CI, anonymous supplement build, PDF generation, and visual inspection are required before submission.
 
 ## External-review closure — 2026-09-23
 
@@ -91,3 +91,12 @@
 - [x] Counterfactual re-encoding audit sharpened with a decision-rule automorphism criterion.
 - [x] Exact revised anonymous PDF rebuilt on validation head `4a20763ce382dc4be3e8e497507690e7fae82565`: English Review CI `35873770536` PASS; artifact `10757245747`; same validated manuscript source; 37-page revision visually inspected at 160 dpi with no layout defects.
 - [x] Exact anonymous Lean supplement validated and uploaded by Lean CI `35873770567`; artifact `10756480648`; pinned Lean 4.33.1; standalone `lake build` PASS.
+
+
+## Re-review minor-edit closure — 2026-09-24
+
+- [x] AI disclosure wording strengthened while remaining in the anonymous footnote.
+- [x] Introduction explicitly states the diagnostic, local-conservativity payoff.
+- [x] Section 2.4 narrows the post-hoc-selection language to one structural form of licensing.
+- [ ] Rebuild and validate exact current head after these edits.
+- [ ] Visually inspect every page of the resulting anonymous PDF.
