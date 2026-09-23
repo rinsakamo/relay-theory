@@ -78,7 +78,7 @@
 
 ## Decision gate
 
-**Current state:** the three minor re-review edits are fully validated at source head `cf19b30b9161ffda7bc32e066a61989dd1c1322a`. RelayTheory Lean CI `35880790677`, English Review CI `35880790749`, and Japanese Review CI `35880790869` all PASS. The exact anonymous English PDF artifact `10760502987` is 37 pages; all 37 pages were rendered at 160 dpi and visually inspected with no clipping, overlap, broken glyphs, malformed tables, missing sections, or reference-layout defects. The final PDF SHA-256 is `af3f44149f485177ea91179d6227f771bbdf920790aedb07a4a4a786e5d4bdf4`. The anonymous Lean supplement artifact `10760801388` builds under the pinned Lean 4.33.1 toolchain and passed identity-leak / banned-proof-shortcut audits. The submission-facing source remains anonymous, its abstract is 99 words, and the AI disclosure remains a non-identifying footnote. No manuscript-text or formal-artifact blocker remains. Before actual submission, only author-supplied Funding/Declarations and non-blind metadata, publication/concurrent-review eligibility confirmations, requested-file upload, and approval of the Editorial Manager-built PDF remain.
+**Current state:** the manuscript has changed after the previous validated artifact to incorporate the final conditional-acceptance clarifications: universal-scope wording in Abstract/Conclusion, explicit UMI audit dispositions, and the trivial-automorphism caveat. The previous PDF/visual validation is therefore historical only. Fresh exact-head Lean / English / Japanese CI, anonymous supplement build, PDF generation, and visual inspection are required before submission.
 
 ## External-review closure — 2026-09-23
 
@@ -100,3 +100,13 @@
 - [x] Section 2.4 narrows the post-hoc-selection language to one structural form of licensing.
 - [x] Rebuild and validate exact re-review source head `cf19b30b9161ffda7bc32e066a61989dd1c1322a`: all three CI lanes PASS.
 - [x] Visually inspect all 37 pages of exact PDF artifact `10760502987` at 160 dpi: no layout or glyph defects found.
+
+
+## Conditional-acceptance closure — 2026-09-24
+
+- [x] Abstract scope aligned with the theorem: universally sound difference discrimination over the declared scope.
+- [x] Conclusion scope aligned with the same universal-scope qualifier.
+- [x] UMI case explicitly maps structural failure / observation-bridge failure / scientific underdetermination / scoped pass.
+- [x] Counterfactual audit notes that a trivial automorphism group can make formal invariance diagnostically vacuous.
+- [ ] Rebuild and validate the exact revised head.
+- [ ] Visually inspect every page of the resulting anonymous PDF.
