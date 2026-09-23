@@ -30,7 +30,7 @@ from typing import Any, Iterable
 import paper2_openalex_enumerate as retrieval
 
 SCHEMA_VERSION = "paper2-retrieval-v1-manifest-transaction-v1"
-PER_PAGE = 200
+PER_PAGE = 100
 RESUMABLE_STATUSES = {"RUNNING", "FAILED", "INTERRUPTED", "INCOMPLETE"}
 CHANNELS = ("R1", "R2", "R3")
 
@@ -1121,6 +1121,7 @@ def initialize_fixture_db(
 
 
 def self_test(config: dict[str, Any]) -> None:
+    assert PER_PAGE == 100
     seed_topics = ["T1", "T2"]
     specs = source_specs(config, seed_topics)
     r1 = next(s for s in specs if s["channel"] == "R1")
