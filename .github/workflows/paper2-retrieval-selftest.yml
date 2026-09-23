@@ -4,6 +4,8 @@ on:
   pull_request:
     paths:
       - "scripts/paper2_openalex_enumerate.py"
+      - "scripts/paper2_openalex_manifest.py"
+      - "scripts/paper2_openalex_manifest.py"
       - "research/paper2/retrieval_v1.json"
       - ".github/workflows/paper2-retrieval-selftest.yml"
   push:
@@ -27,5 +29,9 @@ jobs:
           python-version: "3.12"
       - name: Compile enumerator
         run: python -m py_compile scripts/paper2_openalex_enumerate.py
-      - name: Run deterministic self-test
+      - name: Compile durable manifest materializer
+        run: python -m py_compile scripts/paper2_openalex_manifest.py
+      - name: Run deterministic retrieval self-test
         run: python scripts/paper2_openalex_enumerate.py --self-test
+      - name: Run deterministic manifest transaction self-test
+        run: python scripts/paper2_openalex_manifest.py --self-test
