@@ -12,7 +12,24 @@ A fresh multi-perspective review identified five remaining risks, all now reflec
 4. **Counterfactual ambiguity.** The former relabeling-invariance diagnostic is replaced by a counterfactual relevance audit separating pure bijective renaming from assignment-changing perturbation.
 5. **Article depth.** The UMI analysis and Nguyen (2017) comparison are expanded. The claimed novelty is feature-level dependency auditing inside an already target-directed scientific practice.
 
-### Current strongest claim
+### Paper 2 bridge / construct-level implication — 2026-09-23
+
+A short broader-implication section has been added after Related Work and before Scope and Limitations.
+
+The bridge preserves both layers of the prior revision:
+
+- Paper 1's substantive consequence remains that identifierhood itself has no evidential force; evidential relevance comes from target factorization plus independent scientific warrant.
+- The broader extension applies the same anti-smuggling discipline to theoretical construct labels: distinct names do not by themselves establish distinct measured capacities.
+
+The manuscript introduces an operational structural signature \(\sigma(c)\) only as a methodological abstraction. It does **not** claim that Memory, Skill, Belief, Attention, or any other named constructs are identical, reducible, or non-distinct. It does **not** claim that a common measurement basis is complete.
+
+The downstream research question is deliberately conditional: suppress construct labels and authority information during analysis, normalize operational claims onto a common measurement basis, and test which discriminating structures survive. Paper 1 supplies the evidential discipline; a separate study must supply the corpus, normalization protocol, basis, and results.
+
+Working principle:
+
+> **Nominal plurality is not evidential plurality. Preserve the discriminating structure that warrants a distinction, not merely the names of the distinguished things.**
+
+## Current strongest claim
 
 A formal difference may enter an operational individuation inference only through an explicitly modeled path from representation to target and a scientifically justified reason for accepting that path. Lean audits the structural path only; it does not manufacture scientific warrant.
 
