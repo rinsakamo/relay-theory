@@ -113,23 +113,36 @@ theorem encodingProbe_separates_sameGrounding :
   · rfl
 
 /--
-A structural bridge from a presentation-level feature to a referent-level
-property. The Lean object records factorization through ground; it does not by
-itself supply the empirical or scientific justification for accepting that
-factorization in an application.
+A structural target-factorization condition for a presentation-level feature.
+The value carrier is arbitrary. This object records only that the feature
+factors through the grounding map; it does not provide empirical or epistemic
+warrant for accepting that factorization in a scientific application.
 -/
-structure GroundingBridge (feature : Presentation → Bool) where
-  targetProperty : Referent → Bool
+structure GroundingFactorization
+    {Value : Type}
+    (feature : Presentation → Value) where
+  targetProperty : Referent → Value
   sound : ∀ presentation,
     feature presentation = targetProperty (ground presentation)
 
 /--
-If a presentation-level feature is bridged to a referent-level property, equal
-grounding forces equal feature values.
+Backward-compatible name for the structural factorization object. Manuscript
+prose calls this a target-factorization condition rather than an evidential
+warrant.
+-/
+abbrev GroundingBridge
+    {Value : Type}
+    (feature : Presentation → Value) :=
+  GroundingFactorization feature
+
+/--
+If a presentation-level feature factors through grounding, equal grounding
+forces equal feature values.
 -/
 theorem bridgedFeature_sameGrounding_sameValue
-    {feature : Presentation → Bool}
-    (bridge : GroundingBridge feature)
+    {Value : Type}
+    {feature : Presentation → Value}
+    (bridge : GroundingFactorization feature)
     {left right : Presentation}
     (hGround : ground left = ground right) :
     feature left = feature right := by
@@ -140,13 +153,13 @@ theorem bridgedFeature_sameGrounding_sameValue
     _ = feature right := (bridge.sound right).symm
 
 /--
-A difference in a bridged presentation-level feature entails a difference in
-the grounding result. The bridge is the explicit dependency that licenses the
-step from presentation feature to referent-level distinction.
+A difference in a structurally factorized presentation feature entails a
+difference in the grounding result.
 -/
 theorem bridgedFeatureDifference_impliesGroundDifference
-    {feature : Presentation → Bool}
-    (bridge : GroundingBridge feature)
+    {Value : Type}
+    {feature : Presentation → Value}
+    (bridge : GroundingFactorization feature)
     {left right : Presentation}
     (hFeature : feature left ≠ feature right) :
     ground left ≠ ground right := by
@@ -154,11 +167,11 @@ theorem bridgedFeatureDifference_impliesGroundDifference
   exact hFeature (bridgedFeature_sameGrounding_sameValue bridge hGround)
 
 /--
-The deliberately presentation-sensitive encoding probe cannot be supplied with
-a grounding bridge: it separates two presentations that have equal grounding.
+The deliberately presentation-sensitive encoding probe cannot satisfy target
+factorization: it separates two presentations that have equal grounding.
 -/
 theorem encodingProbe_hasNoGroundingBridge :
-    ¬ Nonempty (GroundingBridge encodingProbe) := by
+    ¬ Nonempty (GroundingFactorization encodingProbe) := by
   intro hBridge
   rcases hBridge with ⟨bridge⟩
   have hSame : encodingProbe .encodedA = encodingProbe .encodedB :=
@@ -167,15 +180,55 @@ theorem encodingProbe_hasNoGroundingBridge :
   exact encodingProbe_separates_sameGrounding.1 hSame
 
 /-- A positive-control feature that exactly tracks the grounding result. -/
-def groundFeature : Presentation → Bool := fun presentation =>
+def groundFeature : Presentation → Referent := fun presentation =>
   ground presentation
 
-/-- The positive-control ground-tracking feature has an explicit bridge. -/
+/-- The positive-control ground-tracking feature satisfies target factorization. -/
 theorem groundFeature_hasGroundingBridge :
-    Nonempty (GroundingBridge groundFeature) := by
+    Nonempty (GroundingFactorization groundFeature) := by
   refine ⟨{ targetProperty := fun referent => referent, sound := ?_ }⟩
   intro presentation
   rfl
+
+/--
+A test-specific structural factorization between an observed presentation
+surface and the target-level response function. This unifies the feature bridge
+with the restricted-test layer: an observed outcome is target-factorized only
+when it agrees with the response of the grounded referent.
+-/
+structure ObservationFactorization
+    (observed : Presentation → Probe → Outcome) where
+  sound : ∀ presentation probe,
+    observed presentation probe =
+      response probe (ground presentation)
+
+/-- The built-in grounded observation surface satisfies test factorization. -/
+theorem observeGrounded_hasObservationFactorization :
+    Nonempty (ObservationFactorization observeGrounded) := by
+  refine ⟨{ sound := ?_ }⟩
+  intro presentation probe
+  rfl
+
+/--
+For any observed presentation surface satisfying test factorization, a
+difference under one probe entails a difference in the grounding result.
+-/
+theorem factorizedObservedDifference_impliesGroundDifference
+    {observed : Presentation → Probe → Outcome}
+    (bridge : ObservationFactorization observed)
+    {left right : Presentation}
+    {probe : Probe}
+    (hDifference : observed left probe ≠ observed right probe) :
+    ground left ≠ ground right := by
+  intro hGround
+  apply hDifference
+  calc
+    observed left probe = response probe (ground left) :=
+      bridge.sound left probe
+    _ = response probe (ground right) :=
+      congrArg (response probe) hGround
+    _ = observed right probe :=
+      (bridge.sound right probe).symm
 
 /--
 Presentation-sensitive separation does not survive the grounded observation
