@@ -76,11 +76,18 @@ def structural_payload(attempt: dict[str, Any], claim_ir: dict[str, Any]) -> dic
 
     coordinates = []
     for coord in attempt["basis_instantiation"]["coordinates"]:
+        provenance = dict(coord["provenance"])
+        if provenance["origin"] == "claim_ir_node":
+            provenance["ref"] = node_map[provenance["ref"]]
+        elif provenance["origin"] == "claim_ir_relation":
+            provenance["ref"] = rel_map[provenance["ref"]]
+        else:
+            provenance["ref"] = normalize_source_ref(provenance["ref"])
         coordinates.append({
             "coordinate_id": coord["coordinate_id"],
             "role": coord["role"],
             "required": coord["required"],
-            "provenance": dict(coord["provenance"]),
+            "provenance": provenance,
         })
     coordinates.sort(key=lambda item: item["coordinate_id"])
 
