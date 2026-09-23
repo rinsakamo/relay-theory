@@ -65,6 +65,8 @@ bibliographic case だけなら、これは bookkeeping や data integration の
 
 したがって novelty claim は狭い。本稿は target-directed representation、invariance、quotient mathematics、practice-relative individuation のいずれか単独を新規性として主張しない。貢献は、それらを一つの feature-level audit に統合し、quotient descent、test-specific transfer、independent scientific warrant、representation-preserving counterfactual check を individuation inference の中で分離することである。
 
+したがって本稿の payoff は theorem-theoretic ではなく diagnostic である。この audit は既知の structural fact を local conservativity test として用いることで、individuation argument のどの段階で target assignment、observational bridge、independent warrant、permissible representational structure が導入されなければならないかを特定し、representational leakage と通常の evidential gap を区別する。
+
 ### 1.1 貢献
 
 本稿の貢献は、限定的に四点である。
@@ -248,7 +250,7 @@ r(a)\neq r(b)
 
 selection 自体には evidential force はない。independently specified な特定の test \(q\) については test-specific theorem は \(B_r(q)\) だけを要求する。より強い \(\operatorname{Adm}_r(A)\) は、追加の witness-selection rule なしに「\(A\) のどれかが pair を分離した」と報告できる inference に用いる。
 
-したがって family-wide requirement は every particular witnessed inference の necessary condition ではなく、conservative sufficient condition である。その methodological purpose は、先に discriminator を探索してから structural admissibility を post hoc に与えることを防ぐ点にある。relevant test の scientific warrant は引き続き独立に与えられ、formal difference 自体によって self-license されてはならない。
+したがって family-wide requirement は every particular witnessed inference の necessary condition ではなく、conservative sufficient condition である。その methodological purpose は、post hoc licensing の一つの structural form、すなわち先に discriminator を探索し、selected witness に対してのみ admissibility を後から確立することを block する点にある。relevant test の scientific warrant は引き続き独立に与えられ、formal difference 自体によって self-license されてはならない。
 
 ここでいう *test family* は structural な概念であって statistical multiplicity correction ではない。\(\operatorname{Adm}_r(A)\) は family-wise error、false-discovery rate、selective inference、researcher degrees of freedom を control しない。それらは test outcome や witness selection が stochastic / data-adaptive な場合に生じる別問題であり、present exact deterministic core は multiplicity correction を与えない。
 
