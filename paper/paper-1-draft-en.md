@@ -9,7 +9,7 @@
 
 ## Abstract
 
-Formal differences between representations do not by themselves license target-level individuation. We separate an exact target-factorization condition from the scientific warrant required to accept it and connect representation-level observations to target-level outcomes through admissible test families. A unique molecular identifier (UMI) case distinguishes software read IDs, latent molecular tags, and noisy observed tags. We distinguish structure-preserving re-encoding from assignment-changing perturbations in a counterfactual relevance audit. A small Lean formalization checks structural dependencies and family-level separation. The framework audits individuation inferences relative to proposed representation-to-target assignments; it neither discovers those assignments nor supplies a complete theory of evidence or numerical identity.
+Formal differences between representations do not by themselves license target-level individuation. We separate an exact target-factorization condition from the scientific warrant required to accept it and connect representation-level observations to target-level outcomes through structurally admissible test families. A unique molecular identifier (UMI) case distinguishes software read IDs, latent molecular tags, and noisy observed tags. We distinguish structure-preserving re-encoding from assignment-changing perturbations in a counterfactual relevance audit. A Lean formalization checks structural dependencies and family-level separation. The framework audits individuation inferences relative to proposed representation-to-target assignments; it neither discovers those assignments nor supplies a complete theory of evidence or numerical identity.
 
 ## 1. Introduction
 
@@ -160,7 +160,7 @@ Again, the equation does not justify itself. A scientific application must expla
 
 ### 2.4 Selected test families
 
-Let \(A\subseteq Q\) be a family of tests selected for an analysis. Define family-level admissibility by
+Let \(A\subseteq Q\) be a family of tests selected for an analysis. Define **structural family-level admissibility** by
 
 \[
 \operatorname{Adm}_r(A)
@@ -169,6 +169,8 @@ Let \(A\subseteq Q\) be a family of tests selected for an analysis. Define famil
 \]
 
 Thus selection alone does no evidential work: every test actually used by the exact inference must satisfy the declared observation-to-target factorization. Scientific warrant for including such a test must be supplied independently and may not be self-licensed by the formal difference the test is being used to promote.
+
+The family-wide requirement is deliberately stronger than validating only a separating witness after outcomes are known. It prevents an analysis from selecting a discriminator first and supplying structural admissibility only post hoc.
 
 Define
 
@@ -297,6 +299,8 @@ The phrase relabeling invariance can hide two importantly different perturbation
 ### 4.1 Structure-preserving re-encoding
 
 Let \(U\) be the value domain of an identifier-like field, and let \(\mathcal S\) denote the relations on \(U\) that the inference declares evidentially relevant. A re-encoding \(\pi:U\to U\) is **structure-preserving relative to \(\mathcal S\)** when it is bijective and preserves each declared relation. For a \(k\)-ary relation \(S\in\mathcal S\),
+
+The choice of \(\mathcal S\) must itself be fixed and independently motivated before the counterfactual comparison. Otherwise an analyst could make an inconvenient transformation non-preserving merely by adding a relation that encodes the desired conclusion.
 
 \[
 S(u_1,\ldots,u_k)

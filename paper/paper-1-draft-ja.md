@@ -9,7 +9,7 @@
 
 ## 要旨
 
-表現間の形式的な差は、それだけでは target-level individuation を正当化しない。本稿は、exact target-factorization condition と、それを受け入れるために必要な scientific warrant を分離し、admissible test family を通じて representation-level observation と target-level outcome を接続する。unique molecular identifier (UMI) の事例では、software read ID、latent molecular tag、noisy observed tag を区別する。また、structure-preserving re-encoding と assignment-changing perturbation を counterfactual relevance audit により区別する。小規模な Lean formalization は structural dependency と family-level separation を検査する。本枠組みは提案された representation-to-target assignment に相対して individuation inference を監査するものであり、その assignment 自体を発見せず、証拠一般や numerical identity の完全な理論も与えない。
+表現間の形式的な差は、それだけでは target-level individuation を正当化しない。本稿は、exact target-factorization condition と、それを受け入れるために必要な scientific warrant を分離し、structurally admissible な test family を通じて representation-level observation と target-level outcome を接続する。unique molecular identifier (UMI) の事例では、software read ID、latent molecular tag、noisy observed tag を区別する。また、structure-preserving re-encoding と assignment-changing perturbation を counterfactual relevance audit により区別する。Lean formalization は structural dependency と family-level separation を検査する。本枠組みは提案された representation-to-target assignment に相対して individuation inference を監査するものであり、その assignment 自体を発見せず、証拠一般や numerical identity の完全な理論も与えない。
 
 ## 1. はじめに
 
@@ -168,7 +168,7 @@ r(a)\neq r(b)
 
 ### 2.4 Selected test family
 
-\(A\subseteq Q\) を analysis のために選択された test family とする。family-level admissibility を
+\(A\subseteq Q\) を analysis のために選択された test family とする。**structural family-level admissibility** を
 
 \[
 \operatorname{Adm}_r(A)
@@ -179,6 +179,8 @@ r(a)\neq r(b)
 と定義する。
 
 selection 自体には evidential force はない。exact inference で実際に使われるすべての test が、宣言された observation-to-target factorization を満たさなければならない。その test を含める scientific warrant は独立に与えられなければならず、test が target level に昇格させようとしている formal difference 自体によって self-license されてはならない。
+
+family-wide requirement は、outcome を見た後で separating witness だけを validate するより意図的に強い。先に discriminator を選び、その test だけに structural admissibility を事後的に与えることを防ぐためである。
 
 \[
 a\equiv_A b
@@ -307,6 +309,8 @@ read-level feature が molecular individuation inference に入るためには�
 ### 4.1 Structure-preserving re-encoding
 
 \(U\) を identifier-like field の value domain、\(\mathcal S\) を inference が evidentially relevant と宣言した \(U\) 上の relation の集合とする。re-encoding \(\pi:U\to U\) が \(\mathcal S\) に相対して **structure-preserving** であるとは、\(\pi\) が bijection であり、各 declared relation を保存することをいう。\(k\)-ary relation \(S\in\mathcal S\) について、
+
+\(\mathcal S\) の選択自体も counterfactual comparison より前に固定され、独立に motivate されなければならない。そうでなければ、望ましくない transformation を non-preserving にするためだけに、desired conclusion を encode する relation を後から追加できてしまう。
 
 \[
 S(u_1,\ldots,u_k)
