@@ -78,4 +78,16 @@
 
 ## Decision gate
 
-**Current state:** the anonymous review manuscript is final and validated: 99-word abstract, anonymous author field, no Acknowledgements section, AI disclosure in a non-identifying footnote, References as the final review-manuscript section, exact-source CI PASS, and 34-page visual inspection PASS. No manuscript-text blocker remains. Before actual submission, only author-supplied Funding/Declarations and non-blind metadata, publication/concurrent-review eligibility confirmations, upload of the requested files, and approval of the Editorial Manager-built PDF remain.
+**Current state:** the manuscript has been substantively revised after the previously validated 34-page artifact in response to an external pre-submission review. The prior artifact is historical only. The revised source adds contemporary related work, a stronger three-way formal characterization, an anonymous Lean supplement, and two scope clarifications. Fresh exact-head CI/PDF validation and visual inspection are required before submission. Previously, the anonymous review manuscript was validated as: 99-word abstract, anonymous author field, no Acknowledgements section, AI disclosure in a non-identifying footnote, References as the final review-manuscript section, exact-source CI PASS, and 34-page visual inspection PASS. No manuscript-text blocker remains. Before actual submission, only author-supplied Funding/Declarations and non-blind metadata, publication/concurrent-review eligibility confirmations, upload of the requested files, and approval of the Editorial Manager-built PDF remain.
+
+
+## External-review closure — 2026-09-23
+
+- [x] Central theorem stated as fiber invariance ⇔ universal difference soundness ⇔ quotient descent, conditional on fixed proposed target assignment.
+- [x] Direct DEKI comparison added: Frigg & Nguyen (2020); Nguyen & Frigg (2022).
+- [x] Suárez (2024) contemporary inferential account directly compared.
+- [x] Anonymous standalone Lean supplement added with pinned Lean 4.33.1, no external package dependencies, build instructions, and R1–R23 map.
+- [x] CI audits supplement for identity leakage and banned proof shortcuts, builds it, and uploads it as a separate anonymous artifact.
+- [x] Structural family admissibility explicitly distinguished from statistical multiple-testing correction.
+- [x] Counterfactual re-encoding audit sharpened with a decision-rule automorphism criterion.
+- [ ] Rebuild exact revised anonymous PDF and visually inspect every page after this revision.
