@@ -1,0 +1,35 @@
+name: paper2-claim-ir-compare-selftest
+
+on:
+  pull_request:
+    paths:
+      - "scripts/paper2_claim_ir_compare.py"
+      - "scripts/paper2_claim_ir_validate.py"
+      - "research/paper2/claim_ir_v1.example.json"
+      - ".github/workflows/paper2-claim-ir-compare-selftest.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "scripts/paper2_claim_ir_compare.py"
+      - "scripts/paper2_claim_ir_validate.py"
+      - "research/paper2/claim_ir_v1.example.json"
+      - ".github/workflows/paper2-claim-ir-compare-selftest.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile ClaimIR tools
+        run: |
+          python -m py_compile scripts/paper2_claim_ir_validate.py
+          python -m py_compile scripts/paper2_claim_ir_compare.py
+      - name: Run structural agreement destructive controls
+        run: python scripts/paper2_claim_ir_compare.py --self-test
