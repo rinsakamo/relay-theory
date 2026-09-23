@@ -1,3 +1,13 @@
+## Final terminology / grammar pass — 2026-09-23
+
+The submission-facing English manuscript received a final academic copy-edit. The pass standardizes terminology around target factorization, scientific warrant, test-specific observation factorization, and counterfactual relevance; removes several awkward or potentially overstrong phrasings; and adds the final construct-comparison safeguard:
+
+> The structural signature is neither presumed unique nor assumed complete, and its components must be fixed by the declared measurement question before construct labels or source authority are restored.
+
+This blocks post-hoc tuning of the construct signature to preserve or erase a preferred distinction.
+
+A full Japanese translation has been synchronized to the final English argument for reading and audit purposes. The English manuscript remains the submission authority.
+
 # Paper 1 — Hostile Review Notes
 
 > Internal manuscript-audit note. Non-authoritative and not part of the paper.
