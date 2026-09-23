@@ -18,6 +18,7 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import hashlib
+import heapq
 import json
 import math
 import re
@@ -201,12 +202,22 @@ def matches_calibration_seed(work: dict[str, Any], seeds: list[dict[str, Any]]) 
     return False
 
 
-def read_population_rows(
-    conn: sqlite3.Connection, retrieval_config: dict[str, Any]
-) -> tuple[list[dict[str, Any]], int]:
+def iter_population_rows(
+    conn: sqlite3.Connection,
+    retrieval_config: dict[str, Any],
+    counters: dict[str, int] | None = None,
+) -> Iterable[dict[str, Any]]:
     seeds = top50_seed_keys(retrieval_config)
-    rows = []
-    excluded = 0
+    if counters is None:
+        counters = {}
+    counters.clear()
+    counters.update(
+        {
+            "manifest_rows_seen": 0,
+            "calibration_works_excluded": 0,
+            "heldout_works_seen": 0,
+        }
+    )
     sql = """
       SELECT
         w.work_id,
@@ -220,7 +231,6 @@ def read_population_rows(
         EXISTS(SELECT 1 FROM retrieval_channels r WHERE r.work_id=w.work_id AND r.channel='R2'),
         EXISTS(SELECT 1 FROM retrieval_channels r WHERE r.work_id=w.work_id AND r.channel='R3')
       FROM works w
-      ORDER BY w.work_id
     """
     for (
         work_id,
@@ -234,6 +244,7 @@ def read_population_rows(
         r2,
         r3,
     ) in conn.execute(sql):
+        counters["manifest_rows_seen"] += 1
         channels = [ch for ch, present in zip(CHANNEL_ORDER, (r1, r2, r3)) if present]
         work = {
             "work_id": work_id,
@@ -246,23 +257,64 @@ def read_population_rows(
             "channels": channels,
         }
         if matches_calibration_seed(work, seeds):
-            excluded += 1
+            counters["calibration_works_excluded"] += 1
             continue
-        rows.append(work)
-    return rows, excluded
+        counters["heldout_works_seen"] += 1
+        yield work
+
+
+def read_population_rows(
+    conn: sqlite3.Connection, retrieval_config: dict[str, Any]
+) -> tuple[list[dict[str, Any]], int]:
+    """Small-fixture helper. Real sampling uses streaming_top_k_population."""
+    counters: dict[str, int] = {}
+    rows = list(iter_population_rows(conn, retrieval_config, counters))
+    return rows, counters["calibration_works_excluded"]
 
 
 def rank_population(rows: list[dict[str, Any]], work_seed: str) -> list[dict[str, Any]]:
-    ranked = []
-    seen: set[str] = set()
-    for row in rows:
-        work_id = str(row["work_id"])
-        if work_id in seen:
-            raise ValueError(f"duplicate canonical work identity: {work_id}")
-        seen.add(work_id)
-        ranked.append({**row, "rank_key": sha_rank(PROTOCOL_VERSION, work_seed, work_id)})
+    """Reference implementation for bounded synthetic fixtures."""
+    ranked = [
+        {
+            **row,
+            "rank_key": sha_rank(PROTOCOL_VERSION, work_seed, str(row["work_id"])),
+        }
+        for row in rows
+    ]
+    if len({str(row["work_id"]) for row in rows}) != len(rows):
+        raise ValueError("duplicate canonical work identity")
     ranked.sort(key=lambda x: (x["rank_key"], x["work_id"]))
     return ranked
+
+
+def streaming_top_k_population(
+    conn: sqlite3.Connection,
+    retrieval_config: dict[str, Any],
+    work_seed: str,
+    k: int,
+) -> tuple[list[dict[str, Any]], dict[str, int]]:
+    """Select the K smallest deterministic hash ranks in O(K) memory."""
+    if k < 1:
+        raise ValueError("streaming sample size must be positive")
+    counters: dict[str, int] = {}
+
+    def ranked_rows() -> Iterable[dict[str, Any]]:
+        for row in iter_population_rows(conn, retrieval_config, counters):
+            yield {
+                **row,
+                "rank_key": sha_rank(PROTOCOL_VERSION, work_seed, str(row["work_id"])),
+            }
+
+    selected = heapq.nsmallest(
+        k,
+        ranked_rows(),
+        key=lambda x: (x["rank_key"], x["work_id"]),
+    )
+    if len(selected) < k:
+        raise ValueError(
+            f"sample exceeds held-out population: requested={k}, available={len(selected)}"
+        )
+    return selected, counters
 
 
 def make_sample_manifest(
@@ -529,13 +581,19 @@ def self_test(protocol: dict[str, Any]) -> None:
         for db in (db_a, db_b):
             conn = sqlite3.connect(db)
             authority = validate_population_manifest(conn)
-            rows, excluded = read_population_rows(conn, config)
-            ranked = rank_population(rows, protocol["randomization"]["work_seed"])
+            ranked, counters = streaming_top_k_population(
+                conn,
+                config,
+                protocol["randomization"]["work_seed"],
+                8,
+            )
             conn.close()
-            assert excluded == 1
-            assert len(rows) == 8
-            assert len({x["work_id"] for x in rows}) == 8
-            results.append((authority, ranked))
+            assert counters["calibration_works_excluded"] == 1
+            assert counters["manifest_rows_seen"] == 9
+            assert counters["heldout_works_seen"] == 8
+            assert len(ranked) == 8
+            assert len({x["work_id"] for x in ranked}) == 8
+            results.append((authority, ranked, counters))
 
         assert [x["work_id"] for x in results[0][1]] == [x["work_id"] for x in results[1][1]]
         assert [x["rank_key"] for x in results[0][1]] == [x["rank_key"] for x in results[1][1]]
@@ -630,9 +688,13 @@ def main() -> int:
         retrieval_config = load_json(args.retrieval_config)
         conn = sqlite3.connect(args.manifest_db)
         authority = validate_population_manifest(conn)
-        rows, calibration_excluded = read_population_rows(conn, retrieval_config)
+        ranked, counters = streaming_top_k_population(
+            conn,
+            retrieval_config,
+            protocol["randomization"]["work_seed"],
+            primary_n + reserve_n,
+        )
         conn.close()
-        ranked = rank_population(rows, protocol["randomization"]["work_seed"])
         result = make_sample_manifest(
             ranked_rows=ranked,
             population_digest=authority["digest"],
@@ -641,7 +703,8 @@ def main() -> int:
             primary_n=primary_n,
             reserve_n=reserve_n,
         )
-        result["calibration_works_excluded"] = calibration_excluded
+        result["calibration_works_excluded"] = counters["calibration_works_excluded"]
+        result["population_heldout_work_count"] = counters["heldout_works_seen"]
         rendered = json.dumps(result, indent=2, sort_keys=True) + "\n"
         if args.output:
             args.output.write_text(rendered, encoding="utf-8")
