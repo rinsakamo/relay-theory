@@ -553,7 +553,8 @@ def _init_git(path: Path, *, remote: str | None = None) -> str:
     _run_text(["git", "config", "user.email", "selftest@example.invalid"], path)
     _run_text(["git", "config", "user.name", "selftest"], path)
     (path / "README").write_text("selftest\n", encoding="utf-8")
-    _run_text(["git", "add", "README"], path)
+    (path / ".gitignore").write_text("build/\n", encoding="utf-8")
+    _run_text(["git", "add", "README", ".gitignore"], path)
     _run_text(["git", "commit", "-qm", "selftest"], path)
     if remote is not None:
         _run_text(["git", "remote", "add", "origin", remote], path)
