@@ -78,7 +78,7 @@
 
 ## Decision gate
 
-**Current state:** the manuscript has been substantively revised after the previously validated 34-page artifact in response to an external pre-submission review. The prior artifact is historical only. The revised source adds contemporary related work, a stronger three-way formal characterization, an anonymous Lean supplement, and two scope clarifications. Fresh exact-head CI/PDF validation and visual inspection are required before submission. Previously, the anonymous review manuscript was validated as: 99-word abstract, anonymous author field, no Acknowledgements section, AI disclosure in a non-identifying footnote, References as the final review-manuscript section, exact-source CI PASS, and 34-page visual inspection PASS. No manuscript-text blocker remains. Before actual submission, only author-supplied Funding/Declarations and non-blind metadata, publication/concurrent-review eligibility confirmations, upload of the requested files, and approval of the Editorial Manager-built PDF remain.
+**Current state:** the external-review revision is validated at manuscript head `64d2cce792e0f1cbd0d779e74f843ca73fdbd49b`. RelayTheory Lean CI run `35868847321`, English Review CI run `35868847305`, and Japanese Review CI run `35868847382` all PASS. The anonymous English review PDF is 37 pages; exact artifact `10754490791` was rendered at 160 dpi and all 37 pages were visually inspected with no clipping, overlap, broken glyphs, malformed tables, missing sections, or reference-layout defects. The anonymous Lean supplement artifact is `10753741728` and builds independently with the pinned Lean 4.33.1 toolchain. No manuscript-text or formal-artifact blocker remains. Before actual submission, only author-supplied Funding/Declarations and non-blind metadata, publication/concurrent-review eligibility confirmations, upload of the requested files, and approval of the Editorial Manager-built PDF remain.
 
 
 ## External-review closure — 2026-09-23
@@ -90,4 +90,5 @@
 - [x] CI audits supplement for identity leakage and banned proof shortcuts, builds it, and uploads it as a separate anonymous artifact.
 - [x] Structural family admissibility explicitly distinguished from statistical multiple-testing correction.
 - [x] Counterfactual re-encoding audit sharpened with a decision-rule automorphism criterion.
-- [ ] Rebuild exact revised anonymous PDF and visually inspect every page after this revision.
+- [x] Exact revised anonymous PDF rebuilt and visually inspected: English Review CI `35868847305` PASS; artifact `10754490791`; 37 pages; all pages inspected at 160 dpi with no layout defects.
+- [x] Exact anonymous Lean supplement validated and uploaded by Lean CI `35868847321`; artifact `10753741728`; pinned Lean 4.33.1; standalone `lake build` PASS.
