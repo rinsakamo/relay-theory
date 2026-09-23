@@ -143,17 +143,29 @@ r(a)=r(b)
 f(a)=f(b)
 \]
 
-が成立することをいう。このとき、
+が成立することをいう。さらに、proposed target assignment に相対した feature-difference inference の universal soundness を
 
 \[
-f\text{ is fiber-invariant}
+D_r(f)
 \quad\Longleftrightarrow\quad
-\exists\,\bar f:P/{\sim_r}\to V
-\text{ such that }
-f=\bar f\circ\pi_r
+\forall a,b\in P,\;
+f(a)\neq f(b)\Longrightarrow r(a)\neq r(b)
 \]
 
-である。したがって fiber invariance は、feature が **target quotient を介して descend する**ためのちょうど必要十分な条件である。Lean development は representation type、target type、feature-value type を固定せず、この characterization を generic に検査する。
+と定義する。通常の classical logic のもとでは、これは fiber invariance の contraposition である。したがって structural core は三者同値として書ける。
+
+\[
+\begin{aligned}
+&\forall a,b,\;r(a)=r(b)\Rightarrow f(a)=f(b) \\
+\Longleftrightarrow\;&
+\forall a,b,\;f(a)\neq f(b)\Rightarrow r(a)\neq r(b) \\
+\Longleftrightarrow\;&
+\exists\,\bar f:P/{\sim_r}\to V
+\text{ such that }f=\bar f\circ\pi_r .
+\end{aligned}
+\]
+
+つまり **fixed proposed target assignment を条件とすれば**、fiber invariance、feature-difference inference の universal soundness、target quotient への descent は同値である。これは、その assignment に相対して feature difference を universally sound な discriminator として使うための必要十分な structural criterion であって、assignment 自体を発見・正当化する procedure ではない。Lean development はこの三者同値を generic に検証する。
 
 \(f=\phi\circ r\) なら、\(f\) は必ず \(P/{\sim_r}\) を介して descend する。逆に quotient descent が保持するのは、same-target difference を忘れた後にも残る representation-level information ちょうどそのものである。descended feature を \(T\) 全体上の property として解釈するには、\(r\) の represented image 外まで extension する追加 convention が必要だが、その off-range value は現在の inference には evidential work をしない。
 
@@ -237,6 +249,8 @@ r(a)\neq r(b)
 selection 自体には evidential force はない。independently specified な特定の test \(q\) については test-specific theorem は \(B_r(q)\) だけを要求する。より強い \(\operatorname{Adm}_r(A)\) は、追加の witness-selection rule なしに「\(A\) のどれかが pair を分離した」と報告できる inference に用いる。
 
 したがって family-wide requirement は every particular witnessed inference の necessary condition ではなく、conservative sufficient condition である。その methodological purpose は、先に discriminator を探索してから structural admissibility を post hoc に与えることを防ぐ点にある。relevant test の scientific warrant は引き続き独立に与えられ、formal difference 自体によって self-license されてはならない。
+
+ここでいう *test family* は structural な概念であって statistical multiplicity correction ではない。\(\operatorname{Adm}_r(A)\) は family-wise error、false-discovery rate、selective inference、researcher degrees of freedom を control しない。それらは test outcome や witness selection が stochastic / data-adaptive な場合に生じる別問題であり、present exact deterministic core は multiplicity correction を与えない。
 
 \[
 a\equiv_A b
@@ -392,7 +406,13 @@ S(\pi(u_1),\ldots,\pi(u_k))
 
 inference が equality class だけを利用するなら、任意の bijection は harmless renaming である。しかし sequence geometry、edit distance、neighborhood structure、order その他の relation を利用するなら、arbitrary bijection は無害とは限らない。error-aware UMI analysis で sequence distance を破壊しながら string を arbitrary number に写す変換は、evidential structure の pure re-encoding ではない。
 
-したがって適切な invariance question は、inference が利用すると宣言した representation-level structure の automorphism に対して結論が保存されるか、である。宣言された evidential structure をすべて保存する変換で結論が変わるなら、説明されていない representation dependence がある。
+したがって適切な invariance question は、inference が利用すると宣言した representation-level structure の automorphism に対して結論が保存されるか、である。より明示的には、\(X\) を inference が用いる完全な representation-level input、\(D(X)\) を target-level conclusion とする。declared representation structure の re-encoding のみを行う任意の \(\pi\in\operatorname{Aut}(U,\mathcal S)\) に対して、
+
+\[
+D(\pi\cdot X)=D(X)
+\]
+
+を要求する。output 自体にも transformed label が含まれる場合は対応する equivariance condition とする。宣言された evidential structure をすべて保存する変換で結論が変わるなら、説明されていない representation dependence がある。これは inference rule の audit criterion であり、assignment-changing perturbation まで harmless だという追加主張ではない。
 
 ### 4.2 Assignment perturbation
 
@@ -417,13 +437,15 @@ Lean formalization は意図的に小さい。その役割は、記述された 
 
 formal model には三つの representation、representation-to-target map、target-sensitive test、coarse / fine test regime、representation-sensitive negative control、semantically inert token metadata が含まれる。
 
-feature-level analysis には generic quotient theorem が追加される。任意の representation type、target type、feature-value type について、feature が target map の各 fiber 上で一定であることと、その map が誘導する quotient を介して descend することが同値であると formalization は証明する。従来の factorization result は、この anti-smuggling principle の target-specific instance として読める。同じ target に割り当てられた representation は target-factorized feature について同じ値を取り、representation-sensitive discriminator はこの条件に失敗する。
+feature-level analysis には generic three-way theorem が追加される。任意の representation type、target type、feature-value type について、fiber invariance と proposed target assignment に相対した feature-difference inference の universal soundness が同値であり、さらに両者がその map が誘導する quotient を介した descent と同値であることを formalization は証明する。従来の factorization result は、この anti-smuggling principle の target-specific instance として読める。同じ target に割り当てられた representation は target-factorized feature について同じ値を取り、representation-sensitive discriminator はこの条件に失敗する。
 
 test layer も同じ構造に接続される。formal observation-factorization condition は、representation-level observed outcome が各 test について割り当てられた target の target-level response と一致することを表す。対応する target-linked observation function はこの条件を満たし、その factorization を満たす observed test outcome 上の差は異なる target assignment を含意する。さらに family-level object は selected regime で accessible なすべての test にこの factorization を要求し、その admissible family 内の一つの test が二つの representation を分離すれば、異なる target assignment が導かれる。これは \(\operatorname{Adm}_r(A)\land a\mathrel{\#_A}b\Rightarrow r(a)\neq r(b)\) の有限 counterpart である。
 
 残りの result は negative control と monotonicity check である。同じ target に割り当てられた re-encoding は target-linked observation profile を保存する。より豊かな selected test family は、restricted family では unresolved だった pair を分離しうる。target-sensitive semantics に入っていない token の arbitrary reassignment は classification を変えない。
 
 これらの proof は初等的である。machine-checking の主張もそれに応じて限定される。reviewer は、target-relevant とされる discriminator が hidden encoding choice、label、metadata field からではなく、宣言された target map と factorization を通して本当に入っているかを監査できる。
+
+submission には anonymized supplementary Lean archive を添付する。これは paper-level result に対応する exact standalone source、pinned Lean toolchain、build configuration、build instructions、R1–R23 の one-to-one result map を含む。pinned Lean distribution 以外の external package dependency はなく、`lake build` で検証できる。review artifact から repository identity と non-blind provenance は除外し、review 後に non-anonymous archival reference へ置換できる。
 
 ## 6. 既存研究との関係
 
@@ -443,7 +465,15 @@ Nguyen の比較は、model、その representational use、target system につ
 
 逆方向の限界も重要である。target factorization は representational adequacy の十分条件ではない。formally factorized feature であっても、bad target model、mistaken reference assignment、unreliable measurement process から生じうる。本枠組みはこれらの広い問題を決着させない。
 
-### 6.2 Inferential representation と experimental individuation
+### 6.2 DEKI と Contemporary Inferential Accounts
+
+特に近い現代的比較対象は、Frigg and Nguyen (2020) が展開し Nguyen and Frigg (2022) が整理した DEKI account である。DEKI は scientific representation を denotation、exemplification、keying-up、imputation の組合せとして分析し、representational vehicle が exemplify する feature を key を介して target に impute される feature へ接続する。この構図は、本稿の基本的直観と整合する。すなわち、representing vehicle に存在する feature が自動的に target property になるわけではない。
+
+本稿の audit は scientific representation の alternative general theory ではなく、DEKI が説明する「model がいかに represent するか」を置き換えるものでもない。問いはより狭く downstream である。proposed representation-to-target assignment と independently warranted な interpretive / scientific bridge を条件として、representation 内の *particular difference* を target plurality の discriminator として使ってよいかを問う。quotient descent は proposed assignment に対する conservativity を検査し、negative control は within-fiber leakage を露出し、selected-family admissibility は post-hoc witness selection を制約し、counterfactual audit は representational encoding への依存を検査する。DEKI の語彙で言えば、exemplified / keyed feature が存在することだけでは、その inequality が sound individuation discriminator かどうかは決まらない。
+
+Suárez (2024) は representational force と inferential capacity を normative modeling practice 内の relational / context-dependent property として扱う contemporary inferential account を展開する。この立場は、本稿の structural factorization と scientific warrant の分離を補強する。本 formalism は、target assignment、key、measurement model、test を scientifically acceptable にする normative / empirical warrant 自体を導出しない。そうした commitment を **条件として**何が従うかを audit する。したがって貢献は complementary であり、already interpreted and warranted な representational practice 内の individuation inference に対する local conservativity test である。
+
+### 6.3 Inferential representation と experimental individuation
 
 Suárez (2004) と Contessa (2007) は、scientific representation における directionality、interpretation、surrogate inference を既に重視している。本稿は representation と target を結びつけること自体を新規性として主張しない。より狭く、**representational vehicle 内部の差**を individuation evidence として使う前に、何が明示されなければならないかを切り出す。
 
@@ -451,7 +481,7 @@ individuation の practice-oriented work も本稿の主張を制約する。Bue
 
 したがって本稿は、presentation と individuation の区別自体が新しいとは主張しない。貢献は、そのような practice の内部で繰り返し起こりうる failure mode、すなわち presentation-level distinction が dependency を明示しないまま target-level individuating work をしてしまうことを監査する compact formal audit にある。
 
-### 6.3 Technical neighbors
+### 6.4 Technical neighbors
 
 programming-language semantics における representation independence は implementation detail への依存を制約する (Mitchell 1986)。observational / behavioral equivalence は specified interaction に相対して system を分類する (Hennessy and Milner 1985; Rutten 2000)。identity and discernibility の研究は formal discernibility を unrestricted numerical identity と同一視することに警告する (Ladyman, Linnebo, and Pettigrew 2012; Dieks and Versteegh 2008)。
 
@@ -594,3 +624,10 @@ Waters, C. Kenneth. 2018. "Ask Not 'What Is an Individual?'" In *Individuation, 
 Tramèr, Martin R., D. John M. Reynolds, R. Andrew Moore, and Henry J. McQuay. 1997. "Impact of Covert Duplicate Publication on Meta-analysis: A Case Study." *BMJ* 315(7109): 635–640. DOI: 10.1136/bmj.315.7109.635.
 
 von Elm, Erik, Greta Poglia, Bernhard Walder, and Martin R. Tramèr. 2004. "Different Patterns of Duplicate Publication: An Analysis of Articles Used in Systematic Reviews." *JAMA* 291(8): 974–980. DOI: 10.1001/jama.291.8.974.
+
+Frigg, Roman, and James Nguyen. 2020. *Modelling Nature: An Opinionated Introduction to Scientific Representation*. Cham: Springer. DOI: 10.1007/978-3-030-45153-0.
+
+Nguyen, James, and Roman Frigg. 2022. *Scientific Representation*. Elements in the Philosophy of Science. Cambridge: Cambridge University Press. DOI: 10.1017/9781009003575.
+
+Suárez, Mauricio. 2024. *Inference and Representation: A Study in Modeling Science*. Chicago: University of Chicago Press. DOI: 10.7208/chicago/9780226830032.001.0001.
+
