@@ -1,0 +1,41 @@
+name: paper2-two-pass-real-preflight-selftest
+
+on:
+  pull_request:
+    paths:
+      - "research/paper2/extraction_two_pass_real_protocol_v1.json"
+      - "research/paper2/extraction_label_mask_v1.json"
+      - "research/paper2/extraction_normal_prompt_v1.md"
+      - "scripts/paper2_extraction_two_pass_prepare.py"
+      - "scripts/paper2_extraction_two_pass_systemone_v2.py"
+      - ".github/workflows/paper2-two-pass-real-preflight-selftest.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "research/paper2/extraction_two_pass_real_protocol_v1.json"
+      - "research/paper2/extraction_label_mask_v1.json"
+      - "research/paper2/extraction_normal_prompt_v1.md"
+      - "scripts/paper2_extraction_two_pass_prepare.py"
+      - "scripts/paper2_extraction_two_pass_systemone_v2.py"
+      - ".github/workflows/paper2-two-pass-real-preflight-selftest.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile real-prep tooling
+        run: |
+          python -m py_compile scripts/paper2_extraction_two_pass_prepare.py
+          python -m py_compile scripts/paper2_extraction_two_pass_systemone_v2.py
+      - name: Revalidate SystemOne v2 synthetic hardening
+        run: python scripts/paper2_extraction_two_pass_systemone_v2.py --self-test
+      - name: Run real-prep segmentation masking isolation self-test
+        run: python scripts/paper2_extraction_two_pass_prepare.py --self-test
