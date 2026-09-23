@@ -332,7 +332,7 @@ A read-level feature may enter a molecular individuation inference only through 
 
 This is also why the case is useful philosophically. Two fields can both be identifiers, both be strings, and both distinguish records, yet only one participates in a causal and measurement history designed to track pre-amplification templates.
 
-### 3.5 Cross-domain microcase: database entity resolution
+## 4. Cross-Domain Microcase: Database Entity Resolution
 
 Entity resolution is explicitly concerned with linking duplicate records and estimating partitions of records that refer to common entities, often without unique entity identifiers (Aleshin-Guendel and Steorts 2024). The same structural issue therefore appears outside molecular counting. Suppose two database rows have distinct row IDs but are proposed to refer to the same customer. If \(r\) maps both rows to that customer, row-ID inequality varies within one fiber of \(r\); it therefore fails quotient descent and cannot by itself support a two-customer inference.
 

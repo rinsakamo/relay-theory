@@ -338,7 +338,7 @@ read-level feature が molecular individuation inference に入るためには�
 
 このため、この事例は哲学的にも有用である。二つの field がともに identifier であり、ともに string であり、ともに record を区別できたとしても、target を追跡するよう設計された causal and measurement history に参加するのはそのうち一方だけかもしれない。
 
-### 3.5 Cross-domain microcase: database entity resolution
+## 4. Cross-Domain Microcase: Database Entity Resolution
 
 entity resolution は、しばしば unique entity identifier が存在しない状況で duplicate record を link し、common entity を表す record partition を推定する問題として扱われる (Aleshin-Guendel and Steorts 2024)。したがって同じ構造は molecular counting の外にも現れる。異なる row ID を持つ二つの database row が、同じ customer を指すと proposed されているとする。\(r\) が両 row を同じ customer に写すなら、row-ID inequality は一つの fiber 内で変化するため quotient descent に失敗し、それだけでは two-customer inference を支えられない。
 
