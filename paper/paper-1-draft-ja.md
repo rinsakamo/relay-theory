@@ -243,7 +243,7 @@ r(a)\neq r(b)
 1. **Target model と scope を宣言する。** \(P\)、\(T\)、proposed assignment \(r\)、selected test family \(A\)、結論の強さを固定する。固定されていなければ audit は underdetermined である。
 2. **Quotient descent を検査する。** candidate discriminator が \(r\) の各 fiber 上で一定かを問う。within-fiber difference は target-level use に対する structural failure である。
 3. **Observation bridge を検査する。** pre-specified test \(q\) なら \(B_r(q)\) を確立する。analysis が \(A\) から arbitrary separating witness を選べるなら、より強い \(\operatorname{Adm}_r(A)\) を確立するか、independently fixed な witness-selection rule を与える。
-4. **Independent warrant と representation structure を検査する。** \(r\)、factorization、selected family、inference が利用する representation-level structure \(\mathcal S\) を受け入れる scientific reason を明示する。これらは non-self-licensing であり、preferred result を保存するために後から選ばれてはならない。
+4. **Independent warrant と representation structure を検査する。** \(r\)、factorization、selected family、inference が利用する representation-level relation / function / metric（以下 \(\mathcal S\) と表す）を受け入れる scientific reason を明示する。これらは non-self-licensing であり、preferred result を保存するために後から選ばれてはならない。
 5. **Counterfactual と scope を検査する。** structure-preserving re-encoding に対する invariance を調べる。assignment perturbation で結論が変わるなら、その sensitivity を evidentially relevant にする grounded relation を示す。最後に、結論を selected observational / interventional regime が支える範囲より強くしない。
 
 audit の disposition は三つに整理できる。quotient / factorization condition の違反は **structural failure**。構造的には coherent でも independent warrant が足りなければ **scientifically underdetermined**。両層を通過した場合は **scoped pass** であり、declared target model と regime に相対して license されるだけで、unrestricted numerical identity を確立するわけではない。
@@ -342,7 +342,7 @@ read-level feature が molecular individuation inference に入るためには�
 
 entity resolution は、しばしば unique entity identifier が存在しない状況で duplicate record を link し、common entity を表す record partition を推定する問題として扱われる (Aleshin-Guendel and Steorts 2024)。したがって同じ構造は molecular counting の外にも現れる。異なる row ID を持つ二つの database row が、同じ customer を指すと proposed されているとする。\(r\) が両 row を同じ customer に写すなら、row-ID inequality は一つの fiber 内で変化するため quotient descent に失敗し、それだけでは two-customer inference を支えられない。
 
-別の field が evidentially relevant になるには追加の semantics が必要である。independently specified な resolution process によって維持された master-customer identifier は customer target を介して factorize しうる一方、copied email address、display name、locally generated row key はそうとは限らない。duplicate、shared value、stale assignment、entry error は必要な dependency を破壊しうる。ここで特定の entity-resolution system を endorsement する意図はない。非生物学的 domain でも、どの distinction が target quotient を生き残るか、どの observation link が warrant されるか、どれが単なる representational bookkeeping か、という同じ audit question が現れることを示すための microcase である。
+別の field が evidentially relevant になるには追加の semantics が必要である。separately governed な upstream source registry によって維持された customer identifier は customer target を介して factorize しうる一方、copied email address、display name、locally generated row key はそうとは限らない。同じ entity-resolution procedure が生成した master identifier は、その procedure 自身の clustering を独立には warrant できない。duplicate、shared value、stale assignment、entry error は必要な dependency を破壊しうる。ここで特定の entity-resolution system を endorsement する意図はない。非生物学的 domain でも、どの distinction が target quotient を生き残るか、どの observation link が warrant されるか、どれが単なる representational bookkeeping か、という同じ audit question が現れることを示すための microcase である。
 
 ## 4. Counterfactual Relevance Audit
 
