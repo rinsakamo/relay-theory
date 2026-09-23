@@ -1,3 +1,14 @@
+## Philosophy of Science final-compliance revision — 2026-09-23
+
+The submission-facing source was aligned to the current journal instructions after a fresh official-policy audit:
+- the anonymous review manuscript now omits the Acknowledgements section, as required for anonymous review;
+- required generative-AI text-use disclosure is retained in a non-identifying footnote, which the journal explicitly permits as an alternative to an acknowledgements section;
+- the review manuscript now ends with References;
+- the accepted-manuscript back-matter order is fixed as References → Acknowledgements → Declarations → Funding Statement;
+- factual Declarations and Funding Statement values remain an explicit author-supplied gate and are not inferred;
+- the non-blind cover letter is synchronized to the current title, exact-deterministic scope, bibliographic → UMI → evidence-synthesis narrative, and narrow novelty claim;
+- stale R1--R15 checklist references were updated to the current R1--R23 audit surface.
+
 ## Post-review claim-discipline revision — 2026-09-23
 
 A fresh reviewer pass after the cross-domain reframing identified four scope/precision issues and one editorial-order defect. The manuscript now:

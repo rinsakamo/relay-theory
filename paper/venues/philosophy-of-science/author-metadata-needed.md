@@ -24,8 +24,8 @@
 - Abstract: no more than 100 words.
 - Initial manuscript must be prepared for anonymous review.
 - References should use author-date style and include full DOI URLs where available.
-- The typeset manuscript should include Acknowledgments, Funding Statement, and Declarations as applicable.
-- Generative-AI text assistance must be declared; the current blind manuscript and cover-letter draft already contain the planned disclosure.
+- The accepted/typeset manuscript back matter is locked to the journal structure after References: **Acknowledgements → Declarations → Funding Statement**. The factual Declarations and Funding Statement must be supplied truthfully by the author.
+- The anonymous review manuscript omits Acknowledgements and carries the generative-AI text-assistance disclosure in a non-identifying footnote; after de-anonymization, the same disclosure should be moved into Acknowledgements. The non-blind cover-letter draft contains the matching disclosure.
 
 ## Artifact plan
 
