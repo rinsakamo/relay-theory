@@ -78,7 +78,7 @@
 
 ## Decision gate
 
-**Current state:** the manuscript has changed after the previous validated artifact to incorporate the final conditional-acceptance clarifications: universal-scope wording in Abstract/Conclusion, explicit UMI audit dispositions, and the trivial-automorphism caveat. The previous PDF/visual validation is therefore historical only. Fresh exact-head Lean / English / Japanese CI, anonymous supplement build, PDF generation, and visual inspection are required before submission.
+**Current state:** the conditional-acceptance revision is fully validated at manuscript head `e83f26170ef52a611630c7aa44141dea5c892bf6`. RelayTheory Lean CI `35929203932`, English Review CI `35929203850`, and Japanese Review CI `35929203952` all PASS. The exact anonymous English PDF artifact `10780731990` is 38 pages; all 38 pages were rendered at 160 dpi and visually inspected with no clipping, overlap, broken glyphs, malformed tables, missing sections, or bibliography-layout defects. PDF SHA-256: `864db435e55950e20f911586a8499a28ff999e01efb8a948f3c008894f00b779`. The anonymous Lean supplement artifact `10780208173` builds under pinned Lean 4.33.1 and passed identity-leak / banned-proof-shortcut audits. The abstract remains 99 words. No manuscript-text or formal-artifact blocker remains; only author/portal facts and Editorial Manager approval remain before submission.
 
 ## External-review closure — 2026-09-23
 
@@ -108,5 +108,5 @@
 - [x] Conclusion scope aligned with the same universal-scope qualifier.
 - [x] UMI case explicitly maps structural failure / observation-bridge failure / scientific underdetermination / scoped pass.
 - [x] Counterfactual audit notes that a trivial automorphism group can make formal invariance diagnostically vacuous.
-- [ ] Rebuild and validate the exact revised head.
-- [ ] Visually inspect every page of the resulting anonymous PDF.
+- [x] Rebuild and validate exact conditional-acceptance manuscript head `e83f26170ef52a611630c7aa44141dea5c892bf6`: all three CI lanes PASS.
+- [x] Visually inspect all 38 pages of exact PDF artifact `10780731990` at 160 dpi: no layout or glyph defects found.
