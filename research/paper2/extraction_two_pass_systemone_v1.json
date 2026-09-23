@@ -19,7 +19,8 @@
     "state_contains_normal_interpretation": true,
     "source_is_authoritative": true,
     "normal_interpretation_is_advisory": true,
-    "free_text_claim_ir_generation_forbidden": true
+    "free_text_claim_ir_generation_forbidden": true,
+    "max_questions": 64
   },
   "bounded_surface": {
     "max_source_spans": 3,
@@ -33,8 +34,15 @@
   "compiler": {
     "deterministic": true,
     "repairs_invalid_decisions": false,
-    "assigns_node_ids": ["n1", "n2", "n3"],
-    "assigns_relation_ids": ["r1", "r2"],
+    "assigns_node_ids": [
+      "n1",
+      "n2",
+      "n3"
+    ],
+    "assigns_relation_ids": [
+      "r1",
+      "r2"
+    ],
     "validates_with_existing_candidate_validator": true
   },
   "qualification_scope": {
@@ -44,5 +52,11 @@
     "real_model_calls_forbidden": true,
     "basis_decomposition_forbidden": true,
     "corpus_claims_forbidden": true
+  },
+  "known_limitations": {
+    "semantic_entailment_mechanically_verified": false,
+    "construct_label_suppression_for_real_sources_qualified": false,
+    "real_pilot_authorized": false,
+    "systemone_probability_calibration_claimed": false
   }
 }
