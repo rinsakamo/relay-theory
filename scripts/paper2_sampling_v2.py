@@ -56,6 +56,18 @@ def load_protocol(path: Path) -> dict[str, Any]:
         raise ValueError("sampling-v2 weighting must remain sqrt(N_d)")
     if primary.get("integer_apportionment") != "hamilton_largest_remainder":
         raise ValueError("sampling-v2 integer apportionment must remain Hamilton")
+    authority = value.get("retrieval_authority", {})
+    measurement = authority.get("era_count_measurement", {})
+    if measurement.get("method") != "one_shot_bucket_counts_with_union_before_after_bracket":
+        raise ValueError("sampling-v2 era-count method must remain one-shot bracketed counts")
+    if measurement.get("transport_attempts_per_query") != 1:
+        raise ValueError("sampling-v2 era-count transport attempts must remain exactly one")
+    if measurement.get("cursor_paging_used") is not False:
+        raise ValueError("sampling-v2 era-count measurement must not use cursor paging")
+    if measurement.get("meta_count_equality_across_requests_required") is not False:
+        raise ValueError("sampling-v2 must record live provider drift rather than require equality")
+    if measurement.get("measurement_buckets_are_final_sampling_eras") is not False:
+        raise ValueError("diagnostic measurement buckets must not become final eras implicitly")
     if value.get("real_corpus_selection_authorized") is not False:
         raise ValueError("real corpus selection must remain blocked in this transaction")
     return value
@@ -96,105 +108,117 @@ def validate_counts_artifact(path: Path) -> dict[str, Any]:
     return value
 
 
-def parse_year_group_rows(rows: list[dict[str, Any]]) -> tuple[dict[int, int], int]:
-    year_counts: dict[int, int] = {}
-    unknown = 0
-    for row in rows:
-        raw_key = row.get("key")
-        try:
-            key = int(raw_key)
-        except (TypeError, ValueError) as exc:
-            raise ValueError(f"invalid publication-year group key: {raw_key!r}") from exc
-        count = int(row.get("count", -1))
-        if count < 0:
-            raise ValueError("publication-year group count must be nonnegative")
-        if key == -111:
-            unknown += count
-            continue
-        if key < 0 or key > 9999:
-            raise ValueError(f"implausible publication year: {key}")
-        if key in year_counts:
-            raise ValueError(f"duplicate publication-year group: {key}")
-        year_counts[key] = count
-    return year_counts, unknown
-
-
-def measurement_summary(year_counts: dict[int, int], unknown: int) -> list[dict[str, Any]]:
-    buckets: list[dict[str, Any]] = []
-    pre_1900 = sum(count for year, count in year_counts.items() if year <= 1899)
-    buckets.append({"label": "PRE_1900", "count": pre_1900})
+def measurement_buckets() -> list[dict[str, str]]:
+    """Diagnostic publication-year buckets; not yet final sampling eras."""
+    buckets: list[dict[str, str]] = [
+        {"label": "PRE_1900", "condition": "year <= (1899)"}
+    ]
     for start in range(1900, 2020, 10):
-        count = sum(
-            value for year, value in year_counts.items()
-            if start <= year <= start + 9
+        buckets.append(
+            {
+                "label": f"{start}-{start + 9}",
+                "condition": f"year >= ({start}) and year <= ({start + 9})",
+            }
         )
-        buckets.append({"label": f"{start}-{start + 9}", "count": count})
-    buckets.append({
-        "label": "2020-2026",
-        "count": sum(
-            value for year, value in year_counts.items() if 2020 <= year <= 2026
-        ),
-    })
-    buckets.append({
-        "label": "POST_2026",
-        "count": sum(value for year, value in year_counts.items() if year >= 2027),
-    })
-    buckets.append({"label": "UNKNOWN_YEAR", "count": unknown})
+    buckets.extend(
+        [
+            {
+                "label": "2020-2026",
+                "condition": "year >= (2020) and year <= (2026)",
+            },
+            {"label": "POST_2026", "condition": "year >= (2027)"},
+            {"label": "UNKNOWN_YEAR", "condition": "year is (unknown)"},
+        ]
+    )
     return buckets
+
+
+def append_filter(union_oql: str, condition: str) -> str:
+    if not union_oql.startswith("works where "):
+        raise ValueError("frozen union_oql must start with 'works where '")
+    if not condition or "works where" in condition:
+        raise ValueError("invalid diagnostic filter condition")
+    return f"{union_oql} and {condition}"
+
+
+def count_once(
+    client: retrieval.OpenAlexClient,
+    query: str,
+) -> dict[str, Any]:
+    """Execute exactly one HTTP attempt and return a timestamped live count."""
+    started_at = retrieval.utc_now()
+    payload = client.request_json(
+        retrieval.API_ROOT,
+        method="POST",
+        body={"oql": query, "per_page": 1},
+        retries=1,
+    )
+    completed_at = retrieval.utc_now()
+    meta = payload.get("meta") or {}
+    count = int(meta.get("count", -1))
+    if count < 0:
+        raise ValueError("OpenAlex response missing nonnegative meta.count")
+    return {
+        "count": count,
+        "started_at": started_at,
+        "completed_at": completed_at,
+    }
 
 
 def measure_era_counts(
     client: retrieval.OpenAlexClient,
     frozen_counts: dict[str, Any],
 ) -> dict[str, Any]:
-    query = frozen_counts["union_oql"] + " group by year"
-    cursor: str | None = "*"
-    all_rows: list[dict[str, Any]] = []
-    provider_count: int | None = None
-    page_count = 0
-    while cursor:
-        payload = client.run_oql(query, per_page=100, cursor=cursor)
-        meta = payload.get("meta") or {}
-        current_count = int(meta.get("count", -1))
-        if current_count < 0:
-            raise ValueError("grouped OpenAlex response missing meta.count")
-        if provider_count is None:
-            provider_count = current_count
-        elif current_count != provider_count:
-            raise RuntimeError(
-                "ERA_COUNT_PROVIDER_DRIFT: meta.count changed during grouped cursor traversal"
-            )
-        rows = payload.get("group_by")
-        if not isinstance(rows, list):
-            raise ValueError("grouped OpenAlex response missing group_by list")
-        all_rows.extend(row for row in rows if isinstance(row, dict))
-        cursor = meta.get("next_cursor")
-        page_count += 1
-        if page_count > 100:
-            raise RuntimeError("unexpectedly many publication-year group pages")
+    """Measure diagnostic era buckets without cursor paging.
 
-    year_counts, unknown = parse_year_group_rows(all_rows)
-    grouped_total = sum(year_counts.values()) + unknown
-    if provider_count is None or grouped_total != provider_count:
-        raise RuntimeError(
-            "ERA_COUNT_PARTITION_MISMATCH: year-group total does not equal provider "
-            f"union count ({grouped_total} != {provider_count})"
+    OpenAlex documents live counts as mutable. This transaction therefore
+    brackets the one-shot bucket queries with one total-union count before and
+    after, records drift instead of requiring equality, and performs no retry.
+    """
+    union = frozen_counts["union_oql"]
+    transaction_started_at = retrieval.utc_now()
+    total_before = count_once(client, union)
+
+    rows: list[dict[str, Any]] = []
+    for bucket in measurement_buckets():
+        measured = count_once(client, append_filter(union, bucket["condition"]))
+        rows.append(
+            {
+                "label": bucket["label"],
+                "condition": bucket["condition"],
+                **measured,
+            }
         )
+
+    total_after = count_once(client, union)
+    transaction_completed_at = retrieval.utc_now()
+    bucket_total = sum(int(row["count"]) for row in rows)
+    before = int(total_before["count"])
+    after = int(total_after["count"])
+
     return {
-        "schema_version": "paper2-sampling-v2-era-counts-v1",
+        "schema_version": "paper2-sampling-v2-era-counts-v2",
         "owner_issue": 167,
         "provider": "OpenAlex",
-        "access_timestamp": retrieval.utc_now(),
+        "measurement_method": "one_shot_bucket_counts_with_union_before_after_bracket",
+        "transport_attempts_per_query": 1,
+        "cursor_paging_used": False,
+        "transaction_started_at": transaction_started_at,
+        "transaction_completed_at": transaction_completed_at,
         "retrieval_counts_artifact_sha256": EXPECTED_COUNTS_SHA256,
         "union_oql_utf8_sha256": EXPECTED_UNION_OQL_UTF8_SHA256,
         "union_oql_jq_r_sha256": EXPECTED_UNION_OQL_JQ_R_SHA256,
         "historical_N_frame_2026_09_23": HISTORICAL_N_FRAME,
-        "current_provider_union_count": provider_count,
-        "year_group_pages": page_count,
-        "unknown_year_count": unknown,
-        "year_counts": {str(year): year_counts[year] for year in sorted(year_counts)},
+        "provider_union_count_before": total_before,
+        "provider_union_count_after": total_after,
+        "provider_union_count_signed_drift": after - before,
+        "provider_union_count_absolute_drift": abs(after - before),
+        "bucket_count_sum": bucket_total,
+        "bucket_sum_minus_union_before": bucket_total - before,
+        "bucket_sum_minus_union_after": bucket_total - after,
         "measurement_buckets_are_final_sampling_eras": False,
-        "measurement_summary": measurement_summary(year_counts, unknown),
+        "live_provider_counts_are_point_in_time_snapshot": False,
+        "buckets": rows,
     }
 
 
@@ -270,20 +294,17 @@ def self_test(protocol: dict[str, Any]) -> None:
     assert authority["union_oql_jq_r_sha256"] == EXPECTED_UNION_OQL_JQ_R_SHA256
     assert sha256_bytes(b"synthetic") != sha256_bytes(b"synthetic\n")
 
-    parsed_years, parsed_unknown = parse_year_group_rows([
-        {"key": 1959, "count": 10},
-        {"key": 1960, "count": 20},
-        {"key": 1969, "count": 30},
-        {"key": 2026, "count": 140},
-        {"key": -111, "count": 5},
-    ])
-    assert parsed_years == {1959: 10, 1960: 20, 1969: 30, 2026: 140}
-    assert parsed_unknown == 5
-    summary = {row["label"]: row["count"] for row in measurement_summary(parsed_years, 5)}
-    assert summary["1950-1959"] == 10
-    assert summary["1960-1969"] == 50
-    assert summary["2020-2026"] == 140
-    assert summary["UNKNOWN_YEAR"] == 5
+    buckets = measurement_buckets()
+    assert buckets[0] == {"label": "PRE_1900", "condition": "year <= (1899)"}
+    assert buckets[-3]["label"] == "2020-2026"
+    assert buckets[-2]["label"] == "POST_2026"
+    assert buckets[-1] == {"label": "UNKNOWN_YEAR", "condition": "year is (unknown)"}
+    assert len(buckets) == 16
+    filtered = append_filter(
+        "works where citation count >= (1) and (title/abstract has (memory))",
+        "year >= (2010) and year <= (2019)",
+    )
+    assert filtered.endswith("and year >= (2010) and year <= (2019)")
 
     counts = {
         "1950s": 100,
@@ -314,27 +335,27 @@ def self_test(protocol: dict[str, Any]) -> None:
 
     class FakeClient:
         def __init__(self) -> None:
-            self.calls: list[tuple[str, int, str | None]] = []
+            self.calls: list[dict[str, Any]] = []
+            # union-before, 16 buckets, union-after
+            self.counts = iter([1000, *([62] * 15), 70, 1003])
 
-        def run_oql(
-            self, query: str, *, per_page: int = 1, cursor: str | None = None,
-            select: str | None = None,
+        def request_json(
+            self,
+            url: str,
+            *,
+            method: str = "GET",
+            body: dict[str, Any] | None = None,
+            retries: int = 5,
         ) -> dict[str, Any]:
-            self.calls.append((query, per_page, cursor))
-            if cursor == "*":
-                return {
-                    "meta": {"count": 35, "next_cursor": "next"},
-                    "group_by": [
-                        {"key": 1959, "count": 10},
-                        {"key": 1960, "count": 20},
-                    ],
+            self.calls.append(
+                {
+                    "url": url,
+                    "method": method,
+                    "body": body,
+                    "retries": retries,
                 }
-            if cursor == "next":
-                return {
-                    "meta": {"count": 35, "next_cursor": None},
-                    "group_by": [{"key": -111, "count": 5}],
-                }
-            raise AssertionError("unexpected cursor")
+            )
+            return {"meta": {"count": next(self.counts)}}
 
     fake_counts = {
         "union_oql": "works where citation count >= (1) and "
@@ -342,13 +363,19 @@ def self_test(protocol: dict[str, Any]) -> None:
     }
     fake = FakeClient()
     measured = measure_era_counts(fake, fake_counts)  # type: ignore[arg-type]
-    assert measured["current_provider_union_count"] == 35
-    assert measured["year_group_pages"] == 2
-    assert measured["unknown_year_count"] == 5
-    assert measured["year_counts"] == {"1959": 10, "1960": 20}
-    assert measured["measurement_buckets_are_final_sampling_eras"] is False
-    assert all(call[1] == 100 for call in fake.calls)
-    assert all(call[0].endswith("group by year") for call in fake.calls)
+    assert measured["schema_version"] == "paper2-sampling-v2-era-counts-v2"
+    assert measured["provider_union_count_before"]["count"] == 1000
+    assert measured["provider_union_count_after"]["count"] == 1003
+    assert measured["provider_union_count_signed_drift"] == 3
+    assert measured["provider_union_count_absolute_drift"] == 3
+    assert measured["cursor_paging_used"] is False
+    assert len(measured["buckets"]) == 16
+    assert measured["buckets"][-1]["label"] == "UNKNOWN_YEAR"
+    assert measured["buckets"][-1]["count"] == 70
+    assert len(fake.calls) == 18
+    assert all(call["retries"] == 1 for call in fake.calls)
+    assert all(call["method"] == "POST" for call in fake.calls)
+    assert all(call["body"]["per_page"] == 1 for call in fake.calls)
 
     print("PAPER2_SAMPLING_V2_SELFTEST_PASS")
 
