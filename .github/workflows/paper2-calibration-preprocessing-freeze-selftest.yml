@@ -1,0 +1,40 @@
+name: paper2-calibration-preprocessing-freeze-selftest
+
+on:
+  pull_request:
+    paths:
+      - "research/paper2/extraction_calibration_mask_terms_v1.json"
+      - "scripts/paper2_extraction_two_pass_calibration_prepare.py"
+      - "scripts/paper2_extraction_two_pass_prepare.py"
+      - ".github/workflows/paper2-calibration-preprocessing-freeze-selftest.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "research/paper2/extraction_calibration_mask_terms_v1.json"
+      - "scripts/paper2_extraction_two_pass_calibration_prepare.py"
+      - "scripts/paper2_extraction_two_pass_prepare.py"
+      - ".github/workflows/paper2-calibration-preprocessing-freeze-selftest.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact transaction head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile calibration preprocessing freeze
+        run: |
+          python -m py_compile scripts/paper2_extraction_two_pass_prepare.py
+          python -m py_compile scripts/paper2_extraction_two_pass_calibration_prepare.py
+      - name: Revalidate generic real-prep contract
+        run: python scripts/paper2_extraction_two_pass_prepare.py --self-test
+      - name: Validate frozen five-item mask authority
+        run: python scripts/paper2_extraction_two_pass_calibration_prepare.py --self-test
