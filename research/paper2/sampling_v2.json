@@ -24,7 +24,15 @@
     "union_oql_jq_r_representation": "exact union_oql UTF-8 string followed by one LF byte, matching jq -r line output",
     "historical_N_frame": 31550631,
     "full_manifest_required": false,
-    "provider_state_at_sampling_must_be_recorded": true
+    "provider_state_at_sampling_must_be_recorded": true,
+    "era_count_measurement": {
+      "method": "one_shot_bucket_counts_with_union_before_after_bracket",
+      "transport_attempts_per_query": 1,
+      "cursor_paging_used": false,
+      "meta_count_equality_across_requests_required": false,
+      "reason": "OpenAlex OQL counts are live and may drift across requests; record and bracket drift rather than require pagewise equality",
+      "measurement_buckets_are_final_sampling_eras": false
+    }
   },
   "primary_work_target": {
     "K": 1000,
