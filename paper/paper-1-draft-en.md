@@ -9,7 +9,7 @@
 
 ## Abstract
 
-Formal differences between representations do not by themselves license target-level individuation. We separate an exact target-factorization condition from the scientific warrant required to accept it, and connect representation-level observations to target-level test outcomes through test-specific factorization. A unique molecular identifier (UMI) case distinguishes software read IDs, latent molecular tags, and noisy observed tags. We distinguish bijective renaming from assignment-changing perturbations in a counterfactual relevance audit. A small Lean formalization checks structural dependencies and test-relative refinement. The framework audits proposed representation-to-target assignments; it neither discovers those assignments nor provides a complete theory of evidence or numerical identity.
+Formal differences between representations do not by themselves license target-level individuation. We separate an exact target-factorization condition from the scientific warrant required to accept it and connect representation-level observations to target-level outcomes through admissible test families. A unique molecular identifier (UMI) case distinguishes software read IDs, latent molecular tags, and noisy observed tags. We distinguish structure-preserving re-encoding from assignment-changing perturbations in a counterfactual relevance audit. A small Lean formalization checks structural dependencies and family-level separation. The framework audits individuation inferences relative to proposed representation-to-target assignments; it neither discovers those assignments nor supplies a complete theory of evidence or numerical identity.
 
 ## 1. Introduction
 
@@ -39,11 +39,13 @@ The paper makes four limited contributions.
 
 1. **Structural target factorization.** A representation-level feature is formally target-tracking only when it factors through the declared representation-to-target map. This is a structural admissibility condition, not an epistemic warrant.
 
-2. **Test-specific observation factorization.** Representation-level observations and target-level responses are placed in one inference chain. A difference in an observed outcome can support target-level separation only when the observation is structurally linked to the target response for that test.
+2. **Test-family admissibility.** Representation-level observations and target-level responses are placed in one inference chain. A selected family can support target-level separation only when every separating test used in the inference has the declared target-response factorization.
 
-3. **A counterfactual relevance audit.** The paper distinguishes pure renaming from evidence-changing reassignment and uses that distinction to diagnose when identifier assignments are doing hidden work.
+3. **A counterfactual relevance audit.** The paper distinguishes structure-preserving re-encoding from evidence-changing reassignment and uses that distinction to diagnose when identifier assignments or encodings are doing hidden work.
 
 4. **A machine-checked dependency analysis with a scientific case.** A small Lean formalization checks the structural claims, while the UMI case shows how latent target-linked tags, noisy observed tags, and representation-only identifiers come apart in practice.
+
+The audit is designed to expose three recurrent failure modes. **Within-fiber leakage** occurs when a feature varies between representations assigned to the same target. **Unsupported observation bridging** occurs when a representation-level outcome is treated as a target response without an independently warranted factorization. **Regime overreach** occurs when separation under one selected test family is promoted to a stronger or unrestricted identity claim.
 
 ## 2. Formal Setting
 
@@ -95,9 +97,13 @@ r(a)\neq r(b).
 
 The proof is elementary: equal target assignments force equal values of every feature that factors through the target. The value of the condition is therefore not mathematical depth but dependency exposure.
 
+A direct consequence is **fiber invariance**: if \(r(a)=r(b)\), then every feature satisfying \(F_r(f,\phi)\) must obey \(f(a)=f(b)\). In other words, a feature that varies within one fiber of the proposed target map cannot, under that same model, be treated as a property of the target. This is the operational anti-smuggling test used throughout the paper.
+
 Crucially, \(F_r(f,\phi)\) is **not itself an evidential warrant**. It says what would have to be structurally true for \(f\) to track a target property under \(r\). Whether a scientific application is entitled to accept that model depends on evidence external to the formal identity.
 
 Such warrant can come from different sources: calibration data linking observed values to target properties; knowledge of a causal production process connecting a feature to the target; a validated measurement or error model; an intervention protocol; or a semantic convention whose target reference is independently fixed. The framework does not rank these sources or derive them. It requires the relevant warrant to be stated rather than silently encoded in \(r\), \(\phi\), or the selected tests.
+
+The warrant must also be **non-self-licensing**: it cannot consist solely in treating the very formal difference under dispute as if it already established the target distinction. A row identifier, barcode string, or constructor name does not become target evidence merely because a model has been parameterized so that different values denote different targets. The justificatory route must contain information that is independently grounded in the relevant scientific or semantic practice.
 
 This distinction also blocks a trivialization. If \(r\) is chosen so finely that it encodes every representational distinction, many features can be made to factor through it. That does not establish that such an \(r\) is scientifically appropriate. The target assignment and its justification remain substantive inputs.
 
@@ -154,7 +160,15 @@ Again, the equation does not justify itself. A scientific application must expla
 
 ### 2.4 Selected test families
 
-Let \(A\subseteq Q\) be a family of tests selected for an analysis. In the exact framework, inclusion requires both relevance to the target claim and an independently defensible structural link between representation-level observation and target-level response.
+Let \(A\subseteq Q\) be a family of tests selected for an analysis. Define family-level admissibility by
+
+\[
+\operatorname{Adm}_r(A)
+\quad\Longleftrightarrow\quad
+\forall q\in A,\;B_r(q).
+\]
+
+Thus selection alone does no evidential work: every test actually used by the exact inference must satisfy the declared observation-to-target factorization. Scientific warrant for including such a test must be supplied independently and may not be self-licensed by the formal difference the test is being used to promote.
 
 Define
 
@@ -174,9 +188,19 @@ a\mathrel{\#_A}b
 \widehat O(q,a)\neq\widehat O(q,b).
 \]
 
-If \(A_c\subseteq A_f\), indistinguishability under \(A_f\) implies indistinguishability under \(A_c\). The converse need not hold.
+The factorization and restricted-test layers now yield the family-level implication
 
-This is a theorem about fixed exact semantics and set inclusion. It is not a theorem that accumulating noisy evidence can never reverse a classification.
+\[
+\operatorname{Adm}_r(A)
+\land
+a\mathrel{\#_A}b
+\quad\Longrightarrow\quad
+r(a)\neq r(b).
+\]
+
+The separating witness \(q\in A\) is guaranteed by \(\operatorname{Adm}_r(A)\) to satisfy \(B_r(q)\), so its observed difference can be transferred to the target level. The Lean development checks the corresponding finite theorem.
+
+If \(A_c\subseteq A_f\), indistinguishability under \(A_f\) implies indistinguishability under \(A_c\). The converse need not hold. This is a theorem about fixed exact semantics and set inclusion, not a claim that accumulating noisy evidence can never reverse a classification.
 
 ## 3. Scientific Case: UMI-Based Molecular Counting
 
@@ -250,6 +274,14 @@ The example makes three layers explicit:
 
 Only the second layer satisfies the exact target factorization in the idealized model. The third requires an error model, and the first is representation-level bookkeeping unless some independent target link is supplied. The three candidate procedures also expose different audit outcomes: unique read IDs fail to factor through molecular source assignment; raw observed-string equality is target-linked but violates exact observation factorization under sequencing error and remains non-injective under collision; an error-aware inference is admissible only insofar as its measurement and error model is independently warranted.
 
+This construction is diagnostic rather than a model of any particular current UMI pipeline, and it does not claim that contemporary tools simply count distinct raw strings. Its purpose is to place two documented problems---sequencing error and UMI collision---inside one transparent example where a correct scalar count can conceal a wrong source partition (Kivioja et al. 2012; Smith, Heger, and Sudbery 2017).
+
+| Representation-level basis | Audit diagnosis | What further warrant is needed |
+| --- | --- | --- |
+| Unique read ID | Varies within one molecular-source fiber; cannot factor through source assignment. | An independent source link, absent from bookkeeping identity alone. |
+| Raw observed UMI string | Sequencing error can split one target; collision makes equal tags compatible with different targets. | An error/collision model plus experimentally relevant context. |
+| Error-aware UMI inference | May use target-relevant structure, but admissibility is model-relative rather than guaranteed by the barcode type. | Validated measurement/error assumptions and protocol/context support. |
+
 ### 3.4 What the framework diagnoses
 
 The framework therefore does not say UMI difference means molecule difference. It says something narrower.
@@ -260,17 +292,25 @@ This is also why the case is useful philosophically. Two fields can both be iden
 
 ## 4. Counterfactual Relevance Audit
 
-The phrase relabeling invariance can hide two importantly different perturbations.
+The phrase relabeling invariance can hide two importantly different perturbations. The relevant notion of harmless change is not an arbitrary bijection in every application; it depends on which structure the inference actually uses.
 
-### 4.1 Pure renaming
+### 4.1 Structure-preserving re-encoding
 
-Suppose a bijection \(\pi:U\to U\) is applied consistently to every label value. *ACGT* might become *17*, *TGCA* might become *42*, and every occurrence is changed coherently.
+Let \(U\) be the value domain of an identifier-like field, and let \(\mathcal S\) denote the relations on \(U\) that the inference declares evidentially relevant. A re-encoding \(\pi:U\to U\) is **structure-preserving relative to \(\mathcal S\)** when it is bijective and preserves each declared relation. For a \(k\)-ary relation \(S\in\mathcal S\),
 
-Such a transformation preserves equality and inequality structure. An inference that depends only on grouping by label value should be invariant under this change. If changing only the spelling or encoding of the labels changes the conclusion, the argument exhibits a representation dependence that requires explanation.
+\[
+S(u_1,\ldots,u_k)
+\quad\Longleftrightarrow\quad
+S(\pi(u_1),\ldots,\pi(u_k)).
+\]
+
+When an inference uses only equality classes, every bijection is a harmless renaming. When it uses sequence geometry, edit distance, neighborhood structure, order, or another relation on label values, an arbitrary bijection need not be harmless. In an error-aware UMI analysis, mapping strings to arbitrary numbers while destroying sequence distance is not a pure re-encoding of the evidential structure.
+
+The appropriate invariance question is therefore whether the inference survives automorphisms of the representation-level structure it claims to use. If a conclusion changes under a transformation that preserves all declared evidential structure, the argument contains an unexplained representation dependence.
 
 ### 4.2 Assignment perturbation
 
-A different operation reassigns label values across representations while holding the independently specified target state fixed. This can alter which reads share a recorded tag or which records are grouped together.
+A different operation reassigns values across representations while holding the independently specified target state fixed. This can alter which reads share a recorded tag or which records are grouped together without being a structure-preserving re-encoding of the same assignment.
 
 Sensitivity to this operation is not automatically an error. It shows that the **assignment itself is evidentially active** and therefore needs justification.
 
@@ -280,10 +320,10 @@ For UMIs, by contrast, the recorded assignment is intended to preserve informati
 
 The audit can thus be stated as two questions:
 
-1. Is the inference invariant under **representation-preserving renaming**?
-2. If it is sensitive to **assignment-changing perturbation**, what scientific relation makes that assignment target-relevant?
+1. Is the inference invariant under every **structure-preserving re-encoding** of the representation-level relations it declares relevant?
+2. If it is sensitive to an **assignment-changing perturbation**, what independently grounded scientific relation makes that assignment target-relevant?
 
-This formulation avoids treating harmless renaming and evidence destruction as the same counterfactual.
+This formulation avoids both errors: treating evidence-destroying reassignment as harmless renaming, and treating an arbitrary bijection as harmless when the inference actually uses more than equality.
 
 ## 5. Machine-Checked Dependency Analysis
 
@@ -293,7 +333,7 @@ The formal model contains three representations, a representation-to-target map,
 
 The feature-level factorization is defined over an arbitrary value domain. A representation-level feature can be paired with a target-level property only through the specified structural factorization. The formalization checks that two representations assigned to the same target receive the same value for every factorized feature, and that a difference in such a feature entails different target assignments. It also checks that a deliberately representation-sensitive test cannot satisfy target factorization when it separates two representations assigned to the same target, while a positive-control feature defined directly from the target assignment can.
 
-The test layer is connected to the same structure. A formal observation-factorization condition states that a representation-level observed outcome agrees with the target-level response of its assigned target for each test. The corresponding target-linked observation function satisfies this condition, and a difference on any observed test outcome satisfying the factorization entails different target assignments.
+The test layer is connected to the same structure. A formal observation-factorization condition states that a representation-level observed outcome agrees with the target-level response of its assigned target for each test. The corresponding target-linked observation function satisfies this condition, and a difference on any observed test outcome satisfying the factorization entails different target assignments. A family-level object then requires this factorization for every test accessible in a selected regime; if one such admissible test separates two representations, the formalization derives different target assignments. This is the finite counterpart of \(\operatorname{Adm}_r(A)\land a\mathrel{\#_A}b\Rightarrow r(a)\neq r(b)\).
 
 The remaining results are negative controls and monotonicity checks. Re-encodings assigned to the same target preserve the target-linked observation profile. A richer selected test family can separate a pair left unresolved by a restricted family. Arbitrary reassignment of a token absent from target-sensitive semantics does not alter classification.
 
@@ -333,39 +373,17 @@ The present mathematics is substantially more modest than these mature framework
 
 Nor does failure to support individuation imply that a representational distinction is dispensable. Surplus structure can remain useful or even necessary for other representational tasks (Nguyen, Teh, and Wells 2020).
 
-## 7. Broader Implication and Future Research: From Identifiers to Theoretical Constructs
+## 7. Outlook: Construct-Level Comparison
 
-The UMI case motivates a broader methodological question, but the extension in this section is prospective. It is not a result established by the present formal model or by the UMI case. The evidential force of an identifier does not derive from its status as an identifier; it derives from an independently warranted relation between the identifier's assignment and the target.
+The UMI case motivates a broader methodological question, but this extension is prospective and is not a result established by the present formal model. A separate study can ask whether the same anti-smuggling discipline applies to theoretical constructs used to describe measured capacities.
 
-A separate study could ask whether the same discipline can be applied at a higher methodological level to theoretical constructs used to describe measured capacities. Distinct construct labels are themselves differences in a representational vocabulary. Their nominal plurality does not, by itself, establish plurality in the measured capacities.
+Let \(\sigma(c)\) serve only as shorthand for an *operational structural signature*: the measurement roles, tests, criteria, temporal relations, resource conditions, and other dependencies retained after a construct label is suppressed and its associated claim is normalized. The signature is not assumed unique or complete, and its components must be fixed by the declared measurement question before construct labels or source identity and provenance are restored.
 
-Let \(C\) be a set of theoretical construct labels, and let \(\sigma(c)\) denote what we call the operational structural signature retained after label suppression and normalization of the claim associated with construct \(c\). Such a signature may include the measurement roles, tests, criteria, temporal relations, resource conditions, or other dependencies required to reconstruct the claim.
-
-The signature is neither presumed unique nor assumed complete. Its components must be fixed by the declared measurement question before construct labels or source identity and provenance are restored; otherwise the comparison could be tuned retrospectively to preserve or erase a preferred distinction.
-
-Then the methodological point is asymmetric:
-
-\[
-c_1\neq c_2
-\quad\not\Rightarrow\quad
-\text{distinct measured capacities},
-\]
-
-while
-
-\[
-\sigma(c_1)\neq\sigma(c_2)
-\]
-
-constitutes candidate discriminating structure that may justify further investigation of a capacity distinction. Even this second difference is not sufficient for ontological or psychological independence; it remains subject to the same requirements of target choice, measurement warrant, and selected tests developed above.
-
-Conversely, if two differently named constructs yield the same normalized structural signature under a common measurement basis, the difference in names contributes no additional evidence for capacity plurality. This does not imply that the historical constructs are synonymous, explanatorily interchangeable, or useless. It means only that the labels have not, by themselves, earned independent status within the specified measurement framework.
-
-The resulting principle is:
+Under such a procedure, different construct names alone would provide no evidence of different measured capacities. A surviving signature difference would be candidate discriminating structure, not sufficient evidence of ontological or psychological independence; matching signatures would likewise not imply synonymy or explanatory interchangeability.
 
 > **Nominal plurality is not evidential plurality. Preserve the discriminating structure that warrants a distinction, not merely the names of the distinguished things.**
 
-This proposal therefore defines a separate research program for cognitive science and other construct-rich fields: withhold source attribution and construct labels during analysis, normalize operational claims onto a declared common measurement basis, and compare the discriminating structure that survives. The present paper neither validates that normalization procedure nor answers which named capacities remain distinct under it, and it does not assume that any common basis is complete. Its contribution here is only to state the evidential discipline that such a future comparison would have to satisfy.
+Testing this proposal requires a separate corpus, normalization protocol, common measurement basis, and empirical analysis. The present paper contributes only the evidential discipline that such a comparison would have to satisfy.
 
 ## 8. Scope and Limitations
 
@@ -394,9 +412,9 @@ For the blind review copy, the machine-checked claims are grouped under neutral 
 | R8--R10 | A target-linked outcome difference can support a target-assignment difference in the positive control. | Deterministic target response under the declared test. |
 | R11--R15 | Semantically inert identity-like tokens or decorative access metadata do not alter the tested classification. | Those fields are absent from the declared target-sensitive semantics. |
 | R16--R19 | Generic feature factorization preserves equality within each fiber of the target map; a representation-sensitive negative control fails factorization. | Proposed representation-to-target map and explicit feature factorization. |
-| R20--R21 | Representation-level observed outcomes can support target separation only under test-specific observation factorization. | Exact agreement between observed outcomes and target responses for the declared test. |
+| R20--R22 | Representation-level observed outcomes can support target separation only under test-specific factorization; family-level separation is licensed only when every selected test is admissible. | Exact agreement between observed outcomes and target responses for each test used by the selected family. |
 
-The number of small theorems is not itself a novelty claim. The collection is a machine-checkable record of the dependency structure. The complete set of neutral result labels is R1--R21.
+The number of small theorems is not itself a novelty claim. The collection is a machine-checkable record of the dependency structure. The complete set of neutral result labels is R1--R22.
 
 ## 10. Conclusion
 
