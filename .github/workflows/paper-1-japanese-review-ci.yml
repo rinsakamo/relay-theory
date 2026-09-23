@@ -90,7 +90,7 @@ jobs:
           test -n "$PAGES"
           pdftotext "$PDF" /tmp/paper1-ja.txt
           grep -F "形式的な差は" /tmp/paper1-ja.txt
-          grep -F "Machine-Checked Dependency Analysis" /tmp/paper1-ja.txt
+          grep -F "Nominal plurality is not evidential plurality" /tmp/paper1-ja.txt
           {
             echo "### Paper 1 Japanese reading/audit validation"
             echo
