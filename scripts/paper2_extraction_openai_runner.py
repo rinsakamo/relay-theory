@@ -151,6 +151,8 @@ def request_payload(
         "temperature": config["temperature"],
         "top_p": config["top_p"],
         "max_tokens": config["max_tokens"],
+        "reasoning_effort": "none",
+        "cache_prompt": False,
     }
     if config["response_format"] == "json_object":
         payload["response_format"] = {"type": "json_object"}
@@ -223,6 +225,7 @@ def run_pass(
     package: dict[str, Any],
     bundles_dir: Path,
     output_dir: Path,
+    telemetry: dict[str, int] | None = None,
 ) -> dict[str, Any]:
     started = utc_now()
     run_id = f"{pass_id}-{uuid.uuid4()}"
@@ -237,6 +240,8 @@ def run_pass(
         if bundle.get("bundle_id") != bundle_id:
             fail(f"{bundle_path}: bundle_id mismatch")
 
+        if telemetry is not None:
+            telemetry["model_call_count"] = telemetry.get("model_call_count", 0) + 1
         candidate = chat_completion(config, prompt, bundle)
         candidate_raw = canonical_json_bytes(candidate)
         rel = Path("candidates") / pass_id / f"{bundle_id}.json"
@@ -280,6 +285,7 @@ def execute(
     source_texts_path: Path,
     config_path: Path,
     output_dir: Path,
+    telemetry: dict[str, int] | None = None,
 ) -> Path:
     package = load_json(package_path)
     config = validate_config(load_json(config_path))
@@ -306,6 +312,7 @@ def execute(
         package=package,
         bundles_dir=bundles_dir,
         output_dir=output_dir,
+        telemetry=telemetry,
     )
     pass_b = run_pass(
         pass_id="B",
@@ -314,6 +321,7 @@ def execute(
         package=package,
         bundles_dir=bundles_dir,
         output_dir=output_dir,
+        telemetry=telemetry,
     )
 
     receipt = {
@@ -332,7 +340,8 @@ def execute(
             "configuration_note": (
                 f"OpenAI-compatible runner v1; model={config['model']}; "
                 f"temperature={config['temperature']}; top_p={config['top_p']}; "
-                f"max_tokens={config['max_tokens']}; response_format={config['response_format']}"
+                f"max_tokens={config['max_tokens']}; response_format={config['response_format']}; "
+                "reasoning_effort=none; cache_prompt=false"
             ),
         },
         "passes": [pass_a, pass_b],
@@ -457,19 +466,27 @@ def self_test(package_path: Path, prompt_path: Path) -> None:
             config_file.write_bytes(canonical_json_bytes(config))
 
             MockHandler.requests_seen = []
+            telemetry = {"model_call_count": 0}
             receipt_path = execute(
                 package_path=package_file,
                 prompt_path=prompt_path,
                 source_texts_path=source_file,
                 config_path=config_file,
                 output_dir=output_dir,
+                telemetry=telemetry,
             )
             receipt = load_json(receipt_path)
             validate_receipt(receipt, synthetic, receipt_path, check_files=True)
 
             if len(MockHandler.requests_seen) != 10:
                 raise AssertionError("runner must issue exactly ten isolated requests")
+            if telemetry["model_call_count"] != 10:
+                raise AssertionError("runner telemetry must count exactly ten model calls")
             for payload in MockHandler.requests_seen:
+                if payload.get("reasoning_effort") != "none":
+                    raise AssertionError("every request must disable reasoning")
+                if payload.get("cache_prompt") is not False:
+                    raise AssertionError("every request must disable prompt cache reuse")
                 messages = payload["messages"]
                 if len(messages) != 2:
                     raise AssertionError("each request must contain exactly prompt + one bundle")
@@ -525,18 +542,21 @@ def main() -> int:
         if args.source_texts is None or args.config is None or args.output_dir is None:
             fail("--source-texts, --config, and --output-dir are required")
 
+        telemetry = {"model_call_count": 0}
         receipt = execute(
             package_path=args.package,
             prompt_path=args.prompt,
             source_texts_path=args.source_texts,
             config_path=args.config,
             output_dir=args.output_dir,
+            telemetry=telemetry,
         )
         print(
             json.dumps(
                 {
                     "status": "PAPER2_EXTRACTION_A_B_FROZEN",
                     "receipt": str(receipt),
+                    "model_call_count": telemetry["model_call_count"],
                 },
                 sort_keys=True,
             )
