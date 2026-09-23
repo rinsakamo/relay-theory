@@ -296,11 +296,11 @@ formal model には三つの representation、representation-to-target map、tar
 
 feature-level factorization は任意の value domain に対して定義される。representation-level feature は、指定された structural factorization を通じてのみ target-level property と対応づけられる。formalization は、同じ target に割り当てられた二つの representation が、factorized feature について同じ値を取ること、およびそのような feature の値が異なれば target assignment も異なることを検査する。また、同じ target に割り当てられた二つの representation を分離するような representation-sensitive test は target factorization を満たせない一方、target assignment から直接定義された positive-control feature は満たせることも検査する。
 
-test layer も同じ構造に接続される。observation-factorization object は presentation-level observed outcome が各 probe について grounded referent の target-level response と一致することを表す。built-in grounded observation surface はこの条件を満たし、structurally factorized observed probe の差は grounding difference を含意する。
+test layer も同じ構造に接続される。formal observation-factorization condition は、representation-level observed outcome が各 test について割り当てられた target の target-level response と一致することを表す。対応する target-linked observation function はこの条件を満たし、その factorization を満たす observed test outcome 上の差は異なる target assignment を含意する。
 
-残りの result は negative control と monotonicity check である。same-reference re-encoding は grounded observation profile を保存する。より豊かな admitted test family は、restricted family では unresolved だった pair を分離しうる。target-sensitive semantics に入っていない token の arbitrary reassignment は classification を変えない。
+残りの result は negative control と monotonicity check である。同じ target に割り当てられた re-encoding は target-linked observation profile を保存する。より豊かな selected test family は、restricted family では unresolved だった pair を分離しうる。target-sensitive semantics に入っていない token の arbitrary reassignment は classification を変えない。
 
-これらの proof は初等的である。mechanization の主張もそれに応じて限定される。reviewer は、target-relevant とされる discriminator が hidden constructor、label、metadata field からではなく、宣言された target map と factorization を通して本当に入っているかを監査できる。
+これらの proof は初等的である。machine-checking の主張もそれに応じて限定される。reviewer は、target-relevant とされる discriminator が hidden encoding choice、label、metadata field からではなく、宣言された target map と factorization を通して本当に入っているかを監査できる。
 
 ## 6. 既存研究との関係
 
@@ -342,9 +342,9 @@ UMI の事例から、より一般的な methodological consequence が得られ
 
 同じ規律は、object identification より一段高い methodological level、すなわち measured capacity を記述する theoretical construct にも適用できる。異なる construct label は、それ自体が representational vocabulary 上の差である。その nominal plurality は、それだけでは measured capacity の plurality を成立させない。
 
-\(C\) を theoretical construct label の集合とし、\(\sigma(c)\) を、construct \(c\) に結びついた claim について label suppression と normalization を行った後に残る 本稿で operational structural signature と呼ぶ構造的シグネチャ とする。この signature には、claim を再構成するために必要な measurement role、test、criterion、temporal relation、resource condition、その他の dependency が含まれうる。
+\(C\) を theoretical construct label の集合とし、\(\sigma(c)\) を、construct \(c\) に結びついた claim について label suppression と normalization を行った後に残る構造的シグネチャとし、本稿ではこれを **operational structural signature** と呼ぶ。この signature には、claim を再構成するために必要な measurement role、test、criterion、temporal relation、resource condition、その他の dependency が含まれうる。
 
-この signature は一意であるとも完全であるとも仮定しない。その構成要素は、construct label や source authority を復元する前に、宣言された measurement question によって固定されなければならない。そうしなければ、好ましい distinction を保存または消去するように比較手続きを事後的に調整できてしまう。
+この signature は一意であるとも完全であるとも仮定しない。その構成要素は、construct label や source identity / provenance を復元する前に、宣言された measurement question によって固定されなければならない。そうしなければ、好ましい distinction を保存または消去するように比較手続きを事後的に調整できてしまう。
 
 方法論的ポイントは非対称である。
 
@@ -368,7 +368,7 @@ c_1\neq c_2
 
 > **Nominal plurality is not evidential plurality. 区別されたものの名前だけではなく、その区別を warrant する discriminating structure を保存せよ。**
 
-この帰結は cognitive science その他の construct-rich field に対する別の research question を示唆する。analysis の間は authority と construct label を伏せ、operational claim を common measurement basis 上へ normalize し、残存する discriminating structure を比較することができる。本稿は、その procedure の下でどの named cognitive capacity が distinct のまま残るかを答えない。また、いかなる common basis の completeness も仮定しない。本稿が与えるのは、そのような比較に必要な evidential discipline である。
+この帰結は cognitive science その他の construct-rich field に対する別の research question を示唆する。analysis の間は source attribution と construct label を伏せ、operational claim を common measurement basis 上へ normalize し、残存する discriminating structure を比較することができる。本稿は、その procedure の下でどの named cognitive capacity が distinct のまま残るかを答えない。また、いかなる common basis の completeness も仮定しない。本稿が与えるのは、そのような比較に必要な evidential discipline である。
 
 ## 8. 射程と限界
 
@@ -388,7 +388,7 @@ c_1\neq c_2
 
 ## 9. Formal Audit Summary
 
-blind review copy では mechanized claim を neutral label にまとめる。R1--R15 は元の presentation/target、test-family、semantically inert-token control を扱う。R16--R19 は generic target factorization とその positive / negative control を扱う。R20 は grounded observation surface に対する test-specific observation factorization を確立し、R21 はその factorization の下で observed difference が grounding difference を含意することを検査する。
+blind review copy では machine-checked claim を neutral label にまとめる。R1--R15 は元の representation/target、test-family、semantically inert-token control を扱う。R16--R19 は generic target factorization とその positive / negative control を扱う。R20 は target-linked observation function に対する test-specific observation factorization を確立し、R21 はその factorization の下で observed difference が異なる target assignment を含意することを検査する。
 
 小さな theorem が多数あること自体は novelty claim ではない。この collection は dependency structure の machine-checkable な記録である。
 
