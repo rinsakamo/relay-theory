@@ -5,7 +5,7 @@
 
 ## Purpose
 
-The manuscript uses Lean as a dependency audit rather than as a source of deep mathematical novelty. During blind review, mechanized results are referred to by neutral labels `R1`--`R19`.
+The manuscript uses Lean as a dependency audit rather than as a source of deep mathematical novelty. During blind review, mechanized results are referred to by neutral labels `R1`--`R21`.
 
 ## Result labels
 
@@ -26,10 +26,12 @@ The manuscript uses Lean as a dependency audit rather than as a source of deep m
 | R13 | Different identity-like token values do not separate two same-reference encodings. |
 | R14 | Assigning the same identity-like token cannot hide a target-sensitive difference already exposed by the admitted tests. |
 | R15 | Decorative access metadata that does not change the admitted test profile does not change the tested classification. |
-| R16 | For a feature with an explicit grounding bridge, equal target grounding forces equal feature values. |
-| R17 | A difference in a bridged representation-level feature entails a difference in the grounding result. |
-| R18 | The deliberately representation-sensitive encoding discriminator cannot have a grounding bridge because it separates two same-grounding presentations. |
-| R19 | A positive-control feature that directly tracks grounding has an explicit grounding bridge. |
+| R16 | For a feature with an explicit target factorization, equal target grounding forces equal feature values. |
+| R17 | A difference in a target-factorized representation-level feature entails a difference in the grounding result. |
+| R18 | The deliberately representation-sensitive encoding discriminator cannot have a target factorization because it separates two same-grounding presentations. |
+| R19 | A positive-control feature that directly tracks grounding satisfies target factorization. |
+| R20 | The built-in representation-level grounded observation surface satisfies test-specific observation factorization. |
+| R21 | Under observation factorization, a difference in an observed probe outcome entails a difference in the grounding result. |
 
 ## Formal scope
 
@@ -41,9 +43,10 @@ The mechanization assumes:
 - declared exact test semantics;
 - declared test accessibility;
 - a token carrier whose internal structure is not inspected by target-sensitive semantics;
-- an optional structural bridge showing when a presentation-level Boolean feature factors through a referent-level property.
+- a generic structural target-factorization object for arbitrary feature-value carriers;
+- a test-specific observation-factorization object connecting representation-level observed outcomes to target-level responses.
 
-It does **not** derive target ontology, establish the representation-to-target assignment, manufacture epistemic warrant for a declared bridge, derive metaphysical numerical identity, select a uniquely correct test regime, model noisy/statistical inference, or infer interventional equivalence from observational equivalence.
+It does **not** derive target ontology, establish the representation-to-target assignment, manufacture epistemic warrant for a declared factorization, derive metaphysical numerical identity, select a uniquely correct test regime, model noisy/statistical inference, or infer interventional equivalence from observational equivalence.
 
 ## Validation boundary
 
