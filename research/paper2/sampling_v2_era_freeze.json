@@ -1,0 +1,117 @@
+{
+  "schema_version": "paper2-sampling-v2-era-freeze-v1",
+  "owner_issue": 167,
+  "status": "PREOUTCOME_FROZEN",
+  "source_measurement": {
+    "schema_version": "paper2-sampling-v2-era-counts-v2",
+    "artifact_sha256": "6614cc35b0c5db256840d31711001809b726c6fa361164a4a5d330fce7def4aa",
+    "provider": "OpenAlex",
+    "transaction_started_at": "2026-09-23T22:38:49+00:00",
+    "transaction_completed_at": "2026-09-23T22:40:16+00:00",
+    "historical_N_frame_2026_09_23": 31550631,
+    "provider_union_count_before": 33345761,
+    "provider_union_count_after": 33699941,
+    "provider_union_count_signed_drift": 354180,
+    "provider_union_count_absolute_drift": 354180,
+    "bucket_count_sum": 33699941,
+    "bucket_sum_minus_union_before": 354180,
+    "bucket_sum_minus_union_after": 0,
+    "live_provider_counts_are_point_in_time_snapshot": false,
+    "interpretation": "transaction-local live design counts; not a frozen population census"
+  },
+  "diagnostic_buckets": {
+    "PRE_1900": 32758,
+    "1900-1909": 15504,
+    "1910-1919": 21722,
+    "1920-1929": 32584,
+    "1930-1939": 50778,
+    "1940-1949": 59290,
+    "1950-1959": 132158,
+    "1960-1969": 281234,
+    "1970-1979": 578928,
+    "1980-1989": 1016217,
+    "1990-1999": 1951521,
+    "2000-2009": 4683751,
+    "2010-2019": 11872944,
+    "2020-2026": 12962747,
+    "POST_2026": 4,
+    "UNKNOWN_YEAR": 7801
+  },
+  "era_policy": {
+    "study_publication_year_cutoff": 2026,
+    "frozen_order": [
+      "PRE_1950",
+      "1950-1959",
+      "1960-1969",
+      "1970-1979",
+      "1980-1989",
+      "1990-1999",
+      "2000-2009",
+      "2010-2019",
+      "2020-2026"
+    ],
+    "PRE_1950": {
+      "condition": "known publication year <= 1949",
+      "construction": "PRE_1900 + 1900-1909 + 1910-1919 + 1920-1929 + 1930-1939 + 1940-1949",
+      "rationale": "retain early historical coverage as one anchor stratum without multiplying the predeclared 50-work minimum across sparse early calendar decades"
+    },
+    "completed_decades": "1950-1959 through 2010-2019 are separate calendar-decade strata",
+    "partial_current_decade": {
+      "label": "2020-2026",
+      "condition": "known publication year 2020 through 2026 inclusive",
+      "status": "partial contemporary stratum"
+    },
+    "unknown_year": {
+      "count": 7801,
+      "primary_temporal_sampling": "EXCLUDED_UNSTRATIFIABLE_METADATA",
+      "scientific_eligibility_exclusion": false
+    },
+    "post_cutoff_year": {
+      "label": "POST_2026",
+      "count": 4,
+      "primary_temporal_sampling": "EXCLUDED_AFTER_STUDY_CUTOFF",
+      "scientific_eligibility_exclusion": false
+    },
+    "silent_year_exclusion_forbidden": true
+  },
+  "included_era_counts": {
+    "PRE_1950": 212636,
+    "1950-1959": 132158,
+    "1960-1969": 281234,
+    "1970-1979": 578928,
+    "1980-1989": 1016217,
+    "1990-1999": 1951521,
+    "2000-2009": 4683751,
+    "2010-2019": 11872944,
+    "2020-2026": 12962747
+  },
+  "included_design_count_total": 33692136,
+  "primary_allocation": {
+    "K": 1000,
+    "minimum_per_included_era": 50,
+    "D": 9,
+    "base_total": 450,
+    "remaining_total": 550,
+    "weight": "sqrt(N_d)",
+    "integer_apportionment": "hamilton_largest_remainder",
+    "exact_remainder_tie_break": "frozen era order",
+    "eras": [
+      {"era": "PRE_1950", "N_d": 212636, "quota_k_d": 68},
+      {"era": "1950-1959", "N_d": 132158, "quota_k_d": 65},
+      {"era": "1960-1969", "N_d": 281234, "quota_k_d": 71},
+      {"era": "1970-1979", "N_d": 578928, "quota_k_d": 81},
+      {"era": "1980-1989", "N_d": 1016217, "quota_k_d": 90},
+      {"era": "1990-1999", "N_d": 1951521, "quota_k_d": 106},
+      {"era": "2000-2009", "N_d": 4683751, "quota_k_d": 137},
+      {"era": "2010-2019", "N_d": 11872944, "quota_k_d": 188},
+      {"era": "2020-2026", "N_d": 12962747, "quota_k_d": 194}
+    ],
+    "quota_sum": 1000
+  },
+  "anti_overclaim": {
+    "counts_are_population_snapshot": false,
+    "quotas_estimate_all_retrieval_frame_prevalence": false,
+    "citation_priority_is_epistemic_weight": false,
+    "heldout_decomposition_outcomes_used": false
+  }
+}

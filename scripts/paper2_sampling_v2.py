@@ -283,6 +283,70 @@ def hamilton_allocate(
     }
 
 
+def validate_era_freeze(
+    protocol: dict[str, Any],
+    era_freeze_path: Path = Path("research/paper2/sampling_v2_era_freeze.json"),
+) -> dict[str, Any]:
+    freeze = load_json(era_freeze_path)
+    if freeze.get("schema_version") != "paper2-sampling-v2-era-freeze-v1":
+        raise ValueError("unexpected sampling-v2 era-freeze schema_version")
+    if freeze.get("owner_issue") != 167 or freeze.get("status") != "PREOUTCOME_FROZEN":
+        raise ValueError("sampling-v2 era freeze authority/status mismatch")
+    source = freeze.get("source_measurement", {})
+    if source.get("artifact_sha256") != "6614cc35b0c5db256840d31711001809b726c6fa361164a4a5d330fce7def4aa":
+        raise ValueError("sampling-v2 era measurement artifact digest drift")
+    if source.get("bucket_count_sum") != 33_699_941:
+        raise ValueError("sampling-v2 era bucket total drift")
+    if source.get("bucket_sum_minus_union_after") != 0:
+        raise ValueError("sampling-v2 era transaction must retain recorded after-bracket closure")
+    if source.get("live_provider_counts_are_point_in_time_snapshot") is not False:
+        raise ValueError("live provider counts must not be relabeled as a point-in-time snapshot")
+
+    era_policy = freeze.get("era_policy", {})
+    order = era_policy.get("frozen_order")
+    expected_order = [
+        "PRE_1950",
+        "1950-1959",
+        "1960-1969",
+        "1970-1979",
+        "1980-1989",
+        "1990-1999",
+        "2000-2009",
+        "2010-2019",
+        "2020-2026",
+    ]
+    if order != expected_order:
+        raise ValueError("sampling-v2 frozen era order drift")
+    if era_policy.get("study_publication_year_cutoff") != 2026:
+        raise ValueError("sampling-v2 publication-year cutoff drift")
+    if era_policy.get("unknown_year", {}).get("count") != 7801:
+        raise ValueError("sampling-v2 unknown-year count drift")
+    if era_policy.get("post_cutoff_year", {}).get("count") != 4:
+        raise ValueError("sampling-v2 post-cutoff count drift")
+
+    counts = freeze.get("included_era_counts")
+    if not isinstance(counts, dict) or list(counts) != expected_order:
+        raise ValueError("sampling-v2 included era counts/order mismatch")
+    allocation = hamilton_allocate(
+        {str(k): int(v) for k, v in counts.items()},
+        K=int(protocol["primary_work_target"]["K"]),
+        minimum=int(protocol["primary_work_target"]["minimum_per_included_era"]),
+    )
+    computed = {row["era"]: row["quota_k_d"] for row in allocation["eras"]}
+    frozen = {
+        row["era"]: row["quota_k_d"]
+        for row in freeze.get("primary_allocation", {}).get("eras", [])
+    }
+    protocol_frozen = protocol["primary_work_target"].get("frozen_era_allocation")
+    if computed != frozen or computed != protocol_frozen:
+        raise ValueError("sampling-v2 frozen quota allocation mismatch")
+    if sum(computed.values()) != 1000:
+        raise ValueError("sampling-v2 frozen quota sum must equal 1000")
+    if freeze.get("included_design_count_total") != sum(int(v) for v in counts.values()):
+        raise ValueError("sampling-v2 included design count total mismatch")
+    return freeze
+
+
 def self_test(protocol: dict[str, Any]) -> None:
     p = protocol["primary_work_target"]
     assert p["K"] == 1000
@@ -293,6 +357,9 @@ def self_test(protocol: dict[str, Any]) -> None:
     assert authority["union_oql_utf8_sha256"] == EXPECTED_UNION_OQL_UTF8_SHA256
     assert authority["union_oql_jq_r_sha256"] == EXPECTED_UNION_OQL_JQ_R_SHA256
     assert sha256_bytes(b"synthetic") != sha256_bytes(b"synthetic\n")
+    freeze = validate_era_freeze(protocol)
+    assert freeze["primary_allocation"]["quota_sum"] == 1000
+    assert freeze["included_design_count_total"] == 33_692_136
 
     buckets = measurement_buckets()
     assert buckets[0] == {"label": "PRE_1900", "condition": "year <= (1899)"}
