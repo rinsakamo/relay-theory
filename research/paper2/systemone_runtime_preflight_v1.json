@@ -1,0 +1,45 @@
+{
+  "schema_version": "paper2-systemone-runtime-preflight-v1",
+  "owner_issue": 162,
+  "status": "SYNTHETIC_PHYSICAL_QUALIFICATION_ONLY",
+  "real_paper_text_forbidden": true,
+  "real_scientific_transaction_consumed": false,
+  "replicates": ["A", "B"],
+  "process_policy": "separate_owned_llama_cpp_process_lifetime_per_replicate",
+  "expected_server_launch_count": 2,
+  "per_replicate_probes": {
+    "normal_chat_completions": 1,
+    "systemone_max_surface": 1
+  },
+  "expected_total_model_facing_probe_count": 4,
+  "runtime_requirements": {
+    "health": "/health",
+    "models": "/v1/models",
+    "props": "/props",
+    "slots": "/slots",
+    "chat": "/v1/chat/completions",
+    "systemone": "/v1/systemone",
+    "context": 8192,
+    "slots_count": 1,
+    "context_shift": false,
+    "gpu_layers": 999,
+    "model_artifact_sha256": "c088a44859de42a1966851b552ba628c0ff4419b87c4622539d69430f40024ed",
+    "quantization": "Q4_K_M"
+  },
+  "normal_probe": {
+    "temperature": 0.2,
+    "top_p": 1.0,
+    "max_tokens": 64,
+    "reasoning_effort": "none",
+    "cache_prompt": false
+  },
+  "systemone_probe": {
+    "contract": "paper2-two-pass-systemone-v2",
+    "source_spans": 3,
+    "expected_question_count": 54,
+    "semantic_result_used_as_scientific_evidence": false
+  },
+  "success_classification": "SYSTEMONE_RUNTIME_SYNTHETICALLY_QUALIFIED",
+  "failure_classification": "SYSTEMONE_RUNTIME_NOT_QUALIFIED",
+  "real_pilot_authorized_by_this_artifact": false
+}

@@ -1,0 +1,47 @@
+name: paper2-systemone-runtime-preflight-selftest
+
+on:
+  pull_request:
+    paths:
+      - "research/paper2/systemone_runtime_preflight_v1.json"
+      - "scripts/paper2_systemone_runtime_preflight.py"
+      - "scripts/paper2_extraction_llama_cpp_transaction.py"
+      - "scripts/paper2_extraction_two_pass_systemone_v2.py"
+      - ".github/workflows/paper2-systemone-runtime-preflight-selftest.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "research/paper2/systemone_runtime_preflight_v1.json"
+      - "scripts/paper2_systemone_runtime_preflight.py"
+      - "scripts/paper2_extraction_llama_cpp_transaction.py"
+      - "scripts/paper2_extraction_two_pass_systemone_v2.py"
+      - ".github/workflows/paper2-systemone-runtime-preflight-selftest.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact transaction head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Record exact transaction head
+        run: |
+          git rev-parse HEAD
+          git rev-parse HEAD^{tree}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile runtime preflight
+        run: |
+          python -m py_compile scripts/paper2_systemone_runtime_preflight.py
+          python -m py_compile scripts/paper2_extraction_llama_cpp_transaction.py
+          python -m py_compile scripts/paper2_extraction_two_pass_systemone_v2.py
+      - name: Revalidate SystemOne v2 contract
+        run: python scripts/paper2_extraction_two_pass_systemone_v2.py --self-test
+      - name: Run owned two-process SystemOne runtime preflight self-test
+        run: python scripts/paper2_systemone_runtime_preflight.py --self-test
