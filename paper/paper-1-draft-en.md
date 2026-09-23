@@ -334,7 +334,7 @@ This is also why the case is useful philosophically. Two fields can both be iden
 
 ### 3.5 Cross-domain microcase: database entity resolution
 
-The same structure appears outside molecular counting. Suppose two database rows have distinct row IDs but are proposed to refer to the same customer. If \(r\) maps both rows to that customer, row-ID inequality varies within one fiber of \(r\); it therefore fails quotient descent and cannot by itself support a two-customer inference.
+Entity resolution is explicitly concerned with linking duplicate records and estimating partitions of records that refer to common entities, often without unique entity identifiers (Aleshin-Guendel and Steorts 2024). The same structural issue therefore appears outside molecular counting. Suppose two database rows have distinct row IDs but are proposed to refer to the same customer. If \(r\) maps both rows to that customer, row-ID inequality varies within one fiber of \(r\); it therefore fails quotient descent and cannot by itself support a two-customer inference.
 
 A different field may be evidentially relevant only through additional semantics. A master-customer identifier maintained by an independently specified resolution process can potentially factor through the customer target, while a copied email address, display name, or locally generated row key may not. Duplicates, shared values, stale assignments, and entry errors can break the required dependency. The point is not to endorse a particular entity-resolution system, but to show that the audit asks the same questions in a non-biological domain: which distinctions survive the target quotient, which observation links are warranted, and which are merely representational bookkeeping.
 
@@ -482,6 +482,8 @@ UMI-based molecular counting supplies the main scientific case, while the databa
 > **When an individuation claim depends on a formal difference, require that the difference survive the target quotient, expose the observation-to-target bridge and its independent warrant, and keep the conclusion within the declared test regime.**
 
 ## References
+
+Aleshin-Guendel, Serge, and Rebecca C. Steorts. 2024. “Convergence Diagnostics for Entity Resolution.” *Annual Review of Statistics and Its Application* 11: 419–435. DOI: 10.1146/annurev-statistics-040522-114848.
 
 Liu, Chuang. 2015. “Invariance and Scientific Representation.” *Frontiers of Philosophy in China* 10(4): 647–667. DOI: 10.3868/s030-004-015-0051-5.
 

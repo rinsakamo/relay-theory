@@ -340,7 +340,7 @@ read-level feature が molecular individuation inference に入るためには�
 
 ### 3.5 Cross-domain microcase: database entity resolution
 
-同じ構造は molecular counting の外にも現れる。異なる row ID を持つ二つの database row が、同じ customer を指すと proposed されているとする。\(r\) が両 row を同じ customer に写すなら、row-ID inequality は一つの fiber 内で変化するため quotient descent に失敗し、それだけでは two-customer inference を支えられない。
+entity resolution は、しばしば unique entity identifier が存在しない状況で duplicate record を link し、common entity を表す record partition を推定する問題として扱われる (Aleshin-Guendel and Steorts 2024)。したがって同じ構造は molecular counting の外にも現れる。異なる row ID を持つ二つの database row が、同じ customer を指すと proposed されているとする。\(r\) が両 row を同じ customer に写すなら、row-ID inequality は一つの fiber 内で変化するため quotient descent に失敗し、それだけでは two-customer inference を支えられない。
 
 別の field が evidentially relevant になるには追加の semantics が必要である。independently specified な resolution process によって維持された master-customer identifier は customer target を介して factorize しうる一方、copied email address、display name、locally generated row key はそうとは限らない。duplicate、shared value、stale assignment、entry error は必要な dependency を破壊しうる。ここで特定の entity-resolution system を endorsement する意図はない。非生物学的 domain でも、どの distinction が target quotient を生き残るか、どの observation link が warrant されるか、どれが単なる representational bookkeeping か、という同じ audit question が現れることを示すための microcase である。
 
@@ -490,6 +490,8 @@ UMI-based molecular counting が主たる scientific case を与え、database-r
 > **individuation claim が formal difference に依存するなら、その difference が target quotient を生き残ることを要求し、observation-to-target bridge と independent warrant を明示し、結論を declared test regime の範囲内に保て。**
 
 ## 参考文献
+
+Aleshin-Guendel, Serge, and Rebecca C. Steorts. 2024. “Convergence Diagnostics for Entity Resolution.” *Annual Review of Statistics and Its Application* 11: 419–435. DOI: 10.1146/annurev-statistics-040522-114848.
 
 Liu, Chuang. 2015. “Invariance and Scientific Representation.” *Frontiers of Philosophy in China* 10(4): 647–667. DOI: 10.3868/s030-004-015-0051-5.
 
