@@ -145,25 +145,6 @@ jobs:
             lake build
           )
 
-      - name: Audit and build anonymous Paper 1 Lean supplement
-        shell: bash
-        run: |
-          set -euo pipefail
-          SUPP="paper/venues/philosophy-of-science/anonymous-lean-supplement"
-          if grep -R -nEi 'rinsakamo|relay[- ]?theory|github\.com' "$SUPP"; then
-            echo "Anonymous Lean supplement contains repository/author identity leakage." >&2
-            exit 1
-          fi
-          if grep -R --include='*.lean' -nE '(^|[^[:alnum:]_])(sorry|admit|native_decide|axiom)([^[:alnum:]_]|$)' "$SUPP"; then
-            echo "Anonymous Lean supplement contains a banned proof shortcut." >&2
-            exit 1
-          fi
-          test "$(tr -d '\r\n' < "$SUPP/lean-toolchain")" = "$(tr -d '\r\n' < formal/relay_theory/lean-toolchain)"
-          (
-            cd "$SUPP"
-            lake build
-          )
-
       - name: Independently kernel-check compiled modules
         shell: bash
         run: |
@@ -197,14 +178,6 @@ jobs:
               --root RelayTheory \
               --allow "propext,Classical.choice,Quot.sound"
           )
-
-      - name: Upload anonymous Paper 1 Lean supplement
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
-        with:
-          name: paper-1-anonymous-lean-supplement
-          path: paper/venues/philosophy-of-science/anonymous-lean-supplement/
-          if-no-files-found: error
-          retention-days: 14
 
       - name: Upload anonymous Paper 1 Lean supplement
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
