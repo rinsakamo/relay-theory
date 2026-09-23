@@ -236,10 +236,18 @@ def resolve_seed(client: OpenAlexClient, seed: dict[str, Any]) -> dict[str, Any]
 
 
 def topic_clause(topic_ids: Iterable[str]) -> str | None:
+    """Build topic filters without exceeding OpenAlex's 100 OR-values limit."""
     ids = sorted(set(topic_ids))
     if not ids:
         return None
-    return "topic is (" + " or ".join(ids) + ")"
+    chunks = [ids[i : i + 100] for i in range(0, len(ids), 100)]
+    clauses = [
+        "topic is (" + " or ".join(chunk) + ")"
+        for chunk in chunks
+    ]
+    if len(clauses) == 1:
+        return clauses[0]
+    return "(" + " or ".join(f"({clause})" for clause in clauses) + ")"
 
 
 def base_count_query(clause: str, citation_floor: int) -> str:
@@ -465,6 +473,9 @@ def self_test(config: dict[str, Any]) -> None:
     q = union_query(["T1", "T2"], ["memory"], ["extended mind"], 1)
     assert "citation count >= (1)" in q
     assert "topic is (T1 or T2)" in q
+    many_topics = topic_clause([f"T{i:03d}" for i in range(205)])
+    assert many_topics is not None
+    assert many_topics.count("topic is (") == 3
     assert "title/abstract has (memory)" in q
     assert "full text has (memory)" in q
     assert 'title/abstract has ("extended mind")' in q
