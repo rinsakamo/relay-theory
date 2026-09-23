@@ -14,7 +14,7 @@ This manuscript has not been published and is not under review elsewhere. [Confi
 
 ### AI-tool disclosure
 
-The author used OpenAI ChatGPT (GPT-5.6 Sol, accessed through ChatGPT on 22 September 2026) to assist with drafting, restructuring, translation, literature-search query formulation, and editorial revision. The author independently checked the arguments, references, formal claims, and final manuscript and takes full responsibility for the content.
+The author used OpenAI ChatGPT (GPT-5.6 Sol, accessed through ChatGPT on 22-23 September 2026) to assist with drafting, restructuring, translation, literature-search query formulation, and editorial revision. The author independently checked the arguments, references, formal claims, and final manuscript and takes full responsibility for the content.
 
 ### Formal artifact
 
