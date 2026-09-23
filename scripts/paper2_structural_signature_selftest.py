@@ -134,6 +134,30 @@ def self_test(example_path: Path) -> None:
     validate(p5_ordered)
     assert structural_digest(p5o_attempt, p5o_ir["claim_ir"]) != p1_digest
 
+    # H4 macro witness reference must resolve to the recorded outcome witness.
+    n8 = copy.deepcopy(base)
+    n8_attempt = n8["paper"]["claims"][0]["claim_ir_records"][0]["decomposition_attempts"][0]
+    n8_attempt["derived_macros"][0]["expansion"]["witness_schema_id"] = "fixture:unrecorded-witness:v1"
+    expect_invalid(n8, "H4 untraceable macro witness")
+
+    # P5b ClaimIR node/relation IDs are presentation tokens under #147 semantics.
+    p5_rename = copy.deepcopy(base)
+    p5r_ir = p5_rename["paper"]["claims"][0]["claim_ir_records"][0]
+    p5r_claim_ir = p5r_ir["claim_ir"]
+    p5r_attempt = p5r_ir["decomposition_attempts"][0]
+    node_renames = {"earlier_information": "node_a", "later_response": "node_b"}
+    for node in p5r_claim_ir["claim_core"]["nodes"]:
+        node["id"] = node_renames[node["id"]]
+    p5r_claim_ir["claim_core"]["relations"][0]["id"] = "relation_a"
+    p5r_claim_ir["claim_core"]["relations"][0]["arguments"] = [
+        node_renames[arg] for arg in p5r_claim_ir["claim_core"]["relations"][0]["arguments"]
+    ]
+    for coord in p5r_attempt["basis_instantiation"]["coordinates"]:
+        if coord["provenance"]["origin"] == "claim_ir_node":
+            coord["provenance"]["ref"] = node_renames[coord["provenance"]["ref"]]
+    validate(p5_rename)
+    assert structural_digest(p5r_attempt, p5r_claim_ir) == p1_digest
+
     # Replay requirement.
     replay = replay_summary(base)
     row = replay["rows"][0]
