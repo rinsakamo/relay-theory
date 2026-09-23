@@ -89,36 +89,50 @@ def validate_counts_artifact(path: Path) -> dict[str, Any]:
     return value
 
 
-def append_year_filter(union_oql: str, condition: str) -> str:
-    if not union_oql.startswith("works where "):
-        raise ValueError("frozen union_oql must start with 'works where '")
-    if not condition or "works where" in condition:
-        raise ValueError("invalid year condition")
-    return f"{union_oql} and {condition}"
+def parse_year_group_rows(rows: list[dict[str, Any]]) -> tuple[dict[int, int], int]:
+    year_counts: dict[int, int] = {}
+    unknown = 0
+    for row in rows:
+        raw_key = row.get("key")
+        try:
+            key = int(raw_key)
+        except (TypeError, ValueError) as exc:
+            raise ValueError(f"invalid publication-year group key: {raw_key!r}") from exc
+        count = int(row.get("count", -1))
+        if count < 0:
+            raise ValueError("publication-year group count must be nonnegative")
+        if key == -111:
+            unknown += count
+            continue
+        if key < 0 or key > 9999:
+            raise ValueError(f"implausible publication year: {key}")
+        if key in year_counts:
+            raise ValueError(f"duplicate publication-year group: {key}")
+        year_counts[key] = count
+    return year_counts, unknown
 
 
-def measurement_buckets() -> list[dict[str, Any]]:
-    """Pre-outcome metadata buckets, not yet the final included era strata."""
-    buckets: list[dict[str, Any]] = [
-        {"label": "PRE_1900", "condition": "year <= (1899)"}
-    ]
+def measurement_summary(year_counts: dict[int, int], unknown: int) -> list[dict[str, Any]]:
+    buckets: list[dict[str, Any]] = []
+    pre_1900 = sum(count for year, count in year_counts.items() if year <= 1899)
+    buckets.append({"label": "PRE_1900", "count": pre_1900})
     for start in range(1900, 2020, 10):
-        buckets.append(
-            {
-                "label": f"{start}-{start + 9}",
-                "condition": f"year >= ({start}) and year <= ({start + 9})",
-            }
+        count = sum(
+            value for year, value in year_counts.items()
+            if start <= year <= start + 9
         )
-    buckets.extend(
-        [
-            {
-                "label": "2020-2026",
-                "condition": "year >= (2020) and year <= (2026)",
-            },
-            {"label": "POST_2026", "condition": "year >= (2027)"},
-            {"label": "UNKNOWN_YEAR", "condition": "year is (unknown)"},
-        ]
-    )
+        buckets.append({"label": f"{start}-{start + 9}", "count": count})
+    buckets.append({
+        "label": "2020-2026",
+        "count": sum(
+            value for year, value in year_counts.items() if 2020 <= year <= 2026
+        ),
+    })
+    buckets.append({
+        "label": "POST_2026",
+        "count": sum(value for year, value in year_counts.items() if year >= 2027),
+    })
+    buckets.append({"label": "UNKNOWN_YEAR", "count": unknown})
     return buckets
 
 
@@ -126,19 +140,38 @@ def measure_era_counts(
     client: retrieval.OpenAlexClient,
     frozen_counts: dict[str, Any],
 ) -> dict[str, Any]:
-    union = frozen_counts["union_oql"]
-    rows: list[dict[str, Any]] = []
-    for bucket in measurement_buckets():
-        count = client.count(append_year_filter(union, bucket["condition"]))
-        rows.append({**bucket, "count": count})
-    current_total = sum(int(row["count"]) for row in rows)
-    # Independent total query catches gaps/overlap in the measurement partition
-    # and provider drift during a multi-request transaction.
-    provider_total = client.count(union)
-    if current_total != provider_total:
+    query = frozen_counts["union_oql"] + " group by year"
+    cursor: str | None = "*"
+    all_rows: list[dict[str, Any]] = []
+    provider_count: int | None = None
+    page_count = 0
+    while cursor:
+        payload = client.run_oql(query, per_page=100, cursor=cursor)
+        meta = payload.get("meta") or {}
+        current_count = int(meta.get("count", -1))
+        if current_count < 0:
+            raise ValueError("grouped OpenAlex response missing meta.count")
+        if provider_count is None:
+            provider_count = current_count
+        elif current_count != provider_count:
+            raise RuntimeError(
+                "ERA_COUNT_PROVIDER_DRIFT: meta.count changed during grouped cursor traversal"
+            )
+        rows = payload.get("group_by")
+        if not isinstance(rows, list):
+            raise ValueError("grouped OpenAlex response missing group_by list")
+        all_rows.extend(row for row in rows if isinstance(row, dict))
+        cursor = meta.get("next_cursor")
+        page_count += 1
+        if page_count > 100:
+            raise RuntimeError("unexpectedly many publication-year group pages")
+
+    year_counts, unknown = parse_year_group_rows(all_rows)
+    grouped_total = sum(year_counts.values()) + unknown
+    if provider_count is None or grouped_total != provider_count:
         raise RuntimeError(
-            "ERA_COUNT_PARTITION_MISMATCH: bucket total does not equal current "
-            f"provider union count ({current_total} != {provider_total})"
+            "ERA_COUNT_PARTITION_MISMATCH: year-group total does not equal provider "
+            f"union count ({grouped_total} != {provider_count})"
         )
     return {
         "schema_version": "paper2-sampling-v2-era-counts-v1",
@@ -148,10 +181,12 @@ def measure_era_counts(
         "retrieval_counts_artifact_sha256": EXPECTED_COUNTS_SHA256,
         "union_oql_sha256": EXPECTED_UNION_OQL_SHA256,
         "historical_N_frame_2026_09_23": HISTORICAL_N_FRAME,
-        "current_provider_union_count": provider_total,
-        "measurement_partition_total": current_total,
+        "current_provider_union_count": provider_count,
+        "year_group_pages": page_count,
+        "unknown_year_count": unknown,
+        "year_counts": {str(year): year_counts[year] for year in sorted(year_counts)},
         "measurement_buckets_are_final_sampling_eras": False,
-        "buckets": rows,
+        "measurement_summary": measurement_summary(year_counts, unknown),
     }
 
 
@@ -223,16 +258,20 @@ def self_test(protocol: dict[str, Any]) -> None:
     assert p["weight"] == "sqrt(N_d)"
     assert protocol["real_corpus_selection_authorized"] is False
 
-    buckets = measurement_buckets()
-    assert buckets[0] == {"label": "PRE_1900", "condition": "year <= (1899)"}
-    assert buckets[-3]["label"] == "2020-2026"
-    assert buckets[-2]["label"] == "POST_2026"
-    assert buckets[-1]["condition"] == "year is (unknown)"
-    q = append_year_filter(
-        "works where citation count >= (1) and (title/abstract has (memory))",
-        "year >= (2010) and year <= (2019)",
-    )
-    assert q.endswith("and year >= (2010) and year <= (2019)")
+    parsed_years, parsed_unknown = parse_year_group_rows([
+        {"key": 1959, "count": 10},
+        {"key": 1960, "count": 20},
+        {"key": 1969, "count": 30},
+        {"key": 2026, "count": 140},
+        {"key": -111, "count": 5},
+    ])
+    assert parsed_years == {1959: 10, 1960: 20, 1969: 30, 2026: 140}
+    assert parsed_unknown == 5
+    summary = {row["label"]: row["count"] for row in measurement_summary(parsed_years, 5)}
+    assert summary["1950-1959"] == 10
+    assert summary["1960-1969"] == 50
+    assert summary["2020-2026"] == 140
+    assert summary["UNKNOWN_YEAR"] == 5
 
     counts = {
         "1950s": 100,
@@ -263,21 +302,41 @@ def self_test(protocol: dict[str, Any]) -> None:
 
     class FakeClient:
         def __init__(self) -> None:
-            self.queries: list[str] = []
+            self.calls: list[tuple[str, int, str | None]] = []
 
-        def count(self, query: str) -> int:
-            self.queries.append(query)
-            # 16 measurement buckets, each count 2, then provider total 32.
-            return 32 if len(self.queries) == len(measurement_buckets()) + 1 else 2
+        def run_oql(
+            self, query: str, *, per_page: int = 1, cursor: str | None = None,
+            select: str | None = None,
+        ) -> dict[str, Any]:
+            self.calls.append((query, per_page, cursor))
+            if cursor == "*":
+                return {
+                    "meta": {"count": 35, "next_cursor": "next"},
+                    "group_by": [
+                        {"key": 1959, "count": 10},
+                        {"key": 1960, "count": 20},
+                    ],
+                }
+            if cursor == "next":
+                return {
+                    "meta": {"count": 35, "next_cursor": None},
+                    "group_by": [{"key": -111, "count": 5}],
+                }
+            raise AssertionError("unexpected cursor")
 
     fake_counts = {
         "union_oql": "works where citation count >= (1) and "
         "(title/abstract has (memory))"
     }
-    measured = measure_era_counts(FakeClient(), fake_counts)  # type: ignore[arg-type]
-    assert measured["current_provider_union_count"] == 32
-    assert measured["measurement_partition_total"] == 32
+    fake = FakeClient()
+    measured = measure_era_counts(fake, fake_counts)  # type: ignore[arg-type]
+    assert measured["current_provider_union_count"] == 35
+    assert measured["year_group_pages"] == 2
+    assert measured["unknown_year_count"] == 5
+    assert measured["year_counts"] == {"1959": 10, "1960": 20}
     assert measured["measurement_buckets_are_final_sampling_eras"] is False
+    assert all(call[1] == 100 for call in fake.calls)
+    assert all(call[0].endswith("group by year") for call in fake.calls)
 
     print("PAPER2_SAMPLING_V2_SELFTEST_PASS")
 
@@ -320,8 +379,7 @@ def main() -> int:
         era_counts = era_counts_doc.get("included_era_counts")
         if not isinstance(era_counts, dict):
             raise ValueError(
-                "allocation input must contain included_era_counts after era "
-                "boundaries are frozen"
+                "allocation input must contain included_era_counts after era boundaries are frozen"
             )
         p = protocol["primary_work_target"]
         result = hamilton_allocate(
