@@ -2,6 +2,28 @@
 
 > Internal manuscript-audit note. Non-authoritative and not part of the paper.
 
+## Second-review structural revision — 2026-09-23
+
+A fresh multi-perspective review identified five remaining risks, all now reflected in the manuscript.
+
+1. **Structural factorization versus epistemic warrant.** The formal object is now described as target factorization rather than an evidential bridge. The theorem records a dependency; empirical or semantic warrant remains external.
+2. **Feature/test unification.** The formal setting now distinguishes representation-level observed outcomes from target-level responses and introduces test-specific observation factorization, so the bridge and restricted-test layers form one inference chain.
+3. **Noisy UMI observations.** The UMI case now distinguishes tagged template molecules, latent assigned UMIs, and noisy observed UMI strings, with a six-read/two-template synthetic sequencing-error example and an explicit collision caveat.
+4. **Counterfactual ambiguity.** The former relabeling-invariance diagnostic is replaced by a counterfactual relevance audit separating pure bijective renaming from assignment-changing perturbation.
+5. **Article depth.** The UMI analysis and Nguyen (2017) comparison are expanded. The claimed novelty is feature-level dependency auditing inside an already target-directed scientific practice.
+
+### Current strongest claim
+
+A formal difference may enter an operational individuation inference only through an explicitly modeled path from representation to target and a scientifically justified reason for accepting that path. Lean audits the structural path only; it does not manufacture scientific warrant.
+
+### Current residual risks
+
+- the target assignment remains exogenous and can be badly chosen;
+- exact factorization is an idealization of noisy measurement;
+- probabilistic UMI error/collision modeling is discussed but not formalized;
+- the contribution remains methodological and conjunctive rather than a new theory of representation or identity;
+- all previous exact PDF/CI validation is historical after this revision and must be rerun.
+
 ## Current strongest claim
 
 The manuscript should defend only the following conditional claim:
@@ -217,7 +239,7 @@ The PDF uploaded directly by the successful Paper 1 Review CI run was downloaded
 - PDF pages: `18`
 - PDF SHA-256: `1662175011fe0f1760ab19499cde1f4cf1a86ae47ad6b0cc3e9cd22bd1061da2`
 
-The artifact was rendered to PNG at 160 dpi and all 18 pages were inspected. No clipped text, overlaps, black squares, broken glyphs, missing section text, or reference-page layout defects were found. The R1--R19 claim-to-artifact map, Acknowledgements / AI disclosure, and both reference pages render cleanly.
+The artifact was rendered to PNG at 160 dpi and all 18 pages were inspected. No clipped text, overlaps, black squares, broken glyphs, missing section text, or reference-page layout defects were found. The R1--R21 claim-to-artifact map, Acknowledgements / AI disclosure, and both reference pages render cleanly.
 
 This closes the manuscript build/layout gate for the current Philosophy of Science review copy. Any later textual change to the blind manuscript must rerun the same CI and visual-review cycle.
 
