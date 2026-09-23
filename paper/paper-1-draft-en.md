@@ -143,17 +143,29 @@ r(a)=r(b)
 f(a)=f(b).
 \]
 
-Then
+Define universal soundness of the corresponding difference inference, relative to the proposed target assignment, by
 
 \[
-f\text{ is fiber-invariant}
+D_r(f)
 \quad\Longleftrightarrow\quad
-\exists\,\bar f:P/{\sim_r}\to V
-\text{ such that }
-f=\bar f\circ\pi_r.
+\forall a,b\in P,\;
+f(a)\neq f(b)\Longrightarrow r(a)\neq r(b).
 \]
 
-Thus fiber invariance is exactly the condition for the feature to **descend through the target quotient**. The Lean development checks this characterization generically, without fixing the representation, target, or feature-value types.
+Under ordinary classical logic, this is the contrapositive form of fiber invariance. The structural core can therefore be stated as the following three-way characterization:
+
+\[
+\begin{aligned}
+&\forall a,b,\;r(a)=r(b)\Rightarrow f(a)=f(b) \\
+\Longleftrightarrow\;&
+\forall a,b,\;f(a)\neq f(b)\Rightarrow r(a)\neq r(b) \\
+\Longleftrightarrow\;&
+\exists\,\bar f:P/{\sim_r}\to V
+\text{ such that }f=\bar f\circ\pi_r .
+\end{aligned}
+\]
+
+Thus, **conditional on a fixed proposed target assignment**, fiber invariance, universal soundness of feature-difference inference, and descent through the target quotient are equivalent. This is a necessary-and-sufficient structural criterion for using a feature difference as a universally sound discriminator relative to that assignment; it is not a procedure for discovering or validating the assignment itself. The Lean development checks the three-way characterization generically, without fixing the representation, target, or feature-value types.
 
 This quotient statement clarifies the scope of target factorization. If \(f=\phi\circ r\), then \(f\) necessarily descends through \(P/{\sim_r}\). Conversely, quotient descent captures exactly the representation-level information that remains after same-target differences are forgotten. Interpreting the descended feature as a property on all of \(T\) additionally requires an extension beyond the represented image of \(r\); values on targets not represented in \(P\) do no evidential work in the present inference.
 
@@ -231,6 +243,8 @@ Let \(A\subseteq Q\) be a family of tests selected for an analysis. Define **str
 Thus selection alone does no evidential work. For a particular independently specified test \(q\), the test-specific theorem requires only \(B_r(q)\). The stronger condition \(\operatorname{Adm}_r(A)\) is used when the inference is allowed to report that *some* test in \(A\) separates the pair without an additional witness-selection rule.
 
 The family-wide requirement is therefore a conservative sufficient condition, not a necessary condition for every particular witnessed inference. Its methodological purpose is to prevent an analysis from searching for a discriminator first and supplying structural admissibility only post hoc. Scientific warrant for the relevant tests must still be supplied independently and may not be self-licensed by the formal difference being promoted.
+
+This use of a *test family* is structural, not statistical. \(\operatorname{Adm}_r(A)\) does not control family-wise error, false-discovery rate, selective inference, or researcher degrees of freedom. Those are distinct problems that arise when test outcomes or witness selection are stochastic or data-adaptive; the exact deterministic formal core here supplies no multiplicity correction.
 
 Define
 
@@ -386,7 +400,13 @@ The choice of \(\mathcal S\) must itself be independently motivated. For confirm
 
 When an inference uses only equality classes, every bijection is a harmless renaming. When it uses sequence geometry, edit distance, neighborhood structure, order, or another relation on label values, an arbitrary bijection need not be harmless. In an error-aware UMI analysis, mapping strings to arbitrary numbers while destroying sequence distance is not a pure re-encoding of the evidential structure.
 
-The appropriate invariance question is therefore whether the inference survives automorphisms of the representation-level structure it claims to use. If a conclusion changes under a transformation that preserves all declared evidential structure, the argument contains an unexplained representation dependence.
+The appropriate invariance question is therefore whether the inference survives automorphisms of the representation-level structure it claims to use. More explicitly, let \(X\) denote the complete representation-level input used by an inference and let \(D(X)\) denote its target-level conclusion. For every \(\pi\in\operatorname{Aut}(U,\mathcal S)\) that acts only by re-encoding the declared representation structure, the audit asks for
+
+\[
+D(\pi\cdot X)=D(X),
+\]
+
+or the corresponding equivariance condition when the output itself carries transformed labels. If a conclusion changes under a transformation that preserves all declared evidential structure, the argument contains an unexplained representation dependence. This is an audit criterion on the inference rule, not an additional claim that arbitrary assignment-changing perturbations must be harmless.
 
 ### 4.2 Assignment perturbation
 
@@ -411,13 +431,15 @@ The Lean formalization is intentionally small. Its role is to make the stated de
 
 The formal model contains three representations, a representation-to-target map, target-sensitive tests, coarse and fine test regimes, a representation-sensitive negative control, and semantically inert token metadata.
 
-The feature-level analysis now includes a generic quotient theorem. For arbitrary representation, target, and feature-value types, the formalization proves that a feature is constant on every fiber of a target map if and only if it descends to the quotient induced by that map. The earlier factorization results are then read as target-specific instances of this anti-smuggling principle: two representations assigned to the same target receive the same value for every target-factorized feature, while a deliberately representation-sensitive discriminator fails the condition.
+The feature-level analysis now includes a generic three-way theorem. For arbitrary representation, target, and feature-value types, the formalization proves that fiber invariance is equivalent to universal soundness of feature-difference inference relative to the proposed target assignment, and that both are equivalent to descent through the quotient induced by that map. The earlier factorization results are then read as target-specific instances of this anti-smuggling principle: two representations assigned to the same target receive the same value for every target-factorized feature, while a deliberately representation-sensitive discriminator fails the condition.
 
 The test layer is connected to the same structure. A formal observation-factorization condition states that a representation-level observed outcome agrees with the target-level response of its assigned target for each test. The corresponding target-linked observation function satisfies this condition, and a difference on any observed test outcome satisfying the factorization entails different target assignments. A family-level object then requires this factorization for every test accessible in a selected regime; if one such admissible test separates two representations, the formalization derives different target assignments. This is the finite counterpart of \(\operatorname{Adm}_r(A)\land a\mathrel{\#_A}b\Rightarrow r(a)\neq r(b)\).
 
 The remaining results are negative controls and monotonicity checks. Re-encodings assigned to the same target preserve the target-linked observation profile. A richer selected test family can separate a pair left unresolved by a restricted family. Arbitrary reassignment of a token absent from target-sensitive semantics does not alter classification.
 
 These proofs are elementary. The machine-checking claim is correspondingly modest: a reviewer can inspect whether a supposedly target-relevant discriminator actually enters through the declared target map and factorization, rather than through a hidden encoding choice, label, or metadata field.
+
+An anonymized supplementary Lean archive accompanies the submission. It contains the exact standalone source used for the paper-level results, the pinned Lean toolchain, build configuration, build instructions, and a one-to-one R1–R23 result map. The archive has no external package dependencies beyond the pinned Lean distribution and can be checked with `lake build`. Repository identity and non-blind provenance are intentionally absent from the review artifact; a non-anonymous archival reference can replace it after review.
 
 ## 6. Relation to Existing Work
 
@@ -437,7 +459,15 @@ The contribution is therefore not a rival theory of scientific representation, n
 
 The converse limitation is equally important. Target factorization is not sufficient for representational adequacy. A formally factorized feature may arise from a bad target model, a mistaken reference assignment, or an unreliable measurement process. Nothing in the present framework settles those broader questions.
 
-### 6.2 Inferential representation and experimental individuation
+### 6.2 DEKI and Contemporary Inferential Accounts
+
+A particularly close contemporary comparison is the DEKI account developed by Frigg and Nguyen (2020) and summarized by Nguyen and Frigg (2022). DEKI analyzes scientific representation through denotation, exemplification, keying-up, and imputation: features exemplified by a representational vehicle are connected, through a key, to features imputed to a target. This makes explicit a point congenial to the present paper: a feature available in the representing vehicle is not automatically a target property.
+
+The present audit is not an alternative general theory of scientific representation and does not replace DEKI's account of how a model represents. Its question is narrower and downstream. Conditional on a proposed representation-to-target assignment and whatever interpretive or scientific bridge is independently warranted, may a *particular difference* internal to the representation be used as a discriminator of target plurality? Quotient descent tests conservativity relative to that proposed assignment; the negative controls expose within-fiber leakage; selected-family admissibility constrains post-hoc witness selection; and the counterfactual audit checks dependence on representational encoding. In DEKI terms, the existence of an exemplified or keyed feature does not by itself settle whether its inequality is a sound individuation discriminator.
+
+Suárez (2024) develops a contemporary inferential account in which representational force and inferential capacity are relational and context-dependent within normative modeling practice. That perspective reinforces the separation made here between structural factorization and scientific warrant. The present formalism deliberately does not derive the normative or empirical warrant that makes a target assignment, key, measurement model, or test scientifically acceptable; it audits what follows *conditional on* those commitments. Its contribution is therefore complementary: a local conservativity test for individuation inferences inside an already interpreted and warranted representational practice.
+
+### 6.3 Inferential representation and experimental individuation
 
 Suárez (2004) and Contessa (2007) already emphasize directionality, interpretation, and surrogate inference in scientific representation. The present framework does not claim that connecting a representation to a target is novel. It isolates one narrower dependency: what must be true before a **difference internal to the representational vehicle** can enter an individuation inference.
 
@@ -445,7 +475,7 @@ Practice-oriented work on individuation likewise constrains the claim. Bueno, Ch
 
 Accordingly, this paper does not claim that representation and individuation have only now been distinguished. Its contribution is a compact formal audit for a recurrent failure mode within such practices: allowing representation-level distinctions to do target-level individuating work without making the dependency explicit.
 
-### 6.3 Technical neighbors
+### 6.4 Technical neighbors
 
 Representation independence in programming-language semantics constrains dependence on implementation details (Mitchell 1986). Observational and behavioral equivalence classify systems relative to specified interactions (Hennessy and Milner 1985; Rutten 2000). Work on identity and discernibility warns against identifying formal discernibility with unrestricted numerical identity (Ladyman, Linnebo, and Pettigrew 2012; Dieks and Versteegh 2008).
 
@@ -588,3 +618,10 @@ Waters, C. Kenneth. 2018. "Ask Not 'What Is an Individual?'" In *Individuation, 
 Tramèr, Martin R., D. John M. Reynolds, R. Andrew Moore, and Henry J. McQuay. 1997. "Impact of Covert Duplicate Publication on Meta-analysis: A Case Study." *BMJ* 315(7109): 635–640. DOI: 10.1136/bmj.315.7109.635.
 
 von Elm, Erik, Greta Poglia, Bernhard Walder, and Martin R. Tramèr. 2004. "Different Patterns of Duplicate Publication: An Analysis of Articles Used in Systematic Reviews." *JAMA* 291(8): 974–980. DOI: 10.1001/jama.291.8.974.
+
+Frigg, Roman, and James Nguyen. 2020. *Modelling Nature: An Opinionated Introduction to Scientific Representation*. Cham: Springer. DOI: 10.1007/978-3-030-45153-0.
+
+Nguyen, James, and Roman Frigg. 2022. *Scientific Representation*. Elements in the Philosophy of Science. Cambridge: Cambridge University Press. DOI: 10.1017/9781009003575.
+
+Suárez, Mauricio. 2024. *Inference and Representation: A Study in Modeling Science*. Chicago: University of Chicago Press. DOI: 10.7208/chicago/9780226830032.001.0001.
+
