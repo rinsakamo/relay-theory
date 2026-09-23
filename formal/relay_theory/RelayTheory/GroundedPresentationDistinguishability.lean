@@ -112,6 +112,63 @@ theorem encodingProbe_separates_sameGrounding :
     exact Bool.noConfusion h
   · rfl
 
+
+/-- The equivalence relation induced by a representation-to-target map. -/
+def targetSetoid {P T : Type} (r : P → T) : Setoid P where
+  r := fun left right => r left = r right
+  iseqv := ⟨
+    by intro value; rfl,
+    by intro left right h; exact h.symm,
+    by intro left middle right h₁ h₂; exact h₁.trans h₂
+  ⟩
+
+/-- The quotient that forgets all distinctions inside one target fiber. -/
+abbrev TargetQuotient {P T : Type} (r : P → T) :=
+  Quotient (targetSetoid r)
+
+/-- A feature is fiber-invariant when it is constant on equal-target fibers. -/
+def FiberInvariant {P T V : Type}
+    (r : P → T)
+    (feature : P → V) : Prop :=
+  ∀ ⦃left right : P⦄,
+    r left = r right →
+      feature left = feature right
+
+/--
+A feature is fiber-invariant exactly when it descends to the quotient induced
+by the target assignment. This characterizes which representation-level
+distinctions survive after same-target presentations are identified.
+-/
+theorem fiberInvariant_iff_descends_toTargetQuotient
+    {P T V : Type}
+    (r : P → T)
+    (feature : P → V) :
+    FiberInvariant r feature ↔
+      ∃ quotientFeature : TargetQuotient r → V,
+        ∀ presentation,
+          feature presentation =
+            quotientFeature (Quotient.mk _ presentation) := by
+  constructor
+  · intro hFiber
+    let quotientFeature : TargetQuotient r → V :=
+      Quotient.lift feature (by
+        intro left right hSame
+        exact hFiber hSame)
+    refine ⟨quotientFeature, ?_⟩
+    intro presentation
+    rfl
+  · rintro ⟨quotientFeature, hFactor⟩
+    intro left right hSame
+    calc
+      feature left =
+          quotientFeature (Quotient.mk _ left) :=
+        hFactor left
+      _ = quotientFeature (Quotient.mk _ right) := by
+        apply congrArg quotientFeature
+        exact Quotient.sound hSame
+      _ = feature right :=
+        (hFactor right).symm
+
 /--
 A structural target-factorization condition for a presentation-level feature.
 The value carrier is arbitrary. This object records only that the feature
