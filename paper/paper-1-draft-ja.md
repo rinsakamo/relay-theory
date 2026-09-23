@@ -9,7 +9,7 @@
 
 ## 要旨
 
-表現間の形式的な差は、それだけでは target-level individuation を正当化しない。本稿は、exact target-factorization condition と、それを受け入れるために必要な scientific warrant を分離し、structurally admissible な test family を通じて representation-level observation と target-level outcome を接続する。unique molecular identifier (UMI) の事例では、software read ID、latent molecular tag、noisy observed tag を区別する。また、structure-preserving re-encoding と assignment-changing perturbation を counterfactual relevance audit により区別する。Lean formalization は structural dependency と family-level separation を検査する。本枠組みは提案された representation-to-target assignment に相対して individuation inference を監査するものであり、その assignment 自体を発見せず、証拠一般や numerical identity の完全な理論も与えない。
+表現間の形式的な差は、それだけでは target-level individuation を正当化しない。本稿は target-admissible feature を fiber invariance により特徴づける。すなわち、representation-to-target assignment が誘導する quotient を介して descend しなければならない。representation-level observation は structurally admissible な test family を通じて target-level outcome に接続され、再利用可能な individuation-inference audit として整理される。UMI case は read ID、latent molecular tag、noisy observation を区別し、database-record microcase は同じ構造が別領域にも現れることを示す。Lean formalization は quotient descent と family-level separation を検査する。本枠組みは proposed assignment に相対して individuation inference を監査するが、その assignment 自体を発見せず、証拠一般や numerical identity の完全な理論も与えない。
 
 ## 1. はじめに
 
@@ -37,15 +37,13 @@ formal artifact が扱うのは第一層だけである。構造依存関係を�
 
 本稿の貢献は四つに限定される。
 
-1. **Structural target factorization.** representation-level feature が target を形式的に追跡していると言えるのは、その feature が宣言された representation-to-target map を介して factorize するときだけである。これは structural admissibility condition であり、epistemic warrant ではない。
+1. **Structural admissibility の quotient characterization.** representation-level feature が target-admissible であるためには、proposed representation-to-target map の各 fiber 上で一定でなければならない。これは、同じ target に割り当てられた representation を同一視する quotient を介して descend することと同値である。
 
 2. **Test-family admissibility.** representation-level observation と target-level response を一つの inference chain に置く。selected family が target-level separation を支えられるのは、その family に含まれるすべての test が宣言された target-response factorization を満たす場合だけである。
 
-3. **Counterfactual relevance audit.** structure-preserving re-encoding と evidence-changing reassignment を区別し、identifier assignment や encoding が隠れた individuating work をしている場合を診断する。
+3. **再利用可能な individuation-inference audit.** within-fiber leakage、observation-to-target bridging、independent warrant、structure-preserving re-encoding、assignment sensitivity、regime overreach を一つの protocol として監査する。
 
-4. **Scientific case を伴う machine-checked dependency analysis.** 小規模な Lean formalization により structural claim を検査し、UMI の事例により latent target-linked tag、noisy observed tag、representation-only identifier が実践上どう異なるかを示す。
-
-この audit は三つの recurrent failure mode を露出させる。**Within-fiber leakage** は、同じ target に割り当てられた representation 間で feature が変化する場合である。**Unsupported observation bridging** は、representation-level outcome を独立に warrant された factorization なしに target response として扱う場合である。**Regime overreach** は、一つの selected test family で得られた separation を、より強い unrestricted identity claim へ昇格する場合である。
+4. **Cross-domain case を伴う machine-checked dependency analysis.** Lean は quotient descent と family-level separation を検査する。主たる UMI case と短い database-record microcase は、同じ failure pattern が異なる領域に現れることを示す。
 
 ## 2. 形式的設定
 
@@ -65,7 +63,7 @@ assignment \(r\) は modeling input である。本稿は raw observation から
 
 exact formal core は、一つの representation に一つの target value を割り当てる場合に限定する。many-to-many、distributed、probabilistic correspondence は自然な拡張だが、本稿の主張の外に置く。
 
-### 2.2 Structural target factorization
+### 2.2 Structural target factorization と quotient descent
 
 representation-level feature を
 
@@ -79,15 +77,13 @@ target-level property を
 \phi:T\to V
 \]
 
-とする。本稿では、次を **target-factorization condition** と呼ぶ。
+とする。次を **target-factorization condition** と呼ぶ。
 
 \[
 F_r(f,\phi)
 \quad\Longleftrightarrow\quad
 \forall p\in P,\; f(p)=\phi(r(p))
 \]
-
-と定義する。
 
 \(F_r(f,\phi)\) が成立するなら、
 
@@ -99,17 +95,45 @@ r(a)\neq r(b)
 
 である。
 
-証明は初等的である。target assignment が等しければ、target を介して factorize するすべての feature は同じ値を取る。したがって、この条件の価値は数学的な深さではなく、dependency を露出させる点にある。
+同じ内容は、より一般的な structural characterization として書ける。
 
-直接の帰結として **fiber invariance** が得られる。\(r(a)=r(b)\) なら、\(F_r(f,\phi)\) を満たすすべての feature は \(f(a)=f(b)\) を満たさなければならない。したがって、提案された target map の同一 fiber 内で変化する feature は、その同じ model の下では target property として扱えない。これが本稿で用いる operational anti-smuggling test である。
+\[
+a\sim_r b
+\quad\Longleftrightarrow\quad
+r(a)=r(b)
+\]
 
-重要なのは、\(F_r(f,\phi)\) 自体は **evidential warrant ではない**ということである。これは \(f\) が \(r\) の下で target property を追跡するために、構造的に何が真でなければならないかを述べるだけである。科学的応用がそのモデルを受け入れてよいかどうかは、formal identity の外部にある evidence に依存する。
+とし、\(\pi_r:P\to P/{\sim_r}\) を、同じ target に割り当てられた representation を同一視する quotient map とする。\(f\) が **fiber-invariant** であるとは、
 
-その warrant は複数の形を取りうる。たとえば、observed value と target property を結ぶ calibration data、feature と target を結ぶ causal production process の知識、validated measurement / error model、intervention protocol、あるいは target reference が独立に固定された semantic convention である。本枠組みはこれらを rank したり導出したりしない。要求するのは、関連する warrant を \(r\)、\(\phi\)、selected test の中へ暗黙に埋め込まず、明示することである。
+\[
+r(a)=r(b)
+\quad\Longrightarrow\quad
+f(a)=f(b)
+\]
 
-さらに warrant は **non-self-licensing** でなければならない。すなわち、問題となっている formal difference 自体を、すでに target distinction を成立させるものとして扱うことだけから warrant を得てはならない。row identifier、barcode string、constructor name は、異なる値を異なる target として parameterize しただけでは target evidence にならない。justificatory route には、関連する scientific / semantic practice に独立に grounded された information が必要である。
+が成立することをいう。このとき、
 
-この区別は trivialization も防ぐ。\(r\) を representation-level difference をすべて encode するほど細かく選べば、多くの feature を \(r\) を介して factorize させることができる。しかし、それはその \(r\) が科学的に適切だという証拠にはならない。target assignment とその正当化は substantive input のままである。
+\[
+f\text{ is fiber-invariant}
+\quad\Longleftrightarrow\quad
+\exists\,\bar f:P/{\sim_r}\to V
+\text{ such that }
+f=\bar f\circ\pi_r
+\]
+
+である。したがって fiber invariance は、feature が **target quotient を介して descend する**ためのちょうど必要十分な条件である。Lean development は representation type、target type、feature-value type を固定せず、この characterization を generic に検査する。
+
+\(f=\phi\circ r\) なら、\(f\) は必ず \(P/{\sim_r}\) を介して descend する。逆に quotient descent が保持するのは、same-target difference を忘れた後にも残る representation-level information ちょうどそのものである。descended feature を \(T\) 全体上の property として解釈するには、\(r\) の represented image 外まで extension する追加 convention が必要だが、その off-range value は現在の inference には evidential work をしない。
+
+したがって operational anti-smuggling rule は単純である。proposed target map の一つの fiber 内で変化する feature は target quotient を介して descend せず、その同じ model の下では target-level evidence として使えない。
+
+ただし structural descent 自体は **evidential warrant ではない**。これは representation-level feature が proposed target assignment だけに依存するための構造条件を述べるだけである。科学的応用がその model を受け入れてよいかどうかは formal identity の外部の evidence に依存する。
+
+その warrant は calibration data、causal production process、validated measurement / error model、intervention protocol、target reference が独立に固定された semantic convention などから得られうる。本枠組みはそれらを rank したり導出したりしない。関連する warrant を \(r\)、\(\phi\)、selected test の中に暗黙に埋め込まず、明示することを要求する。
+
+さらに warrant は **non-self-licensing** でなければならない。問題となっている formal difference 自体を、すでに target distinction を成立させるものとして扱うことだけから warrant を得てはならない。row identifier、barcode string、constructor name は、異なる値を異なる target として parameterize しただけでは target evidence にならない。
+
+\(r\) を representation-level difference をすべて encode するほど細かく選べば、多くの feature を descend / factorize させられる。しかし、それはその \(r\) が科学的に適切であることを示さない。target assignment とその justification は substantive input のままである。
 
 ### 2.3 Test-specific observation factorization
 
@@ -212,6 +236,18 @@ r(a)\neq r(b)
 
 また \(A_c\subseteq A_f\) なら、\(A_f\) の下での indistinguishability は \(A_c\) の下での indistinguishability を含意する。逆は一般に成立しない。これは fixed exact semantics と set inclusion についての theorem であり、noisy evidence の蓄積が classification を反転させないという主張ではない。
 
+### 2.5 Individuation-inference audit protocol
+
+以上の条件は、再利用可能な audit protocol として用いることができる。これは individual を発見する automated decision procedure ではなく、proposed individuation inference が必要な dependency を明示しているかを段階的に検査するものである。
+
+1. **Target model と scope を宣言する。** \(P\)、\(T\)、proposed assignment \(r\)、selected test family \(A\)、結論の強さを固定する。固定されていなければ audit は underdetermined である。
+2. **Quotient descent を検査する。** candidate discriminator が \(r\) の各 fiber 上で一定かを問う。within-fiber difference は target-level use に対する structural failure である。
+3. **Observation bridge を検査する。** test-family inference では \(\operatorname{Adm}_r(A)\) を確立する。admitted test が declared observation-to-target factorization を欠くなら、exact model は family-level separation を license しない。
+4. **Independent warrant と representation structure を検査する。** \(r\)、factorization、selected family、inference が利用する representation-level structure \(\mathcal S\) を受け入れる scientific reason を明示する。これらは non-self-licensing であり、preferred result を保存するために後から選ばれてはならない。
+5. **Counterfactual と scope を検査する。** structure-preserving re-encoding に対する invariance を調べる。assignment perturbation で結論が変わるなら、その sensitivity を evidentially relevant にする grounded relation を示す。最後に、結論を selected observational / interventional regime が支える範囲より強くしない。
+
+audit の disposition は三つに整理できる。quotient / factorization condition の違反は **structural failure**。構造的には coherent でも independent warrant が足りなければ **scientifically underdetermined**。両層を通過した場合は **scoped pass** であり、declared target model と regime に相対して license されるだけで、unrestricted numerical identity を確立するわけではない。
+
 ## 3. 科学的事例: UMI による分子カウント
 
 ### 3.1 Representation multiplicity は molecule multiplicity ではない
@@ -302,6 +338,12 @@ read-level feature が molecular individuation inference に入るためには�
 
 このため、この事例は哲学的にも有用である。二つの field がともに identifier であり、ともに string であり、ともに record を区別できたとしても、target を追跡するよう設計された causal and measurement history に参加するのはそのうち一方だけかもしれない。
 
+### 3.5 Cross-domain microcase: database entity resolution
+
+同じ構造は molecular counting の外にも現れる。異なる row ID を持つ二つの database row が、同じ customer を指すと proposed されているとする。\(r\) が両 row を同じ customer に写すなら、row-ID inequality は一つの fiber 内で変化するため quotient descent に失敗し、それだけでは two-customer inference を支えられない。
+
+別の field が evidentially relevant になるには追加の semantics が必要である。independently specified な resolution process によって維持された master-customer identifier は customer target を介して factorize しうる一方、copied email address、display name、locally generated row key はそうとは限らない。duplicate、shared value、stale assignment、entry error は必要な dependency を破壊しうる。ここで特定の entity-resolution system を endorsement する意図はない。非生物学的 domain でも、どの distinction が target quotient を生き残るか、どの observation link が warrant されるか、どれが単なる representational bookkeeping か、という同じ audit question が現れることを示すための microcase である。
+
 ## 4. Counterfactual Relevance Audit
 
 “relabeling invariance” は、重要に異なる二種類の perturbation を隠しうる。無害な変更とは常に arbitrary bijection なのではなく、inference が実際にどの representation-level structure を利用しているかに依存する。
@@ -347,7 +389,7 @@ Lean formalization は意図的に小さい。その役割は、記述された 
 
 formal model には三つの representation、representation-to-target map、target-sensitive test、coarse / fine test regime、representation-sensitive negative control、semantically inert token metadata が含まれる。
 
-feature-level factorization は任意の value domain に対して定義される。representation-level feature は、指定された structural factorization を通じてのみ target-level property と対応づけられる。formalization は、同じ target に割り当てられた二つの representation が、factorized feature について同じ値を取ること、およびそのような feature の値が異なれば target assignment も異なることを検査する。また、同じ target に割り当てられた二つの representation を分離するような representation-sensitive test は target factorization を満たせない一方、target assignment から直接定義された positive-control feature は満たせることも検査する。
+feature-level analysis には generic quotient theorem が追加される。任意の representation type、target type、feature-value type について、feature が target map の各 fiber 上で一定であることと、その map が誘導する quotient を介して descend することが同値であると formalization は証明する。従来の factorization result は、この anti-smuggling principle の target-specific instance として読める。同じ target に割り当てられた representation は target-factorized feature について同じ値を取り、representation-sensitive discriminator はこの条件に失敗する。
 
 test layer も同じ構造に接続される。formal observation-factorization condition は、representation-level observed outcome が各 test について割り当てられた target の target-level response と一致することを表す。対応する target-linked observation function はこの条件を満たし、その factorization を満たす observed test outcome 上の差は異なる target assignment を含意する。さらに family-level object は selected regime で accessible なすべての test にこの factorization を要求し、その admissible family 内の一つの test が二つの representation を分離すれば、異なる target assignment が導かれる。これは \(\operatorname{Adm}_r(A)\land a\mathrel{\#_A}b\Rightarrow r(a)\neq r(b)\) の有限 counterpart である。
 
@@ -429,20 +471,21 @@ blind review copy では machine-checked claim を neutral label にまとめる
 | R11--R15 | semantically inert identity-like token や decorative access metadata が tested classification を変えないこと。 | それらの field が declared target-sensitive semantics に含まれないこと。 |
 | R16--R19 | generic feature factorization が target map の各 fiber 内で equality を保存し、representation-sensitive negative control が factorization に失敗すること。 | proposed representation-to-target map と explicit feature factorization。 |
 | R20--R22 | representation-level observed outcome が target separation を支えられるのは test-specific factorization の下だけであり、family-level separation は selected test がすべて admissible な場合だけ license されること。 | selected family が用いる各 test について observed outcome と target response が exact に一致すること。 |
+| R23 | fiber invariance が、arbitrary representation-to-target map が誘導する quotient を介した descent と同値であること。 | target-induced equivalence relation のみ。domain-specific な representation / target type を仮定しない。 |
 
-小さな theorem が多数あること自体は novelty claim ではない。この collection は dependency structure の machine-checkable な記録である。neutral result label の完全な集合は R1--R22 である。
+小さな theorem が多数あること自体は novelty claim ではない。この collection は dependency structure の machine-checkable な記録である。neutral result label の完全な集合は R1--R23 である。
 
 ## 10. 結論
 
 形式的な差が individuation inference に入るためには、representation から target への justified path を経由しなければならない。
 
-したがって、この formalism は提案された representation-to-target model の audit であり、formal difference から target assignment を発見する procedure ではない。formal contribution は、しばしば一つに圧縮される二つの問いを分離する。**Structural target factorization** は、feature または observed test outcome が主張された仕方で target assignment に実際に依存しているかを問う。**Scientific warrant** は、その dependency model を application でなぜ信頼してよいのかを問う。前者は machine-check できるが、後者は宣言だけでは得られない。
+structural core は簡潔に述べられる。**target-admissible な representation-level evidence は、proposed target assignment が誘導する quotient を介して descend しなければならない。** within-fiber distinction はその構成上捨てられ、selected test が separation を支えられるのは、その observation-to-target link が structurally admissible な場合だけである。そして、どちらの条件も model を受け入れる scientific warrant を作り出さない。
 
-UMI-based molecular counting はこの区別を示す。unique read ID は downstream record を区別する。latent molecular tag は pre-amplification protocol によって tagged template を追跡しうる。observed UMI string はその latent tag の noisy measurement であり、error model を必要とする。三者がすべて string として現れうるということは、その evidential role には関係しない。
+したがって individuation-inference audit は target assignment や metaphysical individual を発見する procedure ではない。これは、structural failure、scientific underdetermination、declared target model と test regime に相対した scoped pass を区別する再利用可能な dependency check である。
 
-したがって実践的な教訓は、identifier を無視せよということでも、target-linked に見える identifier をそれだけで信頼せよということでもない。より限定された次の原則である。
+UMI-based molecular counting が主たる scientific case を与え、database-record microcase は同じ audit structure が barcode biology に固有ではないことを示す。どちらの domain でも identifierhood 自体には evidential force はない。重要なのは、その difference が target quotient を生き残り、target-level claim への independently warranted route を持つかどうかである。
 
-> **individuation claim が形式的な差に依存するなら、その target factorization と、それを受け入れる科学的理由を明示せよ。そのうえで、明示的に specified された observational / interventional regime に相対して claim を評価せよ。**
+> **individuation claim が formal difference に依存するなら、その difference が target quotient を生き残ることを要求し、observation-to-target bridge と independent warrant を明示し、結論を declared test regime の範囲内に保て。**
 
 ## 参考文献
 
