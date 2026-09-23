@@ -86,12 +86,33 @@ def extract_arxiv(work: dict[str, Any], ids: dict[str, str]) -> str | None:
             return re.sub(
                 r"^https?://arxiv\.org/(?:abs|pdf)/", "", value
             ).removesuffix(".pdf")
-    location = work.get("primary_location") or {}
-    url = location.get("landing_page_url")
-    if isinstance(url, str):
-        match = re.search(r"arxiv\.org/(?:abs|pdf)/([^?#]+)", url, flags=re.I)
-        if match:
-            return match.group(1).removesuffix(".pdf")
+
+    candidates: list[dict[str, Any]] = []
+    primary = work.get("primary_location")
+    if isinstance(primary, dict):
+        candidates.append(primary)
+    locations = work.get("locations") or []
+    if isinstance(locations, list):
+        candidates.extend(x for x in locations if isinstance(x, dict))
+
+    for location in candidates:
+        location_id = location.get("id")
+        if isinstance(location_id, str):
+            match = re.search(
+                r"(?:arxiv\.org[:/]|oai:arXiv\.org:)([^?#]+)",
+                location_id,
+                flags=re.I,
+            )
+            if match:
+                return match.group(1).removesuffix(".pdf")
+        for field in ("landing_page_url", "pdf_url"):
+            url = location.get(field)
+            if isinstance(url, str):
+                match = re.search(
+                    r"arxiv\.org/(?:abs|pdf)/([^?#]+)", url, flags=re.I
+                )
+                if match:
+                    return match.group(1).removesuffix(".pdf")
     return None
 
 
@@ -415,7 +436,7 @@ def load_checkpoint(
 def page_select() -> str:
     return (
         "id,ids,doi,display_name,publication_year,cited_by_count,"
-        "topics,authorships,primary_location"
+        "topics,authorships,primary_location,locations"
     )
 
 
@@ -876,7 +897,7 @@ def initialize_or_resume(
     counts_digest: str,
     counts: dict[str, Any],
     seed_topics: list[str],
-    run_id: str,
+    run_id: str | None,
     resume: bool,
 ) -> str:
     existing_schema = get_meta(conn, "manifest_schema_version")
@@ -1096,6 +1117,7 @@ def fake_work(
         "topics": [{"id": f"https://openalex.org/topics/{t}"} for t in topics],
         "authorships": [{"author": {"display_name": author}}],
         "primary_location": None,
+        "locations": [],
     }
     if doi:
         work["ids"]["doi"] = f"https://doi.org/{doi}"
@@ -1287,6 +1309,36 @@ def self_test(config: dict[str, Any]) -> None:
         key, provider_id = canonical_work_identity(fallback)
         assert key == "doi:10.1234/fallback" and provider_id is None
 
+        # N1b arXiv identifier from a non-primary harvested location.
+        arxiv_work = fake_work("W30")
+        arxiv_work["locations"] = [
+            {
+                "id": "pmh:oai:arXiv.org:2401.01234",
+                "landing_page_url": "https://arxiv.org/abs/2401.01234",
+            }
+        ]
+        assert extract_arxiv(arxiv_work, stable_ids(arxiv_work)) == "2401.01234"
+
+        # Resume without supplying a fresh run-id must retain the stored run.
+        resume_id = root / "resume-id.sqlite3"
+        c_resume = initialize_fixture_db(resume_id, config, seed_topics)
+        assert (
+            initialize_or_resume(
+                conn=c_resume,
+                output=resume_id,
+                config_digest="config-a",
+                manifest_script_digest="manifest-a",
+                enumerator_script_digest="enum-a",
+                counts_digest="counts-a",
+                counts={"access_timestamp": "x", "N_frame": 1},
+                seed_topics=seed_topics,
+                run_id=None,
+                resume=True,
+            )
+            == "fixture"
+        )
+        c_resume.close()
+
         # N2 title collision.
         collision = root / "collision.sqlite3"
         c5 = initialize_fixture_db(collision, config, seed_topics)
@@ -1401,8 +1453,14 @@ def main() -> int:
     if args.max_pages_total is not None and args.max_pages_total <= 0:
         parser.error("--max-pages-total must be positive")
 
-    run_id = args.run_id or (
-        "paper2-retrieval-v1-" + time.strftime("%Y%m%dT%H%M%SZ", time.gmtime())
+    run_id = (
+        args.run_id
+        if args.resume
+        else (
+            args.run_id
+            or "paper2-retrieval-v1-"
+            + time.strftime("%Y%m%dT%H%M%SZ", time.gmtime())
+        )
     )
     client = retrieval.OpenAlexClient(
         api_key=os.environ.get("OPENALEX_API_KEY"),
