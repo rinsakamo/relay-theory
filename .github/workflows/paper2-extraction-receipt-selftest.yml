@@ -1,0 +1,37 @@
+name: paper2-extraction-receipt-selftest
+
+on:
+  pull_request:
+    paths:
+      - "research/paper2/extraction_execution_receipt_v1.schema.json"
+      - "scripts/paper2_extraction_receipt_validate.py"
+      - "scripts/paper2_extraction_procedure_validate.py"
+      - "research/paper2/extraction_run_package_v1.json"
+      - ".github/workflows/paper2-extraction-receipt-selftest.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "research/paper2/extraction_execution_receipt_v1.schema.json"
+      - "scripts/paper2_extraction_receipt_validate.py"
+      - "scripts/paper2_extraction_procedure_validate.py"
+      - "research/paper2/extraction_run_package_v1.json"
+      - ".github/workflows/paper2-extraction-receipt-selftest.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile receipt tooling
+        run: |
+          python -m py_compile scripts/paper2_extraction_procedure_validate.py
+          python -m py_compile scripts/paper2_extraction_receipt_validate.py
+      - name: Validate receipt semantics and destructive controls
+        run: python scripts/paper2_extraction_receipt_validate.py --self-test
