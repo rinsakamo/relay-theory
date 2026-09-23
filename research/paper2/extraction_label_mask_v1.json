@@ -1,0 +1,37 @@
+{
+  "schema_version": "paper2-extraction-label-mask-v1",
+  "owner_issue": 162,
+  "status": "PREEXECUTION_FROZEN",
+  "normalization": {
+    "unicode": "NFKC",
+    "whitespace": "collapse_all_unicode_whitespace_to_single_ascii_space_and_strip"
+  },
+  "segmentation": {
+    "unit": "sentence_like_evidence_unit",
+    "rule": "split_after_period_question_or_exclamation_before_ascii_upper_digit_or_open_bracket",
+    "regex": "(?<=[.!?])\\s+(?=[A-Z0-9\\[])",
+    "maximum_units": 32,
+    "truncate_when_over_limit": false
+  },
+  "masking": {
+    "term_authority": "predeclared_construct_labels_and_explicit_aliases_only",
+    "match": "case_insensitive_exact_phrase_with_word_boundaries",
+    "overlap_resolution": "longest_normalized_term_first_then_label_id",
+    "marker_format": "[CONSTRUCT_XX]",
+    "extractor_receives_label_to_marker_map": false,
+    "raw_source_retained_outside_extractor": true,
+    "raw_and_masked_digests_required": true
+  },
+  "semantic_collapse_gate": {
+    "minimum_non_marker_word_tokens_across_source": 5,
+    "on_failure": "PREEXECUTION_BLOCKED"
+  },
+  "focus_selection": {
+    "mechanism": "SystemOne_finite_choice",
+    "maximum_selected_units": 3,
+    "duplicate_units_forbidden": true,
+    "explicit_unresolved_choice": "__unresolved__",
+    "none_choice": "none",
+    "selected_units_feed": "paper2-two-pass-systemone-v2"
+  }
+}
