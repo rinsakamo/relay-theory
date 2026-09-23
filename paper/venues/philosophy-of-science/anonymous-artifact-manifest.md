@@ -5,7 +5,7 @@
 
 ## Purpose
 
-The manuscript uses Lean as a dependency audit rather than as a source of deep mathematical novelty. During blind review, mechanized results are referred to by neutral labels `R1`--`R21`.
+The manuscript uses Lean as a dependency audit rather than as a source of deep mathematical novelty. During blind review, machine-checked results are referred to by neutral labels `R1`--`R21`.
 
 ## Result labels
 
@@ -26,12 +26,12 @@ The manuscript uses Lean as a dependency audit rather than as a source of deep m
 | R13 | Different identity-like token values do not separate two same-reference encodings. |
 | R14 | Assigning the same identity-like token cannot hide a target-sensitive difference already exposed by the admitted tests. |
 | R15 | Decorative access metadata that does not change the admitted test profile does not change the tested classification. |
-| R16 | For a feature with an explicit target factorization, equal target grounding forces equal feature values. |
-| R17 | A difference in a target-factorized representation-level feature entails a difference in the grounding result. |
-| R18 | The deliberately representation-sensitive encoding discriminator cannot have a target factorization because it separates two same-grounding presentations. |
-| R19 | A positive-control feature that directly tracks grounding satisfies target factorization. |
-| R20 | The built-in representation-level grounded observation surface satisfies test-specific observation factorization. |
-| R21 | Under observation factorization, a difference in an observed probe outcome entails a difference in the grounding result. |
+| R16 | For a feature with an explicit target factorization, equal target assignment forces equal feature values. |
+| R17 | A difference in a target-factorized representation-level feature entails a difference in target assignment. |
+| R18 | The deliberately representation-sensitive encoding discriminator cannot have a target factorization because it separates two representations assigned to the same target. |
+| R19 | A positive-control feature defined directly from the target assignment satisfies target factorization. |
+| R20 | The target-linked representation-level observation function satisfies test-specific observation factorization. |
+| R21 | Under observation factorization, a difference in an observed test outcome entails a difference in target assignment. |
 
 ## Formal scope
 

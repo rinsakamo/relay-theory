@@ -9,7 +9,7 @@
 
 ## Abstract
 
-Formal differences between representations do not by themselves license target-level individuation. We separate a structural target-factorization condition from the scientific warrant required to accept it, and connect representation-level observations to target-level test outcomes through test-specific factorization. A unique molecular identifier (UMI) case distinguishes software read IDs, latent molecular tags, and noisy observed tags. We also distinguish harmless bijective renaming from assignment-changing perturbations in what we call a counterfactual relevance audit. A small machine-checked formalization in Lean checks the structural dependencies and test-relative refinement. The framework gives necessary conditions for individuation inferences, not a complete theory of evidence or numerical identity.
+Formal differences between representations do not by themselves license target-level individuation. We separate an exact target-factorization condition from the scientific warrant required to accept it, and connect representation-level observations to target-level test outcomes through test-specific factorization. A unique molecular identifier (UMI) case distinguishes software read IDs, latent molecular tags, and noisy observed tags. We distinguish bijective renaming from assignment-changing perturbations in a counterfactual relevance audit. A small Lean formalization checks structural dependencies and test-relative refinement. The framework audits proposed representation-to-target assignments; it neither discovers those assignments nor provides a complete theory of evidence or numerical identity.
 
 ## 1. Introduction
 
@@ -59,6 +59,8 @@ be a representation-to-target assignment. Distinct elements of \(P\) are not ass
 
 The assignment \(r\) is a modeling input. The paper does not infer \(r\) from raw observations and does not derive the ontology of \(T\). In applications where source assignment is uncertain, the framework audits a proposed assignment model rather than solving the source-assignment problem.
 
+This makes the inferential role of the formalism asymmetric. It is not a procedure for discovering \(r\) from observed representation-level differences. Rather, conditional on a proposed \(r\), it audits whether a discriminator is compatible with that assignment without importing distinctions that vary within a single fiber of \(r\). Observing \(f(a)\neq f(b)\) therefore does not construct or validate the target assignment; the implication to \(r(a)\neq r(b)\) is licensed only within a model in which the relevant factorization has independent scientific warrant.
+
 The exact formal core is restricted to one target value per representation. Many-to-many, distributed, and probabilistic correspondences are natural extensions, but they are outside the present claim.
 
 ### 2.2 Structural target factorization
@@ -94,6 +96,8 @@ r(a)\neq r(b).
 The proof is elementary: equal target assignments force equal values of every feature that factors through the target. The value of the condition is therefore not mathematical depth but dependency exposure.
 
 Crucially, \(F_r(f,\phi)\) is **not itself an evidential warrant**. It says what would have to be structurally true for \(f\) to track a target property under \(r\). Whether a scientific application is entitled to accept that model depends on evidence external to the formal identity.
+
+Such warrant can come from different sources: calibration data linking observed values to target properties; knowledge of a causal production process connecting a feature to the target; a validated measurement or error model; an intervention protocol; or a semantic convention whose target reference is independently fixed. The framework does not rank these sources or derive them. It requires the relevant warrant to be stated rather than silently encoded in \(r\), \(\phi\), or the selected tests.
 
 This distinction also blocks a trivialization. If \(r\) is chosen so finely that it encodes every representational distinction, many features can be made to factor through it. That does not establish that such an \(r\) is scientifically appropriate. The target assignment and its justification remain substantive inputs.
 
@@ -224,24 +228,27 @@ Real data are more difficult. The observed read-level string need not equal the 
 
 The exact formal factorization captures the no-error dependency skeleton. It does not replace the error model connecting the latent assigned tag to the observed read-level string.
 
-### 3.3 A minimal synthetic example
+### 3.3 A synthetic error-and-collision example
 
-Consider two tagged templates:
+Consider three tagged templates:
 
 - \(m_1\) has latent assigned UMI *ACGT* and produces three reads observed as *ACGT*, *ACGT*, and *ACGC*;
-- \(m_2\) has latent assigned UMI *TGCA* and produces three reads observed as *TGCA*, *TGCA*, and *TGCA*.
+- \(m_2\) has latent assigned UMI *TGCA* and produces three reads observed as *TGCA*, *TGCA*, and *TGCA*;
+- \(m_3\) also has latent assigned UMI *ACGT* and produces two reads observed as *ACGT* and *ACGT*.
 
-There are six read records but only two tagged templates in this synthetic example. The *ACGC* observation represents one sequencing error from the latent tag of \(m_1\).
+There are eight read records but three tagged templates. The *ACGC* observation represents one sequencing error from the latent tag of \(m_1\), while \(m_1\) and \(m_3\) instantiate a UMI collision.
 
-A naive rule that equates distinct observed UMI strings with distinct source molecules can split \(m_1\) into two apparent groups and return three groups. An error-aware procedure can instead treat *ACGC* as evidence compatible with the *ACGT* source. Conversely, UMI collisions can merge evidence from distinct templates if tag identity is treated as sufficient.
+A naive rule that equates distinct observed UMI strings with distinct source molecules returns three groups: *ACGT*, *ACGC*, and *TGCA*. The numerical count therefore happens to equal the true number of tagged templates, but the partition is wrong in two opposite ways: the sequencing error splits \(m_1\), while the collision merges evidence from \(m_1\) and \(m_3\). Numerical agreement can therefore be accidental.
+
+An error-aware model can treat *ACGC* as compatible with the *ACGT* tag, but UMI sequence alone cannot separate \(m_1\) from \(m_3\) once they collide. Additional genomic, transcript, library, or other experimentally warranted context may be required.
 
 The example makes three layers explicit:
 
-1. unique read IDs individuate six records;
-2. latent assigned UMIs are protocol-generated properties of tagged templates;
-3. observed UMI strings are noisy measurements of those latent tags.
+1. unique read IDs individuate eight records but overcount tagged templates;
+2. latent assigned UMIs are protocol-generated target properties, but collisions make UMI equality insufficient for target identity;
+3. observed UMI strings are noisy measurements of those latent tags, so raw string inequality can also over-separate one target.
 
-Only the second layer satisfies the exact target factorization in the idealized model. The third requires an error model. The first is representation-level bookkeeping unless some independent target link is supplied.
+Only the second layer satisfies the exact target factorization in the idealized model. The third requires an error model, and the first is representation-level bookkeeping unless some independent target link is supplied. The three candidate procedures also expose different audit outcomes: unique read IDs fail to factor through molecular source assignment; raw observed-string equality is target-linked but violates exact observation factorization under sequencing error and remains non-injective under collision; an error-aware inference is admissible only insofar as its measurement and error model is independently warranted.
 
 ### 3.4 What the framework diagnoses
 
@@ -326,11 +333,11 @@ The present mathematics is substantially more modest than these mature framework
 
 Nor does failure to support individuation imply that a representational distinction is dispensable. Surplus structure can remain useful or even necessary for other representational tasks (Nguyen, Teh, and Wells 2020).
 
-## 7. Broader Implication: From Identifiers to Theoretical Constructs
+## 7. Broader Implication and Future Research: From Identifiers to Theoretical Constructs
 
-The UMI case supports a broader methodological consequence. The evidential force of an identifier does not derive from its status as an identifier. It derives from an independently warranted relation between the identifier's assignment and the target.
+The UMI case motivates a broader methodological question, but the extension in this section is prospective. It is not a result established by the present formal model or by the UMI case. The evidential force of an identifier does not derive from its status as an identifier; it derives from an independently warranted relation between the identifier's assignment and the target.
 
-The same discipline can be applied at a higher methodological level to the theoretical constructs used to describe measured capacities. Distinct construct labels are themselves differences in a representational vocabulary. Their nominal plurality does not, by itself, establish plurality in the measured capacities.
+A separate study could ask whether the same discipline can be applied at a higher methodological level to theoretical constructs used to describe measured capacities. Distinct construct labels are themselves differences in a representational vocabulary. Their nominal plurality does not, by itself, establish plurality in the measured capacities.
 
 Let \(C\) be a set of theoretical construct labels, and let \(\sigma(c)\) denote what we call the operational structural signature retained after label suppression and normalization of the claim associated with construct \(c\). Such a signature may include the measurement roles, tests, criteria, temporal relations, resource conditions, or other dependencies required to reconstruct the claim.
 
@@ -358,7 +365,7 @@ The resulting principle is:
 
 > **Nominal plurality is not evidential plurality. Preserve the discriminating structure that warrants a distinction, not merely the names of the distinguished things.**
 
-This consequence suggests a separate research question for cognitive science and other construct-rich fields: after source attribution and construct labels are withheld from the analysis, operational claims can be normalized onto a common measurement basis and compared by the discriminating structure that survives. The present paper does not answer which named cognitive capacities remain distinct under such a procedure, nor does it assume that any common basis is complete. It supplies the evidential discipline that such a comparison would need.
+This proposal therefore defines a separate research program for cognitive science and other construct-rich fields: withhold source attribution and construct labels during analysis, normalize operational claims onto a declared common measurement basis, and compare the discriminating structure that survives. The present paper neither validates that normalization procedure nor answers which named capacities remain distinct under it, and it does not assume that any common basis is complete. Its contribution here is only to state the evidential discipline that such a future comparison would have to satisfy.
 
 ## 8. Scope and Limitations
 
@@ -366,7 +373,7 @@ The framework deliberately leaves several problems open.
 
 First, \(T\) and \(r\) are inputs. The theory does not derive target ontology or solve uncertain source assignment.
 
-Second, exact target factorization is a structural idealization. Real measurements are noisy, probabilistic, and model-dependent. The UMI example makes this limitation explicit by separating latent assigned tags from observed tag strings.
+Second, exact target factorization is a structural idealization. Real measurements are noisy, probabilistic, and model-dependent. The UMI example makes this limitation explicit by separating latent assigned tags from observed tag strings. Accordingly, *necessary condition* in this paper means necessary within the declared exact deterministic model; it is not a claim that every noisy or probabilistic individuation procedure must satisfy the literal equality \(f(p)=\phi(r(p))\).
 
 Third, structural factorization is not epistemic warrant. A badly chosen \(r\) can make irrelevant features appear target-factorized. Scientific justification for the target assignment, measurement model, and test relevance remains external to the Lean development.
 
@@ -378,15 +385,24 @@ Finally, operational separation is not metaphysical numerical identity, and sync
 
 ## 9. Formal Audit Summary
 
-For the blind review copy, the machine-checked claims are grouped under neutral labels. R1--R15 cover the original representation/target, test-family, and semantically inert-token controls. R16--R19 cover generic target factorization and its positive/negative controls. R20 establishes test-specific observation factorization for the target-linked observation function, and R21 checks that an observed difference under such a factorization entails different target assignments.
+For the blind review copy, the machine-checked claims are grouped under neutral labels. The grouped map below states what each family checks and which declared dependency it uses.
 
-The number of small theorems is not itself a novelty claim. The collection is a machine-checkable record of the dependency structure.
+| Results | Informal claim family | Declared dependency |
+| --- | --- | --- |
+| R1--R4 | Representation-only differences can coexist with one target assignment; target-linked observations are preserved for same-target representations. | Fixed representation-to-target map and exact target-response semantics. |
+| R5--R7 | A richer selected test family can refine an operational partition left unresolved by a restricted family. | Fixed exact test semantics and test-family inclusion. |
+| R8--R10 | A target-linked outcome difference can support a target-assignment difference in the positive control. | Deterministic target response under the declared test. |
+| R11--R15 | Semantically inert identity-like tokens or decorative access metadata do not alter the tested classification. | Those fields are absent from the declared target-sensitive semantics. |
+| R16--R19 | Generic feature factorization preserves equality within each fiber of the target map; a representation-sensitive negative control fails factorization. | Proposed representation-to-target map and explicit feature factorization. |
+| R20--R21 | Representation-level observed outcomes can support target separation only under test-specific observation factorization. | Exact agreement between observed outcomes and target responses for the declared test. |
+
+The number of small theorems is not itself a novelty claim. The collection is a machine-checkable record of the dependency structure. The complete set of neutral result labels is R1--R21.
 
 ## 10. Conclusion
 
 A formal difference may enter an individuation inference only through a justified path from representation to target.
 
-The formal contribution separates two questions that are often compressed into one. **Structural target factorization** asks whether the feature or observed test outcome actually depends on the target assignment in the claimed way. **Scientific warrant** asks why that dependency model should be trusted in the application. The first can be machine-checked; the second cannot be obtained by declaration.
+The formalism is therefore an audit of a proposed representation-to-target model, not a procedure for discovering target assignments from formal differences. The formal contribution separates two questions that are often compressed into one. **Structural target factorization** asks whether the feature or observed test outcome actually depends on the target assignment in the claimed way. **Scientific warrant** asks why that dependency model should be trusted in the application. The first can be machine-checked; the second cannot be obtained by declaration.
 
 UMI-based molecular counting illustrates the distinction. Unique read IDs distinguish downstream records. Latent molecular tags can track tagged templates because of the pre-amplification protocol. Observed UMI strings are noisy measurements of those latent tags and require an error model. The fact that all three may appear as strings is irrelevant to their evidential role.
 

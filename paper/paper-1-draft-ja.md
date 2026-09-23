@@ -9,7 +9,7 @@
 
 ## 要旨
 
-表現間の形式的な差は、それだけでは target-level individuation を正当化しない。本稿は、structural target-factorization condition と、それを受け入れるために必要な scientific warrant を分離し、test-specific factorization を通じて representation-level observation と target-level test outcome を接続する。unique molecular identifier (UMI) の事例では、software read ID、latent molecular tag、noisy observed tag を区別する。また、本稿で counterfactual relevance audit と呼ぶ分析において、無害な全単射的 renaming と assignment-changing perturbation を区別する。Lean による小規模な machine-checked formalization により、構造依存関係と test-relative refinement を検査する。本枠組みが与えるのは individuation inference の必要条件であり、証拠一般や numerical identity の完全な理論ではない。
+表現間の形式的な差は、それだけでは target-level individuation を正当化しない。本稿は、exact target-factorization condition と、それを受け入れるために必要な scientific warrant を分離し、test-specific factorization を通じて representation-level observation と target-level test outcome を接続する。unique molecular identifier (UMI) の事例では、software read ID、latent molecular tag、noisy observed tag を区別する。また、bijective renaming と assignment-changing perturbation を counterfactual relevance audit により区別する。小規模な Lean formalization は structural dependency と test-relative refinement を検査する。本枠組みは提案された representation-to-target assignment を監査するものであり、その assignment 自体を発見せず、証拠一般や numerical identity の完全な理論も与えない。
 
 ## 1. はじめに
 
@@ -59,6 +59,8 @@ r:P\to T
 
 assignment \(r\) は modeling input である。本稿は raw observation から \(r\) を推定せず、\(T\) の ontology も導出しない。source assignment 自体が不確実な応用では、本枠組みは提案された assignment model を監査するのであって、source-assignment problem を解くものではない。
 
+したがって、この formalism の inferential role は非対称である。これは observed representation-level difference から \(r\) を発見する procedure ではない。提案済みの \(r\) を条件として、discriminator が同じ fiber 内で変化する distinction を持ち込まずに、その assignment と両立するかを監査する。したがって \(f(a)\neq f(b)\) の observation 自体は target assignment を構成も検証もしない。\(r(a)\neq r(b)\) への implication が license されるのは、関連する factorization に独立した scientific warrant がある model の内部だけである。
+
 exact formal core は、一つの representation に一つの target value を割り当てる場合に限定する。many-to-many、distributed、probabilistic correspondence は自然な拡張だが、本稿の主張の外に置く。
 
 ### 2.2 Structural target factorization
@@ -98,6 +100,8 @@ r(a)\neq r(b)
 証明は初等的である。target assignment が等しければ、target を介して factorize するすべての feature は同じ値を取る。したがって、この条件の価値は数学的な深さではなく、dependency を露出させる点にある。
 
 重要なのは、\(F_r(f,\phi)\) 自体は **evidential warrant ではない**ということである。これは \(f\) が \(r\) の下で target property を追跡するために、構造的に何が真でなければならないかを述べるだけである。科学的応用がそのモデルを受け入れてよいかどうかは、formal identity の外部にある evidence に依存する。
+
+その warrant は複数の形を取りうる。たとえば、observed value と target property を結ぶ calibration data、feature と target を結ぶ causal production process の知識、validated measurement / error model、intervention protocol、あるいは target reference が独立に固定された semantic convention である。本枠組みはこれらを rank したり導出したりしない。要求するのは、関連する warrant を \(r\)、\(\phi\)、selected test の中へ暗黙に埋め込まず、明示することである。
 
 この区別は trivialization も防ぐ。\(r\) を representation-level difference をすべて encode するほど細かく選べば、多くの feature を \(r\) を介して factorize させることができる。しかし、それはその \(r\) が科学的に適切だという証拠にはならない。target assignment とその正当化は substantive input のままである。
 
@@ -234,24 +238,27 @@ sequencing が error-free で、各 read 上の observed UMI field が assigned 
 
 exact formal factorization が表すのは no-error dependency skeleton であり、latent assigned tag と observed read-level string を結ぶ error model の代わりではない。
 
-### 3.3 最小の synthetic example
+### 3.3 Error と collision を同時に含む synthetic example
 
-二つの tagged template を考える。
+三つの tagged template を考える。
 
 - \(m_1\) の latent assigned UMI は *ACGT* で、observed UMI が *ACGT*, *ACGT*, *ACGC* の三つの read を生成する。
 - \(m_2\) の latent assigned UMI は *TGCA* で、observed UMI が *TGCA*, *TGCA*, *TGCA* の三つの read を生成する。
+- \(m_3\) も latent assigned UMI *ACGT* を持ち、observed UMI が *ACGT*, *ACGT* の二つの read を生成する。
 
-この synthetic example には六つの read record があるが、tagged template は二つしかない。*ACGC* は \(m_1\) の latent tag から生じた一つの sequencing error を表す。
+read record は八つ、tagged template は三つである。*ACGC* は \(m_1\) の latent tag から生じた sequencing error を表し、\(m_1\) と \(m_3\) は UMI collision を表す。
 
-異なる observed UMI string を異なる source molecule と同一視する naive rule は、\(m_1\) を二つの apparent group に分割し、三つの group を返しうる。error-aware procedure なら、*ACGC* を *ACGT* source と整合的な evidence として扱える。逆に UMI collision があれば、tag identity を十分条件として扱うことで、異なる template 由来の evidence を一つに併合してしまう可能性がある。
+異なる observed UMI string を異なる source molecule と同一視する naive rule は、*ACGT*, *ACGC*, *TGCA* の三 group を返す。そのため数だけ見れば tagged template の真の個数三と一致する。しかし partition は二方向に誤っている。sequencing error により \(m_1\) を分割し、collision により \(m_1\) と \(m_3\) の evidence を併合している。したがって numerical agreement は偶然に生じうる。
+
+error-aware model は *ACGC* を *ACGT* tag と compatible に扱えるが、collision 後の \(m_1\) と \(m_3\) を UMI sequence だけで分離することはできない。追加の genomic / transcript / library context、あるいはその他の experimentally warranted information が必要になりうる。
 
 この例では三つの層が明確になる。
 
-1. unique read ID は六つの record を individuate する。
-2. latent assigned UMI は protocol によって tagged template に与えられた property である。
-3. observed UMI string はその latent tag の noisy measurement である。
+1. unique read ID は八つの record を individuate するが、tagged template を overcount する。
+2. latent assigned UMI は protocol によって生成された target property だが、collision のため UMI equality は target identity の十分条件ではない。
+3. observed UMI string は latent tag の noisy measurement であり、raw string inequality は一つの target を過剰に分離しうる。
 
-idealized model の exact target factorization を満たすのは第二層である。第三層には error model が必要である。第一層は、独立した target link が与えられない限り representation-level bookkeeping にすぎない。
+idealized model の exact target factorization を満たすのは第二層である。第三層には error model が必要であり、第一層は独立した target link が与えられない限り representation-level bookkeeping にすぎない。三つの candidate procedure は異なる audit outcome も示す。unique read ID は molecular source assignment を介して factorize しない。raw observed-string equality は target-linked ではあるが sequencing error の下で exact observation factorization を満たさず、collision の下では non-injective のままである。error-aware inference が admissible なのは、その measurement / error model が独立に warrant されている範囲に限られる。
 
 ### 3.4 本枠組みが診断するもの
 
@@ -336,11 +343,11 @@ programming-language semantics における representation independence は impl
 
 また、individuation を支えない representational distinction が不要だということにもならない。surplus structure は別の representational task に有用または必要でありうる (Nguyen, Teh, and Wells 2020)。
 
-## 7. より広い含意: Identifier から Theoretical Construct へ
+## 7. より広い含意と今後の研究: Identifier から Theoretical Construct へ
 
-UMI の事例から、より一般的な methodological consequence が得られる。identifier の evidential force は、それが identifier であることから生じるのではない。identifier assignment と target の間にある、独立に warrant された関係から生じる。
+UMI の事例は、より一般的な methodological question を示唆する。ただし、この節の extension は prospective であり、現在の formal model や UMI case によって確立された result ではない。identifier の evidential force は、それが identifier であることから生じるのではなく、identifier assignment と target の間にある独立に warrant された関係から生じる。
 
-同じ規律は、object identification より一段高い methodological level、すなわち measured capacity を記述する theoretical construct にも適用できる。異なる construct label は、それ自体が representational vocabulary 上の差である。その nominal plurality は、それだけでは measured capacity の plurality を成立させない。
+別の研究として、同じ規律を measured capacity を記述する theoretical construct に適用できるかを問うことができる。異なる construct label は、それ自体が representational vocabulary 上の差である。その nominal plurality は、それだけでは measured capacity の plurality を成立させない。
 
 \(C\) を theoretical construct label の集合とし、\(\sigma(c)\) を、construct \(c\) に結びついた claim について label suppression と normalization を行った後に残る構造的シグネチャとし、本稿ではこれを **operational structural signature** と呼ぶ。この signature には、claim を再構成するために必要な measurement role、test、criterion、temporal relation、resource condition、その他の dependency が含まれうる。
 
@@ -368,7 +375,7 @@ c_1\neq c_2
 
 > **Nominal plurality is not evidential plurality. 区別されたものの名前だけではなく、その区別を warrant する discriminating structure を保存せよ。**
 
-この帰結は cognitive science その他の construct-rich field に対する別の research question を示唆する。analysis の間は source attribution と construct label を伏せ、operational claim を common measurement basis 上へ normalize し、残存する discriminating structure を比較することができる。本稿は、その procedure の下でどの named cognitive capacity が distinct のまま残るかを答えない。また、いかなる common basis の completeness も仮定しない。本稿が与えるのは、そのような比較に必要な evidential discipline である。
+したがって、ここでの提案は cognitive science その他の construct-rich field に対する別の research program を定義する。analysis の間は source attribution と construct label を伏せ、operational claim を宣言された common measurement basis 上へ normalize し、残存する discriminating structure を比較する。本稿はその normalization procedure を validate せず、どの named capacity がその下で distinct のまま残るかも答えない。また、いかなる common basis の completeness も仮定しない。ここでの貢献は、その将来の比較が満たすべき evidential discipline を述べることだけである。
 
 ## 8. 射程と限界
 
@@ -376,7 +383,7 @@ c_1\neq c_2
 
 第一に、\(T\) と \(r\) は input である。本理論は target ontology を導出せず、不確実な source assignment を解決しない。
 
-第二に、exact target factorization は structural idealization である。現実の measurement は noisy、probabilistic、model-dependent である。UMI の例では latent assigned tag と observed tag string を分離することで、この限界を明示している。
+第二に、exact target factorization は structural idealization である。現実の measurement は noisy、probabilistic、model-dependent である。UMI の例では latent assigned tag と observed tag string を分離することで、この限界を明示している。したがって本稿でいう *necessary condition* は、宣言された exact deterministic model の内部での必要条件を意味する。すべての noisy / probabilistic individuation procedure が literal equality \(f(p)=\phi(r(p))\) を満たさなければならない、という主張ではない。
 
 第三に、structural factorization は epistemic warrant ではない。不適切に選ばれた \(r\) によって、irrelevant feature まで target-factorized に見せることができる。target assignment、measurement model、test relevance の scientific justification は Lean development の外部に残る。
 
@@ -388,15 +395,24 @@ c_1\neq c_2
 
 ## 9. Formal Audit Summary
 
-blind review copy では machine-checked claim を neutral label にまとめる。R1--R15 は元の representation/target、test-family、semantically inert-token control を扱う。R16--R19 は generic target factorization とその positive / negative control を扱う。R20 は target-linked observation function に対する test-specific observation factorization を確立し、R21 はその factorization の下で observed difference が異なる target assignment を含意することを検査する。
+blind review copy では machine-checked claim を neutral label にまとめる。以下の grouped map は、各 family が何を検査し、どの declared dependency を使うかを示す。
 
-小さな theorem が多数あること自体は novelty claim ではない。この collection は dependency structure の machine-checkable な記録である。
+| Results | Informal claim family | Declared dependency |
+| --- | --- | --- |
+| R1--R4 | representation-only difference と同一 target assignment が両立しうること、same-target representation では target-linked observation が保存されること。 | fixed representation-to-target map と exact target-response semantics。 |
+| R5--R7 | richer selected test family が restricted family で未分離の operational partition を refine できること。 | fixed exact test semantics と test-family inclusion。 |
+| R8--R10 | positive control で target-linked outcome difference が target-assignment difference を支えうること。 | declared test の deterministic target response。 |
+| R11--R15 | semantically inert identity-like token や decorative access metadata が tested classification を変えないこと。 | それらの field が declared target-sensitive semantics に含まれないこと。 |
+| R16--R19 | generic feature factorization が target map の各 fiber 内で equality を保存し、representation-sensitive negative control が factorization に失敗すること。 | proposed representation-to-target map と explicit feature factorization。 |
+| R20--R21 | representation-level observed outcome が target separation を支えられるのは test-specific observation factorization の下だけであること。 | declared test について observed outcome と target response が exact に一致すること。 |
+
+小さな theorem が多数あること自体は novelty claim ではない。この collection は dependency structure の machine-checkable な記録である。neutral result label の完全な集合は R1--R21 である。
 
 ## 10. 結論
 
 形式的な差が individuation inference に入るためには、representation から target への justified path を経由しなければならない。
 
-formal contribution は、しばしば一つに圧縮される二つの問いを分離する。**Structural target factorization** は、feature または observed test outcome が主張された仕方で target assignment に実際に依存しているかを問う。**Scientific warrant** は、その dependency model を application でなぜ信頼してよいのかを問う。前者は machine-check できるが、後者は宣言だけでは得られない。
+したがって、この formalism は提案された representation-to-target model の audit であり、formal difference から target assignment を発見する procedure ではない。formal contribution は、しばしば一つに圧縮される二つの問いを分離する。**Structural target factorization** は、feature または observed test outcome が主張された仕方で target assignment に実際に依存しているかを問う。**Scientific warrant** は、その dependency model を application でなぜ信頼してよいのかを問う。前者は machine-check できるが、後者は宣言だけでは得られない。
 
 UMI-based molecular counting はこの区別を示す。unique read ID は downstream record を区別する。latent molecular tag は pre-amplification protocol によって tagged template を追跡しうる。observed UMI string はその latent tag の noisy measurement であり、error model を必要とする。三者がすべて string として現れうるということは、その evidential role には関係しない。
 
