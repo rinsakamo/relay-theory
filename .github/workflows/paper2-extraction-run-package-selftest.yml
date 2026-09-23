@@ -1,0 +1,33 @@
+name: paper2-extraction-run-package-selftest
+
+on:
+  pull_request:
+    paths:
+      - "research/paper2/extraction_run_package_v1.json"
+      - "research/paper2/extraction_prompt_v1.md"
+      - "scripts/paper2_extraction_bundle_prepare.py"
+      - ".github/workflows/paper2-extraction-run-package-selftest.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "research/paper2/extraction_run_package_v1.json"
+      - "research/paper2/extraction_prompt_v1.md"
+      - "scripts/paper2_extraction_bundle_prepare.py"
+      - ".github/workflows/paper2-extraction-run-package-selftest.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile run-package tooling
+        run: python -m py_compile scripts/paper2_extraction_bundle_prepare.py
+      - name: Validate prompt/package and synthetic bundle controls
+        run: python scripts/paper2_extraction_bundle_prepare.py --self-test
