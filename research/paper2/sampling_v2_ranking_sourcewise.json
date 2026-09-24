@@ -1,0 +1,66 @@
+{
+  "schema_version": "paper2-sampling-v2-ranking-sourcewise-v2",
+  "owner_issue": 167,
+  "status": "APPARATUS_ONLY_REAL_EXECUTION_NOT_AUTHORIZED",
+  "supersedes": "paper2-sampling-v2-ranking-v1 direct-union provider execution after PRE_1950 HTTP 500",
+  "retrieval_sources": {
+    "source_count": 51,
+    "source_definition": "exact frozen #143 R1/R2/R3 source_specs: 1 R1 seed-topic source + 35 R2 text-query sources + 15 R3 anchor-query sources",
+    "union_semantics": "deduplicated union of all 51 frozen sources",
+    "source_queries_must_match_counts_artifact": true
+  },
+  "exact_merge_principle": {
+    "name": "top-L per-source sufficiency under a static provider state",
+    "statement": "For a union U of source sets S_i under one common total ranking, every element in the top L of U is contained in the top L of at least one S_i to which it belongs. Therefore unioning source-local top-L prefixes and re-ranking is sufficient for the global top-L. Complete source-local citation-boundary tie closure preserves the declared citation-count then Work-ID ordering when provider tie order is unspecified.",
+    "live_provider_caveat": "OpenAlex is live rather than snapshot-backed; duplicate Work IDs with differing cited_by_count observations fail closed instead of being silently reconciled."
+  },
+  "ranking_surface": {
+    "provider": "OpenAlex",
+    "provider_sort": "cited_by_count:desc",
+    "provider_page_size": 100,
+    "paging": "basic_page",
+    "basic_page_row_limit": 10000,
+    "transport_attempts_per_request": 1,
+    "local_canonical_sort": [
+      "cited_by_count descending",
+      "canonical OpenAlex Work ID ascending"
+    ],
+    "complete_source_boundary_citation_tie": true,
+    "complete_global_boundary_citation_tie": true,
+    "duplicate_work_id_policy": "DEDUP_IF_IDENTICAL_CITATION_COUNT_OTHERWISE_FAIL_CLOSED",
+    "provider_nonmonotone_citation_policy": "FAIL_CLOSED",
+    "provider_meta_count_equality_across_pages_required": false
+  },
+  "candidate_ladder": {
+    "multiplier": 5,
+    "minimum_rows_per_era": "5 * frozen primary quota k_d",
+    "source_prefix_rows": "for each of 51 sources, retrieve source-local top L rows where L = 5 * k_d, plus complete citation tie at that source boundary",
+    "global_freeze": "deduplicate source prefixes, canonical-sort, retain all rows with cited_by_count >= the global L-th citation count",
+    "expansion_if_exhausted_after_screening": "versioned pre-decomposition expansion allowed only from eligibility/source-access attrition; never from decomposition outcomes"
+  },
+  "calibration_exclusion": {
+    "registry": "research/paper2/retrieval_v1.json seeds",
+    "matching_order": [
+      "normalized DOI exact match when both candidate and seed DOI exist",
+      "normalized title plus publication year exact match"
+    ],
+    "state": "CALIBRATION_EXCLUDED",
+    "heldout_use": false
+  },
+  "authority_blinding": {
+    "authors_requested": false,
+    "institutions_requested": false,
+    "venue_requested": false,
+    "citation_used_only_for_sampling_order": true
+  },
+  "provider_projection": [
+    "id",
+    "doi",
+    "display_name",
+    "publication_year",
+    "cited_by_count",
+    "type"
+  ],
+  "real_ranking_execution_authorized": false,
+  "real_eligibility_screening_authorized": false
+}

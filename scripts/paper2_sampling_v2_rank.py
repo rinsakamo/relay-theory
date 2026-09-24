@@ -103,12 +103,18 @@ def load_ranking_contract(path: Path) -> dict[str, Any]:
     reserve = value.get("reserve", {})
     if reserve.get("post_freeze_replacement_limit") != 0:
         raise ValueError("post-freeze replacement limit must remain zero")
-    if value.get("real_ranking_execution_authorized") is not True:
-        raise ValueError("real ranking execution must be explicitly authorized")
     if value.get("real_eligibility_screening_authorized") is not False:
         raise ValueError("real eligibility screening must remain blocked")
-    if value.get("status") != "REAL_RANKING_EXECUTION_AUTHORIZED_ELIGIBILITY_NOT_AUTHORIZED":
-        raise ValueError("ranking authorization status drift")
+    status = value.get("status")
+    ranking_authorized = value.get("real_ranking_execution_authorized")
+    if status == "REAL_RANKING_EXECUTION_AUTHORIZED_ELIGIBILITY_NOT_AUTHORIZED":
+        if ranking_authorized is not True:
+            raise ValueError("active direct-union ranking contract must be authorized")
+    elif status == "SUPERSEDED_AFTER_DIRECT_UNION_HTTP_500":
+        if ranking_authorized is not False:
+            raise ValueError("superseded direct-union ranking contract must be revoked")
+    else:
+        raise ValueError("ranking authorization/status drift")
     return value
 
 
