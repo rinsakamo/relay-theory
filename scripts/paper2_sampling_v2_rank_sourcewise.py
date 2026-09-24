@@ -710,9 +710,9 @@ def self_test() -> None:
 
     durable_condition = "year >= (2000) and year <= (2009)"
     durable_rows = [
-        {"provider_work_id":"W901","doi":null,"title":"durable-a","year":2000,"cited_by_count":100,"type":"article"},
-        {"provider_work_id":"W902","doi":null,"title":"durable-b","year":2000,"cited_by_count":90,"type":"article"},
-        {"provider_work_id":"W903","doi":null,"title":"durable-c","year":2000,"cited_by_count":80,"type":"article"},
+        {"provider_work_id":"W901","doi":None,"title":"durable-a","year":2000,"cited_by_count":100,"type":"article"},
+        {"provider_work_id":"W902","doi":None,"title":"durable-b","year":2000,"cited_by_count":90,"type":"article"},
+        {"provider_work_id":"W903","doi":None,"title":"durable-c","year":2000,"cited_by_count":80,"type":"article"},
     ]
     durable_era_query = sampling.append_filter(str(specs[0]["query"]), durable_condition)
     durable_prefix = {
