@@ -21,6 +21,7 @@ import json
 import os
 import socket
 import subprocess
+import sys
 import tempfile
 import threading
 import urllib.error
@@ -28,6 +29,11 @@ import urllib.request
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any
+
+# This apparatus is frequently run from a clean scientific checkout immediately
+# before the physical preflight. Importing repository-local Python modules must
+# not create scripts/__pycache__ and invalidate the checkout's own clean gate.
+sys.dont_write_bytecode = True
 
 import paper2_extraction_llama_cpp_transaction as physical
 from paper2_extraction_two_pass_systemone_v2 import (
