@@ -297,9 +297,21 @@ def merge_source_prefixes(
                         f"LIVE_DUPLICATE_CITATION_DRIFT:{wid}:"
                         f"{previous['cited_by_count']}!={cited}"
                     )
-                for field in ("year", "title", "doi", "type"):
-                    if previous.get(field) != normalized.get(field):
-                        raise RuntimeError(f"LIVE_DUPLICATE_METADATA_DRIFT:{wid}:{field}")
+                if int(previous["year"]) != int(normalized["year"]):
+                    raise RuntimeError(f"LIVE_DUPLICATE_METADATA_DRIFT:{wid}:year")
+                for field in ("title", "doi", "type"):
+                    old_value = previous.get(field)
+                    new_value = normalized.get(field)
+                    if old_value is None and new_value is not None:
+                        previous[field] = new_value
+                    elif (
+                        old_value is not None
+                        and new_value is not None
+                        and old_value != new_value
+                    ):
+                        raise RuntimeError(
+                            f"LIVE_DUPLICATE_METADATA_DRIFT:{wid}:{field}"
+                        )
             else:
                 by_id[wid] = normalized
                 sources_by_id[wid] = set()
