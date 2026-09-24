@@ -77,6 +77,19 @@ def load_contract(path: Path) -> dict[str, Any]:
     ladder = value.get("candidate_ladder", {})
     if ladder.get("multiplier") != 5:
         raise ValueError("sourcewise candidate ladder multiplier must remain 5")
+    metadata = value.get("optional_bibliographic_metadata_policy", {})
+    if metadata.get("display_name_required_for_ranking") is not False:
+        raise ValueError("display_name must remain optional for ranking")
+    if metadata.get("publication_year_required_for_ranking") is not True:
+        raise ValueError("publication_year must remain required for ranking")
+    if metadata.get("cited_by_count_required_for_ranking") is not True:
+        raise ValueError("cited_by_count must remain required for ranking")
+    if metadata.get("work_id_required_for_ranking") is not True:
+        raise ValueError("work_id must remain required for ranking")
+    if metadata.get("duplicate_optional_field_policy") != (
+        "coalesce null/non-null; fail closed on conflicting non-null values"
+    ):
+        raise ValueError("optional bibliographic metadata merge policy drift")
     execution = value.get("execution_protocol", {})
     if execution.get("granularity") != "one frozen source prefix per provider transaction, then local-only era merge":
         raise ValueError("sourcewise execution granularity drift")
@@ -297,9 +310,21 @@ def merge_source_prefixes(
                         f"LIVE_DUPLICATE_CITATION_DRIFT:{wid}:"
                         f"{previous['cited_by_count']}!={cited}"
                     )
-                for field in ("year", "title", "doi", "type"):
-                    if previous.get(field) != normalized.get(field):
-                        raise RuntimeError(f"LIVE_DUPLICATE_METADATA_DRIFT:{wid}:{field}")
+                if int(previous["year"]) != int(normalized["year"]):
+                    raise RuntimeError(f"LIVE_DUPLICATE_METADATA_DRIFT:{wid}:year")
+                for field in ("title", "doi", "type"):
+                    old_value = previous.get(field)
+                    new_value = normalized.get(field)
+                    if old_value is None and new_value is not None:
+                        previous[field] = new_value
+                    elif (
+                        old_value is not None
+                        and new_value is not None
+                        and old_value != new_value
+                    ):
+                        raise RuntimeError(
+                            f"LIVE_DUPLICATE_METADATA_DRIFT:{wid}:{field}"
+                        )
             else:
                 by_id[wid] = normalized
                 sources_by_id[wid] = set()
@@ -796,6 +821,55 @@ def self_test() -> None:
     assert [r["provider_work_id"] for r in tie_prefix] == [
         "W20", "W21", "W22", "W23", "W24"
     ]
+
+    # Missing display_name is valid ranking metadata; title/year calibration
+    # fallback simply becomes unavailable for that row.
+    missing_title = rankv1.normalize_provider_item(
+        {
+            "id": "https://openalex.org/W110556196",
+            "doi": None,
+            "display_name": None,
+            "publication_year": 1975,
+            "cited_by_count": 42,
+            "type": "article",
+        }
+    )
+    assert missing_title["provider_work_id"] == "W110556196"
+    assert missing_title["title"] is None
+    assert rankv1.calibration_match(missing_title, seeds) == (None, None)
+
+    # Optional null/non-null metadata is coalesced deterministically.
+    optional_null = row("W29", 77, "filled title")
+    optional_null["title"] = None
+    optional_null["doi"] = None
+    optional_filled = row("W29", 77, "filled title")
+    optional_filled["doi"] = "10.1000/example"
+    coalesced, _ = merge_source_prefixes(
+        [
+            {"source_id": "A", "rows": [optional_null]},
+            {"source_id": "B", "rows": [optional_filled]},
+        ],
+        L=1,
+        seeds=seeds,
+    )
+    assert coalesced[0]["title"] == "filled title"
+    assert coalesced[0]["doi"] == "10.1000/example"
+
+    # Conflicting non-null optional metadata still fails closed.
+    conflict_a = row("W28", 76, "title-a")
+    conflict_b = row("W28", 76, "title-b")
+    try:
+        merge_source_prefixes(
+            [
+                {"source_id": "A", "rows": [conflict_a]},
+                {"source_id": "B", "rows": [conflict_b]},
+            ],
+            L=1,
+            seeds=seeds,
+        )
+        raise AssertionError("conflicting non-null title must fail")
+    except RuntimeError as exc:
+        assert "LIVE_DUPLICATE_METADATA_DRIFT:W28:title" in str(exc)
 
     # Duplicate Work-ID citation drift must fail closed.
     drift = [
