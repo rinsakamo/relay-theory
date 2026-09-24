@@ -404,6 +404,227 @@ def fetch_ranked_era_sourcewise(
     }
 
 
+def write_json_atomic(path: Path, value: dict[str, Any]) -> None:
+    if path.exists():
+        raise RuntimeError(f"OUTPUT_ALREADY_EXISTS:{path}")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_name(f".{path.name}.tmp")
+    if tmp.exists():
+        raise RuntimeError(f"OUTPUT_TEMP_ALREADY_EXISTS:{tmp}")
+    rendered = json.dumps(value, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
+    try:
+        with tmp.open("x", encoding="utf-8") as handle:
+            handle.write(rendered)
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.replace(tmp, path)
+    finally:
+        if tmp.exists():
+            tmp.unlink()
+
+
+def make_source_artifact(
+    *,
+    era: str,
+    era_condition: str,
+    L: int,
+    spec: dict[str, Any],
+    prefix: dict[str, Any],
+) -> dict[str, Any]:
+    sid = str(spec["source_id"])
+    if prefix.get("source_id") != sid:
+        raise ValueError("source prefix/source spec identity mismatch")
+    rows = prefix.get("rows")
+    if not isinstance(rows, list):
+        raise ValueError("source prefix missing rows")
+    return {
+        "schema_version": SOURCE_PREFIX_SCHEMA,
+        "owner_issue": 167,
+        "provider": "OpenAlex",
+        "ranking_strategy": "sourcewise_exact_union_merge_v2",
+        "era": era,
+        "era_condition": era_condition,
+        "source_id": sid,
+        "source_channel": spec["channel"],
+        "source_index": int(spec["source_index"]),
+        "source_key_digest": sha256_text(str(spec["source_key"])),
+        "base_query_digest": sha256_text(str(spec["query"])),
+        "era_query_digest": prefix["query_digest"],
+        "minimum_candidate_rows": L,
+        "provider_sort": "cited_by_count:desc",
+        "provider_page_size": PAGE_SIZE,
+        "paging": "basic_page",
+        "transport_attempts_per_request": 1,
+        "transaction_started_at": prefix["transaction_started_at"],
+        "transaction_completed_at": prefix["transaction_completed_at"],
+        "pages": int(prefix["pages"]),
+        "provider_meta_count_first": int(prefix["provider_meta_count_first"]),
+        "provider_meta_count_last": int(prefix["provider_meta_count_last"]),
+        "provider_meta_count_signed_drift": int(
+            prefix["provider_meta_count_signed_drift"]
+        ),
+        "source_exhausted": bool(prefix["source_exhausted"]),
+        "source_boundary_cited_by_count": prefix["source_boundary_cited_by_count"],
+        "source_boundary_tie_closed": True,
+        "frozen_row_count": len(rows),
+        "rows": rows,
+    }
+
+
+def validate_source_artifact(
+    artifact: dict[str, Any],
+    *,
+    era: str,
+    era_condition: str,
+    L: int,
+    spec: dict[str, Any],
+) -> None:
+    sid = str(spec["source_id"])
+    if artifact.get("schema_version") != SOURCE_PREFIX_SCHEMA:
+        raise ValueError(f"{sid}: source artifact schema mismatch")
+    if artifact.get("era") != era or artifact.get("era_condition") != era_condition:
+        raise ValueError(f"{sid}: source artifact era mismatch")
+    if artifact.get("source_id") != sid:
+        raise ValueError(f"{sid}: source artifact identity mismatch")
+    if artifact.get("source_channel") != spec["channel"]:
+        raise ValueError(f"{sid}: source channel mismatch")
+    if int(artifact.get("source_index", -1)) != int(spec["source_index"]):
+        raise ValueError(f"{sid}: source index mismatch")
+    if artifact.get("base_query_digest") != sha256_text(str(spec["query"])):
+        raise ValueError(f"{sid}: base query digest mismatch")
+    expected_era_query = sampling.append_filter(str(spec["query"]), era_condition)
+    if artifact.get("era_query_digest") != sha256_text(expected_era_query):
+        raise ValueError(f"{sid}: era query digest mismatch")
+    if int(artifact.get("minimum_candidate_rows", -1)) != L:
+        raise ValueError(f"{sid}: source artifact L mismatch")
+    if artifact.get("provider_sort") != "cited_by_count:desc":
+        raise ValueError(f"{sid}: provider sort mismatch")
+    if artifact.get("paging") != "basic_page":
+        raise ValueError(f"{sid}: paging mode mismatch")
+    if artifact.get("transport_attempts_per_request") != 1:
+        raise ValueError(f"{sid}: transport-attempt invariant mismatch")
+    if artifact.get("source_boundary_tie_closed") is not True:
+        raise ValueError(f"{sid}: source boundary tie not closed")
+
+    rows = artifact.get("rows")
+    if not isinstance(rows, list):
+        raise ValueError(f"{sid}: source artifact rows missing")
+    if int(artifact.get("frozen_row_count", -1)) != len(rows):
+        raise ValueError(f"{sid}: source artifact row-count mismatch")
+    validate_provider_order(rows, source=sid)
+
+    exhausted = artifact.get("source_exhausted") is True
+    boundary = artifact.get("source_boundary_cited_by_count")
+    if not rows:
+        if not exhausted or boundary is not None:
+            raise ValueError(f"{sid}: invalid empty source artifact")
+        return
+
+    if len(rows) < L:
+        if not exhausted:
+            raise ValueError(f"{sid}: short source prefix without exhaustion")
+        if int(boundary) != int(rows[-1]["cited_by_count"]):
+            raise ValueError(f"{sid}: exhausted-source boundary mismatch")
+    else:
+        if boundary is None:
+            raise ValueError(f"{sid}: missing source boundary")
+        if int(rows[-1]["cited_by_count"]) != int(boundary):
+            raise ValueError(f"{sid}: source boundary/tail mismatch")
+        if any(int(row["cited_by_count"]) < int(boundary) for row in rows):
+            raise ValueError(f"{sid}: source artifact contains below-boundary row")
+
+
+def load_complete_source_directory(
+    source_dir: Path,
+    *,
+    era: str,
+    era_condition: str,
+    L: int,
+    sources: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    expected_names = {f"{spec['source_id']}.json" for spec in sources}
+    actual_names = {path.name for path in source_dir.glob("*.json")}
+    if actual_names != expected_names:
+        missing = sorted(expected_names - actual_names)
+        extra = sorted(actual_names - expected_names)
+        raise RuntimeError(
+            f"SOURCE_ARTIFACT_SET_INCOMPLETE:missing={missing}:extra={extra}"
+        )
+
+    artifacts: list[dict[str, Any]] = []
+    for spec in sources:
+        path = source_dir / f"{spec['source_id']}.json"
+        artifact = load_json(path)
+        validate_source_artifact(
+            artifact,
+            era=era,
+            era_condition=era_condition,
+            L=L,
+            spec=spec,
+        )
+        artifacts.append(artifact)
+    return artifacts
+
+
+def merge_source_artifacts(
+    artifacts: list[dict[str, Any]],
+    *,
+    era: str,
+    era_condition: str,
+    L: int,
+    seeds: list[dict[str, Any]],
+) -> dict[str, Any]:
+    if len(artifacts) != 51:
+        raise RuntimeError(f"SOURCE_ARTIFACT_COUNT_MISMATCH:{len(artifacts)}")
+    prefixes = [
+        {"source_id": artifact["source_id"], "rows": artifact["rows"]}
+        for artifact in artifacts
+    ]
+    rows, global_boundary = merge_source_prefixes(prefixes, L=L, seeds=seeds)
+    summaries = [
+        {
+            key: artifact[key]
+            for key in (
+                "source_id",
+                "base_query_digest",
+                "era_query_digest",
+                "transaction_started_at",
+                "transaction_completed_at",
+                "pages",
+                "provider_meta_count_first",
+                "provider_meta_count_last",
+                "provider_meta_count_signed_drift",
+                "source_exhausted",
+                "source_boundary_cited_by_count",
+                "frozen_row_count",
+            )
+        }
+        for artifact in artifacts
+    ]
+    return {
+        "schema_version": RANKED_ERA_SCHEMA,
+        "owner_issue": 167,
+        "provider": "OpenAlex",
+        "ranking_strategy": "sourcewise_exact_union_merge_v2",
+        "execution_protocol": "durable_per_source_then_local_merge",
+        "era": era,
+        "era_condition": era_condition,
+        "provider_sort": "cited_by_count:desc",
+        "local_canonical_sort": "cited_by_count desc, provider_work_id asc",
+        "provider_page_size": PAGE_SIZE,
+        "paging": "basic_page",
+        "transport_attempts_per_request": 1,
+        "frozen_source_count": len(artifacts),
+        "minimum_candidate_rows": L,
+        "global_boundary_cited_by_count": global_boundary,
+        "global_boundary_tie_closed": True,
+        "merge_provider_calls": 0,
+        "frozen_row_count": len(rows),
+        "source_summaries": summaries,
+        "rows": rows,
+    }
+
+
 def synthetic_prefix(
     source: str,
     full_rows: list[dict[str, Any]],
