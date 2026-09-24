@@ -61,6 +61,20 @@
     "cited_by_count",
     "type"
   ],
+  "optional_bibliographic_metadata_policy": {
+    "display_name_required_for_ranking": false,
+    "doi_required_for_ranking": false,
+    "type_required_for_ranking": false,
+    "publication_year_required_for_ranking": true,
+    "cited_by_count_required_for_ranking": true,
+    "work_id_required_for_ranking": true,
+    "top50_match_order": [
+      "normalized DOI exact match when available",
+      "normalized title plus publication year only when title is present"
+    ],
+    "duplicate_optional_field_policy": "coalesce null/non-null; fail closed on conflicting non-null values",
+    "duplicate_required_field_policy": "fail closed on year or cited_by_count mismatch"
+  },
   "execution_protocol": {
     "granularity": "one frozen source prefix per provider transaction, then local-only era merge",
     "source_artifact_persistence": "atomic JSON write after each successful source",
