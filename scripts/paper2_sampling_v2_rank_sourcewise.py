@@ -34,6 +34,7 @@ import paper2_sampling_v2_rank as rankv1  # type: ignore
 
 SCHEMA_VERSION = "paper2-sampling-v2-ranking-sourcewise-v2"
 RANKED_ERA_SCHEMA = "paper2-sampling-v2-ranked-era-sourcewise-v2"
+SOURCE_PREFIX_SCHEMA = "paper2-sampling-v2-source-prefix-v2"
 PAGE_SIZE = 100
 MAX_BASIC_ROWS = 10_000
 
@@ -76,6 +77,17 @@ def load_contract(path: Path) -> dict[str, Any]:
     ladder = value.get("candidate_ladder", {})
     if ladder.get("multiplier") != 5:
         raise ValueError("sourcewise candidate ladder multiplier must remain 5")
+    execution = value.get("execution_protocol", {})
+    if execution.get("granularity") != "one frozen source prefix per provider transaction, then local-only era merge":
+        raise ValueError("sourcewise execution granularity drift")
+    if execution.get("source_artifact_persistence") != "atomic JSON write after each successful source":
+        raise ValueError("sourcewise source-artifact persistence drift")
+    if execution.get("integrated_51_source_provider_run") != "DISABLED":
+        raise ValueError("integrated 51-source provider run must remain disabled")
+    if execution.get("merge_requires_all_51_sources") is not True:
+        raise ValueError("local era merge must require all 51 sources")
+    if execution.get("merge_provider_calls") != 0:
+        raise ValueError("local era merge must perform zero provider calls")
     if value.get("real_eligibility_screening_authorized") is not False:
         raise ValueError("real eligibility screening must remain blocked")
     status = value.get("status")
