@@ -34,6 +34,7 @@ import paper2_sampling_v2_rank as rankv1  # type: ignore
 
 SCHEMA_VERSION = "paper2-sampling-v2-ranking-sourcewise-v2"
 RANKED_ERA_SCHEMA = "paper2-sampling-v2-ranked-era-sourcewise-v2"
+SOURCE_PREFIX_SCHEMA = "paper2-sampling-v2-source-prefix-v2"
 PAGE_SIZE = 100
 MAX_BASIC_ROWS = 10_000
 
@@ -76,6 +77,17 @@ def load_contract(path: Path) -> dict[str, Any]:
     ladder = value.get("candidate_ladder", {})
     if ladder.get("multiplier") != 5:
         raise ValueError("sourcewise candidate ladder multiplier must remain 5")
+    execution = value.get("execution_protocol", {})
+    if execution.get("granularity") != "one frozen source prefix per provider transaction, then local-only era merge":
+        raise ValueError("sourcewise execution granularity drift")
+    if execution.get("source_artifact_persistence") != "atomic JSON write after each successful source":
+        raise ValueError("sourcewise source-artifact persistence drift")
+    if execution.get("integrated_51_source_provider_run") != "DISABLED":
+        raise ValueError("integrated 51-source provider run must remain disabled")
+    if execution.get("merge_requires_all_51_sources") is not True:
+        raise ValueError("local era merge must require all 51 sources")
+    if execution.get("merge_provider_calls") != 0:
+        raise ValueError("local era merge must perform zero provider calls")
     if value.get("real_eligibility_screening_authorized") is not False:
         raise ValueError("real eligibility screening must remain blocked")
     status = value.get("status")
@@ -392,6 +404,227 @@ def fetch_ranked_era_sourcewise(
     }
 
 
+def write_json_atomic(path: Path, value: dict[str, Any]) -> None:
+    if path.exists():
+        raise RuntimeError(f"OUTPUT_ALREADY_EXISTS:{path}")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_name(f".{path.name}.tmp")
+    if tmp.exists():
+        raise RuntimeError(f"OUTPUT_TEMP_ALREADY_EXISTS:{tmp}")
+    rendered = json.dumps(value, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
+    try:
+        with tmp.open("x", encoding="utf-8") as handle:
+            handle.write(rendered)
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.replace(tmp, path)
+    finally:
+        if tmp.exists():
+            tmp.unlink()
+
+
+def make_source_artifact(
+    *,
+    era: str,
+    era_condition: str,
+    L: int,
+    spec: dict[str, Any],
+    prefix: dict[str, Any],
+) -> dict[str, Any]:
+    sid = str(spec["source_id"])
+    if prefix.get("source_id") != sid:
+        raise ValueError("source prefix/source spec identity mismatch")
+    rows = prefix.get("rows")
+    if not isinstance(rows, list):
+        raise ValueError("source prefix missing rows")
+    return {
+        "schema_version": SOURCE_PREFIX_SCHEMA,
+        "owner_issue": 167,
+        "provider": "OpenAlex",
+        "ranking_strategy": "sourcewise_exact_union_merge_v2",
+        "era": era,
+        "era_condition": era_condition,
+        "source_id": sid,
+        "source_channel": spec["channel"],
+        "source_index": int(spec["source_index"]),
+        "source_key_digest": sha256_text(str(spec["source_key"])),
+        "base_query_digest": sha256_text(str(spec["query"])),
+        "era_query_digest": prefix["query_digest"],
+        "minimum_candidate_rows": L,
+        "provider_sort": "cited_by_count:desc",
+        "provider_page_size": PAGE_SIZE,
+        "paging": "basic_page",
+        "transport_attempts_per_request": 1,
+        "transaction_started_at": prefix["transaction_started_at"],
+        "transaction_completed_at": prefix["transaction_completed_at"],
+        "pages": int(prefix["pages"]),
+        "provider_meta_count_first": int(prefix["provider_meta_count_first"]),
+        "provider_meta_count_last": int(prefix["provider_meta_count_last"]),
+        "provider_meta_count_signed_drift": int(
+            prefix["provider_meta_count_signed_drift"]
+        ),
+        "source_exhausted": bool(prefix["source_exhausted"]),
+        "source_boundary_cited_by_count": prefix["source_boundary_cited_by_count"],
+        "source_boundary_tie_closed": True,
+        "frozen_row_count": len(rows),
+        "rows": rows,
+    }
+
+
+def validate_source_artifact(
+    artifact: dict[str, Any],
+    *,
+    era: str,
+    era_condition: str,
+    L: int,
+    spec: dict[str, Any],
+) -> None:
+    sid = str(spec["source_id"])
+    if artifact.get("schema_version") != SOURCE_PREFIX_SCHEMA:
+        raise ValueError(f"{sid}: source artifact schema mismatch")
+    if artifact.get("era") != era or artifact.get("era_condition") != era_condition:
+        raise ValueError(f"{sid}: source artifact era mismatch")
+    if artifact.get("source_id") != sid:
+        raise ValueError(f"{sid}: source artifact identity mismatch")
+    if artifact.get("source_channel") != spec["channel"]:
+        raise ValueError(f"{sid}: source channel mismatch")
+    if int(artifact.get("source_index", -1)) != int(spec["source_index"]):
+        raise ValueError(f"{sid}: source index mismatch")
+    if artifact.get("base_query_digest") != sha256_text(str(spec["query"])):
+        raise ValueError(f"{sid}: base query digest mismatch")
+    expected_era_query = sampling.append_filter(str(spec["query"]), era_condition)
+    if artifact.get("era_query_digest") != sha256_text(expected_era_query):
+        raise ValueError(f"{sid}: era query digest mismatch")
+    if int(artifact.get("minimum_candidate_rows", -1)) != L:
+        raise ValueError(f"{sid}: source artifact L mismatch")
+    if artifact.get("provider_sort") != "cited_by_count:desc":
+        raise ValueError(f"{sid}: provider sort mismatch")
+    if artifact.get("paging") != "basic_page":
+        raise ValueError(f"{sid}: paging mode mismatch")
+    if artifact.get("transport_attempts_per_request") != 1:
+        raise ValueError(f"{sid}: transport-attempt invariant mismatch")
+    if artifact.get("source_boundary_tie_closed") is not True:
+        raise ValueError(f"{sid}: source boundary tie not closed")
+
+    rows = artifact.get("rows")
+    if not isinstance(rows, list):
+        raise ValueError(f"{sid}: source artifact rows missing")
+    if int(artifact.get("frozen_row_count", -1)) != len(rows):
+        raise ValueError(f"{sid}: source artifact row-count mismatch")
+    validate_provider_order(rows, source=sid)
+
+    exhausted = artifact.get("source_exhausted") is True
+    boundary = artifact.get("source_boundary_cited_by_count")
+    if not rows:
+        if not exhausted or boundary is not None:
+            raise ValueError(f"{sid}: invalid empty source artifact")
+        return
+
+    if len(rows) < L:
+        if not exhausted:
+            raise ValueError(f"{sid}: short source prefix without exhaustion")
+        if int(boundary) != int(rows[-1]["cited_by_count"]):
+            raise ValueError(f"{sid}: exhausted-source boundary mismatch")
+    else:
+        if boundary is None:
+            raise ValueError(f"{sid}: missing source boundary")
+        if int(rows[-1]["cited_by_count"]) != int(boundary):
+            raise ValueError(f"{sid}: source boundary/tail mismatch")
+        if any(int(row["cited_by_count"]) < int(boundary) for row in rows):
+            raise ValueError(f"{sid}: source artifact contains below-boundary row")
+
+
+def load_complete_source_directory(
+    source_dir: Path,
+    *,
+    era: str,
+    era_condition: str,
+    L: int,
+    sources: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    expected_names = {f"{spec['source_id']}.json" for spec in sources}
+    actual_names = {path.name for path in source_dir.glob("*.json")}
+    if actual_names != expected_names:
+        missing = sorted(expected_names - actual_names)
+        extra = sorted(actual_names - expected_names)
+        raise RuntimeError(
+            f"SOURCE_ARTIFACT_SET_INCOMPLETE:missing={missing}:extra={extra}"
+        )
+
+    artifacts: list[dict[str, Any]] = []
+    for spec in sources:
+        path = source_dir / f"{spec['source_id']}.json"
+        artifact = load_json(path)
+        validate_source_artifact(
+            artifact,
+            era=era,
+            era_condition=era_condition,
+            L=L,
+            spec=spec,
+        )
+        artifacts.append(artifact)
+    return artifacts
+
+
+def merge_source_artifacts(
+    artifacts: list[dict[str, Any]],
+    *,
+    era: str,
+    era_condition: str,
+    L: int,
+    seeds: list[dict[str, Any]],
+) -> dict[str, Any]:
+    if len(artifacts) != 51:
+        raise RuntimeError(f"SOURCE_ARTIFACT_COUNT_MISMATCH:{len(artifacts)}")
+    prefixes = [
+        {"source_id": artifact["source_id"], "rows": artifact["rows"]}
+        for artifact in artifacts
+    ]
+    rows, global_boundary = merge_source_prefixes(prefixes, L=L, seeds=seeds)
+    summaries = [
+        {
+            key: artifact[key]
+            for key in (
+                "source_id",
+                "base_query_digest",
+                "era_query_digest",
+                "transaction_started_at",
+                "transaction_completed_at",
+                "pages",
+                "provider_meta_count_first",
+                "provider_meta_count_last",
+                "provider_meta_count_signed_drift",
+                "source_exhausted",
+                "source_boundary_cited_by_count",
+                "frozen_row_count",
+            )
+        }
+        for artifact in artifacts
+    ]
+    return {
+        "schema_version": RANKED_ERA_SCHEMA,
+        "owner_issue": 167,
+        "provider": "OpenAlex",
+        "ranking_strategy": "sourcewise_exact_union_merge_v2",
+        "execution_protocol": "durable_per_source_then_local_merge",
+        "era": era,
+        "era_condition": era_condition,
+        "provider_sort": "cited_by_count:desc",
+        "local_canonical_sort": "cited_by_count desc, provider_work_id asc",
+        "provider_page_size": PAGE_SIZE,
+        "paging": "basic_page",
+        "transport_attempts_per_request": 1,
+        "frozen_source_count": len(artifacts),
+        "minimum_candidate_rows": L,
+        "global_boundary_cited_by_count": global_boundary,
+        "global_boundary_tie_closed": True,
+        "merge_provider_calls": 0,
+        "frozen_row_count": len(rows),
+        "source_summaries": summaries,
+        "rows": rows,
+    }
+
+
 def synthetic_prefix(
     source: str,
     full_rows: list[dict[str, Any]],
@@ -446,6 +679,8 @@ def self_test() -> None:
 
     assert contract["real_eligibility_screening_authorized"] is False
     assert contract["candidate_ladder"]["multiplier"] == 5
+    assert contract["execution_protocol"]["integrated_51_source_provider_run"] == "DISABLED"
+    assert contract["execution_protocol"]["merge_provider_calls"] == 0
     quotas = rankv1.quota_map(era_freeze)
     assert sum(5 * quota for quota in quotas.values()) == 5000
 
@@ -472,6 +707,36 @@ def self_test() -> None:
     assert specs[0]["source_id"] == "R1-001"
     assert specs[1]["source_id"] == "R2-001"
     assert specs[-1]["source_id"] == "R3-015"
+
+    durable_condition = "year >= (2000) and year <= (2009)"
+    durable_rows = [
+        {"provider_work_id":"W901","doi":None,"title":"durable-a","year":2000,"cited_by_count":100,"type":"article"},
+        {"provider_work_id":"W902","doi":None,"title":"durable-b","year":2000,"cited_by_count":90,"type":"article"},
+        {"provider_work_id":"W903","doi":None,"title":"durable-c","year":2000,"cited_by_count":80,"type":"article"},
+    ]
+    durable_era_query = sampling.append_filter(str(specs[0]["query"]), durable_condition)
+    durable_prefix = {
+        "source_id": specs[0]["source_id"],
+        "query_digest": sha256_text(durable_era_query),
+        "transaction_started_at":"2000-01-01T00:00:00+00:00",
+        "transaction_completed_at":"2000-01-01T00:00:01+00:00",
+        "pages":1,
+        "provider_meta_count_first":3,
+        "provider_meta_count_last":3,
+        "provider_meta_count_signed_drift":0,
+        "source_exhausted":True,
+        "source_boundary_cited_by_count":80,
+        "rows":durable_rows,
+    }
+    durable_artifact = make_source_artifact(
+        era="2000-2009", era_condition=durable_condition, L=3,
+        spec=specs[0], prefix=durable_prefix,
+    )
+    validate_source_artifact(
+        durable_artifact, era="2000-2009", era_condition=durable_condition,
+        L=3, spec=specs[0],
+    )
+    assert durable_artifact["frozen_row_count"] == 3
 
     def row(wid: str, cited: int, title: str) -> dict[str, Any]:
         return {
@@ -566,28 +831,16 @@ def self_test() -> None:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--contract",
-        type=Path,
-        default=Path("research/paper2/sampling_v2_ranking_sourcewise.json"),
-    )
-    parser.add_argument(
-        "--sampling-protocol",
-        type=Path,
-        default=Path("research/paper2/sampling_v2.json"),
-    )
-    parser.add_argument(
-        "--era-freeze",
-        type=Path,
-        default=Path("research/paper2/sampling_v2_era_freeze.json"),
-    )
-    parser.add_argument(
-        "--retrieval-config",
-        type=Path,
-        default=Path("research/paper2/retrieval_v1.json"),
-    )
+    parser.add_argument("--contract", type=Path, default=Path("research/paper2/sampling_v2_ranking_sourcewise.json"))
+    parser.add_argument("--sampling-protocol", type=Path, default=Path("research/paper2/sampling_v2.json"))
+    parser.add_argument("--era-freeze", type=Path, default=Path("research/paper2/sampling_v2_era_freeze.json"))
+    parser.add_argument("--retrieval-config", type=Path, default=Path("research/paper2/retrieval_v1.json"))
     parser.add_argument("--counts-artifact", type=Path)
     parser.add_argument("--era")
+    parser.add_argument("--source-id")
+    parser.add_argument("--source-dir", type=Path)
+    parser.add_argument("--fetch-source", action="store_true")
+    parser.add_argument("--merge-era-sources", action="store_true")
     parser.add_argument("--fetch-ranked-era", action="store_true")
     parser.add_argument("--self-test", action="store_true")
     parser.add_argument("--output", type=Path)
@@ -601,6 +854,11 @@ def main() -> int:
     contract = load_contract(args.contract)
     if contract.get("real_ranking_execution_authorized") is not True:
         raise RuntimeError("REAL_SOURCEWISE_RANKING_EXECUTION_NOT_AUTHORIZED")
+    if args.fetch_ranked_era:
+        raise RuntimeError(
+            "INTEGRATED_ERA_PROVIDER_RUN_DISABLED:"
+            "use --fetch-source then --merge-era-sources"
+        )
 
     protocol = sampling.load_protocol(args.sampling_protocol)
     era_freeze = sampling.validate_era_freeze(protocol, args.era_freeze)
@@ -609,36 +867,67 @@ def main() -> int:
     quotas = rankv1.quota_map(era_freeze)
     conditions = rankv1.era_conditions(era_freeze)
 
-    if not args.fetch_ranked_era:
-        parser.error("choose --self-test or --fetch-ranked-era")
     if not args.era or args.era not in quotas:
-        raise ValueError("--fetch-ranked-era requires one frozen --era")
+        raise ValueError("a frozen --era is required")
     if args.counts_artifact is None:
-        raise ValueError("--fetch-ranked-era requires --counts-artifact")
+        raise ValueError("--counts-artifact is required")
+    if args.output is None:
+        raise ValueError("--output is required")
+    if args.output.exists():
+        raise RuntimeError(f"OUTPUT_ALREADY_EXISTS:{args.output}")
 
     counts = sampling.validate_counts_artifact(args.counts_artifact)
     sources = build_sources(retrieval_config, counts)
     L = int(contract["candidate_ladder"]["multiplier"]) * quotas[args.era]
-    client = retrieval.OpenAlexClient(
-        api_key=os.environ.get("OPENALEX_API_KEY"),
-        mailto=os.environ.get("OPENALEX_MAILTO"),
-        pause=args.pause,
-    )
-    result = fetch_ranked_era_sourcewise(
-        client,
-        sources=sources,
-        era=args.era,
-        era_condition=conditions[args.era],
-        L=L,
-        seeds=seeds,
-    )
+    era_condition = conditions[args.era]
 
-    rendered = json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
-    if args.output:
-        args.output.write_text(rendered, encoding="utf-8")
-    else:
-        print(rendered, end="")
-    return 0
+    if args.fetch_source:
+        if args.merge_era_sources:
+            raise ValueError("choose exactly one durable operation")
+        if not args.source_id:
+            raise ValueError("--fetch-source requires --source-id")
+        matched = [spec for spec in sources if spec["source_id"] == args.source_id]
+        if len(matched) != 1:
+            raise ValueError(f"unknown frozen source id: {args.source_id}")
+        spec = matched[0]
+        client = retrieval.OpenAlexClient(
+            api_key=os.environ.get("OPENALEX_API_KEY"),
+            mailto=os.environ.get("OPENALEX_MAILTO"),
+            pause=args.pause,
+        )
+        prefix = fetch_source_prefix(
+            client, query=str(spec["query"]), era_condition=era_condition,
+            source=str(spec["source_id"]), L=L,
+        )
+        artifact = make_source_artifact(
+            era=args.era, era_condition=era_condition, L=L,
+            spec=spec, prefix=prefix,
+        )
+        validate_source_artifact(
+            artifact, era=args.era, era_condition=era_condition,
+            L=L, spec=spec,
+        )
+        write_json_atomic(args.output, artifact)
+        return 0
+
+    if args.merge_era_sources:
+        if args.source_id:
+            raise ValueError("--merge-era-sources does not accept --source-id")
+        if args.source_dir is None:
+            raise ValueError("--merge-era-sources requires --source-dir")
+        artifacts = load_complete_source_directory(
+            args.source_dir, era=args.era, era_condition=era_condition,
+            L=L, sources=sources,
+        )
+        result = merge_source_artifacts(
+            artifacts, era=args.era, era_condition=era_condition,
+            L=L, seeds=seeds,
+        )
+        write_json_atomic(args.output, result)
+        return 0
+
+    parser.error("choose --self-test, --fetch-source, or --merge-era-sources")
+    return 2
 
 
 if __name__ == "__main__":
