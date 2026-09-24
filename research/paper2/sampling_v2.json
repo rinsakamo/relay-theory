@@ -55,10 +55,12 @@
     }
   },
   "within_era_ranking": {
+    "ranking_contract": "research/paper2/sampling_v2_ranking.json",
     "primary_sort": "cited_by_count descending",
     "tie_break": "canonical OpenAlex Work ID ascending after complete citation-count tie closure",
     "eligibility": "paper2-eligibility-v1.1 (#133)",
     "quota_fill": "screen from rank 1 downward until k_d INCLUDE works",
+    "candidate_ladder_multiplier": 5,
     "formal_model_required": false,
     "citation_is_epistemic_weight": false
   },
@@ -70,9 +72,11 @@
     "CALIBRATION_EXCLUDED"
   ],
   "reserve": {
-    "source": "continuation of the same frozen within-era citation ranking after primary quota fill",
+    "prefreeze_screening_continuation": "continue the same frozen within-era ranking until first k_d INCLUDE works or frozen ladder exhaustion",
     "ad_hoc_replacement_forbidden": true,
-    "exact_limit": "NOT_YET_FROZEN"
+    "post_freeze_replacement_limit": 0,
+    "post_freeze_replacement_policy": "NONE",
+    "failure_after_freeze": "retain extraction/IR/decomposition failure in explicit denominator/failure taxonomy; do not replace the work"
   },
   "era_policy": {
     "status": "FROZEN_PREOUTCOME",
