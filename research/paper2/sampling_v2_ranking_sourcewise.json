@@ -61,6 +61,15 @@
     "cited_by_count",
     "type"
   ],
+  "execution_protocol": {
+    "granularity": "one frozen source prefix per provider transaction, then local-only era merge",
+    "source_artifact_persistence": "atomic JSON write after each successful source",
+    "failed_source_policy": "stop era immediately; do not retry failed source; preserve earlier successful source artifacts",
+    "later_source_policy_after_failure": "do not execute later sources",
+    "integrated_51_source_provider_run": "DISABLED",
+    "merge_requires_all_51_sources": true,
+    "merge_provider_calls": 0
+  },
   "real_ranking_execution_authorized": true,
   "real_eligibility_screening_authorized": false
 }
