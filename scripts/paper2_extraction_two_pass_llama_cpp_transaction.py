@@ -702,7 +702,8 @@ def preflight(
         fail("cache_prompt must be false")
     path_outside(bundle_dir, repo_root, label="masked source bundle directory")
     path_outside(preprocessing_freeze_path, repo_root, label="preprocessing evidence")
-    path_outside(mask_terms_path, repo_root, label="mask-term evidence")
+    # The mask-term file is committed protocol authority; only raw/masked
+    # source evidence must remain outside the RelayTheory checkout.
     return {
         "relaytheory": {"head": relay_head, "tree": relay_tree},
         "protocol": {
