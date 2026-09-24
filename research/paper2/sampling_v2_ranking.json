@@ -1,0 +1,72 @@
+{
+  "schema_version": "paper2-sampling-v2-ranking-v1",
+  "owner_issue": 167,
+  "status": "APPARATUS_ONLY_REAL_EXECUTION_NOT_AUTHORIZED",
+  "ranking_surface": {
+    "provider": "OpenAlex",
+    "provider_sort": "cited_by_count:desc",
+    "provider_page_size": 100,
+    "transport_attempts_per_request": 1,
+    "cursor_paging": true,
+    "local_canonical_sort": [
+      "cited_by_count descending",
+      "canonical OpenAlex Work ID ascending"
+    ],
+    "complete_boundary_citation_tie": true,
+    "duplicate_work_id_policy": "FAIL_CLOSED",
+    "provider_nonmonotone_citation_policy": "FAIL_CLOSED",
+    "provider_meta_count_equality_across_pages_required": false
+  },
+  "candidate_ladder": {
+    "minimum_rows_per_era": "5 * frozen primary quota k_d",
+    "multiplier": 5,
+    "purpose": "freeze enough pre-outcome citation-ranked candidates to tolerate up to 80% screening attrition before an explicit versioned expansion is required",
+    "expansion_if_exhausted": "versioned pre-decomposition expansion allowed only from eligibility/source-access attrition; never from decomposition outcomes"
+  },
+  "calibration_exclusion": {
+    "registry": "research/paper2/retrieval_v1.json seeds",
+    "matching_order": [
+      "normalized DOI exact match when both candidate and seed DOI exist",
+      "normalized title plus publication year exact match"
+    ],
+    "state": "CALIBRATION_EXCLUDED",
+    "heldout_use": false
+  },
+  "screening": {
+    "eligibility_version": "paper2-eligibility-v1.1",
+    "allowed_states": [
+      "UNSCREENED",
+      "INCLUDE",
+      "EXCLUDE",
+      "ELIGIBILITY_UNCERTAIN",
+      "SOURCE_INACCESSIBLE",
+      "CALIBRATION_EXCLUDED"
+    ],
+    "quota_rule": "first k_d INCLUDE works in frozen ladder order",
+    "all_rows_before_quota_stop_must_be_terminal": true,
+    "rows_after_quota_stop": "UNSCREENED except deterministic CALIBRATION_EXCLUDED rows",
+    "decomposition_inputs_forbidden": true
+  },
+  "reserve": {
+    "prefreeze_screening_continuation": "candidate ladder continues until first k_d INCLUDE works or ladder exhaustion",
+    "post_freeze_replacement_limit": 0,
+    "post_freeze_replacement_policy": "NONE",
+    "reason": "after corpus freeze, extraction/IR/decomposition failures remain explicit failure states and denominators rather than triggering work replacement"
+  },
+  "provider_projection": [
+    "id",
+    "doi",
+    "display_name",
+    "publication_year",
+    "cited_by_count",
+    "type"
+  ],
+  "authority_blinding": {
+    "authors_requested": false,
+    "institutions_requested": false,
+    "venue_requested": false,
+    "citation_used_only_for_sampling_order": true
+  },
+  "real_ranking_execution_authorized": false,
+  "real_eligibility_screening_authorized": false
+}
