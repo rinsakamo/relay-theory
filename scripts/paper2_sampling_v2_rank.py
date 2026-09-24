@@ -167,7 +167,12 @@ def calibration_match(
     seeds: list[dict[str, Any]],
 ) -> tuple[int | None, str | None]:
     doi = normalize_doi(candidate.get("doi"))
-    title = retrieval.normalize_title(str(candidate.get("title") or ""))
+    raw_title = candidate.get("title")
+    title = (
+        retrieval.normalize_title(raw_title)
+        if isinstance(raw_title, str) and raw_title.strip()
+        else None
+    )
     year = int(candidate["year"])
 
     doi_hits = [
@@ -181,7 +186,9 @@ def calibration_match(
 
     title_hits = [
         seed for seed in seeds
-        if seed["year"] == year and seed["title_norm"] == title
+        if title is not None
+        and seed["year"] == year
+        and seed["title_norm"] == title
     ]
     if len(title_hits) > 1:
         raise ValueError("candidate title/year matches multiple Top50 seeds")
@@ -192,9 +199,13 @@ def calibration_match(
 
 def normalize_provider_item(item: dict[str, Any]) -> dict[str, Any]:
     work_id = canonical_work_id(item.get("id"))
-    title = item.get("display_name")
-    if not isinstance(title, str) or not title.strip():
-        raise ValueError(f"{work_id}: missing display_name")
+    raw_title = item.get("display_name")
+    if raw_title is None:
+        title = None
+    elif isinstance(raw_title, str) and raw_title.strip():
+        title = raw_title
+    else:
+        raise ValueError(f"{work_id}: invalid display_name")
     year = item.get("publication_year")
     if not isinstance(year, int):
         raise ValueError(f"{work_id}: missing integer publication_year")
