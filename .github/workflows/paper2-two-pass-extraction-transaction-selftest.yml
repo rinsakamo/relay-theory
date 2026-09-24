@@ -1,0 +1,89 @@
+name: paper2-two-pass-extraction-transaction-selftest
+
+on:
+  pull_request:
+    paths:
+      - "scripts/paper2_extraction_two_pass_llama_cpp_transaction.py"
+      - "scripts/paper2_extraction_two_pass_prepare.py"
+      - "scripts/paper2_extraction_two_pass_systemone_v2.py"
+      - "scripts/paper2_extraction_bundle_prepare.py"
+      - "scripts/paper2_extraction_procedure_validate.py"
+      - "scripts/paper2_claim_ir_validate.py"
+      - "scripts/paper2_claim_ir_compare.py"
+      - "research/paper2/extraction_two_pass_real_protocol_v1.json"
+      - "research/paper2/extraction_two_pass_systemone_v2.json"
+      - "research/paper2/extraction_systemone_decision_v2.schema.json"
+      - "research/paper2/extraction_label_mask_v1.json"
+      - "research/paper2/extraction_calibration_mask_terms_v1.json"
+      - "research/paper2/extraction_normal_prompt_v1.md"
+      - "research/paper2/extraction_run_package_v1.json"
+      - "research/paper2/extraction_provenance_v1.json"
+      - ".github/workflows/paper2-two-pass-extraction-transaction-selftest.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "scripts/paper2_extraction_two_pass_llama_cpp_transaction.py"
+      - "scripts/paper2_extraction_two_pass_prepare.py"
+      - "scripts/paper2_extraction_two_pass_systemone_v2.py"
+      - "scripts/paper2_extraction_bundle_prepare.py"
+      - "scripts/paper2_extraction_procedure_validate.py"
+      - "scripts/paper2_claim_ir_validate.py"
+      - "scripts/paper2_claim_ir_compare.py"
+      - "research/paper2/extraction_two_pass_real_protocol_v1.json"
+      - "research/paper2/extraction_two_pass_systemone_v2.json"
+      - "research/paper2/extraction_systemone_decision_v2.schema.json"
+      - "research/paper2/extraction_label_mask_v1.json"
+      - "research/paper2/extraction_calibration_mask_terms_v1.json"
+      - "research/paper2/extraction_normal_prompt_v1.md"
+      - "research/paper2/extraction_run_package_v1.json"
+      - "research/paper2/extraction_provenance_v1.json"
+      - ".github/workflows/paper2-two-pass-extraction-transaction-selftest.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact transaction head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Record exact transaction head
+        run: |
+          git rev-parse HEAD
+          git rev-parse HEAD^{tree}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile transaction and frozen dependencies
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: |
+          python -m py_compile scripts/paper2_extraction_two_pass_llama_cpp_transaction.py
+          python -m py_compile scripts/paper2_extraction_two_pass_prepare.py
+          python -m py_compile scripts/paper2_extraction_two_pass_systemone_v2.py
+          python -m py_compile scripts/paper2_extraction_procedure_validate.py
+          python -m py_compile scripts/paper2_claim_ir_validate.py
+          python -m py_compile scripts/paper2_claim_ir_compare.py
+      - name: Revalidate frozen v2 SystemOne contract
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: python scripts/paper2_extraction_two_pass_systemone_v2.py --self-test
+      - name: Revalidate frozen preprocessing contract
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: python scripts/paper2_extraction_two_pass_prepare.py --self-test
+      - name: Run transaction-owned destructive synthetic qualification
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: python scripts/paper2_extraction_two_pass_llama_cpp_transaction.py --self-test
+      - name: Assert synthetic qualification leaves checkout authority-clean
+        run: |
+          status="$(git status --porcelain --untracked-files=all)"
+          if [ -n "$status" ]; then
+            printf '%s\n' "$status"
+            exit 1
+          fi
