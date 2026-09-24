@@ -1,7 +1,7 @@
 {
   "schema_version": "paper2-two-pass-real-protocol-v1",
   "owner_issue": 162,
-  "status": "PREEXECUTION_FREEZE_IN_PROGRESS",
+  "status": "REAL_TWO_PASS_EXTRACTION_ENVELOPE_FROZEN",
   "sample_authority": {
     "calibration_mode": "same_surface_five_item_calibration",
     "calibration_source_authority": "research/paper2/extraction_run_package_v1.json",
@@ -19,6 +19,7 @@
   },
   "preprocessing": {
     "mask_policy": "research/paper2/extraction_label_mask_v1.json",
+    "calibration_term_authority": "research/paper2/extraction_calibration_mask_terms_v1.json",
     "raw_abstracts_committed": false,
     "deterministic_segmentation_before_masking": true,
     "focus_selection_after_normal_pass": true,
@@ -45,10 +46,24 @@
     "focus_stage": "finite_selection_of_up_to_three_masked_evidence_units",
     "structural_stage": "paper2-systemone-decision-v2",
     "probabilities_and_confidence": "audit_metadata_only",
-    "exact_runtime_identity": "NOT_YET_LOCALLY_ATTESTED"
+    "exact_runtime_identity": {
+      "repository": "https://github.com/kishida/llama.cpp",
+      "revision": "07183d010f5cf5d021a2550775f42fb4b4270e06",
+      "tree": "4a654218342c2e179c0cd143e359632bff02bc22",
+      "version": "0.4.1-dev",
+      "build_number": 11066,
+      "binary_sha256": "d3bb0875329ff7c384c44b94b18e56dbb86c4d752af03a835b23a67c44354e4a",
+      "cuda": "12.8.93",
+      "compiler": "GNU 13.3.0",
+      "model_artifact_sha256": "c088a44859de42a1966851b552ba628c0ff4419b87c4622539d69430f40024ed",
+      "systemone_route": "/v1/systemone"
+    }
   },
   "replicate_isolation": {
-    "replicates": ["A", "B"],
+    "replicates": [
+      "A",
+      "B"
+    ],
     "policy": "separate_owned_llama_cpp_process_lifetime_per_replicate",
     "same_model_artifact_required": true,
     "same_normal_prompt_required": true,
@@ -64,13 +79,61 @@
     "decomposition_outcome_visible": false,
     "structural_validity_is_not_semantic_entailment": true
   },
-  "freeze_requirements_remaining": {
-    "calibration_raw_and_masked_digests": "NOT_YET_FROZEN",
-    "calibration_alias_lists": "NOT_YET_FROZEN",
-    "real_source_segmentation_outputs": "NOT_YET_FROZEN",
-    "systemone_runtime_repository_revision_build": "NOT_YET_LOCALLY_ATTESTED",
-    "systemone_runtime_model_binding": "NOT_YET_LOCALLY_ATTESTED",
-    "owned_process_launch_contract": "NOT_YET_LOCALLY_ATTESTED"
+  "freeze_requirements_remaining": {},
+  "freeze_evidence": {
+    "calibration_preprocessing": {
+      "classification": "CALIBRATION_PREPROCESSING_LOCALLY_FROZEN",
+      "canonical_primary_source_digests_matched": "5/5",
+      "mask_term_authority_sha256": "1b0963e07d6948d9d106a2200f48da680cb11a3705ecf8dd8bd8aa481df9badd",
+      "preprocessing_freeze_sha256": "a20c79555bc3b2bafb25ee805a2fb1f6b9ea1b65c16a493dd4792130c1da9ea2",
+      "prepared_bundles": [
+        {
+          "bundle_id": "B0001",
+          "segment_count": 4,
+          "prepared_bundle_sha256": "7ae16a522905be942255dd4114e570bcb18917f21439484ccdd25db3c6949b90"
+        },
+        {
+          "bundle_id": "B0002",
+          "segment_count": 5,
+          "prepared_bundle_sha256": "94dfa9b9a512d80416a7a23e7c6d483af94e897d9947e5dc0d1ddf6e6e91d3d2"
+        },
+        {
+          "bundle_id": "B0003",
+          "segment_count": 9,
+          "prepared_bundle_sha256": "f88106ccb29976d0fccecc3aa21642bf3d4eef0edce8db2492f470aab0361005"
+        },
+        {
+          "bundle_id": "B0004",
+          "segment_count": 8,
+          "prepared_bundle_sha256": "422dd03791f71c32170d8bfe5e8c96d26e81e7b069a4bd5f9b9ea4e7897d44cf"
+        },
+        {
+          "bundle_id": "B0005",
+          "segment_count": 10,
+          "prepared_bundle_sha256": "068eff2109128dcff80c31bade79e67b0be560fb2b6782b3b3af5a2e8f6d4a3b"
+        }
+      ],
+      "raw_and_masked_source_text_committed": false
+    },
+    "systemone_runtime_preflight": {
+      "classification": "SYSTEMONE_RUNTIME_SYNTHETICALLY_QUALIFIED",
+      "relaytheory_head": "a7d679c0e3b6bc41ee227181c6c685aeae06ab64",
+      "relaytheory_tree": "cfc48b3242808289d9883457f61bc854159e8872",
+      "runtime_preflight_summary_sha256": "b353298651225a22dcfe81e584c942b72cd06fbd20460dfbf79a903e48a54cbb",
+      "server_launch_count": 2,
+      "normal_probe_count": 2,
+      "systemone_probe_count": 2,
+      "systemone_questions_per_replicate": 54,
+      "owned_processes_terminated": true,
+      "owned_process_exit_code": 0,
+      "retry_count": 0,
+      "replay_count": 0,
+      "fallback_count": 0,
+      "real_paper_model_calls": 0,
+      "scientific_transaction_consumed": false,
+      "basis_decomposition_executed": false,
+      "primary_heldout_selection_executed": false
+    }
   },
   "real_pilot_authorized": false,
   "basis_decomposition_authorized": false
