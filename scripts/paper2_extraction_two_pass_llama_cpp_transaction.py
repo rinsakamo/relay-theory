@@ -385,17 +385,18 @@ def validate_package_and_provenance(
     package: Any,
     provenance: Any,
     *,
-    prompt_sha256: str,
     freeze_entries: list[dict[str, Any]],
-    synthetic: bool,
 ) -> tuple[dict[str, dict[str, Any]], dict[str, dict[str, Any]]]:
     if not isinstance(package, dict) or package.get(
         "schema_version"
     ) != "paper2-extraction-run-package-v1":
         fail("frozen run package schema mismatch")
     authority = package.get("authority")
-    if not isinstance(authority, dict) or authority.get("prompt_sha256_utf8") != prompt_sha256:
-        fail("run-package prompt identity mismatch")
+    if not isinstance(authority, dict):
+        fail("run-package authority is missing")
+    # The package is the older #147 source/provenance authority.  Its
+    # historical prompt digest predates the #162 frozen Normal prompt; the
+    # live prompt identity is validated against the #162 protocol above.
     sources = package.get("sources")
     if not isinstance(sources, list) or len(sources) != 5:
         fail("run package must contain five sources")
@@ -667,9 +668,7 @@ def preflight(
     package_by_bundle, provenance_by_bundle = validate_package_and_provenance(
         load_json(package_path),
         load_json(provenance_path),
-        prompt_sha256=prompt_sha,
         freeze_entries=entries,
-        synthetic=synthetic,
     )
     runtime_block = protocol["systemone"]["exact_runtime_identity"]
     runtime = verify_runtime(
@@ -703,7 +702,8 @@ def preflight(
         fail("cache_prompt must be false")
     path_outside(bundle_dir, repo_root, label="masked source bundle directory")
     path_outside(preprocessing_freeze_path, repo_root, label="preprocessing evidence")
-    path_outside(mask_terms_path, repo_root, label="mask-term evidence")
+    # The mask-term file is committed protocol authority; only raw/masked
+    # source evidence must remain outside the RelayTheory checkout.
     return {
         "relaytheory": {"head": relay_head, "tree": relay_tree},
         "protocol": {
@@ -1994,6 +1994,11 @@ def self_test() -> None:
     with tempfile.TemporaryDirectory(prefix="relaytheory-184-selftest-") as temp:
         root = Path(temp)
         fixture = make_synthetic_fixture(root / "success")
+        # Reproduce the historical #147 package authority: the source package
+        # predates the current #162 Normal prompt and must not override it.
+        package = load_json(fixture["package"])
+        package["authority"]["prompt_sha256_utf8"] = "f" * 64
+        fixture["package"].write_bytes(canonical_json_bytes(package))
         rc, summary = run_fixture(fixture)
         expect(rc == 0, f"synthetic success rc: {summary}")
         expect(summary["classification"] == "SYNTHETIC_TRANSACTION_COMPLETED", "synthetic classification")
