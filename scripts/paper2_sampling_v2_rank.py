@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import sys
 from pathlib import Path
@@ -724,8 +725,8 @@ def main() -> int:
         conditions = era_conditions(era_freeze)
         multiplier = int(contract["candidate_ladder"]["multiplier"])
         client = retrieval.OpenAlexClient(
-            api_key=None,
-            mailto=None,
+            api_key=os.environ.get("OPENALEX_API_KEY"),
+            mailto=os.environ.get("OPENALEX_MAILTO"),
             pause=args.pause,
         )
         result = fetch_ranked_era(
