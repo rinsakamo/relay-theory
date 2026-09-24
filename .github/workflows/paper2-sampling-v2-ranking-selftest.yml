@@ -1,0 +1,44 @@
+name: paper2-sampling-v2-ranking-selftest
+
+on:
+  pull_request:
+    paths:
+      - "scripts/paper2_sampling_v2_rank.py"
+      - "scripts/paper2_sampling_v2.py"
+      - "scripts/paper2_openalex_enumerate.py"
+      - "research/paper2/sampling_v2_ranking.json"
+      - "research/paper2/sampling_v2.json"
+      - "research/paper2/sampling_v2_era_freeze.json"
+      - "research/paper2/retrieval_v1.json"
+      - ".github/workflows/paper2-sampling-v2-ranking-selftest.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "scripts/paper2_sampling_v2_rank.py"
+      - "scripts/paper2_sampling_v2.py"
+      - "scripts/paper2_openalex_enumerate.py"
+      - "research/paper2/sampling_v2_ranking.json"
+      - "research/paper2/sampling_v2.json"
+      - "research/paper2/sampling_v2_era_freeze.json"
+      - "research/paper2/retrieval_v1.json"
+      - ".github/workflows/paper2-sampling-v2-ranking-selftest.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile ranking apparatus
+        run: |
+          python -m py_compile scripts/paper2_openalex_enumerate.py
+          python -m py_compile scripts/paper2_sampling_v2.py
+          python -m py_compile scripts/paper2_sampling_v2_rank.py
+      - name: Run deterministic ranking self-test
+        run: python scripts/paper2_sampling_v2_rank.py --self-test
