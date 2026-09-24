@@ -78,6 +78,16 @@ def load_contract(path: Path) -> dict[str, Any]:
         raise ValueError("sourcewise candidate ladder multiplier must remain 5")
     if value.get("real_eligibility_screening_authorized") is not False:
         raise ValueError("real eligibility screening must remain blocked")
+    status = value.get("status")
+    authorized = value.get("real_ranking_execution_authorized")
+    if status == "APPARATUS_ONLY_REAL_EXECUTION_NOT_AUTHORIZED":
+        if authorized is not False:
+            raise ValueError("synthetic-only sourcewise contract must not authorize real ranking")
+    elif status == "REAL_SOURCEWISE_RANKING_EXECUTION_AUTHORIZED_ELIGIBILITY_NOT_AUTHORIZED":
+        if authorized is not True:
+            raise ValueError("sourcewise ranking authorization/status mismatch")
+    else:
+        raise ValueError("unknown sourcewise ranking authorization state")
     return value
 
 
