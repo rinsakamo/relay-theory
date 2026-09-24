@@ -103,10 +103,12 @@ def load_ranking_contract(path: Path) -> dict[str, Any]:
     reserve = value.get("reserve", {})
     if reserve.get("post_freeze_replacement_limit") != 0:
         raise ValueError("post-freeze replacement limit must remain zero")
-    if value.get("real_ranking_execution_authorized") is not False:
-        raise ValueError("real ranking execution must remain blocked in apparatus contract")
+    if value.get("real_ranking_execution_authorized") is not True:
+        raise ValueError("real ranking execution must be explicitly authorized")
     if value.get("real_eligibility_screening_authorized") is not False:
-        raise ValueError("real eligibility screening must remain blocked in apparatus contract")
+        raise ValueError("real eligibility screening must remain blocked")
+    if value.get("status") != "REAL_RANKING_EXECUTION_AUTHORIZED_ELIGIBILITY_NOT_AUTHORIZED":
+        raise ValueError("ranking authorization status drift")
     return value
 
 
