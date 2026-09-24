@@ -1,7 +1,7 @@
 {
   "schema_version": "paper2-sampling-v2-ranking-v1",
   "owner_issue": 167,
-  "status": "REAL_RANKING_EXECUTION_AUTHORIZED_ELIGIBILITY_NOT_AUTHORIZED",
+  "status": "SUPERSEDED_AFTER_DIRECT_UNION_HTTP_500",
   "ranking_surface": {
     "provider": "OpenAlex",
     "provider_sort": "cited_by_count:desc",
@@ -67,6 +67,14 @@
     "venue_requested": false,
     "citation_used_only_for_sampling_order": true
   },
-  "real_ranking_execution_authorized": true,
-  "real_eligibility_screening_authorized": false
+  "real_ranking_execution_authorized": false,
+  "real_eligibility_screening_authorized": false,
+  "superseded_by": "research/paper2/sampling_v2_ranking_sourcewise.json",
+  "terminal_failure": {
+    "era": "PRE_1950",
+    "completed_eras": 0,
+    "classification": "PAPER2_RANKED_CANDIDATE_ACQUISITION_INCOMPLETE",
+    "blocker": "OpenAlex HTTP 500 on direct frozen-union citation-ranked request",
+    "retry_performed": false
+  }
 }
