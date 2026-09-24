@@ -45,3 +45,10 @@ jobs:
         run: python scripts/paper2_extraction_two_pass_systemone_v2.py --self-test
       - name: Run owned two-process SystemOne runtime preflight self-test
         run: python scripts/paper2_systemone_runtime_preflight.py --self-test
+      - name: Assert preflight tooling leaves checkout authority-clean
+        run: |
+          status="$(git status --porcelain --untracked-files=all)"
+          if [ -n "$status" ]; then
+            printf '%s\n' "$status"
+            exit 1
+          fi
