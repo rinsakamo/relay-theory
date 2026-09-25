@@ -10,7 +10,13 @@ deduplicates those prefixes, then computes the global citation-ranked ladder.
 
 Under a static provider state this is exact: a work in the global top L of a
 union must appear in the top L of at least one source set that contains it.
-OpenAlex is live, so duplicate Work IDs observed with different citation counts\nare reconciled only by a frozen first-observation rule: the earliest durable\nsource transaction supplies the ranking score, while every observation is\npreserved for audit. An era with observed citation drift is explicitly a\ntransaction-local frozen capture, not a single-provider-snapshot exact union.
+OpenAlex is live, so duplicate Work IDs observed with different citation counts
+are reconciled only by a frozen first-observation rule: the earliest durable
+source transaction supplies the ranking score, while every observation is
+preserved for audit. Optional OpenAlex type drift is also preserved, but type is
+not allowed to affect ranking or calibration identity. An era with observed
+live drift is explicitly a transaction-local frozen capture rather than being
+silently presented as one provider snapshot.
 
 No eligibility/source-text adjudication, ClaimIR, decomposition, or null-control
 execution is performed here.
@@ -34,7 +40,7 @@ import paper2_openalex_manifest as manifest  # type: ignore
 import paper2_sampling_v2 as sampling  # type: ignore
 import paper2_sampling_v2_rank as rankv1  # type: ignore
 
-SCHEMA_VERSION = "paper2-sampling-v2-ranking-sourcewise-v3"
+SCHEMA_VERSION = "paper2-sampling-v2-ranking-sourcewise-v4"
 RANKED_ERA_SCHEMA = "paper2-sampling-v2-ranked-era-sourcewise-v3"
 SOURCE_PREFIX_SCHEMA = "paper2-sampling-v2-source-prefix-v2"
 PAGE_SIZE = 100
@@ -112,9 +118,21 @@ def load_contract(path: Path) -> dict[str, Any]:
     ):
         raise ValueError("optional bibliographic string normalization drift")
     if metadata.get("duplicate_optional_field_policy") != (
-        "coalesce null/non-null; fail closed on conflicting non-null values"
+        "title and doi: coalesce null/non-null and fail closed on conflicting "
+        "non-null values; type: preserve all observations and freeze earliest "
+        "non-null source-transaction observation"
     ):
         raise ValueError("optional bibliographic metadata merge policy drift")
+    if metadata.get("type_drift_role") != (
+        "descriptive metadata only; type is not a ranking key and is not used "
+        "for Top50 calibration identity"
+    ):
+        raise ValueError("optional type drift role authority drift")
+    if metadata.get("type_drift_resolution") != (
+        "sort observations by transaction_started_at then source_id; select "
+        "earliest non-null type; preserve all observations and distinct non-null values"
+    ):
+        raise ValueError("optional type drift resolution authority drift")
     if metadata.get("duplicate_required_field_policy") != (
         "year mismatch fails closed; cited_by_count drift is preserved and resolved "
         "only by the frozen earliest-observation policy"
@@ -137,6 +155,12 @@ def load_contract(path: Path) -> dict[str, Any]:
         "downgrade snapshot exactness classification"
     ):
         raise ValueError("live duplicate citation drift execution policy drift")
+    if execution.get("live_duplicate_optional_type_drift_policy") != (
+        "provider-free merge only; type conflicts do not affect ranking or "
+        "calibration identity, are preserved in an observation ledger, and set "
+        "single_provider_snapshot_claimed=false"
+    ):
+        raise ValueError("live duplicate optional type drift policy drift")
     if execution.get("openalex_api_key_required") is not True:
         raise ValueError("real sourcewise ranking must require an OpenAlex API key")
     if execution.get("mailto_rate_limit_control") is not False:
@@ -470,7 +494,8 @@ def merge_source_prefixes(
         raise ValueError("L must be positive")
     by_id: dict[str, dict[str, Any]] = {}
     sources_by_id: dict[str, set[str]] = {}
-    observations_by_id: dict[str, list[dict[str, Any]]] = {}
+    citation_observations_by_id: dict[str, list[dict[str, Any]]] = {}
+    type_observations_by_id: dict[str, list[dict[str, Any]]] = {}
 
     for prefix in prefixes:
         sid = str(prefix["source_id"])
@@ -484,18 +509,27 @@ def merge_source_prefixes(
             normalized = dict(row)
             wid = rankv1.canonical_work_id(normalized.get("provider_work_id"))
             cited = int(normalized["cited_by_count"])
-            observations_by_id.setdefault(wid, []).append(
+            citation_observations_by_id.setdefault(wid, []).append(
                 {
                     "source_id": sid,
                     "transaction_started_at": started_at,
                     "cited_by_count": cited,
                 }
             )
+            type_observations_by_id.setdefault(wid, []).append(
+                {
+                    "source_id": sid,
+                    "transaction_started_at": started_at,
+                    "type": normalized.get("type"),
+                }
+            )
             if wid in by_id:
                 previous = by_id[wid]
                 if int(previous["year"]) != int(normalized["year"]):
                     raise RuntimeError(f"LIVE_DUPLICATE_METADATA_DRIFT:{wid}:year")
-                for field in ("title", "doi", "type"):
+                # title and DOI can affect calibration identity, so conflicting
+                # non-null observations remain fail-closed.
+                for field in ("title", "doi"):
                     old_value = previous.get(field)
                     new_value = normalized.get(field)
                     if old_value is None and new_value is not None:
@@ -514,24 +548,61 @@ def merge_source_prefixes(
             sources_by_id[wid].add(sid)
 
     for wid, row in by_id.items():
-        observations = sorted(
-            observations_by_id[wid],
+        citation_observations = sorted(
+            citation_observations_by_id[wid],
             key=lambda item: (
                 str(item["transaction_started_at"]),
                 str(item["source_id"]),
             ),
         )
-        frozen = observations[0]
-        counts = [int(item["cited_by_count"]) for item in observations]
-        row["cited_by_count"] = int(frozen["cited_by_count"])
+        frozen_citation = citation_observations[0]
+        counts = [int(item["cited_by_count"]) for item in citation_observations]
+        row["cited_by_count"] = int(frozen_citation["cited_by_count"])
         row["citation_resolution_policy"] = "earliest_source_transaction_observation"
-        row["citation_selected_source_id"] = frozen["source_id"]
-        row["citation_selected_transaction_started_at"] = frozen["transaction_started_at"]
-        row["citation_observation_count"] = len(observations)
+        row["citation_selected_source_id"] = frozen_citation["source_id"]
+        row["citation_selected_transaction_started_at"] = frozen_citation["transaction_started_at"]
+        row["citation_observation_count"] = len(citation_observations)
         row["citation_count_min_observed"] = min(counts)
         row["citation_count_max_observed"] = max(counts)
         row["citation_count_drift"] = max(counts) - min(counts)
-        row["citation_observations"] = observations
+        row["citation_observations"] = citation_observations
+
+        type_observations = sorted(
+            type_observations_by_id[wid],
+            key=lambda item: (
+                str(item["transaction_started_at"]),
+                str(item["source_id"]),
+            ),
+        )
+        non_null_type_observations = [
+            item for item in type_observations if item.get("type") is not None
+        ]
+        selected_type_observation = (
+            non_null_type_observations[0] if non_null_type_observations else None
+        )
+        distinct_types = sorted(
+            {str(item["type"]) for item in non_null_type_observations}
+        )
+        row["type"] = (
+            selected_type_observation["type"]
+            if selected_type_observation is not None
+            else None
+        )
+        row["type_resolution_policy"] = "earliest_non_null_source_transaction_observation"
+        row["type_selected_source_id"] = (
+            selected_type_observation["source_id"]
+            if selected_type_observation is not None
+            else None
+        )
+        row["type_selected_transaction_started_at"] = (
+            selected_type_observation["transaction_started_at"]
+            if selected_type_observation is not None
+            else None
+        )
+        row["type_observation_count"] = len(type_observations)
+        row["type_distinct_non_null_values"] = distinct_types
+        row["type_metadata_drift"] = len(distinct_types) > 1
+        row["type_observations"] = type_observations
 
     merged = list(by_id.values())
     merged.sort(key=lambda row: (-int(row["cited_by_count"]), row["provider_work_id"]))
@@ -566,21 +637,44 @@ def merge_source_prefixes(
     return out, boundary
 
 
-def citation_drift_summary(rows: list[dict[str, Any]]) -> dict[str, Any]:
-    drifted = [row for row in rows if int(row.get("citation_count_drift", 0)) > 0]
+def live_drift_summary(rows: list[dict[str, Any]]) -> dict[str, Any]:
+    citation_drifted = [
+        row for row in rows if int(row.get("citation_count_drift", 0)) > 0
+    ]
+    type_drifted = [
+        row for row in rows if row.get("type_metadata_drift") is True
+    ]
     return {
         "citation_resolution_policy": "earliest_source_transaction_observation",
-        "duplicate_citation_drift_work_count": len(drifted),
+        "duplicate_citation_drift_work_count": len(citation_drifted),
         "maximum_duplicate_citation_drift": max(
-            (int(row["citation_count_drift"]) for row in drifted),
+            (int(row["citation_count_drift"]) for row in citation_drifted),
+            default=0,
+        ),
+        "optional_type_resolution_policy": (
+            "earliest_non_null_source_transaction_observation"
+        ),
+        "duplicate_optional_type_drift_work_count": len(type_drifted),
+        "maximum_distinct_non_null_type_values": max(
+            (
+                len(row.get("type_distinct_non_null_values", []))
+                for row in type_drifted
+            ),
             default=0,
         ),
         "capture_exactness": (
             "STATIC_PROVIDER_EXACT_NO_OBSERVED_CITATION_DRIFT"
-            if not drifted
+            if not citation_drifted
             else "TRANSACTION_LOCAL_FROZEN_CAPTURE_OBSERVED_CITATION_DRIFT"
         ),
-        "single_provider_snapshot_claimed": False if drifted else True,
+        "optional_metadata_capture": (
+            "NO_CONFLICTING_NON_NULL_TYPE_OBSERVATIONS"
+            if not type_drifted
+            else "TRANSACTION_LOCAL_FROZEN_OPTIONAL_TYPE_OBSERVATIONS"
+        ),
+        "single_provider_snapshot_claimed": not (
+            citation_drifted or type_drifted
+        ),
     }
 
 def fetch_ranked_era_sourcewise(
@@ -606,7 +700,7 @@ def fetch_ranked_era_sourcewise(
         )
 
     rows, global_boundary = merge_source_prefixes(prefixes, L=L, seeds=seeds)
-    drift_summary = citation_drift_summary(rows)
+    drift_summary = live_drift_summary(rows)
     summaries = [
         {
             key: prefix[key]
@@ -832,7 +926,7 @@ def merge_source_artifacts(
         for artifact in artifacts
     ]
     rows, global_boundary = merge_source_prefixes(prefixes, L=L, seeds=seeds)
-    drift_summary = citation_drift_summary(rows)
+    drift_summary = live_drift_summary(rows)
     summaries = [
         {
             key: artifact[key]
@@ -1130,7 +1224,8 @@ def self_test() -> None:
     assert coalesced[0]["title"] == "filled title"
     assert coalesced[0]["doi"] == "10.1000/example"
 
-    # Conflicting non-null optional metadata still fails closed.
+    # Conflicting non-null title/DOI metadata still fails closed because it can
+    # affect calibration identity.
     conflict_a = row("W28", 76, "title-a")
     conflict_b = row("W28", 76, "title-b")
     try:
@@ -1146,6 +1241,53 @@ def self_test() -> None:
     except RuntimeError as exc:
         assert "LIVE_DUPLICATE_METADATA_DRIFT:W28:title" in str(exc)
 
+    # Optional type drift is descriptive only. Preserve every observation,
+    # freeze the earliest non-null type, and do not let it affect ranking or
+    # calibration identity.
+    type_a = row("W27", 75, "same-title")
+    type_a["type"] = "article"
+    type_b = row("W27", 75, "same-title")
+    type_b["type"] = "book-chapter"
+    type_rows, _ = merge_source_prefixes(
+        [
+            {"source_id": "A", "transaction_started_at": "2000-01-01T00:00:01+00:00", "rows": [type_a]},
+            {"source_id": "B", "transaction_started_at": "2000-01-01T00:00:02+00:00", "rows": [type_b]},
+        ],
+        L=1,
+        seeds=seeds,
+    )
+    assert type_rows[0]["type"] == "article"
+    assert type_rows[0]["type_metadata_drift"] is True
+    assert type_rows[0]["type_distinct_non_null_values"] == ["article", "book-chapter"]
+    assert type_rows[0]["type_observation_count"] == 2
+    assert type_rows[0]["type_selected_source_id"] == "A"
+    assert live_drift_summary(type_rows) == {
+        "citation_resolution_policy": "earliest_source_transaction_observation",
+        "duplicate_citation_drift_work_count": 0,
+        "maximum_duplicate_citation_drift": 0,
+        "optional_type_resolution_policy": "earliest_non_null_source_transaction_observation",
+        "duplicate_optional_type_drift_work_count": 1,
+        "maximum_distinct_non_null_type_values": 2,
+        "capture_exactness": "STATIC_PROVIDER_EXACT_NO_OBSERVED_CITATION_DRIFT",
+        "optional_metadata_capture": "TRANSACTION_LOCAL_FROZEN_OPTIONAL_TYPE_OBSERVATIONS",
+        "single_provider_snapshot_claimed": False,
+    }
+
+    type_null = row("W26", 74, "same-title")
+    type_null["type"] = None
+    type_later = row("W26", 74, "same-title")
+    type_later["type"] = "article"
+    type_null_rows, _ = merge_source_prefixes(
+        [
+            {"source_id": "A", "transaction_started_at": "2000-01-01T00:00:01+00:00", "rows": [type_null]},
+            {"source_id": "B", "transaction_started_at": "2000-01-01T00:00:02+00:00", "rows": [type_later]},
+        ],
+        L=1,
+        seeds=seeds,
+    )
+    assert type_null_rows[0]["type"] == "article"
+    assert type_null_rows[0]["type_metadata_drift"] is False
+
     # Duplicate Work-ID citation drift is preserved without allowing a later
     # observation to overwrite the first frozen score.
     drift = [
@@ -1159,11 +1301,15 @@ def self_test() -> None:
     assert drift_rows[0]["citation_count_drift"] == 1
     assert drift_rows[0]["citation_observation_count"] == 2
     assert drift_rows[0]["citation_selected_source_id"] == "A"
-    assert citation_drift_summary(drift_rows) == {
+    assert live_drift_summary(drift_rows) == {
         "citation_resolution_policy": "earliest_source_transaction_observation",
         "duplicate_citation_drift_work_count": 1,
         "maximum_duplicate_citation_drift": 1,
+        "optional_type_resolution_policy": "earliest_non_null_source_transaction_observation",
+        "duplicate_optional_type_drift_work_count": 0,
+        "maximum_distinct_non_null_type_values": 0,
         "capture_exactness": "TRANSACTION_LOCAL_FROZEN_CAPTURE_OBSERVED_CITATION_DRIFT",
+        "optional_metadata_capture": "NO_CONFLICTING_NON_NULL_TYPE_OBSERVATIONS",
         "single_provider_snapshot_claimed": False,
     }
 
