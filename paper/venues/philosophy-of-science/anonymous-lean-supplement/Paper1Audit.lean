@@ -1,7 +1,4 @@
-import RelayTheory.ProbeFutureClosure
-
-namespace RelayTheory
-namespace GroundedPresentationDistinguishability
+namespace Paper1Audit
 
 /-!
 # Grounded presentation-safe distinguishability
@@ -578,5 +575,4 @@ theorem groundedPresentationSafeBundle :
     derivedGroundDifference
   ⟩
 
-end GroundedPresentationDistinguishability
-end RelayTheory
+end Paper1Audit

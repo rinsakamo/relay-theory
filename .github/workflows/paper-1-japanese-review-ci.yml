@@ -1,0 +1,108 @@
+name: Paper 1 Japanese Review CI
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "paper/paper-1-draft-ja.md"
+      - ".github/workflows/paper-1-japanese-review-ci.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: paper-1-japanese-review-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  japanese-review-copy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out exact transaction head
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Verify exact head
+        shell: bash
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+
+      - name: Install Japanese PDF toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            pandoc \
+            texlive-xetex \
+            texlive-lang-chinese \
+            texlive-latex-extra \
+            texlive-fonts-recommended \
+            fonts-noto-cjk \
+            fonts-lmodern \
+            lmodern \
+            poppler-utils
+
+      - name: Build Japanese reading and audit PDF
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p paper/generated
+
+          cat > /tmp/paper1-ja-header.tex <<'EOF'
+          \usepackage{xeCJK}
+          \setCJKmainfont{Noto Sans CJK JP}
+          \usepackage{unicode-math}
+          \setmathfont{Latin Modern Math}
+          \usepackage{xurl}
+          \setlength{\parindent}{1em}
+          \setlength{\parskip}{0.35em}
+          EOF
+
+          pandoc paper/paper-1-draft-ja.md \
+            --from markdown+tex_math_dollars+tex_math_single_backslash+raw_tex \
+            --pdf-engine=xelatex \
+            --include-in-header=/tmp/paper1-ja-header.tex \
+            -V papersize=a4 \
+            -V geometry:margin=24mm \
+            -V fontsize=10pt \
+            -V mainfont="Noto Sans CJK JP" \
+            -V monofont="Noto Sans Mono CJK JP" \
+            -V linkcolor=black \
+            -V urlcolor=black \
+            -o paper/generated/Paper1_Japanese_Reading_Audit.pdf
+
+          test -s paper/generated/Paper1_Japanese_Reading_Audit.pdf
+
+      - name: Audit Japanese PDF
+        shell: bash
+        run: |
+          set -euo pipefail
+          PDF="paper/generated/Paper1_Japanese_Reading_Audit.pdf"
+          PAGES="$(pdfinfo "$PDF" | awk -F: '/^Pages:/ {gsub(/ /,"",$2); print $2}')"
+          test -n "$PAGES"
+          pdftotext "$PDF" /tmp/paper1-ja.txt
+          grep -F "形式的な差は" /tmp/paper1-ja.txt
+          grep -F "Nominal plurality is not evidential plurality" /tmp/paper1-ja.txt
+          {
+            echo "### Paper 1 Japanese reading/audit validation"
+            echo
+            printf -- '- Validated SHA: %s\n' "$(git rev-parse HEAD)"
+            printf -- '- PDF pages: %s\n' "$PAGES"
+            echo '- Japanese text extraction: PASS'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload Japanese reading and audit PDF
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: paper-1-japanese-reading-audit-pdf
+          path: paper/generated/Paper1_Japanese_Reading_Audit.pdf
+          if-no-files-found: error
+          retention-days: 14
