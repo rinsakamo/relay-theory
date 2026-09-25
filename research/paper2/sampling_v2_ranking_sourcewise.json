@@ -72,6 +72,7 @@
       "normalized DOI exact match when available",
       "normalized title plus publication year only when title is present"
     ],
+    "optional_string_normalization": "display_name/title and type are retained only when non-empty strings; null, blank, and non-string provider values normalize to null",
     "duplicate_optional_field_policy": "coalesce null/non-null; fail closed on conflicting non-null values",
     "duplicate_required_field_policy": "fail closed on year or cited_by_count mismatch"
   },

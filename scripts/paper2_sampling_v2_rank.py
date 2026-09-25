@@ -200,21 +200,15 @@ def calibration_match(
 def normalize_provider_item(item: dict[str, Any]) -> dict[str, Any]:
     work_id = canonical_work_id(item.get("id"))
     raw_title = item.get("display_name")
-    if raw_title is None:
-        title = None
-    elif isinstance(raw_title, str) and raw_title.strip():
-        title = raw_title
-    else:
-        raise ValueError(f"{work_id}: invalid display_name")
+    title = raw_title if isinstance(raw_title, str) and raw_title.strip() else None
     year = item.get("publication_year")
     if not isinstance(year, int):
         raise ValueError(f"{work_id}: missing integer publication_year")
     citations = item.get("cited_by_count")
     if not isinstance(citations, int) or citations < 1:
         raise ValueError(f"{work_id}: cited_by_count violates frozen citation floor")
-    work_type = item.get("type")
-    if work_type is not None and not isinstance(work_type, str):
-        raise ValueError(f"{work_id}: invalid type")
+    raw_type = item.get("type")
+    work_type = raw_type if isinstance(raw_type, str) and raw_type.strip() else None
     return {
         "provider_work_id": work_id,
         "doi": normalize_doi(item.get("doi")),
