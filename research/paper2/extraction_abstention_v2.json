@@ -1,0 +1,97 @@
+{
+  "schema_version": "paper2-extraction-abstention-v2",
+  "owner_issue": 191,
+  "status": "SYNTHETIC_QUALIFICATION_CANDIDATE",
+  "parent_authority": {
+    "postmortem_path": "research/paper2/extraction_abstention_postmortem_v1.json",
+    "postmortem_terminal_classification": "EXTRACTION_UNDERDETERMINED_ON_B0002",
+    "consumed_transaction_issue": 184,
+    "consumed_transaction_replay_forbidden": true
+  },
+  "scope": {
+    "synthetic_only": true,
+    "real_paper_model_calls_authorized": false,
+    "basis_decomposition_authorized": false,
+    "heldout_execution_authorized": false,
+    "changes_claim_ir_v1": false,
+    "changes_systemone_decision_v2": false
+  },
+  "bundle_outcomes": {
+    "VALID_CLAIM_IR": {
+      "claim_ir_permitted": true,
+      "maps_to_sampling_v1": null,
+      "selected_attempt_row_retained": true,
+      "primary_analyzable": true
+    },
+    "EXTRACTION_ABSTAIN": {
+      "claim_ir_permitted": false,
+      "maps_to_sampling_v1": "EXTRACTION_FAILURE",
+      "selected_attempt_row_retained": true,
+      "primary_analyzable": false
+    },
+    "EXTRACTION_FAILURE": {
+      "claim_ir_permitted": false,
+      "maps_to_sampling_v1": "EXTRACTION_FAILURE",
+      "selected_attempt_row_retained": true,
+      "primary_analyzable": false
+    }
+  },
+  "abstention_rule": {
+    "wire_choice": "__unresolved__",
+    "trigger": "explicit_unresolved_on_semantically_required_active_field_after_valid_response_parse",
+    "inactive_dependent_field_unresolved_is_ignored": true,
+    "claim_ir_conversion_forbidden": true,
+    "residual_conversion_forbidden": true,
+    "candidate_repair_forbidden": true,
+    "retry_for_resolution_forbidden": true
+  },
+  "transaction_failures": [
+    "TRANSACTION_TRANSPORT_FAILURE",
+    "TRANSACTION_RESPONSE_CONTRACT_FAILURE",
+    "TRANSACTION_RUNTIME_FAILURE",
+    "TRANSACTION_CLEANUP_FAILURE"
+  ],
+  "transaction_boundary": {
+    "transaction_failure_is_bundle_abstention": false,
+    "bundle_abstention_is_transaction_integrity_failure": false,
+    "malformed_systemone_response_is_bundle_abstention": false,
+    "runtime_exception_is_bundle_abstention": false
+  },
+  "denominator_contract": {
+    "selected_extraction_attempt_denominator_includes_abstain": true,
+    "primary_analyzable_denominator_includes_abstain": false,
+    "abstain_reported_as_explicit_attrition": true,
+    "abstain_may_be_silently_dropped": false,
+    "abstain_may_be_residual": false,
+    "result_dependent_replacement_forbidden": true,
+    "replacement_must_not_erase_original_attrition_row": true
+  },
+  "provenance_contract": {
+    "preserve_unresolved_field_name": true,
+    "preserve_unresolved_choice": true,
+    "preserve_probabilities_when_present": true,
+    "preserve_confidence_when_present": true,
+    "preserve_source_bundle_digest": true,
+    "preserve_normal_output_digest": true,
+    "raw_or_masked_source_text_in_repository_artifact": false
+  },
+  "synthetic_destructive_fixtures": [
+    "resolved_bundle_produces_valid_claim_ir",
+    "active_required_unresolved_produces_extraction_abstain",
+    "inactive_dependent_unresolved_does_not_abstain",
+    "malformed_response_is_transaction_failure",
+    "runtime_failure_is_transaction_failure",
+    "abstain_never_compiles_claim_ir",
+    "abstain_is_not_residual",
+    "abstain_remains_in_selected_attempt_accounting",
+    "abstain_is_excluded_from_primary_analyzable_denominator",
+    "result_dependent_replacement_is_rejected"
+  ],
+  "exit_classifications": [
+    "EXTRACTION_ABSTENTION_INTERFACE_V2_SYNTHETICALLY_QUALIFIED",
+    "EXTRACTION_ABSTENTION_INTERFACE_UNDERDETERMINED",
+    "TRANSACTION_FAILURE_AND_BUNDLE_ABSTENTION_NOT_SEPARATED",
+    "UNDERDETERMINED"
+  ],
+  "architecture_consequence": "NONE"
+}
