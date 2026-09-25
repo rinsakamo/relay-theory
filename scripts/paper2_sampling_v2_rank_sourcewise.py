@@ -120,6 +120,10 @@ def load_contract(path: Path) -> dict[str, Any]:
         raise ValueError("rate-limit preflight must remain required after 429")
     if execution.get("rate_limit_endpoint") != RATE_LIMIT_ROOT:
         raise ValueError("OpenAlex rate-limit endpoint drift")
+    if execution.get("rate_limit_authentication") != (
+        "api_key query parameter, identical to ranking client"
+    ):
+        raise ValueError("OpenAlex rate-limit authentication parity drift")
     if execution.get("minimum_remaining_credits_before_resume") != MIN_REMAINING_CREDITS:
         raise ValueError("minimum remaining credit authority drift")
     if execution.get("list_call_credit_cost") != LIST_CALL_CREDIT_COST:
