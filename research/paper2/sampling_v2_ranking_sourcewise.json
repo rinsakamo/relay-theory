@@ -1,5 +1,5 @@
 {
-  "schema_version": "paper2-sampling-v2-ranking-sourcewise-v2",
+  "schema_version": "paper2-sampling-v2-ranking-sourcewise-v3",
   "owner_issue": 167,
   "status": "REAL_SOURCEWISE_RANKING_EXECUTION_AUTHORIZED_ELIGIBILITY_NOT_AUTHORIZED",
   "supersedes": "paper2-sampling-v2-ranking-v1 direct-union provider execution after PRE_1950 HTTP 500",
@@ -10,9 +10,9 @@
     "source_queries_must_match_counts_artifact": true
   },
   "exact_merge_principle": {
-    "name": "top-L per-source sufficiency under a static provider state",
-    "statement": "For a union U of source sets S_i under one common total ranking, every element in the top L of U is contained in the top L of at least one S_i to which it belongs. Therefore unioning source-local top-L prefixes and re-ranking is sufficient for the global top-L. Complete source-local citation-boundary tie closure preserves the declared citation-count then Work-ID ordering when provider tie order is unspecified.",
-    "live_provider_caveat": "OpenAlex is live rather than snapshot-backed; duplicate Work IDs with differing cited_by_count observations fail closed instead of being silently reconciled."
+    "name": "top-L per-source sufficiency under a static provider state; first-observation freeze under live citation drift",
+    "statement": "For a union U of source sets S_i under one common total ranking, every element in the top L of U is contained in the top L of at least one S_i to which it belongs. Therefore unioning source-local top-L prefixes and re-ranking is sufficient for the global top-L under a static provider state. Complete source-local citation-boundary tie closure preserves the declared citation-count then Work-ID ordering when provider tie order is unspecified.",
+    "live_provider_caveat": "OpenAlex is live rather than snapshot-backed. When a duplicate Work ID is observed with different cited_by_count values across durable source transactions, preserve every observation and freeze that Work's ranking score to its earliest source transaction observation (transaction_started_at, then source_id tie-break). Do not silently claim a single-provider-snapshot exact union for an era with observed citation drift."
   },
   "ranking_surface": {
     "provider": "OpenAlex",
@@ -27,15 +27,17 @@
     ],
     "complete_source_boundary_citation_tie": true,
     "complete_global_boundary_citation_tie": true,
-    "duplicate_work_id_policy": "DEDUP_IF_IDENTICAL_CITATION_COUNT_OTHERWISE_FAIL_CLOSED",
+    "duplicate_work_id_policy": "DEDUP_BY_WORK_ID; CITATION DRIFT -> FREEZE EARLIEST SOURCE-TRANSACTION OBSERVATION AND PRESERVE ALL OBSERVATIONS",
     "provider_nonmonotone_citation_policy": "FAIL_CLOSED",
-    "provider_meta_count_equality_across_pages_required": false
+    "provider_meta_count_equality_across_pages_required": false,
+    "live_duplicate_citation_resolution": "earliest transaction_started_at, then source_id ascending; later duplicate observations never overwrite the frozen ranking score",
+    "capture_exactness_policy": "STATIC_PROVIDER_EXACT_IF_NO_OBSERVED_CITATION_DRIFT; OTHERWISE_TRANSACTION_LOCAL_FROZEN_CAPTURE"
   },
   "candidate_ladder": {
     "multiplier": 5,
     "minimum_rows_per_era": "5 * frozen primary quota k_d",
     "source_prefix_rows": "for each of 51 sources, retrieve source-local top L rows where L = 5 * k_d, plus complete citation tie at that source boundary",
-    "global_freeze": "deduplicate source prefixes, canonical-sort, retain all rows with cited_by_count >= the global L-th citation count",
+    "global_freeze": "union frozen source-local prefixes, deduplicate by Work ID, freeze each Work's citation score at its earliest observed source transaction, canonical-sort, and retain all rows at or above the global L-th frozen citation count",
     "expansion_if_exhausted_after_screening": "versioned pre-decomposition expansion allowed only from eligibility/source-access attrition; never from decomposition outcomes"
   },
   "calibration_exclusion": {
@@ -74,7 +76,7 @@
     ],
     "optional_string_normalization": "display_name/title and type are retained only when non-empty strings; null, blank, and non-string provider values normalize to null",
     "duplicate_optional_field_policy": "coalesce null/non-null; fail closed on conflicting non-null values",
-    "duplicate_required_field_policy": "fail closed on year or cited_by_count mismatch"
+    "duplicate_required_field_policy": "year mismatch fails closed; cited_by_count drift is preserved and resolved only by the frozen earliest-observation policy"
   },
   "execution_protocol": {
     "granularity": "one frozen source prefix per provider transaction, then local-only era merge",
@@ -93,7 +95,8 @@
     "list_call_credit_cost": 1,
     "minimum_remaining_credits_before_resume": 1500,
     "credit_unit_authority": "OpenAlex list/filter request consumes 1 credit; search consumes 10 credits; this ranking path is list/filter OQL",
-    "provider_429_policy": "fail current source transaction with no automatic retry; preserve earlier artifacts; resume only under a new versioned authorization after keyed rate-limit preflight"
+    "provider_429_policy": "fail current source transaction with no automatic retry; preserve earlier artifacts; resume only under a new versioned authorization after keyed rate-limit preflight",
+    "live_duplicate_citation_drift_policy": "provider-free merge only; preserve all duplicate citation observations, freeze earliest observation for ranking, report drift count/range, and downgrade snapshot exactness classification"
   },
   "real_ranking_execution_authorized": true,
   "real_eligibility_screening_authorized": false
