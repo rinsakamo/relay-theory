@@ -41,7 +41,7 @@ import paper2_sampling_v2 as sampling  # type: ignore
 import paper2_sampling_v2_rank as rankv1  # type: ignore
 
 SCHEMA_VERSION = "paper2-sampling-v2-ranking-sourcewise-v4"
-RANKED_ERA_SCHEMA = "paper2-sampling-v2-ranked-era-sourcewise-v3"
+RANKED_ERA_SCHEMA = "paper2-sampling-v2-ranked-era-sourcewise-v4"
 SOURCE_PREFIX_SCHEMA = "paper2-sampling-v2-source-prefix-v2"
 PAGE_SIZE = 100
 MAX_BASIC_ROWS = 10_000
