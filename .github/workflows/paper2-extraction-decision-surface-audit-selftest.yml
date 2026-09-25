@@ -1,0 +1,44 @@
+name: paper2-extraction-decision-surface-audit-selftest
+
+on:
+  pull_request:
+    paths:
+      - "research/paper2/extraction_decision_surface_audit_v1.json"
+      - "scripts/paper2_extraction_decision_surface_audit_validate.py"
+      - ".github/workflows/paper2-extraction-decision-surface-audit-selftest.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "research/paper2/extraction_decision_surface_audit_v1.json"
+      - "scripts/paper2_extraction_decision_surface_audit_validate.py"
+      - ".github/workflows/paper2-extraction-decision-surface-audit-selftest.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact transaction head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Record exact transaction head
+        run: |
+          git rev-parse HEAD
+          git rev-parse HEAD^{tree}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile decision-surface audit validator
+        run: python -m py_compile scripts/paper2_extraction_decision_surface_audit_validate.py
+      - name: Run adversarial deterministic self-test
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: python scripts/paper2_extraction_decision_surface_audit_validate.py --self-test
+      - name: Validate committed decision-surface audit
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: python scripts/paper2_extraction_decision_surface_audit_validate.py

@@ -1,0 +1,466 @@
+{
+  "schema_version": "paper2-extraction-decision-surface-audit-v1",
+  "owner_issue": 200,
+  "parent_postmortem_issue": 197,
+  "status": "DECISION_SURFACE_AUDIT_QUALIFIED",
+  "architecture_consequence": "NONE",
+  "authority": {
+    "repository": "rinsakamo/relay-theory",
+    "fresh_starting_main": "3b3d6825def826784fe3f1ab4eef472c76d9bbe1",
+    "fresh_starting_tree": "782f00d2fafa1ed0272a801097c8d3c6a423128c",
+    "ruleset": {
+      "id": 23769009,
+      "name": "main-protection",
+      "enforcement": "active",
+      "allowed_merge_methods": ["squash"],
+      "required_linear_history": true,
+      "required_review_thread_resolution": true
+    },
+    "repository_authority_files": [
+      {
+        "path": ".ai/README.md",
+        "blob_sha": "d62d79f2016b8cba2ee555197f0bbef92f58282b"
+      },
+      {
+        "path": ".ai/forge-protocol.md",
+        "blob_sha": "25c15145c17979ae2c4e95e18c89a47669ff5ef5"
+      }
+    ],
+    "open_pull_requests_at_start": [
+      {
+        "number": 123,
+        "base": "main",
+        "head": "paper-1-draft-ja",
+        "head_sha": "290748d2a0f60374c77c8ed04cb7121fae459c8b",
+        "draft": true
+      }
+    ],
+    "latest_audit_comment": 5833163702
+  },
+  "bound_inputs": [
+    {
+      "role": "frozen_v2_decision_schema",
+      "path": "research/paper2/extraction_systemone_decision_v2.schema.json",
+      "blob_sha": "5933030119a903079a9eadb69e08d9326463339c"
+    },
+    {
+      "role": "frozen_v2_contract",
+      "path": "research/paper2/extraction_two_pass_systemone_v2.json",
+      "blob_sha": "ed00b7458c068eb9add6a23dbf0e8282e06941d4",
+      "mutation": "forbidden"
+    },
+    {
+      "role": "frozen_v2_compiler",
+      "path": "scripts/paper2_extraction_two_pass_systemone_v2.py",
+      "blob_sha": "f789fcfb35af03a52e9193e6e6ebf5f86271707a",
+      "mutation": "forbidden"
+    },
+    {
+      "role": "frozen_claim_ir_v1_schema",
+      "path": "research/paper2/claim_ir_v1.schema.json",
+      "blob_sha": "963f54bd61c3112daa046fa191e3194d47db0768"
+    },
+    {
+      "role": "frozen_extraction_procedure",
+      "path": "research/paper2/extraction_procedure_v1.json",
+      "blob_sha": "5e1b6c17c8cd9b4b3455de137b99a90f870233d0"
+    },
+    {
+      "role": "parent_postmortem_artifact",
+      "path": "research/paper2/extraction_zero_yield_postmortem_v1.json",
+      "blob_sha": "4f09089eef5db543e17e782ee96a7b4e3efa2ff6"
+    }
+  ],
+  "audit_criterion": {
+    "text": "If a finite choice is already impossible from fixed finite state, the question surface must not present it as locally admissible.",
+    "declaration": "DECLARED_AUDIT_CRITERION",
+    "ontology": false
+  },
+  "dependency_graph": {
+    "graph_kind": "semantic_and_wire_dependency_graph",
+    "relation_slot_referent_audit": "AUDIT_UNDERDETERMINED",
+    "field_families": [
+      {
+        "field_family": "claim_type",
+        "referent": "the finite ClaimIR claim-type classification for the source claim",
+        "semantic_prerequisites": ["source claim is in the frozen synthetic bundle"],
+        "wire_prerequisites": ["claim_type question is present", "choice is in the frozen claim-type vocabulary"],
+        "not_applicable_condition": "none; the claim-level field is always required",
+        "downstream_invariants": ["decision.claim_type is one frozen finite value"],
+        "current_enforcement_point": "build_questions -> parse_systemone_response -> decision_from_answers._resolved(answers, claim_type)"
+      },
+      {
+        "field_family": "modality",
+        "referent": "the finite ClaimIR modality classification for the source claim",
+        "semantic_prerequisites": ["source claim is in the frozen synthetic bundle"],
+        "wire_prerequisites": ["modality question is present", "choice is in the frozen modality vocabulary"],
+        "not_applicable_condition": "none; the claim-level field is always required",
+        "downstream_invariants": ["decision.modality is one frozen finite value"],
+        "current_enforcement_point": "build_questions -> parse_systemone_response -> decision_from_answers._resolved(answers, modality)"
+      },
+      {
+        "field_family": "scope_membership",
+        "referent": "whether a source evidence unit contributes to a named scope bucket",
+        "semantic_prerequisites": ["the source evidence unit is identified", "the intended applicability/provenance distinction is known"],
+        "wire_prerequisites": ["one binary scope question exists for each field and source span"],
+        "not_applicable_condition": "a source span is not in the bounded synthetic source bundle",
+        "downstream_invariants": ["scope arrays contain unique known source-span identifiers"],
+        "current_enforcement_point": "build_questions scope__<field>__<span> -> decision_from_answers scope reconstruction; applicability semantics are not separately enforced"
+      },
+      {
+        "field_family": "node_referent",
+        "referent": "the source-grounded entity or structural referent represented by a node slot such as n1",
+        "semantic_prerequisites": ["the latent referent has been bound to the node slot"],
+        "wire_prerequisites": ["only an anonymous slot-existence question is present before role/anchor/span answers"],
+        "not_applicable_condition": "the node slot is absent from the source claim",
+        "downstream_invariants": ["activation and all dependent node choices describe the same referent"],
+        "current_enforcement_point": "no pre-activation referent-binding check; slot identity is only carried by the question name and later decision object"
+      },
+      {
+        "field_family": "node_active",
+        "referent": "whether the bound node referent is required by the source claim",
+        "semantic_prerequisites": ["node_referent"],
+        "wire_prerequisites": ["nX__active choice is present and in yes/no vocabulary"],
+        "not_applicable_condition": "node slot is not required by the claim",
+        "downstream_invariants": ["active nodes have required dependent fields", "inactive dependent values are ignored by reconstruction"],
+        "current_enforcement_point": "decision_from_answers active-node loop; active=no skips dependent semantic reconstruction without pruning the wire questions"
+      },
+      {
+        "field_family": "node_role",
+        "referent": "the ClaimIR role of an active node referent",
+        "semantic_prerequisites": ["node_referent", "node_active=yes"],
+        "wire_prerequisites": ["nX__role choice is present and in the finite role vocabulary"],
+        "not_applicable_condition": "node_active=no",
+        "downstream_invariants": ["an active node has exactly one role"],
+        "current_enforcement_point": "parse_systemone_response vocabulary check and decision_from_answers._resolved after node_active=yes"
+      },
+      {
+        "field_family": "node_anchor",
+        "referent": "the single evidence-unit anchor identifying an active node referent",
+        "semantic_prerequisites": ["node_referent", "node_active=yes"],
+        "wire_prerequisites": ["nX__anchor choice is present and names a known source span"],
+        "not_applicable_condition": "node_active=no",
+        "downstream_invariants": ["the anchor is included in the node source-span set", "distinct relation arguments have distinct anchors"],
+        "current_enforcement_point": "decision_from_answers anchor-in-refs check and relation anchor-distinction check"
+      },
+      {
+        "field_family": "node_source_spans",
+        "referent": "the source evidence units that ground an active node referent",
+        "semantic_prerequisites": ["node_referent", "node_active=yes"],
+        "wire_prerequisites": ["one yes/no span-membership question exists for each bounded source span"],
+        "not_applicable_condition": "node_active=no",
+        "downstream_invariants": ["an active node has at least one source span", "node_anchor is in node_source_spans"],
+        "current_enforcement_point": "decision_from_answers fails with active node requires at least one source span when the selected set is empty"
+      },
+      {
+        "field_family": "node_grounding",
+        "referent": "whether the active node grounding is explicit or normalized",
+        "semantic_prerequisites": ["node_referent", "node_active=yes"],
+        "wire_prerequisites": ["nX__grounding choice is present and in the finite grounding vocabulary"],
+        "not_applicable_condition": "node_active=no",
+        "downstream_invariants": ["grounding is copied into the deterministic decision record"],
+        "current_enforcement_point": "parse_systemone_response vocabulary check and decision_from_answers._resolved after node_active=yes"
+      },
+      {
+        "field_family": "relation_referent",
+        "referent": "the source-grounded relation or dependency represented by a relation slot such as r1",
+        "semantic_prerequisites": ["relation identity and its participating node referents are established"],
+        "wire_prerequisites": ["only an anonymous relation-slot question family is present"],
+        "not_applicable_condition": "the relation slot is absent from the source claim",
+        "downstream_invariants": ["relation semantics must not be inferred solely from a slot label"],
+        "current_enforcement_point": "no dedicated relation-slot referent binding; this audit remains AUDIT_UNDERDETERMINED"
+      },
+      {
+        "field_family": "relation_active",
+        "referent": "whether a bound relation referent is required by the source claim",
+        "semantic_prerequisites": ["relation_referent"],
+        "wire_prerequisites": ["rX__active choice is present and in yes/no vocabulary"],
+        "not_applicable_condition": "relation slot is not required by the claim",
+        "downstream_invariants": ["an active relation has kind, arguments, grounding, and at least one source span"],
+        "current_enforcement_point": "decision_from_answers relation loop; active=no skips dependent semantic reconstruction"
+      },
+      {
+        "field_family": "relation_kind",
+        "referent": "the finite ClaimIR relation kind of an active relation",
+        "semantic_prerequisites": ["relation_referent", "relation_active=yes"],
+        "wire_prerequisites": ["rX__kind choice is present and in the finite relation vocabulary"],
+        "not_applicable_condition": "relation_active=no",
+        "downstream_invariants": ["an active relation has exactly one kind"],
+        "current_enforcement_point": "parse_systemone_response vocabulary check and decision_from_answers._resolved after relation_active=yes"
+      },
+      {
+        "field_family": "relation_arg1",
+        "referent": "the first active node referent participating in an active relation",
+        "semantic_prerequisites": ["relation_referent", "relation_active=yes", "active node set"],
+        "wire_prerequisites": ["rX__arg1 choice is present and names one finite node slot"],
+        "not_applicable_condition": "relation_active=no",
+        "downstream_invariants": ["arg1 names an active node", "arg1 and arg2 are distinct when both are present"],
+        "current_enforcement_point": "decision_from_answers checks inactive-node membership and duplicate arguments after wire parsing"
+      },
+      {
+        "field_family": "relation_arg2",
+        "referent": "the optional second active node referent participating in an active relation",
+        "semantic_prerequisites": ["relation_referent", "relation_active=yes", "active node set", "node anchor distinctions"],
+        "wire_prerequisites": ["rX__arg2 choice is present and is none or one finite node slot"],
+        "not_applicable_condition": "relation_active=no or the relation has unary arity",
+        "downstream_invariants": ["none means no second argument", "a present second argument is active", "distinct arguments have distinct anchors"],
+        "current_enforcement_point": "decision_from_answers converts none to unary arity and then checks duplicate/inactive/anchor constraints"
+      },
+      {
+        "field_family": "relation_source_spans",
+        "referent": "the source evidence units that ground an active relation",
+        "semantic_prerequisites": ["relation_referent", "relation_active=yes"],
+        "wire_prerequisites": ["one yes/no span-membership question exists for each bounded source span"],
+        "not_applicable_condition": "relation_active=no",
+        "downstream_invariants": ["an active relation has at least one source span"],
+        "current_enforcement_point": "decision_from_answers fails with active relation requires at least one source span when the selected set is empty"
+      },
+      {
+        "field_family": "relation_grounding",
+        "referent": "whether the active relation grounding is explicit or normalized",
+        "semantic_prerequisites": ["relation_referent", "relation_active=yes"],
+        "wire_prerequisites": ["rX__grounding choice is present and in the finite grounding vocabulary"],
+        "not_applicable_condition": "relation_active=no",
+        "downstream_invariants": ["grounding is copied into the deterministic decision record"],
+        "current_enforcement_point": "parse_systemone_response vocabulary check and decision_from_answers._resolved after relation_active=yes"
+      }
+    ],
+    "derived_nodes": ["active_node_set", "node_anchor_distinctions"],
+    "edges": [
+      {"from": "node_referent", "to": "node_active"},
+      {"from": "node_active", "to": "node_role"},
+      {"from": "node_active", "to": "node_anchor"},
+      {"from": "node_active", "to": "node_source_spans"},
+      {"from": "node_active", "to": "node_grounding"},
+      {"from": "node_active", "to": "active_node_set"},
+      {"from": "node_anchor", "to": "node_anchor_distinctions"},
+      {"from": "active_node_set", "to": "relation_arg1"},
+      {"from": "active_node_set", "to": "relation_arg2"},
+      {"from": "node_anchor_distinctions", "to": "relation_arg1"},
+      {"from": "node_anchor_distinctions", "to": "relation_arg2"},
+      {"from": "relation_referent", "to": "relation_active"},
+      {"from": "relation_active", "to": "relation_kind"},
+      {"from": "relation_active", "to": "relation_arg1"},
+      {"from": "relation_active", "to": "relation_arg2"},
+      {"from": "relation_active", "to": "relation_source_spans"},
+      {"from": "relation_active", "to": "relation_grounding"}
+    ]
+  },
+  "synthetic_probe_suite": {
+    "synthetic_only": true,
+    "probe_count": 12,
+    "probes": [
+      {
+        "id": "P1",
+        "synthetic_case": "Anonymous n1 activation is requested before any referent binding.",
+        "expected_wire_result": "PASS",
+        "expected_semantic_decision": "UNDERDEFINED",
+        "classification": "QUESTION_REFERENT_UNDERDEFINED",
+        "witness": "The slot-existence question cannot distinguish referent selection from activation."
+      },
+      {
+        "id": "P2",
+        "synthetic_case": "Two latent source-supported referents are indistinguishable at n1__active.",
+        "expected_wire_result": "PASS",
+        "expected_semantic_decision": "UNDERDEFINED",
+        "classification": "QUESTION_REFERENT_UNDERDEFINED",
+        "witness": "Both latent assignments have the same state at the activation question but require different activation answers."
+      },
+      {
+        "id": "P3",
+        "synthetic_case": "r1 active = yes; arg1 = n1; arg2 = n1.",
+        "expected_wire_result": "PASS",
+        "expected_semantic_decision": "FAIL",
+        "failure": "duplicate relation arguments are forbidden",
+        "compiler_failure": "r1: duplicate relation arguments are forbidden",
+        "classification": "QUESTION_DEPENDENCY_LEAK",
+        "witness": "The tuple uses only finite wire choices but is impossible from fixed active-node state."
+      },
+      {
+        "id": "P4",
+        "synthetic_case": "An active relation argument names an inactive node.",
+        "expected_wire_result": "PASS",
+        "expected_semantic_decision": "FAIL",
+        "failure": "relation argument names inactive node",
+        "compiler_failure": "r1: relation argument names inactive node",
+        "classification": "QUESTION_DEPENDENCY_LEAK",
+        "witness": "The argument vocabulary is independent of the already-known active node set."
+      },
+      {
+        "id": "P5",
+        "synthetic_case": "Distinct relation arguments are active but have the same anchor.",
+        "expected_wire_result": "PASS",
+        "expected_semantic_decision": "FAIL",
+        "failure": "distinct relation arguments require distinct node anchors",
+        "compiler_failure": "r1: distinct relation arguments require distinct node anchors",
+        "classification": "QUESTION_DEPENDENCY_LEAK",
+        "witness": "The wire surface admits two node names whose fixed anchor state cannot distinguish them."
+      },
+      {
+        "id": "P6",
+        "synthetic_case": "A historical provenance date is contrasted with an actual temporal restriction on the claim.",
+        "expected_wire_result": "PASS",
+        "expected_semantic_decision": "UNDERDEFINED",
+        "classification": "SCOPE_SEMANTICS_UNDERDEFINED",
+        "witness": "The binary temporal scope membership question does not state whether date mention is provenance or applicability."
+      },
+      {
+        "id": "P7",
+        "synthetic_case": "An evidential-support span is contrasted with an applicability/scope span.",
+        "expected_wire_result": "PASS",
+        "expected_semantic_decision": "UNDERDEFINED",
+        "classification": "SCOPE_SEMANTICS_UNDERDEFINED",
+        "witness": "Support for a claim need not itself be a condition, population, task, or temporal restriction."
+      },
+      {
+        "id": "P8",
+        "synthetic_case": "Inactive node: active = no; all dependent fields = __unresolved__.",
+        "expected_wire_result": "PASS",
+        "expected_semantic_decision": "PASS",
+        "inactive_behavior": "ignored_without_abstention",
+        "must_not_abstain": true,
+        "classification": "NO_DEFECT",
+        "witness": "Inactive unresolved dependents are not resolved into the decision and do not manufacture abstention."
+      },
+      {
+        "id": "P9",
+        "synthetic_case": "Active node: active = yes; required role = __unresolved__.",
+        "expected_wire_result": "PASS",
+        "expected_semantic_decision": "DecisionUnresolved",
+        "active_unresolved_behavior": "DecisionUnresolved",
+        "must_abstain": true,
+        "classification": "NO_DEFECT",
+        "witness": "An unresolved active required field fails closed at semantic decision reconstruction."
+      },
+      {
+        "id": "P10",
+        "synthetic_case": "The full wire requires dependent answers even when a node is semantically inactive.",
+        "expected_wire_result": "PASS",
+        "expected_semantic_decision": "PASS",
+        "wire_omission_test": {
+          "omission_wire_result": "FAIL",
+          "omission_failure": "exact full-wire coverage is required",
+          "complete_wire_result": "PASS",
+          "complete_wire_inactive_values": "arbitrary_or___unresolved__",
+          "compile_equivalence_after_active_no": true
+        },
+        "n_a_conclusion": "Semantically inactive dependent fields require explicit N/A semantics or omission; the current mandatory full wire supplies neither.",
+        "classification": "NOT_APPLICABLE_STATE_MISSING",
+        "witness": "Omission fails exact coverage, while arbitrary or unresolved inactive values compile identically after active=no."
+      },
+      {
+        "id": "P11",
+        "synthetic_case": "Active node has no selected source spans.",
+        "expected_wire_result": "PASS",
+        "expected_semantic_decision": "FAIL",
+        "failure": "active node requires at least one source span",
+        "compiler_failure": "n1: active node requires at least one source span",
+        "classification": "QUESTION_DEPENDENCY_LEAK",
+        "witness": "The per-span wire choices permit an empty grounding set even though active-node state makes it impossible."
+      },
+      {
+        "id": "P12",
+        "synthetic_case": "Synthetic-only and no-real-operation control.",
+        "expected_wire_result": "PASS",
+        "expected_semantic_decision": "PASS",
+        "real_literature_extraction": false,
+        "real_model_calls": false,
+        "real_server_launches": false,
+        "classification": "NO_DEFECT",
+        "witness": "Qualification is deterministic and consumes no real source, model, or server operation."
+      }
+    ]
+  },
+  "pressure_taxonomy": {
+    "allowed": [
+      "NO_DEFECT",
+      "POSTPARSE_VALIDATION_ONLY",
+      "QUESTION_REFERENT_UNDERDEFINED",
+      "QUESTION_DEPENDENCY_LEAK",
+      "CHOICE_VOCABULARY_INSUFFICIENT",
+      "SCOPE_SEMANTICS_UNDERDEFINED",
+      "NOT_APPLICABLE_STATE_MISSING",
+      "AUDIT_UNDERDETERMINED"
+    ],
+    "earned": [
+      "QUESTION_REFERENT_UNDERDEFINED",
+      "QUESTION_DEPENDENCY_LEAK",
+      "SCOPE_SEMANTICS_UNDERDEFINED",
+      "NOT_APPLICABLE_STATE_MISSING"
+    ],
+    "not_earned": ["CHOICE_VOCABULARY_INSUFFICIENT"],
+    "relation_slot_referent": "AUDIT_UNDERDETERMINED"
+  },
+  "grand_null": {
+    "status": "DESTROYED_BOUNDED_LOCAL_CLAUSES",
+    "destroyed_clauses": [
+      "node activation always has a well-defined referent",
+      "finite structurally impossible combinations are excluded before reconstruction",
+      "scope membership uniquely distinguishes applicability from provenance/evidence",
+      "all mandatory questions have meaningful semantics when inactive"
+    ],
+    "surviving_properties": [
+      "per-question finite vocabularies are valid",
+      "exact full-wire completeness works",
+      "deterministic postparse validation works",
+      "inactive unresolved dependents do not manufacture abstention",
+      "active required unresolved fails closed"
+    ]
+  },
+  "parent_postmortem_linkage": {
+    "issue": 197,
+    "terminal_classification": "ZERO_YIELD_POSTMORTEM_UNDERDETERMINED",
+    "scientific_subclass": "ZERO_YIELD_EXPLAINED_BY_MIXED_EXTRACTION_BOUNDARIES",
+    "provenance_scope": "BOUNDED_PROVENANCE_ONLY",
+    "p3_independently_reproduces": "the same failure class as #197 B0001 using synthetic data",
+    "does_not_prove": [
+      "#200 defects caused B0001",
+      "#200 defects caused the other #193 rows"
+    ]
+  },
+  "future_boundary": {
+    "properties": [
+      "node referent must be bound before activation/role classification",
+      "dependent finite choices should exclude choices already impossible from fixed state",
+      "scope semantics must distinguish applicability restriction from provenance/evidential support",
+      "semantically inactive dependent fields require explicit N/A semantics or omission"
+    ],
+    "v3_created": false,
+    "v3_authorized": false,
+    "real_transaction_created": false,
+    "real_transaction_authorized": false,
+    "real_transaction_executed": false
+  },
+  "v3_created": false,
+  "v3_authorized": false,
+  "real_transaction_created": false,
+  "real_transaction_authorized": false,
+  "real_transaction_executed": false,
+  "accounting": {
+    "real_model_calls": 0,
+    "real_llama_server_launches": 0,
+    "real_literature_extraction": 0,
+    "replay_193": 0,
+    "execution_167": 0,
+    "basis_decomposition": 0,
+    "v2_mutation": 0,
+    "v2_compiler_mutation": 0,
+    "v2_contract_mutation": 0,
+    "claim_ir_mutation": 0,
+    "retry": 0,
+    "repair": 0
+  },
+  "terminal_owner_classification": "DECISION_SURFACE_AUDIT_QUALIFIED",
+  "scientific_classification": "CURRENT_V2_DECISION_SURFACE_HAS_LOCAL_SEMANTIC_DEPENDENCY_DEFECTS",
+  "scientific_result": {
+    "terminal_owner_classification": "DECISION_SURFACE_AUDIT_QUALIFIED",
+    "classification": "CURRENT_V2_DECISION_SURFACE_HAS_LOCAL_SEMANTIC_DEPENDENCY_DEFECTS",
+    "earned_local_classes": [
+      "QUESTION_REFERENT_UNDERDEFINED",
+      "QUESTION_DEPENDENCY_LEAK",
+      "SCOPE_SEMANTICS_UNDERDEFINED",
+      "NOT_APPLICABLE_STATE_MISSING"
+    ],
+    "global_invalidity_claim": false
+  }
+}
