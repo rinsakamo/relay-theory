@@ -41,8 +41,8 @@ SOURCE_PREFIX_SCHEMA = "paper2-sampling-v2-source-prefix-v2"
 PAGE_SIZE = 100
 MAX_BASIC_ROWS = 10_000
 RATE_LIMIT_ROOT = "https://api.openalex.org/rate-limit"
-MIN_REMAINING_CREDITS = 15_000
-LIST_CALL_CREDIT_COST = 10
+MIN_REMAINING_CREDITS = 1_500
+LIST_CALL_CREDIT_COST = 1
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -856,7 +856,7 @@ def self_test() -> None:
 
     assert contract["real_eligibility_screening_authorized"] is False
     assert contract["execution_protocol"]["openalex_api_key_required"] is True
-    assert contract["execution_protocol"]["minimum_remaining_credits_before_resume"] == 15000
+    assert contract["execution_protocol"]["minimum_remaining_credits_before_resume"] == 1500
     assert contract["candidate_ladder"]["multiplier"] == 5
     assert contract["execution_protocol"]["integrated_51_source_provider_run"] == "DISABLED"
     assert contract["execution_protocol"]["merge_provider_calls"] == 0
@@ -866,19 +866,19 @@ def self_test() -> None:
     rate_status = parse_rate_limit_status(
         {
             "rate_limit": {
-                "credits_limit": 100000,
-                "credits_remaining": 20000,
+                "credits_limit": 10000,
+                "credits_remaining": 10000,
                 "resets_in_seconds": 3600,
             }
         },
         {},
     )
-    assert rate_status["credits_remaining"] == 20000
-    assert rate_status["remaining_list_call_equivalent"] == 2000
+    assert rate_status["credits_remaining"] == 10000
+    assert rate_status["remaining_list_call_equivalent"] == 10000
     assert rate_status["api_key_value_recorded"] is False
     try:
         parse_rate_limit_status(
-            {"rate_limit": {"credits_remaining": 14999}},
+            {"rate_limit": {"credits_remaining": 1499}},
             {},
         )
         raise AssertionError("insufficient OpenAlex budget must fail closed")

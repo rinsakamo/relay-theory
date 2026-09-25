@@ -90,8 +90,9 @@
     "rate_limit_endpoint": "https://api.openalex.org/rate-limit",
     "rate_limit_authentication": "api_key query parameter, identical to ranking client",
     "minimum_remaining_list_call_equivalent_before_resume": 1500,
-    "list_call_credit_cost": 10,
-    "minimum_remaining_credits_before_resume": 15000,
+    "list_call_credit_cost": 1,
+    "minimum_remaining_credits_before_resume": 1500,
+    "credit_unit_authority": "OpenAlex list/filter request consumes 1 credit; search consumes 10 credits; this ranking path is list/filter OQL",
     "provider_429_policy": "fail current source transaction with no automatic retry; preserve earlier artifacts; resume only under a new versioned authorization after keyed rate-limit preflight"
   },
   "real_ranking_execution_authorized": true,
