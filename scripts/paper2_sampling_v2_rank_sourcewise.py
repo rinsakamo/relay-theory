@@ -10,8 +10,7 @@ deduplicates those prefixes, then computes the global citation-ranked ladder.
 
 Under a static provider state this is exact: a work in the global top L of a
 union must appear in the top L of at least one source set that contains it.
-OpenAlex is live, so duplicate Work IDs observed with different citation counts
-fail closed rather than being silently reconciled.
+OpenAlex is live, so duplicate Work IDs observed with different citation counts\nare reconciled only by a frozen first-observation rule: the earliest durable\nsource transaction supplies the ranking score, while every observation is\npreserved for audit. An era with observed citation drift is explicitly a\ntransaction-local frozen capture, not a single-provider-snapshot exact union.
 
 No eligibility/source-text adjudication, ClaimIR, decomposition, or null-control
 execution is performed here.
@@ -35,8 +34,8 @@ import paper2_openalex_manifest as manifest  # type: ignore
 import paper2_sampling_v2 as sampling  # type: ignore
 import paper2_sampling_v2_rank as rankv1  # type: ignore
 
-SCHEMA_VERSION = "paper2-sampling-v2-ranking-sourcewise-v2"
-RANKED_ERA_SCHEMA = "paper2-sampling-v2-ranked-era-sourcewise-v2"
+SCHEMA_VERSION = "paper2-sampling-v2-ranking-sourcewise-v3"
+RANKED_ERA_SCHEMA = "paper2-sampling-v2-ranked-era-sourcewise-v3"
 SOURCE_PREFIX_SCHEMA = "paper2-sampling-v2-source-prefix-v2"
 PAGE_SIZE = 100
 MAX_BASIC_ROWS = 10_000
@@ -80,6 +79,21 @@ def load_contract(path: Path) -> dict[str, Any]:
         raise ValueError("source-local boundary tie closure must remain enabled")
     if surface.get("complete_global_boundary_citation_tie") is not True:
         raise ValueError("global boundary tie closure must remain enabled")
+    if surface.get("duplicate_work_id_policy") != (
+        "DEDUP_BY_WORK_ID; CITATION DRIFT -> FREEZE EARLIEST SOURCE-TRANSACTION "
+        "OBSERVATION AND PRESERVE ALL OBSERVATIONS"
+    ):
+        raise ValueError("duplicate Work-ID citation policy drift")
+    if surface.get("live_duplicate_citation_resolution") != (
+        "earliest transaction_started_at, then source_id ascending; later duplicate "
+        "observations never overwrite the frozen ranking score"
+    ):
+        raise ValueError("live citation resolution policy drift")
+    if surface.get("capture_exactness_policy") != (
+        "STATIC_PROVIDER_EXACT_IF_NO_OBSERVED_CITATION_DRIFT; "
+        "OTHERWISE_TRANSACTION_LOCAL_FROZEN_CAPTURE"
+    ):
+        raise ValueError("capture exactness policy drift")
     ladder = value.get("candidate_ladder", {})
     if ladder.get("multiplier") != 5:
         raise ValueError("sourcewise candidate ladder multiplier must remain 5")
@@ -101,6 +115,11 @@ def load_contract(path: Path) -> dict[str, Any]:
         "coalesce null/non-null; fail closed on conflicting non-null values"
     ):
         raise ValueError("optional bibliographic metadata merge policy drift")
+    if metadata.get("duplicate_required_field_policy") != (
+        "year mismatch fails closed; cited_by_count drift is preserved and resolved "
+        "only by the frozen earliest-observation policy"
+    ):
+        raise ValueError("required duplicate metadata policy drift")
     execution = value.get("execution_protocol", {})
     if execution.get("granularity") != "one frozen source prefix per provider transaction, then local-only era merge":
         raise ValueError("sourcewise execution granularity drift")
@@ -112,6 +131,12 @@ def load_contract(path: Path) -> dict[str, Any]:
         raise ValueError("local era merge must require all 51 sources")
     if execution.get("merge_provider_calls") != 0:
         raise ValueError("local era merge must perform zero provider calls")
+    if execution.get("live_duplicate_citation_drift_policy") != (
+        "provider-free merge only; preserve all duplicate citation observations, "
+        "freeze earliest observation for ranking, report drift count/range, and "
+        "downgrade snapshot exactness classification"
+    ):
+        raise ValueError("live duplicate citation drift execution policy drift")
     if execution.get("openalex_api_key_required") is not True:
         raise ValueError("real sourcewise ranking must require an OpenAlex API key")
     if execution.get("mailto_rate_limit_control") is not False:
@@ -445,9 +470,13 @@ def merge_source_prefixes(
         raise ValueError("L must be positive")
     by_id: dict[str, dict[str, Any]] = {}
     sources_by_id: dict[str, set[str]] = {}
+    observations_by_id: dict[str, list[dict[str, Any]]] = {}
 
     for prefix in prefixes:
         sid = str(prefix["source_id"])
+        started_at = prefix.get("transaction_started_at")
+        if not isinstance(started_at, str) or not started_at.strip():
+            raise ValueError(f"{sid}: missing transaction_started_at for merge")
         rows = prefix.get("rows")
         if not isinstance(rows, list):
             raise ValueError(f"{sid}: missing prefix rows")
@@ -455,13 +484,15 @@ def merge_source_prefixes(
             normalized = dict(row)
             wid = rankv1.canonical_work_id(normalized.get("provider_work_id"))
             cited = int(normalized["cited_by_count"])
+            observations_by_id.setdefault(wid, []).append(
+                {
+                    "source_id": sid,
+                    "transaction_started_at": started_at,
+                    "cited_by_count": cited,
+                }
+            )
             if wid in by_id:
                 previous = by_id[wid]
-                if int(previous["cited_by_count"]) != cited:
-                    raise RuntimeError(
-                        f"LIVE_DUPLICATE_CITATION_DRIFT:{wid}:"
-                        f"{previous['cited_by_count']}!={cited}"
-                    )
                 if int(previous["year"]) != int(normalized["year"]):
                     raise RuntimeError(f"LIVE_DUPLICATE_METADATA_DRIFT:{wid}:year")
                 for field in ("title", "doi", "type"):
@@ -481,6 +512,26 @@ def merge_source_prefixes(
                 by_id[wid] = normalized
                 sources_by_id[wid] = set()
             sources_by_id[wid].add(sid)
+
+    for wid, row in by_id.items():
+        observations = sorted(
+            observations_by_id[wid],
+            key=lambda item: (
+                str(item["transaction_started_at"]),
+                str(item["source_id"]),
+            ),
+        )
+        frozen = observations[0]
+        counts = [int(item["cited_by_count"]) for item in observations]
+        row["cited_by_count"] = int(frozen["cited_by_count"])
+        row["citation_resolution_policy"] = "earliest_source_transaction_observation"
+        row["citation_selected_source_id"] = frozen["source_id"]
+        row["citation_selected_transaction_started_at"] = frozen["transaction_started_at"]
+        row["citation_observation_count"] = len(observations)
+        row["citation_count_min_observed"] = min(counts)
+        row["citation_count_max_observed"] = max(counts)
+        row["citation_count_drift"] = max(counts) - min(counts)
+        row["citation_observations"] = observations
 
     merged = list(by_id.values())
     merged.sort(key=lambda row: (-int(row["cited_by_count"]), row["provider_work_id"]))
@@ -515,6 +566,23 @@ def merge_source_prefixes(
     return out, boundary
 
 
+def citation_drift_summary(rows: list[dict[str, Any]]) -> dict[str, Any]:
+    drifted = [row for row in rows if int(row.get("citation_count_drift", 0)) > 0]
+    return {
+        "citation_resolution_policy": "earliest_source_transaction_observation",
+        "duplicate_citation_drift_work_count": len(drifted),
+        "maximum_duplicate_citation_drift": max(
+            (int(row["citation_count_drift"]) for row in drifted),
+            default=0,
+        ),
+        "capture_exactness": (
+            "STATIC_PROVIDER_EXACT_NO_OBSERVED_CITATION_DRIFT"
+            if not drifted
+            else "TRANSACTION_LOCAL_FROZEN_CAPTURE_OBSERVED_CITATION_DRIFT"
+        ),
+        "single_provider_snapshot_claimed": False if drifted else True,
+    }
+
 def fetch_ranked_era_sourcewise(
     client: retrieval.OpenAlexClient,
     *,
@@ -538,6 +606,7 @@ def fetch_ranked_era_sourcewise(
         )
 
     rows, global_boundary = merge_source_prefixes(prefixes, L=L, seeds=seeds)
+    drift_summary = citation_drift_summary(rows)
     summaries = [
         {
             key: prefix[key]
@@ -561,7 +630,7 @@ def fetch_ranked_era_sourcewise(
         "schema_version": RANKED_ERA_SCHEMA,
         "owner_issue": 167,
         "provider": "OpenAlex",
-        "ranking_strategy": "sourcewise_exact_union_merge_v2",
+        "ranking_strategy": "sourcewise_first_observation_freeze_v3",
         "era": era,
         "era_condition": era_condition,
         "transaction_started_at": started_at,
@@ -575,6 +644,7 @@ def fetch_ranked_era_sourcewise(
         "minimum_candidate_rows": L,
         "global_boundary_cited_by_count": global_boundary,
         "global_boundary_tie_closed": True,
+        **drift_summary,
         "frozen_row_count": len(rows),
         "source_summaries": summaries,
         "rows": rows,
@@ -618,7 +688,7 @@ def make_source_artifact(
         "schema_version": SOURCE_PREFIX_SCHEMA,
         "owner_issue": 167,
         "provider": "OpenAlex",
-        "ranking_strategy": "sourcewise_exact_union_merge_v2",
+        "ranking_strategy": "sourcewise_first_observation_freeze_v3",
         "era": era,
         "era_condition": era_condition,
         "source_id": sid,
@@ -754,10 +824,15 @@ def merge_source_artifacts(
     if len(artifacts) != 51:
         raise RuntimeError(f"SOURCE_ARTIFACT_COUNT_MISMATCH:{len(artifacts)}")
     prefixes = [
-        {"source_id": artifact["source_id"], "rows": artifact["rows"]}
+        {
+            "source_id": artifact["source_id"],
+            "transaction_started_at": artifact["transaction_started_at"],
+            "rows": artifact["rows"],
+        }
         for artifact in artifacts
     ]
     rows, global_boundary = merge_source_prefixes(prefixes, L=L, seeds=seeds)
+    drift_summary = citation_drift_summary(rows)
     summaries = [
         {
             key: artifact[key]
@@ -782,7 +857,7 @@ def merge_source_artifacts(
         "schema_version": RANKED_ERA_SCHEMA,
         "owner_issue": 167,
         "provider": "OpenAlex",
-        "ranking_strategy": "sourcewise_exact_union_merge_v2",
+        "ranking_strategy": "sourcewise_first_observation_freeze_v3",
         "execution_protocol": "durable_per_source_then_local_merge",
         "era": era,
         "era_condition": era_condition,
@@ -819,6 +894,7 @@ def synthetic_prefix(
     )
     return {
         "source_id": source,
+        "transaction_started_at": f"2000-01-01T00:00:{source[-1] if source[-1].isdigit() else '0'}0+00:00",
         "source_boundary_cited_by_count": boundary,
         "rows": frozen,
     }
@@ -1045,8 +1121,8 @@ def self_test() -> None:
     optional_filled["doi"] = "10.1000/example"
     coalesced, _ = merge_source_prefixes(
         [
-            {"source_id": "A", "rows": [optional_null]},
-            {"source_id": "B", "rows": [optional_filled]},
+            {"source_id": "A", "transaction_started_at": "2000-01-01T00:00:01+00:00", "rows": [optional_null]},
+            {"source_id": "B", "transaction_started_at": "2000-01-01T00:00:02+00:00", "rows": [optional_filled]},
         ],
         L=1,
         seeds=seeds,
@@ -1060,8 +1136,8 @@ def self_test() -> None:
     try:
         merge_source_prefixes(
             [
-                {"source_id": "A", "rows": [conflict_a]},
-                {"source_id": "B", "rows": [conflict_b]},
+                {"source_id": "A", "transaction_started_at": "2000-01-01T00:00:01+00:00", "rows": [conflict_a]},
+                {"source_id": "B", "transaction_started_at": "2000-01-01T00:00:02+00:00", "rows": [conflict_b]},
             ],
             L=1,
             seeds=seeds,
@@ -1070,16 +1146,34 @@ def self_test() -> None:
     except RuntimeError as exc:
         assert "LIVE_DUPLICATE_METADATA_DRIFT:W28:title" in str(exc)
 
-    # Duplicate Work-ID citation drift must fail closed.
+    # Duplicate Work-ID citation drift is preserved without allowing a later
+    # observation to overwrite the first frozen score.
     drift = [
-        {"source_id": "A", "rows": [row("W30", 10, "same")]},
-        {"source_id": "B", "rows": [row("W30", 11, "same")]},
+        {"source_id": "A", "transaction_started_at": "2000-01-01T00:00:01+00:00", "rows": [row("W30", 10, "same")]},
+        {"source_id": "B", "transaction_started_at": "2000-01-01T00:00:02+00:00", "rows": [row("W30", 11, "same")]},
     ]
-    try:
-        merge_source_prefixes(drift, L=1, seeds=seeds)
-        raise AssertionError("duplicate citation drift must fail")
-    except RuntimeError as exc:
-        assert "LIVE_DUPLICATE_CITATION_DRIFT" in str(exc)
+    drift_rows, _ = merge_source_prefixes(drift, L=1, seeds=seeds)
+    assert drift_rows[0]["cited_by_count"] == 10
+    assert drift_rows[0]["citation_count_min_observed"] == 10
+    assert drift_rows[0]["citation_count_max_observed"] == 11
+    assert drift_rows[0]["citation_count_drift"] == 1
+    assert drift_rows[0]["citation_observation_count"] == 2
+    assert drift_rows[0]["citation_selected_source_id"] == "A"
+    assert citation_drift_summary(drift_rows) == {
+        "citation_resolution_policy": "earliest_source_transaction_observation",
+        "duplicate_citation_drift_work_count": 1,
+        "maximum_duplicate_citation_drift": 1,
+        "capture_exactness": "TRANSACTION_LOCAL_FROZEN_CAPTURE_OBSERVED_CITATION_DRIFT",
+        "single_provider_snapshot_claimed": False,
+    }
+
+    reverse_drift = [
+        {"source_id": "A", "transaction_started_at": "2000-01-01T00:00:01+00:00", "rows": [row("W31", 12, "same")]},
+        {"source_id": "B", "transaction_started_at": "2000-01-01T00:00:02+00:00", "rows": [row("W31", 9, "same")]},
+    ]
+    reverse_rows, _ = merge_source_prefixes(reverse_drift, L=1, seeds=seeds)
+    assert reverse_rows[0]["cited_by_count"] == 12
+    assert reverse_rows[0]["citation_count_drift"] == 3
 
     # Calibration exclusion survives sourcewise merge.
     simon = row("W40", 1000, "A Behavioral Model of Rational Choice")
@@ -1089,8 +1183,8 @@ def self_test() -> None:
     normal["year"] = 1955
     cal_rows, _ = merge_source_prefixes(
         [
-            {"source_id": "A", "rows": [simon, normal]},
-            {"source_id": "B", "rows": [simon]},
+            {"source_id": "A", "transaction_started_at": "2000-01-01T00:00:01+00:00", "rows": [simon, normal]},
+            {"source_id": "B", "transaction_started_at": "2000-01-01T00:00:02+00:00", "rows": [simon]},
         ],
         L=1,
         seeds=seeds,
