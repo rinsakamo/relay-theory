@@ -24,6 +24,7 @@ import json
 import os
 import sys
 import urllib.error
+import urllib.parse
 import urllib.request
 from pathlib import Path
 from typing import Any
@@ -227,12 +228,15 @@ def parse_rate_limit_status(
 
 
 def rate_limit_preflight(api_key: str) -> dict[str, Any]:
+    # Use the same api_key query-parameter authentication form as the ranking client.
+    # OpenAlex documents query-param and Bearer authentication as equivalent, but
+    # keeping both surfaces identical removes preflight-only auth divergence.
+    url = RATE_LIMIT_ROOT + "?" + urllib.parse.urlencode({"api_key": api_key})
     req = urllib.request.Request(
-        RATE_LIMIT_ROOT,
+        url,
         headers={
             "User-Agent": retrieval.USER_AGENT,
             "Accept": "application/json",
-            "Authorization": f"Bearer {api_key}",
         },
         method="GET",
     )
@@ -242,6 +246,11 @@ def rate_limit_preflight(api_key: str) -> dict[str, Any]:
             headers = {str(k): str(v) for k, v in response.headers.items()}
     except urllib.error.HTTPError as exc:
         detail = exc.read().decode("utf-8", "replace")
+        if exc.code == 401:
+            raise RuntimeError(
+                "OPENALEX_API_KEY_INVALID:"
+                "provider returned HTTP 401 for keyed rate-limit preflight"
+            ) from exc
         raise RuntimeError(
             f"OPENALEX_RATE_LIMIT_PREFLIGHT_HTTP_{exc.code}:{detail}"
         ) from exc
@@ -871,6 +880,13 @@ def self_test() -> None:
         raise AssertionError("insufficient OpenAlex budget must fail closed")
     except RuntimeError as exc:
         assert "OPENALEX_RATE_LIMIT_BUDGET_INSUFFICIENT" in str(exc)
+
+    # Authentication failure remains distinct from budget exhaustion and ranking.
+    simulated_401 = RuntimeError(
+        "OPENALEX_API_KEY_INVALID:"
+        "provider returned HTTP 401 for keyed rate-limit preflight"
+    )
+    assert "OPENALEX_API_KEY_INVALID" in str(simulated_401)
 
     fake_counts = {
         "schema_version": retrieval_config["schema_version"],
