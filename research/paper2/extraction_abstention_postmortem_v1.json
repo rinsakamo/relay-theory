@@ -1,0 +1,343 @@
+{
+  "schema_version": "paper2-extraction-abstention-postmortem-v1",
+  "owner_issue": 189,
+  "parent_transaction_issue": 184,
+  "status": "TERMINAL_RECONCILED",
+  "architecture_consequence": "NONE",
+  "authority": {
+    "repository": "rinsakamo/relay-theory",
+    "main_head_at_inventory": "e2dc226f34bda1a306b45ef43461c4b9fdb034a1",
+    "main_tree_at_inventory": "56c7d7d1d5fbde868a37c431b51a51620a110a62",
+    "ruleset": {
+      "id": 23769009,
+      "name": "main-protection",
+      "enforcement": "active",
+      "allowed_merge_methods": ["squash"],
+      "required_linear_history": true,
+      "required_review_thread_resolution": true
+    },
+    "issues": {
+      "130": "OPEN",
+      "147": "OPEN",
+      "158": "OPEN",
+      "162": "CLOSED_COMPLETED",
+      "167": "OPEN",
+      "184": "CLOSED_COMPLETED",
+      "189": "OPEN_AT_INVENTORY"
+    },
+    "open_pull_requests": [
+      {
+        "number": 123,
+        "base": "main",
+        "head": "paper-1-draft-ja",
+        "draft": true,
+        "scope": "unrelated_paper_1"
+      }
+    ],
+    "repository_authority_files": [
+      {
+        "path": ".ai/README.md",
+        "sha256": "58d3757bfa034e2f466ed1420417237f076caa8ebcc24a6b9cf03fb1b3ed21fb"
+      },
+      {
+        "path": ".ai/forge-protocol.md",
+        "sha256": "64f6d334fa47e73ae06fad9cc9516e669ac3589ce00b278ad17a59f3846075ce"
+      }
+    ]
+  },
+  "evidence_inventory": {
+    "root_name": "paper2-184-20260924T152612Z",
+    "path_semantics": "relative_to_immutable_evidence_root",
+    "digest_algorithm": "SHA-256",
+    "line_serialization": "path<TAB>size_bytes<TAB>sha256 followed by LF, sorted by path",
+    "file_count": 22,
+    "inventory_sha256": "f3c9931f9b1d920f3a27b51862a09ecd3219601da209ec47e43ecdf4fb3c7720",
+    "files": [
+      {"path": "A/B0001/artifact-record.json", "size_bytes": 1845, "sha256": "aa65efdcc9b5fc0ac2302445af73dda5c51a65c303c7788f04cc3e8391b4049a"},
+      {"path": "A/B0001/candidate.json", "size_bytes": 1117, "sha256": "85581b44fe3edc24663b2db323a5e6d7c50c1db689614375826f0e519d8ca2b9"},
+      {"path": "A/B0001/claim-ir.json", "size_bytes": 1987, "sha256": "f011e095eac3e64f9ac9f8d3e00025fb277eeba84ee4fbc9e72d736efe3ae1a7"},
+      {"path": "A/B0001/decision.json", "size_bytes": 846, "sha256": "2634ce4320713b419b615fcc34ab24aa1bf5653a274996d2fc9a70fb3243852a"},
+      {"path": "A/B0001/normal-output.txt", "size_bytes": 595, "sha256": "42684f0a674024498832714cb1d50f6972557d7ea6949a23d8f85998fa9e86ed"},
+      {"path": "A/B0001/normal-request.json", "size_bytes": 2452, "sha256": "8ea4b6c1cf06a0cd8095397eae2f5aba58bfd08a37ba265b5338eb314c0366ba"},
+      {"path": "A/B0001/normal-response.json", "size_bytes": 1265, "sha256": "cd868c91fa7898c67e9fc8db07b9fe567efc74c48636b96eba5095eb58c5af55"},
+      {"path": "A/B0001/source-bundle.json", "size_bytes": 873, "sha256": "7ae16a522905be942255dd4114e570bcb18917f21439484ccdd25db3c6949b90"},
+      {"path": "A/B0001/systemone-answers.json", "size_bytes": 1278, "sha256": "39c7ef5359cfc8fa9a516ea1fd890021c241389bdf64b0fa3918583ef52590ec"},
+      {"path": "A/B0001/systemone-request.json", "size_bytes": 18779, "sha256": "8931f6d2801ef40396616132172f14f937adb25c5cc847877f287288b120ed02"},
+      {"path": "A/B0001/systemone-response.json", "size_bytes": 8614, "sha256": "a62feee6b42673f79119f01dd218bd156bb4eb14dc5aa1f314dbc99117a39fed"},
+      {"path": "A/B0002/normal-output.txt", "size_bytes": 461, "sha256": "6039de6aa407b497cb081fd521a21f37e24762bda826ed40e82229e0a77926da"},
+      {"path": "A/B0002/normal-request.json", "size_bytes": 2583, "sha256": "dfa42ac074a25cd17e54e5a942bd9fcab8d0ef10d8785a699fc8e0c4d69ee293"},
+      {"path": "A/B0002/normal-response.json", "size_bytes": 1131, "sha256": "a8b09db11797554c71b66eaebf1757e9c928245dad3d45f375c3aa48fe95db7e"},
+      {"path": "A/B0002/source-bundle.json", "size_bytes": 996, "sha256": "94dfa9b9a512d80416a7a23e7c6d483af94e897d9947e5dc0d1ddf6e6e91d3d2"},
+      {"path": "A/B0002/systemone-answers.json", "size_bytes": 1280, "sha256": "bab8bd266777cc707eeac0b357bc217824dc7a10f1b91fe1894c84819a2caced"},
+      {"path": "A/B0002/systemone-request.json", "size_bytes": 18623, "sha256": "37074b0437ffecaa44ae51c446f1e0b079d768a0304ddb223f4d425e54d25ae9"},
+      {"path": "A/B0002/systemone-response.json", "size_bytes": 8709, "sha256": "ed7c911c0ec204f63028437a9869a6d200d5c9972810e5b215bbbcccadbdf336"},
+      {"path": "preflight-attestation.json", "size_bytes": 3367, "sha256": "4e0bc6aaabbc56576ccb4cc13b426823e8ad500987a82cf29f3268baa45aa9c6"},
+      {"path": "runner-contract.json", "size_bytes": 653, "sha256": "c10a1ef0c942420902b557836fcca1a2d216ef326524f86b65fcddf24092d0b3"},
+      {"path": "transaction-receipt.json", "size_bytes": 30786, "sha256": "e9016c7337e1e6240af129fe8bf11edcef858e45720945c1e8b75f4db6a8ef43"},
+      {"path": "transaction-summary.json", "size_bytes": 31045, "sha256": "bf25718ed5deb9eceea6e822983f48830358e9a37cf1608b690b0a69fa12f68e"}
+    ]
+  },
+  "transaction": {
+    "evidence_root_name": "paper2-184-20260924T152612Z",
+    "terminal_classification": "SCIENTIFIC_TRANSACTION_CONSUMED_INCOMPLETE",
+    "no_retry": true,
+    "no_replay": true,
+    "no_b0002_requery": true,
+    "no_b0003_continuation": true,
+    "error_type": "DecisionUnresolved",
+    "error_field": "n1__role",
+    "error_choice": "__unresolved__",
+    "plan": {
+      "server_launches": 2,
+      "normal_calls": 10,
+      "systemone_calls": 10,
+      "total_calls": 20
+    },
+    "observed": {
+      "replicate": "A",
+      "last_bundle": "B0002",
+      "server_launches": 1,
+      "normal_calls_attempted": 2,
+      "normal_calls_completed": 2,
+      "systemone_calls_attempted": 2,
+      "systemone_calls_completed": 2,
+      "scientific_calls_attempted": 4,
+      "total_calls_completed": 4,
+      "valid_claim_ir_outputs": 1,
+      "retry": 0,
+      "replay": 0,
+      "fallback": 0,
+      "basis_decomposition_executed": false
+    },
+    "transaction_integrity": {
+      "classification": "NO_TRANSACTION_APPARATUS_DEFECT_EVIDENCED",
+      "distinction": "terminal consumed transaction status is separate from bundle extractability under the frozen interface",
+      "cleanup": {
+        "recorded": true,
+        "owned_process": true,
+        "terminated": true,
+        "exit_code": 0,
+        "record_sources": [
+          "transaction-summary.json:replicates[0].cleanup",
+          "transaction-receipt.json:replicates[0].cleanup"
+        ]
+      },
+      "separate_server_log": {
+        "present_in_inventory": false,
+        "status": "NO_SEPARATE_SERVER_LOG_FILE_IN_IMMUTABLE_ROOT"
+      }
+    }
+  },
+  "role_vocabulary": {
+    "schema_path": "research/paper2/extraction_systemone_decision_v2.schema.json",
+    "schema_sha256": "78a88194fa7e84200f792990aa04abd59a0fd7b8c6ca218a02c822785b8ed08b",
+    "resolved_choices": [
+      "condition",
+      "available_information",
+      "state_or_structure",
+      "intervention",
+      "response_or_outcome",
+      "criterion",
+      "probe",
+      "partition",
+      "other"
+    ],
+    "explicit_unresolved_choice": "__unresolved__",
+    "resolved_choices_sha256": "4c19bc2e3f4094288b2c658c1bf0ce9305a76cea6658a861bf2d01b011eba3b6",
+    "observed_n1_role_question_choices_sorted": [
+      "__unresolved__",
+      "available_information",
+      "condition",
+      "criterion",
+      "intervention",
+      "other",
+      "partition",
+      "probe",
+      "response_or_outcome",
+      "state_or_structure"
+    ],
+    "observed_n1_role_question_choices_sha256": "a3b3a5faf3efae8d7319334031fc6ad234fc2feb09d9c63653232bb1cfd50cd6"
+  },
+  "b0002": {
+    "replicate": "A",
+    "bundle_id": "B0002",
+    "masked_bundle_sha256": "94dfa9b9a512d80416a7a23e7c6d483af94e897d9947e5dc0d1ddf6e6e91d3d2",
+    "raw_normalized_source_sha256": "69ce9c6b61fead1a23978551ba6bb89f8a53c131b9991a691bce33bb4d5d86fc",
+    "raw_and_masked_source_bytes_committed": false,
+    "source_bundle": {
+      "schema_version": "paper2-extraction-source-bundle-v1",
+      "span_count": 5,
+      "span_ids": ["s1", "s2", "s3", "s4", "s5"],
+      "span_lengths": {"s1": 94, "s2": 211, "s3": 76, "s4": 199, "s5": 163},
+      "masked_marker_observed": true
+    },
+    "normal": {
+      "request_sha256": "dfa42ac074a25cd17e54e5a942bd9fcab8d0ef10d8785a699fc8e0c4d69ee293",
+      "response_sha256": "a8b09db11797554c71b66eaebf1757e9c928245dad3d45f375c3aa48fe95db7e",
+      "output_sha256": "6039de6aa407b497cb081fd521a21f37e24762bda826ed40e82229e0a77926da",
+      "output_size_bytes": 461,
+      "referenced_span_ids_in_order": ["s1", "s5", "s3", "s4"],
+      "focus_span_ids_after_frozen_cap": ["s1", "s3", "s4"],
+      "interpretation_role_signal": "framework-like structural node accounting for multiple capacities",
+      "advisory_only": true
+    },
+    "systemone": {
+      "request_sha256": "37074b0437ffecaa44ae51c446f1e0b079d768a0304ddb223f4d425e54d25ae9",
+      "response_sha256": "ed7c911c0ec204f63028437a9869a6d200d5c9972810e5b215bbbcccadbdf336",
+      "answers_sha256": "bab8bd266777cc707eeac0b357bc217824dc7a10f1b91fe1894c84819a2caced",
+      "question_count": 54,
+      "full_source_span_ids": ["s1", "s2", "s3", "s4", "s5"],
+      "focus_source_span_ids": ["s1", "s3", "s4"],
+      "cache_prompt": false,
+      "claim_type": {
+        "choice": "definition",
+        "confidence": 0.5628,
+        "probabilities": {
+          "__unresolved__": 0.0019,
+          "comparison": 0.0193,
+          "constraint": 0.0,
+          "counterfactual": 0.0,
+          "criterion": 0.0,
+          "definition": 0.566,
+          "mapping": 0.0671,
+          "other": 0.0001,
+          "relation": 0.3455
+        }
+      },
+      "modality": {
+        "choice": "descriptive",
+        "confidence": 0.9988,
+        "probabilities": {
+          "__unresolved__": 0.0,
+          "comparative": 0.0001,
+          "counterfactual": 0.0,
+          "definitional": 0.0001,
+          "descriptive": 0.9997,
+          "necessary": 0.0,
+          "other": 0.0,
+          "probabilistic": 0.0,
+          "sufficient": 0.0
+        }
+      },
+      "n1": {
+        "active": {
+          "choice": "yes",
+          "confidence": 0.3882,
+          "probabilities": {"__unresolved__": 0.041, "no": 0.2076, "yes": 0.7514}
+        },
+        "role": {
+          "choice": "__unresolved__",
+          "confidence": 0.8943,
+          "probabilities": {
+            "__unresolved__": 0.9374,
+            "available_information": 0.061,
+            "condition": 0.0001,
+            "criterion": 0.0003,
+            "intervention": 0.0,
+            "other": 0.0,
+            "partition": 0.0,
+            "probe": 0.0,
+            "response_or_outcome": 0.0001,
+            "state_or_structure": 0.0011
+          }
+        },
+        "anchor": {
+          "choice": "s1",
+          "confidence": 0.7579,
+          "probabilities": {"__unresolved__": 0.1041, "s1": 0.8957, "s3": 0.0001, "s4": 0.0001}
+        },
+        "grounding": {
+          "choice": "explicit",
+          "confidence": 0.9757,
+          "probabilities": {"__unresolved__": 0.0041, "explicit": 0.9959, "normalized": 0.0}
+        },
+        "source_span_selections": {
+          "s1": {"choice": "yes", "confidence": 0.9978, "probabilities": {"__unresolved__": 0.0, "no": 0.0003, "yes": 0.9997}},
+          "s3": {"choice": "yes", "confidence": 0.9876, "probabilities": {"__unresolved__": 0.0, "no": 0.0019, "yes": 0.9981}},
+          "s4": {"choice": "yes", "confidence": 0.9823, "probabilities": {"__unresolved__": 0.0, "no": 0.0028, "yes": 0.9972}}
+        }
+      }
+    },
+    "absent_after_terminal_stop": [
+      "A/B0002/decision.json",
+      "A/B0002/candidate.json",
+      "A/B0002/claim-ir.json",
+      "A/B0002/artifact-record.json"
+    ]
+  },
+  "adjudication": {
+    "basis_blind": true,
+    "decomposition_outcome_blind": true,
+    "author_prestige_blind": true,
+    "venue_blind": true,
+    "citation_count_blind": true,
+    "A_active_field": {
+      "classification": "ACTIVE_REQUIRED_FIELD",
+      "choice": "yes",
+      "evidence_path": "A/B0002/systemone-response.json:answers.n1__active"
+    },
+    "B_existing_role_support": {
+      "classification": "EXISTING_ROLE_SOURCE_SUPPORTED",
+      "candidate_role": "state_or_structure",
+      "supporting_span_ids": ["s1", "s5"],
+      "focus_span_ids_available_to_structural_questions": ["s1", "s3", "s4"],
+      "source_only_reason_code": "framework_like_construct_is_a_structural_node_without_construct_name"
+    },
+    "C_masking": {
+      "classification": "MASKING_NOT_CAUSAL",
+      "reason_code": "role_relevant_structural_context_survives_label_neutralization",
+      "construct_label_restoration_used": false
+    },
+    "D_normal_to_systemone": {
+      "classification": "DIRECTLY_SOURCE_MOTIVATED",
+      "normal_interpretation_was_advisory": true,
+      "n1_activation_only_normal_motivated": false,
+      "unsupported_normal_structure_found": false,
+      "focus_cap_observed": true,
+      "focus_cap_interpretation": "four normal span references yielded three frozen focus spans; this is recorded as evidence, not treated as a transport defect"
+    },
+    "E_outcome": {
+      "classification": "EXTRACTION_UNDERDETERMINED_ON_B0002",
+      "explicit_unresolved_is_valid_claim_ir": false,
+      "valid_claim_ir_rescue_performed": false,
+      "future_bundle_outcome": "EXTRACTION_ABSTAIN",
+      "extraction_abstain_equals_residual": false,
+      "original_row_remains_in_denominator": true,
+      "replacement_may_erase_original_row": false
+    }
+  },
+  "terminal_diagnostic": {
+    "primary_classification": "EXTRACTION_UNDERDETERMINED_ON_B0002",
+    "transaction_integrity_failure": false,
+    "one_bundle_not_extractable_under_frozen_interface": true,
+    "rejected_as_primary": {
+      "BUNDLE_LEVEL_ABSTENTION_REQUIRED": "not primary because preserved source supports the existing state_or_structure role; future protocols still need an explicit EXTRACTION_ABSTAIN outcome",
+      "CONSTRUCT_LABEL_NEUTRALIZATION_INSUFFICIENT": "not supported because role-relevant structural context remains after masking",
+      "CLAIM_IR_ROLE_INTERFACE_REDESIGN_REQUIRED": "not supported because state_or_structure is an existing finite role",
+      "NORMAL_TO_SYSTEMONE_GATING_REDESIGN_REQUIRED": "not supported as the primary cause because activation and role evidence are source-motivated; focus-cap observation is retained",
+      "TRANSACTION_APPARATUS_DEFECT_CONFIRMED": "not supported because n1__active is yes and cleanup/accounting are consistent",
+      "POSTMORTEM_UNDERDETERMINED": "not supported because immutable evidence contains the active value, role choice, probabilities, focus, source digests, and terminal accounting"
+    }
+  },
+  "future_protocol_boundary": {
+    "required_versioned_surface": "paper2-extraction-abstention-v2",
+    "required_bundle_outcome": "EXTRACTION_ABSTAIN",
+    "claim_ir_conversion_forbidden": true,
+    "residual_conversion_forbidden": true,
+    "denominator_attrition_accounting_required": true,
+    "result_dependent_replacement_forbidden": true,
+    "new_real_scientific_transaction_created": false,
+    "new_real_scientific_transaction_authorized": false,
+    "new_real_scientific_transaction_executed": false
+  },
+  "anti_overclaim": [
+    "This is a source-only postmortem of one terminal B0002 event, not a population extraction-faithfulness estimate.",
+    "The incomplete #184 transaction provides no valid A/B comparison because replicate B was not launched.",
+    "The result does not calibrate SystemOne probabilities or confidence values.",
+    "The result does not establish that ClaimIR v1 is globally inadequate.",
+    "The result does not establish that construct-label masking is globally inadequate.",
+    "The result is not a basis residual, does not authorize basis decomposition, and does not authorize #167 execution.",
+    "The result does not authorize retry, replay, B0002 re-query, B0003 continuation, source replacement, or a new real scientific transaction.",
+    "The result does not imply any RelayLM, RelaySelf, or other architecture change."
+  ]
+}
