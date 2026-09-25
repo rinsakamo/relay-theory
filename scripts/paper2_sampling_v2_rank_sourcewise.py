@@ -86,6 +86,11 @@ def load_contract(path: Path) -> dict[str, Any]:
         raise ValueError("cited_by_count must remain required for ranking")
     if metadata.get("work_id_required_for_ranking") is not True:
         raise ValueError("work_id must remain required for ranking")
+    if metadata.get("optional_string_normalization") != (
+        "display_name/title and type are retained only when non-empty strings; "
+        "null, blank, and non-string provider values normalize to null"
+    ):
+        raise ValueError("optional bibliographic string normalization drift")
     if metadata.get("duplicate_optional_field_policy") != (
         "coalesce null/non-null; fail closed on conflicting non-null values"
     ):
@@ -837,6 +842,22 @@ def self_test() -> None:
     assert missing_title["provider_work_id"] == "W110556196"
     assert missing_title["title"] is None
     assert rankv1.calibration_match(missing_title, seeds) == (None, None)
+
+    # Blank/non-string optional provider values normalize to null as well.
+    for bad_title in ("", "   ", 123, [], {}):
+        normalized = rankv1.normalize_provider_item(
+            {
+                "id": "https://openalex.org/W110556196",
+                "doi": None,
+                "display_name": bad_title,
+                "publication_year": 1975,
+                "cited_by_count": 42,
+                "type": {"unexpected": "shape"},
+            }
+        )
+        assert normalized["title"] is None
+        assert normalized["type"] is None
+        assert rankv1.calibration_match(normalized, seeds) == (None, None)
 
     # Optional null/non-null metadata is coalesced deterministically.
     optional_null = row("W29", 77, "filled title")
