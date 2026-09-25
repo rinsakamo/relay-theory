@@ -83,7 +83,15 @@
     "later_source_policy_after_failure": "do not execute later sources",
     "integrated_51_source_provider_run": "DISABLED",
     "merge_requires_all_51_sources": true,
-    "merge_provider_calls": 0
+    "merge_provider_calls": 0,
+    "openalex_api_key_required": true,
+    "mailto_rate_limit_control": false,
+    "rate_limit_preflight_required_after_429": true,
+    "rate_limit_endpoint": "https://api.openalex.org/rate-limit",
+    "minimum_remaining_list_call_equivalent_before_resume": 1500,
+    "list_call_credit_cost": 10,
+    "minimum_remaining_credits_before_resume": 15000,
+    "provider_429_policy": "fail current source transaction with no automatic retry; preserve earlier artifacts; resume only under a new versioned authorization after keyed rate-limit preflight"
   },
   "real_ranking_execution_authorized": true,
   "real_eligibility_screening_authorized": false
