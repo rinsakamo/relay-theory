@@ -1,0 +1,90 @@
+name: Paper 1 Foundations of Science CI
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - "paper/**"
+      - ".github/workflows/paper-1-foundations-of-science-ci.yml"
+permissions:
+  contents: read
+jobs:
+  fos-package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Verify manuscript metadata
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          x=Path("paper/venues/foundations-of-science/main.tex").read_text()
+          m=re.search(r"\\begin\{abstract\}(.*?)\\end\{abstract\}",x,re.S)
+          w=re.findall(r"\b[\w'-]+\b",m.group(1))
+          print("abstract_words",len(w))
+          assert 150 <= len(w) <= 250
+          km=re.search(r"\\textbf\{Keywords:\}\s*(.+)",x)
+          ks=[z.strip() for z in km.group(1).split(";")]
+          print("keywords",len(ks),ks)
+          assert 4 <= len(ks) <= 6
+          for s in ["Rintaro Sakamoto","0009-0002-0443-2508","Statements and Declarations","Data Availability","Use of Generative AI","Online Resource 1"]:
+              assert s in x, s
+          assert "Anonymous working draft" not in x
+          print("corresponding_email","PENDING_AUTHOR_INPUT" if "author input required before submission" in x.lower() else "PRESENT")
+          PY
+      - name: Install build tools
+        run: |
+          sudo apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-bibtex-extra texlive-publishers lmodern poppler-utils zip curl ca-certificates
+      - name: Build FoS PDF
+        run: |
+          set -euo pipefail
+          cp paper/references.bib paper/venues/foundations-of-science/references.bib
+          cd paper/venues/foundations-of-science
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          bibtex main
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          test -s main.pdf
+          if grep -En 'LaTeX Warning:|Package .* Warning:|Overfull \\hbox|Citation .* undefined|Reference .* undefined' main.log; then exit 1; fi
+          PAGES="$(pdfinfo main.pdf | awk -F: '/^Pages:/ {gsub(/ /,"",$2); print $2}')"
+          pdftotext main.pdf main.txt
+          grep -F "Rintaro Sakamoto" main.txt
+          grep -F "Statements and Declarations" main.txt
+          grep -F "Online Resource 1" main.txt
+          echo "PDF pages: $PAGES" >> "$GITHUB_STEP_SUMMARY"
+      - name: Install pinned Lean
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          "$HOME/.elan/bin/elan" toolchain install "$(cat paper/venues/foundations-of-science/lean-supplement/lean-toolchain)"
+      - name: Build Online Resource 1
+        run: |
+          set -euo pipefail
+          cd paper/venues/foundations-of-science/lean-supplement
+          if grep -REn '\b(sorry|admit|native_decide|axiom)\b' Paper1Audit.lean; then exit 1; fi
+          "$HOME/.elan/bin/lake" build
+          for n in $(seq 1 23); do grep -q "R$n" RESULT_MAP.md || exit 1; done
+          cd ..
+          zip -qr paper-1-fos-online-resource-1.zip lean-supplement
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: paper-1-foundations-of-science-pdf
+          path: paper/venues/foundations-of-science/main.pdf
+          if-no-files-found: error
+          retention-days: 14
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: paper-1-foundations-of-science-online-resource-1
+          path: paper/venues/foundations-of-science/paper-1-fos-online-resource-1.zip
+          if-no-files-found: error
+          retention-days: 14

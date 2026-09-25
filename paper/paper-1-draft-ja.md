@@ -9,7 +9,7 @@
 
 ## 要旨
 
-表現間に形式的な差があるという事実だけでは、target-level の individuation は正当化されない。exact deterministic な representation-to-target model の内部で、declared scope 全体にわたり universally sound な difference discriminator として用いる feature は fiber-invariant でなければならず、したがって target-induced quotient を介して descend しなければならない。その一方で scientific warrant は独立に必要である。さらに、representation-level observation を structurally admissible な test family を通じて target-level outcome に接続し、individuation-inference audit を定式化する。複数領域の事例で枠組みを例示し、機械検証された証明によって quotient descent と family-level separation を確認する。より一般的な methodological lesson は条件付きであり、formal distinction を target-level distinction に用いるには、declared target への warranted route が必要である。本枠組みはその assignment 自体を発見せず、unrestricted numerical identity も確立しない。
+形式的な表現には、科学者が個体化しようとする target の区別に必ずしも対応しない distinction が含まれる。本稿は、representation-level difference がどのような場合に target-level individuation inference へ正当に入ることができるかを監査するための cross-disciplinary methodological framework を提示する。exact deterministic な representation-to-target model では、declared scope 全体にわたり universally sound な difference discriminator である feature は fiber-invariant であることと、proposed target assignment が誘導する quotient を介して descend することが同値である。この formal result は意図的に minimal であり、assignment 自体を発見せず、その scientific warrant も供給しない。そこで本稿は structural admissibility、observation-to-target bridging、independent な empirical / measurement / causal / semantic warrant を分離し、representational re-encoding に対する counterfactual relevance audit を加える。bibliographic record は透明な motivating case、unique molecular identifier counting は scientific stress test、evidence synthesis はより大きな inferential unit への transfer、Lean development は formal dependency の検証という異なる役割を担う。得られる audit は metaphysical theory ではなく diagnostic method であり、formal difference が target plurality を支持する前に、target assignment、admissible structure、bridging、warrant のどこが必要になるかを明示する。
 
 ## 1. はじめに
 
@@ -51,6 +51,8 @@ database が外部から付与した metadata も、自動的に target property
 
 > **representation 内の formal difference は、どのような場合に、represented target を operationally distinct と扱う inference に入ることができるのか。**
 
+これは domain-specific な counting problem ではなく、foundational methodological problem である。同じ inferential form は、scientific practice が record、measurement、model component、evidence unit の distinction から represented target 間の distinction へ進むときに繰り返し現れる。したがって以下の framework は意図的に cross-disciplinary である一方、その formal core は small かつ明示的に conditional なまま保つ。
+
 本稿の答えには、混同すべきでない二つの層がある。
 
 第一は **structural condition** である。representation-level feature は declared target assignment を介して factor しなければならない。あるいは representation-level observation が、declared test のもとで target-level response と一致しなければならない。そのような factorization がなければ、その formal difference は representation 内の差にとどまる。
@@ -62,6 +64,8 @@ formal artifact が扱うのは第一の層だけである。それは structura
 この分離から、実践的な **counterfactual relevance audit** が導かれる。identifier-like feature について、どの種類の変更を考えているのかを問う。structure-preserving re-encoding は、inference が evidentially relevant と宣言した representation-level relation をすべて保存するなら、結論を変えるべきではない。一方、representation 間で value を再割当てすることは、その assignment 自体が scientifically grounded な relation を記録しているなら evidence を変えうる。assignment perturbation によって結論が変わるなら、その assignment がなぜ単なる representational difference ではなく target-relevant なのかを説明しなければならない。
 
 bibliographic case だけなら、これは bookkeeping や data integration の話に見えるかもしれない。そこで Section 3 では molecular counting を cross-domain scientific stress test として用いる。その後、同じ区別を evidence synthesis に戻し、report、study、estimate、independent evidence unit を混同してはならないことを示す。流れは意図的である。直感的な record linkage から experimental measurement へ進み、最後に literature-scale inference へ戻る。
+
+これらの example は独立した case study を並べたものではなく、methodological role が異なる。bibliographic case は inferential error を透明にする motivating case、UMI case は experimental measurement における stress test、evidence synthesis はより大きな inferential unit への transfer test であり、後半の construct-level discussion は明示的に prospective である。
 
 したがって novelty claim は狭い。本稿は target-directed representation、invariance、quotient mathematics、practice-relative individuation のいずれか単独を新規性として主張しない。貢献は、それらを一つの feature-level audit に統合し、quotient descent、test-specific transfer、independent scientific warrant、representation-preserving counterfactual check を individuation inference の中で分離することである。
 
@@ -479,6 +483,8 @@ Nguyen の比較は、model、その representational use、target system につ
 
 Suárez (2024) は representational force と inferential capacity を normative modeling practice 内の relational / context-dependent property として扱う contemporary inferential account を展開する。この立場は、本稿の structural factorization と scientific warrant の分離を補強する。本 formalism は、target assignment、key、measurement model、test を scientifically acceptable にする normative / empirical warrant 自体を導出しない。そうした commitment を **条件として**何が従うかを audit する。したがって貢献は complementary であり、already interpreted and warranted な representational practice 内の individuation inference に対する local conservativity test である。
 
+この representational landscape は現在も更新されている。Sartori (2026) は DEKI を用いて scientific model に対する representational approach と artefactual approach の調停を試み、target relation、interpretation、exemplification、feature salience が formal vehicle から自動的に生じるのではなく modeling practice 内の structured commitment であることを明確にする。この議論は本稿を置き換えるのではなく、より狭い downstream question を補強する。すなわち、そのような representational practice がすでに成立しているとき、どの internal difference を target-level individuation evidence として使えるのか、という問いである。
+
 ### 6.3 Inferential representation と experimental individuation
 
 Suárez (2004) と Contessa (2007) は、scientific representation における directionality、interpretation、surrogate inference を既に重視している。本稿は representation と target を結びつけること自体を新規性として主張しない。より狭く、**representational vehicle 内部の差**を individuation evidence として使う前に、何が明示されなければならないかを切り出す。
@@ -496,6 +502,14 @@ invariance 自体を新規な philosophical criterion として主張するわ�
 特徴的なのはその methodological use、すなわち target-induced quotient descent、structurally admissible test family、independent scientific warrant、counterfactual assignment analysis を一つの auditable individuation protocol に統合する点にある。
 
 また、individuation を支えない representational distinction が不要だということにもならない。surplus structure は別の representational task に有用または必要でありうる (Nguyen, Teh, and Wells 2020)。
+
+### 6.5 Measurement、Categorization、Representational Schemes
+
+本稿の formal/scientific boundary は、近年の measurement 論とも接続する。Rizza (2025) は formal measurement theory を独立した数学としてではなく、より広い scientific enquiry の context の中で理解すべきだと論じる。これは本稿の分離に直接関係する。quotient descent は proposed measurement / representation model が要求する structural dependency を特徴づけられるが、その model を受け入れる experimental / methodological warrant までは供給しない。
+
+scientific categorization に関する近年の研究も補完的な警告を与える。Runhardt (2025) は、scientific category に関する descriptive agreement と、categorization が subject matter によってどの程度 constrain されるべきかという normative question を分離する。本稿は conventionality を定量化しないが、individuation に対して類似の discipline を要求する。label や partitioning practice について consensus があること自体は、representation-level discriminator が declared target を追跡するかどうかを決めない。
+
+さらに Gomes (2025) は、symmetry-related theory に対する representational scheme を構成し、invariant observable と physical possibility に関する counterfactual reasoning を回復する。この project は physical symmetry に固有であり、本稿はそれを general individuation theory として輸入しない。関連性は methodological である。技術的には異なる setting でも、representational choice と、representationally inessential と見なす transformation の下で legitimate に残る structure を区別する必要があることを示している。
 
 ## 7. Outlook: Evidence Synthesis と Construct-Level Comparison
 
@@ -563,7 +577,7 @@ bibliographic record、molecular measurement、evidence synthesis という流�
 
 ## 9. Formal Audit Summary
 
-blind review copy では machine-checked claim を neutral label にまとめる。以下の grouped map は、各 family が何を検査し、どの declared dependency を使うかを示す。
+manuscript-to-artifact traceability のため、machine-checked claim を stable neutral label にまとめる。以下の grouped map は、各 family が何を検査し、どの declared dependency を使うかを示す。
 
 | Results | Informal claim family | Declared dependency |
 | --- | --- | --- |
@@ -636,4 +650,12 @@ Frigg, Roman, and James Nguyen. 2020. *Modelling Nature: An Opinionated Introduc
 Nguyen, James, and Roman Frigg. 2022. *Scientific Representation*. Elements in the Philosophy of Science. Cambridge: Cambridge University Press. DOI: 10.1017/9781009003575.
 
 Suárez, Mauricio. 2024. *Inference and Representation: A Study in Modeling Science*. Chicago: University of Chicago Press. DOI: 10.7208/chicago/9780226830032.001.0001.
+
+Rizza, Davide. 2025. “Measurement Theory in the Context of Scientific Enquiry.” *Synthese* 206, article 32. DOI: 10.1007/s11229-025-05109-0.
+
+Gomes, Henrique de A. 2025. “Representational Schemes for Theories with Symmetry.” *Synthese* 206, article 22. DOI: 10.1007/s11229-025-05045-z.
+
+Runhardt, Rosa W. 2025. “Categorizations qua Conventions: Measuring the Arbitrariness of Scientific Categorization.” *Philosophical Studies* 182: 3181–3201. DOI: 10.1007/s11098-025-02395-9.
+
+Sartori, Lorenzo. 2026. “Representation and Artefactualism: Towards a Synergic Understanding of Scientific Modelling.” *Synthese* 207, article 112. DOI: 10.1007/s11229-026-05490-4.
 

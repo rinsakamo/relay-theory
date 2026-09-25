@@ -9,7 +9,7 @@
 
 ## Abstract
 
-Formal differences between representations do not license target-level individuation. Within an exact deterministic representation-to-target model, a feature used as a universally sound difference discriminator over the declared scope must be fiber-invariant and hence descend through the target-induced quotient, while scientific warrant remains independent. We connect representation-level observations to target-level outcomes through structurally admissible test families and formulate an individuation-inference audit. Cross-domain cases illustrate it; machine-checked proofs verify quotient descent and family-level separation. The broader methodological lesson is conditional: formal distinctions require a warranted route to the declared target; the framework neither discovers that assignment nor establishes unrestricted numerical identity.
+Formal representations routinely contain distinctions that need not correspond to distinctions among the targets scientists intend to individuate. This paper develops a cross-disciplinary methodological framework for auditing when a representation-level difference may legitimately enter a target-level individuation inference. Within an exact deterministic representation-to-target model, a feature is a universally sound difference discriminator over a declared scope exactly when it is fiber-invariant, equivalently when it descends through the quotient induced by the proposed target assignment. This formal result is intentionally minimal: it neither discovers the assignment nor supplies scientific warrant for it. We therefore separate structural admissibility from observation-to-target bridging and from independent empirical, measurement, causal, or semantic warrant, and add a counterfactual relevance audit for representational re-encoding. A bibliographic record example motivates the problem; unique molecular identifier counting provides a scientific stress test; evidence synthesis illustrates transfer to larger inferential units; and a Lean development verifies the formal dependencies. The resulting audit is diagnostic rather than metaphysical: it identifies where individuation arguments must introduce target assignment, admissible structure, bridging, and warrant before formal difference can support target plurality.
 
 ## 1. Introduction
 
@@ -51,6 +51,8 @@ This paper asks a deliberately narrow question:
 
 > **When may a formal difference inside a representation enter an inference that treats represented targets as operationally distinct?**
 
+This is a foundational methodological problem rather than a domain-specific counting problem. The same inferential form recurs whenever scientific practice moves from distinctions in records, measurements, model components, or evidence units to claims about distinctions among represented targets. The framework below is therefore deliberately cross-disciplinary, while its formal core remains small and explicitly conditional.
+
 The answer developed here has two layers that should not be conflated.
 
 First, there is a **structural condition**. A representation-level feature must factor through the declared target assignment, or a representation-level observation must agree with a target-level response under the declared test. Without such factorization, the formal difference is only a difference in the representation.
@@ -62,6 +64,8 @@ The formal artifact addresses only the first layer. It makes structural dependen
 This separation motivates what we call a practical **counterfactual relevance audit**. For an identifier-like feature, ask what kind of change is being considered. A structure-preserving re-encoding should not change an inference when it preserves every representation-level relation that the inference declares evidentially relevant. By contrast, reassigning values across representations can alter evidence if the assignment itself records a scientifically grounded relation. If the conclusion changes under an assignment perturbation, the argument must explain why that assignment is target-relevant rather than merely representational.
 
 The bibliographic case makes the logic easy to see, but by itself it could be dismissed as a bookkeeping or data-integration problem. Section 3 therefore uses molecular counting as a cross-domain scientific stress test. The same distinction then returns in evidence synthesis, where reports, studies, estimates, and independent evidence units must not be conflated. The progression is deliberate: intuitive record linkage, experimental measurement, and finally literature-scale inference.
+
+These examples have different methodological roles rather than constituting independent case studies: the bibliographic case makes the inferential error transparent, the UMI case stress-tests the framework in experimental measurement, evidence synthesis tests transfer to larger inferential units, and the later construct-level discussion is explicitly prospective.
 
 Accordingly, the novelty claim is narrow. The paper does not claim target-directed representation, invariance, quotient mathematics, or practice-relative individuation as new in isolation. Its contribution is to combine these ingredients in a single feature-level audit that separates quotient descent, test-specific transfer, independent scientific warrant, and representation-preserving counterfactual checks for individuation inferences.
 
@@ -473,6 +477,8 @@ The present audit is not an alternative general theory of scientific representat
 
 Suárez (2024) develops a contemporary inferential account in which representational force and inferential capacity are relational and context-dependent within normative modeling practice. That perspective reinforces the separation made here between structural factorization and scientific warrant. The present formalism deliberately does not derive the normative or empirical warrant that makes a target assignment, key, measurement model, or test scientifically acceptable; it audits what follows *conditional on* those commitments. Its contribution is therefore complementary: a local conservativity test for individuation inferences inside an already interpreted and warranted representational practice.
 
+Recent work continues to develop this representational landscape. Sartori (2026) uses DEKI to reconcile representational and artefactual approaches to scientific models, emphasizing that target relation, interpretation, exemplification, and feature salience are structured commitments of modeling practice rather than automatic consequences of a formal vehicle. That development strengthens, rather than replaces, the present paper's narrower downstream question: once such a representational practice is in place, which internal differences may be used as target-level individuating evidence?
+
 ### 6.3 Inferential representation and experimental individuation
 
 Suárez (2004) and Contessa (2007) already emphasize directionality, interpretation, and surrogate inference in scientific representation. The present framework does not claim that connecting a representation to a target is novel. It isolates one narrower dependency: what must be true before a **difference internal to the representational vehicle** can enter an individuation inference.
@@ -490,6 +496,14 @@ Invariance itself is not a new philosophical criterion here. Liu (2015) explicit
 The distinctive use is methodological: combine target-induced quotient descent, structurally admissible test families, independent scientific warrant, and counterfactual assignment analysis in one auditable individuation protocol.
 
 Nor does failure to support individuation imply that a representational distinction is dispensable. Surplus structure can remain useful or even necessary for other representational tasks (Nguyen, Teh, and Wells 2020).
+
+### 6.5 Measurement, Categorization, and Representational Schemes
+
+The formal/scientific boundary in this paper also connects to current work on measurement. Rizza (2025) argues that formal measurement theory is best understood within the wider context of scientific enquiry rather than as freestanding mathematics. This bears directly on the distinction drawn here: quotient descent can characterize a structural dependency required by a proposed measurement or representation model, but it cannot by itself supply the experimental or methodological warrant for accepting that model.
+
+Current work on categorization gives a complementary warning. Runhardt (2025) separates descriptive agreement about scientific categories from the normative question of how constrained a categorization is by the subject matter. The present framework does not quantify conventionality, but it imposes an analogous discipline on individuation: agreement on labels or partitioning practice does not itself determine whether a representation-level discriminator tracks the declared target.
+
+Finally, Gomes (2025) develops representational schemes for symmetry-related theories in order to recover invariant observables and support counterfactual reasoning about physical possibilities. That project is specific to physical symmetry and is not imported here as a general individuation theory. Its relevance is methodological: it shows, in a technically different setting, why one must distinguish representational choice from the structure that remains legitimate under the transformations treated as representationally inessential.
 
 ## 7. Outlook: Evidence Synthesis and Construct-Level Comparison
 
@@ -557,7 +571,7 @@ Finally, operational separation is not metaphysical numerical identity, and sync
 
 ## 9. Formal Audit Summary
 
-For the blind review copy, the machine-checked claims are grouped under neutral labels. The grouped map below states what each family checks and which declared dependency it uses.
+For manuscript-to-artifact traceability, the machine-checked claims are grouped under stable neutral labels. The grouped map below states what each family checks and which declared dependency it uses.
 
 | Results | Informal claim family | Declared dependency |
 | --- | --- | --- |
@@ -630,4 +644,12 @@ Frigg, Roman, and James Nguyen. 2020. *Modelling Nature: An Opinionated Introduc
 Nguyen, James, and Roman Frigg. 2022. *Scientific Representation*. Elements in the Philosophy of Science. Cambridge: Cambridge University Press. DOI: 10.1017/9781009003575.
 
 Suárez, Mauricio. 2024. *Inference and Representation: A Study in Modeling Science*. Chicago: University of Chicago Press. DOI: 10.7208/chicago/9780226830032.001.0001.
+
+Rizza, Davide. 2025. “Measurement Theory in the Context of Scientific Enquiry.” *Synthese* 206, article 32. DOI: 10.1007/s11229-025-05109-0.
+
+Gomes, Henrique de A. 2025. “Representational Schemes for Theories with Symmetry.” *Synthese* 206, article 22. DOI: 10.1007/s11229-025-05045-z.
+
+Runhardt, Rosa W. 2025. “Categorizations qua Conventions: Measuring the Arbitrariness of Scientific Categorization.” *Philosophical Studies* 182: 3181–3201. DOI: 10.1007/s11098-025-02395-9.
+
+Sartori, Lorenzo. 2026. “Representation and Artefactualism: Towards a Synergic Understanding of Scientific Modelling.” *Synthese* 207, article 112. DOI: 10.1007/s11229-026-05490-4.
 

@@ -1,3 +1,5 @@
+% Foundations of Science Standard Article adaptation.
+% Venue-neutral substantive source: paper/main.tex
 \documentclass[11pt]{article}
 
 \usepackage[margin=1in]{geometry}
@@ -16,7 +18,10 @@
 
 \title{When May a Formal Difference Enter an Individuation Inference?\\
 \large Target Factorization, Restricted Tests, and Cross-Domain Audits}
-\author{Anonymous working draft}
+\author{Rintaro Sakamoto, MPH\\
+Independent Scholar, Japan\\
+ORCID: \href{https://orcid.org/0009-0002-0443-2508}{0009-0002-0443-2508}\\
+\textit{Corresponding-author email: author input required before submission}}
 \date{}
 
 \newcommand{\Indist}{\mathrel{\equiv}}
@@ -30,6 +35,9 @@
 Formal representations routinely contain distinctions that need not correspond to distinctions among the targets scientists intend to individuate. This paper develops a cross-disciplinary methodological framework for auditing when a representation-level difference may legitimately enter a target-level individuation inference. Within an exact deterministic representation-to-target model, a feature is a universally sound difference discriminator over a declared scope exactly when it is fiber-invariant, equivalently when it descends through the quotient induced by the proposed target assignment. This formal result is intentionally minimal: it neither discovers the assignment nor supplies scientific warrant for it. We therefore separate structural admissibility from observation-to-target bridging and from independent empirical, measurement, causal, or semantic warrant, and add a counterfactual relevance audit for representational re-encoding. A bibliographic record example motivates the problem; unique molecular identifier counting provides a scientific stress test; evidence synthesis illustrates transfer to larger inferential units; and a Lean development verifies the formal dependencies. The resulting audit is diagnostic rather than metaphysical: it identifies where individuation arguments must introduce target assignment, admissible structure, bridging, and warrant before formal difference can support target plurality.
 
 \end{abstract}
+
+\noindent\textbf{Keywords:} scientific representation; individuation; invariance; measurement; quotient structure; scientific methodology
+
 \section{Introduction}
 
 Formal representations routinely contain more distinctions than the target-level claims for which they are used. Different variable names, database records, file-level identifiers, labels, and constructors can all be formally distinguishable even when those differences do not track distinct target-level individuals.
@@ -620,7 +628,7 @@ R23 & Fiber invariance, universal soundness of feature-difference inference, and
 \label{tab:formal-audit}
 \end{table}
 
-The number of small theorems is not itself a novelty claim. The collection is a machine-checkable record of the dependency structure. The complete set of neutral result labels is \texttt{R1}, \texttt{R2}, \texttt{R3}, \texttt{R4}, \texttt{R5}, \texttt{R6}, \texttt{R7}, \texttt{R8}, \texttt{R9}, \texttt{R10}, \texttt{R11}, \texttt{R12}, \texttt{R13}, \texttt{R14}, \texttt{R15}, \texttt{R16}, \texttt{R17}, \texttt{R18}, \texttt{R19}, \texttt{R20}, \texttt{R21}, \texttt{R22}, and \texttt{R23}.
+The number of small theorems is not itself a novelty claim. The collection is a machine-checkable record of the dependency structure. The complete set of neutral result labels is \texttt{R1}, \texttt{R2}, \texttt{R3}, \texttt{R4}, \texttt{R5}, \texttt{R6}, \texttt{R7}, \texttt{R8}, \texttt{R9}, \texttt{R10}, \texttt{R11}, \texttt{R12}, \texttt{R13}, \texttt{R14}, \texttt{R15}, \texttt{R16}, \texttt{R17}, \texttt{R18}, \texttt{R19}, \texttt{R20}, \texttt{R21}, \texttt{R22}, and \texttt{R23}. The standalone Lean source, pinned toolchain, build instructions, and one-to-one result map are supplied as \textbf{Online Resource 1}.
 
 \section{Conclusion}
 
@@ -637,6 +645,26 @@ Across all of these cases, identifierhood, labelhood, or multiplicity alone has 
 \begin{quote}
 \textbf{When an individuation claim depends on a formal difference, require that the difference survive the target quotient, expose the observation-to-target bridge and its independent warrant, and keep the conclusion within the declared test regime.}
 \end{quote}
+
+\section*{Statements and Declarations}
+
+\subsection*{Funding}
+No restricted funding sources supported this submission.
+
+\subsection*{Competing Interests}
+The author declares no competing interests.
+
+\subsection*{Data Availability}
+No datasets were generated or analysed during the current study.
+
+\subsection*{Code and Supplementary Material Availability}
+The Lean 4 source used for dependency verification, its pinned toolchain, build instructions, and the R1--R23 result map are supplied as Online Resource 1. The formal artifact verifies dependency structure only and does not establish scientific warrant.
+
+\subsection*{Author Contributions}
+The sole author conceived the study, developed the conceptual framework, carried out the formal analysis, verified the manuscript-to-artifact mapping, and wrote and revised the manuscript.
+
+\subsection*{Use of Generative AI}
+The author used OpenAI ChatGPT (GPT-5.6 Sol, September 2026) to assist with drafting, restructuring, translation, literature-search query formulation, and editorial revision. The author independently verified the arguments, references, formal claims, and final manuscript and takes full responsibility for the accuracy, integrity, and originality of the content.
 
 \bibliographystyle{plainnat}
 \bibliography{references}
