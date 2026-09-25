@@ -1,0 +1,39 @@
+name: paper2-two-pass-extraction-transaction-v2-selftest
+
+on:
+  pull_request:
+    paths:
+      - "scripts/paper2_extraction_two_pass_llama_cpp_transaction_v2.py"
+      - "scripts/paper2_extraction_abstention_v2.py"
+      - "research/paper2/extraction_abstention_v2.json"
+      - "research/paper2/extraction_abstention_postmortem_v1.json"
+      - "research/paper2/extraction_two_pass_real_protocol_v1.json"
+      - "research/paper2/sampling_v1.json"
+      - ".github/workflows/paper2-two-pass-extraction-transaction-v2-selftest.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "scripts/paper2_extraction_two_pass_llama_cpp_transaction_v2.py"
+      - "scripts/paper2_extraction_abstention_v2.py"
+      - "research/paper2/extraction_abstention_v2.json"
+      - "research/paper2/extraction_abstention_postmortem_v1.json"
+      - "research/paper2/extraction_two_pass_real_protocol_v1.json"
+      - "research/paper2/sampling_v1.json"
+      - ".github/workflows/paper2-two-pass-extraction-transaction-v2-selftest.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile transaction v2
+        run: python -m py_compile scripts/paper2_extraction_two_pass_llama_cpp_transaction_v2.py
+      - name: Run transaction v2 destructive self-test
+        run: python scripts/paper2_extraction_two_pass_llama_cpp_transaction_v2.py --self-test
