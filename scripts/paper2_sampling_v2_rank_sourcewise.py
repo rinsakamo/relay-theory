@@ -23,6 +23,8 @@ import hashlib
 import json
 import os
 import sys
+import urllib.error
+import urllib.request
 from pathlib import Path
 from typing import Any
 
@@ -37,6 +39,9 @@ RANKED_ERA_SCHEMA = "paper2-sampling-v2-ranked-era-sourcewise-v2"
 SOURCE_PREFIX_SCHEMA = "paper2-sampling-v2-source-prefix-v2"
 PAGE_SIZE = 100
 MAX_BASIC_ROWS = 10_000
+RATE_LIMIT_ROOT = "https://api.openalex.org/rate-limit"
+MIN_REMAINING_CREDITS = 15_000
+LIST_CALL_CREDIT_COST = 10
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -106,6 +111,18 @@ def load_contract(path: Path) -> dict[str, Any]:
         raise ValueError("local era merge must require all 51 sources")
     if execution.get("merge_provider_calls") != 0:
         raise ValueError("local era merge must perform zero provider calls")
+    if execution.get("openalex_api_key_required") is not True:
+        raise ValueError("real sourcewise ranking must require an OpenAlex API key")
+    if execution.get("mailto_rate_limit_control") is not False:
+        raise ValueError("mailto must not be treated as a rate-limit control")
+    if execution.get("rate_limit_preflight_required_after_429") is not True:
+        raise ValueError("rate-limit preflight must remain required after 429")
+    if execution.get("rate_limit_endpoint") != RATE_LIMIT_ROOT:
+        raise ValueError("OpenAlex rate-limit endpoint drift")
+    if execution.get("minimum_remaining_credits_before_resume") != MIN_REMAINING_CREDITS:
+        raise ValueError("minimum remaining credit authority drift")
+    if execution.get("list_call_credit_cost") != LIST_CALL_CREDIT_COST:
+        raise ValueError("OpenAlex list-call credit cost authority drift")
     if value.get("real_eligibility_screening_authorized") is not False:
         raise ValueError("real eligibility screening must remain blocked")
     status = value.get("status")
@@ -119,6 +136,123 @@ def load_contract(path: Path) -> dict[str, Any]:
     else:
         raise ValueError("unknown sourcewise ranking authorization state")
     return value
+
+
+def require_openalex_api_key() -> str:
+    value = os.environ.get("OPENALEX_API_KEY")
+    if not isinstance(value, str) or not value.strip():
+        raise RuntimeError(
+            "OPENALEX_API_KEY_REQUIRED:"
+            "real ranked-candidate acquisition must not use the anonymous budget"
+        )
+    return value.strip()
+
+
+def parse_rate_limit_status(
+    payload: dict[str, Any],
+    headers: dict[str, str],
+    *,
+    minimum_remaining_credits: int = MIN_REMAINING_CREDITS,
+) -> dict[str, Any]:
+    lower_headers = {str(k).lower(): str(v) for k, v in headers.items()}
+    remaining_raw = lower_headers.get("x-ratelimit-remaining")
+    limit_raw = lower_headers.get("x-ratelimit-limit")
+    reset_raw = lower_headers.get("x-ratelimit-reset")
+
+    rate = payload.get("rate_limit")
+    if not isinstance(rate, dict):
+        rate = {}
+
+    if remaining_raw is None:
+        candidate = rate.get("credits_remaining")
+        if isinstance(candidate, (int, float)):
+            remaining_raw = str(candidate)
+    if limit_raw is None:
+        candidate = rate.get("credits_limit")
+        if isinstance(candidate, (int, float)):
+            limit_raw = str(candidate)
+    if reset_raw is None:
+        candidate = rate.get("resets_in_seconds")
+        if isinstance(candidate, (int, float)):
+            reset_raw = str(candidate)
+
+    if remaining_raw is None:
+        raise RuntimeError("OPENALEX_RATE_LIMIT_REMAINING_UNAVAILABLE")
+
+    try:
+        remaining = int(float(remaining_raw))
+    except ValueError as exc:
+        raise RuntimeError("OPENALEX_RATE_LIMIT_REMAINING_MALFORMED") from exc
+
+    limit_value: int | None = None
+    if limit_raw is not None:
+        try:
+            limit_value = int(float(limit_raw))
+        except ValueError:
+            limit_value = None
+
+    reset_seconds: int | None = None
+    if reset_raw is not None:
+        try:
+            reset_seconds = int(float(reset_raw))
+        except ValueError:
+            reset_seconds = None
+
+    list_call_equivalent = remaining // LIST_CALL_CREDIT_COST
+    if remaining < minimum_remaining_credits:
+        raise RuntimeError(
+            "OPENALEX_RATE_LIMIT_BUDGET_INSUFFICIENT:"
+            f"remaining_credits={remaining}:"
+            f"required_credits={minimum_remaining_credits}:"
+            f"reset_seconds={reset_seconds}"
+        )
+
+    return {
+        "schema_version": "paper2-openalex-rate-limit-preflight-v1",
+        "provider": "OpenAlex",
+        "checked_at": retrieval.utc_now(),
+        "api_key_present": True,
+        "api_key_value_recorded": False,
+        "credits_limit": limit_value,
+        "credits_remaining": remaining,
+        "list_call_credit_cost": LIST_CALL_CREDIT_COST,
+        "remaining_list_call_equivalent": list_call_equivalent,
+        "minimum_remaining_credits_required": minimum_remaining_credits,
+        "minimum_remaining_list_call_equivalent_required": (
+            minimum_remaining_credits // LIST_CALL_CREDIT_COST
+        ),
+        "reset_seconds": reset_seconds,
+        "classification": "OPENALEX_KEYED_BUDGET_PREFLIGHT_PASS",
+    }
+
+
+def rate_limit_preflight(api_key: str) -> dict[str, Any]:
+    req = urllib.request.Request(
+        RATE_LIMIT_ROOT,
+        headers={
+            "User-Agent": retrieval.USER_AGENT,
+            "Accept": "application/json",
+            "Authorization": f"Bearer {api_key}",
+        },
+        method="GET",
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=60) as response:
+            payload = json.load(response)
+            headers = {str(k): str(v) for k, v in response.headers.items()}
+    except urllib.error.HTTPError as exc:
+        detail = exc.read().decode("utf-8", "replace")
+        raise RuntimeError(
+            f"OPENALEX_RATE_LIMIT_PREFLIGHT_HTTP_{exc.code}:{detail}"
+        ) from exc
+    except (urllib.error.URLError, TimeoutError) as exc:
+        raise RuntimeError(f"OPENALEX_RATE_LIMIT_PREFLIGHT_TRANSPORT:{exc}") from exc
+
+    if not isinstance(payload, dict):
+        raise RuntimeError("OPENALEX_RATE_LIMIT_PREFLIGHT_MALFORMED")
+    # Never persist any provider-returned api_key field.
+    payload = {k: v for k, v in payload.items() if str(k).lower() != "api_key"}
+    return parse_rate_limit_status(payload, headers)
 
 
 def source_id(spec: dict[str, Any]) -> str:
@@ -708,11 +842,35 @@ def self_test() -> None:
     seeds = rankv1.seed_registry(retrieval_config)
 
     assert contract["real_eligibility_screening_authorized"] is False
+    assert contract["execution_protocol"]["openalex_api_key_required"] is True
+    assert contract["execution_protocol"]["minimum_remaining_credits_before_resume"] == 15000
     assert contract["candidate_ladder"]["multiplier"] == 5
     assert contract["execution_protocol"]["integrated_51_source_provider_run"] == "DISABLED"
     assert contract["execution_protocol"]["merge_provider_calls"] == 0
     quotas = rankv1.quota_map(era_freeze)
     assert sum(5 * quota for quota in quotas.values()) == 5000
+
+    rate_status = parse_rate_limit_status(
+        {
+            "rate_limit": {
+                "credits_limit": 100000,
+                "credits_remaining": 20000,
+                "resets_in_seconds": 3600,
+            }
+        },
+        {},
+    )
+    assert rate_status["credits_remaining"] == 20000
+    assert rate_status["remaining_list_call_equivalent"] == 2000
+    assert rate_status["api_key_value_recorded"] is False
+    try:
+        parse_rate_limit_status(
+            {"rate_limit": {"credits_remaining": 14999}},
+            {},
+        )
+        raise AssertionError("insufficient OpenAlex budget must fail closed")
+    except RuntimeError as exc:
+        assert "OPENALEX_RATE_LIMIT_BUDGET_INSUFFICIENT" in str(exc)
 
     fake_counts = {
         "schema_version": retrieval_config["schema_version"],
@@ -938,6 +1096,7 @@ def main() -> int:
     parser.add_argument("--merge-era-sources", action="store_true")
     parser.add_argument("--fetch-ranked-era", action="store_true")
     parser.add_argument("--self-test", action="store_true")
+    parser.add_argument("--rate-limit-preflight", action="store_true")
     parser.add_argument("--output", type=Path)
     parser.add_argument("--pause", type=float, default=0.12)
     args = parser.parse_args()
@@ -947,6 +1106,18 @@ def main() -> int:
         return 0
 
     contract = load_contract(args.contract)
+
+    if args.rate_limit_preflight:
+        if args.fetch_source or args.merge_era_sources or args.fetch_ranked_era:
+            raise ValueError("rate-limit preflight must be a standalone operation")
+        if args.output is None:
+            raise ValueError("--rate-limit-preflight requires --output")
+        if args.output.exists():
+            raise RuntimeError(f"OUTPUT_ALREADY_EXISTS:{args.output}")
+        api_key = require_openalex_api_key()
+        status = rate_limit_preflight(api_key)
+        write_json_atomic(args.output, status)
+        return 0
     if contract.get("real_ranking_execution_authorized") is not True:
         raise RuntimeError("REAL_SOURCEWISE_RANKING_EXECUTION_NOT_AUTHORIZED")
     if args.fetch_ranked_era:
@@ -985,9 +1156,10 @@ def main() -> int:
         if len(matched) != 1:
             raise ValueError(f"unknown frozen source id: {args.source_id}")
         spec = matched[0]
+        api_key = require_openalex_api_key()
         client = retrieval.OpenAlexClient(
-            api_key=os.environ.get("OPENALEX_API_KEY"),
-            mailto=os.environ.get("OPENALEX_MAILTO"),
+            api_key=api_key,
+            mailto=None,
             pause=args.pause,
         )
         prefix = fetch_source_prefix(
