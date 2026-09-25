@@ -1,0 +1,37 @@
+name: paper2-extraction-abstention-v2-selftest
+
+on:
+  pull_request:
+    paths:
+      - "research/paper2/extraction_abstention_v2.json"
+      - "scripts/paper2_extraction_abstention_v2.py"
+      - ".github/workflows/paper2-extraction-abstention-v2-selftest.yml"
+      - "research/paper2/extraction_abstention_postmortem_v1.json"
+      - "research/paper2/sampling_v1.json"
+      - "scripts/paper2_extraction_two_pass_systemone_v2.py"
+  push:
+    branches:
+      - main
+    paths:
+      - "research/paper2/extraction_abstention_v2.json"
+      - "scripts/paper2_extraction_abstention_v2.py"
+      - ".github/workflows/paper2-extraction-abstention-v2-selftest.yml"
+      - "research/paper2/extraction_abstention_postmortem_v1.json"
+      - "research/paper2/sampling_v1.json"
+      - "scripts/paper2_extraction_two_pass_systemone_v2.py"
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile abstention interface
+        run: python -m py_compile scripts/paper2_extraction_abstention_v2.py
+      - name: Run abstention interface destructive self-test
+        run: python scripts/paper2_extraction_abstention_v2.py --self-test
