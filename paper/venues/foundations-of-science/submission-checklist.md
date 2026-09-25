@@ -8,6 +8,7 @@ Audit date: 2026-09-26. Owner: #206.
 - [x] Six keywords.
 - [x] Rintaro Sakamoto, MPH / Independent Scholar / Japan / ORCID restored.
 - [ ] Active corresponding-author email inserted.
+- [ ] City of residence inserted if required for the unaffiliated-author title-page record.
 - [x] Statements and Declarations.
 - [x] Prior author-confirmed competing-interests status: none.
 - [x] Prior author-confirmed funding wording preserved: “No restricted funding sources supported this submission.”
@@ -15,6 +16,7 @@ Audit date: 2026-09-26. Owner: #206.
 - [x] Generative-AI disclosure.
 - [x] One-paragraph author biography.
 - [x] Online Resource 1 Lean package with pinned 4.33.1 toolchain and R1–R23 map.
+- [x] Online Resource 1 is given a descriptive manuscript caption and packaged by CI as `ESM_1.zip`.
 - [x] Reviewer suggestions recognized as optional; no fabricated contacts.
 - [x] Cover letter prepared, not submitted.
 - [ ] At submission time, confirm no concurrent review elsewhere.

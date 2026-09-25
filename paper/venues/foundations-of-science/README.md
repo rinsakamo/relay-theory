@@ -9,4 +9,4 @@ Owner: #206
 
 This is the non-anonymous FoS adaptation. The historical Philosophy of Science package remains untouched in the sibling directory.
 
-Current blocker: the active corresponding-author email required by FoS has not been established and must be supplied by the author before submission. No journal submission is authorized by this repository transaction.
+Current blockers: the active corresponding-author email has not been established, and the FoS unaffiliated-author guidance calls for city + country while only Japan is established. Email and city must be supplied by the author before submission. No journal submission is authorized by this repository transaction.

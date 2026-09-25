@@ -75,7 +75,7 @@ jobs:
           "$HOME/.elan/bin/lake" build
           for n in $(seq 1 23); do grep -q "R$n" RESULT_MAP.md || exit 1; done
           cd ..
-          zip -qr paper-1-fos-online-resource-1.zip lean-supplement
+          zip -qr ESM_1.zip lean-supplement
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: paper-1-foundations-of-science-pdf
@@ -85,6 +85,6 @@ jobs:
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: paper-1-foundations-of-science-online-resource-1
-          path: paper/venues/foundations-of-science/paper-1-fos-online-resource-1.zip
+          path: paper/venues/foundations-of-science/ESM_1.zip
           if-no-files-found: error
           retention-days: 14
