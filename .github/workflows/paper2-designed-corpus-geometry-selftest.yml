@@ -1,0 +1,32 @@
+name: paper2-designed-corpus-geometry-selftest
+
+on:
+  pull_request:
+    paths:
+      - "research/paper2/designed_corpus_geometry_v1.json"
+      - "scripts/paper2_designed_corpus_geometry_validate.py"
+      - ".github/workflows/paper2-designed-corpus-geometry-selftest.yml"
+  push:
+    branches: [main]
+    paths:
+      - "research/paper2/designed_corpus_geometry_v1.json"
+      - "scripts/paper2_designed_corpus_geometry_validate.py"
+      - ".github/workflows/paper2-designed-corpus-geometry-selftest.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile validator
+        run: python -m py_compile scripts/paper2_designed_corpus_geometry_validate.py
+      - name: Parse geometry
+        run: python -m json.tool research/paper2/designed_corpus_geometry_v1.json >/dev/null
+      - name: Run destructive geometry self-test
+        run: python scripts/paper2_designed_corpus_geometry_validate.py --self-test
