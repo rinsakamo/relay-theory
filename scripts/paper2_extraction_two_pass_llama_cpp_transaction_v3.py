@@ -1279,8 +1279,13 @@ class H(BaseHTTPRequestHandler):
         if self.path == "/health": self.send({"status":"ok"}); return
         if self.path == "/v1/models": self.send({"data":[{"id":"fake-model"}]}); return
         if self.path == "/props":
+            runtime_bad = plan.get("runtime_bad", {}).get(replicate, False)
             self.send({
-                "build_info": f"build 11066 revision {revision}",
+                "build_info": (
+                    "build 99999 revision wrong"
+                    if runtime_bad
+                    else f"build 11066 revision {revision}"
+                ),
                 "model_alias":"fake-model",
                 "model_path":str(Path(args.m).resolve()),
                 "default_generation_settings":{"n_ctx":args.c},
@@ -1549,17 +1554,58 @@ def self_test() -> None:
         ]
         expect(len(attempts) == 1, "transport failure no retry")
 
-        # Evidence root replay is impossible.
+        # Runtime attestation failure is pre-model and transaction-fatal.
+        rc, summary, log = synthetic_case(
+            root,
+            "runtime-bad",
+            {"runtime_bad":{"A":True}},
+        )
+        expect(rc == 2, "runtime attestation failure blocks")
+        expect(summary["counters"]["total_calls_attempted"] == 0, "runtime failure before model calls")
+        expect(len(log) == 0, "runtime failure emits no model request")
+
+        # Evidence root replay is impossible and preserves prior evidence.
         inputs = make_synthetic_inputs(root / "existing", {})
         evidence = root / "existing" / "evidence"
         evidence.mkdir()
         (evidence / "sentinel").write_text("preserve\n")
+        rc, summary = run_core(
+            preflight_data=inputs,
+            llama_root=inputs["llama"],
+            server_binary=inputs["server"],
+            model_path=inputs["model"],
+            evidence_root=evidence,
+            port=inputs["runtime"]["port"],
+            synthetic=True,
+            fixture_plan=inputs["fixture_plan"],
+        )
+        expect(rc == 2, "existing evidence root blocks execution")
+        expect(summary["counters"]["total_calls_attempted"] == 0, "existing root zero calls")
+        expect((evidence / "sentinel").read_text() == "preserve\n", "existing evidence preserved")
+
+        # Real execution cannot self-authorize: a missing read-back authorization
+        # fails before examining or spending any scientific request.
         try:
-            evidence.mkdir(parents=True, exist_ok=False)
-        except FileExistsError:
+            verify_authorization(
+                repo_root=repo_root,
+                evidence_root=root / "never-used-evidence",
+                manifest=manifest,
+                comment_id=None,
+                status=None,
+                authorized_head=None,
+                authorized_tree=None,
+                authorized_runner_blob=None,
+                authorized_manifest_blob=None,
+                authorized_v3_schema_blob=None,
+                authorized_v3_contract_blob=None,
+                authorized_v3_compiler_blob=None,
+                authorized_claim_ir_blob=None,
+                authorized_evidence_root=None,
+            )
+        except V3TransactionError:
             pass
         else:
-            raise AssertionError("existing evidence root must block exclusive creation")
+            raise AssertionError("missing read-back authorization must fail closed")
 
     print("PAPER2_V3_REAL_CALIBRATION_TRANSACTION_SELFTEST_PASS")
 
