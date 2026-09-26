@@ -5,6 +5,7 @@ on:
     paths:
       - "research/paper2/designed_corpus_geometry_v1.json"
       - "research/paper2/designed_source_candidate_ledger_v1.*"
+      - "research/paper2/designed_atlas_forging_exclusion_v1.json"
       - "scripts/paper2_designed_source_candidate_ledger_validate.py"
       - ".github/workflows/paper2-designed-source-ledger-selftest.yml"
   push:
@@ -12,6 +13,7 @@ on:
     paths:
       - "research/paper2/designed_corpus_geometry_v1.json"
       - "research/paper2/designed_source_candidate_ledger_v1.*"
+      - "research/paper2/designed_atlas_forging_exclusion_v1.json"
       - "scripts/paper2_designed_source_candidate_ledger_validate.py"
       - ".github/workflows/paper2-designed-source-ledger-selftest.yml"
 
@@ -32,5 +34,6 @@ jobs:
         run: |
           python -m json.tool research/paper2/designed_source_candidate_ledger_v1.schema.json >/dev/null
           python -m json.tool research/paper2/designed_source_candidate_ledger_v1.template.json >/dev/null
+          python -m json.tool research/paper2/designed_atlas_forging_exclusion_v1.json >/dev/null
       - name: Run destructive source-ledger self-test
         run: python scripts/paper2_designed_source_candidate_ledger_validate.py --self-test
