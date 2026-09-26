@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/rinsakamo/relay-theory/blob/main/research/paper2/phi_object_v1.schema.json",
+  "title": "Paper 2 Phi object v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "basis_version",
+    "claim_type",
+    "modality",
+    "scope_shape",
+    "active_axes",
+    "nodes",
+    "edges",
+    "temporal",
+    "controls",
+    "approximation",
+    "bridges"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "paper2-phi-object-v1"
+    },
+    "basis_version": {
+      "const": "paper2-working-basis-v1"
+    },
+    "claim_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "modality": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope_shape": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "conditions",
+        "population",
+        "substrate",
+        "task",
+        "temporal_scope"
+      ],
+      "properties": {
+        "conditions": {
+          "type": "boolean"
+        },
+        "population": {
+          "type": "boolean"
+        },
+        "substrate": {
+          "type": "boolean"
+        },
+        "task": {
+          "type": "boolean"
+        },
+        "temporal_scope": {
+          "type": "boolean"
+        }
+      }
+    },
+    "active_axes": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "S",
+          "Pi",
+          "K",
+          "O",
+          "T",
+          "C",
+          "Q",
+          "P"
+        ]
+      }
+    },
+    "nodes": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object"
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "family",
+          "kind",
+          "ordered_arguments",
+          "arguments",
+          "conditional_on",
+          "temporal_direction",
+          "grounding"
+        ],
+        "properties": {
+          "family": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "ordered_arguments": {
+            "type": "boolean"
+          },
+          "arguments": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string"
+            }
+          },
+          "conditional_on": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "temporal_direction": {
+            "type": "string"
+          },
+          "grounding": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "temporal": {
+      "type": "object"
+    },
+    "controls": {
+      "type": "object"
+    },
+    "approximation": {
+      "type": "object"
+    },
+    "bridges": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
