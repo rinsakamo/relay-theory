@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/rinsakamo/relay-theory/blob/main/research/paper2/eligibility_runner_config_v1.schema.json",
+  "title": "Paper 2 eligibility OpenAI-compatible runner config v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "classifier_identity",
+    "classifier_revision",
+    "base_url",
+    "model",
+    "temperature",
+    "top_p",
+    "max_tokens",
+    "timeout_seconds",
+    "response_format",
+    "api_key_env"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "paper2-eligibility-runner-config-v1"
+    },
+    "classifier_identity": {
+      "type": "string",
+      "minLength": 1
+    },
+    "classifier_revision": {
+      "type": "string",
+      "minLength": 1
+    },
+    "base_url": {
+      "type": "string",
+      "pattern": "^https?://"
+    },
+    "model": {
+      "type": "string",
+      "minLength": 1
+    },
+    "temperature": {
+      "const": 0
+    },
+    "top_p": {
+      "const": 1
+    },
+    "max_tokens": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "timeout_seconds": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 3600
+    },
+    "response_format": {
+      "const": "json_object"
+    },
+    "api_key_env": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}
