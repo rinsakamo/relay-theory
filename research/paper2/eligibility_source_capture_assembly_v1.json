@@ -1,0 +1,121 @@
+{
+  "schema_version": "paper2-eligibility-source-capture-assembly-v1",
+  "owner_issue": 221,
+  "parent_adjudication_issue": 214,
+  "parent_screening_issue": 212,
+  "status": "APPARATUS_ONLY_REAL_SOURCE_ACQUISITION_NOT_AUTHORIZED",
+  "bound_parent_blobs": {
+    "research/paper2/eligibility_source_bundle_v1.schema.json": "8513dcb205767994e7a4f97fd090c4ed1a0e3546",
+    "scripts/paper2_eligibility_adjudication_validate.py": "2473c6acb7ea529df91979026c72bd1b151b831d",
+    "research/paper2/eligibility_adjudication_v1.json": "5bb4c8411e1cd01bf93ca3d626cbac909afc94e8"
+  },
+  "capture_schema": "paper2-eligibility-source-capture-v1",
+  "output_bundle_schema": "paper2-eligibility-source-bundle-v1",
+  "capture_states": [
+    "CAPTURE_READY",
+    "TERMINAL_INACCESSIBLE",
+    "TECHNICAL_FAILURE",
+    "INTEGRITY_REVIEW_REQUIRED",
+    "INTEGRITY_FAILED"
+  ],
+  "accessible_source_states": [
+    "FULL_TEXT",
+    "PARTIAL_TEXT",
+    "ABSTRACT_ONLY"
+  ],
+  "inaccessible_source_state": "INACCESSIBLE",
+  "assembly_requirements": {
+    "capture_state": "CAPTURE_READY",
+    "identity_binding": "VERIFIED",
+    "payload_class": "INSPECTABLE_SOURCE_TEXT",
+    "max_content_units": 32,
+    "max_total_utf8_bytes": 24576,
+    "preserve_all_units_exactly_once": true,
+    "preserve_unit_order": true,
+    "truncate_allowed": false,
+    "summarize_allowed": false,
+    "semantic_search_or_selection_allowed": false,
+    "source_text_repair_allowed": false,
+    "opaque_span_ids": "s1..sn"
+  },
+  "inaccessible_bypass": {
+    "capture_state": "TERMINAL_INACCESSIBLE",
+    "source_access_status": "INACCESSIBLE",
+    "bundle_emitted": false,
+    "receipt_state": "SOURCE_INACCESSIBLE"
+  },
+  "technical_failure": {
+    "source_access_status_must_be_null": true,
+    "bundle_emitted": false,
+    "receipt_state": "TECHNICAL_FAILURE",
+    "may_be_relabelled_inaccessible": false
+  },
+  "integrity_review": {
+    "review_required_bundle_emitted": false,
+    "integrity_failed_bundle_emitted": false,
+    "mismatch_suspected_bundle_emitted": false,
+    "non_source_payload_bundle_emitted": false,
+    "provider_abstract_automatically_trusted": false
+  },
+  "model_facing_allowed_fields": [
+    "schema_version",
+    "bundle_id",
+    "source_language",
+    "source_access_status",
+    "source_spans"
+  ],
+  "model_facing_forbidden_metadata": [
+    "provider_work_id",
+    "stable_locator",
+    "source_kind",
+    "retrieved_at",
+    "capture_unit_id",
+    "source_locator",
+    "title",
+    "doi",
+    "author",
+    "authors",
+    "institution",
+    "institutions",
+    "venue",
+    "citation_count",
+    "cited_by_count",
+    "rank",
+    "journal",
+    "registry_commentary",
+    "claim_ir",
+    "claimir",
+    "basis",
+    "basis_mapping",
+    "decomposition",
+    "pass_result",
+    "residual",
+    "coverage",
+    "null_result",
+    "downstream_selection_status"
+  ],
+  "receipt_required_fields": [
+    "schema_version",
+    "owner_issue",
+    "assembler_version",
+    "capture_id",
+    "provider_work_id",
+    "capture_state",
+    "source_access_status",
+    "capture_sha256",
+    "captured_content_sha256",
+    "integrity",
+    "bundle_emitted",
+    "bundle_sha256",
+    "span_mapping",
+    "receipt_state",
+    "model_calls"
+  ],
+  "real_ranked_work_acquisition_authorized": false,
+  "real_model_execution_authorized": false,
+  "heldout_screening_authorized": false,
+  "claim_ir_authorized": false,
+  "decomposition_authorized": false,
+  "null_execution_authorized": false,
+  "architecture_consequence": "NONE"
+}
