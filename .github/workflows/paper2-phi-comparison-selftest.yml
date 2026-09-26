@@ -1,0 +1,38 @@
+name: paper2-phi-comparison-selftest
+
+on:
+  pull_request:
+    paths:
+      - "research/paper2/phi_comparison_v1.json"
+      - "research/paper2/working_basis_v1.json"
+      - "research/paper2/structural_signature_v1.*"
+      - "scripts/paper2_phi_compare.py"
+      - "scripts/paper2_structural_signature_*.py"
+      - ".github/workflows/paper2-phi-comparison-selftest.yml"
+  push:
+    branches: [main]
+    paths:
+      - "research/paper2/phi_comparison_v1.json"
+      - "research/paper2/working_basis_v1.json"
+      - "research/paper2/structural_signature_v1.*"
+      - "scripts/paper2_phi_compare.py"
+      - "scripts/paper2_structural_signature_*.py"
+      - ".github/workflows/paper2-phi-comparison-selftest.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile comparator
+        run: python -m py_compile scripts/paper2_phi_compare.py
+      - name: Parse Phi comparison contract
+        run: python -m json.tool research/paper2/phi_comparison_v1.json >/dev/null
+      - name: Run destructive Phi self-test
+        run: python scripts/paper2_phi_compare.py --self-test
