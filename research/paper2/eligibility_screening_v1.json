@@ -1,0 +1,157 @@
+{
+  "schema_version": "paper2-eligibility-screening-contract-v1",
+  "owner_issue": 212,
+  "coordination_issue": 130,
+  "upstream_authority": {
+    "eligibility": "paper2-eligibility-v1.1 (#133)",
+    "sampling": "paper2-sampling-v2 (#167 terminal)",
+    "sampling_terminal_classification": "PAPER2_ALL_NINE_SOURCEWISE_RANKED_LADDERS_FROZEN",
+    "statistical_core": "#158 retained downstream safeguards"
+  },
+  "status": "APPARATUS_ONLY_REAL_SCREENING_NOT_AUTHORIZED",
+  "frozen_era_order": [
+    "PRE_1950",
+    "1950-1959",
+    "1960-1969",
+    "1970-1979",
+    "1980-1989",
+    "1990-1999",
+    "2000-2009",
+    "2010-2019",
+    "2020-2026"
+  ],
+  "frozen_quotas": {
+    "PRE_1950": 68,
+    "1950-1959": 65,
+    "1960-1969": 71,
+    "1970-1979": 81,
+    "1980-1989": 90,
+    "1990-1999": 106,
+    "2000-2009": 137,
+    "2010-2019": 188,
+    "2020-2026": 194
+  },
+  "total_primary_work_target": 1000,
+  "accepted_ranked_artifact_schemas": [
+    "paper2-sampling-v2-ranked-era-sourcewise-v2",
+    "paper2-sampling-v2-ranked-era-sourcewise-v3",
+    "paper2-sampling-v2-ranked-era-sourcewise-v4",
+    "paper2-sampling-v2-ranked-era-sourcewise-v5",
+    "paper2-sampling-v2-ranked-era-sourcewise-v6"
+  ],
+  "ladder_requirements": {
+    "global_boundary_tie_closed": true,
+    "merge_provider_calls": 0,
+    "rank_order": "strict ascending integer rank beginning at 1",
+    "provider_work_id_unique_within_era": true,
+    "calibration_state_source": "frozen ranked-row screening_state == CALIBRATION_EXCLUDED"
+  },
+  "screening_states": [
+    "INCLUDE",
+    "EXCLUDE",
+    "ELIGIBILITY_UNCERTAIN",
+    "SOURCE_INACCESSIBLE",
+    "CALIBRATION_EXCLUDED",
+    "UNSCREENED_AFTER_QUOTA"
+  ],
+  "adjudicated_noncalibration_states": [
+    "INCLUDE",
+    "EXCLUDE",
+    "ELIGIBILITY_UNCERTAIN",
+    "SOURCE_INACCESSIBLE"
+  ],
+  "source_access_states": [
+    "FULL_TEXT",
+    "PARTIAL_TEXT",
+    "ABSTRACT_ONLY",
+    "INACCESSIBLE"
+  ],
+  "claim_routes": [
+    "A_EXPLICIT_COGNITIVE_CAPACITY",
+    "B_GENERAL_ADAPTIVE_INFORMATION_PROCESSING"
+  ],
+  "operational_roles": [
+    "CONTEXT",
+    "INPUT_OR_INTERVENTION",
+    "INFORMATION_OR_REPRESENTATION",
+    "INTERNAL_OR_RELATIONAL_STRUCTURE",
+    "RESPONSE_OR_OUTPUT",
+    "CRITERION_OR_COMPARISON",
+    "DEPENDENCY_OR_SENSITIVITY",
+    "TIME_OR_HORIZON"
+  ],
+  "exclusion_checks": [
+    "task_use_only",
+    "covariate_or_score_only",
+    "local_association_only",
+    "applied_outcome_only",
+    "implementation_only_no_general_claim",
+    "terminology_match_only",
+    "pure_formalism_without_functional_capacity_claim",
+    "no_inspectable_claim"
+  ],
+  "forbidden_key_names_recursive": [
+    "claimir",
+    "claim_ir",
+    "basis_elements",
+    "basis_mapping",
+    "decomposition_success",
+    "decomposition_failure",
+    "pass",
+    "residual",
+    "coverage_score",
+    "lean_theorem",
+    "lean_result",
+    "witness_generation_result",
+    "null_control_result",
+    "basis_extension",
+    "basis_extension_request"
+  ],
+  "inclusion_minimum": {
+    "classifier_version": "paper2-eligibility-v1.1",
+    "at_least_one_claim_with_route": true,
+    "generalization": "YES",
+    "construct_level_relevance": "YES",
+    "operational_roles_minimum": 1
+  },
+  "screening_algorithm": {
+    "direction": "ascending frozen rank",
+    "quota_fill_state": "INCLUDE",
+    "nonfilling_states": [
+      "EXCLUDE",
+      "ELIGIBILITY_UNCERTAIN",
+      "SOURCE_INACCESSIBLE",
+      "CALIBRATION_EXCLUDED"
+    ],
+    "post_quota_noncalibration_state": "UNSCREENED_AFTER_QUOTA",
+    "post_quota_adjudication_allowed": false,
+    "screening_holes_before_terminal_rank_allowed": false,
+    "post_freeze_replacement_limit": 0,
+    "ad_hoc_replacement_allowed": false,
+    "reranking_allowed": false,
+    "current_citation_refresh_allowed": false,
+    "ladder_exhaustion_classification": "LADDER_EXHAUSTED_BEFORE_QUOTA"
+  },
+  "output": {
+    "era_schema": "paper2-eligibility-screening-era-v1",
+    "corpus_schema": "paper2-primary-work-corpus-v1",
+    "required_input_hashes": [
+      "ranked_artifact_sha256",
+      "ranked_index_sha256",
+      "adjudication_bundle_sha256"
+    ],
+    "selected_order": "rank ascending within frozen era order"
+  },
+  "retained_downstream_safeguards": {
+    "max_selected_claims_per_work": 3,
+    "enumerate_claims_before_cap": true,
+    "paper_level_clustering": true,
+    "cluster_bootstrap_replicates": 2000,
+    "null_permutations": 100,
+    "result_dependent_stopping_or_expansion": false
+  },
+  "real_source_acquisition_authorized": false,
+  "real_eligibility_adjudication_authorized": false,
+  "real_primary_corpus_freeze_authorized": false,
+  "architecture_consequence": "NONE"
+}
