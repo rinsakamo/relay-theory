@@ -1,5 +1,5 @@
 {
-  "schema_version": "paper2-sampling-v2-ranking-sourcewise-v5",
+  "schema_version": "paper2-sampling-v2-ranking-sourcewise-v6",
   "owner_issue": 167,
   "status": "REAL_SOURCEWISE_RANKING_EXECUTION_AUTHORIZED_ELIGIBILITY_NOT_AUTHORIZED",
   "supersedes": "paper2-sampling-v2-ranking-v1 direct-union provider execution after PRE_1950 HTTP 500",
@@ -103,7 +103,13 @@
     "provider_429_policy": "fail current source transaction with no automatic retry; preserve earlier artifacts; resume only under a new versioned authorization after keyed rate-limit preflight",
     "live_duplicate_citation_drift_policy": "provider-free merge only; preserve all duplicate citation observations, freeze earliest observation for ranking, report drift count/range, and downgrade snapshot exactness classification",
     "live_duplicate_optional_type_drift_policy": "provider-free merge only; type conflicts do not affect ranking or calibration identity, are preserved in an observation ledger, and set single_provider_snapshot_claimed=false",
-    "live_duplicate_optional_title_drift_policy": "provider-free merge only; preserve all title observations; permit conflicting non-null titles only when their Top50 calibration outcomes are identical under the frozen DOI/year; otherwise fail closed with LIVE_DUPLICATE_CALIBRATION_IDENTITY_DRIFT"
+    "live_duplicate_optional_title_drift_policy": "provider-free merge only; preserve all title observations; permit conflicting non-null titles only when their Top50 calibration outcomes are identical under the frozen DOI/year; otherwise fail closed with LIVE_DUPLICATE_CALIBRATION_IDENTITY_DRIFT",
+    "source_union_drift_audit_scope": "deduplicated union of all 51 frozen source-prefix artifacts before the global L cutoff",
+    "ranked_row_scope": "global top-L plus complete global citation-boundary tie after source-union deduplication",
+    "drift_witness_retention": "retain one provider-free audit witness per drifted Work ID even when that Work falls below the global ranked ladder; witness records ranked-membership plus only the drifted dimension ledgers",
+    "rank_membership_rule": "drift witness retention is audit-only and never promotes a Work into ranked rows",
+    "drift_summary_required_on_provider_free_merge": true,
+    "failed_ranked_artifact_policy": "a merge artifact that writes successfully but fails qualification remains immutable historical evidence; a repaired authority must write a new versioned output path rather than overwrite or delete it"
   },
   "real_ranking_execution_authorized": true,
   "real_eligibility_screening_authorized": false

@@ -40,8 +40,8 @@ import paper2_openalex_manifest as manifest  # type: ignore
 import paper2_sampling_v2 as sampling  # type: ignore
 import paper2_sampling_v2_rank as rankv1  # type: ignore
 
-SCHEMA_VERSION = "paper2-sampling-v2-ranking-sourcewise-v5"
-RANKED_ERA_SCHEMA = "paper2-sampling-v2-ranked-era-sourcewise-v5"
+SCHEMA_VERSION = "paper2-sampling-v2-ranking-sourcewise-v6"
+RANKED_ERA_SCHEMA = "paper2-sampling-v2-ranked-era-sourcewise-v6"
 SOURCE_PREFIX_SCHEMA = "paper2-sampling-v2-source-prefix-v2"
 PAGE_SIZE = 100
 MAX_BASIC_ROWS = 10_000
@@ -188,6 +188,35 @@ def load_contract(path: Path) -> dict[str, Any]:
         "single_provider_snapshot_claimed=false"
     ):
         raise ValueError("live duplicate optional type drift policy drift")
+    if execution.get("source_union_drift_audit_scope") != (
+        "deduplicated union of all 51 frozen source-prefix artifacts before the "
+        "global L cutoff"
+    ):
+        raise ValueError("source-union drift audit scope drift")
+    if execution.get("ranked_row_scope") != (
+        "global top-L plus complete global citation-boundary tie after source-union "
+        "deduplication"
+    ):
+        raise ValueError("ranked row scope drift")
+    if execution.get("drift_witness_retention") != (
+        "retain one provider-free audit witness per drifted Work ID even when that "
+        "Work falls below the global ranked ladder; witness records ranked-membership "
+        "plus only the drifted dimension ledgers"
+    ):
+        raise ValueError("drift witness retention policy drift")
+    if execution.get("rank_membership_rule") != (
+        "drift witness retention is audit-only and never promotes a Work into ranked rows"
+    ):
+        raise ValueError("drift witness rank-membership policy drift")
+    if execution.get("drift_summary_required_on_provider_free_merge") is not True:
+        raise ValueError("provider-free merge must emit source-union drift summary")
+    if execution.get("failed_ranked_artifact_policy") != (
+        "a merge artifact that writes successfully but fails qualification remains "
+        "immutable historical evidence; a repaired authority must write a new "
+        "versioned output path rather than overwrite or delete it"
+    ):
+        raise ValueError("failed ranked artifact preservation policy drift")
+
     if execution.get("openalex_api_key_required") is not True:
         raise ValueError("real sourcewise ranking must require an OpenAlex API key")
     if execution.get("mailto_rate_limit_control") is not False:
@@ -511,12 +540,12 @@ def fetch_source_prefix(
     }
 
 
-def merge_source_prefixes(
+def _merge_source_prefixes_core(
     prefixes: list[dict[str, Any]],
     *,
     L: int,
     seeds: list[dict[str, Any]],
-) -> tuple[list[dict[str, Any]], int]:
+) -> tuple[list[dict[str, Any]], int, dict[str, Any]]:
     if L < 1:
         raise ValueError("L must be positive")
     by_id: dict[str, dict[str, Any]] = {}
@@ -755,7 +784,132 @@ def merge_source_prefixes(
                 "classifier_version": "paper2-eligibility-v1.1",
             }
         )
-    return out, boundary
+    ranked_ids = {row["provider_work_id"] for row in out}
+    source_union_summary = live_drift_summary(merged)
+    drift_witnesses = build_source_union_drift_witnesses(
+        merged,
+        ranked_ids=ranked_ids,
+    )
+    audit = {
+        **source_union_summary,
+        "drift_summary_scope": "DEDUPLICATED_SOURCE_PREFIX_UNION_BEFORE_GLOBAL_L_CUT",
+        "source_union_unique_work_count": len(merged),
+        "ranked_row_count": len(out),
+        "drift_witness_count": len(drift_witnesses),
+        "ranked_drift_witness_count": sum(
+            1 for witness in drift_witnesses if witness["in_ranked_rows"]
+        ),
+        "outside_ranked_drift_witness_count": sum(
+            1 for witness in drift_witnesses if not witness["in_ranked_rows"]
+        ),
+        "source_union_drift_witnesses": drift_witnesses,
+        "ranked_row_drift_summary": live_drift_summary(out),
+    }
+    return out, boundary, audit
+
+
+def build_source_union_drift_witnesses(
+    rows: list[dict[str, Any]],
+    *,
+    ranked_ids: set[str],
+) -> list[dict[str, Any]]:
+    witnesses: list[dict[str, Any]] = []
+    for row in rows:
+        citation_drift = int(row.get("citation_count_drift", 0)) > 0
+        title_drift = row.get("title_metadata_drift") is True
+        type_drift = row.get("type_metadata_drift") is True
+        if not (citation_drift or title_drift or type_drift):
+            continue
+        witness: dict[str, Any] = {
+            "provider_work_id": row["provider_work_id"],
+            "in_ranked_rows": row["provider_work_id"] in ranked_ids,
+            "drift_dimensions": [
+                name
+                for name, active in (
+                    ("citation", citation_drift),
+                    ("title", title_drift),
+                    ("type", type_drift),
+                )
+                if active
+            ],
+        }
+        if citation_drift:
+            witness["citation"] = {
+                "selected_cited_by_count": row["cited_by_count"],
+                "citation_resolution_policy": row["citation_resolution_policy"],
+                "citation_selected_source_id": row["citation_selected_source_id"],
+                "citation_selected_transaction_started_at": row[
+                    "citation_selected_transaction_started_at"
+                ],
+                "citation_observation_count": row["citation_observation_count"],
+                "citation_count_min_observed": row["citation_count_min_observed"],
+                "citation_count_max_observed": row["citation_count_max_observed"],
+                "citation_count_drift": row["citation_count_drift"],
+                "citation_observations": row["citation_observations"],
+            }
+        if title_drift:
+            witness["title"] = {
+                "selected_title": row["title"],
+                "title_resolution_policy": row["title_resolution_policy"],
+                "title_selected_source_id": row["title_selected_source_id"],
+                "title_selected_transaction_started_at": row[
+                    "title_selected_transaction_started_at"
+                ],
+                "title_observation_count": row["title_observation_count"],
+                "title_distinct_non_null_values": row[
+                    "title_distinct_non_null_values"
+                ],
+                "title_calibration_consistent": row[
+                    "title_calibration_consistent"
+                ],
+                "title_calibration_consensus_seed_number": row[
+                    "title_calibration_consensus_seed_number"
+                ],
+                "title_calibration_consensus_match_basis": row[
+                    "title_calibration_consensus_match_basis"
+                ],
+                "title_observations": row["title_observations"],
+            }
+        if type_drift:
+            witness["type"] = {
+                "selected_type": row["type"],
+                "type_resolution_policy": row["type_resolution_policy"],
+                "type_selected_source_id": row["type_selected_source_id"],
+                "type_selected_transaction_started_at": row[
+                    "type_selected_transaction_started_at"
+                ],
+                "type_observation_count": row["type_observation_count"],
+                "type_distinct_non_null_values": row[
+                    "type_distinct_non_null_values"
+                ],
+                "type_observations": row["type_observations"],
+            }
+        witnesses.append(witness)
+    witnesses.sort(key=lambda witness: witness["provider_work_id"])
+    return witnesses
+
+
+def merge_source_prefixes(
+    prefixes: list[dict[str, Any]],
+    *,
+    L: int,
+    seeds: list[dict[str, Any]],
+) -> tuple[list[dict[str, Any]], int]:
+    rows, boundary, _audit = _merge_source_prefixes_core(
+        prefixes,
+        L=L,
+        seeds=seeds,
+    )
+    return rows, boundary
+
+
+def merge_source_prefixes_with_audit(
+    prefixes: list[dict[str, Any]],
+    *,
+    L: int,
+    seeds: list[dict[str, Any]],
+) -> tuple[list[dict[str, Any]], int, dict[str, Any]]:
+    return _merge_source_prefixes_core(prefixes, L=L, seeds=seeds)
 
 
 def live_drift_summary(rows: list[dict[str, Any]]) -> dict[str, Any]:
@@ -837,8 +991,9 @@ def fetch_ranked_era_sourcewise(
             )
         )
 
-    rows, global_boundary = merge_source_prefixes(prefixes, L=L, seeds=seeds)
-    drift_summary = live_drift_summary(rows)
+    rows, global_boundary, drift_audit = merge_source_prefixes_with_audit(
+        prefixes, L=L, seeds=seeds
+    )
     summaries = [
         {
             key: prefix[key]
@@ -876,7 +1031,7 @@ def fetch_ranked_era_sourcewise(
         "minimum_candidate_rows": L,
         "global_boundary_cited_by_count": global_boundary,
         "global_boundary_tie_closed": True,
-        **drift_summary,
+        **drift_audit,
         "frozen_row_count": len(rows),
         "source_summaries": summaries,
         "rows": rows,
@@ -1063,8 +1218,9 @@ def merge_source_artifacts(
         }
         for artifact in artifacts
     ]
-    rows, global_boundary = merge_source_prefixes(prefixes, L=L, seeds=seeds)
-    drift_summary = live_drift_summary(rows)
+    rows, global_boundary, drift_audit = merge_source_prefixes_with_audit(
+        prefixes, L=L, seeds=seeds
+    )
     summaries = [
         {
             key: artifact[key]
@@ -1103,6 +1259,7 @@ def merge_source_artifacts(
         "global_boundary_cited_by_count": global_boundary,
         "global_boundary_tie_closed": True,
         "merge_provider_calls": 0,
+        **drift_audit,
         "frozen_row_count": len(rows),
         "source_summaries": summaries,
         "rows": rows,
@@ -1487,6 +1644,39 @@ def self_test() -> None:
     assert type_null_rows[0]["type"] == "article"
     assert type_null_rows[0]["type_metadata_drift"] is False
 
+    # Drift audit is over the entire deduplicated source-prefix union, not only
+    # the global ranked ladder. A drifted Work below the L boundary remains an
+    # audit witness but is never promoted into ranked rows.
+    high = row("W320", 100, "high")
+    low_type_a = row("W321", 10, "low")
+    low_type_a["type"] = "article"
+    low_type_b = row("W321", 10, "low")
+    low_type_b["type"] = "book-chapter"
+    audited_rows, audited_boundary, audited = merge_source_prefixes_with_audit(
+        [
+            {"source_id": "A", "transaction_started_at": "2000-01-01T00:00:01+00:00", "rows": [high, low_type_a]},
+            {"source_id": "B", "transaction_started_at": "2000-01-01T00:00:02+00:00", "rows": [low_type_b]},
+        ],
+        L=1,
+        seeds=seeds,
+    )
+    assert audited_boundary == 100
+    assert [item["provider_work_id"] for item in audited_rows] == ["W320"]
+    assert audited["drift_summary_scope"] == (
+        "DEDUPLICATED_SOURCE_PREFIX_UNION_BEFORE_GLOBAL_L_CUT"
+    )
+    assert audited["source_union_unique_work_count"] == 2
+    assert audited["ranked_row_count"] == 1
+    assert audited["duplicate_optional_type_drift_work_count"] == 1
+    assert audited["drift_witness_count"] == 1
+    assert audited["ranked_drift_witness_count"] == 0
+    assert audited["outside_ranked_drift_witness_count"] == 1
+    assert audited["source_union_drift_witnesses"][0]["provider_work_id"] == "W321"
+    assert audited["source_union_drift_witnesses"][0]["in_ranked_rows"] is False
+    assert audited["source_union_drift_witnesses"][0]["type"][
+        "type_distinct_non_null_values"
+    ] == ["article", "book-chapter"]
+
     # Duplicate Work-ID citation drift is preserved without allowing a later
     # observation to overwrite the first frozen score.
     drift = [
@@ -1543,6 +1733,44 @@ def self_test() -> None:
     )
     assert cal_rows[0]["screening_state"] == "CALIBRATION_EXCLUDED"
     assert cal_rows[0]["calibration_seed_number"] == 2
+
+    # Durable provider-free merge must expose the audit at artifact top level.
+    # Use 51 synthetic durable artifacts without invoking any provider.
+    artifact_rows = [row("W500", 100, "artifact-high")]
+    synthetic_artifacts = []
+    for idx in range(51):
+        synthetic_artifacts.append(
+            {
+                "source_id": f"S{idx:03d}",
+                "base_query_digest": f"base-{idx}",
+                "era_query_digest": f"era-{idx}",
+                "transaction_started_at": f"2000-01-01T00:{idx:02d}:00+00:00",
+                "transaction_completed_at": f"2000-01-01T00:{idx:02d}:01+00:00",
+                "pages": 1,
+                "provider_meta_count_first": 1,
+                "provider_meta_count_last": 1,
+                "provider_meta_count_signed_drift": 0,
+                "source_exhausted": True,
+                "source_boundary_cited_by_count": 100,
+                "frozen_row_count": 1,
+                "rows": artifact_rows,
+            }
+        )
+    merged_artifact = merge_source_artifacts(
+        synthetic_artifacts,
+        era="2000-2009",
+        era_condition="synthetic",
+        L=1,
+        seeds=seeds,
+    )
+    assert merged_artifact["schema_version"] == RANKED_ERA_SCHEMA
+    assert merged_artifact["merge_provider_calls"] == 0
+    assert merged_artifact["drift_summary_scope"] == (
+        "DEDUPLICATED_SOURCE_PREFIX_UNION_BEFORE_GLOBAL_L_CUT"
+    )
+    assert merged_artifact["source_union_unique_work_count"] == 1
+    assert "source_union_drift_witnesses" in merged_artifact
+    assert "ranked_row_drift_summary" in merged_artifact
 
     assert contract["real_ranking_execution_authorized"] in (False, True)
     print("PAPER2_SAMPLING_V2_SOURCEWISE_RANKING_SELFTEST_PASS")
