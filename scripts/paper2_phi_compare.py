@@ -89,6 +89,48 @@ def _ref_key(ref: dict[str, Any]) -> str:
     raise PhiError(f"unexpected reference space {space!r}")
 
 
+def validate_phi_object(obj: dict[str, Any]) -> dict[str, Any]:
+    required = {
+        "schema_version", "basis_version", "claim_type", "modality", "scope_shape",
+        "active_axes", "nodes", "edges", "temporal", "controls", "approximation", "bridges",
+    }
+    if set(obj) != required:
+        raise PhiError(f"Phi object keys differ: {sorted(set(obj) ^ required)}")
+    if obj["schema_version"] != PHI_VERSION:
+        raise PhiError("unexpected Phi schema version")
+    if obj["basis_version"] != WORKING_BASIS_VERSION:
+        raise PhiError("unexpected Phi basis version")
+    if set(obj["scope_shape"]) != set(SCOPE_KEYS):
+        raise PhiError("scope_shape keys mismatch")
+    if not all(isinstance(v, bool) for v in obj["scope_shape"].values()):
+        raise PhiError("scope_shape values must be boolean")
+    axes = obj["active_axes"]
+    if axes != sorted(set(axes)):
+        raise PhiError("active_axes must be sorted and unique")
+    if not set(axes) <= {"S", "Pi", "K", "O", "T", "C", "Q", "P"}:
+        raise PhiError("unknown active axis")
+    if not isinstance(obj["nodes"], dict):
+        raise PhiError("nodes must be an object")
+    node_ids = set(obj["nodes"])
+    for edge in obj["edges"]:
+        if set(edge) != {
+            "family", "kind", "ordered_arguments", "arguments", "conditional_on",
+            "temporal_direction", "grounding",
+        }:
+            raise PhiError("edge keys mismatch")
+        if not edge["arguments"]:
+            raise PhiError("edge arguments must not be empty")
+        if not set(edge["arguments"] + edge["conditional_on"]) <= node_ids:
+            raise PhiError("edge references unknown node")
+    if set(obj["temporal"]) != set(TEMPORAL_STATE_KEYS):
+        raise PhiError("temporal keys mismatch")
+    if set(obj["controls"]) != set(CONTROL_AXIS):
+        raise PhiError("control keys mismatch")
+    if set(obj["approximation"]) != {"mode", *APPROX_STATE_KEYS}:
+        raise PhiError("approximation keys mismatch")
+    return obj
+
+
 def project_first(data: dict[str, Any]) -> dict[str, Any]:
     validate_structural_signature(data)
     if data["contract_versions"]["basis"] != WORKING_BASIS_VERSION:
@@ -211,7 +253,7 @@ def project_first(data: dict[str, Any]) -> dict[str, Any]:
 
     bridges = sorted(item["grounding"] for item in attempt["bridge_assumptions"])
 
-    return {
+    result = {
         "schema_version": PHI_VERSION,
         "basis_version": WORKING_BASIS_VERSION,
         "claim_type": core["claim_type"],
@@ -225,6 +267,7 @@ def project_first(data: dict[str, Any]) -> dict[str, Any]:
         "approximation": approximation,
         "bridges": bridges,
     }
+    return validate_phi_object(result)
 
 
 def _node_label(node: dict[str, Any]) -> str:
@@ -426,6 +469,8 @@ def _forgetting_witness(weaker: dict[str, Any], stronger: dict[str, Any], emb: E
 
 
 def compare_phi(a: dict[str, Any], b: dict[str, Any]) -> dict[str, Any]:
+    validate_phi_object(a)
+    validate_phi_object(b)
     if a["schema_version"] != PHI_VERSION or b["schema_version"] != PHI_VERSION:
         raise PhiError("unsupported Phi object version")
     if a["basis_version"] != WORKING_BASIS_VERSION or b["basis_version"] != WORKING_BASIS_VERSION:
@@ -620,6 +665,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--left", type=Path)
     parser.add_argument("--right", type=Path)
+    parser.add_argument("--project", type=Path)
     parser.add_argument("--self-test", action="store_true")
     parser.add_argument(
         "--example",
@@ -630,6 +676,11 @@ def main() -> None:
 
     if args.self_test:
         self_test(args.example)
+        return
+
+    if args.project:
+        data = json.loads(args.project.read_text(encoding="utf-8"))
+        print(json.dumps(project_first(data), ensure_ascii=False, sort_keys=True, indent=2))
         return
 
     if not args.left or not args.right:
