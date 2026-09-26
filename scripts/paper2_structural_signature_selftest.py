@@ -19,6 +19,7 @@ from paper2_structural_signature_contract import (
     CLAIM_IR_VERSION, RESIDUAL_TAXONOMY_VERSION, ValidationError, validate,
 )
 from paper2_structural_signature_canonical import canonical_artifact_bytes, structural_digest
+from paper2_structural_signature_constants import WORKING_BASIS_VERSION
 from paper2_structural_signature_replay import replay_summary
 
 def expect_invalid(data: dict[str, Any], label: str) -> None:
@@ -40,6 +41,15 @@ def self_test(example_path: Path) -> None:
     # P1 minimal valid PASS record.
     p1_digest = structural_digest(attempt, ir["claim_ir"])
     assert len(p1_digest) == 64
+
+    # #226: the working measurement basis is an admitted version tuple, while
+    # basis-version bookkeeping itself does not alter structural identity.
+    p1_working = copy.deepcopy(base)
+    p1w_ir = p1_working["paper"]["claims"][0]["claim_ir_records"][0]
+    p1w_attempt = p1w_ir["decomposition_attempts"][0]
+    p1_working["contract_versions"]["basis"] = WORKING_BASIS_VERSION
+    validate(p1_working)
+    assert structural_digest(p1w_attempt, p1w_ir["claim_ir"]) == p1_digest
 
     # P2 minimal valid RESIDUAL record with machine-readable localization.
     p2 = copy.deepcopy(base)
