@@ -1,0 +1,242 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/rinsakamo/relay-theory/blob/main/research/paper2/designed_source_candidate_ledger_v1.schema.json",
+  "title": "Paper 2 designed source candidate ledger v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "geometry_version",
+    "basis_version",
+    "phi_version",
+    "state",
+    "selection_outcome_blind",
+    "claim_ir_consumed",
+    "structural_signature_consumed",
+    "phi_consumed",
+    "records"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "paper2-designed-source-candidate-ledger-v1"
+    },
+    "geometry_version": {
+      "const": "paper2-designed-corpus-geometry-v1"
+    },
+    "basis_version": {
+      "const": "paper2-working-basis-v1"
+    },
+    "phi_version": {
+      "const": "paper2-phi-comparison-v1"
+    },
+    "state": {
+      "enum": [
+        "CONTRACT_TEMPLATE_NO_REAL_SOURCES",
+        "CANDIDATE_LEDGER_FROZEN"
+      ]
+    },
+    "selection_outcome_blind": {
+      "const": true
+    },
+    "claim_ir_consumed": {
+      "const": false
+    },
+    "structural_signature_consumed": {
+      "const": false
+    },
+    "phi_consumed": {
+      "const": false
+    },
+    "records": {
+      "type": "array",
+      "minItems": 180,
+      "maxItems": 180,
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "slot_id",
+              "surface",
+              "sampling_stratum",
+              "challenge_pressure",
+              "candidate_rank",
+              "candidate_state"
+            ],
+            "properties": {
+              "slot_id": {
+                "type": "string"
+              },
+              "surface": {
+                "enum": [
+                  "primary",
+                  "challenge"
+                ]
+              },
+              "sampling_stratum": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "challenge_pressure": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "candidate_rank": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 3
+              },
+              "candidate_state": {
+                "const": "UNASSIGNED"
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "slot_id",
+              "surface",
+              "sampling_stratum",
+              "challenge_pressure",
+              "candidate_rank",
+              "candidate_state",
+              "stable_identity",
+              "title",
+              "year",
+              "source_type",
+              "canonical_locator",
+              "source_access_class",
+              "read_status",
+              "candidate_rationale",
+              "coverage_tags",
+              "author_lineage_key",
+              "registry_reference"
+            ],
+            "properties": {
+              "slot_id": {
+                "type": "string"
+              },
+              "surface": {
+                "enum": [
+                  "primary",
+                  "challenge"
+                ]
+              },
+              "sampling_stratum": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "challenge_pressure": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "candidate_rank": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 3
+              },
+              "candidate_state": {
+                "const": "CANDIDATE"
+              },
+              "stable_identity": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "kind",
+                  "value"
+                ],
+                "properties": {
+                  "kind": {
+                    "enum": [
+                      "DOI",
+                      "ARXIV",
+                      "PMID",
+                      "PMCID",
+                      "ISBN_CHAPTER",
+                      "PUBLISHER_CANONICAL"
+                    ]
+                  },
+                  "value": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              },
+              "title": {
+                "type": "string",
+                "minLength": 1
+              },
+              "year": {
+                "type": "integer",
+                "minimum": 1900,
+                "maximum": 2100
+              },
+              "source_type": {
+                "enum": [
+                  "journal_article",
+                  "conference_paper",
+                  "book_chapter",
+                  "book",
+                  "preprint",
+                  "review",
+                  "other"
+                ]
+              },
+              "canonical_locator": {
+                "type": "string",
+                "minLength": 1
+              },
+              "source_access_class": {
+                "enum": [
+                  "FULL_TEXT",
+                  "PARTIAL_TEXT",
+                  "ABSTRACT_ONLY",
+                  "INACCESS"
+                ]
+              },
+              "read_status": {
+                "enum": [
+                  "FULL_TEXT_READ",
+                  "PARTIAL_TEXT_READ",
+                  "ABSTRACT_ONLY_READ",
+                  "NOT_READ"
+                ]
+              },
+              "candidate_rationale": {
+                "type": "string",
+                "minLength": 1
+              },
+              "coverage_tags": {
+                "type": "array",
+                "minItems": 1,
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "author_lineage_key": {
+                "type": "string",
+                "minLength": 1
+              },
+              "registry_reference": {
+                "type": "string",
+                "pattern": "^#23:"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
