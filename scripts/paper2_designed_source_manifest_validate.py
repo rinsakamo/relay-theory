@@ -322,7 +322,7 @@ def self_test(
 
     x = copy.deepcopy(base)
     memories = [e for e in x["entries"] if e["sampling_stratum"] == "Memory"]
-    for e in memories[:4]:
+    for e in memories[:5]:
         e["operational_tradition"] = "collapsed_tradition"
     expect_invalid(x, geometry, ledger, ledger_bytes, "tradition diversity collapse")
 
