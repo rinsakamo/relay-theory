@@ -1,0 +1,67 @@
+{
+  "schema_version": "paper2-two-pass-systemone-v3",
+  "owner_issue": 203,
+  "status": "SYNTHETIC_QUALIFIED_ONLY",
+  "claim_ir_schema": "paper2-claim-ir-v1",
+  "candidate_schema": "paper2-extraction-candidate-v1",
+  "decision_schema": "paper2-systemone-decision-v3",
+  "bound_parent_blobs": {
+    "research/paper2/extraction_decision_surface_audit_v1.json": "0a3efe63d0ff18ea04ba14393c58c8bd7cb2d38b",
+    "research/paper2/extraction_systemone_decision_v2.schema.json": "5933030119a903079a9eadb69e08d9326463339c",
+    "research/paper2/extraction_two_pass_systemone_v2.json": "ed00b7458c068eb9add6a23dbf0e8282e06941d4",
+    "scripts/paper2_extraction_two_pass_systemone_v2.py": "f789fcfb35af03a52e9193e6e6ebf5f86271707a",
+    "research/paper2/claim_ir_v1.schema.json": "963f54bd61c3112daa046fa191e3194d47db0768",
+    "research/paper2/extraction_procedure_v1.json": "5e1b6c17c8cd9b4b3455de137b99a90f870233d0"
+  },
+  "topology": {
+    "synthetic_decision_rounds": 3,
+    "max_stages": 3,
+    "stage_1": "claim type, modality, applicability scope, and finite node referent seeds",
+    "stage_2": "bound-node grounding and non-anchor source membership, plus relation argument tuples conditional on active nodes and distinct anchors",
+    "stage_3": "only active-relation kind, grounding, and source membership",
+    "max_questions_per_stage": [20, 11, 10],
+    "max_finite_choices_per_question": 29,
+    "max_total_synthetic_decision_rounds": 3,
+    "real_transaction_authorized": false
+  },
+  "bounded_surface": {
+    "max_source_spans": 3,
+    "max_nodes": 3,
+    "max_relations": 2,
+    "source_unit_policy": "presegmented_atomic_evidence_units",
+    "node_referent_handle": "anchor_span_id::role; NONE is inactive; __unresolved__ is applicable but insufficiently distinguished",
+    "node_handle_collision_policy": "If multiple source-supported referents remain for one anchor and role, select __unresolved__; never collapse them into one node",
+    "bound_node_grounding": "The selected anchor is included by construction; an active node cannot have zero source spans",
+    "relation_slot_referent_semantics": "AUDIT_UNDERDETERMINED",
+    "relation_argument_policy": "Finite tuples contain active nodes only, no duplicate argument, and distinct anchors for binary tuples",
+    "inactive_dependent_policy": "omit questions; omission is N/A and is distinct from applicable __unresolved__",
+    "scope_semantics": "Scope is a restriction on applicability or domain of the represented claim. Historical provenance, citation or date mention, background description, evidential support, and comparison provenance do not by themselves count as scope.",
+    "scope_vocabulary": "existing yes/no finite choices",
+    "unresolved_policy": "Any applicable required __unresolved__ causes DecisionUnresolved and bundle EXTRACTION_ABSTAIN; no candidate, ClaimIR, or RESIDUAL",
+    "compiler_policy": "Only derive deterministic fields, prune impossible choices, and omit inactive questions; never guess unresolved, change selected answers, repair invalid tuples, or synthesize another claim"
+  },
+  "source_authority": {
+    "original_source_authoritative": true,
+    "normal_interpretation_advisory": true,
+    "normal_prose_may_override_finite_source_decisions": false
+  },
+  "scope_fixtures": {
+    "temporal": {"s1": "historical provenance date", "s2": "actual temporal restriction", "expected_temporal_scope": ["s2"]},
+    "conditions": {"s1": "evidence supporting mechanism", "s2": "explicit condition under which claim applies", "expected_conditions": ["s2"]}
+  },
+  "qualification": {
+    "synthetic_sources_only": true,
+    "real_model_calls": 0,
+    "real_server_launches": 0,
+    "real_literature_extraction": 0,
+    "paper193_replay": 0,
+    "paper167_execution": 0,
+    "basis_decomposition": 0,
+    "heldout_decomposition": 0
+  },
+  "real_pilot_authorized": false,
+  "real_model_calls_authorized": false,
+  "heldout_execution_authorized": false,
+  "basis_decomposition_authorized": false,
+  "architecture_consequence": "NONE"
+}
