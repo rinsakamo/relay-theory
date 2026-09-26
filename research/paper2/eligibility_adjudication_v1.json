@@ -100,13 +100,16 @@
   "assembly": {
     "provenance_bound_after_decision_freeze": true,
     "output_for_parent": "paper2-eligibility-adjudications-v1 record",
-    "required_hashes": [
+    "adjudication_sha256_required_when_disagreement": true,
+    "classifier_version": "paper2-eligibility-v1.1",
+    "required_hashes_for_accessible": [
       "source_bundle_sha256",
       "pass_a_sha256",
       "pass_b_sha256"
     ],
-    "adjudication_sha256_required_when_disagreement": true,
-    "classifier_version": "paper2-eligibility-v1.1"
+    "inaccessible_bypass_required_hashes": [
+      "acquisition_receipt_sha256"
+    ]
   },
   "forbidden_key_names_recursive": [
     "rank",
@@ -136,5 +139,9 @@
   "real_source_acquisition_authorized": false,
   "real_model_execution_authorized": false,
   "real_adjudication_authorized": false,
-  "architecture_consequence": "NONE"
+  "architecture_consequence": "NONE",
+  "prompt": {
+    "path": "research/paper2/eligibility_adjudication_prompt_v1.md",
+    "sha256_utf8": "611f2de24d8d958595038d494c1916be891870984f47ac81ea432159c56950e4"
+  }
 }
