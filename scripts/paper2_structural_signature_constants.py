@@ -5,12 +5,13 @@ import re
 SCHEMA_VERSION = "paper2-structural-signature-v1"
 CLAIM_IR_VERSION = "paper2-claim-ir-v1"
 SYNTHETIC_BASIS_VERSION = "paper2-synthetic-basis-v1"
+WORKING_BASIS_VERSION = "paper2-working-basis-v1"
 WITNESS_REF_VERSION = "paper2-witness-ref-v1"
 RESIDUAL_TAXONOMY_VERSION = "paper2-residual-taxonomy-v1"
 
-# Deliberately conservative. This is not a basis freeze. Real basis versions
-# remain rejected until an independent authority owner freezes one and this
-# compatibility table is explicitly updated.
+# Deliberately conservative. #226 admits exactly one non-synthetic working
+# measurement basis. This is a versioned comparison contract, not an
+# ontological-completeness claim. Other real basis versions remain rejected.
 SUPPORTED_VERSION_TUPLES = {
     (
         SCHEMA_VERSION,
@@ -18,7 +19,14 @@ SUPPORTED_VERSION_TUPLES = {
         SYNTHETIC_BASIS_VERSION,
         WITNESS_REF_VERSION,
         RESIDUAL_TAXONOMY_VERSION,
-    )
+    ),
+    (
+        SCHEMA_VERSION,
+        CLAIM_IR_VERSION,
+        WORKING_BASIS_VERSION,
+        WITNESS_REF_VERSION,
+        RESIDUAL_TAXONOMY_VERSION,
+    ),
 }
 
 ID_RE = re.compile(r"^[a-z][a-z0-9_.-]{0,127}$")

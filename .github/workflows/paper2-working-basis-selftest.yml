@@ -1,0 +1,44 @@
+name: paper2-working-basis-selftest
+
+on:
+  pull_request:
+    paths:
+      - "research/paper2/working_basis_v1.json"
+      - "research/paper2/structural_signature_v1.schema.json"
+      - "research/paper2/structural_signature_v1.md"
+      - "scripts/paper2_working_basis_validate.py"
+      - "scripts/paper2_structural_signature_constants.py"
+      - "scripts/paper2_structural_signature_selftest.py"
+      - ".github/workflows/paper2-working-basis-selftest.yml"
+  push:
+    branches: [main]
+    paths:
+      - "research/paper2/working_basis_v1.json"
+      - "research/paper2/structural_signature_v1.schema.json"
+      - "research/paper2/structural_signature_v1.md"
+      - "scripts/paper2_working_basis_validate.py"
+      - "scripts/paper2_structural_signature_constants.py"
+      - "scripts/paper2_structural_signature_selftest.py"
+      - ".github/workflows/paper2-working-basis-selftest.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile validators
+        run: |
+          python -m py_compile scripts/paper2_working_basis_validate.py
+          python -m py_compile scripts/paper2_structural_signature_*.py
+      - name: Parse basis contract
+        run: python -m json.tool research/paper2/working_basis_v1.json >/dev/null
+      - name: Run basis destructive self-test
+        run: python scripts/paper2_working_basis_validate.py --self-test
+      - name: Run structural-signature compatibility self-test
+        run: python scripts/paper2_structural_signature_validate.py --self-test
