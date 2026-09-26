@@ -1,0 +1,68 @@
+{
+  "schema_version": "paper2-phi-comparison-v1",
+  "basis_version": "paper2-working-basis-v1",
+  "role": "cross_claim_structural_comparison",
+  "equivalence_claim": "isomorphism_under_frozen_phi_projection",
+  "semantic_identity_claim": false,
+  "projection": {
+    "preserves": [
+      "claim_type",
+      "modality",
+      "scope_dimension_presence",
+      "typed ClaimIR node/relationship topology",
+      "basis-coordinate role/requiredness/provenance-origin",
+      "typed decomposition relation topology",
+      "temporal presence states and ordering",
+      "P/Q/Pi/C state and provenance-kind",
+      "approximation mode and presence states",
+      "bridge-assumption grounding multiplicity",
+      "active working-basis axes"
+    ],
+    "forgets": [
+      "author",
+      "institution",
+      "venue",
+      "citation_count",
+      "construct_label",
+      "source-span locator",
+      "source-local node/relation/attempt IDs",
+      "free-text descriptions",
+      "control identities",
+      "control source references",
+      "temporal literal values",
+      "bridge-assumption free text"
+    ]
+  },
+  "comparison": {
+    "equivalent": "there exists a label-preserving bijection whose full projected relation multiset and scalar surface are equal",
+    "refinement": "there exists an injective label-preserving embedding of the weaker object into the stronger object, all weaker projected relations are preserved, and the stronger object contains additional projected structure",
+    "forgetting": "the machine-readable witness records the stronger-object nodes, relations, axes, controls, temporal/approximation states, or bridge slots omitted by a verified refinement embedding",
+    "incomparable": "neither object embeds into the other under the frozen v1 rules",
+    "mutual_embed_nonisomorphic": "reported separately and never collapsed to equivalence"
+  },
+  "scalar_order": {
+    "exact_fields": [
+      "claim_type",
+      "modality",
+      "scope_shape",
+      "approximation_mode"
+    ],
+    "forgettable_bottom_state": "not_required",
+    "explicit_absence_is_not_bottom": true,
+    "active_axes_order": "set_inclusion_for_refinement_equality_for_equivalence",
+    "bridge_order": "grounding_multiset_inclusion_for_refinement_equality_for_equivalence"
+  },
+  "category_boundary": {
+    "objects": "paper2-phi-object-v1 projections",
+    "isomorphisms": "verified EQUIVALENT comparisons",
+    "monomorphism_like_refinements": "verified strict refinement embeddings",
+    "forgetting_maps": "reported omission witnesses associated with strict refinement",
+    "stronger_category_theory_not_authorized_without_separate_result": true
+  },
+  "anti_overclaim": [
+    "P2 structural equivalence is not full semantic equivalence.",
+    "A refinement witness does not establish causal or ontological priority.",
+    "A forgetting witness is relative to this projection and basis version.",
+    "No real construct-pair equality is established by this contract."
+  ]
+}
