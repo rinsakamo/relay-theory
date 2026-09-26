@@ -23,7 +23,7 @@ paper
 
 The embedded `claim_ir` is validated by the frozen #145 `paper2-claim-ir-v1` validator. Source-facing construct labels remain in provenance and are mechanically rejected if they leak into the decomposition-attempt analysis surface.
 
-Current `main` does **not** define a frozen empirical Paper 2 basis version. Therefore v1's compatibility table admits only `paper2-synthetic-basis-v1` for deterministic fixtures. That identifier is a synthetic sentinel, not a scientific basis freeze. A real decomposition artifact remains rejected until an independently authorized basis version is frozen and deliberately added to the compatibility table.
+The original v1 compatibility table admitted only `paper2-synthetic-basis-v1` for deterministic fixtures. Paper 2 #226 adds exactly one non-synthetic comparison contract, `paper2-working-basis-v1`, after independently freezing it as a **working measurement basis**. This admission is not an ontological-completeness claim: it authorizes structural-signature records to bind to the fixed Paper 2 comparison language while preserving every existing grounding, topology, control, residual, and anti-vacuity requirement. Other real basis versions remain rejected until separately frozen and explicitly admitted.
 
 ## Structural identity
 
