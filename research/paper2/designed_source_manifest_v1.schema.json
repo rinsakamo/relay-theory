@@ -1,0 +1,224 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/rinsakamo/relay-theory/blob/main/research/paper2/designed_source_manifest_v1.schema.json",
+  "title": "Paper 2 designed source manifest v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "geometry_version",
+    "ledger_version",
+    "ledger_sha256",
+    "state",
+    "activation_policy",
+    "selection_outcome_blind",
+    "claim_ir_consumed",
+    "structural_signature_consumed",
+    "phi_consumed",
+    "entries"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "paper2-designed-source-manifest-v1"
+    },
+    "geometry_version": {
+      "const": "paper2-designed-corpus-geometry-v1"
+    },
+    "ledger_version": {
+      "const": "paper2-designed-source-candidate-ledger-v1"
+    },
+    "ledger_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "state": {
+      "const": "ACTIVATED_MANIFEST_FROZEN"
+    },
+    "activation_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "start_rank",
+        "reserve_use_only_after_prefrozen_pre_claim_ir_failure",
+        "coverage_driven_substitution_forbidden",
+        "post_claim_ir_replacement_forbidden"
+      ],
+      "properties": {
+        "start_rank": {
+          "const": 1
+        },
+        "reserve_use_only_after_prefrozen_pre_claim_ir_failure": {
+          "const": true
+        },
+        "coverage_driven_substitution_forbidden": {
+          "const": true
+        },
+        "post_claim_ir_replacement_forbidden": {
+          "const": true
+        }
+      }
+    },
+    "selection_outcome_blind": {
+      "const": true
+    },
+    "claim_ir_consumed": {
+      "const": false
+    },
+    "structural_signature_consumed": {
+      "const": false
+    },
+    "phi_consumed": {
+      "const": false
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 60,
+      "maxItems": 60,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "slot_id",
+          "surface",
+          "sampling_stratum",
+          "challenge_pressure",
+          "activated_rank",
+          "activation_outcome",
+          "replacement_reason",
+          "stable_identity",
+          "title",
+          "year",
+          "canonical_locator",
+          "registry_reference",
+          "source_access_class",
+          "read_status",
+          "grounding_receipt",
+          "author_lineage_key",
+          "operational_tradition",
+          "relation_family",
+          "coverage_claims"
+        ],
+        "properties": {
+          "slot_id": {
+            "type": "string"
+          },
+          "surface": {
+            "enum": [
+              "primary",
+              "challenge"
+            ]
+          },
+          "sampling_stratum": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "challenge_pressure": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "activated_rank": {
+            "const": 1
+          },
+          "activation_outcome": {
+            "const": "ACTIVATED_RANK_1"
+          },
+          "replacement_reason": {
+            "type": "null"
+          },
+          "stable_identity": {
+            "type": "object"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "year": {
+            "type": "integer"
+          },
+          "canonical_locator": {
+            "type": "string",
+            "minLength": 1
+          },
+          "registry_reference": {
+            "type": "string",
+            "pattern": "^#23:"
+          },
+          "source_access_class": {
+            "enum": [
+              "FULL_TEXT",
+              "PARTIAL_TEXT",
+              "ABSTRACT_ONLY"
+            ]
+          },
+          "read_status": {
+            "enum": [
+              "FULL_TEXT_READ",
+              "PARTIAL_TEXT_READ",
+              "ABSTRACT_ONLY_READ"
+            ]
+          },
+          "grounding_receipt": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "central_claim_supported",
+              "limitation"
+            ],
+            "properties": {
+              "central_claim_supported": {
+                "const": true
+              },
+              "limitation": {
+                "enum": [
+                  "ABSTRACT_LEVEL_GROUNDING",
+                  "PARTIAL_PRIMARY_TEXT_GROUNDING",
+                  "FULL_TEXT_GROUNDING"
+                ]
+              }
+            }
+          },
+          "author_lineage_key": {
+            "type": "string",
+            "minLength": 1
+          },
+          "operational_tradition": {
+            "type": "string",
+            "minLength": 1
+          },
+          "relation_family": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "coverage_claims": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "enum": [
+                "temporal_persistence_explicit",
+                "temporal_persistence_not_required",
+                "acquisition_update_explicit",
+                "acquisition_update_not_required",
+                "resource_boundedness_explicit",
+                "resource_boundedness_not_required",
+                "criterion_explicit",
+                "criterion_not_required",
+                "probe_or_intervention_explicit",
+                "structured_probe_transform",
+                "partition_subsystem_explicit",
+                "alternative_partition_material",
+                "stochastic_probabilistic_approximate",
+                "deterministic_exact"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}
