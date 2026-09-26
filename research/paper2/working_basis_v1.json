@@ -1,0 +1,96 @@
+{
+  "schema_version": "paper2-working-basis-v1",
+  "status": "working_measurement_basis",
+  "ontology_completeness_claim": false,
+  "coordinates": [
+    {
+      "symbol": "S",
+      "name": "state_or_carrier",
+      "description": "Source-grounded state-like carrier or variable participating in the claim; does not by itself imply representation, persistence, ownership, or mentality."
+    },
+    {
+      "symbol": "Pi",
+      "name": "partition_or_subsystem",
+      "description": "Grounded grouping, candidate subsystem partition, equivalence class, or comparison partition; may be a family of candidate partitions."
+    },
+    {
+      "symbol": "K",
+      "name": "transition_coupling_or_dependency",
+      "description": "Typed transition, change, dependency, causal/counterfactual coupling, or directional relation preserved as explicit topology."
+    },
+    {
+      "symbol": "O",
+      "name": "observation_or_access",
+      "description": "Source-grounded observation, measurement, readout, sensing/access channel, or information-availability structure."
+    },
+    {
+      "symbol": "T",
+      "name": "temporal_structure",
+      "description": "Ordering, horizon, history window, recurrence, persistence, phase, or other time-indexed constraint required by the normalized claim."
+    },
+    {
+      "symbol": "C",
+      "name": "resource_or_capacity_constraint",
+      "description": "Declared resource, budget, capacity, cost, bottleneck, or boundedness constraint."
+    },
+    {
+      "symbol": "Q",
+      "name": "evaluation_or_relevance_criterion",
+      "description": "Criterion, loss, utility, viability condition, success relation, relevance surface, threshold, or criterion family with explicit provenance."
+    },
+    {
+      "symbol": "P",
+      "name": "probe_intervention_or_transformation",
+      "description": "Typed probe, manipulation, intervention, test, perturbation, or transformation family, optionally with declared internal structure."
+    }
+  ],
+  "structural_binding": {
+    "S": [
+      "basis_instantiation.coordinates"
+    ],
+    "Pi": [
+      "control_surface.partition_Pi",
+      "basis_instantiation.coordinates",
+      "relation_topology"
+    ],
+    "K": [
+      "relation_topology"
+    ],
+    "O": [
+      "basis_instantiation.coordinates",
+      "relation_topology"
+    ],
+    "T": [
+      "temporal_structure"
+    ],
+    "C": [
+      "control_surface.resource_C"
+    ],
+    "Q": [
+      "control_surface.criterion_Q"
+    ],
+    "P": [
+      "control_surface.probe_P",
+      "relation_topology"
+    ]
+  },
+  "assignment_rules": {
+    "construct_label_inference_forbidden": true,
+    "author_venue_citation_inference_forbidden": true,
+    "topology_preservation_required": true,
+    "posthoc_control_selection_forbidden": true,
+    "basis_growth_from_single_residual_forbidden": true,
+    "coordinate_presence_not_equivalence": true
+  },
+  "residual_policy": {
+    "automatic_basis_growth": false,
+    "classes": [
+      "source_underdetermination",
+      "claim_ir_expressivity_pressure",
+      "basis_semantics_pressure",
+      "basis_dimension_pressure",
+      "missing_bridge_assumption",
+      "formalization_or_witness_pressure"
+    ]
+  }
+}
