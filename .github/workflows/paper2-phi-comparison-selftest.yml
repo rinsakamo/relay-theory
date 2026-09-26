@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - "research/paper2/phi_comparison_v1.json"
+      - "research/paper2/phi_object_v1.schema.json"
       - "research/paper2/working_basis_v1.json"
       - "research/paper2/structural_signature_v1.*"
       - "scripts/paper2_phi_compare.py"
@@ -13,6 +14,7 @@ on:
     branches: [main]
     paths:
       - "research/paper2/phi_comparison_v1.json"
+      - "research/paper2/phi_object_v1.schema.json"
       - "research/paper2/working_basis_v1.json"
       - "research/paper2/structural_signature_v1.*"
       - "scripts/paper2_phi_compare.py"
@@ -32,7 +34,9 @@ jobs:
           python-version: "3.12"
       - name: Compile comparator
         run: python -m py_compile scripts/paper2_phi_compare.py
-      - name: Parse Phi comparison contract
-        run: python -m json.tool research/paper2/phi_comparison_v1.json >/dev/null
+      - name: Parse Phi contracts
+        run: |
+          python -m json.tool research/paper2/phi_comparison_v1.json >/dev/null
+          python -m json.tool research/paper2/phi_object_v1.schema.json >/dev/null
       - name: Run destructive Phi self-test
         run: python scripts/paper2_phi_compare.py --self-test
