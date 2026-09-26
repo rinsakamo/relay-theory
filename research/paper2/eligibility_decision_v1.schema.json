@@ -1,0 +1,149 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/rinsakamo/relay-theory/blob/main/research/paper2/eligibility_decision_v1.schema.json",
+  "title": "Paper 2 eligibility decision v1",
+  "description": "Basis-blind source-grounded eligibility-v1.1 classifier output.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "bundle_id",
+    "claims",
+    "exclusion_checks",
+    "decision"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "paper2-eligibility-decision-v1"
+    },
+    "bundle_id": {
+      "type": "string",
+      "pattern": "^E[0-9]{4}$"
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "claim_id",
+          "source_locator",
+          "route",
+          "generalization",
+          "operational_roles",
+          "construct_level_relevance"
+        ],
+        "properties": {
+          "claim_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_locator": {
+            "type": "string",
+            "minLength": 1
+          },
+          "route": {
+            "enum": [
+              "A_EXPLICIT_COGNITIVE_CAPACITY",
+              "B_GENERAL_ADAPTIVE_INFORMATION_PROCESSING"
+            ]
+          },
+          "generalization": {
+            "enum": [
+              "YES",
+              "NO",
+              "UNCERTAIN"
+            ]
+          },
+          "operational_roles": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "enum": [
+                "CONTEXT",
+                "INPUT_OR_INTERVENTION",
+                "INFORMATION_OR_REPRESENTATION",
+                "INTERNAL_OR_RELATIONAL_STRUCTURE",
+                "RESPONSE_OR_OUTPUT",
+                "CRITERION_OR_COMPARISON",
+                "DEPENDENCY_OR_SENSITIVITY",
+                "TIME_OR_HORIZON"
+              ]
+            }
+          },
+          "construct_level_relevance": {
+            "enum": [
+              "YES",
+              "NO",
+              "UNCERTAIN"
+            ]
+          }
+        }
+      }
+    },
+    "exclusion_checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "task_use_only",
+        "covariate_or_score_only",
+        "local_association_only",
+        "applied_outcome_only",
+        "implementation_only_no_general_claim",
+        "terminology_match_only",
+        "pure_formalism_without_functional_capacity_claim",
+        "no_inspectable_claim"
+      ],
+      "properties": {
+        "task_use_only": {
+          "type": "boolean"
+        },
+        "covariate_or_score_only": {
+          "type": "boolean"
+        },
+        "local_association_only": {
+          "type": "boolean"
+        },
+        "applied_outcome_only": {
+          "type": "boolean"
+        },
+        "implementation_only_no_general_claim": {
+          "type": "boolean"
+        },
+        "terminology_match_only": {
+          "type": "boolean"
+        },
+        "pure_formalism_without_functional_capacity_claim": {
+          "type": "boolean"
+        },
+        "no_inspectable_claim": {
+          "type": "boolean"
+        }
+      }
+    },
+    "decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "reason_codes"
+      ],
+      "properties": {
+        "state": {
+          "enum": [
+            "INCLUDE",
+            "EXCLUDE",
+            "ELIGIBILITY_UNCERTAIN"
+          ]
+        },
+        "reason_codes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}
