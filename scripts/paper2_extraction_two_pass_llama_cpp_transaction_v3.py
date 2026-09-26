@@ -971,6 +971,11 @@ def run_core(
                 "bundles",
                 "package_by_bundle",
                 "provenance_by_bundle",
+                "llama",
+                "server",
+                "model",
+                "fixture_plan",
+                "record",
             }
         }
         summary["authority"] = authority
