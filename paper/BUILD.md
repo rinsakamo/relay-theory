@@ -48,3 +48,30 @@ This validates manuscript compilation and layout only. It does not validate:
 ## Before submission
 
 Rebuild after applying the target venue's class/style files and repeat visual inspection, because pagination and line breaking can change under venue-specific formatting.
+
+---
+
+## Active FoS build transaction — 2026-09-26
+
+Historical PHOS build results above remain valid only for the historical PHOS submission source.
+
+Active FoS files:
+- `paper/venues/foundations-of-science/main.tex`
+- `paper/references.bib`
+- `paper/venues/foundations-of-science/lean-supplement/`
+
+Dedicated workflow:
+- `.github/workflows/paper-1-foundations-of-science-ci.yml`
+
+The workflow:
+- verifies exact head;
+- checks FoS abstract/keyword/author/declaration requirements;
+- builds the FoS PDF;
+- fails on LaTeX warnings / overfull boxes / undefined citations or references;
+- installs pinned Lean 4.33.1 and rebuilds Online Resource 1;
+- audits R1–R23 and banned proof shortcuts;
+- creates **source-only** `ESM_1.zip`, explicitly excluding generated `.lake` build artifacts;
+- creates a separate editable manuscript-source ZIP.
+
+The exact final PDF must be rendered and visually inspected after the last substantive/source commit. Missing corresponding email/city are submission-metadata blockers and must not be inferred.
+

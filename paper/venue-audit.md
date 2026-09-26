@@ -145,3 +145,28 @@ The current Philosophy of Science review copy uses neutral mechanized-result lab
 The current Cambridge publishing-ethics policy requires disclosure when an AI tool has been used to generate manuscript text. The review copy therefore contains an anonymous `Acknowledgements` section identifying OpenAI ChatGPT / GPT-5.6 Sol, the access date, and the manuscript-development tasks for which it was used. The matching non-blind cover-letter draft carries the same disclosure.
 
 This disclosure is compatible with blind review because it does not contain author, affiliation, repository, or project identifiers.
+
+---
+
+## Supersession note — Foundations of Science adaptation, 2026-09-26
+
+The venue ordering above is a **historical pre-submission audit dated 2026-09-22**. It is not the current venue decision.
+
+The completed Philosophy of Science manuscript was submitted as PHOS-18601 and received editorial rejection on journal/genre-fit grounds: the manuscript was considered too broad/programmatic for that journal and insufficiently centered on a specific recent philosophy-of-science literature intervention. That decision is treated here as a venue/genre mismatch rather than a correctness failure of the manuscript.
+
+A subsequent isolated journal-fit audit selected the current order:
+
+1. **Foundations of Science**
+2. **Studies in History and Philosophy of Science**
+3. **Journal for General Philosophy of Science**
+
+The active adaptation is owned by #206 / draft PR #207 and follows the rule:
+
+**PRESERVE THE PAPER; ADAPT THE VENUE.**
+
+Current official FoS guidance independently supports the manuscript's existing broad-context → self-contained formal-exposition architecture. The active detailed audit is:
+
+`paper/venues/foundations-of-science/venue-audit.md`
+
+Do not use the 2026-09-22 ordering above to redirect the current manuscript back toward a Philosophy of Science-style single-literature-intervention architecture.
+

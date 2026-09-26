@@ -423,3 +423,33 @@ The UMI case is now explicitly mapped onto the formal vocabulary:
 - (O): target-sensitive outcomes.
 
 The text explicitly states that real UMI source assignment is noisy and inferred rather than read directly from barcode equality. This prevents the case from silently treating the exact formal map (r) as an empirically given identity oracle.
+
+---
+
+## Foundations of Science adaptation review — 2026-09-26
+
+Owner: #206. Draft PR: #207.
+
+The Philosophy of Science review history above remains historical evidence for manuscript hardening. It is **not** an instruction to reconstruct the paper around one contemporary dispute.
+
+Fresh FoS-specific hostile review of the adapted manuscript found no conceptual-reconstruction requirement. The following checks survive:
+
+- novelty remains methodological and conjunctive rather than theorem-theoretic;
+- the exact deterministic characterization remains relative to a fixed proposed target assignment and declared scope;
+- represented-image quotient descent is not inflated into an unrestricted function on all of `T`;
+- structural admissibility remains separate from independent scientific warrant;
+- bibliographic / UMI / evidence-synthesis examples now have explicit and non-duplicative roles;
+- the construct-level extension remains prospective;
+- the 2025–2026 literature refresh adds four scoped comparisons rather than converting the paper into a literature review;
+- the conclusion remains inside the theorem scope and explicitly rejects target discovery / metaphysical identity claims.
+
+Two corrections were made during the FoS hostile review:
+1. language of “target plurality” was narrowed to **target-level separation** where it could invite a stronger reading than the formal result;
+2. the Lean SI ZIP was changed from build-directory packaging to source-only packaging after the first CI artifact revealed generated `.lake/build` files.
+
+Remaining blockers are author/portal facts, not manuscript argument defects:
+- active corresponding-author email;
+- city of residence for the current FoS unaffiliated-author record.
+
+Do not mark the FoS transaction submission-ready until those facts are supplied and the exact final artifact is rebuilt.
+
