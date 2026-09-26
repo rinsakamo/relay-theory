@@ -30,6 +30,16 @@ def sha256_file(path: Path) -> str:
     return h.hexdigest()
 
 
+def sha256_json(value: Any) -> str:
+    rendered = json.dumps(
+        value,
+        ensure_ascii=False,
+        sort_keys=True,
+        separators=(",", ":"),
+    ).encode("utf-8")
+    return hashlib.sha256(rendered).hexdigest()
+
+
 def write_json_atomic(path: Path, value: Any) -> None:
     if path.exists():
         raise ScreeningError(f"OUTPUT_ALREADY_EXISTS:{path}")
@@ -81,12 +91,13 @@ def load_contract(path: Path = DEFAULT_CONTRACT) -> dict[str, Any]:
         raise ScreeningError("FROZEN_QUOTA_SUM_INVALID")
     if contract.get("total_primary_work_target") != 1000:
         raise ScreeningError("PRIMARY_WORK_TARGET_DRIFT")
-    if contract.get("real_source_acquisition_authorized") is not False:
-        raise ScreeningError("APPARATUS_CONTRACT_MUST_NOT_AUTHORIZE_SOURCE_ACQUISITION")
-    if contract.get("real_eligibility_adjudication_authorized") is not False:
-        raise ScreeningError("APPARATUS_CONTRACT_MUST_NOT_AUTHORIZE_ADJUDICATION")
-    if contract.get("real_primary_corpus_freeze_authorized") is not False:
-        raise ScreeningError("APPARATUS_CONTRACT_MUST_NOT_AUTHORIZE_CORPUS_FREEZE")
+    for authority_field in (
+        "real_source_acquisition_authorized",
+        "real_eligibility_adjudication_authorized",
+        "real_primary_corpus_freeze_authorized",
+    ):
+        if not isinstance(contract.get(authority_field), bool):
+            raise ScreeningError(f"SCREENING_AUTHORITY_FIELD_INVALID:{authority_field}")
     if contract.get("architecture_consequence") != "NONE":
         raise ScreeningError("ARCHITECTURE_CONSEQUENCE_DRIFT")
     algorithm = contract.get("screening_algorithm", {})
@@ -301,6 +312,7 @@ def freeze_era_from_objects(
     era: str,
     ranked_sha256: str,
     ranked_index_sha256: str,
+    adjudication_bundle_sha256: str,
     contract: dict[str, Any],
     quota_override: int | None = None,
 ) -> dict[str, Any]:
@@ -364,13 +376,16 @@ def freeze_era_from_objects(
                 if len(selected) == quota:
                     terminal_rank = rank
 
-        ledger.append(
-            {
-                "rank": rank,
-                "provider_work_id": wid,
-                "screening_state": state,
-            }
-        )
+        ledger_item = {
+            "rank": rank,
+            "provider_work_id": wid,
+            "screening_state": state,
+        }
+        if not calibration:
+            record = by_id.get(wid)
+            if record is not None and wid in consumed_adjudications:
+                ledger_item["adjudication_record_sha256"] = sha256_json(record)
+        ledger.append(ledger_item)
 
     unused = sorted(set(by_id) - consumed_adjudications)
     if unused:
@@ -401,6 +416,7 @@ def freeze_era_from_objects(
         "era": era,
         "ranked_artifact_sha256": ranked_sha256,
         "ranked_index_sha256": ranked_index_sha256,
+        "adjudication_bundle_sha256": adjudication_bundle_sha256,
         "ranked_artifact_schema": ladder["schema_version"],
         "quota_k_d": quota,
         "frozen_ladder_row_count": len(rows),
@@ -482,6 +498,9 @@ def freeze_corpus_from_era_artifacts(
                 "selected_count": quota,
                 "ranked_artifact_sha256": artifact.get("ranked_artifact_sha256"),
                 "ranked_index_sha256": artifact.get("ranked_index_sha256"),
+                "adjudication_bundle_sha256": artifact.get(
+                    "adjudication_bundle_sha256"
+                ),
                 "screening_counts": artifact.get("screening_counts"),
             }
         )
@@ -586,6 +605,9 @@ def expect_error(fn, contains: str) -> None:
 
 def self_test() -> None:
     contract = load_contract()
+    assert contract["real_source_acquisition_authorized"] is False
+    assert contract["real_eligibility_adjudication_authorized"] is False
+    assert contract["real_primary_corpus_freeze_authorized"] is False
     era = "PRE_1950"
     ranked_sha = "1" * 64
     index_sha = "2" * 64
@@ -632,6 +654,7 @@ def self_test() -> None:
         era=era,
         ranked_sha256=ranked_sha,
         ranked_index_sha256=index_sha,
+        adjudication_bundle_sha256="5" * 64,
         contract=contract,
         quota_override=2,
     )
@@ -771,6 +794,7 @@ def self_test() -> None:
                 "terminal_rank": quota,
                 "ranked_artifact_sha256": "3" * 64,
                 "ranked_index_sha256": "4" * 64,
+                "adjudication_bundle_sha256": "5" * 64,
                 "screening_counts": {"INCLUDE": quota},
             }
         )
@@ -839,12 +863,14 @@ def main() -> int:
         ranked_sha = sha256_file(args.ladder)
         index_sha = sha256_file(args.index)
         bundle = load_json(args.adjudications)
+        bundle_sha = sha256_file(args.adjudications)
         result = freeze_era_from_objects(
             ladder=ladder,
             adjudication_bundle=bundle,
             era=args.era,
             ranked_sha256=ranked_sha,
             ranked_index_sha256=index_sha,
+            adjudication_bundle_sha256=bundle_sha,
             contract=contract,
         )
         write_json_atomic(args.output, result)
