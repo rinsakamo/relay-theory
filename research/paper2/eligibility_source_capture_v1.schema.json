@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "paper2-eligibility-source-capture-v1",
+  "title": "Paper 2 eligibility source capture v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "capture_id",
+    "provider_work_id",
+    "capture_state",
+    "source_access_status",
+    "source_language",
+    "source_kind",
+    "stable_locator",
+    "retrieved_at",
+    "captured_content_sha256",
+    "content_units",
+    "integrity"
+  ],
+  "properties": {
+    "schema_version": {"const": "paper2-eligibility-source-capture-v1"},
+    "capture_id": {"type": "string", "pattern": "^E[0-9]{4}$"},
+    "provider_work_id": {"type": "string", "minLength": 1},
+    "capture_state": {
+      "enum": [
+        "CAPTURE_READY",
+        "TERMINAL_INACCESSIBLE",
+        "TECHNICAL_FAILURE",
+        "INTEGRITY_REVIEW_REQUIRED",
+        "INTEGRITY_FAILED"
+      ]
+    },
+    "source_access_status": {
+      "type": ["string", "null"],
+      "enum": ["FULL_TEXT", "PARTIAL_TEXT", "ABSTRACT_ONLY", "INACCESSIBLE", null]
+    },
+    "source_language": {"type": ["string", "null"]},
+    "source_kind": {"type": "string", "minLength": 1},
+    "stable_locator": {"type": "string", "minLength": 1},
+    "retrieved_at": {"type": "string", "minLength": 1},
+    "captured_content_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "content_units": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["capture_unit_id", "source_locator", "text"],
+        "properties": {
+          "capture_unit_id": {"type": "string", "pattern": "^u[0-9]+$"},
+          "source_locator": {"type": "string", "minLength": 1},
+          "text": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "integrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["identity_binding", "payload_class"],
+      "properties": {
+        "identity_binding": {
+          "enum": ["VERIFIED", "REVIEW_REQUIRED", "FAILED"]
+        },
+        "payload_class": {
+          "enum": [
+            "INSPECTABLE_SOURCE_TEXT",
+            "MISMATCH_SUSPECTED",
+            "NON_SOURCE_PAYLOAD",
+            "NO_PAYLOAD",
+            "UNDETERMINED"
+          ]
+        }
+      }
+    }
+  }
+}
