@@ -75,7 +75,22 @@ jobs:
           "$HOME/.elan/bin/lake" build
           for n in $(seq 1 23); do grep -q "R$n" RESULT_MAP.md || exit 1; done
           cd ..
-          zip -qr ESM_1.zip lean-supplement
+          zip -q ESM_1.zip \
+            lean-supplement/Paper1Audit.lean \
+            lean-supplement/README.md \
+            lean-supplement/RESULT_MAP.md \
+            lean-supplement/lakefile.lean \
+            lean-supplement/lean-toolchain
+          test -s ESM_1.zip
+          if unzip -l ESM_1.zip | grep -E '(^|/)\.lake/|\.olean|\.ilean|Paper1Audit\.c'; then
+            echo "Generated Lean build artifacts leaked into ESM_1.zip" >&2
+            exit 1
+          fi
+          mkdir -p submission-source
+          cp main.tex references.bib submission-source/
+          cp README.md submission-source/FOS_PACKAGE_README.md
+          zip -qr manuscript-editable-source.zip submission-source
+          test -s manuscript-editable-source.zip
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: paper-1-foundations-of-science-pdf
@@ -86,5 +101,12 @@ jobs:
         with:
           name: paper-1-foundations-of-science-online-resource-1
           path: paper/venues/foundations-of-science/ESM_1.zip
+          if-no-files-found: error
+          retention-days: 14
+
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: paper-1-foundations-of-science-editable-source
+          path: paper/venues/foundations-of-science/manuscript-editable-source.zip
           if-no-files-found: error
           retention-days: 14

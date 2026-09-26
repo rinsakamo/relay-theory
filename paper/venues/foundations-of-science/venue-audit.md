@@ -43,3 +43,19 @@ The prior Philosophy of Science submission package remains intact under `paper/v
 ## Outstanding factual metadata
 
 The active corresponding-author email required by FoS is not established in current repository or prior Paper 1 authority. It is intentionally not inferred.
+
+
+## Fresh recent-article practice check — 2026-09-26
+
+Recent FoS research practice remains compatible with this manuscript's architecture.
+
+- Marek Sikora, “Evolution of the Ethos of Science: From the Representationalist to the Interventionist Approach to Science,” *Foundations of Science* 30 (2025): 811–827, DOI 10.1007/s10699-024-09969-6 — broad conceptual/methodological argument crossing philosophy and scientific practice.
+- Fulvio Mazzocchi, “An Investigation Into the Notion of Complex Systems,” *Foundations of Science* (2025), DOI 10.1007/s10699-025-09975-2 — framework-building treatment of a cross-disciplinary foundational concept.
+- M.Z. Naser, “Causality, Explanations, Machine Learning, and Engineering,” *Foundations of Science* 30 (2025): 945–970, DOI 10.1007/s10699-025-10006-3 — broad foundational synthesis spanning philosophy, ML, and engineering.
+- Thijs M. K. Latten, Martin Sand, and Pieter E. Vermaas, “From Practice To Theory: Three Types of Influence of Quantum Technology on Quantum Mechanics and its Foundations,” *Foundations of Science* 31 (2026): 345–370, DOI 10.1007/s10699-025-10003-6 — explicit practice/theory cross-domain foundational analysis.
+
+These are venue-fit comparators, not substantive premises of Paper 1, so they are not added to the manuscript bibliography merely to signal journal familiarity.
+
+## Artifact inspection correction
+
+The first exact-head CI artifact built cleanly, but its ESM ZIP accidentally included the local `.lake/build` products created by the validation build. This is a packaging defect, not a Lean/formal defect. The CI is revised to zip only the five source/provenance files and to fail if generated Lean build products leak into ESM_1.zip. A separate editable manuscript-source ZIP is also produced for FoS submission requirements.
