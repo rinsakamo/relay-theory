@@ -3,10 +3,10 @@
 Article: **When May a Formal Difference Enter an Individuation Inference? Target Factorization, Restricted Tests, and Cross-Domain Audits**
 
 Author: Rintaro Sakamoto, MPH  
-Affiliation: Independent Scholar, Japan  
+Affiliation: Independent Scholar, Kitakyushu, Japan  
 ORCID: https://orcid.org/0009-0002-0443-2508  
 Owner: #206
 
 This is the non-anonymous FoS adaptation. The historical Philosophy of Science package remains untouched in the sibling directory.
 
-Current blockers: the active corresponding-author email has not been established, and the FoS unaffiliated-author guidance calls for city + country while only Japan is established. Email and city must be supplied by the author before submission. No journal submission is authorized by this repository transaction.
+Author metadata blockers were resolved by the author on 2026-09-26: corresponding email `rin.sakamoto.research@gmail.com` and city `Kitakyushu`, Japan. Submission readiness still requires exact-head CI and final artifact inspection. No journal submission is authorized by this repository transaction.

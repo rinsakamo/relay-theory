@@ -34,10 +34,21 @@ jobs:
           ks=[z.strip() for z in km.group(1).split(";")]
           print("keywords",len(ks),ks)
           assert 4 <= len(ks) <= 6
-          for s in ["Rintaro Sakamoto","0009-0002-0443-2508","Statements and Declarations","Data Availability","Use of Generative AI","Online Resource 1"]:
+          for s in ["Rintaro Sakamoto","0009-0002-0443-2508","Independent Scholar, Kitakyushu, Japan","rin.sakamoto.research@gmail.com","Statements and Declarations","Data Availability","Use of Generative AI","Online Resource 1"]:
               assert s in x, s
           assert "Anonymous working draft" not in x
-          print("corresponding_email","PENDING_AUTHOR_INPUT" if "author input required before submission" in x.lower() else "PRESENT")
+          assert "author input required" not in x.lower()
+          assert "[AUTHOR INPUT REQUIRED]" not in x
+          venue = Path("paper/venues/foundations-of-science")
+          for p in venue.rglob("*"):
+              if p.is_file() and p.suffix.lower() in {".md", ".tex", ".lean"}:
+                  t=p.read_text(errors="replace")
+                  assert "[AUTHOR INPUT REQUIRED]" not in t, p
+                  assert "author input required before submission" not in t.lower(), p
+          pm=Path("paper/venues/foundations-of-science/portal-metadata.md").read_text()
+          assert "- City: Kitakyushu" in pm
+          assert "- Corresponding-author email: rin.sakamoto.research@gmail.com" in pm
+          print("author_metadata","COMPLETE")
           PY
       - name: Install build tools
         run: |
@@ -58,6 +69,8 @@ jobs:
           PAGES="$(pdfinfo main.pdf | awk -F: '/^Pages:/ {gsub(/ /,"",$2); print $2}')"
           pdftotext main.pdf main.txt
           grep -F "Rintaro Sakamoto" main.txt
+          grep -F "Independent Scholar, Kitakyushu, Japan" main.txt
+          grep -F "rin.sakamoto.research@gmail.com" main.txt
           grep -F "Statements and Declarations" main.txt
           grep -F "Online Resource 1" main.txt
           echo "PDF pages: $PAGES" >> "$GITHUB_STEP_SUMMARY"

@@ -13,8 +13,8 @@ When May a Formal Difference Enter an Individuation Inference? Target Factorizat
 - Rintaro Sakamoto, MPH
 - Status: Independent scholar / currently unaffiliated
 - Country: Japan
-- City: **[AUTHOR INPUT REQUIRED]**
-- Corresponding-author email: **[AUTHOR INPUT REQUIRED]**
+- City: Kitakyushu
+- Corresponding-author email: rin.sakamoto.research@gmail.com
 - ORCID: 0009-0002-0443-2508
 
 ## Abstract

@@ -7,8 +7,8 @@ Audit date: 2026-09-26. Owner: #206.
 - [x] Abstract 150–250 words.
 - [x] Six keywords.
 - [x] Rintaro Sakamoto, MPH / Independent Scholar / Japan / ORCID restored.
-- [ ] Active corresponding-author email inserted.
-- [ ] City of residence inserted if required for the unaffiliated-author title-page record.
+- [x] Active corresponding-author email inserted: `rin.sakamoto.research@gmail.com`.
+- [x] City of residence inserted for the unaffiliated-author record: `Kitakyushu, Japan`.
 - [x] Statements and Declarations.
 - [x] Prior author-confirmed competing-interests status: none.
 - [x] Prior author-confirmed funding wording preserved: “No restricted funding sources supported this submission.”
@@ -23,4 +23,4 @@ Audit date: 2026-09-26. Owner: #206.
 - [ ] At submission time, confirm no concurrent review elsewhere.
 - [ ] At submission time, disclose any public preprint/repository item if the live portal requests it.
 
-Current submission classification remains blocked only on missing active corresponding-author email, subject to technical/hostile-review validation.
+Author-metadata blockers are resolved. Final submission-ready classification is contingent only on exact-head technical validation and final artifact inspection.

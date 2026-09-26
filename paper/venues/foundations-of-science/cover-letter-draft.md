@@ -13,6 +13,6 @@ The author used OpenAI ChatGPT (GPT-5.6 Sol, September 2026) to assist with draf
 Sincerely,
 
 Rintaro Sakamoto, MPH  
-Independent Scholar, Japan  
+Independent Scholar, Kitakyushu, Japan  
 ORCID: 0009-0002-0443-2508  
-[Corresponding-author email required before submission]
+rin.sakamoto.research@gmail.com

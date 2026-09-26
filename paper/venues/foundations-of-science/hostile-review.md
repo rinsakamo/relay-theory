@@ -16,4 +16,4 @@ Attack:
 11. whether construct-level material remains prospective;
 12. FoS declarations, author metadata, and supplement provenance.
 
-Known factual blocker: active corresponding-author email is not established and must not be invented.
+Prior factual blocker resolved 2026-09-26: the author supplied `rin.sakamoto.research@gmail.com` and `Kitakyushu, Japan`; no metadata value was inferred.

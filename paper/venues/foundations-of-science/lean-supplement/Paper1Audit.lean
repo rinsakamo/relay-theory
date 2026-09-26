@@ -2,9 +2,9 @@
 Article: When May a Formal Difference Enter an Individuation Inference? Target Factorization, Restricted Tests, and Cross-Domain Audits
 Journal: Foundations of Science
 Author: Rintaro Sakamoto, MPH
-Affiliation: Independent Scholar, Japan
+Affiliation: Independent Scholar, Kitakyushu, Japan
 ORCID: 0009-0002-0443-2508
-Corresponding author email: AUTHOR INPUT REQUIRED
+Corresponding author email: rin.sakamoto.research@gmail.com
 This source verifies formal dependency claims only; it does not establish scientific warrant.
 -/
 

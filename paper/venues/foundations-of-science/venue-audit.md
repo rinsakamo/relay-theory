@@ -42,7 +42,7 @@ The prior Philosophy of Science submission package remains intact under `paper/v
 
 ## Outstanding factual metadata
 
-The active corresponding-author email required by FoS is not established in current repository or prior Paper 1 authority. It is intentionally not inferred.
+The prior author-metadata blocker is resolved: on 2026-09-26 the author supplied the active corresponding email `rin.sakamoto.research@gmail.com` and city `Kitakyushu`, Japan. These values are direct author input rather than inferred metadata.
 
 
 ## Fresh recent-article practice check — 2026-09-26
