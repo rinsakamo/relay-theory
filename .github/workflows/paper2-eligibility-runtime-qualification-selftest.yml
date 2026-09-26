@@ -1,0 +1,48 @@
+name: paper2-eligibility-runtime-qualification-selftest
+
+on:
+  pull_request:
+    paths:
+      - "research/paper2/eligibility_runtime_qualification_v1.json"
+      - "research/paper2/eligibility_runtime_manifest_v1.schema.json"
+      - "research/paper2/eligibility_runtime_manifest_v1.example.json"
+      - "research/paper2/eligibility_qualification_v1/**"
+      - "research/paper2/eligibility_runner_v1.json"
+      - "research/paper2/eligibility_adjudication_v1.json"
+      - "scripts/paper2_eligibility_runtime_qualify.py"
+      - "scripts/paper2_eligibility_openai_runner.py"
+      - "scripts/paper2_eligibility_adjudication_validate.py"
+      - ".github/workflows/paper2-eligibility-runtime-qualification-selftest.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "research/paper2/eligibility_runtime_qualification_v1.json"
+      - "research/paper2/eligibility_runtime_manifest_v1.schema.json"
+      - "research/paper2/eligibility_runtime_manifest_v1.example.json"
+      - "research/paper2/eligibility_qualification_v1/**"
+      - "research/paper2/eligibility_runner_v1.json"
+      - "research/paper2/eligibility_adjudication_v1.json"
+      - "scripts/paper2_eligibility_runtime_qualify.py"
+      - "scripts/paper2_eligibility_openai_runner.py"
+      - "scripts/paper2_eligibility_adjudication_validate.py"
+      - ".github/workflows/paper2-eligibility-runtime-qualification-selftest.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile eligibility runtime qualification apparatus
+        run: |
+          python -m py_compile scripts/paper2_eligibility_adjudication_validate.py
+          python -m py_compile scripts/paper2_eligibility_openai_runner.py
+          python -m py_compile scripts/paper2_eligibility_runtime_qualify.py
+      - name: Run frozen synthetic qualification self-test
+        run: python scripts/paper2_eligibility_runtime_qualify.py --self-test
