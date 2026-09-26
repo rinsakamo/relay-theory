@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "paper2-eligibility-runtime-manifest-v1",
+  "title": "Paper 2 eligibility runtime qualification manifest v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "captured_at",
+    "repo_head",
+    "repo_tree",
+    "llama_cpp_revision",
+    "llama_cpp_build",
+    "server_base_url",
+    "model_id",
+    "gguf_path",
+    "gguf_sha256",
+    "gpu_identity",
+    "runner_config_sha256"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "paper2-eligibility-runtime-manifest-v1"
+    },
+    "captured_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repo_head": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "repo_tree": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "llama_cpp_revision": {
+      "type": "string",
+      "minLength": 1
+    },
+    "llama_cpp_build": {
+      "type": "string",
+      "minLength": 1
+    },
+    "server_base_url": {
+      "type": "string",
+      "pattern": "^https?://"
+    },
+    "model_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "gguf_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "gguf_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "gpu_identity": {
+      "type": "string",
+      "minLength": 1
+    },
+    "runner_config_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}
