@@ -1,0 +1,68 @@
+{
+  "schema_version": "paper2-eligibility-runner-contract-v1",
+  "owner_issue": 216,
+  "parent_issue": 214,
+  "status": "APPARATUS_ONLY_REAL_EXECUTION_NOT_AUTHORIZED",
+  "prompts": {
+    "classifier": {
+      "path": "research/paper2/eligibility_adjudication_prompt_v1.md",
+      "sha256_utf8": "611f2de24d8d958595038d494c1916be891870984f47ac81ea432159c56950e4"
+    },
+    "disagreement_adjudicator": {
+      "path": "research/paper2/eligibility_adjudication_disagreement_prompt_v1.md",
+      "sha256_utf8": "aacfe9517193d1d2f5f9480f72b502d24ef9fba91692fac6af1a0304b62ab1a8"
+    }
+  },
+  "request_contract": {
+    "endpoint_suffix": "/chat/completions",
+    "stateless": true,
+    "reasoning_effort": "none",
+    "cache_prompt": false,
+    "temperature": 0,
+    "top_p": 1,
+    "response_format": "json_object",
+    "automatic_retry_count": 0,
+    "pass_order": [
+      "A",
+      "B"
+    ],
+    "adjudication_only_on_disagreement": true
+  },
+  "model_facing_A_B": [
+    "classifier prompt",
+    "one opaque eligibility source bundle"
+  ],
+  "model_facing_adjudication": [
+    "disagreement prompt",
+    "one opaque eligibility source bundle",
+    "pass A projection",
+    "pass B projection"
+  ],
+  "forbidden_model_facing_binding_fields": [
+    "provider_work_id",
+    "era",
+    "rank",
+    "ranked_artifact_sha256",
+    "source_access_version",
+    "adjudication_version"
+  ],
+  "durable_artifacts": [
+    "source-bundle.json",
+    "binding.json",
+    "requests/A.sha256",
+    "responses/A.json",
+    "responses/A.sha256",
+    "requests/B.sha256",
+    "responses/B.json",
+    "responses/B.sha256",
+    "agreement.json",
+    "optional responses/ADJUDICATION.json",
+    "optional responses/ADJUDICATION.sha256",
+    "receipt.json",
+    "assembled-record.json"
+  ],
+  "output_directory_must_not_preexist": true,
+  "request_failure_after_submission_consumes_pass": true,
+  "real_execution_authorized": false,
+  "architecture_consequence": "NONE"
+}
