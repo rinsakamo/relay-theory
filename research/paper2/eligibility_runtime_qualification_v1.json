@@ -1,0 +1,78 @@
+{
+  "schema_version": "paper2-eligibility-runtime-qualification-v1",
+  "owner_issue": 218,
+  "parent_runner_issue": 216,
+  "parent_adjudication_issue": 214,
+  "required_runner_merge_head": "bb7059ad5934baa07814577f8d5cb042055f6732",
+  "status": "SYNTHETIC_RUNTIME_QUALIFICATION_AUTHORIZED_AFTER_MERGE",
+  "fixture_order": [
+    "Q1_ROUTE_A_INCLUDE",
+    "Q2_ROUTE_B_INCLUDE",
+    "Q3_TASK_ONLY_EXCLUDE",
+    "Q4_PURE_FORMALISM_EXCLUDE"
+  ],
+  "fixtures": {
+    "Q1_ROUTE_A_INCLUDE": {
+      "path": "research/paper2/eligibility_qualification_v1/Q1_ROUTE_A_INCLUDE.json",
+      "sha256_utf8": "fe1d7bc8ba7b81a76882bf176303077fe58a49b294400049f99133572dbb5d00",
+      "expected_state": "INCLUDE",
+      "required_route": "A_EXPLICIT_COGNITIVE_CAPACITY",
+      "required_exclusion_check": null
+    },
+    "Q2_ROUTE_B_INCLUDE": {
+      "path": "research/paper2/eligibility_qualification_v1/Q2_ROUTE_B_INCLUDE.json",
+      "sha256_utf8": "4add67a3bb7930a8c34e667da3055707ba76822f81d19c70b18f4727e7ed62fa",
+      "expected_state": "INCLUDE",
+      "required_route": "B_GENERAL_ADAPTIVE_INFORMATION_PROCESSING",
+      "required_exclusion_check": null
+    },
+    "Q3_TASK_ONLY_EXCLUDE": {
+      "path": "research/paper2/eligibility_qualification_v1/Q3_TASK_ONLY_EXCLUDE.json",
+      "sha256_utf8": "041344ad9b45b7d3f712865154118869a7c663f877f2f9991db8ab56d37f6a31",
+      "expected_state": "EXCLUDE",
+      "required_route": null,
+      "required_exclusion_check": "task_use_only"
+    },
+    "Q4_PURE_FORMALISM_EXCLUDE": {
+      "path": "research/paper2/eligibility_qualification_v1/Q4_PURE_FORMALISM_EXCLUDE.json",
+      "sha256_utf8": "9fb2ed928b1feec37be829de691378ddaeea888722cd047d69e852c52970cdd5",
+      "expected_state": "EXCLUDE",
+      "required_route": null,
+      "required_exclusion_check": "pure_formalism_without_functional_capacity_claim"
+    }
+  },
+  "execution": {
+    "fixture_order_fixed": true,
+    "stop_on_first_failure": true,
+    "automatic_retry_count": 0,
+    "output_root_must_not_preexist": true,
+    "pass_a_per_fixture": 1,
+    "pass_b_per_fixture": 1,
+    "adjudication_max_per_fixture": 1,
+    "adjudication_only_on_disagreement": true,
+    "minimum_total_model_calls": 8,
+    "maximum_total_model_calls": 12,
+    "later_fixture_after_failure": false
+  },
+  "runtime_identity_required": [
+    "repository HEAD",
+    "repository tree",
+    "llama.cpp revision",
+    "llama.cpp build",
+    "model identifier",
+    "GGUF path",
+    "GGUF SHA-256",
+    "GPU identity",
+    "server base URL",
+    "runner config raw SHA-256"
+  ],
+  "runtime_manifest_schema": "paper2-eligibility-runtime-manifest-v1",
+  "model_facing_ranked_work_allowed": false,
+  "top50_source_text_allowed": false,
+  "synthetic_runtime_qualification_authorized": true,
+  "real_ranked_work_screening_authorized": false,
+  "claim_ir_authorized": false,
+  "decomposition_authorized": false,
+  "null_execution_authorized": false,
+  "architecture_consequence": "NONE"
+}
