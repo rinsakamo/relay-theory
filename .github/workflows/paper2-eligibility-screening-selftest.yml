@@ -1,0 +1,35 @@
+name: paper2-eligibility-screening-selftest
+
+on:
+  pull_request:
+    paths:
+      - "scripts/paper2_eligibility_screening.py"
+      - "research/paper2/eligibility_screening_v1.json"
+      - "research/paper2/sampling_v2.json"
+      - "research/paper2/sampling_v2_era_freeze.json"
+      - ".github/workflows/paper2-eligibility-screening-selftest.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "scripts/paper2_eligibility_screening.py"
+      - "research/paper2/eligibility_screening_v1.json"
+      - "research/paper2/sampling_v2.json"
+      - "research/paper2/sampling_v2_era_freeze.json"
+      - ".github/workflows/paper2-eligibility-screening-selftest.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile eligibility screening apparatus
+        run: python -m py_compile scripts/paper2_eligibility_screening.py
+      - name: Run deterministic eligibility screening self-test
+        run: python scripts/paper2_eligibility_screening.py --self-test
