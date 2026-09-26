@@ -1,0 +1,104 @@
+{
+  "schema_version": "paper2-v3-real-calibration-transaction-v1",
+  "owner_issue": 210,
+  "status": "PREPARATION_ONLY_NOT_SCIENTIFICALLY_AUTHORIZED",
+  "parents": {
+    "coordination_issue": 130,
+    "extraction_faithfulness_issue": 147,
+    "historical_v2_transaction_issue": 193,
+    "decision_surface_audit_issue": 200,
+    "v3_surface_issue": 203
+  },
+  "bound_repository_blobs": {
+    "research/paper2/extraction_systemone_decision_v3.schema.json": "22c1b6dce32f71d70dcc30d3c6879c18845b4c3f",
+    "research/paper2/extraction_two_pass_systemone_v3.json": "cbb579742f7f16cbbe51f7db9603eaa8639d841e",
+    "scripts/paper2_extraction_two_pass_systemone_v3.py": "9e2fdff07fd6b860d9dfe686c384b00d6c66b23f",
+    "research/paper2/claim_ir_v1.schema.json": "963f54bd61c3112daa046fa191e3194d47db0768",
+    "scripts/paper2_extraction_two_pass_llama_cpp_transaction_v2.py": "f180168c9ac95813284d07f2d87a9586ff2370c5"
+  },
+  "frozen_surface": {
+    "bundle_order": [
+      "B0001",
+      "B0002",
+      "B0003",
+      "B0004",
+      "B0005"
+    ],
+    "sample_ids": [
+      "CAL-BEER-1995",
+      "CAL-FRISTON-2010",
+      "CAL-TISHBY-2000",
+      "CAL-KOLCHINSKY-WOLPERT-2018",
+      "CAL-COWAN-2001"
+    ],
+    "prepared_bundle_sha256": {
+      "B0001": "7ae16a522905be942255dd4114e570bcb18917f21439484ccdd25db3c6949b90",
+      "B0002": "94dfa9b9a512d80416a7a23e7c6d483af94e897d9947e5dc0d1ddf6e6e91d3d2",
+      "B0003": "f88106ccb29976d0fccecc3aa21642bf3d4eef0edce8db2492f470aab0361005",
+      "B0004": "422dd03791f71c32170d8bfe5e8c96d26e81e7b069a4bd5f9b9ea4e7897d44cf",
+      "B0005": "068eff2109128dcff80c31bade79e67b0be560fb2b6782b3b3af5a2e8f6d4a3b"
+    },
+    "preprocessing_sha256": "a20c79555bc3b2bafb25ee805a2fb1f6b9ea1b65c16a493dd4792130c1da9ea2",
+    "mask_authority_sha256": "1b0963e07d6948d9d106a2200f48da680cb11a3705ecf8dd8aa481df9badd",
+    "normal_prompt_sha256": "a63aa5b0480653f0dbba018789b6e537bde252a12ce7abf8a58f9b198096ca99"
+  },
+  "runtime": {
+    "repository": "https://github.com/kishida/llama.cpp",
+    "revision": "07183d010f5cf5d021a2550775f42fb4b4270e06",
+    "tree": "4a654218342c2e179c0cd143e359632bff02bc22",
+    "version": "0.4.1-dev",
+    "build_number": 11066,
+    "binary_sha256": "d3bb0875329ff7c384c44b94b18e56dbb86c4d752af03a835b23a67c44354e4a",
+    "model_sha256": "c088a44859de42a1966851b552ba628c0ff4419b87c4622539d69430f40024ed",
+    "context": 8192,
+    "slots": 1,
+    "systemone_route": "/v1/systemone",
+    "cache_prompt": false,
+    "reasoning_effort": "none"
+  },
+  "topology": {
+    "replicates": ["A", "B"],
+    "server_launches_exact": 2,
+    "normal_calls_exact": 10,
+    "systemone_calls_min": 10,
+    "systemone_calls_max": 30,
+    "total_model_calls_min": 20,
+    "total_model_calls_max": 40,
+    "stages_max": 3,
+    "stage_order": [1, 2, 3],
+    "later_stage_after_terminal_bundle_outcome": false,
+    "unscheduled_stage_marker": "NOT_SCHEDULED_AFTER_TERMINAL_BUNDLE_OUTCOME"
+  },
+  "bundle_outcomes": [
+    "VALID_CLAIM_IR",
+    "EXTRACTION_ABSTAIN",
+    "EXTRACTION_FAILURE"
+  ],
+  "execution_guards": {
+    "retry": 0,
+    "replay": 0,
+    "fallback": 0,
+    "repair": 0,
+    "replacement": 0,
+    "fresh_owned_process_per_replicate": true,
+    "cross_replicate_visibility_forbidden": true,
+    "cache_reuse_across_replicates_forbidden": true,
+    "new_nonexistent_evidence_root_required": true,
+    "authorization_comment_readback_required": true
+  },
+  "historical_v2": {
+    "transaction_issue": 193,
+    "runner_must_remain_byte_identical": true,
+    "outcomes": {
+      "VALID_CLAIM_IR": 0,
+      "EXTRACTION_ABSTAIN": 8,
+      "EXTRACTION_FAILURE": 2
+    }
+  },
+  "scientific_transaction_authorized": false,
+  "paper167_execution_authorized": false,
+  "heldout_execution_authorized": false,
+  "basis_decomposition_authorized": false,
+  "null_execution_authorized": false,
+  "architecture_consequence": "NONE"
+}
