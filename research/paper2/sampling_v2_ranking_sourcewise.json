@@ -1,5 +1,5 @@
 {
-  "schema_version": "paper2-sampling-v2-ranking-sourcewise-v4",
+  "schema_version": "paper2-sampling-v2-ranking-sourcewise-v5",
   "owner_issue": 167,
   "status": "REAL_SOURCEWISE_RANKING_EXECUTION_AUTHORIZED_ELIGIBILITY_NOT_AUTHORIZED",
   "supersedes": "paper2-sampling-v2-ranking-v1 direct-union provider execution after PRE_1950 HTTP 500",
@@ -75,10 +75,13 @@
       "normalized title plus publication year only when title is present"
     ],
     "optional_string_normalization": "display_name/title and type are retained only when non-empty strings; null, blank, and non-string provider values normalize to null",
-    "duplicate_optional_field_policy": "title and doi: coalesce null/non-null and fail closed on conflicting non-null values; type: preserve all observations and freeze earliest non-null source-transaction observation",
+    "duplicate_optional_field_policy": "doi: coalesce null/non-null and fail closed on conflicting non-null values; title: preserve all observations, require calibration-outcome consistency across distinct non-null titles, and freeze earliest non-null observation; type: preserve all observations and freeze earliest non-null source-transaction observation",
     "duplicate_required_field_policy": "year mismatch fails closed; cited_by_count drift is preserved and resolved only by the frozen earliest-observation policy",
     "type_drift_role": "descriptive metadata only; type is not a ranking key and is not used for Top50 calibration identity",
-    "type_drift_resolution": "sort observations by transaction_started_at then source_id; select earliest non-null type; preserve all observations and distinct non-null values"
+    "type_drift_resolution": "sort observations by transaction_started_at then source_id; select earliest non-null type; preserve all observations and distinct non-null values",
+    "title_drift_role": "title is not a ranking key but participates in Top50 calibration fallback identity with publication year when DOI does not identify a seed",
+    "title_drift_resolution": "sort observations by transaction_started_at then source_id; evaluate every distinct non-null title with frozen DOI/year through the calibration matcher; require one identical calibration outcome across all distinct non-null titles; select earliest non-null title; preserve all observations and outcomes",
+    "title_missingness_policy": "null title is missing metadata rather than an alternative identity claim; null/non-null coalescence is allowed and calibration-consistency comparison is over distinct non-null titles only"
   },
   "execution_protocol": {
     "granularity": "one frozen source prefix per provider transaction, then local-only era merge",
@@ -99,7 +102,8 @@
     "credit_unit_authority": "OpenAlex list/filter request consumes 1 credit; search consumes 10 credits; this ranking path is list/filter OQL",
     "provider_429_policy": "fail current source transaction with no automatic retry; preserve earlier artifacts; resume only under a new versioned authorization after keyed rate-limit preflight",
     "live_duplicate_citation_drift_policy": "provider-free merge only; preserve all duplicate citation observations, freeze earliest observation for ranking, report drift count/range, and downgrade snapshot exactness classification",
-    "live_duplicate_optional_type_drift_policy": "provider-free merge only; type conflicts do not affect ranking or calibration identity, are preserved in an observation ledger, and set single_provider_snapshot_claimed=false"
+    "live_duplicate_optional_type_drift_policy": "provider-free merge only; type conflicts do not affect ranking or calibration identity, are preserved in an observation ledger, and set single_provider_snapshot_claimed=false",
+    "live_duplicate_optional_title_drift_policy": "provider-free merge only; preserve all title observations; permit conflicting non-null titles only when their Top50 calibration outcomes are identical under the frozen DOI/year; otherwise fail closed with LIVE_DUPLICATE_CALIBRATION_IDENTITY_DRIFT"
   },
   "real_ranking_execution_authorized": true,
   "real_eligibility_screening_authorized": false
