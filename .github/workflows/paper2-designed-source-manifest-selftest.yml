@@ -1,0 +1,48 @@
+name: paper2-designed-source-manifest-selftest
+
+on:
+  pull_request:
+    paths:
+      - "research/paper2/designed_corpus_geometry_v1.json"
+      - "research/paper2/designed_source_candidate_ledger_v1.*"
+      - "research/paper2/designed_atlas_forging_exclusion_v1.json"
+      - "research/paper2/designed_source_manifest_v1.*"
+      - "scripts/paper2_designed_source_candidate_ledger_validate.py"
+      - "scripts/paper2_designed_source_manifest_validate.py"
+      - ".github/workflows/paper2-designed-source-manifest-selftest.yml"
+  push:
+    branches: [main]
+    paths:
+      - "research/paper2/designed_corpus_geometry_v1.json"
+      - "research/paper2/designed_source_candidate_ledger_v1.*"
+      - "research/paper2/designed_atlas_forging_exclusion_v1.json"
+      - "research/paper2/designed_source_manifest_v1.*"
+      - "scripts/paper2_designed_source_candidate_ledger_validate.py"
+      - "scripts/paper2_designed_source_manifest_validate.py"
+      - ".github/workflows/paper2-designed-source-manifest-selftest.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile validators
+        run: |
+          python -m py_compile scripts/paper2_designed_source_candidate_ledger_validate.py
+          python -m py_compile scripts/paper2_designed_source_manifest_validate.py
+      - name: Parse manifest contracts
+        run: |
+          python -m json.tool research/paper2/designed_source_manifest_v1.schema.json >/dev/null
+          python -m json.tool research/paper2/designed_source_manifest_v1.json >/dev/null
+      - name: Run destructive manifest self-test
+        run: python scripts/paper2_designed_source_manifest_validate.py --self-test
+      - name: Validate frozen manifest
+        run: python scripts/paper2_designed_source_manifest_validate.py
+      - name: Verify immutable manifest digest
+        run: sha256sum -c research/paper2/designed_source_manifest_v1.sha256
