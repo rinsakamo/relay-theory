@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/rinsakamo/relay-theory/blob/main/research/paper2/eligibility_source_bundle_v1.schema.json",
+  "title": "Paper 2 eligibility source bundle v1",
+  "description": "Authority-blind bounded source-text input for one Paper 2 eligibility-v1.1 classification pass.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "bundle_id",
+    "source_language",
+    "source_access_status",
+    "source_spans"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "paper2-eligibility-source-bundle-v1"
+    },
+    "bundle_id": {
+      "type": "string",
+      "pattern": "^E[0-9]{4}$"
+    },
+    "source_language": {
+      "type": "string",
+      "minLength": 2
+    },
+    "source_access_status": {
+      "enum": [
+        "FULL_TEXT",
+        "PARTIAL_TEXT",
+        "ABSTRACT_ONLY"
+      ]
+    },
+    "source_spans": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "span_id",
+          "text"
+        ],
+        "properties": {
+          "span_id": {
+            "type": "string",
+            "pattern": "^s[0-9]+$"
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}

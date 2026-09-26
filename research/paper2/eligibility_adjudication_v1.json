@@ -1,0 +1,147 @@
+{
+  "schema_version": "paper2-eligibility-adjudication-procedure-v1",
+  "owner_issue": 214,
+  "parent_screening_issue": 212,
+  "eligibility_schema": "paper2-eligibility-v1.1",
+  "source_bundle_schema": "paper2-eligibility-source-bundle-v1",
+  "decision_schema": "paper2-eligibility-decision-v1",
+  "status": "APPARATUS_ONLY_REAL_EXECUTION_NOT_AUTHORIZED",
+  "passes": [
+    "A",
+    "B"
+  ],
+  "information_boundary": {
+    "classifier_visible": [
+      "source bundle bytes",
+      "opaque bundle/span IDs",
+      "source_access_status"
+    ],
+    "classifier_hidden": [
+      "rank",
+      "citation_count",
+      "authors",
+      "institutions",
+      "venue",
+      "Top50 prestige",
+      "registry commentary",
+      "ClaimIR",
+      "basis elements",
+      "basis mapping",
+      "decomposition outcome",
+      "PASS/RESIDUAL",
+      "Lean result",
+      "coverage",
+      "null result",
+      "downstream selection status"
+    ],
+    "separate_title_metadata_visible": false,
+    "naturally_occurring_title_text_may_remain": true
+  },
+  "source_access": {
+    "accessible_states": [
+      "FULL_TEXT",
+      "PARTIAL_TEXT",
+      "ABSTRACT_ONLY"
+    ],
+    "inaccessible_state": "INACCESSIBLE",
+    "inaccessible_bypass_decision": "SOURCE_INACCESSIBLE",
+    "transient_transport_failure_is_inaccessible": false,
+    "abstract_only_must_remain_marked": true
+  },
+  "execution": {
+    "same_source_bundle_bytes_for_A_B": true,
+    "same_prompt_bytes_for_A_B": true,
+    "fresh_context_per_pass": true,
+    "cross_pass_visibility": false,
+    "cross_bundle_visibility": false,
+    "basis_or_decomposition_visibility": false,
+    "execute_each_pass_once": true,
+    "hidden_retry_or_repair_generation": false
+  },
+  "agreement_projection": {
+    "fields": [
+      "decision.state",
+      "active exclusion check set",
+      "qualifying-claim-exists",
+      "claim route",
+      "claim generalization",
+      "claim construct_level_relevance",
+      "claim operational role set",
+      "claim source locator"
+    ],
+    "exact_claim_wording_compared": false,
+    "claim_order_compared": false,
+    "disagreement_policy": "SOURCE_TEXT_ONLY_ADJUDICATION_REQUIRED",
+    "majority_vote_allowed": false,
+    "prefer_more_inclusive_allowed": false
+  },
+  "adjudication": {
+    "visible": [
+      "source bundle",
+      "frozen pass A projection",
+      "frozen pass B projection"
+    ],
+    "hidden": [
+      "rank",
+      "citation_count",
+      "authors",
+      "institutions",
+      "venue",
+      "registry commentary",
+      "ClaimIR",
+      "basis",
+      "decomposition outcome",
+      "coverage",
+      "null result"
+    ],
+    "uncertainty_is_valid": true,
+    "hidden_source_expansion": false
+  },
+  "assembly": {
+    "provenance_bound_after_decision_freeze": true,
+    "output_for_parent": "paper2-eligibility-adjudications-v1 record",
+    "adjudication_sha256_required_when_disagreement": true,
+    "classifier_version": "paper2-eligibility-v1.1",
+    "required_hashes_for_accessible": [
+      "source_bundle_sha256",
+      "pass_a_sha256",
+      "pass_b_sha256"
+    ],
+    "inaccessible_bypass_required_hashes": [
+      "acquisition_receipt_sha256"
+    ]
+  },
+  "forbidden_key_names_recursive": [
+    "rank",
+    "citation_count",
+    "cited_by_count",
+    "author",
+    "authors",
+    "institution",
+    "institutions",
+    "venue",
+    "claimir",
+    "claim_ir",
+    "basis_elements",
+    "basis_mapping",
+    "decomposition_success",
+    "decomposition_failure",
+    "pass_result",
+    "residual",
+    "coverage_score",
+    "lean_theorem",
+    "lean_result",
+    "null_control_result",
+    "downstream_selection_status",
+    "basis_extension",
+    "basis_extension_request"
+  ],
+  "real_source_acquisition_authorized": false,
+  "real_model_execution_authorized": false,
+  "real_adjudication_authorized": false,
+  "architecture_consequence": "NONE",
+  "prompt": {
+    "path": "research/paper2/eligibility_adjudication_prompt_v1.md",
+    "sha256_utf8": "611f2de24d8d958595038d494c1916be891870984f47ac81ea432159c56950e4"
+  }
+}
