@@ -40,8 +40,8 @@ import paper2_openalex_manifest as manifest  # type: ignore
 import paper2_sampling_v2 as sampling  # type: ignore
 import paper2_sampling_v2_rank as rankv1  # type: ignore
 
-SCHEMA_VERSION = "paper2-sampling-v2-ranking-sourcewise-v4"
-RANKED_ERA_SCHEMA = "paper2-sampling-v2-ranked-era-sourcewise-v4"
+SCHEMA_VERSION = "paper2-sampling-v2-ranking-sourcewise-v5"
+RANKED_ERA_SCHEMA = "paper2-sampling-v2-ranked-era-sourcewise-v5"
 SOURCE_PREFIX_SCHEMA = "paper2-sampling-v2-source-prefix-v2"
 PAGE_SIZE = 100
 MAX_BASIC_ROWS = 10_000
@@ -118,11 +118,31 @@ def load_contract(path: Path) -> dict[str, Any]:
     ):
         raise ValueError("optional bibliographic string normalization drift")
     if metadata.get("duplicate_optional_field_policy") != (
-        "title and doi: coalesce null/non-null and fail closed on conflicting "
-        "non-null values; type: preserve all observations and freeze earliest "
-        "non-null source-transaction observation"
+        "doi: coalesce null/non-null and fail closed on conflicting non-null "
+        "values; title: preserve all observations, require calibration-outcome "
+        "consistency across distinct non-null titles, and freeze earliest non-null "
+        "observation; type: preserve all observations and freeze earliest non-null "
+        "source-transaction observation"
     ):
         raise ValueError("optional bibliographic metadata merge policy drift")
+    if metadata.get("title_drift_role") != (
+        "title is not a ranking key but participates in Top50 calibration fallback "
+        "identity with publication year when DOI does not identify a seed"
+    ):
+        raise ValueError("optional title drift role authority drift")
+    if metadata.get("title_drift_resolution") != (
+        "sort observations by transaction_started_at then source_id; evaluate every "
+        "distinct non-null title with frozen DOI/year through the calibration matcher; "
+        "require one identical calibration outcome across all distinct non-null titles; "
+        "select earliest non-null title; preserve all observations and outcomes"
+    ):
+        raise ValueError("optional title drift resolution authority drift")
+    if metadata.get("title_missingness_policy") != (
+        "null title is missing metadata rather than an alternative identity claim; "
+        "null/non-null coalescence is allowed and calibration-consistency comparison "
+        "is over distinct non-null titles only"
+    ):
+        raise ValueError("optional title missingness policy drift")
     if metadata.get("type_drift_role") != (
         "descriptive metadata only; type is not a ranking key and is not used "
         "for Top50 calibration identity"
@@ -155,6 +175,13 @@ def load_contract(path: Path) -> dict[str, Any]:
         "downgrade snapshot exactness classification"
     ):
         raise ValueError("live duplicate citation drift execution policy drift")
+    if execution.get("live_duplicate_optional_title_drift_policy") != (
+        "provider-free merge only; preserve all title observations; permit conflicting "
+        "non-null titles only when their Top50 calibration outcomes are identical under "
+        "the frozen DOI/year; otherwise fail closed with "
+        "LIVE_DUPLICATE_CALIBRATION_IDENTITY_DRIFT"
+    ):
+        raise ValueError("live duplicate optional title drift policy drift")
     if execution.get("live_duplicate_optional_type_drift_policy") != (
         "provider-free merge only; type conflicts do not affect ranking or "
         "calibration identity, are preserved in an observation ledger, and set "
@@ -495,6 +522,7 @@ def merge_source_prefixes(
     by_id: dict[str, dict[str, Any]] = {}
     sources_by_id: dict[str, set[str]] = {}
     citation_observations_by_id: dict[str, list[dict[str, Any]]] = {}
+    title_observations_by_id: dict[str, list[dict[str, Any]]] = {}
     type_observations_by_id: dict[str, list[dict[str, Any]]] = {}
 
     for prefix in prefixes:
@@ -516,6 +544,13 @@ def merge_source_prefixes(
                     "cited_by_count": cited,
                 }
             )
+            title_observations_by_id.setdefault(wid, []).append(
+                {
+                    "source_id": sid,
+                    "transaction_started_at": started_at,
+                    "title": normalized.get("title"),
+                }
+            )
             type_observations_by_id.setdefault(wid, []).append(
                 {
                     "source_id": sid,
@@ -527,21 +562,20 @@ def merge_source_prefixes(
                 previous = by_id[wid]
                 if int(previous["year"]) != int(normalized["year"]):
                     raise RuntimeError(f"LIVE_DUPLICATE_METADATA_DRIFT:{wid}:year")
-                # title and DOI can affect calibration identity, so conflicting
-                # non-null observations remain fail-closed.
-                for field in ("title", "doi"):
-                    old_value = previous.get(field)
-                    new_value = normalized.get(field)
-                    if old_value is None and new_value is not None:
-                        previous[field] = new_value
-                    elif (
-                        old_value is not None
-                        and new_value is not None
-                        and old_value != new_value
-                    ):
-                        raise RuntimeError(
-                            f"LIVE_DUPLICATE_METADATA_DRIFT:{wid}:{field}"
-                        )
+                # DOI participates directly in calibration identity. Conflicting
+                # non-null DOI observations remain fail-closed.
+                old_doi = previous.get("doi")
+                new_doi = normalized.get("doi")
+                if old_doi is None and new_doi is not None:
+                    previous["doi"] = new_doi
+                elif (
+                    old_doi is not None
+                    and new_doi is not None
+                    and old_doi != new_doi
+                ):
+                    raise RuntimeError(
+                        f"LIVE_DUPLICATE_METADATA_DRIFT:{wid}:doi"
+                    )
             else:
                 by_id[wid] = normalized
                 sources_by_id[wid] = set()
@@ -566,6 +600,84 @@ def merge_source_prefixes(
         row["citation_count_max_observed"] = max(counts)
         row["citation_count_drift"] = max(counts) - min(counts)
         row["citation_observations"] = citation_observations
+
+        title_observations = sorted(
+            title_observations_by_id[wid],
+            key=lambda item: (
+                str(item["transaction_started_at"]),
+                str(item["source_id"]),
+            ),
+        )
+        non_null_title_observations = [
+            item for item in title_observations if item.get("title") is not None
+        ]
+        selected_title_observation = (
+            non_null_title_observations[0]
+            if non_null_title_observations
+            else None
+        )
+        distinct_titles = sorted(
+            {str(item["title"]) for item in non_null_title_observations}
+        )
+        title_outcomes_by_value: dict[str, tuple[int | None, str | None]] = {}
+        for title_value in distinct_titles:
+            title_outcomes_by_value[title_value] = rankv1.calibration_match(
+                {
+                    "doi": row.get("doi"),
+                    "title": title_value,
+                    "year": row["year"],
+                },
+                seeds,
+            )
+        distinct_title_outcomes = set(title_outcomes_by_value.values())
+        if len(distinct_title_outcomes) > 1:
+            raise RuntimeError(
+                f"LIVE_DUPLICATE_CALIBRATION_IDENTITY_DRIFT:{wid}:title"
+            )
+        title_observations_with_outcomes: list[dict[str, Any]] = []
+        for item in title_observations:
+            enriched = dict(item)
+            if item.get("title") is None:
+                enriched["calibration_seed_number"] = None
+                enriched["calibration_match_basis"] = None
+                enriched["calibration_outcome_compared"] = False
+            else:
+                outcome = title_outcomes_by_value[str(item["title"])]
+                enriched["calibration_seed_number"] = outcome[0]
+                enriched["calibration_match_basis"] = outcome[1]
+                enriched["calibration_outcome_compared"] = True
+            title_observations_with_outcomes.append(enriched)
+        consensus_title_outcome = (
+            next(iter(distinct_title_outcomes))
+            if distinct_title_outcomes
+            else (None, None)
+        )
+        row["title"] = (
+            selected_title_observation["title"]
+            if selected_title_observation is not None
+            else None
+        )
+        row["title_resolution_policy"] = (
+            "earliest_non_null_source_transaction_observation_after_"
+            "calibration_outcome_consistency"
+        )
+        row["title_selected_source_id"] = (
+            selected_title_observation["source_id"]
+            if selected_title_observation is not None
+            else None
+        )
+        row["title_selected_transaction_started_at"] = (
+            selected_title_observation["transaction_started_at"]
+            if selected_title_observation is not None
+            else None
+        )
+        row["title_observation_count"] = len(title_observations)
+        row["title_distinct_non_null_values"] = distinct_titles
+        row["title_metadata_drift"] = len(distinct_titles) > 1
+        row["title_calibration_consistent"] = True
+        row["title_calibration_consensus_seed_number"] = consensus_title_outcome[0]
+        row["title_calibration_consensus_match_basis"] = consensus_title_outcome[1]
+        row["title_observations"] = title_observations_with_outcomes
 
         type_observations = sorted(
             type_observations_by_id[wid],
@@ -616,6 +728,15 @@ def merge_source_prefixes(
     out: list[dict[str, Any]] = []
     for rank, row in enumerate(kept, start=1):
         seed_number, match_basis = rankv1.calibration_match(row, seeds)
+        consensus_seed = row.get("title_calibration_consensus_seed_number")
+        consensus_basis = row.get("title_calibration_consensus_match_basis")
+        if row.get("title") is not None and (seed_number, match_basis) != (
+            consensus_seed,
+            consensus_basis,
+        ):
+            raise RuntimeError(
+                f"INTERNAL_CALIBRATION_CONSENSUS_MISMATCH:{row['provider_work_id']}"
+            )
         out.append(
             {
                 "rank": rank,
@@ -641,9 +762,13 @@ def live_drift_summary(rows: list[dict[str, Any]]) -> dict[str, Any]:
     citation_drifted = [
         row for row in rows if int(row.get("citation_count_drift", 0)) > 0
     ]
+    title_drifted = [
+        row for row in rows if row.get("title_metadata_drift") is True
+    ]
     type_drifted = [
         row for row in rows if row.get("type_metadata_drift") is True
     ]
+    any_optional_drift = bool(title_drifted or type_drifted)
     return {
         "citation_resolution_policy": "earliest_source_transaction_observation",
         "duplicate_citation_drift_work_count": len(citation_drifted),
@@ -651,6 +776,19 @@ def live_drift_summary(rows: list[dict[str, Any]]) -> dict[str, Any]:
             (int(row["citation_count_drift"]) for row in citation_drifted),
             default=0,
         ),
+        "optional_title_resolution_policy": (
+            "earliest_non_null_source_transaction_observation_after_"
+            "calibration_outcome_consistency"
+        ),
+        "duplicate_optional_title_drift_work_count": len(title_drifted),
+        "maximum_distinct_non_null_title_values": max(
+            (
+                len(row.get("title_distinct_non_null_values", []))
+                for row in title_drifted
+            ),
+            default=0,
+        ),
+        "title_calibration_consistency_required": True,
         "optional_type_resolution_policy": (
             "earliest_non_null_source_transaction_observation"
         ),
@@ -668,12 +806,12 @@ def live_drift_summary(rows: list[dict[str, Any]]) -> dict[str, Any]:
             else "TRANSACTION_LOCAL_FROZEN_CAPTURE_OBSERVED_CITATION_DRIFT"
         ),
         "optional_metadata_capture": (
-            "NO_CONFLICTING_NON_NULL_TYPE_OBSERVATIONS"
-            if not type_drifted
-            else "TRANSACTION_LOCAL_FROZEN_OPTIONAL_TYPE_OBSERVATIONS"
+            "NO_CONFLICTING_NON_NULL_OPTIONAL_METADATA_OBSERVATIONS"
+            if not any_optional_drift
+            else "TRANSACTION_LOCAL_FROZEN_OPTIONAL_METADATA_OBSERVATIONS"
         ),
         "single_provider_snapshot_claimed": not (
-            citation_drifted or type_drifted
+            citation_drifted or any_optional_drift
         ),
     }
 
@@ -1224,22 +1362,76 @@ def self_test() -> None:
     assert coalesced[0]["title"] == "filled title"
     assert coalesced[0]["doi"] == "10.1000/example"
 
-    # Conflicting non-null title/DOI metadata still fails closed because it can
-    # affect calibration identity.
-    conflict_a = row("W28", 76, "title-a")
-    conflict_b = row("W28", 76, "title-b")
+    # Non-null title drift is allowed only when every distinct title produces
+    # the same Top50 calibration outcome under the frozen DOI/year.
+    title_a = row("W28", 76, "title-a")
+    title_b = row("W28", 76, "title-b")
+    title_rows, _ = merge_source_prefixes(
+        [
+            {"source_id": "A", "transaction_started_at": "2000-01-01T00:00:01+00:00", "rows": [title_a]},
+            {"source_id": "B", "transaction_started_at": "2000-01-01T00:00:02+00:00", "rows": [title_b]},
+        ],
+        L=1,
+        seeds=seeds,
+    )
+    assert title_rows[0]["title"] == "title-a"
+    assert title_rows[0]["title_metadata_drift"] is True
+    assert title_rows[0]["title_calibration_consistent"] is True
+    assert title_rows[0]["title_distinct_non_null_values"] == ["title-a", "title-b"]
+    assert title_rows[0]["calibration_seed_number"] is None
+    assert live_drift_summary(title_rows) == {
+        "citation_resolution_policy": "earliest_source_transaction_observation",
+        "duplicate_citation_drift_work_count": 0,
+        "maximum_duplicate_citation_drift": 0,
+        "optional_title_resolution_policy": (
+            "earliest_non_null_source_transaction_observation_after_"
+            "calibration_outcome_consistency"
+        ),
+        "duplicate_optional_title_drift_work_count": 1,
+        "maximum_distinct_non_null_title_values": 2,
+        "title_calibration_consistency_required": True,
+        "optional_type_resolution_policy": "earliest_non_null_source_transaction_observation",
+        "duplicate_optional_type_drift_work_count": 0,
+        "maximum_distinct_non_null_type_values": 0,
+        "capture_exactness": "STATIC_PROVIDER_EXACT_NO_OBSERVED_CITATION_DRIFT",
+        "optional_metadata_capture": "TRANSACTION_LOCAL_FROZEN_OPTIONAL_METADATA_OBSERVATIONS",
+        "single_provider_snapshot_claimed": False,
+    }
+
+    seed0 = retrieval_config["seeds"][0]
+    calibration_title = row("W281", 76, str(seed0["title"]))
+    calibration_title["year"] = int(seed0["year"])
+    noncal_title = row("W281", 76, "synthetic non-seed title")
+    noncal_title["year"] = int(seed0["year"])
     try:
         merge_source_prefixes(
             [
-                {"source_id": "A", "transaction_started_at": "2000-01-01T00:00:01+00:00", "rows": [conflict_a]},
-                {"source_id": "B", "transaction_started_at": "2000-01-01T00:00:02+00:00", "rows": [conflict_b]},
+                {"source_id": "A", "transaction_started_at": "2000-01-01T00:00:01+00:00", "rows": [calibration_title]},
+                {"source_id": "B", "transaction_started_at": "2000-01-01T00:00:02+00:00", "rows": [noncal_title]},
             ],
             L=1,
             seeds=seeds,
         )
-        raise AssertionError("conflicting non-null title must fail")
+        raise AssertionError("calibration-changing title drift must fail")
     except RuntimeError as exc:
-        assert "LIVE_DUPLICATE_METADATA_DRIFT:W28:title" in str(exc)
+        assert "LIVE_DUPLICATE_CALIBRATION_IDENTITY_DRIFT:W281:title" in str(exc)
+
+    doi_a = row("W282", 76, "same-title")
+    doi_a["doi"] = "10.1000/a"
+    doi_b = row("W282", 76, "same-title")
+    doi_b["doi"] = "10.1000/b"
+    try:
+        merge_source_prefixes(
+            [
+                {"source_id": "A", "transaction_started_at": "2000-01-01T00:00:01+00:00", "rows": [doi_a]},
+                {"source_id": "B", "transaction_started_at": "2000-01-01T00:00:02+00:00", "rows": [doi_b]},
+            ],
+            L=1,
+            seeds=seeds,
+        )
+        raise AssertionError("conflicting non-null DOI must fail")
+    except RuntimeError as exc:
+        assert "LIVE_DUPLICATE_METADATA_DRIFT:W282:doi" in str(exc)
 
     # Optional type drift is descriptive only. Preserve every observation,
     # freeze the earliest non-null type, and do not let it affect ranking or
@@ -1265,11 +1457,18 @@ def self_test() -> None:
         "citation_resolution_policy": "earliest_source_transaction_observation",
         "duplicate_citation_drift_work_count": 0,
         "maximum_duplicate_citation_drift": 0,
+        "optional_title_resolution_policy": (
+            "earliest_non_null_source_transaction_observation_after_"
+            "calibration_outcome_consistency"
+        ),
+        "duplicate_optional_title_drift_work_count": 0,
+        "maximum_distinct_non_null_title_values": 0,
+        "title_calibration_consistency_required": True,
         "optional_type_resolution_policy": "earliest_non_null_source_transaction_observation",
         "duplicate_optional_type_drift_work_count": 1,
         "maximum_distinct_non_null_type_values": 2,
         "capture_exactness": "STATIC_PROVIDER_EXACT_NO_OBSERVED_CITATION_DRIFT",
-        "optional_metadata_capture": "TRANSACTION_LOCAL_FROZEN_OPTIONAL_TYPE_OBSERVATIONS",
+        "optional_metadata_capture": "TRANSACTION_LOCAL_FROZEN_OPTIONAL_METADATA_OBSERVATIONS",
         "single_provider_snapshot_claimed": False,
     }
 
@@ -1305,11 +1504,18 @@ def self_test() -> None:
         "citation_resolution_policy": "earliest_source_transaction_observation",
         "duplicate_citation_drift_work_count": 1,
         "maximum_duplicate_citation_drift": 1,
+        "optional_title_resolution_policy": (
+            "earliest_non_null_source_transaction_observation_after_"
+            "calibration_outcome_consistency"
+        ),
+        "duplicate_optional_title_drift_work_count": 0,
+        "maximum_distinct_non_null_title_values": 0,
+        "title_calibration_consistency_required": True,
         "optional_type_resolution_policy": "earliest_non_null_source_transaction_observation",
         "duplicate_optional_type_drift_work_count": 0,
         "maximum_distinct_non_null_type_values": 0,
         "capture_exactness": "TRANSACTION_LOCAL_FROZEN_CAPTURE_OBSERVED_CITATION_DRIFT",
-        "optional_metadata_capture": "NO_CONFLICTING_NON_NULL_TYPE_OBSERVATIONS",
+        "optional_metadata_capture": "NO_CONFLICTING_NON_NULL_OPTIONAL_METADATA_OBSERVATIONS",
         "single_provider_snapshot_claimed": False,
     }
 
