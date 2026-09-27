@@ -1541,7 +1541,7 @@ def self_test() -> None:
 
         # Full five-round path: 10 Normal + 50 SystemOne = 60 calls.
         rc, summary, log = synthetic_case(root, "full", {})
-        expect(rc == 0, "full v4 transaction completes")
+        expect(rc == 0, f"full v4 transaction completes: {json.dumps(summary, sort_keys=True)}")
         expect(summary["counters"]["claim_ir_valid"] == 10, "ten valid rows")
         expect(summary["counters"]["systemone_calls_attempted"] == 50, "max staged calls")
         expect(summary["counters"]["total_calls_attempted"] == 60, "max total calls")
