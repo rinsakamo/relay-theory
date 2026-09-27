@@ -1,0 +1,178 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "SKL03.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1152/jn.00856.2011",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Journal of Neurophysiology 108(2), Abstract: target performance defined by shift of a speed-accuracy function rather than movement along an unchanged function"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Journal of Neurophysiology 108(2), Abstract/Results: restricted-speed practice produces a global shift across the difficulty range"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Journal of Neurophysiology 108(2), Abstract/Conclusion: improved task-level outcome maps mainly to reduced trial-to-trial trajectory variability and increased smoothness while submovement structure remains invariant"
+      }
+    ],
+    "authors": [
+      "Lior Shmuelof",
+      "John W. Krakauer",
+      "Pietro Mazzoni"
+    ],
+    "institutions": [],
+    "venue": "Journal of Neurophysiology",
+    "citation_count": null,
+    "construct_labels": [
+      "motor skill learning",
+      "speed-accuracy trade-off",
+      "motor adaptation"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "constraint",
+    "modality": "probabilistic",
+    "scope": {
+      "conditions": [
+        "visually guided curved wrist movements without an external perturbation"
+      ],
+      "population": [
+        "human participants"
+      ],
+      "substrate": [],
+      "task": [
+        "curved wrist movement task sampled across multiple speed/difficulty ranges"
+      ],
+      "temporal_scope": [
+        "baseline and repeated training across consecutive days"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "joint_speed_accuracy_frontier",
+        "role": "criterion",
+        "description": "empirically derived relation jointly constraining movement speed and success rate across difficulty",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "restricted_range_training",
+        "role": "intervention",
+        "description": "repeated movement training within a restricted speed range",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "task_level_performance",
+        "role": "response_or_outcome",
+        "description": "success across the sampled joint speed/accuracy frontier",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "trajectory_variability",
+        "role": "response_or_outcome",
+        "description": "trial-to-trial variability of the full movement trajectory",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "movement_smoothness",
+        "role": "response_or_outcome",
+        "description": "smoothness of the executed movement trajectory",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "difficulty_sweep_probe",
+        "role": "probe",
+        "description": "sampling performance across a broad range of movement speeds before and after training",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "changes",
+        "arguments": [
+          "restricted_range_training",
+          "joint_speed_accuracy_frontier"
+        ],
+        "description": "training produces a global shift of the empirically derived joint frontier rather than a mere operating-point shift",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "maps_to",
+        "arguments": [
+          "difficulty_sweep_probe",
+          "task_level_performance"
+        ],
+        "description": "the difficulty sweep measures change in overall task-level performance",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "depends_on",
+        "arguments": [
+          "task_level_performance",
+          "trajectory_variability",
+          "movement_smoothness"
+        ],
+        "description": "the observed performance improvement is associated mainly with lower trajectory variability and greater smoothness",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "satisfies",
+        "arguments": [
+          "task_level_performance",
+          "joint_speed_accuracy_frontier"
+        ],
+        "description": "improvement is defined against the joint speed/accuracy relation rather than either component alone",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
