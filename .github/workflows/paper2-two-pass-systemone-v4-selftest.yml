@@ -1,0 +1,45 @@
+name: paper2-two-pass-systemone-v4-selftest
+
+on:
+  pull_request:
+    paths:
+      - "research/paper2/extraction_systemone_decision_v4.schema.json"
+      - "research/paper2/extraction_two_pass_systemone_v4.json"
+      - "scripts/paper2_extraction_two_pass_systemone_v4.py"
+      - ".github/workflows/paper2-two-pass-systemone-v4-selftest.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "research/paper2/extraction_systemone_decision_v4.schema.json"
+      - "research/paper2/extraction_two_pass_systemone_v4.json"
+      - "scripts/paper2_extraction_two_pass_systemone_v4.py"
+      - ".github/workflows/paper2-two-pass-systemone-v4-selftest.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Verify exact validation head
+        shell: bash
+        env:
+          EXPECTED_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile finite decision surface and inherited validators
+        run: |
+          python -m py_compile scripts/paper2_extraction_two_pass_systemone_v4.py
+          python -m py_compile scripts/paper2_extraction_two_pass_systemone_v3.py
+          python -m py_compile scripts/paper2_extraction_two_pass_systemone_v2.py
+          python -m py_compile scripts/paper2_claim_ir_validate.py
+          python -m py_compile scripts/paper2_extraction_procedure_validate.py
+      - name: Validate manifest/schema, adapted R1-R17, V4-R18-R27, and destructive mutations
+        run: python scripts/paper2_extraction_two_pass_systemone_v4.py --self-test
