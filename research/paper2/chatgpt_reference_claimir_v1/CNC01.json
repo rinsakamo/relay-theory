@@ -1,0 +1,146 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "CNC01.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1037/0033-295X.92.3.289",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Psychological Review 92(3), published p.289, abstract: proposed source of comprehensible class structure"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Psychological Review 92(3), published pp.289-291, opening discussion: underconstrained feature-overlap accounts and the need for constraints on possible groupings"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Psychological Review 92(3), abstract/concluding proposal: background relational knowledge links items in a domain and structures their internal attributes"
+      }
+    ],
+    "authors": [
+      "Gregory L. Murphy",
+      "Douglas L. Medin"
+    ],
+    "institutions": [
+      "Brown University",
+      "University of Illinois"
+    ],
+    "venue": "Psychological Review",
+    "citation_count": null,
+    "construct_labels": [
+      "conceptual coherence",
+      "similarity",
+      "categorization",
+      "naive theories"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "definition",
+    "modality": "definitional",
+    "scope": {
+      "conditions": [
+        "candidate groupings of items that require an account of why the members form a comprehensible class"
+      ],
+      "population": [
+        "humans"
+      ],
+      "substrate": [],
+      "task": [],
+      "temporal_scope": []
+    },
+    "nodes": [
+      {
+        "id": "candidate_grouping",
+        "role": "partition",
+        "description": "a proposed grouping of items whose internal unity is to be explained",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "background_relational_structure",
+        "role": "state_or_structure",
+        "description": "prior world knowledge that relates items and constrains which groupings are intelligible",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "internal_attribute_structure",
+        "role": "state_or_structure",
+        "description": "organization among attributes internal to the grouped items",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "alternative_groupings",
+        "role": "partition",
+        "description": "other possible groupings that a weak unconstrained account would also permit",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "depends_on",
+        "arguments": [
+          "candidate_grouping",
+          "background_relational_structure"
+        ],
+        "description": "whether the candidate grouping forms a comprehensible class depends on its fit with prior relational knowledge",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "constrains",
+        "arguments": [
+          "background_relational_structure",
+          "internal_attribute_structure"
+        ],
+        "description": "prior relational knowledge constrains how internal attributes are organized",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "distinguishes",
+        "arguments": [
+          "candidate_grouping",
+          "alternative_groupings",
+          "background_relational_structure"
+        ],
+        "description": "the added relational constraints discriminate the intended grouping from otherwise admissible alternatives",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
