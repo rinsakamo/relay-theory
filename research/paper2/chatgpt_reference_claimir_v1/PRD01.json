@@ -1,0 +1,169 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "PRD01.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1038/415429a",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Nature 415, published p.429, Abstract: visual and haptic estimates are combined using reliability-dependent maximum-likelihood integration"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Nature 415, published p.429, Abstract: criterion is minimization of variance in the combined estimate"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Nature 415, published pp.430-432, unimodal variance measurements, predicted bimodal weighting, and human comparison"
+      }
+    ],
+    "authors": [
+      "Marc O. Ernst",
+      "Martin S. Banks"
+    ],
+    "institutions": [
+      "University of California, Berkeley"
+    ],
+    "venue": "Nature",
+    "citation_count": null,
+    "construct_labels": [
+      "multisensory integration",
+      "maximum-likelihood integration",
+      "visual dominance"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "constraint",
+    "modality": "probabilistic",
+    "scope": {
+      "conditions": [
+        "two sensory channels provide estimates of the same physical property with measurable uncertainty"
+      ],
+      "population": [
+        "human participants"
+      ],
+      "substrate": [],
+      "task": [
+        "estimate object height using visual, haptic, or combined information"
+      ],
+      "temporal_scope": []
+    },
+    "nodes": [
+      {
+        "id": "channel_a_estimate",
+        "role": "available_information",
+        "description": "estimate of object height from one sensory channel",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "channel_b_estimate",
+        "role": "available_information",
+        "description": "estimate of the same object property from a second sensory channel",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "channel_uncertainty",
+        "role": "condition",
+        "description": "measured variance associated with each unimodal estimate",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "combined_estimate",
+        "role": "response_or_outcome",
+        "description": "joint estimate obtained when both channels are available",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "minimum_variance_rule",
+        "role": "criterion",
+        "description": "criterion selecting weights that minimize variance of the combined estimate",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "cue_combination_probe",
+        "role": "probe",
+        "description": "comparison of unimodal uncertainty with bimodal estimates under manipulated channel reliability",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "depends_on",
+        "arguments": [
+          "combined_estimate",
+          "channel_a_estimate",
+          "channel_b_estimate",
+          "channel_uncertainty"
+        ],
+        "description": "the combined estimate weights the two channel estimates according to their relative uncertainty",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "satisfies",
+        "arguments": [
+          "combined_estimate",
+          "minimum_variance_rule"
+        ],
+        "description": "the weighting is selected to minimize variance of the final estimate",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "maps_to",
+        "arguments": [
+          "cue_combination_probe",
+          "combined_estimate"
+        ],
+        "description": "the unimodal/bimodal task measures whether observed integration follows the reliability-weighted prediction",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
