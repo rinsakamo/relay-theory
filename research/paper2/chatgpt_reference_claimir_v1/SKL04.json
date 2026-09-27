@@ -1,0 +1,206 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "SKL04.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1016/0010-0285(87)90002-8",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Cognitive Psychology 19(1), Abstract: repeating ten-trial serial-response task used to assess prior-experience facilitation"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Cognitive Psychology 19(1), Abstract: concurrent secondary-task condition leaves sequence acquisition minimal by both report and performance measures"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Cognitive Psychology 19(1), Abstract: amnesic group acquires the sequence despite lacking awareness of the repeating pattern"
+      }
+    ],
+    "authors": [
+      "Mary Jo Nissen",
+      "Peter Bullemer"
+    ],
+    "institutions": [],
+    "venue": "Cognitive Psychology",
+    "citation_count": null,
+    "construct_labels": [
+      "implicit learning",
+      "explicit memory",
+      "serial reaction time",
+      "attention"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "comparison",
+    "modality": "comparative",
+    "scope": {
+      "conditions": [
+        "repeating ten-trial serial-response structure performed either alone or concurrently with a secondary task"
+      ],
+      "population": [
+        "neurologically typical adults",
+        "patients with Korsakoff's syndrome"
+      ],
+      "substrate": [],
+      "task": [
+        "speeded serial response to a repeating stimulus sequence"
+      ],
+      "temporal_scope": [
+        "across repeated sequence exposure"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "repeating_sequence",
+        "role": "available_information",
+        "description": "repeating ten-trial stimulus-response structure embedded in the task",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "single_task_condition",
+        "role": "condition",
+        "description": "sequence task performed without the focal concurrent secondary load",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "dual_task_condition",
+        "role": "intervention",
+        "description": "sequence task performed while a concurrent secondary task consumes processing resources",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "sequence_performance",
+        "role": "response_or_outcome",
+        "description": "facilitation in task performance attributable to prior exposure to the repeating sequence",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "verbal_report",
+        "role": "response_or_outcome",
+        "description": "reportable knowledge of the repeating pattern",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "performance_probe",
+        "role": "probe",
+        "description": "serial response task and report measures used to test sequence acquisition",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "resource_condition",
+        "role": "criterion",
+        "description": "availability versus division of limited processing resources during exposure",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "differs",
+        "arguments": [
+          "single_task_condition",
+          "dual_task_condition",
+          "sequence_performance"
+        ],
+        "description": "adding a concurrent secondary load strongly reduces acquisition expressed in performance",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "differs",
+        "arguments": [
+          "dual_task_condition",
+          "verbal_report"
+        ],
+        "description": "the concurrent secondary load also reduces reportable sequence knowledge",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "distinguishes",
+        "arguments": [
+          "sequence_performance",
+          "verbal_report"
+        ],
+        "description": "patient results show performance facilitation can occur despite lack of reportable pattern knowledge",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "maps_to",
+        "arguments": [
+          "performance_probe",
+          "sequence_performance",
+          "verbal_report"
+        ],
+        "description": "the two measurement surfaces separately expose task facilitation and reportable pattern knowledge",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "satisfies",
+        "arguments": [
+          "dual_task_condition",
+          "resource_condition"
+        ],
+        "description": "the focal manipulation operationalizes a divided-resource condition during acquisition",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
