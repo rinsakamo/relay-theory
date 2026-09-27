@@ -148,7 +148,7 @@ def self_test() -> None:
 
     # Exact canonical labels, any case, must be masked.
     source = [
-        "Memory and learning interact with Skill, ATTENTION, Prediction, control, belief, and Concept."
+        "Memory and learning interact with Skill, ATTENTION, Prediction, control, belief, and Concept under a declared synthetic condition with stable evidence."
     ]
     masked, marker_map = mask_segments(source, groups)
     rendered = " ".join(masked).casefold()
