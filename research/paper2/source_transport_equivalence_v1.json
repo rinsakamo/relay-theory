@@ -1,0 +1,144 @@
+{
+  "schema_version": "paper2-source-transport-equivalence-v1",
+  "owner_issue": 263,
+  "parent_mapping_issue": 239,
+  "historical_accessibility_issue": 243,
+  "state": "TRANSPORT_EQUIVALENCE_RULE_SYNTHETICALLY_QUALIFIED_ONLY",
+  "grand_null": "The frozen #243 public_fulltext_locator is inseparable from the frozen scientific source identity for #239 capture; any different public route necessarily introduces an uncontrolled scientific degree of freedom.",
+  "result": "GRAND_NULL_REJECTED_AT_AUTHORITY_STRUCTURE_LEVEL",
+  "reason": "The frozen candidate ledger binds scientific candidate identity by slot/rank/stable_identity/title/year/source_type/canonical DOI locator, while #243 separately binds a public full-text access witness. The access witness is presentation-level transport evidence, not the candidate identity itself.",
+  "bound_repository_blobs": {
+    "research/paper2/designed_source_candidate_ledger_v1.json": "91da0cf304d03f0469df5c03ac7007f2040727e9",
+    "research/paper2/designed_source_web_fulltext_manifest_v1.json": "be44887a8024bbf13c3a746452291e330349889a",
+    "research/paper2/designed_source_capture_manifest_v1.json": "b406776e866ea938531da32ae5b2cc35b081ba42",
+    "research/paper2/bounded_source_projection_v1.json": "6a1415f2e85554816b5c25a3de21a08a8ae2018b",
+    "research/paper2/designed_source_projection_capture_v1.json": "776e6ce6311ad343f63bb6dc77f8761edaee7e55",
+    "research/paper2/bounded_source_projection_input_v1.schema.json": "0867444ed163f80e186e8b8778c08c0fea72d8cd"
+  },
+  "authority_layers": {
+    "scientific_candidate_identity": {
+      "intrinsic_for_this_transaction": true,
+      "fields": [
+        "slot_id",
+        "activated_rank",
+        "stable_identity",
+        "title",
+        "year",
+        "source_type",
+        "registry_reference",
+        "author_lineage_key"
+      ],
+      "mutation_forbidden": true
+    },
+    "frozen_reference_locator": {
+      "intrinsic_for_this_transaction": false,
+      "field": "public_fulltext_locator",
+      "semantics": "The #243 public-web full-text access witness retained unchanged in projection input and used as the first acquisition route.",
+      "mutation_forbidden_in_projection_input": true
+    },
+    "actual_acquisition_route": {
+      "repository_field": false,
+      "local_provenance_required": true,
+      "semantics": "The concrete route that yielded the preserved full-text artifact; it may differ from the frozen reference locator only after the fail-closed transport-equivalence gate."
+    },
+    "acquired_artifact": {
+      "local_only": true,
+      "required_provenance": [
+        "actual_acquisition_route",
+        "retrieved_at",
+        "byte_size",
+        "sha256",
+        "transport_mode",
+        "identity_attestation"
+      ]
+    }
+  },
+  "transport_equivalence_gate": {
+    "trigger_required": "FROZEN_REFERENCE_TRANSPORT_BLOCKED_OR_HUMAN_VERIFICATION_REQUIRED",
+    "trigger_evidence_required": true,
+    "alternate_route_predeclared_before_artifact_acceptance": true,
+    "one_candidate_route_per_explicit_continuation": true,
+    "public_web_only": true,
+    "complete_full_text_required": true,
+    "same_slot_required": true,
+    "same_activated_rank_required": true,
+    "same_stable_identity_required": true,
+    "same_title_required": true,
+    "same_year_required": true,
+    "same_source_type_required": true,
+    "same_scientific_candidate_required": true,
+    "publication_version_identity_attestation_required": true,
+    "source_native_abstract_boundary_required": true,
+    "body_fallback_forbidden": true,
+    "summary_or_paraphrase_forbidden": true,
+    "claim_directed_route_choice_forbidden": true,
+    "result_dependent_route_choice_forbidden": true,
+    "downstream_outcome_visibility_forbidden": true,
+    "reserve_rank_traversal_forbidden": true,
+    "candidate_substitution_forbidden": true,
+    "frozen_reference_locator_rewrite_forbidden": true,
+    "byte_identity_may_be_claimed_only_if_measured": true,
+    "fail_closed_on_equivalence_uncertainty": true
+  },
+  "projection_semantics": {
+    "bounded_projection_authority": "#250",
+    "complete_source_native_abstract_only": true,
+    "alternate_route_does_not_change_projection_rule": true,
+    "if_no_source_native_abstract": "PAPER2_SOURCE_CAPTURE_INSUFFICIENT",
+    "if_complete_native_abstract_exceeds_32_units": "PAPER2_SOURCE_CAPTURE_INSUFFICIENT"
+  },
+  "real_witnesses": [
+    {
+      "opaque_bundle_id": "B0002",
+      "slot_id": "BLF02",
+      "role": "human_verification_transport_witness",
+      "alternate_host_used": false,
+      "scientific_candidate_changed": false,
+      "downstream_outcomes_consumed": false,
+      "activated_rank": 1
+    },
+    {
+      "opaque_bundle_id": "B0003",
+      "slot_id": "BLF03",
+      "stable_identity": {
+        "kind": "DOI",
+        "value": "10.1146/annurev.neuro.29.051605.113038"
+      },
+      "frozen_reference_locator": "https://www.cns.nyu.edu/~tony/vns/readings/gold-shadlen-2007.pdf",
+      "transport_block_evidence_comment": 5856196436,
+      "verification_candidate_route": "https://www.academia.edu/124681604/The_Neural_Basis_of_Decision_Making",
+      "candidate_state": "EQUIVALENCE_VERIFICATION_ONLY",
+      "artifact_accepted": false,
+      "scientific_candidate_changed": false,
+      "downstream_outcomes_consumed": false,
+      "activated_rank": 1,
+      "title": "The Neural Basis of Decision Making",
+      "year": 2007,
+      "source_type": "journal_article"
+    }
+  ],
+  "authorization": {
+    "b0003_alternate_route_download_for_equivalence_verification": true,
+    "b0003_alternate_artifact_acceptance": false,
+    "production_composed_capture": false,
+    "model_execution": false,
+    "claim_ir_extraction": false,
+    "structural_signature_generation": false,
+    "phi_mapping": false,
+    "atlas_analysis": false
+  },
+  "destructive_requirements": [
+    "reject stable identity drift",
+    "reject activated rank drift",
+    "reject reference-locator rewrite",
+    "reject alternate route before transport-block trigger",
+    "reject private/paywalled/preview-only route",
+    "reject partial artifact",
+    "reject missing acquisition provenance",
+    "reject downstream-outcome-dependent route choice",
+    "reject treating same title alone as sufficient",
+    "reject claiming byte identity without measured digest equality"
+  ],
+  "anti_overclaim": "This transaction separates scientific source identity from transport presentation and synthetically qualifies the fail-closed rule. It does not establish that the current B0003 Academia artifact is equivalent, does not accept alternate-host bytes into #239, and does not authorize composed capture or model execution.",
+  "architecture_consequence": "NONE"
+}
