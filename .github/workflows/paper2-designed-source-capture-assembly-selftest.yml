@@ -42,6 +42,7 @@ jobs:
         run: |
           python -m py_compile scripts/paper2_designed_source_capture_validate.py
           python -m py_compile scripts/paper2_designed_source_capture_assemble.py
+          python -m py_compile scripts/paper2_designed_source_capture_scaffold.py
       - name: Parse capture contracts
         run: |
           python -m json.tool research/paper2/designed_source_capture_assembly_v1.json >/dev/null
@@ -52,5 +53,7 @@ jobs:
         run: python scripts/paper2_designed_source_capture_validate.py
       - name: Run destructive zero-model capture-assembly self-test
         run: python scripts/paper2_designed_source_capture_assemble.py --self-test
+      - name: Run local capture-scaffold self-test
+        run: python scripts/paper2_designed_source_capture_scaffold.py --self-test
       - name: Verify pre-text descriptor digest
         run: sha256sum -c research/paper2/designed_source_capture_manifest_v1.sha256
