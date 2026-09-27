@@ -1,0 +1,60 @@
+name: paper2-designed-source-projection-capture-selftest
+
+on:
+  pull_request:
+    paths:
+      - "research/paper2/designed_source_projection_capture_v1.json"
+      - "scripts/paper2_designed_source_projection_capture.py"
+      - "scripts/paper2_designed_source_projection_capture_scaffold.py"
+      - "research/paper2/designed_source_capture_manifest_v1.json"
+      - "research/paper2/bounded_source_projection_v1.json"
+      - "research/paper2/bounded_source_projection_input_v1.schema.json"
+      - "research/paper2/bounded_source_surface_v1.schema.json"
+      - "research/paper2/bounded_source_projection_receipt_v1.schema.json"
+      - "scripts/paper2_bounded_source_projection.py"
+      - "research/paper2/designed_extraction_mask_terms_v1.json"
+      - "scripts/paper2_designed_mask_authority_validate.py"
+      - "scripts/paper2_extraction_two_pass_prepare.py"
+      - ".github/workflows/paper2-designed-source-projection-capture-selftest.yml"
+  push:
+    branches: [main]
+    paths:
+      - "research/paper2/designed_source_projection_capture_v1.json"
+      - "scripts/paper2_designed_source_projection_capture.py"
+      - "scripts/paper2_designed_source_projection_capture_scaffold.py"
+      - "research/paper2/designed_source_capture_manifest_v1.json"
+      - "research/paper2/bounded_source_projection_v1.json"
+      - "research/paper2/bounded_source_projection_input_v1.schema.json"
+      - "research/paper2/bounded_source_surface_v1.schema.json"
+      - "research/paper2/bounded_source_projection_receipt_v1.schema.json"
+      - "scripts/paper2_bounded_source_projection.py"
+      - "research/paper2/designed_extraction_mask_terms_v1.json"
+      - "scripts/paper2_designed_mask_authority_validate.py"
+      - "scripts/paper2_extraction_two_pass_prepare.py"
+      - ".github/workflows/paper2-designed-source-projection-capture-selftest.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile composed capture apparatus
+        run: |
+          python -m py_compile scripts/paper2_designed_source_projection_capture.py
+          python -m py_compile scripts/paper2_designed_source_projection_capture_scaffold.py
+      - name: Parse composition contract
+        run: python -m json.tool research/paper2/designed_source_projection_capture_v1.json >/dev/null
+      - name: Revalidate terminal bounded-source projection child
+        run: python scripts/paper2_bounded_source_projection.py --self-test
+      - name: Revalidate terminal designed mask authority child
+        run: python scripts/paper2_designed_mask_authority_validate.py --self-test
+      - name: Run destructive composed source-capture self-test
+        run: python scripts/paper2_designed_source_projection_capture.py --self-test
+      - name: Run local scaffold self-test
+        run: python scripts/paper2_designed_source_projection_capture_scaffold.py --self-test
