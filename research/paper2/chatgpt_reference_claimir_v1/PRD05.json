@@ -1,0 +1,201 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "PRD05.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1098/rstb.2005.1622",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Philosophical Transactions of the Royal Society B 360, published pp.815-816, Abstract/Introduction: hierarchical generative inference with context-sensitive priors"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Philosophical Transactions of the Royal Society B 360, published p.821, hierarchical empirical-Bayes section: higher-level states act as priors on lower-level states"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Philosophical Transactions of the Royal Society B 360, later cortical-physiology section: backward predictions and forward mismatch signals are iteratively reconciled"
+      }
+    ],
+    "authors": [
+      "Karl Friston"
+    ],
+    "institutions": [
+      "University College London"
+    ],
+    "venue": "Philosophical Transactions of the Royal Society B: Biological Sciences",
+    "citation_count": null,
+    "construct_labels": [
+      "predictive coding",
+      "empirical Bayes",
+      "hierarchical generative model",
+      "prediction error"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "constraint",
+    "modality": "probabilistic",
+    "scope": {
+      "conditions": [
+        "hierarchically organized generative inference over sensory causes"
+      ],
+      "population": [
+        "sensory systems modeled by the source"
+      ],
+      "substrate": [
+        "neighboring levels of a cortical hierarchy"
+      ],
+      "task": [
+        "infer latent causes of sensory input"
+      ],
+      "temporal_scope": [
+        "iterative recurrent exchange continues until mismatch signals are reduced"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "higher_level_state",
+        "role": "partition",
+        "description": "state at a supraordinate model level that supplies a context-dependent prior to the level below",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "lower_level_state",
+        "role": "partition",
+        "description": "subordinate model state constrained by both incoming data and a higher-level prior",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "top_down_estimate",
+        "role": "available_information",
+        "description": "descending estimate of the input expected at the subordinate level",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "bottom_up_mismatch",
+        "role": "response_or_outcome",
+        "description": "difference signal between subordinate input/state and the descending estimate",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "latent_cause_estimate",
+        "role": "response_or_outcome",
+        "description": "current inferred state of hidden causes generating sensory input",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "mismatch_minimization",
+        "role": "criterion",
+        "description": "objective of reducing weighted mismatch across model levels during inference",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "constrains",
+        "arguments": [
+          "higher_level_state",
+          "lower_level_state"
+        ],
+        "description": "the higher model level supplies a context-sensitive prior that constrains inference at the subordinate level",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "maps_to",
+        "arguments": [
+          "higher_level_state",
+          "top_down_estimate"
+        ],
+        "description": "higher-level state generates a descending estimate of subordinate input",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "differs",
+        "arguments": [
+          "lower_level_state",
+          "top_down_estimate",
+          "bottom_up_mismatch"
+        ],
+        "description": "incompatibility between current subordinate input/state and descending estimate produces a mismatch signal",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "changes",
+        "arguments": [
+          "bottom_up_mismatch",
+          "latent_cause_estimate"
+        ],
+        "description": "mismatch signals drive updates of higher-level cause estimates until reconciliation",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "satisfies",
+        "arguments": [
+          "latent_cause_estimate",
+          "mismatch_minimization"
+        ],
+        "description": "the iterative inference state is selected by reducing mismatch across levels",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
