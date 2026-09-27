@@ -1,0 +1,172 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "PRD06.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1111/j.1469-8986.2007.00531.x",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Psychophysiology 44(4), published p.491, Abstract: sentence context is used to predict features of likely upcoming items"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Psychophysiology 44(4), review body: event-related response amplitude varies with contextual expectancy/cloze probability"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Psychophysiology 44(4), Abstract/discussion: predictive strategy can carry processing cost and differs across participant groups/hemispheric processing modes"
+      }
+    ],
+    "authors": [
+      "Kara D. Federmeier"
+    ],
+    "institutions": [
+      "University of Illinois, Urbana-Champaign"
+    ],
+    "venue": "Psychophysiology",
+    "citation_count": null,
+    "construct_labels": [
+      "prediction in language comprehension",
+      "event-related potentials",
+      "N400"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "relation",
+    "modality": "probabilistic",
+    "scope": {
+      "conditions": [
+        "sentence context provides graded constraint over likely upcoming linguistic input"
+      ],
+      "population": [
+        "human language comprehenders as reviewed by the source"
+      ],
+      "substrate": [],
+      "task": [
+        "read or listen to context-constrained language while electrophysiological responses to continuations are measured"
+      ],
+      "temporal_scope": [
+        "context precedes the upcoming item whose features or identity may be preactivated"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "sentence_context",
+        "role": "available_information",
+        "description": "preceding linguistic information that induces a graded distribution over likely continuations",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "contextual_expectancy",
+        "role": "state_or_structure",
+        "description": "graded likelihood assigned to possible upcoming items or features from the preceding context",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "incoming_item",
+        "role": "condition",
+        "description": "actual linguistic continuation presented after the constraining context",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "electrophysiological_response",
+        "role": "response_or_outcome",
+        "description": "time-locked neural response to the incoming continuation whose amplitude varies with contextual expectancy",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "context_continuation_probe",
+        "role": "probe",
+        "description": "language-comprehension paradigm crossing contextual constraint with properties of the actual continuation while recording time-locked neural responses",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "maps_to",
+        "arguments": [
+          "sentence_context",
+          "contextual_expectancy"
+        ],
+        "description": "preceding context induces graded expectations over likely upcoming content",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "depends_on",
+        "arguments": [
+          "electrophysiological_response",
+          "contextual_expectancy",
+          "incoming_item"
+        ],
+        "description": "the neural response to the actual continuation varies with how strongly it was expected from context",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "precedes",
+        "arguments": [
+          "sentence_context",
+          "incoming_item"
+        ],
+        "description": "the constraining context is available before the continuation is encountered",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "maps_to",
+        "arguments": [
+          "context_continuation_probe",
+          "electrophysiological_response"
+        ],
+        "description": "the context/continuation manipulation provides the time-resolved outcome used to assess anticipatory processing",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
