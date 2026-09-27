@@ -1,0 +1,56 @@
+name: paper2-bounded-source-projection-selftest
+
+on:
+  pull_request:
+    paths:
+      - "research/paper2/bounded_source_projection_v1.json"
+      - "research/paper2/bounded_source_projection_input_v1.schema.json"
+      - "research/paper2/bounded_source_surface_v1.schema.json"
+      - "research/paper2/bounded_source_projection_receipt_v1.schema.json"
+      - "scripts/paper2_bounded_source_projection.py"
+      - "research/paper2/designed_source_manifest_v1.json"
+      - "research/paper2/designed_source_web_fulltext_manifest_v1.json"
+      - "research/paper2/designed_source_capture_manifest_v1.json"
+      - "research/paper2/extraction_label_mask_v1.json"
+      - "scripts/paper2_extraction_two_pass_prepare.py"
+      - "research/paper2/extraction_normal_prompt_v1.md"
+      - "research/paper2/extraction_two_pass_real_protocol_v1.json"
+      - ".github/workflows/paper2-bounded-source-projection-selftest.yml"
+  push:
+    branches: [main]
+    paths:
+      - "research/paper2/bounded_source_projection_v1.json"
+      - "research/paper2/bounded_source_projection_input_v1.schema.json"
+      - "research/paper2/bounded_source_surface_v1.schema.json"
+      - "research/paper2/bounded_source_projection_receipt_v1.schema.json"
+      - "scripts/paper2_bounded_source_projection.py"
+      - "research/paper2/designed_source_manifest_v1.json"
+      - "research/paper2/designed_source_web_fulltext_manifest_v1.json"
+      - "research/paper2/designed_source_capture_manifest_v1.json"
+      - "research/paper2/extraction_label_mask_v1.json"
+      - "scripts/paper2_extraction_two_pass_prepare.py"
+      - "research/paper2/extraction_normal_prompt_v1.md"
+      - "research/paper2/extraction_two_pass_real_protocol_v1.json"
+      - ".github/workflows/paper2-bounded-source-projection-selftest.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile bounded-source projector
+        run: python -m py_compile scripts/paper2_bounded_source_projection.py
+      - name: Parse projection contracts
+        run: |
+          python -m json.tool research/paper2/bounded_source_projection_v1.json >/dev/null
+          python -m json.tool research/paper2/bounded_source_projection_input_v1.schema.json >/dev/null
+          python -m json.tool research/paper2/bounded_source_surface_v1.schema.json >/dev/null
+          python -m json.tool research/paper2/bounded_source_projection_receipt_v1.schema.json >/dev/null
+      - name: Run destructive bounded-source projection self-test
+        run: python scripts/paper2_bounded_source_projection.py --self-test

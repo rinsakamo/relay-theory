@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "paper2-bounded-source-projection-receipt-v1",
+  "title": "Paper 2 bounded source projection receipt v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "owner_issue",
+    "bundle_id",
+    "stable_identity",
+    "public_fulltext_locator",
+    "retrieved_at",
+    "fulltext_sha256",
+    "abstract_state",
+    "abstract_locator",
+    "abstract_boundary_attestation",
+    "projection_mode",
+    "normalized_abstract_sha256",
+    "segment_count",
+    "projected_surface_sha256",
+    "classification",
+    "model_calls",
+    "claim_ir_consumed",
+    "structural_signature_consumed",
+    "phi_consumed",
+    "atlas_outcome_consumed"
+  ],
+  "properties": {
+    "schema_version": {"const": "paper2-bounded-source-projection-receipt-v1"},
+    "owner_issue": {"const": 250},
+    "bundle_id": {"type": "string", "pattern": "^B[0-9]{4}$"},
+    "stable_identity": {"type": "object"},
+    "public_fulltext_locator": {"type": "string", "minLength": 1},
+    "retrieved_at": {"type": "string", "minLength": 1},
+    "fulltext_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "abstract_state": {"enum": ["PRESENT", "ABSENT"]},
+    "abstract_locator": {"type": ["string", "null"]},
+    "abstract_boundary_attestation": {
+      "enum": [
+        "SOURCE_NATIVE_COMPLETE_ABSTRACT_VERIFIED",
+        "NO_SOURCE_NATIVE_ABSTRACT_VERIFIED"
+      ]
+    },
+    "projection_mode": {"const": "SOURCE_NATIVE_COMPLETE_ABSTRACT_ONLY"},
+    "normalized_abstract_sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
+    "segment_count": {"type": "integer", "minimum": 0},
+    "projected_surface_sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
+    "classification": {
+      "enum": [
+        "PROJECTED_SOURCE_NATIVE_ABSTRACT",
+        "SOURCE_NATIVE_ABSTRACT_ABSENT",
+        "SOURCE_NATIVE_ABSTRACT_UNIT_BOUND_EXCEEDED"
+      ]
+    },
+    "model_calls": {"const": 0},
+    "claim_ir_consumed": {"const": false},
+    "structural_signature_consumed": {"const": false},
+    "phi_consumed": {"const": false},
+    "atlas_outcome_consumed": {"const": false}
+  }
+}
