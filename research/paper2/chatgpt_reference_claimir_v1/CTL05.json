@@ -1,0 +1,198 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "CTL05.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1037/0033-295X.91.3.295",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Psychological Review 91(3), published p.295, Abstract: external stopping cue or error initiates a stopping process racing the ongoing process"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Psychological Review 91(3), published p.295, Abstract: if stopping finishes first the action is suppressed; otherwise it completes"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Psychological Review 91(3), published pp.296-304, formal race account and explicit stopping-cue reaction-time paradigms"
+      }
+    ],
+    "authors": [
+      "Gordon D. Logan",
+      "William B. Cowan"
+    ],
+    "institutions": [],
+    "venue": "Psychological Review",
+    "citation_count": null,
+    "construct_labels": [
+      "response inhibition",
+      "race model",
+      "act of control"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "constraint",
+    "modality": "probabilistic",
+    "scope": {
+      "conditions": [
+        "an already initiated response may be followed by an external cue requiring cancellation"
+      ],
+      "population": [
+        "adult participants"
+      ],
+      "substrate": [],
+      "task": [
+        "speeded response with occasional cancellation cue"
+      ],
+      "temporal_scope": [
+        "relative finishing times are measured from initiation of the ongoing response and later onset of the cancellation process"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "ongoing_process",
+        "role": "state_or_structure",
+        "description": "process that generates the initially required thought or action",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "cancellation_cue",
+        "role": "intervention",
+        "description": "external signal or detected error that initiates a competing stopping process",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "stopping_process",
+        "role": "state_or_structure",
+        "description": "process initiated by the cancellation cue that can terminate the ongoing process",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "finishing_time_order",
+        "role": "criterion",
+        "description": "which of the ongoing and stopping processes reaches completion first",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "response_outcome",
+        "role": "response_or_outcome",
+        "description": "whether the initiated action is successfully cancelled or executed",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "cancellation_delay_probe",
+        "role": "probe",
+        "description": "procedure varying delay between go stimulus and cancellation cue while measuring stop success and reaction time",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "precedes",
+        "arguments": [
+          "ongoing_process",
+          "cancellation_cue",
+          "stopping_process"
+        ],
+        "description": "the ongoing response process begins before the later cue initiates the stopping process",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "depends_on",
+        "arguments": [
+          "response_outcome",
+          "finishing_time_order"
+        ],
+        "description": "whether the response is cancelled depends on which competing process finishes first",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "changes",
+        "arguments": [
+          "cancellation_cue",
+          "stopping_process"
+        ],
+        "description": "the cancellation cue initiates the competing stopping process",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "maps_to",
+        "arguments": [
+          "cancellation_delay_probe",
+          "response_outcome"
+        ],
+        "description": "delay manipulation and cancellation success expose the timing constraint of the two competing processes",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "satisfies",
+        "arguments": [
+          "response_outcome",
+          "finishing_time_order"
+        ],
+        "description": "successful cancellation occurs exactly when the stopping process finishes before the ongoing process in the source model",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
