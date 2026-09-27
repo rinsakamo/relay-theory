@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "paper2-bounded-source-surface-v1",
+  "title": "Paper 2 pre-mask bounded source surface v1",
+  "description": "Local source-native abstract surface before construct-label masking. No source identity or authority metadata is carried in this surface.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "bundle_id", "source_language", "source_spans"],
+  "properties": {
+    "schema_version": {"const": "paper2-bounded-source-surface-v1"},
+    "bundle_id": {"type": "string", "pattern": "^B[0-9]{4}$"},
+    "source_language": {"const": "en"},
+    "source_spans": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 32,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["span_id", "text"],
+        "properties": {
+          "span_id": {"type": "string", "pattern": "^s[0-9]+$"},
+          "text": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  }
+}
