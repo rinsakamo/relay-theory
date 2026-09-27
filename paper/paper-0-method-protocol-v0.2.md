@@ -60,7 +60,7 @@ The following ideas are treated here as inherited methodology rather than Paper 
 
 **Science mapping and literature-based discovery.** Bibliometric science mapping and literature-based discovery already organize or connect scientific literatures at scale (Cobo et al. 2011; Cestnik et al. 2025). Paper 0's use of the word *atlas* is not a novelty claim.
 
-**Conceptual cartography, theory-label reformulation, and formal theory comparison.** Recent philosophy of science already uses *conceptual cartography* for digitally assisted investigation of how scientists deploy concepts (Pence 2025), while Vickers (2011) explicitly proposes reformulating debates so that disagreement about what counts as a named scientific theory does not control the substantive question. Meadows (2024) provides a unifying formal framework for multiple mathematical notions of theoretical equivalence. Paper 0 therefore claims neither the cartographic metaphor, escape from inherited theory labels, nor formal comparison among theories as novel.
+**Conceptual cartography, theory-label reformulation, and formal theory comparison.** Recent philosophy of science already uses *conceptual cartography* for digitally assisted investigation of how scientists deploy concepts (Pence 2025), while Vickers (2014) explicitly proposes reformulating debates so that disagreement about what counts as a named scientific theory does not control the substantive question. Meadows (2024) provides a unifying formal framework for multiple mathematical notions of theoretical equivalence. Paper 0 therefore claims neither the cartographic metaphor, escape from inherited theory labels, nor formal comparison among theories as novel.
 
 ### 2.2 What is combined
 
@@ -146,7 +146,7 @@ The proposed atlas differs in unit of analysis. Its nodes are not papers, citati
 
 ### 3.7 Conceptual cartography, theory eliminativism, and formal theory comparison versus the integration contract
 
-Pence (2025) is especially close in problem setting because it asks what digitally assisted textual analysis can responsibly contribute to the cartography of scientific concepts as they are used in the literature. Vickers (2011) is close in motivation because it recommends reformulating disputes about particular named theories so that disagreements about the concept *scientific theory* do not control the substantive debate. Meadows (2024) is close in formal comparison because it unifies multiple mathematical instruments for theoretical equivalence and organizes relationships among equivalence notions.
+Pence (2025) is especially close in problem setting because it asks what digitally assisted textual analysis can responsibly contribute to the cartography of scientific concepts as they are used in the literature. Vickers (2014) is close in motivation because it recommends reformulating disputes about particular named theories so that disagreements about the concept *scientific theory* do not control the substantive debate. Meadows (2024) is close in formal comparison because it unifies multiple mathematical instruments for theoretical equivalence and organizes relationships among equivalence notions.
 
 These works remove three possible novelty claims from Paper 0: using *cartography* for literature-facing conceptual work, avoiding inherited theory labels as privileged analytical units, and systematizing formal relations of theoretical equivalence. The remaining difference is procedural. Paper 0 requires a source-grounded claim to pass through an adversarially constructed and then pre-outcome frozen representation contract; it treats masking, abstention, typed residuals, bounded expressivity, generic-rule reuse, and held-out failure tests as parts of the same ordered protocol. Nothing in the sources inspected for this comparison establishes that their methods jointly impose that full sequence. This is a non-collapse finding about the audited functions, not a priority claim.
 
@@ -750,6 +750,6 @@ Pence, C. H. (2025). Textual analysis and conceptual cartography. In S. Veigl & 
 
 Steegen, S., Tuerlinckx, F., Gelman, A., & Vanpaemel, W. (2016). Increasing transparency through a multiverse analysis. *Perspectives on Psychological Science, 11*(5), 702-712. https://doi.org/10.1177/1745691616658637
 
-Vickers, P. (2011). Theory eliminativism as a methodological tool. *PhilSci-Archive*. https://philsci-archive.pitt.edu/8472/
+Vickers, P. (2014). Scientific theory eliminativism. *Erkenntnis, 79*(1), 111–126. https://doi.org/10.1007/s10670-013-9471-2
 
 Wang, K., Sattar, A., & Su, K. (2005). A theory of forgetting in logic programming. *Proceedings of the Twentieth National Conference on Artificial Intelligence (AAAI-05)*, 682-687.
