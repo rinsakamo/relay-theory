@@ -28,8 +28,9 @@ ROOT_KEYS = {
 RECORD_KEYS = {
     "slot_id", "opaque_bundle_id", "stable_identity", "canonical_locator",
     "activated_rank", "registry_reference", "capture_state",
-    "source_language", "source_version", "retrieval_date", "access_class",
-    "exact_span_locators", "source_bundle_sha256",
+    "source_language", "source_version", "retrieval_date",
+    "selection_inspection_access_class", "capture_access_class",
+    "exact_span_locators", "masked_source_surface_sha256",
     "local_evidence_descriptor_sha256", "mask_authority_sha256",
     "capture_limitation",
 }
@@ -157,7 +158,7 @@ def validate(
             "stable_identity", "canonical_locator", "activated_rank",
             "registry_reference", "source_access_class"
         ):
-            capture_key = "access_class" if key == "source_access_class" else key
+            capture_key = "selection_inspection_access_class" if key == "source_access_class" else key
             if rec[capture_key] != source[key]:
                 fail(f"{ctx}.{capture_key}: drift from activated #231 source")
 
@@ -179,10 +180,12 @@ def validate(
             fail(f"{ctx}: v1 source language freeze expects English")
         if rec["source_version"] is not None or rec["retrieval_date"] is not None:
             fail(f"{ctx}: source retrieval metadata populated before capture")
+        if rec["capture_access_class"] is not None:
+            fail(f"{ctx}: capture access class populated before capture")
         if rec["exact_span_locators"]:
             fail(f"{ctx}: span locators populated before capture")
         for key in (
-            "source_bundle_sha256", "local_evidence_descriptor_sha256",
+            "masked_source_surface_sha256", "local_evidence_descriptor_sha256",
             "mask_authority_sha256", "capture_limitation",
         ):
             if rec[key] is not None:
@@ -237,7 +240,7 @@ def self_test(
     expect_invalid(x, designed, designed_bytes, blinded, "Phi-before-capture")
 
     x = copy.deepcopy(capture)
-    x["records"][0]["source_bundle_sha256"] = "0" * 64
+    x["records"][0]["masked_source_surface_sha256"] = "0" * 64
     expect_invalid(x, designed, designed_bytes, blinded, "premature source bytes")
 
     b = copy.deepcopy(blinded)

@@ -61,9 +61,10 @@
           "source_language",
           "source_version",
           "retrieval_date",
-          "access_class",
+          "selection_inspection_access_class",
+          "capture_access_class",
           "exact_span_locators",
-          "source_bundle_sha256",
+          "masked_source_surface_sha256",
           "local_evidence_descriptor_sha256",
           "mask_authority_sha256",
           "capture_limitation"
@@ -132,13 +133,6 @@
               "null"
             ]
           },
-          "access_class": {
-            "enum": [
-              "FULL_TEXT",
-              "PARTIAL_TEXT",
-              "ABSTRACT_ONLY"
-            ]
-          },
           "exact_span_locators": {
             "type": "array",
             "items": {
@@ -147,7 +141,7 @@
             },
             "uniqueItems": true
           },
-          "source_bundle_sha256": {
+          "masked_source_surface_sha256": {
             "type": [
               "string",
               "null"
@@ -172,6 +166,26 @@
             "type": [
               "string",
               "null"
+            ]
+          },
+          "selection_inspection_access_class": {
+            "enum": [
+              "FULL_TEXT",
+              "PARTIAL_TEXT",
+              "ABSTRACT_ONLY"
+            ]
+          },
+          "capture_access_class": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "enum": [
+              "FULL_TEXT",
+              "PARTIAL_TEXT",
+              "ABSTRACT_ONLY",
+              "INACCESSIBLE",
+              null
             ]
           }
         }

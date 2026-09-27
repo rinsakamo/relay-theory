@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/rinsakamo/relay-theory/blob/main/research/paper2/designed_source_capture_input_v1.schema.json",
+  "title": "Paper 2 designed source capture local input v1",
+  "description": "Local-only source-facing input for zero-model capture assembly. Raw source text and construct-label terms are not repository artifacts.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "bundle_id",
+    "stable_identity",
+    "capture_state",
+    "source_version",
+    "retrieval_date",
+    "source_language",
+    "capture_access_class",
+    "source_locator",
+    "raw_text",
+    "label_groups",
+    "capture_limitation"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "paper2-designed-source-capture-input-v1"
+    },
+    "bundle_id": {
+      "type": "string",
+      "pattern": "^B[0-9]{4}$"
+    },
+    "stable_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "value"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "DOI",
+            "ARXIV",
+            "PMID"
+          ]
+        },
+        "value": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "capture_state": {
+      "enum": [
+        "CAPTURE_READY",
+        "TERMINAL_INACCESSIBLE"
+      ]
+    },
+    "source_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "retrieval_date": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_language": {
+      "const": "en"
+    },
+    "capture_access_class": {
+      "enum": [
+        "FULL_TEXT",
+        "PARTIAL_TEXT",
+        "ABSTRACT_ONLY",
+        "INACCESSIBLE"
+      ]
+    },
+    "source_locator": {
+      "type": "string",
+      "minLength": 1
+    },
+    "raw_text": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "label_groups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "label_id",
+          "terms"
+        ],
+        "properties": {
+          "label_id": {
+            "type": "string",
+            "pattern": "^L[0-9]{2}$"
+          },
+          "terms": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "capture_limitation": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

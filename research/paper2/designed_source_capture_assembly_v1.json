@@ -1,0 +1,48 @@
+{
+  "schema_version": "paper2-designed-source-capture-assembly-v1",
+  "owner_issue": 239,
+  "status": "SYNTHETIC_QUALIFICATION_ONLY",
+  "upstream": {
+    "designed_source_manifest_sha256": "e37ef0bf9d8a7499daddac5112b31e8fd52fb9ab727c468faa1ad337bbcd2409",
+    "pretext_capture_descriptor_sha256": "148a385213650625956d655d8973425810f95ef4c0172d4649f5995f1cdd340d",
+    "inherited_mask_policy_blob": "26f52c2f49c15c559b42c527d1b918c56d935785",
+    "inherited_prepare_script_blob": "bbabb1f910459c64a340bb70c2e05dd88fd6f1df"
+  },
+  "inherited_masking": {
+    "policy_path": "research/paper2/extraction_label_mask_v1.json",
+    "implementation_path": "scripts/paper2_extraction_two_pass_prepare.py",
+    "normalization": "NFKC_plus_unicode_whitespace_collapse",
+    "segmentation_max_units": 32,
+    "truncate_allowed": false,
+    "mask_terms": "predeclared_source_facing_construct_labels_and_explicit_aliases_only",
+    "overlap_resolution": "longest_normalized_term_first_then_label_id",
+    "semantic_collapse_min_non_marker_tokens": 5
+  },
+  "surfaces": {
+    "local_input_schema": "paper2-designed-source-capture-input-v1",
+    "pre_focus_masked_surface_schema": "paper2-designed-masked-source-surface-v1",
+    "post_focus_extraction_bundle_schema": "paper2-designed-blinded-source-bundle-v1"
+  },
+  "assembly": {
+    "required_input_count": 60,
+    "input_membership_exactly_frozen_opaque_bundle_set": true,
+    "stable_identity_must_match_pretext_descriptor": true,
+    "raw_text_repository_write_forbidden": true,
+    "label_terms_repository_write_forbidden": true,
+    "pre_focus_semantic_selection_forbidden": true,
+    "masked_surface_preserves_all_segmented_units_in_order": true,
+    "model_calls": 0,
+    "output_directory_must_not_exist": true,
+    "overwrite_forbidden": true
+  },
+  "scientific_boundary": {
+    "real_source_capture_authorized": false,
+    "model_execution_authorized": false,
+    "claim_ir_authorized": false,
+    "structural_signature_authorized": false,
+    "phi_authorized": false,
+    "atlas_analysis_authorized": false,
+    "paper210_execution_authorized": false
+  },
+  "architecture_consequence": "NONE"
+}
