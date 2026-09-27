@@ -1,0 +1,93 @@
+{
+  "schema_version": "paper2-v3-node-binding-audit-v1",
+  "owner_issue": 257,
+  "status": "V3_NODE_BINDING_DEPENDENCY_DEFECT_CONFIRMED",
+  "architecture_consequence": "NONE",
+  "parent_terminal": {
+    "issue": 210,
+    "terminal_comment_id": 5855526067,
+    "scientific_classification": "SCIENTIFIC_TRANSACTION_COMPLETED",
+    "bounded_null": "V3_VALID_CLAIMIR_YIELD_ZERO_ON_FROZEN_CALIBRATION_SURFACE",
+    "outcomes": {
+      "VALID_CLAIM_IR": 0,
+      "EXTRACTION_ABSTAIN": 2,
+      "EXTRACTION_FAILURE": 8
+    },
+    "duplicate_or_unknown_handle_failures": 8,
+    "stage": 1,
+    "receipt_sha256": "5edac0f2494fe893bd44255f2847423945a118fe243f8a55464d35e876136867",
+    "summary_sha256": "07204e340731052038e015320445227199436dbcc7b88e4a340b8022642bd35f"
+  },
+  "bound_repository_blobs": {
+    "scripts/paper2_extraction_two_pass_systemone_v3.py": "9e2fdff07fd6b860d9dfe686c384b00d6c66b23f",
+    "research/paper2/extraction_two_pass_systemone_v3.json": "cbb579742f7f16cbbe51f7db9603eaa8639d841e",
+    "research/paper2/extraction_systemone_decision_v3.schema.json": "22c1b6dce32f71d70dcc30d3c6879c18845b4c3f",
+    "scripts/paper2_extraction_two_pass_llama_cpp_transaction_v3.py": "75f8436758bb5c93c5ca3a834e7c807155d5ce05",
+    "research/paper2/extraction_v3_real_calibration_transaction_v1.json": "1abb318ff1f4160b38301169032c4924b58b3338",
+    "research/paper2/claim_ir_v1.schema.json": "963f54bd61c3112daa046fa191e3194d47db0768"
+  },
+  "audit_criterion": "If a finite choice is already impossible from fixed finite state, the question surface must not present it as locally admissible.",
+  "findings": {
+    "A1_exact_stage1_admissibility": {
+      "result": "DEFECT_WITNESS",
+      "detail": "n1__seed, n2__seed, and n3__seed are emitted in the same Stage-1 surface from the same seed_options(source); the same non-NONE handle is therefore locally selectable for more than one node slot."
+    },
+    "A2_dependency_timing": {
+      "result": "POST_RESPONSE_REJECTION",
+      "detail": "Cross-slot node-handle uniqueness is not encoded in the Stage-1 choice surface. It is checked only after the complete Stage-1 answer map is wire-validated, when stage2() calls bindings()."
+    },
+    "A3_contract_consistency": {
+      "result": "VIOLATES_DECLARED_AUDIT_CRITERION",
+      "detail": "Once a non-NONE referent handle has been selected for one node slot, selecting the identical handle for another slot is already impossible under the frozen unique-handle invariant, yet the simultaneous Stage-1 surface admits that tuple."
+    },
+    "A4_bounded_210_linkage": {
+      "result": "#210_DUPLICATE_HANDLE_FAILURES_REPRODUCE_CONFIRMED_INTERFACE_DEFECT",
+      "detail": "The canonical #210 runner freezes a wire-valid Stage-1 answer artifact before stage2(); all eight reported failures occur when stage2() invokes bindings(). Under the canonical wire path an unknown handle cannot survive parse/check validation, so the combined exception localizes these eight completed-transaction failures to duplicate valid handles."
+    },
+    "A5_unknown_handle_branch": {
+      "result": "WIRE_INVALID_UNDER_CANONICAL_FLOW",
+      "detail": "An answer not present in the emitted finite criteria is rejected by check_answers/parse_round before bindings(); unknown handles cannot reach the duplicate-or-unknown branch in a wire-valid canonical Stage-1 answer."
+    },
+    "A6_synthetic_destructive_witness": {
+      "result": "REPRODUCED",
+      "detail": "A source-free fixture assigning the same valid anchor_span_id::role handle to n1__seed and n2__seed passes Stage-1 finite-answer validation and then fails in bindings() with 'duplicate or unknown node referent handle'."
+    },
+    "A7_203_coverage_gap": {
+      "result": "MISSED_CROSS_SLOT_NODE_UNIQUENESS",
+      "detail": "#203 R1/R2 covered pre-binding referent identity and ambiguity; R3/R4/R5 pruned relation-argument impossibilities. No destructive probe asserted uniqueness of the full node seed handle across multiple Stage-1 node slots."
+    }
+  },
+  "bounded_descriptive_transition": {
+    "v2_issue": 193,
+    "v2": {
+      "VALID_CLAIM_IR": 0,
+      "EXTRACTION_ABSTAIN": 8,
+      "EXTRACTION_FAILURE": 2
+    },
+    "v3_issue": 210,
+    "v3": {
+      "VALID_CLAIM_IR": 0,
+      "EXTRACTION_ABSTAIN": 2,
+      "EXTRACTION_FAILURE": 8
+    },
+    "interpretation": "Both same-surface calibrations yielded 0/10 valid ClaimIR. The terminal attrition mode shifted; this is descriptive only and is not a general performance ranking or causal estimate."
+  },
+  "scientific_accounting": {
+    "real_model_calls": 0,
+    "real_server_launches": 0,
+    "real_literature_extraction": 0,
+    "paper210_replay": 0,
+    "paper193_replay": 0,
+    "heldout_execution": 0,
+    "basis_decomposition": 0
+  },
+  "repair_boundary": {
+    "historical_v3_mutation_forbidden": true,
+    "separate_versioned_repair_owner_required": true,
+    "candidate_mechanisms": [
+      "sequential node binding with already-used handles removed from later finite choice sets",
+      "bounded joint node-binding tuple surface"
+    ],
+    "candidate_mechanisms_are_not_authorized_solutions": true
+  }
+}
