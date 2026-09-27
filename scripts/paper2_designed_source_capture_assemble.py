@@ -94,7 +94,7 @@ def validate_contract(contract: Any) -> dict[str, Any]:
         fail("contract version drift")
     if contract.get("owner_issue") != 239:
         fail("contract owner drift")
-    if contract.get("status") != "REAL_SOURCE_CAPTURE_REAUTHORIZED_WEB_FULLTEXT_ZERO_MODEL":
+    if contract.get("status") != "BOUNDED_SOURCE_PROJECTION_BLOCKED":
         fail("contract status drift")
     if contract.get("architecture_consequence") != "NONE":
         fail("architecture consequence drift")
@@ -121,7 +121,7 @@ def validate_contract(contract: Any) -> dict[str, Any]:
 
     auth = contract.get("authorization")
     if auth != {
-        "scope": "LOCAL_REAL_SOURCE_CAPTURE_ONLY",
+        "scope": "BOUNDED_SOURCE_PROJECTION_BLOCKED",
         "source_surface": "frozen_web_fulltext_60_source_manifest",
         "source_selection_reopening_forbidden": True,
         "web_fulltext_only": True,
@@ -137,7 +137,7 @@ def validate_contract(contract: Any) -> dict[str, Any]:
 
     sci = contract.get("scientific_boundary")
     expected_sci = {
-        "real_source_capture_authorized": True,
+        "real_source_capture_authorized": False,
         "model_execution_authorized": False,
         "claim_ir_authorized": False,
         "structural_signature_authorized": False,
@@ -486,7 +486,7 @@ def self_test() -> None:
             "terminal_inaccessible": 0,
             "failed_bundle_ids": [],
             "model_calls": 0,
-            "real_source_capture_authorized_by_repository_contract": True,
+            "real_source_capture_authorized_by_repository_contract": False,
             "classification": "SOURCE_CAPTURE_FROZEN",
         }:
             raise AssertionError(f"synthetic summary drift: {summary}")
@@ -503,13 +503,12 @@ def self_test() -> None:
         if "[CONSTRUCT_01]" not in rendered:
             raise AssertionError("construct marker missing")
 
-        # The ordinary path is authorized for zero-model source capture only.
-        authorized_out = root / "authorized-path"
-        authorized_summary = assemble_all(inputs, authorized_out)
-        if authorized_summary["classification"] != "SOURCE_CAPTURE_FROZEN":
-            raise AssertionError("authorized zero-model source-capture path did not complete")
-        if authorized_summary["model_calls"] != 0:
-            raise AssertionError("authorized source capture performed model calls")
+        # Real source capture is blocked until #250 freezes the full-text -> bounded-source projection.
+        expect_failure(
+            lambda: assemble_all(inputs, root / "bounded-source-blocked"),
+            "bounded-source projection gate",
+            "REAL_SOURCE_CAPTURE_NOT_AUTHORIZED",
+        )
 
         # A mismatched public full-text locator fails closed.
         wrong_locator_inputs = root / "wrong-locator"
