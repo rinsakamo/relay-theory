@@ -1,0 +1,157 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "MEM04.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1146/annurev.psych.53.100901.135114",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Annual Review of Psychology 53, article p.1, Abstract: target system characterized as distinct and past-oriented"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Annual Review of Psychology 53, article p.3, early-system distinction: functionally separable source-defined systems"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Annual Review of Psychology 53, article p.5, section 'EPISODIC MEMORY TODAY': conjunction of self, special awareness, and subjective time; relation to contrasted system"
+      }
+    ],
+    "authors": [
+      "Endel Tulving"
+    ],
+    "institutions": [],
+    "venue": "Annual Review of Psychology",
+    "citation_count": null,
+    "construct_labels": [
+      "episodic memory",
+      "semantic memory",
+      "autonoetic consciousness",
+      "mental time travel"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "definition",
+    "modality": "definitional",
+    "scope": {
+      "conditions": [
+        "source-defined characterization of a past-oriented neurocognitive subsystem"
+      ],
+      "population": [
+        "humans"
+      ],
+      "substrate": [
+        "widely distributed cortical and subcortical network"
+      ],
+      "task": [],
+      "temporal_scope": [
+        "present subject oriented toward personally experienced past events"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "target_subsystem",
+        "role": "partition",
+        "description": "source-defined past-oriented neurocognitive subsystem distinguished from a related knowledge-oriented subsystem",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "related_subsystem",
+        "role": "state_or_structure",
+        "description": "related knowledge-oriented subsystem whose operations are required by but do not exhaust the target subsystem",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "self_component",
+        "role": "state_or_structure",
+        "description": "self-related component required by the source's current characterization",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "special_awareness",
+        "role": "state_or_structure",
+        "description": "special form of awareness required by the source's current characterization",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "subjective_time",
+        "role": "state_or_structure",
+        "description": "subjective temporal component that supports orientation toward personally experienced past events",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "distinguishes",
+        "arguments": [
+          "target_subsystem",
+          "related_subsystem"
+        ],
+        "description": "the source treats the target and related subsystems as functionally separable while allowing shared operations",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "depends_on",
+        "arguments": [
+          "target_subsystem",
+          "related_subsystem"
+        ],
+        "description": "operations of the target subsystem require operations of the related subsystem but extend beyond them",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "other",
+        "arguments": [
+          "target_subsystem",
+          "self_component",
+          "special_awareness",
+          "subjective_time"
+        ],
+        "description": "the source characterizes the target subsystem by the conjunction of a self-related component, a special awareness component, and subjective temporal orientation",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
