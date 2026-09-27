@@ -32,6 +32,6 @@ jobs:
       - name: Validate reference ClaimIR rows
         run: |
           set -euo pipefail
-          for f in research/paper2/chatgpt_reference_claimir_v1/MEM*.json; do
+          for f in research/paper2/chatgpt_reference_claimir_v1/[A-Z]*.json; do
             python scripts/paper2_claim_ir_validate.py --input "$f" --blinded-output "/tmp/$(basename "$f").blinded.json"
           done
