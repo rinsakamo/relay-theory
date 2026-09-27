@@ -1,0 +1,69 @@
+{
+  "schema_version": "paper2-designed-mask-terms-v1",
+  "owner_issue": 253,
+  "parent_issue": 239,
+  "status": "PREEXECUTION_FROZEN",
+  "authority": {
+    "source": "research/paper2/designed_corpus_geometry_v1.json primary.strata keys",
+    "source_blob": "94790274a4f9dff72c2724533d360499c1664b9a",
+    "inherited_mask_policy_blob": "26f52c2f49c15c559b42c527d1b918c56d935785",
+    "inherited_mask_implementation_blob": "bbabb1f910459c64a340bb70c2e05dd88fd6f1df"
+  },
+  "application": {
+    "scope": "ALL_60_DESIGNED_SOURCES",
+    "primary_and_challenge_share_identical_vocabulary": true,
+    "per_source_term_addition_allowed": false,
+    "title_derived_terms_allowed": false,
+    "abstract_derived_terms_allowed": false,
+    "challenge_specific_terms_allowed": false,
+    "additional_alias_policy": "none"
+  },
+  "labels": [
+    {"label_id": "L01", "canonical": "Memory", "aliases": []},
+    {"label_id": "L02", "canonical": "Learning", "aliases": []},
+    {"label_id": "L03", "canonical": "Skill", "aliases": []},
+    {"label_id": "L04", "canonical": "Attention", "aliases": []},
+    {"label_id": "L05", "canonical": "Prediction", "aliases": []},
+    {"label_id": "L06", "canonical": "Control", "aliases": []},
+    {"label_id": "L07", "canonical": "Belief", "aliases": []},
+    {"label_id": "L08", "canonical": "Concept", "aliases": []}
+  ],
+  "derived_label_groups": [
+    {"label_id": "L01", "terms": ["Memory"]},
+    {"label_id": "L02", "terms": ["Learning"]},
+    {"label_id": "L03", "terms": ["Skill"]},
+    {"label_id": "L04", "terms": ["Attention"]},
+    {"label_id": "L05", "terms": ["Prediction"]},
+    {"label_id": "L06", "terms": ["Control"]},
+    {"label_id": "L07", "terms": ["Belief"]},
+    {"label_id": "L08", "terms": ["Concept"]}
+  ],
+  "known_lexical_boundary": {
+    "morphological_variants_are_not_aliases": true,
+    "synonyms_are_not_aliases": true,
+    "source_specific_named_theories_are_not_added": true,
+    "reason": "avoid post-source semantic expansion and preserve non-label scientific content",
+    "examples_that_remain_visible": [
+      "memories",
+      "learner",
+      "skilled",
+      "attentional",
+      "predictive",
+      "controlled",
+      "beliefs",
+      "conceptual"
+    ]
+  },
+  "anti_overclaim": [
+    "This freezes exact canonical sampling-label deletion, not complete semantic anonymization.",
+    "Challenge sources receive no bespoke mask terms because they have no sampling stratum.",
+    "Residual lexical or semantic cues are a declared limitation and may be tested by downstream name-deletion controls.",
+    "No source text was inspected to choose aliases."
+  ],
+  "model_calls": 0,
+  "claim_ir_consumed": false,
+  "structural_signature_consumed": false,
+  "phi_consumed": false,
+  "atlas_outcome_consumed": false,
+  "architecture_consequence": "NONE"
+}
