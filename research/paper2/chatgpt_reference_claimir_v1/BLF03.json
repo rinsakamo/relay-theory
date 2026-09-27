@@ -1,0 +1,195 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "BLF03.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1146/annurev.neuro.29.051605.113038",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Annual Review of Neuroscience 30, published p.535, Abstract: simple laboratory decisions share deliberation and commitment components"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Annual Review of Neuroscience 30, published p.540, sequential-sampling figure/text: evidence is accumulated into a decision variable and compared with a stopping criterion"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Annual Review of Neuroscience 30, sequential-probability-ratio / bounded-diffusion discussion: bound controls stopping and mediates speed/accuracy consequences"
+      }
+    ],
+    "authors": [
+      "Joshua I. Gold",
+      "Michael N. Shadlen"
+    ],
+    "institutions": [
+      "University of Pennsylvania",
+      "University of Washington"
+    ],
+    "venue": "Annual Review of Neuroscience",
+    "citation_count": null,
+    "construct_labels": [
+      "decision making",
+      "decision variable",
+      "bounded evidence accumulation",
+      "confidence"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "constraint",
+    "modality": "probabilistic",
+    "scope": {
+      "conditions": [
+        "two-alternative decisions informed by a sequence of noisy evidence samples"
+      ],
+      "population": [
+        "human and nonhuman primate decision makers as reviewed by the source"
+      ],
+      "substrate": [
+        "neural populations representing momentary and accumulated evidence"
+      ],
+      "task": [
+        "simple perceptual discrimination with choice and reaction-time measurements"
+      ],
+      "temporal_scope": [
+        "evidence samples arrive over deliberation time until a stopping threshold is reached"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "momentary_evidence",
+        "role": "available_information",
+        "description": "noisy sample bearing on competing alternatives at a given time",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "accumulated_evidence",
+        "role": "state_or_structure",
+        "description": "time-integrated evidence supporting one alternative relative to another",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "stopping_threshold",
+        "role": "criterion",
+        "description": "criterion at which further sampling terminates and a commitment is made",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "choice",
+        "role": "response_or_outcome",
+        "description": "selected alternative when the accumulated quantity reaches a corresponding threshold",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "decision_time",
+        "role": "response_or_outcome",
+        "description": "elapsed deliberation time before threshold crossing and commitment",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "evidence_strength_probe",
+        "role": "probe",
+        "description": "perceptual discrimination task varying evidence strength while measuring choice and response time",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "maps_to",
+        "arguments": [
+          "momentary_evidence",
+          "accumulated_evidence"
+        ],
+        "description": "successive noisy samples are integrated into a running decision quantity",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "depends_on",
+        "arguments": [
+          "choice",
+          "decision_time",
+          "accumulated_evidence",
+          "stopping_threshold"
+        ],
+        "description": "choice and deliberation time depend on when and which stopping threshold the running quantity reaches",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "constrains",
+        "arguments": [
+          "stopping_threshold",
+          "choice",
+          "decision_time"
+        ],
+        "description": "changing the stopping criterion changes the tradeoff between rapid commitment and evidence reliability",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "maps_to",
+        "arguments": [
+          "evidence_strength_probe",
+          "choice",
+          "decision_time"
+        ],
+        "description": "the discrimination procedure exposes the joint distribution of choice and deliberation time under different evidence strengths",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
