@@ -43,7 +43,7 @@
     "modality": "necessary",
     "scope": {
       "conditions": [
-        "declarative-memory formation/use as characterized in the source"
+        "source-defined target information class"
       ],
       "population": [
         "rats",
@@ -51,52 +51,52 @@
         "humans"
       ],
       "substrate": [
-        "hippocampus and anatomically related structures",
-        "distributed neocortical sites"
+        "candidate medial-temporal subsystem and anatomically related structures",
+        "distributed cortical sites"
       ],
       "task": [],
       "temporal_scope": [
-        "hippocampal binding contribution is temporary"
+        "binding contribution of the candidate subsystem is temporary"
       ]
     },
     "nodes": [
       {
-        "id": "hippocampal_system",
+        "id": "candidate_subsystem",
         "role": "state_or_structure",
-        "description": "hippocampus together with anatomically related structures",
+        "description": "candidate anatomical subsystem together with related structures",
         "source_span_ids": [
           "s1",
           "s2",
           "s3"
         ],
-        "grounding": "explicit"
+        "grounding": "normalized"
       },
       {
-        "id": "declarative_memory",
+        "id": "target_information_class",
         "role": "state_or_structure",
-        "description": "the memory class for which the hippocampal system is stated to be essential",
+        "description": "source-defined information class for which the candidate subsystem is stated to be essential",
         "source_span_ids": [
           "s2"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "nondeclarative_memory",
+        "id": "contrasted_ability_class",
         "role": "partition",
-        "description": "contrasted class of memory abilities stated not to require the hippocampus",
+        "description": "contrasted class of abilities stated not to require the candidate subsystem",
         "source_span_ids": [
           "s2"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "distributed_neocortical_sites",
+        "id": "distributed_cortical_sites",
         "role": "state_or_structure",
-        "description": "distributed neocortical sites that jointly represent a whole memory",
+        "description": "distributed cortical sites that jointly carry a whole retained item",
         "source_span_ids": [
           "s3"
         ],
-        "grounding": "explicit"
+        "grounding": "normalized"
       }
     ],
     "relations": [
@@ -104,10 +104,10 @@
         "id": "r1",
         "kind": "depends_on",
         "arguments": [
-          "declarative_memory",
-          "hippocampal_system"
+          "target_information_class",
+          "candidate_subsystem"
         ],
-        "description": "declarative memory requires the hippocampal system in the source's account",
+        "description": "the source-defined target information class requires the candidate subsystem in the source's account",
         "source_span_ids": [
           "s2"
         ],
@@ -117,10 +117,10 @@
         "id": "r2",
         "kind": "distinguishes",
         "arguments": [
-          "declarative_memory",
-          "nondeclarative_memory"
+          "target_information_class",
+          "contrasted_ability_class"
         ],
-        "description": "the source distinguishes hippocampus-dependent declarative memory from nondeclarative abilities that do not require the hippocampus",
+        "description": "the source separates the subsystem-dependent target class from a contrasted class that does not require the subsystem",
         "source_span_ids": [
           "s2"
         ],
@@ -130,10 +130,10 @@
         "id": "r3",
         "kind": "other",
         "arguments": [
-          "hippocampal_system",
-          "distributed_neocortical_sites"
+          "candidate_subsystem",
+          "distributed_cortical_sites"
         ],
-        "description": "the hippocampal system is needed temporarily to bind distributed neocortical sites into a whole-memory representation",
+        "description": "the candidate subsystem is needed temporarily to bind distributed cortical sites into a whole retained item",
         "source_span_ids": [
           "s3"
         ],
