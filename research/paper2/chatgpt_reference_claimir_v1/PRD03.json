@@ -1,0 +1,159 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "PRD03.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1038/nrn3838",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Nature Reviews Neuroscience 15, published p.745, Key Points: environmental regularities supply prior information about upcoming percepts"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Nature Reviews Neuroscience 15, published p.745, Key Points: Bayesian account combines prior expectation with incoming sensory evidence"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Nature Reviews Neuroscience 15, published p.745, Key Points: prior information modulates baseline sensory and decision-related neural activity"
+      }
+    ],
+    "authors": [
+      "Christopher Summerfield",
+      "Floris P. de Lange"
+    ],
+    "institutions": [],
+    "venue": "Nature Reviews Neuroscience",
+    "citation_count": null,
+    "construct_labels": [
+      "expectation",
+      "perceptual decision making",
+      "Bayesian inference"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "mapping",
+    "modality": "probabilistic",
+    "scope": {
+      "conditions": [
+        "perceptual decisions made when prior information about upcoming sensory states is available"
+      ],
+      "population": [
+        "human and animal perceptual systems as reviewed by the source"
+      ],
+      "substrate": [
+        "sensory and decision-related neural populations"
+      ],
+      "task": [
+        "perceptual inference and choice under manipulated prior information"
+      ],
+      "temporal_scope": [
+        "prior information is available before or while incoming sensory evidence is accumulated"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "prior_information",
+        "role": "available_information",
+        "description": "contextual or transition information specifying a distribution over likely upcoming percepts",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "incoming_evidence",
+        "role": "available_information",
+        "description": "sensory evidence supplied by the current stimulus",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "posterior_perceptual_estimate",
+        "role": "response_or_outcome",
+        "description": "combined estimate or choice variable resulting from prior and current evidence",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "baseline_neural_state",
+        "role": "response_or_outcome",
+        "description": "pre- or peri-stimulus activity in populations encoding expected sensory or decision variables",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "prior_manipulation_probe",
+        "role": "probe",
+        "description": "experimental manipulation of prior probability or contextual predictability while sensory evidence is measured",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "maps_to",
+        "arguments": [
+          "prior_information",
+          "incoming_evidence",
+          "posterior_perceptual_estimate"
+        ],
+        "description": "the normative account combines prior information with incoming sensory evidence to form a perceptual estimate or decision variable",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "changes",
+        "arguments": [
+          "prior_information",
+          "baseline_neural_state"
+        ],
+        "description": "changing prior information changes baseline activity in populations representing expected sensory or decision variables",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "maps_to",
+        "arguments": [
+          "prior_manipulation_probe",
+          "posterior_perceptual_estimate",
+          "baseline_neural_state"
+        ],
+        "description": "prior-probability manipulations expose both behavioral and neural consequences of expectation",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
