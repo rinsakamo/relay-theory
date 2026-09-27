@@ -1,0 +1,183 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "CTL03.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1037/0096-3445.121.4.480",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Journal of Experimental Psychology: General 121(4), published p.480, Abstract: early distributed versus later focused processing phases"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Journal of Experimental Psychology: General 121(4), published p.480, Abstract: compatibility expectancies manipulated across four experiments and interference modulated"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Journal of Experimental Psychology: General 121(4), published p.480, Abstract: relative expected utility determines which processing phase activates responses"
+      }
+    ],
+    "authors": [
+      "Gabriele Gratton",
+      "Michael G. H. Coles",
+      "Emanuel Donchin"
+    ],
+    "institutions": [
+      "University of Illinois, Urbana-Champaign"
+    ],
+    "venue": "Journal of Experimental Psychology: General",
+    "citation_count": null,
+    "construct_labels": [
+      "strategic control",
+      "response activation",
+      "parallel processing",
+      "focused processing"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "comparison",
+    "modality": "probabilistic",
+    "scope": {
+      "conditions": [
+        "visual choice task in which irrelevant noise can be compatible or incompatible with the required response and its distribution is experimentally manipulated"
+      ],
+      "population": [
+        "adult participants"
+      ],
+      "substrate": [],
+      "task": [
+        "noise-compatibility choice-response task"
+      ],
+      "temporal_scope": [
+        "contextual distribution is learned or known before the current stimulus determines response-processing policy"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "compatibility_distribution",
+        "role": "intervention",
+        "description": "experimentally manipulated expected frequency of response-compatible and response-incompatible noise",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "early_broad_phase",
+        "role": "state_or_structure",
+        "description": "early processing regime in which multiple visible inputs can contribute to response preparation",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "later_selective_phase",
+        "role": "state_or_structure",
+        "description": "later processing regime emphasizing the task-relevant input",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "interference_effect",
+        "role": "response_or_outcome",
+        "description": "response-time/performance cost associated with incompatible noise",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "relative_information_utility",
+        "role": "criterion",
+        "description": "expected usefulness of information available from the two processing regimes for the current context",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "noise_compatibility_probe",
+        "role": "probe",
+        "description": "choice-response procedure crossing noise compatibility with manipulated compatibility expectancy",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "changes",
+        "arguments": [
+          "compatibility_distribution",
+          "interference_effect"
+        ],
+        "description": "manipulating contextual compatibility frequencies changes the observed interference effect",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "depends_on",
+        "arguments": [
+          "early_broad_phase",
+          "later_selective_phase",
+          "relative_information_utility"
+        ],
+        "description": "which processing regime contributes to response preparation depends on the expected relative usefulness of its information",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "satisfies",
+        "arguments": [
+          "early_broad_phase",
+          "later_selective_phase",
+          "relative_information_utility"
+        ],
+        "description": "regime selection is interpreted as favoring the information source with greater expected utility in context",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "maps_to",
+        "arguments": [
+          "noise_compatibility_probe",
+          "interference_effect"
+        ],
+        "description": "the compatibility procedure supplies the observable consequence of changing contextual expectations",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
