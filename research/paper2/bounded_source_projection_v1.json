@@ -1,0 +1,83 @@
+{
+  "schema_version": "paper2-bounded-source-projection-contract-v1",
+  "owner_issue": 250,
+  "parent_issue": 239,
+  "status": "SOURCE_NATIVE_ABSTRACT_PROJECTION_FROZEN",
+  "bound_parent_blobs": {
+    "research/paper2/designed_source_manifest_v1.json": "dd34e2048020124561477ba8fe53f1e4e1452bb7",
+    "research/paper2/designed_source_web_fulltext_manifest_v1.json": "be44887a8024bbf13c3a746452291e330349889a",
+    "research/paper2/designed_source_capture_manifest_v1.json": "b406776e866ea938531da32ae5b2cc35b081ba42",
+    "research/paper2/extraction_label_mask_v1.json": "26f52c2f49c15c559b42c527d1b918c56d935785",
+    "scripts/paper2_extraction_two_pass_prepare.py": "bbabb1f910459c64a340bb70c2e05dd88fd6f1df",
+    "research/paper2/extraction_normal_prompt_v1.md": "a9918f5e51f38f6307057ffc207c1a2b1d73c885",
+    "research/paper2/extraction_two_pass_real_protocol_v1.json": "98cacc90e405486b6ae6cd4acb7f8b31289ccdef"
+  },
+  "bound_content_digests": {
+    "designed_source_manifest_sha256": "e37ef0bf9d8a7499daddac5112b31e8fd52fb9ab727c468faa1ad337bbcd2409",
+    "web_fulltext_manifest_sha256": "49e97c31655a3a325346327aaeb7ca00e6ab6475984d2cffe7a9b16a26c3cd57",
+    "reconciled_capture_descriptor_sha256": "ca335a00c60f8817c9e703231137decacfe1a59c4ee41fba7daa7d3d8f3228ab"
+  },
+  "distinction": {
+    "access_authority": "complete public-web full text for the frozen source identity",
+    "bounded_extraction_surface": "complete source-native abstract only",
+    "fulltext_role": "eligibility identity binding and later source-only audit; full body bytes are not silently truncated into model input",
+    "abstract_role": "pre-mask bounded source bytes for the frozen Normal/SystemOne extraction envelope"
+  },
+  "projection": {
+    "mode": "SOURCE_NATIVE_COMPLETE_ABSTRACT_ONLY",
+    "source_native_abstract_boundary_must_be_verified": true,
+    "body_fallback_allowed": false,
+    "body_excerpt_allowed": false,
+    "semantic_search_or_selection_allowed": false,
+    "summarization_allowed": false,
+    "paraphrase_allowed": false,
+    "manual_claim_window_allowed": false,
+    "post_projection_truncation_allowed": false,
+    "normalization": "inherited #162 NFKC plus unicode-whitespace collapse",
+    "segmentation": "inherited #162 sentence-like evidence units",
+    "maximum_units": 32,
+    "over_bound_action": "terminal projection failure; do not truncate",
+    "no_abstract_action": "terminal projection failure; do not use body fallback"
+  },
+  "provenance": {
+    "exact_frozen_public_fulltext_locator_required": true,
+    "fulltext_file_sha256_required": true,
+    "stable_identity_must_match_reconciled_capture_descriptor": true,
+    "abstract_locator_required_when_present": true,
+    "source_native_complete_abstract_attestation_required": true,
+    "receipt_contains_source_text": false,
+    "raw_fulltext_repository_write_forbidden": true,
+    "raw_abstract_repository_write_forbidden": true
+  },
+  "downstream_boundary": {
+    "label_masking_occurs_after_projection": true,
+    "focus_selection_occurs_after_masking": true,
+    "projected_surface_is_not_ClaimIR": true,
+    "projected_surface_is_not_structural_signature": true,
+    "projected_surface_is_not_Phi": true,
+    "fulltext_source_only_adjudication_may_use_complete_source_later_under_separate_authority": true
+  },
+  "failure_classes": [
+    "SOURCE_NATIVE_ABSTRACT_ABSENT",
+    "SOURCE_NATIVE_ABSTRACT_UNIT_BOUND_EXCEEDED",
+    "PROJECTION_INPUT_INVALID",
+    "FULLTEXT_DIGEST_MISMATCH",
+    "FROZEN_SOURCE_BINDING_MISMATCH"
+  ],
+  "scientific_boundary": {
+    "real_source_capture_authorized": false,
+    "model_execution_authorized": false,
+    "claim_ir_authorized": false,
+    "structural_signature_authorized": false,
+    "phi_authorized": false,
+    "atlas_analysis_authorized": false,
+    "paper210_execution_authorized": false
+  },
+  "anti_overclaim": [
+    "The source-native abstract is a deterministic source-authored presentation surface, not a claim that the abstract exhausts the paper.",
+    "Projection success does not establish semantic sufficiency or extraction faithfulness.",
+    "A missing or over-bound abstract is a capture-interface failure, not permission to choose body excerpts.",
+    "Full-text accessibility remains mandatory even though the extraction surface is narrower."
+  ],
+  "architecture_consequence": "NONE"
+}
