@@ -8,6 +8,7 @@
     "schema_version",
     "owner_issue",
     "designed_manifest_sha256",
+    "web_fulltext_manifest_sha256",
     "state",
     "source_text_captured",
     "claim_ir_consumed",
@@ -27,7 +28,7 @@
     },
     "state": {
       "enum": [
-        "CAPTURE_DESCRIPTOR_FROZEN_PRE_TEXT",
+        "CAPTURE_DESCRIPTOR_WEB_FULLTEXT_RECONCILED_PRE_TEXT",
         "SOURCE_CAPTURE_FROZEN"
       ]
     },
@@ -55,6 +56,8 @@
           "opaque_bundle_id",
           "stable_identity",
           "canonical_locator",
+          "public_fulltext_locator",
+          "public_fulltext_verdict",
           "activated_rank",
           "registry_reference",
           "capture_state",
@@ -104,7 +107,11 @@
             "minLength": 1
           },
           "activated_rank": {
-            "const": 1
+            "enum": [
+              1,
+              2,
+              3
+            ]
           },
           "registry_reference": {
             "type": "string",
@@ -182,14 +189,26 @@
             ],
             "enum": [
               "FULL_TEXT",
-              "PARTIAL_TEXT",
-              "ABSTRACT_ONLY",
               "INACCESSIBLE",
               null
+            ]
+          },
+          "public_fulltext_locator": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^https?://"
+          },
+          "public_fulltext_verdict": {
+            "enum": [
+              "PASS_FULL_TEXT",
+              "PASS_FULL_TEXT_PDF"
             ]
           }
         }
       }
+    },
+    "web_fulltext_manifest_sha256": {
+      "const": "49e97c31655a3a325346327aaeb7ca00e6ab6475984d2cffe7a9b16a26c3cd57"
     }
   }
 }

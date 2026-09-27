@@ -50,7 +50,7 @@ def build_template(record: dict[str, Any]) -> dict[str, Any]:
         "retrieval_date": "__FILL_YYYY-MM-DD__",
         "source_language": "en",
         "capture_access_class": "__FILL_FULL_TEXT_OR_INACCESSIBLE__",
-        "source_locator": record["canonical_locator"],
+        "source_locator": record["public_fulltext_locator"],
         "raw_text": None,
         "label_groups": [],
         "capture_limitation": "__FILL_OR_NULL__",
@@ -61,8 +61,8 @@ def emit(output_dir: Path) -> dict[str, Any]:
     if output_dir.exists():
         fail(f"OUTPUT_DIRECTORY_ALREADY_EXISTS:{output_dir}")
     descriptor = load_json(CAPTURE_DESCRIPTOR_PATH)
-    if descriptor.get("state") != "CAPTURE_DESCRIPTOR_FROZEN_PRE_TEXT":
-        fail("unexpected capture descriptor state")
+    if descriptor.get("state") != "CAPTURE_DESCRIPTOR_WEB_FULLTEXT_RECONCILED_PRE_TEXT":
+        fail("unexpected reconciled capture descriptor state")
     records = descriptor.get("records")
     if not isinstance(records, list) or len(records) != 60:
         fail("expected exactly 60 frozen capture descriptors")
@@ -95,6 +95,7 @@ def emit(output_dir: Path) -> dict[str, Any]:
             "label_groups=[]",
             "nonempty capture_limitation",
         ],
+        "source_locator_prefilled_from_frozen_243_public_fulltext_manifest": True,
         "repository_commit_raw_text_forbidden": True,
         "model_calls": 0,
     }
@@ -119,6 +120,8 @@ def self_test() -> None:
             raise AssertionError("scaffold missing non-executable capture-state sentinel")
         if guide["model_calls"] != 0:
             raise AssertionError("scaffold must have zero model calls")
+        if not first["source_locator"].startswith(("http://", "https://")):
+            raise AssertionError("scaffold must prefill a frozen public full-text locator")
 
         try:
             emit(out)

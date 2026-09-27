@@ -5,6 +5,9 @@ on:
     paths:
       - "research/paper2/designed_source_manifest_v1.*"
       - "research/paper2/designed_source_capture_manifest_v1.*"
+      - "research/paper2/designed_source_web_fulltext_manifest_v1.*"
+      - "research/paper2/designed_source_candidate_ledger_v1.json"
+      - "scripts/paper2_designed_source_web_fulltext_validate.py"
       - "research/paper2/designed_blinded_source_bundle_v1.schema.json"
       - "scripts/paper2_designed_source_capture_validate.py"
       - ".github/workflows/paper2-designed-source-capture-selftest.yml"
@@ -13,6 +16,9 @@ on:
     paths:
       - "research/paper2/designed_source_manifest_v1.*"
       - "research/paper2/designed_source_capture_manifest_v1.*"
+      - "research/paper2/designed_source_web_fulltext_manifest_v1.*"
+      - "research/paper2/designed_source_candidate_ledger_v1.json"
+      - "scripts/paper2_designed_source_web_fulltext_validate.py"
       - "research/paper2/designed_blinded_source_bundle_v1.schema.json"
       - "scripts/paper2_designed_source_capture_validate.py"
       - ".github/workflows/paper2-designed-source-capture-selftest.yml"
@@ -34,10 +40,15 @@ jobs:
         run: |
           python -m json.tool research/paper2/designed_source_capture_manifest_v1.schema.json >/dev/null
           python -m json.tool research/paper2/designed_source_capture_manifest_v1.json >/dev/null
+          python -m json.tool research/paper2/designed_source_web_fulltext_manifest_v1.json >/dev/null
           python -m json.tool research/paper2/designed_blinded_source_bundle_v1.schema.json >/dev/null
       - name: Run destructive source-capture self-test
         run: python scripts/paper2_designed_source_capture_validate.py --self-test
+      - name: Revalidate frozen web-fulltext manifest
+        run: python scripts/paper2_designed_source_web_fulltext_validate.py
       - name: Validate frozen pre-text capture descriptors
         run: python scripts/paper2_designed_source_capture_validate.py
       - name: Verify descriptor digest
         run: sha256sum -c research/paper2/designed_source_capture_manifest_v1.sha256
+      - name: Verify web-fulltext manifest digest
+        run: sha256sum -c research/paper2/designed_source_web_fulltext_manifest_v1.sha256
