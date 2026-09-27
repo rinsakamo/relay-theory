@@ -1,0 +1,209 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "LRN01.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1126/science.273.5280.1399",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Science 273(5280), published p.1399, Abstract: probabilistic cue-combination classification across two neurological patient groups"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Science 273(5280), published p.1399, Abstract: first group shows preserved gradual task acquisition with impaired explicit episode report"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Science 273(5280), published p.1399, Abstract: second group shows impaired gradual task acquisition with preserved explicit episode report; double dissociation"
+      }
+    ],
+    "authors": [
+      "Barbara J. Knowlton",
+      "Jennifer A. Mangels",
+      "Larry R. Squire"
+    ],
+    "institutions": [],
+    "venue": "Science",
+    "citation_count": null,
+    "construct_labels": [
+      "habit learning",
+      "declarative memory",
+      "neostriatum",
+      "multiple learning systems"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "comparison",
+    "modality": "probabilistic",
+    "scope": {
+      "conditions": [
+        "neurological groups with contrasting lesion/disease profiles"
+      ],
+      "population": [
+        "amnesic patients",
+        "nondemented patients with Parkinson's disease"
+      ],
+      "substrate": [
+        "limbic-diencephalic structures",
+        "striatal structures"
+      ],
+      "task": [
+        "probabilistic cue-combination classification with two possible outcomes"
+      ],
+      "temporal_scope": []
+    },
+    "nodes": [
+      {
+        "id": "group_a",
+        "role": "condition",
+        "description": "group with limbic-diencephalic dysfunction",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "group_b",
+        "role": "condition",
+        "description": "group with striatal dysfunction",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "probabilistic_task_probe",
+        "role": "probe",
+        "description": "cue-combination task requiring prediction of one of two outcomes across repeated trials",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "gradual_task_performance",
+        "role": "response_or_outcome",
+        "description": "acquisition and performance on the repeated probabilistic classification task",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "explicit_episode_report",
+        "role": "response_or_outcome",
+        "description": "explicit report concerning the training episode",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "performance_criterion",
+        "role": "criterion",
+        "description": "successful prediction of the trial outcome from the presented cue combination",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "substrate_partition",
+        "role": "partition",
+        "description": "contrast between limbic-diencephalic and striatal substrate classes",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "differs",
+        "arguments": [
+          "group_a",
+          "gradual_task_performance",
+          "explicit_episode_report"
+        ],
+        "description": "group A shows preserved gradual task acquisition together with impaired explicit episode report",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "differs",
+        "arguments": [
+          "group_b",
+          "gradual_task_performance",
+          "explicit_episode_report"
+        ],
+        "description": "group B shows impaired gradual task acquisition together with preserved explicit episode report",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "distinguishes",
+        "arguments": [
+          "substrate_partition",
+          "gradual_task_performance",
+          "explicit_episode_report"
+        ],
+        "description": "the crossed outcome pattern distinguishes two substrate-linked functional profiles",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "maps_to",
+        "arguments": [
+          "probabilistic_task_probe",
+          "gradual_task_performance"
+        ],
+        "description": "the repeated cue-combination probe supplies the gradual task-performance measure",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "satisfies",
+        "arguments": [
+          "gradual_task_performance",
+          "performance_criterion"
+        ],
+        "description": "task performance is evaluated by outcome prediction from the cue combination",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
