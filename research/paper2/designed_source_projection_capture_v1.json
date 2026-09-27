@@ -1,0 +1,85 @@
+{
+  "schema_version": "paper2-designed-source-projection-capture-v1",
+  "owner_issue": 239,
+  "status": "REAL_SOURCE_PROJECTION_CAPTURE_REAUTHORIZED_UNSPENT",
+  "terminal_children": {
+    "bounded_source_projection_issue": 250,
+    "bounded_source_projection_classification": "PAPER2_BOUNDED_SOURCE_PROJECTION_FROZEN",
+    "designed_mask_authority_issue": 253,
+    "designed_mask_authority_classification": "PAPER2_DESIGNED_MASK_AUTHORITY_FROZEN"
+  },
+  "bound_authority": {
+    "capture_descriptor_sha256": "ca335a00c60f8817c9e703231137decacfe1a59c4ee41fba7daa7d3d8f3228ab",
+    "capture_descriptor_blob": "b406776e866ea938531da32ae5b2cc35b081ba42",
+    "bounded_source_contract_blob": "6a1415f2e85554816b5c25a3de21a08a8ae2018b",
+    "bounded_source_input_schema_blob": "0867444ed163f80e186e8b8778c08c0fea72d8cd",
+    "bounded_source_surface_schema_blob": "f92781de2b9def5d08c4a6fc001c1ee82aa9ce53",
+    "bounded_source_receipt_schema_blob": "22af598cddaf0e1e991f5aad7d887adc0a6f26b7",
+    "bounded_source_projector_blob": "1bdc206919b910797268f87cda7019f641cf85a4",
+    "designed_mask_authority_blob": "30799324529d1dee12e05e603f6f7724149a75fb",
+    "designed_mask_validator_blob": "0799299954de795c99af37b7fb299fd2011808a1",
+    "inherited_prepare_script_blob": "bbabb1f910459c64a340bb70c2e05dd88fd6f1df"
+  },
+  "local_input_layout": {
+    "required_bundle_directories": 60,
+    "bundle_directory_pattern": "B####",
+    "projection_input_filename": "projection-input.json",
+    "fulltext_filename": "fulltext.bin",
+    "template_filename_forbidden_during_execution": "projection-input.template.json",
+    "projection_input_schema": "paper2-bounded-source-projection-input-v1",
+    "arbitrary_raw_text_field": "forbidden",
+    "operator_label_groups": "forbidden"
+  },
+  "composition": {
+    "projection_mode": "SOURCE_NATIVE_COMPLETE_ABSTRACT_ONLY",
+    "fulltext_access_remains_required": true,
+    "source_native_abstract_only": true,
+    "body_fallback_allowed": false,
+    "manual_claim_window_allowed": false,
+    "semantic_search_or_selection_allowed": false,
+    "summarization_allowed": false,
+    "paraphrase_allowed": false,
+    "truncation_allowed": false,
+    "mask_authority": "research/paper2/designed_extraction_mask_terms_v1.json derived_label_groups",
+    "same_global_mask_vocabulary_for_all_60": true,
+    "per_source_mask_term_tuning_allowed": false,
+    "masked_surface_preserves_projection_span_order": true,
+    "masked_surface_preserves_projection_span_count": true,
+    "model_calls": 0
+  },
+  "failure_semantics": {
+    "projection_absent_or_over_bound": "PAPER2_SOURCE_CAPTURE_INSUFFICIENT",
+    "mask_semantic_collapse": "PAPER2_SOURCE_CAPTURE_INSUFFICIENT",
+    "invalid_identity_locator_digest_or_input": "transaction invalid; fail closed",
+    "missing_bundle_directory_or_file": "transaction invalid; fail closed",
+    "failed_capture_may_not_emit_frozen_60_source_manifest": true
+  },
+  "outputs": {
+    "repository_write_source_text_forbidden": true,
+    "local_evidence_only": true,
+    "projection_receipts": true,
+    "bounded_source_surfaces": true,
+    "masked_source_surfaces": true,
+    "capture_receipts": true,
+    "frozen_capture_manifest_only_on_60_of_60": true
+  },
+  "scientific_boundary": {
+    "real_source_projection_capture_authorized": true,
+    "model_execution_authorized": false,
+    "claim_ir_authorized": false,
+    "structural_signature_authorized": false,
+    "phi_authorized": false,
+    "atlas_analysis_authorized": false,
+    "paper210_execution_authorized": false
+  },
+  "execution_accounting_before_merge": {
+    "production_source_projection_capture": 0,
+    "real_source_text_consumed_by_this_repository_transaction": 0,
+    "model_calls": 0,
+    "claim_ir": 0,
+    "structural_signature": 0,
+    "phi": 0,
+    "atlas_outcome": 0
+  },
+  "architecture_consequence": "NONE"
+}
