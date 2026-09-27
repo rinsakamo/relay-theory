@@ -1,0 +1,199 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "ATT06.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1038/44134",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Nature 401, published p.584, Abstract: superimposed face/house stimuli with one object moving and task varied across object/attribute"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Nature 401, published pp.584-586, experiment and ROI logic: category- and motion-sensitive regions measure attended and unattended attributes"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Nature 401, published p.586, control analysis: task-irrelevant attribute of the attended object evokes greater response than same attribute on unattended object"
+      }
+    ],
+    "authors": [
+      "Kathleen M. O'Craven",
+      "Paul E. Downing",
+      "Nancy Kanwisher"
+    ],
+    "institutions": [
+      "Massachusetts General Hospital NMR Center",
+      "MIT Department of Brain and Cognitive Sciences"
+    ],
+    "venue": "Nature",
+    "citation_count": null,
+    "construct_labels": [
+      "object-based attention",
+      "attentional selection"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "comparison",
+    "modality": "probabilistic",
+    "scope": {
+      "conditions": [
+        "two transparently superimposed visual objects, one moving and one stationary, with task cue selecting an attribute or object"
+      ],
+      "population": [
+        "human participants"
+      ],
+      "substrate": [
+        "category-sensitive and motion-sensitive cortical regions"
+      ],
+      "task": [
+        "monitor one cued visual attribute while category and motion signals are measured"
+      ],
+      "temporal_scope": []
+    },
+    "nodes": [
+      {
+        "id": "object_partition",
+        "role": "partition",
+        "description": "grouping of category identity and motion into each of two superimposed perceptual objects",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "selected_attribute",
+        "role": "intervention",
+        "description": "task-cued visual attribute that participants monitor",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "same_object_unselected_attribute",
+        "role": "condition",
+        "description": "task-irrelevant attribute belonging to the same perceptual object as the selected attribute",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "other_object_unselected_attribute",
+        "role": "condition",
+        "description": "corresponding task-irrelevant attribute belonging to the other superimposed object",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "regional_signal",
+        "role": "response_or_outcome",
+        "description": "magnetic-resonance response in category- or motion-sensitive cortical regions",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "imaging_probe",
+        "role": "probe",
+        "description": "functional imaging readout across task conditions that independently vary selected attribute and which object moves",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "task_accuracy",
+        "role": "criterion",
+        "description": "successful monitoring of the currently cued attribute during each block",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "depends_on",
+        "arguments": [
+          "regional_signal",
+          "selected_attribute",
+          "object_partition"
+        ],
+        "description": "regional response reflects not only the selected attribute but also the object grouping to which that attribute belongs",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "differs",
+        "arguments": [
+          "same_object_unselected_attribute",
+          "other_object_unselected_attribute",
+          "regional_signal"
+        ],
+        "description": "an unselected attribute elicits a larger response when it belongs to the selected object than when it belongs to the unselected object",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "maps_to",
+        "arguments": [
+          "imaging_probe",
+          "regional_signal"
+        ],
+        "description": "the imaging probe exposes selection effects separately in category- and motion-sensitive regions",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "satisfies",
+        "arguments": [
+          "selected_attribute",
+          "task_accuracy"
+        ],
+        "description": "the manipulation is tied to successful monitoring of the cued visual attribute",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
