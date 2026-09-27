@@ -1,0 +1,170 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "SKL02.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1037/0033-295X.89.4.369",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Psychological Review 89(4), published p.369, Abstract: two major stages from interpreted facts to direct procedure-based performance"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Psychological Review 89(4), published p.369, Abstract: compilation consists of composition and proceduralization"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Psychological Review 89(4), published p.369, Abstract: later generalization, discrimination, and strengthening refine the resulting procedures and relate to practice speed-up"
+      }
+    ],
+    "authors": [
+      "John R. Anderson"
+    ],
+    "institutions": [
+      "Carnegie-Mellon University"
+    ],
+    "venue": "Psychological Review",
+    "citation_count": null,
+    "construct_labels": [
+      "cognitive skill",
+      "declarative stage",
+      "procedural stage",
+      "knowledge compilation",
+      "production rules"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "definition",
+    "modality": "definitional",
+    "scope": {
+      "conditions": [
+        "source-defined account of acquiring a rule-governed cognitive performance"
+      ],
+      "population": [
+        "human cognitive performers"
+      ],
+      "substrate": [
+        "symbolic fact representation",
+        "executable rule representation"
+      ],
+      "task": [
+        "rule-governed cognitive tasks"
+      ],
+      "temporal_scope": [
+        "early interpreted-fact phase followed by direct rule-based execution and later refinement"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "fact_based_phase",
+        "role": "partition",
+        "description": "early phase in which domain facts are interpreted during performance",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "executable_rule_phase",
+        "role": "partition",
+        "description": "later phase in which domain information is directly embodied in executable procedures",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "composition_transform",
+        "role": "state_or_structure",
+        "description": "transformation that collapses sequences of executable operations into a combined operation",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "fact_embedding_transform",
+        "role": "state_or_structure",
+        "description": "transformation that embeds factual content into executable procedures",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "later_refinement",
+        "role": "state_or_structure",
+        "description": "subsequent generalization, discrimination, and strengthening of executable procedures",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "precedes",
+        "arguments": [
+          "fact_based_phase",
+          "executable_rule_phase"
+        ],
+        "description": "the source-defined developmental ordering moves from interpreted facts toward direct executable procedures",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "maps_to",
+        "arguments": [
+          "fact_based_phase",
+          "composition_transform",
+          "fact_embedding_transform",
+          "executable_rule_phase"
+        ],
+        "description": "the two compilation transformations convert early interpreted structure into the later executable form",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "changes",
+        "arguments": [
+          "later_refinement",
+          "executable_rule_phase"
+        ],
+        "description": "later refinement alters the selectivity and strength of the executable procedures",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "distinguishes",
+        "arguments": [
+          "fact_based_phase",
+          "executable_rule_phase"
+        ],
+        "description": "the account explicitly partitions acquisition into two representational/performance phases",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
