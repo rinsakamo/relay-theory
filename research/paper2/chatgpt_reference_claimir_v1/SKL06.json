@@ -1,0 +1,187 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "SKL06.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1016/0010-0285(73)90004-2",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Cognitive Psychology 4(1), published p.55, Abstract: three players of different strength perform visible-reconstruction and five-second recall tasks; structure size/nature analyzed by strength"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Cognitive Psychology 4(1), published p.56, meaningful versus randomized positions: expert advantage disappears for randomized boards"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Cognitive Psychology 4(1), published pp.56-57, interpretation: superior structured-position performance arises from rapidly encoding relational groups rather than a larger generic brief-capacity limit"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Cognitive Psychology 4(1), published pp.59-61, first-trial reconstruction accuracy covaries with playing strength for actual positions but not random positions"
+      }
+    ],
+    "authors": [
+      "William G. Chase",
+      "Herbert A. Simon"
+    ],
+    "institutions": [
+      "Carnegie-Mellon University"
+    ],
+    "venue": "Cognitive Psychology",
+    "citation_count": null,
+    "construct_labels": [
+      "chess expertise",
+      "chunking",
+      "short-term memory"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "relation",
+    "modality": "comparative",
+    "scope": {
+      "conditions": [
+        "structured game positions versus piece-count-matched randomized positions"
+      ],
+      "population": [
+        "players ranging from beginner to master level"
+      ],
+      "substrate": [],
+      "task": [
+        "visible reconstruction and reconstruction after five-second viewing"
+      ],
+      "temporal_scope": [
+        "five-second exposure for the brief-reconstruction probe"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "expertise_level",
+        "role": "condition",
+        "description": "player-strength level ranging from beginner to master",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "position_structure",
+        "role": "condition",
+        "description": "whether the presented board preserves meaningful relational structure or is randomized",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "brief_reconstruction_probe",
+        "role": "probe",
+        "description": "reconstruct the board after a five-second view",
+        "source_span_ids": [
+          "s1",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "reconstruction_accuracy",
+        "role": "response_or_outcome",
+        "description": "number or proportion of pieces restored to the correct locations on the first reconstruction",
+        "source_span_ids": [
+          "s1",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "relational_groups",
+        "role": "state_or_structure",
+        "description": "multi-piece relational structures rapidly encoded from meaningful configurations",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "correct_location_criterion",
+        "role": "criterion",
+        "description": "piece restored to its correct board location",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "depends_on",
+        "arguments": [
+          "reconstruction_accuracy",
+          "expertise_level",
+          "position_structure"
+        ],
+        "description": "reconstruction accuracy increases with expertise for structured positions but the expertise advantage disappears for randomized positions",
+        "source_span_ids": [
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "maps_to",
+        "arguments": [
+          "brief_reconstruction_probe",
+          "reconstruction_accuracy"
+        ],
+        "description": "the five-second reconstruction probe supplies the primary accuracy measure",
+        "source_span_ids": [
+          "s1",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "depends_on",
+        "arguments": [
+          "reconstruction_accuracy",
+          "relational_groups"
+        ],
+        "description": "the source interprets superior structured-position performance as relying on rapidly encoded multi-piece relations",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "satisfies",
+        "arguments": [
+          "reconstruction_accuracy",
+          "correct_location_criterion"
+        ],
+        "description": "reconstruction is scored by correct piece placement",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
