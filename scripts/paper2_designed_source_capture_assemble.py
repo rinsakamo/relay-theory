@@ -36,6 +36,7 @@ from paper2_extraction_two_pass_prepare import (
 
 CONTRACT_PATH = Path("research/paper2/designed_source_capture_assembly_v1.json")
 DESIGNED_PATH = Path("research/paper2/designed_source_manifest_v1.json")
+WEB_MANIFEST_PATH = Path("research/paper2/designed_source_web_fulltext_manifest_v1.json")
 CAPTURE_DESCRIPTOR_PATH = Path("research/paper2/designed_source_capture_manifest_v1.json")
 MASK_POLICY_PATH = Path("research/paper2/extraction_label_mask_v1.json")
 PREP_IMPL_PATH = Path("scripts/paper2_extraction_two_pass_prepare.py")
@@ -93,7 +94,7 @@ def validate_contract(contract: Any) -> dict[str, Any]:
         fail("contract version drift")
     if contract.get("owner_issue") != 239:
         fail("contract owner drift")
-    if contract.get("status") != "WEB_FULLTEXT_RECONCILIATION_BLOCKED":
+    if contract.get("status") != "REAL_SOURCE_CAPTURE_REAUTHORIZED_WEB_FULLTEXT_ZERO_MODEL":
         fail("contract status drift")
     if contract.get("architecture_consequence") != "NONE":
         fail("architecture consequence drift")
@@ -104,6 +105,7 @@ def validate_contract(contract: Any) -> dict[str, Any]:
     exact_true = (
         "input_membership_exactly_frozen_opaque_bundle_set",
         "stable_identity_must_match_pretext_descriptor",
+        "source_locator_must_match_reconciled_public_fulltext_locator",
         "raw_text_repository_write_forbidden",
         "label_terms_repository_write_forbidden",
         "pre_focus_semantic_selection_forbidden",
@@ -119,9 +121,9 @@ def validate_contract(contract: Any) -> dict[str, Any]:
 
     auth = contract.get("authorization")
     if auth != {
-        "scope": "WEB_FULLTEXT_RECONCILIATION_ONLY",
-        "source_surface": "frozen_60_source_activated_manifest",
-        "source_selection_reopening_forbidden": False,
+        "scope": "LOCAL_REAL_SOURCE_CAPTURE_ONLY",
+        "source_surface": "frozen_web_fulltext_60_source_manifest",
+        "source_selection_reopening_forbidden": True,
         "web_fulltext_only": True,
         "rank_order_only_replacement": True,
         "raw_source_repository_commit_forbidden": True,
@@ -135,7 +137,7 @@ def validate_contract(contract: Any) -> dict[str, Any]:
 
     sci = contract.get("scientific_boundary")
     expected_sci = {
-        "real_source_capture_authorized": False,
+        "real_source_capture_authorized": True,
         "model_execution_authorized": False,
         "claim_ir_authorized": False,
         "structural_signature_authorized": False,
@@ -154,6 +156,10 @@ def validate_bound_authority(contract: dict[str, Any]) -> None:
     designed_bytes = DESIGNED_PATH.read_bytes()
     if sha256_bytes(designed_bytes) != upstream["designed_source_manifest_sha256"]:
         fail("designed source manifest digest drift")
+
+    web_bytes = WEB_MANIFEST_PATH.read_bytes()
+    if sha256_bytes(web_bytes) != upstream["web_fulltext_manifest_sha256"]:
+        fail("web-fulltext manifest digest drift")
 
     capture_bytes = CAPTURE_DESCRIPTOR_PATH.read_bytes()
     if sha256_bytes(capture_bytes) != upstream["pretext_capture_descriptor_sha256"]:
@@ -217,6 +223,8 @@ def validate_local_input(value: Any, descriptor: dict[str, Any]) -> dict[str, An
     for key in ("source_version", "retrieval_date", "source_locator"):
         if not isinstance(value[key], str) or not value[key].strip():
             fail(f"{key} must be non-empty")
+    if value["source_locator"] != descriptor["public_fulltext_locator"]:
+        fail("source_locator does not match frozen #243 public full-text locator")
     if value["source_language"] != "en":
         fail("v1 designed capture requires English source")
     state = value["capture_state"]
@@ -303,8 +311,8 @@ def assemble_all(
         fail(f"OUTPUT_DIRECTORY_ALREADY_EXISTS:{output_dir}")
 
     capture = load_json(CAPTURE_DESCRIPTOR_PATH)
-    if capture.get("state") != "CAPTURE_DESCRIPTOR_FROZEN_PRE_TEXT":
-        fail("capture descriptor must be pre-text")
+    if capture.get("state") != "CAPTURE_DESCRIPTOR_WEB_FULLTEXT_RECONCILED_PRE_TEXT":
+        fail("capture descriptor must be reconciled pre-text")
     descriptors = {r["opaque_bundle_id"]: r for r in capture["records"]}
     if len(descriptors) != 60:
         fail("expected 60 frozen capture descriptors")
@@ -412,7 +420,12 @@ def assemble_all(
     return summary
 
 
-def synthetic_input(bundle_id: str, identity: dict[str, Any], index: int) -> dict[str, Any]:
+def synthetic_input(
+    bundle_id: str,
+    identity: dict[str, Any],
+    public_fulltext_locator: str,
+    index: int,
+) -> dict[str, Any]:
     return {
         "schema_version": INPUT_VERSION,
         "bundle_id": bundle_id,
@@ -422,7 +435,7 @@ def synthetic_input(bundle_id: str, identity: dict[str, Any], index: int) -> dic
         "retrieval_date": "2026-09-27",
         "source_language": "en",
         "capture_access_class": "FULL_TEXT",
-        "source_locator": f"synthetic://{bundle_id}/abstract",
+        "source_locator": public_fulltext_locator,
         "raw_text": (
             f"Working memory synthetic fixture {index} carries a bounded relation. "
             "Observed performance changes under a declared synthetic condition."
@@ -455,7 +468,12 @@ def self_test() -> None:
         inputs = root / "inputs"
         inputs.mkdir()
         for i, bundle_id in enumerate(sorted(descriptors), start=1):
-            value = synthetic_input(bundle_id, descriptors[bundle_id]["stable_identity"], i)
+            value = synthetic_input(
+                bundle_id,
+                descriptors[bundle_id]["stable_identity"],
+                descriptors[bundle_id]["public_fulltext_locator"],
+                i,
+            )
             (inputs / f"{bundle_id}.json").write_bytes(canonical_json_bytes(value))
 
         out = root / "out"
@@ -468,7 +486,7 @@ def self_test() -> None:
             "terminal_inaccessible": 0,
             "failed_bundle_ids": [],
             "model_calls": 0,
-            "real_source_capture_authorized_by_repository_contract": False,
+            "real_source_capture_authorized_by_repository_contract": True,
             "classification": "SOURCE_CAPTURE_FROZEN",
         }:
             raise AssertionError(f"synthetic summary drift: {summary}")
@@ -485,11 +503,27 @@ def self_test() -> None:
         if "[CONSTRUCT_01]" not in rendered:
             raise AssertionError("construct marker missing")
 
-        # Real execution is re-blocked until #243 freezes a full-text-only manifest.
+        # The ordinary path is authorized for zero-model source capture only.
+        authorized_out = root / "authorized-path"
+        authorized_summary = assemble_all(inputs, authorized_out)
+        if authorized_summary["classification"] != "SOURCE_CAPTURE_FROZEN":
+            raise AssertionError("authorized zero-model source-capture path did not complete")
+        if authorized_summary["model_calls"] != 0:
+            raise AssertionError("authorized source capture performed model calls")
+
+        # A mismatched public full-text locator fails closed.
+        wrong_locator_inputs = root / "wrong-locator"
+        wrong_locator_inputs.mkdir()
+        for p in inputs.glob("B*.json"):
+            (wrong_locator_inputs / p.name).write_bytes(p.read_bytes())
+        first = sorted(wrong_locator_inputs.glob("B*.json"))[0]
+        wrong = load_json(first)
+        wrong["source_locator"] = "https://example.invalid/not-the-frozen-copy"
+        first.write_bytes(canonical_json_bytes(wrong))
         expect_failure(
-            lambda: assemble_all(inputs, root / "real-blocked"),
-            "web-fulltext reconciliation gate",
-            "REAL_SOURCE_CAPTURE_NOT_AUTHORIZED",
+            lambda: assemble_all(wrong_locator_inputs, root / "wrong-locator-out", allow_synthetic_execution=True),
+            "public full-text locator mismatch",
+            "public full-text locator",
         )
 
         # Stable identity mismatch fails closed.
