@@ -45,25 +45,25 @@
     "modality": "probabilistic",
     "scope": {
       "conditions": [
-        "experimental conditions that permit chunks to be identified",
-        "procedures that prevent recoding or refilling from non-capacity-limited stores"
+        "experimental conditions that permit retained units to be identified",
+        "procedures that prevent recoding or refilling from supplementary non-limited sources"
       ],
       "population": [
         "humans"
       ],
       "substrate": [
-        "central capacity-limited short-term storage / focus of attention"
+        "central limited temporary store"
       ],
       "task": [
-        "short-term-memory capacity tasks under pure-capacity boundary conditions"
+        "temporary-store limit tasks under pure-limit boundary conditions"
       ],
       "temporal_scope": []
     },
     "nodes": [
       {
-        "id": "central_capacity_store",
+        "id": "central_limited_store",
         "role": "state_or_structure",
-        "description": "central capacity-limited storage mechanism implicated by the converging evidence",
+        "description": "central limited store implicated by the converging evidence",
         "source_span_ids": [
           "s1",
           "s3"
@@ -71,9 +71,9 @@
         "grounding": "normalized"
       },
       {
-        "id": "stored_chunk_count",
+        "id": "retained_unit_count",
         "role": "response_or_outcome",
-        "description": "number of separately held chunks supported under qualifying conditions",
+        "description": "number of separately retained units supported under qualifying conditions",
         "source_span_ids": [
           "s1",
           "s3"
@@ -81,9 +81,9 @@
         "grounding": "normalized"
       },
       {
-        "id": "qualifying_capacity_conditions",
+        "id": "qualifying_limit_conditions",
         "role": "condition",
-        "description": "boundary conditions that prevent unknown chunking, rehearsal, or refilling from non-capacity-limited sources",
+        "description": "boundary conditions that prevent unknown grouping, rehearsal, or refilling from supplementary non-limited sources",
         "source_span_ids": [
           "s2",
           "s3"
@@ -91,9 +91,9 @@
         "grounding": "normalized"
       },
       {
-        "id": "capacity_probe_family",
+        "id": "limit_probe_family",
         "role": "probe",
-        "description": "the source's procedures for revealing pure capacity, including overload, recoding-block, discontinuity, and indirect-effect methods",
+        "description": "procedures for revealing the pure limit, including overload, recoding-block, discontinuity, and indirect-effect methods",
         "source_span_ids": [
           "s2",
           "s3"
@@ -106,10 +106,10 @@
         "id": "r1",
         "kind": "constrains",
         "arguments": [
-          "central_capacity_store",
-          "stored_chunk_count"
+          "central_limited_store",
+          "retained_unit_count"
         ],
-        "description": "the central store constrains the number of simultaneously retained chunks to an average near four under the qualifying conditions",
+        "description": "the central store constrains the number of simultaneously retained units to an average near four under the qualifying conditions",
         "source_span_ids": [
           "s1",
           "s3"
@@ -120,11 +120,11 @@
         "id": "r2",
         "kind": "depends_on",
         "arguments": [
-          "stored_chunk_count",
-          "qualifying_capacity_conditions",
-          "capacity_probe_family"
+          "retained_unit_count",
+          "qualifying_limit_conditions",
+          "limit_probe_family"
         ],
-        "description": "a pure capacity estimate is interpretable only under source-declared boundary conditions and revealing procedures",
+        "description": "a pure-limit estimate is interpretable only under source-declared boundary conditions and revealing procedures",
         "source_span_ids": [
           "s2",
           "s3"
