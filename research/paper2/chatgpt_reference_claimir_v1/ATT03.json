@@ -1,0 +1,190 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "ATT03.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1037/0033-295X.108.3.624",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Psychological Review 108(3), published p.624, Abstract: demand for regulatory intervention evaluated by monitoring conflict in information processing"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Psychological Review 108(3), published p.624, Abstract: first computational study applies a conflict measure to established task models"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Psychological Review 108(3), published p.624, Abstract: second computational study closes a feedback loop from conflict monitoring to regulatory adjustment and simulates behavioral effects"
+      }
+    ],
+    "authors": [
+      "Matthew M. Botvinick",
+      "Todd S. Braver",
+      "Deanna M. Barch",
+      "Cameron S. Carter",
+      "Jonathan D. Cohen"
+    ],
+    "institutions": [],
+    "venue": "Psychological Review",
+    "citation_count": null,
+    "construct_labels": [
+      "conflict monitoring",
+      "cognitive control",
+      "anterior cingulate cortex"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "counterfactual",
+    "modality": "counterfactual",
+    "scope": {
+      "conditions": [
+        "tasks in which simultaneously active processing pathways can support incompatible responses"
+      ],
+      "population": [
+        "human task performance as modeled by the source"
+      ],
+      "substrate": [
+        "monitoring subsystem",
+        "task-regulation subsystem"
+      ],
+      "task": [
+        "response-conflict paradigms represented by computational task models"
+      ],
+      "temporal_scope": [
+        "competition is evaluated before a compensatory adjustment influences subsequent processing"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "processing_competition",
+        "role": "state_or_structure",
+        "description": "simultaneous activation of incompatible response-supporting processing pathways",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "monitoring_subsystem",
+        "role": "partition",
+        "description": "source-proposed subsystem that evaluates the occurrence or magnitude of processing competition",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "regulation_subsystem",
+        "role": "partition",
+        "description": "separate source-proposed subsystem whose settings can be adjusted to alter task processing",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "regulatory_adjustment",
+        "role": "response_or_outcome",
+        "description": "compensatory change in task-regulation settings triggered by monitored competition",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "competition_metric",
+        "role": "criterion",
+        "description": "model-derived quantity representing simultaneous incompatible response activation",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "task_model_probe",
+        "role": "probe",
+        "description": "computational task simulation used to compare competition values, regulatory adjustment, and behavioral output",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "maps_to",
+        "arguments": [
+          "processing_competition",
+          "monitoring_subsystem",
+          "competition_metric"
+        ],
+        "description": "the monitoring subsystem converts concurrent incompatible activation into a competition signal",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "changes",
+        "arguments": [
+          "competition_metric",
+          "regulation_subsystem",
+          "regulatory_adjustment"
+        ],
+        "description": "larger monitored competition increases compensatory regulatory adjustment in the feedback model",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "precedes",
+        "arguments": [
+          "processing_competition",
+          "regulatory_adjustment"
+        ],
+        "description": "the monitored competition event precedes the adjustment that alters subsequent task processing",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "maps_to",
+        "arguments": [
+          "task_model_probe",
+          "regulatory_adjustment"
+        ],
+        "description": "the closed-loop computational simulation exposes consequences of coupling the monitoring and regulation subsystems",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
