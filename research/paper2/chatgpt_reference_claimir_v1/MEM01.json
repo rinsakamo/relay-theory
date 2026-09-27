@@ -1,0 +1,144 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "MEM01.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1037/0033-295X.99.2.195",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Psychological Review 99(2), published p.195, abstract: multiple-memory-systems thesis"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Psychological Review 99(2), published p.195, abstract: hippocampus-essential declarative-memory contrast"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Psychological Review 99(2), published p.195, abstract: temporary hippocampal binding of distributed neocortical sites"
+      }
+    ],
+    "authors": [
+      "Larry R. Squire"
+    ],
+    "institutions": [],
+    "venue": "Psychological Review",
+    "citation_count": null,
+    "construct_labels": [
+      "hippocampus",
+      "declarative memory",
+      "nondeclarative memory",
+      "memory systems"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "relation",
+    "modality": "necessary",
+    "scope": {
+      "conditions": [
+        "declarative-memory formation/use as characterized in the source"
+      ],
+      "population": [
+        "rats",
+        "monkeys",
+        "humans"
+      ],
+      "substrate": [
+        "hippocampus and anatomically related structures",
+        "distributed neocortical sites"
+      ],
+      "task": [],
+      "temporal_scope": [
+        "hippocampal binding contribution is temporary"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "hippocampal_system",
+        "role": "state_or_structure",
+        "description": "hippocampus together with anatomically related structures",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "declarative_memory",
+        "role": "state_or_structure",
+        "description": "the memory class for which the hippocampal system is stated to be essential",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "nondeclarative_memory",
+        "role": "partition",
+        "description": "contrasted class of memory abilities stated not to require the hippocampus",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "distributed_neocortical_sites",
+        "role": "state_or_structure",
+        "description": "distributed neocortical sites that jointly represent a whole memory",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "explicit"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "depends_on",
+        "arguments": [
+          "declarative_memory",
+          "hippocampal_system"
+        ],
+        "description": "declarative memory requires the hippocampal system in the source's account",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "distinguishes",
+        "arguments": [
+          "declarative_memory",
+          "nondeclarative_memory"
+        ],
+        "description": "the source distinguishes hippocampus-dependent declarative memory from nondeclarative abilities that do not require the hippocampus",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "other",
+        "arguments": [
+          "hippocampal_system",
+          "distributed_neocortical_sites"
+        ],
+        "description": "the hippocampal system is needed temporarily to bind distributed neocortical sites into a whole-memory representation",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
