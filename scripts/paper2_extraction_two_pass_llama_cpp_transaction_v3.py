@@ -89,6 +89,38 @@ def require_manifest(manifest_path: Path, repo_root: Path) -> dict[str, Any]:
     if manifest.get("architecture_consequence") != "NONE":
         fail("architecture consequence drift")
 
+    frozen = manifest.get("frozen_surface", {})
+    digest_fields = (
+        "preprocessing_sha256",
+        "mask_authority_sha256",
+        "normal_prompt_sha256",
+    )
+    for field in digest_fields:
+        value = frozen.get(field)
+        if (
+            not isinstance(value, str)
+            or len(value) != 64
+            or any(ch not in "0123456789abcdef" for ch in value)
+        ):
+            fail(f"frozen SHA-256 malformed: {field}")
+
+    prepared = frozen.get("prepared_bundle_sha256", {})
+    if set(prepared) != set(EXPECTED_BUNDLES):
+        fail("prepared bundle digest set drift")
+    for bundle_id, value in prepared.items():
+        if (
+            not isinstance(value, str)
+            or len(value) != 64
+            or any(ch not in "0123456789abcdef" for ch in value)
+        ):
+            fail(f"prepared bundle SHA-256 malformed: {bundle_id}")
+
+    mask_authority_path = (
+        repo_root / "research/paper2/extraction_calibration_mask_terms_v1.json"
+    )
+    if sha256_file(mask_authority_path) != frozen["mask_authority_sha256"]:
+        fail("committed mask authority digest differs from #210 freeze")
+
     topology = manifest.get("topology", {})
     expected_topology = {
         "replicates": ["A", "B"],
