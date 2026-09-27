@@ -29,7 +29,7 @@ RECORD_KEYS = {
     "slot_id", "opaque_bundle_id", "stable_identity", "canonical_locator",
     "activated_rank", "registry_reference", "capture_state",
     "source_language", "source_version", "retrieval_date", "access_class",
-    "exact_span_locators", "source_bundle_sha256",
+    "exact_span_locators", "masked_source_surface_sha256",
     "local_evidence_descriptor_sha256", "mask_authority_sha256",
     "capture_limitation",
 }
@@ -182,7 +182,7 @@ def validate(
         if rec["exact_span_locators"]:
             fail(f"{ctx}: span locators populated before capture")
         for key in (
-            "source_bundle_sha256", "local_evidence_descriptor_sha256",
+            "masked_source_surface_sha256", "local_evidence_descriptor_sha256",
             "mask_authority_sha256", "capture_limitation",
         ):
             if rec[key] is not None:
@@ -237,7 +237,7 @@ def self_test(
     expect_invalid(x, designed, designed_bytes, blinded, "Phi-before-capture")
 
     x = copy.deepcopy(capture)
-    x["records"][0]["source_bundle_sha256"] = "0" * 64
+    x["records"][0]["masked_source_surface_sha256"] = "0" * 64
     expect_invalid(x, designed, designed_bytes, blinded, "premature source bytes")
 
     b = copy.deepcopy(blinded)
