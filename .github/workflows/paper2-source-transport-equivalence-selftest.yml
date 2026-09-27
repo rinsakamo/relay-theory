@@ -1,0 +1,46 @@
+name: paper2-source-transport-equivalence-selftest
+
+on:
+  pull_request:
+    paths:
+      - "research/paper2/source_transport_equivalence_v1.json"
+      - "research/paper2/source_transport_equivalence_v1.sha256"
+      - "scripts/paper2_source_transport_equivalence_validate.py"
+      - ".github/workflows/paper2-source-transport-equivalence-selftest.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "research/paper2/source_transport_equivalence_v1.json"
+      - "research/paper2/source_transport_equivalence_v1.sha256"
+      - "scripts/paper2_source_transport_equivalence_validate.py"
+      - ".github/workflows/paper2-source-transport-equivalence-selftest.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Verify exact validation head
+        shell: bash
+        env:
+          EXPECTED_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Parse transport-equivalence authority
+        run: python -m json.tool research/paper2/source_transport_equivalence_v1.json >/dev/null
+      - name: Compile validator
+        run: python -m py_compile scripts/paper2_source_transport_equivalence_validate.py
+      - name: Validate authority
+        run: python scripts/paper2_source_transport_equivalence_validate.py
+      - name: Run destructive self-test
+        run: python scripts/paper2_source_transport_equivalence_validate.py --self-test
+      - name: Verify immutable authority digest
+        run: sha256sum -c research/paper2/source_transport_equivalence_v1.sha256
