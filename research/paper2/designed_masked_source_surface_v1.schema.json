@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/rinsakamo/relay-theory/blob/main/research/paper2/designed_masked_source_surface_v1.schema.json",
+  "title": "Paper 2 designed pre-focus masked source surface v1",
+  "description": "Authority-blind deterministic pre-focus source surface. Produced locally by NFKC/whitespace normalization, sentence-like segmentation, and frozen construct-label masking before any model call. It may contain up to 32 evidence units; later scientific focus selection may reduce this to <=3 extraction spans.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "bundle_id",
+    "source_language",
+    "source_spans"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "paper2-designed-masked-source-surface-v1"
+    },
+    "bundle_id": {
+      "type": "string",
+      "pattern": "^B[0-9]{4}$"
+    },
+    "source_language": {
+      "type": "string",
+      "minLength": 2
+    },
+    "source_spans": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 32,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "span_id",
+          "text"
+        ],
+        "properties": {
+          "span_id": {
+            "type": "string",
+            "pattern": "^s[0-9]+$"
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}
