@@ -1,0 +1,45 @@
+name: paper2-v3-node-binding-audit-selftest
+
+on:
+  pull_request:
+    paths:
+      - "research/paper2/extraction_v3_node_binding_audit_v1.json"
+      - "scripts/paper2_extraction_v3_node_binding_audit_validate.py"
+      - "scripts/paper2_extraction_two_pass_systemone_v3.py"
+      - "research/paper2/extraction_two_pass_systemone_v3.json"
+      - "research/paper2/extraction_systemone_decision_v3.schema.json"
+      - "scripts/paper2_extraction_two_pass_llama_cpp_transaction_v3.py"
+      - "research/paper2/extraction_v3_real_calibration_transaction_v1.json"
+      - "research/paper2/claim_ir_v1.schema.json"
+      - ".github/workflows/paper2-v3-node-binding-audit-selftest.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "research/paper2/extraction_v3_node_binding_audit_v1.json"
+      - "scripts/paper2_extraction_v3_node_binding_audit_validate.py"
+      - "scripts/paper2_extraction_two_pass_systemone_v3.py"
+      - "research/paper2/extraction_two_pass_systemone_v3.json"
+      - "research/paper2/extraction_systemone_decision_v3.schema.json"
+      - "scripts/paper2_extraction_two_pass_llama_cpp_transaction_v3.py"
+      - "research/paper2/extraction_v3_real_calibration_transaction_v1.json"
+      - "research/paper2/claim_ir_v1.schema.json"
+      - ".github/workflows/paper2-v3-node-binding-audit-selftest.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile audit validator
+        run: python -m py_compile scripts/paper2_extraction_v3_node_binding_audit_validate.py
+      - name: Re-run frozen v3 synthetic qualification
+        run: python scripts/paper2_extraction_two_pass_systemone_v3.py --self-test
+      - name: Run v3 node-binding dependency audit
+        run: python scripts/paper2_extraction_v3_node_binding_audit_validate.py --self-test
