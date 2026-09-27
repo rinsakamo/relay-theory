@@ -1,0 +1,187 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "ATT02.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1037/0096-1523.21.3.451",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Journal of Experimental Psychology: Human Perception and Performance 21(3), published p.451, Abstract: response-competition studies varying relevant processing load"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Journal of Experimental Psychology: Human Perception and Performance 21(3), published p.457, Experiment 1 summary: irrelevant-distractor processing determined by target-processing load"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Journal of Experimental Psychology: Human Perception and Performance 21(3), published pp.463-465, Experiments 3 and General Discussion: interference under low load but not high load; capacity-based interpretation"
+      }
+    ],
+    "authors": [
+      "Nilli Lavie"
+    ],
+    "institutions": [
+      "Medical Research Council-Applied Psychology Unit"
+    ],
+    "venue": "Journal of Experimental Psychology: Human Perception and Performance",
+    "citation_count": null,
+    "construct_labels": [
+      "perceptual load",
+      "selective attention",
+      "early selection",
+      "late selection"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "comparison",
+    "modality": "probabilistic",
+    "scope": {
+      "conditions": [
+        "target task performed with experimentally varied relevant-processing demand while an irrelevant response-associated item is present"
+      ],
+      "population": [
+        "adult participants"
+      ],
+      "substrate": [],
+      "task": [
+        "response-competition tasks with low versus high relevant-processing demand"
+      ],
+      "temporal_scope": []
+    },
+    "nodes": [
+      {
+        "id": "processing_demand",
+        "role": "intervention",
+        "description": "experimentally varied amount or complexity of relevant processing required by the target task",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "irrelevant_item",
+        "role": "condition",
+        "description": "physically distinct task-irrelevant item associated with a compatible, neutral, or incompatible response",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "target_response_time",
+        "role": "response_or_outcome",
+        "description": "latency of the required target response",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "interference_measure",
+        "role": "criterion",
+        "description": "response-time difference induced by an incompatible irrelevant item relative to comparison conditions",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "competition_probe",
+        "role": "probe",
+        "description": "response-competition procedure that varies relevant-processing demand and irrelevant-item compatibility",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "finite_processing_budget",
+        "role": "state_or_structure",
+        "description": "limited processing resource invoked to explain why spare processing reaches irrelevant items only under lower demand",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "depends_on",
+        "arguments": [
+          "target_response_time",
+          "processing_demand",
+          "irrelevant_item"
+        ],
+        "description": "the effect of the irrelevant item on target response time depends on relevant-processing demand",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "differs",
+        "arguments": [
+          "processing_demand",
+          "interference_measure"
+        ],
+        "description": "interference is reliable under lower demand and greatly reduced or absent under higher demand",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "constrains",
+        "arguments": [
+          "finite_processing_budget",
+          "irrelevant_item"
+        ],
+        "description": "the source interprets higher relevant demand as exhausting the available processing budget before irrelevant-item processing can produce competition",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "maps_to",
+        "arguments": [
+          "competition_probe",
+          "interference_measure"
+        ],
+        "description": "the response-competition probe supplies the measure of irrelevant processing",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
