@@ -1,7 +1,7 @@
 {
   "schema_version": "paper2-designed-source-capture-assembly-v1",
   "owner_issue": 239,
-  "status": "SYNTHETIC_QUALIFICATION_ONLY",
+  "status": "REAL_SOURCE_CAPTURE_AUTHORIZED_ZERO_MODEL",
   "upstream": {
     "designed_source_manifest_sha256": "e37ef0bf9d8a7499daddac5112b31e8fd52fb9ab727c468faa1ad337bbcd2409",
     "pretext_capture_descriptor_sha256": "148a385213650625956d655d8973425810f95ef4c0172d4649f5995f1cdd340d",
@@ -36,7 +36,7 @@
     "overwrite_forbidden": true
   },
   "scientific_boundary": {
-    "real_source_capture_authorized": false,
+    "real_source_capture_authorized": true,
     "model_execution_authorized": false,
     "claim_ir_authorized": false,
     "structural_signature_authorized": false,
@@ -44,5 +44,16 @@
     "atlas_analysis_authorized": false,
     "paper210_execution_authorized": false
   },
-  "architecture_consequence": "NONE"
+  "architecture_consequence": "NONE",
+  "authorization": {
+    "scope": "LOCAL_REAL_SOURCE_CAPTURE_ONLY",
+    "source_surface": "frozen_60_source_activated_manifest",
+    "source_selection_reopening_forbidden": true,
+    "raw_source_repository_commit_forbidden": true,
+    "output_evidence_local_only": true,
+    "model_calls_authorized": 0,
+    "claim_ir_authorized": false,
+    "phi_authorized": false,
+    "paper210_execution_authorized": false
+  }
 }
