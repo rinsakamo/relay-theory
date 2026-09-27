@@ -1,0 +1,185 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "LRN03.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1126/science.1199327",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Science 331, published p.772, Abstract: active retrieval condition exceeds elaborative diagramming condition across meaningful final assessments"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Science 331, published pp.772-773, Experiment 1: matched initial time/output, one-week final short-answer test"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Science 331, published p.773, Experiment 1 results: 0.67 versus 0.45 collapsed final-test performance and d=1.50"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Science 331, published pp.773-774, Experiment 2: effect generalizes across text structures and final-test formats"
+      }
+    ],
+    "authors": [
+      "Jeffrey D. Karpicke",
+      "Janell R. Blunt"
+    ],
+    "institutions": [
+      "Purdue University"
+    ],
+    "venue": "Science",
+    "citation_count": null,
+    "construct_labels": [
+      "retrieval practice",
+      "concept mapping",
+      "meaningful learning",
+      "learning"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "comparison",
+    "modality": "comparative",
+    "scope": {
+      "conditions": [
+        "matched initial study time between the two focal active-study conditions"
+      ],
+      "population": [
+        "undergraduate students"
+      ],
+      "substrate": [],
+      "task": [
+        "study science passages and complete delayed conceptual assessments"
+      ],
+      "temporal_scope": [
+        "final assessment one week after the initial study session"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "active_reconstruction_condition",
+        "role": "intervention",
+        "description": "condition in which participants repeatedly reconstruct studied material from a cue without viewing the source text",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "diagrammatic_elaboration_condition",
+        "role": "intervention",
+        "description": "condition in which participants build relational diagrams while viewing the source material",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "delayed_assessment_probe",
+        "role": "probe",
+        "description": "one-week delayed conceptual assessment using short-answer or relational-diagram formats",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "delayed_performance",
+        "role": "response_or_outcome",
+        "description": "proportion correct or correctly represented on the delayed assessment",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "assessment_criterion",
+        "role": "criterion",
+        "description": "correct conceptual content on verbatim, inference, or relational-diagram assessments",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "differs",
+        "arguments": [
+          "active_reconstruction_condition",
+          "diagrammatic_elaboration_condition",
+          "delayed_performance"
+        ],
+        "description": "the active reconstruction condition produces higher delayed performance than the diagrammatic elaboration condition under the matched study surface",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "maps_to",
+        "arguments": [
+          "delayed_assessment_probe",
+          "delayed_performance"
+        ],
+        "description": "the delayed assessments provide the outcome used for the intervention comparison",
+        "source_span_ids": [
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "satisfies",
+        "arguments": [
+          "delayed_performance",
+          "assessment_criterion"
+        ],
+        "description": "outcome performance is scored against the declared conceptual-content criterion",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "precedes",
+        "arguments": [
+          "active_reconstruction_condition",
+          "delayed_assessment_probe"
+        ],
+        "description": "the focal study intervention occurs before the one-week delayed assessment",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
