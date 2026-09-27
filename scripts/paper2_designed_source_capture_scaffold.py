@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Generate local-only Paper 2 #239 source-capture input templates.
 
-The templates deliberately do NOT satisfy the executable capture-input contract.
-They use sentinel values and .template.json filenames so they cannot be consumed
-accidentally by the assembler's B####.json input glob.
+The templates already use the exact capture-input field surface, but deliberately
+remain non-executable through sentinel values and .template.json filenames until
+the operator fills the source-local fields and renames them to B####.json.
 
 No source text is fetched and no model call is performed.
 """
@@ -36,12 +36,6 @@ def load_json(path: Path) -> Any:
 
 def build_template(record: dict[str, Any]) -> dict[str, Any]:
     return {
-        "_scaffold_version": SCAFFOLD_VERSION,
-        "_instructions": (
-            "Local-only template. Replace all __FILL_* sentinels, add at least "
-            "one source-facing construct-label group, then save as B####.json. "
-            "Do not commit raw source text or label terms to the repository."
-        ),
         "schema_version": "paper2-designed-source-capture-input-v1",
         "bundle_id": record["opaque_bundle_id"],
         "stable_identity": record["stable_identity"],
@@ -78,7 +72,8 @@ def emit(output_dir: Path) -> dict[str, Any]:
     guide = {
         "schema_version": SCAFFOLD_VERSION,
         "template_count": 60,
-        "executable_filename_rule": "rename completed B####.template.json to B####.json",
+        "template_field_surface": "exact paper2-designed-source-capture-input-v1 fields",
+        "executable_filename_rule": "after replacing all sentinels, rename completed B####.template.json to B####.json",
         "required_ready_fields": [
             "capture_state=CAPTURE_READY",
             "source_version",
@@ -114,6 +109,14 @@ def self_test() -> None:
         if executable:
             raise AssertionError("scaffold emitted accidentally executable B####.json")
         first = load_json(templates[0])
+        expected_fields = {
+            "schema_version", "bundle_id", "stable_identity", "capture_state",
+            "source_version", "retrieval_date", "source_language",
+            "capture_access_class", "source_locator", "raw_text", "label_groups",
+            "capture_limitation",
+        }
+        if set(first) != expected_fields:
+            raise AssertionError("scaffold field surface does not match executable input contract")
         if first["raw_text"] is not None or first["label_groups"] != []:
             raise AssertionError("scaffold unexpectedly contains source text or mask terms")
         if not first["capture_state"].startswith("__FILL_"):
