@@ -1,0 +1,215 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "BLF06.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1038/nn.2949",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Nature Neuroscience 14(11), published p.1475, Abstract: estimates are updated more after better-than-expected than worse-than-expected information"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Nature Neuroscience 14(11), published pp.1475-1477, task: estimate personal likelihood, receive population information, later re-estimate"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Nature Neuroscience 14(11), published pp.1476-1478, signed estimation-error magnitude predicts update differently by valence and frontal signal tracking"
+      }
+    ],
+    "authors": [
+      "Tali Sharot",
+      "Christoph W. Korn",
+      "Raymond J. Dolan"
+    ],
+    "institutions": [
+      "University College London",
+      "Freie Universität Berlin",
+      "Humboldt Universität zu Berlin"
+    ],
+    "venue": "Nature Neuroscience",
+    "citation_count": null,
+    "construct_labels": [
+      "unrealistic optimism",
+      "belief updating",
+      "estimation error"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "relation",
+    "modality": "probabilistic",
+    "scope": {
+      "conditions": [
+        "participants estimate personal likelihood of adverse future events, observe population-rate information, then provide a later estimate"
+      ],
+      "population": [
+        "human participants"
+      ],
+      "substrate": [
+        "frontal cortical regions tracked with functional imaging"
+      ],
+      "task": [
+        "two-stage probability estimation with intervening factual rate information"
+      ],
+      "temporal_scope": [
+        "initial estimate precedes external information, which precedes the later revised estimate"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "initial_probability_estimate",
+        "role": "state_or_structure",
+        "description": "participant's initial estimate of personal likelihood for an adverse future event",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "external_rate_information",
+        "role": "available_information",
+        "description": "presented population-level likelihood for the same adverse event",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "signed_estimate_discrepancy",
+        "role": "condition",
+        "description": "difference between the initial personal estimate and the presented external rate, categorized by whether the new information is more or less favorable",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "revised_probability_estimate",
+        "role": "response_or_outcome",
+        "description": "participant's later estimate after receiving the external information",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "update_magnitude",
+        "role": "criterion",
+        "description": "absolute or directional change from the initial estimate to the later estimate relative to the signed discrepancy supplied by new information",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "frontal_error_signal",
+        "role": "response_or_outcome",
+        "description": "functional-imaging signal whose trial-wise magnitude tracks the signed discrepancy",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "information_update_probe",
+        "role": "probe",
+        "description": "estimate-information-reestimate procedure separating favorable from unfavorable informational updates",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "changes",
+        "arguments": [
+          "external_rate_information",
+          "revised_probability_estimate"
+        ],
+        "description": "new factual rate information changes the later probability estimate",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "depends_on",
+        "arguments": [
+          "update_magnitude",
+          "signed_estimate_discrepancy"
+        ],
+        "description": "update magnitude depends asymmetrically on the sign of the discrepancy, with larger updating after more favorable than less favorable information",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "depends_on",
+        "arguments": [
+          "frontal_error_signal",
+          "signed_estimate_discrepancy"
+        ],
+        "description": "trial-wise frontal signal tracks discrepancy magnitude differently across favorable and unfavorable information",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "precedes",
+        "arguments": [
+          "initial_probability_estimate",
+          "external_rate_information",
+          "revised_probability_estimate"
+        ],
+        "description": "the task orders the initial estimate, new information, and revised estimate sequentially",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "maps_to",
+        "arguments": [
+          "information_update_probe",
+          "update_magnitude",
+          "frontal_error_signal"
+        ],
+        "description": "the two-stage update task jointly measures behavioral revision and discrepancy-related neural tracking",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
