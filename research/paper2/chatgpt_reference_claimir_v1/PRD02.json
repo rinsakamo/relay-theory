@@ -1,0 +1,183 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "PRD02.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1126/science.7569931",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Science 269, published p.1880, Abstract: internal simulation of motor-system dynamics proposed for planning, control, and learning"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Science 269, published p.1880, Abstract: hand-location estimation after dark movements under externally imposed forces"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Science 269, published pp.1880-1882, temporal propagation of localization errors analyzed under optimal state estimation"
+      }
+    ],
+    "authors": [
+      "Daniel M. Wolpert",
+      "Zoubin Ghahramani",
+      "Michael I. Jordan"
+    ],
+    "institutions": [],
+    "venue": "Science",
+    "citation_count": null,
+    "construct_labels": [
+      "internal model",
+      "sensorimotor integration",
+      "optimal state estimation"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "mapping",
+    "modality": "descriptive",
+    "scope": {
+      "conditions": [
+        "self-generated hand movements performed without vision and with externally imposed force perturbations"
+      ],
+      "population": [
+        "human participants"
+      ],
+      "substrate": [],
+      "task": [
+        "estimate hand location at movement end under perturbed dynamics"
+      ],
+      "temporal_scope": [
+        "state estimates and errors propagate across the movement trajectory"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "motor_command_history",
+        "role": "available_information",
+        "description": "time-ordered command and movement information generated during the action",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "body_dynamics_mapping",
+        "role": "state_or_structure",
+        "description": "learned transformation relating action-related inputs to subsequent bodily state",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "estimated_hand_state",
+        "role": "response_or_outcome",
+        "description": "participant's estimated terminal hand location",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "force_perturbation",
+        "role": "intervention",
+        "description": "externally imposed force changing the movement dynamics",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "localization_error",
+        "role": "response_or_outcome",
+        "description": "difference between estimated and actual terminal hand state",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "perturbed_movement_probe",
+        "role": "probe",
+        "description": "dark movement task with force perturbation and terminal-state report",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "maps_to",
+        "arguments": [
+          "motor_command_history",
+          "body_dynamics_mapping",
+          "estimated_hand_state"
+        ],
+        "description": "the source interprets the temporal state estimate as arising from an internal transformation of action-related information through system dynamics",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "changes",
+        "arguments": [
+          "force_perturbation",
+          "localization_error"
+        ],
+        "description": "changing movement dynamics alters the pattern and temporal propagation of localization error",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "precedes",
+        "arguments": [
+          "motor_command_history",
+          "estimated_hand_state"
+        ],
+        "description": "action-related information accumulates before the terminal hand-state estimate",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "maps_to",
+        "arguments": [
+          "perturbed_movement_probe",
+          "localization_error"
+        ],
+        "description": "the perturbation-and-report task provides the error trajectory used to test the internal transformation account",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
