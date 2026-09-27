@@ -1,0 +1,198 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "LRN04.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1038/377155a0",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Nature 377, published p.155, Abstract: repeated daily training improves speed/accuracy for one rapid finger sequence and does not generalize to matched sequence or opposite hand"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Nature 377, published p.155, Abstract: within-session activation changes show fast phase"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Nature 377, published p.155, Abstract: by week 4 the trained sequence recruits enlarged primary-cortical area versus untrained sequence; change persists for months"
+      }
+    ],
+    "authors": [
+      "Avi Karni",
+      "Gundela Meyer",
+      "Peter Jezzard",
+      "Michelle M. Adams",
+      "Robert Turner",
+      "Leslie G. Ungerleider"
+    ],
+    "institutions": [],
+    "venue": "Nature",
+    "citation_count": null,
+    "construct_labels": [
+      "motor skill learning",
+      "motor cortex plasticity"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "comparison",
+    "modality": "comparative",
+    "scope": {
+      "conditions": [
+        "daily repeated performance of one rapid finger sequence compared with a matched untrained sequence and the opposite hand"
+      ],
+      "population": [
+        "adults"
+      ],
+      "substrate": [
+        "primary motor cortical area"
+      ],
+      "task": [
+        "rapid sequential finger movements"
+      ],
+      "temporal_scope": [
+        "within first session, across four weeks of daily training, and months after training"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "trained_sequence",
+        "role": "intervention",
+        "description": "specific rapid finger sequence repeatedly performed during daily training",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "matched_untrained_sequence",
+        "role": "condition",
+        "description": "matched sequence composed of the same component movements but not repeatedly trained",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "behavioral_performance",
+        "role": "response_or_outcome",
+        "description": "speed and accuracy of the rapid sequential movement task",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "cortical_activation_extent",
+        "role": "response_or_outcome",
+        "description": "extent of blood-oxygenation-linked activation in the source-defined primary cortical area",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "imaging_probe",
+        "role": "probe",
+        "description": "functional imaging readout of local blood-oxygenation-linked signal during sequence performance",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "performance_criterion",
+        "role": "criterion",
+        "description": "increased movement speed together with maintained or improved accuracy",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "changes",
+        "arguments": [
+          "trained_sequence",
+          "behavioral_performance"
+        ],
+        "description": "repeated training improves performance on the trained sequence",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "differs",
+        "arguments": [
+          "trained_sequence",
+          "matched_untrained_sequence",
+          "behavioral_performance"
+        ],
+        "description": "the behavioral improvement is sequence-specific rather than transferred to the matched untrained sequence",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "changes",
+        "arguments": [
+          "trained_sequence",
+          "cortical_activation_extent"
+        ],
+        "description": "the cortical readout changes across training, including a slower enlargement selective to the trained sequence by week four",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "maps_to",
+        "arguments": [
+          "imaging_probe",
+          "cortical_activation_extent"
+        ],
+        "description": "the functional imaging probe supplies the cortical activation outcome",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "satisfies",
+        "arguments": [
+          "behavioral_performance",
+          "performance_criterion"
+        ],
+        "description": "behavioral improvement is evaluated jointly by speed and accuracy",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
