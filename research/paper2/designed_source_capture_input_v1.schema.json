@@ -68,8 +68,6 @@
     "capture_access_class": {
       "enum": [
         "FULL_TEXT",
-        "PARTIAL_TEXT",
-        "ABSTRACT_ONLY",
         "INACCESSIBLE"
       ]
     },
@@ -116,5 +114,39 @@
         "null"
       ]
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "capture_state": {
+            "const": "CAPTURE_READY"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "capture_access_class": {
+            "const": "FULL_TEXT"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "capture_state": {
+            "const": "TERMINAL_INACCESSIBLE"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "capture_access_class": {
+            "const": "INACCESSIBLE"
+          }
+        }
+      }
+    }
+  ]
 }

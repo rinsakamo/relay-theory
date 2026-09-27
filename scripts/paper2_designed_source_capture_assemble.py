@@ -93,7 +93,7 @@ def validate_contract(contract: Any) -> dict[str, Any]:
         fail("contract version drift")
     if contract.get("owner_issue") != 239:
         fail("contract owner drift")
-    if contract.get("status") != "REAL_SOURCE_CAPTURE_AUTHORIZED_ZERO_MODEL":
+    if contract.get("status") != "WEB_FULLTEXT_RECONCILIATION_BLOCKED":
         fail("contract status drift")
     if contract.get("architecture_consequence") != "NONE":
         fail("architecture consequence drift")
@@ -119,9 +119,11 @@ def validate_contract(contract: Any) -> dict[str, Any]:
 
     auth = contract.get("authorization")
     if auth != {
-        "scope": "LOCAL_REAL_SOURCE_CAPTURE_ONLY",
+        "scope": "WEB_FULLTEXT_RECONCILIATION_ONLY",
         "source_surface": "frozen_60_source_activated_manifest",
-        "source_selection_reopening_forbidden": True,
+        "source_selection_reopening_forbidden": False,
+        "web_fulltext_only": True,
+        "rank_order_only_replacement": True,
         "raw_source_repository_commit_forbidden": True,
         "output_evidence_local_only": True,
         "model_calls_authorized": 0,
@@ -133,7 +135,7 @@ def validate_contract(contract: Any) -> dict[str, Any]:
 
     sci = contract.get("scientific_boundary")
     expected_sci = {
-        "real_source_capture_authorized": True,
+        "real_source_capture_authorized": False,
         "model_execution_authorized": False,
         "claim_ir_authorized": False,
         "structural_signature_authorized": False,
@@ -221,12 +223,12 @@ def validate_local_input(value: Any, descriptor: dict[str, Any]) -> dict[str, An
     access = value["capture_access_class"]
     if state not in {"CAPTURE_READY", "TERMINAL_INACCESSIBLE"}:
         fail("capture_state invalid")
-    if access not in {"FULL_TEXT", "PARTIAL_TEXT", "ABSTRACT_ONLY", "INACCESSIBLE"}:
+    if access not in {"FULL_TEXT", "INACCESSIBLE"}:
         fail("capture_access_class invalid")
 
     if state == "CAPTURE_READY":
-        if access == "INACCESSIBLE":
-            fail("ready capture cannot be inaccessible")
+        if access != "FULL_TEXT":
+            fail("ready capture requires public-web FULL_TEXT")
         if not isinstance(value["raw_text"], str) or not value["raw_text"].strip():
             fail("ready capture requires raw_text")
         validate_label_groups(value["label_groups"])
@@ -419,7 +421,7 @@ def synthetic_input(bundle_id: str, identity: dict[str, Any], index: int) -> dic
         "source_version": "synthetic-v1",
         "retrieval_date": "2026-09-27",
         "source_language": "en",
-        "capture_access_class": "ABSTRACT_ONLY",
+        "capture_access_class": "FULL_TEXT",
         "source_locator": f"synthetic://{bundle_id}/abstract",
         "raw_text": (
             f"Working memory synthetic fixture {index} carries a bounded relation. "
@@ -466,7 +468,7 @@ def self_test() -> None:
             "terminal_inaccessible": 0,
             "failed_bundle_ids": [],
             "model_calls": 0,
-            "real_source_capture_authorized_by_repository_contract": True,
+            "real_source_capture_authorized_by_repository_contract": False,
             "classification": "SOURCE_CAPTURE_FROZEN",
         }:
             raise AssertionError(f"synthetic summary drift: {summary}")
@@ -483,14 +485,12 @@ def self_test() -> None:
         if "[CONSTRUCT_01]" not in rendered:
             raise AssertionError("construct marker missing")
 
-        # The ordinary execution path is now authorized for source capture only.
-        # Synthetic inputs exercise the same zero-model path in CI.
-        authorized_out = root / "authorized-path"
-        authorized_summary = assemble_all(inputs, authorized_out)
-        if authorized_summary["classification"] != "SOURCE_CAPTURE_FROZEN":
-            raise AssertionError("authorized zero-model capture path did not complete")
-        if authorized_summary["model_calls"] != 0:
-            raise AssertionError("authorized source capture performed model calls")
+        # Real execution is re-blocked until #243 freezes a full-text-only manifest.
+        expect_failure(
+            lambda: assemble_all(inputs, root / "real-blocked"),
+            "web-fulltext reconciliation gate",
+            "REAL_SOURCE_CAPTURE_NOT_AUTHORIZED",
+        )
 
         # Stable identity mismatch fails closed.
         bad_inputs = root / "bad-identity"
