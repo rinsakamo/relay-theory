@@ -1,0 +1,163 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "PRD04.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1126/science.1144161",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Science 317, published p.1351, Abstract: humans can estimate affective consequences of never-experienced events by mentally simulating them"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Science 317, published pp.1351-1352, future-event simulation as construction of a possible event"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Science 317, published pp.1352-1354, simulated future experience used to estimate later hedonic consequence and source of systematic error"
+      }
+    ],
+    "authors": [
+      "Daniel T. Gilbert",
+      "Timothy D. Wilson"
+    ],
+    "institutions": [
+      "Harvard University"
+    ],
+    "venue": "Science",
+    "citation_count": null,
+    "construct_labels": [
+      "prospection",
+      "affective forecasting",
+      "mental simulation"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "mapping",
+    "modality": "descriptive",
+    "scope": {
+      "conditions": [
+        "future event has not been directly experienced in the form being evaluated"
+      ],
+      "population": [
+        "humans"
+      ],
+      "substrate": [],
+      "task": [
+        "construct a possible future event and estimate its affective consequence"
+      ],
+      "temporal_scope": [
+        "representation is constructed in the present for a later possible event and its anticipated consequence"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "future_event_description",
+        "role": "available_information",
+        "description": "information specifying a possible later event",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "constructed_future_representation",
+        "role": "state_or_structure",
+        "description": "presently generated representation of the possible later event",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "anticipated_affective_consequence",
+        "role": "response_or_outcome",
+        "description": "estimated pleasantness or unpleasantness expected if the event occurs",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "affective_value_criterion",
+        "role": "criterion",
+        "description": "hedonic consequence assigned to the simulated future event",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "maps_to",
+        "arguments": [
+          "future_event_description",
+          "constructed_future_representation"
+        ],
+        "description": "available information about a possible later event is used to construct a present representation of that event",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "maps_to",
+        "arguments": [
+          "constructed_future_representation",
+          "anticipated_affective_consequence"
+        ],
+        "description": "the constructed representation is used to estimate the event's future affective consequence",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "satisfies",
+        "arguments": [
+          "anticipated_affective_consequence",
+          "affective_value_criterion"
+        ],
+        "description": "the forecast is evaluated on the source's hedonic consequence dimension",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "precedes",
+        "arguments": [
+          "constructed_future_representation",
+          "anticipated_affective_consequence"
+        ],
+        "description": "the present simulation precedes the later event whose consequence is being forecast",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
