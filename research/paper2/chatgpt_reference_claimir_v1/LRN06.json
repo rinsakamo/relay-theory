@@ -1,0 +1,214 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "LRN06.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1037/0096-3445.115.1.39",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Journal of Experimental Psychology: General 115(1), published p.39, Abstract: same multidimensional perceptual representation underlies two task paradigms while selective weighting changes similarity relations"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Journal of Experimental Psychology: General 115(1), published p.41, mapping section: simple direct mapping is insufficient; context-dependent weighting yields an indirect mapping"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Journal of Experimental Psychology: General 115(1), published p.49, selective-weight analysis: component-dimension weights vary across grouping problems and often approach performance-optimal values"
+      }
+    ],
+    "authors": [
+      "Robert M. Nosofsky"
+    ],
+    "institutions": [
+      "Indiana University"
+    ],
+    "venue": "Journal of Experimental Psychology: General",
+    "citation_count": null,
+    "construct_labels": [
+      "attention",
+      "similarity",
+      "identification",
+      "categorization",
+      "generalized context model"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "mapping",
+    "modality": "probabilistic",
+    "scope": {
+      "conditions": [
+        "same multidimensional perceptual stimulus set used across item-specific and group-assignment tasks"
+      ],
+      "population": [
+        "adult experimental participants"
+      ],
+      "substrate": [],
+      "task": [
+        "item-specific response task",
+        "group-assignment task under multiple grouping structures"
+      ],
+      "temporal_scope": []
+    },
+    "nodes": [
+      {
+        "id": "shared_perceptual_space",
+        "role": "state_or_structure",
+        "description": "common multidimensional perceptual representation used across both task families",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "stored_instances",
+        "role": "state_or_structure",
+        "description": "stored experienced instances associated with the learned groups",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "dimension_weighting",
+        "role": "state_or_structure",
+        "description": "task-dependent distribution of weight across component dimensions",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "item_response_probe",
+        "role": "probe",
+        "description": "task requiring a distinct response for each stimulus",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "group_response_probe",
+        "role": "probe",
+        "description": "task mapping multiple stimuli onto a smaller set of group responses",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "response_probabilities",
+        "role": "response_or_outcome",
+        "description": "observed probabilities of item-specific or group-level responses",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "accuracy_criterion",
+        "role": "criterion",
+        "description": "average percentage of correct group assignments used to characterize preferred weighting",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "maps_to",
+        "arguments": [
+          "shared_perceptual_space",
+          "item_response_probe",
+          "response_probabilities"
+        ],
+        "description": "the common perceptual space supports the item-specific response model",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "maps_to",
+        "arguments": [
+          "shared_perceptual_space",
+          "stored_instances",
+          "dimension_weighting",
+          "group_response_probe",
+          "response_probabilities"
+        ],
+        "description": "the group-response model maps the same base representation through stored instances and task-dependent dimension weighting",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "changes",
+        "arguments": [
+          "dimension_weighting",
+          "response_probabilities"
+        ],
+        "description": "changing the dimension weights changes interstimulus relations and thereby the predicted group-response probabilities",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "satisfies",
+        "arguments": [
+          "dimension_weighting",
+          "accuracy_criterion"
+        ],
+        "description": "in several grouping structures the observed weighting is consistent with maximizing correct group assignments",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "distinguishes",
+        "arguments": [
+          "item_response_probe",
+          "group_response_probe",
+          "dimension_weighting"
+        ],
+        "description": "the relation between the two task families is indirect because task-dependent weighting changes the effective relations among stimuli",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
