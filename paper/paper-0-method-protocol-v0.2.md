@@ -60,6 +60,8 @@ The following ideas are treated here as inherited methodology rather than Paper 
 
 **Science mapping and literature-based discovery.** Bibliometric science mapping and literature-based discovery already organize or connect scientific literatures at scale (Cobo et al. 2011; Cestnik et al. 2025). Paper 0's use of the word *atlas* is not a novelty claim.
 
+**Conceptual cartography, theory-label reformulation, and formal theory comparison.** Recent philosophy of science already uses *conceptual cartography* for digitally assisted investigation of how scientists deploy concepts (Pence 2025), while Vickers (2011) explicitly proposes reformulating debates so that disagreement about what counts as a named scientific theory does not control the substantive question. Meadows (2024) provides a unifying formal framework for multiple mathematical notions of theoretical equivalence. Paper 0 therefore claims neither the cartographic metaphor, escape from inherited theory labels, nor formal comparison among theories as novel.
+
 ### 2.2 What is combined
 
 Paper 0 combines those inherited elements into a single claim-comparison contract with a required temporal order:
@@ -141,6 +143,12 @@ Paper 0's problem is less statistically specific and more representationally pri
 Systematic review supplies disciplined evidence acquisition and traceability. Science mapping supplies bibliometric maps of conceptual, intellectual, and social structure. LBD supplies methods for discovering associations across literatures and increasingly emphasizes reproducible pipelines. These methods are therefore direct predecessors for provenance, large-scale literature processing, and reproducibility.
 
 The proposed atlas differs in unit of analysis. Its nodes are not papers, citations, keywords, or automatically induced topics by default. They are source-grounded claims transformed under a frozen comparison contract. The atlas records declared structural relations among those transformed claims and separately records representational residuals. Whether that distinction is useful in practice is an empirical question for downstream applications, not something established by definition.
+
+### 3.7 Conceptual cartography, theory eliminativism, and formal theory comparison versus the integration contract
+
+Pence (2025) is especially close in problem setting because it asks what digitally assisted textual analysis can responsibly contribute to the cartography of scientific concepts as they are used in the literature. Vickers (2011) is close in motivation because it recommends reformulating disputes about particular named theories so that disagreements about the concept *scientific theory* do not control the substantive debate. Meadows (2024) is close in formal comparison because it unifies multiple mathematical instruments for theoretical equivalence and organizes relationships among equivalence notions.
+
+These works remove three possible novelty claims from Paper 0: using *cartography* for literature-facing conceptual work, avoiding inherited theory labels as privileged analytical units, and systematizing formal relations of theoretical equivalence. The remaining difference is procedural. Paper 0 requires a source-grounded claim to pass through an adversarially constructed and then pre-outcome frozen representation contract; it treats masking, abstention, typed residuals, bounded expressivity, generic-rule reuse, and held-out failure tests as parts of the same ordered protocol. Nothing in the sources inspected for this comparison establishes that their methods jointly impose that full sequence. This is a non-collapse finding about the audited functions, not a priority claim.
 
 ## 4. Protocol Contract
 
@@ -338,7 +346,7 @@ If not, the result is label- or authority-dependent.
 Define a partial mapping
 
 ```text
-Phi_D^v : C_D -> S(B_D^v, R_D^v) ∪ {ABSTAIN, RESIDUAL}.
+Phi_D^v : C_D -> S(B_D^v, R_D^v) union {ABSTAIN, RESIDUAL}.
 ```
 
 A representation can include:
@@ -365,7 +373,7 @@ If a claim requires structure outside the schema, the primary result is a residu
 Two claims `c1` and `c2` are structurally equivalent under version `v` only when their mapped structures are equivalent under the explicitly permitted representation changes:
 
 ```text
-Phi_D^v(c1) ≅_v Phi_D^v(c2).
+Phi_D^v(c1) ~=_v Phi_D^v(c2).
 ```
 
 The permitted transformations must be frozen. They can include semantics-free reindexing, graph isomorphism, or other domain-appropriate equivalences, but they cannot be invented after seeing a desired pair.
@@ -392,7 +400,7 @@ A strict-refinement report should identify the added structure and provide a for
 For an allowed forgetting operation `Forget_J`, if
 
 ```text
-Forget_J(Phi_D^v(c2)) ≅_v Phi_D^v(c1),
+Forget_J(Phi_D^v(c2)) ~=_v Phi_D^v(c1),
 ```
 
 then the protocol may report that `c2` reduces to `c1` after forgetting the declared structure `J`.
@@ -570,7 +578,7 @@ This example is deliberately artificial. It demonstrates the protocol mechanics 
 
 Suppose a bounded literature contains three claims, shown here after answer-bearing construct names and author metadata have been masked.
 
-**Claim A.** After exposure to input `u`, system state `s` changes to `s'`. After a delay `Δt`, a probe `p` is applied. Success is defined by criterion `q`: the probe-dependent output must exceed threshold `θ` relative to a pre-exposure baseline.
+**Claim A.** After exposure to input `u`, system state `s` changes to `s'`. After a delay `Δt`, a probe `p` is applied. Success is defined by criterion `q`: the probe-dependent output must exceed threshold `theta` relative to a pre-exposure baseline.
 
 **Claim B.** A differently named literature states that input `u*` induces an internal state transition. After the same declared horizon class, a retrieval-like intervention `p*` tests whether an output meets an independently specified success criterion with the same dependency and temporal pattern.
 
@@ -732,10 +740,16 @@ Higgins, J. P. T., Thomas, J., Chandler, J., Cumpston, M., Li, T., Page, M. J., 
 
 Mayo, D. G. (1996). *Error and the Growth of Experimental Knowledge*. University of Chicago Press.
 
+Meadows, T. (2024). Beyond linguistic interpretation in theory comparison. *The Review of Symbolic Logic, 17*(3), 819-859. https://doi.org/10.1017/S1755020323000321
+
 Meredith, W. (1993). Measurement invariance, factor analysis and factorial invariance. *Psychometrika, 58*(4), 525-543. https://doi.org/10.1007/BF02294825
 
 Morgan, C., & Vickers, T. (1990). Types and invariants in the refinement calculus. *Science of Computer Programming, 14*(2-3), 281-304. https://doi.org/10.1016/0167-6423(90)90024-8
 
+Pence, C. H. (2025). Textual analysis and conceptual cartography. In S. Veigl & A. Currie (Eds.), *Methods in Philosophy of Science: A User's Guide* (pp. 443-461). MIT Press.
+
 Steegen, S., Tuerlinckx, F., Gelman, A., & Vanpaemel, W. (2016). Increasing transparency through a multiverse analysis. *Perspectives on Psychological Science, 11*(5), 702-712. https://doi.org/10.1177/1745691616658637
+
+Vickers, P. (2011). Theory eliminativism as a methodological tool. *PhilSci-Archive*. https://philsci-archive.pitt.edu/8472/
 
 Wang, K., Sattar, A., & Su, K. (2005). A theory of forgetting in logic programming. *Proceedings of the Twentieth National Conference on Artificial Intelligence (AAAI-05)*, 682-687.
