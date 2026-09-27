@@ -1,0 +1,130 @@
+{
+  "schema_version": "paper2-two-pass-systemone-v4",
+  "owner_issue": 259,
+  "status": "SYNTHETIC_QUALIFIED_ONLY",
+  "design": "sequential_node_binding",
+  "grand_null": "The confirmed v3 cross-slot node-handle dependency defect cannot be removed by a bounded finite staged decision surface while preserving ClaimIR v1, explicit applicable __unresolved__, no hidden semantic repair, source authority, and practical finite choice bounds.",
+  "decision_schema": "paper2-systemone-decision-v4",
+  "claim_ir_schema": "paper2-claim-ir-v1",
+  "real_pilot_authorized": false,
+  "real_model_calls_authorized": false,
+  "heldout_execution_authorized": false,
+  "basis_decomposition_authorized": false,
+  "source_authority": {
+    "original_source_authoritative": true,
+    "normal_interpretation_advisory": true,
+    "normal_prose_may_override_finite_source_decisions": false
+  },
+  "bounded_surface": {
+    "node_referent_handle": "anchor_span_id::role; NONE is inactive; __unresolved__ is applicable but insufficiently distinguished",
+    "node_binding_order": [
+      "n1",
+      "n2",
+      "n3"
+    ],
+    "duplicate_handle_policy": "After a non-NONE handle is selected, that exact full handle is removed from every later node-binding finite surface.",
+    "unresolved_policy": "Applicable __unresolved__ terminates the bundle before later node-binding or dependent questions are scheduled.",
+    "none_policy": "NONE means semantically inactive/N/A and consumes no referent handle.",
+    "relation_slot_referent_semantics": "AUDIT_UNDERDETERMINED",
+    "relation_tuple_policy": "Only fully bound active nodes are available; duplicate arguments and binary tuples with identical anchors are absent.",
+    "scope_semantics": "Scope is a restriction on applicability/domain of the represented claim. Historical provenance, citation/date mention, background context, evidential support, and comparison provenance do not by themselves enter scope.",
+    "compiler_policy": "Deterministic only: derive fixed state, prune impossible choices, omit inactive questions; never guess unresolved answers, deduplicate referents, or perform semantic/post-hoc repair."
+  },
+  "topology": {
+    "synthetic_decision_rounds": 5,
+    "max_stages": 5,
+    "max_total_synthetic_decision_rounds": 5,
+    "max_questions_per_stage": [
+      18,
+      1,
+      1,
+      11,
+      10
+    ],
+    "max_finite_choices_per_question": 29,
+    "max_systemone_subrequests_per_bundle": 5,
+    "real_transaction_authorized": false
+  },
+  "scope_fixtures": {
+    "temporal": {
+      "s1": "historical provenance date",
+      "s2": "actual temporal restriction",
+      "expected_temporal_scope": [
+        "s2"
+      ]
+    },
+    "conditions": {
+      "s1": "evidence supporting mechanism",
+      "s2": "explicit condition under which claim applies",
+      "expected_conditions": [
+        "s2"
+      ]
+    }
+  },
+  "required_properties": {
+    "V4-P1": "cross-slot full-handle uniqueness by construction",
+    "V4-P2": "unknown handles unrepresentable",
+    "V4-P3": "applicable ambiguity remains __unresolved__ and abstains",
+    "V4-P4": "NONE remains N/A/inactive",
+    "V4-P5": "v3 relation tuple pruning preserved",
+    "V4-P6": "scope applicability semantics preserved",
+    "V4-P7": "ClaimIR v1 unchanged",
+    "V4-P8": "no semantic/post-hoc repair",
+    "V4-P9": "historical surfaces immutable"
+  },
+  "destructive_probes": [
+    "R1",
+    "R2",
+    "R3",
+    "R4",
+    "R5",
+    "R6",
+    "R7",
+    "R8",
+    "R9",
+    "R10",
+    "R11",
+    "R12",
+    "R13",
+    "R14",
+    "R15",
+    "R16",
+    "R17",
+    "R18",
+    "R19",
+    "R20",
+    "R21",
+    "R22",
+    "R23",
+    "R24",
+    "R25",
+    "R26",
+    "R27"
+  ],
+  "bound_historical_blobs": {
+    "research/paper2/extraction_systemone_decision_v2.schema.json": "5933030119a903079a9eadb69e08d9326463339c",
+    "research/paper2/extraction_two_pass_systemone_v2.json": "ed00b7458c068eb9add6a23dbf0e8282e06941d4",
+    "scripts/paper2_extraction_two_pass_systemone_v2.py": "f789fcfb35af03a52e9193e6e6ebf5f86271707a",
+    "research/paper2/extraction_systemone_decision_v3.schema.json": "22c1b6dce32f71d70dcc30d3c6879c18845b4c3f",
+    "research/paper2/extraction_two_pass_systemone_v3.json": "cbb579742f7f16cbbe51f7db9603eaa8639d841e",
+    "scripts/paper2_extraction_two_pass_systemone_v3.py": "9e2fdff07fd6b860d9dfe686c384b00d6c66b23f",
+    ".github/workflows/paper2-two-pass-systemone-v3-selftest.yml": "35b29a065179c6ba336060c2406e3b5d032e54a8",
+    "scripts/paper2_extraction_two_pass_llama_cpp_transaction_v3.py": "75f8436758bb5c93c5ca3a834e7c807155d5ce05",
+    "research/paper2/extraction_v3_real_calibration_transaction_v1.json": "1abb318ff1f4160b38301169032c4924b58b3338",
+    "research/paper2/extraction_v3_node_binding_audit_v1.json": "4fb966ff6531812d789e5fd2767f1b14085bbabd",
+    "scripts/paper2_extraction_v3_node_binding_audit_validate.py": "6ed13be1f414d5a26a0663922b7df3e4a3271502",
+    ".github/workflows/paper2-v3-node-binding-audit-selftest.yml": "4891e9b81115e81b207b78687aa82dd6ffeced81",
+    "research/paper2/claim_ir_v1.schema.json": "963f54bd61c3112daa046fa191e3194d47db0768"
+  },
+  "qualification": {
+    "synthetic_sources_only": true,
+    "real_model_calls": 0,
+    "real_server_launches": 0,
+    "real_literature_extraction": 0,
+    "paper210_replay": 0,
+    "heldout_execution": 0,
+    "basis_decomposition": 0
+  },
+  "anti_overclaim": "Synthetic qualification only. It does not establish improved real-paper extraction yield, model calibration, held-out performance, basis sufficiency, or semantic correctness of any alternate extraction.",
+  "architecture_consequence": "NONE"
+}
