@@ -1,0 +1,181 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/rinsakamo/relay-theory/blob/main/research/paper2/designed_source_capture_manifest_v1.schema.json",
+  "title": "Paper 2 designed source capture manifest v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "owner_issue",
+    "designed_manifest_sha256",
+    "state",
+    "source_text_captured",
+    "claim_ir_consumed",
+    "phi_consumed",
+    "atlas_outcome_consumed",
+    "records"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "paper2-designed-source-capture-manifest-v1"
+    },
+    "owner_issue": {
+      "const": 239
+    },
+    "designed_manifest_sha256": {
+      "const": "e37ef0bf9d8a7499daddac5112b31e8fd52fb9ab727c468faa1ad337bbcd2409"
+    },
+    "state": {
+      "enum": [
+        "CAPTURE_DESCRIPTOR_FROZEN_PRE_TEXT",
+        "SOURCE_CAPTURE_FROZEN"
+      ]
+    },
+    "source_text_captured": {
+      "type": "boolean"
+    },
+    "claim_ir_consumed": {
+      "const": false
+    },
+    "phi_consumed": {
+      "const": false
+    },
+    "atlas_outcome_consumed": {
+      "const": false
+    },
+    "records": {
+      "type": "array",
+      "minItems": 60,
+      "maxItems": 60,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "slot_id",
+          "opaque_bundle_id",
+          "stable_identity",
+          "canonical_locator",
+          "activated_rank",
+          "registry_reference",
+          "capture_state",
+          "source_language",
+          "source_version",
+          "retrieval_date",
+          "access_class",
+          "exact_span_locators",
+          "source_bundle_sha256",
+          "local_evidence_descriptor_sha256",
+          "mask_authority_sha256",
+          "capture_limitation"
+        ],
+        "properties": {
+          "slot_id": {
+            "type": "string",
+            "pattern": "^(MEM|LRN|SKL|ATT|CTL|PRD|BLF|CNC|CH)[0-9]{2}$"
+          },
+          "opaque_bundle_id": {
+            "type": "string",
+            "pattern": "^B[0-9]{4}$"
+          },
+          "stable_identity": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "kind",
+              "value"
+            ],
+            "properties": {
+              "kind": {
+                "enum": [
+                  "DOI",
+                  "ARXIV",
+                  "PMID"
+                ]
+              },
+              "value": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "canonical_locator": {
+            "type": "string",
+            "minLength": 1
+          },
+          "activated_rank": {
+            "const": 1
+          },
+          "registry_reference": {
+            "type": "string",
+            "pattern": "^#23:"
+          },
+          "capture_state": {
+            "enum": [
+              "PENDING_SOURCE_CAPTURE",
+              "CAPTURED",
+              "CAPTURE_FAILED"
+            ]
+          },
+          "source_language": {
+            "type": "string",
+            "minLength": 2
+          },
+          "source_version": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "retrieval_date": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "access_class": {
+            "enum": [
+              "FULL_TEXT",
+              "PARTIAL_TEXT",
+              "ABSTRACT_ONLY"
+            ]
+          },
+          "exact_span_locators": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true
+          },
+          "source_bundle_sha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "local_evidence_descriptor_sha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "mask_authority_sha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "capture_limitation": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
