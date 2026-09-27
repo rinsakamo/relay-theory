@@ -175,8 +175,8 @@ INPUT_KEYS = {
 
 
 def validate_label_groups(value: Any) -> list[dict[str, Any]]:
-    if not isinstance(value, list):
-        fail("label_groups must be list")
+    if not isinstance(value, list) or not value:
+        fail("label_groups must be non-empty list for ready capture")
     seen: set[str] = set()
     out: list[dict[str, Any]] = []
     for i, group in enumerate(value):
