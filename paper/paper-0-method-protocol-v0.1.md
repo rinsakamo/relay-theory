@@ -32,7 +32,7 @@ The proposal treats construct names as provenance to be restored after analysis 
 
 ## 2. Methodological Target
 
-The candidate protocol has seven stages:
+The candidate protocol has eight stages:
 
 ```text
 existing theories / constructs
@@ -61,7 +61,7 @@ The method does not begin by declaring that familiar construct names are fundame
 
 Instead, candidate structure is subjected to attempted destruction.
 
-For a candidate distinction (x), ask whether its discriminating content can be reconstructed from a smaller retained structure (R). The relevant tests may include:
+For a candidate distinction `x`, ask whether its discriminating content can be reconstructed from a smaller retained structure `R`. The relevant tests may include:
 
 - deletion;
 - explicit reconstruction;
@@ -90,11 +90,11 @@ A candidate dimension therefore survives only when its removal creates an inform
 
 The forging stage yields a **working basis**, not a final ontology.
 
-Let a domain be (D), its declared forging surface be (F_D), and the resulting basis be (B_D). The warranted claim is only:
+Let a domain be `D`, its declared forging surface be `F_D`, and the resulting basis be `B_D`. The warranted claim is only:
 
-> Relative to (F_D), the coordinates in (B_D) survived the attempted reductions used to construct the current comparison system.
+> Relative to `F_D`, the coordinates in `B_D` survived the attempted reductions used to construct the current comparison system.
 
-The protocol does not infer that (B_D) is unique, complete, metaphysically fundamental, or optimal for every scientific question.
+The protocol does not infer that `B_D` is unique, complete, metaphysically fundamental, or optimal for every scientific question.
 
 ## 4. Freezing the Working Basis
 
@@ -143,17 +143,17 @@ If the source is underspecified, the correct output can be **abstention** or **r
 
 ## 6. Label-Independent Structural Mapping
 
-Let (C_D) be the set of normalized, source-grounded claims in domain (D). Let (S(B_D)) denote the admissible family of structured representations built over the frozen basis (B_D).
+Let `C_D` be the set of normalized, source-grounded claims in domain `D`. Let `S(B_D)` denote the admissible family of structured representations built over the frozen basis `B_D`.
 
 The mapping stage introduces
 
-[
+$
 \Phi_D : C_D \rightarrow S(B_D).
-]
+$
 
-The object (\Phi_D(c)) is not merely a binary inventory of basis coordinates. It may contain:
+The object `Phi_D(c)` is not merely a binary inventory of basis coordinates. It may contain:
 
-[
+$
 \Phi_D(c)
 =
 \text{coordinates}
@@ -169,7 +169,7 @@ The object (\Phi_D(c)) is not merely a binary inventory of basis coordinates. It
 \text{partition structure}
 +
 \text{scope and constraints}.
-]
+$
 
 The exact representation may vary by implementation, but the comparison must preserve the structure that the declared scientific question treats as discriminating.
 
@@ -202,9 +202,9 @@ Two claims are structurally equivalent under the frozen comparison semantics whe
 
 Write schematically:
 
-[
+$
 c_1 \cong_{B_D} c_2.
-]
+$
 
 This does not imply semantic identity, theoretical synonymy, metaphysical identity, causal equivalence, or practical interchangeability.
 
@@ -224,17 +224,17 @@ This identifies a failure of the label to behave as one structurally homogeneous
 
 ### 7.4 Refinement
 
-A claim (c_2) strictly refines (c_1) when it preserves the structure represented by (c_1) while adding independently discriminating structure.
+A claim `c_2` strictly refines `c_1` when it preserves the structure represented by `c_1` while adding independently discriminating structure.
 
 ### 7.5 Forgetting
 
-A forgetting operation deliberately removes specified structure. If forgetting (J) from (c_2) yields an object equivalent to (c_1),
+A forgetting operation deliberately removes specified structure. If forgetting `J` from `c_2` yields an object equivalent to `c_1`,
 
-[
+$
 \operatorname{Forget}_{J}(\Phi_D(c_2))
 \cong
-\Phi_D(c_1),
-]
+\Phi_D(c_1).
+$
 
 then the atlas can state exactly which additional structure separates them.
 
@@ -244,7 +244,7 @@ Some claims may share components yet be neither equivalent nor ordered by a simp
 
 ### 7.7 Residual
 
-Define (operatorname{Residual}_{B_D}(c)) when a source-grounded claim cannot be represented under the frozen system without an unlicensed extension, claim-specific bespoke encoding, or loss of structure that the protocol requires preserving.
+Define `Residual_{B_D}(c)` when a source-grounded claim cannot be represented under the frozen system without an unlicensed extension, claim-specific bespoke encoding, or loss of structure that the protocol requires preserving.
 
 Residuals are scientific information about the boundary of the working system, not pipeline failures to be hidden.
 
@@ -344,7 +344,7 @@ Paper 3 is intended to test the frozen Paper 2 system at 1000-work scale without
 
 Paper 0 sits above those applications. It extracts the candidate invariant procedure:
 
-[
+$
 \text{domain literature}
 \rightarrow
 \text{adversarial forging}
@@ -358,9 +358,9 @@ B_D
 \text{atlas}
 \rightarrow
 \text{held-out validation}.
-]
+$
 
-A future medical or management-science application would be expected to forge its own (B_D). Reusing the cognitive basis by default would not demonstrate domain-generality of the method.
+A future medical or management-science application would be expected to forge its own `B_D`. Reusing the cognitive basis by default would not demonstrate domain-generality of the method.
 
 ## 12. Falsification and Failure Conditions
 
