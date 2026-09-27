@@ -1,0 +1,220 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "ATT05.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1037/0096-1523.18.3.849",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Journal of Experimental Psychology: Human Perception and Performance 18(3), published p.849, Abstract: first target identification followed by second probe detection in a rapid serial stream"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Journal of Experimental Psychology: Human Perception and Performance 18(3), published p.849, Abstract: second-probe detection deficit in a 270-ms interval beginning 180 ms after the first target"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Journal of Experimental Psychology: Human Perception and Performance 18(3), published p.849 and pp.855-857, controls: deficit absent after a brief blank or when first-target identification is not required"
+      }
+    ],
+    "authors": [
+      "Jane E. Raymond",
+      "Kimron L. Shapiro",
+      "Karen M. Arnell"
+    ],
+    "institutions": [
+      "University of Calgary"
+    ],
+    "venue": "Journal of Experimental Psychology: Human Perception and Performance",
+    "citation_count": null,
+    "construct_labels": [
+      "attentional blink"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "comparison",
+    "modality": "probabilistic",
+    "scope": {
+      "conditions": [
+        "rapid serial visual stream with a partially specified first target and a later fully specified probe"
+      ],
+      "population": [
+        "adult participants"
+      ],
+      "substrate": [],
+      "task": [
+        "identify the first target and detect whether a specified later probe is present"
+      ],
+      "temporal_scope": [
+        "probe position ranges from immediately after the target through several hundred milliseconds later"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "first_target_identification",
+        "role": "intervention",
+        "description": "requirement to identify the partially specified first target",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "posttarget_stream",
+        "role": "condition",
+        "description": "continued serial visual stimulation following the first target",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "probe_delay",
+        "role": "condition",
+        "description": "elapsed time from first-target presentation to the second probe",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "probe_detection",
+        "role": "response_or_outcome",
+        "description": "probability of correctly detecting the specified later probe",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "stream_interruption",
+        "role": "intervention",
+        "description": "brief blank interval inserted after the first target in control conditions",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "dual_event_probe",
+        "role": "probe",
+        "description": "two-event rapid-serial procedure measuring second-probe detection as a function of delay and first-target processing",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "correct_probe_detection",
+        "role": "criterion",
+        "description": "correct judgment of presence or absence of the later specified probe",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "temporary_processing_budget",
+        "role": "state_or_structure",
+        "description": "temporarily unavailable processing resource inferred from the delay-specific second-probe deficit",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "depends_on",
+        "arguments": [
+          "probe_detection",
+          "probe_delay",
+          "first_target_identification",
+          "posttarget_stream"
+        ],
+        "description": "second-probe detection drops selectively at intermediate posttarget delays when first-target identification and continuing stream processing are required",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "changes",
+        "arguments": [
+          "stream_interruption",
+          "probe_detection"
+        ],
+        "description": "inserting a brief posttarget blank removes or reduces the temporary second-probe deficit",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "constrains",
+        "arguments": [
+          "temporary_processing_budget",
+          "probe_detection"
+        ],
+        "description": "the source interprets the transient deficit as a temporary limit during completion of first-target processing",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "maps_to",
+        "arguments": [
+          "dual_event_probe",
+          "probe_detection"
+        ],
+        "description": "the rapid-serial two-event procedure measures the time course of the temporary deficit",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "satisfies",
+        "arguments": [
+          "probe_detection",
+          "correct_probe_detection"
+        ],
+        "description": "outcome is evaluated by correct presence/absence judgment for the probe",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
