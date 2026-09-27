@@ -514,7 +514,7 @@ def stage_call(
     )
     # A wire-valid response that violates the finite response contract is a
     # transaction-integrity failure, not an extraction outcome.
-    answers = v4.v4.v3.parse_round(
+    answers = v4.v3.parse_round(
         focus_source, interpretation, model, questions, response
     )
     state["answers"] = base.freeze_artifact(
@@ -700,11 +700,11 @@ def execute_bundle(
     )
     try:
         q2 = v4.stage2(focus_source, a1)
-    except v4.v4.v3.v2.DecisionUnresolved as exc:
+    except v4.v3.v2.DecisionUnresolved as exc:
         return terminal_abstain(
             root=root, row_root=row_root, row=row, stage=1, exc=exc, counters=counters
         )
-    except (v4.v4.v3.v2.TwoPassV2Error, ContractError, ValidationError) as exc:
+    except (v4.v3.v2.TwoPassV2Error, ContractError, ValidationError) as exc:
         return terminal_failure(
             root=root, row_root=row_root, row=row, stage=1, exc=exc, counters=counters
         )
@@ -716,11 +716,11 @@ def execute_bundle(
     )
     try:
         q3 = v4.stage3(focus_source, a1, a2)
-    except v4.v4.v3.v2.DecisionUnresolved as exc:
+    except v4.v3.v2.DecisionUnresolved as exc:
         return terminal_abstain(
             root=root, row_root=row_root, row=row, stage=2, exc=exc, counters=counters
         )
-    except (v4.v4.v3.v2.TwoPassV2Error, ContractError, ValidationError) as exc:
+    except (v4.v3.v2.TwoPassV2Error, ContractError, ValidationError) as exc:
         return terminal_failure(
             root=root, row_root=row_root, row=row, stage=2, exc=exc, counters=counters
         )
@@ -732,11 +732,11 @@ def execute_bundle(
     )
     try:
         q4 = v4.stage4(focus_source, a1, a2, a3)
-    except v4.v4.v3.v2.DecisionUnresolved as exc:
+    except v4.v3.v2.DecisionUnresolved as exc:
         return terminal_abstain(
             root=root, row_root=row_root, row=row, stage=3, exc=exc, counters=counters
         )
-    except (v4.v4.v3.v2.TwoPassV2Error, ContractError, ValidationError) as exc:
+    except (v4.v3.v2.TwoPassV2Error, ContractError, ValidationError) as exc:
         return terminal_failure(
             root=root, row_root=row_root, row=row, stage=3, exc=exc, counters=counters
         )
@@ -748,11 +748,11 @@ def execute_bundle(
     )
     try:
         q5 = v4.stage5(focus_source, a1, a2, a3, a4)
-    except v4.v4.v3.v2.DecisionUnresolved as exc:
+    except v4.v3.v2.DecisionUnresolved as exc:
         return terminal_abstain(
             root=root, row_root=row_root, row=row, stage=4, exc=exc, counters=counters
         )
-    except (v4.v4.v3.v2.TwoPassV2Error, ContractError, ValidationError) as exc:
+    except (v4.v3.v2.TwoPassV2Error, ContractError, ValidationError) as exc:
         return terminal_failure(
             root=root, row_root=row_root, row=row, stage=4, exc=exc, counters=counters
         )
@@ -771,11 +771,11 @@ def execute_bundle(
         decision = v4.decision_from_rounds(
             focus_source, a1, a2, a3, a4, a5
         )
-    except v4.v4.v3.v2.DecisionUnresolved as exc:
+    except v4.v3.v2.DecisionUnresolved as exc:
         return terminal_abstain(
             root=root, row_root=row_root, row=row, stage=5, exc=exc, counters=counters
         )
-    except (v4.v4.v3.v2.TwoPassV2Error, ContractError, ValidationError) as exc:
+    except (v4.v3.v2.TwoPassV2Error, ContractError, ValidationError) as exc:
         return terminal_failure(
             root=root, row_root=row_root, row=row, stage=5, exc=exc, counters=counters
         )
@@ -785,7 +785,7 @@ def execute_bundle(
 
     try:
         candidate = v4.compile_candidate(focus_source, decision)
-    except (v4.v4.v3.v2.TwoPassV2Error, ContractError, ValidationError) as exc:
+    except (v4.v3.v2.TwoPassV2Error, ContractError, ValidationError) as exc:
         return terminal_failure(
             root=root, row_root=row_root, row=row, stage=5, exc=exc, counters=counters
         )
