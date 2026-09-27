@@ -8,6 +8,8 @@ on:
       - "research/paper2/designed_masked_source_surface_v1.schema.json"
       - "research/paper2/designed_blinded_source_bundle_v1.schema.json"
       - "research/paper2/designed_source_capture_manifest_v1.*"
+      - "research/paper2/designed_source_web_fulltext_manifest_v1.*"
+      - "scripts/paper2_designed_source_web_fulltext_validate.py"
       - "research/paper2/extraction_label_mask_v1.json"
       - "scripts/paper2_extraction_two_pass_prepare.py"
       - "scripts/paper2_designed_source_capture_assemble.py"
@@ -22,6 +24,8 @@ on:
       - "research/paper2/designed_masked_source_surface_v1.schema.json"
       - "research/paper2/designed_blinded_source_bundle_v1.schema.json"
       - "research/paper2/designed_source_capture_manifest_v1.*"
+      - "research/paper2/designed_source_web_fulltext_manifest_v1.*"
+      - "scripts/paper2_designed_source_web_fulltext_validate.py"
       - "research/paper2/extraction_label_mask_v1.json"
       - "scripts/paper2_extraction_two_pass_prepare.py"
       - "scripts/paper2_designed_source_capture_assemble.py"
@@ -48,13 +52,18 @@ jobs:
         run: |
           python -m json.tool research/paper2/designed_source_capture_assembly_v1.json >/dev/null
           python -m json.tool research/paper2/designed_source_capture_input_v1.schema.json >/dev/null
+          python -m json.tool research/paper2/designed_source_web_fulltext_manifest_v1.json >/dev/null
           python -m json.tool research/paper2/designed_masked_source_surface_v1.schema.json >/dev/null
           python -m json.tool research/paper2/designed_blinded_source_bundle_v1.schema.json >/dev/null
       - name: Revalidate pre-text descriptor
         run: python scripts/paper2_designed_source_capture_validate.py
+      - name: Revalidate frozen web-fulltext manifest
+        run: python scripts/paper2_designed_source_web_fulltext_validate.py
       - name: Run destructive zero-model capture-assembly self-test
         run: python scripts/paper2_designed_source_capture_assemble.py --self-test
       - name: Run local capture-scaffold self-test
         run: python scripts/paper2_designed_source_capture_scaffold.py --self-test
       - name: Verify pre-text descriptor digest
         run: sha256sum -c research/paper2/designed_source_capture_manifest_v1.sha256
+      - name: Verify web-fulltext manifest digest
+        run: sha256sum -c research/paper2/designed_source_web_fulltext_manifest_v1.sha256
