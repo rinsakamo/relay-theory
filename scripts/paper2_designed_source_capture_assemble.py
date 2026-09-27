@@ -93,7 +93,7 @@ def validate_contract(contract: Any) -> dict[str, Any]:
         fail("contract version drift")
     if contract.get("owner_issue") != 239:
         fail("contract owner drift")
-    if contract.get("status") != "SYNTHETIC_QUALIFICATION_ONLY":
+    if contract.get("status") != "REAL_SOURCE_CAPTURE_AUTHORIZED_ZERO_MODEL":
         fail("contract status drift")
     if contract.get("architecture_consequence") != "NONE":
         fail("architecture consequence drift")
@@ -117,9 +117,32 @@ def validate_contract(contract: Any) -> dict[str, Any]:
     if assembly.get("required_input_count") != 60 or assembly.get("model_calls") != 0:
         fail("assembly count/model-call boundary drift")
 
+    auth = contract.get("authorization")
+    if auth != {
+        "scope": "LOCAL_REAL_SOURCE_CAPTURE_ONLY",
+        "source_surface": "frozen_60_source_activated_manifest",
+        "source_selection_reopening_forbidden": True,
+        "raw_source_repository_commit_forbidden": True,
+        "output_evidence_local_only": True,
+        "model_calls_authorized": 0,
+        "claim_ir_authorized": False,
+        "phi_authorized": False,
+        "paper210_execution_authorized": False,
+    }:
+        fail("capture authorization drift")
+
     sci = contract.get("scientific_boundary")
-    if not isinstance(sci, dict) or any(value is not False for value in sci.values()):
-        fail("scientific boundary must remain fully unauthorized")
+    expected_sci = {
+        "real_source_capture_authorized": True,
+        "model_execution_authorized": False,
+        "claim_ir_authorized": False,
+        "structural_signature_authorized": False,
+        "phi_authorized": False,
+        "atlas_analysis_authorized": False,
+        "paper210_execution_authorized": False,
+    }
+    if sci != expected_sci:
+        fail("scientific boundary drift")
     return contract
 
 
@@ -460,12 +483,14 @@ def self_test() -> None:
         if "[CONSTRUCT_01]" not in rendered:
             raise AssertionError("construct marker missing")
 
-        # Real execution path must remain blocked by repository contract.
-        expect_failure(
-            lambda: assemble_all(inputs, root / "real-blocked"),
-            "real source capture gate",
-            "REAL_SOURCE_CAPTURE_NOT_AUTHORIZED",
-        )
+        # The ordinary execution path is now authorized for source capture only.
+        # Synthetic inputs exercise the same zero-model path in CI.
+        authorized_out = root / "authorized-path"
+        authorized_summary = assemble_all(inputs, authorized_out)
+        if authorized_summary["classification"] != "SOURCE_CAPTURE_FROZEN":
+            raise AssertionError("authorized zero-model capture path did not complete")
+        if authorized_summary["model_calls"] != 0:
+            raise AssertionError("authorized source capture performed model calls")
 
         # Stable identity mismatch fails closed.
         bad_inputs = root / "bad-identity"
