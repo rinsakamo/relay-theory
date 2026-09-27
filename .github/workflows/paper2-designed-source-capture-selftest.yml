@@ -1,0 +1,43 @@
+name: paper2-designed-source-capture-selftest
+
+on:
+  pull_request:
+    paths:
+      - "research/paper2/designed_source_manifest_v1.*"
+      - "research/paper2/designed_source_capture_manifest_v1.*"
+      - "research/paper2/designed_blinded_source_bundle_v1.schema.json"
+      - "scripts/paper2_designed_source_capture_validate.py"
+      - ".github/workflows/paper2-designed-source-capture-selftest.yml"
+  push:
+    branches: [main]
+    paths:
+      - "research/paper2/designed_source_manifest_v1.*"
+      - "research/paper2/designed_source_capture_manifest_v1.*"
+      - "research/paper2/designed_blinded_source_bundle_v1.schema.json"
+      - "scripts/paper2_designed_source_capture_validate.py"
+      - ".github/workflows/paper2-designed-source-capture-selftest.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile validator
+        run: python -m py_compile scripts/paper2_designed_source_capture_validate.py
+      - name: Parse capture contracts
+        run: |
+          python -m json.tool research/paper2/designed_source_capture_manifest_v1.schema.json >/dev/null
+          python -m json.tool research/paper2/designed_source_capture_manifest_v1.json >/dev/null
+          python -m json.tool research/paper2/designed_blinded_source_bundle_v1.schema.json >/dev/null
+      - name: Run destructive source-capture self-test
+        run: python scripts/paper2_designed_source_capture_validate.py --self-test
+      - name: Validate frozen pre-text capture descriptors
+        run: python scripts/paper2_designed_source_capture_validate.py
+      - name: Verify descriptor digest
+        run: sha256sum -c research/paper2/designed_source_capture_manifest_v1.sha256
