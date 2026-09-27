@@ -1,0 +1,177 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "CTL02.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1146/annurev.neuro.24.1.167",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Annual Review of Neuroscience 24, published p.167, Abstract: active maintenance of goal/means patterns guides thought and action"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Annual Review of Neuroscience 24, published p.167, Abstract: maintained patterns provide bias signals to other brain structures"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Annual Review of Neuroscience 24, early theory sections: bias signals guide pathways mapping inputs and internal states to task-appropriate outputs"
+      }
+    ],
+    "authors": [
+      "Earl K. Miller",
+      "Jonathan D. Cohen"
+    ],
+    "institutions": [],
+    "venue": "Annual Review of Neuroscience",
+    "citation_count": null,
+    "construct_labels": [
+      "prefrontal cortex",
+      "cognitive control",
+      "working memory",
+      "bias signals"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "counterfactual",
+    "modality": "counterfactual",
+    "scope": {
+      "conditions": [
+        "task performance requires mapping current inputs/internal state to outputs in accordance with an internally represented goal"
+      ],
+      "population": [
+        "human and nonhuman primate systems reviewed by the source"
+      ],
+      "substrate": [
+        "goal-maintaining cortical subsystem and downstream processing systems"
+      ],
+      "task": [
+        "rule- or goal-guided behavior"
+      ],
+      "temporal_scope": [
+        "goal-related activity remains active across the interval in which it biases processing and response selection"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "goal_maintaining_subsystem",
+        "role": "partition",
+        "description": "source-proposed cortical subsystem that actively maintains patterns representing goals and means",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "downstream_processing_system",
+        "role": "partition",
+        "description": "other neural systems whose processing pathways can be biased by the maintained state",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "maintained_goal_state",
+        "role": "state_or_structure",
+        "description": "persisting pattern representing the current task goal and means to achieve it",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "downstream_bias",
+        "role": "response_or_outcome",
+        "description": "modulatory signal that changes which input/state-to-output pathways dominate",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "task_appropriate_output",
+        "role": "criterion",
+        "description": "output consistent with the currently maintained goal and task mapping",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "maps_to",
+        "arguments": [
+          "goal_maintaining_subsystem",
+          "maintained_goal_state"
+        ],
+        "description": "the source assigns persistent goal-and-means representations to the designated subsystem",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "changes",
+        "arguments": [
+          "maintained_goal_state",
+          "downstream_processing_system",
+          "downstream_bias"
+        ],
+        "description": "changing the maintained goal state changes bias applied to downstream processing pathways",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "depends_on",
+        "arguments": [
+          "task_appropriate_output",
+          "downstream_bias"
+        ],
+        "description": "selection of the task-appropriate mapping depends on the bias supplied by the maintained state",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "satisfies",
+        "arguments": [
+          "task_appropriate_output",
+          "maintained_goal_state"
+        ],
+        "description": "the resulting output is evaluated relative to the currently represented goal",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
