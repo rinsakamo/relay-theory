@@ -466,7 +466,7 @@ def self_test() -> None:
             "terminal_inaccessible": 0,
             "failed_bundle_ids": [],
             "model_calls": 0,
-            "real_source_capture_authorized_by_repository_contract": False,
+            "real_source_capture_authorized_by_repository_contract": True,
             "classification": "SOURCE_CAPTURE_FROZEN",
         }:
             raise AssertionError(f"synthetic summary drift: {summary}")
