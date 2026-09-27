@@ -1,0 +1,55 @@
+name: paper2-v4-real-calibration-transaction-selftest
+
+on:
+  pull_request:
+    paths:
+      - "scripts/paper2_extraction_two_pass_llama_cpp_transaction_v4.py"
+      - "research/paper2/extraction_v4_real_calibration_transaction_v1.json"
+      - "scripts/paper2_extraction_two_pass_systemone_v4.py"
+      - "research/paper2/extraction_two_pass_systemone_v4.json"
+      - "research/paper2/extraction_systemone_decision_v4.schema.json"
+      - "research/paper2/claim_ir_v1.schema.json"
+      - "scripts/paper2_extraction_two_pass_llama_cpp_transaction_v3.py"
+      - "research/paper2/extraction_v3_real_calibration_transaction_v1.json"
+      - ".github/workflows/paper2-v4-real-calibration-transaction-selftest.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "scripts/paper2_extraction_two_pass_llama_cpp_transaction_v4.py"
+      - "research/paper2/extraction_v4_real_calibration_transaction_v1.json"
+      - "scripts/paper2_extraction_two_pass_systemone_v4.py"
+      - "research/paper2/extraction_two_pass_systemone_v4.json"
+      - "research/paper2/extraction_systemone_decision_v4.schema.json"
+      - "research/paper2/claim_ir_v1.schema.json"
+      - "scripts/paper2_extraction_two_pass_llama_cpp_transaction_v3.py"
+      - "research/paper2/extraction_v3_real_calibration_transaction_v1.json"
+      - ".github/workflows/paper2-v4-real-calibration-transaction-selftest.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Verify exact validation head
+        shell: bash
+        env:
+          EXPECTED_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile v4 real-calibration transaction surface
+        run: |
+          python -m py_compile scripts/paper2_extraction_two_pass_llama_cpp_transaction_v4.py
+          python -m py_compile scripts/paper2_extraction_two_pass_systemone_v4.py
+          python -m py_compile scripts/paper2_extraction_two_pass_llama_cpp_transaction_v3.py
+      - name: Re-run frozen SystemOne v4 synthetic qualification
+        run: python scripts/paper2_extraction_two_pass_systemone_v4.py --self-test
+      - name: Run five-round real-calibration runner destructive self-test
+        run: python scripts/paper2_extraction_two_pass_llama_cpp_transaction_v4.py --self-test
