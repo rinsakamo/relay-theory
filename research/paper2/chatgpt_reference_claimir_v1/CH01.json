@@ -1,0 +1,195 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "CH01.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1038/nrn2762",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Nature Reviews Neuroscience 11, published pp.114-115, abstract: two post-learning physiological phases support different stabilization processes"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Nature Reviews Neuroscience 11, published pp.118-119, systems-level redistribution and local strengthening sections"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Nature Reviews Neuroscience 11, published p.123, Figure 3 and conclusion: sequential contributions of the two phases"
+      }
+    ],
+    "authors": [
+      "Susanne Diekelmann",
+      "Jan Born"
+    ],
+    "institutions": [
+      "University of Lübeck"
+    ],
+    "venue": "Nature Reviews Neuroscience",
+    "citation_count": null,
+    "construct_labels": [
+      "memory consolidation",
+      "slow-wave sleep",
+      "rapid eye movement sleep",
+      "system consolidation",
+      "synaptic consolidation"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "relation",
+    "modality": "probabilistic",
+    "scope": {
+      "conditions": [
+        "post-learning physiological state with an earlier synchronized phase followed by a later desynchronized phase"
+      ],
+      "population": [
+        "humans",
+        "nonhuman animals"
+      ],
+      "substrate": [
+        "temporary medial-temporal store",
+        "distributed cortical store",
+        "local synaptic circuits"
+      ],
+      "task": [],
+      "temporal_scope": [
+        "newly acquired representations are processed across sequential post-learning phases and across systems-level and local timescales"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "newly_acquired_representation",
+        "role": "state_or_structure",
+        "description": "newly acquired representation initially supported by a fast temporary store and related cortical sites",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "early_synchronized_phase",
+        "role": "condition",
+        "description": "earlier post-learning phase characterized by widespread synchronized activity and repeated reactivation",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "systems_level_redistribution",
+        "role": "state_or_structure",
+        "description": "reactivation-driven redistribution and integration of newly acquired representations into distributed cortical networks",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "later_desynchronized_phase",
+        "role": "condition",
+        "description": "later post-learning phase characterized by more locally encapsulated activity",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "local_synaptic_strengthening",
+        "role": "state_or_structure",
+        "description": "local strengthening and stabilization of connections supporting representations processed in the prior phase",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "phase_sequence",
+        "role": "partition",
+        "description": "ordered separation between the earlier systems-level phase and later local-strengthening phase",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "precedes",
+        "arguments": [
+          "early_synchronized_phase",
+          "later_desynchronized_phase"
+        ],
+        "description": "the earlier synchronized phase normally precedes the later desynchronized phase in the proposed sequence",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "changes",
+        "arguments": [
+          "early_synchronized_phase",
+          "newly_acquired_representation",
+          "systems_level_redistribution"
+        ],
+        "description": "reactivation during the earlier phase promotes redistribution and integration of the newly acquired representation across systems",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "depends_on",
+        "arguments": [
+          "local_synaptic_strengthening",
+          "later_desynchronized_phase",
+          "systems_level_redistribution"
+        ],
+        "description": "later local strengthening is proposed to occur preferentially in the later phase and to stabilize representations reorganized earlier",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "distinguishes",
+        "arguments": [
+          "phase_sequence",
+          "systems_level_redistribution",
+          "local_synaptic_strengthening"
+        ],
+        "description": "the source assigns different processing roles and timescales to the two ordered phases rather than treating post-learning change as one undifferentiated process",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
