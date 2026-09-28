@@ -4,7 +4,7 @@
   "adjudicator": {
     "tool": "ChatGPT",
     "version": "GPT-5.6 Sol",
-    "procedure": "paper2-reference-structural-adjudication-v1:267",
+    "procedure": "paper2-challenge-a-reference-structural-adjudication-v1:267",
     "adjudicated_at": "2026-09-28"
   },
   "coordinate_map": [
@@ -63,16 +63,14 @@
     "time_index": {
       "state": "present",
       "source_span_ids": [
+        "s1",
         "s2",
-        "s3"
+        "s3",
+        "s4"
       ]
     },
     "history_window": {
-      "state": "present",
-      "source_span_ids": [
-        "s2",
-        "s3"
-      ]
+      "state": "not_required"
     },
     "future_horizon": {
       "state": "not_required"
@@ -80,14 +78,29 @@
     "recurrence": {
       "state": "present",
       "source_span_ids": [
+        "s1",
         "s2",
         "s3"
       ]
     },
     "persistence": {
-      "state": "not_required"
+      "state": "present",
+      "source_span_ids": [
+        "s1",
+        "s2",
+        "s3"
+      ]
     },
-    "ordering": []
+    "ordering": [
+      {
+        "before_coordinate_id": "basis.p1",
+        "after_coordinate_id": "basis.o2",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ]
+      }
+    ]
   },
   "approximation": {
     "mode": "deterministic",
