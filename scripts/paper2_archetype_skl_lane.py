@@ -687,10 +687,9 @@ def run_pilot() -> dict[str, Any]:
 
 
 def self_test() -> None:
-    # Real-input deterministic pilot is itself the integration fixture.
+    # One exact real-input reconstruction here plus the separate CI report
+    # regeneration/byte-identity step provide two independent deterministic runs.
     first = run_pilot()
-    second = run_pilot()
-    assert first == second
     assert first["input_claim_ids"] == SKL_IDS
     assert first["construct_specificity_claim"] is False
     assert first["architecture_tuning"] == "NONE"
