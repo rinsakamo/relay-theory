@@ -382,13 +382,16 @@ def pair_common_candidates(
 
 def summarize_image(image: dict[str, Any]) -> dict[str, Any]:
     node_profile = sorted(
-        {
-            "role": node["role"],
-            "axis": node["axis"],
-            "required": node["required"],
-        }
-        for node in image["nodes"].values()
-    , key=lambda x: _canon(x))
+        [
+            {
+                "role": node["role"],
+                "axis": node["axis"],
+                "required": node["required"],
+            }
+            for node in image["nodes"].values()
+        ],
+        key=lambda x: _canon(x),
+    )
 
     edge_profile = []
     labels = {node_id: _node_label(node) for node_id, node in image["nodes"].items()}
