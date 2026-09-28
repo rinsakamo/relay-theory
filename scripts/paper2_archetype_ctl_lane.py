@@ -704,7 +704,7 @@ def main() -> None:
         parser.error("--emit-report or --self-test is required")
 
     report = run_lane()
-    payload = json.dumps(report, ensure_ascii=False, sort_keys=True, indent=2) + "\n"
+    payload = json.dumps(report, ensure_ascii=False, sort_keys=True, separators=(",", ":")) + "\n"
     if args.output:
         args.output.write_text(payload, encoding="utf-8")
     else:
