@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/rinsakamo/relay-theory/blob/main/research/paper2/archetype_skeleton_v1.schema.json",
+  "title": "Paper 2 Archetype skeleton v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "source_phi_version",
+    "basis_version",
+    "claim_envelope",
+    "active_axes",
+    "nodes",
+    "edges",
+    "temporal",
+    "controls",
+    "approximation",
+    "bridges"
+  ],
+  "properties": {
+    "schema_version": {"const": "paper2-archetype-skeleton-v1"},
+    "source_phi_version": {"const": "paper2-phi-object-v1"},
+    "basis_version": {"const": "paper2-working-basis-v1"},
+    "claim_envelope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["claim_type", "modality", "scope_shape"],
+      "properties": {
+        "claim_type": {"type": "string"},
+        "modality": {"type": "string"},
+        "scope_shape": {"type": "object"}
+      }
+    },
+    "active_axes": {"type": "array", "uniqueItems": true},
+    "nodes": {"type": "object"},
+    "edges": {"type": "array"},
+    "temporal": {"type": "object"},
+    "controls": {"type": "object"},
+    "approximation": {"type": "object"},
+    "bridges": {"type": "array"}
+  }
+}
