@@ -7,19 +7,23 @@
     "source_spans": [
       {
         "span_id": "s1",
-        "locator": "Nature Neuroscience 8(12), PDF p.1 / published p.1704, abstract/introduction: two action-choice controllers, accuracy/cost trade-off, and uncertainty-based arbitration"
+        "locator": "Nature Neuroscience 8(12), published p.1704 / PDF p.1, abstract and introduction: two action-choice systems trade computational simplicity against flexible/statistically efficient use of experience; relative prediction uncertainty is proposed as the basis for deploying the more accurate estimate"
       },
       {
         "span_id": "s2",
-        "locator": "Nature Neuroscience 8(12), PDF p.2 / published p.1705, controller contrast: cached scalar future-value summaries versus on-the-fly branching consequence search"
+        "locator": "Nature Neuroscience 8(12), published p.1705 / PDF p.2, controller contrast and Figure 1: one pathway stores scalar long-run state-action summaries, whereas the other explicitly represents possible successor states/outcomes and computes values by branching search"
       },
       {
         "span_id": "s3",
-        "locator": "Nature Neuroscience 8(12), PDF p.4 / published p.1707, uncertainty section: each controller produces value estimates with distinct uncertainty profiles"
+        "locator": "Nature Neuroscience 8(12), published pp.1706-1707 / PDF pp.3-4, arbitration and uncertainty sections: for a given action the more certain value estimate is used; the two valuation methods have distinct uncertainty sources and profiles, including search noise versus data-inefficient bootstrapping"
       },
       {
         "span_id": "s4",
-        "locator": "Nature Neuroscience 8(12), PDF pp.4-5 / published pp.1707-1708, simulations: posterior means/variances and conditions favoring one controller or the other"
+        "locator": "Nature Neuroscience 8(12), published pp.1709-1710 / PDF pp.6-7, Methods: both pathways evaluate actions in the same state/action task, one estimates posterior task transition/reward structure and derives value distributions by search, the other stores posterior state-action value distributions; lower posterior variance selects the winning value estimate before stochastic action choice"
+      },
+      {
+        "span_id": "s5",
+        "locator": "Nature Neuroscience 8(12), published p.1708 / PDF p.5, Discussion: both pathways can pursue identical rational ends despite different computational implementations; strict separation is a simplifying approximation and partial integration is acknowledged"
       }
     ],
     "authors": [
@@ -47,57 +51,44 @@
     "extractor_version": "GPT-5.6 Sol",
     "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
     "extracted_at": "2026-09-28",
-    "manual_review_status": "unreviewed"
+    "manual_review_status": "reviewed"
   },
   "claim_core": {
     "claim_type": "relation",
     "modality": "descriptive",
     "scope": {
       "conditions": [
-        "choice problem in which two learned controllers can assign different values or uncertainty to the same candidate action"
+        "an episodic action-choice problem is represented by states, available actions, transition contingencies and outcome utilities, with the exact task structure initially unknown and potentially changing over time",
+        "two approximate valuation pathways evaluate the same state-action choice: one stores value distributions learned from experienced transitions, while the other estimates transition/outcome structure and searches it at choice time",
+        "the source's formal comparison assumes the two pathways are strictly separated for analysis, while acknowledging that biological implementations may interact",
+        "prediction uncertainty is treated as ignorance about the true long-run value rather than as inherent stochasticity of reward delivery"
       ],
-      "population": [
-        "nonhuman animals",
-        "humans"
-      ],
+      "population": [],
       "substrate": [
-        "prefrontal-associated controller",
-        "dorsolateral-striatal-associated controller"
+        "two proposed computational action-choice systems conventionally associated with prefrontal and dorsolateral-striatal circuitry"
       ],
       "task": [
-        "select an action using predictions of long-run future outcomes under changing task structure and training history"
+        "estimate the long-run value of available actions and choose an action when two valuation pathways may differ in accuracy"
       ],
       "temporal_scope": [
-        "controller estimates change with experience; one controller can recompute after outcome changes while the other relies on stored summaries"
+        "stored distributions and estimated task structure are updated across experience; structured search recomputes distal consequences from the current task estimate, and value comparison occurs for the current state-action choice"
       ]
     },
     "nodes": [
       {
-        "id": "cached_value_controller",
-        "role": "state_or_structure",
-        "description": "controller that stores scalar long-run action-value summaries learned from experience",
+        "id": "current_state",
+        "role": "condition",
+        "description": "current task state in which an action must be evaluated",
         "source_span_ids": [
-          "s1",
           "s2",
-          "s3"
-        ],
-        "grounding": "normalized"
-      },
-      {
-        "id": "forward_search_controller",
-        "role": "state_or_structure",
-        "description": "controller that estimates long-run value by chaining learned short-term transition and outcome predictions at choice time",
-        "source_span_ids": [
-          "s1",
-          "s2",
-          "s3"
+          "s4"
         ],
         "grounding": "normalized"
       },
       {
         "id": "candidate_action",
         "role": "condition",
-        "description": "action whose long-run value is estimated by both controllers",
+        "description": "an action available in the current state whose long-run value is evaluated by both pathways",
         "source_span_ids": [
           "s1",
           "s2",
@@ -106,9 +97,20 @@
         "grounding": "normalized"
       },
       {
-        "id": "cached_value_estimate",
+        "id": "experience_history",
+        "role": "available_information",
+        "description": "observed transitions and outcomes accumulated through task experience",
+        "source_span_ids": [
+          "s1",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "stored_summary_pathway",
         "role": "state_or_structure",
-        "description": "scalar expected future value supplied by the stored-summary controller",
+        "description": "valuation pathway that stores a posterior long-run value distribution for each experienced state-action pair and updates it using stored values of subsequently encountered states",
         "source_span_ids": [
           "s2",
           "s3",
@@ -117,9 +119,9 @@
         "grounding": "normalized"
       },
       {
-        "id": "search_value_estimate",
+        "id": "structured_search_pathway",
         "role": "state_or_structure",
-        "description": "expected future value computed by searching predicted successor states and outcomes",
+        "description": "valuation pathway that estimates task transition and outcome structure and computes long-run values by searching predicted successor states at choice time",
         "source_span_ids": [
           "s2",
           "s3",
@@ -128,9 +130,20 @@
         "grounding": "normalized"
       },
       {
-        "id": "cached_uncertainty",
-        "role": "criterion",
-        "description": "estimated uncertainty associated with the stored-summary controller's action-value prediction",
+        "id": "estimated_task_structure",
+        "role": "state_or_structure",
+        "description": "posterior representation of state transitions and outcome probabilities used by the structured-search pathway",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "stored_value_distribution",
+        "role": "state_or_structure",
+        "description": "posterior distribution over the long-run value of the current state-action pair supplied by the stored-summary pathway",
         "source_span_ids": [
           "s3",
           "s4"
@@ -138,9 +151,9 @@
         "grounding": "normalized"
       },
       {
-        "id": "search_uncertainty",
-        "role": "criterion",
-        "description": "estimated uncertainty associated with the forward-search controller's prediction, including uncertainty introduced by approximate search",
+        "id": "searched_value_distribution",
+        "role": "state_or_structure",
+        "description": "posterior distribution over the long-run value of the same state-action pair derived by searching the estimated task structure",
         "source_span_ids": [
           "s3",
           "s4"
@@ -148,12 +161,41 @@
         "grounding": "normalized"
       },
       {
-        "id": "controller_selection",
+        "id": "stored_prediction_uncertainty",
+        "role": "criterion",
+        "description": "posterior variance of the stored-summary pathway's value distribution",
+        "source_span_ids": [
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "searched_prediction_uncertainty",
+        "role": "criterion",
+        "description": "posterior variance of the searched value distribution, including uncertainty attributable to approximate computation",
+        "source_span_ids": [
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "winning_value_estimate",
+        "role": "state_or_structure",
+        "description": "mean of the value distribution with the lower posterior variance for the current state-action pair",
+        "source_span_ids": [
+          "s1",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "chosen_action",
         "role": "response_or_outcome",
-        "description": "which controller's action recommendation governs behavior in the current circumstance",
+        "description": "action sampled from the available actions using their winning long-run value estimates",
         "source_span_ids": [
-          "s1",
-          "s3",
           "s4"
         ],
         "grounding": "normalized"
@@ -164,13 +206,15 @@
         "id": "r1",
         "kind": "maps_to",
         "arguments": [
-          "cached_value_controller",
-          "candidate_action",
-          "cached_value_estimate"
+          "experience_history",
+          "stored_summary_pathway",
+          "stored_value_distribution"
         ],
-        "description": "the stored-summary controller maps a state-action situation to a cached scalar long-run value without representing the full sequence of future consequences",
+        "description": "experienced transitions update stored state-action value distributions through bootstrapping from stored successor values",
         "source_span_ids": [
-          "s2"
+          "s2",
+          "s3",
+          "s4"
         ],
         "grounding": "normalized"
       },
@@ -178,25 +222,75 @@
         "id": "r2",
         "kind": "maps_to",
         "arguments": [
-          "forward_search_controller",
-          "candidate_action",
-          "search_value_estimate"
+          "experience_history",
+          "structured_search_pathway",
+          "estimated_task_structure"
         ],
-        "description": "the forward-search controller maps the same state-action situation to a long-run value by composing predicted transitions and outcomes",
+        "description": "experience is used to estimate posterior transition and outcome structure for the structured-search pathway",
         "source_span_ids": [
-          "s2"
+          "s2",
+          "s3",
+          "s4"
         ],
         "grounding": "normalized"
       },
       {
         "id": "r3",
+        "kind": "maps_to",
+        "arguments": [
+          "structured_search_pathway",
+          "estimated_task_structure",
+          "current_state",
+          "candidate_action",
+          "searched_value_distribution"
+        ],
+        "description": "search over estimated successor states and outcomes maps the current state-action pair to a distribution over long-run value",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
         "kind": "depends_on",
         "arguments": [
-          "controller_selection",
-          "cached_uncertainty",
-          "search_uncertainty"
+          "stored_prediction_uncertainty",
+          "stored_value_distribution"
         ],
-        "description": "which controller dominates depends on their relative estimated uncertainty, favoring the controller expected to be more accurate",
+        "description": "the stored pathway's prediction uncertainty is quantified by the posterior variance of its value distribution",
+        "source_span_ids": [
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "depends_on",
+        "arguments": [
+          "searched_prediction_uncertainty",
+          "searched_value_distribution"
+        ],
+        "description": "the search pathway's prediction uncertainty is quantified by the posterior variance of its value distribution",
+        "source_span_ids": [
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r6",
+        "kind": "depends_on",
+        "arguments": [
+          "winning_value_estimate",
+          "stored_value_distribution",
+          "searched_value_distribution",
+          "stored_prediction_uncertainty",
+          "searched_prediction_uncertainty"
+        ],
+        "description": "for each state-action pair, the winning estimate is the mean supplied by the pathway with the smaller posterior variance",
         "source_span_ids": [
           "s1",
           "s3",
@@ -205,17 +299,36 @@
         "grounding": "normalized"
       },
       {
-        "id": "r4",
+        "id": "r7",
+        "kind": "depends_on",
+        "arguments": [
+          "chosen_action",
+          "current_state",
+          "candidate_action",
+          "winning_value_estimate"
+        ],
+        "description": "winning values for the actions available in the current state determine stochastic action-selection probabilities",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r8",
         "kind": "distinguishes",
         "arguments": [
-          "cached_value_controller",
-          "forward_search_controller"
+          "stored_summary_pathway",
+          "structured_search_pathway",
+          "estimated_task_structure",
+          "stored_value_distribution"
         ],
-        "description": "the two controllers can use the same task state, action and reward inventory while differing in computational topology, flexibility, cost and uncertainty profile",
+        "description": "the two pathways address the same state-action valuation problem but differ in internal representation and computational route: one stores long-run value distributions directly, whereas the other represents transition/outcome structure and derives values by search",
         "source_span_ids": [
           "s1",
           "s2",
-          "s3"
+          "s3",
+          "s4",
+          "s5"
         ],
         "grounding": "normalized"
       }
