@@ -8,116 +8,66 @@
     "adjudicated_at": "2026-09-28"
   },
   "coordinate_map": [
-    {
-      "claim_node_id": "compatibility_distribution",
-      "coordinate_id": "basis.p1",
-      "required": true
-    },
-    {
-      "claim_node_id": "early_broad_phase",
-      "coordinate_id": "basis.s1",
-      "required": true
-    },
-    {
-      "claim_node_id": "later_selective_phase",
-      "coordinate_id": "basis.s2",
-      "required": true
-    },
-    {
-      "claim_node_id": "interference_effect",
-      "coordinate_id": "basis.o1",
-      "required": true
-    },
-    {
-      "claim_node_id": "relative_information_utility",
-      "coordinate_id": "basis.q1",
-      "required": true
-    },
-    {
-      "claim_node_id": "noise_compatibility_probe",
-      "coordinate_id": "basis.p2",
-      "required": true
-    }
+    {"claim_node_id":"prior_trial_context","coordinate_id":"basis.cnd1","required":true},
+    {"claim_node_id":"probability_context_intervention","coordinate_id":"basis.p1","required":true},
+    {"claim_node_id":"contextual_expectancy_state","coordinate_id":"basis.s1","required":true},
+    {"claim_node_id":"expected_option_utility","coordinate_id":"basis.q1","required":true},
+    {"claim_node_id":"early_multi_input_evidence","coordinate_id":"basis.o1","required":true},
+    {"claim_node_id":"late_target_selective_evidence","coordinate_id":"basis.o2","required":true},
+    {"claim_node_id":"evidence_weighting_state","coordinate_id":"basis.s2","required":true},
+    {"claim_node_id":"response_preparation_state","coordinate_id":"basis.s3","required":true},
+    {"claim_node_id":"current_distractor_compatibility","coordinate_id":"basis.cnd2","required":true},
+    {"claim_node_id":"behavioral_interference_outcome","coordinate_id":"basis.o3","required":true},
+    {"claim_node_id":"context_expectancy_probe","coordinate_id":"basis.p2","required":true}
   ],
   "controls": {
-    "probe_P": {
-      "state": "present",
-      "claim_node_ids": [
-        "compatibility_distribution",
-        "noise_compatibility_probe"
-      ],
-      "provenance_kind": "source_declared",
-      "fixed_before_phi": true
+    "probe_P":{
+      "state":"present",
+      "claim_node_ids":["probability_context_intervention","context_expectancy_probe"],
+      "provenance_kind":"source_declared",
+      "fixed_before_phi":true
     },
-    "criterion_Q": {
-      "state": "present",
-      "claim_node_ids": [
-        "relative_information_utility"
-      ],
-      "provenance_kind": "source_declared",
-      "fixed_before_phi": true
+    "criterion_Q":{
+      "state":"present",
+      "claim_node_ids":["expected_option_utility"],
+      "provenance_kind":"source_declared",
+      "fixed_before_phi":true
     },
-    "partition_Pi": {
-      "state": "not_required"
-    },
-    "resource_C": {
-      "state": "not_required"
-    }
+    "partition_Pi":{"state":"not_required"},
+    "resource_C":{"state":"not_required"}
   },
   "temporal": {
-    "time_index": {
-      "state": "present",
-      "source_span_ids": [
-        "s1",
-        "s2",
-        "s3"
-      ]
-    },
-    "history_window": {
-      "state": "present",
-      "source_span_ids": [
-        "s2",
-        "s3"
-      ]
-    },
-    "future_horizon": {
-      "state": "present",
-      "source_span_ids": [
-        "s1",
-        "s3"
-      ]
-    },
-    "recurrence": {
-      "state": "present",
-      "source_span_ids": [
-        "s2"
-      ]
-    },
-    "persistence": {
-      "state": "not_required"
-    },
-    "ordering": []
+    "time_index":{"state":"present","source_span_ids":["s1","s2","s3","s4","s5","s6"]},
+    "history_window":{"state":"present","source_span_ids":["s2","s3","s4"]},
+    "future_horizon":{"state":"present","source_span_ids":["s1","s2","s5","s6"]},
+    "recurrence":{"state":"present","source_span_ids":["s2","s3","s4"]},
+    "persistence":{"state":"present","source_span_ids":["s4","s5"]},
+    "ordering":[
+      {
+        "before_coordinate_id":"basis.cnd1",
+        "after_coordinate_id":"basis.s1",
+        "source_span_ids":["s2","s3"]
+      },
+      {
+        "before_coordinate_id":"basis.p1",
+        "after_coordinate_id":"basis.s1",
+        "source_span_ids":["s2","s4","s5"]
+      },
+      {
+        "before_coordinate_id":"basis.o1",
+        "after_coordinate_id":"basis.o2",
+        "source_span_ids":["s1","s2","s3"]
+      }
+    ]
   },
   "approximation": {
-    "mode": "stochastic",
-    "threshold": {
-      "state": "not_required"
-    },
-    "tolerance": {
-      "state": "not_required"
-    },
-    "confidence": {
-      "state": "not_applicable"
-    },
-    "loss": {
-      "state": "not_required"
-    },
-    "comparison_criterion": {
-      "state": "not_required"
-    }
+    "mode":"stochastic",
+    "threshold":{"state":"not_required"},
+    "tolerance":{"state":"not_required"},
+    "confidence":{"state":"not_applicable"},
+    "loss":{"state":"not_required"},
+    "comparison_criterion":{"state":"not_required"}
   },
-  "bridge_assumptions": [],
-  "decision": {
-    "status": "PASS"
-  }
+  "bridge_assumptions":[],
+  "decision":{"status":"PASS"}
 }
