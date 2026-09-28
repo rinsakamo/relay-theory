@@ -6,9 +6,13 @@
     "schema_version": "paper2-phi-object-v1",
     "basis_version": "paper2-working-basis-v1"
   },
+  "output": {
+    "schema_version": "paper2-archetype-skeleton-v1",
+    "interpretation": "Derived comparison object for Archetype reconstruction. It is not a replacement Phi object and does not alter the frozen #225 whole-object relation semantics."
+  },
   "interpretation": {
-    "leaf_pruning": "Remove representation, provenance, and audit-only detail that does not itself carry the scientific dependency structure used for Archetype reconstruction.",
-    "admissible_forgetting": "A separate later weakening step over retained scientific structure. Leaf pruning must not silently perform genuine structural forgetting."
+    "leaf_pruning": "Project frozen Phi into a derived skeleton by removing representation, provenance, and audit-only detail that does not itself carry the scientific dependency structure used for Archetype reconstruction.",
+    "admissible_forgetting": "A separate later weakening layer over the derived skeleton. It must not be confused with a #225 Phi refinement unless the relevant map is already admitted by #225."
   },
   "already_pruned_by_phi_projection": [
     "ClaimIR node descriptions and source-span lists",
@@ -64,6 +68,10 @@
     "which node or subsystem an operation targets",
     "scientific relation topology"
   ],
+  "frozen_phi_boundary": {
+    "unchanged": true,
+    "note": "The frozen #225 comparator requires exact claim_type, modality, scope_shape, and approximation.mode. Any later Archetype abstraction that forgets these fields is a new derived-skeleton operator, not an existing #225 Phi forgetting witness."
+  },
   "stage2_candidate_operator_schemas_not_yet_qualified": [
     "forget_claim_envelope",
     "forget_scope_component",
