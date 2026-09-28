@@ -1,0 +1,25 @@
+name: paper2-archetype-leaf-pruning-selftest
+
+on:
+  pull_request:
+    paths:
+      - "research/paper2/archetype_leaf_pruning_contract_v1.json"
+      - "scripts/paper2_archetype_leaf_pruning.py"
+      - ".github/workflows/paper2-archetype-leaf-pruning-selftest.yml"
+      - "scripts/paper2_phi_compare.py"
+      - "research/paper2/phi_object_v1.schema.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run #293 leaf-pruning destructive fixtures
+        run: python scripts/paper2_archetype_leaf_pruning.py --self-test
