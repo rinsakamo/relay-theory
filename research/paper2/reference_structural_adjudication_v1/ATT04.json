@@ -9,8 +9,13 @@
   },
   "coordinate_map": [
     {
-      "claim_node_id": "spatial_cue",
+      "claim_node_id": "central_predictive_cue",
       "coordinate_id": "basis.p1",
+      "required": true
+    },
+    {
+      "claim_node_id": "cue_validity_condition",
+      "coordinate_id": "basis.cnd1",
       "required": true
     },
     {
@@ -19,27 +24,47 @@
       "required": true
     },
     {
-      "claim_node_id": "target_location_relation",
-      "coordinate_id": "basis.cnd1",
-      "required": true
-    },
-    {
-      "claim_node_id": "detection_efficiency",
+      "claim_node_id": "detection_response",
       "coordinate_id": "basis.o1",
       "required": true
     },
     {
-      "claim_node_id": "cue_target_interval",
-      "coordinate_id": "basis.cnd2",
+      "claim_node_id": "detection_reaction_time",
+      "coordinate_id": "basis.o2",
       "required": true
     },
     {
-      "claim_node_id": "spatial_cueing_probe",
+      "claim_node_id": "central_cue_probe",
       "coordinate_id": "basis.p2",
       "required": true
     },
     {
-      "claim_node_id": "event_detection",
+      "claim_node_id": "movement_instruction_cue",
+      "coordinate_id": "basis.p3",
+      "required": true
+    },
+    {
+      "claim_node_id": "probe_position",
+      "coordinate_id": "basis.cnd2",
+      "required": true
+    },
+    {
+      "claim_node_id": "cue_probe_interval",
+      "coordinate_id": "basis.cnd3",
+      "required": true
+    },
+    {
+      "claim_node_id": "time_locked_spatial_trajectory",
+      "coordinate_id": "basis.s2",
+      "required": true
+    },
+    {
+      "claim_node_id": "trajectory_probe",
+      "coordinate_id": "basis.p4",
+      "required": true
+    },
+    {
+      "claim_node_id": "event_detection_criterion",
       "coordinate_id": "basis.q1",
       "required": true
     }
@@ -48,8 +73,10 @@
     "probe_P": {
       "state": "present",
       "claim_node_ids": [
-        "spatial_cue",
-        "spatial_cueing_probe"
+        "central_predictive_cue",
+        "central_cue_probe",
+        "movement_instruction_cue",
+        "trajectory_probe"
       ],
       "provenance_kind": "source_declared",
       "fixed_before_phi": true
@@ -57,7 +84,7 @@
     "criterion_Q": {
       "state": "present",
       "claim_node_ids": [
-        "event_detection"
+        "event_detection_criterion"
       ],
       "provenance_kind": "source_declared",
       "fixed_before_phi": true
@@ -73,22 +100,17 @@
     "time_index": {
       "state": "present",
       "source_span_ids": [
-        "s1",
-        "s3"
+        "s4",
+        "s5"
       ]
     },
     "history_window": {
-      "state": "present",
-      "source_span_ids": [
-        "s1",
-        "s3"
-      ]
+      "state": "not_required"
     },
     "future_horizon": {
       "state": "present",
       "source_span_ids": [
-        "s1",
-        "s3"
+        "s4"
       ]
     },
     "recurrence": {
@@ -99,11 +121,18 @@
     },
     "ordering": [
       {
-        "before_coordinate_id": "basis.p1",
-        "after_coordinate_id": "basis.o1",
+        "before_coordinate_id": "basis.p3",
+        "after_coordinate_id": "basis.s2",
         "source_span_ids": [
-          "s1",
-          "s3"
+          "s4"
+        ]
+      },
+      {
+        "before_coordinate_id": "basis.s2",
+        "after_coordinate_id": "basis.o2",
+        "source_span_ids": [
+          "s4",
+          "s5"
         ]
       }
     ]
