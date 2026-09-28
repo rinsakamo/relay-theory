@@ -7,19 +7,19 @@
     "source_spans": [
       {
         "span_id": "s1",
-        "locator": "British Journal of Psychology 66(3), PDF p.1 / published p.325, abstract: crossed learning/test environments and matched-environment advantage"
+        "locator": "British Journal of Psychology 66(3) (1975), published pp.325-326, abstract/introduction and Experiment I prediction: dry-land versus underwater learning crossed with dry-land versus underwater recall; same-environment combinations are predicted to outperform changed-environment combinations"
       },
       {
         "span_id": "s2",
-        "locator": "British Journal of Psychology 66(3), PDF p.3 / published p.327, Experiment 1 procedure: two learning environments crossed with two test environments"
+        "locator": "British Journal of Psychology 66(3) (1975), published pp.326-327, Experiment I method/procedure: diving-club volunteers experience all four DD, DW, WW, WD conditions; 36-word spoken lists are presented twice, followed by copied digits, an approximately four-minute delay, and written free recall"
       },
       {
         "span_id": "s3",
-        "locator": "British Journal of Psychology 66(3), PDF p.4 / published p.328, Table 1 and results: no main effects but highly significant learning-environment × test-environment interaction"
+        "locator": "British Journal of Psychology 66(3) (1975), published p.328, Table 1 and Experiment I results: no significant main effect of learning environment or recall environment, but a highly significant interaction; DD exceeds DW and WW exceeds WD, with no reliable DD-WW or DW-WD difference"
       },
       {
         "span_id": "s4",
-        "locator": "British Journal of Psychology 66(3), PDF pp.5-7 / published pp.329-331, Experiment 2 and general conclusion: movement/disruption account is not supported"
+        "locator": "British Journal of Psychology 66(3) (1975), published pp.329-330, Experiment II and Conclusions: an intervening dive in an otherwise dry-learning/dry-recall condition does not significantly reduce recall, constraining rehearsal/disruption alternatives; this auxiliary control is not merged into CH09.C1's Experiment I comparison structure"
       }
     ],
     "authors": [
@@ -41,31 +41,32 @@
     "extractor_version": "GPT-5.6 Sol",
     "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
     "extracted_at": "2026-09-28",
-    "manual_review_status": "unreviewed"
+    "manual_review_status": "reviewed"
   },
   "claim_core": {
     "claim_type": "comparison",
-    "modality": "probabilistic",
+    "modality": "comparative",
     "scope": {
       "conditions": [
-        "word lists acquired in one of two natural environments and later tested in either the same or the alternative environment"
+        "each participant learns word lists either on dry land or underwater and later performs the recall test either in the same environment or in the alternative environment"
       ],
       "population": [
-        "experienced divers"
+        "volunteer members of a university diving club"
       ],
       "substrate": [],
       "task": [
-        "learn spoken word lists and later produce remembered list items"
+        "hear a 36-word unrelated list presented twice and later write down as many list words as can be remembered"
       ],
       "temporal_scope": [
-        "test follows learning after the experiment's prescribed delay"
+        "after the second list presentation, participants copy 15 digits and recall follows after an approximately four-minute delay",
+        "the four experimental sessions for a participant are separated by approximately 24 hours"
       ]
     },
     "nodes": [
       {
         "id": "learning_environment",
         "role": "condition",
-        "description": "one of two natural environments present while the word list is acquired",
+        "description": "dry-land or underwater environment present during word-list acquisition",
         "source_span_ids": [
           "s1",
           "s2",
@@ -74,9 +75,9 @@
         "grounding": "normalized"
       },
       {
-        "id": "test_environment",
+        "id": "recall_environment",
         "role": "condition",
-        "description": "one of the same two natural environments present when list knowledge is later probed",
+        "description": "dry-land or underwater environment present during the later free-recall test",
         "source_span_ids": [
           "s1",
           "s2",
@@ -85,9 +86,9 @@
         "grounding": "normalized"
       },
       {
-        "id": "environment_match_state",
+        "id": "environment_congruence",
         "role": "partition",
-        "description": "partition of trials into matched versus mismatched learning/test environment combinations",
+        "description": "derived grouping of the four learning-by-recall combinations into same-environment conditions and changed-environment conditions",
         "source_span_ids": [
           "s1",
           "s2",
@@ -96,32 +97,21 @@
         "grounding": "normalized"
       },
       {
-        "id": "word_list_probe",
+        "id": "written_free_recall_probe",
         "role": "probe",
-        "description": "later test requiring participants to produce items from the previously learned list",
+        "description": "two-minute test in which participants write in any order as many words from the learned list as they can remember",
         "source_span_ids": [
-          "s1",
           "s2"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "recalled_item_count",
+        "id": "recalled_word_count",
         "role": "response_or_outcome",
-        "description": "number of previously presented list items produced at test",
+        "description": "number of words from the presented list correctly produced during the written free-recall test",
         "source_span_ids": [
           "s2",
           "s3"
-        ],
-        "grounding": "normalized"
-      },
-      {
-        "id": "movement_control",
-        "role": "intervention",
-        "description": "follow-up manipulation used to test whether disruption from moving between settings explains the effect",
-        "source_span_ids": [
-          "s1",
-          "s4"
         ],
         "grounding": "normalized"
       }
@@ -131,13 +121,12 @@
         "id": "r1",
         "kind": "depends_on",
         "arguments": [
-          "recalled_item_count",
+          "recalled_word_count",
           "learning_environment",
-          "test_environment"
+          "recall_environment"
         ],
-        "description": "the test outcome depends on the interaction between the environment present at learning and the environment present at test",
+        "description": "recall performance shows an interaction between the environment of learning and the environment of recall, despite no significant main effect of either environment alone",
         "source_span_ids": [
-          "s1",
           "s3"
         ],
         "grounding": "normalized"
@@ -146,10 +135,10 @@
         "id": "r2",
         "kind": "predicts",
         "arguments": [
-          "environment_match_state",
-          "recalled_item_count"
+          "environment_congruence",
+          "recalled_word_count"
         ],
-        "description": "matched learning/test environments predict higher test performance than mismatched combinations",
+        "description": "same-environment learning/recall combinations yield higher recall than the corresponding changed-environment combinations: dry-dry exceeds dry-wet and wet-wet exceeds wet-dry",
         "source_span_ids": [
           "s1",
           "s3"
@@ -160,28 +149,13 @@
         "id": "r3",
         "kind": "maps_to",
         "arguments": [
-          "word_list_probe",
-          "recalled_item_count"
+          "written_free_recall_probe",
+          "recalled_word_count"
         ],
-        "description": "the later list-production probe supplies the measured test outcome",
+        "description": "the written free-recall probe supplies the measured word-recall outcome",
         "source_span_ids": [
-          "s1",
           "s2",
           "s3"
-        ],
-        "grounding": "normalized"
-      },
-      {
-        "id": "r4",
-        "kind": "distinguishes",
-        "arguments": [
-          "movement_control",
-          "environment_match_state"
-        ],
-        "description": "the follow-up control separates a change-of-setting disruption account from the crossed-environment interaction observed in the main experiment",
-        "source_span_ids": [
-          "s1",
-          "s4"
         ],
         "grounding": "normalized"
       }
