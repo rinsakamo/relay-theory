@@ -14,7 +14,7 @@ on:
       - "research/paper2/reference_structural_adjudication_v1/CTL*.json"
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   ctl-archetype:
@@ -40,6 +40,21 @@ jobs:
           python scripts/paper2_archetype_ctl_lane.py             --emit-report             --output /tmp/ctl_archetype_lane_v1.json
           python -m json.tool /tmp/ctl_archetype_lane_v1.json >/dev/null
           sha256sum /tmp/ctl_archetype_lane_v1.json
+      - name: Freeze exact generated report once
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+        run: |
+          set -euo pipefail
+          target="research/paper2/ctl_archetype_lane_v1.json"
+          if [ ! -f "$target" ]; then
+            cp /tmp/ctl_archetype_lane_v1.json "$target"
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add "$target"
+            git commit -m "Paper 2 #298: freeze deterministic CTL Archetype lane report"
+            git push origin "HEAD:${{ github.head_ref }}"
+          fi
+      - name: Verify frozen report byte identity
+        run: cmp -s /tmp/ctl_archetype_lane_v1.json research/paper2/ctl_archetype_lane_v1.json
       - name: Upload generated report
         uses: actions/upload-artifact@v4
         with:
