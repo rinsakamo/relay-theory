@@ -6,10 +6,14 @@ on:
       - "research/paper2/reference_structural_adjudication_v1.*"
       - "research/paper2/reference_structural_adjudication_v1/MEM*.json"
       - "research/paper2/reference_structural_adjudication_v1/ATT*.json"
+      - "research/paper2/reference_structural_adjudication_v1/LRN*.json"
+      - "research/paper2/reference_structural_adjudication_v1/LRN*.json"
       - "scripts/paper2_reference_structural_adjudication.py"
       - "scripts/paper2_reference_phi_atlas.py"
       - "research/paper2/chatgpt_reference_claimir_v1/MEM*.json"
       - "research/paper2/chatgpt_reference_claimir_v1/ATT*.json"
+      - "research/paper2/chatgpt_reference_claimir_v1/LRN*.json"
+      - "research/paper2/chatgpt_reference_claimir_v1/LRN*.json"
       - "scripts/paper2_structural_signature_*.py"
       - "scripts/paper2_phi_compare.py"
       - "research/paper2/claim_ir_v1.*"
@@ -147,3 +151,16 @@ jobs:
           python -m json.tool /tmp/ATT06.phi.json >/dev/null
           sha256sum /tmp/ATT06.structural.json
           sha256sum /tmp/ATT06.phi.json
+
+      - name: Compile reviewed LRN01 structural record
+        run: |
+          set -euo pipefail
+          python scripts/paper2_reference_structural_adjudication.py \
+            --claim-ir research/paper2/chatgpt_reference_claimir_v1/LRN01.json \
+            --adjudication research/paper2/reference_structural_adjudication_v1/LRN01.json \
+            --output /tmp/LRN01.structural.json
+          python scripts/paper2_phi_compare.py --project /tmp/LRN01.structural.json > /tmp/LRN01.phi.json
+          python -m json.tool /tmp/LRN01.structural.json >/dev/null
+          python -m json.tool /tmp/LRN01.phi.json >/dev/null
+          sha256sum /tmp/LRN01.structural.json
+          sha256sum /tmp/LRN01.phi.json
