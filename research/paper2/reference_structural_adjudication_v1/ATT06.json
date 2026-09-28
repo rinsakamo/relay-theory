@@ -1,0 +1,113 @@
+{
+  "schema_version": "paper2-reference-structural-adjudication-v1",
+  "claim_id": "ATT06.C1",
+  "adjudicator": {
+    "tool": "ChatGPT",
+    "version": "GPT-5.6 Sol",
+    "procedure": "paper2-reference-structural-adjudication-v1:267",
+    "adjudicated_at": "2026-09-28"
+  },
+  "coordinate_map": [
+    {
+      "claim_node_id": "attribute_object_binding",
+      "coordinate_id": "basis.s1",
+      "required": true
+    },
+    {
+      "claim_node_id": "task_selection_instruction",
+      "coordinate_id": "basis.p1",
+      "required": true
+    },
+    {
+      "claim_node_id": "selected_object",
+      "coordinate_id": "basis.s2",
+      "required": true
+    },
+    {
+      "claim_node_id": "same_object_task_irrelevant_attribute",
+      "coordinate_id": "basis.cnd1",
+      "required": true
+    },
+    {
+      "claim_node_id": "other_object_task_irrelevant_attribute",
+      "coordinate_id": "basis.cnd2",
+      "required": true
+    },
+    {
+      "claim_node_id": "regional_fmri_response",
+      "coordinate_id": "basis.o1",
+      "required": true
+    },
+    {
+      "claim_node_id": "blocked_fmri_probe",
+      "coordinate_id": "basis.p2",
+      "required": true
+    },
+    {
+      "claim_node_id": "event_related_control_probe",
+      "coordinate_id": "basis.p3",
+      "required": true
+    }
+  ],
+  "controls": {
+    "probe_P": {
+      "state": "present",
+      "claim_node_ids": [
+        "task_selection_instruction",
+        "blocked_fmri_probe",
+        "event_related_control_probe"
+      ],
+      "provenance_kind": "source_declared",
+      "fixed_before_phi": true
+    },
+    "criterion_Q": {
+      "state": "not_required"
+    },
+    "partition_Pi": {
+      "state": "not_required"
+    },
+    "resource_C": {
+      "state": "not_required"
+    }
+  },
+  "temporal": {
+    "time_index": {
+      "state": "not_required"
+    },
+    "history_window": {
+      "state": "not_required"
+    },
+    "future_horizon": {
+      "state": "not_required"
+    },
+    "recurrence": {
+      "state": "not_required"
+    },
+    "persistence": {
+      "state": "not_required"
+    },
+    "ordering": []
+  },
+  "approximation": {
+    "mode": "stochastic",
+    "threshold": {
+      "state": "not_required"
+    },
+    "tolerance": {
+      "state": "not_required"
+    },
+    "confidence": {
+      "state": "not_applicable"
+    },
+    "loss": {
+      "state": "not_required"
+    },
+    "comparison_criterion": {
+      "state": "not_required"
+    }
+  },
+  "bridge_assumptions": [],
+  "decision": {
+    "status": "PASS"
+  }
+}

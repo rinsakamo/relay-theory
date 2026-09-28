@@ -1,0 +1,116 @@
+{
+  "schema_version": "paper2-reference-structural-adjudication-v1",
+  "claim_id": "CNC06.C1",
+  "adjudicator": {
+    "tool": "GPT-5.6 Sol",
+    "version": "2026-09-28",
+    "procedure": "paper2-reference-structural-adjudication-v1-cnc",
+    "adjudicated_at": "2026-09-28T14:39:00Z"
+  },
+  "coordinate_map": [
+    {
+      "claim_node_id": "candidate_extension_hypotheses",
+      "coordinate_id": "basis.n01",
+      "required": true
+    },
+    {
+      "claim_node_id": "prior_candidate_weights",
+      "coordinate_id": "basis.n02",
+      "required": true
+    },
+    {
+      "claim_node_id": "observed_positive_examples",
+      "coordinate_id": "basis.n03",
+      "required": true
+    },
+    {
+      "claim_node_id": "sampling_model",
+      "coordinate_id": "basis.n04",
+      "required": true
+    },
+    {
+      "claim_node_id": "candidate_likelihood_weights",
+      "coordinate_id": "basis.n05",
+      "required": true
+    },
+    {
+      "claim_node_id": "posterior_candidate_weights",
+      "coordinate_id": "basis.n06",
+      "required": true
+    },
+    {
+      "claim_node_id": "novel_item_probe",
+      "coordinate_id": "basis.n07",
+      "required": true
+    },
+    {
+      "claim_node_id": "predicted_label_extension_probability",
+      "coordinate_id": "basis.n08",
+      "required": true
+    },
+    {
+      "claim_node_id": "observed_label_extension_frequency",
+      "coordinate_id": "basis.n09",
+      "required": true
+    }
+  ],
+  "controls": {
+    "probe_P": {
+      "state": "present",
+      "claim_node_ids": [
+        "novel_item_probe"
+      ],
+      "provenance_kind": "experimental_contract",
+      "fixed_before_phi": true
+    },
+    "criterion_Q": {
+      "state": "not_required"
+    },
+    "partition_Pi": {
+      "state": "not_required"
+    },
+    "resource_C": {
+      "state": "not_required"
+    }
+  },
+  "temporal": {
+    "time_index": {
+      "state": "not_required"
+    },
+    "history_window": {
+      "state": "not_required"
+    },
+    "future_horizon": {
+      "state": "not_required"
+    },
+    "recurrence": {
+      "state": "not_required"
+    },
+    "persistence": {
+      "state": "not_required"
+    },
+    "ordering": []
+  },
+  "approximation": {
+    "mode": "stochastic",
+    "threshold": {
+      "state": "not_required"
+    },
+    "tolerance": {
+      "state": "not_required"
+    },
+    "confidence": {
+      "state": "not_required"
+    },
+    "loss": {
+      "state": "not_required"
+    },
+    "comparison_criterion": {
+      "state": "not_required"
+    }
+  },
+  "bridge_assumptions": [],
+  "decision": {
+    "status": "PASS"
+  }
+}

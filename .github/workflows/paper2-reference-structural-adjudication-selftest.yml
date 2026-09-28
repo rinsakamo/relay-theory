@@ -1,0 +1,184 @@
+name: paper2-reference-structural-adjudication-selftest
+
+on:
+  pull_request:
+    paths:
+      - "research/paper2/reference_structural_adjudication_v1.*"
+      - "research/paper2/reference_structural_adjudication_v1/*.json"
+      - "research/paper2/chatgpt_reference_claimir_v1/*.json"
+      - "scripts/paper2_reference_structural_adjudication.py"
+      - "scripts/paper2_reference_phi_atlas.py"
+      - "scripts/paper2_phi_compare.py"
+      - "scripts/paper2_structural_signature_*.py"
+      - "research/paper2/claim_ir_v1.*"
+      - "research/paper2/reference_phi_projection_freeze_v1.json"
+      - ".github/workflows/paper2-reference-structural-adjudication-selftest.yml"
+  push:
+    branches: [main]
+    paths:
+      - "research/paper2/reference_structural_adjudication_v1.*"
+      - "research/paper2/reference_structural_adjudication_v1/*.json"
+      - "research/paper2/chatgpt_reference_claimir_v1/*.json"
+      - "scripts/paper2_reference_structural_adjudication.py"
+      - "scripts/paper2_reference_phi_atlas.py"
+      - "scripts/paper2_phi_compare.py"
+      - "scripts/paper2_structural_signature_*.py"
+      - "research/paper2/claim_ir_v1.*"
+      - "research/paper2/reference_phi_projection_freeze_v1.json"
+      - ".github/workflows/paper2-reference-structural-adjudication-selftest.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile checkers
+        run: |
+          python -m py_compile scripts/paper2_reference_structural_adjudication.py
+          python -m py_compile scripts/paper2_reference_phi_atlas.py
+          python -m py_compile scripts/paper2_phi_compare.py
+
+      - name: Parse contract artifacts
+        run: |
+          python -m json.tool research/paper2/reference_structural_adjudication_v1.schema.json >/dev/null
+          python -m json.tool research/paper2/reference_structural_adjudication_v1.example.json >/dev/null
+
+      - name: Run destructive protocol self-test
+        run: python scripts/paper2_reference_structural_adjudication.py --self-test
+
+      - name: Reproduce MEM comparator-qualification atlas
+        run: |
+          set -euo pipefail
+          python scripts/paper2_reference_phi_atlas.py \
+            --claim-dir research/paper2/chatgpt_reference_claimir_v1 \
+            --adjudication-dir research/paper2/reference_structural_adjudication_v1 \
+            --source-manifest research/paper2/designed_source_web_fulltext_manifest_v1.json \
+            --slot-prefix MEM \
+            --expected-claims 6 \
+            --manifest-output /tmp/MEM.manifest.json \
+            --atlas-output /tmp/MEM.atlas.json \
+            --summary-output /tmp/MEM.summary.json
+          python -m json.tool /tmp/MEM.manifest.json >/dev/null
+          python -m json.tool /tmp/MEM.atlas.json >/dev/null
+          python -m json.tool /tmp/MEM.summary.json >/dev/null
+          cat /tmp/MEM.summary.json
+          sha256sum /tmp/MEM.manifest.json
+          sha256sum /tmp/MEM.atlas.json
+          sha256sum /tmp/MEM.summary.json
+
+      - name: Compile and project all 60 reviewed structural records
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib
+          import json
+          import pathlib
+          import subprocess
+
+          primary_prefixes = ["ATT", "BLF", "CNC", "CTL", "LRN", "MEM", "PRD", "SKL"]
+          claim_ids = [f"{prefix}{i:02d}" for prefix in primary_prefixes for i in range(1, 7)]
+          claim_ids += [f"CH{i:02d}" for i in range(1, 13)]
+          assert len(claim_ids) == 60
+
+          claim_dir = pathlib.Path("research/paper2/chatgpt_reference_claimir_v1")
+          adjudication_dir = pathlib.Path("research/paper2/reference_structural_adjudication_v1")
+          out_dir = pathlib.Path("/tmp/paper2-all60")
+          out_dir.mkdir(parents=True, exist_ok=True)
+
+          freeze = {
+              "schema_version": "paper2-reference-phi-projection-freeze-v1",
+              "claim_count": 60,
+              "claims": [],
+          }
+
+          for claim_id in claim_ids:
+              claim_path = claim_dir / f"{claim_id}.json"
+              adjudication_path = adjudication_dir / f"{claim_id}.json"
+              structural_path = out_dir / f"{claim_id}.structural.json"
+              phi_path = out_dir / f"{claim_id}.phi.json"
+
+              with claim_path.open("r", encoding="utf-8") as fh:
+                  claim = json.load(fh)
+              with adjudication_path.open("r", encoding="utf-8") as fh:
+                  adjudication = json.load(fh)
+
+              assert claim["extraction"]["manual_review_status"] == "reviewed"
+              assert adjudication["claim_id"] == claim["claim_id"]
+
+              subprocess.run(
+                  [
+                      "python",
+                      "scripts/paper2_reference_structural_adjudication.py",
+                      "--claim-ir",
+                      str(claim_path),
+                      "--adjudication",
+                      str(adjudication_path),
+                      "--output",
+                      str(structural_path),
+                  ],
+                  check=True,
+              )
+
+              with phi_path.open("w", encoding="utf-8") as fh:
+                  subprocess.run(
+                      [
+                          "python",
+                          "scripts/paper2_phi_compare.py",
+                          "--project",
+                          str(structural_path),
+                      ],
+                      stdout=fh,
+                      check=True,
+                  )
+
+              with structural_path.open("r", encoding="utf-8") as fh:
+                  json.load(fh)
+              with phi_path.open("r", encoding="utf-8") as fh:
+                  json.load(fh)
+
+              structural_sha = hashlib.sha256(structural_path.read_bytes()).hexdigest()
+              phi_sha = hashlib.sha256(phi_path.read_bytes()).hexdigest()
+              decision = adjudication["decision"]["status"]
+
+              freeze["claims"].append(
+                  {
+                      "claim_id": claim_id,
+                      "decision": decision,
+                      "structural_sha256": structural_sha,
+                      "phi_sha256": phi_sha,
+                  }
+              )
+              print(f"{claim_id} {decision} structural={structural_sha} phi={phi_sha}")
+
+          assert sum(row["decision"] == "PASS" for row in freeze["claims"]) == 59
+          assert sum(row["decision"] == "RESIDUAL" for row in freeze["claims"]) == 1
+          residuals = [row["claim_id"] for row in freeze["claims"] if row["decision"] == "RESIDUAL"]
+          assert residuals == ["CH10"]
+
+          manifest_path = out_dir / "all60.freeze.json"
+          manifest_path.write_text(
+              json.dumps(freeze, indent=2, sort_keys=True) + "\n",
+              encoding="utf-8",
+          )
+          manifest_sha = hashlib.sha256(manifest_path.read_bytes()).hexdigest()
+
+          authority_path = pathlib.Path("research/paper2/reference_phi_projection_freeze_v1.json")
+          authority = json.loads(authority_path.read_text(encoding="utf-8"))
+          assert authority["claim_count"] == 60
+          assert authority["pass_count"] == 59
+          assert authority["residual_count"] == 1
+          assert authority["residual_claim_ids"] == ["CH10"]
+          assert authority["generated_manifest_sha256"] == manifest_sha
+          assert authority["claims"] == freeze["claims"]
+          print("ALL60_COMMITTED_FREEZE_MATCH=PASS")
+
+          print(f"ALL60_FREEZE_SHA256={manifest_sha}")
+          print(manifest_path.read_text(encoding="utf-8"))
+          PY

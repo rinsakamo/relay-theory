@@ -1,0 +1,151 @@
+{
+  "schema_version": "paper2-reference-structural-adjudication-v1",
+  "claim_id": "BLF01.C1",
+  "adjudicator": {
+    "tool": "ChatGPT",
+    "version": "GPT-5.6 Sol",
+    "procedure": "paper2-structural-blf-267",
+    "adjudicated_at": "2026-09-28T14:34:00Z"
+  },
+  "coordinate_map": [
+    {
+      "claim_node_id": "outcome_history",
+      "coordinate_id": "basis.n01",
+      "required": true
+    },
+    {
+      "claim_node_id": "environment_change_rate",
+      "coordinate_id": "basis.n02",
+      "required": true
+    },
+    {
+      "claim_node_id": "outcome_weight",
+      "coordinate_id": "basis.n03",
+      "required": true
+    },
+    {
+      "claim_node_id": "next_choice",
+      "coordinate_id": "basis.n04",
+      "required": true
+    },
+    {
+      "claim_node_id": "adaptive_weighting_rule",
+      "coordinate_id": "basis.n05",
+      "required": true
+    },
+    {
+      "claim_node_id": "changing_contingency_probe",
+      "coordinate_id": "basis.n06",
+      "required": true
+    }
+  ],
+  "controls": {
+    "probe_P": {
+      "state": "present",
+      "claim_node_ids": [
+        "changing_contingency_probe"
+      ],
+      "provenance_kind": "source_declared",
+      "fixed_before_phi": true
+    },
+    "criterion_Q": {
+      "state": "present",
+      "claim_node_ids": [
+        "adaptive_weighting_rule"
+      ],
+      "provenance_kind": "source_declared",
+      "fixed_before_phi": true
+    },
+    "partition_Pi": {
+      "state": "not_required"
+    },
+    "resource_C": {
+      "state": "not_required"
+    }
+  },
+  "temporal": {
+    "time_index": {
+      "state": "present",
+      "source_span_ids": [
+        "s1",
+        "s2",
+        "s3"
+      ]
+    },
+    "history_window": {
+      "state": "present",
+      "source_span_ids": [
+        "s1",
+        "s2",
+        "s3"
+      ]
+    },
+    "future_horizon": {
+      "state": "present",
+      "source_span_ids": [
+        "s1",
+        "s2"
+      ]
+    },
+    "recurrence": {
+      "state": "present",
+      "source_span_ids": [
+        "s1",
+        "s2",
+        "s3"
+      ]
+    },
+    "persistence": {
+      "state": "not_required"
+    },
+    "ordering": [
+      {
+        "before_coordinate_id": "basis.n01",
+        "after_coordinate_id": "basis.n02",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ]
+      },
+      {
+        "before_coordinate_id": "basis.n01",
+        "after_coordinate_id": "basis.n03",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ]
+      },
+      {
+        "before_coordinate_id": "basis.n03",
+        "after_coordinate_id": "basis.n04",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ]
+      }
+    ]
+  },
+  "approximation": {
+    "mode": "stochastic",
+    "threshold": {
+      "state": "not_required"
+    },
+    "tolerance": {
+      "state": "not_required"
+    },
+    "confidence": {
+      "state": "not_required"
+    },
+    "loss": {
+      "state": "not_required"
+    },
+    "comparison_criterion": {
+      "state": "not_required"
+    }
+  },
+  "bridge_assumptions": [],
+  "decision": {
+    "status": "PASS"
+  }
+}

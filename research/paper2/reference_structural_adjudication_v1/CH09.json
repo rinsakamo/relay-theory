@@ -1,0 +1,134 @@
+{
+  "schema_version": "paper2-reference-structural-adjudication-v1",
+  "claim_id": "CH09.C1",
+  "adjudicator": {
+    "tool": "ChatGPT",
+    "version": "GPT-5.6 Sol",
+    "procedure": "paper2-challenge-a-reference-structural-adjudication-v1:267",
+    "adjudicated_at": "2026-09-28"
+  },
+  "coordinate_map": [
+    {
+      "claim_node_id": "learning_environment",
+      "coordinate_id": "basis.cnd1",
+      "required": true
+    },
+    {
+      "claim_node_id": "recall_environment",
+      "coordinate_id": "basis.cnd2",
+      "required": true
+    },
+    {
+      "claim_node_id": "environment_congruence",
+      "coordinate_id": "basis.pi1",
+      "required": true
+    },
+    {
+      "claim_node_id": "written_free_recall_probe",
+      "coordinate_id": "basis.p1",
+      "required": true
+    },
+    {
+      "claim_node_id": "recalled_word_count",
+      "coordinate_id": "basis.o1",
+      "required": true
+    }
+  ],
+  "controls": {
+    "probe_P": {
+      "state": "present",
+      "claim_node_ids": [
+        "written_free_recall_probe"
+      ],
+      "provenance_kind": "source_declared",
+      "fixed_before_phi": true
+    },
+    "criterion_Q": {
+      "state": "not_required"
+    },
+    "partition_Pi": {
+      "state": "present",
+      "claim_node_ids": [
+        "environment_congruence"
+      ],
+      "provenance_kind": "source_declared",
+      "fixed_before_phi": true
+    },
+    "resource_C": {
+      "state": "not_required"
+    }
+  },
+  "temporal": {
+    "time_index": {
+      "state": "present",
+      "source_span_ids": [
+        "s1",
+        "s2",
+        "s3"
+      ]
+    },
+    "history_window": {
+      "state": "present",
+      "source_span_ids": [
+        "s1",
+        "s2",
+        "s3"
+      ]
+    },
+    "future_horizon": {
+      "state": "present",
+      "source_span_ids": [
+        "s1",
+        "s2",
+        "s3"
+      ]
+    },
+    "recurrence": {
+      "state": "present",
+      "source_span_ids": [
+        "s2"
+      ]
+    },
+    "persistence": {
+      "state": "present",
+      "source_span_ids": [
+        "s1",
+        "s2",
+        "s3"
+      ]
+    },
+    "ordering": [
+      {
+        "before_coordinate_id": "basis.cnd1",
+        "after_coordinate_id": "basis.cnd2",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ]
+      }
+    ]
+  },
+  "approximation": {
+    "mode": "stochastic",
+    "threshold": {
+      "state": "not_required"
+    },
+    "tolerance": {
+      "state": "not_required"
+    },
+    "confidence": {
+      "state": "not_applicable"
+    },
+    "loss": {
+      "state": "not_required"
+    },
+    "comparison_criterion": {
+      "state": "not_required"
+    }
+  },
+  "bridge_assumptions": [],
+  "decision": {
+    "status": "PASS"
+  }
+}

@@ -1,0 +1,157 @@
+{
+  "schema_version": "paper2-reference-structural-adjudication-v1",
+  "claim_id": "PRD01.C1",
+  "adjudicator": {
+    "tool": "ChatGPT",
+    "version": "GPT-5.6 Sol",
+    "procedure": "paper2-prd-structural-adjudication-267",
+    "adjudicated_at": "2026-09-28T14:25:00Z"
+  },
+  "coordinate_map": [
+    {
+      "claim_node_id": "visual_height_estimate",
+      "coordinate_id": "visual_height_estimate",
+      "required": true
+    },
+    {
+      "claim_node_id": "haptic_height_estimate",
+      "coordinate_id": "haptic_height_estimate",
+      "required": true
+    },
+    {
+      "claim_node_id": "visual_estimator_uncertainty",
+      "coordinate_id": "visual_estimator_uncertainty",
+      "required": true
+    },
+    {
+      "claim_node_id": "haptic_estimator_uncertainty",
+      "coordinate_id": "haptic_estimator_uncertainty",
+      "required": true
+    },
+    {
+      "claim_node_id": "visual_noise_level",
+      "coordinate_id": "visual_noise_level",
+      "required": true
+    },
+    {
+      "claim_node_id": "reciprocal_variance_weight_rule",
+      "coordinate_id": "reciprocal_variance_weight_rule",
+      "required": true
+    },
+    {
+      "claim_node_id": "predicted_joint_estimate",
+      "coordinate_id": "predicted_joint_estimate",
+      "required": true
+    },
+    {
+      "claim_node_id": "minimum_variance_criterion",
+      "coordinate_id": "minimum_variance_criterion",
+      "required": true
+    },
+    {
+      "claim_node_id": "within_modality_discrimination_probe",
+      "coordinate_id": "within_modality_discrimination_probe",
+      "required": true
+    },
+    {
+      "claim_node_id": "cross_modal_conflict_probe",
+      "coordinate_id": "cross_modal_conflict_probe",
+      "required": true
+    },
+    {
+      "claim_node_id": "observed_pse",
+      "coordinate_id": "observed_pse",
+      "required": true
+    },
+    {
+      "claim_node_id": "inferred_visual_weight",
+      "coordinate_id": "inferred_visual_weight",
+      "required": true
+    },
+    {
+      "claim_node_id": "predicted_visual_weight",
+      "coordinate_id": "predicted_visual_weight",
+      "required": true
+    },
+    {
+      "claim_node_id": "predicted_joint_threshold",
+      "coordinate_id": "predicted_joint_threshold",
+      "required": true
+    },
+    {
+      "claim_node_id": "observed_joint_threshold",
+      "coordinate_id": "observed_joint_threshold",
+      "required": true
+    }
+  ],
+  "controls": {
+    "probe_P": {
+      "state": "present",
+      "claim_node_ids": [
+        "visual_noise_level",
+        "within_modality_discrimination_probe",
+        "cross_modal_conflict_probe"
+      ],
+      "provenance_kind": "experimental_contract",
+      "fixed_before_phi": true
+    },
+    "criterion_Q": {
+      "state": "present",
+      "claim_node_ids": [
+        "minimum_variance_criterion"
+      ],
+      "provenance_kind": "source_declared",
+      "fixed_before_phi": true
+    },
+    "partition_Pi": {
+      "state": "not_required"
+    },
+    "resource_C": {
+      "state": "not_required"
+    }
+  },
+  "temporal": {
+    "time_index": {
+      "state": "present",
+      "source_span_ids": [
+        "s5",
+        "s6"
+      ]
+    },
+    "history_window": {
+      "state": "not_required"
+    },
+    "future_horizon": {
+      "state": "not_required"
+    },
+    "recurrence": {
+      "state": "not_required"
+    },
+    "persistence": {
+      "state": "not_required"
+    },
+    "ordering": []
+  },
+  "approximation": {
+    "mode": "stochastic",
+    "threshold": {
+      "state": "not_required"
+    },
+    "tolerance": {
+      "state": "not_required"
+    },
+    "confidence": {
+      "state": "not_applicable"
+    },
+    "loss": {
+      "state": "not_required"
+    },
+    "comparison_criterion": {
+      "state": "not_required"
+    }
+  },
+  "bridge_assumptions": [],
+  "decision": {
+    "status": "PASS"
+  }
+}

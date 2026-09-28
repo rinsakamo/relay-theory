@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/rinsakamo/relay-theory/blob/main/research/paper2/reference_structural_adjudication_v1.schema.json",
+  "title": "Paper 2 reference structural adjudication v1",
+  "description": "Explicit per-claim semantic decisions consumed by the deterministic #267 ClaimIR-to-structural-signature compiler. Semantic constraints are additionally enforced by the stdlib checker.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "claim_id",
+    "adjudicator",
+    "coordinate_map",
+    "controls",
+    "temporal",
+    "approximation",
+    "bridge_assumptions",
+    "decision"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "paper2-reference-structural-adjudication-v1"
+    },
+    "claim_id": {
+      "type": "string"
+    },
+    "adjudicator": {
+      "type": "object"
+    },
+    "coordinate_map": {
+      "type": "array",
+      "minItems": 1
+    },
+    "controls": {
+      "type": "object"
+    },
+    "temporal": {
+      "type": "object"
+    },
+    "approximation": {
+      "type": "object"
+    },
+    "bridge_assumptions": {
+      "type": "array"
+    },
+    "decision": {
+      "type": "object"
+    }
+  }
+}

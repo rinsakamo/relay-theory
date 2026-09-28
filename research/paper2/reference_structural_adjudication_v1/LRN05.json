@@ -1,0 +1,164 @@
+{
+  "schema_version": "paper2-reference-structural-adjudication-v1",
+  "claim_id": "LRN05.C1",
+  "adjudicator": {
+    "tool": "ChatGPT",
+    "version": "GPT-5.6 Sol",
+    "procedure": "paper2-reference-structural-adjudication-v1:267",
+    "adjudicated_at": "2026-09-28"
+  },
+  "coordinate_map": [
+    {
+      "claim_node_id": "continuous_exposure_protocol",
+      "coordinate_id": "basis.p1",
+      "required": true
+    },
+    {
+      "claim_node_id": "within_unit_pair_contingency",
+      "coordinate_id": "basis.o1",
+      "required": true
+    },
+    {
+      "claim_node_id": "cross_boundary_pair_contingency",
+      "coordinate_id": "basis.o2",
+      "required": true
+    },
+    {
+      "claim_node_id": "recurring_unit_test_class",
+      "coordinate_id": "basis.cnd1",
+      "required": true
+    },
+    {
+      "claim_node_id": "reordered_unseen_test_class",
+      "coordinate_id": "basis.cnd2",
+      "required": true
+    },
+    {
+      "claim_node_id": "boundary_spanning_test_class",
+      "coordinate_id": "basis.cnd3",
+      "required": true
+    },
+    {
+      "claim_node_id": "post_exposure_orientation_probe",
+      "coordinate_id": "basis.p2",
+      "required": true
+    },
+    {
+      "claim_node_id": "listening_duration",
+      "coordinate_id": "basis.o3",
+      "required": true
+    },
+    {
+      "claim_node_id": "between_class_difference_criterion",
+      "coordinate_id": "basis.q1",
+      "required": true
+    },
+    {
+      "claim_node_id": "inferred_recurring_grouping",
+      "coordinate_id": "basis.s1",
+      "required": true
+    }
+  ],
+  "controls": {
+    "probe_P": {
+      "state": "present",
+      "claim_node_ids": [
+        "continuous_exposure_protocol",
+        "post_exposure_orientation_probe"
+      ],
+      "provenance_kind": "source_declared",
+      "fixed_before_phi": true
+    },
+    "criterion_Q": {
+      "state": "present",
+      "claim_node_ids": [
+        "between_class_difference_criterion"
+      ],
+      "provenance_kind": "source_declared",
+      "fixed_before_phi": true
+    },
+    "partition_Pi": {
+      "state": "not_required"
+    },
+    "resource_C": {
+      "state": "not_required"
+    }
+  },
+  "temporal": {
+    "time_index": {
+      "state": "present",
+      "source_span_ids": [
+        "s2",
+        "s3",
+        "s4",
+        "s5"
+      ]
+    },
+    "history_window": {
+      "state": "present",
+      "source_span_ids": [
+        "s2",
+        "s5",
+        "s6"
+      ]
+    },
+    "future_horizon": {
+      "state": "present",
+      "source_span_ids": [
+        "s2",
+        "s3",
+        "s4",
+        "s5"
+      ]
+    },
+    "recurrence": {
+      "state": "present",
+      "source_span_ids": [
+        "s2",
+        "s5"
+      ]
+    },
+    "persistence": {
+      "state": "present",
+      "source_span_ids": [
+        "s3",
+        "s4",
+        "s6"
+      ]
+    },
+    "ordering": [
+      {
+        "before_coordinate_id": "basis.p1",
+        "after_coordinate_id": "basis.p2",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s4",
+          "s5"
+        ]
+      }
+    ]
+  },
+  "approximation": {
+    "mode": "stochastic",
+    "threshold": {
+      "state": "not_required"
+    },
+    "tolerance": {
+      "state": "not_required"
+    },
+    "confidence": {
+      "state": "not_applicable"
+    },
+    "loss": {
+      "state": "not_required"
+    },
+    "comparison_criterion": {
+      "state": "not_required"
+    }
+  },
+  "bridge_assumptions": [],
+  "decision": {
+    "status": "PASS"
+  }
+}
