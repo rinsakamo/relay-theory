@@ -79,11 +79,5 @@ jobs:
             sha256sum "/tmp/$CLAIM.structural.json"
             sha256sum "/tmp/$CLAIM.phi.json"
 
-            python - "$CLAIM" <<'PY'
-import json, pathlib, sys
-claim = sys.argv[1]
-obj = json.loads(pathlib.Path(f"/tmp/{claim}.structural.json").read_text())
-attempt = obj["paper"]["claims"][0]["claim_ir_records"][0]["decomposition_attempts"][0]
-print(f"{claim} validation=PASS outcome={attempt['outcome']['status']}")
-PY
+            python -c 'import json,pathlib,sys; claim=sys.argv[1]; obj=json.loads(pathlib.Path(f"/tmp/{claim}.structural.json").read_text()); attempt=obj["paper"]["claims"][0]["claim_ir_records"][0]["decomposition_attempts"][0]; print(f"{claim} validation=PASS outcome={attempt[\"outcome\"][\"status\"]}")' "$CLAIM"
           done
