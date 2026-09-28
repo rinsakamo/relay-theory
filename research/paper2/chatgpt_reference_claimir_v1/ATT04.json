@@ -7,15 +7,23 @@
     "source_spans": [
       {
         "span_id": "s1",
-        "locator": "Quarterly Journal of Experimental Psychology 32(1), published p.3, Abstract: covert commitment to a spatial position traced through changes in detection efficiency"
+        "locator": "Quarterly Journal of Experimental Psychology 32(1), published p.3, Abstract: human subjects commit internal allocation to a nonfixated visual position; the trajectory is inferred from momentary changes in detection efficiency"
       },
       {
         "span_id": "s2",
-        "locator": "Quarterly Journal of Experimental Psychology 32(1), published pp.3-4, distinction between orienting and detecting"
+        "locator": "Quarterly Journal of Experimental Psychology 32(1), published pp.4-5, definitions and measurement logic: internal alignment is distinguished from detecting; internal spatial allocation is manipulated by instruction/probability and measured through changes in detection efficiency"
       },
       {
         "span_id": "s3",
-        "locator": "Quarterly Journal of Experimental Psychology 32(1), early spatial-cueing experiments: valid/invalid cue manipulations and time-locked changes in detection efficiency"
+        "locator": "Quarterly Journal of Experimental Psychology 32(1), published pp.6-8, central predictive-cue experiments: maintained fixation/EOG control, neutral plus versus directional arrows, 0.8 valid/0.2 invalid target probability, and reaction-time benefits/costs across simple and choice tasks"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Quarterly Journal of Experimental Psychology 32(1), published pp.10-12, separate analogue-movement experiments: arrow instruction to a far peripheral target, variable cue-probe SOA, target/intermediate/opposite probe positions, and maximum relative intermediate-position advantage at about 150 ms; analogue interpretation stated as provisional"
+      },
+      {
+        "span_id": "s5",
+        "locator": "Quarterly Journal of Experimental Psychology 32(1), published pp.21-22, Conclusions: time-locked covert shifts are measurable through converging efficiency measures; criterion-shift language is acknowledged as an alternative description but constrained by the observed pattern"
       }
     ],
     "authors": [
@@ -37,33 +45,44 @@
     "extractor_version": "GPT-5.6 Sol",
     "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
     "extracted_at": "2026-09-28",
-    "manual_review_status": "unreviewed"
+    "manual_review_status": "reviewed"
   },
   "claim_core": {
     "claim_type": "relation",
-    "modality": "probabilistic",
+    "modality": "descriptive",
     "scope": {
       "conditions": [
-        "central fixation maintained while advance information indicates a likely visual location"
+        "central fixation is maintained while a neutral plus cue or central directional cue sets the probability of a later luminance target on the left or right",
+        "in a separate trajectory experiment, a central arrow instructs internal allocation toward a visible far peripheral target while low-probability probes may appear at the target, intermediate, or opposite positions"
       ],
       "population": [
-        "human participants"
+        "normal human participants in the psychophysical experiments reviewed by the source"
       ],
       "substrate": [],
       "task": [
-        "detect or respond to a visual event appearing at a cued or uncued position"
+        "simple or choice reaction-time detection under neutral, valid, and invalid central-cue conditions",
+        "detect low-probability probes presented at different spatial positions and stimulus-onset asynchronies after an instruction to allocate toward a far peripheral target"
       ],
       "temporal_scope": [
-        "cue-to-target interval varied so that the movement of covert spatial allocation can be traced over time"
+        "the central predictive-cue cost/benefit experiments and the separate variable-SOA trajectory experiments are distinct procedures; in the latter, the greatest relative intermediate-position advantage occurred at about 150 ms"
       ]
     },
     "nodes": [
       {
-        "id": "spatial_cue",
+        "id": "central_predictive_cue",
         "role": "intervention",
-        "description": "advance information indicating a location in the visual field without requiring an overt eye movement",
+        "description": "central neutral or directional cue that changes the probability distribution over the later target position while fixation is maintained",
         "source_span_ids": [
-          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "cue_validity_condition",
+        "role": "condition",
+        "description": "whether the target occurs at the directionally indicated position, at the opposite position, or under a neutral non-directional cue",
+        "source_span_ids": [
           "s3"
         ],
         "grounding": "normalized"
@@ -71,62 +90,99 @@
       {
         "id": "covert_spatial_allocation",
         "role": "state_or_structure",
-        "description": "internal alignment with a sensory location while fixation is maintained",
+        "description": "internal alignment with a source position in visual space without requiring an eye movement",
         "source_span_ids": [
           "s1",
           "s2",
-          "s3"
+          "s3",
+          "s5"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "target_location_relation",
-        "role": "condition",
-        "description": "whether the later event appears at the indicated location or elsewhere",
-        "source_span_ids": [
-          "s1",
-          "s3"
-        ],
-        "grounding": "normalized"
-      },
-      {
-        "id": "detection_efficiency",
+        "id": "detection_response",
         "role": "response_or_outcome",
-        "description": "speed or effectiveness of detecting/reporting the later visual event",
+        "description": "arbitrary assigned manual or verbal response indicating that the visual event has been detected",
         "source_span_ids": [
-          "s1",
           "s2",
           "s3"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "cue_target_interval",
-        "role": "condition",
-        "description": "time between advance location information and the later visual event",
+        "id": "detection_reaction_time",
+        "role": "response_or_outcome",
+        "description": "latency of the assigned response to the detected visual event",
         "source_span_ids": [
-          "s1",
-          "s3"
+          "s2",
+          "s3",
+          "s4",
+          "s5"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "spatial_cueing_probe",
+        "id": "central_cue_probe",
         "role": "probe",
-        "description": "valid/invalid spatial-cue procedure with varied cue-to-target timing",
+        "description": "neutral/valid/invalid central-cue reaction-time procedure used to compare detection efficiency while eye position is held fixed",
         "source_span_ids": [
-          "s1",
           "s3"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "event_detection",
-        "role": "criterion",
-        "description": "successful report or assigned response indicating detection of the visual event",
+        "id": "movement_instruction_cue",
+        "role": "intervention",
+        "description": "central arrow instructing internal allocation toward a visible peripheral target in the separate trajectory experiment",
         "source_span_ids": [
-          "s2",
-          "s3"
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "probe_position",
+        "role": "condition",
+        "description": "location of the low-probability detection probe relative to the instructed far target, including target, intermediate, and opposite-side positions",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "cue_probe_interval",
+        "role": "condition",
+        "description": "stimulus-onset interval between the movement instruction and the later detection probe in the trajectory experiment",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "time_locked_spatial_trajectory",
+        "role": "state_or_structure",
+        "description": "source-proposed analogue trajectory whose position-dependent detection advantage changes over time after the instruction",
+        "source_span_ids": [
+          "s1",
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "trajectory_probe",
+        "role": "probe",
+        "description": "variable-SOA multi-position detection procedure used to test whether the internal spatial shift can be time-locked and whether intermediate positions receive transient advantage",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "event_detection_criterion",
+        "role": "criterion",
+        "description": "the stimulus has reached a processing level at which an arbitrary experimenter-assigned report response can be made",
+        "source_span_ids": [
+          "s2"
         ],
         "grounding": "normalized"
       }
@@ -134,58 +190,99 @@
     "relations": [
       {
         "id": "r1",
-        "kind": "changes",
+        "kind": "depends_on",
         "arguments": [
-          "spatial_cue",
-          "covert_spatial_allocation"
+          "detection_reaction_time",
+          "cue_validity_condition"
         ],
-        "description": "advance location information induces a covert shift toward the indicated position",
+        "description": "in the central predictive-cue experiments, response latency is shorter with valid spatial information and longer with invalid information relative to the neutral condition",
         "source_span_ids": [
-          "s1",
           "s3"
         ],
         "grounding": "normalized"
       },
       {
         "id": "r2",
-        "kind": "depends_on",
+        "kind": "maps_to",
         "arguments": [
-          "detection_efficiency",
-          "target_location_relation",
-          "cue_target_interval"
+          "central_cue_probe",
+          "detection_reaction_time"
         ],
-        "description": "detection efficiency depends jointly on cue validity and elapsed cue-to-target time",
+        "description": "the neutral/valid/invalid procedure uses reaction-time differences as the observable measure of cue-dependent detection efficiency",
         "source_span_ids": [
-          "s1",
+          "s2",
           "s3"
         ],
         "grounding": "normalized"
       },
       {
         "id": "r3",
-        "kind": "maps_to",
+        "kind": "changes",
         "arguments": [
-          "spatial_cueing_probe",
-          "detection_efficiency"
+          "central_predictive_cue",
+          "covert_spatial_allocation"
         ],
-        "description": "time-resolved cueing effects provide the observable trajectory of covert spatial allocation",
+        "description": "the source interprets the cue-dependent performance differences under maintained fixation as a change in internal spatial alignment",
         "source_span_ids": [
-          "s1",
-          "s3"
+          "s2",
+          "s3",
+          "s5"
         ],
         "grounding": "normalized"
       },
       {
         "id": "r4",
+        "kind": "depends_on",
+        "arguments": [
+          "detection_reaction_time",
+          "probe_position",
+          "cue_probe_interval"
+        ],
+        "description": "in the separate trajectory experiment, reaction time varies jointly with probe position and elapsed interval after the instruction",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "maps_to",
+        "arguments": [
+          "trajectory_probe",
+          "time_locked_spatial_trajectory"
+        ],
+        "description": "the source treats the position-by-time reaction-time pattern, including the greatest relative intermediate-position advantage at about 150 ms, as provisional support for a time-locked analogue trajectory",
+        "source_span_ids": [
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r6",
+        "kind": "maps_to",
+        "arguments": [
+          "covert_spatial_allocation",
+          "detection_reaction_time"
+        ],
+        "description": "changes in internal spatial alignment are operationally measured through changes in the efficiency and latency of detecting events at different positions",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r7",
         "kind": "satisfies",
         "arguments": [
-          "detection_efficiency",
-          "event_detection"
+          "detection_response",
+          "event_detection_criterion"
         ],
-        "description": "the response surface is defined by successful detection/report of the event",
+        "description": "an assigned report response is the operational indication that the event has reached the source-defined detection level",
         "source_span_ids": [
-          "s2",
-          "s3"
+          "s2"
         ],
         "grounding": "normalized"
       }

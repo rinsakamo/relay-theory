@@ -7,15 +7,23 @@
     "source_spans": [
       {
         "span_id": "s1",
-        "locator": "Nature 401, published p.584, Abstract: superimposed face/house stimuli with one object moving and task varied across object/attribute"
+        "locator": "Nature 401, published pp.584-585, Abstract and opening rationale: superimposed face/house stimuli; independently localized face-, place/house-, and motion-sensitive regions; central test of whether a task-relevant attribute carries enhancement to task-irrelevant attributes of the same object"
       },
       {
         "span_id": "s2",
-        "locator": "Nature 401, published pp.584-586, experiment and ROI logic: category- and motion-sensitive regions measure attended and unattended attributes"
+        "locator": "Nature 401, published p.585, Experiment 1: seven subjects; blocked crossing of face-moving versus house-moving stimuli with attend-face, attend-house, and attend-motion tasks; direct preferred-attribute enhancement plus greater response to the task-irrelevant attribute of the selected object"
       },
       {
         "span_id": "s3",
-        "locator": "Nature 401, published p.586, control analysis: task-irrelevant attribute of the attended object evokes greater response than same attribute on unattended object"
+        "locator": "Nature 401, published p.586, Experiment 2: four subjects; event-related random intermix of moving-face/static-house and moving-house/static-face trials; motion-direction versus stationary-position repetition tasks; form identity unpredictable and never task relevant; same-object irrelevant-form enhancement remains"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Nature 401, published p.586, interpretation and limits: event-related result rejects strategic use of the irrelevant dimension; objects are not claimed to be the only possible units; task-relevant responses can exceed same-object task-irrelevant responses; biased-competition account is offered as an interpretation rather than a uniquely established mechanism"
+      },
+      {
+        "span_id": "s5",
+        "locator": "Nature 401, published pp.586-587, Methods: seven normal young adults in Experiment 1 and four in Experiment 2; task timing, fixation/repetition-detection instructions, independent ROI localization, and Experiment 2 peak-response measure at 4-6 s after stimulus onset"
       }
     ],
     "authors": [
@@ -39,97 +47,119 @@
     "extractor_version": "GPT-5.6 Sol",
     "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
     "extracted_at": "2026-09-28",
-    "manual_review_status": "unreviewed"
+    "manual_review_status": "reviewed"
   },
   "claim_core": {
     "claim_type": "comparison",
-    "modality": "probabilistic",
+    "modality": "comparative",
     "scope": {
       "conditions": [
-        "two transparently superimposed visual objects, one moving and one stationary, with task cue selecting an attribute or object"
+        "a face and a house are transparently superimposed at the same retinal location, with one object moving and the other stationary",
+        "Experiment 1 uses blocked instructions to monitor face identity, house identity, or motion direction",
+        "Experiment 2 randomly intermixes which object moves and requires monitoring only motion direction or the position of the stationary object, so face/house form is unpredictable and task irrelevant"
       ],
       "population": [
-        "human participants"
+        "seven normal young adults in Experiment 1 and four normal young adults in Experiment 2"
       ],
       "substrate": [
-        "category-sensitive and motion-sensitive cortical regions"
+        "independently localized fusiform face-selective, parahippocampal place/house-selective, and MT/MST motion-selective regions"
       ],
       "task": [
-        "monitor one cued visual attribute while category and motion signals are measured"
+        "detect consecutive repetitions of the instructed visual attribute in Experiment 1",
+        "detect consecutive repetitions of motion direction or stationary-object position in separate event-related scans in Experiment 2"
       ],
-      "temporal_scope": []
+      "temporal_scope": [
+        "Experiment 1 uses 28-s task blocks with 675-ms stimulus presentations separated by 725-ms inter-trial intervals",
+        "Experiment 2 uses 375-ms stimulus presentations in randomized event-related trials; regional response magnitude is measured from the 4-6 s post-stimulus peak"
+      ]
     },
     "nodes": [
       {
-        "id": "object_partition",
-        "role": "partition",
-        "description": "grouping of category identity and motion into each of two superimposed perceptual objects",
+        "id": "attribute_object_binding",
+        "role": "state_or_structure",
+        "description": "assignment of form identity and motion or position attributes to each of the two superimposed visual objects",
         "source_span_ids": [
           "s1",
           "s2",
-          "s3"
+          "s3",
+          "s4"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "selected_attribute",
+        "id": "task_selection_instruction",
         "role": "intervention",
-        "description": "task-cued visual attribute that participants monitor",
+        "description": "instruction specifying which visual dimension must be monitored for consecutive repetitions",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "selected_object",
+        "role": "state_or_structure",
+        "description": "the superimposed object that carries the currently task-relevant visual dimension on a block or trial",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "same_object_task_irrelevant_attribute",
+        "role": "condition",
+        "description": "a visual attribute of the selected object that is not required for the current task, such as face or house form during the motion or position tasks",
         "source_span_ids": [
           "s1",
-          "s2"
+          "s2",
+          "s3",
+          "s4"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "same_object_unselected_attribute",
+        "id": "other_object_task_irrelevant_attribute",
         "role": "condition",
-        "description": "task-irrelevant attribute belonging to the same perceptual object as the selected attribute",
+        "description": "the corresponding visual attribute belonging to the other superimposed object",
         "source_span_ids": [
+          "s1",
           "s2",
           "s3"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "other_object_unselected_attribute",
-        "role": "condition",
-        "description": "corresponding task-irrelevant attribute belonging to the other superimposed object",
-        "source_span_ids": [
-          "s2",
-          "s3"
-        ],
-        "grounding": "normalized"
-      },
-      {
-        "id": "regional_signal",
+        "id": "regional_fmri_response",
         "role": "response_or_outcome",
-        "description": "magnetic-resonance response in category- or motion-sensitive cortical regions",
+        "description": "percent magnetic-resonance signal change in independently localized face-, place/house-, or motion-selective regions",
         "source_span_ids": [
           "s1",
           "s2",
-          "s3"
+          "s3",
+          "s5"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "imaging_probe",
+        "id": "blocked_fmri_probe",
         "role": "probe",
-        "description": "functional imaging readout across task conditions that independently vary selected attribute and which object moves",
+        "description": "Experiment 1 blocked fMRI comparison crossing which object moves with face, house, or motion monitoring instructions",
         "source_span_ids": [
-          "s1",
           "s2",
-          "s3"
+          "s5"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "task_accuracy",
-        "role": "criterion",
-        "description": "successful monitoring of the currently cued attribute during each block",
+        "id": "event_related_control_probe",
+        "role": "probe",
+        "description": "Experiment 2 randomized event-related fMRI comparison in which moving versus stationary object identity is unpredictable and only motion direction or stationary position is task relevant",
         "source_span_ids": [
-          "s1",
-          "s2"
+          "s3",
+          "s5"
         ],
         "grounding": "normalized"
       }
@@ -139,40 +169,40 @@
         "id": "r1",
         "kind": "depends_on",
         "arguments": [
-          "regional_signal",
-          "selected_attribute",
-          "object_partition"
+          "regional_fmri_response",
+          "task_selection_instruction"
         ],
-        "description": "regional response reflects not only the selected attribute but also the object grouping to which that attribute belongs",
+        "description": "in Experiment 1, each selective region shows a larger response when its preferred visual attribute is directly task relevant than when another attribute of the same display is selected",
         "source_span_ids": [
-          "s1",
-          "s2",
-          "s3"
+          "s2"
         ],
         "grounding": "normalized"
       },
       {
         "id": "r2",
-        "kind": "differs",
+        "kind": "maps_to",
         "arguments": [
-          "same_object_unselected_attribute",
-          "other_object_unselected_attribute",
-          "regional_signal"
+          "task_selection_instruction",
+          "selected_object",
+          "attribute_object_binding"
         ],
-        "description": "an unselected attribute elicits a larger response when it belongs to the selected object than when it belongs to the unselected object",
+        "description": "the instructed dimension determines which superimposed object carries the task-relevant attribute, given the source-defined binding of form with motion or position",
         "source_span_ids": [
-          "s3"
+          "s2",
+          "s3",
+          "s4"
         ],
         "grounding": "normalized"
       },
       {
         "id": "r3",
-        "kind": "maps_to",
+        "kind": "differs",
         "arguments": [
-          "imaging_probe",
-          "regional_signal"
+          "same_object_task_irrelevant_attribute",
+          "other_object_task_irrelevant_attribute",
+          "regional_fmri_response"
         ],
-        "description": "the imaging probe exposes selection effects separately in category- and motion-sensitive regions",
+        "description": "the neural representation of a task-irrelevant attribute is greater when that attribute belongs to the selected object than when it belongs to the other object",
         "source_span_ids": [
           "s1",
           "s2",
@@ -182,15 +212,30 @@
       },
       {
         "id": "r4",
-        "kind": "satisfies",
+        "kind": "maps_to",
         "arguments": [
-          "selected_attribute",
-          "task_accuracy"
+          "blocked_fmri_probe",
+          "regional_fmri_response"
         ],
-        "description": "the manipulation is tied to successful monitoring of the cued visual attribute",
+        "description": "the blocked Experiment 1 procedure measures direct task-relevant enhancement and same-object enhancement of task-irrelevant attributes",
         "source_span_ids": [
-          "s1",
-          "s2"
+          "s2",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "maps_to",
+        "arguments": [
+          "event_related_control_probe",
+          "regional_fmri_response"
+        ],
+        "description": "the randomized Experiment 2 procedure tests the same-object enhancement when form identity is unpredictable and never task relevant, removing strategic use of the irrelevant dimension as an explanation",
+        "source_span_ids": [
+          "s3",
+          "s4",
+          "s5"
         ],
         "grounding": "normalized"
       }
