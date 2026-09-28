@@ -1,0 +1,48 @@
+name: paper2-cnc-archetype-lane-selftest
+
+on:
+  pull_request:
+    paths:
+      - "scripts/paper2_archetype_cnc_lane.py"
+      - "research/paper2/cnc_archetype_lane_v1.json"
+      - ".github/workflows/paper2-cnc-archetype-lane-selftest.yml"
+      - "scripts/paper2_archetype_mem_pilot.py"
+      - "scripts/paper2_basis_structural_skeleton.py"
+      - "scripts/paper2_basis_subobject_forgetting.py"
+      - "scripts/paper2_reference_structural_adjudication.py"
+      - "scripts/paper2_phi_compare.py"
+      - "research/paper2/chatgpt_reference_claimir_v1/CNC*.json"
+      - "research/paper2/reference_structural_adjudication_v1/CNC*.json"
+      - "research/paper2/archetype_claim_forgetting_contract_v1.json"
+      - "research/paper2/basis_subobject_forgetting_contract_v1.json"
+
+permissions:
+  contents: read
+
+jobs:
+  lane:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Determinism and witness self-test
+        run: python scripts/paper2_archetype_cnc_lane.py --self-test
+      - name: Regenerate CNC lane report
+        run: python scripts/paper2_archetype_cnc_lane.py --emit-report --output /tmp/cnc_archetype_lane_v1.json
+      - name: Verify frozen report or expose first-generation payload
+        run: |
+          set -euo pipefail
+          if [ -f research/paper2/cnc_archetype_lane_v1.json ]; then
+            cmp /tmp/cnc_archetype_lane_v1.json research/paper2/cnc_archetype_lane_v1.json
+          else
+            echo "CNC_REPORT_BASE64_BEGIN"
+            base64 -w0 /tmp/cnc_archetype_lane_v1.json
+            echo
+            echo "CNC_REPORT_BASE64_END"
+            exit 1
+          fi
+      - name: Frozen report SHA-256
+        if: success()
+        run: sha256sum research/paper2/cnc_archetype_lane_v1.json
