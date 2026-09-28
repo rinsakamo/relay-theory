@@ -1,0 +1,171 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "CNC03.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1207/s15516709cog0702_3",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Cognitive Science 7, published p.155, abstract: content-independent interpretation rules and two mapping principles"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Cognitive Science 7, published pp.157-158, preliminary assumptions: objects, attributes, first-order relations, and higher-order relations"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Cognitive Science 7, published p.158, interpretation rules: object correspondences, discard attributes, preserve relations, prefer systems of relations"
+      }
+    ],
+    "authors": [
+      "Dedre Gentner"
+    ],
+    "institutions": [
+      "Bolt Beranek and Newman Inc."
+    ],
+    "venue": "Cognitive Science",
+    "citation_count": null,
+    "construct_labels": [
+      "analogy",
+      "structure-mapping",
+      "systematicity",
+      "literal similarity"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "mapping",
+    "modality": "definitional",
+    "scope": {
+      "conditions": [
+        "comparison between a source domain and a target domain under declared object correspondences"
+      ],
+      "population": [
+        "humans"
+      ],
+      "substrate": [],
+      "task": [
+        "interpret a cross-domain comparison by transferring selected structure"
+      ],
+      "temporal_scope": []
+    },
+    "nodes": [
+      {
+        "id": "source_domain",
+        "role": "state_or_structure",
+        "description": "source-side system containing objects, unary attributes, and relations",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "target_domain",
+        "role": "state_or_structure",
+        "description": "target-side system receiving correspondences and transferred structure",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "object_correspondence",
+        "role": "partition",
+        "description": "declared pairing between source-side and target-side objects",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "object_attributes",
+        "role": "state_or_structure",
+        "description": "unary properties attached to individual objects",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "relational_predicates",
+        "role": "state_or_structure",
+        "description": "relations holding among multiple objects",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "higher_order_relational_system",
+        "role": "state_or_structure",
+        "description": "connected system in which higher-order relations organize lower-order relations",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "maps_to",
+        "arguments": [
+          "source_domain",
+          "target_domain",
+          "object_correspondence"
+        ],
+        "description": "source-side objects and transferable predicates are mapped into target-side counterparts under the object pairing",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "distinguishes",
+        "arguments": [
+          "relational_predicates",
+          "object_attributes"
+        ],
+        "description": "the transfer rule preserves inter-object relations while discarding object-specific unary attributes",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "constrains",
+        "arguments": [
+          "higher_order_relational_system",
+          "relational_predicates"
+        ],
+        "description": "membership in a connected higher-order relational system constrains which lower-order relations are preferentially preserved",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
