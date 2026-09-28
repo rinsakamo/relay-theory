@@ -1,0 +1,50 @@
+name: paper2-blf-archetype-reconstruction-selftest
+
+on:
+  push:
+    branches:
+      - paper2-archetype-blf-300
+    paths:
+      - "scripts/paper2_archetype_blf.py"
+      - "research/paper2/blf_archetype_reconstruction_v1.json"
+      - ".github/workflows/paper2-blf-archetype-reconstruction-selftest.yml"
+      - "scripts/paper2_archetype_mem_pilot.py"
+      - "scripts/paper2_basis_structural_skeleton.py"
+      - "scripts/paper2_basis_subobject_forgetting.py"
+      - "research/paper2/chatgpt_reference_claimir_v1/BLF*.json"
+      - "research/paper2/reference_structural_adjudication_v1/BLF*.json"
+  pull_request:
+    paths:
+      - "scripts/paper2_archetype_blf.py"
+      - "research/paper2/blf_archetype_reconstruction_v1.json"
+      - ".github/workflows/paper2-blf-archetype-reconstruction-selftest.yml"
+      - "scripts/paper2_archetype_mem_pilot.py"
+      - "scripts/paper2_basis_structural_skeleton.py"
+      - "scripts/paper2_basis_subobject_forgetting.py"
+      - "research/paper2/chatgpt_reference_claimir_v1/BLF*.json"
+      - "research/paper2/reference_structural_adjudication_v1/BLF*.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reconstruction:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Determinism / integration self-test
+        run: python scripts/paper2_archetype_blf.py --self-test
+      - name: Regenerate BLF lane report
+        run: python scripts/paper2_archetype_blf.py --emit-report --output /tmp/blf_archetype_reconstruction_v1.json
+      - name: Validate generated report
+        run: |
+          python -m json.tool /tmp/blf_archetype_reconstruction_v1.json >/dev/null
+          sha256sum /tmp/blf_archetype_reconstruction_v1.json
+      - name: Verify frozen report byte identity
+        run: |
+          cmp /tmp/blf_archetype_reconstruction_v1.json research/paper2/blf_archetype_reconstruction_v1.json
+          echo "BLF_ARCHETYPE_REPORT_BYTE_IDENTITY_PASS"
