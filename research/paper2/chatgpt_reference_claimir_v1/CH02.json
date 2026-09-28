@@ -7,15 +7,15 @@
     "source_spans": [
       {
         "span_id": "s1",
-        "locator": "Nature Neuroscience 9(11), PDF p.1 / published p.1432, abstract and Results opening: variable population responses encode distributions rather than only point values"
+        "locator": "Nature Neuroscience 9(11), Advance Online Publication PDF p.1 / final p.1432, abstract and Results opening: variable population responses encode probability distributions over the stimulus"
       },
       {
         "span_id": "s2",
-        "locator": "Nature Neuroscience 9(11), PDF p.2 / published p.1433, cue-integration derivation: summing two population responses under stated assumptions yields the optimal combined distribution"
+        "locator": "Nature Neuroscience 9(11), Advance Online Publication PDF p.2 / final p.1433, simple cue-integration derivation: conditional independence, Gaussian case, posterior mean/variance, and exact population-code summation under the stated assumptions"
       },
       {
         "span_id": "s3",
-        "locator": "Nature Neuroscience 9(11), PDF p.3 / published p.1434, generalization: broader Poisson-like families admit optimal linear combinations and realistic-neuron implementation is approximate"
+        "locator": "Nature Neuroscience 9(11), Advance Online Publication PDF pp.2-3 / final pp.1433-1434, general theory: Poisson-like exponential-family conditions, common h(s) requirement for direct addition, and common-basis condition for Bayes-optimal weighted linear combinations"
       }
     ],
     "authors": [
@@ -41,14 +41,16 @@
     "extractor_version": "GPT-5.6 Sol",
     "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
     "extracted_at": "2026-09-28",
-    "manual_review_status": "unreviewed"
+    "manual_review_status": "reviewed"
   },
   "claim_core": {
     "claim_type": "mapping",
     "modality": "probabilistic",
     "scope": {
       "conditions": [
-        "population responses have the declared exponential-family noise structure; simple summation additionally requires matched response profiles and a flat prior"
+        "the two cue observations are conditionally independent given the underlying stimulus for the cue-combination factorization",
+        "population responses obey the source's Poisson-like exponential-family form with the gain/covariance condition required by equations (4)-(5); direct neuron-by-neuron addition additionally requires the same h(s) structure across input layers and the simple derivation uses a flat prior",
+        "when input h_k(s) functions differ, Bayes-optimal weighted linear combinations require their components to be drawn from a common basis set"
       ],
       "population": [],
       "substrate": [
@@ -58,7 +60,7 @@
         "combine uncertain cues about an underlying stimulus variable"
       ],
       "temporal_scope": [
-        "single-trial population responses and their combined output"
+        "single-trial population responses and their cue-combined output; no cross-trial temporal process is required by this target claim"
       ]
     },
     "nodes": [
@@ -85,7 +87,7 @@
       {
         "id": "encoded_distribution_a",
         "role": "state_or_structure",
-        "description": "probability distribution over the latent stimulus implied by the first population response",
+        "description": "probability distribution over the latent stimulus encoded by the first population response",
         "source_span_ids": [
           "s1",
           "s2"
@@ -95,7 +97,7 @@
       {
         "id": "encoded_distribution_b",
         "role": "state_or_structure",
-        "description": "probability distribution over the latent stimulus implied by the second population response",
+        "description": "probability distribution over the latent stimulus encoded by the second population response",
         "source_span_ids": [
           "s1",
           "s2"
@@ -104,8 +106,8 @@
       },
       {
         "id": "linear_population_transform",
-        "role": "intervention",
-        "description": "addition or weighted linear combination of the input population activities",
+        "role": "other",
+        "description": "source-explicit internal computation consisting of addition or a weighted linear combination of the input population activities",
         "source_span_ids": [
           "s2",
           "s3"
@@ -115,7 +117,7 @@
       {
         "id": "combined_population",
         "role": "response_or_outcome",
-        "description": "output population whose activity encodes the cue-combined distribution",
+        "description": "output population produced by the linear population computation",
         "source_span_ids": [
           "s2",
           "s3"
@@ -123,9 +125,19 @@
         "grounding": "normalized"
       },
       {
-        "id": "uncertainty_scale",
+        "id": "combined_distribution",
+        "role": "state_or_structure",
+        "description": "cue-combined probability distribution over the latent stimulus encoded by the output population",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "bayes_optimality_criterion",
         "role": "criterion",
-        "description": "distribution width or inverse precision implied by response gain and used to test whether the combined output has the optimal uncertainty",
+        "description": "the Bayesian cue-combination posterior required by the source; in the Gaussian case equations (2) and (3) specify both posterior mean and posterior variance",
         "source_span_ids": [
           "s2",
           "s3"
@@ -164,14 +176,14 @@
       },
       {
         "id": "r3",
-        "kind": "changes",
+        "kind": "other",
         "arguments": [
           "linear_population_transform",
           "input_population_a",
           "input_population_b",
           "combined_population"
         ],
-        "description": "the declared linear transform combines the two input activities into an output activity pattern",
+        "description": "the source-explicit linear computation combines the two input population activities into an output population; this is a computational operation, not an experimental intervention",
         "source_span_ids": [
           "s2",
           "s3"
@@ -180,12 +192,26 @@
       },
       {
         "id": "r4",
-        "kind": "satisfies",
+        "kind": "maps_to",
         "arguments": [
           "combined_population",
-          "uncertainty_scale"
+          "combined_distribution"
         ],
-        "description": "under the declared noise assumptions the output distribution has the precision required by the optimal cue-combination rule; with realistic nonlinear units this correspondence is tested approximately",
+        "description": "the output population activity encodes the cue-combined probability distribution",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "satisfies",
+        "arguments": [
+          "combined_distribution",
+          "bayes_optimality_criterion"
+        ],
+        "description": "under the declared Poisson-like and cue-factorization conditions, direct addition or the permitted weighted linear combination yields the Bayesian cue-combination distribution",
         "source_span_ids": [
           "s2",
           "s3"
