@@ -1,0 +1,54 @@
+name: paper2-skl-archetype-reconstruction-selftest
+
+on:
+  pull_request:
+    paths:
+      - "scripts/paper2_archetype_skl_lane.py"
+      - "research/paper2/skl_archetype_reconstruction_v1.json"
+      - "scripts/paper2_basis_structural_skeleton.py"
+      - "scripts/paper2_basis_subobject_forgetting.py"
+      - "scripts/paper2_reference_structural_adjudication.py"
+      - "scripts/paper2_phi_compare.py"
+      - "research/paper2/chatgpt_reference_claimir_v1/SKL*.json"
+      - "research/paper2/reference_structural_adjudication_v1/SKL*.json"
+      - ".github/workflows/paper2-skl-archetype-reconstruction-selftest.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  qualify-and-freeze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile machinery
+        run: |
+          python -m py_compile scripts/paper2_archetype_skl_lane.py
+          python -m py_compile scripts/paper2_basis_structural_skeleton.py
+          python -m py_compile scripts/paper2_basis_subobject_forgetting.py
+      - name: Re-run frozen U_claim qualification
+        run: python scripts/paper2_basis_structural_skeleton.py --self-test
+      - name: Re-run frozen F_R qualification
+        run: python scripts/paper2_basis_subobject_forgetting.py --self-test
+      - name: Run deterministic SKL lane self-test
+        run: python scripts/paper2_archetype_skl_lane.py --self-test
+      - name: Regenerate SKL lane report
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/paper2_archetype_skl_lane.py \
+            --emit-report \
+            --output /tmp/skl_archetype_reconstruction_v1.json
+          python -m json.tool /tmp/skl_archetype_reconstruction_v1.json >/dev/null
+          sha256sum /tmp/skl_archetype_reconstruction_v1.json
+          if [[ -f research/paper2/skl_archetype_reconstruction_v1.json ]]; then
+            cmp /tmp/skl_archetype_reconstruction_v1.json research/paper2/skl_archetype_reconstruction_v1.json
+            echo "SKL_ARCHETYPE_REPORT_BYTE_IDENTITY_PASS"
+          else
+            echo "BEGIN_SKL_ARCHETYPE_REPORT"
+            cat /tmp/skl_archetype_reconstruction_v1.json
+            echo "END_SKL_ARCHETYPE_REPORT"
+          fi
