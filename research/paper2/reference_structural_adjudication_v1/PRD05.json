@@ -4,38 +4,63 @@
   "adjudicator": {
     "tool": "ChatGPT",
     "version": "GPT-5.6 Sol",
-    "procedure": "paper2-reference-structural-adjudication-v1:267",
-    "adjudicated_at": "2026-09-28"
+    "procedure": "paper2-prd-structural-adjudication-267",
+    "adjudicated_at": "2026-09-28T14:29:00Z"
   },
   "coordinate_map": [
     {
-      "claim_node_id": "higher_level_state",
-      "coordinate_id": "basis.pi1",
+      "claim_node_id": "lower_level_input_state",
+      "coordinate_id": "lower_level_input_state",
       "required": true
     },
     {
-      "claim_node_id": "lower_level_state",
-      "coordinate_id": "basis.pi2",
+      "claim_node_id": "higher_level_cause_estimate",
+      "coordinate_id": "higher_level_cause_estimate",
       "required": true
     },
     {
-      "claim_node_id": "top_down_estimate",
-      "coordinate_id": "basis.o1",
+      "claim_node_id": "current_level_cause_estimate",
+      "coordinate_id": "current_level_cause_estimate",
       "required": true
     },
     {
-      "claim_node_id": "bottom_up_mismatch",
-      "coordinate_id": "basis.o2",
+      "claim_node_id": "descending_current_level_prediction",
+      "coordinate_id": "descending_current_level_prediction",
       "required": true
     },
     {
-      "claim_node_id": "latent_cause_estimate",
-      "coordinate_id": "basis.o3",
+      "claim_node_id": "current_level_discrepancy",
+      "coordinate_id": "current_level_discrepancy",
       "required": true
     },
     {
-      "claim_node_id": "mismatch_minimization",
-      "coordinate_id": "basis.q1",
+      "claim_node_id": "descending_lower_level_prediction",
+      "coordinate_id": "descending_lower_level_prediction",
+      "required": true
+    },
+    {
+      "claim_node_id": "lower_level_discrepancy",
+      "coordinate_id": "lower_level_discrepancy",
+      "required": true
+    },
+    {
+      "claim_node_id": "discrepancy_precision",
+      "coordinate_id": "discrepancy_precision",
+      "required": true
+    },
+    {
+      "claim_node_id": "joint_inference_objective",
+      "coordinate_id": "joint_inference_objective",
+      "required": true
+    },
+    {
+      "claim_node_id": "ascending_discrepancy_path",
+      "coordinate_id": "ascending_discrepancy_path",
+      "required": true
+    },
+    {
+      "claim_node_id": "descending_prediction_path",
+      "coordinate_id": "descending_prediction_path",
       "required": true
     }
   ],
@@ -46,19 +71,13 @@
     "criterion_Q": {
       "state": "present",
       "claim_node_ids": [
-        "mismatch_minimization"
+        "joint_inference_objective"
       ],
       "provenance_kind": "source_declared",
       "fixed_before_phi": true
     },
     "partition_Pi": {
-      "state": "present",
-      "claim_node_ids": [
-        "higher_level_state",
-        "lower_level_state"
-      ],
-      "provenance_kind": "source_declared",
-      "fixed_before_phi": true
+      "state": "not_required"
     },
     "resource_C": {
       "state": "not_required"
@@ -68,17 +87,14 @@
     "time_index": {
       "state": "present",
       "source_span_ids": [
-        "s1",
-        "s2",
-        "s3"
+        "s4",
+        "s5",
+        "s6",
+        "s7"
       ]
     },
     "history_window": {
-      "state": "present",
-      "source_span_ids": [
-        "s1",
-        "s3"
-      ]
+      "state": "not_required"
     },
     "future_horizon": {
       "state": "not_required"
@@ -86,13 +102,55 @@
     "recurrence": {
       "state": "present",
       "source_span_ids": [
-        "s3"
+        "s1",
+        "s4",
+        "s6",
+        "s7"
       ]
     },
     "persistence": {
-      "state": "not_required"
+      "state": "present",
+      "source_span_ids": [
+        "s6",
+        "s7"
+      ]
     },
-    "ordering": []
+    "ordering": [
+      {
+        "before_coordinate_id": "higher_level_cause_estimate",
+        "after_coordinate_id": "descending_current_level_prediction",
+        "source_span_ids": [
+          "s3",
+          "s5"
+        ]
+      },
+      {
+        "before_coordinate_id": "descending_current_level_prediction",
+        "after_coordinate_id": "current_level_cause_estimate",
+        "source_span_ids": [
+          "s3",
+          "s5"
+        ]
+      },
+      {
+        "before_coordinate_id": "current_level_cause_estimate",
+        "after_coordinate_id": "descending_lower_level_prediction",
+        "source_span_ids": [
+          "s4",
+          "s5",
+          "s6"
+        ]
+      },
+      {
+        "before_coordinate_id": "descending_lower_level_prediction",
+        "after_coordinate_id": "lower_level_discrepancy",
+        "source_span_ids": [
+          "s4",
+          "s5",
+          "s6"
+        ]
+      }
+    ]
   },
   "approximation": {
     "mode": "stochastic",
@@ -106,11 +164,7 @@
       "state": "not_applicable"
     },
     "loss": {
-      "state": "present",
-      "source_span_ids": [
-        "s1",
-        "s3"
-      ]
+      "state": "not_required"
     },
     "comparison_criterion": {
       "state": "not_required"

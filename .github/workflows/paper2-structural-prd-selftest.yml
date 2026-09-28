@@ -1,0 +1,134 @@
+name: paper2-structural-prd-selftest
+
+on:
+  pull_request:
+    branches: [paper2-reference-structural-adjudication-v1-267]
+    paths:
+      - "research/paper2/reference_structural_adjudication_v1/PRD*.json"
+      - "research/paper2/chatgpt_reference_claimir_v1/PRD*.json"
+      - "scripts/paper2_reference_structural_adjudication.py"
+      - "scripts/paper2_phi_compare.py"
+      - "scripts/paper2_structural_signature_*.py"
+      - "research/paper2/claim_ir_v1.*"
+      - "research/paper2/structural_signature_v1.*"
+      - ".github/workflows/paper2-structural-prd-selftest.yml"
+  push:
+    branches: [paper2-structural-prd-267]
+    paths:
+      - "research/paper2/reference_structural_adjudication_v1/PRD*.json"
+      - ".github/workflows/paper2-structural-prd-selftest.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  prd-structural:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile frozen checkers
+        run: |
+          python -m py_compile scripts/paper2_reference_structural_adjudication.py
+          python -m py_compile scripts/paper2_phi_compare.py
+      - name: Frozen protocol self-test
+        run: python scripts/paper2_reference_structural_adjudication.py --self-test
+      - name: PRD01 compile and Phi projection
+        run: |
+          set -euo pipefail
+          python scripts/paper2_reference_structural_adjudication.py \
+            --claim-ir research/paper2/chatgpt_reference_claimir_v1/PRD01.json \
+            --adjudication research/paper2/reference_structural_adjudication_v1/PRD01.json \
+            --output /tmp/PRD01.structural.json
+          python scripts/paper2_phi_compare.py \
+            --project /tmp/PRD01.structural.json \
+            > /tmp/PRD01.phi.json
+          python -m json.tool /tmp/PRD01.structural.json >/dev/null
+          python -m json.tool /tmp/PRD01.phi.json >/dev/null
+          echo "PRD01 decision=$(python -c 'import json; print(json.load(open("research/paper2/reference_structural_adjudication_v1/PRD01.json"))["decision"]["status"])')"
+          sha256sum /tmp/PRD01.structural.json
+          sha256sum /tmp/PRD01.phi.json
+      - name: PRD02 compile and Phi projection
+        run: |
+          set -euo pipefail
+          python scripts/paper2_reference_structural_adjudication.py \
+            --claim-ir research/paper2/chatgpt_reference_claimir_v1/PRD02.json \
+            --adjudication research/paper2/reference_structural_adjudication_v1/PRD02.json \
+            --output /tmp/PRD02.structural.json
+          python scripts/paper2_phi_compare.py \
+            --project /tmp/PRD02.structural.json \
+            > /tmp/PRD02.phi.json
+          python -m json.tool /tmp/PRD02.structural.json >/dev/null
+          python -m json.tool /tmp/PRD02.phi.json >/dev/null
+          echo "PRD02 decision=$(python -c 'import json; print(json.load(open("research/paper2/reference_structural_adjudication_v1/PRD02.json"))["decision"]["status"])')"
+          sha256sum /tmp/PRD02.structural.json
+          sha256sum /tmp/PRD02.phi.json
+      - name: PRD03 compile and Phi projection
+        run: |
+          set -euo pipefail
+          python scripts/paper2_reference_structural_adjudication.py \
+            --claim-ir research/paper2/chatgpt_reference_claimir_v1/PRD03.json \
+            --adjudication research/paper2/reference_structural_adjudication_v1/PRD03.json \
+            --output /tmp/PRD03.structural.json
+          python scripts/paper2_phi_compare.py \
+            --project /tmp/PRD03.structural.json \
+            > /tmp/PRD03.phi.json
+          python -m json.tool /tmp/PRD03.structural.json >/dev/null
+          python -m json.tool /tmp/PRD03.phi.json >/dev/null
+          echo "PRD03 decision=$(python -c 'import json; print(json.load(open("research/paper2/reference_structural_adjudication_v1/PRD03.json"))["decision"]["status"])')"
+          sha256sum /tmp/PRD03.structural.json
+          sha256sum /tmp/PRD03.phi.json
+      - name: PRD04 compile and Phi projection
+        run: |
+          set -euo pipefail
+          python scripts/paper2_reference_structural_adjudication.py \
+            --claim-ir research/paper2/chatgpt_reference_claimir_v1/PRD04.json \
+            --adjudication research/paper2/reference_structural_adjudication_v1/PRD04.json \
+            --output /tmp/PRD04.structural.json
+          python scripts/paper2_phi_compare.py \
+            --project /tmp/PRD04.structural.json \
+            > /tmp/PRD04.phi.json
+          python -m json.tool /tmp/PRD04.structural.json >/dev/null
+          python -m json.tool /tmp/PRD04.phi.json >/dev/null
+          echo "PRD04 decision=$(python -c 'import json; print(json.load(open("research/paper2/reference_structural_adjudication_v1/PRD04.json"))["decision"]["status"])')"
+          sha256sum /tmp/PRD04.structural.json
+          sha256sum /tmp/PRD04.phi.json
+      - name: PRD05 compile and Phi projection
+        run: |
+          set -euo pipefail
+          python scripts/paper2_reference_structural_adjudication.py \
+            --claim-ir research/paper2/chatgpt_reference_claimir_v1/PRD05.json \
+            --adjudication research/paper2/reference_structural_adjudication_v1/PRD05.json \
+            --output /tmp/PRD05.structural.json
+          python scripts/paper2_phi_compare.py \
+            --project /tmp/PRD05.structural.json \
+            > /tmp/PRD05.phi.json
+          python -m json.tool /tmp/PRD05.structural.json >/dev/null
+          python -m json.tool /tmp/PRD05.phi.json >/dev/null
+          echo "PRD05 decision=$(python -c 'import json; print(json.load(open("research/paper2/reference_structural_adjudication_v1/PRD05.json"))["decision"]["status"])')"
+          sha256sum /tmp/PRD05.structural.json
+          sha256sum /tmp/PRD05.phi.json
+      - name: PRD06 compile and Phi projection
+        run: |
+          set -euo pipefail
+          python scripts/paper2_reference_structural_adjudication.py \
+            --claim-ir research/paper2/chatgpt_reference_claimir_v1/PRD06.json \
+            --adjudication research/paper2/reference_structural_adjudication_v1/PRD06.json \
+            --output /tmp/PRD06.structural.json
+          python scripts/paper2_phi_compare.py \
+            --project /tmp/PRD06.structural.json \
+            > /tmp/PRD06.phi.json
+          python -m json.tool /tmp/PRD06.structural.json >/dev/null
+          python -m json.tool /tmp/PRD06.phi.json >/dev/null
+          echo "PRD06 decision=$(python -c 'import json; print(json.load(open("research/paper2/reference_structural_adjudication_v1/PRD06.json"))["decision"]["status"])')"
+          sha256sum /tmp/PRD06.structural.json
+          sha256sum /tmp/PRD06.phi.json
+
+      - name: Assert lane boundary
+        run: |
+          set -euo pipefail
+          echo "pairwise Phi = NOT RUN"
+          echo "atlas = NOT RUN"
+          echo "architecture tuning = NONE"

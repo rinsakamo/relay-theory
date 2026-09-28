@@ -4,33 +4,83 @@
   "adjudicator": {
     "tool": "ChatGPT",
     "version": "GPT-5.6 Sol",
-    "procedure": "paper2-reference-structural-adjudication-v1:267",
-    "adjudicated_at": "2026-09-28"
+    "procedure": "paper2-prd-structural-adjudication-267",
+    "adjudicated_at": "2026-09-28T14:30:00Z"
   },
   "coordinate_map": [
     {
-      "claim_node_id": "sentence_context",
-      "coordinate_id": "basis.o1",
+      "claim_node_id": "preceding_context",
+      "coordinate_id": "preceding_context",
       "required": true
     },
     {
-      "claim_node_id": "contextual_expectancy",
-      "coordinate_id": "basis.s1",
+      "claim_node_id": "context_constraint",
+      "coordinate_id": "context_constraint",
       "required": true
     },
     {
-      "claim_node_id": "incoming_item",
-      "coordinate_id": "basis.cnd1",
+      "claim_node_id": "expected_completion_state",
+      "coordinate_id": "expected_completion_state",
       "required": true
     },
     {
-      "claim_node_id": "electrophysiological_response",
-      "coordinate_id": "basis.o2",
+      "claim_node_id": "preactivated_feature_state",
+      "coordinate_id": "preactivated_feature_state",
       "required": true
     },
     {
-      "claim_node_id": "context_continuation_probe",
-      "coordinate_id": "basis.p1",
+      "claim_node_id": "actual_continuation",
+      "coordinate_id": "actual_continuation",
+      "required": true
+    },
+    {
+      "claim_node_id": "feature_overlap_with_expected_completion",
+      "coordinate_id": "feature_overlap_with_expected_completion",
+      "required": true
+    },
+    {
+      "claim_node_id": "contextual_fit",
+      "coordinate_id": "contextual_fit",
+      "required": true
+    },
+    {
+      "claim_node_id": "early_memory_access_response",
+      "coordinate_id": "early_memory_access_response",
+      "required": true
+    },
+    {
+      "claim_node_id": "late_unexpected_input_response",
+      "coordinate_id": "late_unexpected_input_response",
+      "required": true
+    },
+    {
+      "claim_node_id": "anticipatory_strategy_state",
+      "coordinate_id": "anticipatory_strategy_state",
+      "required": true
+    },
+    {
+      "claim_node_id": "post_input_integration_state",
+      "coordinate_id": "post_input_integration_state",
+      "required": true
+    },
+    {
+      "claim_node_id": "adult_age_resource_profile",
+      "coordinate_id": "adult_age_resource_profile",
+      "required": true
+    },
+    {
+      "claim_node_id": "verbal_generation_fluency",
+      "coordinate_id": "verbal_generation_fluency",
+      "required": true
+    },
+    {
+      "claim_node_id": "initial_hemispheric_routing",
+      "coordinate_id": "initial_hemispheric_routing",
+      "required": true
+    },
+    {
+      "claim_node_id": "context_continuation_probe_family",
+      "coordinate_id": "context_continuation_probe_family",
       "required": true
     }
   ],
@@ -38,9 +88,10 @@
     "probe_P": {
       "state": "present",
       "claim_node_ids": [
-        "context_continuation_probe"
+        "initial_hemispheric_routing",
+        "context_continuation_probe_family"
       ],
-      "provenance_kind": "source_declared",
+      "provenance_kind": "experimental_contract",
       "fixed_before_phi": true
     },
     "criterion_Q": {
@@ -50,7 +101,12 @@
       "state": "not_required"
     },
     "resource_C": {
-      "state": "not_required"
+      "state": "present",
+      "claim_node_ids": [
+        "adult_age_resource_profile"
+      ],
+      "provenance_kind": "source_declared",
+      "fixed_before_phi": true
     }
   },
   "temporal": {
@@ -59,21 +115,23 @@
       "source_span_ids": [
         "s1",
         "s2",
-        "s3"
+        "s4"
       ]
     },
     "history_window": {
       "state": "present",
       "source_span_ids": [
         "s1",
-        "s2"
+        "s2",
+        "s3"
       ]
     },
     "future_horizon": {
       "state": "present",
       "source_span_ids": [
         "s1",
-        "s2"
+        "s2",
+        "s3"
       ]
     },
     "recurrence": {
@@ -84,11 +142,43 @@
     },
     "ordering": [
       {
-        "before_coordinate_id": "basis.o1",
-        "after_coordinate_id": "basis.cnd1",
+        "before_coordinate_id": "preceding_context",
+        "after_coordinate_id": "expected_completion_state",
         "source_span_ids": [
           "s1",
-          "s2"
+          "s2",
+          "s3"
+        ]
+      },
+      {
+        "before_coordinate_id": "expected_completion_state",
+        "after_coordinate_id": "preactivated_feature_state",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ]
+      },
+      {
+        "before_coordinate_id": "preactivated_feature_state",
+        "after_coordinate_id": "actual_continuation",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ]
+      },
+      {
+        "before_coordinate_id": "actual_continuation",
+        "after_coordinate_id": "early_memory_access_response",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ]
+      },
+      {
+        "before_coordinate_id": "early_memory_access_response",
+        "after_coordinate_id": "late_unexpected_input_response",
+        "source_span_ids": [
+          "s4"
         ]
       }
     ]

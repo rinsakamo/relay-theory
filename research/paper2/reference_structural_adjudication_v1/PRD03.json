@@ -4,33 +4,73 @@
   "adjudicator": {
     "tool": "ChatGPT",
     "version": "GPT-5.6 Sol",
-    "procedure": "paper2-reference-structural-adjudication-v1:267",
-    "adjudicated_at": "2026-09-28"
+    "procedure": "paper2-prd-structural-adjudication-267",
+    "adjudicated_at": "2026-09-28T14:27:00Z"
   },
   "coordinate_map": [
     {
-      "claim_node_id": "prior_information",
-      "coordinate_id": "basis.o1",
+      "claim_node_id": "regularity_information",
+      "coordinate_id": "regularity_information",
       "required": true
     },
     {
-      "claim_node_id": "incoming_evidence",
-      "coordinate_id": "basis.o2",
+      "claim_node_id": "prior_probability_state",
+      "coordinate_id": "prior_probability_state",
       "required": true
     },
     {
-      "claim_node_id": "posterior_perceptual_estimate",
-      "coordinate_id": "basis.o3",
+      "claim_node_id": "current_sensory_evidence",
+      "coordinate_id": "current_sensory_evidence",
       "required": true
     },
     {
-      "claim_node_id": "baseline_neural_state",
-      "coordinate_id": "basis.o4",
+      "claim_node_id": "posterior_decision_support",
+      "coordinate_id": "posterior_decision_support",
       "required": true
     },
     {
-      "claim_node_id": "prior_manipulation_probe",
-      "coordinate_id": "basis.p1",
+      "claim_node_id": "category_decision_criterion",
+      "coordinate_id": "category_decision_criterion",
+      "required": true
+    },
+    {
+      "claim_node_id": "accumulation_starting_point",
+      "coordinate_id": "accumulation_starting_point",
+      "required": true
+    },
+    {
+      "claim_node_id": "evidence_gain",
+      "coordinate_id": "evidence_gain",
+      "required": true
+    },
+    {
+      "claim_node_id": "choice_response",
+      "coordinate_id": "choice_response",
+      "required": true
+    },
+    {
+      "claim_node_id": "pre_stimulus_decision_activity",
+      "coordinate_id": "pre_stimulus_decision_activity",
+      "required": true
+    },
+    {
+      "claim_node_id": "pre_stimulus_sensory_activity",
+      "coordinate_id": "pre_stimulus_sensory_activity",
+      "required": true
+    },
+    {
+      "claim_node_id": "probability_manipulation",
+      "coordinate_id": "probability_manipulation",
+      "required": true
+    },
+    {
+      "claim_node_id": "behavioral_neural_probe_family",
+      "coordinate_id": "behavioral_neural_probe_family",
+      "required": true
+    },
+    {
+      "claim_node_id": "task_relevance_condition",
+      "coordinate_id": "task_relevance_condition",
       "required": true
     }
   ],
@@ -38,13 +78,19 @@
     "probe_P": {
       "state": "present",
       "claim_node_ids": [
-        "prior_manipulation_probe"
+        "probability_manipulation",
+        "behavioral_neural_probe_family"
       ],
-      "provenance_kind": "source_declared",
+      "provenance_kind": "experimental_contract",
       "fixed_before_phi": true
     },
     "criterion_Q": {
-      "state": "not_required"
+      "state": "present",
+      "claim_node_ids": [
+        "category_decision_criterion"
+      ],
+      "provenance_kind": "source_declared",
+      "fixed_before_phi": true
     },
     "partition_Pi": {
       "state": "not_required"
@@ -57,24 +103,18 @@
     "time_index": {
       "state": "present",
       "source_span_ids": [
-        "s1",
-        "s2",
-        "s3"
+        "s3",
+        "s4"
       ]
     },
     "history_window": {
-      "state": "present",
-      "source_span_ids": [
-        "s1",
-        "s2",
-        "s3"
-      ]
+      "state": "not_required"
     },
     "future_horizon": {
       "state": "present",
       "source_span_ids": [
         "s1",
-        "s2"
+        "s4"
       ]
     },
     "recurrence": {
@@ -85,11 +125,47 @@
     },
     "ordering": [
       {
-        "before_coordinate_id": "basis.o1",
-        "after_coordinate_id": "basis.o3",
+        "before_coordinate_id": "regularity_information",
+        "after_coordinate_id": "prior_probability_state",
         "source_span_ids": [
-          "s1",
-          "s2"
+          "s1"
+        ]
+      },
+      {
+        "before_coordinate_id": "prior_probability_state",
+        "after_coordinate_id": "pre_stimulus_decision_activity",
+        "source_span_ids": [
+          "s4"
+        ]
+      },
+      {
+        "before_coordinate_id": "prior_probability_state",
+        "after_coordinate_id": "pre_stimulus_sensory_activity",
+        "source_span_ids": [
+          "s4"
+        ]
+      },
+      {
+        "before_coordinate_id": "pre_stimulus_decision_activity",
+        "after_coordinate_id": "current_sensory_evidence",
+        "source_span_ids": [
+          "s4"
+        ]
+      },
+      {
+        "before_coordinate_id": "pre_stimulus_sensory_activity",
+        "after_coordinate_id": "current_sensory_evidence",
+        "source_span_ids": [
+          "s4"
+        ]
+      },
+      {
+        "before_coordinate_id": "current_sensory_evidence",
+        "after_coordinate_id": "choice_response",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s5"
         ]
       }
     ]
