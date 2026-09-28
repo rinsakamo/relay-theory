@@ -164,3 +164,16 @@ jobs:
           python -m json.tool /tmp/LRN01.phi.json >/dev/null
           sha256sum /tmp/LRN01.structural.json
           sha256sum /tmp/LRN01.phi.json
+
+      - name: Compile reviewed LRN02 structural record
+        run: |
+          set -euo pipefail
+          python scripts/paper2_reference_structural_adjudication.py \
+            --claim-ir research/paper2/chatgpt_reference_claimir_v1/LRN02.json \
+            --adjudication research/paper2/reference_structural_adjudication_v1/LRN02.json \
+            --output /tmp/LRN02.structural.json
+          python scripts/paper2_phi_compare.py --project /tmp/LRN02.structural.json > /tmp/LRN02.phi.json
+          python -m json.tool /tmp/LRN02.structural.json >/dev/null
+          python -m json.tool /tmp/LRN02.phi.json >/dev/null
+          sha256sum /tmp/LRN02.structural.json
+          sha256sum /tmp/LRN02.phi.json
