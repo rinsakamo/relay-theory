@@ -88,7 +88,7 @@
         "grounding": "normalized"
       },
       {
-        "id": "estimation_error_magnitude",
+        "id": "discrepancy_magnitude",
         "role": "condition",
         "description": "absolute difference between the first personal estimate and the presented population rate",
         "source_span_ids": [
@@ -147,9 +147,9 @@
         "arguments": [
           "initial_probability_estimate",
           "presented_population_rate",
-          "estimation_error_magnitude"
+          "discrepancy_magnitude"
         ],
-        "description": "the first estimate and presented rate determine the magnitude of the estimation error",
+        "description": "the first estimate and presented rate determine the magnitude of their discrepancy",
         "source_span_ids": [
           "s4"
         ],
@@ -175,10 +175,10 @@
         "kind": "depends_on",
         "arguments": [
           "update_amount",
-          "estimation_error_magnitude",
+          "discrepancy_magnitude",
           "information_valence_rule"
         ],
-        "description": "estimation-error magnitude predicts subsequent update more strongly for desirable than for undesirable information",
+        "description": "discrepancy magnitude predicts subsequent revision more strongly for desirable than for undesirable information",
         "source_span_ids": [
           "s3"
         ],
@@ -221,7 +221,7 @@
           "revised_probability_estimate",
           "update_amount"
         ],
-        "description": "the first and second estimates determine the amount of belief update",
+        "description": "the first and second estimates determine the amount of revision",
         "source_span_ids": [
           "s4"
         ],
@@ -232,11 +232,11 @@
         "kind": "maps_to",
         "arguments": [
           "information_update_probe",
-          "estimation_error_magnitude",
+          "discrepancy_magnitude",
           "information_valence_rule",
           "update_amount"
         ],
-        "description": "the structured task exposes the relation between estimation-error magnitude, information valence, and subsequent updating",
+        "description": "the structured task exposes the relation between discrepancy magnitude, information valence, and subsequent revision",
         "source_span_ids": [
           "s2",
           "s3",
