@@ -1,86 +1,75 @@
 {
-  "schema_version": "paper2-archetype-leaf-pruning-contract-v1",
+  "schema_version": "paper2-archetype-claim-forgetting-contract-v1",
   "owner_issue": 293,
   "parent_issue": 283,
   "input": {
     "schema_version": "paper2-phi-object-v1",
     "basis_version": "paper2-working-basis-v1"
   },
+  "projection": {
+    "name": "U_claim",
+    "deterministic": true,
+    "claim_specific_rules_forbidden": true,
+    "purpose": "Forget the concrete paper/claim realization while retaining only the anonymous basis-structural meaning used for Archetype reconstruction."
+  },
   "output": {
-    "schema_version": "paper2-archetype-skeleton-v1",
-    "interpretation": "Derived comparison object for Archetype reconstruction. It is not a replacement Phi object and does not alter the frozen #225 whole-object relation semantics."
-  },
-  "interpretation": {
-    "leaf_pruning": "Project frozen Phi into a derived skeleton by removing representation, provenance, and audit-only detail that does not itself carry the scientific dependency structure used for Archetype reconstruction.",
-    "admissible_forgetting": "A separate later weakening layer over the derived skeleton. It must not be confused with a #225 Phi refinement unless the relevant map is already admitted by #225."
-  },
-  "already_pruned_by_phi_projection": [
-    "ClaimIR node descriptions and source-span lists",
-    "control identity and free-text description",
-    "exact temporal values while retaining temporal state and ordering",
-    "source-local coordinate descriptions",
-    "construct labels, authors, venues, and citation authority"
-  ],
-  "stage1_leaf_pruning": {
-    "normalize_fields": [
-      "nodes.*.grounding",
-      "nodes.*.provenance_origin",
-      "edges.*.grounding",
-      "controls.*.provenance_kind"
-    ],
-    "drop_edge_families": [
-      "coordinate_grounding"
-    ],
-    "drop_nodes_only_when_unreferenced_after_audit_edge_removal": [
-      "claim_ir_relation",
-      "basis_coordinate"
-    ],
-    "always_retain_node_spaces": [
-      "claim_ir_node"
+    "schema_version": "paper2-basis-structural-skeleton-v1",
+    "identity_surface": [
+      "anonymous basis-coordinate instances",
+      "basis-axis/structural-role typing",
+      "basis_relation topology",
+      "temporal_order topology",
+      "temporal basis state",
+      "P/Q/Pi/C control state",
+      "active-axis inventory"
     ]
   },
-  "stage1_preserve": [
+  "forgotten_from_archetype_identity": [
     "claim_type",
     "modality",
     "scope_shape",
-    "active_axes",
-    "scientific node role/kind/required/axis",
-    "claim_ir_relation edges",
-    "basis_relation edges",
-    "temporal_order edges",
-    "edge kind",
+    "claim_ir_node wrappers",
+    "claim_ir_relation wrappers",
+    "coordinate_grounding edges",
+    "source grounding/provenance kinds",
+    "construct labels",
+    "authors",
+    "venues",
+    "population/task/substrate realization",
+    "concrete stimulus/apparatus/probe wording",
+    "approximation/statistical realization surface",
+    "bridge/audit packaging"
+  ],
+  "retained_basis_structure": [
+    "basis-coordinate multiplicity",
+    "basis-coordinate structural role",
+    "basis-coordinate axis annotation where defined",
+    "requiredness",
+    "basis_relation kind",
     "ordered_arguments",
-    "arguments",
     "conditional_on",
     "temporal_direction",
-    "temporal state surface",
-    "control presence/absence state",
-    "approximation mode and state surface",
-    "bridge assumptions"
+    "temporal_order edges",
+    "temporal structural states",
+    "probe_P state",
+    "criterion_Q state",
+    "partition_Pi state",
+    "resource_C state",
+    "active_axes"
   ],
-  "explicit_non_pruning": [
-    "delayed versus immediate temporal structure",
-    "intervention or probe ordering",
-    "criterion presence",
-    "partition/subsystem structure",
-    "resource/capacity constraints",
-    "dependency or causal direction",
-    "which node or subsystem an operation targets",
-    "scientific relation topology"
-  ],
-  "frozen_phi_boundary": {
-    "unchanged": true,
-    "note": "The frozen #225 comparator requires exact claim_type, modality, scope_shape, and approximation.mode. Any later Archetype abstraction that forgets these fields is a new derived-skeleton operator, not an existing #225 Phi forgetting witness."
+  "important_boundary": {
+    "not_an_8_bit_vector": true,
+    "note": "Multiplicity and typed topology remain part of identity. A skeleton is not determined by active_axes alone."
   },
-  "stage2_candidate_operator_schemas_not_yet_qualified": [
-    "forget_claim_envelope",
-    "forget_scope_component",
-    "forget_approximation_surface",
-    "forget_control_surface_state",
-    "forget_temporal_scalar_state",
-    "forget_bridge_slot",
-    "typed_subgraph_forgetting"
-  ],
-  "freeze_rule": "Stage-2 operators are not authorized on real Archetype extraction until synthetic qualification under #293.",
+  "upstream_authority": {
+    "claim_ir_retained_as_provenance": true,
+    "frozen_phi_relations_unchanged": true,
+    "note": "1770/1770 whole-object INCOMPARABLE remains a historical result on the richer Phi surface."
+  },
+  "stage2": {
+    "name": "F_adm",
+    "status": "NOT_YET_QUALIFIED",
+    "purpose": "Only after U_claim is frozen, test additional admissible forgetting of basis-structural distinctions to obtain maximal non-trivial common images."
+  },
   "architecture_consequence": "NONE"
 }
