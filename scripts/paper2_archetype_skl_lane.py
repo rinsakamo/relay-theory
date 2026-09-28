@@ -645,11 +645,11 @@ def run_pilot() -> dict[str, Any]:
     if not maximal:
         decision = "SKL_ONLY_TRIVIAL_COMMON_STRUCTURE"
     elif len(maximal) == 1:
-        decision = "SKL_ARCHETYPE_PILOT_SUPPORTED"
+        decision = "SKL_ARCHETYPE_RECONSTRUCTION_SUPPORTED"
     elif incomparable_pairs > 0:
         decision = "SKL_MULTIPLE_INCOMPARABLE_ARCHETYPES"
     else:
-        decision = "SKL_ARCHETYPE_PILOT_SUPPORTED"
+        decision = "SKL_ARCHETYPE_RECONSTRUCTION_SUPPORTED"
 
     return {
         "schema_version": "paper2-skl-archetype-reconstruction-v1",
@@ -700,7 +700,7 @@ def self_test() -> None:
             witness["resulting_image_equivalence_verified"]
             for witness in candidate["member_forgetting_witnesses"].values()
         )
-    print("PAPER2_SKL_ARCHETYPE_PILOT_V1_SELFTEST_PASS")
+    print("PAPER2_SKL_ARCHETYPE_RECONSTRUCTION_V1_SELFTEST_PASS")
 
 
 def main() -> None:
