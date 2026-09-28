@@ -11,6 +11,7 @@ on:
       - "scripts/paper2_phi_compare.py"
       - "scripts/paper2_structural_signature_*.py"
       - "research/paper2/claim_ir_v1.*"
+      - "research/paper2/reference_phi_projection_freeze_v1.json"
       - ".github/workflows/paper2-reference-structural-adjudication-selftest.yml"
   push:
     branches: [main]
@@ -23,6 +24,7 @@ on:
       - "scripts/paper2_phi_compare.py"
       - "scripts/paper2_structural_signature_*.py"
       - "research/paper2/claim_ir_v1.*"
+      - "research/paper2/reference_phi_projection_freeze_v1.json"
       - ".github/workflows/paper2-reference-structural-adjudication-selftest.yml"
 
 permissions:
@@ -166,6 +168,17 @@ jobs:
               encoding="utf-8",
           )
           manifest_sha = hashlib.sha256(manifest_path.read_bytes()).hexdigest()
+
+          authority_path = pathlib.Path("research/paper2/reference_phi_projection_freeze_v1.json")
+          authority = json.loads(authority_path.read_text(encoding="utf-8"))
+          assert authority["claim_count"] == 60
+          assert authority["pass_count"] == 59
+          assert authority["residual_count"] == 1
+          assert authority["residual_claim_ids"] == ["CH10"]
+          assert authority["generated_manifest_sha256"] == manifest_sha
+          assert authority["claims"] == freeze["claims"]
+          print("ALL60_COMMITTED_FREEZE_MATCH=PASS")
+
           print(f"ALL60_FREEZE_SHA256={manifest_sha}")
           print(manifest_path.read_text(encoding="utf-8"))
           PY
