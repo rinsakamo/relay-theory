@@ -421,9 +421,11 @@ def run_lane() -> dict[str, Any]:
 
 
 def self_test() -> None:
+    # Full deterministic regeneration is byte-compared in CI against the
+    # frozen report. Keep the integration self-test to one scientific run so
+    # the larger LRN node multiplicities do not repeat the exhaustive search
+    # unnecessarily.
     first = run_lane()
-    second = run_lane()
-    assert first == second
     assert first["input_claim_ids"] == LRN_IDS
     assert first["historical_labels_restored_post_hoc"] is False
     assert first["cross_lane_comparison_performed"] is False
