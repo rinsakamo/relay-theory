@@ -1,0 +1,63 @@
+name: paper2-global-incomparability-diagnostic
+
+on:
+  pull_request:
+    paths:
+      - "scripts/paper2_global_incomparability_diagnostic.py"
+      - ".github/workflows/paper2-global-incomparability-diagnostic.yml"
+      - "research/paper2/reference_structural_adjudication_v1/*.json"
+      - "research/paper2/chatgpt_reference_claimir_v1/*.json"
+      - "research/paper2/reference_global_incomparability_diagnostic_v1.json"
+      - "scripts/paper2_phi_compare.py"
+      - "scripts/paper2_reference_structural_adjudication.py"
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run frozen global incomparability diagnostic
+        run: |
+          set -euo pipefail
+          python scripts/paper2_global_incomparability_diagnostic.py             --claim-dir research/paper2/chatgpt_reference_claimir_v1             --adjudication-dir research/paper2/reference_structural_adjudication_v1             --output /tmp/paper2-global-incomparability-diagnostic.json
+          python -m json.tool /tmp/paper2-global-incomparability-diagnostic.json >/dev/null
+          python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          generated_path = Path("/tmp/paper2-global-incomparability-diagnostic.json")
+          generated = json.loads(generated_path.read_text())
+          authority = json.loads(Path("research/paper2/reference_global_incomparability_diagnostic_v1.json").read_text())
+
+          assert authority["directed_pair_count"] == generated["directed_pair_count"] == 3540
+          assert authority["directed_stage_counts"]["scalar"] == generated["directed_stage_counts"]["scalar"] == 3518
+          assert authority["directed_stage_counts"]["node_count"] == generated["directed_stage_counts"]["node_count"] == 6
+          assert authority["directed_stage_counts"]["node_label_multiset"] == generated["directed_stage_counts"]["node_label_multiset"] == 16
+          assert authority["directed_stage_counts"]["topology"] == 0
+          assert authority["directed_stage_counts"]["embeds"] == 0
+          assert authority["unordered_pair_scalar_pass_direction_counts"] == {
+              **generated["unordered_pair_scalar_pass_direction_counts"],
+              "2_directions_scalar_pass": 0,
+          }
+          assert authority["non_authoritative_ablation_counts"] == generated["non_authoritative_ablation_counts"]
+          assert authority["active_axes_only_unordered_relations"] == generated["active_axes_only_unordered_relations"]
+          assert authority["diagnostic_json_sha256"] == hashlib.sha256(generated_path.read_bytes()).hexdigest()
+
+          print("GLOBAL_INCOMPARABILITY_COMMITTED_DIAGNOSTIC_MATCH=PASS")
+          PY
+          sha256sum /tmp/paper2-global-incomparability-diagnostic.json
+
+      - name: Upload diagnostic
+        uses: actions/upload-artifact@v4
+        with:
+          name: paper2-global-incomparability-diagnostic-v1
+          path: /tmp/paper2-global-incomparability-diagnostic.json
+          if-no-files-found: error
