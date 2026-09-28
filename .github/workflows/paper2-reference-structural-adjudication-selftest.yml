@@ -5,9 +5,11 @@ on:
     paths:
       - "research/paper2/reference_structural_adjudication_v1.*"
       - "research/paper2/reference_structural_adjudication_v1/MEM*.json"
+      - "research/paper2/reference_structural_adjudication_v1/ATT*.json"
       - "scripts/paper2_reference_structural_adjudication.py"
       - "scripts/paper2_reference_phi_atlas.py"
       - "research/paper2/chatgpt_reference_claimir_v1/MEM*.json"
+      - "research/paper2/chatgpt_reference_claimir_v1/ATT*.json"
       - "scripts/paper2_structural_signature_*.py"
       - "scripts/paper2_phi_compare.py"
       - "research/paper2/claim_ir_v1.*"
@@ -17,9 +19,11 @@ on:
     paths:
       - "research/paper2/reference_structural_adjudication_v1.*"
       - "research/paper2/reference_structural_adjudication_v1/MEM*.json"
+      - "research/paper2/reference_structural_adjudication_v1/ATT*.json"
       - "scripts/paper2_reference_structural_adjudication.py"
       - "scripts/paper2_reference_phi_atlas.py"
       - "research/paper2/chatgpt_reference_claimir_v1/MEM*.json"
+      - "research/paper2/chatgpt_reference_claimir_v1/ATT*.json"
       - "scripts/paper2_structural_signature_*.py"
       - "scripts/paper2_phi_compare.py"
       - "research/paper2/claim_ir_v1.*"
@@ -65,3 +69,16 @@ jobs:
           sha256sum /tmp/MEM.manifest.json
           sha256sum /tmp/MEM.atlas.json
           sha256sum /tmp/MEM.summary.json
+
+      - name: Compile reviewed ATT01 structural record
+        run: |
+          set -euo pipefail
+          python scripts/paper2_reference_structural_adjudication.py \
+            --claim-ir research/paper2/chatgpt_reference_claimir_v1/ATT01.json \
+            --adjudication research/paper2/reference_structural_adjudication_v1/ATT01.json \
+            --output /tmp/ATT01.structural.json
+          python scripts/paper2_phi_compare.py --project /tmp/ATT01.structural.json > /tmp/ATT01.phi.json
+          python -m json.tool /tmp/ATT01.structural.json >/dev/null
+          python -m json.tool /tmp/ATT01.phi.json >/dev/null
+          sha256sum /tmp/ATT01.structural.json
+          sha256sum /tmp/ATT01.phi.json
