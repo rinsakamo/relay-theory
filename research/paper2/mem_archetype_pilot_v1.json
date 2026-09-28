@@ -1,0 +1,429 @@
+{
+  "abstraction_contract": {
+    "common_absence_as_positive_structure": false,
+    "stage1": "U_claim",
+    "stage2": "F_R"
+  },
+  "archetype_candidates": [
+    {
+      "active_axes": [
+        "O",
+        "P"
+      ],
+      "archetype_id": "A-e29437ea9d69",
+      "control_features": [
+        "probe_P"
+      ],
+      "edge_count": 0,
+      "edge_profile": [],
+      "member_claim_ids": [
+        "MEM02",
+        "MEM03",
+        "MEM05",
+        "MEM06"
+      ],
+      "node_count": 2,
+      "node_profile": [
+        {
+          "axis": "O",
+          "required": true,
+          "role": "response_or_outcome"
+        },
+        {
+          "axis": null,
+          "required": true,
+          "role": "condition"
+        }
+      ],
+      "support_size": 4,
+      "temporal_features": [],
+      "witness_pair_count": 3
+    },
+    {
+      "active_axes": [
+        "O",
+        "P"
+      ],
+      "archetype_id": "A-d4b1a62e9f68",
+      "control_features": [
+        "probe_P"
+      ],
+      "edge_count": 0,
+      "edge_profile": [],
+      "member_claim_ids": [
+        "MEM02",
+        "MEM03",
+        "MEM06"
+      ],
+      "node_count": 3,
+      "node_profile": [
+        {
+          "axis": "O",
+          "required": true,
+          "role": "response_or_outcome"
+        },
+        {
+          "axis": "P",
+          "required": true,
+          "role": "probe"
+        },
+        {
+          "axis": null,
+          "required": true,
+          "role": "condition"
+        }
+      ],
+      "support_size": 3,
+      "temporal_features": [],
+      "witness_pair_count": 2
+    },
+    {
+      "active_axes": [
+        "O",
+        "P",
+        "T"
+      ],
+      "archetype_id": "A-e4c4a62c66cf",
+      "control_features": [
+        "probe_P"
+      ],
+      "edge_count": 0,
+      "edge_profile": [],
+      "member_claim_ids": [
+        "MEM03",
+        "MEM05",
+        "MEM06"
+      ],
+      "node_count": 2,
+      "node_profile": [
+        {
+          "axis": "O",
+          "required": true,
+          "role": "response_or_outcome"
+        },
+        {
+          "axis": null,
+          "required": true,
+          "role": "condition"
+        }
+      ],
+      "support_size": 3,
+      "temporal_features": [
+        "future_horizon",
+        "history_window",
+        "persistence",
+        "time_index"
+      ],
+      "witness_pair_count": 2
+    },
+    {
+      "active_axes": [
+        "K",
+        "O",
+        "P",
+        "Q",
+        "T"
+      ],
+      "archetype_id": "A-11165a6f2e74",
+      "control_features": [
+        "criterion_Q",
+        "probe_P"
+      ],
+      "edge_count": 2,
+      "edge_profile": [
+        {
+          "argument_node_labels": [
+            "{\"axis\":\"O\",\"required\":true,\"role\":\"response_or_outcome\",\"space\":\"basis_coordinate\"}",
+            "{\"axis\":\"Q\",\"required\":true,\"role\":\"criterion\",\"space\":\"basis_coordinate\"}"
+          ],
+          "conditional_node_labels": [],
+          "family": "basis_relation",
+          "kind": "other",
+          "ordered_arguments": true,
+          "temporal_direction": "unspecified"
+        },
+        {
+          "argument_node_labels": [
+            "{\"axis\":\"P\",\"required\":true,\"role\":\"probe\",\"space\":\"basis_coordinate\"}",
+            "{\"axis\":\"O\",\"required\":true,\"role\":\"response_or_outcome\",\"space\":\"basis_coordinate\"}"
+          ],
+          "conditional_node_labels": [],
+          "family": "basis_relation",
+          "kind": "maps_to",
+          "ordered_arguments": true,
+          "temporal_direction": "unspecified"
+        }
+      ],
+      "member_claim_ids": [
+        "MEM03",
+        "MEM06"
+      ],
+      "node_count": 4,
+      "node_profile": [
+        {
+          "axis": "O",
+          "required": true,
+          "role": "response_or_outcome"
+        },
+        {
+          "axis": "P",
+          "required": true,
+          "role": "probe"
+        },
+        {
+          "axis": "Q",
+          "required": true,
+          "role": "criterion"
+        },
+        {
+          "axis": null,
+          "required": true,
+          "role": "condition"
+        }
+      ],
+      "support_size": 2,
+      "temporal_features": [
+        "future_horizon",
+        "history_window",
+        "persistence",
+        "time_index"
+      ],
+      "witness_pair_count": 1
+    },
+    {
+      "active_axes": [
+        "Pi",
+        "S",
+        "T"
+      ],
+      "archetype_id": "A-08e83f55d1ed",
+      "control_features": [
+        "partition_Pi"
+      ],
+      "edge_count": 0,
+      "edge_profile": [],
+      "member_claim_ids": [
+        "MEM01",
+        "MEM04"
+      ],
+      "node_count": 4,
+      "node_profile": [
+        {
+          "axis": "Pi",
+          "required": true,
+          "role": "partition"
+        },
+        {
+          "axis": "S",
+          "required": true,
+          "role": "state_or_structure"
+        },
+        {
+          "axis": "S",
+          "required": true,
+          "role": "state_or_structure"
+        },
+        {
+          "axis": "S",
+          "required": true,
+          "role": "state_or_structure"
+        }
+      ],
+      "support_size": 2,
+      "temporal_features": [
+        "time_index"
+      ],
+      "witness_pair_count": 1
+    },
+    {
+      "active_axes": [
+        "K",
+        "O",
+        "P",
+        "T"
+      ],
+      "archetype_id": "A-1f6288bafddc",
+      "control_features": [
+        "probe_P"
+      ],
+      "edge_count": 1,
+      "edge_profile": [
+        {
+          "argument_node_labels": [
+            "{\"axis\":\"P\",\"required\":true,\"role\":\"intervention\",\"space\":\"basis_coordinate\"}",
+            "{\"axis\":\"O\",\"required\":true,\"role\":\"response_or_outcome\",\"space\":\"basis_coordinate\"}"
+          ],
+          "conditional_node_labels": [],
+          "family": "temporal_order",
+          "kind": "precedes",
+          "ordered_arguments": true,
+          "temporal_direction": "forward"
+        }
+      ],
+      "member_claim_ids": [
+        "MEM03",
+        "MEM05"
+      ],
+      "node_count": 3,
+      "node_profile": [
+        {
+          "axis": "O",
+          "required": true,
+          "role": "response_or_outcome"
+        },
+        {
+          "axis": "P",
+          "required": true,
+          "role": "intervention"
+        },
+        {
+          "axis": null,
+          "required": true,
+          "role": "condition"
+        }
+      ],
+      "support_size": 2,
+      "temporal_features": [
+        "future_horizon",
+        "history_window",
+        "persistence",
+        "time_index"
+      ],
+      "witness_pair_count": 1
+    },
+    {
+      "active_axes": [
+        "O",
+        "P",
+        "S"
+      ],
+      "archetype_id": "A-3a1a07a7775c",
+      "control_features": [
+        "probe_P"
+      ],
+      "edge_count": 0,
+      "edge_profile": [],
+      "member_claim_ids": [
+        "MEM02",
+        "MEM05"
+      ],
+      "node_count": 3,
+      "node_profile": [
+        {
+          "axis": "O",
+          "required": true,
+          "role": "response_or_outcome"
+        },
+        {
+          "axis": "S",
+          "required": true,
+          "role": "state_or_structure"
+        },
+        {
+          "axis": null,
+          "required": true,
+          "role": "condition"
+        }
+      ],
+      "support_size": 2,
+      "temporal_features": [],
+      "witness_pair_count": 1
+    },
+    {
+      "active_axes": [
+        "S",
+        "T"
+      ],
+      "archetype_id": "A-53b16535e1c2",
+      "control_features": [],
+      "edge_count": 0,
+      "edge_profile": [],
+      "member_claim_ids": [
+        "MEM01",
+        "MEM05"
+      ],
+      "node_count": 1,
+      "node_profile": [
+        {
+          "axis": "S",
+          "required": true,
+          "role": "state_or_structure"
+        }
+      ],
+      "support_size": 2,
+      "temporal_features": [
+        "persistence",
+        "time_index"
+      ],
+      "witness_pair_count": 1
+    },
+    {
+      "active_axes": [
+        "S",
+        "T"
+      ],
+      "archetype_id": "A-af97ed649c6f",
+      "control_features": [],
+      "edge_count": 0,
+      "edge_profile": [],
+      "member_claim_ids": [
+        "MEM04",
+        "MEM05"
+      ],
+      "node_count": 1,
+      "node_profile": [
+        {
+          "axis": "S",
+          "required": true,
+          "role": "state_or_structure"
+        }
+      ],
+      "support_size": 2,
+      "temporal_features": [
+        "history_window",
+        "time_index"
+      ],
+      "witness_pair_count": 1
+    }
+  ],
+  "architecture_tuning": "NONE",
+  "construct_specificity_claim": false,
+  "decision": "MEM_MULTIPLE_INCOMPARABLE_ARCHETYPES",
+  "exact_basis_skeleton_equivalence_pairs": [],
+  "input_claim_ids": [
+    "MEM01",
+    "MEM02",
+    "MEM03",
+    "MEM04",
+    "MEM05",
+    "MEM06"
+  ],
+  "input_policy": "frozen reviewed ClaimIR + reference structural adjudication only",
+  "maximal_archetype_candidate_count": 9,
+  "maximal_candidate_relation_summary": {
+    "comparable_pairs": 8,
+    "incomparable_pairs": 28
+  },
+  "owner_issue": 295,
+  "pair_candidate_counts": {
+    "MEM01::MEM02": 0,
+    "MEM01::MEM03": 0,
+    "MEM01::MEM04": 7,
+    "MEM01::MEM05": 1,
+    "MEM01::MEM06": 0,
+    "MEM02::MEM03": 4,
+    "MEM02::MEM04": 0,
+    "MEM02::MEM05": 6,
+    "MEM02::MEM06": 4,
+    "MEM03::MEM04": 0,
+    "MEM03::MEM05": 7,
+    "MEM03::MEM06": 15,
+    "MEM04::MEM05": 1,
+    "MEM04::MEM06": 0,
+    "MEM05::MEM06": 3
+  },
+  "parent_issue": 283,
+  "schema_version": "paper2-mem-archetype-pilot-v1",
+  "support_set_count": 9,
+  "unique_nontrivial_pair_generated_candidate_count": 39
+}
