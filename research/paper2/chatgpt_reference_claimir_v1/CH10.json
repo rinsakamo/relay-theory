@@ -1,0 +1,224 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "CH10.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1038/nn1560",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Nature Neuroscience 8(12), PDF p.1 / published p.1704, abstract/introduction: two action-choice controllers, accuracy/cost trade-off, and uncertainty-based arbitration"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Nature Neuroscience 8(12), PDF p.2 / published p.1705, controller contrast: cached scalar future-value summaries versus on-the-fly branching consequence search"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Nature Neuroscience 8(12), PDF p.4 / published p.1707, uncertainty section: each controller produces value estimates with distinct uncertainty profiles"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Nature Neuroscience 8(12), PDF pp.4-5 / published pp.1707-1708, simulations: posterior means/variances and conditions favoring one controller or the other"
+      }
+    ],
+    "authors": [
+      "Nathaniel D Daw",
+      "Yael Niv",
+      "Peter Dayan"
+    ],
+    "institutions": [
+      "Gatsby Computational Neuroscience Unit, University College London",
+      "Interdisciplinary Center for Neural Computation, Hebrew University"
+    ],
+    "venue": "Nature Neuroscience",
+    "citation_count": null,
+    "construct_labels": [
+      "reinforcement learning",
+      "model-free",
+      "model-based",
+      "habitual control",
+      "goal-directed control",
+      "uncertainty arbitration"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "relation",
+    "modality": "descriptive",
+    "scope": {
+      "conditions": [
+        "choice problem in which two learned controllers can assign different values or uncertainty to the same candidate action"
+      ],
+      "population": [
+        "nonhuman animals",
+        "humans"
+      ],
+      "substrate": [
+        "prefrontal-associated controller",
+        "dorsolateral-striatal-associated controller"
+      ],
+      "task": [
+        "select an action using predictions of long-run future outcomes under changing task structure and training history"
+      ],
+      "temporal_scope": [
+        "controller estimates change with experience; one controller can recompute after outcome changes while the other relies on stored summaries"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "cached_value_controller",
+        "role": "state_or_structure",
+        "description": "controller that stores scalar long-run action-value summaries learned from experience",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "forward_search_controller",
+        "role": "state_or_structure",
+        "description": "controller that estimates long-run value by chaining learned short-term transition and outcome predictions at choice time",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "candidate_action",
+        "role": "condition",
+        "description": "action whose long-run value is estimated by both controllers",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "cached_value_estimate",
+        "role": "state_or_structure",
+        "description": "scalar expected future value supplied by the stored-summary controller",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "search_value_estimate",
+        "role": "state_or_structure",
+        "description": "expected future value computed by searching predicted successor states and outcomes",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "cached_uncertainty",
+        "role": "criterion",
+        "description": "estimated uncertainty associated with the stored-summary controller's action-value prediction",
+        "source_span_ids": [
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "search_uncertainty",
+        "role": "criterion",
+        "description": "estimated uncertainty associated with the forward-search controller's prediction, including uncertainty introduced by approximate search",
+        "source_span_ids": [
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "controller_selection",
+        "role": "response_or_outcome",
+        "description": "which controller's action recommendation governs behavior in the current circumstance",
+        "source_span_ids": [
+          "s1",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "maps_to",
+        "arguments": [
+          "cached_value_controller",
+          "candidate_action",
+          "cached_value_estimate"
+        ],
+        "description": "the stored-summary controller maps a state-action situation to a cached scalar long-run value without representing the full sequence of future consequences",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "maps_to",
+        "arguments": [
+          "forward_search_controller",
+          "candidate_action",
+          "search_value_estimate"
+        ],
+        "description": "the forward-search controller maps the same state-action situation to a long-run value by composing predicted transitions and outcomes",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "depends_on",
+        "arguments": [
+          "controller_selection",
+          "cached_uncertainty",
+          "search_uncertainty"
+        ],
+        "description": "which controller dominates depends on their relative estimated uncertainty, favoring the controller expected to be more accurate",
+        "source_span_ids": [
+          "s1",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "distinguishes",
+        "arguments": [
+          "cached_value_controller",
+          "forward_search_controller"
+        ],
+        "description": "the two controllers can use the same task state, action and reward inventory while differing in computational topology, flexibility, cost and uncertainty profile",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
