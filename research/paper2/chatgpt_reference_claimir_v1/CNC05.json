@@ -1,0 +1,173 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "CNC05.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1038/nrn2277",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Nature Reviews Neuroscience 8, published pp.976-977, key comparison: distributed feature network versus architecture with an added shared convergence region"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Nature Reviews Neuroscience 8, published p.977, Figure 1 and accompanying text: modality-specific regions plus one shared convergence region supporting interactive activation across modalities and item classes"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Nature Reviews Neuroscience 8, published p.977, prediction contrast: focal damage to the shared region versus the distributed-only architecture"
+      }
+    ],
+    "authors": [
+      "Karalyn Patterson",
+      "Peter J. Nestor",
+      "Timothy T. Rogers"
+    ],
+    "institutions": [
+      "MRC Cognition and Brain Sciences Unit",
+      "Cambridge University",
+      "University of Wisconsin-Madison"
+    ],
+    "venue": "Nature Reviews Neuroscience",
+    "citation_count": null,
+    "construct_labels": [
+      "semantic memory",
+      "conceptual knowledge",
+      "distributed-only",
+      "distributed-plus-hub",
+      "amodal hub"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "definition",
+    "modality": "necessary",
+    "scope": {
+      "conditions": [
+        "architecture intended to support integrated knowledge across sensory, motor, and linguistic input/output channels"
+      ],
+      "population": [
+        "humans"
+      ],
+      "substrate": [
+        "distributed cortical feature regions and a candidate shared anterior-temporal convergence region"
+      ],
+      "task": [
+        "cross-channel access to item knowledge across multiple input and output modalities"
+      ],
+      "temporal_scope": []
+    },
+    "nodes": [
+      {
+        "id": "distributed_feature_regions",
+        "role": "state_or_structure",
+        "description": "widely distributed regions carrying modality-specific feature information",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "shared_convergence_region",
+        "role": "state_or_structure",
+        "description": "single shared region through which modality-specific representations interact",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "integrated_cross_channel_representation",
+        "role": "state_or_structure",
+        "description": "task-independent integrated representation spanning multiple modality-specific sources",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "architecture_partition",
+        "role": "partition",
+        "description": "contrast between a distributed-feature-only architecture and an architecture that additionally contains a shared convergence region",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "focal_damage",
+        "role": "intervention",
+        "description": "focal disruption of the candidate shared convergence region",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "generalized_cross_channel_impairment",
+        "role": "response_or_outcome",
+        "description": "broad impairment across input modalities, output modalities, and item classes",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "depends_on",
+        "arguments": [
+          "integrated_cross_channel_representation",
+          "shared_convergence_region",
+          "distributed_feature_regions"
+        ],
+        "description": "the highlighted architecture requires both distributed feature regions and a shared convergence region for integrated cross-channel representation",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "distinguishes",
+        "arguments": [
+          "architecture_partition",
+          "shared_convergence_region"
+        ],
+        "description": "presence versus absence of the shared convergence region distinguishes the two architectural alternatives",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "predicts",
+        "arguments": [
+          "focal_damage",
+          "generalized_cross_channel_impairment"
+        ],
+        "description": "focal disruption of the shared region predicts a generalized impairment across channels and item classes",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
