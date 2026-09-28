@@ -1,0 +1,57 @@
+name: paper2-structural-skl-267-selftest
+
+on:
+  pull_request:
+    paths:
+      - "research/paper2/reference_structural_adjudication_v1/SKL*.json"
+      - "research/paper2/chatgpt_reference_claimir_v1/SKL*.json"
+      - "scripts/paper2_reference_structural_adjudication.py"
+      - "scripts/paper2_phi_compare.py"
+      - "scripts/paper2_structural_signature_*.py"
+      - "research/paper2/claim_ir_v1.*"
+      - "research/paper2/reference_structural_adjudication_v1.*"
+      - ".github/workflows/paper2-structural-skl-267-selftest.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile checker
+        run: |
+          python -m py_compile scripts/paper2_reference_structural_adjudication.py
+          python -m py_compile scripts/paper2_phi_compare.py
+      - name: Frozen protocol self-test
+        run: python scripts/paper2_reference_structural_adjudication.py --self-test
+      - name: Validate changed SKL adjudications
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -t claims < <(
+            git diff --name-only "origin/${{ github.base_ref }}...HEAD" |
+              sed -n 's#^research/paper2/reference_structural_adjudication_v1/\(SKL[0-9][0-9]\)\.json$#\1#p' |
+              sort -u
+          )
+          test "${#claims[@]}" -gt 0
+          for claim in "${claims[@]}"; do
+            echo "=== ${claim} ==="
+            python scripts/paper2_reference_structural_adjudication.py \
+              --claim-ir "research/paper2/chatgpt_reference_claimir_v1/${claim}.json" \
+              --adjudication "research/paper2/reference_structural_adjudication_v1/${claim}.json" \
+              --output "/tmp/${claim}.structural.json"
+            python scripts/paper2_phi_compare.py \
+              --project "/tmp/${claim}.structural.json" \
+              > "/tmp/${claim}.phi.json"
+            python -m json.tool "/tmp/${claim}.structural.json" >/dev/null
+            python -m json.tool "/tmp/${claim}.phi.json" >/dev/null
+            sha256sum "/tmp/${claim}.structural.json"
+            sha256sum "/tmp/${claim}.phi.json"
+          done

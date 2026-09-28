@@ -8,130 +8,53 @@
     "adjudicated_at": "2026-09-28"
   },
   "coordinate_map": [
-    {
-      "claim_node_id": "joint_speed_accuracy_frontier",
-      "coordinate_id": "basis.q1",
-      "required": true
-    },
-    {
-      "claim_node_id": "restricted_range_training",
-      "coordinate_id": "basis.p1",
-      "required": true
-    },
-    {
-      "claim_node_id": "task_level_performance",
-      "coordinate_id": "basis.o1",
-      "required": true
-    },
-    {
-      "claim_node_id": "trajectory_variability",
-      "coordinate_id": "basis.o2",
-      "required": true
-    },
-    {
-      "claim_node_id": "movement_smoothness",
-      "coordinate_id": "basis.o3",
-      "required": true
-    },
-    {
-      "claim_node_id": "difficulty_sweep_probe",
-      "coordinate_id": "basis.p2",
-      "required": true
-    }
+    {"claim_node_id":"imposed_test_speed","coordinate_id":"basis.cnd1","required":true},
+    {"claim_node_id":"restricted_range_practice","coordinate_id":"basis.p1","required":true},
+    {"claim_node_id":"joint_speed_success_relation","coordinate_id":"basis.s1","required":true},
+    {"claim_node_id":"global_relation_shift","coordinate_id":"basis.o1","required":true},
+    {"claim_node_id":"performance_shift_criterion","coordinate_id":"basis.q1","required":true},
+    {"claim_node_id":"pre_post_speed_sweep","coordinate_id":"basis.p2","required":true},
+    {"claim_node_id":"trajectory_variability","coordinate_id":"basis.o2","required":true},
+    {"claim_node_id":"mean_trajectory","coordinate_id":"basis.o3","required":true},
+    {"claim_node_id":"trajectory_irregularity","coordinate_id":"basis.o4","required":true},
+    {"claim_node_id":"early_boundary_risk_rate","coordinate_id":"basis.o5","required":true},
+    {"claim_node_id":"successful_online_correction_rate","coordinate_id":"basis.o6","required":true},
+    {"claim_node_id":"submovement_structure","coordinate_id":"basis.s2","required":true}
   ],
   "controls": {
     "probe_P": {
-      "state": "present",
-      "claim_node_ids": [
-        "restricted_range_training",
-        "difficulty_sweep_probe"
-      ],
-      "provenance_kind": "source_declared",
-      "fixed_before_phi": true
+      "state":"present",
+      "claim_node_ids":["restricted_range_practice","pre_post_speed_sweep"],
+      "provenance_kind":"source_declared",
+      "fixed_before_phi":true
     },
     "criterion_Q": {
-      "state": "present",
-      "claim_node_ids": [
-        "joint_speed_accuracy_frontier"
-      ],
-      "provenance_kind": "source_declared",
-      "fixed_before_phi": true
+      "state":"present",
+      "claim_node_ids":["performance_shift_criterion"],
+      "provenance_kind":"source_declared",
+      "fixed_before_phi":true
     },
-    "partition_Pi": {
-      "state": "not_required"
-    },
-    "resource_C": {
-      "state": "not_required"
-    }
+    "partition_Pi":{"state":"not_required"},
+    "resource_C":{"state":"not_required"}
   },
   "temporal": {
-    "time_index": {
-      "state": "present",
-      "source_span_ids": [
-        "s1",
-        "s2",
-        "s3"
-      ]
-    },
-    "history_window": {
-      "state": "present",
-      "source_span_ids": [
-        "s1",
-        "s2",
-        "s3"
-      ]
-    },
-    "future_horizon": {
-      "state": "present",
-      "source_span_ids": [
-        "s1",
-        "s2"
-      ]
-    },
-    "recurrence": {
-      "state": "present",
-      "source_span_ids": [
-        "s2"
-      ]
-    },
-    "persistence": {
-      "state": "not_required"
-    },
-    "ordering": [
-      {
-        "before_coordinate_id": "basis.p1",
-        "after_coordinate_id": "basis.p2",
-        "source_span_ids": [
-          "s1",
-          "s2"
-        ]
-      }
+    "time_index":{"state":"present","source_span_ids":["s2","s3","s4","s5","s6","s7"]},
+    "history_window":{"state":"present","source_span_ids":["s2","s6"]},
+    "future_horizon":{"state":"present","source_span_ids":["s2","s6"]},
+    "recurrence":{"state":"present","source_span_ids":["s2","s6"]},
+    "persistence":{"state":"not_required"},
+    "ordering":[
+      {"before_coordinate_id":"basis.p1","after_coordinate_id":"basis.o1","source_span_ids":["s2","s6"]}
     ]
   },
   "approximation": {
-    "mode": "stochastic",
-    "threshold": {
-      "state": "not_required"
-    },
-    "tolerance": {
-      "state": "not_required"
-    },
-    "confidence": {
-      "state": "not_applicable"
-    },
-    "loss": {
-      "state": "not_required"
-    },
-    "comparison_criterion": {
-      "state": "present",
-      "source_span_ids": [
-        "s1",
-        "s2"
-      ]
-    }
+    "mode":"stochastic",
+    "threshold":{"state":"not_required"},
+    "tolerance":{"state":"not_required"},
+    "confidence":{"state":"not_applicable"},
+    "loss":{"state":"not_required"},
+    "comparison_criterion":{"state":"present","source_span_ids":["s1","s6"]}
   },
-  "bridge_assumptions": [],
-  "decision": {
-    "status": "PASS"
-  }
+  "bridge_assumptions":[],
+  "decision":{"status":"PASS"}
 }
