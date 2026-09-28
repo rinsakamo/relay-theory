@@ -1,0 +1,48 @@
+name: paper2-ctl-archetype-lane-selftest
+
+on:
+  pull_request:
+    paths:
+      - "scripts/paper2_archetype_ctl_lane.py"
+      - "research/paper2/ctl_archetype_lane_v1.json"
+      - ".github/workflows/paper2-ctl-archetype-lane-selftest.yml"
+      - "scripts/paper2_basis_structural_skeleton.py"
+      - "scripts/paper2_basis_subobject_forgetting.py"
+      - "scripts/paper2_reference_structural_adjudication.py"
+      - "scripts/paper2_phi_compare.py"
+      - "research/paper2/chatgpt_reference_claimir_v1/CTL*.json"
+      - "research/paper2/reference_structural_adjudication_v1/CTL*.json"
+
+permissions:
+  contents: read
+
+jobs:
+  ctl-archetype:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile machinery
+        run: |
+          python -m py_compile scripts/paper2_archetype_ctl_lane.py
+          python -m py_compile scripts/paper2_basis_structural_skeleton.py
+          python -m py_compile scripts/paper2_basis_subobject_forgetting.py
+      - name: Requalify frozen abstraction machinery
+        run: |
+          python scripts/paper2_basis_structural_skeleton.py --self-test
+          python scripts/paper2_basis_subobject_forgetting.py --self-test
+      - name: Run deterministic CTL lane self-test
+        run: python scripts/paper2_archetype_ctl_lane.py --self-test
+      - name: Generate CTL lane report
+        run: |
+          python scripts/paper2_archetype_ctl_lane.py             --emit-report             --output /tmp/ctl_archetype_lane_v1.json
+          python -m json.tool /tmp/ctl_archetype_lane_v1.json >/dev/null
+          sha256sum /tmp/ctl_archetype_lane_v1.json
+      - name: Upload generated report
+        uses: actions/upload-artifact@v4
+        with:
+          name: ctl-archetype-lane-report
+          path: /tmp/ctl_archetype_lane_v1.json
+          if-no-files-found: error
