@@ -8,139 +8,71 @@
     "adjudicated_at": "2026-09-28"
   },
   "coordinate_map": [
-    {
-      "claim_node_id": "maintenance_subsystem",
-      "coordinate_id": "basis.pi1",
-      "required": true
-    },
-    {
-      "claim_node_id": "gating_subsystem",
-      "coordinate_id": "basis.pi2",
-      "required": true
-    },
-    {
-      "claim_node_id": "maintained_task_state",
-      "coordinate_id": "basis.s1",
-      "required": true
-    },
-    {
-      "claim_node_id": "gate_action",
-      "coordinate_id": "basis.p1",
-      "required": true
-    },
-    {
-      "claim_node_id": "reinforcement_signal",
-      "coordinate_id": "basis.o1",
-      "required": true
-    },
-    {
-      "claim_node_id": "task_performance",
-      "coordinate_id": "basis.o2",
-      "required": true
-    },
-    {
-      "claim_node_id": "task_success",
-      "coordinate_id": "basis.q1",
-      "required": true
-    },
-    {
-      "claim_node_id": "sequential_task_probe",
-      "coordinate_id": "basis.p2",
-      "required": true
-    }
+    {"claim_node_id":"maintenance_subsystem","coordinate_id":"basis.pi1","required":true},
+    {"claim_node_id":"update_control_subsystem","coordinate_id":"basis.pi2","required":true},
+    {"claim_node_id":"valuation_subsystem","coordinate_id":"basis.pi3","required":true},
+    {"claim_node_id":"maintained_context_state","coordinate_id":"basis.s1","required":true},
+    {"claim_node_id":"current_task_input","coordinate_id":"basis.o1","required":true},
+    {"claim_node_id":"update_control_policy","coordinate_id":"basis.s2","required":true},
+    {"claim_node_id":"update_control_action","coordinate_id":"basis.s3","required":true},
+    {"claim_node_id":"critic_evaluation_signal","coordinate_id":"basis.o2","required":true},
+    {"claim_node_id":"correct_output_criterion","coordinate_id":"basis.q1","required":true},
+    {"claim_node_id":"task_performance","coordinate_id":"basis.o3","required":true},
+    {"claim_node_id":"benchmark_task_probe","coordinate_id":"basis.p1","required":true}
   ],
   "controls": {
-    "probe_P": {
-      "state": "present",
-      "claim_node_ids": [
-        "gate_action",
-        "sequential_task_probe"
-      ],
-      "provenance_kind": "source_declared",
-      "fixed_before_phi": true
+    "probe_P":{
+      "state":"present",
+      "claim_node_ids":["benchmark_task_probe"],
+      "provenance_kind":"source_declared",
+      "fixed_before_phi":true
     },
-    "criterion_Q": {
-      "state": "present",
-      "claim_node_ids": [
-        "task_success"
-      ],
-      "provenance_kind": "source_declared",
-      "fixed_before_phi": true
+    "criterion_Q":{
+      "state":"present",
+      "claim_node_ids":["correct_output_criterion"],
+      "provenance_kind":"source_declared",
+      "fixed_before_phi":true
     },
-    "partition_Pi": {
-      "state": "present",
-      "claim_node_ids": [
-        "maintenance_subsystem",
-        "gating_subsystem"
-      ],
-      "provenance_kind": "source_declared",
-      "fixed_before_phi": true
+    "partition_Pi":{
+      "state":"present",
+      "claim_node_ids":["maintenance_subsystem","update_control_subsystem","valuation_subsystem"],
+      "provenance_kind":"source_declared",
+      "fixed_before_phi":true
     },
-    "resource_C": {
-      "state": "not_required"
-    }
+    "resource_C":{"state":"not_required"}
   },
   "temporal": {
-    "time_index": {
-      "state": "present",
-      "source_span_ids": [
-        "s1",
-        "s2",
-        "s3"
-      ]
-    },
-    "history_window": {
-      "state": "present",
-      "source_span_ids": [
-        "s1",
-        "s2",
-        "s3"
-      ]
-    },
-    "future_horizon": {
-      "state": "present",
-      "source_span_ids": [
-        "s1",
-        "s3"
-      ]
-    },
-    "recurrence": {
-      "state": "present",
-      "source_span_ids": [
-        "s1",
-        "s3"
-      ]
-    },
-    "persistence": {
-      "state": "present",
-      "source_span_ids": [
-        "s1",
-        "s2",
-        "s3"
-      ]
-    },
-    "ordering": []
+    "time_index":{"state":"present","source_span_ids":["s1","s2","s3","s4","s5"]},
+    "history_window":{"state":"present","source_span_ids":["s1","s2","s3","s4"]},
+    "future_horizon":{"state":"present","source_span_ids":["s3","s4"]},
+    "recurrence":{"state":"present","source_span_ids":["s2","s3","s4","s5"]},
+    "persistence":{"state":"present","source_span_ids":["s1","s2","s4"]},
+    "ordering":[
+      {
+        "before_coordinate_id":"basis.s1",
+        "after_coordinate_id":"basis.o3",
+        "source_span_ids":["s4"]
+      },
+      {
+        "before_coordinate_id":"basis.o3",
+        "after_coordinate_id":"basis.s3",
+        "source_span_ids":["s4"]
+      },
+      {
+        "before_coordinate_id":"basis.o2",
+        "after_coordinate_id":"basis.s2",
+        "source_span_ids":["s3","s4"]
+      }
+    ]
   },
   "approximation": {
-    "mode": "stochastic",
-    "threshold": {
-      "state": "not_required"
-    },
-    "tolerance": {
-      "state": "not_required"
-    },
-    "confidence": {
-      "state": "not_applicable"
-    },
-    "loss": {
-      "state": "not_required"
-    },
-    "comparison_criterion": {
-      "state": "not_required"
-    }
+    "mode":"deterministic",
+    "threshold":{"state":"not_required"},
+    "tolerance":{"state":"not_required"},
+    "confidence":{"state":"not_applicable"},
+    "loss":{"state":"not_required"},
+    "comparison_criterion":{"state":"not_required"}
   },
-  "bridge_assumptions": [],
-  "decision": {
-    "status": "PASS"
-  }
+  "bridge_assumptions":[],
+  "decision":{"status":"PASS"}
 }
