@@ -9,13 +9,28 @@
   },
   "coordinate_map": [
     {
-      "claim_node_id": "first_target_identification",
+      "claim_node_id": "target_identification_requirement",
       "coordinate_id": "basis.p1",
       "required": true
     },
     {
-      "claim_node_id": "posttarget_stream",
+      "claim_node_id": "immediate_posttarget_input",
       "coordinate_id": "basis.cnd1",
+      "required": true
+    },
+    {
+      "claim_node_id": "posttarget_blank_timing",
+      "coordinate_id": "basis.p2",
+      "required": true
+    },
+    {
+      "claim_node_id": "identification_interference",
+      "coordinate_id": "basis.s1",
+      "required": true
+    },
+    {
+      "claim_node_id": "transient_visual_suppression",
+      "coordinate_id": "basis.s2",
       "required": true
     },
     {
@@ -29,23 +44,13 @@
       "required": true
     },
     {
-      "claim_node_id": "stream_interruption",
-      "coordinate_id": "basis.p2",
-      "required": true
-    },
-    {
-      "claim_node_id": "dual_event_probe",
+      "claim_node_id": "dual_task_rsvp_probe",
       "coordinate_id": "basis.p3",
       "required": true
     },
     {
-      "claim_node_id": "correct_probe_detection",
+      "claim_node_id": "correct_probe_report",
       "coordinate_id": "basis.q1",
-      "required": true
-    },
-    {
-      "claim_node_id": "temporary_processing_budget",
-      "coordinate_id": "basis.s1",
       "required": true
     }
   ],
@@ -53,9 +58,9 @@
     "probe_P": {
       "state": "present",
       "claim_node_ids": [
-        "first_target_identification",
-        "stream_interruption",
-        "dual_event_probe"
+        "target_identification_requirement",
+        "posttarget_blank_timing",
+        "dual_task_rsvp_probe"
       ],
       "provenance_kind": "source_declared",
       "fixed_before_phi": true
@@ -63,7 +68,7 @@
     "criterion_Q": {
       "state": "present",
       "claim_node_ids": [
-        "correct_probe_detection"
+        "correct_probe_report"
       ],
       "provenance_kind": "source_declared",
       "fixed_before_phi": true
@@ -72,12 +77,7 @@
       "state": "not_required"
     },
     "resource_C": {
-      "state": "present",
-      "claim_node_ids": [
-        "temporary_processing_budget"
-      ],
-      "provenance_kind": "source_declared",
-      "fixed_before_phi": true
+      "state": "not_required"
     }
   },
   "temporal": {
@@ -86,39 +86,58 @@
       "source_span_ids": [
         "s1",
         "s2",
-        "s3"
+        "s3",
+        "s4",
+        "s5"
       ]
     },
     "history_window": {
-      "state": "present",
-      "source_span_ids": [
-        "s1",
-        "s2",
-        "s3"
-      ]
+      "state": "not_required"
     },
     "future_horizon": {
       "state": "present",
       "source_span_ids": [
         "s1",
         "s2",
-        "s3"
+        "s4",
+        "s5"
       ]
     },
     "recurrence": {
       "state": "not_required"
     },
     "persistence": {
-      "state": "not_required"
+      "state": "present",
+      "source_span_ids": [
+        "s4",
+        "s5"
+      ]
     },
     "ordering": [
       {
-        "before_coordinate_id": "basis.p1",
+        "before_coordinate_id": "basis.cnd1",
+        "after_coordinate_id": "basis.s1",
+        "source_span_ids": [
+          "s3",
+          "s4",
+          "s5"
+        ]
+      },
+      {
+        "before_coordinate_id": "basis.s1",
+        "after_coordinate_id": "basis.s2",
+        "source_span_ids": [
+          "s4",
+          "s5"
+        ]
+      },
+      {
+        "before_coordinate_id": "basis.s2",
         "after_coordinate_id": "basis.o1",
         "source_span_ids": [
           "s1",
-          "s2",
-          "s3"
+          "s4",
+          "s5"
         ]
       }
     ]
