@@ -2,62 +2,57 @@
   "schema_version": "paper2-reference-structural-adjudication-v1",
   "claim_id": "CNC05.C1",
   "adjudicator": {
-    "tool": "ChatGPT",
-    "version": "GPT-5.6 Sol",
-    "procedure": "paper2-reference-structural-adjudication-v1:267",
-    "adjudicated_at": "2026-09-28"
+    "tool": "GPT-5.6 Sol",
+    "version": "2026-09-28",
+    "procedure": "paper2-reference-structural-adjudication-v1-cnc",
+    "adjudicated_at": "2026-09-28T14:37:00Z"
   },
   "coordinate_map": [
     {
-      "claim_node_id": "distributed_feature_regions",
-      "coordinate_id": "basis.s1",
+      "claim_node_id": "distributed_modality_specific_regions",
+      "coordinate_id": "basis.n01",
       "required": true
     },
     {
-      "claim_node_id": "shared_convergence_region",
-      "coordinate_id": "basis.s2",
+      "claim_node_id": "shared_cross_modal_convergence_system",
+      "coordinate_id": "basis.n02",
       "required": true
     },
     {
-      "claim_node_id": "integrated_cross_channel_representation",
-      "coordinate_id": "basis.s3",
+      "claim_node_id": "cross_modal_generalization_capacity",
+      "coordinate_id": "basis.n03",
       "required": true
     },
     {
-      "claim_node_id": "architecture_partition",
-      "coordinate_id": "basis.pi1",
+      "claim_node_id": "architecture_without_shared_convergence",
+      "coordinate_id": "basis.n04",
       "required": true
     },
     {
-      "claim_node_id": "focal_damage",
-      "coordinate_id": "basis.p1",
+      "claim_node_id": "architecture_with_shared_convergence",
+      "coordinate_id": "basis.n05",
       "required": true
     },
     {
-      "claim_node_id": "generalized_cross_channel_impairment",
-      "coordinate_id": "basis.o1",
+      "claim_node_id": "focal_damage_to_convergence_system",
+      "coordinate_id": "basis.n06",
+      "required": true
+    },
+    {
+      "claim_node_id": "generalized_cross_modal_impairment",
+      "coordinate_id": "basis.n07",
       "required": true
     }
   ],
   "controls": {
     "probe_P": {
-      "state": "present",
-      "claim_node_ids": [
-        "focal_damage"
-      ],
-      "provenance_kind": "source_declared",
-      "fixed_before_phi": true
+      "state": "not_required"
     },
     "criterion_Q": {
       "state": "not_required"
     },
     "partition_Pi": {
-      "state": "present",
-      "claim_node_ids": [
-        "architecture_partition"
-      ],
-      "provenance_kind": "source_declared",
-      "fixed_before_phi": true
+      "state": "not_required"
     },
     "resource_C": {
       "state": "not_required"
