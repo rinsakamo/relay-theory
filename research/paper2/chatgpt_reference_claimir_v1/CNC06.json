@@ -1,0 +1,281 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "CNC06.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1037/0033-295X.114.2.245",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Psychological Review 114(2), published pp.245-246, abstract and opening framework: inference from one or a few positive examples by combining prior plausibility with statistical structure; graded uncertainty and sampling context are emphasized"
+      },
+      {
+        "span_id": "s2",
+        "locator": "same article, published pp.250-251, computational-level framework and Equations 1-4: candidate extensions, prior and likelihood terms, posterior weighting, and posterior-weighted probability for applying the label to a new item"
+      },
+      {
+        "span_id": "s3",
+        "locator": "same article, published p.252, probabilistic components and Equation 5: under independent random sampling from the true extension, smaller consistent candidates assign greater likelihood to the same examples, with the relative preference increasing exponentially with sample count; applicability depends on the sampling assumption"
+      },
+      {
+        "span_id": "s4",
+        "locator": "same article, published pp.253-255, Experiment 1: adult one-example versus three-example label-extension task, novel-item test set, and response-frequency pattern across subordinate/basic/superordinate matches"
+      },
+      {
+        "span_id": "s5",
+        "locator": "same article, published pp.256-260, Experiments 2-3: preschool-age participants, simplified label-extension tests, one-example versus three-example evidence, and graded versus sharpened response patterns"
+      },
+      {
+        "span_id": "s6",
+        "locator": "same article, published p.263, Figure 8 and Model Results: predicted probabilities compared with adult and child response frequencies; adult fit changes with an added basic-level prior bias, whereas child data do not require the same added bias"
+      },
+      {
+        "span_id": "s7",
+        "locator": "same article, published pp.263-266, Comparison With Other Models: separate contributions of repeated-sample likelihood weighting and posterior-weighted prediction averaging, plus limits of single-best-candidate and weak-likelihood alternatives"
+      }
+    ],
+    "authors": [
+      "Fei Xu",
+      "Joshua B. Tenenbaum"
+    ],
+    "institutions": [
+      "University of British Columbia",
+      "Massachusetts Institute of Technology"
+    ],
+    "venue": "Psychological Review",
+    "citation_count": null,
+    "construct_labels": [
+      "word learning",
+      "Bayesian inference",
+      "size principle",
+      "hypothesis averaging",
+      "generalization"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "mapping",
+    "modality": "probabilistic",
+    "scope": {
+      "conditions": [
+        "one or a few positive labeled examples are evaluated within a structured set of candidate extensions",
+        "likelihood-based sharpening across repeated examples is conditional on the assumed process by which labeled examples were sampled"
+      ],
+      "population": [
+        "adults",
+        "preschool-age children"
+      ],
+      "substrate": [],
+      "task": [
+        "infer which candidate extension a novel label may denote and decide which new objects should also receive that label"
+      ],
+      "temporal_scope": [
+        "conditioning is defined over the currently observed example set; the formal account does not require a particular sequential psychological update algorithm"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "candidate_extension_hypotheses",
+        "role": "state_or_structure",
+        "description": "structured set of candidate subsets of entities that could be the extension of the novel label",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "prior_candidate_weights",
+        "role": "state_or_structure",
+        "description": "probability weights over candidate extensions before conditioning on the currently observed examples",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "observed_positive_examples",
+        "role": "available_information",
+        "description": "one or more observed items that have been positively labeled",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3",
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "sampling_model",
+        "role": "condition",
+        "description": "assumption about the process that generated the positively labeled examples under each candidate extension",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "candidate_likelihood_weights",
+        "role": "state_or_structure",
+        "description": "probabilities assigned to the observed example set under each candidate extension and the assumed sampling process",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "posterior_candidate_weights",
+        "role": "state_or_structure",
+        "description": "probability weights over candidate extensions after conditioning prior weights on the observed example set through the candidate likelihoods",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "novel_item_probe",
+        "role": "probe",
+        "description": "set of previously unlabeled test objects spanning multiple levels of the candidate category hierarchy",
+        "source_span_ids": [
+          "s4",
+          "s5",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "predicted_label_extension_probability",
+        "role": "response_or_outcome",
+        "description": "model-computed probability that the novel label should be applied to a particular new test object",
+        "source_span_ids": [
+          "s2",
+          "s6",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "observed_label_extension_frequency",
+        "role": "response_or_outcome",
+        "description": "empirical frequency with which participants apply the novel label to test objects at each hierarchical level",
+        "source_span_ids": [
+          "s4",
+          "s5",
+          "s6"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "depends_on",
+        "arguments": [
+          "candidate_likelihood_weights",
+          "observed_positive_examples",
+          "sampling_model",
+          "candidate_extension_hypotheses"
+        ],
+        "description": "the probability assigned to the observed examples under a candidate depends on which extension is proposed and on how examples are assumed to have been sampled",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "depends_on",
+        "arguments": [
+          "posterior_candidate_weights",
+          "prior_candidate_weights",
+          "candidate_likelihood_weights"
+        ],
+        "description": "conditioned candidate weights depend jointly on prior plausibility and the likelihood assigned to the observed examples",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "changes",
+        "arguments": [
+          "observed_positive_examples",
+          "sampling_model",
+          "posterior_candidate_weights"
+        ],
+        "description": "under independent random sampling from the true extension, additional mutually consistent examples increase relative support for smaller consistent candidate extensions, sharpening the conditioned distribution",
+        "source_span_ids": [
+          "s3",
+          "s4",
+          "s5",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "maps_to",
+        "arguments": [
+          "posterior_candidate_weights",
+          "candidate_extension_hypotheses",
+          "novel_item_probe",
+          "predicted_label_extension_probability"
+        ],
+        "description": "for a new test object, the predicted application probability is the summed conditioned weight of candidate extensions that contain that object",
+        "source_span_ids": [
+          "s2",
+          "s6",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "maps_to",
+        "arguments": [
+          "novel_item_probe",
+          "observed_label_extension_frequency"
+        ],
+        "description": "the behavioral test yields response frequencies for applying the novel label to new objects at different hierarchical levels",
+        "source_span_ids": [
+          "s4",
+          "s5",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r6",
+        "kind": "predicts",
+        "arguments": [
+          "predicted_label_extension_probability",
+          "observed_label_extension_frequency"
+        ],
+        "description": "the model-computed probabilities reproduce major graded and sharpened response patterns in the adult and child data, while fitted prior structure differs between the reported adult and child comparisons",
+        "source_span_ids": [
+          "s6",
+          "s7"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}

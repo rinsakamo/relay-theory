@@ -1,0 +1,430 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "PRD06.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1111/j.1469-8986.2007.00531.x",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Psychophysiology 44(4), published p.491, Abstract: reviewed time-resolved studies support context-based anticipation of likely upcoming features; anticipatory processing can carry costs, varies with age, and differs across hemispheric processing modes"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Psychophysiology 44(4), published pp.492-493, Integration and Prediction / Figure 1: expected completions and equally unexpected within- versus between-category violations distinguish feature preactivation from post hoc contextual fit"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Psychophysiology 44(4), published pp.493-494, anticipatory feature evidence: contextual information can preactivate semantic/conceptual, morpho-syntactic, and lexical/perceptual properties of not-yet-presented items; article/adjective responses can reflect properties of an expected later noun"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Psychophysiology 44(4), published pp.494-495, prediction-cost section: unexpected unrelated completions after strongly constraining contexts elicit a later frontal positive response beyond the earlier expectancy-related response; suppression/revision interpretation remains tentative"
+      },
+      {
+        "span_id": "s5",
+        "locator": "Psychophysiology 44(4), published pp.495-497, Aging Effects / Figure 2: older adults as a group retain contextual-fit effects but show little prediction-specific facilitation; individual older adults with higher verbal fluency can show younger-like patterns"
+      },
+      {
+        "span_id": "s6",
+        "locator": "Psychophysiology 44(4), published pp.497-500, hemispheric visual-field studies / Figures 3-5: both hemispheres use message-level context, but left-biased processing shows stronger anticipatory feature preparation whereas right-biased processing is more tied to bottom-up fit/plausibility"
+      },
+      {
+        "span_id": "s7",
+        "locator": "Psychophysiology 44(4), published pp.500-502, PARLO framework and Conclusions: top-down versus feed-forward hemispheric asymmetry is proposed as an explanatory framework; predictive and integrative strategies may operate in parallel and be recruited dynamically according to resources and task demands"
+      }
+    ],
+    "authors": [
+      "Kara D. Federmeier"
+    ],
+    "institutions": [
+      "Department of Psychology, Program in Neuroscience, and Beckman Institute for Advanced Science and Technology, University of Illinois, Urbana-Champaign"
+    ],
+    "venue": "Psychophysiology",
+    "citation_count": null,
+    "construct_labels": [
+      "prediction in language comprehension",
+      "event-related potentials",
+      "N400"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "relation",
+    "modality": "probabilistic",
+    "scope": {
+      "conditions": [
+        "preceding sentence or discourse information provides graded constraint over likely upcoming linguistic input",
+        "the reviewed anticipation effects are most clearly observed in young adults when contextual support is strong",
+        "the actual continuation can match the most expected item, be unexpected while sharing features with it, or be unexpected and feature-dissimilar",
+        "resource availability, adult age, and initial hemispheric routing can change the relative contribution of anticipatory versus post-input integration strategies"
+      ],
+      "population": [
+        "younger and older adult human language comprehenders across the reviewed reading and listening studies"
+      ],
+      "substrate": [
+        "left-biased and right-biased cerebral processing systems as compared in lateralized-input studies"
+      ],
+      "task": [
+        "read or listen to constraining language and process expected or unexpected continuations while time-locked scalp electrical responses or related online measures are recorded"
+      ],
+      "temporal_scope": [
+        "context is available before the critical continuation and can preactivate features before the item is encountered",
+        "an early response to the continuation indexes access/facilitation related to prior support, whereas a later frontal response can follow a strongly violated expectation",
+        "the source treats anticipatory and integrative processing as potentially concurrent and dynamically weighted rather than as mutually exclusive fixed stages"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "preceding_context",
+        "role": "available_information",
+        "description": "sentence- or discourse-level information available before the critical continuation",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "context_constraint",
+        "role": "condition",
+        "description": "strength with which the preceding context favors a particular continuation or small set of continuations",
+        "source_span_ids": [
+          "s2",
+          "s4",
+          "s5",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "expected_completion_state",
+        "role": "state_or_structure",
+        "description": "graded expectation for a particular likely upcoming continuation derived from the preceding context",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "preactivated_feature_state",
+        "role": "state_or_structure",
+        "description": "semantic, morpho-syntactic, lexical, or perceptual properties activated before the corresponding upcoming item is actually presented",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "actual_continuation",
+        "role": "available_information",
+        "description": "the word, article, adjective, or picture actually encountered after the constraining context",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "feature_overlap_with_expected_completion",
+        "role": "condition",
+        "description": "degree to which an unexpected continuation shares relevant properties with the contextually favored but unpresented completion",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "contextual_fit",
+        "role": "condition",
+        "description": "plausibility or fit of the actually presented continuation with the preceding message-level context",
+        "source_span_ids": [
+          "s2",
+          "s5",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "early_memory_access_response",
+        "role": "response_or_outcome",
+        "description": "centroparietal negative-going response around several hundred milliseconds whose amplitude is reduced when meaning-related information is easier to access",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s5",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "late_unexpected_input_response",
+        "role": "response_or_outcome",
+        "description": "slow frontally distributed positive response selectively enhanced when an unrelated unexpected continuation follows a strongly constraining context",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "anticipatory_strategy_state",
+        "role": "state_or_structure",
+        "description": "processing mode in which context is used before input arrival to prepare properties of likely upcoming items",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3",
+          "s5",
+          "s6",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "post_input_integration_state",
+        "role": "state_or_structure",
+        "description": "processing mode in which the actually presented item is evaluated primarily for its bottom-up fit with the current message representation",
+        "source_span_ids": [
+          "s2",
+          "s5",
+          "s6",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "adult_age_resource_profile",
+        "role": "condition",
+        "description": "age- and resource-related profile associated with differences in the tendency or efficacy of anticipatory processing",
+        "source_span_ids": [
+          "s5",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "verbal_generation_fluency",
+        "role": "condition",
+        "description": "ability to rapidly generate words from category or letter cues, which covaries with younger-like anticipation effects among older adults",
+        "source_span_ids": [
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "initial_hemispheric_routing",
+        "role": "intervention",
+        "description": "lateralized visual presentation that initially biases processing toward one cerebral hemisphere",
+        "source_span_ids": [
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "context_continuation_probe_family",
+        "role": "probe",
+        "description": "reviewed sentence-completion, category-violation, anticipatory form-cue, age-comparison, and visual-half-field paradigms that contrast context-derived expectations with actual continuations",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s4",
+          "s5",
+          "s6"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "maps_to",
+        "arguments": [
+          "preceding_context",
+          "context_constraint",
+          "expected_completion_state"
+        ],
+        "description": "preceding language information establishes a graded expectation over likely upcoming continuations",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "maps_to",
+        "arguments": [
+          "expected_completion_state",
+          "preactivated_feature_state"
+        ],
+        "description": "when an anticipatory strategy is engaged, the favored continuation can preactivate semantic and other item properties before the item appears",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "depends_on",
+        "arguments": [
+          "early_memory_access_response",
+          "actual_continuation",
+          "expected_completion_state",
+          "feature_overlap_with_expected_completion",
+          "contextual_fit"
+        ],
+        "description": "the early continuation-evoked response reflects both support for the presented item and, critically, facilitation from properties shared with a strongly expected but unpresented completion",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "changes",
+        "arguments": [
+          "context_constraint",
+          "preactivated_feature_state"
+        ],
+        "description": "stronger contextual constraint can strengthen advance preparation of features associated with the favored continuation",
+        "source_span_ids": [
+          "s2",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "changes",
+        "arguments": [
+          "context_constraint",
+          "late_unexpected_input_response"
+        ],
+        "description": "when an unrelated unexpected continuation violates a strong contextual expectation, a later frontal positive response is enhanced relative to the same unexpected continuation after weak constraint",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r6",
+        "kind": "depends_on",
+        "arguments": [
+          "late_unexpected_input_response",
+          "actual_continuation",
+          "expected_completion_state"
+        ],
+        "description": "the late response is associated by the source with consequences of disconfirming a strong expectation, although its exact cognitive and neural mechanism remains unresolved",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r7",
+        "kind": "changes",
+        "arguments": [
+          "adult_age_resource_profile",
+          "anticipatory_strategy_state"
+        ],
+        "description": "older adults as a group are less likely or less effective at using context to preactivate properties of upcoming items, despite retaining sensitivity to contextual fit",
+        "source_span_ids": [
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r8",
+        "kind": "predicts",
+        "arguments": [
+          "verbal_generation_fluency",
+          "anticipatory_strategy_state"
+        ],
+        "description": "among older adults, greater rapid word-generation fluency predicts a more younger-like electrophysiological pattern indicative of anticipatory feature use",
+        "source_span_ids": [
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r9",
+        "kind": "changes",
+        "arguments": [
+          "initial_hemispheric_routing",
+          "anticipatory_strategy_state",
+          "post_input_integration_state"
+        ],
+        "description": "lateralized-input studies show relatively stronger anticipatory feature preparation after initial left-biased routing and relatively stronger bottom-up plausibility-based processing after initial right-biased routing",
+        "source_span_ids": [
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r10",
+        "kind": "differs",
+        "arguments": [
+          "anticipatory_strategy_state",
+          "post_input_integration_state"
+        ],
+        "description": "the review distinguishes advance context-driven preparation from post-input assessment of the presented item's fit, while allowing both strategies to contribute during normal comprehension",
+        "source_span_ids": [
+          "s2",
+          "s5",
+          "s6",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r11",
+        "kind": "maps_to",
+        "arguments": [
+          "context_continuation_probe_family",
+          "early_memory_access_response",
+          "late_unexpected_input_response"
+        ],
+        "description": "the reviewed context/continuation manipulations expose temporally separable facilitation and expectation-violation consequences",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s4",
+          "s5",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r12",
+        "kind": "depends_on",
+        "arguments": [
+          "anticipatory_strategy_state",
+          "context_constraint",
+          "adult_age_resource_profile",
+          "initial_hemispheric_routing"
+        ],
+        "description": "engagement and expression of advance preparation depend on contextual support and differ with resource/age profile and hemispheric processing conditions",
+        "source_span_ids": [
+          "s5",
+          "s6",
+          "s7"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}

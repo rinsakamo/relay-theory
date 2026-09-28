@@ -1,0 +1,244 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "CH06.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1038/nrn2787",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Nature Reviews Neuroscience 11, published pp.127-128 / author PDF pp.1-2, opening motivation and Box 1: adaptive biological agents occupy a limited repertoire of states; long-run average surprise is minimized; variational free energy is an evaluable upper bound on surprise"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Nature Reviews Neuroscience 11, published pp.128-129 / author PDF pp.2-3, Box 1 and Implications: free energy depends on sensory samples, a recognition density encoded by internal states, and a generative model; internal-state optimization changes the recognition density whereas action changes sampled sensory input"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Nature Reviews Neuroscience 11, published pp.133-135 / author PDF pp.7-9, Neural Darwinism and value learning plus Optimal control theory: prior expectations specify valuable/attracting states and motion; under the stated optimal-policy assumption value is inversely related to surprise, free energy bounds expected cost, and rewards/goals can be encoded as priors fulfilled by action"
+      }
+    ],
+    "authors": [
+      "Karl Friston"
+    ],
+    "institutions": [
+      "The Wellcome Trust Centre for Neuroimaging, University College London"
+    ],
+    "venue": "Nature Reviews Neuroscience",
+    "citation_count": null,
+    "construct_labels": [
+      "free-energy principle",
+      "variational free energy",
+      "active inference",
+      "generative model"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "criterion",
+    "modality": "descriptive",
+    "scope": {
+      "conditions": [
+        "the source's optimization formulation is applied to an adaptive biological agent whose characteristic physiological and sensory states occupy a limited repertoire",
+        "the agent is modeled as having a joint probability density over sensory samples and hidden causes plus a recognition density encoded by internal states",
+        "the value/control identification is conditional on the source's stated assumption that an optimal policy performs gradient ascent on value; priors over states or their motion may be learned or innate and can encode goals, rewards, or costs"
+      ],
+      "population": [
+        "adaptive biological agents, including animals or brains in the source's framing"
+      ],
+      "substrate": [
+        "sensory and hidden environmental states, internal states, actions, and probabilistic generative and recognition densities"
+      ],
+      "task": [
+        "minimize an agent-accessible bound objective through perceptual/internal-state optimization and action while realizing state trajectories specified by prior expectations"
+      ],
+      "temporal_scope": [
+        "short-term minimization of the accessible bound objective is related to long-run average surprise, while the value/control discussion concerns expected future states and priors over motion through state space"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "sensory_samples",
+        "role": "available_information",
+        "description": "sensory states sampled through the agent's exchange with the environment",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "joint_probability_density",
+        "role": "state_or_structure",
+        "description": "joint probability density over sensory samples and their hidden causes, including prior densities",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "recognition_density",
+        "role": "state_or_structure",
+        "description": "probabilistic representation of sensory causes encoded by the agent's internal states",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "accessible_bound_objective",
+        "role": "criterion",
+        "description": "agent-accessible information-theoretic objective that upper-bounds sensory surprise and, in the source's control-theoretic comparison, expected cost",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "value_cost_criterion",
+        "role": "criterion",
+        "description": "value as expected reward or utility, or its complementary expected loss or cost over future states under a policy",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "prior_expectations",
+        "role": "criterion",
+        "description": "prior expectations over states or motion through state space that can specify valuable attractors, rewards, goals, or costs",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "internal_state_optimization",
+        "role": "other",
+        "description": "source-explicit optimization of internal states that changes the recognition density toward the conditional density on sensory causes",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "world_directed_action",
+        "role": "intervention",
+        "description": "action on the environment that changes which sensory states are sampled",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "sampled_state_trajectory",
+        "role": "response_or_outcome",
+        "description": "trajectory through sensory or hidden state space realized through action under the agent's prior expectations",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "depends_on",
+        "arguments": [
+          "accessible_bound_objective",
+          "sensory_samples",
+          "recognition_density",
+          "joint_probability_density"
+        ],
+        "description": "the accessible bound objective is defined from sensory input, the recognition density, and the joint probability density over sensations and their hidden causes",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "changes",
+        "arguments": [
+          "internal_state_optimization",
+          "recognition_density",
+          "accessible_bound_objective"
+        ],
+        "description": "optimizing internal states changes the recognition density toward the conditional density and reduces the accessible bound objective without directly changing current sensory samples",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "changes",
+        "arguments": [
+          "world_directed_action",
+          "sensory_samples",
+          "accessible_bound_objective"
+        ],
+        "description": "action changes sampled sensory input so as to increase prediction accuracy and thereby reduce the accessible bound objective",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "constrains",
+        "arguments": [
+          "prior_expectations",
+          "value_cost_criterion"
+        ],
+        "description": "prior expectations can encode rewards, goals, and cost functions and thereby specify which states or trajectories count as valuable or costly",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "constrains",
+        "arguments": [
+          "accessible_bound_objective",
+          "value_cost_criterion"
+        ],
+        "description": "under the stated gradient-ascent-on-value assumption, value is inversely proportional to surprise and the accessible bound objective is an upper bound on expected cost",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r6",
+        "kind": "constrains",
+        "arguments": [
+          "prior_expectations",
+          "world_directed_action",
+          "sampled_state_trajectory"
+        ],
+        "description": "priors over states or their motion prescribe attracting trajectories or policies that action tends to fulfil by changing sensory sampling",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}

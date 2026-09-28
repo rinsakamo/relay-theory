@@ -1,0 +1,204 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "BLF01.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1038/nn1954",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Nature Neuroscience 10, published p.1214, Abstract: outcome history should be weighted by predictive salience modulated by environmental volatility"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Nature Neuroscience 10, published p.1214, Abstract: human subjects estimate volatility and adjust subsequent decisions accordingly"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Nature Neuroscience 10, main experiment/model: trial-wise outcome and volatility estimates linked to subsequent choice and neural signal"
+      }
+    ],
+    "authors": [
+      "Timothy E. J. Behrens",
+      "Mark W. Woolrich",
+      "Mark E. Walton",
+      "Matthew F. S. Rushworth"
+    ],
+    "institutions": [
+      "University of Oxford"
+    ],
+    "venue": "Nature Neuroscience",
+    "citation_count": null,
+    "construct_labels": [
+      "learning",
+      "volatility",
+      "value of information",
+      "Bayesian learning"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "relation",
+    "modality": "probabilistic",
+    "scope": {
+      "conditions": [
+        "sequential choices made in an environment whose outcome contingencies can change over time"
+      ],
+      "population": [
+        "human participants"
+      ],
+      "substrate": [],
+      "task": [
+        "choose between alternatives while reward contingencies change across experimentally controlled conditions"
+      ],
+      "temporal_scope": [
+        "past outcomes update a current estimate that influences the next decision"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "outcome_history",
+        "role": "available_information",
+        "description": "sequence of recently observed decision outcomes",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "environment_change_rate",
+        "role": "state_or_structure",
+        "description": "inferred rate at which outcome contingencies are changing",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "outcome_weight",
+        "role": "state_or_structure",
+        "description": "influence assigned to a recent outcome when updating the current decision variable",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "next_choice",
+        "role": "response_or_outcome",
+        "description": "subsequent choice made after incorporating recent outcome information",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "adaptive_weighting_rule",
+        "role": "criterion",
+        "description": "greater weight on recent outcomes when they are more informative about changing future contingencies",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "changing_contingency_probe",
+        "role": "probe",
+        "description": "sequential reward task in which contingency stability is experimentally varied",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "depends_on",
+        "arguments": [
+          "outcome_weight",
+          "environment_change_rate"
+        ],
+        "description": "the influence assigned to a recent outcome depends on the inferred rate of environmental change",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "changes",
+        "arguments": [
+          "outcome_history",
+          "environment_change_rate",
+          "outcome_weight"
+        ],
+        "description": "new outcomes alter both the inferred change rate and the weight used for subsequent updating",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "depends_on",
+        "arguments": [
+          "next_choice",
+          "outcome_weight",
+          "outcome_history"
+        ],
+        "description": "the subsequent choice depends on the weighted recent-outcome history",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "satisfies",
+        "arguments": [
+          "outcome_weight",
+          "adaptive_weighting_rule"
+        ],
+        "description": "the weighting rule is evaluated by whether influence tracks the predictive usefulness of recent outcomes under changing contingencies",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "maps_to",
+        "arguments": [
+          "changing_contingency_probe",
+          "next_choice"
+        ],
+        "description": "the sequential contingency manipulation exposes trial-by-trial adaptation of decisions",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}

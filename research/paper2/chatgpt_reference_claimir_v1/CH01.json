@@ -1,0 +1,219 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "CH01.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1038/nrn2762",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Nature Reviews Neuroscience 11 (2010), published p.114, Abstract: the earlier synchronized sleep phase supports reactivation/redistribution, whereas the later desynchronized phase might favour subsequent local stabilization"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Nature Reviews Neuroscience 11 (2010), published pp.117-118, synaptic-consolidation discussion and Box 2: fast-learning temporary versus slower-learning long-term stores, parallel initial encoding, and reactivation-driven gradual redistribution"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Nature Reviews Neuroscience 11 (2010), published pp.121-122, active system-consolidation and later-stage local-plasticity sections: repeated reactivation strengthens long-term cortical representations; later-stage linkage remains explicitly tentative"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Nature Reviews Neuroscience 11 (2010), published p.123, Figure 3 and Conclusions: complementary sequential contributions of the two phases; ensuing desynchronized sleep might stabilize representations reorganized earlier, with direct evidence stated to be scarce"
+      }
+    ],
+    "authors": [
+      "Susanne Diekelmann",
+      "Jan Born"
+    ],
+    "institutions": [
+      "University of Lübeck"
+    ],
+    "venue": "Nature Reviews Neuroscience",
+    "citation_count": null,
+    "construct_labels": [
+      "memory consolidation",
+      "slow-wave sleep",
+      "rapid eye movement sleep",
+      "system consolidation",
+      "synaptic consolidation"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "relation",
+    "modality": "probabilistic",
+    "scope": {
+      "conditions": [
+        "post-learning sleep containing an earlier synchronized phase followed by an ensuing desynchronized phase"
+      ],
+      "population": [
+        "humans",
+        "nonhuman animals"
+      ],
+      "substrate": [
+        "hippocampus",
+        "neocortical networks",
+        "local cortical synaptic circuits"
+      ],
+      "task": [],
+      "temporal_scope": [
+        "new events are encoded during waking before post-learning consolidation",
+        "an earlier synchronized sleep phase precedes an ensuing desynchronized phase in the proposed sequence",
+        "the two-stage model distinguishes a fast-learning temporary store from a slower-learning long-term store"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "newly_acquired_representation",
+        "role": "state_or_structure",
+        "description": "newly acquired representation initially encoded in parallel in a fast-learning temporary store and a slower-learning long-term store",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "fast_learning_temporary_store",
+        "role": "state_or_structure",
+        "description": "fast-learning intermediate store that retains newly encoded information temporarily and is represented by the hippocampus for declarative memories",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "slow_learning_long_term_store",
+        "role": "state_or_structure",
+        "description": "slower-learning long-term store whose corresponding representation is gradually strengthened and integrated and is represented by neocortical networks for declarative memories",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "early_synchronized_phase",
+        "role": "condition",
+        "description": "earlier post-learning phase characterized by widespread synchronized activity and repeated reactivation",
+        "source_span_ids": [
+          "s1",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "systems_level_redistribution",
+        "role": "state_or_structure",
+        "description": "proposed redistribution and integration driven by repeated reactivation of the fast-store trace and concurrent reactivation of the corresponding slow-store trace",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "later_desynchronized_phase",
+        "role": "condition",
+        "description": "ensuing post-learning phase characterized by more desynchronized and locally disentangled activity",
+        "source_span_ids": [
+          "s1",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "local_synaptic_strengthening",
+        "role": "state_or_structure",
+        "description": "proposed local strengthening and stabilization of cortical representations that underwent reorganization during the earlier phase",
+        "source_span_ids": [
+          "s1",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "precedes",
+        "arguments": [
+          "early_synchronized_phase",
+          "later_desynchronized_phase"
+        ],
+        "description": "the earlier synchronized phase precedes the ensuing desynchronized phase in the proposed normal sequence",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "maps_to",
+        "arguments": [
+          "newly_acquired_representation",
+          "fast_learning_temporary_store",
+          "slow_learning_long_term_store"
+        ],
+        "description": "new events are initially encoded in parallel in the fast-learning temporary store and the slower-learning long-term store",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "changes",
+        "arguments": [
+          "early_synchronized_phase",
+          "fast_learning_temporary_store",
+          "slow_learning_long_term_store",
+          "systems_level_redistribution"
+        ],
+        "description": "during the earlier phase, repeated reactivation of the temporary-store trace is proposed to drive concurrent reactivation and gradual strengthening and integration of the corresponding long-term-store representation",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "changes",
+        "arguments": [
+          "later_desynchronized_phase",
+          "systems_level_redistribution",
+          "local_synaptic_strengthening"
+        ],
+        "description": "the ensuing phase is proposed to support local stabilization of representations reorganized during the earlier phase; the source states that direct evidence for this stage linkage is scarce",
+        "source_span_ids": [
+          "s1",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}

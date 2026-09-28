@@ -1,0 +1,171 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "MEM03.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1111/j.1467-9280.2006.01693.x",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Psychological Science 17(3), PDF p.1 / published p.249, abstract: testing-versus-restudy effect across retention delays"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Psychological Science 17(3), PDF p.2 / published p.250, Experiment 1 design and final-test procedure"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Psychological Science 17(3), PDF p.3 / published p.251, Experiment 1 final-test results: condition x retention-interval interaction"
+      }
+    ],
+    "authors": [
+      "Henry L. Roediger III",
+      "Jeffrey D. Karpicke"
+    ],
+    "institutions": [
+      "Washington University in St. Louis"
+    ],
+    "venue": "Psychological Science",
+    "citation_count": null,
+    "construct_labels": [
+      "testing effect",
+      "learning",
+      "long-term retention",
+      "memory test"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "comparison",
+    "modality": "comparative",
+    "scope": {
+      "conditions": [
+        "initial study followed by either additional study or free-recall testing without feedback"
+      ],
+      "population": [
+        "Washington University undergraduates"
+      ],
+      "substrate": [],
+      "task": [
+        "study prose passages and later freely recall scored idea units"
+      ],
+      "temporal_scope": [
+        "final retention test after 5 minutes, 2 days, or 1 week"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "initial_testing",
+        "role": "intervention",
+        "description": "an immediate free-recall test after study, without feedback",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "additional_study",
+        "role": "intervention",
+        "description": "additional study exposure used as the comparison condition",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "retention_interval",
+        "role": "condition",
+        "description": "delay between the initial study manipulation and final retention test",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "final_recall",
+        "role": "response_or_outcome",
+        "description": "proportion of passage idea units recalled on the final free-recall test",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "recall_scoring",
+        "role": "criterion",
+        "description": "one point for each correctly recalled idea unit out of 30",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "final_recall_probe",
+        "role": "probe",
+        "description": "the final free-recall retention test",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "explicit"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "other",
+        "arguments": [
+          "initial_testing",
+          "additional_study",
+          "retention_interval",
+          "final_recall"
+        ],
+        "description": "the direction of the initial-testing versus additional-study difference in final recall changes with retention interval: additional study is better immediately, whereas prior testing is better after longer delays",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "satisfies",
+        "arguments": [
+          "final_recall",
+          "recall_scoring"
+        ],
+        "description": "final recall is evaluated by the declared idea-unit scoring criterion",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "maps_to",
+        "arguments": [
+          "final_recall_probe",
+          "final_recall"
+        ],
+        "description": "the final free-recall probe provides the observed retention outcome",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}

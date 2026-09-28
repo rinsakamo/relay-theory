@@ -1,0 +1,431 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "LRN04.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1038/377155a0",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Nature 377, published p.155, Abstract/opening: daily practice improves speed and accuracy for one rapid finger sequence; improvement does not generalize to a matched sequence or the opposite hand; two fMRI time scales are distinguished"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Nature 377, published p.155, Fig. 1 and accompanying text: sequence A/B definitions, non-dominant-hand training, matched component movements, longitudinal behavioral performance, trained-versus-control and hand-specificity tests"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Nature 377, published p.156, Methods/Fig. 2: six adult male imaging participants; 4-T imaging; alternating rest/sequence blocks; both sequences executed during scanning at the same fixed slow rate so movement components and rate are matched"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Nature 377, published pp.156-157, Figs. 3-4 and text: pretraining M1 activation extent is comparable; early session shows order-dependent attenuation followed by reversal within the first session; effect is sequence-specific"
+      },
+      {
+        "span_id": "s5",
+        "locator": "Nature 377, published p.157, fast-phase interpretation: first-session paced repetition coincides with improved speed and accuracy; authors interpret the ordering-effect reversal as a short-timescale processing change"
+      },
+      {
+        "span_id": "s6",
+        "locator": "Nature 377, published p.157, slow-phase result: after about three weeks of daily practice, trained-sequence M1 activation extent is consistently larger than control irrespective presentation order; asymmetry persists at 10 and 21 weeks without additional training"
+      },
+      {
+        "span_id": "s7",
+        "locator": "Nature 377, published p.157, signal analysis/interpretation: mean signal-intensity change is similar for trained and control sequences, while some pixels respond only to the trained sequence; authors interpret this as expansion/recruitment of the trained representation"
+      },
+      {
+        "span_id": "s8",
+        "locator": "Nature 377, published pp.157-158, Discussion/conclusion: two phases are proposed—within-session acquisition-related change and slower between-session representational change; cortical reorganization is presented as a possible substrate for long-term retention, not a randomized causal manipulation"
+      }
+    ],
+    "authors": [
+      "Avi Karni",
+      "Gundela Meyer",
+      "Peter Jezzard",
+      "Michelle M. Adams",
+      "Robert Turner",
+      "Leslie G. Ungerleider"
+    ],
+    "institutions": [
+      "National Institutes of Health",
+      "National Institute of Mental Health"
+    ],
+    "venue": "Nature",
+    "citation_count": null,
+    "construct_labels": [
+      "motor skill learning",
+      "motor cortex plasticity"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "comparison",
+    "modality": "comparative",
+    "scope": {
+      "conditions": [
+        "one five-element finger-opposition sequence was repeatedly practiced with the non-dominant hand, while a second sequence used the same component movements in a different order and was not practiced outside imaging sessions",
+        "behavioral specificity was assessed against the matched unpracticed sequence and against performance with the opposite hand",
+        "during imaging, trained and control sequences were executed at the same externally paced slow rate, matching movement rate and component movements while differing in prior practice history",
+        "within imaging sets, sequence order was varied so transient order effects could be separated from sequence-specific long-term differences"
+      ],
+      "population": [
+        "six adult male imaging participants aged 24-44 years, five right-handed and one left-handed",
+        "four additional adults contributed to the broader longitudinal behavioral performance sample"
+      ],
+      "substrate": [
+        "source-defined primary movement-related cortical region (M1)"
+      ],
+      "task": [
+        "rapid five-element finger-opposition sequence performance during longitudinal practice",
+        "fixed-rate execution of trained and matched control sequences during repeated functional imaging sessions"
+      ],
+      "temporal_scope": [
+        "baseline before extended practice",
+        "within the first imaging session over approximately 30 minutes of repeated paced execution",
+        "daily practice over several weeks, with the slow imaging difference established by approximately week 3-4",
+        "follow-up measurements months later, including 10- and 21-week observations without additional practice"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "daily_sequence_practice",
+        "role": "intervention",
+        "description": "repeated daily practice of one designated five-element sequence with the non-dominant hand",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s6",
+          "s8"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "matched_unpracticed_sequence",
+        "role": "condition",
+        "description": "a second sequence composed of the same component finger movements in a different order and not practiced outside imaging sessions",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "opposite_hand_test",
+        "role": "probe",
+        "description": "behavioral test of whether the practice-related advantage transfers to the contralateral hand",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "free_rate_performance_probe",
+        "role": "probe",
+        "description": "30-second unpaced performance test in which completed sequences and errors are counted",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "sequence_completion_rate",
+        "role": "response_or_outcome",
+        "description": "number of correctly completed target sequences per 30-second performance interval",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "sequence_error_count",
+        "role": "response_or_outcome",
+        "description": "number of ordering errors during the 30-second performance interval",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "paced_imaging_probe",
+        "role": "probe",
+        "description": "functional imaging during matched slow-rate execution of the trained and control sequences in alternating rest and movement blocks",
+        "source_span_ids": [
+          "s3",
+          "s4",
+          "s6",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "within_session_order_condition",
+        "role": "condition",
+        "description": "whether a sequence is executed first or second within a repeated imaging set",
+        "source_span_ids": [
+          "s3",
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "m1_activation_extent",
+        "role": "response_or_outcome",
+        "description": "number or spatial extent of source-defined M1 pixels showing task-linked blood-oxygenation signal change",
+        "source_span_ids": [
+          "s3",
+          "s4",
+          "s6",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "m1_signal_amplitude",
+        "role": "response_or_outcome",
+        "description": "magnitude of blood-oxygenation signal change in responding M1 pixels",
+        "source_span_ids": [
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "fast_ordering_effect_state",
+        "role": "state_or_structure",
+        "description": "source-described short-timescale processing regime indexed by reversal of the within-set ordering effect during the first session",
+        "source_span_ids": [
+          "s4",
+          "s5",
+          "s8"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "slow_sequence_specific_representation",
+        "role": "state_or_structure",
+        "description": "source-inferred longer-timescale expansion or recruitment of cortical territory selective for the repeatedly practiced sequence",
+        "source_span_ids": [
+          "s6",
+          "s7",
+          "s8"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "long_term_followup_probe",
+        "role": "probe",
+        "description": "later imaging observations after extended practice had ceased, including measurements at 10 and 21 weeks",
+        "source_span_ids": [
+          "s6",
+          "s8"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "behavioral_improvement_criterion",
+        "role": "criterion",
+        "description": "higher correctly completed sequence rate together with stable or reduced ordering errors",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s5"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "changes",
+        "arguments": [
+          "daily_sequence_practice",
+          "sequence_completion_rate",
+          "sequence_error_count"
+        ],
+        "description": "extended practice increases the rate of correct sequence completion while accuracy is maintained or improved",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "r2",
+        "kind": "differs",
+        "arguments": [
+          "daily_sequence_practice",
+          "matched_unpracticed_sequence",
+          "sequence_completion_rate",
+          "sequence_error_count"
+        ],
+        "description": "the behavioral advantage is sequence-specific: the matched unpracticed sequence does not show the same improvement",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "r3",
+        "kind": "maps_to",
+        "arguments": [
+          "opposite_hand_test",
+          "sequence_completion_rate",
+          "sequence_error_count"
+        ],
+        "description": "testing with the opposite hand shows little or no transfer of the practice-related advantage",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "maps_to",
+        "arguments": [
+          "free_rate_performance_probe",
+          "sequence_completion_rate",
+          "sequence_error_count"
+        ],
+        "description": "the unpaced 30-second performance probe supplies the behavioral rate and error outcomes",
+        "source_span_ids": [
+          "s2",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "satisfies",
+        "arguments": [
+          "sequence_completion_rate",
+          "sequence_error_count",
+          "behavioral_improvement_criterion"
+        ],
+        "description": "practice-related behavioral improvement is defined jointly by faster correct sequence production and nonworsening accuracy",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r6",
+        "kind": "maps_to",
+        "arguments": [
+          "paced_imaging_probe",
+          "m1_activation_extent",
+          "m1_signal_amplitude"
+        ],
+        "description": "the matched-rate imaging probe supplies spatial-extent and signal-amplitude outcomes while controlling execution rate and component movements",
+        "source_span_ids": [
+          "s3",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r7",
+        "kind": "changes",
+        "arguments": [
+          "within_session_order_condition",
+          "m1_activation_extent",
+          "fast_ordering_effect_state"
+        ],
+        "description": "within the first session, repeating a sequence first produces an early transient reduction in activated extent, but later in the same session the ordering effect reverses; introducing a new sequence restores the earlier ordering pattern, supporting sequence specificity",
+        "source_span_ids": [
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r8",
+        "kind": "precedes",
+        "arguments": [
+          "fast_ordering_effect_state",
+          "slow_sequence_specific_representation"
+        ],
+        "description": "the short-timescale ordering-effect change occurs within the initial session, before the slower trained-versus-control representational asymmetry that emerges after weeks of practice",
+        "source_span_ids": [
+          "s5",
+          "s6",
+          "s8"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r9",
+        "kind": "differs",
+        "arguments": [
+          "daily_sequence_practice",
+          "matched_unpracticed_sequence",
+          "m1_activation_extent"
+        ],
+        "description": "after several weeks, the practiced sequence recruits a larger M1 activation extent than the matched control sequence regardless of within-set presentation order",
+        "source_span_ids": [
+          "s6"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "r10",
+        "kind": "maps_to",
+        "arguments": [
+          "long_term_followup_probe",
+          "m1_activation_extent"
+        ],
+        "description": "later follow-up imaging retains the trained-versus-control activation-extent asymmetry months after practice has ceased",
+        "source_span_ids": [
+          "s6",
+          "s8"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r11",
+        "kind": "differs",
+        "arguments": [
+          "m1_activation_extent",
+          "m1_signal_amplitude"
+        ],
+        "description": "the long-term trained-versus-control difference is expressed primarily as spatial extent rather than a general increase in mean signal amplitude, which is reported as similar for the two sequences",
+        "source_span_ids": [
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r12",
+        "kind": "maps_to",
+        "arguments": [
+          "m1_activation_extent",
+          "slow_sequence_specific_representation"
+        ],
+        "description": "the source interprets the selective spatial expansion as experience-dependent reorganization that may contribute to long-term retention; the imaging result itself does not establish a causal storage mechanism",
+        "source_span_ids": [
+          "s6",
+          "s7",
+          "s8"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}

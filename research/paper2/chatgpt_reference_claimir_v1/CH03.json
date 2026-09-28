@@ -1,0 +1,225 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "CH03.C1",
+  "provenance": {
+    "paper_id": "DOI:10.5840/jphil2004101826",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "The Journal of Philosophy 101(8) (2004), published pp.389-390, opening scope: target view claims literal environmental components of cognitive states/processes and the paper evaluates that constitutive claim"
+      },
+      {
+        "span_id": "s2",
+        "locator": "The Journal of Philosophy 101(8) (2004), published pp.392-396, Section II: heavy organism-environment dependence is separated from treating organism plus environment as one system; epistemological relevance does not entail mereological inclusion; an unclear relevance-based inclusion rule risks proliferating or collapsing system taxonomies"
+      },
+      {
+        "span_id": "s3",
+        "locator": "The Journal of Philosophy 101(8) (2004), published pp.421-424, Section VIII: functional-role realizability alone does not independently license external inclusion; the relevant psychofunctional theory must be empirically motivated, and the discussion culminates in the need first to identify what counts as a cognitive system"
+      },
+      {
+        "span_id": "s4",
+        "locator": "The Journal of Philosophy 101(8) (2004), published pp.424-427, Section IX: cognitive-system delineation precedes warranted state attribution; the target is a stable integrated cognitive agent, empirical research must motivate the system taxonomy, and functional-role theory alone does not settle the boundary"
+      }
+    ],
+    "authors": [
+      "Robert D. Rupert"
+    ],
+    "institutions": [
+      "Texas Tech University"
+    ],
+    "venue": "The Journal of Philosophy",
+    "citation_count": null,
+    "construct_labels": [
+      "extended cognition",
+      "embedded cognition",
+      "functionalism"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "constraint",
+    "modality": "necessary",
+    "scope": {
+      "conditions": [
+        "proposal that causally or epistemically relevant environmental elements are literal components of the cognitive system being analyzed"
+      ],
+      "population": [
+        "individual human subjects"
+      ],
+      "substrate": [
+        "individual organism",
+        "coupled environmental elements"
+      ],
+      "task": [],
+      "temporal_scope": [
+        "candidate system identity may need to persist across time even when particular environmental elements change"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "organism_centered_system",
+        "role": "state_or_structure",
+        "description": "the individual organism treated as the cognitive system while its processing can depend heavily on interaction with environmental elements",
+        "source_span_ids": [
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "coupled_external_element",
+        "role": "state_or_structure",
+        "description": "environmental element that can be causally important to the organism's cognitive performance without thereby being established as a constitutive component",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "relevance_based_inclusion_rule",
+        "role": "criterion",
+        "description": "proposed inclusion rule that treats significant relevance of one thing to understanding another as a reason to study them as one system",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "candidate_system_boundary",
+        "role": "partition",
+        "description": "candidate grouping that determines whether the organism and selected environmental elements are treated as one cognitive system",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "composite_candidate_system",
+        "role": "state_or_structure",
+        "description": "organism together with selected environmental elements proposed as a single unified unit of cognitive analysis",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "stable_system_individuation",
+        "role": "criterion",
+        "description": "requirement for an independently motivated account of a stable integrated cognitive system whose usefulness is supported by empirical and explanatory work rather than mere relevance",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "cognitive_state_attribution",
+        "role": "state_or_structure",
+        "description": "attribution of cognitive states or capacities to the selected system as the bearer of the phenomena to be explained",
+        "source_span_ids": [
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "system_taxonomy_failure",
+        "role": "response_or_outcome",
+        "description": "failure mode in which an underconstrained inclusion rule yields many overlapping or short-lived systems or collapses analysis toward very few systems",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "distinguishes",
+        "arguments": [
+          "organism_centered_system",
+          "coupled_external_element",
+          "candidate_system_boundary"
+        ],
+        "description": "heavy causal or explanatory dependence on an environmental element is distinguished from literal inclusion of that element within the cognitive-system boundary",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "constrains",
+        "arguments": [
+          "relevance_based_inclusion_rule",
+          "candidate_system_boundary",
+          "composite_candidate_system"
+        ],
+        "description": "a relevance-based rule would license grouping organism and environmental element as one system only by supplying a substantive criterion for how much relevance is enough and how overlapping and temporally changing systems are individuated",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "predicts",
+        "arguments": [
+          "relevance_based_inclusion_rule",
+          "system_taxonomy_failure"
+        ],
+        "description": "when the proposed relevance rule is left underconstrained, its application may yield an unacceptable proliferation of overlapping or short-lived systems or an extremely compressed taxonomy",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "depends_on",
+        "arguments": [
+          "cognitive_state_attribution",
+          "stable_system_individuation",
+          "candidate_system_boundary"
+        ],
+        "description": "warranted attribution of cognitive states or capacities to a composite candidate system depends on first identifying and motivating the stable integrated system to which the attribution applies",
+        "source_span_ids": [
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "constrains",
+        "arguments": [
+          "stable_system_individuation",
+          "candidate_system_boundary",
+          "composite_candidate_system"
+        ],
+        "description": "system delineation must earn empirical and explanatory usefulness; functional-role considerations alone do not determine which composite systems should be treated as cognitive systems",
+        "source_span_ids": [
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}

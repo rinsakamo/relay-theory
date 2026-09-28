@@ -1,0 +1,177 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "CH08.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1016/j.neuroscience.2005.08.023",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Neuroscience 139(1), published p.201 / PDF p.1, abstract and introduction: the two familiar source constructs each comprise dissociable phenomena; selection operates at perceptual and postperceptual stages and maintenance mechanisms differ by information type"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Neuroscience 139(1), published pp.202-203 / PDF pp.2-3, late-selection evidence: goal-driven selection determines which already perceptually and semantically processed items gain access to the severely capacity-limited online store"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Neuroscience 139(1), published pp.204-205 / PDF pp.4-5, delay-period spatial-maintenance evidence: interrupting or redirecting spatial selection away from remembered locations selectively impairs retention, while the authors caution against generalizing the same relation to all maintained information"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Neuroscience 139(1), published p.207 / PDF p.7, Conclusions: the relationship is explicitly characterized as multifaceted, with distinct gatekeeping, active-maintenance, and executive-manipulation interactions and unresolved boundaries across information types"
+      }
+    ],
+    "authors": [
+      "Edward Awh",
+      "Edward K Vogel",
+      "S-H Oh"
+    ],
+    "institutions": [
+      "University of Oregon"
+    ],
+    "venue": "Neuroscience",
+    "citation_count": null,
+    "construct_labels": [
+      "attention",
+      "working memory",
+      "attentional control",
+      "attention-based rehearsal",
+      "visual working memory"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "relation",
+    "modality": "descriptive",
+    "scope": {
+      "conditions": [
+        "goal-directed visual processing in which selection can operate at multiple processing stages and the active-maintenance system can retain different kinds of information by functionally dissociable mechanisms"
+      ],
+      "population": [],
+      "substrate": [
+        "visual information-processing and capacity-limited active-maintenance systems"
+      ],
+      "task": [
+        "prioritize behaviorally relevant visual information for processing or storage and maintain or manipulate selected representations"
+      ],
+      "temporal_scope": [
+        "interaction modes span early sensory processing, later admission to an online store, delay-period maintenance, and active manipulation or updating"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "selection_subtype",
+        "role": "state_or_structure",
+        "description": "a particular form of goal-directed selection distinguished by the stage or operation at which it influences processing",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "maintenance_subtype",
+        "role": "state_or_structure",
+        "description": "a particular active-maintenance mechanism distinguished by the kind of information maintained or the operation performed on stored representations",
+        "source_span_ids": [
+          "s1",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "processing_stage_partition",
+        "role": "partition",
+        "description": "distinction among early sensory selection, postperceptual admission control, delay-period maintenance-related selection, and executive manipulation or updating",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "information_type_partition",
+        "role": "partition",
+        "description": "distinction among different kinds of maintained information for which the source reports or leaves open functionally different maintenance-selection relations",
+        "source_span_ids": [
+          "s1",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "interaction_profile",
+        "role": "response_or_outcome",
+        "description": "the specific functional relation observed between a selection subtype and an active-maintenance subtype in a given task",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "distinguishes",
+        "arguments": [
+          "processing_stage_partition",
+          "selection_subtype"
+        ],
+        "description": "selection effects must be distinguished by the processing stage or operation at which they occur rather than treated as one unitary mechanism",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "distinguishes",
+        "arguments": [
+          "information_type_partition",
+          "maintenance_subtype"
+        ],
+        "description": "active-maintenance mechanisms and their interaction with selection differ with the kind of information or maintenance operation under consideration",
+        "source_span_ids": [
+          "s1",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "depends_on",
+        "arguments": [
+          "interaction_profile",
+          "selection_subtype",
+          "maintenance_subtype",
+          "processing_stage_partition",
+          "information_type_partition"
+        ],
+        "description": "the nature of the observed interaction depends on which selection process and which active-maintenance process are instantiated in the task",
+        "source_span_ids": [
+          "s1",
+          "s4"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}

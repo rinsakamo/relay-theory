@@ -1,0 +1,275 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "CH12.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1037/0033-295X.111.4.1036",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Psychological Review 111(4), published p.1036 / PDF p.1, abstract and opening: multiple specialized modules expose limited buffer contents to a central rule system; one rule is selected at a time and subsymbolic processes guide selection and module operations"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Psychological Review 111(4), published p.1037 / PDF p.2, architecture overview and Figure 1: visual, manual, declarative and goal modules communicate limited information through module-specific buffers to a central rule-selection system"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Psychological Review 111(4), published p.1038 / PDF p.3, architecture cycle: module-internal processing can proceed in parallel and asynchronously; buffers expose limited chunks; current buffer patterns are matched, one rule fires, and buffers are updated in an approximately 50-ms serial cycle"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Psychological Review 111(4), published p.1044 / PDF p.9, procedural-control section: multiple applicable rules compete under serial execution; utility equals estimated goal-success value minus estimated cost, utilities vary noisily from cycle to cycle, and the currently highest-valued applicable rule is selected"
+      },
+      {
+        "span_id": "s5",
+        "locator": "Psychological Review 111(4), published pp.1056-1057 / PDF pp.21-22, General Discussion: the architecture is explicitly incomplete; direct cortical connections can bypass the serial central route, while the proposed integration account remains parallel modules -> buffers -> central pattern detection and coordinated action"
+      }
+    ],
+    "authors": [
+      "John R. Anderson",
+      "Daniel Bothell",
+      "Michael D. Byrne",
+      "Scott Douglass",
+      "Christian Lebiere",
+      "Yulin Qin"
+    ],
+    "institutions": [
+      "Carnegie Mellon University",
+      "Rice University"
+    ],
+    "venue": "Psychological Review",
+    "citation_count": null,
+    "construct_labels": [
+      "ACT-R",
+      "production rule",
+      "declarative memory",
+      "procedural memory",
+      "cognitive architecture"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "relation",
+    "modality": "descriptive",
+    "scope": {
+      "conditions": [
+        "integrated task performance requiring coordination among specialized perceptual, action, goal-maintenance and retrieval subsystems",
+        "the architecture's central coordination route has access only to limited interface contents rather than unrestricted subsystem-internal processing",
+        "specialized subsystem processing can proceed in parallel and asynchronously, while the central rule-selection step is serial",
+        "the source explicitly treats this central integration route as incomplete rather than as the only possible route for all processing; direct subsystem-to-subsystem pathways may bypass it"
+      ],
+      "population": [
+        "human cognition as modeled by the source architecture"
+      ],
+      "substrate": [
+        "specialized information-processing subsystems, limited interface states, and a central serial rule-selection loop with proposed cortical and subcortical associations"
+      ],
+      "task": [
+        "coordinate perception, maintained goals, retrieval and action by matching limited interface contents to applicable condition-action mappings and executing one mapping per central cycle"
+      ],
+      "temporal_scope": [
+        "parallel and asynchronous subsystem processing is interleaved with repeating serial central cycles of approximately 50 ms in the source's architecture"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "specialized_subsystem_partition",
+        "role": "partition",
+        "description": "set of specialized perceptual, action, goal-maintenance and retrieval subsystems whose internal processing is partly encapsulated and can proceed in parallel",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "limited_interface_states",
+        "role": "state_or_structure",
+        "description": "limited module-specific interface contents through which selected subsystem information becomes available to central coordination",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "current_interface_pattern",
+        "role": "available_information",
+        "description": "joint pattern of currently exposed interface contents available to the central matching process",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "applicable_condition_action_mappings",
+        "role": "state_or_structure",
+        "description": "condition-action mappings whose conditions match the current interface pattern",
+        "source_span_ids": [
+          "s1",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "instantaneous_control_value",
+        "role": "criterion",
+        "description": "cycle-specific noisy control value for an applicable mapping, based on estimated probability of achieving the current goal, goal value, and estimated cost",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "selected_mapping",
+        "role": "response_or_outcome",
+        "description": "single applicable condition-action mapping with the highest currently realized control value on the central cycle",
+        "source_span_ids": [
+          "s1",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "interface_update_or_request",
+        "role": "response_or_outcome",
+        "description": "interface-state change or request to a specialized subsystem produced by execution of the selected mapping",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "direct_bypass_pathway",
+        "role": "state_or_structure",
+        "description": "source-acknowledged direct connection between processing subsystems that can permit some processing to bypass the serial central coordination route",
+        "source_span_ids": [
+          "s5"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "maps_to",
+        "arguments": [
+          "specialized_subsystem_partition",
+          "limited_interface_states"
+        ],
+        "description": "specialized subsystems expose only limited selected information through their interface states to the central coordination route",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "constrains",
+        "arguments": [
+          "limited_interface_states",
+          "current_interface_pattern"
+        ],
+        "description": "the current information available to central coordination is constrained to the contents exposed at the subsystem interfaces",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "depends_on",
+        "arguments": [
+          "applicable_condition_action_mappings",
+          "current_interface_pattern"
+        ],
+        "description": "which condition-action mappings are applicable depends on the current pattern of exposed interface contents",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "depends_on",
+        "arguments": [
+          "selected_mapping",
+          "applicable_condition_action_mappings",
+          "instantaneous_control_value"
+        ],
+        "description": "because central execution is serial, one applicable mapping is selected according to its cycle-specific noisy control value",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "changes",
+        "arguments": [
+          "selected_mapping",
+          "interface_update_or_request",
+          "limited_interface_states"
+        ],
+        "description": "executing the selected mapping produces interface-state changes or requests to specialized subsystems",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r6",
+        "kind": "precedes",
+        "arguments": [
+          "current_interface_pattern",
+          "selected_mapping",
+          "interface_update_or_request"
+        ],
+        "description": "within each central cycle, exposed interface contents are matched before one mapping is selected and executed, after which interface contents can be updated for the next cycle",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r7",
+        "kind": "distinguishes",
+        "arguments": [
+          "direct_bypass_pathway",
+          "limited_interface_states",
+          "selected_mapping"
+        ],
+        "description": "the source distinguishes direct subsystem connections from the buffer-mediated serial coordination route and explicitly notes that not all processing must pass through the latter",
+        "source_span_ids": [
+          "s5"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}

@@ -1,0 +1,246 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "ATT03.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1037/0033-295X.108.3.624",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Psychological Review 108(3), published pp.624-625, Abstract and 'The Conflict Monitoring Hypothesis': proposed evaluative mechanism, conflict-to-control feedback, and the distinction between monitoring/evaluation and regulative control"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Psychological Review 108(3), published pp.630-631, Simulation Study 1 General Methods / Implementing conflict monitoring: conflict operationalized as simultaneous activation of incompatible representations and quantified with a conflict-monitoring unit using response-layer energy"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Psychological Review 108(3), published pp.638-639, Part 2 / Simulation Study 2 General Methods: trial-wise control varies as a function of conflict on preceding trials; integrated conflict drives subsequent control with an exponentially weighted history"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Psychological Review 108(3), published pp.643-644, Simulation Study 2 General Discussion and Questions for Future Investigation: closed-loop simulations account for strategic behavioral adjustments; ACC-to-control causal interpretation is proposed but existing support is explicitly described as indirect"
+      },
+      {
+        "span_id": "s5",
+        "locator": "Psychological Review 108(3), published pp.644-646, future-investigation discussion: conflict measurement is not uniquely fixed by Hopfield energy and the information content conveyed from monitoring to control remains unresolved"
+      }
+    ],
+    "authors": [
+      "Matthew M. Botvinick",
+      "Todd S. Braver",
+      "Deanna M. Barch",
+      "Cameron S. Carter",
+      "Jonathan D. Cohen"
+    ],
+    "institutions": [],
+    "venue": "Psychological Review",
+    "citation_count": null,
+    "construct_labels": [
+      "conflict monitoring",
+      "cognitive control",
+      "anterior cingulate cortex"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "relation",
+    "modality": "other",
+    "scope": {
+      "conditions": [
+        "connectionist task models in which incompatible response representations can be coactive and a separate top-down control input can bias processing"
+      ],
+      "population": [
+        "human conflict-task performance phenomena modeled in Stroop, Eriksen flanker, and simple forced-choice paradigms"
+      ],
+      "substrate": [
+        "connectionist response/output units plus separate context or regulatory units",
+        "a medial frontal monitoring region proposed as a neural implementation; its causal influence on downstream regulation is treated by the source as not yet directly established"
+      ],
+      "task": [
+        "computational simulation of conflict-related activation and trial-to-trial behavioral adjustment in Stroop, Eriksen flanker, and simple forced-choice tasks"
+      ],
+      "temporal_scope": [
+        "within a trial, conflict is computed across processing cycles; conflict accumulated over preceding trials contributes to the control signal applied on subsequent trials through an exponentially weighted history"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "processing_competition",
+        "role": "state_or_structure",
+        "description": "simultaneous activation of incompatible representations, operationalized in the modeled tasks primarily as coactivation of mutually inhibiting response units",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "monitoring_subsystem",
+        "role": "state_or_structure",
+        "description": "source-proposed monitoring mechanism, implemented in the simulations as a dedicated unit that evaluates the current amount of representational competition",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "competition_metric",
+        "role": "state_or_structure",
+        "description": "scalar conflict quantity computed from coactivation of incompatible units; Hopfield energy is the simulation measure but is explicitly not claimed to be the unique biological algorithm",
+        "source_span_ids": [
+          "s2",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "prior_conflict_history",
+        "role": "available_information",
+        "description": "integrated conflict from preceding trials, retained as an exponentially weighted history used to update the current control signal",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "regulation_subsystem",
+        "role": "state_or_structure",
+        "description": "separate context or control units whose activity biases task processing and whose strength is varied in the closed-loop simulations",
+        "source_span_ids": [
+          "s1",
+          "s3",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "control_signal_adjustment",
+        "role": "state_or_structure",
+        "description": "trial-to-trial strengthening or weakening of top-down control produced from preceding conflict values in Simulation Study 2",
+        "source_span_ids": [
+          "s1",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "behavioral_output",
+        "role": "response_or_outcome",
+        "description": "modeled reaction-time, accuracy, interference, and related strategic behavioral effects following changes in top-down control",
+        "source_span_ids": [
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "task_model_probe",
+        "role": "probe",
+        "description": "computational simulations used to test whether the proposed monitoring and feedback mechanisms are sufficient to reproduce the targeted activation patterns and behavioral adjustment phenomena",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "maps_to",
+        "arguments": [
+          "processing_competition",
+          "monitoring_subsystem",
+          "competition_metric"
+        ],
+        "description": "the monitoring mechanism maps coactivation of incompatible representations to a scalar conflict signal in the computational implementation",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "maps_to",
+        "arguments": [
+          "competition_metric",
+          "prior_conflict_history"
+        ],
+        "description": "conflict accumulated on each trial contributes to the weighted history of preceding conflict used by the feedback model",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "changes",
+        "arguments": [
+          "prior_conflict_history",
+          "regulation_subsystem",
+          "control_signal_adjustment"
+        ],
+        "description": "within Simulation Study 2, higher preceding conflict strengthens top-down control and lower preceding conflict weakens it",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "precedes",
+        "arguments": [
+          "competition_metric",
+          "control_signal_adjustment"
+        ],
+        "description": "conflict measured on preceding trial(s) temporally precedes and contributes to the control setting applied on a subsequent trial",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "changes",
+        "arguments": [
+          "control_signal_adjustment",
+          "behavioral_output"
+        ],
+        "description": "in the closed-loop computational models, changes in top-down control alter subsequent modeled reaction time, accuracy, interference, or related strategic behavior",
+        "source_span_ids": [
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r6",
+        "kind": "maps_to",
+        "arguments": [
+          "task_model_probe",
+          "behavioral_output"
+        ],
+        "description": "the simulation studies evaluate whether the proposed monitoring and feedback architecture is sufficient to reproduce the targeted behavioral and activation patterns",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}

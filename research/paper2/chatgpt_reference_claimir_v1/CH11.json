@@ -1,0 +1,259 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "CH11.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1007/BF00122574",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Journal of Risk and Uncertainty 5(4) (1992), published pp.297-300, abstract/introduction and Section 1.1 opening: the proposed representation replaces separable probability-by-probability weighting with a rank-dependent cumulative construction, applies to finite risky and uncertain prospects, and treats gains and losses separately"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Journal of Risk and Uncertainty 5(4) (1992), published pp.300-301, Section 1.1 formal definition: finite outcomes are arranged in increasing order; state events form a partition; positive and negative parts are separated; two sign-specific capacities generate rank-marginal coefficients from nested cumulative events; overall prospect value is the sum of the two branch values"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Journal of Risk and Uncertainty 5(4) (1992), published pp.301-302, risky special case and relation to previous work: for additive outcome probabilities, sign-specific probability functions transform cumulative probability sums; the construction applies to any finite prospect and allows different gain-side and loss-side weighting"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Journal of Risk and Uncertainty 5(4) (1992), published p.303 and pp.316-317, value/weighting shape assumptions and Discussion: the reference point separates gains from losses; valuation uses a two-part cumulative functional; the theory is descriptive, approximate, and explicitly acknowledged as unlikely to be accurate in detail"
+      }
+    ],
+    "authors": [
+      "Amos Tversky",
+      "Daniel Kahneman"
+    ],
+    "institutions": [
+      "Stanford University",
+      "University of California at Berkeley"
+    ],
+    "venue": "Journal of Risk and Uncertainty",
+    "citation_count": null,
+    "construct_labels": [
+      "cumulative prospect theory",
+      "decision weights",
+      "loss aversion",
+      "diminishing sensitivity"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "mapping",
+    "modality": "definitional",
+    "scope": {
+      "conditions": [
+        "finite framed prospect whose consequences can be represented relative to a neutral reference outcome",
+        "either uncertainty represented by state events or the risky special case in which those events carry additive probabilities"
+      ],
+      "population": [],
+      "substrate": [],
+      "task": [
+        "assign an overall comparative value to a finite prospect from its ordered consequences and associated event information"
+      ],
+      "temporal_scope": []
+    },
+    "nodes": [
+      {
+        "id": "reference_point",
+        "role": "criterion",
+        "description": "neutral boundary relative to which consequences are represented as nonnegative or negative changes",
+        "source_span_ids": [
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "ranked_outcome_sequence",
+        "role": "state_or_structure",
+        "description": "finite sequence of possible consequences arranged in increasing outcome order",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "gain_loss_partition",
+        "role": "partition",
+        "description": "separation of the ranked consequences into nonnegative and negative branches relative to the neutral boundary",
+        "source_span_ids": [
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "state_event_information",
+        "role": "available_information",
+        "description": "state events associated with the possible consequences; in the risky special case the events carry additive outcome probabilities",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "sign_specific_cumulative_functions",
+        "role": "state_or_structure",
+        "description": "two monotone sign-specific set functions evaluated on nested cumulative events, reducing in the risky special case to separate transforms of cumulative probability sums",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "rank_marginal_coefficients",
+        "role": "state_or_structure",
+        "description": "per-outcome coefficients obtained from differences between successive evaluations of nested cumulative events on the appropriate sign branch",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "subjective_outcome_values",
+        "role": "state_or_structure",
+        "description": "values assigned to consequence changes relative to the neutral boundary, with zero mapped to zero and different curvature permitted above and below the boundary",
+        "source_span_ids": [
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "positive_branch_value",
+        "role": "state_or_structure",
+        "description": "aggregate value of the nonnegative part obtained by combining its outcome values with its rank-derived coefficients",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "negative_branch_value",
+        "role": "state_or_structure",
+        "description": "aggregate value of the negative part obtained by combining its outcome values with its rank-derived coefficients",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "overall_prospect_value",
+        "role": "response_or_outcome",
+        "description": "overall prospect evaluation given by the sum of the nonnegative and negative branch values",
+        "source_span_ids": [
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "distinguishes",
+        "arguments": [
+          "reference_point",
+          "gain_loss_partition"
+        ],
+        "description": "the neutral boundary determines whether an ordered consequence belongs to the nonnegative or negative branch; it does not itself supply the consequence rank ordering",
+        "source_span_ids": [
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "maps_to",
+        "arguments": [
+          "ranked_outcome_sequence",
+          "state_event_information",
+          "sign_specific_cumulative_functions",
+          "rank_marginal_coefficients"
+        ],
+        "description": "within each sign branch, outcome rank determines nested cumulative events whose successive sign-specific function values are differenced to obtain the coefficient attached to each outcome",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "maps_to",
+        "arguments": [
+          "ranked_outcome_sequence",
+          "reference_point",
+          "subjective_outcome_values"
+        ],
+        "description": "each consequence change relative to the neutral boundary is mapped to an outcome value",
+        "source_span_ids": [
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "maps_to",
+        "arguments": [
+          "subjective_outcome_values",
+          "rank_marginal_coefficients",
+          "gain_loss_partition",
+          "positive_branch_value",
+          "negative_branch_value"
+        ],
+        "description": "outcome values and their rank-derived coefficients are aggregated separately on the nonnegative and negative branches",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "maps_to",
+        "arguments": [
+          "positive_branch_value",
+          "negative_branch_value",
+          "overall_prospect_value"
+        ],
+        "description": "the overall value of a mixed prospect is the sum of the separately evaluated nonnegative and negative parts",
+        "source_span_ids": [
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r6",
+        "kind": "distinguishes",
+        "arguments": [
+          "state_event_information",
+          "rank_marginal_coefficients",
+          "sign_specific_cumulative_functions"
+        ],
+        "description": "the per-outcome coefficients are not independent transforms of each individual probability; they are marginal contributions derived from sign-specific functions of nested cumulative events",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}

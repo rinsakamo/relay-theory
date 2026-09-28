@@ -1,0 +1,400 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "PRD05.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1098/rstb.2005.1622",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Philosophical Transactions of the Royal Society B 360, published pp.815-816, Abstract/Introduction: sensory causes are inferred with learned hierarchical models; context-sensitive prior expectations and recurrent mismatch reduction are proposed"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Philosophical Transactions of the Royal Society B 360, published pp.820-821, equations (3.4)-(3.7): inference and learning optimize the same free-energy objective; under the stated Gaussian model, free-energy minimization is expressed as weighted discrepancy reduction"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Philosophical Transactions of the Royal Society B 360, published p.822, equations (3.8)-(3.10), Cortical hierarchies and empirical Bayes: higher-level densities act as priors on subordinate causes; high-level causes determine context-sensitive prior expectations; covariance/precision parameters weight uncertainty"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Philosophical Transactions of the Royal Society B 360, published pp.822-823, equation (3.11) and cortical-connectivity implications: current cause estimates are driven by mismatch at the current and immediately lower levels; descending predictions and ascending mismatch signals use reciprocal but functionally asymmetric connections"
+      },
+      {
+        "span_id": "s5",
+        "locator": "Philosophical Transactions of the Royal Society B 360, published p.824, Figure 2 and Functional organization: representational estimates minimize both discrepancy from their predicted value and mismatch incurred by their prediction of the level below; these correspond to prior and likelihood constraints"
+      },
+      {
+        "span_id": "s6",
+        "locator": "Philosophical Transactions of the Royal Society B 360, published pp.825-826, dynamic-model boundary and cortical-physiology section: specific dynamic algorithms are not fixed here; backward influences provide contextual predictions, incompatible lower-level input generates mismatch that drives higher-level change until reconciliation"
+      },
+      {
+        "span_id": "s7",
+        "locator": "Philosophical Transactions of the Royal Society B 360, published p.826, cortical-physiology decomposition: one functional subpopulation encodes conditional cause estimates while another encodes mismatch; as inference converges, lower-level mismatch is suppressed and higher-level representations emerge"
+      }
+    ],
+    "authors": [
+      "Karl Friston"
+    ],
+    "institutions": [
+      "The Wellcome Department of Imaging Neuroscience, Institute of Neurology, University College London"
+    ],
+    "venue": "Philosophical Transactions of the Royal Society B: Biological Sciences",
+    "citation_count": null,
+    "construct_labels": [
+      "predictive coding",
+      "empirical Bayes",
+      "hierarchical generative model",
+      "prediction error"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "constraint",
+    "modality": "probabilistic",
+    "scope": {
+      "conditions": [
+        "sensory causes are inferred with a multi-level generative scheme in which a state at one level predicts the state at the level below",
+        "the source's explicit static derivation assumes Gaussian stochastic terms and, for the simple neuronal implementation, conditional independence and deterministic recognition",
+        "covariance or precision parameters determine the weighting of discrepancies at each level"
+      ],
+      "population": [
+        "sensory cortical systems interpreted through the source's theoretical model and reviewed neurophysiological evidence"
+      ],
+      "substrate": [
+        "neighboring levels of a cortical hierarchy with reciprocal ascending, descending, and within-level interactions"
+      ],
+      "task": [
+        "infer the most likely hidden causes of sensory input while using context from higher levels and evidence from lower levels"
+      ],
+      "temporal_scope": [
+        "during perceptual inference, recurrent local updates continue until weighted discrepancies across neighboring levels are reduced",
+        "the source distinguishes this fast inference process from slower parameter learning; the bounded claim here concerns the inference architecture rather than the learning rule"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "lower_level_input_state",
+        "role": "available_information",
+        "description": "activity or sensory information at the immediately subordinate level that the current level attempts to explain",
+        "source_span_ids": [
+          "s1",
+          "s4",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "higher_level_cause_estimate",
+        "role": "state_or_structure",
+        "description": "conditional estimate of a supraordinate hidden cause that supplies contextual information to the level below",
+        "source_span_ids": [
+          "s3",
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "current_level_cause_estimate",
+        "role": "state_or_structure",
+        "description": "conditional estimate of the hidden cause represented at the current level",
+        "source_span_ids": [
+          "s3",
+          "s4",
+          "s5",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "descending_current_level_prediction",
+        "role": "state_or_structure",
+        "description": "predicted value of the current-level cause generated from the estimate at the level above",
+        "source_span_ids": [
+          "s3",
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "current_level_discrepancy",
+        "role": "available_information",
+        "description": "weighted difference between the current-level cause estimate and the value predicted from the level above",
+        "source_span_ids": [
+          "s3",
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "descending_lower_level_prediction",
+        "role": "state_or_structure",
+        "description": "prediction of subordinate-level activity generated from the current-level cause estimate",
+        "source_span_ids": [
+          "s4",
+          "s5",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "lower_level_discrepancy",
+        "role": "available_information",
+        "description": "weighted difference between subordinate-level input and the prediction generated by the current-level estimate",
+        "source_span_ids": [
+          "s4",
+          "s5",
+          "s6",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "discrepancy_precision",
+        "role": "state_or_structure",
+        "description": "inverse-variance weighting associated with uncertainty in discrepancies and prior expectations",
+        "source_span_ids": [
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "joint_inference_objective",
+        "role": "criterion",
+        "description": "state in which the weighted discrepancies associated with both the prior constraint and the fit to the subordinate level are jointly reduced",
+        "source_span_ids": [
+          "s2",
+          "s5",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "ascending_discrepancy_path",
+        "role": "state_or_structure",
+        "description": "forward influence by which mismatch from the level below changes cause estimates at the current or supraordinate level",
+        "source_span_ids": [
+          "s4",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "descending_prediction_path",
+        "role": "state_or_structure",
+        "description": "backward influence by which a higher cause estimate generates predictions of activity at the lower level",
+        "source_span_ids": [
+          "s4",
+          "s6"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "maps_to",
+        "arguments": [
+          "higher_level_cause_estimate",
+          "descending_current_level_prediction"
+        ],
+        "description": "a supraordinate cause estimate generates the context-sensitive predicted value that functions as a prior constraint on the current level",
+        "source_span_ids": [
+          "s3",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "constrains",
+        "arguments": [
+          "descending_current_level_prediction",
+          "current_level_cause_estimate"
+        ],
+        "description": "the predicted value from the level above constrains the conditional estimate represented at the current level",
+        "source_span_ids": [
+          "s3",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "differs",
+        "arguments": [
+          "current_level_cause_estimate",
+          "descending_current_level_prediction",
+          "current_level_discrepancy"
+        ],
+        "description": "deviation of the current-level estimate from the higher-level prediction forms the locally weighted prior-side discrepancy",
+        "source_span_ids": [
+          "s3",
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "maps_to",
+        "arguments": [
+          "current_level_cause_estimate",
+          "descending_lower_level_prediction"
+        ],
+        "description": "the current-level cause estimate generates a prediction of activity or input at the immediately subordinate level",
+        "source_span_ids": [
+          "s4",
+          "s5",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "differs",
+        "arguments": [
+          "lower_level_input_state",
+          "descending_lower_level_prediction",
+          "lower_level_discrepancy"
+        ],
+        "description": "incompatibility between subordinate input and the prediction from the current level forms the likelihood-side discrepancy",
+        "source_span_ids": [
+          "s4",
+          "s5",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r6",
+        "kind": "changes",
+        "arguments": [
+          "lower_level_discrepancy",
+          "current_level_cause_estimate"
+        ],
+        "description": "mismatch from the level below drives changes in the current-level cause estimate through the ascending influence",
+        "source_span_ids": [
+          "s4",
+          "s6",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r7",
+        "kind": "changes",
+        "arguments": [
+          "current_level_discrepancy",
+          "current_level_cause_estimate"
+        ],
+        "description": "the current-level prior-side discrepancy also contributes locally to changes in the current-level estimate",
+        "source_span_ids": [
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r8",
+        "kind": "depends_on",
+        "arguments": [
+          "current_level_discrepancy",
+          "discrepancy_precision"
+        ],
+        "description": "the contribution of the current-level discrepancy depends on its covariance or inverse-variance weighting",
+        "source_span_ids": [
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r9",
+        "kind": "depends_on",
+        "arguments": [
+          "lower_level_discrepancy",
+          "discrepancy_precision"
+        ],
+        "description": "the contribution of subordinate mismatch is likewise precision weighted in the source's Gaussian formulation",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r10",
+        "kind": "satisfies",
+        "arguments": [
+          "current_level_cause_estimate",
+          "current_level_discrepancy",
+          "lower_level_discrepancy",
+          "joint_inference_objective"
+        ],
+        "description": "the inferred current-level state is selected by jointly reducing the prior-side discrepancy and the mismatch generated by its prediction of the level below",
+        "source_span_ids": [
+          "s2",
+          "s5",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r11",
+        "kind": "maps_to",
+        "arguments": [
+          "lower_level_discrepancy",
+          "ascending_discrepancy_path",
+          "current_level_cause_estimate"
+        ],
+        "description": "subordinate mismatch is carried forward as a driving influence on supraordinate representational estimates",
+        "source_span_ids": [
+          "s4",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r12",
+        "kind": "maps_to",
+        "arguments": [
+          "higher_level_cause_estimate",
+          "descending_prediction_path",
+          "descending_current_level_prediction"
+        ],
+        "description": "higher-level estimates are conveyed backward as predictions of lower-level activity",
+        "source_span_ids": [
+          "s4",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r13",
+        "kind": "differs",
+        "arguments": [
+          "ascending_discrepancy_path",
+          "descending_prediction_path"
+        ],
+        "description": "the two reciprocal directions are functionally asymmetric: ascending influences carry mismatch that drives estimates, whereas descending influences generate contextual predictions",
+        "source_span_ids": [
+          "s4",
+          "s6"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}

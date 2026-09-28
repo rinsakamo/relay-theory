@@ -1,0 +1,251 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "CTL05.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1037/0033-295X.91.3.295",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Psychological Review 91(3), published p.295, Abstract: an external stop signal or an error can start a stopping process that races the processes underlying ongoing thought/action; the winner determines inhibition versus completion"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Psychological Review 91(3), published pp.296-299, illustrative stop-signal choice-RT experiment: stop signal occurs on a subset of trials at variable delays after primary-stimulus onset; measured outcomes include inhibition probability, no-signal RT, signal-respond RT, and internal stop-signal RT"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Psychological Review 91(3), published p.299, formal race-model introduction: primary-task and stopping finishing times are treated as independent random variables; inhibition is stochastic and reflects the probability that stopping finishes first"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Psychological Review 91(3), published pp.300-302, inhibition-function and signal-respond-RT derivations: stop-signal delay shifts relative finishing time, predicts response probability and signal-respond RT, and permits inference about the covert stopping latency from observed timing distributions"
+      }
+    ],
+    "authors": [
+      "Gordon D. Logan",
+      "William B. Cowan"
+    ],
+    "institutions": [],
+    "venue": "Psychological Review",
+    "citation_count": null,
+    "construct_labels": [
+      "response inhibition",
+      "race model",
+      "act of control"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "relation",
+    "modality": "probabilistic",
+    "scope": {
+      "conditions": [
+        "a primary-task process is initiated by the primary stimulus and, on some trials, a later explicit stop signal initiates a stopping process",
+        "the formal formal timing account treats primary-task and stopping-process finishing times as independent random variables"
+      ],
+      "population": [
+        "human participants in explicit stop-signal reaction-time data sets, including three experienced adult subjects in the source's illustrative experiment"
+      ],
+      "substrate": [],
+      "task": [
+        "perform the speeded primary response unless a later stop signal requires cancellation"
+      ],
+      "temporal_scope": [
+        "the primary-task process begins at primary-stimulus onset; the stop signal can occur after a variable delay and initiates the stopping process",
+        "trial outcome depends on the relative finishing times of the two processes; the covert duration from stop-signal onset to completion of stopping is inferred rather than directly observed"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "primary_task_process",
+        "role": "state_or_structure",
+        "description": "process that carries the primary task toward the overt response",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "external_stop_signal",
+        "role": "intervention",
+        "description": "experimentally presented signal that initiates the stopping process in the explicit stop-signal paradigm",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "stopping_process",
+        "role": "state_or_structure",
+        "description": "internal process initiated by the stop signal whose finishing time races the primary-task finishing time",
+        "source_span_ids": [
+          "s1",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "process_independence_assumption",
+        "role": "condition",
+        "description": "formal-model assumption that the primary-task and stopping finishing times are independent random variables",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "relative_finish_order",
+        "role": "state_or_structure",
+        "description": "latent ordering of the primary-task and stopping-process finishing times on a stop-signal trial",
+        "source_span_ids": [
+          "s1",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "response_outcome",
+        "role": "response_or_outcome",
+        "description": "whether the primary response is inhibited or escapes inhibition and is executed",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "stop_signal_measurements",
+        "role": "available_information",
+        "description": "observed stop-signal delay, probability of responding or inhibiting, no-signal reaction-time distribution, and signal-respond reaction times used by the formal account",
+        "source_span_ids": [
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "stopping_latency",
+        "role": "state_or_structure",
+        "description": "covert time from stop-signal onset to completion of the stopping process, estimated from the formal timing account rather than directly observed",
+        "source_span_ids": [
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "stop_signal_delay_probe",
+        "role": "probe",
+        "description": "procedure varying the delay between primary-stimulus onset and stop-signal onset while observing response probability and reaction-time distributions",
+        "source_span_ids": [
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "changes",
+        "arguments": [
+          "external_stop_signal",
+          "stopping_process"
+        ],
+        "description": "presentation of the explicit stop signal initiates the stopping process in the source's experimental paradigm",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "constrains",
+        "arguments": [
+          "process_independence_assumption",
+          "primary_task_process",
+          "stopping_process"
+        ],
+        "description": "the formal derivation treats the two finishing times as independent random variables rather than as an interacting sequential mechanism",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "depends_on",
+        "arguments": [
+          "response_outcome",
+          "relative_finish_order"
+        ],
+        "description": "the response is inhibited when stopping finishes first and is executed when the primary-task process finishes first",
+        "source_span_ids": [
+          "s1",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "precedes",
+        "arguments": [
+          "primary_task_process",
+          "external_stop_signal",
+          "stopping_process"
+        ],
+        "description": "in the explicit stop-signal task, primary-task processing begins at the primary stimulus and a later stop signal starts the stopping process after the experimentally varied delay",
+        "source_span_ids": [
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "maps_to",
+        "arguments": [
+          "stop_signal_delay_probe",
+          "stop_signal_measurements"
+        ],
+        "description": "varying stop-signal delay yields the inhibition function and associated reaction-time measurements predicted by the formal timing account",
+        "source_span_ids": [
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r6",
+        "kind": "maps_to",
+        "arguments": [
+          "stop_signal_measurements",
+          "stopping_latency"
+        ],
+        "description": "the formal formal timing relations permit the covert stopping latency to be estimated from observed response probabilities, reaction-time distributions, and stop-signal delay",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}

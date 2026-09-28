@@ -1,0 +1,483 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "PRD02.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1126/science.7569931",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Science 269, published p.1880, Abstract and opening paragraphs: arm-state estimation in the dark; distinction between dynamics prediction from current state plus motor command and other estimation routes"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Science 269, published p.1880, experiment/results paragraph and Figure 1: null, assistive, and resistive force conditions; movement-duration dependence of localization bias and variance; force changes bias but not variance"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Science 269, published pp.1880-1881, observer-model description and Figure 2A: current state estimate plus motor command predicts next state; predicted and actual sensory feedback form an error; recursively updated gain weights the sensory correction"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Science 269, published p.1881, Figure 2B-E and accompanying text: simulated bias/variance patterns, force-dependent bias effects, and time-dependent shift from dynamics prediction toward sensory correction"
+      },
+      {
+        "span_id": "s5",
+        "locator": "Science 269, published p.1882, concluding interpretation and note 13: combined prediction-plus-correction model reproduces the observed pattern; motor-outflow-only and sensory-inflow-only alternatives fail in distinct ways; further lesion/afference predictions are prospective"
+      },
+      {
+        "span_id": "s6",
+        "locator": "Science 269, published p.1882, Methods/note 8: eight untrained male participants, 300 trials each, 2-s visual calibration, dark movement until a tone, randomly selected null/assistive/resistive 3-N force field, and terminal visual thumb-location report"
+      },
+      {
+        "span_id": "s7",
+        "locator": "Science 269, published p.1882, model equations/parameter note: process and sensory noise are explicit; the recursive estimator is an optimal linear estimator under the model; several fit parameters were chosen by trial and error for qualitative capture"
+      }
+    ],
+    "authors": [
+      "Daniel M. Wolpert",
+      "Zoubin Ghahramani",
+      "Michael I. Jordan"
+    ],
+    "institutions": [
+      "Massachusetts Institute of Technology"
+    ],
+    "venue": "Science",
+    "citation_count": null,
+    "construct_labels": [
+      "internal model",
+      "sensorimotor integration",
+      "optimal state estimation"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "comparison",
+    "modality": "probabilistic",
+    "scope": {
+      "conditions": [
+        "arm movements are made without visual feedback after an initial visual calibration period",
+        "each movement occurs in a randomly selected null, constant assistive, or constant resistive 3-N force field",
+        "the recursive estimator includes process noise and sensory-output noise and is linear under the stated model",
+        "the empirical model comparison is qualitative; several simulation parameters were selected by trial and error to capture the observed data pattern"
+      ],
+      "population": [
+        "eight untrained male participants, 300 trials each"
+      ],
+      "substrate": [],
+      "task": [
+        "move the unseen right hand left or right until an auditory stop cue and then report the unseen thumb location visually with a trackball"
+      ],
+      "temporal_scope": [
+        "the arm is viewed for 2 s before darkness; movement duration varies across trials; each trial yields a terminal localization report, and temporal propagation is reconstructed across trials of different durations",
+        "the model recursively updates the state estimate during movement, with relative weighting shifting from dynamics-based prediction toward sensory correction over approximately the first second"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "initial_visual_calibration",
+        "role": "condition",
+        "description": "brief visual observation of the initial arm configuration before the light is extinguished",
+        "source_span_ids": [
+          "s6"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "movement_duration",
+        "role": "condition",
+        "description": "elapsed movement time before the auditory stop cue, varied through the randomized stopping procedure",
+        "source_span_ids": [
+          "s2",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "external_force_condition",
+        "role": "intervention",
+        "description": "randomly selected null, assistive, or resistive force applied during the unseen hand movement",
+        "source_span_ids": [
+          "s2",
+          "s6"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "motor_command",
+        "role": "available_information",
+        "description": "motor command supplied as an input to the dynamics-based state prediction",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "proprioceptive_feedback",
+        "role": "available_information",
+        "description": "reafferent sensory information about the arm available during movement in darkness",
+        "source_span_ids": [
+          "s1",
+          "s3",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "current_state_estimate",
+        "role": "state_or_structure",
+        "description": "running estimate of arm position and velocity used as the previous state for recursive estimation",
+        "source_span_ids": [
+          "s3",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "arm_dynamics_predictor",
+        "role": "state_or_structure",
+        "description": "model of arm dynamics that transforms the current state estimate and motor command into a prediction of the next arm state",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "predicted_next_state",
+        "role": "state_or_structure",
+        "description": "predicted arm state generated from the current estimate, motor command, and arm-dynamics predictor",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "sensory_output_predictor",
+        "role": "state_or_structure",
+        "description": "model that predicts expected sensory feedback from the current estimated arm state",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "predicted_sensory_feedback",
+        "role": "state_or_structure",
+        "description": "expected sensory output generated by the sensory-output predictor",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "sensory_discrepancy",
+        "role": "state_or_structure",
+        "description": "difference between actual reafferent sensory feedback and predicted sensory feedback",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "recursive_gain",
+        "role": "state_or_structure",
+        "description": "recursively updated weighting that scales sensory correction relative to the dynamics-based state prediction",
+        "source_span_ids": [
+          "s3",
+          "s4",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "corrected_state_estimate",
+        "role": "state_or_structure",
+        "description": "updated latent estimate of arm state after combining the dynamics-based prediction with the weighted sensory discrepancy",
+        "source_span_ids": [
+          "s3",
+          "s4",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "terminal_localization_probe",
+        "role": "probe",
+        "description": "post-movement visual localization of the unseen thumb using a cursor controlled by the other hand",
+        "source_span_ids": [
+          "s6"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "terminal_localization_error",
+        "role": "response_or_outcome",
+        "description": "difference between actual terminal thumb position and the reported visual location",
+        "source_span_ids": [
+          "s2",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "localization_bias",
+        "role": "response_or_outcome",
+        "description": "systematic signed component of terminal localization error summarized as a function of movement duration and force condition",
+        "source_span_ids": [
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "localization_variance",
+        "role": "response_or_outcome",
+        "description": "trial-to-trial variance of terminal localization error summarized as a function of movement duration and force condition",
+        "source_span_ids": [
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "combined_estimator_prediction",
+        "role": "state_or_structure",
+        "description": "simulated temporal and force-dependent bias/variance pattern generated by the recursive prediction-plus-correction model",
+        "source_span_ids": [
+          "s4",
+          "s5",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "motor_only_prediction",
+        "role": "state_or_structure",
+        "description": "alternative estimate based on motor outflow without sensory correction, which predicts monotonically increasing bias and variance",
+        "source_span_ids": [
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "sensory_only_prediction",
+        "role": "state_or_structure",
+        "description": "alternative estimate based on sensory inflow without dynamics-based prediction, which does not reproduce the differential force effect on bias",
+        "source_span_ids": [
+          "s5"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "depends_on",
+        "arguments": [
+          "predicted_next_state",
+          "current_state_estimate",
+          "motor_command",
+          "arm_dynamics_predictor"
+        ],
+        "description": "the dynamics-based process predicts the next arm state from the current estimated state and the motor command",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "maps_to",
+        "arguments": [
+          "current_state_estimate",
+          "sensory_output_predictor",
+          "predicted_sensory_feedback"
+        ],
+        "description": "the current estimated arm state is transformed into an expected sensory output",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "differs",
+        "arguments": [
+          "proprioceptive_feedback",
+          "predicted_sensory_feedback",
+          "sensory_discrepancy"
+        ],
+        "description": "the sensory discrepancy is the difference between actual reafferent feedback and predicted feedback",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "depends_on",
+        "arguments": [
+          "corrected_state_estimate",
+          "predicted_next_state",
+          "sensory_discrepancy",
+          "recursive_gain"
+        ],
+        "description": "the updated state estimate combines the dynamics-based prediction with a gain-weighted sensory correction",
+        "source_span_ids": [
+          "s3",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "changes",
+        "arguments": [
+          "movement_duration",
+          "recursive_gain"
+        ],
+        "description": "as movement proceeds after the initial visual calibration, relative weighting shifts from the dynamics-based prediction toward sensory correction and then becomes approximately stable",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r6",
+        "kind": "maps_to",
+        "arguments": [
+          "terminal_localization_probe",
+          "terminal_localization_error"
+        ],
+        "description": "the terminal visual report provides the observable localization error used to probe the otherwise latent arm-state estimate",
+        "source_span_ids": [
+          "s2",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r7",
+        "kind": "maps_to",
+        "arguments": [
+          "terminal_localization_error",
+          "localization_bias",
+          "localization_variance"
+        ],
+        "description": "errors accumulated across trials are summarized into signed bias and variance as functions of movement duration and force condition",
+        "source_span_ids": [
+          "s2",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r8",
+        "kind": "changes",
+        "arguments": [
+          "movement_duration",
+          "localization_bias"
+        ],
+        "description": "localization bias first rises to an overestimation peak near 1 s and then declines gradually with longer movement duration",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "r9",
+        "kind": "changes",
+        "arguments": [
+          "movement_duration",
+          "localization_variance"
+        ],
+        "description": "localization variance rises during approximately the first second of movement and then approaches a plateau",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "r10",
+        "kind": "changes",
+        "arguments": [
+          "external_force_condition",
+          "localization_bias"
+        ],
+        "description": "assistive force increases localization bias whereas resistive force decreases it relative to the null condition",
+        "source_span_ids": [
+          "s2",
+          "s4"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "r11",
+        "kind": "depends_on",
+        "arguments": [
+          "localization_variance",
+          "movement_duration",
+          "external_force_condition"
+        ],
+        "description": "variance changes with movement duration, while the source reports no significant differential variance propagation between assistive and resistive force conditions",
+        "source_span_ids": [
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r12",
+        "kind": "predicts",
+        "arguments": [
+          "combined_estimator_prediction",
+          "localization_bias",
+          "localization_variance"
+        ],
+        "description": "the recursive prediction-plus-correction model qualitatively reproduces the observed biphasic bias, variance plateau, and differential force effect",
+        "source_span_ids": [
+          "s4",
+          "s5",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r13",
+        "kind": "differs",
+        "arguments": [
+          "motor_only_prediction",
+          "localization_bias",
+          "localization_variance"
+        ],
+        "description": "the motor-outflow-only alternative predicts monotonically increasing bias and variance rather than the observed temporal pattern",
+        "source_span_ids": [
+          "s5"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "r14",
+        "kind": "differs",
+        "arguments": [
+          "sensory_only_prediction",
+          "localization_bias"
+        ],
+        "description": "the sensory-inflow-only alternative cannot reproduce the differential effect of external forces on localization bias",
+        "source_span_ids": [
+          "s5"
+        ],
+        "grounding": "explicit"
+      }
+    ]
+  }
+}

@@ -1,0 +1,214 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "BLF03.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1146/annurev.neuro.29.051605.113038",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Annual Review of Neuroscience 30, published p.535, Abstract: simple laboratory decisions share deliberation and commitment components"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Annual Review of Neuroscience 30, published pp.539-541, Sequential analysis / Figure 2 / SPRT: successive noisy evidence is accumulated into a decision variable and sampling terminates at positive or negative criteria; bound placement determines sample requirements and error rate"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Annual Review of Neuroscience 30, published pp.547-549, reaction-time random-dot-motion task / Figure 5: motion strength changes accuracy and decision time; diffusion fits account jointly for both; decision-related activity rises with evidence and approaches a common commitment level"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Annual Review of Neuroscience 30, published p.551, criterion discussion: how the criterion is implemented neurally is unknown, while criterion setting controls the speed-accuracy tradeoff"
+      }
+    ],
+    "authors": [
+      "Joshua I. Gold",
+      "Michael N. Shadlen"
+    ],
+    "institutions": [
+      "University of Pennsylvania",
+      "University of Washington"
+    ],
+    "venue": "Annual Review of Neuroscience",
+    "citation_count": null,
+    "construct_labels": [
+      "decision making",
+      "decision variable",
+      "bounded evidence accumulation",
+      "confidence"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "constraint",
+    "modality": "probabilistic",
+    "scope": {
+      "conditions": [
+        "two-alternative random-dot-motion decisions use noisy sensory evidence whose strength is varied across trials"
+      ],
+      "population": [
+        "macaque monkeys in the reaction-time random-dot-motion experiments reviewed by the source"
+      ],
+      "substrate": [],
+      "task": [
+        "discriminate net motion direction, report the decision by saccade when ready, and measure choice accuracy and reaction time across motion strengths"
+      ],
+      "temporal_scope": [
+        "momentary evidence is sampled and accumulated over deliberation time until a stopping criterion is reached"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "motion_evidence_strength",
+        "role": "condition",
+        "description": "stimulus strength controlling the statistical quality of momentary motion evidence",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "momentary_evidence",
+        "role": "available_information",
+        "description": "noisy evidence sample bearing on the two motion-direction alternatives at a given time",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "accumulated_evidence",
+        "role": "state_or_structure",
+        "description": "running decision quantity formed by accumulating evidence across samples",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "stopping_criterion",
+        "role": "criterion",
+        "description": "positive or negative decision bound at which further sampling terminates and commitment occurs",
+        "source_span_ids": [
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "choice_accuracy",
+        "role": "response_or_outcome",
+        "description": "probability or proportion of correct direction choices under a given evidence strength",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "decision_time",
+        "role": "response_or_outcome",
+        "description": "time spent reaching commitment, reflected behaviorally in reaction time after accounting for nondecision latency",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "reaction_time_rdm_probe",
+        "role": "probe",
+        "description": "reaction-time random-dot-motion discrimination procedure varying motion strength while measuring accuracy and reaction time",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "depends_on",
+        "arguments": [
+          "momentary_evidence",
+          "motion_evidence_strength"
+        ],
+        "description": "the distribution or mean strength of momentary evidence depends on stimulus motion strength",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "maps_to",
+        "arguments": [
+          "momentary_evidence",
+          "accumulated_evidence"
+        ],
+        "description": "successive noisy evidence samples are integrated into a running decision quantity",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "depends_on",
+        "arguments": [
+          "choice_accuracy",
+          "decision_time",
+          "accumulated_evidence",
+          "stopping_criterion"
+        ],
+        "description": "accuracy and decision time depend on the stochastic accumulation trajectory and the criterion at which sampling terminates",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "constrains",
+        "arguments": [
+          "stopping_criterion",
+          "choice_accuracy",
+          "decision_time"
+        ],
+        "description": "criterion placement constrains the speed-accuracy tradeoff by changing how much evidence is required before commitment",
+        "source_span_ids": [
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "maps_to",
+        "arguments": [
+          "reaction_time_rdm_probe",
+          "choice_accuracy",
+          "decision_time"
+        ],
+        "description": "the reaction-time discrimination probe exposes the joint effects of evidence strength on accuracy and decision time that are fit by the diffusion framework",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}

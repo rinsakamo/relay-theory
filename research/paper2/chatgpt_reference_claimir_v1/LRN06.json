@@ -1,0 +1,423 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "LRN06.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1037/0096-3445.115.1.39",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "JEP: General 115(1), published p.39, Abstract/opening: unified quantitative account; same multidimensional perceptual representation across the two task families; context-dependent dimension weighting; exemplar-memory and inferred-exemplar interpretations"
+      },
+      {
+        "span_id": "s2",
+        "locator": "JEP: General 115(1), published pp.40-41, Equations 1-6 and mapping discussion: item-confusion model, group-response rule, rejection of direct invariance, weighted multidimensional distance, scale and response-bias parameters, optimization working hypothesis"
+      },
+      {
+        "span_id": "s3",
+        "locator": "JEP: General 115(1), published pp.42-43, theoretical goals/method: static model at a given stable stage; two paid observers; 16 separable-dimension stimuli varying orthogonally in size and radial-line angle"
+      },
+      {
+        "span_id": "s4",
+        "locator": "JEP: General 115(1), published pp.43-44, procedure: extensive item-response practice and feedback; four group-assignment conditions; feedback-based learning phase; criterion over final 600 trials; subsequent transfer phase with unassigned stimuli"
+      },
+      {
+        "span_id": "s5",
+        "locator": "JEP: General 115(1), published pp.45-46, item-confusion scaling and group-response fits: perceptual coordinates derived from item-response confusion data and reused to predict group-response probabilities"
+      },
+      {
+        "span_id": "s6",
+        "locator": "JEP: General 115(1), published pp.46-49, simple versus augmented exemplar-memory fits: inferred assignment of previously unassigned stimuli improves fit, especially for criss-cross and interior-exterior structures"
+      },
+      {
+        "span_id": "s7",
+        "locator": "JEP: General 115(1), published pp.49-50, parameter analysis/Figure 10: fitted dimension weights differ across structures; optimization support strong for Subject 1 but mixed for Subject 2"
+      },
+      {
+        "span_id": "s8",
+        "locator": "JEP: General 115(1), published pp.50-51, memory-augmentation discussion: perceptual-confusability and repeated-transfer-decision accounts are proposed; experiment does not distinguish similarity-based from rule-based augmentation"
+      },
+      {
+        "span_id": "s9",
+        "locator": "JEP: General 115(1), published pp.53-54, General Discussion/Prospects for Generality: indirect mapping via context-dependent weighting; only two subjects, one 16-item stimulus set, and extensive prior experience limit generality"
+      }
+    ],
+    "authors": [
+      "Robert M. Nosofsky"
+    ],
+    "institutions": [
+      "Indiana University"
+    ],
+    "venue": "Journal of Experimental Psychology: General",
+    "citation_count": null,
+    "construct_labels": [
+      "attention",
+      "similarity",
+      "identification",
+      "categorization",
+      "generalized context model"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "mapping",
+    "modality": "probabilistic",
+    "scope": {
+      "conditions": [
+        "the same 16 perceptually confusable stimuli were used across item-specific and two-group response tasks; the stimuli varied orthogonally over four size levels and four radial-line-angle levels",
+        "the item-specific response phase included extensive prior practice and repeated feedback before the perceptual-coordinate solution was estimated",
+        "each group-assignment condition had a feedback-based acquisition phase followed by a transfer phase; eight stimuli were assigned during acquisition and eight were initially unassigned",
+        "four distinct group structures were tested: dimensional, criss-cross, interior-exterior, and diagonal",
+        "the quantitative account is explicitly static, intended for a given stable stage rather than as a model of the within-session acquisition trajectory"
+      ],
+      "population": [
+        "two paid adult observers, one male and one female; one observer was highly experienced in auditory psychophysical experiments"
+      ],
+      "substrate": [],
+      "task": [
+        "produce item-specific responses to a 16-member separable-dimension stimulus set under full- and single-dimension response conditions",
+        "learn two-group assignments with trial-by-trial and block-level feedback, then respond to both trained and initially unassigned stimuli during transfer"
+      ],
+      "temporal_scope": [
+        "item-specific response testing followed approximately 2,650 practice trials and included eight sessions plus additional sessions",
+        "group-assignment acquisition continued until performance exceeded chance on every trained exemplar over the final 600 trials of a session",
+        "transfer followed acquisition and repeatedly presented all 16 stimuli while withholding trial-level correctness feedback for the initially unassigned items",
+        "model parameters characterize relatively stable performance rather than the moment-by-moment acquisition process"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "item_confusion_data",
+        "role": "response_or_outcome",
+        "description": "16-by-16 frequencies of item-specific stimulus-response confusions obtained under the full two-dimension response condition",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "base_perceptual_coordinates",
+        "role": "state_or_structure",
+        "description": "two-dimensional psychological coordinates estimated from the item-confusion data and reused as the common base representation in later group-response fits",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "group_structure",
+        "role": "condition",
+        "description": "the particular assignment geometry relating trained stimuli to two response groups",
+        "source_span_ids": [
+          "s3",
+          "s4",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "feedback_based_acquisition_protocol",
+        "role": "intervention",
+        "description": "repeated classification of eight assigned training exemplars with trial-by-trial correctness feedback and block-level performance summaries until the stated acquisition criterion was met",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "trained_exemplar_assignment_set",
+        "role": "available_information",
+        "description": "the eight experimenter-assigned training stimuli and their two-group assignments supplied during the acquisition phase",
+        "source_span_ids": [
+          "s4",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "initially_unassigned_transfer_set",
+        "role": "condition",
+        "description": "the eight remaining stimulus-set members introduced in transfer without experimentally specified correct group responses",
+        "source_span_ids": [
+          "s4",
+          "s6",
+          "s8"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "dimension_weight_state",
+        "role": "state_or_structure",
+        "description": "model-fitted distribution of weight across the two component dimensions for a given response condition",
+        "source_span_ids": [
+          "s2",
+          "s7",
+          "s9"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "scale_state",
+        "role": "state_or_structure",
+        "description": "model-fitted scale factor controlling overall discriminability of distances in the weighted perceptual space",
+        "source_span_ids": [
+          "s2",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "weighted_pair_relation",
+        "role": "state_or_structure",
+        "description": "pairwise confusability relation derived from weighted distances in the common perceptual-coordinate system",
+        "source_span_ids": [
+          "s2",
+          "s5",
+          "s7",
+          "s9"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "stored_assignment_memory",
+        "role": "state_or_structure",
+        "description": "model-assumed set of remembered exemplars associated with each response group",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s6",
+          "s8"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "inferred_exemplar_augmentation",
+        "role": "state_or_structure",
+        "description": "augmented-model hypothesis that some initially unassigned stimuli become represented as members of one response group after experience",
+        "source_span_ids": [
+          "s1",
+          "s6",
+          "s8"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "transfer_response_probe",
+        "role": "probe",
+        "description": "transfer phase presenting all 16 stimuli and recording two-group response frequencies, with correctness feedback retained only for trained exemplars",
+        "source_span_ids": [
+          "s4",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "group_response_probabilities",
+        "role": "response_or_outcome",
+        "description": "observed and model-predicted probabilities of assigning each stimulus to either response group",
+        "source_span_ids": [
+          "s2",
+          "s5",
+          "s6",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "average_correct_objective",
+        "role": "criterion",
+        "description": "average percentage correct over the original training exemplars used to define the model's performance-optimal dimension weighting",
+        "source_span_ids": [
+          "s2",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "acquisition_criterion",
+        "role": "criterion",
+        "description": "above-chance performance for every trained exemplar over the final 600 trials of a learning session",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "explicit"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "maps_to",
+        "arguments": [
+          "item_confusion_data",
+          "base_perceptual_coordinates"
+        ],
+        "description": "the item-confusion matrix is fitted to obtain the two-dimensional base coordinate representation reused in the later response model",
+        "source_span_ids": [
+          "s2",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "satisfies",
+        "arguments": [
+          "feedback_based_acquisition_protocol",
+          "acquisition_criterion"
+        ],
+        "description": "the acquisition phase continues until the source-defined above-chance criterion is met on every trained exemplar over the final 600 trials",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "r3",
+        "kind": "constrains",
+        "arguments": [
+          "group_structure",
+          "dimension_weight_state"
+        ],
+        "description": "different group structures are associated with different fitted allocations of weight across the two component dimensions",
+        "source_span_ids": [
+          "s2",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "depends_on",
+        "arguments": [
+          "weighted_pair_relation",
+          "base_perceptual_coordinates",
+          "dimension_weight_state",
+          "scale_state"
+        ],
+        "description": "the effective pair relation used by the model depends on the common coordinates, condition-specific dimension weights, and overall scale factor",
+        "source_span_ids": [
+          "s2",
+          "s5",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "depends_on",
+        "arguments": [
+          "group_response_probabilities",
+          "weighted_pair_relation",
+          "stored_assignment_memory"
+        ],
+        "description": "two-group response probabilities are modeled from each probe item's weighted relation to exemplars represented in the two response-group memory sets",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s6",
+          "s9"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r6",
+        "kind": "maps_to",
+        "arguments": [
+          "transfer_response_probe",
+          "group_response_probabilities"
+        ],
+        "description": "the transfer phase supplies the observed response proportions used to fit and evaluate the two-group response model",
+        "source_span_ids": [
+          "s4",
+          "s5",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r7",
+        "kind": "changes",
+        "arguments": [
+          "dimension_weight_state",
+          "weighted_pair_relation"
+        ],
+        "description": "changing the fitted dimension weights systematically stretches or shrinks the effective space and therefore changes pairwise relations among stimuli",
+        "source_span_ids": [
+          "s2",
+          "s7",
+          "s9"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r8",
+        "kind": "satisfies",
+        "arguments": [
+          "dimension_weight_state",
+          "average_correct_objective"
+        ],
+        "description": "fitted weights lie near the model-defined optimum for most conditions of Subject 1 and for selected conditions of Subject 2, but the source explicitly reports nonoptimal cases and therefore does not support universal optimization",
+        "source_span_ids": [
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r9",
+        "kind": "changes",
+        "arguments": [
+          "initially_unassigned_transfer_set",
+          "inferred_exemplar_augmentation",
+          "stored_assignment_memory"
+        ],
+        "description": "the augmented account proposes that repeated experience and prior choices for initially unassigned transfer items can add inferred exemplars to the remembered group sets; this is a model interpretation rather than a directly observed update rule",
+        "source_span_ids": [
+          "s6",
+          "s8"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r10",
+        "kind": "differs",
+        "arguments": [
+          "trained_exemplar_assignment_set",
+          "inferred_exemplar_augmentation",
+          "group_response_probabilities"
+        ],
+        "description": "for some group structures, allowing inferred exemplars yields substantially better fits to transfer response probabilities than restricting memory to the experimenter-assigned training exemplars",
+        "source_span_ids": [
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r11",
+        "kind": "distinguishes",
+        "arguments": [
+          "base_perceptual_coordinates",
+          "dimension_weight_state",
+          "group_response_probabilities"
+        ],
+        "description": "the relation between item-specific and group-level performance is indirect: the same base coordinates are retained while condition-dependent dimension weighting changes the effective pair relations used to predict responses",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s9"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}

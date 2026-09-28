@@ -1,0 +1,188 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "CH07.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1146/annurev-psych-122414-033625",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Annual Review of Psychology 68 (2017), published pp.101-103, abstract/introduction: high-dimensional continuous partially observed states, sparse data, and long-range action-outcome dependencies motivate retaining individual-event information as a possible partial computational remedy"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Annual Review of Psychology 68 (2017), published pp.109-113, nonparametric-value and formalization sections plus Figure 1: individual event/trajectory records are retained, retrieved at choice time, weighted by similarity to the current state, and combined into state or state-action value estimates"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Annual Review of Psychology 68 (2017), published pp.113-119, empirical and computational discussion: direct empirical support is sparse; kernel generalization, state-space structure, low-data conditions, and bias-variance trade-offs constrain the proposal"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Annual Review of Psychology 68 (2017), published p.123, Conclusions: the proposed additional learning system is a partial solution to complex sparse long-range problems, but the theory is explicitly described as still largely speculative and in need of more precise formalization"
+      }
+    ],
+    "authors": [
+      "Samuel J Gershman",
+      "Nathaniel D Daw"
+    ],
+    "institutions": [
+      "Harvard University",
+      "Princeton University"
+    ],
+    "venue": "Annual Review of Psychology",
+    "citation_count": null,
+    "construct_labels": [
+      "reinforcement learning",
+      "episodic memory",
+      "episodic reinforcement learning",
+      "value function"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "mapping",
+    "modality": "descriptive",
+    "scope": {
+      "conditions": [
+        "decision problems with high-dimensional, continuous, or partially observed states",
+        "sparse experience in which the same state may rarely or never recur exactly",
+        "sequential problems containing dependencies between actions and outcomes over temporal distances that can violate simple Markov assumptions"
+      ],
+      "population": [
+        "humans",
+        "nonhuman animals"
+      ],
+      "substrate": [],
+      "task": [
+        "estimate state or state-action return at choice time and compare candidate action values"
+      ],
+      "temporal_scope": [
+        "individual experienced trajectories retain sequential information across their stored duration",
+        "retrieval and similarity-based weighting occur at choice time rather than requiring the relevant generalization rule to be fixed at initial encoding"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "individual_event_record",
+        "role": "state_or_structure",
+        "description": "retained record of an individual experienced event or trajectory linking multiple features and sequential elements together with its associated return",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "current_decision_state",
+        "role": "state_or_structure",
+        "description": "current state at which candidate actions are being evaluated",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "similarity_weighting_rule",
+        "role": "criterion",
+        "description": "choice-time weighting rule that assigns greater influence to retained traces according to their similarity to the current state or corresponding state-action query",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "retrieved_weighted_trace_set",
+        "role": "available_information",
+        "description": "retained prior trajectories retrieved for the current decision and weighted by the declared similarity rule",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "return_estimate",
+        "role": "state_or_structure",
+        "description": "nonparametric estimate of expected future return for a state or state-action alternative constructed from retained trace returns",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "action_choice",
+        "role": "response_or_outcome",
+        "description": "choice among candidate actions obtained by comparing their estimated returns",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "maps_to",
+        "arguments": [
+          "current_decision_state",
+          "individual_event_record",
+          "similarity_weighting_rule",
+          "retrieved_weighted_trace_set"
+        ],
+        "description": "at choice time, retained event traces are retrieved and weighted according to their similarity to the current decision state rather than being replaced at encoding by one fixed aggregate summary",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "maps_to",
+        "arguments": [
+          "retrieved_weighted_trace_set",
+          "return_estimate"
+        ],
+        "description": "the weighted returns associated with retrieved traces are combined to form a nonparametric estimate of state or state-action return",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "predicts",
+        "arguments": [
+          "return_estimate",
+          "action_choice"
+        ],
+        "description": "comparison of the resulting return estimates across candidate actions supplies the decision variable used to derive a choice policy",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "constrains",
+        "arguments": [
+          "individual_event_record",
+          "return_estimate"
+        ],
+        "description": "a stored trajectory directly preserves dependencies only across its finite recorded duration; estimating consequences beyond that duration requires additional chaining or value information and may invoke further assumptions",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}

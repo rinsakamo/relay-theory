@@ -1,0 +1,164 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "CH09.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1111/j.2044-8295.1975.tb01468.x",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "British Journal of Psychology 66(3) (1975), published pp.325-326, abstract/introduction and Experiment I prediction: dry-land versus underwater learning crossed with dry-land versus underwater recall; same-environment combinations are predicted to outperform changed-environment combinations"
+      },
+      {
+        "span_id": "s2",
+        "locator": "British Journal of Psychology 66(3) (1975), published pp.326-327, Experiment I method/procedure: diving-club volunteers experience all four DD, DW, WW, WD conditions; 36-word spoken lists are presented twice, followed by copied digits, an approximately four-minute delay, and written free recall"
+      },
+      {
+        "span_id": "s3",
+        "locator": "British Journal of Psychology 66(3) (1975), published p.328, Table 1 and Experiment I results: no significant main effect of learning environment or recall environment, but a highly significant interaction; DD exceeds DW and WW exceeds WD, with no reliable DD-WW or DW-WD difference"
+      },
+      {
+        "span_id": "s4",
+        "locator": "British Journal of Psychology 66(3) (1975), published pp.329-330, Experiment II and Conclusions: an intervening dive in an otherwise dry-learning/dry-recall condition does not significantly reduce recall, constraining rehearsal/disruption alternatives; this auxiliary control is not merged into CH09.C1's Experiment I comparison structure"
+      }
+    ],
+    "authors": [
+      "D. R. Godden",
+      "A. D. Baddeley"
+    ],
+    "institutions": [
+      "University of Stirling"
+    ],
+    "venue": "British Journal of Psychology",
+    "citation_count": null,
+    "construct_labels": [
+      "context-dependent memory",
+      "free recall"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "comparison",
+    "modality": "comparative",
+    "scope": {
+      "conditions": [
+        "each participant learns word lists either on dry land or underwater and later performs the recall test either in the same environment or in the alternative environment"
+      ],
+      "population": [
+        "volunteer members of a university diving club"
+      ],
+      "substrate": [],
+      "task": [
+        "hear a 36-word unrelated list presented twice and later write down as many list words as can be remembered"
+      ],
+      "temporal_scope": [
+        "after the second list presentation, participants copy 15 digits and recall follows after an approximately four-minute delay",
+        "the four experimental sessions for a participant are separated by approximately 24 hours"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "learning_environment",
+        "role": "condition",
+        "description": "dry-land or underwater environment present during word-list acquisition",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "recall_environment",
+        "role": "condition",
+        "description": "dry-land or underwater environment present during the later uncued written list-production test",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "environment_congruence",
+        "role": "partition",
+        "description": "derived grouping of the four learning-by-recall combinations into same-environment conditions and changed-environment conditions",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "written_free_recall_probe",
+        "role": "probe",
+        "description": "two-minute test in which participants write in any order as many words from the learned list as they can remember",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "recalled_word_count",
+        "role": "response_or_outcome",
+        "description": "number of words from the presented list correctly produced during the written uncued written list-production test",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "depends_on",
+        "arguments": [
+          "recalled_word_count",
+          "learning_environment",
+          "recall_environment"
+        ],
+        "description": "recall performance shows an interaction between the environment of learning and the environment of recall, despite no significant main effect of either environment alone",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "predicts",
+        "arguments": [
+          "environment_congruence",
+          "recalled_word_count"
+        ],
+        "description": "same-environment learning/recall combinations yield higher recall than the corresponding changed-environment combinations: dry-dry exceeds dry-wet and wet-wet exceeds wet-dry",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "maps_to",
+        "arguments": [
+          "written_free_recall_probe",
+          "recalled_word_count"
+        ],
+        "description": "the uncued written list-production probe supplies the measured word-recall outcome",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}

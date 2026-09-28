@@ -1,0 +1,144 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "MEM01.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1037/0033-295X.99.2.195",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Psychological Review 99(2), published p.195, abstract: multiple-memory-systems thesis"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Psychological Review 99(2), published p.195, abstract: hippocampus-essential declarative-memory contrast"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Psychological Review 99(2), published p.195, abstract: temporary hippocampal binding of distributed neocortical sites"
+      }
+    ],
+    "authors": [
+      "Larry R. Squire"
+    ],
+    "institutions": [],
+    "venue": "Psychological Review",
+    "citation_count": null,
+    "construct_labels": [
+      "hippocampus",
+      "declarative memory",
+      "nondeclarative memory",
+      "memory systems"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "relation",
+    "modality": "necessary",
+    "scope": {
+      "conditions": [
+        "source-defined target information class"
+      ],
+      "population": [
+        "rats",
+        "monkeys",
+        "humans"
+      ],
+      "substrate": [
+        "candidate medial-temporal subsystem and anatomically related structures",
+        "distributed cortical sites"
+      ],
+      "task": [],
+      "temporal_scope": [
+        "binding contribution of the candidate subsystem is temporary"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "candidate_subsystem",
+        "role": "state_or_structure",
+        "description": "candidate anatomical subsystem together with related structures",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "target_information_class",
+        "role": "state_or_structure",
+        "description": "source-defined information class for which the candidate subsystem is stated to be essential",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "contrasted_ability_class",
+        "role": "partition",
+        "description": "contrasted class of abilities stated not to require the candidate subsystem",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "distributed_cortical_sites",
+        "role": "state_or_structure",
+        "description": "distributed cortical sites that jointly carry a whole retained item",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "depends_on",
+        "arguments": [
+          "target_information_class",
+          "candidate_subsystem"
+        ],
+        "description": "the source-defined target information class requires the candidate subsystem in the source's account",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "distinguishes",
+        "arguments": [
+          "target_information_class",
+          "contrasted_ability_class"
+        ],
+        "description": "the source separates the subsystem-dependent target class from a contrasted class that does not require the subsystem",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "other",
+        "arguments": [
+          "candidate_subsystem",
+          "distributed_cortical_sites"
+        ],
+        "description": "the candidate subsystem is needed temporarily to bind distributed cortical sites into a whole retained item",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}

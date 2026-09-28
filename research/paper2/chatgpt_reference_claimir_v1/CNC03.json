@@ -1,0 +1,235 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "CNC03.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1207/s15516709cog0702_3",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Cognitive Science 7(2), published p.155, abstract: content-independent interpretation rules, relation-over-attribute mapping, and higher-order systematic preference"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Cognitive Science 7(2), published pp.156-157, preliminary assumptions: represented domains contain objects, unary attributes, first-order relations, and higher-order relations"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Cognitive Science 7(2), published p.158, interpretation rules: object-node correspondences, candidate target inferences, discard object attributes, try to preserve inter-object relations, prefer systems of relations"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Cognitive Science 7(2), published pp.159-161, domain-comparison distinctions: relational predicates versus object attributes and the continuum boundary"
+      },
+      {
+        "span_id": "s5",
+        "locator": "Cognitive Science 7(2), published pp.162-165, higher-order predicates and systematicity: interconnected systems preferentially selected; object-correspondence processing-order qualification in footnote 10"
+      },
+      {
+        "span_id": "s6",
+        "locator": "Cognitive Science 7(2), published pp.165-166, theory review and empirical-support discussion: syntactic candidate-selection rule and relational-information evidence"
+      },
+      {
+        "span_id": "s7",
+        "locator": "Cognitive Science 7(2), published p.168, summary: relations rather than object attributes are mapped and higher-order-dominated relations are preferentially retained"
+      }
+    ],
+    "authors": [
+      "Dedre Gentner"
+    ],
+    "institutions": [
+      "Bolt Beranek and Newman Inc."
+    ],
+    "venue": "Cognitive Science",
+    "citation_count": null,
+    "construct_labels": [
+      "analogy",
+      "structure-mapping",
+      "systematicity",
+      "literal similarity"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "mapping",
+    "modality": "descriptive",
+    "scope": {
+      "conditions": [
+        "a represented source domain and target domain are compared under candidate object-node correspondences",
+        "candidate transferable predicates are selected from the represented structural relations rather than by domain-specific semantic content"
+      ],
+      "population": [
+        "humans"
+      ],
+      "substrate": [],
+      "task": [
+        "derive a target-domain interpretation and candidate inferences from a cross-domain structural comparison"
+      ],
+      "temporal_scope": [
+        "object correspondences need not be fixed before relational matching begins, but must be settled before relational mapping is finished"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "source_domain",
+        "role": "state_or_structure",
+        "description": "source-side represented system containing object nodes, unary attributes, and inter-object relations",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "target_domain",
+        "role": "state_or_structure",
+        "description": "target-side represented system into which selected source structure is carried",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "object_correspondence",
+        "role": "state_or_structure",
+        "description": "pairing or substitution relation between source-side and target-side object nodes",
+        "source_span_ids": [
+          "s3",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "object_attributes",
+        "role": "state_or_structure",
+        "description": "unary predicates attached to individual represented objects",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "relational_predicates",
+        "role": "state_or_structure",
+        "description": "predicates relating two or more represented objects or propositions",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "higher_order_relational_system",
+        "role": "state_or_structure",
+        "description": "interconnected system in which higher-order predicates link and organize lower-order relations",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3",
+          "s5",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "selected_relational_structure",
+        "role": "state_or_structure",
+        "description": "subset of source-side relational predicates preferentially retained for transfer",
+        "source_span_ids": [
+          "s3",
+          "s5",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "candidate_target_inferences",
+        "role": "response_or_outcome",
+        "description": "candidate propositions generated in the target representation by carrying selected source predicates across the object-node substitutions",
+        "source_span_ids": [
+          "s3",
+          "s5",
+          "s6"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "maps_to",
+        "arguments": [
+          "source_domain",
+          "target_domain",
+          "object_correspondence"
+        ],
+        "description": "source-side object nodes are paired with target-side object nodes through correspondence substitutions",
+        "source_span_ids": [
+          "s3",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "distinguishes",
+        "arguments": [
+          "relational_predicates",
+          "object_attributes"
+        ],
+        "description": "the interpretation rule preferentially carries inter-object relations while excluding object-specific unary attributes from the transferred structure",
+        "source_span_ids": [
+          "s1",
+          "s3",
+          "s4",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "predicts",
+        "arguments": [
+          "higher_order_relational_system",
+          "selected_relational_structure"
+        ],
+        "description": "a relation that belongs to a mutually interconnected higher-order system is more likely to be retained than an isolated relation",
+        "source_span_ids": [
+          "s1",
+          "s3",
+          "s5",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "maps_to",
+        "arguments": [
+          "selected_relational_structure",
+          "object_correspondence",
+          "candidate_target_inferences"
+        ],
+        "description": "selected source relations are carried into the target using the established object substitutions, producing candidate target inferences",
+        "source_span_ids": [
+          "s3",
+          "s5",
+          "s6"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}

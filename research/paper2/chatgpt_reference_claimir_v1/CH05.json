@@ -1,0 +1,176 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "CH05.C1",
+  "provenance": {
+    "paper_id": "DOI:10.3758/BF03196322",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Psychonomic Bulletin & Review 9(4) (2002), published pp.625-626, abstract and six-claim list: limits on attention/working memory motivate exploiting the environment to reduce cognitive workload, including leaving information externally available and harvesting it on a need-to-know basis"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Psychonomic Bulletin & Review 9(4) (2002), published p.628, Claim 3 opening: under on-line demands and a representational bottleneck, novel tasks can be handled by strategic external use rather than full internal encoding, including epistemic actions that alter the environment to reduce remaining cognitive work"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Psychonomic Bulletin & Review 9(4) (2002), published p.629, situated off-loading boundary and examples: long-term archival storage is distinguished from immediate off-loading; Tetris transformations and repeated strategic visual referencing illustrate physical simplification and minimal-memory resampling"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Psychonomic Bulletin & Review 9(4) (2002), published p.629 and p.635 Conclusions: other attention/working-memory limits can also drive off-loading; symbolic off-loading is a broader, partly off-line extension and is not merged into the bounded situated claim"
+      }
+    ],
+    "authors": [
+      "Margaret Wilson"
+    ],
+    "institutions": [
+      "University of California, Santa Cruz"
+    ],
+    "venue": "Psychonomic Bulletin & Review",
+    "citation_count": null,
+    "construct_labels": [
+      "embodied cognition",
+      "situated cognition",
+      "cognitive off-loading",
+      "epistemic action"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "relation",
+    "modality": "descriptive",
+    "scope": {
+      "conditions": [
+        "situated interaction with task-relevant external information rather than long-term archival storage",
+        "novel or otherwise demanding tasks in which time pressure, attention limits, working-memory limits, or related internal processing constraints make full internal encoding, maintenance, or transformation burdensome"
+      ],
+      "population": [
+        "humans"
+      ],
+      "substrate": [
+        "human cognitive agent",
+        "immediate task-relevant external environment"
+      ],
+      "task": [
+        "leave task-relevant information externally available and re-access it as needed",
+        "physically transform task-relevant external state to simplify the problem that remains"
+      ],
+      "temporal_scope": [
+        "during ongoing interaction with a task-relevant external situation"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "internal_processing_limit",
+        "role": "condition",
+        "description": "limited internal resources such as attention, working memory, or time available for full encoding, maintenance, or transformation",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "external_task_state",
+        "role": "available_information",
+        "description": "task-relevant information that remains available in the immediate external environment instead of being fully encoded and maintained internally",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "problem_simplifying_manipulation",
+        "role": "intervention",
+        "description": "physical action that changes task-relevant external state so that less internal computation remains to be performed",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "selective_resampling",
+        "role": "probe",
+        "description": "need-based re-access of externally available task information, such as strategic repeated visual sampling, instead of maintaining a complete internal copy",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "remaining_internal_workload",
+        "role": "response_or_outcome",
+        "description": "internal encoding, maintenance, or transformation work still required after exploiting external task structure",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "constrains",
+        "arguments": [
+          "internal_processing_limit",
+          "selective_resampling",
+          "problem_simplifying_manipulation"
+        ],
+        "description": "limits on internal processing make strategic re-access of external information and problem-simplifying external action useful responses to demanding situated tasks",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "changes",
+        "arguments": [
+          "problem_simplifying_manipulation",
+          "external_task_state",
+          "remaining_internal_workload"
+        ],
+        "description": "physically transforming the external task state can simplify the problem and reduce the internal cognitive work remaining to be done",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "changes",
+        "arguments": [
+          "selective_resampling",
+          "external_task_state",
+          "remaining_internal_workload"
+        ],
+        "description": "re-accessing task information externally on a need-to-know basis reduces the need to fully encode or continuously maintain that information internally",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}

@@ -1,0 +1,279 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "CTL06.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1016/S1364-6613(03)00028-7",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Trends in Cognitive Sciences 7(3), published p.134, Abstract: responses are slower and usually more error-prone immediately after a task change; advance preparation reduces but does not eliminate the switch cost"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Trends in Cognitive Sciences 7(3), published pp.135-136, basic phenomena and paradigms: switch, preparation, residual, and mixing costs; preparation interval manipulations and separation of active preparation from passive dissipation"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Trends in Cognitive Sciences 7(3), published pp.135-137, candidate sources of transition costs: time-consuming endogenous task-set reconfiguration, transient persistence of prior activation/inhibition, and longer-term associative retrieval/priming"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Trends in Cognitive Sciences 7(3), published p.137, synthesis: multiple causes are likely; the exact blend is disputed, transient carry-over is an established contributor, and the preparation effect is commonly attributed to time-consuming endogenous reconfiguration"
+      },
+      {
+        "span_id": "s5",
+        "locator": "Trends in Cognitive Sciences 7(3), published pp.138-139, neuroimaging/TMS discussion: differential activation on changed versus repeated trials does not by itself distinguish controlling regions from controlled targets"
+      }
+    ],
+    "authors": [
+      "Stephen Monsell"
+    ],
+    "institutions": [
+      "University of Exeter"
+    ],
+    "venue": "Trends in Cognitive Sciences",
+    "citation_count": null,
+    "construct_labels": [
+      "task switching",
+      "switch cost",
+      "task-set reconfiguration"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "relation",
+    "modality": "probabilistic",
+    "scope": {
+      "conditions": [
+        "human participants perform a small set of simple stimulus-response tasks in sequences containing both task repetitions and task changes",
+        "some paradigms provide advance knowledge and vary the time available before the upcoming stimulus, allowing partial preparation while also potentially allowing passive decay of the prior configuration"
+      ],
+      "population": [
+        "human participants in the behavioral and neuropsychological task-transition literature reviewed by the source"
+      ],
+      "substrate": [],
+      "task": [
+        "perform the currently required simple classification or response rule while occasionally changing from the rule used on the preceding trial"
+      ],
+      "temporal_scope": [
+        "immediate trial-to-trial history determines whether the current task repeats or changes, and advance preparation can occur before current-stimulus onset",
+        "carry-over from prior configurations can persist transiently across trials and, through associative retrieval or priming, over longer intervals"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "prior_task_configuration",
+        "role": "state_or_structure",
+        "description": "task-specific configuration active or recently active before the current trial",
+        "source_span_ids": [
+          "s1",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "current_task_configuration",
+        "role": "state_or_structure",
+        "description": "task-specific configuration required for the current trial",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "task_transition",
+        "role": "condition",
+        "description": "whether the current trial requires repeating the preceding task configuration or changing to another one",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "advance_preparation_opportunity",
+        "role": "condition",
+        "description": "foreknowledge and time available before current-stimulus onset to prepare the required configuration",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "current_trial_performance",
+        "role": "response_or_outcome",
+        "description": "response latency and error probability on the current trial",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "transition_performance_decrement",
+        "role": "response_or_outcome",
+        "description": "slower and/or less accurate performance on a changed-task trial relative to a repeated-task trial",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "residual_transition_decrement",
+        "role": "response_or_outcome",
+        "description": "remaining changed-versus-repeated performance difference after substantial advance preparation",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "endogenous_configuration_update",
+        "role": "state_or_structure",
+        "description": "time-consuming internally driven process that prepares or establishes the currently required task configuration",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "transient_prior_configuration_carryover",
+        "role": "state_or_structure",
+        "description": "short-lived persistence of activation or inhibition associated with the previously performed task configuration",
+        "source_span_ids": [
+          "s1",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "long_term_associative_carryover",
+        "role": "state_or_structure",
+        "description": "longer-lived associative retrieval or priming of competing task configurations by stimuli or recent experience",
+        "source_span_ids": [
+          "s1",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "task_transition_probe",
+        "role": "probe",
+        "description": "family of behavioral paradigms comparing changed-task with repeated-task trials while varying predictability, cue timing, and advance preparation",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "depends_on",
+        "arguments": [
+          "current_trial_performance",
+          "task_transition"
+        ],
+        "description": "performance is generally slower and often more error-prone immediately after a task change than after a task repetition",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "changes",
+        "arguments": [
+          "advance_preparation_opportunity",
+          "transition_performance_decrement"
+        ],
+        "description": "providing foreknowledge and more time for advance preparation usually reduces the transition-related performance decrement",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "depends_on",
+        "arguments": [
+          "residual_transition_decrement",
+          "transient_prior_configuration_carryover",
+          "endogenous_configuration_update"
+        ],
+        "description": "the remaining decrement after preparation is not attributed to a single source; the review treats transient prior-state carry-over and update processes that cannot always be completed before stimulus onset as contributors whose exact blend remains unsettled",
+        "source_span_ids": [
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "depends_on",
+        "arguments": [
+          "transition_performance_decrement",
+          "endogenous_configuration_update",
+          "transient_prior_configuration_carryover",
+          "long_term_associative_carryover"
+        ],
+        "description": "the review treats the observed transition-related decrement as multiply determined rather than as evidence for a single control mechanism, with both internally driven updating and carry-over at more than one timescale contributing in different paradigms",
+        "source_span_ids": [
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "precedes",
+        "arguments": [
+          "advance_preparation_opportunity",
+          "endogenous_configuration_update",
+          "current_trial_performance"
+        ],
+        "description": "when advance information is available, part of the internally driven configuration update can occur before the current stimulus and response",
+        "source_span_ids": [
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r6",
+        "kind": "maps_to",
+        "arguments": [
+          "task_transition_probe",
+          "transition_performance_decrement",
+          "residual_transition_decrement"
+        ],
+        "description": "the behavioral paradigms expose both the immediate changed-versus-repeated performance difference and the portion that remains after extended preparation",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}

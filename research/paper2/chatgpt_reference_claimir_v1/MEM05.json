@@ -1,0 +1,171 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "MEM05.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1126/science.287.5451.248",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Science 287, published p.248, abstract: slowly developing time-dependent post-acquisition process leading to lasting retention"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Science 287, published pp.248-249, discussion of post-training stimulant/drug treatments administered minutes to hours after training"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Science 287, published pp.248-249, statement that post-training treatments can impair or enhance the later retained outcome without acting on initial acquisition or later retrieval"
+      }
+    ],
+    "authors": [
+      "James L. McGaugh"
+    ],
+    "institutions": [],
+    "venue": "Science",
+    "citation_count": null,
+    "construct_labels": [
+      "memory",
+      "memory consolidation",
+      "consolidation"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "counterfactual",
+    "modality": "counterfactual",
+    "scope": {
+      "conditions": [
+        "post-training treatments administered after initial acquisition and before later assessment"
+      ],
+      "population": [],
+      "substrate": [
+        "time-dependent post-acquisition stabilization processes"
+      ],
+      "task": [
+        "trained behavior followed by later retention assessment"
+      ],
+      "temporal_scope": [
+        "minutes to hours after training, within a longer time-dependent stabilization trajectory"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "initial_acquisition",
+        "role": "condition",
+        "description": "initial acquisition episode completed before the focal manipulation",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "post_training_intervention",
+        "role": "intervention",
+        "description": "treatment administered after training during the time-dependent post-acquisition interval",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "post_acquisition_process",
+        "role": "state_or_structure",
+        "description": "time-dependent process occurring after acquisition and contributing to durable retention",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "later_retained_outcome",
+        "role": "response_or_outcome",
+        "description": "later retained behavioral outcome that can be enhanced or impaired by the post-training treatment",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "later_retrieval",
+        "role": "condition",
+        "description": "later retrieval operation distinguished from the post-acquisition process in the source's causal argument",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "changes",
+        "arguments": [
+          "post_training_intervention",
+          "post_acquisition_process"
+        ],
+        "description": "post-training manipulations alter the intervening time-dependent stabilization process",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "changes",
+        "arguments": [
+          "post_training_intervention",
+          "later_retained_outcome"
+        ],
+        "description": "post-training manipulations can enhance or impair the later retained outcome",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "distinguishes",
+        "arguments": [
+          "post_acquisition_process",
+          "initial_acquisition",
+          "later_retrieval"
+        ],
+        "description": "the causal interpretation distinguishes the intervening post-acquisition process from effects on initial acquisition and later retrieval",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "precedes",
+        "arguments": [
+          "initial_acquisition",
+          "post_training_intervention",
+          "later_retained_outcome"
+        ],
+        "description": "the experimental causal ordering is acquisition, then focal post-training manipulation, then later retention assessment",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}

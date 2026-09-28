@@ -1,0 +1,136 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "MEM02.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1017/S0140525X01003922",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Behavioral and Brain Sciences 24, PDF p.1 / published p.87, abstract: central capacity limit averaging about four chunks"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Behavioral and Brain Sciences 24, PDF p.1 / published p.87, abstract: four boundary-condition classes for observing pure capacity"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Behavioral and Brain Sciences 24, PDF p.2 / published p.88, sec. 1.1-1.2: pure versus compound capacity and constrained observation procedures"
+      }
+    ],
+    "authors": [
+      "Nelson Cowan"
+    ],
+    "institutions": [
+      "University of Missouri, Columbia"
+    ],
+    "venue": "Behavioral and Brain Sciences",
+    "citation_count": null,
+    "construct_labels": [
+      "short-term memory",
+      "storage capacity",
+      "focus of attention",
+      "chunks"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "constraint",
+    "modality": "probabilistic",
+    "scope": {
+      "conditions": [
+        "experimental conditions that permit retained units to be identified",
+        "procedures that prevent recoding or refilling from supplementary non-limited sources"
+      ],
+      "population": [
+        "humans"
+      ],
+      "substrate": [
+        "central limited temporary store"
+      ],
+      "task": [
+        "temporary-store limit tasks under pure-limit boundary conditions"
+      ],
+      "temporal_scope": []
+    },
+    "nodes": [
+      {
+        "id": "central_limited_store",
+        "role": "state_or_structure",
+        "description": "central limited store implicated by the converging evidence",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "retained_unit_count",
+        "role": "response_or_outcome",
+        "description": "number of separately retained units supported under qualifying conditions",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "qualifying_limit_conditions",
+        "role": "condition",
+        "description": "boundary conditions that prevent unknown grouping, rehearsal, or refilling from supplementary non-limited sources",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "limit_probe_family",
+        "role": "probe",
+        "description": "procedures for revealing the pure limit, including overload, recoding-block, discontinuity, and indirect-effect methods",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "constrains",
+        "arguments": [
+          "central_limited_store",
+          "retained_unit_count"
+        ],
+        "description": "the central store constrains the number of simultaneously retained units to an average near four under the qualifying conditions",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "depends_on",
+        "arguments": [
+          "retained_unit_count",
+          "qualifying_limit_conditions",
+          "limit_probe_family"
+        ],
+        "description": "a pure-limit estimate is interpretable only under source-declared boundary conditions and revealing procedures",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}

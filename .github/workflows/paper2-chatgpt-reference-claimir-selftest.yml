@@ -1,0 +1,37 @@
+name: paper2-chatgpt-reference-claimir-selftest
+
+on:
+  pull_request:
+    paths:
+      - "research/paper2/chatgpt_reference_claimir_v1/**"
+      - ".github/workflows/paper2-chatgpt-reference-claimir-selftest.yml"
+      - "scripts/paper2_claim_ir_validate.py"
+      - "research/paper2/claim_ir_v1.schema.json"
+  push:
+    branches:
+      - main
+    paths:
+      - "research/paper2/chatgpt_reference_claimir_v1/**"
+      - ".github/workflows/paper2-chatgpt-reference-claimir-selftest.yml"
+      - "scripts/paper2_claim_ir_validate.py"
+      - "research/paper2/claim_ir_v1.schema.json"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile validator
+        run: python -m py_compile scripts/paper2_claim_ir_validate.py
+      - name: Validate reference ClaimIR rows
+        run: |
+          set -euo pipefail
+          for f in research/paper2/chatgpt_reference_claimir_v1/[A-Z]*.json; do
+            python scripts/paper2_claim_ir_validate.py --input "$f" --blinded-output "/tmp/$(basename "$f").blinded.json"
+          done

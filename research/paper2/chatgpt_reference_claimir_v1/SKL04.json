@@ -1,0 +1,456 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "SKL04.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1016/0010-0285(87)90002-8",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Cognitive Psychology 19(1), published pp.1-6, Abstract and Introduction: performance facilitation is distinguished from introspective report; the paper separately asks whether reduced focal processing prevents sequence acquisition and whether performance change can occur without awareness of the repeated pattern"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Cognitive Psychology 19(1), published pp.6-10, Experiment 1: four-choice response task, fixed ten-position sequence versus random order; repeating-order response latency diverges from random within the first block and falls substantially across eight blocks"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Cognitive Psychology 19(1), published pp.10-16, Experiment 2: single-repeating, dual-repeating, and dual-random groups; concurrent low-tone counting; four 100-trial exposure blocks followed by a two-block generate task; dual-repeating and dual-random latency functions do not significantly differ, while generate performance shows at most small residual prior-sequence benefit"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Cognitive Psychology 19(1), published pp.16-21, Experiment 3: after four dual-repeating blocks, transfer to single-repeating versus single-random conditions; no significant initial repeating advantage and no faster relearning relative to previously unexposed single-repeating groups"
+      },
+      {
+        "span_id": "s5",
+        "locator": "Cognitive Psychology 19(1), published pp.21-27, Experiment 4: six Korsakoff patients and eight age-matched controls perform repeating then random blocks; both groups show practice-related response-time reduction and slowing when the order becomes random; serial-position analyses show qualitatively similar changing chunk patterns"
+      },
+      {
+        "span_id": "s6",
+        "locator": "Cognitive Psychology 19(1), published pp.26-27, Experiment 4 subjective reports: controls report the repeating pattern whereas Korsakoff patients do not, despite performance evidence that the patient group acquired the sequence"
+      },
+      {
+        "span_id": "s7",
+        "locator": "Cognitive Psychology 19(1), published pp.27-30, General Discussion: four converging comparisons support strong dependence of new sequence acquisition on focal processing allocation; dual-task practice still improves generic dual-task performance; awareness of the pattern is explicitly distinguished from attending to the task itself"
+      }
+    ],
+    "authors": [
+      "Mary Jo Nissen",
+      "Peter Bullemer"
+    ],
+    "institutions": [],
+    "venue": "Cognitive Psychology",
+    "citation_count": null,
+    "construct_labels": [
+      "implicit learning",
+      "explicit memory",
+      "serial reaction time",
+      "attention"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "comparison",
+    "modality": "comparative",
+    "scope": {
+      "conditions": [
+        "a four-choice speeded response task containing either a fixed ten-position order or a constrained random order",
+        "performance conducted either alone or concurrently with a low-tone counting task that competes for focal processing resources",
+        "new order acquisition assessed by multiple performance and report surfaces rather than by practice-related speedup alone"
+      ],
+      "population": [
+        "University of Minnesota undergraduate participants in Experiments 1-3",
+        "six adults with Korsakoff's syndrome and eight age-matched healthy older adults in Experiment 4"
+      ],
+      "substrate": [],
+      "task": [
+        "press one of four spatially compatible keys in response to successive visual locations",
+        "under concurrent-task conditions also count low-pitched tones presented during the response-to-stimulus interval"
+      ],
+      "temporal_scope": [
+        "within repeated 100-trial exposure blocks",
+        "immediate post-exposure generation and transfer tests",
+        "relearning across subsequent single-task blocks"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "sequence_order",
+        "role": "condition",
+        "description": "whether successive visual locations follow the fixed ten-position order or a constrained random order",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "concurrent_tone_count",
+        "role": "intervention",
+        "description": "secondary task requiring a running count of low-pitched tones while performing the visual response task",
+        "source_span_ids": [
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "focal_processing_availability",
+        "role": "state_or_structure",
+        "description": "amount of processing capacity available for the visual response task while another task is or is not performed concurrently",
+        "source_span_ids": [
+          "s1",
+          "s3",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "sequence_specific_latency_advantage",
+        "role": "response_or_outcome",
+        "description": "response-time benefit attributable specifically to experience with the fixed order, estimated by comparison with random-order performance rather than by raw practice speedup alone",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s4",
+          "s5",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "generic_dual_task_practice_gain",
+        "role": "response_or_outcome",
+        "description": "response-time improvement across concurrent-task blocks that occurs for both fixed-order and random-order groups",
+        "source_span_ids": [
+          "s3",
+          "s4",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "latency_comparison_probe",
+        "role": "probe",
+        "description": "comparison of response-latency functions between fixed-order and random-order conditions during repeated task performance",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "generate_prediction_probe",
+        "role": "probe",
+        "description": "post-exposure task in which participants press the key corresponding to the location they expect to occur next and accuracy is measured",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "generate_prediction_accuracy",
+        "role": "response_or_outcome",
+        "description": "accuracy in predicting the next location after prior fixed-order or random-order exposure",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "post_dual_transfer_probe",
+        "role": "probe",
+        "description": "removal of the concurrent tone task followed by fixed-order or random-order blocks to test immediate benefit and subsequent savings from prior concurrent fixed-order exposure",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "immediate_transfer_advantage",
+        "role": "response_or_outcome",
+        "description": "initial response-time advantage for the fixed order after concurrent-task exposure",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "relearning_savings",
+        "role": "response_or_outcome",
+        "description": "faster subsequent acquisition of the fixed order attributable to earlier concurrent-task exposure",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "pattern_report_probe",
+        "role": "probe",
+        "description": "spontaneous and prompted report about whether a repeating order was noticed",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s5",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "reported_pattern_awareness",
+        "role": "response_or_outcome",
+        "description": "report that a repeating order was present during task performance",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "clinical_group",
+        "role": "condition",
+        "description": "Korsakoff patient group versus age-matched healthy control group in the fourth experiment",
+        "source_span_ids": [
+          "s5",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "random_order_transfer",
+        "role": "intervention",
+        "description": "replacement of the fixed order by a random order after four fixed-order blocks",
+        "source_span_ids": [
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "serial_position_probe",
+        "role": "probe",
+        "description": "baseline-corrected response-time analysis across the ten serial positions used to characterize which portions of the fixed order were acquired",
+        "source_span_ids": [
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "serial_position_profile",
+        "role": "response_or_outcome",
+        "description": "pattern of baseline-corrected response times across positions in the fixed order and its change with practice",
+        "source_span_ids": [
+          "s5"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "differs",
+        "arguments": [
+          "sequence_order",
+          "sequence_specific_latency_advantage"
+        ],
+        "description": "when the visual response task is performed alone, fixed-order and random-order response times diverge early and the fixed-order condition shows a much larger practice-related reduction",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "changes",
+        "arguments": [
+          "concurrent_tone_count",
+          "focal_processing_availability"
+        ],
+        "description": "performing the tone-counting task concurrently is used to reduce the processing capacity available for the visual response task",
+        "source_span_ids": [
+          "s1",
+          "s3",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "differs",
+        "arguments": [
+          "concurrent_tone_count",
+          "sequence_order",
+          "sequence_specific_latency_advantage"
+        ],
+        "description": "under concurrent-task exposure, fixed-order and random-order groups do not significantly diverge in response latency across the four exposure blocks, unlike the rapid divergence observed when the task is performed alone",
+        "source_span_ids": [
+          "s3",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "changes",
+        "arguments": [
+          "concurrent_tone_count",
+          "generic_dual_task_practice_gain"
+        ],
+        "description": "response latency nevertheless decreases with practice in both concurrent fixed-order and concurrent random-order groups, so generic improvement in handling the combined tasks is distinguished from fixed-order acquisition",
+        "source_span_ids": [
+          "s3",
+          "s4",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "maps_to",
+        "arguments": [
+          "latency_comparison_probe",
+          "sequence_specific_latency_advantage"
+        ],
+        "description": "fixed-order versus random-order latency comparison provides a performance measure of order-specific benefit rather than treating any reduction in raw latency as evidence of order acquisition",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r6",
+        "kind": "maps_to",
+        "arguments": [
+          "generate_prediction_probe",
+          "generate_prediction_accuracy"
+        ],
+        "description": "the post-exposure prediction task measures usable knowledge of the next location; prior single-task fixed-order exposure yields a larger initial advantage than prior concurrent fixed-order exposure",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r7",
+        "kind": "maps_to",
+        "arguments": [
+          "post_dual_transfer_probe",
+          "immediate_transfer_advantage",
+          "relearning_savings"
+        ],
+        "description": "removing the concurrent task tests both immediate benefit from prior fixed-order exposure and whether the fixed order is reacquired faster than by previously unexposed comparison groups",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r8",
+        "kind": "other",
+        "arguments": [
+          "concurrent_tone_count",
+          "immediate_transfer_advantage",
+          "relearning_savings"
+        ],
+        "description": "four blocks of concurrent fixed-order exposure produce neither a significant initial fixed-order advantage after transfer nor detectable savings in subsequent fixed-order acquisition",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r9",
+        "kind": "changes",
+        "arguments": [
+          "random_order_transfer",
+          "sequence_specific_latency_advantage"
+        ],
+        "description": "after four fixed-order blocks, replacing the order with random locations produces a response-time increase in both the Korsakoff and healthy older groups, providing performance evidence for acquisition of the specific order",
+        "source_span_ids": [
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r10",
+        "kind": "maps_to",
+        "arguments": [
+          "serial_position_probe",
+          "serial_position_profile"
+        ],
+        "description": "baseline-corrected serial-position response times reveal acquisition across much of the fixed order and a changing chunk-like profile with practice",
+        "source_span_ids": [
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r11",
+        "kind": "other",
+        "arguments": [
+          "clinical_group",
+          "serial_position_profile"
+        ],
+        "description": "the patient and healthy older groups show qualitatively similar serial-position patterns and similar changes in those patterns with practice, despite quantitative performance differences",
+        "source_span_ids": [
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r12",
+        "kind": "maps_to",
+        "arguments": [
+          "pattern_report_probe",
+          "reported_pattern_awareness"
+        ],
+        "description": "spontaneous and prompted reports separately measure whether participants noticed the repeating order",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r13",
+        "kind": "distinguishes",
+        "arguments": [
+          "sequence_specific_latency_advantage",
+          "reported_pattern_awareness"
+        ],
+        "description": "performance evidence for acquisition can occur without a report that the repeating order was noticed, as shown most clearly by the Korsakoff group",
+        "source_span_ids": [
+          "s5",
+          "s6",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r14",
+        "kind": "depends_on",
+        "arguments": [
+          "sequence_specific_latency_advantage",
+          "focal_processing_availability"
+        ],
+        "description": "acquisition of the new fixed-order associations is strongly reduced when processing capacity is divided across the two concurrent tasks, whereas noticing the existence of the order is not required for the performance benefit itself",
+        "source_span_ids": [
+          "s3",
+          "s4",
+          "s7"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}

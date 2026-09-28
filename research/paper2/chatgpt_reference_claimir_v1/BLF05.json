@@ -1,0 +1,200 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "BLF05.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1016/S1053-8119(03)00230-1",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "NeuroImage 19, PDF p.1 / published p.1835, Abstract: distinguish representation of another person's internal states from representation of a person's mere presence"
+      },
+      {
+        "span_id": "s2",
+        "locator": "NeuroImage 19, PDF pp.1-2 / published pp.1835-1836, two criteria for selective involvement and social/non-social control conditions"
+      },
+      {
+        "span_id": "s3",
+        "locator": "NeuroImage 19, PDF p.2 / published p.1836, Experiment 1: internal-state stories, hidden physical-process controls, person/action descriptions, and nonhuman descriptions"
+      }
+    ],
+    "authors": [
+      "Rebecca Saxe",
+      "Nancy Kanwisher"
+    ],
+    "institutions": [
+      "Massachusetts Institute of Technology"
+    ],
+    "venue": "NeuroImage",
+    "citation_count": null,
+    "construct_labels": [
+      "theory of mind",
+      "false belief",
+      "mentalising",
+      "TPJ-M"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "mapping",
+    "modality": "comparative",
+    "scope": {
+      "conditions": [
+        "participants read short stories that selectively require reasoning about another person's internal representational content or matched physical/social controls"
+      ],
+      "population": [
+        "healthy right-handed adults"
+      ],
+      "substrate": [
+        "bilateral temporo-parietal region of interest and nearby visual-body region used as a comparison"
+      ],
+      "task": [
+        "read story conditions and compare region-specific blood-oxygenation responses"
+      ],
+      "temporal_scope": []
+    },
+    "nodes": [
+      {
+        "id": "internal_state_content",
+        "role": "state_or_structure",
+        "description": "represented content attributed to another person's internal representational state",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "person_presence",
+        "role": "state_or_structure",
+        "description": "representation that a person is present without requiring attribution of internal-state content",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "physical_hidden_cause",
+        "role": "condition",
+        "description": "non-social hidden process requiring inference but not attribution of another person's internal state",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "target_region_response",
+        "role": "response_or_outcome",
+        "description": "blood-oxygenation response in the source-defined temporo-parietal region",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "story_condition_partition",
+        "role": "partition",
+        "description": "partition of stimuli into internal-state, physical-inference, person-description, and nonhuman-description conditions",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "functional_imaging_probe",
+        "role": "probe",
+        "description": "functional imaging comparison across the structured story conditions",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "selectivity_criterion",
+        "role": "criterion",
+        "description": "greater regional response when reasoning about another person's internal-state content than under matched non-social inference or person-presence controls",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "distinguishes",
+        "arguments": [
+          "internal_state_content",
+          "person_presence",
+          "physical_hidden_cause"
+        ],
+        "description": "the experiment separates attribution of another person's internal-state content from mere social presence and from hidden physical inference",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "depends_on",
+        "arguments": [
+          "target_region_response",
+          "story_condition_partition"
+        ],
+        "description": "the regional response differs according to which structured inference condition is presented",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "maps_to",
+        "arguments": [
+          "functional_imaging_probe",
+          "target_region_response"
+        ],
+        "description": "the imaging comparison measures condition-selective regional response",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "satisfies",
+        "arguments": [
+          "target_region_response",
+          "selectivity_criterion"
+        ],
+        "description": "the source's selective-function claim requires the target region to exceed both non-social inference and simple person-presence controls",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}

@@ -1,0 +1,346 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "CTL03.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1037/0096-3445.121.4.480",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Journal of Experimental Psychology: General 121(4), published p.480, Abstract and opening discussion: early broad versus later target-selective evidence, context-dependent choice, relative utility, and non-commitment to conscious or deliberate selection"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Journal of Experimental Psychology: General 121(4), published p.482, Rationale of the Study: expected utility of the two evidence sources and three context manipulations across Experiments 1, 2, and 3a/3b"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Journal of Experimental Psychology: General 121(4), published pp.485-488, Experiment 1: previous-trial noise context modulates current interference; stimulus/response repetition alternative is tested; behavioral and LRP evidence supports trial-to-trial reweighting and concurrent response preparation"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Journal of Experimental Psychology: General 121(4), published pp.488-490, Experiment 2: blockwise compatible/incompatible probability manipulation changes behavioral interference and estimated use of early versus later evidence"
+      },
+      {
+        "span_id": "s5",
+        "locator": "Journal of Experimental Psychology: General 121(4), published pp.491-499, Experiments 3a/3b: a symbolic probability cue presented 1500 ms before the imperative stimulus changes behavioral interference and preparatory ERP measures"
+      },
+      {
+        "span_id": "s6",
+        "locator": "Journal of Experimental Psychology: General 121(4), published pp.499-500, Discussion: expectancy-driven top-down shift in evidence weighting, utility defined by expected speed/accuracy consequences, and adaptive links between stimulus evaluation and response systems"
+      },
+      {
+        "span_id": "s7",
+        "locator": "Journal of Experimental Psychology: General 121(4), published pp.502-503, theoretical discussion: P300/context-updating interpretations remain non-unique; physiological substrate and hardware-level implementation of the control system remain unresolved"
+      }
+    ],
+    "authors": [
+      "Gabriele Gratton",
+      "Michael G. H. Coles",
+      "Emanuel Donchin"
+    ],
+    "institutions": [
+      "University of Illinois at Urbana-Champaign"
+    ],
+    "venue": "Journal of Experimental Psychology: General",
+    "citation_count": null,
+    "construct_labels": [
+      "strategic control",
+      "response activation",
+      "parallel processing",
+      "focused processing"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "relation",
+    "modality": "probabilistic",
+    "scope": {
+      "conditions": [
+        "a speeded visual choice task contains task-relevant target information together with response-compatible or response-incompatible distractor information",
+        "context supplies information from recent trial history, blockwise event probabilities, or a predictive symbolic cue that can alter expectancy about the upcoming distractor condition",
+        "selection of the processing policy need not be conscious or deliberate and may reflect an adjustment mechanism outside conscious awareness"
+      ],
+      "population": [
+        "adult human participants in the source's four noise-compatibility experiments"
+      ],
+      "substrate": [],
+      "task": [
+        "respond rapidly and accurately to the designated target while irrelevant surrounding letters may support the same or the competing response"
+      ],
+      "temporal_scope": [
+        "within a trial, an early multi-input phase precedes a later target-selective phase and both can contribute to preparation of responses on the same trial",
+        "across trials, the immediately preceding distractor condition can alter weighting on the next trial",
+        "across blocks, known event probabilities alter expectancy before individual trials",
+        "within a trial in Experiments 3a/3b, a predictive symbolic cue is presented 1500 ms before the imperative stimulus and permits advance adjustment"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "prior_trial_context",
+        "role": "condition",
+        "description": "whether the preceding trial contained response-compatible or response-incompatible distractor information",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "probability_context_intervention",
+        "role": "intervention",
+        "description": "experimental manipulation of compatible versus incompatible event probabilities across blocks or by a predictive symbolic cue",
+        "source_span_ids": [
+          "s2",
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "contextual_expectancy_state",
+        "role": "state_or_structure",
+        "description": "the participant's context-dependent expectation about whether upcoming distractor information is likely to support or compete with the target response",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3",
+          "s4",
+          "s5",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "expected_option_utility",
+        "role": "criterion",
+        "description": "expected usefulness of relying more heavily on one evidence source, evaluated in terms of the speed and accuracy consequences expected in the current context",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "early_multi_input_evidence",
+        "role": "available_information",
+        "description": "evidence available relatively early from both target and surrounding stimulus information before reliable spatial selection",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "late_target_selective_evidence",
+        "role": "available_information",
+        "description": "later evidence based primarily on the designated target after stronger spatial selection",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "evidence_weighting_state",
+        "role": "state_or_structure",
+        "description": "context-dependent relative emphasis assigned to the early multi-input and later target-selective evidence when preparing a response",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s4",
+          "s5",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "response_preparation_state",
+        "role": "state_or_structure",
+        "description": "partial preparation of one or more candidate motor responses before the final overt response is emitted",
+        "source_span_ids": [
+          "s3",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "current_distractor_compatibility",
+        "role": "condition",
+        "description": "whether surrounding letters on the current trial support the target response or the competing response",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "behavioral_interference_outcome",
+        "role": "response_or_outcome",
+        "description": "difference in reaction time and error probability between trials with response-compatible and response-incompatible distractor information",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3",
+          "s4",
+          "s5",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "context_expectancy_probe",
+        "role": "probe",
+        "description": "the source's combined sequence, block-probability, and symbolic-cue procedures for testing whether context changes evidence use and the resulting behavioral interference",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "predicts",
+        "arguments": [
+          "prior_trial_context",
+          "contextual_expectancy_state"
+        ],
+        "description": "the preceding distractor condition is used as a trial-history context that predicts a shift in expectation and in current evidence use, despite unchanged objective transition probabilities in Experiment 1",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "changes",
+        "arguments": [
+          "probability_context_intervention",
+          "contextual_expectancy_state"
+        ],
+        "description": "blockwise probability information and predictive symbolic cues experimentally alter the context available for anticipating compatible versus incompatible distractor information",
+        "source_span_ids": [
+          "s2",
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "depends_on",
+        "arguments": [
+          "expected_option_utility",
+          "contextual_expectancy_state"
+        ],
+        "description": "the expected usefulness of relying on the earlier or later evidence source depends on what the participant expects about the upcoming distractor condition and the associated speed-accuracy consequences",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "depends_on",
+        "arguments": [
+          "evidence_weighting_state",
+          "expected_option_utility",
+          "contextual_expectancy_state"
+        ],
+        "description": "the relative emphasis placed on the two evidence sources varies with their expected usefulness in the current context",
+        "source_span_ids": [
+          "s2",
+          "s4",
+          "s5",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "precedes",
+        "arguments": [
+          "early_multi_input_evidence",
+          "late_target_selective_evidence"
+        ],
+        "description": "the broad early evidence is available before the later target-selective evidence, while both can contribute during a single trial",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r6",
+        "kind": "depends_on",
+        "arguments": [
+          "response_preparation_state",
+          "early_multi_input_evidence",
+          "late_target_selective_evidence",
+          "evidence_weighting_state"
+        ],
+        "description": "preparation of candidate responses can reflect evidence from both temporal phases, with their relative contributions altered by the current weighting state",
+        "source_span_ids": [
+          "s3",
+          "s5",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r7",
+        "kind": "depends_on",
+        "arguments": [
+          "behavioral_interference_outcome",
+          "current_distractor_compatibility",
+          "evidence_weighting_state"
+        ],
+        "description": "the observed reaction-time and error difference between compatible and incompatible trials varies with how strongly the system relies on the earlier distractor-sensitive evidence",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s4",
+          "s5",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r8",
+        "kind": "maps_to",
+        "arguments": [
+          "context_expectancy_probe",
+          "behavioral_interference_outcome"
+        ],
+        "description": "the sequence, block-probability, and symbolic-cue procedures expose context-dependent changes in the compatibility-related reaction-time and error effect",
+        "source_span_ids": [
+          "s3",
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}

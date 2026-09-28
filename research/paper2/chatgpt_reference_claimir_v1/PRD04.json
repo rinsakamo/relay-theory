@@ -1,0 +1,426 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "PRD04.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1126/science.1144161",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Science 317, published pp.1351-1352, Abstract and opening: humans can pre-experience possible future events and use present reactions to anticipate hedonic consequences, including events not previously experienced in the same form"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Science 317, published p.1352, Mechanisms of Prospection: stored and incoming information support a future-event representation; the representation elicits a present hedonic reaction that is used as an indicator of the later reaction"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Science 317, published p.1352, Errors of Prospection / Figure 1: present and future hedonic states each depend on event representation/perception plus context; reliable prediction requires matched event influence and matched contextual influence across T1 and T2"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Science 317, published pp.1352-1353, 'Simulations are unrepresentative': stored past episodes can be sampled unrepresentatively, producing over- or underestimation of a future recurrence"
+      },
+      {
+        "span_id": "s5",
+        "locator": "Science 317, published p.1353, 'Simulations are essentialized': omitted incidental features can materially change later experience; omission increases with temporal distance and can exaggerate predicted valence"
+      },
+      {
+        "span_id": "s6",
+        "locator": "Science 317, published p.1353, 'Simulations are abbreviated' / Figure 2: constructed representations overrepresent early moments, underrepresent adaptation, and can reverse the ordering of predicted versus later experienced mood"
+      },
+      {
+        "span_id": "s7",
+        "locator": "Science 317, published p.1354, 'Simulations are decontextualized': present and future contextual states often differ; failing to account for that difference distorts forecasts, while prompting consideration of future context improves accuracy"
+      },
+      {
+        "span_id": "s8",
+        "locator": "Science 317, published p.1354, Conclusion: future-event representations can elicit brief present hedonic reactions but are less rich, sustained, and contextualized than actual perception; the resulting reactions can therefore differ"
+      }
+    ],
+    "authors": [
+      "Daniel T. Gilbert",
+      "Timothy D. Wilson"
+    ],
+    "institutions": [
+      "Department of Psychology, Harvard University",
+      "Department of Psychology, University of Virginia"
+    ],
+    "venue": "Science",
+    "citation_count": null,
+    "construct_labels": [
+      "prospection",
+      "affective forecasting",
+      "mental simulation"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "mapping",
+    "modality": "descriptive",
+    "scope": {
+      "conditions": [
+        "a person constructs a present representation of a possible future event and uses the present hedonic response to that representation to estimate a later hedonic response",
+        "the constructed representation can draw on stored information from earlier episodes but need not correspond to an event previously experienced in the same form",
+        "forecast reliability depends on how similarly the constructed representation and later perception influence hedonic state and on how similarly present and future contextual factors influence hedonic state"
+      ],
+      "population": [
+        "humans in the behavioral, neuropsychological, and neuroimaging literature reviewed by the source"
+      ],
+      "substrate": [],
+      "task": [
+        "construct or imagine a possible future event, register the present hedonic reaction it evokes, and estimate the hedonic reaction expected when the event later occurs"
+      ],
+      "temporal_scope": [
+        "T1 is the present construction-and-forecast period; T2 is the later event-experience period",
+        "greater temporal distance can increase omission of incidental features, and abbreviated representations can underrepresent adaptation that unfolds after event onset"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "future_event_information",
+        "role": "available_information",
+        "description": "information specifying or constraining a possible later event",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "stored_episode_information",
+        "role": "available_information",
+        "description": "stored information from earlier experiences that can supply components used to construct the possible later event",
+        "source_span_ids": [
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "constructed_future_representation",
+        "role": "state_or_structure",
+        "description": "presently generated representation of a possible later event",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s8"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "present_context",
+        "role": "condition",
+        "description": "bodily, environmental, and cognitive circumstances present during construction and forecasting at T1",
+        "source_span_ids": [
+          "s3",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "current_hedonic_response",
+        "role": "state_or_structure",
+        "description": "pleasant or unpleasant reaction elicited in the present by the constructed representation together with current context",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "hedonic_forecast",
+        "role": "response_or_outcome",
+        "description": "explicit estimate of the later pleasantness or unpleasantness expected if the event occurs",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "future_event_perception",
+        "role": "available_information",
+        "description": "later perceptual encounter with the event at T2, if it occurs",
+        "source_span_ids": [
+          "s3",
+          "s8"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "future_context",
+        "role": "condition",
+        "description": "bodily, environmental, and cognitive circumstances present when the event is later experienced at T2",
+        "source_span_ids": [
+          "s3",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "realized_future_hedonic_response",
+        "role": "response_or_outcome",
+        "description": "pleasant or unpleasant state actually experienced when the event is later encountered",
+        "source_span_ids": [
+          "s3",
+          "s6",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "forecast_accuracy_criterion",
+        "role": "criterion",
+        "description": "agreement between the estimated later hedonic response and the later experienced hedonic response",
+        "source_span_ids": [
+          "s3",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "forecast_error",
+        "role": "response_or_outcome",
+        "description": "difference between the estimated and later experienced hedonic response",
+        "source_span_ids": [
+          "s3",
+          "s4",
+          "s5",
+          "s6",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "unrepresentative_episode_selection",
+        "role": "state_or_structure",
+        "description": "construction based disproportionately on unusual, recent, or otherwise non-typical stored episodes",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "incidental_feature_omission",
+        "role": "state_or_structure",
+        "description": "omission of features that do not define the event but can materially affect its eventual hedonic impact",
+        "source_span_ids": [
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "early_moment_overrepresentation",
+        "role": "state_or_structure",
+        "description": "compression of a future event into a small set of moments weighted toward its beginning, thereby underrepresenting later adaptation",
+        "source_span_ids": [
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "present_future_context_mismatch",
+        "role": "condition",
+        "description": "difference between context affecting present reaction at T1 and context affecting later experience at T2",
+        "source_span_ids": [
+          "s3",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "temporal_distance",
+        "role": "condition",
+        "description": "delay between the present forecast and the possible future event",
+        "source_span_ids": [
+          "s5",
+          "s7"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "maps_to",
+        "arguments": [
+          "future_event_information",
+          "stored_episode_information",
+          "constructed_future_representation"
+        ],
+        "description": "available event information and stored experience can be combined into a present representation of a possible later event",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "depends_on",
+        "arguments": [
+          "current_hedonic_response",
+          "constructed_future_representation",
+          "present_context"
+        ],
+        "description": "the present hedonic reaction depends jointly on the constructed event representation and contextual influences at T1",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "maps_to",
+        "arguments": [
+          "current_hedonic_response",
+          "hedonic_forecast"
+        ],
+        "description": "the present hedonic reaction is used as an indicator for estimating the hedonic response expected at T2",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "depends_on",
+        "arguments": [
+          "realized_future_hedonic_response",
+          "future_event_perception",
+          "future_context"
+        ],
+        "description": "the later experienced hedonic state depends jointly on the actual event as perceived and contextual influences at T2",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "satisfies",
+        "arguments": [
+          "hedonic_forecast",
+          "realized_future_hedonic_response",
+          "forecast_accuracy_criterion"
+        ],
+        "description": "a forecast is accurate to the extent that the estimated later hedonic response agrees with the response actually experienced",
+        "source_span_ids": [
+          "s3",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r6",
+        "kind": "depends_on",
+        "arguments": [
+          "forecast_error",
+          "constructed_future_representation",
+          "future_event_perception",
+          "present_context",
+          "future_context"
+        ],
+        "description": "prediction error arises when the constructed event or present context influences T1 hedonic state differently from the later event or context at T2",
+        "source_span_ids": [
+          "s3",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r7",
+        "kind": "changes",
+        "arguments": [
+          "unrepresentative_episode_selection",
+          "constructed_future_representation",
+          "forecast_error"
+        ],
+        "description": "using non-typical stored episodes changes the constructed representation and can produce systematic over- or underestimation of later experience",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r8",
+        "kind": "changes",
+        "arguments": [
+          "incidental_feature_omission",
+          "forecast_error"
+        ],
+        "description": "omitting features that later contribute to experience tends to exaggerate the predicted positivity of good events and negativity of bad events",
+        "source_span_ids": [
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r9",
+        "kind": "depends_on",
+        "arguments": [
+          "incidental_feature_omission",
+          "temporal_distance"
+        ],
+        "description": "omission of incidental features becomes more pronounced for more temporally distant events in the reviewed evidence",
+        "source_span_ids": [
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r10",
+        "kind": "changes",
+        "arguments": [
+          "early_moment_overrepresentation",
+          "forecast_error"
+        ],
+        "description": "overweighting early moments and underrepresenting later adaptation can make predicted long-run hedonic impact more extreme than later experience",
+        "source_span_ids": [
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r11",
+        "kind": "changes",
+        "arguments": [
+          "present_future_context_mismatch",
+          "forecast_error"
+        ],
+        "description": "failing to account for contextual differences between T1 and T2 distorts the predicted later hedonic response",
+        "source_span_ids": [
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r12",
+        "kind": "precedes",
+        "arguments": [
+          "constructed_future_representation",
+          "hedonic_forecast",
+          "future_event_perception",
+          "realized_future_hedonic_response"
+        ],
+        "description": "construction and forecast occur at T1 before the possible later perceptual encounter and realized hedonic response at T2",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}

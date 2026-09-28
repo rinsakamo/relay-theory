@@ -1,0 +1,225 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "CNC05.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1038/nrn2277",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Nature Reviews Neuroscience 8, published pp.976-977, opening theoretical contrast: modality-specific content is necessary but not sufficient; cross-concept generalization motivates an additional shared convergence system"
+      },
+      {
+        "span_id": "s2",
+        "locator": "same article, published p.977, Figure 1 and caption: compared cortical architectures, modality-specific regions and connections, shared convergence system, task-dependent routing, and common task-independent processing"
+      },
+      {
+        "span_id": "s3",
+        "locator": "same article, published p.977, architecture-specific lesion prediction: damage to the shared system should yield input- and output-modality-independent impairment, whereas no focal lesion is expected to do so under the alternative architecture"
+      },
+      {
+        "span_id": "s4",
+        "locator": "same article, published pp.978-981, acquired-disorder evidence: semantic dementia shows selective but generalized impairment across reception/expression modalities and concept classes together with relatively focal bilateral anterior-temporal degeneration; evidential caveats are discussed"
+      },
+      {
+        "span_id": "s5",
+        "locator": "same article, published pp.983-985, computational rationale: convergent architectures process different information types through a common population and better learn conceptual similarity relations than task-gated pathways"
+      },
+      {
+        "span_id": "s6",
+        "locator": "same article, published p.987, concluding synthesis: generalized degradation covaries with focal bilateral anterior-temporal degeneration and cross-modal access/generalization abilities are attributed to this system"
+      }
+    ],
+    "authors": [
+      "Karalyn Patterson",
+      "Peter J. Nestor",
+      "Timothy T. Rogers"
+    ],
+    "institutions": [
+      "MRC Cognition and Brain Sciences Unit",
+      "Cambridge University",
+      "University of Wisconsin-Madison"
+    ],
+    "venue": "Nature Reviews Neuroscience",
+    "citation_count": null,
+    "construct_labels": [
+      "semantic memory",
+      "conceptual knowledge",
+      "distributed-only",
+      "distributed-plus-hub",
+      "amodal hub"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "constraint",
+    "modality": "necessary",
+    "scope": {
+      "conditions": [
+        "a cortical architecture is required to support meaning-related generalization and access across sensory, motor, and linguistic channels"
+      ],
+      "population": [
+        "humans"
+      ],
+      "substrate": [
+        "widely distributed modality-specific cortical regions and a candidate shared bilateral anterior-temporal convergence system"
+      ],
+      "task": [
+        "receive information in one channel and express related information in another",
+        "generalize across entities that are related in meaning despite differing modality-specific features"
+      ],
+      "temporal_scope": []
+    },
+    "nodes": [
+      {
+        "id": "distributed_modality_specific_regions",
+        "role": "state_or_structure",
+        "description": "widely distributed cortical regions carrying sensory, motor, and linguistic feature information",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "shared_cross_modal_convergence_system",
+        "role": "state_or_structure",
+        "description": "shared convergence system through which multiple modality-specific representations interact, proposed to be implemented in bilateral anterior temporal cortex",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s4",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "cross_modal_generalization_capacity",
+        "role": "response_or_outcome",
+        "description": "ability to integrate across input and output channels and to generalize among meaning-related entities whose specific features differ",
+        "source_span_ids": [
+          "s1",
+          "s5",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "architecture_without_shared_convergence",
+        "role": "state_or_structure",
+        "description": "candidate architecture in which distributed modality-specific regions and their direct connections constitute the complete cortical network for the target functions",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "architecture_with_shared_convergence",
+        "role": "state_or_structure",
+        "description": "candidate architecture containing the distributed modality-specific system plus a common convergence stage used across modalities, categories, and tasks",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "focal_damage_to_convergence_system",
+        "role": "condition",
+        "description": "relatively focal degeneration or damage affecting the proposed shared convergence system",
+        "source_span_ids": [
+          "s3",
+          "s4",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "generalized_cross_modal_impairment",
+        "role": "response_or_outcome",
+        "description": "selective but broad impairment that is expressed across input modalities, output modalities, and multiple classes of items",
+        "source_span_ids": [
+          "s3",
+          "s4",
+          "s6"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "depends_on",
+        "arguments": [
+          "cross_modal_generalization_capacity",
+          "distributed_modality_specific_regions",
+          "shared_cross_modal_convergence_system"
+        ],
+        "description": "the reviewed account treats distributed modality-specific information as necessary but insufficient and additionally requires a shared convergence system for cross-channel integration and generalization",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s5",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "differs",
+        "arguments": [
+          "architecture_without_shared_convergence",
+          "architecture_with_shared_convergence",
+          "shared_cross_modal_convergence_system"
+        ],
+        "description": "the two compared architectures differ in whether a common convergence stage supplements direct connections among modality-specific regions",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "predicts",
+        "arguments": [
+          "focal_damage_to_convergence_system",
+          "generalized_cross_modal_impairment"
+        ],
+        "description": "the shared-convergence account predicts that relatively focal damage to the common system can produce impairment that generalizes across reception and expression channels and across item classes",
+        "source_span_ids": [
+          "s3",
+          "s4",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "predicts",
+        "arguments": [
+          "architecture_with_shared_convergence",
+          "cross_modal_generalization_capacity"
+        ],
+        "description": "the convergent architecture is predicted to support learning and use of similarity relations that cut across modality-specific feature differences",
+        "source_span_ids": [
+          "s1",
+          "s5",
+          "s6"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
