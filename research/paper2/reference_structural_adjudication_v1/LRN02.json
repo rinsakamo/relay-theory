@@ -9,32 +9,62 @@
   },
   "coordinate_map": [
     {
-      "claim_node_id": "predictive_cue",
+      "claim_node_id": "cue_time_trace",
       "coordinate_id": "basis.o1",
       "required": true
     },
     {
-      "claim_node_id": "expected_outcome",
-      "coordinate_id": "basis.s1",
-      "required": true
-    },
-    {
-      "claim_node_id": "actual_outcome",
+      "claim_node_id": "immediate_outcome_value",
       "coordinate_id": "basis.cnd1",
       "required": true
     },
     {
-      "claim_node_id": "phasic_output",
+      "claim_node_id": "current_value_estimate",
+      "coordinate_id": "basis.s1",
+      "required": true
+    },
+    {
+      "claim_node_id": "next_value_estimate",
+      "coordinate_id": "basis.s2",
+      "required": true
+    },
+    {
+      "claim_node_id": "discount_factor",
+      "coordinate_id": "basis.cnd2",
+      "required": true
+    },
+    {
+      "claim_node_id": "signed_discrepancy_signal",
+      "coordinate_id": "basis.s3",
+      "required": true
+    },
+    {
+      "claim_node_id": "phasic_midbrain_output",
       "coordinate_id": "basis.o2",
       "required": true
     },
     {
-      "claim_node_id": "signed_discrepancy_rule",
-      "coordinate_id": "basis.q1",
+      "claim_node_id": "adaptive_cue_weights",
+      "coordinate_id": "basis.s4",
       "required": true
     },
     {
-      "claim_node_id": "cue_outcome_probe",
+      "claim_node_id": "weight_update_operation",
+      "coordinate_id": "basis.oth1",
+      "required": true
+    },
+    {
+      "claim_node_id": "learning_rate",
+      "coordinate_id": "basis.cnd3",
+      "required": true
+    },
+    {
+      "claim_node_id": "cue_outcome_training",
+      "coordinate_id": "basis.cnd4",
+      "required": true
+    },
+    {
+      "claim_node_id": "contingency_probe",
       "coordinate_id": "basis.p1",
       "required": true
     }
@@ -43,18 +73,13 @@
     "probe_P": {
       "state": "present",
       "claim_node_ids": [
-        "cue_outcome_probe"
+        "contingency_probe"
       ],
       "provenance_kind": "source_declared",
       "fixed_before_phi": true
     },
     "criterion_Q": {
-      "state": "present",
-      "claim_node_ids": [
-        "signed_discrepancy_rule"
-      ],
-      "provenance_kind": "source_declared",
-      "fixed_before_phi": true
+      "state": "not_required"
     },
     "partition_Pi": {
       "state": "not_required"
@@ -67,42 +92,52 @@
     "time_index": {
       "state": "present",
       "source_span_ids": [
-        "s1",
         "s2",
-        "s3"
+        "s3",
+        "s4",
+        "s5",
+        "s6"
       ]
     },
     "history_window": {
       "state": "present",
       "source_span_ids": [
-        "s1",
-        "s2",
-        "s3"
+        "s4",
+        "s5",
+        "s6"
       ]
     },
     "future_horizon": {
       "state": "present",
       "source_span_ids": [
-        "s1",
-        "s2",
-        "s3"
+        "s3",
+        "s4"
       ]
     },
     "recurrence": {
       "state": "present",
       "source_span_ids": [
-        "s2"
+        "s4",
+        "s5",
+        "s6"
       ]
     },
     "persistence": {
-      "state": "not_required"
+      "state": "present",
+      "source_span_ids": [
+        "s4",
+        "s5",
+        "s6"
+      ]
     },
     "ordering": [
       {
         "before_coordinate_id": "basis.o1",
         "after_coordinate_id": "basis.cnd1",
         "source_span_ids": [
-          "s2"
+          "s1",
+          "s2",
+          "s4"
         ]
       }
     ]
