@@ -7,15 +7,19 @@
     "source_spans": [
       {
         "span_id": "s1",
-        "locator": "Nature Neuroscience 5, published p.1226, Abstract: stochastic feedback policy reconciles reliable goals with variable movement details"
+        "locator": "Nature Neuroscience 5, published p.1226, Abstract: stochastic optimal feedback control permits variability in redundant dimensions and corrects deviations selectively when they interfere with task goals"
       },
       {
         "span_id": "s2",
-        "locator": "Nature Neuroscience 5, published p.1226, Abstract: deviations are corrected selectively when they interfere with task goals"
+        "locator": "Nature Neuroscience 5, published p.1227, optimal-control assumptions: feedback law chosen for the task; delayed/noisy sensory access; internal forward model estimates current state from feedback, plant dynamics, and prior control signals"
       },
       {
         "span_id": "s3",
-        "locator": "Nature Neuroscience 5, published pp.1227-1230, task-cost formulation and feedback-policy examples under noise"
+        "locator": "Nature Neuroscience 5, published pp.1228-1229, minimal-intervention result and formalization: redundant deviations need not trigger correction; feedback law minimizes expected cumulative task/effort cost and correction covaries with cost-to-go change"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Nature Neuroscience 5, published p.1233, external-perturbation discussion and Sim 9: random perturbation to control signals produces large changes in an intermediate trajectory while the task-relevant end-effector trajectory rapidly returns to the target sinusoid"
       }
     ],
     "authors": [
@@ -28,7 +32,7 @@
     "construct_labels": [
       "optimal feedback control",
       "motor coordination",
-      "minimum intervention principle"
+      "minimal intervention principle"
     ]
   },
   "extraction": {
@@ -36,33 +40,42 @@
     "extractor_version": "GPT-5.6 Sol",
     "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
     "extracted_at": "2026-09-28",
-    "manual_review_status": "unreviewed"
+    "manual_review_status": "reviewed"
   },
   "claim_core": {
-    "claim_type": "constraint",
+    "claim_type": "relation",
     "modality": "probabilistic",
     "scope": {
       "conditions": [
-        "noisy redundant movement system with a task-level performance objective"
+        "the task admits redundant solutions, movement duration exceeds the shortest sensorimotor delay, and either the initial plant state or the consequences of control signals are uncertain",
+        "task performance is evaluated by an expected cost that includes task error and effort"
       ],
       "population": [
-        "motor systems modeled and compared with human movement data"
+        "motor-control systems treated at the computational level, with human movement experiments and simulations used to test the theory"
       ],
       "substrate": [],
       "task": [
-        "produce goal-directed movement despite stochastic perturbations and redundant degrees of freedom"
+        "achieve task-level movement goals under redundancy and uncertainty while limiting expected task error and control effort"
       ],
       "temporal_scope": [
-        "state is repeatedly observed and action is adjusted throughout movement execution"
+        "a time-varying feedback law selects controls moment-by-moment during movement from a current state estimate built from delayed/noisy sensory feedback, plant dynamics, and prior control signals"
       ]
     },
     "nodes": [
       {
-        "id": "current_movement_state",
-        "role": "state_or_structure",
-        "description": "estimated current state of the controlled movement system",
+        "id": "estimated_current_state",
+        "role": "available_information",
+        "description": "current plant-state estimate available to the controller, formed by integrating delayed noisy sensory feedback with plant dynamics and prior control signals",
         "source_span_ids": [
-          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "feedback_control_policy",
+        "role": "state_or_structure",
+        "description": "time-varying mapping from estimated state and time to control actions that minimizes expected cumulative cost for the task",
+        "source_span_ids": [
           "s2",
           "s3"
         ],
@@ -71,9 +84,9 @@
       {
         "id": "task_relevant_deviation",
         "role": "condition",
-        "description": "deviation that changes attainment of the task-level goal",
+        "description": "deviation that changes task performance or expected cost-to-go",
         "source_span_ids": [
-          "s2",
+          "s1",
           "s3"
         ],
         "grounding": "normalized"
@@ -81,20 +94,19 @@
       {
         "id": "task_irrelevant_deviation",
         "role": "condition",
-        "description": "deviation in redundant dimensions that does not materially change goal attainment",
+        "description": "redundant deviation that does not change task performance or expected cost-to-go",
         "source_span_ids": [
           "s1",
-          "s2",
           "s3"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "state_dependent_action",
+        "id": "corrective_control_action",
         "role": "response_or_outcome",
-        "description": "action selected from the current state during execution",
+        "description": "control action produced by the feedback policy in response to the estimated current state",
         "source_span_ids": [
-          "s1",
+          "s2",
           "s3"
         ],
         "grounding": "normalized"
@@ -102,7 +114,7 @@
       {
         "id": "task_cost",
         "role": "criterion",
-        "description": "objective penalizing failures relevant to the task while incorporating action/state costs",
+        "description": "expected cumulative objective combining task error with an effort penalty on control",
         "source_span_ids": [
           "s2",
           "s3"
@@ -110,13 +122,11 @@
         "grounding": "normalized"
       },
       {
-        "id": "perturbation_probe",
+        "id": "external_perturbation_probe",
         "role": "probe",
-        "description": "movement perturbations and task geometries that distinguish corrections in goal-relevant from redundant dimensions",
+        "description": "source simulation in which random perturbations are added to control signals to compare resistance in task-relevant versus redundant movement dimensions",
         "source_span_ids": [
-          "s1",
-          "s2",
-          "s3"
+          "s4"
         ],
         "grounding": "normalized"
       }
@@ -124,15 +134,14 @@
     "relations": [
       {
         "id": "r1",
-        "kind": "depends_on",
+        "kind": "maps_to",
         "arguments": [
-          "state_dependent_action",
-          "current_movement_state",
-          "task_relevant_deviation"
+          "feedback_control_policy",
+          "estimated_current_state",
+          "corrective_control_action"
         ],
-        "description": "corrective action depends on current state and is strongest for deviations that threaten the task goal",
+        "description": "the feedback policy uses the current state estimate to select the control action appropriate to the current circumstances",
         "source_span_ids": [
-          "s1",
           "s2",
           "s3"
         ],
@@ -144,12 +153,12 @@
         "arguments": [
           "task_relevant_deviation",
           "task_irrelevant_deviation",
-          "state_dependent_action"
+          "corrective_control_action"
         ],
-        "description": "the policy corrects goal-relevant deviations while allowing greater variability in redundant dimensions",
+        "description": "under the minimal-intervention relation, deviations that interfere with task performance are corrected, whereas strictly redundant deviations can receive no corrective action and are allowed greater variability",
         "source_span_ids": [
           "s1",
-          "s2"
+          "s3"
         ],
         "grounding": "normalized"
       },
@@ -157,27 +166,27 @@
         "id": "r3",
         "kind": "satisfies",
         "arguments": [
-          "state_dependent_action",
+          "feedback_control_policy",
           "task_cost"
         ],
-        "description": "the state-dependent policy is selected to optimize the declared task-level objective under uncertainty",
+        "description": "the policy is defined by minimizing expected cumulative task and effort cost under stochastic dynamics",
         "source_span_ids": [
-          "s1",
+          "s2",
           "s3"
         ],
         "grounding": "normalized"
       },
       {
         "id": "r4",
-        "kind": "maps_to",
+        "kind": "distinguishes",
         "arguments": [
-          "perturbation_probe",
-          "state_dependent_action"
+          "external_perturbation_probe",
+          "task_relevant_deviation",
+          "task_irrelevant_deviation"
         ],
-        "description": "structured perturbations expose which deviations the policy corrects",
+        "description": "the source's perturbation simulation distinguishes selective correction: the task-relevant end-effector trajectory rapidly returns to target while a redundant intermediate trajectory can change substantially",
         "source_span_ids": [
-          "s2",
-          "s3"
+          "s4"
         ],
         "grounding": "normalized"
       }
