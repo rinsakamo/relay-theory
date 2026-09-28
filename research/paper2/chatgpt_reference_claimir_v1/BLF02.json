@@ -7,15 +7,19 @@
     "source_spans": [
       {
         "span_id": "s1",
-        "locator": "Psychological Review 111(1), published p.3, Abstract: children recover an abstract coherent representation of causal relations among events"
+        "locator": "Psychological Review 111(1), published p.3, Abstract: children construct abstract learned representations of causal relations, described with directed graphical models"
       },
       {
         "span_id": "s2",
-        "locator": "Psychological Review 111(1), published p.3, Abstract: directed graphical causal models provide the formal representation"
+        "locator": "Psychological Review 111(1), PDF p.28 / published p.24, 'Inferring the Direction of Causal Relations From Interventions and Correlations': the puppet paradigm combines observations of correlations with observations of interventions to infer causal direction"
       },
       {
         "span_id": "s3",
-        "locator": "Psychological Review 111(1), experiments/review: patterns of observation and intervention distinguish candidate causal structures and support predictions under intervention"
+        "locator": "Psychological Review 111(1), PDF p.31 / published p.27, Experiment 2: common-effects and association conditions match pairwise association frequencies while differing in the balance of intervention and nonintervention trials"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Psychological Review 111(1), PDF p.32 / published p.28, Experiment 2 results: matched associations yield different causal-status judgments as predicted by the intervention-sensitive directed-structure account"
       }
     ],
     "authors": [
@@ -42,82 +46,75 @@
     "extractor_version": "GPT-5.6 Sol",
     "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
     "extracted_at": "2026-09-28",
-    "manual_review_status": "unreviewed"
+    "manual_review_status": "reviewed"
   },
   "claim_core": {
-    "claim_type": "mapping",
+    "claim_type": "comparison",
     "modality": "probabilistic",
     "scope": {
       "conditions": [
-        "multiple candidate directed dependence structures are compatible with some passive observations but can be distinguished by structured observations or interventions"
+        "two puppet-learning conditions have matched pairwise co-occurrence frequencies but differ in whether the critical non-co-occurrence is embedded among nonintervention trials or occurs within a sequence of intervention trials"
       ],
       "population": [
-        "young children in the source experiments"
+        "4-year-old children in Experiment 2"
       ],
       "substrate": [],
       "task": [
-        "infer relations among events and predict effects of manipulations"
+        "observe a short sequence of puppet co-movement and non-co-movement events, then judge separately whether each puppet makes the other move"
       ],
-      "temporal_scope": []
+      "temporal_scope": [
+        "pretest/training precedes the test evidence sequence, which precedes the causal-status judgments"
+      ]
     },
     "nodes": [
       {
-        "id": "event_variables",
-        "role": "state_or_structure",
-        "description": "set of event variables whose directional dependencies are to be inferred",
+        "id": "matched_association_pattern",
+        "role": "condition",
+        "description": "matched pairwise co-occurrence and non-co-occurrence frequencies across the two test conditions",
         "source_span_ids": [
-          "s1",
-          "s2",
-          "s3"
+          "s3",
+          "s4"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "directed_dependency_structure",
-        "role": "state_or_structure",
-        "description": "abstract directed graph encoding dependence and intervention relations among event variables",
-        "source_span_ids": [
-          "s1",
-          "s2"
-        ],
-        "grounding": "normalized"
-      },
-      {
-        "id": "observational_pattern",
+        "id": "intervention_status_pattern",
         "role": "available_information",
-        "description": "pattern of co-occurrence observed without direct manipulation",
+        "description": "observed information about which test events were produced by an external manipulation rather than occurring without that manipulation",
         "source_span_ids": [
-          "s1",
-          "s3"
+          "s2",
+          "s3",
+          "s4"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "intervention_pattern",
-        "role": "intervention",
-        "description": "structured manipulation of one event variable and observation of consequences for others",
+        "id": "candidate_directional_structure",
+        "role": "state_or_structure",
+        "description": "candidate directed relation specifying which of two simultaneous events produces the other",
         "source_span_ids": [
-          "s3"
-        ],
-        "grounding": "normalized"
-      },
-      {
-        "id": "intervention_prediction",
-        "role": "response_or_outcome",
-        "description": "predicted distribution of other events after a specified manipulation",
-        "source_span_ids": [
-          "s1",
           "s2",
           "s3"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "structured_causal_probe",
-        "role": "probe",
-        "description": "experimental comparison of observation and intervention patterns that discriminate candidate directed structures",
+        "id": "causal_status_judgment",
+        "role": "response_or_outcome",
+        "description": "the child's separate judgment about whether a given puppet makes the other puppet move",
         "source_span_ids": [
-          "s3"
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "structured_intervention_probe",
+        "role": "probe",
+        "description": "matched-association comparison that varies the intervention/nonintervention status of the evidence while eliciting separate directional judgments",
+        "source_span_ids": [
+          "s3",
+          "s4"
         ],
         "grounding": "normalized"
       }
@@ -125,46 +122,45 @@
     "relations": [
       {
         "id": "r1",
-        "kind": "maps_to",
+        "kind": "distinguishes",
         "arguments": [
-          "observational_pattern",
-          "intervention_pattern",
-          "directed_dependency_structure"
+          "structured_intervention_probe",
+          "matched_association_pattern",
+          "intervention_status_pattern"
         ],
-        "description": "patterns of observation and manipulation are used to infer an abstract directed dependency structure",
+        "description": "the comparison holds pairwise association frequencies fixed while varying the intervention structure of the observed evidence",
         "source_span_ids": [
-          "s1",
-          "s2",
           "s3"
         ],
         "grounding": "normalized"
       },
       {
         "id": "r2",
-        "kind": "maps_to",
+        "kind": "depends_on",
         "arguments": [
-          "directed_dependency_structure",
-          "intervention_pattern",
-          "intervention_prediction"
+          "causal_status_judgment",
+          "intervention_status_pattern",
+          "matched_association_pattern"
         ],
-        "description": "the inferred directed structure supports prediction of consequences under a specified intervention",
+        "description": "with pairwise association frequencies matched, children's causal-status judgments differ according to the intervention structure of the evidence",
         "source_span_ids": [
-          "s1",
-          "s2",
-          "s3"
+          "s4"
         ],
         "grounding": "normalized"
       },
       {
         "id": "r3",
-        "kind": "changes",
+        "kind": "maps_to",
         "arguments": [
-          "intervention_pattern",
-          "intervention_prediction"
+          "intervention_status_pattern",
+          "matched_association_pattern",
+          "candidate_directional_structure"
         ],
-        "description": "changing which event is manipulated changes the predicted downstream event pattern according to the directed structure",
+        "description": "the intervention-sensitive directed-structure account uses the joint correlation and intervention pattern to select a directional structure",
         "source_span_ids": [
-          "s3"
+          "s2",
+          "s3",
+          "s4"
         ],
         "grounding": "normalized"
       },
@@ -172,12 +168,13 @@
         "id": "r4",
         "kind": "maps_to",
         "arguments": [
-          "structured_causal_probe",
-          "directed_dependency_structure"
+          "structured_intervention_probe",
+          "causal_status_judgment"
         ],
-        "description": "the structured probe distinguishes candidate directed structures that passive association alone may not distinguish",
+        "description": "the structured comparison exposes whether directional judgments track intervention status rather than association frequency alone",
         "source_span_ids": [
-          "s3"
+          "s3",
+          "s4"
         ],
         "grounding": "normalized"
       }
