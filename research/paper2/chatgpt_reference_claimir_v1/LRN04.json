@@ -227,6 +227,16 @@
         "grounding": "normalized"
       },
       {
+        "id": "long_term_followup_probe",
+        "role": "probe",
+        "description": "later imaging observations after extended practice had ceased, including measurements at 10 and 21 weeks",
+        "source_span_ids": [
+          "s6",
+          "s8"
+        ],
+        "grounding": "normalized"
+      },
+      {
         "id": "behavioral_improvement_criterion",
         "role": "criterion",
         "description": "higher correctly completed sequence rate together with stable or reduced ordering errors",
@@ -376,12 +386,12 @@
       },
       {
         "id": "r10",
-        "kind": "persists",
+        "kind": "maps_to",
         "arguments": [
-          "slow_sequence_specific_representation",
+          "long_term_followup_probe",
           "m1_activation_extent"
         ],
-        "description": "the trained-versus-control extent asymmetry is retained at later follow-up observations months after practice has ceased",
+        "description": "later follow-up imaging retains the trained-versus-control activation-extent asymmetry months after practice has ceased",
         "source_span_ids": [
           "s6",
           "s8"
