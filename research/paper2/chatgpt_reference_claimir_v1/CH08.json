@@ -1,0 +1,205 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "CH08.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1016/j.neuroscience.2005.08.023",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Neuroscience 139, PDF p.1 / published p.201, abstract/introduction: multiple dissociable selection and maintenance phenomena rather than one unitary interaction"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Neuroscience 139, PDF p.2 / published p.202, 'Attention as a gatekeeper for working memory': limited online store and goal-driven admission"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Neuroscience 139, PDF p.3 / published p.203, ERP evidence: late selection determines which stimuli gain access after perceptual and semantic processing"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Neuroscience 139, PDF pp.4-5 / published pp.204-205, spatial maintenance: diverting spatial selection away from retained locations reduces retention accuracy"
+      }
+    ],
+    "authors": [
+      "Edward Awh",
+      "Edward K Vogel",
+      "S-H Oh"
+    ],
+    "institutions": [
+      "University of Oregon"
+    ],
+    "venue": "Neuroscience",
+    "citation_count": null,
+    "construct_labels": [
+      "attention",
+      "working memory",
+      "attentional control",
+      "attention-based rehearsal",
+      "visual working memory"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "relation",
+    "modality": "descriptive",
+    "scope": {
+      "conditions": [
+        "goal-directed visual processing with more candidate items than the limited online store can maintain"
+      ],
+      "population": [
+        "humans",
+        "nonhuman primates"
+      ],
+      "substrate": [
+        "visual processing and online maintenance systems"
+      ],
+      "task": [
+        "select task-relevant visual items for entry into a limited active store and maintain selected spatial information"
+      ],
+      "temporal_scope": [
+        "selection may occur during early sensory processing or after perceptual/semantic analysis; maintenance extends across a delay"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "candidate_visual_items",
+        "role": "available_information",
+        "description": "currently processed visual items competing for further processing or storage",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "goal_driven_selector",
+        "role": "state_or_structure",
+        "description": "top-down selection process that biases which items receive privileged processing",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "limited_online_store",
+        "role": "state_or_structure",
+        "description": "capacity-limited active store able to maintain only a small number of selected objects",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "store_admission",
+        "role": "response_or_outcome",
+        "description": "successful entry of a selected item into the limited active store",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "spatial_selection_shift",
+        "role": "intervention",
+        "description": "covert shift of spatial selection toward or away from a retained location",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "spatial_retention_accuracy",
+        "role": "response_or_outcome",
+        "description": "accuracy for retained spatial information after the delay",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "selection_stage_partition",
+        "role": "partition",
+        "description": "distinction between early sensory selection, later admission control, and maintenance-related selection",
+        "source_span_ids": [
+          "s1",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "predicts",
+        "arguments": [
+          "goal_driven_selector",
+          "store_admission"
+        ],
+        "description": "goal-driven selection biases which processed items gain access to the limited online store",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "constrains",
+        "arguments": [
+          "limited_online_store",
+          "store_admission"
+        ],
+        "description": "severe capacity limits make selective admission necessary when candidate items exceed available storage slots",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "changes",
+        "arguments": [
+          "spatial_selection_shift",
+          "spatial_retention_accuracy"
+        ],
+        "description": "forcing spatial selection away from retained locations can reduce later spatial retention accuracy",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "distinguishes",
+        "arguments": [
+          "selection_stage_partition",
+          "goal_driven_selector",
+          "spatial_selection_shift"
+        ],
+        "description": "the source treats early perceptual selection, later store admission, and maintenance-related spatial selection as separable interaction types rather than one unitary mechanism",
+        "source_span_ids": [
+          "s1",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
