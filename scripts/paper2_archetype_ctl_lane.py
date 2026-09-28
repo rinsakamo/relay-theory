@@ -435,16 +435,6 @@ def find_embedding_witness(
         "retained_edge_indices": found_edges,
         "retained_temporal_keys": retained_temporal,
         "retained_control_keys": retained_controls,
-        "forgotten_node_ids": sorted(set(skeleton["nodes"]) - set(retained_nodes)),
-        "forgotten_edge_indices": sorted(set(range(len(skeleton["edges"]))) - set(found_edges)),
-        "forgotten_temporal_keys": sorted(
-            key for key in _positive_temporal_keys(skeleton)
-            if key not in retained_temporal
-        ),
-        "forgotten_control_keys": sorted(
-            key for key in _positive_control_keys(skeleton)
-            if key not in retained_controls
-        ),
     }
 
 
@@ -679,7 +669,6 @@ def run_lane() -> dict[str, Any]:
             "incomparable_pairs": incomparable_pairs,
             "comparable_pairs": comparable_pairs,
         },
-        "maximal_candidate_relations": candidate_relations,
         "archetype_candidates": maximal,
         "decision": decision,
         "construct_specificity_claim": False,
