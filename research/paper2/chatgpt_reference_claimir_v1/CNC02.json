@@ -7,15 +7,23 @@
     "source_spans": [
       {
         "span_id": "s1",
-        "locator": "Cognitive Psychology 7, published p.573, abstract: attribute sharing within and across groups predicts graded representative judgments"
+        "locator": "Cognitive Psychology 7, published p.573, abstract: within-group attribute sharing, contrast-group overlap, graded goodness judgments, and artificial-set outcome summary"
       },
       {
         "span_id": "s2",
-        "locator": "Cognitive Psychology 7, published pp.581-582, Experiment 1: weighted attribute-sharing measure and 7-point representative-rating correlation"
+        "locator": "Cognitive Psychology 7, published pp.574-576, introduction: structural hypothesis, relation to conditional cue probabilities, and explicit statement that the target is a structural description rather than a processing model"
       },
       {
         "span_id": "s3",
-        "locator": "Cognitive Psychology 7, published pp.595-599, artificial-set results and general discussion: internal overlap and contrast overlap affect learning, response time, and representative ratings"
+        "locator": "Cognitive Psychology 7, published pp.579-582, Experiment 1: separate attribute elicitation, weighted within-group sharing measures, pre-existing 7-point goodness ratings, rank correlations, and result"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Cognitive Psychology 7, published pp.589-591, Experiments 3-4: separate rating and attribute procedures, direct contrast-set identification, contrast-attribute overlap tally, and negative rank correlations"
+      },
+      {
+        "span_id": "s5",
+        "locator": "Cognitive Psychology 7, published pp.593-599, Experiments 5-6 and General Discussion: controlled within-group structure and contrast-overlap manipulations, learning/latency/graded-judgment effects, dissociation, and overall synthesis"
       }
     ],
     "authors": [
@@ -39,85 +47,88 @@
     "extractor_version": "GPT-5.6 Sol",
     "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
     "extracted_at": "2026-09-28",
-    "manual_review_status": "unreviewed"
+    "manual_review_status": "reviewed"
   },
   "claim_core": {
     "claim_type": "relation",
     "modality": "probabilistic",
     "scope": {
       "conditions": [
-        "items evaluated within a named group and, where tested, against contrasting groups"
+        "items are evaluated within a named group whose internal attribute distribution can be measured",
+        "where direct contrast groups are available, attribute overlap with those groups is measured separately"
       ],
       "population": [
         "adult participants"
       ],
       "substrate": [],
       "task": [
-        "list item attributes and rate how representative each item is of the named group"
+        "separate procedures elicit item attributes and graded goodness-of-example judgments",
+        "direct contrast groups are identified and separately sampled where cross-group overlap is tested"
       ],
       "temporal_scope": []
     },
     "nodes": [
       {
-        "id": "within_group_attribute_overlap",
+        "id": "within_group_attribute_distribution",
         "role": "state_or_structure",
-        "description": "degree to which an item's attributes are shared by other members of the same group",
+        "description": "extent to which an item's elicited attributes recur among other members of the same named group",
         "source_span_ids": [
           "s1",
           "s2",
-          "s3"
+          "s3",
+          "s5"
         ],
         "grounding": "normalized"
       },
       {
         "id": "cross_group_attribute_overlap",
         "role": "state_or_structure",
-        "description": "degree to which the item's attributes are also shared by members of contrasting groups",
+        "description": "extent to which an item's attributes are also present among members of directly contrasting groups",
         "source_span_ids": [
           "s1",
-          "s3"
+          "s2",
+          "s4",
+          "s5"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "representative_rating",
+        "id": "graded_goodness_judgment",
         "role": "response_or_outcome",
-        "description": "graded judgment of how well an item represents the named group",
+        "description": "graded judgment of how well an item fits the participant's idea or image of the named group",
         "source_span_ids": [
           "s1",
-          "s2",
-          "s3"
+          "s3",
+          "s4",
+          "s5"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "attribute_listing_probe",
+        "id": "attribute_elicitation_probe",
         "role": "probe",
-        "description": "procedure in which participants list attributes associated with the presented items",
+        "description": "procedure in which participants list characteristics of presented items, followed by source-defined scoring of their distribution within a named group",
         "source_span_ids": [
-          "s1",
-          "s2"
+          "s3"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "rating_probe",
+        "id": "contrast_structure_probe",
         "role": "probe",
-        "description": "graded response procedure used to obtain representative judgments",
+        "description": "procedure that identifies direct contrast groups, elicits their item attributes separately, and tallies overlap with the focal items",
         "source_span_ids": [
-          "s2",
-          "s3"
+          "s4"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "aggregate_discriminative_score",
-        "role": "criterion",
-        "description": "aggregate score increasing with within-group attribute sharing and decreasing with overlap with contrasting groups",
+        "id": "graded_rating_probe",
+        "role": "probe",
+        "description": "separate 7-point judgment procedure used to obtain graded goodness-of-example responses",
         "source_span_ids": [
-          "s1",
-          "s2",
-          "s3"
+          "s3",
+          "s4"
         ],
         "grounding": "normalized"
       }
@@ -127,14 +138,14 @@
         "id": "r1",
         "kind": "predicts",
         "arguments": [
-          "within_group_attribute_overlap",
-          "representative_rating"
+          "within_group_attribute_distribution",
+          "graded_goodness_judgment"
         ],
-        "description": "greater within-group attribute sharing predicts higher representative ratings",
+        "description": "greater within-group attribute sharing is associated with stronger graded goodness judgments",
         "source_span_ids": [
           "s1",
-          "s2",
-          "s3"
+          "s3",
+          "s5"
         ],
         "grounding": "normalized"
       },
@@ -143,12 +154,13 @@
         "kind": "predicts",
         "arguments": [
           "cross_group_attribute_overlap",
-          "representative_rating"
+          "graded_goodness_judgment"
         ],
-        "description": "greater overlap with contrasting groups predicts lower representative ratings",
+        "description": "greater overlap with directly contrasting groups is associated with weaker graded goodness judgments",
         "source_span_ids": [
           "s1",
-          "s3"
+          "s4",
+          "s5"
         ],
         "grounding": "normalized"
       },
@@ -156,27 +168,39 @@
         "id": "r3",
         "kind": "maps_to",
         "arguments": [
-          "attribute_listing_probe",
-          "within_group_attribute_overlap"
+          "attribute_elicitation_probe",
+          "within_group_attribute_distribution"
         ],
-        "description": "listed attributes are aggregated to estimate within-group structural overlap",
+        "description": "elicited attributes and their within-group frequencies are aggregated into the source's within-group structural measure",
         "source_span_ids": [
-          "s2"
+          "s3"
         ],
         "grounding": "normalized"
       },
       {
         "id": "r4",
-        "kind": "satisfies",
+        "kind": "maps_to",
         "arguments": [
-          "representative_rating",
-          "aggregate_discriminative_score"
+          "contrast_structure_probe",
+          "cross_group_attribute_overlap"
         ],
-        "description": "the observed graded judgments track the declared aggregate discriminative score across tested items",
+        "description": "the direct-contrast procedure yields the measured amount of attribute overlap between focal items and contrasting groups",
         "source_span_ids": [
-          "s1",
-          "s2",
-          "s3"
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "maps_to",
+        "arguments": [
+          "graded_rating_probe",
+          "graded_goodness_judgment"
+        ],
+        "description": "the separate graded-response procedure yields the goodness judgments used in the reported association tests",
+        "source_span_ids": [
+          "s3",
+          "s4"
         ],
         "grounding": "normalized"
       }
