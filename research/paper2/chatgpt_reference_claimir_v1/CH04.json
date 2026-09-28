@@ -1,0 +1,184 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "CH04.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1016/0004-3702(90)90007-M",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Artificial Intelligence 46, published pp.159-160, abstract: product-based representation of value/role pairings and accumulation across pairings"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Artificial Intelligence 46, abstract: distributed representation preserves multiple simultaneous bindings and permits recursive construction"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Artificial Intelligence 46, abstract: localized special cases reduce to existing structured-data representations and the method extends to continuous structure"
+      }
+    ],
+    "authors": [
+      "Paul Smolensky"
+    ],
+    "institutions": [],
+    "venue": "Artificial Intelligence",
+    "citation_count": null,
+    "construct_labels": [
+      "tensor product representation",
+      "variable binding",
+      "symbolic structures",
+      "connectionist systems"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "mapping",
+    "modality": "definitional",
+    "scope": {
+      "conditions": [
+        "structured item represented as one or more filler-role pairings in a distributed numeric activity space"
+      ],
+      "population": [],
+      "substrate": [
+        "distributed activity units"
+      ],
+      "task": [
+        "encode multiple role-filler bindings and recursively compose larger structured representations"
+      ],
+      "temporal_scope": []
+    },
+    "nodes": [
+      {
+        "id": "role_feature_vector",
+        "role": "state_or_structure",
+        "description": "distributed feature vector specifying a role position in a structured item",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "filler_feature_vector",
+        "role": "state_or_structure",
+        "description": "distributed feature vector specifying the content assigned to a role",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "binding_transform",
+        "role": "state_or_structure",
+        "description": "bilinear outer-product-like transform combining role and filler features into one binding representation",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "binding_representation",
+        "role": "state_or_structure",
+        "description": "distributed representation produced for a single role-filler pairing",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "composite_representation",
+        "role": "state_or_structure",
+        "description": "activity pattern formed by accumulating multiple binding representations",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "recursive_composition",
+        "role": "state_or_structure",
+        "description": "operation that reuses an already composed representation as material for construction of a larger one",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "binding_partition",
+        "role": "partition",
+        "description": "separable pairing structure that keeps multiple simultaneous assignments distinct within the composite",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "maps_to",
+        "arguments": [
+          "role_feature_vector",
+          "filler_feature_vector",
+          "binding_transform",
+          "binding_representation"
+        ],
+        "description": "a role vector and filler vector are mapped by the bilinear transform to a distributed representation of their pairing",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "maps_to",
+        "arguments": [
+          "binding_representation",
+          "composite_representation"
+        ],
+        "description": "multiple pair representations are accumulated into one representation of the structured item",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "constrains",
+        "arguments": [
+          "binding_partition",
+          "composite_representation"
+        ],
+        "description": "the representational construction preserves separability of multiple simultaneous pairings rather than collapsing their assignment structure",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "changes",
+        "arguments": [
+          "recursive_composition",
+          "composite_representation"
+        ],
+        "description": "recursive reuse of simpler representations constructs representations of more complex structure",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
