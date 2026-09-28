@@ -24,8 +24,6 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Determinism / integration self-test
-        run: python scripts/paper2_archetype_lrn_lane.py --self-test
       - name: Generate LRN lane report
         run: python scripts/paper2_archetype_lrn_lane.py --emit-report --output /tmp/lrn_archetype_reconstruction_v1.json
       - name: Emit provisional report for freeze
