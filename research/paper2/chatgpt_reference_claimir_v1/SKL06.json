@@ -7,19 +7,31 @@
     "source_spans": [
       {
         "span_id": "s1",
-        "locator": "Cognitive Psychology 4(1), published p.55, Abstract: three players of different strength perform visible-reconstruction and five-second recall tasks; structure size/nature analyzed by strength"
+        "locator": "Cognitive Psychology 4(1), published pp.55-58, Abstract, Introduction, Scope, and Method: three players (master, Class A, beginner) perform a visible reconstruction task and a reconstruction-after-5-second-view task on actual and randomized positions; successive glances and long inter-piece pauses are used as operational boundaries for inferred grouped representations"
       },
       {
         "span_id": "s2",
-        "locator": "Cognitive Psychology 4(1), published p.56, meaningful versus randomized positions: expert advantage disappears for randomized boards"
+        "locator": "Cognitive Psychology 4(1), published pp.59-62, Accuracy of Reconstruction/Figs.1-2: first-trial correct placements after five-second viewing increase strongly with playing strength for actual positions, while randomized positions show no relation between recall accuracy and playing strength"
       },
       {
         "span_id": "s3",
-        "locator": "Cognitive Psychology 4(1), published pp.56-57, interpretation: superior structured-position performance arises from rapidly encoding relational groups rather than a larger generic brief-capacity limit"
+        "locator": "Cognitive Psychology 4(1), published pp.63-70, perception-task timing and relation analyses: more skilled players require less viewing time per glance; average pieces per glance does not vary systematically with playing strength; within-glance piece pairs show nonchance relational structure"
       },
       {
         "span_id": "s4",
-        "locator": "Cognitive Psychology 4(1), published pp.59-61, first-trial reconstruction accuracy covaries with playing strength for actual positions but not random positions"
+        "locator": "Cognitive Psychology 4(1), published pp.70-75, comparison of visible-reconstruction and brief-recall protocols: short inter-piece pauses in recall have relation profiles similar to within-glance placements, while long pauses resemble between-glance/chance structure, supporting the operational grouping interpretation"
+      },
+      {
+        "span_id": "s5",
+        "locator": "Cognitive Psychology 4(1), published pp.75-78, group-size and retained-group analysis: in the brief-recall task group size is larger for stronger players, and the number of retained groups also increases with playing strength rather than remaining invariant; this challenges a simple fixed list of unrelated immediate-storage slots"
+      },
+      {
+        "span_id": "s6",
+        "locator": "Cognitive Psychology 4(1), published pp.78-80, detailed master protocols: most identified multi-piece groups belong to a small set of highly familiar stereotyped configuration classes; some groups also reflect more abstract converging-attack relations"
+      },
+      {
+        "span_id": "s7",
+        "locator": "Cognitive Psychology 4(1), published pp.80-81, Conclusion: stronger-player advantage on actual but not randomized positions is interpreted as rapid encoding of familiar subconfigurations into larger grouped representations; within-group relations include mutual defense, proximity, short-distance attack, common color/type, with possible higher-order organization"
       }
     ],
     "authors": [
@@ -42,86 +54,126 @@
     "extractor_version": "GPT-5.6 Sol",
     "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
     "extracted_at": "2026-09-28",
-    "manual_review_status": "unreviewed"
+    "manual_review_status": "reviewed"
   },
   "claim_core": {
     "claim_type": "relation",
     "modality": "comparative",
     "scope": {
       "conditions": [
-        "structured game positions versus piece-count-matched randomized positions"
+        "actual game-derived positions compared with positions produced by randomly relocating the same kinds and approximate numbers of pieces",
+        "middle-game and end-game configurations are both tested, with structure differing across position types"
       ],
       "population": [
-        "players ranging from beginner to master level"
+        "three players: one master, one Class A player, and one beginner"
       ],
       "substrate": [],
       "task": [
-        "visible reconstruction and reconstruction after five-second viewing"
+        "reconstruct a displayed board while it remains visible",
+        "reconstruct a board from memory after five seconds of viewing"
       ],
       "temporal_scope": [
-        "five-second exposure for the brief-reconstruction probe"
+        "successive glances during visible reconstruction",
+        "first and subsequent reconstruction attempts following five-second exposures, with primary accuracy analysis focused on the first attempt"
       ]
     },
     "nodes": [
       {
-        "id": "expertise_level",
+        "id": "playing_strength",
         "role": "condition",
-        "description": "player-strength level ranging from beginner to master",
-        "source_span_ids": [
-          "s1",
-          "s2",
-          "s4"
-        ],
+        "description": "relative playing level of the master, Class A participant, and beginner",
+        "source_span_ids": ["s1","s2","s3","s5","s7"],
         "grounding": "normalized"
       },
       {
         "id": "position_structure",
         "role": "condition",
-        "description": "whether the presented board preserves meaningful relational structure or is randomized",
-        "source_span_ids": [
-          "s2",
-          "s3",
-          "s4"
-        ],
+        "description": "whether a tested configuration comes from an actual game or from random relocation of pieces",
+        "source_span_ids": ["s1","s2","s3","s7"],
         "grounding": "normalized"
       },
       {
-        "id": "brief_reconstruction_probe",
+        "id": "position_phase",
+        "role": "condition",
+        "description": "middle-game versus end-game configuration, which differs in amount and organization of available relational structure",
+        "source_span_ids": ["s1","s2","s5"],
+        "grounding": "normalized"
+      },
+      {
+        "id": "visible_reconstruction_probe",
         "role": "probe",
-        "description": "reconstruct the board after a five-second view",
-        "source_span_ids": [
-          "s1",
-          "s4"
-        ],
+        "description": "reconstruct the displayed configuration while viewing is allowed, using successive glances to segment placements",
+        "source_span_ids": ["s1","s3","s4"],
         "grounding": "normalized"
       },
       {
-        "id": "reconstruction_accuracy",
+        "id": "brief_recall_probe",
+        "role": "probe",
+        "description": "reconstruct the configuration after five seconds of viewing, using placement timing to segment the recall protocol",
+        "source_span_ids": ["s1","s2","s4","s5"],
+        "grounding": "normalized"
+      },
+      {
+        "id": "first_attempt_accuracy",
         "role": "response_or_outcome",
-        "description": "number or proportion of pieces restored to the correct locations on the first reconstruction",
-        "source_span_ids": [
-          "s1",
-          "s4"
-        ],
+        "description": "number of pieces placed on the correct squares on the first reconstruction attempt after a five-second view",
+        "source_span_ids": ["s2"],
         "grounding": "normalized"
       },
       {
-        "id": "relational_groups",
+        "id": "glance_duration",
+        "role": "response_or_outcome",
+        "description": "time spent viewing the source configuration during each glance in the visible reconstruction task",
+        "source_span_ids": ["s3"],
+        "grounding": "normalized"
+      },
+      {
+        "id": "pieces_per_glance",
+        "role": "response_or_outcome",
+        "description": "number of successively placed pieces associated with one glance in the visible reconstruction task",
+        "source_span_ids": ["s3","s4"],
+        "grounding": "normalized"
+      },
+      {
+        "id": "placement_interval",
+        "role": "response_or_outcome",
+        "description": "time between placement of successive pieces during reconstruction",
+        "source_span_ids": ["s3","s4"],
+        "grounding": "normalized"
+      },
+      {
+        "id": "inferred_piece_group",
         "role": "state_or_structure",
-        "description": "multi-piece relational structures rapidly encoded from meaningful configurations",
-        "source_span_ids": [
-          "s2",
-          "s3"
-        ],
+        "description": "set of successively placed pieces operationally inferred to belong together when they fall within one glance or between short placement intervals",
+        "source_span_ids": ["s1","s3","s4"],
         "grounding": "normalized"
       },
       {
-        "id": "correct_location_criterion",
-        "role": "criterion",
-        "description": "piece restored to its correct board location",
-        "source_span_ids": [
-          "s4"
-        ],
+        "id": "group_size",
+        "role": "response_or_outcome",
+        "description": "number of pieces contained in an operationally inferred group",
+        "source_span_ids": ["s4","s5"],
+        "grounding": "normalized"
+      },
+      {
+        "id": "retained_group_count",
+        "role": "response_or_outcome",
+        "description": "number of operationally inferred groups placed during the initial recall phase before later reconstructive problem solving",
+        "source_span_ids": ["s5"],
+        "grounding": "normalized"
+      },
+      {
+        "id": "within_group_relation_pattern",
+        "role": "state_or_structure",
+        "description": "nonchance pattern of relations among pieces placed within an inferred group, including defense, proximity, short-distance attack, common color, and common type",
+        "source_span_ids": ["s3","s4","s6","s7"],
+        "grounding": "normalized"
+      },
+      {
+        "id": "familiar_configuration_repertoire",
+        "role": "state_or_structure",
+        "description": "source-authored interpretation that stronger players possess a stored repertoire capable of rapidly recognizing familiar multi-piece subconfigurations",
+        "source_span_ids": ["s6","s7"],
         "grounding": "normalized"
       }
     ],
@@ -129,57 +181,81 @@
       {
         "id": "r1",
         "kind": "depends_on",
-        "arguments": [
-          "reconstruction_accuracy",
-          "expertise_level",
-          "position_structure"
-        ],
-        "description": "reconstruction accuracy increases with expertise for structured positions but the expertise advantage disappears for randomized positions",
-        "source_span_ids": [
-          "s2",
-          "s4"
-        ],
+        "arguments": ["first_attempt_accuracy","playing_strength","position_structure"],
+        "description": "first-attempt reconstruction after five seconds improves markedly with playing strength for actual game-derived positions, while randomized positions show no corresponding strength advantage",
+        "source_span_ids": ["s2","s7"],
         "grounding": "normalized"
       },
       {
         "id": "r2",
         "kind": "maps_to",
-        "arguments": [
-          "brief_reconstruction_probe",
-          "reconstruction_accuracy"
-        ],
-        "description": "the five-second reconstruction probe supplies the primary accuracy measure",
-        "source_span_ids": [
-          "s1",
-          "s4"
-        ],
+        "arguments": ["visible_reconstruction_probe","glance_duration","pieces_per_glance","inferred_piece_group"],
+        "description": "successive glances in the visible task provide one operational segmentation of grouped placements and their processing time",
+        "source_span_ids": ["s1","s3","s4"],
         "grounding": "normalized"
       },
       {
         "id": "r3",
         "kind": "depends_on",
-        "arguments": [
-          "reconstruction_accuracy",
-          "relational_groups"
-        ],
-        "description": "the source interprets superior structured-position performance as relying on rapidly encoded multi-piece relations",
-        "source_span_ids": [
-          "s2",
-          "s3"
-        ],
+        "arguments": ["glance_duration","playing_strength"],
+        "description": "more skilled participants take less viewing time per glance in the visible reconstruction task",
+        "source_span_ids": ["s3"],
         "grounding": "normalized"
       },
       {
         "id": "r4",
-        "kind": "satisfies",
-        "arguments": [
-          "reconstruction_accuracy",
-          "correct_location_criterion"
-        ],
-        "description": "reconstruction is scored by correct piece placement",
-        "source_span_ids": [
-          "s4"
-        ],
+        "kind": "other",
+        "arguments": ["pieces_per_glance","playing_strength"],
+        "description": "the number of pieces associated with each glance does not vary systematically with playing strength, so the visible-task advantage is not a simple larger-group effect on this measure",
+        "source_span_ids": ["s3","s4"],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "maps_to",
+        "arguments": ["brief_recall_probe","placement_interval","inferred_piece_group"],
+        "description": "short versus long placement intervals provide a second operational segmentation whose relation profiles correspond to within- versus between-glance placements",
+        "source_span_ids": ["s4"],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r6",
+        "kind": "depends_on",
+        "arguments": ["group_size","playing_strength","position_phase"],
+        "description": "in the brief-recall protocol, early inferred groups are generally larger for stronger players, with smaller groups in less structured end-game positions",
+        "source_span_ids": ["s5"],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r7",
+        "kind": "depends_on",
+        "arguments": ["retained_group_count","playing_strength"],
+        "description": "the number of inferred groups retained during initial recall also increases with playing strength, contrary to the source's initial prediction of an invariant small count",
+        "source_span_ids": ["s5"],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r8",
+        "kind": "other",
+        "arguments": ["inferred_piece_group","within_group_relation_pattern"],
+        "description": "pieces grouped by the timing/glance criteria show stronger relational organization within groups than across group boundaries or chance baselines",
+        "source_span_ids": ["s3","s4","s7"],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r9",
+        "kind": "other",
+        "arguments": ["familiar_configuration_repertoire","inferred_piece_group","first_attempt_accuracy"],
+        "description": "the authors interpret the stronger-player advantage on actual positions as rapid recognition and encoding of familiar multi-piece subconfigurations into larger grouped representations rather than as a generally superior ability to retain arbitrary configurations",
+        "source_span_ids": ["s2","s6","s7"],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r10",
+        "kind": "other",
+        "arguments": ["retained_group_count","group_size","familiar_configuration_repertoire"],
+        "description": "because stronger players recall both larger and more numerous groups, the data do not support a simple model in which all players retain an invariant fixed list of unrelated groups; the source leaves higher-order organization and reconstruction from stored configuration knowledge as alternative explanations",
+        "source_span_ids": ["s5","s7"],
         "grounding": "normalized"
       }
     ]

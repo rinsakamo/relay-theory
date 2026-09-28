@@ -7,15 +7,27 @@
     "source_spans": [
       {
         "span_id": "s1",
-        "locator": "Psychonomic Bulletin & Review 9(2), published p.185, Abstract: low-demand situations benefit from added challenge whereas extremely high-demand situations benefit from reduced load"
+        "locator": "Psychonomic Bulletin & Review 9(2), published p.185, Abstract and opening: low-demand situations can benefit from added challenge whereas extremely high-demand situations can benefit from reduced load"
       },
       {
         "span_id": "s2",
-        "locator": "Psychonomic Bulletin & Review 9(2), published pp.186-187, processing-capacity discussion: functional task complexity and resource demands vary with task and expertise"
+        "locator": "Psychonomic Bulletin & Review 9(2), published pp.186-187, task-complexity and processing-capacity discussion: functional demand varies with task and performer experience; learning is distinguished from acquisition performance by later test performance; added demands may compete for limited processing capacity"
       },
       {
         "span_id": "s3",
-        "locator": "Psychonomic Bulletin & Review 9(2), published p.207, synthesis: low-load and overloaded conditions predict opposite preferred training manipulations"
+        "locator": "Psychonomic Bulletin & Review 9(2), published pp.193-194, feedback discussion and summary: demand-increasing feedback schedules can degrade acquisition/learning of higher-demand tasks, whereas frequent or blocked feedback can facilitate them"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Psychonomic Bulletin & Review 9(2), published pp.195-196, Physical Assistance: assistance can reduce task demands to a manageable level and can transfer to later unassisted performance, but the benefit is task-dependent rather than universal"
+      },
+      {
+        "span_id": "s5",
+        "locator": "Psychonomic Bulletin & Review 9(2), published pp.198-204, attentional-focus and observational-practice sections: some practice conditions reduce attentional, control, or execution demands and can improve later performance on demanding tasks"
+      },
+      {
+        "span_id": "s6",
+        "locator": "Psychonomic Bulletin & Review 9(2), published pp.206-207, Task Difficulty as a Mediating Factor and final synthesis: effects can vary with task difficulty and practice stage; low-demand situations favor added load/challenge, whereas extremely high-demand acquisition favors load reduction"
       }
     ],
     "authors": [
@@ -35,89 +47,105 @@
     "extractor_version": "GPT-5.6 Sol",
     "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
     "extracted_at": "2026-09-28",
-    "manual_review_status": "unreviewed"
+    "manual_review_status": "reviewed"
   },
   "claim_core": {
     "claim_type": "comparison",
     "modality": "comparative",
     "scope": {
       "conditions": [
-        "training situations spanning low to extremely high processing load"
+        "training situations spanning low to extremely high cognitive, attentional, and motor demands",
+        "functional demand varies with task characteristics, performer experience, and stage of practice"
       ],
       "population": [
-        "human performers"
+        "human learners and performers of motor tasks"
       ],
       "substrate": [],
       "task": [
-        "motor tasks varying in degrees of freedom, coordination requirements, and time to mastery"
+        "motor tasks differing in functional demand, degrees of freedom, coordination requirements, and time needed to reach stable performance"
       ],
       "temporal_scope": [
-        "during acquisition and later test performance"
+        "during acquisition, with learning distinguished from immediate practice performance by later retention, transfer, or test performance where available",
+        "effects of a practice manipulation may change as experience accumulates"
       ]
     },
     "nodes": [
       {
-        "id": "task_load_level",
+        "id": "functional_task_demand",
         "role": "condition",
-        "description": "relative processing and coordination demand imposed by the task at the performer's current level",
+        "description": "current cognitive, attentional, and motor demand of the training situation",
         "source_span_ids": [
           "s1",
           "s2",
-          "s3"
+          "s6"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "challenge_increasing_condition",
+        "id": "experience_stage",
+        "role": "condition",
+        "description": "performer expertise or stage of practice that can alter the functional demand of a task and the effect of practice conditions",
+        "source_span_ids": [
+          "s2",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "processing_load_state",
+        "role": "state_or_structure",
+        "description": "degree to which current task and practice demands load or overload the performer's limited processing resources",
+        "source_span_ids": [
+          "s2",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "demand_increasing_practice",
         "role": "intervention",
-        "description": "training manipulation that increases processing demand or challenge",
+        "description": "practice manipulation that adds cognitive effort, processing demand, or challenge",
         "source_span_ids": [
           "s1",
-          "s2",
-          "s3"
+          "s3",
+          "s6"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "load_reducing_condition",
+        "id": "demand_reducing_practice",
         "role": "intervention",
-        "description": "training manipulation that reduces otherwise excessive processing demand",
+        "description": "practice manipulation that reduces otherwise excessive cognitive, attentional, control, or execution demands",
         "source_span_ids": [
           "s1",
-          "s2",
-          "s3"
+          "s3",
+          "s4",
+          "s5",
+          "s6"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "later_performance",
-        "role": "response_or_outcome",
-        "description": "performance measured under later test conditions",
-        "source_span_ids": [
-          "s1",
-          "s2",
-          "s3"
-        ],
-        "grounding": "normalized"
-      },
-      {
-        "id": "resource_limit",
-        "role": "criterion",
-        "description": "whether total task and training demands remain within a manageable processing range",
-        "source_span_ids": [
-          "s1",
-          "s2",
-          "s3"
-        ],
-        "grounding": "normalized"
-      },
-      {
-        "id": "training_transform",
+        "id": "learning_assessment",
         "role": "probe",
-        "description": "structured manipulation of order, feedback, assistance, or other demands during acquisition",
+        "description": "later retention, transfer, or other test condition used where available to distinguish learning from immediate acquisition performance",
         "source_span_ids": [
           "s2",
-          "s3"
+          "s3",
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "later_learning_performance",
+        "role": "response_or_outcome",
+        "description": "performance on a later assessment used as evidence about what was learned during practice",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s4",
+          "s5"
         ],
         "grounding": "normalized"
       }
@@ -127,59 +155,78 @@
         "id": "r1",
         "kind": "depends_on",
         "arguments": [
-          "later_performance",
-          "task_load_level",
-          "challenge_increasing_condition",
-          "load_reducing_condition"
+          "functional_task_demand",
+          "experience_stage",
+          "processing_load_state"
         ],
-        "description": "the preferred direction of the training manipulation depends on baseline task load",
+        "description": "functional task difficulty is relative to performer experience and to the degree that current demands load available processing resources",
         "source_span_ids": [
-          "s1",
-          "s3"
+          "s2",
+          "s6"
         ],
         "grounding": "normalized"
       },
       {
         "id": "r2",
-        "kind": "differs",
+        "kind": "depends_on",
         "arguments": [
-          "challenge_increasing_condition",
-          "load_reducing_condition",
-          "later_performance"
+          "later_learning_performance",
+          "functional_task_demand",
+          "demand_increasing_practice"
         ],
-        "description": "added challenge is favored under low load whereas demand reduction is favored under extreme load",
+        "description": "the review-level synthesis favors added challenge for learning when the current training situation imposes relatively low demands",
         "source_span_ids": [
           "s1",
-          "s3"
+          "s6"
         ],
         "grounding": "normalized"
       },
       {
         "id": "r3",
-        "kind": "satisfies",
+        "kind": "depends_on",
         "arguments": [
-          "task_load_level",
-          "resource_limit"
+          "later_learning_performance",
+          "functional_task_demand",
+          "demand_reducing_practice"
         ],
-        "description": "the interpretation is explicitly conditioned on whether processing demand is manageable or overloaded",
+        "description": "the review-level synthesis favors demand reduction for learning when acquisition already imposes extremely high demands",
         "source_span_ids": [
           "s1",
-          "s2",
-          "s3"
+          "s3",
+          "s4",
+          "s5",
+          "s6"
         ],
         "grounding": "normalized"
       },
       {
         "id": "r4",
-        "kind": "maps_to",
+        "kind": "depends_on",
         "arguments": [
-          "training_transform",
-          "later_performance"
+          "later_learning_performance",
+          "experience_stage",
+          "functional_task_demand"
         ],
-        "description": "structured acquisition manipulations are assessed by their effect on later performance",
+        "description": "the effect of a practice condition may change across practice as functional task demands change",
         "source_span_ids": [
           "s2",
-          "s3"
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "maps_to",
+        "arguments": [
+          "learning_assessment",
+          "later_learning_performance"
+        ],
+        "description": "later retention, transfer, or test performance is used where available to assess learning rather than equating immediate acquisition performance with learning",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s4",
+          "s5"
         ],
         "grounding": "normalized"
       }
