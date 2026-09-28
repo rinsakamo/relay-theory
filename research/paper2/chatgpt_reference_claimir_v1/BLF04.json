@@ -7,15 +7,23 @@
     "source_spans": [
       {
         "span_id": "s1",
-        "locator": "Memory & Cognition 11(3), published p.295, Abstract: three experiments independently manipulate formal validity and prior plausibility of conclusions"
+        "locator": "Memory & Cognition 11(3), published p.295, Abstract: substantial effects of both belief and logic are reported, with belief bias more marked on invalid than valid syllogisms"
       },
       {
         "span_id": "s2",
-        "locator": "Memory & Cognition 11(3), published p.295, Abstract: both factors affect acceptance judgments"
+        "locator": "Memory & Cognition 11(3), published p.297, Experiment 1 materials: validity and conclusion believability are crossed, with half of valid and half of invalid conclusions believable"
       },
       {
         "span_id": "s3",
-        "locator": "Memory & Cognition 11(3), published p.295, Abstract: interaction shows plausibility effect is larger for formally invalid than valid arguments"
+        "locator": "Memory & Cognition 11(3), published p.300, Experiment 2 results: significant main effects of believability and validity and a significant Belief x Validity interaction; belief-bias effect is more marked for invalid than valid syllogisms"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Memory & Cognition 11(3), published p.301, Experiment 3 instructions: answer yes if and only if the conclusion logically follows from the stated information"
+      },
+      {
+        "span_id": "s5",
+        "locator": "Memory & Cognition 11(3), published p.302, General Discussion: large and consistent effects of belief bias and logical validity across experiments, with a consistent trend for interaction such that belief bias is more marked for invalid problems"
       }
     ],
     "authors": [
@@ -39,21 +47,21 @@
     "extractor_version": "GPT-5.6 Sol",
     "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
     "extracted_at": "2026-09-28",
-    "manual_review_status": "unreviewed"
+    "manual_review_status": "reviewed"
   },
   "claim_core": {
     "claim_type": "comparison",
     "modality": "probabilistic",
     "scope": {
       "conditions": [
-        "arguments vary independently in formal validity and prior plausibility of their conclusions"
+        "categorical syllogisms cross formal validity with conclusion believability while controlling alternative response-bias explanations"
       ],
       "population": [
-        "adult participants"
+        "student participants in the three experiments"
       ],
       "substrate": [],
       "task": [
-        "judge whether presented conclusions follow from stated premises"
+        "judge yes or no whether a presented conclusion follows logically from the stated premises or passage information"
       ],
       "temporal_scope": []
     },
@@ -61,54 +69,55 @@
       {
         "id": "formal_validity",
         "role": "condition",
-        "description": "whether the conclusion is licensed by the formal structure of the premises",
+        "description": "whether the conclusion follows logically from the premises",
         "source_span_ids": [
           "s1",
           "s2",
-          "s3"
+          "s3",
+          "s5"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "conclusion_plausibility",
+        "id": "conclusion_believability",
         "role": "condition",
-        "description": "whether the stated conclusion is independently plausible to the participant",
+        "description": "whether the conclusion is believable or unbelievable independently of its formal validity",
         "source_span_ids": [
           "s1",
           "s2",
-          "s3"
+          "s3",
+          "s5"
         ],
         "grounding": "normalized"
       },
       {
         "id": "acceptance_response",
         "role": "response_or_outcome",
-        "description": "participant judgment accepting or rejecting the conclusion as following from the premises",
+        "description": "yes/no judgment accepting the conclusion as following from the stated information",
         "source_span_ids": [
-          "s1",
           "s2",
-          "s3"
+          "s3",
+          "s4"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "formal_correctness",
+        "id": "logical_necessity_criterion",
         "role": "criterion",
-        "description": "classification of the conclusion according to formal validity independent of plausibility",
+        "description": "task rule that a yes response is appropriate if and only if the conclusion logically follows from the stated information",
         "source_span_ids": [
-          "s1",
-          "s2"
+          "s4"
         ],
         "grounding": "normalized"
       },
       {
         "id": "crossed_argument_probe",
         "role": "probe",
-        "description": "factorial presentation crossing formal validity with conclusion plausibility",
+        "description": "factorial comparison crossing formal validity with conclusion believability and measuring acceptance responses",
         "source_span_ids": [
-          "s1",
           "s2",
-          "s3"
+          "s3",
+          "s5"
         ],
         "grounding": "normalized"
       }
@@ -120,12 +129,13 @@
         "arguments": [
           "acceptance_response",
           "formal_validity",
-          "conclusion_plausibility"
+          "conclusion_believability"
         ],
-        "description": "acceptance judgments depend on both formal validity and prior plausibility of the conclusion",
+        "description": "acceptance judgments vary with both formal validity and conclusion believability",
         "source_span_ids": [
           "s1",
-          "s2"
+          "s3",
+          "s5"
         ],
         "grounding": "normalized"
       },
@@ -134,12 +144,14 @@
         "kind": "differs",
         "arguments": [
           "formal_validity",
-          "conclusion_plausibility",
+          "conclusion_believability",
           "acceptance_response"
         ],
-        "description": "the influence of prior plausibility is larger for formally invalid than for formally valid arguments",
+        "description": "the believability effect on acceptance is larger for invalid than for valid syllogisms; this is significant in Experiments 1 and 2 and remains a same-direction trend in Experiment 3",
         "source_span_ids": [
-          "s3"
+          "s1",
+          "s3",
+          "s5"
         ],
         "grounding": "normalized"
       },
@@ -150,25 +162,24 @@
           "crossed_argument_probe",
           "acceptance_response"
         ],
-        "description": "the crossed manipulation measures the separate and interacting contributions of formal structure and prior plausibility",
+        "description": "the crossed validity-by-believability manipulation exposes the separate and interacting contributions of formal validity and conclusion believability to acceptance",
         "source_span_ids": [
-          "s1",
           "s2",
-          "s3"
+          "s3",
+          "s5"
         ],
         "grounding": "normalized"
       },
       {
         "id": "r4",
-        "kind": "satisfies",
+        "kind": "constrains",
         "arguments": [
-          "acceptance_response",
-          "formal_correctness"
+          "logical_necessity_criterion",
+          "acceptance_response"
         ],
-        "description": "formal correctness supplies an external criterion against which the judgment can be compared",
+        "description": "the explicit task criterion constrains the normatively requested response to whether the conclusion follows logically from the stated information",
         "source_span_ids": [
-          "s1",
-          "s2"
+          "s4"
         ],
         "grounding": "normalized"
       }
