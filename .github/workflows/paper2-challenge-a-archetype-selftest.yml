@@ -1,0 +1,58 @@
+name: paper2-challenge-a-archetype-selftest
+
+on:
+  pull_request:
+    paths:
+      - "scripts/paper2_archetype_challenge_a.py"
+      - "research/paper2/challenge_a_archetype_v1.json"
+      - ".github/workflows/paper2-challenge-a-archetype-selftest.yml"
+      - "scripts/paper2_archetype_mem_pilot.py"
+      - "scripts/paper2_basis_structural_skeleton.py"
+      - "scripts/paper2_basis_subobject_forgetting.py"
+      - "scripts/paper2_reference_structural_adjudication.py"
+      - "scripts/paper2_phi_compare.py"
+      - "research/paper2/chatgpt_reference_claimir_v1/CH01.json"
+      - "research/paper2/chatgpt_reference_claimir_v1/CH03.json"
+      - "research/paper2/chatgpt_reference_claimir_v1/CH05.json"
+      - "research/paper2/chatgpt_reference_claimir_v1/CH07.json"
+      - "research/paper2/chatgpt_reference_claimir_v1/CH09.json"
+      - "research/paper2/chatgpt_reference_claimir_v1/CH11.json"
+      - "research/paper2/reference_structural_adjudication_v1/CH01.json"
+      - "research/paper2/reference_structural_adjudication_v1/CH03.json"
+      - "research/paper2/reference_structural_adjudication_v1/CH05.json"
+      - "research/paper2/reference_structural_adjudication_v1/CH07.json"
+      - "research/paper2/reference_structural_adjudication_v1/CH09.json"
+      - "research/paper2/reference_structural_adjudication_v1/CH11.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  challenge-a:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile lane wrapper
+        run: python -m py_compile scripts/paper2_archetype_challenge_a.py
+
+      - name: Determinism / integration self-test
+        run: python scripts/paper2_archetype_challenge_a.py --self-test
+
+      - name: Regenerate Challenge A report
+        run: python scripts/paper2_archetype_challenge_a.py --emit-report --output /tmp/challenge_a_archetype_v1.json
+
+      - name: Emit regeneration for freeze transaction
+        run: |
+          echo "BEGIN_CHALLENGE_A_ARCHETYPE_REPORT"
+          cat /tmp/challenge_a_archetype_v1.json
+          echo "END_CHALLENGE_A_ARCHETYPE_REPORT"
+
+      - name: Verify frozen report byte identity
+        run: |
+          test -f research/paper2/challenge_a_archetype_v1.json
+          cmp /tmp/challenge_a_archetype_v1.json research/paper2/challenge_a_archetype_v1.json
