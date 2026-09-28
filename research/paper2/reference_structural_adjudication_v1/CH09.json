@@ -4,7 +4,7 @@
   "adjudicator": {
     "tool": "ChatGPT",
     "version": "GPT-5.6 Sol",
-    "procedure": "paper2-reference-structural-adjudication-v1:267",
+    "procedure": "paper2-challenge-a-reference-structural-adjudication-v1:267",
     "adjudicated_at": "2026-09-28"
   },
   "coordinate_map": [
@@ -14,28 +14,23 @@
       "required": true
     },
     {
-      "claim_node_id": "test_environment",
+      "claim_node_id": "recall_environment",
       "coordinate_id": "basis.cnd2",
       "required": true
     },
     {
-      "claim_node_id": "environment_match_state",
+      "claim_node_id": "environment_congruence",
       "coordinate_id": "basis.pi1",
       "required": true
     },
     {
-      "claim_node_id": "word_list_probe",
+      "claim_node_id": "written_free_recall_probe",
       "coordinate_id": "basis.p1",
       "required": true
     },
     {
-      "claim_node_id": "recalled_item_count",
+      "claim_node_id": "recalled_word_count",
       "coordinate_id": "basis.o1",
-      "required": true
-    },
-    {
-      "claim_node_id": "movement_control",
-      "coordinate_id": "basis.p2",
       "required": true
     }
   ],
@@ -43,8 +38,7 @@
     "probe_P": {
       "state": "present",
       "claim_node_ids": [
-        "word_list_probe",
-        "movement_control"
+        "written_free_recall_probe"
       ],
       "provenance_kind": "source_declared",
       "fixed_before_phi": true
@@ -55,7 +49,7 @@
     "partition_Pi": {
       "state": "present",
       "claim_node_ids": [
-        "environment_match_state"
+        "environment_congruence"
       ],
       "provenance_kind": "source_declared",
       "fixed_before_phi": true
@@ -70,8 +64,7 @@
       "source_span_ids": [
         "s1",
         "s2",
-        "s3",
-        "s4"
+        "s3"
       ]
     },
     "history_window": {
@@ -91,16 +84,30 @@
       ]
     },
     "recurrence": {
-      "state": "not_required"
+      "state": "present",
+      "source_span_ids": [
+        "s2"
+      ]
     },
     "persistence": {
       "state": "present",
       "source_span_ids": [
         "s1",
+        "s2",
         "s3"
       ]
     },
-    "ordering": []
+    "ordering": [
+      {
+        "before_coordinate_id": "basis.cnd1",
+        "after_coordinate_id": "basis.cnd2",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ]
+      }
+    ]
   },
   "approximation": {
     "mode": "stochastic",
