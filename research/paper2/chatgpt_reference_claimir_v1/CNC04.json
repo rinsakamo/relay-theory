@@ -1,0 +1,188 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "CNC04.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1037/0278-7393.14.1.12",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Journal of Experimental Psychology: Learning, Memory, and Cognition 14(1), published p.12, abstract: combined representation, threshold rule, and systematic excess-positive judgments"
+      },
+      {
+        "span_id": "s2",
+        "locator": "same article, published p.18, Experiment 2 results: weighted/geometric averaging predicts combined-membership ratings and compensation drives the excess-positive pattern"
+      },
+      {
+        "span_id": "s3",
+        "locator": "same article, published p.22, summary regression analysis: compensatory averaging maps component ratings to combined ratings across analyses"
+      }
+    ],
+    "authors": [
+      "James A. Hampton"
+    ],
+    "institutions": [
+      "The City University, London"
+    ],
+    "venue": "Journal of Experimental Psychology: Learning, Memory, and Cognition",
+    "citation_count": null,
+    "construct_labels": [
+      "conjunctive concepts",
+      "concept typicality",
+      "class inclusion",
+      "overextension",
+      "composite prototype"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "mapping",
+    "modality": "probabilistic",
+    "scope": {
+      "conditions": [
+        "two familiar source groupings are evaluated separately and then in an explicit combined form"
+      ],
+      "population": [
+        "adult participants"
+      ],
+      "substrate": [],
+      "task": [
+        "rate graded membership for each component grouping and for their combined grouping"
+      ],
+      "temporal_scope": []
+    },
+    "nodes": [
+      {
+        "id": "component_rating_a",
+        "role": "available_information",
+        "description": "graded membership response for the first component grouping",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "component_rating_b",
+        "role": "available_information",
+        "description": "graded membership response for the second component grouping",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "combination_rule",
+        "role": "state_or_structure",
+        "description": "compensatory weighted or multiplicative averaging transform applied to the two component responses",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "combined_rating",
+        "role": "response_or_outcome",
+        "description": "graded response assigned to the combined grouping",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "membership_threshold",
+        "role": "criterion",
+        "description": "decision boundary applied to the graded combined representation to classify membership",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "two_stage_rating_probe",
+        "role": "probe",
+        "description": "procedure obtaining component judgments before judgments of the combined grouping",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "maps_to",
+        "arguments": [
+          "component_rating_a",
+          "component_rating_b",
+          "combination_rule",
+          "combined_rating"
+        ],
+        "description": "the two component ratings are transformed by a compensatory averaging rule into the combined rating",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "satisfies",
+        "arguments": [
+          "combined_rating",
+          "membership_threshold"
+        ],
+        "description": "classification is determined by comparing the graded combined response with the decision boundary",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "predicts",
+        "arguments": [
+          "component_rating_a",
+          "component_rating_b",
+          "combined_rating"
+        ],
+        "description": "component responses predict combined responses with systematic compensation, including positive classifications when one component alone falls below its boundary",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "maps_to",
+        "arguments": [
+          "two_stage_rating_probe",
+          "component_rating_a",
+          "component_rating_b",
+          "combined_rating"
+        ],
+        "description": "the staged probe supplies the component and combined responses used to estimate the transform",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
