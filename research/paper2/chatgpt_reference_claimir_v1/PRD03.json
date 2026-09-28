@@ -7,22 +7,41 @@
     "source_spans": [
       {
         "span_id": "s1",
-        "locator": "Nature Reviews Neuroscience 15, published p.745, Key Points: environmental regularities supply prior information about upcoming percepts"
+        "locator": "Nature Reviews Neuroscience 15, published p.745, Abstract and opening discussion: spatial/temporal regularities, conditional probabilities and recent history provide information about likely forthcoming visual input"
       },
       {
         "span_id": "s2",
-        "locator": "Nature Reviews Neuroscience 15, published p.745, Key Points: Bayesian account combines prior expectation with incoming sensory evidence"
+        "locator": "Nature Reviews Neuroscience 15, published pp.745-746, Decision-theoretic approaches / equations (1)-(2): current likelihood evidence is combined with prior probability; asymmetric priors shift the category decision criterion and bias choices"
       },
       {
         "span_id": "s3",
-        "locator": "Nature Reviews Neuroscience 15, published p.745, Key Points: prior information modulates baseline sensory and decision-related neural activity"
+        "locator": "Nature Reviews Neuroscience 15, published pp.746-747, Sequential sampling / equations (3)-(5) and Figure 2: prior probability can enter as an early evidence offset or accumulation starting point; gain/drift is a distinct possible locus and simple origin bias fits key error patterns better"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Nature Reviews Neuroscience 15, published pp.747-748, Figure 3 and 'Expectation biases pre-stimulus signals': stimulus probability modulates pre-stimulus decision-related activity and stimulus-selective sensory activity"
+      },
+      {
+        "span_id": "s5",
+        "locator": "Nature Reviews Neuroscience 15, published p.748, 'Neural signatures of expectation': reviewed evidence that prior-related effects can also alter evidence gain, particularly when current sensory evidence is weak or ambiguous; expected and unexpected evoked responses can differ"
+      },
+      {
+        "span_id": "s6",
+        "locator": "Nature Reviews Neuroscience 15, published pp.750-751, probability-versus-task-relevance discussion: event probability and current-goal relevance are conceptually separable, often experimentally entangled, and may affect sensitivity through distinct mechanisms"
+      },
+      {
+        "span_id": "s7",
+        "locator": "Nature Reviews Neuroscience 15, published pp.752-753, biological-implementation discussion and Conclusions: multiple computational descriptions can overlap; cellular mechanisms, top-down/bottom-up segregation, and origins of predictive neural signals remain unresolved"
       }
     ],
     "authors": [
       "Christopher Summerfield",
       "Floris P. de Lange"
     ],
-    "institutions": [],
+    "institutions": [
+      "Department of Experimental Psychology, University of Oxford",
+      "Donders Institute for Brain, Cognition and Behaviour, Radboud University Nijmegen"
+    ],
     "venue": "Nature Reviews Neuroscience",
     "citation_count": null,
     "construct_labels": [
@@ -36,33 +55,47 @@
     "extractor_version": "GPT-5.6 Sol",
     "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
     "extracted_at": "2026-09-28",
-    "manual_review_status": "unreviewed"
+    "manual_review_status": "reviewed"
   },
   "claim_core": {
-    "claim_type": "mapping",
+    "claim_type": "relation",
     "modality": "probabilistic",
     "scope": {
       "conditions": [
-        "perceptual decisions made when prior information about upcoming sensory states is available"
+        "visual detection, recognition, or classification occurs when the probability of upcoming alternatives is asymmetric or otherwise informed by contextual, transition, frequency, or recent-history regularities",
+        "current sensory evidence has finite strength or precision and may be integrated over time",
+        "probability of occurrence must be distinguished from current-goal relevance because the reviewed literature often manipulates both with similar cueing paradigms"
       ],
       "population": [
-        "human and animal perceptual systems as reviewed by the source"
+        "humans and non-human primates across the reviewed psychophysical, imaging, and single-neuron studies"
       ],
       "substrate": [
-        "sensory and decision-related neural populations"
+        "reviewed decision-related parietal, frontal, motor, and oculomotor populations",
+        "reviewed stimulus-selective visual cortical populations"
       ],
       "task": [
-        "perceptual inference and choice under manipulated prior information"
+        "detect, recognize, classify, or choose between visual alternatives under manipulated or learned differences in occurrence probability"
       ],
       "temporal_scope": [
-        "prior information is available before or while incoming sensory evidence is accumulated"
+        "regularity-derived or experimentally supplied probability information can be available before the current stimulus",
+        "pre-stimulus neural activity can be biased before current sensory evidence arrives",
+        "after stimulus onset, sensory evidence is accumulated or otherwise combined with the prior-dependent state; prior influence is often strongest early or when evidence is weak"
       ]
     },
     "nodes": [
       {
-        "id": "prior_information",
+        "id": "regularity_information",
         "role": "available_information",
-        "description": "contextual or transition information specifying a distribution over likely upcoming percepts",
+        "description": "frequency, contextual, transition, or recent-history information that indicates which upcoming visual alternatives are more likely",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "prior_probability_state",
+        "role": "state_or_structure",
+        "description": "probability distribution over candidate visual alternatives before the current sensory evidence is fully incorporated",
         "source_span_ids": [
           "s1",
           "s2",
@@ -71,40 +104,112 @@
         "grounding": "normalized"
       },
       {
-        "id": "incoming_evidence",
+        "id": "current_sensory_evidence",
         "role": "available_information",
-        "description": "sensory evidence supplied by the current stimulus",
+        "description": "likelihood-bearing information supplied by the currently presented visual stimulus or successive samples of it",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "posterior_decision_support",
+        "role": "state_or_structure",
+        "description": "formal support for competing alternatives after combining prior odds with likelihood evidence",
         "source_span_ids": [
           "s2"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "posterior_perceptual_estimate",
-        "role": "response_or_outcome",
-        "description": "combined estimate or choice variable resulting from prior and current evidence",
+        "id": "category_decision_criterion",
+        "role": "criterion",
+        "description": "boundary separating alternative category responses in the signal-detection formulation",
         "source_span_ids": [
           "s2"
         ],
-        "grounding": "normalized"
+        "grounding": "explicit"
       },
       {
-        "id": "baseline_neural_state",
-        "role": "response_or_outcome",
-        "description": "pre- or peri-stimulus activity in populations encoding expected sensory or decision variables",
+        "id": "accumulation_starting_point",
+        "role": "state_or_structure",
+        "description": "initial offset of a sequential evidence-accumulation process toward the more probable alternative",
         "source_span_ids": [
           "s3"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "prior_manipulation_probe",
+        "id": "evidence_gain",
+        "role": "state_or_structure",
+        "description": "multiplicative scaling of incoming evidence or drift that some reviewed models and data allow to vary with probability and signal strength",
+        "source_span_ids": [
+          "s3",
+          "s5",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "choice_response",
+        "role": "response_or_outcome",
+        "description": "behavioral detection, recognition, classification, or alternative choice produced under asymmetric occurrence probabilities",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "pre_stimulus_decision_activity",
+        "role": "response_or_outcome",
+        "description": "baseline or build-up neural activity before stimulus onset in populations associated with the more probable response alternative",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "pre_stimulus_sensory_activity",
+        "role": "response_or_outcome",
+        "description": "pre-stimulus activity in stimulus-selective visual populations corresponding to a more probable upcoming visual input",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "probability_manipulation",
+        "role": "intervention",
+        "description": "experimental change in occurrence probability or conditional probability through block frequency, predictive cues, or transition structure",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s4",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "behavioral_neural_probe_family",
         "role": "probe",
-        "description": "experimental manipulation of prior probability or contextual predictability while sensory evidence is measured",
+        "description": "reviewed psychophysical, electrophysiological, magnetoencephalographic, and functional-imaging measurements used to compare behavioral and neural states under different occurrence probabilities",
         "source_span_ids": [
-          "s1",
-          "s2",
-          "s3"
+          "s4",
+          "s5",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "task_relevance_condition",
+        "role": "condition",
+        "description": "whether a visual event or feature is relevant to the observer's current task or goal, treated separately from its occurrence probability",
+        "source_span_ids": [
+          "s6"
         ],
         "grounding": "normalized"
       }
@@ -114,43 +219,169 @@
         "id": "r1",
         "kind": "maps_to",
         "arguments": [
-          "prior_information",
-          "incoming_evidence",
-          "posterior_perceptual_estimate"
+          "regularity_information",
+          "prior_probability_state"
         ],
-        "description": "the normative account combines prior information with incoming sensory evidence to form a perceptual estimate or decision variable",
+        "description": "environmental or learned regularities provide information from which a probability distribution over forthcoming visual alternatives can be formed",
         "source_span_ids": [
-          "s1",
-          "s2"
+          "s1"
         ],
         "grounding": "normalized"
       },
       {
         "id": "r2",
+        "kind": "maps_to",
+        "arguments": [
+          "prior_probability_state",
+          "current_sensory_evidence",
+          "posterior_decision_support"
+        ],
+        "description": "in the formal normative account, prior odds and current likelihood evidence jointly determine posterior support for the alternatives",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
         "kind": "changes",
         "arguments": [
-          "prior_information",
-          "baseline_neural_state"
+          "prior_probability_state",
+          "category_decision_criterion"
         ],
-        "description": "changing prior information changes baseline activity in populations representing expected sensory or decision variables",
+        "description": "asymmetric prior probability shifts the category criterion so responses are biased toward the more probable alternative",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "changes",
+        "arguments": [
+          "prior_probability_state",
+          "accumulation_starting_point"
+        ],
+        "description": "in a sequential-sampling implementation, asymmetric prior probability can produce an early offset in accumulated evidence toward the more probable alternative",
         "source_span_ids": [
           "s3"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "r3",
+        "id": "r5",
+        "kind": "depends_on",
+        "arguments": [
+          "choice_response",
+          "current_sensory_evidence",
+          "prior_probability_state"
+        ],
+        "description": "behavioral choice reflects current sensory evidence together with prior-probability information rather than current evidence alone",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r6",
+        "kind": "changes",
+        "arguments": [
+          "prior_probability_state",
+          "pre_stimulus_decision_activity"
+        ],
+        "description": "reviewed studies report probability-dependent baseline or pre-stimulus changes in decision-related neural activity",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r7",
+        "kind": "changes",
+        "arguments": [
+          "prior_probability_state",
+          "pre_stimulus_sensory_activity"
+        ],
+        "description": "reviewed studies report probability-dependent pre-stimulus activity in sensory populations associated with the more probable upcoming input",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r8",
+        "kind": "depends_on",
+        "arguments": [
+          "evidence_gain",
+          "prior_probability_state",
+          "current_sensory_evidence"
+        ],
+        "description": "some reviewed accounts and data permit probability-dependent changes in evidence gain, with stronger effects when current sensory evidence is weak or ambiguous",
+        "source_span_ids": [
+          "s5",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r9",
+        "kind": "changes",
+        "arguments": [
+          "probability_manipulation",
+          "prior_probability_state"
+        ],
+        "description": "experimental manipulations of occurrence or conditional probability alter the prior-probability state used in the reviewed comparisons",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s4",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r10",
         "kind": "maps_to",
         "arguments": [
-          "prior_manipulation_probe",
-          "posterior_perceptual_estimate",
-          "baseline_neural_state"
+          "behavioral_neural_probe_family",
+          "choice_response",
+          "pre_stimulus_decision_activity",
+          "pre_stimulus_sensory_activity"
         ],
-        "description": "prior-probability manipulations expose both behavioral and neural consequences of anticipatory prior",
+        "description": "the reviewed behavioral and neural measurements expose consequences of differing occurrence probabilities at choice, decision-related, and sensory levels",
         "source_span_ids": [
-          "s1",
-          "s2",
-          "s3"
+          "s4",
+          "s5",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r11",
+        "kind": "differs",
+        "arguments": [
+          "prior_probability_state",
+          "task_relevance_condition"
+        ],
+        "description": "the source treats occurrence probability and current-goal relevance as conceptually separable variables even though many cueing paradigms entangle them",
+        "source_span_ids": [
+          "s6"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "r12",
+        "kind": "differs",
+        "arguments": [
+          "accumulation_starting_point",
+          "evidence_gain"
+        ],
+        "description": "simple linear accumulation accounts distinguish an additive prior-dependent starting offset from multiplicative evidence gain, while the review notes that more complex nonlinear models can blur this separation",
+        "source_span_ids": [
+          "s3",
+          "s7"
         ],
         "grounding": "normalized"
       }
