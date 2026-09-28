@@ -1,0 +1,250 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "CH12.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1037/0033-295X.111.4.1036",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Psychological Review 111(4), PDF p.1 / published p.1036, abstract: specialized modules expose limited buffer contents to a central selector that chooses one rule at a time"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Psychological Review 111(4), PDF p.2 / published p.1037, architecture overview: visual/manual/retrieval/goal modules communicate with the central system through buffers"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Psychological Review 111(4), PDF p.3 / published p.1038, critical cycle: module-determined buffers -> pattern recognition -> one selected rule -> buffer updates"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Psychological Review 111(4), PDF p.9 / published p.1044, control section: multiple applicable rules compete, serial execution selects one according to utility"
+      }
+    ],
+    "authors": [
+      "John R. Anderson",
+      "Daniel Bothell",
+      "Michael D. Byrne",
+      "Scott Douglass",
+      "Christian Lebiere",
+      "Yulin Qin"
+    ],
+    "institutions": [
+      "Carnegie Mellon University",
+      "Rice University"
+    ],
+    "venue": "Psychological Review",
+    "citation_count": null,
+    "construct_labels": [
+      "ACT-R",
+      "production rule",
+      "declarative memory",
+      "procedural memory",
+      "cognitive architecture"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "relation",
+    "modality": "descriptive",
+    "scope": {
+      "conditions": [
+        "integrated task performance requiring coordination among specialized perceptual, action, goal and retrieval subsystems"
+      ],
+      "population": [
+        "humans"
+      ],
+      "substrate": [
+        "multiple specialized cortical-associated subsystems and a central selection loop"
+      ],
+      "task": [
+        "coordinate perception, goal maintenance, retrieval and action through a shared control cycle"
+      ],
+      "temporal_scope": [
+        "repeating serial selection cycles interleaved with parallel subsystem processing"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "specialized_subsystems",
+        "role": "partition",
+        "description": "set of specialized perceptual, action, goal and retrieval subsystems with partly encapsulated internal processing",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "limited_interface_buffers",
+        "role": "state_or_structure",
+        "description": "small interface states through which each specialized subsystem exposes selected information to the central selector",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "current_buffer_pattern",
+        "role": "available_information",
+        "description": "joint pattern of currently exposed interface states available to central control",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "candidate_rules",
+        "role": "state_or_structure",
+        "description": "multiple condition-action mappings that may match the current interface-state pattern",
+        "source_span_ids": [
+          "s1",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "rule_utility",
+        "role": "criterion",
+        "description": "scalar control quantity used to choose among simultaneously applicable mappings",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "selected_rule",
+        "role": "response_or_outcome",
+        "description": "single condition-action mapping chosen for serial execution on the current cycle",
+        "source_span_ids": [
+          "s1",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "buffer_update",
+        "role": "intervention",
+        "description": "change or subsystem request produced by execution of the selected mapping",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "control_cycle",
+        "role": "state_or_structure",
+        "description": "repeating sequence from exposed interface states through rule selection to updated interface states",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "maps_to",
+        "arguments": [
+          "specialized_subsystems",
+          "limited_interface_buffers"
+        ],
+        "description": "each specialized subsystem makes only a limited portion of its internal processing available through its interface state",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "depends_on",
+        "arguments": [
+          "candidate_rules",
+          "current_buffer_pattern"
+        ],
+        "description": "which condition-action mappings are applicable depends on the current joint pattern of exposed interface states",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "depends_on",
+        "arguments": [
+          "selected_rule",
+          "candidate_rules",
+          "rule_utility"
+        ],
+        "description": "serial control selects one applicable mapping according to its control value",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "changes",
+        "arguments": [
+          "selected_rule",
+          "buffer_update",
+          "limited_interface_buffers"
+        ],
+        "description": "executing the selected mapping changes interface states or issues requests to specialized subsystems",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "precedes",
+        "arguments": [
+          "current_buffer_pattern",
+          "selected_rule",
+          "buffer_update"
+        ],
+        "description": "each control cycle orders current interface exposure before selection and selection before the next interface update",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r6",
+        "kind": "constrains",
+        "arguments": [
+          "limited_interface_buffers",
+          "current_buffer_pattern"
+        ],
+        "description": "central coordination is constrained to the limited information exposed by subsystem interfaces rather than unrestricted access to all subsystem-internal activity",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
