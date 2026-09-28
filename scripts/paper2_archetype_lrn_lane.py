@@ -35,6 +35,7 @@ from paper2_basis_structural_skeleton import (
 )
 from paper2_basis_subobject_forgetting import (
     image_equivalent,
+    is_nontrivial,
     restrict_skeleton,
     validate_image,
 )
@@ -48,7 +49,9 @@ from paper2_archetype_mem_pilot import (
     image_embeds_in_image,
     image_embeds_in_skeleton,
     image_id,
-    pair_common_candidates,
+    partial_node_mappings,
+    matched_edge_indices,
+    common_positive_features,
     summarize_image,
 )
 
@@ -92,6 +95,72 @@ def load_lrn_skeletons() -> tuple[dict[str, dict[str, Any]], dict[str, dict[str,
         }
 
     return skeletons, fingerprints
+
+
+def pair_common_candidates_exact(
+    left: dict[str, Any],
+    right: dict[str, Any],
+) -> dict[str, dict[str, Any]]:
+    """MEM-pilot-equivalent pair search with duplicate restriction elimination.
+
+    The frozen MEM procedure enumerates injective partial node mappings,
+    retains the full common edge multiset for each mapping, keeps all shared
+    positive temporal/control features, and canonical-deduplicates resulting
+    F_R images. Multiple mappings can induce the same left-side restriction;
+    evaluating that restriction once changes no candidate identity or support.
+    """
+    temporal, controls = common_positive_features(left, right)
+    out: dict[str, dict[str, Any]] = {}
+    seen_left_restrictions: set[tuple[tuple[str, ...], tuple[int, ...]]] = set()
+
+    for mapping in partial_node_mappings(left, right):
+        left_edges, right_edges = matched_edge_indices(left, right, mapping)
+        left_nodes = sorted(mapping)
+        restriction_key = (tuple(left_nodes), tuple(left_edges))
+        if restriction_key in seen_left_restrictions:
+            continue
+        seen_left_restrictions.add(restriction_key)
+
+        right_nodes = sorted(mapping.values())
+        left_image = restrict_skeleton(
+            left,
+            retained_node_ids=left_nodes,
+            retained_edge_indices=left_edges,
+            retained_temporal_keys=temporal,
+            retained_control_keys=controls,
+        )
+        if not is_nontrivial(left_image):
+            continue
+
+        right_image = restrict_skeleton(
+            right,
+            retained_node_ids=right_nodes,
+            retained_edge_indices=right_edges,
+            retained_temporal_keys=temporal,
+            retained_control_keys=controls,
+        )
+        if not image_equivalent(left_image, right_image):
+            raise LaneError("pair candidate witness failed equivalence check")
+
+        key = canonical_image_key(left_image)
+        if key not in out:
+            out[key] = {
+                "image": left_image,
+                "left_witness": {
+                    "retained_node_ids": left_nodes,
+                    "retained_edge_indices": left_edges,
+                    "retained_temporal_keys": temporal,
+                    "retained_control_keys": controls,
+                },
+                "right_witness": {
+                    "retained_node_ids": right_nodes,
+                    "retained_edge_indices": right_edges,
+                    "retained_temporal_keys": temporal,
+                    "retained_control_keys": controls,
+                },
+            }
+
+    return out
 
 
 def canonical_structural_object(image: dict[str, Any]) -> dict[str, Any]:
@@ -250,7 +319,7 @@ def run_lane() -> dict[str, Any]:
             if skeleton_equivalent(left, right):
                 exact_equivalence_pairs.append([left_id, right_id])
 
-            candidates = pair_common_candidates(left, right)
+            candidates = pair_common_candidates_exact(left, right)
             pair_key = f"{left_id}::{right_id}"
             pair_candidate_counts[pair_key] = len(candidates)
             for key, payload in candidates.items():
