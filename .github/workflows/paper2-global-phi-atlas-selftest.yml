@@ -1,0 +1,95 @@
+name: paper2-global-phi-atlas-selftest
+
+on:
+  pull_request:
+    paths:
+      - "research/paper2/reference_structural_adjudication_v1/*.json"
+      - "research/paper2/chatgpt_reference_claimir_v1/*.json"
+      - "research/paper2/reference_phi_projection_freeze_v1.json"
+      - "research/paper2/reference_global_phi_freeze_v1.json"
+      - "scripts/paper2_reference_phi_atlas.py"
+      - "scripts/paper2_reference_structural_adjudication.py"
+      - "scripts/paper2_phi_compare.py"
+      - ".github/workflows/paper2-global-phi-atlas-selftest.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  global-atlas:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build frozen global 60-claim Phi atlas
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/paper2-global-phi
+          python scripts/paper2_reference_phi_atlas.py \
+            --claim-dir research/paper2/chatgpt_reference_claimir_v1 \
+            --adjudication-dir research/paper2/reference_structural_adjudication_v1 \
+            --source-manifest research/paper2/designed_source_web_fulltext_manifest_v1.json \
+            --expected-claims 60 \
+            --manifest-output /tmp/paper2-global-phi/manifest.json \
+            --atlas-output /tmp/paper2-global-phi/atlas.json \
+            --summary-output /tmp/paper2-global-phi/summary.json
+
+          python -m json.tool /tmp/paper2-global-phi/manifest.json >/dev/null
+          python -m json.tool /tmp/paper2-global-phi/atlas.json >/dev/null
+          python -m json.tool /tmp/paper2-global-phi/summary.json >/dev/null
+
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("/tmp/paper2-global-phi")
+          manifest = json.loads((root / "manifest.json").read_text())
+          atlas = json.loads((root / "atlas.json").read_text())
+          summary = json.loads((root / "summary.json").read_text())
+
+          assert manifest["claim_count"] == 60
+          assert manifest["pair_count"] == 1770
+          assert atlas["claim_count"] == 60
+          assert atlas["pair_count"] == 1770
+          assert summary["claim_count"] == 60
+          assert summary["pair_count"] == 1770
+          assert summary["decision_counts"] == {"PASS": 59, "RESIDUAL": 1}
+
+          frozen = json.loads(Path("research/paper2/reference_phi_projection_freeze_v1.json").read_text())
+          assert frozen["claim_count"] == 60
+          assert frozen["pass_count"] == 59
+          assert frozen["residual_count"] == 1
+          assert frozen["residual_claim_ids"] == ["CH10"]
+
+          global_freeze_path = Path("research/paper2/reference_global_phi_freeze_v1.json")
+          if global_freeze_path.exists():
+              global_freeze = json.loads(global_freeze_path.read_text())
+              assert global_freeze["claim_count"] == summary["claim_count"]
+              assert global_freeze["pair_count"] == summary["pair_count"]
+              assert global_freeze["decision_counts"] == summary["decision_counts"]
+              assert global_freeze["relation_counts"] == summary["relation_counts"]
+              assert global_freeze["relation_counts_by_scope"] == summary["relation_counts_by_scope"]
+              assert global_freeze["equivalence_components"] == summary["equivalence_components"]
+              assert global_freeze["cross_primary_stratum_nonincomparable"] == summary["cross_primary_stratum_nonincomparable"]
+              assert global_freeze["canonical_manifest_sha256"] == summary["manifest_sha256"]
+              assert global_freeze["canonical_atlas_sha256"] == summary["atlas_sha256"]
+              print("GLOBAL_COMMITTED_FREEZE_MATCH=PASS")
+
+          print("GLOBAL_60_CLAIMS=PASS")
+          print("GLOBAL_1770_PAIRS=PASS")
+          print(json.dumps(summary, sort_keys=True))
+          PY
+
+          sha256sum /tmp/paper2-global-phi/manifest.json
+          sha256sum /tmp/paper2-global-phi/atlas.json
+          sha256sum /tmp/paper2-global-phi/summary.json
+
+      - name: Upload global atlas artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: paper2-global-phi-atlas-v1
+          path: /tmp/paper2-global-phi/
+          if-no-files-found: error
