@@ -15,22 +15,32 @@
     },
     {
       "claim_node_id": "monitoring_subsystem",
-      "coordinate_id": "basis.pi1",
-      "required": true
-    },
-    {
-      "claim_node_id": "regulation_subsystem",
-      "coordinate_id": "basis.pi2",
-      "required": true
-    },
-    {
-      "claim_node_id": "regulatory_adjustment",
-      "coordinate_id": "basis.o1",
+      "coordinate_id": "basis.s2",
       "required": true
     },
     {
       "claim_node_id": "competition_metric",
-      "coordinate_id": "basis.q1",
+      "coordinate_id": "basis.s3",
+      "required": true
+    },
+    {
+      "claim_node_id": "prior_conflict_history",
+      "coordinate_id": "basis.o1",
+      "required": true
+    },
+    {
+      "claim_node_id": "regulation_subsystem",
+      "coordinate_id": "basis.s4",
+      "required": true
+    },
+    {
+      "claim_node_id": "control_signal_adjustment",
+      "coordinate_id": "basis.s5",
+      "required": true
+    },
+    {
+      "claim_node_id": "behavioral_output",
+      "coordinate_id": "basis.o2",
       "required": true
     },
     {
@@ -49,21 +59,10 @@
       "fixed_before_phi": true
     },
     "criterion_Q": {
-      "state": "present",
-      "claim_node_ids": [
-        "competition_metric"
-      ],
-      "provenance_kind": "source_declared",
-      "fixed_before_phi": true
+      "state": "not_required"
     },
     "partition_Pi": {
-      "state": "present",
-      "claim_node_ids": [
-        "monitoring_subsystem",
-        "regulation_subsystem"
-      ],
-      "provenance_kind": "source_declared",
-      "fixed_before_phi": true
+      "state": "not_required"
     },
     "resource_C": {
       "state": "not_required"
@@ -73,40 +72,57 @@
     "time_index": {
       "state": "present",
       "source_span_ids": [
-        "s1",
-        "s3"
+        "s3",
+        "s4"
       ]
     },
     "history_window": {
       "state": "present",
       "source_span_ids": [
-        "s1",
         "s3"
       ]
     },
     "future_horizon": {
       "state": "present",
       "source_span_ids": [
-        "s1",
-        "s3"
+        "s3",
+        "s4"
       ]
     },
     "recurrence": {
       "state": "present",
       "source_span_ids": [
-        "s3"
+        "s3",
+        "s4"
       ]
     },
     "persistence": {
-      "state": "not_required"
+      "state": "present",
+      "source_span_ids": [
+        "s3"
+      ]
     },
     "ordering": [
       {
-        "before_coordinate_id": "basis.s1",
+        "before_coordinate_id": "basis.s3",
         "after_coordinate_id": "basis.o1",
         "source_span_ids": [
-          "s1",
           "s3"
+        ]
+      },
+      {
+        "before_coordinate_id": "basis.o1",
+        "after_coordinate_id": "basis.s5",
+        "source_span_ids": [
+          "s3"
+        ]
+      },
+      {
+        "before_coordinate_id": "basis.s5",
+        "after_coordinate_id": "basis.o2",
+        "source_span_ids": [
+          "s3",
+          "s4"
         ]
       }
     ]
