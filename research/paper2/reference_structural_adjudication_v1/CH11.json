@@ -4,42 +4,57 @@
   "adjudicator": {
     "tool": "ChatGPT",
     "version": "GPT-5.6 Sol",
-    "procedure": "paper2-reference-structural-adjudication-v1:267",
+    "procedure": "paper2-challenge-a-reference-structural-adjudication-v1:267",
     "adjudicated_at": "2026-09-28"
   },
   "coordinate_map": [
     {
-      "claim_node_id": "reference_level",
+      "claim_node_id": "reference_point",
       "coordinate_id": "basis.q1",
       "required": true
     },
     {
-      "claim_node_id": "ordered_outcomes",
-      "coordinate_id": "basis.pi1",
-      "required": true
-    },
-    {
-      "claim_node_id": "outcome_values",
+      "claim_node_id": "ranked_outcome_sequence",
       "coordinate_id": "basis.s1",
       "required": true
     },
     {
-      "claim_node_id": "outcome_probabilities",
+      "claim_node_id": "gain_loss_partition",
+      "coordinate_id": "basis.pi1",
+      "required": true
+    },
+    {
+      "claim_node_id": "state_event_information",
       "coordinate_id": "basis.o1",
       "required": true
     },
     {
-      "claim_node_id": "cumulative_probability_transform",
+      "claim_node_id": "sign_specific_cumulative_functions",
       "coordinate_id": "basis.s2",
       "required": true
     },
     {
-      "claim_node_id": "rank_dependent_weights",
+      "claim_node_id": "rank_marginal_coefficients",
       "coordinate_id": "basis.s3",
       "required": true
     },
     {
-      "claim_node_id": "overall_option_value",
+      "claim_node_id": "subjective_outcome_values",
+      "coordinate_id": "basis.s4",
+      "required": true
+    },
+    {
+      "claim_node_id": "positive_branch_value",
+      "coordinate_id": "basis.s5",
+      "required": true
+    },
+    {
+      "claim_node_id": "negative_branch_value",
+      "coordinate_id": "basis.s6",
+      "required": true
+    },
+    {
+      "claim_node_id": "overall_prospect_value",
       "coordinate_id": "basis.o2",
       "required": true
     }
@@ -51,7 +66,7 @@
     "criterion_Q": {
       "state": "present",
       "claim_node_ids": [
-        "reference_level"
+        "reference_point"
       ],
       "provenance_kind": "source_declared",
       "fixed_before_phi": true
@@ -59,7 +74,7 @@
     "partition_Pi": {
       "state": "present",
       "claim_node_ids": [
-        "ordered_outcomes"
+        "gain_loss_partition"
       ],
       "provenance_kind": "source_declared",
       "fixed_before_phi": true

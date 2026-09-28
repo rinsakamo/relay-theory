@@ -4,18 +4,23 @@
   "adjudicator": {
     "tool": "ChatGPT",
     "version": "GPT-5.6 Sol",
-    "procedure": "paper2-reference-structural-adjudication-v1:267",
+    "procedure": "paper2-challenge-a-reference-structural-adjudication-v1:267",
     "adjudicated_at": "2026-09-28"
   },
   "coordinate_map": [
     {
-      "claim_node_id": "organism_bounded_process",
+      "claim_node_id": "organism_centered_system",
       "coordinate_id": "basis.s1",
       "required": true
     },
     {
-      "claim_node_id": "external_resource",
+      "claim_node_id": "coupled_external_element",
       "coordinate_id": "basis.s2",
+      "required": true
+    },
+    {
+      "claim_node_id": "relevance_based_inclusion_rule",
+      "coordinate_id": "basis.q1",
       "required": true
     },
     {
@@ -24,12 +29,22 @@
       "required": true
     },
     {
-      "claim_node_id": "functional_input_output_assignment",
+      "claim_node_id": "composite_candidate_system",
       "coordinate_id": "basis.s3",
       "required": true
     },
     {
-      "claim_node_id": "unrestricted_system_expansion",
+      "claim_node_id": "stable_system_individuation",
+      "coordinate_id": "basis.q2",
+      "required": true
+    },
+    {
+      "claim_node_id": "cognitive_state_attribution",
+      "coordinate_id": "basis.s4",
+      "required": true
+    },
+    {
+      "claim_node_id": "system_taxonomy_failure",
       "coordinate_id": "basis.o1",
       "required": true
     }
@@ -39,7 +54,13 @@
       "state": "not_required"
     },
     "criterion_Q": {
-      "state": "not_required"
+      "state": "present",
+      "claim_node_ids": [
+        "relevance_based_inclusion_rule",
+        "stable_system_individuation"
+      ],
+      "provenance_kind": "source_declared",
+      "fixed_before_phi": true
     },
     "partition_Pi": {
       "state": "present",
@@ -55,7 +76,12 @@
   },
   "temporal": {
     "time_index": {
-      "state": "not_required"
+      "state": "present",
+      "source_span_ids": [
+        "s2",
+        "s3",
+        "s4"
+      ]
     },
     "history_window": {
       "state": "not_required"
@@ -67,7 +93,12 @@
       "state": "not_required"
     },
     "persistence": {
-      "state": "not_required"
+      "state": "present",
+      "source_span_ids": [
+        "s2",
+        "s3",
+        "s4"
+      ]
     },
     "ordering": []
   },
