@@ -1,0 +1,37 @@
+name: paper2-global-incomparability-diagnostic
+
+on:
+  pull_request:
+    paths:
+      - "scripts/paper2_global_incomparability_diagnostic.py"
+      - ".github/workflows/paper2-global-incomparability-diagnostic.yml"
+      - "research/paper2/reference_structural_adjudication_v1/*.json"
+      - "research/paper2/chatgpt_reference_claimir_v1/*.json"
+      - "scripts/paper2_phi_compare.py"
+      - "scripts/paper2_reference_structural_adjudication.py"
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run frozen global incomparability diagnostic
+        run: |
+          set -euo pipefail
+          python scripts/paper2_global_incomparability_diagnostic.py             --claim-dir research/paper2/chatgpt_reference_claimir_v1             --adjudication-dir research/paper2/reference_structural_adjudication_v1             --output /tmp/paper2-global-incomparability-diagnostic.json
+          python -m json.tool /tmp/paper2-global-incomparability-diagnostic.json >/dev/null
+          sha256sum /tmp/paper2-global-incomparability-diagnostic.json
+
+      - name: Upload diagnostic
+        uses: actions/upload-artifact@v4
+        with:
+          name: paper2-global-incomparability-diagnostic-v1
+          path: /tmp/paper2-global-incomparability-diagnostic.json
+          if-no-files-found: error
