@@ -7,15 +7,31 @@
     "source_spans": [
       {
         "span_id": "s1",
-        "locator": "Journal of Neurophysiology 108(2), Abstract: target performance defined by shift of a speed-accuracy function rather than movement along an unchanged function"
+        "locator": "Journal of Neurophysiology 108(2), published pp.578-579, Abstract and Introduction: task-level learning is operationalized as a training-related change in the empirical relation between movement speed and success, rather than movement along an unchanged relation"
       },
       {
         "span_id": "s2",
-        "locator": "Journal of Neurophysiology 108(2), Abstract/Results: restricted-speed practice produces a global shift across the difficulty range"
+        "locator": "Journal of Neurophysiology 108(2), published pp.580-582, Methods and Results/Figs.2-3: 50 right-handed adults; day-1/day-5 testing at five imposed movement-time ranges; days-2-4 restricted-range training; trained groups improve across trained and untrained test speeds while the untrained control does not"
       },
       {
         "span_id": "s3",
-        "locator": "Journal of Neurophysiology 108(2), Abstract/Conclusion: improved task-level outcome maps mainly to reduced trial-to-trial trajectory variability and increased smoothness while submovement structure remains invariant"
+        "locator": "Journal of Neurophysiology 108(2), published pp.583-584, Results/Figs.4-5: fixed-speed pre/post tests separate training-related kinematic changes from speed effects; trajectory variability falls markedly and mean trajectory changes modestly"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Journal of Neurophysiology 108(2), published pp.585-586, Results/Fig.6: critical-zone entries decrease and successful online corrections increase after training; authors explicitly state these measures do not establish feedforward/feedback cause-effect mechanisms"
+      },
+      {
+        "span_id": "s5",
+        "locator": "Journal of Neurophysiology 108(2), published pp.586-588, Results/Figs.7-8: integrated squared jerk decreases across test speeds while submovement number, duration, and amplitude show no significant testing-day effect"
+      },
+      {
+        "span_id": "s6",
+        "locator": "Journal of Neurophysiology 108(2), published pp.588-589, Results/Fig.9 and Discussion: slow, medium, and fast restricted-range training groups show similar positive pre/post changes across five test speeds, indicating broad generalization beyond the practiced range"
+      },
+      {
+        "span_id": "s7",
+        "locator": "Journal of Neurophysiology 108(2), published p.592, Conclusion: task-level improvement is captured by the global performance-relation shift; kinematic changes include mean trajectory, variability reduction, and improved correction-related measures with invariant isochronous submovements; cortical/model-free mechanism is presented as conjecture"
       }
     ],
     "authors": [
@@ -37,82 +53,148 @@
     "extractor_version": "GPT-5.6 Sol",
     "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
     "extracted_at": "2026-09-28",
-    "manual_review_status": "unreviewed"
+    "manual_review_status": "reviewed"
   },
   "claim_core": {
-    "claim_type": "constraint",
-    "modality": "probabilistic",
+    "claim_type": "relation",
+    "modality": "descriptive",
     "scope": {
       "conditions": [
-        "visually guided curved wrist movements without an external perturbation"
+        "visually guided curved wrist movements without an externally imposed perturbation",
+        "performance assessed at fixed imposed movement-time ranges before and after three consecutive days of restricted-range practice",
+        "training range varied across slow, medium, and fast practice groups, with an untrained test-retest control group"
       ],
       "population": [
-        "human participants"
+        "50 right-handed task-naive adults aged 18-38 years, randomly assigned to three trained groups and one untrained control group"
       ],
       "substrate": [],
       "task": [
-        "curved wrist movement task sampled across multiple speed/difficulty ranges"
+        "guide a cursor through a semicircular channel with the nondominant wrist while satisfying imposed movement-time requirements and avoiding the channel boundaries"
       ],
       "temporal_scope": [
-        "baseline and repeated training across consecutive days"
+        "baseline testing on day 1, training on days 2-4, and post-training testing on day 5",
+        "pre/post testing spans five movement-time ranges, including speeds outside each trained range"
       ]
     },
     "nodes": [
       {
-        "id": "joint_speed_accuracy_frontier",
-        "role": "criterion",
-        "description": "empirically derived relation jointly constraining movement speed and success rate across difficulty",
+        "id": "imposed_test_speed",
+        "role": "condition",
+        "description": "movement-time range imposed during the pre/post test blocks",
         "source_span_ids": [
-          "s1",
-          "s2"
+          "s2",
+          "s3",
+          "s6"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "restricted_range_training",
+        "id": "restricted_range_practice",
         "role": "intervention",
-        "description": "repeated movement training within a restricted speed range",
+        "description": "three days of rewarded practice restricted to one designated movement-time range",
         "source_span_ids": [
-          "s2"
+          "s2",
+          "s6"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "task_level_performance",
-        "role": "response_or_outcome",
-        "description": "success across the sampled joint speed/accuracy frontier",
+        "id": "joint_speed_success_relation",
+        "role": "state_or_structure",
+        "description": "empirical function relating imposed movement time to probability of completing the trajectory within the channel",
         "source_span_ids": [
           "s1",
           "s2",
-          "s3"
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "global_relation_shift",
+        "role": "response_or_outcome",
+        "description": "positive pre/post change in success across the sampled movement-time ranges, including ranges not experienced during practice",
+        "source_span_ids": [
+          "s2",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "performance_shift_criterion",
+        "role": "criterion",
+        "description": "task-level improvement is inferred from a training-related shift of the joint speed-success relation relative to baseline rather than from moving to a different operating point on an unchanged relation",
+        "source_span_ids": [
+          "s1",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "pre_post_speed_sweep",
+        "role": "probe",
+        "description": "day-1 and day-5 testing at five imposed movement-time ranges used to estimate the joint performance relation and its change",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s6"
         ],
         "grounding": "normalized"
       },
       {
         "id": "trajectory_variability",
         "role": "response_or_outcome",
-        "description": "trial-to-trial variability of the full movement trajectory",
+        "description": "trial-to-trial variance of the task-relevant radial trajectory at matched test speeds",
         "source_span_ids": [
-          "s3"
+          "s3",
+          "s7"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "movement_smoothness",
+        "id": "mean_trajectory",
         "role": "response_or_outcome",
-        "description": "smoothness of the executed movement trajectory",
+        "description": "average radial trajectory at each matched test speed",
         "source_span_ids": [
-          "s3"
+          "s3",
+          "s7"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "difficulty_sweep_probe",
-        "role": "probe",
-        "description": "sampling performance across a broad range of movement speeds before and after training",
+        "id": "trajectory_irregularity",
+        "role": "response_or_outcome",
+        "description": "integrated squared jerk of the trajectory, with lower values corresponding to smoother execution",
         "source_span_ids": [
-          "s1",
-          "s2"
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "early_boundary_risk_rate",
+        "role": "response_or_outcome",
+        "description": "proportion of movements entering the source-defined critical zone early in the trajectory",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "successful_online_correction_rate",
+        "role": "response_or_outcome",
+        "description": "proportion of critical-zone movements that subsequently remain inside the channel",
+        "source_span_ids": [
+          "s4",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "submovement_structure",
+        "role": "state_or_structure",
+        "description": "movement segmentation indexed by jerk-defined submovement number, duration, and amplitude",
+        "source_span_ids": [
+          "s5",
+          "s7"
         ],
         "grounding": "normalized"
       }
@@ -120,56 +202,139 @@
     "relations": [
       {
         "id": "r1",
-        "kind": "changes",
+        "kind": "maps_to",
         "arguments": [
-          "restricted_range_training",
-          "joint_speed_accuracy_frontier"
+          "pre_post_speed_sweep",
+          "joint_speed_success_relation",
+          "global_relation_shift"
         ],
-        "description": "training produces a global shift of the empirically derived joint frontier rather than a mere operating-point shift",
+        "description": "the fixed-speed pre/post sweep estimates the joint performance relation and the change in success across the sampled difficulty range",
         "source_span_ids": [
-          "s1",
-          "s2"
+          "s2",
+          "s6"
         ],
         "grounding": "normalized"
       },
       {
         "id": "r2",
-        "kind": "maps_to",
+        "kind": "changes",
         "arguments": [
-          "difficulty_sweep_probe",
-          "task_level_performance"
+          "restricted_range_practice",
+          "global_relation_shift"
         ],
-        "description": "the difficulty sweep measures change in overall task-level performance",
+        "description": "restricted-range practice is followed by a positive shift across both practiced and unpracticed test speeds, whereas test-retest without practice does not show appreciable improvement",
         "source_span_ids": [
-          "s1",
-          "s2"
+          "s2",
+          "s6"
         ],
         "grounding": "normalized"
       },
       {
         "id": "r3",
-        "kind": "depends_on",
+        "kind": "satisfies",
         "arguments": [
-          "task_level_performance",
-          "trajectory_variability",
-          "movement_smoothness"
+          "global_relation_shift",
+          "performance_shift_criterion"
         ],
-        "description": "the observed performance improvement is associated mainly with lower trajectory variability and greater smoothness",
+        "description": "a positive shift of the joint relation relative to baseline satisfies the source's operational task-level improvement criterion",
         "source_span_ids": [
-          "s3"
+          "s1",
+          "s6"
         ],
         "grounding": "normalized"
       },
       {
         "id": "r4",
-        "kind": "satisfies",
+        "kind": "changes",
         "arguments": [
-          "task_level_performance",
-          "joint_speed_accuracy_frontier"
+          "restricted_range_practice",
+          "trajectory_variability"
         ],
-        "description": "improvement is defined against the joint speed/accuracy relation rather than either component alone",
+        "description": "trial-to-trial task-relevant trajectory variability is substantially lower after practice at matched test speeds",
         "source_span_ids": [
-          "s1"
+          "s3",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "changes",
+        "arguments": [
+          "restricted_range_practice",
+          "mean_trajectory"
+        ],
+        "description": "mean trajectory changes after practice, but these changes are smaller than the reduction in variability",
+        "source_span_ids": [
+          "s3",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r6",
+        "kind": "changes",
+        "arguments": [
+          "restricted_range_practice",
+          "trajectory_irregularity"
+        ],
+        "description": "trajectory irregularity decreases after practice across test speeds",
+        "source_span_ids": [
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r7",
+        "kind": "changes",
+        "arguments": [
+          "restricted_range_practice",
+          "early_boundary_risk_rate",
+          "successful_online_correction_rate"
+        ],
+        "description": "practice reduces early critical-zone entries and increases successful recovery from such entries",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r8",
+        "kind": "other",
+        "arguments": [
+          "early_boundary_risk_rate",
+          "successful_online_correction_rate"
+        ],
+        "description": "the observed changes are consistent with improved planning and online correction, but the source explicitly states that the measurements do not establish cause-effect control mechanisms",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r9",
+        "kind": "other",
+        "arguments": [
+          "restricted_range_practice",
+          "submovement_structure"
+        ],
+        "description": "jerk-defined submovement number, duration, and amplitude show no significant testing-day effect despite improvement in task-level performance and trajectory smoothness",
+        "source_span_ids": [
+          "s5",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r10",
+        "kind": "depends_on",
+        "arguments": [
+          "submovement_structure",
+          "imposed_test_speed"
+        ],
+        "description": "submovement number and amplitude vary strongly with imposed movement time, while duration changes only negligibly across the tested range",
+        "source_span_ids": [
+          "s5"
         ],
         "grounding": "normalized"
       }

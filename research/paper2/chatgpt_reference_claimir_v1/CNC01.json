@@ -7,15 +7,19 @@
     "source_spans": [
       {
         "span_id": "s1",
-        "locator": "Psychological Review 92(3), published p.289, abstract: proposed source of comprehensible class structure"
+        "locator": "Psychological Review 92(3), published p.289 abstract and pp.289-290 opening thesis: insufficient constraint from feature-overlap accounts; proposed dependence of class coherence on background knowledge"
       },
       {
         "span_id": "s2",
-        "locator": "Psychological Review 92(3), published pp.289-291, opening discussion: underconstrained feature-overlap accounts and the need for constraints on possible groupings"
+        "locator": "Psychological Review 92(3), published pp.291-297, insufficiency-of-similarity discussion: unconstrained properties/weights admit arbitrary groupings and fail to determine coherence"
       },
       {
         "span_id": "s3",
-        "locator": "Psychological Review 92(3), abstract/concluding proposal: background relational knowledge links items in a domain and structures their internal attributes"
+        "locator": "Psychological Review 92(3), published pp.298-299, 'Concepts as Embedded in Theories' and Tables 1-2: explanatory relations constrain relevant properties; internal and external structure are distinguished"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Psychological Review 92(3), published pp.313-314, concluding synthesis: two components of coherence are internal relational structure and fit with the broader knowledge base"
       }
     ],
     "authors": [
@@ -40,14 +44,14 @@
     "extractor_version": "GPT-5.6 Sol",
     "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
     "extracted_at": "2026-09-28",
-    "manual_review_status": "unreviewed"
+    "manual_review_status": "reviewed"
   },
   "claim_core": {
-    "claim_type": "definition",
-    "modality": "definitional",
+    "claim_type": "relation",
+    "modality": "descriptive",
     "scope": {
       "conditions": [
-        "candidate groupings of items that require an account of why the members form a comprehensible class"
+        "a candidate class is being evaluated for why its members form a comprehensible grouping"
       ],
       "population": [
         "humans"
@@ -58,41 +62,55 @@
     },
     "nodes": [
       {
-        "id": "candidate_grouping",
-        "role": "partition",
-        "description": "a proposed grouping of items whose internal unity is to be explained",
-        "source_span_ids": [
-          "s1",
-          "s2"
-        ],
-        "grounding": "normalized"
-      },
-      {
-        "id": "background_relational_structure",
+        "id": "grouping_coherence",
         "role": "state_or_structure",
-        "description": "prior world knowledge that relates items and constrains which groupings are intelligible",
+        "description": "degree to which the members of a candidate class form a comprehensible and usable grouping",
         "source_span_ids": [
           "s1",
           "s2",
-          "s3"
+          "s4"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "internal_attribute_structure",
+        "id": "background_explanatory_knowledge",
         "role": "state_or_structure",
-        "description": "organization among attributes internal to the grouped items",
+        "description": "background domain knowledge containing explanatory, causal, or other relations among items and classes",
         "source_span_ids": [
-          "s3"
+          "s1",
+          "s3",
+          "s4"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "alternative_groupings",
-        "role": "partition",
-        "description": "other possible groupings that a weak unconstrained account would also permit",
+        "id": "internal_relational_structure",
+        "role": "state_or_structure",
+        "description": "relations among properties internal to the candidate class",
         "source_span_ids": [
-          "s2"
+          "s1",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "external_knowledge_fit",
+        "role": "state_or_structure",
+        "description": "integration of the candidate class with other knowledge in the broader knowledge base",
+        "source_span_ids": [
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "underconstrained_alternative_groupings",
+        "role": "state_or_structure",
+        "description": "other possible groupings left admissible when an account does not sufficiently constrain relevant properties and relations",
+        "source_span_ids": [
+          "s2",
+          "s3"
         ],
         "grounding": "normalized"
       }
@@ -102,39 +120,54 @@
         "id": "r1",
         "kind": "depends_on",
         "arguments": [
-          "candidate_grouping",
-          "background_relational_structure"
+          "grouping_coherence",
+          "background_explanatory_knowledge"
         ],
-        "description": "whether the candidate grouping forms a comprehensible class depends on its fit with prior relational knowledge",
+        "description": "the coherence of a candidate grouping depends on its fit with background explanatory knowledge",
         "source_span_ids": [
           "s1",
-          "s2",
-          "s3"
+          "s3",
+          "s4"
         ],
         "grounding": "normalized"
       },
       {
         "id": "r2",
-        "kind": "constrains",
+        "kind": "depends_on",
         "arguments": [
-          "background_relational_structure",
-          "internal_attribute_structure"
+          "grouping_coherence",
+          "internal_relational_structure",
+          "external_knowledge_fit"
         ],
-        "description": "prior relational knowledge constrains how internal attributes are organized",
+        "description": "coherence depends on both internal relational organization and integration with the broader knowledge base",
         "source_span_ids": [
-          "s3"
+          "s3",
+          "s4"
         ],
         "grounding": "normalized"
       },
       {
         "id": "r3",
-        "kind": "distinguishes",
+        "kind": "constrains",
         "arguments": [
-          "candidate_grouping",
-          "alternative_groupings",
-          "background_relational_structure"
+          "background_explanatory_knowledge",
+          "internal_relational_structure"
         ],
-        "description": "the added relational constraints discriminate the intended grouping from otherwise admissible alternatives",
+        "description": "background explanatory knowledge constrains which internal properties and relations are treated as relevant and how they are organized",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "constrains",
+        "arguments": [
+          "background_explanatory_knowledge",
+          "underconstrained_alternative_groupings"
+        ],
+        "description": "adding explanatory relations limits the otherwise broad set of possible groupings admitted by weak property-overlap accounts",
         "source_span_ids": [
           "s2",
           "s3"

@@ -7,15 +7,31 @@
     "source_spans": [
       {
         "span_id": "s1",
-        "locator": "Psychological Review 89(4), published p.369, Abstract: two major stages from interpreted facts to direct procedure-based performance"
+        "locator": "Psychological Review 89(4), published pp.369-370, Abstract and opening framework: fact-mediated interpretation precedes direct procedure-based performance; practice drives gradual conversion, followed by continued tuning and speedup"
       },
       {
         "span_id": "s2",
-        "locator": "Psychological Review 89(4), published p.369, Abstract: compilation consists of composition and proceduralization"
+        "locator": "Psychological Review 89(4), published pp.382-384, compilation protocols and mechanisms: speedup, loss of verbal rehearsal, unitary application; composition combines sequential operations, whereas proceduralization embeds retrieved factual products into new procedures and reduces working-memory demand"
       },
       {
         "span_id": "s3",
-        "locator": "Psychological Review 89(4), published p.369, Abstract: later generalization, discrimination, and strengthening refine the resulting procedures and relate to practice speed-up"
+        "locator": "Psychological Review 89(4), published p.389, comparison of compilation mechanisms: composition can encode sequences while remaining general, whereas proceduralization produces more task-specific procedures; conversion preserves the behavior licensed by prior interpretation"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Psychological Review 89(4), published pp.391-392, generalization section: comparison of multiple learned procedures extracts common structure and broadens application beyond the initial specific cases"
+      },
+      {
+        "span_id": "s5",
+        "locator": "Psychological Review 89(4), published pp.392-395, discrimination and strengthening sections: discrimination restricts overly broad application using correct/incorrect cases and feedback; strength adjustments alter selection and successful application of competing procedures"
+      },
+      {
+        "span_id": "s6",
+        "locator": "Psychological Review 89(4), published pp.398-400, skill-speedup analysis: algorithmic changes reduce the expected number of applied operations, strengthening reduces time per operation, and under stated assumptions practice produces an approximate power-function decrease in processing time"
+      },
+      {
+        "span_id": "s7",
+        "locator": "Psychological Review 89(4), published pp.403-404, Summary and conclusion: the progression from fact-mediated interpretation to compiled direct performance and continual tuning is explicitly described as an approximate stage analysis; different components of one task may occupy different points in the progression simultaneously"
       }
     ],
     "authors": [
@@ -39,72 +55,169 @@
     "extractor_version": "GPT-5.6 Sol",
     "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
     "extracted_at": "2026-09-28",
-    "manual_review_status": "unreviewed"
+    "manual_review_status": "reviewed"
   },
   "claim_core": {
-    "claim_type": "definition",
-    "modality": "definitional",
+    "claim_type": "relation",
+    "modality": "descriptive",
     "scope": {
       "conditions": [
-        "source-defined account of acquiring a rule-governed cognitive performance"
+        "source-theory account of acquiring and practicing symbolic or rule-governed task performance",
+        "repeated task experience can transform the structures used to generate performance"
       ],
       "population": [
-        "human cognitive performers"
+        "human learners"
       ],
       "substrate": [
-        "symbolic fact representation",
-        "executable rule representation"
+        "fact-encoded information and executable condition-action structures in the source model"
       ],
       "task": [
-        "rule-governed cognitive tasks"
+        "symbolic and problem-solving tasks, with detailed evidence from geometry-proof acquisition and supporting evidence from automatization, language, and category-learning domains"
       ],
       "temporal_scope": [
-        "early interpreted-fact phase followed by direct rule-based execution and later refinement"
+        "initial fact-mediated performance, followed by gradual conversion to more direct executable procedures, followed by continued tuning and speedup",
+        "different components of one task may occupy different points in this progression at the same time"
       ]
     },
     "nodes": [
       {
-        "id": "fact_based_phase",
-        "role": "partition",
-        "description": "early phase in which domain facts are interpreted during performance",
-        "source_span_ids": [
-          "s1"
-        ],
-        "grounding": "normalized"
-      },
-      {
-        "id": "executable_rule_phase",
-        "role": "partition",
-        "description": "later phase in which domain information is directly embodied in executable procedures",
-        "source_span_ids": [
-          "s1"
-        ],
-        "grounding": "normalized"
-      },
-      {
-        "id": "composition_transform",
+        "id": "fact_encoded_information",
         "role": "state_or_structure",
-        "description": "transformation that collapses sequences of executable operations into a combined operation",
+        "description": "domain instructions and problem information represented as facts that must initially be interpreted to guide behavior",
+        "source_span_ids": [
+          "s1",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "general_interpretive_procedure",
+        "role": "state_or_structure",
+        "description": "pre-existing general procedures that operate on fact-encoded information to generate early task behavior",
+        "source_span_ids": [
+          "s1",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "early_task_behavior",
+        "role": "response_or_outcome",
+        "description": "task behavior generated by interpreting fact-encoded information with general procedures",
+        "source_span_ids": [
+          "s1",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "operation_sequence",
+        "role": "state_or_structure",
+        "description": "a sequence of executable operations used while solving a task",
         "source_span_ids": [
           "s2"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "fact_embedding_transform",
-        "role": "state_or_structure",
-        "description": "transformation that embeds factual content into executable procedures",
+        "id": "sequence_combination_process",
+        "role": "other",
+        "description": "learning process that combines successively applied operations into a single operation with the effect of the sequence",
         "source_span_ids": [
-          "s2"
-        ],
-        "grounding": "normalized"
-      },
-      {
-        "id": "later_refinement",
-        "role": "state_or_structure",
-        "description": "subsequent generalization, discrimination, and strengthening of executable procedures",
-        "source_span_ids": [
+          "s2",
           "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "combined_operation",
+        "role": "state_or_structure",
+        "description": "single executable structure that embodies a previously sequential set of operations and can reduce the number of applications needed for a task",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "fact_embedding_process",
+        "role": "other",
+        "description": "learning process that embeds the useful products of factual retrieval into executable structures so the factual information need not be retrieved and maintained during each application",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "task_bound_procedure",
+        "role": "state_or_structure",
+        "description": "direct executable structure specialized enough to perform a practiced task without the same fact-retrieval requirements as early interpreted performance",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "working_memory_demand",
+        "role": "state_or_structure",
+        "description": "amount of task-relevant information that must be retrieved and kept active during execution",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "scope_generalization_process",
+        "role": "other",
+        "description": "learning process that compares multiple learned structures, extracts common structure, and broadens their range of appropriate application",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "scope_discrimination_process",
+        "role": "other",
+        "description": "learning process that uses correct and incorrect applications and feedback to restrict structures that apply too broadly",
+        "source_span_ids": [
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "strength_adjustment_process",
+        "role": "other",
+        "description": "learning process that changes the relative strength of executable structures as a function of successful application and feedback",
+        "source_span_ids": [
+          "s5",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "practice_exposure",
+        "role": "condition",
+        "description": "repeated opportunities to perform and receive consequences from the task",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s5",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "performance_time",
+        "role": "response_or_outcome",
+        "description": "time required to execute the practiced task or its component operations",
+        "source_span_ids": [
+          "s2",
+          "s6"
         ],
         "grounding": "normalized"
       }
@@ -112,30 +225,31 @@
     "relations": [
       {
         "id": "r1",
-        "kind": "precedes",
+        "kind": "maps_to",
         "arguments": [
-          "fact_based_phase",
-          "executable_rule_phase"
+          "fact_encoded_information",
+          "general_interpretive_procedure",
+          "early_task_behavior"
         ],
-        "description": "the source-defined developmental ordering moves from interpreted facts toward direct executable procedures",
+        "description": "early performance is generated by general procedures interpreting fact-encoded task information",
         "source_span_ids": [
-          "s1"
+          "s1",
+          "s7"
         ],
         "grounding": "normalized"
       },
       {
         "id": "r2",
-        "kind": "maps_to",
+        "kind": "changes",
         "arguments": [
-          "fact_based_phase",
-          "composition_transform",
-          "fact_embedding_transform",
-          "executable_rule_phase"
+          "sequence_combination_process",
+          "operation_sequence",
+          "combined_operation"
         ],
-        "description": "the two compilation transformations convert early interpreted structure into the later executable form",
+        "description": "successively used operations can be combined into a single executable structure that preserves the effect of the sequence while reducing the number of separate applications",
         "source_span_ids": [
-          "s1",
-          "s2"
+          "s2",
+          "s3"
         ],
         "grounding": "normalized"
       },
@@ -143,25 +257,112 @@
         "id": "r3",
         "kind": "changes",
         "arguments": [
-          "later_refinement",
-          "executable_rule_phase"
+          "fact_embedding_process",
+          "fact_encoded_information",
+          "task_bound_procedure"
         ],
-        "description": "later refinement alters the selectivity and strength of the executable procedures",
+        "description": "repeated use can create a task-bound executable structure in which products formerly obtained by retrieving factual information are embedded directly",
         "source_span_ids": [
+          "s2",
           "s3"
         ],
         "grounding": "normalized"
       },
       {
         "id": "r4",
-        "kind": "distinguishes",
+        "kind": "changes",
         "arguments": [
-          "fact_based_phase",
-          "executable_rule_phase"
+          "fact_embedding_process",
+          "working_memory_demand"
         ],
-        "description": "the account explicitly partitions acquisition into two representational/performance phases",
+        "description": "embedding formerly retrieved factual products reduces the need to retrieve and maintain that information during execution",
         "source_span_ids": [
-          "s1"
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "other",
+        "arguments": [
+          "fact_encoded_information",
+          "task_bound_procedure"
+        ],
+        "description": "formation of a direct executable structure does not require loss of the corresponding fact-encoded information; both may remain available",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r6",
+        "kind": "changes",
+        "arguments": [
+          "scope_generalization_process",
+          "task_bound_procedure"
+        ],
+        "description": "comparison across learned structures can broaden appropriate applicability by retaining common structure and dropping unnecessary specificity",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r7",
+        "kind": "changes",
+        "arguments": [
+          "scope_discrimination_process",
+          "task_bound_procedure"
+        ],
+        "description": "experience with correct and incorrect applications can narrow overly broad applicability by adding discriminating conditions or actions",
+        "source_span_ids": [
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r8",
+        "kind": "changes",
+        "arguments": [
+          "strength_adjustment_process",
+          "task_bound_procedure"
+        ],
+        "description": "successful application and feedback alter relative strength, affecting which competing executable structures are selected and how efficiently they apply",
+        "source_span_ids": [
+          "s5",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r9",
+        "kind": "depends_on",
+        "arguments": [
+          "performance_time",
+          "practice_exposure",
+          "sequence_combination_process",
+          "scope_generalization_process",
+          "scope_discrimination_process",
+          "strength_adjustment_process"
+        ],
+        "description": "practice-related speedup is attributed to both reductions in the expected number of operations and faster application of individual operations; under the source model's stated assumptions the resulting decrease in processing time is approximately power-shaped",
+        "source_span_ids": [
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r10",
+        "kind": "precedes",
+        "arguments": [
+          "early_task_behavior",
+          "task_bound_procedure"
+        ],
+        "description": "the source proposes a typical component-level progression from fact-mediated performance toward direct executable performance, while explicitly treating the stage description as an approximation rather than an exclusive whole-task partition",
+        "source_span_ids": [
+          "s1",
+          "s7"
         ],
         "grounding": "normalized"
       }

@@ -245,7 +245,7 @@ def verify_authorization(
         "research/paper2/extraction_two_pass_systemone_v4.json": authorized_v4_contract_blob,
         "scripts/paper2_extraction_two_pass_systemone_v4.py": authorized_v4_compiler_blob,
         "research/paper2/claim_ir_v1.schema.json": authorized_claim_ir_blob,
-        "scripts/paper2_extraction_two_pass_llama_cpp_transaction_v4.py": authorized_historical_v3_runner_blob,
+        "scripts/paper2_extraction_two_pass_llama_cpp_transaction_v3.py": authorized_historical_v3_runner_blob,
         "research/paper2/extraction_v3_real_calibration_transaction_v1.json": authorized_historical_v3_manifest_blob,
     }
     for rel, supplied in checks.items():
@@ -269,7 +269,7 @@ def verify_authorization(
         "v4_contract_blob": checks["research/paper2/extraction_two_pass_systemone_v4.json"],
         "v4_compiler_blob": checks["scripts/paper2_extraction_two_pass_systemone_v4.py"],
         "claim_ir_blob": checks["research/paper2/claim_ir_v1.schema.json"],
-        "historical_v3_runner_blob": checks["scripts/paper2_extraction_two_pass_llama_cpp_transaction_v4.py"],
+        "historical_v3_runner_blob": checks["scripts/paper2_extraction_two_pass_llama_cpp_transaction_v3.py"],
         "historical_v3_manifest_blob": checks["research/paper2/extraction_v3_real_calibration_transaction_v1.json"],
         "evidence_root": str(evidence_root.resolve()),
     }
@@ -1663,6 +1663,61 @@ def self_test() -> None:
         expect(rc == 2, "existing evidence root blocks execution")
         expect(summary["counters"]["total_calls_attempted"] == 0, "existing root zero calls")
         expect((evidence / "sentinel").read_text() == "preserve\n", "existing evidence preserved")
+
+        # A complete read-back authorization must accept the exact frozen surface.
+        positive_evidence = root / "positive-authorization-evidence"
+
+        def current_blob(rel: str) -> str:
+            return base.run_text(
+                ["git", "rev-parse", f"HEAD:{rel}"],
+                cwd=repo_root,
+            ).strip()
+
+        positive_authorization = verify_authorization(
+            repo_root=repo_root,
+            evidence_root=positive_evidence,
+            manifest=manifest,
+            comment_id=1,
+            status="SCIENTIFIC_TRANSACTION_AUTHORIZED_UNSPENT",
+            authorized_head=base.run_text(
+                ["git", "rev-parse", "HEAD"],
+                cwd=repo_root,
+            ).strip(),
+            authorized_tree=base.run_text(
+                ["git", "rev-parse", "HEAD^{tree}"],
+                cwd=repo_root,
+            ).strip(),
+            authorized_runner_blob=current_blob(str(RUNNER_PATH)),
+            authorized_manifest_blob=current_blob(str(MANIFEST_PATH)),
+            authorized_v4_schema_blob=current_blob(
+                "research/paper2/extraction_systemone_decision_v4.schema.json"
+            ),
+            authorized_v4_contract_blob=current_blob(
+                "research/paper2/extraction_two_pass_systemone_v4.json"
+            ),
+            authorized_v4_compiler_blob=current_blob(
+                "scripts/paper2_extraction_two_pass_systemone_v4.py"
+            ),
+            authorized_claim_ir_blob=current_blob(
+                "research/paper2/claim_ir_v1.schema.json"
+            ),
+            authorized_historical_v3_runner_blob=current_blob(
+                "scripts/paper2_extraction_two_pass_llama_cpp_transaction_v3.py"
+            ),
+            authorized_historical_v3_manifest_blob=current_blob(
+                "research/paper2/extraction_v3_real_calibration_transaction_v1.json"
+            ),
+            authorized_evidence_root=str(positive_evidence),
+        )
+        expect(
+            positive_authorization["historical_v3_runner_blob"]
+            == current_blob("scripts/paper2_extraction_two_pass_llama_cpp_transaction_v3.py"),
+            "positive authorization binds historical v3 runner",
+        )
+        expect(
+            positive_authorization["evidence_root"] == str(positive_evidence.resolve()),
+            "positive authorization binds evidence root",
+        )
 
         # Real execution cannot self-authorize.
         try:

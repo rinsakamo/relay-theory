@@ -7,15 +7,27 @@
     "source_spans": [
       {
         "span_id": "s1",
-        "locator": "Nature 415, published p.429, Abstract: visual and haptic estimates are combined using reliability-dependent maximum-likelihood integration"
+        "locator": "Nature 415, published p.429, Abstract: minimum-variance combination principle, measurement of unimodal variances, model construction, and comparison with human judgments"
       },
       {
         "span_id": "s2",
-        "locator": "Nature 415, published p.429, Abstract: criterion is minimization of variance in the combined estimate"
+        "locator": "Nature 415, equations (1)-(3): modality-specific noisy estimators, independent-Gaussian and uniform-prior assumptions, reciprocal-variance weights, and lower variance of the joint estimate"
       },
       {
         "span_id": "s3",
-        "locator": "Nature 415, published pp.430-432, unimodal variance measurements, predicted bimodal weighting, and human comparison"
+        "locator": "Nature 415, Figure 3a and equations (4)-(5): unimodal discrimination thresholds across four visual-noise levels and predicted visual/haptic weights"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Nature 415, Figure 3b-d and equations (6)-(7): observed PSEs, PSE-derived weights, and bimodal discrimination thresholds compared with predictions"
+      },
+      {
+        "span_id": "s5",
+        "locator": "Nature 415, discussion following Figure 3: trial-randomized visual noise, weight setting within the 1-s presentation, tested discrepancies no greater than 11%, and possible discounting at larger discrepancies"
+      },
+      {
+        "span_id": "s6",
+        "locator": "Nature 415, Methods (Stimuli; Procedure): visual-depth-noise manipulation, 1-s presentations, two-interval forced-choice procedure, and four-observer characteristics"
       }
     ],
     "authors": [
@@ -38,49 +50,34 @@
     "extractor_version": "GPT-5.6 Sol",
     "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
     "extracted_at": "2026-09-28",
-    "manual_review_status": "unreviewed"
+    "manual_review_status": "reviewed"
   },
   "claim_core": {
-    "claim_type": "constraint",
+    "claim_type": "comparison",
     "modality": "probabilistic",
     "scope": {
       "conditions": [
-        "two sensory channels provide estimates of the same physical property with measurable uncertainty"
+        "two modality-specific estimates of the same ridge height are available with measurable, condition-dependent uncertainty",
+        "the model prediction assumes independent Gaussian estimator noise and a uniform prior",
+        "derivation of an empirical modality weight from the point of subjective equality assumes the two unimodal estimators are unbiased on average",
+        "tested cross-modal height discrepancies were no greater than 11%, a regime in which both inputs affected judgments"
       ],
       "population": [
-        "human participants"
+        "four observers aged 22-33, naive to the experimental purpose, right-handed, with normal or corrected-to-normal vision"
       ],
       "substrate": [],
       "task": [
-        "estimate object height using visual, haptic, or combined information"
+        "two-interval forced-choice comparison of raised-ridge height from visual-only, haptic-only, or simultaneous visual and haptic information"
       ],
-      "temporal_scope": []
+      "temporal_scope": [
+        "each stimulus presentation lasted 1 s; visual-noise level varied randomly across trials, so condition-dependent weighting was set within the presentation interval"
+      ]
     },
     "nodes": [
       {
-        "id": "channel_a_estimate",
+        "id": "visual_height_estimate",
         "role": "available_information",
-        "description": "estimate of object height from one sensory channel",
-        "source_span_ids": [
-          "s1",
-          "s3"
-        ],
-        "grounding": "normalized"
-      },
-      {
-        "id": "channel_b_estimate",
-        "role": "available_information",
-        "description": "estimate of the same object property from a second sensory channel",
-        "source_span_ids": [
-          "s1",
-          "s3"
-        ],
-        "grounding": "normalized"
-      },
-      {
-        "id": "channel_uncertainty",
-        "role": "condition",
-        "description": "measured variance associated with each unimodal estimate",
+        "description": "height estimate supplied by vision for the raised ridge",
         "source_span_ids": [
           "s1",
           "s2",
@@ -89,19 +86,60 @@
         "grounding": "normalized"
       },
       {
-        "id": "combined_estimate",
-        "role": "response_or_outcome",
-        "description": "joint estimate obtained when both channels are available",
+        "id": "haptic_height_estimate",
+        "role": "available_information",
+        "description": "height estimate supplied by touch for the same raised ridge",
         "source_span_ids": [
           "s1",
+          "s2",
           "s3"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "minimum_variance_rule",
-        "role": "criterion",
-        "description": "criterion selecting weights that minimize variance of the combined estimate",
+        "id": "visual_estimator_uncertainty",
+        "role": "condition",
+        "description": "variance or discrimination-threshold-derived uncertainty of the visual height estimator",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "haptic_estimator_uncertainty",
+        "role": "condition",
+        "description": "variance or discrimination-threshold-derived uncertainty of the haptic height estimator",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "visual_noise_level",
+        "role": "intervention",
+        "description": "added random depth noise in the visual display, varied across four levels to alter visual reliability",
+        "source_span_ids": [
+          "s3",
+          "s6"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "reciprocal_variance_weight_rule",
+        "role": "state_or_structure",
+        "description": "normalized rule assigning each modality a weight proportional to the reciprocal of its estimator variance",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "predicted_joint_estimate",
+        "role": "state_or_structure",
+        "description": "model-predicted joint height estimate formed from the two modality estimates and their uncertainty-dependent weights",
         "source_span_ids": [
           "s1",
           "s2"
@@ -109,58 +147,236 @@
         "grounding": "normalized"
       },
       {
-        "id": "cue_combination_probe",
-        "role": "probe",
-        "description": "comparison of unimodal uncertainty with bimodal estimates under manipulated channel reliability",
+        "id": "minimum_variance_criterion",
+        "role": "criterion",
+        "description": "criterion for choosing weights so that variance of the final joint estimate is minimized",
         "source_span_ids": [
           "s1",
+          "s2"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "within_modality_discrimination_probe",
+        "role": "probe",
+        "description": "visual-only or haptic-only two-interval discrimination used to estimate unimodal thresholds and uncertainty",
+        "source_span_ids": [
+          "s3",
+          "s6"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "cross_modal_conflict_probe",
+        "role": "probe",
+        "description": "simultaneous two-interval height comparison with a controlled discrepancy between the visually and haptically specified standard heights",
+        "source_span_ids": [
+          "s4",
+          "s6"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "observed_pse",
+        "role": "response_or_outcome",
+        "description": "point of subjective equality estimated from the cross-modal psychometric function",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "inferred_visual_weight",
+        "role": "state_or_structure",
+        "description": "visual contribution inferred from the observed point of subjective equality under the unbiased-estimator assumption",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "predicted_visual_weight",
+        "role": "state_or_structure",
+        "description": "visual contribution predicted from the two unimodal discrimination thresholds",
+        "source_span_ids": [
           "s3"
         ],
         "grounding": "normalized"
+      },
+      {
+        "id": "predicted_joint_threshold",
+        "role": "state_or_structure",
+        "description": "joint discrimination threshold predicted from the two unimodal uncertainties",
+        "source_span_ids": [
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "observed_joint_threshold",
+        "role": "response_or_outcome",
+        "description": "measured discrimination threshold when both modality signals were available",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "explicit"
       }
     ],
     "relations": [
       {
         "id": "r1",
-        "kind": "depends_on",
+        "kind": "changes",
         "arguments": [
-          "combined_estimate",
-          "channel_a_estimate",
-          "channel_b_estimate",
-          "channel_uncertainty"
+          "visual_noise_level",
+          "visual_estimator_uncertainty"
         ],
-        "description": "the combined estimate weights the two channel estimates according to their relative uncertainty",
+        "description": "increasing visual display noise increases the uncertainty measured in visual-only discrimination",
         "source_span_ids": [
-          "s1",
-          "s3"
+          "s3",
+          "s6"
         ],
         "grounding": "normalized"
       },
       {
         "id": "r2",
+        "kind": "depends_on",
+        "arguments": [
+          "reciprocal_variance_weight_rule",
+          "visual_estimator_uncertainty",
+          "haptic_estimator_uncertainty"
+        ],
+        "description": "the model weights assigned to the two modality estimates are determined by their relative reciprocal variances",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "r3",
+        "kind": "depends_on",
+        "arguments": [
+          "predicted_joint_estimate",
+          "visual_height_estimate",
+          "haptic_height_estimate",
+          "reciprocal_variance_weight_rule"
+        ],
+        "description": "the predicted joint estimate is the weighted combination of the two modality-specific estimates",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "r4",
         "kind": "satisfies",
         "arguments": [
-          "combined_estimate",
-          "minimum_variance_rule"
+          "predicted_joint_estimate",
+          "minimum_variance_criterion"
         ],
-        "description": "the weighting is selected to minimize variance of the final estimate",
+        "description": "under the stated model assumptions, the selected weighting minimizes variance of the joint estimate and yields lower variance than either unimodal estimate",
         "source_span_ids": [
           "s1",
           "s2"
         ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "r5",
+        "kind": "maps_to",
+        "arguments": [
+          "within_modality_discrimination_probe",
+          "visual_estimator_uncertainty",
+          "haptic_estimator_uncertainty"
+        ],
+        "description": "unimodal discrimination performance supplies the uncertainty estimates used to generate predictions for simultaneous-input performance",
+        "source_span_ids": [
+          "s3"
+        ],
         "grounding": "normalized"
       },
       {
-        "id": "r3",
+        "id": "r6",
+        "kind": "depends_on",
+        "arguments": [
+          "predicted_visual_weight",
+          "visual_estimator_uncertainty",
+          "haptic_estimator_uncertainty"
+        ],
+        "description": "the predicted visual contribution is calculated from the relative unimodal uncertainties",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r7",
         "kind": "maps_to",
         "arguments": [
-          "cue_combination_probe",
-          "combined_estimate"
+          "observed_pse",
+          "inferred_visual_weight"
         ],
-        "description": "the unimodal/bimodal task measures whether observed integration follows the reliability-weighted prediction",
+        "description": "under the unbiased-estimator assumption, the point of subjective equality is used to infer the visual contribution",
         "source_span_ids": [
-          "s1",
-          "s3"
+          "s4"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "r8",
+        "kind": "predicts",
+        "arguments": [
+          "predicted_visual_weight",
+          "inferred_visual_weight"
+        ],
+        "description": "the weight predicted from unimodal uncertainty closely matches the weight inferred from observed points of subjective equality across visual-noise conditions",
+        "source_span_ids": [
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r9",
+        "kind": "depends_on",
+        "arguments": [
+          "predicted_joint_threshold",
+          "visual_estimator_uncertainty",
+          "haptic_estimator_uncertainty"
+        ],
+        "description": "the predicted joint discrimination threshold is determined from the two measured unimodal uncertainties",
+        "source_span_ids": [
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r10",
+        "kind": "predicts",
+        "arguments": [
+          "predicted_joint_threshold",
+          "observed_joint_threshold"
+        ],
+        "description": "the joint threshold predicted from unimodal uncertainty closely matches the measured threshold with both signals available",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r11",
+        "kind": "maps_to",
+        "arguments": [
+          "cross_modal_conflict_probe",
+          "observed_pse",
+          "observed_joint_threshold"
+        ],
+        "description": "the simultaneous conflict task yields the psychometric outcomes used for the model-data comparison",
+        "source_span_ids": [
+          "s4",
+          "s6"
         ],
         "grounding": "normalized"
       }

@@ -7,19 +7,19 @@
     "source_spans": [
       {
         "span_id": "s1",
-        "locator": "Neuroscience 139, PDF p.1 / published p.201, abstract/introduction: multiple dissociable selection and maintenance phenomena rather than one unitary interaction"
+        "locator": "Neuroscience 139(1), published p.201 / PDF p.1, abstract and introduction: the two familiar source constructs each comprise dissociable phenomena; selection operates at perceptual and postperceptual stages and maintenance mechanisms differ by information type"
       },
       {
         "span_id": "s2",
-        "locator": "Neuroscience 139, PDF p.2 / published p.202, 'Attention as a gatekeeper for working memory': limited online store and goal-driven admission"
+        "locator": "Neuroscience 139(1), published pp.202-203 / PDF pp.2-3, late-selection evidence: goal-driven selection determines which already perceptually and semantically processed items gain access to the severely capacity-limited online store"
       },
       {
         "span_id": "s3",
-        "locator": "Neuroscience 139, PDF p.3 / published p.203, ERP evidence: late selection determines which stimuli gain access after perceptual and semantic processing"
+        "locator": "Neuroscience 139(1), published pp.204-205 / PDF pp.4-5, delay-period spatial-maintenance evidence: interrupting or redirecting spatial selection away from remembered locations selectively impairs retention, while the authors caution against generalizing the same relation to all maintained information"
       },
       {
         "span_id": "s4",
-        "locator": "Neuroscience 139, PDF pp.4-5 / published pp.204-205, spatial maintenance: diverting spatial selection away from retained locations reduces retention accuracy"
+        "locator": "Neuroscience 139(1), published p.207 / PDF p.7, Conclusions: the relationship is explicitly characterized as multifaceted, with distinct gatekeeping, active-maintenance, and executive-manipulation interactions and unresolved boundaries across information types"
       }
     ],
     "authors": [
@@ -45,97 +45,79 @@
     "extractor_version": "GPT-5.6 Sol",
     "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
     "extracted_at": "2026-09-28",
-    "manual_review_status": "unreviewed"
+    "manual_review_status": "reviewed"
   },
   "claim_core": {
     "claim_type": "relation",
     "modality": "descriptive",
     "scope": {
       "conditions": [
-        "goal-directed visual processing with more candidate items than the limited online store can maintain"
+        "goal-directed visual processing in which selection can operate at multiple processing stages and the active-maintenance system can retain different kinds of information by functionally dissociable mechanisms"
       ],
-      "population": [
-        "humans",
-        "nonhuman primates"
-      ],
+      "population": [],
       "substrate": [
-        "visual processing and online maintenance systems"
+        "visual information-processing and capacity-limited active-maintenance systems"
       ],
       "task": [
-        "select task-relevant visual items for entry into a limited active store and maintain selected spatial information"
+        "prioritize behaviorally relevant visual information for processing or storage and maintain or manipulate selected representations"
       ],
       "temporal_scope": [
-        "selection may occur during early sensory processing or after perceptual/semantic analysis; maintenance extends across a delay"
+        "interaction modes span early sensory processing, later admission to an online store, delay-period maintenance, and active manipulation or updating"
       ]
     },
     "nodes": [
       {
-        "id": "candidate_visual_items",
-        "role": "available_information",
-        "description": "currently processed visual items competing for further processing or storage",
-        "source_span_ids": [
-          "s1",
-          "s2",
-          "s3"
-        ],
-        "grounding": "normalized"
-      },
-      {
-        "id": "goal_driven_selector",
+        "id": "selection_subtype",
         "role": "state_or_structure",
-        "description": "top-down selection process that biases which items receive privileged processing",
+        "description": "a particular form of goal-directed selection distinguished by the stage or operation at which it influences processing",
         "source_span_ids": [
           "s1",
           "s2",
-          "s3"
-        ],
-        "grounding": "normalized"
-      },
-      {
-        "id": "limited_online_store",
-        "role": "state_or_structure",
-        "description": "capacity-limited active store able to maintain only a small number of selected objects",
-        "source_span_ids": [
-          "s1",
-          "s2",
-          "s3"
-        ],
-        "grounding": "normalized"
-      },
-      {
-        "id": "store_admission",
-        "role": "response_or_outcome",
-        "description": "successful entry of a selected item into the limited active store",
-        "source_span_ids": [
-          "s2",
-          "s3"
-        ],
-        "grounding": "normalized"
-      },
-      {
-        "id": "spatial_selection_shift",
-        "role": "intervention",
-        "description": "covert shift of spatial selection toward or away from a retained location",
-        "source_span_ids": [
           "s4"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "spatial_retention_accuracy",
-        "role": "response_or_outcome",
-        "description": "accuracy for retained spatial information after the delay",
+        "id": "maintenance_subtype",
+        "role": "state_or_structure",
+        "description": "a particular active-maintenance mechanism distinguished by the kind of information maintained or the operation performed on stored representations",
         "source_span_ids": [
+          "s1",
+          "s3",
           "s4"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "selection_stage_partition",
+        "id": "processing_stage_partition",
         "role": "partition",
-        "description": "distinction between early sensory selection, later admission control, and maintenance-related selection",
+        "description": "distinction among early sensory selection, postperceptual admission control, delay-period maintenance-related selection, and executive manipulation or updating",
         "source_span_ids": [
           "s1",
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "information_type_partition",
+        "role": "partition",
+        "description": "distinction among different kinds of maintained information for which the source reports or leaves open functionally different maintenance-selection relations",
+        "source_span_ids": [
+          "s1",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "interaction_profile",
+        "role": "response_or_outcome",
+        "description": "the specific functional relation observed between a selection subtype and an active-maintenance subtype in a given task",
+        "source_span_ids": [
+          "s1",
+          "s2",
           "s3",
           "s4"
         ],
@@ -145,57 +127,47 @@
     "relations": [
       {
         "id": "r1",
-        "kind": "predicts",
+        "kind": "distinguishes",
         "arguments": [
-          "goal_driven_selector",
-          "store_admission"
+          "processing_stage_partition",
+          "selection_subtype"
         ],
-        "description": "goal-driven selection biases which processed items gain access to the limited online store",
+        "description": "selection effects must be distinguished by the processing stage or operation at which they occur rather than treated as one unitary mechanism",
         "source_span_ids": [
+          "s1",
           "s2",
-          "s3"
-        ],
-        "grounding": "normalized"
-      },
-      {
-        "id": "r2",
-        "kind": "constrains",
-        "arguments": [
-          "limited_online_store",
-          "store_admission"
-        ],
-        "description": "severe capacity limits make selective admission necessary when candidate items exceed available storage slots",
-        "source_span_ids": [
-          "s2",
-          "s3"
-        ],
-        "grounding": "normalized"
-      },
-      {
-        "id": "r3",
-        "kind": "changes",
-        "arguments": [
-          "spatial_selection_shift",
-          "spatial_retention_accuracy"
-        ],
-        "description": "forcing spatial selection away from retained locations can reduce later spatial retention accuracy",
-        "source_span_ids": [
           "s4"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "r4",
+        "id": "r2",
         "kind": "distinguishes",
         "arguments": [
-          "selection_stage_partition",
-          "goal_driven_selector",
-          "spatial_selection_shift"
+          "information_type_partition",
+          "maintenance_subtype"
         ],
-        "description": "the source treats early perceptual selection, later store admission, and maintenance-related spatial selection as separable interaction types rather than one unitary mechanism",
+        "description": "active-maintenance mechanisms and their interaction with selection differ with the kind of information or maintenance operation under consideration",
         "source_span_ids": [
           "s1",
           "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "depends_on",
+        "arguments": [
+          "interaction_profile",
+          "selection_subtype",
+          "maintenance_subtype",
+          "processing_stage_partition",
+          "information_type_partition"
+        ],
+        "description": "the nature of the observed interaction depends on which selection process and which active-maintenance process are instantiated in the task",
+        "source_span_ids": [
+          "s1",
           "s4"
         ],
         "grounding": "normalized"

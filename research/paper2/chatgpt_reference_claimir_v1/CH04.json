@@ -7,21 +7,23 @@
     "source_spans": [
       {
         "span_id": "s1",
-        "locator": "Artificial Intelligence 46, published pp.159-160, abstract: product-based representation of value/role pairings and accumulation across pairings"
+        "locator": "Artificial Intelligence 46, published pp.169-172, Section 2.2.1-2.2.2: role decomposition maps each structure to a finite set of filler-role bindings; conjunction is represented by vector superposition, with explicit faithfulness limitations"
       },
       {
         "span_id": "s2",
-        "locator": "Artificial Intelligence 46, abstract: distributed representation preserves multiple simultaneous bindings and permits recursive construction"
+        "locator": "Artificial Intelligence 46, published pp.173-176, Sections 2.2.3-2.2.4, Definitions 2.9-2.10: each filler-role binding is represented by the componentwise pair-product vector and a whole structure by the sum over its binding representations"
       },
       {
         "span_id": "s3",
-        "locator": "Artificial Intelligence 46, abstract: localized special cases reduce to existing structured-data representations and the method extends to continuous structure"
+        "locator": "Artificial Intelligence 46, published pp.207-208, Section 3.7.3: when fillers or roles are themselves decomposed structures, recursive construction yields third- and higher-order product representations"
       }
     ],
     "authors": [
       "Paul Smolensky"
     ],
-    "institutions": [],
+    "institutions": [
+      "University of Colorado, Boulder"
+    ],
     "venue": "Artificial Intelligence",
     "citation_count": null,
     "construct_labels": [
@@ -36,29 +38,32 @@
     "extractor_version": "GPT-5.6 Sol",
     "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
     "extracted_at": "2026-09-28",
-    "manual_review_status": "unreviewed"
+    "manual_review_status": "reviewed"
   },
   "claim_core": {
     "claim_type": "mapping",
     "modality": "definitional",
     "scope": {
       "conditions": [
-        "structured item represented as one or more filler-role pairings in a distributed numeric activity space"
+        "the structured object is considered under a finite role decomposition that determines its set of filler-role bindings",
+        "fillers and roles have vector-valued activity representations, which may be local or distributed",
+        "the conjunction of the object's bindings is represented by numerical vector superposition",
+        "recursive higher-order construction applies when a filler or role is itself a structured object supplied with a further role decomposition"
       ],
       "population": [],
       "substrate": [
-        "distributed activity units"
+        "activity patterns represented as vectors over processing units"
       ],
       "task": [
-        "encode multiple role-filler bindings and recursively compose larger structured representations"
+        "map a structured object to a vector representation by binding fillers to roles, superposing the resulting binding vectors, and optionally recursively representing structured fillers or roles"
       ],
       "temporal_scope": []
     },
     "nodes": [
       {
-        "id": "role_feature_vector",
+        "id": "structured_object",
         "role": "state_or_structure",
-        "description": "distributed feature vector specifying a role position in a structured item",
+        "description": "structured object to be represented",
         "source_span_ids": [
           "s1",
           "s2"
@@ -66,37 +71,54 @@
         "grounding": "normalized"
       },
       {
-        "id": "filler_feature_vector",
-        "role": "state_or_structure",
-        "description": "distributed feature vector specifying the content assigned to a role",
-        "source_span_ids": [
-          "s1",
-          "s2"
-        ],
-        "grounding": "normalized"
-      },
-      {
-        "id": "binding_transform",
-        "role": "state_or_structure",
-        "description": "bilinear outer-product-like transform combining role and filler features into one binding representation",
+        "id": "role_decomposition",
+        "role": "partition",
+        "description": "source-defined decomposition into filler and role sets that determines the filler-role bindings present in the structured object",
         "source_span_ids": [
           "s1"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "binding_set",
+        "role": "state_or_structure",
+        "description": "finite set of filler-role bindings associated with the structured object by the role decomposition",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "filler_vector",
+        "role": "state_or_structure",
+        "description": "vector-valued activity pattern representing a filler",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "role_vector",
+        "role": "state_or_structure",
+        "description": "vector-valued activity pattern representing a role",
+        "source_span_ids": [
+          "s2"
         ],
         "grounding": "normalized"
       },
       {
         "id": "binding_representation",
         "role": "state_or_structure",
-        "description": "distributed representation produced for a single role-filler pairing",
+        "description": "binding vector whose components are pairwise products of filler-vector and role-vector components",
         "source_span_ids": [
-          "s1"
+          "s2"
         ],
         "grounding": "normalized"
       },
       {
         "id": "composite_representation",
-        "role": "state_or_structure",
-        "description": "activity pattern formed by accumulating multiple binding representations",
+        "role": "response_or_outcome",
+        "description": "vector representation of the structured object formed by summing the representations of its filler-role bindings",
         "source_span_ids": [
           "s1",
           "s2"
@@ -104,21 +126,20 @@
         "grounding": "normalized"
       },
       {
-        "id": "recursive_composition",
-        "role": "state_or_structure",
-        "description": "operation that reuses an already composed representation as material for construction of a larger one",
-        "source_span_ids": [
-          "s2"
-        ],
-        "grounding": "normalized"
-      },
-      {
-        "id": "binding_partition",
+        "id": "nested_role_decomposition",
         "role": "partition",
-        "description": "separable pairing structure that keeps multiple simultaneous assignments distinct within the composite",
+        "description": "additional role decomposition applied when a filler or role is itself a structured object",
         "source_span_ids": [
-          "s1",
-          "s2"
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "higher_order_representation",
+        "role": "response_or_outcome",
+        "description": "third- or higher-order product representation obtained by recursively representing structured fillers or roles",
+        "source_span_ids": [
+          "s3"
         ],
         "grounding": "normalized"
       }
@@ -128,12 +149,11 @@
         "id": "r1",
         "kind": "maps_to",
         "arguments": [
-          "role_feature_vector",
-          "filler_feature_vector",
-          "binding_transform",
-          "binding_representation"
+          "role_decomposition",
+          "structured_object",
+          "binding_set"
         ],
-        "description": "a role vector and filler vector are mapped by the bilinear transform to a distributed representation of their pairing",
+        "description": "the role decomposition maps the structured object to the set of filler-role bindings it contains",
         "source_span_ids": [
           "s1"
         ],
@@ -143,10 +163,25 @@
         "id": "r2",
         "kind": "maps_to",
         "arguments": [
+          "filler_vector",
+          "role_vector",
+          "binding_representation"
+        ],
+        "description": "a filler vector and a role vector determine the product vector representing their binding",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "maps_to",
+        "arguments": [
+          "binding_set",
           "binding_representation",
           "composite_representation"
         ],
-        "description": "multiple pair representations are accumulated into one representation of the structured item",
+        "description": "the structured object's representation is the numerical sum of the product-vector representations of all bindings in its binding set",
         "source_span_ids": [
           "s1",
           "s2"
@@ -154,28 +189,16 @@
         "grounding": "normalized"
       },
       {
-        "id": "r3",
-        "kind": "constrains",
-        "arguments": [
-          "binding_partition",
-          "composite_representation"
-        ],
-        "description": "the representational construction preserves separability of multiple simultaneous pairings rather than collapsing their assignment structure",
-        "source_span_ids": [
-          "s2"
-        ],
-        "grounding": "normalized"
-      },
-      {
         "id": "r4",
-        "kind": "changes",
+        "kind": "maps_to",
         "arguments": [
-          "recursive_composition",
-          "composite_representation"
+          "nested_role_decomposition",
+          "binding_representation",
+          "higher_order_representation"
         ],
-        "description": "recursive reuse of simpler representations constructs representations of more complex structure",
+        "description": "when a filler or role is itself decomposed as a structured object, recursive application produces a third- or higher-order product representation",
         "source_span_ids": [
-          "s2"
+          "s3"
         ],
         "grounding": "normalized"
       }
