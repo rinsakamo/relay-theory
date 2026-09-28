@@ -108,3 +108,16 @@ jobs:
           python -m json.tool /tmp/ATT03.phi.json >/dev/null
           sha256sum /tmp/ATT03.structural.json
           sha256sum /tmp/ATT03.phi.json
+
+      - name: Compile reviewed ATT04 structural record
+        run: |
+          set -euo pipefail
+          python scripts/paper2_reference_structural_adjudication.py \
+            --claim-ir research/paper2/chatgpt_reference_claimir_v1/ATT04.json \
+            --adjudication research/paper2/reference_structural_adjudication_v1/ATT04.json \
+            --output /tmp/ATT04.structural.json
+          python scripts/paper2_phi_compare.py --project /tmp/ATT04.structural.json > /tmp/ATT04.phi.json
+          python -m json.tool /tmp/ATT04.structural.json >/dev/null
+          python -m json.tool /tmp/ATT04.phi.json >/dev/null
+          sha256sum /tmp/ATT04.structural.json
+          sha256sum /tmp/ATT04.phi.json
