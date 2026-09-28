@@ -1,0 +1,41 @@
+name: paper2-att-archetype-lane-selftest
+
+on:
+  pull_request:
+    paths:
+      - "scripts/paper2_archetype_att_lane.py"
+      - "research/paper2/att_archetype_lane_v1.json"
+      - ".github/workflows/paper2-att-archetype-lane-selftest.yml"
+      - "scripts/paper2_basis_structural_skeleton.py"
+      - "scripts/paper2_basis_subobject_forgetting.py"
+      - "research/paper2/archetype_claim_forgetting_contract_v1.json"
+      - "research/paper2/basis_subobject_forgetting_contract_v1.json"
+      - "research/paper2/chatgpt_reference_claimir_v1/ATT*.json"
+      - "research/paper2/reference_structural_adjudication_v1/ATT*.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reconstruct:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Requalify frozen U_claim
+        run: python scripts/paper2_basis_structural_skeleton.py --self-test
+      - name: Requalify frozen F_R
+        run: python scripts/paper2_basis_subobject_forgetting.py --self-test
+      - name: Determinism / integration self-test
+        run: python scripts/paper2_archetype_att_lane.py --self-test
+      - name: Regenerate ATT lane report
+        run: python scripts/paper2_archetype_att_lane.py --emit-report --output /tmp/att_archetype_lane_v1.json
+      - name: Verify frozen ATT lane report
+        run: |
+          set -euo pipefail
+          python -m json.tool /tmp/att_archetype_lane_v1.json >/dev/null
+          cmp /tmp/att_archetype_lane_v1.json research/paper2/att_archetype_lane_v1.json
+          sha256sum research/paper2/att_archetype_lane_v1.json
