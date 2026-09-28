@@ -7,15 +7,19 @@
     "source_spans": [
       {
         "span_id": "s1",
-        "locator": "Nature Neuroscience 14(11), published p.1475, Abstract: estimates are updated more after better-than-expected than worse-than-expected information"
+        "locator": "Nature Neuroscience 14(11), published p.1475, Abstract: beliefs are updated more after information that is better than expected than after information that is worse than expected"
       },
       {
         "span_id": "s2",
-        "locator": "Nature Neuroscience 14(11), published pp.1475-1477, task: estimate personal likelihood, receive population information, later re-estimate"
+        "locator": "Nature Neuroscience 14(11), published pp.1475-1476, task/Figure 1: participants estimate personal likelihood of adverse events, receive the average probability for a similar person, and later estimate the same events again"
       },
       {
         "span_id": "s3",
-        "locator": "Nature Neuroscience 14(11), published pp.1476-1478, signed estimation-error magnitude predicts update differently by valence and frontal signal tracking"
+        "locator": "Nature Neuroscience 14(11), published p.1476, Behaviour/Figure 2: absolute update is greater for desirable than undesirable information, and estimation error predicts update more strongly for desirable than undesirable information"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Nature Neuroscience 14(11), Methods, Main behavioural analysis: estimation error is the absolute difference between first estimate and presented probability; trials are separately classified as desirable or undesirable according to whether the initial estimate is above or below the presented probability; update is first estimate minus second estimate"
       }
     ],
     "authors": [
@@ -41,99 +45,97 @@
     "extractor_version": "GPT-5.6 Sol",
     "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
     "extracted_at": "2026-09-28",
-    "manual_review_status": "unreviewed"
+    "manual_review_status": "reviewed"
   },
   "claim_core": {
     "claim_type": "relation",
     "modality": "probabilistic",
     "scope": {
       "conditions": [
-        "participants estimate personal likelihood of adverse future events, observe population-rate information, then provide a later estimate"
+        "participants estimate their personal likelihood of adverse future events, receive population-rate information for the same events, and later re-estimate their personal likelihoods"
       ],
       "population": [
-        "human participants"
+        "19 healthy right-handed young adults with usable behavioural data in the main study"
       ],
-      "substrate": [
-        "frontal cortical regions tracked with functional imaging"
-      ],
+      "substrate": [],
       "task": [
-        "two-stage probability estimation with intervening factual rate information"
+        "estimate-information-reestimate procedure over adverse future events"
       ],
       "temporal_scope": [
-        "initial estimate precedes external information, which precedes the later revised estimate"
+        "the first personal estimate precedes presentation of population-rate information, which precedes the second personal estimate"
       ]
     },
     "nodes": [
       {
         "id": "initial_probability_estimate",
         "role": "state_or_structure",
-        "description": "participant's initial estimate of personal likelihood for an adverse future event",
-        "source_span_ids": [
-          "s1",
-          "s2"
-        ],
-        "grounding": "normalized"
-      },
-      {
-        "id": "external_rate_information",
-        "role": "available_information",
-        "description": "presented population-level likelihood for the same adverse event",
-        "source_span_ids": [
-          "s1",
-          "s2"
-        ],
-        "grounding": "normalized"
-      },
-      {
-        "id": "signed_estimate_discrepancy",
-        "role": "condition",
-        "description": "difference between the initial personal estimate and the presented external rate, categorized by whether the new information is more or less favorable",
+        "description": "participant's first estimate of personal likelihood for an adverse future event",
         "source_span_ids": [
           "s1",
           "s2",
-          "s3"
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "presented_population_rate",
+        "role": "available_information",
+        "description": "presented average probability of the same adverse event for a person in the participant's socio-cultural environment",
+        "source_span_ids": [
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "estimation_error_magnitude",
+        "role": "condition",
+        "description": "absolute difference between the first personal estimate and the presented population rate",
+        "source_span_ids": [
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "information_valence_rule",
+        "role": "criterion",
+        "description": "classification rule labeling information as desirable when the presented adverse-event probability is lower than the participant's first estimate and undesirable when it is higher",
+        "source_span_ids": [
+          "s2",
+          "s4"
         ],
         "grounding": "normalized"
       },
       {
         "id": "revised_probability_estimate",
         "role": "response_or_outcome",
-        "description": "participant's later estimate after receiving the external information",
-        "source_span_ids": [
-          "s1",
-          "s2"
-        ],
-        "grounding": "normalized"
-      },
-      {
-        "id": "update_magnitude",
-        "role": "criterion",
-        "description": "absolute or directional change from the initial estimate to the later estimate relative to the signed discrepancy supplied by new information",
+        "description": "participant's second estimate of personal likelihood after receiving the population-rate information",
         "source_span_ids": [
           "s1",
           "s2",
-          "s3"
+          "s4"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "frontal_error_signal",
+        "id": "update_amount",
         "role": "response_or_outcome",
-        "description": "functional-imaging signal whose trial-wise magnitude tracks the signed discrepancy",
+        "description": "change from the first to the second personal estimate, with absolute update used for the direct desirable-versus-undesirable comparison",
         "source_span_ids": [
-          "s1",
-          "s3"
+          "s3",
+          "s4"
         ],
         "grounding": "normalized"
       },
       {
         "id": "information_update_probe",
         "role": "probe",
-        "description": "estimate-information-reestimate procedure separating favorable from unfavorable informational updates",
+        "description": "estimate-information-reestimate procedure that permits separate analysis of desirable and undesirable information",
         "source_span_ids": [
-          "s1",
           "s2",
-          "s3"
+          "s3",
+          "s4"
         ],
         "grounding": "normalized"
       }
@@ -141,29 +143,30 @@
     "relations": [
       {
         "id": "r1",
-        "kind": "changes",
+        "kind": "maps_to",
         "arguments": [
-          "external_rate_information",
-          "revised_probability_estimate"
+          "initial_probability_estimate",
+          "presented_population_rate",
+          "estimation_error_magnitude"
         ],
-        "description": "new factual rate information changes the later probability estimate",
+        "description": "the first estimate and presented rate determine the magnitude of the estimation error",
         "source_span_ids": [
-          "s1",
-          "s2"
+          "s4"
         ],
         "grounding": "normalized"
       },
       {
         "id": "r2",
-        "kind": "depends_on",
+        "kind": "maps_to",
         "arguments": [
-          "update_magnitude",
-          "signed_estimate_discrepancy"
+          "initial_probability_estimate",
+          "presented_population_rate",
+          "information_valence_rule"
         ],
-        "description": "update magnitude depends asymmetrically on the sign of the discrepancy, with larger updating after more favorable than less favorable information",
+        "description": "the direction of the discrepancy between first estimate and presented rate determines whether the information is classified as desirable or undesirable",
         "source_span_ids": [
-          "s1",
-          "s3"
+          "s2",
+          "s4"
         ],
         "grounding": "normalized"
       },
@@ -171,10 +174,24 @@
         "id": "r3",
         "kind": "depends_on",
         "arguments": [
-          "frontal_error_signal",
-          "signed_estimate_discrepancy"
+          "update_amount",
+          "estimation_error_magnitude",
+          "information_valence_rule"
         ],
-        "description": "trial-wise frontal signal tracks discrepancy magnitude differently across favorable and unfavorable information",
+        "description": "estimation-error magnitude predicts subsequent update more strongly for desirable than for undesirable information",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "differs",
+        "arguments": [
+          "information_valence_rule",
+          "update_amount"
+        ],
+        "description": "absolute updating is greater after desirable information than after undesirable information",
         "source_span_ids": [
           "s1",
           "s3"
@@ -182,31 +199,48 @@
         "grounding": "normalized"
       },
       {
-        "id": "r4",
+        "id": "r5",
         "kind": "precedes",
         "arguments": [
           "initial_probability_estimate",
-          "external_rate_information",
+          "presented_population_rate",
           "revised_probability_estimate"
         ],
-        "description": "the task orders the initial estimate, new information, and revised estimate sequentially",
+        "description": "the task orders the first estimate, new rate information, and second estimate sequentially",
         "source_span_ids": [
-          "s2"
+          "s2",
+          "s4"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "r5",
+        "id": "r6",
+        "kind": "maps_to",
+        "arguments": [
+          "initial_probability_estimate",
+          "revised_probability_estimate",
+          "update_amount"
+        ],
+        "description": "the first and second estimates determine the amount of belief update",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r7",
         "kind": "maps_to",
         "arguments": [
           "information_update_probe",
-          "update_magnitude",
-          "frontal_error_signal"
+          "estimation_error_magnitude",
+          "information_valence_rule",
+          "update_amount"
         ],
-        "description": "the two-stage update task jointly measures behavioral revision and discrepancy-related neural tracking",
+        "description": "the structured task exposes the relation between estimation-error magnitude, information valence, and subsequent updating",
         "source_span_ids": [
           "s2",
-          "s3"
+          "s3",
+          "s4"
         ],
         "grounding": "normalized"
       }
