@@ -25,7 +25,7 @@
     },
     {
       "claim_node_id": "interference_measure",
-      "coordinate_id": "basis.q1",
+      "coordinate_id": "basis.o2",
       "required": true
     },
     {
@@ -34,8 +34,13 @@
       "required": true
     },
     {
-      "claim_node_id": "finite_processing_budget",
+      "claim_node_id": "perceptual_capacity_limit",
       "coordinate_id": "basis.s1",
+      "required": true
+    },
+    {
+      "claim_node_id": "irrelevant_processing",
+      "coordinate_id": "basis.s2",
       "required": true
     }
   ],
@@ -50,12 +55,7 @@
       "fixed_before_phi": true
     },
     "criterion_Q": {
-      "state": "present",
-      "claim_node_ids": [
-        "interference_measure"
-      ],
-      "provenance_kind": "source_declared",
-      "fixed_before_phi": true
+      "state": "not_required"
     },
     "partition_Pi": {
       "state": "not_required"
@@ -63,7 +63,7 @@
     "resource_C": {
       "state": "present",
       "claim_node_ids": [
-        "finite_processing_budget"
+        "perceptual_capacity_limit"
       ],
       "provenance_kind": "source_declared",
       "fixed_before_phi": true
