@@ -64,6 +64,20 @@ jobs:
           assert frozen["residual_count"] == 1
           assert frozen["residual_claim_ids"] == ["CH10"]
 
+          global_freeze_path = Path("research/paper2/reference_global_phi_freeze_v1.json")
+          if global_freeze_path.exists():
+              global_freeze = json.loads(global_freeze_path.read_text())
+              assert global_freeze["claim_count"] == summary["claim_count"]
+              assert global_freeze["pair_count"] == summary["pair_count"]
+              assert global_freeze["decision_counts"] == summary["decision_counts"]
+              assert global_freeze["relation_counts"] == summary["relation_counts"]
+              assert global_freeze["relation_counts_by_scope"] == summary["relation_counts_by_scope"]
+              assert global_freeze["equivalence_components"] == summary["equivalence_components"]
+              assert global_freeze["cross_primary_stratum_nonincomparable"] == summary["cross_primary_stratum_nonincomparable"]
+              assert global_freeze["canonical_manifest_sha256"] == summary["manifest_sha256"]
+              assert global_freeze["canonical_atlas_sha256"] == summary["atlas_sha256"]
+              print("GLOBAL_COMMITTED_FREEZE_MATCH=PASS")
+
           print("GLOBAL_60_CLAIMS=PASS")
           print("GLOBAL_1770_PAIRS=PASS")
           print(json.dumps(summary, sort_keys=True))
