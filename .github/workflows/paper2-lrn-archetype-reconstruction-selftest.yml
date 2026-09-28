@@ -1,0 +1,35 @@
+name: paper2-lrn-archetype-reconstruction-selftest
+
+on:
+  pull_request:
+    paths:
+      - "scripts/paper2_archetype_lrn_lane.py"
+      - "research/paper2/lrn_archetype_reconstruction_v1.json"
+      - ".github/workflows/paper2-lrn-archetype-reconstruction-selftest.yml"
+      - "scripts/paper2_archetype_mem_pilot.py"
+      - "scripts/paper2_basis_structural_skeleton.py"
+      - "scripts/paper2_basis_subobject_forgetting.py"
+      - "research/paper2/chatgpt_reference_claimir_v1/LRN*.json"
+      - "research/paper2/reference_structural_adjudication_v1/LRN*.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reconstruction:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Determinism / integration self-test
+        run: python scripts/paper2_archetype_lrn_lane.py --self-test
+      - name: Generate LRN lane report
+        run: python scripts/paper2_archetype_lrn_lane.py --emit-report --output /tmp/lrn_archetype_reconstruction_v1.json
+      - name: Emit provisional report for freeze
+        run: |
+          echo "LRN_REPORT_BEGIN"
+          cat /tmp/lrn_archetype_reconstruction_v1.json
+          echo "LRN_REPORT_END"
