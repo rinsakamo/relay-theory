@@ -1,0 +1,67 @@
+name: paper2-reference-structural-adjudication-selftest
+
+on:
+  pull_request:
+    paths:
+      - "research/paper2/reference_structural_adjudication_v1.*"
+      - "research/paper2/reference_structural_adjudication_v1/MEM*.json"
+      - "scripts/paper2_reference_structural_adjudication.py"
+      - "scripts/paper2_reference_phi_atlas.py"
+      - "research/paper2/chatgpt_reference_claimir_v1/MEM*.json"
+      - "scripts/paper2_structural_signature_*.py"
+      - "scripts/paper2_phi_compare.py"
+      - "research/paper2/claim_ir_v1.*"
+      - ".github/workflows/paper2-reference-structural-adjudication-selftest.yml"
+  push:
+    branches: [main]
+    paths:
+      - "research/paper2/reference_structural_adjudication_v1.*"
+      - "research/paper2/reference_structural_adjudication_v1/MEM*.json"
+      - "scripts/paper2_reference_structural_adjudication.py"
+      - "scripts/paper2_reference_phi_atlas.py"
+      - "research/paper2/chatgpt_reference_claimir_v1/MEM*.json"
+      - "scripts/paper2_structural_signature_*.py"
+      - "scripts/paper2_phi_compare.py"
+      - "research/paper2/claim_ir_v1.*"
+      - ".github/workflows/paper2-reference-structural-adjudication-selftest.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile checkers
+        run: |
+          python -m py_compile scripts/paper2_reference_structural_adjudication.py
+          python -m py_compile scripts/paper2_reference_phi_atlas.py
+      - name: Parse contract artifacts
+        run: |
+          python -m json.tool research/paper2/reference_structural_adjudication_v1.schema.json >/dev/null
+          python -m json.tool research/paper2/reference_structural_adjudication_v1.example.json >/dev/null
+      - name: Run destructive protocol self-test
+        run: python scripts/paper2_reference_structural_adjudication.py --self-test
+      - name: Build MEM-only Phi atlas
+        run: |
+          set -euo pipefail
+          python scripts/paper2_reference_phi_atlas.py \
+            --claim-dir research/paper2/chatgpt_reference_claimir_v1 \
+            --adjudication-dir research/paper2/reference_structural_adjudication_v1 \
+            --source-manifest research/paper2/designed_source_web_fulltext_manifest_v1.json \
+            --slot-prefix MEM \
+            --expected-claims 6 \
+            --manifest-output /tmp/MEM.manifest.json \
+            --atlas-output /tmp/MEM.atlas.json \
+            --summary-output /tmp/MEM.summary.json
+          python -m json.tool /tmp/MEM.manifest.json >/dev/null
+          python -m json.tool /tmp/MEM.atlas.json >/dev/null
+          python -m json.tool /tmp/MEM.summary.json >/dev/null
+          cat /tmp/MEM.summary.json
+          sha256sum /tmp/MEM.manifest.json
+          sha256sum /tmp/MEM.atlas.json
+          sha256sum /tmp/MEM.summary.json

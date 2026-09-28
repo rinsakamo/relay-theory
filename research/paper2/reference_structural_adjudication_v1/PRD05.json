@@ -1,0 +1,123 @@
+{
+  "schema_version": "paper2-reference-structural-adjudication-v1",
+  "claim_id": "PRD05.C1",
+  "adjudicator": {
+    "tool": "ChatGPT",
+    "version": "GPT-5.6 Sol",
+    "procedure": "paper2-reference-structural-adjudication-v1:267",
+    "adjudicated_at": "2026-09-28"
+  },
+  "coordinate_map": [
+    {
+      "claim_node_id": "higher_level_state",
+      "coordinate_id": "basis.pi1",
+      "required": true
+    },
+    {
+      "claim_node_id": "lower_level_state",
+      "coordinate_id": "basis.pi2",
+      "required": true
+    },
+    {
+      "claim_node_id": "top_down_estimate",
+      "coordinate_id": "basis.o1",
+      "required": true
+    },
+    {
+      "claim_node_id": "bottom_up_mismatch",
+      "coordinate_id": "basis.o2",
+      "required": true
+    },
+    {
+      "claim_node_id": "latent_cause_estimate",
+      "coordinate_id": "basis.o3",
+      "required": true
+    },
+    {
+      "claim_node_id": "mismatch_minimization",
+      "coordinate_id": "basis.q1",
+      "required": true
+    }
+  ],
+  "controls": {
+    "probe_P": {
+      "state": "not_required"
+    },
+    "criterion_Q": {
+      "state": "present",
+      "claim_node_ids": [
+        "mismatch_minimization"
+      ],
+      "provenance_kind": "source_declared",
+      "fixed_before_phi": true
+    },
+    "partition_Pi": {
+      "state": "present",
+      "claim_node_ids": [
+        "higher_level_state",
+        "lower_level_state"
+      ],
+      "provenance_kind": "source_declared",
+      "fixed_before_phi": true
+    },
+    "resource_C": {
+      "state": "not_required"
+    }
+  },
+  "temporal": {
+    "time_index": {
+      "state": "present",
+      "source_span_ids": [
+        "s1",
+        "s2",
+        "s3"
+      ]
+    },
+    "history_window": {
+      "state": "present",
+      "source_span_ids": [
+        "s1",
+        "s3"
+      ]
+    },
+    "future_horizon": {
+      "state": "not_required"
+    },
+    "recurrence": {
+      "state": "present",
+      "source_span_ids": [
+        "s3"
+      ]
+    },
+    "persistence": {
+      "state": "not_required"
+    },
+    "ordering": []
+  },
+  "approximation": {
+    "mode": "stochastic",
+    "threshold": {
+      "state": "not_required"
+    },
+    "tolerance": {
+      "state": "not_required"
+    },
+    "confidence": {
+      "state": "not_applicable"
+    },
+    "loss": {
+      "state": "present",
+      "source_span_ids": [
+        "s1",
+        "s3"
+      ]
+    },
+    "comparison_criterion": {
+      "state": "not_required"
+    }
+  },
+  "bridge_assumptions": [],
+  "decision": {
+    "status": "PASS"
+  }
+}

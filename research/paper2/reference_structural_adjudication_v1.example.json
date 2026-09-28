@@ -1,0 +1,95 @@
+{
+  "schema_version": "paper2-reference-structural-adjudication-v1",
+  "claim_id": "C0001",
+  "adjudicator": {
+    "tool": "manual-fixture",
+    "version": "1",
+    "procedure": "paper2-reference-structural-adjudication-v1-fixture",
+    "adjudicated_at": "2026-09-28T00:00:00Z"
+  },
+  "coordinate_map": [
+    {
+      "claim_node_id": "earlier_information",
+      "coordinate_id": "basis.history",
+      "required": true
+    },
+    {
+      "claim_node_id": "later_response",
+      "coordinate_id": "basis.response",
+      "required": true
+    }
+  ],
+  "controls": {
+    "probe_P": {
+      "state": "not_required"
+    },
+    "criterion_Q": {
+      "state": "not_required"
+    },
+    "partition_Pi": {
+      "state": "not_required"
+    },
+    "resource_C": {
+      "state": "not_required"
+    }
+  },
+  "temporal": {
+    "time_index": {
+      "state": "present",
+      "source_span_ids": [
+        "s1",
+        "s2"
+      ]
+    },
+    "history_window": {
+      "state": "present",
+      "source_span_ids": [
+        "s1"
+      ]
+    },
+    "future_horizon": {
+      "state": "present",
+      "source_span_ids": [
+        "s2"
+      ]
+    },
+    "recurrence": {
+      "state": "not_required"
+    },
+    "persistence": {
+      "state": "not_required"
+    },
+    "ordering": [
+      {
+        "before_coordinate_id": "basis.history",
+        "after_coordinate_id": "basis.response",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ]
+      }
+    ]
+  },
+  "approximation": {
+    "mode": "deterministic",
+    "threshold": {
+      "state": "not_required"
+    },
+    "tolerance": {
+      "state": "not_required"
+    },
+    "confidence": {
+      "state": "not_applicable"
+    },
+    "loss": {
+      "state": "not_required"
+    },
+    "comparison_criterion": {
+      "state": "not_required"
+    }
+  },
+  "bridge_assumptions": [],
+  "decision": {
+    "status": "PASS"
+  }
+}
