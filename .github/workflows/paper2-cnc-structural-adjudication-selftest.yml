@@ -1,0 +1,54 @@
+name: paper2-cnc-structural-adjudication-selftest
+
+on:
+  pull_request:
+    paths:
+      - "research/paper2/reference_structural_adjudication_v1/CNC*.json"
+      - "research/paper2/chatgpt_reference_claimir_v1/CNC*.json"
+      - "scripts/paper2_reference_structural_adjudication.py"
+      - "scripts/paper2_phi_compare.py"
+      - "scripts/paper2_structural_signature_*.py"
+      - "research/paper2/claim_ir_v1.*"
+      - "research/paper2/reference_structural_adjudication_v1.*"
+      - ".github/workflows/paper2-cnc-structural-adjudication-selftest.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate-cnc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile frozen checkers
+        run: |
+          python -m py_compile scripts/paper2_reference_structural_adjudication.py
+          python -m py_compile scripts/paper2_phi_compare.py
+      - name: Compile and project reviewed CNC claims
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          files=(research/paper2/reference_structural_adjudication_v1/CNC*.json)
+          if [ "${#files[@]}" -eq 0 ]; then
+            echo "CNC_ADJUDICATION_FILES=0"
+            exit 0
+          fi
+          for adjudication in "${files[@]}"; do
+            claim="$(basename "${adjudication}" .json)"
+            echo "=== ${claim} ==="
+            python scripts/paper2_reference_structural_adjudication.py \
+              --claim-ir "research/paper2/chatgpt_reference_claimir_v1/${claim}.json" \
+              --adjudication "${adjudication}" \
+              --output "/tmp/${claim}.structural.json"
+            python scripts/paper2_phi_compare.py \
+              --project "/tmp/${claim}.structural.json" \
+              > "/tmp/${claim}.phi.json"
+            python -m json.tool "/tmp/${claim}.structural.json" >/dev/null
+            python -m json.tool "/tmp/${claim}.phi.json" >/dev/null
+            echo "VALIDATION=PASS"
+            sha256sum "/tmp/${claim}.structural.json"
+            sha256sum "/tmp/${claim}.phi.json"
+          done

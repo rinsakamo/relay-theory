@@ -2,40 +2,40 @@
   "schema_version": "paper2-reference-structural-adjudication-v1",
   "claim_id": "CNC02.C1",
   "adjudicator": {
-    "tool": "ChatGPT",
-    "version": "GPT-5.6 Sol",
-    "procedure": "paper2-reference-structural-adjudication-v1:267",
-    "adjudicated_at": "2026-09-28"
+    "tool": "GPT-5.6 Sol",
+    "version": "2026-09-28",
+    "procedure": "paper2-reference-structural-adjudication-v1-cnc",
+    "adjudicated_at": "2026-09-28T14:31:00Z"
   },
   "coordinate_map": [
     {
-      "claim_node_id": "within_group_attribute_overlap",
-      "coordinate_id": "basis.s1",
+      "claim_node_id": "within_group_attribute_distribution",
+      "coordinate_id": "basis.n01",
       "required": true
     },
     {
       "claim_node_id": "cross_group_attribute_overlap",
-      "coordinate_id": "basis.s2",
+      "coordinate_id": "basis.n02",
       "required": true
     },
     {
-      "claim_node_id": "representative_rating",
-      "coordinate_id": "basis.o1",
+      "claim_node_id": "graded_goodness_judgment",
+      "coordinate_id": "basis.n03",
       "required": true
     },
     {
-      "claim_node_id": "attribute_listing_probe",
-      "coordinate_id": "basis.p1",
+      "claim_node_id": "attribute_elicitation_probe",
+      "coordinate_id": "basis.n04",
       "required": true
     },
     {
-      "claim_node_id": "rating_probe",
-      "coordinate_id": "basis.p2",
+      "claim_node_id": "contrast_structure_probe",
+      "coordinate_id": "basis.n05",
       "required": true
     },
     {
-      "claim_node_id": "aggregate_discriminative_score",
-      "coordinate_id": "basis.q1",
+      "claim_node_id": "graded_rating_probe",
+      "coordinate_id": "basis.n06",
       "required": true
     }
   ],
@@ -43,19 +43,15 @@
     "probe_P": {
       "state": "present",
       "claim_node_ids": [
-        "attribute_listing_probe",
-        "rating_probe"
+        "attribute_elicitation_probe",
+        "contrast_structure_probe",
+        "graded_rating_probe"
       ],
-      "provenance_kind": "source_declared",
+      "provenance_kind": "experimental_contract",
       "fixed_before_phi": true
     },
     "criterion_Q": {
-      "state": "present",
-      "claim_node_ids": [
-        "aggregate_discriminative_score"
-      ],
-      "provenance_kind": "source_declared",
-      "fixed_before_phi": true
+      "state": "not_required"
     },
     "partition_Pi": {
       "state": "not_required"
@@ -91,7 +87,7 @@
       "state": "not_required"
     },
     "confidence": {
-      "state": "not_applicable"
+      "state": "not_required"
     },
     "loss": {
       "state": "not_required"

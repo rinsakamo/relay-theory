@@ -2,40 +2,65 @@
   "schema_version": "paper2-reference-structural-adjudication-v1",
   "claim_id": "CNC04.C1",
   "adjudicator": {
-    "tool": "ChatGPT",
-    "version": "GPT-5.6 Sol",
-    "procedure": "paper2-reference-structural-adjudication-v1:267",
-    "adjudicated_at": "2026-09-28"
+    "tool": "GPT-5.6 Sol",
+    "version": "2026-09-28",
+    "procedure": "paper2-reference-structural-adjudication-v1-cnc",
+    "adjudicated_at": "2026-09-28T14:35:00Z"
   },
   "coordinate_map": [
     {
       "claim_node_id": "component_rating_a",
-      "coordinate_id": "basis.o1",
+      "coordinate_id": "basis.n01",
       "required": true
     },
     {
       "claim_node_id": "component_rating_b",
-      "coordinate_id": "basis.o2",
+      "coordinate_id": "basis.n02",
       "required": true
     },
     {
-      "claim_node_id": "combination_rule",
-      "coordinate_id": "basis.s1",
+      "claim_node_id": "empirical_compensatory_mapping",
+      "coordinate_id": "basis.n03",
       "required": true
     },
     {
-      "claim_node_id": "combined_rating",
-      "coordinate_id": "basis.o3",
+      "claim_node_id": "conjunctive_rating",
+      "coordinate_id": "basis.n04",
       "required": true
     },
     {
-      "claim_node_id": "membership_threshold",
-      "coordinate_id": "basis.q1",
+      "claim_node_id": "overextension_pattern",
+      "coordinate_id": "basis.n05",
       "required": true
     },
     {
       "claim_node_id": "two_stage_rating_probe",
-      "coordinate_id": "basis.p1",
+      "coordinate_id": "basis.n06",
+      "required": true
+    },
+    {
+      "claim_node_id": "constituent_intensional_structure",
+      "coordinate_id": "basis.n07",
+      "required": true
+    },
+    {
+      "claim_node_id": "composite_prototype",
+      "coordinate_id": "basis.n08",
+      "required": true
+    },
+    {
+      "claim_node_id": "item_to_composite_similarity",
+      "coordinate_id": "basis.n09",
+      "required": true
+    },
+    {
+      "claim_node_id": "membership_criterion",
+      "coordinate_id": "basis.n10",
+      "required": true
+    },
+    {
+      "claim_node_id": "conjunctive_membership_decision",
+      "coordinate_id": "basis.n11",
       "required": true
     }
   ],
@@ -45,13 +70,13 @@
       "claim_node_ids": [
         "two_stage_rating_probe"
       ],
-      "provenance_kind": "source_declared",
+      "provenance_kind": "experimental_contract",
       "fixed_before_phi": true
     },
     "criterion_Q": {
       "state": "present",
       "claim_node_ids": [
-        "membership_threshold"
+        "membership_criterion"
       ],
       "provenance_kind": "source_declared",
       "fixed_before_phi": true
@@ -79,21 +104,35 @@
     "persistence": {
       "state": "not_required"
     },
-    "ordering": []
+    "ordering": [
+      {
+        "before_coordinate_id": "basis.n01",
+        "after_coordinate_id": "basis.n04",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ]
+      },
+      {
+        "before_coordinate_id": "basis.n02",
+        "after_coordinate_id": "basis.n04",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ]
+      }
+    ]
   },
   "approximation": {
-    "mode": "stochastic",
+    "mode": "approximate",
     "threshold": {
-      "state": "present",
-      "source_span_ids": [
-        "s1"
-      ]
+      "state": "not_required"
     },
     "tolerance": {
       "state": "not_required"
     },
     "confidence": {
-      "state": "not_applicable"
+      "state": "not_required"
     },
     "loss": {
       "state": "not_required"
