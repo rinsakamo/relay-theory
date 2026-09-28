@@ -1,0 +1,78 @@
+{
+  "schema_version": "paper2-archetype-leaf-pruning-contract-v1",
+  "owner_issue": 293,
+  "parent_issue": 283,
+  "input": {
+    "schema_version": "paper2-phi-object-v1",
+    "basis_version": "paper2-working-basis-v1"
+  },
+  "interpretation": {
+    "leaf_pruning": "Remove representation, provenance, and audit-only detail that does not itself carry the scientific dependency structure used for Archetype reconstruction.",
+    "admissible_forgetting": "A separate later weakening step over retained scientific structure. Leaf pruning must not silently perform genuine structural forgetting."
+  },
+  "already_pruned_by_phi_projection": [
+    "ClaimIR node descriptions and source-span lists",
+    "control identity and free-text description",
+    "exact temporal values while retaining temporal state and ordering",
+    "source-local coordinate descriptions",
+    "construct labels, authors, venues, and citation authority"
+  ],
+  "stage1_leaf_pruning": {
+    "normalize_fields": [
+      "nodes.*.grounding",
+      "nodes.*.provenance_origin",
+      "edges.*.grounding",
+      "controls.*.provenance_kind"
+    ],
+    "drop_edge_families": [
+      "coordinate_grounding"
+    ],
+    "drop_nodes_only_when_unreferenced_after_audit_edge_removal": [
+      "claim_ir_relation",
+      "basis_coordinate"
+    ],
+    "always_retain_node_spaces": [
+      "claim_ir_node"
+    ]
+  },
+  "stage1_preserve": [
+    "claim_type",
+    "modality",
+    "scope_shape",
+    "active_axes",
+    "scientific node role/kind/required/axis",
+    "claim_ir_relation edges",
+    "basis_relation edges",
+    "temporal_order edges",
+    "edge kind",
+    "ordered_arguments",
+    "arguments",
+    "conditional_on",
+    "temporal_direction",
+    "temporal state surface",
+    "control presence/absence state",
+    "approximation mode and state surface",
+    "bridge assumptions"
+  ],
+  "explicit_non_pruning": [
+    "delayed versus immediate temporal structure",
+    "intervention or probe ordering",
+    "criterion presence",
+    "partition/subsystem structure",
+    "resource/capacity constraints",
+    "dependency or causal direction",
+    "which node or subsystem an operation targets",
+    "scientific relation topology"
+  ],
+  "stage2_candidate_operator_schemas_not_yet_qualified": [
+    "forget_claim_envelope",
+    "forget_scope_component",
+    "forget_approximation_surface",
+    "forget_control_surface_state",
+    "forget_temporal_scalar_state",
+    "forget_bridge_slot",
+    "typed_subgraph_forgetting"
+  ],
+  "freeze_rule": "Stage-2 operators are not authorized on real Archetype extraction until synthetic qualification under #293.",
+  "architecture_consequence": "NONE"
+}
