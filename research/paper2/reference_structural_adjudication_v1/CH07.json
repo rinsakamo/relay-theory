@@ -4,7 +4,7 @@
   "adjudicator": {
     "tool": "ChatGPT",
     "version": "GPT-5.6 Sol",
-    "procedure": "paper2-reference-structural-adjudication-v1:267",
+    "procedure": "paper2-challenge-a-reference-structural-adjudication-v1:267",
     "adjudicated_at": "2026-09-28"
   },
   "coordinate_map": [
@@ -14,42 +14,42 @@
       "required": true
     },
     {
-      "claim_node_id": "current_state_query",
-      "coordinate_id": "basis.p1",
+      "claim_node_id": "current_decision_state",
+      "coordinate_id": "basis.s2",
       "required": true
     },
     {
-      "claim_node_id": "retrieved_trajectory_set",
+      "claim_node_id": "similarity_weighting_rule",
+      "coordinate_id": "basis.q1",
+      "required": true
+    },
+    {
+      "claim_node_id": "retrieved_weighted_trace_set",
       "coordinate_id": "basis.o1",
       "required": true
     },
     {
       "claim_node_id": "return_estimate",
-      "coordinate_id": "basis.s2",
+      "coordinate_id": "basis.s3",
       "required": true
     },
     {
       "claim_node_id": "action_choice",
       "coordinate_id": "basis.o2",
       "required": true
-    },
-    {
-      "claim_node_id": "sparse_high_dimensional_regime",
-      "coordinate_id": "basis.cnd1",
-      "required": true
     }
   ],
   "controls": {
     "probe_P": {
+      "state": "not_required"
+    },
+    "criterion_Q": {
       "state": "present",
       "claim_node_ids": [
-        "current_state_query"
+        "similarity_weighting_rule"
       ],
       "provenance_kind": "source_declared",
       "fixed_before_phi": true
-    },
-    "criterion_Q": {
-      "state": "not_required"
     },
     "partition_Pi": {
       "state": "not_required"
@@ -84,21 +84,38 @@
       ]
     },
     "recurrence": {
-      "state": "present",
-      "source_span_ids": [
-        "s2",
-        "s3"
-      ]
+      "state": "not_required"
     },
     "persistence": {
       "state": "present",
       "source_span_ids": [
         "s1",
-        "s2",
-        "s3"
+        "s2"
       ]
     },
-    "ordering": []
+    "ordering": [
+      {
+        "before_coordinate_id": "basis.s1",
+        "after_coordinate_id": "basis.o1",
+        "source_span_ids": [
+          "s2"
+        ]
+      },
+      {
+        "before_coordinate_id": "basis.o1",
+        "after_coordinate_id": "basis.s3",
+        "source_span_ids": [
+          "s2"
+        ]
+      },
+      {
+        "before_coordinate_id": "basis.s3",
+        "after_coordinate_id": "basis.o2",
+        "source_span_ids": [
+          "s2"
+        ]
+      }
+    ]
   },
   "approximation": {
     "mode": "approximate",
