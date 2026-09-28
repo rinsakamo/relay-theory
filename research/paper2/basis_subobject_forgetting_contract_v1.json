@@ -1,0 +1,44 @@
+{
+  "schema_version": "paper2-basis-subobject-forgetting-contract-v1",
+  "owner_issue": 293,
+  "parent_issue": 283,
+  "input_schema": "paper2-basis-structural-skeleton-v1",
+  "operator": {
+    "name": "F_R",
+    "interpretation": "Restrict a basis-structural skeleton to an explicitly witnessed basis subobject R.",
+    "generic": true,
+    "claim_specific_operator_definitions_forbidden": true
+  },
+  "allowed_actions": [
+    "forget a basis-coordinate instance",
+    "forget structural edges incident to a forgotten coordinate",
+    "forget an explicitly selected structural edge without rewiring the retained graph",
+    "forget an explicitly selected temporal feature",
+    "forget an explicitly selected P/Q/Pi/C control-state feature"
+  ],
+  "forbidden_actions": [
+    "change a retained node role",
+    "change a retained node axis",
+    "change edge kind",
+    "reverse ordered arguments",
+    "rewire an edge to different retained nodes",
+    "invent a node or edge",
+    "strengthen a temporal/control state",
+    "inspect construct labels or desired Archetype membership"
+  ],
+  "witness": {
+    "required": [
+      "retained_node_ids",
+      "retained_edge_indices",
+      "retained_temporal_keys",
+      "retained_control_keys"
+    ],
+    "composition_auditable": true
+  },
+  "common_image_rule": "A candidate Archetype A must be structurally isomorphic to an F_R image of every claimed member.",
+  "maximality_rule": "If a strictly richer common basis subobject A_prime exists for the same member set, A alone is not accepted as a maximal Archetype.",
+  "nontriviality_rule": "Generic one-node/no-relation collapses are rejected. Stronger domain-independent nontriviality criteria may be added only before real-corpus outcomes are inspected.",
+  "multiple_maxima": "Retain multiple incomparable maximal common basis subobjects; do not force a unique meet.",
+  "frozen_phi_boundary": "No #225 Phi object or frozen 1770-pair relation is modified.",
+  "architecture_consequence": "NONE"
+}

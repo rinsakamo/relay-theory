@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/rinsakamo/relay-theory/blob/main/research/paper2/basis_subobject_v1.schema.json",
+  "title": "Paper 2 basis subobject v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "source_skeleton_version",
+    "basis_version",
+    "nodes",
+    "edges",
+    "temporal",
+    "controls",
+    "active_axes"
+  ],
+  "properties": {
+    "schema_version": {"const": "paper2-basis-subobject-v1"},
+    "source_skeleton_version": {"const": "paper2-basis-structural-skeleton-v1"},
+    "basis_version": {"const": "paper2-working-basis-v1"},
+    "nodes": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["space", "role", "required", "axis"],
+        "properties": {
+          "space": {"const": "basis_coordinate"},
+          "role": {"type": "string"},
+          "required": {"type": "boolean"},
+          "axis": {
+            "oneOf": [
+              {"enum": ["S", "Pi", "K", "O", "T", "C", "Q", "P"]},
+              {"type": "null"}
+            ]
+          }
+        }
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "family",
+          "kind",
+          "ordered_arguments",
+          "arguments",
+          "conditional_on",
+          "temporal_direction"
+        ],
+        "properties": {
+          "family": {"enum": ["basis_relation", "temporal_order"]},
+          "kind": {"type": "string"},
+          "ordered_arguments": {"type": "boolean"},
+          "arguments": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+          "conditional_on": {"type": "array", "items": {"type": "string"}},
+          "temporal_direction": {"type": "string"}
+        }
+      }
+    },
+    "temporal": {
+      "type": "object",
+      "propertyNames": {
+        "enum": ["time_index", "history_window", "future_horizon", "recurrence", "persistence"]
+      }
+    },
+    "controls": {
+      "type": "object",
+      "propertyNames": {
+        "enum": ["probe_P", "criterion_Q", "partition_Pi", "resource_C"]
+      }
+    },
+    "active_axes": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"enum": ["S", "Pi", "K", "O", "T", "C", "Q", "P"]}
+    }
+  }
+}

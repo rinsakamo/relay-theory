@@ -1,0 +1,25 @@
+name: paper2-basis-subobject-forgetting-selftest
+
+on:
+  pull_request:
+    paths:
+      - "research/paper2/basis_subobject_forgetting_contract_v1.json"
+      - "research/paper2/basis_subobject_v1.schema.json"
+      - "scripts/paper2_basis_subobject_forgetting.py"
+      - "scripts/paper2_basis_structural_skeleton.py"
+      - ".github/workflows/paper2-basis-subobject-forgetting-selftest.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run #293 F_R destructive fixtures
+        run: python scripts/paper2_basis_subobject_forgetting.py --self-test
