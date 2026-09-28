@@ -190,3 +190,42 @@ jobs:
           python -m json.tool /tmp/LRN03.phi.json >/dev/null
           sha256sum /tmp/LRN03.structural.json
           sha256sum /tmp/LRN03.phi.json
+
+      - name: Compile reviewed LRN04 structural record
+        run: |
+          set -euo pipefail
+          python scripts/paper2_reference_structural_adjudication.py \
+            --claim-ir research/paper2/chatgpt_reference_claimir_v1/LRN04.json \
+            --adjudication research/paper2/reference_structural_adjudication_v1/LRN04.json \
+            --output /tmp/LRN04.structural.json
+          python scripts/paper2_phi_compare.py --project /tmp/LRN04.structural.json > /tmp/LRN04.phi.json
+          python -m json.tool /tmp/LRN04.structural.json >/dev/null
+          python -m json.tool /tmp/LRN04.phi.json >/dev/null
+          sha256sum /tmp/LRN04.structural.json
+          sha256sum /tmp/LRN04.phi.json
+
+      - name: Compile reviewed LRN05 structural record
+        run: |
+          set -euo pipefail
+          python scripts/paper2_reference_structural_adjudication.py \
+            --claim-ir research/paper2/chatgpt_reference_claimir_v1/LRN05.json \
+            --adjudication research/paper2/reference_structural_adjudication_v1/LRN05.json \
+            --output /tmp/LRN05.structural.json
+          python scripts/paper2_phi_compare.py --project /tmp/LRN05.structural.json > /tmp/LRN05.phi.json
+          python -m json.tool /tmp/LRN05.structural.json >/dev/null
+          python -m json.tool /tmp/LRN05.phi.json >/dev/null
+          sha256sum /tmp/LRN05.structural.json
+          sha256sum /tmp/LRN05.phi.json
+
+      - name: Compile reviewed LRN06 structural record
+        run: |
+          set -euo pipefail
+          python scripts/paper2_reference_structural_adjudication.py \
+            --claim-ir research/paper2/chatgpt_reference_claimir_v1/LRN06.json \
+            --adjudication research/paper2/reference_structural_adjudication_v1/LRN06.json \
+            --output /tmp/LRN06.structural.json
+          python scripts/paper2_phi_compare.py --project /tmp/LRN06.structural.json > /tmp/LRN06.phi.json
+          python -m json.tool /tmp/LRN06.structural.json >/dev/null
+          python -m json.tool /tmp/LRN06.phi.json >/dev/null
+          sha256sum /tmp/LRN06.structural.json
+          sha256sum /tmp/LRN06.phi.json
