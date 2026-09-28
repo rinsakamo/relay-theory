@@ -32,6 +32,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -41,13 +43,15 @@ jobs:
           python -m py_compile scripts/paper2_phi_compare.py
       - name: Run destructive protocol self-test
         run: python scripts/paper2_reference_structural_adjudication.py --self-test
-      - name: Compile present BLF adjudications
+      - name: Compile terminalized BLF adjudications
+        env:
+          BLF_BASE_SHA: 0e03af04ba28b4da78a0ba4ccace75bcb359e6ec
         run: |
           set -euo pipefail
           found=0
           for claim in BLF01 BLF02 BLF03 BLF04 BLF05 BLF06; do
             adj="research/paper2/reference_structural_adjudication_v1/${claim}.json"
-            if [ ! -f "${adj}" ]; then
+            if git diff --quiet "${BLF_BASE_SHA}" HEAD -- "${adj}"; then
               continue
             fi
             found=1
@@ -65,5 +69,5 @@ jobs:
             sha256sum "/tmp/${claim}.phi.json"
           done
           if [ "${found}" -eq 0 ]; then
-            echo "No BLF adjudication files committed yet; protocol self-test only."
+            echo "No BLF adjudication differs from frozen lane base yet; protocol self-test only."
           fi
