@@ -4,38 +4,33 @@
   "adjudicator": {
     "tool": "ChatGPT",
     "version": "GPT-5.6 Sol",
-    "procedure": "paper2-reference-structural-adjudication-v1:267",
-    "adjudicated_at": "2026-09-28"
+    "procedure": "paper2-structural-blf-267",
+    "adjudicated_at": "2026-09-28T14:35:00Z"
   },
   "coordinate_map": [
     {
-      "claim_node_id": "event_variables",
-      "coordinate_id": "basis.s1",
+      "claim_node_id": "matched_association_pattern",
+      "coordinate_id": "basis.n01",
       "required": true
     },
     {
-      "claim_node_id": "directed_dependency_structure",
-      "coordinate_id": "basis.s2",
+      "claim_node_id": "intervention_status_pattern",
+      "coordinate_id": "basis.n02",
       "required": true
     },
     {
-      "claim_node_id": "observational_pattern",
-      "coordinate_id": "basis.o1",
+      "claim_node_id": "candidate_directional_structure",
+      "coordinate_id": "basis.n03",
       "required": true
     },
     {
-      "claim_node_id": "intervention_pattern",
-      "coordinate_id": "basis.p1",
+      "claim_node_id": "causal_status_judgment",
+      "coordinate_id": "basis.n04",
       "required": true
     },
     {
-      "claim_node_id": "intervention_prediction",
-      "coordinate_id": "basis.o2",
-      "required": true
-    },
-    {
-      "claim_node_id": "structured_causal_probe",
-      "coordinate_id": "basis.p2",
+      "claim_node_id": "structured_intervention_probe",
+      "coordinate_id": "basis.n05",
       "required": true
     }
   ],
@@ -43,8 +38,7 @@
     "probe_P": {
       "state": "present",
       "claim_node_ids": [
-        "intervention_pattern",
-        "structured_causal_probe"
+        "structured_intervention_probe"
       ],
       "provenance_kind": "source_declared",
       "fixed_before_phi": true
@@ -61,7 +55,12 @@
   },
   "temporal": {
     "time_index": {
-      "state": "not_required"
+      "state": "present",
+      "source_span_ids": [
+        "s2",
+        "s3",
+        "s4"
+      ]
     },
     "history_window": {
       "state": "not_required"
@@ -75,7 +74,24 @@
     "persistence": {
       "state": "not_required"
     },
-    "ordering": []
+    "ordering": [
+      {
+        "before_coordinate_id": "basis.n02",
+        "after_coordinate_id": "basis.n04",
+        "source_span_ids": [
+          "s3",
+          "s4"
+        ]
+      },
+      {
+        "before_coordinate_id": "basis.n05",
+        "after_coordinate_id": "basis.n04",
+        "source_span_ids": [
+          "s3",
+          "s4"
+        ]
+      }
+    ]
   },
   "approximation": {
     "mode": "stochastic",
@@ -86,7 +102,7 @@
       "state": "not_required"
     },
     "confidence": {
-      "state": "not_applicable"
+      "state": "not_required"
     },
     "loss": {
       "state": "not_required"

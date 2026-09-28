@@ -1,0 +1,73 @@
+name: paper2-structural-blf-selftest
+
+on:
+  pull_request:
+    paths:
+      - "research/paper2/reference_structural_adjudication_v1/BLF*.json"
+      - "research/paper2/chatgpt_reference_claimir_v1/BLF*.json"
+      - "scripts/paper2_reference_structural_adjudication.py"
+      - "scripts/paper2_phi_compare.py"
+      - "scripts/paper2_structural_signature_*.py"
+      - "research/paper2/reference_structural_adjudication_v1.schema.json"
+      - "research/paper2/claim_ir_v1.*"
+      - ".github/workflows/paper2-structural-blf-selftest.yml"
+  push:
+    branches:
+      - paper2-structural-blf-267
+    paths:
+      - "research/paper2/reference_structural_adjudication_v1/BLF*.json"
+      - "research/paper2/chatgpt_reference_claimir_v1/BLF*.json"
+      - "scripts/paper2_reference_structural_adjudication.py"
+      - "scripts/paper2_phi_compare.py"
+      - "scripts/paper2_structural_signature_*.py"
+      - "research/paper2/reference_structural_adjudication_v1.schema.json"
+      - "research/paper2/claim_ir_v1.*"
+      - ".github/workflows/paper2-structural-blf-selftest.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  blf-structural:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile structural tools
+        run: |
+          python -m py_compile scripts/paper2_reference_structural_adjudication.py
+          python -m py_compile scripts/paper2_phi_compare.py
+      - name: Run destructive protocol self-test
+        run: python scripts/paper2_reference_structural_adjudication.py --self-test
+      - name: Compile terminalized BLF adjudications
+        env:
+          BLF_BASE_SHA: 0e03af04ba28b4da78a0ba4ccace75bcb359e6ec
+        run: |
+          set -euo pipefail
+          found=0
+          for claim in BLF01 BLF02 BLF03 BLF04 BLF05 BLF06; do
+            adj="research/paper2/reference_structural_adjudication_v1/${claim}.json"
+            if git diff --quiet "${BLF_BASE_SHA}" HEAD -- "${adj}"; then
+              continue
+            fi
+            found=1
+            python scripts/paper2_reference_structural_adjudication.py \
+              --claim-ir "research/paper2/chatgpt_reference_claimir_v1/${claim}.json" \
+              --adjudication "${adj}" \
+              --output "/tmp/${claim}.structural.json"
+            python scripts/paper2_phi_compare.py \
+              --project "/tmp/${claim}.structural.json" \
+              > "/tmp/${claim}.phi.json"
+            python -m json.tool "/tmp/${claim}.structural.json" >/dev/null
+            python -m json.tool "/tmp/${claim}.phi.json" >/dev/null
+            echo "=== ${claim} ==="
+            sha256sum "/tmp/${claim}.structural.json"
+            sha256sum "/tmp/${claim}.phi.json"
+          done
+          if [ "${found}" -eq 0 ]; then
+            echo "No BLF adjudication differs from frozen lane base yet; protocol self-test only."
+          fi
