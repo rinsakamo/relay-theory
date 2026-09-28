@@ -26,15 +26,13 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   reconstruction:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: ${{ github.head_ref || github.ref_name }}
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -42,19 +40,11 @@ jobs:
         run: python scripts/paper2_archetype_blf.py --self-test
       - name: Regenerate BLF lane report
         run: python scripts/paper2_archetype_blf.py --emit-report --output /tmp/blf_archetype_reconstruction_v1.json
-      - name: Freeze bootstrap report or verify byte identity
+      - name: Validate generated report
         run: |
-          set -euo pipefail
-          target=research/paper2/blf_archetype_reconstruction_v1.json
-          if [ -f "${target}" ]; then
-            cmp /tmp/blf_archetype_reconstruction_v1.json "${target}"
-            echo "BLF_ARCHETYPE_REPORT_BYTE_IDENTITY_PASS"
-            exit 0
-          fi
-          cp /tmp/blf_archetype_reconstruction_v1.json "${target}"
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "${target}"
-          git commit -m "Paper 2 #300: freeze generated BLF Archetype report"
-          git push origin HEAD:paper2-archetype-blf-300
-          echo "BLF_ARCHETYPE_REPORT_BOOTSTRAP_COMMITTED"
+          python -m json.tool /tmp/blf_archetype_reconstruction_v1.json >/dev/null
+          sha256sum /tmp/blf_archetype_reconstruction_v1.json
+      - name: Verify frozen report byte identity
+        run: |
+          cmp /tmp/blf_archetype_reconstruction_v1.json research/paper2/blf_archetype_reconstruction_v1.json
+          echo "BLF_ARCHETYPE_REPORT_BYTE_IDENTITY_PASS"
