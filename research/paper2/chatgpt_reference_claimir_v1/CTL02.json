@@ -7,15 +7,23 @@
     "source_spans": [
       {
         "span_id": "s1",
-        "locator": "Annual Review of Neuroscience 24, published p.167, Abstract: active maintenance of goal/means patterns guides thought and action"
+        "locator": "Annual Review of Neuroscience 24, published p.167, Abstract: active maintenance of goal/means patterns in prefrontal cortex provides bias signals that guide neural activity along task-appropriate mappings"
       },
       {
         "span_id": "s2",
-        "locator": "Annual Review of Neuroscience 24, published p.167, Abstract: maintained patterns provide bias signals to other brain structures"
+        "locator": "Annual Review of Neuroscience 24, published pp.171-172, Overview of the Theory and illustrative context-dependent action example: maintained PFC representations bias downstream pathways and support the context-appropriate response when stronger alternatives compete"
       },
       {
         "span_id": "s3",
-        "locator": "Annual Review of Neuroscience 24, early theory sections: bias signals guide pathways mapping inputs and internal states to task-appropriate outputs"
+        "locator": "Annual Review of Neuroscience 24, published p.173, Minimal Requirements for a Mechanism of Top-Down Control: PFC as active memory in the service of control; robust maintenance, flexible updating, and influence over task-relevant neural pathways"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Annual Review of Neuroscience 24, published pp.179-180, Active Maintenance: task-rule activity must persist beyond the eliciting event and across intervening potentially interfering events"
+      },
+      {
+        "span_id": "s5",
+        "locator": "Annual Review of Neuroscience 24, published pp.183-185, Guided Activation account and Stroop model: PFC control units modulate rather than transmit input-output mappings, biasing weaker task-relevant pathways when they compete with stronger alternatives"
       }
     ],
     "authors": [
@@ -37,78 +45,107 @@
     "extractor_version": "GPT-5.6 Sol",
     "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
     "extracted_at": "2026-09-28",
-    "manual_review_status": "unreviewed"
+    "manual_review_status": "reviewed"
   },
   "claim_core": {
-    "claim_type": "counterfactual",
+    "claim_type": "relation",
     "modality": "counterfactual",
     "scope": {
       "conditions": [
-        "task performance requires mapping current inputs/internal state to outputs in accordance with an internally represented goal"
+        "task performance requires a context-appropriate mapping among inputs, internal states, and outputs, especially when the relevant pathway is weak, ambiguous, rapidly changing, or competes with a stronger habitual alternative"
       ],
       "population": [
-        "human and nonhuman primate systems reviewed by the source"
+        "human and nonhuman primate systems reviewed by the source, together with computational models used to illustrate the proposed mechanism"
       ],
       "substrate": [
-        "goal-maintaining cortical subsystem and downstream processing systems"
+        "prefrontal cortical representations and downstream cortical/subcortical processing pathways"
       ],
       "task": [
-        "rule- or goal-guided behavior"
+        "maintain and apply a current goal or rule so that processing follows the task-appropriate pathway"
       ],
       "temporal_scope": [
-        "goal-related activity remains active across the interval in which it biases processing and response selection"
+        "the goal/rule representation is activated in advance of and maintained over the interval in which it must bias processing, potentially persisting beyond the eliciting event and across intervening distractors"
       ]
     },
     "nodes": [
       {
-        "id": "goal_maintaining_subsystem",
+        "id": "pfc_control_subsystem",
         "role": "partition",
-        "description": "source-proposed cortical subsystem that actively maintains patterns representing goals and means",
+        "description": "prefrontal subsystem proposed to actively maintain task-relevant goal and rule representations and provide modulatory top-down signals",
         "source_span_ids": [
           "s1",
           "s2",
-          "s3"
+          "s3",
+          "s5"
         ],
         "grounding": "normalized"
       },
       {
         "id": "downstream_processing_system",
         "role": "partition",
-        "description": "other neural systems whose processing pathways can be biased by the maintained state",
-        "source_span_ids": [
-          "s2",
-          "s3"
-        ],
-        "grounding": "normalized"
-      },
-      {
-        "id": "maintained_goal_state",
-        "role": "state_or_structure",
-        "description": "persisting pattern representing the current task goal and means to achieve it",
+        "description": "other cortical or subcortical systems in which input/internal-state-to-output processing pathways carry task performance",
         "source_span_ids": [
           "s1",
           "s2",
-          "s3"
+          "s3",
+          "s5"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "downstream_bias",
+        "id": "maintained_goal_rule_state",
+        "role": "state_or_structure",
+        "description": "persisting pattern of prefrontal activity representing a current goal, rule, or means for achieving the goal",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3",
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "top_down_bias_signal",
         "role": "response_or_outcome",
-        "description": "modulatory signal that changes which input/state-to-output pathways dominate",
+        "description": "modulatory signal generated by the maintained prefrontal representation that alters support for downstream processing pathways",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "task_relevant_pathway_activity",
+        "role": "state_or_structure",
+        "description": "activity flowing along the downstream pathway that implements the mapping appropriate to the current goal or rule",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "strong_competing_alternative",
+        "role": "condition",
+        "description": "a stronger, more habitual, or otherwise competing pathway that would dominate without sufficient top-down bias",
         "source_span_ids": [
           "s2",
-          "s3"
+          "s5"
         ],
         "grounding": "normalized"
       },
       {
         "id": "task_appropriate_output",
-        "role": "criterion",
-        "description": "output consistent with the currently maintained goal and task mapping",
+        "role": "response_or_outcome",
+        "description": "behavioral or internal output produced by the task-appropriate downstream mapping",
         "source_span_ids": [
           "s1",
-          "s3"
+          "s2",
+          "s5"
         ],
         "grounding": "normalized"
       }
@@ -118,57 +155,75 @@
         "id": "r1",
         "kind": "maps_to",
         "arguments": [
-          "goal_maintaining_subsystem",
-          "maintained_goal_state"
+          "pfc_control_subsystem",
+          "maintained_goal_rule_state"
         ],
-        "description": "the source assigns persistent goal-and-means representations to the designated subsystem",
+        "description": "the source assigns active maintenance of current goals, rules, and means to patterns of activity in the prefrontal subsystem",
         "source_span_ids": [
           "s1",
-          "s2"
+          "s2",
+          "s3",
+          "s4"
         ],
         "grounding": "normalized"
       },
       {
         "id": "r2",
-        "kind": "changes",
+        "kind": "maps_to",
         "arguments": [
-          "maintained_goal_state",
-          "downstream_processing_system",
-          "downstream_bias"
+          "maintained_goal_rule_state",
+          "top_down_bias_signal"
         ],
-        "description": "changing the maintained goal state changes bias applied to downstream processing pathways",
+        "description": "maintained prefrontal representations provide top-down bias signals to other brain structures",
         "source_span_ids": [
+          "s1",
           "s2",
-          "s3"
+          "s3",
+          "s5"
         ],
         "grounding": "normalized"
       },
       {
         "id": "r3",
-        "kind": "depends_on",
+        "kind": "changes",
         "arguments": [
-          "task_appropriate_output",
-          "downstream_bias"
+          "top_down_bias_signal",
+          "downstream_processing_system",
+          "task_relevant_pathway_activity"
         ],
-        "description": "selection of the task-appropriate mapping depends on the bias supplied by the maintained state",
+        "description": "the bias signal modulates downstream processing so that activity is preferentially guided along the pathway appropriate to the current task",
         "source_span_ids": [
           "s1",
           "s2",
-          "s3"
+          "s5"
         ],
         "grounding": "normalized"
       },
       {
         "id": "r4",
-        "kind": "satisfies",
+        "kind": "depends_on",
         "arguments": [
           "task_appropriate_output",
-          "maintained_goal_state"
+          "task_relevant_pathway_activity",
+          "strong_competing_alternative"
         ],
-        "description": "the resulting output is evaluated relative to the currently represented goal",
+        "description": "when a stronger competing pathway is present, producing the task-appropriate output depends on sufficient activation of the task-relevant pathway under top-down support",
         "source_span_ids": [
-          "s1",
-          "s3"
+          "s2",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "differs",
+        "arguments": [
+          "pfc_control_subsystem",
+          "downstream_processing_system"
+        ],
+        "description": "the source explicitly distinguishes the prefrontal role as modulatory from the downstream pathways that actually transmit the input/internal-state-to-output mapping",
+        "source_span_ids": [
+          "s5"
         ],
         "grounding": "normalized"
       }
