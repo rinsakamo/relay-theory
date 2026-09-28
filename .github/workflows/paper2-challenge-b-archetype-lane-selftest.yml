@@ -1,0 +1,53 @@
+name: paper2-challenge-b-archetype-lane-selftest
+
+on:
+  pull_request:
+    paths:
+      - "scripts/paper2_archetype_challenge_b_lane.py"
+      - "research/paper2/challenge_b_archetype_lane_v1.json"
+      - ".github/workflows/paper2-challenge-b-archetype-lane-selftest.yml"
+      - "scripts/paper2_basis_structural_skeleton.py"
+      - "scripts/paper2_basis_subobject_forgetting.py"
+      - "research/paper2/chatgpt_reference_claimir_v1/CH02.json"
+      - "research/paper2/chatgpt_reference_claimir_v1/CH04.json"
+      - "research/paper2/chatgpt_reference_claimir_v1/CH06.json"
+      - "research/paper2/chatgpt_reference_claimir_v1/CH08.json"
+      - "research/paper2/chatgpt_reference_claimir_v1/CH10.json"
+      - "research/paper2/chatgpt_reference_claimir_v1/CH12.json"
+      - "research/paper2/reference_structural_adjudication_v1/CH02.json"
+      - "research/paper2/reference_structural_adjudication_v1/CH04.json"
+      - "research/paper2/reference_structural_adjudication_v1/CH06.json"
+      - "research/paper2/reference_structural_adjudication_v1/CH08.json"
+      - "research/paper2/reference_structural_adjudication_v1/CH10.json"
+      - "research/paper2/reference_structural_adjudication_v1/CH12.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lane:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Frozen U_claim self-test
+        run: python scripts/paper2_basis_structural_skeleton.py --self-test
+
+      - name: Frozen F_R self-test
+        run: python scripts/paper2_basis_subobject_forgetting.py --self-test
+
+      - name: Challenge B lane determinism self-test
+        run: python scripts/paper2_archetype_challenge_b_lane.py --self-test
+
+      - name: Regenerate Challenge B lane report
+        run: python scripts/paper2_archetype_challenge_b_lane.py --emit-report --output /tmp/challenge_b_archetype_lane_v1.json
+
+      - name: Verify frozen report byte identity
+        run: cmp /tmp/challenge_b_archetype_lane_v1.json research/paper2/challenge_b_archetype_lane_v1.json
+
+      - name: Report digest
+        run: sha256sum research/paper2/challenge_b_archetype_lane_v1.json
