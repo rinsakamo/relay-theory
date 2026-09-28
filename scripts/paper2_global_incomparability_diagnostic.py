@@ -39,12 +39,13 @@ def load_phi(claim_dir: Path, adjudication_dir: Path, cid: str):
     return project_first(compile_record(claim, adjudication))
 
 
-def scalar_failures(a: dict, b: dict) -> list[str]:
+def scalar_failures(a: dict, b: dict, *, drop_claim_metadata: bool = False, drop_approx_mode: bool = False) -> list[str]:
     reasons: list[str] = []
-    for key in ("claim_type", "modality", "scope_shape"):
-        if a[key] != b[key]:
-            reasons.append(key)
-    if a["approximation"]["mode"] != b["approximation"]["mode"]:
+    if not drop_claim_metadata:
+        for key in ("claim_type", "modality", "scope_shape"):
+            if a[key] != b[key]:
+                reasons.append(key)
+    if not drop_approx_mode and a["approximation"]["mode"] != b["approximation"]["mode"]:
         reasons.append("approximation.mode")
 
     if not set(a["active_axes"]) <= set(b["active_axes"]):
@@ -158,6 +159,30 @@ def main() -> None:
         pair_scalar_pass_counts[f"{scalar_pass_n}_directions_scalar_pass"] += 1
 
     # Signature diversity.
+    # Non-authoritative ablation diagnostics. These do not define alternative Phi relations;
+    # they only localize which frozen scalar surfaces suppress directed comparability.
+    ablation_counts = collections.Counter()
+    active_axes_relation_counts = collections.Counter()
+    for left, right in itertools.combinations(ids, 2):
+        a, b = phis[left], phis[right]
+        for x, y in ((a, b), (b, a)):
+            if not scalar_failures(x, y):
+                ablation_counts["frozen_scalar_pass_directed"] += 1
+            if not scalar_failures(x, y, drop_claim_metadata=True):
+                ablation_counts["drop_claim_metadata_scalar_pass_directed"] += 1
+            if not scalar_failures(x, y, drop_claim_metadata=True, drop_approx_mode=True):
+                ablation_counts["drop_claim_metadata_and_approx_mode_scalar_pass_directed"] += 1
+            if set(x["active_axes"]) <= set(y["active_axes"]):
+                ablation_counts["active_axes_subset_directed"] += 1
+
+        la, ra = set(a["active_axes"]), set(b["active_axes"])
+        if la == ra:
+            active_axes_relation_counts["equal"] += 1
+        elif la < ra or ra < la:
+            active_axes_relation_counts["strict_subset_comparable"] += 1
+        else:
+            active_axes_relation_counts["incomparable"] += 1
+
     profile_counters = {}
     for name, fn in {
         "claim_type": lambda p: p["claim_type"],
@@ -216,6 +241,8 @@ def main() -> None:
         "directed_scalar_failure_reason_counts": dict(sorted(scalar_reason_counts.items())),
         "unordered_pair_scalar_pass_direction_counts": dict(sorted(pair_scalar_pass_counts.items())),
         "profile_diversity": profile_counters,
+        "non_authoritative_ablation_counts": dict(sorted(ablation_counts.items())),
+        "active_axes_only_unordered_relations": dict(sorted(active_axes_relation_counts.items())),
         "deepest_examples": dict(deepest_examples),
         "mem_preidentified_raw_near_pair_diagnostic": mem_diag,
     }
