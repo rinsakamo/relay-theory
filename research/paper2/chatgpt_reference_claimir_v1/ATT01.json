@@ -15,7 +15,11 @@
       },
       {
         "span_id": "s3",
-        "locator": "Journal of Experimental Psychology: General 113(4), published pp.505-506, Experiment 1 display and dual-report logic"
+        "locator": "Journal of Experimental Psychology: General 113(4), published pp.505-508, Experiment 1 rationale, method, design, Table 1, and results for single- versus double-judgment performance in same-object and different-object conditions"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Journal of Experimental Psychology: General 113(4), published pp.513-514, General Discussion: overall same-object/different-object interference conclusion, explicit rider on same-object generality, and interpretation in terms of preattentively defined information packages"
       }
     ],
     "authors": [
@@ -37,10 +41,10 @@
     "extractor_version": "GPT-5.6 Sol",
     "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
     "extracted_at": "2026-09-28",
-    "manual_review_status": "unreviewed"
+    "manual_review_status": "reviewed"
   },
   "claim_core": {
-    "claim_type": "constraint",
+    "claim_type": "comparison",
     "modality": "probabilistic",
     "scope": {
       "conditions": [
@@ -53,7 +57,9 @@
       "task": [
         "report one or two attributes drawn from one or two perceptual units"
       ],
-      "temporal_scope": []
+      "temporal_scope": [
+        "brief tachistoscopic exposure; in Experiment 1 the final criterion exposure duration ranged from 50 to 100 ms across participants (mean 79.2 ms)"
+      ]
     },
     "nodes": [
       {
@@ -63,7 +69,8 @@
         "source_span_ids": [
           "s1",
           "s2",
-          "s3"
+          "s3",
+          "s4"
         ],
         "grounding": "normalized"
       },
@@ -73,7 +80,8 @@
         "description": "two required judgments concern attributes of the same perceptual unit",
         "source_span_ids": [
           "s1",
-          "s3"
+          "s3",
+          "s4"
         ],
         "grounding": "normalized"
       },
@@ -83,7 +91,8 @@
         "description": "two required judgments concern attributes belonging to different perceptual units",
         "source_span_ids": [
           "s1",
-          "s3"
+          "s3",
+          "s4"
         ],
         "grounding": "normalized"
       },
@@ -93,7 +102,8 @@
         "description": "accuracy of reporting the required visible attributes",
         "source_span_ids": [
           "s1",
-          "s3"
+          "s3",
+          "s4"
         ],
         "grounding": "normalized"
       },
@@ -116,6 +126,15 @@
           "s3"
         ],
         "grounding": "normalized"
+      },
+      {
+        "id": "single_judgment_control",
+        "role": "condition",
+        "description": "control condition in which only one of the two relevant display dimensions is reported",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
       }
     ],
     "relations": [
@@ -123,14 +142,16 @@
         "id": "r1",
         "kind": "differs",
         "arguments": [
+          "single_judgment_control",
           "single_unit_dual_judgment",
           "cross_unit_dual_judgment",
           "report_accuracy"
         ],
-        "description": "two judgments concerning one unit show little or no dual-report loss whereas judgments spanning two units show reduced accuracy",
+        "description": "relative to the single-judgment control, double judgments concerning one perceptual unit show little or no accuracy loss under the tested conditions, whereas double judgments spanning two units show an accuracy loss, concentrated in the second-reported dimension in Experiment 1",
         "source_span_ids": [
           "s1",
-          "s3"
+          "s3",
+          "s4"
         ],
         "grounding": "normalized"
       },
@@ -145,7 +166,8 @@
         "source_span_ids": [
           "s1",
           "s2",
-          "s3"
+          "s3",
+          "s4"
         ],
         "grounding": "normalized"
       },
@@ -156,10 +178,11 @@
           "brief_display_probe",
           "report_accuracy"
         ],
-        "description": "the brief-display report procedure exposes the grouping-dependent capacity limit",
+        "description": "the brief-display single- versus double-judgment procedure measures accuracy differences associated with whether required attributes belong to one perceptual unit or two",
         "source_span_ids": [
           "s1",
-          "s3"
+          "s3",
+          "s4"
         ],
         "grounding": "normalized"
       },

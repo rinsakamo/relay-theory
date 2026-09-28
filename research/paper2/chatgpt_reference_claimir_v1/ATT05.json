@@ -7,15 +7,23 @@
     "source_spans": [
       {
         "span_id": "s1",
-        "locator": "Journal of Experimental Psychology: Human Perception and Performance 18(3), published p.849, Abstract: first target identification followed by second probe detection in a rapid serial stream"
+        "locator": "Journal of Experimental Psychology: Human Perception and Performance 18(3), published p.849, Abstract: target-identification plus probe-detection RSVP task; probe deficit from 180 to 450 ms; no deficit when a brief blank follows the target or when target identification is not required"
       },
       {
         "span_id": "s2",
-        "locator": "Journal of Experimental Psychology: Human Perception and Performance 18(3), published p.849, Abstract: second-probe detection deficit in a 270-ms interval beginning 180 ms after the first target"
+        "locator": "Journal of Experimental Psychology: Human Perception and Performance 18(3), published pp.853-855, Experiment 2: identify-target versus ignore-target control, fully specified X probe, significant detection deficit for +2 through +5 / 180-450 ms only when target identification is required"
       },
       {
         "span_id": "s3",
-        "locator": "Journal of Experimental Psychology: Human Perception and Performance 18(3), published p.849 and pp.855-857, controls: deficit absent after a brief blank or when first-target identification is not required"
+        "locator": "Journal of Experimental Psychology: Human Perception and Performance 18(3), published pp.855-856, Experiment 3: blank inserted immediately after the target before the first posttarget letter; blanks of 90 ms or longer eliminate the deficit and reduce target-identification interference"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Journal of Experimental Psychology: Human Perception and Performance 18(3), published pp.856-858, Experiment 4: the same-duration blank moved to after the +1 item does not eliminate the deficit; immediate posttarget stimulation is required to initiate the suppressive process, which then persists despite later blank stimulation"
+      },
+      {
+        "span_id": "s5",
+        "locator": "Journal of Experimental Psychology: Human Perception and Performance 18(3), published pp.858-860, General Discussion and proposed gate model: target-identification interference from an immediate novel item initiates transient suppression; once initiated it is described as ballistic; concluding empirical interval is 180-450 ms"
       }
     ],
     "authors": [
@@ -37,93 +45,34 @@
     "extractor_version": "GPT-5.6 Sol",
     "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
     "extracted_at": "2026-09-28",
-    "manual_review_status": "unreviewed"
+    "manual_review_status": "reviewed"
   },
   "claim_core": {
-    "claim_type": "comparison",
-    "modality": "probabilistic",
+    "claim_type": "relation",
+    "modality": "descriptive",
     "scope": {
       "conditions": [
-        "rapid serial visual stream with a partially specified first target and a later fully specified probe"
+        "rapid serial presentation of letters containing a partially specified white target and a fully specified X probe at variable posttarget positions",
+        "target identification is either required or explicitly omitted in a control condition",
+        "the timing of immediate posttarget visual input is manipulated by placing a blank either before the first posttarget letter or after that first posttarget letter"
       ],
       "population": [
-        "adult participants"
+        "student participants in Experiments 2-4, ages 17-37"
       ],
       "substrate": [],
       "task": [
-        "identify the first target and detect whether a specified later probe is present"
+        "name the white target letter and report whether the X probe was present, or in the control condition ignore the white target and report only probe presence or absence"
       ],
       "temporal_scope": [
-        "probe position ranges from immediately after the target through several hundred milliseconds later"
+        "probe detection is impaired primarily for probes presented about 180-450 ms after the target when target identification is required and immediate novel posttarget input occurs before identification is complete",
+        "a blank replacing the immediate +1 input prevents the deficit, whereas a similar blank inserted only after the +1 item does not"
       ]
     },
     "nodes": [
       {
-        "id": "first_target_identification",
+        "id": "target_identification_requirement",
         "role": "intervention",
-        "description": "requirement to identify the partially specified first target",
-        "source_span_ids": [
-          "s1",
-          "s3"
-        ],
-        "grounding": "normalized"
-      },
-      {
-        "id": "posttarget_stream",
-        "role": "condition",
-        "description": "continued serial visual stimulation following the first target",
-        "source_span_ids": [
-          "s1",
-          "s3"
-        ],
-        "grounding": "normalized"
-      },
-      {
-        "id": "probe_delay",
-        "role": "condition",
-        "description": "elapsed time from first-target presentation to the second probe",
-        "source_span_ids": [
-          "s1",
-          "s2",
-          "s3"
-        ],
-        "grounding": "normalized"
-      },
-      {
-        "id": "probe_detection",
-        "role": "response_or_outcome",
-        "description": "probability of correctly detecting the specified later probe",
-        "source_span_ids": [
-          "s1",
-          "s2",
-          "s3"
-        ],
-        "grounding": "normalized"
-      },
-      {
-        "id": "stream_interruption",
-        "role": "intervention",
-        "description": "brief blank interval inserted after the first target in control conditions",
-        "source_span_ids": [
-          "s3"
-        ],
-        "grounding": "normalized"
-      },
-      {
-        "id": "dual_event_probe",
-        "role": "probe",
-        "description": "two-event rapid-serial procedure measuring second-probe detection as a function of delay and first-target processing",
-        "source_span_ids": [
-          "s1",
-          "s2",
-          "s3"
-        ],
-        "grounding": "normalized"
-      },
-      {
-        "id": "correct_probe_detection",
-        "role": "criterion",
-        "description": "correct judgment of presence or absence of the later specified probe",
+        "description": "experimental requirement either to identify the partially specified white target or to ignore its defining color and omit target identification",
         "source_span_ids": [
           "s1",
           "s2"
@@ -131,12 +80,95 @@
         "grounding": "normalized"
       },
       {
-        "id": "temporary_processing_budget",
-        "role": "state_or_structure",
-        "description": "temporarily unavailable processing resource inferred from the delay-specific second-probe deficit",
+        "id": "immediate_posttarget_input",
+        "role": "condition",
+        "description": "novel first posttarget letter presented while target identification may still be incomplete",
         "source_span_ids": [
+          "s3",
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "posttarget_blank_timing",
+        "role": "intervention",
+        "description": "placement of a blank interval either immediately after the target before the first posttarget letter or later after that first posttarget letter",
+        "source_span_ids": [
+          "s3",
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "identification_interference",
+        "role": "state_or_structure",
+        "description": "source-inferred confusion or interference produced when new posttarget input arrives before target identification is complete",
+        "source_span_ids": [
+          "s3",
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "transient_visual_suppression",
+        "role": "state_or_structure",
+        "description": "source-proposed temporary suppression of subsequent visual input that is initiated when identification interference occurs",
+        "source_span_ids": [
+          "s1",
+          "s3",
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "probe_delay",
+        "role": "condition",
+        "description": "elapsed posttarget time or corresponding serial position at which the fully specified X probe is presented",
+        "source_span_ids": [
+          "s1",
           "s2",
-          "s3"
+          "s3",
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "probe_detection",
+        "role": "response_or_outcome",
+        "description": "percentage or probability of correctly reporting whether the fully specified X probe was present",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3",
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "dual_task_rsvp_probe",
+        "role": "probe",
+        "description": "rapid serial letter procedure comparing target-identification and ignore-target conditions while measuring X-probe detection over posttarget time and blank-placement manipulations",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "correct_probe_report",
+        "role": "criterion",
+        "description": "correct present-versus-absent judgment for the fully specified X probe",
+        "source_span_ids": [
+          "s1",
+          "s2"
         ],
         "grounding": "normalized"
       }
@@ -148,67 +180,113 @@
         "arguments": [
           "probe_detection",
           "probe_delay",
-          "first_target_identification",
-          "posttarget_stream"
+          "target_identification_requirement"
         ],
-        "description": "second-probe detection drops selectively at intermediate posttarget delays when first-target identification and continuing stream processing are required",
+        "description": "probe detection shows a marked delay-dependent deficit from about 180 to 450 ms when target identification is required, but not when the target-defining color is ignored",
         "source_span_ids": [
           "s1",
           "s2",
-          "s3"
+          "s5"
         ],
         "grounding": "normalized"
       },
       {
         "id": "r2",
-        "kind": "changes",
+        "kind": "depends_on",
         "arguments": [
-          "stream_interruption",
-          "probe_detection"
+          "identification_interference",
+          "immediate_posttarget_input",
+          "posttarget_blank_timing"
         ],
-        "description": "inserting a brief posttarget blank removes or reduces the temporary second-probe deficit",
+        "description": "the source infers identification interference when novel +1 input arrives before target identification is complete; replacing that immediate input with a blank relieves the interference",
         "source_span_ids": [
-          "s3"
+          "s3",
+          "s4",
+          "s5"
         ],
         "grounding": "normalized"
       },
       {
         "id": "r3",
-        "kind": "constrains",
+        "kind": "changes",
         "arguments": [
-          "temporary_processing_budget",
-          "probe_detection"
+          "identification_interference",
+          "transient_visual_suppression"
         ],
-        "description": "the source interprets the transient deficit as a temporary limit during completion of first-target processing",
+        "description": "the source's proposed mechanism uses interference during target identification to initiate a temporary suppressive state rather than positing a generic depleted processing budget",
         "source_span_ids": [
-          "s2",
-          "s3"
+          "s4",
+          "s5"
         ],
         "grounding": "normalized"
       },
       {
         "id": "r4",
-        "kind": "maps_to",
+        "kind": "constrains",
         "arguments": [
-          "dual_event_probe",
+          "transient_visual_suppression",
           "probe_detection"
         ],
-        "description": "the rapid-serial two-event procedure measures the time course of the temporary deficit",
+        "description": "once the proposed suppressive state is initiated, detection of later probes is reduced for a limited posttarget interval",
         "source_span_ids": [
           "s1",
-          "s2",
-          "s3"
+          "s4",
+          "s5"
         ],
         "grounding": "normalized"
       },
       {
         "id": "r5",
+        "kind": "changes",
+        "arguments": [
+          "posttarget_blank_timing",
+          "probe_detection"
+        ],
+        "description": "a blank that replaces the immediate +1 input prevents the deficit, whereas a comparable blank inserted only after the +1 item leaves the deficit intact",
+        "source_span_ids": [
+          "s3",
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r6",
+        "kind": "precedes",
+        "arguments": [
+          "identification_interference",
+          "transient_visual_suppression"
+        ],
+        "description": "in the proposed sequence, interference during unfinished target identification occurs before initiation of the transient suppressive state",
+        "source_span_ids": [
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r7",
+        "kind": "maps_to",
+        "arguments": [
+          "dual_task_rsvp_probe",
+          "probe_detection"
+        ],
+        "description": "the RSVP procedure measures the posttarget time course of the detection deficit under target-task and blank-placement manipulations",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r8",
         "kind": "satisfies",
         "arguments": [
           "probe_detection",
-          "correct_probe_detection"
+          "correct_probe_report"
         ],
-        "description": "outcome is evaluated by correct presence/absence judgment for the probe",
+        "description": "probe performance is scored by correct present-versus-absent judgments",
         "source_span_ids": [
           "s1",
           "s2"
