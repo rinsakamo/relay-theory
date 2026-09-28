@@ -1,0 +1,202 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "CNC06.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1037/0033-295X.114.2.245",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Psychological Review 114(2), published p.245, abstract: learning from one or a few positive examples by combining prior plausible meanings with sample statistics"
+      },
+      {
+        "span_id": "s2",
+        "locator": "same article, 'The Bayesian Framework' / hypothesis-space and likelihood sections: posterior weighting of candidate extensions from prior and observed examples"
+      },
+      {
+        "span_id": "s3",
+        "locator": "same article, likelihood subsection Eq. 5: smaller candidate extensions receive greater likelihood for repeated consistent independent examples"
+      },
+      {
+        "span_id": "s4",
+        "locator": "same article, Experiment 1 results: one-example versus three-example extension choices at subordinate/basic/superordinate levels"
+      }
+    ],
+    "authors": [
+      "Fei Xu",
+      "Joshua B. Tenenbaum"
+    ],
+    "institutions": [
+      "University of British Columbia",
+      "Massachusetts Institute of Technology"
+    ],
+    "venue": "Psychological Review",
+    "citation_count": null,
+    "construct_labels": [
+      "word learning",
+      "Bayesian inference",
+      "size principle",
+      "hypothesis averaging",
+      "generalization"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "mapping",
+    "modality": "probabilistic",
+    "scope": {
+      "conditions": [
+        "one or a few positive labeled examples drawn under the model's sampling assumptions"
+      ],
+      "population": [
+        "adults",
+        "children"
+      ],
+      "substrate": [],
+      "task": [
+        "infer the extension of a novel label and choose which new objects should receive it"
+      ],
+      "temporal_scope": [
+        "posterior state is updated after each observed example set"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "prior_candidate_weights",
+        "role": "state_or_structure",
+        "description": "prior probability distribution over plausible candidate extensions",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "observed_positive_examples",
+        "role": "available_information",
+        "description": "one or more positively labeled observed items",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "sampling_assumption",
+        "role": "condition",
+        "description": "assumption governing how observed positive examples are sampled from a candidate extension",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "posterior_candidate_weights",
+        "role": "state_or_structure",
+        "description": "updated probability distribution over candidate extensions after conditioning on the observed examples",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "novel_item_probe",
+        "role": "probe",
+        "description": "test set of new objects spanning multiple levels of the candidate hierarchy",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "extension_choice_rate",
+        "role": "response_or_outcome",
+        "description": "frequency with which new objects at each level are selected as receiving the novel label",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "choice_frequency_criterion",
+        "role": "criterion",
+        "description": "observed response frequencies across hierarchy levels used to compare predicted and observed extension behavior",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "depends_on",
+        "arguments": [
+          "posterior_candidate_weights",
+          "prior_candidate_weights",
+          "observed_positive_examples",
+          "sampling_assumption"
+        ],
+        "description": "the updated candidate weights depend jointly on prior plausibility, the observed examples, and the sampling model",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "changes",
+        "arguments": [
+          "observed_positive_examples",
+          "posterior_candidate_weights"
+        ],
+        "description": "adding multiple mutually consistent examples shifts weight toward more specific candidate extensions relative to the one-example case",
+        "source_span_ids": [
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "maps_to",
+        "arguments": [
+          "posterior_candidate_weights",
+          "novel_item_probe",
+          "extension_choice_rate"
+        ],
+        "description": "posterior mass assigned to candidate extensions is mapped to predicted choices for novel probe items",
+        "source_span_ids": [
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "satisfies",
+        "arguments": [
+          "extension_choice_rate",
+          "choice_frequency_criterion"
+        ],
+        "description": "predicted extension behavior is evaluated against observed choice frequencies across hierarchy levels",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
