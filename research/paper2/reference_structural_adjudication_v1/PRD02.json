@@ -4,38 +4,108 @@
   "adjudicator": {
     "tool": "ChatGPT",
     "version": "GPT-5.6 Sol",
-    "procedure": "paper2-reference-structural-adjudication-v1:267",
-    "adjudicated_at": "2026-09-28"
+    "procedure": "paper2-prd-structural-adjudication-267",
+    "adjudicated_at": "2026-09-28T14:26:00Z"
   },
   "coordinate_map": [
     {
-      "claim_node_id": "motor_command_history",
-      "coordinate_id": "basis.o1",
+      "claim_node_id": "initial_visual_calibration",
+      "coordinate_id": "initial_visual_calibration",
       "required": true
     },
     {
-      "claim_node_id": "body_dynamics_mapping",
-      "coordinate_id": "basis.s1",
+      "claim_node_id": "movement_duration",
+      "coordinate_id": "movement_duration",
       "required": true
     },
     {
-      "claim_node_id": "estimated_hand_state",
-      "coordinate_id": "basis.o2",
+      "claim_node_id": "external_force_condition",
+      "coordinate_id": "external_force_condition",
       "required": true
     },
     {
-      "claim_node_id": "force_perturbation",
-      "coordinate_id": "basis.p1",
+      "claim_node_id": "motor_command",
+      "coordinate_id": "motor_command",
       "required": true
     },
     {
-      "claim_node_id": "localization_error",
-      "coordinate_id": "basis.o3",
+      "claim_node_id": "proprioceptive_feedback",
+      "coordinate_id": "proprioceptive_feedback",
       "required": true
     },
     {
-      "claim_node_id": "perturbed_movement_probe",
-      "coordinate_id": "basis.p2",
+      "claim_node_id": "current_state_estimate",
+      "coordinate_id": "current_state_estimate",
+      "required": true
+    },
+    {
+      "claim_node_id": "arm_dynamics_predictor",
+      "coordinate_id": "arm_dynamics_predictor",
+      "required": true
+    },
+    {
+      "claim_node_id": "predicted_next_state",
+      "coordinate_id": "predicted_next_state",
+      "required": true
+    },
+    {
+      "claim_node_id": "sensory_output_predictor",
+      "coordinate_id": "sensory_output_predictor",
+      "required": true
+    },
+    {
+      "claim_node_id": "predicted_sensory_feedback",
+      "coordinate_id": "predicted_sensory_feedback",
+      "required": true
+    },
+    {
+      "claim_node_id": "sensory_discrepancy",
+      "coordinate_id": "sensory_discrepancy",
+      "required": true
+    },
+    {
+      "claim_node_id": "recursive_gain",
+      "coordinate_id": "recursive_gain",
+      "required": true
+    },
+    {
+      "claim_node_id": "corrected_state_estimate",
+      "coordinate_id": "corrected_state_estimate",
+      "required": true
+    },
+    {
+      "claim_node_id": "terminal_localization_probe",
+      "coordinate_id": "terminal_localization_probe",
+      "required": true
+    },
+    {
+      "claim_node_id": "terminal_localization_error",
+      "coordinate_id": "terminal_localization_error",
+      "required": true
+    },
+    {
+      "claim_node_id": "localization_bias",
+      "coordinate_id": "localization_bias",
+      "required": true
+    },
+    {
+      "claim_node_id": "localization_variance",
+      "coordinate_id": "localization_variance",
+      "required": true
+    },
+    {
+      "claim_node_id": "combined_estimator_prediction",
+      "coordinate_id": "combined_estimator_prediction",
+      "required": true
+    },
+    {
+      "claim_node_id": "motor_only_prediction",
+      "coordinate_id": "motor_only_prediction",
+      "required": true
+    },
+    {
+      "claim_node_id": "sensory_only_prediction",
+      "coordinate_id": "sensory_only_prediction",
       "required": true
     }
   ],
@@ -43,10 +113,10 @@
     "probe_P": {
       "state": "present",
       "claim_node_ids": [
-        "force_perturbation",
-        "perturbed_movement_probe"
+        "external_force_condition",
+        "terminal_localization_probe"
       ],
-      "provenance_kind": "source_declared",
+      "provenance_kind": "experimental_contract",
       "fixed_before_phi": true
     },
     "criterion_Q": {
@@ -63,41 +133,59 @@
     "time_index": {
       "state": "present",
       "source_span_ids": [
-        "s1",
         "s2",
-        "s3"
+        "s3",
+        "s4",
+        "s6"
       ]
     },
     "history_window": {
       "state": "present",
       "source_span_ids": [
-        "s1",
         "s3"
       ]
     },
     "future_horizon": {
       "state": "present",
       "source_span_ids": [
-        "s1",
         "s3"
       ]
     },
     "recurrence": {
       "state": "present",
       "source_span_ids": [
-        "s3"
+        "s3",
+        "s4"
       ]
     },
     "persistence": {
-      "state": "not_required"
+      "state": "present",
+      "source_span_ids": [
+        "s3",
+        "s4"
+      ]
     },
     "ordering": [
       {
-        "before_coordinate_id": "basis.o1",
-        "after_coordinate_id": "basis.o2",
+        "before_coordinate_id": "current_state_estimate",
+        "after_coordinate_id": "predicted_next_state",
         "source_span_ids": [
-          "s2",
           "s3"
+        ]
+      },
+      {
+        "before_coordinate_id": "predicted_next_state",
+        "after_coordinate_id": "corrected_state_estimate",
+        "source_span_ids": [
+          "s3"
+        ]
+      },
+      {
+        "before_coordinate_id": "corrected_state_estimate",
+        "after_coordinate_id": "terminal_localization_probe",
+        "source_span_ids": [
+          "s3",
+          "s6"
         ]
       }
     ]
@@ -117,7 +205,12 @@
       "state": "not_required"
     },
     "comparison_criterion": {
-      "state": "not_required"
+      "state": "present",
+      "source_span_ids": [
+        "s4",
+        "s5",
+        "s7"
+      ]
     }
   },
   "bridge_assumptions": [],

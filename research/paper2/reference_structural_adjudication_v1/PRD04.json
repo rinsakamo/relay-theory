@@ -4,28 +4,88 @@
   "adjudicator": {
     "tool": "ChatGPT",
     "version": "GPT-5.6 Sol",
-    "procedure": "paper2-reference-structural-adjudication-v1:267",
-    "adjudicated_at": "2026-09-28"
+    "procedure": "paper2-prd-structural-adjudication-267",
+    "adjudicated_at": "2026-09-28T14:28:00Z"
   },
   "coordinate_map": [
     {
-      "claim_node_id": "future_event_description",
-      "coordinate_id": "basis.o1",
+      "claim_node_id": "future_event_information",
+      "coordinate_id": "future_event_information",
+      "required": true
+    },
+    {
+      "claim_node_id": "stored_episode_information",
+      "coordinate_id": "stored_episode_information",
       "required": true
     },
     {
       "claim_node_id": "constructed_future_representation",
-      "coordinate_id": "basis.s1",
+      "coordinate_id": "constructed_future_representation",
       "required": true
     },
     {
-      "claim_node_id": "anticipated_affective_consequence",
-      "coordinate_id": "basis.o2",
+      "claim_node_id": "present_context",
+      "coordinate_id": "present_context",
       "required": true
     },
     {
-      "claim_node_id": "affective_value_criterion",
-      "coordinate_id": "basis.q1",
+      "claim_node_id": "current_hedonic_response",
+      "coordinate_id": "current_hedonic_response",
+      "required": true
+    },
+    {
+      "claim_node_id": "hedonic_forecast",
+      "coordinate_id": "hedonic_forecast",
+      "required": true
+    },
+    {
+      "claim_node_id": "future_event_perception",
+      "coordinate_id": "future_event_perception",
+      "required": true
+    },
+    {
+      "claim_node_id": "future_context",
+      "coordinate_id": "future_context",
+      "required": true
+    },
+    {
+      "claim_node_id": "realized_future_hedonic_response",
+      "coordinate_id": "realized_future_hedonic_response",
+      "required": true
+    },
+    {
+      "claim_node_id": "forecast_accuracy_criterion",
+      "coordinate_id": "forecast_accuracy_criterion",
+      "required": true
+    },
+    {
+      "claim_node_id": "forecast_error",
+      "coordinate_id": "forecast_error",
+      "required": true
+    },
+    {
+      "claim_node_id": "unrepresentative_episode_selection",
+      "coordinate_id": "unrepresentative_episode_selection",
+      "required": true
+    },
+    {
+      "claim_node_id": "incidental_feature_omission",
+      "coordinate_id": "incidental_feature_omission",
+      "required": true
+    },
+    {
+      "claim_node_id": "early_moment_overrepresentation",
+      "coordinate_id": "early_moment_overrepresentation",
+      "required": true
+    },
+    {
+      "claim_node_id": "present_future_context_mismatch",
+      "coordinate_id": "present_future_context_mismatch",
+      "required": true
+    },
+    {
+      "claim_node_id": "temporal_distance",
+      "coordinate_id": "temporal_distance",
       "required": true
     }
   ],
@@ -36,7 +96,7 @@
     "criterion_Q": {
       "state": "present",
       "claim_node_ids": [
-        "affective_value_criterion"
+        "forecast_accuracy_criterion"
       ],
       "provenance_kind": "source_declared",
       "fixed_before_phi": true
@@ -53,18 +113,20 @@
       "state": "present",
       "source_span_ids": [
         "s1",
-        "s2",
         "s3"
       ]
     },
     "history_window": {
-      "state": "not_required"
+      "state": "present",
+      "source_span_ids": [
+        "s2",
+        "s4"
+      ]
     },
     "future_horizon": {
       "state": "present",
       "source_span_ids": [
         "s1",
-        "s2",
         "s3"
       ]
     },
@@ -76,17 +138,48 @@
     },
     "ordering": [
       {
-        "before_coordinate_id": "basis.s1",
-        "after_coordinate_id": "basis.o2",
+        "before_coordinate_id": "stored_episode_information",
+        "after_coordinate_id": "constructed_future_representation",
+        "source_span_ids": [
+          "s2",
+          "s4"
+        ]
+      },
+      {
+        "before_coordinate_id": "constructed_future_representation",
+        "after_coordinate_id": "current_hedonic_response",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ]
+      },
+      {
+        "before_coordinate_id": "current_hedonic_response",
+        "after_coordinate_id": "hedonic_forecast",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ]
+      },
+      {
+        "before_coordinate_id": "hedonic_forecast",
+        "after_coordinate_id": "future_event_perception",
         "source_span_ids": [
           "s1",
+          "s3"
+        ]
+      },
+      {
+        "before_coordinate_id": "future_event_perception",
+        "after_coordinate_id": "realized_future_hedonic_response",
+        "source_span_ids": [
           "s3"
         ]
       }
     ]
   },
   "approximation": {
-    "mode": "approximate",
+    "mode": "deterministic",
     "threshold": {
       "state": "not_required"
     },
