@@ -11,11 +11,15 @@
       },
       {
         "span_id": "s2",
-        "locator": "Annual Review of Neuroscience 30, published p.540, sequential-sampling figure/text: evidence is accumulated into a decision variable and compared with a stopping criterion"
+        "locator": "Annual Review of Neuroscience 30, published pp.539-541, Sequential analysis / Figure 2 / SPRT: successive noisy evidence is accumulated into a decision variable and sampling terminates at positive or negative criteria; bound placement determines sample requirements and error rate"
       },
       {
         "span_id": "s3",
-        "locator": "Annual Review of Neuroscience 30, sequential-probability-ratio / bounded-diffusion discussion: bound controls stopping and mediates speed/accuracy consequences"
+        "locator": "Annual Review of Neuroscience 30, published pp.547-549, reaction-time random-dot-motion task / Figure 5: motion strength changes accuracy and decision time; diffusion fits account jointly for both; decision-related activity rises with evidence and approaches a common commitment level"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Annual Review of Neuroscience 30, published p.551, criterion discussion: how the criterion is implemented neurally is unknown, while criterion setting controls the speed-accuracy tradeoff"
       }
     ],
     "authors": [
@@ -40,33 +44,41 @@
     "extractor_version": "GPT-5.6 Sol",
     "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
     "extracted_at": "2026-09-28",
-    "manual_review_status": "unreviewed"
+    "manual_review_status": "reviewed"
   },
   "claim_core": {
     "claim_type": "constraint",
     "modality": "probabilistic",
     "scope": {
       "conditions": [
-        "two-alternative decisions informed by a sequence of noisy evidence samples"
+        "two-alternative random-dot-motion decisions use noisy sensory evidence whose strength is varied across trials"
       ],
       "population": [
-        "human and nonhuman primate decision makers as reviewed by the source"
+        "macaque monkeys in the reaction-time random-dot-motion experiments reviewed by the source"
       ],
-      "substrate": [
-        "neural populations representing momentary and accumulated evidence"
-      ],
+      "substrate": [],
       "task": [
-        "simple perceptual discrimination with choice and reaction-time measurements"
+        "discriminate net motion direction, report the decision by saccade when ready, and measure choice accuracy and reaction time across motion strengths"
       ],
       "temporal_scope": [
-        "evidence samples arrive over deliberation time until a stopping threshold is reached"
+        "momentary evidence is sampled and accumulated over deliberation time until a stopping criterion is reached"
       ]
     },
     "nodes": [
       {
+        "id": "motion_evidence_strength",
+        "role": "condition",
+        "description": "stimulus strength controlling the statistical quality of momentary motion evidence",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
         "id": "momentary_evidence",
         "role": "available_information",
-        "description": "noisy sample bearing on competing alternatives at a given time",
+        "description": "noisy evidence sample bearing on the two motion-direction alternatives at a given time",
         "source_span_ids": [
           "s2",
           "s3"
@@ -76,30 +88,28 @@
       {
         "id": "accumulated_evidence",
         "role": "state_or_structure",
-        "description": "time-integrated evidence supporting one alternative relative to another",
+        "description": "running decision quantity formed by accumulating evidence across samples",
         "source_span_ids": [
-          "s1",
           "s2",
           "s3"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "stopping_threshold",
+        "id": "stopping_criterion",
         "role": "criterion",
-        "description": "criterion at which further sampling terminates and a commitment is made",
+        "description": "positive or negative decision bound at which further sampling terminates and commitment occurs",
         "source_span_ids": [
           "s2",
-          "s3"
+          "s4"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "choice",
+        "id": "choice_accuracy",
         "role": "response_or_outcome",
-        "description": "selected alternative when the accumulated quantity reaches a corresponding threshold",
+        "description": "probability or proportion of correct direction choices under a given evidence strength",
         "source_span_ids": [
-          "s1",
           "s2",
           "s3"
         ],
@@ -108,21 +118,17 @@
       {
         "id": "decision_time",
         "role": "response_or_outcome",
-        "description": "elapsed deliberation time before threshold crossing and commitment",
+        "description": "time spent reaching commitment, reflected behaviorally in reaction time after accounting for nondecision latency",
         "source_span_ids": [
-          "s1",
-          "s2",
           "s3"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "evidence_strength_probe",
+        "id": "reaction_time_rdm_probe",
         "role": "probe",
-        "description": "perceptual discrimination task varying evidence strength while measuring choice and response time",
+        "description": "reaction-time random-dot-motion discrimination procedure varying motion strength while measuring accuracy and reaction time",
         "source_span_ids": [
-          "s1",
-          "s2",
           "s3"
         ],
         "grounding": "normalized"
@@ -131,12 +137,12 @@
     "relations": [
       {
         "id": "r1",
-        "kind": "maps_to",
+        "kind": "depends_on",
         "arguments": [
           "momentary_evidence",
-          "accumulated_evidence"
+          "motion_evidence_strength"
         ],
-        "description": "successive noisy samples are integrated into a running decision quantity",
+        "description": "the distribution or mean strength of momentary evidence depends on stimulus motion strength",
         "source_span_ids": [
           "s2",
           "s3"
@@ -145,14 +151,12 @@
       },
       {
         "id": "r2",
-        "kind": "depends_on",
+        "kind": "maps_to",
         "arguments": [
-          "choice",
-          "decision_time",
-          "accumulated_evidence",
-          "stopping_threshold"
+          "momentary_evidence",
+          "accumulated_evidence"
         ],
-        "description": "choice and deliberation time depend on when and which stopping threshold the running quantity reaches",
+        "description": "successive noisy evidence samples are integrated into a running decision quantity",
         "source_span_ids": [
           "s2",
           "s3"
@@ -161,31 +165,46 @@
       },
       {
         "id": "r3",
-        "kind": "constrains",
+        "kind": "depends_on",
         "arguments": [
-          "stopping_threshold",
-          "choice",
-          "decision_time"
+          "choice_accuracy",
+          "decision_time",
+          "accumulated_evidence",
+          "stopping_criterion"
         ],
-        "description": "changing the stopping criterion changes the tradeoff between rapid commitment and evidence reliability",
+        "description": "accuracy and decision time depend on the stochastic accumulation trajectory and the criterion at which sampling terminates",
         "source_span_ids": [
           "s2",
-          "s3"
+          "s3",
+          "s4"
         ],
         "grounding": "normalized"
       },
       {
         "id": "r4",
-        "kind": "maps_to",
+        "kind": "constrains",
         "arguments": [
-          "evidence_strength_probe",
-          "choice",
+          "stopping_criterion",
+          "choice_accuracy",
           "decision_time"
         ],
-        "description": "the discrimination procedure exposes the joint distribution of choice and deliberation time under different evidence strengths",
+        "description": "criterion placement constrains the speed-accuracy tradeoff by changing how much evidence is required before commitment",
         "source_span_ids": [
-          "s1",
           "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "maps_to",
+        "arguments": [
+          "reaction_time_rdm_probe",
+          "choice_accuracy",
+          "decision_time"
+        ],
+        "description": "the reaction-time discrimination probe exposes the joint effects of evidence strength on accuracy and decision time that are fit by the diffusion framework",
+        "source_span_ids": [
           "s3"
         ],
         "grounding": "normalized"
