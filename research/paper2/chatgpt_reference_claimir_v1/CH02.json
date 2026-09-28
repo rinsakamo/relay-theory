@@ -1,0 +1,197 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "CH02.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1038/nn1790",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Nature Neuroscience 9(11), PDF p.1 / published p.1432, abstract and Results opening: variable population responses encode distributions rather than only point values"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Nature Neuroscience 9(11), PDF p.2 / published p.1433, cue-integration derivation: summing two population responses under stated assumptions yields the optimal combined distribution"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Nature Neuroscience 9(11), PDF p.3 / published p.1434, generalization: broader Poisson-like families admit optimal linear combinations and realistic-neuron implementation is approximate"
+      }
+    ],
+    "authors": [
+      "Wei Ji Ma",
+      "Jeffrey M Beck",
+      "Peter E Latham",
+      "Alexandre Pouget"
+    ],
+    "institutions": [
+      "University of Rochester",
+      "Gatsby Computational Neuroscience Unit"
+    ],
+    "venue": "Nature Neuroscience",
+    "citation_count": null,
+    "construct_labels": [
+      "probabilistic population codes",
+      "Bayesian inference",
+      "Poisson-like variability"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "mapping",
+    "modality": "probabilistic",
+    "scope": {
+      "conditions": [
+        "population responses have the declared exponential-family noise structure; simple summation additionally requires matched response profiles and a flat prior"
+      ],
+      "population": [],
+      "substrate": [
+        "populations of variable spiking units"
+      ],
+      "task": [
+        "combine uncertain cues about an underlying stimulus variable"
+      ],
+      "temporal_scope": [
+        "single-trial population responses and their combined output"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "input_population_a",
+        "role": "available_information",
+        "description": "first noisy population response associated with one cue",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "input_population_b",
+        "role": "available_information",
+        "description": "second noisy population response associated with another cue",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "encoded_distribution_a",
+        "role": "state_or_structure",
+        "description": "probability distribution over the latent stimulus implied by the first population response",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "encoded_distribution_b",
+        "role": "state_or_structure",
+        "description": "probability distribution over the latent stimulus implied by the second population response",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "linear_population_transform",
+        "role": "intervention",
+        "description": "addition or weighted linear combination of the input population activities",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "combined_population",
+        "role": "response_or_outcome",
+        "description": "output population whose activity encodes the cue-combined distribution",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "uncertainty_scale",
+        "role": "criterion",
+        "description": "distribution width or inverse precision implied by response gain and used to test whether the combined output has the optimal uncertainty",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "maps_to",
+        "arguments": [
+          "input_population_a",
+          "encoded_distribution_a"
+        ],
+        "description": "the first variable population response specifies a probability distribution over the latent stimulus",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "maps_to",
+        "arguments": [
+          "input_population_b",
+          "encoded_distribution_b"
+        ],
+        "description": "the second variable population response specifies another probability distribution over the latent stimulus",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "changes",
+        "arguments": [
+          "linear_population_transform",
+          "input_population_a",
+          "input_population_b",
+          "combined_population"
+        ],
+        "description": "the declared linear transform combines the two input activities into an output activity pattern",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "satisfies",
+        "arguments": [
+          "combined_population",
+          "uncertainty_scale"
+        ],
+        "description": "under the declared noise assumptions the output distribution has the precision required by the optimal cue-combination rule; with realistic nonlinear units this correspondence is tested approximately",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
