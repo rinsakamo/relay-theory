@@ -7,15 +7,27 @@
     "source_spans": [
       {
         "span_id": "s1",
-        "locator": "PNAS 88(11), published p.4966, Abstract: long-lasting improvement on a basic visual discrimination task after repeated exposure"
+        "locator": "PNAS 88(11), published p.4966, Abstract and opening: repeated practice produces durable improvement in a masked texture-discrimination task; the paper asks what level of visual processing can account for the learned improvement"
       },
       {
         "span_id": "s2",
-        "locator": "PNAS 88(11), published p.4966, Abstract: improvement is retinotopically local, background-orientation specific, and strongly monocular"
+        "locator": "PNAS 88(11), published pp.4966-4967, task/method description: peripheral three-element target embedded in a line-texture background, central letter task used to enforce fixation, target followed by a patterned mask, and performance measured as the target-to-mask interval required for reliable discrimination"
       },
       {
         "span_id": "s3",
-        "locator": "PNAS 88(11), published p.4966, Abstract: specificity supports experience-dependent change at an early visual level preserving eye and retinal-location organization"
+        "locator": "PNAS 88(11), published pp.4967-4968, practice and location-transfer results: the trained retinal location shows large threshold improvement; moving the target to an untrained retinal location substantially removes the acquired advantage and renewed practice can improve the new location"
+      },
+      {
+        "span_id": "s4",
+        "locator": "PNAS 88(11), published pp.4968-4969, eye-transfer results: training performed monocularly shows little transfer when testing is switched to the untrained eye, demonstrating strong eye specificity under the reported training procedure"
+      },
+      {
+        "span_id": "s5",
+        "locator": "PNAS 88(11), published pp.4968-4969, orientation-transfer results: improvement is specific to the trained background-element orientation, while changing the target-element orientation produces substantial transfer; orientation specificity is therefore asymmetric across stimulus components"
+      },
+      {
+        "span_id": "s6",
+        "locator": "PNAS 88(11), published pp.4969-4970, interpretation/discussion: the joint retinotopic, monocular, and background-orientation specificity is used to infer experience-dependent change at an early visual-processing level preserving eye, retinal-location, and orientation organization; primary visual cortex localization is presented as an interpretation, not as a direct neural measurement"
       }
     ],
     "authors": [
@@ -38,75 +50,104 @@
     "extractor_version": "GPT-5.6 Sol",
     "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
     "extracted_at": "2026-09-28",
-    "manual_review_status": "unreviewed"
+    "manual_review_status": "reviewed"
   },
   "claim_core": {
     "claim_type": "comparison",
     "modality": "comparative",
     "scope": {
       "conditions": [
-        "repeated exposure to a basic visual pattern-separation task"
+        "repeated practice on a briefly presented, backward-masked texture-discrimination task",
+        "post-practice testing varies retinal location, viewing eye, background-element orientation, or target-element orientation relative to training"
       ],
       "population": [
-        "human adults"
+        "human adult observers"
       ],
-      "substrate": [
-        "early visual processing"
-      ],
+      "substrate": [],
       "task": [
-        "visual target/background discrimination"
+        "discriminate whether a peripheral array of three oriented elements forms a horizontal or vertical target within an oriented background while maintaining central fixation"
       ],
       "temporal_scope": [
-        "long-lasting improvement following training"
+        "performance across repeated practice sessions and subsequent transfer tests",
+        "durable improvement retained beyond the immediately practiced trials"
       ]
     },
     "nodes": [
       {
-        "id": "trained_visual_condition",
+        "id": "repeated_texture_practice",
         "role": "intervention",
-        "description": "repeated task exposure at a specific retinal location, eye, and background orientation",
-        "source_span_ids": [
-          "s1",
-          "s2"
-        ],
+        "description": "repeated performance of the masked peripheral texture-discrimination task under a fixed training configuration",
+        "source_span_ids": ["s1","s2","s3"],
         "grounding": "normalized"
       },
       {
-        "id": "transfer_condition",
+        "id": "stimulus_mask_interval",
         "role": "condition",
-        "description": "test condition altered in retinal location, viewing eye, or orientation relation",
-        "source_span_ids": [
-          "s2"
-        ],
+        "description": "time from target-display onset to mask onset, varied to control discrimination difficulty",
+        "source_span_ids": ["s2"],
         "grounding": "normalized"
       },
       {
-        "id": "discrimination_performance",
+        "id": "discrimination_threshold",
         "role": "response_or_outcome",
-        "description": "accuracy/sensitivity in separating target from background pattern",
-        "source_span_ids": [
-          "s1",
-          "s2"
-        ],
+        "description": "target-to-mask interval required to maintain reliable target-orientation discrimination, with lower threshold indicating improved performance",
+        "source_span_ids": ["s2","s3","s4","s5"],
         "grounding": "normalized"
       },
       {
-        "id": "visual_test_probe",
+        "id": "fixation_control_probe",
         "role": "probe",
-        "description": "post-training tests that vary retinal location, eye, and orientation relation",
-        "source_span_ids": [
-          "s2"
-        ],
+        "description": "central letter-discrimination task used to maintain fixation while the peripheral target is tested",
+        "source_span_ids": ["s2"],
         "grounding": "normalized"
       },
       {
-        "id": "correct_discrimination",
-        "role": "criterion",
-        "description": "successful target/background separation under the test condition",
-        "source_span_ids": [
-          "s1",
-          "s2"
-        ],
+        "id": "transfer_test_probe",
+        "role": "probe",
+        "description": "post-practice testing that changes one training dimension to measure how much of the acquired performance advantage transfers",
+        "source_span_ids": ["s3","s4","s5"],
+        "grounding": "normalized"
+      },
+      {
+        "id": "retinal_location_match",
+        "role": "condition",
+        "description": "whether the tested target occupies the retinal location used during practice or an untrained retinal location",
+        "source_span_ids": ["s3"],
+        "grounding": "normalized"
+      },
+      {
+        "id": "viewing_eye_match",
+        "role": "condition",
+        "description": "whether testing uses the eye exposed during monocular practice or the previously untrained eye",
+        "source_span_ids": ["s4"],
+        "grounding": "normalized"
+      },
+      {
+        "id": "background_orientation_match",
+        "role": "condition",
+        "description": "whether the test background elements retain the orientation experienced during practice or are changed to another orientation",
+        "source_span_ids": ["s5"],
+        "grounding": "normalized"
+      },
+      {
+        "id": "target_orientation_match",
+        "role": "condition",
+        "description": "whether the local orientation of the target elements matches the practiced target-element orientation",
+        "source_span_ids": ["s5"],
+        "grounding": "normalized"
+      },
+      {
+        "id": "retained_practice_gain",
+        "role": "response_or_outcome",
+        "description": "amount of the practice-related threshold improvement expressed under a transfer-test condition",
+        "source_span_ids": ["s3","s4","s5"],
+        "grounding": "normalized"
+      },
+      {
+        "id": "source_localization_interpretation",
+        "role": "state_or_structure",
+        "description": "source-authored interpretation that the observed specificity pattern reflects experience-dependent change at an early visual-processing level that still preserves retinal position, eye-of-origin, and orientation organization",
+        "source_span_ids": ["s6"],
         "grounding": "normalized"
       }
     ],
@@ -114,54 +155,65 @@
       {
         "id": "r1",
         "kind": "changes",
-        "arguments": [
-          "trained_visual_condition",
-          "discrimination_performance"
-        ],
-        "description": "repeated exposure produces durable improvement in the trained visual condition",
-        "source_span_ids": [
-          "s1"
-        ],
+        "arguments": ["repeated_texture_practice","discrimination_threshold"],
+        "description": "repeated practice lowers the target-to-mask interval required for reliable discrimination in the trained configuration",
+        "source_span_ids": ["s1","s3"],
         "grounding": "normalized"
       },
       {
         "id": "r2",
-        "kind": "depends_on",
-        "arguments": [
-          "discrimination_performance",
-          "transfer_condition"
-        ],
-        "description": "the improvement depends strongly on retinal location, viewing eye, and selected orientation relation",
-        "source_span_ids": [
-          "s2"
-        ],
+        "kind": "maps_to",
+        "arguments": ["transfer_test_probe","retained_practice_gain"],
+        "description": "testing altered versions of the trained configuration measures how much of the acquired threshold improvement is retained",
+        "source_span_ids": ["s3","s4","s5"],
         "grounding": "normalized"
       },
       {
         "id": "r3",
-        "kind": "maps_to",
-        "arguments": [
-          "visual_test_probe",
-          "discrimination_performance"
-        ],
-        "description": "structured transfer tests expose the specificity of the acquired improvement",
-        "source_span_ids": [
-          "s2"
-        ],
+        "kind": "depends_on",
+        "arguments": ["retained_practice_gain","retinal_location_match"],
+        "description": "the acquired advantage is strongly local to the practiced retinal position and is substantially lost when testing moves to an untrained location",
+        "source_span_ids": ["s3"],
         "grounding": "normalized"
       },
       {
         "id": "r4",
-        "kind": "satisfies",
-        "arguments": [
-          "discrimination_performance",
-          "correct_discrimination"
-        ],
-        "description": "the outcome is evaluated by successful visual discrimination",
-        "source_span_ids": [
-          "s1",
-          "s2"
-        ],
+        "kind": "depends_on",
+        "arguments": ["retained_practice_gain","viewing_eye_match"],
+        "description": "the acquired advantage is strongly tied to the practiced eye, with little transfer to the previously untrained eye under the reported procedure",
+        "source_span_ids": ["s4"],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "depends_on",
+        "arguments": ["retained_practice_gain","background_orientation_match"],
+        "description": "changing the orientation of the background elements greatly reduces the learned advantage",
+        "source_span_ids": ["s5"],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r6",
+        "kind": "other",
+        "arguments": ["retained_practice_gain","target_orientation_match"],
+        "description": "unlike background orientation, target-element orientation is not strongly specific: substantial transfer is retained when target-element orientation is changed",
+        "source_span_ids": ["s5"],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r7",
+        "kind": "distinguishes",
+        "arguments": ["background_orientation_match","target_orientation_match","retained_practice_gain"],
+        "description": "orientation specificity is asymmetric across stimulus components: transfer depends strongly on background orientation but not comparably on target-element orientation",
+        "source_span_ids": ["s5"],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r8",
+        "kind": "other",
+        "arguments": ["retinal_location_match","viewing_eye_match","background_orientation_match","source_localization_interpretation"],
+        "description": "the conjunction of retinotopic, eye, and background-orientation specificity is used by the authors to infer an early visually organized locus of experience-dependent change; the behavioral data do not directly measure a cortical site",
+        "source_span_ids": ["s3","s4","s5","s6"],
         "grounding": "normalized"
       }
     ]
