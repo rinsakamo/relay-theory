@@ -7,15 +7,19 @@
     "source_spans": [
       {
         "span_id": "s1",
-        "locator": "Psychonomic Bulletin & Review 9(4), PDF p.1 / published p.625, abstract: six separable world/body-coupling claims"
+        "locator": "Psychonomic Bulletin & Review 9(4) (2002), published pp.625-626, abstract and six-claim list: limits on attention/working memory motivate exploiting the environment to reduce cognitive workload, including leaving information externally available and harvesting it on a need-to-know basis"
       },
       {
         "span_id": "s2",
-        "locator": "Psychonomic Bulletin & Review 9(4), PDF p.4 / published p.628, Claim 3 opening: strategic use of external state under online processing limits"
+        "locator": "Psychonomic Bulletin & Review 9(4) (2002), published p.628, Claim 3 opening: under on-line demands and a representational bottleneck, novel tasks can be handled by strategic external use rather than full internal encoding, including epistemic actions that alter the environment to reduce remaining cognitive work"
       },
       {
         "span_id": "s3",
-        "locator": "Psychonomic Bulletin & Review 9(4), PDF pp.4-5 / published pp.628-629, examples: physical transformation and selective re-sampling simplify the remaining problem"
+        "locator": "Psychonomic Bulletin & Review 9(4) (2002), published p.629, situated off-loading boundary and examples: long-term archival storage is distinguished from immediate off-loading; Tetris transformations and repeated strategic visual referencing illustrate physical simplification and minimal-memory resampling"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Psychonomic Bulletin & Review 9(4) (2002), published p.629 and p.635 Conclusions: other attention/working-memory limits can also drive off-loading; symbolic off-loading is a broader, partly off-line extension and is not merged into the bounded situated claim"
       }
     ],
     "authors": [
@@ -38,44 +42,49 @@
     "extractor_version": "GPT-5.6 Sol",
     "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
     "extracted_at": "2026-09-28",
-    "manual_review_status": "unreviewed"
+    "manual_review_status": "reviewed"
   },
   "claim_core": {
     "claim_type": "relation",
     "modality": "descriptive",
     "scope": {
       "conditions": [
-        "online tasks in which internal information-processing limits would otherwise make full internal encoding or transformation costly"
+        "situated interaction with task-relevant external information rather than long-term archival storage",
+        "novel or otherwise demanding tasks in which time pressure, attention limits, working-memory limits, or related internal processing constraints make full internal encoding, maintenance, or transformation burdensome"
       ],
       "population": [
         "humans"
       ],
       "substrate": [
-        "agent interacting with manipulable external task structure"
+        "human cognitive agent",
+        "immediate task-relevant external environment"
       ],
       "task": [
-        "solve a task by selectively reading or physically transforming task-relevant external state"
+        "leave task-relevant information externally available and re-access it as needed",
+        "physically transform task-relevant external state to simplify the problem that remains"
       ],
       "temporal_scope": [
-        "during ongoing task performance"
+        "during ongoing interaction with a task-relevant external situation"
       ]
     },
     "nodes": [
       {
         "id": "internal_processing_limit",
         "role": "condition",
-        "description": "bounded internal capacity for encoding, maintaining, or mentally transforming task information",
+        "description": "limited internal resources such as attention, working memory, or time available for full encoding, maintenance, or transformation",
         "source_span_ids": [
+          "s1",
           "s2",
-          "s3"
+          "s4"
         ],
         "grounding": "normalized"
       },
       {
         "id": "external_task_state",
         "role": "available_information",
-        "description": "task-relevant information left available in the surrounding task environment",
+        "description": "task-relevant information that remains available in the immediate external environment instead of being fully encoded and maintained internally",
         "source_span_ids": [
+          "s1",
           "s2",
           "s3"
         ],
@@ -84,7 +93,7 @@
       {
         "id": "problem_simplifying_manipulation",
         "role": "intervention",
-        "description": "physical action that changes the external task state so less internal transformation remains to be computed",
+        "description": "physical action that changes task-relevant external state so that less internal computation remains to be performed",
         "source_span_ids": [
           "s2",
           "s3"
@@ -94,8 +103,9 @@
       {
         "id": "selective_resampling",
         "role": "probe",
-        "description": "need-driven re-access of external information instead of keeping a complete internal copy continuously active",
+        "description": "need-based re-access of externally available task information, such as strategic repeated visual sampling, instead of maintaining a complete internal copy",
         "source_span_ids": [
+          "s1",
           "s2",
           "s3"
         ],
@@ -104,8 +114,9 @@
       {
         "id": "remaining_internal_workload",
         "role": "response_or_outcome",
-        "description": "amount of internal encoding, maintenance, or transformation still required after exploiting external structure",
+        "description": "internal encoding, maintenance, or transformation work still required after exploiting external task structure",
         "source_span_ids": [
+          "s1",
           "s2",
           "s3"
         ],
@@ -115,15 +126,17 @@
     "relations": [
       {
         "id": "r1",
-        "kind": "depends_on",
+        "kind": "constrains",
         "arguments": [
-          "remaining_internal_workload",
           "internal_processing_limit",
-          "external_task_state"
+          "selective_resampling",
+          "problem_simplifying_manipulation"
         ],
-        "description": "when internal capacity is limiting, the amount of internal work depends on how much task information can remain externally available",
+        "description": "limits on internal processing make strategic re-access of external information and problem-simplifying external action useful responses to demanding situated tasks",
         "source_span_ids": [
-          "s2"
+          "s1",
+          "s2",
+          "s4"
         ],
         "grounding": "normalized"
       },
@@ -135,7 +148,7 @@
           "external_task_state",
           "remaining_internal_workload"
         ],
-        "description": "physically transforming the external task state can reduce the internal computation remaining to be done",
+        "description": "physically transforming the external task state can simplify the problem and reduce the internal cognitive work remaining to be done",
         "source_span_ids": [
           "s2",
           "s3"
@@ -147,10 +160,12 @@
         "kind": "changes",
         "arguments": [
           "selective_resampling",
+          "external_task_state",
           "remaining_internal_workload"
         ],
-        "description": "re-accessing external information only when needed reduces the need to fully encode and continuously maintain it internally",
+        "description": "re-accessing task information externally on a need-to-know basis reduces the need to fully encode or continuously maintain that information internally",
         "source_span_ids": [
+          "s1",
           "s2",
           "s3"
         ],
