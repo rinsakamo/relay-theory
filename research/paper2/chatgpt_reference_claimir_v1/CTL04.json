@@ -7,15 +7,23 @@
     "source_spans": [
       {
         "span_id": "s1",
-        "locator": "Neural Computation 18(2), published p.283, Abstract: learned mechanisms let a frontal model strategically regulate itself and other areas"
+        "locator": "Neural Computation 18(2), published p.283, Abstract: learned subcortical valuation/control architecture trains selective updating of maintained prefrontal representations and addresses temporal and structural credit assignment"
       },
       {
         "span_id": "s2",
-        "locator": "Neural Computation 18(2), published p.283, Abstract: subcortical actor/critic architecture learns task-relevant maintained representations and a dynamic gate"
+        "locator": "Neural Computation 18(2), published pp.284-288, functional demands and update-control mechanism: rapid updating, robust maintenance, selective updating, open/closed control, basal-ganglia Go/NoGo disinhibition, and stripe-specific updating"
       },
       {
         "span_id": "s3",
-        "locator": "Neural Computation 18(2), published p.283, Abstract: reinforcement mechanism addresses temporal and structural credit assignment and supports benchmark sequential task performance"
+        "locator": "Neural Computation 18(2), published pp.288-291, Learning When to Gate and model architecture: current sensory input plus maintained prefrontal context drive Go/NoGo actions; PVLV-derived dopaminergic evaluation trains the update controller"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Neural Computation 18(2), published pp.296-297, Dynamics of Updating and Learning: the current response is computed under stable prior context before prefrontal updating; evaluator feedback then trains future update-control actions"
+      },
+      {
+        "span_id": "s5",
+        "locator": "Neural Computation 18(2), published pp.301-306, simulation tests on 1-2-AX and SIR-2: explicit correct-output/reward criteria, epochs-to-criterion comparisons, and selective update/maintenance performance"
       }
     ],
     "authors": [
@@ -40,105 +48,147 @@
     "extractor_version": "GPT-5.6 Sol",
     "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
     "extracted_at": "2026-09-28",
-    "manual_review_status": "unreviewed"
+    "manual_review_status": "reviewed"
   },
   "claim_core": {
-    "claim_type": "counterfactual",
-    "modality": "counterfactual",
+    "claim_type": "relation",
+    "modality": "descriptive",
     "scope": {
       "conditions": [
-        "sequential tasks require selective maintenance and updating of task-relevant internal state"
+        "temporally extended tasks require rapid incorporation of some inputs while other task-relevant internal representations must remain protected from intervening distractors",
+        "the model must learn which internal components to update and when, using delayed task outcomes to assign credit to earlier update-control actions"
       ],
       "population": [
-        "computational neural system compared with human-like task performance"
+        "PBWM computational-model instances and comparison learning networks evaluated in the source's simulation tests"
       ],
       "substrate": [
-        "frontal maintenance subsystem",
-        "subcortical gating/valuation subsystems"
+        "prefrontal maintenance stripes",
+        "basal-ganglia Go/NoGo update-control loops",
+        "PVLV-based value-evaluation and simulated dopaminergic signaling components"
       ],
       "task": [
-        "sequential benchmark tasks requiring context-dependent maintenance and updating"
+        "1-2-AX and other benchmark sequence tasks requiring selective maintenance and updating of internal context"
       ],
       "temporal_scope": [
-        "maintained states persist across intervening events and are selectively updated when the learned gate opens"
+        "across events, maintained context persists while selected inputs are admitted and distractors are excluded",
+        "within a stimulus-response step, the current response is computed under the prior stable context before that context is selectively updated for subsequent processing",
+        "across training, evaluative signals modify the policy that selects later update-control actions"
       ]
     },
     "nodes": [
       {
         "id": "maintenance_subsystem",
         "role": "partition",
-        "description": "subsystem capable of actively preserving task-relevant internal representations",
+        "description": "prefrontal components that maintain task-relevant internal representations across intervening events",
         "source_span_ids": [
           "s1",
-          "s2"
+          "s2",
+          "s4"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "gating_subsystem",
+        "id": "update_control_subsystem",
         "role": "partition",
-        "description": "subcortical subsystem that controls when maintained representations are updated",
+        "description": "basal-ganglia Go/NoGo circuitry that controls which maintained components are allowed to update",
         "source_span_ids": [
           "s1",
-          "s2"
+          "s2",
+          "s3"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "maintained_task_state",
+        "id": "valuation_subsystem",
+        "role": "partition",
+        "description": "PVLV-based system that generates simulated dopaminergic evaluation signals used to train the update controller",
+        "source_span_ids": [
+          "s1",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "maintained_context_state",
         "role": "state_or_structure",
-        "description": "task-relevant representation kept active across time",
+        "description": "task-relevant context or goal representation actively preserved in a prefrontal component",
         "source_span_ids": [
           "s1",
           "s2",
-          "s3"
+          "s3",
+          "s4"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "gate_action",
-        "role": "intervention",
-        "description": "learned open/close decision controlling whether new information updates the maintained state",
-        "source_span_ids": [
-          "s2",
-          "s3"
-        ],
-        "grounding": "normalized"
-      },
-      {
-        "id": "reinforcement_signal",
+        "id": "current_task_input",
         "role": "available_information",
-        "description": "outcome-based training signal used to learn which representations and gate actions are task-relevant",
+        "description": "current sensory/task event available together with the previously maintained context when an update-control action is selected",
         "source_span_ids": [
           "s2",
-          "s3"
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "update_control_policy",
+        "role": "state_or_structure",
+        "description": "learned mapping in the update-control circuitry from current task information and maintained context to Go/NoGo selection",
+        "source_span_ids": [
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "update_control_action",
+        "role": "other",
+        "description": "endogenous Go/NoGo action that enables updating of a selected maintained component or protects its current contents",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "critic_evaluation_signal",
+        "role": "available_information",
+        "description": "simulated dopaminergic evaluation signal produced by the valuation subsystem and used to modify the learned update-control policy",
+        "source_span_ids": [
+          "s1",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "correct_output_criterion",
+        "role": "criterion",
+        "description": "task-defined correct response used to supply reward/error information and training success criteria in the simulation tasks",
+        "source_span_ids": [
+          "s5"
         ],
         "grounding": "normalized"
       },
       {
         "id": "task_performance",
         "role": "response_or_outcome",
-        "description": "accuracy of sequential context-dependent behavior generated by the learned system",
+        "description": "accuracy and training-to-criterion performance of the simulated system on the benchmark tasks",
         "source_span_ids": [
-          "s3"
+          "s5"
         ],
         "grounding": "normalized"
       },
       {
-        "id": "task_success",
-        "role": "criterion",
-        "description": "correct output on the sequential benchmark task",
-        "source_span_ids": [
-          "s3"
-        ],
-        "grounding": "normalized"
-      },
-      {
-        "id": "sequential_task_probe",
+        "id": "benchmark_task_probe",
         "role": "probe",
-        "description": "benchmark sequence task requiring selective preservation and updating of internal context",
+        "description": "simulation tasks such as 1-2-AX and SIR-2 that require maintaining some context while selectively admitting other inputs",
         "source_span_ids": [
-          "s3"
+          "s2",
+          "s5"
         ],
         "grounding": "normalized"
       }
@@ -148,10 +198,10 @@
         "id": "r1",
         "kind": "changes",
         "arguments": [
-          "gate_action",
-          "maintained_task_state"
+          "update_control_action",
+          "maintained_context_state"
         ],
-        "description": "opening the learned gate allows new input to update the maintained state while closing it preserves the current state",
+        "description": "a Go/open action enables incoming information to update the selected maintained component, whereas a NoGo/closed state protects the existing representation from updating",
         "source_span_ids": [
           "s2",
           "s3"
@@ -162,55 +212,69 @@
         "id": "r2",
         "kind": "depends_on",
         "arguments": [
-          "gate_action",
-          "reinforcement_signal"
+          "update_control_action",
+          "update_control_policy",
+          "current_task_input",
+          "maintained_context_state"
         ],
-        "description": "the gating policy is acquired from outcome-based training signals through the subcortical learning architecture",
+        "description": "the current update-control action is selected from the learned policy using current task input together with previously maintained context",
         "source_span_ids": [
-          "s2",
-          "s3"
+          "s3",
+          "s4"
         ],
         "grounding": "normalized"
       },
       {
         "id": "r3",
-        "kind": "depends_on",
+        "kind": "changes",
         "arguments": [
-          "task_performance",
-          "maintenance_subsystem",
-          "gating_subsystem"
+          "critic_evaluation_signal",
+          "update_control_policy"
         ],
-        "description": "successful sequential behavior depends jointly on persistent internal state and selective update control",
+        "description": "across learning, the evaluative signal modifies the Go/NoGo policy so that update-control actions associated with later successful outcomes become more likely",
         "source_span_ids": [
-          "s1",
-          "s2",
-          "s3"
+          "s3",
+          "s4"
         ],
         "grounding": "normalized"
       },
       {
         "id": "r4",
-        "kind": "maps_to",
+        "kind": "precedes",
         "arguments": [
-          "sequential_task_probe",
-          "task_performance"
+          "maintained_context_state",
+          "task_performance",
+          "update_control_action"
         ],
-        "description": "the benchmark sequence task evaluates the learned maintenance/update mechanism",
+        "description": "within a processing step, the source model computes the current response using the stable prior context before applying the update that establishes context for subsequent processing",
         "source_span_ids": [
-          "s3"
+          "s4"
         ],
         "grounding": "normalized"
       },
       {
         "id": "r5",
+        "kind": "maps_to",
+        "arguments": [
+          "benchmark_task_probe",
+          "task_performance"
+        ],
+        "description": "the benchmark simulations expose whether the learned system can preserve relevant context, selectively update it, and reach the task's performance criterion",
+        "source_span_ids": [
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r6",
         "kind": "satisfies",
         "arguments": [
           "task_performance",
-          "task_success"
+          "correct_output_criterion"
         ],
-        "description": "system behavior is assessed against the task's correct-output criterion",
+        "description": "simulation performance is evaluated against the task-defined correct outputs and the declared zero-error training criteria",
         "source_span_ids": [
-          "s3"
+          "s5"
         ],
         "grounding": "normalized"
       }
