@@ -4,32 +4,24 @@ on:
   pull_request:
     paths:
       - "research/paper2/reference_structural_adjudication_v1.*"
-      - "research/paper2/reference_structural_adjudication_v1/MEM*.json"
-      - "research/paper2/reference_structural_adjudication_v1/ATT*.json"
-      - "research/paper2/reference_structural_adjudication_v1/LRN*.json"
+      - "research/paper2/reference_structural_adjudication_v1/*.json"
+      - "research/paper2/chatgpt_reference_claimir_v1/*.json"
       - "scripts/paper2_reference_structural_adjudication.py"
       - "scripts/paper2_reference_phi_atlas.py"
-      - "research/paper2/chatgpt_reference_claimir_v1/MEM*.json"
-      - "research/paper2/chatgpt_reference_claimir_v1/ATT*.json"
-      - "research/paper2/chatgpt_reference_claimir_v1/LRN*.json"
-      - "scripts/paper2_structural_signature_*.py"
       - "scripts/paper2_phi_compare.py"
+      - "scripts/paper2_structural_signature_*.py"
       - "research/paper2/claim_ir_v1.*"
       - ".github/workflows/paper2-reference-structural-adjudication-selftest.yml"
   push:
     branches: [main]
     paths:
       - "research/paper2/reference_structural_adjudication_v1.*"
-      - "research/paper2/reference_structural_adjudication_v1/MEM*.json"
-      - "research/paper2/reference_structural_adjudication_v1/ATT*.json"
-      - "research/paper2/reference_structural_adjudication_v1/LRN*.json"
+      - "research/paper2/reference_structural_adjudication_v1/*.json"
+      - "research/paper2/chatgpt_reference_claimir_v1/*.json"
       - "scripts/paper2_reference_structural_adjudication.py"
       - "scripts/paper2_reference_phi_atlas.py"
-      - "research/paper2/chatgpt_reference_claimir_v1/MEM*.json"
-      - "research/paper2/chatgpt_reference_claimir_v1/ATT*.json"
-      - "research/paper2/chatgpt_reference_claimir_v1/LRN*.json"
-      - "scripts/paper2_structural_signature_*.py"
       - "scripts/paper2_phi_compare.py"
+      - "scripts/paper2_structural_signature_*.py"
       - "research/paper2/claim_ir_v1.*"
       - ".github/workflows/paper2-reference-structural-adjudication-selftest.yml"
 
@@ -44,17 +36,22 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
       - name: Compile checkers
         run: |
           python -m py_compile scripts/paper2_reference_structural_adjudication.py
           python -m py_compile scripts/paper2_reference_phi_atlas.py
+          python -m py_compile scripts/paper2_phi_compare.py
+
       - name: Parse contract artifacts
         run: |
           python -m json.tool research/paper2/reference_structural_adjudication_v1.schema.json >/dev/null
           python -m json.tool research/paper2/reference_structural_adjudication_v1.example.json >/dev/null
+
       - name: Run destructive protocol self-test
         run: python scripts/paper2_reference_structural_adjudication.py --self-test
-      - name: Build MEM-only Phi atlas
+
+      - name: Reproduce MEM comparator-qualification atlas
         run: |
           set -euo pipefail
           python scripts/paper2_reference_phi_atlas.py \
@@ -74,158 +71,101 @@ jobs:
           sha256sum /tmp/MEM.atlas.json
           sha256sum /tmp/MEM.summary.json
 
-      - name: Compile reviewed ATT01 structural record
+      - name: Compile and project all 60 reviewed structural records
         run: |
           set -euo pipefail
-          python scripts/paper2_reference_structural_adjudication.py \
-            --claim-ir research/paper2/chatgpt_reference_claimir_v1/ATT01.json \
-            --adjudication research/paper2/reference_structural_adjudication_v1/ATT01.json \
-            --output /tmp/ATT01.structural.json
-          python scripts/paper2_phi_compare.py --project /tmp/ATT01.structural.json > /tmp/ATT01.phi.json
-          python -m json.tool /tmp/ATT01.structural.json >/dev/null
-          python -m json.tool /tmp/ATT01.phi.json >/dev/null
-          sha256sum /tmp/ATT01.structural.json
-          sha256sum /tmp/ATT01.phi.json
+          python - <<'PY'
+          import hashlib
+          import json
+          import pathlib
+          import subprocess
 
-      - name: Compile reviewed ATT02 structural record
-        run: |
-          set -euo pipefail
-          python scripts/paper2_reference_structural_adjudication.py \
-            --claim-ir research/paper2/chatgpt_reference_claimir_v1/ATT02.json \
-            --adjudication research/paper2/reference_structural_adjudication_v1/ATT02.json \
-            --output /tmp/ATT02.structural.json
-          python scripts/paper2_phi_compare.py --project /tmp/ATT02.structural.json > /tmp/ATT02.phi.json
-          python -m json.tool /tmp/ATT02.structural.json >/dev/null
-          python -m json.tool /tmp/ATT02.phi.json >/dev/null
-          sha256sum /tmp/ATT02.structural.json
-          sha256sum /tmp/ATT02.phi.json
+          primary_prefixes = ["ATT", "BLF", "CNC", "CTL", "LRN", "MEM", "PRD", "SKL"]
+          claim_ids = [f"{prefix}{i:02d}" for prefix in primary_prefixes for i in range(1, 7)]
+          claim_ids += [f"CH{i:02d}" for i in range(1, 13)]
+          assert len(claim_ids) == 60
 
-      - name: Compile reviewed ATT03 structural record
-        run: |
-          set -euo pipefail
-          python scripts/paper2_reference_structural_adjudication.py \
-            --claim-ir research/paper2/chatgpt_reference_claimir_v1/ATT03.json \
-            --adjudication research/paper2/reference_structural_adjudication_v1/ATT03.json \
-            --output /tmp/ATT03.structural.json
-          python scripts/paper2_phi_compare.py --project /tmp/ATT03.structural.json > /tmp/ATT03.phi.json
-          python -m json.tool /tmp/ATT03.structural.json >/dev/null
-          python -m json.tool /tmp/ATT03.phi.json >/dev/null
-          sha256sum /tmp/ATT03.structural.json
-          sha256sum /tmp/ATT03.phi.json
+          claim_dir = pathlib.Path("research/paper2/chatgpt_reference_claimir_v1")
+          adjudication_dir = pathlib.Path("research/paper2/reference_structural_adjudication_v1")
+          out_dir = pathlib.Path("/tmp/paper2-all60")
+          out_dir.mkdir(parents=True, exist_ok=True)
 
-      - name: Compile reviewed ATT04 structural record
-        run: |
-          set -euo pipefail
-          python scripts/paper2_reference_structural_adjudication.py \
-            --claim-ir research/paper2/chatgpt_reference_claimir_v1/ATT04.json \
-            --adjudication research/paper2/reference_structural_adjudication_v1/ATT04.json \
-            --output /tmp/ATT04.structural.json
-          python scripts/paper2_phi_compare.py --project /tmp/ATT04.structural.json > /tmp/ATT04.phi.json
-          python -m json.tool /tmp/ATT04.structural.json >/dev/null
-          python -m json.tool /tmp/ATT04.phi.json >/dev/null
-          sha256sum /tmp/ATT04.structural.json
-          sha256sum /tmp/ATT04.phi.json
+          freeze = {
+              "schema_version": "paper2-reference-phi-projection-freeze-v1",
+              "claim_count": 60,
+              "claims": [],
+          }
 
-      - name: Compile reviewed ATT05 structural record
-        run: |
-          set -euo pipefail
-          python scripts/paper2_reference_structural_adjudication.py \
-            --claim-ir research/paper2/chatgpt_reference_claimir_v1/ATT05.json \
-            --adjudication research/paper2/reference_structural_adjudication_v1/ATT05.json \
-            --output /tmp/ATT05.structural.json
-          python scripts/paper2_phi_compare.py --project /tmp/ATT05.structural.json > /tmp/ATT05.phi.json
-          python -m json.tool /tmp/ATT05.structural.json >/dev/null
-          python -m json.tool /tmp/ATT05.phi.json >/dev/null
-          sha256sum /tmp/ATT05.structural.json
-          sha256sum /tmp/ATT05.phi.json
+          for claim_id in claim_ids:
+              claim_path = claim_dir / f"{claim_id}.json"
+              adjudication_path = adjudication_dir / f"{claim_id}.json"
+              structural_path = out_dir / f"{claim_id}.structural.json"
+              phi_path = out_dir / f"{claim_id}.phi.json"
 
-      - name: Compile reviewed ATT06 structural record
-        run: |
-          set -euo pipefail
-          python scripts/paper2_reference_structural_adjudication.py \
-            --claim-ir research/paper2/chatgpt_reference_claimir_v1/ATT06.json \
-            --adjudication research/paper2/reference_structural_adjudication_v1/ATT06.json \
-            --output /tmp/ATT06.structural.json
-          python scripts/paper2_phi_compare.py --project /tmp/ATT06.structural.json > /tmp/ATT06.phi.json
-          python -m json.tool /tmp/ATT06.structural.json >/dev/null
-          python -m json.tool /tmp/ATT06.phi.json >/dev/null
-          sha256sum /tmp/ATT06.structural.json
-          sha256sum /tmp/ATT06.phi.json
+              with claim_path.open("r", encoding="utf-8") as fh:
+                  claim = json.load(fh)
+              with adjudication_path.open("r", encoding="utf-8") as fh:
+                  adjudication = json.load(fh)
 
-      - name: Compile reviewed LRN01 structural record
-        run: |
-          set -euo pipefail
-          python scripts/paper2_reference_structural_adjudication.py \
-            --claim-ir research/paper2/chatgpt_reference_claimir_v1/LRN01.json \
-            --adjudication research/paper2/reference_structural_adjudication_v1/LRN01.json \
-            --output /tmp/LRN01.structural.json
-          python scripts/paper2_phi_compare.py --project /tmp/LRN01.structural.json > /tmp/LRN01.phi.json
-          python -m json.tool /tmp/LRN01.structural.json >/dev/null
-          python -m json.tool /tmp/LRN01.phi.json >/dev/null
-          sha256sum /tmp/LRN01.structural.json
-          sha256sum /tmp/LRN01.phi.json
+              assert claim["extraction"]["manual_review_status"] == "reviewed"
+              assert adjudication["claim_id"] == claim["claim_id"]
 
-      - name: Compile reviewed LRN02 structural record
-        run: |
-          set -euo pipefail
-          python scripts/paper2_reference_structural_adjudication.py \
-            --claim-ir research/paper2/chatgpt_reference_claimir_v1/LRN02.json \
-            --adjudication research/paper2/reference_structural_adjudication_v1/LRN02.json \
-            --output /tmp/LRN02.structural.json
-          python scripts/paper2_phi_compare.py --project /tmp/LRN02.structural.json > /tmp/LRN02.phi.json
-          python -m json.tool /tmp/LRN02.structural.json >/dev/null
-          python -m json.tool /tmp/LRN02.phi.json >/dev/null
-          sha256sum /tmp/LRN02.structural.json
-          sha256sum /tmp/LRN02.phi.json
+              subprocess.run(
+                  [
+                      "python",
+                      "scripts/paper2_reference_structural_adjudication.py",
+                      "--claim-ir",
+                      str(claim_path),
+                      "--adjudication",
+                      str(adjudication_path),
+                      "--output",
+                      str(structural_path),
+                  ],
+                  check=True,
+              )
 
-      - name: Compile reviewed LRN03 structural record
-        run: |
-          set -euo pipefail
-          python scripts/paper2_reference_structural_adjudication.py \
-            --claim-ir research/paper2/chatgpt_reference_claimir_v1/LRN03.json \
-            --adjudication research/paper2/reference_structural_adjudication_v1/LRN03.json \
-            --output /tmp/LRN03.structural.json
-          python scripts/paper2_phi_compare.py --project /tmp/LRN03.structural.json > /tmp/LRN03.phi.json
-          python -m json.tool /tmp/LRN03.structural.json >/dev/null
-          python -m json.tool /tmp/LRN03.phi.json >/dev/null
-          sha256sum /tmp/LRN03.structural.json
-          sha256sum /tmp/LRN03.phi.json
+              with phi_path.open("w", encoding="utf-8") as fh:
+                  subprocess.run(
+                      [
+                          "python",
+                          "scripts/paper2_phi_compare.py",
+                          "--project",
+                          str(structural_path),
+                      ],
+                      stdout=fh,
+                      check=True,
+                  )
 
-      - name: Compile reviewed LRN04 structural record
-        run: |
-          set -euo pipefail
-          python scripts/paper2_reference_structural_adjudication.py \
-            --claim-ir research/paper2/chatgpt_reference_claimir_v1/LRN04.json \
-            --adjudication research/paper2/reference_structural_adjudication_v1/LRN04.json \
-            --output /tmp/LRN04.structural.json
-          python scripts/paper2_phi_compare.py --project /tmp/LRN04.structural.json > /tmp/LRN04.phi.json
-          python -m json.tool /tmp/LRN04.structural.json >/dev/null
-          python -m json.tool /tmp/LRN04.phi.json >/dev/null
-          sha256sum /tmp/LRN04.structural.json
-          sha256sum /tmp/LRN04.phi.json
+              with structural_path.open("r", encoding="utf-8") as fh:
+                  json.load(fh)
+              with phi_path.open("r", encoding="utf-8") as fh:
+                  json.load(fh)
 
-      - name: Compile reviewed LRN05 structural record
-        run: |
-          set -euo pipefail
-          python scripts/paper2_reference_structural_adjudication.py \
-            --claim-ir research/paper2/chatgpt_reference_claimir_v1/LRN05.json \
-            --adjudication research/paper2/reference_structural_adjudication_v1/LRN05.json \
-            --output /tmp/LRN05.structural.json
-          python scripts/paper2_phi_compare.py --project /tmp/LRN05.structural.json > /tmp/LRN05.phi.json
-          python -m json.tool /tmp/LRN05.structural.json >/dev/null
-          python -m json.tool /tmp/LRN05.phi.json >/dev/null
-          sha256sum /tmp/LRN05.structural.json
-          sha256sum /tmp/LRN05.phi.json
+              structural_sha = hashlib.sha256(structural_path.read_bytes()).hexdigest()
+              phi_sha = hashlib.sha256(phi_path.read_bytes()).hexdigest()
+              decision = adjudication["decision"]["status"]
 
-      - name: Compile reviewed LRN06 structural record
-        run: |
-          set -euo pipefail
-          python scripts/paper2_reference_structural_adjudication.py \
-            --claim-ir research/paper2/chatgpt_reference_claimir_v1/LRN06.json \
-            --adjudication research/paper2/reference_structural_adjudication_v1/LRN06.json \
-            --output /tmp/LRN06.structural.json
-          python scripts/paper2_phi_compare.py --project /tmp/LRN06.structural.json > /tmp/LRN06.phi.json
-          python -m json.tool /tmp/LRN06.structural.json >/dev/null
-          python -m json.tool /tmp/LRN06.phi.json >/dev/null
-          sha256sum /tmp/LRN06.structural.json
-          sha256sum /tmp/LRN06.phi.json
+              freeze["claims"].append(
+                  {
+                      "claim_id": claim_id,
+                      "decision": decision,
+                      "structural_sha256": structural_sha,
+                      "phi_sha256": phi_sha,
+                  }
+              )
+              print(f"{claim_id} {decision} structural={structural_sha} phi={phi_sha}")
+
+          assert sum(row["decision"] == "PASS" for row in freeze["claims"]) == 59
+          assert sum(row["decision"] == "RESIDUAL" for row in freeze["claims"]) == 1
+          residuals = [row["claim_id"] for row in freeze["claims"] if row["decision"] == "RESIDUAL"]
+          assert residuals == ["CH10"]
+
+          manifest_path = out_dir / "all60.freeze.json"
+          manifest_path.write_text(
+              json.dumps(freeze, indent=2, sort_keys=True) + "\n",
+              encoding="utf-8",
+          )
+          manifest_sha = hashlib.sha256(manifest_path.read_bytes()).hexdigest()
+          print(f"ALL60_FREEZE_SHA256={manifest_sha}")
+          print(manifest_path.read_text(encoding="utf-8"))
+          PY
