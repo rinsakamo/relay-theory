@@ -1,0 +1,594 @@
+{
+  "schema_version": "1.0",
+  "status": "FROZEN_POST_HOC_AGGREGATE",
+  "owner_issue": 343,
+  "authority": {
+    "grammar_issue": 321,
+    "lean_formalization_pr": 322,
+    "frozen_grammar_merge_commit": "78cd63cd6ec2898f3b4783b6db394c73c0551ff4",
+    "aggregate_base_main": "a22498d0bbe8ec55d53bcdbcf5c8bd2cfab34b87"
+  },
+  "scope": {
+    "total_claims": 60,
+    "lanes": [
+      "MEM",
+      "SKL",
+      "PRD",
+      "ATT",
+      "BLF",
+      "CNC",
+      "CTL",
+      "LRN",
+      "CH-A",
+      "CH-B"
+    ],
+    "policy": "Post-hoc aggregation only. Lane-local verdicts and frozen scientific artifacts are not modified."
+  },
+  "lane_sources": [
+    {
+      "lane": "MEM",
+      "pr": 327,
+      "path": "research/paper2/mem_grammar_v0_reverse_projection_v1.json",
+      "verdict_counts": {
+        "FULL": 1,
+        "PARTIAL": 3,
+        "RESIDUAL": 2
+      }
+    },
+    {
+      "lane": "SKL",
+      "pr": 328,
+      "path": "research/paper2/skl_grammar_v0_reverse_projection_v1.json",
+      "verdict_counts": {
+        "FULL": 2,
+        "PARTIAL": 4,
+        "RESIDUAL": 0
+      }
+    },
+    {
+      "lane": "PRD",
+      "pr": 333,
+      "path": "research/paper2/prd_grammar_v0_reverse_projection_v1.json",
+      "verdict_counts": {
+        "FULL": 0,
+        "PARTIAL": 1,
+        "RESIDUAL": 5
+      }
+    },
+    {
+      "lane": "ATT",
+      "pr": 331,
+      "path": "research/paper2/att_grammar_v0_reverse_projection_v1.json",
+      "verdict_counts": {
+        "FULL": 1,
+        "PARTIAL": 5,
+        "RESIDUAL": 0
+      }
+    },
+    {
+      "lane": "BLF",
+      "pr": 332,
+      "path": "research/paper2/blf_grammar_v0_reverse_projection_v1.json",
+      "verdict_counts": {
+        "FULL": 6,
+        "PARTIAL": 0,
+        "RESIDUAL": 0
+      }
+    },
+    {
+      "lane": "CNC",
+      "pr": 339,
+      "path": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json",
+      "verdict_counts": {
+        "FULL": 5,
+        "PARTIAL": 1,
+        "RESIDUAL": 0
+      }
+    },
+    {
+      "lane": "CTL",
+      "pr": 338,
+      "path": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json",
+      "verdict_counts": {
+        "FULL": 2,
+        "PARTIAL": 1,
+        "RESIDUAL": 3
+      }
+    },
+    {
+      "lane": "LRN",
+      "pr": 341,
+      "path": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json",
+      "verdict_counts": {
+        "FULL": 1,
+        "PARTIAL": 1,
+        "RESIDUAL": 4
+      }
+    },
+    {
+      "lane": "CH-A",
+      "pr": 342,
+      "path": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json",
+      "verdict_counts": {
+        "FULL": 2,
+        "PARTIAL": 2,
+        "RESIDUAL": 2
+      }
+    },
+    {
+      "lane": "CH-B",
+      "pr": 340,
+      "path": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json",
+      "verdict_counts": {
+        "FULL": 1,
+        "PARTIAL": 4,
+        "RESIDUAL": 1
+      }
+    }
+  ],
+  "aggregate_verdict_counts": {
+    "FULL": 21,
+    "PARTIAL": 22,
+    "RESIDUAL": 17,
+    "TOTAL": 60
+  },
+  "aggregate_role_frequency": {
+    "counting_rule": "Count a role once per claim when the lane-local mapping is SUPPORTED or PARTIAL.",
+    "Pi": 15,
+    "X": 53,
+    "C": 13,
+    "Q": 36,
+    "P_in": 29,
+    "P_out": 40,
+    "K": 57,
+    "T": 47,
+    "rho/O": 56
+  },
+  "claim_verdicts": [
+    {
+      "claim_id": "ATT01.C1",
+      "verdict": "PARTIAL"
+    },
+    {
+      "claim_id": "ATT02.C1",
+      "verdict": "PARTIAL"
+    },
+    {
+      "claim_id": "ATT03.C1",
+      "verdict": "FULL"
+    },
+    {
+      "claim_id": "ATT04.C1",
+      "verdict": "PARTIAL"
+    },
+    {
+      "claim_id": "ATT05.C1",
+      "verdict": "PARTIAL"
+    },
+    {
+      "claim_id": "ATT06.C1",
+      "verdict": "PARTIAL"
+    },
+    {
+      "claim_id": "BLF01",
+      "verdict": "FULL"
+    },
+    {
+      "claim_id": "BLF02",
+      "verdict": "FULL"
+    },
+    {
+      "claim_id": "BLF03",
+      "verdict": "FULL"
+    },
+    {
+      "claim_id": "BLF04",
+      "verdict": "FULL"
+    },
+    {
+      "claim_id": "BLF05",
+      "verdict": "FULL"
+    },
+    {
+      "claim_id": "BLF06",
+      "verdict": "FULL"
+    },
+    {
+      "claim_id": "CH01.C1",
+      "verdict": "RESIDUAL"
+    },
+    {
+      "claim_id": "CH02.C1",
+      "verdict": "PARTIAL"
+    },
+    {
+      "claim_id": "CH03.C1",
+      "verdict": "PARTIAL"
+    },
+    {
+      "claim_id": "CH04.C1",
+      "verdict": "FULL"
+    },
+    {
+      "claim_id": "CH05.C1",
+      "verdict": "FULL"
+    },
+    {
+      "claim_id": "CH06.C1",
+      "verdict": "PARTIAL"
+    },
+    {
+      "claim_id": "CH07.C1",
+      "verdict": "FULL"
+    },
+    {
+      "claim_id": "CH08.C1",
+      "verdict": "PARTIAL"
+    },
+    {
+      "claim_id": "CH09.C1",
+      "verdict": "RESIDUAL"
+    },
+    {
+      "claim_id": "CH10.C1",
+      "verdict": "RESIDUAL"
+    },
+    {
+      "claim_id": "CH11.C1",
+      "verdict": "PARTIAL"
+    },
+    {
+      "claim_id": "CH12.C1",
+      "verdict": "PARTIAL"
+    },
+    {
+      "claim_id": "CNC01.C1",
+      "verdict": "FULL"
+    },
+    {
+      "claim_id": "CNC02.C1",
+      "verdict": "FULL"
+    },
+    {
+      "claim_id": "CNC03.C1",
+      "verdict": "FULL"
+    },
+    {
+      "claim_id": "CNC04.C1",
+      "verdict": "FULL"
+    },
+    {
+      "claim_id": "CNC05.C1",
+      "verdict": "PARTIAL"
+    },
+    {
+      "claim_id": "CNC06.C1",
+      "verdict": "FULL"
+    },
+    {
+      "claim_id": "CTL01",
+      "verdict": "PARTIAL"
+    },
+    {
+      "claim_id": "CTL02",
+      "verdict": "RESIDUAL"
+    },
+    {
+      "claim_id": "CTL03",
+      "verdict": "RESIDUAL"
+    },
+    {
+      "claim_id": "CTL04",
+      "verdict": "FULL"
+    },
+    {
+      "claim_id": "CTL05",
+      "verdict": "FULL"
+    },
+    {
+      "claim_id": "CTL06",
+      "verdict": "RESIDUAL"
+    },
+    {
+      "claim_id": "LRN01.C1",
+      "verdict": "RESIDUAL"
+    },
+    {
+      "claim_id": "LRN02.C1",
+      "verdict": "PARTIAL"
+    },
+    {
+      "claim_id": "LRN03.C1",
+      "verdict": "FULL"
+    },
+    {
+      "claim_id": "LRN04.C1",
+      "verdict": "RESIDUAL"
+    },
+    {
+      "claim_id": "LRN05.C1",
+      "verdict": "RESIDUAL"
+    },
+    {
+      "claim_id": "LRN06.C1",
+      "verdict": "RESIDUAL"
+    },
+    {
+      "claim_id": "MEM01.C1",
+      "verdict": "PARTIAL"
+    },
+    {
+      "claim_id": "MEM02.C1",
+      "verdict": "FULL"
+    },
+    {
+      "claim_id": "MEM03.C1",
+      "verdict": "PARTIAL"
+    },
+    {
+      "claim_id": "MEM04.C1",
+      "verdict": "PARTIAL"
+    },
+    {
+      "claim_id": "MEM05.C1",
+      "verdict": "RESIDUAL"
+    },
+    {
+      "claim_id": "MEM06.C1",
+      "verdict": "RESIDUAL"
+    },
+    {
+      "claim_id": "PRD01.C1",
+      "verdict": "RESIDUAL"
+    },
+    {
+      "claim_id": "PRD02.C1",
+      "verdict": "RESIDUAL"
+    },
+    {
+      "claim_id": "PRD03.C1",
+      "verdict": "RESIDUAL"
+    },
+    {
+      "claim_id": "PRD04.C1",
+      "verdict": "RESIDUAL"
+    },
+    {
+      "claim_id": "PRD05.C1",
+      "verdict": "PARTIAL"
+    },
+    {
+      "claim_id": "PRD06.C1",
+      "verdict": "RESIDUAL"
+    },
+    {
+      "claim_id": "SKL01.C1",
+      "verdict": "FULL"
+    },
+    {
+      "claim_id": "SKL02.C1",
+      "verdict": "FULL"
+    },
+    {
+      "claim_id": "SKL03.C1",
+      "verdict": "PARTIAL"
+    },
+    {
+      "claim_id": "SKL04.C1",
+      "verdict": "PARTIAL"
+    },
+    {
+      "claim_id": "SKL05.C1",
+      "verdict": "PARTIAL"
+    },
+    {
+      "claim_id": "SKL06.C1",
+      "verdict": "PARTIAL"
+    }
+  ],
+  "residual_taxonomy": {
+    "classes": [
+      "ROLE_GAP",
+      "RELATION_LANGUAGE_GAP",
+      "FORMAL_CARRIER_GAP",
+      "DERIVED_STRUCTURE_GAP",
+      "SOURCE_CONTEXT_PARAMETER",
+      "UNDERDETERMINED"
+    ],
+    "adjudication_rule": "Only ROLE_GAP is prima facie evidence for adding a top-level Grammar role. Other classes must not be promoted to a new primitive without additional evidence.",
+    "residual_claims": [
+      {
+        "claim_id": "MEM05.C1",
+        "primary": [
+          "SOURCE_CONTEXT_PARAMETER",
+          "FORMAL_CARRIER_GAP"
+        ],
+        "note": "Acquisition/retrieval condition identities exceed bare T; O may occur without frozen P_out."
+      },
+      {
+        "claim_id": "MEM06.C1",
+        "primary": [
+          "SOURCE_CONTEXT_PARAMETER",
+          "RELATION_LANGUAGE_GAP",
+          "FORMAL_CARRIER_GAP"
+        ],
+        "note": "foil_similarity_condition remains generic; O-to-O inferential topology is not direct rho."
+      },
+      {
+        "claim_id": "PRD01.C1",
+        "primary": [
+          "SOURCE_CONTEXT_PARAMETER"
+        ],
+        "note": "visual/haptic estimator uncertainty nodes are frozen generic conditions outside C."
+      },
+      {
+        "claim_id": "PRD02.C1",
+        "primary": [
+          "SOURCE_CONTEXT_PARAMETER",
+          "DERIVED_STRUCTURE_GAP"
+        ],
+        "note": "generic calibration/duration conditions plus persistence without explicit carry witness."
+      },
+      {
+        "claim_id": "PRD03.C1",
+        "primary": [
+          "SOURCE_CONTEXT_PARAMETER"
+        ],
+        "note": "task_relevance_condition remains outside C/Q."
+      },
+      {
+        "claim_id": "PRD04.C1",
+        "primary": [
+          "SOURCE_CONTEXT_PARAMETER"
+        ],
+        "note": "present/future context, mismatch and temporal-distance conditions remain explicit."
+      },
+      {
+        "claim_id": "PRD06.C1",
+        "primary": [
+          "SOURCE_CONTEXT_PARAMETER"
+        ],
+        "note": "multiple context/fit/fluency conditions remain outside the one supported resource_C role."
+      },
+      {
+        "claim_id": "CTL02",
+        "primary": [
+          "SOURCE_CONTEXT_PARAMETER"
+        ],
+        "note": "strong_competing_alternative remains a required contextual condition."
+      },
+      {
+        "claim_id": "CTL03",
+        "primary": [
+          "SOURCE_CONTEXT_PARAMETER"
+        ],
+        "note": "prior_trial_context and current_distractor_compatibility remain explicit conditions."
+      },
+      {
+        "claim_id": "CTL06",
+        "primary": [
+          "SOURCE_CONTEXT_PARAMETER",
+          "DERIVED_STRUCTURE_GAP"
+        ],
+        "note": "task_transition and advance_preparation_opportunity remain explicit; task-transition change/repeat is not yet derived from K-over-T."
+      },
+      {
+        "claim_id": "LRN01.C1",
+        "primary": [
+          "RELATION_LANGUAGE_GAP"
+        ],
+        "note": "condition-indexed double dissociation and epistemic relation from observations to latent system interpretation are not typed by v0."
+      },
+      {
+        "claim_id": "LRN04.C1",
+        "primary": [
+          "RELATION_LANGUAGE_GAP",
+          "FORMAL_CARRIER_GAP"
+        ],
+        "note": "observation-to-latent estimation relation is outside forward rho."
+      },
+      {
+        "claim_id": "LRN05.C1",
+        "primary": [
+          "RELATION_LANGUAGE_GAP",
+          "FORMAL_CARRIER_GAP"
+        ],
+        "note": "observation-to-latent estimation and incoming informational O direction are outside current readout carrier."
+      },
+      {
+        "claim_id": "LRN06.C1",
+        "primary": [
+          "RELATION_LANGUAGE_GAP",
+          "FORMAL_CARRIER_GAP"
+        ],
+        "note": "observation-to-latent estimation and incoming informational O direction remain untyped."
+      },
+      {
+        "claim_id": "CH01.C1",
+        "primary": [
+          "SOURCE_CONTEXT_PARAMETER"
+        ],
+        "note": "early/late phase condition identities survive beyond their T ordering."
+      },
+      {
+        "claim_id": "CH09.C1",
+        "primary": [
+          "SOURCE_CONTEXT_PARAMETER",
+          "FORMAL_CARRIER_GAP"
+        ],
+        "note": "generic condition pair survives; experimental Pi/P_out structure does not absorb it."
+      },
+      {
+        "claim_id": "CH10.C1",
+        "primary": [
+          "SOURCE_CONTEXT_PARAMETER",
+          "UNDERDETERMINED"
+        ],
+        "note": "current_state and candidate_action are required generic conditions; frozen approximation contract also retains a separate underdetermined modeling residual."
+      }
+    ]
+  },
+  "cross_lane_findings": {
+    "strong_reusable_core": [
+      "K recurs in 57/60 claims.",
+      "rho/O recurs in 56/60 claims.",
+      "X recurs in 53/60 claims.",
+      "T recurs in 47/60 claims.",
+      "Q, P_in, P_out, Pi and C are sparser but independently required across multiple lanes."
+    ],
+    "distinctions_preserved": [
+      "K must remain distinct from T.",
+      "P_in must remain distinct from P_out.",
+      "C must remain distinct from generic source conditions.",
+      "Q must not be restricted to scalar reward/value.",
+      "Pi must not be restricted to physical boundaries.",
+      "O must not be restricted to terminal outputs.",
+      "K must remain relational/nonfunctional where frozen evidence is weak.",
+      "Persistence must not be reduced to literal K = I without a typed carry/transport witness."
+    ],
+    "hostile_validation_result": "Grammar v0 provides a broad reusable role vocabulary but is not a lossless full claim language over the frozen 60-claim corpus.",
+    "role_gap_status": "No aggregate ROLE_GAP is established by this pass. The dominant failures are source-context parameters, relation-language gaps, formal-carrier mismatches, and underidentified derived structure. This is a provisional aggregate classification, not a proof that no future ROLE_GAP exists."
+  },
+  "competitor_tests_not_yet_executed": [
+    {
+      "id": "G_dyn",
+      "grammar": [
+        "X",
+        "K",
+        "T"
+      ],
+      "question": "Which frozen distinctions become unrecoverable when Pi, C, Q, P and rho/O are removed?"
+    },
+    {
+      "id": "G_pomdp_like",
+      "grammar": [
+        "X",
+        "P",
+        "K",
+        "O",
+        "rho",
+        "Q",
+        "T"
+      ],
+      "question": "Do Pi, explicit C, generalized non-scalar Q, and directional P_in/P_out preserve frozen distinctions that a POMDP-like comparator does not?"
+    },
+    {
+      "id": "G_full_v0",
+      "grammar": [
+        "Pi",
+        "X",
+        "C",
+        "Q",
+        "P_in",
+        "P_out",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "question": "Can residuals be classified without adding a top-level role, and which are claim-language or formal-carrier rather than cognitive-role failures?"
+    }
+  ],
+  "terminal_classification": "GRAMMAR_V0_BROAD_ROLE_COVERAGE_WITH_NONLOSSLESS_CLAIM_LANGUAGE_RESIDUALS",
+  "grammar_modified": false,
+  "next_step": "Residual adjudication and competitor/minimality tests. Stop before Grammar-v1 repair."
+}
