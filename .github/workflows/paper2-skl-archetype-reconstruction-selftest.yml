@@ -13,6 +13,10 @@ on:
       - "research/paper2/reference_structural_adjudication_v1/SKL*.json"
       - ".github/workflows/paper2-skl-archetype-reconstruction-selftest.yml"
 
+concurrency:
+  group: paper2-skl-archetype-reconstruction-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
 
