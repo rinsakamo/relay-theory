@@ -1,0 +1,1032 @@
+{
+  "schema_version": "paper2-cnc-grammar-v0-reverse-projection-v1",
+  "lane": "CNC",
+  "owner_issue": 330,
+  "parent_issue": 321,
+  "generated_date": "2026-09-30",
+  "authority": {
+    "grammar_issue": 321,
+    "lean_pr": 322,
+    "base_main_sha": "78cd63cd6ec2898f3b4783b6db394c73c0551ff4",
+    "reviewed_claimir_pr": 273,
+    "frozen_structural_adjudication_pr": 286,
+    "frozen_cnc_archetype_issue": 299,
+    "frozen_cnc_archetype_pr": 307,
+    "bounded_xlike_known_uncovered_claim_ids": [
+      "CNC03"
+    ]
+  },
+  "input_policy": "Frozen reviewed CNC ClaimIR + frozen CNC structural adjudication + frozen bounded Archetype/XLike artifacts on main only; no source rereading and no upstream mutation.",
+  "role_semantics": {
+    "Pi": "individuation / partition / boundary",
+    "X": "configuration carrier (frozen S role)",
+    "C": "realizability / admissibility constraint",
+    "Q": "criterion-conditioned filtering / orientation",
+    "P_in": "intervention / write",
+    "P_out": "probe / query / read",
+    "K": "typed transformation / dependence; not necessarily functional",
+    "T": "succession / temporal indexing, distinct from K",
+    "rho/O": "boundary-relative observation / trace; not necessarily terminal"
+  },
+  "verdict_semantics": {
+    "FULL": "All required frozen claim structure is representable by supported Grammar-v0 roles/typed relations without an unmapped required residual.",
+    "PARTIAL": "The role vocabulary covers the claim, but at least one required frozen relation/distinction is only indirectly represented or loses first-class relation semantics.",
+    "RESIDUAL": "At least one required frozen node/relation cannot be represented without adding a role or retyping/strengthening frozen evidence."
+  },
+  "frozen_inputs": {
+    "CNC01": {
+      "claim_ir_path": "research/paper2/chatgpt_reference_claimir_v1/CNC01.json",
+      "claim_ir_sha256": "ed9bf7fd8a8f973f5a4e7e8817d69d136d9682265a37ecd4ca857c157109b2b8",
+      "structural_adjudication_path": "research/paper2/reference_structural_adjudication_v1/CNC01.json",
+      "structural_adjudication_sha256": "21ef61bf186fba383c9cb8aacd098b90a604c1fb0ca62cec00acccab2316cf44"
+    },
+    "CNC02": {
+      "claim_ir_path": "research/paper2/chatgpt_reference_claimir_v1/CNC02.json",
+      "claim_ir_sha256": "62bc5b1a8267e2631da31f7f30e05c2d332d4dc0ffe7d422a18e1e58fe9d29fe",
+      "structural_adjudication_path": "research/paper2/reference_structural_adjudication_v1/CNC02.json",
+      "structural_adjudication_sha256": "16fc7d0b40d08834cc1530716d92184bcf211a2dfe4d5ec3e3da5f4485964641"
+    },
+    "CNC03": {
+      "claim_ir_path": "research/paper2/chatgpt_reference_claimir_v1/CNC03.json",
+      "claim_ir_sha256": "3eaee23239b8ae030262604653149164358ac053f183ace8ad176d9ee043431a",
+      "structural_adjudication_path": "research/paper2/reference_structural_adjudication_v1/CNC03.json",
+      "structural_adjudication_sha256": "682eaccb2bb0ed3599efa1864d9ab2e61f027a483988fe6ae0aa43378e6a2ab5"
+    },
+    "CNC04": {
+      "claim_ir_path": "research/paper2/chatgpt_reference_claimir_v1/CNC04.json",
+      "claim_ir_sha256": "1a5ee84aba9bce2d7fbdd54dbe10e2c201d19db4c271ca70cb9df2aafa32f2f3",
+      "structural_adjudication_path": "research/paper2/reference_structural_adjudication_v1/CNC04.json",
+      "structural_adjudication_sha256": "a3d8df4e8f46310e8285f614c97262bb7ca22853d88dcff47229c1e2fc8effed"
+    },
+    "CNC05": {
+      "claim_ir_path": "research/paper2/chatgpt_reference_claimir_v1/CNC05.json",
+      "claim_ir_sha256": "00b7ae9089182861c5f194477e756a439e8bbdafde551b033828a8045bae2bb9",
+      "structural_adjudication_path": "research/paper2/reference_structural_adjudication_v1/CNC05.json",
+      "structural_adjudication_sha256": "4be7bf9abb2b90958d58469ce66f65bf3d75d002519fd927290747fb87845191"
+    },
+    "CNC06": {
+      "claim_ir_path": "research/paper2/chatgpt_reference_claimir_v1/CNC06.json",
+      "claim_ir_sha256": "cc4bce727092a3ae49e9b373bf19874b0112fede1ec08999c3e33774320abc40",
+      "structural_adjudication_path": "research/paper2/reference_structural_adjudication_v1/CNC06.json",
+      "structural_adjudication_sha256": "db6f8b763eb6c528b0f271792f1885feaf26e27069248de165c06f84e193b735"
+    },
+    "cnc_archetype_report": {
+      "path": "research/paper2/cnc_archetype_lane_v1.json",
+      "sha256": "c89a06ad8351c7a1beede99d405d7491483f316bcf2e3abeb9221534b3dbbf21"
+    }
+  },
+  "claims": [
+    {
+      "claim_id": "CNC01.C1",
+      "grammar_roles_instantiated": [
+        "X",
+        "C",
+        "Q",
+        "K"
+      ],
+      "supported_relations": [
+        {
+          "frozen_relation": "r1 depends_on(grouping_coherence, background_explanatory_knowledge)",
+          "grammar_projection": "K-like typed dependence among X configurations",
+          "status": "SUPPORTED",
+          "evidence": [
+            "ClaimIR r1 source_span_ids=[s1,s3,s4]"
+          ]
+        },
+        {
+          "frozen_relation": "r2 depends_on(grouping_coherence, internal_relational_structure, external_knowledge_fit)",
+          "grammar_projection": "K-like higher-arity typed dependence among X configurations",
+          "status": "SUPPORTED",
+          "evidence": [
+            "ClaimIR r2 source_span_ids=[s3,s4]"
+          ]
+        },
+        {
+          "frozen_relation": "r3 constrains(background_explanatory_knowledge, internal_relational_structure)",
+          "grammar_projection": "Q-like criterion-conditioned relevance/orientation over internal properties/relations, with K-like constraint dependence retained",
+          "status": "SUPPORTED",
+          "evidence": [
+            "ClaimIR r3 explicitly states that background explanatory knowledge constrains which internal properties/relations are treated as relevant and how they are organized; source_span_ids=[s1,s3]"
+          ]
+        },
+        {
+          "frozen_relation": "r4 constrains(background_explanatory_knowledge, underconstrained_alternative_groupings)",
+          "grammar_projection": "C-like restriction of an otherwise broader admissible grouping space, with K-like constraint dependence retained",
+          "status": "SUPPORTED",
+          "evidence": [
+            "ClaimIR r4 explicitly states that explanatory relations limit the otherwise broad set of possible groupings admitted by weak property-overlap accounts; source_span_ids=[s2,s3]"
+          ]
+        }
+      ],
+      "Pi_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.partition_Pi state=not_required",
+          "No frozen partition/refinement relation is required."
+        ]
+      },
+      "X_mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "grouping_coherence",
+          "background_explanatory_knowledge",
+          "internal_relational_structure",
+          "external_knowledge_fit",
+          "underconstrained_alternative_groupings"
+        ],
+        "evidence": [
+          "All five required ClaimIR nodes are role=state_or_structure and map to basis.n01..basis.n05."
+        ]
+      },
+      "C_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "background_explanatory_knowledge constrains the admissible alternative-grouping space",
+        "evidence": [
+          "r4 kind=constrains",
+          "underconstrained_alternative_groupings is the required state describing alternatives left admissible by an insufficiently constraining account.",
+          "resource_C is not used as evidence; this mapping is licensed by the frozen r4 admissibility topology under Grammar-v0 C."
+        ]
+      },
+      "Q_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "background_explanatory_knowledge supplies a relation-grounded relevance filter/orientation over internal properties and relations",
+        "evidence": [
+          "r3 kind=constrains and explicitly fixes which properties/relations are treated as relevant/how organized.",
+          "criterion_Q state=not_required; Q is not inferred from a lexical criterion label but from the frozen filtering relation."
+        ]
+      },
+      "P_in_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.probe_P state=not_required",
+          "No intervention node."
+        ]
+      },
+      "P_out_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.probe_P state=not_required",
+          "No probe node."
+        ]
+      },
+      "K_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "r1-r4 are typed dependence/constraint relations; no functional K assumption is made.",
+        "evidence": [
+          "r1/r2 kind=depends_on",
+          "r3/r4 kind=constrains"
+        ]
+      },
+      "T_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "All temporal feature states are not_required; ordering=[]"
+        ]
+      },
+      "rho_O_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "No response_or_outcome/available_information/probe-readout node is required."
+        ]
+      },
+      "derived_feature_candidates": [
+        "C/Q separation is visible inside one claim: r4 restricts admissible alternatives (C), while r3 orients relevance among properties/relations (Q).",
+        "The same background-knowledge X carrier can participate in both C-like admissibility and Q-like orientation without making C and Q identical."
+      ],
+      "unmapped_residual": [],
+      "verdict": "FULL",
+      "notes": [
+        "The old frozen resource_C and criterion_Q controls are not retroactively changed; Grammar-v0 C/Q are reverse-projected from explicit frozen relation topology.",
+        "Relevant frozen CNC Archetypes involving CNC01 are A-44efb4d2c846 and A-9aeabc683625 (K/S common images)."
+      ]
+    },
+    {
+      "claim_id": "CNC02.C1",
+      "grammar_roles_instantiated": [
+        "X",
+        "P_out",
+        "K",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "frozen_relation": "r1 predicts(within_group_attribute_distribution, graded_goodness_judgment)",
+          "grammar_projection": "K-like X-to-O predictive dependence",
+          "status": "SUPPORTED",
+          "evidence": [
+            "ClaimIR r1 source_span_ids=[s1,s3,s5]"
+          ]
+        },
+        {
+          "frozen_relation": "r2 predicts(cross_group_attribute_overlap, graded_goodness_judgment)",
+          "grammar_projection": "K-like X-to-O predictive dependence",
+          "status": "SUPPORTED",
+          "evidence": [
+            "ClaimIR r2 source_span_ids=[s1,s4,s5]"
+          ]
+        },
+        {
+          "frozen_relation": "r3 maps_to(attribute_elicitation_probe, within_group_attribute_distribution)",
+          "grammar_projection": "P_out-configured read/measurement of X",
+          "status": "SUPPORTED",
+          "evidence": [
+            "ClaimIR r3 source_span_ids=[s3]",
+            "controls.probe_P includes attribute_elicitation_probe"
+          ]
+        },
+        {
+          "frozen_relation": "r4 maps_to(contrast_structure_probe, cross_group_attribute_overlap)",
+          "grammar_projection": "P_out-configured read/measurement of X",
+          "status": "SUPPORTED",
+          "evidence": [
+            "ClaimIR r4 source_span_ids=[s4]",
+            "controls.probe_P includes contrast_structure_probe"
+          ]
+        },
+        {
+          "frozen_relation": "r5 maps_to(graded_rating_probe, graded_goodness_judgment)",
+          "grammar_projection": "P_out -> rho/O readout",
+          "status": "SUPPORTED",
+          "evidence": [
+            "ClaimIR r5 source_span_ids=[s3,s4]",
+            "controls.probe_P includes graded_rating_probe"
+          ]
+        }
+      ],
+      "Pi_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.partition_Pi state=not_required",
+          "Named/contrast groups are not promoted to Pi without a frozen partition relation."
+        ]
+      },
+      "X_mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "within_group_attribute_distribution",
+          "cross_group_attribute_overlap"
+        ],
+        "evidence": [
+          "Both nodes are role=state_or_structure; coordinate_map basis.n01,basis.n02."
+        ]
+      },
+      "C_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.resource_C state=not_required",
+          "No realizability/admissibility restriction is required."
+        ]
+      },
+      "Q_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.criterion_Q state=not_required",
+          "Graded goodness is an observed response, not a frozen orientation criterion."
+        ]
+      },
+      "P_in_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "No intervention node; all three P-like nodes are probes."
+        ]
+      },
+      "P_out_mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "attribute_elicitation_probe",
+          "contrast_structure_probe",
+          "graded_rating_probe"
+        ],
+        "evidence": [
+          "All are ClaimIR role=probe.",
+          "controls.probe_P state=present claim_node_ids=[attribute_elicitation_probe,contrast_structure_probe,graded_rating_probe] fixed_before_phi=true"
+        ]
+      },
+      "K_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "r1-r2 predictive dependencies; readout mapping remains distinct from K.",
+        "evidence": [
+          "r1/r2 kind=predicts"
+        ]
+      },
+      "T_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "All temporal feature states are not_required; ordering=[]"
+        ]
+      },
+      "rho_O_mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "graded_goodness_judgment"
+        ],
+        "evidence": [
+          "graded_goodness_judgment role=response_or_outcome coordinate basis.n03",
+          "r5 maps_to graded_rating_probe -> graded_goodness_judgment"
+        ]
+      },
+      "derived_feature_candidates": [
+        "P_out may expose/estimate an X configuration (r3/r4) as well as yield an O response (r5); probe direction does not force every probe product to be terminal O.",
+        "Positive and negative predictive directions in r1/r2 are K refinements, not Q unless a separate criterion-conditioned orientation is frozen."
+      ],
+      "unmapped_residual": [],
+      "verdict": "FULL",
+      "notes": [
+        "Frozen CNC Archetypes containing CNC02 include A-0ef6c6fa23d0, A-c4e5ef0cb8fc, A-a321a1208191, and A-de304eb4e674."
+      ]
+    },
+    {
+      "claim_id": "CNC03.C1",
+      "grammar_roles_instantiated": [
+        "X",
+        "Q",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "frozen_relation": "r1 maps_to(source_domain, target_domain, object_correspondence)",
+          "grammar_projection": "K-like typed correspondence/mapping among X configurations",
+          "status": "SUPPORTED",
+          "evidence": [
+            "ClaimIR r1 source_span_ids=[s3,s5]"
+          ]
+        },
+        {
+          "frozen_relation": "r2 distinguishes(relational_predicates, object_attributes)",
+          "grammar_projection": "Q-like filtering rule: relational predicates are preferentially retained while unary attributes are excluded",
+          "status": "SUPPORTED",
+          "evidence": [
+            "ClaimIR r2 source_span_ids=[s1,s3,s4,s7]"
+          ]
+        },
+        {
+          "frozen_relation": "r3 predicts(higher_order_relational_system, selected_relational_structure)",
+          "grammar_projection": "Q-like non-scalar orientation toward relations embedded in interconnected higher-order systems",
+          "status": "SUPPORTED",
+          "evidence": [
+            "ClaimIR r3 source_span_ids=[s1,s3,s5,s7]"
+          ]
+        },
+        {
+          "frozen_relation": "r4 maps_to(selected_relational_structure, object_correspondence, candidate_target_inferences)",
+          "grammar_projection": "K-like mapping/dependence from selected X structure and correspondence to O inference",
+          "status": "SUPPORTED",
+          "evidence": [
+            "ClaimIR r4 source_span_ids=[s3,s5,s6]"
+          ]
+        },
+        {
+          "frozen_relation": "object_correspondence before candidate_target_inferences",
+          "grammar_projection": "T succession/order distinct from r1/r4 mapping dependence",
+          "status": "SUPPORTED",
+          "evidence": [
+            "structural temporal.ordering basis.n03 -> basis.n08 source_span_ids=[s5]"
+          ]
+        }
+      ],
+      "Pi_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.partition_Pi state=not_required",
+          "Source/target correspondence is a mapping relation, not silently retyped as partition/boundary."
+        ]
+      },
+      "X_mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "source_domain",
+          "target_domain",
+          "object_correspondence",
+          "object_attributes",
+          "relational_predicates",
+          "higher_order_relational_system",
+          "selected_relational_structure"
+        ],
+        "evidence": [
+          "All seven required nodes are role=state_or_structure and map to basis.n01..basis.n07."
+        ]
+      },
+      "C_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.resource_C state=not_required",
+          "Exclusion of object attributes is represented as Q-like filtering, not realizability C."
+        ]
+      },
+      "Q_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "content-independent relational selection plus higher-order systematicity orientation",
+        "evidence": [
+          "r2 distinguishes relational_predicates from object_attributes with preferential carry/exclusion.",
+          "r3 predicts preferential retention of relations belonging to interconnected higher-order systems.",
+          "selected_relational_structure is a required frozen node."
+        ]
+      },
+      "P_in_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.probe_P state=not_required",
+          "Transfer into target is internal mapping K, not an interface intervention."
+        ]
+      },
+      "P_out_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.probe_P state=not_required",
+          "No explicit probe/query node."
+        ]
+      },
+      "K_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "r1/r4 carry mapping/correspondence dependence; r3 supplies selection dependence without requiring functionality.",
+        "evidence": [
+          "r1,r4 kind=maps_to",
+          "r3 kind=predicts"
+        ]
+      },
+      "T_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "object correspondence must be settled before target inference completion",
+        "evidence": [
+          "temporal.ordering basis.n03 -> basis.n08 source_span_ids=[s5]",
+          "scope.temporal_scope explicitly separates correspondence settling from mapping completion."
+        ]
+      },
+      "rho_O_mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "candidate_target_inferences"
+        ],
+        "evidence": [
+          "candidate_target_inferences role=response_or_outcome coordinate basis.n08",
+          "O is permitted without an explicit P_out operation."
+        ]
+      },
+      "derived_feature_candidates": [
+        "CNC03 supplies a strong non-scalar Q case: a structural selection rule over relation types/systematicity, not reward or threshold.",
+        "Its frozen T edge is independent of K: ordering correspondence before inference does not itself specify the mapping transformation."
+      ],
+      "unmapped_residual": [],
+      "verdict": "FULL",
+      "notes": [
+        "CNC03 is the only claim uncovered by the frozen bounded XLike reconstruction (59/60 coverage), but this does not imply Grammar-v0 failure: direct claim-level reverse projection is FULL.",
+        "No CNC lane-local Archetype contains CNC03; that family-reconstruction result is preserved rather than repaired."
+      ]
+    },
+    {
+      "claim_id": "CNC04.C1",
+      "grammar_roles_instantiated": [
+        "X",
+        "Q",
+        "P_out",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "frozen_relation": "r1 maps_to(two_stage_rating_probe, component_rating_a, component_rating_b, conjunctive_rating)",
+          "grammar_projection": "P_out-configured rho/O readouts across two stages",
+          "status": "SUPPORTED",
+          "evidence": [
+            "ClaimIR r1 source_span_ids=[s2,s3]",
+            "controls.probe_P includes two_stage_rating_probe"
+          ]
+        },
+        {
+          "frozen_relation": "r2 predicts(component_rating_a, component_rating_b, empirical_compensatory_mapping, conjunctive_rating)",
+          "grammar_projection": "K-like approximate dependence from O information through X mapping to O",
+          "status": "SUPPORTED",
+          "evidence": [
+            "ClaimIR r2 source_span_ids=[s2,s3,s4,s5]",
+            "approximation.mode=approximate"
+          ]
+        },
+        {
+          "frozen_relation": "r3 predicts(empirical_compensatory_mapping, overextension_pattern)",
+          "grammar_projection": "K-like X-to-O predictive dependence",
+          "status": "SUPPORTED",
+          "evidence": [
+            "ClaimIR r3 source_span_ids=[s1,s2,s3,s4]"
+          ]
+        },
+        {
+          "frozen_relation": "r4 maps_to(constituent_intensional_structure, composite_prototype)",
+          "grammar_projection": "K-like X-to-X construction/mapping",
+          "status": "SUPPORTED",
+          "evidence": [
+            "ClaimIR r4 source_span_ids=[s1,s5]"
+          ]
+        },
+        {
+          "frozen_relation": "r5 depends_on(item_to_composite_similarity, composite_prototype)",
+          "grammar_projection": "K-like X dependence",
+          "status": "SUPPORTED",
+          "evidence": [
+            "ClaimIR r5 source_span_ids=[s1,s5]"
+          ]
+        },
+        {
+          "frozen_relation": "r6 satisfies(item_to_composite_similarity, membership_criterion, conjunctive_membership_decision)",
+          "grammar_projection": "Q-conditioned filtering/classification from X to O",
+          "status": "SUPPORTED",
+          "evidence": [
+            "ClaimIR r6 source_span_ids=[s1,s5]",
+            "controls.criterion_Q includes membership_criterion"
+          ]
+        },
+        {
+          "frozen_relation": "component ratings before conjunction rating",
+          "grammar_projection": "T stage ordering",
+          "status": "SUPPORTED",
+          "evidence": [
+            "temporal.ordering basis.n01->basis.n04 and basis.n02->basis.n04 source_span_ids=[s2,s3]"
+          ]
+        }
+      ],
+      "Pi_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.partition_Pi state=not_required"
+        ]
+      },
+      "X_mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "empirical_compensatory_mapping",
+          "constituent_intensional_structure",
+          "composite_prototype",
+          "item_to_composite_similarity"
+        ],
+        "evidence": [
+          "These required nodes are role=state_or_structure; coordinate basis.n03,basis.n07,basis.n08,basis.n09."
+        ]
+      },
+      "C_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.resource_C state=not_required",
+          "No realizability/admissibility restriction is required."
+        ]
+      },
+      "Q_mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "membership_criterion"
+        ],
+        "evidence": [
+          "membership_criterion role=criterion coordinate basis.n10",
+          "controls.criterion_Q state=present fixed_before_phi=true",
+          "r6 kind=satisfies"
+        ]
+      },
+      "P_in_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "No intervention node."
+        ]
+      },
+      "P_out_mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "two_stage_rating_probe"
+        ],
+        "evidence": [
+          "two_stage_rating_probe role=probe basis.n06",
+          "controls.probe_P state=present fixed_before_phi=true"
+        ]
+      },
+      "K_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "r2-r5 supply approximate predictive/mapping/dependence structure; no exact fitted function is elevated to a universal K.",
+        "evidence": [
+          "r2/r3 predicts",
+          "r4 maps_to",
+          "r5 depends_on",
+          "r2 description explicitly rejects treating one exact fitted form as a general cognitive operator."
+        ]
+      },
+      "T_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "constituent responses precede later conjunction response",
+        "evidence": [
+          "two frozen temporal ordering edges basis.n01/n02 -> basis.n04"
+        ]
+      },
+      "rho_O_mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "component_rating_a",
+          "component_rating_b",
+          "conjunctive_rating",
+          "overextension_pattern",
+          "conjunctive_membership_decision"
+        ],
+        "evidence": [
+          "component ratings are role=available_information; the other three are role=response_or_outcome.",
+          "r1 supplies probe-configured readout; r6 supplies Q-conditioned decision."
+        ]
+      },
+      "derived_feature_candidates": [
+        "O_information and O_outcome are one boundary-relative trace family with different local position/topology; they are not collapsed to one node.",
+        "Weighted-linear/multiplicative fits are claim-local approximate K refinements, not a primitive operator.",
+        "Q is a decision boundary on X similarity and need not be scalar reward."
+      ],
+      "unmapped_residual": [],
+      "verdict": "FULL",
+      "notes": [
+        "Frozen CNC Archetypes containing CNC04 include A-0ef6c6fa23d0, A-c4e5ef0cb8fc, A-42a63e68df6e, A-eeaa77d9a6c1, A-9aeabc683625, and A-a321a1208191."
+      ]
+    },
+    {
+      "claim_id": "CNC05.C1",
+      "grammar_roles_instantiated": [
+        "Pi",
+        "X",
+        "C",
+        "K",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "frozen_relation": "r1 depends_on(cross_modal_generalization_capacity, distributed_modality_specific_regions, shared_cross_modal_convergence_system)",
+          "grammar_projection": "C-conditioned K dependence: distributed regions are necessary but insufficient and an additional shared convergence system is required for the capacity",
+          "status": "SUPPORTED",
+          "evidence": [
+            "ClaimIR r1 source_span_ids=[s1,s2,s5,s6]",
+            "r1 description explicitly states necessary-but-insufficient plus additionally required shared convergence system."
+          ]
+        },
+        {
+          "frozen_relation": "r2 differs(architecture_without_shared_convergence, architecture_with_shared_convergence, shared_cross_modal_convergence_system)",
+          "grammar_projection": "Pi/C structural distinction between architecture configurations differing by presence of a shared convergence subsystem",
+          "status": "PARTIAL",
+          "evidence": [
+            "ClaimIR r2 source_span_ids=[s1,s2]",
+            "architecture_with_shared_convergence explicitly contains distributed system plus common convergence stage."
+          ]
+        },
+        {
+          "frozen_relation": "r3 predicts(focal_damage_to_convergence_system, generalized_cross_modal_impairment)",
+          "grammar_projection": "C-conditioned K dependence from a constraint/lesion state on the required subsystem to an O impairment trace",
+          "status": "SUPPORTED",
+          "evidence": [
+            "ClaimIR r3 source_span_ids=[s3,s4,s6]"
+          ]
+        },
+        {
+          "frozen_relation": "r4 predicts(architecture_with_shared_convergence, cross_modal_generalization_capacity)",
+          "grammar_projection": "K-like X-to-O predictive dependence under the realizability structure",
+          "status": "SUPPORTED",
+          "evidence": [
+            "ClaimIR r4 source_span_ids=[s1,s5,s6]"
+          ]
+        }
+      ],
+      "Pi_mapping": {
+        "status": "PARTIAL",
+        "mapping": "distributed modality-specific regions versus a shared convergence subsystem provide a subsystem decomposition inside the architecture variants",
+        "evidence": [
+          "distributed_modality_specific_regions and shared_cross_modal_convergence_system are distinct required X nodes.",
+          "architecture_with_shared_convergence explicitly contains the distributed system plus a common convergence stage.",
+          "controls.partition_Pi state=not_required, so the subsystem decomposition is not promoted to a fully frozen partition operator."
+        ]
+      },
+      "X_mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "distributed_modality_specific_regions",
+          "shared_cross_modal_convergence_system",
+          "architecture_without_shared_convergence",
+          "architecture_with_shared_convergence"
+        ],
+        "evidence": [
+          "All four are required role=state_or_structure nodes."
+        ]
+      },
+      "C_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "architectural realizability constraint for cross-modal generalization/access; focal damage is a state violating/altering the required realization condition",
+        "evidence": [
+          "r1 explicitly says distributed information is necessary but insufficient and additionally requires the shared convergence system.",
+          "r3 ties focal damage of that required system to generalized impairment.",
+          "resource_C state=not_required; C is supported here by Grammar-v0's broader realizability/admissibility definition, not by a resource interpretation."
+        ]
+      },
+      "Q_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.criterion_Q state=not_required",
+          "Necessary architecture is a realizability constraint C, not criterion-conditioned orientation Q."
+        ]
+      },
+      "P_in_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "focal_damage_to_convergence_system is frozen as role=condition, not intervention; it is not retyped as P_in."
+        ]
+      },
+      "P_out_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.probe_P state=not_required",
+          "No explicit probe/query node."
+        ]
+      },
+      "K_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "r1/r3/r4 are typed dependence/prediction relations; no functional transition assumption.",
+        "evidence": [
+          "r1 depends_on",
+          "r3/r4 predicts"
+        ]
+      },
+      "T_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "All temporal feature states are not_required; ordering=[]"
+        ]
+      },
+      "rho_O_mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "cross_modal_generalization_capacity",
+          "generalized_cross_modal_impairment"
+        ],
+        "evidence": [
+          "Both are required role=response_or_outcome nodes.",
+          "O is allowed without an explicit P_out probe."
+        ]
+      },
+      "derived_feature_candidates": [
+        "CNC05 is a non-resource C case: realizability is constrained by architecture rather than budget/load.",
+        "Subsystem language can induce a Pi candidate, but the lack of a frozen partition control keeps Pi only PARTIAL.",
+        "A condition such as focal damage is not automatically P_in; its supported grammar role is through the C-conditioned dependence it creates."
+      ],
+      "unmapped_residual": [
+        {
+          "type": "explicit_static_difference_relation",
+          "reason": "Grammar v0 can represent the two architecture configurations and the subsystem/C distinction, but it has no separate first-class 'differs' relation. Encoding r2 only by distinct X/Pi/C structure preserves the contrast indirectly rather than preserving the explicit comparison predicate.",
+          "frozen_evidence": [
+            "r2 kind=differs arguments=[architecture_without_shared_convergence,architecture_with_shared_convergence,shared_cross_modal_convergence_system] source_span_ids=[s1,s2]"
+          ]
+        }
+      ],
+      "verdict": "PARTIAL",
+      "notes": [
+        "This is relation-semantic pressure rather than a demonstrated ninth top-level cognitive role.",
+        "Frozen CNC Archetypes containing CNC05 are A-c4e5ef0cb8fc and A-eeaa77d9a6c1."
+      ]
+    },
+    {
+      "claim_id": "CNC06.C1",
+      "grammar_roles_instantiated": [
+        "X",
+        "C",
+        "Q",
+        "P_out",
+        "K",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "frozen_relation": "r1 depends_on(candidate_likelihood_weights, observed_positive_examples, sampling_model, candidate_extension_hypotheses)",
+          "grammar_projection": "C-conditioned K dependence: the sampling model constrains the likelihood relation between candidate extensions and observed O information",
+          "status": "SUPPORTED",
+          "evidence": [
+            "ClaimIR r1 source_span_ids=[s2,s3]"
+          ]
+        },
+        {
+          "frozen_relation": "r2 depends_on(posterior_candidate_weights, prior_candidate_weights, candidate_likelihood_weights)",
+          "grammar_projection": "K-like X dependence inducing Q orientation over candidate alternatives",
+          "status": "SUPPORTED",
+          "evidence": [
+            "ClaimIR r2 source_span_ids=[s1,s2,s3]"
+          ]
+        },
+        {
+          "frozen_relation": "r3 changes(observed_positive_examples, sampling_model, posterior_candidate_weights)",
+          "grammar_projection": "C-conditioned K change in X/Q orientation under additional mutually consistent observations; not T",
+          "status": "SUPPORTED",
+          "evidence": [
+            "ClaimIR r3 source_span_ids=[s3,s4,s5,s7]",
+            "scope.temporal_scope explicitly says no particular sequential psychological update algorithm is required."
+          ]
+        },
+        {
+          "frozen_relation": "r4 maps_to(posterior_candidate_weights, candidate_extension_hypotheses, novel_item_probe, predicted_label_extension_probability)",
+          "grammar_projection": "Q/X plus P_out configured rho/O prediction",
+          "status": "SUPPORTED",
+          "evidence": [
+            "ClaimIR r4 source_span_ids=[s2,s6,s7]"
+          ]
+        },
+        {
+          "frozen_relation": "r5 maps_to(novel_item_probe, observed_label_extension_frequency)",
+          "grammar_projection": "P_out -> rho/O behavioral readout",
+          "status": "SUPPORTED",
+          "evidence": [
+            "ClaimIR r5 source_span_ids=[s4,s5,s6]"
+          ]
+        },
+        {
+          "frozen_relation": "r6 predicts(predicted_label_extension_probability, observed_label_extension_frequency)",
+          "grammar_projection": "K-like typed dependence/comparison between two O traces",
+          "status": "SUPPORTED",
+          "evidence": [
+            "ClaimIR r6 source_span_ids=[s6,s7]"
+          ]
+        }
+      ],
+      "Pi_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.partition_Pi state=not_required",
+          "Candidate extensions are not promoted to Pi merely because they are subsets/hierarchical alternatives."
+        ]
+      },
+      "X_mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "candidate_extension_hypotheses",
+          "prior_candidate_weights",
+          "candidate_likelihood_weights",
+          "posterior_candidate_weights"
+        ],
+        "evidence": [
+          "These four required nodes are role=state_or_structure."
+        ]
+      },
+      "C_mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "sampling_model"
+        ],
+        "evidence": [
+          "sampling_model is a required role=condition node.",
+          "r1 makes likelihoods depend on the assumed sampling process and candidate extension.",
+          "r3 makes sharpening conditional on independent random sampling.",
+          "Grammar-v0 C includes observation/exposure admissibility; resource_C is not used as evidence."
+        ]
+      },
+      "Q_mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "prior_candidate_weights",
+          "posterior_candidate_weights"
+        ],
+        "evidence": [
+          "These weights orient the structured candidate-extension alternatives before/after conditioning.",
+          "r2 fixes posterior orientation jointly by prior plausibility and likelihood.",
+          "r4 obtains novel-item prediction by summing conditioned weights of candidate extensions containing the item.",
+          "criterion_Q state=not_required; Q is derived from explicit alternative-orientation topology, not a lexical criterion node."
+        ]
+      },
+      "P_in_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "No ClaimIR intervention node."
+        ]
+      },
+      "P_out_mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "novel_item_probe"
+        ],
+        "evidence": [
+          "novel_item_probe role=probe",
+          "controls.probe_P state=present claim_node_ids=[novel_item_probe] fixed_before_phi=true"
+        ]
+      },
+      "K_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "r1-r3 and r6 are typed dependence/change relations; r4-r5 preserve mapping/readout topology. No functional K assumption.",
+        "evidence": [
+          "r1/r2 depends_on",
+          "r3 changes",
+          "r6 predicts"
+        ]
+      },
+      "T_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "All structural temporal feature states are not_required; ordering=[]",
+          "scope.temporal_scope explicitly says conditioning is over the currently observed example set and does not require a particular sequential psychological update algorithm.",
+          "'additional examples' in r3 is therefore not converted into T."
+        ]
+      },
+      "rho_O_mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "observed_positive_examples",
+          "predicted_label_extension_probability",
+          "observed_label_extension_frequency"
+        ],
+        "evidence": [
+          "observed_positive_examples role=available_information",
+          "predicted_label_extension_probability and observed_label_extension_frequency role=response_or_outcome",
+          "r4/r5 provide prediction/readout mappings."
+        ]
+      },
+      "derived_feature_candidates": [
+        "C/Q separation is explicit: C is the sampling-process admissibility assumption; Q is the induced orientation over candidate extension alternatives.",
+        "Posterior weights remain X configurations while also inducing Q orientation; grammar roles need not be disjoint at node level.",
+        "O_information and O_outcome share the rho/O family without becoming equivalent nodes.",
+        "Repeated-example sharpening is K sensitivity to the observed evidence set under C, not T succession in the absence of a frozen sequential process."
+      ],
+      "unmapped_residual": [],
+      "verdict": "FULL",
+      "notes": [
+        "r6 demonstrates that K-like dependence may relate O traces; the merged Lean transition field is narrower, but #321's scientific K role is explicitly typed dependence and need not be functional.",
+        "Frozen CNC Archetypes containing CNC06 include A-0ef6c6fa23d0, A-42a63e68df6e, A-44efb4d2c846, and A-de304eb4e674."
+      ]
+    }
+  ],
+  "lane_summary": {
+    "coverage_count": 6,
+    "exact_claims_processed": [
+      "CNC01.C1",
+      "CNC02.C1",
+      "CNC03.C1",
+      "CNC04.C1",
+      "CNC05.C1",
+      "CNC06.C1"
+    ],
+    "verdict_counts": {
+      "FULL": 5,
+      "PARTIAL": 1,
+      "RESIDUAL": 0
+    },
+    "role_frequency": {
+      "Pi": 1,
+      "X": 6,
+      "C": 3,
+      "Q": 4,
+      "P_in": 0,
+      "P_out": 3,
+      "K": 6,
+      "T": 2,
+      "rho/O": 5
+    },
+    "role_frequency_rule": "Count a role when its per-claim mapping is SUPPORTED or PARTIAL.",
+    "recurrent_substructures": [
+      "X + K occurs in all six CNC claims.",
+      "rho/O occurs in CNC02-CNC06; P_out is required only in CNC02/CNC04/CNC06, so O is not synonymous with explicit probe output.",
+      "C and Q co-occur in CNC01 and CNC06 but remain structurally distinct: admissibility/realizability restriction versus orientation/filtering among alternatives.",
+      "Q is non-scalar in CNC01/CNC03/CNC06; CNC04 supplies an explicit criterion-boundary specialization.",
+      "No CNC maximal Archetype retained temporal features, yet claim-level T is still required in CNC03 and CNC04; common-image absence is not claim-level role absence.",
+      "Frozen lane Archetype reconstruction remains heterogeneous: 0 exact U_claim skeleton-equivalence pairs, 78 unique non-trivial pair-generated common images, 8 maximal candidates, 23 incomparable / 5 comparable candidate pairs."
+    ],
+    "grammar_distinctions_required_by_cnc": [
+      "C versus Q: CNC01 and CNC06 require separating admissibility/exposure constraints from criterion/alternative orientation.",
+      "K versus T: CNC03 has explicit ordering separate from mapping; CNC06 explicitly forbids inferring a sequential psychological update from conditioning on an observed example set.",
+      "P_out versus O: CNC03/CNC05 support O without a frozen probe, while CNC02/CNC04/CNC06 have explicit probe/read operations.",
+      "P_in versus internal K: no CNC claim requires an intervention/write role; source-to-target transfer and representational construction are K, not P_in.",
+      "Q need not be scalar: relevance filtering, systematicity preference and posterior alternative weighting fit Q without reward semantics.",
+      "C need not be resource/budget: CNC01 uses admissible grouping restriction; CNC05 architectural realizability; CNC06 sampling/observation admissibility.",
+      "Pi need not be physical, but it also must not be forced: only CNC05 provides subsystem-decomposition support and even there Pi remains PARTIAL because no frozen partition operator was required."
+    ],
+    "roles_not_needed_by_cnc": [
+      "P_in"
+    ],
+    "role_sparsity_notes": {
+      "Pi": "1/6 (PARTIAL only)",
+      "X": "6/6",
+      "C": "3/6",
+      "Q": "4/6",
+      "P_in": "0/6",
+      "P_out": "3/6",
+      "K": "6/6",
+      "T": "2/6",
+      "rho/O": "5/6"
+    },
+    "residual_structures_not_expressible_by_grammar_v0": [
+      "CNC05 r2 carries an explicit static differs predicate between two architecture alternatives. Grammar v0 can encode the configurations and their Pi/C difference only indirectly; it does not make the comparison predicate first-class."
+    ],
+    "possible_compression_or_derived_feature_cases": [
+      "CNC01: explanatory knowledge simultaneously participates as X while inducing distinct C-like admissibility and Q-like relevance filtering.",
+      "CNC02: multiple read procedures compress to P_out with read targets distinguished as X versus O.",
+      "CNC03: relational/systematicity selection compresses into generalized non-scalar Q; its known bounded-XLike nonmembership does not block direct Grammar coverage.",
+      "CNC04: available-information and outcome nodes compress into one rho/O family differentiated by topology/stage; fitted numeric forms remain K refinements.",
+      "CNC05: shared-convergence necessity is a broader C specialization (architectural realizability), while subsystem decomposition is only a Pi candidate.",
+      "CNC06: sampling model -> C, prior/posterior alternative weighting -> Q, and repeated-example sharpening -> C-conditioned K without T."
+    ],
+    "potential_threats_to_grammar_v0": [
+      "Grammar v0 is not yet a lossless general claim language for explicit comparison predicates such as CNC05 r2 'differs'; a relation-annotation layer may be required even when no new top-level cognitive role is needed.",
+      "The merged Lean skeleton is narrower than the Discussion-level scientific K/rho vocabulary for some cross-role and O-to-O dependencies (e.g. CNC02 X->O predictions and CNC06 O->O model/data relation). Technical carrier plumbing must not be counted as source-supported P/X roles.",
+      "Generalized C/Q must remain evidence-gated. The CNC mappings rely on explicit frozen topology; generic condition, necessity, weighting, or constraint vocabulary alone would overgenerate roles."
+    ],
+    "counterexample_to_grammar_v0": {
+      "decisive_role_inventory_counterexample": false,
+      "lossless_claim_language_counterexample": true,
+      "statement": "No CNC claim requires a ninth top-level cognitive role on the frozen lane. CNC05 r2 is a bounded counterexample to treating Grammar v0 alone as a lossless full claim language because its explicit static comparison relation is only indirectly recoverable from X/Pi/C structure.",
+      "cnc03_statement": "CNC03, despite being the only claim uncovered by bounded XLike reconstruction, is FULL under direct Grammar-v0 reverse projection; XLike family coverage and Grammar role coverage are therefore distinct tests.",
+      "grammar_change_authorized": false
+    },
+    "terminal_classification": "CNC_GRAMMAR_V0_ROLE_COVERAGE_WITH_STATIC_COMPARISON_RELATION_RESIDUAL",
+    "architecture_consequence": "NONE"
+  }
+}
