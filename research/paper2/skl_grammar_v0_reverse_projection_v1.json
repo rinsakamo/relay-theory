@@ -1,0 +1,3680 @@
+{
+  "schema_version": "paper2-unified-cognitive-structural-grammar-v0-reverse-projection-v1",
+  "lane": "SKL",
+  "owner_issue": 323,
+  "parent_issue": 321,
+  "generated_date": "2026-09-30",
+  "authority": {
+    "base_main_commit": "78cd63cd6ec2898f3b4783b6db394c73c0551ff4",
+    "grammar_issue": 321,
+    "grammar_pr": 322,
+    "grammar_lean_path": "formal/relay_theory/RelayTheory/UnifiedCognitiveStructuralGrammar.lean",
+    "grammar_lean_blob_sha": "a688edb063c0ad43c25df15f497918817e8b74cd",
+    "claimir_paths": {
+      "SKL01": "research/paper2/chatgpt_reference_claimir_v1/SKL01.json",
+      "SKL02": "research/paper2/chatgpt_reference_claimir_v1/SKL02.json",
+      "SKL03": "research/paper2/chatgpt_reference_claimir_v1/SKL03.json",
+      "SKL04": "research/paper2/chatgpt_reference_claimir_v1/SKL04.json",
+      "SKL05": "research/paper2/chatgpt_reference_claimir_v1/SKL05.json",
+      "SKL06": "research/paper2/chatgpt_reference_claimir_v1/SKL06.json"
+    },
+    "claimir_blob_shas": {
+      "SKL01": "42856000e29f0accf7690b7eb7d3ebdfbaddcf2d",
+      "SKL02": "f9be6b760d6426909fd195a6e1fd851cea5a9fe1",
+      "SKL03": "6570a4928fe3e6c18b4ad485b0d7872f81cfab73",
+      "SKL04": "b393cff98781db7485f3f293d52228bc275199af",
+      "SKL05": "1b6fd86dbae9d506b0e179f7a6e445fd4abaf887",
+      "SKL06": "3a370520d82a9b444eb9c6d75737e2adb3d5d83f"
+    },
+    "structural_adjudication_paths": {
+      "SKL01": "research/paper2/reference_structural_adjudication_v1/SKL01.json",
+      "SKL02": "research/paper2/reference_structural_adjudication_v1/SKL02.json",
+      "SKL03": "research/paper2/reference_structural_adjudication_v1/SKL03.json",
+      "SKL04": "research/paper2/reference_structural_adjudication_v1/SKL04.json",
+      "SKL05": "research/paper2/reference_structural_adjudication_v1/SKL05.json",
+      "SKL06": "research/paper2/reference_structural_adjudication_v1/SKL06.json"
+    },
+    "structural_adjudication_blob_shas": {
+      "SKL01": "1a50e3049ac024024296ba15fed2eb36e0436448",
+      "SKL02": "eaa11384c9b340e1c6413845d8a6fb5244c514fd",
+      "SKL03": "23b56b83be5f83709e8201d8c6544d7904740c37",
+      "SKL04": "099f48ec284b90450dafec9d8ea0a6c94900bf04",
+      "SKL05": "cd4856dc14c206bf615f476c1da1e22579cce8d1",
+      "SKL06": "db10f0c34f31df5c15d2ce78413933ddab32587f"
+    },
+    "skl_archetype_issue": 303,
+    "skl_archetype_pr": 310,
+    "skl_archetype_path": "research/paper2/skl_archetype_reconstruction_v1.json",
+    "skl_archetype_blob_sha": "c402a2011aa40e3cdad64c02da261772c2941d17",
+    "skl_archetype_reported_sha256": "908999cc5c163fd3371790b3f703869fd752c7e049d8cb266a9ce6ca1cf06a25"
+  },
+  "input_policy": {
+    "processed_claims": [
+      "SKL01.C1",
+      "SKL02.C1",
+      "SKL03.C1",
+      "SKL04.C1",
+      "SKL05.C1",
+      "SKL06.C1"
+    ],
+    "other_lanes_processed": false,
+    "source_papers_reread": false,
+    "frozen_inputs_modified": false,
+    "grammar_modified": false,
+    "mapping_rule": "Reverse-project only structurally supported frozen roles/relations. Missing roles remain ABSENT. Frozen old-P membership is not automatically Grammar-v0 P_in/P_out."
+  },
+  "role_semantics": {
+    "Pi": "individuation / partition / boundary",
+    "X": "configuration carrier (frozen S role)",
+    "C": "realizability / admissibility constraint",
+    "Q": "criterion-conditioned filtering / orientation",
+    "P_in": "intervention / write",
+    "P_out": "probe / query / read",
+    "K": "typed transformation / dependence; not necessarily functional",
+    "T": "succession / temporal indexing",
+    "rho/O": "boundary-relative observation / trace; not necessarily terminal output"
+  },
+  "claims": [
+    {
+      "claim_id": "SKL01.C1",
+      "grammar_roles_instantiated": [
+        "X",
+        "C",
+        "P_in",
+        "P_out",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "grammar_relation": "C-conditioned K/dependence",
+          "frozen_evidence": [
+            {
+              "relation_id": "r1",
+              "kind": "depends_on",
+              "arguments": [
+                "functional_task_demand",
+                "experience_stage",
+                "processing_load_state"
+              ],
+              "description": "functional task difficulty is relative to performer experience and to the degree that current demands load available processing resources",
+              "source_span_ids": [
+                "s2",
+                "s6"
+              ]
+            },
+            {
+              "relation_id": "r2",
+              "kind": "depends_on",
+              "arguments": [
+                "later_learning_performance",
+                "functional_task_demand",
+                "demand_increasing_practice"
+              ],
+              "description": "the review-level synthesis favors added challenge for learning when the current training situation imposes relatively low demands",
+              "source_span_ids": [
+                "s1",
+                "s6"
+              ]
+            },
+            {
+              "relation_id": "r3",
+              "kind": "depends_on",
+              "arguments": [
+                "later_learning_performance",
+                "functional_task_demand",
+                "demand_reducing_practice"
+              ],
+              "description": "the review-level synthesis favors demand reduction for learning when acquisition already imposes extremely high demands",
+              "source_span_ids": [
+                "s1",
+                "s3",
+                "s4",
+                "s5",
+                "s6"
+              ]
+            },
+            {
+              "relation_id": "r4",
+              "kind": "depends_on",
+              "arguments": [
+                "later_learning_performance",
+                "experience_stage",
+                "functional_task_demand"
+              ],
+              "description": "the effect of a practice condition may change across practice as functional task demands change",
+              "source_span_ids": [
+                "s2",
+                "s6"
+              ]
+            }
+          ]
+        },
+        {
+          "grammar_relation": "P_out-configured rho/O readout",
+          "frozen_evidence": [
+            {
+              "relation_id": "r5",
+              "kind": "maps_to",
+              "arguments": [
+                "learning_assessment",
+                "later_learning_performance"
+              ],
+              "description": "later retention, transfer, or test performance is used where available to assess learning rather than equating immediate acquisition performance with learning",
+              "source_span_ids": [
+                "s2",
+                "s3",
+                "s4",
+                "s5"
+              ]
+            }
+          ]
+        }
+      ],
+      "mappings": {
+        "Pi": {
+          "status": "ABSENT",
+          "interpretation": "No frozen individuation/partition control is required.",
+          "evidence": {
+            "partition_Pi": {
+              "state": "not_required"
+            }
+          }
+        },
+        "X": {
+          "status": "SUPPORTED",
+          "interpretation": "The frozen S-role load state is the configuration carrier.",
+          "evidence": {
+            "nodes": [
+              {
+                "node_id": "processing_load_state",
+                "claimir_role": "state_or_structure",
+                "description": "degree to which current task and practice demands load or overload the performer's limited processing resources",
+                "source_span_ids": [
+                  "s2",
+                  "s6"
+                ],
+                "coordinate_id": "basis.s1",
+                "coordinate_required": true
+              }
+            ]
+          }
+        },
+        "C": {
+          "status": "SUPPORTED",
+          "interpretation": "Limited processing load is explicitly adjudicated as a resource/admissibility constraint; C is not inferred from task difficulty alone.",
+          "evidence": {
+            "resource_C": {
+              "state": "present",
+              "claim_node_ids": [
+                "processing_load_state"
+              ],
+              "provenance_kind": "source_declared",
+              "fixed_before_phi": true
+            },
+            "nodes": [
+              {
+                "node_id": "processing_load_state",
+                "claimir_role": "state_or_structure",
+                "description": "degree to which current task and practice demands load or overload the performer's limited processing resources",
+                "source_span_ids": [
+                  "s2",
+                  "s6"
+                ],
+                "coordinate_id": "basis.s1",
+                "coordinate_required": true
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r1",
+                "kind": "depends_on",
+                "arguments": [
+                  "functional_task_demand",
+                  "experience_stage",
+                  "processing_load_state"
+                ],
+                "description": "functional task difficulty is relative to performer experience and to the degree that current demands load available processing resources",
+                "source_span_ids": [
+                  "s2",
+                  "s6"
+                ]
+              }
+            ]
+          }
+        },
+        "Q": {
+          "status": "ABSENT",
+          "interpretation": "No frozen criterion_Q control is required; low/high demand regime dependence is not promoted to Q.",
+          "evidence": {
+            "criterion_Q": {
+              "state": "not_required"
+            }
+          }
+        },
+        "P_in": {
+          "status": "SUPPORTED",
+          "interpretation": "The two practice manipulations are explicit intervention/write-side operations.",
+          "evidence": {
+            "nodes": [
+              {
+                "node_id": "demand_increasing_practice",
+                "claimir_role": "intervention",
+                "description": "practice manipulation that adds cognitive effort, processing demand, or challenge",
+                "source_span_ids": [
+                  "s1",
+                  "s3",
+                  "s6"
+                ],
+                "coordinate_id": "basis.p1",
+                "coordinate_required": true
+              },
+              {
+                "node_id": "demand_reducing_practice",
+                "claimir_role": "intervention",
+                "description": "practice manipulation that reduces otherwise excessive cognitive, attentional, control, or execution demands",
+                "source_span_ids": [
+                  "s1",
+                  "s3",
+                  "s4",
+                  "s5",
+                  "s6"
+                ],
+                "coordinate_id": "basis.p2",
+                "coordinate_required": true
+              }
+            ]
+          }
+        },
+        "P_out": {
+          "status": "SUPPORTED",
+          "interpretation": "The later learning assessment is an explicit probe/read-side operation.",
+          "evidence": {
+            "nodes": [
+              {
+                "node_id": "learning_assessment",
+                "claimir_role": "probe",
+                "description": "later retention, transfer, or other test condition used where available to distinguish learning from immediate acquisition performance",
+                "source_span_ids": [
+                  "s2",
+                  "s3",
+                  "s4",
+                  "s5"
+                ],
+                "coordinate_id": "basis.p3",
+                "coordinate_required": true
+              }
+            ]
+          }
+        },
+        "K": {
+          "status": "SUPPORTED",
+          "interpretation": "Frozen depends_on relations support typed, non-functional dependence conditioned by demand, experience, load and practice manipulation.",
+          "evidence": {
+            "relations": [
+              {
+                "relation_id": "r1",
+                "kind": "depends_on",
+                "arguments": [
+                  "functional_task_demand",
+                  "experience_stage",
+                  "processing_load_state"
+                ],
+                "description": "functional task difficulty is relative to performer experience and to the degree that current demands load available processing resources",
+                "source_span_ids": [
+                  "s2",
+                  "s6"
+                ]
+              },
+              {
+                "relation_id": "r2",
+                "kind": "depends_on",
+                "arguments": [
+                  "later_learning_performance",
+                  "functional_task_demand",
+                  "demand_increasing_practice"
+                ],
+                "description": "the review-level synthesis favors added challenge for learning when the current training situation imposes relatively low demands",
+                "source_span_ids": [
+                  "s1",
+                  "s6"
+                ]
+              },
+              {
+                "relation_id": "r3",
+                "kind": "depends_on",
+                "arguments": [
+                  "later_learning_performance",
+                  "functional_task_demand",
+                  "demand_reducing_practice"
+                ],
+                "description": "the review-level synthesis favors demand reduction for learning when acquisition already imposes extremely high demands",
+                "source_span_ids": [
+                  "s1",
+                  "s3",
+                  "s4",
+                  "s5",
+                  "s6"
+                ]
+              },
+              {
+                "relation_id": "r4",
+                "kind": "depends_on",
+                "arguments": [
+                  "later_learning_performance",
+                  "experience_stage",
+                  "functional_task_demand"
+                ],
+                "description": "the effect of a practice condition may change across practice as functional task demands change",
+                "source_span_ids": [
+                  "s2",
+                  "s6"
+                ]
+              }
+            ]
+          }
+        },
+        "T": {
+          "status": "SUPPORTED",
+          "interpretation": "Frozen temporal indexing, history, future horizon and intervention-before-assessment order are explicit.",
+          "evidence": {
+            "temporal": {
+              "time_index": {
+                "state": "present",
+                "source_span_ids": [
+                  "s1",
+                  "s2",
+                  "s6"
+                ]
+              },
+              "history_window": {
+                "state": "present",
+                "source_span_ids": [
+                  "s2",
+                  "s6"
+                ]
+              },
+              "future_horizon": {
+                "state": "present",
+                "source_span_ids": [
+                  "s2",
+                  "s3",
+                  "s4",
+                  "s5"
+                ]
+              },
+              "recurrence": {
+                "state": "not_required"
+              },
+              "persistence": {
+                "state": "present",
+                "source_span_ids": [
+                  "s2",
+                  "s3",
+                  "s4",
+                  "s5"
+                ]
+              },
+              "ordering": [
+                {
+                  "before_coordinate_id": "basis.p1",
+                  "after_coordinate_id": "basis.p3",
+                  "source_span_ids": [
+                    "s3",
+                    "s6"
+                  ]
+                },
+                {
+                  "before_coordinate_id": "basis.p2",
+                  "after_coordinate_id": "basis.p3",
+                  "source_span_ids": [
+                    "s3",
+                    "s4",
+                    "s5"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "rho/O": {
+          "status": "SUPPORTED",
+          "interpretation": "Later learning performance is a frozen O coordinate and is read by the later assessment.",
+          "evidence": {
+            "nodes": [
+              {
+                "node_id": "later_learning_performance",
+                "claimir_role": "response_or_outcome",
+                "description": "performance on a later assessment used as evidence about what was learned during practice",
+                "source_span_ids": [
+                  "s2",
+                  "s3",
+                  "s4",
+                  "s5"
+                ],
+                "coordinate_id": "basis.o1",
+                "coordinate_required": true
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r5",
+                "kind": "maps_to",
+                "arguments": [
+                  "learning_assessment",
+                  "later_learning_performance"
+                ],
+                "description": "later retention, transfer, or test performance is used where available to assess learning rather than equating immediate acquisition performance with learning",
+                "source_span_ids": [
+                  "s2",
+                  "s3",
+                  "s4",
+                  "s5"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "derived_feature_candidates": [
+        {
+          "feature": "C-conditioned intervention regime",
+          "evidence_relation_ids": [
+            "r2",
+            "r3"
+          ],
+          "note": "Added-demand versus reduced-demand benefit is conditional on current functional demand; this is not recoded as scalar Q."
+        },
+        {
+          "feature": "persistence via carry/transport",
+          "evidence": {
+            "temporal_persistence": {
+              "state": "present",
+              "source_span_ids": [
+                "s2",
+                "s3",
+                "s4",
+                "s5"
+              ]
+            }
+          },
+          "note": "Persistence is supported, but no identity K is inferred across time fibers."
+        }
+      ],
+      "unmapped_residual": [],
+      "verdict": "FULL",
+      "notes": [
+        "Generic condition nodes functional_task_demand and experience_stage remain claim-context parameters on C/K rather than new grammar roles.",
+        "The stochastic adjudication mode is compatible with relational K/rho and is not strengthened to determinism."
+      ]
+    },
+    {
+      "claim_id": "SKL02.C1",
+      "grammar_roles_instantiated": [
+        "X",
+        "C",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "grammar_relation": "K transformation/dependence",
+          "frozen_evidence": [
+            {
+              "relation_id": "r2",
+              "kind": "changes",
+              "arguments": [
+                "sequence_combination_process",
+                "operation_sequence",
+                "combined_operation"
+              ],
+              "description": "successively used operations can be combined into a single executable structure that preserves the effect of the sequence while reducing the number of separate applications",
+              "source_span_ids": [
+                "s2",
+                "s3"
+              ]
+            },
+            {
+              "relation_id": "r3",
+              "kind": "changes",
+              "arguments": [
+                "fact_embedding_process",
+                "fact_encoded_information",
+                "task_bound_procedure"
+              ],
+              "description": "repeated use can create a task-bound executable structure in which products formerly obtained by retrieving factual information are embedded directly",
+              "source_span_ids": [
+                "s2",
+                "s3"
+              ]
+            },
+            {
+              "relation_id": "r4",
+              "kind": "changes",
+              "arguments": [
+                "fact_embedding_process",
+                "working_memory_demand"
+              ],
+              "description": "embedding formerly retrieved factual products reduces the need to retrieve and maintain that information during execution",
+              "source_span_ids": [
+                "s2"
+              ]
+            },
+            {
+              "relation_id": "r6",
+              "kind": "changes",
+              "arguments": [
+                "scope_generalization_process",
+                "task_bound_procedure"
+              ],
+              "description": "comparison across learned structures can broaden appropriate applicability by retaining common structure and dropping unnecessary specificity",
+              "source_span_ids": [
+                "s4"
+              ]
+            },
+            {
+              "relation_id": "r7",
+              "kind": "changes",
+              "arguments": [
+                "scope_discrimination_process",
+                "task_bound_procedure"
+              ],
+              "description": "experience with correct and incorrect applications can narrow overly broad applicability by adding discriminating conditions or actions",
+              "source_span_ids": [
+                "s4",
+                "s5"
+              ]
+            },
+            {
+              "relation_id": "r8",
+              "kind": "changes",
+              "arguments": [
+                "strength_adjustment_process",
+                "task_bound_procedure"
+              ],
+              "description": "successful application and feedback alter relative strength, affecting which competing executable structures are selected and how efficiently they apply",
+              "source_span_ids": [
+                "s5",
+                "s6"
+              ]
+            },
+            {
+              "relation_id": "r9",
+              "kind": "depends_on",
+              "arguments": [
+                "performance_time",
+                "practice_exposure",
+                "sequence_combination_process",
+                "scope_generalization_process",
+                "scope_discrimination_process",
+                "strength_adjustment_process"
+              ],
+              "description": "practice-related speedup is attributed to both reductions in the expected number of operations and faster application of individual operations; under the source model's stated assumptions the resulting decrease in processing time is approximately power-shaped",
+              "source_span_ids": [
+                "s6"
+              ]
+            }
+          ]
+        },
+        {
+          "grammar_relation": "rho/O trace from configuration to behavior",
+          "frozen_evidence": [
+            {
+              "relation_id": "r1",
+              "kind": "maps_to",
+              "arguments": [
+                "fact_encoded_information",
+                "general_interpretive_procedure",
+                "early_task_behavior"
+              ],
+              "description": "early performance is generated by general procedures interpreting fact-encoded task information",
+              "source_span_ids": [
+                "s1",
+                "s7"
+              ]
+            }
+          ]
+        },
+        {
+          "grammar_relation": "T succession",
+          "frozen_evidence": [
+            {
+              "relation_id": "r10",
+              "kind": "precedes",
+              "arguments": [
+                "early_task_behavior",
+                "task_bound_procedure"
+              ],
+              "description": "the source proposes a typical component-level progression from fact-mediated performance toward direct executable performance, while explicitly treating the stage description as an approximation rather than an exclusive whole-task partition",
+              "source_span_ids": [
+                "s1",
+                "s7"
+              ]
+            }
+          ]
+        },
+        {
+          "grammar_relation": "X/T co-presence-carry compatibility",
+          "frozen_evidence": [
+            {
+              "relation_id": "r5",
+              "kind": "other",
+              "arguments": [
+                "fact_encoded_information",
+                "task_bound_procedure"
+              ],
+              "description": "formation of a direct executable structure does not require loss of the corresponding fact-encoded information; both may remain available",
+              "source_span_ids": [
+                "s2"
+              ]
+            }
+          ]
+        }
+      ],
+      "mappings": {
+        "Pi": {
+          "status": "ABSENT",
+          "interpretation": "No frozen partition_Pi control is required.",
+          "evidence": {
+            "partition_Pi": {
+              "state": "not_required"
+            }
+          }
+        },
+        "X": {
+          "status": "SUPPORTED",
+          "interpretation": "The frozen S coordinates are configurations or configuration components.",
+          "evidence": {
+            "nodes": [
+              {
+                "node_id": "fact_encoded_information",
+                "claimir_role": "state_or_structure",
+                "description": "domain instructions and problem information represented as facts that must initially be interpreted to guide behavior",
+                "source_span_ids": [
+                  "s1",
+                  "s7"
+                ],
+                "coordinate_id": "basis.s1",
+                "coordinate_required": true
+              },
+              {
+                "node_id": "general_interpretive_procedure",
+                "claimir_role": "state_or_structure",
+                "description": "pre-existing general procedures that operate on fact-encoded information to generate early task behavior",
+                "source_span_ids": [
+                  "s1",
+                  "s7"
+                ],
+                "coordinate_id": "basis.s2",
+                "coordinate_required": true
+              },
+              {
+                "node_id": "operation_sequence",
+                "claimir_role": "state_or_structure",
+                "description": "a sequence of executable operations used while solving a task",
+                "source_span_ids": [
+                  "s2"
+                ],
+                "coordinate_id": "basis.s3",
+                "coordinate_required": true
+              },
+              {
+                "node_id": "combined_operation",
+                "claimir_role": "state_or_structure",
+                "description": "single executable structure that embodies a previously sequential set of operations and can reduce the number of applications needed for a task",
+                "source_span_ids": [
+                  "s2",
+                  "s3"
+                ],
+                "coordinate_id": "basis.s4",
+                "coordinate_required": true
+              },
+              {
+                "node_id": "task_bound_procedure",
+                "claimir_role": "state_or_structure",
+                "description": "direct executable structure specialized enough to perform a practiced task without the same fact-retrieval requirements as early interpreted performance",
+                "source_span_ids": [
+                  "s1",
+                  "s2",
+                  "s3",
+                  "s7"
+                ],
+                "coordinate_id": "basis.s5",
+                "coordinate_required": true
+              },
+              {
+                "node_id": "working_memory_demand",
+                "claimir_role": "state_or_structure",
+                "description": "amount of task-relevant information that must be retrieved and kept active during execution",
+                "source_span_ids": [
+                  "s2"
+                ],
+                "coordinate_id": "basis.s6",
+                "coordinate_required": true
+              }
+            ]
+          }
+        },
+        "C": {
+          "status": "SUPPORTED",
+          "interpretation": "Working-memory demand is explicitly adjudicated as resource_C and r4 records a transformation that reduces that demand.",
+          "evidence": {
+            "resource_C": {
+              "state": "present",
+              "claim_node_ids": [
+                "working_memory_demand"
+              ],
+              "provenance_kind": "source_declared",
+              "fixed_before_phi": true
+            },
+            "nodes": [
+              {
+                "node_id": "working_memory_demand",
+                "claimir_role": "state_or_structure",
+                "description": "amount of task-relevant information that must be retrieved and kept active during execution",
+                "source_span_ids": [
+                  "s2"
+                ],
+                "coordinate_id": "basis.s6",
+                "coordinate_required": true
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r4",
+                "kind": "changes",
+                "arguments": [
+                  "fact_embedding_process",
+                  "working_memory_demand"
+                ],
+                "description": "embedding formerly retrieved factual products reduces the need to retrieve and maintain that information during execution",
+                "source_span_ids": [
+                  "s2"
+                ]
+              }
+            ]
+          }
+        },
+        "Q": {
+          "status": "ABSENT",
+          "interpretation": "No frozen criterion_Q control is required.",
+          "evidence": {
+            "criterion_Q": {
+              "state": "not_required"
+            }
+          }
+        },
+        "P_in": {
+          "status": "ABSENT",
+          "interpretation": "No ClaimIR intervention node exists. Frozen old-P coordinates are internal learning processes, not boundary/interface writes; they reverse-project to K instead of being forced into P_in.",
+          "evidence": {
+            "claimir_intervention_count": 0,
+            "frozen_probe_P_control": {
+              "state": "present",
+              "claim_node_ids": [
+                "sequence_combination_process",
+                "fact_embedding_process",
+                "scope_generalization_process",
+                "scope_discrimination_process",
+                "strength_adjustment_process"
+              ],
+              "provenance_kind": "source_declared",
+              "fixed_before_phi": true
+            },
+            "old_P_nodes": [
+              {
+                "node_id": "sequence_combination_process",
+                "claimir_role": "other",
+                "description": "learning process that combines successively applied operations into a single operation with the effect of the sequence",
+                "source_span_ids": [
+                  "s2",
+                  "s3"
+                ],
+                "coordinate_id": "basis.p1",
+                "coordinate_required": true
+              },
+              {
+                "node_id": "fact_embedding_process",
+                "claimir_role": "other",
+                "description": "learning process that embeds the useful products of factual retrieval into executable structures so the factual information need not be retrieved and maintained during each application",
+                "source_span_ids": [
+                  "s2",
+                  "s3"
+                ],
+                "coordinate_id": "basis.p2",
+                "coordinate_required": true
+              },
+              {
+                "node_id": "scope_generalization_process",
+                "claimir_role": "other",
+                "description": "learning process that compares multiple learned structures, extracts common structure, and broadens their range of appropriate application",
+                "source_span_ids": [
+                  "s4"
+                ],
+                "coordinate_id": "basis.p3",
+                "coordinate_required": true
+              },
+              {
+                "node_id": "scope_discrimination_process",
+                "claimir_role": "other",
+                "description": "learning process that uses correct and incorrect applications and feedback to restrict structures that apply too broadly",
+                "source_span_ids": [
+                  "s4",
+                  "s5"
+                ],
+                "coordinate_id": "basis.p4",
+                "coordinate_required": true
+              },
+              {
+                "node_id": "strength_adjustment_process",
+                "claimir_role": "other",
+                "description": "learning process that changes the relative strength of executable structures as a function of successful application and feedback",
+                "source_span_ids": [
+                  "s5",
+                  "s6"
+                ],
+                "coordinate_id": "basis.p5",
+                "coordinate_required": true
+              }
+            ]
+          }
+        },
+        "P_out": {
+          "status": "ABSENT",
+          "interpretation": "No ClaimIR probe node exists; behavior/time are retained O traces without an explicit query operation.",
+          "evidence": {
+            "claimir_probe_count": 0,
+            "frozen_probe_P_control": {
+              "state": "present",
+              "claim_node_ids": [
+                "sequence_combination_process",
+                "fact_embedding_process",
+                "scope_generalization_process",
+                "scope_discrimination_process",
+                "strength_adjustment_process"
+              ],
+              "provenance_kind": "source_declared",
+              "fixed_before_phi": true
+            }
+          }
+        },
+        "K": {
+          "status": "SUPPORTED",
+          "interpretation": "Internal compilation, embedding, generalization, discrimination, strengthening and performance-time dependence are typed transformations/dependencies. They are not assumed functional.",
+          "evidence": {
+            "relations": [
+              {
+                "relation_id": "r2",
+                "kind": "changes",
+                "arguments": [
+                  "sequence_combination_process",
+                  "operation_sequence",
+                  "combined_operation"
+                ],
+                "description": "successively used operations can be combined into a single executable structure that preserves the effect of the sequence while reducing the number of separate applications",
+                "source_span_ids": [
+                  "s2",
+                  "s3"
+                ]
+              },
+              {
+                "relation_id": "r3",
+                "kind": "changes",
+                "arguments": [
+                  "fact_embedding_process",
+                  "fact_encoded_information",
+                  "task_bound_procedure"
+                ],
+                "description": "repeated use can create a task-bound executable structure in which products formerly obtained by retrieving factual information are embedded directly",
+                "source_span_ids": [
+                  "s2",
+                  "s3"
+                ]
+              },
+              {
+                "relation_id": "r4",
+                "kind": "changes",
+                "arguments": [
+                  "fact_embedding_process",
+                  "working_memory_demand"
+                ],
+                "description": "embedding formerly retrieved factual products reduces the need to retrieve and maintain that information during execution",
+                "source_span_ids": [
+                  "s2"
+                ]
+              },
+              {
+                "relation_id": "r6",
+                "kind": "changes",
+                "arguments": [
+                  "scope_generalization_process",
+                  "task_bound_procedure"
+                ],
+                "description": "comparison across learned structures can broaden appropriate applicability by retaining common structure and dropping unnecessary specificity",
+                "source_span_ids": [
+                  "s4"
+                ]
+              },
+              {
+                "relation_id": "r7",
+                "kind": "changes",
+                "arguments": [
+                  "scope_discrimination_process",
+                  "task_bound_procedure"
+                ],
+                "description": "experience with correct and incorrect applications can narrow overly broad applicability by adding discriminating conditions or actions",
+                "source_span_ids": [
+                  "s4",
+                  "s5"
+                ]
+              },
+              {
+                "relation_id": "r8",
+                "kind": "changes",
+                "arguments": [
+                  "strength_adjustment_process",
+                  "task_bound_procedure"
+                ],
+                "description": "successful application and feedback alter relative strength, affecting which competing executable structures are selected and how efficiently they apply",
+                "source_span_ids": [
+                  "s5",
+                  "s6"
+                ]
+              },
+              {
+                "relation_id": "r9",
+                "kind": "depends_on",
+                "arguments": [
+                  "performance_time",
+                  "practice_exposure",
+                  "sequence_combination_process",
+                  "scope_generalization_process",
+                  "scope_discrimination_process",
+                  "strength_adjustment_process"
+                ],
+                "description": "practice-related speedup is attributed to both reductions in the expected number of operations and faster application of individual operations; under the source model's stated assumptions the resulting decrease in processing time is approximately power-shaped",
+                "source_span_ids": [
+                  "s6"
+                ]
+              }
+            ]
+          }
+        },
+        "T": {
+          "status": "SUPPORTED",
+          "interpretation": "Progression, recurrence, history, future horizon and explicit early-before-direct ordering are frozen.",
+          "evidence": {
+            "temporal": {
+              "time_index": {
+                "state": "present",
+                "source_span_ids": [
+                  "s1",
+                  "s2",
+                  "s3",
+                  "s4",
+                  "s5",
+                  "s6",
+                  "s7"
+                ]
+              },
+              "history_window": {
+                "state": "present",
+                "source_span_ids": [
+                  "s2",
+                  "s3",
+                  "s4",
+                  "s5",
+                  "s6"
+                ]
+              },
+              "future_horizon": {
+                "state": "present",
+                "source_span_ids": [
+                  "s1",
+                  "s7"
+                ]
+              },
+              "recurrence": {
+                "state": "present",
+                "source_span_ids": [
+                  "s4",
+                  "s5",
+                  "s6",
+                  "s7"
+                ]
+              },
+              "persistence": {
+                "state": "present",
+                "source_span_ids": [
+                  "s2"
+                ]
+              },
+              "ordering": [
+                {
+                  "before_coordinate_id": "basis.o1",
+                  "after_coordinate_id": "basis.s5",
+                  "source_span_ids": [
+                    "s1",
+                    "s7"
+                  ]
+                }
+              ]
+            },
+            "relations": [
+              {
+                "relation_id": "r10",
+                "kind": "precedes",
+                "arguments": [
+                  "early_task_behavior",
+                  "task_bound_procedure"
+                ],
+                "description": "the source proposes a typical component-level progression from fact-mediated performance toward direct executable performance, while explicitly treating the stage description as an approximation rather than an exclusive whole-task partition",
+                "source_span_ids": [
+                  "s1",
+                  "s7"
+                ]
+              }
+            ]
+          }
+        },
+        "rho/O": {
+          "status": "SUPPORTED",
+          "interpretation": "Early task behavior and performance time are frozen O coordinates. r1 supplies a configuration-to-behavior trace without an explicit P_out.",
+          "evidence": {
+            "nodes": [
+              {
+                "node_id": "early_task_behavior",
+                "claimir_role": "response_or_outcome",
+                "description": "task behavior generated by interpreting fact-encoded information with general procedures",
+                "source_span_ids": [
+                  "s1",
+                  "s7"
+                ],
+                "coordinate_id": "basis.o1",
+                "coordinate_required": true
+              },
+              {
+                "node_id": "performance_time",
+                "claimir_role": "response_or_outcome",
+                "description": "time required to execute the practiced task or its component operations",
+                "source_span_ids": [
+                  "s2",
+                  "s6"
+                ],
+                "coordinate_id": "basis.o2",
+                "coordinate_required": true
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r1",
+                "kind": "maps_to",
+                "arguments": [
+                  "fact_encoded_information",
+                  "general_interpretive_procedure",
+                  "early_task_behavior"
+                ],
+                "description": "early performance is generated by general procedures interpreting fact-encoded task information",
+                "source_span_ids": [
+                  "s1",
+                  "s7"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "derived_feature_candidates": [
+        {
+          "feature": "old-P to K compression",
+          "evidence_node_ids": [
+            "sequence_combination_process",
+            "fact_embedding_process",
+            "scope_generalization_process",
+            "scope_discrimination_process",
+            "strength_adjustment_process"
+          ],
+          "note": "Frozen B_P2 P membership does not imply Grammar-v0 interface P; the ClaimIR change topology supports K."
+        },
+        {
+          "feature": "persistence via carry/co-presence",
+          "evidence_relation_ids": [
+            "r5"
+          ],
+          "evidence_temporal": {
+            "state": "present",
+            "source_span_ids": [
+              "s2"
+            ]
+          },
+          "note": "Fact-encoded information may remain while a task-bound procedure appears. This supports co-presence/carry, not K = identity."
+        },
+        {
+          "feature": "quantitative K/T/O refinement",
+          "evidence_relation_ids": [
+            "r9"
+          ],
+          "note": "Approximate power-shaped speedup is a claim-local quantitative refinement of the relational grammar, not a new primitive."
+        }
+      ],
+      "unmapped_residual": [],
+      "verdict": "FULL",
+      "notes": [
+        "This claim is the strongest SKL witness that K must be usable without scientifically instantiating P_in/P_out.",
+        "If the Lean carrier uses a technical singleton Pin/Pout to instantiate the ambient structure, that plumbing must not be counted as source-supported P."
+      ]
+    },
+    {
+      "claim_id": "SKL03.C1",
+      "grammar_roles_instantiated": [
+        "X",
+        "Q",
+        "P_in",
+        "P_out",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "grammar_relation": "P_out/rho estimate of X and O",
+          "frozen_evidence": [
+            {
+              "relation_id": "r1",
+              "kind": "maps_to",
+              "arguments": [
+                "pre_post_speed_sweep",
+                "joint_speed_success_relation",
+                "global_relation_shift"
+              ],
+              "description": "the fixed-speed pre/post sweep estimates the joint performance relation and the change in success across the sampled difficulty range",
+              "source_span_ids": [
+                "s2",
+                "s6"
+              ]
+            }
+          ]
+        },
+        {
+          "grammar_relation": "K transformation/dependence",
+          "frozen_evidence": [
+            {
+              "relation_id": "r2",
+              "kind": "changes",
+              "arguments": [
+                "restricted_range_practice",
+                "global_relation_shift"
+              ],
+              "description": "restricted-range practice is followed by a positive shift across both practiced and unpracticed test speeds, whereas test-retest without practice does not show appreciable improvement",
+              "source_span_ids": [
+                "s2",
+                "s6"
+              ]
+            },
+            {
+              "relation_id": "r4",
+              "kind": "changes",
+              "arguments": [
+                "restricted_range_practice",
+                "trajectory_variability"
+              ],
+              "description": "trial-to-trial task-relevant trajectory variability is substantially lower after practice at matched test speeds",
+              "source_span_ids": [
+                "s3",
+                "s7"
+              ]
+            },
+            {
+              "relation_id": "r5",
+              "kind": "changes",
+              "arguments": [
+                "restricted_range_practice",
+                "mean_trajectory"
+              ],
+              "description": "mean trajectory changes after practice, but these changes are smaller than the reduction in variability",
+              "source_span_ids": [
+                "s3",
+                "s7"
+              ]
+            },
+            {
+              "relation_id": "r6",
+              "kind": "changes",
+              "arguments": [
+                "restricted_range_practice",
+                "trajectory_irregularity"
+              ],
+              "description": "trajectory irregularity decreases after practice across test speeds",
+              "source_span_ids": [
+                "s5"
+              ]
+            },
+            {
+              "relation_id": "r7",
+              "kind": "changes",
+              "arguments": [
+                "restricted_range_practice",
+                "early_boundary_risk_rate",
+                "successful_online_correction_rate"
+              ],
+              "description": "practice reduces early critical-zone entries and increases successful recovery from such entries",
+              "source_span_ids": [
+                "s4"
+              ]
+            },
+            {
+              "relation_id": "r10",
+              "kind": "depends_on",
+              "arguments": [
+                "submovement_structure",
+                "imposed_test_speed"
+              ],
+              "description": "submovement number and amplitude vary strongly with imposed movement time, while duration changes only negligibly across the tested range",
+              "source_span_ids": [
+                "s5"
+              ]
+            }
+          ]
+        },
+        {
+          "grammar_relation": "Q satisfaction",
+          "frozen_evidence": [
+            {
+              "relation_id": "r3",
+              "kind": "satisfies",
+              "arguments": [
+                "global_relation_shift",
+                "performance_shift_criterion"
+              ],
+              "description": "a positive shift of the joint relation relative to baseline satisfies the source's operational task-level improvement criterion",
+              "source_span_ids": [
+                "s1",
+                "s6"
+              ]
+            }
+          ]
+        }
+      ],
+      "mappings": {
+        "Pi": {
+          "status": "ABSENT",
+          "interpretation": "No frozen partition_Pi control is required.",
+          "evidence": {
+            "partition_Pi": {
+              "state": "not_required"
+            }
+          }
+        },
+        "X": {
+          "status": "SUPPORTED",
+          "interpretation": "The frozen S coordinates are the joint speed-success relation and submovement structure.",
+          "evidence": {
+            "nodes": [
+              {
+                "node_id": "joint_speed_success_relation",
+                "claimir_role": "state_or_structure",
+                "description": "empirical function relating imposed movement time to probability of completing the trajectory within the channel",
+                "source_span_ids": [
+                  "s1",
+                  "s2",
+                  "s6"
+                ],
+                "coordinate_id": "basis.s1",
+                "coordinate_required": true
+              },
+              {
+                "node_id": "submovement_structure",
+                "claimir_role": "state_or_structure",
+                "description": "movement segmentation indexed by jerk-defined submovement number, duration, and amplitude",
+                "source_span_ids": [
+                  "s5",
+                  "s7"
+                ],
+                "coordinate_id": "basis.s2",
+                "coordinate_required": true
+              }
+            ]
+          }
+        },
+        "C": {
+          "status": "ABSENT",
+          "interpretation": "No frozen resource_C control is required; imposed speed is a condition, not promoted to realizability C.",
+          "evidence": {
+            "resource_C": {
+              "state": "not_required"
+            }
+          }
+        },
+        "Q": {
+          "status": "SUPPORTED",
+          "interpretation": "The performance-shift criterion explicitly orients the baseline-to-post relation; it is a criterion relation, not assumed scalar reward.",
+          "evidence": {
+            "criterion_Q": {
+              "state": "present",
+              "claim_node_ids": [
+                "performance_shift_criterion"
+              ],
+              "provenance_kind": "source_declared",
+              "fixed_before_phi": true
+            },
+            "nodes": [
+              {
+                "node_id": "performance_shift_criterion",
+                "claimir_role": "criterion",
+                "description": "task-level improvement is inferred from a training-related shift of the joint speed-success relation relative to baseline rather than from moving to a different operating point on an unchanged relation",
+                "source_span_ids": [
+                  "s1",
+                  "s6"
+                ],
+                "coordinate_id": "basis.q1",
+                "coordinate_required": true
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r3",
+                "kind": "satisfies",
+                "arguments": [
+                  "global_relation_shift",
+                  "performance_shift_criterion"
+                ],
+                "description": "a positive shift of the joint relation relative to baseline satisfies the source's operational task-level improvement criterion",
+                "source_span_ids": [
+                  "s1",
+                  "s6"
+                ]
+              }
+            ],
+            "comparison_criterion": {
+              "state": "present",
+              "source_span_ids": [
+                "s1",
+                "s6"
+              ]
+            }
+          }
+        },
+        "P_in": {
+          "status": "SUPPORTED",
+          "interpretation": "Restricted-range practice is an explicit intervention/write-side operation.",
+          "evidence": {
+            "nodes": [
+              {
+                "node_id": "restricted_range_practice",
+                "claimir_role": "intervention",
+                "description": "three days of rewarded practice restricted to one designated movement-time range",
+                "source_span_ids": [
+                  "s2",
+                  "s6"
+                ],
+                "coordinate_id": "basis.p1",
+                "coordinate_required": true
+              }
+            ]
+          }
+        },
+        "P_out": {
+          "status": "SUPPORTED",
+          "interpretation": "The pre/post speed sweep is an explicit probe/query of the relation and its change.",
+          "evidence": {
+            "nodes": [
+              {
+                "node_id": "pre_post_speed_sweep",
+                "claimir_role": "probe",
+                "description": "day-1 and day-5 testing at five imposed movement-time ranges used to estimate the joint performance relation and its change",
+                "source_span_ids": [
+                  "s2",
+                  "s3",
+                  "s6"
+                ],
+                "coordinate_id": "basis.p2",
+                "coordinate_required": true
+              }
+            ]
+          }
+        },
+        "K": {
+          "status": "SUPPORTED",
+          "interpretation": "Practice-related changes and speed-conditioned dependence support relational K.",
+          "evidence": {
+            "relations": [
+              {
+                "relation_id": "r2",
+                "kind": "changes",
+                "arguments": [
+                  "restricted_range_practice",
+                  "global_relation_shift"
+                ],
+                "description": "restricted-range practice is followed by a positive shift across both practiced and unpracticed test speeds, whereas test-retest without practice does not show appreciable improvement",
+                "source_span_ids": [
+                  "s2",
+                  "s6"
+                ]
+              },
+              {
+                "relation_id": "r4",
+                "kind": "changes",
+                "arguments": [
+                  "restricted_range_practice",
+                  "trajectory_variability"
+                ],
+                "description": "trial-to-trial task-relevant trajectory variability is substantially lower after practice at matched test speeds",
+                "source_span_ids": [
+                  "s3",
+                  "s7"
+                ]
+              },
+              {
+                "relation_id": "r5",
+                "kind": "changes",
+                "arguments": [
+                  "restricted_range_practice",
+                  "mean_trajectory"
+                ],
+                "description": "mean trajectory changes after practice, but these changes are smaller than the reduction in variability",
+                "source_span_ids": [
+                  "s3",
+                  "s7"
+                ]
+              },
+              {
+                "relation_id": "r6",
+                "kind": "changes",
+                "arguments": [
+                  "restricted_range_practice",
+                  "trajectory_irregularity"
+                ],
+                "description": "trajectory irregularity decreases after practice across test speeds",
+                "source_span_ids": [
+                  "s5"
+                ]
+              },
+              {
+                "relation_id": "r7",
+                "kind": "changes",
+                "arguments": [
+                  "restricted_range_practice",
+                  "early_boundary_risk_rate",
+                  "successful_online_correction_rate"
+                ],
+                "description": "practice reduces early critical-zone entries and increases successful recovery from such entries",
+                "source_span_ids": [
+                  "s4"
+                ]
+              },
+              {
+                "relation_id": "r10",
+                "kind": "depends_on",
+                "arguments": [
+                  "submovement_structure",
+                  "imposed_test_speed"
+                ],
+                "description": "submovement number and amplitude vary strongly with imposed movement time, while duration changes only negligibly across the tested range",
+                "source_span_ids": [
+                  "s5"
+                ]
+              }
+            ]
+          }
+        },
+        "T": {
+          "status": "SUPPORTED",
+          "interpretation": "Pre/post indexing, history, future horizon, recurrence and practice-before-shift ordering are frozen.",
+          "evidence": {
+            "temporal": {
+              "time_index": {
+                "state": "present",
+                "source_span_ids": [
+                  "s2",
+                  "s3",
+                  "s4",
+                  "s5",
+                  "s6",
+                  "s7"
+                ]
+              },
+              "history_window": {
+                "state": "present",
+                "source_span_ids": [
+                  "s2",
+                  "s6"
+                ]
+              },
+              "future_horizon": {
+                "state": "present",
+                "source_span_ids": [
+                  "s2",
+                  "s6"
+                ]
+              },
+              "recurrence": {
+                "state": "present",
+                "source_span_ids": [
+                  "s2",
+                  "s6"
+                ]
+              },
+              "persistence": {
+                "state": "not_required"
+              },
+              "ordering": [
+                {
+                  "before_coordinate_id": "basis.p1",
+                  "after_coordinate_id": "basis.o1",
+                  "source_span_ids": [
+                    "s2",
+                    "s6"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "rho/O": {
+          "status": "SUPPORTED",
+          "interpretation": "Multiple task and kinematic outcomes are frozen O coordinates; r1 binds the P_out sweep to relation/shift readout.",
+          "evidence": {
+            "nodes": [
+              {
+                "node_id": "global_relation_shift",
+                "claimir_role": "response_or_outcome",
+                "description": "positive pre/post change in success across the sampled movement-time ranges, including ranges not experienced during practice",
+                "source_span_ids": [
+                  "s2",
+                  "s6"
+                ],
+                "coordinate_id": "basis.o1",
+                "coordinate_required": true
+              },
+              {
+                "node_id": "trajectory_variability",
+                "claimir_role": "response_or_outcome",
+                "description": "trial-to-trial variance of the task-relevant radial trajectory at matched test speeds",
+                "source_span_ids": [
+                  "s3",
+                  "s7"
+                ],
+                "coordinate_id": "basis.o2",
+                "coordinate_required": true
+              },
+              {
+                "node_id": "mean_trajectory",
+                "claimir_role": "response_or_outcome",
+                "description": "average radial trajectory at each matched test speed",
+                "source_span_ids": [
+                  "s3",
+                  "s7"
+                ],
+                "coordinate_id": "basis.o3",
+                "coordinate_required": true
+              },
+              {
+                "node_id": "trajectory_irregularity",
+                "claimir_role": "response_or_outcome",
+                "description": "integrated squared jerk of the trajectory, with lower values corresponding to smoother execution",
+                "source_span_ids": [
+                  "s5"
+                ],
+                "coordinate_id": "basis.o4",
+                "coordinate_required": true
+              },
+              {
+                "node_id": "early_boundary_risk_rate",
+                "claimir_role": "response_or_outcome",
+                "description": "proportion of movements entering the source-defined critical zone early in the trajectory",
+                "source_span_ids": [
+                  "s4"
+                ],
+                "coordinate_id": "basis.o5",
+                "coordinate_required": true
+              },
+              {
+                "node_id": "successful_online_correction_rate",
+                "claimir_role": "response_or_outcome",
+                "description": "proportion of critical-zone movements that subsequently remain inside the channel",
+                "source_span_ids": [
+                  "s4",
+                  "s7"
+                ],
+                "coordinate_id": "basis.o6",
+                "coordinate_required": true
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r1",
+                "kind": "maps_to",
+                "arguments": [
+                  "pre_post_speed_sweep",
+                  "joint_speed_success_relation",
+                  "global_relation_shift"
+                ],
+                "description": "the fixed-speed pre/post sweep estimates the joint performance relation and the change in success across the sampled difficulty range",
+                "source_span_ids": [
+                  "s2",
+                  "s6"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "derived_feature_candidates": [
+        {
+          "feature": "non-scalar Q from relation shift",
+          "evidence_relation_ids": [
+            "r3"
+          ],
+          "note": "Q is induced by a baseline-relative improvement criterion rather than reward."
+        },
+        {
+          "feature": "selective invariance candidate",
+          "evidence_relation_ids": [
+            "r9"
+          ],
+          "note": "Submovement metrics show no significant testing-day effect, but frozen persistence is not required; do not infer identity-like K."
+        }
+      ],
+      "unmapped_residual": [
+        {
+          "type": "epistemic_non_entailment",
+          "reason": "Grammar v0 has no first-class marker that observed correction-related changes do not establish feedforward/feedback causal mechanisms.",
+          "frozen_evidence": [
+            {
+              "relation_id": "r8",
+              "kind": "other",
+              "arguments": [
+                "early_boundary_risk_rate",
+                "successful_online_correction_rate"
+              ],
+              "description": "the observed changes are consistent with improved planning and online correction, but the source explicitly states that the measurements do not establish cause-effect control mechanisms",
+              "source_span_ids": [
+                "s4"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "explicit_null_or_invariance",
+          "reason": "The no-significant-testing-day-effect statement is negative relational information, not a positive K/T edge.",
+          "frozen_evidence": [
+            {
+              "relation_id": "r9",
+              "kind": "other",
+              "arguments": [
+                "restricted_range_practice",
+                "submovement_structure"
+              ],
+              "description": "jerk-defined submovement number, duration, and amplitude show no significant testing-day effect despite improvement in task-level performance and trajectory smoothness",
+              "source_span_ids": [
+                "s5",
+                "s7"
+              ]
+            }
+          ]
+        }
+      ],
+      "verdict": "PARTIAL",
+      "notes": [
+        "The residuals constrain interpretation of K; they do not require a new top-level cognitive role."
+      ]
+    },
+    {
+      "claim_id": "SKL04.C1",
+      "grammar_roles_instantiated": [
+        "X",
+        "C",
+        "P_in",
+        "P_out",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "grammar_relation": "C/K capacity manipulation and condition dependence",
+          "frozen_evidence": [
+            {
+              "relation_id": "r1",
+              "kind": "differs",
+              "arguments": [
+                "sequence_order",
+                "sequence_specific_latency_advantage"
+              ],
+              "description": "when the visual response task is performed alone, fixed-order and random-order response times diverge early and the fixed-order condition shows a much larger practice-related reduction",
+              "source_span_ids": [
+                "s2"
+              ]
+            },
+            {
+              "relation_id": "r2",
+              "kind": "changes",
+              "arguments": [
+                "concurrent_tone_count",
+                "focal_processing_availability"
+              ],
+              "description": "performing the tone-counting task concurrently is used to reduce the processing capacity available for the visual response task",
+              "source_span_ids": [
+                "s1",
+                "s3",
+                "s7"
+              ]
+            },
+            {
+              "relation_id": "r3",
+              "kind": "differs",
+              "arguments": [
+                "concurrent_tone_count",
+                "sequence_order",
+                "sequence_specific_latency_advantage"
+              ],
+              "description": "under concurrent-task exposure, fixed-order and random-order groups do not significantly diverge in response latency across the four exposure blocks, unlike the rapid divergence observed when the task is performed alone",
+              "source_span_ids": [
+                "s3",
+                "s7"
+              ]
+            },
+            {
+              "relation_id": "r4",
+              "kind": "changes",
+              "arguments": [
+                "concurrent_tone_count",
+                "generic_dual_task_practice_gain"
+              ],
+              "description": "response latency nevertheless decreases with practice in both concurrent fixed-order and concurrent random-order groups, so generic improvement in handling the combined tasks is distinguished from fixed-order acquisition",
+              "source_span_ids": [
+                "s3",
+                "s4",
+                "s7"
+              ]
+            },
+            {
+              "relation_id": "r9",
+              "kind": "changes",
+              "arguments": [
+                "random_order_transfer",
+                "sequence_specific_latency_advantage"
+              ],
+              "description": "after four fixed-order blocks, replacing the order with random locations produces a response-time increase in both the Korsakoff and healthy older groups, providing performance evidence for acquisition of the specific order",
+              "source_span_ids": [
+                "s5"
+              ]
+            },
+            {
+              "relation_id": "r14",
+              "kind": "depends_on",
+              "arguments": [
+                "sequence_specific_latency_advantage",
+                "focal_processing_availability"
+              ],
+              "description": "acquisition of the new fixed-order associations is strongly reduced when processing capacity is divided across the two concurrent tasks, whereas noticing the existence of the order is not required for the performance benefit itself",
+              "source_span_ids": [
+                "s3",
+                "s4",
+                "s7"
+              ]
+            }
+          ]
+        },
+        {
+          "grammar_relation": "P_out/rho multi-probe readouts",
+          "frozen_evidence": [
+            {
+              "relation_id": "r5",
+              "kind": "maps_to",
+              "arguments": [
+                "latency_comparison_probe",
+                "sequence_specific_latency_advantage"
+              ],
+              "description": "fixed-order versus random-order latency comparison provides a performance measure of order-specific benefit rather than treating any reduction in raw latency as evidence of order acquisition",
+              "source_span_ids": [
+                "s2",
+                "s3"
+              ]
+            },
+            {
+              "relation_id": "r6",
+              "kind": "maps_to",
+              "arguments": [
+                "generate_prediction_probe",
+                "generate_prediction_accuracy"
+              ],
+              "description": "the post-exposure prediction task measures usable knowledge of the next location; prior single-task fixed-order exposure yields a larger initial advantage than prior concurrent fixed-order exposure",
+              "source_span_ids": [
+                "s3"
+              ]
+            },
+            {
+              "relation_id": "r7",
+              "kind": "maps_to",
+              "arguments": [
+                "post_dual_transfer_probe",
+                "immediate_transfer_advantage",
+                "relearning_savings"
+              ],
+              "description": "removing the concurrent task tests both immediate benefit from prior fixed-order exposure and whether the fixed order is reacquired faster than by previously unexposed comparison groups",
+              "source_span_ids": [
+                "s4"
+              ]
+            },
+            {
+              "relation_id": "r10",
+              "kind": "maps_to",
+              "arguments": [
+                "serial_position_probe",
+                "serial_position_profile"
+              ],
+              "description": "baseline-corrected serial-position response times reveal acquisition across much of the fixed order and a changing chunk-like profile with practice",
+              "source_span_ids": [
+                "s5"
+              ]
+            },
+            {
+              "relation_id": "r12",
+              "kind": "maps_to",
+              "arguments": [
+                "pattern_report_probe",
+                "reported_pattern_awareness"
+              ],
+              "description": "spontaneous and prompted reports separately measure whether participants noticed the repeating order",
+              "source_span_ids": [
+                "s2",
+                "s3",
+                "s6"
+              ]
+            }
+          ]
+        },
+        {
+          "grammar_relation": "O-trace distinction",
+          "frozen_evidence": [
+            {
+              "relation_id": "r13",
+              "kind": "distinguishes",
+              "arguments": [
+                "sequence_specific_latency_advantage",
+                "reported_pattern_awareness"
+              ],
+              "description": "performance evidence for acquisition can occur without a report that the repeating order was noticed, as shown most clearly by the Korsakoff group",
+              "source_span_ids": [
+                "s5",
+                "s6",
+                "s7"
+              ]
+            }
+          ]
+        }
+      ],
+      "mappings": {
+        "Pi": {
+          "status": "ABSENT",
+          "interpretation": "No frozen partition_Pi control is required.",
+          "evidence": {
+            "partition_Pi": {
+              "state": "not_required"
+            }
+          }
+        },
+        "X": {
+          "status": "SUPPORTED",
+          "interpretation": "Focal processing availability is the frozen S-role configuration state.",
+          "evidence": {
+            "nodes": [
+              {
+                "node_id": "focal_processing_availability",
+                "claimir_role": "state_or_structure",
+                "description": "amount of processing capacity available for the visual response task while another task is or is not performed concurrently",
+                "source_span_ids": [
+                  "s1",
+                  "s3",
+                  "s7"
+                ],
+                "coordinate_id": "basis.s1",
+                "coordinate_required": true
+              }
+            ]
+          }
+        },
+        "C": {
+          "status": "SUPPORTED",
+          "interpretation": "The same focal-processing state is explicitly adjudicated as resource_C, with concurrent tone counting reducing available capacity.",
+          "evidence": {
+            "resource_C": {
+              "state": "present",
+              "claim_node_ids": [
+                "focal_processing_availability"
+              ],
+              "provenance_kind": "source_declared",
+              "fixed_before_phi": true
+            },
+            "nodes": [
+              {
+                "node_id": "focal_processing_availability",
+                "claimir_role": "state_or_structure",
+                "description": "amount of processing capacity available for the visual response task while another task is or is not performed concurrently",
+                "source_span_ids": [
+                  "s1",
+                  "s3",
+                  "s7"
+                ],
+                "coordinate_id": "basis.s1",
+                "coordinate_required": true
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r2",
+                "kind": "changes",
+                "arguments": [
+                  "concurrent_tone_count",
+                  "focal_processing_availability"
+                ],
+                "description": "performing the tone-counting task concurrently is used to reduce the processing capacity available for the visual response task",
+                "source_span_ids": [
+                  "s1",
+                  "s3",
+                  "s7"
+                ]
+              },
+              {
+                "relation_id": "r14",
+                "kind": "depends_on",
+                "arguments": [
+                  "sequence_specific_latency_advantage",
+                  "focal_processing_availability"
+                ],
+                "description": "acquisition of the new fixed-order associations is strongly reduced when processing capacity is divided across the two concurrent tasks, whereas noticing the existence of the order is not required for the performance benefit itself",
+                "source_span_ids": [
+                  "s3",
+                  "s4",
+                  "s7"
+                ]
+              }
+            ]
+          }
+        },
+        "Q": {
+          "status": "ABSENT",
+          "interpretation": "No frozen criterion_Q control is required; performance comparisons are not promoted to Q merely because they compare conditions.",
+          "evidence": {
+            "criterion_Q": {
+              "state": "not_required"
+            }
+          }
+        },
+        "P_in": {
+          "status": "SUPPORTED",
+          "interpretation": "Concurrent tone counting and random-order transfer are explicit intervention/write-side operations.",
+          "evidence": {
+            "nodes": [
+              {
+                "node_id": "concurrent_tone_count",
+                "claimir_role": "intervention",
+                "description": "secondary task requiring a running count of low-pitched tones while performing the visual response task",
+                "source_span_ids": [
+                  "s3",
+                  "s4"
+                ],
+                "coordinate_id": "basis.p1",
+                "coordinate_required": true
+              },
+              {
+                "node_id": "random_order_transfer",
+                "claimir_role": "intervention",
+                "description": "replacement of the fixed order by a random order after four fixed-order blocks",
+                "source_span_ids": [
+                  "s5"
+                ],
+                "coordinate_id": "basis.p6",
+                "coordinate_required": true
+              }
+            ]
+          }
+        },
+        "P_out": {
+          "status": "SUPPORTED",
+          "interpretation": "Five frozen probes query latency, prediction, transfer/savings, awareness report and serial-position structure.",
+          "evidence": {
+            "nodes": [
+              {
+                "node_id": "latency_comparison_probe",
+                "claimir_role": "probe",
+                "description": "comparison of response-latency functions between fixed-order and random-order conditions during repeated task performance",
+                "source_span_ids": [
+                  "s2",
+                  "s3"
+                ],
+                "coordinate_id": "basis.p2",
+                "coordinate_required": true
+              },
+              {
+                "node_id": "generate_prediction_probe",
+                "claimir_role": "probe",
+                "description": "post-exposure task in which participants press the key corresponding to the location they expect to occur next and accuracy is measured",
+                "source_span_ids": [
+                  "s3"
+                ],
+                "coordinate_id": "basis.p3",
+                "coordinate_required": true
+              },
+              {
+                "node_id": "post_dual_transfer_probe",
+                "claimir_role": "probe",
+                "description": "removal of the concurrent tone task followed by fixed-order or random-order blocks to test immediate benefit and subsequent savings from prior concurrent fixed-order exposure",
+                "source_span_ids": [
+                  "s4"
+                ],
+                "coordinate_id": "basis.p4",
+                "coordinate_required": true
+              },
+              {
+                "node_id": "pattern_report_probe",
+                "claimir_role": "probe",
+                "description": "spontaneous and prompted report about whether a repeating order was noticed",
+                "source_span_ids": [
+                  "s2",
+                  "s3",
+                  "s5",
+                  "s6"
+                ],
+                "coordinate_id": "basis.p5",
+                "coordinate_required": true
+              },
+              {
+                "node_id": "serial_position_probe",
+                "claimir_role": "probe",
+                "description": "baseline-corrected response-time analysis across the ten serial positions used to characterize which portions of the fixed order were acquired",
+                "source_span_ids": [
+                  "s5"
+                ],
+                "coordinate_id": "basis.p7",
+                "coordinate_required": true
+              }
+            ]
+          }
+        },
+        "K": {
+          "status": "SUPPORTED",
+          "interpretation": "Capacity manipulation, sequence/order dependence, generic practice gain, transfer disruption and capacity dependence provide typed K-like relations.",
+          "evidence": {
+            "relations": [
+              {
+                "relation_id": "r1",
+                "kind": "differs",
+                "arguments": [
+                  "sequence_order",
+                  "sequence_specific_latency_advantage"
+                ],
+                "description": "when the visual response task is performed alone, fixed-order and random-order response times diverge early and the fixed-order condition shows a much larger practice-related reduction",
+                "source_span_ids": [
+                  "s2"
+                ]
+              },
+              {
+                "relation_id": "r2",
+                "kind": "changes",
+                "arguments": [
+                  "concurrent_tone_count",
+                  "focal_processing_availability"
+                ],
+                "description": "performing the tone-counting task concurrently is used to reduce the processing capacity available for the visual response task",
+                "source_span_ids": [
+                  "s1",
+                  "s3",
+                  "s7"
+                ]
+              },
+              {
+                "relation_id": "r3",
+                "kind": "differs",
+                "arguments": [
+                  "concurrent_tone_count",
+                  "sequence_order",
+                  "sequence_specific_latency_advantage"
+                ],
+                "description": "under concurrent-task exposure, fixed-order and random-order groups do not significantly diverge in response latency across the four exposure blocks, unlike the rapid divergence observed when the task is performed alone",
+                "source_span_ids": [
+                  "s3",
+                  "s7"
+                ]
+              },
+              {
+                "relation_id": "r4",
+                "kind": "changes",
+                "arguments": [
+                  "concurrent_tone_count",
+                  "generic_dual_task_practice_gain"
+                ],
+                "description": "response latency nevertheless decreases with practice in both concurrent fixed-order and concurrent random-order groups, so generic improvement in handling the combined tasks is distinguished from fixed-order acquisition",
+                "source_span_ids": [
+                  "s3",
+                  "s4",
+                  "s7"
+                ]
+              },
+              {
+                "relation_id": "r9",
+                "kind": "changes",
+                "arguments": [
+                  "random_order_transfer",
+                  "sequence_specific_latency_advantage"
+                ],
+                "description": "after four fixed-order blocks, replacing the order with random locations produces a response-time increase in both the Korsakoff and healthy older groups, providing performance evidence for acquisition of the specific order",
+                "source_span_ids": [
+                  "s5"
+                ]
+              },
+              {
+                "relation_id": "r14",
+                "kind": "depends_on",
+                "arguments": [
+                  "sequence_specific_latency_advantage",
+                  "focal_processing_availability"
+                ],
+                "description": "acquisition of the new fixed-order associations is strongly reduced when processing capacity is divided across the two concurrent tasks, whereas noticing the existence of the order is not required for the performance benefit itself",
+                "source_span_ids": [
+                  "s3",
+                  "s4",
+                  "s7"
+                ]
+              }
+            ]
+          }
+        },
+        "T": {
+          "status": "SUPPORTED",
+          "interpretation": "Repeated blocks, history, future transfer and recurrence are frozen temporal structure.",
+          "evidence": {
+            "temporal": {
+              "time_index": {
+                "state": "present",
+                "source_span_ids": [
+                  "s2",
+                  "s3",
+                  "s4",
+                  "s5",
+                  "s7"
+                ]
+              },
+              "history_window": {
+                "state": "present",
+                "source_span_ids": [
+                  "s3",
+                  "s4",
+                  "s5",
+                  "s7"
+                ]
+              },
+              "future_horizon": {
+                "state": "present",
+                "source_span_ids": [
+                  "s3",
+                  "s4"
+                ]
+              },
+              "recurrence": {
+                "state": "present",
+                "source_span_ids": [
+                  "s2",
+                  "s3",
+                  "s4",
+                  "s5"
+                ]
+              },
+              "persistence": {
+                "state": "not_required"
+              },
+              "ordering": []
+            }
+          }
+        },
+        "rho/O": {
+          "status": "SUPPORTED",
+          "interpretation": "Multiple performance and awareness outcomes are distinct O traces under distinct P_out probes; r13 preserves their non-equivalence.",
+          "evidence": {
+            "nodes": [
+              {
+                "node_id": "sequence_specific_latency_advantage",
+                "claimir_role": "response_or_outcome",
+                "description": "response-time benefit attributable specifically to experience with the fixed order, estimated by comparison with random-order performance rather than by raw practice speedup alone",
+                "source_span_ids": [
+                  "s2",
+                  "s3",
+                  "s4",
+                  "s5",
+                  "s7"
+                ],
+                "coordinate_id": "basis.o1",
+                "coordinate_required": true
+              },
+              {
+                "node_id": "generic_dual_task_practice_gain",
+                "claimir_role": "response_or_outcome",
+                "description": "response-time improvement across concurrent-task blocks that occurs for both fixed-order and random-order groups",
+                "source_span_ids": [
+                  "s3",
+                  "s4",
+                  "s7"
+                ],
+                "coordinate_id": "basis.o2",
+                "coordinate_required": true
+              },
+              {
+                "node_id": "generate_prediction_accuracy",
+                "claimir_role": "response_or_outcome",
+                "description": "accuracy in predicting the next location after prior fixed-order or random-order exposure",
+                "source_span_ids": [
+                  "s3"
+                ],
+                "coordinate_id": "basis.o3",
+                "coordinate_required": true
+              },
+              {
+                "node_id": "immediate_transfer_advantage",
+                "claimir_role": "response_or_outcome",
+                "description": "initial response-time advantage for the fixed order after concurrent-task exposure",
+                "source_span_ids": [
+                  "s4"
+                ],
+                "coordinate_id": "basis.o4",
+                "coordinate_required": true
+              },
+              {
+                "node_id": "relearning_savings",
+                "claimir_role": "response_or_outcome",
+                "description": "faster subsequent acquisition of the fixed order attributable to earlier concurrent-task exposure",
+                "source_span_ids": [
+                  "s4"
+                ],
+                "coordinate_id": "basis.o5",
+                "coordinate_required": true
+              },
+              {
+                "node_id": "reported_pattern_awareness",
+                "claimir_role": "response_or_outcome",
+                "description": "report that a repeating order was present during task performance",
+                "source_span_ids": [
+                  "s2",
+                  "s3",
+                  "s6"
+                ],
+                "coordinate_id": "basis.o6",
+                "coordinate_required": true
+              },
+              {
+                "node_id": "serial_position_profile",
+                "claimir_role": "response_or_outcome",
+                "description": "pattern of baseline-corrected response times across positions in the fixed order and its change with practice",
+                "source_span_ids": [
+                  "s5"
+                ],
+                "coordinate_id": "basis.o7",
+                "coordinate_required": true
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r5",
+                "kind": "maps_to",
+                "arguments": [
+                  "latency_comparison_probe",
+                  "sequence_specific_latency_advantage"
+                ],
+                "description": "fixed-order versus random-order latency comparison provides a performance measure of order-specific benefit rather than treating any reduction in raw latency as evidence of order acquisition",
+                "source_span_ids": [
+                  "s2",
+                  "s3"
+                ]
+              },
+              {
+                "relation_id": "r6",
+                "kind": "maps_to",
+                "arguments": [
+                  "generate_prediction_probe",
+                  "generate_prediction_accuracy"
+                ],
+                "description": "the post-exposure prediction task measures usable knowledge of the next location; prior single-task fixed-order exposure yields a larger initial advantage than prior concurrent fixed-order exposure",
+                "source_span_ids": [
+                  "s3"
+                ]
+              },
+              {
+                "relation_id": "r7",
+                "kind": "maps_to",
+                "arguments": [
+                  "post_dual_transfer_probe",
+                  "immediate_transfer_advantage",
+                  "relearning_savings"
+                ],
+                "description": "removing the concurrent task tests both immediate benefit from prior fixed-order exposure and whether the fixed order is reacquired faster than by previously unexposed comparison groups",
+                "source_span_ids": [
+                  "s4"
+                ]
+              },
+              {
+                "relation_id": "r10",
+                "kind": "maps_to",
+                "arguments": [
+                  "serial_position_probe",
+                  "serial_position_profile"
+                ],
+                "description": "baseline-corrected serial-position response times reveal acquisition across much of the fixed order and a changing chunk-like profile with practice",
+                "source_span_ids": [
+                  "s5"
+                ]
+              },
+              {
+                "relation_id": "r12",
+                "kind": "maps_to",
+                "arguments": [
+                  "pattern_report_probe",
+                  "reported_pattern_awareness"
+                ],
+                "description": "spontaneous and prompted reports separately measure whether participants noticed the repeating order",
+                "source_span_ids": [
+                  "s2",
+                  "s3",
+                  "s6"
+                ]
+              },
+              {
+                "relation_id": "r13",
+                "kind": "distinguishes",
+                "arguments": [
+                  "sequence_specific_latency_advantage",
+                  "reported_pattern_awareness"
+                ],
+                "description": "performance evidence for acquisition can occur without a report that the repeating order was noticed, as shown most clearly by the Korsakoff group",
+                "source_span_ids": [
+                  "s5",
+                  "s6",
+                  "s7"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "derived_feature_candidates": [
+        {
+          "feature": "O_information/O_outcome compression by P_out topology",
+          "evidence_relation_ids": [
+            "r12",
+            "r13",
+            "r5"
+          ],
+          "note": "Reported awareness and performance evidence are both O-like traces but arise under different P_out operations and need not coincide."
+        },
+        {
+          "feature": "C distinct from Q",
+          "evidence_relation_ids": [
+            "r2",
+            "r14"
+          ],
+          "note": "Limited focal capacity is C even though no criterion_Q is frozen."
+        }
+      ],
+      "unmapped_residual": [
+        {
+          "type": "explicit_joint_null",
+          "reason": "No significant immediate transfer advantage and no detectable relearning savings are negative findings not represented as positive grammar edges.",
+          "frozen_evidence": [
+            {
+              "relation_id": "r8",
+              "kind": "other",
+              "arguments": [
+                "concurrent_tone_count",
+                "immediate_transfer_advantage",
+                "relearning_savings"
+              ],
+              "description": "four blocks of concurrent fixed-order exposure produce neither a significant initial fixed-order advantage after transfer nor detectable savings in subsequent fixed-order acquisition",
+              "source_span_ids": [
+                "s4"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "qualified_similarity",
+          "reason": "Qualitatively similar serial-position patterns despite quantitative differences is a comparison qualifier not first-class in v0.",
+          "frozen_evidence": [
+            {
+              "relation_id": "r11",
+              "kind": "other",
+              "arguments": [
+                "clinical_group",
+                "serial_position_profile"
+              ],
+              "description": "the patient and healthy older groups show qualitatively similar serial-position patterns and similar changes in those patterns with practice, despite quantitative performance differences",
+              "source_span_ids": [
+                "s5"
+              ]
+            }
+          ]
+        }
+      ],
+      "verdict": "PARTIAL",
+      "notes": [
+        "The awareness/performance dissociation itself is representable by distinct P_out→O traces; only the null/similarity qualifiers remain residual."
+      ]
+    },
+    {
+      "claim_id": "SKL05.C1",
+      "grammar_roles_instantiated": [
+        "X",
+        "Q",
+        "P_in",
+        "P_out",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "grammar_relation": "K change and condition-indexed dependence",
+          "frozen_evidence": [
+            {
+              "relation_id": "r1",
+              "kind": "changes",
+              "arguments": [
+                "repeated_texture_practice",
+                "discrimination_threshold"
+              ],
+              "description": "repeated practice lowers the target-to-mask interval required for reliable discrimination in the trained configuration",
+              "source_span_ids": [
+                "s1",
+                "s3"
+              ]
+            },
+            {
+              "relation_id": "r3",
+              "kind": "depends_on",
+              "arguments": [
+                "retained_practice_gain",
+                "retinal_location_match"
+              ],
+              "description": "the acquired advantage is strongly local to the practiced retinal position and is substantially lost when testing moves to an untrained location",
+              "source_span_ids": [
+                "s3"
+              ]
+            },
+            {
+              "relation_id": "r4",
+              "kind": "depends_on",
+              "arguments": [
+                "retained_practice_gain",
+                "viewing_eye_match"
+              ],
+              "description": "the acquired advantage is strongly tied to the practiced eye, with little transfer to the previously untrained eye under the reported procedure",
+              "source_span_ids": [
+                "s4"
+              ]
+            },
+            {
+              "relation_id": "r5",
+              "kind": "depends_on",
+              "arguments": [
+                "retained_practice_gain",
+                "background_orientation_match"
+              ],
+              "description": "changing the orientation of the background elements greatly reduces the learned advantage",
+              "source_span_ids": [
+                "s5"
+              ]
+            },
+            {
+              "relation_id": "r6",
+              "kind": "other",
+              "arguments": [
+                "retained_practice_gain",
+                "target_orientation_match"
+              ],
+              "description": "unlike background orientation, target-element orientation is not strongly specific: substantial transfer is retained when target-element orientation is changed",
+              "source_span_ids": [
+                "s5"
+              ]
+            },
+            {
+              "relation_id": "r7",
+              "kind": "distinguishes",
+              "arguments": [
+                "background_orientation_match",
+                "target_orientation_match",
+                "retained_practice_gain"
+              ],
+              "description": "orientation specificity is asymmetric across stimulus components: transfer depends strongly on background orientation but not comparably on target-element orientation",
+              "source_span_ids": [
+                "s5"
+              ]
+            }
+          ]
+        },
+        {
+          "grammar_relation": "P_out/rho transfer readout",
+          "frozen_evidence": [
+            {
+              "relation_id": "r2",
+              "kind": "maps_to",
+              "arguments": [
+                "transfer_test_probe",
+                "retained_practice_gain"
+              ],
+              "description": "testing altered versions of the trained configuration measures how much of the acquired threshold improvement is retained",
+              "source_span_ids": [
+                "s3",
+                "s4",
+                "s5"
+              ]
+            }
+          ]
+        }
+      ],
+      "mappings": {
+        "Pi": {
+          "status": "ABSENT",
+          "interpretation": "No frozen partition_Pi control is required. Retinal location, eye and orientation match conditions are not reinterpreted as Pi.",
+          "evidence": {
+            "partition_Pi": {
+              "state": "not_required"
+            }
+          }
+        },
+        "X": {
+          "status": "SUPPORTED",
+          "interpretation": "The source-localization interpretation is the frozen S-role configuration/model state; its interpretive status is preserved.",
+          "evidence": {
+            "nodes": [
+              {
+                "node_id": "source_localization_interpretation",
+                "claimir_role": "state_or_structure",
+                "description": "source-authored interpretation that the observed specificity pattern reflects experience-dependent change at an early visual-processing level that still preserves retinal position, eye-of-origin, and orientation organization",
+                "source_span_ids": [
+                  "s6"
+                ],
+                "coordinate_id": "basis.s1",
+                "coordinate_required": true
+              }
+            ]
+          }
+        },
+        "C": {
+          "status": "ABSENT",
+          "interpretation": "No frozen resource_C control is required; mask interval is a task condition, not a capacity/admissibility claim.",
+          "evidence": {
+            "resource_C": {
+              "state": "not_required"
+            }
+          }
+        },
+        "Q": {
+          "status": "SUPPORTED",
+          "interpretation": "Discrimination threshold is both a measured O coordinate and the source-declared criterion_Q/threshold that orients improvement; lower threshold is better.",
+          "evidence": {
+            "criterion_Q": {
+              "state": "present",
+              "claim_node_ids": [
+                "discrimination_threshold"
+              ],
+              "provenance_kind": "source_declared",
+              "fixed_before_phi": true
+            },
+            "nodes": [
+              {
+                "node_id": "discrimination_threshold",
+                "claimir_role": "response_or_outcome",
+                "description": "target-to-mask interval required to maintain reliable target-orientation discrimination, with lower threshold indicating improved performance",
+                "source_span_ids": [
+                  "s2",
+                  "s3",
+                  "s4",
+                  "s5"
+                ],
+                "coordinate_id": "basis.o1",
+                "coordinate_required": true
+              }
+            ],
+            "threshold": {
+              "state": "present",
+              "source_span_ids": [
+                "s2",
+                "s3",
+                "s4",
+                "s5"
+              ]
+            }
+          }
+        },
+        "P_in": {
+          "status": "SUPPORTED",
+          "interpretation": "Repeated texture practice is an explicit intervention/write-side operation.",
+          "evidence": {
+            "nodes": [
+              {
+                "node_id": "repeated_texture_practice",
+                "claimir_role": "intervention",
+                "description": "repeated performance of the masked peripheral pattern-separation task under a fixed training configuration",
+                "source_span_ids": [
+                  "s1",
+                  "s2",
+                  "s3"
+                ],
+                "coordinate_id": "basis.p1",
+                "coordinate_required": true
+              }
+            ]
+          }
+        },
+        "P_out": {
+          "status": "SUPPORTED",
+          "interpretation": "Fixation-control and transfer-test probes are explicit read/query operations.",
+          "evidence": {
+            "nodes": [
+              {
+                "node_id": "fixation_control_probe",
+                "claimir_role": "probe",
+                "description": "central letter-discrimination task used to maintain fixation while the peripheral target is tested",
+                "source_span_ids": [
+                  "s2"
+                ],
+                "coordinate_id": "basis.p2",
+                "coordinate_required": true
+              },
+              {
+                "node_id": "transfer_test_probe",
+                "claimir_role": "probe",
+                "description": "post-practice testing that changes one training dimension to measure how much of the acquired performance advantage transfers",
+                "source_span_ids": [
+                  "s3",
+                  "s4",
+                  "s5"
+                ],
+                "coordinate_id": "basis.p3",
+                "coordinate_required": true
+              }
+            ]
+          }
+        },
+        "K": {
+          "status": "SUPPORTED",
+          "interpretation": "Practice change and condition-indexed retention/specificity relations support typed K/dependence without assuming a deterministic update.",
+          "evidence": {
+            "relations": [
+              {
+                "relation_id": "r1",
+                "kind": "changes",
+                "arguments": [
+                  "repeated_texture_practice",
+                  "discrimination_threshold"
+                ],
+                "description": "repeated practice lowers the target-to-mask interval required for reliable discrimination in the trained configuration",
+                "source_span_ids": [
+                  "s1",
+                  "s3"
+                ]
+              },
+              {
+                "relation_id": "r3",
+                "kind": "depends_on",
+                "arguments": [
+                  "retained_practice_gain",
+                  "retinal_location_match"
+                ],
+                "description": "the acquired advantage is strongly local to the practiced retinal position and is substantially lost when testing moves to an untrained location",
+                "source_span_ids": [
+                  "s3"
+                ]
+              },
+              {
+                "relation_id": "r4",
+                "kind": "depends_on",
+                "arguments": [
+                  "retained_practice_gain",
+                  "viewing_eye_match"
+                ],
+                "description": "the acquired advantage is strongly tied to the practiced eye, with little transfer to the previously untrained eye under the reported procedure",
+                "source_span_ids": [
+                  "s4"
+                ]
+              },
+              {
+                "relation_id": "r5",
+                "kind": "depends_on",
+                "arguments": [
+                  "retained_practice_gain",
+                  "background_orientation_match"
+                ],
+                "description": "changing the orientation of the background elements greatly reduces the learned advantage",
+                "source_span_ids": [
+                  "s5"
+                ]
+              },
+              {
+                "relation_id": "r6",
+                "kind": "other",
+                "arguments": [
+                  "retained_practice_gain",
+                  "target_orientation_match"
+                ],
+                "description": "unlike background orientation, target-element orientation is not strongly specific: substantial transfer is retained when target-element orientation is changed",
+                "source_span_ids": [
+                  "s5"
+                ]
+              },
+              {
+                "relation_id": "r7",
+                "kind": "distinguishes",
+                "arguments": [
+                  "background_orientation_match",
+                  "target_orientation_match",
+                  "retained_practice_gain"
+                ],
+                "description": "orientation specificity is asymmetric across stimulus components: transfer depends strongly on background orientation but not comparably on target-element orientation",
+                "source_span_ids": [
+                  "s5"
+                ]
+              }
+            ]
+          }
+        },
+        "T": {
+          "status": "SUPPORTED",
+          "interpretation": "Practice, transfer, recurrence and retained gain carry explicit temporal structure including frozen persistence.",
+          "evidence": {
+            "temporal": {
+              "time_index": {
+                "state": "present",
+                "source_span_ids": [
+                  "s1",
+                  "s2",
+                  "s3",
+                  "s4",
+                  "s5"
+                ]
+              },
+              "history_window": {
+                "state": "present",
+                "source_span_ids": [
+                  "s1",
+                  "s3"
+                ]
+              },
+              "future_horizon": {
+                "state": "present",
+                "source_span_ids": [
+                  "s3",
+                  "s4",
+                  "s5"
+                ]
+              },
+              "recurrence": {
+                "state": "present",
+                "source_span_ids": [
+                  "s1",
+                  "s3"
+                ]
+              },
+              "persistence": {
+                "state": "present",
+                "source_span_ids": [
+                  "s1",
+                  "s3",
+                  "s4",
+                  "s5"
+                ]
+              },
+              "ordering": [
+                {
+                  "before_coordinate_id": "basis.p1",
+                  "after_coordinate_id": "basis.p3",
+                  "source_span_ids": [
+                    "s3",
+                    "s4",
+                    "s5"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "rho/O": {
+          "status": "SUPPORTED",
+          "interpretation": "Discrimination threshold and retained practice gain are frozen O traces; transfer testing maps to retained gain.",
+          "evidence": {
+            "nodes": [
+              {
+                "node_id": "discrimination_threshold",
+                "claimir_role": "response_or_outcome",
+                "description": "target-to-mask interval required to maintain reliable target-orientation discrimination, with lower threshold indicating improved performance",
+                "source_span_ids": [
+                  "s2",
+                  "s3",
+                  "s4",
+                  "s5"
+                ],
+                "coordinate_id": "basis.o1",
+                "coordinate_required": true
+              },
+              {
+                "node_id": "retained_practice_gain",
+                "claimir_role": "response_or_outcome",
+                "description": "amount of the practice-related threshold improvement expressed under a transfer-test condition",
+                "source_span_ids": [
+                  "s3",
+                  "s4",
+                  "s5"
+                ],
+                "coordinate_id": "basis.o2",
+                "coordinate_required": true
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r2",
+                "kind": "maps_to",
+                "arguments": [
+                  "transfer_test_probe",
+                  "retained_practice_gain"
+                ],
+                "description": "testing altered versions of the trained configuration measures how much of the acquired threshold improvement is retained",
+                "source_span_ids": [
+                  "s3",
+                  "s4",
+                  "s5"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "derived_feature_candidates": [
+        {
+          "feature": "O/Q role overlap",
+          "evidence_node_ids": [
+            "discrimination_threshold"
+          ],
+          "note": "One frozen observable can induce criterion orientation while remaining an O trace; Grammar roles must not be assumed disjoint."
+        },
+        {
+          "feature": "persistence via carry/transport",
+          "evidence": {
+            "temporal_persistence": {
+              "state": "present",
+              "source_span_ids": [
+                "s1",
+                "s3",
+                "s4",
+                "s5"
+              ]
+            }
+          },
+          "note": "Retained gain supports persistence, not identity K."
+        },
+        {
+          "feature": "condition-indexed specificity without Pi",
+          "evidence_relation_ids": [
+            "r3",
+            "r4",
+            "r5",
+            "r6",
+            "r7"
+          ],
+          "note": "Specificity across retinal location, eye and stimulus orientation remains condition-indexed dependence because frozen Pi is absent."
+        }
+      ],
+      "unmapped_residual": [
+        {
+          "type": "epistemically_qualified_interpretive_bridge",
+          "reason": "The behavioral specificity pattern is used to infer an early visual-processing locus while explicitly not directly measuring a cortical site; v0 has no first-class evidential-status operator for that bridge.",
+          "frozen_evidence": [
+            {
+              "relation_id": "r8",
+              "kind": "other",
+              "arguments": [
+                "retinal_location_match",
+                "viewing_eye_match",
+                "background_orientation_match",
+                "source_localization_interpretation"
+              ],
+              "description": "the conjunction of retinotopic, eye, and background-orientation specificity is used by the authors to infer an early visually organized locus of experience-dependent change; the behavioral data do not directly measure a cortical site",
+              "source_span_ids": [
+                "s3",
+                "s4",
+                "s5",
+                "s6"
+              ]
+            }
+          ]
+        }
+      ],
+      "verdict": "PARTIAL",
+      "notes": [
+        "Do not strengthen source_localization_interpretation into a measured physical boundary or a Pi claim."
+      ]
+    },
+    {
+      "claim_id": "SKL06.C1",
+      "grammar_roles_instantiated": [
+        "Pi",
+        "X",
+        "P_out",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "grammar_relation": "P_out/rho with Pi-producing operational segmentation",
+          "frozen_evidence": [
+            {
+              "relation_id": "r2",
+              "kind": "maps_to",
+              "arguments": [
+                "visible_reconstruction_probe",
+                "glance_duration",
+                "pieces_per_glance",
+                "inferred_piece_group"
+              ],
+              "description": "successive glances in the visible task provide one operational segmentation of grouped placements and their processing time",
+              "source_span_ids": [
+                "s1",
+                "s3",
+                "s4"
+              ]
+            },
+            {
+              "relation_id": "r5",
+              "kind": "maps_to",
+              "arguments": [
+                "brief_recall_probe",
+                "placement_interval",
+                "inferred_piece_group"
+              ],
+              "description": "short versus long placement intervals provide a second operational segmentation whose relation profiles correspond to within- versus between-glance placements",
+              "source_span_ids": [
+                "s4"
+              ]
+            }
+          ]
+        },
+        {
+          "grammar_relation": "K-like condition dependence",
+          "frozen_evidence": [
+            {
+              "relation_id": "r1",
+              "kind": "depends_on",
+              "arguments": [
+                "first_attempt_accuracy",
+                "playing_strength",
+                "position_structure"
+              ],
+              "description": "first-attempt reconstruction after five seconds improves markedly with playing strength for actual game-derived positions, while randomized positions show no corresponding strength advantage",
+              "source_span_ids": [
+                "s2",
+                "s7"
+              ]
+            },
+            {
+              "relation_id": "r3",
+              "kind": "depends_on",
+              "arguments": [
+                "glance_duration",
+                "playing_strength"
+              ],
+              "description": "more skilled participants take less viewing time per glance in the visible reconstruction task",
+              "source_span_ids": [
+                "s3"
+              ]
+            },
+            {
+              "relation_id": "r6",
+              "kind": "depends_on",
+              "arguments": [
+                "group_size",
+                "playing_strength",
+                "position_phase"
+              ],
+              "description": "in the brief-recall protocol, early inferred groups are generally larger for stronger players, with smaller groups in less structured end-game positions",
+              "source_span_ids": [
+                "s5"
+              ]
+            },
+            {
+              "relation_id": "r7",
+              "kind": "depends_on",
+              "arguments": [
+                "retained_group_count",
+                "playing_strength"
+              ],
+              "description": "the number of inferred groups retained during initial recall also increases with playing strength, contrary to the source's initial prediction of an invariant small count",
+              "source_span_ids": [
+                "s5"
+              ]
+            }
+          ]
+        },
+        {
+          "grammar_relation": "Pi/X relational organization",
+          "frozen_evidence": [
+            {
+              "relation_id": "r8",
+              "kind": "other",
+              "arguments": [
+                "inferred_piece_group",
+                "within_group_relation_pattern"
+              ],
+              "description": "pieces grouped by the timing/glance criteria show stronger relational organization within groups than across group boundaries or chance baselines",
+              "source_span_ids": [
+                "s3",
+                "s4",
+                "s7"
+              ]
+            }
+          ]
+        }
+      ],
+      "mappings": {
+        "Pi": {
+          "status": "SUPPORTED",
+          "interpretation": "Operationally inferred piece groups instantiate the frozen Pi coordinate. The boundary is defined by glance/placement segmentation and is not asserted to be physical.",
+          "evidence": {
+            "partition_Pi": {
+              "state": "present",
+              "claim_node_ids": [
+                "inferred_piece_group"
+              ],
+              "provenance_kind": "source_declared",
+              "fixed_before_phi": true
+            },
+            "nodes": [
+              {
+                "node_id": "inferred_piece_group",
+                "claimir_role": "state_or_structure",
+                "description": "set of successively placed pieces operationally inferred to belong together when they fall within one glance or between short placement intervals",
+                "source_span_ids": [
+                  "s1",
+                  "s3",
+                  "s4"
+                ],
+                "coordinate_id": "basis.pi1",
+                "coordinate_required": true
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r2",
+                "kind": "maps_to",
+                "arguments": [
+                  "visible_reconstruction_probe",
+                  "glance_duration",
+                  "pieces_per_glance",
+                  "inferred_piece_group"
+                ],
+                "description": "successive glances in the visible task provide one operational segmentation of grouped placements and their processing time",
+                "source_span_ids": [
+                  "s1",
+                  "s3",
+                  "s4"
+                ]
+              },
+              {
+                "relation_id": "r5",
+                "kind": "maps_to",
+                "arguments": [
+                  "brief_recall_probe",
+                  "placement_interval",
+                  "inferred_piece_group"
+                ],
+                "description": "short versus long placement intervals provide a second operational segmentation whose relation profiles correspond to within- versus between-glance placements",
+                "source_span_ids": [
+                  "s4"
+                ]
+              }
+            ]
+          }
+        },
+        "X": {
+          "status": "SUPPORTED",
+          "interpretation": "Within-group relation pattern and familiar-configuration repertoire are frozen S-role configuration/model states.",
+          "evidence": {
+            "nodes": [
+              {
+                "node_id": "within_group_relation_pattern",
+                "claimir_role": "state_or_structure",
+                "description": "nonchance pattern of relations among pieces placed within an inferred group, including defense, proximity, short-distance attack, common color, and common type",
+                "source_span_ids": [
+                  "s3",
+                  "s4",
+                  "s6",
+                  "s7"
+                ],
+                "coordinate_id": "basis.s1",
+                "coordinate_required": true
+              },
+              {
+                "node_id": "familiar_configuration_repertoire",
+                "claimir_role": "state_or_structure",
+                "description": "source-authored interpretation that stronger players possess a stored repertoire capable of rapidly recognizing familiar multi-piece subconfigurations",
+                "source_span_ids": [
+                  "s6",
+                  "s7"
+                ],
+                "coordinate_id": "basis.s2",
+                "coordinate_required": true
+              }
+            ]
+          }
+        },
+        "C": {
+          "status": "ABSENT",
+          "interpretation": "No frozen resource_C control is required; retained group count is not converted into a capacity limit.",
+          "evidence": {
+            "resource_C": {
+              "state": "not_required"
+            }
+          }
+        },
+        "Q": {
+          "status": "ABSENT",
+          "interpretation": "No frozen criterion_Q control is required.",
+          "evidence": {
+            "criterion_Q": {
+              "state": "not_required"
+            }
+          }
+        },
+        "P_in": {
+          "status": "ABSENT",
+          "interpretation": "Both task operations are probes; no ClaimIR intervention node is frozen.",
+          "evidence": {
+            "claimir_intervention_count": 0
+          }
+        },
+        "P_out": {
+          "status": "SUPPORTED",
+          "interpretation": "Visible reconstruction and brief recall are distinct probe/read operations that induce different operational segmentations/traces.",
+          "evidence": {
+            "nodes": [
+              {
+                "node_id": "visible_reconstruction_probe",
+                "claimir_role": "probe",
+                "description": "reconstruct the displayed configuration while viewing is allowed, using successive glances to segment placements",
+                "source_span_ids": [
+                  "s1",
+                  "s3",
+                  "s4"
+                ],
+                "coordinate_id": "basis.p1",
+                "coordinate_required": true
+              },
+              {
+                "node_id": "brief_recall_probe",
+                "claimir_role": "probe",
+                "description": "reconstruct the configuration after five seconds of viewing, using placement timing to segment the recall protocol",
+                "source_span_ids": [
+                  "s1",
+                  "s2",
+                  "s4",
+                  "s5"
+                ],
+                "coordinate_id": "basis.p2",
+                "coordinate_required": true
+              }
+            ]
+          }
+        },
+        "K": {
+          "status": "SUPPORTED",
+          "interpretation": "Skill/position/phase dependencies on accuracy, glance duration, group size and retained group count provide non-functional K-like dependence; no update law is inferred.",
+          "evidence": {
+            "relations": [
+              {
+                "relation_id": "r1",
+                "kind": "depends_on",
+                "arguments": [
+                  "first_attempt_accuracy",
+                  "playing_strength",
+                  "position_structure"
+                ],
+                "description": "first-attempt reconstruction after five seconds improves markedly with playing strength for actual game-derived positions, while randomized positions show no corresponding strength advantage",
+                "source_span_ids": [
+                  "s2",
+                  "s7"
+                ]
+              },
+              {
+                "relation_id": "r3",
+                "kind": "depends_on",
+                "arguments": [
+                  "glance_duration",
+                  "playing_strength"
+                ],
+                "description": "more skilled participants take less viewing time per glance in the visible reconstruction task",
+                "source_span_ids": [
+                  "s3"
+                ]
+              },
+              {
+                "relation_id": "r6",
+                "kind": "depends_on",
+                "arguments": [
+                  "group_size",
+                  "playing_strength",
+                  "position_phase"
+                ],
+                "description": "in the brief-recall protocol, early inferred groups are generally larger for stronger players, with smaller groups in less structured end-game positions",
+                "source_span_ids": [
+                  "s5"
+                ]
+              },
+              {
+                "relation_id": "r7",
+                "kind": "depends_on",
+                "arguments": [
+                  "retained_group_count",
+                  "playing_strength"
+                ],
+                "description": "the number of inferred groups retained during initial recall also increases with playing strength, contrary to the source's initial prediction of an invariant small count",
+                "source_span_ids": [
+                  "s5"
+                ]
+              }
+            ]
+          }
+        },
+        "T": {
+          "status": "SUPPORTED",
+          "interpretation": "Successive glances and recall attempts provide frozen time indexing/future horizon even though no explicit ordering edge is adjudicated.",
+          "evidence": {
+            "temporal": {
+              "time_index": {
+                "state": "present",
+                "source_span_ids": [
+                  "s1",
+                  "s2",
+                  "s3",
+                  "s4",
+                  "s5"
+                ]
+              },
+              "history_window": {
+                "state": "not_required"
+              },
+              "future_horizon": {
+                "state": "present",
+                "source_span_ids": [
+                  "s1",
+                  "s2",
+                  "s4",
+                  "s5"
+                ]
+              },
+              "recurrence": {
+                "state": "not_required"
+              },
+              "persistence": {
+                "state": "not_required"
+              },
+              "ordering": []
+            }
+          }
+        },
+        "rho/O": {
+          "status": "SUPPORTED",
+          "interpretation": "Accuracy, timing, group-size and group-count measures are frozen O coordinates under the two P_out probes; segmentation also exposes Pi.",
+          "evidence": {
+            "nodes": [
+              {
+                "node_id": "first_attempt_accuracy",
+                "claimir_role": "response_or_outcome",
+                "description": "number of pieces placed on the correct squares on the first reconstruction attempt after a five-second view",
+                "source_span_ids": [
+                  "s2"
+                ],
+                "coordinate_id": "basis.o1",
+                "coordinate_required": true
+              },
+              {
+                "node_id": "glance_duration",
+                "claimir_role": "response_or_outcome",
+                "description": "time spent viewing the source configuration during each glance in the visible reconstruction task",
+                "source_span_ids": [
+                  "s3"
+                ],
+                "coordinate_id": "basis.o2",
+                "coordinate_required": true
+              },
+              {
+                "node_id": "pieces_per_glance",
+                "claimir_role": "response_or_outcome",
+                "description": "number of successively placed pieces associated with one glance in the visible reconstruction task",
+                "source_span_ids": [
+                  "s3",
+                  "s4"
+                ],
+                "coordinate_id": "basis.o3",
+                "coordinate_required": true
+              },
+              {
+                "node_id": "placement_interval",
+                "claimir_role": "response_or_outcome",
+                "description": "time between placement of successive pieces during reconstruction",
+                "source_span_ids": [
+                  "s3",
+                  "s4"
+                ],
+                "coordinate_id": "basis.o4",
+                "coordinate_required": true
+              },
+              {
+                "node_id": "group_size",
+                "claimir_role": "response_or_outcome",
+                "description": "number of pieces contained in an operationally inferred group",
+                "source_span_ids": [
+                  "s4",
+                  "s5"
+                ],
+                "coordinate_id": "basis.o5",
+                "coordinate_required": true
+              },
+              {
+                "node_id": "retained_group_count",
+                "claimir_role": "response_or_outcome",
+                "description": "number of operationally inferred groups placed during the initial recall phase before later reconstructive problem solving",
+                "source_span_ids": [
+                  "s5"
+                ],
+                "coordinate_id": "basis.o6",
+                "coordinate_required": true
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r2",
+                "kind": "maps_to",
+                "arguments": [
+                  "visible_reconstruction_probe",
+                  "glance_duration",
+                  "pieces_per_glance",
+                  "inferred_piece_group"
+                ],
+                "description": "successive glances in the visible task provide one operational segmentation of grouped placements and their processing time",
+                "source_span_ids": [
+                  "s1",
+                  "s3",
+                  "s4"
+                ]
+              },
+              {
+                "relation_id": "r5",
+                "kind": "maps_to",
+                "arguments": [
+                  "brief_recall_probe",
+                  "placement_interval",
+                  "inferred_piece_group"
+                ],
+                "description": "short versus long placement intervals provide a second operational segmentation whose relation profiles correspond to within- versus between-glance placements",
+                "source_span_ids": [
+                  "s4"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "derived_feature_candidates": [
+        {
+          "feature": "operational Pi from probe-relative segmentation",
+          "evidence_relation_ids": [
+            "r2",
+            "r5"
+          ],
+          "note": "Pi can be induced by an operational boundary rule and need not be physical."
+        },
+        {
+          "feature": "multi-P_out topology",
+          "evidence_node_ids": [
+            "visible_reconstruction_probe",
+            "brief_recall_probe"
+          ],
+          "note": "Different probes expose different traces/segmentation evidence without requiring distinct O primitives."
+        },
+        {
+          "feature": "recursive-Pi candidate deliberately not instantiated",
+          "evidence_relation_ids": [
+            "r10"
+          ],
+          "note": "Higher-order organization is left as an alternative by the frozen claim; no recursive Pi is added."
+        }
+      ],
+      "unmapped_residual": [
+        {
+          "type": "explicit_null",
+          "reason": "Pieces per glance does not vary systematically with playing strength; this negative dependence is not a positive K edge.",
+          "frozen_evidence": [
+            {
+              "relation_id": "r4",
+              "kind": "other",
+              "arguments": [
+                "pieces_per_glance",
+                "playing_strength"
+              ],
+              "description": "the number of pieces associated with each glance does not vary systematically with playing strength, so the visible-task advantage is not a simple larger-group effect on this measure",
+              "source_span_ids": [
+                "s3",
+                "s4"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "epistemically_qualified_interpretive_bridge",
+          "reason": "The familiar-repertoire explanation is source-authored interpretation rather than direct observation of the proposed stored repertoire.",
+          "frozen_evidence": [
+            {
+              "relation_id": "r9",
+              "kind": "other",
+              "arguments": [
+                "familiar_configuration_repertoire",
+                "inferred_piece_group",
+                "first_attempt_accuracy"
+              ],
+              "description": "the authors interpret the stronger-player advantage on actual positions as rapid recognition and encoding of familiar multi-piece subconfigurations into larger grouped representations rather than as a generally superior ability to retain arbitrary configurations",
+              "source_span_ids": [
+                "s2",
+                "s6",
+                "s7"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "model_rejection_plus_open_alternatives",
+          "reason": "The claim rejects an invariant fixed-list account and leaves higher-order organization/reconstruction as alternatives; v0 has no first-class disjunction/model-rejection operator.",
+          "frozen_evidence": [
+            {
+              "relation_id": "r10",
+              "kind": "other",
+              "arguments": [
+                "retained_group_count",
+                "group_size",
+                "familiar_configuration_repertoire"
+              ],
+              "description": "because stronger players recall both larger and more numerous groups, the data do not support a simple model in which all players retain an invariant fixed list of unrelated groups; the source leaves higher-order organization and reconstruction from stored configuration knowledge as alternative explanations",
+              "source_span_ids": [
+                "s5",
+                "s7"
+              ]
+            }
+          ]
+        }
+      ],
+      "verdict": "PARTIAL",
+      "notes": [
+        "The residual does not license adding recursive Pi, capacity C, or a new memory-store primitive."
+      ]
+    }
+  ],
+  "lane_summary": {
+    "coverage_count": 6,
+    "verdict_counts": {
+      "FULL": 2,
+      "PARTIAL": 4,
+      "RESIDUAL": 0
+    },
+    "role_frequency": {
+      "Pi": 1,
+      "X": 6,
+      "C": 3,
+      "Q": 2,
+      "P_in": 4,
+      "P_out": 5,
+      "K": 6,
+      "T": 6,
+      "rho/O": 6
+    },
+    "recurrent_substructures": [
+      {
+        "source": "frozen SKL Archetype report",
+        "finding": "One maximal Archetype candidate is supported by all six SKL claims: A-89e100903ef0.",
+        "exact": {
+          "archetype_id": "A-89e100903ef0",
+          "member_claim_ids": [
+            "SKL01",
+            "SKL02",
+            "SKL03",
+            "SKL04",
+            "SKL05",
+            "SKL06"
+          ],
+          "active_axes": [
+            "O",
+            "P",
+            "S",
+            "T"
+          ],
+          "control_features": [
+            "probe_P"
+          ],
+          "temporal_features": [
+            "future_horizon",
+            "time_index"
+          ],
+          "node_profile": [
+            {
+              "axis": "O",
+              "required": true,
+              "role": "response_or_outcome"
+            },
+            {
+              "axis": "S",
+              "required": true,
+              "role": "state_or_structure"
+            },
+            {
+              "axis": null,
+              "required": true,
+              "role": "condition"
+            }
+          ]
+        }
+      },
+      {
+        "source": "frozen SKL Archetype report",
+        "finding": "The dominant maximal-candidate surface is O/P/S/T, with K, C and Q appearing as stricter refinements.",
+        "exact": {
+          "active_axis_pattern_counts": {
+            "O,P,S,T": 16,
+            "K,O,P,S,T": 8,
+            "C,O,P,S,T": 3,
+            "C,K,O,P,S,T": 1,
+            "K,O,P,Q,S,T": 1
+          }
+        }
+      },
+      {
+        "source": "frozen SKL Archetype report",
+        "finding": "Future horizon and time index occur in every maximal SKL Archetype; history/recurrence/persistence form narrower temporal refinements.",
+        "exact": {
+          "temporal_pattern_counts": {
+            "future_horizon,time_index": 14,
+            "future_horizon,history_window,time_index": 4,
+            "future_horizon,history_window,recurrence,time_index": 7,
+            "future_horizon,history_window,persistence,time_index": 3,
+            "future_horizon,history_window,persistence,recurrence,time_index": 1
+          }
+        }
+      },
+      {
+        "source": "frozen SKL Archetype report",
+        "finding": "The lane is structurally heterogeneous rather than one exact skeleton.",
+        "exact": {
+          "exact_basis_skeleton_equivalence_pairs": 0,
+          "unique_nontrivial_pair_generated_candidate_count": 1013,
+          "support_set_count": 28,
+          "maximal_archetype_candidate_count": 29,
+          "maximal_candidate_relation_summary": {
+            "comparable_pairs": 125,
+            "incomparable_pairs": 281
+          },
+          "support_size_histogram": {
+            "2": 15,
+            "3": 6,
+            "4": 4,
+            "5": 3,
+            "6": 1
+          }
+        }
+      }
+    ],
+    "grammar_distinctions_required_by_skl": [
+      "K must remain distinct from P: SKL02 contains internal transformation processes that occupy frozen old-P coordinates but have no interface intervention/probe role; reverse projection maps their change topology to K.",
+      "P must be directional: SKL01/03/04/05 instantiate P_in; SKL01/03/04/05/06 instantiate P_out; SKL02 instantiates neither.",
+      "C must remain narrower than generic difficulty/condition: only SKL01, SKL02 and SKL04 have frozen resource_C support.",
+      "Q must remain criterion-relative and non-necessarily-scalar: SKL03 uses a baseline relation-shift criterion; SKL05 uses a discrimination threshold.",
+      "Pi must remain non-physical and operationally grounded: SKL06 supplies a probe-relative segmentation/grouping Pi.",
+      "O must permit multiple non-equivalent traces under different P_out operations: SKL04 separates performance evidence from reported awareness.",
+      "Grammar roles need not be disjoint at the claim-node level: SKL05 discrimination_threshold is an O trace and, via frozen criterion_Q/threshold control, also induces Q.",
+      "Persistence requires explicit carry/transport semantics rather than universal K = identity: frozen persistence occurs in SKL01, SKL02 and SKL05 only."
+    ],
+    "roles_not_needed_by_skl": [],
+    "role_sparsity_notes": {
+      "Pi": "1/6 claims",
+      "Q": "2/6 claims",
+      "C": "3/6 claims",
+      "P_in": "4/6 claims",
+      "P_out": "5/6 claims",
+      "X": "6/6 claims",
+      "K": "6/6 claims",
+      "T": "6/6 claims",
+      "rho/O": "6/6 claims"
+    },
+    "residual_structures_not_first_class_in_grammar_v0": [
+      "Explicit null/no-significant-effect assertions (SKL03 r9; SKL04 r8; SKL06 r4).",
+      "Epistemic non-entailment or source-interpretation status (SKL03 r8; SKL05 r8; SKL06 r9).",
+      "Qualified similarity and explicit model rejection/open alternatives (SKL04 r11; SKL06 r10)."
+    ],
+    "possible_compression_or_derived_feature_cases": [
+      "Frozen S -> X is supported in all six claims.",
+      "Old-P internal process nodes in SKL02 compress into K rather than interface P.",
+      "Performance-versus-awareness O kinds in SKL04 can remain one O family distinguished by P_out topology.",
+      "Resource/load/capacity structure compresses into C only in SKL01/02/04.",
+      "Baseline-shift and threshold criteria compress into generalized Q in SKL03/05.",
+      "Operational grouped representation in SKL06 compresses into Pi without physical-boundary semantics.",
+      "Persistence in SKL01/02/05 is a carry/transport candidate; identity K is not licensed."
+    ],
+    "potential_threats_to_grammar_v0": [
+      "Lossless claim-language preservation needs a relation-annotation layer for null polarity, epistemic status, qualified similarity and open-alternative/model-rejection statements. These residuals do not presently require a ninth top-level cognitive role.",
+      "The Lean carrier supplies Pin/Pout/Part fields globally. Claims with scientifically ABSENT P or Pi must be representable by degenerate/technical carriers without treating those implementation values as source-supported role instantiations.",
+      "The Lean K signature accepts Pin; SKL02 shows that the scientific role inventory must allow K with P_in absent. A technical singleton Pin may be used only as plumbing, never as evidence.",
+      "Role overlap must be permitted: SKL05 supplies an observable threshold that is simultaneously O evidence and Q-inducing criterion structure."
+    ],
+    "counterexample_to_grammar_v0": {
+      "decisive_role_inventory_counterexample": false,
+      "statement": "No SKL claim requires an additional top-level role beyond Grammar v0 on the frozen lane. SKL03-SKL06 do expose non-role relation-semantic residuals, so Grammar v0 should not yet be described as a lossless full claim language.",
+      "grammar_change_authorized": false
+    },
+    "terminal_classification": "SKL_GRAMMAR_V0_ROLE_COVERAGE_WITH_RELATION_SEMANTIC_RESIDUALS"
+  }
+}
