@@ -17,6 +17,7 @@ clustering enters candidate generation.
 from __future__ import annotations
 
 import argparse
+from concurrent.futures import ProcessPoolExecutor
 import hashlib
 import itertools
 import json
@@ -610,6 +611,19 @@ def summarize_image(image: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def _compute_pair_task(
+    task: tuple[str, str, dict[str, Any], dict[str, Any]],
+) -> tuple[str, str, bool, list[dict[str, Any]]]:
+    """Run one exact pair search; pair tasks are scientifically independent."""
+    left_id, right_id, left, right = task
+    return (
+        left_id,
+        right_id,
+        skeleton_equivalent(left, right),
+        pair_common_candidates(left, right),
+    )
+
+
 def run_pilot() -> dict[str, Any]:
     skeletons = load_skl_skeletons()
 
@@ -617,25 +631,33 @@ def run_pilot() -> dict[str, Any]:
     all_candidate_buckets: dict[str, list[dict[str, Any]]] = {}
     pair_candidate_counts = {}
 
-    for i, left_id in enumerate(SKL_IDS):
-        for right_id in SKL_IDS[i + 1:]:
-            left = skeletons[left_id]
-            right = skeletons[right_id]
-            if skeleton_equivalent(left, right):
-                exact_equivalence_pairs.append([left_id, right_id])
+    pair_tasks = [
+        (left_id, right_id, skeletons[left_id], skeletons[right_id])
+        for i, left_id in enumerate(SKL_IDS)
+        for right_id in SKL_IDS[i + 1:]
+    ]
 
-            candidates = pair_common_candidates(left, right)
-            pair_candidate_counts[f"{left_id}::{right_id}"] = len(candidates)
-            for payload in candidates:
-                item, created = _register_equivalence_class(
-                    all_candidate_buckets,
-                    payload["image"],
-                    {"pair_witnesses": {}},
-                )
-                item["pair_witnesses"][f"{left_id}::{right_id}"] = {
-                    left_id: payload["left_witness"],
-                    right_id: payload["right_witness"],
-                }
+    # Same exact pair search as the merged MEM pilot, parallelized only across
+    # scientifically independent unordered claim pairs. pool.map preserves
+    # the frozen pair order, so aggregation and report bytes remain deterministic.
+    with ProcessPoolExecutor(max_workers=min(4, len(pair_tasks))) as pool:
+        pair_results = list(pool.map(_compute_pair_task, pair_tasks))
+
+    for left_id, right_id, equivalent, candidates in pair_results:
+        if equivalent:
+            exact_equivalence_pairs.append([left_id, right_id])
+
+        pair_candidate_counts[f"{left_id}::{right_id}"] = len(candidates)
+        for payload in candidates:
+            item, created = _register_equivalence_class(
+                all_candidate_buckets,
+                payload["image"],
+                {"pair_witnesses": {}},
+            )
+            item["pair_witnesses"][f"{left_id}::{right_id}"] = {
+                left_id: payload["left_witness"],
+                right_id: payload["right_witness"],
+            }
 
     all_candidates: list[dict[str, Any]] = []
     for inv in sorted(all_candidate_buckets):
