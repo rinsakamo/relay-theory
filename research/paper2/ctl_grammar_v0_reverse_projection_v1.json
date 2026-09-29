@@ -1,0 +1,3284 @@
+{
+  "schema_version": "paper2-ctl-grammar-v0-reverse-projection-v1",
+  "owner_issue": 334,
+  "scope": {
+    "lane": "CTL",
+    "claim_ids": [
+      "CTL01",
+      "CTL02",
+      "CTL03",
+      "CTL04",
+      "CTL05",
+      "CTL06"
+    ],
+    "other_lanes_processed": false
+  },
+  "authority": {
+    "grammar_issue": 321,
+    "lean_pr": 322,
+    "authority_main_commit": "78cd63cd6ec2898f3b4783b6db394c73c0551ff4",
+    "ctl_archetype_owner_issue": 298,
+    "ctl_archetype_pr": 306,
+    "ctl_archetype_report": {
+      "path": "research/paper2/ctl_archetype_lane_v1.json",
+      "blob_sha": "7a23cadb6eb54f8c4c62e0d11d3aac2c0315c3ed",
+      "frozen_report_sha256": "c7a230eed00d00461dd82480e15d0c1abc79b66b55f079af0a7e06e2971c351c",
+      "decision": "CTL_MULTIPLE_INCOMPARABLE_ARCHETYPES",
+      "maximal_archetype_candidate_count": 28,
+      "exact_basis_skeleton_equivalence_pairs": 0
+    }
+  },
+  "frozen_input_policy": {
+    "source_reread": false,
+    "modified_artifacts": [],
+    "prohibited_modifications": [
+      "ClaimIR",
+      "B_P2",
+      "Phi",
+      "U_claim",
+      "F_R",
+      "structural adjudications",
+      "bounded Archetype identities"
+    ],
+    "condition_mapping_rule": "A frozen condition node is not C by label. Map to C only when frozen topology is an admissibility/realizability constraint; otherwise derive only with explicit structural support or retain as residual.",
+    "persistence_rule": "Do not map persistence to literal K = I without an explicit carry/transport witness."
+  },
+  "status_semantics": {
+    "SUPPORTED": "Directly licensed by frozen node/control/relation/temporal topology.",
+    "PARTIAL": "Some directional or argument structure maps, but the frozen object does not license the full Grammar-v0 distinction.",
+    "ABSENT": "No positive frozen support for the role in this claim."
+  },
+  "verdict_semantics": {
+    "FULL": "All required frozen positive structural nodes/relations project without residual.",
+    "PARTIAL": "The structure is representable but one Grammar-v0 distinction is finer than the frozen evidence or only partially licensed.",
+    "RESIDUAL": "At least one required frozen positive structural node/relation remains outside Grammar v0 without reinterpretation."
+  },
+  "claims": [
+    {
+      "claim_id": "CTL01",
+      "frozen_claim_id": "CTL01.C1",
+      "input_identity": {
+        "claimir_blob_sha": "3835859fe26fb45487eca8cf4e136df934257996",
+        "adjudication_blob_sha": "146a9b1ea4ea6c617c0a4ed9a2d0c5a76e4a9a2b"
+      },
+      "grammar_roles_instantiated": [
+        "X",
+        "Q",
+        "P_in",
+        "P_out",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "claim_relation_id": "r1",
+          "status": "SUPPORTED",
+          "grammar_projection": [
+            "K"
+          ],
+          "frozen_kind": "maps_to",
+          "arguments": [
+            "feedback_control_policy",
+            "estimated_current_state",
+            "corrective_control_action"
+          ],
+          "source_span_ids": [
+            "s2",
+            "s3"
+          ],
+          "description": "the feedback policy uses the current state estimate to select the control action appropriate to the current circumstances"
+        },
+        {
+          "claim_relation_id": "r2",
+          "status": "SUPPORTED",
+          "grammar_projection": [
+            "K",
+            "Q"
+          ],
+          "frozen_kind": "differs",
+          "arguments": [
+            "task_relevant_deviation",
+            "task_irrelevant_deviation",
+            "corrective_control_action"
+          ],
+          "source_span_ids": [
+            "s1",
+            "s3"
+          ],
+          "description": "under the minimal-intervention relation, deviations that interfere with task performance are corrected, whereas strictly redundant deviations can receive no corrective action and are allowed greater variability",
+          "note": "The two deviation conditions are retained as a Q-conditioned derived classification, not primitive Pi or C."
+        },
+        {
+          "claim_relation_id": "r3",
+          "status": "SUPPORTED",
+          "grammar_projection": [
+            "Q"
+          ],
+          "frozen_kind": "satisfies",
+          "arguments": [
+            "feedback_control_policy",
+            "task_cost"
+          ],
+          "source_span_ids": [
+            "s2",
+            "s3"
+          ],
+          "description": "the policy is defined by minimizing expected cumulative task and effort cost under stochastic dynamics"
+        },
+        {
+          "claim_relation_id": "r4",
+          "status": "PARTIAL",
+          "grammar_projection": [
+            "P_in",
+            "P_out",
+            "rho/O"
+          ],
+          "frozen_kind": "distinguishes",
+          "arguments": [
+            "external_perturbation_probe",
+            "task_relevant_deviation",
+            "task_irrelevant_deviation"
+          ],
+          "source_span_ids": [
+            "s4"
+          ],
+          "description": "the source's perturbation simulation distinguishes selective correction: the task-relevant end-effector trajectory rapidly returns to target while a redundant intermediate trajectory can change substantially",
+          "note": "One frozen P node packages both perturbation and readout/probe aspects; directionality is not independently individuated."
+        }
+      ],
+      "mappings": {
+        "Pi": {
+          "status": "ABSENT",
+          "evidence": {
+            "partition_Pi": {
+              "state": "not_required"
+            }
+          },
+          "notes": "No frozen partition_Pi support; task-relevant/task-irrelevant deviation classes are not promoted to primitive Pi."
+        },
+        "X": {
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "claim_node_id": "feedback_control_policy",
+              "claim_role": "state_or_structure",
+              "description": "time-varying mapping from estimated state and time to control actions that minimizes expected cumulative cost for the task",
+              "source_span_ids": [
+                "s2",
+                "s3"
+              ],
+              "coordinate_id": "basis.s1",
+              "coordinate_required": true
+            }
+          ]
+        },
+        "C": {
+          "status": "ABSENT",
+          "evidence": {
+            "resource_C": {
+              "state": "not_required"
+            }
+          },
+          "notes": "Deviation relevance is criterion-relative rather than an admissibility/resource constraint."
+        },
+        "Q": {
+          "status": "SUPPORTED",
+          "evidence": {
+            "control": {
+              "state": "present",
+              "claim_node_ids": [
+                "task_cost"
+              ],
+              "provenance_kind": "source_declared",
+              "fixed_before_phi": true
+            },
+            "nodes": [
+              {
+                "claim_node_id": "task_cost",
+                "claim_role": "criterion",
+                "description": "expected cumulative objective combining task error with an effort penalty on control",
+                "source_span_ids": [
+                  "s2",
+                  "s3"
+                ],
+                "coordinate_id": "basis.q1",
+                "coordinate_required": true
+              }
+            ],
+            "relations": [
+              "r2",
+              "r3"
+            ]
+          }
+        },
+        "P_in": {
+          "status": "PARTIAL",
+          "evidence": {
+            "control": {
+              "state": "present",
+              "claim_node_ids": [
+                "external_perturbation_probe"
+              ],
+              "provenance_kind": "source_declared",
+              "fixed_before_phi": true
+            },
+            "nodes": [
+              {
+                "claim_node_id": "external_perturbation_probe",
+                "claim_role": "probe",
+                "description": "source simulation in which random perturbations are added to control signals to compare resistance in task-relevant versus redundant movement dimensions",
+                "source_span_ids": [
+                  "s4"
+                ],
+                "coordinate_id": "basis.p1",
+                "coordinate_required": true
+              }
+            ],
+            "relations": [
+              "r4"
+            ]
+          },
+          "notes": "The frozen probe description includes random perturbation of control signals, but no distinct intervention node was adjudicated."
+        },
+        "P_out": {
+          "status": "SUPPORTED",
+          "evidence": {
+            "control": {
+              "state": "present",
+              "claim_node_ids": [
+                "external_perturbation_probe"
+              ],
+              "provenance_kind": "source_declared",
+              "fixed_before_phi": true
+            },
+            "nodes": [
+              {
+                "claim_node_id": "external_perturbation_probe",
+                "claim_role": "probe",
+                "description": "source simulation in which random perturbations are added to control signals to compare resistance in task-relevant versus redundant movement dimensions",
+                "source_span_ids": [
+                  "s4"
+                ],
+                "coordinate_id": "basis.p1",
+                "coordinate_required": true
+              }
+            ],
+            "relations": [
+              "r4"
+            ]
+          }
+        },
+        "K": {
+          "status": "SUPPORTED",
+          "evidence": {
+            "relations": [
+              "r1",
+              "r2"
+            ],
+            "relation_evidence": [
+              {
+                "claim_relation_id": "r1",
+                "status": "SUPPORTED",
+                "grammar_projection": [
+                  "K"
+                ],
+                "frozen_kind": "maps_to",
+                "arguments": [
+                  "feedback_control_policy",
+                  "estimated_current_state",
+                  "corrective_control_action"
+                ],
+                "source_span_ids": [
+                  "s2",
+                  "s3"
+                ],
+                "description": "the feedback policy uses the current state estimate to select the control action appropriate to the current circumstances"
+              },
+              {
+                "claim_relation_id": "r2",
+                "status": "SUPPORTED",
+                "grammar_projection": [
+                  "K",
+                  "Q"
+                ],
+                "frozen_kind": "differs",
+                "arguments": [
+                  "task_relevant_deviation",
+                  "task_irrelevant_deviation",
+                  "corrective_control_action"
+                ],
+                "source_span_ids": [
+                  "s1",
+                  "s3"
+                ],
+                "description": "under the minimal-intervention relation, deviations that interfere with task performance are corrected, whereas strictly redundant deviations can receive no corrective action and are allowed greater variability"
+              }
+            ]
+          },
+          "notes": "K is a typed policy/dependence relation; no functionality assumption is added."
+        },
+        "T": {
+          "status": "SUPPORTED",
+          "evidence": {
+            "time_index": {
+              "state": "present",
+              "source_span_ids": [
+                "s2",
+                "s3"
+              ]
+            },
+            "history_window": {
+              "state": "present",
+              "source_span_ids": [
+                "s2"
+              ]
+            },
+            "future_horizon": {
+              "state": "present",
+              "source_span_ids": [
+                "s2",
+                "s3"
+              ]
+            },
+            "recurrence": {
+              "state": "present",
+              "source_span_ids": [
+                "s2",
+                "s3"
+              ]
+            },
+            "persistence": {
+              "state": "present",
+              "source_span_ids": [
+                "s2"
+              ]
+            },
+            "ordering": [
+              {
+                "before_coordinate_id": "basis.o1",
+                "after_coordinate_id": "basis.o2",
+                "source_span_ids": [
+                  "s2",
+                  "s3"
+                ]
+              }
+            ]
+          }
+        },
+        "rho/O": {
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "claim_node_id": "estimated_current_state",
+              "claim_role": "available_information",
+              "description": "current plant-state estimate available to the controller, formed by integrating delayed noisy sensory feedback with plant dynamics and prior control signals",
+              "source_span_ids": [
+                "s2"
+              ],
+              "coordinate_id": "basis.o1",
+              "coordinate_required": true
+            },
+            {
+              "claim_node_id": "corrective_control_action",
+              "claim_role": "response_or_outcome",
+              "description": "control action produced by the feedback policy in response to the estimated current state",
+              "source_span_ids": [
+                "s2",
+                "s3"
+              ],
+              "coordinate_id": "basis.o2",
+              "coordinate_required": true
+            }
+          ],
+          "notes": "O includes available information and response/action traces; it is not restricted to terminal output."
+        }
+      },
+      "derived_feature_candidates": [
+        {
+          "feature": "Q-conditioned deviation classification",
+          "basis": [
+            "task_cost",
+            "task_relevant_deviation",
+            "task_irrelevant_deviation",
+            "r2"
+          ],
+          "status": "SUPPORTED_AS_DERIVED_CANDIDATE"
+        },
+        {
+          "feature": "persistence/carry over T",
+          "basis": [
+            "temporal.persistence",
+            "temporal.history_window"
+          ],
+          "status": "CANDIDATE_ONLY",
+          "guardrail": "No literal K = I is asserted."
+        },
+        {
+          "feature": "compound perturb-and-read interface operation",
+          "basis": [
+            "external_perturbation_probe",
+            "r4"
+          ],
+          "status": "PARTIAL"
+        }
+      ],
+      "unmapped_residual": [],
+      "verdict": "PARTIAL",
+      "notes": [
+        "The role vocabulary covers the frozen positive structure, but P directionality is finer than the single frozen perturbation-probe node."
+      ]
+    },
+    {
+      "claim_id": "CTL02",
+      "frozen_claim_id": "CTL02.C1",
+      "input_identity": {
+        "claimir_blob_sha": "e2b25daa53c6e52518ede45cb32a1e5808ee7a53",
+        "adjudication_blob_sha": "4ea78891bc1a28adbbd89f9e60dbbb5887a62416"
+      },
+      "grammar_roles_instantiated": [
+        "Pi",
+        "X",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "claim_relation_id": "r1",
+          "status": "SUPPORTED",
+          "grammar_projection": [
+            "Pi",
+            "X"
+          ],
+          "frozen_kind": "maps_to",
+          "arguments": [
+            "pfc_control_subsystem",
+            "maintained_goal_rule_state"
+          ],
+          "source_span_ids": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "description": "the source assigns active maintenance of current goals, rules, and means to patterns of activity in the prefrontal subsystem"
+        },
+        {
+          "claim_relation_id": "r2",
+          "status": "SUPPORTED",
+          "grammar_projection": [
+            "K"
+          ],
+          "frozen_kind": "maps_to",
+          "arguments": [
+            "maintained_goal_rule_state",
+            "top_down_modulatory_signal"
+          ],
+          "source_span_ids": [
+            "s1",
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "description": "maintained prefrontal representations provide top-down modulatory signals to other brain structures"
+        },
+        {
+          "claim_relation_id": "r3",
+          "status": "SUPPORTED",
+          "grammar_projection": [
+            "K"
+          ],
+          "frozen_kind": "changes",
+          "arguments": [
+            "top_down_modulatory_signal",
+            "downstream_processing_system",
+            "task_relevant_pathway_activity"
+          ],
+          "source_span_ids": [
+            "s1",
+            "s2",
+            "s5"
+          ],
+          "description": "the modulatory signal changes downstream processing so that activity is preferentially guided along the pathway appropriate to the current task"
+        },
+        {
+          "claim_relation_id": "r4",
+          "status": "PARTIAL",
+          "grammar_projection": [
+            "K"
+          ],
+          "frozen_kind": "depends_on",
+          "arguments": [
+            "task_appropriate_output",
+            "task_relevant_pathway_activity",
+            "strong_competing_alternative"
+          ],
+          "source_span_ids": [
+            "s2",
+            "s5"
+          ],
+          "description": "when a stronger competing pathway is present, producing the task-appropriate output depends on sufficient activation of the task-relevant pathway under top-down support",
+          "note": "strong_competing_alternative is a required condition argument with no licensed Grammar v0 role."
+        },
+        {
+          "claim_relation_id": "r5",
+          "status": "SUPPORTED",
+          "grammar_projection": [
+            "Pi"
+          ],
+          "frozen_kind": "differs",
+          "arguments": [
+            "pfc_control_subsystem",
+            "downstream_processing_system"
+          ],
+          "source_span_ids": [
+            "s5"
+          ],
+          "description": "the source explicitly distinguishes the prefrontal role as modulatory from the downstream pathways that actually transmit the input/internal-state-to-output mapping"
+        }
+      ],
+      "mappings": {
+        "Pi": {
+          "status": "SUPPORTED",
+          "evidence": {
+            "control": {
+              "state": "present",
+              "claim_node_ids": [
+                "pfc_control_subsystem",
+                "downstream_processing_system"
+              ],
+              "provenance_kind": "source_declared",
+              "fixed_before_phi": true
+            },
+            "nodes": [
+              {
+                "claim_node_id": "pfc_control_subsystem",
+                "claim_role": "partition",
+                "description": "prefrontal subsystem proposed to actively maintain task-relevant goal and rule representations and provide modulatory top-down signals",
+                "source_span_ids": [
+                  "s1",
+                  "s2",
+                  "s3",
+                  "s5"
+                ],
+                "coordinate_id": "basis.pi1",
+                "coordinate_required": true
+              },
+              {
+                "claim_node_id": "downstream_processing_system",
+                "claim_role": "partition",
+                "description": "other cortical or subcortical systems in which input/internal-state-to-output processing pathways carry task performance",
+                "source_span_ids": [
+                  "s1",
+                  "s2",
+                  "s3",
+                  "s5"
+                ],
+                "coordinate_id": "basis.pi2",
+                "coordinate_required": true
+              }
+            ],
+            "relations": [
+              "r1",
+              "r5"
+            ]
+          }
+        },
+        "X": {
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "claim_node_id": "maintained_goal_rule_state",
+              "claim_role": "state_or_structure",
+              "description": "persisting pattern of prefrontal activity representing a current goal, rule, or means for achieving the goal",
+              "source_span_ids": [
+                "s1",
+                "s2",
+                "s3",
+                "s4",
+                "s5"
+              ],
+              "coordinate_id": "basis.s1",
+              "coordinate_required": true
+            },
+            {
+              "claim_node_id": "top_down_modulatory_signal",
+              "claim_role": "other",
+              "description": "modulatory control signal generated by the maintained prefrontal representation that alters support for downstream processing pathways",
+              "source_span_ids": [
+                "s1",
+                "s2",
+                "s3",
+                "s5"
+              ],
+              "coordinate_id": "basis.s2",
+              "coordinate_required": true
+            },
+            {
+              "claim_node_id": "task_relevant_pathway_activity",
+              "claim_role": "state_or_structure",
+              "description": "activity flowing along the downstream pathway that implements the mapping appropriate to the current goal or rule",
+              "source_span_ids": [
+                "s1",
+                "s2",
+                "s5"
+              ],
+              "coordinate_id": "basis.s3",
+              "coordinate_required": true
+            }
+          ]
+        },
+        "C": {
+          "status": "ABSENT",
+          "evidence": {
+            "resource_C": {
+              "state": "not_required"
+            }
+          },
+          "notes": "The competing alternative is contextual competition, not an admissibility constraint."
+        },
+        "Q": {
+          "status": "ABSENT",
+          "evidence": {
+            "criterion_Q": {
+              "state": "not_required"
+            }
+          }
+        },
+        "P_in": {
+          "status": "ABSENT",
+          "evidence": {
+            "probe_P": {
+              "state": "not_required"
+            }
+          }
+        },
+        "P_out": {
+          "status": "ABSENT",
+          "evidence": {
+            "probe_P": {
+              "state": "not_required"
+            }
+          }
+        },
+        "K": {
+          "status": "SUPPORTED",
+          "evidence": {
+            "relations": [
+              "r2",
+              "r3",
+              "r4"
+            ],
+            "relation_evidence": [
+              {
+                "claim_relation_id": "r2",
+                "status": "SUPPORTED",
+                "grammar_projection": [
+                  "K"
+                ],
+                "frozen_kind": "maps_to",
+                "arguments": [
+                  "maintained_goal_rule_state",
+                  "top_down_modulatory_signal"
+                ],
+                "source_span_ids": [
+                  "s1",
+                  "s2",
+                  "s3",
+                  "s5"
+                ],
+                "description": "maintained prefrontal representations provide top-down modulatory signals to other brain structures"
+              },
+              {
+                "claim_relation_id": "r3",
+                "status": "SUPPORTED",
+                "grammar_projection": [
+                  "K"
+                ],
+                "frozen_kind": "changes",
+                "arguments": [
+                  "top_down_modulatory_signal",
+                  "downstream_processing_system",
+                  "task_relevant_pathway_activity"
+                ],
+                "source_span_ids": [
+                  "s1",
+                  "s2",
+                  "s5"
+                ],
+                "description": "the modulatory signal changes downstream processing so that activity is preferentially guided along the pathway appropriate to the current task"
+              },
+              {
+                "claim_relation_id": "r4",
+                "status": "PARTIAL",
+                "grammar_projection": [
+                  "K"
+                ],
+                "frozen_kind": "depends_on",
+                "arguments": [
+                  "task_appropriate_output",
+                  "task_relevant_pathway_activity",
+                  "strong_competing_alternative"
+                ],
+                "source_span_ids": [
+                  "s2",
+                  "s5"
+                ],
+                "description": "when a stronger competing pathway is present, producing the task-appropriate output depends on sufficient activation of the task-relevant pathway under top-down support"
+              }
+            ]
+          }
+        },
+        "T": {
+          "status": "SUPPORTED",
+          "evidence": {
+            "time_index": {
+              "state": "present",
+              "source_span_ids": [
+                "s1",
+                "s2",
+                "s3",
+                "s4",
+                "s5"
+              ]
+            },
+            "history_window": {
+              "state": "present",
+              "source_span_ids": [
+                "s3",
+                "s4"
+              ]
+            },
+            "future_horizon": {
+              "state": "present",
+              "source_span_ids": [
+                "s1",
+                "s2",
+                "s4",
+                "s5"
+              ]
+            },
+            "recurrence": {
+              "state": "not_required"
+            },
+            "persistence": {
+              "state": "present",
+              "source_span_ids": [
+                "s3",
+                "s4"
+              ]
+            },
+            "ordering": [
+              {
+                "before_coordinate_id": "basis.s1",
+                "after_coordinate_id": "basis.o1",
+                "source_span_ids": [
+                  "s1",
+                  "s2",
+                  "s4",
+                  "s5"
+                ]
+              }
+            ]
+          }
+        },
+        "rho/O": {
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "claim_node_id": "task_appropriate_output",
+              "claim_role": "response_or_outcome",
+              "description": "behavioral or internal output produced by the task-appropriate downstream mapping",
+              "source_span_ids": [
+                "s1",
+                "s2",
+                "s5"
+              ],
+              "coordinate_id": "basis.o1",
+              "coordinate_required": true
+            }
+          ]
+        }
+      },
+      "derived_feature_candidates": [
+        {
+          "feature": "persistence/carry of maintained goal/rule state across T",
+          "basis": [
+            "temporal.persistence",
+            "temporal.history_window",
+            "maintained_goal_rule_state"
+          ],
+          "status": "CANDIDATE_ONLY",
+          "guardrail": "Carry/transport is required; no literal identity across indexed fibers is asserted."
+        },
+        {
+          "feature": "typed modulatory K distinct from transmission",
+          "basis": [
+            "r2",
+            "r3",
+            "r5"
+          ],
+          "status": "SUPPORTED_AS_K_TYPING"
+        }
+      ],
+      "unmapped_residual": [
+        {
+          "kind": "required_context_condition",
+          "claim_node_id": "strong_competing_alternative",
+          "evidence": {
+            "claim_node_id": "strong_competing_alternative",
+            "claim_role": "condition",
+            "description": "a stronger, more habitual, or otherwise competing pathway that would dominate without sufficient top-down modulation",
+            "source_span_ids": [
+              "s2",
+              "s5"
+            ],
+            "coordinate_id": "basis.cnd1",
+            "coordinate_required": true
+          },
+          "affected_relations": [
+            "r4"
+          ],
+          "reason": "Not frozen as X, Pi, Q, P, O, or C; topology makes it a contextual competitor rather than a realizability/admissibility constraint."
+        }
+      ],
+      "verdict": "RESIDUAL",
+      "notes": [
+        "Functional subsystem decomposition supports Pi, but the required competing-alternative condition remains outside Grammar v0."
+      ]
+    },
+    {
+      "claim_id": "CTL03",
+      "frozen_claim_id": "CTL03.C1",
+      "input_identity": {
+        "claimir_blob_sha": "4daa2f027f18e65cde7aa4a0543b15e143f3d8ff",
+        "adjudication_blob_sha": "10be67e480abad4570bc0b9840f6e851a791591a"
+      },
+      "grammar_roles_instantiated": [
+        "X",
+        "Q",
+        "P_in",
+        "P_out",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "claim_relation_id": "r1",
+          "status": "PARTIAL",
+          "grammar_projection": [
+            "K",
+            "T"
+          ],
+          "frozen_kind": "predicts",
+          "arguments": [
+            "prior_trial_context",
+            "contextual_expectancy_state"
+          ],
+          "source_span_ids": [
+            "s2",
+            "s3"
+          ],
+          "description": "the preceding distractor condition is used as a trial-history context that predicts a shift in expectation and in current evidence use, despite unchanged objective transition probabilities in Experiment 1",
+          "note": "prior_trial_context is a required contextual-condition argument without a licensed Grammar v0 role."
+        },
+        {
+          "claim_relation_id": "r2",
+          "status": "SUPPORTED",
+          "grammar_projection": [
+            "P_in",
+            "K",
+            "T"
+          ],
+          "frozen_kind": "changes",
+          "arguments": [
+            "probability_context_intervention",
+            "contextual_expectancy_state"
+          ],
+          "source_span_ids": [
+            "s2",
+            "s4",
+            "s5"
+          ],
+          "description": "blockwise probability information and predictive symbolic cues experimentally alter the context available for anticipating compatible versus incompatible distractor information"
+        },
+        {
+          "claim_relation_id": "r3",
+          "status": "SUPPORTED",
+          "grammar_projection": [
+            "Q",
+            "K"
+          ],
+          "frozen_kind": "depends_on",
+          "arguments": [
+            "expected_option_utility",
+            "contextual_expectancy_state"
+          ],
+          "source_span_ids": [
+            "s1",
+            "s2",
+            "s6"
+          ],
+          "description": "the expected usefulness of relying on the earlier or later evidence source depends on what the participant expects about the upcoming distractor condition and the associated speed-accuracy consequences"
+        },
+        {
+          "claim_relation_id": "r4",
+          "status": "SUPPORTED",
+          "grammar_projection": [
+            "Q",
+            "K"
+          ],
+          "frozen_kind": "depends_on",
+          "arguments": [
+            "evidence_weighting_state",
+            "expected_option_utility",
+            "contextual_expectancy_state"
+          ],
+          "source_span_ids": [
+            "s2",
+            "s4",
+            "s5",
+            "s6"
+          ],
+          "description": "the relative emphasis placed on the two evidence sources varies with their expected usefulness in the current context"
+        },
+        {
+          "claim_relation_id": "r5",
+          "status": "SUPPORTED",
+          "grammar_projection": [
+            "T"
+          ],
+          "frozen_kind": "precedes",
+          "arguments": [
+            "early_multi_input_evidence",
+            "late_target_selective_evidence"
+          ],
+          "source_span_ids": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "description": "the broad early evidence is available before the later target-selective evidence, while both can contribute during a single trial"
+        },
+        {
+          "claim_relation_id": "r6",
+          "status": "SUPPORTED",
+          "grammar_projection": [
+            "K"
+          ],
+          "frozen_kind": "depends_on",
+          "arguments": [
+            "response_preparation_state",
+            "early_multi_input_evidence",
+            "late_target_selective_evidence",
+            "evidence_weighting_state"
+          ],
+          "source_span_ids": [
+            "s3",
+            "s5",
+            "s6"
+          ],
+          "description": "preparation of candidate responses can reflect evidence from both temporal phases, with their relative contributions altered by the current weighting state"
+        },
+        {
+          "claim_relation_id": "r7",
+          "status": "PARTIAL",
+          "grammar_projection": [
+            "K"
+          ],
+          "frozen_kind": "depends_on",
+          "arguments": [
+            "behavioral_interference_outcome",
+            "current_distractor_compatibility",
+            "evidence_weighting_state"
+          ],
+          "source_span_ids": [
+            "s2",
+            "s3",
+            "s4",
+            "s5",
+            "s6"
+          ],
+          "description": "the observed reaction-time and error difference between compatible and incompatible trials varies with how strongly the system relies on the earlier distractor-sensitive evidence",
+          "note": "current_distractor_compatibility is a required contextual-condition argument without a licensed Grammar v0 role."
+        },
+        {
+          "claim_relation_id": "r8",
+          "status": "SUPPORTED",
+          "grammar_projection": [
+            "P_out",
+            "rho/O"
+          ],
+          "frozen_kind": "maps_to",
+          "arguments": [
+            "context_expectancy_probe",
+            "behavioral_interference_outcome"
+          ],
+          "source_span_ids": [
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "description": "the sequence, block-probability, and symbolic-cue procedures expose context-dependent changes in the compatibility-related reaction-time and error effect"
+        }
+      ],
+      "mappings": {
+        "Pi": {
+          "status": "ABSENT",
+          "evidence": {
+            "partition_Pi": {
+              "state": "not_required"
+            }
+          }
+        },
+        "X": {
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "claim_node_id": "contextual_expectancy_state",
+              "claim_role": "state_or_structure",
+              "description": "the participant's context-dependent expectation about whether upcoming distractor information is likely to support or compete with the target response",
+              "source_span_ids": [
+                "s1",
+                "s2",
+                "s3",
+                "s4",
+                "s5",
+                "s6"
+              ],
+              "coordinate_id": "basis.s1",
+              "coordinate_required": true
+            },
+            {
+              "claim_node_id": "evidence_weighting_state",
+              "claim_role": "state_or_structure",
+              "description": "context-dependent relative emphasis assigned to the early multi-input and later target-selective evidence when preparing a response",
+              "source_span_ids": [
+                "s2",
+                "s3",
+                "s4",
+                "s5",
+                "s6"
+              ],
+              "coordinate_id": "basis.s2",
+              "coordinate_required": true
+            },
+            {
+              "claim_node_id": "response_preparation_state",
+              "claim_role": "state_or_structure",
+              "description": "partial preparation of one or more candidate motor responses before the final overt response is emitted",
+              "source_span_ids": [
+                "s3",
+                "s5"
+              ],
+              "coordinate_id": "basis.s3",
+              "coordinate_required": true
+            }
+          ]
+        },
+        "C": {
+          "status": "ABSENT",
+          "evidence": {
+            "resource_C": {
+              "state": "not_required"
+            }
+          },
+          "notes": "Trial-history and compatibility conditions alter dependence/orientation but do not constrain realizability."
+        },
+        "Q": {
+          "status": "SUPPORTED",
+          "evidence": {
+            "control": {
+              "state": "present",
+              "claim_node_ids": [
+                "expected_option_utility"
+              ],
+              "provenance_kind": "source_declared",
+              "fixed_before_phi": true
+            },
+            "nodes": [
+              {
+                "claim_node_id": "expected_option_utility",
+                "claim_role": "criterion",
+                "description": "expected usefulness of relying more heavily on one evidence source, evaluated in terms of the speed and accuracy consequences expected in the current context",
+                "source_span_ids": [
+                  "s1",
+                  "s2",
+                  "s6"
+                ],
+                "coordinate_id": "basis.q1",
+                "coordinate_required": true
+              }
+            ],
+            "relations": [
+              "r3",
+              "r4"
+            ]
+          }
+        },
+        "P_in": {
+          "status": "SUPPORTED",
+          "evidence": {
+            "control": {
+              "state": "present",
+              "claim_node_ids": [
+                "probability_context_intervention",
+                "context_expectancy_probe"
+              ],
+              "provenance_kind": "source_declared",
+              "fixed_before_phi": true
+            },
+            "nodes": [
+              {
+                "claim_node_id": "probability_context_intervention",
+                "claim_role": "intervention",
+                "description": "experimental manipulation of compatible versus incompatible event probabilities across blocks or by a predictive symbolic cue",
+                "source_span_ids": [
+                  "s2",
+                  "s4",
+                  "s5"
+                ],
+                "coordinate_id": "basis.p1",
+                "coordinate_required": true
+              }
+            ],
+            "relations": [
+              "r2"
+            ]
+          }
+        },
+        "P_out": {
+          "status": "SUPPORTED",
+          "evidence": {
+            "control": {
+              "state": "present",
+              "claim_node_ids": [
+                "probability_context_intervention",
+                "context_expectancy_probe"
+              ],
+              "provenance_kind": "source_declared",
+              "fixed_before_phi": true
+            },
+            "nodes": [
+              {
+                "claim_node_id": "context_expectancy_probe",
+                "claim_role": "probe",
+                "description": "the source's combined sequence, block-probability, and symbolic-cue procedures for testing whether context changes evidence use and the resulting behavioral interference",
+                "source_span_ids": [
+                  "s2",
+                  "s3",
+                  "s4",
+                  "s5"
+                ],
+                "coordinate_id": "basis.p2",
+                "coordinate_required": true
+              }
+            ],
+            "relations": [
+              "r8"
+            ]
+          }
+        },
+        "K": {
+          "status": "SUPPORTED",
+          "evidence": {
+            "relations": [
+              "r1",
+              "r2",
+              "r3",
+              "r4",
+              "r6",
+              "r7"
+            ],
+            "relation_evidence": [
+              {
+                "claim_relation_id": "r1",
+                "status": "PARTIAL",
+                "grammar_projection": [
+                  "K"
+                ],
+                "frozen_kind": "predicts",
+                "arguments": [
+                  "prior_trial_context",
+                  "contextual_expectancy_state"
+                ],
+                "source_span_ids": [
+                  "s2",
+                  "s3"
+                ],
+                "description": "the preceding distractor condition is used as a trial-history context that predicts a shift in expectation and in current evidence use, despite unchanged objective transition probabilities in Experiment 1"
+              },
+              {
+                "claim_relation_id": "r2",
+                "status": "SUPPORTED",
+                "grammar_projection": [
+                  "K"
+                ],
+                "frozen_kind": "changes",
+                "arguments": [
+                  "probability_context_intervention",
+                  "contextual_expectancy_state"
+                ],
+                "source_span_ids": [
+                  "s2",
+                  "s4",
+                  "s5"
+                ],
+                "description": "blockwise probability information and predictive symbolic cues experimentally alter the context available for anticipating compatible versus incompatible distractor information"
+              },
+              {
+                "claim_relation_id": "r3",
+                "status": "SUPPORTED",
+                "grammar_projection": [
+                  "K",
+                  "Q"
+                ],
+                "frozen_kind": "depends_on",
+                "arguments": [
+                  "expected_option_utility",
+                  "contextual_expectancy_state"
+                ],
+                "source_span_ids": [
+                  "s1",
+                  "s2",
+                  "s6"
+                ],
+                "description": "the expected usefulness of relying on the earlier or later evidence source depends on what the participant expects about the upcoming distractor condition and the associated speed-accuracy consequences"
+              },
+              {
+                "claim_relation_id": "r4",
+                "status": "SUPPORTED",
+                "grammar_projection": [
+                  "K",
+                  "Q"
+                ],
+                "frozen_kind": "depends_on",
+                "arguments": [
+                  "evidence_weighting_state",
+                  "expected_option_utility",
+                  "contextual_expectancy_state"
+                ],
+                "source_span_ids": [
+                  "s2",
+                  "s4",
+                  "s5",
+                  "s6"
+                ],
+                "description": "the relative emphasis placed on the two evidence sources varies with their expected usefulness in the current context"
+              },
+              {
+                "claim_relation_id": "r6",
+                "status": "SUPPORTED",
+                "grammar_projection": [
+                  "K"
+                ],
+                "frozen_kind": "depends_on",
+                "arguments": [
+                  "response_preparation_state",
+                  "early_multi_input_evidence",
+                  "late_target_selective_evidence",
+                  "evidence_weighting_state"
+                ],
+                "source_span_ids": [
+                  "s3",
+                  "s5",
+                  "s6"
+                ],
+                "description": "preparation of candidate responses can reflect evidence from both temporal phases, with their relative contributions altered by the current weighting state"
+              },
+              {
+                "claim_relation_id": "r7",
+                "status": "PARTIAL",
+                "grammar_projection": [
+                  "K"
+                ],
+                "frozen_kind": "depends_on",
+                "arguments": [
+                  "behavioral_interference_outcome",
+                  "current_distractor_compatibility",
+                  "evidence_weighting_state"
+                ],
+                "source_span_ids": [
+                  "s2",
+                  "s3",
+                  "s4",
+                  "s5",
+                  "s6"
+                ],
+                "description": "the observed reaction-time and error difference between compatible and incompatible trials varies with how strongly the system relies on the earlier distractor-sensitive evidence"
+              }
+            ]
+          }
+        },
+        "T": {
+          "status": "SUPPORTED",
+          "evidence": {
+            "time_index": {
+              "state": "present",
+              "source_span_ids": [
+                "s1",
+                "s2",
+                "s3",
+                "s4",
+                "s5",
+                "s6"
+              ]
+            },
+            "history_window": {
+              "state": "present",
+              "source_span_ids": [
+                "s2",
+                "s3",
+                "s4"
+              ]
+            },
+            "future_horizon": {
+              "state": "present",
+              "source_span_ids": [
+                "s1",
+                "s2",
+                "s5",
+                "s6"
+              ]
+            },
+            "recurrence": {
+              "state": "present",
+              "source_span_ids": [
+                "s2",
+                "s3",
+                "s4"
+              ]
+            },
+            "persistence": {
+              "state": "present",
+              "source_span_ids": [
+                "s4",
+                "s5"
+              ]
+            },
+            "ordering": [
+              {
+                "before_coordinate_id": "basis.cnd1",
+                "after_coordinate_id": "basis.s1",
+                "source_span_ids": [
+                  "s2",
+                  "s3"
+                ]
+              },
+              {
+                "before_coordinate_id": "basis.p1",
+                "after_coordinate_id": "basis.s1",
+                "source_span_ids": [
+                  "s2",
+                  "s4",
+                  "s5"
+                ]
+              },
+              {
+                "before_coordinate_id": "basis.o1",
+                "after_coordinate_id": "basis.o2",
+                "source_span_ids": [
+                  "s1",
+                  "s2",
+                  "s3"
+                ]
+              }
+            ]
+          }
+        },
+        "rho/O": {
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "claim_node_id": "early_multi_input_evidence",
+              "claim_role": "available_information",
+              "description": "evidence available relatively early from both target and surrounding stimulus information before reliable spatial selection",
+              "source_span_ids": [
+                "s1",
+                "s2",
+                "s3",
+                "s6"
+              ],
+              "coordinate_id": "basis.o1",
+              "coordinate_required": true
+            },
+            {
+              "claim_node_id": "late_target_selective_evidence",
+              "claim_role": "available_information",
+              "description": "later evidence based primarily on the designated target after stronger spatial selection",
+              "source_span_ids": [
+                "s1",
+                "s2",
+                "s3",
+                "s6"
+              ],
+              "coordinate_id": "basis.o2",
+              "coordinate_required": true
+            },
+            {
+              "claim_node_id": "behavioral_interference_outcome",
+              "claim_role": "response_or_outcome",
+              "description": "difference in reaction time and error probability between trials with response-compatible and response-incompatible distractor information",
+              "source_span_ids": [
+                "s1",
+                "s2",
+                "s3",
+                "s4",
+                "s5",
+                "s6"
+              ],
+              "coordinate_id": "basis.o3",
+              "coordinate_required": true
+            }
+          ],
+          "notes": "Both information-like and outcome-like O nodes are required; O is not terminal-only."
+        }
+      },
+      "derived_feature_candidates": [
+        {
+          "feature": "Q-conditioned evidence reweighting",
+          "basis": [
+            "expected_option_utility",
+            "contextual_expectancy_state",
+            "evidence_weighting_state",
+            "r3",
+            "r4"
+          ],
+          "status": "SUPPORTED_AS_DERIVED_CANDIDATE"
+        },
+        {
+          "feature": "multi-timescale temporal indexing",
+          "basis": [
+            "temporal.history_window",
+            "temporal.future_horizon",
+            "temporal.recurrence",
+            "temporal.persistence"
+          ],
+          "status": "CANDIDATE_ONLY"
+        },
+        {
+          "feature": "persistence/carry over T",
+          "basis": [
+            "temporal.persistence"
+          ],
+          "status": "CANDIDATE_ONLY",
+          "guardrail": "No literal K = I is asserted."
+        }
+      ],
+      "unmapped_residual": [
+        {
+          "kind": "required_context_condition",
+          "claim_node_id": "prior_trial_context",
+          "evidence": {
+            "claim_node_id": "prior_trial_context",
+            "claim_role": "condition",
+            "description": "whether the preceding trial contained response-compatible or response-incompatible distractor information",
+            "source_span_ids": [
+              "s2",
+              "s3"
+            ],
+            "coordinate_id": "basis.cnd1",
+            "coordinate_required": true
+          },
+          "affected_relations": [
+            "r1"
+          ],
+          "reason": "Historical context is structurally causal/predictive but is not frozen as X/O/P/Q/C/Pi."
+        },
+        {
+          "kind": "required_context_condition",
+          "claim_node_id": "current_distractor_compatibility",
+          "evidence": {
+            "claim_node_id": "current_distractor_compatibility",
+            "claim_role": "condition",
+            "description": "whether surrounding letters on the current trial support the target response or the competing response",
+            "source_span_ids": [
+              "s2",
+              "s3",
+              "s4",
+              "s5"
+            ],
+            "coordinate_id": "basis.cnd2",
+            "coordinate_required": true
+          },
+          "affected_relations": [
+            "r7"
+          ],
+          "reason": "Current compatibility conditions the behavioral dependence but is not an admissibility constraint or criterion."
+        }
+      ],
+      "verdict": "RESIDUAL",
+      "notes": [
+        "The split P_in/P_out and Q-conditioned K are directly supported; residual contextual-condition arguments prevent lossless Grammar v0 projection."
+      ]
+    },
+    {
+      "claim_id": "CTL04",
+      "frozen_claim_id": "CTL04.C1",
+      "input_identity": {
+        "claimir_blob_sha": "0afa5559201b19d84d844b3f7b23860f2009a197",
+        "adjudication_blob_sha": "fa4b41b7e9436162021ba86760e6dbe6b28227d0"
+      },
+      "grammar_roles_instantiated": [
+        "Pi",
+        "X",
+        "Q",
+        "P_out",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "claim_relation_id": "r1",
+          "status": "SUPPORTED",
+          "grammar_projection": [
+            "K"
+          ],
+          "frozen_kind": "changes",
+          "arguments": [
+            "update_control_action",
+            "maintained_context_state"
+          ],
+          "source_span_ids": [
+            "s2",
+            "s3"
+          ],
+          "description": "a Go/open action enables incoming information to update the selected maintained component, whereas a NoGo/closed state protects the existing representation from updating"
+        },
+        {
+          "claim_relation_id": "r2",
+          "status": "SUPPORTED",
+          "grammar_projection": [
+            "K"
+          ],
+          "frozen_kind": "depends_on",
+          "arguments": [
+            "update_control_action",
+            "update_control_policy",
+            "current_task_input",
+            "maintained_context_state"
+          ],
+          "source_span_ids": [
+            "s3",
+            "s4"
+          ],
+          "description": "the current update-control action is selected from the learned policy using current task input together with previously maintained context"
+        },
+        {
+          "claim_relation_id": "r3",
+          "status": "SUPPORTED",
+          "grammar_projection": [
+            "K"
+          ],
+          "frozen_kind": "changes",
+          "arguments": [
+            "critic_evaluation_signal",
+            "update_control_policy"
+          ],
+          "source_span_ids": [
+            "s3",
+            "s4"
+          ],
+          "description": "across learning, the evaluative signal modifies the Go/NoGo policy so that update-control actions associated with later successful outcomes become more likely"
+        },
+        {
+          "claim_relation_id": "r4",
+          "status": "SUPPORTED",
+          "grammar_projection": [
+            "T"
+          ],
+          "frozen_kind": "precedes",
+          "arguments": [
+            "maintained_context_state",
+            "task_performance",
+            "update_control_action"
+          ],
+          "source_span_ids": [
+            "s4"
+          ],
+          "description": "within a processing step, the source model computes the current response using the stable prior context before applying the update that establishes context for subsequent processing"
+        },
+        {
+          "claim_relation_id": "r5",
+          "status": "SUPPORTED",
+          "grammar_projection": [
+            "P_out",
+            "rho/O"
+          ],
+          "frozen_kind": "maps_to",
+          "arguments": [
+            "benchmark_task_probe",
+            "task_performance"
+          ],
+          "source_span_ids": [
+            "s5"
+          ],
+          "description": "the benchmark simulations expose whether the learned system can preserve relevant context, selectively update it, and reach the task's performance criterion"
+        },
+        {
+          "claim_relation_id": "r6",
+          "status": "SUPPORTED",
+          "grammar_projection": [
+            "Q"
+          ],
+          "frozen_kind": "satisfies",
+          "arguments": [
+            "task_performance",
+            "correct_output_criterion"
+          ],
+          "source_span_ids": [
+            "s5"
+          ],
+          "description": "simulation performance is evaluated against the task-defined correct outputs and the declared zero-error training criteria"
+        }
+      ],
+      "mappings": {
+        "Pi": {
+          "status": "SUPPORTED",
+          "evidence": {
+            "control": {
+              "state": "present",
+              "claim_node_ids": [
+                "maintenance_subsystem",
+                "update_control_subsystem",
+                "valuation_subsystem"
+              ],
+              "provenance_kind": "source_declared",
+              "fixed_before_phi": true
+            },
+            "nodes": [
+              {
+                "claim_node_id": "maintenance_subsystem",
+                "claim_role": "partition",
+                "description": "prefrontal components that maintain task-relevant internal representations across intervening events",
+                "source_span_ids": [
+                  "s1",
+                  "s2",
+                  "s4"
+                ],
+                "coordinate_id": "basis.pi1",
+                "coordinate_required": true
+              },
+              {
+                "claim_node_id": "update_control_subsystem",
+                "claim_role": "partition",
+                "description": "basal-ganglia Go/NoGo circuitry that controls which maintained components are allowed to update",
+                "source_span_ids": [
+                  "s1",
+                  "s2",
+                  "s3"
+                ],
+                "coordinate_id": "basis.pi2",
+                "coordinate_required": true
+              },
+              {
+                "claim_node_id": "valuation_subsystem",
+                "claim_role": "partition",
+                "description": "PVLV-based system that generates simulated dopaminergic evaluation signals used to train the update controller",
+                "source_span_ids": [
+                  "s1",
+                  "s3",
+                  "s4"
+                ],
+                "coordinate_id": "basis.pi3",
+                "coordinate_required": true
+              }
+            ]
+          }
+        },
+        "X": {
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "claim_node_id": "maintained_context_state",
+              "claim_role": "state_or_structure",
+              "description": "task-relevant context or goal representation actively preserved in a prefrontal component",
+              "source_span_ids": [
+                "s1",
+                "s2",
+                "s3",
+                "s4"
+              ],
+              "coordinate_id": "basis.s1",
+              "coordinate_required": true
+            },
+            {
+              "claim_node_id": "update_control_policy",
+              "claim_role": "state_or_structure",
+              "description": "learned mapping in the update-control circuitry from current task information and maintained context to Go/NoGo selection",
+              "source_span_ids": [
+                "s3",
+                "s4"
+              ],
+              "coordinate_id": "basis.s2",
+              "coordinate_required": true
+            },
+            {
+              "claim_node_id": "update_control_action",
+              "claim_role": "other",
+              "description": "endogenous Go/NoGo action that enables updating of a selected maintained component or protects its current contents",
+              "source_span_ids": [
+                "s2",
+                "s3",
+                "s4"
+              ],
+              "coordinate_id": "basis.s3",
+              "coordinate_required": true
+            }
+          ],
+          "notes": "update_control_action remains X because the frozen adjudication assigns it to basis.s3; it is not reinterpreted as P_in."
+        },
+        "C": {
+          "status": "ABSENT",
+          "evidence": {
+            "resource_C": {
+              "state": "not_required"
+            }
+          }
+        },
+        "Q": {
+          "status": "SUPPORTED",
+          "evidence": {
+            "control": {
+              "state": "present",
+              "claim_node_ids": [
+                "correct_output_criterion"
+              ],
+              "provenance_kind": "source_declared",
+              "fixed_before_phi": true
+            },
+            "nodes": [
+              {
+                "claim_node_id": "correct_output_criterion",
+                "claim_role": "criterion",
+                "description": "task-defined correct response used to supply reward/error information and training success criteria in the simulation tasks",
+                "source_span_ids": [
+                  "s5"
+                ],
+                "coordinate_id": "basis.q1",
+                "coordinate_required": true
+              }
+            ],
+            "relations": [
+              "r6"
+            ]
+          }
+        },
+        "P_in": {
+          "status": "ABSENT",
+          "evidence": {
+            "probe_P": {
+              "state": "present",
+              "claim_node_ids": [
+                "benchmark_task_probe"
+              ],
+              "provenance_kind": "source_declared",
+              "fixed_before_phi": true
+            }
+          },
+          "notes": "The endogenous update_control_action is frozen as S/X, not P."
+        },
+        "P_out": {
+          "status": "SUPPORTED",
+          "evidence": {
+            "control": {
+              "state": "present",
+              "claim_node_ids": [
+                "benchmark_task_probe"
+              ],
+              "provenance_kind": "source_declared",
+              "fixed_before_phi": true
+            },
+            "nodes": [
+              {
+                "claim_node_id": "benchmark_task_probe",
+                "claim_role": "probe",
+                "description": "simulation tasks such as 1-2-AX and SIR-2 that require maintaining some context while selectively admitting other inputs",
+                "source_span_ids": [
+                  "s2",
+                  "s5"
+                ],
+                "coordinate_id": "basis.p1",
+                "coordinate_required": true
+              }
+            ],
+            "relations": [
+              "r5"
+            ]
+          }
+        },
+        "K": {
+          "status": "SUPPORTED",
+          "evidence": {
+            "relations": [
+              "r1",
+              "r2",
+              "r3"
+            ],
+            "relation_evidence": [
+              {
+                "claim_relation_id": "r1",
+                "status": "SUPPORTED",
+                "grammar_projection": [
+                  "K"
+                ],
+                "frozen_kind": "changes",
+                "arguments": [
+                  "update_control_action",
+                  "maintained_context_state"
+                ],
+                "source_span_ids": [
+                  "s2",
+                  "s3"
+                ],
+                "description": "a Go/open action enables incoming information to update the selected maintained component, whereas a NoGo/closed state protects the existing representation from updating"
+              },
+              {
+                "claim_relation_id": "r2",
+                "status": "SUPPORTED",
+                "grammar_projection": [
+                  "K"
+                ],
+                "frozen_kind": "depends_on",
+                "arguments": [
+                  "update_control_action",
+                  "update_control_policy",
+                  "current_task_input",
+                  "maintained_context_state"
+                ],
+                "source_span_ids": [
+                  "s3",
+                  "s4"
+                ],
+                "description": "the current update-control action is selected from the learned policy using current task input together with previously maintained context"
+              },
+              {
+                "claim_relation_id": "r3",
+                "status": "SUPPORTED",
+                "grammar_projection": [
+                  "K"
+                ],
+                "frozen_kind": "changes",
+                "arguments": [
+                  "critic_evaluation_signal",
+                  "update_control_policy"
+                ],
+                "source_span_ids": [
+                  "s3",
+                  "s4"
+                ],
+                "description": "across learning, the evaluative signal modifies the Go/NoGo policy so that update-control actions associated with later successful outcomes become more likely"
+              }
+            ]
+          }
+        },
+        "T": {
+          "status": "SUPPORTED",
+          "evidence": {
+            "time_index": {
+              "state": "present",
+              "source_span_ids": [
+                "s1",
+                "s2",
+                "s3",
+                "s4",
+                "s5"
+              ]
+            },
+            "history_window": {
+              "state": "present",
+              "source_span_ids": [
+                "s1",
+                "s2",
+                "s3",
+                "s4"
+              ]
+            },
+            "future_horizon": {
+              "state": "present",
+              "source_span_ids": [
+                "s3",
+                "s4"
+              ]
+            },
+            "recurrence": {
+              "state": "present",
+              "source_span_ids": [
+                "s2",
+                "s3",
+                "s4",
+                "s5"
+              ]
+            },
+            "persistence": {
+              "state": "present",
+              "source_span_ids": [
+                "s1",
+                "s2",
+                "s4"
+              ]
+            },
+            "ordering": [
+              {
+                "before_coordinate_id": "basis.s1",
+                "after_coordinate_id": "basis.o3",
+                "source_span_ids": [
+                  "s4"
+                ]
+              },
+              {
+                "before_coordinate_id": "basis.o3",
+                "after_coordinate_id": "basis.s3",
+                "source_span_ids": [
+                  "s4"
+                ]
+              },
+              {
+                "before_coordinate_id": "basis.o2",
+                "after_coordinate_id": "basis.s2",
+                "source_span_ids": [
+                  "s3",
+                  "s4"
+                ]
+              }
+            ]
+          }
+        },
+        "rho/O": {
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "claim_node_id": "current_task_input",
+              "claim_role": "available_information",
+              "description": "current sensory/task event available together with the previously maintained context when an update-control action is selected",
+              "source_span_ids": [
+                "s2",
+                "s3",
+                "s4"
+              ],
+              "coordinate_id": "basis.o1",
+              "coordinate_required": true
+            },
+            {
+              "claim_node_id": "critic_evaluation_signal",
+              "claim_role": "available_information",
+              "description": "simulated dopaminergic evaluation signal produced by the valuation subsystem and used to modify the learned update-control policy",
+              "source_span_ids": [
+                "s1",
+                "s3",
+                "s4"
+              ],
+              "coordinate_id": "basis.o2",
+              "coordinate_required": true
+            },
+            {
+              "claim_node_id": "task_performance",
+              "claim_role": "response_or_outcome",
+              "description": "accuracy and training-to-criterion performance of the simulated system on the benchmark tasks",
+              "source_span_ids": [
+                "s5"
+              ],
+              "coordinate_id": "basis.o3",
+              "coordinate_required": true
+            }
+          ],
+          "notes": "O includes input, evaluative feedback, and performance trace; critic O feeds a later K update and is therefore non-terminal."
+        }
+      },
+      "derived_feature_candidates": [
+        {
+          "feature": "closed-loop O -> K -> X learning update",
+          "basis": [
+            "critic_evaluation_signal",
+            "r3",
+            "update_control_policy"
+          ],
+          "status": "SUPPORTED_AS_DERIVED_CANDIDATE"
+        },
+        {
+          "feature": "persistence/carry of maintained context across T",
+          "basis": [
+            "temporal.persistence",
+            "maintained_context_state"
+          ],
+          "status": "CANDIDATE_ONLY",
+          "guardrail": "No literal K = I is asserted."
+        },
+        {
+          "feature": "functional subsystem Pi",
+          "basis": [
+            "maintenance_subsystem",
+            "update_control_subsystem",
+            "valuation_subsystem"
+          ],
+          "status": "SUPPORTED"
+        }
+      ],
+      "unmapped_residual": [],
+      "verdict": "FULL",
+      "notes": [
+        "All required frozen nodes and relations have a licensed Grammar v0 role without relabeling the endogenous update action as P."
+      ]
+    },
+    {
+      "claim_id": "CTL05",
+      "frozen_claim_id": "CTL05.C1",
+      "input_identity": {
+        "claimir_blob_sha": "b9031a73d02ada6cd97d8871404bc522dd1e5ad2",
+        "adjudication_blob_sha": "27b096a069ab3f78617a31ebc5649796cf8594b8"
+      },
+      "grammar_roles_instantiated": [
+        "X",
+        "C",
+        "P_in",
+        "P_out",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "claim_relation_id": "r1",
+          "status": "SUPPORTED",
+          "grammar_projection": [
+            "P_in",
+            "K"
+          ],
+          "frozen_kind": "changes",
+          "arguments": [
+            "external_stop_signal",
+            "stopping_process"
+          ],
+          "source_span_ids": [
+            "s1",
+            "s2"
+          ],
+          "description": "presentation of the explicit stop signal initiates the stopping process in the source's experimental paradigm"
+        },
+        {
+          "claim_relation_id": "r2",
+          "status": "SUPPORTED",
+          "grammar_projection": [
+            "C"
+          ],
+          "frozen_kind": "constrains",
+          "arguments": [
+            "process_independence_assumption",
+            "primary_task_process",
+            "stopping_process"
+          ],
+          "source_span_ids": [
+            "s3"
+          ],
+          "description": "the formal derivation treats the two finishing times as independent random variables rather than as an interacting sequential mechanism"
+        },
+        {
+          "claim_relation_id": "r3",
+          "status": "SUPPORTED",
+          "grammar_projection": [
+            "K"
+          ],
+          "frozen_kind": "depends_on",
+          "arguments": [
+            "response_outcome",
+            "relative_finish_order"
+          ],
+          "source_span_ids": [
+            "s1",
+            "s3",
+            "s4"
+          ],
+          "description": "the response is inhibited when stopping finishes first and is executed when the primary-task process finishes first"
+        },
+        {
+          "claim_relation_id": "r4",
+          "status": "SUPPORTED",
+          "grammar_projection": [
+            "T"
+          ],
+          "frozen_kind": "precedes",
+          "arguments": [
+            "primary_task_process",
+            "external_stop_signal",
+            "stopping_process"
+          ],
+          "source_span_ids": [
+            "s2",
+            "s4"
+          ],
+          "description": "in the explicit stop-signal task, primary-task processing begins at the primary stimulus and a later stop signal starts the stopping process after the experimentally varied delay"
+        },
+        {
+          "claim_relation_id": "r5",
+          "status": "SUPPORTED",
+          "grammar_projection": [
+            "P_out",
+            "rho/O"
+          ],
+          "frozen_kind": "maps_to",
+          "arguments": [
+            "stop_signal_delay_probe",
+            "stop_signal_measurements"
+          ],
+          "source_span_ids": [
+            "s2",
+            "s4"
+          ],
+          "description": "varying stop-signal delay yields the inhibition function and associated reaction-time measurements predicted by the formal timing account"
+        },
+        {
+          "claim_relation_id": "r6",
+          "status": "SUPPORTED",
+          "grammar_projection": [
+            "K"
+          ],
+          "frozen_kind": "maps_to",
+          "arguments": [
+            "stop_signal_measurements",
+            "stopping_latency"
+          ],
+          "source_span_ids": [
+            "s4"
+          ],
+          "description": "the formal formal timing relations permit the covert stopping latency to be estimated from observed response probabilities, reaction-time distributions, and stop-signal delay"
+        }
+      ],
+      "mappings": {
+        "Pi": {
+          "status": "ABSENT",
+          "evidence": {
+            "partition_Pi": {
+              "state": "not_required"
+            }
+          }
+        },
+        "X": {
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "claim_node_id": "primary_task_process",
+              "claim_role": "state_or_structure",
+              "description": "process that carries the primary task toward the overt response",
+              "source_span_ids": [
+                "s1",
+                "s2",
+                "s3",
+                "s4"
+              ],
+              "coordinate_id": "basis.s1",
+              "coordinate_required": true
+            },
+            {
+              "claim_node_id": "stopping_process",
+              "claim_role": "state_or_structure",
+              "description": "internal process initiated by the stop signal whose finishing time races the primary-task finishing time",
+              "source_span_ids": [
+                "s1",
+                "s3",
+                "s4"
+              ],
+              "coordinate_id": "basis.s2",
+              "coordinate_required": true
+            },
+            {
+              "claim_node_id": "relative_finish_order",
+              "claim_role": "state_or_structure",
+              "description": "latent ordering of the primary-task and stopping-process finishing times on a stop-signal trial",
+              "source_span_ids": [
+                "s1",
+                "s3",
+                "s4"
+              ],
+              "coordinate_id": "basis.s3",
+              "coordinate_required": true
+            },
+            {
+              "claim_node_id": "stopping_latency",
+              "claim_role": "state_or_structure",
+              "description": "covert time from stop-signal onset to completion of the stopping process, estimated from the formal timing account rather than directly observed",
+              "source_span_ids": [
+                "s2",
+                "s4"
+              ],
+              "coordinate_id": "basis.s4",
+              "coordinate_required": true
+            }
+          ]
+        },
+        "C": {
+          "status": "SUPPORTED",
+          "evidence": {
+            "resource_C_control": {
+              "state": "not_required"
+            },
+            "constraint_node": {
+              "claim_node_id": "process_independence_assumption",
+              "claim_role": "condition",
+              "description": "formal-model assumption that the primary-task and stopping finishing times are independent random variables",
+              "source_span_ids": [
+                "s3"
+              ],
+              "coordinate_id": "basis.cnd1",
+              "coordinate_required": true
+            },
+            "relation": {
+              "claim_relation_id": "r2",
+              "status": "SUPPORTED",
+              "grammar_projection": [
+                "C"
+              ],
+              "frozen_kind": "constrains",
+              "arguments": [
+                "process_independence_assumption",
+                "primary_task_process",
+                "stopping_process"
+              ],
+              "source_span_ids": [
+                "s3"
+              ],
+              "description": "the formal derivation treats the two finishing times as independent random variables rather than as an interacting sequential mechanism"
+            }
+          },
+          "notes": "This is generalized Grammar-v0 C from explicit admissibility topology, not the narrower frozen resource_C control."
+        },
+        "Q": {
+          "status": "ABSENT",
+          "evidence": {
+            "criterion_Q": {
+              "state": "not_required"
+            }
+          }
+        },
+        "P_in": {
+          "status": "SUPPORTED",
+          "evidence": {
+            "control": {
+              "state": "present",
+              "claim_node_ids": [
+                "external_stop_signal",
+                "stop_signal_delay_probe"
+              ],
+              "provenance_kind": "source_declared",
+              "fixed_before_phi": true
+            },
+            "nodes": [
+              {
+                "claim_node_id": "external_stop_signal",
+                "claim_role": "intervention",
+                "description": "experimentally presented signal that initiates the stopping process in the explicit stop-signal paradigm",
+                "source_span_ids": [
+                  "s1",
+                  "s2",
+                  "s4"
+                ],
+                "coordinate_id": "basis.p1",
+                "coordinate_required": true
+              }
+            ],
+            "relations": [
+              "r1",
+              "r4"
+            ]
+          }
+        },
+        "P_out": {
+          "status": "SUPPORTED",
+          "evidence": {
+            "control": {
+              "state": "present",
+              "claim_node_ids": [
+                "external_stop_signal",
+                "stop_signal_delay_probe"
+              ],
+              "provenance_kind": "source_declared",
+              "fixed_before_phi": true
+            },
+            "nodes": [
+              {
+                "claim_node_id": "stop_signal_delay_probe",
+                "claim_role": "probe",
+                "description": "procedure varying the delay between primary-stimulus onset and stop-signal onset while observing response probability and reaction-time distributions",
+                "source_span_ids": [
+                  "s2",
+                  "s4"
+                ],
+                "coordinate_id": "basis.p2",
+                "coordinate_required": true
+              }
+            ],
+            "relations": [
+              "r5"
+            ]
+          }
+        },
+        "K": {
+          "status": "SUPPORTED",
+          "evidence": {
+            "relations": [
+              "r1",
+              "r3",
+              "r6"
+            ],
+            "relation_evidence": [
+              {
+                "claim_relation_id": "r1",
+                "status": "SUPPORTED",
+                "grammar_projection": [
+                  "K",
+                  "P_in"
+                ],
+                "frozen_kind": "changes",
+                "arguments": [
+                  "external_stop_signal",
+                  "stopping_process"
+                ],
+                "source_span_ids": [
+                  "s1",
+                  "s2"
+                ],
+                "description": "presentation of the explicit stop signal initiates the stopping process in the source's experimental paradigm"
+              },
+              {
+                "claim_relation_id": "r3",
+                "status": "SUPPORTED",
+                "grammar_projection": [
+                  "K"
+                ],
+                "frozen_kind": "depends_on",
+                "arguments": [
+                  "response_outcome",
+                  "relative_finish_order"
+                ],
+                "source_span_ids": [
+                  "s1",
+                  "s3",
+                  "s4"
+                ],
+                "description": "the response is inhibited when stopping finishes first and is executed when the primary-task process finishes first"
+              },
+              {
+                "claim_relation_id": "r6",
+                "status": "SUPPORTED",
+                "grammar_projection": [
+                  "K"
+                ],
+                "frozen_kind": "maps_to",
+                "arguments": [
+                  "stop_signal_measurements",
+                  "stopping_latency"
+                ],
+                "source_span_ids": [
+                  "s4"
+                ],
+                "description": "the formal formal timing relations permit the covert stopping latency to be estimated from observed response probabilities, reaction-time distributions, and stop-signal delay"
+              }
+            ]
+          },
+          "notes": "K remains relational; stochastic race outcomes do not require a deterministic function."
+        },
+        "T": {
+          "status": "SUPPORTED",
+          "evidence": {
+            "time_index": {
+              "state": "present",
+              "source_span_ids": [
+                "s1",
+                "s2",
+                "s3",
+                "s4"
+              ]
+            },
+            "history_window": {
+              "state": "not_required"
+            },
+            "future_horizon": {
+              "state": "present",
+              "source_span_ids": [
+                "s1",
+                "s2",
+                "s4"
+              ]
+            },
+            "recurrence": {
+              "state": "not_required"
+            },
+            "persistence": {
+              "state": "not_required"
+            },
+            "ordering": [
+              {
+                "before_coordinate_id": "basis.s1",
+                "after_coordinate_id": "basis.p1",
+                "source_span_ids": [
+                  "s2",
+                  "s4"
+                ]
+              },
+              {
+                "before_coordinate_id": "basis.p1",
+                "after_coordinate_id": "basis.s2",
+                "source_span_ids": [
+                  "s1",
+                  "s2",
+                  "s4"
+                ]
+              }
+            ]
+          }
+        },
+        "rho/O": {
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "claim_node_id": "response_outcome",
+              "claim_role": "response_or_outcome",
+              "description": "whether the primary response is inhibited or escapes inhibition and is executed",
+              "source_span_ids": [
+                "s1",
+                "s2",
+                "s3",
+                "s4"
+              ],
+              "coordinate_id": "basis.o1",
+              "coordinate_required": true
+            },
+            {
+              "claim_node_id": "stop_signal_measurements",
+              "claim_role": "available_information",
+              "description": "observed stop-signal delay, probability of responding or inhibiting, no-signal reaction-time distribution, and signal-respond reaction times used by the formal account",
+              "source_span_ids": [
+                "s2",
+                "s4"
+              ],
+              "coordinate_id": "basis.o2",
+              "coordinate_required": true
+            }
+          ],
+          "notes": "Observed measurements can feed K-like inference to latent stopping_latency, so O is non-terminal."
+        }
+      },
+      "derived_feature_candidates": [
+        {
+          "feature": "race-order structure",
+          "basis": [
+            "relative_finish_order",
+            "r3",
+            "r4"
+          ],
+          "status": "SUPPORTED_AS_DERIVED_CANDIDATE"
+        },
+        {
+          "feature": "O-to-X inference/readout inversion",
+          "basis": [
+            "stop_signal_measurements",
+            "stopping_latency",
+            "r6"
+          ],
+          "status": "SUPPORTED_AS_DERIVED_CANDIDATE"
+        },
+        {
+          "feature": "stochastic K specialization",
+          "basis": [
+            "claim_core.modality",
+            "r3"
+          ],
+          "status": "TYPED_SPECIALIZATION"
+        }
+      ],
+      "unmapped_residual": [],
+      "verdict": "FULL",
+      "notes": [
+        "The independence assumption is the CTL lane's direct positive support for C as an admissibility constraint beyond resource budgets."
+      ]
+    },
+    {
+      "claim_id": "CTL06",
+      "frozen_claim_id": "CTL06.C1",
+      "input_identity": {
+        "claimir_blob_sha": "7353ed513e2f020728c4d9b4d61f38d12e99af99",
+        "adjudication_blob_sha": "8ca6d5f87fadc36135bd38aedfc0d1ed7d792766"
+      },
+      "grammar_roles_instantiated": [
+        "X",
+        "P_out",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "claim_relation_id": "r1",
+          "status": "PARTIAL",
+          "grammar_projection": [
+            "K"
+          ],
+          "frozen_kind": "depends_on",
+          "arguments": [
+            "current_trial_performance",
+            "task_transition"
+          ],
+          "source_span_ids": [
+            "s1",
+            "s2"
+          ],
+          "description": "performance is generally slower and often more error-prone immediately after a task change than after a task repetition",
+          "note": "task_transition is a required contextual-condition argument without a licensed primitive role."
+        },
+        {
+          "claim_relation_id": "r2",
+          "status": "PARTIAL",
+          "grammar_projection": [
+            "K"
+          ],
+          "frozen_kind": "changes",
+          "arguments": [
+            "advance_preparation_opportunity",
+            "transition_performance_decrement"
+          ],
+          "source_span_ids": [
+            "s1",
+            "s2"
+          ],
+          "description": "providing foreknowledge and more time for advance preparation usually reduces the transition-related performance decrement",
+          "note": "advance_preparation_opportunity is a required contextual-condition argument without a licensed primitive role."
+        },
+        {
+          "claim_relation_id": "r3",
+          "status": "SUPPORTED",
+          "grammar_projection": [
+            "K"
+          ],
+          "frozen_kind": "depends_on",
+          "arguments": [
+            "residual_transition_decrement",
+            "transient_prior_configuration_carryover",
+            "endogenous_configuration_update"
+          ],
+          "source_span_ids": [
+            "s3",
+            "s4"
+          ],
+          "description": "the remaining decrement after preparation is not attributed to a single source; the review treats transient prior-state carry-over and update processes that cannot always be completed before stimulus onset as contributors whose exact blend remains unsettled"
+        },
+        {
+          "claim_relation_id": "r4",
+          "status": "SUPPORTED",
+          "grammar_projection": [
+            "K"
+          ],
+          "frozen_kind": "depends_on",
+          "arguments": [
+            "transition_performance_decrement",
+            "endogenous_configuration_update",
+            "transient_prior_configuration_carryover",
+            "long_term_associative_carryover"
+          ],
+          "source_span_ids": [
+            "s3",
+            "s4"
+          ],
+          "description": "the review treats the observed transition-related decrement as multiply determined rather than as evidence for a single control mechanism, with both internally driven updating and carry-over at more than one timescale contributing in different paradigms"
+        },
+        {
+          "claim_relation_id": "r5",
+          "status": "PARTIAL",
+          "grammar_projection": [
+            "T"
+          ],
+          "frozen_kind": "precedes",
+          "arguments": [
+            "advance_preparation_opportunity",
+            "endogenous_configuration_update",
+            "current_trial_performance"
+          ],
+          "source_span_ids": [
+            "s2",
+            "s4"
+          ],
+          "description": "when advance information is available, part of the internally driven configuration update can occur before the current stimulus and response",
+          "note": "The temporal order is supported, but advance_preparation_opportunity itself remains residual."
+        },
+        {
+          "claim_relation_id": "r6",
+          "status": "SUPPORTED",
+          "grammar_projection": [
+            "P_out",
+            "rho/O"
+          ],
+          "frozen_kind": "maps_to",
+          "arguments": [
+            "task_transition_probe",
+            "transition_performance_decrement",
+            "residual_transition_decrement"
+          ],
+          "source_span_ids": [
+            "s2"
+          ],
+          "description": "the behavioral paradigms expose both the immediate changed-versus-repeated performance difference and the portion that remains after extended preparation"
+        }
+      ],
+      "mappings": {
+        "Pi": {
+          "status": "ABSENT",
+          "evidence": {
+            "partition_Pi": {
+              "state": "not_required"
+            }
+          }
+        },
+        "X": {
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "claim_node_id": "prior_task_configuration",
+              "claim_role": "state_or_structure",
+              "description": "task-specific configuration active or recently active before the current trial",
+              "source_span_ids": [
+                "s1",
+                "s3",
+                "s4"
+              ],
+              "coordinate_id": "basis.s1",
+              "coordinate_required": true
+            },
+            {
+              "claim_node_id": "current_task_configuration",
+              "claim_role": "state_or_structure",
+              "description": "task-specific configuration required for the current trial",
+              "source_span_ids": [
+                "s1",
+                "s2",
+                "s3"
+              ],
+              "coordinate_id": "basis.s2",
+              "coordinate_required": true
+            },
+            {
+              "claim_node_id": "endogenous_configuration_update",
+              "claim_role": "state_or_structure",
+              "description": "time-consuming internally driven process that prepares or establishes the currently required task configuration",
+              "source_span_ids": [
+                "s2",
+                "s3",
+                "s4"
+              ],
+              "coordinate_id": "basis.s3",
+              "coordinate_required": true
+            },
+            {
+              "claim_node_id": "transient_prior_configuration_carryover",
+              "claim_role": "state_or_structure",
+              "description": "short-lived persistence of activation or inhibition associated with the previously performed task configuration",
+              "source_span_ids": [
+                "s1",
+                "s3",
+                "s4"
+              ],
+              "coordinate_id": "basis.s4",
+              "coordinate_required": true
+            },
+            {
+              "claim_node_id": "long_term_associative_carryover",
+              "claim_role": "state_or_structure",
+              "description": "longer-lived associative retrieval or priming of competing task configurations by stimuli or recent experience",
+              "source_span_ids": [
+                "s1",
+                "s3",
+                "s4"
+              ],
+              "coordinate_id": "basis.s5",
+              "coordinate_required": true
+            }
+          ]
+        },
+        "C": {
+          "status": "ABSENT",
+          "evidence": {
+            "resource_C": {
+              "state": "not_required"
+            }
+          },
+          "notes": "Task transition and preparation opportunity change dependence/performance; they are not realizability constraints."
+        },
+        "Q": {
+          "status": "ABSENT",
+          "evidence": {
+            "criterion_Q": {
+              "state": "not_required"
+            }
+          }
+        },
+        "P_in": {
+          "status": "ABSENT",
+          "evidence": {
+            "probe_P": {
+              "state": "present",
+              "claim_node_ids": [
+                "task_transition_probe"
+              ],
+              "provenance_kind": "source_declared",
+              "fixed_before_phi": true
+            }
+          }
+        },
+        "P_out": {
+          "status": "SUPPORTED",
+          "evidence": {
+            "control": {
+              "state": "present",
+              "claim_node_ids": [
+                "task_transition_probe"
+              ],
+              "provenance_kind": "source_declared",
+              "fixed_before_phi": true
+            },
+            "nodes": [
+              {
+                "claim_node_id": "task_transition_probe",
+                "claim_role": "probe",
+                "description": "family of behavioral paradigms comparing changed-task with repeated-task trials while varying predictability, cue timing, and advance preparation",
+                "source_span_ids": [
+                  "s2"
+                ],
+                "coordinate_id": "basis.p1",
+                "coordinate_required": true
+              }
+            ],
+            "relations": [
+              "r6"
+            ]
+          }
+        },
+        "K": {
+          "status": "SUPPORTED",
+          "evidence": {
+            "relations": [
+              "r1",
+              "r2",
+              "r3",
+              "r4"
+            ],
+            "relation_evidence": [
+              {
+                "claim_relation_id": "r1",
+                "status": "PARTIAL",
+                "grammar_projection": [
+                  "K"
+                ],
+                "frozen_kind": "depends_on",
+                "arguments": [
+                  "current_trial_performance",
+                  "task_transition"
+                ],
+                "source_span_ids": [
+                  "s1",
+                  "s2"
+                ],
+                "description": "performance is generally slower and often more error-prone immediately after a task change than after a task repetition"
+              },
+              {
+                "claim_relation_id": "r2",
+                "status": "PARTIAL",
+                "grammar_projection": [
+                  "K"
+                ],
+                "frozen_kind": "changes",
+                "arguments": [
+                  "advance_preparation_opportunity",
+                  "transition_performance_decrement"
+                ],
+                "source_span_ids": [
+                  "s1",
+                  "s2"
+                ],
+                "description": "providing foreknowledge and more time for advance preparation usually reduces the transition-related performance decrement"
+              },
+              {
+                "claim_relation_id": "r3",
+                "status": "SUPPORTED",
+                "grammar_projection": [
+                  "K"
+                ],
+                "frozen_kind": "depends_on",
+                "arguments": [
+                  "residual_transition_decrement",
+                  "transient_prior_configuration_carryover",
+                  "endogenous_configuration_update"
+                ],
+                "source_span_ids": [
+                  "s3",
+                  "s4"
+                ],
+                "description": "the remaining decrement after preparation is not attributed to a single source; the review treats transient prior-state carry-over and update processes that cannot always be completed before stimulus onset as contributors whose exact blend remains unsettled"
+              },
+              {
+                "claim_relation_id": "r4",
+                "status": "SUPPORTED",
+                "grammar_projection": [
+                  "K"
+                ],
+                "frozen_kind": "depends_on",
+                "arguments": [
+                  "transition_performance_decrement",
+                  "endogenous_configuration_update",
+                  "transient_prior_configuration_carryover",
+                  "long_term_associative_carryover"
+                ],
+                "source_span_ids": [
+                  "s3",
+                  "s4"
+                ],
+                "description": "the review treats the observed transition-related decrement as multiply determined rather than as evidence for a single control mechanism, with both internally driven updating and carry-over at more than one timescale contributing in different paradigms"
+              }
+            ]
+          },
+          "notes": "Multiple contributors remain a non-functional typed dependence; no single-controller assumption is imposed."
+        },
+        "T": {
+          "status": "SUPPORTED",
+          "evidence": {
+            "time_index": {
+              "state": "present",
+              "source_span_ids": [
+                "s1",
+                "s2",
+                "s3",
+                "s4"
+              ]
+            },
+            "history_window": {
+              "state": "present",
+              "source_span_ids": [
+                "s1",
+                "s3",
+                "s4"
+              ]
+            },
+            "future_horizon": {
+              "state": "present",
+              "source_span_ids": [
+                "s1",
+                "s2",
+                "s4"
+              ]
+            },
+            "recurrence": {
+              "state": "present",
+              "source_span_ids": [
+                "s1",
+                "s2",
+                "s3",
+                "s4"
+              ]
+            },
+            "persistence": {
+              "state": "present",
+              "source_span_ids": [
+                "s1",
+                "s3",
+                "s4"
+              ]
+            },
+            "ordering": [
+              {
+                "before_coordinate_id": "basis.cnd2",
+                "after_coordinate_id": "basis.s3",
+                "source_span_ids": [
+                  "s2",
+                  "s4"
+                ]
+              },
+              {
+                "before_coordinate_id": "basis.s3",
+                "after_coordinate_id": "basis.o1",
+                "source_span_ids": [
+                  "s2",
+                  "s4"
+                ]
+              }
+            ]
+          }
+        },
+        "rho/O": {
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "claim_node_id": "current_trial_performance",
+              "claim_role": "response_or_outcome",
+              "description": "response latency and error probability on the current trial",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "coordinate_id": "basis.o1",
+              "coordinate_required": true
+            },
+            {
+              "claim_node_id": "transition_performance_decrement",
+              "claim_role": "response_or_outcome",
+              "description": "slower and/or less accurate performance on a changed-task trial relative to a repeated-task trial",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "coordinate_id": "basis.o2",
+              "coordinate_required": true
+            },
+            {
+              "claim_node_id": "residual_transition_decrement",
+              "claim_role": "response_or_outcome",
+              "description": "remaining changed-versus-repeated performance difference after substantial advance preparation",
+              "source_span_ids": [
+                "s1",
+                "s2",
+                "s4"
+              ],
+              "coordinate_id": "basis.o3",
+              "coordinate_required": true
+            }
+          ]
+        }
+      },
+      "derived_feature_candidates": [
+        {
+          "feature": "repeat/change transition type as a possible K-over-T property",
+          "basis": [
+            "prior_task_configuration",
+            "current_task_configuration",
+            "task_transition"
+          ],
+          "status": "CANDIDATE_ONLY",
+          "guardrail": "Frozen structure does not prove that the condition node is eliminable, so it remains residual."
+        },
+        {
+          "feature": "persistence/carry over T",
+          "basis": [
+            "transient_prior_configuration_carryover",
+            "long_term_associative_carryover",
+            "temporal.persistence"
+          ],
+          "status": "CANDIDATE_ONLY",
+          "guardrail": "No literal K = I is asserted."
+        },
+        {
+          "feature": "multi-timescale carry",
+          "basis": [
+            "temporal.history_window",
+            "temporal.recurrence",
+            "transient_prior_configuration_carryover",
+            "long_term_associative_carryover"
+          ],
+          "status": "SUPPORTED_AS_DERIVED_CANDIDATE"
+        }
+      ],
+      "unmapped_residual": [
+        {
+          "kind": "required_context_condition",
+          "claim_node_id": "task_transition",
+          "evidence": {
+            "claim_node_id": "task_transition",
+            "claim_role": "condition",
+            "description": "whether the current trial requires repeating the preceding task configuration or changing to another one",
+            "source_span_ids": [
+              "s1",
+              "s2"
+            ],
+            "coordinate_id": "basis.cnd1",
+            "coordinate_required": true
+          },
+          "affected_relations": [
+            "r1"
+          ],
+          "reason": "Change-versus-repeat context is required by the frozen relation but is not itself frozen as X/T/K/Pi/Q/C/P/O; derivability from K-over-T is only a candidate."
+        },
+        {
+          "kind": "required_context_condition",
+          "claim_node_id": "advance_preparation_opportunity",
+          "evidence": {
+            "claim_node_id": "advance_preparation_opportunity",
+            "claim_role": "condition",
+            "description": "foreknowledge and time available before current-stimulus onset to prepare the required configuration",
+            "source_span_ids": [
+              "s1",
+              "s2",
+              "s4"
+            ],
+            "coordinate_id": "basis.cnd2",
+            "coordinate_required": true
+          },
+          "affected_relations": [
+            "r2",
+            "r5"
+          ],
+          "reason": "Foreknowledge/time-available context affects performance and temporal placement but is not a pure T ordering, P intervention, or C admissibility constraint."
+        }
+      ],
+      "verdict": "RESIDUAL",
+      "notes": [
+        "The core multi-causal transition structure fits K/T, but two required context nodes are not losslessly represented by Grammar v0."
+      ]
+    }
+  ],
+  "lane_summary": {
+    "coverage": {
+      "processed": 6,
+      "total": 6,
+      "covered_claim_ids": [
+        "CTL01",
+        "CTL02",
+        "CTL03",
+        "CTL04",
+        "CTL05",
+        "CTL06"
+      ]
+    },
+    "verdict_counts": {
+      "FULL": 2,
+      "PARTIAL": 1,
+      "RESIDUAL": 3
+    },
+    "role_frequency_definition": "Number of CTL claims with SUPPORTED or PARTIAL instantiation.",
+    "role_frequency": {
+      "Pi": {
+        "count": 2,
+        "claims": [
+          "CTL02",
+          "CTL04"
+        ]
+      },
+      "X": {
+        "count": 6,
+        "claims": [
+          "CTL01",
+          "CTL02",
+          "CTL03",
+          "CTL04",
+          "CTL05",
+          "CTL06"
+        ]
+      },
+      "C": {
+        "count": 1,
+        "claims": [
+          "CTL05"
+        ]
+      },
+      "Q": {
+        "count": 3,
+        "claims": [
+          "CTL01",
+          "CTL03",
+          "CTL04"
+        ]
+      },
+      "P_in": {
+        "count": 3,
+        "claims": [
+          "CTL01",
+          "CTL03",
+          "CTL05"
+        ],
+        "partial_claims": [
+          "CTL01"
+        ]
+      },
+      "P_out": {
+        "count": 5,
+        "claims": [
+          "CTL01",
+          "CTL03",
+          "CTL04",
+          "CTL05",
+          "CTL06"
+        ]
+      },
+      "K": {
+        "count": 6,
+        "claims": [
+          "CTL01",
+          "CTL02",
+          "CTL03",
+          "CTL04",
+          "CTL05",
+          "CTL06"
+        ]
+      },
+      "T": {
+        "count": 6,
+        "claims": [
+          "CTL01",
+          "CTL02",
+          "CTL03",
+          "CTL04",
+          "CTL05",
+          "CTL06"
+        ]
+      },
+      "rho/O": {
+        "count": 6,
+        "claims": [
+          "CTL01",
+          "CTL02",
+          "CTL03",
+          "CTL04",
+          "CTL05",
+          "CTL06"
+        ]
+      }
+    },
+    "recurrent_substructures": [
+      {
+        "structure": "X/K/T/O core",
+        "claims": [
+          "CTL01",
+          "CTL02",
+          "CTL03",
+          "CTL04",
+          "CTL05",
+          "CTL06"
+        ],
+        "evidence": "Frozen CTL Archetype A-1a6ffc1535fb is supported by CTL01..CTL06 with axes O/S/T, future_horizon and time_index; claim-level K relations occur in all six."
+      },
+      {
+        "structure": "probe/read interface to O",
+        "claims": [
+          "CTL01",
+          "CTL03",
+          "CTL04",
+          "CTL05",
+          "CTL06"
+        ],
+        "evidence": "Frozen probe_P control is present in five claims; A-3e5ade635939 recurs over the same five with O/P/S/T."
+      },
+      {
+        "structure": "Q-conditioned orientation",
+        "claims": [
+          "CTL01",
+          "CTL03",
+          "CTL04"
+        ],
+        "evidence": "criterion_Q is source-declared in all three; frozen A-5e451660bf4e and A-3508ae6dc93c retain Q with P/O/S/T."
+      },
+      {
+        "structure": "functional subsystem Pi",
+        "claims": [
+          "CTL02",
+          "CTL04"
+        ],
+        "evidence": "partition_Pi is source-declared in both; frozen A-2e72eac51679 retains Pi/Pi/S/S/O/T/K structure across the pair."
+      },
+      {
+        "structure": "non-terminal O feeding later structure",
+        "claims": [
+          "CTL03",
+          "CTL04",
+          "CTL05"
+        ],
+        "evidence": "Information/evaluation/measurement O nodes participate upstream of later X/K dependence or inference."
+      },
+      {
+        "structure": "history/future/persistence annotations over T",
+        "claims": [
+          "CTL01",
+          "CTL02",
+          "CTL03",
+          "CTL04",
+          "CTL06"
+        ],
+        "evidence": "Frozen temporal features mark persistence in five claims; these are retained as derived-feature candidates, not literal identity K."
+      }
+    ],
+    "grammar_distinctions_required_by_CTL": [
+      "K must remain distinct from T: CTL04/CTL05 contain both typed changes/dependences and explicit precedence.",
+      "P_in and P_out must remain directionally distinct: CTL03 and CTL05 contain separately frozen intervention and probe nodes.",
+      "Q must remain distinct from C: CTL01/03/04 use criteria/orientation, while CTL05 alone supplies an admissibility-style constraint.",
+      "Pi must permit functional subsystem decomposition without requiring a physical boundary: CTL02/CTL04.",
+      "rho/O must permit information-like and outcome-like traces and must not be terminal-only: CTL03/04/05.",
+      "Generic contextual conditions must not be silently collapsed into C."
+    ],
+    "roles_not_needed_by_CTL": [],
+    "residual_structures_not_expressible_by_grammar_v0": [
+      {
+        "claim_id": "CTL02",
+        "nodes": [
+          "strong_competing_alternative"
+        ]
+      },
+      {
+        "claim_id": "CTL03",
+        "nodes": [
+          "prior_trial_context",
+          "current_distractor_compatibility"
+        ]
+      },
+      {
+        "claim_id": "CTL06",
+        "nodes": [
+          "task_transition",
+          "advance_preparation_opportunity"
+        ]
+      }
+    ],
+    "possible_compression_or_derived_feature_cases": [
+      "CTL01 task-relevant/task-irrelevant deviation classes may be derived from Q-conditioned task-cost relevance rather than primitive Pi.",
+      "Persistence in CTL01/02/03/04/06 may be representable by typed carry/transport over T, but not by untyped K = I.",
+      "CTL06 task-transition change/repeat may eventually be derivable as a K-over-T property, but frozen evidence does not yet license deleting its condition node.",
+      "Multiple O_information/O_outcome distinctions can be compressed into oriented boundary-relative rho/O while retaining direction/topology."
+    ],
+    "potential_threats_to_grammar_v0": [
+      {
+        "threat": "required_context_condition_gap",
+        "severity": "COUNTEREXAMPLE_TO_LOSSLESS_EXHAUSTIVENESS",
+        "evidence": "CTL02/03/06 require axis-null condition nodes. Frozen CTL Archetypes independently retain such nodes, including A-debb48298582, A-52ad3ded28e0, A-106c855fd700. They cannot be relabeled C/Q/Pi/P/X without unsupported reinterpretation."
+      },
+      {
+        "threat": "P_directionality_granularity",
+        "severity": "BOUNDED_PARTIAL",
+        "evidence": "CTL01 has one frozen perturbation-probe P node whose source-grounded description spans both write/perturb and read/probe behavior; the split is not independently frozen."
+      },
+      {
+        "threat": "rich_temporal_features_over_bare_T",
+        "severity": "OPEN_DERIVABILITY_PRESSURE",
+        "evidence": "history_window, future_horizon, recurrence and persistence occur beyond bare succession; this lane does not prove all are derivable from T plus K."
+      },
+      {
+        "threat": "probabilistic_semantics",
+        "severity": "TYPED_SPECIALIZATION_PRESSURE",
+        "evidence": "CTL01/03/05/06 are probabilistic claims. Relational K avoids false functionality, but Grammar v0 does not by itself introduce probability measures; no new primitive is claimed here."
+      }
+    ],
+    "counterexample_to_grammar_v0": {
+      "result": true,
+      "scope": "bounded CTL lane, lossless/exhaustive representation only",
+      "statement": "CTL02, CTL03 and CTL06 contain required contextual-condition nodes that survive frozen reconstruction but have no licensed Grammar-v0 role. This is a counterexample to the claim that the current role vocabulary is losslessly exhaustive on CTL. It does not invalidate the mapped Pi/X/C/Q/P/K/T/rho structure and does not authorize a grammar repair in this lane."
+    },
+    "frozen_archetype_crosscheck": {
+      "common_core": "A-1a6ffc1535fb",
+      "common_core_members": [
+        "CTL01",
+        "CTL02",
+        "CTL03",
+        "CTL04",
+        "CTL05",
+        "CTL06"
+      ],
+      "common_core_axes": [
+        "O",
+        "S",
+        "T"
+      ],
+      "condition_retaining_examples": [
+        "A-debb48298582",
+        "A-52ad3ded28e0",
+        "A-106c855fd700"
+      ],
+      "interpretation": "The residual condition pressure is not introduced by this reverse projection; axis-null required condition structure already survives the frozen CTL F_R/Archetype reconstruction."
+    }
+  },
+  "terminal_classification": "CTL_GRAMMAR_V0_COVERED_WITH_REQUIRED_CONTEXT_RESIDUALS",
+  "grammar_modified": false,
+  "architecture_consequence": "NONE"
+}
