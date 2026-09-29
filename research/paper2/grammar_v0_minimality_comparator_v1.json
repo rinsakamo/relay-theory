@@ -1,0 +1,313 @@
+{
+  "schema_version": "1.0",
+  "status": "FROZEN_GRAMMAR_V0_MINIMALITY_COMPARATOR_TEST",
+  "owner_issue": 345,
+  "authority": {
+    "grammar_issue": 321,
+    "aggregate_issue": 343,
+    "aggregate_pr": 344,
+    "aggregate_artifact": "research/paper2/grammar_v0_reverse_projection_aggregate_v1.json",
+    "residual_adjudication_artifact": "research/paper2/grammar_v0_residual_adjudication_v1.json"
+  },
+  "test_semantics": {
+    "direct_preservation": "A comparator directly preserves a frozen distinction only when it has an explicit role capable of representing that distinction without hiding/retyping it inside another role.",
+    "limitation": "This is a strict representational-preservation/minimality test, not a theorem that no richer encoding into a weaker formalism is mathematically possible."
+  },
+  "full_v0_role_support": {
+    "Pi": {
+      "claim_count": 15,
+      "lane_count": 9,
+      "lanes": [
+        "MEM",
+        "SKL",
+        "ATT",
+        "BLF",
+        "CNC",
+        "CTL",
+        "LRN",
+        "CH-A",
+        "CH-B"
+      ]
+    },
+    "X": {
+      "claim_count": 53,
+      "lane_count": 10,
+      "lanes": [
+        "MEM",
+        "SKL",
+        "PRD",
+        "ATT",
+        "BLF",
+        "CNC",
+        "CTL",
+        "LRN",
+        "CH-A",
+        "CH-B"
+      ]
+    },
+    "C": {
+      "claim_count": 13,
+      "lane_count": 9,
+      "lanes": [
+        "MEM",
+        "SKL",
+        "PRD",
+        "ATT",
+        "CNC",
+        "CTL",
+        "LRN",
+        "CH-A",
+        "CH-B"
+      ]
+    },
+    "Q": {
+      "claim_count": 36,
+      "lane_count": 10,
+      "lanes": [
+        "MEM",
+        "SKL",
+        "PRD",
+        "ATT",
+        "BLF",
+        "CNC",
+        "CTL",
+        "LRN",
+        "CH-A",
+        "CH-B"
+      ]
+    },
+    "P_in": {
+      "claim_count": 29,
+      "lane_count": 9,
+      "lanes": [
+        "MEM",
+        "SKL",
+        "PRD",
+        "ATT",
+        "BLF",
+        "CTL",
+        "LRN",
+        "CH-A",
+        "CH-B"
+      ]
+    },
+    "P_out": {
+      "claim_count": 40,
+      "lane_count": 9,
+      "lanes": [
+        "MEM",
+        "SKL",
+        "PRD",
+        "ATT",
+        "BLF",
+        "CNC",
+        "CTL",
+        "LRN",
+        "CH-A"
+      ]
+    },
+    "K": {
+      "claim_count": 57,
+      "lane_count": 10,
+      "lanes": [
+        "MEM",
+        "SKL",
+        "PRD",
+        "ATT",
+        "BLF",
+        "CNC",
+        "CTL",
+        "LRN",
+        "CH-A",
+        "CH-B"
+      ]
+    },
+    "T": {
+      "claim_count": 47,
+      "lane_count": 10,
+      "lanes": [
+        "MEM",
+        "SKL",
+        "PRD",
+        "ATT",
+        "BLF",
+        "CNC",
+        "CTL",
+        "LRN",
+        "CH-A",
+        "CH-B"
+      ]
+    },
+    "rho/O": {
+      "claim_count": 56,
+      "lane_count": 10,
+      "lanes": [
+        "MEM",
+        "SKL",
+        "PRD",
+        "ATT",
+        "BLF",
+        "CNC",
+        "CTL",
+        "LRN",
+        "CH-A",
+        "CH-B"
+      ]
+    }
+  },
+  "comparator_G_dyn": {
+    "roles": [
+      "X",
+      "K",
+      "T"
+    ],
+    "claims_whose_instantiated_role_set_is_subset": 1,
+    "subset_claims": [
+      "CH01.C1"
+    ],
+    "subset_claim_is_full": false,
+    "strict_full_direct_preservation_count": 0,
+    "claims_requiring_at_least_one_role_beyond_G_dyn": 59,
+    "result": "REJECTED_AS_DIRECT_PRESERVATION_COMPETITOR",
+    "rationale": [
+      "Pi, C, Q, interface direction and rho/O are independently frozen across multiple lanes.",
+      "Encoding them into X or K would erase distinctions that the reverse projection explicitly preserved.",
+      "The only claim whose instantiated role set is a subset of {X,K,T}, CH01.C1, still has a source-context residual."
+    ]
+  },
+  "comparator_G_pomdp_like": {
+    "roles": [
+      "X",
+      "P",
+      "K",
+      "rho/O",
+      "Q",
+      "T"
+    ],
+    "missing_first_class_roles": [
+      "Pi",
+      "C"
+    ],
+    "claims_requiring_Pi_or_C": 26,
+    "interface_directionality": {
+      "both_P_in_and_P_out": 26,
+      "P_in_only": 3,
+      "P_out_only": 14,
+      "neither": 17,
+      "claims_with_within_claim_directional_split": 26
+    },
+    "union_claims_affected_by_missing_Pi_or_C_or_collapsed_P_direction": 44,
+    "claims_not_hit_by_these_three_tests": 16,
+    "full_claims_not_hit_by_these_three_tests": 5,
+    "full_claim_examples_not_hit": [
+      "ATT03.C1",
+      "CNC02.C1",
+      "CNC03.C1",
+      "CNC04.C1",
+      "CH07.C1"
+    ],
+    "generalized_Q_pressure": [
+      "Q appears in 36/60 claims across all ten lanes.",
+      "Frozen witnesses include correctness criteria, thresholds, reference-relative classification, relevance filters, uncertainty comparisons, and other non-scalar orientation structures.",
+      "A standard scalar reward reading therefore does not directly preserve the frozen Q family."
+    ],
+    "observation_direction_pressure": [
+      "LRN residuals contain observation-to-latent epistemic/estimation relations.",
+      "CH-B includes O->X and O->O topology without a clean X->O rho readout.",
+      "Therefore a single outward state-generated observation interpretation is too narrow for lossless claim representation."
+    ],
+    "result": "PARTIAL_COMPETITOR_WITH_DOCUMENTED_DISTINCTION_LOSS",
+    "rationale": "A POMDP-like tuple captures much of the X/P/K/O/Q/T backbone, but direct preservation loses explicit Pi, explicit C, P_in/P_out directionality, generalized Q semantics, and some O/rho orientation."
+  },
+  "ablation_witnesses": {
+    "Pi": {
+      "independent_support": "15 claims / 9 lanes",
+      "witnesses": [
+        "CH04.C1",
+        "SKL06.C1",
+        "CH11.C1"
+      ],
+      "loss_if_removed": "Nested-role/subsystem/classification individuation must be hidden in X or relation labels."
+    },
+    "C": {
+      "independent_support": "13 claims / 9 lanes",
+      "witnesses": [
+        "SKL01.C1",
+        "CTL05",
+        "CNC01.C1"
+      ],
+      "loss_if_removed": "Realizability/admissibility/resource/process constraints collapse into K/Q/context despite frozen distinctions."
+    },
+    "Q": {
+      "independent_support": "36 claims / 10 lanes",
+      "witnesses": [
+        "SKL05.C1",
+        "CNC04.C1",
+        "CH11.C1"
+      ],
+      "loss_if_removed": "Criterion-conditioned filtering/orientation becomes indistinguishable from dynamics or observation."
+    },
+    "P_in": {
+      "independent_support": "29 claims / 9 lanes",
+      "witnesses": [
+        "SKL01.C1",
+        "CH05.C1",
+        "ATT04.C1"
+      ],
+      "loss_if_removed": "External intervention/write operations collapse into internal K."
+    },
+    "P_out": {
+      "independent_support": "40 claims / 9 lanes",
+      "witnesses": [
+        "ATT03.C1",
+        "SKL06.C1",
+        "CNC04.C1"
+      ],
+      "loss_if_removed": "Probe/query/read operations collapse into observation carriers or generic K."
+    },
+    "K": {
+      "independent_support": "57 claims / 10 lanes",
+      "witnesses": [
+        "CNC03.C1",
+        "BLF04",
+        "CH07.C1"
+      ],
+      "loss_if_removed": "Typed transformation/dependence topology cannot be recovered from temporal order alone."
+    },
+    "T": {
+      "independent_support": "47 claims / 10 lanes",
+      "witnesses": [
+        "ATT03.C1",
+        "PRD04.C1",
+        "CH01.C1"
+      ],
+      "loss_if_removed": "Precedence/succession/temporal scope becomes conflated with K."
+    },
+    "rho/O": {
+      "independent_support": "56 claims / 10 lanes",
+      "witnesses": [
+        "SKL01.C1",
+        "ATT03.C1",
+        "BLF01"
+      ],
+      "loss_if_removed": "Observed traces/readouts and their nonterminal uses collapse into X or P."
+    },
+    "X": {
+      "independent_support": "53 claims / 10 lanes",
+      "witnesses": [
+        "CNC03.C1",
+        "SKL01.C1",
+        "CH04.C1"
+      ],
+      "loss_if_removed": "No configuration carrier remains for internal structure/state roles."
+    }
+  },
+  "conclusions": {
+    "role_inventory_minimality": "SUPPORTED_UNDER_STRICT_FROZEN_DISTINCTION_PRESERVATION",
+    "strongest_result": "Every Grammar-v0 role has independent cross-lane witnesses, and both G_dyn and a POMDP-like comparator lose frozen distinctions unless they add ad hoc encodings that effectively reintroduce the omitted roles.",
+    "residual_implication": "Residual adjudication establishes no new ROLE_GAP; failures principally concern source-context parameters, relation/assertion language, formal carrier directionality, and underidentified derived structure.",
+    "grammar_v1_authorized": false,
+    "next_step": "Separate the system grammar from claim-language/formal-carrier extensions in manuscript architecture; optionally formalize comparator morphisms/forgetful maps without altering v0."
+  },
+  "terminal_classification": "GRAMMAR_V0_ROLE_INVENTORY_NONTRIVIAL_UNDER_STRICT_PRESERVATION_WITH_NO_NEW_ROLE_GAP"
+}
