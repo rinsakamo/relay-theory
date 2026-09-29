@@ -1,0 +1,275 @@
+{
+  "schema_version": "1.0",
+  "status": "FROZEN_SOURCE_CONTEXT_ARCHITECTURE_PLACEMENT",
+  "owner_issue": 349,
+  "authority": {
+    "residual_adjudication": "research/paper2/grammar_v0_residual_adjudication_v1.json",
+    "source_lane_artifacts": [
+      "research/paper2/mem_grammar_v0_reverse_projection_v1.json",
+      "research/paper2/prd_grammar_v0_reverse_projection_v1.json",
+      "research/paper2/ctl_grammar_v0_reverse_projection_v1.json",
+      "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json",
+      "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+    ]
+  },
+  "scope": {
+    "residual_claims": 13,
+    "residual_condition_nodes": 27,
+    "operation": "Architecture placement only; no lane verdict or Grammar-v0 role mapping is changed."
+  },
+  "placement_classes": [
+    "EXPERIMENT_CONTEXT",
+    "WORLD_CONTEXT",
+    "RUN_BOUNDARY_OR_PREHISTORY",
+    "SYSTEM_INTRINSIC_CONSTRAINT_CANDIDATE",
+    "PARAMETER_ONLY",
+    "UNDERDETERMINED"
+  ],
+  "primary_counts": {
+    "EXPERIMENT_CONTEXT": 7,
+    "PARAMETER_ONLY": 5,
+    "RUN_BOUNDARY_OR_PREHISTORY": 4,
+    "WORLD_CONTEXT": 7,
+    "SYSTEM_INTRINSIC_CONSTRAINT_CANDIDATE": 2,
+    "UNDERDETERMINED": 2
+  },
+  "placements": [
+    {
+      "claim_id": "MEM05.C1",
+      "node_id": "initial_acquisition",
+      "primary": "EXPERIMENT_CONTEXT",
+      "secondary": [
+        "RUN_BOUNDARY_OR_PREHISTORY"
+      ],
+      "reason": "A named acquisition phase required to state the later process/retention relation; T gives order but not phase identity. Architecture placement does not retype it as P_in or C."
+    },
+    {
+      "claim_id": "MEM05.C1",
+      "node_id": "later_retrieval",
+      "primary": "EXPERIMENT_CONTEXT",
+      "secondary": [
+        "RUN_BOUNDARY_OR_PREHISTORY"
+      ],
+      "reason": "A named later retrieval phase; label alone does not license P_out. It may delimit the finite observation window while retaining a longer history."
+    },
+    {
+      "claim_id": "MEM06.C1",
+      "node_id": "foil_similarity_condition",
+      "primary": "EXPERIMENT_CONTEXT",
+      "secondary": [],
+      "reason": "Explicit experimental factor distinct from Q correctness criterion and from C admissibility."
+    },
+    {
+      "claim_id": "PRD01.C1",
+      "node_id": "visual_estimator_uncertainty",
+      "primary": "PARAMETER_ONLY",
+      "secondary": [
+        "UNDERDETERMINED"
+      ],
+      "reason": "Frozen as a generic condition parameter in the model; resource_C is not required and the frozen surface does not establish whether its locus is intrinsic system state, World state, or measurement/model parameter."
+    },
+    {
+      "claim_id": "PRD01.C1",
+      "node_id": "haptic_estimator_uncertainty",
+      "primary": "PARAMETER_ONLY",
+      "secondary": [
+        "UNDERDETERMINED"
+      ],
+      "reason": "Same placement as visual estimator uncertainty; no C or World retyping is licensed."
+    },
+    {
+      "claim_id": "PRD02.C1",
+      "node_id": "initial_visual_calibration",
+      "primary": "RUN_BOUNDARY_OR_PREHISTORY",
+      "secondary": [
+        "EXPERIMENT_CONTEXT"
+      ],
+      "reason": "A pre-existing calibration condition relevant at the observed run; it can be treated as preparation/prehistory without asserting an innate system origin."
+    },
+    {
+      "claim_id": "PRD02.C1",
+      "node_id": "movement_duration",
+      "primary": "PARAMETER_ONLY",
+      "secondary": [
+        "EXPERIMENT_CONTEXT"
+      ],
+      "reason": "A duration parameter conditioning the claim; it is not a C constraint merely because it bounds an experimental episode."
+    },
+    {
+      "claim_id": "PRD03.C1",
+      "node_id": "task_relevance_condition",
+      "primary": "EXPERIMENT_CONTEXT",
+      "secondary": [],
+      "reason": "Task relevance indexes the experimental/task regime; it is not the frozen Q criterion and resource_C is not required."
+    },
+    {
+      "claim_id": "PRD04.C1",
+      "node_id": "present_context",
+      "primary": "WORLD_CONTEXT",
+      "secondary": [],
+      "reason": "Represents contextual content at the present position. Placement as World-relative context does not infer an internal World grammar."
+    },
+    {
+      "claim_id": "PRD04.C1",
+      "node_id": "future_context",
+      "primary": "WORLD_CONTEXT",
+      "secondary": [],
+      "reason": "Represents contextual content associated with a future situation; T gives temporal placement but not context identity."
+    },
+    {
+      "claim_id": "PRD04.C1",
+      "node_id": "present_future_context_mismatch",
+      "primary": "WORLD_CONTEXT",
+      "secondary": [
+        "PARAMETER_ONLY"
+      ],
+      "reason": "A relation/property of present versus future context rather than a system admissibility constraint."
+    },
+    {
+      "claim_id": "PRD04.C1",
+      "node_id": "temporal_distance",
+      "primary": "PARAMETER_ONLY",
+      "secondary": [],
+      "reason": "A quantitative/context parameter beyond bare succession; no new system role is licensed."
+    },
+    {
+      "claim_id": "PRD06.C1",
+      "node_id": "context_constraint",
+      "primary": "WORLD_CONTEXT",
+      "secondary": [
+        "UNDERDETERMINED"
+      ],
+      "reason": "Contextual condition external to the separately frozen adult_age_resource_profile C role; exact World/system locus remains weaker than a full World model."
+    },
+    {
+      "claim_id": "PRD06.C1",
+      "node_id": "feature_overlap_with_expected_completion",
+      "primary": "PARAMETER_ONLY",
+      "secondary": [
+        "WORLD_CONTEXT"
+      ],
+      "reason": "A comparison parameter relating available/contextual features to expected completion; not frozen as C/Q."
+    },
+    {
+      "claim_id": "PRD06.C1",
+      "node_id": "contextual_fit",
+      "primary": "WORLD_CONTEXT",
+      "secondary": [
+        "PARAMETER_ONLY"
+      ],
+      "reason": "Context-relative fit parameter; kept outside C because the supported C node is independently identified."
+    },
+    {
+      "claim_id": "PRD06.C1",
+      "node_id": "verbal_generation_fluency",
+      "primary": "SYSTEM_INTRINSIC_CONSTRAINT_CANDIDATE",
+      "secondary": [
+        "UNDERDETERMINED"
+      ],
+      "reason": "Plausibly system-intrinsic performance/resource-like context, but the frozen adjudication did not license it as C. Candidate placement only; Grammar v0 remains unchanged."
+    },
+    {
+      "claim_id": "CTL02",
+      "node_id": "strong_competing_alternative",
+      "primary": "SYSTEM_INTRINSIC_CONSTRAINT_CANDIDATE",
+      "secondary": [
+        "UNDERDETERMINED"
+      ],
+      "reason": "The frozen description refers to a stronger/habitual competing pathway, suggesting system-internal context, but it is not a frozen C/Q/X role. Candidate placement only."
+    },
+    {
+      "claim_id": "CTL03",
+      "node_id": "prior_trial_context",
+      "primary": "RUN_BOUNDARY_OR_PREHISTORY",
+      "secondary": [
+        "EXPERIMENT_CONTEXT"
+      ],
+      "reason": "The current response depends on immediately prior trial context; for a finite window this is explicit prehistory/context rather than a new system role."
+    },
+    {
+      "claim_id": "CTL03",
+      "node_id": "current_distractor_compatibility",
+      "primary": "EXPERIMENT_CONTEXT",
+      "secondary": [
+        "WORLD_CONTEXT"
+      ],
+      "reason": "Current stimulus compatibility is a trial/environment condition selected by the experimental regime."
+    },
+    {
+      "claim_id": "CTL06",
+      "node_id": "task_transition",
+      "primary": "EXPERIMENT_CONTEXT",
+      "secondary": [
+        "DERIVED_FROM_RUN_CANDIDATE"
+      ],
+      "reason": "Repeat/change indexes the trial protocol and may later be derivable from successive configurations, but frozen evidence does not license deleting the explicit condition."
+    },
+    {
+      "claim_id": "CTL06",
+      "node_id": "advance_preparation_opportunity",
+      "primary": "EXPERIMENT_CONTEXT",
+      "secondary": [
+        "PARAMETER_ONLY"
+      ],
+      "reason": "Foreknowledge/time-available is part of experimental preparation/protocol rather than system C or P by itself."
+    },
+    {
+      "claim_id": "CH01.C1",
+      "node_id": "early_synchronized_phase",
+      "primary": "RUN_BOUNDARY_OR_PREHISTORY",
+      "secondary": [],
+      "reason": "An endogenous/history phase identity. T preserves succession, while the phase itself is best treated as run-history context rather than experimental protocol or C."
+    },
+    {
+      "claim_id": "CH01.C1",
+      "node_id": "later_desynchronized_phase",
+      "primary": "RUN_BOUNDARY_OR_PREHISTORY",
+      "secondary": [],
+      "reason": "Same as the early phase: a history-relative phase identity retained beyond bare temporal ordering."
+    },
+    {
+      "claim_id": "CH09.C1",
+      "node_id": "learning_environment",
+      "primary": "WORLD_CONTEXT",
+      "secondary": [
+        "EXPERIMENT_CONTEXT"
+      ],
+      "reason": "An explicit environmental condition at learning, experimentally selected in the claim but not retyped as system X/C/P."
+    },
+    {
+      "claim_id": "CH09.C1",
+      "node_id": "recall_environment",
+      "primary": "WORLD_CONTEXT",
+      "secondary": [
+        "EXPERIMENT_CONTEXT"
+      ],
+      "reason": "An explicit environmental condition at recall; Pi can classify environment combinations but does not replace the World/context carrier."
+    },
+    {
+      "claim_id": "CH10.C1",
+      "node_id": "current_state",
+      "primary": "UNDERDETERMINED",
+      "secondary": [
+        "SYSTEM_INTRINSIC_CONSTRAINT_CANDIDATE"
+      ],
+      "reason": "Despite the lexical label, the frozen object is a generic condition node and cannot be promoted to X/C without violating the lane contract."
+    },
+    {
+      "claim_id": "CH10.C1",
+      "node_id": "candidate_action",
+      "primary": "UNDERDETERMINED",
+      "secondary": [
+        "PARAMETER_ONLY"
+      ],
+      "reason": "The lexical action interpretation is insufficient to retype it as P_in or Q alternative; retain underdetermined placement."
+    }
+  ],
+  "interpretation": {
+    "main_result": "The former SOURCE_CONTEXT_PARAMETER bucket is structurally heterogeneous: experimental protocol/context, World-relative context, finite-run prehistory, intrinsic-system candidates, parameters, and underdetermined cases must be kept separate.",
+    "C_guardrail": "None of these placements upgrades a node to C. Existing frozen C mappings remain authoritative.",
+    "World_guardrail": "WORLD_CONTEXT means architecture placement relative to the modeled system boundary; it does not reconstruct an internal World ontology from the source claim.",
+    "experiment_guardrail": "EXPERIMENT_CONTEXT describes protocol/task/design placement, not a cognitive-system role.",
+    "run_cut_guardrail": "RUN_BOUNDARY_OR_PREHISTORY explicitly records that an experiment-relative start may inherit structure from earlier system–World history."
+  },
+  "terminal_classification": "SOURCE_CONTEXT_BUCKET_SPLIT_WITHOUT_NEW_SYSTEM_ROLE"
+}
