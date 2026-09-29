@@ -24,9 +24,9 @@ from typing import Any
 
 from paper2_basis_subobject_forgetting import (
     image_equivalent,
-    image_id if False else None,
+    is_nontrivial,
+    validate_image,
 )
-from paper2_basis_subobject_forgetting import is_nontrivial, validate_image
 from paper2_archetype_mem_pilot import image_id
 
 GLOBAL_PATH = Path("research/paper2/global_archetype_reconstruction_v1.json")
