@@ -1,0 +1,1505 @@
+{
+  "schema_version": "paper2-grammar-v0-reverse-projection-v1",
+  "lane": "Challenge B",
+  "owner_issue": 336,
+  "authority": {
+    "unified_grammar_issue": 321,
+    "lean_formal_skeleton_pr": 322,
+    "challenge_b_archetype_commit": "bcd8c6d34c306a9149fcdc89cc973eae9513c71b",
+    "base_main_commit": "78cd63cd6ec2898f3b4783b6db394c73c0551ff4"
+  },
+  "scope": {
+    "processed_claims": [
+      "CH02.C1",
+      "CH04.C1",
+      "CH06.C1",
+      "CH08.C1",
+      "CH10.C1",
+      "CH12.C1"
+    ],
+    "processed_lane_ids": [
+      "CH02",
+      "CH04",
+      "CH06",
+      "CH08",
+      "CH10",
+      "CH12"
+    ],
+    "explicitly_excluded": [
+      "CH01",
+      "CH03",
+      "CH05",
+      "CH07",
+      "CH09",
+      "CH11"
+    ],
+    "non_ch_lanes": "NOT_PROCESSED",
+    "source_papers_reread": false,
+    "frozen_artifacts_modified": false,
+    "grammar_v0_modified": false
+  },
+  "frozen_inputs": {
+    "claim_ir_dir": "research/paper2/chatgpt_reference_claimir_v1",
+    "structural_adjudication_dir": "research/paper2/reference_structural_adjudication_v1",
+    "archetype_report": {
+      "path": "research/paper2/challenge_b_archetype_lane_v1.json",
+      "blob_sha": "aebfc10416125738181ec687b4710b789085b05d",
+      "decision": "MULTIPLE_INCOMPARABLE_ARCHETYPES_SUPPORTED",
+      "candidate_count": 12,
+      "all_candidate_edge_counts_zero": true,
+      "architecture_tuning": "NONE",
+      "cross_lane_comparison": "NOT_RUN"
+    },
+    "input_fingerprints": {
+      "CH02": {
+        "claim_ir_sha256": "e774884d4a0d1e8d0d2f13dc97885ac3af11088f93911bab545723c7e341d02d",
+        "structural_adjudication_sha256": "568ab48dd994b095d16ebe61c18820dd61733c0d9121512942d786a7d88e10e9"
+      },
+      "CH04": {
+        "claim_ir_sha256": "3ab5bbaa502a3a07fa00bc045339768a6e5577cb4cad31cd7d860335a06511eb",
+        "structural_adjudication_sha256": "121547d8b17b6fd152c484e8eb16010b4933de5d5207955b38a1ad190251c91a"
+      },
+      "CH06": {
+        "claim_ir_sha256": "a851bb5bce9c7087925557031910a81abfd3edf7d44e631a984417b2d3b12e7c",
+        "structural_adjudication_sha256": "c964faad6c1d99836217f65b0f8a0efe6f9d98c6393608b2de0e31457668e891"
+      },
+      "CH08": {
+        "claim_ir_sha256": "b5e853a00b0cf84416d07415491357df55d38c4115963e4fd725b8f2feaac53b",
+        "structural_adjudication_sha256": "b2cd8c18ea1c6805eea828577784b91804656e80130a0038685a39d75a9e515b"
+      },
+      "CH10": {
+        "claim_ir_sha256": "a177f15d01afb1632a1d64de5295f0d5cd896bd8849d7c2a29c72d53b7c53d93",
+        "structural_adjudication_sha256": "3b11822105a28a6960bdcdbb4bab3ac15d611ce68f8a11e736f75fe88a4d359f"
+      },
+      "CH12": {
+        "claim_ir_sha256": "2860f3061a8d511d9f5ab937827905d263df07fc5967417b41b1dc134a870852",
+        "structural_adjudication_sha256": "3c70102dd088e4e494f840e4fd1f064fe9853722b8518c54007b69df11eee1ce"
+      }
+    }
+  },
+  "method": {
+    "role_definitions": {
+      "Pi": "individuation / partition / boundary",
+      "X": "configuration carrier (frozen S role)",
+      "C": "realizability / admissibility constraint",
+      "Q": "criterion-conditioned filtering / orientation",
+      "P_in": "intervention / write-side interface operation",
+      "P_out": "probe / query / read-side interface operation",
+      "K": "typed transformation / determination / dependence; relational, not necessarily functional",
+      "T": "succession / temporal indexing; distinct from K",
+      "rho/O": "boundary-relative observation / trace; O need not be terminal"
+    },
+    "mapping_statuses": [
+      "SUPPORTED",
+      "PARTIAL",
+      "ABSENT"
+    ],
+    "verdicts": [
+      "FULL",
+      "PARTIAL",
+      "RESIDUAL"
+    ],
+    "guardrails": [
+      "No role is forced from lexical labels alone.",
+      "Frozen generic condition coordinates are not promoted to C without realizability/admissibility support.",
+      "Old probe_P membership is not mechanically relabeled as P_in or P_out.",
+      "Pi may be functional/classificatory/representational and need not be physical.",
+      "Q need not be scalar.",
+      "K need not be functional and does not imply T.",
+      "T does not imply K.",
+      "O carrier evidence does not by itself license a functional or directed rho relation.",
+      "Multiple Pi-indexed components do not license extra edges.",
+      "Persistence is not reduced to K = identity without explicit typed carry/transport support."
+    ]
+  },
+  "claims": [
+    {
+      "claim_id": "CH02.C1",
+      "lane_id": "CH02",
+      "input_paths": {
+        "claim_ir": "research/paper2/chatgpt_reference_claimir_v1/CH02.json",
+        "structural_adjudication": "research/paper2/reference_structural_adjudication_v1/CH02.json"
+      },
+      "frozen_archetype_support": [
+        "A-ab04d718522b",
+        "A-e366ebab921c",
+        "A-08601f09eaea"
+      ],
+      "grammar_roles_instantiated": [
+        "X",
+        "Q",
+        "K",
+        "rho/O"
+      ],
+      "role_status": {
+        "Pi": "ABSENT",
+        "X": "SUPPORTED",
+        "C": "ABSENT",
+        "Q": "SUPPORTED",
+        "P_in": "ABSENT",
+        "P_out": "ABSENT",
+        "K": "SUPPORTED",
+        "T": "ABSENT",
+        "rho/O": "PARTIAL"
+      },
+      "Pi_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.partition_Pi.state=not_required"
+        ]
+      },
+      "X_mapping": {
+        "status": "SUPPORTED",
+        "maps": [
+          [
+            "encoded_distribution_a",
+            "basis.s1"
+          ],
+          [
+            "encoded_distribution_b",
+            "basis.s2"
+          ],
+          [
+            "combined_distribution",
+            "basis.s3"
+          ]
+        ],
+        "evidence": [
+          "coordinate_map fixes all three nodes to required frozen S coordinates"
+        ]
+      },
+      "T_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "temporal.time_index/history_window/future_horizon/recurrence/persistence are all not_required; temporal.ordering=[]"
+        ]
+      },
+      "C_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.resource_C.state=not_required"
+        ]
+      },
+      "Q_mapping": {
+        "status": "SUPPORTED",
+        "maps": [
+          [
+            "bayes_optimality_criterion",
+            "basis.q1"
+          ]
+        ],
+        "evidence": [
+          "controls.criterion_Q.state=present fixed_before_phi=true",
+          "ClaimIR r5: combined_distribution satisfies bayes_optimality_criterion"
+        ]
+      },
+      "P_in_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "linear_population_transform is frozen as basis.other1 and ClaimIR r3 explicitly states it is a computational operation, not an experimental intervention"
+        ]
+      },
+      "P_out_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.probe_P is present on linear_population_transform, but the frozen node/relation topology supplies no query/read/probe direction; old-P membership alone is insufficient"
+        ]
+      },
+      "K_mapping": {
+        "status": "SUPPORTED",
+        "relations": [
+          "r1",
+          "r2",
+          "r3",
+          "r4"
+        ],
+        "evidence": [
+          "r1/r2 map incoming population responses to encoded distributions",
+          "r3 is a source-explicit multi-input linear computation producing combined_population",
+          "r4 maps combined_population to combined_distribution"
+        ],
+        "note": "K is retained as typed mapping/transformation/dependence without imposing functionhood or temporal succession."
+      },
+      "rho/O_mapping": {
+        "status": "PARTIAL",
+        "O_nodes": [
+          [
+            "input_population_a",
+            "basis.o1",
+            "available_information"
+          ],
+          [
+            "input_population_b",
+            "basis.o2",
+            "available_information"
+          ],
+          [
+            "combined_population",
+            "basis.o3",
+            "response_or_outcome"
+          ]
+        ],
+        "evidence": [
+          "all three O coordinates are required by the frozen structural adjudication",
+          "Archetypes A-ab04d718522b and A-e366ebab921c retain O with S/Q"
+        ],
+        "limitation": "The retained topology is O->X for r1/r2/r4 and O->O through r3 inputs/output; no frozen X->O boundary readout licenses a directed rho or P_out."
+      },
+      "supported_relations": [
+        {
+          "claim_relation_id": "r1",
+          "grammar_projection": [
+            "K"
+          ],
+          "shape": "O -> X"
+        },
+        {
+          "claim_relation_id": "r2",
+          "grammar_projection": [
+            "K"
+          ],
+          "shape": "O -> X"
+        },
+        {
+          "claim_relation_id": "r3",
+          "grammar_projection": [
+            "K"
+          ],
+          "shape": "operation + O + O -> O"
+        },
+        {
+          "claim_relation_id": "r4",
+          "grammar_projection": [
+            "K"
+          ],
+          "shape": "O -> X"
+        },
+        {
+          "claim_relation_id": "r5",
+          "grammar_projection": [
+            "Q"
+          ],
+          "shape": "X satisfies Q"
+        }
+      ],
+      "derived_feature_candidates": [
+        {
+          "candidate": "old-P internal computation may compress into K rather than Grammar-v0 interface P",
+          "status": "CANDIDATE_ONLY",
+          "constraint": "does not delete or relabel the frozen probe_P control"
+        }
+      ],
+      "unmapped_residual": [
+        "Frozen controls.probe_P includes linear_population_transform, but the frozen structure does not support either interface-write P_in or interface-read P_out direction.",
+        "O carriers are required, but a canonical rho: X -> O relation is not frozen; the principal encoding relations run O -> X."
+      ],
+      "verdict": "PARTIAL",
+      "notes": [
+        "No Pi, C, or T is inferred. Q is criterion satisfaction, not assumed scalar."
+      ]
+    },
+    {
+      "claim_id": "CH04.C1",
+      "lane_id": "CH04",
+      "input_paths": {
+        "claim_ir": "research/paper2/chatgpt_reference_claimir_v1/CH04.json",
+        "structural_adjudication": "research/paper2/reference_structural_adjudication_v1/CH04.json"
+      },
+      "frozen_archetype_support": [
+        "A-1ed75dd53a7a",
+        "A-a4bbdf8795a3",
+        "A-d722c0037ff0"
+      ],
+      "grammar_roles_instantiated": [
+        "Pi",
+        "X",
+        "K",
+        "rho/O"
+      ],
+      "role_status": {
+        "Pi": "SUPPORTED",
+        "X": "SUPPORTED",
+        "C": "ABSENT",
+        "Q": "ABSENT",
+        "P_in": "ABSENT",
+        "P_out": "ABSENT",
+        "K": "SUPPORTED",
+        "T": "ABSENT",
+        "rho/O": "SUPPORTED"
+      },
+      "Pi_mapping": {
+        "status": "SUPPORTED",
+        "maps": [
+          [
+            "role_decomposition",
+            "basis.pi1"
+          ],
+          [
+            "nested_role_decomposition",
+            "basis.pi2"
+          ]
+        ],
+        "evidence": [
+          "controls.partition_Pi.state=present fixed_before_phi=true",
+          "ClaimIR r1: role_decomposition maps structured_object to binding_set",
+          "ClaimIR r4: nested_role_decomposition participates in recursive higher-order construction"
+        ],
+        "note": "This is role/nested-role individuation, not a physical boundary."
+      },
+      "X_mapping": {
+        "status": "SUPPORTED",
+        "maps": [
+          [
+            "structured_object",
+            "basis.s1"
+          ],
+          [
+            "binding_set",
+            "basis.s2"
+          ],
+          [
+            "filler_vector",
+            "basis.s3"
+          ],
+          [
+            "role_vector",
+            "basis.s4"
+          ],
+          [
+            "binding_representation",
+            "basis.s5"
+          ]
+        ],
+        "evidence": [
+          "all are required frozen S coordinates"
+        ]
+      },
+      "T_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "all frozen temporal features are not_required and ordering=[]"
+        ]
+      },
+      "C_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.resource_C.state=not_required"
+        ]
+      },
+      "Q_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.criterion_Q.state=not_required"
+        ]
+      },
+      "P_in_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.probe_P.state=not_required and no frozen intervention/write node"
+        ]
+      },
+      "P_out_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.probe_P.state=not_required and no frozen query/read node"
+        ]
+      },
+      "K_mapping": {
+        "status": "SUPPORTED",
+        "relations": [
+          "r1",
+          "r2",
+          "r3",
+          "r4"
+        ],
+        "evidence": [
+          "r1 Pi + X -> X decomposition mapping",
+          "r2 X + X -> X product representation",
+          "r3 X + X -> O composite representation",
+          "r4 Pi + X -> O recursive higher-order representation"
+        ],
+        "note": "K is relational/higher-arity and need not be a temporal state transition."
+      },
+      "rho/O_mapping": {
+        "status": "SUPPORTED",
+        "O_nodes": [
+          [
+            "composite_representation",
+            "basis.o1",
+            "response_or_outcome"
+          ],
+          [
+            "higher_order_representation",
+            "basis.o2",
+            "response_or_outcome"
+          ]
+        ],
+        "rho_relation_ids": [
+          "r3",
+          "r4"
+        ],
+        "evidence": [
+          "r3 and r4 map frozen X/Pi structure to required O representation outcomes",
+          "Archetypes A-a4bbdf8795a3 and A-d722c0037ff0 retain O/Pi/S subobjects"
+        ],
+        "note": "Projection is representational and abstract; no literal physical boundary or P_out is asserted."
+      },
+      "supported_relations": [
+        {
+          "claim_relation_id": "r1",
+          "grammar_projection": [
+            "Pi",
+            "K"
+          ],
+          "shape": "Pi + X -> X"
+        },
+        {
+          "claim_relation_id": "r2",
+          "grammar_projection": [
+            "K"
+          ],
+          "shape": "X + X -> X"
+        },
+        {
+          "claim_relation_id": "r3",
+          "grammar_projection": [
+            "K",
+            "rho/O"
+          ],
+          "shape": "X + X -> O"
+        },
+        {
+          "claim_relation_id": "r4",
+          "grammar_projection": [
+            "Pi",
+            "K",
+            "rho/O"
+          ],
+          "shape": "Pi + X -> O"
+        }
+      ],
+      "derived_feature_candidates": [
+        {
+          "candidate": "recursive higher-order representation is a Pi-refinement specialization over X with rho/O readout",
+          "status": "SUPPORTED_COMPRESSION_CANDIDATE"
+        }
+      ],
+      "unmapped_residual": [],
+      "verdict": "FULL",
+      "notes": [
+        "No P operation is invented merely because r3/r4 produce representations."
+      ]
+    },
+    {
+      "claim_id": "CH06.C1",
+      "lane_id": "CH06",
+      "input_paths": {
+        "claim_ir": "research/paper2/chatgpt_reference_claimir_v1/CH06.json",
+        "structural_adjudication": "research/paper2/reference_structural_adjudication_v1/CH06.json"
+      },
+      "frozen_archetype_support": [
+        "A-ab04d718522b",
+        "A-d47d66c86623",
+        "A-00e50f4529f6",
+        "A-08601f09eaea",
+        "A-76f3e1ec86a9"
+      ],
+      "grammar_roles_instantiated": [
+        "X",
+        "Q",
+        "P_in",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "role_status": {
+        "Pi": "ABSENT",
+        "X": "SUPPORTED",
+        "C": "ABSENT",
+        "Q": "SUPPORTED",
+        "P_in": "SUPPORTED",
+        "P_out": "ABSENT",
+        "K": "SUPPORTED",
+        "T": "SUPPORTED",
+        "rho/O": "PARTIAL"
+      },
+      "Pi_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.partition_Pi.state=not_required"
+        ]
+      },
+      "X_mapping": {
+        "status": "SUPPORTED",
+        "maps": [
+          [
+            "joint_probability_density",
+            "basis.s1"
+          ],
+          [
+            "recognition_density",
+            "basis.s2"
+          ]
+        ],
+        "evidence": [
+          "both are required frozen S coordinates"
+        ]
+      },
+      "T_mapping": {
+        "status": "SUPPORTED",
+        "evidence": [
+          "temporal.time_index.state=present",
+          "temporal.history_window.state=present",
+          "temporal.future_horizon.state=present"
+        ],
+        "note": "History and future horizon are retained as T-index/range structure; they are not themselves K."
+      },
+      "C_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.resource_C.state=not_required",
+          "the accessible_bound_objective being a mathematical bound is not reinterpreted as realizability C"
+        ]
+      },
+      "Q_mapping": {
+        "status": "SUPPORTED",
+        "maps": [
+          [
+            "accessible_bound_objective",
+            "basis.q1"
+          ],
+          [
+            "value_cost_criterion",
+            "basis.q2"
+          ],
+          [
+            "prior_expectations",
+            "basis.q3"
+          ]
+        ],
+        "evidence": [
+          "controls.criterion_Q.state=present fixed_before_phi=true",
+          "r4/r5 retain criterion relations among priors, value/cost and the accessible objective",
+          "r6 retains criterion-conditioned trajectory/action orientation"
+        ],
+        "note": "Q includes objective, value/cost, and prior expectation orientation; no scalar-only assumption is made."
+      },
+      "P_in_mapping": {
+        "status": "SUPPORTED",
+        "maps": [
+          [
+            "world_directed_action",
+            "basis.p1"
+          ]
+        ],
+        "evidence": [
+          "ClaimIR node role=intervention",
+          "r3: world_directed_action changes sensory_samples and accessible_bound_objective",
+          "controls.probe_P includes world_directed_action as source_declared"
+        ],
+        "note": "The direction is write/intervene. internal_state_optimization is not automatically included in Grammar-v0 P_in."
+      },
+      "P_out_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "sensory_samples are available information, but the frozen graph contains no explicit query/read/probe operation",
+          "old controls.probe_P membership does not establish P_out direction"
+        ]
+      },
+      "K_mapping": {
+        "status": "SUPPORTED",
+        "relations": [
+          "r1",
+          "r2",
+          "r3",
+          "r6"
+        ],
+        "evidence": [
+          "r1 is typed dependence of Q on O/X",
+          "r2 changes recognition_density and objective under internal_state_optimization",
+          "r3 changes sampled input/objective under P_in action",
+          "r6 constrains P_in action and O trajectory under Q priors"
+        ]
+      },
+      "rho/O_mapping": {
+        "status": "PARTIAL",
+        "O_nodes": [
+          [
+            "sensory_samples",
+            "basis.o1",
+            "available_information"
+          ],
+          [
+            "sampled_state_trajectory",
+            "basis.o2",
+            "response_or_outcome"
+          ]
+        ],
+        "evidence": [
+          "sensory_samples are explicitly sampled through agent-environment exchange",
+          "sampled_state_trajectory is the realized trajectory produced through action/prior expectations"
+        ],
+        "limitation": "The O carrier is boundary-coupled, but no frozen P_out or X->O readout relation specifies a canonical rho; principal O relations are dependence/change relations."
+      },
+      "supported_relations": [
+        {
+          "claim_relation_id": "r1",
+          "grammar_projection": [
+            "K",
+            "Q"
+          ],
+          "shape": "Q depends on O + X + X"
+        },
+        {
+          "claim_relation_id": "r2",
+          "grammar_projection": [
+            "K",
+            "Q"
+          ],
+          "shape": "internal operation changes X and Q"
+        },
+        {
+          "claim_relation_id": "r3",
+          "grammar_projection": [
+            "P_in",
+            "K",
+            "Q"
+          ],
+          "shape": "P_in changes O and Q"
+        },
+        {
+          "claim_relation_id": "r4",
+          "grammar_projection": [
+            "Q"
+          ],
+          "shape": "Q constrains Q"
+        },
+        {
+          "claim_relation_id": "r5",
+          "grammar_projection": [
+            "Q"
+          ],
+          "shape": "Q constrains Q"
+        },
+        {
+          "claim_relation_id": "r6",
+          "grammar_projection": [
+            "Q",
+            "P_in",
+            "K",
+            "rho/O"
+          ],
+          "shape": "Q constrains P_in and O trajectory"
+        }
+      ],
+      "derived_feature_candidates": [
+        {
+          "candidate": "internal_state_optimization may be represented as K over X/Q rather than Grammar-v0 interface P",
+          "status": "SUPPORTED_COMPRESSION_CANDIDATE",
+          "constraint": "frozen old-P control membership is retained as provenance and not rewritten"
+        }
+      ],
+      "unmapped_residual": [
+        "controls.probe_P also names internal_state_optimization, but the frozen structure does not establish an interface-write or interface-read direction for that node.",
+        "No directed P_out/rho read operation is frozen despite sensory O input."
+      ],
+      "verdict": "PARTIAL",
+      "notes": [
+        "C is absent despite 'bound' terminology. Temporal range facts remain T, not K."
+      ]
+    },
+    {
+      "claim_id": "CH08.C1",
+      "lane_id": "CH08",
+      "input_paths": {
+        "claim_ir": "research/paper2/chatgpt_reference_claimir_v1/CH08.json",
+        "structural_adjudication": "research/paper2/reference_structural_adjudication_v1/CH08.json"
+      },
+      "frozen_archetype_support": [
+        "A-d47d66c86623",
+        "A-1ed75dd53a7a",
+        "A-d722c0037ff0",
+        "A-c7a8b77da0f6",
+        "A-e9a4010476b6"
+      ],
+      "grammar_roles_instantiated": [
+        "Pi",
+        "X",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "role_status": {
+        "Pi": "SUPPORTED",
+        "X": "SUPPORTED",
+        "C": "ABSENT",
+        "Q": "ABSENT",
+        "P_in": "ABSENT",
+        "P_out": "ABSENT",
+        "K": "SUPPORTED",
+        "T": "SUPPORTED",
+        "rho/O": "SUPPORTED"
+      },
+      "Pi_mapping": {
+        "status": "SUPPORTED",
+        "maps": [
+          [
+            "processing_stage_partition",
+            "basis.pi1"
+          ],
+          [
+            "information_type_partition",
+            "basis.pi2"
+          ]
+        ],
+        "evidence": [
+          "controls.partition_Pi.state=present fixed_before_phi=true",
+          "r1 distinguishes selection_subtype by processing-stage partition",
+          "r2 distinguishes maintenance_subtype by information-type partition"
+        ],
+        "note": "These processing-stage and information-type decompositions are mapped to Pi because the frozen structural adjudication explicitly retains them as partitions."
+      },
+      "X_mapping": {
+        "status": "SUPPORTED",
+        "maps": [
+          [
+            "selection_subtype",
+            "basis.s1"
+          ],
+          [
+            "maintenance_subtype",
+            "basis.s2"
+          ]
+        ],
+        "evidence": [
+          "both are required frozen S coordinates"
+        ]
+      },
+      "T_mapping": {
+        "status": "SUPPORTED",
+        "evidence": [
+          "temporal.time_index.state=present",
+          "temporal.persistence.state=present"
+        ],
+        "note": "time_index is direct T evidence. persistence is retained separately as a possible carry-derived feature, not collapsed into K=I."
+      },
+      "C_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.resource_C.state=not_required"
+        ]
+      },
+      "Q_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.criterion_Q.state=not_required"
+        ]
+      },
+      "P_in_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.probe_P.state=not_required and no frozen write/intervention operation"
+        ]
+      },
+      "P_out_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.probe_P.state=not_required and no frozen query/read operation"
+        ]
+      },
+      "K_mapping": {
+        "status": "SUPPORTED",
+        "relations": [
+          "r3"
+        ],
+        "evidence": [
+          "r3: interaction_profile depends on selection_subtype, maintenance_subtype, processing_stage_partition and information_type_partition"
+        ],
+        "note": "r1/r2 are retained as Pi distinctions rather than strengthened into transformations."
+      },
+      "rho/O_mapping": {
+        "status": "SUPPORTED",
+        "O_nodes": [
+          [
+            "interaction_profile",
+            "basis.o1",
+            "response_or_outcome"
+          ]
+        ],
+        "rho_relation_ids": [
+          "r3"
+        ],
+        "evidence": [
+          "r3 makes the observed interaction profile a frozen dependence/readout of X under Pi-indexed distinctions",
+          "A-c7a8b77da0f6 retains O/Pi/S/T"
+        ]
+      },
+      "supported_relations": [
+        {
+          "claim_relation_id": "r1",
+          "grammar_projection": [
+            "Pi"
+          ],
+          "shape": "Pi distinguishes X"
+        },
+        {
+          "claim_relation_id": "r2",
+          "grammar_projection": [
+            "Pi"
+          ],
+          "shape": "Pi distinguishes X"
+        },
+        {
+          "claim_relation_id": "r3",
+          "grammar_projection": [
+            "Pi",
+            "K",
+            "rho/O"
+          ],
+          "shape": "O depends on X + X + Pi + Pi"
+        }
+      ],
+      "derived_feature_candidates": [
+        {
+          "candidate": "frozen persistence may be representable by typed carry/transport across T",
+          "status": "PARTIAL_ONLY",
+          "missing_support": "no explicit frozen carry map or K relation identifying successive maintained configurations"
+        }
+      ],
+      "unmapped_residual": [
+        "The frozen persistence feature is stronger than bare temporal indexing, but the frozen graph does not supply the explicit carry/transport witness required to reduce it to K-over-T."
+      ],
+      "verdict": "PARTIAL",
+      "notes": [
+        "No physical-boundary reading of Pi is imposed."
+      ]
+    },
+    {
+      "claim_id": "CH10.C1",
+      "lane_id": "CH10",
+      "input_paths": {
+        "claim_ir": "research/paper2/chatgpt_reference_claimir_v1/CH10.json",
+        "structural_adjudication": "research/paper2/reference_structural_adjudication_v1/CH10.json"
+      },
+      "frozen_archetype_support": [
+        "A-ab04d718522b",
+        "A-d47d66c86623",
+        "A-e366ebab921c",
+        "A-00e50f4529f6",
+        "A-11616449299f",
+        "A-76f3e1ec86a9",
+        "A-e9a4010476b6"
+      ],
+      "grammar_roles_instantiated": [
+        "X",
+        "Q",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "role_status": {
+        "Pi": "ABSENT",
+        "X": "SUPPORTED",
+        "C": "ABSENT",
+        "Q": "SUPPORTED",
+        "P_in": "ABSENT",
+        "P_out": "ABSENT",
+        "K": "SUPPORTED",
+        "T": "SUPPORTED",
+        "rho/O": "PARTIAL"
+      },
+      "Pi_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.partition_Pi.state=not_required"
+        ]
+      },
+      "X_mapping": {
+        "status": "SUPPORTED",
+        "maps": [
+          [
+            "stored_summary_pathway",
+            "basis.s1"
+          ],
+          [
+            "structured_search_pathway",
+            "basis.s2"
+          ],
+          [
+            "estimated_task_structure",
+            "basis.s3"
+          ],
+          [
+            "stored_value_distribution",
+            "basis.s4"
+          ],
+          [
+            "searched_value_distribution",
+            "basis.s5"
+          ],
+          [
+            "winning_value_estimate",
+            "basis.s6"
+          ]
+        ],
+        "evidence": [
+          "all are required frozen S coordinates"
+        ]
+      },
+      "T_mapping": {
+        "status": "SUPPORTED",
+        "evidence": [
+          "temporal.time_index.state=present",
+          "temporal.history_window.state=present",
+          "temporal.future_horizon.state=present",
+          "temporal.recurrence.state=present",
+          "temporal.persistence.state=present"
+        ],
+        "note": "The temporal metadata is not converted into extra K edges. Persistence remains a carry candidate only."
+      },
+      "C_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.resource_C.state=not_required",
+          "current_state and candidate_action are frozen generic condition coordinates basis.cnd1/basis.cnd2 and are not promoted to realizability C"
+        ]
+      },
+      "Q_mapping": {
+        "status": "SUPPORTED",
+        "maps": [
+          [
+            "stored_prediction_uncertainty",
+            "basis.q1"
+          ],
+          [
+            "searched_prediction_uncertainty",
+            "basis.q2"
+          ]
+        ],
+        "evidence": [
+          "controls.criterion_Q.state=present fixed_before_phi=true",
+          "approximation.comparison_criterion.state=present",
+          "r6 selects the winning mean from the pathway with smaller posterior variance"
+        ],
+        "note": "Q is comparison/orientation by uncertainty and need not be a scalar utility."
+      },
+      "P_in_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.probe_P.state=not_required; chosen_action is frozen as O outcome, not as a separate interface write operation"
+        ]
+      },
+      "P_out_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.probe_P.state=not_required and no explicit query/read operation is frozen"
+        ]
+      },
+      "K_mapping": {
+        "status": "SUPPORTED",
+        "relations": [
+          "r1",
+          "r2",
+          "r3",
+          "r4",
+          "r5",
+          "r6",
+          "r7"
+        ],
+        "evidence": [
+          "r1/r2 map experience O into learned X structures",
+          "r3 maps X plus required condition nodes to searched value X",
+          "r4/r5 define Q dependence on X distributions",
+          "r6 maps X/Q inputs to winning X estimate",
+          "r7 maps condition/X inputs to chosen-action O"
+        ],
+        "note": "r8 remains a distinction relation and is not strengthened into K."
+      },
+      "rho/O_mapping": {
+        "status": "PARTIAL",
+        "O_nodes": [
+          [
+            "experience_history",
+            "basis.o1",
+            "available_information"
+          ],
+          [
+            "chosen_action",
+            "basis.o2",
+            "response_or_outcome"
+          ]
+        ],
+        "evidence": [
+          "experience_history is the frozen incoming information carrier used by r1/r2",
+          "chosen_action is the frozen response/outcome produced by r7"
+        ],
+        "limitation": "The claim has mixed incoming and outgoing O positions but no P_out or explicit boundary readout relation; no functional rho is invented."
+      },
+      "supported_relations": [
+        {
+          "claim_relation_id": "r1",
+          "grammar_projection": [
+            "K"
+          ],
+          "shape": "O + X -> X"
+        },
+        {
+          "claim_relation_id": "r2",
+          "grammar_projection": [
+            "K"
+          ],
+          "shape": "O + X -> X"
+        },
+        {
+          "claim_relation_id": "r3",
+          "grammar_projection": [
+            "K"
+          ],
+          "shape": "X + X + residual condition + residual condition -> X"
+        },
+        {
+          "claim_relation_id": "r4",
+          "grammar_projection": [
+            "Q",
+            "K"
+          ],
+          "shape": "Q depends on X"
+        },
+        {
+          "claim_relation_id": "r5",
+          "grammar_projection": [
+            "Q",
+            "K"
+          ],
+          "shape": "Q depends on X"
+        },
+        {
+          "claim_relation_id": "r6",
+          "grammar_projection": [
+            "Q",
+            "K"
+          ],
+          "shape": "X depends on X + X + Q + Q"
+        },
+        {
+          "claim_relation_id": "r7",
+          "grammar_projection": [
+            "K",
+            "rho/O"
+          ],
+          "shape": "O depends on residual condition + residual condition + X"
+        },
+        {
+          "claim_relation_id": "r8",
+          "grammar_projection": [
+            "X"
+          ],
+          "shape": "distinguishes X representations/computational routes"
+        }
+      ],
+      "derived_feature_candidates": [
+        {
+          "candidate": "stored/estimated persistence may be representable by typed carry across recurrent T positions",
+          "status": "PARTIAL_ONLY",
+          "missing_support": "no explicit carry map is frozen"
+        },
+        {
+          "candidate": "history-window, future-horizon and recurrence are T refinements rather than separate top-level roles",
+          "status": "SUPPORTED_COMPRESSION_CANDIDATE"
+        }
+      ],
+      "unmapped_residual": [
+        {
+          "kind": "required_generic_condition_nodes",
+          "exact_structure": [
+            [
+              "current_state",
+              "basis.cnd1",
+              "role=condition"
+            ],
+            [
+              "candidate_action",
+              "basis.cnd2",
+              "role=condition"
+            ]
+          ],
+          "reason": "resource_C is not_required and no frozen Pi/Q/P/O/X retyping is licensed; both nodes remain required inputs to r3/r7."
+        },
+        {
+          "kind": "frozen_structural_adjudication_residual",
+          "decision_status": "RESIDUAL",
+          "residual_kind": "unsupported_contract",
+          "failure_layer": "approximation",
+          "unmet_obligation": "Represent approximate valuation computation and stochastic final action sampling as distinct simultaneous mode facts without collapsing either one.",
+          "reason": "Grammar v0 has no role that repairs this already-frozen approximation-surface loss, and this lane does not modify the adjudication contract."
+        },
+        "Frozen persistence lacks an explicit typed carry/transport witness."
+      ],
+      "verdict": "RESIDUAL",
+      "notes": [
+        "This claim is the decisive Challenge-B counterexample to full direct/lossless expressibility under unchanged Grammar v0.",
+        "The counterexample does not invalidate the frozen B_P2 mapping or require grammar repair in this lane."
+      ]
+    },
+    {
+      "claim_id": "CH12.C1",
+      "lane_id": "CH12",
+      "input_paths": {
+        "claim_ir": "research/paper2/chatgpt_reference_claimir_v1/CH12.json",
+        "structural_adjudication": "research/paper2/reference_structural_adjudication_v1/CH12.json"
+      },
+      "frozen_archetype_support": [
+        "A-ab04d718522b",
+        "A-d47d66c86623",
+        "A-e366ebab921c",
+        "A-00e50f4529f6",
+        "A-1ed75dd53a7a",
+        "A-11616449299f",
+        "A-a4bbdf8795a3",
+        "A-c7a8b77da0f6"
+      ],
+      "grammar_roles_instantiated": [
+        "Pi",
+        "X",
+        "C",
+        "Q",
+        "P_in",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "role_status": {
+        "Pi": "SUPPORTED",
+        "X": "SUPPORTED",
+        "C": "SUPPORTED",
+        "Q": "SUPPORTED",
+        "P_in": "PARTIAL",
+        "P_out": "ABSENT",
+        "K": "SUPPORTED",
+        "T": "SUPPORTED",
+        "rho/O": "SUPPORTED"
+      },
+      "Pi_mapping": {
+        "status": "SUPPORTED",
+        "maps": [
+          [
+            "specialized_subsystem_partition",
+            "basis.pi1"
+          ]
+        ],
+        "evidence": [
+          "controls.partition_Pi.state=present fixed_before_phi=true",
+          "the frozen node explicitly individuates specialized perceptual/action/goal-maintenance/retrieval subsystems"
+        ],
+        "note": "Subsystem decomposition is Pi here because the frozen partition control licenses it."
+      },
+      "X_mapping": {
+        "status": "SUPPORTED",
+        "maps": [
+          [
+            "limited_interface_states",
+            "basis.s1"
+          ],
+          [
+            "applicable_condition_action_mappings",
+            "basis.s2"
+          ],
+          [
+            "direct_bypass_pathway",
+            "basis.s3"
+          ]
+        ],
+        "evidence": [
+          "all are required frozen S coordinates"
+        ]
+      },
+      "T_mapping": {
+        "status": "SUPPORTED",
+        "evidence": [
+          "temporal.time_index.state=present",
+          "temporal.recurrence.state=present",
+          "temporal.ordering contains basis.o1 < basis.o2 and basis.o2 < basis.o3",
+          "ClaimIR r6 is explicit precedes(current_interface_pattern, selected_mapping, interface_update_or_request)"
+        ],
+        "note": "Ordering is retained as T and is not collapsed into K."
+      },
+      "C_mapping": {
+        "status": "SUPPORTED",
+        "maps": [
+          [
+            "limited_interface_states",
+            "basis.s1"
+          ]
+        ],
+        "evidence": [
+          "controls.resource_C.state=present on limited_interface_states fixed_before_phi=true",
+          "r2: limited_interface_states constrains current_interface_pattern",
+          "scope states the central route has access only to limited interface contents"
+        ],
+        "note": "C is layered on the same frozen node that also instantiates X; roles are not disjoint entity kinds."
+      },
+      "Q_mapping": {
+        "status": "SUPPORTED",
+        "maps": [
+          [
+            "instantaneous_control_value",
+            "basis.q1"
+          ]
+        ],
+        "evidence": [
+          "controls.criterion_Q.state=present fixed_before_phi=true",
+          "r4: one applicable mapping is selected according to cycle-specific noisy control value"
+        ],
+        "note": "The retained orientation is criterion-conditioned selection; scalarity is not generalized beyond this claim."
+      },
+      "P_in_mapping": {
+        "status": "PARTIAL",
+        "maps": [
+          [
+            "interface_update_or_request",
+            "basis.o3"
+          ]
+        ],
+        "evidence": [
+          "node description: interface-state change or request to a specialized subsystem",
+          "r5: executing selected_mapping produces interface-state changes or requests and changes limited_interface_states"
+        ],
+        "limitation": "The write/request operation is not frozen as a separate old-P coordinate; the same required O node carries the operation outcome. Role overlap is supported, but a distinct P_in operation carrier is not."
+      },
+      "P_out_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "current_interface_pattern is exposed/read information, but no separate frozen query/probe operation exists and controls.probe_P.state=not_required"
+        ]
+      },
+      "K_mapping": {
+        "status": "SUPPORTED",
+        "relations": [
+          "r2",
+          "r3",
+          "r4",
+          "r5"
+        ],
+        "evidence": [
+          "r2 X constrains O exposure under C",
+          "r3 X applicability depends on current O",
+          "r4 O selection depends on X and Q",
+          "r5 selected O changes interface-update O and limited-interface X"
+        ],
+        "note": "r6 is T-only; r7 is retained as a distinction/topology residual and no bypass edge is inferred."
+      },
+      "rho/O_mapping": {
+        "status": "SUPPORTED",
+        "O_nodes": [
+          [
+            "current_interface_pattern",
+            "basis.o1",
+            "available_information"
+          ],
+          [
+            "selected_mapping",
+            "basis.o2",
+            "response_or_outcome"
+          ],
+          [
+            "interface_update_or_request",
+            "basis.o3",
+            "response_or_outcome"
+          ]
+        ],
+        "rho_relation_ids": [
+          "r2"
+        ],
+        "evidence": [
+          "r1/r2 make interface exposure explicitly boundary/subsystem-relative",
+          "r2 constrains currently available O to contents exposed by limited_interface_states",
+          "Pi and C are both frozen present, supporting rho_{Pi,C}-like exposure",
+          "r6 orders O1 -> O2 -> O3 without making O terminal-only"
+        ]
+      },
+      "supported_relations": [
+        {
+          "claim_relation_id": "r1",
+          "grammar_projection": [
+            "Pi",
+            "X",
+            "rho/O"
+          ],
+          "shape": "Pi -> limited interface X"
+        },
+        {
+          "claim_relation_id": "r2",
+          "grammar_projection": [
+            "C",
+            "K",
+            "rho/O"
+          ],
+          "shape": "X/C constrains O exposure"
+        },
+        {
+          "claim_relation_id": "r3",
+          "grammar_projection": [
+            "K"
+          ],
+          "shape": "X depends on O"
+        },
+        {
+          "claim_relation_id": "r4",
+          "grammar_projection": [
+            "Q",
+            "K",
+            "rho/O"
+          ],
+          "shape": "O selected from X under Q"
+        },
+        {
+          "claim_relation_id": "r5",
+          "grammar_projection": [
+            "P_in",
+            "K",
+            "rho/O"
+          ],
+          "shape": "O selection -> write/request O + X change"
+        },
+        {
+          "claim_relation_id": "r6",
+          "grammar_projection": [
+            "T"
+          ],
+          "shape": "O1 <_T O2 <_T O3"
+        },
+        {
+          "claim_relation_id": "r7",
+          "grammar_projection": [
+            "X"
+          ],
+          "shape": "distinguishes bypass X from serial interface route"
+        }
+      ],
+      "derived_feature_candidates": [
+        {
+          "candidate": "limited interface exposure is a direct Pi + C + rho/O compression case",
+          "status": "SUPPORTED_COMPRESSION_CANDIDATE"
+        },
+        {
+          "candidate": "serial central-cycle recurrence is T refinement over ordered O traces",
+          "status": "SUPPORTED_COMPRESSION_CANDIDATE"
+        },
+        {
+          "candidate": "interface_update_or_request exhibits role overlap between outgoing O trace and partial P_in write/request semantics",
+          "status": "SUPPORTED_ROLE_OVERLAP"
+        }
+      ],
+      "unmapped_residual": [
+        "r7 preserves a direct_bypass_pathway distinction, but the frozen relation does not specify subsystem endpoints; no extra Pi-indexed bypass K edge is inferred.",
+        "P_in is only partial because the write/request operation is carried by an O outcome node rather than a separately frozen operation carrier."
+      ],
+      "verdict": "PARTIAL",
+      "notes": [
+        "P_out is not inferred from passive availability of current_interface_pattern."
+      ]
+    }
+  ],
+  "summary": {
+    "CH-B_coverage_count": "6 / 6",
+    "verdict_counts": {
+      "FULL": 1,
+      "PARTIAL": 4,
+      "RESIDUAL": 1
+    },
+    "role_frequency": {
+      "Pi": "3 / 6",
+      "X": "6 / 6",
+      "C": "1 / 6",
+      "Q": "4 / 6",
+      "P_in": "2 / 6",
+      "P_out": "0 / 6",
+      "K": "6 / 6",
+      "T": "4 / 6",
+      "rho/O": "6 / 6"
+    },
+    "role_frequency_rule": "Counts SUPPORTED or PARTIAL instantiation.",
+    "recurrent_substructures": [
+      "X + K occurs in all 6 claims.",
+      "O carriers occur in all 6 claims, but CH02/CH06/CH10 lack a clean directed rho readout and are therefore rho/O PARTIAL.",
+      "Q + X + K recurs in CH02, CH06, CH10 and CH12.",
+      "Pi + X recurs in CH04, CH08 and CH12 under explicitly frozen partition controls.",
+      "T recurs in CH06, CH08, CH10 and CH12; only CH12 has explicit frozen ordering edges.",
+      "Frozen Archetype A-ab04d718522b retains O/Q/S across CH02/CH06/CH10/CH12.",
+      "Frozen Archetype A-d47d66c86623 retains O/S/T across CH06/CH08/CH10/CH12.",
+      "Frozen Archetype A-1ed75dd53a7a retains O/Pi/S across CH04/CH08/CH12.",
+      "All 12 frozen Challenge-B Archetype candidates have edge_count=0, so they support recurrent role bundles but do not license K/rho edges."
+    ],
+    "grammar_distinctions_required_by_CH_B": [
+      "Old frozen P-control membership must remain distinct from Grammar-v0 P_in/P_out interface direction.",
+      "O carrier membership must remain distinct from a directed/function-valued rho relation.",
+      "Pi must admit non-physical role, nested-role, processing-stage, information-type and subsystem individuation where explicitly frozen.",
+      "C must remain realizability/admissibility-like and must not absorb generic condition nodes.",
+      "Q must admit criterion satisfaction, optimization/value-cost orientation, uncertainty comparison and cycle-specific selection without a scalar-only assumption.",
+      "K must admit relational, higher-arity and cross-role dependence/transformation without requiring T.",
+      "T must remain separate from K and retain index/range/recurrence/ordering structure.",
+      "Persistence requires explicit typed carry/transport support before compression into K-over-T.",
+      "Roles may overlap on one frozen node, as in CH12 limited_interface_states (X+C) and interface_update_or_request (O + partial P_in)."
+    ],
+    "roles_not_needed_by_CH_B": [
+      "P_out is not structurally required by any of the six frozen CH-B claims.",
+      "A deterministic/function-valued K specialization is not required."
+    ],
+    "residual_structures_not_expressible_by_Grammar_v0": [
+      "CH10 required generic condition nodes current_state/basis.cnd1 and candidate_action/basis.cnd2 cannot be mapped to C or another role under the frozen evidence.",
+      "CH10 already-frozen approximation residual requires simultaneous approximate internal valuation and stochastic final action sampling; Grammar v0 does not repair that claim-language distinction.",
+      "CH02/CH06 old-P control membership includes internal computations lacking supported interface direction.",
+      "CH08/CH10 persistence lacks explicit carry/transport witnesses.",
+      "CH12 direct-bypass topology is acknowledged but endpoints/edges are not frozen strongly enough to project as an extra K edge."
+    ],
+    "possible_compression_or_derived_feature_cases": [
+      "Frozen S -> X is supported throughout CH-B.",
+      "Nested-role, processing-stage, information-type and subsystem decompositions compress into Pi where partition_Pi is frozen present.",
+      "Multiple criterion forms compress into generalized Q without requiring scalar reward/value.",
+      "History-window, future-horizon and recurrence are plausible T refinements.",
+      "CH12 supports a compact Pi + C + rho/O interface-exposure specialization.",
+      "Some old-P internal computations may compress into K rather than interface P, but the frozen old-P provenance is not rewritten.",
+      "Persistence -> typed carry across T remains a candidate only; CH-B supplies no explicit carry map."
+    ],
+    "potential_threats_to_Grammar_v0": [
+      {
+        "threat": "DIRECT_EXPRESSIBILITY_COUNTEREXAMPLE",
+        "claim": "CH10.C1",
+        "basis": "required generic condition nodes remain outside the frozen role inventory under the no-reinterpretation rule",
+        "consequence": "Grammar v0 is not lossless for the entire CH-B frozen claim surface."
+      },
+      {
+        "threat": "INTERFACE_P_MISMATCH",
+        "claims": [
+          "CH02.C1",
+          "CH06.C1"
+        ],
+        "basis": "old probe_P can mark internal computation without supported P_in/P_out interface direction"
+      },
+      {
+        "threat": "RHO_DIRECTIONALITY",
+        "claims": [
+          "CH02.C1",
+          "CH06.C1",
+          "CH10.C1"
+        ],
+        "basis": "O is present but the frozen topology does not supply a clean X->O readout"
+      },
+      {
+        "threat": "PERSISTENCE_UNDERSPECIFIED",
+        "claims": [
+          "CH08.C1",
+          "CH10.C1"
+        ],
+        "basis": "persistence is frozen present without explicit typed carry/transport relation"
+      }
+    ],
+    "counterexample_to_Grammar_v0": {
+      "answer": "YES_BOUNDED_COUNTEREXAMPLE_TO_FULL_DIRECT_EXPRESSIBILITY",
+      "decisive_claim": "CH10.C1",
+      "qualification": "This does not show that the Grammar-v0 role vocabulary is useless, does not alter the frozen B_P2 mapping, and does not authorize grammar repair in this lane."
+    }
+  },
+  "terminal_classification": "CHALLENGE_B_GRAMMAR_V0_PARTIAL_COVERAGE_WITH_CH10_DIRECT_EXPRESSIBILITY_COUNTEREXAMPLE",
+  "architecture_consequence": "NONE"
+}
