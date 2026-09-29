@@ -27,5 +27,7 @@ jobs:
           python-version: "3.12"
       - name: Run terminal A1-A8 audit
         run: python scripts/paper2_bounded_xlike_reconstruction.py --self-test
-      - name: Emit bounded XLike report
-        run: python scripts/paper2_bounded_xlike_reconstruction.py --emit-report
+      - name: Regenerate bounded XLike report
+        run: python scripts/paper2_bounded_xlike_reconstruction.py --emit-report --output /tmp/bounded_xlike_reconstruction_v1.json
+      - name: Verify frozen bounded XLike report
+        run: cmp /tmp/bounded_xlike_reconstruction_v1.json research/paper2/bounded_xlike_reconstruction_v1.json
