@@ -1,0 +1,46 @@
+name: paper2-prd-archetype-lane-selftest
+
+on:
+  push:
+    branches: [paper2-archetype-prd-lane-302]
+  pull_request:
+    paths:
+      - "scripts/paper2_archetype_prd_lane.py"
+      - "research/paper2/prd_archetype_lane_v1.json"
+      - ".github/workflows/paper2-prd-archetype-lane-selftest.yml"
+      - "scripts/paper2_archetype_mem_pilot.py"
+      - "scripts/paper2_basis_structural_skeleton.py"
+      - "scripts/paper2_basis_subobject_forgetting.py"
+      - "research/paper2/chatgpt_reference_claimir_v1/PRD*.json"
+      - "research/paper2/reference_structural_adjudication_v1/PRD*.json"
+
+concurrency:
+  group: paper2-prd-archetype-lane-302
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  lane:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile generator
+        run: python -m py_compile scripts/paper2_archetype_prd_lane.py
+      - name: Determinism and frozen-semantics self-test
+        run: PYTHONPATH=scripts python scripts/paper2_archetype_prd_lane.py --self-test
+      - name: Generate PRD lane report
+        run: |
+          PYTHONPATH=scripts python scripts/paper2_archetype_prd_lane.py \
+            --emit-report \
+            --output /tmp/prd_archetype_lane_v1.json
+          python -m json.tool /tmp/prd_archetype_lane_v1.json >/dev/null
+          sha256sum /tmp/prd_archetype_lane_v1.json
+          echo "BEGIN_PRD_ARCHETYPE_REPORT"
+          cat /tmp/prd_archetype_lane_v1.json
+          echo "END_PRD_ARCHETYPE_REPORT"
