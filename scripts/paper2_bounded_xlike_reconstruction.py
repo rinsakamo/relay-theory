@@ -31,6 +31,7 @@ from paper2_archetype_mem_pilot import image_id
 
 GLOBAL_PATH = Path("research/paper2/global_archetype_reconstruction_v1.json")
 GLOBAL_PHI_PATH = Path("research/paper2/reference_global_phi_freeze_v1.json")
+PHI_PROJECTION_FREEZE_PATH = Path("research/paper2/reference_phi_projection_freeze_v1.json")
 U_CLAIM_CONTRACT = Path("research/paper2/archetype_claim_forgetting_contract_v1.json")
 F_R_CONTRACT = Path("research/paper2/basis_subobject_forgetting_contract_v1.json")
 CLAIM_DIR = Path("research/paper2/chatgpt_reference_claimir_v1")
@@ -129,6 +130,7 @@ def _lane_code(claim_id: str) -> str:
 def build_report() -> dict[str, Any]:
     global_report = _load(GLOBAL_PATH)
     phi_freeze = _load(GLOBAL_PHI_PATH)
+    phi_projection_freeze = _load(PHI_PROJECTION_FREEZE_PATH)
     u_claim_contract = _load(U_CLAIM_CONTRACT)
     f_r_contract = _load(F_R_CONTRACT)
 
@@ -347,6 +349,9 @@ def build_report() -> dict[str, Any]:
             "minimal_low_complexity_survivor": object_id in minimal_survivors,
         })
 
+    corpus_claim_ids = sorted(row["claim_id"] for row in phi_projection_freeze["claims"])
+    unsupported_claim_ids = sorted(set(corpus_claim_ids) - all_supported_claims)
+
     # Terminal choice from #283's declared vocabulary.
     if not all_controls_pass:
         decision = "ARCHETYPE_UNSTABLE_UNDER_CONTROLS"
@@ -371,6 +376,7 @@ def build_report() -> dict[str, Any]:
         "input_sha256": {
             "global_archetype_reconstruction": _sha(GLOBAL_PATH),
             "global_phi_freeze": _sha(GLOBAL_PHI_PATH),
+            "phi_projection_freeze": _sha(PHI_PROJECTION_FREEZE_PATH),
             "u_claim_contract": _sha(U_CLAIM_CONTRACT),
             "f_r_contract": _sha(F_R_CONTRACT),
         },
@@ -380,7 +386,11 @@ def build_report() -> dict[str, Any]:
         "bounded_xlike_count": len(xlikes),
         "cross_lane_xlike_count": cross_lane_xlikes,
         "lane_local_only_xlike_count": lane_local_xlikes,
+        "corpus_claim_count": len(corpus_claim_ids),
         "supported_claim_count": len(all_supported_claims),
+        "unsupported_claim_count": len(unsupported_claim_ids),
+        "unsupported_claim_ids": unsupported_claim_ids,
+        "exhaustive_partition_required": False,
         "destructive_controls": controls,
         "bounded_xlike_families": xlikes,
         "historical_labels_restored_only_post_hoc": True,
@@ -400,7 +410,10 @@ def self_test() -> None:
     assert first["a4_dominated_object_count"] == 0
     assert first["bounded_xlike_count"] == 206
     assert first["cross_lane_xlike_count"] == 99
-    assert first["supported_claim_count"] == 60
+    assert first["corpus_claim_count"] == 60
+    assert first["supported_claim_count"] == 59
+    assert first["unsupported_claim_ids"] == ["CNC03"]
+    assert first["exhaustive_partition_required"] is False
     assert all(
         row["status"] == "PASS"
         for row in first["destructive_controls"].values()
