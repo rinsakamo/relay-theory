@@ -1,0 +1,1342 @@
+{
+  "schema_version": "paper2-att-grammar-v0-reverse-projection-v1",
+  "owner_issue": 325,
+  "lane": "ATT",
+  "authority": {
+    "grammar_issue": 321,
+    "formal_skeleton_pr": 322,
+    "base_main_sha": "78cd63cd6ec2898f3b4783b6db394c73c0551ff4",
+    "att_archetype_owner_issue": 297,
+    "att_archetype_file": "research/paper2/att_archetype_lane_v1.json",
+    "att_archetype_blob_sha": "4697eaaefa358d7e167ec58ec3cdc0d40212fda4",
+    "att_archetype_sha256": "97631e553c38adf9aa06c443fd6a00f620c67b3ca0979c8b98f36680be43aa7c",
+    "input_policy": "frozen reviewed ATT ClaimIR + frozen structural adjudication + frozen ATT Archetype artifact only; no paper rereading"
+  },
+  "status_semantics": {
+    "SUPPORTED": "Frozen topology/control/temporal evidence directly licenses the Grammar v0 role.",
+    "PARTIAL": "Some frozen structure licenses the role, but at least one corresponding node/edge lacks the topology needed for the stronger Grammar v0 interpretation.",
+    "ABSENT": "The frozen ATT claim does not require this role; absence is not an ontological claim."
+  },
+  "verdict_semantics": {
+    "FULL": "All positive frozen claim structure can be represented by Grammar v0 roles or an explicitly identified derived feature without changing frozen topology.",
+    "PARTIAL": "A supported Grammar v0 projection exists but explicit frozen residual structure remains outside Grammar v0.",
+    "RESIDUAL": "Core frozen structure cannot be represented without repairing or redefining Grammar v0."
+  },
+  "claims": [
+    {
+      "claim_id": "ATT01.C1",
+      "slot_id": "ATT01",
+      "frozen_input_fingerprints": {
+        "claim_ir_sha256": "bea0db790e565ebd5bb93ddaf79e6d9b5a0b17a7e08802f5f2bd4ae9d2ff7e4a",
+        "structural_adjudication_sha256": "e40f7e5877d9e43a3f9820367b04f3a1e47493d67c86af2353c8bf337e9b69ab"
+      },
+      "grammar_roles_instantiated": [
+        "Pi",
+        "Q",
+        "P_out",
+        "K",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "relation": "Pi-conditioned outcome dependence",
+          "grammar": "K(report_accuracy, perceptual_unit_partition)",
+          "evidence": [
+            {
+              "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT01.json",
+              "selector": "claim_core.relations[r2]"
+            },
+            {
+              "artifact": "research/paper2/reference_structural_adjudication_v1/ATT01.json",
+              "selector": "controls.partition_Pi.state=present"
+            }
+          ]
+        },
+        {
+          "relation": "probe/readout",
+          "grammar": "rho(P_out=brief_display_probe) -> O=report_accuracy",
+          "evidence": [
+            {
+              "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT01.json",
+              "selector": "claim_core.relations[r3]"
+            },
+            {
+              "artifact": "research/paper2/reference_structural_adjudication_v1/ATT01.json",
+              "selector": "controls.probe_P.state=present"
+            }
+          ]
+        },
+        {
+          "relation": "criterion evaluation",
+          "grammar": "Q(report_accuracy; accurate_attribute_report)",
+          "evidence": [
+            {
+              "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT01.json",
+              "selector": "claim_core.relations[r4]"
+            },
+            {
+              "artifact": "research/paper2/reference_structural_adjudication_v1/ATT01.json",
+              "selector": "controls.criterion_Q.state=present"
+            }
+          ]
+        }
+      ],
+      "Pi_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "perceptual_unit_partition -> Pi",
+        "evidence": [
+          {
+            "artifact": "research/paper2/reference_structural_adjudication_v1/ATT01.json",
+            "selector": "coordinate_map[perceptual_unit_partition]=basis.pi1"
+          },
+          {
+            "artifact": "research/paper2/reference_structural_adjudication_v1/ATT01.json",
+            "selector": "controls.partition_Pi"
+          }
+        ]
+      },
+      "X_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "artifact": "research/paper2/reference_structural_adjudication_v1/ATT01.json",
+            "selector": "coordinate_map contains no basis.s*"
+          }
+        ]
+      },
+      "T_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "artifact": "research/paper2/reference_structural_adjudication_v1/ATT01.json",
+            "selector": "temporal.* all not_required; ordering=[]"
+          }
+        ]
+      },
+      "C_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "artifact": "research/paper2/reference_structural_adjudication_v1/ATT01.json",
+            "selector": "controls.resource_C.state=not_required"
+          }
+        ]
+      },
+      "Q_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "accurate_attribute_report -> criterion-conditioned correctness filter/orientation",
+        "evidence": [
+          {
+            "artifact": "research/paper2/reference_structural_adjudication_v1/ATT01.json",
+            "selector": "coordinate_map[accurate_attribute_report]=basis.q1"
+          },
+          {
+            "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT01.json",
+            "selector": "relation r4"
+          }
+        ]
+      },
+      "P_in_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT01.json",
+            "selector": "only P node brief_display_probe has role=probe"
+          }
+        ]
+      },
+      "P_out_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "brief_display_probe -> P_out",
+        "evidence": [
+          {
+            "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT01.json",
+            "selector": "node brief_display_probe role=probe"
+          },
+          {
+            "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT01.json",
+            "selector": "relation r3: brief_display_probe maps_to report_accuracy"
+          }
+        ]
+      },
+      "K_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "nonfunctional outcome dependence/difference, especially r2; readout r3 and criterion r4 are compressed to rho/Q rather than double-counted as K",
+        "evidence": [
+          {
+            "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT01.json",
+            "selector": "relations r1,r2"
+          }
+        ]
+      },
+      "rho/O_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "report_accuracy is O and is directly read by brief_display_probe through r3",
+        "evidence": [
+          {
+            "artifact": "research/paper2/reference_structural_adjudication_v1/ATT01.json",
+            "selector": "coordinate_map[report_accuracy]=basis.o1"
+          },
+          {
+            "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT01.json",
+            "selector": "relation r3"
+          }
+        ]
+      },
+      "derived_feature_candidates": [
+        "P->O maps_to is a P_out/rho/O specialization.",
+        "O->Q satisfies is criterion evaluation under non-scalar Q."
+      ],
+      "unmapped_residual": [
+        {
+          "structure": "basis.cnd1/basis.cnd2/basis.cnd3",
+          "nodes": [
+            "single_unit_dual_judgment",
+            "cross_unit_dual_judgment",
+            "single_judgment_control"
+          ],
+          "reason": "experimental condition carriers are not licensed as Pi/C/Q/P/X/T/O"
+        },
+        {
+          "structure": "r1 differs over three condition nodes and O",
+          "reason": "K can retain comparison/dependence, but Grammar v0 has no carrier role for the condition nodes"
+        }
+      ],
+      "verdict": "PARTIAL",
+      "notes": "Pi is frozen structural partition evidence; it is not inferred from the historical object-attention label."
+    },
+    {
+      "claim_id": "ATT02.C1",
+      "slot_id": "ATT02",
+      "frozen_input_fingerprints": {
+        "claim_ir_sha256": "382dabd39db7b2361ba9cd973d27c17f6f69521865ca5bab6335db64dc5ffca3",
+        "structural_adjudication_sha256": "97c8cff60176496881e1432af79e64c6b495ece2783ddfb9a2c7846162d56d35"
+      },
+      "grammar_roles_instantiated": [
+        "X",
+        "C",
+        "P_in",
+        "P_out",
+        "K",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "relation": "capacity-constrained processing",
+          "grammar": "C(perceptual_capacity_limit) constrains K(processing_demand, irrelevant_processing)",
+          "evidence": [
+            {
+              "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT02.json",
+              "selector": "relation r4"
+            },
+            {
+              "artifact": "research/paper2/reference_structural_adjudication_v1/ATT02.json",
+              "selector": "controls.resource_C.state=present"
+            }
+          ]
+        },
+        {
+          "relation": "intervention-dependent outcome",
+          "grammar": "K(P_in=processing_demand, O=target_response_time/interference_measure)",
+          "evidence": [
+            {
+              "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT02.json",
+              "selector": "relations r1,r2"
+            }
+          ]
+        },
+        {
+          "relation": "probe/readout",
+          "grammar": "rho(P_out=competition_probe) -> O=interference_measure",
+          "evidence": [
+            {
+              "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT02.json",
+              "selector": "relation r5"
+            },
+            {
+              "artifact": "research/paper2/reference_structural_adjudication_v1/ATT02.json",
+              "selector": "controls.probe_P.state=present"
+            }
+          ]
+        }
+      ],
+      "Pi_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "artifact": "research/paper2/reference_structural_adjudication_v1/ATT02.json",
+            "selector": "controls.partition_Pi.state=not_required"
+          }
+        ]
+      },
+      "X_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "perceptual_capacity_limit, irrelevant_processing -> X (basis.s1,basis.s2)",
+        "evidence": [
+          {
+            "artifact": "research/paper2/reference_structural_adjudication_v1/ATT02.json",
+            "selector": "coordinate_map basis.s1,basis.s2"
+          }
+        ]
+      },
+      "T_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "artifact": "research/paper2/reference_structural_adjudication_v1/ATT02.json",
+            "selector": "temporal.* all not_required; ordering=[]"
+          }
+        ]
+      },
+      "C_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "resource_C on perceptual_capacity_limit -> realizability/capacity constraint layer",
+        "evidence": [
+          {
+            "artifact": "research/paper2/reference_structural_adjudication_v1/ATT02.json",
+            "selector": "controls.resource_C"
+          },
+          {
+            "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT02.json",
+            "selector": "relation r4 constrains"
+          }
+        ]
+      },
+      "Q_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "artifact": "research/paper2/reference_structural_adjudication_v1/ATT02.json",
+            "selector": "controls.criterion_Q.state=not_required"
+          }
+        ]
+      },
+      "P_in_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "processing_demand -> P_in",
+        "evidence": [
+          {
+            "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT02.json",
+            "selector": "node processing_demand role=intervention"
+          },
+          {
+            "artifact": "research/paper2/reference_structural_adjudication_v1/ATT02.json",
+            "selector": "controls.probe_P includes processing_demand"
+          }
+        ]
+      },
+      "P_out_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "competition_probe -> P_out",
+        "evidence": [
+          {
+            "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT02.json",
+            "selector": "node competition_probe role=probe"
+          },
+          {
+            "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT02.json",
+            "selector": "relation r5"
+          }
+        ]
+      },
+      "K_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "r1/r2 typed dependencies and r3 measurement-to-inferred-processing relation; r4 is constrained by C",
+        "evidence": [
+          {
+            "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT02.json",
+            "selector": "relations r1,r2,r3,r4"
+          }
+        ]
+      },
+      "rho/O_mapping": {
+        "status": "PARTIAL",
+        "mapping": "interference_measure (basis.o2) has explicit P_out->O via r5; target_response_time (basis.o1) is O but lacks a separate frozen P_out edge",
+        "evidence": [
+          {
+            "artifact": "research/paper2/reference_structural_adjudication_v1/ATT02.json",
+            "selector": "coordinate_map target_response_time=basis.o1, interference_measure=basis.o2"
+          },
+          {
+            "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT02.json",
+            "selector": "relation r5"
+          }
+        ]
+      },
+      "derived_feature_candidates": [
+        "Lane-wide P_out->O readout matches frozen Archetype A-3b814de4da04.",
+        "C and X may co-refer: perceptual_capacity_limit is basis.s1 while resource_C is present on it."
+      ],
+      "unmapped_residual": [
+        {
+          "structure": "basis.cnd1",
+          "nodes": [
+            "irrelevant_item"
+          ],
+          "reason": "experimental distractor condition is not a C admissibility constraint"
+        },
+        {
+          "structure": "basis.o1 without explicit P_out edge",
+          "nodes": [
+            "target_response_time"
+          ],
+          "reason": "O is frozen but stronger rho/readout topology is not separately encoded"
+        }
+      ],
+      "verdict": "PARTIAL",
+      "notes": "Only explicit resource_C licenses C; generic conditions are not promoted to C."
+    },
+    {
+      "claim_id": "ATT03.C1",
+      "slot_id": "ATT03",
+      "frozen_input_fingerprints": {
+        "claim_ir_sha256": "0bd0f7ff291ba5933e2cb54ae99d849a8140f3d6dd7eb0e39d1f4fc75001138f",
+        "structural_adjudication_sha256": "84a08e3408a7a70f8966e2555c968f9b5c9c79adbc028a4b3687ac546303e920"
+      },
+      "grammar_roles_instantiated": [
+        "X",
+        "P_out",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "relation": "competition-to-monitor metric",
+          "grammar": "K(X=processing_competition, X=monitoring_subsystem, X=competition_metric)",
+          "evidence": [
+            {
+              "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT03.json",
+              "selector": "relation r1"
+            }
+          ]
+        },
+        {
+          "relation": "history trace formation",
+          "grammar": "rho/K(X=competition_metric -> O=prior_conflict_history)",
+          "evidence": [
+            {
+              "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT03.json",
+              "selector": "relation r2"
+            },
+            {
+              "artifact": "research/paper2/reference_structural_adjudication_v1/ATT03.json",
+              "selector": "coordinate_map[prior_conflict_history]=basis.o1"
+            }
+          ]
+        },
+        {
+          "relation": "history-conditioned control update",
+          "grammar": "K(O=prior_conflict_history, X=regulation_subsystem -> X=control_signal_adjustment)",
+          "evidence": [
+            {
+              "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT03.json",
+              "selector": "relation r3"
+            }
+          ]
+        },
+        {
+          "relation": "succession",
+          "grammar": "T: competition_metric < prior_conflict_history < control_signal_adjustment < behavioral_output",
+          "evidence": [
+            {
+              "artifact": "research/paper2/reference_structural_adjudication_v1/ATT03.json",
+              "selector": "temporal.ordering"
+            },
+            {
+              "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT03.json",
+              "selector": "relation r4 precedes"
+            }
+          ]
+        },
+        {
+          "relation": "probe/readout",
+          "grammar": "rho(P_out=task_model_probe) -> O=behavioral_output",
+          "evidence": [
+            {
+              "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT03.json",
+              "selector": "relation r6"
+            }
+          ]
+        }
+      ],
+      "Pi_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "artifact": "research/paper2/reference_structural_adjudication_v1/ATT03.json",
+            "selector": "controls.partition_Pi.state=not_required"
+          }
+        ]
+      },
+      "X_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "processing_competition, monitoring_subsystem, competition_metric, regulation_subsystem, control_signal_adjustment -> X (basis.s1..s5)",
+        "evidence": [
+          {
+            "artifact": "research/paper2/reference_structural_adjudication_v1/ATT03.json",
+            "selector": "coordinate_map basis.s1..basis.s5"
+          }
+        ]
+      },
+      "T_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "time_index/history_window/future_horizon/recurrence/persistence plus ordering -> T with derived repeated-K/carry structure",
+        "evidence": [
+          {
+            "artifact": "research/paper2/reference_structural_adjudication_v1/ATT03.json",
+            "selector": "temporal time_index,history_window,future_horizon,recurrence,persistence all present"
+          },
+          {
+            "artifact": "research/paper2/reference_structural_adjudication_v1/ATT03.json",
+            "selector": "temporal.ordering"
+          }
+        ]
+      },
+      "C_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "artifact": "research/paper2/reference_structural_adjudication_v1/ATT03.json",
+            "selector": "controls.resource_C.state=not_required"
+          }
+        ]
+      },
+      "Q_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "artifact": "research/paper2/reference_structural_adjudication_v1/ATT03.json",
+            "selector": "controls.criterion_Q.state=not_required"
+          }
+        ]
+      },
+      "P_in_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT03.json",
+            "selector": "only P-mapped node task_model_probe has role=probe"
+          }
+        ]
+      },
+      "P_out_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "task_model_probe -> P_out",
+        "evidence": [
+          {
+            "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT03.json",
+            "selector": "node task_model_probe role=probe"
+          },
+          {
+            "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT03.json",
+            "selector": "relation r6"
+          }
+        ]
+      },
+      "K_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "r1,r2,r3,r5 are typed transformation/dependence; deterministic approximation does not make K universally functional",
+        "evidence": [
+          {
+            "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT03.json",
+            "selector": "relations r1,r2,r3,r5"
+          },
+          {
+            "artifact": "research/paper2/reference_structural_adjudication_v1/ATT03.json",
+            "selector": "approximation.mode=deterministic"
+          }
+        ]
+      },
+      "rho/O_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "prior_conflict_history is a nonterminal O trace; behavioral_output is an explicit P_out readout",
+        "evidence": [
+          {
+            "artifact": "research/paper2/reference_structural_adjudication_v1/ATT03.json",
+            "selector": "coordinate_map prior_conflict_history=basis.o1, behavioral_output=basis.o2"
+          },
+          {
+            "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT03.json",
+            "selector": "relations r2,r6"
+          }
+        ]
+      },
+      "derived_feature_candidates": [
+        "persistence -> typed carry/transport across T, not literal K=I",
+        "history_window -> retained O trace plus repeated K over T",
+        "recurrence -> repeated feedback application of K across successive T positions",
+        "future_horizon -> bounded temporal reach over T"
+      ],
+      "unmapped_residual": [],
+      "verdict": "FULL",
+      "notes": "ATT03 directly supports O as nonterminal: basis.o1 feeds a later control update."
+    },
+    {
+      "claim_id": "ATT04.C1",
+      "slot_id": "ATT04",
+      "frozen_input_fingerprints": {
+        "claim_ir_sha256": "ef09adccb033ae4422b61e9dfdb716b9e8fa89aae7243200710a850d97faeeb4",
+        "structural_adjudication_sha256": "484f0884509439cd5e20663f3d4723fb0de9629b47a5349902d45cb3ba0aedb3"
+      },
+      "grammar_roles_instantiated": [
+        "X",
+        "Q",
+        "P_in",
+        "P_out",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "relation": "intervention-to-configuration",
+          "grammar": "K(P_in=central_predictive_cue -> X=covert_spatial_allocation)",
+          "evidence": [
+            {
+              "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT04.json",
+              "selector": "relation r3"
+            }
+          ]
+        },
+        {
+          "relation": "criterion evaluation",
+          "grammar": "Q(O=detection_response; event_detection_criterion)",
+          "evidence": [
+            {
+              "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT04.json",
+              "selector": "relation r7"
+            },
+            {
+              "artifact": "research/paper2/reference_structural_adjudication_v1/ATT04.json",
+              "selector": "controls.criterion_Q.state=present"
+            }
+          ]
+        },
+        {
+          "relation": "probe/readout",
+          "grammar": "rho(P_out=central_cue_probe) -> O=detection_reaction_time",
+          "evidence": [
+            {
+              "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT04.json",
+              "selector": "relation r2"
+            }
+          ]
+        },
+        {
+          "relation": "configuration/readout",
+          "grammar": "rho/K(X=covert_spatial_allocation -> O=detection_reaction_time)",
+          "evidence": [
+            {
+              "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT04.json",
+              "selector": "relation r6"
+            }
+          ]
+        },
+        {
+          "relation": "temporal trajectory",
+          "grammar": "T: P_in movement_instruction_cue < X time_locked_spatial_trajectory < O detection_reaction_time",
+          "evidence": [
+            {
+              "artifact": "research/paper2/reference_structural_adjudication_v1/ATT04.json",
+              "selector": "temporal.ordering"
+            }
+          ]
+        }
+      ],
+      "Pi_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "artifact": "research/paper2/reference_structural_adjudication_v1/ATT04.json",
+            "selector": "controls.partition_Pi.state=not_required"
+          }
+        ]
+      },
+      "X_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "covert_spatial_allocation, time_locked_spatial_trajectory -> X (basis.s1,basis.s2)",
+        "evidence": [
+          {
+            "artifact": "research/paper2/reference_structural_adjudication_v1/ATT04.json",
+            "selector": "coordinate_map basis.s1,basis.s2"
+          }
+        ]
+      },
+      "T_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "time_index + future_horizon and P_in->X->O ordering",
+        "evidence": [
+          {
+            "artifact": "research/paper2/reference_structural_adjudication_v1/ATT04.json",
+            "selector": "temporal.time_index=present; temporal.future_horizon=present; temporal.ordering"
+          }
+        ]
+      },
+      "C_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "artifact": "research/paper2/reference_structural_adjudication_v1/ATT04.json",
+            "selector": "controls.resource_C.state=not_required"
+          }
+        ]
+      },
+      "Q_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "event_detection_criterion -> non-scalar criterion-conditioned evaluation",
+        "evidence": [
+          {
+            "artifact": "research/paper2/reference_structural_adjudication_v1/ATT04.json",
+            "selector": "coordinate_map[event_detection_criterion]=basis.q1; controls.criterion_Q=present"
+          },
+          {
+            "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT04.json",
+            "selector": "relation r7"
+          }
+        ]
+      },
+      "P_in_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "central_predictive_cue, movement_instruction_cue -> P_in",
+        "evidence": [
+          {
+            "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT04.json",
+            "selector": "nodes central_predictive_cue,movement_instruction_cue role=intervention"
+          }
+        ]
+      },
+      "P_out_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "central_cue_probe, trajectory_probe -> P_out",
+        "evidence": [
+          {
+            "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT04.json",
+            "selector": "nodes central_cue_probe,trajectory_probe role=probe"
+          },
+          {
+            "artifact": "research/paper2/reference_structural_adjudication_v1/ATT04.json",
+            "selector": "controls.probe_P claim_node_ids"
+          }
+        ]
+      },
+      "K_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "r1/r3/r4/r5/r6 are typed dependence/transformation after T/rho/Q structure is separated; K is not assumed functional",
+        "evidence": [
+          {
+            "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT04.json",
+            "selector": "relations r1,r3,r4,r5,r6"
+          }
+        ]
+      },
+      "rho/O_mapping": {
+        "status": "PARTIAL",
+        "mapping": "central_cue_probe has direct P_out->O to detection_reaction_time and r6 gives X->O operational measurement; detection_response lacks a distinct probe edge, and trajectory_probe maps directly to X",
+        "evidence": [
+          {
+            "artifact": "research/paper2/reference_structural_adjudication_v1/ATT04.json",
+            "selector": "coordinate_map detection_response=basis.o1, detection_reaction_time=basis.o2"
+          },
+          {
+            "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT04.json",
+            "selector": "relations r2,r5,r6"
+          }
+        ]
+      },
+      "derived_feature_candidates": [
+        "P_out->O maps_to compresses to rho.",
+        "O->Q satisfies is criterion evaluation.",
+        "future_horizon is bounded reach over T."
+      ],
+      "unmapped_residual": [
+        {
+          "structure": "basis.cnd1/basis.cnd2/basis.cnd3",
+          "nodes": [
+            "cue_validity_condition",
+            "probe_position",
+            "cue_probe_interval"
+          ],
+          "reason": "experimental conditions are not licensed as C/Q/Pi"
+        },
+        {
+          "structure": "r5 trajectory_probe maps_to time_locked_spatial_trajectory",
+          "reason": "frozen topology is P_out->X; rewriting it as P_out->O->X would change the frozen topology"
+        }
+      ],
+      "verdict": "PARTIAL",
+      "notes": "P_out->X is a pressure case for the compact rho signature, although generalized typed K can retain the edge."
+    },
+    {
+      "claim_id": "ATT05.C1",
+      "slot_id": "ATT05",
+      "frozen_input_fingerprints": {
+        "claim_ir_sha256": "865fe02ea5493e3bb1138ae85732d422803adf0c3e08906289ae5ccece138965",
+        "structural_adjudication_sha256": "5a9204723fcdec4ba6488a0bcaf5a405435a229d6cfae818d7acf1abcb7fb1e1"
+      },
+      "grammar_roles_instantiated": [
+        "X",
+        "Q",
+        "P_in",
+        "P_out",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "relation": "state transformation",
+          "grammar": "K(X=identification_interference -> X=transient_visual_suppression)",
+          "evidence": [
+            {
+              "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT05.json",
+              "selector": "relation r3"
+            }
+          ]
+        },
+        {
+          "relation": "state-to-outcome dependence",
+          "grammar": "K(X=transient_visual_suppression -> O=probe_detection)",
+          "evidence": [
+            {
+              "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT05.json",
+              "selector": "relation r4"
+            }
+          ]
+        },
+        {
+          "relation": "intervention-to-outcome",
+          "grammar": "K(P_in=posttarget_blank_timing -> O=probe_detection)",
+          "evidence": [
+            {
+              "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT05.json",
+              "selector": "relation r5"
+            }
+          ]
+        },
+        {
+          "relation": "probe/readout",
+          "grammar": "rho(P_out=dual_task_rsvp_probe) -> O=probe_detection",
+          "evidence": [
+            {
+              "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT05.json",
+              "selector": "relation r7"
+            }
+          ]
+        },
+        {
+          "relation": "criterion evaluation",
+          "grammar": "Q(O=probe_detection; correct_probe_report)",
+          "evidence": [
+            {
+              "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT05.json",
+              "selector": "relation r8"
+            }
+          ]
+        },
+        {
+          "relation": "succession",
+          "grammar": "T: immediate_posttarget_input < identification_interference < transient_visual_suppression < probe_detection",
+          "evidence": [
+            {
+              "artifact": "research/paper2/reference_structural_adjudication_v1/ATT05.json",
+              "selector": "temporal.ordering"
+            },
+            {
+              "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT05.json",
+              "selector": "relation r6 precedes"
+            }
+          ]
+        }
+      ],
+      "Pi_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "artifact": "research/paper2/reference_structural_adjudication_v1/ATT05.json",
+            "selector": "controls.partition_Pi.state=not_required"
+          }
+        ]
+      },
+      "X_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "identification_interference, transient_visual_suppression -> X (basis.s1,basis.s2)",
+        "evidence": [
+          {
+            "artifact": "research/paper2/reference_structural_adjudication_v1/ATT05.json",
+            "selector": "coordinate_map basis.s1,basis.s2"
+          }
+        ]
+      },
+      "T_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "time_index + future_horizon + persistence and frozen ordering",
+        "evidence": [
+          {
+            "artifact": "research/paper2/reference_structural_adjudication_v1/ATT05.json",
+            "selector": "temporal.time_index=present; future_horizon=present; persistence=present; ordering"
+          }
+        ]
+      },
+      "C_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "artifact": "research/paper2/reference_structural_adjudication_v1/ATT05.json",
+            "selector": "controls.resource_C.state=not_required"
+          },
+          {
+            "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT05.json",
+            "selector": "r4 is state-to-outcome constrain relation, not frozen resource/admissibility control"
+          }
+        ]
+      },
+      "Q_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "correct_probe_report -> criterion-conditioned correctness",
+        "evidence": [
+          {
+            "artifact": "research/paper2/reference_structural_adjudication_v1/ATT05.json",
+            "selector": "coordinate_map[correct_probe_report]=basis.q1; controls.criterion_Q=present"
+          },
+          {
+            "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT05.json",
+            "selector": "relation r8"
+          }
+        ]
+      },
+      "P_in_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "target_identification_requirement, posttarget_blank_timing -> P_in",
+        "evidence": [
+          {
+            "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT05.json",
+            "selector": "nodes target_identification_requirement,posttarget_blank_timing role=intervention"
+          }
+        ]
+      },
+      "P_out_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "dual_task_rsvp_probe -> P_out",
+        "evidence": [
+          {
+            "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT05.json",
+            "selector": "node dual_task_rsvp_probe role=probe"
+          },
+          {
+            "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT05.json",
+            "selector": "relation r7"
+          }
+        ]
+      },
+      "K_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "r1-r5 are typed dependence/transformation; r6 is T, r7 rho, r8 Q",
+        "evidence": [
+          {
+            "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT05.json",
+            "selector": "relations r1,r2,r3,r4,r5"
+          }
+        ]
+      },
+      "rho/O_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "probe_detection (basis.o1) has explicit P_out readout via r7",
+        "evidence": [
+          {
+            "artifact": "research/paper2/reference_structural_adjudication_v1/ATT05.json",
+            "selector": "coordinate_map[probe_detection]=basis.o1"
+          },
+          {
+            "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT05.json",
+            "selector": "relation r7"
+          }
+        ]
+      },
+      "derived_feature_candidates": [
+        "persistence -> typed carry/transport over bounded T, not K=I",
+        "future_horizon -> bounded temporal reach",
+        "P_out->O and O->Q compress to rho and criterion evaluation"
+      ],
+      "unmapped_residual": [
+        {
+          "structure": "basis.cnd1/basis.cnd2",
+          "nodes": [
+            "immediate_posttarget_input",
+            "probe_delay"
+          ],
+          "reason": "experimental/timing condition carriers are not licensed as C or another Grammar v0 role"
+        },
+        {
+          "structure": "finite-duration persistence profile",
+          "reason": "carry can represent persistence, but duration/decay shape is not primitive in Grammar v0"
+        }
+      ],
+      "verdict": "PARTIAL",
+      "notes": "Do not map transient_visual_suppression to C merely because r4 has kind=constrains; frozen C control is not_required."
+    },
+    {
+      "claim_id": "ATT06.C1",
+      "slot_id": "ATT06",
+      "frozen_input_fingerprints": {
+        "claim_ir_sha256": "7a7d016ddd035b0bbb32bef598ea8fdebaea2ffa342f5d41b82bb5c414f5837d",
+        "structural_adjudication_sha256": "f3b50f1ca6209b0710a33ac9f0b88974f794e308a7f0ddbaf3ffce2cee9edefa"
+      },
+      "grammar_roles_instantiated": [
+        "X",
+        "P_in",
+        "P_out",
+        "K",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "relation": "instruction-conditioned configuration selection",
+          "grammar": "K(X=attribute_object_binding, P_in=task_selection_instruction -> X=selected_object)",
+          "evidence": [
+            {
+              "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT06.json",
+              "selector": "relation r2"
+            }
+          ]
+        },
+        {
+          "relation": "intervention-dependent observation",
+          "grammar": "K(P_in=task_selection_instruction -> O=regional_fmri_response)",
+          "evidence": [
+            {
+              "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT06.json",
+              "selector": "relation r1"
+            }
+          ]
+        },
+        {
+          "relation": "probe/readout 1",
+          "grammar": "rho(P_out=blocked_fmri_probe) -> O=regional_fmri_response",
+          "evidence": [
+            {
+              "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT06.json",
+              "selector": "relation r4"
+            }
+          ]
+        },
+        {
+          "relation": "probe/readout 2",
+          "grammar": "rho(P_out=event_related_control_probe) -> O=regional_fmri_response",
+          "evidence": [
+            {
+              "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT06.json",
+              "selector": "relation r5"
+            }
+          ]
+        }
+      ],
+      "Pi_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "artifact": "research/paper2/reference_structural_adjudication_v1/ATT06.json",
+            "selector": "controls.partition_Pi.state=not_required"
+          }
+        ]
+      },
+      "X_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "attribute_object_binding, selected_object -> X (basis.s1,basis.s2)",
+        "evidence": [
+          {
+            "artifact": "research/paper2/reference_structural_adjudication_v1/ATT06.json",
+            "selector": "coordinate_map basis.s1,basis.s2"
+          }
+        ]
+      },
+      "T_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "artifact": "research/paper2/reference_structural_adjudication_v1/ATT06.json",
+            "selector": "temporal.* all not_required; ordering=[]"
+          }
+        ]
+      },
+      "C_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "artifact": "research/paper2/reference_structural_adjudication_v1/ATT06.json",
+            "selector": "controls.resource_C.state=not_required"
+          }
+        ]
+      },
+      "Q_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "artifact": "research/paper2/reference_structural_adjudication_v1/ATT06.json",
+            "selector": "controls.criterion_Q.state=not_required"
+          }
+        ]
+      },
+      "P_in_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "task_selection_instruction -> P_in",
+        "evidence": [
+          {
+            "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT06.json",
+            "selector": "node task_selection_instruction role=intervention"
+          }
+        ]
+      },
+      "P_out_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "blocked_fmri_probe, event_related_control_probe -> P_out",
+        "evidence": [
+          {
+            "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT06.json",
+            "selector": "nodes blocked_fmri_probe,event_related_control_probe role=probe"
+          },
+          {
+            "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT06.json",
+            "selector": "relations r4,r5"
+          }
+        ]
+      },
+      "K_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "r1/r2/r3 are typed dependence/selection; r2 is multi-argument and need not be functional",
+        "evidence": [
+          {
+            "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT06.json",
+            "selector": "relations r1,r2,r3"
+          }
+        ]
+      },
+      "rho/O_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "regional_fmri_response (basis.o1) has two explicit P_out readout paths, r4 and r5",
+        "evidence": [
+          {
+            "artifact": "research/paper2/reference_structural_adjudication_v1/ATT06.json",
+            "selector": "coordinate_map[regional_fmri_response]=basis.o1"
+          },
+          {
+            "artifact": "research/paper2/chatgpt_reference_claimir_v1/ATT06.json",
+            "selector": "relations r4,r5"
+          }
+        ]
+      },
+      "derived_feature_candidates": [
+        "Two P_out procedures can be distinct interface queries over one O carrier."
+      ],
+      "unmapped_residual": [
+        {
+          "structure": "basis.cnd1/basis.cnd2",
+          "nodes": [
+            "same_object_task_irrelevant_attribute",
+            "other_object_task_irrelevant_attribute"
+          ],
+          "reason": "condition carriers are not frozen Pi cells; partition_Pi is explicitly not_required"
+        },
+        {
+          "structure": "r3 differs over two condition nodes and O",
+          "reason": "typed comparison is K-like, but Grammar v0 has no carrier role for the condition nodes"
+        }
+      ],
+      "verdict": "PARTIAL",
+      "notes": "Despite object-binding language, Pi is ABSENT by frozen adjudication."
+    }
+  ],
+  "lane_summary": {
+    "ATT_coverage_count": {
+      "claims_processed": 6,
+      "claims_with_supported_grammar_projection": 6,
+      "claims_full_without_unmapped_residual": 1
+    },
+    "verdict_counts": {
+      "FULL": 1,
+      "PARTIAL": 5,
+      "RESIDUAL": 0
+    },
+    "role_frequency": {
+      "Pi": 1,
+      "X": 5,
+      "C": 1,
+      "Q": 3,
+      "P_in": 4,
+      "P_out": 6,
+      "K": 6,
+      "T": 3,
+      "rho/O": 6
+    },
+    "recurrent_substructures": [
+      {
+        "structure": "P_out -> rho/O readout",
+        "claim_support": [
+          "ATT01",
+          "ATT02",
+          "ATT03",
+          "ATT04",
+          "ATT05",
+          "ATT06"
+        ],
+        "frozen_archetype_support": "A-3b814de4da04",
+        "note": "lane-wide K/O/P candidate with probe_P and P->O maps_to; readout-specialized edge compresses to P_out/rho/O"
+      },
+      {
+        "structure": "X + P_out -> rho/O",
+        "claim_support": [
+          "ATT02",
+          "ATT03",
+          "ATT04",
+          "ATT05",
+          "ATT06"
+        ],
+        "frozen_archetype_support": "A-de304eb4e674"
+      },
+      {
+        "structure": "criterion-bearing readout",
+        "claim_support": [
+          "ATT01",
+          "ATT04",
+          "ATT05"
+        ],
+        "frozen_archetype_support": [
+          "A-29fd775facb5",
+          "A-3694e07b3529"
+        ],
+        "note": "Q remains predicate/criterion-capable, not scalar-only"
+      },
+      {
+        "structure": "temporally indexed X/readout",
+        "claim_support": [
+          "ATT03",
+          "ATT04",
+          "ATT05"
+        ],
+        "frozen_archetype_support": "A-c8a87a86581c"
+      },
+      {
+        "structure": "persistence-bearing temporal structure",
+        "claim_support": [
+          "ATT03",
+          "ATT05"
+        ],
+        "frozen_archetype_support": "A-431f06e656cf",
+        "note": "persistence -> typed carry/transport, not universal K=I"
+      }
+    ],
+    "grammar_distinctions_required_by_ATT": [
+      "P_in versus P_out must remain directional.",
+      "K and T must remain distinct.",
+      "O must not be terminal-only: ATT03 basis.o1 feeds a later control update.",
+      "C must not absorb generic experimental conditions: only ATT02 has resource_C present.",
+      "Pi must not be inferred from object language: ATT06 has object binding/selection while partition_Pi is not_required.",
+      "Q must permit predicate/criterion semantics without scalar value.",
+      "C and X are role layers rather than disjoint entity types: ATT02 basis.s1 also carries resource_C.",
+      "K must permit nonfunctional and multi-argument dependence."
+    ],
+    "roles_not_needed_by_ATT": [],
+    "roles_sparse_in_ATT": {
+      "Pi": [
+        "ATT01"
+      ],
+      "C": [
+        "ATT02"
+      ]
+    },
+    "residual_structures_not_expressible_by_Grammar_v0": [
+      {
+        "structure": "explicit experimental condition carriers (basis.cnd*)",
+        "claims": [
+          "ATT01",
+          "ATT02",
+          "ATT04",
+          "ATT05",
+          "ATT06"
+        ],
+        "assessment": "systematic residual",
+        "reason": "Grammar v0 has no generic exogenous-condition/parameter carrier; frozen adjudication does not license relabeling them"
+      },
+      {
+        "structure": "P_out -> X measurement/inference edge",
+        "claims": [
+          "ATT04"
+        ],
+        "assessment": "local topology residual / formal-skeleton pressure",
+        "reason": "ATT04 r5 directly maps trajectory_probe to time_locked_spatial_trajectory; P_out->O->X would repair frozen topology"
+      },
+      {
+        "structure": "finite-duration persistence profile",
+        "claims": [
+          "ATT05"
+        ],
+        "assessment": "derived-feature residual",
+        "reason": "typed carry represents persistence across T but duration/decay shape is not primitive"
+      }
+    ],
+    "possible_compression_or_derived_feature_cases": [
+      "P->O maps_to with explicit probe topology -> P_out/rho/O.",
+      "O->Q satisfies -> criterion evaluation under Q.",
+      "S->O operational measurement -> rho-like trace only where frozen topology supports it.",
+      "persistence -> typed carry/transport over T (ATT03,ATT05), never blanket identity.",
+      "history_window/recurrence in ATT03 -> repeated K over T plus retained O history trace.",
+      "multiple probes sharing one O in ATT06 -> multiple P_out queries of one observation relation."
+    ],
+    "potential_threats_to_Grammar_v0": [
+      {
+        "threat": "Condition-carrier omission",
+        "severity": "real but scoped",
+        "detail": "Five of six ATT claims retain basis.cnd nodes. This is a counterexample only to an exhaustive claim-topology reading, not necessarily to the stated eight-role compression."
+      },
+      {
+        "threat": "Compact rho signature may be too narrow",
+        "severity": "local",
+        "detail": "ATT04 freezes P_out->X measurement/inference topology, not only P_out->O."
+      },
+      {
+        "threat": "Lean K signature is narrower than Discussion-level typed dependence",
+        "severity": "formalization pressure",
+        "detail": "ATT contains direct P_in->O, X->O, O+X->X and condition->O dependencies. Role-level K can retain them, but the current Lean transition field is Config x Pin -> Config."
+      }
+    ],
+    "counterexample_assessment": {
+      "strict_counterexample_to_Grammar_v0": false,
+      "classification": "NO_STRICT_COUNTEREXAMPLE_WITH_RESIDUAL_PRESSURE",
+      "reason": "All six ATT claims have evidence-grounded projections and ATT03 is fully represented. Five partial claims expose explicit condition carriers and ATT04 exposes one P_out->X topology; both are preserved without grammar repair.",
+      "scope_warning": "No Grammar v0 change is authorized by this lane; no claim is made outside ATT."
+    }
+  },
+  "decision": "ATT_GRAMMAR_V0_REVERSE_PROJECTION_SUPPORTED_WITH_RESIDUALS",
+  "architecture_tuning": "NONE",
+  "non_actions": [
+    "no source paper rereading",
+    "no ClaimIR modification",
+    "no B_P2 modification",
+    "no Phi modification",
+    "no U_claim modification",
+    "no F_R modification",
+    "no structural adjudication modification",
+    "no bounded Archetype identity modification",
+    "no Grammar v0 modification",
+    "no non-ATT lane processing"
+  ]
+}
