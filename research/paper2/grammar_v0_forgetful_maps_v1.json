@@ -1,0 +1,3535 @@
+{
+  "schema_version": "1.0",
+  "status": "FROZEN_COMPARATOR_FORGETFUL_MAP_CONTRACT",
+  "owner_issue": 347,
+  "authority": {
+    "grammar_issue": 321,
+    "minimality_issue": 345,
+    "minimality_artifact": "research/paper2/grammar_v0_minimality_comparator_v1.json",
+    "formal_module": "formal/relay_theory/RelayTheory/GrammarComparatorViews.lean"
+  },
+  "preservation_semantics": "Direct preservation means retaining an explicit distinguishable role/operation rather than hiding it inside X, K, a generic P, or an uninterpreted label. The contract does not claim absolute mathematical non-encodability.",
+  "maps": {
+    "F_dyn": {
+      "source": "G_full_v0 = {Pi,X,C,Q,P_in,P_out,K,T,rho/O}",
+      "target": "G_dyn = {X,K,T}",
+      "formal_view": "Grammar.toDynView",
+      "formal_definition_summary": "Keep Time/Config/succession; define target transition(x,x') iff there exists a P_in operation p with source transition(x,p,x').",
+      "preserved_directly": [
+        "X",
+        "T"
+      ],
+      "preserved_after_existential_forgetting": [
+        "K transition/dependence existence"
+      ],
+      "forgotten_or_collapsed": [
+        {
+          "item": "Pi",
+          "mode": "FORGOTTEN",
+          "witness_count": 15,
+          "witnesses": [
+            {
+              "claim_id": "ATT01.C1",
+              "lane": "ATT",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "BLF05",
+              "lane": "BLF",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH03.C1",
+              "lane": "CH-A",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH04.C1",
+              "lane": "CH-B",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH08.C1",
+              "lane": "CH-B",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH09.C1",
+              "lane": "CH-A",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH11.C1",
+              "lane": "CH-A",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH12.C1",
+              "lane": "CH-B",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CNC05.C1",
+              "lane": "CNC",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CTL02",
+              "lane": "CTL",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CTL04",
+              "lane": "CTL",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "LRN06.C1",
+              "lane": "LRN",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "MEM01.C1",
+              "lane": "MEM",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "MEM04.C1",
+              "lane": "MEM",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "SKL06.C1",
+              "lane": "SKL",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+            }
+          ]
+        },
+        {
+          "item": "C",
+          "mode": "FORGOTTEN",
+          "witness_count": 13,
+          "witnesses": [
+            {
+              "claim_id": "ATT02.C1",
+              "lane": "ATT",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH05.C1",
+              "lane": "CH-A",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH12.C1",
+              "lane": "CH-B",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CNC01.C1",
+              "lane": "CNC",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CNC05.C1",
+              "lane": "CNC",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CNC06.C1",
+              "lane": "CNC",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CTL05",
+              "lane": "CTL",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "LRN03.C1",
+              "lane": "LRN",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "MEM02.C1",
+              "lane": "MEM",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "PRD06.C1",
+              "lane": "PRD",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "SKL01.C1",
+              "lane": "SKL",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "SKL02.C1",
+              "lane": "SKL",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "SKL04.C1",
+              "lane": "SKL",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+            }
+          ]
+        },
+        {
+          "item": "Q",
+          "mode": "FORGOTTEN",
+          "witness_count": 36,
+          "witnesses": [
+            {
+              "claim_id": "ATT01.C1",
+              "lane": "ATT",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "ATT04.C1",
+              "lane": "ATT",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "ATT05.C1",
+              "lane": "ATT",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "BLF01",
+              "lane": "BLF",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "BLF03",
+              "lane": "BLF",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "BLF04",
+              "lane": "BLF",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "BLF05",
+              "lane": "BLF",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "BLF06",
+              "lane": "BLF",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH02.C1",
+              "lane": "CH-B",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH03.C1",
+              "lane": "CH-A",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH06.C1",
+              "lane": "CH-B",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH07.C1",
+              "lane": "CH-A",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH10.C1",
+              "lane": "CH-B",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH11.C1",
+              "lane": "CH-A",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH12.C1",
+              "lane": "CH-B",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CNC01.C1",
+              "lane": "CNC",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CNC03.C1",
+              "lane": "CNC",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CNC04.C1",
+              "lane": "CNC",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CNC06.C1",
+              "lane": "CNC",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CTL01",
+              "lane": "CTL",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CTL03",
+              "lane": "CTL",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CTL04",
+              "lane": "CTL",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "LRN01.C1",
+              "lane": "LRN",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "LRN02.C1",
+              "lane": "LRN",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "LRN03.C1",
+              "lane": "LRN",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "LRN04.C1",
+              "lane": "LRN",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "LRN05.C1",
+              "lane": "LRN",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "LRN06.C1",
+              "lane": "LRN",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "MEM03.C1",
+              "lane": "MEM",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "MEM06.C1",
+              "lane": "MEM",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "PRD01.C1",
+              "lane": "PRD",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "PRD03.C1",
+              "lane": "PRD",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "PRD04.C1",
+              "lane": "PRD",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "PRD05.C1",
+              "lane": "PRD",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "SKL03.C1",
+              "lane": "SKL",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "SKL05.C1",
+              "lane": "SKL",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+            }
+          ]
+        },
+        {
+          "item": "P_in identity",
+          "mode": "EXISTENTIALLY_COLLAPSED",
+          "witness_count": 29,
+          "witnesses": [
+            {
+              "claim_id": "ATT02.C1",
+              "lane": "ATT",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "ATT04.C1",
+              "lane": "ATT",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "ATT05.C1",
+              "lane": "ATT",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "ATT06.C1",
+              "lane": "ATT",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "BLF01",
+              "lane": "BLF",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "BLF02",
+              "lane": "BLF",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "BLF03",
+              "lane": "BLF",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "BLF04",
+              "lane": "BLF",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "BLF06",
+              "lane": "BLF",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH05.C1",
+              "lane": "CH-A",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH06.C1",
+              "lane": "CH-B",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH12.C1",
+              "lane": "CH-B",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CTL01",
+              "lane": "CTL",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CTL03",
+              "lane": "CTL",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CTL05",
+              "lane": "CTL",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "LRN03.C1",
+              "lane": "LRN",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "LRN04.C1",
+              "lane": "LRN",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "LRN05.C1",
+              "lane": "LRN",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "LRN06.C1",
+              "lane": "LRN",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "MEM03.C1",
+              "lane": "MEM",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "MEM05.C1",
+              "lane": "MEM",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "PRD01.C1",
+              "lane": "PRD",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "PRD02.C1",
+              "lane": "PRD",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "PRD03.C1",
+              "lane": "PRD",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "PRD06.C1",
+              "lane": "PRD",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "SKL01.C1",
+              "lane": "SKL",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "SKL03.C1",
+              "lane": "SKL",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "SKL04.C1",
+              "lane": "SKL",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "SKL05.C1",
+              "lane": "SKL",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+            }
+          ]
+        },
+        {
+          "item": "P_out",
+          "mode": "FORGOTTEN",
+          "witness_count": 40,
+          "witnesses": [
+            {
+              "claim_id": "ATT01.C1",
+              "lane": "ATT",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "ATT02.C1",
+              "lane": "ATT",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "ATT03.C1",
+              "lane": "ATT",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "ATT04.C1",
+              "lane": "ATT",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "ATT05.C1",
+              "lane": "ATT",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "ATT06.C1",
+              "lane": "ATT",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "BLF01",
+              "lane": "BLF",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "BLF02",
+              "lane": "BLF",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "BLF03",
+              "lane": "BLF",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "BLF04",
+              "lane": "BLF",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "BLF05",
+              "lane": "BLF",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "BLF06",
+              "lane": "BLF",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH05.C1",
+              "lane": "CH-A",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH09.C1",
+              "lane": "CH-A",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CNC02.C1",
+              "lane": "CNC",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CNC04.C1",
+              "lane": "CNC",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CNC06.C1",
+              "lane": "CNC",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CTL01",
+              "lane": "CTL",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CTL03",
+              "lane": "CTL",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CTL04",
+              "lane": "CTL",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CTL05",
+              "lane": "CTL",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CTL06",
+              "lane": "CTL",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "LRN01.C1",
+              "lane": "LRN",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "LRN02.C1",
+              "lane": "LRN",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "LRN03.C1",
+              "lane": "LRN",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "LRN04.C1",
+              "lane": "LRN",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "LRN05.C1",
+              "lane": "LRN",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "LRN06.C1",
+              "lane": "LRN",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "MEM02.C1",
+              "lane": "MEM",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "MEM03.C1",
+              "lane": "MEM",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "MEM06.C1",
+              "lane": "MEM",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "PRD01.C1",
+              "lane": "PRD",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "PRD02.C1",
+              "lane": "PRD",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "PRD03.C1",
+              "lane": "PRD",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "PRD06.C1",
+              "lane": "PRD",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "SKL01.C1",
+              "lane": "SKL",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "SKL03.C1",
+              "lane": "SKL",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "SKL04.C1",
+              "lane": "SKL",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "SKL05.C1",
+              "lane": "SKL",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "SKL06.C1",
+              "lane": "SKL",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+            }
+          ]
+        },
+        {
+          "item": "rho/O",
+          "mode": "FORGOTTEN",
+          "witness_count": 56,
+          "witnesses": [
+            {
+              "claim_id": "ATT01.C1",
+              "lane": "ATT",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "ATT02.C1",
+              "lane": "ATT",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "ATT03.C1",
+              "lane": "ATT",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "ATT04.C1",
+              "lane": "ATT",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "ATT05.C1",
+              "lane": "ATT",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "ATT06.C1",
+              "lane": "ATT",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "BLF01",
+              "lane": "BLF",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "BLF02",
+              "lane": "BLF",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "BLF03",
+              "lane": "BLF",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "BLF04",
+              "lane": "BLF",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "BLF05",
+              "lane": "BLF",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "BLF06",
+              "lane": "BLF",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH02.C1",
+              "lane": "CH-B",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH03.C1",
+              "lane": "CH-A",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH04.C1",
+              "lane": "CH-B",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH05.C1",
+              "lane": "CH-A",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH06.C1",
+              "lane": "CH-B",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH07.C1",
+              "lane": "CH-A",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH08.C1",
+              "lane": "CH-B",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH09.C1",
+              "lane": "CH-A",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH10.C1",
+              "lane": "CH-B",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH11.C1",
+              "lane": "CH-A",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH12.C1",
+              "lane": "CH-B",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CNC02.C1",
+              "lane": "CNC",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CNC03.C1",
+              "lane": "CNC",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CNC04.C1",
+              "lane": "CNC",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CNC05.C1",
+              "lane": "CNC",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CNC06.C1",
+              "lane": "CNC",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CTL01",
+              "lane": "CTL",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CTL02",
+              "lane": "CTL",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CTL03",
+              "lane": "CTL",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CTL04",
+              "lane": "CTL",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CTL05",
+              "lane": "CTL",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CTL06",
+              "lane": "CTL",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "LRN01.C1",
+              "lane": "LRN",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "LRN02.C1",
+              "lane": "LRN",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "LRN03.C1",
+              "lane": "LRN",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "LRN04.C1",
+              "lane": "LRN",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "LRN05.C1",
+              "lane": "LRN",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "LRN06.C1",
+              "lane": "LRN",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "MEM02.C1",
+              "lane": "MEM",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "MEM03.C1",
+              "lane": "MEM",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "MEM05.C1",
+              "lane": "MEM",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "MEM06.C1",
+              "lane": "MEM",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "PRD01.C1",
+              "lane": "PRD",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "PRD02.C1",
+              "lane": "PRD",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "PRD03.C1",
+              "lane": "PRD",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "PRD04.C1",
+              "lane": "PRD",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "PRD05.C1",
+              "lane": "PRD",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "PRD06.C1",
+              "lane": "PRD",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "SKL01.C1",
+              "lane": "SKL",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "SKL02.C1",
+              "lane": "SKL",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "SKL03.C1",
+              "lane": "SKL",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "SKL04.C1",
+              "lane": "SKL",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "SKL05.C1",
+              "lane": "SKL",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "SKL06.C1",
+              "lane": "SKL",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+            }
+          ]
+        }
+      ],
+      "corpus_result": {
+        "claims_with_role_beyond_target": 59,
+        "claims_with_role_set_subset_of_target": 1,
+        "subset_claim_ids": [
+          "CH01.C1"
+        ],
+        "strict_FULL_direct_preservation": 0
+      },
+      "interpretation": "G_dyn remains a valid coarse dynamical view, but the projection is scientifically lossy on the frozen corpus."
+    },
+    "F_pomdp_like": {
+      "source": "G_full_v0",
+      "target": "action-transition-observation-Q-T view",
+      "formal_view": "Grammar.toPomdpLikeView",
+      "formal_definition_summary": "Keep X as State, P_in as Action, K transition, O, generalized preorder Q and T; existentially forget which P_out query generated an O trace. Pi and C are absent.",
+      "preserved_directly": [
+        "X",
+        "P_in/action",
+        "K",
+        "T",
+        "rho/O carrier",
+        "generalized Q preorder"
+      ],
+      "forgotten_or_collapsed": [
+        {
+          "item": "Pi",
+          "mode": "FORGOTTEN",
+          "witness_count": 15,
+          "witnesses": [
+            {
+              "claim_id": "ATT01.C1",
+              "lane": "ATT",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "BLF05",
+              "lane": "BLF",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH03.C1",
+              "lane": "CH-A",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH04.C1",
+              "lane": "CH-B",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH08.C1",
+              "lane": "CH-B",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH09.C1",
+              "lane": "CH-A",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH11.C1",
+              "lane": "CH-A",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH12.C1",
+              "lane": "CH-B",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CNC05.C1",
+              "lane": "CNC",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CTL02",
+              "lane": "CTL",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CTL04",
+              "lane": "CTL",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "LRN06.C1",
+              "lane": "LRN",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "MEM01.C1",
+              "lane": "MEM",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "MEM04.C1",
+              "lane": "MEM",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "SKL06.C1",
+              "lane": "SKL",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+            }
+          ]
+        },
+        {
+          "item": "C",
+          "mode": "FORGOTTEN",
+          "witness_count": 13,
+          "witnesses": [
+            {
+              "claim_id": "ATT02.C1",
+              "lane": "ATT",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH05.C1",
+              "lane": "CH-A",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH12.C1",
+              "lane": "CH-B",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CNC01.C1",
+              "lane": "CNC",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CNC05.C1",
+              "lane": "CNC",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CNC06.C1",
+              "lane": "CNC",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CTL05",
+              "lane": "CTL",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "LRN03.C1",
+              "lane": "LRN",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "MEM02.C1",
+              "lane": "MEM",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "PRD06.C1",
+              "lane": "PRD",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "SKL01.C1",
+              "lane": "SKL",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "SKL02.C1",
+              "lane": "SKL",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "SKL04.C1",
+              "lane": "SKL",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+            }
+          ]
+        },
+        {
+          "item": "P_out query identity",
+          "mode": "EXISTENTIALLY_COLLAPSED_INTO_OBSERVE",
+          "witness_count": 40,
+          "witnesses": [
+            {
+              "claim_id": "ATT01.C1",
+              "lane": "ATT",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "ATT02.C1",
+              "lane": "ATT",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "ATT03.C1",
+              "lane": "ATT",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "ATT04.C1",
+              "lane": "ATT",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "ATT05.C1",
+              "lane": "ATT",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "ATT06.C1",
+              "lane": "ATT",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "BLF01",
+              "lane": "BLF",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "BLF02",
+              "lane": "BLF",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "BLF03",
+              "lane": "BLF",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "BLF04",
+              "lane": "BLF",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "BLF05",
+              "lane": "BLF",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "BLF06",
+              "lane": "BLF",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH05.C1",
+              "lane": "CH-A",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH09.C1",
+              "lane": "CH-A",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CNC02.C1",
+              "lane": "CNC",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CNC04.C1",
+              "lane": "CNC",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CNC06.C1",
+              "lane": "CNC",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CTL01",
+              "lane": "CTL",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CTL03",
+              "lane": "CTL",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CTL04",
+              "lane": "CTL",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CTL05",
+              "lane": "CTL",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CTL06",
+              "lane": "CTL",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "LRN01.C1",
+              "lane": "LRN",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "LRN02.C1",
+              "lane": "LRN",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "LRN03.C1",
+              "lane": "LRN",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "LRN04.C1",
+              "lane": "LRN",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "LRN05.C1",
+              "lane": "LRN",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "LRN06.C1",
+              "lane": "LRN",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "MEM02.C1",
+              "lane": "MEM",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "MEM03.C1",
+              "lane": "MEM",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "MEM06.C1",
+              "lane": "MEM",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "PRD01.C1",
+              "lane": "PRD",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "PRD02.C1",
+              "lane": "PRD",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "PRD03.C1",
+              "lane": "PRD",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "PRD06.C1",
+              "lane": "PRD",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "SKL01.C1",
+              "lane": "SKL",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "SKL03.C1",
+              "lane": "SKL",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "SKL04.C1",
+              "lane": "SKL",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "SKL05.C1",
+              "lane": "SKL",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "SKL06.C1",
+              "lane": "SKL",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+            }
+          ]
+        },
+        {
+          "item": "P_in versus P_out as two first-class interface directions",
+          "mode": "DIRECTIONAL_SPLIT_NOT_PRESERVED_AS_TWO_OPERATIONS",
+          "witness_count": 26,
+          "witnesses": [
+            {
+              "claim_id": "ATT02.C1",
+              "lane": "ATT",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "ATT04.C1",
+              "lane": "ATT",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "ATT05.C1",
+              "lane": "ATT",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "ATT06.C1",
+              "lane": "ATT",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "BLF01",
+              "lane": "BLF",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "BLF02",
+              "lane": "BLF",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "BLF03",
+              "lane": "BLF",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "BLF04",
+              "lane": "BLF",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "BLF06",
+              "lane": "BLF",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CH05.C1",
+              "lane": "CH-A",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CTL01",
+              "lane": "CTL",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CTL03",
+              "lane": "CTL",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "CTL05",
+              "lane": "CTL",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "LRN03.C1",
+              "lane": "LRN",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "LRN04.C1",
+              "lane": "LRN",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "LRN05.C1",
+              "lane": "LRN",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "LRN06.C1",
+              "lane": "LRN",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "MEM03.C1",
+              "lane": "MEM",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "PRD01.C1",
+              "lane": "PRD",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "PRD02.C1",
+              "lane": "PRD",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "PRD03.C1",
+              "lane": "PRD",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "PRD06.C1",
+              "lane": "PRD",
+              "verdict": "RESIDUAL",
+              "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "SKL01.C1",
+              "lane": "SKL",
+              "verdict": "FULL",
+              "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "SKL03.C1",
+              "lane": "SKL",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "SKL04.C1",
+              "lane": "SKL",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+            },
+            {
+              "claim_id": "SKL05.C1",
+              "lane": "SKL",
+              "verdict": "PARTIAL",
+              "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+            }
+          ]
+        }
+      ],
+      "scalar_reward_specialization_pressure": {
+        "formal_view_note": "The Lean comparator intentionally keeps generalized preorder Q and therefore does not itself impose scalar reward.",
+        "if_Q_is_restricted_to_scalar_reward": "Additional frozen Q semantics would require re-encoding or enrichment.",
+        "Q_witness_count": 36,
+        "representative_witnesses": [
+          {
+            "claim_id": "SKL05.C1",
+            "semantic_pressure": "discrimination threshold"
+          },
+          {
+            "claim_id": "CH11.C1",
+            "semantic_pressure": "reference-relative classification"
+          },
+          {
+            "claim_id": "CNC01.C1",
+            "semantic_pressure": "relevance filtering"
+          },
+          {
+            "claim_id": "CNC06.C1",
+            "semantic_pressure": "alternative/posterior orientation"
+          }
+        ]
+      },
+      "observation_orientation_pressure": {
+        "note": "The formal view keeps O but existentially forgets P_out identity; it does not repair epistemic O->latent-X relations or all incoming O directions.",
+        "representative_witnesses": [
+          {
+            "claim_id": "LRN04.C1",
+            "pressure": "observation-to-latent estimation"
+          },
+          {
+            "claim_id": "LRN05.C1",
+            "pressure": "incoming informational O plus estimation"
+          },
+          {
+            "claim_id": "LRN06.C1",
+            "pressure": "incoming informational O plus estimation"
+          },
+          {
+            "claim_id": "CH02.C1",
+            "pressure": "O->X / O->O topology without clean outward rho"
+          }
+        ]
+      },
+      "corpus_result": {
+        "claims_requiring_Pi_or_C": 26,
+        "claims_requiring_both_interface_directions": 26,
+        "claims_hit_by_missing_Pi_or_C_or_first_class_direction_split": 44
+      },
+      "interpretation": "A POMDP-like view captures a large backbone but is not distinction-preserving unless enriched with structure that substantially reintroduces Pi, C, query identity/direction, generalized Q, and broader observation semantics."
+    }
+  },
+  "empirical_role_witness_sets": {
+    "Pi": [
+      {
+        "claim_id": "ATT01.C1",
+        "lane": "ATT",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "BLF05",
+        "lane": "BLF",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH03.C1",
+        "lane": "CH-A",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH04.C1",
+        "lane": "CH-B",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH08.C1",
+        "lane": "CH-B",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH09.C1",
+        "lane": "CH-A",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH11.C1",
+        "lane": "CH-A",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH12.C1",
+        "lane": "CH-B",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CNC05.C1",
+        "lane": "CNC",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CTL02",
+        "lane": "CTL",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CTL04",
+        "lane": "CTL",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "LRN06.C1",
+        "lane": "LRN",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "MEM01.C1",
+        "lane": "MEM",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "MEM04.C1",
+        "lane": "MEM",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "SKL06.C1",
+        "lane": "SKL",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+      }
+    ],
+    "C": [
+      {
+        "claim_id": "ATT02.C1",
+        "lane": "ATT",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH05.C1",
+        "lane": "CH-A",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH12.C1",
+        "lane": "CH-B",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CNC01.C1",
+        "lane": "CNC",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CNC05.C1",
+        "lane": "CNC",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CNC06.C1",
+        "lane": "CNC",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CTL05",
+        "lane": "CTL",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "LRN03.C1",
+        "lane": "LRN",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "MEM02.C1",
+        "lane": "MEM",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "PRD06.C1",
+        "lane": "PRD",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "SKL01.C1",
+        "lane": "SKL",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "SKL02.C1",
+        "lane": "SKL",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "SKL04.C1",
+        "lane": "SKL",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+      }
+    ],
+    "Q": [
+      {
+        "claim_id": "ATT01.C1",
+        "lane": "ATT",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "ATT04.C1",
+        "lane": "ATT",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "ATT05.C1",
+        "lane": "ATT",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "BLF01",
+        "lane": "BLF",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "BLF03",
+        "lane": "BLF",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "BLF04",
+        "lane": "BLF",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "BLF05",
+        "lane": "BLF",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "BLF06",
+        "lane": "BLF",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH02.C1",
+        "lane": "CH-B",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH03.C1",
+        "lane": "CH-A",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH06.C1",
+        "lane": "CH-B",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH07.C1",
+        "lane": "CH-A",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH10.C1",
+        "lane": "CH-B",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH11.C1",
+        "lane": "CH-A",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH12.C1",
+        "lane": "CH-B",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CNC01.C1",
+        "lane": "CNC",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CNC03.C1",
+        "lane": "CNC",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CNC04.C1",
+        "lane": "CNC",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CNC06.C1",
+        "lane": "CNC",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CTL01",
+        "lane": "CTL",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CTL03",
+        "lane": "CTL",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CTL04",
+        "lane": "CTL",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "LRN01.C1",
+        "lane": "LRN",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "LRN02.C1",
+        "lane": "LRN",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "LRN03.C1",
+        "lane": "LRN",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "LRN04.C1",
+        "lane": "LRN",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "LRN05.C1",
+        "lane": "LRN",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "LRN06.C1",
+        "lane": "LRN",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "MEM03.C1",
+        "lane": "MEM",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "MEM06.C1",
+        "lane": "MEM",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "PRD01.C1",
+        "lane": "PRD",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "PRD03.C1",
+        "lane": "PRD",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "PRD04.C1",
+        "lane": "PRD",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "PRD05.C1",
+        "lane": "PRD",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "SKL03.C1",
+        "lane": "SKL",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "SKL05.C1",
+        "lane": "SKL",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+      }
+    ],
+    "P_in": [
+      {
+        "claim_id": "ATT02.C1",
+        "lane": "ATT",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "ATT04.C1",
+        "lane": "ATT",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "ATT05.C1",
+        "lane": "ATT",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "ATT06.C1",
+        "lane": "ATT",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "BLF01",
+        "lane": "BLF",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "BLF02",
+        "lane": "BLF",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "BLF03",
+        "lane": "BLF",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "BLF04",
+        "lane": "BLF",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "BLF06",
+        "lane": "BLF",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH05.C1",
+        "lane": "CH-A",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH06.C1",
+        "lane": "CH-B",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH12.C1",
+        "lane": "CH-B",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CTL01",
+        "lane": "CTL",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CTL03",
+        "lane": "CTL",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CTL05",
+        "lane": "CTL",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "LRN03.C1",
+        "lane": "LRN",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "LRN04.C1",
+        "lane": "LRN",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "LRN05.C1",
+        "lane": "LRN",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "LRN06.C1",
+        "lane": "LRN",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "MEM03.C1",
+        "lane": "MEM",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "MEM05.C1",
+        "lane": "MEM",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "PRD01.C1",
+        "lane": "PRD",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "PRD02.C1",
+        "lane": "PRD",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "PRD03.C1",
+        "lane": "PRD",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "PRD06.C1",
+        "lane": "PRD",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "SKL01.C1",
+        "lane": "SKL",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "SKL03.C1",
+        "lane": "SKL",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "SKL04.C1",
+        "lane": "SKL",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "SKL05.C1",
+        "lane": "SKL",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+      }
+    ],
+    "P_out": [
+      {
+        "claim_id": "ATT01.C1",
+        "lane": "ATT",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "ATT02.C1",
+        "lane": "ATT",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "ATT03.C1",
+        "lane": "ATT",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "ATT04.C1",
+        "lane": "ATT",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "ATT05.C1",
+        "lane": "ATT",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "ATT06.C1",
+        "lane": "ATT",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "BLF01",
+        "lane": "BLF",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "BLF02",
+        "lane": "BLF",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "BLF03",
+        "lane": "BLF",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "BLF04",
+        "lane": "BLF",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "BLF05",
+        "lane": "BLF",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "BLF06",
+        "lane": "BLF",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH05.C1",
+        "lane": "CH-A",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH09.C1",
+        "lane": "CH-A",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CNC02.C1",
+        "lane": "CNC",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CNC04.C1",
+        "lane": "CNC",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CNC06.C1",
+        "lane": "CNC",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CTL01",
+        "lane": "CTL",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CTL03",
+        "lane": "CTL",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CTL04",
+        "lane": "CTL",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CTL05",
+        "lane": "CTL",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CTL06",
+        "lane": "CTL",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "LRN01.C1",
+        "lane": "LRN",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "LRN02.C1",
+        "lane": "LRN",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "LRN03.C1",
+        "lane": "LRN",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "LRN04.C1",
+        "lane": "LRN",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "LRN05.C1",
+        "lane": "LRN",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "LRN06.C1",
+        "lane": "LRN",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "MEM02.C1",
+        "lane": "MEM",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "MEM03.C1",
+        "lane": "MEM",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "MEM06.C1",
+        "lane": "MEM",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "PRD01.C1",
+        "lane": "PRD",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "PRD02.C1",
+        "lane": "PRD",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "PRD03.C1",
+        "lane": "PRD",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "PRD06.C1",
+        "lane": "PRD",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "SKL01.C1",
+        "lane": "SKL",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "SKL03.C1",
+        "lane": "SKL",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "SKL04.C1",
+        "lane": "SKL",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "SKL05.C1",
+        "lane": "SKL",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "SKL06.C1",
+        "lane": "SKL",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+      }
+    ],
+    "both_P_directions": [
+      {
+        "claim_id": "ATT02.C1",
+        "lane": "ATT",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "ATT04.C1",
+        "lane": "ATT",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "ATT05.C1",
+        "lane": "ATT",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "ATT06.C1",
+        "lane": "ATT",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "BLF01",
+        "lane": "BLF",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "BLF02",
+        "lane": "BLF",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "BLF03",
+        "lane": "BLF",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "BLF04",
+        "lane": "BLF",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "BLF06",
+        "lane": "BLF",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH05.C1",
+        "lane": "CH-A",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CTL01",
+        "lane": "CTL",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CTL03",
+        "lane": "CTL",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CTL05",
+        "lane": "CTL",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "LRN03.C1",
+        "lane": "LRN",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "LRN04.C1",
+        "lane": "LRN",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "LRN05.C1",
+        "lane": "LRN",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "LRN06.C1",
+        "lane": "LRN",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "MEM03.C1",
+        "lane": "MEM",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "PRD01.C1",
+        "lane": "PRD",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "PRD02.C1",
+        "lane": "PRD",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "PRD03.C1",
+        "lane": "PRD",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "PRD06.C1",
+        "lane": "PRD",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "SKL01.C1",
+        "lane": "SKL",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "SKL03.C1",
+        "lane": "SKL",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "SKL04.C1",
+        "lane": "SKL",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "SKL05.C1",
+        "lane": "SKL",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+      }
+    ],
+    "rho_O": [
+      {
+        "claim_id": "ATT01.C1",
+        "lane": "ATT",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "ATT02.C1",
+        "lane": "ATT",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "ATT03.C1",
+        "lane": "ATT",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "ATT04.C1",
+        "lane": "ATT",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "ATT05.C1",
+        "lane": "ATT",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "ATT06.C1",
+        "lane": "ATT",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "BLF01",
+        "lane": "BLF",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "BLF02",
+        "lane": "BLF",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "BLF03",
+        "lane": "BLF",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "BLF04",
+        "lane": "BLF",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "BLF05",
+        "lane": "BLF",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "BLF06",
+        "lane": "BLF",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH02.C1",
+        "lane": "CH-B",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH03.C1",
+        "lane": "CH-A",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH04.C1",
+        "lane": "CH-B",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH05.C1",
+        "lane": "CH-A",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH06.C1",
+        "lane": "CH-B",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH07.C1",
+        "lane": "CH-A",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH08.C1",
+        "lane": "CH-B",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH09.C1",
+        "lane": "CH-A",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH10.C1",
+        "lane": "CH-B",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH11.C1",
+        "lane": "CH-A",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH12.C1",
+        "lane": "CH-B",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CNC02.C1",
+        "lane": "CNC",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CNC03.C1",
+        "lane": "CNC",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CNC04.C1",
+        "lane": "CNC",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CNC05.C1",
+        "lane": "CNC",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CNC06.C1",
+        "lane": "CNC",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CTL01",
+        "lane": "CTL",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CTL02",
+        "lane": "CTL",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CTL03",
+        "lane": "CTL",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CTL04",
+        "lane": "CTL",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CTL05",
+        "lane": "CTL",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CTL06",
+        "lane": "CTL",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "LRN01.C1",
+        "lane": "LRN",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "LRN02.C1",
+        "lane": "LRN",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "LRN03.C1",
+        "lane": "LRN",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "LRN04.C1",
+        "lane": "LRN",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "LRN05.C1",
+        "lane": "LRN",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "LRN06.C1",
+        "lane": "LRN",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "MEM02.C1",
+        "lane": "MEM",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "MEM03.C1",
+        "lane": "MEM",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "MEM05.C1",
+        "lane": "MEM",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "MEM06.C1",
+        "lane": "MEM",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "PRD01.C1",
+        "lane": "PRD",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "PRD02.C1",
+        "lane": "PRD",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "PRD03.C1",
+        "lane": "PRD",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "PRD04.C1",
+        "lane": "PRD",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "PRD05.C1",
+        "lane": "PRD",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "PRD06.C1",
+        "lane": "PRD",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "SKL01.C1",
+        "lane": "SKL",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "SKL02.C1",
+        "lane": "SKL",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "SKL03.C1",
+        "lane": "SKL",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "SKL04.C1",
+        "lane": "SKL",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "SKL05.C1",
+        "lane": "SKL",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "SKL06.C1",
+        "lane": "SKL",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+      }
+    ],
+    "beyond_G_dyn": [
+      {
+        "claim_id": "ATT01.C1",
+        "lane": "ATT",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "ATT02.C1",
+        "lane": "ATT",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "ATT03.C1",
+        "lane": "ATT",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "ATT04.C1",
+        "lane": "ATT",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "ATT05.C1",
+        "lane": "ATT",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "ATT06.C1",
+        "lane": "ATT",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/att_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "BLF01",
+        "lane": "BLF",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "BLF02",
+        "lane": "BLF",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "BLF03",
+        "lane": "BLF",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "BLF04",
+        "lane": "BLF",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "BLF05",
+        "lane": "BLF",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "BLF06",
+        "lane": "BLF",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/blf_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH02.C1",
+        "lane": "CH-B",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH03.C1",
+        "lane": "CH-A",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH04.C1",
+        "lane": "CH-B",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH05.C1",
+        "lane": "CH-A",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH06.C1",
+        "lane": "CH-B",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH07.C1",
+        "lane": "CH-A",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH08.C1",
+        "lane": "CH-B",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH09.C1",
+        "lane": "CH-A",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH10.C1",
+        "lane": "CH-B",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH11.C1",
+        "lane": "CH-A",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/challenge_a_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CH12.C1",
+        "lane": "CH-B",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/challenge_b_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CNC01.C1",
+        "lane": "CNC",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CNC02.C1",
+        "lane": "CNC",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CNC03.C1",
+        "lane": "CNC",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CNC04.C1",
+        "lane": "CNC",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CNC05.C1",
+        "lane": "CNC",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CNC06.C1",
+        "lane": "CNC",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/cnc_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CTL01",
+        "lane": "CTL",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CTL02",
+        "lane": "CTL",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CTL03",
+        "lane": "CTL",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CTL04",
+        "lane": "CTL",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CTL05",
+        "lane": "CTL",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "CTL06",
+        "lane": "CTL",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/ctl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "LRN01.C1",
+        "lane": "LRN",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "LRN02.C1",
+        "lane": "LRN",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "LRN03.C1",
+        "lane": "LRN",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "LRN04.C1",
+        "lane": "LRN",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "LRN05.C1",
+        "lane": "LRN",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "LRN06.C1",
+        "lane": "LRN",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "MEM01.C1",
+        "lane": "MEM",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "MEM02.C1",
+        "lane": "MEM",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "MEM03.C1",
+        "lane": "MEM",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "MEM04.C1",
+        "lane": "MEM",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "MEM05.C1",
+        "lane": "MEM",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "MEM06.C1",
+        "lane": "MEM",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/mem_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "PRD01.C1",
+        "lane": "PRD",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "PRD02.C1",
+        "lane": "PRD",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "PRD03.C1",
+        "lane": "PRD",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "PRD04.C1",
+        "lane": "PRD",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "PRD05.C1",
+        "lane": "PRD",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "PRD06.C1",
+        "lane": "PRD",
+        "verdict": "RESIDUAL",
+        "source_artifact": "research/paper2/prd_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "SKL01.C1",
+        "lane": "SKL",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "SKL02.C1",
+        "lane": "SKL",
+        "verdict": "FULL",
+        "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "SKL03.C1",
+        "lane": "SKL",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "SKL04.C1",
+        "lane": "SKL",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "SKL05.C1",
+        "lane": "SKL",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+      },
+      {
+        "claim_id": "SKL06.C1",
+        "lane": "SKL",
+        "verdict": "PARTIAL",
+        "source_artifact": "research/paper2/skl_grammar_v0_reverse_projection_v1.json"
+      }
+    ]
+  },
+  "terminal_classification": "FORGETFUL_VIEWS_FORMALIZED_AND_FROZEN_DISTINCTION_LOSS_WITNESSED"
+}
