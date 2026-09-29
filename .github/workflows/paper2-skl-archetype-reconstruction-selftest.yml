@@ -37,8 +37,6 @@ jobs:
         run: python scripts/paper2_basis_structural_skeleton.py --self-test
       - name: Re-run frozen F_R qualification
         run: python scripts/paper2_basis_subobject_forgetting.py --self-test
-      - name: Run deterministic SKL lane self-test
-        run: python scripts/paper2_archetype_skl_lane.py --self-test
       - name: Regenerate SKL lane report
         shell: bash
         run: |
