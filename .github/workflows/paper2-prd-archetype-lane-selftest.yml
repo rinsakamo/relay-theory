@@ -44,3 +44,5 @@ jobs:
           echo "BEGIN_PRD_ARCHETYPE_REPORT"
           cat /tmp/prd_archetype_lane_v1.json
           echo "END_PRD_ARCHETYPE_REPORT"
+      - name: Verify frozen PRD lane report
+        run: cmp /tmp/prd_archetype_lane_v1.json research/paper2/prd_archetype_lane_v1.json
