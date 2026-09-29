@@ -443,18 +443,91 @@ def find_image_witness(
     return rec(0, {}, set())
 
 
+
+def coarse_image_invariant(image: dict[str, Any]) -> str:
+    """Cheap isomorphism invariant; collisions are resolved by image_equivalent."""
+    validate_image(image)
+    node_labels = {node_id: _node_label(node) for node_id, node in image["nodes"].items()}
+    node_multiset = sorted(node_labels.values())
+    edge_profile = []
+    for edge in image["edges"]:
+        args = [node_labels[x] for x in edge["arguments"]]
+        if not edge["ordered_arguments"]:
+            args = sorted(args)
+        cond = sorted(node_labels[x] for x in edge["conditional_on"])
+        edge_profile.append(_canon({
+            "family": edge["family"],
+            "kind": edge["kind"],
+            "ordered_arguments": edge["ordered_arguments"],
+            "arguments": args,
+            "conditional_on": cond,
+            "temporal_direction": edge["temporal_direction"],
+        }))
+    edge_profile.sort()
+    return _canon({
+        "active_axes": image["active_axes"],
+        "node_multiset": node_multiset,
+        "edge_profile": edge_profile,
+        "temporal": image["temporal"],
+        "controls": image["controls"],
+    })
+
+
+def _register_equivalence_class(
+    buckets: dict[str, list[dict[str, Any]]],
+    image: dict[str, Any],
+    payload: dict[str, Any],
+) -> tuple[dict[str, Any], bool]:
+    inv = coarse_image_invariant(image)
+    bucket = buckets.setdefault(inv, [])
+    for item in bucket:
+        if image_equivalent(image, item["image"]):
+            return item, False
+    item = {"image": image, **payload}
+    bucket.append(item)
+    return item, True
+
+
 def pair_common_candidates(
     left: dict[str, Any],
     right: dict[str, Any],
-) -> dict[str, dict[str, Any]]:
+) -> list[dict[str, Any]]:
+    """Enumerate exact common-image classes, deduplicating before canonical labeling."""
     temporal, controls = common_positive_features(left, right)
-    out: dict[str, dict[str, Any]] = {}
+    buckets: dict[str, list[dict[str, Any]]] = {}
+    raw_seen: set[tuple[tuple[str, ...], tuple[int, ...]]] = set()
+
+    right_identity = {x: x for x in right["nodes"]}
+    right_by_signature: dict[str, list[int]] = {}
+    for i, edge in enumerate(right["edges"]):
+        sig = _edge_under_mapping(edge, right_identity)
+        right_by_signature.setdefault(sig, []).append(i)
 
     for mapping in partial_node_mappings(left, right):
-        left_edges, right_edges = matched_edge_indices(left, right, mapping)
-        left_nodes = sorted(mapping)
-        right_nodes = sorted(mapping.values())
+        cursors: Counter[str] = Counter()
+        left_edges: list[int] = []
+        right_edges: list[int] = []
+        mapped_left = set(mapping)
+        for i, edge in enumerate(left["edges"]):
+            refs = set(edge["arguments"] + edge["conditional_on"])
+            if not refs <= mapped_left:
+                continue
+            sig = _edge_under_mapping(edge, mapping)
+            options = right_by_signature.get(sig, [])
+            cursor = cursors[sig]
+            if cursor >= len(options):
+                continue
+            left_edges.append(i)
+            right_edges.append(options[cursor])
+            cursors[sig] += 1
 
+        left_nodes = sorted(mapping)
+        raw_key = (tuple(left_nodes), tuple(left_edges))
+        if raw_key in raw_seen:
+            continue
+        raw_seen.add(raw_key)
+
+        right_nodes = sorted(mapping.values())
         left_image = restrict_skeleton(
             left,
             retained_node_ids=left_nodes,
@@ -474,10 +547,10 @@ def pair_common_candidates(
         if not image_equivalent(left_image, right_image):
             raise PilotError("pair candidate witness failed equivalence check")
 
-        key = canonical_image_key(left_image)
-        if key not in out:
-            out[key] = {
-                "image": left_image,
+        _register_equivalence_class(
+            buckets,
+            left_image,
+            {
                 "left_witness": {
                     "retained_node_ids": left_nodes,
                     "retained_edge_indices": left_edges,
@@ -490,8 +563,13 @@ def pair_common_candidates(
                     "retained_temporal_keys": temporal,
                     "retained_control_keys": controls,
                 },
-            }
-    return out
+            },
+        )
+
+    classes: list[dict[str, Any]] = []
+    for inv in sorted(buckets):
+        classes.extend(buckets[inv])
+    return classes
 
 
 def summarize_image(image: dict[str, Any]) -> dict[str, Any]:
@@ -536,7 +614,7 @@ def run_pilot() -> dict[str, Any]:
     skeletons = load_skl_skeletons()
 
     exact_equivalence_pairs = []
-    all_candidates: dict[str, dict[str, Any]] = {}
+    all_candidate_buckets: dict[str, list[dict[str, Any]]] = {}
     pair_candidate_counts = {}
 
     for i, left_id in enumerate(SKL_IDS):
@@ -548,19 +626,24 @@ def run_pilot() -> dict[str, Any]:
 
             candidates = pair_common_candidates(left, right)
             pair_candidate_counts[f"{left_id}::{right_id}"] = len(candidates)
-            for key, payload in candidates.items():
-                item = all_candidates.setdefault(key, {
-                    "image": payload["image"],
-                    "pair_witnesses": {},
-                })
+            for payload in candidates:
+                item, created = _register_equivalence_class(
+                    all_candidate_buckets,
+                    payload["image"],
+                    {"pair_witnesses": {}},
+                )
                 item["pair_witnesses"][f"{left_id}::{right_id}"] = {
                     left_id: payload["left_witness"],
                     right_id: payload["right_witness"],
                 }
 
+    all_candidates: list[dict[str, Any]] = []
+    for inv in sorted(all_candidate_buckets):
+        all_candidates.extend(all_candidate_buckets[inv])
+
     # Determine full SKL support for every unique non-trivial candidate.
-    support_groups: dict[tuple[str, ...], list[tuple[str, dict[str, Any]]]] = {}
-    for key, payload in all_candidates.items():
+    support_groups: dict[tuple[str, ...], list[tuple[int, dict[str, Any]]]] = {}
+    for key, payload in enumerate(all_candidates):
         image = payload["image"]
         support = tuple(
             claim_id for claim_id in SKL_IDS
@@ -613,7 +696,7 @@ def run_pilot() -> dict[str, Any]:
     # their canonical images recovered from all_candidates.
     image_by_id = {
         image_id(payload["image"]): payload["image"]
-        for payload in all_candidates.values()
+        for payload in all_candidates
     }
     incomparable_pairs = 0
     comparable_pairs = 0
