@@ -1,0 +1,2143 @@
+{
+  "schema_version": "paper2-challenge-a-grammar-v0-reverse-projection-v1",
+  "authority": {
+    "grammar_issue": 321,
+    "lean_pr": 322,
+    "ch_a_archetype_owner_issue": 304,
+    "reverse_projection_owner_issue": 337,
+    "frozen_main_sha": "78cd63cd6ec2898f3b4783b6db394c73c0551ff4",
+    "architecture_consequence": "NONE"
+  },
+  "scope": {
+    "lane": "CH-A",
+    "processed_claim_ids": [
+      "CH01.C1",
+      "CH03.C1",
+      "CH05.C1",
+      "CH07.C1",
+      "CH09.C1",
+      "CH11.C1"
+    ],
+    "excluded_ch_ids": [
+      "CH02",
+      "CH04",
+      "CH06",
+      "CH08",
+      "CH10",
+      "CH12"
+    ],
+    "non_ch_lanes_processed": false,
+    "papers_reread": false,
+    "frozen_objects_modified": false,
+    "frozen_object_classes": [
+      "ClaimIR",
+      "B_P2",
+      "Phi",
+      "U_claim",
+      "F_R",
+      "structural adjudications",
+      "bounded Archetype identities",
+      "Grammar v0"
+    ]
+  },
+  "frozen_inputs": {
+    "claimir": [
+      {
+        "path": "research/paper2/chatgpt_reference_claimir_v1/CH01.json",
+        "sha": "94160ca2e25f6872cc681f9bb536a2331db0ee19"
+      },
+      {
+        "path": "research/paper2/chatgpt_reference_claimir_v1/CH03.json",
+        "sha": "de909e15f638c985d9c5168df298c9a723c45356"
+      },
+      {
+        "path": "research/paper2/chatgpt_reference_claimir_v1/CH05.json",
+        "sha": "38915d71816d63f2aaed6514a86a10a11bb7ade7"
+      },
+      {
+        "path": "research/paper2/chatgpt_reference_claimir_v1/CH07.json",
+        "sha": "32fc5bacbf81d5d6821dfce5e06a80f709b2b820"
+      },
+      {
+        "path": "research/paper2/chatgpt_reference_claimir_v1/CH09.json",
+        "sha": "111f66812b8bccbd7bb13471fab1ca09168720c7"
+      },
+      {
+        "path": "research/paper2/chatgpt_reference_claimir_v1/CH11.json",
+        "sha": "5899885971469096b8f4ef29a15992491cec7fa7"
+      }
+    ],
+    "structural_adjudication": [
+      {
+        "path": "research/paper2/reference_structural_adjudication_v1/CH01.json",
+        "sha": "1ecdd68154178cbb3f4c642e62c5c789cc747bea"
+      },
+      {
+        "path": "research/paper2/reference_structural_adjudication_v1/CH03.json",
+        "sha": "1c88d55c9637cf7ca2134a07f048f8c623699e39"
+      },
+      {
+        "path": "research/paper2/reference_structural_adjudication_v1/CH05.json",
+        "sha": "c0f17ea5fce6fa7dafb922dead12c8c1bb15d938"
+      },
+      {
+        "path": "research/paper2/reference_structural_adjudication_v1/CH07.json",
+        "sha": "09c111aa9e1de98a939b6e7b9964aafec9e38b05"
+      },
+      {
+        "path": "research/paper2/reference_structural_adjudication_v1/CH09.json",
+        "sha": "5cf6b3aa1efe7b6434f068ddb97e91e0df7b0cfe"
+      },
+      {
+        "path": "research/paper2/reference_structural_adjudication_v1/CH11.json",
+        "sha": "3af90f0866b38cd88b673f0531514c720650ec8d"
+      }
+    ],
+    "bounded_archetype": {
+      "path": "research/paper2/challenge_a_archetype_v1.json",
+      "sha": "d6ef8383beb885bba492e75aa6ee5f3c83d5ff87",
+      "exact_input_claim_ids": [
+        "CH01",
+        "CH03",
+        "CH05",
+        "CH07",
+        "CH09",
+        "CH11"
+      ],
+      "decision": "CHALLENGE_A_MULTIPLE_INCOMPARABLE_ARCHETYPES",
+      "maximal_archetype_candidate_count": 14,
+      "exact_basis_skeleton_equivalence_pair_count": 0
+    }
+  },
+  "status_semantics": {
+    "SUPPORTED": "The frozen structure directly licenses the role mapping.",
+    "PARTIAL": "Some role content is directly licensed, but the frozen structure does not license the full Grammar-v0 interpretation or current formal signature.",
+    "ABSENT": "No frozen support licenses the role; absence is not treated as ontological absence.",
+    "FULL": "All required frozen claim structure has a lossless role-level projection under Grammar v0; implementation pressure may still be noted separately.",
+    "PARTIAL_verdict": "The central frozen structure projects into Grammar v0 but some required relation semantics or formal topology remains unrepresented.",
+    "RESIDUAL": "At least one required frozen structural object has no licensed Grammar-v0 role without retyping or invention."
+  },
+  "role_semantics": {
+    "Pi": "individuation / partition / boundary",
+    "X": "configuration carrier (frozen S role)",
+    "C": "realizability / admissibility constraint",
+    "Q": "criterion-conditioned filtering / orientation",
+    "P_in": "intervention / write",
+    "P_out": "probe / query / read",
+    "K": "typed transformation / dependence; not assumed functional",
+    "T": "succession / temporal indexing; kept distinct from K",
+    "rho/O": "boundary-relative observation / trace; not assumed terminal"
+  },
+  "claims": [
+    {
+      "claim_id": "CH01.C1",
+      "grammar_roles_instantiated": [
+        "X",
+        "K",
+        "T"
+      ],
+      "supported_relations": [
+        {
+          "grammar_relation": "T succession",
+          "status": "SUPPORTED",
+          "projection": "early_synchronized_phase <_T later_desynchronized_phase",
+          "evidence": [
+            {
+              "source": "research/paper2/chatgpt_reference_claimir_v1/CH01.json",
+              "source_sha": "94160ca2e25f6872cc681f9bb536a2331db0ee19",
+              "field": "claim_core.relations[r1]",
+              "value": {
+                "kind": "precedes",
+                "arguments": [
+                  "early_synchronized_phase",
+                  "later_desynchronized_phase"
+                ],
+                "source_span_ids": [
+                  "s4"
+                ]
+              }
+            },
+            {
+              "source": "research/paper2/reference_structural_adjudication_v1/CH01.json",
+              "source_sha": "1ecdd68154178cbb3f4c642e62c5c789cc747bea",
+              "field": "temporal.ordering[0]",
+              "value": {
+                "before_coordinate_id": "basis.cnd1",
+                "after_coordinate_id": "basis.cnd2",
+                "source_span_ids": [
+                  "s4"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "grammar_relation": "K typed mapping/dependence",
+          "status": "SUPPORTED",
+          "projection": "newly acquired representation maps into fast and slow stores; phase-indexed changes lead to redistribution and later local strengthening",
+          "evidence": [
+            {
+              "source": "research/paper2/chatgpt_reference_claimir_v1/CH01.json",
+              "source_sha": "94160ca2e25f6872cc681f9bb536a2331db0ee19",
+              "field": "claim_core.relations[r2]",
+              "value": {
+                "kind": "maps_to",
+                "arguments": [
+                  "newly_acquired_representation",
+                  "fast_learning_temporary_store",
+                  "slow_learning_long_term_store"
+                ]
+              }
+            },
+            {
+              "source": "research/paper2/chatgpt_reference_claimir_v1/CH01.json",
+              "source_sha": "94160ca2e25f6872cc681f9bb536a2331db0ee19",
+              "field": "claim_core.relations[r3]",
+              "value": {
+                "kind": "changes",
+                "arguments": [
+                  "early_synchronized_phase",
+                  "fast_learning_temporary_store",
+                  "slow_learning_long_term_store",
+                  "systems_level_redistribution"
+                ]
+              }
+            },
+            {
+              "source": "research/paper2/chatgpt_reference_claimir_v1/CH01.json",
+              "source_sha": "94160ca2e25f6872cc681f9bb536a2331db0ee19",
+              "field": "claim_core.relations[r4]",
+              "value": {
+                "kind": "changes",
+                "arguments": [
+                  "later_desynchronized_phase",
+                  "systems_level_redistribution",
+                  "local_synaptic_strengthening"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "Pi_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH01.json",
+            "source_sha": "1ecdd68154178cbb3f4c642e62c5c789cc747bea",
+            "field": "controls.partition_Pi.state",
+            "value": "not_required"
+          }
+        ]
+      },
+      "X_mapping": {
+        "status": "SUPPORTED",
+        "mapping": {
+          "newly_acquired_representation": "X",
+          "fast_learning_temporary_store": "X",
+          "slow_learning_long_term_store": "X",
+          "systems_level_redistribution": "X",
+          "local_synaptic_strengthening": "X"
+        },
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH01.json",
+            "source_sha": "1ecdd68154178cbb3f4c642e62c5c789cc747bea",
+            "field": "coordinate_map",
+            "value": [
+              [
+                "newly_acquired_representation",
+                "basis.s1"
+              ],
+              [
+                "fast_learning_temporary_store",
+                "basis.s2"
+              ],
+              [
+                "slow_learning_long_term_store",
+                "basis.s3"
+              ],
+              [
+                "systems_level_redistribution",
+                "basis.s4"
+              ],
+              [
+                "local_synaptic_strengthening",
+                "basis.s5"
+              ]
+            ]
+          }
+        ]
+      },
+      "C_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH01.json",
+            "source_sha": "1ecdd68154178cbb3f4c642e62c5c789cc747bea",
+            "field": "controls.resource_C.state",
+            "value": "not_required"
+          }
+        ]
+      },
+      "Q_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH01.json",
+            "source_sha": "1ecdd68154178cbb3f4c642e62c5c789cc747bea",
+            "field": "controls.criterion_Q.state",
+            "value": "not_required"
+          }
+        ]
+      },
+      "P_in_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH01.json",
+            "source_sha": "1ecdd68154178cbb3f4c642e62c5c789cc747bea",
+            "field": "controls.probe_P.state",
+            "value": "not_required"
+          }
+        ]
+      },
+      "P_out_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH01.json",
+            "source_sha": "1ecdd68154178cbb3f4c642e62c5c789cc747bea",
+            "field": "controls.probe_P.state",
+            "value": "not_required"
+          }
+        ]
+      },
+      "K_mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "r2: X -> {X,X} initial parallel encoding",
+          "r3: phase-conditioned typed dependence/change -> X redistribution",
+          "r4: later-phase-conditioned typed change -> X local strengthening"
+        ],
+        "evidence": [
+          {
+            "source": "research/paper2/chatgpt_reference_claimir_v1/CH01.json",
+            "source_sha": "94160ca2e25f6872cc681f9bb536a2331db0ee19",
+            "field": "claim_core.relations[r2,r3,r4]",
+            "value": "maps_to / changes"
+          },
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH01.json",
+            "source_sha": "1ecdd68154178cbb3f4c642e62c5c789cc747bea",
+            "field": "approximation.mode",
+            "value": "stochastic"
+          }
+        ]
+      },
+      "T_mapping": {
+        "status": "SUPPORTED",
+        "mapping": {
+          "ordered_pair": [
+            "early_synchronized_phase",
+            "later_desynchronized_phase"
+          ],
+          "temporal_features": [
+            "time_index",
+            "history_window",
+            "future_horizon",
+            "recurrence",
+            "persistence"
+          ]
+        },
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH01.json",
+            "source_sha": "1ecdd68154178cbb3f4c642e62c5c789cc747bea",
+            "field": "temporal",
+            "value": {
+              "time_index": "present",
+              "history_window": "present",
+              "future_horizon": "present",
+              "recurrence": "present",
+              "persistence": "present",
+              "ordering": [
+                [
+                  "basis.cnd1",
+                  "basis.cnd2"
+                ]
+              ]
+            }
+          }
+        ]
+      },
+      "rho/O_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH01.json",
+            "source_sha": "1ecdd68154178cbb3f4c642e62c5c789cc747bea",
+            "field": "coordinate_map",
+            "value": "no basis.o* coordinate present"
+          }
+        ]
+      },
+      "derived_feature_candidates": [
+        "recurrence may be representable as repeated K-like updates indexed by T",
+        "history_window and future_horizon may be T-range refinements",
+        "persistence is only a candidate carry/transport feature; no frozen evidence licenses literal K = identity"
+      ],
+      "unmapped_residual": [
+        {
+          "structure": "required generic condition carrier",
+          "exact_frozen_objects": [
+            "early_synchronized_phase -> basis.cnd1",
+            "later_desynchronized_phase -> basis.cnd2"
+          ],
+          "reason": "T represents their succession but does not represent the condition identities themselves; C/Q/Pi/P are explicitly not required."
+        }
+      ],
+      "verdict": "RESIDUAL",
+      "notes": "Do not repair the residual by retyping sleep-phase conditions as C or X. The CH-A bounded Archetype A-1c32e617a470 independently retains the null-axis condition pair plus temporal_order across CH01 and CH09."
+    },
+    {
+      "claim_id": "CH03.C1",
+      "grammar_roles_instantiated": [
+        "Pi",
+        "X",
+        "Q",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "grammar_relation": "Pi individuation",
+          "status": "SUPPORTED",
+          "projection": "candidate_system_boundary individuates organism-centered versus composite candidate systems",
+          "evidence": [
+            {
+              "source": "research/paper2/reference_structural_adjudication_v1/CH03.json",
+              "source_sha": "1c88d55c9637cf7ca2134a07f048f8c623699e39",
+              "field": "controls.partition_Pi",
+              "value": {
+                "state": "present",
+                "claim_node_ids": [
+                  "candidate_system_boundary"
+                ],
+                "provenance_kind": "source_declared",
+                "fixed_before_phi": true
+              }
+            },
+            {
+              "source": "research/paper2/reference_structural_adjudication_v1/CH03.json",
+              "source_sha": "1c88d55c9637cf7ca2134a07f048f8c623699e39",
+              "field": "coordinate_map[candidate_system_boundary]",
+              "value": [
+                "candidate_system_boundary",
+                "basis.pi1"
+              ]
+            }
+          ]
+        },
+        {
+          "grammar_relation": "Q-conditioned filtering/orientation",
+          "status": "SUPPORTED",
+          "projection": "relevance_based_inclusion_rule and stable_system_individuation supply explicit criteria for boundary/system selection",
+          "evidence": [
+            {
+              "source": "research/paper2/reference_structural_adjudication_v1/CH03.json",
+              "source_sha": "1c88d55c9637cf7ca2134a07f048f8c623699e39",
+              "field": "controls.criterion_Q",
+              "value": {
+                "state": "present",
+                "claim_node_ids": [
+                  "relevance_based_inclusion_rule",
+                  "stable_system_individuation"
+                ],
+                "provenance_kind": "source_declared",
+                "fixed_before_phi": true
+              }
+            }
+          ]
+        },
+        {
+          "grammar_relation": "K typed dependence",
+          "status": "SUPPORTED",
+          "projection": "criterion and boundary structure constrain composite-system attribution and predict taxonomy failure",
+          "evidence": [
+            {
+              "source": "research/paper2/chatgpt_reference_claimir_v1/CH03.json",
+              "source_sha": "de909e15f638c985d9c5168df298c9a723c45356",
+              "field": "claim_core.relations[r2]",
+              "value": {
+                "kind": "constrains",
+                "arguments": [
+                  "relevance_based_inclusion_rule",
+                  "candidate_system_boundary",
+                  "composite_candidate_system"
+                ]
+              }
+            },
+            {
+              "source": "research/paper2/chatgpt_reference_claimir_v1/CH03.json",
+              "source_sha": "de909e15f638c985d9c5168df298c9a723c45356",
+              "field": "claim_core.relations[r3]",
+              "value": {
+                "kind": "predicts",
+                "arguments": [
+                  "relevance_based_inclusion_rule",
+                  "system_taxonomy_failure"
+                ]
+              }
+            },
+            {
+              "source": "research/paper2/chatgpt_reference_claimir_v1/CH03.json",
+              "source_sha": "de909e15f638c985d9c5168df298c9a723c45356",
+              "field": "claim_core.relations[r4]",
+              "value": {
+                "kind": "depends_on",
+                "arguments": [
+                  "cognitive_state_attribution",
+                  "stable_system_individuation",
+                  "candidate_system_boundary"
+                ]
+              }
+            },
+            {
+              "source": "research/paper2/chatgpt_reference_claimir_v1/CH03.json",
+              "source_sha": "de909e15f638c985d9c5168df298c9a723c45356",
+              "field": "claim_core.relations[r5]",
+              "value": {
+                "kind": "constrains",
+                "arguments": [
+                  "stable_system_individuation",
+                  "candidate_system_boundary",
+                  "composite_candidate_system"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "Pi_mapping": {
+        "status": "SUPPORTED",
+        "mapping": {
+          "candidate_system_boundary": "Pi"
+        },
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH03.json",
+            "source_sha": "1c88d55c9637cf7ca2134a07f048f8c623699e39",
+            "field": "coordinate_map[candidate_system_boundary]",
+            "value": [
+              "candidate_system_boundary",
+              "basis.pi1"
+            ]
+          },
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH03.json",
+            "source_sha": "1c88d55c9637cf7ca2134a07f048f8c623699e39",
+            "field": "controls.partition_Pi.state",
+            "value": "present"
+          }
+        ]
+      },
+      "X_mapping": {
+        "status": "SUPPORTED",
+        "mapping": {
+          "organism_centered_system": "X",
+          "coupled_external_element": "X",
+          "composite_candidate_system": "X",
+          "cognitive_state_attribution": "X"
+        },
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH03.json",
+            "source_sha": "1c88d55c9637cf7ca2134a07f048f8c623699e39",
+            "field": "coordinate_map",
+            "value": [
+              [
+                "organism_centered_system",
+                "basis.s1"
+              ],
+              [
+                "coupled_external_element",
+                "basis.s2"
+              ],
+              [
+                "composite_candidate_system",
+                "basis.s3"
+              ],
+              [
+                "cognitive_state_attribution",
+                "basis.s4"
+              ]
+            ]
+          }
+        ]
+      },
+      "C_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH03.json",
+            "source_sha": "1c88d55c9637cf7ca2134a07f048f8c623699e39",
+            "field": "controls.resource_C.state",
+            "value": "not_required"
+          }
+        ]
+      },
+      "Q_mapping": {
+        "status": "SUPPORTED",
+        "mapping": {
+          "relevance_based_inclusion_rule": "Q",
+          "stable_system_individuation": "Q"
+        },
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH03.json",
+            "source_sha": "1c88d55c9637cf7ca2134a07f048f8c623699e39",
+            "field": "coordinate_map",
+            "value": [
+              [
+                "relevance_based_inclusion_rule",
+                "basis.q1"
+              ],
+              [
+                "stable_system_individuation",
+                "basis.q2"
+              ]
+            ]
+          },
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH03.json",
+            "source_sha": "1c88d55c9637cf7ca2134a07f048f8c623699e39",
+            "field": "controls.criterion_Q.state",
+            "value": "present"
+          }
+        ]
+      },
+      "P_in_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH03.json",
+            "source_sha": "1c88d55c9637cf7ca2134a07f048f8c623699e39",
+            "field": "controls.probe_P.state",
+            "value": "not_required"
+          }
+        ]
+      },
+      "P_out_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH03.json",
+            "source_sha": "1c88d55c9637cf7ca2134a07f048f8c623699e39",
+            "field": "controls.probe_P.state",
+            "value": "not_required"
+          }
+        ]
+      },
+      "K_mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "r2",
+          "r3",
+          "r4",
+          "r5"
+        ],
+        "evidence": [
+          {
+            "source": "research/paper2/chatgpt_reference_claimir_v1/CH03.json",
+            "source_sha": "de909e15f638c985d9c5168df298c9a723c45356",
+            "field": "claim_core.relations[r2-r5]",
+            "value": "constrains / predicts / depends_on / constrains"
+          }
+        ]
+      },
+      "T_mapping": {
+        "status": "SUPPORTED",
+        "mapping": {
+          "temporal_features": [
+            "time_index",
+            "persistence"
+          ]
+        },
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH03.json",
+            "source_sha": "1c88d55c9637cf7ca2134a07f048f8c623699e39",
+            "field": "temporal",
+            "value": {
+              "time_index": "present",
+              "persistence": "present",
+              "ordering": []
+            }
+          }
+        ]
+      },
+      "rho/O_mapping": {
+        "status": "SUPPORTED",
+        "mapping": {
+          "system_taxonomy_failure": "O outcome/trace"
+        },
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH03.json",
+            "source_sha": "1c88d55c9637cf7ca2134a07f048f8c623699e39",
+            "field": "coordinate_map[system_taxonomy_failure]",
+            "value": [
+              "system_taxonomy_failure",
+              "basis.o1"
+            ]
+          }
+        ]
+      },
+      "derived_feature_candidates": [
+        "stable system identity may be treated as Pi stability over T, but the frozen evidence does not license a Config carry map",
+        "Q constraining Pi is a recurrent CH-A substructure also seen in CH11",
+        "the O outcome is non-terminal with respect to analysis even though no P_out is frozen"
+      ],
+      "unmapped_residual": [
+        {
+          "structure": "r1 distinguishes relation",
+          "exact_frozen_object": "heavy causal/explanatory dependence on an external element is distinguished from literal inclusion within the cognitive-system boundary",
+          "evidence": {
+            "source": "research/paper2/chatgpt_reference_claimir_v1/CH03.json",
+            "source_sha": "de909e15f638c985d9c5168df298c9a723c45356",
+            "field": "claim_core.relations[r1]",
+            "value": {
+              "kind": "distinguishes",
+              "arguments": [
+                "organism_centered_system",
+                "coupled_external_element",
+                "candidate_system_boundary"
+              ]
+            }
+          },
+          "reason": "Grammar v0 has no first-class non-entailment / contrast relation; encoding it as K would strengthen a logical distinction into dependence."
+        },
+        {
+          "structure": "current Lean K/rho signature mismatch",
+          "exact_frozen_object": "P-free Q/Pi/X/O dependence topology",
+          "reason": "The merged Lean skeleton types transition through succession + Pin and observation through Config + Pout; CH03 supplies no frozen P role and includes Q/Pi/O as dependence endpoints. This is formal-carrier pressure, not a license to invent unit-valued scientific roles."
+        }
+      ],
+      "verdict": "PARTIAL",
+      "notes": "All positive node roles project, but the negative constitutive-vs-causal distinction remains outside the role grammar."
+    },
+    {
+      "claim_id": "CH05.C1",
+      "grammar_roles_instantiated": [
+        "C",
+        "P_in",
+        "P_out",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "grammar_relation": "C-conditioned interface use",
+          "status": "SUPPORTED",
+          "projection": "internal processing limits restrict feasible internal processing and motivate interface operations",
+          "evidence": [
+            {
+              "source": "research/paper2/reference_structural_adjudication_v1/CH05.json",
+              "source_sha": "c0f17ea5fce6fa7dafb922dead12c8c1bb15d938",
+              "field": "controls.resource_C",
+              "value": {
+                "state": "present",
+                "claim_node_ids": [
+                  "internal_processing_limit"
+                ],
+                "provenance_kind": "source_declared",
+                "fixed_before_phi": true
+              }
+            },
+            {
+              "source": "research/paper2/chatgpt_reference_claimir_v1/CH05.json",
+              "source_sha": "38915d71816d63f2aaed6514a86a10a11bb7ade7",
+              "field": "claim_core.relations[r1]",
+              "value": {
+                "kind": "constrains",
+                "arguments": [
+                  "internal_processing_limit",
+                  "selective_resampling",
+                  "problem_simplifying_manipulation"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "grammar_relation": "P_in + K",
+          "status": "SUPPORTED",
+          "projection": "problem_simplifying_manipulation writes to external task state and changes remaining workload",
+          "evidence": [
+            {
+              "source": "research/paper2/reference_structural_adjudication_v1/CH05.json",
+              "source_sha": "c0f17ea5fce6fa7dafb922dead12c8c1bb15d938",
+              "field": "coordinate_map[problem_simplifying_manipulation]",
+              "value": [
+                "problem_simplifying_manipulation",
+                "basis.p1"
+              ]
+            },
+            {
+              "source": "research/paper2/chatgpt_reference_claimir_v1/CH05.json",
+              "source_sha": "38915d71816d63f2aaed6514a86a10a11bb7ade7",
+              "field": "claim_core.relations[r2]",
+              "value": {
+                "kind": "changes",
+                "arguments": [
+                  "problem_simplifying_manipulation",
+                  "external_task_state",
+                  "remaining_internal_workload"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "grammar_relation": "P_out + rho/O + K",
+          "status": "SUPPORTED",
+          "projection": "selective_resampling queries available external information and changes the required internal workload",
+          "evidence": [
+            {
+              "source": "research/paper2/reference_structural_adjudication_v1/CH05.json",
+              "source_sha": "c0f17ea5fce6fa7dafb922dead12c8c1bb15d938",
+              "field": "coordinate_map[selective_resampling]",
+              "value": [
+                "selective_resampling",
+                "basis.p2"
+              ]
+            },
+            {
+              "source": "research/paper2/chatgpt_reference_claimir_v1/CH05.json",
+              "source_sha": "38915d71816d63f2aaed6514a86a10a11bb7ade7",
+              "field": "claim_core.relations[r3]",
+              "value": {
+                "kind": "changes",
+                "arguments": [
+                  "selective_resampling",
+                  "external_task_state",
+                  "remaining_internal_workload"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "Pi_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH05.json",
+            "source_sha": "c0f17ea5fce6fa7dafb922dead12c8c1bb15d938",
+            "field": "controls.partition_Pi.state",
+            "value": "not_required"
+          }
+        ]
+      },
+      "X_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH05.json",
+            "source_sha": "c0f17ea5fce6fa7dafb922dead12c8c1bb15d938",
+            "field": "coordinate_map",
+            "value": "no basis.s* coordinate present"
+          }
+        ]
+      },
+      "C_mapping": {
+        "status": "SUPPORTED",
+        "mapping": {
+          "internal_processing_limit": "C realizability/resource constraint"
+        },
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH05.json",
+            "source_sha": "c0f17ea5fce6fa7dafb922dead12c8c1bb15d938",
+            "field": "coordinate_map[internal_processing_limit]",
+            "value": [
+              "internal_processing_limit",
+              "basis.cnd1"
+            ]
+          },
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH05.json",
+            "source_sha": "c0f17ea5fce6fa7dafb922dead12c8c1bb15d938",
+            "field": "controls.resource_C.state",
+            "value": "present"
+          }
+        ]
+      },
+      "Q_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH05.json",
+            "source_sha": "c0f17ea5fce6fa7dafb922dead12c8c1bb15d938",
+            "field": "controls.criterion_Q.state",
+            "value": "not_required"
+          }
+        ]
+      },
+      "P_in_mapping": {
+        "status": "SUPPORTED",
+        "mapping": {
+          "problem_simplifying_manipulation": "P_in"
+        },
+        "evidence": [
+          {
+            "source": "research/paper2/chatgpt_reference_claimir_v1/CH05.json",
+            "source_sha": "38915d71816d63f2aaed6514a86a10a11bb7ade7",
+            "field": "claim_core.nodes[problem_simplifying_manipulation].role",
+            "value": "intervention"
+          },
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH05.json",
+            "source_sha": "c0f17ea5fce6fa7dafb922dead12c8c1bb15d938",
+            "field": "controls.probe_P.claim_node_ids",
+            "value": [
+              "problem_simplifying_manipulation",
+              "selective_resampling"
+            ]
+          }
+        ]
+      },
+      "P_out_mapping": {
+        "status": "SUPPORTED",
+        "mapping": {
+          "selective_resampling": "P_out"
+        },
+        "evidence": [
+          {
+            "source": "research/paper2/chatgpt_reference_claimir_v1/CH05.json",
+            "source_sha": "38915d71816d63f2aaed6514a86a10a11bb7ade7",
+            "field": "claim_core.nodes[selective_resampling].role",
+            "value": "probe"
+          },
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH05.json",
+            "source_sha": "c0f17ea5fce6fa7dafb922dead12c8c1bb15d938",
+            "field": "controls.probe_P.claim_node_ids",
+            "value": [
+              "problem_simplifying_manipulation",
+              "selective_resampling"
+            ]
+          }
+        ]
+      },
+      "K_mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "r2 external-state/workload change",
+          "r3 query/workload dependence"
+        ],
+        "evidence": [
+          {
+            "source": "research/paper2/chatgpt_reference_claimir_v1/CH05.json",
+            "source_sha": "38915d71816d63f2aaed6514a86a10a11bb7ade7",
+            "field": "claim_core.relations[r2,r3]",
+            "value": "changes"
+          }
+        ]
+      },
+      "T_mapping": {
+        "status": "SUPPORTED",
+        "mapping": {
+          "temporal_features": [
+            "time_index",
+            "recurrence",
+            "persistence"
+          ],
+          "ordering": [
+            "basis.p1",
+            "basis.o2"
+          ]
+        },
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH05.json",
+            "source_sha": "c0f17ea5fce6fa7dafb922dead12c8c1bb15d938",
+            "field": "temporal",
+            "value": {
+              "time_index": "present",
+              "recurrence": "present",
+              "persistence": "present",
+              "ordering": [
+                [
+                  "basis.p1",
+                  "basis.o2"
+                ]
+              ]
+            }
+          }
+        ]
+      },
+      "rho/O_mapping": {
+        "status": "SUPPORTED",
+        "mapping": {
+          "external_task_state": "O information",
+          "remaining_internal_workload": "O outcome"
+        },
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH05.json",
+            "source_sha": "c0f17ea5fce6fa7dafb922dead12c8c1bb15d938",
+            "field": "coordinate_map",
+            "value": [
+              [
+                "external_task_state",
+                "basis.o1"
+              ],
+              [
+                "remaining_internal_workload",
+                "basis.o2"
+              ]
+            ]
+          }
+        ]
+      },
+      "derived_feature_candidates": [
+        "probe/intervention distinction compresses directly to P_out/P_in",
+        "recurrent need-based resampling is a P_out operation indexed by T",
+        "O_information and O_outcome can share the O role while retaining directional/topological distinction",
+        "persistence of externally available information is not converted to K = identity because no carry map is frozen"
+      ],
+      "unmapped_residual": [],
+      "verdict": "FULL",
+      "notes": "The claim does not instantiate X. This is allowed at the role-grammar level because claims may realize supported subobjects; the current Lean transition/observe signatures would need a non-scientific dummy Config to encode this topology literally, so this remains an implementation pressure rather than a lane-level role residual."
+    },
+    {
+      "claim_id": "CH07.C1",
+      "grammar_roles_instantiated": [
+        "X",
+        "Q",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "grammar_relation": "Q-conditioned K",
+          "status": "SUPPORTED",
+          "projection": "similarity_weighting_rule conditions retrieval/weighting of retained traces for the current decision state",
+          "evidence": [
+            {
+              "source": "research/paper2/reference_structural_adjudication_v1/CH07.json",
+              "source_sha": "09c111aa9e1de98a939b6e7b9964aafec9e38b05",
+              "field": "controls.criterion_Q",
+              "value": {
+                "state": "present",
+                "claim_node_ids": [
+                  "similarity_weighting_rule"
+                ],
+                "provenance_kind": "source_declared",
+                "fixed_before_phi": true
+              }
+            },
+            {
+              "source": "research/paper2/chatgpt_reference_claimir_v1/CH07.json",
+              "source_sha": "32fc5bacbf81d5d6821dfce5e06a80f709b2b820",
+              "field": "claim_core.relations[r1]",
+              "value": {
+                "kind": "maps_to",
+                "arguments": [
+                  "current_decision_state",
+                  "individual_event_record",
+                  "similarity_weighting_rule",
+                  "retrieved_weighted_trace_set"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "grammar_relation": "K chain",
+          "status": "SUPPORTED",
+          "projection": "retrieved weighted traces -> return estimate -> action choice",
+          "evidence": [
+            {
+              "source": "research/paper2/chatgpt_reference_claimir_v1/CH07.json",
+              "source_sha": "32fc5bacbf81d5d6821dfce5e06a80f709b2b820",
+              "field": "claim_core.relations[r2]",
+              "value": {
+                "kind": "maps_to",
+                "arguments": [
+                  "retrieved_weighted_trace_set",
+                  "return_estimate"
+                ]
+              }
+            },
+            {
+              "source": "research/paper2/chatgpt_reference_claimir_v1/CH07.json",
+              "source_sha": "32fc5bacbf81d5d6821dfce5e06a80f709b2b820",
+              "field": "claim_core.relations[r3]",
+              "value": {
+                "kind": "predicts",
+                "arguments": [
+                  "return_estimate",
+                  "action_choice"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "grammar_relation": "T succession",
+          "status": "SUPPORTED",
+          "projection": "individual event record precedes retrieved set, which precedes return estimate, which precedes action choice",
+          "evidence": [
+            {
+              "source": "research/paper2/reference_structural_adjudication_v1/CH07.json",
+              "source_sha": "09c111aa9e1de98a939b6e7b9964aafec9e38b05",
+              "field": "temporal.ordering",
+              "value": [
+                [
+                  "basis.s1",
+                  "basis.o1"
+                ],
+                [
+                  "basis.o1",
+                  "basis.s3"
+                ],
+                [
+                  "basis.s3",
+                  "basis.o2"
+                ]
+              ]
+            }
+          ]
+        }
+      ],
+      "Pi_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH07.json",
+            "source_sha": "09c111aa9e1de98a939b6e7b9964aafec9e38b05",
+            "field": "controls.partition_Pi.state",
+            "value": "not_required"
+          }
+        ]
+      },
+      "X_mapping": {
+        "status": "SUPPORTED",
+        "mapping": {
+          "individual_event_record": "X",
+          "current_decision_state": "X",
+          "return_estimate": "X"
+        },
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH07.json",
+            "source_sha": "09c111aa9e1de98a939b6e7b9964aafec9e38b05",
+            "field": "coordinate_map",
+            "value": [
+              [
+                "individual_event_record",
+                "basis.s1"
+              ],
+              [
+                "current_decision_state",
+                "basis.s2"
+              ],
+              [
+                "return_estimate",
+                "basis.s3"
+              ]
+            ]
+          }
+        ]
+      },
+      "C_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH07.json",
+            "source_sha": "09c111aa9e1de98a939b6e7b9964aafec9e38b05",
+            "field": "controls.resource_C.state",
+            "value": "not_required"
+          }
+        ]
+      },
+      "Q_mapping": {
+        "status": "SUPPORTED",
+        "mapping": {
+          "similarity_weighting_rule": "Q"
+        },
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH07.json",
+            "source_sha": "09c111aa9e1de98a939b6e7b9964aafec9e38b05",
+            "field": "coordinate_map[similarity_weighting_rule]",
+            "value": [
+              "similarity_weighting_rule",
+              "basis.q1"
+            ]
+          },
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH07.json",
+            "source_sha": "09c111aa9e1de98a939b6e7b9964aafec9e38b05",
+            "field": "controls.criterion_Q.state",
+            "value": "present"
+          }
+        ]
+      },
+      "P_in_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH07.json",
+            "source_sha": "09c111aa9e1de98a939b6e7b9964aafec9e38b05",
+            "field": "controls.probe_P.state",
+            "value": "not_required"
+          }
+        ]
+      },
+      "P_out_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH07.json",
+            "source_sha": "09c111aa9e1de98a939b6e7b9964aafec9e38b05",
+            "field": "controls.probe_P.state",
+            "value": "not_required"
+          }
+        ]
+      },
+      "K_mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "r1",
+          "r2",
+          "r3",
+          "r4"
+        ],
+        "evidence": [
+          {
+            "source": "research/paper2/chatgpt_reference_claimir_v1/CH07.json",
+            "source_sha": "32fc5bacbf81d5d6821dfce5e06a80f709b2b820",
+            "field": "claim_core.relations",
+            "value": "r1 maps_to; r2 maps_to; r3 predicts; r4 constrains"
+          }
+        ]
+      },
+      "T_mapping": {
+        "status": "SUPPORTED",
+        "mapping": {
+          "temporal_features": [
+            "time_index",
+            "history_window",
+            "future_horizon",
+            "persistence"
+          ],
+          "ordering": [
+            [
+              "basis.s1",
+              "basis.o1"
+            ],
+            [
+              "basis.o1",
+              "basis.s3"
+            ],
+            [
+              "basis.s3",
+              "basis.o2"
+            ]
+          ]
+        },
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH07.json",
+            "source_sha": "09c111aa9e1de98a939b6e7b9964aafec9e38b05",
+            "field": "temporal",
+            "value": {
+              "time_index": "present",
+              "history_window": "present",
+              "future_horizon": "present",
+              "persistence": "present"
+            }
+          }
+        ]
+      },
+      "rho/O_mapping": {
+        "status": "SUPPORTED",
+        "mapping": {
+          "retrieved_weighted_trace_set": "O information",
+          "action_choice": "O outcome"
+        },
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH07.json",
+            "source_sha": "09c111aa9e1de98a939b6e7b9964aafec9e38b05",
+            "field": "coordinate_map",
+            "value": [
+              [
+                "retrieved_weighted_trace_set",
+                "basis.o1"
+              ],
+              [
+                "action_choice",
+                "basis.o2"
+              ]
+            ]
+          }
+        ]
+      },
+      "derived_feature_candidates": [
+        "history_window/future_horizon are candidate T-range refinements rather than new roles",
+        "similarity weighting is a non-necessarily-scalar Q specialization",
+        "the retrieval-estimation-choice sequence is a composable K chain over T",
+        "persistence of stored trajectories is not literal identity carry without an explicit frozen carry map"
+      ],
+      "unmapped_residual": [],
+      "verdict": "FULL",
+      "notes": "No probe_P is frozen, so retrieval is not retyped as P_out. The Q-conditioned mapping is retained directly as K with Q context."
+    },
+    {
+      "claim_id": "CH09.C1",
+      "grammar_roles_instantiated": [
+        "Pi",
+        "P_out",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "grammar_relation": "Pi experimental classification",
+          "status": "SUPPORTED",
+          "projection": "environment_congruence partitions the learning-by-recall combinations into same versus changed environment classes",
+          "evidence": [
+            {
+              "source": "research/paper2/reference_structural_adjudication_v1/CH09.json",
+              "source_sha": "5cf6b3aa1efe7b6434f068ddb97e91e0df7b0cfe",
+              "field": "controls.partition_Pi",
+              "value": {
+                "state": "present",
+                "claim_node_ids": [
+                  "environment_congruence"
+                ],
+                "provenance_kind": "source_declared",
+                "fixed_before_phi": true
+              }
+            },
+            {
+              "source": "research/paper2/chatgpt_reference_claimir_v1/CH09.json",
+              "source_sha": "111f66812b8bccbd7bb13471fab1ca09168720c7",
+              "field": "claim_core.relations[r2]",
+              "value": {
+                "kind": "predicts",
+                "arguments": [
+                  "environment_congruence",
+                  "recalled_word_count"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "grammar_relation": "P_out -> rho/O",
+          "status": "SUPPORTED",
+          "projection": "written_free_recall_probe supplies the measured recalled_word_count",
+          "evidence": [
+            {
+              "source": "research/paper2/reference_structural_adjudication_v1/CH09.json",
+              "source_sha": "5cf6b3aa1efe7b6434f068ddb97e91e0df7b0cfe",
+              "field": "controls.probe_P",
+              "value": {
+                "state": "present",
+                "claim_node_ids": [
+                  "written_free_recall_probe"
+                ],
+                "provenance_kind": "source_declared",
+                "fixed_before_phi": true
+              }
+            },
+            {
+              "source": "research/paper2/chatgpt_reference_claimir_v1/CH09.json",
+              "source_sha": "111f66812b8bccbd7bb13471fab1ca09168720c7",
+              "field": "claim_core.relations[r3]",
+              "value": {
+                "kind": "maps_to",
+                "arguments": [
+                  "written_free_recall_probe",
+                  "recalled_word_count"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "grammar_relation": "T succession",
+          "status": "SUPPORTED",
+          "projection": "learning_environment precedes recall_environment",
+          "evidence": [
+            {
+              "source": "research/paper2/reference_structural_adjudication_v1/CH09.json",
+              "source_sha": "5cf6b3aa1efe7b6434f068ddb97e91e0df7b0cfe",
+              "field": "temporal.ordering[0]",
+              "value": {
+                "before_coordinate_id": "basis.cnd1",
+                "after_coordinate_id": "basis.cnd2",
+                "source_span_ids": [
+                  "s1",
+                  "s2",
+                  "s3"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "grammar_relation": "K typed dependence",
+          "status": "SUPPORTED",
+          "projection": "recall outcome depends on learning/recall conditions and on the Pi congruence class",
+          "evidence": [
+            {
+              "source": "research/paper2/chatgpt_reference_claimir_v1/CH09.json",
+              "source_sha": "111f66812b8bccbd7bb13471fab1ca09168720c7",
+              "field": "claim_core.relations[r1]",
+              "value": {
+                "kind": "depends_on",
+                "arguments": [
+                  "recalled_word_count",
+                  "learning_environment",
+                  "recall_environment"
+                ]
+              }
+            },
+            {
+              "source": "research/paper2/chatgpt_reference_claimir_v1/CH09.json",
+              "source_sha": "111f66812b8bccbd7bb13471fab1ca09168720c7",
+              "field": "claim_core.relations[r2]",
+              "value": {
+                "kind": "predicts",
+                "arguments": [
+                  "environment_congruence",
+                  "recalled_word_count"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "Pi_mapping": {
+        "status": "SUPPORTED",
+        "mapping": {
+          "environment_congruence": "Pi"
+        },
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH09.json",
+            "source_sha": "5cf6b3aa1efe7b6434f068ddb97e91e0df7b0cfe",
+            "field": "coordinate_map[environment_congruence]",
+            "value": [
+              "environment_congruence",
+              "basis.pi1"
+            ]
+          },
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH09.json",
+            "source_sha": "5cf6b3aa1efe7b6434f068ddb97e91e0df7b0cfe",
+            "field": "controls.partition_Pi.state",
+            "value": "present"
+          }
+        ]
+      },
+      "X_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH09.json",
+            "source_sha": "5cf6b3aa1efe7b6434f068ddb97e91e0df7b0cfe",
+            "field": "coordinate_map",
+            "value": "no basis.s* coordinate present"
+          }
+        ]
+      },
+      "C_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH09.json",
+            "source_sha": "5cf6b3aa1efe7b6434f068ddb97e91e0df7b0cfe",
+            "field": "controls.resource_C.state",
+            "value": "not_required"
+          }
+        ]
+      },
+      "Q_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH09.json",
+            "source_sha": "5cf6b3aa1efe7b6434f068ddb97e91e0df7b0cfe",
+            "field": "controls.criterion_Q.state",
+            "value": "not_required"
+          }
+        ]
+      },
+      "P_in_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "source": "research/paper2/chatgpt_reference_claimir_v1/CH09.json",
+            "source_sha": "111f66812b8bccbd7bb13471fab1ca09168720c7",
+            "field": "claim_core.nodes",
+            "value": "no intervention node present"
+          }
+        ]
+      },
+      "P_out_mapping": {
+        "status": "SUPPORTED",
+        "mapping": {
+          "written_free_recall_probe": "P_out"
+        },
+        "evidence": [
+          {
+            "source": "research/paper2/chatgpt_reference_claimir_v1/CH09.json",
+            "source_sha": "111f66812b8bccbd7bb13471fab1ca09168720c7",
+            "field": "claim_core.nodes[written_free_recall_probe].role",
+            "value": "probe"
+          },
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH09.json",
+            "source_sha": "5cf6b3aa1efe7b6434f068ddb97e91e0df7b0cfe",
+            "field": "controls.probe_P.state",
+            "value": "present"
+          }
+        ]
+      },
+      "K_mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "r1",
+          "r2"
+        ],
+        "evidence": [
+          {
+            "source": "research/paper2/chatgpt_reference_claimir_v1/CH09.json",
+            "source_sha": "111f66812b8bccbd7bb13471fab1ca09168720c7",
+            "field": "claim_core.relations[r1,r2]",
+            "value": "depends_on / predicts"
+          }
+        ]
+      },
+      "T_mapping": {
+        "status": "SUPPORTED",
+        "mapping": {
+          "temporal_features": [
+            "time_index",
+            "history_window",
+            "future_horizon",
+            "recurrence",
+            "persistence"
+          ],
+          "ordering": [
+            "basis.cnd1",
+            "basis.cnd2"
+          ]
+        },
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH09.json",
+            "source_sha": "5cf6b3aa1efe7b6434f068ddb97e91e0df7b0cfe",
+            "field": "temporal",
+            "value": {
+              "time_index": "present",
+              "history_window": "present",
+              "future_horizon": "present",
+              "recurrence": "present",
+              "persistence": "present",
+              "ordering": [
+                [
+                  "basis.cnd1",
+                  "basis.cnd2"
+                ]
+              ]
+            }
+          }
+        ]
+      },
+      "rho/O_mapping": {
+        "status": "SUPPORTED",
+        "mapping": {
+          "recalled_word_count": "O measured outcome"
+        },
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH09.json",
+            "source_sha": "5cf6b3aa1efe7b6434f068ddb97e91e0df7b0cfe",
+            "field": "coordinate_map[recalled_word_count]",
+            "value": [
+              "recalled_word_count",
+              "basis.o1"
+            ]
+          },
+          {
+            "source": "research/paper2/chatgpt_reference_claimir_v1/CH09.json",
+            "source_sha": "111f66812b8bccbd7bb13471fab1ca09168720c7",
+            "field": "claim_core.relations[r3]",
+            "value": {
+              "kind": "maps_to",
+              "arguments": [
+                "written_free_recall_probe",
+                "recalled_word_count"
+              ]
+            }
+          }
+        ]
+      },
+      "derived_feature_candidates": [
+        "same-versus-changed environment is a Pi specialization over experimental combinations",
+        "probe/readout compresses directly to P_out plus rho/O",
+        "recurrence is repeated experimental probing over T",
+        "persistence is not converted to identity-like carry because no X carry map is frozen"
+      ],
+      "unmapped_residual": [
+        {
+          "structure": "required generic condition carriers",
+          "exact_frozen_objects": [
+            "learning_environment -> basis.cnd1",
+            "recall_environment -> basis.cnd2"
+          ],
+          "reason": "T captures ordering and Pi classifies their combinations, but neither role represents the dry/wet condition carriers themselves; C is explicitly not required."
+        }
+      ],
+      "verdict": "RESIDUAL",
+      "notes": "Do not retype learning/recall environments as X, C, Q, or P_in. The null-axis condition pair is independently retained in bounded Archetype A-1c32e617a470 with CH01."
+    },
+    {
+      "claim_id": "CH11.C1",
+      "grammar_roles_instantiated": [
+        "Pi",
+        "X",
+        "Q",
+        "K",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "grammar_relation": "Q-induced Pi",
+          "status": "SUPPORTED",
+          "projection": "reference_point supplies the criterion relative to which gain_loss_partition classifies outcomes",
+          "evidence": [
+            {
+              "source": "research/paper2/reference_structural_adjudication_v1/CH11.json",
+              "source_sha": "3af90f0866b38cd88b673f0531514c720650ec8d",
+              "field": "controls.criterion_Q",
+              "value": {
+                "state": "present",
+                "claim_node_ids": [
+                  "reference_point"
+                ],
+                "provenance_kind": "source_declared",
+                "fixed_before_phi": true
+              }
+            },
+            {
+              "source": "research/paper2/reference_structural_adjudication_v1/CH11.json",
+              "source_sha": "3af90f0866b38cd88b673f0531514c720650ec8d",
+              "field": "controls.partition_Pi",
+              "value": {
+                "state": "present",
+                "claim_node_ids": [
+                  "gain_loss_partition"
+                ],
+                "provenance_kind": "source_declared",
+                "fixed_before_phi": true
+              }
+            },
+            {
+              "source": "research/paper2/chatgpt_reference_claimir_v1/CH11.json",
+              "source_sha": "5899885971469096b8f4ef29a15992491cec7fa7",
+              "field": "claim_core.relations[r1]",
+              "value": {
+                "kind": "distinguishes",
+                "arguments": [
+                  "reference_point",
+                  "gain_loss_partition"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "grammar_relation": "K deterministic mapping chain",
+          "status": "SUPPORTED",
+          "projection": "ranked outcomes/event information -> cumulative/rank coefficients; values+coefficients+partition -> branch values -> overall prospect value",
+          "evidence": [
+            {
+              "source": "research/paper2/chatgpt_reference_claimir_v1/CH11.json",
+              "source_sha": "5899885971469096b8f4ef29a15992491cec7fa7",
+              "field": "claim_core.relations[r2]",
+              "value": {
+                "kind": "maps_to",
+                "arguments": [
+                  "ranked_outcome_sequence",
+                  "state_event_information",
+                  "sign_specific_cumulative_functions",
+                  "rank_marginal_coefficients"
+                ]
+              }
+            },
+            {
+              "source": "research/paper2/chatgpt_reference_claimir_v1/CH11.json",
+              "source_sha": "5899885971469096b8f4ef29a15992491cec7fa7",
+              "field": "claim_core.relations[r3]",
+              "value": {
+                "kind": "maps_to",
+                "arguments": [
+                  "ranked_outcome_sequence",
+                  "reference_point",
+                  "subjective_outcome_values"
+                ]
+              }
+            },
+            {
+              "source": "research/paper2/chatgpt_reference_claimir_v1/CH11.json",
+              "source_sha": "5899885971469096b8f4ef29a15992491cec7fa7",
+              "field": "claim_core.relations[r4]",
+              "value": {
+                "kind": "maps_to",
+                "arguments": [
+                  "subjective_outcome_values",
+                  "rank_marginal_coefficients",
+                  "gain_loss_partition",
+                  "positive_branch_value",
+                  "negative_branch_value"
+                ]
+              }
+            },
+            {
+              "source": "research/paper2/chatgpt_reference_claimir_v1/CH11.json",
+              "source_sha": "5899885971469096b8f4ef29a15992491cec7fa7",
+              "field": "claim_core.relations[r5]",
+              "value": {
+                "kind": "maps_to",
+                "arguments": [
+                  "positive_branch_value",
+                  "negative_branch_value",
+                  "overall_prospect_value"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "Pi_mapping": {
+        "status": "SUPPORTED",
+        "mapping": {
+          "gain_loss_partition": "Pi"
+        },
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH11.json",
+            "source_sha": "3af90f0866b38cd88b673f0531514c720650ec8d",
+            "field": "coordinate_map[gain_loss_partition]",
+            "value": [
+              "gain_loss_partition",
+              "basis.pi1"
+            ]
+          },
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH11.json",
+            "source_sha": "3af90f0866b38cd88b673f0531514c720650ec8d",
+            "field": "controls.partition_Pi.state",
+            "value": "present"
+          }
+        ]
+      },
+      "X_mapping": {
+        "status": "SUPPORTED",
+        "mapping": {
+          "ranked_outcome_sequence": "X",
+          "sign_specific_cumulative_functions": "X",
+          "rank_marginal_coefficients": "X",
+          "subjective_outcome_values": "X",
+          "positive_branch_value": "X",
+          "negative_branch_value": "X"
+        },
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH11.json",
+            "source_sha": "3af90f0866b38cd88b673f0531514c720650ec8d",
+            "field": "coordinate_map",
+            "value": [
+              [
+                "ranked_outcome_sequence",
+                "basis.s1"
+              ],
+              [
+                "sign_specific_cumulative_functions",
+                "basis.s2"
+              ],
+              [
+                "rank_marginal_coefficients",
+                "basis.s3"
+              ],
+              [
+                "subjective_outcome_values",
+                "basis.s4"
+              ],
+              [
+                "positive_branch_value",
+                "basis.s5"
+              ],
+              [
+                "negative_branch_value",
+                "basis.s6"
+              ]
+            ]
+          }
+        ]
+      },
+      "C_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH11.json",
+            "source_sha": "3af90f0866b38cd88b673f0531514c720650ec8d",
+            "field": "controls.resource_C.state",
+            "value": "not_required"
+          }
+        ]
+      },
+      "Q_mapping": {
+        "status": "SUPPORTED",
+        "mapping": {
+          "reference_point": "Q reference-relative criterion"
+        },
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH11.json",
+            "source_sha": "3af90f0866b38cd88b673f0531514c720650ec8d",
+            "field": "coordinate_map[reference_point]",
+            "value": [
+              "reference_point",
+              "basis.q1"
+            ]
+          },
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH11.json",
+            "source_sha": "3af90f0866b38cd88b673f0531514c720650ec8d",
+            "field": "controls.criterion_Q.state",
+            "value": "present"
+          }
+        ]
+      },
+      "P_in_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH11.json",
+            "source_sha": "3af90f0866b38cd88b673f0531514c720650ec8d",
+            "field": "controls.probe_P.state",
+            "value": "not_required"
+          }
+        ]
+      },
+      "P_out_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH11.json",
+            "source_sha": "3af90f0866b38cd88b673f0531514c720650ec8d",
+            "field": "controls.probe_P.state",
+            "value": "not_required"
+          }
+        ]
+      },
+      "K_mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "r2",
+          "r3",
+          "r4",
+          "r5"
+        ],
+        "evidence": [
+          {
+            "source": "research/paper2/chatgpt_reference_claimir_v1/CH11.json",
+            "source_sha": "5899885971469096b8f4ef29a15992491cec7fa7",
+            "field": "claim_core.relations[r2-r5]",
+            "value": "maps_to"
+          }
+        ]
+      },
+      "T_mapping": {
+        "status": "ABSENT",
+        "mapping": null,
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH11.json",
+            "source_sha": "3af90f0866b38cd88b673f0531514c720650ec8d",
+            "field": "temporal.time_index.state",
+            "value": "not_required"
+          }
+        ]
+      },
+      "rho/O_mapping": {
+        "status": "SUPPORTED",
+        "mapping": {
+          "state_event_information": "O information",
+          "overall_prospect_value": "O outcome"
+        },
+        "evidence": [
+          {
+            "source": "research/paper2/reference_structural_adjudication_v1/CH11.json",
+            "source_sha": "3af90f0866b38cd88b673f0531514c720650ec8d",
+            "field": "coordinate_map",
+            "value": [
+              [
+                "state_event_information",
+                "basis.o1"
+              ],
+              [
+                "overall_prospect_value",
+                "basis.o2"
+              ]
+            ]
+          }
+        ]
+      },
+      "derived_feature_candidates": [
+        "reference-relative classification is a direct Q + Pi interaction",
+        "O_information and O_outcome are directionally distinct uses of one O role",
+        "the deterministic algebraic evaluation pipeline is a K specialization; no temporal T is implied by outcome ranking"
+      ],
+      "unmapped_residual": [
+        {
+          "structure": "r6 distinguishes / non-equivalence constraint",
+          "exact_frozen_object": "rank_marginal_coefficients are not independent transforms of individual probabilities; they are marginal contributions from nested cumulative events",
+          "evidence": {
+            "source": "research/paper2/chatgpt_reference_claimir_v1/CH11.json",
+            "source_sha": "5899885971469096b8f4ef29a15992491cec7fa7",
+            "field": "claim_core.relations[r6]",
+            "value": {
+              "kind": "distinguishes",
+              "arguments": [
+                "state_event_information",
+                "rank_marginal_coefficients",
+                "sign_specific_cumulative_functions"
+              ]
+            }
+          },
+          "reason": "K can encode the positive mapping in r2, but Grammar v0 has no first-class relation for the explicit non-equivalence asserted by r6."
+        },
+        {
+          "structure": "current Lean K signature mismatch",
+          "exact_frozen_object": "non-temporal P-free higher-arity K chain with Q/Pi/O inputs",
+          "reason": "The role-level grammar permits typed dependence, but the merged Lean transition relation is indexed by succession and Pin and is therefore narrower than this frozen deterministic mapping chain."
+        }
+      ],
+      "verdict": "PARTIAL",
+      "notes": "Outcome rank is not mapped to T: it is non-temporal internal X structure. Q is only the frozen reference-point criterion, not a generic scalar utility assumption."
+    }
+  ],
+  "summary": {
+    "ch_a_coverage_count": {
+      "processed": 6,
+      "required": 6,
+      "coverage": "6/6"
+    },
+    "verdict_counts": {
+      "FULL": 2,
+      "PARTIAL": 2,
+      "RESIDUAL": 2
+    },
+    "role_frequency": {
+      "counting_rule": "count claim if mapping status is SUPPORTED or PARTIAL",
+      "Pi": 3,
+      "X": 4,
+      "C": 1,
+      "Q": 3,
+      "P_in": 1,
+      "P_out": 2,
+      "K": 6,
+      "T": 5,
+      "rho/O": 5
+    },
+    "recurrent_substructures": [
+      {
+        "structure": "X + T with persistence/time indexing",
+        "claims": [
+          "CH01",
+          "CH03",
+          "CH07"
+        ],
+        "bounded_archetype_evidence": [
+          "A-40a49b214fc7",
+          "A-a7ce414249ff",
+          "A-391124f31e6d"
+        ]
+      },
+      {
+        "structure": "O + Q + X",
+        "claims": [
+          "CH03",
+          "CH07",
+          "CH11"
+        ],
+        "bounded_archetype_evidence": [
+          "A-9df5fd66858b",
+          "A-e366ebab921c",
+          "A-6f823dd61f68"
+        ]
+      },
+      {
+        "structure": "Pi + O",
+        "claims": [
+          "CH03",
+          "CH09",
+          "CH11"
+        ],
+        "bounded_archetype_evidence": [
+          "A-f5b1db901c1a",
+          "A-eb58e37210a1"
+        ]
+      },
+      {
+        "structure": "P_out + O + T",
+        "claims": [
+          "CH05",
+          "CH09"
+        ],
+        "bounded_archetype_evidence": [
+          "A-75535fc7d807"
+        ]
+      },
+      {
+        "structure": "required generic condition pair + forward temporal order",
+        "claims": [
+          "CH01",
+          "CH09"
+        ],
+        "bounded_archetype_evidence": [
+          "A-1c32e617a470"
+        ],
+        "significance": "recurrent residual outside the named Grammar-v0 role inventory"
+      },
+      {
+        "structure": "O information + O outcome",
+        "claims": [
+          "CH05",
+          "CH07"
+        ],
+        "bounded_archetype_evidence": [
+          "A-a8e590dab955"
+        ]
+      }
+    ],
+    "grammar_distinctions_required_by_CH_A": [
+      "T must remain distinct from K: CH01/CH09 contain explicit precedence in addition to non-temporal dependence/change.",
+      "P_in and P_out must remain distinct: CH05 contains both intervention/write and selective probe/read.",
+      "C must not absorb generic condition nodes: only CH05 has frozen resource_C support.",
+      "Q must remain non-necessarily-scalar: CH03 criteria, CH07 similarity weighting, and CH11 reference point are heterogeneous criterion structures.",
+      "Pi must permit non-physical individuation: CH03 system boundary, CH09 experimental grouping, CH11 gain/loss classification.",
+      "O must permit information and outcome positions and must not be assumed terminal.",
+      "K must remain relational/higher-arity and not necessarily functional.",
+      "Outcome ranking in CH11 is not temporal T.",
+      "Persistence cannot be universally rewritten as K = identity; CH-A contains no clean frozen carry-map witness."
+    ],
+    "roles_not_needed_by_CH_A": [],
+    "residual_structures_not_expressible_by_Grammar_v0": [
+      {
+        "structure": "generic condition carrier",
+        "claims": [
+          "CH01",
+          "CH09"
+        ],
+        "evidence": "basis.cnd* nodes remain required while resource_C/criterion_Q/partition_Pi/probe_P do not license retyping; A-1c32e617a470 preserves the condition-pair + temporal-order subobject."
+      },
+      {
+        "structure": "first-class distinguish / non-entailment relation semantics",
+        "claims": [
+          "CH03",
+          "CH11"
+        ],
+        "evidence": "CH03 r1 and CH11 r6 are frozen 'distinguishes' relations; replacing them with K would lose the asserted negative/non-equivalence content."
+      },
+      {
+        "structure": "current Lean carrier narrower than Discussion-level K/rho/Pi usage",
+        "claims": [
+          "CH03",
+          "CH05",
+          "CH07",
+          "CH09",
+          "CH11"
+        ],
+        "evidence": "frozen P-free and cross-role K relations, P_out/O without frozen X, and Pi over experimental conditions cannot be represented literally by transition(Config,Pin,Config), observe(Config,Pout,Obs), and partOf(Config) without inserting unsupported dummy/retyped Config/Pin structure."
+      }
+    ],
+    "possible_compression_derived_feature_cases": [
+      "P probe/intervention -> directional P_out/P_in (CH05; P_out also CH09).",
+      "Q-induced classification -> Q + Pi interaction (CH11; criterion-constrained Pi also CH03).",
+      "O_information/O_outcome -> one O role with preserved topology/direction (CH05, CH07, CH11).",
+      "history_window/future_horizon/recurrence -> candidate T refinements where frozen temporal evidence exists.",
+      "persistence -> possible typed carry/transport only when later evidence supplies an explicit carry witness; no CH-A claim currently does."
+    ],
+    "potential_threats_to_Grammar_v0": [
+      "The recurrent null-axis condition subobject is a bounded direct-expressibility counterexample unless Grammar v0 treats such conditions as external parameters rather than internal roles; this lane does not make that repair.",
+      "The merged Lean formal skeleton is stricter than the Discussion-level definition of K as generic typed dependence; CH-A supplies several P-free, non-temporal, or cross-role dependencies.",
+      "The grammar lacks explicit negative/non-entailment relation semantics needed to preserve 'distinguishes' claims losslessly.",
+      "Using opaque X to hide ordered/algebraic internal structure (notably CH11) risks making the grammar vacuous unless later minimality tests constrain what may be absorbed into X."
+    ],
+    "counterexample_assessment": {
+      "direct_lossless_expressibility": "YES_BOUNDED_COUNTEREXAMPLE",
+      "primary_counterexample_claims": [
+        "CH01.C1",
+        "CH09.C1"
+      ],
+      "reason": "required generic condition carriers survive frozen reconstruction and a bounded Archetype but have no licensed Grammar-v0 role; T preserves order only.",
+      "role_vocabulary_coverage": "All nine named roles are independently required somewhere in CH-A; the counterexample concerns completeness/losslessness, not absence of role utility.",
+      "grammar_modified": false
+    },
+    "bounded_archetype_crosscheck": {
+      "input_claim_ids": [
+        "CH01",
+        "CH03",
+        "CH05",
+        "CH07",
+        "CH09",
+        "CH11"
+      ],
+      "maximal_candidate_count": 14,
+      "exact_skeleton_equivalence_pairs": 0,
+      "terminal_decision": "CHALLENGE_A_MULTIPLE_INCOMPARABLE_ARCHETYPES",
+      "note": "Reverse projection preserves the frozen lane heterogeneity; it does not merge or rename Archetypes."
+    },
+    "terminal_classification": "CH_A_GRAMMAR_V0_ROLE_COVERAGE_WITH_RECURRENT_CONDITION_AND_DISTINCTION_RESIDUALS"
+  }
+}
