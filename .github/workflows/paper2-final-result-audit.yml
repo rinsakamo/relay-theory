@@ -1,0 +1,43 @@
+name: paper2-final-result-audit
+
+on:
+  pull_request:
+    paths:
+      - "scripts/paper2_final_result_audit.py"
+      - "research/paper2/paper2_result_v1.json"
+      - "research/paper2/claim_ir_reliability_boundary_v1.json"
+      - "research/paper2/chatgpt_reference_claimir_v1/**"
+      - "research/paper2/*grammar_v0*"
+      - "research/paper2/source_context_architecture_placement_v1.json"
+      - "research/paper2/system_world_experiment_architecture_v1.json"
+      - "formal/relay_theory/RelayTheory/UnifiedCognitiveStructuralGrammar.lean"
+      - ".github/workflows/paper2-final-result-audit.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "scripts/paper2_final_result_audit.py"
+      - "research/paper2/paper2_result_v1.json"
+      - "research/paper2/claim_ir_reliability_boundary_v1.json"
+      - "research/paper2/chatgpt_reference_claimir_v1/**"
+      - "research/paper2/*grammar_v0*"
+      - "research/paper2/source_context_architecture_placement_v1.json"
+      - "research/paper2/system_world_experiment_architecture_v1.json"
+      - "formal/relay_theory/RelayTheory/UnifiedCognitiveStructuralGrammar.lean"
+      - ".github/workflows/paper2-final-result-audit.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile final audit
+        run: python -m py_compile scripts/paper2_final_result_audit.py
+      - name: Reconcile Paper 2 Result v1
+        run: python scripts/paper2_final_result_audit.py
