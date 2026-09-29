@@ -1,0 +1,119 @@
+{
+  "schema_version": "1.0",
+  "status": "FROZEN_SYSTEM_WORLD_EXPERIMENT_SEPARATION",
+  "owner_issue": 349,
+  "authority": {
+    "grammar_issue": 321,
+    "grammar_formalization_pr": 322,
+    "aggregate_issue": 343,
+    "residual_minimality_issue": 345,
+    "layered_architecture_issue": 347,
+    "base_main": "e3bbbf02a4c2e4d28d394d55fcfe5ef158c304df"
+  },
+  "architecture_consequence": [
+    "SYSTEM_WORLD_EXPERIMENT_SEPARATION_ONLY",
+    "GRAMMAR_V0_UNCHANGED"
+  ],
+  "objects": {
+    "cognitive_system": {
+      "symbol": "G_cog",
+      "definition": "Unified Cognitive Structural Grammar v0",
+      "roles": [
+        "Pi",
+        "X",
+        "C",
+        "Q",
+        "P_in",
+        "P_out",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "scope": "System-relative structural grammar only."
+    },
+    "world": {
+      "symbol": "W_t",
+      "definition": "External/environment carrier relative to the selected modeled-system boundary.",
+      "scope": "Architecture/composition layer only; Paper 2 does not infer an internal World grammar from the 60 claims.",
+      "guardrail": "World is not added as a Grammar-v0 role."
+    },
+    "coupling": {
+      "symbol": "Gamma",
+      "definition": "Cross-boundary relation connecting World-side states/events to system-side interface operations and exposed traces.",
+      "directions": {
+        "inward": "Gamma_in subset of W_t × P_in(t)",
+        "outward": "Gamma_out subset of P_out(t) × O_t × W_t"
+      },
+      "distinction_from_K": "K is retained system transformation/dependence; Gamma is system–World coupling across an already selected boundary.",
+      "distinction_from_Pi": "Pi may individuate a boundary; Gamma describes interaction across it."
+    },
+    "experiment": {
+      "symbol": "E_exp",
+      "definition": "External protocol that selects/prepares some World/coupling conditions, schedules admissible interface operations, and defines a finite observation window.",
+      "not_part_of": [
+        "G_cog",
+        "K",
+        "C"
+      ],
+      "guardrail": "Experimenter actions are not identified with P_in as a role; an experiment schedules/selects particular P_in/P_out instances through the coupling."
+    }
+  },
+  "interface_interpretation": {
+    "P_in": "Operation directed into the modeled system boundary. Grammar v0 types the role; it does not specify who selects or schedules it.",
+    "P_out": "Query/read operation exposing a system-relative trace. Grammar v0 types the role; it does not identify it with the experimenter or measurement apparatus.",
+    "rho_O": "System-relative exposed trace/observation role. World/observer accessibility is mediated by Gamma_out when such coupling is modeled."
+  },
+  "finite_run_semantics": {
+    "principle": "An experiment start is a cut through a possibly longer system–World history, not necessarily the origin of the system.",
+    "experiment_start": {
+      "symbol": "t0",
+      "system_cut_state": "x_t0 in X_t0 with C_t0(x_t0)",
+      "world_cut_state": "w_t0 in W_t0",
+      "statement": "t0 is experiment-relative. x_t0 may have been produced by an unobserved or partially observed prehistory."
+    },
+    "prehistory_form": "... -> x_{t-2} -> x_{t-1} -> x_t0 -> ...",
+    "intrinsic_constraint": {
+      "form": "C_t0",
+      "meaning": "Restricts which system states are admissible at the experiment cut.",
+      "limitation": "C_t0 does not by itself select the realized x_t0."
+    },
+    "realized_cut_state": {
+      "form": "x_t0",
+      "meaning": "The actual system state at the observation cut.",
+      "source": "May depend on endogenous history, prior World coupling, retained structure, and experimental preparation.",
+      "guardrail": "Do not call x_t0 an innate state merely because it is the first observed state."
+    },
+    "endogenous_initialization": {
+      "status": "OPEN_ARCHITECTURE_SLOT_NOT_A_GRAMMAR_V0_ROLE",
+      "meaning": "A prior/selection mechanism over admissible cut states may be required by a concrete model or downstream system, but the frozen Paper-2 corpus has not established a universal initialization primitive."
+    }
+  },
+  "experiment_vs_intrinsic_constraints": [
+    {
+      "intrinsic": "C_t0(x)",
+      "external": "experimental preparation",
+      "rule": "Experimental preparation may cause or select a cut state through W/Gamma, but is not thereby identical to C."
+    },
+    {
+      "intrinsic": "P_in/P_out interface roles",
+      "external": "protocol schedule",
+      "rule": "The experiment chooses/schedules instances; the interface types belong to the modeled system boundary."
+    },
+    {
+      "intrinsic": "K",
+      "external": "Gamma",
+      "rule": "Internal transformation/dependence and cross-boundary coupling remain distinct."
+    }
+  ],
+  "relation_to_layers_from_issue_347": {
+    "L_sys": "G_cog",
+    "L_claim": "unchanged; claims may refer jointly to G_cog, W, Gamma, and E_exp",
+    "L_ctx": "refined into architecture-relative context placements rather than treated as one undifferentiated bucket",
+    "L_formal": "now includes a non-invasive SystemWorldExperimentBoundary companion module"
+  },
+  "external_test_case_policy": {
+    "relay_self_soul": "May later be tested as a downstream example of an endogenous prior/initialization mechanism over a finite run cut.",
+    "authority": "NOT Paper-2 authority and not evidence for the bounded 60-claim reconstruction."
+  },
+  "terminal_classification": "COGNITIVE_SYSTEM_WORLD_COUPLING_AND_EXPERIMENT_SEPARATED_WITH_RUN_CUT_SEMANTICS"
+}
