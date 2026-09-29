@@ -1,0 +1,156 @@
+{
+  "schema_version": "1.0",
+  "status": "FROZEN_LAYERED_PRESENTATION_ARCHITECTURE",
+  "owner_issue": 347,
+  "authority": {
+    "grammar_issue": 321,
+    "grammar_formalization_pr": 322,
+    "aggregate_issue": 343,
+    "aggregate_pr": 344,
+    "residual_minimality_issue": 345,
+    "residual_minimality_pr": 346,
+    "base_main": "3cf0cf2ac2b5636f0ba1b3a7cee7a1dca7ac251c"
+  },
+  "architecture_consequence": "LAYERED_PRESENTATION_ONLY; GRAMMAR_V0_UNCHANGED",
+  "layers": {
+    "L_sys": {
+      "name": "system grammar",
+      "purpose": "Represent recurrent structural roles of the modeled cognitive system without requiring a complete scientific assertion language.",
+      "roles": [
+        "Pi",
+        "X",
+        "C",
+        "Q",
+        "P_in",
+        "P_out",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "frozen_status": "Grammar v0 role inventory",
+      "empirical_summary": {
+        "claims": 60,
+        "role_frequency": {
+          "Pi": 15,
+          "X": 53,
+          "C": 13,
+          "Q": 36,
+          "P_in": 29,
+          "P_out": 40,
+          "K": 57,
+          "T": 47,
+          "rho/O": 56
+        }
+      }
+    },
+    "L_claim": {
+      "name": "scientific claim / assertion layer",
+      "purpose": "Represent semantics of what a scientific claim asserts about system/context objects and relations, including semantics not reducible to system roles.",
+      "retained_examples": [
+        "distinguishes / differs / non-equivalence",
+        "non-entailment / epistemic status",
+        "null or no-significant-effect assertions",
+        "qualified similarity",
+        "model rejection / open alternatives",
+        "observation-to-latent inference / estimation"
+      ],
+      "source_of_need": "Residual adjudication: 4/17 residual claims have primary RELATION_LANGUAGE_GAP; additional relation-language pressures also occur in PARTIAL lanes.",
+      "not_a_system_role": true
+    },
+    "L_ctx": {
+      "name": "source context / experimental parameter layer",
+      "purpose": "Represent source-defined conditions, regimes, indices and parameters required to state a claim but not licensed as Pi/X/C/Q/P/K/T/rho system roles.",
+      "retained_examples": [
+        "experimental or task context",
+        "phase / condition identity beyond temporal order",
+        "comparison condition",
+        "calibration / duration / uncertainty parameter",
+        "trial or transition context"
+      ],
+      "source_of_need": "Residual adjudication: 13/17 residual claims have primary SOURCE_CONTEXT_PARAMETER.",
+      "guardrail": "A node is not C merely because it is called a condition; C requires frozen realizability/admissibility support.",
+      "not_a_system_role": true
+    },
+    "L_formal": {
+      "name": "formal carrier / realization layer",
+      "purpose": "Provide one typed mathematical realization of L_sys and explicit forgetful/comparator views without making implementation signatures source evidence.",
+      "current_realization": [
+        "formal/relay_theory/RelayTheory/UnifiedCognitiveStructuralGrammar.lean",
+        "formal/relay_theory/RelayTheory/GrammarComparatorViews.lean"
+      ],
+      "known_pressure": [
+        "Discussion-level K permits broader typed dependence than the current Pin-indexed transition signature.",
+        "Frozen O may occur without P_out and may participate in O->X or O->O relations.",
+        "Indexed Config fibers require explicit carry/transport for persistence."
+      ],
+      "guardrail": "A formal-carrier mismatch is not a ROLE_GAP."
+    }
+  },
+  "dependencies": [
+    {
+      "from": "L_claim",
+      "to": "L_sys",
+      "kind": "references",
+      "meaning": "Claims may assert relations among system-role instances."
+    },
+    {
+      "from": "L_claim",
+      "to": "L_ctx",
+      "kind": "conditions_on",
+      "meaning": "Claims may be indexed by source-defined contexts or experimental conditions."
+    },
+    {
+      "from": "L_formal",
+      "to": "L_sys",
+      "kind": "realizes",
+      "meaning": "Formal structures implement a typed carrier for the system grammar."
+    },
+    {
+      "from": "L_formal",
+      "to": "L_claim",
+      "kind": "optional_encoding",
+      "meaning": "A richer formal assertion language may encode claim semantics, but the current Grammar record does not claim to do so."
+    },
+    {
+      "from": "L_ctx",
+      "to": "L_sys",
+      "kind": "parameterizes_without_retyping",
+      "meaning": "Context may select or parameterize a system instance without becoming a system role."
+    }
+  ],
+  "forbidden_conflations": [
+    "SOURCE_CONTEXT_PARAMETER -> C solely from the word 'condition'",
+    "RELATION_LANGUAGE_GAP -> K solely because it is a relation",
+    "epistemic O->X inference -> forward rho without an explicit estimator layer",
+    "formal signature plumbing -> source-supported scientific role",
+    "persistence -> literal K = identity without typed carry/transport",
+    "scientific claim language -> system grammar",
+    "system grammar -> ontology of cognition"
+  ],
+  "derived_structure_policy": {
+    "status": "overlay rather than base layer",
+    "examples": [
+      "persistence",
+      "recurrence",
+      "history window",
+      "future horizon",
+      "duration/decay profile"
+    ],
+    "rule": "Treat as structure derived over L_sys/L_ctx when a frozen witness supports the derivation; otherwise retain as DERIVED_STRUCTURE_GAP rather than promoting a primitive."
+  },
+  "manuscript_safe_claims": [
+    "Grammar v0 is a recurrent system-role grammar recovered from the bounded frozen corpus.",
+    "Grammar v0 is not a complete scientific claim language.",
+    "Residuals principally motivate separate claim, context and formal-carrier layers rather than a ninth system role.",
+    "The layered architecture is a presentation and validation separation, not a new ontology."
+  ],
+  "prohibited_claims": [
+    "The nine roles are ontological primitives of cognition.",
+    "All cognition must instantiate all nine roles.",
+    "Every source condition is C.",
+    "Every scientific relation is K.",
+    "The Lean Grammar record is the unique mathematical realization.",
+    "No weaker formalism can encode the corpus under any re-encoding."
+  ],
+  "terminal_classification": "SYSTEM_GRAMMAR_SEPARATED_FROM_CLAIM_CONTEXT_AND_FORMAL_LAYERS_WITH_GRAMMAR_V0_UNCHANGED"
+}
