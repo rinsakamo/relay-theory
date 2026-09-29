@@ -1,0 +1,2906 @@
+{
+  "schema_version": "paper2-unified-cognitive-structural-grammar-v0-lrn-reverse-projection-v1",
+  "owner_issue": 335,
+  "grammar_issue": 321,
+  "grammar_formalization_pr": 322,
+  "lane": "LRN",
+  "base_main_commit": "78cd63cd6ec2898f3b4783b6db394c73c0551ff4",
+  "scope": {
+    "claims": [
+      "LRN01.C1",
+      "LRN02.C1",
+      "LRN03.C1",
+      "LRN04.C1",
+      "LRN05.C1",
+      "LRN06.C1"
+    ],
+    "other_lanes_processed": false,
+    "paper_rereading_performed": false,
+    "frozen_inputs_modified": false
+  },
+  "verdict_semantics": {
+    "FULL": "All discriminating frozen relations needed for this claim are representable by supported Grammar v0 roles; role absence is allowed.",
+    "PARTIAL": "The core claim is representable, but at least one role assignment or local typed parameterization remains only partially licensed; no new primitive is forced.",
+    "RESIDUAL": "At least one frozen discriminating relation cannot be represented without adding a relation/layer or reversing/reinterpreting an existing Grammar v0 relation."
+  },
+  "guardrails": {
+    "no_forced_roles": true,
+    "K_not_assumed_functional": true,
+    "Q_not_assumed_scalar": true,
+    "Pi_not_assumed_physical": true,
+    "O_not_assumed_terminal": true,
+    "learning_language_alone_does_not_establish_K": true,
+    "ordered_exposure_alone_does_not_establish_K": true,
+    "performance_error_reward_correctness_requires_criterion_orientation_for_Q": true,
+    "experimental_manipulation_requires_interface_intervention_for_P_in": true,
+    "persistence_not_universally_identity_K": true
+  },
+  "frozen_input_fingerprints": {
+    "archetype_artifact": {
+      "path": "research/paper2/lrn_archetype_reconstruction_v1.json",
+      "git_blob_sha": "7cbc644f90cf3a8a35e3fd4260f17b18c80b4e99",
+      "decision": "LRN_MULTIPLE_INCOMPARABLE_ARCHETYPES",
+      "maximal_archetype_candidate_count": 37
+    },
+    "claims": {
+      "LRN01.C1": {
+        "claimir_git_blob_sha": "f0c550bc3560f5825a227fc8a2fcb3e5fa0cb397",
+        "adjudication_git_blob_sha": "dd0cca3c57c68ab55907d2bc07a86c9c62c54fc9"
+      },
+      "LRN02.C1": {
+        "claimir_git_blob_sha": "fc1ecb26131971bfe8414f0b7fe8c7c9e79ce041",
+        "adjudication_git_blob_sha": "00c07d4c8330e1503ffe6fd64992f428317fd7f2"
+      },
+      "LRN03.C1": {
+        "claimir_git_blob_sha": "352eb21488fa75587ecd06b63857f3fe4308cfd3",
+        "adjudication_git_blob_sha": "7b243aca3fc6f29e7915e71db4a88e690918c901"
+      },
+      "LRN04.C1": {
+        "claimir_git_blob_sha": "255a650ff14634c3bb529ebbf99029c974361992",
+        "adjudication_git_blob_sha": "02f29a5c89b15cc31c50ac073fa5d652333b1d0f"
+      },
+      "LRN05.C1": {
+        "claimir_git_blob_sha": "91891ee60375f6d2e8e166d0ea7063f22972563f",
+        "adjudication_git_blob_sha": "60525ccc1aec99f5365cc2d512f3d669a1f26e18"
+      },
+      "LRN06.C1": {
+        "claimir_git_blob_sha": "7dd93796e497ec607c44fc0ea0c198d32205dcaf",
+        "adjudication_git_blob_sha": "3462db13bb49bd84bd1f3e134682edb46c19a5c7"
+      }
+    }
+  },
+  "claims": [
+    {
+      "claim_id": "LRN01.C1",
+      "grammar_roles_instantiated": [
+        "X",
+        "Q",
+        "P_out",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "relation": "P_out/rho",
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "artifact": "ClaimIR",
+              "kind": "relation",
+              "id": "r2",
+              "description": "the post-training questionnaire probes explicit report for the training episode",
+              "source_span_ids": [
+                "s2",
+                "s3",
+                "s4"
+              ]
+            },
+            {
+              "artifact": "structural_adjudication",
+              "kind": "field",
+              "id": "controls.probe_P",
+              "description": "present",
+              "claim_node_ids": [
+                "episode_questionnaire"
+              ]
+            }
+          ]
+        },
+        {
+          "relation": "Q",
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "artifact": "ClaimIR",
+              "kind": "relation",
+              "id": "r6",
+              "description": "acquisition is evaluated from classification accuracy over repeated trial blocks under the probabilistic cue-outcome structure",
+              "source_span_ids": [
+                "s2",
+                "s3",
+                "s4"
+              ]
+            },
+            {
+              "artifact": "structural_adjudication",
+              "kind": "field",
+              "id": "controls.criterion_Q",
+              "description": "present",
+              "claim_node_ids": [
+                "classification_accuracy_criterion"
+              ]
+            }
+          ]
+        },
+        {
+          "relation": "T",
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "artifact": "ClaimIR",
+              "kind": "relation",
+              "id": "r5",
+              "description": "classification training precedes the explicit-report assessment of the training episode",
+              "source_span_ids": [
+                "s2"
+              ]
+            },
+            {
+              "artifact": "structural_adjudication",
+              "kind": "field",
+              "id": "temporal.time_index",
+              "description": "present",
+              "claim_node_ids": []
+            },
+            {
+              "artifact": "structural_adjudication",
+              "kind": "field",
+              "id": "temporal.recurrence",
+              "description": "present",
+              "claim_node_ids": []
+            }
+          ]
+        },
+        {
+          "relation": "K-like dependence",
+          "status": "PARTIAL",
+          "evidence": [
+            {
+              "artifact": "ClaimIR",
+              "kind": "relation",
+              "id": "r9",
+              "description": "the authors infer that the caudate nucleus and putamen is essential for gradual incremental associative acquisition; this is the source's causal interpretation of the clinical dissociation, not a randomized intervention on the caudate nucleus and putamen",
+              "source_span_ids": [
+                "s1",
+                "s6"
+              ]
+            }
+          ]
+        }
+      ],
+      "Pi mapping": {
+        "status": "ABSENT",
+        "mapping": [],
+        "evidence": [
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "controls.partition_Pi",
+            "description": "not_required",
+            "claim_node_ids": []
+          }
+        ],
+        "notes": "The source's separate-systems language is not promoted to Pi because the frozen structural adjudication did not require partition structure."
+      },
+      "X mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "separate_parallel_systems",
+          "striatal_substrate"
+        ],
+        "evidence": [
+          {
+            "artifact": "ClaimIR",
+            "kind": "node",
+            "id": "separate_parallel_systems",
+            "description": "source interpretation that the crossed classification/explicit-report pattern reflects separable parallel functional systems associated with limbic-diencephalic and striatal damage",
+            "source_span_ids": [
+              "s1",
+              "s6"
+            ]
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "node",
+            "id": "striatal_substrate",
+            "description": "caudate nucleus and putamen, implicated by the source in gradual incremental associative acquisition",
+            "source_span_ids": [
+              "s1",
+              "s6"
+            ]
+          }
+        ]
+      },
+      "T mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "repeated trial-block succession",
+          "training-before-questionnaire ordering"
+        ],
+        "evidence": [
+          {
+            "artifact": "ClaimIR",
+            "kind": "relation",
+            "id": "r5",
+            "description": "classification training precedes the explicit-report assessment of the training episode",
+            "source_span_ids": [
+              "s2"
+            ]
+          },
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "temporal.time_index",
+            "description": "present",
+            "claim_node_ids": []
+          },
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "temporal.future_horizon",
+            "description": "present",
+            "claim_node_ids": []
+          },
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "temporal.recurrence",
+            "description": "present",
+            "claim_node_ids": []
+          }
+        ]
+      },
+      "C mapping": {
+        "status": "ABSENT",
+        "mapping": [],
+        "evidence": [
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "controls.resource_C",
+            "description": "not_required",
+            "claim_node_ids": []
+          }
+        ]
+      },
+      "Q mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "classification_accuracy_criterion"
+        ],
+        "evidence": [
+          {
+            "artifact": "ClaimIR",
+            "kind": "node",
+            "id": "classification_accuracy_criterion",
+            "description": "classification performance evaluated relative to the task's probabilistic cue-outcome contingencies across trial blocks",
+            "source_span_ids": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "relation",
+            "id": "r6",
+            "description": "acquisition is evaluated from classification accuracy over repeated trial blocks under the probabilistic cue-outcome structure",
+            "source_span_ids": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "controls.criterion_Q",
+            "description": "present",
+            "claim_node_ids": [
+              "classification_accuracy_criterion"
+            ]
+          }
+        ]
+      },
+      "P_in / P_out mapping": {
+        "P_in": {
+          "status": "ABSENT",
+          "mapping": [],
+          "evidence": [],
+          "notes": "The probabilistic training sequence is a frozen `other` node, not a P control; training language alone is not promoted to P_in."
+        },
+        "P_out": {
+          "status": "SUPPORTED",
+          "mapping": [
+            "episode_questionnaire"
+          ],
+          "evidence": [
+            {
+              "artifact": "ClaimIR",
+              "kind": "node",
+              "id": "episode_questionnaire",
+              "description": "post-training multiple-choice test of explicit report concerning the training episode",
+              "source_span_ids": [
+                "s2",
+                "s3",
+                "s4"
+              ]
+            },
+            {
+              "artifact": "ClaimIR",
+              "kind": "relation",
+              "id": "r2",
+              "description": "the post-training questionnaire probes explicit report for the training episode",
+              "source_span_ids": [
+                "s2",
+                "s3",
+                "s4"
+              ]
+            },
+            {
+              "artifact": "structural_adjudication",
+              "kind": "field",
+              "id": "controls.probe_P",
+              "description": "present",
+              "claim_node_ids": [
+                "episode_questionnaire"
+              ]
+            }
+          ]
+        }
+      },
+      "K mapping": {
+        "status": "PARTIAL",
+        "mapping": [
+          "striatal_substrate -> classification_acquisition dependence"
+        ],
+        "evidence": [
+          {
+            "artifact": "ClaimIR",
+            "kind": "relation",
+            "id": "r9",
+            "description": "the authors infer that the caudate nucleus and putamen is essential for gradual incremental associative acquisition; this is the source's causal interpretation of the clinical dissociation, not a randomized intervention on the caudate nucleus and putamen",
+            "source_span_ids": [
+              "s1",
+              "s6"
+            ]
+          }
+        ],
+        "notes": "This licenses a weak dependence reading, not a functional update or intervention-estimated transition."
+      },
+      "rho/O mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "classification_acquisition",
+          "explicit_episode_report"
+        ],
+        "evidence": [
+          {
+            "artifact": "ClaimIR",
+            "kind": "node",
+            "id": "classification_acquisition",
+            "description": "gradual improvement or failure to improve in probabilistic classification accuracy across repeated trials",
+            "source_span_ids": [
+              "s1",
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "node",
+            "id": "explicit_episode_report",
+            "description": "measured explicit report concerning the training episode",
+            "source_span_ids": [
+              "s1",
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "relation",
+            "id": "r2",
+            "description": "the post-training questionnaire probes explicit report for the training episode",
+            "source_span_ids": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "notes": "The explicit-report trace has an explicit P_out witness; the serial classification trace has an implicit measurement procedure but no separately P-typed probe in the frozen adjudication."
+      },
+      "derived-feature candidates": [
+        {
+          "candidate": "crossed outcome profile as a higher-order diagnostic pattern",
+          "status": "SUPPORTED_AS_DERIVED_ONLY",
+          "evidence": [
+            "r3",
+            "r4"
+          ],
+          "notes": "Do not retype it as Pi."
+        },
+        {
+          "candidate": "parallel-system individuation from dissociation",
+          "status": "REJECTED_AS_ROLE_MAPPING",
+          "evidence": [
+            "r7",
+            "controls.partition_Pi=not_required"
+          ],
+          "notes": "The frozen claim contains an interpretive structure node but not a frozen Pi control."
+        }
+      ],
+      "unmapped residual": [
+        {
+          "id": "LRN01-R1",
+          "structure": "condition-indexed crossed comparison",
+          "evidence": [
+            "r3",
+            "r4"
+          ],
+          "description": "The double dissociation compares neurological conditions jointly over two traces. Grammar v0 has no explicit generic comparison relation over condition-indexed runs; Q here is classification accuracy, not the neurological-group comparison itself."
+        },
+        {
+          "id": "LRN01-R2",
+          "structure": "epistemic/diagnostic relation from observed dissociation to latent system structure",
+          "evidence": [
+            "r7"
+          ],
+          "description": "`distinguishes(separate_parallel_systems, classification_acquisition, explicit_episode_report)` is an evidential/model-interpretation relation. It is not the forward rho relation X -> O and is not established as K."
+        }
+      ],
+      "verdict": "RESIDUAL",
+      "notes": [
+        "No Grammar v0 role is inferred from the lexical phrase `separate parallel systems` alone.",
+        "The source's substrate claim supports only a weak K-like dependence because the frozen evidence explicitly notes that it is not a randomized substrate intervention."
+      ]
+    },
+    {
+      "claim_id": "LRN02.C1",
+      "grammar_roles_instantiated": [
+        "X",
+        "Q",
+        "P_out",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "relation": "K",
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "artifact": "ClaimIR",
+              "kind": "relation",
+              "id": "r1",
+              "description": "the current future-value estimate is constructed from the time-indexed cue representation and its adaptive weights",
+              "source_span_ids": [
+                "s4"
+              ]
+            },
+            {
+              "artifact": "ClaimIR",
+              "kind": "relation",
+              "id": "r2",
+              "description": "the signed successive-time discrepancy is determined by current outcome value plus the discounted next-step estimate minus the current estimate",
+              "source_span_ids": [
+                "s3"
+              ]
+            },
+            {
+              "artifact": "ClaimIR",
+              "kind": "relation",
+              "id": "r4",
+              "description": "the adaptive weight change depends on cue activity, the signed discrepancy, and a cue-specific learning-rate factor",
+              "source_span_ids": [
+                "s4"
+              ]
+            },
+            {
+              "artifact": "ClaimIR",
+              "kind": "relation",
+              "id": "r5",
+              "description": "the update operation changes the cue-associated weights from one trial to the next",
+              "source_span_ids": [
+                "s4"
+              ]
+            }
+          ]
+        },
+        {
+          "relation": "rho/O",
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "artifact": "ClaimIR",
+              "kind": "relation",
+              "id": "r3",
+              "description": "the source models the transient midbrain output as reflecting the signed successive-time discrepancy, with positive, near-zero, and negative deviations corresponding to better-than-forecast, as-forecast, and worse-than-forecast events",
+              "source_span_ids": [
+                "s2",
+                "s5"
+              ]
+            },
+            {
+              "artifact": "ClaimIR",
+              "kind": "relation",
+              "id": "r7",
+              "description": "the outcome-delivery and omission comparisons expose positive, near-zero, and negative transient-output patterns at the relevant times",
+              "source_span_ids": [
+                "s2",
+                "s6"
+              ]
+            }
+          ]
+        }
+      ],
+      "Pi mapping": {
+        "status": "ABSENT",
+        "mapping": [],
+        "evidence": [
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "controls.partition_Pi",
+            "description": "not_required",
+            "claim_node_ids": []
+          }
+        ]
+      },
+      "X mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "current_value_estimate",
+          "next_value_estimate",
+          "signed_discrepancy_signal",
+          "adaptive_cue_weights"
+        ],
+        "evidence": [
+          {
+            "artifact": "ClaimIR",
+            "kind": "node",
+            "id": "current_value_estimate",
+            "description": "current estimate of the discounted sum of future appetitive outcomes",
+            "source_span_ids": [
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "node",
+            "id": "next_value_estimate",
+            "description": "estimate of discounted future appetitive outcomes at the next time step",
+            "source_span_ids": [
+              "s3"
+            ]
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "node",
+            "id": "signed_discrepancy_signal",
+            "description": "successive-time signed discrepancy formed from current outcome value, discounted next-step estimate, and current estimate",
+            "source_span_ids": [
+              "s2",
+              "s3",
+              "s5"
+            ]
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "node",
+            "id": "adaptive_cue_weights",
+            "description": "adjustable weights linking time-indexed cue components to the current future-value estimate",
+            "source_span_ids": [
+              "s4"
+            ]
+          }
+        ]
+      },
+      "T mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "within-trial successive time",
+          "across-training recurrence"
+        ],
+        "evidence": [
+          {
+            "artifact": "ClaimIR",
+            "kind": "relation",
+            "id": "r8",
+            "description": "the conditioned sensory cue precedes the later outcome time represented within the trial",
+            "source_span_ids": [
+              "s1",
+              "s2",
+              "s4"
+            ]
+          },
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "temporal.time_index",
+            "description": "present",
+            "claim_node_ids": []
+          },
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "temporal.history_window",
+            "description": "present",
+            "claim_node_ids": []
+          },
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "temporal.future_horizon",
+            "description": "present",
+            "claim_node_ids": []
+          },
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "temporal.recurrence",
+            "description": "present",
+            "claim_node_ids": []
+          },
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "temporal.persistence",
+            "description": "present",
+            "claim_node_ids": []
+          }
+        ]
+      },
+      "C mapping": {
+        "status": "ABSENT",
+        "mapping": [],
+        "evidence": [
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "controls.resource_C",
+            "description": "not_required",
+            "claim_node_ids": []
+          }
+        ],
+        "notes": "Discount and learning-rate parameters modulate dependencies but are not frozen realizability/admissibility constraints."
+      },
+      "Q mapping": {
+        "status": "PARTIAL",
+        "mapping": [
+          "signed discrepancy ordering around forecast"
+        ],
+        "evidence": [
+          {
+            "artifact": "ClaimIR",
+            "kind": "relation",
+            "id": "r3",
+            "description": "the source models the transient midbrain output as reflecting the signed successive-time discrepancy, with positive, near-zero, and negative deviations corresponding to better-than-forecast, as-forecast, and worse-than-forecast events",
+            "source_span_ids": [
+              "s2",
+              "s5"
+            ]
+          },
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "controls.criterion_Q",
+            "description": "not_required",
+            "claim_node_ids": []
+          }
+        ],
+        "notes": "Criterion-conditioned orientation is structurally present in the signed better/as/worse-than-forecast ordering, but the frozen adjudication did not instantiate criterion_Q; therefore this is not promoted to fully supported Q."
+      },
+      "P_in / P_out mapping": {
+        "P_in": {
+          "status": "ABSENT",
+          "mapping": [],
+          "evidence": [],
+          "notes": "`cue_outcome_training` is a frozen condition node and `weight_update_operation` is an internal update, not a frozen P interface operation."
+        },
+        "P_out": {
+          "status": "SUPPORTED",
+          "mapping": [
+            "contingency_probe"
+          ],
+          "evidence": [
+            {
+              "artifact": "ClaimIR",
+              "kind": "node",
+              "id": "contingency_probe",
+              "description": "comparison among unforecast outcome delivery, correctly forecast delivery, and omission at the expected time",
+              "source_span_ids": [
+                "s2",
+                "s6"
+              ]
+            },
+            {
+              "artifact": "ClaimIR",
+              "kind": "relation",
+              "id": "r7",
+              "description": "the outcome-delivery and omission comparisons expose positive, near-zero, and negative transient-output patterns at the relevant times",
+              "source_span_ids": [
+                "s2",
+                "s6"
+              ]
+            },
+            {
+              "artifact": "structural_adjudication",
+              "kind": "field",
+              "id": "controls.probe_P",
+              "description": "present",
+              "claim_node_ids": [
+                "contingency_probe"
+              ]
+            }
+          ]
+        }
+      },
+      "K mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "cue/weight -> value dependence",
+          "value components -> signed discrepancy dependence",
+          "cue/discrepancy/learning-rate -> weight-update dependence",
+          "weight update -> next-trial weights"
+        ],
+        "evidence": [
+          {
+            "artifact": "ClaimIR",
+            "kind": "relation",
+            "id": "r1",
+            "description": "the current future-value estimate is constructed from the time-indexed cue representation and its adaptive weights",
+            "source_span_ids": [
+              "s4"
+            ]
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "relation",
+            "id": "r2",
+            "description": "the signed successive-time discrepancy is determined by current outcome value plus the discounted next-step estimate minus the current estimate",
+            "source_span_ids": [
+              "s3"
+            ]
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "relation",
+            "id": "r4",
+            "description": "the adaptive weight change depends on cue activity, the signed discrepancy, and a cue-specific learning-rate factor",
+            "source_span_ids": [
+              "s4"
+            ]
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "relation",
+            "id": "r5",
+            "description": "the update operation changes the cue-associated weights from one trial to the next",
+            "source_span_ids": [
+              "s4"
+            ]
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "relation",
+            "id": "r6",
+            "description": "across repeated cue-outcome training, the timing of the transient output shifts from outcome delivery toward the earliest consistent predictive cue",
+            "source_span_ids": [
+              "s2",
+              "s6"
+            ]
+          }
+        ]
+      },
+      "rho/O mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "phasic_midbrain_output",
+          "cue_time_trace"
+        ],
+        "evidence": [
+          {
+            "artifact": "ClaimIR",
+            "kind": "node",
+            "id": "phasic_midbrain_output",
+            "description": "transient increase, absence of change, or decrease in firing of the recorded midbrain dopaminergic cell population",
+            "source_span_ids": [
+              "s2",
+              "s5",
+              "s6"
+            ]
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "relation",
+            "id": "r3",
+            "description": "the source models the transient midbrain output as reflecting the signed successive-time discrepancy, with positive, near-zero, and negative deviations corresponding to better-than-forecast, as-forecast, and worse-than-forecast events",
+            "source_span_ids": [
+              "s2",
+              "s5"
+            ]
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "node",
+            "id": "cue_time_trace",
+            "description": "time-indexed representation of a sensory cue across successive steps after cue onset",
+            "source_span_ids": [
+              "s2",
+              "s4"
+            ]
+          }
+        ],
+        "notes": "The phasic output is a direct trace/readout case. `cue_time_trace` is frozen as O-like available information and exposes the input-side directionality ambiguity noted in the residual."
+      },
+      "derived-feature candidates": [
+        {
+          "candidate": "signed discrepancy as Q-valued orientation",
+          "status": "PARTIAL",
+          "evidence": [
+            "r3"
+          ],
+          "notes": "Possible compression of positive/zero/negative forecast error into Q; retained as partial because frozen criterion_Q is absent."
+        },
+        {
+          "candidate": "discount_factor and learning_rate as typed K parameters",
+          "status": "PLAUSIBLE_COMPRESSION",
+          "evidence": [
+            "r2",
+            "r4"
+          ],
+          "notes": "Do not reclassify these parameters as C merely because they constrain numerical updates."
+        },
+        {
+          "candidate": "persistence as carry of learned weights across trials",
+          "status": "UNESTABLISHED",
+          "evidence": [
+            "temporal.persistence=present",
+            "r5"
+          ],
+          "notes": "No explicit carry map is frozen; do not write K = I."
+        }
+      ],
+      "unmapped residual": [
+        {
+          "id": "LRN02-R1",
+          "structure": "input-side informational trace",
+          "evidence": [
+            "cue_time_trace",
+            "basis.o1"
+          ],
+          "description": "The frozen O-like cue trace is incoming information. Grammar v0's Discussion-level O is broad enough to call it a boundary trace, but the merged Lean `observe` relation is read/query oriented and does not explicitly type an incoming trace."
+        },
+        {
+          "id": "LRN02-R2",
+          "structure": "typed scalar parameters of K",
+          "evidence": [
+            "discount_factor",
+            "learning_rate"
+          ],
+          "description": "These are structurally active parameters of dependencies/updates but are neither admissibility C nor criterion Q. They can likely be compressed as K indices/parameters, but that parameterization is not explicit in Grammar v0."
+        }
+      ],
+      "verdict": "PARTIAL",
+      "notes": [
+        "Strong K evidence comes from explicit `depends_on` and `changes` relations, not from the fact that the paper concerns learning.",
+        "The persistence flag is not used to infer identity-like K."
+      ]
+    },
+    {
+      "claim_id": "LRN03.C1",
+      "grammar_roles_instantiated": [
+        "C",
+        "Q",
+        "P_in",
+        "P_out",
+        "T",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "relation": "C",
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "artifact": "ClaimIR",
+              "kind": "relation",
+              "id": "r3",
+              "description": "the focal intervention comparison is evaluated under the source-stated matching of total initial activity time",
+              "source_span_ids": [
+                "s2",
+                "s3",
+                "s4"
+              ]
+            },
+            {
+              "artifact": "structural_adjudication",
+              "kind": "field",
+              "id": "controls.resource_C",
+              "description": "present",
+              "claim_node_ids": [
+                "matched_initial_activity_time"
+              ]
+            }
+          ]
+        },
+        {
+          "relation": "P_out/rho",
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "artifact": "ClaimIR",
+              "kind": "relation",
+              "id": "r5",
+              "description": "the delayed short-answer probe supplies the direct-content and inference outcome used for the focal comparison",
+              "source_span_ids": [
+                "s2",
+                "s3",
+                "s4",
+                "s5"
+              ]
+            },
+            {
+              "artifact": "ClaimIR",
+              "kind": "relation",
+              "id": "r6",
+              "description": "the delayed memory-based diagram probe supplies a second outcome format for the focal comparison",
+              "source_span_ids": [
+                "s4",
+                "s5"
+              ]
+            }
+          ]
+        },
+        {
+          "relation": "Q",
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "artifact": "ClaimIR",
+              "kind": "relation",
+              "id": "r8",
+              "description": "delayed short-answer responses are scored against source-defined correct content",
+              "source_span_ids": [
+                "s3",
+                "s5"
+              ]
+            },
+            {
+              "artifact": "ClaimIR",
+              "kind": "relation",
+              "id": "r9",
+              "description": "delayed relational diagrams are scored using source-defined idea units",
+              "source_span_ids": [
+                "s5"
+              ]
+            }
+          ]
+        }
+      ],
+      "Pi mapping": {
+        "status": "ABSENT",
+        "mapping": [],
+        "evidence": [
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "controls.partition_Pi",
+            "description": "not_required",
+            "claim_node_ids": []
+          }
+        ]
+      },
+      "X mapping": {
+        "status": "ABSENT",
+        "mapping": [],
+        "evidence": [],
+        "notes": "No frozen state_or_structure node is required in this ClaimIR/adjudication pair."
+      },
+      "T mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "initial intervention session -> one-week delayed assessment"
+        ],
+        "evidence": [
+          {
+            "artifact": "ClaimIR",
+            "kind": "relation",
+            "id": "r10",
+            "description": "the focal reconstruction intervention occurs during the initial session before the one-week delayed assessment",
+            "source_span_ids": [
+              "s2",
+              "s3",
+              "s5"
+            ]
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "relation",
+            "id": "r11",
+            "description": "the focal diagram intervention occurs during the initial session before the one-week delayed assessment",
+            "source_span_ids": [
+              "s2",
+              "s3",
+              "s5"
+            ]
+          },
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "temporal.time_index",
+            "description": "present",
+            "claim_node_ids": []
+          },
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "temporal.history_window",
+            "description": "present",
+            "claim_node_ids": []
+          },
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "temporal.future_horizon",
+            "description": "present",
+            "claim_node_ids": []
+          },
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "temporal.persistence",
+            "description": "present",
+            "claim_node_ids": []
+          }
+        ]
+      },
+      "C mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "matched_initial_activity_time"
+        ],
+        "evidence": [
+          {
+            "artifact": "ClaimIR",
+            "kind": "node",
+            "id": "matched_initial_activity_time",
+            "description": "source-stated matching of total initial activity time between the two focal protocols",
+            "source_span_ids": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "relation",
+            "id": "r3",
+            "description": "the focal intervention comparison is evaluated under the source-stated matching of total initial activity time",
+            "source_span_ids": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "controls.resource_C",
+            "description": "present",
+            "claim_node_ids": [
+              "matched_initial_activity_time"
+            ]
+          }
+        ]
+      },
+      "Q mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "content_scoring_criterion",
+          "criterion-relative ordering of delayed performance"
+        ],
+        "evidence": [
+          {
+            "artifact": "ClaimIR",
+            "kind": "node",
+            "id": "content_scoring_criterion",
+            "description": "source-defined correct idea units or correct answer content used to score initial and delayed responses",
+            "source_span_ids": [
+              "s3",
+              "s5"
+            ]
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "relation",
+            "id": "r7",
+            "description": "initial outputs are scored using source-defined idea-unit criteria",
+            "source_span_ids": [
+              "s3",
+              "s5"
+            ]
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "relation",
+            "id": "r8",
+            "description": "delayed short-answer responses are scored against source-defined correct content",
+            "source_span_ids": [
+              "s3",
+              "s5"
+            ]
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "relation",
+            "id": "r9",
+            "description": "delayed relational diagrams are scored using source-defined idea units",
+            "source_span_ids": [
+              "s5"
+            ]
+          },
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "controls.criterion_Q",
+            "description": "present",
+            "claim_node_ids": [
+              "content_scoring_criterion"
+            ]
+          }
+        ]
+      },
+      "P_in / P_out mapping": {
+        "P_in": {
+          "status": "SUPPORTED",
+          "mapping": [
+            "closed_book_reconstruction_protocol",
+            "open_book_relational_diagram_protocol"
+          ],
+          "evidence": [
+            {
+              "artifact": "ClaimIR",
+              "kind": "node",
+              "id": "closed_book_reconstruction_protocol",
+              "description": "study the source text, reconstruct as much content as possible without viewing it, restudy the text, and reconstruct again",
+              "source_span_ids": [
+                "s1",
+                "s2",
+                "s3",
+                "s5"
+              ]
+            },
+            {
+              "artifact": "ClaimIR",
+              "kind": "node",
+              "id": "open_book_relational_diagram_protocol",
+              "description": "study the source text and then create a diagram of concepts and their relations while the source material remains available",
+              "source_span_ids": [
+                "s1",
+                "s2",
+                "s3",
+                "s5"
+              ]
+            },
+            {
+              "artifact": "structural_adjudication",
+              "kind": "field",
+              "id": "controls.probe_P",
+              "description": "present",
+              "claim_node_ids": [
+                "closed_book_reconstruction_protocol",
+                "open_book_relational_diagram_protocol",
+                "one_week_short_answer_probe",
+                "one_week_relational_diagram_probe"
+              ]
+            }
+          ],
+          "notes": "The two frozen intervention nodes operate on the represented study/retention system and therefore qualify as P_in."
+        },
+        "P_out": {
+          "status": "SUPPORTED",
+          "mapping": [
+            "one_week_short_answer_probe",
+            "one_week_relational_diagram_probe"
+          ],
+          "evidence": [
+            {
+              "artifact": "ClaimIR",
+              "kind": "relation",
+              "id": "r5",
+              "description": "the delayed short-answer probe supplies the direct-content and inference outcome used for the focal comparison",
+              "source_span_ids": [
+                "s2",
+                "s3",
+                "s4",
+                "s5"
+              ]
+            },
+            {
+              "artifact": "ClaimIR",
+              "kind": "relation",
+              "id": "r6",
+              "description": "the delayed memory-based diagram probe supplies a second outcome format for the focal comparison",
+              "source_span_ids": [
+                "s4",
+                "s5"
+              ]
+            }
+          ]
+        }
+      },
+      "K mapping": {
+        "status": "ABSENT",
+        "mapping": [],
+        "evidence": [],
+        "notes": "The frozen claim contains intervention comparisons and delayed outcomes but no explicit state transformation/dependence relation. The word `reconstruction` and the source's retention interpretation do not by themselves license K."
+      },
+      "rho/O mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "initial_idea_unit_output",
+          "delayed_short_answer_performance",
+          "delayed_diagram_performance"
+        ],
+        "evidence": [
+          {
+            "artifact": "ClaimIR",
+            "kind": "relation",
+            "id": "r5",
+            "description": "the delayed short-answer probe supplies the direct-content and inference outcome used for the focal comparison",
+            "source_span_ids": [
+              "s2",
+              "s3",
+              "s4",
+              "s5"
+            ]
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "relation",
+            "id": "r6",
+            "description": "the delayed memory-based diagram probe supplies a second outcome format for the focal comparison",
+            "source_span_ids": [
+              "s4",
+              "s5"
+            ]
+          }
+        ]
+      },
+      "derived-feature candidates": [
+        {
+          "candidate": "protocol ranking under content-scoring Q",
+          "status": "SUPPORTED_AS_DERIVED_ONLY",
+          "evidence": [
+            "r1",
+            "r2",
+            "r8",
+            "r9"
+          ],
+          "notes": "The `differs` relations can be represented as criterion-relative ordering of observed performance without adding a generic reward scalar."
+        },
+        {
+          "candidate": "text_structure_condition as typed experimental index",
+          "status": "PLAUSIBLE_COMPRESSION",
+          "evidence": [
+            "r12"
+          ],
+          "notes": "It indexes the P/O/Q comparison but is not promoted to Pi or C."
+        },
+        {
+          "candidate": "persistence as carry",
+          "status": "UNESTABLISHED",
+          "evidence": [
+            "temporal.persistence=present"
+          ],
+          "notes": "No frozen X carrier or carry map exists in this claim."
+        }
+      ],
+      "unmapped residual": [],
+      "verdict": "FULL",
+      "notes": [
+        "FULL does not mean all Grammar v0 roles are present; X, Pi, and K are legitimately absent.",
+        "The claim is representable as an interface/constraint/criterion/temporal subobject."
+      ]
+    },
+    {
+      "claim_id": "LRN04.C1",
+      "grammar_roles_instantiated": [
+        "X",
+        "Q",
+        "P_in",
+        "P_out",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "relation": "K",
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "artifact": "ClaimIR",
+              "kind": "relation",
+              "id": "r1",
+              "description": "extended practice increases the rate of correct sequence completion while accuracy is maintained or improved",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ]
+            },
+            {
+              "artifact": "ClaimIR",
+              "kind": "relation",
+              "id": "r7",
+              "description": "within the first session, repeating a sequence first produces an early transient reduction in activated extent, but later in the same session the ordering effect reverses; introducing a new sequence restores the earlier ordering pattern, supporting sequence specificity",
+              "source_span_ids": [
+                "s4",
+                "s5"
+              ]
+            }
+          ]
+        },
+        {
+          "relation": "T",
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "artifact": "ClaimIR",
+              "kind": "relation",
+              "id": "r8",
+              "description": "the short-timescale ordering-effect change occurs within the initial session, before the slower trained-versus-control representational asymmetry that emerges after weeks of practice",
+              "source_span_ids": [
+                "s5",
+                "s6",
+                "s8"
+              ]
+            }
+          ]
+        },
+        {
+          "relation": "P_out/rho",
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "artifact": "ClaimIR",
+              "kind": "relation",
+              "id": "r4",
+              "description": "the unpaced 30-second performance probe supplies the behavioral rate and error outcomes",
+              "source_span_ids": [
+                "s2",
+                "s5"
+              ]
+            },
+            {
+              "artifact": "ClaimIR",
+              "kind": "relation",
+              "id": "r6",
+              "description": "the matched-rate imaging probe supplies spatial-extent and signal-amplitude outcomes while controlling execution rate and component movements",
+              "source_span_ids": [
+                "s3",
+                "s7"
+              ]
+            },
+            {
+              "artifact": "ClaimIR",
+              "kind": "relation",
+              "id": "r10",
+              "description": "later follow-up imaging retains the trained-versus-control activation-extent asymmetry months after practice has ceased",
+              "source_span_ids": [
+                "s6",
+                "s8"
+              ]
+            }
+          ]
+        }
+      ],
+      "Pi mapping": {
+        "status": "ABSENT",
+        "mapping": [],
+        "evidence": [
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "controls.partition_Pi",
+            "description": "not_required",
+            "claim_node_ids": []
+          }
+        ],
+        "notes": "Sequence specificity and hand specificity are not promoted to Pi without frozen partition support."
+      },
+      "X mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "fast_ordering_effect_state",
+          "slow_sequence_specific_representation"
+        ],
+        "evidence": [
+          {
+            "artifact": "ClaimIR",
+            "kind": "node",
+            "id": "fast_ordering_effect_state",
+            "description": "source-described short-timescale processing regime indexed by reversal of the within-set ordering effect during the first session",
+            "source_span_ids": [
+              "s4",
+              "s5",
+              "s8"
+            ]
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "node",
+            "id": "slow_sequence_specific_representation",
+            "description": "source-inferred longer-timescale expansion or recruitment of cortical territory selective for the repeatedly practiced sequence",
+            "source_span_ids": [
+              "s6",
+              "s7",
+              "s8"
+            ]
+          }
+        ]
+      },
+      "T mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "within-session succession",
+          "weeks-scale succession",
+          "10/21-week follow-up"
+        ],
+        "evidence": [
+          {
+            "artifact": "ClaimIR",
+            "kind": "relation",
+            "id": "r8",
+            "description": "the short-timescale ordering-effect change occurs within the initial session, before the slower trained-versus-control representational asymmetry that emerges after weeks of practice",
+            "source_span_ids": [
+              "s5",
+              "s6",
+              "s8"
+            ]
+          },
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "temporal.time_index",
+            "description": "present",
+            "claim_node_ids": []
+          },
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "temporal.history_window",
+            "description": "present",
+            "claim_node_ids": []
+          },
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "temporal.future_horizon",
+            "description": "present",
+            "claim_node_ids": []
+          },
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "temporal.recurrence",
+            "description": "present",
+            "claim_node_ids": []
+          },
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "temporal.persistence",
+            "description": "present",
+            "claim_node_ids": []
+          }
+        ]
+      },
+      "C mapping": {
+        "status": "ABSENT",
+        "mapping": [],
+        "evidence": [
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "controls.resource_C",
+            "description": "not_required",
+            "claim_node_ids": []
+          }
+        ],
+        "notes": "Matched execution rate is embedded in the probe design; it was not frozen as a C control."
+      },
+      "Q mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "behavioral_improvement_criterion"
+        ],
+        "evidence": [
+          {
+            "artifact": "ClaimIR",
+            "kind": "node",
+            "id": "behavioral_improvement_criterion",
+            "description": "higher correctly completed sequence rate together with stable or reduced ordering errors",
+            "source_span_ids": [
+              "s1",
+              "s2",
+              "s5"
+            ]
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "relation",
+            "id": "r5",
+            "description": "practice-related behavioral improvement is defined jointly by faster correct sequence production and nonworsening accuracy",
+            "source_span_ids": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "controls.criterion_Q",
+            "description": "present",
+            "claim_node_ids": [
+              "behavioral_improvement_criterion"
+            ]
+          }
+        ]
+      },
+      "P_in / P_out mapping": {
+        "P_in": {
+          "status": "SUPPORTED",
+          "mapping": [
+            "daily_sequence_practice"
+          ],
+          "evidence": [
+            {
+              "artifact": "ClaimIR",
+              "kind": "node",
+              "id": "daily_sequence_practice",
+              "description": "repeated daily practice of one designated five-element sequence with the non-dominant hand",
+              "source_span_ids": [
+                "s1",
+                "s2",
+                "s6",
+                "s8"
+              ]
+            },
+            {
+              "artifact": "ClaimIR",
+              "kind": "relation",
+              "id": "r1",
+              "description": "extended practice increases the rate of correct sequence completion while accuracy is maintained or improved",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ]
+            },
+            {
+              "artifact": "structural_adjudication",
+              "kind": "field",
+              "id": "controls.probe_P",
+              "description": "present",
+              "claim_node_ids": [
+                "daily_sequence_practice",
+                "opposite_hand_test",
+                "free_rate_performance_probe",
+                "paced_imaging_probe",
+                "long_term_followup_probe"
+              ]
+            }
+          ]
+        },
+        "P_out": {
+          "status": "SUPPORTED",
+          "mapping": [
+            "opposite_hand_test",
+            "free_rate_performance_probe",
+            "paced_imaging_probe",
+            "long_term_followup_probe"
+          ],
+          "evidence": [
+            {
+              "artifact": "ClaimIR",
+              "kind": "relation",
+              "id": "r3",
+              "description": "testing with the opposite hand shows little or no transfer of the practice-related advantage",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ]
+            },
+            {
+              "artifact": "ClaimIR",
+              "kind": "relation",
+              "id": "r4",
+              "description": "the unpaced 30-second performance probe supplies the behavioral rate and error outcomes",
+              "source_span_ids": [
+                "s2",
+                "s5"
+              ]
+            },
+            {
+              "artifact": "ClaimIR",
+              "kind": "relation",
+              "id": "r6",
+              "description": "the matched-rate imaging probe supplies spatial-extent and signal-amplitude outcomes while controlling execution rate and component movements",
+              "source_span_ids": [
+                "s3",
+                "s7"
+              ]
+            },
+            {
+              "artifact": "ClaimIR",
+              "kind": "relation",
+              "id": "r10",
+              "description": "later follow-up imaging retains the trained-versus-control activation-extent asymmetry months after practice has ceased",
+              "source_span_ids": [
+                "s6",
+                "s8"
+              ]
+            }
+          ]
+        }
+      },
+      "K mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "practice -> behavioral change",
+          "within-session order condition -> activation/state change"
+        ],
+        "evidence": [
+          {
+            "artifact": "ClaimIR",
+            "kind": "relation",
+            "id": "r1",
+            "description": "extended practice increases the rate of correct sequence completion while accuracy is maintained or improved",
+            "source_span_ids": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "relation",
+            "id": "r7",
+            "description": "within the first session, repeating a sequence first produces an early transient reduction in activated extent, but later in the same session the ordering effect reverses; introducing a new sequence restores the earlier ordering pattern, supporting sequence specificity",
+            "source_span_ids": [
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "notes": "r8 contributes T only: it orders the fast and slow states but does not establish a transformation from the former into the latter."
+      },
+      "rho/O mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "sequence_completion_rate",
+          "sequence_error_count",
+          "m1_activation_extent",
+          "m1_signal_amplitude"
+        ],
+        "evidence": [
+          {
+            "artifact": "ClaimIR",
+            "kind": "relation",
+            "id": "r4",
+            "description": "the unpaced 30-second performance probe supplies the behavioral rate and error outcomes",
+            "source_span_ids": [
+              "s2",
+              "s5"
+            ]
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "relation",
+            "id": "r6",
+            "description": "the matched-rate imaging probe supplies spatial-extent and signal-amplitude outcomes while controlling execution rate and component movements",
+            "source_span_ids": [
+              "s3",
+              "s7"
+            ]
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "relation",
+            "id": "r10",
+            "description": "later follow-up imaging retains the trained-versus-control activation-extent asymmetry months after practice has ceased",
+            "source_span_ids": [
+              "s6",
+              "s8"
+            ]
+          }
+        ]
+      },
+      "derived-feature candidates": [
+        {
+          "candidate": "long-term persistence as carry of slow representation",
+          "status": "UNESTABLISHED",
+          "evidence": [
+            "temporal.persistence=present",
+            "r10"
+          ],
+          "notes": "Persistence of the observation asymmetry is frozen, but no explicit Config-fiber carry map is."
+        },
+        {
+          "candidate": "trained/control sequence identity as typed P/K index",
+          "status": "PLAUSIBLE_COMPRESSION",
+          "evidence": [
+            "r2",
+            "r9"
+          ],
+          "notes": "Do not promote it to Pi merely because the source reports sequence specificity."
+        }
+      ],
+      "unmapped residual": [
+        {
+          "id": "LRN04-R1",
+          "structure": "epistemic mapping from observed activation extent to inferred latent representation",
+          "evidence": [
+            "r12"
+          ],
+          "description": "`m1_activation_extent -> slow_sequence_specific_representation` records the source's interpretation that selective spatial expansion indexes experience-dependent reorganization. Grammar v0's rho runs from X toward O; it does not represent this inverse evidential inference without an additional inference/estimation relation."
+        }
+      ],
+      "verdict": "RESIDUAL",
+      "notes": [
+        "The fast-state/slow-state ordering is T, not a K edge between the two states.",
+        "The long-term persistence observation is not converted to K = identity or a carry map."
+      ]
+    },
+    {
+      "claim_id": "LRN05.C1",
+      "grammar_roles_instantiated": [
+        "X",
+        "Q",
+        "P_in",
+        "P_out",
+        "T",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "relation": "P_out/rho",
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "artifact": "ClaimIR",
+              "kind": "relation",
+              "id": "r5",
+              "description": "the familiarization-preference procedure supplies the listening-duration outcome",
+              "source_span_ids": [
+                "s3",
+                "s4",
+                "s5"
+              ]
+            }
+          ]
+        },
+        {
+          "relation": "Q",
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "artifact": "ClaimIR",
+              "kind": "relation",
+              "id": "r6",
+              "description": "both experiments meet the source's behavioral discrimination criterion through significant within-infant listening-time differences",
+              "source_span_ids": [
+                "s3",
+                "s4"
+              ]
+            }
+          ]
+        },
+        {
+          "relation": "T",
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "artifact": "ClaimIR",
+              "kind": "relation",
+              "id": "r7",
+              "description": "the two-minute exposure ends immediately before the test phase",
+              "source_span_ids": [
+                "s2",
+                "s3",
+                "s4",
+                "s5"
+              ]
+            }
+          ]
+        }
+      ],
+      "Pi mapping": {
+        "status": "ABSENT",
+        "mapping": [],
+        "evidence": [
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "controls.partition_Pi",
+            "description": "not_required",
+            "claim_node_ids": []
+          }
+        ],
+        "notes": "The words `boundary`, `within-unit`, and `cross-boundary` describe stimulus contingencies; they do not by themselves license Pi."
+      },
+      "X mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "inferred_recurring_grouping"
+        ],
+        "evidence": [
+          {
+            "artifact": "ClaimIR",
+            "kind": "node",
+            "id": "inferred_recurring_grouping",
+            "description": "source-inferred post-exposure organization in which recurring three-syllable groupings are represented differently from strings containing absent or boundary-crossing adjacent relations",
+            "source_span_ids": [
+              "s3",
+              "s4",
+              "s6"
+            ]
+          }
+        ]
+      },
+      "T mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "exposure -> immediate test ordering",
+          "recurrent exposure history"
+        ],
+        "evidence": [
+          {
+            "artifact": "ClaimIR",
+            "kind": "relation",
+            "id": "r7",
+            "description": "the two-minute exposure ends immediately before the test phase",
+            "source_span_ids": [
+              "s2",
+              "s3",
+              "s4",
+              "s5"
+            ]
+          },
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "temporal.time_index",
+            "description": "present",
+            "claim_node_ids": []
+          },
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "temporal.history_window",
+            "description": "present",
+            "claim_node_ids": []
+          },
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "temporal.future_horizon",
+            "description": "present",
+            "claim_node_ids": []
+          },
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "temporal.recurrence",
+            "description": "present",
+            "claim_node_ids": []
+          },
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "temporal.persistence",
+            "description": "present",
+            "claim_node_ids": []
+          }
+        ]
+      },
+      "C mapping": {
+        "status": "ABSENT",
+        "mapping": [],
+        "evidence": [
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "controls.resource_C",
+            "description": "not_required",
+            "claim_node_ids": []
+          }
+        ]
+      },
+      "Q mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "between_class_difference_criterion"
+        ],
+        "evidence": [
+          {
+            "artifact": "ClaimIR",
+            "kind": "node",
+            "id": "between_class_difference_criterion",
+            "description": "reliable within-infant difference in listening duration between recurring-unit trials and the relevant comparison-string trials",
+            "source_span_ids": [
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "relation",
+            "id": "r6",
+            "description": "both experiments meet the source's behavioral discrimination criterion through significant within-infant listening-time differences",
+            "source_span_ids": [
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "controls.criterion_Q",
+            "description": "present",
+            "claim_node_ids": [
+              "between_class_difference_criterion"
+            ]
+          }
+        ]
+      },
+      "P_in / P_out mapping": {
+        "P_in": {
+          "status": "SUPPORTED",
+          "mapping": [
+            "continuous_exposure_protocol"
+          ],
+          "evidence": [
+            {
+              "artifact": "ClaimIR",
+              "kind": "node",
+              "id": "continuous_exposure_protocol",
+              "description": "two-minute exposure to a monotone continuous stream of four recurring three-syllable units without acoustic boundary cues",
+              "source_span_ids": [
+                "s1",
+                "s2",
+                "s5"
+              ]
+            },
+            {
+              "artifact": "ClaimIR",
+              "kind": "relation",
+              "id": "r1",
+              "description": "the familiarization stream supplies high within-unit and lower cross-boundary adjacent-pair contingencies while withholding acoustic boundary markers",
+              "source_span_ids": [
+                "s2",
+                "s5"
+              ]
+            },
+            {
+              "artifact": "structural_adjudication",
+              "kind": "field",
+              "id": "controls.probe_P",
+              "description": "present",
+              "claim_node_ids": [
+                "continuous_exposure_protocol",
+                "post_exposure_orientation_probe"
+              ]
+            }
+          ]
+        },
+        "P_out": {
+          "status": "SUPPORTED",
+          "mapping": [
+            "post_exposure_orientation_probe"
+          ],
+          "evidence": [
+            {
+              "artifact": "ClaimIR",
+              "kind": "node",
+              "id": "post_exposure_orientation_probe",
+              "description": "immediate auditory preference procedure in which a test string repeats while sustained fixation on a blinking side light controls trial duration",
+              "source_span_ids": [
+                "s3",
+                "s4",
+                "s5"
+              ]
+            },
+            {
+              "artifact": "ClaimIR",
+              "kind": "relation",
+              "id": "r5",
+              "description": "the familiarization-preference procedure supplies the listening-duration outcome",
+              "source_span_ids": [
+                "s3",
+                "s4",
+                "s5"
+              ]
+            }
+          ]
+        }
+      },
+      "K mapping": {
+        "status": "ABSENT",
+        "mapping": [],
+        "evidence": [],
+        "notes": "No frozen `changes` or state-dependence relation links the exposure protocol to the inferred grouping. Repetition/acquisition language and the persistence flag are insufficient."
+      },
+      "rho/O mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "within_unit_pair_contingency",
+          "cross_boundary_pair_contingency",
+          "listening_duration"
+        ],
+        "evidence": [
+          {
+            "artifact": "ClaimIR",
+            "kind": "node",
+            "id": "within_unit_pair_contingency",
+            "description": "adjacent syllable relation inside each recurring three-syllable unit, with conditional probability 1.0 in the exposure corpus",
+            "source_span_ids": [
+              "s2",
+              "s5"
+            ]
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "node",
+            "id": "cross_boundary_pair_contingency",
+            "description": "adjacent syllable relation crossing a recurring-unit boundary, with conditional probability 0.33 in the exposure corpus",
+            "source_span_ids": [
+              "s2",
+              "s5"
+            ]
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "relation",
+            "id": "r5",
+            "description": "the familiarization-preference procedure supplies the listening-duration outcome",
+            "source_span_ids": [
+              "s3",
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "notes": "Listening duration is a direct P_out trace. The contingency nodes are frozen O-like available information and therefore expose the input-side trace issue rather than being forced into X or C."
+      },
+      "derived-feature candidates": [
+        {
+          "candidate": "within-unit/cross-boundary classing as Pi",
+          "status": "REJECTED_AS_ROLE_MAPPING",
+          "evidence": [
+            "r4",
+            "controls.partition_Pi=not_required"
+          ],
+          "notes": "Statistical boundary language is not enough for Pi."
+        },
+        {
+          "candidate": "persistence of inferred grouping as carry",
+          "status": "UNESTABLISHED",
+          "evidence": [
+            "temporal.persistence=present",
+            "r8"
+          ],
+          "notes": "The claim provides an evidential inference to X, not a frozen carry relation."
+        }
+      ],
+      "unmapped residual": [
+        {
+          "id": "LRN05-R1",
+          "structure": "epistemic inference from trace to latent grouping",
+          "evidence": [
+            "r8"
+          ],
+          "description": "`listening_duration -> inferred_recurring_grouping` is a source interpretation from behavior to latent organization. It is not forward rho and no K from exposure to X is frozen."
+        },
+        {
+          "id": "LRN05-R2",
+          "structure": "incoming O-like information at the intervention boundary",
+          "evidence": [
+            "within_unit_pair_contingency",
+            "cross_boundary_pair_contingency"
+          ],
+          "description": "The two contingency nodes are frozen as O coordinates but function as information supplied by the exposure stream rather than read/query outputs. Grammar v0's abstract O can name them, but the Lean readout direction does not explicitly encode this orientation."
+        }
+      ],
+      "verdict": "RESIDUAL",
+      "notes": [
+        "This claim is a direct guardrail case: learning language does not establish K.",
+        "The source-inferred grouping is X, while the behavioral evidence used to infer it remains a separate meta-level relation."
+      ]
+    },
+    {
+      "claim_id": "LRN06.C1",
+      "grammar_roles_instantiated": [
+        "Pi",
+        "X",
+        "Q",
+        "P_in",
+        "P_out",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "relation": "Pi",
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "artifact": "structural_adjudication",
+              "kind": "field",
+              "id": "controls.partition_Pi",
+              "description": "present",
+              "claim_node_ids": [
+                "group_structure",
+                "trained_exemplar_assignment_set"
+              ]
+            }
+          ]
+        },
+        {
+          "relation": "K",
+          "status": "SUPPORTED",
+          "evidence": [
+            {
+              "artifact": "ClaimIR",
+              "kind": "relation",
+              "id": "r4",
+              "description": "the effective pair relation used by the model depends on the common coordinates, condition-specific dimension weights, and overall scale factor",
+              "source_span_ids": [
+                "s2",
+                "s5",
+                "s7"
+              ]
+            },
+            {
+              "artifact": "ClaimIR",
+              "kind": "relation",
+              "id": "r5",
+              "description": "two-group response probabilities are modeled from each probe item's weighted relation to exemplars represented in the two response-group memory sets",
+              "source_span_ids": [
+                "s1",
+                "s2",
+                "s6",
+                "s9"
+              ]
+            },
+            {
+              "artifact": "ClaimIR",
+              "kind": "relation",
+              "id": "r7",
+              "description": "changing the fitted dimension weights systematically stretches or shrinks the effective space and therefore changes pairwise relations among stimuli",
+              "source_span_ids": [
+                "s2",
+                "s7",
+                "s9"
+              ]
+            }
+          ]
+        }
+      ],
+      "Pi mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "group_structure",
+          "trained_exemplar_assignment_set"
+        ],
+        "evidence": [
+          {
+            "artifact": "ClaimIR",
+            "kind": "node",
+            "id": "group_structure",
+            "description": "the particular assignment geometry relating trained stimuli to two response groups",
+            "source_span_ids": [
+              "s3",
+              "s4",
+              "s7"
+            ]
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "node",
+            "id": "trained_exemplar_assignment_set",
+            "description": "the eight experimenter-assigned training stimuli and their two-group assignments supplied during the acquisition phase",
+            "source_span_ids": [
+              "s4",
+              "s6"
+            ]
+          },
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "controls.partition_Pi",
+            "description": "present",
+            "claim_node_ids": [
+              "group_structure",
+              "trained_exemplar_assignment_set"
+            ]
+          }
+        ],
+        "notes": "Pi is experimental/functional grouping here; it is not a physical boundary."
+      },
+      "X mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "base_perceptual_coordinates",
+          "dimension_weight_state",
+          "scale_state",
+          "weighted_pair_relation",
+          "stored_assignment_memory",
+          "inferred_exemplar_augmentation"
+        ],
+        "evidence": [
+          {
+            "artifact": "ClaimIR",
+            "kind": "node",
+            "id": "base_perceptual_coordinates",
+            "description": "two-dimensional psychological coordinates estimated from the item-confusion data and reused as the common base representation in later group-response fits",
+            "source_span_ids": [
+              "s1",
+              "s2",
+              "s3",
+              "s5"
+            ]
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "node",
+            "id": "dimension_weight_state",
+            "description": "model-fitted distribution of weight across the two component dimensions for a given response condition",
+            "source_span_ids": [
+              "s2",
+              "s7",
+              "s9"
+            ]
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "node",
+            "id": "scale_state",
+            "description": "model-fitted scale factor controlling overall discriminability of distances in the weighted perceptual space",
+            "source_span_ids": [
+              "s2",
+              "s7"
+            ]
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "node",
+            "id": "weighted_pair_relation",
+            "description": "pairwise confusability relation derived from weighted distances in the common perceptual-coordinate system",
+            "source_span_ids": [
+              "s2",
+              "s5",
+              "s7",
+              "s9"
+            ]
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "node",
+            "id": "stored_assignment_memory",
+            "description": "model-assumed set of remembered exemplars associated with each response group",
+            "source_span_ids": [
+              "s1",
+              "s2",
+              "s6",
+              "s8"
+            ]
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "node",
+            "id": "inferred_exemplar_augmentation",
+            "description": "augmented-model hypothesis that some initially unassigned stimuli become represented as members of one response group after experience",
+            "source_span_ids": [
+              "s1",
+              "s6",
+              "s8"
+            ]
+          }
+        ]
+      },
+      "T mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "acquisition -> transfer ordering",
+          "stable-stage/history indexing"
+        ],
+        "evidence": [
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "temporal.time_index",
+            "description": "present",
+            "claim_node_ids": []
+          },
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "temporal.history_window",
+            "description": "present",
+            "claim_node_ids": []
+          },
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "temporal.future_horizon",
+            "description": "present",
+            "claim_node_ids": []
+          },
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "temporal.recurrence",
+            "description": "present",
+            "claim_node_ids": []
+          },
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "temporal.persistence",
+            "description": "present",
+            "claim_node_ids": []
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "relation",
+            "id": "r9",
+            "description": "the augmented account proposes that repeated experience and prior choices for initially unassigned transfer items can add inferred exemplars to the remembered group sets; this is a model interpretation rather than a directly observed update rule",
+            "source_span_ids": [
+              "s6",
+              "s8"
+            ]
+          }
+        ]
+      },
+      "C mapping": {
+        "status": "ABSENT",
+        "mapping": [],
+        "evidence": [
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "controls.resource_C",
+            "description": "not_required",
+            "claim_node_ids": []
+          }
+        ],
+        "notes": "The acquisition criterion is Q, not a realizability constraint."
+      },
+      "Q mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "average_correct_objective",
+          "acquisition_criterion"
+        ],
+        "evidence": [
+          {
+            "artifact": "ClaimIR",
+            "kind": "node",
+            "id": "average_correct_objective",
+            "description": "average percentage correct over the original training exemplars used to define the model's performance-optimal dimension weighting",
+            "source_span_ids": [
+              "s2",
+              "s7"
+            ]
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "node",
+            "id": "acquisition_criterion",
+            "description": "above-chance performance for every trained exemplar over the final 600 trials of a learning session",
+            "source_span_ids": [
+              "s4"
+            ]
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "relation",
+            "id": "r8",
+            "description": "fitted weights lie near the model-defined optimum for most conditions of Subject 1 and for selected conditions of Subject 2, but the source explicitly reports nonoptimal cases and therefore does not support universal optimization",
+            "source_span_ids": [
+              "s7"
+            ]
+          },
+          {
+            "artifact": "structural_adjudication",
+            "kind": "field",
+            "id": "controls.criterion_Q",
+            "description": "present",
+            "claim_node_ids": [
+              "average_correct_objective",
+              "acquisition_criterion"
+            ]
+          }
+        ]
+      },
+      "P_in / P_out mapping": {
+        "P_in": {
+          "status": "SUPPORTED",
+          "mapping": [
+            "feedback_based_acquisition_protocol"
+          ],
+          "evidence": [
+            {
+              "artifact": "ClaimIR",
+              "kind": "node",
+              "id": "feedback_based_acquisition_protocol",
+              "description": "repeated classification of eight assigned training exemplars with trial-by-trial correctness feedback and block-level performance summaries until the stated acquisition criterion was met",
+              "source_span_ids": [
+                "s4"
+              ]
+            },
+            {
+              "artifact": "ClaimIR",
+              "kind": "relation",
+              "id": "r2",
+              "description": "the acquisition phase continues until the source-defined above-chance criterion is met on every trained exemplar over the final 600 trials",
+              "source_span_ids": [
+                "s4"
+              ]
+            },
+            {
+              "artifact": "structural_adjudication",
+              "kind": "field",
+              "id": "controls.probe_P",
+              "description": "present",
+              "claim_node_ids": [
+                "feedback_based_acquisition_protocol",
+                "transfer_response_probe"
+              ]
+            }
+          ]
+        },
+        "P_out": {
+          "status": "SUPPORTED",
+          "mapping": [
+            "transfer_response_probe"
+          ],
+          "evidence": [
+            {
+              "artifact": "ClaimIR",
+              "kind": "node",
+              "id": "transfer_response_probe",
+              "description": "transfer phase presenting all 16 stimuli and recording two-group response frequencies, with correctness feedback retained only for trained exemplars",
+              "source_span_ids": [
+                "s4",
+                "s6"
+              ]
+            },
+            {
+              "artifact": "ClaimIR",
+              "kind": "relation",
+              "id": "r6",
+              "description": "the transfer phase supplies the observed response proportions used to fit and evaluate the two-group response model",
+              "source_span_ids": [
+                "s4",
+                "s5",
+                "s6"
+              ]
+            }
+          ]
+        }
+      },
+      "K mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "group structure -> dimension weighting dependence",
+          "coordinates/weights/scale -> weighted pair relation",
+          "pair relation/memory -> response-probability dependence",
+          "dimension-weight change -> pair-relation change",
+          "experience -> inferred augmentation/memory change"
+        ],
+        "evidence": [
+          {
+            "artifact": "ClaimIR",
+            "kind": "relation",
+            "id": "r3",
+            "description": "different group structures are associated with different fitted allocations of weight across the two component dimensions",
+            "source_span_ids": [
+              "s2",
+              "s7"
+            ]
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "relation",
+            "id": "r4",
+            "description": "the effective pair relation used by the model depends on the common coordinates, condition-specific dimension weights, and overall scale factor",
+            "source_span_ids": [
+              "s2",
+              "s5",
+              "s7"
+            ]
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "relation",
+            "id": "r5",
+            "description": "two-group response probabilities are modeled from each probe item's weighted relation to exemplars represented in the two response-group memory sets",
+            "source_span_ids": [
+              "s1",
+              "s2",
+              "s6",
+              "s9"
+            ]
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "relation",
+            "id": "r7",
+            "description": "changing the fitted dimension weights systematically stretches or shrinks the effective space and therefore changes pairwise relations among stimuli",
+            "source_span_ids": [
+              "s2",
+              "s7",
+              "s9"
+            ]
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "relation",
+            "id": "r9",
+            "description": "the augmented account proposes that repeated experience and prior choices for initially unassigned transfer items can add inferred exemplars to the remembered group sets; this is a model interpretation rather than a directly observed update rule",
+            "source_span_ids": [
+              "s6",
+              "s8"
+            ]
+          }
+        ],
+        "notes": "r9 is retained with its frozen provenance limitation: it is a model interpretation, not a directly observed update rule."
+      },
+      "rho/O mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "item_confusion_data",
+          "trained_exemplar_assignment_set",
+          "group_response_probabilities"
+        ],
+        "evidence": [
+          {
+            "artifact": "ClaimIR",
+            "kind": "node",
+            "id": "item_confusion_data",
+            "description": "16-by-16 frequencies of item-specific stimulus-response confusions obtained under the full two-dimension response condition",
+            "source_span_ids": [
+              "s1",
+              "s2",
+              "s5"
+            ]
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "relation",
+            "id": "r6",
+            "description": "the transfer phase supplies the observed response proportions used to fit and evaluate the two-group response model",
+            "source_span_ids": [
+              "s4",
+              "s5",
+              "s6"
+            ]
+          },
+          {
+            "artifact": "ClaimIR",
+            "kind": "node",
+            "id": "group_response_probabilities",
+            "description": "observed and model-predicted probabilities of assigning each stimulus to either response group",
+            "source_span_ids": [
+              "s2",
+              "s5",
+              "s6",
+              "s7"
+            ]
+          }
+        ],
+        "notes": "Transfer response probabilities have a direct P_out witness. Item-confusion data are an earlier observed trace subsequently used to estimate X."
+      },
+      "derived-feature candidates": [
+        {
+          "candidate": "condition-dependent weighting as K specialization",
+          "status": "SUPPORTED_AS_DERIVED_ONLY",
+          "evidence": [
+            "r3",
+            "r4",
+            "r7"
+          ],
+          "notes": "Do not collapse the performance-optimal objective into K; Q remains separate."
+        },
+        {
+          "candidate": "stable-stage persistence as carry",
+          "status": "UNESTABLISHED",
+          "evidence": [
+            "temporal.persistence=present"
+          ],
+          "notes": "The source explicitly models a stable stage, but no cross-fiber carry map is frozen."
+        },
+        {
+          "candidate": "trained assignment set as joint Pi/O structure",
+          "status": "SUPPORTED_AS_MULTIROLE",
+          "evidence": [
+            "controls.partition_Pi",
+            "basis.o2"
+          ],
+          "notes": "Frozen evidence supports both its informational and grouping functions; the reverse projection preserves both rather than forcing a single ontological kind."
+        }
+      ],
+      "unmapped residual": [
+        {
+          "id": "LRN06-R1",
+          "structure": "estimation/inference from observation to latent representation",
+          "evidence": [
+            "r1"
+          ],
+          "description": "`item_confusion_data -> base_perceptual_coordinates` is a model-fitting/estimation relation from O to X. It is not the forward rho relation and is not a system K transition."
+        },
+        {
+          "id": "LRN06-R2",
+          "structure": "incoming informational O at the training interface",
+          "evidence": [
+            "trained_exemplar_assignment_set"
+          ],
+          "description": "The trained assignment set is frozen as O-like available information and also participates in Pi. Grammar v0 can name both roles abstractly, but the Lean readout relation does not explicitly type incoming informational traces."
+        }
+      ],
+      "verdict": "RESIDUAL",
+      "notes": [
+        "The static stable-stage model does not justify inventing a within-session K trajectory beyond the frozen relations.",
+        "Q remains distinct from the model's dimension-weight dependencies."
+      ]
+    }
+  ],
+  "lane_summary": {
+    "LRN coverage count": 6,
+    "verdict_counts": {
+      "FULL": 1,
+      "PARTIAL": 1,
+      "RESIDUAL": 4
+    },
+    "role_frequency": {
+      "Pi": {
+        "SUPPORTED": 1,
+        "PARTIAL": 0,
+        "ABSENT": 5,
+        "instantiated_total": 1
+      },
+      "X": {
+        "SUPPORTED": 5,
+        "PARTIAL": 0,
+        "ABSENT": 1,
+        "instantiated_total": 5
+      },
+      "C": {
+        "SUPPORTED": 1,
+        "PARTIAL": 0,
+        "ABSENT": 5,
+        "instantiated_total": 1
+      },
+      "Q": {
+        "SUPPORTED": 5,
+        "PARTIAL": 1,
+        "ABSENT": 0,
+        "instantiated_total": 6
+      },
+      "P_in": {
+        "SUPPORTED": 4,
+        "PARTIAL": 0,
+        "ABSENT": 2,
+        "instantiated_total": 4
+      },
+      "P_out": {
+        "SUPPORTED": 6,
+        "PARTIAL": 0,
+        "ABSENT": 0,
+        "instantiated_total": 6
+      },
+      "K": {
+        "SUPPORTED": 3,
+        "PARTIAL": 1,
+        "ABSENT": 2,
+        "instantiated_total": 4
+      },
+      "T": {
+        "SUPPORTED": 6,
+        "PARTIAL": 0,
+        "ABSENT": 0,
+        "instantiated_total": 6
+      },
+      "rho/O": {
+        "SUPPORTED": 6,
+        "PARTIAL": 0,
+        "ABSENT": 0,
+        "instantiated_total": 6
+      }
+    },
+    "recurrent_substructures": [
+      {
+        "pattern": "P_out -> rho/O",
+        "count": 6,
+        "claims": [
+          "LRN01.C1",
+          "LRN02.C1",
+          "LRN03.C1",
+          "LRN04.C1",
+          "LRN05.C1",
+          "LRN06.C1"
+        ]
+      },
+      {
+        "pattern": "T + P_out + rho/O",
+        "count": 6,
+        "claims": [
+          "LRN01.C1",
+          "LRN02.C1",
+          "LRN03.C1",
+          "LRN04.C1",
+          "LRN05.C1",
+          "LRN06.C1"
+        ]
+      },
+      {
+        "pattern": "P_in -> ... -> P_out/rho",
+        "count": 4,
+        "claims": [
+          "LRN03.C1",
+          "LRN04.C1",
+          "LRN05.C1",
+          "LRN06.C1"
+        ],
+        "notes": "The ellipsis is intentional; LRN03 and LRN05 do not license an internal K edge."
+      },
+      {
+        "pattern": "X + K + T",
+        "count": 3,
+        "claims": [
+          "LRN02.C1",
+          "LRN04.C1",
+          "LRN06.C1"
+        ],
+        "notes": "LRN01 has only PARTIAL K dependence."
+      },
+      {
+        "pattern": "criterion-conditioned Q over observed performance",
+        "count": 5,
+        "claims": [
+          "LRN01.C1",
+          "LRN03.C1",
+          "LRN04.C1",
+          "LRN05.C1",
+          "LRN06.C1"
+        ],
+        "notes": "LRN02 contributes only PARTIAL signed-discrepancy orientation."
+      },
+      {
+        "pattern": "temporal.persistence present but no explicit carry witness",
+        "count": 5,
+        "claims": [
+          "LRN02.C1",
+          "LRN03.C1",
+          "LRN04.C1",
+          "LRN05.C1",
+          "LRN06.C1"
+        ]
+      },
+      {
+        "pattern": "observation-to-latent epistemic/estimation relation",
+        "count": 4,
+        "claims": [
+          "LRN01.C1",
+          "LRN04.C1",
+          "LRN05.C1",
+          "LRN06.C1"
+        ]
+      }
+    ],
+    "grammar distinctions required by LRN": [
+      "T succession must remain distinct from K transformation/dependence; LRN04 r8 and LRN05 r7 are ordering without a licensed state-update edge.",
+      "P_in intervention and P_out probe/read must remain directional; LRN03-LRN06 use both directions in the same claim.",
+      "Q criterion orientation must remain distinct from generic comparison/difference. LRN01 neurological-group dissociation is not the same relation as its classification-accuracy Q.",
+      "C admissibility/resource constraint must remain distinct from ordinary conditions or numerical parameters; LRN02 discount/learning-rate parameters are not C, while LRN03 matched activity time is.",
+      "Pi must remain evidence-based individuation rather than lexical grouping/boundary language; only LRN06 licenses Pi in this lane.",
+      "rho/O must allow nonterminal traces, but LRN exposes an orientation issue between incoming informational traces and P_out readout traces.",
+      "Object-level system relations must be distinguished from epistemic/model-fitting relations that infer X from O."
+    ],
+    "roles not needed by LRN": {
+      "globally_unused_roles": [],
+      "sparse_roles": {
+        "Pi": "1/6 claims",
+        "C": "1/6 claims"
+      },
+      "note": "No Grammar v0 role is globally unused on the LRN lane, but Pi and C are sparse and must not be forced into the other five claims."
+    },
+    "residual structures not expressible by Grammar v0": [
+      {
+        "structure": "epistemic/model-inference O -> X",
+        "claims": [
+          "LRN01.C1",
+          "LRN04.C1",
+          "LRN05.C1",
+          "LRN06.C1"
+        ],
+        "note": "Grammar v0 supplies forward boundary trace rho: X -> O, not an estimator/abduction/inference relation from O back to latent X."
+      },
+      {
+        "structure": "generic condition-indexed comparative relation not reducible to the claim's Q",
+        "claims": [
+          "LRN01.C1"
+        ],
+        "note": "The crossed neurological double dissociation compares condition-indexed traces; its Q is classification accuracy, not the group-comparison operator."
+      },
+      {
+        "structure": "incoming informational O direction under the Lean readout formalization",
+        "claims": [
+          "LRN02.C1",
+          "LRN05.C1",
+          "LRN06.C1"
+        ],
+        "note": "Discussion-level O is broad enough for boundary traces, but the merged Lean carrier types `observe` as Config × Pout -> Obs and does not explicitly encode incoming traces."
+      }
+    ],
+    "possible compression / derived-feature cases": [
+      "LRN02 signed positive/zero/negative forecast discrepancy may be a Q specialization, but remains PARTIAL because frozen criterion_Q was not required.",
+      "LRN02 discount_factor and learning_rate can likely be K parameters rather than new roles; they are not C merely because they numerically constrain an update.",
+      "LRN03 text structure and LRN04 trained/control sequence can be treated as typed experimental indices on P/Q/O or K rather than new primitives if this remains presentation-preserving.",
+      "LRN02-LRN06 persistence flags are candidates for carry/transport only where a future frozen witness identifies successive Config fibers; none in this lane licenses literal K = I.",
+      "LRN06 trained_exemplar_assignment_set is legitimately multi-role under the frozen evidence: informational O-like content plus Pi grouping support."
+    ],
+    "potential threats to Grammar v0": [
+      {
+        "threat": "Whole-ClaimIR coverage threat",
+        "severity": "REAL",
+        "description": "Four LRN claims contain frozen epistemic/estimation relations from observations to latent structures that v0 does not type."
+      },
+      {
+        "threat": "Interface directionality threat",
+        "severity": "REAL_BUT_LOCAL",
+        "description": "Incoming informational O-like traces are not explicit in the merged Lean read/query observation relation."
+      },
+      {
+        "threat": "Comparison-layer threat",
+        "severity": "BOUNDED",
+        "description": "LRN01's double dissociation requires a condition-indexed comparison relation not licensed by its Q node."
+      },
+      {
+        "threat": "K/Pi/C overreach",
+        "severity": "CONTROLLED",
+        "description": "Conservative reverse projection avoids treating all learning as K, all grouping as Pi, or all numeric parameters as C; no failure here requires such overreach."
+      }
+    ],
+    "counterexample_assessment": {
+      "strict_whole_frozen_structure_coverage": "YES",
+      "claims_with_strict_residual_counterexamples": [
+        "LRN01.C1",
+        "LRN04.C1",
+        "LRN05.C1",
+        "LRN06.C1"
+      ],
+      "interpretation": "These are counterexamples to Grammar v0 as a complete representation of every frozen ClaimIR relation, chiefly because v0 lacks an explicit epistemic/estimation layer (O -> latent X) and, in LRN01, a generic condition-indexed comparison layer. They are not counterexamples to the internal consistency of the Lean skeleton or to the usefulness of the core object-level X/K/T/P/Q/C/Pi/rho subgrammar.",
+      "grammar_modified": false
+    }
+  }
+}
