@@ -1,0 +1,984 @@
+{
+  "schema_version": "paper2-mem-grammar-v0-reverse-projection-v1",
+  "status": "MEM_LANE_COMPLETE",
+  "owner_issue": 324,
+  "authority": {
+    "grammar_issue": 321,
+    "lean_pr": 322,
+    "mem_archetype_issue": 295,
+    "main_commit": "78cd63cd6ec2898f3b4783b6db394c73c0551ff4"
+  },
+  "scope": {
+    "lane": "MEM",
+    "claims": [
+      "MEM01.C1",
+      "MEM02.C1",
+      "MEM03.C1",
+      "MEM04.C1",
+      "MEM05.C1",
+      "MEM06.C1"
+    ],
+    "source_policy": "frozen reviewed ClaimIR + frozen reference structural adjudication + frozen MEM Archetype pilot only",
+    "papers_reread": false,
+    "grammar_modified": false,
+    "frozen_inputs_modified": false
+  },
+  "verdict_semantics": {
+    "FULL": "All required frozen nodes and relation topology have a direct Grammar-v0 home without adding an unfrozen role or bridge.",
+    "PARTIAL": "Every required frozen node has a Grammar-v0 role-level home, but at least one required relation is only represented by a weaker/general role interpretation or is not directly realized by the merged Lean signature without extra representational structure.",
+    "RESIDUAL": "At least one required frozen node or relation has no direct Grammar-v0 home without retyping, collapsing, or adding an unfrozen bridge."
+  },
+  "frozen_inputs": [
+    {
+      "path": "research/paper2/chatgpt_reference_claimir_v1/MEM01.json",
+      "sha": "774e899ea2c744d54d1a9958e251be20239f5821"
+    },
+    {
+      "path": "research/paper2/reference_structural_adjudication_v1/MEM01.json",
+      "sha": "f1d780c09ff1eab8ffcf870650540367697d7d5b"
+    },
+    {
+      "path": "research/paper2/chatgpt_reference_claimir_v1/MEM02.json",
+      "sha": "f82d34b334c74efde7ffc81ab12111aa8355b9ae"
+    },
+    {
+      "path": "research/paper2/reference_structural_adjudication_v1/MEM02.json",
+      "sha": "d18153cedcb6cf8f36d3757e34a5f339ed00273f"
+    },
+    {
+      "path": "research/paper2/chatgpt_reference_claimir_v1/MEM03.json",
+      "sha": "9d07ef27946793935bbe371f2cf4ccbc19bc9bcf"
+    },
+    {
+      "path": "research/paper2/reference_structural_adjudication_v1/MEM03.json",
+      "sha": "e0b7db0e0c14cac830993b89a6ccbe200af7f30c"
+    },
+    {
+      "path": "research/paper2/chatgpt_reference_claimir_v1/MEM04.json",
+      "sha": "8f1d24f30491cb78797c8357a9b4c04377af61aa"
+    },
+    {
+      "path": "research/paper2/reference_structural_adjudication_v1/MEM04.json",
+      "sha": "8b9b6b933b58ff72e3d1e051d8c3bd8b8c633c00"
+    },
+    {
+      "path": "research/paper2/chatgpt_reference_claimir_v1/MEM05.json",
+      "sha": "a42bc599f9d5ffa8796cd980ec54dcfbb04b7e7b"
+    },
+    {
+      "path": "research/paper2/reference_structural_adjudication_v1/MEM05.json",
+      "sha": "c65b2c53ed1880eaf42daca2226c6a3a69310723"
+    },
+    {
+      "path": "research/paper2/chatgpt_reference_claimir_v1/MEM06.json",
+      "sha": "d7731f8e3e41c83edbc8bba0e54386d4ea614b29"
+    },
+    {
+      "path": "research/paper2/reference_structural_adjudication_v1/MEM06.json",
+      "sha": "e2c61db61d5aeab933fba0aaa5ac3592411d92ad"
+    },
+    {
+      "path": "research/paper2/mem_archetype_pilot_v1.json",
+      "sha": "6f692f86de64c40fc8dad237763dcc699b8545f4"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "MEM01.C1",
+      "grammar_roles_instantiated": [
+        "Pi",
+        "X",
+        "K",
+        "T"
+      ],
+      "supported_relations": [
+        {
+          "frozen_relation": "r1 depends_on(target_information_class, candidate_subsystem)",
+          "grammar_projection": "K-like typed dependence between X-carriers",
+          "status": "SUPPORTED",
+          "evidence": [
+            "ClaimIR r1 kind=depends_on arguments=[target_information_class,candidate_subsystem] source_span_ids=[s2]",
+            "coordinate_map target_information_class->basis.s2 required=true; candidate_subsystem->basis.s1 required=true"
+          ]
+        },
+        {
+          "frozen_relation": "r2 distinguishes(target_information_class, contrasted_ability_class)",
+          "grammar_projection": "Pi-conditioned distinction involving X and a source-declared partition cell",
+          "status": "SUPPORTED",
+          "evidence": [
+            "ClaimIR r2 kind=distinguishes arguments=[target_information_class,contrasted_ability_class] source_span_ids=[s2]",
+            "controls.partition_Pi state=present claim_node_ids=[contrasted_ability_class] provenance_kind=source_declared"
+          ]
+        },
+        {
+          "frozen_relation": "r3 other(candidate_subsystem, distributed_cortical_sites): temporary binding into a whole retained item",
+          "grammar_projection": "time-qualified K-like coupling between X-carriers",
+          "status": "SUPPORTED",
+          "evidence": [
+            "ClaimIR r3 arguments=[candidate_subsystem,distributed_cortical_sites] source_span_ids=[s3]",
+            "coordinate_map candidate_subsystem->basis.s1; distributed_cortical_sites->basis.s3",
+            "temporal.time_index state=present source_span_ids=[s3]"
+          ]
+        }
+      ],
+      "Pi_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "contrasted_ability_class -> Pi partition/classification role",
+        "evidence": [
+          "coordinate_map contrasted_ability_class->basis.pi1 required=true",
+          "controls.partition_Pi state=present claim_node_ids=[contrasted_ability_class] fixed_before_phi=true",
+          "r2 distinguishes target_information_class from contrasted_ability_class"
+        ]
+      },
+      "X_mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "candidate_subsystem",
+          "target_information_class",
+          "distributed_cortical_sites"
+        ],
+        "evidence": [
+          "coordinate_map candidate_subsystem->basis.s1",
+          "coordinate_map target_information_class->basis.s2",
+          "coordinate_map distributed_cortical_sites->basis.s3"
+        ]
+      },
+      "C_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.resource_C state=not_required"
+        ]
+      },
+      "Q_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.criterion_Q state=not_required"
+        ]
+      },
+      "P_in_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.probe_P state=not_required"
+        ]
+      },
+      "P_out_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.probe_P state=not_required"
+        ]
+      },
+      "K_mapping": {
+        "status": "PARTIAL",
+        "mapping": "r1 and r3 are supported as non-functional typed dependence/coupling; the Discussion-level K role fits, but the merged Lean transition field is Pin-indexed and transition-shaped.",
+        "evidence": [
+          "r1 depends_on X-to-X",
+          "r3 temporary X-to-X binding/coupling",
+          "working basis K permits transition/coupling/dependency",
+          "no frozen P node is present"
+        ]
+      },
+      "T_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "temporary/time-indexed contribution and persistence metadata",
+        "evidence": [
+          "temporal.time_index state=present source_span_ids=[s3]",
+          "temporal.persistence state=present source_span_ids=[s3]",
+          "scope.temporal_scope=[binding contribution of the candidate subsystem is temporary]"
+        ]
+      },
+      "rho_O_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "no O coordinate in coordinate_map",
+          "no response_or_outcome/probe readout node"
+        ]
+      },
+      "derived_feature_candidates": [
+        "The temporary binding contribution can be represented as time-bounded K support over T.",
+        "The Pi distinction can compress the source-declared target-versus-contrasted ability classification without treating Pi as a physical boundary.",
+        "The frozen persistence flag does not license identity-like carry: the supported temporal fact is a temporary binding contribution, not K=I."
+      ],
+      "unmapped_residual": [
+        "Formal-signature pressure only: a non-empty P-free K dependence is licensed by #321's role vocabulary but is not directly witnessed by PR #322's Pin-indexed transition field without a neutral/uninstantiated Pin convention."
+      ],
+      "verdict": "PARTIAL",
+      "notes": [
+        "Relevant frozen MEM Archetypes: A-08e83f55d1ed (Pi,S,T; MEM01/MEM04) and A-53b16535e1c2 (S,T; MEM01/MEM05)."
+      ]
+    },
+    {
+      "claim_id": "MEM02.C1",
+      "grammar_roles_instantiated": [
+        "X",
+        "C",
+        "P_out",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "frozen_relation": "r1 constrains(central_limited_store, retained_unit_count)",
+          "grammar_projection": "C-like capacity/admissibility constraint connecting X to exposed O",
+          "status": "SUPPORTED",
+          "evidence": [
+            "ClaimIR r1 kind=constrains source_span_ids=[s1,s3]",
+            "controls.resource_C state=present claim_node_ids=[central_limited_store,retained_unit_count] provenance_kind=source_declared"
+          ]
+        },
+        {
+          "frozen_relation": "r2 depends_on(retained_unit_count, qualifying_limit_conditions, limit_probe_family)",
+          "grammar_projection": "C-conditioned P_out observation/readout admissibility",
+          "status": "SUPPORTED",
+          "evidence": [
+            "ClaimIR r2 says a pure-limit estimate is interpretable only under source-declared boundary conditions and revealing procedures",
+            "coordinate_map retained_unit_count->basis.o1; limit_probe_family->basis.p1",
+            "controls.probe_P state=present claim_node_ids=[limit_probe_family]"
+          ]
+        }
+      ],
+      "Pi_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.partition_Pi state=not_required"
+        ]
+      },
+      "X_mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "central_limited_store"
+        ],
+        "evidence": [
+          "coordinate_map central_limited_store->basis.s1 required=true"
+        ]
+      },
+      "C_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "central capacity bound plus the source-declared admissibility conditions required for a pure-limit readout",
+        "evidence": [
+          "controls.resource_C state=present claim_node_ids=[central_limited_store,retained_unit_count]",
+          "r1 constrains central_limited_store -> retained_unit_count",
+          "r2 states the estimate is interpretable only under qualifying_limit_conditions and limit_probe_family"
+        ]
+      },
+      "Q_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.criterion_Q state=not_required"
+        ]
+      },
+      "P_in_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "limit_probe_family is ClaimIR role=probe, not intervention"
+        ]
+      },
+      "P_out_mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "limit_probe_family"
+        ],
+        "evidence": [
+          "coordinate_map limit_probe_family->basis.p1",
+          "controls.probe_P state=present claim_node_ids=[limit_probe_family]",
+          "ClaimIR node limit_probe_family role=probe"
+        ]
+      },
+      "K_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "no frozen relation needs a K interpretation once r1 is preserved as C and r2 as C-conditioned observation"
+        ]
+      },
+      "T_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "temporal.time_index/history_window/future_horizon/recurrence/persistence all state=not_required"
+        ]
+      },
+      "rho_O_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "retained_unit_count is the exposed O obtained through limit_probe_family under admissible conditions",
+        "evidence": [
+          "coordinate_map retained_unit_count->basis.o1",
+          "ClaimIR retained_unit_count role=response_or_outcome",
+          "r2 explicitly ties interpretability of retained_unit_count to qualifying_limit_conditions and limit_probe_family"
+        ]
+      },
+      "derived_feature_candidates": [
+        "The old null-axis qualifying_limit_conditions can compress into Grammar-v0 C here because the frozen relation explicitly states an admissibility condition ('interpretable only under'), not because every ClaimIR condition is C.",
+        "The near-four bound is a specialization/payload of C; stochastic approximation mode does not by itself create Q.",
+        "The P direction is P_out only."
+      ],
+      "unmapped_residual": [],
+      "verdict": "FULL",
+      "notes": [
+        "Relevant frozen MEM Archetypes include A-e29437ea9d69, A-d4b1a62e9f68, and A-3a1a07a7775c."
+      ]
+    },
+    {
+      "claim_id": "MEM03.C1",
+      "grammar_roles_instantiated": [
+        "Q",
+        "P_in",
+        "P_out",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "frozen_relation": "r1 other(initial_testing, additional_study, retention_interval, final_recall): effect direction reverses with retention interval",
+          "grammar_projection": "K-like criterion-free dependence conditioned jointly by P_in alternative and T",
+          "status": "PARTIAL",
+          "evidence": [
+            "ClaimIR r1 arguments=[initial_testing,additional_study,retention_interval,final_recall] source_span_ids=[s1,s3]",
+            "temporal.time_index/history_window/future_horizon state=present",
+            "coordinate_map initial_testing->basis.p1; additional_study->basis.p2; final_recall->basis.o1"
+          ]
+        },
+        {
+          "frozen_relation": "r2 satisfies(final_recall, recall_scoring)",
+          "grammar_projection": "Q-conditioned evaluation of O",
+          "status": "SUPPORTED",
+          "evidence": [
+            "coordinate_map recall_scoring->basis.q1",
+            "controls.criterion_Q state=present claim_node_ids=[recall_scoring]",
+            "ClaimIR r2 kind=satisfies"
+          ]
+        },
+        {
+          "frozen_relation": "r3 maps_to(final_recall_probe, final_recall)",
+          "grammar_projection": "P_out -> rho/O readout",
+          "status": "PARTIAL",
+          "evidence": [
+            "coordinate_map final_recall_probe->basis.p3; final_recall->basis.o1",
+            "ClaimIR r3 kind=maps_to",
+            "controls.probe_P includes final_recall_probe"
+          ]
+        }
+      ],
+      "Pi_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.partition_Pi state=not_required"
+        ]
+      },
+      "X_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "coordinate_map contains P/P/T-condition/O/Q but no basis.s* coordinate"
+        ]
+      },
+      "C_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.resource_C state=not_required",
+          "retention_interval is supported by T, not by a realizability/admissibility relation"
+        ]
+      },
+      "Q_mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "recall_scoring"
+        ],
+        "evidence": [
+          "coordinate_map recall_scoring->basis.q1",
+          "controls.criterion_Q state=present",
+          "ClaimIR recall_scoring role=criterion"
+        ]
+      },
+      "P_in_mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "initial_testing",
+          "additional_study"
+        ],
+        "evidence": [
+          "both ClaimIR nodes role=intervention",
+          "coordinate_map -> basis.p1 and basis.p2",
+          "controls.probe_P state=present includes both"
+        ]
+      },
+      "P_out_mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "final_recall_probe"
+        ],
+        "evidence": [
+          "ClaimIR final_recall_probe role=probe",
+          "coordinate_map final_recall_probe->basis.p3",
+          "r3 maps_to final_recall"
+        ]
+      },
+      "K_mapping": {
+        "status": "PARTIAL",
+        "mapping": "r1 is a typed P_in x T -> O dependence/interaction, but no frozen X carrier exists.",
+        "evidence": [
+          "r1 four-argument dependence with direction changing by retention_interval",
+          "no basis.s* coordinate",
+          "frozen MEM Archetype A-11165a6f2e74 includes K,O,P,Q,T"
+        ]
+      },
+      "T_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "retention interval, ordered intervention-to-outcome relation, history window, future horizon and persistence metadata",
+        "evidence": [
+          "temporal.time_index state=present [s1,s2,s3]",
+          "history_window state=present [s1,s2]",
+          "future_horizon state=present [s1,s3]",
+          "persistence state=present [s1,s3]",
+          "ordering basis.p1->basis.o1 and basis.p2->basis.o1"
+        ]
+      },
+      "rho_O_mapping": {
+        "status": "PARTIAL",
+        "mapping": "final_recall_probe maps to final_recall as a readout, but the merged Lean observe field also requires a Config/X argument that is absent from the frozen claim.",
+        "evidence": [
+          "r3 maps_to(final_recall_probe,final_recall)",
+          "coordinate_map final_recall->basis.o1; final_recall_probe->basis.p3",
+          "no basis.s* coordinate"
+        ]
+      },
+      "derived_feature_candidates": [
+        "P_in/P_out directionality is structurally required: initial_testing is P_in despite its lexical 'testing' label, while final_recall_probe is P_out.",
+        "The retention_interval null-axis condition compresses into T because the frozen temporal adjudication explicitly carries it.",
+        "Frozen persistence here cannot be compressed to identity-like K/carry: there is no frozen X carrier on which a carry map can be grounded."
+      ],
+      "unmapped_residual": [
+        "PR #322 has no direct relation of arity/signature P_in x T x O for the frozen condition-by-retention interaction. Encoding r1 through hidden X would add an unfrozen carrier/bridge.",
+        "PR #322 observe requires Config x Pout x Obs; r3 supplies P_out and O but no X."
+      ],
+      "verdict": "PARTIAL",
+      "notes": [
+        "Relevant frozen MEM Archetypes: A-e29437ea9d69, A-d4b1a62e9f68, A-e4c4a62c66cf, A-11165a6f2e74, and A-1f6288bafddc."
+      ]
+    },
+    {
+      "claim_id": "MEM04.C1",
+      "grammar_roles_instantiated": [
+        "Pi",
+        "X",
+        "K",
+        "T"
+      ],
+      "supported_relations": [
+        {
+          "frozen_relation": "r1 distinguishes(target_subsystem, related_subsystem)",
+          "grammar_projection": "Pi-to-X structural distinction",
+          "status": "SUPPORTED",
+          "evidence": [
+            "target_subsystem->basis.pi1",
+            "related_subsystem->basis.s1",
+            "r1 kind=distinguishes source_span_ids=[s2,s3]"
+          ]
+        },
+        {
+          "frozen_relation": "r2 depends_on(target_subsystem, related_subsystem)",
+          "grammar_projection": "cross-role K-like dependence from Pi-defined subsystem to X",
+          "status": "PARTIAL",
+          "evidence": [
+            "r2 kind=depends_on source_span_ids=[s3]",
+            "target_subsystem->basis.pi1",
+            "related_subsystem->basis.s1"
+          ]
+        },
+        {
+          "frozen_relation": "r3 other(target_subsystem,self_component,special_awareness,subjective_time): conjunctive characterization",
+          "grammar_projection": "Pi-defined target characterized by multiple X components",
+          "status": "PARTIAL",
+          "evidence": [
+            "r3 arguments=[target_subsystem,self_component,special_awareness,subjective_time] source_span_ids=[s1,s3]",
+            "self_component->basis.s2; special_awareness->basis.s3; subjective_time->basis.s4"
+          ]
+        }
+      ],
+      "Pi_mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "target_subsystem"
+        ],
+        "evidence": [
+          "coordinate_map target_subsystem->basis.pi1",
+          "controls.partition_Pi state=present claim_node_ids=[target_subsystem] provenance_kind=source_declared"
+        ]
+      },
+      "X_mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "related_subsystem",
+          "self_component",
+          "special_awareness",
+          "subjective_time"
+        ],
+        "evidence": [
+          "coordinate_map related_subsystem->basis.s1; self_component->basis.s2; special_awareness->basis.s3; subjective_time->basis.s4"
+        ]
+      },
+      "C_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.resource_C state=not_required"
+        ]
+      },
+      "Q_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.criterion_Q state=not_required"
+        ]
+      },
+      "P_in_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.probe_P state=not_required"
+        ]
+      },
+      "P_out_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.probe_P state=not_required"
+        ]
+      },
+      "K_mapping": {
+        "status": "PARTIAL",
+        "mapping": "r2 is a typed dependence and r3 is a multi-argument structural coupling, but their endpoints include Pi rather than only X.",
+        "evidence": [
+          "r2 Pi-to-X depends_on",
+          "r3 Pi plus three X arguments",
+          "working-basis K preserves typed dependency/coupling"
+        ]
+      },
+      "T_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "present-to-past orientation/history structure is retained as T independently of the node named subjective_time",
+        "evidence": [
+          "temporal.time_index state=present source_span_ids=[s1,s3]",
+          "temporal.history_window state=present source_span_ids=[s1,s3]"
+        ],
+        "guardrail": "Do not map the lexical node subjective_time to T; it is frozen as basis.s4/X. T comes from the separate temporal adjudication."
+      },
+      "rho_O_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "no basis.o* coordinate and no P_out readout"
+        ]
+      },
+      "derived_feature_candidates": [
+        "Pi can capture the source-declared functional subsystem distinction without physical-boundary semantics.",
+        "The target subsystem can be viewed as Pi-selected structure with X-valued characterization, but this does not collapse its frozen Pi identity into X."
+      ],
+      "unmapped_residual": [
+        "The merged Lean partOf field is Config -> Part; it does not directly represent a Part/Pi object as the subject of a depends_on relation to Config/X.",
+        "The conjunctive r3 topology (one Pi target jointly characterized by three distinct X components) has no dedicated relation signature in PR #322; flattening it into independent partOf assignments would change the frozen topology."
+      ],
+      "verdict": "PARTIAL",
+      "notes": [
+        "Relevant frozen MEM Archetypes: A-08e83f55d1ed (Pi,S,T) and A-af97ed649c6f (S,T)."
+      ]
+    },
+    {
+      "claim_id": "MEM05.C1",
+      "grammar_roles_instantiated": [
+        "X",
+        "P_in",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "frozen_relation": "r1 changes(post_training_intervention, post_acquisition_process)",
+          "grammar_projection": "P_in-conditioned K-like change into/within X",
+          "status": "PARTIAL",
+          "evidence": [
+            "post_training_intervention->basis.p1",
+            "post_acquisition_process->basis.s1",
+            "r1 kind=changes source_span_ids=[s2,s3]"
+          ]
+        },
+        {
+          "frozen_relation": "r2 changes(post_training_intervention, later_retained_outcome)",
+          "grammar_projection": "P_in-conditioned dependence on O",
+          "status": "PARTIAL",
+          "evidence": [
+            "later_retained_outcome->basis.o1",
+            "r2 kind=changes source_span_ids=[s2,s3]"
+          ]
+        },
+        {
+          "frozen_relation": "r4 precedes(initial_acquisition, post_training_intervention, later_retained_outcome)",
+          "grammar_projection": "T ordering with P_in and O landmarks",
+          "status": "SUPPORTED",
+          "evidence": [
+            "r4 kind=precedes source_span_ids=[s2,s3]",
+            "temporal ordering basis.cnd1->basis.p1 and basis.p1->basis.o1"
+          ]
+        }
+      ],
+      "Pi_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.partition_Pi state=not_required"
+        ]
+      },
+      "X_mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "post_acquisition_process"
+        ],
+        "evidence": [
+          "coordinate_map post_acquisition_process->basis.s1 required=true"
+        ]
+      },
+      "C_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.resource_C state=not_required",
+          "initial_acquisition and later_retrieval are not frozen as realizability/resource constraints"
+        ]
+      },
+      "Q_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.criterion_Q state=not_required"
+        ]
+      },
+      "P_in_mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "post_training_intervention"
+        ],
+        "evidence": [
+          "ClaimIR post_training_intervention role=intervention",
+          "coordinate_map -> basis.p1",
+          "controls.probe_P state=present claim_node_ids=[post_training_intervention]"
+        ]
+      },
+      "P_out_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.probe_P contains only post_training_intervention",
+          "later_retrieval is frozen as role=condition, not probe; lexical 'retrieval' is not sufficient to retype it"
+        ]
+      },
+      "K_mapping": {
+        "status": "PARTIAL",
+        "mapping": "r1 and r2 are directional changes driven by P_in, but r1 lacks a frozen source X and r2 terminates directly in O.",
+        "evidence": [
+          "r1 changes P_in->X",
+          "r2 changes P_in->O",
+          "coordinate_map has only one X node"
+        ]
+      },
+      "T_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "acquisition -> post-training intervention -> later outcome, plus history/future/persistence metadata",
+        "evidence": [
+          "time_index/history_window/future_horizon state=present [s1,s2,s3]",
+          "persistence state=present [s1]",
+          "ordering basis.cnd1->basis.p1 and basis.p1->basis.o1"
+        ]
+      },
+      "rho_O_mapping": {
+        "status": "PARTIAL",
+        "mapping": "later_retained_outcome is a frozen O carrier, but no P_out/read relation is frozen for it.",
+        "evidence": [
+          "coordinate_map later_retained_outcome->basis.o1",
+          "controls.probe_P includes no P_out candidate",
+          "ClaimIR later_retained_outcome role=response_or_outcome"
+        ]
+      },
+      "derived_feature_candidates": [
+        "P direction is P_in only; later_retrieval must not be promoted to P_out from its label.",
+        "T captures the causal ordering but does not by itself preserve the identities of the initial_acquisition and later_retrieval condition nodes.",
+        "Frozen persistence does not license K=I/carry: the focal post-acquisition process is explicitly change-sensitive and only the later retention consequence is durable."
+      ],
+      "unmapped_residual": [
+        "initial_acquisition and later_retrieval are required frozen condition nodes. T captures their temporal placement but Grammar v0 has no neutral condition/event carrier preserving their identities without retyping them as X, P, C, or Q.",
+        "r3 distinguishes(post_acquisition_process, initial_acquisition, later_retrieval); the distinction cannot be preserved if the two condition nodes are erased into bare time indices.",
+        "PR #322 observe requires Pout for O readout, but this claim has a required O and no frozen P_out.",
+        "r2 is a direct P_in -> O causal relation; factoring it through K-on-X then rho would add a bridge not present in the frozen claim."
+      ],
+      "verdict": "RESIDUAL",
+      "notes": [
+        "Relevant frozen MEM Archetypes include A-e29437ea9d69, A-e4c4a62c66cf, A-1f6288bafddc, A-3a1a07a7775c, A-53b16535e1c2, and A-af97ed649c6f."
+      ]
+    },
+    {
+      "claim_id": "MEM06.C1",
+      "grammar_roles_instantiated": [
+        "Q",
+        "P_out",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "frozen_relation": "r1 depends_on(recognition_accuracy, foil_similarity_condition)",
+          "grammar_projection": "K-like dependence of O on a source-declared experimental condition",
+          "status": "PARTIAL",
+          "evidence": [
+            "recognition_accuracy->basis.o2",
+            "foil_similarity_condition->basis.cnd1",
+            "r1 kind=depends_on source_span_ids=[s1,s2]"
+          ]
+        },
+        {
+          "frozen_relation": "r2 satisfies(recognition_accuracy, correct_selection)",
+          "grammar_projection": "Q-conditioned evaluation of O",
+          "status": "SUPPORTED",
+          "evidence": [
+            "correct_selection->basis.q1",
+            "controls.criterion_Q state=present",
+            "r2 kind=satisfies"
+          ]
+        },
+        {
+          "frozen_relation": "r3 maps_to(paired_recognition_probe, recognition_accuracy)",
+          "grammar_projection": "P_out -> rho/O readout",
+          "status": "PARTIAL",
+          "evidence": [
+            "paired_recognition_probe->basis.p1",
+            "recognition_accuracy->basis.o2",
+            "r3 kind=maps_to source_span_ids=[s1,s2,s3]"
+          ]
+        },
+        {
+          "frozen_relation": "r4 other(studied_item_set, recognition_accuracy): lower-bound inference from high accuracy after thousands of studied items",
+          "grammar_projection": "O-to-O inferential/dependence topology",
+          "status": "PARTIAL",
+          "evidence": [
+            "studied_item_set->basis.o1",
+            "recognition_accuracy->basis.o2",
+            "r4 source_span_ids=[s1,s3]"
+          ]
+        }
+      ],
+      "Pi_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.partition_Pi state=not_required"
+        ]
+      },
+      "X_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "coordinate_map has O/P/Q/condition but no basis.s* coordinate"
+        ]
+      },
+      "C_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "controls.resource_C state=not_required",
+          "foil_similarity_condition varies comparison similarity; no frozen admissibility/resource relation licenses retyping it as C"
+        ]
+      },
+      "Q_mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "correct_selection"
+        ],
+        "evidence": [
+          "coordinate_map correct_selection->basis.q1",
+          "controls.criterion_Q state=present claim_node_ids=[correct_selection]",
+          "ClaimIR correct_selection role=criterion"
+        ]
+      },
+      "P_in_mapping": {
+        "status": "ABSENT",
+        "evidence": [
+          "paired_recognition_probe is role=probe, not intervention"
+        ]
+      },
+      "P_out_mapping": {
+        "status": "SUPPORTED",
+        "mapping": [
+          "paired_recognition_probe"
+        ],
+        "evidence": [
+          "coordinate_map paired_recognition_probe->basis.p1",
+          "controls.probe_P state=present",
+          "ClaimIR paired_recognition_probe role=probe"
+        ]
+      },
+      "K_mapping": {
+        "status": "PARTIAL",
+        "mapping": "r1 and r4 preserve typed dependence/inference topology, but their endpoints are condition/O and O/O with no frozen X carrier.",
+        "evidence": [
+          "r1 O<-condition",
+          "r4 O->O",
+          "frozen Archetype A-11165a6f2e74 contains K,O,P,Q,T for MEM03/MEM06"
+        ]
+      },
+      "T_mapping": {
+        "status": "SUPPORTED",
+        "mapping": "study-to-test temporal structure, history window, future horizon and persistence metadata",
+        "evidence": [
+          "temporal.time_index state=present [s1,s3]",
+          "history_window state=present [s1,s2,s3]",
+          "future_horizon state=present [s1,s3]",
+          "persistence state=present [s3]"
+        ]
+      },
+      "rho_O_mapping": {
+        "status": "PARTIAL",
+        "mapping": "P_out maps to recognition_accuracy O; studied_item_set and recognition_accuracy remain two distinct frozen O nodes.",
+        "evidence": [
+          "coordinate_map studied_item_set->basis.o1; recognition_accuracy->basis.o2",
+          "r3 maps_to paired_recognition_probe->recognition_accuracy",
+          "no basis.s* coordinate for the Config argument required by PR #322 observe"
+        ]
+      },
+      "derived_feature_candidates": [
+        "Q remains a criterion (correct selection), distinct from the foil-similarity experimental factor.",
+        "O_information/O_outcome can share the rho/O carrier family, but MEM06 requires both O nodes and their directed r4 relation; they cannot be collapsed to one O.",
+        "Frozen persistence cannot be compressed to X-carry because no X carrier is frozen in this claim."
+      ],
+      "unmapped_residual": [
+        "foil_similarity_condition is a required null-axis condition node. It is neither a realizability/admissibility C, a T interval, a Q criterion, nor a P operation under the frozen evidence; Grammar v0 has no neutral context/experimental-factor role.",
+        "r4 is an O-to-O lower-bound inferential relation. The current rho field is X x P_out -> O and does not directly represent this topology.",
+        "r3 supplies P_out and O but no X, so direct realization by PR #322 observe would require an unfrozen configuration carrier."
+      ],
+      "verdict": "RESIDUAL",
+      "notes": [
+        "Relevant frozen MEM Archetypes: A-e29437ea9d69, A-d4b1a62e9f68, A-e4c4a62c66cf, and A-11165a6f2e74."
+      ]
+    }
+  ],
+  "mem_lane_summary": {
+    "MEM_coverage_count": 6,
+    "verdict_counts": {
+      "FULL": 1,
+      "PARTIAL": 3,
+      "RESIDUAL": 2
+    },
+    "role_frequency": {
+      "Pi": 2,
+      "X": 4,
+      "C": 1,
+      "Q": 2,
+      "P_in": 2,
+      "P_out": 3,
+      "K": 5,
+      "T": 5,
+      "rho/O": 4
+    },
+    "frequency_rule": "Count a role when its claim-level mapping is SUPPORTED or PARTIAL; ABSENT does not count.",
+    "recurrent_substructures": [
+      {
+        "archetype_id": "A-e29437ea9d69",
+        "members": [
+          "MEM02",
+          "MEM03",
+          "MEM05",
+          "MEM06"
+        ],
+        "summary": "O + P with a required condition node; probe_P recurrent"
+      },
+      {
+        "archetype_id": "A-d4b1a62e9f68",
+        "members": [
+          "MEM02",
+          "MEM03",
+          "MEM06"
+        ],
+        "summary": "P(probe) + O + condition"
+      },
+      {
+        "archetype_id": "A-e4c4a62c66cf",
+        "members": [
+          "MEM03",
+          "MEM05",
+          "MEM06"
+        ],
+        "summary": "O + P + T with history_window/future_horizon/persistence/time_index"
+      },
+      {
+        "archetype_id": "A-11165a6f2e74",
+        "members": [
+          "MEM03",
+          "MEM06"
+        ],
+        "summary": "K + O + P + Q + T; includes O-Q and P-O relation topology"
+      },
+      {
+        "archetype_id": "A-08e83f55d1ed",
+        "members": [
+          "MEM01",
+          "MEM04"
+        ],
+        "summary": "Pi + S/X + T"
+      },
+      {
+        "archetype_id": "A-1f6288bafddc",
+        "members": [
+          "MEM03",
+          "MEM05"
+        ],
+        "summary": "K + O + P + T with intervention preceding outcome"
+      },
+      {
+        "archetype_id": "A-3a1a07a7775c",
+        "members": [
+          "MEM02",
+          "MEM05"
+        ],
+        "summary": "S/X + O + P + condition"
+      },
+      {
+        "archetype_id": "A-53b16535e1c2",
+        "members": [
+          "MEM01",
+          "MEM05"
+        ],
+        "summary": "S/X + T with time_index and persistence"
+      },
+      {
+        "archetype_id": "A-af97ed649c6f",
+        "members": [
+          "MEM04",
+          "MEM05"
+        ],
+        "summary": "S/X + T with time_index and history_window"
+      }
+    ],
+    "grammar_distinctions_required_by_MEM": [
+      "P_in versus P_out is required: MEM03 instantiates both with different frozen nodes; MEM05 only P_in; MEM02/MEM06 only P_out.",
+      "C and Q must remain distinct: MEM02 requires C with Q absent, while MEM03/MEM06 require Q with C absent.",
+      "Pi must remain distinct from X: MEM01/MEM04 carry source-declared Pi coordinates in addition to X coordinates.",
+      "T must remain distinct from K: temporal windows/order/persistence occur independently of whether a direct K transition can be reconstructed.",
+      "Multiple O nodes and O-to-O topology must be preservable: MEM06 has basis.o1 studied_item_set and basis.o2 recognition_accuracy.",
+      "K must remain non-functional and typed; MEM contains dependence, change, coupling and inferential relations rather than only deterministic update functions."
+    ],
+    "roles_not_needed_by_MEM": [],
+    "roles_not_needed_note": "No Grammar-v0 role is globally unused across MEM01-MEM06. This is a lane-level statement only; no single MEM claim instantiates every role.",
+    "residual_structures_not_expressible_by_Grammar_v0": [
+      "Neutral source-declared condition/event nodes not justified as C, Q, T or P: clearest in MEM06 foil_similarity_condition; also MEM05 initial_acquisition and later_retrieval retain identities beyond bare T indices.",
+      "Cross-role and higher-arity K topology without a frozen X carrier or without the Config->Pin->Config signature of PR #322: MEM03 and MEM04 are the clearest pressures.",
+      "Required O without frozen P_out/read relation (MEM05) and P_out->O without frozen X (MEM03/MEM06) are not direct instances of PR #322 observe.",
+      "O-to-O inferential/lower-bound topology in MEM06 is not a direct rho relation."
+    ],
+    "possible_compression_derived_feature_cases": [
+      "Old P compresses usefully into directional P_in/P_out.",
+      "Some null-axis ClaimIR conditions compress into existing roles only when structural evidence licenses it: MEM02 qualifying-limit conditions -> C; MEM03 retention_interval -> T. This cannot be generalized to all conditions.",
+      "Q covers both scoring and correctness criteria without requiring a scalar universal Q.",
+      "O_information and O_outcome can share an O carrier family, but MEM06 shows that their multiplicity and directed relation must remain explicit.",
+      "No MEM claim supplies a clean frozen witness for 'persistence = identity-like carry across T'. Persistence remains a T feature in MEM01/MEM03/MEM05/MEM06 unless later evidence supplies an explicit carry relation."
+    ],
+    "potential_threats_to_Grammar_v0": [
+      "The frozen role inventory lacks a neutral context/experimental-condition carrier. MEM06 is a direct bounded pressure because foil_similarity_condition cannot be retyped without violating the frozen adjudication.",
+      "The Discussion-level K is broader than the merged Lean K signature. If PR #322 transition is intended as exhaustive rather than one carrier realization, MEM01/MEM03/MEM04/MEM05/MEM06 expose signature pressure.",
+      "The merged Lean observe signature is stricter than some frozen O structures: MEM05 has O without P_out, and MEM03/MEM06 have P_out/O without X.",
+      "Pi-as-Part is not sufficient by itself for MEM04, where the Pi object participates as the subject of dependence and conjunctive characterization.",
+      "The candidate compression of persistence into K-carry is not supported by this MEM lane."
+    ],
+    "counterexample_assessment": {
+      "full_coverage_counterexample": true,
+      "statement": "MEM provides bounded counterexamples to the claim that frozen Grammar v0, as currently role-specified and Lean-realized, directly preserves all MEM topology without bridge assumptions.",
+      "clearest_claims": [
+        "MEM05.C1",
+        "MEM06.C1"
+      ],
+      "qualification": "This does not refute the usefulness of the eight-role vocabulary. MEM02 is a full direct fit and MEM01/MEM03/MEM04 have broad role-level homes. The failure is direct-expressibility/topology preservation, not total role-vocabulary collapse."
+    }
+  }
+}
