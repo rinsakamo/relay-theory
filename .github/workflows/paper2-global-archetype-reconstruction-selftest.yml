@@ -1,0 +1,31 @@
+name: paper2-global-archetype-reconstruction-selftest
+
+on:
+  pull_request:
+    paths:
+      - "scripts/paper2_global_archetype_reconstruction.py"
+      - "research/paper2/global_archetype_reconstruction_v1.json"
+      - ".github/workflows/paper2-global-archetype-reconstruction-selftest.yml"
+      - "research/paper2/*archetype*.json"
+      - "scripts/paper2_basis_subobject_forgetting.py"
+      - "scripts/paper2_basis_structural_skeleton.py"
+      - "scripts/paper2_archetype_mem_pilot.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  global-archetype:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Determinism and recovery self-test
+        run: python scripts/paper2_global_archetype_reconstruction.py --self-test
+      - name: Regenerate global report
+        run: python scripts/paper2_global_archetype_reconstruction.py --emit-report --output /tmp/global_archetype_reconstruction_v1.json
+      - name: Verify frozen global report
+        run: cmp /tmp/global_archetype_reconstruction_v1.json research/paper2/global_archetype_reconstruction_v1.json
