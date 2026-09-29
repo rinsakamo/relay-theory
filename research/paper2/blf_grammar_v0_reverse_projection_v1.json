@@ -1,0 +1,2021 @@
+{
+  "schema_version": "paper2-blf-grammar-v0-reverse-projection-v1",
+  "status": "FROZEN_LANE_REVERSE_PROJECTION",
+  "owner_issue": 326,
+  "authority": {
+    "grammar_issue": 321,
+    "grammar_lean_pr": 322,
+    "grammar_lean_merge_head": "78cd63cd6ec2898f3b4783b6db394c73c0551ff4",
+    "blf_archetype_issue": 300,
+    "blf_archetype_pr": 309,
+    "frozen_archetype_artifact": {
+      "path": "research/paper2/blf_archetype_reconstruction_v1.json",
+      "blob_sha": "55a43d4c3c8bba642c88ba763fbaed8415cc1dc6"
+    },
+    "frozen_working_basis": {
+      "path": "research/paper2/working_basis_v1.json",
+      "blob_sha": "64f8fe74d6bb4f10303514c461062d0922233d40"
+    },
+    "frozen_phi_projection_manifest": {
+      "path": "research/paper2/reference_phi_projection_freeze_v1.json",
+      "blob_sha": "553550afbf1526da4f2bbeaca43b4de8e406f5da"
+    }
+  },
+  "scope": {
+    "lane": "BLF",
+    "claims": [
+      "BLF01",
+      "BLF02",
+      "BLF03",
+      "BLF04",
+      "BLF05",
+      "BLF06"
+    ],
+    "source_reread": false,
+    "modified_frozen_inputs": false,
+    "grammar_modified": false,
+    "other_lanes_processed": false
+  },
+  "mapping_policy": {
+    "Pi": "Only source/frozen structural individuation, partition, or boundary support qualifies; physicality is not required.",
+    "X": "Only frozen S/state_or_structure support is promoted to X; condition or response labels are not relabeled as X.",
+    "C": "Only realizability/admissibility/resource structure qualifies; generic experimental conditions do not.",
+    "Q": "Only structurally frozen criterion-conditioned filtering/orientation qualifies; scalarity is not required.",
+    "P_in": "Requires frozen evidence that the probe presents, varies, perturbs, or intervenes on an interface setting; old P alone is insufficient.",
+    "P_out": "Requires frozen evidence that the probe queries, elicits, measures, or exposes an observation/readout.",
+    "K": "Typed transformation/dependence may be relational or stochastic and is not restricted to a mathematical function.",
+    "T": "Temporal indexing/order remains distinct from K; precedence alone is not K.",
+    "rho/O": "Frozen information/access and response/outcome coordinates may instantiate incoming or outgoing boundary-relative traces; O is not assumed terminal.",
+    "persistence": "No identity-like carry is inferred unless explicitly frozen."
+  },
+  "claims": [
+    {
+      "claim_id": "BLF01",
+      "grammar_roles_instantiated": [
+        "X",
+        "Q",
+        "P_in",
+        "P_out",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "frozen_relation_id": "r1",
+          "grammar_relation": "K dependence: environment_change_rate -> outcome_weight"
+        },
+        {
+          "frozen_relation_id": "r2",
+          "grammar_relation": "K update: outcome_history changes environment_change_rate and outcome_weight"
+        },
+        {
+          "frozen_relation_id": "r3",
+          "grammar_relation": "K dependence/readout: outcome_weight + outcome_history -> next_choice"
+        },
+        {
+          "frozen_relation_id": "r4",
+          "grammar_relation": "Q-conditioned evaluation of outcome_weight"
+        },
+        {
+          "frozen_relation_id": "r5",
+          "grammar_relation": "P_out probe exposes O(next_choice); probe also supplies a P_in contingency manipulation"
+        },
+        {
+          "frozen_relation_id": "adjudicated temporal ordering",
+          "grammar_relation": "T: outcome_history < environment_change_rate; outcome_history < outcome_weight; outcome_weight < next_choice"
+        }
+      ],
+      "Pi": {
+        "status": "ABSENT",
+        "mapping": "No frozen partition/boundary role is required.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/reference_structural_adjudication_v1/BLF01.json",
+            "blob_sha": "a842ecafcfdc21259eb93696316a86fa86eba482",
+            "json_pointer": "/controls/partition_Pi",
+            "frozen_value": {
+              "state": "not_required"
+            }
+          }
+        ],
+        "notes": []
+      },
+      "X": {
+        "status": "SUPPORTED",
+        "mapping": "environment_change_rate and outcome_weight instantiate the frozen S role as configuration carriers.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF01.json",
+            "blob_sha": "ce97561d2f186572470551cc78cafa5610118e1f",
+            "json_pointer": "/claim_core/nodes/1",
+            "frozen_value": {
+              "id": "environment_change_rate",
+              "role": "state_or_structure"
+            }
+          },
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF01.json",
+            "blob_sha": "ce97561d2f186572470551cc78cafa5610118e1f",
+            "json_pointer": "/claim_core/nodes/2",
+            "frozen_value": {
+              "id": "outcome_weight",
+              "role": "state_or_structure"
+            }
+          }
+        ],
+        "notes": []
+      },
+      "C": {
+        "status": "ABSENT",
+        "mapping": "No realizability/resource constraint is frozen.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/reference_structural_adjudication_v1/BLF01.json",
+            "blob_sha": "a842ecafcfdc21259eb93696316a86fa86eba482",
+            "json_pointer": "/controls/resource_C",
+            "frozen_value": {
+              "state": "not_required"
+            }
+          }
+        ],
+        "notes": [
+          "Changing environmental contingencies are not reclassified as C."
+        ]
+      },
+      "Q": {
+        "status": "SUPPORTED",
+        "mapping": "adaptive_weighting_rule is a source-declared criterion orienting how recent outcomes should be weighted.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/reference_structural_adjudication_v1/BLF01.json",
+            "blob_sha": "a842ecafcfdc21259eb93696316a86fa86eba482",
+            "json_pointer": "/controls/criterion_Q",
+            "frozen_value": {
+              "state": "present",
+              "claim_node_ids": [
+                "adaptive_weighting_rule"
+              ]
+            }
+          },
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF01.json",
+            "blob_sha": "ce97561d2f186572470551cc78cafa5610118e1f",
+            "json_pointer": "/claim_core/relations/3",
+            "frozen_value": {
+              "id": "r4",
+              "kind": "satisfies",
+              "arguments": [
+                "outcome_weight",
+                "adaptive_weighting_rule"
+              ]
+            }
+          }
+        ],
+        "notes": []
+      },
+      "P_in": {
+        "status": "SUPPORTED",
+        "mapping": "changing_contingency_probe includes an experimentally varied contingency regime; this is the inward/interface manipulation component.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF01.json",
+            "blob_sha": "ce97561d2f186572470551cc78cafa5610118e1f",
+            "json_pointer": "/claim_core/nodes/5",
+            "frozen_value": {
+              "id": "changing_contingency_probe",
+              "role": "probe",
+              "description": "sequential reward task in which contingency stability is experimentally varied"
+            }
+          },
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF01.json",
+            "blob_sha": "ce97561d2f186572470551cc78cafa5610118e1f",
+            "json_pointer": "/claim_core/relations/4",
+            "frozen_value": {
+              "id": "r5",
+              "kind": "maps_to",
+              "description": "the sequential contingency manipulation exposes trial-by-trial adaptation of decisions"
+            }
+          }
+        ],
+        "notes": [
+          "The frozen structure does not require a direct P_in -> X edge; the manipulation and the readout are bundled in one probe."
+        ]
+      },
+      "P_out": {
+        "status": "SUPPORTED",
+        "mapping": "The same probe reads out the subsequent choice.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/reference_structural_adjudication_v1/BLF01.json",
+            "blob_sha": "a842ecafcfdc21259eb93696316a86fa86eba482",
+            "json_pointer": "/controls/probe_P",
+            "frozen_value": {
+              "state": "present",
+              "claim_node_ids": [
+                "changing_contingency_probe"
+              ]
+            }
+          },
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF01.json",
+            "blob_sha": "ce97561d2f186572470551cc78cafa5610118e1f",
+            "json_pointer": "/claim_core/relations/4",
+            "frozen_value": {
+              "id": "r5",
+              "kind": "maps_to",
+              "arguments": [
+                "changing_contingency_probe",
+                "next_choice"
+              ]
+            }
+          }
+        ],
+        "notes": []
+      },
+      "K": {
+        "status": "SUPPORTED",
+        "mapping": "Non-functional stochastic dependence/update structure links incoming outcomes, inferred change rate, weighting, and choice.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF01.json",
+            "blob_sha": "ce97561d2f186572470551cc78cafa5610118e1f",
+            "json_pointer": "/claim_core/relations/0",
+            "frozen_value": {
+              "id": "r1",
+              "kind": "depends_on"
+            }
+          },
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF01.json",
+            "blob_sha": "ce97561d2f186572470551cc78cafa5610118e1f",
+            "json_pointer": "/claim_core/relations/1",
+            "frozen_value": {
+              "id": "r2",
+              "kind": "changes"
+            }
+          },
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF01.json",
+            "blob_sha": "ce97561d2f186572470551cc78cafa5610118e1f",
+            "json_pointer": "/claim_core/relations/2",
+            "frozen_value": {
+              "id": "r3",
+              "kind": "depends_on"
+            }
+          }
+        ],
+        "notes": []
+      },
+      "T": {
+        "status": "SUPPORTED",
+        "mapping": "Time index, history window, future horizon, recurrence, and three explicit orderings are frozen.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/reference_structural_adjudication_v1/BLF01.json",
+            "blob_sha": "a842ecafcfdc21259eb93696316a86fa86eba482",
+            "json_pointer": "/temporal",
+            "frozen_value": {
+              "time_index": "present",
+              "history_window": "present",
+              "future_horizon": "present",
+              "recurrence": "present",
+              "persistence": "not_required",
+              "ordering_count": 3
+            }
+          }
+        ],
+        "notes": [
+          "No persistence/carry is inferred."
+        ]
+      },
+      "rho/O": {
+        "status": "SUPPORTED",
+        "mapping": "outcome_history is incoming available information and next_choice is an outward response/readout; O is therefore not terminal-only.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF01.json",
+            "blob_sha": "ce97561d2f186572470551cc78cafa5610118e1f",
+            "json_pointer": "/claim_core/nodes/0",
+            "frozen_value": {
+              "id": "outcome_history",
+              "role": "available_information"
+            }
+          },
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF01.json",
+            "blob_sha": "ce97561d2f186572470551cc78cafa5610118e1f",
+            "json_pointer": "/claim_core/nodes/3",
+            "frozen_value": {
+              "id": "next_choice",
+              "role": "response_or_outcome"
+            }
+          },
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF01.json",
+            "blob_sha": "ce97561d2f186572470551cc78cafa5610118e1f",
+            "json_pointer": "/claim_core/relations/4",
+            "frozen_value": {
+              "id": "r5",
+              "kind": "maps_to",
+              "arguments": [
+                "changing_contingency_probe",
+                "next_choice"
+              ]
+            }
+          }
+        ],
+        "notes": []
+      },
+      "derived-feature candidates": [
+        "outcome_weight can be treated as a Q-conditioned K parameter/state feature rather than a new primitive grammar role",
+        "history_window, future_horizon, and recurrence are T refinements",
+        "environment_change_rate remains X/S structure; volatility is not evidence for C"
+      ],
+      "unmapped residual": [],
+      "verdict": "FULL",
+      "notes": [
+        "BLF01 independently supports simultaneous T and K; the temporal sequence is not being used as the sole evidence for transformation."
+      ],
+      "frozen_archetype_membership": {
+        "artifact": "research/paper2/blf_archetype_reconstruction_v1.json",
+        "blob_sha": "55a43d4c3c8bba642c88ba763fbaed8415cc1dc6",
+        "archetype_ids": [
+          "A-21a150b8553b",
+          "A-351ac011d2cd",
+          "A-35648db94885",
+          "A-3b814de4da04",
+          "A-560840a56e6f",
+          "A-56c48405d22c",
+          "A-5e1ee55c54d3",
+          "A-612fa3c23c7e",
+          "A-7c8e04dac099",
+          "A-a803ff0bdf81",
+          "A-ac5e484032b0",
+          "A-ec0e1eb76d34",
+          "A-ff871b50cd64"
+        ]
+      }
+    },
+    {
+      "claim_id": "BLF02",
+      "grammar_roles_instantiated": [
+        "X",
+        "P_in",
+        "P_out",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "frozen_relation_id": "r1",
+          "grammar_relation": "P_in setting: hold matched association structure fixed while varying intervention-status structure"
+        },
+        {
+          "frozen_relation_id": "r2",
+          "grammar_relation": "K dependence: intervention-status pattern + matched association pattern -> causal-status judgment"
+        },
+        {
+          "frozen_relation_id": "r3",
+          "grammar_relation": "K inference: intervention-status pattern + matched association pattern -> candidate_directional_structure"
+        },
+        {
+          "frozen_relation_id": "r4",
+          "grammar_relation": "P_out probe -> O(causal_status_judgment)"
+        },
+        {
+          "frozen_relation_id": "adjudicated temporal ordering",
+          "grammar_relation": "T: intervention-status information and probe precede judgment"
+        }
+      ],
+      "Pi": {
+        "status": "ABSENT",
+        "mapping": "No frozen partition role is required.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/reference_structural_adjudication_v1/BLF02.json",
+            "blob_sha": "344cdcac7bf19f032a97ec342d868f24e4edf5fe",
+            "json_pointer": "/controls/partition_Pi",
+            "frozen_value": {
+              "state": "not_required"
+            }
+          }
+        ],
+        "notes": []
+      },
+      "X": {
+        "status": "SUPPORTED",
+        "mapping": "candidate_directional_structure is the frozen S/configuration carrier.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF02.json",
+            "blob_sha": "c7f2b55378c901a15521891d298046a82b6fb7d2",
+            "json_pointer": "/claim_core/nodes/2",
+            "frozen_value": {
+              "id": "candidate_directional_structure",
+              "role": "state_or_structure"
+            }
+          }
+        ],
+        "notes": []
+      },
+      "C": {
+        "status": "ABSENT",
+        "mapping": "No realizability/resource constraint is frozen.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/reference_structural_adjudication_v1/BLF02.json",
+            "blob_sha": "344cdcac7bf19f032a97ec342d868f24e4edf5fe",
+            "json_pointer": "/controls/resource_C",
+            "frozen_value": {
+              "state": "not_required"
+            }
+          }
+        ],
+        "notes": [
+          "matched_association_pattern is a controlled input condition, not C."
+        ]
+      },
+      "Q": {
+        "status": "ABSENT",
+        "mapping": "No criterion control is frozen.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/reference_structural_adjudication_v1/BLF02.json",
+            "blob_sha": "344cdcac7bf19f032a97ec342d868f24e4edf5fe",
+            "json_pointer": "/controls/criterion_Q",
+            "frozen_value": {
+              "state": "not_required"
+            }
+          }
+        ],
+        "notes": []
+      },
+      "P_in": {
+        "status": "SUPPORTED",
+        "mapping": "structured_intervention_probe explicitly varies the intervention/nonintervention structure while holding pairwise association frequencies fixed.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF02.json",
+            "blob_sha": "c7f2b55378c901a15521891d298046a82b6fb7d2",
+            "json_pointer": "/claim_core/nodes/4",
+            "frozen_value": {
+              "id": "structured_intervention_probe",
+              "role": "probe",
+              "description": "matched-association comparison that varies the intervention/nonintervention status of the evidence while eliciting separate directional judgments"
+            }
+          },
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF02.json",
+            "blob_sha": "c7f2b55378c901a15521891d298046a82b6fb7d2",
+            "json_pointer": "/claim_core/relations/0",
+            "frozen_value": {
+              "id": "r1",
+              "kind": "distinguishes",
+              "arguments": [
+                "structured_intervention_probe",
+                "matched_association_pattern",
+                "intervention_status_pattern"
+              ]
+            }
+          }
+        ],
+        "notes": [
+          "matched_association_pattern is retained as a typed P_in setting/context parameter rather than promoted to C or X."
+        ]
+      },
+      "P_out": {
+        "status": "SUPPORTED",
+        "mapping": "The probe elicits/exposes causal-status judgments.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/reference_structural_adjudication_v1/BLF02.json",
+            "blob_sha": "344cdcac7bf19f032a97ec342d868f24e4edf5fe",
+            "json_pointer": "/controls/probe_P",
+            "frozen_value": {
+              "state": "present",
+              "claim_node_ids": [
+                "structured_intervention_probe"
+              ]
+            }
+          },
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF02.json",
+            "blob_sha": "c7f2b55378c901a15521891d298046a82b6fb7d2",
+            "json_pointer": "/claim_core/relations/3",
+            "frozen_value": {
+              "id": "r4",
+              "kind": "maps_to",
+              "arguments": [
+                "structured_intervention_probe",
+                "causal_status_judgment"
+              ]
+            }
+          }
+        ],
+        "notes": []
+      },
+      "K": {
+        "status": "SUPPORTED",
+        "mapping": "The frozen structure contains typed dependence/inference relations from evidence structure to both an internal directional structure and an observed judgment.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF02.json",
+            "blob_sha": "c7f2b55378c901a15521891d298046a82b6fb7d2",
+            "json_pointer": "/claim_core/relations/1",
+            "frozen_value": {
+              "id": "r2",
+              "kind": "depends_on"
+            }
+          },
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF02.json",
+            "blob_sha": "c7f2b55378c901a15521891d298046a82b6fb7d2",
+            "json_pointer": "/claim_core/relations/2",
+            "frozen_value": {
+              "id": "r3",
+              "kind": "maps_to"
+            }
+          }
+        ],
+        "notes": []
+      },
+      "T": {
+        "status": "SUPPORTED",
+        "mapping": "A time index and two explicit before/after relations are frozen.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/reference_structural_adjudication_v1/BLF02.json",
+            "blob_sha": "344cdcac7bf19f032a97ec342d868f24e4edf5fe",
+            "json_pointer": "/temporal",
+            "frozen_value": {
+              "time_index": "present",
+              "history_window": "not_required",
+              "future_horizon": "not_required",
+              "recurrence": "not_required",
+              "persistence": "not_required",
+              "ordering_count": 2
+            }
+          }
+        ],
+        "notes": [
+          "The temporal order itself is not treated as K; r2/r3 independently supply K."
+        ]
+      },
+      "rho/O": {
+        "status": "SUPPORTED",
+        "mapping": "intervention_status_pattern is incoming information and causal_status_judgment is an outgoing observation/readout.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF02.json",
+            "blob_sha": "c7f2b55378c901a15521891d298046a82b6fb7d2",
+            "json_pointer": "/claim_core/nodes/1",
+            "frozen_value": {
+              "id": "intervention_status_pattern",
+              "role": "available_information"
+            }
+          },
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF02.json",
+            "blob_sha": "c7f2b55378c901a15521891d298046a82b6fb7d2",
+            "json_pointer": "/claim_core/nodes/3",
+            "frozen_value": {
+              "id": "causal_status_judgment",
+              "role": "response_or_outcome"
+            }
+          }
+        ],
+        "notes": []
+      },
+      "derived-feature candidates": [
+        "matched_association_pattern is a null-axis experimental condition that can be carried as a typed P_in setting without adding a primitive role",
+        "incoming intervention-status evidence and the intervention operation must remain distinct even though the source probe bundles them"
+      ],
+      "unmapped residual": [],
+      "verdict": "FULL",
+      "notes": [
+        "This claim requires K to permit typed dependence/inference, not only deterministic X->X functions."
+      ],
+      "frozen_archetype_membership": {
+        "artifact": "research/paper2/blf_archetype_reconstruction_v1.json",
+        "blob_sha": "55a43d4c3c8bba642c88ba763fbaed8415cc1dc6",
+        "archetype_ids": [
+          "A-0b55310ea2ae",
+          "A-21a150b8553b",
+          "A-222f4d7db95b",
+          "A-2452beea32d0",
+          "A-351ac011d2cd",
+          "A-35648db94885",
+          "A-38e31229cbbb",
+          "A-3a1a07a7775c",
+          "A-3b814de4da04",
+          "A-560840a56e6f",
+          "A-a803ff0bdf81",
+          "A-ac1da8f009e8",
+          "A-ac5e484032b0",
+          "A-e29437ea9d69"
+        ]
+      }
+    },
+    {
+      "claim_id": "BLF03",
+      "grammar_roles_instantiated": [
+        "X",
+        "Q",
+        "P_in",
+        "P_out",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "frozen_relation_id": "r1",
+          "grammar_relation": "P_in-conditioned K: motion_evidence_strength -> momentary_evidence distribution"
+        },
+        {
+          "frozen_relation_id": "r2",
+          "grammar_relation": "K accumulation: momentary_evidence -> accumulated_evidence"
+        },
+        {
+          "frozen_relation_id": "r3",
+          "grammar_relation": "Q-conditioned K/readout: accumulated_evidence + stopping_criterion -> choice_accuracy + decision_time"
+        },
+        {
+          "frozen_relation_id": "r4",
+          "grammar_relation": "Q threshold placement orients/constrains speed-accuracy tradeoff"
+        },
+        {
+          "frozen_relation_id": "r5",
+          "grammar_relation": "P_out probe -> O(choice_accuracy, decision_time)"
+        },
+        {
+          "frozen_relation_id": "adjudicated temporal ordering",
+          "grammar_relation": "T: momentary_evidence < accumulated_evidence"
+        }
+      ],
+      "Pi": {
+        "status": "ABSENT",
+        "mapping": "No frozen partition role is required.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/reference_structural_adjudication_v1/BLF03.json",
+            "blob_sha": "b54bb52aa3069efb90ccba6e95e4afa0ec3bbf19",
+            "json_pointer": "/controls/partition_Pi",
+            "frozen_value": {
+              "state": "not_required"
+            }
+          }
+        ],
+        "notes": []
+      },
+      "X": {
+        "status": "SUPPORTED",
+        "mapping": "accumulated_evidence is the running S/configuration carrier.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF03.json",
+            "blob_sha": "5044d154cccb46c55713260b20b2a39d0c495026",
+            "json_pointer": "/claim_core/nodes/2",
+            "frozen_value": {
+              "id": "accumulated_evidence",
+              "role": "state_or_structure"
+            }
+          }
+        ],
+        "notes": []
+      },
+      "C": {
+        "status": "ABSENT",
+        "mapping": "No resource/admissibility control is frozen.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/reference_structural_adjudication_v1/BLF03.json",
+            "blob_sha": "b54bb52aa3069efb90ccba6e95e4afa0ec3bbf19",
+            "json_pointer": "/controls/resource_C",
+            "frozen_value": {
+              "state": "not_required"
+            }
+          }
+        ],
+        "notes": [
+          "The stopping bound is Q, not C."
+        ]
+      },
+      "Q": {
+        "status": "SUPPORTED",
+        "mapping": "stopping_criterion is a source-declared criterion; the frozen approximation layer also records threshold structure.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/reference_structural_adjudication_v1/BLF03.json",
+            "blob_sha": "b54bb52aa3069efb90ccba6e95e4afa0ec3bbf19",
+            "json_pointer": "/controls/criterion_Q",
+            "frozen_value": {
+              "state": "present",
+              "claim_node_ids": [
+                "stopping_criterion"
+              ]
+            }
+          },
+          {
+            "source_file": "research/paper2/reference_structural_adjudication_v1/BLF03.json",
+            "blob_sha": "b54bb52aa3069efb90ccba6e95e4afa0ec3bbf19",
+            "json_pointer": "/approximation/threshold",
+            "frozen_value": {
+              "state": "present",
+              "source_span_ids": [
+                "s2",
+                "s4"
+              ]
+            }
+          },
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF03.json",
+            "blob_sha": "5044d154cccb46c55713260b20b2a39d0c495026",
+            "json_pointer": "/claim_core/relations/3",
+            "frozen_value": {
+              "id": "r4",
+              "kind": "constrains",
+              "arguments": [
+                "stopping_criterion",
+                "choice_accuracy",
+                "decision_time"
+              ]
+            }
+          }
+        ],
+        "notes": []
+      },
+      "P_in": {
+        "status": "SUPPORTED",
+        "mapping": "reaction_time_rdm_probe explicitly varies motion strength, supplying the inward stimulus setting.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF03.json",
+            "blob_sha": "5044d154cccb46c55713260b20b2a39d0c495026",
+            "json_pointer": "/claim_core/nodes/6",
+            "frozen_value": {
+              "id": "reaction_time_rdm_probe",
+              "role": "probe",
+              "description": "reaction-time random-dot-motion discrimination procedure varying motion strength while measuring accuracy and reaction time"
+            }
+          },
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF03.json",
+            "blob_sha": "5044d154cccb46c55713260b20b2a39d0c495026",
+            "json_pointer": "/claim_core/relations/0",
+            "frozen_value": {
+              "id": "r1",
+              "kind": "depends_on",
+              "arguments": [
+                "momentary_evidence",
+                "motion_evidence_strength"
+              ]
+            }
+          }
+        ],
+        "notes": [
+          "motion_evidence_strength is a typed P_in setting, not C."
+        ]
+      },
+      "P_out": {
+        "status": "SUPPORTED",
+        "mapping": "The probe measures choice accuracy and decision time.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/reference_structural_adjudication_v1/BLF03.json",
+            "blob_sha": "b54bb52aa3069efb90ccba6e95e4afa0ec3bbf19",
+            "json_pointer": "/controls/probe_P",
+            "frozen_value": {
+              "state": "present",
+              "claim_node_ids": [
+                "reaction_time_rdm_probe"
+              ]
+            }
+          },
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF03.json",
+            "blob_sha": "5044d154cccb46c55713260b20b2a39d0c495026",
+            "json_pointer": "/claim_core/relations/4",
+            "frozen_value": {
+              "id": "r5",
+              "kind": "maps_to",
+              "arguments": [
+                "reaction_time_rdm_probe",
+                "choice_accuracy",
+                "decision_time"
+              ]
+            }
+          }
+        ],
+        "notes": []
+      },
+      "K": {
+        "status": "SUPPORTED",
+        "mapping": "Evidence quality, stochastic accumulation, and outcome dependence supply typed non-functional K structure.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF03.json",
+            "blob_sha": "5044d154cccb46c55713260b20b2a39d0c495026",
+            "json_pointer": "/claim_core/relations/0",
+            "frozen_value": {
+              "id": "r1",
+              "kind": "depends_on"
+            }
+          },
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF03.json",
+            "blob_sha": "5044d154cccb46c55713260b20b2a39d0c495026",
+            "json_pointer": "/claim_core/relations/1",
+            "frozen_value": {
+              "id": "r2",
+              "kind": "maps_to"
+            }
+          },
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF03.json",
+            "blob_sha": "5044d154cccb46c55713260b20b2a39d0c495026",
+            "json_pointer": "/claim_core/relations/2",
+            "frozen_value": {
+              "id": "r3",
+              "kind": "depends_on"
+            }
+          }
+        ],
+        "notes": []
+      },
+      "T": {
+        "status": "SUPPORTED",
+        "mapping": "Time index, history window, recurrence, and evidence-before-accumulator ordering are frozen.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/reference_structural_adjudication_v1/BLF03.json",
+            "blob_sha": "b54bb52aa3069efb90ccba6e95e4afa0ec3bbf19",
+            "json_pointer": "/temporal",
+            "frozen_value": {
+              "time_index": "present",
+              "history_window": "present",
+              "future_horizon": "not_required",
+              "recurrence": "present",
+              "persistence": "not_required",
+              "ordering_count": 1
+            }
+          }
+        ],
+        "notes": []
+      },
+      "rho/O": {
+        "status": "SUPPORTED",
+        "mapping": "momentary_evidence is incoming information; choice_accuracy and decision_time are outgoing readouts.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF03.json",
+            "blob_sha": "5044d154cccb46c55713260b20b2a39d0c495026",
+            "json_pointer": "/claim_core/nodes/1",
+            "frozen_value": {
+              "id": "momentary_evidence",
+              "role": "available_information"
+            }
+          },
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF03.json",
+            "blob_sha": "5044d154cccb46c55713260b20b2a39d0c495026",
+            "json_pointer": "/claim_core/nodes/4",
+            "frozen_value": {
+              "id": "choice_accuracy",
+              "role": "response_or_outcome"
+            }
+          },
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF03.json",
+            "blob_sha": "5044d154cccb46c55713260b20b2a39d0c495026",
+            "json_pointer": "/claim_core/nodes/5",
+            "frozen_value": {
+              "id": "decision_time",
+              "role": "response_or_outcome"
+            }
+          }
+        ],
+        "notes": []
+      },
+      "derived-feature candidates": [
+        "motion_evidence_strength is a P_in parameter rather than a primitive grammar role",
+        "stopping bound/threshold is a Q specialization rather than C",
+        "speed-accuracy tradeoff is a derived Q-conditioned K/rho relation over T"
+      ],
+      "unmapped residual": [],
+      "verdict": "FULL",
+      "notes": [
+        "decision_time remains an O/readout node; its name does not by itself make it a T node."
+      ],
+      "frozen_archetype_membership": {
+        "artifact": "research/paper2/blf_archetype_reconstruction_v1.json",
+        "blob_sha": "55a43d4c3c8bba642c88ba763fbaed8415cc1dc6",
+        "archetype_ids": [
+          "A-0b55310ea2ae",
+          "A-21a150b8553b",
+          "A-222f4d7db95b",
+          "A-35648db94885",
+          "A-3a1a07a7775c",
+          "A-550bcb8c1b32",
+          "A-560840a56e6f",
+          "A-56c48405d22c",
+          "A-5e1ee55c54d3",
+          "A-612fa3c23c7e",
+          "A-9caba981ee56",
+          "A-ac5e484032b0",
+          "A-be00a08c3649",
+          "A-e29437ea9d69",
+          "A-ff871b50cd64"
+        ]
+      }
+    },
+    {
+      "claim_id": "BLF04",
+      "grammar_roles_instantiated": [
+        "Q",
+        "P_in",
+        "P_out",
+        "K",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "frozen_relation_id": "r1",
+          "grammar_relation": "K dependence: formal_validity + conclusion_believability -> acceptance_response"
+        },
+        {
+          "frozen_relation_id": "r2",
+          "grammar_relation": "K interaction/difference over the crossed P_in settings -> acceptance_response"
+        },
+        {
+          "frozen_relation_id": "r3",
+          "grammar_relation": "P_out probe -> O(acceptance_response)"
+        },
+        {
+          "frozen_relation_id": "r4",
+          "grammar_relation": "Q(logical_necessity_criterion) constrains the requested O response"
+        }
+      ],
+      "Pi": {
+        "status": "ABSENT",
+        "mapping": "No partition role is frozen.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/reference_structural_adjudication_v1/BLF04.json",
+            "blob_sha": "2a10793b084e0a43c06fd01055b6f634358bfc59",
+            "json_pointer": "/controls/partition_Pi",
+            "frozen_value": {
+              "state": "not_required"
+            }
+          }
+        ],
+        "notes": []
+      },
+      "X": {
+        "status": "ABSENT",
+        "mapping": "BLF04 contains no frozen state_or_structure coordinate; Grammar v0 need not invent one.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF04.json",
+            "blob_sha": "58df23a5bf15db0071531fe627a65db7f06a7341",
+            "json_pointer": "/claim_core/nodes",
+            "frozen_value": {
+              "state_or_structure_nodes": []
+            }
+          }
+        ],
+        "notes": []
+      },
+      "C": {
+        "status": "ABSENT",
+        "mapping": "No resource/admissibility control is frozen.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/reference_structural_adjudication_v1/BLF04.json",
+            "blob_sha": "2a10793b084e0a43c06fd01055b6f634358bfc59",
+            "json_pointer": "/controls/resource_C",
+            "frozen_value": {
+              "state": "not_required"
+            }
+          }
+        ],
+        "notes": []
+      },
+      "Q": {
+        "status": "SUPPORTED",
+        "mapping": "logical_necessity_criterion is a source-declared correctness/normative criterion and directly constrains the requested response.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/reference_structural_adjudication_v1/BLF04.json",
+            "blob_sha": "2a10793b084e0a43c06fd01055b6f634358bfc59",
+            "json_pointer": "/controls/criterion_Q",
+            "frozen_value": {
+              "state": "present",
+              "claim_node_ids": [
+                "logical_necessity_criterion"
+              ]
+            }
+          },
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF04.json",
+            "blob_sha": "58df23a5bf15db0071531fe627a65db7f06a7341",
+            "json_pointer": "/claim_core/relations/3",
+            "frozen_value": {
+              "id": "r4",
+              "kind": "constrains",
+              "arguments": [
+                "logical_necessity_criterion",
+                "acceptance_response"
+              ]
+            }
+          }
+        ],
+        "notes": []
+      },
+      "P_in": {
+        "status": "SUPPORTED",
+        "mapping": "crossed_argument_probe factorially varies formal validity and conclusion believability; the two null-axis condition nodes are typed probe settings.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF04.json",
+            "blob_sha": "58df23a5bf15db0071531fe627a65db7f06a7341",
+            "json_pointer": "/claim_core/nodes/4",
+            "frozen_value": {
+              "id": "crossed_argument_probe",
+              "role": "probe",
+              "description": "factorial comparison crossing formal validity with conclusion believability and measuring acceptance responses"
+            }
+          },
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF04.json",
+            "blob_sha": "58df23a5bf15db0071531fe627a65db7f06a7341",
+            "json_pointer": "/claim_core/nodes/0",
+            "frozen_value": {
+              "id": "formal_validity",
+              "role": "condition"
+            }
+          },
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF04.json",
+            "blob_sha": "58df23a5bf15db0071531fe627a65db7f06a7341",
+            "json_pointer": "/claim_core/nodes/1",
+            "frozen_value": {
+              "id": "conclusion_believability",
+              "role": "condition"
+            }
+          }
+        ],
+        "notes": [
+          "Neither condition is promoted to C."
+        ]
+      },
+      "P_out": {
+        "status": "SUPPORTED",
+        "mapping": "The crossed probe measures acceptance_response.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/reference_structural_adjudication_v1/BLF04.json",
+            "blob_sha": "2a10793b084e0a43c06fd01055b6f634358bfc59",
+            "json_pointer": "/controls/probe_P",
+            "frozen_value": {
+              "state": "present",
+              "claim_node_ids": [
+                "crossed_argument_probe"
+              ]
+            }
+          },
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF04.json",
+            "blob_sha": "58df23a5bf15db0071531fe627a65db7f06a7341",
+            "json_pointer": "/claim_core/relations/2",
+            "frozen_value": {
+              "id": "r3",
+              "kind": "maps_to",
+              "arguments": [
+                "crossed_argument_probe",
+                "acceptance_response"
+              ]
+            }
+          }
+        ],
+        "notes": []
+      },
+      "K": {
+        "status": "SUPPORTED",
+        "mapping": "Response dependence and the validity-by-believability interaction are typed relational K structure; no functional law is required.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF04.json",
+            "blob_sha": "58df23a5bf15db0071531fe627a65db7f06a7341",
+            "json_pointer": "/claim_core/relations/0",
+            "frozen_value": {
+              "id": "r1",
+              "kind": "depends_on"
+            }
+          },
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF04.json",
+            "blob_sha": "58df23a5bf15db0071531fe627a65db7f06a7341",
+            "json_pointer": "/claim_core/relations/1",
+            "frozen_value": {
+              "id": "r2",
+              "kind": "differs"
+            }
+          }
+        ],
+        "notes": []
+      },
+      "T": {
+        "status": "ABSENT",
+        "mapping": "No temporal feature or ordering is frozen.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/reference_structural_adjudication_v1/BLF04.json",
+            "blob_sha": "2a10793b084e0a43c06fd01055b6f634358bfc59",
+            "json_pointer": "/temporal",
+            "frozen_value": {
+              "time_index": "not_required",
+              "history_window": "not_required",
+              "future_horizon": "not_required",
+              "recurrence": "not_required",
+              "persistence": "not_required",
+              "ordering_count": 0
+            }
+          }
+        ],
+        "notes": []
+      },
+      "rho/O": {
+        "status": "SUPPORTED",
+        "mapping": "acceptance_response is the frozen response/readout exposed by P_out.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF04.json",
+            "blob_sha": "58df23a5bf15db0071531fe627a65db7f06a7341",
+            "json_pointer": "/claim_core/nodes/2",
+            "frozen_value": {
+              "id": "acceptance_response",
+              "role": "response_or_outcome"
+            }
+          },
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF04.json",
+            "blob_sha": "58df23a5bf15db0071531fe627a65db7f06a7341",
+            "json_pointer": "/claim_core/relations/2",
+            "frozen_value": {
+              "id": "r3",
+              "kind": "maps_to",
+              "arguments": [
+                "crossed_argument_probe",
+                "acceptance_response"
+              ]
+            }
+          }
+        ],
+        "notes": []
+      },
+      "derived-feature candidates": [
+        "formal_validity and conclusion_believability are typed P_in factorial parameters, not additional primitive roles",
+        "the interaction term is a K-level dependence feature over P_in settings and O",
+        "logical correctness is one Q specialization; Q need not be scalar"
+      ],
+      "unmapped residual": [],
+      "verdict": "FULL",
+      "notes": [
+        "BLF04 is the strongest BLF check that K cannot be restricted to explicit X->X dynamics: the frozen claim is a black-box typed dependence from probe settings to O under Q, with no explicit X coordinate."
+      ],
+      "frozen_archetype_membership": {
+        "artifact": "research/paper2/blf_archetype_reconstruction_v1.json",
+        "blob_sha": "55a43d4c3c8bba642c88ba763fbaed8415cc1dc6",
+        "archetype_ids": [
+          "A-21a150b8553b",
+          "A-38e31229cbbb",
+          "A-3b814de4da04",
+          "A-612fa3c23c7e",
+          "A-7c8e04dac099",
+          "A-9caba981ee56",
+          "A-e29437ea9d69",
+          "A-e8022c15a948"
+        ]
+      }
+    },
+    {
+      "claim_id": "BLF05",
+      "grammar_roles_instantiated": [
+        "Pi",
+        "X",
+        "Q",
+        "P_out",
+        "K",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "frozen_relation_id": "r1",
+          "grammar_relation": "Pi distinguishes internal-state, person-presence, and physical-inference classes"
+        },
+        {
+          "frozen_relation_id": "r2",
+          "grammar_relation": "K dependence: story_condition_partition -> target_region_response"
+        },
+        {
+          "frozen_relation_id": "r3",
+          "grammar_relation": "P_out imaging probe -> O(target_region_response)"
+        },
+        {
+          "frozen_relation_id": "r4",
+          "grammar_relation": "Q(selectivity_criterion) evaluates O across Pi classes"
+        }
+      ],
+      "Pi": {
+        "status": "SUPPORTED",
+        "mapping": "story_condition_partition is a source-declared non-physical partition over stimulus/inference conditions.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/reference_structural_adjudication_v1/BLF05.json",
+            "blob_sha": "20ad5629b655772f7f66f4ebf1430a9be5f7dea3",
+            "json_pointer": "/controls/partition_Pi",
+            "frozen_value": {
+              "state": "present",
+              "claim_node_ids": [
+                "story_condition_partition"
+              ]
+            }
+          },
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF05.json",
+            "blob_sha": "e37ec991239c65993b7c5521aafe396feeb8af33",
+            "json_pointer": "/claim_core/nodes/4",
+            "frozen_value": {
+              "id": "story_condition_partition",
+              "role": "partition"
+            }
+          }
+        ],
+        "notes": [
+          "This is classificatory/experimental Pi, not a physical boundary."
+        ]
+      },
+      "X": {
+        "status": "SUPPORTED",
+        "mapping": "internal_state_content and person_presence are frozen state_or_structure coordinates.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF05.json",
+            "blob_sha": "e37ec991239c65993b7c5521aafe396feeb8af33",
+            "json_pointer": "/claim_core/nodes/0",
+            "frozen_value": {
+              "id": "internal_state_content",
+              "role": "state_or_structure"
+            }
+          },
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF05.json",
+            "blob_sha": "e37ec991239c65993b7c5521aafe396feeb8af33",
+            "json_pointer": "/claim_core/nodes/1",
+            "frozen_value": {
+              "id": "person_presence",
+              "role": "state_or_structure"
+            }
+          }
+        ],
+        "notes": []
+      },
+      "C": {
+        "status": "ABSENT",
+        "mapping": "No resource/admissibility control is frozen.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/reference_structural_adjudication_v1/BLF05.json",
+            "blob_sha": "20ad5629b655772f7f66f4ebf1430a9be5f7dea3",
+            "json_pointer": "/controls/resource_C",
+            "frozen_value": {
+              "state": "not_required"
+            }
+          }
+        ],
+        "notes": [
+          "physical_hidden_cause is a condition/member of the experimental partition, not C."
+        ]
+      },
+      "Q": {
+        "status": "SUPPORTED",
+        "mapping": "selectivity_criterion orients the comparison of regional responses across Pi classes.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/reference_structural_adjudication_v1/BLF05.json",
+            "blob_sha": "20ad5629b655772f7f66f4ebf1430a9be5f7dea3",
+            "json_pointer": "/controls/criterion_Q",
+            "frozen_value": {
+              "state": "present",
+              "claim_node_ids": [
+                "selectivity_criterion"
+              ]
+            }
+          },
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF05.json",
+            "blob_sha": "e37ec991239c65993b7c5521aafe396feeb8af33",
+            "json_pointer": "/claim_core/relations/3",
+            "frozen_value": {
+              "id": "r4",
+              "kind": "satisfies",
+              "arguments": [
+                "target_region_response",
+                "selectivity_criterion"
+              ]
+            }
+          }
+        ],
+        "notes": []
+      },
+      "P_in": {
+        "status": "ABSENT",
+        "mapping": "The frozen claim requires a structured story-condition comparison but does not separately encode an intervention/write operation. Pi plus P_out is sufficient; no P_in is forced.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF05.json",
+            "blob_sha": "e37ec991239c65993b7c5521aafe396feeb8af33",
+            "json_pointer": "/claim_core/nodes/5",
+            "frozen_value": {
+              "id": "functional_imaging_probe",
+              "role": "probe",
+              "description": "functional imaging comparison across the structured story conditions"
+            }
+          }
+        ],
+        "notes": []
+      },
+      "P_out": {
+        "status": "SUPPORTED",
+        "mapping": "functional_imaging_probe reads condition-selective regional response.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/reference_structural_adjudication_v1/BLF05.json",
+            "blob_sha": "20ad5629b655772f7f66f4ebf1430a9be5f7dea3",
+            "json_pointer": "/controls/probe_P",
+            "frozen_value": {
+              "state": "present",
+              "claim_node_ids": [
+                "functional_imaging_probe"
+              ]
+            }
+          },
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF05.json",
+            "blob_sha": "e37ec991239c65993b7c5521aafe396feeb8af33",
+            "json_pointer": "/claim_core/relations/2",
+            "frozen_value": {
+              "id": "r3",
+              "kind": "maps_to",
+              "arguments": [
+                "functional_imaging_probe",
+                "target_region_response"
+              ]
+            }
+          }
+        ],
+        "notes": []
+      },
+      "K": {
+        "status": "SUPPORTED",
+        "mapping": "Regional response depends on the structured partition; this is relational dependence rather than a required deterministic update.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF05.json",
+            "blob_sha": "e37ec991239c65993b7c5521aafe396feeb8af33",
+            "json_pointer": "/claim_core/relations/1",
+            "frozen_value": {
+              "id": "r2",
+              "kind": "depends_on",
+              "arguments": [
+                "target_region_response",
+                "story_condition_partition"
+              ]
+            }
+          }
+        ],
+        "notes": []
+      },
+      "T": {
+        "status": "ABSENT",
+        "mapping": "No temporal feature or ordering is frozen.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/reference_structural_adjudication_v1/BLF05.json",
+            "blob_sha": "20ad5629b655772f7f66f4ebf1430a9be5f7dea3",
+            "json_pointer": "/temporal",
+            "frozen_value": {
+              "time_index": "not_required",
+              "history_window": "not_required",
+              "future_horizon": "not_required",
+              "recurrence": "not_required",
+              "persistence": "not_required",
+              "ordering_count": 0
+            }
+          }
+        ],
+        "notes": []
+      },
+      "rho/O": {
+        "status": "SUPPORTED",
+        "mapping": "target_region_response is the boundary-relative measurement/readout exposed by P_out.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF05.json",
+            "blob_sha": "e37ec991239c65993b7c5521aafe396feeb8af33",
+            "json_pointer": "/claim_core/nodes/3",
+            "frozen_value": {
+              "id": "target_region_response",
+              "role": "response_or_outcome"
+            }
+          },
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF05.json",
+            "blob_sha": "e37ec991239c65993b7c5521aafe396feeb8af33",
+            "json_pointer": "/claim_core/relations/2",
+            "frozen_value": {
+              "id": "r3",
+              "kind": "maps_to",
+              "arguments": [
+                "functional_imaging_probe",
+                "target_region_response"
+              ]
+            }
+          }
+        ],
+        "notes": []
+      },
+      "derived-feature candidates": [
+        "selectivity is expressible as Q over O values indexed by Pi classes",
+        "physical_hidden_cause is carried as a member/content of the Pi-defined condition structure rather than promoted to C",
+        "no P_in is required merely because different story conditions were presented"
+      ],
+      "unmapped residual": [],
+      "verdict": "FULL",
+      "notes": [
+        "BLF05 directly supports Pi as a classificatory/experimental boundary and shows that P_out can occur without a separately frozen P_in."
+      ],
+      "frozen_archetype_membership": {
+        "artifact": "research/paper2/blf_archetype_reconstruction_v1.json",
+        "blob_sha": "55a43d4c3c8bba642c88ba763fbaed8415cc1dc6",
+        "archetype_ids": [
+          "A-0b55310ea2ae",
+          "A-21a150b8553b",
+          "A-351ac011d2cd",
+          "A-35648db94885",
+          "A-38e31229cbbb",
+          "A-3a1a07a7775c",
+          "A-3b814de4da04",
+          "A-550bcb8c1b32",
+          "A-612fa3c23c7e",
+          "A-7c8e04dac099",
+          "A-9caba981ee56",
+          "A-ac1da8f009e8",
+          "A-ac5e484032b0",
+          "A-e29437ea9d69",
+          "A-e8022c15a948",
+          "A-ec0e1eb76d34",
+          "A-ff871b50cd64"
+        ]
+      }
+    },
+    {
+      "claim_id": "BLF06",
+      "grammar_roles_instantiated": [
+        "X",
+        "Q",
+        "P_in",
+        "P_out",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "supported_relations": [
+        {
+          "frozen_relation_id": "r1",
+          "grammar_relation": "derived K feature: X(initial estimate) + O_in(population rate) -> discrepancy_magnitude"
+        },
+        {
+          "frozen_relation_id": "r2",
+          "grammar_relation": "Q classification: X(initial estimate) + O_in(population rate) -> information_valence_rule class"
+        },
+        {
+          "frozen_relation_id": "r3",
+          "grammar_relation": "Q-conditioned K: discrepancy magnitude + valence class -> update_amount"
+        },
+        {
+          "frozen_relation_id": "r4",
+          "grammar_relation": "Q-conditioned difference in O(update_amount) across valence classes"
+        },
+        {
+          "frozen_relation_id": "r5",
+          "grammar_relation": "T only: initial estimate < presented population rate < revised estimate"
+        },
+        {
+          "frozen_relation_id": "r6",
+          "grammar_relation": "derived K feature: initial estimate + revised estimate -> update_amount"
+        },
+        {
+          "frozen_relation_id": "r7",
+          "grammar_relation": "P_out structured probe exposes discrepancy/valence/update relation; P_in presents the population-rate information"
+        }
+      ],
+      "Pi": {
+        "status": "ABSENT",
+        "mapping": "No primitive Pi is frozen.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/reference_structural_adjudication_v1/BLF06.json",
+            "blob_sha": "f1aa2dcd6d0c3c4d97789a7f6636d043b8d9a3fd",
+            "json_pointer": "/controls/partition_Pi",
+            "frozen_value": {
+              "state": "not_required"
+            }
+          }
+        ],
+        "notes": [
+          "The desirable/undesirable split may be Q-induced classification, but is not promoted to primitive Pi."
+        ]
+      },
+      "X": {
+        "status": "SUPPORTED",
+        "mapping": "initial_probability_estimate is the frozen S/configuration carrier.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF06.json",
+            "blob_sha": "ccee57070fe858e3064427ff75b4b03da620b2f5",
+            "json_pointer": "/claim_core/nodes/0",
+            "frozen_value": {
+              "id": "initial_probability_estimate",
+              "role": "state_or_structure"
+            }
+          }
+        ],
+        "notes": []
+      },
+      "C": {
+        "status": "ABSENT",
+        "mapping": "No resource/admissibility control is frozen.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/reference_structural_adjudication_v1/BLF06.json",
+            "blob_sha": "f1aa2dcd6d0c3c4d97789a7f6636d043b8d9a3fd",
+            "json_pointer": "/controls/resource_C",
+            "frozen_value": {
+              "state": "not_required"
+            }
+          }
+        ],
+        "notes": []
+      },
+      "Q": {
+        "status": "SUPPORTED",
+        "mapping": "information_valence_rule is a source-declared reference-relative classification criterion that conditions updating.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/reference_structural_adjudication_v1/BLF06.json",
+            "blob_sha": "f1aa2dcd6d0c3c4d97789a7f6636d043b8d9a3fd",
+            "json_pointer": "/controls/criterion_Q",
+            "frozen_value": {
+              "state": "present",
+              "claim_node_ids": [
+                "information_valence_rule"
+              ]
+            }
+          },
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF06.json",
+            "blob_sha": "ccee57070fe858e3064427ff75b4b03da620b2f5",
+            "json_pointer": "/claim_core/relations/1",
+            "frozen_value": {
+              "id": "r2",
+              "kind": "maps_to",
+              "arguments": [
+                "initial_probability_estimate",
+                "presented_population_rate",
+                "information_valence_rule"
+              ]
+            }
+          },
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF06.json",
+            "blob_sha": "ccee57070fe858e3064427ff75b4b03da620b2f5",
+            "json_pointer": "/claim_core/relations/2",
+            "frozen_value": {
+              "id": "r3",
+              "kind": "depends_on",
+              "arguments": [
+                "update_amount",
+                "discrepancy_magnitude",
+                "information_valence_rule"
+              ]
+            }
+          }
+        ],
+        "notes": [
+          "Q is categorical/reference-relative here, not scalar."
+        ]
+      },
+      "P_in": {
+        "status": "SUPPORTED",
+        "mapping": "The estimate-information-reestimate procedure presents population-rate information between two elicited estimates.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF06.json",
+            "blob_sha": "ccee57070fe858e3064427ff75b4b03da620b2f5",
+            "json_pointer": "/claim_core/nodes/1",
+            "frozen_value": {
+              "id": "presented_population_rate",
+              "role": "available_information",
+              "description": "presented average probability of the same adverse event for a person in the participant's socio-cultural environment"
+            }
+          },
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF06.json",
+            "blob_sha": "ccee57070fe858e3064427ff75b4b03da620b2f5",
+            "json_pointer": "/claim_core/nodes/6",
+            "frozen_value": {
+              "id": "information_update_probe",
+              "role": "probe",
+              "description": "estimate-information-reestimate procedure that permits separate analysis of desirable and undesirable information"
+            }
+          },
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF06.json",
+            "blob_sha": "ccee57070fe858e3064427ff75b4b03da620b2f5",
+            "json_pointer": "/claim_core/relations/4",
+            "frozen_value": {
+              "id": "r5",
+              "kind": "precedes",
+              "arguments": [
+                "initial_probability_estimate",
+                "presented_population_rate",
+                "revised_probability_estimate"
+              ]
+            }
+          }
+        ],
+        "notes": []
+      },
+      "P_out": {
+        "status": "SUPPORTED",
+        "mapping": "The procedure elicits initial/revised estimates and exposes update amount; r7 explicitly maps the structured probe to the measured relation.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/reference_structural_adjudication_v1/BLF06.json",
+            "blob_sha": "f1aa2dcd6d0c3c4d97789a7f6636d043b8d9a3fd",
+            "json_pointer": "/controls/probe_P",
+            "frozen_value": {
+              "state": "present",
+              "claim_node_ids": [
+                "information_update_probe"
+              ]
+            }
+          },
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF06.json",
+            "blob_sha": "ccee57070fe858e3064427ff75b4b03da620b2f5",
+            "json_pointer": "/claim_core/relations/6",
+            "frozen_value": {
+              "id": "r7",
+              "kind": "maps_to",
+              "arguments": [
+                "information_update_probe",
+                "discrepancy_magnitude",
+                "information_valence_rule",
+                "update_amount"
+              ]
+            }
+          }
+        ],
+        "notes": []
+      },
+      "K": {
+        "status": "SUPPORTED",
+        "mapping": "The claim contains computed/dependence structure for discrepancy, valence-conditioned revision, and update amount, independently of the temporal ordering.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF06.json",
+            "blob_sha": "ccee57070fe858e3064427ff75b4b03da620b2f5",
+            "json_pointer": "/claim_core/relations/0",
+            "frozen_value": {
+              "id": "r1",
+              "kind": "maps_to"
+            }
+          },
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF06.json",
+            "blob_sha": "ccee57070fe858e3064427ff75b4b03da620b2f5",
+            "json_pointer": "/claim_core/relations/2",
+            "frozen_value": {
+              "id": "r3",
+              "kind": "depends_on"
+            }
+          },
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF06.json",
+            "blob_sha": "ccee57070fe858e3064427ff75b4b03da620b2f5",
+            "json_pointer": "/claim_core/relations/5",
+            "frozen_value": {
+              "id": "r6",
+              "kind": "maps_to"
+            }
+          }
+        ],
+        "notes": []
+      },
+      "T": {
+        "status": "SUPPORTED",
+        "mapping": "A time index and explicit initial-estimate -> information -> revised-estimate ordering are frozen.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/reference_structural_adjudication_v1/BLF06.json",
+            "blob_sha": "f1aa2dcd6d0c3c4d97789a7f6636d043b8d9a3fd",
+            "json_pointer": "/temporal",
+            "frozen_value": {
+              "time_index": "present",
+              "history_window": "not_required",
+              "future_horizon": "not_required",
+              "recurrence": "not_required",
+              "persistence": "not_required",
+              "ordering_count": 2
+            }
+          },
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF06.json",
+            "blob_sha": "ccee57070fe858e3064427ff75b4b03da620b2f5",
+            "json_pointer": "/claim_core/relations/4",
+            "frozen_value": {
+              "id": "r5",
+              "kind": "precedes"
+            }
+          }
+        ],
+        "notes": [
+          "r5 is kept as T structure; K is supported separately by r1/r3/r6."
+        ]
+      },
+      "rho/O": {
+        "status": "SUPPORTED",
+        "mapping": "presented_population_rate is incoming information; revised_probability_estimate and update_amount are outgoing responses/readouts.",
+        "evidence": [
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF06.json",
+            "blob_sha": "ccee57070fe858e3064427ff75b4b03da620b2f5",
+            "json_pointer": "/claim_core/nodes/1",
+            "frozen_value": {
+              "id": "presented_population_rate",
+              "role": "available_information"
+            }
+          },
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF06.json",
+            "blob_sha": "ccee57070fe858e3064427ff75b4b03da620b2f5",
+            "json_pointer": "/claim_core/nodes/4",
+            "frozen_value": {
+              "id": "revised_probability_estimate",
+              "role": "response_or_outcome"
+            }
+          },
+          {
+            "source_file": "research/paper2/chatgpt_reference_claimir_v1/BLF06.json",
+            "blob_sha": "ccee57070fe858e3064427ff75b4b03da620b2f5",
+            "json_pointer": "/claim_core/nodes/5",
+            "frozen_value": {
+              "id": "update_amount",
+              "role": "response_or_outcome"
+            }
+          }
+        ],
+        "notes": []
+      },
+      "derived-feature candidates": [
+        "discrepancy_magnitude is a derived K quantity from X and O_in, not a new primitive role",
+        "desirable/undesirable classes are a Q-induced partition candidate, but primitive Pi remains absent",
+        "update_amount is derivable from repeated estimate readouts across T",
+        "no persistence/carry relation is inferred from the repeated estimates"
+      ],
+      "unmapped residual": [],
+      "verdict": "FULL",
+      "notes": [
+        "The revised estimate is frozen as O rather than a second S/X coordinate; Grammar v0 can represent the claim as a readout of the post-update configuration without inventing a frozen X_{t+1} node."
+      ],
+      "frozen_archetype_membership": {
+        "artifact": "research/paper2/blf_archetype_reconstruction_v1.json",
+        "blob_sha": "55a43d4c3c8bba642c88ba763fbaed8415cc1dc6",
+        "archetype_ids": [
+          "A-0b55310ea2ae",
+          "A-21a150b8553b",
+          "A-222f4d7db95b",
+          "A-2452beea32d0",
+          "A-35648db94885",
+          "A-3a1a07a7775c",
+          "A-550bcb8c1b32",
+          "A-560840a56e6f",
+          "A-56c48405d22c",
+          "A-612fa3c23c7e",
+          "A-9caba981ee56",
+          "A-ac5e484032b0",
+          "A-be00a08c3649",
+          "A-e29437ea9d69",
+          "A-ff871b50cd64"
+        ]
+      }
+    }
+  ],
+  "lane_summary": {
+    "BLF coverage count": 6,
+    "FULL / PARTIAL / RESIDUAL counts": {
+      "FULL": 6,
+      "PARTIAL": 0,
+      "RESIDUAL": 0
+    },
+    "role frequency": {
+      "Pi": {
+        "SUPPORTED": 1,
+        "PARTIAL": 0,
+        "ABSENT": 5
+      },
+      "X": {
+        "SUPPORTED": 5,
+        "PARTIAL": 0,
+        "ABSENT": 1
+      },
+      "C": {
+        "SUPPORTED": 0,
+        "PARTIAL": 0,
+        "ABSENT": 6
+      },
+      "Q": {
+        "SUPPORTED": 5,
+        "PARTIAL": 0,
+        "ABSENT": 1
+      },
+      "P_in": {
+        "SUPPORTED": 5,
+        "PARTIAL": 0,
+        "ABSENT": 1
+      },
+      "P_out": {
+        "SUPPORTED": 6,
+        "PARTIAL": 0,
+        "ABSENT": 0
+      },
+      "K": {
+        "SUPPORTED": 6,
+        "PARTIAL": 0,
+        "ABSENT": 0
+      },
+      "T": {
+        "SUPPORTED": 4,
+        "PARTIAL": 0,
+        "ABSENT": 2
+      },
+      "rho/O": {
+        "SUPPORTED": 6,
+        "PARTIAL": 0,
+        "ABSENT": 0
+      }
+    },
+    "recurrent substructures": [
+      {
+        "structure": [
+          "P_out",
+          "rho/O"
+        ],
+        "support": "6/6 BLF claims",
+        "frozen_archetype_witness": {
+          "archetype_id": "A-21a150b8553b",
+          "active_axes": [
+            "O",
+            "P"
+          ],
+          "support_size": 6
+        }
+      },
+      {
+        "structure": [
+          "X",
+          "P_out",
+          "rho/O"
+        ],
+        "support": "5/6 BLF claims",
+        "frozen_archetype_witness": {
+          "archetype_id": "A-35648db94885",
+          "active_axes": [
+            "O",
+            "P",
+            "S"
+          ],
+          "support_size": 5
+        }
+      },
+      {
+        "structure": [
+          "Q",
+          "P_out",
+          "rho/O"
+        ],
+        "support": "5/6 BLF claims",
+        "frozen_archetype_witness": {
+          "archetype_id": "A-612fa3c23c7e",
+          "active_axes": [
+            "O",
+            "P",
+            "Q"
+          ],
+          "support_size": 5
+        }
+      },
+      {
+        "structure": [
+          "X",
+          "P_out",
+          "T",
+          "rho/O"
+        ],
+        "support": "4/6 BLF claims",
+        "frozen_archetype_witness": {
+          "archetype_id": "A-560840a56e6f",
+          "active_axes": [
+            "O",
+            "P",
+            "S",
+            "T"
+          ],
+          "support_size": 4
+        }
+      },
+      {
+        "structure": [
+          "K",
+          "P_out",
+          "rho/O"
+        ],
+        "support": "4/6 BLF claims",
+        "frozen_archetype_witness": {
+          "archetype_id": "A-3b814de4da04",
+          "active_axes": [
+            "K",
+            "O",
+            "P"
+          ],
+          "support_size": 4,
+          "edge": "P maps_to O"
+        }
+      }
+    ],
+    "grammar distinctions required by BLF": [
+      "K must remain a typed relation/dependence, not only a deterministic X->X function; BLF04 has K-like dependence with no explicit X coordinate.",
+      "P must remain directionally factorizable: a single frozen probe can contain a P_in manipulation/presentation and a P_out measurement/readout.",
+      "rho/O must admit both incoming information/access and outgoing response/readout; it cannot mean terminal output only.",
+      "Q must cover adaptive relevance rules, stopping thresholds, logical correctness criteria, selectivity criteria, and reference-relative categorical valence without requiring a scalar.",
+      "Pi must allow classificatory/experimental partitions; BLF05 does not require a physical boundary.",
+      "T must remain separable from K; BLF02 and BLF06 have explicit ordering while separate relations provide the K evidence.",
+      "Null-axis experimental condition nodes may be retained as typed P_in parameters or Pi members when structural probe/partition evidence supports that placement; they are not automatically C."
+    ],
+    "roles not needed by BLF": [
+      "C is not instantiated by any BLF claim.",
+      "No single BLF claim requires all Grammar v0 roles.",
+      "Primitive persistence/carry is not needed anywhere in BLF."
+    ],
+    "residual structures not expressible by Grammar v0": [],
+    "possible compression / derived-feature cases": [
+      "BLF01 outcome weighting is a Q-conditioned K feature over T rather than a separate primitive.",
+      "BLF02 matched-association structure is a typed P_in setting/context parameter rather than C.",
+      "BLF03 speed-accuracy tradeoff is derived from Q-conditioned K/rho over T; the bound is Q rather than C.",
+      "BLF04 validity and believability are factorial P_in settings; their interaction is K-level structure over O.",
+      "BLF05 selectivity is Q over rho/O indexed by Pi classes.",
+      "BLF06 discrepancy magnitude and update amount are derived relational quantities; Q may induce a desirable/undesirable classification without requiring primitive Pi."
+    ],
+    "potential threats to Grammar v0": [
+      {
+        "threat": "P_in payload/context under-specification",
+        "status": "NOT_A_COUNTEREXAMPLE_ON_CURRENT_GRAMMAR",
+        "detail": "BLF02/03/04 use essential frozen condition nodes with no old basis axis. They fit only if typed P_in operations may carry controlled input/settings. A narrower P_in definition would leave residuals."
+      },
+      {
+        "threat": "Overly narrow K as X->X transition only",
+        "status": "NOT_A_COUNTEREXAMPLE_ON_CURRENT_GRAMMAR",
+        "detail": "BLF04 requires typed dependence from probe settings to O without an explicit X coordinate. The current Grammar v0 definition explicitly permits typed dependence; narrowing K to a state-update function would fail BLF04."
+      },
+      {
+        "threat": "O as terminal output only",
+        "status": "REFUTED_BY_BLF",
+        "detail": "BLF01/02/03/06 contain frozen incoming information O coordinates as well as outgoing response O coordinates."
+      },
+      {
+        "threat": "Q as scalar reward/value only",
+        "status": "REFUTED_BY_BLF",
+        "detail": "BLF Q instances include an adaptive weighting rule, threshold/stopping criterion, logical necessity criterion, selectivity criterion, and reference-relative categorical valence rule."
+      }
+    ],
+    "counterexample_to_grammar_v0": false,
+    "counterexample_statement": "No BLF01-BLF06 frozen structure requires a new primitive beyond Grammar v0 when typed P_in parameters and relational K are interpreted as already allowed by #321. No frozen residual remains.",
+    "architecture_consequence": "NONE"
+  }
+}
