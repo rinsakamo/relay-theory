@@ -25,5 +25,7 @@ jobs:
           python-version: "3.12"
       - name: Determinism and recovery self-test
         run: python scripts/paper2_global_archetype_reconstruction.py --self-test
-      - name: Emit global report
-        run: python scripts/paper2_global_archetype_reconstruction.py --emit-report
+      - name: Regenerate global report
+        run: python scripts/paper2_global_archetype_reconstruction.py --emit-report --output /tmp/global_archetype_reconstruction_v1.json
+      - name: Verify frozen global report
+        run: cmp /tmp/global_archetype_reconstruction_v1.json research/paper2/global_archetype_reconstruction_v1.json
