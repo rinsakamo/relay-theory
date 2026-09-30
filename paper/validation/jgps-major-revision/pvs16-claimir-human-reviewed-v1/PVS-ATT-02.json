@@ -1,0 +1,147 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "PVS-ATT-02.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1523/JNEUROSCI.19-05-01736.1999",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Journal of Neuroscience 19(5), pp.1736-1753 abstract: two stimuli within one receptive field induce competing neuronal responses."
+      },
+      {
+        "span_id": "s2",
+        "locator": "Same abstract: directing task relevance to one member of the pair shifts the neuronal response toward the response produced by that stimulus alone."
+      },
+      {
+        "span_id": "s3",
+        "locator": "Same abstract: with a single stimulus there is less competition to resolve and the selection manipulation has a more limited effect."
+      }
+    ],
+    "authors": [
+      "John H. Reynolds",
+      "Leonardo Chelazzi",
+      "Robert Desimone"
+    ],
+    "institutions": [],
+    "venue": "Journal of Neuroscience",
+    "citation_count": null,
+    "construct_labels": [
+      "attention",
+      "biased competition",
+      "visual attention"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "jgps-pvs16-source-grounded-candidate-v1:#365",
+    "extracted_at": "2026-09-30",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "relation",
+    "modality": "probabilistic",
+    "scope": {
+      "conditions": [
+        "one or two visual stimuli presented within a neuron's receptive field"
+      ],
+      "population": [
+        "macaques"
+      ],
+      "substrate": [
+        "neurons in visual areas V2 and V4"
+      ],
+      "task": [
+        "behavioral selection of one visual stimulus while recording neuronal responses"
+      ],
+      "temporal_scope": [
+        "stimulus presentation followed by task-directed selection"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "stimulus_pair",
+        "role": "condition",
+        "description": "two visual stimuli presented together within one receptive field",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "task_relevance_assignment",
+        "role": "intervention",
+        "description": "behavioral instruction that makes one member of the pair currently relevant",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "neuronal_response",
+        "role": "response_or_outcome",
+        "description": "recorded response of a visual neuron",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "single_stimulus_reference",
+        "role": "state_or_structure",
+        "description": "response pattern elicited when a candidate stimulus is presented alone",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "changes",
+        "arguments": [
+          "stimulus_pair",
+          "neuronal_response"
+        ],
+        "description": "adding a second stimulus changes the neuronal response in the direction associated with the additional stimulus",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "changes",
+        "arguments": [
+          "task_relevance_assignment",
+          "neuronal_response",
+          "single_stimulus_reference"
+        ],
+        "description": "assigning behavioral relevance to one member of the pair shifts the response toward that member's single-stimulus reference",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "differs",
+        "arguments": [
+          "stimulus_pair",
+          "single_stimulus_reference",
+          "neuronal_response"
+        ],
+        "description": "the task-dependent modulation is greater when competing stimuli are present than when a single stimulus is present",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}

@@ -1,0 +1,182 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "PVS-LRN-02.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1073/pnas.0602659103",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "PNAS 103(31), pp.11778-11783 abstract: a demanding concurrent secondary task changes which of two separable neural routes mediates task performance."
+      },
+      {
+        "span_id": "s2",
+        "locator": "Same abstract: dual-task conditions preserve overall accuracy while reducing flexibly accessible acquired knowledge."
+      },
+      {
+        "span_id": "s3",
+        "locator": "Same abstract: single-task performance covaries with medial-temporal activity, whereas dual-task performance covaries with striatal activity."
+      }
+    ],
+    "authors": [
+      "Karin Foerde",
+      "Barbara J. Knowlton",
+      "Russell A. Poldrack"
+    ],
+    "institutions": [],
+    "venue": "Proceedings of the National Academy of Sciences",
+    "citation_count": null,
+    "construct_labels": [
+      "declarative memory",
+      "habit learning",
+      "memory systems",
+      "distraction"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "jgps-pvs16-source-grounded-candidate-v1:#365",
+    "extracted_at": "2026-09-30",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "comparison",
+    "modality": "probabilistic",
+    "scope": {
+      "conditions": [
+        "single-task and demanding concurrent-task acquisition conditions"
+      ],
+      "population": [
+        "human participants"
+      ],
+      "substrate": [
+        "medial-temporal and striatal neural routes"
+      ],
+      "task": [
+        "probabilistic task acquisition with or without a concurrent secondary task"
+      ],
+      "temporal_scope": [
+        "acquisition followed by later assessment of acquired knowledge"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "concurrent_task",
+        "role": "intervention",
+        "description": "addition of a demanding secondary task during acquisition",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "overall_accuracy",
+        "role": "response_or_outcome",
+        "description": "behavioral accuracy during the acquisition task",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "transferable_knowledge",
+        "role": "response_or_outcome",
+        "description": "degree to which acquired information remains flexibly applicable in a new setting",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "medial_temporal_activity",
+        "role": "state_or_structure",
+        "description": "activity of the medial-temporal route during task performance",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "striatal_activity",
+        "role": "state_or_structure",
+        "description": "activity of the striatal route during task performance",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "other",
+        "arguments": [
+          "concurrent_task",
+          "overall_accuracy"
+        ],
+        "description": "overall acquisition-task accuracy is comparatively preserved when the concurrent secondary task is added",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "other",
+        "arguments": [
+          "overall_accuracy",
+          "medial_temporal_activity"
+        ],
+        "description": "under the single-task condition, behavioral performance covaries with medial-temporal activity",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "other",
+        "arguments": [
+          "overall_accuracy",
+          "striatal_activity"
+        ],
+        "description": "under the concurrent-task condition, behavioral performance covaries with striatal activity",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "changes",
+        "arguments": [
+          "concurrent_task",
+          "medial_temporal_activity",
+          "striatal_activity"
+        ],
+        "description": "the concurrent task changes the relative neural route associated with successful performance",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "changes",
+        "arguments": [
+          "concurrent_task",
+          "transferable_knowledge"
+        ],
+        "description": "adding the concurrent secondary task reduces later flexible use of the acquired information",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}

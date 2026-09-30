@@ -1,0 +1,141 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "PVS-MEM-01.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1126/science.7414331",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Science 210(4466), published pp.207-210, source-native abstract: impaired participants acquired mirror-transformation reading performance at the matched-comparison rate and retained it for at least three months."
+      }
+    ],
+    "authors": [
+      "N. J. Cohen",
+      "L. R. Squire"
+    ],
+    "institutions": [],
+    "venue": "Science",
+    "citation_count": null,
+    "construct_labels": [
+      "amnesia",
+      "mirror-reading skill",
+      "procedural memory"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "jgps-pvs16-source-grounded-candidate-v1:#365",
+    "extracted_at": "2026-09-30",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "comparison",
+    "modality": "comparative",
+    "scope": {
+      "conditions": [
+        "comparison between a clinically impaired group and matched participants"
+      ],
+      "population": [
+        "human participants"
+      ],
+      "substrate": [],
+      "task": [
+        "repeated reading of visually transformed text"
+      ],
+      "temporal_scope": [
+        "acquisition followed by a retention test at least three months later"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "impaired_group",
+        "role": "condition",
+        "description": "participants identified in the source as amnesic patients",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "matched_group",
+        "role": "condition",
+        "description": "matched comparison participants",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "transformed_text_probe",
+        "role": "probe",
+        "description": "repeated performance on visually transformed text",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "acquisition_performance",
+        "role": "response_or_outcome",
+        "description": "rate of improvement during repeated task performance",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "delayed_retention",
+        "role": "response_or_outcome",
+        "description": "persistence of acquired task performance after a multi-month interval",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "equivalent",
+        "arguments": [
+          "impaired_group",
+          "matched_group",
+          "acquisition_performance"
+        ],
+        "description": "the two groups showed equivalent acquisition rates on the tested task",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "maps_to",
+        "arguments": [
+          "transformed_text_probe",
+          "acquisition_performance"
+        ],
+        "description": "the repeated transformed-text procedure exposes change in task performance",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "other",
+        "arguments": [
+          "impaired_group",
+          "delayed_retention"
+        ],
+        "description": "the impaired group retained the acquired performance for at least the reported multi-month interval",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}

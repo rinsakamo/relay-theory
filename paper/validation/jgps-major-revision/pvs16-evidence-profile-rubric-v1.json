@@ -1,0 +1,80 @@
+{
+  "schema_version": "paper2-pvs16-evidence-rubric-v1",
+  "purpose": "Add an epistemic annotation layer to the human-reviewed PVS-16 ClaimIR without changing ClaimIR structure or Grammar-v0 mapping.",
+  "authority_boundary": {
+    "inputs": [
+      "PVS-16 human-reviewed ClaimIR",
+      "frozen PVS-16 source spans",
+      "frozen PVS-16 source-authority metadata"
+    ],
+    "forbidden_inputs": [
+      "Grammar-v0 mapping",
+      "post-mapping fit",
+      "new external source search"
+    ],
+    "grammar_mapping_inspected": false
+  },
+  "evidence_level_basis": "claim-to-frozen-source warrant directness, not journal prestige, truth probability, source quality, or overall scientific importance",
+  "levels": {
+    "E0": {
+      "label": "MODEL_SYNTHESIS_OR_PROPOSAL",
+      "rule": "The relation is proposed, defined, synthesized, or model-specified, but the frozen evidence packet does not expose a direct empirical test of that exact relation."
+    },
+    "E1": {
+      "label": "DIRECT_NONINTERVENTIONAL",
+      "rule": "The frozen evidence packet directly reports observation, comparison, retention, covariance/correlation, or model-mediated empirical association, without direct manipulation of the relation-defining variable."
+    },
+    "E2": {
+      "label": "DIRECT_INTERVENTIONAL",
+      "rule": "The frozen evidence packet directly reports an experimental intervention, perturbation, or manipulation of the relation-defining variable with a corresponding outcome."
+    },
+    "E3": {
+      "label": "EXPLICIT_REPLICATED_INTERVENTIONAL",
+      "rule": "E2 criteria are met and the frozen evidence packet explicitly states confirmation across multiple experiments, tasks, or comparable intervention contexts for the same relation."
+    }
+  },
+  "orthogonal_axes": {
+    "source_basis": [
+      "PRIMARY_EMPIRICAL",
+      "REVIEW_SYNTHESIS",
+      "MODEL_OR_THEORY",
+      "MIXED_MODEL_EMPIRICAL"
+    ],
+    "support_directness": [
+      "DIRECT",
+      "SYNTHESIZED",
+      "MODEL_MEDIATED"
+    ],
+    "causal_leverage": [
+      "INTERVENTIONAL",
+      "CONTROLLED_COMPARISON",
+      "ASSOCIATIONAL",
+      "LONGITUDINAL_DESCRIPTIVE",
+      "MODEL_SPECIFICATION",
+      "NOT_APPLICABLE"
+    ],
+    "breadth": [
+      "SINGLE_STUDY_OR_CONTEXT",
+      "MULTIPLE_CONDITIONS_SAME_SOURCE",
+      "EXPLICIT_MULTIPLE_TASKS_OR_POPULATIONS",
+      "EXPLICIT_MULTIPLE_EXPERIMENTS",
+      "REVIEWED_LITERATURE",
+      "MODEL_DEFINITION"
+    ]
+  },
+  "aggregation": {
+    "claim_level": "Do not collapse to one score. Report the minimum and maximum relation-level evidence levels present in the claim.",
+    "ordering": [
+      "E0",
+      "E1",
+      "E2",
+      "E3"
+    ]
+  },
+  "interpretation_constraints": [
+    "E0 does not mean false or low-quality; it means the frozen packet does not expose a direct empirical test of the exact relation.",
+    "E3 is not a universal quality ranking over E2; it adds explicit cross-context replication breadth.",
+    "Source visibility (abstract-only versus full text) is recorded separately and does not change evidence level.",
+    "Evidence profiles must not alter ClaimIR, structural adjudication, bounded Archetype/XLike identities, or Grammar-v0 mappings."
+  ]
+}
