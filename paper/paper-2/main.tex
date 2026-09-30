@@ -1,0 +1,472 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{natbib}
+\usepackage{xurl}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\usepackage[hidelinks]{hyperref}
+
+\title{Toward a Concept-Neutral Measurement Basis for Cognitive Capacities}
+\author{Rintaro Sakamoto\\Independent Scholar}
+\date{}
+
+\newcommand{\Pin}{P_{\mathrm{in}}}
+\newcommand{\Pout}{P_{\mathrm{out}}}
+\newcommand{\Gsys}{G_{\mathrm{cog}}}
+\newcommand{\World}{W}
+\newcommand{\Coupling}{\Gamma}
+\newcommand{\Experiment}{E_{\mathrm{exp}}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Scientific theories of cognition divide mental capacities into constructs such as memory, learning, skill, attention, prediction, control, belief, and concept. Those labels organize literatures but do not by themselves establish structural individuation. This paper develops a concept-neutral procedure for comparing cognitive-capacity claims under partial observability and bounded information. A designed stress-test corpus of 60 claims---48 primary claims across eight construct strata and 12 non-tuning challenge claims---was converted into source-grounded ClaimIR representations and reviewed against source text. The analysis then projected claims into a frozen structural basis, compared whole-claim structures, diagnosed failure modes, reconstructed bounded reusable substructures, and reverse-projected the resulting structures into a compact system-role grammar.
+
+The preserved negative result is central: all 1,770 whole-claim pairs were incomparable under the frozen rich comparison surface. A secondary post-atlas bounded-subobject reconstruction, performed under frozen forgetting rules, then yielded 213 lane-local candidates, 206 unique global Archetype/XLike objects, seven exact cross-lane equivalence components, 470 direct refinement edges, 2,894 strict subobject relations in transitive closure, and 99 cross-lane families. Fifty-nine of 60 claims were covered by at least one surviving bounded object.
+
+A subsequent reverse projection supports a recurrent system-role grammar with roles for individuation or partition, configuration, realizability constraints, criterion-conditioned orientation, directional interface operations, typed transformation or dependence, temporal succession, and boundary-relative observation. Across the 60 claims, 21 were fully represented, 22 partially represented, and 17 retained residual structure. Residual adjudication found no top-level role gap: 13 residuals were primarily source-context parameters and four were primarily claim-language relation gaps. The proposal is deliberately bounded: it is a source-audited measurement-oriented reconstruction over a designed corpus, not a complete scientific claim language, an ontology of nine cognitive substances, an absolute mathematical minimality theorem, or evidence of independent extraction reliability.
+\end{abstract}
+
+\section{Introduction}
+
+Cognitive science inherits a large vocabulary of capacities: memory, attention, learning, belief, skill, prediction, control, concepts, and many others. These labels are useful for communication and literature organization, but they create a methodological risk. Different names can suggest distinct capacities before structural evidence for that distinction has been established, while one familiar name can cover heterogeneous mechanisms, measurements, timescales, and experimental operations.
+
+The construct-validity tradition already rejects the idea that a psychological construct validates itself by being named \citep{CronbachMeehl1955ConstructValidity}. Stronger causal accounts of validity likewise emphasize that a measurement claim requires more than terminological continuity \citep{BorsboomMellenberghVanHeerden2004Validity}. Cognitive-ontology projects make the problem computationally explicit by representing mental concepts and their links to experimental tasks \citep{PoldrackEtAl2011CognitiveAtlas,TurnerLaird2012CogPO,PoldrackYarkoni2016CognitiveOntologies}. The present paper asks a narrower question: can scientific claims about cognitive capacities be compared on a common structural surface without allowing historical construct names or source authority to determine the result?
+
+The target is not a replacement dictionary of cognition. It is an auditable sequence:
+\[
+\begin{aligned}
+\text{source claim}
+&\rightarrow
+\text{label-suppressed structural representation}
+\rightarrow
+\text{comparison}
+\\
+&\rightarrow
+\text{bounded reusable structure}
+\rightarrow
+\text{system-role grammar}.
+\end{aligned}
+\]
+
+The setting is cognition under partial observability and bounded information. Scientific papers rarely expose a complete cognitive system. They provide restricted observations, interventions, behavioral outcomes, neural measurements, model variables, task manipulations, and relations among them. A common measurement surface must therefore compare partial structures without pretending that every source reveals a complete mechanism.
+
+Two safeguards govern the analysis. First, author identity, institution, venue, citation count, and historical construct label are excluded from the structural comparison logic. Second, structural similarity is never promoted to semantic or ontological identity.
+
+The methodological novelty claim is intentionally narrow. Generic dynamics, POMDP components, boundary formalisms, lenses, category theory, and the individual roles in the final grammar all have substantial prior art. The candidate contribution here is the integration of source-grounded label suppression, frozen structural comparison, preservation of failed compression attempts, bounded subobject reconstruction, reverse-projection testing, residual adjudication, and strict-preservation comparators into one empirical reconstruction protocol. Historical firstness for that integration is not claimed.
+
+Figure~\ref{fig:pipeline} summarizes the analysis. The preserved whole-claim failure is not a discarded pilot; it is the point at which the unit of reuse changes from entire claims to bounded subobjects.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+  node distance=6mm and 7mm,
+  box/.style={draw, rounded corners, align=center, inner sep=4pt, text width=2.55cm},
+  arrow/.style={-{Latex[length=2mm]}, thick}
+]
+\node[box] (source) {60 reviewed\\source claims};
+\node[box, right=of source] (claimir) {ClaimIR + frozen\\basis};
+\node[box, right=of claimir] (phi) {Whole-claim\\comparison};
+\node[box, below=of phi] (fail) {\(1770/1770\)\\incomparable};
+\node[box, left=of fail] (diag) {Failure\\diagnostic};
+\node[box, left=of diag] (arch) {Secondary bounded\\reconstruction};
+\node[box, below=of arch] (grammar) {Grammar v0\\reverse projection};
+\node[box, right=of grammar] (hostile) {Residual +\\comparator tests};
+\draw[arrow] (source) -- (claimir);
+\draw[arrow] (claimir) -- (phi);
+\draw[arrow] (phi) -- (fail);
+\draw[arrow] (fail) -- (diag);
+\draw[arrow] (diag) -- (arch);
+\draw[arrow] (arch) -- (grammar);
+\draw[arrow] (grammar) -- (hostile);
+\end{tikzpicture}
+\caption{Reconstruction sequence. Whole-claim failure is preserved and diagnosed before the secondary bounded-subobject reconstruction.}
+\label{fig:pipeline}
+\end{figure}
+
+\section{Methods}
+
+\subsection{Designed corpus}
+
+The bounded empirical target contains 60 claims. Forty-eight primary claims are divided evenly across eight historical construct strata. Twelve additional claims form a non-tuning challenge surface.
+
+\begin{table}[htbp]
+\centering
+\caption{Designed Paper 2 corpus. The corpus is a stress-test surface, not a probability sample or prevalence estimator.}
+\label{tab:corpus}
+\begin{tabular}{lrr}
+\toprule
+Surface & Design & Claims \\
+\midrule
+Primary & 8 strata \(\times\) 6 claims & 48 \\
+Challenge & 12 predeclared pressure classes & 12 \\
+\midrule
+Total & & 60 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The primary strata are Memory, Learning, Skill, Attention, Prediction, Control, Belief, and Concept. Challenge pressures include multi-timescale organization, stochastic or approximate structure, constitutive boundary pressure, compositional or systematic structure, embodied or world-coupled organization, normative or criterion structure, hybrid labels, label-coordinate mismatch, multi-condition structure, same-inventory/different-topology pressure, strict-refinement pressure, and high structural heterogeneity. Challenge claims were not permitted to tune the ClaimIR schema, working basis, or comparison semantics.
+
+\subsection{Source-grounded ClaimIR}
+
+Each selected source claim was represented in a machine-readable ClaimIR containing stable source identity, source-local evidence locators, claim scope and modality, typed nodes, typed relations, temporal information, control information, approximation state, and bridge assumptions.
+
+A language model assisted initial structured extraction, but its output was not treated as authority. Every retained record was reviewed against source text, and all 60 current records carry reviewed status. The scientific input to downstream analysis is therefore the source-audited ClaimIR corpus.
+
+Independent extraction reliability was not established. Historical local two-pass calibration transactions produced zero valid ClaimIR records in both the v2 and v3 real calibration runs, leaving no valid A/B agreement denominator. Paper 2 consequently claims auditability of the retained corpus, not inter-model agreement, autonomous extraction reliability, or deterministic language-model replay.
+
+\subsection{Frozen structural basis}
+
+The structural comparison suppresses source information that should not determine similarity merely by appearing in a paper. Author identity, institution, venue, citation count, historical construct label, source-local identifiers, and free-text presentation are excluded from comparison.
+
+The frozen working basis is
+\[
+B_{P2}=\{S,\Pi,K,O,T,C,Q,P\},
+\]
+interpreted as a measurement coordinate system rather than an ontology. Lexical shortcuts are forbidden: a source node named \emph{condition} is not automatically \(C\); a reward-like term does not exhaust \(Q\); temporal precedence is not automatically \(K\); and a partition need not be physical.
+
+\subsection{Whole-claim comparison}
+
+The frozen \(\Phi\) projection preserves claim type, modality, scope shape, typed topology, active basis coordinates, temporal presence states, control states, approximation mode, and bridge-grounding multiplicity. It forgets source authority and presentation metadata.
+
+Pairwise relations distinguish equivalence, refinement, forgetting, incomparability, and mutual-embed non-isomorphism. For 60 claims, the unordered comparison surface contains
+\[
+\binom{60}{2}=1770
+\]
+pairs.
+
+\subsection{Secondary bounded reconstruction}
+
+Because whole-claim comparison failed universally, the next analysis changed the \emph{unit of reuse}, not the frozen source representation. A secondary post-atlas reconstruction searched for bounded basis-subobjects recoverable under a frozen forgetting operator. The operator permits restriction to retained typed substructure but forbids arbitrary rewiring and semantic relabeling.
+
+Destructive controls tested trivial-core collapse, label dependence, permissive forgetting, richer competing cores, overlapping incomparable cores, cross-label recurrence, compatibility with whole-claim incomparability, and presentation invariance. No post-outcome abstraction threshold was added to manufacture recurrence.
+
+\subsection{Grammar v0 and hostile tests}
+
+Surviving bounded structures motivated a compact role reinterpretation:
+\[
+\Gsys=\{\Pi,X,C,Q,\Pin,\Pout,K,T,\rho/O\}.
+\]
+Here \(X\) is a generic configuration carrier; \(C\) is realizability/admissibility structure; \(Q\) is criterion-conditioned orientation; \(\Pin\) and \(\Pout\) are directional interface roles; \(K\) is typed transformation or dependence; \(T\) is succession or temporal indexing; and \(\rho/O\) is boundary-relative observation or trace.
+
+A mnemonic representation is
+\[
+X_{n+1}=K_{n;C,Q,\Pin}(X_n),
+\qquad
+O_n=\rho_{\Pi,C,\Pout,n}(X_n),
+\]
+without assuming that every claim instantiates every role.
+
+All 60 frozen claims were reverse-projected into Grammar v0 without rereading source papers or changing ClaimIR, \(B_{P2}\), \(\Phi\), structural adjudications, or bounded Archetype identities. Residuals were classified under a frozen taxonomy in which only \texttt{ROLE\_GAP} counted as prima facie evidence for an additional top-level system role.
+
+Two strict direct-preservation comparators were tested:
+\[
+G_{\mathrm{dyn}}=\{X,K,T\},
+\qquad
+G_{\mathrm{pomdp}}=\{X,P,K,\rho/O,Q,T\}.
+\]
+These are distinction-loss tests, not non-encodability theorems.
+
+
+\section{Results}
+
+\subsection{Whole-claim comparison fails}
+\label{sec:wholefail}
+
+The global frozen whole-claim result was:
+\[
+1770/1770=\text{INCOMPARABLE}.
+\]
+
+Across 3,540 directed comparisons, 3,518 failed at the scalar stage, six reached node-count comparison, 16 reached node-label multiset comparison, and none reached topology or embedding. Universal incomparability was therefore localized primarily to the enriched pre-topology comparison surface rather than to graph topology itself.
+
+This negative result is retained as evidence rather than removed from the final narrative.
+
+\subsection{Bounded reusable structure reappears}
+
+The secondary bounded reconstruction produced 213 lane-local candidate objects and 206 unique global Archetype/XLike objects. Seven exact cross-lane equivalence components survived. The global refinement structure contains 470 direct refinement edges and 2,894 strict subobject relations in transitive closure.
+
+The bounded family structure contains
+\[
+99\ \text{cross-lane families}
+\qquad\text{and}\qquad
+107\ \text{lane-local-only families},
+\]
+with 188 distinct support signatures. Fifty-nine of 60 claims are covered by at least one surviving bounded object. All eight destructive controls pass.
+
+Notably, 1,304 whole-claim pairs share at least one surviving Archetype despite every whole-claim pair being frozen as incomparable. Whole-claim identity and reusable substructure are therefore distinct questions on the same corpus.
+
+\subsection{Grammar-v0 reverse projection}
+
+The 60-claim reverse projection yields:
+\[
+\text{FULL}=21,
+\qquad
+\text{PARTIAL}=22,
+\qquad
+\text{RESIDUAL}=17.
+\]
+
+\begin{table}[htbp]
+\centering
+\caption{Grammar-v0 role frequency. A role is counted once per claim when its lane-local status is supported or partially supported.}
+\label{tab:roles}
+\begin{tabular}{lr@{\qquad}lr@{\qquad}lr}
+\toprule
+Role & Claims & Role & Claims & Role & Claims \\
+\midrule
+\(\Pi\) & 15 & \(X\) & 53 & \(C\) & 13 \\
+\(Q\) & 36 & \(\Pin\) & 29 & \(\Pout\) & 40 \\
+\(K\) & 57 & \(T\) & 47 & \(\rho/O\) & 56 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The directional interface split is empirically nontrivial: 26 claims instantiate both \(\Pin\) and \(\Pout\) in the same claim.
+
+The number and granularity of the nine roles are not claimed to be unique. Alternative factorizations may preserve equivalent distinctions. The empirical claim is only that the present inventory is nontrivial under the frozen direct-preservation contract.
+
+\subsection{Residuals do not establish a new top-level role}
+
+\begin{table}[htbp]
+\centering
+\caption{Primary residual classes. Only \texttt{ROLE\_GAP} was authorized as prima facie evidence for an additional top-level system role.}
+\label{tab:residuals}
+\begin{tabular}{lr}
+\toprule
+Primary class & Claims \\
+\midrule
+SOURCE\_CONTEXT\_PARAMETER & 13 \\
+RELATION\_LANGUAGE\_GAP & 4 \\
+ROLE\_GAP & 0 \\
+\midrule
+Total & 17 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The central hostile result is therefore
+\[
+\boxed{\mathrm{ROLE\_GAP}=0}.
+\]
+
+The 13 source-context residual claims contain 27 generic condition nodes. Architecture-relative placement yields seven experiment-context nodes, seven World-context nodes, four run-boundary/prehistory nodes, five parameter-only nodes, two system-intrinsic-constraint candidates, and two underdetermined nodes. None is promoted to \(C\) merely because it conditions an experiment.
+
+\subsection{Strict-preservation comparators}
+
+\begin{table}[htbp]
+\centering
+\caption{Strict direct-preservation comparator results. These are distinction-loss tests, not claims of mathematical non-encodability.}
+\label{tab:comparators}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.22\textwidth} >{\raggedright\arraybackslash}X r}
+\toprule
+Comparator & Frozen distinction-loss witness & Claims \\
+\midrule
+\(G_{\mathrm{dyn}}\) & At least one role beyond \(X/K/T\) & 59/60 \\
+\(G_{\mathrm{dyn}}\) & Strict FULL direct preservation & 0/60 \\
+POMDP-like & Requires \(\Pi\) or \(C\) & 26/60 \\
+POMDP-like & Instantiates both \(\Pin\) and \(\Pout\) & 26/60 \\
+POMDP-like & Affected by missing \(\Pi/C\) or collapsed \(P\) directionality & 44/60 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Generic dynamical cognition is established prior art \citep{VanGelder1998DynamicalHypothesis}; the result here is not that dynamical models are invalid. Likewise, canonical POMDPs provide state, action, transition, observation, and reward/criterion organization for partially observable control \citep{KaelblingLittmanCassandra1998POMDP}. The result is only that natural forgetful views omit distinctions explicitly preserved by the frozen corpus.
+
+\section{System, World, Coupling, and Experiment}
+
+Residual analysis exposed a further boundary problem: cognitive-system structure should not silently absorb environmental or experimental structure.
+
+The final architecture separates
+\[
+\Gsys,
+\qquad
+\World,
+\qquad
+\Coupling,
+\qquad
+\Experiment,
+\qquad
+R.
+\]
+
+Here \(\Gsys\) is Grammar v0, \(\World\) is a World/environment carrier relative to the selected modeled-system boundary, \(\Coupling\) is cross-boundary coupling, \(\Experiment\) is experimental protocol, and \(R\) is a realized finite run/history.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+  node distance=12mm and 16mm,
+  big/.style={draw, rounded corners, minimum width=4.1cm, minimum height=2.0cm, align=center},
+  arrow/.style={-{Latex[length=2mm]}, thick}
+]
+\node[big] (sys) {\textbf{Cognitive system} \(\Gsys\)\\
+\(\Pi,X,C,Q,\Pin,\Pout,K,T,\rho/O\)};
+\node[big, right=of sys] (world) {\textbf{World} \(\World\)\\environment-relative state};
+\node[draw, rounded corners, below=12mm of $(sys)!0.5!(world)$, align=center] (exp) {\textbf{Experiment} \(\Experiment\)\\preparation, schedule, probes, horizon};
+\draw[arrow] (world.west) to[bend left=12] node[above] {\(\Coupling_{\mathrm{in}}\)} (sys.east);
+\draw[arrow] (sys.east) to[bend left=12] node[below] {\(\Coupling_{\mathrm{out}}\)} (world.west);
+\draw[arrow,dashed] (exp.north west) -- (sys.south);
+\draw[arrow,dashed] (exp.north east) -- (world.south);
+\end{tikzpicture}
+\caption{System/World/experiment separation. \(K\) is internal system transformation or dependence, whereas \(\Gamma\) couples across a selected system/World boundary.}
+\label{fig:world}
+\end{figure}
+
+Three non-identities are essential:
+\[
+K\neq\Gamma,
+\qquad
+C\neq\text{experimental condition},
+\qquad
+\Pin/\Pout\neq\text{experimental schedule}.
+\]
+
+Markov-blanket formalisms provide a stronger boundary construction based on conditional independence \citep{Friston2013Life,KirchhoffEtAl2018MarkovBlankets}. Grammar-v0 \(\Pi\) is deliberately weaker: a Markov blanket may be a specialization when its additional probabilistic conditions are established, but it is not identified with \(\Pi\) by default.
+
+The system/World boundary remains application-relative. Grammar v0 does not supply a universal scientific criterion for where every cognitive system must end.
+
+\subsection{Experiment start as a run cut}
+
+A finite experiment need not begin when the cognitive system begins. Its starting time \(t_0\) is treated as a cut through a potentially longer history:
+\[
+\cdots
+\rightarrow
+X_{t-2}
+\rightarrow
+X_{t-1}
+\rightarrow
+X_{t_0}
+\rightarrow
+X_{t_1}
+\rightarrow\cdots.
+\]
+
+The intrinsic statement
+\[
+C_{t_0}(x_{t_0})
+\]
+only says that the realized state is admissible at the cut. It does not explain why that state was realized. Earlier system history, prior World coupling, retained structure, and experimental preparation may all contribute.
+
+Thus
+\[
+\text{intrinsic admissibility}
+\neq
+\text{realized cut state}
+\neq
+\text{experimental preparation}.
+\]
+
+This leaves endogenous initialization and retention as open downstream questions rather than forcing an initialization primitive into Grammar v0.
+
+\section{Related Work}
+
+\subsection{Construct validity and cognitive ontologies}
+
+Paper 2 is downstream of classical construct-validity problems rather than a substitute for them \citep{CronbachMeehl1955ConstructValidity,BorsboomMellenberghVanHeerden2004Validity}. Cognitive Atlas explicitly represents mental concepts and their relations to experimental tasks \citep{PoldrackEtAl2011CognitiveAtlas}, while the Cognitive Paradigm Ontology formalizes experimental paradigms in terms of stimuli, instructions, and responses \citep{TurnerLaird2012CogPO}. Broader cognitive-ontology work frames the search for mental structure as an informatics problem \citep{PoldrackYarkoni2016CognitiveOntologies}. These projects are complementary precedents: they organize concepts and tasks, whereas Paper 2 freezes source-grounded claim structures and tests structural relations under a declared projection.
+
+\subsection{Dynamics and POMDP-like systems}
+
+The \(X/K/T\) backbone has clear precedent in dynamical approaches to cognition \citep{VanGelder1998DynamicalHypothesis}. POMDPs likewise provide a canonical partially observable decision-system organization \citep{KaelblingLittmanCassandra1998POMDP}. Paper 2 claims no novelty for these components. Its comparator question is whether the distinctions recovered from the corpus survive as first-class structure under coarser views.
+
+\subsection{Category-theoretic and compositional formalisms}
+
+Category theory has already been used to explain structural systematicity in cognition \citep{PhillipsWilson2010CategorialCompositionality}. Categorical cybernetics and Bayesian-lens-style formalisms provide prior mathematical machinery for bidirectional open systems \citep{StClereSmithe2021CyberKittens}. These are plausible realization languages for parts of Grammar v0, not evidential sources from which the role inventory was derived.
+
+
+\section{Limitations and Validation Boundary}
+
+The first limitation is extraction reliability. The 60-claim corpus is source-audited, but independent extractor agreement is not established. The current evidence supports auditability of the retained reference corpus, not autonomous reproducibility of extraction.
+
+Second, the corpus is designed and small. It cannot estimate the prevalence of roles or structures across cognitive science. Population-scale validation remains downstream.
+
+Third, the basis and forgetting operator are representation choices. The present controls show that reusable structure survives under the frozen choices; they do not establish that those choices are uniquely optimal. Alternative basis construction and alternative forgetting operators remain important future hostile tests.
+
+Fourth, Grammar-v0 role granularity is non-unique. Equivalent factorizations may preserve the same distinctions. The strict-preservation result establishes nontriviality of the current inventory relative to the frozen corpus, not absolute mathematical minimality.
+
+Fifth, the system grammar is not a complete scientific claim language. Statements about evidence, model rejection, non-entailment, latent inference, and comparison may require a separate assertion layer even when the underlying system roles are sufficient.
+
+Sixth, the Lean formalization verifies declared dependency structure and forgetful maps; it does not prove empirical adequacy, unique semantics, or cognitive truth.
+
+Finally, the project has not yet tested prospective out-of-sample grammar recovery, independent human re-adjudication, or a universal criterion for selecting the cognitive-system boundary.
+
+\section{Discussion}
+
+The main empirical pattern is a failure/recovery sequence. At the whole-claim level, the frozen comparison surface was too discriminating to reveal reusable structure: all 1,770 pairs were incomparable. Preserving that result demonstrates that precise formalization alone is not enough; a comparison surface can be internally coherent yet scientifically vacuous for an intended compression question.
+
+The secondary bounded reconstruction changes the question from \emph{are these complete scientific claims the same?} to \emph{do these claims contain recoverable reusable substructure under a frozen forgetting rule?} Under that question, cross-label recurrence appears without deleting the whole-claim failure. The Archetype result is therefore not a repaired primary atlas. It is a different, explicitly motivated level of analysis.
+
+The Grammar-v0 reconstruction then asks whether surviving structures can be expressed through a compact recurring role inventory. The answer is positive on the bounded corpus, but it is not a universal ontology. Role counts show broad recurrence, residual analysis fails to establish an additional top-level role, and comparator tests show that coarser natural projections forget distinctions. Together these results support a measurement-oriented grammar under a declared preservation contract.
+
+The system/World separation further limits interpretation. A cognitive mechanism should not be defined by absorbing experimental preparation or environmental state into internal structure whenever a claim mentions a condition. System grammar, claim language, source context, formal realization, World, coupling, and experiment therefore remain distinct architectural levels.
+
+The broader methodological claim can be stated compactly:
+\[
+\text{different labels}\not\Rightarrow\text{different structures},
+\qquad
+\text{same labels}\not\Rightarrow\text{same structures}.
+\]
+A structural distinction must survive a declared label-independent audit to become evidence within this measurement system.
+
+\section{Conclusion}
+
+This paper develops a bounded concept-neutral measurement procedure for cognitive-capacity claims. Sixty source-grounded claims were represented under a common contract, compared without granting construct labels structural authority, and subjected to a preserved sequence of failed and successful compression tests.
+
+Whole-claim comparison failed universally:
+\[
+1770/1770\ \text{pairs were incomparable}.
+\]
+A secondary bounded-subobject reconstruction then recovered 206 unique reusable Archetype/XLike objects, including 99 cross-lane families. Reverse projection of the frozen 60 claims into Grammar v0 yielded 21 FULL, 22 PARTIAL, and 17 RESIDUAL cases. Residual adjudication established no new top-level role gap:
+\[
+\mathrm{ROLE\_GAP}=0.
+\]
+
+The resulting recurrent system-role grammar is
+\[
+\boxed{\{\Pi,X,C,Q,\Pin,\Pout,K,T,\rho/O\}}.
+\]
+
+The result does not establish nine ontological primitives, a complete language of cognitive science, absolute mathematical minimality, representative population coverage, independent extraction reliability, or a universal system boundary. Its contribution is instead a reproducible failure-aware reconstruction:
+\[
+\begin{aligned}
+\text{heterogeneous cognitive claims}
+&\rightarrow
+\text{concept-neutral decomposition}
+\\
+&\rightarrow
+\text{bounded reusable structure}
+\rightarrow
+\text{shared system-role grammar}.
+\end{aligned}
+\]
+
+The next scientific test is prospective scale and dynamics rather than further tuning on the same 60 claims.
+
+\section*{Reproducibility and Artifact Boundary}
+
+The repository freezes the reviewed ClaimIR corpus, whole-claim comparison artifacts, Archetype reconstruction, Grammar-v0 reverse projections, residual adjudication, comparator views, system/World separation, and a deterministic final audit. The manuscript source is non-authoritative: scientific authority remains with frozen machine-readable research artifacts and formal modules.
+
+The final audit terminal is
+\[
+\texttt{PAPER2\_RESULT\_V1\_DETERMINISTICALLY\_RECONCILED},
+\]
+and the ClaimIR reliability boundary is
+\[
+\texttt{EXTRACTION\_UNDERDETERMINED\_WITH\_SOURCE\_AUDITED\_REFERENCE\_CORPUS}.
+\]
+
+\bibliographystyle{plainnat}
+\bibliography{../references}
+
+\end{document}
