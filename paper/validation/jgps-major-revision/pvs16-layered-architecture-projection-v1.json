@@ -1,0 +1,461 @@
+{
+  "schema_version": "paper2-pvs16-layered-architecture-projection-v1",
+  "status": "FROZEN_PRE_EVIDENCE_LAYERED_PROJECTION",
+  "owner_issue": 373,
+  "generated_date": "2026-10-01",
+  "authority": {
+    "pvs16_grammar_mapping_path": "paper/validation/jgps-major-revision/pvs16-grammar-v0-prospective-mapping-v1.json",
+    "pvs16_grammar_mapping_blob_sha": "a55cde1f7de382206bf6f1b52b6ac4c61f0effc6",
+    "layered_architecture_path": "research/paper2/grammar_v0_layered_architecture_v1.json",
+    "layered_architecture_blob_sha": "150fbb166541ba52abbe07124924fab63a1ad575",
+    "system_world_experiment_path": "research/paper2/system_world_experiment_architecture_v1.json",
+    "system_world_experiment_blob_sha": "2047db910b097ecb3bc1e2ab568f6fe0d64168a1",
+    "source_context_placement_path": "research/paper2/source_context_architecture_placement_v1.json",
+    "source_context_placement_blob_sha": "3576a9ae685004f32d6f934139a791b3f03226ec"
+  },
+  "sequencing": {
+    "evidence_profile_used_for_layer_placement": false,
+    "evidence_join_deferred": true,
+    "note": "No E0-E3 field is used in this artifact. Evidence stratification is joined only after this projection is committed."
+  },
+  "test_rule": {
+    "direct_system_relations": "The 38 PRESERVED relations from the frozen PVS-16 Grammar mapping remain DIRECT_L_SYS and are not re-adjudicated.",
+    "nonstrict_relations": "Each of the 14 PARTIAL/UNMAPPED relations must be placed into existing L_claim/L_ctx/L_sys/L_formal architecture, with W/Gamma/E_exp refinement only when licensed.",
+    "architecture_gap": "If a required element cannot be placed without adding a new layer/category or retyping frozen evidence, classify ARCHITECTURE_GAP.",
+    "no_retyping": [
+      "source condition -> C solely to recover coverage",
+      "comparison/correlation/explanation -> K solely because it is a relation",
+      "source-level neural implementation -> L_formal",
+      "experimenter manipulation -> P_in when no P_in node is frozen"
+    ]
+  },
+  "context_placements": [
+    {
+      "node_id": "impaired_group",
+      "claim": "PVS-MEM-01",
+      "primary": "EXPERIMENT_CONTEXT",
+      "secondary": [],
+      "architecture_refinement": "L_ctx only",
+      "reason": "The source-defined amnesic-patient group is required to state the comparison/retention claim but is not a cognitive-system C/Q/Pi/X role. EXPERIMENT_CONTEXT is used here as study-design comparison context, not as an intervention."
+    },
+    {
+      "node_id": "matched_group",
+      "claim": "PVS-MEM-01",
+      "primary": "EXPERIMENT_CONTEXT",
+      "secondary": [],
+      "architecture_refinement": "L_ctx only",
+      "reason": "Matched comparison-group identity belongs to study design/source context; it is not retyped as a system role."
+    },
+    {
+      "node_id": "task_emphasis",
+      "claim": "PVS-LRN-01",
+      "primary": "EXPERIMENT_CONTEXT",
+      "secondary": [],
+      "architecture_refinement": "E_exp protocol/task regime",
+      "reason": "Which information-use regime the task emphasizes is selected by the task protocol. It parameterizes the observed system state without becoming C or Q."
+    },
+    {
+      "node_id": "stimulus_pair",
+      "claim": "PVS-ATT-02",
+      "primary": "WORLD_CONTEXT",
+      "secondary": [
+        "EXPERIMENT_CONTEXT"
+      ],
+      "architecture_refinement": "W selected/prepared by E_exp; Gamma_in not individually reconstructed",
+      "reason": "The two-stimulus visual configuration is external stimulus context selected by the experiment. The frozen claim does not identify a distinct system-side P_in operation for stimulus number, so no P_in or Gamma edge is invented."
+    },
+    {
+      "node_id": "sensory_noise",
+      "claim": "PVS-PRD-01",
+      "primary": "PARAMETER_ONLY",
+      "secondary": [
+        "WORLD_CONTEXT",
+        "UNDERDETERMINED"
+      ],
+      "architecture_refinement": "L_ctx parameter; exact W/measurement/model locus remains underdetermined",
+      "reason": "The degree of uncertainty in current sensory evidence parameterizes the claim, but the frozen ClaimIR does not license it as system C/Q/X or uniquely locate the noise in W."
+    },
+    {
+      "node_id": "category_type",
+      "claim": "PVS-CNC-02",
+      "primary": "EXPERIMENT_CONTEXT",
+      "secondary": [],
+      "architecture_refinement": "L_ctx comparison regime only",
+      "reason": "Natural-kind/artifact domain membership is a source-defined comparison condition. It is not a cognitive-system partition or criterion merely because groups are compared."
+    }
+  ],
+  "nonstrict_relation_recoveries": [
+    {
+      "relation": "PVS-MEM-01.r1",
+      "system_status": "UNMAPPED",
+      "layered_status": "RECOVERED_CROSS_LAYER",
+      "assertion_class": "COMPARATIVE_EQUIVALENCE",
+      "layers": [
+        "L_claim",
+        "L_ctx",
+        "L_sys"
+      ],
+      "references": {
+        "L_ctx": [
+          "impaired_group",
+          "matched_group"
+        ],
+        "L_sys": [
+          "acquisition_performance"
+        ]
+      },
+      "decomposition": "L_claim asserts equivalent acquisition performance across two L_ctx participant-group conditions while referencing the L_sys rho/O performance trace.",
+      "carrier_status": "EXPLICIT",
+      "notes": [
+        "No participant group is retyped as C, Q, Pi, or X."
+      ]
+    },
+    {
+      "relation": "PVS-MEM-01.r3",
+      "system_status": "UNMAPPED",
+      "layered_status": "RECOVERED_CROSS_LAYER",
+      "assertion_class": "CONTEXT_INDEXED_OUTCOME_ASSERTION",
+      "layers": [
+        "L_claim",
+        "L_ctx",
+        "L_sys"
+      ],
+      "references": {
+        "L_ctx": [
+          "impaired_group"
+        ],
+        "L_sys": [
+          "delayed_retention"
+        ]
+      },
+      "decomposition": "L_claim asserts delayed retention for the source-defined participant context; delayed_retention remains the L_sys rho/O trace.",
+      "carrier_status": "EXPLICIT",
+      "notes": []
+    },
+    {
+      "relation": "PVS-MEM-02.r4",
+      "system_status": "PARTIAL",
+      "layered_status": "RECOVERED_L_CLAIM",
+      "assertion_class": "CROSS_CONTEXT_DISSOCIATION",
+      "layers": [
+        "L_claim",
+        "L_sys"
+      ],
+      "references": {
+        "L_sys": [
+          "expression_partition",
+          "performance_facilitation",
+          "conscious_report"
+        ]
+      },
+      "decomposition": "L_claim retains that the Pi-separated expression modes dissociate across multiple tasks and populations; the cross-context breadth is assertion metadata rather than a new system role.",
+      "carrier_status": "EXPLICIT_WITH_ASSERTION_QUALIFIER",
+      "notes": []
+    },
+    {
+      "relation": "PVS-LRN-01.r1",
+      "system_status": "UNMAPPED",
+      "layered_status": "RECOVERED_CROSS_LAYER",
+      "assertion_class": "CONTEXT_INDEXED_DEPENDENCE",
+      "layers": [
+        "L_claim",
+        "L_ctx",
+        "L_sys"
+      ],
+      "references": {
+        "L_ctx": [
+          "task_emphasis"
+        ],
+        "L_sys": [
+          "medial_temporal_engagement"
+        ]
+      },
+      "decomposition": "L_claim states dependence of an L_sys X carrier on the E_exp task regime represented in L_ctx.",
+      "carrier_status": "EXPLICIT",
+      "notes": []
+    },
+    {
+      "relation": "PVS-LRN-01.r2",
+      "system_status": "UNMAPPED",
+      "layered_status": "RECOVERED_CROSS_LAYER",
+      "assertion_class": "CONTEXT_INDEXED_DEPENDENCE",
+      "layers": [
+        "L_claim",
+        "L_ctx",
+        "L_sys"
+      ],
+      "references": {
+        "L_ctx": [
+          "task_emphasis"
+        ],
+        "L_sys": [
+          "basal_ganglia_engagement"
+        ]
+      },
+      "decomposition": "L_claim states dependence of the second L_sys X carrier on the same E_exp task regime.",
+      "carrier_status": "EXPLICIT",
+      "notes": []
+    },
+    {
+      "relation": "PVS-LRN-01.r3",
+      "system_status": "PARTIAL",
+      "layered_status": "RECOVERED_L_CLAIM",
+      "assertion_class": "SIGNED_ASSOCIATION",
+      "layers": [
+        "L_claim",
+        "L_sys"
+      ],
+      "references": {
+        "L_sys": [
+          "medial_temporal_engagement",
+          "basal_ganglia_engagement"
+        ]
+      },
+      "decomposition": "L_claim retains the negative-correlation sign between two L_sys X carriers; K-like dependence alone need not encode correlation sign.",
+      "carrier_status": "EXPLICIT",
+      "notes": [
+        "The signed statistical predicate is not promoted to a new L_sys role."
+      ]
+    },
+    {
+      "relation": "PVS-LRN-01.r5",
+      "system_status": "UNMAPPED",
+      "layered_status": "RECOVERED_CROSS_LAYER",
+      "assertion_class": "MATCHED_COMPARISON",
+      "layers": [
+        "L_claim",
+        "L_ctx",
+        "L_sys"
+      ],
+      "references": {
+        "L_ctx": [
+          "task_emphasis"
+        ],
+        "L_sys": [
+          "task_performance"
+        ]
+      },
+      "decomposition": "L_claim retains matched behavioral performance across the L_ctx task-emphasis conditions while task_performance remains L_sys rho/O.",
+      "carrier_status": "EXPLICIT",
+      "notes": []
+    },
+    {
+      "relation": "PVS-LRN-02.r1",
+      "system_status": "PARTIAL",
+      "layered_status": "RECOVERED_L_CLAIM",
+      "assertion_class": "NULL_OR_PRESERVATION_COMPARISON",
+      "layers": [
+        "L_claim",
+        "L_sys"
+      ],
+      "references": {
+        "L_sys": [
+          "concurrent_task",
+          "overall_accuracy"
+        ]
+      },
+      "decomposition": "L_claim retains the comparative-preservation assertion under the already-mapped L_sys P_in intervention and rho/O accuracy trace.",
+      "carrier_status": "EXPLICIT",
+      "notes": [
+        "No new context carrier is required because concurrent_task is already an explicit P_in node."
+      ]
+    },
+    {
+      "relation": "PVS-ATT-02.r1",
+      "system_status": "UNMAPPED",
+      "layered_status": "RECOVERED_CROSS_LAYER",
+      "assertion_class": "CONTEXT_INDEXED_CHANGE",
+      "layers": [
+        "L_claim",
+        "L_ctx",
+        "L_sys"
+      ],
+      "references": {
+        "L_ctx": [
+          "stimulus_pair"
+        ],
+        "L_sys": [
+          "neuronal_response"
+        ]
+      },
+      "decomposition": "L_claim asserts response change across a W-side stimulus configuration selected by E_exp; neuronal_response remains L_sys rho/O.",
+      "carrier_status": "EXPLICIT",
+      "notes": [
+        "The external stimulus configuration is not retyped as C or P_in.",
+        "Gamma_in is architecturally available but no source-specific Gamma edge is invented."
+      ]
+    },
+    {
+      "relation": "PVS-ATT-02.r3",
+      "system_status": "UNMAPPED",
+      "layered_status": "RECOVERED_CROSS_LAYER",
+      "assertion_class": "MAGNITUDE_COMPARISON",
+      "layers": [
+        "L_claim",
+        "L_ctx",
+        "L_sys"
+      ],
+      "references": {
+        "L_ctx": [
+          "stimulus_pair"
+        ],
+        "L_sys": [
+          "single_stimulus_reference",
+          "neuronal_response"
+        ]
+      },
+      "decomposition": "L_claim retains the greater task-dependent modulation in the competing-stimulus W/E_exp context relative to single-stimulus reference structure.",
+      "carrier_status": "EXPLICIT",
+      "notes": [
+        "The greater-than comparison remains L_claim semantics rather than K."
+      ]
+    },
+    {
+      "relation": "PVS-PRD-01.r2",
+      "system_status": "UNMAPPED",
+      "layered_status": "RECOVERED_CROSS_LAYER",
+      "assertion_class": "CONTEXT_INDEXED_DEPENDENCE",
+      "layers": [
+        "L_claim",
+        "L_ctx",
+        "L_sys"
+      ],
+      "references": {
+        "L_ctx": [
+          "sensory_noise"
+        ],
+        "L_sys": [
+          "prior_weight"
+        ]
+      },
+      "decomposition": "L_claim asserts that L_sys prior weight varies with an L_ctx uncertainty/noise parameter whose exact World/measurement/model locus remains underdetermined.",
+      "carrier_status": "EXPLICIT",
+      "notes": [
+        "sensory_noise is not promoted to C/Q/X."
+      ]
+    },
+    {
+      "relation": "PVS-PRD-02.r3",
+      "system_status": "PARTIAL",
+      "layered_status": "RECOVERED_L_CLAIM",
+      "assertion_class": "IMPLEMENTATION_MODALITY",
+      "layers": [
+        "L_claim",
+        "L_sys"
+      ],
+      "references": {
+        "L_sys": [
+          "probability_distribution",
+          "neural_population_scheme"
+        ]
+      },
+      "decomposition": "L_claim retains that the neural population scheme is a candidate possible implementation of the probability-distribution representation.",
+      "carrier_status": "EXPLICIT",
+      "notes": [
+        "This source-level neural implementation claim is not L_formal; L_formal concerns mathematical realization of the Paper-2 architecture."
+      ]
+    },
+    {
+      "relation": "PVS-CNC-01.r3",
+      "system_status": "PARTIAL",
+      "layered_status": "RECOVERED_L_CLAIM_WITH_E_EXP_PROVENANCE",
+      "assertion_class": "EXPERIMENTAL_MANIPULATION_PROVENANCE",
+      "layers": [
+        "L_claim",
+        "L_sys"
+      ],
+      "architecture_refinement": [
+        "E_exp provenance at relation level"
+      ],
+      "references": {
+        "L_sys": [
+          "causal_mechanisms",
+          "interfeature_relation",
+          "classification_response"
+        ]
+      },
+      "decomposition": "L_sys K-like change is retained, while L_claim records that the reported change is supported by experiments manipulating causal knowledge. E_exp provenance is attached to the assertion without inventing a missing P_in node.",
+      "carrier_status": "EXPLICIT_RELATION_WITH_DESCRIPTION_LEVEL_PROVENANCE",
+      "notes": [
+        "The ClaimIR contains no intervention node, so no P_in is retrofitted."
+      ]
+    },
+    {
+      "relation": "PVS-CNC-02.r2",
+      "system_status": "UNMAPPED",
+      "layered_status": "RECOVERED_CROSS_LAYER_WITH_CARRIER_PRESSURE",
+      "assertion_class": "CONTRASTIVE_EXPLANATION",
+      "layers": [
+        "L_claim",
+        "L_ctx",
+        "L_sys"
+      ],
+      "references": {
+        "L_ctx": [
+          "category_type"
+        ],
+        "L_sys": [
+          "feature_importance",
+          "causal_position"
+        ]
+      },
+      "decomposition": "L_claim retains the contrastive explanatory assertion that category-type-associated feature-importance differences are accounted for by causal position rather than category type alone; category_type remains L_ctx and causal_position remains L_sys X.",
+      "carrier_status": "DESCRIPTION_LEVEL_REFERENCE",
+      "notes": [
+        "The frozen relation arguments list category_type and feature_importance but omit causal_position, even though causal_position is explicitly named in the frozen relation description.",
+        "This is claim-carrier precision pressure, not an architecture gap and not a ROLE_GAP. The frozen ClaimIR is not modified in this validation pass."
+      ]
+    }
+  ],
+  "inherited_direct_l_sys_relation_count": 38,
+  "summary": {
+    "claims": 16,
+    "total_relations": 52,
+    "direct_l_sys_relations": 38,
+    "nonstrict_input_relations": 14,
+    "architecture_placeable_nonstrict_relations": 14,
+    "architecture_gaps": 0,
+    "claim_level_architecture_placeable": 16,
+    "context_nodes_placed": 6,
+    "context_primary_counts": {
+      "EXPERIMENT_CONTEXT": 4,
+      "WORLD_CONTEXT": 1,
+      "PARAMETER_ONLY": 1
+    },
+    "recovery_status_counts": {
+      "RECOVERED_CROSS_LAYER": 8,
+      "RECOVERED_L_CLAIM": 4,
+      "RECOVERED_L_CLAIM_WITH_E_EXP_PROVENANCE": 1,
+      "RECOVERED_CROSS_LAYER_WITH_CARRIER_PRESSURE": 1
+    },
+    "assertion_class_counts": {
+      "COMPARATIVE_EQUIVALENCE": 1,
+      "CONTEXT_INDEXED_OUTCOME_ASSERTION": 1,
+      "CROSS_CONTEXT_DISSOCIATION": 1,
+      "CONTEXT_INDEXED_DEPENDENCE": 3,
+      "SIGNED_ASSOCIATION": 1,
+      "MATCHED_COMPARISON": 1,
+      "NULL_OR_PRESERVATION_COMPARISON": 1,
+      "CONTEXT_INDEXED_CHANGE": 1,
+      "MAGNITUDE_COMPARISON": 1,
+      "IMPLEMENTATION_MODALITY": 1,
+      "EXPERIMENTAL_MANIPULATION_PROVENANCE": 1,
+      "CONTRASTIVE_EXPLANATION": 1
+    },
+    "l_formal_required_for_source_claim_recovery": 0,
+    "role_gap_count": 0,
+    "claim_carrier_precision_pressure_count": 1,
+    "claim_carrier_pressure_relations": [
+      "PVS-CNC-02.r2"
+    ]
+  },
+  "interpretation": {
+    "main_result": "All 14 relations that were not strictly preserved by G_cog are placeable in the already-frozen layered architecture without adding a system role or architecture layer.",
+    "important_boundary": "This is architecture placement, not a proof of a complete formal assertion calculus. L_claim remains a scientific assertion layer rather than a fully formalized logic.",
+    "context_result": "The system-level failures are explained by explicit separation of source/study/World context from system structure, not by promoting context nodes to C.",
+    "claim_result": "Comparison, signed association, preservation/null, implementation, manipulation-provenance, and contrastive-explanation semantics are retained at L_claim rather than collapsed into K.",
+    "formal_result": "No PVS recovery requires L_formal. One relation, PVS-CNC-02.r2, exposes claim-carrier precision pressure because a semantically required causal_position reference is present in the frozen description but absent from the frozen relation argument list.",
+    "architecture_gap_status": "NONE"
+  },
+  "terminal": "PVS16_ALL_NONSTRICT_RELATIONS_LAYER_PLACEABLE_WITH_ONE_CLAIM_CARRIER_PRESSURE_AND_NO_ARCHITECTURE_GAP"
+}
