@@ -1,0 +1,34 @@
+name: paper2-jgps-pvs16-author-review-packet
+
+on:
+  pull_request:
+    paths:
+      - "paper/validation/jgps-major-revision/pvs16-source-consistency-audit-v1.*"
+      - "paper/validation/jgps-major-revision/pvs16-author-review-packet-v1.*"
+      - "paper/validation/jgps-major-revision/pvs16-claimir-candidates-v1/**"
+      - "scripts/paper2_jgps_pvs16_author_review_packet_validate.py"
+      - ".github/workflows/paper2-jgps-pvs16-author-review-packet.yml"
+  push:
+    branches: [main]
+    paths:
+      - "paper/validation/jgps-major-revision/pvs16-source-consistency-audit-v1.*"
+      - "paper/validation/jgps-major-revision/pvs16-author-review-packet-v1.*"
+      - "paper/validation/jgps-major-revision/pvs16-claimir-candidates-v1/**"
+      - "scripts/paper2_jgps_pvs16_author_review_packet_validate.py"
+      - ".github/workflows/paper2-jgps-pvs16-author-review-packet.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate-review-boundary:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile validator
+        run: python -m py_compile scripts/paper2_jgps_pvs16_author_review_packet_validate.py
+      - name: Validate assistant/human boundary and candidate hashes
+        run: python scripts/paper2_jgps_pvs16_author_review_packet_validate.py

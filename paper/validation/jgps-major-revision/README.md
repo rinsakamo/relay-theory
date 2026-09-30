@@ -32,13 +32,26 @@ Completed and frozen:
 
 `0a4454887189730cf4b13d12061f4cab93fb8e4d8f0ec089a08f77bc088dc123`
 
+5. `pvs16-claimir-candidates-v1/` + candidate manifest/source authority
+   - 16 source-grounded candidates frozen as **unreviewed**;
+   - candidate/schema/admission CI passes;
+   - no Grammar mapping has begun.
+6. `pvs16-source-consistency-audit-v1.{md,json}`
+   - assistant source cross-check: 16/16 PASS for material consistency;
+   - this is not human or independent adjudication.
+7. `pvs16-author-review-packet-v1.{md,json}`
+   - exact candidate SHA-256 values frozen;
+   - human decision fields remain null;
+   - Grammar mapping remains unauthorized.
+
 ## Next authorized operation
 
-Create source-grounded ClaimIR for the 16 admitted PVS claims under the existing
-frozen ClaimIR schema and source-review rules, without changing Grammar v0,
-residual taxonomy, or comparator semantics.
+A human author/reviewer must complete the PVS-16 source/ClaimIR review transaction
+against the frozen author-review packet. Candidates may be ACCEPTED, REVISED, or
+REJECTED; any revision must preserve provenance and be re-hashed before the
+reviewed PVS surface is frozen.
 
-Only after those records are reviewed and frozen may prospective Grammar
+Only after the reviewed PVS ClaimIR surface is frozen may prospective Grammar
 reverse projection begin.
 
 No manuscript rewrite should pre-empt those results.
