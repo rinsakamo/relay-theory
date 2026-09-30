@@ -1,0 +1,92 @@
+{
+  "schema": "relay-theory.paper2.jgps_validation_extension.v1",
+  "status": "FROZEN_PRE_ANALYSIS_PROTOCOL",
+  "authority_issue": 365,
+  "base_authority_commit": "4adf9b105af818115bfb13b6ea4d8e7cfbf4e0d9",
+  "terminal_target": "PAPER2_JGPS_VALIDATION_EXTENSION_V1_FROZEN",
+  "frozen_core_must_not_change": [
+    "ClaimIR",
+    "B_P2",
+    "Phi",
+    "U_claim",
+    "F_R",
+    "whole_claim_adjudications",
+    "bounded_Archetype_XLike_identities",
+    "cross_lane_family_identities",
+    "grammar_v0_reverse_projections",
+    "residual_adjudications",
+    "comparator_results",
+    "system_world_coupling_experiment_formal_distinctions",
+    "paper2_result_v1"
+  ],
+  "validation_A_basis_to_grammar_provenance": {
+    "basis_roles": ["S", "Pi", "K", "O", "T", "C", "Q", "P"],
+    "grammar_roles": ["Pi", "X", "C", "Q", "P_in", "P_out", "K", "T", "rho/O"],
+    "allowed_provenance_labels": [
+      "INHERITED",
+      "RENAMED_OR_REINTERPRETED",
+      "DATA_CONSTRAINED_SPLIT",
+      "NEW_TOP_LEVEL_ROLE"
+    ],
+    "default_interpretation_under_test": "Grammar v0 is a data-constrained refinement/factorization of the frozen comparison basis, not an independently discovered primitive inventory."
+  },
+  "validation_B_primary_only_ablation": {
+    "induction_claim_count": 48,
+    "excluded_historical_challenge_claim_count": 12,
+    "is_held_out_validation": false,
+    "name": "challenge-set dependence / induction-set sensitivity test"
+  },
+  "validation_C_prospective": {
+    "validation_set_id": "PVS-16",
+    "target_claim_count": 16,
+    "claims_per_lane": 2,
+    "lanes": [
+      "Memory",
+      "Learning",
+      "Skill",
+      "Attention",
+      "Prediction",
+      "Control",
+      "Belief",
+      "Concept"
+    ],
+    "selection_rule": "first two previously unused eligible claims/sources per lane under the pre-existing frozen retrieval/sampling order",
+    "selection_must_precede_grammar_mapping": true,
+    "selection_failure_terminal": "PROSPECTIVE_SELECTION_UNDERDETERMINED",
+    "admission_manifest_required_fields": [
+      "validation_claim_id",
+      "lane",
+      "source_identity",
+      "doi_or_stable_locator",
+      "preexisting_selection_rank_or_provenance",
+      "eligibility_basis",
+      "grammar_mapping_inspected"
+    ],
+    "grammar_mapping_inspected_required_value_at_freeze": false,
+    "manifest_hash_required": true,
+    "post_admission_tuning_forbidden": true,
+    "primary_outcomes": [
+      "FULL_PARTIAL_RESIDUAL",
+      "role_support",
+      "residual_class",
+      "ROLE_GAP_count"
+    ]
+  },
+  "validation_D_independent_human": {
+    "target_fraction_min": 0.20,
+    "target_fraction_max": 0.30,
+    "must_include": ["FULL", "PARTIAL", "RESIDUAL"],
+    "oversample_residuals": true,
+    "second_human_required_for_independence_claim": true
+  },
+  "execution_order": [
+    "protocol_freeze",
+    "basis_to_grammar_provenance_audit",
+    "48_primary_only_ablation",
+    "prospective_selection_resolvability_check",
+    "PVS_manifest_and_hash_freeze",
+    "prospective_reverse_projection",
+    "blinded_human_adjudication_packet",
+    "manuscript_revision"
+  ]
+}
