@@ -8,12 +8,14 @@ on:
       - "scripts/paper2_jgps_pvs16_admission_validate.py"
       - "paper/validation/jgps-major-revision/pvs16-admission-v1.json"
       - "paper/validation/jgps-major-revision/pvs16-admission-v1.md"
+      - "paper/validation/jgps-major-revision/pvs16-admission-v1.sha256"
       - ".github/workflows/paper2-jgps-pvs16-admission.yml"
   pull_request:
     paths:
       - "scripts/paper2_jgps_pvs16_admission_validate.py"
       - "paper/validation/jgps-major-revision/pvs16-admission-v1.json"
       - "paper/validation/jgps-major-revision/pvs16-admission-v1.md"
+      - "paper/validation/jgps-major-revision/pvs16-admission-v1.sha256"
       - ".github/workflows/paper2-jgps-pvs16-admission.yml"
 
 permissions:
@@ -33,6 +35,8 @@ jobs:
         run: |
           python scripts/paper2_jgps_pvs16_admission_validate.py --emit-sha /tmp/pvs16-admission-v1.sha256
           cat /tmp/pvs16-admission-v1.sha256
+      - name: Verify frozen admission sidecar
+        run: sha256sum -c paper/validation/jgps-major-revision/pvs16-admission-v1.sha256
       - name: Upload PVS-16 admission hash
         uses: actions/upload-artifact@v4
         with:
