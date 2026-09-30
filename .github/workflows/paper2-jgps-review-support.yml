@@ -1,0 +1,59 @@
+name: paper2-jgps-review-support
+
+on:
+  pull_request:
+    paths:
+      - "scripts/paper2_jgps_review_support.py"
+      - "scripts/paper2_jgps_worked_example_select.py"
+      - "scripts/paper2_jgps_worked_example_evidence.py"
+      - ".github/workflows/paper2-jgps-review-support.yml"
+      - "paper/validation/jgps-major-revision/review-support/**"
+      - "research/paper2/grammar_v0_reverse_projection_aggregate_v1.json"
+      - "research/paper2/grammar_v0_residual_adjudication_v1.json"
+      - "research/paper2/designed_source_manifest_v1.json"
+      - "research/paper2/chatgpt_reference_claimir_v1/**"
+  push:
+    branches: [main]
+    paths:
+      - "scripts/paper2_jgps_review_support.py"
+      - ".github/workflows/paper2-jgps-review-support.yml"
+      - "paper/validation/jgps-major-revision/review-support/**"
+
+permissions:
+  contents: read
+
+jobs:
+  build-review-support:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile
+        run: python -m py_compile scripts/paper2_jgps_review_support.py
+      - name: Generate twice and compare
+        run: |
+          python scripts/paper2_jgps_review_support.py --outdir /tmp/a
+          python scripts/paper2_jgps_review_support.py --outdir /tmp/b
+          diff -ru /tmp/a /tmp/b
+      - name: Select worked examples
+        run: |
+          python -m py_compile scripts/paper2_jgps_worked_example_select.py
+          python scripts/paper2_jgps_worked_example_select.py --output /tmp/a/worked-example-selection-v1.json
+      - name: Assemble worked-example evidence chains
+        run: |
+          python -m py_compile scripts/paper2_jgps_worked_example_evidence.py
+          python scripts/paper2_jgps_worked_example_evidence.py \
+            --selection /tmp/a/worked-example-selection-v1.json \
+            --json-output /tmp/a/worked-example-evidence-v1.json \
+            --md-output /tmp/a/worked-example-evidence-v1.md
+      - name: Verify frozen output digests
+        run: |
+          cd /tmp/a
+          sha256sum -c "$GITHUB_WORKSPACE/paper/validation/jgps-major-revision/review-support/review-support-v1.sha256"
+      - name: Upload review-support artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: paper2-jgps-review-support
+          path: /tmp/a/
