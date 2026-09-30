@@ -1,0 +1,145 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "PVS-SKL-01.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1016/j.neuron.2011.10.008",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Neuron 72(3), pp.443-454 abstract: acquisition, consolidation, and retention of practiced motor performance are associated with functional reorganization."
+      },
+      {
+        "span_id": "s2",
+        "locator": "Same abstract: structural reorganization in gray and white matter can occur over shorter periods than previously assumed."
+      },
+      {
+        "span_id": "s3",
+        "locator": "Same abstract: the review synthesizes functional and structural changes across spatial and temporal scales."
+      }
+    ],
+    "authors": [
+      "Eran Dayan",
+      "Leonardo G. Cohen"
+    ],
+    "institutions": [],
+    "venue": "Neuron",
+    "citation_count": null,
+    "construct_labels": [
+      "motor skill learning",
+      "neuroplasticity"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "jgps-pvs16-source-grounded-candidate-v1:#365",
+    "extracted_at": "2026-09-30",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "relation",
+    "modality": "descriptive",
+    "scope": {
+      "conditions": [
+        "repeated practice of a motor behavior"
+      ],
+      "population": [
+        "humans and experimental animals as reviewed"
+      ],
+      "substrate": [
+        "distributed neural tissue"
+      ],
+      "task": [
+        "acquisition and later retention of practiced motor behavior"
+      ],
+      "temporal_scope": [
+        "acquisition, consolidation, and retention across multiple timescales"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "practice_stage",
+        "role": "condition",
+        "description": "stage of progression from initial acquisition through stabilization to later retention",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "functional_reorganization",
+        "role": "state_or_structure",
+        "description": "change in functional organization associated with practiced performance",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "structural_reorganization",
+        "role": "state_or_structure",
+        "description": "change in gray- or white-matter organization associated with practice",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "retained_performance",
+        "role": "response_or_outcome",
+        "description": "persistence of the acquired motor behavior at a later stage",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "changes",
+        "arguments": [
+          "practice_stage",
+          "functional_reorganization"
+        ],
+        "description": "functional organization changes across stages of practiced performance",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "changes",
+        "arguments": [
+          "practice_stage",
+          "structural_reorganization"
+        ],
+        "description": "structural organization can also change over the reported timescales",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "depends_on",
+        "arguments": [
+          "retained_performance",
+          "practice_stage"
+        ],
+        "description": "the reviewed process distinguishes later retained performance from initial acquisition",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
