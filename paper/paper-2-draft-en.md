@@ -570,6 +570,42 @@ This prevents an initialization mechanism from being added to Grammar v0 merely 
 
 ## 16. Reliability, Limitations, and Related Positioning
 
+### 16.1 Construct validity and cognitive ontologies
+
+Paper 2 sits downstream of a long construct-validity problem rather than replacing it. Cronbach and Meehl (1955) made explicit that psychological constructs require networks of evidence rather than validation by name alone. Borsboom, Mellenbergh, and van Heerden (2004) sharpened one competing view by tying validity to the existence of an attribute and a causal relation from that attribute to measurement outcomes. The present analysis does not decide among general theories of validity. Its narrower role is to ask whether claims that are already in scientific use preserve the same or different structural distinctions when construct labels are denied evidential authority.
+
+Cognitive-ontology projects are the closest field-level neighbors. The Cognitive Atlas explicitly represents mental concepts and their relations to experimental tasks (Poldrack et al. 2011), while the Cognitive Paradigm Ontology formalizes experimental paradigms in terms of structures such as stimuli, instructions, and responses (Turner and Laird 2012). Poldrack and Yarkoni (2016) frame the broader search for cognitive ontology as an informatics problem concerning mental structure.
+
+Paper 2 shares the goal of making cognitive terminology inspectable, but the unit of analysis differs. It does not begin by declaring a concept ontology or a task ontology. It begins from source-grounded scientific claims, suppresses nominal and authority-bearing information, decomposes the claims into typed structure, and then asks which relations survive a frozen comparison and forgetting contract. Cognitive Atlas and CogPO are therefore complementary precedents rather than baselines that Paper 2 claims to replace.
+
+### 16.2 Generic dynamics and partially observable decision systems
+
+The X/K/T backbone has obvious precedent in dynamical approaches to cognition. van Gelder's dynamical hypothesis explicitly proposed that cognitive agents may be understood as dynamical systems (van Gelder 1998). Paper 2 therefore claims no novelty for representing cognition through state-like configurations, transformations, and time.
+
+The strict-preservation result asks a different question: after heterogeneous source claims have already been frozen, which distinctions are lost if the comparison vocabulary is reduced to X/K/T? Under that test, 59 of 60 claims instantiate at least one additional Grammar-v0 role, and no claim is both fully preserved and exhausted by the generic dynamical vocabulary. This is a corpus-relative distinction-preservation result, not an argument against dynamical modeling.
+
+Partially observable Markov decision processes provide a second important comparator. The canonical POMDP framework combines partially observable state, action, transition, observation, and criterion/reward structure for planning and acting under uncertainty (Kaelbling, Littman, and Cassandra 1998). This overlaps substantially with X, P, K, rho/O, Q, and T. Paper 2's POMDP-like comparator is intentionally generous: Q is allowed to be broader than scalar reward before comparison.
+
+The residual difference is therefore not that POMDPs are mathematically incapable of representing cognitive systems. Arbitrary state augmentation can encode many distinctions. The narrower finding is that a natural POMDP-like projection does not directly preserve Pi, explicit C, the P_in/P_out distinction, generalized Q semantics, and some observation/inference orientations without adding structure equivalent to the distinctions that Grammar v0 keeps explicit.
+
+### 16.3 Boundaries, Markov blankets, and system/World separation
+
+Markov-blanket approaches provide a stronger boundary notion than Grammar-v0 Pi. In Friston's formulation, a Markov blanket separates internal and external states through conditional-independence structure (Friston 2013). Later work explicitly connected Markov blankets with autonomy and active inference (Kirchhoff et al. 2018).
+
+Pi is deliberately weaker and more general. It can represent individuation, partition, role decomposition, classification, or a selected modeled-system boundary without asserting the conditional independencies required for a Markov blanket. A Markov blanket can therefore be represented as a possible specialization of boundary structure when its additional probabilistic conditions are established, but Pi must not be identified with a Markov blanket by default.
+
+This distinction is also why the current architecture separates the cognitive system from World, cross-boundary coupling, and experiment. The boundary is relative to the modeled system; it does not make the environment disappear into system state, nor does an experimental manipulation automatically become an intrinsic cognitive transition.
+
+### 16.4 Category-theoretic and compositional neighbors
+
+Category theory has already been used to characterize structural relations in cognition. Phillips and Wilson (2010), for example, use categorical structure to explain cognitive systematicity in terms of relationships among cognitive processes. Paper 2 therefore does not claim that category-theoretic cognition or structural compositionality is new.
+
+Likewise, categorical cybernetics and lens/optic formalisms provide prior mathematical machinery for bidirectional open systems. St Clere Smithe (2021) develops a categorical account of cybernetic systems using dynamical realizations of generalized open games and Bayesian lenses. These formalisms are especially relevant to the P_in/P_out and system-interface intuitions that appear in Grammar v0.
+
+The relation is again one of possible realization rather than derivation. Paper 2 reconstructs a role inventory empirically from a frozen heterogeneous claim corpus and then asks which established mathematical formalisms can realize or forget those roles. It does not infer the role inventory from category theory, and it does not claim that the current Lean implementation is the unique categorical or mathematical realization.
+
+### 16.5 Reliability and scope limitations
+
 The strongest limitation concerns extraction reliability. The reference corpus is fully source-reviewed, but independent extraction agreement has not been established. The paper must therefore distinguish auditability from autonomous reproducibility.
 
 A reader can inspect the retained source identities, source-local locators, reviewed ClaimIR records, frozen structural contracts, and deterministic downstream transformations. What the paper cannot claim is that a fresh model or human annotator will independently reproduce the same ClaimIR without adjudication.
@@ -581,8 +617,6 @@ The third limitation is representational relativity. Grammar-v0 roles are recove
 The fourth limitation is the distinction between system grammar and scientific claim language. Residual assertion semantics remain scientifically meaningful. Paper 2 does not attempt to build a universal language for every epistemic, comparative, causal, or statistical statement appearing in cognitive science.
 
 The fifth limitation is formal realization. The Lean development verifies explicit dependency structure and the absence of several illicit identifications, including the universal reduction of persistence to identity. It does not prove that the current Lean carrier is the unique or final mathematical semantics of Grammar v0.
-
-The resulting position relative to familiar formalisms is therefore comparative rather than adversarial. Generic dynamical systems capture the X/K/T backbone. POMDP-like formalisms capture substantial state, action, transition, observation, criterion, and temporal structure. Boundary-based and open-system approaches may specialize parts of Pi, P, O, and World coupling. The contribution claimed here is not invention of those mathematical ingredients individually. It is the concept-neutral empirical reconstruction that shows which distinctions recur when heterogeneous cognitive theories are decomposed under one frozen audit protocol.
 
 A further philosophical interpretation is possible but not required for the scientific result. Treating construct names as hypotheses rather than essences is compatible with use-centered and family-resemblance approaches to scientific language. Paper 2 adds an empirical step: suppress the name, decompose the scientific use, measure the surviving structure, and restore provenance only after comparison. This retrospective framing must not be used as evidential authority for the reconstruction.
 
