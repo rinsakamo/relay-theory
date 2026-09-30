@@ -1,10 +1,10 @@
 # PVS-16 Evidence Profile v1
 
-Status: `PROVISIONAL_RULE_GOVERNED_ANNOTATION`
+Status: `FROZEN_RULE_GOVERNED_MODEL_ANNOTATION`
 
 Authority boundary: human-reviewed PVS-16 ClaimIR + frozen PVS-16 source spans/source-authority metadata only. Grammar-v0 mapping was not inspected.
 
-Evidence levels describe claim-to-frozen-source warrant directness, not journal prestige, truth probability, or overall paper quality.
+Evidence levels describe claim-to-frozen-source warrant directness, not journal prestige, truth probability, or overall paper quality. This is a rule-governed model annotation layer, not independent human evidence coding.
 
 | Claim | Source basis | Relation-level range | Source surface |
 |---|---|---|---|
@@ -38,3 +38,5 @@ Evidence levels describe claim-to-frozen-source warrant directness, not journal 
 - E3 adds explicit replicated intervention breadth. Causal leverage and breadth remain separately recorded.
 - Abstract-only versus full-text source visibility is recorded separately and does not change the level.
 - These annotations do not modify ClaimIR or authorize/alter Grammar mapping.
+
+Validation terminal: `PVS16_EVIDENCE_PROFILE_V1_VALIDATION_PASS`
