@@ -63,10 +63,11 @@ jobs:
           fi
           pdfinfo main.pdf | awk -F: '/^Pages:/ {gsub(/ /,"",$2); print "PDF pages: "$2}'
           pdftotext main.pdf main.txt
-          grep -F "Toward a Concept-Neutral Measurement Basis for Cognitive Capacities" main.txt
-          grep -F "Rintaro Sakamoto" main.txt
-          grep -F "1770/1770" main.txt
-          grep -F "ROLE_GAP" main.txt
+          tr '\n' ' ' < main.txt | tr -s '[:space:]' ' ' > main.flat.txt
+          grep -F "Toward a Concept-Neutral Measurement Basis for Cognitive Capacities" main.flat.txt
+          grep -F "Rintaro Sakamoto" main.flat.txt
+          grep -E '1770[[:space:]]*/[[:space:]]*1770' main.flat.txt
+          grep -E 'ROLE[ _]*GAP' main.flat.txt
 
       - name: Package editable source
         run: |
