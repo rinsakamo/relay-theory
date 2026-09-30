@@ -1,0 +1,178 @@
+name: Paper 2 JGPS Package CI
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - "paper/venues/jgps/**"
+      - ".github/workflows/paper-2-jgps-ci.yml"
+  push:
+    branches: [main]
+    paths:
+      - "paper/venues/jgps/**"
+      - ".github/workflows/paper-2-jgps-ci.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  jgps-package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Verify exact head and JGPS content contract
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test -s paper/venues/jgps/main.tex
+          test -s paper/venues/jgps/title-page.tex
+          test -s paper/venues/jgps/references.bib
+          test -s paper/venues/jgps/cover-letter.md
+          test -s paper/venues/jgps/submission-checklist.md
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          main = Path("paper/venues/jgps/main.tex").read_text()
+          title = Path("paper/venues/jgps/title-page.tex").read_text()
+          refs = Path("paper/venues/jgps/references.bib").read_text()
+          cover = Path("paper/venues/jgps/cover-letter.md").read_text()
+
+          m = re.search(r"\\begin\{abstract\}(.*?)\\end\{abstract\}", main, re.S)
+          assert m, "abstract missing"
+          abstract = re.sub(r"\\[A-Za-z]+(?:\{[^}]*\})?", " ", m.group(1))
+          words = re.findall(r"\b[A-Za-z0-9][A-Za-z0-9'-]*\b", abstract)
+          print("abstract_words", len(words))
+          assert 150 <= len(words) <= 250, len(words)
+
+          km = re.search(r"\\textbf\{Keywords:\}\s*([^\n]+)", main)
+          assert km, "keywords missing"
+          keywords = [x.strip() for x in km.group(1).split(";") if x.strip()]
+          print("keywords", len(keywords), keywords)
+          assert 4 <= len(keywords) <= 6
+
+          for needle in [
+              "Rintaro Sakamoto",
+              "Independent Scholar, Kitakyushu, Japan",
+              "0009-0002-0443-2508",
+              "rin.sakamoto.research@gmail.com",
+              "\\section*{Declarations}",
+              "Funding.",
+              "Competing interests.",
+              "Data, materials, and code availability.",
+              "Author contribution.",
+              "Use of generative AI."
+          ]:
+              assert needle in title, needle
+
+          for needle in [
+              "\\section*{Statements and Declarations}",
+              "OpenAI ChatGPT was used as a structured research assistant",
+              "Beni2026KindsWithoutStructure",
+              "does not select predictive processing",
+              "1770/1770",
+              "ROLE\\_GAP"
+          ]:
+              assert needle in main, needle
+
+          assert "10.1007/s10838-025-09759-z" in refs
+          assert "Beni2026KindsWithoutStructure" in refs
+          assert "not under consideration elsewhere" in cover
+          assert "Journal for General Philosophy of Science" in cover
+
+          # No more than three displayed heading levels.
+          assert "\\paragraph{" not in main
+          assert "\\subsubsection{" not in main
+
+          print("jgps_content_contract", "PASS")
+          PY
+
+      - name: Install LaTeX build tools
+        run: |
+          sudo apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            texlive-latex-base texlive-latex-recommended texlive-latex-extra \
+            texlive-fonts-recommended texlive-bibtex-extra texlive-pictures \
+            poppler-utils zip
+
+      - name: Build JGPS manuscript and title page
+        run: |
+          set -euo pipefail
+          cd paper/venues/jgps
+
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          bibtex main
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          test -s main.pdf
+
+          pdflatex -interaction=nonstopmode -halt-on-error title-page.tex
+          pdflatex -interaction=nonstopmode -halt-on-error title-page.tex
+          test -s title-page.pdf
+
+          if grep -En 'LaTeX Warning:|Package .* Warning:|Overfull \\hbox|Citation .* undefined|Reference .* undefined' main.log; then
+            exit 1
+          fi
+          if grep -En 'LaTeX Warning:|Package .* Warning:|Overfull \\hbox|Citation .* undefined|Reference .* undefined' title-page.log; then
+            exit 1
+          fi
+
+          pdftotext main.pdf main.txt
+          tr '\n' ' ' < main.txt | tr -s '[:space:]' ' ' > main.flat.txt
+          grep -F "Toward a Concept-Neutral Measurement Basis for Cognitive Capacities" main.flat.txt
+          grep -F "Rintaro Sakamoto" main.flat.txt
+          grep -E '1770[[:space:]]*/[[:space:]]*1770' main.flat.txt
+          grep -E 'ROLE[ _]*GAP' main.flat.txt
+          grep -F "Beni" main.flat.txt
+
+          pdftotext title-page.pdf title-page.txt
+          grep -F "rin.sakamoto.research@gmail.com" title-page.txt
+          grep -F "0009-0002-0443-2508" title-page.txt
+          grep -F "Declarations" title-page.txt
+
+          PAGES="$(pdfinfo main.pdf | awk -F: '/^Pages:/ {gsub(/ /,"",$2); print $2}')"
+          echo "JGPS manuscript pages: $PAGES" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Build flat Editorial Manager source package
+        run: |
+          set -euo pipefail
+          cd paper/venues/jgps
+          rm -rf submission-source
+          mkdir submission-source
+          cp main.tex title-page.tex references.bib cover-letter.md submission-checklist.md README.md submission-source/
+          test "$(find submission-source -maxdepth 1 -type f | wc -l)" -eq 6
+          zip -jq paper-2-jgps-editable-source.zip submission-source/*
+          test -s paper-2-jgps-editable-source.zip
+          if unzip -l paper-2-jgps-editable-source.zip | grep -E '/|\.pdf$|\.aux$|\.log$|\.bbl$|\.blg$'; then
+            echo "Generated or nested files leaked into editable-source package" >&2
+            exit 1
+          fi
+
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: paper-2-jgps-manuscript-pdf
+          path: paper/venues/jgps/main.pdf
+          if-no-files-found: error
+          retention-days: 14
+
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: paper-2-jgps-title-page-pdf
+          path: paper/venues/jgps/title-page.pdf
+          if-no-files-found: error
+          retention-days: 14
+
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: paper-2-jgps-editable-source
+          path: paper/venues/jgps/paper-2-jgps-editable-source.zip
+          if-no-files-found: error
+          retention-days: 14
