@@ -155,7 +155,11 @@ def _role_support() -> dict[str, Any]:
             raise ValidationError(f"{lane}: expected 6 claims, got {len(claims)}")
         for claim in claims:
             cid = claim["claim_id"]
-            claim_ids.append(cid)
+            # Archetype artifacts use slot-root identities (e.g. MEM01),
+            # while several reverse-projection lanes use claim IDs such as
+            # MEM01.C1. Compare the frozen 48-claim surface at slot-root level.
+            slot_root = cid.split(".", 1)[0]
+            claim_ids.append(slot_root)
             verdict = claim["verdict"]
             if verdict not in verdict_counts:
                 raise ValidationError(f"{cid}: unexpected verdict {verdict}")
