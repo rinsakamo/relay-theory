@@ -43,7 +43,7 @@ Two commitments guide the analysis. First, no theoretical construct receives pri
 
 The paper proceeds through a deliberately adversarial sequence. We first freeze the source and representation contracts, then test whole-claim comparison. When the whole-claim atlas collapses into universal incomparability, we preserve that negative result and diagnose it rather than relaxing the rules until a desired clustering appears. We then ask whether reusable structure survives at a bounded subobject level. Only after that reconstruction do we infer a compact role grammar and attack it with residual and comparator tests.
 
-The central contribution is therefore methodological and empirical rather than theorem-theoretic: heterogeneous cognitive claims are decomposed under a shared contract, failed compression attempts are retained, surviving substructures are reconstructed, and the resulting grammar is tested against the frozen claims that generated it.
+The central contribution is therefore methodological and empirical rather than theorem-theoretic: heterogeneous cognitive claims are decomposed under a shared contract, failed compression attempts are retained, surviving substructures are reconstructed, and the resulting grammar is tested against the frozen claims that generated it. The novelty claim is deliberately narrow. Paper 2 does not claim invention of generic dynamics, POMDP components, boundaries, lenses, category theory, or the individual Grammar-v0 roles. Its candidate contribution is the integration of source-grounded label suppression, predeclared structural comparison, preserved negative results, bounded subobject reconstruction, and hostile reverse-projection tests into one auditable empirical reconstruction protocol. Historical firstness for that integration is not claimed.
 
 ## 2. Problem and Inferential Scope
 
@@ -100,7 +100,7 @@ A separate 12-claim challenge set was frozen as a non-tuning surface. Its pressu
 
 The challenge set was not allowed to tune the frozen source selection, ClaimIR schema, working basis, or comparison semantics. This separation matters because a challenge corpus ceases to be a meaningful stress test if its failures are used to modify the representation until those same cases pass.
 
-Each activated slot uses one primary claim per work. The primary and challenge surfaces together form the bounded empirical target of this paper. Population-scale validation is explicitly deferred to Paper 3.
+Each activated slot uses one primary claim per work. The primary and challenge surfaces together form the bounded empirical target of this paper. This is a designed stress-test corpus, not a probability sample of cognitive science and not an estimator of the prevalence of any role, relation, or Archetype in the literature. Population-scale validation is explicitly deferred to Paper 3.
 
 ## 4. Source-Grounded ClaimIR Construction
 
@@ -241,7 +241,7 @@ No field was then deleted merely because deletion would produce attractive clust
 
 Whole scientific claims often contain a shared mechanism plus source-specific scope, controls, temporal qualifiers, comparisons, and auxiliary structure. Requiring whole-claim isomorphism therefore asks a stronger question than whether reusable cognitive structure recurs.
 
-Paper 2 next reconstructed bounded subobjects under a frozen basis-subobject forgetting operator. The operator permits restriction to retained typed substructure but forbids arbitrary rewiring or semantic relabeling. Candidate subobjects must remain recoverable from their source claims under the predeclared rules.
+Paper 2 next performed a **secondary post-atlas reconstruction** of bounded subobjects under a frozen basis-subobject forgetting operator. This step was prompted by the preserved whole-claim failure and must not be read as the originally successful primary atlas. The operator permits restriction to retained typed substructure but forbids arbitrary rewiring or semantic relabeling. Candidate subobjects must remain recoverable from their source claims under the predeclared rules.
 
 Lane-local reconstruction produced 213 candidate objects. Global deduplication yielded:
 
@@ -313,7 +313,7 @@ c_{t,t'}:X_tightarrow X_{t'}
 
 with evidence that the relevant transition realizes that carry. Literal identity is licensed only when the time-indexed fibers have already been identified.
 
-Grammar v0 is therefore a reusable role grammar, not nine ontological substances.
+Grammar v0 is therefore a reusable role grammar, not nine ontological substances. The number and granularity of roles are not claimed to be unique: alternative factorizations may preserve equivalent distinctions. The empirical claim is only that the present inventory is nontrivial under the frozen direct-preservation contract and that the tested coarser views erase distinctions unless equivalent structure is reintroduced.
 
 ## 11. Sixty-Claim Reverse Projection
 
@@ -537,6 +537,8 @@ The 13 source-context residual claims contain 27 explicit generic condition node
 
 No node was newly promoted to C.
 
+The location of the system/World boundary remains application-relative. Grammar v0 supplies roles relative to a selected modeled-system boundary; it does not provide a universal scientific criterion for where every cognitive system must end. Extended, embodied, and other boundary-sensitive theories therefore remain legitimate stress cases rather than being settled by notation.
+
 This analysis also clarifies initial conditions. The start time of a finite experiment need not be the origin of the cognitive system. It is better represented as a run cut:
 
 [
@@ -610,9 +612,9 @@ The strongest limitation concerns extraction reliability. The reference corpus i
 
 A reader can inspect the retained source identities, source-local locators, reviewed ClaimIR records, frozen structural contracts, and deterministic downstream transformations. What the paper cannot claim is that a fresh model or human annotator will independently reproduce the same ClaimIR without adjudication.
 
-The second limitation is corpus scale. Sixty designed claims are sufficient for a hostile bounded reconstruction but not for population-level coverage claims. The 1,000-work validation program is deliberately assigned to Paper 3 so that the Paper 2 basis and grammar cannot be tuned to the larger-scale outcomes.
+The second limitation is corpus scale. Sixty designed claims are sufficient for a hostile bounded reconstruction but not for population-level coverage or prevalence claims. The 1,000-work validation program is deliberately assigned to Paper 3 so that the Paper 2 basis and grammar cannot be tuned to the larger-scale outcomes.
 
-The third limitation is representational relativity. Grammar-v0 roles are recovered under a particular decomposition contract. Their recurrence does not establish that they are the unique mathematical coordinates for cognition. The minimality result is strict-preservation minimality relative to frozen distinctions, not absolute minimality under arbitrary re-encoding.
+The third limitation is representational relativity. Grammar-v0 roles are recovered under a particular decomposition contract. Their recurrence does not establish that they are the unique mathematical coordinates for cognition, and the role granularity itself may admit alternative but distinction-equivalent factorizations. The minimality result is strict-preservation minimality relative to frozen distinctions, not absolute minimality under arbitrary re-encoding.
 
 The fourth limitation is the distinction between system grammar and scientific claim language. Residual assertion semantics remain scientifically meaningful. Paper 2 does not attempt to build a universal language for every epistemic, comparative, causal, or statistical statement appearing in cognitive science.
 
