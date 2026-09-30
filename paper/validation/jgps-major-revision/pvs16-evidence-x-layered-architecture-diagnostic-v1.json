@@ -1,0 +1,150 @@
+{
+  "schema_version": "paper2-pvs16-evidence-x-layered-architecture-diagnostic-v1",
+  "status": "FROZEN_POST_PROJECTION_EVIDENCE_JOIN",
+  "owner_issue": 373,
+  "generated_date": "2026-10-01",
+  "authority": {
+    "layered_projection_path": "paper/validation/jgps-major-revision/pvs16-layered-architecture-projection-v1.json",
+    "layered_projection_blob_sha": "27ae511dba789a3e6049fdfe01b181573c69d913",
+    "evidence_profile_path": "paper/validation/jgps-major-revision/pvs16-evidence-profile-v1.json",
+    "evidence_profile_blob_sha": "f98b2faed1ccc04a2564d090e04513ca63a2efe4",
+    "grammar_mapping_path": "paper/validation/jgps-major-revision/pvs16-grammar-v0-prospective-mapping-v1.json",
+    "grammar_mapping_blob_sha": "a55cde1f7de382206bf6f1b52b6ac4c61f0effc6"
+  },
+  "sequencing": {
+    "layered_projection_committed_before_evidence_join": true,
+    "projection_summary_commit": "4a85ab7d48a6007b7c4731c9912b73f01ffac450",
+    "evidence_profile_frozen_before_layered_projection": true
+  },
+  "evidence_x_architecture_matrix": {
+    "E0": {
+      "DIRECT_L_SYS": 22,
+      "LAYER_RECOVERED": 3,
+      "ARCHITECTURE_GAP": 0,
+      "CARRIER_PRESSURE": 0,
+      "TOTAL": 25,
+      "architecture_coverage_rate": 1,
+      "direct_system_rate": 0.88,
+      "layer_recovery_rate": 0.12
+    },
+    "E1": {
+      "DIRECT_L_SYS": 9,
+      "LAYER_RECOVERED": 6,
+      "ARCHITECTURE_GAP": 0,
+      "CARRIER_PRESSURE": 0,
+      "TOTAL": 15,
+      "architecture_coverage_rate": 1,
+      "direct_system_rate": 0.6,
+      "layer_recovery_rate": 0.4
+    },
+    "E2": {
+      "DIRECT_L_SYS": 4,
+      "LAYER_RECOVERED": 4,
+      "ARCHITECTURE_GAP": 0,
+      "CARRIER_PRESSURE": 0,
+      "TOTAL": 8,
+      "architecture_coverage_rate": 1,
+      "direct_system_rate": 0.5,
+      "layer_recovery_rate": 0.5
+    },
+    "E3": {
+      "DIRECT_L_SYS": 3,
+      "LAYER_RECOVERED": 1,
+      "ARCHITECTURE_GAP": 0,
+      "CARRIER_PRESSURE": 1,
+      "TOTAL": 4,
+      "architecture_coverage_rate": 1,
+      "direct_system_rate": 0.75,
+      "layer_recovery_rate": 0.25
+    }
+  },
+  "high_evidence_recoveries": [
+    {
+      "relation": "PVS-LRN-02.r1",
+      "evidence_level": "E2",
+      "prior_system_status": "PARTIAL",
+      "layered_status": "RECOVERED_L_CLAIM",
+      "assertion_class": "NULL_OR_PRESERVATION_COMPARISON",
+      "layers": [
+        "L_claim",
+        "L_sys"
+      ],
+      "carrier_status": "EXPLICIT",
+      "decomposition": "L_claim retains the comparative-preservation assertion under the already-mapped L_sys P_in intervention and rho/O accuracy trace."
+    },
+    {
+      "relation": "PVS-ATT-02.r1",
+      "evidence_level": "E2",
+      "prior_system_status": "UNMAPPED",
+      "layered_status": "RECOVERED_CROSS_LAYER",
+      "assertion_class": "CONTEXT_INDEXED_CHANGE",
+      "layers": [
+        "L_claim",
+        "L_ctx",
+        "L_sys"
+      ],
+      "carrier_status": "EXPLICIT",
+      "decomposition": "L_claim asserts response change across a W-side stimulus configuration selected by E_exp; neuronal_response remains L_sys rho/O."
+    },
+    {
+      "relation": "PVS-ATT-02.r3",
+      "evidence_level": "E2",
+      "prior_system_status": "UNMAPPED",
+      "layered_status": "RECOVERED_CROSS_LAYER",
+      "assertion_class": "MAGNITUDE_COMPARISON",
+      "layers": [
+        "L_claim",
+        "L_ctx",
+        "L_sys"
+      ],
+      "carrier_status": "EXPLICIT",
+      "decomposition": "L_claim retains the greater task-dependent modulation in the competing-stimulus W/E_exp context relative to single-stimulus reference structure."
+    },
+    {
+      "relation": "PVS-CNC-01.r3",
+      "evidence_level": "E2",
+      "prior_system_status": "PARTIAL",
+      "layered_status": "RECOVERED_L_CLAIM_WITH_E_EXP_PROVENANCE",
+      "assertion_class": "EXPERIMENTAL_MANIPULATION_PROVENANCE",
+      "layers": [
+        "L_claim",
+        "L_sys"
+      ],
+      "carrier_status": "EXPLICIT_RELATION_WITH_DESCRIPTION_LEVEL_PROVENANCE",
+      "decomposition": "L_sys K-like change is retained, while L_claim records that the reported change is supported by experiments manipulating causal knowledge. E_exp provenance is attached to the assertion without inventing a missing P_in node."
+    },
+    {
+      "relation": "PVS-CNC-02.r2",
+      "evidence_level": "E3",
+      "prior_system_status": "UNMAPPED",
+      "layered_status": "RECOVERED_CROSS_LAYER_WITH_CARRIER_PRESSURE",
+      "assertion_class": "CONTRASTIVE_EXPLANATION",
+      "layers": [
+        "L_claim",
+        "L_ctx",
+        "L_sys"
+      ],
+      "carrier_status": "DESCRIPTION_LEVEL_REFERENCE",
+      "decomposition": "L_claim retains the contrastive explanatory assertion that category-type-associated feature-importance differences are accounted for by causal position rather than category type alone; category_type remains L_ctx and causal_position remains L_sys X."
+    }
+  ],
+  "carrier_pressures": [
+    {
+      "relation": "PVS-CNC-02.r2",
+      "evidence_level": "E3",
+      "status": "ARCHITECTURE_PLACEABLE_WITH_CLAIM_CARRIER_PRECISION_PRESSURE",
+      "issue": "causal_position is semantically required by the frozen relation description but is absent from the frozen relation argument list",
+      "consequence": "No new system role or architecture layer is required, but a future ClaimIR schema/review pass should distinguish assertion references from formal relation arguments."
+    }
+  ],
+  "interpretation": {
+    "e0": "25/25 E0 relations are architecture-placeable: 22 directly in L_sys and 3 recovered by layer separation.",
+    "e1": "15/15 E1 relations are architecture-placeable: 9 directly in L_sys and 6 recovered by layer separation.",
+    "e2": "8/8 E2 relations are architecture-placeable: 4 directly in L_sys and 4 recovered by L_claim/L_ctx/E_exp separation.",
+    "e3": "4/4 E3 relations are architecture-placeable: 3 directly in L_sys and 1 recovered as L_claim + L_ctx; the recovered E3 relation retains claim-carrier precision pressure but no architecture or role gap.",
+    "central_result": "The evidence-stratified failures of G_cog are recovered by the pre-existing claim/context architecture at every evidence level. This supports separation of system structure from scientific assertion semantics and source context rather than expansion of the cognitive-system role inventory.",
+    "limitation": "L_claim is intentionally a broad scientific assertion layer, not a fully formalized logic. Therefore 100% architecture placement tests boundary adequacy, not a theorem of unique/minimal or fully formal claim-language completeness.",
+    "formalization_implication": "The remaining PVS pressure is toward a more explicit ClaimIR/L_claim carrier for assertion references, not toward Grammar-v1."
+  },
+  "terminal": "PVS16_EVIDENCE_LEVELS_ALL_ARCHITECTURE_PLACEABLE_WITH_E3_CLAIM_CARRIER_PRESSURE_AND_NO_ROLE_OR_ARCHITECTURE_GAP"
+}
