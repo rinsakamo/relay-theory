@@ -11,6 +11,8 @@ Prepared from the validated generic Paper-2 manuscript without changing any froz
 - `references.bib` — standalone bibliography for Editorial Manager.
 - `cover-letter.md` — submission cover letter.
 - `submission-checklist.md` — journal-specific readiness checklist.
+- `deep-research-review-response-v1.md` — first hostile-review adjudication.
+- `deep-research-review-response-v2.md` — final framing/triviality adjudication.
 
 ## Current JGPS requirements reflected here
 
@@ -44,5 +46,5 @@ This venue package is presentation-only. Scientific authority remains with the f
 Terminal target:
 
 ```text
-PAPER2_JGPS_SUBMISSION_PACKAGE_READY
+PAPER2_JGPS_FRAMING_ALIGNED_WITH_ACTUAL_CONTRIBUTION
 ```
