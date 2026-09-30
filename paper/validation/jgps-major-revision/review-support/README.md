@@ -66,3 +66,11 @@ Worked-example selection SHA-256:
 `a37f77d786cc7231f3a7814973e269bed08f3659ff67813dc58ff3fe96267af9`
 
 These selections are candidates for exposition only; they do not create new scientific adjudications.
+
+Worked-example evidence JSON SHA-256:
+
+`817fda3c08b032f5b21257862e2f9639a393beccefc6a98fa78e348ddbe99445`
+
+Worked-example evidence Markdown SHA-256:
+
+`eec75ef0eb7da1f391b36ae93d1c307f02cb6691422c59529ba114a9a6db38f8`
