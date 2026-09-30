@@ -1,0 +1,39 @@
+name: paper2-jgps-pvs16-claimir-candidates
+
+on:
+  push:
+    branches:
+      - paper2-jgps-pvs16-claimir-365
+    paths:
+      - "paper/validation/jgps-major-revision/pvs16-*"
+      - "scripts/paper2_jgps_pvs16_claimir_candidate_validate.py"
+      - ".github/workflows/paper2-jgps-pvs16-claimir-candidates.yml"
+  pull_request:
+    paths:
+      - "paper/validation/jgps-major-revision/pvs16-*"
+      - "scripts/paper2_jgps_pvs16_claimir_candidate_validate.py"
+      - ".github/workflows/paper2-jgps-pvs16-claimir-candidates.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  claimir-candidates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile
+        run: python -m py_compile scripts/paper2_claim_ir_validate.py scripts/paper2_jgps_pvs16_claimir_candidate_validate.py
+      - name: Validate twice and compare
+        run: |
+          PYTHONPATH=scripts python scripts/paper2_jgps_pvs16_claimir_candidate_validate.py --output /tmp/pvs-a.json
+          PYTHONPATH=scripts python scripts/paper2_jgps_pvs16_claimir_candidate_validate.py --output /tmp/pvs-b.json
+          cmp /tmp/pvs-a.json /tmp/pvs-b.json
+      - name: Upload validation receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: paper2-jgps-pvs16-claimir-candidate-receipt
+          path: /tmp/pvs-a.json
