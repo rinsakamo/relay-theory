@@ -1,0 +1,981 @@
+{
+  "schema_version": "paper2-pvs16-evidence-x-grammar-diagnostic-v1",
+  "status": "FROZEN_POST_MAPPING_JOIN",
+  "owner_issue": 371,
+  "generated_date": "2026-10-01",
+  "authority": {
+    "mapping_path": "paper/validation/jgps-major-revision/pvs16-grammar-v0-prospective-mapping-v1.json",
+    "mapping_blob_sha": "a55cde1f7de382206bf6f1b52b6ac4c61f0effc6",
+    "evidence_profile_path": "paper/validation/jgps-major-revision/pvs16-evidence-profile-v1.json",
+    "evidence_profile_blob_sha": "f98b2faed1ccc04a2564d090e04513ca63a2efe4"
+  },
+  "sequencing": {
+    "mapping_committed_before_evidence_join": true,
+    "mapping_summary_commit": "c852ba63992893e0f452d84812e7d6ec79bbae8d",
+    "evidence_profile_frozen_before_mapping": true,
+    "note": "The mapping artifact contains no E0-E3 fields; this diagnostic is a post-mapping join."
+  },
+  "relation_level_matrix": {
+    "E0": {
+      "PRESERVED": 22,
+      "PARTIAL": 2,
+      "UNMAPPED": 1,
+      "TOTAL": 25,
+      "strict_preservation_rate": 0.88,
+      "covered_rate": 0.96
+    },
+    "E1": {
+      "PRESERVED": 9,
+      "PARTIAL": 1,
+      "UNMAPPED": 5,
+      "TOTAL": 15,
+      "strict_preservation_rate": 0.6,
+      "covered_rate": 0.6666666666666666
+    },
+    "E2": {
+      "PRESERVED": 4,
+      "PARTIAL": 2,
+      "UNMAPPED": 2,
+      "TOTAL": 8,
+      "strict_preservation_rate": 0.5,
+      "covered_rate": 0.75
+    },
+    "E3": {
+      "PRESERVED": 3,
+      "PARTIAL": 0,
+      "UNMAPPED": 1,
+      "TOTAL": 4,
+      "strict_preservation_rate": 0.75,
+      "covered_rate": 0.75
+    }
+  },
+  "unmapped_residual_by_evidence": {
+    "E0": {
+      "count": 1,
+      "primary_class_counts": {
+        "SOURCE_CONTEXT_PARAMETER": 1
+      },
+      "relations": [
+        "PVS-PRD-01.r2"
+      ]
+    },
+    "E1": {
+      "count": 5,
+      "primary_class_counts": {
+        "SOURCE_CONTEXT_PARAMETER": 5
+      },
+      "relations": [
+        "PVS-MEM-01.r1",
+        "PVS-MEM-01.r3",
+        "PVS-LRN-01.r1",
+        "PVS-LRN-01.r2",
+        "PVS-LRN-01.r5"
+      ]
+    },
+    "E2": {
+      "count": 2,
+      "primary_class_counts": {
+        "SOURCE_CONTEXT_PARAMETER": 2
+      },
+      "relations": [
+        "PVS-ATT-02.r1",
+        "PVS-ATT-02.r3"
+      ]
+    },
+    "E3": {
+      "count": 1,
+      "primary_class_counts": {
+        "RELATION_LANGUAGE_GAP": 1
+      },
+      "relations": [
+        "PVS-CNC-02.r2"
+      ]
+    }
+  },
+  "high_evidence_nonpreserved": [
+    {
+      "validation_claim_id": "PVS-LRN-02",
+      "relation_id": "r1",
+      "evidence_level": "E2",
+      "mapping_status": "PARTIAL",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "The relation's preserved/no-material-change comparison is not a first-class Grammar-v0 predicate."
+    },
+    {
+      "validation_claim_id": "PVS-ATT-02",
+      "relation_id": "r1",
+      "evidence_level": "E2",
+      "mapping_status": "UNMAPPED",
+      "residual_primary": "SOURCE_CONTEXT_PARAMETER",
+      "residual_secondary": [
+        "RELATION_LANGUAGE_GAP"
+      ],
+      "mapping_rationale": "stimulus_pair is a required experimental condition carrier; it is not licensed as C/Q/Pi/P/X."
+    },
+    {
+      "validation_claim_id": "PVS-ATT-02",
+      "relation_id": "r3",
+      "evidence_level": "E2",
+      "mapping_status": "UNMAPPED",
+      "residual_primary": "SOURCE_CONTEXT_PARAMETER",
+      "residual_secondary": [
+        "RELATION_LANGUAGE_GAP"
+      ],
+      "mapping_rationale": "The competing-versus-single-stimulus contrast again requires stimulus_pair source context, and the greater-than comparison is not first-class relation language."
+    },
+    {
+      "validation_claim_id": "PVS-CNC-01",
+      "relation_id": "r3",
+      "evidence_level": "E2",
+      "mapping_status": "PARTIAL",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "The ClaimIR description explicitly says manipulating causal structure, but no frozen intervention node exists; Grammar v0 therefore preserves the change relation but not first-class intervention directionality."
+    },
+    {
+      "validation_claim_id": "PVS-CNC-02",
+      "relation_id": "r2",
+      "evidence_level": "E3",
+      "mapping_status": "UNMAPPED",
+      "residual_primary": "RELATION_LANGUAGE_GAP",
+      "residual_secondary": [
+        "SOURCE_CONTEXT_PARAMETER"
+      ],
+      "mapping_rationale": "category_type is a required source-defined comparison condition, and the 'accounted for by ... rather than ... alone' explanatory/contrastive predicate is not first-class in Grammar v0."
+    }
+  ],
+  "claim_level_by_max_evidence": {
+    "E0": {
+      "FULL": 5,
+      "PARTIAL": 2,
+      "RESIDUAL": 0,
+      "TOTAL": 7
+    },
+    "E1": {
+      "FULL": 1,
+      "PARTIAL": 0,
+      "RESIDUAL": 3,
+      "TOTAL": 4
+    },
+    "E2": {
+      "FULL": 0,
+      "PARTIAL": 2,
+      "RESIDUAL": 1,
+      "TOTAL": 3
+    },
+    "E3": {
+      "FULL": 1,
+      "PARTIAL": 0,
+      "RESIDUAL": 1,
+      "TOTAL": 2
+    }
+  },
+  "joined_relations": [
+    {
+      "validation_claim_id": "PVS-MEM-01",
+      "claim_id": "PVS-MEM-01.C1",
+      "relation_id": "r1",
+      "evidence_level": "E1",
+      "source_basis": "PRIMARY_EMPIRICAL",
+      "support_directness": "DIRECT",
+      "causal_leverage": "CONTROLLED_COMPARISON",
+      "breadth": "SINGLE_STUDY_OR_CONTEXT",
+      "mapping_status": "UNMAPPED",
+      "residual_primary": "SOURCE_CONTEXT_PARAMETER",
+      "residual_secondary": [
+        "RELATION_LANGUAGE_GAP"
+      ],
+      "mapping_rationale": "The equivalent-acquisition comparison requires two frozen participant-group condition carriers plus an explicit equivalence predicate; neither group condition is licensed as C/Q/Pi/X and equivalence is not first-class in Grammar v0.",
+      "evidence_rationale": "Matched-group acquisition-rate comparison is directly reported; clinical group status is not experimentally assigned."
+    },
+    {
+      "validation_claim_id": "PVS-MEM-01",
+      "claim_id": "PVS-MEM-01.C1",
+      "relation_id": "r2",
+      "evidence_level": "E1",
+      "source_basis": "PRIMARY_EMPIRICAL",
+      "support_directness": "DIRECT",
+      "causal_leverage": "LONGITUDINAL_DESCRIPTIVE",
+      "breadth": "SINGLE_STUDY_OR_CONTEXT",
+      "mapping_status": "PRESERVED",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "The transformed-text probe exposes acquisition performance without requiring a new role.",
+      "evidence_rationale": "Repeated transformed-text procedure and acquisition performance are directly linked in the reported task trajectory."
+    },
+    {
+      "validation_claim_id": "PVS-MEM-01",
+      "claim_id": "PVS-MEM-01.C1",
+      "relation_id": "r3",
+      "evidence_level": "E1",
+      "source_basis": "PRIMARY_EMPIRICAL",
+      "support_directness": "DIRECT",
+      "causal_leverage": "LONGITUDINAL_DESCRIPTIVE",
+      "breadth": "SINGLE_STUDY_OR_CONTEXT",
+      "mapping_status": "UNMAPPED",
+      "residual_primary": "SOURCE_CONTEXT_PARAMETER",
+      "residual_secondary": [
+        "RELATION_LANGUAGE_GAP"
+      ],
+      "mapping_rationale": "The retained-performance assertion is indexed by the frozen impaired-group condition, which is source-defined participant context rather than a supported cognitive-system role.",
+      "evidence_rationale": "Multi-month retention in the source-identified amnesic group is directly reported."
+    },
+    {
+      "validation_claim_id": "PVS-MEM-02",
+      "claim_id": "PVS-MEM-02.C1",
+      "relation_id": "r1",
+      "evidence_level": "E0",
+      "source_basis": "REVIEW_SYNTHESIS",
+      "support_directness": "SYNTHESIZED",
+      "causal_leverage": "NOT_APPLICABLE",
+      "breadth": "EXPLICIT_MULTIPLE_TASKS_OR_POPULATIONS",
+      "mapping_status": "PRESERVED",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "The explicit expression partition preserves the conscious-report versus performance-facilitation distinction.",
+      "evidence_rationale": "The distinction is stated in a review-level synthesis rather than exposed here as a single direct primary test."
+    },
+    {
+      "validation_claim_id": "PVS-MEM-02",
+      "claim_id": "PVS-MEM-02.C1",
+      "relation_id": "r2",
+      "evidence_level": "E0",
+      "source_basis": "REVIEW_SYNTHESIS",
+      "support_directness": "SYNTHESIZED",
+      "causal_leverage": "NOT_APPLICABLE",
+      "breadth": "EXPLICIT_MULTIPLE_TASKS_OR_POPULATIONS",
+      "mapping_status": "PRESERVED",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "The relation is retained as typed dependence without causal strengthening.",
+      "evidence_rationale": "The event-to-conscious-expression relation is synthesized from the reviewed literature."
+    },
+    {
+      "validation_claim_id": "PVS-MEM-02",
+      "claim_id": "PVS-MEM-02.C1",
+      "relation_id": "r3",
+      "evidence_level": "E0",
+      "source_basis": "REVIEW_SYNTHESIS",
+      "support_directness": "SYNTHESIZED",
+      "causal_leverage": "NOT_APPLICABLE",
+      "breadth": "EXPLICIT_MULTIPLE_TASKS_OR_POPULATIONS",
+      "mapping_status": "PRESERVED",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "The relation is retained as typed dependence without causal strengthening.",
+      "evidence_rationale": "The event-to-performance-facilitation relation is synthesized from the reviewed literature."
+    },
+    {
+      "validation_claim_id": "PVS-MEM-02",
+      "claim_id": "PVS-MEM-02.C1",
+      "relation_id": "r4",
+      "evidence_level": "E0",
+      "source_basis": "REVIEW_SYNTHESIS",
+      "support_directness": "SYNTHESIZED",
+      "causal_leverage": "NOT_APPLICABLE",
+      "breadth": "EXPLICIT_MULTIPLE_TASKS_OR_POPULATIONS",
+      "mapping_status": "PARTIAL",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "Grammar v0 preserves the contrasted modes but does not make the reported cross-task/population dissociation predicate first-class.",
+      "evidence_rationale": "The source explicitly reports dissociations across multiple tasks and populations, but the frozen packet remains review-level rather than primary-test evidence."
+    },
+    {
+      "validation_claim_id": "PVS-LRN-01",
+      "claim_id": "PVS-LRN-01.C1",
+      "relation_id": "r1",
+      "evidence_level": "E1",
+      "source_basis": "PRIMARY_EMPIRICAL",
+      "support_directness": "DIRECT",
+      "causal_leverage": "CONTROLLED_COMPARISON",
+      "breadth": "MULTIPLE_CONDITIONS_SAME_SOURCE",
+      "mapping_status": "UNMAPPED",
+      "residual_primary": "SOURCE_CONTEXT_PARAMETER",
+      "residual_secondary": [
+        "RELATION_LANGUAGE_GAP"
+      ],
+      "mapping_rationale": "task_emphasis is a required source-defined condition and is not licensed as C/Q/Pi/P/X.",
+      "evidence_rationale": "Medial-temporal engagement differs with task emphasis under matched material/performance; the frozen span does not explicitly establish intervention assignment."
+    },
+    {
+      "validation_claim_id": "PVS-LRN-01",
+      "claim_id": "PVS-LRN-01.C1",
+      "relation_id": "r2",
+      "evidence_level": "E1",
+      "source_basis": "PRIMARY_EMPIRICAL",
+      "support_directness": "DIRECT",
+      "causal_leverage": "CONTROLLED_COMPARISON",
+      "breadth": "MULTIPLE_CONDITIONS_SAME_SOURCE",
+      "mapping_status": "UNMAPPED",
+      "residual_primary": "SOURCE_CONTEXT_PARAMETER",
+      "residual_secondary": [
+        "RELATION_LANGUAGE_GAP"
+      ],
+      "mapping_rationale": "task_emphasis is a required source-defined condition and is not licensed as C/Q/Pi/P/X.",
+      "evidence_rationale": "Basal-ganglia engagement differs with task emphasis under matched material/performance; the frozen span does not explicitly establish intervention assignment."
+    },
+    {
+      "validation_claim_id": "PVS-LRN-01",
+      "claim_id": "PVS-LRN-01.C1",
+      "relation_id": "r3",
+      "evidence_level": "E1",
+      "source_basis": "PRIMARY_EMPIRICAL",
+      "support_directness": "DIRECT",
+      "causal_leverage": "ASSOCIATIONAL",
+      "breadth": "SINGLE_STUDY_OR_CONTEXT",
+      "mapping_status": "PARTIAL",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "The dependence is representable, but negative-correlation semantics is not first-class.",
+      "evidence_rationale": "Negative correlation between subsystem activities is directly reported."
+    },
+    {
+      "validation_claim_id": "PVS-LRN-01",
+      "claim_id": "PVS-LRN-01.C1",
+      "relation_id": "r4",
+      "evidence_level": "E1",
+      "source_basis": "PRIMARY_EMPIRICAL",
+      "support_directness": "DIRECT",
+      "causal_leverage": "LONGITUDINAL_DESCRIPTIVE",
+      "breadth": "SINGLE_STUDY_OR_CONTEXT",
+      "mapping_status": "PRESERVED",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "training_stage is exhausted here by its temporal-position semantics and can be represented as T rather than as an extra system role.",
+      "evidence_rationale": "Decline of medial-temporal reliance with training is directly reported across the training trajectory."
+    },
+    {
+      "validation_claim_id": "PVS-LRN-01",
+      "claim_id": "PVS-LRN-01.C1",
+      "relation_id": "r5",
+      "evidence_level": "E1",
+      "source_basis": "PRIMARY_EMPIRICAL",
+      "support_directness": "DIRECT",
+      "causal_leverage": "CONTROLLED_COMPARISON",
+      "breadth": "MULTIPLE_CONDITIONS_SAME_SOURCE",
+      "mapping_status": "UNMAPPED",
+      "residual_primary": "SOURCE_CONTEXT_PARAMETER",
+      "residual_secondary": [
+        "RELATION_LANGUAGE_GAP"
+      ],
+      "mapping_rationale": "The matched-performance assertion is indexed by task_emphasis source context and also carries explicit comparison/equivalence semantics.",
+      "evidence_rationale": "Matched behavioral performance across task-emphasis conditions is directly reported."
+    },
+    {
+      "validation_claim_id": "PVS-LRN-02",
+      "claim_id": "PVS-LRN-02.C1",
+      "relation_id": "r1",
+      "evidence_level": "E2",
+      "source_basis": "PRIMARY_EMPIRICAL",
+      "support_directness": "DIRECT",
+      "causal_leverage": "INTERVENTIONAL",
+      "breadth": "MULTIPLE_CONDITIONS_SAME_SOURCE",
+      "mapping_status": "PARTIAL",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "The relation's preserved/no-material-change comparison is not a first-class Grammar-v0 predicate.",
+      "evidence_rationale": "Adding a demanding concurrent task is the manipulated condition and preserved overall accuracy is the observed outcome."
+    },
+    {
+      "validation_claim_id": "PVS-LRN-02",
+      "claim_id": "PVS-LRN-02.C1",
+      "relation_id": "r2",
+      "evidence_level": "E1",
+      "source_basis": "PRIMARY_EMPIRICAL",
+      "support_directness": "DIRECT",
+      "causal_leverage": "ASSOCIATIONAL",
+      "breadth": "MULTIPLE_CONDITIONS_SAME_SOURCE",
+      "mapping_status": "PRESERVED",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "No causal strengthening is introduced.",
+      "evidence_rationale": "Single-task performance covaries with medial-temporal activity; covariance is noncausal evidence."
+    },
+    {
+      "validation_claim_id": "PVS-LRN-02",
+      "claim_id": "PVS-LRN-02.C1",
+      "relation_id": "r3",
+      "evidence_level": "E1",
+      "source_basis": "PRIMARY_EMPIRICAL",
+      "support_directness": "DIRECT",
+      "causal_leverage": "ASSOCIATIONAL",
+      "breadth": "MULTIPLE_CONDITIONS_SAME_SOURCE",
+      "mapping_status": "PRESERVED",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "No causal strengthening is introduced.",
+      "evidence_rationale": "Concurrent-task performance covaries with striatal activity; covariance is noncausal evidence."
+    },
+    {
+      "validation_claim_id": "PVS-LRN-02",
+      "claim_id": "PVS-LRN-02.C1",
+      "relation_id": "r4",
+      "evidence_level": "E2",
+      "source_basis": "PRIMARY_EMPIRICAL",
+      "support_directness": "DIRECT",
+      "causal_leverage": "INTERVENTIONAL",
+      "breadth": "MULTIPLE_CONDITIONS_SAME_SOURCE",
+      "mapping_status": "PRESERVED",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "The intervention and changed neural-route relation are directly retained.",
+      "evidence_rationale": "The concurrent-task manipulation changes which neural route is associated with successful performance."
+    },
+    {
+      "validation_claim_id": "PVS-LRN-02",
+      "claim_id": "PVS-LRN-02.C1",
+      "relation_id": "r5",
+      "evidence_level": "E2",
+      "source_basis": "PRIMARY_EMPIRICAL",
+      "support_directness": "DIRECT",
+      "causal_leverage": "INTERVENTIONAL",
+      "breadth": "MULTIPLE_CONDITIONS_SAME_SOURCE",
+      "mapping_status": "PRESERVED",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "The later flexible-use outcome remains distinct from acquisition accuracy.",
+      "evidence_rationale": "The concurrent-task manipulation reduces later flexible use of acquired information."
+    },
+    {
+      "validation_claim_id": "PVS-SKL-01",
+      "claim_id": "PVS-SKL-01.C1",
+      "relation_id": "r1",
+      "evidence_level": "E0",
+      "source_basis": "REVIEW_SYNTHESIS",
+      "support_directness": "SYNTHESIZED",
+      "causal_leverage": "NOT_APPLICABLE",
+      "breadth": "REVIEWED_LITERATURE",
+      "mapping_status": "PRESERVED",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "practice_stage is fully exhausted by temporal-stage semantics in this claim.",
+      "evidence_rationale": "Functional reorganization across learning stages is presented as review synthesis; no exact primary test is exposed in the frozen packet."
+    },
+    {
+      "validation_claim_id": "PVS-SKL-01",
+      "claim_id": "PVS-SKL-01.C1",
+      "relation_id": "r2",
+      "evidence_level": "E0",
+      "source_basis": "REVIEW_SYNTHESIS",
+      "support_directness": "SYNTHESIZED",
+      "causal_leverage": "NOT_APPLICABLE",
+      "breadth": "REVIEWED_LITERATURE",
+      "mapping_status": "PRESERVED",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "Structural reorganization is represented without inferring a specific mechanism.",
+      "evidence_rationale": "Structural reorganization across reported timescales is presented as review synthesis."
+    },
+    {
+      "validation_claim_id": "PVS-SKL-01",
+      "claim_id": "PVS-SKL-01.C1",
+      "relation_id": "r3",
+      "evidence_level": "E0",
+      "source_basis": "REVIEW_SYNTHESIS",
+      "support_directness": "SYNTHESIZED",
+      "causal_leverage": "NOT_APPLICABLE",
+      "breadth": "REVIEWED_LITERATURE",
+      "mapping_status": "PRESERVED",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "No additional condition role is required beyond temporal staging.",
+      "evidence_rationale": "Acquisition, consolidation, and retention are distinguished at the review/framework level."
+    },
+    {
+      "validation_claim_id": "PVS-SKL-02",
+      "claim_id": "PVS-SKL-02.C1",
+      "relation_id": "r1",
+      "evidence_level": "E0",
+      "source_basis": "REVIEW_SYNTHESIS",
+      "support_directness": "SYNTHESIZED",
+      "causal_leverage": "NOT_APPLICABLE",
+      "breadth": "REVIEWED_LITERATURE",
+      "mapping_status": "PRESERVED",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "The acquisition/later-stage condition nodes are exhausted by their explicit temporal-stage identities.",
+      "evidence_rationale": "The temporal ordering of acquisition before consolidated/automatized performance is part of the review's stage framework."
+    },
+    {
+      "validation_claim_id": "PVS-SKL-02",
+      "claim_id": "PVS-SKL-02.C1",
+      "relation_id": "r2",
+      "evidence_level": "E0",
+      "source_basis": "REVIEW_SYNTHESIS",
+      "support_directness": "SYNTHESIZED",
+      "causal_leverage": "NOT_APPLICABLE",
+      "breadth": "REVIEWED_LITERATURE",
+      "mapping_status": "PRESERVED",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "Stage-dependent change is preserved without adding a generic condition role.",
+      "evidence_rationale": "Stage-sensitive neural reconfiguration is synthesized from imaging literature rather than tied here to one primary intervention."
+    },
+    {
+      "validation_claim_id": "PVS-SKL-02",
+      "claim_id": "PVS-SKL-02.C1",
+      "relation_id": "r3",
+      "evidence_level": "E0",
+      "source_basis": "REVIEW_SYNTHESIS",
+      "support_directness": "SYNTHESIZED",
+      "causal_leverage": "MODEL_SPECIFICATION",
+      "breadth": "REVIEWED_LITERATURE",
+      "mapping_status": "PRESERVED",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "The integrated model is retained as an X-level account with typed dependence over T.",
+      "evidence_rationale": "The integrated stage-sensitive model is a synthesis/model relation."
+    },
+    {
+      "validation_claim_id": "PVS-ATT-01",
+      "claim_id": "PVS-ATT-01.C1",
+      "relation_id": "r1",
+      "evidence_level": "E0",
+      "source_basis": "REVIEW_SYNTHESIS",
+      "support_directness": "SYNTHESIZED",
+      "causal_leverage": "NOT_APPLICABLE",
+      "breadth": "REVIEWED_LITERATURE",
+      "mapping_status": "PRESERVED",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "The grammar need not encode a scalar winner score.",
+      "evidence_rationale": "Competition among object representations is stated in a review-level theoretical synthesis."
+    },
+    {
+      "validation_claim_id": "PVS-ATT-01",
+      "claim_id": "PVS-ATT-01.C1",
+      "relation_id": "r2",
+      "evidence_level": "E0",
+      "source_basis": "REVIEW_SYNTHESIS",
+      "support_directness": "SYNTHESIZED",
+      "causal_leverage": "NOT_APPLICABLE",
+      "breadth": "REVIEWED_LITERATURE",
+      "mapping_status": "PRESERVED",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "Behavioral relevance remains Q rather than being collapsed into a scalar reward.",
+      "evidence_rationale": "Biasing of competition toward behaviorally relevant objects is synthesized in the review; the frozen packet does not expose a single direct intervention for this exact relation."
+    },
+    {
+      "validation_claim_id": "PVS-ATT-02",
+      "claim_id": "PVS-ATT-02.C1",
+      "relation_id": "r1",
+      "evidence_level": "E2",
+      "source_basis": "PRIMARY_EMPIRICAL",
+      "support_directness": "DIRECT",
+      "causal_leverage": "INTERVENTIONAL",
+      "breadth": "MULTIPLE_CONDITIONS_SAME_SOURCE",
+      "mapping_status": "UNMAPPED",
+      "residual_primary": "SOURCE_CONTEXT_PARAMETER",
+      "residual_secondary": [
+        "RELATION_LANGUAGE_GAP"
+      ],
+      "mapping_rationale": "stimulus_pair is a required experimental condition carrier; it is not licensed as C/Q/Pi/P/X.",
+      "evidence_rationale": "Stimulus number within the receptive field is experimentally varied and neuronal response changes are observed."
+    },
+    {
+      "validation_claim_id": "PVS-ATT-02",
+      "claim_id": "PVS-ATT-02.C1",
+      "relation_id": "r2",
+      "evidence_level": "E2",
+      "source_basis": "PRIMARY_EMPIRICAL",
+      "support_directness": "DIRECT",
+      "causal_leverage": "INTERVENTIONAL",
+      "breadth": "MULTIPLE_CONDITIONS_SAME_SOURCE",
+      "mapping_status": "PRESERVED",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "The intervention, response, and reference pattern are directly represented.",
+      "evidence_rationale": "Task relevance is experimentally assigned and the neuronal response shifts toward the selected stimulus reference."
+    },
+    {
+      "validation_claim_id": "PVS-ATT-02",
+      "claim_id": "PVS-ATT-02.C1",
+      "relation_id": "r3",
+      "evidence_level": "E2",
+      "source_basis": "PRIMARY_EMPIRICAL",
+      "support_directness": "DIRECT",
+      "causal_leverage": "INTERVENTIONAL",
+      "breadth": "MULTIPLE_CONDITIONS_SAME_SOURCE",
+      "mapping_status": "UNMAPPED",
+      "residual_primary": "SOURCE_CONTEXT_PARAMETER",
+      "residual_secondary": [
+        "RELATION_LANGUAGE_GAP"
+      ],
+      "mapping_rationale": "The competing-versus-single-stimulus contrast again requires stimulus_pair source context, and the greater-than comparison is not first-class relation language.",
+      "evidence_rationale": "Task-dependent modulation is directly contrasted between competing-stimulus and single-stimulus conditions."
+    },
+    {
+      "validation_claim_id": "PVS-PRD-01",
+      "claim_id": "PVS-PRD-01.C1",
+      "relation_id": "r1",
+      "evidence_level": "E1",
+      "source_basis": "PRIMARY_EMPIRICAL",
+      "support_directness": "DIRECT",
+      "causal_leverage": "ASSOCIATIONAL",
+      "breadth": "SINGLE_STUDY_OR_CONTEXT",
+      "mapping_status": "PRESERVED",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "The dependence is preserved without forcing a functional Bayesian operator.",
+      "evidence_rationale": "The source directly reports estimates combining prior distribution and sensory evidence, but the frozen span does not specify an intervention for this exact relation."
+    },
+    {
+      "validation_claim_id": "PVS-PRD-01",
+      "claim_id": "PVS-PRD-01.C1",
+      "relation_id": "r2",
+      "evidence_level": "E0",
+      "source_basis": "PRIMARY_EMPIRICAL",
+      "support_directness": "MODEL_MEDIATED",
+      "causal_leverage": "MODEL_SPECIFICATION",
+      "breadth": "SINGLE_STUDY_OR_CONTEXT",
+      "mapping_status": "UNMAPPED",
+      "residual_primary": "SOURCE_CONTEXT_PARAMETER",
+      "residual_secondary": [],
+      "mapping_rationale": "sensory_noise is a required generic condition carrier in the frozen ClaimIR and is not licensed as C/Q/X; prior-weight dependence therefore cannot be represented losslessly without retyping it.",
+      "evidence_rationale": "The frozen span states that increasing sensory uncertainty should increase reliance on the prior; it is retained conservatively as a model/prediction-level warrant in this packet."
+    },
+    {
+      "validation_claim_id": "PVS-PRD-02",
+      "claim_id": "PVS-PRD-02.C1",
+      "relation_id": "r1",
+      "evidence_level": "E0",
+      "source_basis": "MODEL_OR_THEORY",
+      "support_directness": "SYNTHESIZED",
+      "causal_leverage": "MODEL_SPECIFICATION",
+      "breadth": "REVIEWED_LITERATURE",
+      "mapping_status": "PRESERVED",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "The relation is preserved at the Discussion-level typed-dependence layer.",
+      "evidence_rationale": "The requirement to represent sensory uncertainty is a review/theory-level claim in the frozen packet."
+    },
+    {
+      "validation_claim_id": "PVS-PRD-02",
+      "claim_id": "PVS-PRD-02.C1",
+      "relation_id": "r2",
+      "evidence_level": "E0",
+      "source_basis": "MODEL_OR_THEORY",
+      "support_directness": "MODEL_MEDIATED",
+      "causal_leverage": "MODEL_SPECIFICATION",
+      "breadth": "MODEL_DEFINITION",
+      "mapping_status": "PRESERVED",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "This uses the broad Discussion-level K and does not claim the narrower Lean carrier is sufficient.",
+      "evidence_rationale": "Representing sensory information as probability distributions is the reviewed probabilistic-coding proposal."
+    },
+    {
+      "validation_claim_id": "PVS-PRD-02",
+      "claim_id": "PVS-PRD-02.C1",
+      "relation_id": "r3",
+      "evidence_level": "E0",
+      "source_basis": "MODEL_OR_THEORY",
+      "support_directness": "MODEL_MEDIATED",
+      "causal_leverage": "MODEL_SPECIFICATION",
+      "breadth": "MODEL_DEFINITION",
+      "mapping_status": "PARTIAL",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "Candidate-implementation semantics is assertion/model-language information not first-class in Grammar v0.",
+      "evidence_rationale": "Population-level neural schemes are discussed as candidate implementations, not directly established implementations."
+    },
+    {
+      "validation_claim_id": "PVS-CTL-01",
+      "claim_id": "PVS-CTL-01.C1",
+      "relation_id": "r1",
+      "evidence_level": "E0",
+      "source_basis": "REVIEW_SYNTHESIS",
+      "support_directness": "SYNTHESIZED",
+      "causal_leverage": "MODEL_SPECIFICATION",
+      "breadth": "REVIEWED_LITERATURE",
+      "mapping_status": "PRESERVED",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "Incoming information is permitted at the Discussion-level rho/O layer.",
+      "evidence_rationale": "State estimation from sensory feedback and efferent copy is part of the reviewed feedback-control architecture."
+    },
+    {
+      "validation_claim_id": "PVS-CTL-01",
+      "claim_id": "PVS-CTL-01.C1",
+      "relation_id": "r2",
+      "evidence_level": "E0",
+      "source_basis": "REVIEW_SYNTHESIS",
+      "support_directness": "SYNTHESIZED",
+      "causal_leverage": "MODEL_SPECIFICATION",
+      "breadth": "REVIEWED_LITERATURE",
+      "mapping_status": "PRESERVED",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "The claim does not require motor_output to be retyped as P_in.",
+      "evidence_rationale": "Output adjustment using state estimate relative to task goal is a review-level control relation in the frozen packet."
+    },
+    {
+      "validation_claim_id": "PVS-CTL-01",
+      "claim_id": "PVS-CTL-01.C1",
+      "relation_id": "r3",
+      "evidence_level": "E0",
+      "source_basis": "REVIEW_SYNTHESIS",
+      "support_directness": "SYNTHESIZED",
+      "causal_leverage": "MODEL_SPECIFICATION",
+      "breadth": "REVIEWED_LITERATURE",
+      "mapping_status": "PRESERVED",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "performance_relevant_deviation is fully characterized here by goal-relative relevance and need not become a generic C role.",
+      "evidence_rationale": "Selective correction of performance-relevant deviations is stated as part of the reviewed control framework."
+    },
+    {
+      "validation_claim_id": "PVS-CTL-02",
+      "claim_id": "PVS-CTL-02.C1",
+      "relation_id": "r1",
+      "evidence_level": "E2",
+      "source_basis": "PRIMARY_EMPIRICAL",
+      "support_directness": "DIRECT",
+      "causal_leverage": "INTERVENTIONAL",
+      "breadth": "MULTIPLE_CONDITIONS_SAME_SOURCE",
+      "mapping_status": "PRESERVED",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "Task requirements remain non-scalar Q.",
+      "evidence_rationale": "Late target perturbation and task requirements are experimentally varied in goal-directed reaching, supporting task-dependent corrective action."
+    },
+    {
+      "validation_claim_id": "PVS-CTL-02",
+      "claim_id": "PVS-CTL-02.C1",
+      "relation_id": "r2",
+      "evidence_level": "E3",
+      "source_basis": "PRIMARY_EMPIRICAL",
+      "support_directness": "DIRECT",
+      "causal_leverage": "INTERVENTIONAL",
+      "breadth": "EXPLICIT_MULTIPLE_TASKS_OR_POPULATIONS",
+      "mapping_status": "PRESERVED",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "stability_requirement is explicitly a required performance criterion and is represented as a Q specialization rather than generic context.",
+      "evidence_rationale": "The stability-accuracy relation is experimentally tested across obstacle-avoidance and interception task contexts."
+    },
+    {
+      "validation_claim_id": "PVS-CTL-02",
+      "claim_id": "PVS-CTL-02.C1",
+      "relation_id": "r3",
+      "evidence_level": "E3",
+      "source_basis": "PRIMARY_EMPIRICAL",
+      "support_directness": "DIRECT",
+      "causal_leverage": "INTERVENTIONAL",
+      "breadth": "EXPLICIT_MULTIPLE_TASKS_OR_POPULATIONS",
+      "mapping_status": "PRESERVED",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "The directional empirical relation is preserved without adding a new role.",
+      "evidence_rationale": "The predicted accuracy increase after reduced stability requirements is explicitly reported as experimentally confirmed in obstacle-avoidance and interception tasks."
+    },
+    {
+      "validation_claim_id": "PVS-BLF-01",
+      "claim_id": "PVS-BLF-01.C1",
+      "relation_id": "r1",
+      "evidence_level": "E1",
+      "source_basis": "MIXED_MODEL_EMPIRICAL",
+      "support_directness": "MODEL_MEDIATED",
+      "causal_leverage": "ASSOCIATIONAL",
+      "breadth": "SINGLE_STUDY_OR_CONTEXT",
+      "mapping_status": "PRESERVED",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "No extra causal primitive is introduced for the inferred quantity.",
+      "evidence_rationale": "Change probability is an inferred/model-mediated quantity related to relative surprise and outcome context in the reported results."
+    },
+    {
+      "validation_claim_id": "PVS-BLF-01",
+      "claim_id": "PVS-BLF-01.C1",
+      "relation_id": "r2",
+      "evidence_level": "E1",
+      "source_basis": "MIXED_MODEL_EMPIRICAL",
+      "support_directness": "MODEL_MEDIATED",
+      "causal_leverage": "ASSOCIATIONAL",
+      "breadth": "SINGLE_STUDY_OR_CONTEXT",
+      "mapping_status": "PRESERVED",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "Direction of influence is retained relationally.",
+      "evidence_rationale": "Update gain increases on inferred change-point trials and varies with change probability in the reported results."
+    },
+    {
+      "validation_claim_id": "PVS-BLF-01",
+      "claim_id": "PVS-BLF-01.C1",
+      "relation_id": "r3",
+      "evidence_level": "E1",
+      "source_basis": "MIXED_MODEL_EMPIRICAL",
+      "support_directness": "DIRECT",
+      "causal_leverage": "LONGITUDINAL_DESCRIPTIVE",
+      "breadth": "SINGLE_STUDY_OR_CONTEXT",
+      "mapping_status": "PRESERVED",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "Post-change decay is represented as temporal evolution rather than a static parameter.",
+      "evidence_rationale": "Update gain decay after change points is directly reported across subsequent trials."
+    },
+    {
+      "validation_claim_id": "PVS-BLF-01",
+      "claim_id": "PVS-BLF-01.C1",
+      "relation_id": "r4",
+      "evidence_level": "E0",
+      "source_basis": "MIXED_MODEL_EMPIRICAL",
+      "support_directness": "MODEL_MEDIATED",
+      "causal_leverage": "MODEL_SPECIFICATION",
+      "breadth": "MODEL_DEFINITION",
+      "mapping_status": "PRESERVED",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "The model-specified update relation is representable as typed dependence.",
+      "evidence_rationale": "The update rule connecting current outcome, update gain, and next prediction is a model-specified computation in the frozen packet."
+    },
+    {
+      "validation_claim_id": "PVS-BLF-02",
+      "claim_id": "PVS-BLF-02.C1",
+      "relation_id": "r1",
+      "evidence_level": "E0",
+      "source_basis": "MODEL_OR_THEORY",
+      "support_directness": "MODEL_MEDIATED",
+      "causal_leverage": "MODEL_SPECIFICATION",
+      "breadth": "MODEL_DEFINITION",
+      "mapping_status": "PRESERVED",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "No claim is made that K is a deterministic function.",
+      "evidence_rationale": "Higher-level control of lower-level evolution step size is part of the hierarchical probabilistic model definition."
+    },
+    {
+      "validation_claim_id": "PVS-BLF-02",
+      "claim_id": "PVS-BLF-02.C1",
+      "relation_id": "r2",
+      "evidence_level": "E0",
+      "source_basis": "MODEL_OR_THEORY",
+      "support_directness": "MODEL_MEDIATED",
+      "causal_leverage": "MODEL_SPECIFICATION",
+      "breadth": "MODEL_DEFINITION",
+      "mapping_status": "PRESERVED",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "The parameter remains within X/K rather than becoming a new primitive.",
+      "evidence_rationale": "Cross-level dependence through coupling parameters is model-specified."
+    },
+    {
+      "validation_claim_id": "PVS-BLF-02",
+      "claim_id": "PVS-BLF-02.C1",
+      "relation_id": "r3",
+      "evidence_level": "E0",
+      "source_basis": "MODEL_OR_THEORY",
+      "support_directness": "MODEL_MEDIATED",
+      "causal_leverage": "MODEL_SPECIFICATION",
+      "breadth": "MODEL_DEFINITION",
+      "mapping_status": "PRESERVED",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "The frozen outcome typing is preserved.",
+      "evidence_rationale": "Precision-weighted trial-wise updating is specified by the model equations."
+    },
+    {
+      "validation_claim_id": "PVS-CNC-01",
+      "claim_id": "PVS-CNC-01.C1",
+      "relation_id": "r1",
+      "evidence_level": "E0",
+      "source_basis": "MIXED_MODEL_EMPIRICAL",
+      "support_directness": "MODEL_MEDIATED",
+      "causal_leverage": "MODEL_SPECIFICATION",
+      "breadth": "SINGLE_STUDY_OR_CONTEXT",
+      "mapping_status": "PRESERVED",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "generation_likelihood remains a criterion/orientation quantity.",
+      "evidence_rationale": "Evaluation by fit to represented causal mechanisms is the causal-model account's proposed computation."
+    },
+    {
+      "validation_claim_id": "PVS-CNC-01",
+      "claim_id": "PVS-CNC-01.C1",
+      "relation_id": "r2",
+      "evidence_level": "E0",
+      "source_basis": "MIXED_MODEL_EMPIRICAL",
+      "support_directness": "MODEL_MEDIATED",
+      "causal_leverage": "MODEL_SPECIFICATION",
+      "breadth": "SINGLE_STUDY_OR_CONTEXT",
+      "mapping_status": "PRESERVED",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "The classification relation is directly retained.",
+      "evidence_rationale": "Classification by generation likelihood is a model-level explanatory relation in the frozen packet."
+    },
+    {
+      "validation_claim_id": "PVS-CNC-01",
+      "claim_id": "PVS-CNC-01.C1",
+      "relation_id": "r3",
+      "evidence_level": "E2",
+      "source_basis": "MIXED_MODEL_EMPIRICAL",
+      "support_directness": "DIRECT",
+      "causal_leverage": "INTERVENTIONAL",
+      "breadth": "EXPLICIT_MULTIPLE_EXPERIMENTS",
+      "mapping_status": "PARTIAL",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "The ClaimIR description explicitly says manipulating causal structure, but no frozen intervention node exists; Grammar v0 therefore preserves the change relation but not first-class intervention directionality.",
+      "evidence_rationale": "The source explicitly reports experiments manipulating causal knowledge and consequent changes in feature/interfeature influence on classification."
+    },
+    {
+      "validation_claim_id": "PVS-CNC-02",
+      "claim_id": "PVS-CNC-02.C1",
+      "relation_id": "r1",
+      "evidence_level": "E1",
+      "source_basis": "MIXED_MODEL_EMPIRICAL",
+      "support_directness": "DIRECT",
+      "causal_leverage": "ASSOCIATIONAL",
+      "breadth": "EXPLICIT_MULTIPLE_TASKS_OR_POPULATIONS",
+      "mapping_status": "PRESERVED",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "The relation is represented without converting importance into Q.",
+      "evidence_rationale": "Measured causal position is reported to correlate positively with feature importance across natural and artifactual categories."
+    },
+    {
+      "validation_claim_id": "PVS-CNC-02",
+      "claim_id": "PVS-CNC-02.C1",
+      "relation_id": "r2",
+      "evidence_level": "E3",
+      "source_basis": "MIXED_MODEL_EMPIRICAL",
+      "support_directness": "DIRECT",
+      "causal_leverage": "INTERVENTIONAL",
+      "breadth": "EXPLICIT_MULTIPLE_EXPERIMENTS",
+      "mapping_status": "UNMAPPED",
+      "residual_primary": "RELATION_LANGUAGE_GAP",
+      "residual_secondary": [
+        "SOURCE_CONTEXT_PARAMETER"
+      ],
+      "mapping_rationale": "category_type is a required source-defined comparison condition, and the 'accounted for by ... rather than ... alone' explanatory/contrastive predicate is not first-class in Grammar v0.",
+      "evidence_rationale": "Experiments manipulating causal position support the claim that apparent category-type differences are accounted for by causal position rather than category type alone."
+    },
+    {
+      "validation_claim_id": "PVS-CNC-02",
+      "claim_id": "PVS-CNC-02.C1",
+      "relation_id": "r3",
+      "evidence_level": "E3",
+      "source_basis": "MIXED_MODEL_EMPIRICAL",
+      "support_directness": "DIRECT",
+      "causal_leverage": "INTERVENTIONAL",
+      "breadth": "EXPLICIT_MULTIPLE_EXPERIMENTS",
+      "mapping_status": "PRESERVED",
+      "residual_primary": null,
+      "residual_secondary": [],
+      "mapping_rationale": "The experimental manipulation direction is directly retained.",
+      "evidence_rationale": "Multiple experiments manipulating causal position show corresponding changes in feature importance."
+    }
+  ],
+  "interpretation": {
+    "role_gap_count": 0,
+    "e3_summary": "3/4 E3 relations are strictly preserved. The one E3 UNMAPPED relation is PVS-CNC-02.r2 and is adjudicated RELATION_LANGUAGE_GAP with SOURCE_CONTEXT_PARAMETER secondary, not ROLE_GAP.",
+    "e2_summary": "4/8 E2 relations are strictly preserved, 2/8 are PARTIAL, and 2/8 are UNMAPPED. The two E2 UNMAPPED relations are PVS-ATT-02.r1/r3 and are SOURCE_CONTEXT_PARAMETER failures; no E2 failure is a ROLE_GAP.",
+    "e0_summary": "22/25 E0 relations are strictly preserved; 2 are PARTIAL and 1 is UNMAPPED. The sole E0 UNMAPPED relation is a SOURCE_CONTEXT_PARAMETER case.",
+    "system_role_inference": "No top-level ROLE_GAP is established at any evidence level. High-evidence failures therefore pressure the claim/context boundary and relation language before they pressure the cognitive-system role inventory.",
+    "caution": "PVS-16 is a small designed validation set. These proportions are diagnostic patterns, not population estimates or calibrated probabilities of Grammar correctness."
+  },
+  "terminal": "PVS16_EVIDENCE_STRATIFIED_MAPPING_SHOWS_HIGH_EVIDENCE_PRESSURE_WITHOUT_TOP_LEVEL_ROLE_GAP"
+}
