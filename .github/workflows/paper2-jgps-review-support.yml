@@ -1,0 +1,42 @@
+name: paper2-jgps-review-support
+
+on:
+  pull_request:
+    paths:
+      - "scripts/paper2_jgps_review_support.py"
+      - ".github/workflows/paper2-jgps-review-support.yml"
+      - "paper/validation/jgps-major-revision/review-support/**"
+      - "research/paper2/grammar_v0_reverse_projection_aggregate_v1.json"
+      - "research/paper2/grammar_v0_residual_adjudication_v1.json"
+      - "research/paper2/designed_source_manifest_v1.json"
+      - "research/paper2/chatgpt_reference_claimir_v1/**"
+  push:
+    branches: [main]
+    paths:
+      - "scripts/paper2_jgps_review_support.py"
+      - ".github/workflows/paper2-jgps-review-support.yml"
+      - "paper/validation/jgps-major-revision/review-support/**"
+
+permissions:
+  contents: read
+
+jobs:
+  build-review-support:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile
+        run: python -m py_compile scripts/paper2_jgps_review_support.py
+      - name: Generate twice and compare
+        run: |
+          python scripts/paper2_jgps_review_support.py --outdir /tmp/a
+          python scripts/paper2_jgps_review_support.py --outdir /tmp/b
+          diff -ru /tmp/a /tmp/b
+      - name: Upload review-support artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: paper2-jgps-review-support
+          path: /tmp/a/
