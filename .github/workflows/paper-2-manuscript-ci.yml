@@ -1,0 +1,93 @@
+name: Paper 2 Manuscript CI
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - "paper/paper-2/**"
+      - "paper/references.bib"
+      - ".github/workflows/paper-2-manuscript-ci.yml"
+  push:
+    branches: [main]
+    paths:
+      - "paper/paper-2/**"
+      - "paper/references.bib"
+      - ".github/workflows/paper-2-manuscript-ci.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  manuscript:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Verify exact head and source boundaries
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test -s paper/paper-2/main.tex
+          test -s paper/references.bib
+          grep -F "Toward a Concept-Neutral Measurement Basis for Cognitive Capacities" paper/paper-2/main.tex
+          grep -F "1770/1770" paper/paper-2/main.tex
+          grep -F "ROLE\\_GAP" paper/paper-2/main.tex
+          grep -F "Independent Scholar" paper/paper-2/main.tex
+
+      - name: Install build tools
+        run: |
+          sudo apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            texlive-latex-base texlive-latex-recommended texlive-latex-extra \
+            texlive-fonts-recommended texlive-bibtex-extra texlive-pictures \
+            lmodern poppler-utils zip
+
+      - name: Build Paper 2 PDF
+        run: |
+          set -euo pipefail
+          cd paper/paper-2
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          bibtex main
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          test -s main.pdf
+          if grep -En 'LaTeX Warning:|Package .* Warning:|Overfull \\hbox|Citation .* undefined|Reference .* undefined' main.log; then
+            exit 1
+          fi
+          pdfinfo main.pdf | awk -F: '/^Pages:/ {gsub(/ /,"",$2); print "PDF pages: "$2}'
+          pdftotext main.pdf main.txt
+          grep -F "Toward a Concept-Neutral Measurement Basis for Cognitive Capacities" main.txt
+          grep -F "Rintaro Sakamoto" main.txt
+          grep -F "1770/1770" main.txt
+          grep -F "ROLE_GAP" main.txt
+
+      - name: Package editable source
+        run: |
+          set -euo pipefail
+          mkdir -p paper/paper-2/submission-source
+          cp paper/paper-2/main.tex paper/paper-2/BUILD.md paper/paper-2/submission-source/
+          cp paper/references.bib paper/paper-2/submission-source/references.bib
+          cd paper/paper-2
+          zip -qr paper-2-editable-source.zip submission-source
+          test -s paper-2-editable-source.zip
+
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: paper-2-manuscript-pdf
+          path: paper/paper-2/main.pdf
+          if-no-files-found: error
+          retention-days: 14
+
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: paper-2-editable-source
+          path: paper/paper-2/paper-2-editable-source.zip
+          if-no-files-found: error
+          retention-days: 14
