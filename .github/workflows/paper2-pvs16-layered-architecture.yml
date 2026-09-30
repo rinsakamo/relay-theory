@@ -1,0 +1,51 @@
+name: paper2-pvs16-layered-architecture
+
+on:
+  push:
+    branches:
+      - paper2-pvs16-layered-architecture-373
+    paths:
+      - "paper/validation/jgps-major-revision/pvs16-layered-architecture-projection-v1.*"
+      - "paper/validation/jgps-major-revision/pvs16-evidence-x-layered-architecture-diagnostic-v1.*"
+      - "paper/validation/jgps-major-revision/pvs16-grammar-v0-prospective-mapping-v1.json"
+      - "paper/validation/jgps-major-revision/pvs16-evidence-profile-v1.json"
+      - "research/paper2/grammar_v0_layered_architecture_v1.json"
+      - "research/paper2/system_world_experiment_architecture_v1.json"
+      - "research/paper2/source_context_architecture_placement_v1.json"
+      - "scripts/paper2_pvs16_layered_architecture_validate.py"
+      - ".github/workflows/paper2-pvs16-layered-architecture.yml"
+  pull_request:
+    paths:
+      - "paper/validation/jgps-major-revision/pvs16-layered-architecture-projection-v1.*"
+      - "paper/validation/jgps-major-revision/pvs16-evidence-x-layered-architecture-diagnostic-v1.*"
+      - "paper/validation/jgps-major-revision/pvs16-grammar-v0-prospective-mapping-v1.json"
+      - "paper/validation/jgps-major-revision/pvs16-evidence-profile-v1.json"
+      - "research/paper2/grammar_v0_layered_architecture_v1.json"
+      - "research/paper2/system_world_experiment_architecture_v1.json"
+      - "research/paper2/source_context_architecture_placement_v1.json"
+      - "scripts/paper2_pvs16_layered_architecture_validate.py"
+      - ".github/workflows/paper2-pvs16-layered-architecture.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  layered-architecture:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile
+        run: python -m py_compile scripts/paper2_pvs16_layered_architecture_validate.py
+      - name: Validate twice and compare
+        run: |
+          python scripts/paper2_pvs16_layered_architecture_validate.py --output /tmp/pvs-layer-a.json
+          python scripts/paper2_pvs16_layered_architecture_validate.py --output /tmp/pvs-layer-b.json
+          cmp /tmp/pvs-layer-a.json /tmp/pvs-layer-b.json
+      - name: Upload validation receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: paper2-pvs16-layered-architecture-receipt
+          path: /tmp/pvs-layer-a.json
