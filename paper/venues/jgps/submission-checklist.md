@@ -47,6 +47,17 @@ Checked against the Journal for General Philosophy of Science author instruction
 - [x] Human source review and author accountability stated explicitly.
 - [x] Manuscript is not simultaneously submitted elsewhere.
 
+## Deep Research hostile review
+
+- [x] MAJOR REVISION review adjudicated.
+- [x] Freeze chronology / anti-circularity made explicit.
+- [x] Whole-claim failure and secondary post-atlas reconstruction separated epistemically.
+- [x] ROLE_GAP=0 clarified as an observed zero in an admissible residual class.
+- [x] Dynamics/POMDP comparator clarified as representational distinction-loss testing, not model-performance benchmarking.
+- [x] System/World boundary clarified as application-relative and compatible with environmentally coupled cognition.
+- [x] JGPS/general-philosophy significance strengthened.
+- [x] Peer-reviewed literature added: Janssen et al. (2017), Raja et al. (2021), Favela & Raja (2026).
+
 ## Scientific guardrails
 
 - [x] 1770/1770 whole-claim failure preserved prominently.
