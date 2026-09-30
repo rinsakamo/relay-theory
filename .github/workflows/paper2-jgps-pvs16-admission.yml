@@ -1,0 +1,44 @@
+name: paper2-jgps-pvs16-admission
+
+on:
+  push:
+    branches:
+      - paper2-jgps-validation-365
+    paths:
+      - "scripts/paper2_jgps_pvs16_admission_validate.py"
+      - "paper/validation/jgps-major-revision/pvs16-admission-v1.json"
+      - "paper/validation/jgps-major-revision/pvs16-admission-v1.md"
+      - "paper/validation/jgps-major-revision/pvs16-admission-v1.sha256"
+      - ".github/workflows/paper2-jgps-pvs16-admission.yml"
+  pull_request:
+    paths:
+      - "scripts/paper2_jgps_pvs16_admission_validate.py"
+      - "paper/validation/jgps-major-revision/pvs16-admission-v1.json"
+      - "paper/validation/jgps-major-revision/pvs16-admission-v1.md"
+      - "paper/validation/jgps-major-revision/pvs16-admission-v1.sha256"
+      - ".github/workflows/paper2-jgps-pvs16-admission.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  admission-lock:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile admission validator
+        run: python -m py_compile scripts/paper2_jgps_pvs16_admission_validate.py
+      - name: Validate PVS-16 and emit admission hash
+        run: |
+          python scripts/paper2_jgps_pvs16_admission_validate.py --emit-sha /tmp/pvs16-admission-v1.sha256
+          cat /tmp/pvs16-admission-v1.sha256
+      - name: Verify frozen admission sidecar
+        run: sha256sum -c paper/validation/jgps-major-revision/pvs16-admission-v1.sha256
+      - name: Upload PVS-16 admission hash
+        uses: actions/upload-artifact@v4
+        with:
+          name: paper2-jgps-pvs16-admission-hash
+          path: /tmp/pvs16-admission-v1.sha256

@@ -1,0 +1,44 @@
+name: paper2-jgps-primary-only-ablation
+
+on:
+  push:
+    branches:
+      - paper2-jgps-validation-365
+    paths:
+      - "scripts/paper2_jgps_primary_only_ablation.py"
+      - "paper/validation/jgps-major-revision/**"
+      - ".github/workflows/paper2-jgps-primary-only-ablation.yml"
+  pull_request:
+    paths:
+      - "scripts/paper2_jgps_primary_only_ablation.py"
+      - "paper/validation/jgps-major-revision/**"
+      - ".github/workflows/paper2-jgps-primary-only-ablation.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  primary-only-ablation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile validation script
+        run: python -m py_compile scripts/paper2_jgps_primary_only_ablation.py
+      - name: Run deterministic self-test
+        run: python scripts/paper2_jgps_primary_only_ablation.py --self-test
+      - name: Emit validation artifacts twice
+        run: |
+          python scripts/paper2_jgps_primary_only_ablation.py --json-output /tmp/primary-a.json --md-output /tmp/primary-a.md
+          python scripts/paper2_jgps_primary_only_ablation.py --json-output /tmp/primary-b.json --md-output /tmp/primary-b.md
+          cmp /tmp/primary-a.json /tmp/primary-b.json
+          cmp /tmp/primary-a.md /tmp/primary-b.md
+      - name: Upload primary-only ablation result
+        uses: actions/upload-artifact@v4
+        with:
+          name: paper2-jgps-primary-only-ablation
+          path: |
+            /tmp/primary-a.json
+            /tmp/primary-a.md
