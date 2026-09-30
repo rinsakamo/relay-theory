@@ -36,6 +36,7 @@ jobs:
           test -s paper/venues/jgps/references.bib
           test -s paper/venues/jgps/cover-letter.md
           test -s paper/venues/jgps/submission-checklist.md
+          test -s paper/venues/jgps/deep-research-review-response-v1.md
           python3 - <<'PY'
           from pathlib import Path
           import re
@@ -78,12 +79,21 @@ jobs:
               "Beni2026KindsWithoutStructure",
               "does not select predictive processing",
               "1770/1770",
-              "ROLE\\_GAP"
+              "ROLE\\_GAP",
+              "explicitly admissible primary residual class",
+              "not fitted predictive models",
+              "Freeze chronology and anti-circularity",
+              "JanssenKleinSlors2017CognitiveOntology",
+              "RajaEtAl2021MarkovBlanketTrick",
+              "FavelaRaja2026Dynamical"
           ]:
               assert needle in main, needle
 
           assert "10.1007/s10838-025-09759-z" in refs
           assert "Beni2026KindsWithoutStructure" in refs
+          assert "10.1080/13869795.2017.1312496" in refs
+          assert "10.1016/j.plrev.2021.09.001" in refs
+          assert "10.1111/tops.70042" in refs
           assert "not under consideration elsewhere" in cover
           assert "Journal for General Philosophy of Science" in cover
 
