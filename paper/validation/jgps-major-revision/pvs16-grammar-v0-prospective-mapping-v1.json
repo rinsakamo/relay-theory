@@ -1,0 +1,935 @@
+{
+  "schema_version": "paper2-pvs16-grammar-v0-prospective-mapping-v1",
+  "status": "FROZEN_PROSPECTIVE_MAPPING",
+  "owner_issue": 371,
+  "generated_date": "2026-10-01",
+  "authority": {
+    "grammar_issue": 321,
+    "lean_formalization_pr": 322,
+    "grammar_frozen_merge_commit": "78cd63cd6ec2898f3b4783b6db394c73c0551ff4",
+    "pvs16_human_review_and_evidence_pr": 370,
+    "base_main_sha": "4d728c605de9e2cd5d47ccc62767f0152714f7fa",
+    "reviewed_claimir_directory": "paper/validation/jgps-major-revision/pvs16-claimir-human-reviewed-v1/"
+  },
+  "mapping_input_policy": {
+    "input": "Human-reviewed PVS-16 ClaimIR only, interpreted under the already-frozen Grammar-v0 role semantics.",
+    "evidence_profile_used_to_set_mapping_verdicts": false,
+    "evidence_profile_join_deferred": true,
+    "source_rereading": false,
+    "upstream_mutation": false,
+    "note": "The frozen evidence profile exists on the base commit, but no evidence-level field is included in this mapping artifact and no mapping verdict is conditioned on E0-E3."
+  },
+  "role_semantics": {
+    "Pi": "individuation / partition / boundary",
+    "X": "configuration carrier",
+    "C": "realizability / admissibility constraint",
+    "Q": "criterion-conditioned filtering / orientation",
+    "P_in": "intervention / write",
+    "P_out": "probe / query / read",
+    "K": "typed transformation / dependence; not necessarily functional",
+    "T": "succession / temporal indexing, distinct from K",
+    "rho/O": "boundary-relative observation / trace; may include incoming or outgoing information at the Discussion-level grammar"
+  },
+  "relation_projection_semantics": {
+    "PRESERVED": "The required relation/distinction is retained directly by supported Grammar-v0 roles and typed relation structure without semantic strengthening.",
+    "PARTIAL": "Required endpoints/roles are represented, but a first-class predicate, directionality, implementation/null/comparison semantics, or other assertion-level distinction is not fully preserved.",
+    "UNMAPPED": "A required endpoint/context or relation cannot be represented losslessly without retyping a frozen ClaimIR element or adding relation/role language."
+  },
+  "claim_verdict_rule": {
+    "FULL": "all required relations PRESERVED",
+    "PARTIAL": "no UNMAPPED relation and at least one PARTIAL relation",
+    "RESIDUAL": "at least one UNMAPPED relation"
+  },
+  "claims": [
+    {
+      "validation_claim_id": "PVS-MEM-01",
+      "claim_id": "PVS-MEM-01.C1",
+      "roles": [
+        "P_out",
+        "T",
+        "rho/O"
+      ],
+      "role_mappings": {
+        "P_out": [
+          "transformed_text_probe"
+        ],
+        "T": [
+          "acquisition followed by delayed retention"
+        ],
+        "rho/O": [
+          "acquisition_performance",
+          "delayed_retention"
+        ]
+      },
+      "verdict": "RESIDUAL",
+      "relation_projections": [
+        {
+          "relation_id": "r1",
+          "status": "UNMAPPED",
+          "grammar_projection": null,
+          "rationale": "The equivalent-acquisition comparison requires two frozen participant-group condition carriers plus an explicit equivalence predicate; neither group condition is licensed as C/Q/Pi/X and equivalence is not first-class in Grammar v0."
+        },
+        {
+          "relation_id": "r2",
+          "status": "PRESERVED",
+          "grammar_projection": "P_out -> rho/O readout",
+          "rationale": "The transformed-text probe exposes acquisition performance without requiring a new role."
+        },
+        {
+          "relation_id": "r3",
+          "status": "UNMAPPED",
+          "grammar_projection": null,
+          "rationale": "The retained-performance assertion is indexed by the frozen impaired-group condition, which is source-defined participant context rather than a supported cognitive-system role."
+        }
+      ],
+      "unmapped_residuals": [
+        {
+          "primary": "SOURCE_CONTEXT_PARAMETER",
+          "secondary": [
+            "RELATION_LANGUAGE_GAP"
+          ],
+          "relations": [
+            "r1",
+            "r3"
+          ],
+          "note": "Participant-group identities are required source conditions; r1 additionally requires explicit equivalence semantics."
+        }
+      ]
+    },
+    {
+      "validation_claim_id": "PVS-MEM-02",
+      "claim_id": "PVS-MEM-02.C1",
+      "roles": [
+        "Pi",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "role_mappings": {
+        "Pi": [
+          "expression_partition"
+        ],
+        "K": [
+          "prior-event dependence of both later expression modes"
+        ],
+        "T": [
+          "prior event before later test"
+        ],
+        "rho/O": [
+          "prior_event",
+          "conscious_report",
+          "performance_facilitation"
+        ]
+      },
+      "verdict": "PARTIAL",
+      "relation_projections": [
+        {
+          "relation_id": "r1",
+          "status": "PRESERVED",
+          "grammar_projection": "Pi distinguishes two rho/O expression modes",
+          "rationale": "The explicit expression partition preserves the conscious-report versus performance-facilitation distinction."
+        },
+        {
+          "relation_id": "r2",
+          "status": "PRESERVED",
+          "grammar_projection": "K-like dependence over T from prior-event O to later conscious-report O",
+          "rationale": "The relation is retained as typed dependence without causal strengthening."
+        },
+        {
+          "relation_id": "r3",
+          "status": "PRESERVED",
+          "grammar_projection": "K-like dependence over T from prior-event O to later performance-facilitation O",
+          "rationale": "The relation is retained as typed dependence without causal strengthening."
+        },
+        {
+          "relation_id": "r4",
+          "status": "PARTIAL",
+          "grammar_projection": "Pi + rho/O retain the two modes, but cross-task/population dissociation remains assertion-level semantics",
+          "rationale": "Grammar v0 preserves the contrasted modes but does not make the reported cross-task/population dissociation predicate first-class."
+        }
+      ],
+      "unmapped_residuals": []
+    },
+    {
+      "validation_claim_id": "PVS-LRN-01",
+      "claim_id": "PVS-LRN-01.C1",
+      "roles": [
+        "X",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "role_mappings": {
+        "X": [
+          "medial_temporal_engagement",
+          "basal_ganglia_engagement"
+        ],
+        "K": [
+          "subsystem dependence/covariation and training-related change"
+        ],
+        "T": [
+          "training_stage as early-to-later succession"
+        ],
+        "rho/O": [
+          "task_performance"
+        ]
+      },
+      "verdict": "RESIDUAL",
+      "relation_projections": [
+        {
+          "relation_id": "r1",
+          "status": "UNMAPPED",
+          "grammar_projection": null,
+          "rationale": "task_emphasis is a required source-defined condition and is not licensed as C/Q/Pi/P/X."
+        },
+        {
+          "relation_id": "r2",
+          "status": "UNMAPPED",
+          "grammar_projection": null,
+          "rationale": "task_emphasis is a required source-defined condition and is not licensed as C/Q/Pi/P/X."
+        },
+        {
+          "relation_id": "r3",
+          "status": "PARTIAL",
+          "grammar_projection": "K-like statistical dependence between X carriers",
+          "rationale": "The dependence is representable, but negative-correlation semantics is not first-class."
+        },
+        {
+          "relation_id": "r4",
+          "status": "PRESERVED",
+          "grammar_projection": "K-like change of X indexed by T",
+          "rationale": "training_stage is exhausted here by its temporal-position semantics and can be represented as T rather than as an extra system role."
+        },
+        {
+          "relation_id": "r5",
+          "status": "UNMAPPED",
+          "grammar_projection": null,
+          "rationale": "The matched-performance assertion is indexed by task_emphasis source context and also carries explicit comparison/equivalence semantics."
+        }
+      ],
+      "unmapped_residuals": [
+        {
+          "primary": "SOURCE_CONTEXT_PARAMETER",
+          "secondary": [
+            "RELATION_LANGUAGE_GAP"
+          ],
+          "relations": [
+            "r1",
+            "r2",
+            "r5"
+          ],
+          "note": "task_emphasis survives as a required experimental/source condition; negative correlation and matched-comparison semantics also exceed first-class Grammar-v0 relation language."
+        }
+      ]
+    },
+    {
+      "validation_claim_id": "PVS-LRN-02",
+      "claim_id": "PVS-LRN-02.C1",
+      "roles": [
+        "X",
+        "P_in",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "role_mappings": {
+        "X": [
+          "medial_temporal_activity",
+          "striatal_activity"
+        ],
+        "P_in": [
+          "concurrent_task"
+        ],
+        "K": [
+          "task-conditioned changes and performance/neural covariation"
+        ],
+        "T": [
+          "acquisition before later knowledge assessment"
+        ],
+        "rho/O": [
+          "overall_accuracy",
+          "transferable_knowledge"
+        ]
+      },
+      "verdict": "PARTIAL",
+      "relation_projections": [
+        {
+          "relation_id": "r1",
+          "status": "PARTIAL",
+          "grammar_projection": "P_in + rho/O preserve intervention and measured accuracy",
+          "rationale": "The relation's preserved/no-material-change comparison is not a first-class Grammar-v0 predicate."
+        },
+        {
+          "relation_id": "r2",
+          "status": "PRESERVED",
+          "grammar_projection": "K-like covariation between rho/O performance and medial-temporal X",
+          "rationale": "No causal strengthening is introduced."
+        },
+        {
+          "relation_id": "r3",
+          "status": "PRESERVED",
+          "grammar_projection": "K-like covariation between rho/O performance and striatal X",
+          "rationale": "No causal strengthening is introduced."
+        },
+        {
+          "relation_id": "r4",
+          "status": "PRESERVED",
+          "grammar_projection": "P_in-conditioned K-like change across X route engagement",
+          "rationale": "The intervention and changed neural-route relation are directly retained."
+        },
+        {
+          "relation_id": "r5",
+          "status": "PRESERVED",
+          "grammar_projection": "P_in-conditioned K-like change in later rho/O knowledge outcome over T",
+          "rationale": "The later flexible-use outcome remains distinct from acquisition accuracy."
+        }
+      ],
+      "unmapped_residuals": []
+    },
+    {
+      "validation_claim_id": "PVS-SKL-01",
+      "claim_id": "PVS-SKL-01.C1",
+      "roles": [
+        "X",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "role_mappings": {
+        "X": [
+          "functional_reorganization",
+          "structural_reorganization"
+        ],
+        "K": [
+          "stage-indexed functional and structural reorganization"
+        ],
+        "T": [
+          "practice_stage as acquisition -> consolidation -> retention succession"
+        ],
+        "rho/O": [
+          "retained_performance"
+        ]
+      },
+      "verdict": "FULL",
+      "relation_projections": [
+        {
+          "relation_id": "r1",
+          "status": "PRESERVED",
+          "grammar_projection": "K-like X change indexed by T",
+          "rationale": "practice_stage is fully exhausted by temporal-stage semantics in this claim."
+        },
+        {
+          "relation_id": "r2",
+          "status": "PRESERVED",
+          "grammar_projection": "K-like X change indexed by T",
+          "rationale": "Structural reorganization is represented without inferring a specific mechanism."
+        },
+        {
+          "relation_id": "r3",
+          "status": "PRESERVED",
+          "grammar_projection": "T distinguishes acquisition, consolidation, and later retention, with retained performance as rho/O",
+          "rationale": "No additional condition role is required beyond temporal staging."
+        }
+      ],
+      "unmapped_residuals": []
+    },
+    {
+      "validation_claim_id": "PVS-SKL-02",
+      "claim_id": "PVS-SKL-02.C1",
+      "roles": [
+        "X",
+        "K",
+        "T"
+      ],
+      "role_mappings": {
+        "X": [
+          "neural_configuration",
+          "stage_sensitive_model"
+        ],
+        "K": [
+          "stage-sensitive relation between learning progression and neural organization"
+        ],
+        "T": [
+          "acquisition_stage precedes later_stage"
+        ]
+      },
+      "verdict": "FULL",
+      "relation_projections": [
+        {
+          "relation_id": "r1",
+          "status": "PRESERVED",
+          "grammar_projection": "T precedence",
+          "rationale": "The acquisition/later-stage condition nodes are exhausted by their explicit temporal-stage identities."
+        },
+        {
+          "relation_id": "r2",
+          "status": "PRESERVED",
+          "grammar_projection": "K-like neural-configuration change indexed by T",
+          "rationale": "Stage-dependent change is preserved without adding a generic condition role."
+        },
+        {
+          "relation_id": "r3",
+          "status": "PRESERVED",
+          "grammar_projection": "K-like model relation linking T progression to X organization",
+          "rationale": "The integrated model is retained as an X-level account with typed dependence over T."
+        }
+      ],
+      "unmapped_residuals": []
+    },
+    {
+      "validation_claim_id": "PVS-ATT-01",
+      "claim_id": "PVS-ATT-01.C1",
+      "roles": [
+        "X",
+        "Q",
+        "K",
+        "rho/O"
+      ],
+      "role_mappings": {
+        "X": [
+          "competing_representations"
+        ],
+        "Q": [
+          "behavioral_relevance"
+        ],
+        "K": [
+          "competition resolution and relevance-conditioned biasing dependence"
+        ],
+        "rho/O": [
+          "biasing_signal",
+          "selected_representation"
+        ]
+      },
+      "verdict": "FULL",
+      "relation_projections": [
+        {
+          "relation_id": "r1",
+          "status": "PRESERVED",
+          "grammar_projection": "K-like competition-resolution dependence from X to selected rho/O",
+          "rationale": "The grammar need not encode a scalar winner score."
+        },
+        {
+          "relation_id": "r2",
+          "status": "PRESERVED",
+          "grammar_projection": "Q-conditioned K dependence using incoming biasing-signal rho/O",
+          "rationale": "Behavioral relevance remains Q rather than being collapsed into a scalar reward."
+        }
+      ],
+      "unmapped_residuals": []
+    },
+    {
+      "validation_claim_id": "PVS-ATT-02",
+      "claim_id": "PVS-ATT-02.C1",
+      "roles": [
+        "X",
+        "P_in",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "role_mappings": {
+        "X": [
+          "single_stimulus_reference"
+        ],
+        "P_in": [
+          "task_relevance_assignment"
+        ],
+        "K": [
+          "task-relevance-induced response shift"
+        ],
+        "T": [
+          "stimulus presentation before task-directed selection"
+        ],
+        "rho/O": [
+          "neuronal_response"
+        ]
+      },
+      "verdict": "RESIDUAL",
+      "relation_projections": [
+        {
+          "relation_id": "r1",
+          "status": "UNMAPPED",
+          "grammar_projection": null,
+          "rationale": "stimulus_pair is a required experimental condition carrier; it is not licensed as C/Q/Pi/P/X."
+        },
+        {
+          "relation_id": "r2",
+          "status": "PRESERVED",
+          "grammar_projection": "P_in-conditioned K relation shifting rho/O toward an X reference",
+          "rationale": "The intervention, response, and reference pattern are directly represented."
+        },
+        {
+          "relation_id": "r3",
+          "status": "UNMAPPED",
+          "grammar_projection": null,
+          "rationale": "The competing-versus-single-stimulus contrast again requires stimulus_pair source context, and the greater-than comparison is not first-class relation language."
+        }
+      ],
+      "unmapped_residuals": [
+        {
+          "primary": "SOURCE_CONTEXT_PARAMETER",
+          "secondary": [
+            "RELATION_LANGUAGE_GAP"
+          ],
+          "relations": [
+            "r1",
+            "r3"
+          ],
+          "note": "The two-stimulus receptive-field condition is experiment context rather than cognitive-system C; r3 additionally carries explicit comparative magnitude semantics."
+        }
+      ]
+    },
+    {
+      "validation_claim_id": "PVS-PRD-01",
+      "claim_id": "PVS-PRD-01.C1",
+      "roles": [
+        "X",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "role_mappings": {
+        "X": [
+          "prior_weight"
+        ],
+        "K": [
+          "joint dependence of estimate on prior/evidence"
+        ],
+        "T": [
+          "prior experience before current sensory integration"
+        ],
+        "rho/O": [
+          "prior_distribution",
+          "sensory_evidence",
+          "combined_estimate"
+        ]
+      },
+      "verdict": "RESIDUAL",
+      "relation_projections": [
+        {
+          "relation_id": "r1",
+          "status": "PRESERVED",
+          "grammar_projection": "K-like higher-arity dependence from incoming rho/O information to combined-estimate rho/O",
+          "rationale": "The dependence is preserved without forcing a functional Bayesian operator."
+        },
+        {
+          "relation_id": "r2",
+          "status": "UNMAPPED",
+          "grammar_projection": null,
+          "rationale": "sensory_noise is a required generic condition carrier in the frozen ClaimIR and is not licensed as C/Q/X; prior-weight dependence therefore cannot be represented losslessly without retyping it."
+        }
+      ],
+      "unmapped_residuals": [
+        {
+          "primary": "SOURCE_CONTEXT_PARAMETER",
+          "secondary": [],
+          "relations": [
+            "r2"
+          ],
+          "note": "sensory_noise remains a source-defined uncertainty condition rather than a supported Grammar-v0 admissibility constraint or criterion."
+        }
+      ]
+    },
+    {
+      "validation_claim_id": "PVS-PRD-02",
+      "claim_id": "PVS-PRD-02.C1",
+      "roles": [
+        "X",
+        "K",
+        "rho/O"
+      ],
+      "role_mappings": {
+        "X": [
+          "sensory_uncertainty",
+          "probability_distribution",
+          "neural_population_scheme"
+        ],
+        "K": [
+          "sensory-information-to-probabilistic-representation mapping and guided-computation dependence"
+        ],
+        "rho/O": [
+          "sensory_information",
+          "guided_computation"
+        ]
+      },
+      "verdict": "PARTIAL",
+      "relation_projections": [
+        {
+          "relation_id": "r1",
+          "status": "PRESERVED",
+          "grammar_projection": "K-like dependence of guided rho/O computation on incoming rho/O information and X uncertainty",
+          "rationale": "The relation is preserved at the Discussion-level typed-dependence layer."
+        },
+        {
+          "relation_id": "r2",
+          "status": "PRESERVED",
+          "grammar_projection": "K-like transformation from incoming rho/O sensory information to X probability-distribution representation",
+          "rationale": "This uses the broad Discussion-level K and does not claim the narrower Lean carrier is sufficient."
+        },
+        {
+          "relation_id": "r3",
+          "status": "PARTIAL",
+          "grammar_projection": "X-to-X implementation relation approximated as typed K/dependence",
+          "rationale": "Candidate-implementation semantics is assertion/model-language information not first-class in Grammar v0."
+        }
+      ],
+      "unmapped_residuals": []
+    },
+    {
+      "validation_claim_id": "PVS-CTL-01",
+      "claim_id": "PVS-CTL-01.C1",
+      "roles": [
+        "X",
+        "Q",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "role_mappings": {
+        "X": [
+          "state_estimate"
+        ],
+        "Q": [
+          "task_goal",
+          "performance_relevant_deviation as Q-selected correction relevance"
+        ],
+        "K": [
+          "state estimation and goal-relative output adjustment"
+        ],
+        "T": [
+          "ongoing estimation before/with output adjustment"
+        ],
+        "rho/O": [
+          "sensory_feedback",
+          "efferent_copy",
+          "motor_output"
+        ]
+      },
+      "verdict": "FULL",
+      "relation_projections": [
+        {
+          "relation_id": "r1",
+          "status": "PRESERVED",
+          "grammar_projection": "K-like dependence from incoming rho/O information to X state estimate",
+          "rationale": "Incoming information is permitted at the Discussion-level rho/O layer."
+        },
+        {
+          "relation_id": "r2",
+          "status": "PRESERVED",
+          "grammar_projection": "Q-conditioned K relation from X estimate to rho/O motor-output trace",
+          "rationale": "The claim does not require motor_output to be retyped as P_in."
+        },
+        {
+          "relation_id": "r3",
+          "status": "PRESERVED",
+          "grammar_projection": "Q filter selecting which deviations are correction-relevant",
+          "rationale": "performance_relevant_deviation is fully characterized here by goal-relative relevance and need not become a generic C role."
+        }
+      ],
+      "unmapped_residuals": []
+    },
+    {
+      "validation_claim_id": "PVS-CTL-02",
+      "claim_id": "PVS-CTL-02.C1",
+      "roles": [
+        "Q",
+        "P_in",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "role_mappings": {
+        "Q": [
+          "task_requirements",
+          "stability_requirement as an explicit task-criterion dimension"
+        ],
+        "P_in": [
+          "late_target_change"
+        ],
+        "K": [
+          "criterion- and perturbation-conditioned corrective/accuracy dependence"
+        ],
+        "T": [
+          "late perturbation followed by corrective action"
+        ],
+        "rho/O": [
+          "correction_magnitude",
+          "accuracy_outcome"
+        ]
+      },
+      "verdict": "FULL",
+      "relation_projections": [
+        {
+          "relation_id": "r1",
+          "status": "PRESERVED",
+          "grammar_projection": "P_in + Q conditioned K dependence to corrective rho/O",
+          "rationale": "Task requirements remain non-scalar Q."
+        },
+        {
+          "relation_id": "r2",
+          "status": "PRESERVED",
+          "grammar_projection": "Q-conditioned K dependence of accuracy rho/O on stability requirement",
+          "rationale": "stability_requirement is explicitly a required performance criterion and is represented as a Q specialization rather than generic context."
+        },
+        {
+          "relation_id": "r3",
+          "status": "PRESERVED",
+          "grammar_projection": "Q change induces directional K change in accuracy rho/O",
+          "rationale": "The directional empirical relation is preserved without adding a new role."
+        }
+      ],
+      "unmapped_residuals": []
+    },
+    {
+      "validation_claim_id": "PVS-BLF-01",
+      "claim_id": "PVS-BLF-01.C1",
+      "roles": [
+        "X",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "role_mappings": {
+        "X": [
+          "relative_surprise",
+          "change_probability",
+          "update_gain"
+        ],
+        "K": [
+          "surprise-to-change-probability, change-probability-to-gain, and gain-weighted prediction relations"
+        ],
+        "T": [
+          "trial-by-trial succession across/after change points"
+        ],
+        "rho/O": [
+          "outcome_history",
+          "next_prediction"
+        ]
+      },
+      "verdict": "FULL",
+      "relation_projections": [
+        {
+          "relation_id": "r1",
+          "status": "PRESERVED",
+          "grammar_projection": "K-like dependence among X and incoming rho/O history",
+          "rationale": "No extra causal primitive is introduced for the inferred quantity."
+        },
+        {
+          "relation_id": "r2",
+          "status": "PRESERVED",
+          "grammar_projection": "K-like dependence of X update gain on X change probability",
+          "rationale": "Direction of influence is retained relationally."
+        },
+        {
+          "relation_id": "r3",
+          "status": "PRESERVED",
+          "grammar_projection": "K-like X change indexed by T and accumulating rho/O history",
+          "rationale": "Post-change decay is represented as temporal evolution rather than a static parameter."
+        },
+        {
+          "relation_id": "r4",
+          "status": "PRESERVED",
+          "grammar_projection": "K-like update from incoming rho/O outcome/history and X gain to next-prediction rho/O",
+          "rationale": "The model-specified update relation is representable as typed dependence."
+        }
+      ],
+      "unmapped_residuals": []
+    },
+    {
+      "validation_claim_id": "PVS-BLF-02",
+      "claim_id": "PVS-BLF-02.C1",
+      "roles": [
+        "X",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "role_mappings": {
+        "X": [
+          "hierarchical_states",
+          "higher_level_state",
+          "cross_level_coupling",
+          "precision_weight"
+        ],
+        "K": [
+          "higher-to-lower evolution constraint, cross-level dependence, precision-weighted updating"
+        ],
+        "T": [
+          "trial-by-trial hierarchical state updating"
+        ],
+        "rho/O": [
+          "observation_error",
+          "updated_state"
+        ]
+      },
+      "verdict": "FULL",
+      "relation_projections": [
+        {
+          "relation_id": "r1",
+          "status": "PRESERVED",
+          "grammar_projection": "K-like higher-level constraint on X evolution over T",
+          "rationale": "No claim is made that K is a deterministic function."
+        },
+        {
+          "relation_id": "r2",
+          "status": "PRESERVED",
+          "grammar_projection": "K-like cross-level dependence parameterized by X coupling",
+          "rationale": "The parameter remains within X/K rather than becoming a new primitive."
+        },
+        {
+          "relation_id": "r3",
+          "status": "PRESERVED",
+          "grammar_projection": "K-like update from incoming rho/O error and X precision weight to updated rho/O state estimate",
+          "rationale": "The frozen outcome typing is preserved."
+        }
+      ],
+      "unmapped_residuals": []
+    },
+    {
+      "validation_claim_id": "PVS-CNC-01",
+      "claim_id": "PVS-CNC-01.C1",
+      "roles": [
+        "X",
+        "Q",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "role_mappings": {
+        "X": [
+          "causal_mechanisms",
+          "interfeature_relation"
+        ],
+        "Q": [
+          "generation_likelihood"
+        ],
+        "K": [
+          "feature-fit evaluation, likelihood-conditioned classification, causal-structure-linked classification change"
+        ],
+        "T": [
+          "causal knowledge acquired before object classification"
+        ],
+        "rho/O": [
+          "feature_configuration",
+          "classification_response"
+        ]
+      },
+      "verdict": "PARTIAL",
+      "relation_projections": [
+        {
+          "relation_id": "r1",
+          "status": "PRESERVED",
+          "grammar_projection": "K-like dependence producing Q from incoming rho/O features and X causal mechanisms",
+          "rationale": "generation_likelihood remains a criterion/orientation quantity."
+        },
+        {
+          "relation_id": "r2",
+          "status": "PRESERVED",
+          "grammar_projection": "Q-conditioned K dependence to classification rho/O",
+          "rationale": "The classification relation is directly retained."
+        },
+        {
+          "relation_id": "r3",
+          "status": "PARTIAL",
+          "grammar_projection": "K-like change among X causal structure, X interfeature relation and classification rho/O",
+          "rationale": "The ClaimIR description explicitly says manipulating causal structure, but no frozen intervention node exists; Grammar v0 therefore preserves the change relation but not first-class intervention directionality."
+        }
+      ],
+      "unmapped_residuals": []
+    },
+    {
+      "validation_claim_id": "PVS-CNC-02",
+      "claim_id": "PVS-CNC-02.C1",
+      "roles": [
+        "X",
+        "P_in",
+        "K",
+        "rho/O"
+      ],
+      "role_mappings": {
+        "X": [
+          "causal_position"
+        ],
+        "P_in": [
+          "causal_position_manipulation"
+        ],
+        "K": [
+          "causal-position dependence and manipulation-induced feature-importance change"
+        ],
+        "rho/O": [
+          "feature_importance"
+        ]
+      },
+      "verdict": "RESIDUAL",
+      "relation_projections": [
+        {
+          "relation_id": "r1",
+          "status": "PRESERVED",
+          "grammar_projection": "K-like dependence from X causal position to feature-importance rho/O",
+          "rationale": "The relation is represented without converting importance into Q."
+        },
+        {
+          "relation_id": "r2",
+          "status": "UNMAPPED",
+          "grammar_projection": null,
+          "rationale": "category_type is a required source-defined comparison condition, and the 'accounted for by ... rather than ... alone' explanatory/contrastive predicate is not first-class in Grammar v0."
+        },
+        {
+          "relation_id": "r3",
+          "status": "PRESERVED",
+          "grammar_projection": "P_in-conditioned K change in feature-importance rho/O",
+          "rationale": "The experimental manipulation direction is directly retained."
+        }
+      ],
+      "unmapped_residuals": [
+        {
+          "primary": "RELATION_LANGUAGE_GAP",
+          "secondary": [
+            "SOURCE_CONTEXT_PARAMETER"
+          ],
+          "relations": [
+            "r2"
+          ],
+          "note": "The decisive loss is contrastive explanatory semantics; category_type also remains a source comparison context rather than a cognitive-system role."
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "claims": 16,
+    "claim_verdict_counts": {
+      "FULL": 7,
+      "PARTIAL": 4,
+      "RESIDUAL": 5
+    },
+    "relations": 52,
+    "relation_projection_counts": {
+      "PRESERVED": 38,
+      "PARTIAL": 5,
+      "UNMAPPED": 9
+    },
+    "role_frequency": {
+      "Pi": 1,
+      "X": 13,
+      "C": 0,
+      "Q": 4,
+      "P_in": 4,
+      "P_out": 1,
+      "K": 15,
+      "T": 13,
+      "rho/O": 15
+    },
+    "residual_primary_class_counts": {
+      "SOURCE_CONTEXT_PARAMETER": 4,
+      "RELATION_LANGUAGE_GAP": 1,
+      "ROLE_GAP": 0,
+      "FORMAL_CARRIER_GAP": 0,
+      "DERIVED_STRUCTURE_GAP": 0,
+      "UNDERDETERMINED": 0
+    },
+    "role_gap_claims": [],
+    "conclusion": "PVS16_PROSPECTIVE_MAPPING_HAS_NO_TOP_LEVEL_ROLE_GAP_BUT_RETAINS_SOURCE_CONTEXT_AND_RELATION_LANGUAGE_FAILURES"
+  },
+  "grammar_modified": false,
+  "evidence_join_performed": false
+}
