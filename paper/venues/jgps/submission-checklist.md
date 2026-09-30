@@ -9,6 +9,9 @@ Checked against the Journal for General Philosophy of Science author instruction
 - [x] Manuscript does not present itself as an exclusively empirical cognitive-science article.
 - [x] Recent JGPS structural-realist neighbor Beni (2026) is cited and differentiated without adversarial framing.
 - [x] The 60-claim corpus is described as a designed stress-test, not a representative prevalence sample.
+- [x] Title and abstract use **construct-label-neutral structural comparison basis**, not concept-neutral measurement-basis language.
+- [x] Construct-label neutrality is explicitly limited: the manuscript does not claim theory-, ontology-, or representation-neutrality.
+- [x] Partial observability and bounded information remain prominent in the abstract and Introduction.
 
 ## Title page
 
@@ -47,7 +50,7 @@ Checked against the Journal for General Philosophy of Science author instruction
 - [x] Human source review and author accountability stated explicitly.
 - [x] Manuscript is not simultaneously submitted elsewhere.
 
-## Deep Research hostile review
+## Deep Research hostile review and final framing correction
 
 - [x] MAJOR REVISION review adjudicated.
 - [x] Freeze chronology / anti-circularity made explicit.
@@ -57,6 +60,9 @@ Checked against the Journal for General Philosophy of Science author instruction
 - [x] System/World boundary clarified as application-relative and compatible with environmentally coupled cognition.
 - [x] JGPS/general-philosophy significance strengthened.
 - [x] Peer-reviewed literature added: Janssen et al. (2017), Raja et al. (2021), Favela & Raja (2026).
+- [x] Genericity/triviality objection answered without claiming novelty for individual Grammar-v0 roles.
+- [x] Grammar v0 explicitly stated not to be a demarcation criterion for cognition.
+- [x] Failure/recovery sequence retained as the core methodological result.
 
 ## Scientific guardrails
 
@@ -68,6 +74,8 @@ Checked against the Journal for General Philosophy of Science author instruction
 - [x] System/World boundary described as application-relative.
 - [x] Independent extraction agreement explicitly not established.
 - [x] No universal ontology / absolute mathematical minimality claim.
+- [x] No full measurement-theory claim (no quantitative scale, calibration, error-model, identifiability, or invariance theorem is asserted).
+- [x] Structural comparison basis terminology is used consistently where full measurement-theory obligations would otherwise be implied.
 
 ## Files for Editorial Manager
 
