@@ -37,6 +37,7 @@ jobs:
           test -s paper/venues/jgps/cover-letter.md
           test -s paper/venues/jgps/submission-checklist.md
           test -s paper/venues/jgps/deep-research-review-response-v1.md
+          test -s paper/venues/jgps/deep-research-review-response-v2.md
           python3 - <<'PY'
           from pathlib import Path
           import re
@@ -45,6 +46,8 @@ jobs:
           title = Path("paper/venues/jgps/title-page.tex").read_text()
           refs = Path("paper/venues/jgps/references.bib").read_text()
           cover = Path("paper/venues/jgps/cover-letter.md").read_text()
+          checklist = Path("paper/venues/jgps/submission-checklist.md").read_text()
+          review2 = Path("paper/venues/jgps/deep-research-review-response-v2.md").read_text()
 
           m = re.search(r"\\begin\{abstract\}(.*?)\\end\{abstract\}", main, re.S)
           assert m, "abstract missing"
@@ -85,7 +88,11 @@ jobs:
               "Freeze chronology and anti-circularity",
               "JanssenKleinSlors2017CognitiveOntology",
               "RajaEtAl2021MarkovBlanketTrick",
-              "FavelaRaja2026Dynamical"
+              "FavelaRaja2026Dynamical",
+              "construct-label-neutral",
+              "not a full measurement theory",
+              "Grammar v0 is not proposed as a demarcation criterion for cognition",
+              "failure/recovery trajectory"
           ]:
               assert needle in main, needle
 
@@ -94,8 +101,19 @@ jobs:
           assert "10.1080/13869795.2017.1312496" in refs
           assert "10.1016/j.plrev.2021.09.001" in refs
           assert "10.1111/tops.70042" in refs
+          expected_title = "Toward a Construct-Label-Neutral Structural Comparison Basis for Cognitive Capacities"
+          assert expected_title in main
+          assert expected_title in title
+          assert expected_title in cover
+          assert "concept-neutral" not in main.lower()
+          assert "measurement basis" not in main.lower()
           assert "not under consideration elsewhere" in cover
           assert "Journal for General Philosophy of Science" in cover
+          assert "Construct-label neutrality is explicitly limited" in checklist
+          assert "No full measurement-theory claim" in checklist
+          assert "REJECT — CONTRIBUTION TOO TRIVIAL" in review2
+          assert "DIRECT PRIOR TREATMENT FOUND: NO" in review2
+          assert "PAPER2_JGPS_FRAMING_ALIGNED_WITH_ACTUAL_CONTRIBUTION" in review2
 
           # No more than three displayed heading levels.
           assert "\\paragraph{" not in main
@@ -137,7 +155,7 @@ jobs:
 
           pdftotext main.pdf main.txt
           tr '\n' ' ' < main.txt | tr -s '[:space:]' ' ' > main.flat.txt
-          grep -F "Toward a Concept-Neutral Measurement Basis for Cognitive Capacities" main.flat.txt
+          grep -F "Toward a Construct-Label-Neutral Structural Comparison Basis for Cognitive Capacities" main.flat.txt
           grep -F "Rintaro Sakamoto" main.flat.txt
           grep -E '1770[[:space:]]*/[[:space:]]*1770' main.flat.txt
           grep -E 'ROLE[ _]*GAP' main.flat.txt
