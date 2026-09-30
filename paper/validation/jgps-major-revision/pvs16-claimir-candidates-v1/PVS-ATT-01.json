@@ -1,0 +1,130 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "PVS-ATT-01.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1146/annurev.ne.18.030195.001205",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Annual Review of Neuroscience 18, pp.193-222, author/research-unit summary and published review: multiple objects compete across neural systems for representation."
+      },
+      {
+        "span_id": "s2",
+        "locator": "Same source summary: biasing signals allow competition to resolve in favor of objects relevant to current behavior."
+      },
+      {
+        "span_id": "s3",
+        "locator": "Same source summary: spatially guided selection involves a distributed cortical/subcortical network, while feature-guided selection includes signals recorded in inferotemporal cortex and possible frontal working-state influence."
+      }
+    ],
+    "authors": [
+      "Robert Desimone",
+      "John Duncan"
+    ],
+    "institutions": [],
+    "venue": "Annual Review of Neuroscience",
+    "citation_count": null,
+    "construct_labels": [
+      "selective visual attention",
+      "biased competition",
+      "visual attention"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "jgps-pvs16-source-grounded-candidate-v1:#365",
+    "extracted_at": "2026-09-30",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "relation",
+    "modality": "descriptive",
+    "scope": {
+      "conditions": [
+        "a visual scene contains multiple objects while only some are relevant to current behavior"
+      ],
+      "population": [
+        "humans and nonhuman primates as reviewed"
+      ],
+      "substrate": [
+        "distributed visual, parietal, subcortical, inferotemporal, and frontal systems"
+      ],
+      "task": [
+        "selection of behaviorally relevant visual objects"
+      ],
+      "temporal_scope": []
+    },
+    "nodes": [
+      {
+        "id": "competing_representations",
+        "role": "state_or_structure",
+        "description": "simultaneously active object representations that compete for limited processing",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "behavioral_relevance",
+        "role": "criterion",
+        "description": "current behavioral relevance of an object",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "biasing_signal",
+        "role": "available_information",
+        "description": "signal that favors one competing representation over others",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "selected_representation",
+        "role": "response_or_outcome",
+        "description": "representation that dominates processing after competition is resolved",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "other",
+        "arguments": [
+          "competing_representations",
+          "selected_representation"
+        ],
+        "description": "multiple object representations compete and the competition resolves to a selected representation",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "depends_on",
+        "arguments": [
+          "selected_representation",
+          "biasing_signal",
+          "behavioral_relevance"
+        ],
+        "description": "which representation is favored depends on biasing signals aligned with current behavioral relevance",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
