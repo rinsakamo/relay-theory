@@ -1,0 +1,161 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "PVS-CTL-01.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1038/nrn1427",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Nature Reviews Neuroscience 5, pp.532-545 abstract/key points: a feedback controller uses an estimate of system state generated from sensory feedback and efferent copy."
+      },
+      {
+        "span_id": "s2",
+        "locator": "Same source: the state estimate is used to adjust output toward a specific task goal."
+      },
+      {
+        "span_id": "s3",
+        "locator": "Same source: deviations are corrected selectively when they adversely affect task performance."
+      }
+    ],
+    "authors": [
+      "Stephen H. Scott"
+    ],
+    "institutions": [],
+    "venue": "Nature Reviews Neuroscience",
+    "citation_count": null,
+    "construct_labels": [
+      "optimal feedback control",
+      "volitional motor control"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "jgps-pvs16-source-grounded-candidate-v1:#365",
+    "extracted_at": "2026-09-30",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "relation",
+    "modality": "descriptive",
+    "scope": {
+      "conditions": [
+        "goal-directed movement under body mechanics and sensory feedback"
+      ],
+      "population": [
+        "motor systems as reviewed"
+      ],
+      "substrate": [
+        "distributed central and peripheral motor circuitry"
+      ],
+      "task": [
+        "produce goal-directed movement"
+      ],
+      "temporal_scope": [
+        "ongoing state estimation and output adjustment during movement"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "sensory_feedback",
+        "role": "available_information",
+        "description": "incoming information about the current movement and body state",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "efferent_copy",
+        "role": "available_information",
+        "description": "internally available information about outgoing motor commands",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "state_estimate",
+        "role": "state_or_structure",
+        "description": "current estimate of the controlled system state",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "task_goal",
+        "role": "criterion",
+        "description": "specified goal used to evaluate and guide movement",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "motor_output",
+        "role": "response_or_outcome",
+        "description": "control output applied to the moving system",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "performance_relevant_deviation",
+        "role": "condition",
+        "description": "deviation whose correction matters for achieving the task goal",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "depends_on",
+        "arguments": [
+          "state_estimate",
+          "sensory_feedback",
+          "efferent_copy"
+        ],
+        "description": "the current state estimate depends on both incoming sensory information and internal command-related information",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "depends_on",
+        "arguments": [
+          "motor_output",
+          "state_estimate",
+          "task_goal"
+        ],
+        "description": "the output is adjusted using the state estimate relative to the task goal",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "constrains",
+        "arguments": [
+          "task_goal",
+          "performance_relevant_deviation"
+        ],
+        "description": "the task goal determines which deviations warrant correction",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
