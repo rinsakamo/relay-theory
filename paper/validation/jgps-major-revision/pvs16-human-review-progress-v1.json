@@ -3,7 +3,7 @@
   "status": "IN_PROGRESS",
   "authority_issue": 365,
   "admission_manifest_sha256": "0a4454887189730cf4b13d12061f4cab93fb8e4d8f0ec089a08f77bc088dc123",
-  "reviewed_count": 12,
+  "reviewed_count": 13,
   "total_count": 16,
   "grammar_mapping_authorized": false,
   "entries": [
@@ -138,7 +138,18 @@
       "revision_applied": true,
       "revision_note": "Changed r3 from differs to changes and preserved the experimentally supported direction: reducing endpoint stability requirements increases accuracy.",
       "grammar_mapping_inspected": false
+    },
+    {
+      "validation_claim_id": "PVS-BLF-01",
+      "original_candidate_file": "pvs16-claimir-candidates-v1/PVS-BLF-01.json",
+      "reviewed_file": "pvs16-claimir-human-reviewed-v1/PVS-BLF-01.json",
+      "human_review_decision": "REVISE",
+      "reviewer": "author",
+      "review_date": "2026-10-01",
+      "revision_applied": true,
+      "revision_note": "Narrowed r4 to the source-supported update rule: the current outcome influences the next prediction according to the current update gain, avoiding the broader claim that all past outcomes are weighted by that gain.",
+      "grammar_mapping_inspected": false
     }
   ],
-  "terminal": "PVS16_HUMAN_REVIEW_IN_PROGRESS_12_OF_16"
+  "terminal": "PVS16_HUMAN_REVIEW_IN_PROGRESS_13_OF_16"
 }
