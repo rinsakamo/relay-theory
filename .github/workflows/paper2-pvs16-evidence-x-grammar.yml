@@ -1,0 +1,43 @@
+name: paper2-pvs16-evidence-x-grammar
+
+on:
+  push:
+    branches:
+      - paper2-pvs16-grammar-evidence-371
+    paths:
+      - "paper/validation/jgps-major-revision/pvs16-grammar-v0-prospective-mapping-v1.*"
+      - "paper/validation/jgps-major-revision/pvs16-evidence-profile-v1.json"
+      - "paper/validation/jgps-major-revision/pvs16-evidence-x-grammar-diagnostic-v1.*"
+      - "scripts/paper2_pvs16_evidence_x_grammar_validate.py"
+      - ".github/workflows/paper2-pvs16-evidence-x-grammar.yml"
+  pull_request:
+    paths:
+      - "paper/validation/jgps-major-revision/pvs16-grammar-v0-prospective-mapping-v1.*"
+      - "paper/validation/jgps-major-revision/pvs16-evidence-profile-v1.json"
+      - "paper/validation/jgps-major-revision/pvs16-evidence-x-grammar-diagnostic-v1.*"
+      - "scripts/paper2_pvs16_evidence_x_grammar_validate.py"
+      - ".github/workflows/paper2-pvs16-evidence-x-grammar.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  evidence-x-grammar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile
+        run: python -m py_compile scripts/paper2_pvs16_evidence_x_grammar_validate.py
+      - name: Validate twice and compare
+        run: |
+          python scripts/paper2_pvs16_evidence_x_grammar_validate.py --output /tmp/pvs-eg-a.json
+          python scripts/paper2_pvs16_evidence_x_grammar_validate.py --output /tmp/pvs-eg-b.json
+          cmp /tmp/pvs-eg-a.json /tmp/pvs-eg-b.json
+      - name: Upload validation receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: paper2-pvs16-evidence-x-grammar-receipt
+          path: /tmp/pvs-eg-a.json
