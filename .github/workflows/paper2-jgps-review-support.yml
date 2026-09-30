@@ -35,6 +35,10 @@ jobs:
           python scripts/paper2_jgps_review_support.py --outdir /tmp/a
           python scripts/paper2_jgps_review_support.py --outdir /tmp/b
           diff -ru /tmp/a /tmp/b
+      - name: Verify frozen output digests
+        run: |
+          cd /tmp/a
+          sha256sum -c "$GITHUB_WORKSPACE/paper/validation/jgps-major-revision/review-support/review-support-v1.sha256"
       - name: Upload review-support artifacts
         uses: actions/upload-artifact@v4
         with:
