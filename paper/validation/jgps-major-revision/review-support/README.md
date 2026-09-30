@@ -52,3 +52,17 @@ This checkpoint does not satisfy the PVS-16 human author-review gate and does no
 Terminal:
 
 `PAPER2_JGPS_REVIEW_SUPPORT_V1_FROZEN`
+
+## Worked-example candidates
+
+Deterministic selection from frozen artifacts produced:
+
+- different labels / shared exact structure: `ATT02` × `BLF04`, exact Archetype `A-3b814de4da04`;
+- same label / different structure: `CNC01` × `LRN06`, sharing construct labels `categorization` and `similarity`, with zero shared bounded Archetypes;
+- residual case: `MEM06.C1`, primary `SOURCE_CONTEXT_PARAMETER`, secondary `RELATION_LANGUAGE_GAP` + `FORMAL_CARRIER_GAP`, `ROLE_GAP=false`.
+
+Worked-example selection SHA-256:
+
+`a37f77d786cc7231f3a7814973e269bed08f3659ff67813dc58ff3fe96267af9`
+
+These selections are candidates for exposition only; they do not create new scientific adjudications.
