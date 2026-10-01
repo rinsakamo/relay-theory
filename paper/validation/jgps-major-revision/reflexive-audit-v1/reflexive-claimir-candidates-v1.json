@@ -10,7 +10,7 @@
     "manuscript_is_scientific_authority": false,
     "evidence_authority_rule": "repository frozen artifacts and validation commits remain authority for support status"
   },
-  "candidate_count": 32,
+  "candidate_count": 35,
   "candidate_ids": [
     "RFX01A",
     "RFX01B1",
@@ -41,7 +41,10 @@
     "RFX12A",
     "RFX12B",
     "RFX12C",
-    "RFX13",
+    "RFX13A",
+    "RFX13B",
+    "RFX13C",
+    "RFX13D",
     "RFX14",
     "RFX15"
   ],
@@ -3766,8 +3769,8 @@
       }
     },
     {
-      "self_target_id": "RFX13",
-      "normalized_claim": "The 60-claim reference corpus is source-grounded and fully reviewed, but independent extractor agreement and local automated production qualification are not established.",
+      "self_target_id": "RFX13A",
+      "normalized_claim": "The frozen 60-claim reference corpus is source-grounded, with retained ClaimIR records auditable against their source-local evidence.",
       "target_source": "Paper 2 manuscript / frozen validation-extension claim surface",
       "repository_evidence_authorities": [
         "paper/venues/jgps/main.tex@89b094476137bae12e089e5a794a5e57300f4da1",
@@ -3779,7 +3782,7 @@
       "reflexive_verdict_created": false,
       "claimir": {
         "schema_version": "paper2-claim-ir-v1",
-        "claim_id": "RFX13.C1",
+        "claim_id": "RFX13A.C1",
         "provenance": {
           "paper_id": "SELF:RELAYTHEORY-PAPER2",
           "source_language": "en",
@@ -3843,11 +3846,286 @@
                 "s2"
               ],
               "grounding": "normalized"
+            }
+          ],
+          "relations": [
+            {
+              "id": "r1",
+              "kind": "depends_on",
+              "arguments": [
+                "source_grounding_status",
+                "reviewed_reference_corpus"
+              ],
+              "description": "the reviewed corpus is established as source-grounded under the repository review process",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "self_target_id": "RFX13B",
+      "normalized_claim": "All 60 claims in the frozen reference corpus completed author human review.",
+      "target_source": "Paper 2 manuscript / frozen validation-extension claim surface",
+      "repository_evidence_authorities": [
+        "paper/venues/jgps/main.tex@89b094476137bae12e089e5a794a5e57300f4da1",
+        "#351",
+        "commit:290070dedd099a91eafbde527c7c60c3aa384d2b"
+      ],
+      "grammar_mapping_inspected": false,
+      "evidence_profile_created": false,
+      "reflexive_verdict_created": false,
+      "claimir": {
+        "schema_version": "paper2-claim-ir-v1",
+        "claim_id": "RFX13B.C1",
+        "provenance": {
+          "paper_id": "SELF:RELAYTHEORY-PAPER2",
+          "source_language": "en",
+          "source_spans": [
+            {
+              "span_id": "s1",
+              "locator": "paper/venues/jgps/main.tex — Source-Grounded ClaimIR Construction / Limitations: 60/60 reviewed claims; independent extractor agreement not established."
+            },
+            {
+              "span_id": "s2",
+              "locator": "#351 — reliability boundary: structural comparator semantics VALIDATED; source-grounded reviewed reference corpus ESTABLISHED; independent extractor agreement NOT ESTABLISHED; local automated production qualification NOT ESTABLISHED."
+            }
+          ],
+          "authors": [
+            "Rintaro Sakamoto"
+          ],
+          "institutions": [
+            "Independent Scholar"
+          ],
+          "venue": "Journal for General Philosophy of Science submission surface / RelayTheory validation extension",
+          "citation_count": null,
+          "construct_labels": [
+            "reliability",
+            "independent extraction"
+          ]
+        },
+        "extraction": {
+          "extractor": "ChatGPT",
+          "extractor_version": "GPT-5.6 Sol",
+          "procedure_version": "paper2-reflexive-audit-candidate-v1:#384",
+          "extracted_at": "2026-10-01",
+          "manual_review_status": "unreviewed"
+        },
+        "claim_core": {
+          "claim_type": "comparison",
+          "modality": "comparative",
+          "scope": {
+            "conditions": [],
+            "population": [],
+            "substrate": [],
+            "task": [],
+            "temporal_scope": []
+          },
+          "nodes": [
+            {
+              "id": "reviewed_reference_corpus",
+              "role": "state_or_structure",
+              "description": "the 60 source-grounded ClaimIR records after author review",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "human_review_complete_60",
+              "role": "response_or_outcome",
+              "description": "60 of 60 retained reference ClaimIR records completed author review",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            }
+          ],
+          "relations": [
+            {
+              "id": "r4",
+              "kind": "depends_on",
+              "arguments": [
+                "human_review_complete_60",
+                "reviewed_reference_corpus"
+              ],
+              "description": "all 60 reference claims were reviewed by the author",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "self_target_id": "RFX13C",
+      "normalized_claim": "Independent extractor agreement on the source-to-ClaimIR task has not been established for the frozen 60-claim reference corpus.",
+      "target_source": "Paper 2 manuscript / frozen validation-extension claim surface",
+      "repository_evidence_authorities": [
+        "paper/venues/jgps/main.tex@89b094476137bae12e089e5a794a5e57300f4da1",
+        "#351",
+        "commit:290070dedd099a91eafbde527c7c60c3aa384d2b"
+      ],
+      "grammar_mapping_inspected": false,
+      "evidence_profile_created": false,
+      "reflexive_verdict_created": false,
+      "claimir": {
+        "schema_version": "paper2-claim-ir-v1",
+        "claim_id": "RFX13C.C1",
+        "provenance": {
+          "paper_id": "SELF:RELAYTHEORY-PAPER2",
+          "source_language": "en",
+          "source_spans": [
+            {
+              "span_id": "s1",
+              "locator": "paper/venues/jgps/main.tex — Source-Grounded ClaimIR Construction / Limitations: 60/60 reviewed claims; independent extractor agreement not established."
+            },
+            {
+              "span_id": "s2",
+              "locator": "#351 — reliability boundary: structural comparator semantics VALIDATED; source-grounded reviewed reference corpus ESTABLISHED; independent extractor agreement NOT ESTABLISHED; local automated production qualification NOT ESTABLISHED."
+            }
+          ],
+          "authors": [
+            "Rintaro Sakamoto"
+          ],
+          "institutions": [
+            "Independent Scholar"
+          ],
+          "venue": "Journal for General Philosophy of Science submission surface / RelayTheory validation extension",
+          "citation_count": null,
+          "construct_labels": [
+            "reliability",
+            "independent extraction"
+          ]
+        },
+        "extraction": {
+          "extractor": "ChatGPT",
+          "extractor_version": "GPT-5.6 Sol",
+          "procedure_version": "paper2-reflexive-audit-candidate-v1:#384",
+          "extracted_at": "2026-10-01",
+          "manual_review_status": "unreviewed"
+        },
+        "claim_core": {
+          "claim_type": "comparison",
+          "modality": "comparative",
+          "scope": {
+            "conditions": [],
+            "population": [],
+            "substrate": [],
+            "task": [],
+            "temporal_scope": []
+          },
+          "nodes": [
+            {
+              "id": "reviewed_reference_corpus",
+              "role": "state_or_structure",
+              "description": "the 60 source-grounded ClaimIR records after author review",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
             },
             {
               "id": "independent_extractor_agreement",
               "role": "criterion",
               "description": "agreement of an independent extraction process on the source-to-ClaimIR task",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            }
+          ],
+          "relations": [
+            {
+              "id": "r2",
+              "kind": "other",
+              "arguments": [
+                "independent_extractor_agreement",
+                "reviewed_reference_corpus"
+              ],
+              "description": "source-grounded author review does not establish independent extractor agreement",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "self_target_id": "RFX13D",
+      "normalized_claim": "Local automated ClaimIR extraction/production qualification has not been established for the frozen 60-claim reference corpus.",
+      "target_source": "Paper 2 manuscript / frozen validation-extension claim surface",
+      "repository_evidence_authorities": [
+        "paper/venues/jgps/main.tex@89b094476137bae12e089e5a794a5e57300f4da1",
+        "#351",
+        "commit:290070dedd099a91eafbde527c7c60c3aa384d2b"
+      ],
+      "grammar_mapping_inspected": false,
+      "evidence_profile_created": false,
+      "reflexive_verdict_created": false,
+      "claimir": {
+        "schema_version": "paper2-claim-ir-v1",
+        "claim_id": "RFX13D.C1",
+        "provenance": {
+          "paper_id": "SELF:RELAYTHEORY-PAPER2",
+          "source_language": "en",
+          "source_spans": [
+            {
+              "span_id": "s1",
+              "locator": "paper/venues/jgps/main.tex — Source-Grounded ClaimIR Construction / Limitations: 60/60 reviewed claims; independent extractor agreement not established."
+            },
+            {
+              "span_id": "s2",
+              "locator": "#351 — reliability boundary: structural comparator semantics VALIDATED; source-grounded reviewed reference corpus ESTABLISHED; independent extractor agreement NOT ESTABLISHED; local automated production qualification NOT ESTABLISHED."
+            }
+          ],
+          "authors": [
+            "Rintaro Sakamoto"
+          ],
+          "institutions": [
+            "Independent Scholar"
+          ],
+          "venue": "Journal for General Philosophy of Science submission surface / RelayTheory validation extension",
+          "citation_count": null,
+          "construct_labels": [
+            "reliability",
+            "independent extraction"
+          ]
+        },
+        "extraction": {
+          "extractor": "ChatGPT",
+          "extractor_version": "GPT-5.6 Sol",
+          "procedure_version": "paper2-reflexive-audit-candidate-v1:#384",
+          "extracted_at": "2026-10-01",
+          "manual_review_status": "unreviewed"
+        },
+        "claim_core": {
+          "claim_type": "comparison",
+          "modality": "comparative",
+          "scope": {
+            "conditions": [],
+            "population": [],
+            "substrate": [],
+            "task": [],
+            "temporal_scope": []
+          },
+          "nodes": [
+            {
+              "id": "reviewed_reference_corpus",
+              "role": "state_or_structure",
+              "description": "the 60 source-grounded ClaimIR records after author review",
               "source_span_ids": [
                 "s1",
                 "s2"
@@ -3865,34 +4143,6 @@
             }
           ],
           "relations": [
-            {
-              "id": "r1",
-              "kind": "depends_on",
-              "arguments": [
-                "source_grounding_status",
-                "reviewed_reference_corpus"
-              ],
-              "description": "the reviewed corpus is established as source-grounded under the repository review process",
-              "source_span_ids": [
-                "s1",
-                "s2"
-              ],
-              "grounding": "normalized"
-            },
-            {
-              "id": "r2",
-              "kind": "other",
-              "arguments": [
-                "independent_extractor_agreement",
-                "reviewed_reference_corpus"
-              ],
-              "description": "source-grounded author review does not establish independent extractor agreement",
-              "source_span_ids": [
-                "s1",
-                "s2"
-              ],
-              "grounding": "normalized"
-            },
             {
               "id": "r3",
               "kind": "other",
@@ -4308,7 +4558,7 @@
       }
     }
   ],
-  "terminal": "RFX32_CANDIDATES_FROZEN_PENDING_AUTHOR_REVIEW",
+  "terminal": "RFX35_CANDIDATES_FROZEN_PENDING_AUTHOR_REVIEW",
   "fresh_authority_reconciliation": {
     "observed_after_initial_candidate_freeze": "ad1c11789814413b1d9fd3ca8a4cfb6f7316f230",
     "reason": "AssertionCarrier v2 became current main before author review started; RFX15 was added before any review or downstream mapping.",
@@ -4509,6 +4759,26 @@
         "RFX12A": "ACCEPT",
         "RFX12B": "ACCEPT",
         "RFX12C": "ACCEPT"
+      },
+      "downstream_fit_inspected": false,
+      "date": "2026-10-01"
+    },
+    {
+      "event": "AUTHOR_ACCEPTED_FOUR_WAY_SPLIT",
+      "original_id": "RFX13",
+      "replacements": [
+        "RFX13A",
+        "RFX13B",
+        "RFX13C",
+        "RFX13D"
+      ],
+      "original_normalized_claim": "The 60-claim reference corpus is source-grounded and fully reviewed, but independent extractor agreement and local automated production qualification are not established.",
+      "reason": "Separate source-local grounding, complete author review, unestablished independent extractor agreement, and unestablished local automated production qualification.",
+      "decisions": {
+        "RFX13A": "ACCEPT",
+        "RFX13B": "ACCEPT",
+        "RFX13C": "ACCEPT",
+        "RFX13D": "ACCEPT"
       },
       "downstream_fit_inspected": false,
       "date": "2026-10-01"
