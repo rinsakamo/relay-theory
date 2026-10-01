@@ -4,10 +4,10 @@
   "authority_issue": 384,
   "generated_date": "2026-10-01",
   "candidate_packet_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/reflexive-claimir-candidates-v1.json",
-  "candidate_packet_blob_sha": "da17783fc99a5c77ae3a7978b4ac92f0f041a01d",
-  "total": 20,
-  "reviewed": 8,
-  "accepted": 8,
+  "candidate_packet_blob_sha": "fac4591343ba943b4a38fc98ea39bdba93bf20c1",
+  "total": 21,
+  "reviewed": 10,
+  "accepted": 10,
   "revised": 0,
   "rejected": 0,
   "decisions": [
@@ -58,12 +58,23 @@
       "decision": "ACCEPT",
       "decision_date": "2026-10-01",
       "decision_record_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/human-reviewed/RFX05C.json"
+    },
+    {
+      "self_target_id": "RFX06A",
+      "decision": "ACCEPT",
+      "decision_date": "2026-10-01",
+      "decision_record_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/human-reviewed/RFX06A.json"
+    },
+    {
+      "self_target_id": "RFX06B",
+      "decision": "ACCEPT",
+      "decision_date": "2026-10-01",
+      "decision_record_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/human-reviewed/RFX06B.json"
     }
   ],
   "remaining": [
     "RFX01B1",
     "RFX01B2",
-    "RFX06",
     "RFX07",
     "RFX08",
     "RFX09",
@@ -81,7 +92,7 @@
     "LAYERED_ARCHITECTURE_PROJECTION",
     "REFLEXIVE_RECONSTRUCTION_VERDICT"
   ],
-  "terminal": "RFX20_HUMAN_REVIEW_8_OF_20_PENDING",
+  "terminal": "RFX21_HUMAN_REVIEW_10_OF_21_PENDING",
   "authority_reconciliation": "RFX15 added pre-review after fresh main advanced to #385; no human decisions existed at reconciliation time.",
   "pre_review_revision_history": [
     {
@@ -147,6 +158,22 @@
       "downstream_fit_inspected": false,
       "date": "2026-10-01",
       "authority_note": "Main advanced after frozen v2 calibration to prospective AHV2-8 candidate/admission artifacts; no relevance to frozen RFX05 source authority and no retrofit performed."
+    },
+    {
+      "event": "AUTHOR_ACCEPTED_TWO_WAY_SPLIT",
+      "original_id": "RFX06",
+      "replacements": [
+        "RFX06A",
+        "RFX06B"
+      ],
+      "original_normalized_claim": "Grammar v0 is best characterized as a data-constrained refinement or factorization of the declared working basis B_P2, not as an independently discovered inventory of new top-level cognitive primitives.",
+      "reason": "Separate basis refinement/factorization from the qualified non-discovery of independent top-level primitives.",
+      "decisions": {
+        "RFX06A": "ACCEPT",
+        "RFX06B": "ACCEPT"
+      },
+      "downstream_fit_inspected": false,
+      "date": "2026-10-01"
     }
   ],
   "superseded_review_events": [
@@ -175,6 +202,15 @@
         "RFX05A",
         "RFX05B",
         "RFX05C"
+      ],
+      "counted_in_active_review_totals": false
+    },
+    {
+      "self_target_id": "RFX06",
+      "decision": "SPLIT_AND_CHILDREN_ACCEPTED",
+      "replacements": [
+        "RFX06A",
+        "RFX06B"
       ],
       "counted_in_active_review_totals": false
     }
