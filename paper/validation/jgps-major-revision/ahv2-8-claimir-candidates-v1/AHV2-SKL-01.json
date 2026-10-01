@@ -1,0 +1,188 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "AHV2-SKL-01.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1037/0033-295X.84.2.127",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Indexed abstract: experiments demonstrate a qualitative difference between controlled search and automatic detection."
+      },
+      {
+        "span_id": "s2",
+        "locator": "Indexed abstract: the studies trace acquisition of automatic detection, category learning, and automatic-attention responses."
+      },
+      {
+        "span_id": "s3",
+        "locator": "Indexed abstract: automatic detection depends on attending responses, and automatic-attention responses interrupt controlled processing and interfere with focused attention."
+      },
+      {
+        "span_id": "s4",
+        "locator": "Indexed abstract: category learning improves controlled-search performance."
+      }
+    ],
+    "authors": [
+      "Richard M Shiffrin",
+      "Walter Schneider"
+    ],
+    "institutions": [],
+    "venue": "Psychological Review",
+    "citation_count": null,
+    "construct_labels": []
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "jgps-ahv2-8-source-grounded-candidate-v1:#390",
+    "extracted_at": "2026-10-01",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "relation",
+    "modality": "descriptive",
+    "scope": {
+      "conditions": [
+        "practice and perceptual learning"
+      ],
+      "population": [
+        "human participants in reported experiments"
+      ],
+      "substrate": [],
+      "task": [
+        "detection, search, categorization, and attention tasks"
+      ],
+      "temporal_scope": [
+        "practice precedes acquisition of automatic performance"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "controlled_search",
+        "role": "state_or_structure",
+        "description": "controlled mode of search requiring active processing",
+        "source_span_ids": [
+          "s1",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "automatic_detection",
+        "role": "state_or_structure",
+        "description": "learned automatic mode of detecting relevant information",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "practice_history",
+        "role": "condition",
+        "description": "accumulated experience during perceptual learning",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "automatic_attention_response",
+        "role": "state_or_structure",
+        "description": "learned attending response that can be elicited automatically",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "category_learning",
+        "role": "condition",
+        "description": "acquisition of category structure during training",
+        "source_span_ids": [
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "controlled_search_performance",
+        "role": "response_or_outcome",
+        "description": "performance of controlled search",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "differs",
+        "arguments": [
+          "controlled_search",
+          "automatic_detection"
+        ],
+        "description": "the reported experiments demonstrate a qualitative difference between controlled search and automatic detection",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "changes",
+        "arguments": [
+          "practice_history",
+          "automatic_detection"
+        ],
+        "description": "automatic detection is acquired over the course of training",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "depends_on",
+        "arguments": [
+          "automatic_detection",
+          "automatic_attention_response"
+        ],
+        "description": "automatic detection depends on attending responses",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "constrains",
+        "arguments": [
+          "automatic_attention_response",
+          "controlled_search"
+        ],
+        "description": "automatic attending can interrupt controlled processing and interfere with focused attention",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "changes",
+        "arguments": [
+          "category_learning",
+          "controlled_search_performance"
+        ],
+        "description": "learning category structure improves controlled-search performance",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
