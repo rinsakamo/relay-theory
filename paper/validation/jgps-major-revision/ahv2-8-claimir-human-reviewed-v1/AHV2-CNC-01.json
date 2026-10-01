@@ -1,0 +1,217 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "AHV2-CNC-01.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1037/0278-7393.24.6.1411",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Institutional abstract: categorization strategies and standard models are evaluated at successive learning stages for smaller less-differentiated and larger more-differentiated category structures."
+      },
+      {
+        "span_id": "s2",
+        "locator": "Institutional abstract: for smaller less-differentiated categories, exemplar-based processing dominates even early in learning."
+      },
+      {
+        "span_id": "s3",
+        "locator": "Institutional abstract: for larger more-differentiated categories, prototype-based processing has a strong early advantage that diminishes slowly."
+      },
+      {
+        "span_id": "s4",
+        "locator": "Institutional abstract: model behavior suggests a psychological transition from prototype-based to exemplar-based processing and different category structures produce different learning trajectories."
+      },
+      {
+        "span_id": "s5",
+        "locator": "Smith & Minda (1998), original article pp. 1416, 1418 and 1425 (Experiments 1, 2 and 4): early prototype-model fit advantage in large, better-differentiated categories depends on experiment/category condition; model fit is not direct identification of participants' internal processing."
+      },
+      {
+        "span_id": "s6",
+        "locator": "Smith & Minda (1998), original article pp. 1422-1423, Figure 6 (Experiment 3), and pp. 1425-1426 (Experiment 4): for small, poorly differentiated categories, exemplar model fits better from early epochs and prototype model has no early fit advantage."
+      },
+      {
+        "span_id": "s7",
+        "locator": "Smith & Minda (1998), original article pp. 1426-1428 (mixture-model interpretation, Figure 9) and p. 1432 (General Discussion): inferred prototype-to-exemplar transition applies particularly to large, better-differentiated categories and does not directly establish a unique cognitive mechanism."
+      }
+    ],
+    "authors": [
+      "J. David Smith",
+      "John Paul Minda"
+    ],
+    "institutions": [],
+    "venue": "Journal of Experimental Psychology: Learning, Memory, and Cognition",
+    "citation_count": null,
+    "construct_labels": []
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "jgps-ahv2-8-source-grounded-candidate-v1:#390",
+    "extracted_at": "2026-10-01",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "comparison",
+    "modality": "descriptive",
+    "scope": {
+      "conditions": [
+        "successive stages of category learning under different category structures"
+      ],
+      "population": [
+        "human participants"
+      ],
+      "substrate": [],
+      "task": [
+        "learn and categorize smaller/less-differentiated versus larger/more-differentiated categories"
+      ],
+      "temporal_scope": [
+        "early through later stages of learning"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "small_less_differentiated_structure",
+        "role": "condition",
+        "description": "smaller and less differentiated category structure",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "large_more_differentiated_structure",
+        "role": "condition",
+        "description": "larger and more differentiated category structure",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "learning_stage",
+        "role": "condition",
+        "description": "successive stage in category learning",
+        "source_span_ids": [
+          "s1",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "exemplar_based_processing",
+        "role": "state_or_structure",
+        "description": "classification processing based primarily on individual exemplars",
+        "source_span_ids": [
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "prototype_based_processing",
+        "role": "state_or_structure",
+        "description": "classification processing based primarily on prototype information",
+        "source_span_ids": [
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "strategy_trajectory",
+        "role": "response_or_outcome",
+        "description": "trajectory of dominant processing strategy across learning",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "exemplar_model_fit",
+        "role": "response_or_outcome",
+        "description": "relative fit of the standard exemplar model to observed category-learning performance profiles; a model-comparison result rather than directly measured processing",
+        "source_span_ids": [
+          "s2",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "prototype_model_fit",
+        "role": "response_or_outcome",
+        "description": "relative fit of the basic prototype model to observed category-learning performance profiles; a model-comparison result rather than directly measured processing",
+        "source_span_ids": [
+          "s3",
+          "s5"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "depends_on",
+        "arguments": [
+          "exemplar_model_fit",
+          "small_less_differentiated_structure",
+          "learning_stage"
+        ],
+        "description": "for small, poorly differentiated categories the standard exemplar model describes observed performance better, including at early learning stages; this is a model-fit result, not direct observation of exemplar processing",
+        "source_span_ids": [
+          "s2",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "depends_on",
+        "arguments": [
+          "prototype_model_fit",
+          "large_more_differentiated_structure",
+          "learning_stage"
+        ],
+        "description": "for large, better-differentiated categories the prototype model has an early fit advantage in the reported qualifying task conditions, but not uniformly across all experimental conditions; this is a model-fit result, not direct observation of prototype processing",
+        "source_span_ids": [
+          "s3",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "changes",
+        "arguments": [
+          "learning_stage",
+          "large_more_differentiated_structure",
+          "prototype_based_processing",
+          "exemplar_based_processing"
+        ],
+        "description": "the authors interpret the learning-stage model-fit trajectory for large, better-differentiated categories as consistent with a gradual shift from prototype-based toward exemplar-based processing; this is an inferred mechanism, not a uniquely established psychological transition and does not generalize to small, poorly differentiated categories",
+        "source_span_ids": [
+          "s4",
+          "s5",
+          "s6",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "depends_on",
+        "arguments": [
+          "strategy_trajectory",
+          "small_less_differentiated_structure",
+          "large_more_differentiated_structure"
+        ],
+        "description": "different category structures produce different trajectories through the space of categorization strategies",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}

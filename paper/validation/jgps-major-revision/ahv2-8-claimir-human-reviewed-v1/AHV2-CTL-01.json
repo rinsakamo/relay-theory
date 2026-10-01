@@ -1,0 +1,194 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "AHV2-CTL-01.C1",
+  "provenance": {
+    "paper_id": "DOI:10.3758/CABN.4.4.564",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "PubMed abstract: the review concerns how action-guiding rules are learned, stored, retrieved, maintained, and used."
+      },
+      {
+        "span_id": "s2",
+        "locator": "PubMed abstract: ventrolateral prefrontal cortex is implicated in rule learning, long-term retrieval, and online maintenance during task preparation."
+      },
+      {
+        "span_id": "s3",
+        "locator": "PubMed abstract: frontotemporal interactions are required for rule retrieval in nonhuman primates, and human imaging suggests rule knowledge is stored in posterior middle temporal cortex."
+      },
+      {
+        "span_id": "s4",
+        "locator": "PubMed abstract: dorsolateral prefrontal cortex is more closely related to rule-based response selection than to rule retrieval."
+      }
+    ],
+    "authors": [
+      "Silvia A Bunge"
+    ],
+    "institutions": [],
+    "venue": "Cognitive, Affective, & Behavioral Neuroscience",
+    "citation_count": null,
+    "construct_labels": []
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "jgps-ahv2-8-source-grounded-candidate-v1:#390",
+    "extracted_at": "2026-10-01",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "comparison",
+    "modality": "descriptive",
+    "scope": {
+      "conditions": [
+        "learning and use of action-guiding rules"
+      ],
+      "population": [
+        "primarily humans with relevant nonhuman-primate evidence"
+      ],
+      "substrate": [
+        "prefrontal and temporal cortical systems"
+      ],
+      "task": [
+        "rule learning, preparation, retrieval, and response selection"
+      ],
+      "temporal_scope": []
+    },
+    "nodes": [
+      {
+        "id": "rule_learning",
+        "role": "state_or_structure",
+        "description": "acquisition of action-guiding rule knowledge",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "rule_retrieval",
+        "role": "state_or_structure",
+        "description": "retrieval of rule knowledge from long-term memory",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "online_rule_maintenance",
+        "role": "state_or_structure",
+        "description": "online maintenance of rule information during task preparation",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "vlpfc_engagement",
+        "role": "response_or_outcome",
+        "description": "involvement of ventrolateral prefrontal cortex in rule-related processing",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "frontotemporal_interaction",
+        "role": "state_or_structure",
+        "description": "interaction between ventrolateral prefrontal and temporal cortex during retrieval",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "posterior_temporal_rule_representation",
+        "role": "state_or_structure",
+        "description": "rule knowledge represented in posterior middle temporal cortex",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "rule_based_response_selection",
+        "role": "state_or_structure",
+        "description": "selection of a response according to the current rule",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "dlpfc_engagement",
+        "role": "response_or_outcome",
+        "description": "involvement of dorsolateral prefrontal cortex in rule-related processing",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "other",
+        "arguments": [
+          "vlpfc_engagement",
+          "rule_learning",
+          "rule_retrieval",
+          "online_rule_maintenance"
+        ],
+        "description": "ventrolateral prefrontal cortex is implicated in learning, retrieving, and maintaining rules",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "depends_on",
+        "arguments": [
+          "rule_retrieval",
+          "frontotemporal_interaction"
+        ],
+        "description": "rule retrieval requires interaction between ventrolateral prefrontal and temporal cortex in the cited nonhuman-primate evidence",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "other",
+        "arguments": [
+          "posterior_temporal_rule_representation"
+        ],
+        "description": "human imaging evidence suggests storage of rule knowledge in posterior middle temporal cortex",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "differs",
+        "arguments": [
+          "dlpfc_engagement",
+          "rule_based_response_selection",
+          "rule_retrieval"
+        ],
+        "description": "dorsolateral prefrontal involvement is more closely related to rule-based response selection than to rule retrieval",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}

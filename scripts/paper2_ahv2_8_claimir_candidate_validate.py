@@ -35,9 +35,15 @@ def validate()->dict[str,Any]:
     if auth["assertion_carrier_v2_validation_authorized"] is not False: raise Error("authority prematurely authorizes v2")
     if packet["assertion_carrier_v2_validation_authorized"] is not False: raise Error("packet prematurely authorizes v2")
     if packet["review_completion_must_be_human_authored"] is not True: raise Error("human authorship gate missing")
-    if progress["status"]!="PENDING" or progress["reviewed_count"]!=0 or progress["total_count"]!=8:
-        raise Error("review progress must be pending 0/8")
-    if progress["assertion_carrier_v2_validation_authorized"] is not False: raise Error("progress prematurely authorizes v2")
+    if progress["total_count"]!=8: raise Error("review total-count drift")
+    if progress["status"]=="PENDING":
+        if progress["reviewed_count"]!=0 or progress["assertion_carrier_v2_validation_authorized"] is not False:
+            raise Error("PENDING state must be 0/8 and v2-disabled")
+    elif progress["status"]=="COMPLETE":
+        if progress["reviewed_count"]!=8 or progress["assertion_carrier_v2_validation_authorized"] is not True:
+            raise Error("COMPLETE state must be 8/8 and v2-authorized")
+    else:
+        raise Error("unexpected review-lifecycle state")
 
     expected={a["validation_claim_id"]:doi(a["source_identity"]["value"]) for a in admission["admissions"]}
     files=sorted(p.name for p in CAND.glob("*.json"))
@@ -80,7 +86,7 @@ def validate()->dict[str,Any]:
     if packet["allowed_decisions"]!=["ACCEPT","REVISE","REJECT"]: raise Error("decision vocabulary")
     if total_relations!=33: raise Error(f"relation total drift: {total_relations}")
 
-    return {"schema":"relay-theory.paper2.ahv2_8_claimir_candidate_gate.v1","status":"PASS","candidates":8,"relations":33,"human_review_completed":0,"v2_validation_authorized":False,"receipts":receipts,"terminal":"AHV2_8_CLAIMIR_CANDIDATES_VALIDATED_PENDING_AUTHOR_REVIEW"}
+    return {"schema":"relay-theory.paper2.ahv2_8_claimir_candidate_gate.v1","status":"PASS","candidates":8,"relations":33,"human_review_completed":progress["reviewed_count"],"v2_validation_authorized":progress["assertion_carrier_v2_validation_authorized"],"receipts":receipts,"terminal":"AHV2_8_CLAIMIR_CANDIDATES_STABLE_ACROSS_REVIEW_LIFECYCLE"}
 
 def main()->None:
     ap=argparse.ArgumentParser(); ap.add_argument("--output",type=Path); args=ap.parse_args()

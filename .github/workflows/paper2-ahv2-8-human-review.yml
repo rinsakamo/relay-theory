@@ -1,0 +1,41 @@
+name: paper2-ahv2-8-human-review
+
+on:
+  push:
+    branches: [paper2-ahv2-8-human-review-390]
+    paths:
+      - "paper/validation/jgps-major-revision/ahv2-8-claimir-human-reviewed-v1/**"
+      - "paper/validation/jgps-major-revision/ahv2-8-claimir-candidates-v1/**"
+      - "paper/validation/jgps-major-revision/ahv2-8-human-review-progress-v1.json"
+      - "paper/validation/jgps-major-revision/ahv2-8-human-review-summary-v1.json"
+      - "scripts/paper2_ahv2_8_human_review_validate.py"
+      - ".github/workflows/paper2-ahv2-8-human-review.yml"
+  pull_request:
+    paths:
+      - "paper/validation/jgps-major-revision/ahv2-8-claimir-human-reviewed-v1/**"
+      - "paper/validation/jgps-major-revision/ahv2-8-claimir-candidates-v1/**"
+      - "paper/validation/jgps-major-revision/ahv2-8-human-review-progress-v1.json"
+      - "paper/validation/jgps-major-revision/ahv2-8-human-review-summary-v1.json"
+      - "scripts/paper2_ahv2_8_human_review_validate.py"
+      - ".github/workflows/paper2-ahv2-8-human-review.yml"
+
+permissions: {contents: read}
+
+jobs:
+  author-review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - name: Compile validators
+        run: python -m py_compile scripts/paper2_claim_ir_validate.py scripts/paper2_ahv2_8_human_review_validate.py
+      - name: Validate twice and compare
+        run: |
+          PYTHONPATH=scripts python scripts/paper2_ahv2_8_human_review_validate.py --output /tmp/ahv2-review-a.json
+          PYTHONPATH=scripts python scripts/paper2_ahv2_8_human_review_validate.py --output /tmp/ahv2-review-b.json
+          cmp /tmp/ahv2-review-a.json /tmp/ahv2-review-b.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: paper2-ahv2-human-review-receipt
+          path: /tmp/ahv2-review-a.json
