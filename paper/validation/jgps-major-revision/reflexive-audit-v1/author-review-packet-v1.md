@@ -1,6 +1,6 @@
 # Paper 2 reflexive-audit author review packet v1
 
-Status: **UNREVIEWED — 0 / 14**
+Status: **UNREVIEWED — 0 / 15**
 
 Authority: #384
 
@@ -30,10 +30,15 @@ No downstream Evidence Profile, Grammar mapping, layered projection, or reconstr
 | RFX12 | A held-out AHV-8 test rejects completeness of AssertionCarrier v1: only 11 of 28 reviewed relations are FULL and 17 are GAP, with 1 of 8 claims fully covered; the observed gaps are L_claim carrier gaps and do not by themselves establish Grammar-v0 system-role gaps. | — |
 | RFX13 | The 60-claim reference corpus is source-grounded and fully reviewed, but independent extractor agreement and local automated production qualification are not established. | — |
 | RFX14 | Paper 2's strongest licensed conclusion is a bounded measurement-oriented structural reconstruction; it does not establish a complete scientific claim language, nine ontological primitives, absolute mathematical minimality, a universal system boundary, a representative population estimate, or a demarcation criterion for cognition. | — |
+| RFX15 | AssertionCarrier v2 is a minimal post-hoc extension derived from the frozen AHV-8 v1 held-out gaps: it retrospectively repairs all 17 of those gaps and closes 28/28 AHV relations, but this is calibration rather than independent v2 validation; a newly admitted post-v2 held-out set is required for an independent validation claim. | — |
+
+## Fresh-authority reconciliation
+
+The initial 14-candidate packet was created while main ended at #382. Before author review began, main advanced to #385 with the frozen AssertionCarrier-v2 retrospective calibration. RFX15 was therefore added **before any human decision or downstream fit inspection**. The v1 held-out failure (RFX12) remains a distinct historical validation result rather than being overwritten by v2 calibration.
 
 ## Review boundary
 
-- Candidate ClaimIR files remain `manual_review_status = unreviewed`.
+- Candidate ClaimIR records remain `manual_review_status = unreviewed`.
 - Candidate wording may be revised only through an explicit author `REVISE` decision.
 - Review must not optimize candidate wording for downstream Grammar fit.
 - A rejected candidate is preserved as review provenance rather than silently deleted.
@@ -42,4 +47,4 @@ No downstream Evidence Profile, Grammar mapping, layered projection, or reconstr
 
 Terminal while incomplete:
 
-`RFX14_HUMAN_REVIEW_PENDING`
+`RFX15_HUMAN_REVIEW_PENDING`
