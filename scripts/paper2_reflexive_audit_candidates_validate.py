@@ -108,8 +108,8 @@ def validate() -> dict[str, Any]:
         raise ValidationError("review progress schema drift")
     expected_progress = {
         "total": 45,
-        "reviewed": 43,
-        "accepted": 43,
+        "reviewed": 44,
+        "accepted": 44,
         "revised": 0,
         "rejected": 0,
         "downstream_authorized": False,
@@ -117,14 +117,14 @@ def validate() -> dict[str, Any]:
     for key, expected in expected_progress.items():
         if h.get(key) != expected:
             raise ValidationError(f"review progress {key} drift")
-    if [d.get("self_target_id") for d in h.get("decisions", [])] != ["RFX01A","RFX02A","RFX02B","RFX03","RFX04","RFX05A","RFX05B","RFX05C","RFX06A","RFX06B","RFX07A","RFX07B","RFX08A","RFX08B","RFX08C","RFX09A","RFX09B","RFX10A","RFX10B","RFX10C","RFX10D","RFX11A","RFX11B","RFX11C","RFX12A","RFX12B","RFX12C","RFX13A","RFX13B","RFX13C","RFX13D","RFX14A","RFX14B","RFX14C","RFX14D","RFX14E","RFX14F","RFX14G","RFX15A","RFX15B","RFX15C","RFX15D","RFX15E"]:
+    if [d.get("self_target_id") for d in h.get("decisions", [])] != ["RFX01A","RFX02A","RFX02B","RFX03","RFX04","RFX05A","RFX05B","RFX05C","RFX06A","RFX06B","RFX07A","RFX07B","RFX08A","RFX08B","RFX08C","RFX09A","RFX09B","RFX10A","RFX10B","RFX10C","RFX10D","RFX11A","RFX11B","RFX11C","RFX12A","RFX12B","RFX12C","RFX13A","RFX13B","RFX13C","RFX13D","RFX14A","RFX14B","RFX14C","RFX14D","RFX14E","RFX14F","RFX14G","RFX15A","RFX15B","RFX15C","RFX15D","RFX15E","RFX01B1"]:
         raise ValidationError("review decision ledger drift")
-    if h.get("remaining") != [cid for cid in EXPECTED_IDS if cid not in {"RFX01A", "RFX02A", "RFX02B", "RFX03", "RFX04", "RFX05A", "RFX05B", "RFX05C", "RFX06A", "RFX06B", "RFX07A", "RFX07B", "RFX08A", "RFX08B", "RFX08C", "RFX09A", "RFX09B", "RFX10A", "RFX10B", "RFX10C", "RFX10D", "RFX11A", "RFX11B", "RFX11C", "RFX12A", "RFX12B", "RFX12C", "RFX13A", "RFX13B", "RFX13C", "RFX13D", "RFX14A", "RFX14B", "RFX14C", "RFX14D", "RFX14E", "RFX14F", "RFX14G", "RFX15A", "RFX15B", "RFX15C", "RFX15D", "RFX15E"}]:
+    if h.get("remaining") != [cid for cid in EXPECTED_IDS if cid not in {"RFX01A", "RFX02A", "RFX02B", "RFX03", "RFX04", "RFX05A", "RFX05B", "RFX05C", "RFX06A", "RFX06B", "RFX07A", "RFX07B", "RFX08A", "RFX08B", "RFX08C", "RFX09A", "RFX09B", "RFX10A", "RFX10B", "RFX10C", "RFX10D", "RFX11A", "RFX11B", "RFX11C", "RFX12A", "RFX12B", "RFX12C", "RFX13A", "RFX13B", "RFX13C", "RFX13D", "RFX14A", "RFX14B", "RFX14C", "RFX14D", "RFX14E", "RFX14F", "RFX14G", "RFX15A", "RFX15B", "RFX15C", "RFX15D", "RFX15E", "RFX01B1"}]:
         raise ValidationError("review remaining set drift")
-    if h.get("terminal") != "RFX45_HUMAN_REVIEW_43_OF_45_PENDING":
+    if h.get("terminal") != "RFX45_HUMAN_REVIEW_44_OF_45_PENDING":
         raise ValidationError("review terminal drift")
 
-    if "43 / 45" not in review_text:
+    if "44 / 45" not in review_text:
         raise ValidationError("review packet status text drift")
     for cid in EXPECTED_IDS:
         if f"| {cid} |" not in review_text:
@@ -135,7 +135,7 @@ def validate() -> dict[str, Any]:
         "status": "PASS",
         "authority_issue": 384,
         "candidate_count": 45,
-        "human_reviewed": 43,
+        "human_reviewed": 44,
         "all_candidates_unreviewed": True,
         "grammar_mapping_inspected": False,
         "evidence_profile_created": False,
