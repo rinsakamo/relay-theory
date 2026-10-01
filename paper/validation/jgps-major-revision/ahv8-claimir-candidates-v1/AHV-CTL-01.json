@@ -1,0 +1,148 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "AHV-CTL-01.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1037/0033-295X.97.3.332",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "PubMed abstract: automatic processing is described as graded rather than all-or-none and as subject to top-down task control."
+      },
+      {
+        "span_id": "s2",
+        "locator": "PubMed abstract: a distributed network model proposes that attributes of automatic performance depend on processing-pathway strength."
+      },
+      {
+        "span_id": "s3",
+        "locator": "PubMed abstract: pathway strength increases with training, and automatic behavior emerges gradually with practice in the modeled interference task."
+      }
+    ],
+    "authors": [
+      "J D Cohen",
+      "K Dunbar",
+      "J L McClelland"
+    ],
+    "institutions": [],
+    "venue": "Psychological Review",
+    "citation_count": null,
+    "construct_labels": [
+      "Stroop effect",
+      "parallel distributed processing",
+      "automaticity"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "jgps-ahv8-source-grounded-candidate-v1:#379",
+    "extracted_at": "2026-10-01",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "relation",
+    "modality": "descriptive",
+    "scope": {
+      "conditions": [
+        "practice-dependent performance under competing task pathways"
+      ],
+      "population": [
+        "human task performance modeled by the source"
+      ],
+      "substrate": [
+        "distributed processing network"
+      ],
+      "task": [
+        "interference task with practiced and controlled processing"
+      ],
+      "temporal_scope": [
+        "training precedes gradual emergence of more automatic performance"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "practice_amount",
+        "role": "condition",
+        "description": "amount of training accumulated on a processing pathway",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "pathway_strength",
+        "role": "state_or_structure",
+        "description": "strength of a processing pathway within the distributed network",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "task_control_input",
+        "role": "available_information",
+        "description": "task-directed control signal that biases processing toward current requirements",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "automatic_performance_degree",
+        "role": "response_or_outcome",
+        "description": "degree to which behavior displays the graded properties associated with highly practiced processing",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "changes",
+        "arguments": [
+          "practice_amount",
+          "pathway_strength"
+        ],
+        "description": "processing-pathway strength increases as training accumulates",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "depends_on",
+        "arguments": [
+          "automatic_performance_degree",
+          "pathway_strength"
+        ],
+        "description": "the degree of automatic performance depends on processing-pathway strength",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "depends_on",
+        "arguments": [
+          "automatic_performance_degree",
+          "task_control_input"
+        ],
+        "description": "even highly practiced processing remains sensitive to task-directed control",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
