@@ -1,0 +1,539 @@
+{
+  "schema": "relay-theory.paper2.reflexive_stage_d_batch.v1",
+  "status": "FROZEN_PRE_EVIDENCE_JOIN",
+  "authority_issue": 384,
+  "batch": 3,
+  "claim_count": 8,
+  "relation_count": 11,
+  "input_candidate_sha": "50fa50d24f2fbf9f3aef871cdeda08cdc97431a8",
+  "contract_sha": "38f06d98f70f29490efe7360750eb907ac1a3f15",
+  "semantic_spec_shas": [
+    "b78a13c040ba08386148ae380afba1e7eb54b3c1",
+    "ad7a88dacd24d070e44fd3592f8416d849d8f25e"
+  ],
+  "binding_spec_sha": "4a1e6170c61e89481438a38f4dcd89fa0b93130c",
+  "evidence_profile_used": false,
+  "entries": [
+    {
+      "id": "RFX08A",
+      "claim_id": "RFX08A.C1",
+      "relations": [
+        {
+          "relation_id": "r1",
+          "original_kind": "maps_to",
+          "original_arguments": [
+            "grammar_v0_full_view",
+            "G_dyn"
+          ],
+          "operator": "FORGETFUL_COMPARATOR_VIEW",
+          "assertion_layer": "L_claim",
+          "context": "STRICT_COMPARATOR_TEST",
+          "bindings": [
+            {
+              "node": "grammar_v0_full_view",
+              "layer": "L_sys",
+              "architecture_refs": [
+                "G_cog"
+              ]
+            },
+            {
+              "node": "G_dyn",
+              "layer": "L_formal",
+              "architecture_refs": [
+                "X",
+                "K",
+                "T"
+              ]
+            }
+          ],
+          "layers": [
+            "L_claim",
+            "L_formal",
+            "L_sys"
+          ],
+          "architecture_objects": [
+            "G_cog",
+            "K",
+            "T",
+            "X"
+          ],
+          "placement": "TYPED_LAYER_PLACEMENT_CARRIER_UNTESTED",
+          "carrier_fidelity": "EXACT_CARRIER_NOT_TESTED",
+          "direct_system_relation": false,
+          "system_role_projection": "NOT_STARTED"
+        },
+        {
+          "relation_id": "r3",
+          "original_kind": "depends_on",
+          "original_arguments": [
+            "G_dyn_loss_59_of_60",
+            "G_dyn",
+            "frozen_distinctions"
+          ],
+          "operator": "DIRECT_DISTINCTION_LOSS",
+          "assertion_layer": "L_claim",
+          "context": "STRICT_COMPARATOR_TEST",
+          "bindings": [
+            {
+              "node": "G_dyn_loss_59_of_60",
+              "layer": "L_claim",
+              "architecture_refs": []
+            },
+            {
+              "node": "G_dyn",
+              "layer": "L_formal",
+              "architecture_refs": [
+                "X",
+                "K",
+                "T"
+              ]
+            },
+            {
+              "node": "frozen_distinctions",
+              "layer": "L_claim",
+              "architecture_refs": []
+            }
+          ],
+          "layers": [
+            "L_claim",
+            "L_formal"
+          ],
+          "architecture_objects": [
+            "K",
+            "T",
+            "X"
+          ],
+          "placement": "TYPED_LAYER_PLACEMENT_CARRIER_UNTESTED",
+          "carrier_fidelity": "EXACT_CARRIER_NOT_TESTED",
+          "direct_system_relation": false,
+          "system_role_projection": "NOT_STARTED"
+        }
+      ]
+    },
+    {
+      "id": "RFX08B",
+      "claim_id": "RFX08B.C1",
+      "relations": [
+        {
+          "relation_id": "r2",
+          "original_kind": "maps_to",
+          "original_arguments": [
+            "grammar_v0_full_view",
+            "G_pomdp_like"
+          ],
+          "operator": "FORGETFUL_COMPARATOR_VIEW",
+          "assertion_layer": "L_claim",
+          "context": "STRICT_COMPARATOR_TEST",
+          "bindings": [
+            {
+              "node": "grammar_v0_full_view",
+              "layer": "L_sys",
+              "architecture_refs": [
+                "G_cog"
+              ]
+            },
+            {
+              "node": "G_pomdp_like",
+              "layer": "L_formal",
+              "architecture_refs": []
+            }
+          ],
+          "layers": [
+            "L_claim",
+            "L_formal",
+            "L_sys"
+          ],
+          "architecture_objects": [
+            "G_cog"
+          ],
+          "placement": "TYPED_LAYER_PLACEMENT_CARRIER_UNTESTED",
+          "carrier_fidelity": "EXACT_CARRIER_NOT_TESTED",
+          "direct_system_relation": false,
+          "system_role_projection": "NOT_STARTED"
+        },
+        {
+          "relation_id": "r4",
+          "original_kind": "depends_on",
+          "original_arguments": [
+            "G_pomdp_union_44_of_60",
+            "G_pomdp_like",
+            "frozen_distinctions"
+          ],
+          "operator": "DIRECT_DISTINCTION_LOSS",
+          "assertion_layer": "L_claim",
+          "context": "STRICT_COMPARATOR_TEST",
+          "bindings": [
+            {
+              "node": "G_pomdp_union_44_of_60",
+              "layer": "L_claim",
+              "architecture_refs": []
+            },
+            {
+              "node": "G_pomdp_like",
+              "layer": "L_formal",
+              "architecture_refs": []
+            },
+            {
+              "node": "frozen_distinctions",
+              "layer": "L_claim",
+              "architecture_refs": []
+            }
+          ],
+          "layers": [
+            "L_claim",
+            "L_formal"
+          ],
+          "architecture_objects": [],
+          "placement": "TYPED_LAYER_PLACEMENT_CARRIER_UNTESTED",
+          "carrier_fidelity": "EXACT_CARRIER_NOT_TESTED",
+          "direct_system_relation": false,
+          "system_role_projection": "NOT_STARTED"
+        }
+      ]
+    },
+    {
+      "id": "RFX08C",
+      "claim_id": "RFX08C.C1",
+      "relations": [
+        {
+          "relation_id": "r5",
+          "original_kind": "other",
+          "original_arguments": [
+            "mathematical_nonencodability",
+            "G_dyn_loss_59_of_60",
+            "G_pomdp_union_44_of_60"
+          ],
+          "operator": "NONENCODABILITY_NON_ENTAILMENT",
+          "assertion_layer": "L_claim",
+          "context": "STRICT_COMPARATOR_TEST",
+          "bindings": [
+            {
+              "node": "mathematical_nonencodability",
+              "layer": "L_claim",
+              "architecture_refs": []
+            },
+            {
+              "node": "G_dyn_loss_59_of_60",
+              "layer": "L_claim",
+              "architecture_refs": []
+            },
+            {
+              "node": "G_pomdp_union_44_of_60",
+              "layer": "L_claim",
+              "architecture_refs": []
+            }
+          ],
+          "layers": [
+            "L_claim"
+          ],
+          "architecture_objects": [],
+          "placement": "TYPED_LAYER_PLACEMENT_CARRIER_UNTESTED",
+          "carrier_fidelity": "EXACT_CARRIER_NOT_TESTED",
+          "direct_system_relation": false,
+          "system_role_projection": "NOT_STARTED"
+        }
+      ]
+    },
+    {
+      "id": "RFX09A",
+      "claim_id": "RFX09A.C1",
+      "relations": [
+        {
+          "relation_id": "r1",
+          "original_kind": "other",
+          "original_arguments": [
+            "L_sys",
+            "L_claim",
+            "L_ctx",
+            "L_formal"
+          ],
+          "operator": "TYPED_LAYER_SEPARATION",
+          "assertion_layer": "L_claim",
+          "context": "LAYER_ARCHITECTURE",
+          "bindings": [
+            {
+              "node": "L_sys",
+              "layer": "L_sys",
+              "architecture_refs": [
+                "G_cog"
+              ]
+            },
+            {
+              "node": "L_claim",
+              "layer": "L_claim",
+              "architecture_refs": []
+            },
+            {
+              "node": "L_ctx",
+              "layer": "L_ctx",
+              "architecture_refs": []
+            },
+            {
+              "node": "L_formal",
+              "layer": "L_formal",
+              "architecture_refs": []
+            }
+          ],
+          "layers": [
+            "L_claim",
+            "L_ctx",
+            "L_formal",
+            "L_sys"
+          ],
+          "architecture_objects": [
+            "G_cog"
+          ],
+          "placement": "TYPED_LAYER_PLACEMENT_CARRIER_UNTESTED",
+          "carrier_fidelity": "EXACT_CARRIER_NOT_TESTED",
+          "direct_system_relation": false,
+          "system_role_projection": "NOT_STARTED"
+        }
+      ]
+    },
+    {
+      "id": "RFX09B",
+      "claim_id": "RFX09B.C1",
+      "relations": [
+        {
+          "relation_id": "r2",
+          "original_kind": "depends_on",
+          "original_arguments": [
+            "residual_claim_structure",
+            "L_claim",
+            "L_ctx"
+          ],
+          "operator": "CROSS_LAYER_RESIDUAL",
+          "assertion_layer": "L_claim",
+          "context": "RESIDUAL_LAYER_ARCHITECTURE",
+          "bindings": [
+            {
+              "node": "residual_claim_structure",
+              "layer": "L_claim",
+              "architecture_refs": []
+            },
+            {
+              "node": "L_claim",
+              "layer": "L_claim",
+              "architecture_refs": []
+            },
+            {
+              "node": "L_ctx",
+              "layer": "L_ctx",
+              "architecture_refs": []
+            }
+          ],
+          "layers": [
+            "L_claim",
+            "L_ctx"
+          ],
+          "architecture_objects": [],
+          "placement": "TYPED_LAYER_PLACEMENT_CARRIER_UNTESTED",
+          "carrier_fidelity": "EXACT_CARRIER_NOT_TESTED",
+          "direct_system_relation": false,
+          "system_role_projection": "NOT_STARTED"
+        },
+        {
+          "relation_id": "r3",
+          "original_kind": "other",
+          "original_arguments": [
+            "residual_claim_structure",
+            "new_system_role"
+          ],
+          "operator": "ROLE_GAP_NON_ENTAILMENT",
+          "assertion_layer": "L_claim",
+          "context": "RESIDUAL_LAYER_ARCHITECTURE",
+          "bindings": [
+            {
+              "node": "residual_claim_structure",
+              "layer": "L_claim",
+              "architecture_refs": []
+            },
+            {
+              "node": "new_system_role",
+              "layer": "L_sys",
+              "architecture_refs": [
+                "G_cog"
+              ]
+            }
+          ],
+          "layers": [
+            "L_claim",
+            "L_sys"
+          ],
+          "architecture_objects": [
+            "G_cog"
+          ],
+          "placement": "TYPED_LAYER_PLACEMENT_CARRIER_UNTESTED",
+          "carrier_fidelity": "EXACT_CARRIER_NOT_TESTED",
+          "direct_system_relation": false,
+          "system_role_projection": "NOT_STARTED"
+        }
+      ]
+    },
+    {
+      "id": "RFX10A",
+      "claim_id": "RFX10A.C1",
+      "relations": [
+        {
+          "relation_id": "r1",
+          "original_kind": "other",
+          "original_arguments": [
+            "G_sys",
+            "World_W",
+            "Gamma",
+            "E_exp",
+            "run_R"
+          ],
+          "operator": "ARCHITECTURE_TYPE_SEPARATION",
+          "assertion_layer": "L_claim",
+          "context": "SYSTEM_WORLD_ARCHITECTURE",
+          "bindings": [
+            {
+              "node": "G_sys",
+              "layer": "L_sys",
+              "architecture_refs": [
+                "G_cog"
+              ]
+            },
+            {
+              "node": "World_W",
+              "layer": "L_ctx",
+              "architecture_refs": [
+                "W"
+              ]
+            },
+            {
+              "node": "Gamma",
+              "layer": "L_ctx",
+              "architecture_refs": [
+                "Gamma"
+              ]
+            },
+            {
+              "node": "E_exp",
+              "layer": "L_ctx",
+              "architecture_refs": [
+                "E_exp"
+              ]
+            },
+            {
+              "node": "run_R",
+              "layer": "L_ctx",
+              "architecture_refs": [
+                "R"
+              ]
+            }
+          ],
+          "layers": [
+            "L_claim",
+            "L_ctx",
+            "L_sys"
+          ],
+          "architecture_objects": [
+            "E_exp",
+            "G_cog",
+            "Gamma",
+            "R",
+            "W"
+          ],
+          "placement": "TYPED_LAYER_PLACEMENT_CARRIER_UNTESTED",
+          "carrier_fidelity": "EXACT_CARRIER_NOT_TESTED",
+          "direct_system_relation": false,
+          "system_role_projection": "NOT_STARTED"
+        }
+      ]
+    },
+    {
+      "id": "RFX10B",
+      "claim_id": "RFX10B.C1",
+      "relations": [
+        {
+          "relation_id": "r2",
+          "original_kind": "other",
+          "original_arguments": [
+            "K_internal",
+            "Gamma"
+          ],
+          "operator": "K_GAMMA_NON_IDENTITY",
+          "assertion_layer": "L_claim",
+          "context": "SYSTEM_WORLD_ARCHITECTURE",
+          "bindings": [
+            {
+              "node": "K_internal",
+              "layer": "L_sys",
+              "architecture_refs": [
+                "K"
+              ]
+            },
+            {
+              "node": "Gamma",
+              "layer": "L_ctx",
+              "architecture_refs": [
+                "Gamma"
+              ]
+            }
+          ],
+          "layers": [
+            "L_claim",
+            "L_ctx",
+            "L_sys"
+          ],
+          "architecture_objects": [
+            "Gamma",
+            "K"
+          ],
+          "placement": "TYPED_LAYER_PLACEMENT_CARRIER_UNTESTED",
+          "carrier_fidelity": "EXACT_CARRIER_NOT_TESTED",
+          "direct_system_relation": false,
+          "system_role_projection": "NOT_STARTED"
+        }
+      ]
+    },
+    {
+      "id": "RFX10C",
+      "claim_id": "RFX10C.C1",
+      "relations": [
+        {
+          "relation_id": "r3",
+          "original_kind": "other",
+          "original_arguments": [
+            "C_intrinsic",
+            "E_exp"
+          ],
+          "operator": "C_EXPERIMENT_NON_IDENTITY",
+          "assertion_layer": "L_claim",
+          "context": "SYSTEM_WORLD_ARCHITECTURE",
+          "bindings": [
+            {
+              "node": "C_intrinsic",
+              "layer": "L_sys",
+              "architecture_refs": [
+                "C"
+              ]
+            },
+            {
+              "node": "E_exp",
+              "layer": "L_ctx",
+              "architecture_refs": [
+                "E_exp"
+              ]
+            }
+          ],
+          "layers": [
+            "L_claim",
+            "L_ctx",
+            "L_sys"
+          ],
+          "architecture_objects": [
+            "C",
+            "E_exp"
+          ],
+          "placement": "TYPED_LAYER_PLACEMENT_CARRIER_UNTESTED",
+          "carrier_fidelity": "EXACT_CARRIER_NOT_TESTED",
+          "direct_system_relation": false,
+          "system_role_projection": "NOT_STARTED"
+        }
+      ]
+    }
+  ]
+}
