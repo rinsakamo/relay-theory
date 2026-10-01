@@ -1,6 +1,6 @@
 # Paper 2 reflexive-audit author review packet v1
 
-Status: **AUTHOR REVIEW IN PROGRESS — 27 / 32**
+Status: **AUTHOR REVIEW IN PROGRESS — 31 / 35**
 
 Authority: #384
 
@@ -24,6 +24,7 @@ Treat relation-bearing connectives such as **and / but / while / therefore** as 
 - RFX10A/B/C/D = ACCEPT; the typed system/World/coupling/experiment/run separation and non-identities K/Gamma, C/experimental condition, P_in/P_out/schedule.
 - RFX11A/B/C = ACCEPT. RFX11A distinguishes E2 direct intervention from E3 explicit replicated intervention; RFX11B places all 52 PVS relations; RFX11C retains one E3 claim-carrier precision pressure after placement. None claims universal completeness.
 - RFX12A/B/C = ACCEPT after separating held-out AHV-8 frozen-carrier statistics (11/28 relation FULL, 17 GAP, 1/8 full claims), v1 completeness rejection for the tested surface, and L_claim carrier-gap vs. Grammar role-gap boundary.
+- RFX13A/B/C/D = ACCEPT after separating source-grounded auditable records, 60/60 author review, independent extractor agreement not established, and local automated production qualification not established.
 - Superseded original wording and revision reasons remain in `pre_review_revision_history`.
 
 | ID | Normalized claim candidate | Decision |
@@ -57,10 +58,13 @@ Treat relation-bearing connectives such as **and / but / while / therefore** as 
 | RFX12A | In the held-out AHV-8 validation of the frozen AssertionCarrier v1, 11 of 28 reviewed relations are FULL and 17 are GAP, and one of eight reviewed claims is fully covered. | ACCEPT |
 | RFX12B | The held-out AHV-8 validation result rejects completeness of AssertionCarrier v1 for the tested scientific-claim surface. | ACCEPT |
 | RFX12C | The observed AHV-8 gaps concern L_claim assertion-carrier expressivity and do not by themselves establish missing top-level cognitive-system roles in Grammar v0. | ACCEPT |
-| RFX13 | The 60-claim reference corpus is source-grounded and fully reviewed, but independent extractor agreement and local automated production qualification are not established. | — |
+| RFX13A | The frozen 60-claim reference corpus is source-grounded, with retained ClaimIR records auditable against their source-local evidence. | ACCEPT |
+| RFX13B | All 60 claims in the frozen reference corpus completed author human review. | ACCEPT |
+| RFX13C | Independent extractor agreement on the source-to-ClaimIR task has not been established for the frozen 60-claim reference corpus. | ACCEPT |
+| RFX13D | Local automated ClaimIR extraction/production qualification has not been established for the frozen 60-claim reference corpus. | ACCEPT |
 | RFX14 | Paper 2's strongest licensed conclusion is a bounded measurement-oriented structural reconstruction; it does not establish a complete scientific claim language, nine ontological primitives, absolute mathematical minimality, a universal system boundary, a representative population estimate, or a demarcation criterion for cognition. | — |
 | RFX15 | AssertionCarrier v2 is a minimal post-hoc extension derived from the frozen AHV-8 v1 held-out gaps: it retrospectively repairs all 17 of those gaps and closes 28/28 AHV relations, but this is calibration rather than independent v2 validation; a newly admitted post-v2 held-out set is required for an independent validation claim. | — |
 
 Terminal while incomplete:
 
-`RFX32_HUMAN_REVIEW_PENDING`
+`RFX35_HUMAN_REVIEW_PENDING`
