@@ -1,6 +1,6 @@
 # Paper 2 reflexive-audit author review packet v1
 
-Status: **AUTHOR REVIEW IN PROGRESS — 22 / 30**
+Status: **AUTHOR REVIEW IN PROGRESS — 23 / 30**
 
 Authority: #384
 
@@ -22,7 +22,7 @@ Treat relation-bearing connectives such as **and / but / while / therefore** as 
 - RFX08A/B/C = ACCEPT; tested direct-preservation comparator losses do not prove mathematical non-encodability.
 - RFX09A/B = ACCEPT; typed layers and claim/context residual inference limit.
 - RFX10A/B/C/D = ACCEPT; the typed system/World/coupling/experiment/run separation and non-identities K/Gamma, C/experimental condition, P_in/P_out/schedule.
-- RFX11 was split into three claims. Only RFX11A is ACCEPT after source-verified E2/E3 rubric clarification: E2 = direct intervention (4/8 strict preserved, 2 partial, 2 unmapped); E3 = explicit replicated intervention (3/4 strict preserved, 1 unmapped). Their non-preserved relations establish no new top-level ROLE_GAP. RFX11B/C remain pending.
+- RFX11 was split into three claims. RFX11A = ACCEPT with frozen E2/E3 rubric clarification. RFX11B = ACCEPT: all 52/52 relations architecture-placeable with no ROLE_GAP / ARCHITECTURE_GAP under frozen placement rules. RFX11C remains PENDING: one E3 claim-carrier precision pressure.
 - Superseded original wording and revision reasons remain in `pre_review_revision_history`.
 
 | ID | Normalized claim candidate | Decision |
@@ -51,7 +51,7 @@ Treat relation-bearing connectives such as **and / but / while / therefore** as 
 | RFX10C | System-intrinsic admissibility constraint C is not identical to an experimental condition or protocol. | ACCEPT |
 | RFX10D | System-relative directional interface operations P_in/P_out are not identical to an experimenter's operation or observation schedule. | ACCEPT |
 | RFX11A | In the frozen PVS-16 evidence-stratified Grammar-v0 comparison, E2 direct-interventional and E3 explicitly replicated-interventional relations exhibit non-preserved mappings, but their adjudicated residuals do not establish a new top-level cognitive-system ROLE_GAP. | ACCEPT |
-| RFX11B | The pre-existing frozen layered architecture places all 52 PVS-16 relations, with zero ARCHITECTURE_GAP and zero top-level ROLE_GAP under the declared placement rules. | — |
+| RFX11B | The pre-existing frozen layered architecture places all 52 PVS-16 relations, with zero ARCHITECTURE_GAP and zero top-level ROLE_GAP under the declared placement rules. | ACCEPT |
 | RFX11C | One E3 relation, PVS-CNC-02.r2, remains a scientific claim-carrier precision pressure after layered placement despite zero architecture and top-level role gaps. | — |
 | RFX12 | A held-out AHV-8 test rejects completeness of AssertionCarrier v1: only 11 of 28 reviewed relations are FULL and 17 are GAP, with 1 of 8 claims fully covered; the observed gaps are L_claim carrier gaps and do not by themselves establish Grammar-v0 system-role gaps. | — |
 | RFX13 | The 60-claim reference corpus is source-grounded and fully reviewed, but independent extractor agreement and local automated production qualification are not established. | — |
