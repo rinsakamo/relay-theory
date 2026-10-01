@@ -10,7 +10,7 @@
     "manuscript_is_scientific_authority": false,
     "evidence_authority_rule": "repository frozen artifacts and validation commits remain authority for support status"
   },
-  "candidate_count": 24,
+  "candidate_count": 25,
   "candidate_ids": [
     "RFX01A",
     "RFX01B1",
@@ -29,7 +29,8 @@
     "RFX08A",
     "RFX08B",
     "RFX08C",
-    "RFX09",
+    "RFX09A",
+    "RFX09B",
     "RFX10",
     "RFX11",
     "RFX12",
@@ -2235,8 +2236,8 @@
       }
     },
     {
-      "self_target_id": "RFX09",
-      "normalized_claim": "Paper 2 separates system grammar, scientific-claim semantics, source context, and formal carrier realization into distinct layers; residual claim/context structure is not automatically a missing cognitive-system role.",
+      "self_target_id": "RFX09A",
+      "normalized_claim": "Paper 2 explicitly distinguishes system grammar (L_sys), scientific claim semantics (L_claim), source context (L_ctx), and formal carrier realization (L_formal) as separate typed layers.",
       "target_source": "Paper 2 manuscript / frozen validation-extension claim surface",
       "repository_evidence_authorities": [
         "#347",
@@ -2247,7 +2248,7 @@
       "reflexive_verdict_created": false,
       "claimir": {
         "schema_version": "paper2-claim-ir-v1",
-        "claim_id": "RFX09.C1",
+        "claim_id": "RFX09A.C1",
         "provenance": {
           "paper_id": "SELF:RELAYTHEORY-PAPER2",
           "source_language": "en",
@@ -2333,25 +2334,6 @@
                 "s2"
               ],
               "grounding": "normalized"
-            },
-            {
-              "id": "residual_claim_structure",
-              "role": "state_or_structure",
-              "description": "scientifically meaningful structure not directly represented as a Grammar-v0 system role",
-              "source_span_ids": [
-                "s1",
-                "s2"
-              ],
-              "grounding": "normalized"
-            },
-            {
-              "id": "new_system_role",
-              "role": "response_or_outcome",
-              "description": "proposal to add a top-level cognitive-system role",
-              "source_span_ids": [
-                "s2"
-              ],
-              "grounding": "normalized"
             }
           ],
           "relations": [
@@ -2370,7 +2352,113 @@
                 "s2"
               ],
               "grounding": "normalized"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "self_target_id": "RFX09B",
+      "normalized_claim": "Residual scientific-claim or source-context structure does not by itself establish a missing top-level cognitive-system role.",
+      "target_source": "Paper 2 manuscript / frozen validation-extension claim surface",
+      "repository_evidence_authorities": [
+        "#347",
+        "paper/venues/jgps/main.tex@89b094476137bae12e089e5a794a5e57300f4da1"
+      ],
+      "grammar_mapping_inspected": false,
+      "evidence_profile_created": false,
+      "reflexive_verdict_created": false,
+      "claimir": {
+        "schema_version": "paper2-claim-ir-v1",
+        "claim_id": "RFX09B.C1",
+        "provenance": {
+          "paper_id": "SELF:RELAYTHEORY-PAPER2",
+          "source_language": "en",
+          "source_spans": [
+            {
+              "span_id": "s1",
+              "locator": "paper/venues/jgps/main.tex — Problem and Inferential Scope / layered architecture: system grammar is distinct from scientific claim language and experimental context."
             },
+            {
+              "span_id": "s2",
+              "locator": "#347 — frozen layered architecture L_sys / L_claim / L_ctx / L_formal; 17 residual claims do not establish a new top-level system role."
+            }
+          ],
+          "authors": [
+            "Rintaro Sakamoto"
+          ],
+          "institutions": [
+            "Independent Scholar"
+          ],
+          "venue": "Journal for General Philosophy of Science submission surface / RelayTheory validation extension",
+          "citation_count": null,
+          "construct_labels": [
+            "layered architecture",
+            "L_sys",
+            "L_claim",
+            "L_ctx",
+            "L_formal"
+          ]
+        },
+        "extraction": {
+          "extractor": "ChatGPT",
+          "extractor_version": "GPT-5.6 Sol",
+          "procedure_version": "paper2-reflexive-audit-candidate-v1:#384",
+          "extracted_at": "2026-10-01",
+          "manual_review_status": "unreviewed"
+        },
+        "claim_core": {
+          "claim_type": "relation",
+          "modality": "descriptive",
+          "scope": {
+            "conditions": [],
+            "population": [],
+            "substrate": [],
+            "task": [],
+            "temporal_scope": []
+          },
+          "nodes": [
+            {
+              "id": "residual_claim_structure",
+              "role": "state_or_structure",
+              "description": "scientifically meaningful structure not directly represented as a Grammar-v0 system role",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "L_claim",
+              "role": "state_or_structure",
+              "description": "scientific assertion and claim semantics",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "L_ctx",
+              "role": "state_or_structure",
+              "description": "source-defined context and experimental parameter layer",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "new_system_role",
+              "role": "response_or_outcome",
+              "description": "proposal to add a top-level cognitive-system role",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            }
+          ],
+          "relations": [
             {
               "id": "r2",
               "kind": "depends_on",
@@ -3587,7 +3675,7 @@
       }
     }
   ],
-  "terminal": "RFX24_CANDIDATES_FROZEN_PENDING_AUTHOR_REVIEW",
+  "terminal": "RFX25_CANDIDATES_FROZEN_PENDING_AUTHOR_REVIEW",
   "fresh_authority_reconciliation": {
     "observed_after_initial_candidate_freeze": "ad1c11789814413b1d9fd3ca8a4cfb6f7316f230",
     "reason": "AssertionCarrier v2 became current main before author review started; RFX15 was added before any review or downstream mapping.",
@@ -3704,6 +3792,22 @@
         "RFX08A": "ACCEPT",
         "RFX08B": "ACCEPT",
         "RFX08C": "ACCEPT"
+      },
+      "downstream_fit_inspected": false,
+      "date": "2026-10-01"
+    },
+    {
+      "event": "AUTHOR_ACCEPTED_TWO_WAY_SPLIT",
+      "original_id": "RFX09",
+      "replacements": [
+        "RFX09A",
+        "RFX09B"
+      ],
+      "original_normalized_claim": "Paper 2 separates system grammar, scientific-claim semantics, source context, and formal carrier realization into distinct layers; residual claim/context structure is not automatically a missing cognitive-system role.",
+      "reason": "Separate the typed four-layer architecture from the inference limitation on residual claim/context structure.",
+      "decisions": {
+        "RFX09A": "ACCEPT",
+        "RFX09B": "ACCEPT"
       },
       "downstream_fit_inspected": false,
       "date": "2026-10-01"
