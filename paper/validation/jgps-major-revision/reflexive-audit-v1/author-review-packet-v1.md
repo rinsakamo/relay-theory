@@ -1,12 +1,12 @@
 # Paper 2 reflexive-audit author review packet v1
 
-Status: **AUTHOR REVIEW IN PROGRESS — 44 / 45**
+Status: **AUTHOR REVIEW COMPLETE — 47 / 47 ACCEPT**
 
 Authority: #384
 
 Review each normalized self-target claim against its target manuscript/repository locators **without consulting Grammar-v0 fit, Evidence Profile output, layered-placement outcome, or any reflexive reconstruction verdict**.
 
-Allowed decisions: `ACCEPT`, `REVISE`, `REJECT`. No downstream Evidence Profile, Grammar mapping, layered projection, or reconstruction until the active review surface is complete.
+Author decision stage is complete; all 47 active targets have separate ACCEPT records. The pre-review prohibition has been satisfied and subsequent stages are eligible but **not started**: no reflexive Evidence Profile, Grammar mapping, layered projection, or reconstruction verdict has been produced.
 
 ## Atomicity rule
 
@@ -14,7 +14,7 @@ Treat relation-bearing connectives such as **and / but / while / therefore** as 
 
 ## Review record
 
-- RFX01A and RFX01B1 = ACCEPT; RFX01B2 pending. RFX01B1 licenses identity/equivalence only at the declared structural comparison level.
+- RFX01A, RFX01B1, and RFX01B2A/B/C = ACCEPT. RFX01B1 licenses equivalence only at the declared comparison level. RFX01B2A requires confirmed criterion failure (not mere lack of equivalence evidence), RFX01B2B excludes unrestricted difference inference, and RFX01B2C excludes target individuation inference.
 - RFX02A/B, RFX03, RFX04 = ACCEPT.
 - RFX05A/B/C = ACCEPT; the primary whole-claim failure remains authoritative; destructive-control survival is bounded to the declared eight controls.
 - RFX06A/B = ACCEPT; data-constrained basis factorization separated from any independent-new-top-level-primitives discovery claim.
@@ -33,7 +33,9 @@ Treat relation-bearing connectives such as **and / but / while / therefore** as 
 |---|---|---|
 | RFX01A | Historical construct-label sameness or difference does not by itself entail structural identity or structural difference. | ACCEPT |
 | RFX01B1 | Within a declared structural representation and comparison rule, satisfaction of the declared equivalence criterion licenses structural identity or equivalence at that comparison level. | ACCEPT |
-| RFX01B2 | Failure to satisfy the declared equivalence criterion licenses criterion-relative non-identity at that comparison level, but does not by itself license unrestricted structural difference or target individuation. | — |
+| RFX01B2A | When failure to satisfy a declared equivalence criterion is confirmed, criterion-relative non-equivalence is licensed at the declared structural comparison level. | ACCEPT |
+| RFX01B2B | Confirmed failure to satisfy a declared equivalence criterion does not by itself license unrestricted structural difference beyond that comparison level. | ACCEPT |
+| RFX01B2C | Confirmed failure to satisfy a declared equivalence criterion does not by itself establish that the underlying targets are distinct. | ACCEPT |
 | RFX02A | The scientifically inspectable extraction object is a reviewed ClaimIR record whose claims remain grounded in preserved source-local provenance. | ACCEPT |
 | RFX02B | An opaque model proposal that initiates extraction is not, by itself, scientific evidential authority. | ACCEPT |
 | RFX03 | Under the frozen whole-claim Phi comparison, all 1,770 unordered pairs among the 60 designed claims were incomparable, with no whole-claim equivalence or refinement. | ACCEPT |
@@ -77,6 +79,6 @@ Treat relation-bearing connectives such as **and / but / while / therefore** as 
 | RFX15D | Retrospective closure of all 28 AHV-8 relations after v2 was derived from those data does not itself establish independent v2 validation. | ACCEPT |
 | RFX15E | An independent validation claim for AssertionCarrier v2 requires a newly admitted held-out target set selected after the v2 schema was frozen. | ACCEPT |
 
-Terminal while incomplete:
+Author-review completion terminal:
 
-`RFX45_HUMAN_REVIEW_PENDING`
+`RFX47_HUMAN_REVIEW_COMPLETE`
