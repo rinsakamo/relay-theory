@@ -1,0 +1,38 @@
+{
+  "schema": "relay-theory.paper2.ahv2_8_v2_heldout_adjudication_protocol.v1",
+  "status": "FROZEN_BEFORE_RESULT_MAPPING",
+  "owner_issue": 394,
+  "target_freeze_commit": "0c351aa9f58142fcb8fa93a7616f1ccd5af2629b",
+  "subject": "Strict semantic-preservation test for the frozen AssertionCarrier v2 on all 34 author-reviewed AHV2-8 source relations.",
+  "verdict_rule": "FULL iff the frozen predicate family, typed bound source arguments, existing qualifiers, existing structured modifiers, and already-allowed references preserve the core of the reviewed source assertion without strengthening or demoting it. Otherwise GAP, including ambiguity.",
+  "hard_rules": [
+    "Retain exact source relation id, kind, ordered arguments, description and originating claim.",
+    "Do not change v2 schema, ClaimIR, admissible target membership or review provenance.",
+    "Do not use assertion_scope_qualifiers, binding refinements, or notes as covert carrier fields for the missing direction, mapping, evidence status, modality, statistical significance, ordering or other core relation.",
+    "Do not treat a node labelled response_or_outcome as L_sys when its defined referent is a model-fit comparison or other claim-level analytic result.",
+    "L_claim source-argument or semantic-reference binding remains restricted by frozen v2 to nodes which really are THEORETICAL_ACCOUNT; do not retype fit statistics, model-based interpretations or observed neural signals as accounts.",
+    "Source 'requires' expresses necessary-condition force; DEPENDENCE alone is insufficient when that necessity is the central source claim.",
+    "An inferred cognitive mechanism must remain distinguished from empirically measured model fit and cannot silently be presented as observed cognition.",
+    "A strong or statistically significant association is not identical to bare association when that statistical qualification is explicitly part of the source assertion.",
+    "NEGATIVE (a flat negation) cannot represent 'need not' (absence of necessity or sometimes-absence) without overstatement.",
+    "For multi-outcome ordered comparisons, a single directionality.target_argument is insufficient if several outcomes share the asserted comparative direction and no typed bindings can preserve the joint order.",
+    "A source assertion about an initial-to-final transition must preserve both endpoints. Single-valued INCREASES or DECREASES is not a substitute unless the claimed transition truly concerns only a single increasing/decreasing target.",
+    "The same-assistant adjudication is a semantic audit with chronological source hold-out, not an independently blinded external review."
+  ],
+  "available_resource_semantics": {
+    "TRANSFORMATION": "Can model explicit input/output transformations and mapping, but cannot alone assert an untyped qualitative operation or membership relation not present in its bindings.",
+    "DISTINCT": "Can distinguish objects/conditions or outcomes under COMPARISON; it is not a blanket marker for asymmetry of modal possibility or inverse relationships.",
+    "directionality": "One typed target can indicate INCREASES, DECREASES, or OPPOSITE_DIRECTION only when causal/predictor anchor is fully recoverable from source argument roles.",
+    "evaluation": "Only with COMPARISON, dimensions EVIDENTIAL_SUPPORT or EMPIRICAL_FIT and preferred argument from the original source arguments.",
+    "semantic_references": "Only existing omitted ClaimIR nodes, with existing reference roles and correct L_sys/L_ctx/L_claim binding restrictions.",
+    "scope": "Only incidental background, source population/context, explicit model-relative assumption or condition already scoped by its typed references; never an untyped extra predicate/modifier.",
+    "candidate_possible": "A tentative/possible claim is not equivalent to a specific probabilistic or modal negation (e.g., 'need not')."
+  },
+  "counts_are_descriptive_not_generalizable": true,
+  "eligible_results": [
+    "FULL",
+    "GAP"
+  ],
+  "post_result_schema_tuning_forbidden": true,
+  "terminal": "AHV2_8_V2_ADJUDICATION_RULES_FROZEN_BEFORE_MAPPING"
+}
