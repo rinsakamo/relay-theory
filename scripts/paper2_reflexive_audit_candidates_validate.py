@@ -48,8 +48,8 @@ def validate() -> dict[str, Any]:
         raise ValidationError("candidate count is not 15")
     if c.get("candidate_ids") != EXPECTED_IDS:
         raise ValidationError("candidate ID surface drift")
-    if len(c.get("candidates", [])) != 14:
-        raise ValidationError("candidate payload count is not 14")
+    if len(c.get("candidates", [])) != 15:
+        raise ValidationError("candidate payload count is not 15")
 
     seen_claim_ids: set[str] = set()
     for expected_id, item in zip(EXPECTED_IDS, c["candidates"]):
