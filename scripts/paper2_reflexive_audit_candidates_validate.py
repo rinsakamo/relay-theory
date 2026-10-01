@@ -108,8 +108,8 @@ def validate() -> dict[str, Any]:
         raise ValidationError("review progress schema drift")
     expected_progress = {
         "total": 30,
-        "reviewed": 22,
-        "accepted": 22,
+        "reviewed": 23,
+        "accepted": 23,
         "revised": 0,
         "rejected": 0,
         "downstream_authorized": False,
@@ -117,14 +117,14 @@ def validate() -> dict[str, Any]:
     for key, expected in expected_progress.items():
         if h.get(key) != expected:
             raise ValidationError(f"review progress {key} drift")
-    if [d.get("self_target_id") for d in h.get("decisions", [])] != ["RFX01A", "RFX02A", "RFX02B", "RFX03", "RFX04", "RFX05A", "RFX05B", "RFX05C", "RFX06A", "RFX06B", "RFX07A", "RFX07B", "RFX08A", "RFX08B", "RFX08C", "RFX09A", "RFX09B", "RFX10A", "RFX10B", "RFX10C", "RFX10D", "RFX11A"]:
+    if [d.get("self_target_id") for d in h.get("decisions", [])] != ["RFX01A", "RFX02A", "RFX02B", "RFX03", "RFX04", "RFX05A", "RFX05B", "RFX05C", "RFX06A", "RFX06B", "RFX07A", "RFX07B", "RFX08A", "RFX08B", "RFX08C", "RFX09A", "RFX09B", "RFX10A", "RFX10B", "RFX10C", "RFX10D", "RFX11A", "RFX11B"]:
         raise ValidationError("review decision ledger drift")
-    if h.get("remaining") != [cid for cid in EXPECTED_IDS if cid not in {"RFX01A", "RFX02A", "RFX02B", "RFX03", "RFX04", "RFX05A", "RFX05B", "RFX05C", "RFX06A", "RFX07A", "RFX07B", "RFX06B", "RFX08A", "RFX08B", "RFX08C", "RFX09A", "RFX09B", "RFX10A", "RFX10B", "RFX10C", "RFX10D", "RFX11A"}]:
+    if h.get("remaining") != [cid for cid in EXPECTED_IDS if cid not in {"RFX01A", "RFX02A", "RFX02B", "RFX03", "RFX04", "RFX05A", "RFX05B", "RFX05C", "RFX06A", "RFX07A", "RFX07B", "RFX06B", "RFX08A", "RFX08B", "RFX08C", "RFX09A", "RFX09B", "RFX10A", "RFX10B", "RFX10C", "RFX10D", "RFX11A", "RFX11B"}]:
         raise ValidationError("review remaining set drift")
-    if h.get("terminal") != "RFX30_HUMAN_REVIEW_22_OF_30_PENDING":
+    if h.get("terminal") != "RFX30_HUMAN_REVIEW_23_OF_30_PENDING":
         raise ValidationError("review terminal drift")
 
-    if "22 / 30" not in review_text:
+    if "23 / 30" not in review_text:
         raise ValidationError("review packet status text drift")
     for cid in EXPECTED_IDS:
         if f"| {cid} |" not in review_text:
@@ -135,7 +135,7 @@ def validate() -> dict[str, Any]:
         "status": "PASS",
         "authority_issue": 384,
         "candidate_count": 30,
-        "human_reviewed": 22,
+        "human_reviewed": 23,
         "all_candidates_unreviewed": True,
         "grammar_mapping_inspected": False,
         "evidence_profile_created": False,
