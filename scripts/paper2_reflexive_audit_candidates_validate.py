@@ -108,8 +108,8 @@ def validate() -> dict[str, Any]:
         raise ValidationError("review progress schema drift")
     expected_progress = {
         "total": 18,
-        "reviewed": 1,
-        "accepted": 1,
+        "reviewed": 3,
+        "accepted": 3,
         "revised": 0,
         "rejected": 0,
         "downstream_authorized": False,
@@ -117,14 +117,14 @@ def validate() -> dict[str, Any]:
     for key, expected in expected_progress.items():
         if h.get(key) != expected:
             raise ValidationError(f"review progress {key} drift")
-    if [d.get("self_target_id") for d in h.get("decisions", [])] != ["RFX01A"]:
+    if [d.get("self_target_id") for d in h.get("decisions", [])] != ["RFX01A", "RFX02A", "RFX02B"]:
         raise ValidationError("review decision ledger drift")
-    if h.get("remaining") != EXPECTED_IDS[1:]:
+    if h.get("remaining") != [cid for cid in EXPECTED_IDS if cid not in {"RFX01A", "RFX02A", "RFX02B"}]:
         raise ValidationError("review remaining set drift")
-    if h.get("terminal") != "RFX18_HUMAN_REVIEW_1_OF_18_PENDING":
+    if h.get("terminal") != "RFX18_HUMAN_REVIEW_3_OF_18_PENDING":
         raise ValidationError("review terminal drift")
 
-    if "1 / 18" not in review_text:
+    if "3 / 18" not in review_text:
         raise ValidationError("review packet status text drift")
     for cid in EXPECTED_IDS:
         if f"| {cid} |" not in review_text:
@@ -135,7 +135,7 @@ def validate() -> dict[str, Any]:
         "status": "PASS",
         "authority_issue": 384,
         "candidate_count": 18,
-        "human_reviewed": 1,
+        "human_reviewed": 3,
         "all_candidates_unreviewed": True,
         "grammar_mapping_inspected": False,
         "evidence_profile_created": False,
