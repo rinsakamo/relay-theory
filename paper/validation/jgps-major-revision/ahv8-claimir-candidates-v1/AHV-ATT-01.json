@@ -1,0 +1,169 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "AHV-ATT-01.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1037/0096-3445.133.3.339",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "PubMed abstract: experiments compare effects of perceptual load with working-memory or dual-task coordination load on distractor interference."
+      },
+      {
+        "span_id": "s2",
+        "locator": "PubMed abstract: high perceptual load reduces distractor interference, whereas memory/coordination load increases it."
+      },
+      {
+        "span_id": "s3",
+        "locator": "PubMed abstract: the pattern is interpreted as two mechanisms, one limiting distractor perception under high perceptual demand and another maintaining task priorities when control resources are available."
+      }
+    ],
+    "authors": [
+      "Nilli Lavie",
+      "Aleksandra Hirst",
+      "Jan W de Fockert",
+      "Essi Viding"
+    ],
+    "institutions": [],
+    "venue": "Journal of Experimental Psychology: General",
+    "citation_count": null,
+    "construct_labels": [
+      "load theory",
+      "selective attention",
+      "cognitive control"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "jgps-ahv8-source-grounded-candidate-v1:#379",
+    "extracted_at": "2026-10-01",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "comparison",
+    "modality": "descriptive",
+    "scope": {
+      "conditions": [
+        "variation in perceptual demand and memory/coordination demand"
+      ],
+      "population": [
+        "human participants"
+      ],
+      "substrate": [
+        "perceptual and control systems"
+      ],
+      "task": [
+        "target processing with irrelevant distractors"
+      ],
+      "temporal_scope": []
+    },
+    "nodes": [
+      {
+        "id": "perceptual_load",
+        "role": "condition",
+        "description": "amount of perceptual processing demand imposed by the current relevant task",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "memory_coordination_load",
+        "role": "condition",
+        "description": "demand imposed by maintaining information or coordinating a concurrent task",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "distractor_interference",
+        "role": "response_or_outcome",
+        "description": "degree to which irrelevant stimuli affect task performance",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "perceptual_selection_process",
+        "role": "state_or_structure",
+        "description": "process that limits processing of irrelevant stimuli when relevant perceptual demand is high",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "priority_maintenance_process",
+        "role": "state_or_structure",
+        "description": "process that maintains current task priorities when sufficient control resources remain available",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "changes",
+        "arguments": [
+          "perceptual_load",
+          "distractor_interference"
+        ],
+        "description": "higher perceptual demand reduces interference from irrelevant stimuli",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "changes",
+        "arguments": [
+          "memory_coordination_load",
+          "distractor_interference"
+        ],
+        "description": "greater memory or coordination demand increases interference from irrelevant stimuli",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "differs",
+        "arguments": [
+          "perceptual_load",
+          "memory_coordination_load",
+          "distractor_interference"
+        ],
+        "description": "the two load types have opposite reported effects on distractor interference",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "depends_on",
+        "arguments": [
+          "priority_maintenance_process",
+          "memory_coordination_load"
+        ],
+        "description": "maintenance of current priorities is limited when concurrent cognitive demand consumes the resources available for that process",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}

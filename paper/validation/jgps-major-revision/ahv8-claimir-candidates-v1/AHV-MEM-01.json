@@ -1,0 +1,142 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "AHV-MEM-01.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1016/j.tics.2013.06.006",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "PubMed abstract: the reviewed capacity measure is reliable, strongly associated with broader cognitive ability, and linked to neural-circuit explanations."
+      },
+      {
+        "span_id": "s2",
+        "locator": "Publisher highlights/abstract: capacity varies across people and is debated as a limited number of representations versus a continuously divisible resource."
+      },
+      {
+        "span_id": "s3",
+        "locator": "Publisher abstract: the reviewed empirical and neural-network evidence favors a limited-item account over an infinitely divisible alternative."
+      }
+    ],
+    "authors": [
+      "Steven J Luck",
+      "Edward K Vogel"
+    ],
+    "institutions": [],
+    "venue": "Trends in Cognitive Sciences",
+    "citation_count": null,
+    "construct_labels": [
+      "visual working memory capacity",
+      "discrete-slot account",
+      "flexible-resource account"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "jgps-ahv8-source-grounded-candidate-v1:#379",
+    "extracted_at": "2026-10-01",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "comparison",
+    "modality": "descriptive",
+    "scope": {
+      "conditions": [
+        "brief retention of simple visual information"
+      ],
+      "population": [
+        "human participants across reviewed studies"
+      ],
+      "substrate": [
+        "visual and neural systems"
+      ],
+      "task": [
+        "simple visual retention tasks and related cognitive tasks"
+      ],
+      "temporal_scope": []
+    },
+    "nodes": [
+      {
+        "id": "task_capacity_estimate",
+        "role": "response_or_outcome",
+        "description": "measured amount of simple visual information retained over a brief interval",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "broader_cognitive_measure",
+        "role": "response_or_outcome",
+        "description": "measure of broader cognitive ability associated with the retention estimate",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "limited_item_account",
+        "role": "state_or_structure",
+        "description": "account in which retention is constrained by a finite number of represented items",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "divisible_resource_account",
+        "role": "state_or_structure",
+        "description": "alternative account in which a continuously divisible resource is distributed across represented material",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "other",
+        "arguments": [
+          "task_capacity_estimate",
+          "broader_cognitive_measure"
+        ],
+        "description": "the retention estimate is strongly associated with broader cognitive ability in the reviewed evidence",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "differs",
+        "arguments": [
+          "limited_item_account",
+          "divisible_resource_account"
+        ],
+        "description": "the review contrasts a finite-item account with a continuously divisible-resource alternative",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "other",
+        "arguments": [
+          "limited_item_account",
+          "divisible_resource_account"
+        ],
+        "description": "the reviewed empirical and neural-model evidence favors the finite-item account over the continuously divisible alternative",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
