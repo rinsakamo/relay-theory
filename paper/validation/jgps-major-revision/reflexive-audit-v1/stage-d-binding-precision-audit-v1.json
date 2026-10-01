@@ -1,0 +1,119 @@
+{
+  "schema": "relay-theory.paper2.reflexive_stage_d_binding_precision_audit.v1",
+  "status": "FROZEN_SOURCE_ARGUMENT_COVERAGE_AUDIT",
+  "authority_issue": 384,
+  "frozen_candidate_blob_sha": "50fa50d24f2fbf9f3aef871cdeda08cdc97431a8",
+  "method": "Compare every source ClaimIR node ID against the union of all argument IDs in the corresponding frozen source relations. This purely syntactic test neither consults evidence grades nor proves a semantic loss.",
+  "summary": {
+    "total_claims": 47,
+    "claims_with_unbound_nodes": 5,
+    "unbound_nodes": 7,
+    "confirmed_semantic_gaps": 0,
+    "semantic_fidelity_not_adjudicated": true
+  },
+  "watches": [
+    {
+      "self_target_id": "RFX01B2B",
+      "normalized_claim": "Confirmed failure to satisfy a declared equivalence criterion does not by itself license unrestricted structural difference beyond that comparison level.",
+      "unbound_nodes": [
+        {
+          "node_id": "declared_comparison_rule",
+          "source_description": "the explicit comparison rule",
+          "diagnostic_category": "DECLARED_COMPARISON_SCOPE_NOT_EXPLICITLY_BOUND"
+        }
+      ],
+      "relation_ids": [
+        "r2"
+      ],
+      "interpretation": "Potential explicit binding/scope precision pressure; presence as a node, a description-level reference, or provenance may retain meaning, so this is a REVIEW WATCH rather than a confirmed semantic gap.",
+      "remediation_status": "FROZEN_ORIGINAL_CLAIMIR_UNCHANGED",
+      "downstream_carrier_test_requirement": "Determine whether the required reference survives without importing it solely from labels, parent claim wording, or source authority."
+    },
+    {
+      "self_target_id": "RFX01B2C",
+      "normalized_claim": "Confirmed failure to satisfy a declared equivalence criterion does not by itself establish that the underlying targets are distinct.",
+      "unbound_nodes": [
+        {
+          "node_id": "declared_comparison_rule",
+          "source_description": "the explicit comparison rule",
+          "diagnostic_category": "DECLARED_COMPARISON_SCOPE_NOT_EXPLICITLY_BOUND"
+        }
+      ],
+      "relation_ids": [
+        "r3"
+      ],
+      "interpretation": "Potential explicit binding/scope precision pressure; presence as a node, a description-level reference, or provenance may retain meaning, so this is a REVIEW WATCH rather than a confirmed semantic gap.",
+      "remediation_status": "FROZEN_ORIGINAL_CLAIMIR_UNCHANGED",
+      "downstream_carrier_test_requirement": "Determine whether the required reference survives without importing it solely from labels, parent claim wording, or source authority."
+    },
+    {
+      "self_target_id": "RFX08C",
+      "normalized_claim": "The frozen strict direct-preservation comparator results establish distinction loss under the tested projections, not mathematical non-encodability by enriched formalisms.",
+      "unbound_nodes": [
+        {
+          "node_id": "G_dyn",
+          "source_description": "coarse comparator retaining X, K, and T",
+          "diagnostic_category": "COMPARATOR_REFERRED_INDIRECTLY_BY_RESULT_NODE"
+        },
+        {
+          "node_id": "G_pomdp_like",
+          "source_description": "coarse comparator retaining X, P, K, rho/O, Q, and T while omitting/collapsing selected distinctions",
+          "diagnostic_category": "COMPARATOR_REFERRED_INDIRECTLY_BY_RESULT_NODE"
+        }
+      ],
+      "relation_ids": [
+        "r5"
+      ],
+      "interpretation": "Potential explicit binding/scope precision pressure; presence as a node, a description-level reference, or provenance may retain meaning, so this is a REVIEW WATCH rather than a confirmed semantic gap.",
+      "remediation_status": "FROZEN_ORIGINAL_CLAIMIR_UNCHANGED",
+      "downstream_carrier_test_requirement": "Determine whether the required reference survives without importing it solely from labels, parent claim wording, or source authority."
+    },
+    {
+      "self_target_id": "RFX11C",
+      "normalized_claim": "One E3 relation, PVS-CNC-02.r2, remains a scientific claim-carrier precision pressure after layered placement despite zero architecture and top-level role gaps.",
+      "unbound_nodes": [
+        {
+          "node_id": "PVS16",
+          "source_description": "16 prospectively admitted and human-reviewed validation claims",
+          "diagnostic_category": "PVS_CONTEXT_NOT_EXPLICITLY_BOUND"
+        },
+        {
+          "node_id": "layered_architecture",
+          "source_description": "pre-existing L_sys/L_claim/L_ctx/L_formal plus system-World architecture",
+          "diagnostic_category": "PLACEMENT_PROVENANCE_NOT_EXPLICITLY_BOUND"
+        }
+      ],
+      "relation_ids": [
+        "r5"
+      ],
+      "interpretation": "Potential explicit binding/scope precision pressure; presence as a node, a description-level reference, or provenance may retain meaning, so this is a REVIEW WATCH rather than a confirmed semantic gap.",
+      "remediation_status": "FROZEN_ORIGINAL_CLAIMIR_UNCHANGED",
+      "downstream_carrier_test_requirement": "Determine whether the required reference survives without importing it solely from labels, parent claim wording, or source authority."
+    },
+    {
+      "self_target_id": "RFX12C",
+      "normalized_claim": "The observed AHV-8 gaps concern L_claim assertion-carrier expressivity and do not by themselves establish missing top-level cognitive-system roles in Grammar v0.",
+      "unbound_nodes": [
+        {
+          "node_id": "AHV8",
+          "source_description": "eight held-out claims admitted after AssertionCarrier schema freeze and human-reviewed before validation",
+          "diagnostic_category": "HELDOUT_SCOPE_NOT_EXPLICITLY_BOUND"
+        }
+      ],
+      "relation_ids": [
+        "r5",
+        "r6"
+      ],
+      "interpretation": "Potential explicit binding/scope precision pressure; presence as a node, a description-level reference, or provenance may retain meaning, so this is a REVIEW WATCH rather than a confirmed semantic gap.",
+      "remediation_status": "FROZEN_ORIGINAL_CLAIMIR_UNCHANGED",
+      "downstream_carrier_test_requirement": "Determine whether the required reference survives without importing it solely from labels, parent claim wording, or source authority."
+    }
+  ],
+  "guardrails": [
+    "No source ClaimIR node, relation, original wording, or accepted decision is modified.",
+    "Nodes not in relation arguments may remain accessible via existing descriptions/context; explicit assertion carrier verification is still needed.",
+    "No inferred new cognitive role or architecture category from unbound nodes.",
+    "The distinct frozen PVS-CNC-02.r2 causal_position issue is retained separately; it is not counted as a new unbound node in this 47-claim packet."
+  ],
+  "terminal": "STAGE_D_UNBOUND_NODE_WATCHES_FROZEN_WITHOUT_CARRIER_VERDICT"
+}
