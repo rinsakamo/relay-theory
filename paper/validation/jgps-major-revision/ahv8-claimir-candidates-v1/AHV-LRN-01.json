@@ -1,0 +1,181 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "AHV-LRN-01.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1038/35083500",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Nature abstract: learning depends on discrepancy between obtained and predicted reward when a stimulus is paired with reward."
+      },
+      {
+        "span_id": "s2",
+        "locator": "Nature abstract: a blocking procedure demonstrates absence of learning when reward is already fully predicted."
+      },
+      {
+        "span_id": "s3",
+        "locator": "Nature abstract: neural responses to conditioned stimuli and learned behavioral reactions vary with occurrence of reward discrepancy rather than simple stimulus-reward association alone."
+      }
+    ],
+    "authors": [
+      "Pascale Waelti",
+      "Anthony Dickinson",
+      "Wolfram Schultz"
+    ],
+    "institutions": [],
+    "venue": "Nature",
+    "citation_count": null,
+    "construct_labels": [
+      "reward prediction error",
+      "blocking",
+      "dopamine neurons"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "jgps-ahv8-source-grounded-candidate-v1:#379",
+    "extracted_at": "2026-10-01",
+    "manual_review_status": "unreviewed"
+  },
+  "claim_core": {
+    "claim_type": "relation",
+    "modality": "probabilistic",
+    "scope": {
+      "conditions": [
+        "stimulus-reward learning under blocking and nonblocking conditions"
+      ],
+      "population": [
+        "experimental animals in the reported study"
+      ],
+      "substrate": [
+        "reward-responsive neural system"
+      ],
+      "task": [
+        "conditioning with predicted or unpredicted reward"
+      ],
+      "temporal_scope": [
+        "prediction precedes obtained reward and subsequent learning response"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "obtained_reward",
+        "role": "available_information",
+        "description": "reward actually delivered on the current learning event",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "predicted_reward",
+        "role": "state_or_structure",
+        "description": "reward expected before the current outcome",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "reward_discrepancy",
+        "role": "state_or_structure",
+        "description": "difference between obtained and expected reward",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "conditioned_cue",
+        "role": "condition",
+        "description": "stimulus paired with reward during the learning procedure",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "neural_response",
+        "role": "response_or_outcome",
+        "description": "recorded response to the conditioned cue",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "learned_behavior",
+        "role": "response_or_outcome",
+        "description": "behavioral reaction acquired through the conditioning procedure",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "depends_on",
+        "arguments": [
+          "reward_discrepancy",
+          "obtained_reward",
+          "predicted_reward"
+        ],
+        "description": "the discrepancy quantity is determined by obtained reward relative to what was expected",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "depends_on",
+        "arguments": [
+          "neural_response",
+          "reward_discrepancy"
+        ],
+        "description": "the recorded cue response varies with whether a reward discrepancy occurs",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "depends_on",
+        "arguments": [
+          "learned_behavior",
+          "reward_discrepancy"
+        ],
+        "description": "behavioral learning likewise varies with occurrence of the reward discrepancy",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "other",
+        "arguments": [
+          "conditioned_cue",
+          "neural_response",
+          "learned_behavior"
+        ],
+        "description": "cue-response and behavioral-learning effects are not accounted for by stimulus-reward pairing alone when reward is already predicted",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
