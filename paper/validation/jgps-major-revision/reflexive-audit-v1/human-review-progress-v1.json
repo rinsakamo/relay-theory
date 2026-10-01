@@ -4,10 +4,10 @@
   "authority_issue": 384,
   "generated_date": "2026-10-01",
   "candidate_packet_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/reflexive-claimir-candidates-v1.json",
-  "candidate_packet_blob_sha": "fac4591343ba943b4a38fc98ea39bdba93bf20c1",
-  "total": 21,
-  "reviewed": 10,
-  "accepted": 10,
+  "candidate_packet_blob_sha": "bd83521bed0d44dabbdb05646d0a91f4d86e3d23",
+  "total": 22,
+  "reviewed": 12,
+  "accepted": 12,
   "revised": 0,
   "rejected": 0,
   "decisions": [
@@ -70,12 +70,23 @@
       "decision": "ACCEPT",
       "decision_date": "2026-10-01",
       "decision_record_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/human-reviewed/RFX06B.json"
+    },
+    {
+      "self_target_id": "RFX07A",
+      "decision": "ACCEPT",
+      "decision_date": "2026-10-01",
+      "decision_record_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/human-reviewed/RFX07A.json"
+    },
+    {
+      "self_target_id": "RFX07B",
+      "decision": "ACCEPT",
+      "decision_date": "2026-10-01",
+      "decision_record_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/human-reviewed/RFX07B.json"
     }
   ],
   "remaining": [
     "RFX01B1",
     "RFX01B2",
-    "RFX07",
     "RFX08",
     "RFX09",
     "RFX10",
@@ -92,7 +103,7 @@
     "LAYERED_ARCHITECTURE_PROJECTION",
     "REFLEXIVE_RECONSTRUCTION_VERDICT"
   ],
-  "terminal": "RFX21_HUMAN_REVIEW_10_OF_21_PENDING",
+  "terminal": "RFX22_HUMAN_REVIEW_12_OF_22_PENDING",
   "authority_reconciliation": "RFX15 added pre-review after fresh main advanced to #385; no human decisions existed at reconciliation time.",
   "pre_review_revision_history": [
     {
@@ -174,6 +185,22 @@
       },
       "downstream_fit_inspected": false,
       "date": "2026-10-01"
+    },
+    {
+      "event": "AUTHOR_ACCEPTED_TWO_WAY_SPLIT",
+      "original_id": "RFX07",
+      "replacements": [
+        "RFX07A",
+        "RFX07B"
+      ],
+      "original_normalized_claim": "Reverse projection of the frozen 60 claims into Grammar v0 yields 21 FULL, 22 PARTIAL, and 17 RESIDUAL claims; adjudication of residuals finds 13 primary SOURCE_CONTEXT_PARAMETER cases, four RELATION_LANGUAGE_GAP cases, and zero ROLE_GAP cases.",
+      "reason": "Separate observed Grammar v0 reverse-projection category counts from adjudicated residual primary class counts.",
+      "decisions": {
+        "RFX07A": "ACCEPT",
+        "RFX07B": "ACCEPT"
+      },
+      "downstream_fit_inspected": false,
+      "date": "2026-10-01"
     }
   ],
   "superseded_review_events": [
@@ -211,6 +238,15 @@
       "replacements": [
         "RFX06A",
         "RFX06B"
+      ],
+      "counted_in_active_review_totals": false
+    },
+    {
+      "self_target_id": "RFX07",
+      "decision": "SPLIT_AND_CHILDREN_ACCEPTED",
+      "replacements": [
+        "RFX07A",
+        "RFX07B"
       ],
       "counted_in_active_review_totals": false
     }
