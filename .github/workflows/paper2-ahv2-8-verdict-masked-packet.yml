@@ -1,0 +1,43 @@
+name: paper2-ahv2-8-verdict-masked-packet
+on:
+  push:
+    branches: [paper2-ahv2-8-verdict-masked-review]
+    paths:
+      - "paper/validation/jgps-major-revision/ahv2-8-verdict-masked-*"
+      - "scripts/paper2_ahv2_8_verdict_masked_packet_validate.py"
+      - ".github/workflows/paper2-ahv2-8-verdict-masked-packet.yml"
+  pull_request:
+    paths:
+      - "paper/validation/jgps-major-revision/ahv2-8-verdict-masked-*"
+      - "scripts/paper2_ahv2_8_verdict_masked_packet_validate.py"
+      - ".github/workflows/paper2-ahv2-8-verdict-masked-packet.yml"
+permissions: {contents: read}
+jobs:
+  validate-masked-review-packet:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check protocol precedes packet, source review and frozen v2 precede protocol
+        run: |
+          git cat-file -e ad1c11789814413b1d9fd3ca8a4cfb6f7316f230^{commit}
+          git cat-file -e 8f7ab1ee7f006c3b61dbc64865aaa703887df301^{commit}
+          git cat-file -e cd0c28bb1a77755b4f007d6d09338a36d29ca4c1^{commit}
+          git merge-base --is-ancestor ad1c11789814413b1d9fd3ca8a4cfb6f7316f230 cd0c28bb1a77755b4f007d6d09338a36d29ca4c1
+          git merge-base --is-ancestor 8f7ab1ee7f006c3b61dbc64865aaa703887df301 cd0c28bb1a77755b4f007d6d09338a36d29ca4c1
+          test "$(git show cd0c28bb1a77755b4f007d6d09338a36d29ca4c1:paper/validation/jgps-major-revision/ahv2-8-verdict-masked-protocol-v1.json | python -c 'import json,sys; print(json.load(sys.stdin)["status"])')" = FROZEN_BEFORE_AUTHOR_REVIEW
+          git merge-base --is-ancestor cd0c28bb1a77755b4f007d6d09338a36d29ca4c1 HEAD
+      - name: Compile and double-check deterministic receipt, with tamper tests
+        run: |
+          python -m py_compile scripts/paper2_ahv2_8_verdict_masked_packet_validate.py
+          python scripts/paper2_ahv2_8_verdict_masked_packet_validate.py --output /tmp/packet-a.json
+          python scripts/paper2_ahv2_8_verdict_masked_packet_validate.py --output /tmp/packet-b.json
+          cmp /tmp/packet-a.json /tmp/packet-b.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ahv2-verdict-masked-packet-receipt
+          path: /tmp/packet-a.json
