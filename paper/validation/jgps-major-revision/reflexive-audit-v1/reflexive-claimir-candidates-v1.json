@@ -1,0 +1,2618 @@
+{
+  "schema": "relay-theory.paper2.reflexive_audit_claimir_candidates.v1",
+  "status": "UNREVIEWED_CANDIDATE_PACKET",
+  "authority_issue": 384,
+  "created_date": "2026-10-01",
+  "base_main_sha": "386f0b2105bb92f6f65b72bab2aee08e9b3d7131",
+  "target_surface": {
+    "manuscript_path": "paper/venues/jgps/main.tex",
+    "manuscript_blob_sha": "89b094476137bae12e089e5a794a5e57300f4da1",
+    "manuscript_is_scientific_authority": false,
+    "evidence_authority_rule": "repository frozen artifacts and validation commits remain authority for support status"
+  },
+  "candidate_count": 14,
+  "candidate_ids": [
+    "RFX01",
+    "RFX02",
+    "RFX03",
+    "RFX04",
+    "RFX05",
+    "RFX06",
+    "RFX07",
+    "RFX08",
+    "RFX09",
+    "RFX10",
+    "RFX11",
+    "RFX12",
+    "RFX13",
+    "RFX14"
+  ],
+  "guards": {
+    "all_manual_review_status_unreviewed": true,
+    "grammar_mapping_inspected": false,
+    "evidence_profile_created": false,
+    "reflexive_verdict_created": false,
+    "downstream_mapping_authorized": false
+  },
+  "candidates": [
+    {
+      "self_target_id": "RFX01",
+      "normalized_claim": "Historical construct-label sameness or difference does not by itself license structural identity or structural difference; individuation requires a declared structural comparison.",
+      "target_source": "Paper 2 manuscript / frozen validation-extension claim surface",
+      "repository_evidence_authorities": [
+        "paper/venues/jgps/main.tex@89b094476137bae12e089e5a794a5e57300f4da1"
+      ],
+      "grammar_mapping_inspected": false,
+      "evidence_profile_created": false,
+      "reflexive_verdict_created": false,
+      "claimir": {
+        "schema_version": "paper2-claim-ir-v1",
+        "claim_id": "RFX01.C1",
+        "provenance": {
+          "paper_id": "SELF:RELAYTHEORY-PAPER2",
+          "source_language": "en",
+          "source_spans": [
+            {
+              "span_id": "s1",
+              "locator": "paper/venues/jgps/main.tex — Introduction: nominal identity and nominal difference are unreliable guides to structural individuation."
+            },
+            {
+              "span_id": "s2",
+              "locator": "paper/venues/jgps/main.tex — Problem and Inferential Scope: different labels do not imply different structures, and same labels do not imply same structures."
+            }
+          ],
+          "authors": [
+            "Rintaro Sakamoto"
+          ],
+          "institutions": [
+            "Independent Scholar"
+          ],
+          "venue": "Journal for General Philosophy of Science submission surface / RelayTheory validation extension",
+          "citation_count": null,
+          "construct_labels": [
+            "construct label",
+            "structural individuation"
+          ]
+        },
+        "extraction": {
+          "extractor": "ChatGPT",
+          "extractor_version": "GPT-5.6 Sol",
+          "procedure_version": "paper2-reflexive-audit-candidate-v1:#384",
+          "extracted_at": "2026-10-01",
+          "manual_review_status": "unreviewed"
+        },
+        "claim_core": {
+          "claim_type": "comparison",
+          "modality": "comparative",
+          "scope": {
+            "conditions": [],
+            "population": [],
+            "substrate": [],
+            "task": [],
+            "temporal_scope": []
+          },
+          "nodes": [
+            {
+              "id": "same_construct_label",
+              "role": "condition",
+              "description": "two claims share a historical construct label",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "different_construct_label",
+              "role": "condition",
+              "description": "two claims use different historical construct labels",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "structural_identity",
+              "role": "response_or_outcome",
+              "description": "judgment that compared claim structures are structurally identical",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "structural_difference",
+              "role": "response_or_outcome",
+              "description": "judgment that compared claim structures are structurally distinct",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "declared_structural_comparison",
+              "role": "criterion",
+              "description": "explicit representation and comparison rule used to license structural individuation",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            }
+          ],
+          "relations": [
+            {
+              "id": "r1",
+              "kind": "other",
+              "arguments": [
+                "same_construct_label",
+                "structural_identity"
+              ],
+              "description": "label sameness alone does not entail structural identity",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r2",
+              "kind": "other",
+              "arguments": [
+                "different_construct_label",
+                "structural_difference"
+              ],
+              "description": "label difference alone does not entail structural difference",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r3",
+              "kind": "depends_on",
+              "arguments": [
+                "structural_identity",
+                "declared_structural_comparison"
+              ],
+              "description": "a structural-identity judgment must be licensed by the declared comparison rather than by the label",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r4",
+              "kind": "depends_on",
+              "arguments": [
+                "structural_difference",
+                "declared_structural_comparison"
+              ],
+              "description": "a structural-difference judgment must be licensed by the declared comparison rather than by the label",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "self_target_id": "RFX02",
+      "normalized_claim": "The scientifically inspectable object is the source-grounded, reviewed ClaimIR record with preserved source-local provenance; the opaque model proposal that initiated extraction is not itself scientific authority.",
+      "target_source": "Paper 2 manuscript / frozen validation-extension claim surface",
+      "repository_evidence_authorities": [
+        "paper/venues/jgps/main.tex@89b094476137bae12e089e5a794a5e57300f4da1",
+        "commit:290070dedd099a91eafbde527c7c60c3aa384d2b"
+      ],
+      "grammar_mapping_inspected": false,
+      "evidence_profile_created": false,
+      "reflexive_verdict_created": false,
+      "claimir": {
+        "schema_version": "paper2-claim-ir-v1",
+        "claim_id": "RFX02.C1",
+        "provenance": {
+          "paper_id": "SELF:RELAYTHEORY-PAPER2",
+          "source_language": "en",
+          "source_spans": [
+            {
+              "span_id": "s1",
+              "locator": "paper/venues/jgps/main.tex — Source-Grounded ClaimIR Construction: every retained record remains auditable from stable source identity and source-local evidence."
+            },
+            {
+              "span_id": "s2",
+              "locator": "paper/venues/jgps/main.tex — Source-Grounded ClaimIR Construction: the scientific object is the reviewed ClaimIR record, not the hidden model response that first proposed it."
+            }
+          ],
+          "authors": [
+            "Rintaro Sakamoto"
+          ],
+          "institutions": [
+            "Independent Scholar"
+          ],
+          "venue": "Journal for General Philosophy of Science submission surface / RelayTheory validation extension",
+          "citation_count": null,
+          "construct_labels": [
+            "ClaimIR",
+            "source grounding",
+            "auditability"
+          ]
+        },
+        "extraction": {
+          "extractor": "ChatGPT",
+          "extractor_version": "GPT-5.6 Sol",
+          "procedure_version": "paper2-reflexive-audit-candidate-v1:#384",
+          "extracted_at": "2026-10-01",
+          "manual_review_status": "unreviewed"
+        },
+        "claim_core": {
+          "claim_type": "relation",
+          "modality": "descriptive",
+          "scope": {
+            "conditions": [],
+            "population": [],
+            "substrate": [],
+            "task": [],
+            "temporal_scope": []
+          },
+          "nodes": [
+            {
+              "id": "source_local_evidence",
+              "role": "available_information",
+              "description": "stable source identity and source-local evidence supporting an extracted claim",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "model_proposal",
+              "role": "state_or_structure",
+              "description": "initial model-produced structured extraction proposal",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "reviewed_claimir",
+              "role": "state_or_structure",
+              "description": "ClaimIR record retained after source-grounded review",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "auditability",
+              "role": "criterion",
+              "description": "ability of an auditor to re-evaluate the retained representation against preserved source provenance",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            }
+          ],
+          "relations": [
+            {
+              "id": "r1",
+              "kind": "depends_on",
+              "arguments": [
+                "reviewed_claimir",
+                "source_local_evidence"
+              ],
+              "description": "retained ClaimIR content depends on preserved source-local grounding",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r2",
+              "kind": "other",
+              "arguments": [
+                "model_proposal",
+                "reviewed_claimir"
+              ],
+              "description": "the initial model proposal is not sufficient authority for retention without source-grounded review",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r3",
+              "kind": "depends_on",
+              "arguments": [
+                "auditability",
+                "reviewed_claimir",
+                "source_local_evidence"
+              ],
+              "description": "auditability depends on the reviewed record plus preserved provenance",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "self_target_id": "RFX03",
+      "normalized_claim": "Under the frozen whole-claim Phi comparison, all 1,770 unordered pairs among the 60 designed claims were incomparable, with no whole-claim equivalence or refinement.",
+      "target_source": "Paper 2 manuscript / frozen validation-extension claim surface",
+      "repository_evidence_authorities": [
+        "paper/venues/jgps/main.tex@89b094476137bae12e089e5a794a5e57300f4da1",
+        "commit:071df2b063ff9cd2e0f3abd56fd92596386311eb"
+      ],
+      "grammar_mapping_inspected": false,
+      "evidence_profile_created": false,
+      "reflexive_verdict_created": false,
+      "claimir": {
+        "schema_version": "paper2-claim-ir-v1",
+        "claim_id": "RFX03.C1",
+        "provenance": {
+          "paper_id": "SELF:RELAYTHEORY-PAPER2",
+          "source_language": "en",
+          "source_spans": [
+            {
+              "span_id": "s1",
+              "locator": "paper/venues/jgps/main.tex — Phi and Whole-Claim Comparison: 60 claims give 1,770 unordered pairs."
+            },
+            {
+              "span_id": "s2",
+              "locator": "paper/venues/jgps/main.tex — Phi and Whole-Claim Comparison: global frozen result 1770/1770 INCOMPARABLE; no whole-claim equivalence or refinement component survived."
+            }
+          ],
+          "authors": [
+            "Rintaro Sakamoto"
+          ],
+          "institutions": [
+            "Independent Scholar"
+          ],
+          "venue": "Journal for General Philosophy of Science submission surface / RelayTheory validation extension",
+          "citation_count": null,
+          "construct_labels": [
+            "Phi",
+            "whole-claim comparison",
+            "incomparability"
+          ]
+        },
+        "extraction": {
+          "extractor": "ChatGPT",
+          "extractor_version": "GPT-5.6 Sol",
+          "procedure_version": "paper2-reflexive-audit-candidate-v1:#384",
+          "extracted_at": "2026-10-01",
+          "manual_review_status": "unreviewed"
+        },
+        "claim_core": {
+          "claim_type": "relation",
+          "modality": "descriptive",
+          "scope": {
+            "conditions": [],
+            "population": [],
+            "substrate": [],
+            "task": [],
+            "temporal_scope": []
+          },
+          "nodes": [
+            {
+              "id": "designed_claims_60",
+              "role": "state_or_structure",
+              "description": "the frozen set of 60 designed source-grounded claims",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "phi_whole_claim_comparison",
+              "role": "probe",
+              "description": "the frozen whole-claim structural comparison",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "unordered_pairs_1770",
+              "role": "state_or_structure",
+              "description": "all unordered claim pairs generated from the 60-claim surface",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "incomparable_pairs_1770",
+              "role": "response_or_outcome",
+              "description": "all 1,770 unordered pairs classified as incomparable",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "equivalence_or_refinement_pair",
+              "role": "response_or_outcome",
+              "description": "a pair classified as equivalent or refinement-related under the frozen comparator",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            }
+          ],
+          "relations": [
+            {
+              "id": "r1",
+              "kind": "maps_to",
+              "arguments": [
+                "designed_claims_60",
+                "unordered_pairs_1770"
+              ],
+              "description": "the 60-claim surface induces 1,770 unordered pairs",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r2",
+              "kind": "depends_on",
+              "arguments": [
+                "incomparable_pairs_1770",
+                "phi_whole_claim_comparison",
+                "unordered_pairs_1770"
+              ],
+              "description": "the frozen Phi comparison classifies every unordered pair as incomparable",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r3",
+              "kind": "other",
+              "arguments": [
+                "equivalence_or_refinement_pair",
+                "unordered_pairs_1770"
+              ],
+              "description": "no unordered pair is retained as whole-claim equivalence or refinement",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "self_target_id": "RFX04",
+      "normalized_claim": "The universal whole-claim incomparability is localized primarily to enriched pre-topology comparison constraints rather than to the eight-axis inventory alone.",
+      "target_source": "Paper 2 manuscript / frozen validation-extension claim surface",
+      "repository_evidence_authorities": [
+        "paper/venues/jgps/main.tex@89b094476137bae12e089e5a794a5e57300f4da1",
+        "commit:071df2b063ff9cd2e0f3abd56fd92596386311eb"
+      ],
+      "grammar_mapping_inspected": false,
+      "evidence_profile_created": false,
+      "reflexive_verdict_created": false,
+      "claimir": {
+        "schema_version": "paper2-claim-ir-v1",
+        "claim_id": "RFX04.C1",
+        "provenance": {
+          "paper_id": "SELF:RELAYTHEORY-PAPER2",
+          "source_language": "en",
+          "source_spans": [
+            {
+              "span_id": "s1",
+              "locator": "paper/venues/jgps/main.tex — Whole-Claim Incomparability Diagnostic: 3,518/3,540 directed attempts fail at scalar comparison, six at node count, 16 at node-label multiset, none reach topology."
+            },
+            {
+              "span_id": "s2",
+              "locator": "commit 071df2b063ff9cd2e0f3abd56fd92596386311eb — active-axis-only ablation yields 161 equal plus 699 strict-subset comparable unordered pairs, while frozen enriched Phi yields zero non-incomparable pairs."
+            }
+          ],
+          "authors": [
+            "Rintaro Sakamoto"
+          ],
+          "institutions": [
+            "Independent Scholar"
+          ],
+          "venue": "Journal for General Philosophy of Science submission surface / RelayTheory validation extension",
+          "citation_count": null,
+          "construct_labels": [
+            "failure localization",
+            "active-axis ablation"
+          ]
+        },
+        "extraction": {
+          "extractor": "ChatGPT",
+          "extractor_version": "GPT-5.6 Sol",
+          "procedure_version": "paper2-reflexive-audit-candidate-v1:#384",
+          "extracted_at": "2026-10-01",
+          "manual_review_status": "unreviewed"
+        },
+        "claim_core": {
+          "claim_type": "comparison",
+          "modality": "comparative",
+          "scope": {
+            "conditions": [],
+            "population": [],
+            "substrate": [],
+            "task": [],
+            "temporal_scope": []
+          },
+          "nodes": [
+            {
+              "id": "enriched_phi_surface",
+              "role": "state_or_structure",
+              "description": "the frozen whole-claim comparator including scalar compatibility and enriched ClaimIR-preserving structure",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "pre_topology_scalar_gates",
+              "role": "criterion",
+              "description": "scalar compatibility gates evaluated before graph topology",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "topology_stage",
+              "role": "state_or_structure",
+              "description": "graph-topology embedding stage of the comparator",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "active_axis_only_view",
+              "role": "state_or_structure",
+              "description": "ablation retaining only active-axis inventory",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "universal_incomparability",
+              "role": "response_or_outcome",
+              "description": "1,770/1,770 whole-claim pairs incomparable under the frozen enriched comparator",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "axis_comparable_pairs_860",
+              "role": "response_or_outcome",
+              "description": "161 equal plus 699 strict-subset-comparable unordered pairs under active-axis inventory alone",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            }
+          ],
+          "relations": [
+            {
+              "id": "r1",
+              "kind": "depends_on",
+              "arguments": [
+                "universal_incomparability",
+                "pre_topology_scalar_gates",
+                "enriched_phi_surface"
+              ],
+              "description": "the observed universal incomparability is produced before topology for nearly all directed attempts",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r2",
+              "kind": "other",
+              "arguments": [
+                "topology_stage",
+                "universal_incomparability"
+              ],
+              "description": "no directed real-corpus comparison reaches full graph-topology embedding",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r3",
+              "kind": "depends_on",
+              "arguments": [
+                "axis_comparable_pairs_860",
+                "active_axis_only_view"
+              ],
+              "description": "coarsening to active-axis inventory alone reveals many equal/subset-comparable pairs",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r4",
+              "kind": "other",
+              "arguments": [
+                "active_axis_only_view",
+                "universal_incomparability"
+              ],
+              "description": "the axis-only result blocks attribution of universal incomparability to the eight-axis inventory alone",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "self_target_id": "RFX05",
+      "normalized_claim": "After preserving the whole-claim failure, a secondary bounded-subobject reconstruction under frozen forgetting rules recovers reusable cross-claim structure: 206 unique global Archetype/XLike objects and 99 cross-lane families, covering 59 of 60 claims and surviving the declared destructive controls.",
+      "target_source": "Paper 2 manuscript / frozen validation-extension claim surface",
+      "repository_evidence_authorities": [
+        "paper/venues/jgps/main.tex@89b094476137bae12e089e5a794a5e57300f4da1",
+        "research/paper2/paper2_result_v1.json@a20d1ae31e1ccc905b891bfb7312285cdcce55b4"
+      ],
+      "grammar_mapping_inspected": false,
+      "evidence_profile_created": false,
+      "reflexive_verdict_created": false,
+      "claimir": {
+        "schema_version": "paper2-claim-ir-v1",
+        "claim_id": "RFX05.C1",
+        "provenance": {
+          "paper_id": "SELF:RELAYTHEORY-PAPER2",
+          "source_language": "en",
+          "source_spans": [
+            {
+              "span_id": "s1",
+              "locator": "paper/venues/jgps/main.tex — Abstract and Archetype / Bounded XLike Reconstruction: 206 unique global objects, 99 cross-lane families, 59/60 coverage, eight destructive controls."
+            },
+            {
+              "span_id": "s2",
+              "locator": "paper/venues/jgps/main.tex — Discussion: bounded reconstruction is a secondary level of analysis rather than a repaired primary atlas."
+            }
+          ],
+          "authors": [
+            "Rintaro Sakamoto"
+          ],
+          "institutions": [
+            "Independent Scholar"
+          ],
+          "venue": "Journal for General Philosophy of Science submission surface / RelayTheory validation extension",
+          "citation_count": null,
+          "construct_labels": [
+            "Archetype",
+            "XLike",
+            "bounded reconstruction"
+          ]
+        },
+        "extraction": {
+          "extractor": "ChatGPT",
+          "extractor_version": "GPT-5.6 Sol",
+          "procedure_version": "paper2-reflexive-audit-candidate-v1:#384",
+          "extracted_at": "2026-10-01",
+          "manual_review_status": "unreviewed"
+        },
+        "claim_core": {
+          "claim_type": "relation",
+          "modality": "descriptive",
+          "scope": {
+            "conditions": [],
+            "population": [],
+            "substrate": [],
+            "task": [],
+            "temporal_scope": []
+          },
+          "nodes": [
+            {
+              "id": "whole_claim_failure",
+              "role": "response_or_outcome",
+              "description": "the frozen universal incomparability result at whole-claim level",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "bounded_subobject_reconstruction",
+              "role": "probe",
+              "description": "secondary reconstruction under frozen forgetting and bounded reuse rules",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "unique_archetypes_206",
+              "role": "response_or_outcome",
+              "description": "206 unique global bounded reusable objects",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "cross_lane_families_99",
+              "role": "response_or_outcome",
+              "description": "99 cross-lane bounded families",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "claim_coverage_59_of_60",
+              "role": "response_or_outcome",
+              "description": "bounded reconstruction covers 59 of 60 claims",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "destructive_controls_8",
+              "role": "criterion",
+              "description": "eight declared destructive controls used to attack the bounded reconstruction",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            }
+          ],
+          "relations": [
+            {
+              "id": "r1",
+              "kind": "other",
+              "arguments": [
+                "whole_claim_failure",
+                "bounded_subobject_reconstruction"
+              ],
+              "description": "bounded reconstruction follows the preserved whole-claim failure without rewriting that result",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r2",
+              "kind": "maps_to",
+              "arguments": [
+                "bounded_subobject_reconstruction",
+                "unique_archetypes_206"
+              ],
+              "description": "bounded reconstruction yields 206 unique global objects",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r3",
+              "kind": "maps_to",
+              "arguments": [
+                "bounded_subobject_reconstruction",
+                "cross_lane_families_99"
+              ],
+              "description": "bounded reconstruction yields 99 cross-lane families",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r4",
+              "kind": "maps_to",
+              "arguments": [
+                "bounded_subobject_reconstruction",
+                "claim_coverage_59_of_60"
+              ],
+              "description": "bounded reconstruction covers 59 of 60 claims",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r5",
+              "kind": "depends_on",
+              "arguments": [
+                "bounded_subobject_reconstruction",
+                "destructive_controls_8"
+              ],
+              "description": "the retained recovery is reported together with survival of eight destructive controls",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "self_target_id": "RFX06",
+      "normalized_claim": "Grammar v0 is best characterized as a data-constrained refinement or factorization of the declared working basis B_P2, not as an independently discovered inventory of new top-level cognitive primitives.",
+      "target_source": "Paper 2 manuscript / frozen validation-extension claim surface",
+      "repository_evidence_authorities": [
+        "commit:28251b16238bf2f43861eea22dbc9901a59cdfa0",
+        "#365",
+        "#321"
+      ],
+      "grammar_mapping_inspected": false,
+      "evidence_profile_created": false,
+      "reflexive_verdict_created": false,
+      "claimir": {
+        "schema_version": "paper2-claim-ir-v1",
+        "claim_id": "RFX06.C1",
+        "provenance": {
+          "paper_id": "SELF:RELAYTHEORY-PAPER2",
+          "source_language": "en",
+          "source_spans": [
+            {
+              "span_id": "s1",
+              "locator": "paper/validation/jgps-major-revision/basis-to-grammar-provenance-v1.md — provenance audit: no NEW_TOP_LEVEL_ROLE; Grammar v0 is a data-constrained refinement/factorization of B_P2."
+            },
+            {
+              "span_id": "s2",
+              "locator": "commit 28251b16238bf2f43861eea22dbc9901a59cdfa0 — Pi/C/Q/K/T inherited, X and rho/O reinterpreted, P split directionally, new_top_level_role_count=0."
+            }
+          ],
+          "authors": [
+            "Rintaro Sakamoto"
+          ],
+          "institutions": [
+            "Independent Scholar"
+          ],
+          "venue": "Journal for General Philosophy of Science submission surface / RelayTheory validation extension",
+          "citation_count": null,
+          "construct_labels": [
+            "B_P2",
+            "Grammar v0",
+            "basis factorization"
+          ]
+        },
+        "extraction": {
+          "extractor": "ChatGPT",
+          "extractor_version": "GPT-5.6 Sol",
+          "procedure_version": "paper2-reflexive-audit-candidate-v1:#384",
+          "extracted_at": "2026-10-01",
+          "manual_review_status": "unreviewed"
+        },
+        "claim_core": {
+          "claim_type": "comparison",
+          "modality": "comparative",
+          "scope": {
+            "conditions": [],
+            "population": [],
+            "substrate": [],
+            "task": [],
+            "temporal_scope": []
+          },
+          "nodes": [
+            {
+              "id": "working_basis_B_P2",
+              "role": "state_or_structure",
+              "description": "the frozen comparison basis S, Pi, K, O, T, C, Q, P",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "grammar_v0",
+              "role": "state_or_structure",
+              "description": "the recurrent role grammar Pi, X, C, Q, P_in, P_out, K, T, rho/O",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "inherited_roles",
+              "role": "state_or_structure",
+              "description": "Grammar roles preserving existing basis coordinates",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "reinterpreted_roles",
+              "role": "state_or_structure",
+              "description": "S-to-X and O-to-rho/O carrier/trace reinterpretations",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "directional_P_split",
+              "role": "state_or_structure",
+              "description": "data-constrained split of basis P into P_in and P_out",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "new_top_level_role_count_zero",
+              "role": "response_or_outcome",
+              "description": "no Grammar-v0 role classified as NEW_TOP_LEVEL_ROLE",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            }
+          ],
+          "relations": [
+            {
+              "id": "r1",
+              "kind": "maps_to",
+              "arguments": [
+                "working_basis_B_P2",
+                "grammar_v0"
+              ],
+              "description": "Grammar v0 is a factorization/refinement of the declared basis rather than a basis-free induction",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r2",
+              "kind": "other",
+              "arguments": [
+                "inherited_roles",
+                "grammar_v0"
+              ],
+              "description": "most Grammar roles inherit basis coordinates directly",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r3",
+              "kind": "other",
+              "arguments": [
+                "reinterpreted_roles",
+                "grammar_v0"
+              ],
+              "description": "X and rho/O are Discussion-level reinterpretations of S and O",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r4",
+              "kind": "other",
+              "arguments": [
+                "directional_P_split",
+                "grammar_v0"
+              ],
+              "description": "P_in and P_out refine the basis P coordinate using frozen directional support",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r5",
+              "kind": "maps_to",
+              "arguments": [
+                "grammar_v0",
+                "new_top_level_role_count_zero"
+              ],
+              "description": "the provenance audit identifies zero newly discovered top-level roles",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "self_target_id": "RFX07",
+      "normalized_claim": "Reverse projection of the frozen 60 claims into Grammar v0 yields 21 FULL, 22 PARTIAL, and 17 RESIDUAL claims; adjudication of residuals finds 13 primary SOURCE_CONTEXT_PARAMETER cases, four RELATION_LANGUAGE_GAP cases, and zero ROLE_GAP cases.",
+      "target_source": "Paper 2 manuscript / frozen validation-extension claim surface",
+      "repository_evidence_authorities": [
+        "paper/venues/jgps/main.tex@89b094476137bae12e089e5a794a5e57300f4da1",
+        "research/paper2/paper2_result_v1.json@a20d1ae31e1ccc905b891bfb7312285cdcce55b4"
+      ],
+      "grammar_mapping_inspected": false,
+      "evidence_profile_created": false,
+      "reflexive_verdict_created": false,
+      "claimir": {
+        "schema_version": "paper2-claim-ir-v1",
+        "claim_id": "RFX07.C1",
+        "provenance": {
+          "paper_id": "SELF:RELAYTHEORY-PAPER2",
+          "source_language": "en",
+          "source_spans": [
+            {
+              "span_id": "s1",
+              "locator": "paper/venues/jgps/main.tex — Abstract / reverse-projection result: FULL=21, PARTIAL=22, RESIDUAL=17."
+            },
+            {
+              "span_id": "s2",
+              "locator": "research/paper2/paper2_result_v1.json — residual primary taxonomy SOURCE_CONTEXT_PARAMETER=13, RELATION_LANGUAGE_GAP=4, ROLE_GAP=0."
+            }
+          ],
+          "authors": [
+            "Rintaro Sakamoto"
+          ],
+          "institutions": [
+            "Independent Scholar"
+          ],
+          "venue": "Journal for General Philosophy of Science submission surface / RelayTheory validation extension",
+          "citation_count": null,
+          "construct_labels": [
+            "reverse projection",
+            "residual taxonomy"
+          ]
+        },
+        "extraction": {
+          "extractor": "ChatGPT",
+          "extractor_version": "GPT-5.6 Sol",
+          "procedure_version": "paper2-reflexive-audit-candidate-v1:#384",
+          "extracted_at": "2026-10-01",
+          "manual_review_status": "unreviewed"
+        },
+        "claim_core": {
+          "claim_type": "relation",
+          "modality": "descriptive",
+          "scope": {
+            "conditions": [],
+            "population": [],
+            "substrate": [],
+            "task": [],
+            "temporal_scope": []
+          },
+          "nodes": [
+            {
+              "id": "frozen_claims_60",
+              "role": "state_or_structure",
+              "description": "the frozen 60-claim reviewed corpus",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "grammar_v0_reverse_projection",
+              "role": "probe",
+              "description": "mapping of frozen claim structure into Grammar v0",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "full_21",
+              "role": "response_or_outcome",
+              "description": "21 claims fully represented under the frozen direct mapping",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "partial_22",
+              "role": "response_or_outcome",
+              "description": "22 claims partially represented under the frozen direct mapping",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "residual_17",
+              "role": "response_or_outcome",
+              "description": "17 claims retain residual structure under the frozen direct mapping",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "source_context_13",
+              "role": "response_or_outcome",
+              "description": "13 residual claims primarily classified as source-context parameters",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "relation_language_4",
+              "role": "response_or_outcome",
+              "description": "four residual claims primarily classified as relation-language gaps",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "role_gap_0",
+              "role": "response_or_outcome",
+              "description": "zero residual claims establish a new top-level cognitive-system role gap",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            }
+          ],
+          "relations": [
+            {
+              "id": "r1",
+              "kind": "depends_on",
+              "arguments": [
+                "full_21",
+                "grammar_v0_reverse_projection",
+                "frozen_claims_60"
+              ],
+              "description": "21 claims are FULL under the frozen reverse projection",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r2",
+              "kind": "depends_on",
+              "arguments": [
+                "partial_22",
+                "grammar_v0_reverse_projection",
+                "frozen_claims_60"
+              ],
+              "description": "22 claims are PARTIAL under the frozen reverse projection",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r3",
+              "kind": "depends_on",
+              "arguments": [
+                "residual_17",
+                "grammar_v0_reverse_projection",
+                "frozen_claims_60"
+              ],
+              "description": "17 claims are RESIDUAL under the frozen reverse projection",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r4",
+              "kind": "maps_to",
+              "arguments": [
+                "residual_17",
+                "source_context_13",
+                "relation_language_4",
+                "role_gap_0"
+              ],
+              "description": "residual adjudication separates context and claim-language pressure from top-level system-role pressure",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "self_target_id": "RFX08",
+      "normalized_claim": "Under strict direct-preservation comparators, a generic X/K/T view and a POMDP-like view lose distinctions explicitly preserved by the frozen corpus; this is a distinction-loss result, not a proof of mathematical non-encodability.",
+      "target_source": "Paper 2 manuscript / frozen validation-extension claim surface",
+      "repository_evidence_authorities": [
+        "paper/venues/jgps/main.tex@89b094476137bae12e089e5a794a5e57300f4da1",
+        "research/paper2/paper2_result_v1.json@a20d1ae31e1ccc905b891bfb7312285cdcce55b4"
+      ],
+      "grammar_mapping_inspected": false,
+      "evidence_profile_created": false,
+      "reflexive_verdict_created": false,
+      "claimir": {
+        "schema_version": "paper2-claim-ir-v1",
+        "claim_id": "RFX08.C1",
+        "provenance": {
+          "paper_id": "SELF:RELAYTHEORY-PAPER2",
+          "source_language": "en",
+          "source_spans": [
+            {
+              "span_id": "s1",
+              "locator": "paper/venues/jgps/main.tex — Strict-preservation comparator table: G_dyn 59/60 require a role beyond X/K/T and 0/60 strict FULL; POMDP-like union affected 44/60."
+            },
+            {
+              "span_id": "s2",
+              "locator": "paper/venues/jgps/main.tex — comparator interpretation: results are representational distinction-loss tests, not claims that enriched formalisms cannot encode the omitted structure."
+            }
+          ],
+          "authors": [
+            "Rintaro Sakamoto"
+          ],
+          "institutions": [
+            "Independent Scholar"
+          ],
+          "venue": "Journal for General Philosophy of Science submission surface / RelayTheory validation extension",
+          "citation_count": null,
+          "construct_labels": [
+            "G_dyn",
+            "POMDP-like comparator",
+            "strict preservation"
+          ]
+        },
+        "extraction": {
+          "extractor": "ChatGPT",
+          "extractor_version": "GPT-5.6 Sol",
+          "procedure_version": "paper2-reflexive-audit-candidate-v1:#384",
+          "extracted_at": "2026-10-01",
+          "manual_review_status": "unreviewed"
+        },
+        "claim_core": {
+          "claim_type": "comparison",
+          "modality": "comparative",
+          "scope": {
+            "conditions": [],
+            "population": [],
+            "substrate": [],
+            "task": [],
+            "temporal_scope": []
+          },
+          "nodes": [
+            {
+              "id": "grammar_v0_full_view",
+              "role": "state_or_structure",
+              "description": "the full frozen Grammar-v0 role view",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "G_dyn",
+              "role": "state_or_structure",
+              "description": "coarse comparator retaining X, K, and T",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "G_pomdp_like",
+              "role": "state_or_structure",
+              "description": "coarse comparator retaining X, P, K, rho/O, Q, and T while omitting/collapsing selected distinctions",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "frozen_distinctions",
+              "role": "state_or_structure",
+              "description": "distinctions preserved as first-class structure by the frozen corpus",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "G_dyn_loss_59_of_60",
+              "role": "response_or_outcome",
+              "description": "59 of 60 claims require at least one role beyond X/K/T for direct preservation",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "G_pomdp_union_44_of_60",
+              "role": "response_or_outcome",
+              "description": "44 of 60 claims are affected by missing Pi/C or collapsed P directionality under the tested POMDP-like view",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "mathematical_nonencodability",
+              "role": "response_or_outcome",
+              "description": "strong claim that omitted distinctions cannot be encoded by any enriched comparator",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            }
+          ],
+          "relations": [
+            {
+              "id": "r1",
+              "kind": "maps_to",
+              "arguments": [
+                "grammar_v0_full_view",
+                "G_dyn"
+              ],
+              "description": "the dynamical comparator is a forgetful/coarse view of the full role inventory",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r2",
+              "kind": "maps_to",
+              "arguments": [
+                "grammar_v0_full_view",
+                "G_pomdp_like"
+              ],
+              "description": "the POMDP-like comparator is a forgetful/coarse view of the full role inventory",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r3",
+              "kind": "depends_on",
+              "arguments": [
+                "G_dyn_loss_59_of_60",
+                "G_dyn",
+                "frozen_distinctions"
+              ],
+              "description": "the G_dyn projection loses at least one frozen distinction in 59/60 claims",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r4",
+              "kind": "depends_on",
+              "arguments": [
+                "G_pomdp_union_44_of_60",
+                "G_pomdp_like",
+                "frozen_distinctions"
+              ],
+              "description": "the tested POMDP-like projection loses specified distinctions in 44/60 claims",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r5",
+              "kind": "other",
+              "arguments": [
+                "mathematical_nonencodability",
+                "G_dyn_loss_59_of_60",
+                "G_pomdp_union_44_of_60"
+              ],
+              "description": "the observed direct-preservation losses do not establish mathematical non-encodability",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "self_target_id": "RFX09",
+      "normalized_claim": "Paper 2 separates system grammar, scientific-claim semantics, source context, and formal carrier realization into distinct layers; residual claim/context structure is not automatically a missing cognitive-system role.",
+      "target_source": "Paper 2 manuscript / frozen validation-extension claim surface",
+      "repository_evidence_authorities": [
+        "#347",
+        "paper/venues/jgps/main.tex@89b094476137bae12e089e5a794a5e57300f4da1"
+      ],
+      "grammar_mapping_inspected": false,
+      "evidence_profile_created": false,
+      "reflexive_verdict_created": false,
+      "claimir": {
+        "schema_version": "paper2-claim-ir-v1",
+        "claim_id": "RFX09.C1",
+        "provenance": {
+          "paper_id": "SELF:RELAYTHEORY-PAPER2",
+          "source_language": "en",
+          "source_spans": [
+            {
+              "span_id": "s1",
+              "locator": "paper/venues/jgps/main.tex — Problem and Inferential Scope / layered architecture: system grammar is distinct from scientific claim language and experimental context."
+            },
+            {
+              "span_id": "s2",
+              "locator": "#347 — frozen layered architecture L_sys / L_claim / L_ctx / L_formal; 17 residual claims do not establish a new top-level system role."
+            }
+          ],
+          "authors": [
+            "Rintaro Sakamoto"
+          ],
+          "institutions": [
+            "Independent Scholar"
+          ],
+          "venue": "Journal for General Philosophy of Science submission surface / RelayTheory validation extension",
+          "citation_count": null,
+          "construct_labels": [
+            "layered architecture",
+            "L_sys",
+            "L_claim",
+            "L_ctx",
+            "L_formal"
+          ]
+        },
+        "extraction": {
+          "extractor": "ChatGPT",
+          "extractor_version": "GPT-5.6 Sol",
+          "procedure_version": "paper2-reflexive-audit-candidate-v1:#384",
+          "extracted_at": "2026-10-01",
+          "manual_review_status": "unreviewed"
+        },
+        "claim_core": {
+          "claim_type": "relation",
+          "modality": "descriptive",
+          "scope": {
+            "conditions": [],
+            "population": [],
+            "substrate": [],
+            "task": [],
+            "temporal_scope": []
+          },
+          "nodes": [
+            {
+              "id": "L_sys",
+              "role": "state_or_structure",
+              "description": "cognitive-system role grammar",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "L_claim",
+              "role": "state_or_structure",
+              "description": "scientific assertion and claim semantics",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "L_ctx",
+              "role": "state_or_structure",
+              "description": "source-defined context and experimental parameter layer",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "L_formal",
+              "role": "state_or_structure",
+              "description": "concrete mathematical or Lean carrier realization",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "residual_claim_structure",
+              "role": "state_or_structure",
+              "description": "scientifically meaningful structure not directly represented as a Grammar-v0 system role",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "new_system_role",
+              "role": "response_or_outcome",
+              "description": "proposal to add a top-level cognitive-system role",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            }
+          ],
+          "relations": [
+            {
+              "id": "r1",
+              "kind": "other",
+              "arguments": [
+                "L_sys",
+                "L_claim",
+                "L_ctx",
+                "L_formal"
+              ],
+              "description": "the architecture keeps system, claim, context, and formal realization as distinct typed layers",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r2",
+              "kind": "depends_on",
+              "arguments": [
+                "residual_claim_structure",
+                "L_claim",
+                "L_ctx"
+              ],
+              "description": "some residual structure is placed in claim or context layers rather than in the system grammar",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r3",
+              "kind": "other",
+              "arguments": [
+                "residual_claim_structure",
+                "new_system_role"
+              ],
+              "description": "residual structure is not by itself evidence for a new top-level system role",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "self_target_id": "RFX10",
+      "normalized_claim": "The final architecture separates cognitive system, World, cross-boundary coupling, experimental protocol, and realized run; internal transformation K is not Gamma, intrinsic C is not an experimental condition, and P_in/P_out are not identical to an experimenter's schedule.",
+      "target_source": "Paper 2 manuscript / frozen validation-extension claim surface",
+      "repository_evidence_authorities": [
+        "#349",
+        "paper/venues/jgps/main.tex@89b094476137bae12e089e5a794a5e57300f4da1"
+      ],
+      "grammar_mapping_inspected": false,
+      "evidence_profile_created": false,
+      "reflexive_verdict_created": false,
+      "claimir": {
+        "schema_version": "paper2-claim-ir-v1",
+        "claim_id": "RFX10.C1",
+        "provenance": {
+          "paper_id": "SELF:RELAYTHEORY-PAPER2",
+          "source_language": "en",
+          "source_spans": [
+            {
+              "span_id": "s1",
+              "locator": "paper/venues/jgps/main.tex — System, World, Coupling, and Experiment: G_sys, W, Gamma, E_exp, and R are separated."
+            },
+            {
+              "span_id": "s2",
+              "locator": "#349 — K != Gamma; C != experimental condition; P_in/P_out != experimental schedule; experiment t0 is a run cut, not necessarily system origin."
+            }
+          ],
+          "authors": [
+            "Rintaro Sakamoto"
+          ],
+          "institutions": [
+            "Independent Scholar"
+          ],
+          "venue": "Journal for General Philosophy of Science submission surface / RelayTheory validation extension",
+          "citation_count": null,
+          "construct_labels": [
+            "World",
+            "Gamma",
+            "experiment",
+            "system boundary"
+          ]
+        },
+        "extraction": {
+          "extractor": "ChatGPT",
+          "extractor_version": "GPT-5.6 Sol",
+          "procedure_version": "paper2-reflexive-audit-candidate-v1:#384",
+          "extracted_at": "2026-10-01",
+          "manual_review_status": "unreviewed"
+        },
+        "claim_core": {
+          "claim_type": "comparison",
+          "modality": "comparative",
+          "scope": {
+            "conditions": [],
+            "population": [],
+            "substrate": [],
+            "task": [],
+            "temporal_scope": []
+          },
+          "nodes": [
+            {
+              "id": "G_sys",
+              "role": "state_or_structure",
+              "description": "modeled cognitive-system grammar",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "World_W",
+              "role": "state_or_structure",
+              "description": "World/environment carrier relative to the selected modeled-system boundary",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "Gamma",
+              "role": "state_or_structure",
+              "description": "cross-boundary system-World coupling",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "E_exp",
+              "role": "condition",
+              "description": "experimental protocol over preparation, schedules, probes, and horizon",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "run_R",
+              "role": "state_or_structure",
+              "description": "realized finite run or history observed through an experiment window",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "K_internal",
+              "role": "state_or_structure",
+              "description": "retained internal system transformation/dependence role",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "C_intrinsic",
+              "role": "criterion",
+              "description": "system-intrinsic realizability/admissibility constraint",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "P_interface",
+              "role": "state_or_structure",
+              "description": "system-relative directional interface operations P_in/P_out",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            }
+          ],
+          "relations": [
+            {
+              "id": "r1",
+              "kind": "other",
+              "arguments": [
+                "G_sys",
+                "World_W",
+                "Gamma",
+                "E_exp",
+                "run_R"
+              ],
+              "description": "the architecture types system, World, coupling, experiment, and run separately",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r2",
+              "kind": "other",
+              "arguments": [
+                "K_internal",
+                "Gamma"
+              ],
+              "description": "internal system transformation K is not cross-boundary coupling Gamma",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r3",
+              "kind": "other",
+              "arguments": [
+                "C_intrinsic",
+                "E_exp"
+              ],
+              "description": "intrinsic system admissibility C is not identical to experimental condition/protocol",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r4",
+              "kind": "other",
+              "arguments": [
+                "P_interface",
+                "E_exp"
+              ],
+              "description": "system-relative interface roles are not identical to the experimenter's scheduling choices",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "self_target_id": "RFX11",
+      "normalized_claim": "In the prospective PVS-16 validation, frozen Grammar-v0 mapping leaves high-evidence E2/E3 pressure without a new top-level role gap, and the pre-existing layered architecture places all 52 relations with zero ARCHITECTURE_GAP and zero ROLE_GAP, while retaining one E3 claim-carrier precision pressure.",
+      "target_source": "Paper 2 manuscript / frozen validation-extension claim surface",
+      "repository_evidence_authorities": [
+        "commit:520845d13fa0e7e806e5e55caff45332e9dbc637",
+        "commit:4f58ebf390492c6c9ce67a8b50737bcdf2fbe731",
+        "#371",
+        "#373"
+      ],
+      "grammar_mapping_inspected": false,
+      "evidence_profile_created": false,
+      "reflexive_verdict_created": false,
+      "claimir": {
+        "schema_version": "paper2-claim-ir-v1",
+        "claim_id": "RFX11.C1",
+        "provenance": {
+          "paper_id": "SELF:RELAYTHEORY-PAPER2",
+          "source_language": "en",
+          "source_spans": [
+            {
+              "span_id": "s1",
+              "locator": "commit 520845d13fa0e7e806e5e55caff45332e9dbc637 — PVS-16 prospective mapping: FULL 7, PARTIAL 4, RESIDUAL 5; 38 PRESERVED, 5 PARTIAL, 9 UNMAPPED; ROLE_GAP=0; E2/E3 unmapped pressures remain."
+            },
+            {
+              "span_id": "s2",
+              "locator": "commit 4f58ebf390492c6c9ce67a8b50737bcdf2fbe731 — PVS-16 layered projection: all 52 relations architecture-placeable; ARCHITECTURE_GAP=0; ROLE_GAP=0; E3 PVS-CNC-02.r2 retains claim-carrier precision pressure."
+            }
+          ],
+          "authors": [
+            "Rintaro Sakamoto"
+          ],
+          "institutions": [
+            "Independent Scholar"
+          ],
+          "venue": "Journal for General Philosophy of Science submission surface / RelayTheory validation extension",
+          "citation_count": null,
+          "construct_labels": [
+            "PVS-16",
+            "evidence profile",
+            "prospective validation"
+          ]
+        },
+        "extraction": {
+          "extractor": "ChatGPT",
+          "extractor_version": "GPT-5.6 Sol",
+          "procedure_version": "paper2-reflexive-audit-candidate-v1:#384",
+          "extracted_at": "2026-10-01",
+          "manual_review_status": "unreviewed"
+        },
+        "claim_core": {
+          "claim_type": "relation",
+          "modality": "descriptive",
+          "scope": {
+            "conditions": [],
+            "population": [],
+            "substrate": [],
+            "task": [],
+            "temporal_scope": []
+          },
+          "nodes": [
+            {
+              "id": "PVS16",
+              "role": "state_or_structure",
+              "description": "16 prospectively admitted and human-reviewed validation claims",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "frozen_grammar_mapping",
+              "role": "probe",
+              "description": "unchanged Grammar-v0 reverse projection applied after PVS admission/review",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "evidence_profile_E0_E3",
+              "role": "state_or_structure",
+              "description": "relation-level evidence profile frozen before Grammar mapping",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "high_evidence_mapping_pressure",
+              "role": "response_or_outcome",
+              "description": "E2/E3 relations that are partial or unmapped under direct Grammar mapping",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "layered_architecture",
+              "role": "state_or_structure",
+              "description": "pre-existing L_sys/L_claim/L_ctx/L_formal plus system-World architecture",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "architecture_gap_zero",
+              "role": "response_or_outcome",
+              "description": "zero PVS relations require a new architecture category under frozen placement rules",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "role_gap_zero",
+              "role": "response_or_outcome",
+              "description": "zero PVS claims establish a new top-level cognitive-system role",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "E3_carrier_precision_pressure",
+              "role": "response_or_outcome",
+              "description": "one E3 relation requires claim-carrier precision beyond direct system-role mapping",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            }
+          ],
+          "relations": [
+            {
+              "id": "r1",
+              "kind": "depends_on",
+              "arguments": [
+                "high_evidence_mapping_pressure",
+                "frozen_grammar_mapping",
+                "evidence_profile_E0_E3",
+                "PVS16"
+              ],
+              "description": "high-evidence E2/E3 mapping pressure remains visible under the frozen direct mapping",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r2",
+              "kind": "maps_to",
+              "arguments": [
+                "high_evidence_mapping_pressure",
+                "layered_architecture"
+              ],
+              "description": "the pre-existing layered architecture places the non-strict system relations without adding a system role",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r3",
+              "kind": "depends_on",
+              "arguments": [
+                "architecture_gap_zero",
+                "layered_architecture",
+                "PVS16"
+              ],
+              "description": "all 52 PVS relations are architecture-placeable with zero architecture gap",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r4",
+              "kind": "depends_on",
+              "arguments": [
+                "role_gap_zero",
+                "frozen_grammar_mapping",
+                "layered_architecture",
+                "PVS16"
+              ],
+              "description": "PVS-16 yields no new top-level role gap",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r5",
+              "kind": "other",
+              "arguments": [
+                "E3_carrier_precision_pressure",
+                "architecture_gap_zero",
+                "role_gap_zero"
+              ],
+              "description": "the retained E3 pressure is a claim-carrier precision issue rather than a hidden architecture or system-role repair",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "self_target_id": "RFX12",
+      "normalized_claim": "A held-out AHV-8 test rejects completeness of AssertionCarrier v1: only 11 of 28 reviewed relations are FULL and 17 are GAP, with 1 of 8 claims fully covered; the observed gaps are L_claim carrier gaps and do not by themselves establish Grammar-v0 system-role gaps.",
+      "target_source": "Paper 2 manuscript / frozen validation-extension claim surface",
+      "repository_evidence_authorities": [
+        "commit:386f0b2105bb92f6f65b72bab2aee08e9b3d7131",
+        "#382"
+      ],
+      "grammar_mapping_inspected": false,
+      "evidence_profile_created": false,
+      "reflexive_verdict_created": false,
+      "claimir": {
+        "schema_version": "paper2-claim-ir-v1",
+        "claim_id": "RFX12.C1",
+        "provenance": {
+          "paper_id": "SELF:RELAYTHEORY-PAPER2",
+          "source_language": "en",
+          "source_spans": [
+            {
+              "span_id": "s1",
+              "locator": "commit 386f0b2105bb92f6f65b72bab2aee08e9b3d7131 — AHV-8 held-out AssertionCarrier validation: relation FULL 11/28, GAP 17/28; claim FULL 1/8, GAP 7/8."
+            },
+            {
+              "span_id": "s2",
+              "locator": "same commit — main held-out pressures include missing mapping/transformation family, monotonic/directional qualifiers, distinction semantics, model-preference semantics, and theory-object bindings; interpretation explicitly rejects v1 completeness."
+            }
+          ],
+          "authors": [
+            "Rintaro Sakamoto"
+          ],
+          "institutions": [
+            "Independent Scholar"
+          ],
+          "venue": "Journal for General Philosophy of Science submission surface / RelayTheory validation extension",
+          "citation_count": null,
+          "construct_labels": [
+            "AHV-8",
+            "AssertionCarrier",
+            "held-out validation"
+          ]
+        },
+        "extraction": {
+          "extractor": "ChatGPT",
+          "extractor_version": "GPT-5.6 Sol",
+          "procedure_version": "paper2-reflexive-audit-candidate-v1:#384",
+          "extracted_at": "2026-10-01",
+          "manual_review_status": "unreviewed"
+        },
+        "claim_core": {
+          "claim_type": "relation",
+          "modality": "descriptive",
+          "scope": {
+            "conditions": [],
+            "population": [],
+            "substrate": [],
+            "task": [],
+            "temporal_scope": []
+          },
+          "nodes": [
+            {
+              "id": "AHV8",
+              "role": "state_or_structure",
+              "description": "eight held-out claims admitted after AssertionCarrier schema freeze and human-reviewed before validation",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "assertion_carrier_v1",
+              "role": "state_or_structure",
+              "description": "frozen L_claim AssertionCarrier schema calibrated before AHV admission",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "full_relations_11",
+              "role": "response_or_outcome",
+              "description": "11 of 28 reviewed AHV relations fully represented by the frozen carrier",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "gap_relations_17",
+              "role": "response_or_outcome",
+              "description": "17 of 28 reviewed AHV relations retain carrier gaps",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "full_claims_1",
+              "role": "response_or_outcome",
+              "description": "one of eight AHV claims is fully covered",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "carrier_completeness",
+              "role": "criterion",
+              "description": "claim that AssertionCarrier v1 is a complete scientific assertion language for the held-out surface",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "L_claim_gap",
+              "role": "response_or_outcome",
+              "description": "missing assertion-language predicate, qualifier, theory-object, or directional semantics",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "grammar_role_gap",
+              "role": "response_or_outcome",
+              "description": "missing top-level cognitive-system role in Grammar v0",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            }
+          ],
+          "relations": [
+            {
+              "id": "r1",
+              "kind": "depends_on",
+              "arguments": [
+                "full_relations_11",
+                "assertion_carrier_v1",
+                "AHV8"
+              ],
+              "description": "11/28 held-out relations are FULL under the frozen carrier",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r2",
+              "kind": "depends_on",
+              "arguments": [
+                "gap_relations_17",
+                "assertion_carrier_v1",
+                "AHV8"
+              ],
+              "description": "17/28 held-out relations retain carrier gaps",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r3",
+              "kind": "depends_on",
+              "arguments": [
+                "full_claims_1",
+                "assertion_carrier_v1",
+                "AHV8"
+              ],
+              "description": "only one of eight held-out claims is fully covered",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r4",
+              "kind": "other",
+              "arguments": [
+                "gap_relations_17",
+                "carrier_completeness"
+              ],
+              "description": "the held-out result rejects a completeness description of AssertionCarrier v1",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r5",
+              "kind": "maps_to",
+              "arguments": [
+                "gap_relations_17",
+                "L_claim_gap"
+              ],
+              "description": "the observed failures are typed as claim-language carrier gaps",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r6",
+              "kind": "other",
+              "arguments": [
+                "L_claim_gap",
+                "grammar_role_gap"
+              ],
+              "description": "an L_claim carrier gap does not by itself establish a new Grammar-v0 system role",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "self_target_id": "RFX13",
+      "normalized_claim": "The 60-claim reference corpus is source-grounded and fully reviewed, but independent extractor agreement and local automated production qualification are not established.",
+      "target_source": "Paper 2 manuscript / frozen validation-extension claim surface",
+      "repository_evidence_authorities": [
+        "paper/venues/jgps/main.tex@89b094476137bae12e089e5a794a5e57300f4da1",
+        "#351",
+        "commit:290070dedd099a91eafbde527c7c60c3aa384d2b"
+      ],
+      "grammar_mapping_inspected": false,
+      "evidence_profile_created": false,
+      "reflexive_verdict_created": false,
+      "claimir": {
+        "schema_version": "paper2-claim-ir-v1",
+        "claim_id": "RFX13.C1",
+        "provenance": {
+          "paper_id": "SELF:RELAYTHEORY-PAPER2",
+          "source_language": "en",
+          "source_spans": [
+            {
+              "span_id": "s1",
+              "locator": "paper/venues/jgps/main.tex — Source-Grounded ClaimIR Construction / Limitations: 60/60 reviewed claims; independent extractor agreement not established."
+            },
+            {
+              "span_id": "s2",
+              "locator": "#351 — reliability boundary: structural comparator semantics VALIDATED; source-grounded reviewed reference corpus ESTABLISHED; independent extractor agreement NOT ESTABLISHED; local automated production qualification NOT ESTABLISHED."
+            }
+          ],
+          "authors": [
+            "Rintaro Sakamoto"
+          ],
+          "institutions": [
+            "Independent Scholar"
+          ],
+          "venue": "Journal for General Philosophy of Science submission surface / RelayTheory validation extension",
+          "citation_count": null,
+          "construct_labels": [
+            "reliability",
+            "independent extraction"
+          ]
+        },
+        "extraction": {
+          "extractor": "ChatGPT",
+          "extractor_version": "GPT-5.6 Sol",
+          "procedure_version": "paper2-reflexive-audit-candidate-v1:#384",
+          "extracted_at": "2026-10-01",
+          "manual_review_status": "unreviewed"
+        },
+        "claim_core": {
+          "claim_type": "comparison",
+          "modality": "comparative",
+          "scope": {
+            "conditions": [],
+            "population": [],
+            "substrate": [],
+            "task": [],
+            "temporal_scope": []
+          },
+          "nodes": [
+            {
+              "id": "reviewed_reference_corpus",
+              "role": "state_or_structure",
+              "description": "the 60 source-grounded ClaimIR records after author review",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "source_grounding_status",
+              "role": "criterion",
+              "description": "status of whether retained records are auditable against source-local evidence",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "independent_extractor_agreement",
+              "role": "criterion",
+              "description": "agreement of an independent extraction process on the source-to-ClaimIR task",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "local_automated_production_qualification",
+              "role": "criterion",
+              "description": "qualification of the local automated extraction/production pipeline",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            }
+          ],
+          "relations": [
+            {
+              "id": "r1",
+              "kind": "depends_on",
+              "arguments": [
+                "source_grounding_status",
+                "reviewed_reference_corpus"
+              ],
+              "description": "the reviewed corpus is established as source-grounded under the repository review process",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r2",
+              "kind": "other",
+              "arguments": [
+                "independent_extractor_agreement",
+                "reviewed_reference_corpus"
+              ],
+              "description": "source-grounded author review does not establish independent extractor agreement",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r3",
+              "kind": "other",
+              "arguments": [
+                "local_automated_production_qualification",
+                "reviewed_reference_corpus"
+              ],
+              "description": "source-grounded author review does not establish local automated production qualification",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "self_target_id": "RFX14",
+      "normalized_claim": "Paper 2's strongest licensed conclusion is a bounded measurement-oriented structural reconstruction; it does not establish a complete scientific claim language, nine ontological primitives, absolute mathematical minimality, a universal system boundary, a representative population estimate, or a demarcation criterion for cognition.",
+      "target_source": "Paper 2 manuscript / frozen validation-extension claim surface",
+      "repository_evidence_authorities": [
+        "paper/venues/jgps/main.tex@89b094476137bae12e089e5a794a5e57300f4da1",
+        "commit:28251b16238bf2f43861eea22dbc9901a59cdfa0"
+      ],
+      "grammar_mapping_inspected": false,
+      "evidence_profile_created": false,
+      "reflexive_verdict_created": false,
+      "claimir": {
+        "schema_version": "paper2-claim-ir-v1",
+        "claim_id": "RFX14.C1",
+        "provenance": {
+          "paper_id": "SELF:RELAYTHEORY-PAPER2",
+          "source_language": "en",
+          "source_spans": [
+            {
+              "span_id": "s1",
+              "locator": "paper/venues/jgps/main.tex — Abstract / Limitations / Conclusion: explicit boundaries on ontology, complete claim language, minimality, population coverage, and cognition demarcation."
+            },
+            {
+              "span_id": "s2",
+              "locator": "commit 28251b16238bf2f43861eea22dbc9901a59cdfa0 — provenance audit preserves no theory-neutrality, ontology-neutrality, representation-neutrality, demarcation, or independent primitive-discovery claim."
+            }
+          ],
+          "authors": [
+            "Rintaro Sakamoto"
+          ],
+          "institutions": [
+            "Independent Scholar"
+          ],
+          "venue": "Journal for General Philosophy of Science submission surface / RelayTheory validation extension",
+          "citation_count": null,
+          "construct_labels": [
+            "scope boundary",
+            "anti-overclaim"
+          ]
+        },
+        "extraction": {
+          "extractor": "ChatGPT",
+          "extractor_version": "GPT-5.6 Sol",
+          "procedure_version": "paper2-reflexive-audit-candidate-v1:#384",
+          "extracted_at": "2026-10-01",
+          "manual_review_status": "unreviewed"
+        },
+        "claim_core": {
+          "claim_type": "comparison",
+          "modality": "comparative",
+          "scope": {
+            "conditions": [],
+            "population": [],
+            "substrate": [],
+            "task": [],
+            "temporal_scope": []
+          },
+          "nodes": [
+            {
+              "id": "bounded_structural_reconstruction",
+              "role": "state_or_structure",
+              "description": "the scoped Paper-2 result under the declared representation, corpus, and validation contracts",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "complete_claim_language",
+              "role": "response_or_outcome",
+              "description": "claim that the representation exhausts scientific assertion semantics",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "ontological_primitives",
+              "role": "response_or_outcome",
+              "description": "claim that the nine Grammar roles are discovered ontological primitives",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "absolute_minimality",
+              "role": "response_or_outcome",
+              "description": "claim that no alternative formal encoding can preserve the same distinctions with different structure",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "universal_system_boundary",
+              "role": "response_or_outcome",
+              "description": "claim that Paper 2 uniquely fixes the boundary of every cognitive system",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "population_representativeness",
+              "role": "response_or_outcome",
+              "description": "claim that the designed corpus estimates prevalence across cognitive science",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "cognition_demarcation",
+              "role": "response_or_outcome",
+              "description": "claim that Grammar v0 defines or uniquely demarcates cognition",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            }
+          ],
+          "relations": [
+            {
+              "id": "r1",
+              "kind": "other",
+              "arguments": [
+                "bounded_structural_reconstruction",
+                "complete_claim_language"
+              ],
+              "description": "the bounded result does not license completeness of scientific claim language",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r2",
+              "kind": "other",
+              "arguments": [
+                "bounded_structural_reconstruction",
+                "ontological_primitives"
+              ],
+              "description": "the bounded result does not license an ontology of nine primitives",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r3",
+              "kind": "other",
+              "arguments": [
+                "bounded_structural_reconstruction",
+                "absolute_minimality"
+              ],
+              "description": "the bounded result does not prove absolute mathematical minimality",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r4",
+              "kind": "other",
+              "arguments": [
+                "bounded_structural_reconstruction",
+                "universal_system_boundary"
+              ],
+              "description": "the bounded result does not supply a universal system-boundary criterion",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r5",
+              "kind": "other",
+              "arguments": [
+                "bounded_structural_reconstruction",
+                "population_representativeness"
+              ],
+              "description": "the designed corpus does not establish population prevalence across cognitive science",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r6",
+              "kind": "other",
+              "arguments": [
+                "bounded_structural_reconstruction",
+                "cognition_demarcation"
+              ],
+              "description": "the grammar is not a demarcation criterion for cognition",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "terminal": "RFX14_CANDIDATES_FROZEN_PENDING_AUTHOR_REVIEW"
+}
