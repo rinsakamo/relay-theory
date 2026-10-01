@@ -1,0 +1,173 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "AHV2-LRN-01.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1016/S0896-6273(03)00169-7",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "PubMed abstract: the learning model contains a prediction-error signal whose response timing changes from reward delivery before learning to conditioned-cue onset after learning."
+      },
+      {
+        "span_id": "s2",
+        "locator": "PubMed abstract: human participants underwent appetitive conditioning with a pleasant taste reward during event-related functional imaging."
+      },
+      {
+        "span_id": "s3",
+        "locator": "PubMed abstract: ventral-striatal and orbitofrontal responses were significantly correlated with the model error signal, suggesting expression of the modeled computations during conditioning."
+      }
+    ],
+    "authors": [
+      "John P O'Doherty",
+      "Peter Dayan",
+      "Karl Friston",
+      "Hugo Critchley",
+      "Raymond J Dolan"
+    ],
+    "institutions": [],
+    "venue": "Neuron",
+    "citation_count": null,
+    "construct_labels": []
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "jgps-ahv2-8-source-grounded-candidate-v1:#390",
+    "extracted_at": "2026-10-01",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "relation",
+    "modality": "descriptive",
+    "scope": {
+      "conditions": [
+        "appetitive conditioning before and after learning"
+      ],
+      "population": [
+        "human participants"
+      ],
+      "substrate": [
+        "ventral striatum and orbitofrontal cortex"
+      ],
+      "task": [
+        "conditioned cue followed by pleasant taste reward"
+      ],
+      "temporal_scope": [
+        "error-signal timing changes with learning"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "learning_stage",
+        "role": "condition",
+        "description": "stage before versus after acquisition of the cue-reward prediction",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "reward_delivery",
+        "role": "condition",
+        "description": "delivery of the appetitive reward",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "conditioned_cue",
+        "role": "condition",
+        "description": "cue that predicts the later reward after learning",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "prediction_error_signal",
+        "role": "state_or_structure",
+        "description": "model-derived discrepancy signal used in reward-related learning",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "error_signal_timing",
+        "role": "response_or_outcome",
+        "description": "event time at which the prediction-error signal is expressed",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "ventral_striatal_response",
+        "role": "response_or_outcome",
+        "description": "measured response in ventral striatum",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "orbitofrontal_response",
+        "role": "response_or_outcome",
+        "description": "measured response in orbitofrontal cortex",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "changes",
+        "arguments": [
+          "learning_stage",
+          "prediction_error_signal",
+          "reward_delivery",
+          "conditioned_cue",
+          "error_signal_timing"
+        ],
+        "description": "with learning, the error-signal response shifts from reward delivery to conditioned-cue onset",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "other",
+        "arguments": [
+          "ventral_striatal_response",
+          "prediction_error_signal"
+        ],
+        "description": "ventral-striatal response is significantly correlated with the modeled error signal",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "other",
+        "arguments": [
+          "orbitofrontal_response",
+          "prediction_error_signal"
+        ],
+        "description": "orbitofrontal response is significantly correlated with the modeled error signal",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
