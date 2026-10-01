@@ -1,22 +1,26 @@
 # Paper 2 reflexive-audit author review packet v1
 
-Status: **UNREVIEWED — 0 / 15**
+Status: **UNREVIEWED — 0 / 16**
 
 Authority: #384
 
-This packet freezes the human-review gate for the Paper-2 reflexive audit. Review the normalized self-target claim against its target manuscript/repository locators **without consulting Grammar-v0 fit, Evidence Profile output, layered-placement outcome, or any reflexive reconstruction verdict**.
+Review each normalized self-target claim against its target manuscript/repository locators **without consulting Grammar-v0 fit, Evidence Profile output, layered-placement outcome, or any reflexive reconstruction verdict**.
 
-Allowed decisions:
+Allowed decisions are `ACCEPT`, `REVISE`, or `REJECT`. No downstream Evidence Profile, Grammar mapping, layered projection, or reconstruction is authorized until all retained candidates have an explicit author decision.
 
-- `ACCEPT` — candidate preserves the intended manuscript-level claim.
-- `REVISE` — candidate is materially close but needs an explicit author-approved correction.
-- `REJECT` — candidate should not enter the reviewed reflexive target set.
+## Pre-review split provenance
 
-No downstream Evidence Profile, Grammar mapping, layered projection, or reconstruction is authorized until all retained candidates have an explicit author decision.
+At the author's request, the original RFX01 was split before any review decision:
+
+- **RFX01A** — historical label sameness/difference does not entail structural sameness/difference.
+- **RFX01B** — structural identity/difference judgments require an explicit structural representation and comparison rule.
+
+The original wording remains preserved in the candidate packet's `pre_review_revision_history`. This split is not counted as a review decision and no downstream fit was inspected.
 
 | ID | Normalized claim candidate | Decision |
 |---|---|---|
-| RFX01 | Historical construct-label sameness or difference does not by itself license structural identity or structural difference; individuation requires a declared structural comparison. | — |
+| RFX01A | Historical construct-label sameness or difference does not by itself entail structural identity or structural difference. | — |
+| RFX01B | A structural identity or structural-difference judgment within the Paper-2 comparison framework must be licensed by a declared structural representation and comparison rule rather than by construct labels alone. | — |
 | RFX02 | The scientifically inspectable object is the source-grounded, reviewed ClaimIR record with preserved source-local provenance; the opaque model proposal that initiated extraction is not itself scientific authority. | — |
 | RFX03 | Under the frozen whole-claim Phi comparison, all 1,770 unordered pairs among the 60 designed claims were incomparable, with no whole-claim equivalence or refinement. | — |
 | RFX04 | The universal whole-claim incomparability is localized primarily to enriched pre-topology comparison constraints rather than to the eight-axis inventory alone. | — |
@@ -32,19 +36,14 @@ No downstream Evidence Profile, Grammar mapping, layered projection, or reconstr
 | RFX14 | Paper 2's strongest licensed conclusion is a bounded measurement-oriented structural reconstruction; it does not establish a complete scientific claim language, nine ontological primitives, absolute mathematical minimality, a universal system boundary, a representative population estimate, or a demarcation criterion for cognition. | — |
 | RFX15 | AssertionCarrier v2 is a minimal post-hoc extension derived from the frozen AHV-8 v1 held-out gaps: it retrospectively repairs all 17 of those gaps and closes 28/28 AHV relations, but this is calibration rather than independent v2 validation; a newly admitted post-v2 held-out set is required for an independent validation claim. | — |
 
-## Fresh-authority reconciliation
-
-The initial 14-candidate packet was created while main ended at #382. Before author review began, main advanced to #385 with the frozen AssertionCarrier-v2 retrospective calibration. RFX15 was therefore added **before any human decision or downstream fit inspection**. The v1 held-out failure (RFX12) remains a distinct historical validation result rather than being overwritten by v2 calibration.
-
 ## Review boundary
 
-- Candidate ClaimIR records remain `manual_review_status = unreviewed`.
-- Candidate wording may be revised only through an explicit author `REVISE` decision.
-- Review must not optimize candidate wording for downstream Grammar fit.
-- A rejected candidate is preserved as review provenance rather than silently deleted.
+- All active candidates remain `manual_review_status = unreviewed`.
+- Review must not optimize wording for downstream Grammar fit.
+- Rejected or superseded wording remains preserved as provenance.
 - The self-target manuscript is the target surface, not self-validating evidence authority.
-- Repository-frozen artifacts remain the authority for later support/evidence classification.
+- Frozen repository artifacts remain authority for later support/evidence classification.
 
 Terminal while incomplete:
 
-`RFX15_HUMAN_REVIEW_PENDING`
+`RFX16_HUMAN_REVIEW_PENDING`
