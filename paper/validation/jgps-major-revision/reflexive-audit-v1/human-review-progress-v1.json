@@ -4,10 +4,10 @@
   "authority_issue": 384,
   "generated_date": "2026-10-01",
   "candidate_packet_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/reflexive-claimir-candidates-v1.json",
-  "candidate_packet_blob_sha": "cbd3a4e730ed08c761481ceb53145234134e6c57",
-  "total": 32,
-  "reviewed": 27,
-  "accepted": 27,
+  "candidate_packet_blob_sha": "1a0805943eeb143295e68a33ae583f7149d92e3f",
+  "total": 35,
+  "reviewed": 31,
+  "accepted": 31,
   "revised": 0,
   "rejected": 0,
   "decisions": [
@@ -172,12 +172,35 @@
       "decision": "ACCEPT",
       "decision_date": "2026-10-01",
       "decision_record_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/human-reviewed/RFX12C.json"
+    },
+    {
+      "self_target_id": "RFX13A",
+      "decision": "ACCEPT",
+      "decision_date": "2026-10-01",
+      "decision_record_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/human-reviewed/RFX13A.json"
+    },
+    {
+      "self_target_id": "RFX13B",
+      "decision": "ACCEPT",
+      "decision_date": "2026-10-01",
+      "decision_record_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/human-reviewed/RFX13B.json"
+    },
+    {
+      "self_target_id": "RFX13C",
+      "decision": "ACCEPT",
+      "decision_date": "2026-10-01",
+      "decision_record_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/human-reviewed/RFX13C.json"
+    },
+    {
+      "self_target_id": "RFX13D",
+      "decision": "ACCEPT",
+      "decision_date": "2026-10-01",
+      "decision_record_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/human-reviewed/RFX13D.json"
     }
   ],
   "remaining": [
     "RFX01B1",
     "RFX01B2",
-    "RFX13",
     "RFX14",
     "RFX15"
   ],
@@ -188,7 +211,7 @@
     "LAYERED_ARCHITECTURE_PROJECTION",
     "REFLEXIVE_RECONSTRUCTION_VERDICT"
   ],
-  "terminal": "RFX32_HUMAN_REVIEW_27_OF_32_PENDING",
+  "terminal": "RFX35_HUMAN_REVIEW_31_OF_35_PENDING",
   "authority_reconciliation": "RFX15 added pre-review after fresh main advanced to #385; no human decisions existed at reconciliation time.",
   "pre_review_revision_history": [
     {
@@ -388,6 +411,26 @@
       },
       "downstream_fit_inspected": false,
       "date": "2026-10-01"
+    },
+    {
+      "event": "AUTHOR_ACCEPTED_FOUR_WAY_SPLIT",
+      "original_id": "RFX13",
+      "replacements": [
+        "RFX13A",
+        "RFX13B",
+        "RFX13C",
+        "RFX13D"
+      ],
+      "original_normalized_claim": "The 60-claim reference corpus is source-grounded and fully reviewed, but independent extractor agreement and local automated production qualification are not established.",
+      "reason": "Separate source-local grounding, complete author review, unestablished independent extractor agreement, and unestablished local automated production qualification.",
+      "decisions": {
+        "RFX13A": "ACCEPT",
+        "RFX13B": "ACCEPT",
+        "RFX13C": "ACCEPT",
+        "RFX13D": "ACCEPT"
+      },
+      "downstream_fit_inspected": false,
+      "date": "2026-10-01"
     }
   ],
   "superseded_review_events": [
@@ -484,6 +527,17 @@
         "RFX12A",
         "RFX12B",
         "RFX12C"
+      ],
+      "counted_in_active_review_totals": false
+    },
+    {
+      "self_target_id": "RFX13",
+      "decision": "SPLIT_AND_CHILDREN_ACCEPTED",
+      "replacements": [
+        "RFX13A",
+        "RFX13B",
+        "RFX13C",
+        "RFX13D"
       ],
       "counted_in_active_review_totals": false
     }
