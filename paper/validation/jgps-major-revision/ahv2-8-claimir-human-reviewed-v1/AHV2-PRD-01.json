@@ -1,0 +1,278 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "AHV2-PRD-01.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1162/089892999563607",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "PubMed abstract: self-produced tactile stimulation is rated less ticklish, intense, and pleasant than otherwise comparable externally produced stimulation."
+      },
+      {
+        "span_id": "s2",
+        "locator": "PubMed abstract: increasing temporal delay or trajectory perturbation between the producing action and tactile consequence significantly increases tickliness."
+      },
+      {
+        "span_id": "s3",
+        "locator": "PubMed abstract: attenuation requires temporal and spatial correspondence between the tactile consequence and its causal motor command."
+      },
+      {
+        "span_id": "s4",
+        "locator": "PubMed abstract: the authors propose that tactile attenuation is proportional to error between sensory feedback predicted by an internal forward model and actual movement-produced feedback."
+      }
+    ],
+    "authors": [
+      "S J Blakemore",
+      "C D Frith",
+      "D M Wolpert"
+    ],
+    "institutions": [],
+    "venue": "Journal of Cognitive Neuroscience",
+    "citation_count": null,
+    "construct_labels": []
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "jgps-ahv2-8-source-grounded-candidate-v1:#390",
+    "extracted_at": "2026-10-01",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "relation",
+    "modality": "descriptive",
+    "scope": {
+      "conditions": [
+        "self-produced versus externally produced tactile stimulation with delay and trajectory manipulations"
+      ],
+      "population": [
+        "human participants"
+      ],
+      "substrate": [
+        "sensorimotor system"
+      ],
+      "task": [
+        "robot-mediated self-produced and externally produced touch"
+      ],
+      "temporal_scope": [
+        "motor action precedes tactile consequence"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "self_produced_condition",
+        "role": "condition",
+        "description": "tactile stimulation produced through the participant's own action",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "external_condition",
+        "role": "condition",
+        "description": "comparable tactile stimulation produced externally",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "tactile_intensity_rating",
+        "role": "response_or_outcome",
+        "description": "rated intensity of the tactile sensation",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "tickliness_rating",
+        "role": "response_or_outcome",
+        "description": "rated tickliness of the tactile sensation",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "temporal_delay",
+        "role": "condition",
+        "description": "delay between producing movement and tactile consequence",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "trajectory_perturbation",
+        "role": "condition",
+        "description": "spatial perturbation between producing movement and tactile consequence",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "spatiotemporal_correspondence",
+        "role": "state_or_structure",
+        "description": "degree of temporal and spatial correspondence between motor command and tactile consequence",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "predicted_sensory_feedback",
+        "role": "state_or_structure",
+        "description": "sensory consequence predicted from the motor system model",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "actual_sensory_feedback",
+        "role": "available_information",
+        "description": "sensory feedback actually produced by the movement",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "prediction_error",
+        "role": "state_or_structure",
+        "description": "difference between predicted and actual sensory feedback",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "sensory_attenuation",
+        "role": "response_or_outcome",
+        "description": "reduction in perceived intensity of self-produced tactile stimulation",
+        "source_span_ids": [
+          "s1",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "pleasantness_rating",
+        "role": "response_or_outcome",
+        "description": "rated pleasantness of the tactile sensation",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "differs",
+        "arguments": [
+          "self_produced_condition",
+          "external_condition",
+          "tactile_intensity_rating",
+          "tickliness_rating",
+          "pleasantness_rating"
+        ],
+        "description": "self-produced tactile stimulation is rated less intense, tickly, and pleasant than externally produced stimulation",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "changes",
+        "arguments": [
+          "temporal_delay",
+          "tickliness_rating"
+        ],
+        "description": "tickliness increases as temporal delay is increased",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "changes",
+        "arguments": [
+          "trajectory_perturbation",
+          "tickliness_rating"
+        ],
+        "description": "tickliness increases as trajectory perturbation is increased",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "depends_on",
+        "arguments": [
+          "sensory_attenuation",
+          "spatiotemporal_correspondence"
+        ],
+        "description": "attenuation requires sufficient temporal and spatial correspondence between motor command and tactile consequence",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "depends_on",
+        "arguments": [
+          "prediction_error",
+          "predicted_sensory_feedback",
+          "actual_sensory_feedback"
+        ],
+        "description": "prediction error is defined by the mismatch between predicted and actual sensory feedback",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r6",
+        "kind": "depends_on",
+        "arguments": [
+          "sensory_attenuation",
+          "prediction_error"
+        ],
+        "description": "in the authors' proposed forward-model account, greater prediction error is associated with less sensory attenuation (inverse directional relationship)",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r7",
+        "kind": "depends_on",
+        "arguments": [
+          "tickliness_rating",
+          "prediction_error"
+        ],
+        "description": "in the authors' proposed forward-model account, tickliness increases with the error between predicted and actual sensory feedback",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
