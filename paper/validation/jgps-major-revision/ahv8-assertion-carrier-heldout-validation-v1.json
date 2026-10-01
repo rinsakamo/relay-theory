@@ -1,0 +1,1153 @@
+{
+  "schema": "relay-theory.paper2.ahv8_assertion_carrier_heldout_validation.v1",
+  "status": "FROZEN_HELDOUT_RESULT",
+  "authority_issue": 382,
+  "generated_date": "2026-10-01",
+  "authority": {
+    "target_freeze_path": "paper/validation/jgps-major-revision/ahv8-assertion-carrier-target-freeze-v1.json",
+    "target_freeze_blob_sha": "5fae5479ee1bccf338f187a606dbf24ac141b472",
+    "target_freeze_commit": "9d70f62c6a25a4a35ab4609d2d23df340435b0cc",
+    "carrier_schema_path": "paper/validation/jgps-major-revision/l-claim-assertion-carrier-schema-v1.json",
+    "carrier_schema_blob_sha": "045c44f2055a2579eea89e2f2255b0bd2873c76e",
+    "carrier_schema_freeze_commit": "dedc56f1f64d20154e0fa805b2d565fc921379c1"
+  },
+  "no_tuning": {
+    "schema_modified": false,
+    "predicate_family_added": false,
+    "qualifier_added": false,
+    "reference_role_added": false,
+    "context_class_added": false,
+    "target_relation_dropped": false
+  },
+  "verdict_rule": "FULL only if the frozen carrier predicate/qualifier/reference/layer vocabulary retains the assertion's core semantic distinction without using free-text scope qualifiers to encode a missing core predicate, preference, ordering, negation, or directionality.",
+  "entries": [
+    {
+      "validation_claim_id": "AHV-MEM-01",
+      "claim_id": "AHV-MEM-01.C1",
+      "source_relation_id": "r1",
+      "source_kind": "other",
+      "source_arguments": [
+        "task_capacity_estimate",
+        "broader_cognitive_measure"
+      ],
+      "source_description": "the retention estimate is strongly associated with broader cognitive ability in the reviewed evidence",
+      "assertion_id": "AHV-MEM-01.r1",
+      "carrier_status": "FULL",
+      "predicate_family": "ASSOCIATION",
+      "qualifiers": [],
+      "argument_bindings": [
+        {
+          "node_id": "task_capacity_estimate",
+          "semantic_role": "ASSOCIAND",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        },
+        {
+          "node_id": "broader_cognitive_measure",
+          "semantic_role": "ASSOCIAND",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [
+        "association reported as strong"
+      ],
+      "gap_reasons": []
+    },
+    {
+      "validation_claim_id": "AHV-MEM-01",
+      "claim_id": "AHV-MEM-01.C1",
+      "source_relation_id": "r2",
+      "source_kind": "differs",
+      "source_arguments": [
+        "limited_item_account",
+        "divisible_resource_account"
+      ],
+      "source_description": "the review contrasts a finite-item account with a continuously divisible-resource alternative",
+      "assertion_id": "AHV-MEM-01.r2",
+      "carrier_status": "GAP",
+      "attempted_predicate_family": "COMPARISON",
+      "attempted_qualifiers": [],
+      "provisional_argument_bindings": [],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [
+        "ARGUMENT_LAYER_L_CLAIM_OR_THEORY_OBJECT_MISSING"
+      ],
+      "notes": "The compared objects are theoretical accounts intentionally retyped to ClaimIR role `other`; the frozen carrier allows argument bindings only to L_sys or L_ctx, so assigning either layer would undo the human-review boundary."
+    },
+    {
+      "validation_claim_id": "AHV-MEM-01",
+      "claim_id": "AHV-MEM-01.C1",
+      "source_relation_id": "r3",
+      "source_kind": "other",
+      "source_arguments": [
+        "limited_item_account",
+        "divisible_resource_account"
+      ],
+      "source_description": "the reviewed empirical and neural-model evidence favors the finite-item account over the continuously divisible alternative",
+      "assertion_id": "AHV-MEM-01.r3",
+      "carrier_status": "GAP",
+      "attempted_predicate_family": "COMPARISON",
+      "attempted_qualifiers": [],
+      "provisional_argument_bindings": [],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [
+        "ARGUMENT_LAYER_L_CLAIM_OR_THEORY_OBJECT_MISSING",
+        "QUALIFIER_BETTER_SUPPORTED_OR_PREFERENCE_MISSING"
+      ],
+      "notes": "The assertion compares theoretical accounts and states that reviewed evidence favors one over the other. The carrier lacks both a theory-object binding layer and a qualifier for evidential preference/support."
+    },
+    {
+      "validation_claim_id": "AHV-LRN-01",
+      "claim_id": "AHV-LRN-01.C1",
+      "source_relation_id": "r1",
+      "source_kind": "depends_on",
+      "source_arguments": [
+        "reward_discrepancy",
+        "obtained_reward",
+        "predicted_reward"
+      ],
+      "source_description": "the discrepancy quantity is determined by obtained reward relative to what was expected",
+      "assertion_id": "AHV-LRN-01.r1",
+      "carrier_status": "FULL",
+      "predicate_family": "DEPENDENCE",
+      "qualifiers": [],
+      "argument_bindings": [
+        {
+          "node_id": "reward_discrepancy",
+          "semantic_role": "DEPENDENT",
+          "layer": "L_sys",
+          "system_role": "X"
+        },
+        {
+          "node_id": "obtained_reward",
+          "semantic_role": "CONDITIONING_FACTOR",
+          "layer": "L_ctx",
+          "context_placement": "WORLD_CONTEXT",
+          "architecture_refinement": "obtained reward event"
+        },
+        {
+          "node_id": "predicted_reward",
+          "semantic_role": "CONDITIONING_FACTOR",
+          "layer": "L_sys",
+          "system_role": "X"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": []
+    },
+    {
+      "validation_claim_id": "AHV-LRN-01",
+      "claim_id": "AHV-LRN-01.C1",
+      "source_relation_id": "r2",
+      "source_kind": "depends_on",
+      "source_arguments": [
+        "neural_response",
+        "reward_discrepancy"
+      ],
+      "source_description": "the recorded cue response varies with whether a reward discrepancy occurs",
+      "assertion_id": "AHV-LRN-01.r2",
+      "carrier_status": "FULL",
+      "predicate_family": "DEPENDENCE",
+      "qualifiers": [],
+      "argument_bindings": [
+        {
+          "node_id": "neural_response",
+          "semantic_role": "DEPENDENT",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        },
+        {
+          "node_id": "reward_discrepancy",
+          "semantic_role": "CONDITIONING_FACTOR",
+          "layer": "L_sys",
+          "system_role": "X"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": []
+    },
+    {
+      "validation_claim_id": "AHV-LRN-01",
+      "claim_id": "AHV-LRN-01.C1",
+      "source_relation_id": "r3",
+      "source_kind": "depends_on",
+      "source_arguments": [
+        "learned_behavior",
+        "reward_discrepancy"
+      ],
+      "source_description": "behavioral learning likewise varies with occurrence of the reward discrepancy",
+      "assertion_id": "AHV-LRN-01.r3",
+      "carrier_status": "FULL",
+      "predicate_family": "DEPENDENCE",
+      "qualifiers": [],
+      "argument_bindings": [
+        {
+          "node_id": "learned_behavior",
+          "semantic_role": "DEPENDENT",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        },
+        {
+          "node_id": "reward_discrepancy",
+          "semantic_role": "CONDITIONING_FACTOR",
+          "layer": "L_sys",
+          "system_role": "X"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": []
+    },
+    {
+      "validation_claim_id": "AHV-LRN-01",
+      "claim_id": "AHV-LRN-01.C1",
+      "source_relation_id": "r4",
+      "source_kind": "other",
+      "source_arguments": [
+        "conditioned_cue",
+        "predicted_reward",
+        "reward_discrepancy",
+        "neural_response",
+        "learned_behavior"
+      ],
+      "source_description": "cue-response and behavioral-learning effects are not accounted for by stimulus-reward pairing alone when reward is already predicted",
+      "assertion_id": "AHV-LRN-01.r4",
+      "carrier_status": "FULL",
+      "predicate_family": "EXPLANATION",
+      "qualifiers": [
+        "CONTRASTIVE_RATHER_THAN"
+      ],
+      "argument_bindings": [
+        {
+          "node_id": "conditioned_cue",
+          "semantic_role": "INDEX_CONTEXT",
+          "layer": "L_ctx",
+          "context_placement": "EXPERIMENT_CONTEXT",
+          "architecture_refinement": "conditioning cue in source procedure"
+        },
+        {
+          "node_id": "predicted_reward",
+          "semantic_role": "ALTERNATIVE_EXPLANATION",
+          "layer": "L_sys",
+          "system_role": "X"
+        },
+        {
+          "node_id": "reward_discrepancy",
+          "semantic_role": "EXPLANANS",
+          "layer": "L_sys",
+          "system_role": "X"
+        },
+        {
+          "node_id": "neural_response",
+          "semantic_role": "EXPLANANDUM",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        },
+        {
+          "node_id": "learned_behavior",
+          "semantic_role": "EXPLANANDUM",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        }
+      ],
+      "semantic_references": [
+        {
+          "node_id": "obtained_reward",
+          "semantic_role": "ALTERNATIVE_EXPLANATION",
+          "layer": "L_ctx",
+          "context_placement": "WORLD_CONTEXT",
+          "basis": "The frozen description refers to stimulus-reward pairing; obtained_reward is an existing ClaimIR node needed to make the alternative stimulus-reward account explicit."
+        }
+      ],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [
+        "reward already predicted in the blocking condition"
+      ],
+      "gap_reasons": []
+    },
+    {
+      "validation_claim_id": "AHV-SKL-01",
+      "claim_id": "AHV-SKL-01.C1",
+      "source_relation_id": "r1",
+      "source_kind": "changes",
+      "source_arguments": [
+        "exposure_history",
+        "stored_instances"
+      ],
+      "source_description": "additional practice increases the stock of stored exposure-specific representations",
+      "assertion_id": "AHV-SKL-01.r1",
+      "carrier_status": "GAP",
+      "attempted_predicate_family": "CHANGE",
+      "attempted_qualifiers": [],
+      "provisional_argument_bindings": [
+        {
+          "node_id": "exposure_history",
+          "semantic_role": "CHANGE_CONTEXT",
+          "layer": "L_ctx",
+          "context_placement": "RUN_BOUNDARY_OR_PREHISTORY",
+          "architecture_refinement": "accumulated prior practice"
+        },
+        {
+          "node_id": "stored_instances",
+          "semantic_role": "CHANGED_ENTITY",
+          "layer": "L_sys",
+          "system_role": "X"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [
+        "QUALIFIER_INCREASES_MISSING"
+      ],
+      "notes": "The core claim is directional: additional practice increases the stock of stored instances. CHANGE alone loses the increase direction."
+    },
+    {
+      "validation_claim_id": "AHV-SKL-01",
+      "claim_id": "AHV-SKL-01.C1",
+      "source_relation_id": "r2",
+      "source_kind": "depends_on",
+      "source_arguments": [
+        "retrieval_process",
+        "stored_instances",
+        "environmental_consistency"
+      ],
+      "source_description": "effective retrieval in later performance depends on stored exposure records being useful in a consistent environment",
+      "assertion_id": "AHV-SKL-01.r2",
+      "carrier_status": "FULL",
+      "predicate_family": "DEPENDENCE",
+      "qualifiers": [
+        "CONTEXT_INDEXED"
+      ],
+      "argument_bindings": [
+        {
+          "node_id": "retrieval_process",
+          "semantic_role": "DEPENDENT",
+          "layer": "L_sys",
+          "system_role": "X"
+        },
+        {
+          "node_id": "stored_instances",
+          "semantic_role": "CONDITIONING_FACTOR",
+          "layer": "L_sys",
+          "system_role": "X"
+        },
+        {
+          "node_id": "environmental_consistency",
+          "semantic_role": "INDEX_CONTEXT",
+          "layer": "L_ctx",
+          "context_placement": "WORLD_CONTEXT",
+          "architecture_refinement": "stability of practiced environment"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": []
+    },
+    {
+      "validation_claim_id": "AHV-SKL-01",
+      "claim_id": "AHV-SKL-01.C1",
+      "source_relation_id": "r3",
+      "source_kind": "depends_on",
+      "source_arguments": [
+        "automatic_processing",
+        "retrieval_process"
+      ],
+      "source_description": "later automatic performance is proposed to rely on retrieval of stored exposure records",
+      "assertion_id": "AHV-SKL-01.r3",
+      "carrier_status": "FULL",
+      "predicate_family": "DEPENDENCE",
+      "qualifiers": [],
+      "argument_bindings": [
+        {
+          "node_id": "automatic_processing",
+          "semantic_role": "DEPENDENT",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        },
+        {
+          "node_id": "retrieval_process",
+          "semantic_role": "CONDITIONING_FACTOR",
+          "layer": "L_sys",
+          "system_role": "X"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": []
+    },
+    {
+      "validation_claim_id": "AHV-SKL-01",
+      "claim_id": "AHV-SKL-01.C1",
+      "source_relation_id": "r4",
+      "source_kind": "changes",
+      "source_arguments": [
+        "exposure_history",
+        "retrieval_speed"
+      ],
+      "source_description": "retrieval becomes faster as practice accumulates",
+      "assertion_id": "AHV-SKL-01.r4",
+      "carrier_status": "GAP",
+      "attempted_predicate_family": "CHANGE",
+      "attempted_qualifiers": [],
+      "provisional_argument_bindings": [
+        {
+          "node_id": "exposure_history",
+          "semantic_role": "CHANGE_CONTEXT",
+          "layer": "L_ctx",
+          "context_placement": "RUN_BOUNDARY_OR_PREHISTORY",
+          "architecture_refinement": "accumulated prior practice"
+        },
+        {
+          "node_id": "retrieval_speed",
+          "semantic_role": "CHANGED_ENTITY",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [
+        "QUALIFIER_INCREASES_OR_FASTER_MISSING"
+      ],
+      "notes": "The claim is directional: retrieval becomes faster with accumulated practice. CHANGE does not retain the faster/increase direction."
+    },
+    {
+      "validation_claim_id": "AHV-ATT-01",
+      "claim_id": "AHV-ATT-01.C1",
+      "source_relation_id": "r1",
+      "source_kind": "changes",
+      "source_arguments": [
+        "perceptual_load",
+        "distractor_interference"
+      ],
+      "source_description": "higher perceptual demand reduces interference from irrelevant stimuli",
+      "assertion_id": "AHV-ATT-01.r1",
+      "carrier_status": "GAP",
+      "attempted_predicate_family": "CHANGE",
+      "attempted_qualifiers": [
+        "CONTEXT_INDEXED"
+      ],
+      "provisional_argument_bindings": [
+        {
+          "node_id": "perceptual_load",
+          "semantic_role": "CHANGE_CONTEXT",
+          "layer": "L_ctx",
+          "context_placement": "EXPERIMENT_CONTEXT",
+          "architecture_refinement": null
+        },
+        {
+          "node_id": "distractor_interference",
+          "semantic_role": "CHANGED_ENTITY",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [
+        "QUALIFIER_DECREASES_MISSING"
+      ],
+      "notes": "Higher perceptual load reduces distractor interference; the decrease direction is core and is absent from the frozen qualifier vocabulary."
+    },
+    {
+      "validation_claim_id": "AHV-ATT-01",
+      "claim_id": "AHV-ATT-01.C1",
+      "source_relation_id": "r2",
+      "source_kind": "changes",
+      "source_arguments": [
+        "memory_coordination_load",
+        "distractor_interference"
+      ],
+      "source_description": "greater memory or coordination demand increases interference from irrelevant stimuli",
+      "assertion_id": "AHV-ATT-01.r2",
+      "carrier_status": "GAP",
+      "attempted_predicate_family": "CHANGE",
+      "attempted_qualifiers": [
+        "CONTEXT_INDEXED"
+      ],
+      "provisional_argument_bindings": [
+        {
+          "node_id": "memory_coordination_load",
+          "semantic_role": "CHANGE_CONTEXT",
+          "layer": "L_ctx",
+          "context_placement": "EXPERIMENT_CONTEXT",
+          "architecture_refinement": null
+        },
+        {
+          "node_id": "distractor_interference",
+          "semantic_role": "CHANGED_ENTITY",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [
+        "QUALIFIER_INCREASES_MISSING"
+      ],
+      "notes": "Greater memory/coordination load increases distractor interference; the increase direction is core and unavailable."
+    },
+    {
+      "validation_claim_id": "AHV-ATT-01",
+      "claim_id": "AHV-ATT-01.C1",
+      "source_relation_id": "r3",
+      "source_kind": "differs",
+      "source_arguments": [
+        "perceptual_load",
+        "memory_coordination_load",
+        "distractor_interference"
+      ],
+      "source_description": "the two load types have opposite reported effects on distractor interference",
+      "assertion_id": "AHV-ATT-01.r3",
+      "carrier_status": "GAP",
+      "attempted_predicate_family": "COMPARISON",
+      "attempted_qualifiers": [],
+      "provisional_argument_bindings": [
+        {
+          "node_id": "perceptual_load",
+          "semantic_role": "INDEX_CONTEXT",
+          "layer": "L_ctx",
+          "context_placement": "EXPERIMENT_CONTEXT",
+          "architecture_refinement": null
+        },
+        {
+          "node_id": "memory_coordination_load",
+          "semantic_role": "COMPARATOR",
+          "layer": "L_ctx",
+          "context_placement": "EXPERIMENT_CONTEXT",
+          "architecture_refinement": null
+        },
+        {
+          "node_id": "distractor_interference",
+          "semantic_role": "OUTCOME",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [
+        "QUALIFIER_OPPOSITE_DIRECTION_MISSING"
+      ],
+      "notes": "The assertion is not merely a comparison: the two load types have opposite effects. The frozen qualifiers cannot encode opposite direction."
+    },
+    {
+      "validation_claim_id": "AHV-ATT-01",
+      "claim_id": "AHV-ATT-01.C1",
+      "source_relation_id": "r4",
+      "source_kind": "depends_on",
+      "source_arguments": [
+        "priority_maintenance_process",
+        "memory_coordination_load"
+      ],
+      "source_description": "maintenance of current priorities is limited when concurrent cognitive demand consumes the resources available for that process",
+      "assertion_id": "AHV-ATT-01.r4",
+      "carrier_status": "GAP",
+      "attempted_predicate_family": "DEPENDENCE",
+      "attempted_qualifiers": [
+        "CONTEXT_INDEXED"
+      ],
+      "provisional_argument_bindings": [
+        {
+          "node_id": "priority_maintenance_process",
+          "semantic_role": "DEPENDENT",
+          "layer": "L_sys",
+          "system_role": "X"
+        },
+        {
+          "node_id": "memory_coordination_load",
+          "semantic_role": "CONDITIONING_FACTOR",
+          "layer": "L_ctx",
+          "context_placement": "EXPERIMENT_CONTEXT",
+          "architecture_refinement": null
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [
+        "QUALIFIER_NEGATIVE_EFFECT_OR_LIMITATION_MISSING"
+      ],
+      "notes": "The claim states that concurrent demand limits priority maintenance. DEPENDENCE retains sensitivity but loses the limiting/negative direction."
+    },
+    {
+      "validation_claim_id": "AHV-PRD-01",
+      "claim_id": "AHV-PRD-01.C1",
+      "source_relation_id": "r1",
+      "source_kind": "depends_on",
+      "source_arguments": [
+        "predicted_next_state",
+        "current_motor_state",
+        "outgoing_motor_command"
+      ],
+      "source_description": "the next-state prediction depends jointly on the current motor state and the outgoing command",
+      "assertion_id": "AHV-PRD-01.r1",
+      "carrier_status": "FULL",
+      "predicate_family": "DEPENDENCE",
+      "qualifiers": [],
+      "argument_bindings": [
+        {
+          "node_id": "predicted_next_state",
+          "semantic_role": "DEPENDENT",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        },
+        {
+          "node_id": "current_motor_state",
+          "semantic_role": "CONDITIONING_FACTOR",
+          "layer": "L_sys",
+          "system_role": "X"
+        },
+        {
+          "node_id": "outgoing_motor_command",
+          "semantic_role": "CONDITIONING_FACTOR",
+          "layer": "L_sys",
+          "system_role": "P_in"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": []
+    },
+    {
+      "validation_claim_id": "AHV-PRD-01",
+      "claim_id": "AHV-PRD-01.C1",
+      "source_relation_id": "r2",
+      "source_kind": "maps_to",
+      "source_arguments": [
+        "predictive_representation",
+        "current_motor_state",
+        "outgoing_motor_command",
+        "predicted_next_state"
+      ],
+      "source_description": "the predictive representation maps current state and command information into a prediction of the next state",
+      "assertion_id": "AHV-PRD-01.r2",
+      "carrier_status": "GAP",
+      "attempted_predicate_family": null,
+      "attempted_qualifiers": [],
+      "provisional_argument_bindings": [
+        {
+          "node_id": "predictive_representation",
+          "semantic_role": "SUBJECT",
+          "layer": "L_sys",
+          "system_role": "X"
+        },
+        {
+          "node_id": "current_motor_state",
+          "semantic_role": "CONDITIONING_FACTOR",
+          "layer": "L_sys",
+          "system_role": "X"
+        },
+        {
+          "node_id": "outgoing_motor_command",
+          "semantic_role": "CONDITIONING_FACTOR",
+          "layer": "L_sys",
+          "system_role": "P_in"
+        },
+        {
+          "node_id": "predicted_next_state",
+          "semantic_role": "OUTCOME",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [
+        "PREDICATE_MAPPING_OR_TRANSFORMATION_MISSING"
+      ],
+      "notes": "The source relation is a directional mapping from current state and command through a predictive representation to next-state prediction. No frozen predicate family represents mapping/transformation as an assertion family."
+    },
+    {
+      "validation_claim_id": "AHV-CTL-01",
+      "claim_id": "AHV-CTL-01.C1",
+      "source_relation_id": "r1",
+      "source_kind": "changes",
+      "source_arguments": [
+        "practice_amount",
+        "pathway_strength"
+      ],
+      "source_description": "processing-pathway strength increases as training accumulates",
+      "assertion_id": "AHV-CTL-01.r1",
+      "carrier_status": "GAP",
+      "attempted_predicate_family": "CHANGE",
+      "attempted_qualifiers": [],
+      "provisional_argument_bindings": [
+        {
+          "node_id": "practice_amount",
+          "semantic_role": "CHANGE_CONTEXT",
+          "layer": "L_ctx",
+          "context_placement": "RUN_BOUNDARY_OR_PREHISTORY",
+          "architecture_refinement": "accumulated training"
+        },
+        {
+          "node_id": "pathway_strength",
+          "semantic_role": "CHANGED_ENTITY",
+          "layer": "L_sys",
+          "system_role": "X"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [
+        "QUALIFIER_INCREASES_MISSING"
+      ],
+      "notes": "The core claim says pathway strength increases with training; CHANGE alone loses direction."
+    },
+    {
+      "validation_claim_id": "AHV-CTL-01",
+      "claim_id": "AHV-CTL-01.C1",
+      "source_relation_id": "r2",
+      "source_kind": "depends_on",
+      "source_arguments": [
+        "automatic_performance_degree",
+        "pathway_strength"
+      ],
+      "source_description": "the degree of automatic performance depends on processing-pathway strength",
+      "assertion_id": "AHV-CTL-01.r2",
+      "carrier_status": "FULL",
+      "predicate_family": "DEPENDENCE",
+      "qualifiers": [],
+      "argument_bindings": [
+        {
+          "node_id": "automatic_performance_degree",
+          "semantic_role": "DEPENDENT",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        },
+        {
+          "node_id": "pathway_strength",
+          "semantic_role": "CONDITIONING_FACTOR",
+          "layer": "L_sys",
+          "system_role": "X"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": []
+    },
+    {
+      "validation_claim_id": "AHV-CTL-01",
+      "claim_id": "AHV-CTL-01.C1",
+      "source_relation_id": "r3",
+      "source_kind": "depends_on",
+      "source_arguments": [
+        "automatic_performance_degree",
+        "task_control_input"
+      ],
+      "source_description": "even highly practiced processing remains sensitive to task-directed control",
+      "assertion_id": "AHV-CTL-01.r3",
+      "carrier_status": "FULL",
+      "predicate_family": "DEPENDENCE",
+      "qualifiers": [],
+      "argument_bindings": [
+        {
+          "node_id": "automatic_performance_degree",
+          "semantic_role": "DEPENDENT",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        },
+        {
+          "node_id": "task_control_input",
+          "semantic_role": "CONDITIONING_FACTOR",
+          "layer": "L_sys",
+          "system_role": "Q"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": []
+    },
+    {
+      "validation_claim_id": "AHV-BLF-01",
+      "claim_id": "AHV-BLF-01.C1",
+      "source_relation_id": "r1",
+      "source_kind": "distinguishes",
+      "source_arguments": [
+        "relation_existence",
+        "relation_strength"
+      ],
+      "source_description": "the framework distinguishes the existence of a causal relation from its strength",
+      "assertion_id": "AHV-BLF-01.r1",
+      "carrier_status": "GAP",
+      "attempted_predicate_family": null,
+      "attempted_qualifiers": [],
+      "provisional_argument_bindings": [
+        {
+          "node_id": "relation_existence",
+          "semantic_role": "SUBJECT",
+          "layer": "L_sys",
+          "system_role": "X"
+        },
+        {
+          "node_id": "relation_strength",
+          "semantic_role": "COMPARATOR",
+          "layer": "L_sys",
+          "system_role": "X"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [
+        "PREDICATE_DISTINCTION_MISSING"
+      ],
+      "notes": "The source distinguishes two inferential properties (existence versus strength). DISSOCIATION would overstate this as an empirical dissociation, while COMPARISON does not assert the distinction."
+    },
+    {
+      "validation_claim_id": "AHV-BLF-01",
+      "claim_id": "AHV-BLF-01.C1",
+      "source_relation_id": "r2",
+      "source_kind": "maps_to",
+      "source_arguments": [
+        "contingency_evidence",
+        "structure_assessment"
+      ],
+      "source_description": "one rational model maps contingency evidence to an assessment of relation existence",
+      "assertion_id": "AHV-BLF-01.r2",
+      "carrier_status": "GAP",
+      "attempted_predicate_family": null,
+      "attempted_qualifiers": [],
+      "provisional_argument_bindings": [
+        {
+          "node_id": "contingency_evidence",
+          "semantic_role": "SUBJECT",
+          "layer": "L_sys",
+          "system_role": "X"
+        },
+        {
+          "node_id": "structure_assessment",
+          "semantic_role": "OUTCOME",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [
+        "PREDICATE_MAPPING_OR_TRANSFORMATION_MISSING"
+      ],
+      "notes": "The assertion maps contingency evidence to a structure assessment; no frozen assertion predicate represents this mapping."
+    },
+    {
+      "validation_claim_id": "AHV-BLF-01",
+      "claim_id": "AHV-BLF-01.C1",
+      "source_relation_id": "r3",
+      "source_kind": "maps_to",
+      "source_arguments": [
+        "contingency_evidence",
+        "strength_estimate"
+      ],
+      "source_description": "other rational measures map contingency evidence to an estimate of relation strength",
+      "assertion_id": "AHV-BLF-01.r3",
+      "carrier_status": "GAP",
+      "attempted_predicate_family": null,
+      "attempted_qualifiers": [],
+      "provisional_argument_bindings": [
+        {
+          "node_id": "contingency_evidence",
+          "semantic_role": "SUBJECT",
+          "layer": "L_sys",
+          "system_role": "X"
+        },
+        {
+          "node_id": "strength_estimate",
+          "semantic_role": "OUTCOME",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [
+        "PREDICATE_MAPPING_OR_TRANSFORMATION_MISSING"
+      ],
+      "notes": "The assertion maps contingency evidence to a strength estimate; no frozen assertion predicate represents this mapping."
+    },
+    {
+      "validation_claim_id": "AHV-BLF-01",
+      "claim_id": "AHV-BLF-01.C1",
+      "source_relation_id": "r4",
+      "source_kind": "differs",
+      "source_arguments": [
+        "structure_assessment",
+        "strength_estimate"
+      ],
+      "source_description": "the source treats structure assessment and strength estimation as different inferential targets",
+      "assertion_id": "AHV-BLF-01.r4",
+      "carrier_status": "GAP",
+      "attempted_predicate_family": "COMPARISON",
+      "attempted_qualifiers": [],
+      "provisional_argument_bindings": [
+        {
+          "node_id": "structure_assessment",
+          "semantic_role": "SUBJECT",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        },
+        {
+          "node_id": "strength_estimate",
+          "semantic_role": "COMPARATOR",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [
+        "QUALIFIER_DISTINCT_OR_DIFFERENT_TARGET_MISSING"
+      ],
+      "notes": "The outputs are asserted to be different inferential targets. COMPARISON alone does not retain distinctness and no DISTINCT qualifier exists."
+    },
+    {
+      "validation_claim_id": "AHV-CNC-01",
+      "claim_id": "AHV-CNC-01.C1",
+      "source_relation_id": "r1",
+      "source_kind": "maps_to",
+      "source_arguments": [
+        "probe_item",
+        "stored_exemplars",
+        "similarity_relation",
+        "retrieved_information"
+      ],
+      "source_description": "the probe retrieves information from stored instances according to their similarity to the probe",
+      "assertion_id": "AHV-CNC-01.r1",
+      "carrier_status": "GAP",
+      "attempted_predicate_family": null,
+      "attempted_qualifiers": [],
+      "provisional_argument_bindings": [
+        {
+          "node_id": "probe_item",
+          "semantic_role": "INDEX_CONTEXT",
+          "layer": "L_ctx",
+          "context_placement": "WORLD_CONTEXT",
+          "architecture_refinement": "classification probe"
+        },
+        {
+          "node_id": "stored_exemplars",
+          "semantic_role": "CONDITIONING_FACTOR",
+          "layer": "L_sys",
+          "system_role": "X"
+        },
+        {
+          "node_id": "similarity_relation",
+          "semantic_role": "CONDITIONING_FACTOR",
+          "layer": "L_sys",
+          "system_role": "K"
+        },
+        {
+          "node_id": "retrieved_information",
+          "semantic_role": "OUTCOME",
+          "layer": "L_sys",
+          "system_role": "X"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [
+        "PREDICATE_MAPPING_OR_TRANSFORMATION_MISSING"
+      ],
+      "notes": "The source relation is a retrieval mapping from probe plus stored exemplars and similarity to retrieved information; the carrier lacks a mapping predicate family."
+    },
+    {
+      "validation_claim_id": "AHV-CNC-01",
+      "claim_id": "AHV-CNC-01.C1",
+      "source_relation_id": "r2",
+      "source_kind": "depends_on",
+      "source_arguments": [
+        "classification_judgment",
+        "retrieved_information"
+      ],
+      "source_description": "the classification judgment depends on the retrieved instance information",
+      "assertion_id": "AHV-CNC-01.r2",
+      "carrier_status": "FULL",
+      "predicate_family": "DEPENDENCE",
+      "qualifiers": [],
+      "argument_bindings": [
+        {
+          "node_id": "classification_judgment",
+          "semantic_role": "DEPENDENT",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        },
+        {
+          "node_id": "retrieved_information",
+          "semantic_role": "CONDITIONING_FACTOR",
+          "layer": "L_sys",
+          "system_role": "X"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": []
+    },
+    {
+      "validation_claim_id": "AHV-CNC-01",
+      "claim_id": "AHV-CNC-01.C1",
+      "source_relation_id": "r3",
+      "source_kind": "differs",
+      "source_arguments": [
+        "exemplar_account",
+        "additive_feature_account"
+      ],
+      "source_description": "the source contrasts an instance-based account with an additive component-feature alternative",
+      "assertion_id": "AHV-CNC-01.r3",
+      "carrier_status": "GAP",
+      "attempted_predicate_family": "COMPARISON",
+      "attempted_qualifiers": [],
+      "provisional_argument_bindings": [],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [
+        "ARGUMENT_LAYER_L_CLAIM_OR_THEORY_OBJECT_MISSING"
+      ],
+      "notes": "Both arguments are competing theoretical accounts explicitly retyped to ClaimIR role `other`; binding them to L_sys or L_ctx would violate the frozen human review."
+    },
+    {
+      "validation_claim_id": "AHV-CNC-01",
+      "claim_id": "AHV-CNC-01.C1",
+      "source_relation_id": "r4",
+      "source_kind": "other",
+      "source_arguments": [
+        "exemplar_account",
+        "additive_feature_account"
+      ],
+      "source_description": "across the reported experiments the instance-based account provides a better account of the data than the additive alternative",
+      "assertion_id": "AHV-CNC-01.r4",
+      "carrier_status": "GAP",
+      "attempted_predicate_family": "COMPARISON",
+      "attempted_qualifiers": [],
+      "provisional_argument_bindings": [],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [
+        "ARGUMENT_LAYER_L_CLAIM_OR_THEORY_OBJECT_MISSING",
+        "QUALIFIER_BETTER_FIT_OR_MODEL_PREFERENCE_MISSING"
+      ],
+      "notes": "The relation compares theoretical accounts and states better empirical fit for one. The carrier lacks a theory-object binding layer and a better-fit/preference qualifier."
+    }
+  ],
+  "summary": {
+    "claims": 8,
+    "relations": 28,
+    "full_relations": 11,
+    "gap_relations": 17,
+    "relation_full_rate": 0.39285714285714285,
+    "full_claims": 1,
+    "gap_claims": 7,
+    "claim_summaries": [
+      {
+        "validation_claim_id": "AHV-MEM-01",
+        "relations": 3,
+        "full": 1,
+        "gaps": 2,
+        "claim_status": "GAP"
+      },
+      {
+        "validation_claim_id": "AHV-LRN-01",
+        "relations": 4,
+        "full": 4,
+        "gaps": 0,
+        "claim_status": "FULL"
+      },
+      {
+        "validation_claim_id": "AHV-SKL-01",
+        "relations": 4,
+        "full": 2,
+        "gaps": 2,
+        "claim_status": "GAP"
+      },
+      {
+        "validation_claim_id": "AHV-ATT-01",
+        "relations": 4,
+        "full": 0,
+        "gaps": 4,
+        "claim_status": "GAP"
+      },
+      {
+        "validation_claim_id": "AHV-PRD-01",
+        "relations": 2,
+        "full": 1,
+        "gaps": 1,
+        "claim_status": "GAP"
+      },
+      {
+        "validation_claim_id": "AHV-CTL-01",
+        "relations": 3,
+        "full": 2,
+        "gaps": 1,
+        "claim_status": "GAP"
+      },
+      {
+        "validation_claim_id": "AHV-BLF-01",
+        "relations": 4,
+        "full": 0,
+        "gaps": 4,
+        "claim_status": "GAP"
+      },
+      {
+        "validation_claim_id": "AHV-CNC-01",
+        "relations": 4,
+        "full": 1,
+        "gaps": 3,
+        "claim_status": "GAP"
+      }
+    ],
+    "gap_reason_counts": {
+      "ARGUMENT_LAYER_L_CLAIM_OR_THEORY_OBJECT_MISSING": 4,
+      "QUALIFIER_BETTER_SUPPORTED_OR_PREFERENCE_MISSING": 1,
+      "QUALIFIER_INCREASES_MISSING": 3,
+      "QUALIFIER_INCREASES_OR_FASTER_MISSING": 1,
+      "QUALIFIER_DECREASES_MISSING": 1,
+      "QUALIFIER_OPPOSITE_DIRECTION_MISSING": 1,
+      "QUALIFIER_NEGATIVE_EFFECT_OR_LIMITATION_MISSING": 1,
+      "PREDICATE_MAPPING_OR_TRANSFORMATION_MISSING": 4,
+      "PREDICATE_DISTINCTION_MISSING": 1,
+      "QUALIFIER_DISTINCT_OR_DIFFERENT_TARGET_MISSING": 1,
+      "QUALIFIER_BETTER_FIT_OR_MODEL_PREFERENCE_MISSING": 1
+    },
+    "added_semantic_reference_instances": [
+      "AHV-LRN-01.r4"
+    ]
+  },
+  "interpretation": {
+    "central_result": "The frozen PVS-calibrated AssertionCarrier does not close on the AHV-8 held-out relation set under the predeclared strict semantic-retention rule.",
+    "strongest_success": "Dependence, association, ordinary context-indexed dependence, and one contrastive explanation compose successfully without schema changes.",
+    "main_failures": "The held-out set exposes missing monotonic/directional qualifiers, missing mapping/transformation and distinction predicates, and inability to bind theoretical-account objects because argument bindings are restricted to L_sys/L_ctx.",
+    "semantic_reference_result": "AHV-LRN-01.r4 is FULL only by using the already-allowed semantic_references mechanism to add the existing obtained_reward node; no new reference role is introduced.",
+    "consequence": "This is evidence against treating AssertionCarrier v1 as a complete scientific assertion language. It does not by itself challenge Grammar v0 because the failures are in L_claim carrier vocabulary and argument-layer typing.",
+    "next_step_boundary": "Do not patch v1 inside this held-out run. Any AssertionCarrier v2 proposal must be derived from these frozen gaps and then validated on another post-v2 held-out set."
+  },
+  "terminal": "AHV8_HELDOUT_ASSERTION_CARRIER_REJECTS_V1_COMPLETENESS_WITH_11_OF_28_FULL_AND_17_GAPS"
+}
