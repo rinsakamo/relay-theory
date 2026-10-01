@@ -1,0 +1,63 @@
+{
+  "schema": "relay-theory.paper2.ahv2_8_verdict_masked_review_protocol.v1",
+  "status": "FROZEN_BEFORE_AUTHOR_REVIEW",
+  "owner_issue": 396,
+  "date": "2026-10-01",
+  "objective": "Reassess representational coverage of frozen AssertionCarrier v2 against all 34 previously author-reviewed AHV2-8 relations without disclosing the previous carrier verdicts or mappings to the reviewer.",
+  "chronology": {
+    "v2_schema_main_commit": "ad1c11789814413b1d9fd3ca8a4cfb6f7316f230",
+    "ahv2_review_main_commit": "8f7ab1ee7f006c3b61dbc64865aaa703887df301",
+    "earlier_v2_result_main_commit": "45842638672a021246ac4a4585dd10d77c2605b7",
+    "claimir_and_v2_unchanged": true
+  },
+  "sampling": {
+    "population": "all 34 relations in frozen AHV2-8 target, no exclusions",
+    "target_order": "all 8 frozen target claims in frozen order, each with frozen relation order",
+    "review_order_rule": "For review position i=0..33, choose target index (11*i+5)%34. 11 and 34 are coprime, so each target appears exactly once.",
+    "case_id_format": "VMR-001..VMR-034",
+    "selection_not_based_on_previous_verdict": true
+  },
+  "reviewer_exposure": {
+    "allowed": [
+      "source DOI/citation/title",
+      "existing available source locator and access classification",
+      "author-reviewed ClaimIR relation kind, ordered node arguments and source description",
+      "source span locators clearly marked summaries unless original verified",
+      "all original ClaimIR node descriptions for optional semantic references",
+      "frozen v2 schema and its legal predicates, qualifiers, binding roles, object types, modifiers"
+    ],
+    "hidden_from_review_packet": [
+      "previous v2 FULL/GAP per case",
+      "previous v2 mappings, gap reason labels and rationales",
+      "previous v2 aggregate counts",
+      "case-to-prior-verdict crosswalk"
+    ],
+    "limitation": "The old result remains in public version-controlled history. This is a verdict-masked reviewer-facing package, not inaccessible double-blind masking."
+  },
+  "adjudication": {
+    "step_1": "Check source fidelity (if source truly inspected) and mark ABSTRACT_CHECKED, FULL_TEXT_CHECKED, or SOURCE_NOT_VERIFIED. Existing provenance locator descriptions are paraphrases, not automatically verified quotations.",
+    "step_2": "Independently reconstruct the source proposition, separating observed effect, statistical evidence, model prediction, authors' inference, and review synthesis where applicable. Do not invent source content beyond inspected material.",
+    "step_3": "Attempt expression using only the exact frozen v2 schema. FULL requires explicit predicate, typed argument binding, applicable qualifiers, directionality and evaluation; do not encode missing semantics in free-text scope or invented layers.",
+    "step_4": "Submit FULL with the mapping and core-semantic-preservation justification, GAP with an explicit missing distinction, UNDERDETERMINED if the source meaning admits multiple materially different readings, or SOURCE_NOT_VERIFIED if the reviewer cannot confirm the claim from available source material.",
+    "step_5": "Allow SOURCE_CLAIM_DISPUTE when the frozen ClaimIR differs from the original source. Keep the original record frozen and route any proposed corrections to a separate provenance issue without retroactively altering this test.",
+    "verdicts": [
+      "FULL",
+      "GAP",
+      "UNDERDETERMINED",
+      "SOURCE_NOT_VERIFIED",
+      "SOURCE_CLAIM_DISPUTE"
+    ],
+    "evidence_fields": [
+      "SOURCE_NOT_VERIFIED",
+      "ABSTRACT_CHECKED",
+      "FULL_TEXT_CHECKED"
+    ],
+    "full_requires_typed_mapping": true,
+    "gap_requires_specific_missing_semantics": true,
+    "modifiers_and_bindings_cannot_be_extended": true
+  },
+  "human_blinding_boundary": "The original ClaimIR author has previously seen aggregate v2 results. If the author serves as reviewer, resulting process is a verdict-masked author challenge and must not be represented as independent external adjudication. External assessor judgment requires a different reviewer with no earlier results supplied.",
+  "comparison_lock": "Do not compare with old per-relation verdicts or derive v3 vocabulary until all 34 reviewer decisions are frozen or a documented stop condition is reached. Count UNDERDETERMINED and SOURCE_NOT_VERIFIED separately, never force them into FULL/GAP.",
+  "independence_limit": "A tool validator can check completeness, fixed-source fidelity, legal vocabulary and response consistency, but cannot prove semantic correctness, reviewer independence or substantive source access.",
+  "terminal": "AHV2_8_VERDICT_MASKED_REVIEW_PROTOCOL_FROZEN_BEFORE_PACKET_AND_DECISIONS"
+}
