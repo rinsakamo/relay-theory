@@ -15,6 +15,7 @@ F1_SHA="f45593c1616ca0aceb43179ce9dc3fbc1ac279ab"
 CH_SHA="d5af950c3b1b6ec5d6b7b155d5bba84cf4608fda"
 CONTRACT_SHA="f6abb3dfac040c0af8fb6576650233175402ce25"
 RESULT_SHA="55f513e132537f902c9984a0fa5975d871c3930c"
+SOURCE_ROLE_SHA="94c57278c0159595851bb2da5a73bbff2b6f124f"
 FREEZE_COMMIT="ad1c11789814413b1d9fd3ca8a4cfb6f7316f230"
 FEATURES={
   "LOGICAL_NON_ENTAILMENT",
@@ -98,6 +99,37 @@ def validate():
     ok({x["relation"] for x in a["key_witnesses"]}==
        {"RFX13C.r2","RFX01A.r1","RFX15D.r5","RFX10B.r2"},
        "direct explicit challenge/positive witnesses have changed")
+    # Frozen source roles are qualification cues, not the assertion that an
+    # input, criterion, or observed outcome is mathematically impossible to
+    # represent in another future (or separately justified) carrier.
+    role_path=ROOT/"stage-f1-source-role-cue-audit-v1.json"
+    candidate_path=ROOT/"reflexive-claimir-candidates-v1.json"
+    ok(git("hash-object",str(role_path))==SOURCE_ROLE_SHA,
+       "Role-cue witness artifact identity drift")
+    role=j(role_path)
+    corpus=j(candidate_path)
+    source_nodes={c["self_target_id"]:{n["id"]:n for n in c["claimir"]["claim_core"]["nodes"]}
+                  for c in corpus["candidates"]}
+    target_cases=set()
+    role_totals={}
+    for watch in role["watches"]:
+        rid=watch["audit_id"]
+        ok(rid not in target_cases,"duplicate role-cue relation witness")
+        target_cases.add(rid)
+        owner=rid.rsplit(".",1)[0]
+        source=source_nodes[owner]
+        for node in watch["non_theory_role_cues"]:
+            frozen=source[node["node_id"]]
+            ok(frozen["role"]==node["frozen_role"]
+               and frozen["description"]==node["description"]
+               and frozen["role"] in ("response_or_outcome","criterion","input"),
+               "frozen original role cue mismatch")
+    ok(len(target_cases)==50
+       and role["summary"]["relations_with_L_claim_arguments"]==57
+       and role["summary"]["remaining_L_claim_relations_with_only_state_or_structure_role"]==7
+       and role["summary"]["independently_verified_semantic_unencodability"]==0,
+       "role qualification cues inflated into global impossibility")
+
     return {"status":"PASS","frozen_semantic_challenge_families":7,
         "target_relations":25,"explicit_v2_logical_entailment_operator":False,
         "explicit_v2_epistemic_status_operator":False,
