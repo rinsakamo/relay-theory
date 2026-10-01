@@ -1,6 +1,6 @@
 # Stage D — evidence-blind layered placement (frozen pre-join)
 
-Stage A/B authority: **47 of 47 accepted** self-targets. Stage D unit: **68 ClaimIR relations**.
+Stage A/B authority: **47 of 47 accepted** self-targets. Stage D unit: **68 ClaimIR relations**. Each placement record contains the canonical relation-level fields from the preregistered Stage D contract.
 
 This index records coarse, typed placement of each research-level self-target statement as an L_claim assertion **plus its original ClaimIR argument-to-layer bindings**, not a completed AssertionCarrier v2 representation or proof of the paper's own truth. Original candidate ClaimIR, L_sys and source evidence remain unchanged.
 
@@ -20,6 +20,17 @@ Counts overlap: a relation may refer to multiple layers. References to L_sys des
 - Stage E direct system-role validation: **NOT_STARTED**.
 - Stage F Paper-2-label-suppressed reconstruction and Grand Null verdict: **NOT_STARTED**.
 - Stage D output does **not** claim a tested absence of architecture gaps across stronger assertion semantics or formal carrier fidelity.
+
+## Source-ClaimIR argument-binding precision
+
+An evidence-blind, syntactic source-argument audit found **5/47 claims containing 7 declared nodes absent from all their relation-argument lists**:
+
+- **RFX01B2B/C:** the declared comparison-rule node is not explicitly bound.
+- **RFX08C:** both comparator nodes are unbound, though the result-node descriptions contain their identities.
+- **RFX11C:** the PVS16 scope and layered-architecture reference are unbound in the self-target relation.
+- **RFX12C:** the AHV8 held-out-scope node is unbound.
+
+This is a precision *watch*, not an assertion of seven demonstrated losses. Original ClaimIR and author decisions remain frozen. The distinct PVS-CNC-02.r2 `causal_position` referent-level issue is also preserved without double-counting.
 
 ## Temporal and blindness boundary
 
