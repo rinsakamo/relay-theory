@@ -1,0 +1,304 @@
+{
+  "schema": "relay-theory.paper2.ahv8_admission.v1",
+  "status": "FROZEN_PRE_EXTRACTION_ADMISSION",
+  "authority_issue": 377,
+  "base_authority_commit": "dedc56f1f64d20154e0fa805b2d565fc921379c1",
+  "validation_set_id": "AHV-8",
+  "purpose": "held-out source admission for independent validation of the already-frozen L_claim AssertionCarrier schema",
+  "selection_authority": {
+    "candidate_ledger_path": "research/paper2/designed_source_candidate_ledger_v1.json",
+    "candidate_ledger_blob_sha": "91da0cf304d03f0469df5c03ac7007f2040727e9",
+    "activated_manifest_path": "research/paper2/designed_source_manifest_v1.json",
+    "activated_manifest_blob_sha": "dd34e2048020124561477ba8fe53f1e4e1452bb7",
+    "pvs16_admission_path": "paper/validation/jgps-major-revision/pvs16-admission-v1.json",
+    "pvs16_admission_blob_sha": "0e1515cb79e4808f0e9e18bcf861ea895fa947dc",
+    "assertion_carrier_schema_path": "paper/validation/jgps-major-revision/l-claim-assertion-carrier-schema-v1.json",
+    "assertion_carrier_schema_blob_sha": "045c44f2055a2579eea89e2f2255b0bd2873c76e",
+    "assertion_carrier_freeze_commit": "dedc56f1f64d20154e0fa805b2d565fc921379c1",
+    "selection_rule": "Within each of the eight primary sampling strata, scan the frozen candidate ledger in validator-bound record order; exclude identities in the activated 60-source manifest and all PVS-16 admissions; require candidate_state=CANDIDATE and readable/non-INACCESS source status; admit the first remaining record.",
+    "selection_time_relation": "selection executed after AssertionCarrier schema freeze and before AHV ClaimIR extraction"
+  },
+  "scope": {
+    "lanes": 8,
+    "claims_per_lane": 1,
+    "target_claim_count": 8,
+    "actual_claim_count": 8,
+    "claim_ir_created": false,
+    "human_review_completed": false,
+    "downstream_mapping_started": false
+  },
+  "guardrails": {
+    "admission_replacement_for_fit_forbidden": true,
+    "assertion_carrier_schema_tuning_after_admission_forbidden": true,
+    "grammar_or_layer_tuning_after_admission_forbidden": true,
+    "carrier_failures_must_be_preserved": true,
+    "human_review_required_before_downstream_validation": true
+  },
+  "admissions": [
+    {
+      "validation_claim_id": "AHV-MEM-01",
+      "lane": "Memory",
+      "title": "Visual working memory capacity",
+      "year": 2013,
+      "source_identity": {
+        "kind": "DOI",
+        "value": "10.1016/j.tics.2013.06.006"
+      },
+      "doi_or_stable_locator": "https://doi.org/10.1016/j.tics.2013.06.006",
+      "eligibility_basis": {
+        "surface": "primary",
+        "candidate_state": "CANDIDATE",
+        "source_access_class": "ABSTRACT_ONLY",
+        "read_status": "ABSTRACT_ONLY_READ",
+        "unused_in_activated_60_manifest": true,
+        "unused_in_pvs16": true
+      },
+      "preexisting_selection_rank_or_provenance": {
+        "ledger_path": "research/paper2/designed_source_candidate_ledger_v1.json",
+        "ledger_record_index_zero_based": 4,
+        "selection_order": "frozen ledger record order validated by paper2_designed_source_candidate_ledger_validate.py",
+        "slot_id": "MEM02",
+        "candidate_rank": 2
+      },
+      "assertion_carrier_schema_inspected_for_selection": false,
+      "claim_ir_created": false,
+      "human_review_completed": false,
+      "evidence_profile_created": false,
+      "grammar_mapping_started": false,
+      "layered_projection_started": false,
+      "assertion_carrier_validation_started": false
+    },
+    {
+      "validation_claim_id": "AHV-LRN-01",
+      "lane": "Learning",
+      "title": "Dopamine responses comply with basic assumptions of formal learning theory",
+      "year": 2001,
+      "source_identity": {
+        "kind": "DOI",
+        "value": "10.1038/35083500"
+      },
+      "doi_or_stable_locator": "https://doi.org/10.1038/35083500",
+      "eligibility_basis": {
+        "surface": "primary",
+        "candidate_state": "CANDIDATE",
+        "source_access_class": "ABSTRACT_ONLY",
+        "read_status": "ABSTRACT_ONLY_READ",
+        "unused_in_activated_60_manifest": true,
+        "unused_in_pvs16": true
+      },
+      "preexisting_selection_rank_or_provenance": {
+        "ledger_path": "research/paper2/designed_source_candidate_ledger_v1.json",
+        "ledger_record_index_zero_based": 22,
+        "selection_order": "frozen ledger record order validated by paper2_designed_source_candidate_ledger_validate.py",
+        "slot_id": "LRN02",
+        "candidate_rank": 2
+      },
+      "assertion_carrier_schema_inspected_for_selection": false,
+      "claim_ir_created": false,
+      "human_review_completed": false,
+      "evidence_profile_created": false,
+      "grammar_mapping_started": false,
+      "layered_projection_started": false,
+      "assertion_carrier_validation_started": false
+    },
+    {
+      "validation_claim_id": "AHV-SKL-01",
+      "lane": "Skill",
+      "title": "Toward an instance theory of automatization",
+      "year": 1988,
+      "source_identity": {
+        "kind": "DOI",
+        "value": "10.1037/0033-295X.95.4.492"
+      },
+      "doi_or_stable_locator": "https://doi.org/10.1037/0033-295X.95.4.492",
+      "eligibility_basis": {
+        "surface": "primary",
+        "candidate_state": "CANDIDATE",
+        "source_access_class": "ABSTRACT_ONLY",
+        "read_status": "ABSTRACT_ONLY_READ",
+        "unused_in_activated_60_manifest": true,
+        "unused_in_pvs16": true
+      },
+      "preexisting_selection_rank_or_provenance": {
+        "ledger_path": "research/paper2/designed_source_candidate_ledger_v1.json",
+        "ledger_record_index_zero_based": 40,
+        "selection_order": "frozen ledger record order validated by paper2_designed_source_candidate_ledger_validate.py",
+        "slot_id": "SKL02",
+        "candidate_rank": 2
+      },
+      "assertion_carrier_schema_inspected_for_selection": false,
+      "claim_ir_created": false,
+      "human_review_completed": false,
+      "evidence_profile_created": false,
+      "grammar_mapping_started": false,
+      "layered_projection_started": false,
+      "assertion_carrier_validation_started": false
+    },
+    {
+      "validation_claim_id": "AHV-ATT-01",
+      "lane": "Attention",
+      "title": "Load theory of selective attention and cognitive control",
+      "year": 2004,
+      "source_identity": {
+        "kind": "DOI",
+        "value": "10.1037/0096-3445.133.3.339"
+      },
+      "doi_or_stable_locator": "https://doi.org/10.1037/0096-3445.133.3.339",
+      "eligibility_basis": {
+        "surface": "primary",
+        "candidate_state": "CANDIDATE",
+        "source_access_class": "ABSTRACT_ONLY",
+        "read_status": "ABSTRACT_ONLY_READ",
+        "unused_in_activated_60_manifest": true,
+        "unused_in_pvs16": true
+      },
+      "preexisting_selection_rank_or_provenance": {
+        "ledger_path": "research/paper2/designed_source_candidate_ledger_v1.json",
+        "ledger_record_index_zero_based": 58,
+        "selection_order": "frozen ledger record order validated by paper2_designed_source_candidate_ledger_validate.py",
+        "slot_id": "ATT02",
+        "candidate_rank": 2
+      },
+      "assertion_carrier_schema_inspected_for_selection": false,
+      "claim_ir_created": false,
+      "human_review_completed": false,
+      "evidence_profile_created": false,
+      "grammar_mapping_started": false,
+      "layered_projection_started": false,
+      "assertion_carrier_validation_started": false
+    },
+    {
+      "validation_claim_id": "AHV-PRD-01",
+      "lane": "Prediction",
+      "title": "Forward Models for Physiological Motor Control",
+      "year": 1996,
+      "source_identity": {
+        "kind": "DOI",
+        "value": "10.1016/S0893-6080(96)00035-4"
+      },
+      "doi_or_stable_locator": "https://doi.org/10.1016/S0893-6080(96)00035-4",
+      "eligibility_basis": {
+        "surface": "primary",
+        "candidate_state": "CANDIDATE",
+        "source_access_class": "ABSTRACT_ONLY",
+        "read_status": "ABSTRACT_ONLY_READ",
+        "unused_in_activated_60_manifest": true,
+        "unused_in_pvs16": true
+      },
+      "preexisting_selection_rank_or_provenance": {
+        "ledger_path": "research/paper2/designed_source_candidate_ledger_v1.json",
+        "ledger_record_index_zero_based": 76,
+        "selection_order": "frozen ledger record order validated by paper2_designed_source_candidate_ledger_validate.py",
+        "slot_id": "PRD02",
+        "candidate_rank": 2
+      },
+      "assertion_carrier_schema_inspected_for_selection": false,
+      "claim_ir_created": false,
+      "human_review_completed": false,
+      "evidence_profile_created": false,
+      "grammar_mapping_started": false,
+      "layered_projection_started": false,
+      "assertion_carrier_validation_started": false
+    },
+    {
+      "validation_claim_id": "AHV-CTL-01",
+      "lane": "Control",
+      "title": "On the control of automatic processes: a PDP account of the Stroop effect",
+      "year": 1990,
+      "source_identity": {
+        "kind": "DOI",
+        "value": "10.1037/0033-295X.97.3.332"
+      },
+      "doi_or_stable_locator": "https://doi.org/10.1037/0033-295X.97.3.332",
+      "eligibility_basis": {
+        "surface": "primary",
+        "candidate_state": "CANDIDATE",
+        "source_access_class": "ABSTRACT_ONLY",
+        "read_status": "ABSTRACT_ONLY_READ",
+        "unused_in_activated_60_manifest": true,
+        "unused_in_pvs16": true
+      },
+      "preexisting_selection_rank_or_provenance": {
+        "ledger_path": "research/paper2/designed_source_candidate_ledger_v1.json",
+        "ledger_record_index_zero_based": 94,
+        "selection_order": "frozen ledger record order validated by paper2_designed_source_candidate_ledger_validate.py",
+        "slot_id": "CTL02",
+        "candidate_rank": 2
+      },
+      "assertion_carrier_schema_inspected_for_selection": false,
+      "claim_ir_created": false,
+      "human_review_completed": false,
+      "evidence_profile_created": false,
+      "grammar_mapping_started": false,
+      "layered_projection_started": false,
+      "assertion_carrier_validation_started": false
+    },
+    {
+      "validation_claim_id": "AHV-BLF-01",
+      "lane": "Belief",
+      "title": "Structure and strength in causal induction",
+      "year": 2005,
+      "source_identity": {
+        "kind": "DOI",
+        "value": "10.1016/j.cogpsych.2005.05.004"
+      },
+      "doi_or_stable_locator": "https://doi.org/10.1016/j.cogpsych.2005.05.004",
+      "eligibility_basis": {
+        "surface": "primary",
+        "candidate_state": "CANDIDATE",
+        "source_access_class": "ABSTRACT_ONLY",
+        "read_status": "ABSTRACT_ONLY_READ",
+        "unused_in_activated_60_manifest": true,
+        "unused_in_pvs16": true
+      },
+      "preexisting_selection_rank_or_provenance": {
+        "ledger_path": "research/paper2/designed_source_candidate_ledger_v1.json",
+        "ledger_record_index_zero_based": 112,
+        "selection_order": "frozen ledger record order validated by paper2_designed_source_candidate_ledger_validate.py",
+        "slot_id": "BLF02",
+        "candidate_rank": 2
+      },
+      "assertion_carrier_schema_inspected_for_selection": false,
+      "claim_ir_created": false,
+      "human_review_completed": false,
+      "evidence_profile_created": false,
+      "grammar_mapping_started": false,
+      "layered_projection_started": false,
+      "assertion_carrier_validation_started": false
+    },
+    {
+      "validation_claim_id": "AHV-CNC-01",
+      "lane": "Concept",
+      "title": "Context theory of classification learning",
+      "year": 1978,
+      "source_identity": {
+        "kind": "DOI",
+        "value": "10.1037/0033-295X.85.3.207"
+      },
+      "doi_or_stable_locator": "https://doi.org/10.1037/0033-295X.85.3.207",
+      "eligibility_basis": {
+        "surface": "primary",
+        "candidate_state": "CANDIDATE",
+        "source_access_class": "ABSTRACT_ONLY",
+        "read_status": "ABSTRACT_ONLY_READ",
+        "unused_in_activated_60_manifest": true,
+        "unused_in_pvs16": true
+      },
+      "preexisting_selection_rank_or_provenance": {
+        "ledger_path": "research/paper2/designed_source_candidate_ledger_v1.json",
+        "ledger_record_index_zero_based": 130,
+        "selection_order": "frozen ledger record order validated by paper2_designed_source_candidate_ledger_validate.py",
+        "slot_id": "CNC02",
+        "candidate_rank": 2
+      },
+      "assertion_carrier_schema_inspected_for_selection": false,
+      "claim_ir_created": false,
+      "human_review_completed": false,
+      "evidence_profile_created": false,
+      "grammar_mapping_started": false,
+      "layered_projection_started": false,
+      "assertion_carrier_validation_started": false
+    }
+  ],
+  "terminal": "AHV8_ADMISSION_FROZEN_AFTER_ASSERTION_CARRIER_SCHEMA_AND_BEFORE_CLAIMIR_EXTRACTION"
+}
