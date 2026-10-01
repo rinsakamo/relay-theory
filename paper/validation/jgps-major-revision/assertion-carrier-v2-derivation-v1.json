@@ -1,0 +1,84 @@
+{
+  "schema": "relay-theory.paper2.assertion_carrier_v2_derivation.v1",
+  "status": "FROZEN_DERIVATION_FROM_AHV8_V1_GAPS",
+  "authority_issue": 385,
+  "source_result_path": "paper/validation/jgps-major-revision/ahv8-assertion-carrier-heldout-validation-v1.json",
+  "source_terminal": "AHV8_HELDOUT_ASSERTION_CARRIER_REJECTS_V1_COMPLETENESS_WITH_11_OF_28_FULL_AND_17_GAPS",
+  "observed_gap_instances": 17,
+  "compression": [
+    {
+      "extension": "Allow L_claim argument binding typed THEORETICAL_ACCOUNT",
+      "closes_gap_reasons": [
+        "ARGUMENT_LAYER_L_CLAIM_OR_THEORY_OBJECT_MISSING"
+      ],
+      "observed_gap_occurrences": 4,
+      "new_top_level_layer": false,
+      "rationale": "L_claim already exists in the layered architecture; the change permits theory/model objects to be arguments of assertions without retyping them as system/context objects."
+    },
+    {
+      "extension": "TRANSFORMATION predicate family",
+      "closes_gap_reasons": [
+        "PREDICATE_MAPPING_OR_TRANSFORMATION_MISSING"
+      ],
+      "observed_gap_occurrences": 4,
+      "rationale": "A single typed family covers maps-to / input-output transformation assertions without conflating them with system-level K."
+    },
+    {
+      "extension": "DISTINCT qualifier on COMPARISON",
+      "closes_gap_reasons": [
+        "PREDICATE_DISTINCTION_MISSING",
+        "QUALIFIER_DISTINCT_OR_DIFFERENT_TARGET_MISSING"
+      ],
+      "observed_gap_occurrences": 2,
+      "rationale": "Explicit distinction composes with comparison; no separate DISTINCTION predicate is needed."
+    },
+    {
+      "extension": "directionality modifier",
+      "closes_gap_reasons": [
+        "QUALIFIER_INCREASES_MISSING",
+        "QUALIFIER_INCREASES_OR_FASTER_MISSING",
+        "QUALIFIER_DECREASES_MISSING",
+        "QUALIFIER_OPPOSITE_DIRECTION_MISSING",
+        "QUALIFIER_NEGATIVE_EFFECT_OR_LIMITATION_MISSING"
+      ],
+      "observed_gap_occurrences": 7,
+      "values": [
+        "INCREASES",
+        "DECREASES",
+        "OPPOSITE_DIRECTION"
+      ],
+      "rationale": "Direction is orthogonal to CHANGE, DEPENDENCE, or COMPARISON and therefore should not multiply predicate families."
+    },
+    {
+      "extension": "evaluation modifier",
+      "closes_gap_reasons": [
+        "QUALIFIER_BETTER_SUPPORTED_OR_PREFERENCE_MISSING",
+        "QUALIFIER_BETTER_FIT_OR_MODEL_PREFERENCE_MISSING"
+      ],
+      "observed_gap_occurrences": 2,
+      "dimensions": [
+        "EVIDENTIAL_SUPPORT",
+        "EMPIRICAL_FIT"
+      ],
+      "rationale": "Evaluative ordering is orthogonal to comparison and can identify a preferred existing argument plus the dimension of preference."
+    }
+  ],
+  "design_size": {
+    "new_predicate_families": 1,
+    "new_qualifiers": 1,
+    "new_argument_binding_layers": 1,
+    "new_claim_object_types": 1,
+    "new_structured_modifier_fields": 2,
+    "new_reference_roles": 0,
+    "new_context_classes": 0,
+    "new_top_level_architecture_layers": 0
+  },
+  "non_goals": [
+    "do not claim v2 complete",
+    "do not erase the v1 AHV-8 failure",
+    "do not use AHV-8 as independent validation of v2",
+    "do not modify Grammar v0",
+    "do not migrate ClaimIR v1"
+  ],
+  "terminal": "AHV8_GAPS_COMPRESSED_TO_ONE_PREDICATE_ONE_QUALIFIER_TWO_MODIFIERS_AND_LCLAIM_OBJECT_BINDING"
+}

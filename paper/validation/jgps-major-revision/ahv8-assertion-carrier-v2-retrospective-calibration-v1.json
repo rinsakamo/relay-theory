@@ -1,0 +1,753 @@
+{
+  "schema": "relay-theory.paper2.ahv8_assertion_carrier_v2_retrospective_calibration.v1",
+  "status": "FROZEN_RETROSPECTIVE_CALIBRATION_NOT_INDEPENDENT_VALIDATION",
+  "authority_issue": 385,
+  "generated_date": "2026-10-01",
+  "v1_heldout_source_path": "paper/validation/jgps-major-revision/ahv8-assertion-carrier-heldout-validation-v1.json",
+  "v1_heldout_source_blob_sha": "873464a4a03f90e24a0e900882b6d5673047873c",
+  "v2_schema_path": "paper/validation/jgps-major-revision/l-claim-assertion-carrier-schema-v2.json",
+  "calibration_boundary": {
+    "ahv8_relations": 28,
+    "v1_full_carryover": 11,
+    "v1_gaps_repaired": 17,
+    "v2_retrospective_full": 28,
+    "independent_v2_validation_claimed": false,
+    "note": "AHV-8 generated the v2 extension and therefore cannot validate it independently."
+  },
+  "repairs": [
+    {
+      "assertion_id": "AHV-MEM-01.r2",
+      "validation_claim_id": "AHV-MEM-01",
+      "claim_id": "AHV-MEM-01.C1",
+      "source_relation_id": "r2",
+      "source_kind": "differs",
+      "source_arguments": [
+        "limited_item_account",
+        "divisible_resource_account"
+      ],
+      "source_description": "the review contrasts a finite-item account with a continuously divisible-resource alternative",
+      "v1_gap_reasons": [
+        "ARGUMENT_LAYER_L_CLAIM_OR_THEORY_OBJECT_MISSING"
+      ],
+      "v2_carrier_status": "FULL",
+      "predicate_family": "COMPARISON",
+      "qualifiers": [
+        "DISTINCT"
+      ],
+      "directionality": null,
+      "evaluation": null,
+      "argument_bindings": [
+        {
+          "node_id": "limited_item_account",
+          "semantic_role": "SUBJECT",
+          "layer": "L_claim",
+          "claim_object_type": "THEORETICAL_ACCOUNT"
+        },
+        {
+          "node_id": "divisible_resource_account",
+          "semantic_role": "COMPARATOR",
+          "layer": "L_claim",
+          "claim_object_type": "THEORETICAL_ACCOUNT"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": []
+    },
+    {
+      "assertion_id": "AHV-MEM-01.r3",
+      "validation_claim_id": "AHV-MEM-01",
+      "claim_id": "AHV-MEM-01.C1",
+      "source_relation_id": "r3",
+      "source_kind": "other",
+      "source_arguments": [
+        "limited_item_account",
+        "divisible_resource_account"
+      ],
+      "source_description": "the reviewed empirical and neural-model evidence favors the finite-item account over the continuously divisible alternative",
+      "v1_gap_reasons": [
+        "ARGUMENT_LAYER_L_CLAIM_OR_THEORY_OBJECT_MISSING",
+        "QUALIFIER_BETTER_SUPPORTED_OR_PREFERENCE_MISSING"
+      ],
+      "v2_carrier_status": "FULL",
+      "predicate_family": "COMPARISON",
+      "qualifiers": [],
+      "directionality": null,
+      "evaluation": {
+        "dimension": "EVIDENTIAL_SUPPORT",
+        "preferred_argument": "limited_item_account"
+      },
+      "argument_bindings": [
+        {
+          "node_id": "limited_item_account",
+          "semantic_role": "SUBJECT",
+          "layer": "L_claim",
+          "claim_object_type": "THEORETICAL_ACCOUNT"
+        },
+        {
+          "node_id": "divisible_resource_account",
+          "semantic_role": "COMPARATOR",
+          "layer": "L_claim",
+          "claim_object_type": "THEORETICAL_ACCOUNT"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [
+        "reviewed empirical and neural-model evidence"
+      ]
+    },
+    {
+      "assertion_id": "AHV-SKL-01.r1",
+      "validation_claim_id": "AHV-SKL-01",
+      "claim_id": "AHV-SKL-01.C1",
+      "source_relation_id": "r1",
+      "source_kind": "changes",
+      "source_arguments": [
+        "exposure_history",
+        "stored_instances"
+      ],
+      "source_description": "additional practice increases the stock of stored exposure-specific representations",
+      "v1_gap_reasons": [
+        "QUALIFIER_INCREASES_MISSING"
+      ],
+      "v2_carrier_status": "FULL",
+      "predicate_family": "CHANGE",
+      "qualifiers": [],
+      "directionality": {
+        "kind": "INCREASES",
+        "target_argument": "stored_instances"
+      },
+      "evaluation": null,
+      "argument_bindings": [
+        {
+          "node_id": "exposure_history",
+          "semantic_role": "CHANGE_CONTEXT",
+          "layer": "L_ctx",
+          "context_placement": "RUN_BOUNDARY_OR_PREHISTORY",
+          "architecture_refinement": "accumulated prior practice"
+        },
+        {
+          "node_id": "stored_instances",
+          "semantic_role": "CHANGED_ENTITY",
+          "layer": "L_sys",
+          "system_role": "X"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": []
+    },
+    {
+      "assertion_id": "AHV-SKL-01.r4",
+      "validation_claim_id": "AHV-SKL-01",
+      "claim_id": "AHV-SKL-01.C1",
+      "source_relation_id": "r4",
+      "source_kind": "changes",
+      "source_arguments": [
+        "exposure_history",
+        "retrieval_speed"
+      ],
+      "source_description": "retrieval becomes faster as practice accumulates",
+      "v1_gap_reasons": [
+        "QUALIFIER_INCREASES_OR_FASTER_MISSING"
+      ],
+      "v2_carrier_status": "FULL",
+      "predicate_family": "CHANGE",
+      "qualifiers": [],
+      "directionality": {
+        "kind": "INCREASES",
+        "target_argument": "retrieval_speed"
+      },
+      "evaluation": null,
+      "argument_bindings": [
+        {
+          "node_id": "exposure_history",
+          "semantic_role": "CHANGE_CONTEXT",
+          "layer": "L_ctx",
+          "context_placement": "RUN_BOUNDARY_OR_PREHISTORY",
+          "architecture_refinement": "accumulated prior practice"
+        },
+        {
+          "node_id": "retrieval_speed",
+          "semantic_role": "CHANGED_ENTITY",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": []
+    },
+    {
+      "assertion_id": "AHV-ATT-01.r1",
+      "validation_claim_id": "AHV-ATT-01",
+      "claim_id": "AHV-ATT-01.C1",
+      "source_relation_id": "r1",
+      "source_kind": "changes",
+      "source_arguments": [
+        "perceptual_load",
+        "distractor_interference"
+      ],
+      "source_description": "higher perceptual demand reduces interference from irrelevant stimuli",
+      "v1_gap_reasons": [
+        "QUALIFIER_DECREASES_MISSING"
+      ],
+      "v2_carrier_status": "FULL",
+      "predicate_family": "CHANGE",
+      "qualifiers": [
+        "CONTEXT_INDEXED"
+      ],
+      "directionality": {
+        "kind": "DECREASES",
+        "target_argument": "distractor_interference"
+      },
+      "evaluation": null,
+      "argument_bindings": [
+        {
+          "node_id": "perceptual_load",
+          "semantic_role": "CHANGE_CONTEXT",
+          "layer": "L_ctx",
+          "context_placement": "EXPERIMENT_CONTEXT",
+          "architecture_refinement": null
+        },
+        {
+          "node_id": "distractor_interference",
+          "semantic_role": "CHANGED_ENTITY",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": []
+    },
+    {
+      "assertion_id": "AHV-ATT-01.r2",
+      "validation_claim_id": "AHV-ATT-01",
+      "claim_id": "AHV-ATT-01.C1",
+      "source_relation_id": "r2",
+      "source_kind": "changes",
+      "source_arguments": [
+        "memory_coordination_load",
+        "distractor_interference"
+      ],
+      "source_description": "greater memory or coordination demand increases interference from irrelevant stimuli",
+      "v1_gap_reasons": [
+        "QUALIFIER_INCREASES_MISSING"
+      ],
+      "v2_carrier_status": "FULL",
+      "predicate_family": "CHANGE",
+      "qualifiers": [
+        "CONTEXT_INDEXED"
+      ],
+      "directionality": {
+        "kind": "INCREASES",
+        "target_argument": "distractor_interference"
+      },
+      "evaluation": null,
+      "argument_bindings": [
+        {
+          "node_id": "memory_coordination_load",
+          "semantic_role": "CHANGE_CONTEXT",
+          "layer": "L_ctx",
+          "context_placement": "EXPERIMENT_CONTEXT",
+          "architecture_refinement": null
+        },
+        {
+          "node_id": "distractor_interference",
+          "semantic_role": "CHANGED_ENTITY",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": []
+    },
+    {
+      "assertion_id": "AHV-ATT-01.r3",
+      "validation_claim_id": "AHV-ATT-01",
+      "claim_id": "AHV-ATT-01.C1",
+      "source_relation_id": "r3",
+      "source_kind": "differs",
+      "source_arguments": [
+        "perceptual_load",
+        "memory_coordination_load",
+        "distractor_interference"
+      ],
+      "source_description": "the two load types have opposite reported effects on distractor interference",
+      "v1_gap_reasons": [
+        "QUALIFIER_OPPOSITE_DIRECTION_MISSING"
+      ],
+      "v2_carrier_status": "FULL",
+      "predicate_family": "COMPARISON",
+      "qualifiers": [],
+      "directionality": {
+        "kind": "OPPOSITE_DIRECTION",
+        "target_argument": "distractor_interference"
+      },
+      "evaluation": null,
+      "argument_bindings": [
+        {
+          "node_id": "perceptual_load",
+          "semantic_role": "SUBJECT",
+          "layer": "L_ctx",
+          "context_placement": "EXPERIMENT_CONTEXT",
+          "architecture_refinement": null
+        },
+        {
+          "node_id": "memory_coordination_load",
+          "semantic_role": "COMPARATOR",
+          "layer": "L_ctx",
+          "context_placement": "EXPERIMENT_CONTEXT",
+          "architecture_refinement": null
+        },
+        {
+          "node_id": "distractor_interference",
+          "semantic_role": "OUTCOME",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": []
+    },
+    {
+      "assertion_id": "AHV-ATT-01.r4",
+      "validation_claim_id": "AHV-ATT-01",
+      "claim_id": "AHV-ATT-01.C1",
+      "source_relation_id": "r4",
+      "source_kind": "depends_on",
+      "source_arguments": [
+        "priority_maintenance_process",
+        "memory_coordination_load"
+      ],
+      "source_description": "maintenance of current priorities is limited when concurrent cognitive demand consumes the resources available for that process",
+      "v1_gap_reasons": [
+        "QUALIFIER_NEGATIVE_EFFECT_OR_LIMITATION_MISSING"
+      ],
+      "v2_carrier_status": "FULL",
+      "predicate_family": "DEPENDENCE",
+      "qualifiers": [
+        "CONTEXT_INDEXED"
+      ],
+      "directionality": {
+        "kind": "DECREASES",
+        "target_argument": "priority_maintenance_process"
+      },
+      "evaluation": null,
+      "argument_bindings": [
+        {
+          "node_id": "priority_maintenance_process",
+          "semantic_role": "DEPENDENT",
+          "layer": "L_sys",
+          "system_role": "X"
+        },
+        {
+          "node_id": "memory_coordination_load",
+          "semantic_role": "CONDITIONING_FACTOR",
+          "layer": "L_ctx",
+          "context_placement": "EXPERIMENT_CONTEXT",
+          "architecture_refinement": null
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": []
+    },
+    {
+      "assertion_id": "AHV-PRD-01.r2",
+      "validation_claim_id": "AHV-PRD-01",
+      "claim_id": "AHV-PRD-01.C1",
+      "source_relation_id": "r2",
+      "source_kind": "maps_to",
+      "source_arguments": [
+        "predictive_representation",
+        "current_motor_state",
+        "outgoing_motor_command",
+        "predicted_next_state"
+      ],
+      "source_description": "the predictive representation maps current state and command information into a prediction of the next state",
+      "v1_gap_reasons": [
+        "PREDICATE_MAPPING_OR_TRANSFORMATION_MISSING"
+      ],
+      "v2_carrier_status": "FULL",
+      "predicate_family": "TRANSFORMATION",
+      "qualifiers": [],
+      "directionality": null,
+      "evaluation": null,
+      "argument_bindings": [
+        {
+          "node_id": "predictive_representation",
+          "semantic_role": "SUBJECT",
+          "layer": "L_sys",
+          "system_role": "X"
+        },
+        {
+          "node_id": "current_motor_state",
+          "semantic_role": "CONDITIONING_FACTOR",
+          "layer": "L_sys",
+          "system_role": "X"
+        },
+        {
+          "node_id": "outgoing_motor_command",
+          "semantic_role": "CONDITIONING_FACTOR",
+          "layer": "L_sys",
+          "system_role": "P_in"
+        },
+        {
+          "node_id": "predicted_next_state",
+          "semantic_role": "OUTCOME",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": []
+    },
+    {
+      "assertion_id": "AHV-CTL-01.r1",
+      "validation_claim_id": "AHV-CTL-01",
+      "claim_id": "AHV-CTL-01.C1",
+      "source_relation_id": "r1",
+      "source_kind": "changes",
+      "source_arguments": [
+        "practice_amount",
+        "pathway_strength"
+      ],
+      "source_description": "processing-pathway strength increases as training accumulates",
+      "v1_gap_reasons": [
+        "QUALIFIER_INCREASES_MISSING"
+      ],
+      "v2_carrier_status": "FULL",
+      "predicate_family": "CHANGE",
+      "qualifiers": [],
+      "directionality": {
+        "kind": "INCREASES",
+        "target_argument": "pathway_strength"
+      },
+      "evaluation": null,
+      "argument_bindings": [
+        {
+          "node_id": "practice_amount",
+          "semantic_role": "CHANGE_CONTEXT",
+          "layer": "L_ctx",
+          "context_placement": "RUN_BOUNDARY_OR_PREHISTORY",
+          "architecture_refinement": "accumulated training"
+        },
+        {
+          "node_id": "pathway_strength",
+          "semantic_role": "CHANGED_ENTITY",
+          "layer": "L_sys",
+          "system_role": "X"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": []
+    },
+    {
+      "assertion_id": "AHV-BLF-01.r1",
+      "validation_claim_id": "AHV-BLF-01",
+      "claim_id": "AHV-BLF-01.C1",
+      "source_relation_id": "r1",
+      "source_kind": "distinguishes",
+      "source_arguments": [
+        "relation_existence",
+        "relation_strength"
+      ],
+      "source_description": "the framework distinguishes the existence of a causal relation from its strength",
+      "v1_gap_reasons": [
+        "PREDICATE_DISTINCTION_MISSING"
+      ],
+      "v2_carrier_status": "FULL",
+      "predicate_family": "COMPARISON",
+      "qualifiers": [
+        "DISTINCT"
+      ],
+      "directionality": null,
+      "evaluation": null,
+      "argument_bindings": [
+        {
+          "node_id": "relation_existence",
+          "semantic_role": "SUBJECT",
+          "layer": "L_sys",
+          "system_role": "X"
+        },
+        {
+          "node_id": "relation_strength",
+          "semantic_role": "COMPARATOR",
+          "layer": "L_sys",
+          "system_role": "X"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": []
+    },
+    {
+      "assertion_id": "AHV-BLF-01.r2",
+      "validation_claim_id": "AHV-BLF-01",
+      "claim_id": "AHV-BLF-01.C1",
+      "source_relation_id": "r2",
+      "source_kind": "maps_to",
+      "source_arguments": [
+        "contingency_evidence",
+        "structure_assessment"
+      ],
+      "source_description": "one rational model maps contingency evidence to an assessment of relation existence",
+      "v1_gap_reasons": [
+        "PREDICATE_MAPPING_OR_TRANSFORMATION_MISSING"
+      ],
+      "v2_carrier_status": "FULL",
+      "predicate_family": "TRANSFORMATION",
+      "qualifiers": [],
+      "directionality": null,
+      "evaluation": null,
+      "argument_bindings": [
+        {
+          "node_id": "contingency_evidence",
+          "semantic_role": "SUBJECT",
+          "layer": "L_sys",
+          "system_role": "X"
+        },
+        {
+          "node_id": "structure_assessment",
+          "semantic_role": "OUTCOME",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": []
+    },
+    {
+      "assertion_id": "AHV-BLF-01.r3",
+      "validation_claim_id": "AHV-BLF-01",
+      "claim_id": "AHV-BLF-01.C1",
+      "source_relation_id": "r3",
+      "source_kind": "maps_to",
+      "source_arguments": [
+        "contingency_evidence",
+        "strength_estimate"
+      ],
+      "source_description": "other rational measures map contingency evidence to an estimate of relation strength",
+      "v1_gap_reasons": [
+        "PREDICATE_MAPPING_OR_TRANSFORMATION_MISSING"
+      ],
+      "v2_carrier_status": "FULL",
+      "predicate_family": "TRANSFORMATION",
+      "qualifiers": [],
+      "directionality": null,
+      "evaluation": null,
+      "argument_bindings": [
+        {
+          "node_id": "contingency_evidence",
+          "semantic_role": "SUBJECT",
+          "layer": "L_sys",
+          "system_role": "X"
+        },
+        {
+          "node_id": "strength_estimate",
+          "semantic_role": "OUTCOME",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": []
+    },
+    {
+      "assertion_id": "AHV-BLF-01.r4",
+      "validation_claim_id": "AHV-BLF-01",
+      "claim_id": "AHV-BLF-01.C1",
+      "source_relation_id": "r4",
+      "source_kind": "differs",
+      "source_arguments": [
+        "structure_assessment",
+        "strength_estimate"
+      ],
+      "source_description": "the source treats structure assessment and strength estimation as different inferential targets",
+      "v1_gap_reasons": [
+        "QUALIFIER_DISTINCT_OR_DIFFERENT_TARGET_MISSING"
+      ],
+      "v2_carrier_status": "FULL",
+      "predicate_family": "COMPARISON",
+      "qualifiers": [
+        "DISTINCT"
+      ],
+      "directionality": null,
+      "evaluation": null,
+      "argument_bindings": [
+        {
+          "node_id": "structure_assessment",
+          "semantic_role": "SUBJECT",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        },
+        {
+          "node_id": "strength_estimate",
+          "semantic_role": "COMPARATOR",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": []
+    },
+    {
+      "assertion_id": "AHV-CNC-01.r1",
+      "validation_claim_id": "AHV-CNC-01",
+      "claim_id": "AHV-CNC-01.C1",
+      "source_relation_id": "r1",
+      "source_kind": "maps_to",
+      "source_arguments": [
+        "probe_item",
+        "stored_exemplars",
+        "similarity_relation",
+        "retrieved_information"
+      ],
+      "source_description": "the probe retrieves information from stored instances according to their similarity to the probe",
+      "v1_gap_reasons": [
+        "PREDICATE_MAPPING_OR_TRANSFORMATION_MISSING"
+      ],
+      "v2_carrier_status": "FULL",
+      "predicate_family": "TRANSFORMATION",
+      "qualifiers": [],
+      "directionality": null,
+      "evaluation": null,
+      "argument_bindings": [
+        {
+          "node_id": "probe_item",
+          "semantic_role": "INDEX_CONTEXT",
+          "layer": "L_ctx",
+          "context_placement": "WORLD_CONTEXT",
+          "architecture_refinement": "classification probe"
+        },
+        {
+          "node_id": "stored_exemplars",
+          "semantic_role": "CONDITIONING_FACTOR",
+          "layer": "L_sys",
+          "system_role": "X"
+        },
+        {
+          "node_id": "similarity_relation",
+          "semantic_role": "CONDITIONING_FACTOR",
+          "layer": "L_sys",
+          "system_role": "K"
+        },
+        {
+          "node_id": "retrieved_information",
+          "semantic_role": "OUTCOME",
+          "layer": "L_sys",
+          "system_role": "X"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": []
+    },
+    {
+      "assertion_id": "AHV-CNC-01.r3",
+      "validation_claim_id": "AHV-CNC-01",
+      "claim_id": "AHV-CNC-01.C1",
+      "source_relation_id": "r3",
+      "source_kind": "differs",
+      "source_arguments": [
+        "exemplar_account",
+        "additive_feature_account"
+      ],
+      "source_description": "the source contrasts an instance-based account with an additive component-feature alternative",
+      "v1_gap_reasons": [
+        "ARGUMENT_LAYER_L_CLAIM_OR_THEORY_OBJECT_MISSING"
+      ],
+      "v2_carrier_status": "FULL",
+      "predicate_family": "COMPARISON",
+      "qualifiers": [
+        "DISTINCT"
+      ],
+      "directionality": null,
+      "evaluation": null,
+      "argument_bindings": [
+        {
+          "node_id": "exemplar_account",
+          "semantic_role": "SUBJECT",
+          "layer": "L_claim",
+          "claim_object_type": "THEORETICAL_ACCOUNT"
+        },
+        {
+          "node_id": "additive_feature_account",
+          "semantic_role": "COMPARATOR",
+          "layer": "L_claim",
+          "claim_object_type": "THEORETICAL_ACCOUNT"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": []
+    },
+    {
+      "assertion_id": "AHV-CNC-01.r4",
+      "validation_claim_id": "AHV-CNC-01",
+      "claim_id": "AHV-CNC-01.C1",
+      "source_relation_id": "r4",
+      "source_kind": "other",
+      "source_arguments": [
+        "exemplar_account",
+        "additive_feature_account"
+      ],
+      "source_description": "across the reported experiments the instance-based account provides a better account of the data than the additive alternative",
+      "v1_gap_reasons": [
+        "ARGUMENT_LAYER_L_CLAIM_OR_THEORY_OBJECT_MISSING",
+        "QUALIFIER_BETTER_FIT_OR_MODEL_PREFERENCE_MISSING"
+      ],
+      "v2_carrier_status": "FULL",
+      "predicate_family": "COMPARISON",
+      "qualifiers": [],
+      "directionality": null,
+      "evaluation": {
+        "dimension": "EMPIRICAL_FIT",
+        "preferred_argument": "exemplar_account"
+      },
+      "argument_bindings": [
+        {
+          "node_id": "exemplar_account",
+          "semantic_role": "SUBJECT",
+          "layer": "L_claim",
+          "claim_object_type": "THEORETICAL_ACCOUNT"
+        },
+        {
+          "node_id": "additive_feature_account",
+          "semantic_role": "COMPARATOR",
+          "layer": "L_claim",
+          "claim_object_type": "THEORETICAL_ACCOUNT"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [
+        "across the reported experiments"
+      ]
+    }
+  ],
+  "extension_usage_counts": {
+    "TRANSFORMATION": 4,
+    "DISTINCT": 4,
+    "directionality": 7,
+    "evaluation": 2,
+    "l_claim_object_binding": 4
+  },
+  "interpretation": {
+    "closure": "All 17 frozen v1 gaps are representable under the minimal v2 extension without changing ClaimIR or Grammar v0.",
+    "compression": "Seventeen relation failures are covered by one new predicate family, one qualifier, two orthogonal modifier fields, and binding to the already-existing L_claim layer for theoretical accounts.",
+    "non_result": "28/28 retrospective closure is calibration evidence only and must not be reported as independent v2 validation.",
+    "next_required_step": "Freeze a new post-v2 held-out source admission before extraction or v2 mapping."
+  },
+  "terminal": "AHV8_V2_RETROSPECTIVE_CALIBRATION_CLOSES_17_OF_17_V1_GAPS_WITH_MINIMAL_EXTENSION"
+}
