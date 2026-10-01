@@ -1,0 +1,927 @@
+{
+  "schema": "relay-theory.paper2.ahv2_8_assertion_carrier_v2_target_freeze.v1",
+  "status": "FROZEN_BEFORE_CARRIER_MAPPING",
+  "owner_issue": 394,
+  "authority": {
+    "v2_schema_path": "paper/validation/jgps-major-revision/l-claim-assertion-carrier-schema-v2.json",
+    "v2_schema_blob_sha": "058e0bd1514fcfaf57a4e87e366920b2fbcda274",
+    "v2_freeze_main_commit": "ad1c11789814413b1d9fd3ca8a4cfb6f7316f230",
+    "ahv2_admission_path": "paper/validation/jgps-major-revision/ahv2-8-admission-v1.json",
+    "admission_blob_sha": "12795aa15066ec92a40065dd9a64f41dd9d523e1",
+    "admission_main_commit": "b12bf942fdedbc3c23d83a973949537acc06bbd3",
+    "ahv2_author_review_path": "paper/validation/jgps-major-revision/ahv2-8-human-review-progress-v1.json",
+    "review_progress_blob_sha": "954487b3204fa12eac7255955f23b0eec29f7e50",
+    "reviewed_main_commit": "8f7ab1ee7f006c3b61dbc64865aaa703887df301"
+  },
+  "selection_rule": "All reviewed relations of all eight admitted and human-reviewed AHV2-8 sources, including PRD r7; no post-mapping selection or removal.",
+  "carrier_mapping_started": false,
+  "carrier_v2_schema_tuning_forbidden": true,
+  "status_scope": "Post-v2 source admission and author-reviewed relational target. Mapping adjudicated by the same assistant; not an independent assessor.",
+  "summary": {
+    "claims": 8,
+    "relations": 34,
+    "per_claim": [
+      {
+        "validation_claim_id": "AHV2-MEM-01",
+        "relations": 4
+      },
+      {
+        "validation_claim_id": "AHV2-LRN-01",
+        "relations": 3
+      },
+      {
+        "validation_claim_id": "AHV2-SKL-01",
+        "relations": 5
+      },
+      {
+        "validation_claim_id": "AHV2-ATT-01",
+        "relations": 3
+      },
+      {
+        "validation_claim_id": "AHV2-PRD-01",
+        "relations": 7
+      },
+      {
+        "validation_claim_id": "AHV2-CTL-01",
+        "relations": 4
+      },
+      {
+        "validation_claim_id": "AHV2-BLF-01",
+        "relations": 4
+      },
+      {
+        "validation_claim_id": "AHV2-CNC-01",
+        "relations": 4
+      }
+    ]
+  },
+  "claims": [
+    {
+      "validation_claim_id": "AHV2-MEM-01",
+      "claim_id": "AHV2-MEM-01.C1",
+      "reviewed_claimir_blob_sha": "c34d2d48b557544b2070e5919ffe33b347b2c330",
+      "source_identity": "DOI:10.1038/nn.3655",
+      "source_nodes": [
+        {
+          "id": "fixed_item_account",
+          "claimir_role": "other",
+          "description": "account in which brief maintenance has a fixed small item limit"
+        },
+        {
+          "id": "flexible_resource_account",
+          "claimir_role": "other",
+          "description": "account in which a limited maintenance resource is flexibly distributed across maintained items"
+        },
+        {
+          "id": "maintained_item_set",
+          "claimir_role": "condition",
+          "description": "set of items currently required to be maintained"
+        },
+        {
+          "id": "resource_allocation",
+          "claimir_role": "state_or_structure",
+          "description": "distribution of a limited maintenance resource across currently maintained items"
+        },
+        {
+          "id": "representation_quality",
+          "claimir_role": "state_or_structure",
+          "description": "quality or precision of the maintained representations"
+        },
+        {
+          "id": "task_performance",
+          "claimir_role": "response_or_outcome",
+          "description": "behavioral performance on the maintenance task"
+        },
+        {
+          "id": "limited_resource",
+          "claimir_role": "state_or_structure",
+          "description": "limited maintenance resource distributed across the currently maintained items"
+        },
+        {
+          "id": "represented_item_quantity",
+          "claimir_role": "state_or_structure",
+          "description": "number of represented items as contrasted with representation quality in the resource proposal"
+        }
+      ],
+      "relations": [
+        {
+          "assertion_id": "AHV2-MEM-01.r1",
+          "source_relation_id": "r1",
+          "source_kind": "differs",
+          "source_arguments": [
+            "fixed_item_account",
+            "flexible_resource_account"
+          ],
+          "source_description": "the review contrasts a fixed item-limit account with a flexibly distributed resource account",
+          "source_span_ids": [
+            "s1"
+          ]
+        },
+        {
+          "assertion_id": "AHV2-MEM-01.r2",
+          "source_relation_id": "r2",
+          "source_kind": "maps_to",
+          "source_arguments": [
+            "limited_resource",
+            "maintained_item_set",
+            "resource_allocation"
+          ],
+          "source_description": "the limited resource is distributed across the items that must be maintained",
+          "source_span_ids": [
+            "s1"
+          ]
+        },
+        {
+          "assertion_id": "AHV2-MEM-01.r3",
+          "source_relation_id": "r3",
+          "source_kind": "depends_on",
+          "source_arguments": [
+            "representation_quality",
+            "resource_allocation"
+          ],
+          "source_description": "representational quality varies with allocation of the limited resource",
+          "source_span_ids": [
+            "s1",
+            "s2"
+          ]
+        },
+        {
+          "assertion_id": "AHV2-MEM-01.r4",
+          "source_relation_id": "r4",
+          "source_kind": "depends_on",
+          "source_arguments": [
+            "task_performance",
+            "representation_quality",
+            "represented_item_quantity"
+          ],
+          "source_description": "under the resource proposal, performance is determined by representational quality rather than item quantity",
+          "source_span_ids": [
+            "s2"
+          ]
+        }
+      ]
+    },
+    {
+      "validation_claim_id": "AHV2-LRN-01",
+      "claim_id": "AHV2-LRN-01.C1",
+      "reviewed_claimir_blob_sha": "929ae5de0a4e09ca28933b32df051c930d20b61e",
+      "source_identity": "DOI:10.1016/S0896-6273(03)00169-7",
+      "source_nodes": [
+        {
+          "id": "learning_stage",
+          "claimir_role": "condition",
+          "description": "stage before versus after acquisition of the cue-reward prediction"
+        },
+        {
+          "id": "reward_delivery",
+          "claimir_role": "condition",
+          "description": "delivery of the appetitive reward"
+        },
+        {
+          "id": "conditioned_cue",
+          "claimir_role": "condition",
+          "description": "cue that predicts the later reward after learning"
+        },
+        {
+          "id": "prediction_error_signal",
+          "claimir_role": "state_or_structure",
+          "description": "model-derived discrepancy signal used in reward-related learning"
+        },
+        {
+          "id": "error_signal_timing",
+          "claimir_role": "response_or_outcome",
+          "description": "event time at which the prediction-error signal is expressed"
+        },
+        {
+          "id": "ventral_striatal_response",
+          "claimir_role": "response_or_outcome",
+          "description": "measured response in ventral striatum"
+        },
+        {
+          "id": "orbitofrontal_response",
+          "claimir_role": "response_or_outcome",
+          "description": "measured response in orbitofrontal cortex"
+        }
+      ],
+      "relations": [
+        {
+          "assertion_id": "AHV2-LRN-01.r1",
+          "source_relation_id": "r1",
+          "source_kind": "changes",
+          "source_arguments": [
+            "learning_stage",
+            "prediction_error_signal",
+            "reward_delivery",
+            "conditioned_cue",
+            "error_signal_timing"
+          ],
+          "source_description": "with learning, the error-signal response shifts from reward delivery to conditioned-cue onset",
+          "source_span_ids": [
+            "s1"
+          ]
+        },
+        {
+          "assertion_id": "AHV2-LRN-01.r2",
+          "source_relation_id": "r2",
+          "source_kind": "other",
+          "source_arguments": [
+            "ventral_striatal_response",
+            "prediction_error_signal"
+          ],
+          "source_description": "ventral-striatal response is significantly correlated with the modeled error signal",
+          "source_span_ids": [
+            "s3"
+          ]
+        },
+        {
+          "assertion_id": "AHV2-LRN-01.r3",
+          "source_relation_id": "r3",
+          "source_kind": "other",
+          "source_arguments": [
+            "orbitofrontal_response",
+            "prediction_error_signal"
+          ],
+          "source_description": "orbitofrontal response is significantly correlated with the modeled error signal",
+          "source_span_ids": [
+            "s3"
+          ]
+        }
+      ]
+    },
+    {
+      "validation_claim_id": "AHV2-SKL-01",
+      "claim_id": "AHV2-SKL-01.C1",
+      "reviewed_claimir_blob_sha": "918b4742612fd751ee7edd27b116d2b66ed9dce9",
+      "source_identity": "DOI:10.1037/0033-295X.84.2.127",
+      "source_nodes": [
+        {
+          "id": "controlled_search",
+          "claimir_role": "state_or_structure",
+          "description": "controlled mode of search requiring active processing"
+        },
+        {
+          "id": "automatic_detection",
+          "claimir_role": "state_or_structure",
+          "description": "learned automatic mode of detecting relevant information"
+        },
+        {
+          "id": "practice_history",
+          "claimir_role": "condition",
+          "description": "accumulated experience during perceptual learning"
+        },
+        {
+          "id": "automatic_attention_response",
+          "claimir_role": "state_or_structure",
+          "description": "learned attending response that can be elicited automatically"
+        },
+        {
+          "id": "category_learning",
+          "claimir_role": "condition",
+          "description": "acquisition of category structure during training"
+        },
+        {
+          "id": "controlled_search_performance",
+          "claimir_role": "response_or_outcome",
+          "description": "performance of controlled search"
+        },
+        {
+          "id": "focused_attention",
+          "claimir_role": "state_or_structure",
+          "description": "focused attention subject to interference from automatically elicited attending responses"
+        }
+      ],
+      "relations": [
+        {
+          "assertion_id": "AHV2-SKL-01.r1",
+          "source_relation_id": "r1",
+          "source_kind": "differs",
+          "source_arguments": [
+            "controlled_search",
+            "automatic_detection"
+          ],
+          "source_description": "the reported experiments demonstrate a qualitative difference between controlled search and automatic detection",
+          "source_span_ids": [
+            "s1"
+          ]
+        },
+        {
+          "assertion_id": "AHV2-SKL-01.r2",
+          "source_relation_id": "r2",
+          "source_kind": "changes",
+          "source_arguments": [
+            "practice_history",
+            "automatic_detection"
+          ],
+          "source_description": "automatic detection is acquired over the course of training",
+          "source_span_ids": [
+            "s2"
+          ]
+        },
+        {
+          "assertion_id": "AHV2-SKL-01.r3",
+          "source_relation_id": "r3",
+          "source_kind": "depends_on",
+          "source_arguments": [
+            "automatic_detection",
+            "automatic_attention_response"
+          ],
+          "source_description": "automatic detection depends on attending responses",
+          "source_span_ids": [
+            "s3"
+          ]
+        },
+        {
+          "assertion_id": "AHV2-SKL-01.r4",
+          "source_relation_id": "r4",
+          "source_kind": "constrains",
+          "source_arguments": [
+            "automatic_attention_response",
+            "controlled_search",
+            "focused_attention"
+          ],
+          "source_description": "automatic attending can interrupt controlled processing and interfere with focused attention",
+          "source_span_ids": [
+            "s3"
+          ]
+        },
+        {
+          "assertion_id": "AHV2-SKL-01.r5",
+          "source_relation_id": "r5",
+          "source_kind": "changes",
+          "source_arguments": [
+            "category_learning",
+            "controlled_search_performance"
+          ],
+          "source_description": "learning category structure improves controlled-search performance",
+          "source_span_ids": [
+            "s4"
+          ]
+        }
+      ]
+    },
+    {
+      "validation_claim_id": "AHV2-ATT-01",
+      "claim_id": "AHV2-ATT-01.C1",
+      "reviewed_claimir_blob_sha": "a84ba238de780577543b0045cd4e4b5887fe8912",
+      "source_identity": "DOI:10.1037/0033-2909.116.2.220",
+      "source_nodes": [
+        {
+          "id": "dual_task_condition",
+          "claimir_role": "condition",
+          "description": "requirement to perform two simple tasks concurrently"
+        },
+        {
+          "id": "task_interference",
+          "claimir_role": "response_or_outcome",
+          "description": "performance interference observed under concurrent task demands"
+        },
+        {
+          "id": "central_bottleneck",
+          "claimir_role": "state_or_structure",
+          "description": "processing bottleneck identified by refractory-period evidence"
+        },
+        {
+          "id": "action_selection_operation",
+          "claimir_role": "state_or_structure",
+          "description": "operation of selecting an action or response"
+        },
+        {
+          "id": "memory_retrieval_operation",
+          "claimir_role": "state_or_structure",
+          "description": "memory retrieval operation implicated in the bottleneck"
+        },
+        {
+          "id": "task_preparation_limit",
+          "claimir_role": "state_or_structure",
+          "description": "limitation arising from task preparation"
+        },
+        {
+          "id": "sensory_perceptual_limit",
+          "claimir_role": "state_or_structure",
+          "description": "limitation arising from sensory or perceptual processing"
+        },
+        {
+          "id": "timing_limit",
+          "claimir_role": "state_or_structure",
+          "description": "limitation arising from timing constraints"
+        }
+      ],
+      "relations": [
+        {
+          "assertion_id": "AHV2-ATT-01.r1",
+          "source_relation_id": "r1",
+          "source_kind": "changes",
+          "source_arguments": [
+            "dual_task_condition",
+            "task_interference"
+          ],
+          "source_description": "concurrent performance increases interference even for relatively simple tasks",
+          "source_span_ids": [
+            "s1"
+          ]
+        },
+        {
+          "assertion_id": "AHV2-ATT-01.r2",
+          "source_relation_id": "r2",
+          "source_kind": "other",
+          "source_arguments": [
+            "central_bottleneck",
+            "action_selection_operation",
+            "memory_retrieval_operation"
+          ],
+          "source_description": "the identified bottleneck encompasses action selection and probably memory retrieval",
+          "source_span_ids": [
+            "s2"
+          ]
+        },
+        {
+          "assertion_id": "AHV2-ATT-01.r3",
+          "source_relation_id": "r3",
+          "source_kind": "other",
+          "source_arguments": [
+            "task_preparation_limit",
+            "sensory_perceptual_limit",
+            "timing_limit",
+            "task_interference"
+          ],
+          "source_description": "other preparation, perceptual, and timing limitations can generate additional distinct forms of interference",
+          "source_span_ids": [
+            "s3"
+          ]
+        }
+      ]
+    },
+    {
+      "validation_claim_id": "AHV2-PRD-01",
+      "claim_id": "AHV2-PRD-01.C1",
+      "reviewed_claimir_blob_sha": "70b3acead13271ddd3f76890e4d2fe2eb4159e0e",
+      "source_identity": "DOI:10.1162/089892999563607",
+      "source_nodes": [
+        {
+          "id": "self_produced_condition",
+          "claimir_role": "condition",
+          "description": "tactile stimulation produced through the participant's own action"
+        },
+        {
+          "id": "external_condition",
+          "claimir_role": "condition",
+          "description": "comparable tactile stimulation produced externally"
+        },
+        {
+          "id": "tactile_intensity_rating",
+          "claimir_role": "response_or_outcome",
+          "description": "rated intensity of the tactile sensation"
+        },
+        {
+          "id": "tickliness_rating",
+          "claimir_role": "response_or_outcome",
+          "description": "rated tickliness of the tactile sensation"
+        },
+        {
+          "id": "temporal_delay",
+          "claimir_role": "condition",
+          "description": "delay between producing movement and tactile consequence"
+        },
+        {
+          "id": "trajectory_perturbation",
+          "claimir_role": "condition",
+          "description": "spatial perturbation between producing movement and tactile consequence"
+        },
+        {
+          "id": "spatiotemporal_correspondence",
+          "claimir_role": "state_or_structure",
+          "description": "degree of temporal and spatial correspondence between motor command and tactile consequence"
+        },
+        {
+          "id": "predicted_sensory_feedback",
+          "claimir_role": "state_or_structure",
+          "description": "sensory consequence predicted from the motor system model"
+        },
+        {
+          "id": "actual_sensory_feedback",
+          "claimir_role": "available_information",
+          "description": "sensory feedback actually produced by the movement"
+        },
+        {
+          "id": "prediction_error",
+          "claimir_role": "state_or_structure",
+          "description": "difference between predicted and actual sensory feedback"
+        },
+        {
+          "id": "sensory_attenuation",
+          "claimir_role": "response_or_outcome",
+          "description": "reduction in perceived intensity of self-produced tactile stimulation"
+        },
+        {
+          "id": "pleasantness_rating",
+          "claimir_role": "response_or_outcome",
+          "description": "rated pleasantness of the tactile sensation"
+        }
+      ],
+      "relations": [
+        {
+          "assertion_id": "AHV2-PRD-01.r1",
+          "source_relation_id": "r1",
+          "source_kind": "differs",
+          "source_arguments": [
+            "self_produced_condition",
+            "external_condition",
+            "tactile_intensity_rating",
+            "tickliness_rating",
+            "pleasantness_rating"
+          ],
+          "source_description": "self-produced tactile stimulation is rated less intense, tickly, and pleasant than externally produced stimulation",
+          "source_span_ids": [
+            "s1"
+          ]
+        },
+        {
+          "assertion_id": "AHV2-PRD-01.r2",
+          "source_relation_id": "r2",
+          "source_kind": "changes",
+          "source_arguments": [
+            "temporal_delay",
+            "tickliness_rating"
+          ],
+          "source_description": "tickliness increases as temporal delay is increased",
+          "source_span_ids": [
+            "s2"
+          ]
+        },
+        {
+          "assertion_id": "AHV2-PRD-01.r3",
+          "source_relation_id": "r3",
+          "source_kind": "changes",
+          "source_arguments": [
+            "trajectory_perturbation",
+            "tickliness_rating"
+          ],
+          "source_description": "tickliness increases as trajectory perturbation is increased",
+          "source_span_ids": [
+            "s2"
+          ]
+        },
+        {
+          "assertion_id": "AHV2-PRD-01.r4",
+          "source_relation_id": "r4",
+          "source_kind": "depends_on",
+          "source_arguments": [
+            "sensory_attenuation",
+            "spatiotemporal_correspondence"
+          ],
+          "source_description": "attenuation requires sufficient temporal and spatial correspondence between motor command and tactile consequence",
+          "source_span_ids": [
+            "s3"
+          ]
+        },
+        {
+          "assertion_id": "AHV2-PRD-01.r5",
+          "source_relation_id": "r5",
+          "source_kind": "depends_on",
+          "source_arguments": [
+            "prediction_error",
+            "predicted_sensory_feedback",
+            "actual_sensory_feedback"
+          ],
+          "source_description": "prediction error is defined by the mismatch between predicted and actual sensory feedback",
+          "source_span_ids": [
+            "s4"
+          ]
+        },
+        {
+          "assertion_id": "AHV2-PRD-01.r6",
+          "source_relation_id": "r6",
+          "source_kind": "depends_on",
+          "source_arguments": [
+            "sensory_attenuation",
+            "prediction_error"
+          ],
+          "source_description": "in the authors' proposed forward-model account, greater prediction error is associated with less sensory attenuation (inverse directional relationship)",
+          "source_span_ids": [
+            "s4"
+          ]
+        },
+        {
+          "assertion_id": "AHV2-PRD-01.r7",
+          "source_relation_id": "r7",
+          "source_kind": "depends_on",
+          "source_arguments": [
+            "tickliness_rating",
+            "prediction_error"
+          ],
+          "source_description": "in the authors' proposed forward-model account, tickliness increases with the error between predicted and actual sensory feedback",
+          "source_span_ids": [
+            "s4"
+          ]
+        }
+      ]
+    },
+    {
+      "validation_claim_id": "AHV2-CTL-01",
+      "claim_id": "AHV2-CTL-01.C1",
+      "reviewed_claimir_blob_sha": "2c9f60b7cd1a1e02ff445112d44c97da782fe79a",
+      "source_identity": "DOI:10.3758/CABN.4.4.564",
+      "source_nodes": [
+        {
+          "id": "rule_learning",
+          "claimir_role": "state_or_structure",
+          "description": "acquisition of action-guiding rule knowledge"
+        },
+        {
+          "id": "rule_retrieval",
+          "claimir_role": "state_or_structure",
+          "description": "retrieval of rule knowledge from long-term memory"
+        },
+        {
+          "id": "online_rule_maintenance",
+          "claimir_role": "state_or_structure",
+          "description": "online maintenance of rule information during task preparation"
+        },
+        {
+          "id": "vlpfc_engagement",
+          "claimir_role": "response_or_outcome",
+          "description": "involvement of ventrolateral prefrontal cortex in rule-related processing"
+        },
+        {
+          "id": "frontotemporal_interaction",
+          "claimir_role": "state_or_structure",
+          "description": "interaction between ventrolateral prefrontal and temporal cortex during retrieval"
+        },
+        {
+          "id": "posterior_temporal_rule_representation",
+          "claimir_role": "state_or_structure",
+          "description": "rule knowledge represented in posterior middle temporal cortex"
+        },
+        {
+          "id": "rule_based_response_selection",
+          "claimir_role": "state_or_structure",
+          "description": "selection of a response according to the current rule"
+        },
+        {
+          "id": "dlpfc_engagement",
+          "claimir_role": "response_or_outcome",
+          "description": "involvement of dorsolateral prefrontal cortex in rule-related processing"
+        }
+      ],
+      "relations": [
+        {
+          "assertion_id": "AHV2-CTL-01.r1",
+          "source_relation_id": "r1",
+          "source_kind": "other",
+          "source_arguments": [
+            "vlpfc_engagement",
+            "rule_learning",
+            "rule_retrieval",
+            "online_rule_maintenance"
+          ],
+          "source_description": "ventrolateral prefrontal cortex is implicated in learning, retrieving, and maintaining rules",
+          "source_span_ids": [
+            "s2"
+          ]
+        },
+        {
+          "assertion_id": "AHV2-CTL-01.r2",
+          "source_relation_id": "r2",
+          "source_kind": "depends_on",
+          "source_arguments": [
+            "rule_retrieval",
+            "frontotemporal_interaction"
+          ],
+          "source_description": "rule retrieval requires interaction between ventrolateral prefrontal and temporal cortex in the cited nonhuman-primate evidence",
+          "source_span_ids": [
+            "s3"
+          ]
+        },
+        {
+          "assertion_id": "AHV2-CTL-01.r3",
+          "source_relation_id": "r3",
+          "source_kind": "other",
+          "source_arguments": [
+            "posterior_temporal_rule_representation"
+          ],
+          "source_description": "human imaging evidence suggests storage of rule knowledge in posterior middle temporal cortex",
+          "source_span_ids": [
+            "s3"
+          ]
+        },
+        {
+          "assertion_id": "AHV2-CTL-01.r4",
+          "source_relation_id": "r4",
+          "source_kind": "differs",
+          "source_arguments": [
+            "dlpfc_engagement",
+            "rule_based_response_selection",
+            "rule_retrieval"
+          ],
+          "source_description": "dorsolateral prefrontal involvement is more closely related to rule-based response selection than to rule retrieval",
+          "source_span_ids": [
+            "s4"
+          ]
+        }
+      ]
+    },
+    {
+      "validation_claim_id": "AHV2-BLF-01",
+      "claim_id": "AHV2-BLF-01.C1",
+      "reviewed_claimir_blob_sha": "9f1018de336d16b563b08c6063e0fb2ad5812340",
+      "source_identity": "DOI:10.1037/0096-3445.121.2.222",
+      "source_nodes": [
+        {
+          "id": "predictive_learning",
+          "claimir_role": "condition",
+          "description": "learning in which cues are possible causes of a common effect"
+        },
+        {
+          "id": "diagnostic_learning",
+          "claimir_role": "condition",
+          "description": "learning in which cues are possible effects of a common cause"
+        },
+        {
+          "id": "cue_competition",
+          "claimir_role": "response_or_outcome",
+          "description": "competition among multiple cues during learning"
+        },
+        {
+          "id": "associationist_account",
+          "claimir_role": "other",
+          "description": "account predicting symmetry between predictive and diagnostic learning"
+        },
+        {
+          "id": "causal_model_account",
+          "claimir_role": "other",
+          "description": "account in which causal role structure differentiates predictive from diagnostic learning"
+        }
+      ],
+      "relations": [
+        {
+          "assertion_id": "AHV2-BLF-01.r1",
+          "source_relation_id": "r1",
+          "source_kind": "differs",
+          "source_arguments": [
+            "predictive_learning",
+            "diagnostic_learning",
+            "cue_competition"
+          ],
+          "source_description": "predictive and diagnostic learning show asymmetric cue-competition behavior",
+          "source_span_ids": [
+            "s2",
+            "s3"
+          ]
+        },
+        {
+          "assertion_id": "AHV2-BLF-01.r2",
+          "source_relation_id": "r2",
+          "source_kind": "other",
+          "source_arguments": [
+            "predictive_learning",
+            "cue_competition"
+          ],
+          "source_description": "cue competition occurs among multiple possible causes during predictive learning",
+          "source_span_ids": [
+            "s3"
+          ]
+        },
+        {
+          "assertion_id": "AHV2-BLF-01.r3",
+          "source_relation_id": "r3",
+          "source_kind": "other",
+          "source_arguments": [
+            "diagnostic_learning",
+            "cue_competition"
+          ],
+          "source_description": "multiple possible effects need not show cue competition during diagnostic learning",
+          "source_span_ids": [
+            "s3"
+          ]
+        },
+        {
+          "assertion_id": "AHV2-BLF-01.r4",
+          "source_relation_id": "r4",
+          "source_kind": "other",
+          "source_arguments": [
+            "causal_model_account",
+            "associationist_account"
+          ],
+          "source_description": "the experimental results favor the causal-model account over the symmetric associationist account",
+          "source_span_ids": [
+            "s2",
+            "s4"
+          ]
+        }
+      ]
+    },
+    {
+      "validation_claim_id": "AHV2-CNC-01",
+      "claim_id": "AHV2-CNC-01.C1",
+      "reviewed_claimir_blob_sha": "40105fe7fa18e801c7c997e033976906bcb74c62",
+      "source_identity": "DOI:10.1037/0278-7393.24.6.1411",
+      "source_nodes": [
+        {
+          "id": "small_less_differentiated_structure",
+          "claimir_role": "condition",
+          "description": "smaller and less differentiated category structure"
+        },
+        {
+          "id": "large_more_differentiated_structure",
+          "claimir_role": "condition",
+          "description": "larger and more differentiated category structure"
+        },
+        {
+          "id": "learning_stage",
+          "claimir_role": "condition",
+          "description": "successive stage in category learning"
+        },
+        {
+          "id": "exemplar_based_processing",
+          "claimir_role": "state_or_structure",
+          "description": "classification processing based primarily on individual exemplars"
+        },
+        {
+          "id": "prototype_based_processing",
+          "claimir_role": "state_or_structure",
+          "description": "classification processing based primarily on prototype information"
+        },
+        {
+          "id": "strategy_trajectory",
+          "claimir_role": "response_or_outcome",
+          "description": "trajectory of dominant processing strategy across learning"
+        },
+        {
+          "id": "exemplar_model_fit",
+          "claimir_role": "response_or_outcome",
+          "description": "relative fit of the standard exemplar model to observed category-learning performance profiles; a model-comparison result rather than directly measured processing"
+        },
+        {
+          "id": "prototype_model_fit",
+          "claimir_role": "response_or_outcome",
+          "description": "relative fit of the basic prototype model to observed category-learning performance profiles; a model-comparison result rather than directly measured processing"
+        }
+      ],
+      "relations": [
+        {
+          "assertion_id": "AHV2-CNC-01.r1",
+          "source_relation_id": "r1",
+          "source_kind": "depends_on",
+          "source_arguments": [
+            "exemplar_model_fit",
+            "small_less_differentiated_structure",
+            "learning_stage"
+          ],
+          "source_description": "for small, poorly differentiated categories the standard exemplar model describes observed performance better, including at early learning stages; this is a model-fit result, not direct observation of exemplar processing",
+          "source_span_ids": [
+            "s2",
+            "s6"
+          ]
+        },
+        {
+          "assertion_id": "AHV2-CNC-01.r2",
+          "source_relation_id": "r2",
+          "source_kind": "depends_on",
+          "source_arguments": [
+            "prototype_model_fit",
+            "large_more_differentiated_structure",
+            "learning_stage"
+          ],
+          "source_description": "for large, better-differentiated categories the prototype model has an early fit advantage in the reported qualifying task conditions, but not uniformly across all experimental conditions; this is a model-fit result, not direct observation of prototype processing",
+          "source_span_ids": [
+            "s3",
+            "s5"
+          ]
+        },
+        {
+          "assertion_id": "AHV2-CNC-01.r3",
+          "source_relation_id": "r3",
+          "source_kind": "changes",
+          "source_arguments": [
+            "learning_stage",
+            "large_more_differentiated_structure",
+            "prototype_based_processing",
+            "exemplar_based_processing"
+          ],
+          "source_description": "the authors interpret the learning-stage model-fit trajectory for large, better-differentiated categories as consistent with a gradual shift from prototype-based toward exemplar-based processing; this is an inferred mechanism, not a uniquely established psychological transition and does not generalize to small, poorly differentiated categories",
+          "source_span_ids": [
+            "s4",
+            "s5",
+            "s6",
+            "s7"
+          ]
+        },
+        {
+          "assertion_id": "AHV2-CNC-01.r4",
+          "source_relation_id": "r4",
+          "source_kind": "depends_on",
+          "source_arguments": [
+            "strategy_trajectory",
+            "small_less_differentiated_structure",
+            "large_more_differentiated_structure"
+          ],
+          "source_description": "different category structures produce different trajectories through the space of categorization strategies",
+          "source_span_ids": [
+            "s4"
+          ]
+        }
+      ]
+    }
+  ],
+  "terminal": "AHV2_8_V2_HELDOUT_TARGET_FROZEN_34_RELATIONS_BEFORE_MAPPING"
+}
