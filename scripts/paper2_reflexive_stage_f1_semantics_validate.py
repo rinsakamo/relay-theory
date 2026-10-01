@@ -68,7 +68,7 @@ def validate():
            and actual["precommitted_target_ids"]==original["target_ids"]
            and actual["distinct_contrast_obligation"]==
                original["precommitted_decisive_test"]
-           and "universal" in actual["inferential_guardrail"],
+           and "does NOT prove" in actual["inferential_guardrail"],
            "original contrast/order/anti-overclaim altered")
         tags.update(actual["precommitted_target_ids"])
     ok(len(tags)==25 and
