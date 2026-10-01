@@ -4,8 +4,8 @@
   "authority_issue": 384,
   "generated_date": "2026-10-01",
   "candidate_packet_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/reflexive-claimir-candidates-v1.json",
-  "candidate_packet_blob_sha": "e0dc121f75ececfc13c25d362d3aa3babe14afa7",
-  "total": 18,
+  "candidate_packet_blob_sha": "da17783fc99a5c77ae3a7978b4ac92f0f041a01d",
+  "total": 20,
   "reviewed": 5,
   "accepted": 5,
   "revised": 0,
@@ -45,7 +45,9 @@
   "remaining": [
     "RFX01B1",
     "RFX01B2",
-    "RFX05",
+    "RFX05A",
+    "RFX05B",
+    "RFX05C",
     "RFX06",
     "RFX07",
     "RFX08",
@@ -64,7 +66,7 @@
     "LAYERED_ARCHITECTURE_PROJECTION",
     "REFLEXIVE_RECONSTRUCTION_VERDICT"
   ],
-  "terminal": "RFX18_HUMAN_REVIEW_5_OF_18_PENDING",
+  "terminal": "RFX20_HUMAN_REVIEW_5_OF_20_PENDING",
   "authority_reconciliation": "RFX15 added pre-review after fresh main advanced to #385; no human decisions existed at reconciliation time.",
   "pre_review_revision_history": [
     {
@@ -115,6 +117,21 @@
       "human_review_decision_recorded": false,
       "downstream_fit_inspected": false,
       "date": "2026-10-01"
+    },
+    {
+      "event": "AUTHOR_APPROVED_THREE_WAY_SPLIT",
+      "original_id": "RFX05",
+      "replacements": [
+        "RFX05A",
+        "RFX05B",
+        "RFX05C"
+      ],
+      "original_normalized_claim": "After preserving the whole-claim failure, a secondary bounded-subobject reconstruction under frozen forgetting rules recovers reusable cross-claim structure: 206 unique global Archetype/XLike objects and 99 cross-lane families, covering 59 of 60 claims and surviving the declared destructive controls.",
+      "reason": "Separate reconstruction existence under preserved whole-claim failure, frozen numeric recovery/coverage report, and survival under destructive controls. Author chose to retain counts and coverage together.",
+      "human_review_decision_recorded": false,
+      "downstream_fit_inspected": false,
+      "date": "2026-10-01",
+      "authority_note": "Main advanced after frozen v2 calibration to prospective AHV2-8 candidate/admission artifacts; no relevance to frozen RFX05 source authority and no retrofit performed."
     }
   ],
   "superseded_review_events": [
@@ -133,6 +150,16 @@
       "replacements": [
         "RFX02A",
         "RFX02B"
+      ],
+      "counted_in_active_review_totals": false
+    },
+    {
+      "self_target_id": "RFX05",
+      "decision": "SPLIT_WORDING_APPROVED",
+      "replacements": [
+        "RFX05A",
+        "RFX05B",
+        "RFX05C"
       ],
       "counted_in_active_review_totals": false
     }
