@@ -4,10 +4,10 @@
   "authority_issue": 384,
   "generated_date": "2026-10-01",
   "candidate_packet_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/reflexive-claimir-candidates-v1.json",
-  "candidate_packet_blob_sha": "b14fe01fc9c2c24c0e0f8d438a404e662a2fc350",
-  "total": 25,
-  "reviewed": 17,
-  "accepted": 17,
+  "candidate_packet_blob_sha": "93ccb17da6da75ffbc353c7f20c05f0460d126c8",
+  "total": 28,
+  "reviewed": 21,
+  "accepted": 21,
   "revised": 0,
   "rejected": 0,
   "decisions": [
@@ -112,12 +112,35 @@
       "decision": "ACCEPT",
       "decision_date": "2026-10-01",
       "decision_record_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/human-reviewed/RFX09B.json"
+    },
+    {
+      "self_target_id": "RFX10A",
+      "decision": "ACCEPT",
+      "decision_date": "2026-10-01",
+      "decision_record_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/human-reviewed/RFX10A.json"
+    },
+    {
+      "self_target_id": "RFX10B",
+      "decision": "ACCEPT",
+      "decision_date": "2026-10-01",
+      "decision_record_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/human-reviewed/RFX10B.json"
+    },
+    {
+      "self_target_id": "RFX10C",
+      "decision": "ACCEPT",
+      "decision_date": "2026-10-01",
+      "decision_record_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/human-reviewed/RFX10C.json"
+    },
+    {
+      "self_target_id": "RFX10D",
+      "decision": "ACCEPT",
+      "decision_date": "2026-10-01",
+      "decision_record_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/human-reviewed/RFX10D.json"
     }
   ],
   "remaining": [
     "RFX01B1",
     "RFX01B2",
-    "RFX10",
     "RFX11",
     "RFX12",
     "RFX13",
@@ -131,7 +154,7 @@
     "LAYERED_ARCHITECTURE_PROJECTION",
     "REFLEXIVE_RECONSTRUCTION_VERDICT"
   ],
-  "terminal": "RFX25_HUMAN_REVIEW_17_OF_25_PENDING",
+  "terminal": "RFX28_HUMAN_REVIEW_21_OF_28_PENDING",
   "authority_reconciliation": "RFX15 added pre-review after fresh main advanced to #385; no human decisions existed at reconciliation time.",
   "pre_review_revision_history": [
     {
@@ -263,6 +286,26 @@
       },
       "downstream_fit_inspected": false,
       "date": "2026-10-01"
+    },
+    {
+      "event": "AUTHOR_ACCEPTED_FOUR_WAY_SPLIT",
+      "original_id": "RFX10",
+      "replacements": [
+        "RFX10A",
+        "RFX10B",
+        "RFX10C",
+        "RFX10D"
+      ],
+      "original_normalized_claim": "The final architecture separates cognitive system, World, cross-boundary coupling, experimental protocol, and realized run; internal transformation K is not Gamma, intrinsic C is not an experimental condition, and P_in/P_out are not identical to an experimenter's schedule.",
+      "reason": "Separate the declared architecture's typed system/world/coupling/experiment/run distinction from three independent non-identity constraints on K, C, and P interface roles.",
+      "decisions": {
+        "RFX10A": "ACCEPT",
+        "RFX10B": "ACCEPT",
+        "RFX10C": "ACCEPT",
+        "RFX10D": "ACCEPT"
+      },
+      "downstream_fit_inspected": false,
+      "date": "2026-10-01"
     }
   ],
   "superseded_review_events": [
@@ -328,6 +371,17 @@
       "replacements": [
         "RFX09A",
         "RFX09B"
+      ],
+      "counted_in_active_review_totals": false
+    },
+    {
+      "self_target_id": "RFX10",
+      "decision": "SPLIT_AND_CHILDREN_ACCEPTED",
+      "replacements": [
+        "RFX10A",
+        "RFX10B",
+        "RFX10C",
+        "RFX10D"
       ],
       "counted_in_active_review_totals": false
     }
