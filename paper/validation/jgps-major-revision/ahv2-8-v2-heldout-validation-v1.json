@@ -1,0 +1,1329 @@
+{
+  "schema": "relay-theory.paper2.ahv2_8_v2_heldout_validation.v1",
+  "status": "FROZEN_HELDOUT_SEMANTIC_ADJUDICATION",
+  "owner_issue": 394,
+  "authority": {
+    "target_freeze_path": "paper/validation/jgps-major-revision/ahv2-8-v2-heldout-target-freeze-v1.json",
+    "target_freeze_blob_sha": "f13a2e5ea3f64987c280fd3dac5ae03474c281a0",
+    "target_freeze_commit": "0c351aa9f58142fcb8fa93a7616f1ccd5af2629b",
+    "adjudication_protocol_path": "paper/validation/jgps-major-revision/ahv2-8-v2-heldout-adjudication-protocol-v1.json",
+    "adjudication_protocol_blob_sha": "5a40b64f2ce939307d5c7679fe0748d5d83fd875",
+    "protocol_commit": "e8060ed92289d72a0d22495a327cf588e2f3eb62",
+    "v2_schema_path": "paper/validation/jgps-major-revision/l-claim-assertion-carrier-schema-v2.json",
+    "v2_schema_blob_sha": "058e0bd1514fcfaf57a4e87e366920b2fbcda274",
+    "v2_freeze_main_commit": "ad1c11789814413b1d9fd3ca8a4cfb6f7316f230",
+    "author_review_main_commit": "8f7ab1ee7f006c3b61dbc64865aaa703887df301"
+  },
+  "no_tuning": {
+    "schema_modified": false,
+    "predicate_family_added": false,
+    "qualifier_added": false,
+    "reference_role_added": false,
+    "claim_object_type_added": false,
+    "reviewed_source_relation_dropped": false
+  },
+  "entries": [
+    {
+      "validation_claim_id": "AHV2-MEM-01",
+      "claim_id": "AHV2-MEM-01.C1",
+      "source_relation_id": "r1",
+      "source_kind": "differs",
+      "source_arguments": [
+        "fixed_item_account",
+        "flexible_resource_account"
+      ],
+      "source_description": "the review contrasts a fixed item-limit account with a flexibly distributed resource account",
+      "source_span_ids": [
+        "s1"
+      ],
+      "assertion_id": "AHV2-MEM-01.r1",
+      "carrier_status": "FULL",
+      "predicate_family": "COMPARISON",
+      "qualifiers": [
+        "DISTINCT"
+      ],
+      "directionality": null,
+      "evaluation": null,
+      "argument_bindings": [
+        {
+          "node_id": "fixed_item_account",
+          "semantic_role": "SUBJECT",
+          "layer": "L_claim",
+          "claim_object_type": "THEORETICAL_ACCOUNT"
+        },
+        {
+          "node_id": "flexible_resource_account",
+          "semantic_role": "COMPARATOR",
+          "layer": "L_claim",
+          "claim_object_type": "THEORETICAL_ACCOUNT"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [],
+      "adjudication_note": "Competing theoretical accounts are compared as L_claim objects, not cognitive-system states."
+    },
+    {
+      "validation_claim_id": "AHV2-MEM-01",
+      "claim_id": "AHV2-MEM-01.C1",
+      "source_relation_id": "r2",
+      "source_kind": "maps_to",
+      "source_arguments": [
+        "limited_resource",
+        "maintained_item_set",
+        "resource_allocation"
+      ],
+      "source_description": "the limited resource is distributed across the items that must be maintained",
+      "source_span_ids": [
+        "s1"
+      ],
+      "assertion_id": "AHV2-MEM-01.r2",
+      "carrier_status": "FULL",
+      "predicate_family": "TRANSFORMATION",
+      "qualifiers": [],
+      "directionality": null,
+      "evaluation": null,
+      "argument_bindings": [
+        {
+          "node_id": "limited_resource",
+          "semantic_role": "SUBJECT",
+          "layer": "L_sys",
+          "system_role": "X"
+        },
+        {
+          "node_id": "maintained_item_set",
+          "semantic_role": "CONDITIONING_FACTOR",
+          "layer": "L_ctx",
+          "context_placement": "EXPERIMENT_CONTEXT",
+          "architecture_refinement": null
+        },
+        {
+          "node_id": "resource_allocation",
+          "semantic_role": "OUTCOME",
+          "layer": "L_sys",
+          "system_role": "X"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [],
+      "adjudication_note": "The output node explicitly denotes distribution of limited maintenance resources across the input item set."
+    },
+    {
+      "validation_claim_id": "AHV2-MEM-01",
+      "claim_id": "AHV2-MEM-01.C1",
+      "source_relation_id": "r3",
+      "source_kind": "depends_on",
+      "source_arguments": [
+        "representation_quality",
+        "resource_allocation"
+      ],
+      "source_description": "representational quality varies with allocation of the limited resource",
+      "source_span_ids": [
+        "s1",
+        "s2"
+      ],
+      "assertion_id": "AHV2-MEM-01.r3",
+      "carrier_status": "FULL",
+      "predicate_family": "DEPENDENCE",
+      "qualifiers": [],
+      "directionality": null,
+      "evaluation": null,
+      "argument_bindings": [
+        {
+          "node_id": "representation_quality",
+          "semantic_role": "DEPENDENT",
+          "layer": "L_sys",
+          "system_role": "X"
+        },
+        {
+          "node_id": "resource_allocation",
+          "semantic_role": "CONDITIONING_FACTOR",
+          "layer": "L_sys",
+          "system_role": "X"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [],
+      "adjudication_note": "Existing frozen vocabulary retains the reviewed relation's typed core."
+    },
+    {
+      "validation_claim_id": "AHV2-MEM-01",
+      "claim_id": "AHV2-MEM-01.C1",
+      "source_relation_id": "r4",
+      "source_kind": "depends_on",
+      "source_arguments": [
+        "task_performance",
+        "representation_quality",
+        "represented_item_quantity"
+      ],
+      "source_description": "under the resource proposal, performance is determined by representational quality rather than item quantity",
+      "source_span_ids": [
+        "s2"
+      ],
+      "assertion_id": "AHV2-MEM-01.r4",
+      "carrier_status": "FULL",
+      "predicate_family": "EXPLANATION",
+      "qualifiers": [
+        "CONTRASTIVE_RATHER_THAN"
+      ],
+      "directionality": null,
+      "evaluation": null,
+      "argument_bindings": [
+        {
+          "node_id": "task_performance",
+          "semantic_role": "EXPLANANDUM",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        },
+        {
+          "node_id": "representation_quality",
+          "semantic_role": "EXPLANANS",
+          "layer": "L_sys",
+          "system_role": "X"
+        },
+        {
+          "node_id": "represented_item_quantity",
+          "semantic_role": "ALTERNATIVE_EXPLANATION",
+          "layer": "L_sys",
+          "system_role": "X"
+        }
+      ],
+      "semantic_references": [
+        {
+          "node_id": "flexible_resource_account",
+          "semantic_role": "INDEX_CONTEXT",
+          "layer": "L_claim",
+          "claim_object_type": "THEORETICAL_ACCOUNT"
+        }
+      ],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [],
+      "adjudication_note": "Conditional explanatory contrast under the existing flexible-resource theory-object reference, not an unconditional causal measurement."
+    },
+    {
+      "validation_claim_id": "AHV2-LRN-01",
+      "claim_id": "AHV2-LRN-01.C1",
+      "source_relation_id": "r1",
+      "source_kind": "changes",
+      "source_arguments": [
+        "learning_stage",
+        "prediction_error_signal",
+        "reward_delivery",
+        "conditioned_cue",
+        "error_signal_timing"
+      ],
+      "source_description": "with learning, the error-signal response shifts from reward delivery to conditioned-cue onset",
+      "source_span_ids": [
+        "s1"
+      ],
+      "assertion_id": "AHV2-LRN-01.r1",
+      "carrier_status": "GAP",
+      "attempted_predicate_family": "CHANGE",
+      "attempted_qualifiers": [],
+      "provisional_argument_bindings": [],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [
+        "TEMPORAL_RELOCATION_FROM_TO_BINDING_MISSING"
+      ],
+      "adjudication_note": "Learning shifts timing from reward delivery to conditioned-cue onset; CHANGE cannot bind typed from-event/to-event endpoints. INCREASES or DECREASES would change the proposition."
+    },
+    {
+      "validation_claim_id": "AHV2-LRN-01",
+      "claim_id": "AHV2-LRN-01.C1",
+      "source_relation_id": "r2",
+      "source_kind": "other",
+      "source_arguments": [
+        "ventral_striatal_response",
+        "prediction_error_signal"
+      ],
+      "source_description": "ventral-striatal response is significantly correlated with the modeled error signal",
+      "source_span_ids": [
+        "s3"
+      ],
+      "assertion_id": "AHV2-LRN-01.r2",
+      "carrier_status": "GAP",
+      "attempted_predicate_family": "ASSOCIATION",
+      "attempted_qualifiers": [],
+      "provisional_argument_bindings": [],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [
+        "STATISTICAL_SIGNIFICANCE_QUALIFIER_MISSING"
+      ],
+      "adjudication_note": "ASSOCIATION represents correlation but loses the explicitly reported statistical significance; free-text scope cannot serve as a statistical-evidence qualifier."
+    },
+    {
+      "validation_claim_id": "AHV2-LRN-01",
+      "claim_id": "AHV2-LRN-01.C1",
+      "source_relation_id": "r3",
+      "source_kind": "other",
+      "source_arguments": [
+        "orbitofrontal_response",
+        "prediction_error_signal"
+      ],
+      "source_description": "orbitofrontal response is significantly correlated with the modeled error signal",
+      "source_span_ids": [
+        "s3"
+      ],
+      "assertion_id": "AHV2-LRN-01.r3",
+      "carrier_status": "GAP",
+      "attempted_predicate_family": "ASSOCIATION",
+      "attempted_qualifiers": [],
+      "provisional_argument_bindings": [],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [
+        "STATISTICAL_SIGNIFICANCE_QUALIFIER_MISSING"
+      ],
+      "adjudication_note": "The orbitofrontal relation explicitly reports significant correlation, not merely unspecified association; the frozen qualifier vocabulary lacks significance."
+    },
+    {
+      "validation_claim_id": "AHV2-SKL-01",
+      "claim_id": "AHV2-SKL-01.C1",
+      "source_relation_id": "r1",
+      "source_kind": "differs",
+      "source_arguments": [
+        "controlled_search",
+        "automatic_detection"
+      ],
+      "source_description": "the reported experiments demonstrate a qualitative difference between controlled search and automatic detection",
+      "source_span_ids": [
+        "s1"
+      ],
+      "assertion_id": "AHV2-SKL-01.r1",
+      "carrier_status": "FULL",
+      "predicate_family": "COMPARISON",
+      "qualifiers": [
+        "DISTINCT"
+      ],
+      "directionality": null,
+      "evaluation": null,
+      "argument_bindings": [
+        {
+          "node_id": "controlled_search",
+          "semantic_role": "SUBJECT",
+          "layer": "L_sys",
+          "system_role": "X"
+        },
+        {
+          "node_id": "automatic_detection",
+          "semantic_role": "COMPARATOR",
+          "layer": "L_sys",
+          "system_role": "X"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [],
+      "adjudication_note": "QUALITATIVE difference between system processing modes (not empirical dissociation claim)."
+    },
+    {
+      "validation_claim_id": "AHV2-SKL-01",
+      "claim_id": "AHV2-SKL-01.C1",
+      "source_relation_id": "r2",
+      "source_kind": "changes",
+      "source_arguments": [
+        "practice_history",
+        "automatic_detection"
+      ],
+      "source_description": "automatic detection is acquired over the course of training",
+      "source_span_ids": [
+        "s2"
+      ],
+      "assertion_id": "AHV2-SKL-01.r2",
+      "carrier_status": "GAP",
+      "attempted_predicate_family": "CHANGE",
+      "attempted_qualifiers": [],
+      "provisional_argument_bindings": [],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [
+        "ACQUISITION_OR_EMERGENCE_MODIFIER_MISSING"
+      ],
+      "adjudication_note": "Automatic detection is acquired, not merely a graded increase of a previously present variable; generic CHANGE/INCREASES loses onset/acquisition."
+    },
+    {
+      "validation_claim_id": "AHV2-SKL-01",
+      "claim_id": "AHV2-SKL-01.C1",
+      "source_relation_id": "r3",
+      "source_kind": "depends_on",
+      "source_arguments": [
+        "automatic_detection",
+        "automatic_attention_response"
+      ],
+      "source_description": "automatic detection depends on attending responses",
+      "source_span_ids": [
+        "s3"
+      ],
+      "assertion_id": "AHV2-SKL-01.r3",
+      "carrier_status": "FULL",
+      "predicate_family": "DEPENDENCE",
+      "qualifiers": [],
+      "directionality": null,
+      "evaluation": null,
+      "argument_bindings": [
+        {
+          "node_id": "automatic_detection",
+          "semantic_role": "DEPENDENT",
+          "layer": "L_sys",
+          "system_role": "X"
+        },
+        {
+          "node_id": "automatic_attention_response",
+          "semantic_role": "CONDITIONING_FACTOR",
+          "layer": "L_sys",
+          "system_role": "X"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [],
+      "adjudication_note": "Existing frozen vocabulary retains the reviewed relation's typed core."
+    },
+    {
+      "validation_claim_id": "AHV2-SKL-01",
+      "claim_id": "AHV2-SKL-01.C1",
+      "source_relation_id": "r4",
+      "source_kind": "constrains",
+      "source_arguments": [
+        "automatic_attention_response",
+        "controlled_search",
+        "focused_attention"
+      ],
+      "source_description": "automatic attending can interrupt controlled processing and interfere with focused attention",
+      "source_span_ids": [
+        "s3"
+      ],
+      "assertion_id": "AHV2-SKL-01.r4",
+      "carrier_status": "GAP",
+      "attempted_predicate_family": "DEPENDENCE",
+      "attempted_qualifiers": [],
+      "provisional_argument_bindings": [],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [
+        "INTERRUPTION_OR_INTERFERENCE_PREDICATE_MISSING"
+      ],
+      "adjudication_note": "Automatically elicited attention interrupts controlled search and interferes with focused attention. A single DECREASES target or generic DEPENDENCE does not preserve both distinct disruptions."
+    },
+    {
+      "validation_claim_id": "AHV2-SKL-01",
+      "claim_id": "AHV2-SKL-01.C1",
+      "source_relation_id": "r5",
+      "source_kind": "changes",
+      "source_arguments": [
+        "category_learning",
+        "controlled_search_performance"
+      ],
+      "source_description": "learning category structure improves controlled-search performance",
+      "source_span_ids": [
+        "s4"
+      ],
+      "assertion_id": "AHV2-SKL-01.r5",
+      "carrier_status": "FULL",
+      "predicate_family": "CHANGE",
+      "qualifiers": [],
+      "directionality": {
+        "kind": "INCREASES",
+        "target_argument": "controlled_search_performance"
+      },
+      "evaluation": null,
+      "argument_bindings": [
+        {
+          "node_id": "category_learning",
+          "semantic_role": "CHANGE_CONTEXT",
+          "layer": "L_ctx",
+          "context_placement": "RUN_BOUNDARY_OR_PREHISTORY",
+          "architecture_refinement": "category learning during training"
+        },
+        {
+          "node_id": "controlled_search_performance",
+          "semantic_role": "CHANGED_ENTITY",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [],
+      "adjudication_note": "Existing frozen vocabulary retains the reviewed relation's typed core."
+    },
+    {
+      "validation_claim_id": "AHV2-ATT-01",
+      "claim_id": "AHV2-ATT-01.C1",
+      "source_relation_id": "r1",
+      "source_kind": "changes",
+      "source_arguments": [
+        "dual_task_condition",
+        "task_interference"
+      ],
+      "source_description": "concurrent performance increases interference even for relatively simple tasks",
+      "source_span_ids": [
+        "s1"
+      ],
+      "assertion_id": "AHV2-ATT-01.r1",
+      "carrier_status": "FULL",
+      "predicate_family": "CHANGE",
+      "qualifiers": [],
+      "directionality": {
+        "kind": "INCREASES",
+        "target_argument": "task_interference"
+      },
+      "evaluation": null,
+      "argument_bindings": [
+        {
+          "node_id": "dual_task_condition",
+          "semantic_role": "CHANGE_CONTEXT",
+          "layer": "L_ctx",
+          "context_placement": "EXPERIMENT_CONTEXT",
+          "architecture_refinement": null
+        },
+        {
+          "node_id": "task_interference",
+          "semantic_role": "CHANGED_ENTITY",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [],
+      "adjudication_note": "Existing frozen vocabulary retains the reviewed relation's typed core."
+    },
+    {
+      "validation_claim_id": "AHV2-ATT-01",
+      "claim_id": "AHV2-ATT-01.C1",
+      "source_relation_id": "r2",
+      "source_kind": "other",
+      "source_arguments": [
+        "central_bottleneck",
+        "action_selection_operation",
+        "memory_retrieval_operation"
+      ],
+      "source_description": "the identified bottleneck encompasses action selection and probably memory retrieval",
+      "source_span_ids": [
+        "s2"
+      ],
+      "assertion_id": "AHV2-ATT-01.r2",
+      "carrier_status": "GAP",
+      "attempted_predicate_family": null,
+      "attempted_qualifiers": [],
+      "provisional_argument_bindings": [],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [
+        "COMPONENT_ENCOMPASSMENT_PREDICATE_MISSING",
+        "ARGUMENT_LOCAL_POSSIBILITY_MISSING"
+      ],
+      "adjudication_note": "The bottleneck encompasses action selection but only probably memory retrieval. IMPLEMENTATION would overstate containment, while CANDIDATE_POSSIBLE applies to the whole assertion, not only the retrieval component."
+    },
+    {
+      "validation_claim_id": "AHV2-ATT-01",
+      "claim_id": "AHV2-ATT-01.C1",
+      "source_relation_id": "r3",
+      "source_kind": "other",
+      "source_arguments": [
+        "task_preparation_limit",
+        "sensory_perceptual_limit",
+        "timing_limit",
+        "task_interference"
+      ],
+      "source_description": "other preparation, perceptual, and timing limitations can generate additional distinct forms of interference",
+      "source_span_ids": [
+        "s3"
+      ],
+      "assertion_id": "AHV2-ATT-01.r3",
+      "carrier_status": "GAP",
+      "attempted_predicate_family": "DEPENDENCE",
+      "attempted_qualifiers": [],
+      "provisional_argument_bindings": [],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [
+        "DISTINCT_OUTCOME_CAUSATION_MAPPING_MISSING"
+      ],
+      "adjudication_note": "Preparation, perceptual and timing limits generate additional distinct forms of interference; aggregating three conditioning factors into bare DEPENDENCE loses distinct generated outcome types."
+    },
+    {
+      "validation_claim_id": "AHV2-PRD-01",
+      "claim_id": "AHV2-PRD-01.C1",
+      "source_relation_id": "r1",
+      "source_kind": "differs",
+      "source_arguments": [
+        "self_produced_condition",
+        "external_condition",
+        "tactile_intensity_rating",
+        "tickliness_rating",
+        "pleasantness_rating"
+      ],
+      "source_description": "self-produced tactile stimulation is rated less intense, tickly, and pleasant than externally produced stimulation",
+      "source_span_ids": [
+        "s1"
+      ],
+      "assertion_id": "AHV2-PRD-01.r1",
+      "carrier_status": "GAP",
+      "attempted_predicate_family": "COMPARISON",
+      "attempted_qualifiers": [],
+      "provisional_argument_bindings": [],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [
+        "MULTI_OUTCOME_COMPARISON_DIRECTION_MISSING"
+      ],
+      "adjudication_note": "The self-produced vs externally produced comparison asserts lower intensity, tickliness, and pleasantness simultaneously; frozen single-target directionality or unanchored GREATER_THAN cannot preserve the ordered comparison for all three."
+    },
+    {
+      "validation_claim_id": "AHV2-PRD-01",
+      "claim_id": "AHV2-PRD-01.C1",
+      "source_relation_id": "r2",
+      "source_kind": "changes",
+      "source_arguments": [
+        "temporal_delay",
+        "tickliness_rating"
+      ],
+      "source_description": "tickliness increases as temporal delay is increased",
+      "source_span_ids": [
+        "s2"
+      ],
+      "assertion_id": "AHV2-PRD-01.r2",
+      "carrier_status": "FULL",
+      "predicate_family": "CHANGE",
+      "qualifiers": [],
+      "directionality": {
+        "kind": "INCREASES",
+        "target_argument": "tickliness_rating"
+      },
+      "evaluation": null,
+      "argument_bindings": [
+        {
+          "node_id": "temporal_delay",
+          "semantic_role": "CHANGE_CONTEXT",
+          "layer": "L_ctx",
+          "context_placement": "EXPERIMENT_CONTEXT",
+          "architecture_refinement": null
+        },
+        {
+          "node_id": "tickliness_rating",
+          "semantic_role": "CHANGED_ENTITY",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [],
+      "adjudication_note": "Existing frozen vocabulary retains the reviewed relation's typed core."
+    },
+    {
+      "validation_claim_id": "AHV2-PRD-01",
+      "claim_id": "AHV2-PRD-01.C1",
+      "source_relation_id": "r3",
+      "source_kind": "changes",
+      "source_arguments": [
+        "trajectory_perturbation",
+        "tickliness_rating"
+      ],
+      "source_description": "tickliness increases as trajectory perturbation is increased",
+      "source_span_ids": [
+        "s2"
+      ],
+      "assertion_id": "AHV2-PRD-01.r3",
+      "carrier_status": "FULL",
+      "predicate_family": "CHANGE",
+      "qualifiers": [],
+      "directionality": {
+        "kind": "INCREASES",
+        "target_argument": "tickliness_rating"
+      },
+      "evaluation": null,
+      "argument_bindings": [
+        {
+          "node_id": "trajectory_perturbation",
+          "semantic_role": "CHANGE_CONTEXT",
+          "layer": "L_ctx",
+          "context_placement": "EXPERIMENT_CONTEXT",
+          "architecture_refinement": null
+        },
+        {
+          "node_id": "tickliness_rating",
+          "semantic_role": "CHANGED_ENTITY",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [],
+      "adjudication_note": "Existing frozen vocabulary retains the reviewed relation's typed core."
+    },
+    {
+      "validation_claim_id": "AHV2-PRD-01",
+      "claim_id": "AHV2-PRD-01.C1",
+      "source_relation_id": "r4",
+      "source_kind": "depends_on",
+      "source_arguments": [
+        "sensory_attenuation",
+        "spatiotemporal_correspondence"
+      ],
+      "source_description": "attenuation requires sufficient temporal and spatial correspondence between motor command and tactile consequence",
+      "source_span_ids": [
+        "s3"
+      ],
+      "assertion_id": "AHV2-PRD-01.r4",
+      "carrier_status": "GAP",
+      "attempted_predicate_family": "DEPENDENCE",
+      "attempted_qualifiers": [],
+      "provisional_argument_bindings": [],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [
+        "NECESSARY_CONDITION_MODALITY_MISSING"
+      ],
+      "adjudication_note": "Authors assert correspondence is required for attenuation. Bare DEPENDENCE lacks necessary-condition force, while free-text cannot rescue it."
+    },
+    {
+      "validation_claim_id": "AHV2-PRD-01",
+      "claim_id": "AHV2-PRD-01.C1",
+      "source_relation_id": "r5",
+      "source_kind": "depends_on",
+      "source_arguments": [
+        "prediction_error",
+        "predicted_sensory_feedback",
+        "actual_sensory_feedback"
+      ],
+      "source_description": "prediction error is defined by the mismatch between predicted and actual sensory feedback",
+      "source_span_ids": [
+        "s4"
+      ],
+      "assertion_id": "AHV2-PRD-01.r5",
+      "carrier_status": "FULL",
+      "predicate_family": "TRANSFORMATION",
+      "qualifiers": [],
+      "directionality": null,
+      "evaluation": null,
+      "argument_bindings": [
+        {
+          "node_id": "prediction_error",
+          "semantic_role": "OUTCOME",
+          "layer": "L_sys",
+          "system_role": "X"
+        },
+        {
+          "node_id": "predicted_sensory_feedback",
+          "semantic_role": "SUBJECT",
+          "layer": "L_sys",
+          "system_role": "X"
+        },
+        {
+          "node_id": "actual_sensory_feedback",
+          "semantic_role": "CONDITIONING_FACTOR",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [],
+      "adjudication_note": "The outcome node explicitly denotes predicted-vs-actual mismatch; input/output roles retain an operation computing that mismatch."
+    },
+    {
+      "validation_claim_id": "AHV2-PRD-01",
+      "claim_id": "AHV2-PRD-01.C1",
+      "source_relation_id": "r6",
+      "source_kind": "depends_on",
+      "source_arguments": [
+        "sensory_attenuation",
+        "prediction_error"
+      ],
+      "source_description": "in the authors' proposed forward-model account, greater prediction error is associated with less sensory attenuation (inverse directional relationship)",
+      "source_span_ids": [
+        "s4"
+      ],
+      "assertion_id": "AHV2-PRD-01.r6",
+      "carrier_status": "FULL",
+      "predicate_family": "DEPENDENCE",
+      "qualifiers": [],
+      "directionality": {
+        "kind": "DECREASES",
+        "target_argument": "sensory_attenuation"
+      },
+      "evaluation": null,
+      "argument_bindings": [
+        {
+          "node_id": "sensory_attenuation",
+          "semantic_role": "DEPENDENT",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        },
+        {
+          "node_id": "prediction_error",
+          "semantic_role": "CONDITIONING_FACTOR",
+          "layer": "L_sys",
+          "system_role": "X"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [
+        "under authors' proposed forward-model account"
+      ],
+      "gap_reasons": [],
+      "adjudication_note": "Model-proposed inverse relationship; does not claim prediction-error magnitude was independently measured."
+    },
+    {
+      "validation_claim_id": "AHV2-PRD-01",
+      "claim_id": "AHV2-PRD-01.C1",
+      "source_relation_id": "r7",
+      "source_kind": "depends_on",
+      "source_arguments": [
+        "tickliness_rating",
+        "prediction_error"
+      ],
+      "source_description": "in the authors' proposed forward-model account, tickliness increases with the error between predicted and actual sensory feedback",
+      "source_span_ids": [
+        "s4"
+      ],
+      "assertion_id": "AHV2-PRD-01.r7",
+      "carrier_status": "FULL",
+      "predicate_family": "DEPENDENCE",
+      "qualifiers": [],
+      "directionality": {
+        "kind": "INCREASES",
+        "target_argument": "tickliness_rating"
+      },
+      "evaluation": null,
+      "argument_bindings": [
+        {
+          "node_id": "tickliness_rating",
+          "semantic_role": "DEPENDENT",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        },
+        {
+          "node_id": "prediction_error",
+          "semantic_role": "CONDITIONING_FACTOR",
+          "layer": "L_sys",
+          "system_role": "X"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [
+        "under authors' proposed forward-model account"
+      ],
+      "gap_reasons": [],
+      "adjudication_note": "Model-proposed positive directional relationship, distinguished from observed delay and trajectory results."
+    },
+    {
+      "validation_claim_id": "AHV2-CTL-01",
+      "claim_id": "AHV2-CTL-01.C1",
+      "source_relation_id": "r1",
+      "source_kind": "other",
+      "source_arguments": [
+        "vlpfc_engagement",
+        "rule_learning",
+        "rule_retrieval",
+        "online_rule_maintenance"
+      ],
+      "source_description": "ventrolateral prefrontal cortex is implicated in learning, retrieving, and maintaining rules",
+      "source_span_ids": [
+        "s2"
+      ],
+      "assertion_id": "AHV2-CTL-01.r1",
+      "carrier_status": "GAP",
+      "attempted_predicate_family": null,
+      "attempted_qualifiers": [],
+      "provisional_argument_bindings": [],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [
+        "TENTATIVE_NEURAL_INVOLVEMENT_PREDICATE_MISSING"
+      ],
+      "adjudication_note": "VLPFC is implicated across three functions; mere association drops functional involvement and IMPLEMENTATION asserts more mechanistic specificity than the review warrants."
+    },
+    {
+      "validation_claim_id": "AHV2-CTL-01",
+      "claim_id": "AHV2-CTL-01.C1",
+      "source_relation_id": "r2",
+      "source_kind": "depends_on",
+      "source_arguments": [
+        "rule_retrieval",
+        "frontotemporal_interaction"
+      ],
+      "source_description": "rule retrieval requires interaction between ventrolateral prefrontal and temporal cortex in the cited nonhuman-primate evidence",
+      "source_span_ids": [
+        "s3"
+      ],
+      "assertion_id": "AHV2-CTL-01.r2",
+      "carrier_status": "GAP",
+      "attempted_predicate_family": "DEPENDENCE",
+      "attempted_qualifiers": [],
+      "provisional_argument_bindings": [],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [
+        "NECESSARY_CONDITION_MODALITY_MISSING"
+      ],
+      "adjudication_note": "The source's nonhuman-primate claim says rule retrieval requires frontotemporal interaction. DEPENDENCE alone retains sensitivity but not necessity."
+    },
+    {
+      "validation_claim_id": "AHV2-CTL-01",
+      "claim_id": "AHV2-CTL-01.C1",
+      "source_relation_id": "r3",
+      "source_kind": "other",
+      "source_arguments": [
+        "posterior_temporal_rule_representation"
+      ],
+      "source_description": "human imaging evidence suggests storage of rule knowledge in posterior middle temporal cortex",
+      "source_span_ids": [
+        "s3"
+      ],
+      "assertion_id": "AHV2-CTL-01.r3",
+      "carrier_status": "GAP",
+      "attempted_predicate_family": null,
+      "attempted_qualifiers": [],
+      "provisional_argument_bindings": [],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [
+        "TENTATIVE_UNARY_STORAGE_LOCALIZATION_MISSING"
+      ],
+      "adjudication_note": "One-node assertion attributes probable storage localization to posterior temporal representation based on imaging. Existing v2 has no unary tentative storage/localization predicate; inventing a new ClaimIR node is forbidden."
+    },
+    {
+      "validation_claim_id": "AHV2-CTL-01",
+      "claim_id": "AHV2-CTL-01.C1",
+      "source_relation_id": "r4",
+      "source_kind": "differs",
+      "source_arguments": [
+        "dlpfc_engagement",
+        "rule_based_response_selection",
+        "rule_retrieval"
+      ],
+      "source_description": "dorsolateral prefrontal involvement is more closely related to rule-based response selection than to rule retrieval",
+      "source_span_ids": [
+        "s4"
+      ],
+      "assertion_id": "AHV2-CTL-01.r4",
+      "carrier_status": "GAP",
+      "attempted_predicate_family": "COMPARISON",
+      "attempted_qualifiers": [],
+      "provisional_argument_bindings": [],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [
+        "TRIADIC_PREFERENTIAL_ASSOCIATION_ORDERING_MISSING"
+      ],
+      "adjudication_note": "Varying strength of DLPFC association with response selection relative to rule retrieval has one anatomical anchor and two competing tasks; unanchored GREATER_THAN/COMPARISON does not preserve measured association target."
+    },
+    {
+      "validation_claim_id": "AHV2-BLF-01",
+      "claim_id": "AHV2-BLF-01.C1",
+      "source_relation_id": "r1",
+      "source_kind": "differs",
+      "source_arguments": [
+        "predictive_learning",
+        "diagnostic_learning",
+        "cue_competition"
+      ],
+      "source_description": "predictive and diagnostic learning show asymmetric cue-competition behavior",
+      "source_span_ids": [
+        "s2",
+        "s3"
+      ],
+      "assertion_id": "AHV2-BLF-01.r1",
+      "carrier_status": "FULL",
+      "predicate_family": "COMPARISON",
+      "qualifiers": [
+        "DISTINCT"
+      ],
+      "directionality": null,
+      "evaluation": null,
+      "argument_bindings": [
+        {
+          "node_id": "predictive_learning",
+          "semantic_role": "SUBJECT",
+          "layer": "L_ctx",
+          "context_placement": "EXPERIMENT_CONTEXT",
+          "architecture_refinement": null
+        },
+        {
+          "node_id": "diagnostic_learning",
+          "semantic_role": "COMPARATOR",
+          "layer": "L_ctx",
+          "context_placement": "EXPERIMENT_CONTEXT",
+          "architecture_refinement": null
+        },
+        {
+          "node_id": "cue_competition",
+          "semantic_role": "OUTCOME",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [],
+      "adjudication_note": "The asserted asymmetry is a qualitative difference in cue-competition outcomes across two learning setups; finer modal 'need not' claim remains separately tested in r3."
+    },
+    {
+      "validation_claim_id": "AHV2-BLF-01",
+      "claim_id": "AHV2-BLF-01.C1",
+      "source_relation_id": "r2",
+      "source_kind": "other",
+      "source_arguments": [
+        "predictive_learning",
+        "cue_competition"
+      ],
+      "source_description": "cue competition occurs among multiple possible causes during predictive learning",
+      "source_span_ids": [
+        "s3"
+      ],
+      "assertion_id": "AHV2-BLF-01.r2",
+      "carrier_status": "FULL",
+      "predicate_family": "OUTCOME_ASSERTION",
+      "qualifiers": [],
+      "directionality": null,
+      "evaluation": null,
+      "argument_bindings": [
+        {
+          "node_id": "predictive_learning",
+          "semantic_role": "INDEX_CONTEXT",
+          "layer": "L_ctx",
+          "context_placement": "EXPERIMENT_CONTEXT",
+          "architecture_refinement": null
+        },
+        {
+          "node_id": "cue_competition",
+          "semantic_role": "OUTCOME",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [],
+      "adjudication_note": "Cue competition reported in the predictive-learning experimental condition."
+    },
+    {
+      "validation_claim_id": "AHV2-BLF-01",
+      "claim_id": "AHV2-BLF-01.C1",
+      "source_relation_id": "r3",
+      "source_kind": "other",
+      "source_arguments": [
+        "diagnostic_learning",
+        "cue_competition"
+      ],
+      "source_description": "multiple possible effects need not show cue competition during diagnostic learning",
+      "source_span_ids": [
+        "s3"
+      ],
+      "assertion_id": "AHV2-BLF-01.r3",
+      "carrier_status": "GAP",
+      "attempted_predicate_family": "OUTCOME_ASSERTION",
+      "attempted_qualifiers": [],
+      "provisional_argument_bindings": [],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [
+        "NONNECESSITY_OR_MAY_NOT_MODALITY_MISSING"
+      ],
+      "adjudication_note": "Need not compete is non-necessity of competition in diagnostic learning, not unqualified NEGATIVE/no competition; the frozen carrier lacks that modal distinction."
+    },
+    {
+      "validation_claim_id": "AHV2-BLF-01",
+      "claim_id": "AHV2-BLF-01.C1",
+      "source_relation_id": "r4",
+      "source_kind": "other",
+      "source_arguments": [
+        "causal_model_account",
+        "associationist_account"
+      ],
+      "source_description": "the experimental results favor the causal-model account over the symmetric associationist account",
+      "source_span_ids": [
+        "s2",
+        "s4"
+      ],
+      "assertion_id": "AHV2-BLF-01.r4",
+      "carrier_status": "FULL",
+      "predicate_family": "COMPARISON",
+      "qualifiers": [],
+      "directionality": null,
+      "evaluation": {
+        "dimension": "EVIDENTIAL_SUPPORT",
+        "preferred_argument": "causal_model_account"
+      },
+      "argument_bindings": [
+        {
+          "node_id": "causal_model_account",
+          "semantic_role": "SUBJECT",
+          "layer": "L_claim",
+          "claim_object_type": "THEORETICAL_ACCOUNT"
+        },
+        {
+          "node_id": "associationist_account",
+          "semantic_role": "COMPARATOR",
+          "layer": "L_claim",
+          "claim_object_type": "THEORETICAL_ACCOUNT"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [
+        "based on reported experimental results"
+      ],
+      "gap_reasons": [],
+      "adjudication_note": "Evidence favors a causal model over a symmetry-predicting associative account; no claim of definitive exclusion."
+    },
+    {
+      "validation_claim_id": "AHV2-CNC-01",
+      "claim_id": "AHV2-CNC-01.C1",
+      "source_relation_id": "r1",
+      "source_kind": "depends_on",
+      "source_arguments": [
+        "exemplar_model_fit",
+        "small_less_differentiated_structure",
+        "learning_stage"
+      ],
+      "source_description": "for small, poorly differentiated categories the standard exemplar model describes observed performance better, including at early learning stages; this is a model-fit result, not direct observation of exemplar processing",
+      "source_span_ids": [
+        "s2",
+        "s6"
+      ],
+      "assertion_id": "AHV2-CNC-01.r1",
+      "carrier_status": "GAP",
+      "attempted_predicate_family": "DEPENDENCE",
+      "attempted_qualifiers": [],
+      "provisional_argument_bindings": [],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [
+        "CLAIM_LEVEL_MODEL_FIT_RESULT_OBJECT_TYPE_MISSING"
+      ],
+      "adjudication_note": "exemplar_model_fit is a relative model-fit analytic outcome, not a cognitive-system state or a THEORETICAL_ACCOUNT; binding it to L_sys or the only v2 L_claim object type misclassifies it."
+    },
+    {
+      "validation_claim_id": "AHV2-CNC-01",
+      "claim_id": "AHV2-CNC-01.C1",
+      "source_relation_id": "r2",
+      "source_kind": "depends_on",
+      "source_arguments": [
+        "prototype_model_fit",
+        "large_more_differentiated_structure",
+        "learning_stage"
+      ],
+      "source_description": "for large, better-differentiated categories the prototype model has an early fit advantage in the reported qualifying task conditions, but not uniformly across all experimental conditions; this is a model-fit result, not direct observation of prototype processing",
+      "source_span_ids": [
+        "s3",
+        "s5"
+      ],
+      "assertion_id": "AHV2-CNC-01.r2",
+      "carrier_status": "GAP",
+      "attempted_predicate_family": "DEPENDENCE",
+      "attempted_qualifiers": [],
+      "provisional_argument_bindings": [],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [
+        "CLAIM_LEVEL_MODEL_FIT_RESULT_OBJECT_TYPE_MISSING"
+      ],
+      "adjudication_note": "prototype_model_fit is a comparative model-fit result and is not a cognitive-system outcome; the only v2 L_claim claim_object_type is THEORETICAL_ACCOUNT."
+    },
+    {
+      "validation_claim_id": "AHV2-CNC-01",
+      "claim_id": "AHV2-CNC-01.C1",
+      "source_relation_id": "r3",
+      "source_kind": "changes",
+      "source_arguments": [
+        "learning_stage",
+        "large_more_differentiated_structure",
+        "prototype_based_processing",
+        "exemplar_based_processing"
+      ],
+      "source_description": "the authors interpret the learning-stage model-fit trajectory for large, better-differentiated categories as consistent with a gradual shift from prototype-based toward exemplar-based processing; this is an inferred mechanism, not a uniquely established psychological transition and does not generalize to small, poorly differentiated categories",
+      "source_span_ids": [
+        "s4",
+        "s5",
+        "s6",
+        "s7"
+      ],
+      "assertion_id": "AHV2-CNC-01.r3",
+      "carrier_status": "GAP",
+      "attempted_predicate_family": "CHANGE",
+      "attempted_qualifiers": [],
+      "provisional_argument_bindings": [],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [
+        "TEMPORAL_RELOCATION_FROM_TO_BINDING_MISSING",
+        "MODEL_INFERENCE_EPISTEMIC_STATUS_MISSING"
+      ],
+      "adjudication_note": "ClaimIR describes an authors-inferred, category-condition-specific transition from prototype to exemplar processing; CHANGE has no typed from/to transition and no structured inferential-status marker."
+    },
+    {
+      "validation_claim_id": "AHV2-CNC-01",
+      "claim_id": "AHV2-CNC-01.C1",
+      "source_relation_id": "r4",
+      "source_kind": "depends_on",
+      "source_arguments": [
+        "strategy_trajectory",
+        "small_less_differentiated_structure",
+        "large_more_differentiated_structure"
+      ],
+      "source_description": "different category structures produce different trajectories through the space of categorization strategies",
+      "source_span_ids": [
+        "s4"
+      ],
+      "assertion_id": "AHV2-CNC-01.r4",
+      "carrier_status": "GAP",
+      "attempted_predicate_family": "DEPENDENCE",
+      "attempted_qualifiers": [],
+      "provisional_argument_bindings": [],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "gap_reasons": [
+        "MODEL_INFERENCE_EPISTEMIC_STATUS_MISSING"
+      ],
+      "adjudication_note": "Dominant strategy trajectory is inferred from fits of competing categorization models; treating the trajectory as a directly observed cognitive system outcome would silently discard its inferential status."
+    }
+  ],
+  "summary": {
+    "claims": 8,
+    "relations": 34,
+    "full_relations": 16,
+    "gap_relations": 18,
+    "full_rate": 0.47058823529411764,
+    "full_claims": 1,
+    "gap_claims": 7,
+    "per_claim": [
+      {
+        "validation_claim_id": "AHV2-MEM-01",
+        "relations": 4,
+        "full": 4,
+        "gap": 0,
+        "claim_status": "FULL"
+      },
+      {
+        "validation_claim_id": "AHV2-LRN-01",
+        "relations": 3,
+        "full": 0,
+        "gap": 3,
+        "claim_status": "GAP"
+      },
+      {
+        "validation_claim_id": "AHV2-SKL-01",
+        "relations": 5,
+        "full": 3,
+        "gap": 2,
+        "claim_status": "GAP"
+      },
+      {
+        "validation_claim_id": "AHV2-ATT-01",
+        "relations": 3,
+        "full": 1,
+        "gap": 2,
+        "claim_status": "GAP"
+      },
+      {
+        "validation_claim_id": "AHV2-PRD-01",
+        "relations": 7,
+        "full": 5,
+        "gap": 2,
+        "claim_status": "GAP"
+      },
+      {
+        "validation_claim_id": "AHV2-CTL-01",
+        "relations": 4,
+        "full": 0,
+        "gap": 4,
+        "claim_status": "GAP"
+      },
+      {
+        "validation_claim_id": "AHV2-BLF-01",
+        "relations": 4,
+        "full": 3,
+        "gap": 1,
+        "claim_status": "GAP"
+      },
+      {
+        "validation_claim_id": "AHV2-CNC-01",
+        "relations": 4,
+        "full": 0,
+        "gap": 4,
+        "claim_status": "GAP"
+      }
+    ],
+    "gap_reason_counts": {
+      "TEMPORAL_RELOCATION_FROM_TO_BINDING_MISSING": 2,
+      "STATISTICAL_SIGNIFICANCE_QUALIFIER_MISSING": 2,
+      "ACQUISITION_OR_EMERGENCE_MODIFIER_MISSING": 1,
+      "INTERRUPTION_OR_INTERFERENCE_PREDICATE_MISSING": 1,
+      "COMPONENT_ENCOMPASSMENT_PREDICATE_MISSING": 1,
+      "ARGUMENT_LOCAL_POSSIBILITY_MISSING": 1,
+      "DISTINCT_OUTCOME_CAUSATION_MAPPING_MISSING": 1,
+      "MULTI_OUTCOME_COMPARISON_DIRECTION_MISSING": 1,
+      "NECESSARY_CONDITION_MODALITY_MISSING": 2,
+      "TENTATIVE_NEURAL_INVOLVEMENT_PREDICATE_MISSING": 1,
+      "TENTATIVE_UNARY_STORAGE_LOCALIZATION_MISSING": 1,
+      "TRIADIC_PREFERENTIAL_ASSOCIATION_ORDERING_MISSING": 1,
+      "NONNECESSITY_OR_MAY_NOT_MODALITY_MISSING": 1,
+      "CLAIM_LEVEL_MODEL_FIT_RESULT_OBJECT_TYPE_MISSING": 2,
+      "MODEL_INFERENCE_EPISTEMIC_STATUS_MISSING": 2
+    },
+    "extension_use_relations": {
+      "TRANSFORMATION": 2,
+      "DISTINCT": 3,
+      "directionality": 6,
+      "evaluation": 1,
+      "lclaim_binding": 3
+    }
+  },
+  "epistemic_limits": [
+    "AHV2-8 is post-v2-admitted source hold-out, but this semantic classification was performed by the same assistant that designed v2 and built the extraction/review workflow; no independently blinded adjudicator.",
+    "The rubric was frozen in a separate commit after inspecting frozen target descriptions but before recording carrier verdicts. It is not a preregistration blind to the held-out targets.",
+    "Deterministic CI will audit exact target membership, frozen schema vocabulary, typed role/reference integrity and result counts. CI does not prove that discretionary semantic FULL/GAP decisions are correct.",
+    "Comparison with AHV-8 v1 11/28 is descriptive only: different source set and different relation distribution; it is not controlled evidence of percentage-point improvement or general completeness.",
+    "FULL is representational adequacy under v2 for this specific source relation, not empirical truth, strength of evidence, or identity of cognitive processes."
+  ],
+  "interpretation": {
+    "principal": "Frozen AssertionCarrier v2 does not semantically close on the post-v2-admitted AHV2-8 set under this strict adjudication protocol.",
+    "success": "Existing distinction, transformation, directional change, contrastive explanation, model-account evidential preference, and already-allowed semantic-reference mechanisms represent several new source relations.",
+    "gaps": "New held-out distinctions include necessary-condition modality, within-argument tentative status, statistical significance, distinct forms of interference, temporal event relocation and inferred model-fit results that cannot be bound to the single L_claim THEORETICAL_ACCOUNT type.",
+    "consequence": "Failures implicate L_claim assertion and binding expressivity under this protocol, not automatically missing L_sys grammar roles. No schema tuning occurred in the held-out run."
+  },
+  "terminal": "AHV2_8_V2_HELDOUT_RESULT_16_OF_34_FULL_18_GAP"
+}

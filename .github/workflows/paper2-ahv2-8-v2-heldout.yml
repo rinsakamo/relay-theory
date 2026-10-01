@@ -1,0 +1,47 @@
+name: paper2-ahv2-8-v2-heldout
+on:
+  push:
+    branches: [paper2-ahv2-8-v2-heldout]
+    paths:
+      - "paper/validation/jgps-major-revision/ahv2-8-v2-heldout-*"
+      - "paper/validation/jgps-major-revision/ahv2-8-claimir-human-reviewed-v1/**"
+      - "paper/validation/jgps-major-revision/l-claim-assertion-carrier-schema-v2.json"
+      - "scripts/paper2_ahv2_8_v2_heldout_validate.py"
+      - ".github/workflows/paper2-ahv2-8-v2-heldout.yml"
+  pull_request:
+    paths:
+      - "paper/validation/jgps-major-revision/ahv2-8-v2-heldout-*"
+      - "paper/validation/jgps-major-revision/ahv2-8-claimir-human-reviewed-v1/**"
+      - "paper/validation/jgps-major-revision/l-claim-assertion-carrier-schema-v2.json"
+      - "scripts/paper2_ahv2_8_v2_heldout_validate.py"
+      - ".github/workflows/paper2-ahv2-8-v2-heldout.yml"
+permissions: {contents: read}
+jobs:
+  frozen-v2-heldout:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - name: Verify source/target/protocol precede result commit
+        run: |
+          git cat-file -e ad1c11789814413b1d9fd3ca8a4cfb6f7316f230^{commit}
+          git cat-file -e 8f7ab1ee7f006c3b61dbc64865aaa703887df301^{commit}
+          git cat-file -e 0c351aa9f58142fcb8fa93a7616f1ccd5af2629b^{commit}
+          git cat-file -e e8060ed92289d72a0d22495a327cf588e2f3eb62^{commit}
+          git merge-base --is-ancestor ad1c11789814413b1d9fd3ca8a4cfb6f7316f230 0c351aa9f58142fcb8fa93a7616f1ccd5af2629b
+          git merge-base --is-ancestor 8f7ab1ee7f006c3b61dbc64865aaa703887df301 0c351aa9f58142fcb8fa93a7616f1ccd5af2629b
+          git merge-base --is-ancestor 0c351aa9f58142fcb8fa93a7616f1ccd5af2629b e8060ed92289d72a0d22495a327cf588e2f3eb62
+          git merge-base --is-ancestor e8060ed92289d72a0d22495a327cf588e2f3eb62 HEAD
+      - name: Compile and deterministic self-test
+        run: |
+          python -m py_compile scripts/paper2_ahv2_8_v2_heldout_validate.py
+          python scripts/paper2_ahv2_8_v2_heldout_validate.py --output /tmp/ahv2-v2-a.json
+          python scripts/paper2_ahv2_8_v2_heldout_validate.py --output /tmp/ahv2-v2-b.json
+          cmp /tmp/ahv2-v2-a.json /tmp/ahv2-v2-b.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ahv2-8-v2-heldout-receipt
+          path: /tmp/ahv2-v2-a.json
