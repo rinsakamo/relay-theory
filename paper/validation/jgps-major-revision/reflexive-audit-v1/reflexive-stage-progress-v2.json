@@ -1,0 +1,53 @@
+{
+  "schema": "relay-theory.paper2.reflexive_stage_progress.v2",
+  "authority_issue": 384,
+  "date": "2026-10-01",
+  "supersedes_stage_c_snapshot": "paper/validation/jgps-major-revision/reflexive-audit-v1/reflexive-stage-progress-v1.json",
+  "stages": {
+    "A": {
+      "status": "FROZEN",
+      "claims": 47
+    },
+    "B": {
+      "status": "AUTHOR_REVIEW_COMPLETE",
+      "accepted": 47,
+      "pending": 0
+    },
+    "C": {
+      "status": "FROZEN",
+      "profile_git_blob_sha": "500621e62357e157c2c52935ff53d3c292b1547b",
+      "scope": "Evidence grade annotation frozen in its own prior stage; excluded from D layer choices."
+    },
+    "D": {
+      "status": "FROZEN_PRE_EVIDENCE_JOIN",
+      "contract_git_blob_sha": "38f06d98f70f29490efe7360750eb907ac1a3f15",
+      "index_git_blob_sha": "7a4a9bb1df15aa1b12de51e9ca048565601964a0",
+      "binding_precision_audit_git_blob_sha": "daa3081a74428c77bad158ef6ccffe90d0ddad54",
+      "claims": 47,
+      "relations": 68,
+      "typing": "L_claim meta-assertion plus individual typed source argument references",
+      "exact_carrier_tested": 0,
+      "object_level_role_tested": 0,
+      "unbound_claimir_node_watches": {
+        "claims": 5,
+        "nodes": 7
+      },
+      "evidence_join": "NOT_STARTED",
+      "validation_workflow": ".github/workflows/paper2-reflexive-stage-d.yml"
+    },
+    "E": {
+      "status": "NOT_STARTED"
+    },
+    "F": {
+      "status": "NOT_STARTED"
+    }
+  },
+  "interpretation": "The retained stage-C snapshot correctly said D had not started at that prior time. This version advances D after independently frozen prefit decisions while preserving all earlier frozen artifacts.",
+  "flags": {
+    "stage_d_used_reflexive_evidence_grades": false,
+    "stage_e_grammar_projection_executed": false,
+    "stage_f_label_suppression_executed": false,
+    "grand_null_verdict_created": false
+  },
+  "terminal": "RFX47_STAGE_D_PREJOIN_LAYER_TYPING_FROZEN_STAGE_E_F_NOT_STARTED"
+}
