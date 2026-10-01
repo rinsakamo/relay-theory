@@ -1,6 +1,6 @@
 # Paper 2 reflexive-audit author review packet v1
 
-Status: **AUTHOR REVIEW IN PROGRESS — 15 / 24**
+Status: **AUTHOR REVIEW IN PROGRESS — 17 / 25**
 
 Authority: #384
 
@@ -19,8 +19,9 @@ Treat relation-bearing connectives such as **and / but / while / therefore** as 
 - RFX05A/B/C = ACCEPT after three-way split; whole-claim failure remains authoritative and destructive controls are the eight declared tests only.
 - RFX06A/B = ACCEPT after splitting basis factorization from limited non-discovery of independent top-level primitives.
 - RFX07A/B = ACCEPT after splitting frozen-corpus projection class counts from residual class adjudication.
-- RFX08A/B/C = ACCEPT after splitting the two frozen strict direct-preservation comparator results from the non-encodability inference limitation. Results do not apply to all dynamical or POMDP formalisms.
-- Superseded original wording and revision reasons remain in `pre_review_revision_history`.
+- RFX08A/B/C = ACCEPT after separating tested strict direct-preservation comparators from the non-encodability inference limitation.
+- RFX09A/B = ACCEPT after separating typed four-layer architecture from the residual/non-entailment inference limitation.
+- Original wording and revision reasons remain in `pre_review_revision_history`.
 
 | ID | Normalized claim candidate | Decision |
 |---|---|---|
@@ -41,7 +42,8 @@ Treat relation-bearing connectives such as **and / but / while / therefore** as 
 | RFX08A | Under the frozen strict direct-preservation comparator G_dyn = {X, K, T}, 59 of the 60 reviewed claims require at least one additional role, and none receives a strict FULL mapping. | ACCEPT |
 | RFX08B | Under the tested strict direct-preservation POMDP-like comparator, 44 of the 60 reviewed claims lose at least one of the specified distinctions. | ACCEPT |
 | RFX08C | The frozen strict direct-preservation comparator results establish distinction loss under the tested projections, not mathematical non-encodability by enriched formalisms. | ACCEPT |
-| RFX09 | Paper 2 separates system grammar, scientific-claim semantics, source context, and formal carrier realization into distinct layers; residual claim/context structure is not automatically a missing cognitive-system role. | — |
+| RFX09A | Paper 2 explicitly distinguishes system grammar (L_sys), scientific claim semantics (L_claim), source context (L_ctx), and formal carrier realization (L_formal) as separate typed layers. | ACCEPT |
+| RFX09B | Residual scientific-claim or source-context structure does not by itself establish a missing top-level cognitive-system role. | ACCEPT |
 | RFX10 | The final architecture separates cognitive system, World, cross-boundary coupling, experimental protocol, and realized run; internal transformation K is not Gamma, intrinsic C is not an experimental condition, and P_in/P_out are not identical to an experimenter's schedule. | — |
 | RFX11 | In the prospective PVS-16 validation, frozen Grammar-v0 mapping leaves high-evidence E2/E3 pressure without a new top-level role gap, and the pre-existing layered architecture places all 52 relations with zero ARCHITECTURE_GAP and zero ROLE_GAP, while retaining one E3 claim-carrier precision pressure. | — |
 | RFX12 | A held-out AHV-8 test rejects completeness of AssertionCarrier v1: only 11 of 28 reviewed relations are FULL and 17 are GAP, with 1 of 8 claims fully covered; the observed gaps are L_claim carrier gaps and do not by themselves establish Grammar-v0 system-role gaps. | — |
@@ -51,4 +53,4 @@ Treat relation-bearing connectives such as **and / but / while / therefore** as 
 
 Terminal while incomplete:
 
-`RFX24_HUMAN_REVIEW_PENDING`
+`RFX25_HUMAN_REVIEW_PENDING`
