@@ -10,12 +10,13 @@
     "manuscript_is_scientific_authority": false,
     "evidence_authority_rule": "repository frozen artifacts and validation commits remain authority for support status"
   },
-  "candidate_count": 17,
+  "candidate_count": 18,
   "candidate_ids": [
     "RFX01A",
     "RFX01B1",
     "RFX01B2",
-    "RFX02",
+    "RFX02A",
+    "RFX02B",
     "RFX03",
     "RFX04",
     "RFX05",
@@ -445,8 +446,8 @@
       }
     },
     {
-      "self_target_id": "RFX02",
-      "normalized_claim": "The scientifically inspectable object is the source-grounded, reviewed ClaimIR record with preserved source-local provenance; the opaque model proposal that initiated extraction is not itself scientific authority.",
+      "self_target_id": "RFX02A",
+      "normalized_claim": "The scientifically inspectable extraction object is a reviewed ClaimIR record whose claims remain grounded in preserved source-local provenance.",
       "target_source": "Paper 2 manuscript / frozen validation-extension claim surface",
       "repository_evidence_authorities": [
         "paper/venues/jgps/main.tex@89b094476137bae12e089e5a794a5e57300f4da1",
@@ -457,7 +458,7 @@
       "reflexive_verdict_created": false,
       "claimir": {
         "schema_version": "paper2-claim-ir-v1",
-        "claim_id": "RFX02.C1",
+        "claim_id": "RFX02A.C1",
         "provenance": {
           "paper_id": "SELF:RELAYTHEORY-PAPER2",
           "source_language": "en",
@@ -504,20 +505,11 @@
           },
           "nodes": [
             {
-              "id": "source_local_evidence",
-              "role": "available_information",
-              "description": "stable source identity and source-local evidence supporting an extracted claim",
+              "id": "source_local_provenance",
+              "role": "evidence",
+              "description": "preserved source-local provenance",
               "source_span_ids": [
                 "s1",
-                "s2"
-              ],
-              "grounding": "normalized"
-            },
-            {
-              "id": "model_proposal",
-              "role": "state_or_structure",
-              "description": "initial model-produced structured extraction proposal",
-              "source_span_ids": [
                 "s2"
               ],
               "grounding": "normalized"
@@ -525,7 +517,7 @@
             {
               "id": "reviewed_claimir",
               "role": "state_or_structure",
-              "description": "ClaimIR record retained after source-grounded review",
+              "description": "a human-reviewed ClaimIR record",
               "source_span_ids": [
                 "s1",
                 "s2"
@@ -533,9 +525,9 @@
               "grounding": "normalized"
             },
             {
-              "id": "auditability",
-              "role": "criterion",
-              "description": "ability of an auditor to re-evaluate the retained representation against preserved source provenance",
+              "id": "scientifically_inspectable_object",
+              "role": "response_or_outcome",
+              "description": "an extraction object open to scientific inspection",
               "source_span_ids": [
                 "s1",
                 "s2"
@@ -548,10 +540,84 @@
               "id": "r1",
               "kind": "depends_on",
               "arguments": [
+                "scientifically_inspectable_object",
                 "reviewed_claimir",
-                "source_local_evidence"
+                "source_local_provenance"
               ],
-              "description": "retained ClaimIR content depends on preserved source-local grounding",
+              "description": "scientific inspectability depends on a reviewed ClaimIR record retaining source-local grounding",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "self_target_id": "RFX02B",
+      "normalized_claim": "An opaque model proposal that initiates extraction is not, by itself, scientific evidential authority.",
+      "target_source": "Paper 2 manuscript / frozen validation-extension claim surface",
+      "repository_evidence_authorities": [
+        "paper/venues/jgps/main.tex@89b094476137bae12e089e5a794a5e57300f4da1",
+        "commit:290070dedd099a91eafbde527c7c60c3aa384d2b"
+      ],
+      "grammar_mapping_inspected": false,
+      "evidence_profile_created": false,
+      "reflexive_verdict_created": false,
+      "claimir": {
+        "schema_version": "paper2-claim-ir-v1",
+        "claim_id": "RFX02B.C1",
+        "provenance": {
+          "paper_id": "SELF:RELAYTHEORY-PAPER2",
+          "source_language": "en",
+          "source_spans": [
+            {
+              "span_id": "s1",
+              "locator": "paper/venues/jgps/main.tex — Source-Grounded ClaimIR Construction: every retained record remains auditable from stable source identity and source-local evidence."
+            },
+            {
+              "span_id": "s2",
+              "locator": "paper/venues/jgps/main.tex — Source-Grounded ClaimIR Construction: the scientific object is the reviewed ClaimIR record, not the hidden model response that first proposed it."
+            }
+          ],
+          "authors": [
+            "Rintaro Sakamoto"
+          ],
+          "institutions": [
+            "Independent Scholar"
+          ],
+          "venue": "Journal for General Philosophy of Science submission surface / RelayTheory validation extension",
+          "citation_count": null,
+          "construct_labels": [
+            "ClaimIR",
+            "source grounding",
+            "auditability"
+          ]
+        },
+        "extraction": {
+          "extractor": "ChatGPT",
+          "extractor_version": "GPT-5.6 Sol",
+          "procedure_version": "paper2-reflexive-audit-candidate-v1:#384",
+          "extracted_at": "2026-10-01",
+          "manual_review_status": "unreviewed"
+        },
+        "claim_core": {
+          "claim_type": "relation",
+          "modality": "descriptive",
+          "scope": {
+            "conditions": [],
+            "population": [],
+            "substrate": [],
+            "task": [],
+            "temporal_scope": []
+          },
+          "nodes": [
+            {
+              "id": "opaque_model_proposal",
+              "role": "input",
+              "description": "an opaque model-generated proposal used to initiate extraction",
               "source_span_ids": [
                 "s1",
                 "s2"
@@ -559,27 +625,25 @@
               "grounding": "normalized"
             },
             {
-              "id": "r2",
-              "kind": "other",
-              "arguments": [
-                "model_proposal",
-                "reviewed_claimir"
-              ],
-              "description": "the initial model proposal is not sufficient authority for retention without source-grounded review",
+              "id": "scientific_evidential_authority",
+              "role": "response_or_outcome",
+              "description": "status as scientific evidential authority",
               "source_span_ids": [
+                "s1",
                 "s2"
               ],
               "grounding": "normalized"
-            },
+            }
+          ],
+          "relations": [
             {
-              "id": "r3",
-              "kind": "depends_on",
+              "id": "r1",
+              "kind": "other",
               "arguments": [
-                "auditability",
-                "reviewed_claimir",
-                "source_local_evidence"
+                "opaque_model_proposal",
+                "scientific_evidential_authority"
               ],
-              "description": "auditability depends on the reviewed record plus preserved provenance",
+              "description": "an opaque model proposal alone does not constitute scientific evidential authority",
               "source_span_ids": [
                 "s1",
                 "s2"
@@ -3041,7 +3105,7 @@
       }
     }
   ],
-  "terminal": "RFX17_CANDIDATES_FROZEN_PENDING_AUTHOR_REVIEW",
+  "terminal": "RFX18_CANDIDATES_FROZEN_PENDING_AUTHOR_REVIEW",
   "fresh_authority_reconciliation": {
     "observed_after_initial_candidate_freeze": "ad1c11789814413b1d9fd3ca8a4cfb6f7316f230",
     "reason": "AssertionCarrier v2 became current main before author review started; RFX15 was added before any review or downstream mapping.",
@@ -3071,6 +3135,19 @@
       "original_normalized_claim": "A structural identity or structural-difference judgment within the Paper-2 comparison framework must be licensed by a declared structural representation and comparison rule rather than by construct labels alone.",
       "reason": "Identity/equivalence licensing and bounded non-identity/difference inference are logically asymmetric and independently attackable.",
       "review_basis": "Author requested decomposition; relation-bearing conjunctions should be treated as candidate split points.",
+      "downstream_fit_inspected": false,
+      "date": "2026-10-01"
+    },
+    {
+      "event": "AUTHOR_APPROVED_SPLIT_WORDING",
+      "original_id": "RFX02",
+      "replacements": [
+        "RFX02A",
+        "RFX02B"
+      ],
+      "original_normalized_claim": "The scientifically inspectable object is the source-grounded, reviewed ClaimIR record with preserved source-local provenance; the opaque model proposal that initiated extraction is not itself scientific authority.",
+      "reason": "Separate the positive definition of the inspectable extraction object from the negative authority limitation on opaque model proposals.",
+      "human_review_decision_recorded": false,
       "downstream_fit_inspected": false,
       "date": "2026-10-01"
     }
