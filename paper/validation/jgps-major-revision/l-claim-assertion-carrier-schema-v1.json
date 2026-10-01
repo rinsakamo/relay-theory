@@ -1,0 +1,96 @@
+{
+  "schema_version": "paper2-l-claim-assertion-carrier-v1",
+  "status": "FROZEN_PVS_CALIBRATED_ASSERTION_CARRIER_SCHEMA",
+  "owner_issue": 375,
+  "generated_date": "2026-10-01",
+  "purpose": "Additive typed carrier for scientific assertion semantics that are not losslessly represented by ClaimIR-v1 relation arguments or by L_sys Grammar-v0 relations.",
+  "scope_boundary": {
+    "mutates_claimir_v1": false,
+    "mutates_grammar_v0": false,
+    "mutates_layered_architecture": false,
+    "layer": "L_claim",
+    "calibration_set": "the 14 PVS-16 relations classified PARTIAL or UNMAPPED by the already-frozen prospective Grammar-v0 mapping",
+    "independent_validation_claimed": false,
+    "note": "This schema is designed after observing the PVS layered-recovery cases. Closure on those cases is calibration, not independent validation."
+  },
+  "carrier_fields": {
+    "assertion_id": "globally unique identifier, conventionally <validation_claim_id>.<relation_id>",
+    "claim_id": "frozen ClaimIR claim identifier",
+    "source_relation_id": "frozen ClaimIR relation identifier",
+    "source_kind": "exact frozen ClaimIR relation kind",
+    "source_arguments": "exact ordered frozen ClaimIR relation arguments; never rewritten by the carrier",
+    "predicate_family": "typed L_claim assertion family",
+    "qualifiers": "zero or more orthogonal assertion qualifiers",
+    "argument_bindings": "typed semantic roles for source_arguments with architecture-layer bindings",
+    "semantic_references": "additional semantically required ClaimIR node references not present in source_arguments",
+    "support_provenance": "assertion-level provenance such as experimentally manipulated/supported, separate from P_in unless a frozen intervention node exists",
+    "assertion_scope_qualifiers": "claim-scope qualifiers needed for the assertion but not represented as ClaimIR nodes",
+    "carrier_status": "FULL or GAP"
+  },
+  "predicate_families": [
+    "COMPARISON",
+    "DEPENDENCE",
+    "ASSOCIATION",
+    "CHANGE",
+    "DISSOCIATION",
+    "IMPLEMENTATION",
+    "EXPLANATION",
+    "OUTCOME_ASSERTION"
+  ],
+  "qualifiers": [
+    "EQUIVALENT",
+    "MATCHED",
+    "PRESERVED",
+    "NEGATIVE",
+    "GREATER_THAN",
+    "CROSS_CONTEXT",
+    "CANDIDATE_POSSIBLE",
+    "CONTRASTIVE_RATHER_THAN",
+    "CONTEXT_INDEXED"
+  ],
+  "reference_roles": [
+    "SUBJECT",
+    "OUTCOME",
+    "INDEX_CONTEXT",
+    "COMPARATOR",
+    "BASELINE_OR_REFERENCE",
+    "DEPENDENT",
+    "CONDITIONING_FACTOR",
+    "ASSOCIAND",
+    "CHANGED_ENTITY",
+    "CHANGE_CONTEXT",
+    "IMPLEMENTED_REPRESENTATION",
+    "IMPLEMENTATION_CANDIDATE",
+    "EXPLANANDUM",
+    "EXPLANANS",
+    "ALTERNATIVE_EXPLANATION"
+  ],
+  "architecture_layers": [
+    "L_sys",
+    "L_ctx"
+  ],
+  "context_placement_classes": [
+    "EXPERIMENT_CONTEXT",
+    "WORLD_CONTEXT",
+    "RUN_BOUNDARY_OR_PREHISTORY",
+    "SYSTEM_INTRINSIC_CONSTRAINT_CANDIDATE",
+    "PARAMETER_ONLY",
+    "UNDERDETERMINED"
+  ],
+  "support_provenance_types": [
+    "EXPERIMENTAL_MANIPULATION_REPORTED"
+  ],
+  "invariants": [
+    "source_arguments must byte-semantically reproduce the frozen relation argument list in order",
+    "source_kind must equal the frozen relation kind",
+    "every argument binding must reference exactly one source_argument",
+    "every semantic_reference must reference an existing ClaimIR node that is not already in source_arguments",
+    "semantic_references may add assertion-level participation but never mutate the frozen structural graph",
+    "L_ctx references require a placement from the already-frozen context vocabulary",
+    "assertion predicates and qualifiers remain L_claim semantics and are never promoted to K solely to improve coverage",
+    "support provenance does not create P_in when frozen ClaimIR lacks an intervention node",
+    "source-level neural implementation claims are not L_formal",
+    "carrier FULL means the assertion can be stated using the existing predicate/qualifier/reference vocabulary; it does not imply truth, evidence strength, or formal-logical completeness"
+  ],
+  "migration_note": "A future ClaimIR v2 could internalize selected carrier fields, but this v1 artifact is deliberately external and additive."
+}
