@@ -10,7 +10,7 @@
     "manuscript_is_scientific_authority": false,
     "evidence_authority_rule": "repository frozen artifacts and validation commits remain authority for support status"
   },
-  "candidate_count": 22,
+  "candidate_count": 24,
   "candidate_ids": [
     "RFX01A",
     "RFX01B1",
@@ -26,7 +26,9 @@
     "RFX06B",
     "RFX07A",
     "RFX07B",
-    "RFX08",
+    "RFX08A",
+    "RFX08B",
+    "RFX08C",
     "RFX09",
     "RFX10",
     "RFX11",
@@ -1847,8 +1849,8 @@
       }
     },
     {
-      "self_target_id": "RFX08",
-      "normalized_claim": "Under strict direct-preservation comparators, a generic X/K/T view and a POMDP-like view lose distinctions explicitly preserved by the frozen corpus; this is a distinction-loss result, not a proof of mathematical non-encodability.",
+      "self_target_id": "RFX08A",
+      "normalized_claim": "Under the frozen strict direct-preservation comparator G_dyn = {X, K, T}, 59 of the 60 reviewed claims require at least one additional role, and none receives a strict FULL mapping.",
       "target_source": "Paper 2 manuscript / frozen validation-extension claim surface",
       "repository_evidence_authorities": [
         "paper/venues/jgps/main.tex@89b094476137bae12e089e5a794a5e57300f4da1",
@@ -1859,7 +1861,7 @@
       "reflexive_verdict_created": false,
       "claimir": {
         "schema_version": "paper2-claim-ir-v1",
-        "claim_id": "RFX08.C1",
+        "claim_id": "RFX08A.C1",
         "provenance": {
           "paper_id": "SELF:RELAYTHEORY-PAPER2",
           "source_language": "en",
@@ -1925,6 +1927,128 @@
               "grounding": "normalized"
             },
             {
+              "id": "frozen_distinctions",
+              "role": "state_or_structure",
+              "description": "distinctions preserved as first-class structure by the frozen corpus",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "G_dyn_loss_59_of_60",
+              "role": "response_or_outcome",
+              "description": "59 of 60 claims require at least one role beyond X/K/T for direct preservation",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            }
+          ],
+          "relations": [
+            {
+              "id": "r1",
+              "kind": "maps_to",
+              "arguments": [
+                "grammar_v0_full_view",
+                "G_dyn"
+              ],
+              "description": "the dynamical comparator is a forgetful/coarse view of the full role inventory",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r3",
+              "kind": "depends_on",
+              "arguments": [
+                "G_dyn_loss_59_of_60",
+                "G_dyn",
+                "frozen_distinctions"
+              ],
+              "description": "the G_dyn projection loses at least one frozen distinction in 59/60 claims",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "self_target_id": "RFX08B",
+      "normalized_claim": "Under the tested strict direct-preservation POMDP-like comparator, 44 of the 60 reviewed claims lose at least one of the specified distinctions.",
+      "target_source": "Paper 2 manuscript / frozen validation-extension claim surface",
+      "repository_evidence_authorities": [
+        "paper/venues/jgps/main.tex@89b094476137bae12e089e5a794a5e57300f4da1",
+        "research/paper2/paper2_result_v1.json@a20d1ae31e1ccc905b891bfb7312285cdcce55b4"
+      ],
+      "grammar_mapping_inspected": false,
+      "evidence_profile_created": false,
+      "reflexive_verdict_created": false,
+      "claimir": {
+        "schema_version": "paper2-claim-ir-v1",
+        "claim_id": "RFX08B.C1",
+        "provenance": {
+          "paper_id": "SELF:RELAYTHEORY-PAPER2",
+          "source_language": "en",
+          "source_spans": [
+            {
+              "span_id": "s1",
+              "locator": "paper/venues/jgps/main.tex — Strict-preservation comparator table: G_dyn 59/60 require a role beyond X/K/T and 0/60 strict FULL; POMDP-like union affected 44/60."
+            },
+            {
+              "span_id": "s2",
+              "locator": "paper/venues/jgps/main.tex — comparator interpretation: results are representational distinction-loss tests, not claims that enriched formalisms cannot encode the omitted structure."
+            }
+          ],
+          "authors": [
+            "Rintaro Sakamoto"
+          ],
+          "institutions": [
+            "Independent Scholar"
+          ],
+          "venue": "Journal for General Philosophy of Science submission surface / RelayTheory validation extension",
+          "citation_count": null,
+          "construct_labels": [
+            "G_dyn",
+            "POMDP-like comparator",
+            "strict preservation"
+          ]
+        },
+        "extraction": {
+          "extractor": "ChatGPT",
+          "extractor_version": "GPT-5.6 Sol",
+          "procedure_version": "paper2-reflexive-audit-candidate-v1:#384",
+          "extracted_at": "2026-10-01",
+          "manual_review_status": "unreviewed"
+        },
+        "claim_core": {
+          "claim_type": "comparison",
+          "modality": "comparative",
+          "scope": {
+            "conditions": [],
+            "population": [],
+            "substrate": [],
+            "task": [],
+            "temporal_scope": []
+          },
+          "nodes": [
+            {
+              "id": "grammar_v0_full_view",
+              "role": "state_or_structure",
+              "description": "the full frozen Grammar-v0 role view",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
               "id": "G_pomdp_like",
               "role": "state_or_structure",
               "description": "coarse comparator retaining X, P, K, rho/O, Q, and T while omitting/collapsing selected distinctions",
@@ -1940,6 +2064,126 @@
               "source_span_ids": [
                 "s1",
                 "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "G_pomdp_union_44_of_60",
+              "role": "response_or_outcome",
+              "description": "44 of 60 claims are affected by missing Pi/C or collapsed P directionality under the tested POMDP-like view",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            }
+          ],
+          "relations": [
+            {
+              "id": "r2",
+              "kind": "maps_to",
+              "arguments": [
+                "grammar_v0_full_view",
+                "G_pomdp_like"
+              ],
+              "description": "the POMDP-like comparator is a forgetful/coarse view of the full role inventory",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r4",
+              "kind": "depends_on",
+              "arguments": [
+                "G_pomdp_union_44_of_60",
+                "G_pomdp_like",
+                "frozen_distinctions"
+              ],
+              "description": "the tested POMDP-like projection loses specified distinctions in 44/60 claims",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "self_target_id": "RFX08C",
+      "normalized_claim": "The frozen strict direct-preservation comparator results establish distinction loss under the tested projections, not mathematical non-encodability by enriched formalisms.",
+      "target_source": "Paper 2 manuscript / frozen validation-extension claim surface",
+      "repository_evidence_authorities": [
+        "paper/venues/jgps/main.tex@89b094476137bae12e089e5a794a5e57300f4da1",
+        "research/paper2/paper2_result_v1.json@a20d1ae31e1ccc905b891bfb7312285cdcce55b4"
+      ],
+      "grammar_mapping_inspected": false,
+      "evidence_profile_created": false,
+      "reflexive_verdict_created": false,
+      "claimir": {
+        "schema_version": "paper2-claim-ir-v1",
+        "claim_id": "RFX08C.C1",
+        "provenance": {
+          "paper_id": "SELF:RELAYTHEORY-PAPER2",
+          "source_language": "en",
+          "source_spans": [
+            {
+              "span_id": "s1",
+              "locator": "paper/venues/jgps/main.tex — Strict-preservation comparator table: G_dyn 59/60 require a role beyond X/K/T and 0/60 strict FULL; POMDP-like union affected 44/60."
+            },
+            {
+              "span_id": "s2",
+              "locator": "paper/venues/jgps/main.tex — comparator interpretation: results are representational distinction-loss tests, not claims that enriched formalisms cannot encode the omitted structure."
+            }
+          ],
+          "authors": [
+            "Rintaro Sakamoto"
+          ],
+          "institutions": [
+            "Independent Scholar"
+          ],
+          "venue": "Journal for General Philosophy of Science submission surface / RelayTheory validation extension",
+          "citation_count": null,
+          "construct_labels": [
+            "G_dyn",
+            "POMDP-like comparator",
+            "strict preservation"
+          ]
+        },
+        "extraction": {
+          "extractor": "ChatGPT",
+          "extractor_version": "GPT-5.6 Sol",
+          "procedure_version": "paper2-reflexive-audit-candidate-v1:#384",
+          "extracted_at": "2026-10-01",
+          "manual_review_status": "unreviewed"
+        },
+        "claim_core": {
+          "claim_type": "comparison",
+          "modality": "comparative",
+          "scope": {
+            "conditions": [],
+            "population": [],
+            "substrate": [],
+            "task": [],
+            "temporal_scope": []
+          },
+          "nodes": [
+            {
+              "id": "G_dyn",
+              "role": "state_or_structure",
+              "description": "coarse comparator retaining X, K, and T",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "G_pomdp_like",
+              "role": "state_or_structure",
+              "description": "coarse comparator retaining X, P, K, rho/O, Q, and T while omitting/collapsing selected distinctions",
+              "source_span_ids": [
+                "s1"
               ],
               "grounding": "normalized"
             },
@@ -1972,62 +2216,6 @@
             }
           ],
           "relations": [
-            {
-              "id": "r1",
-              "kind": "maps_to",
-              "arguments": [
-                "grammar_v0_full_view",
-                "G_dyn"
-              ],
-              "description": "the dynamical comparator is a forgetful/coarse view of the full role inventory",
-              "source_span_ids": [
-                "s1",
-                "s2"
-              ],
-              "grounding": "normalized"
-            },
-            {
-              "id": "r2",
-              "kind": "maps_to",
-              "arguments": [
-                "grammar_v0_full_view",
-                "G_pomdp_like"
-              ],
-              "description": "the POMDP-like comparator is a forgetful/coarse view of the full role inventory",
-              "source_span_ids": [
-                "s1",
-                "s2"
-              ],
-              "grounding": "normalized"
-            },
-            {
-              "id": "r3",
-              "kind": "depends_on",
-              "arguments": [
-                "G_dyn_loss_59_of_60",
-                "G_dyn",
-                "frozen_distinctions"
-              ],
-              "description": "the G_dyn projection loses at least one frozen distinction in 59/60 claims",
-              "source_span_ids": [
-                "s1"
-              ],
-              "grounding": "normalized"
-            },
-            {
-              "id": "r4",
-              "kind": "depends_on",
-              "arguments": [
-                "G_pomdp_union_44_of_60",
-                "G_pomdp_like",
-                "frozen_distinctions"
-              ],
-              "description": "the tested POMDP-like projection loses specified distinctions in 44/60 claims",
-              "source_span_ids": [
-                "s1"
-              ],
-              "grounding": "normalized"
-            },
             {
               "id": "r5",
               "kind": "other",
@@ -3399,7 +3587,7 @@
       }
     }
   ],
-  "terminal": "RFX22_CANDIDATES_FROZEN_PENDING_AUTHOR_REVIEW",
+  "terminal": "RFX24_CANDIDATES_FROZEN_PENDING_AUTHOR_REVIEW",
   "fresh_authority_reconciliation": {
     "observed_after_initial_candidate_freeze": "ad1c11789814413b1d9fd3ca8a4cfb6f7316f230",
     "reason": "AssertionCarrier v2 became current main before author review started; RFX15 was added before any review or downstream mapping.",
@@ -3498,6 +3686,24 @@
       "decisions": {
         "RFX07A": "ACCEPT",
         "RFX07B": "ACCEPT"
+      },
+      "downstream_fit_inspected": false,
+      "date": "2026-10-01"
+    },
+    {
+      "event": "AUTHOR_ACCEPTED_THREE_WAY_SPLIT",
+      "original_id": "RFX08",
+      "replacements": [
+        "RFX08A",
+        "RFX08B",
+        "RFX08C"
+      ],
+      "original_normalized_claim": "Under strict direct-preservation comparators, a generic X/K/T view and a POMDP-like view lose distinctions explicitly preserved by the frozen corpus; this is a distinction-loss result, not a proof of mathematical non-encodability.",
+      "reason": "Separately adjudicate the frozen X/K/T comparator, the tested POMDP-like comparator, and the bounded inference excluding any mathematical non-encodability conclusion.",
+      "decisions": {
+        "RFX08A": "ACCEPT",
+        "RFX08B": "ACCEPT",
+        "RFX08C": "ACCEPT"
       },
       "downstream_fit_inspected": false,
       "date": "2026-10-01"
