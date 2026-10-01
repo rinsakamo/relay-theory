@@ -1,0 +1,184 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "AHV-CNC-01.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1037/0033-295X.85.3.207",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Indexed abstract: classification judgments are proposed to derive from stored information about individual exemplars rather than category-level summaries."
+      },
+      {
+        "span_id": "s2",
+        "locator": "Indexed abstract: a probe serves as a retrieval cue for information associated with stored stimuli similar to that probe."
+      },
+      {
+        "span_id": "s3",
+        "locator": "Indexed abstract: predictions of the exemplar-based account are contrasted with additive component-feature accounts; across four experiments the exemplar-based account gives the better fit."
+      }
+    ],
+    "authors": [
+      "Douglas L Medin",
+      "Marguerite M Schaffer"
+    ],
+    "institutions": [],
+    "venue": "Psychological Review",
+    "citation_count": null,
+    "construct_labels": [
+      "context theory",
+      "prototype theory",
+      "classification learning"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "jgps-ahv8-source-grounded-candidate-v1:#379",
+    "extracted_at": "2026-10-01",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "mapping",
+    "modality": "descriptive",
+    "scope": {
+      "conditions": [
+        "classification of ill-defined categories"
+      ],
+      "population": [
+        "human participants in four reported experiments"
+      ],
+      "substrate": [],
+      "task": [
+        "classify probe items using learned category experience"
+      ],
+      "temporal_scope": []
+    },
+    "nodes": [
+      {
+        "id": "probe_item",
+        "role": "probe",
+        "description": "item presented for classification",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "stored_exemplars",
+        "role": "state_or_structure",
+        "description": "stored information about previously encountered individual category instances",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "similarity_relation",
+        "role": "state_or_structure",
+        "description": "degree of similarity linking the current probe to stored instances",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "retrieved_information",
+        "role": "available_information",
+        "description": "stored instance information activated by the current probe",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "classification_judgment",
+        "role": "response_or_outcome",
+        "description": "classification response produced for the current probe",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "exemplar_account",
+        "role": "other",
+        "description": "account in which judgments derive from stored individual-instance information",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "additive_feature_account",
+        "role": "other",
+        "description": "alternative account in which judgment information is combined additively across component dimensions",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "maps_to",
+        "arguments": [
+          "probe_item",
+          "stored_exemplars",
+          "similarity_relation",
+          "retrieved_information"
+        ],
+        "description": "the probe retrieves information from stored instances according to their similarity to the probe",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "depends_on",
+        "arguments": [
+          "classification_judgment",
+          "retrieved_information"
+        ],
+        "description": "the classification judgment depends on the retrieved instance information",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "differs",
+        "arguments": [
+          "exemplar_account",
+          "additive_feature_account"
+        ],
+        "description": "the source contrasts an instance-based account with an additive component-feature alternative",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "other",
+        "arguments": [
+          "exemplar_account",
+          "additive_feature_account"
+        ],
+        "description": "across the reported experiments the instance-based account provides a better account of the data than the additive alternative",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
