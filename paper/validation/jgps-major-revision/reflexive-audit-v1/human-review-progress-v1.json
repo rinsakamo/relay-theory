@@ -1,13 +1,13 @@
 {
   "schema": "relay-theory.paper2.reflexive_audit_human_review_progress.v1",
-  "status": "AUTHOR_REVIEW_PENDING",
+  "status": "AUTHOR_REVIEW_COMPLETE",
   "authority_issue": 384,
   "generated_date": "2026-10-01",
   "candidate_packet_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/reflexive-claimir-candidates-v1.json",
-  "candidate_packet_blob_sha": "132e7233ce8819976094b2e3978d51c2a34cb22a",
-  "total": 45,
-  "reviewed": 44,
-  "accepted": 44,
+  "candidate_packet_blob_sha": "50fa50d24f2fbf9f3aef871cdeda08cdc97431a8",
+  "total": 47,
+  "reviewed": 47,
+  "accepted": 47,
   "revised": 0,
   "rejected": 0,
   "decisions": [
@@ -274,19 +274,35 @@
       "decision": "ACCEPT",
       "decision_date": "2026-10-01",
       "decision_record_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/human-reviewed/RFX01B1.json"
+    },
+    {
+      "self_target_id": "RFX01B2A",
+      "decision": "ACCEPT",
+      "decision_date": "2026-10-01",
+      "decision_record_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/human-reviewed/RFX01B2A.json"
+    },
+    {
+      "self_target_id": "RFX01B2B",
+      "decision": "ACCEPT",
+      "decision_date": "2026-10-01",
+      "decision_record_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/human-reviewed/RFX01B2B.json"
+    },
+    {
+      "self_target_id": "RFX01B2C",
+      "decision": "ACCEPT",
+      "decision_date": "2026-10-01",
+      "decision_record_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/human-reviewed/RFX01B2C.json"
     }
   ],
-  "remaining": [
-    "RFX01B2"
-  ],
-  "downstream_authorized": false,
+  "remaining": [],
+  "downstream_authorized": true,
   "forbidden_until_review_complete": [
     "EVIDENCE_PROFILE",
     "GRAMMAR_V0_MAPPING",
     "LAYERED_ARCHITECTURE_PROJECTION",
     "REFLEXIVE_RECONSTRUCTION_VERDICT"
   ],
-  "terminal": "RFX45_HUMAN_REVIEW_44_OF_45_PENDING",
+  "terminal": "RFX47_HUMAN_REVIEW_COMPLETE",
   "authority_reconciliation": "RFX15 added pre-review after fresh main advanced to #385; no human decisions existed at reconciliation time.",
   "pre_review_revision_history": [
     {
@@ -554,6 +570,24 @@
       },
       "downstream_fit_inspected": false,
       "date": "2026-10-01"
+    },
+    {
+      "event": "AUTHOR_ACCEPTED_THREE_WAY_SPLIT",
+      "original_id": "RFX01B2",
+      "replacements": [
+        "RFX01B2A",
+        "RFX01B2B",
+        "RFX01B2C"
+      ],
+      "original_normalized_claim": "Failure to satisfy the declared equivalence criterion licenses criterion-relative non-identity at that comparison level, but does not by itself license unrestricted structural difference or target individuation.",
+      "reason": "Distinguish confirmed criterion-relative non-equivalence from its independent non-entailments: no unrestricted structural difference and no target individuation. Confirmed failure is not mere failure to establish equivalence.",
+      "decisions": {
+        "RFX01B2A": "ACCEPT",
+        "RFX01B2B": "ACCEPT",
+        "RFX01B2C": "ACCEPT"
+      },
+      "downstream_fit_inspected": false,
+      "date": "2026-10-01"
     }
   ],
   "superseded_review_events": [
@@ -689,6 +723,19 @@
         "RFX15E"
       ],
       "counted_in_active_review_totals": false
+    },
+    {
+      "self_target_id": "RFX01B2",
+      "decision": "SPLIT_AND_CHILDREN_ACCEPTED",
+      "replacements": [
+        "RFX01B2A",
+        "RFX01B2B",
+        "RFX01B2C"
+      ],
+      "counted_in_active_review_totals": false
     }
-  ]
+  ],
+  "review_gate_satisfied": true,
+  "downstream_started": false,
+  "downstream_executed": false
 }
