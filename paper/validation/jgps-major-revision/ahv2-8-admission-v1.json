@@ -1,0 +1,290 @@
+{
+  "schema": "relay-theory.paper2.ahv2_8_admission.v1",
+  "status": "FROZEN_PRE_EXTRACTION_ADMISSION",
+  "authority_issue": 387,
+  "base_authority_commit": "ad1c11789814413b1d9fd3ca8a4cfb6f7316f230",
+  "validation_set_id": "AHV2-8",
+  "purpose": "post-v2 held-out source admission for independent validation of frozen AssertionCarrier v2",
+  "selection_authority": {
+    "candidate_ledger_path": "research/paper2/designed_source_candidate_ledger_v1.json",
+    "candidate_ledger_blob_sha": "91da0cf304d03f0469df5c03ac7007f2040727e9",
+    "activated_manifest_path": "research/paper2/designed_source_manifest_v1.json",
+    "activated_manifest_blob_sha": "dd34e2048020124561477ba8fe53f1e4e1452bb7",
+    "pvs16_admission_path": "paper/validation/jgps-major-revision/pvs16-admission-v1.json",
+    "pvs16_admission_blob_sha": "0e1515cb79e4808f0e9e18bcf861ea895fa947dc",
+    "ahv8_admission_path": "paper/validation/jgps-major-revision/ahv8-admission-v1.json",
+    "ahv8_admission_blob_sha": "67d19fb6bf08f992b798fba26cce1942ff1fe4a5",
+    "assertion_carrier_v2_schema_path": "paper/validation/jgps-major-revision/l-claim-assertion-carrier-schema-v2.json",
+    "assertion_carrier_v2_schema_blob_sha": "058e0bd1514fcfaf57a4e87e366920b2fbcda274",
+    "assertion_carrier_v2_freeze_commit": "ad1c11789814413b1d9fd3ca8a4cfb6f7316f230",
+    "selection_rule": "Within each of the eight primary sampling strata, scan the frozen candidate ledger in record order; exclude activated-60, PVS-16, and AHV-8 identities; require candidate_state=CANDIDATE and readable/non-INACCESS status; admit the first remaining record.",
+    "selection_time_relation": "selection executed after AssertionCarrier v2 freeze and before AHV2 ClaimIR extraction"
+  },
+  "scope": {
+    "lanes": 8,
+    "claims_per_lane": 1,
+    "target_claim_count": 8,
+    "actual_claim_count": 8,
+    "claim_ir_created": false,
+    "human_review_completed": false,
+    "downstream_validation_started": false
+  },
+  "guardrails": {
+    "admission_replacement_for_fit_forbidden": true,
+    "assertion_carrier_v2_tuning_after_admission_forbidden": true,
+    "source_relation_dropping_for_fit_forbidden": true,
+    "carrier_failures_must_be_preserved": true,
+    "human_review_required_before_v2_validation": true
+  },
+  "admissions": [
+    {
+      "validation_claim_id": "AHV2-MEM-01",
+      "lane": "Memory",
+      "title": "Changing concepts of working memory",
+      "year": 2014,
+      "source_identity": {
+        "kind": "DOI",
+        "value": "10.1038/nn.3655"
+      },
+      "doi_or_stable_locator": "https://doi.org/10.1038/nn.3655",
+      "eligibility_basis": {
+        "surface": "primary",
+        "candidate_state": "CANDIDATE",
+        "source_access_class": "ABSTRACT_ONLY",
+        "read_status": "ABSTRACT_ONLY_READ",
+        "unused_in_activated_60_manifest": true,
+        "unused_in_pvs16": true,
+        "unused_in_ahv8": true
+      },
+      "preexisting_selection_rank_or_provenance": {
+        "ledger_path": "research/paper2/designed_source_candidate_ledger_v1.json",
+        "ledger_record_index_zero_based": 5,
+        "selection_order": "frozen ledger record order validated by paper2_designed_source_candidate_ledger_validate.py",
+        "slot_id": "MEM02",
+        "candidate_rank": 3
+      },
+      "assertion_carrier_v2_inspected_for_selection": false,
+      "claim_ir_created": false,
+      "human_review_completed": false,
+      "assertion_carrier_v2_validation_started": false
+    },
+    {
+      "validation_claim_id": "AHV2-LRN-01",
+      "lane": "Learning",
+      "title": "Temporal difference models and reward-related learning in the human brain",
+      "year": 2003,
+      "source_identity": {
+        "kind": "DOI",
+        "value": "10.1016/S0896-6273(03)00169-7"
+      },
+      "doi_or_stable_locator": "https://doi.org/10.1016/S0896-6273(03)00169-7",
+      "eligibility_basis": {
+        "surface": "primary",
+        "candidate_state": "CANDIDATE",
+        "source_access_class": "ABSTRACT_ONLY",
+        "read_status": "ABSTRACT_ONLY_READ",
+        "unused_in_activated_60_manifest": true,
+        "unused_in_pvs16": true,
+        "unused_in_ahv8": true
+      },
+      "preexisting_selection_rank_or_provenance": {
+        "ledger_path": "research/paper2/designed_source_candidate_ledger_v1.json",
+        "ledger_record_index_zero_based": 23,
+        "selection_order": "frozen ledger record order validated by paper2_designed_source_candidate_ledger_validate.py",
+        "slot_id": "LRN02",
+        "candidate_rank": 3
+      },
+      "assertion_carrier_v2_inspected_for_selection": false,
+      "claim_ir_created": false,
+      "human_review_completed": false,
+      "assertion_carrier_v2_validation_started": false
+    },
+    {
+      "validation_claim_id": "AHV2-SKL-01",
+      "lane": "Skill",
+      "title": "Controlled and automatic human information processing: II",
+      "year": 1977,
+      "source_identity": {
+        "kind": "DOI",
+        "value": "10.1037/0033-295X.84.2.127"
+      },
+      "doi_or_stable_locator": "https://doi.org/10.1037/0033-295X.84.2.127",
+      "eligibility_basis": {
+        "surface": "primary",
+        "candidate_state": "CANDIDATE",
+        "source_access_class": "ABSTRACT_ONLY",
+        "read_status": "ABSTRACT_ONLY_READ",
+        "unused_in_activated_60_manifest": true,
+        "unused_in_pvs16": true,
+        "unused_in_ahv8": true
+      },
+      "preexisting_selection_rank_or_provenance": {
+        "ledger_path": "research/paper2/designed_source_candidate_ledger_v1.json",
+        "ledger_record_index_zero_based": 41,
+        "selection_order": "frozen ledger record order validated by paper2_designed_source_candidate_ledger_validate.py",
+        "slot_id": "SKL02",
+        "candidate_rank": 3
+      },
+      "assertion_carrier_v2_inspected_for_selection": false,
+      "claim_ir_created": false,
+      "human_review_completed": false,
+      "assertion_carrier_v2_validation_started": false
+    },
+    {
+      "validation_claim_id": "AHV2-ATT-01",
+      "lane": "Attention",
+      "title": "Dual-task interference in simple tasks: data and theory",
+      "year": 1994,
+      "source_identity": {
+        "kind": "DOI",
+        "value": "10.1037/0033-2909.116.2.220"
+      },
+      "doi_or_stable_locator": "https://doi.org/10.1037/0033-2909.116.2.220",
+      "eligibility_basis": {
+        "surface": "primary",
+        "candidate_state": "CANDIDATE",
+        "source_access_class": "ABSTRACT_ONLY",
+        "read_status": "ABSTRACT_ONLY_READ",
+        "unused_in_activated_60_manifest": true,
+        "unused_in_pvs16": true,
+        "unused_in_ahv8": true
+      },
+      "preexisting_selection_rank_or_provenance": {
+        "ledger_path": "research/paper2/designed_source_candidate_ledger_v1.json",
+        "ledger_record_index_zero_based": 59,
+        "selection_order": "frozen ledger record order validated by paper2_designed_source_candidate_ledger_validate.py",
+        "slot_id": "ATT02",
+        "candidate_rank": 3
+      },
+      "assertion_carrier_v2_inspected_for_selection": false,
+      "claim_ir_created": false,
+      "human_review_completed": false,
+      "assertion_carrier_v2_validation_started": false
+    },
+    {
+      "validation_claim_id": "AHV2-PRD-01",
+      "lane": "Prediction",
+      "title": "Spatio-temporal prediction modulates the perception of self-produced stimuli",
+      "year": 1999,
+      "source_identity": {
+        "kind": "DOI",
+        "value": "10.1162/089892999563607"
+      },
+      "doi_or_stable_locator": "https://doi.org/10.1162/089892999563607",
+      "eligibility_basis": {
+        "surface": "primary",
+        "candidate_state": "CANDIDATE",
+        "source_access_class": "ABSTRACT_ONLY",
+        "read_status": "ABSTRACT_ONLY_READ",
+        "unused_in_activated_60_manifest": true,
+        "unused_in_pvs16": true,
+        "unused_in_ahv8": true
+      },
+      "preexisting_selection_rank_or_provenance": {
+        "ledger_path": "research/paper2/designed_source_candidate_ledger_v1.json",
+        "ledger_record_index_zero_based": 77,
+        "selection_order": "frozen ledger record order validated by paper2_designed_source_candidate_ledger_validate.py",
+        "slot_id": "PRD02",
+        "candidate_rank": 3
+      },
+      "assertion_carrier_v2_inspected_for_selection": false,
+      "claim_ir_created": false,
+      "human_review_completed": false,
+      "assertion_carrier_v2_validation_started": false
+    },
+    {
+      "validation_claim_id": "AHV2-CTL-01",
+      "lane": "Control",
+      "title": "How we use rules to select actions",
+      "year": 2004,
+      "source_identity": {
+        "kind": "DOI",
+        "value": "10.3758/CABN.4.4.564"
+      },
+      "doi_or_stable_locator": "https://doi.org/10.3758/CABN.4.4.564",
+      "eligibility_basis": {
+        "surface": "primary",
+        "candidate_state": "CANDIDATE",
+        "source_access_class": "ABSTRACT_ONLY",
+        "read_status": "ABSTRACT_ONLY_READ",
+        "unused_in_activated_60_manifest": true,
+        "unused_in_pvs16": true,
+        "unused_in_ahv8": true
+      },
+      "preexisting_selection_rank_or_provenance": {
+        "ledger_path": "research/paper2/designed_source_candidate_ledger_v1.json",
+        "ledger_record_index_zero_based": 95,
+        "selection_order": "frozen ledger record order validated by paper2_designed_source_candidate_ledger_validate.py",
+        "slot_id": "CTL02",
+        "candidate_rank": 3
+      },
+      "assertion_carrier_v2_inspected_for_selection": false,
+      "claim_ir_created": false,
+      "human_review_completed": false,
+      "assertion_carrier_v2_validation_started": false
+    },
+    {
+      "validation_claim_id": "AHV2-BLF-01",
+      "lane": "Belief",
+      "title": "Predictive and diagnostic learning within causal models",
+      "year": 1992,
+      "source_identity": {
+        "kind": "DOI",
+        "value": "10.1037/0096-3445.121.2.222"
+      },
+      "doi_or_stable_locator": "https://doi.org/10.1037/0096-3445.121.2.222",
+      "eligibility_basis": {
+        "surface": "primary",
+        "candidate_state": "CANDIDATE",
+        "source_access_class": "ABSTRACT_ONLY",
+        "read_status": "ABSTRACT_ONLY_READ",
+        "unused_in_activated_60_manifest": true,
+        "unused_in_pvs16": true,
+        "unused_in_ahv8": true
+      },
+      "preexisting_selection_rank_or_provenance": {
+        "ledger_path": "research/paper2/designed_source_candidate_ledger_v1.json",
+        "ledger_record_index_zero_based": 113,
+        "selection_order": "frozen ledger record order validated by paper2_designed_source_candidate_ledger_validate.py",
+        "slot_id": "BLF02",
+        "candidate_rank": 3
+      },
+      "assertion_carrier_v2_inspected_for_selection": false,
+      "claim_ir_created": false,
+      "human_review_completed": false,
+      "assertion_carrier_v2_validation_started": false
+    },
+    {
+      "validation_claim_id": "AHV2-CNC-01",
+      "lane": "Concept",
+      "title": "Prototypes in the mist",
+      "year": 1998,
+      "source_identity": {
+        "kind": "DOI",
+        "value": "10.1037/0278-7393.24.6.1411"
+      },
+      "doi_or_stable_locator": "https://doi.org/10.1037/0278-7393.24.6.1411",
+      "eligibility_basis": {
+        "surface": "primary",
+        "candidate_state": "CANDIDATE",
+        "source_access_class": "PARTIAL_TEXT",
+        "read_status": "PARTIAL_TEXT_READ",
+        "unused_in_activated_60_manifest": true,
+        "unused_in_pvs16": true,
+        "unused_in_ahv8": true
+      },
+      "preexisting_selection_rank_or_provenance": {
+        "ledger_path": "research/paper2/designed_source_candidate_ledger_v1.json",
+        "ledger_record_index_zero_based": 131,
+        "selection_order": "frozen ledger record order validated by paper2_designed_source_candidate_ledger_validate.py",
+        "slot_id": "CNC02",
+        "candidate_rank": 3
+      },
+      "assertion_carrier_v2_inspected_for_selection": false,
+      "claim_ir_created": false,
+      "human_review_completed": false,
+      "assertion_carrier_v2_validation_started": false
+    }
+  ],
+  "terminal": "AHV2_8_ADMISSION_FROZEN_AFTER_V2_SCHEMA_AND_BEFORE_CLAIMIR_EXTRACTION"
+}
