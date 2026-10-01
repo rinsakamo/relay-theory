@@ -108,8 +108,8 @@ def validate() -> dict[str, Any]:
         raise ValidationError("review progress schema drift")
     expected_progress = {
         "total": 20,
-        "reviewed": 5,
-        "accepted": 5,
+        "reviewed": 8,
+        "accepted": 8,
         "revised": 0,
         "rejected": 0,
         "downstream_authorized": False,
@@ -117,14 +117,14 @@ def validate() -> dict[str, Any]:
     for key, expected in expected_progress.items():
         if h.get(key) != expected:
             raise ValidationError(f"review progress {key} drift")
-    if [d.get("self_target_id") for d in h.get("decisions", [])] != ["RFX01A", "RFX02A", "RFX02B", "RFX03", "RFX04"]:
+    if [d.get("self_target_id") for d in h.get("decisions", [])] != ["RFX01A", "RFX02A", "RFX02B", "RFX03", "RFX04", "RFX05A", "RFX05B", "RFX05C"]:
         raise ValidationError("review decision ledger drift")
-    if h.get("remaining") != [cid for cid in EXPECTED_IDS if cid not in {"RFX01A", "RFX02A", "RFX02B", "RFX03", "RFX04"}]:
+    if h.get("remaining") != [cid for cid in EXPECTED_IDS if cid not in {"RFX01A", "RFX02A", "RFX02B", "RFX03", "RFX04", "RFX05A", "RFX05B", "RFX05C"}]:
         raise ValidationError("review remaining set drift")
-    if h.get("terminal") != "RFX20_HUMAN_REVIEW_5_OF_20_PENDING":
+    if h.get("terminal") != "RFX20_HUMAN_REVIEW_8_OF_20_PENDING":
         raise ValidationError("review terminal drift")
 
-    if "5 / 20" not in review_text:
+    if "8 / 20" not in review_text:
         raise ValidationError("review packet status text drift")
     for cid in EXPECTED_IDS:
         if f"| {cid} |" not in review_text:
@@ -135,7 +135,7 @@ def validate() -> dict[str, Any]:
         "status": "PASS",
         "authority_issue": 384,
         "candidate_count": 20,
-        "human_reviewed": 5,
+        "human_reviewed": 8,
         "all_candidates_unreviewed": True,
         "grammar_mapping_inspected": False,
         "evidence_profile_created": False,
