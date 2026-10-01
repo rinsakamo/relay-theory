@@ -1,6 +1,6 @@
 # Paper 2 reflexive-audit author review packet v1
 
-Status: **AUTHOR REVIEW IN PROGRESS — 43 / 45**
+Status: **AUTHOR REVIEW IN PROGRESS — 44 / 45**
 
 Authority: #384
 
@@ -14,7 +14,7 @@ Treat relation-bearing connectives such as **and / but / while / therefore** as 
 
 ## Review record
 
-- RFX01A = ACCEPT; RFX01B1 and RFX01B2 pending.
+- RFX01A and RFX01B1 = ACCEPT; RFX01B2 pending. RFX01B1 licenses identity/equivalence only at the declared structural comparison level.
 - RFX02A/B, RFX03, RFX04 = ACCEPT.
 - RFX05A/B/C = ACCEPT; the primary whole-claim failure remains authoritative; destructive-control survival is bounded to the declared eight controls.
 - RFX06A/B = ACCEPT; data-constrained basis factorization separated from any independent-new-top-level-primitives discovery claim.
@@ -32,7 +32,7 @@ Treat relation-bearing connectives such as **and / but / while / therefore** as 
 | ID | Normalized claim candidate | Decision |
 |---|---|---|
 | RFX01A | Historical construct-label sameness or difference does not by itself entail structural identity or structural difference. | ACCEPT |
-| RFX01B1 | Within a declared structural representation and comparison rule, satisfaction of the declared equivalence criterion licenses structural identity or equivalence at that comparison level. | — |
+| RFX01B1 | Within a declared structural representation and comparison rule, satisfaction of the declared equivalence criterion licenses structural identity or equivalence at that comparison level. | ACCEPT |
 | RFX01B2 | Failure to satisfy the declared equivalence criterion licenses criterion-relative non-identity at that comparison level, but does not by itself license unrestricted structural difference or target individuation. | — |
 | RFX02A | The scientifically inspectable extraction object is a reviewed ClaimIR record whose claims remain grounded in preserved source-local provenance. | ACCEPT |
 | RFX02B | An opaque model proposal that initiates extraction is not, by itself, scientific evidential authority. | ACCEPT |
