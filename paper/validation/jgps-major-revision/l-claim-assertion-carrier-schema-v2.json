@@ -1,0 +1,195 @@
+{
+  "schema_version": "paper2-l-claim-assertion-carrier-v2",
+  "status": "FROZEN_AHV8_DERIVED_PRE_NEW_HELDOUT_VALIDATION",
+  "owner_issue": 385,
+  "generated_date": "2026-10-01",
+  "supersedes_for_future_validation": "paper2-l-claim-assertion-carrier-v1",
+  "preserves_v1_result": true,
+  "purpose": "Minimal compositional extension of AssertionCarrier v1 derived from the frozen AHV-8 held-out gaps; intended for validation only on a newly admitted post-v2 held-out set.",
+  "scope_boundary": {
+    "mutates_claimir_v1": false,
+    "mutates_grammar_v0": false,
+    "adds_top_level_architecture_layer": false,
+    "carrier_layer": "L_claim",
+    "derivation_set": "AHV-8 v1 held-out gaps from issue #382",
+    "ahv8_is_independent_v2_validation": false,
+    "note": "AHV-8 is derivation/calibration evidence for v2. Independent validation requires a new source set admitted after this schema freeze."
+  },
+  "inherited_from_v1": {
+    "predicate_families": [
+      "COMPARISON",
+      "DEPENDENCE",
+      "ASSOCIATION",
+      "CHANGE",
+      "DISSOCIATION",
+      "IMPLEMENTATION",
+      "EXPLANATION",
+      "OUTCOME_ASSERTION"
+    ],
+    "qualifiers": [
+      "EQUIVALENT",
+      "MATCHED",
+      "PRESERVED",
+      "NEGATIVE",
+      "GREATER_THAN",
+      "CROSS_CONTEXT",
+      "CANDIDATE_POSSIBLE",
+      "CONTRASTIVE_RATHER_THAN",
+      "CONTEXT_INDEXED"
+    ],
+    "reference_roles": [
+      "SUBJECT",
+      "OUTCOME",
+      "INDEX_CONTEXT",
+      "COMPARATOR",
+      "BASELINE_OR_REFERENCE",
+      "DEPENDENT",
+      "CONDITIONING_FACTOR",
+      "ASSOCIAND",
+      "CHANGED_ENTITY",
+      "CHANGE_CONTEXT",
+      "IMPLEMENTED_REPRESENTATION",
+      "IMPLEMENTATION_CANDIDATE",
+      "EXPLANANDUM",
+      "EXPLANANS",
+      "ALTERNATIVE_EXPLANATION"
+    ],
+    "context_placement_classes": [
+      "EXPERIMENT_CONTEXT",
+      "WORLD_CONTEXT",
+      "RUN_BOUNDARY_OR_PREHISTORY",
+      "SYSTEM_INTRINSIC_CONSTRAINT_CANDIDATE",
+      "PARAMETER_ONLY",
+      "UNDERDETERMINED"
+    ],
+    "support_provenance_types": [
+      "EXPERIMENTAL_MANIPULATION_REPORTED"
+    ]
+  },
+  "v2_extensions": {
+    "added_predicate_families": [
+      "TRANSFORMATION"
+    ],
+    "added_qualifiers": [
+      "DISTINCT"
+    ],
+    "added_argument_binding_layers": [
+      "L_claim"
+    ],
+    "claim_object_types": [
+      "THEORETICAL_ACCOUNT"
+    ],
+    "directionality": {
+      "field": "directionality",
+      "optional": true,
+      "values": [
+        "INCREASES",
+        "DECREASES",
+        "OPPOSITE_DIRECTION"
+      ],
+      "target_argument_required": true,
+      "semantics": "Orthogonal directional information over an otherwise typed assertion. It does not create a new predicate family."
+    },
+    "evaluation": {
+      "field": "evaluation",
+      "optional": true,
+      "dimensions": [
+        "EVIDENTIAL_SUPPORT",
+        "EMPIRICAL_FIT"
+      ],
+      "preferred_argument_required": true,
+      "semantics": "Orthogonal evaluative ordering for a comparison. The preferred argument must already be a frozen source argument."
+    }
+  },
+  "carrier_fields": {
+    "assertion_id": "globally unique identifier, conventionally <validation_claim_id>.<relation_id>",
+    "claim_id": "frozen ClaimIR claim identifier",
+    "source_relation_id": "frozen ClaimIR relation identifier",
+    "source_kind": "exact frozen ClaimIR relation kind",
+    "source_arguments": "exact ordered frozen ClaimIR relation arguments",
+    "predicate_family": "typed L_claim assertion family",
+    "qualifiers": "zero or more orthogonal assertion qualifiers",
+    "directionality": "optional orthogonal directional modifier",
+    "evaluation": "optional orthogonal evaluative comparison modifier",
+    "argument_bindings": "typed roles for source arguments bound to L_sys, L_ctx, or an L_claim claim object",
+    "semantic_references": "additional semantically required references to existing ClaimIR nodes omitted from source_arguments",
+    "support_provenance": "assertion-level provenance separate from P_in unless an intervention node exists",
+    "assertion_scope_qualifiers": "incidental scope only; never substitutes for a missing core predicate/modifier",
+    "carrier_status": "FULL or GAP"
+  },
+  "predicate_families": [
+    "COMPARISON",
+    "DEPENDENCE",
+    "ASSOCIATION",
+    "CHANGE",
+    "DISSOCIATION",
+    "IMPLEMENTATION",
+    "EXPLANATION",
+    "OUTCOME_ASSERTION",
+    "TRANSFORMATION"
+  ],
+  "qualifiers": [
+    "EQUIVALENT",
+    "MATCHED",
+    "PRESERVED",
+    "NEGATIVE",
+    "GREATER_THAN",
+    "CROSS_CONTEXT",
+    "CANDIDATE_POSSIBLE",
+    "CONTRASTIVE_RATHER_THAN",
+    "CONTEXT_INDEXED",
+    "DISTINCT"
+  ],
+  "reference_roles": [
+    "SUBJECT",
+    "OUTCOME",
+    "INDEX_CONTEXT",
+    "COMPARATOR",
+    "BASELINE_OR_REFERENCE",
+    "DEPENDENT",
+    "CONDITIONING_FACTOR",
+    "ASSOCIAND",
+    "CHANGED_ENTITY",
+    "CHANGE_CONTEXT",
+    "IMPLEMENTED_REPRESENTATION",
+    "IMPLEMENTATION_CANDIDATE",
+    "EXPLANANDUM",
+    "EXPLANANS",
+    "ALTERNATIVE_EXPLANATION"
+  ],
+  "architecture_layers": [
+    "L_sys",
+    "L_ctx",
+    "L_claim"
+  ],
+  "claim_object_types": [
+    "THEORETICAL_ACCOUNT"
+  ],
+  "context_placement_classes": [
+    "EXPERIMENT_CONTEXT",
+    "WORLD_CONTEXT",
+    "RUN_BOUNDARY_OR_PREHISTORY",
+    "SYSTEM_INTRINSIC_CONSTRAINT_CANDIDATE",
+    "PARAMETER_ONLY",
+    "UNDERDETERMINED"
+  ],
+  "support_provenance_types": [
+    "EXPERIMENTAL_MANIPULATION_REPORTED"
+  ],
+  "invariants": [
+    "source_arguments and source_kind reproduce frozen ClaimIR exactly",
+    "v2 is a strict additive superset of v1 vocabulary; no v1 predicate, qualifier, role, context class, or provenance type is removed or redefined",
+    "L_claim argument bindings are allowed only for ClaimIR nodes explicitly typed as non-system claim objects such as competing theoretical accounts; they may not be used to evade L_sys/L_ctx placement",
+    "L_claim argument bindings require claim_object_type=THEORETICAL_ACCOUNT in v2",
+    "directionality is orthogonal to predicate_family and may not replace the underlying relation type",
+    "directionality.target_argument must be one of the frozen source_arguments",
+    "evaluation is permitted only with predicate_family=COMPARISON",
+    "evaluation.preferred_argument must be one of the frozen source_arguments",
+    "semantic_references may reference only existing ClaimIR nodes absent from source_arguments",
+    "assertion_scope_qualifiers may not encode missing core predicate, directionality, evaluation, negation, ordering, or distinction semantics",
+    "support provenance does not create P_in when frozen ClaimIR lacks an intervention node",
+    "carrier FULL denotes representational coverage under the schema, not truth, evidential strength, or logical completeness"
+  ],
+  "validation_boundary": "No completeness claim is licensed by AHV-8 retrospective closure. A new post-v2 held-out set is mandatory.",
+  "terminal": "ASSERTION_CARRIER_V2_MINIMAL_COMPOSITIONAL_EXTENSION_FROZEN_PENDING_NEW_HELDOUT_VALIDATION"
+}
