@@ -1,0 +1,3402 @@
+{
+  "schema": "relay-theory.paper2.ahv2_8_verdict_masked_review_packet.v1",
+  "status": "FROZEN_BEFORE_REVIEW",
+  "protocol_path": "paper/validation/jgps-major-revision/ahv2-8-verdict-masked-protocol-v1.json",
+  "protocol_commit": "cd0c28bb1a77755b4f007d6d09338a36d29ca4c1",
+  "case_count": 34,
+  "previous_verdicts_disclosed": false,
+  "previous_mappings_disclosed": false,
+  "old_gap_reasons_disclosed": false,
+  "frozen_v2_vocabulary": {
+    "predicate_families": [
+      "COMPARISON",
+      "DEPENDENCE",
+      "ASSOCIATION",
+      "CHANGE",
+      "DISSOCIATION",
+      "IMPLEMENTATION",
+      "EXPLANATION",
+      "OUTCOME_ASSERTION",
+      "TRANSFORMATION"
+    ],
+    "qualifiers": [
+      "EQUIVALENT",
+      "MATCHED",
+      "PRESERVED",
+      "NEGATIVE",
+      "GREATER_THAN",
+      "CROSS_CONTEXT",
+      "CANDIDATE_POSSIBLE",
+      "CONTRASTIVE_RATHER_THAN",
+      "CONTEXT_INDEXED",
+      "DISTINCT"
+    ],
+    "reference_roles": [
+      "SUBJECT",
+      "OUTCOME",
+      "INDEX_CONTEXT",
+      "COMPARATOR",
+      "BASELINE_OR_REFERENCE",
+      "DEPENDENT",
+      "CONDITIONING_FACTOR",
+      "ASSOCIAND",
+      "CHANGED_ENTITY",
+      "CHANGE_CONTEXT",
+      "IMPLEMENTED_REPRESENTATION",
+      "IMPLEMENTATION_CANDIDATE",
+      "EXPLANANDUM",
+      "EXPLANANS",
+      "ALTERNATIVE_EXPLANATION"
+    ],
+    "architecture_layers": [
+      "L_sys",
+      "L_ctx",
+      "L_claim"
+    ],
+    "claim_object_types": [
+      "THEORETICAL_ACCOUNT"
+    ],
+    "context_placement_classes": [
+      "EXPERIMENT_CONTEXT",
+      "WORLD_CONTEXT",
+      "RUN_BOUNDARY_OR_PREHISTORY",
+      "SYSTEM_INTRINSIC_CONSTRAINT_CANDIDATE",
+      "PARAMETER_ONLY",
+      "UNDERDETERMINED"
+    ],
+    "directionality": {
+      "field": "directionality",
+      "optional": true,
+      "values": [
+        "INCREASES",
+        "DECREASES",
+        "OPPOSITE_DIRECTION"
+      ],
+      "target_argument_required": true,
+      "semantics": "Orthogonal directional information over an otherwise typed assertion. It does not create a new predicate family."
+    },
+    "evaluation": {
+      "field": "evaluation",
+      "optional": true,
+      "dimensions": [
+        "EVIDENTIAL_SUPPORT",
+        "EMPIRICAL_FIT"
+      ],
+      "preferred_argument_required": true,
+      "semantics": "Orthogonal evaluative ordering for a comparison. The preferred argument must already be a frozen source argument."
+    },
+    "semantic_reference_requirement": "Existing ClaimIR nodes only; must not duplicate explicit source arguments; use only frozen roles/layers.",
+    "scope_qualifier_limit": "No missing core semantics may be represented solely by free-text scope qualifiers."
+  },
+  "cases": [
+    {
+      "case_id": "VMR-001",
+      "source": {
+        "title": "Temporal difference models and reward-related learning in the human brain",
+        "year": 2003,
+        "doi": "10.1016/S0896-6273(03)00169-7",
+        "locator": "https://pubmed.ncbi.nlm.nih.gov/12718865/",
+        "admitted_access_class": "ABSTRACT_ONLY",
+        "source_surface_at_initial_extraction": "indexed_source_abstract",
+        "source_text_in_repository": false,
+        "note": "ClaimIR provenance span locators are summaries/reviewer-recorded references, not primary-text quotations or proof of independent full-text access."
+      },
+      "claim_context": {
+        "type": "relation",
+        "modality": "descriptive",
+        "scope": {
+          "conditions": [
+            "appetitive conditioning before and after learning"
+          ],
+          "population": [
+            "human participants"
+          ],
+          "substrate": [
+            "ventral striatum and orbitofrontal cortex"
+          ],
+          "task": [
+            "conditioned cue followed by pleasant taste reward"
+          ],
+          "temporal_scope": [
+            "error-signal timing changes with learning"
+          ]
+        }
+      },
+      "reviewed_relation": {
+        "kind": "other",
+        "description": "ventral-striatal response is significantly correlated with the modeled error signal",
+        "ordered_arguments": [
+          {
+            "id": "ventral_striatal_response",
+            "role": "response_or_outcome",
+            "description": "measured response in ventral striatum"
+          },
+          {
+            "id": "prediction_error_signal",
+            "role": "state_or_structure",
+            "description": "model-derived discrepancy signal used in reward-related learning"
+          }
+        ],
+        "source_span_locator_notes": [
+          {
+            "span_id": "s3",
+            "locator_summary": "PubMed abstract: ventral-striatal and orbitofrontal responses were significantly correlated with the model error signal, suggesting expression of the modeled computations during conditioning."
+          }
+        ]
+      },
+      "optional_existing_semantic_reference_nodes": [
+        {
+          "id": "learning_stage",
+          "role": "condition",
+          "description": "stage before versus after acquisition of the cue-reward prediction"
+        },
+        {
+          "id": "reward_delivery",
+          "role": "condition",
+          "description": "delivery of the appetitive reward"
+        },
+        {
+          "id": "conditioned_cue",
+          "role": "condition",
+          "description": "cue that predicts the later reward after learning"
+        },
+        {
+          "id": "error_signal_timing",
+          "role": "response_or_outcome",
+          "description": "event time at which the prediction-error signal is expressed"
+        },
+        {
+          "id": "orbitofrontal_response",
+          "role": "response_or_outcome",
+          "description": "measured response in orbitofrontal cortex"
+        }
+      ],
+      "reviewer_fields": {
+        "source_verification": null,
+        "source_proposition_reconstruction": null,
+        "verdict": null,
+        "v2_mapping": null,
+        "missing_semantic_distinction": null,
+        "reasoned_explanation": null,
+        "source_claim_dispute": null
+      }
+    },
+    {
+      "case_id": "VMR-002",
+      "source": {
+        "title": "Spatio-temporal prediction modulates the perception of self-produced stimuli",
+        "year": 1999,
+        "doi": "10.1162/089892999563607",
+        "locator": "https://pubmed.ncbi.nlm.nih.gov/10511643/",
+        "admitted_access_class": "ABSTRACT_ONLY",
+        "source_surface_at_initial_extraction": "indexed_source_abstract",
+        "source_text_in_repository": false,
+        "note": "ClaimIR provenance span locators are summaries/reviewer-recorded references, not primary-text quotations or proof of independent full-text access."
+      },
+      "claim_context": {
+        "type": "relation",
+        "modality": "descriptive",
+        "scope": {
+          "conditions": [
+            "self-produced versus externally produced tactile stimulation with delay and trajectory manipulations"
+          ],
+          "population": [
+            "human participants"
+          ],
+          "substrate": [
+            "sensorimotor system"
+          ],
+          "task": [
+            "robot-mediated self-produced and externally produced touch"
+          ],
+          "temporal_scope": [
+            "motor action precedes tactile consequence"
+          ]
+        }
+      },
+      "reviewed_relation": {
+        "kind": "changes",
+        "description": "tickliness increases as temporal delay is increased",
+        "ordered_arguments": [
+          {
+            "id": "temporal_delay",
+            "role": "condition",
+            "description": "delay between producing movement and tactile consequence"
+          },
+          {
+            "id": "tickliness_rating",
+            "role": "response_or_outcome",
+            "description": "rated tickliness of the tactile sensation"
+          }
+        ],
+        "source_span_locator_notes": [
+          {
+            "span_id": "s2",
+            "locator_summary": "PubMed abstract: increasing temporal delay or trajectory perturbation between the producing action and tactile consequence significantly increases tickliness."
+          }
+        ]
+      },
+      "optional_existing_semantic_reference_nodes": [
+        {
+          "id": "self_produced_condition",
+          "role": "condition",
+          "description": "tactile stimulation produced through the participant's own action"
+        },
+        {
+          "id": "external_condition",
+          "role": "condition",
+          "description": "comparable tactile stimulation produced externally"
+        },
+        {
+          "id": "tactile_intensity_rating",
+          "role": "response_or_outcome",
+          "description": "rated intensity of the tactile sensation"
+        },
+        {
+          "id": "trajectory_perturbation",
+          "role": "condition",
+          "description": "spatial perturbation between producing movement and tactile consequence"
+        },
+        {
+          "id": "spatiotemporal_correspondence",
+          "role": "state_or_structure",
+          "description": "degree of temporal and spatial correspondence between motor command and tactile consequence"
+        },
+        {
+          "id": "predicted_sensory_feedback",
+          "role": "state_or_structure",
+          "description": "sensory consequence predicted from the motor system model"
+        },
+        {
+          "id": "actual_sensory_feedback",
+          "role": "available_information",
+          "description": "sensory feedback actually produced by the movement"
+        },
+        {
+          "id": "prediction_error",
+          "role": "state_or_structure",
+          "description": "difference between predicted and actual sensory feedback"
+        },
+        {
+          "id": "sensory_attenuation",
+          "role": "response_or_outcome",
+          "description": "reduction in perceived intensity of self-produced tactile stimulation"
+        },
+        {
+          "id": "pleasantness_rating",
+          "role": "response_or_outcome",
+          "description": "rated pleasantness of the tactile sensation"
+        }
+      ],
+      "reviewer_fields": {
+        "source_verification": null,
+        "source_proposition_reconstruction": null,
+        "verdict": null,
+        "v2_mapping": null,
+        "missing_semantic_distinction": null,
+        "reasoned_explanation": null,
+        "source_claim_dispute": null
+      }
+    },
+    {
+      "case_id": "VMR-003",
+      "source": {
+        "title": "Predictive and diagnostic learning within causal models",
+        "year": 1992,
+        "doi": "10.1037/0096-3445.121.2.222",
+        "locator": "https://pubmed.ncbi.nlm.nih.gov/1534834/",
+        "admitted_access_class": "ABSTRACT_ONLY",
+        "source_surface_at_initial_extraction": "indexed_source_abstract",
+        "source_text_in_repository": false,
+        "note": "ClaimIR provenance span locators are summaries/reviewer-recorded references, not primary-text quotations or proof of independent full-text access."
+      },
+      "claim_context": {
+        "type": "comparison",
+        "modality": "descriptive",
+        "scope": {
+          "conditions": [
+            "predictive versus diagnostic learning with multiple cues"
+          ],
+          "population": [
+            "human participants in three experiments"
+          ],
+          "substrate": [],
+          "task": [
+            "learn responses from possible causes or possible effects"
+          ],
+          "temporal_scope": []
+        }
+      },
+      "reviewed_relation": {
+        "kind": "other",
+        "description": "cue competition occurs among multiple possible causes during predictive learning",
+        "ordered_arguments": [
+          {
+            "id": "predictive_learning",
+            "role": "condition",
+            "description": "learning in which cues are possible causes of a common effect"
+          },
+          {
+            "id": "cue_competition",
+            "role": "response_or_outcome",
+            "description": "competition among multiple cues during learning"
+          }
+        ],
+        "source_span_locator_notes": [
+          {
+            "span_id": "s3",
+            "locator_summary": "PubMed abstract: cue competition occurs among multiple possible causes in predictive learning, whereas multiple possible effects need not compete in diagnostic learning."
+          }
+        ]
+      },
+      "optional_existing_semantic_reference_nodes": [
+        {
+          "id": "diagnostic_learning",
+          "role": "condition",
+          "description": "learning in which cues are possible effects of a common cause"
+        },
+        {
+          "id": "associationist_account",
+          "role": "other",
+          "description": "account predicting symmetry between predictive and diagnostic learning"
+        },
+        {
+          "id": "causal_model_account",
+          "role": "other",
+          "description": "account in which causal role structure differentiates predictive from diagnostic learning"
+        }
+      ],
+      "reviewer_fields": {
+        "source_verification": null,
+        "source_proposition_reconstruction": null,
+        "verdict": null,
+        "v2_mapping": null,
+        "missing_semantic_distinction": null,
+        "reasoned_explanation": null,
+        "source_claim_dispute": null
+      }
+    },
+    {
+      "case_id": "VMR-004",
+      "source": {
+        "title": "Temporal difference models and reward-related learning in the human brain",
+        "year": 2003,
+        "doi": "10.1016/S0896-6273(03)00169-7",
+        "locator": "https://pubmed.ncbi.nlm.nih.gov/12718865/",
+        "admitted_access_class": "ABSTRACT_ONLY",
+        "source_surface_at_initial_extraction": "indexed_source_abstract",
+        "source_text_in_repository": false,
+        "note": "ClaimIR provenance span locators are summaries/reviewer-recorded references, not primary-text quotations or proof of independent full-text access."
+      },
+      "claim_context": {
+        "type": "relation",
+        "modality": "descriptive",
+        "scope": {
+          "conditions": [
+            "appetitive conditioning before and after learning"
+          ],
+          "population": [
+            "human participants"
+          ],
+          "substrate": [
+            "ventral striatum and orbitofrontal cortex"
+          ],
+          "task": [
+            "conditioned cue followed by pleasant taste reward"
+          ],
+          "temporal_scope": [
+            "error-signal timing changes with learning"
+          ]
+        }
+      },
+      "reviewed_relation": {
+        "kind": "changes",
+        "description": "with learning, the error-signal response shifts from reward delivery to conditioned-cue onset",
+        "ordered_arguments": [
+          {
+            "id": "learning_stage",
+            "role": "condition",
+            "description": "stage before versus after acquisition of the cue-reward prediction"
+          },
+          {
+            "id": "prediction_error_signal",
+            "role": "state_or_structure",
+            "description": "model-derived discrepancy signal used in reward-related learning"
+          },
+          {
+            "id": "reward_delivery",
+            "role": "condition",
+            "description": "delivery of the appetitive reward"
+          },
+          {
+            "id": "conditioned_cue",
+            "role": "condition",
+            "description": "cue that predicts the later reward after learning"
+          },
+          {
+            "id": "error_signal_timing",
+            "role": "response_or_outcome",
+            "description": "event time at which the prediction-error signal is expressed"
+          }
+        ],
+        "source_span_locator_notes": [
+          {
+            "span_id": "s1",
+            "locator_summary": "PubMed abstract: the learning model contains a prediction-error signal whose response timing changes from reward delivery before learning to conditioned-cue onset after learning."
+          }
+        ]
+      },
+      "optional_existing_semantic_reference_nodes": [
+        {
+          "id": "ventral_striatal_response",
+          "role": "response_or_outcome",
+          "description": "measured response in ventral striatum"
+        },
+        {
+          "id": "orbitofrontal_response",
+          "role": "response_or_outcome",
+          "description": "measured response in orbitofrontal cortex"
+        }
+      ],
+      "reviewer_fields": {
+        "source_verification": null,
+        "source_proposition_reconstruction": null,
+        "verdict": null,
+        "v2_mapping": null,
+        "missing_semantic_distinction": null,
+        "reasoned_explanation": null,
+        "source_claim_dispute": null
+      }
+    },
+    {
+      "case_id": "VMR-005",
+      "source": {
+        "title": "Spatio-temporal prediction modulates the perception of self-produced stimuli",
+        "year": 1999,
+        "doi": "10.1162/089892999563607",
+        "locator": "https://pubmed.ncbi.nlm.nih.gov/10511643/",
+        "admitted_access_class": "ABSTRACT_ONLY",
+        "source_surface_at_initial_extraction": "indexed_source_abstract",
+        "source_text_in_repository": false,
+        "note": "ClaimIR provenance span locators are summaries/reviewer-recorded references, not primary-text quotations or proof of independent full-text access."
+      },
+      "claim_context": {
+        "type": "relation",
+        "modality": "descriptive",
+        "scope": {
+          "conditions": [
+            "self-produced versus externally produced tactile stimulation with delay and trajectory manipulations"
+          ],
+          "population": [
+            "human participants"
+          ],
+          "substrate": [
+            "sensorimotor system"
+          ],
+          "task": [
+            "robot-mediated self-produced and externally produced touch"
+          ],
+          "temporal_scope": [
+            "motor action precedes tactile consequence"
+          ]
+        }
+      },
+      "reviewed_relation": {
+        "kind": "differs",
+        "description": "self-produced tactile stimulation is rated less intense, tickly, and pleasant than externally produced stimulation",
+        "ordered_arguments": [
+          {
+            "id": "self_produced_condition",
+            "role": "condition",
+            "description": "tactile stimulation produced through the participant's own action"
+          },
+          {
+            "id": "external_condition",
+            "role": "condition",
+            "description": "comparable tactile stimulation produced externally"
+          },
+          {
+            "id": "tactile_intensity_rating",
+            "role": "response_or_outcome",
+            "description": "rated intensity of the tactile sensation"
+          },
+          {
+            "id": "tickliness_rating",
+            "role": "response_or_outcome",
+            "description": "rated tickliness of the tactile sensation"
+          },
+          {
+            "id": "pleasantness_rating",
+            "role": "response_or_outcome",
+            "description": "rated pleasantness of the tactile sensation"
+          }
+        ],
+        "source_span_locator_notes": [
+          {
+            "span_id": "s1",
+            "locator_summary": "PubMed abstract: self-produced tactile stimulation is rated less ticklish, intense, and pleasant than otherwise comparable externally produced stimulation."
+          }
+        ]
+      },
+      "optional_existing_semantic_reference_nodes": [
+        {
+          "id": "temporal_delay",
+          "role": "condition",
+          "description": "delay between producing movement and tactile consequence"
+        },
+        {
+          "id": "trajectory_perturbation",
+          "role": "condition",
+          "description": "spatial perturbation between producing movement and tactile consequence"
+        },
+        {
+          "id": "spatiotemporal_correspondence",
+          "role": "state_or_structure",
+          "description": "degree of temporal and spatial correspondence between motor command and tactile consequence"
+        },
+        {
+          "id": "predicted_sensory_feedback",
+          "role": "state_or_structure",
+          "description": "sensory consequence predicted from the motor system model"
+        },
+        {
+          "id": "actual_sensory_feedback",
+          "role": "available_information",
+          "description": "sensory feedback actually produced by the movement"
+        },
+        {
+          "id": "prediction_error",
+          "role": "state_or_structure",
+          "description": "difference between predicted and actual sensory feedback"
+        },
+        {
+          "id": "sensory_attenuation",
+          "role": "response_or_outcome",
+          "description": "reduction in perceived intensity of self-produced tactile stimulation"
+        }
+      ],
+      "reviewer_fields": {
+        "source_verification": null,
+        "source_proposition_reconstruction": null,
+        "verdict": null,
+        "v2_mapping": null,
+        "missing_semantic_distinction": null,
+        "reasoned_explanation": null,
+        "source_claim_dispute": null
+      }
+    },
+    {
+      "case_id": "VMR-006",
+      "source": {
+        "title": "Predictive and diagnostic learning within causal models",
+        "year": 1992,
+        "doi": "10.1037/0096-3445.121.2.222",
+        "locator": "https://pubmed.ncbi.nlm.nih.gov/1534834/",
+        "admitted_access_class": "ABSTRACT_ONLY",
+        "source_surface_at_initial_extraction": "indexed_source_abstract",
+        "source_text_in_repository": false,
+        "note": "ClaimIR provenance span locators are summaries/reviewer-recorded references, not primary-text quotations or proof of independent full-text access."
+      },
+      "claim_context": {
+        "type": "comparison",
+        "modality": "descriptive",
+        "scope": {
+          "conditions": [
+            "predictive versus diagnostic learning with multiple cues"
+          ],
+          "population": [
+            "human participants in three experiments"
+          ],
+          "substrate": [],
+          "task": [
+            "learn responses from possible causes or possible effects"
+          ],
+          "temporal_scope": []
+        }
+      },
+      "reviewed_relation": {
+        "kind": "differs",
+        "description": "predictive and diagnostic learning show asymmetric cue-competition behavior",
+        "ordered_arguments": [
+          {
+            "id": "predictive_learning",
+            "role": "condition",
+            "description": "learning in which cues are possible causes of a common effect"
+          },
+          {
+            "id": "diagnostic_learning",
+            "role": "condition",
+            "description": "learning in which cues are possible effects of a common cause"
+          },
+          {
+            "id": "cue_competition",
+            "role": "response_or_outcome",
+            "description": "competition among multiple cues during learning"
+          }
+        ],
+        "source_span_locator_notes": [
+          {
+            "span_id": "s2",
+            "locator_summary": "PubMed abstract: predictive and diagnostic reasoning are not symmetrical, contrary to the prediction of purely associative accounts."
+          },
+          {
+            "span_id": "s3",
+            "locator_summary": "PubMed abstract: cue competition occurs among multiple possible causes in predictive learning, whereas multiple possible effects need not compete in diagnostic learning."
+          }
+        ]
+      },
+      "optional_existing_semantic_reference_nodes": [
+        {
+          "id": "associationist_account",
+          "role": "other",
+          "description": "account predicting symmetry between predictive and diagnostic learning"
+        },
+        {
+          "id": "causal_model_account",
+          "role": "other",
+          "description": "account in which causal role structure differentiates predictive from diagnostic learning"
+        }
+      ],
+      "reviewer_fields": {
+        "source_verification": null,
+        "source_proposition_reconstruction": null,
+        "verdict": null,
+        "v2_mapping": null,
+        "missing_semantic_distinction": null,
+        "reasoned_explanation": null,
+        "source_claim_dispute": null
+      }
+    },
+    {
+      "case_id": "VMR-007",
+      "source": {
+        "title": "Changing concepts of working memory",
+        "year": 2014,
+        "doi": "10.1038/nn.3655",
+        "locator": "https://www.nature.com/articles/nn.3655",
+        "admitted_access_class": "ABSTRACT_ONLY",
+        "source_surface_at_initial_extraction": "publisher_abstract",
+        "source_text_in_repository": false,
+        "note": "ClaimIR provenance span locators are summaries/reviewer-recorded references, not primary-text quotations or proof of independent full-text access."
+      },
+      "claim_context": {
+        "type": "comparison",
+        "modality": "descriptive",
+        "scope": {
+          "conditions": [
+            "brief maintenance of multiple items"
+          ],
+          "population": [
+            "human participants across reviewed studies"
+          ],
+          "substrate": [
+            "behavioral and neural systems"
+          ],
+          "task": [
+            "short-term maintenance and report"
+          ],
+          "temporal_scope": []
+        }
+      },
+      "reviewed_relation": {
+        "kind": "depends_on",
+        "description": "under the resource proposal, performance is determined by representational quality rather than item quantity",
+        "ordered_arguments": [
+          {
+            "id": "task_performance",
+            "role": "response_or_outcome",
+            "description": "behavioral performance on the maintenance task"
+          },
+          {
+            "id": "representation_quality",
+            "role": "state_or_structure",
+            "description": "quality or precision of the maintained representations"
+          },
+          {
+            "id": "represented_item_quantity",
+            "role": "state_or_structure",
+            "description": "number of represented items as contrasted with representation quality in the resource proposal"
+          }
+        ],
+        "source_span_locator_notes": [
+          {
+            "span_id": "s2",
+            "locator_summary": "Publisher abstract: under the resource proposal, representational quality rather than represented-item count determines performance."
+          }
+        ]
+      },
+      "optional_existing_semantic_reference_nodes": [
+        {
+          "id": "fixed_item_account",
+          "role": "other",
+          "description": "account in which brief maintenance has a fixed small item limit"
+        },
+        {
+          "id": "flexible_resource_account",
+          "role": "other",
+          "description": "account in which a limited maintenance resource is flexibly distributed across maintained items"
+        },
+        {
+          "id": "maintained_item_set",
+          "role": "condition",
+          "description": "set of items currently required to be maintained"
+        },
+        {
+          "id": "resource_allocation",
+          "role": "state_or_structure",
+          "description": "distribution of a limited maintenance resource across currently maintained items"
+        },
+        {
+          "id": "limited_resource",
+          "role": "state_or_structure",
+          "description": "limited maintenance resource distributed across the currently maintained items"
+        }
+      ],
+      "reviewer_fields": {
+        "source_verification": null,
+        "source_proposition_reconstruction": null,
+        "verdict": null,
+        "v2_mapping": null,
+        "missing_semantic_distinction": null,
+        "reasoned_explanation": null,
+        "source_claim_dispute": null
+      }
+    },
+    {
+      "case_id": "VMR-008",
+      "source": {
+        "title": "Dual-task interference in simple tasks: data and theory",
+        "year": 1994,
+        "doi": "10.1037/0033-2909.116.2.220",
+        "locator": "https://pubmed.ncbi.nlm.nih.gov/7972591/",
+        "admitted_access_class": "ABSTRACT_ONLY",
+        "source_surface_at_initial_extraction": "indexed_source_abstract",
+        "source_text_in_repository": false,
+        "note": "ClaimIR provenance span locators are summaries/reviewer-recorded references, not primary-text quotations or proof of independent full-text access."
+      },
+      "claim_context": {
+        "type": "relation",
+        "modality": "descriptive",
+        "scope": {
+          "conditions": [
+            "concurrent performance of two relatively simple tasks"
+          ],
+          "population": [
+            "human participants across reviewed studies"
+          ],
+          "substrate": [],
+          "task": [
+            "dual-task and psychological-refractory-period paradigms"
+          ],
+          "temporal_scope": []
+        }
+      },
+      "reviewed_relation": {
+        "kind": "other",
+        "description": "other preparation, perceptual, and timing limitations can generate additional distinct forms of interference",
+        "ordered_arguments": [
+          {
+            "id": "task_preparation_limit",
+            "role": "state_or_structure",
+            "description": "limitation arising from task preparation"
+          },
+          {
+            "id": "sensory_perceptual_limit",
+            "role": "state_or_structure",
+            "description": "limitation arising from sensory or perceptual processing"
+          },
+          {
+            "id": "timing_limit",
+            "role": "state_or_structure",
+            "description": "limitation arising from timing constraints"
+          },
+          {
+            "id": "task_interference",
+            "role": "response_or_outcome",
+            "description": "performance interference observed under concurrent task demands"
+          }
+        ],
+        "source_span_locator_notes": [
+          {
+            "span_id": "s3",
+            "locator_summary": "Public abstract: limitations in task preparation, sensory-perceptual processing, and timing can produce additional, distinct forms of interference."
+          }
+        ]
+      },
+      "optional_existing_semantic_reference_nodes": [
+        {
+          "id": "dual_task_condition",
+          "role": "condition",
+          "description": "requirement to perform two simple tasks concurrently"
+        },
+        {
+          "id": "central_bottleneck",
+          "role": "state_or_structure",
+          "description": "processing bottleneck identified by refractory-period evidence"
+        },
+        {
+          "id": "action_selection_operation",
+          "role": "state_or_structure",
+          "description": "operation of selecting an action or response"
+        },
+        {
+          "id": "memory_retrieval_operation",
+          "role": "state_or_structure",
+          "description": "memory retrieval operation implicated in the bottleneck"
+        }
+      ],
+      "reviewer_fields": {
+        "source_verification": null,
+        "source_proposition_reconstruction": null,
+        "verdict": null,
+        "v2_mapping": null,
+        "missing_semantic_distinction": null,
+        "reasoned_explanation": null,
+        "source_claim_dispute": null
+      }
+    },
+    {
+      "case_id": "VMR-009",
+      "source": {
+        "title": "How we use rules to select actions",
+        "year": 2004,
+        "doi": "10.3758/CABN.4.4.564",
+        "locator": "https://pubmed.ncbi.nlm.nih.gov/15849898/",
+        "admitted_access_class": "ABSTRACT_ONLY",
+        "source_surface_at_initial_extraction": "indexed_source_abstract",
+        "source_text_in_repository": false,
+        "note": "ClaimIR provenance span locators are summaries/reviewer-recorded references, not primary-text quotations or proof of independent full-text access."
+      },
+      "claim_context": {
+        "type": "comparison",
+        "modality": "descriptive",
+        "scope": {
+          "conditions": [
+            "learning and use of action-guiding rules"
+          ],
+          "population": [
+            "primarily humans with relevant nonhuman-primate evidence"
+          ],
+          "substrate": [
+            "prefrontal and temporal cortical systems"
+          ],
+          "task": [
+            "rule learning, preparation, retrieval, and response selection"
+          ],
+          "temporal_scope": []
+        }
+      },
+      "reviewed_relation": {
+        "kind": "differs",
+        "description": "dorsolateral prefrontal involvement is more closely related to rule-based response selection than to rule retrieval",
+        "ordered_arguments": [
+          {
+            "id": "dlpfc_engagement",
+            "role": "response_or_outcome",
+            "description": "involvement of dorsolateral prefrontal cortex in rule-related processing"
+          },
+          {
+            "id": "rule_based_response_selection",
+            "role": "state_or_structure",
+            "description": "selection of a response according to the current rule"
+          },
+          {
+            "id": "rule_retrieval",
+            "role": "state_or_structure",
+            "description": "retrieval of rule knowledge from long-term memory"
+          }
+        ],
+        "source_span_locator_notes": [
+          {
+            "span_id": "s4",
+            "locator_summary": "PubMed abstract: dorsolateral prefrontal cortex is more closely related to rule-based response selection than to rule retrieval."
+          }
+        ]
+      },
+      "optional_existing_semantic_reference_nodes": [
+        {
+          "id": "rule_learning",
+          "role": "state_or_structure",
+          "description": "acquisition of action-guiding rule knowledge"
+        },
+        {
+          "id": "online_rule_maintenance",
+          "role": "state_or_structure",
+          "description": "online maintenance of rule information during task preparation"
+        },
+        {
+          "id": "vlpfc_engagement",
+          "role": "response_or_outcome",
+          "description": "involvement of ventrolateral prefrontal cortex in rule-related processing"
+        },
+        {
+          "id": "frontotemporal_interaction",
+          "role": "state_or_structure",
+          "description": "interaction between ventrolateral prefrontal and temporal cortex during retrieval"
+        },
+        {
+          "id": "posterior_temporal_rule_representation",
+          "role": "state_or_structure",
+          "description": "rule knowledge represented in posterior middle temporal cortex"
+        }
+      ],
+      "reviewer_fields": {
+        "source_verification": null,
+        "source_proposition_reconstruction": null,
+        "verdict": null,
+        "v2_mapping": null,
+        "missing_semantic_distinction": null,
+        "reasoned_explanation": null,
+        "source_claim_dispute": null
+      }
+    },
+    {
+      "case_id": "VMR-010",
+      "source": {
+        "title": "Changing concepts of working memory",
+        "year": 2014,
+        "doi": "10.1038/nn.3655",
+        "locator": "https://www.nature.com/articles/nn.3655",
+        "admitted_access_class": "ABSTRACT_ONLY",
+        "source_surface_at_initial_extraction": "publisher_abstract",
+        "source_text_in_repository": false,
+        "note": "ClaimIR provenance span locators are summaries/reviewer-recorded references, not primary-text quotations or proof of independent full-text access."
+      },
+      "claim_context": {
+        "type": "comparison",
+        "modality": "descriptive",
+        "scope": {
+          "conditions": [
+            "brief maintenance of multiple items"
+          ],
+          "population": [
+            "human participants across reviewed studies"
+          ],
+          "substrate": [
+            "behavioral and neural systems"
+          ],
+          "task": [
+            "short-term maintenance and report"
+          ],
+          "temporal_scope": []
+        }
+      },
+      "reviewed_relation": {
+        "kind": "depends_on",
+        "description": "representational quality varies with allocation of the limited resource",
+        "ordered_arguments": [
+          {
+            "id": "representation_quality",
+            "role": "state_or_structure",
+            "description": "quality or precision of the maintained representations"
+          },
+          {
+            "id": "resource_allocation",
+            "role": "state_or_structure",
+            "description": "distribution of a limited maintenance resource across currently maintained items"
+          }
+        ],
+        "source_span_locator_notes": [
+          {
+            "span_id": "s1",
+            "locator_summary": "Publisher abstract: brief maintenance is conventionally treated as a fixed small item limit, while an alternative proposal treats it as a limited resource distributed flexibly across all maintained items."
+          },
+          {
+            "span_id": "s2",
+            "locator_summary": "Publisher abstract: under the resource proposal, representational quality rather than represented-item count determines performance."
+          }
+        ]
+      },
+      "optional_existing_semantic_reference_nodes": [
+        {
+          "id": "fixed_item_account",
+          "role": "other",
+          "description": "account in which brief maintenance has a fixed small item limit"
+        },
+        {
+          "id": "flexible_resource_account",
+          "role": "other",
+          "description": "account in which a limited maintenance resource is flexibly distributed across maintained items"
+        },
+        {
+          "id": "maintained_item_set",
+          "role": "condition",
+          "description": "set of items currently required to be maintained"
+        },
+        {
+          "id": "task_performance",
+          "role": "response_or_outcome",
+          "description": "behavioral performance on the maintenance task"
+        },
+        {
+          "id": "limited_resource",
+          "role": "state_or_structure",
+          "description": "limited maintenance resource distributed across the currently maintained items"
+        },
+        {
+          "id": "represented_item_quantity",
+          "role": "state_or_structure",
+          "description": "number of represented items as contrasted with representation quality in the resource proposal"
+        }
+      ],
+      "reviewer_fields": {
+        "source_verification": null,
+        "source_proposition_reconstruction": null,
+        "verdict": null,
+        "v2_mapping": null,
+        "missing_semantic_distinction": null,
+        "reasoned_explanation": null,
+        "source_claim_dispute": null
+      }
+    },
+    {
+      "case_id": "VMR-011",
+      "source": {
+        "title": "Dual-task interference in simple tasks: data and theory",
+        "year": 1994,
+        "doi": "10.1037/0033-2909.116.2.220",
+        "locator": "https://pubmed.ncbi.nlm.nih.gov/7972591/",
+        "admitted_access_class": "ABSTRACT_ONLY",
+        "source_surface_at_initial_extraction": "indexed_source_abstract",
+        "source_text_in_repository": false,
+        "note": "ClaimIR provenance span locators are summaries/reviewer-recorded references, not primary-text quotations or proof of independent full-text access."
+      },
+      "claim_context": {
+        "type": "relation",
+        "modality": "descriptive",
+        "scope": {
+          "conditions": [
+            "concurrent performance of two relatively simple tasks"
+          ],
+          "population": [
+            "human participants across reviewed studies"
+          ],
+          "substrate": [],
+          "task": [
+            "dual-task and psychological-refractory-period paradigms"
+          ],
+          "temporal_scope": []
+        }
+      },
+      "reviewed_relation": {
+        "kind": "other",
+        "description": "the identified bottleneck encompasses action selection and probably memory retrieval",
+        "ordered_arguments": [
+          {
+            "id": "central_bottleneck",
+            "role": "state_or_structure",
+            "description": "processing bottleneck identified by refractory-period evidence"
+          },
+          {
+            "id": "action_selection_operation",
+            "role": "state_or_structure",
+            "description": "operation of selecting an action or response"
+          },
+          {
+            "id": "memory_retrieval_operation",
+            "role": "state_or_structure",
+            "description": "memory retrieval operation implicated in the bottleneck"
+          }
+        ],
+        "source_span_locator_notes": [
+          {
+            "span_id": "s2",
+            "locator_summary": "Public abstract: psychological-refractory-period evidence supports a stubborn bottleneck encompassing action selection and probably memory retrieval plus some other operations."
+          }
+        ]
+      },
+      "optional_existing_semantic_reference_nodes": [
+        {
+          "id": "dual_task_condition",
+          "role": "condition",
+          "description": "requirement to perform two simple tasks concurrently"
+        },
+        {
+          "id": "task_interference",
+          "role": "response_or_outcome",
+          "description": "performance interference observed under concurrent task demands"
+        },
+        {
+          "id": "task_preparation_limit",
+          "role": "state_or_structure",
+          "description": "limitation arising from task preparation"
+        },
+        {
+          "id": "sensory_perceptual_limit",
+          "role": "state_or_structure",
+          "description": "limitation arising from sensory or perceptual processing"
+        },
+        {
+          "id": "timing_limit",
+          "role": "state_or_structure",
+          "description": "limitation arising from timing constraints"
+        }
+      ],
+      "reviewer_fields": {
+        "source_verification": null,
+        "source_proposition_reconstruction": null,
+        "verdict": null,
+        "v2_mapping": null,
+        "missing_semantic_distinction": null,
+        "reasoned_explanation": null,
+        "source_claim_dispute": null
+      }
+    },
+    {
+      "case_id": "VMR-012",
+      "source": {
+        "title": "How we use rules to select actions",
+        "year": 2004,
+        "doi": "10.3758/CABN.4.4.564",
+        "locator": "https://pubmed.ncbi.nlm.nih.gov/15849898/",
+        "admitted_access_class": "ABSTRACT_ONLY",
+        "source_surface_at_initial_extraction": "indexed_source_abstract",
+        "source_text_in_repository": false,
+        "note": "ClaimIR provenance span locators are summaries/reviewer-recorded references, not primary-text quotations or proof of independent full-text access."
+      },
+      "claim_context": {
+        "type": "comparison",
+        "modality": "descriptive",
+        "scope": {
+          "conditions": [
+            "learning and use of action-guiding rules"
+          ],
+          "population": [
+            "primarily humans with relevant nonhuman-primate evidence"
+          ],
+          "substrate": [
+            "prefrontal and temporal cortical systems"
+          ],
+          "task": [
+            "rule learning, preparation, retrieval, and response selection"
+          ],
+          "temporal_scope": []
+        }
+      },
+      "reviewed_relation": {
+        "kind": "other",
+        "description": "human imaging evidence suggests storage of rule knowledge in posterior middle temporal cortex",
+        "ordered_arguments": [
+          {
+            "id": "posterior_temporal_rule_representation",
+            "role": "state_or_structure",
+            "description": "rule knowledge represented in posterior middle temporal cortex"
+          }
+        ],
+        "source_span_locator_notes": [
+          {
+            "span_id": "s3",
+            "locator_summary": "PubMed abstract: frontotemporal interactions are required for rule retrieval in nonhuman primates, and human imaging suggests rule knowledge is stored in posterior middle temporal cortex."
+          }
+        ]
+      },
+      "optional_existing_semantic_reference_nodes": [
+        {
+          "id": "rule_learning",
+          "role": "state_or_structure",
+          "description": "acquisition of action-guiding rule knowledge"
+        },
+        {
+          "id": "rule_retrieval",
+          "role": "state_or_structure",
+          "description": "retrieval of rule knowledge from long-term memory"
+        },
+        {
+          "id": "online_rule_maintenance",
+          "role": "state_or_structure",
+          "description": "online maintenance of rule information during task preparation"
+        },
+        {
+          "id": "vlpfc_engagement",
+          "role": "response_or_outcome",
+          "description": "involvement of ventrolateral prefrontal cortex in rule-related processing"
+        },
+        {
+          "id": "frontotemporal_interaction",
+          "role": "state_or_structure",
+          "description": "interaction between ventrolateral prefrontal and temporal cortex during retrieval"
+        },
+        {
+          "id": "rule_based_response_selection",
+          "role": "state_or_structure",
+          "description": "selection of a response according to the current rule"
+        },
+        {
+          "id": "dlpfc_engagement",
+          "role": "response_or_outcome",
+          "description": "involvement of dorsolateral prefrontal cortex in rule-related processing"
+        }
+      ],
+      "reviewer_fields": {
+        "source_verification": null,
+        "source_proposition_reconstruction": null,
+        "verdict": null,
+        "v2_mapping": null,
+        "missing_semantic_distinction": null,
+        "reasoned_explanation": null,
+        "source_claim_dispute": null
+      }
+    },
+    {
+      "case_id": "VMR-013",
+      "source": {
+        "title": "Changing concepts of working memory",
+        "year": 2014,
+        "doi": "10.1038/nn.3655",
+        "locator": "https://www.nature.com/articles/nn.3655",
+        "admitted_access_class": "ABSTRACT_ONLY",
+        "source_surface_at_initial_extraction": "publisher_abstract",
+        "source_text_in_repository": false,
+        "note": "ClaimIR provenance span locators are summaries/reviewer-recorded references, not primary-text quotations or proof of independent full-text access."
+      },
+      "claim_context": {
+        "type": "comparison",
+        "modality": "descriptive",
+        "scope": {
+          "conditions": [
+            "brief maintenance of multiple items"
+          ],
+          "population": [
+            "human participants across reviewed studies"
+          ],
+          "substrate": [
+            "behavioral and neural systems"
+          ],
+          "task": [
+            "short-term maintenance and report"
+          ],
+          "temporal_scope": []
+        }
+      },
+      "reviewed_relation": {
+        "kind": "maps_to",
+        "description": "the limited resource is distributed across the items that must be maintained",
+        "ordered_arguments": [
+          {
+            "id": "limited_resource",
+            "role": "state_or_structure",
+            "description": "limited maintenance resource distributed across the currently maintained items"
+          },
+          {
+            "id": "maintained_item_set",
+            "role": "condition",
+            "description": "set of items currently required to be maintained"
+          },
+          {
+            "id": "resource_allocation",
+            "role": "state_or_structure",
+            "description": "distribution of a limited maintenance resource across currently maintained items"
+          }
+        ],
+        "source_span_locator_notes": [
+          {
+            "span_id": "s1",
+            "locator_summary": "Publisher abstract: brief maintenance is conventionally treated as a fixed small item limit, while an alternative proposal treats it as a limited resource distributed flexibly across all maintained items."
+          }
+        ]
+      },
+      "optional_existing_semantic_reference_nodes": [
+        {
+          "id": "fixed_item_account",
+          "role": "other",
+          "description": "account in which brief maintenance has a fixed small item limit"
+        },
+        {
+          "id": "flexible_resource_account",
+          "role": "other",
+          "description": "account in which a limited maintenance resource is flexibly distributed across maintained items"
+        },
+        {
+          "id": "representation_quality",
+          "role": "state_or_structure",
+          "description": "quality or precision of the maintained representations"
+        },
+        {
+          "id": "task_performance",
+          "role": "response_or_outcome",
+          "description": "behavioral performance on the maintenance task"
+        },
+        {
+          "id": "represented_item_quantity",
+          "role": "state_or_structure",
+          "description": "number of represented items as contrasted with representation quality in the resource proposal"
+        }
+      ],
+      "reviewer_fields": {
+        "source_verification": null,
+        "source_proposition_reconstruction": null,
+        "verdict": null,
+        "v2_mapping": null,
+        "missing_semantic_distinction": null,
+        "reasoned_explanation": null,
+        "source_claim_dispute": null
+      }
+    },
+    {
+      "case_id": "VMR-014",
+      "source": {
+        "title": "Dual-task interference in simple tasks: data and theory",
+        "year": 1994,
+        "doi": "10.1037/0033-2909.116.2.220",
+        "locator": "https://pubmed.ncbi.nlm.nih.gov/7972591/",
+        "admitted_access_class": "ABSTRACT_ONLY",
+        "source_surface_at_initial_extraction": "indexed_source_abstract",
+        "source_text_in_repository": false,
+        "note": "ClaimIR provenance span locators are summaries/reviewer-recorded references, not primary-text quotations or proof of independent full-text access."
+      },
+      "claim_context": {
+        "type": "relation",
+        "modality": "descriptive",
+        "scope": {
+          "conditions": [
+            "concurrent performance of two relatively simple tasks"
+          ],
+          "population": [
+            "human participants across reviewed studies"
+          ],
+          "substrate": [],
+          "task": [
+            "dual-task and psychological-refractory-period paradigms"
+          ],
+          "temporal_scope": []
+        }
+      },
+      "reviewed_relation": {
+        "kind": "changes",
+        "description": "concurrent performance increases interference even for relatively simple tasks",
+        "ordered_arguments": [
+          {
+            "id": "dual_task_condition",
+            "role": "condition",
+            "description": "requirement to perform two simple tasks concurrently"
+          },
+          {
+            "id": "task_interference",
+            "role": "response_or_outcome",
+            "description": "performance interference observed under concurrent task demands"
+          }
+        ],
+        "source_span_locator_notes": [
+          {
+            "span_id": "s1",
+            "locator_summary": "Public abstract: concurrent performance of two simple tasks reliably produces interference."
+          }
+        ]
+      },
+      "optional_existing_semantic_reference_nodes": [
+        {
+          "id": "central_bottleneck",
+          "role": "state_or_structure",
+          "description": "processing bottleneck identified by refractory-period evidence"
+        },
+        {
+          "id": "action_selection_operation",
+          "role": "state_or_structure",
+          "description": "operation of selecting an action or response"
+        },
+        {
+          "id": "memory_retrieval_operation",
+          "role": "state_or_structure",
+          "description": "memory retrieval operation implicated in the bottleneck"
+        },
+        {
+          "id": "task_preparation_limit",
+          "role": "state_or_structure",
+          "description": "limitation arising from task preparation"
+        },
+        {
+          "id": "sensory_perceptual_limit",
+          "role": "state_or_structure",
+          "description": "limitation arising from sensory or perceptual processing"
+        },
+        {
+          "id": "timing_limit",
+          "role": "state_or_structure",
+          "description": "limitation arising from timing constraints"
+        }
+      ],
+      "reviewer_fields": {
+        "source_verification": null,
+        "source_proposition_reconstruction": null,
+        "verdict": null,
+        "v2_mapping": null,
+        "missing_semantic_distinction": null,
+        "reasoned_explanation": null,
+        "source_claim_dispute": null
+      }
+    },
+    {
+      "case_id": "VMR-015",
+      "source": {
+        "title": "How we use rules to select actions",
+        "year": 2004,
+        "doi": "10.3758/CABN.4.4.564",
+        "locator": "https://pubmed.ncbi.nlm.nih.gov/15849898/",
+        "admitted_access_class": "ABSTRACT_ONLY",
+        "source_surface_at_initial_extraction": "indexed_source_abstract",
+        "source_text_in_repository": false,
+        "note": "ClaimIR provenance span locators are summaries/reviewer-recorded references, not primary-text quotations or proof of independent full-text access."
+      },
+      "claim_context": {
+        "type": "comparison",
+        "modality": "descriptive",
+        "scope": {
+          "conditions": [
+            "learning and use of action-guiding rules"
+          ],
+          "population": [
+            "primarily humans with relevant nonhuman-primate evidence"
+          ],
+          "substrate": [
+            "prefrontal and temporal cortical systems"
+          ],
+          "task": [
+            "rule learning, preparation, retrieval, and response selection"
+          ],
+          "temporal_scope": []
+        }
+      },
+      "reviewed_relation": {
+        "kind": "depends_on",
+        "description": "rule retrieval requires interaction between ventrolateral prefrontal and temporal cortex in the cited nonhuman-primate evidence",
+        "ordered_arguments": [
+          {
+            "id": "rule_retrieval",
+            "role": "state_or_structure",
+            "description": "retrieval of rule knowledge from long-term memory"
+          },
+          {
+            "id": "frontotemporal_interaction",
+            "role": "state_or_structure",
+            "description": "interaction between ventrolateral prefrontal and temporal cortex during retrieval"
+          }
+        ],
+        "source_span_locator_notes": [
+          {
+            "span_id": "s3",
+            "locator_summary": "PubMed abstract: frontotemporal interactions are required for rule retrieval in nonhuman primates, and human imaging suggests rule knowledge is stored in posterior middle temporal cortex."
+          }
+        ]
+      },
+      "optional_existing_semantic_reference_nodes": [
+        {
+          "id": "rule_learning",
+          "role": "state_or_structure",
+          "description": "acquisition of action-guiding rule knowledge"
+        },
+        {
+          "id": "online_rule_maintenance",
+          "role": "state_or_structure",
+          "description": "online maintenance of rule information during task preparation"
+        },
+        {
+          "id": "vlpfc_engagement",
+          "role": "response_or_outcome",
+          "description": "involvement of ventrolateral prefrontal cortex in rule-related processing"
+        },
+        {
+          "id": "posterior_temporal_rule_representation",
+          "role": "state_or_structure",
+          "description": "rule knowledge represented in posterior middle temporal cortex"
+        },
+        {
+          "id": "rule_based_response_selection",
+          "role": "state_or_structure",
+          "description": "selection of a response according to the current rule"
+        },
+        {
+          "id": "dlpfc_engagement",
+          "role": "response_or_outcome",
+          "description": "involvement of dorsolateral prefrontal cortex in rule-related processing"
+        }
+      ],
+      "reviewer_fields": {
+        "source_verification": null,
+        "source_proposition_reconstruction": null,
+        "verdict": null,
+        "v2_mapping": null,
+        "missing_semantic_distinction": null,
+        "reasoned_explanation": null,
+        "source_claim_dispute": null
+      }
+    },
+    {
+      "case_id": "VMR-016",
+      "source": {
+        "title": "Changing concepts of working memory",
+        "year": 2014,
+        "doi": "10.1038/nn.3655",
+        "locator": "https://www.nature.com/articles/nn.3655",
+        "admitted_access_class": "ABSTRACT_ONLY",
+        "source_surface_at_initial_extraction": "publisher_abstract",
+        "source_text_in_repository": false,
+        "note": "ClaimIR provenance span locators are summaries/reviewer-recorded references, not primary-text quotations or proof of independent full-text access."
+      },
+      "claim_context": {
+        "type": "comparison",
+        "modality": "descriptive",
+        "scope": {
+          "conditions": [
+            "brief maintenance of multiple items"
+          ],
+          "population": [
+            "human participants across reviewed studies"
+          ],
+          "substrate": [
+            "behavioral and neural systems"
+          ],
+          "task": [
+            "short-term maintenance and report"
+          ],
+          "temporal_scope": []
+        }
+      },
+      "reviewed_relation": {
+        "kind": "differs",
+        "description": "the review contrasts a fixed item-limit account with a flexibly distributed resource account",
+        "ordered_arguments": [
+          {
+            "id": "fixed_item_account",
+            "role": "other",
+            "description": "account in which brief maintenance has a fixed small item limit"
+          },
+          {
+            "id": "flexible_resource_account",
+            "role": "other",
+            "description": "account in which a limited maintenance resource is flexibly distributed across maintained items"
+          }
+        ],
+        "source_span_locator_notes": [
+          {
+            "span_id": "s1",
+            "locator_summary": "Publisher abstract: brief maintenance is conventionally treated as a fixed small item limit, while an alternative proposal treats it as a limited resource distributed flexibly across all maintained items."
+          }
+        ]
+      },
+      "optional_existing_semantic_reference_nodes": [
+        {
+          "id": "maintained_item_set",
+          "role": "condition",
+          "description": "set of items currently required to be maintained"
+        },
+        {
+          "id": "resource_allocation",
+          "role": "state_or_structure",
+          "description": "distribution of a limited maintenance resource across currently maintained items"
+        },
+        {
+          "id": "representation_quality",
+          "role": "state_or_structure",
+          "description": "quality or precision of the maintained representations"
+        },
+        {
+          "id": "task_performance",
+          "role": "response_or_outcome",
+          "description": "behavioral performance on the maintenance task"
+        },
+        {
+          "id": "limited_resource",
+          "role": "state_or_structure",
+          "description": "limited maintenance resource distributed across the currently maintained items"
+        },
+        {
+          "id": "represented_item_quantity",
+          "role": "state_or_structure",
+          "description": "number of represented items as contrasted with representation quality in the resource proposal"
+        }
+      ],
+      "reviewer_fields": {
+        "source_verification": null,
+        "source_proposition_reconstruction": null,
+        "verdict": null,
+        "v2_mapping": null,
+        "missing_semantic_distinction": null,
+        "reasoned_explanation": null,
+        "source_claim_dispute": null
+      }
+    },
+    {
+      "case_id": "VMR-017",
+      "source": {
+        "title": "Controlled and automatic human information processing: II",
+        "year": 1977,
+        "doi": "10.1037/0033-295X.84.2.127",
+        "locator": "https://openurl.ebsco.com/contentitem/pdh%3A1977-24785-001",
+        "admitted_access_class": "ABSTRACT_ONLY",
+        "source_surface_at_initial_extraction": "indexed_source_abstract",
+        "source_text_in_repository": false,
+        "note": "ClaimIR provenance span locators are summaries/reviewer-recorded references, not primary-text quotations or proof of independent full-text access."
+      },
+      "claim_context": {
+        "type": "relation",
+        "modality": "descriptive",
+        "scope": {
+          "conditions": [
+            "practice and perceptual learning"
+          ],
+          "population": [
+            "human participants in reported experiments"
+          ],
+          "substrate": [],
+          "task": [
+            "detection, search, categorization, and attention tasks"
+          ],
+          "temporal_scope": [
+            "practice precedes acquisition of automatic performance"
+          ]
+        }
+      },
+      "reviewed_relation": {
+        "kind": "changes",
+        "description": "learning category structure improves controlled-search performance",
+        "ordered_arguments": [
+          {
+            "id": "category_learning",
+            "role": "condition",
+            "description": "acquisition of category structure during training"
+          },
+          {
+            "id": "controlled_search_performance",
+            "role": "response_or_outcome",
+            "description": "performance of controlled search"
+          }
+        ],
+        "source_span_locator_notes": [
+          {
+            "span_id": "s4",
+            "locator_summary": "Indexed abstract: category learning improves controlled-search performance."
+          }
+        ]
+      },
+      "optional_existing_semantic_reference_nodes": [
+        {
+          "id": "controlled_search",
+          "role": "state_or_structure",
+          "description": "controlled mode of search requiring active processing"
+        },
+        {
+          "id": "automatic_detection",
+          "role": "state_or_structure",
+          "description": "learned automatic mode of detecting relevant information"
+        },
+        {
+          "id": "practice_history",
+          "role": "condition",
+          "description": "accumulated experience during perceptual learning"
+        },
+        {
+          "id": "automatic_attention_response",
+          "role": "state_or_structure",
+          "description": "learned attending response that can be elicited automatically"
+        },
+        {
+          "id": "focused_attention",
+          "role": "state_or_structure",
+          "description": "focused attention subject to interference from automatically elicited attending responses"
+        }
+      ],
+      "reviewer_fields": {
+        "source_verification": null,
+        "source_proposition_reconstruction": null,
+        "verdict": null,
+        "v2_mapping": null,
+        "missing_semantic_distinction": null,
+        "reasoned_explanation": null,
+        "source_claim_dispute": null
+      }
+    },
+    {
+      "case_id": "VMR-018",
+      "source": {
+        "title": "How we use rules to select actions",
+        "year": 2004,
+        "doi": "10.3758/CABN.4.4.564",
+        "locator": "https://pubmed.ncbi.nlm.nih.gov/15849898/",
+        "admitted_access_class": "ABSTRACT_ONLY",
+        "source_surface_at_initial_extraction": "indexed_source_abstract",
+        "source_text_in_repository": false,
+        "note": "ClaimIR provenance span locators are summaries/reviewer-recorded references, not primary-text quotations or proof of independent full-text access."
+      },
+      "claim_context": {
+        "type": "comparison",
+        "modality": "descriptive",
+        "scope": {
+          "conditions": [
+            "learning and use of action-guiding rules"
+          ],
+          "population": [
+            "primarily humans with relevant nonhuman-primate evidence"
+          ],
+          "substrate": [
+            "prefrontal and temporal cortical systems"
+          ],
+          "task": [
+            "rule learning, preparation, retrieval, and response selection"
+          ],
+          "temporal_scope": []
+        }
+      },
+      "reviewed_relation": {
+        "kind": "other",
+        "description": "ventrolateral prefrontal cortex is implicated in learning, retrieving, and maintaining rules",
+        "ordered_arguments": [
+          {
+            "id": "vlpfc_engagement",
+            "role": "response_or_outcome",
+            "description": "involvement of ventrolateral prefrontal cortex in rule-related processing"
+          },
+          {
+            "id": "rule_learning",
+            "role": "state_or_structure",
+            "description": "acquisition of action-guiding rule knowledge"
+          },
+          {
+            "id": "rule_retrieval",
+            "role": "state_or_structure",
+            "description": "retrieval of rule knowledge from long-term memory"
+          },
+          {
+            "id": "online_rule_maintenance",
+            "role": "state_or_structure",
+            "description": "online maintenance of rule information during task preparation"
+          }
+        ],
+        "source_span_locator_notes": [
+          {
+            "span_id": "s2",
+            "locator_summary": "PubMed abstract: ventrolateral prefrontal cortex is implicated in rule learning, long-term retrieval, and online maintenance during task preparation."
+          }
+        ]
+      },
+      "optional_existing_semantic_reference_nodes": [
+        {
+          "id": "frontotemporal_interaction",
+          "role": "state_or_structure",
+          "description": "interaction between ventrolateral prefrontal and temporal cortex during retrieval"
+        },
+        {
+          "id": "posterior_temporal_rule_representation",
+          "role": "state_or_structure",
+          "description": "rule knowledge represented in posterior middle temporal cortex"
+        },
+        {
+          "id": "rule_based_response_selection",
+          "role": "state_or_structure",
+          "description": "selection of a response according to the current rule"
+        },
+        {
+          "id": "dlpfc_engagement",
+          "role": "response_or_outcome",
+          "description": "involvement of dorsolateral prefrontal cortex in rule-related processing"
+        }
+      ],
+      "reviewer_fields": {
+        "source_verification": null,
+        "source_proposition_reconstruction": null,
+        "verdict": null,
+        "v2_mapping": null,
+        "missing_semantic_distinction": null,
+        "reasoned_explanation": null,
+        "source_claim_dispute": null
+      }
+    },
+    {
+      "case_id": "VMR-019",
+      "source": {
+        "title": "Prototypes in the mist",
+        "year": 1998,
+        "doi": "10.1037/0278-7393.24.6.1411",
+        "locator": "https://researchconnect.suny.edu/en/publications/prototypes-in-the-mist-the-early-epochs-of-category-learning/",
+        "admitted_access_class": "PARTIAL_TEXT",
+        "source_surface_at_initial_extraction": "institutional_abstract",
+        "source_text_in_repository": false,
+        "note": "ClaimIR provenance span locators are summaries/reviewer-recorded references, not primary-text quotations or proof of independent full-text access."
+      },
+      "claim_context": {
+        "type": "comparison",
+        "modality": "descriptive",
+        "scope": {
+          "conditions": [
+            "successive stages of category learning under different category structures"
+          ],
+          "population": [
+            "human participants"
+          ],
+          "substrate": [],
+          "task": [
+            "learn and categorize smaller/less-differentiated versus larger/more-differentiated categories"
+          ],
+          "temporal_scope": [
+            "early through later stages of learning"
+          ]
+        }
+      },
+      "reviewed_relation": {
+        "kind": "depends_on",
+        "description": "different category structures produce different trajectories through the space of categorization strategies",
+        "ordered_arguments": [
+          {
+            "id": "strategy_trajectory",
+            "role": "response_or_outcome",
+            "description": "trajectory of dominant processing strategy across learning"
+          },
+          {
+            "id": "small_less_differentiated_structure",
+            "role": "condition",
+            "description": "smaller and less differentiated category structure"
+          },
+          {
+            "id": "large_more_differentiated_structure",
+            "role": "condition",
+            "description": "larger and more differentiated category structure"
+          }
+        ],
+        "source_span_locator_notes": [
+          {
+            "span_id": "s4",
+            "locator_summary": "Institutional abstract: model behavior suggests a psychological transition from prototype-based to exemplar-based processing and different category structures produce different learning trajectories."
+          }
+        ]
+      },
+      "optional_existing_semantic_reference_nodes": [
+        {
+          "id": "learning_stage",
+          "role": "condition",
+          "description": "successive stage in category learning"
+        },
+        {
+          "id": "exemplar_based_processing",
+          "role": "state_or_structure",
+          "description": "classification processing based primarily on individual exemplars"
+        },
+        {
+          "id": "prototype_based_processing",
+          "role": "state_or_structure",
+          "description": "classification processing based primarily on prototype information"
+        },
+        {
+          "id": "exemplar_model_fit",
+          "role": "response_or_outcome",
+          "description": "relative fit of the standard exemplar model to observed category-learning performance profiles; a model-comparison result rather than directly measured processing"
+        },
+        {
+          "id": "prototype_model_fit",
+          "role": "response_or_outcome",
+          "description": "relative fit of the basic prototype model to observed category-learning performance profiles; a model-comparison result rather than directly measured processing"
+        }
+      ],
+      "reviewer_fields": {
+        "source_verification": null,
+        "source_proposition_reconstruction": null,
+        "verdict": null,
+        "v2_mapping": null,
+        "missing_semantic_distinction": null,
+        "reasoned_explanation": null,
+        "source_claim_dispute": null
+      }
+    },
+    {
+      "case_id": "VMR-020",
+      "source": {
+        "title": "Controlled and automatic human information processing: II",
+        "year": 1977,
+        "doi": "10.1037/0033-295X.84.2.127",
+        "locator": "https://openurl.ebsco.com/contentitem/pdh%3A1977-24785-001",
+        "admitted_access_class": "ABSTRACT_ONLY",
+        "source_surface_at_initial_extraction": "indexed_source_abstract",
+        "source_text_in_repository": false,
+        "note": "ClaimIR provenance span locators are summaries/reviewer-recorded references, not primary-text quotations or proof of independent full-text access."
+      },
+      "claim_context": {
+        "type": "relation",
+        "modality": "descriptive",
+        "scope": {
+          "conditions": [
+            "practice and perceptual learning"
+          ],
+          "population": [
+            "human participants in reported experiments"
+          ],
+          "substrate": [],
+          "task": [
+            "detection, search, categorization, and attention tasks"
+          ],
+          "temporal_scope": [
+            "practice precedes acquisition of automatic performance"
+          ]
+        }
+      },
+      "reviewed_relation": {
+        "kind": "constrains",
+        "description": "automatic attending can interrupt controlled processing and interfere with focused attention",
+        "ordered_arguments": [
+          {
+            "id": "automatic_attention_response",
+            "role": "state_or_structure",
+            "description": "learned attending response that can be elicited automatically"
+          },
+          {
+            "id": "controlled_search",
+            "role": "state_or_structure",
+            "description": "controlled mode of search requiring active processing"
+          },
+          {
+            "id": "focused_attention",
+            "role": "state_or_structure",
+            "description": "focused attention subject to interference from automatically elicited attending responses"
+          }
+        ],
+        "source_span_locator_notes": [
+          {
+            "span_id": "s3",
+            "locator_summary": "Indexed abstract: automatic detection depends on attending responses, and automatic-attention responses interrupt controlled processing and interfere with focused attention."
+          }
+        ]
+      },
+      "optional_existing_semantic_reference_nodes": [
+        {
+          "id": "automatic_detection",
+          "role": "state_or_structure",
+          "description": "learned automatic mode of detecting relevant information"
+        },
+        {
+          "id": "practice_history",
+          "role": "condition",
+          "description": "accumulated experience during perceptual learning"
+        },
+        {
+          "id": "category_learning",
+          "role": "condition",
+          "description": "acquisition of category structure during training"
+        },
+        {
+          "id": "controlled_search_performance",
+          "role": "response_or_outcome",
+          "description": "performance of controlled search"
+        }
+      ],
+      "reviewer_fields": {
+        "source_verification": null,
+        "source_proposition_reconstruction": null,
+        "verdict": null,
+        "v2_mapping": null,
+        "missing_semantic_distinction": null,
+        "reasoned_explanation": null,
+        "source_claim_dispute": null
+      }
+    },
+    {
+      "case_id": "VMR-021",
+      "source": {
+        "title": "Spatio-temporal prediction modulates the perception of self-produced stimuli",
+        "year": 1999,
+        "doi": "10.1162/089892999563607",
+        "locator": "https://pubmed.ncbi.nlm.nih.gov/10511643/",
+        "admitted_access_class": "ABSTRACT_ONLY",
+        "source_surface_at_initial_extraction": "indexed_source_abstract",
+        "source_text_in_repository": false,
+        "note": "ClaimIR provenance span locators are summaries/reviewer-recorded references, not primary-text quotations or proof of independent full-text access."
+      },
+      "claim_context": {
+        "type": "relation",
+        "modality": "descriptive",
+        "scope": {
+          "conditions": [
+            "self-produced versus externally produced tactile stimulation with delay and trajectory manipulations"
+          ],
+          "population": [
+            "human participants"
+          ],
+          "substrate": [
+            "sensorimotor system"
+          ],
+          "task": [
+            "robot-mediated self-produced and externally produced touch"
+          ],
+          "temporal_scope": [
+            "motor action precedes tactile consequence"
+          ]
+        }
+      },
+      "reviewed_relation": {
+        "kind": "depends_on",
+        "description": "in the authors' proposed forward-model account, tickliness increases with the error between predicted and actual sensory feedback",
+        "ordered_arguments": [
+          {
+            "id": "tickliness_rating",
+            "role": "response_or_outcome",
+            "description": "rated tickliness of the tactile sensation"
+          },
+          {
+            "id": "prediction_error",
+            "role": "state_or_structure",
+            "description": "difference between predicted and actual sensory feedback"
+          }
+        ],
+        "source_span_locator_notes": [
+          {
+            "span_id": "s4",
+            "locator_summary": "PubMed abstract: the authors propose that tactile attenuation is proportional to error between sensory feedback predicted by an internal forward model and actual movement-produced feedback."
+          }
+        ]
+      },
+      "optional_existing_semantic_reference_nodes": [
+        {
+          "id": "self_produced_condition",
+          "role": "condition",
+          "description": "tactile stimulation produced through the participant's own action"
+        },
+        {
+          "id": "external_condition",
+          "role": "condition",
+          "description": "comparable tactile stimulation produced externally"
+        },
+        {
+          "id": "tactile_intensity_rating",
+          "role": "response_or_outcome",
+          "description": "rated intensity of the tactile sensation"
+        },
+        {
+          "id": "temporal_delay",
+          "role": "condition",
+          "description": "delay between producing movement and tactile consequence"
+        },
+        {
+          "id": "trajectory_perturbation",
+          "role": "condition",
+          "description": "spatial perturbation between producing movement and tactile consequence"
+        },
+        {
+          "id": "spatiotemporal_correspondence",
+          "role": "state_or_structure",
+          "description": "degree of temporal and spatial correspondence between motor command and tactile consequence"
+        },
+        {
+          "id": "predicted_sensory_feedback",
+          "role": "state_or_structure",
+          "description": "sensory consequence predicted from the motor system model"
+        },
+        {
+          "id": "actual_sensory_feedback",
+          "role": "available_information",
+          "description": "sensory feedback actually produced by the movement"
+        },
+        {
+          "id": "sensory_attenuation",
+          "role": "response_or_outcome",
+          "description": "reduction in perceived intensity of self-produced tactile stimulation"
+        },
+        {
+          "id": "pleasantness_rating",
+          "role": "response_or_outcome",
+          "description": "rated pleasantness of the tactile sensation"
+        }
+      ],
+      "reviewer_fields": {
+        "source_verification": null,
+        "source_proposition_reconstruction": null,
+        "verdict": null,
+        "v2_mapping": null,
+        "missing_semantic_distinction": null,
+        "reasoned_explanation": null,
+        "source_claim_dispute": null
+      }
+    },
+    {
+      "case_id": "VMR-022",
+      "source": {
+        "title": "Prototypes in the mist",
+        "year": 1998,
+        "doi": "10.1037/0278-7393.24.6.1411",
+        "locator": "https://researchconnect.suny.edu/en/publications/prototypes-in-the-mist-the-early-epochs-of-category-learning/",
+        "admitted_access_class": "PARTIAL_TEXT",
+        "source_surface_at_initial_extraction": "institutional_abstract",
+        "source_text_in_repository": false,
+        "note": "ClaimIR provenance span locators are summaries/reviewer-recorded references, not primary-text quotations or proof of independent full-text access."
+      },
+      "claim_context": {
+        "type": "comparison",
+        "modality": "descriptive",
+        "scope": {
+          "conditions": [
+            "successive stages of category learning under different category structures"
+          ],
+          "population": [
+            "human participants"
+          ],
+          "substrate": [],
+          "task": [
+            "learn and categorize smaller/less-differentiated versus larger/more-differentiated categories"
+          ],
+          "temporal_scope": [
+            "early through later stages of learning"
+          ]
+        }
+      },
+      "reviewed_relation": {
+        "kind": "changes",
+        "description": "the authors interpret the learning-stage model-fit trajectory for large, better-differentiated categories as consistent with a gradual shift from prototype-based toward exemplar-based processing; this is an inferred mechanism, not a uniquely established psychological transition and does not generalize to small, poorly differentiated categories",
+        "ordered_arguments": [
+          {
+            "id": "learning_stage",
+            "role": "condition",
+            "description": "successive stage in category learning"
+          },
+          {
+            "id": "large_more_differentiated_structure",
+            "role": "condition",
+            "description": "larger and more differentiated category structure"
+          },
+          {
+            "id": "prototype_based_processing",
+            "role": "state_or_structure",
+            "description": "classification processing based primarily on prototype information"
+          },
+          {
+            "id": "exemplar_based_processing",
+            "role": "state_or_structure",
+            "description": "classification processing based primarily on individual exemplars"
+          }
+        ],
+        "source_span_locator_notes": [
+          {
+            "span_id": "s4",
+            "locator_summary": "Institutional abstract: model behavior suggests a psychological transition from prototype-based to exemplar-based processing and different category structures produce different learning trajectories."
+          },
+          {
+            "span_id": "s5",
+            "locator_summary": "Smith & Minda (1998), original article pp. 1416, 1418 and 1425 (Experiments 1, 2 and 4): early prototype-model fit advantage in large, better-differentiated categories depends on experiment/category condition; model fit is not direct identification of participants' internal processing."
+          },
+          {
+            "span_id": "s6",
+            "locator_summary": "Smith & Minda (1998), original article pp. 1422-1423, Figure 6 (Experiment 3), and pp. 1425-1426 (Experiment 4): for small, poorly differentiated categories, exemplar model fits better from early epochs and prototype model has no early fit advantage."
+          },
+          {
+            "span_id": "s7",
+            "locator_summary": "Smith & Minda (1998), original article pp. 1426-1428 (mixture-model interpretation, Figure 9) and p. 1432 (General Discussion): inferred prototype-to-exemplar transition applies particularly to large, better-differentiated categories and does not directly establish a unique cognitive mechanism."
+          }
+        ]
+      },
+      "optional_existing_semantic_reference_nodes": [
+        {
+          "id": "small_less_differentiated_structure",
+          "role": "condition",
+          "description": "smaller and less differentiated category structure"
+        },
+        {
+          "id": "strategy_trajectory",
+          "role": "response_or_outcome",
+          "description": "trajectory of dominant processing strategy across learning"
+        },
+        {
+          "id": "exemplar_model_fit",
+          "role": "response_or_outcome",
+          "description": "relative fit of the standard exemplar model to observed category-learning performance profiles; a model-comparison result rather than directly measured processing"
+        },
+        {
+          "id": "prototype_model_fit",
+          "role": "response_or_outcome",
+          "description": "relative fit of the basic prototype model to observed category-learning performance profiles; a model-comparison result rather than directly measured processing"
+        }
+      ],
+      "reviewer_fields": {
+        "source_verification": null,
+        "source_proposition_reconstruction": null,
+        "verdict": null,
+        "v2_mapping": null,
+        "missing_semantic_distinction": null,
+        "reasoned_explanation": null,
+        "source_claim_dispute": null
+      }
+    },
+    {
+      "case_id": "VMR-023",
+      "source": {
+        "title": "Controlled and automatic human information processing: II",
+        "year": 1977,
+        "doi": "10.1037/0033-295X.84.2.127",
+        "locator": "https://openurl.ebsco.com/contentitem/pdh%3A1977-24785-001",
+        "admitted_access_class": "ABSTRACT_ONLY",
+        "source_surface_at_initial_extraction": "indexed_source_abstract",
+        "source_text_in_repository": false,
+        "note": "ClaimIR provenance span locators are summaries/reviewer-recorded references, not primary-text quotations or proof of independent full-text access."
+      },
+      "claim_context": {
+        "type": "relation",
+        "modality": "descriptive",
+        "scope": {
+          "conditions": [
+            "practice and perceptual learning"
+          ],
+          "population": [
+            "human participants in reported experiments"
+          ],
+          "substrate": [],
+          "task": [
+            "detection, search, categorization, and attention tasks"
+          ],
+          "temporal_scope": [
+            "practice precedes acquisition of automatic performance"
+          ]
+        }
+      },
+      "reviewed_relation": {
+        "kind": "depends_on",
+        "description": "automatic detection depends on attending responses",
+        "ordered_arguments": [
+          {
+            "id": "automatic_detection",
+            "role": "state_or_structure",
+            "description": "learned automatic mode of detecting relevant information"
+          },
+          {
+            "id": "automatic_attention_response",
+            "role": "state_or_structure",
+            "description": "learned attending response that can be elicited automatically"
+          }
+        ],
+        "source_span_locator_notes": [
+          {
+            "span_id": "s3",
+            "locator_summary": "Indexed abstract: automatic detection depends on attending responses, and automatic-attention responses interrupt controlled processing and interfere with focused attention."
+          }
+        ]
+      },
+      "optional_existing_semantic_reference_nodes": [
+        {
+          "id": "controlled_search",
+          "role": "state_or_structure",
+          "description": "controlled mode of search requiring active processing"
+        },
+        {
+          "id": "practice_history",
+          "role": "condition",
+          "description": "accumulated experience during perceptual learning"
+        },
+        {
+          "id": "category_learning",
+          "role": "condition",
+          "description": "acquisition of category structure during training"
+        },
+        {
+          "id": "controlled_search_performance",
+          "role": "response_or_outcome",
+          "description": "performance of controlled search"
+        },
+        {
+          "id": "focused_attention",
+          "role": "state_or_structure",
+          "description": "focused attention subject to interference from automatically elicited attending responses"
+        }
+      ],
+      "reviewer_fields": {
+        "source_verification": null,
+        "source_proposition_reconstruction": null,
+        "verdict": null,
+        "v2_mapping": null,
+        "missing_semantic_distinction": null,
+        "reasoned_explanation": null,
+        "source_claim_dispute": null
+      }
+    },
+    {
+      "case_id": "VMR-024",
+      "source": {
+        "title": "Spatio-temporal prediction modulates the perception of self-produced stimuli",
+        "year": 1999,
+        "doi": "10.1162/089892999563607",
+        "locator": "https://pubmed.ncbi.nlm.nih.gov/10511643/",
+        "admitted_access_class": "ABSTRACT_ONLY",
+        "source_surface_at_initial_extraction": "indexed_source_abstract",
+        "source_text_in_repository": false,
+        "note": "ClaimIR provenance span locators are summaries/reviewer-recorded references, not primary-text quotations or proof of independent full-text access."
+      },
+      "claim_context": {
+        "type": "relation",
+        "modality": "descriptive",
+        "scope": {
+          "conditions": [
+            "self-produced versus externally produced tactile stimulation with delay and trajectory manipulations"
+          ],
+          "population": [
+            "human participants"
+          ],
+          "substrate": [
+            "sensorimotor system"
+          ],
+          "task": [
+            "robot-mediated self-produced and externally produced touch"
+          ],
+          "temporal_scope": [
+            "motor action precedes tactile consequence"
+          ]
+        }
+      },
+      "reviewed_relation": {
+        "kind": "depends_on",
+        "description": "in the authors' proposed forward-model account, greater prediction error is associated with less sensory attenuation (inverse directional relationship)",
+        "ordered_arguments": [
+          {
+            "id": "sensory_attenuation",
+            "role": "response_or_outcome",
+            "description": "reduction in perceived intensity of self-produced tactile stimulation"
+          },
+          {
+            "id": "prediction_error",
+            "role": "state_or_structure",
+            "description": "difference between predicted and actual sensory feedback"
+          }
+        ],
+        "source_span_locator_notes": [
+          {
+            "span_id": "s4",
+            "locator_summary": "PubMed abstract: the authors propose that tactile attenuation is proportional to error between sensory feedback predicted by an internal forward model and actual movement-produced feedback."
+          }
+        ]
+      },
+      "optional_existing_semantic_reference_nodes": [
+        {
+          "id": "self_produced_condition",
+          "role": "condition",
+          "description": "tactile stimulation produced through the participant's own action"
+        },
+        {
+          "id": "external_condition",
+          "role": "condition",
+          "description": "comparable tactile stimulation produced externally"
+        },
+        {
+          "id": "tactile_intensity_rating",
+          "role": "response_or_outcome",
+          "description": "rated intensity of the tactile sensation"
+        },
+        {
+          "id": "tickliness_rating",
+          "role": "response_or_outcome",
+          "description": "rated tickliness of the tactile sensation"
+        },
+        {
+          "id": "temporal_delay",
+          "role": "condition",
+          "description": "delay between producing movement and tactile consequence"
+        },
+        {
+          "id": "trajectory_perturbation",
+          "role": "condition",
+          "description": "spatial perturbation between producing movement and tactile consequence"
+        },
+        {
+          "id": "spatiotemporal_correspondence",
+          "role": "state_or_structure",
+          "description": "degree of temporal and spatial correspondence between motor command and tactile consequence"
+        },
+        {
+          "id": "predicted_sensory_feedback",
+          "role": "state_or_structure",
+          "description": "sensory consequence predicted from the motor system model"
+        },
+        {
+          "id": "actual_sensory_feedback",
+          "role": "available_information",
+          "description": "sensory feedback actually produced by the movement"
+        },
+        {
+          "id": "pleasantness_rating",
+          "role": "response_or_outcome",
+          "description": "rated pleasantness of the tactile sensation"
+        }
+      ],
+      "reviewer_fields": {
+        "source_verification": null,
+        "source_proposition_reconstruction": null,
+        "verdict": null,
+        "v2_mapping": null,
+        "missing_semantic_distinction": null,
+        "reasoned_explanation": null,
+        "source_claim_dispute": null
+      }
+    },
+    {
+      "case_id": "VMR-025",
+      "source": {
+        "title": "Prototypes in the mist",
+        "year": 1998,
+        "doi": "10.1037/0278-7393.24.6.1411",
+        "locator": "https://researchconnect.suny.edu/en/publications/prototypes-in-the-mist-the-early-epochs-of-category-learning/",
+        "admitted_access_class": "PARTIAL_TEXT",
+        "source_surface_at_initial_extraction": "institutional_abstract",
+        "source_text_in_repository": false,
+        "note": "ClaimIR provenance span locators are summaries/reviewer-recorded references, not primary-text quotations or proof of independent full-text access."
+      },
+      "claim_context": {
+        "type": "comparison",
+        "modality": "descriptive",
+        "scope": {
+          "conditions": [
+            "successive stages of category learning under different category structures"
+          ],
+          "population": [
+            "human participants"
+          ],
+          "substrate": [],
+          "task": [
+            "learn and categorize smaller/less-differentiated versus larger/more-differentiated categories"
+          ],
+          "temporal_scope": [
+            "early through later stages of learning"
+          ]
+        }
+      },
+      "reviewed_relation": {
+        "kind": "depends_on",
+        "description": "for large, better-differentiated categories the prototype model has an early fit advantage in the reported qualifying task conditions, but not uniformly across all experimental conditions; this is a model-fit result, not direct observation of prototype processing",
+        "ordered_arguments": [
+          {
+            "id": "prototype_model_fit",
+            "role": "response_or_outcome",
+            "description": "relative fit of the basic prototype model to observed category-learning performance profiles; a model-comparison result rather than directly measured processing"
+          },
+          {
+            "id": "large_more_differentiated_structure",
+            "role": "condition",
+            "description": "larger and more differentiated category structure"
+          },
+          {
+            "id": "learning_stage",
+            "role": "condition",
+            "description": "successive stage in category learning"
+          }
+        ],
+        "source_span_locator_notes": [
+          {
+            "span_id": "s3",
+            "locator_summary": "Institutional abstract: for larger more-differentiated categories, prototype-based processing has a strong early advantage that diminishes slowly."
+          },
+          {
+            "span_id": "s5",
+            "locator_summary": "Smith & Minda (1998), original article pp. 1416, 1418 and 1425 (Experiments 1, 2 and 4): early prototype-model fit advantage in large, better-differentiated categories depends on experiment/category condition; model fit is not direct identification of participants' internal processing."
+          }
+        ]
+      },
+      "optional_existing_semantic_reference_nodes": [
+        {
+          "id": "small_less_differentiated_structure",
+          "role": "condition",
+          "description": "smaller and less differentiated category structure"
+        },
+        {
+          "id": "exemplar_based_processing",
+          "role": "state_or_structure",
+          "description": "classification processing based primarily on individual exemplars"
+        },
+        {
+          "id": "prototype_based_processing",
+          "role": "state_or_structure",
+          "description": "classification processing based primarily on prototype information"
+        },
+        {
+          "id": "strategy_trajectory",
+          "role": "response_or_outcome",
+          "description": "trajectory of dominant processing strategy across learning"
+        },
+        {
+          "id": "exemplar_model_fit",
+          "role": "response_or_outcome",
+          "description": "relative fit of the standard exemplar model to observed category-learning performance profiles; a model-comparison result rather than directly measured processing"
+        }
+      ],
+      "reviewer_fields": {
+        "source_verification": null,
+        "source_proposition_reconstruction": null,
+        "verdict": null,
+        "v2_mapping": null,
+        "missing_semantic_distinction": null,
+        "reasoned_explanation": null,
+        "source_claim_dispute": null
+      }
+    },
+    {
+      "case_id": "VMR-026",
+      "source": {
+        "title": "Controlled and automatic human information processing: II",
+        "year": 1977,
+        "doi": "10.1037/0033-295X.84.2.127",
+        "locator": "https://openurl.ebsco.com/contentitem/pdh%3A1977-24785-001",
+        "admitted_access_class": "ABSTRACT_ONLY",
+        "source_surface_at_initial_extraction": "indexed_source_abstract",
+        "source_text_in_repository": false,
+        "note": "ClaimIR provenance span locators are summaries/reviewer-recorded references, not primary-text quotations or proof of independent full-text access."
+      },
+      "claim_context": {
+        "type": "relation",
+        "modality": "descriptive",
+        "scope": {
+          "conditions": [
+            "practice and perceptual learning"
+          ],
+          "population": [
+            "human participants in reported experiments"
+          ],
+          "substrate": [],
+          "task": [
+            "detection, search, categorization, and attention tasks"
+          ],
+          "temporal_scope": [
+            "practice precedes acquisition of automatic performance"
+          ]
+        }
+      },
+      "reviewed_relation": {
+        "kind": "changes",
+        "description": "automatic detection is acquired over the course of training",
+        "ordered_arguments": [
+          {
+            "id": "practice_history",
+            "role": "condition",
+            "description": "accumulated experience during perceptual learning"
+          },
+          {
+            "id": "automatic_detection",
+            "role": "state_or_structure",
+            "description": "learned automatic mode of detecting relevant information"
+          }
+        ],
+        "source_span_locator_notes": [
+          {
+            "span_id": "s2",
+            "locator_summary": "Indexed abstract: the studies trace acquisition of automatic detection, category learning, and automatic-attention responses."
+          }
+        ]
+      },
+      "optional_existing_semantic_reference_nodes": [
+        {
+          "id": "controlled_search",
+          "role": "state_or_structure",
+          "description": "controlled mode of search requiring active processing"
+        },
+        {
+          "id": "automatic_attention_response",
+          "role": "state_or_structure",
+          "description": "learned attending response that can be elicited automatically"
+        },
+        {
+          "id": "category_learning",
+          "role": "condition",
+          "description": "acquisition of category structure during training"
+        },
+        {
+          "id": "controlled_search_performance",
+          "role": "response_or_outcome",
+          "description": "performance of controlled search"
+        },
+        {
+          "id": "focused_attention",
+          "role": "state_or_structure",
+          "description": "focused attention subject to interference from automatically elicited attending responses"
+        }
+      ],
+      "reviewer_fields": {
+        "source_verification": null,
+        "source_proposition_reconstruction": null,
+        "verdict": null,
+        "v2_mapping": null,
+        "missing_semantic_distinction": null,
+        "reasoned_explanation": null,
+        "source_claim_dispute": null
+      }
+    },
+    {
+      "case_id": "VMR-027",
+      "source": {
+        "title": "Spatio-temporal prediction modulates the perception of self-produced stimuli",
+        "year": 1999,
+        "doi": "10.1162/089892999563607",
+        "locator": "https://pubmed.ncbi.nlm.nih.gov/10511643/",
+        "admitted_access_class": "ABSTRACT_ONLY",
+        "source_surface_at_initial_extraction": "indexed_source_abstract",
+        "source_text_in_repository": false,
+        "note": "ClaimIR provenance span locators are summaries/reviewer-recorded references, not primary-text quotations or proof of independent full-text access."
+      },
+      "claim_context": {
+        "type": "relation",
+        "modality": "descriptive",
+        "scope": {
+          "conditions": [
+            "self-produced versus externally produced tactile stimulation with delay and trajectory manipulations"
+          ],
+          "population": [
+            "human participants"
+          ],
+          "substrate": [
+            "sensorimotor system"
+          ],
+          "task": [
+            "robot-mediated self-produced and externally produced touch"
+          ],
+          "temporal_scope": [
+            "motor action precedes tactile consequence"
+          ]
+        }
+      },
+      "reviewed_relation": {
+        "kind": "depends_on",
+        "description": "prediction error is defined by the mismatch between predicted and actual sensory feedback",
+        "ordered_arguments": [
+          {
+            "id": "prediction_error",
+            "role": "state_or_structure",
+            "description": "difference between predicted and actual sensory feedback"
+          },
+          {
+            "id": "predicted_sensory_feedback",
+            "role": "state_or_structure",
+            "description": "sensory consequence predicted from the motor system model"
+          },
+          {
+            "id": "actual_sensory_feedback",
+            "role": "available_information",
+            "description": "sensory feedback actually produced by the movement"
+          }
+        ],
+        "source_span_locator_notes": [
+          {
+            "span_id": "s4",
+            "locator_summary": "PubMed abstract: the authors propose that tactile attenuation is proportional to error between sensory feedback predicted by an internal forward model and actual movement-produced feedback."
+          }
+        ]
+      },
+      "optional_existing_semantic_reference_nodes": [
+        {
+          "id": "self_produced_condition",
+          "role": "condition",
+          "description": "tactile stimulation produced through the participant's own action"
+        },
+        {
+          "id": "external_condition",
+          "role": "condition",
+          "description": "comparable tactile stimulation produced externally"
+        },
+        {
+          "id": "tactile_intensity_rating",
+          "role": "response_or_outcome",
+          "description": "rated intensity of the tactile sensation"
+        },
+        {
+          "id": "tickliness_rating",
+          "role": "response_or_outcome",
+          "description": "rated tickliness of the tactile sensation"
+        },
+        {
+          "id": "temporal_delay",
+          "role": "condition",
+          "description": "delay between producing movement and tactile consequence"
+        },
+        {
+          "id": "trajectory_perturbation",
+          "role": "condition",
+          "description": "spatial perturbation between producing movement and tactile consequence"
+        },
+        {
+          "id": "spatiotemporal_correspondence",
+          "role": "state_or_structure",
+          "description": "degree of temporal and spatial correspondence between motor command and tactile consequence"
+        },
+        {
+          "id": "sensory_attenuation",
+          "role": "response_or_outcome",
+          "description": "reduction in perceived intensity of self-produced tactile stimulation"
+        },
+        {
+          "id": "pleasantness_rating",
+          "role": "response_or_outcome",
+          "description": "rated pleasantness of the tactile sensation"
+        }
+      ],
+      "reviewer_fields": {
+        "source_verification": null,
+        "source_proposition_reconstruction": null,
+        "verdict": null,
+        "v2_mapping": null,
+        "missing_semantic_distinction": null,
+        "reasoned_explanation": null,
+        "source_claim_dispute": null
+      }
+    },
+    {
+      "case_id": "VMR-028",
+      "source": {
+        "title": "Prototypes in the mist",
+        "year": 1998,
+        "doi": "10.1037/0278-7393.24.6.1411",
+        "locator": "https://researchconnect.suny.edu/en/publications/prototypes-in-the-mist-the-early-epochs-of-category-learning/",
+        "admitted_access_class": "PARTIAL_TEXT",
+        "source_surface_at_initial_extraction": "institutional_abstract",
+        "source_text_in_repository": false,
+        "note": "ClaimIR provenance span locators are summaries/reviewer-recorded references, not primary-text quotations or proof of independent full-text access."
+      },
+      "claim_context": {
+        "type": "comparison",
+        "modality": "descriptive",
+        "scope": {
+          "conditions": [
+            "successive stages of category learning under different category structures"
+          ],
+          "population": [
+            "human participants"
+          ],
+          "substrate": [],
+          "task": [
+            "learn and categorize smaller/less-differentiated versus larger/more-differentiated categories"
+          ],
+          "temporal_scope": [
+            "early through later stages of learning"
+          ]
+        }
+      },
+      "reviewed_relation": {
+        "kind": "depends_on",
+        "description": "for small, poorly differentiated categories the standard exemplar model describes observed performance better, including at early learning stages; this is a model-fit result, not direct observation of exemplar processing",
+        "ordered_arguments": [
+          {
+            "id": "exemplar_model_fit",
+            "role": "response_or_outcome",
+            "description": "relative fit of the standard exemplar model to observed category-learning performance profiles; a model-comparison result rather than directly measured processing"
+          },
+          {
+            "id": "small_less_differentiated_structure",
+            "role": "condition",
+            "description": "smaller and less differentiated category structure"
+          },
+          {
+            "id": "learning_stage",
+            "role": "condition",
+            "description": "successive stage in category learning"
+          }
+        ],
+        "source_span_locator_notes": [
+          {
+            "span_id": "s2",
+            "locator_summary": "Institutional abstract: for smaller less-differentiated categories, exemplar-based processing dominates even early in learning."
+          },
+          {
+            "span_id": "s6",
+            "locator_summary": "Smith & Minda (1998), original article pp. 1422-1423, Figure 6 (Experiment 3), and pp. 1425-1426 (Experiment 4): for small, poorly differentiated categories, exemplar model fits better from early epochs and prototype model has no early fit advantage."
+          }
+        ]
+      },
+      "optional_existing_semantic_reference_nodes": [
+        {
+          "id": "large_more_differentiated_structure",
+          "role": "condition",
+          "description": "larger and more differentiated category structure"
+        },
+        {
+          "id": "exemplar_based_processing",
+          "role": "state_or_structure",
+          "description": "classification processing based primarily on individual exemplars"
+        },
+        {
+          "id": "prototype_based_processing",
+          "role": "state_or_structure",
+          "description": "classification processing based primarily on prototype information"
+        },
+        {
+          "id": "strategy_trajectory",
+          "role": "response_or_outcome",
+          "description": "trajectory of dominant processing strategy across learning"
+        },
+        {
+          "id": "prototype_model_fit",
+          "role": "response_or_outcome",
+          "description": "relative fit of the basic prototype model to observed category-learning performance profiles; a model-comparison result rather than directly measured processing"
+        }
+      ],
+      "reviewer_fields": {
+        "source_verification": null,
+        "source_proposition_reconstruction": null,
+        "verdict": null,
+        "v2_mapping": null,
+        "missing_semantic_distinction": null,
+        "reasoned_explanation": null,
+        "source_claim_dispute": null
+      }
+    },
+    {
+      "case_id": "VMR-029",
+      "source": {
+        "title": "Controlled and automatic human information processing: II",
+        "year": 1977,
+        "doi": "10.1037/0033-295X.84.2.127",
+        "locator": "https://openurl.ebsco.com/contentitem/pdh%3A1977-24785-001",
+        "admitted_access_class": "ABSTRACT_ONLY",
+        "source_surface_at_initial_extraction": "indexed_source_abstract",
+        "source_text_in_repository": false,
+        "note": "ClaimIR provenance span locators are summaries/reviewer-recorded references, not primary-text quotations or proof of independent full-text access."
+      },
+      "claim_context": {
+        "type": "relation",
+        "modality": "descriptive",
+        "scope": {
+          "conditions": [
+            "practice and perceptual learning"
+          ],
+          "population": [
+            "human participants in reported experiments"
+          ],
+          "substrate": [],
+          "task": [
+            "detection, search, categorization, and attention tasks"
+          ],
+          "temporal_scope": [
+            "practice precedes acquisition of automatic performance"
+          ]
+        }
+      },
+      "reviewed_relation": {
+        "kind": "differs",
+        "description": "the reported experiments demonstrate a qualitative difference between controlled search and automatic detection",
+        "ordered_arguments": [
+          {
+            "id": "controlled_search",
+            "role": "state_or_structure",
+            "description": "controlled mode of search requiring active processing"
+          },
+          {
+            "id": "automatic_detection",
+            "role": "state_or_structure",
+            "description": "learned automatic mode of detecting relevant information"
+          }
+        ],
+        "source_span_locator_notes": [
+          {
+            "span_id": "s1",
+            "locator_summary": "Indexed abstract: experiments demonstrate a qualitative difference between controlled search and automatic detection."
+          }
+        ]
+      },
+      "optional_existing_semantic_reference_nodes": [
+        {
+          "id": "practice_history",
+          "role": "condition",
+          "description": "accumulated experience during perceptual learning"
+        },
+        {
+          "id": "automatic_attention_response",
+          "role": "state_or_structure",
+          "description": "learned attending response that can be elicited automatically"
+        },
+        {
+          "id": "category_learning",
+          "role": "condition",
+          "description": "acquisition of category structure during training"
+        },
+        {
+          "id": "controlled_search_performance",
+          "role": "response_or_outcome",
+          "description": "performance of controlled search"
+        },
+        {
+          "id": "focused_attention",
+          "role": "state_or_structure",
+          "description": "focused attention subject to interference from automatically elicited attending responses"
+        }
+      ],
+      "reviewer_fields": {
+        "source_verification": null,
+        "source_proposition_reconstruction": null,
+        "verdict": null,
+        "v2_mapping": null,
+        "missing_semantic_distinction": null,
+        "reasoned_explanation": null,
+        "source_claim_dispute": null
+      }
+    },
+    {
+      "case_id": "VMR-030",
+      "source": {
+        "title": "Spatio-temporal prediction modulates the perception of self-produced stimuli",
+        "year": 1999,
+        "doi": "10.1162/089892999563607",
+        "locator": "https://pubmed.ncbi.nlm.nih.gov/10511643/",
+        "admitted_access_class": "ABSTRACT_ONLY",
+        "source_surface_at_initial_extraction": "indexed_source_abstract",
+        "source_text_in_repository": false,
+        "note": "ClaimIR provenance span locators are summaries/reviewer-recorded references, not primary-text quotations or proof of independent full-text access."
+      },
+      "claim_context": {
+        "type": "relation",
+        "modality": "descriptive",
+        "scope": {
+          "conditions": [
+            "self-produced versus externally produced tactile stimulation with delay and trajectory manipulations"
+          ],
+          "population": [
+            "human participants"
+          ],
+          "substrate": [
+            "sensorimotor system"
+          ],
+          "task": [
+            "robot-mediated self-produced and externally produced touch"
+          ],
+          "temporal_scope": [
+            "motor action precedes tactile consequence"
+          ]
+        }
+      },
+      "reviewed_relation": {
+        "kind": "depends_on",
+        "description": "attenuation requires sufficient temporal and spatial correspondence between motor command and tactile consequence",
+        "ordered_arguments": [
+          {
+            "id": "sensory_attenuation",
+            "role": "response_or_outcome",
+            "description": "reduction in perceived intensity of self-produced tactile stimulation"
+          },
+          {
+            "id": "spatiotemporal_correspondence",
+            "role": "state_or_structure",
+            "description": "degree of temporal and spatial correspondence between motor command and tactile consequence"
+          }
+        ],
+        "source_span_locator_notes": [
+          {
+            "span_id": "s3",
+            "locator_summary": "PubMed abstract: attenuation requires temporal and spatial correspondence between the tactile consequence and its causal motor command."
+          }
+        ]
+      },
+      "optional_existing_semantic_reference_nodes": [
+        {
+          "id": "self_produced_condition",
+          "role": "condition",
+          "description": "tactile stimulation produced through the participant's own action"
+        },
+        {
+          "id": "external_condition",
+          "role": "condition",
+          "description": "comparable tactile stimulation produced externally"
+        },
+        {
+          "id": "tactile_intensity_rating",
+          "role": "response_or_outcome",
+          "description": "rated intensity of the tactile sensation"
+        },
+        {
+          "id": "tickliness_rating",
+          "role": "response_or_outcome",
+          "description": "rated tickliness of the tactile sensation"
+        },
+        {
+          "id": "temporal_delay",
+          "role": "condition",
+          "description": "delay between producing movement and tactile consequence"
+        },
+        {
+          "id": "trajectory_perturbation",
+          "role": "condition",
+          "description": "spatial perturbation between producing movement and tactile consequence"
+        },
+        {
+          "id": "predicted_sensory_feedback",
+          "role": "state_or_structure",
+          "description": "sensory consequence predicted from the motor system model"
+        },
+        {
+          "id": "actual_sensory_feedback",
+          "role": "available_information",
+          "description": "sensory feedback actually produced by the movement"
+        },
+        {
+          "id": "prediction_error",
+          "role": "state_or_structure",
+          "description": "difference between predicted and actual sensory feedback"
+        },
+        {
+          "id": "pleasantness_rating",
+          "role": "response_or_outcome",
+          "description": "rated pleasantness of the tactile sensation"
+        }
+      ],
+      "reviewer_fields": {
+        "source_verification": null,
+        "source_proposition_reconstruction": null,
+        "verdict": null,
+        "v2_mapping": null,
+        "missing_semantic_distinction": null,
+        "reasoned_explanation": null,
+        "source_claim_dispute": null
+      }
+    },
+    {
+      "case_id": "VMR-031",
+      "source": {
+        "title": "Predictive and diagnostic learning within causal models",
+        "year": 1992,
+        "doi": "10.1037/0096-3445.121.2.222",
+        "locator": "https://pubmed.ncbi.nlm.nih.gov/1534834/",
+        "admitted_access_class": "ABSTRACT_ONLY",
+        "source_surface_at_initial_extraction": "indexed_source_abstract",
+        "source_text_in_repository": false,
+        "note": "ClaimIR provenance span locators are summaries/reviewer-recorded references, not primary-text quotations or proof of independent full-text access."
+      },
+      "claim_context": {
+        "type": "comparison",
+        "modality": "descriptive",
+        "scope": {
+          "conditions": [
+            "predictive versus diagnostic learning with multiple cues"
+          ],
+          "population": [
+            "human participants in three experiments"
+          ],
+          "substrate": [],
+          "task": [
+            "learn responses from possible causes or possible effects"
+          ],
+          "temporal_scope": []
+        }
+      },
+      "reviewed_relation": {
+        "kind": "other",
+        "description": "the experimental results favor the causal-model account over the symmetric associationist account",
+        "ordered_arguments": [
+          {
+            "id": "causal_model_account",
+            "role": "other",
+            "description": "account in which causal role structure differentiates predictive from diagnostic learning"
+          },
+          {
+            "id": "associationist_account",
+            "role": "other",
+            "description": "account predicting symmetry between predictive and diagnostic learning"
+          }
+        ],
+        "source_span_locator_notes": [
+          {
+            "span_id": "s2",
+            "locator_summary": "PubMed abstract: predictive and diagnostic reasoning are not symmetrical, contrary to the prediction of purely associative accounts."
+          },
+          {
+            "span_id": "s4",
+            "locator_summary": "PubMed abstract: the reported results favor a causal-model account."
+          }
+        ]
+      },
+      "optional_existing_semantic_reference_nodes": [
+        {
+          "id": "predictive_learning",
+          "role": "condition",
+          "description": "learning in which cues are possible causes of a common effect"
+        },
+        {
+          "id": "diagnostic_learning",
+          "role": "condition",
+          "description": "learning in which cues are possible effects of a common cause"
+        },
+        {
+          "id": "cue_competition",
+          "role": "response_or_outcome",
+          "description": "competition among multiple cues during learning"
+        }
+      ],
+      "reviewer_fields": {
+        "source_verification": null,
+        "source_proposition_reconstruction": null,
+        "verdict": null,
+        "v2_mapping": null,
+        "missing_semantic_distinction": null,
+        "reasoned_explanation": null,
+        "source_claim_dispute": null
+      }
+    },
+    {
+      "case_id": "VMR-032",
+      "source": {
+        "title": "Temporal difference models and reward-related learning in the human brain",
+        "year": 2003,
+        "doi": "10.1016/S0896-6273(03)00169-7",
+        "locator": "https://pubmed.ncbi.nlm.nih.gov/12718865/",
+        "admitted_access_class": "ABSTRACT_ONLY",
+        "source_surface_at_initial_extraction": "indexed_source_abstract",
+        "source_text_in_repository": false,
+        "note": "ClaimIR provenance span locators are summaries/reviewer-recorded references, not primary-text quotations or proof of independent full-text access."
+      },
+      "claim_context": {
+        "type": "relation",
+        "modality": "descriptive",
+        "scope": {
+          "conditions": [
+            "appetitive conditioning before and after learning"
+          ],
+          "population": [
+            "human participants"
+          ],
+          "substrate": [
+            "ventral striatum and orbitofrontal cortex"
+          ],
+          "task": [
+            "conditioned cue followed by pleasant taste reward"
+          ],
+          "temporal_scope": [
+            "error-signal timing changes with learning"
+          ]
+        }
+      },
+      "reviewed_relation": {
+        "kind": "other",
+        "description": "orbitofrontal response is significantly correlated with the modeled error signal",
+        "ordered_arguments": [
+          {
+            "id": "orbitofrontal_response",
+            "role": "response_or_outcome",
+            "description": "measured response in orbitofrontal cortex"
+          },
+          {
+            "id": "prediction_error_signal",
+            "role": "state_or_structure",
+            "description": "model-derived discrepancy signal used in reward-related learning"
+          }
+        ],
+        "source_span_locator_notes": [
+          {
+            "span_id": "s3",
+            "locator_summary": "PubMed abstract: ventral-striatal and orbitofrontal responses were significantly correlated with the model error signal, suggesting expression of the modeled computations during conditioning."
+          }
+        ]
+      },
+      "optional_existing_semantic_reference_nodes": [
+        {
+          "id": "learning_stage",
+          "role": "condition",
+          "description": "stage before versus after acquisition of the cue-reward prediction"
+        },
+        {
+          "id": "reward_delivery",
+          "role": "condition",
+          "description": "delivery of the appetitive reward"
+        },
+        {
+          "id": "conditioned_cue",
+          "role": "condition",
+          "description": "cue that predicts the later reward after learning"
+        },
+        {
+          "id": "error_signal_timing",
+          "role": "response_or_outcome",
+          "description": "event time at which the prediction-error signal is expressed"
+        },
+        {
+          "id": "ventral_striatal_response",
+          "role": "response_or_outcome",
+          "description": "measured response in ventral striatum"
+        }
+      ],
+      "reviewer_fields": {
+        "source_verification": null,
+        "source_proposition_reconstruction": null,
+        "verdict": null,
+        "v2_mapping": null,
+        "missing_semantic_distinction": null,
+        "reasoned_explanation": null,
+        "source_claim_dispute": null
+      }
+    },
+    {
+      "case_id": "VMR-033",
+      "source": {
+        "title": "Spatio-temporal prediction modulates the perception of self-produced stimuli",
+        "year": 1999,
+        "doi": "10.1162/089892999563607",
+        "locator": "https://pubmed.ncbi.nlm.nih.gov/10511643/",
+        "admitted_access_class": "ABSTRACT_ONLY",
+        "source_surface_at_initial_extraction": "indexed_source_abstract",
+        "source_text_in_repository": false,
+        "note": "ClaimIR provenance span locators are summaries/reviewer-recorded references, not primary-text quotations or proof of independent full-text access."
+      },
+      "claim_context": {
+        "type": "relation",
+        "modality": "descriptive",
+        "scope": {
+          "conditions": [
+            "self-produced versus externally produced tactile stimulation with delay and trajectory manipulations"
+          ],
+          "population": [
+            "human participants"
+          ],
+          "substrate": [
+            "sensorimotor system"
+          ],
+          "task": [
+            "robot-mediated self-produced and externally produced touch"
+          ],
+          "temporal_scope": [
+            "motor action precedes tactile consequence"
+          ]
+        }
+      },
+      "reviewed_relation": {
+        "kind": "changes",
+        "description": "tickliness increases as trajectory perturbation is increased",
+        "ordered_arguments": [
+          {
+            "id": "trajectory_perturbation",
+            "role": "condition",
+            "description": "spatial perturbation between producing movement and tactile consequence"
+          },
+          {
+            "id": "tickliness_rating",
+            "role": "response_or_outcome",
+            "description": "rated tickliness of the tactile sensation"
+          }
+        ],
+        "source_span_locator_notes": [
+          {
+            "span_id": "s2",
+            "locator_summary": "PubMed abstract: increasing temporal delay or trajectory perturbation between the producing action and tactile consequence significantly increases tickliness."
+          }
+        ]
+      },
+      "optional_existing_semantic_reference_nodes": [
+        {
+          "id": "self_produced_condition",
+          "role": "condition",
+          "description": "tactile stimulation produced through the participant's own action"
+        },
+        {
+          "id": "external_condition",
+          "role": "condition",
+          "description": "comparable tactile stimulation produced externally"
+        },
+        {
+          "id": "tactile_intensity_rating",
+          "role": "response_or_outcome",
+          "description": "rated intensity of the tactile sensation"
+        },
+        {
+          "id": "temporal_delay",
+          "role": "condition",
+          "description": "delay between producing movement and tactile consequence"
+        },
+        {
+          "id": "spatiotemporal_correspondence",
+          "role": "state_or_structure",
+          "description": "degree of temporal and spatial correspondence between motor command and tactile consequence"
+        },
+        {
+          "id": "predicted_sensory_feedback",
+          "role": "state_or_structure",
+          "description": "sensory consequence predicted from the motor system model"
+        },
+        {
+          "id": "actual_sensory_feedback",
+          "role": "available_information",
+          "description": "sensory feedback actually produced by the movement"
+        },
+        {
+          "id": "prediction_error",
+          "role": "state_or_structure",
+          "description": "difference between predicted and actual sensory feedback"
+        },
+        {
+          "id": "sensory_attenuation",
+          "role": "response_or_outcome",
+          "description": "reduction in perceived intensity of self-produced tactile stimulation"
+        },
+        {
+          "id": "pleasantness_rating",
+          "role": "response_or_outcome",
+          "description": "rated pleasantness of the tactile sensation"
+        }
+      ],
+      "reviewer_fields": {
+        "source_verification": null,
+        "source_proposition_reconstruction": null,
+        "verdict": null,
+        "v2_mapping": null,
+        "missing_semantic_distinction": null,
+        "reasoned_explanation": null,
+        "source_claim_dispute": null
+      }
+    },
+    {
+      "case_id": "VMR-034",
+      "source": {
+        "title": "Predictive and diagnostic learning within causal models",
+        "year": 1992,
+        "doi": "10.1037/0096-3445.121.2.222",
+        "locator": "https://pubmed.ncbi.nlm.nih.gov/1534834/",
+        "admitted_access_class": "ABSTRACT_ONLY",
+        "source_surface_at_initial_extraction": "indexed_source_abstract",
+        "source_text_in_repository": false,
+        "note": "ClaimIR provenance span locators are summaries/reviewer-recorded references, not primary-text quotations or proof of independent full-text access."
+      },
+      "claim_context": {
+        "type": "comparison",
+        "modality": "descriptive",
+        "scope": {
+          "conditions": [
+            "predictive versus diagnostic learning with multiple cues"
+          ],
+          "population": [
+            "human participants in three experiments"
+          ],
+          "substrate": [],
+          "task": [
+            "learn responses from possible causes or possible effects"
+          ],
+          "temporal_scope": []
+        }
+      },
+      "reviewed_relation": {
+        "kind": "other",
+        "description": "multiple possible effects need not show cue competition during diagnostic learning",
+        "ordered_arguments": [
+          {
+            "id": "diagnostic_learning",
+            "role": "condition",
+            "description": "learning in which cues are possible effects of a common cause"
+          },
+          {
+            "id": "cue_competition",
+            "role": "response_or_outcome",
+            "description": "competition among multiple cues during learning"
+          }
+        ],
+        "source_span_locator_notes": [
+          {
+            "span_id": "s3",
+            "locator_summary": "PubMed abstract: cue competition occurs among multiple possible causes in predictive learning, whereas multiple possible effects need not compete in diagnostic learning."
+          }
+        ]
+      },
+      "optional_existing_semantic_reference_nodes": [
+        {
+          "id": "predictive_learning",
+          "role": "condition",
+          "description": "learning in which cues are possible causes of a common effect"
+        },
+        {
+          "id": "associationist_account",
+          "role": "other",
+          "description": "account predicting symmetry between predictive and diagnostic learning"
+        },
+        {
+          "id": "causal_model_account",
+          "role": "other",
+          "description": "account in which causal role structure differentiates predictive from diagnostic learning"
+        }
+      ],
+      "reviewer_fields": {
+        "source_verification": null,
+        "source_proposition_reconstruction": null,
+        "verdict": null,
+        "v2_mapping": null,
+        "missing_semantic_distinction": null,
+        "reasoned_explanation": null,
+        "source_claim_dispute": null
+      }
+    }
+  ],
+  "terminal": "AHV2_8_ALL_34_VERDICT_MASKED_CASES_FROZEN_BEFORE_AUTHOR_CHALLENGE"
+}
