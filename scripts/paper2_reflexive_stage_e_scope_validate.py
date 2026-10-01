@@ -12,7 +12,7 @@ from pathlib import Path
 ROOT = Path("paper/validation/jgps-major-revision/reflexive-audit-v1")
 C_SHA = "50fa50d24f2fbf9f3aef871cdeda08cdc97431a8"
 D_INDEX_SHA = "7a4a9bb1df15aa1b12de51e9ca048565601964a0"
-CONTRACT_SHA = "e47aee36b66b3767794865093716330466a2c2a5"
+CONTRACT_SHA = "b144b730858442f0a781a53a1ca74e4264e4023c"
 AUDIT_SHA = "1632c74265453368bbe61c67f0e53dec47123bcf"
 FROZEN_LAYERS_SHA = "150fbb166541ba52abbe07124924fab63a1ad575"
 ALLOWED = {"G_cog", "Pi", "X", "C", "Q", "P_in", "P_out", "K", "T", "rho/O"}
