@@ -4,10 +4,10 @@
   "authority_issue": 384,
   "generated_date": "2026-10-01",
   "candidate_packet_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/reflexive-claimir-candidates-v1.json",
-  "candidate_packet_blob_sha": "59549a87954f057d33ad336362a5b4689f6cd438",
-  "total": 30,
-  "reviewed": 24,
-  "accepted": 24,
+  "candidate_packet_blob_sha": "cbd3a4e730ed08c761481ceb53145234134e6c57",
+  "total": 32,
+  "reviewed": 27,
+  "accepted": 27,
   "revised": 0,
   "rejected": 0,
   "decisions": [
@@ -154,12 +154,29 @@
       "decision": "ACCEPT",
       "decision_date": "2026-10-01",
       "decision_record_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/human-reviewed/RFX11C.json"
+    },
+    {
+      "self_target_id": "RFX12A",
+      "decision": "ACCEPT",
+      "decision_date": "2026-10-01",
+      "decision_record_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/human-reviewed/RFX12A.json"
+    },
+    {
+      "self_target_id": "RFX12B",
+      "decision": "ACCEPT",
+      "decision_date": "2026-10-01",
+      "decision_record_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/human-reviewed/RFX12B.json"
+    },
+    {
+      "self_target_id": "RFX12C",
+      "decision": "ACCEPT",
+      "decision_date": "2026-10-01",
+      "decision_record_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/human-reviewed/RFX12C.json"
     }
   ],
   "remaining": [
     "RFX01B1",
     "RFX01B2",
-    "RFX12",
     "RFX13",
     "RFX14",
     "RFX15"
@@ -171,7 +188,7 @@
     "LAYERED_ARCHITECTURE_PROJECTION",
     "REFLEXIVE_RECONSTRUCTION_VERDICT"
   ],
-  "terminal": "RFX30_HUMAN_REVIEW_24_OF_30_PENDING",
+  "terminal": "RFX32_HUMAN_REVIEW_27_OF_32_PENDING",
   "authority_reconciliation": "RFX15 added pre-review after fresh main advanced to #385; no human decisions existed at reconciliation time.",
   "pre_review_revision_history": [
     {
@@ -353,6 +370,24 @@
       "human_review_decision_recorded": false,
       "downstream_fit_inspected": false,
       "date": "2026-10-01"
+    },
+    {
+      "event": "AUTHOR_ACCEPTED_THREE_WAY_SPLIT",
+      "original_id": "RFX12",
+      "replacements": [
+        "RFX12A",
+        "RFX12B",
+        "RFX12C"
+      ],
+      "original_normalized_claim": "A held-out AHV-8 test rejects completeness of AssertionCarrier v1: only 11 of 28 reviewed relations are FULL and 17 are GAP, with 1 of 8 claims fully covered; the observed gaps are L_claim carrier gaps and do not by themselves establish Grammar-v0 system-role gaps.",
+      "reason": "Separately review measured AHV-8 carrier coverage, the tested v1 completeness rejection, and the claim-layer versus system-role inference boundary.",
+      "decisions": {
+        "RFX12A": "ACCEPT",
+        "RFX12B": "ACCEPT",
+        "RFX12C": "ACCEPT"
+      },
+      "downstream_fit_inspected": false,
+      "date": "2026-10-01"
     }
   ],
   "superseded_review_events": [
@@ -439,6 +474,16 @@
         "RFX11A",
         "RFX11B",
         "RFX11C"
+      ],
+      "counted_in_active_review_totals": false
+    },
+    {
+      "self_target_id": "RFX12",
+      "decision": "SPLIT_AND_CHILDREN_ACCEPTED",
+      "replacements": [
+        "RFX12A",
+        "RFX12B",
+        "RFX12C"
       ],
       "counted_in_active_review_totals": false
     }
