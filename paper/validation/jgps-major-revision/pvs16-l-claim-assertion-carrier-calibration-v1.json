@@ -1,0 +1,592 @@
+{
+  "schema_version": "paper2-pvs16-l-claim-assertion-carrier-calibration-v1",
+  "status": "FROZEN_PVS_CALIBRATION",
+  "owner_issue": 375,
+  "generated_date": "2026-10-01",
+  "schema_path": "paper/validation/jgps-major-revision/l-claim-assertion-carrier-schema-v1.json",
+  "calibration_boundary": {
+    "input_relations": 14,
+    "source": "the 14 PVS relations previously classified PARTIAL or UNMAPPED at L_sys and recovered by the frozen layered projection",
+    "independent_validation_claimed": false,
+    "claimir_modified": false,
+    "grammar_modified": false,
+    "architecture_modified": false
+  },
+  "instances": [
+    {
+      "assertion_id": "PVS-MEM-01.r1",
+      "claim_id": "PVS-MEM-01.C1",
+      "validation_claim_id": "PVS-MEM-01",
+      "source_relation_id": "r1",
+      "source_kind": "equivalent",
+      "source_arguments": [
+        "impaired_group",
+        "matched_group",
+        "acquisition_performance"
+      ],
+      "predicate_family": "COMPARISON",
+      "qualifiers": [
+        "EQUIVALENT"
+      ],
+      "argument_bindings": [
+        {
+          "node_id": "impaired_group",
+          "semantic_role": "INDEX_CONTEXT",
+          "layer": "L_ctx",
+          "context_placement": "EXPERIMENT_CONTEXT",
+          "architecture_refinement": null
+        },
+        {
+          "node_id": "matched_group",
+          "semantic_role": "COMPARATOR",
+          "layer": "L_ctx",
+          "context_placement": "EXPERIMENT_CONTEXT",
+          "architecture_refinement": null
+        },
+        {
+          "node_id": "acquisition_performance",
+          "semantic_role": "OUTCOME",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "carrier_status": "FULL"
+    },
+    {
+      "assertion_id": "PVS-MEM-01.r3",
+      "claim_id": "PVS-MEM-01.C1",
+      "validation_claim_id": "PVS-MEM-01",
+      "source_relation_id": "r3",
+      "source_kind": "other",
+      "source_arguments": [
+        "impaired_group",
+        "delayed_retention"
+      ],
+      "predicate_family": "OUTCOME_ASSERTION",
+      "qualifiers": [
+        "CONTEXT_INDEXED"
+      ],
+      "argument_bindings": [
+        {
+          "node_id": "impaired_group",
+          "semantic_role": "INDEX_CONTEXT",
+          "layer": "L_ctx",
+          "context_placement": "EXPERIMENT_CONTEXT",
+          "architecture_refinement": null
+        },
+        {
+          "node_id": "delayed_retention",
+          "semantic_role": "OUTCOME",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [
+        "multi-month retention interval"
+      ],
+      "carrier_status": "FULL"
+    },
+    {
+      "assertion_id": "PVS-MEM-02.r4",
+      "claim_id": "PVS-MEM-02.C1",
+      "validation_claim_id": "PVS-MEM-02",
+      "source_relation_id": "r4",
+      "source_kind": "other",
+      "source_arguments": [
+        "expression_partition",
+        "performance_facilitation",
+        "conscious_report"
+      ],
+      "predicate_family": "DISSOCIATION",
+      "qualifiers": [
+        "CROSS_CONTEXT"
+      ],
+      "argument_bindings": [
+        {
+          "node_id": "expression_partition",
+          "semantic_role": "SUBJECT",
+          "layer": "L_sys",
+          "system_role": "Pi"
+        },
+        {
+          "node_id": "performance_facilitation",
+          "semantic_role": "ASSOCIAND",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        },
+        {
+          "node_id": "conscious_report",
+          "semantic_role": "ASSOCIAND",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [
+        "reported across multiple tasks",
+        "reported across multiple populations"
+      ],
+      "carrier_status": "FULL"
+    },
+    {
+      "assertion_id": "PVS-LRN-01.r1",
+      "claim_id": "PVS-LRN-01.C1",
+      "validation_claim_id": "PVS-LRN-01",
+      "source_relation_id": "r1",
+      "source_kind": "depends_on",
+      "source_arguments": [
+        "medial_temporal_engagement",
+        "task_emphasis"
+      ],
+      "predicate_family": "DEPENDENCE",
+      "qualifiers": [
+        "CONTEXT_INDEXED"
+      ],
+      "argument_bindings": [
+        {
+          "node_id": "medial_temporal_engagement",
+          "semantic_role": "DEPENDENT",
+          "layer": "L_sys",
+          "system_role": "X"
+        },
+        {
+          "node_id": "task_emphasis",
+          "semantic_role": "CONDITIONING_FACTOR",
+          "layer": "L_ctx",
+          "context_placement": "EXPERIMENT_CONTEXT",
+          "architecture_refinement": "E_exp task regime"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "carrier_status": "FULL"
+    },
+    {
+      "assertion_id": "PVS-LRN-01.r2",
+      "claim_id": "PVS-LRN-01.C1",
+      "validation_claim_id": "PVS-LRN-01",
+      "source_relation_id": "r2",
+      "source_kind": "depends_on",
+      "source_arguments": [
+        "basal_ganglia_engagement",
+        "task_emphasis"
+      ],
+      "predicate_family": "DEPENDENCE",
+      "qualifiers": [
+        "CONTEXT_INDEXED"
+      ],
+      "argument_bindings": [
+        {
+          "node_id": "basal_ganglia_engagement",
+          "semantic_role": "DEPENDENT",
+          "layer": "L_sys",
+          "system_role": "X"
+        },
+        {
+          "node_id": "task_emphasis",
+          "semantic_role": "CONDITIONING_FACTOR",
+          "layer": "L_ctx",
+          "context_placement": "EXPERIMENT_CONTEXT",
+          "architecture_refinement": "E_exp task regime"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "carrier_status": "FULL"
+    },
+    {
+      "assertion_id": "PVS-LRN-01.r3",
+      "claim_id": "PVS-LRN-01.C1",
+      "validation_claim_id": "PVS-LRN-01",
+      "source_relation_id": "r3",
+      "source_kind": "other",
+      "source_arguments": [
+        "medial_temporal_engagement",
+        "basal_ganglia_engagement"
+      ],
+      "predicate_family": "ASSOCIATION",
+      "qualifiers": [
+        "NEGATIVE"
+      ],
+      "argument_bindings": [
+        {
+          "node_id": "medial_temporal_engagement",
+          "semantic_role": "ASSOCIAND",
+          "layer": "L_sys",
+          "system_role": "X"
+        },
+        {
+          "node_id": "basal_ganglia_engagement",
+          "semantic_role": "ASSOCIAND",
+          "layer": "L_sys",
+          "system_role": "X"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [
+        "across individuals under reported conditions"
+      ],
+      "carrier_status": "FULL"
+    },
+    {
+      "assertion_id": "PVS-LRN-01.r5",
+      "claim_id": "PVS-LRN-01.C1",
+      "validation_claim_id": "PVS-LRN-01",
+      "source_relation_id": "r5",
+      "source_kind": "other",
+      "source_arguments": [
+        "task_emphasis",
+        "task_performance"
+      ],
+      "predicate_family": "COMPARISON",
+      "qualifiers": [
+        "MATCHED"
+      ],
+      "argument_bindings": [
+        {
+          "node_id": "task_emphasis",
+          "semantic_role": "INDEX_CONTEXT",
+          "layer": "L_ctx",
+          "context_placement": "EXPERIMENT_CONTEXT",
+          "architecture_refinement": "E_exp task regime"
+        },
+        {
+          "node_id": "task_performance",
+          "semantic_role": "OUTCOME",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [
+        "compared task-emphasis conditions"
+      ],
+      "carrier_status": "FULL"
+    },
+    {
+      "assertion_id": "PVS-LRN-02.r1",
+      "claim_id": "PVS-LRN-02.C1",
+      "validation_claim_id": "PVS-LRN-02",
+      "source_relation_id": "r1",
+      "source_kind": "other",
+      "source_arguments": [
+        "concurrent_task",
+        "overall_accuracy"
+      ],
+      "predicate_family": "COMPARISON",
+      "qualifiers": [
+        "PRESERVED"
+      ],
+      "argument_bindings": [
+        {
+          "node_id": "concurrent_task",
+          "semantic_role": "CONDITIONING_FACTOR",
+          "layer": "L_sys",
+          "system_role": "P_in"
+        },
+        {
+          "node_id": "overall_accuracy",
+          "semantic_role": "OUTCOME",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [
+        "single-task versus concurrent-task comparison"
+      ],
+      "carrier_status": "FULL"
+    },
+    {
+      "assertion_id": "PVS-ATT-02.r1",
+      "claim_id": "PVS-ATT-02.C1",
+      "validation_claim_id": "PVS-ATT-02",
+      "source_relation_id": "r1",
+      "source_kind": "changes",
+      "source_arguments": [
+        "stimulus_pair",
+        "neuronal_response"
+      ],
+      "predicate_family": "CHANGE",
+      "qualifiers": [
+        "CONTEXT_INDEXED"
+      ],
+      "argument_bindings": [
+        {
+          "node_id": "stimulus_pair",
+          "semantic_role": "CHANGE_CONTEXT",
+          "layer": "L_ctx",
+          "context_placement": "WORLD_CONTEXT",
+          "architecture_refinement": "W stimulus configuration selected/prepared by E_exp"
+        },
+        {
+          "node_id": "neuronal_response",
+          "semantic_role": "CHANGED_ENTITY",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [
+        "two stimuli within one receptive field"
+      ],
+      "carrier_status": "FULL"
+    },
+    {
+      "assertion_id": "PVS-ATT-02.r3",
+      "claim_id": "PVS-ATT-02.C1",
+      "validation_claim_id": "PVS-ATT-02",
+      "source_relation_id": "r3",
+      "source_kind": "differs",
+      "source_arguments": [
+        "stimulus_pair",
+        "single_stimulus_reference",
+        "neuronal_response"
+      ],
+      "predicate_family": "COMPARISON",
+      "qualifiers": [
+        "GREATER_THAN"
+      ],
+      "argument_bindings": [
+        {
+          "node_id": "stimulus_pair",
+          "semantic_role": "INDEX_CONTEXT",
+          "layer": "L_ctx",
+          "context_placement": "WORLD_CONTEXT",
+          "architecture_refinement": "W stimulus configuration selected/prepared by E_exp"
+        },
+        {
+          "node_id": "single_stimulus_reference",
+          "semantic_role": "BASELINE_OR_REFERENCE",
+          "layer": "L_sys",
+          "system_role": "X"
+        },
+        {
+          "node_id": "neuronal_response",
+          "semantic_role": "OUTCOME",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [
+        "task-dependent modulation magnitude"
+      ],
+      "carrier_status": "FULL"
+    },
+    {
+      "assertion_id": "PVS-PRD-01.r2",
+      "claim_id": "PVS-PRD-01.C1",
+      "validation_claim_id": "PVS-PRD-01",
+      "source_relation_id": "r2",
+      "source_kind": "depends_on",
+      "source_arguments": [
+        "prior_weight",
+        "sensory_noise"
+      ],
+      "predicate_family": "DEPENDENCE",
+      "qualifiers": [
+        "CONTEXT_INDEXED"
+      ],
+      "argument_bindings": [
+        {
+          "node_id": "prior_weight",
+          "semantic_role": "DEPENDENT",
+          "layer": "L_sys",
+          "system_role": "X"
+        },
+        {
+          "node_id": "sensory_noise",
+          "semantic_role": "CONDITIONING_FACTOR",
+          "layer": "L_ctx",
+          "context_placement": "PARAMETER_ONLY",
+          "architecture_refinement": "exact W/measurement/model locus underdetermined"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [],
+      "carrier_status": "FULL"
+    },
+    {
+      "assertion_id": "PVS-PRD-02.r3",
+      "claim_id": "PVS-PRD-02.C1",
+      "validation_claim_id": "PVS-PRD-02",
+      "source_relation_id": "r3",
+      "source_kind": "other",
+      "source_arguments": [
+        "probability_distribution",
+        "neural_population_scheme"
+      ],
+      "predicate_family": "IMPLEMENTATION",
+      "qualifiers": [
+        "CANDIDATE_POSSIBLE"
+      ],
+      "argument_bindings": [
+        {
+          "node_id": "probability_distribution",
+          "semantic_role": "IMPLEMENTED_REPRESENTATION",
+          "layer": "L_sys",
+          "system_role": "X"
+        },
+        {
+          "node_id": "neural_population_scheme",
+          "semantic_role": "IMPLEMENTATION_CANDIDATE",
+          "layer": "L_sys",
+          "system_role": "X"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [
+        "source-level neural coding proposal; not Paper-2 L_formal realization"
+      ],
+      "carrier_status": "FULL"
+    },
+    {
+      "assertion_id": "PVS-CNC-01.r3",
+      "claim_id": "PVS-CNC-01.C1",
+      "validation_claim_id": "PVS-CNC-01",
+      "source_relation_id": "r3",
+      "source_kind": "changes",
+      "source_arguments": [
+        "causal_mechanisms",
+        "interfeature_relation",
+        "classification_response"
+      ],
+      "predicate_family": "CHANGE",
+      "qualifiers": [],
+      "argument_bindings": [
+        {
+          "node_id": "causal_mechanisms",
+          "semantic_role": "CHANGE_CONTEXT",
+          "layer": "L_sys",
+          "system_role": "X"
+        },
+        {
+          "node_id": "interfeature_relation",
+          "semantic_role": "CONDITIONING_FACTOR",
+          "layer": "L_sys",
+          "system_role": "X"
+        },
+        {
+          "node_id": "classification_response",
+          "semantic_role": "OUTCOME",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        }
+      ],
+      "semantic_references": [],
+      "support_provenance": [
+        {
+          "type": "EXPERIMENTAL_MANIPULATION_REPORTED",
+          "basis": "relation description and frozen source support identify experimental manipulation of causal knowledge",
+          "creates_p_in": false
+        }
+      ],
+      "assertion_scope_qualifiers": [],
+      "carrier_status": "FULL"
+    },
+    {
+      "assertion_id": "PVS-CNC-02.r2",
+      "claim_id": "PVS-CNC-02.C1",
+      "validation_claim_id": "PVS-CNC-02",
+      "source_relation_id": "r2",
+      "source_kind": "other",
+      "source_arguments": [
+        "category_type",
+        "feature_importance"
+      ],
+      "predicate_family": "EXPLANATION",
+      "qualifiers": [
+        "CONTRASTIVE_RATHER_THAN"
+      ],
+      "argument_bindings": [
+        {
+          "node_id": "category_type",
+          "semantic_role": "ALTERNATIVE_EXPLANATION",
+          "layer": "L_ctx",
+          "context_placement": "EXPERIMENT_CONTEXT",
+          "architecture_refinement": null
+        },
+        {
+          "node_id": "feature_importance",
+          "semantic_role": "EXPLANANDUM",
+          "layer": "L_sys",
+          "system_role": "rho/O"
+        }
+      ],
+      "semantic_references": [
+        {
+          "node_id": "causal_position",
+          "semantic_role": "EXPLANANS",
+          "layer": "L_sys",
+          "system_role": "X",
+          "basis": "required by the frozen relation description but absent from source_arguments"
+        }
+      ],
+      "support_provenance": [],
+      "assertion_scope_qualifiers": [
+        "category-type-associated differences in feature importance"
+      ],
+      "carrier_status": "FULL"
+    }
+  ],
+  "summary": {
+    "instances": 14,
+    "full": 14,
+    "gaps": 0,
+    "predicate_family_counts": {
+      "COMPARISON": 4,
+      "OUTCOME_ASSERTION": 1,
+      "DISSOCIATION": 1,
+      "DEPENDENCE": 3,
+      "ASSOCIATION": 1,
+      "CHANGE": 2,
+      "IMPLEMENTATION": 1,
+      "EXPLANATION": 1
+    },
+    "qualifier_counts": {
+      "EQUIVALENT": 1,
+      "CONTEXT_INDEXED": 5,
+      "CROSS_CONTEXT": 1,
+      "NEGATIVE": 1,
+      "MATCHED": 1,
+      "PRESERVED": 1,
+      "GREATER_THAN": 1,
+      "CANDIDATE_POSSIBLE": 1,
+      "CONTRASTIVE_RATHER_THAN": 1
+    },
+    "added_semantic_reference_count": 1,
+    "assertions_with_added_semantic_references": [
+      "PVS-CNC-02.r2"
+    ],
+    "assertions_with_relation_level_support_provenance": [
+      "PVS-CNC-01.r3"
+    ],
+    "claimir_v1_precision_pressure_resolved_by_additive_reference": [
+      "PVS-CNC-02.r2"
+    ]
+  },
+  "interpretation": {
+    "main_result": "The observed PVS L_claim pressure can be represented compositionally without editing frozen ClaimIR v1 or adding a cognitive-system role.",
+    "precision_result": "PVS-CNC-02.r2 demonstrates why source relation arguments and assertion-semantic references must be distinct: causal_position is an EXPLANANS semantic reference even though it is not a frozen graph argument.",
+    "provenance_result": "PVS-CNC-01.r3 demonstrates why experimental support provenance must be separable from P_in: the source supports manipulation semantics, but frozen ClaimIR contains no intervention node for that relation.",
+    "formal_boundary": "The carrier is typed data for L_claim, not yet a complete formal logic or Lean realization.",
+    "validation_boundary": "14/14 closure is calibration closure because the schema was designed after observing these 14 cases. A new held-out assertion set is required for independent validation."
+  },
+  "terminal": "PVS14_ASSERTION_CARRIER_CALIBRATION_CLOSED_WITH_ONE_ADDITIVE_SEMANTIC_REFERENCE_AND_ZERO_CARRIER_GAPS"
+}
