@@ -4,8 +4,8 @@
   "authority_issue": 384,
   "generated_date": "2026-10-01",
   "candidate_packet_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/reflexive-claimir-candidates-v1.json",
-  "candidate_packet_blob_sha": "cc6b4354abe3321370cd168375874b8b9c53b754",
-  "total": 17,
+  "candidate_packet_blob_sha": "d25c89572ce93fe783095c6fd27d32fd410858df",
+  "total": 18,
   "reviewed": 1,
   "accepted": 1,
   "revised": 0,
@@ -21,7 +21,8 @@
   "remaining": [
     "RFX01B1",
     "RFX01B2",
-    "RFX02",
+    "RFX02A",
+    "RFX02B",
     "RFX03",
     "RFX04",
     "RFX05",
@@ -43,7 +44,7 @@
     "LAYERED_ARCHITECTURE_PROJECTION",
     "REFLEXIVE_RECONSTRUCTION_VERDICT"
   ],
-  "terminal": "RFX17_HUMAN_REVIEW_1_OF_17_PENDING",
+  "terminal": "RFX18_HUMAN_REVIEW_1_OF_18_PENDING",
   "authority_reconciliation": "RFX15 added pre-review after fresh main advanced to #385; no human decisions existed at reconciliation time.",
   "pre_review_revision_history": [
     {
@@ -71,6 +72,19 @@
       "review_basis": "Author requested decomposition; relation-bearing conjunctions should be treated as candidate split points.",
       "downstream_fit_inspected": false,
       "date": "2026-10-01"
+    },
+    {
+      "event": "AUTHOR_APPROVED_SPLIT_WORDING",
+      "original_id": "RFX02",
+      "replacements": [
+        "RFX02A",
+        "RFX02B"
+      ],
+      "original_normalized_claim": "The scientifically inspectable object is the source-grounded, reviewed ClaimIR record with preserved source-local provenance; the opaque model proposal that initiated extraction is not itself scientific authority.",
+      "reason": "Separate the positive definition of the inspectable extraction object from the negative authority limitation on opaque model proposals.",
+      "human_review_decision_recorded": false,
+      "downstream_fit_inspected": false,
+      "date": "2026-10-01"
     }
   ],
   "superseded_review_events": [
@@ -80,6 +94,15 @@
       "replacements": [
         "RFX01B1",
         "RFX01B2"
+      ],
+      "counted_in_active_review_totals": false
+    },
+    {
+      "self_target_id": "RFX02",
+      "decision": "SPLIT_WORDING_APPROVED",
+      "replacements": [
+        "RFX02A",
+        "RFX02B"
       ],
       "counted_in_active_review_totals": false
     }
