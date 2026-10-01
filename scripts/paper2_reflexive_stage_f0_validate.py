@@ -106,7 +106,7 @@ def run():
               for x in result["syntactic_semantic_reference_watches"]]
     check(eligible==declared and len(eligible)==7 and
           summary["seven_unbound_nodes_syntactically_eligible_as_v2_semantic_refs"]==7 and
-          summary["full_v2_semantic_reference_encodings_validated"] if False else True,
+          summary["exact_carrier_encodings_tested"]==0,
           "frozen v2 syntactic watch count drift")
     check(summary["exact_carrier_encodings_tested"]==0 and
           summary["independent_label_blind_reconstruction_tested"] is False,
