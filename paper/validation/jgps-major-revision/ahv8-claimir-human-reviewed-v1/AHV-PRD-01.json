@@ -1,0 +1,126 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "AHV-PRD-01.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1016/S0893-6080(96)00035-4",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "PubMed/publisher abstract: a proposed internal predictive representation uses current motor-system state and outgoing command to predict the next state."
+      },
+      {
+        "span_id": "s2",
+        "locator": "Same abstract: such representations are proposed for planning, control, and learning and are reviewed against physiological evidence."
+      }
+    ],
+    "authors": [
+      "R C Miall",
+      "D M Wolpert"
+    ],
+    "institutions": [],
+    "venue": "Neural Networks",
+    "citation_count": null,
+    "construct_labels": [
+      "forward model",
+      "motor control",
+      "internal model"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "jgps-ahv8-source-grounded-candidate-v1:#379",
+    "extracted_at": "2026-10-01",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "mapping",
+    "modality": "descriptive",
+    "scope": {
+      "conditions": [
+        "motor planning, control, and learning"
+      ],
+      "population": [],
+      "substrate": [
+        "central nervous and motor systems"
+      ],
+      "task": [
+        "predict consequences of outgoing motor commands"
+      ],
+      "temporal_scope": [
+        "current motor state and command precede predicted next state"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "current_motor_state",
+        "role": "state_or_structure",
+        "description": "current state of the motor system before the next predicted transition",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "outgoing_motor_command",
+        "role": "available_information",
+        "description": "command issued to the motor system for the current transition",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "predictive_representation",
+        "role": "state_or_structure",
+        "description": "internal representation used to simulate consequences of a motor transition",
+        "source_span_ids": [
+          "s1",
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "predicted_next_state",
+        "role": "response_or_outcome",
+        "description": "prediction of the motor system state following the current command",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "depends_on",
+        "arguments": [
+          "predicted_next_state",
+          "current_motor_state",
+          "outgoing_motor_command"
+        ],
+        "description": "the next-state prediction depends jointly on the current motor state and the outgoing command",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "maps_to",
+        "arguments": [
+          "predictive_representation",
+          "current_motor_state",
+          "outgoing_motor_command",
+          "predicted_next_state"
+        ],
+        "description": "the predictive representation maps current state and command information into a prediction of the next state",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
