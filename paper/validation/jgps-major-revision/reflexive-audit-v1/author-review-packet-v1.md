@@ -21,6 +21,7 @@ Relation-bearing connectives such as **and / but / while / therefore** are candi
 - **RFX02A = ACCEPT.**
 - **RFX02B = ACCEPT.**
 - **RFX03 = ACCEPT.**
+- RFX04 was simplified before verdict to retain only the pre-topology failure-localization claim.
 
 | ID | Normalized claim candidate | Decision |
 |---|---|---|
@@ -30,7 +31,7 @@ Relation-bearing connectives such as **and / but / while / therefore** are candi
 | RFX02A | The scientifically inspectable extraction object is a reviewed ClaimIR record whose claims remain grounded in preserved source-local provenance. | ACCEPT |
 | RFX02B | An opaque model proposal that initiates extraction is not, by itself, scientific evidential authority. | ACCEPT |
 | RFX03 | Under the frozen whole-claim Phi comparison, all 1,770 unordered pairs among the 60 designed claims were incomparable, with no whole-claim equivalence or refinement. | ACCEPT |
-| RFX04 | The universal whole-claim incomparability is localized primarily to enriched pre-topology comparison constraints rather than to the eight-axis inventory alone. | — |
+| RFX04 | The universal whole-claim incomparability is localized primarily to enriched pre-topology comparison constraints. | — |
 | RFX05 | After preserving the whole-claim failure, a secondary bounded-subobject reconstruction under frozen forgetting rules recovers reusable cross-claim structure: 206 unique global Archetype/XLike objects and 99 cross-lane families, covering 59 of 60 claims and surviving the declared destructive controls. | — |
 | RFX06 | Grammar v0 is best characterized as a data-constrained refinement or factorization of the declared working basis B_P2, not as an independently discovered inventory of new top-level cognitive primitives. | — |
 | RFX07 | Reverse projection of the frozen 60 claims into Grammar v0 yields 21 FULL, 22 PARTIAL, and 17 RESIDUAL claims; adjudication of residuals finds 13 primary SOURCE_CONTEXT_PARAMETER cases, four RELATION_LANGUAGE_GAP cases, and zero ROLE_GAP cases. | — |
