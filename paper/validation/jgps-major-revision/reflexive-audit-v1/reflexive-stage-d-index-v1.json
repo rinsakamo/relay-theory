@@ -23,7 +23,7 @@
   "batches": [
     {
       "path": "paper/validation/jgps-major-revision/reflexive-audit-v1/stage-d-placement-batch-1-v1.json",
-      "git_blob_sha": "babdf36c41930347230d71d694cbefb569940d9d",
+      "git_blob_sha": "065d0febbef2b0fb2ad2707c8ba2244d5f1ee61c",
       "batch": 1,
       "claims": 8,
       "relations": 11,
@@ -32,7 +32,7 @@
     },
     {
       "path": "paper/validation/jgps-major-revision/reflexive-audit-v1/stage-d-placement-batch-2-v1.json",
-      "git_blob_sha": "1f6322e3074feed0c0aa8fc2741d4b4f1b515f0b",
+      "git_blob_sha": "1199b1763418c4d44a493d71d6c01e8025f08277",
       "batch": 2,
       "claims": 8,
       "relations": 17,
@@ -41,7 +41,7 @@
     },
     {
       "path": "paper/validation/jgps-major-revision/reflexive-audit-v1/stage-d-placement-batch-3-v1.json",
-      "git_blob_sha": "6a7531131a3251f93c46346e7852f207507a0ddd",
+      "git_blob_sha": "10858e2337b03b9b41af61673a4c441424f9cc6d",
       "batch": 3,
       "claims": 8,
       "relations": 11,
@@ -50,7 +50,7 @@
     },
     {
       "path": "paper/validation/jgps-major-revision/reflexive-audit-v1/stage-d-placement-batch-4-v1.json",
-      "git_blob_sha": "84fa78829641fe780ffb38376a78c9df08730dbd",
+      "git_blob_sha": "89d652746d9bd80ea876a952933df1f3325815c2",
       "batch": 4,
       "claims": 8,
       "relations": 14,
@@ -59,7 +59,7 @@
     },
     {
       "path": "paper/validation/jgps-major-revision/reflexive-audit-v1/stage-d-placement-batch-5-v1.json",
-      "git_blob_sha": "2c568eabc6e6444425206bcb893867562eb07ee6",
+      "git_blob_sha": "b47be3411dddee499ab34559fcb31f93cce41859",
       "batch": 5,
       "claims": 8,
       "relations": 8,
@@ -68,7 +68,7 @@
     },
     {
       "path": "paper/validation/jgps-major-revision/reflexive-audit-v1/stage-d-placement-batch-6-v1.json",
-      "git_blob_sha": "c51bfc543380570c4b581a4816c5018b45422793",
+      "git_blob_sha": "629def9f596196499a4882867b0d5b084d0917d6",
       "batch": 6,
       "claims": 7,
       "relations": 7,
@@ -111,7 +111,12 @@
     "architecture_completeness_conclusion": "NOT_ASSESSED",
     "evidence_profile_used_for_placement": false,
     "evidence_stratification_performed": false,
-    "label_suppressed_reconstruction_performed": false
+    "label_suppressed_reconstruction_performed": false,
+    "self_target_claimir_binding_precision_watches": {
+      "claims": 5,
+      "unbound_nodes": 7,
+      "confirmed_semantic_gaps": 0
+    }
   },
   "interpretation": {
     "placement_meaning": "All 68 research-level ClaimIR relations can be located as L_claim assertions with individually typed frozen node references under the existing layered architecture.",
@@ -121,5 +126,10 @@
     "known_witness": "The one frozen referent-level causal_position omission at PVS-CNC-02.r2 remains unresolved; this mapping does not alter the underlying source ClaimIR.",
     "hypothesis": "No Stage E role-gap, Stage F reconstruction, truth, novelty, or universal completeness verdict is licensed by this index."
   },
-  "next": "Validate input SHA, exact per-relation bindings and absence of evidence-profile reads. After Stage D CI passes, freeze an evidence join as a separate post-fit diagnostic."
+  "next": "Validate input SHA, exact per-relation bindings and absence of evidence-profile reads. After Stage D CI passes, freeze an evidence join as a separate post-fit diagnostic.",
+  "binding_precision_audit": {
+    "path": "paper/validation/jgps-major-revision/reflexive-audit-v1/stage-d-binding-precision-audit-v1.json",
+    "blob_sha": "daa3081a74428c77bad158ef6ccffe90d0ddad54"
+  },
+  "serialization_note": "Batches use preregistered canonical field names. Frozen source ClaimIR and scientific authorities remain unchanged. The binding-precision watch is separate from architecture type placement."
 }
