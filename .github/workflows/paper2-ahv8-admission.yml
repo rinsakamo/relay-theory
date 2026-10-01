@@ -1,0 +1,47 @@
+name: paper2-ahv8-admission
+
+on:
+  push:
+    branches:
+      - paper2-ahv8-admission-377
+    paths:
+      - "paper/validation/jgps-major-revision/ahv8-admission-v1.json"
+      - "paper/validation/jgps-major-revision/pvs16-admission-v1.json"
+      - "paper/validation/jgps-major-revision/l-claim-assertion-carrier-schema-v1.json"
+      - "research/paper2/designed_source_candidate_ledger_v1.json"
+      - "research/paper2/designed_source_manifest_v1.json"
+      - "scripts/paper2_ahv8_admission_validate.py"
+      - ".github/workflows/paper2-ahv8-admission.yml"
+  pull_request:
+    paths:
+      - "paper/validation/jgps-major-revision/ahv8-admission-v1.json"
+      - "paper/validation/jgps-major-revision/pvs16-admission-v1.json"
+      - "paper/validation/jgps-major-revision/l-claim-assertion-carrier-schema-v1.json"
+      - "research/paper2/designed_source_candidate_ledger_v1.json"
+      - "research/paper2/designed_source_manifest_v1.json"
+      - "scripts/paper2_ahv8_admission_validate.py"
+      - ".github/workflows/paper2-ahv8-admission.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  ahv8-admission:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile
+        run: python -m py_compile scripts/paper2_ahv8_admission_validate.py
+      - name: Validate twice and compare
+        run: |
+          python scripts/paper2_ahv8_admission_validate.py --output /tmp/ahv-a.json
+          python scripts/paper2_ahv8_admission_validate.py --output /tmp/ahv-b.json
+          cmp /tmp/ahv-a.json /tmp/ahv-b.json
+      - name: Upload receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: paper2-ahv8-admission-receipt
+          path: /tmp/ahv-a.json
