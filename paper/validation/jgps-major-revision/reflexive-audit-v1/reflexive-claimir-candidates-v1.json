@@ -10,10 +10,11 @@
     "manuscript_is_scientific_authority": false,
     "evidence_authority_rule": "repository frozen artifacts and validation commits remain authority for support status"
   },
-  "candidate_count": 16,
+  "candidate_count": 17,
   "candidate_ids": [
     "RFX01A",
-    "RFX01B",
+    "RFX01B1",
+    "RFX01B2",
     "RFX02",
     "RFX03",
     "RFX04",
@@ -169,8 +170,8 @@
       }
     },
     {
-      "self_target_id": "RFX01B",
-      "normalized_claim": "A structural identity or structural-difference judgment within the Paper-2 comparison framework must be licensed by a declared structural representation and comparison rule rather than by construct labels alone.",
+      "self_target_id": "RFX01B1",
+      "normalized_claim": "Within a declared structural representation and comparison rule, satisfaction of the declared equivalence criterion licenses structural identity or equivalence at that comparison level.",
       "target_source": "Paper 2 manuscript / frozen validation-extension claim surface",
       "repository_evidence_authorities": [
         "paper/venues/jgps/main.tex@89b094476137bae12e089e5a794a5e57300f4da1"
@@ -180,7 +181,7 @@
       "reflexive_verdict_created": false,
       "claimir": {
         "schema_version": "paper2-claim-ir-v1",
-        "claim_id": "RFX01B.C1",
+        "claim_id": "RFX01B1.C1",
         "provenance": {
           "paper_id": "SELF:RELAYTHEORY-PAPER2",
           "source_language": "en",
@@ -238,7 +239,7 @@
             {
               "id": "declared_comparison_rule",
               "role": "criterion",
-              "description": "the explicit comparison rule that licenses structural judgments",
+              "description": "the explicit comparison rule",
               "source_span_ids": [
                 "s1",
                 "s2"
@@ -246,29 +247,19 @@
               "grounding": "normalized"
             },
             {
-              "id": "structural_identity_judgment",
-              "role": "response_or_outcome",
-              "description": "judgment that compared claims are structurally identical",
-              "source_span_ids": [
-                "s1",
-                "s2"
-              ],
-              "grounding": "normalized"
-            },
-            {
-              "id": "structural_difference_judgment",
-              "role": "response_or_outcome",
-              "description": "judgment that compared claims are structurally distinct",
-              "source_span_ids": [
-                "s1",
-                "s2"
-              ],
-              "grounding": "normalized"
-            },
-            {
-              "id": "construct_label",
+              "id": "equivalence_criterion_satisfied",
               "role": "condition",
-              "description": "historical construct-name information associated with the claims",
+              "description": "the compared structures satisfy the declared equivalence criterion",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "bounded_structural_identity",
+              "role": "response_or_outcome",
+              "description": "structural identity or equivalence at the declared comparison level",
               "source_span_ids": [
                 "s1",
                 "s2"
@@ -281,11 +272,140 @@
               "id": "r1",
               "kind": "depends_on",
               "arguments": [
-                "structural_identity_judgment",
+                "bounded_structural_identity",
                 "declared_structural_representation",
-                "declared_comparison_rule"
+                "declared_comparison_rule",
+                "equivalence_criterion_satisfied"
               ],
-              "description": "structural identity is licensed relative to the declared representation and comparison rule",
+              "description": "bounded structural identity/equivalence is licensed by satisfaction of the declared equivalence criterion",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "self_target_id": "RFX01B2",
+      "normalized_claim": "Failure to satisfy the declared equivalence criterion licenses criterion-relative non-identity at that comparison level, but does not by itself license unrestricted structural difference or target individuation.",
+      "target_source": "Paper 2 manuscript / frozen validation-extension claim surface",
+      "repository_evidence_authorities": [
+        "paper/venues/jgps/main.tex@89b094476137bae12e089e5a794a5e57300f4da1"
+      ],
+      "grammar_mapping_inspected": false,
+      "evidence_profile_created": false,
+      "reflexive_verdict_created": false,
+      "claimir": {
+        "schema_version": "paper2-claim-ir-v1",
+        "claim_id": "RFX01B2.C1",
+        "provenance": {
+          "paper_id": "SELF:RELAYTHEORY-PAPER2",
+          "source_language": "en",
+          "source_spans": [
+            {
+              "span_id": "s1",
+              "locator": "paper/venues/jgps/main.tex — Introduction: nominal identity and nominal difference are unreliable guides to structural individuation."
+            },
+            {
+              "span_id": "s2",
+              "locator": "paper/venues/jgps/main.tex — Problem and Inferential Scope: different labels do not imply different structures, and same labels do not imply same structures."
+            }
+          ],
+          "authors": [
+            "Rintaro Sakamoto"
+          ],
+          "institutions": [
+            "Independent Scholar"
+          ],
+          "venue": "Journal for General Philosophy of Science submission surface / RelayTheory validation extension",
+          "citation_count": null,
+          "construct_labels": [
+            "construct label",
+            "structural individuation"
+          ]
+        },
+        "extraction": {
+          "extractor": "ChatGPT",
+          "extractor_version": "GPT-5.6 Sol",
+          "procedure_version": "paper2-reflexive-audit-candidate-v1:#384",
+          "extracted_at": "2026-10-01",
+          "manual_review_status": "unreviewed"
+        },
+        "claim_core": {
+          "claim_type": "relation",
+          "modality": "normative",
+          "scope": {
+            "conditions": [],
+            "population": [],
+            "substrate": [],
+            "task": [],
+            "temporal_scope": []
+          },
+          "nodes": [
+            {
+              "id": "declared_comparison_rule",
+              "role": "criterion",
+              "description": "the explicit comparison rule",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "equivalence_criterion_failed",
+              "role": "condition",
+              "description": "the compared structures fail the declared equivalence criterion",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "criterion_relative_nonidentity",
+              "role": "response_or_outcome",
+              "description": "non-identity relative to the declared comparison level",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "unrestricted_structural_difference",
+              "role": "response_or_outcome",
+              "description": "structural difference beyond the declared comparison level",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "target_individuation",
+              "role": "response_or_outcome",
+              "description": "inference that distinct targets are thereby individuated",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            }
+          ],
+          "relations": [
+            {
+              "id": "r1",
+              "kind": "depends_on",
+              "arguments": [
+                "criterion_relative_nonidentity",
+                "declared_comparison_rule",
+                "equivalence_criterion_failed"
+              ],
+              "description": "criterion failure licenses criterion-relative non-identity",
               "source_span_ids": [
                 "s1",
                 "s2"
@@ -294,13 +414,12 @@
             },
             {
               "id": "r2",
-              "kind": "depends_on",
+              "kind": "other",
               "arguments": [
-                "structural_difference_judgment",
-                "declared_structural_representation",
-                "declared_comparison_rule"
+                "equivalence_criterion_failed",
+                "unrestricted_structural_difference"
               ],
-              "description": "structural difference is licensed relative to the declared representation and comparison rule",
+              "description": "criterion failure alone does not license unrestricted structural difference",
               "source_span_ids": [
                 "s1",
                 "s2"
@@ -311,11 +430,10 @@
               "id": "r3",
               "kind": "other",
               "arguments": [
-                "construct_label",
-                "structural_identity_judgment",
-                "structural_difference_judgment"
+                "equivalence_criterion_failed",
+                "target_individuation"
               ],
-              "description": "construct labels alone are not the licensing basis for either structural judgment",
+              "description": "criterion failure alone does not license target individuation",
               "source_span_ids": [
                 "s1",
                 "s2"
@@ -2923,7 +3041,7 @@
       }
     }
   ],
-  "terminal": "RFX16_CANDIDATES_FROZEN_PENDING_AUTHOR_REVIEW",
+  "terminal": "RFX17_CANDIDATES_FROZEN_PENDING_AUTHOR_REVIEW",
   "fresh_authority_reconciliation": {
     "observed_after_initial_candidate_freeze": "ad1c11789814413b1d9fd3ca8a4cfb6f7316f230",
     "reason": "AssertionCarrier v2 became current main before author review started; RFX15 was added before any review or downstream mapping.",
@@ -2940,6 +3058,19 @@
       "original_normalized_claim": "Historical construct-label sameness or difference does not by itself license structural identity or structural difference; individuation requires a declared structural comparison.",
       "reason": "Separate nominal non-entailment from the positive structural-judgment licensing rule.",
       "human_review_decision_recorded": false,
+      "downstream_fit_inspected": false,
+      "date": "2026-10-01"
+    },
+    {
+      "event": "AUTHOR_REVIEW_REVISE_BY_SPLIT",
+      "original_id": "RFX01B",
+      "replacements": [
+        "RFX01B1",
+        "RFX01B2"
+      ],
+      "original_normalized_claim": "A structural identity or structural-difference judgment within the Paper-2 comparison framework must be licensed by a declared structural representation and comparison rule rather than by construct labels alone.",
+      "reason": "Identity/equivalence licensing and bounded non-identity/difference inference are logically asymmetric and independently attackable.",
+      "review_basis": "Author requested decomposition; relation-bearing conjunctions should be treated as candidate split points.",
       "downstream_fit_inspected": false,
       "date": "2026-10-01"
     }
