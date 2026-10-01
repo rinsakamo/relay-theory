@@ -61,10 +61,16 @@ def validate_all()->dict[str,Any]:
         raise Error("review packet unexpectedly authorizes downstream validation")
     if packet["review_completion_must_be_human_authored"] is not True:
         raise Error("human review authorship gate missing")
-    if progress["reviewed_count"]!=0 or progress["total_count"]!=8:
-        raise Error("human review progress must remain 0/8 before author review")
-    if progress["downstream_validation_authorized"] is not False:
-        raise Error("progress unexpectedly authorizes downstream validation")
+    if progress["total_count"]!=8:
+        raise Error("human review total-count drift")
+    if progress["status"]=="PENDING":
+        if progress["reviewed_count"]!=0 or progress["downstream_validation_authorized"] is not False:
+            raise Error("pending human-review state must be 0/8 and downstream-disabled")
+    elif progress["status"]=="COMPLETE":
+        if progress["reviewed_count"]!=8 or progress["downstream_validation_authorized"] is not True:
+            raise Error("complete human-review state must be 8/8 and downstream-authorized")
+    else:
+        raise Error(f"unexpected human-review lifecycle state: {progress['status']}")
 
     admissions=admission["admissions"]
     if len(admissions)!=8:
@@ -146,10 +152,10 @@ def validate_all()->dict[str,Any]:
       "status":"PASS",
       "candidates":8,
       "assistant_source_consistency_passes":8,
-      "human_review_completed":0,
-      "downstream_validation_authorized":False,
+      "human_review_completed":progress["reviewed_count"],
+      "downstream_validation_authorized":progress["downstream_validation_authorized"],
       "receipts":receipts,
-      "terminal":"AHV8_CLAIMIR_CANDIDATES_VALIDATED_PENDING_AUTHOR_REVIEW",
+      "terminal":"AHV8_CLAIMIR_CANDIDATES_STABLE_ACROSS_HUMAN_REVIEW_LIFECYCLE",
     }
 
 def main()->None:
