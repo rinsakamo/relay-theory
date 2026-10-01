@@ -1,0 +1,69 @@
+{
+  "schema": "relay-theory.paper2.reflexive_f2_blind_pilot_contract.v1",
+  "authority_issue": 384,
+  "generated_date": "2026-10-01",
+  "status": "PREREGISTERED_PILOT_PROTOCOL_BEFORE_BLIND_PACKET",
+  "frozen_inputs": {
+    "f1_semantic_audit_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/stage-f1-semantic-inventory-audit-v1.json",
+    "f1_semantic_audit_sha": "55f513e132537f902c9984a0fa5975d871c3930c",
+    "precommitted_stage_f_protocol_sha": "c7bd00c1ed503a4992bbc6fc3649ffbf42dc5c13",
+    "original_v2_schema_path": "paper/validation/jgps-major-revision/l-claim-assertion-carrier-schema-v2.json",
+    "original_v2_schema_commit": "ad1c11789814413b1d9fd3ca8a4cfb6f7316f230",
+    "original_v2_schema_blob_sha": "058e0bd1514fcfaf57a4e87e366920b2fbcda274"
+  },
+  "purpose": "Prepare a blinded, domain-neutral 16-card adversarial PILOT using 8 minimally contrasting pairs for an independently isolated assessor. A pilot tests frozen v2 contrast expressivity; it is NOT the full 68-relational F2 validation.",
+  "input_protocol": {
+    "only_allowed_documents": [
+      "stage-f2-blind-pilot-cards-v1.json",
+      "frozen original AssertionCarrier v2 schema at specified commit",
+      "stage-f2-assessor-output-schema-v1.json"
+    ],
+    "prohibited_inputs": [
+      "Original 47 self-target ClaimIR",
+      "Paper2 manuscript",
+      "Stage D operator tags",
+      "F1 answer/witness mapping and feature labels",
+      "F1 synthetic control derivations",
+      "Earlier conversation content",
+      "This pre-registration contract or source repository navigation beyond the allowed documents"
+    ],
+    "domain_blinding": "No Paper-2 source IDs, lane names, project names, AHV/PVS identifiers, or RFX tokens appear in blinded card content. Preserve only generic semantics and source-argument type roles needed to test v2 expression.",
+    "scorer_access": "Scorer may inspect original frozen challenges and card derivations only AFTER independently timestamped assessor submission is frozen; record the scorer's own interpretation separately."
+  },
+  "assessor_protocol": {
+    "independent_access_requirement": "The assessor must be a different independently scoped model/human without this conversation or original source access. Self-running the same assistant after reading originals is NOT a blind independent evaluation.",
+    "task": "For each card, produce a full v2 encoding candidate under EXACT frozen v2 vocabulary or explicit gap/abstention. Distinguish every paired minimally different premise and explain why the two typed encodings are not extensionally identical.",
+    "prohibited_shortcuts": [
+      "Do not invent predicate families, qualifier strings, argument layers, or claim object types.",
+      "Do not hide unrepresented modality/evidence status solely in opaque source IDs or prose-only scope notes.",
+      "Do not retype outcome or epistemic status as THEORETICAL_ACCOUNT without an independently defended lossless justification.",
+      "Do not call numeric equality satisfied solely because one source label contains a number; preserve cardinality distinction.",
+      "Do not equate non-establishment with a tested negative outcome.",
+      "Do not classify a 16-card synthetic pilot as independent held-out empirical v2 generalization."
+    ],
+    "output_statuses": [
+      "CLOSED_SCHEMA_FULL_CANDIDATE",
+      "EXPLICIT_V2_GAP_WITNESS",
+      "ABSTAIN"
+    ],
+    "grading_requirements": [
+      "Each card has full ordered source arguments and explicit role/layer bindings.",
+      "Every operator/modifier must be listed in frozen v2.",
+      "Each within-pair output must represent the changed semantic property explicitly and distinctly.",
+      "Unsupported direct reconstruction is reported as a gap or abstention, not filled using new primitives."
+    ],
+    "audit_requirements": [
+      "Freeze assessor identity (non-sensitive code), exact accessible input blob SHAs and time.",
+      "Require a signed/timestamped record of no original source access before verdict.",
+      "Adjudicate ambiguous encodings separately; do not treat assessor-generated FULL as automatically proven.",
+      "Repeat the independent assessor with distinct exposure if a universal claim is later considered."
+    ]
+  },
+  "success_interpretation": {
+    "pilot_pass": "A typed, contrast-separating candidate is produced for every pilot card under frozen v2 and survives independent adjudication. This would support only those challenge families, not all 68 relations.",
+    "pilot_failure": "At least one pilot contrast has a verified non-encodable semantic difference under the frozen strict carrier rules. This is a localized ClaimCarrier gap witness, not a top-level system-role discovery or universal theorem.",
+    "pilot_inconclusive": "No independently admissible assessor submission or unresolved disagreement. Keep status NOT_RUN or UNDERDETERMINED.",
+    "final_Grand_Null": "Neither pilot outcome nor existing F1 type-screen results alone warrant the full 68-relation Grand Null verdict."
+  },
+  "terminal": "F2_INDEPENDENT_BLIND_PILOT_RULES_FROZEN_PACKET_NOT_YET_DELIVERED"
+}
