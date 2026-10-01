@@ -13,7 +13,7 @@ CANDIDATES = ROOT / "reflexive-claimir-candidates-v1.json"
 PROGRESS = ROOT / "human-review-progress-v1.json"
 PACKET = ROOT / "author-review-packet-v1.md"
 
-EXPECTED_IDS = ["RFX01A", "RFX01B1", "RFX01B2", "RFX02A", "RFX02B"] + [f"RFX{i:02d}" for i in range(3, 16)]
+EXPECTED_IDS = ["RFX01A", "RFX01B1", "RFX01B2", "RFX02A", "RFX02B", "RFX03", "RFX04", "RFX05A", "RFX05B", "RFX05C"] + [f"RFX{i:02d}" for i in range(6, 16)]
 
 class ValidationError(ValueError):
     pass
@@ -44,12 +44,12 @@ def validate() -> dict[str, Any]:
         raise ValidationError("candidate packet status drift")
     if c.get("authority_issue") != 384:
         raise ValidationError("candidate packet authority issue drift")
-    if c.get("candidate_count") != 18:
-        raise ValidationError("candidate count is not 18")
+    if c.get("candidate_count") != 20:
+        raise ValidationError("candidate count is not 20")
     if c.get("candidate_ids") != EXPECTED_IDS:
         raise ValidationError("candidate ID surface drift")
-    if len(c.get("candidates", [])) != 18:
-        raise ValidationError("candidate payload count is not 18")
+    if len(c.get("candidates", [])) != 20:
+        raise ValidationError("candidate payload count is not 20")
 
     seen_claim_ids: set[str] = set()
     for expected_id, item in zip(EXPECTED_IDS, c["candidates"]):
@@ -107,7 +107,7 @@ def validate() -> dict[str, Any]:
     if h.get("schema") != "relay-theory.paper2.reflexive_audit_human_review_progress.v1":
         raise ValidationError("review progress schema drift")
     expected_progress = {
-        "total": 18,
+        "total": 20,
         "reviewed": 5,
         "accepted": 5,
         "revised": 0,
@@ -121,10 +121,10 @@ def validate() -> dict[str, Any]:
         raise ValidationError("review decision ledger drift")
     if h.get("remaining") != [cid for cid in EXPECTED_IDS if cid not in {"RFX01A", "RFX02A", "RFX02B", "RFX03", "RFX04"}]:
         raise ValidationError("review remaining set drift")
-    if h.get("terminal") != "RFX18_HUMAN_REVIEW_5_OF_18_PENDING":
+    if h.get("terminal") != "RFX20_HUMAN_REVIEW_5_OF_20_PENDING":
         raise ValidationError("review terminal drift")
 
-    if "5 / 18" not in review_text:
+    if "5 / 20" not in review_text:
         raise ValidationError("review packet status text drift")
     for cid in EXPECTED_IDS:
         if f"| {cid} |" not in review_text:
@@ -134,14 +134,14 @@ def validate() -> dict[str, Any]:
         "schema": "relay-theory.paper2.reflexive_audit_candidate_validation.v1",
         "status": "PASS",
         "authority_issue": 384,
-        "candidate_count": 18,
+        "candidate_count": 20,
         "human_reviewed": 5,
         "all_candidates_unreviewed": True,
         "grammar_mapping_inspected": False,
         "evidence_profile_created": False,
         "reflexive_verdict_created": False,
         "downstream_authorized": False,
-        "terminal": "RFX18_REVIEW_IN_PROGRESS_VALIDATION_PASS",
+        "terminal": "RFX20_REVIEW_IN_PROGRESS_VALIDATION_PASS",
     }
 
 def main() -> None:
