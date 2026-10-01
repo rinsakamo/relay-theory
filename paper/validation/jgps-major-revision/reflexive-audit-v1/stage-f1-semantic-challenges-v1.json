@@ -1,0 +1,119 @@
+{
+  "schema": "relay-theory.paper2.reflexive_stage_f1_semantic_challenges.v1",
+  "status": "FROZEN_BEFORE_F1_RESULT",
+  "contract_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/stage-f1-strict-direct-contract-v1.json",
+  "contract_commit": "86bd98a9b98fc1d6705dc8f5e765d88783cb7a7c",
+  "v2_freeze_commit": "ad1c11789814413b1d9fd3ca8a4cfb6f7316f230",
+  "challenge_mode": "Check only predeclared original ClaimIR relation distinctions. The alternative propositions below are controls, NOT additional original claims. An opaque source node label/prose paragraph is forbidden as a replacement semantic operator.",
+  "challenges": [
+    {
+      "target_ids": [
+        "RFX01A.r1",
+        "RFX01A.r2",
+        "RFX01B2B.r2",
+        "RFX01B2C.r3",
+        "RFX09B.r3",
+        "RFX12C.r6"
+      ],
+      "feature": "LOGICAL_NON_ENTAILMENT",
+      "contrasts": [
+        "A does not entail B",
+        "A entails not-B",
+        "A and B are not identical"
+      ],
+      "precommitted_decisive_test": "An encoding must distinguish logical non-implication, negative factual assertion, and non-identity, without treating NEGATIVE DEPENDENCE as all three by default.",
+      "known_v2_support": "NEGATIVE qualifier and DISTINCT COMPARISON available; no declared distinct logical-entailment modal operator. Distinguishing encoding remains to be demonstrated."
+    },
+    {
+      "target_ids": [
+        "RFX13C.r2",
+        "RFX13D.r3",
+        "RFX14B.r1",
+        "RFX14F.r5",
+        "RFX15D.r5"
+      ],
+      "feature": "EPISTEMIC_NON_ESTABLISHMENT",
+      "contrasts": [
+        "Independent agreement has not been established",
+        "Independent agreement was tested and found false",
+        "Independent agreement was established"
+      ],
+      "precommitted_decisive_test": "Carrier must encode epistemic qualification and evidence history rather than interpreting absence of establishment as a negative empirical finding.",
+      "known_v2_support": "No frozen explicit epistemic establishment-status predicate or modifier; source-level evidence record might add information only if losslessly typed."
+    },
+    {
+      "target_ids": [
+        "RFX01B1.r1",
+        "RFX01B2A.r1"
+      ],
+      "feature": "CRITERION_RELATIVE_LICENSE",
+      "contrasts": [
+        "Criterion failure confirmed and context-specific non-equivalence licensed",
+        "Criterion comparison missing/inconclusive",
+        "Criterion failure licenses global target plurality"
+      ],
+      "precommitted_decisive_test": "Criterion confirmation, rule-relative result, and non-entailment of underlying target individuation must survive distinct encodings; CONTEXT_INDEXED alone does not supply the inferential licensing operator."
+    },
+    {
+      "target_ids": [
+        "RFX15A.r1",
+        "RFX15B.r2",
+        "RFX15C.r3",
+        "RFX15D.r5",
+        "RFX15E.r4"
+      ],
+      "feature": "VALIDATION_PROVENANCE_TEMPORAL_ORDER",
+      "contrasts": [
+        "Schema altered using observed AHV-8 gaps and repairs same data",
+        "Validation on freshly admitted post-freeze targets independent of derivation",
+        "Performance on reused data generalized as held-out validity"
+      ],
+      "precommitted_decisive_test": "Frozen derivation-time versus test-admission-time and independence must be explicit and not inferred from untyped source labels."
+    },
+    {
+      "target_ids": [
+        "RFX10B.r2",
+        "RFX10C.r3"
+      ],
+      "feature": "SCHEMA_COMPOSITION_POSITIVE_CONTROL",
+      "contrasts": [
+        "Two frozen existing architecture categories are distinct",
+        "Same source argument pair asserted EQUIVALENT"
+      ],
+      "precommitted_decisive_test": "COMPARISON with DISTINCT versus EQUIVALENT qualifiers, SUBJECT and COMPARATOR typed L_sys/L_ctx, source order preserved. Does not establish any direct endogenous system transition or carrier universality."
+    },
+    {
+      "target_ids": [
+        "RFX03.r1",
+        "RFX05B.r2",
+        "RFX05B.r3",
+        "RFX05B.r4",
+        "RFX07B.r4"
+      ],
+      "feature": "NUMERIC_CARDINALITY_AND_CLASSIFICATION",
+      "contrasts": [
+        "Source carries a particular cardinality or class-count distribution",
+        "Source carries a different numerical count or a different classification allocation"
+      ],
+      "precommitted_decisive_test": "A source argument name that includes '1770' or '59/60' cannot be the sole structural carrier of arithmetic or classification semantics after label suppression."
+    },
+    {
+      "target_ids": [
+        "RFX11C.r5"
+      ],
+      "feature": "PRESERVE_REFERENT_CARRIER_PRECISION_WITNESS",
+      "contrasts": [
+        "Referent relation description contains causal_position but frozen source args omit it",
+        "Self-claim says this issue is retained; self-claim is mistakenly counted as repairing source argument"
+      ],
+      "precommitted_decisive_test": "v2 semantic_references can bind existing frozen nodes only; it may not retroactively create absent causal_position in original frozen PVS ClaimIR."
+    }
+  ],
+  "guardrails": {
+    "do_not_count_all_unadjudicated_as_gap": true,
+    "do_not_treat_this_author_aware_challenge_as_independent_F2": true,
+    "do_not_expand_v2_schema": true,
+    "semantic_witnesses_not_universal_impossibility_proof": true
+  },
+  "terminal": "STAGE_F1_PREDECLARED_SEMANTIC_CONTRASTS_FROZEN"
+}
