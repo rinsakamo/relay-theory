@@ -10,7 +10,7 @@
     "manuscript_is_scientific_authority": false,
     "evidence_authority_rule": "repository frozen artifacts and validation commits remain authority for support status"
   },
-  "candidate_count": 18,
+  "candidate_count": 20,
   "candidate_ids": [
     "RFX01A",
     "RFX01B1",
@@ -19,7 +19,9 @@
     "RFX02B",
     "RFX03",
     "RFX04",
-    "RFX05",
+    "RFX05A",
+    "RFX05B",
+    "RFX05C",
     "RFX06",
     "RFX07",
     "RFX08",
@@ -936,8 +938,8 @@
       }
     },
     {
-      "self_target_id": "RFX05",
-      "normalized_claim": "After preserving the whole-claim failure, a secondary bounded-subobject reconstruction under frozen forgetting rules recovers reusable cross-claim structure: 206 unique global Archetype/XLike objects and 99 cross-lane families, covering 59 of 60 claims and surviving the declared destructive controls.",
+      "self_target_id": "RFX05A",
+      "normalized_claim": "Preserving the frozen whole-claim incomparability result, secondary bounded-subobject reconstruction under frozen forgetting rules recovers reusable cross-claim structure.",
       "target_source": "Paper 2 manuscript / frozen validation-extension claim surface",
       "repository_evidence_authorities": [
         "paper/venues/jgps/main.tex@89b094476137bae12e089e5a794a5e57300f4da1",
@@ -948,7 +950,7 @@
       "reflexive_verdict_created": false,
       "claimir": {
         "schema_version": "paper2-claim-ir-v1",
-        "claim_id": "RFX05.C1",
+        "claim_id": "RFX05A.C1",
         "provenance": {
           "paper_id": "SELF:RELAYTHEORY-PAPER2",
           "source_language": "en",
@@ -1015,6 +1017,118 @@
               "grounding": "normalized"
             },
             {
+              "id": "reusable_cross_claim_structure",
+              "role": "response_or_outcome",
+              "description": "cross-claim reusable structure recovered at bounded-subobject level",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            }
+          ],
+          "relations": [
+            {
+              "id": "r1",
+              "kind": "other",
+              "arguments": [
+                "whole_claim_failure",
+                "bounded_subobject_reconstruction"
+              ],
+              "description": "bounded reconstruction follows the preserved whole-claim failure without rewriting that result",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r2",
+              "kind": "maps_to",
+              "arguments": [
+                "bounded_subobject_reconstruction",
+                "reusable_cross_claim_structure"
+              ],
+              "description": "secondary bounded-subobject reconstruction recovers reusable cross-claim structure",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "self_target_id": "RFX05B",
+      "normalized_claim": "The frozen bounded-subobject reconstruction yields 206 unique global Archetype/XLike objects and 99 cross-lane families, covering 59 of the 60 designed claims.",
+      "target_source": "Paper 2 manuscript / frozen validation-extension claim surface",
+      "repository_evidence_authorities": [
+        "paper/venues/jgps/main.tex@89b094476137bae12e089e5a794a5e57300f4da1",
+        "research/paper2/paper2_result_v1.json@a20d1ae31e1ccc905b891bfb7312285cdcce55b4"
+      ],
+      "grammar_mapping_inspected": false,
+      "evidence_profile_created": false,
+      "reflexive_verdict_created": false,
+      "claimir": {
+        "schema_version": "paper2-claim-ir-v1",
+        "claim_id": "RFX05B.C1",
+        "provenance": {
+          "paper_id": "SELF:RELAYTHEORY-PAPER2",
+          "source_language": "en",
+          "source_spans": [
+            {
+              "span_id": "s1",
+              "locator": "paper/venues/jgps/main.tex — Abstract and Archetype / Bounded XLike Reconstruction: 206 unique global objects, 99 cross-lane families, 59/60 coverage, eight destructive controls."
+            },
+            {
+              "span_id": "s2",
+              "locator": "paper/venues/jgps/main.tex — Discussion: bounded reconstruction is a secondary level of analysis rather than a repaired primary atlas."
+            }
+          ],
+          "authors": [
+            "Rintaro Sakamoto"
+          ],
+          "institutions": [
+            "Independent Scholar"
+          ],
+          "venue": "Journal for General Philosophy of Science submission surface / RelayTheory validation extension",
+          "citation_count": null,
+          "construct_labels": [
+            "Archetype",
+            "XLike",
+            "bounded reconstruction"
+          ]
+        },
+        "extraction": {
+          "extractor": "ChatGPT",
+          "extractor_version": "GPT-5.6 Sol",
+          "procedure_version": "paper2-reflexive-audit-candidate-v1:#384",
+          "extracted_at": "2026-10-01",
+          "manual_review_status": "unreviewed"
+        },
+        "claim_core": {
+          "claim_type": "relation",
+          "modality": "descriptive",
+          "scope": {
+            "conditions": [],
+            "population": [],
+            "substrate": [],
+            "task": [],
+            "temporal_scope": []
+          },
+          "nodes": [
+            {
+              "id": "bounded_subobject_reconstruction",
+              "role": "probe",
+              "description": "secondary reconstruction under frozen forgetting and bounded reuse rules",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
               "id": "unique_archetypes_206",
               "role": "response_or_outcome",
               "description": "206 unique global bounded reusable objects",
@@ -1040,31 +1154,9 @@
                 "s1"
               ],
               "grounding": "normalized"
-            },
-            {
-              "id": "destructive_controls_8",
-              "role": "criterion",
-              "description": "eight declared destructive controls used to attack the bounded reconstruction",
-              "source_span_ids": [
-                "s1"
-              ],
-              "grounding": "normalized"
             }
           ],
           "relations": [
-            {
-              "id": "r1",
-              "kind": "other",
-              "arguments": [
-                "whole_claim_failure",
-                "bounded_subobject_reconstruction"
-              ],
-              "description": "bounded reconstruction follows the preserved whole-claim failure without rewriting that result",
-              "source_span_ids": [
-                "s2"
-              ],
-              "grounding": "normalized"
-            },
             {
               "id": "r2",
               "kind": "maps_to",
@@ -1103,15 +1195,109 @@
                 "s1"
               ],
               "grounding": "normalized"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "self_target_id": "RFX05C",
+      "normalized_claim": "The recovered bounded-subobject structure survives the eight declared destructive controls.",
+      "target_source": "Paper 2 manuscript / frozen validation-extension claim surface",
+      "repository_evidence_authorities": [
+        "paper/venues/jgps/main.tex@89b094476137bae12e089e5a794a5e57300f4da1",
+        "research/paper2/paper2_result_v1.json@a20d1ae31e1ccc905b891bfb7312285cdcce55b4"
+      ],
+      "grammar_mapping_inspected": false,
+      "evidence_profile_created": false,
+      "reflexive_verdict_created": false,
+      "claimir": {
+        "schema_version": "paper2-claim-ir-v1",
+        "claim_id": "RFX05C.C1",
+        "provenance": {
+          "paper_id": "SELF:RELAYTHEORY-PAPER2",
+          "source_language": "en",
+          "source_spans": [
+            {
+              "span_id": "s1",
+              "locator": "paper/venues/jgps/main.tex — Abstract and Archetype / Bounded XLike Reconstruction: 206 unique global objects, 99 cross-lane families, 59/60 coverage, eight destructive controls."
             },
             {
-              "id": "r5",
+              "span_id": "s2",
+              "locator": "paper/venues/jgps/main.tex — Discussion: bounded reconstruction is a secondary level of analysis rather than a repaired primary atlas."
+            }
+          ],
+          "authors": [
+            "Rintaro Sakamoto"
+          ],
+          "institutions": [
+            "Independent Scholar"
+          ],
+          "venue": "Journal for General Philosophy of Science submission surface / RelayTheory validation extension",
+          "citation_count": null,
+          "construct_labels": [
+            "Archetype",
+            "XLike",
+            "bounded reconstruction"
+          ]
+        },
+        "extraction": {
+          "extractor": "ChatGPT",
+          "extractor_version": "GPT-5.6 Sol",
+          "procedure_version": "paper2-reflexive-audit-candidate-v1:#384",
+          "extracted_at": "2026-10-01",
+          "manual_review_status": "unreviewed"
+        },
+        "claim_core": {
+          "claim_type": "relation",
+          "modality": "descriptive",
+          "scope": {
+            "conditions": [],
+            "population": [],
+            "substrate": [],
+            "task": [],
+            "temporal_scope": []
+          },
+          "nodes": [
+            {
+              "id": "bounded_subobject_reconstruction",
+              "role": "probe",
+              "description": "secondary reconstruction under frozen forgetting and bounded reuse rules",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "destructive_controls_8",
+              "role": "criterion",
+              "description": "eight declared destructive controls used to attack the bounded reconstruction",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "destructive_control_survival",
+              "role": "response_or_outcome",
+              "description": "recovered bounded-subobject structure survives eight declared destructive controls",
+              "source_span_ids": [
+                "s1"
+              ],
+              "grounding": "normalized"
+            }
+          ],
+          "relations": [
+            {
+              "id": "r1",
               "kind": "depends_on",
               "arguments": [
+                "destructive_control_survival",
                 "bounded_subobject_reconstruction",
                 "destructive_controls_8"
               ],
-              "description": "the retained recovery is reported together with survival of eight destructive controls",
+              "description": "recovered bounded-subobject structure survives the eight declared destructive controls",
               "source_span_ids": [
                 "s1"
               ],
@@ -3061,7 +3247,7 @@
       }
     }
   ],
-  "terminal": "RFX18_CANDIDATES_FROZEN_PENDING_AUTHOR_REVIEW",
+  "terminal": "RFX20_CANDIDATES_FROZEN_PENDING_AUTHOR_REVIEW",
   "fresh_authority_reconciliation": {
     "observed_after_initial_candidate_freeze": "ad1c11789814413b1d9fd3ca8a4cfb6f7316f230",
     "reason": "AssertionCarrier v2 became current main before author review started; RFX15 was added before any review or downstream mapping.",
@@ -3116,6 +3302,21 @@
       "human_review_decision_recorded": false,
       "downstream_fit_inspected": false,
       "date": "2026-10-01"
+    },
+    {
+      "event": "AUTHOR_APPROVED_THREE_WAY_SPLIT",
+      "original_id": "RFX05",
+      "replacements": [
+        "RFX05A",
+        "RFX05B",
+        "RFX05C"
+      ],
+      "original_normalized_claim": "After preserving the whole-claim failure, a secondary bounded-subobject reconstruction under frozen forgetting rules recovers reusable cross-claim structure: 206 unique global Archetype/XLike objects and 99 cross-lane families, covering 59 of 60 claims and surviving the declared destructive controls.",
+      "reason": "Separate reconstruction existence under preserved whole-claim failure, frozen numeric recovery/coverage report, and survival under destructive controls. Author chose to retain counts and coverage together.",
+      "human_review_decision_recorded": false,
+      "downstream_fit_inspected": false,
+      "date": "2026-10-01",
+      "authority_note": "Main advanced after frozen v2 calibration to prospective AHV2-8 candidate/admission artifacts; no relevance to frozen RFX05 source authority and no retrofit performed."
     }
   ]
 }
