@@ -1,0 +1,30 @@
+name: paper2-reflexive-evidence-profile
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/paper2-reflexive-evidence-profile.yml'
+      - 'paper/validation/jgps-major-revision/reflexive-audit-v1/**'
+      - 'scripts/paper2_reflexive_evidence_profile_validate.py'
+  workflow_dispatch:
+
+jobs:
+  frozen-evidence-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate prior author-review gate
+        run: |
+          python -m py_compile scripts/paper2_reflexive_audit_candidates_validate.py
+          python scripts/paper2_reflexive_audit_candidates_validate.py
+      - name: Compile deterministic evidence-only validator
+        run: python -m py_compile scripts/paper2_reflexive_evidence_profile_validate.py
+      - name: Run evidence-only gate twice and compare byte outputs
+        run: |
+          python scripts/paper2_reflexive_evidence_profile_validate.py --output /tmp/rfx-evidence-a.json
+          python scripts/paper2_reflexive_evidence_profile_validate.py --output /tmp/rfx-evidence-b.json
+          cmp /tmp/rfx-evidence-a.json /tmp/rfx-evidence-b.json
+          cat /tmp/rfx-evidence-a.json
