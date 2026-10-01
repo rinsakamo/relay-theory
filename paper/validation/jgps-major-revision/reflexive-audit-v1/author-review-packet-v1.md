@@ -1,6 +1,6 @@
 # Paper 2 reflexive-audit author review packet v1
 
-Status: **AUTHOR REVIEW IN PROGRESS — 1 / 17**
+Status: **AUTHOR REVIEW IN PROGRESS — 1 / 18**
 
 Authority: #384
 
@@ -14,19 +14,21 @@ Relation-bearing connectives such as **and / but / while / therefore** are candi
 
 ## Review provenance so far
 
-- Original RFX01 was split pre-review into RFX01A and RFX01B.
+- Original RFX01 was split into RFX01A and RFX01B.
 - **RFX01A = ACCEPT.**
-- RFX01B was judged too compound and was superseded by:
-  - **RFX01B1** — positive criterion satisfaction licenses bounded identity/equivalence.
-  - **RFX01B2** — criterion failure licenses bounded non-identity only, not unrestricted difference/individuation.
-- The superseded RFX01B decision is recorded as `REVISE_BY_SPLIT` and is not counted as an active-candidate review completion.
+- RFX01B was superseded by **RFX01B1 / RFX01B2** because identity licensing and bounded non-identity are independently attackable.
+- RFX02 wording split was author-approved before verdict into:
+  - **RFX02A** — source-grounded reviewed ClaimIR as the scientifically inspectable extraction object.
+  - **RFX02B** — opaque model proposal alone is not scientific evidential authority.
+- RFX02A/B remain active candidates with no formal ACCEPT / REVISE / REJECT verdict yet.
 
 | ID | Normalized claim candidate | Decision |
 |---|---|---|
 | RFX01A | Historical construct-label sameness or difference does not by itself entail structural identity or structural difference. | ACCEPT |
 | RFX01B1 | Within a declared structural representation and comparison rule, satisfaction of the declared equivalence criterion licenses structural identity or equivalence at that comparison level. | — |
 | RFX01B2 | Failure to satisfy the declared equivalence criterion licenses criterion-relative non-identity at that comparison level, but does not by itself license unrestricted structural difference or target individuation. | — |
-| RFX02 | The scientifically inspectable object is the source-grounded, reviewed ClaimIR record with preserved source-local provenance; the opaque model proposal that initiated extraction is not itself scientific authority. | — |
+| RFX02A | The scientifically inspectable extraction object is a reviewed ClaimIR record whose claims remain grounded in preserved source-local provenance. | — |
+| RFX02B | An opaque model proposal that initiates extraction is not, by itself, scientific evidential authority. | — |
 | RFX03 | Under the frozen whole-claim Phi comparison, all 1,770 unordered pairs among the 60 designed claims were incomparable, with no whole-claim equivalence or refinement. | — |
 | RFX04 | The universal whole-claim incomparability is localized primarily to enriched pre-topology comparison constraints rather than to the eight-axis inventory alone. | — |
 | RFX05 | After preserving the whole-claim failure, a secondary bounded-subobject reconstruction under frozen forgetting rules recovers reusable cross-claim structure: 206 unique global Archetype/XLike objects and 99 cross-lane families, covering 59 of 60 claims and surviving the declared destructive controls. | — |
@@ -43,4 +45,4 @@ Relation-bearing connectives such as **and / but / while / therefore** are candi
 
 Terminal while incomplete:
 
-`RFX17_HUMAN_REVIEW_PENDING`
+`RFX18_HUMAN_REVIEW_PENDING`
