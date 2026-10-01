@@ -1,0 +1,26 @@
+name: paper2-reflexive-stage-e-scope
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/paper2-reflexive-stage-e-scope.yml'
+      - 'paper/validation/jgps-major-revision/reflexive-audit-v1/**'
+      - 'scripts/paper2_reflexive_stage_e_scope_validate.py'
+  workflow_dispatch:
+
+jobs:
+  reference-scope-no-vacuous-role-pass:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify isolated upstream prefit and postfit data
+        run: |
+          python scripts/paper2_reflexive_stage_d_validate.py
+          python scripts/paper2_reflexive_stage_d_join_validate.py
+      - name: Compile Stage E role scope validator
+        run: python -m py_compile scripts/paper2_reflexive_stage_e_scope_validate.py
+      - name: Recompute Stage E eligible direct-role denominator
+        run: python scripts/paper2_reflexive_stage_e_scope_validate.py
