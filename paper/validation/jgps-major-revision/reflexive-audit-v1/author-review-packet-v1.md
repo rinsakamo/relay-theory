@@ -1,6 +1,6 @@
 # Paper 2 reflexive-audit author review packet v1
 
-Status: **AUTHOR REVIEW IN PROGRESS — 38 / 41**
+Status: **AUTHOR REVIEW IN PROGRESS — 43 / 45**
 
 Authority: #384
 
@@ -26,6 +26,7 @@ Treat relation-bearing connectives such as **and / but / while / therefore** as 
 - RFX12A/B/C = ACCEPT after separating held-out AHV-8 frozen-carrier statistics (11/28 relation FULL, 17 GAP, 1/8 full claims), v1 completeness rejection for the tested surface, and L_claim carrier-gap vs. Grammar role-gap boundary.
 - RFX13A/B/C/D = ACCEPT after separating source-grounded auditable records, 60/60 author review, independent extractor agreement not established, and local automated production qualification not established.
 - RFX14A/B/C/D/E/F/G = ACCEPT after separating Paper 2's bounded positive reconstruction conclusion from six independent limitations: complete claim language, ontology of nine primitives, absolute mathematical minimality, universal system boundary, population prevalence, cognition demarcation.
+- RFX15A/B/C/D/E = ACCEPT after separating post-hoc v2 derivation from frozen AHV-8 v1 gaps, 17/17 retrospective gap repair, 28/28 retrospective relation closure, the limitation on independent validation, and the need for fresh post-v2 held-out targets.
 - Superseded original wording and revision reasons remain in `pre_review_revision_history`.
 
 | ID | Normalized claim candidate | Decision |
@@ -70,8 +71,12 @@ Treat relation-bearing connectives such as **and / but / while / therefore** as 
 | RFX14E | The bounded Paper 2 result does not establish a universal boundary criterion for all cognitive systems. | ACCEPT |
 | RFX14F | The designed Paper 2 reference corpus does not license prevalence estimates for structures across cognitive science as a population. | ACCEPT |
 | RFX14G | Grammar v0 is not established as a criterion that defines or demarcates cognition. | ACCEPT |
-| RFX15 | AssertionCarrier v2 is a minimal post-hoc extension derived from the frozen AHV-8 v1 held-out gaps: it retrospectively repairs all 17 of those gaps and closes 28/28 AHV relations, but this is calibration rather than independent v2 validation; a newly admitted post-v2 held-out set is required for an independent validation claim. | — |
+| RFX15A | AssertionCarrier v2 is a bounded post-hoc compositional extension derived from the 17 frozen AHV-8 gaps observed under AssertionCarrier v1. | ACCEPT |
+| RFX15B | In retrospective calibration against the same frozen AHV-8 data, AssertionCarrier v2 repairs all 17 of the previously observed v1 relation gaps. | ACCEPT |
+| RFX15C | In that retrospective calibration, AssertionCarrier v2 covers all 28 AHV-8 reviewed relations. | ACCEPT |
+| RFX15D | Retrospective closure of all 28 AHV-8 relations after v2 was derived from those data does not itself establish independent v2 validation. | ACCEPT |
+| RFX15E | An independent validation claim for AssertionCarrier v2 requires a newly admitted held-out target set selected after the v2 schema was frozen. | ACCEPT |
 
 Terminal while incomplete:
 
-`RFX41_HUMAN_REVIEW_PENDING`
+`RFX45_HUMAN_REVIEW_PENDING`
