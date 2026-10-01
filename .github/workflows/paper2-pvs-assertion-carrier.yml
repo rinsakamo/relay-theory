@@ -1,0 +1,45 @@
+name: paper2-pvs-assertion-carrier
+
+on:
+  push:
+    branches:
+      - paper2-assertion-carrier-375
+    paths:
+      - "paper/validation/jgps-major-revision/l-claim-assertion-carrier-schema-v1.json"
+      - "paper/validation/jgps-major-revision/pvs16-l-claim-assertion-carrier-calibration-v1.*"
+      - "paper/validation/jgps-major-revision/pvs16-layered-architecture-projection-v1.json"
+      - "paper/validation/jgps-major-revision/pvs16-claimir-human-reviewed-v1/*.json"
+      - "scripts/paper2_pvs_assertion_carrier_validate.py"
+      - ".github/workflows/paper2-pvs-assertion-carrier.yml"
+  pull_request:
+    paths:
+      - "paper/validation/jgps-major-revision/l-claim-assertion-carrier-schema-v1.json"
+      - "paper/validation/jgps-major-revision/pvs16-l-claim-assertion-carrier-calibration-v1.*"
+      - "paper/validation/jgps-major-revision/pvs16-layered-architecture-projection-v1.json"
+      - "paper/validation/jgps-major-revision/pvs16-claimir-human-reviewed-v1/*.json"
+      - "scripts/paper2_pvs_assertion_carrier_validate.py"
+      - ".github/workflows/paper2-pvs-assertion-carrier.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  assertion-carrier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile
+        run: python -m py_compile scripts/paper2_pvs_assertion_carrier_validate.py
+      - name: Validate twice and compare
+        run: |
+          python scripts/paper2_pvs_assertion_carrier_validate.py --output /tmp/assertion-a.json
+          python scripts/paper2_pvs_assertion_carrier_validate.py --output /tmp/assertion-b.json
+          cmp /tmp/assertion-a.json /tmp/assertion-b.json
+      - name: Upload validation receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: paper2-pvs-assertion-carrier-receipt
+          path: /tmp/assertion-a.json
