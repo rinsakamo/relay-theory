@@ -1,0 +1,41 @@
+{
+  "schema": "relay-theory.paper2.reflexive_stage_d_preflight_receipt.v1",
+  "authority_issue": 384,
+  "date": "2026-10-01",
+  "audit_method": "Connector-backed independent recomputation of six frozen Stage D batch mappings against candidate packet, semantic specs, typed binding specs and manifest. This is not a GitHub Actions execution and does not execute the repository Python validator.",
+  "pinned_stage_d_index_blob_sha": "7a4a9bb1df15aa1b12de51e9ca048565601964a0",
+  "preflight_result": "PASS",
+  "checks": {
+    "unique_claims": 47,
+    "unique_relations": 68,
+    "canonical_fields": "PASS",
+    "original_relation_args": "PASS",
+    "typed_argument_bindings": "PASS",
+    "semantic_specs": "PASS",
+    "batch_blob_pins": "PASS",
+    "precision_audit_recomputed": "PASS",
+    "no_evidence_grades_used_for_fit": true
+  },
+  "referenced_layer_relation_counts": {
+    "L_claim": 68,
+    "L_ctx": 33,
+    "L_formal": 22,
+    "L_sys": 16
+  },
+  "binding_watches": {
+    "source_claims": 5,
+    "unbound_nodes": 7,
+    "confirmed_semantic_gaps": 0
+  },
+  "separate_workflow": {
+    "name": "paper2-reflexive-stage-d",
+    "workflow_path": ".github/workflows/paper2-reflexive-stage-d.yml",
+    "conclusion": "NOT_YET_VERIFIED"
+  },
+  "further_stages": {
+    "evidence_join": "NOT_STARTED",
+    "system_role_projection": "NOT_STARTED",
+    "label_suppressed_reconstruction": "NOT_STARTED"
+  },
+  "terminal": "STAGE_D_CONNECTOR_PREFLIGHT_PASS_CI_NOT_YET_VERIFIED"
+}
