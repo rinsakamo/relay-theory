@@ -4,16 +4,23 @@
   "authority_issue": 384,
   "generated_date": "2026-10-01",
   "candidate_packet_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/reflexive-claimir-candidates-v1.json",
-  "candidate_packet_blob_sha": "fddc86f04e182df6707968e94e0f0331abeae816",
-  "total": 16,
-  "reviewed": 0,
-  "accepted": 0,
+  "candidate_packet_blob_sha": "cc6b4354abe3321370cd168375874b8b9c53b754",
+  "total": 17,
+  "reviewed": 1,
+  "accepted": 1,
   "revised": 0,
   "rejected": 0,
-  "decisions": [],
+  "decisions": [
+    {
+      "self_target_id": "RFX01A",
+      "decision": "ACCEPT",
+      "decision_date": "2026-10-01",
+      "decision_record_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/human-reviewed/RFX01A.json"
+    }
+  ],
   "remaining": [
-    "RFX01A",
-    "RFX01B",
+    "RFX01B1",
+    "RFX01B2",
     "RFX02",
     "RFX03",
     "RFX04",
@@ -36,15 +43,45 @@
     "LAYERED_ARCHITECTURE_PROJECTION",
     "REFLEXIVE_RECONSTRUCTION_VERDICT"
   ],
-  "terminal": "RFX16_HUMAN_REVIEW_0_OF_16_PENDING",
+  "terminal": "RFX17_HUMAN_REVIEW_1_OF_17_PENDING",
   "authority_reconciliation": "RFX15 added pre-review after fresh main advanced to #385; no human decisions existed at reconciliation time.",
   "pre_review_revision_history": [
     {
       "event": "AUTHOR_REQUESTED_SPLIT",
       "original_id": "RFX01",
-      "replacements": ["RFX01A", "RFX01B"],
+      "replacements": [
+        "RFX01A",
+        "RFX01B"
+      ],
+      "original_normalized_claim": "Historical construct-label sameness or difference does not by itself license structural identity or structural difference; individuation requires a declared structural comparison.",
+      "reason": "Separate nominal non-entailment from the positive structural-judgment licensing rule.",
       "human_review_decision_recorded": false,
-      "downstream_fit_inspected": false
+      "downstream_fit_inspected": false,
+      "date": "2026-10-01"
+    },
+    {
+      "event": "AUTHOR_REVIEW_REVISE_BY_SPLIT",
+      "original_id": "RFX01B",
+      "replacements": [
+        "RFX01B1",
+        "RFX01B2"
+      ],
+      "original_normalized_claim": "A structural identity or structural-difference judgment within the Paper-2 comparison framework must be licensed by a declared structural representation and comparison rule rather than by construct labels alone.",
+      "reason": "Identity/equivalence licensing and bounded non-identity/difference inference are logically asymmetric and independently attackable.",
+      "review_basis": "Author requested decomposition; relation-bearing conjunctions should be treated as candidate split points.",
+      "downstream_fit_inspected": false,
+      "date": "2026-10-01"
+    }
+  ],
+  "superseded_review_events": [
+    {
+      "self_target_id": "RFX01B",
+      "decision": "REVISE_BY_SPLIT",
+      "replacements": [
+        "RFX01B1",
+        "RFX01B2"
+      ],
+      "counted_in_active_review_totals": false
     }
   ]
 }
