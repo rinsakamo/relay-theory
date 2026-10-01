@@ -1,6 +1,6 @@
 # Paper 2 reflexive-audit author review packet v1
 
-Status: **AUTHOR REVIEW IN PROGRESS — 17 / 25**
+Status: **AUTHOR REVIEW IN PROGRESS — 21 / 28**
 
 Authority: #384
 
@@ -16,12 +16,13 @@ Treat relation-bearing connectives such as **and / but / while / therefore** as 
 
 - RFX01A = ACCEPT; RFX01B1 and RFX01B2 pending.
 - RFX02A/B, RFX03, RFX04 = ACCEPT.
-- RFX05A/B/C = ACCEPT after three-way split; whole-claim failure remains authoritative and destructive controls are the eight declared tests only.
-- RFX06A/B = ACCEPT after splitting basis factorization from limited non-discovery of independent top-level primitives.
-- RFX07A/B = ACCEPT after splitting frozen-corpus projection class counts from residual class adjudication.
-- RFX08A/B/C = ACCEPT after separating tested strict direct-preservation comparators from the non-encodability inference limitation.
-- RFX09A/B = ACCEPT after separating typed four-layer architecture from the residual/non-entailment inference limitation.
-- Original wording and revision reasons remain in `pre_review_revision_history`.
+- RFX05A/B/C = ACCEPT; the whole-claim failure remains authoritative and destructive-control survival is restricted to the eight declared tests.
+- RFX06A/B = ACCEPT; basis factorization is distinct from claims about independent top-level primitive discovery.
+- RFX07A/B = ACCEPT; frozen-corpus projection class counts and residual taxonomy are independently stated.
+- RFX08A/B/C = ACCEPT; strict direct-preservation comparator losses do not establish mathematical non-encodability by enriched models.
+- RFX09A/B = ACCEPT; four typed architecture layers and residual/non-entailment limit.
+- RFX10A/B/C/D = ACCEPT; declared system/world/coupling/experiment/run separation and three independent non-identity constraints concerning K/Gamma, C/experimental conditions, and P/interface vs experiment schedule.
+- Original wording and revision provenance remain in `pre_review_revision_history`.
 
 | ID | Normalized claim candidate | Decision |
 |---|---|---|
@@ -44,7 +45,10 @@ Treat relation-bearing connectives such as **and / but / while / therefore** as 
 | RFX08C | The frozen strict direct-preservation comparator results establish distinction loss under the tested projections, not mathematical non-encodability by enriched formalisms. | ACCEPT |
 | RFX09A | Paper 2 explicitly distinguishes system grammar (L_sys), scientific claim semantics (L_claim), source context (L_ctx), and formal carrier realization (L_formal) as separate typed layers. | ACCEPT |
 | RFX09B | Residual scientific-claim or source-context structure does not by itself establish a missing top-level cognitive-system role. | ACCEPT |
-| RFX10 | The final architecture separates cognitive system, World, cross-boundary coupling, experimental protocol, and realized run; internal transformation K is not Gamma, intrinsic C is not an experimental condition, and P_in/P_out are not identical to an experimenter's schedule. | — |
+| RFX10A | The declared architecture distinguishes cognitive system, World, cross-boundary coupling, experimental protocol, and realized run as separate typed components. | ACCEPT |
+| RFX10B | Internal system transformation K is not identical to cross-boundary system-World coupling Gamma. | ACCEPT |
+| RFX10C | System-intrinsic admissibility constraint C is not identical to an experimental condition or protocol. | ACCEPT |
+| RFX10D | System-relative directional interface operations P_in/P_out are not identical to an experimenter's operation or observation schedule. | ACCEPT |
 | RFX11 | In the prospective PVS-16 validation, frozen Grammar-v0 mapping leaves high-evidence E2/E3 pressure without a new top-level role gap, and the pre-existing layered architecture places all 52 relations with zero ARCHITECTURE_GAP and zero ROLE_GAP, while retaining one E3 claim-carrier precision pressure. | — |
 | RFX12 | A held-out AHV-8 test rejects completeness of AssertionCarrier v1: only 11 of 28 reviewed relations are FULL and 17 are GAP, with 1 of 8 claims fully covered; the observed gaps are L_claim carrier gaps and do not by themselves establish Grammar-v0 system-role gaps. | — |
 | RFX13 | The 60-claim reference corpus is source-grounded and fully reviewed, but independent extractor agreement and local automated production qualification are not established. | — |
@@ -53,4 +57,4 @@ Treat relation-bearing connectives such as **and / but / while / therefore** as 
 
 Terminal while incomplete:
 
-`RFX25_HUMAN_REVIEW_PENDING`
+`RFX28_HUMAN_REVIEW_PENDING`
