@@ -1,0 +1,32 @@
+name: paper2-ahv2-8-claimir-candidates
+on:
+  push:
+    branches: [paper2-ahv2-8-claimir]
+    paths:
+      - "paper/validation/jgps-major-revision/ahv2-8-*"
+      - "scripts/paper2_ahv2_8_claimir_candidate_validate.py"
+      - "scripts/paper2_claim_ir_validate.py"
+      - ".github/workflows/paper2-ahv2-8-claimir-candidates.yml"
+  pull_request:
+    paths:
+      - "paper/validation/jgps-major-revision/ahv2-8-*"
+      - "scripts/paper2_ahv2_8_claimir_candidate_validate.py"
+      - "scripts/paper2_claim_ir_validate.py"
+      - ".github/workflows/paper2-ahv2-8-claimir-candidates.yml"
+permissions: {contents: read}
+jobs:
+  candidates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: python -m py_compile scripts/paper2_claim_ir_validate.py scripts/paper2_ahv2_8_claimir_candidate_validate.py
+      - run: |
+          PYTHONPATH=scripts python scripts/paper2_ahv2_8_claimir_candidate_validate.py --output /tmp/a.json
+          PYTHONPATH=scripts python scripts/paper2_ahv2_8_claimir_candidate_validate.py --output /tmp/b.json
+          cmp /tmp/a.json /tmp/b.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: paper2-ahv2-8-claimir-candidate-receipt
+          path: /tmp/a.json
