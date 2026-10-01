@@ -93,15 +93,18 @@ def validate()->dict[str,Any]:
             raise Error(f"{aid}: qualifier outside v2")
         if [b["node_id"] for b in r["argument_bindings"]] != r["source_arguments"]:
             raise Error(f"{aid}: source argument binding order drift")
+        uses_lclaim_object=False
         for b in r["argument_bindings"]:
             if b["layer"] not in v2["architecture_layers"]:
                 raise Error(f"{aid}: bad binding layer")
             if b["layer"]=="L_claim":
-                counts["l_claim_object_binding"]+=1
+                uses_lclaim_object=True
                 if b.get("claim_object_type")!="THEORETICAL_ACCOUNT":
                     raise Error(f"{aid}: L_claim binding lacks THEORETICAL_ACCOUNT type")
                 if nodes[r["validation_claim_id"]][b["node_id"]]["role"]!="other":
                     raise Error(f"{aid}: L_claim theory-object binding points to non-other ClaimIR node")
+        if uses_lclaim_object:
+            counts["l_claim_object_binding"]+=1
         if r["predicate_family"]=="TRANSFORMATION":
             counts["TRANSFORMATION"]+=1
         if "DISTINCT" in r["qualifiers"]:
