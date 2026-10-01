@@ -3061,7 +3061,6 @@
               "arguments": [
                 "role_gap_zero",
                 "frozen_grammar_mapping",
-                "layered_architecture",
                 "PVS16"
               ],
               "description": "the high-evidence E2/E3 non-preserved relations do not establish a new top-level ROLE_GAP in their frozen adjudication",
@@ -3171,6 +3170,15 @@
               "source_span_ids": [
                 "s1",
                 "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "frozen_grammar_mapping",
+              "role": "probe",
+              "description": "unchanged Grammar-v0 reverse projection applied after PVS admission/review",
+              "source_span_ids": [
+                "s1"
               ],
               "grounding": "normalized"
             }
@@ -4276,6 +4284,17 @@
         "RFX11C": "PENDING"
       },
       "source_confirmation": "pvs16-evidence-x-grammar-diagnostic-v1.md @ 520845d13fa0e7e806e5e55caff45332e9dbc637; E2 4 PRESERVED / 2 PARTIAL / 2 UNMAPPED; E3 3 PRESERVED / 0 PARTIAL / 1 UNMAPPED; no high-evidence ROLE_GAP",
+      "downstream_fit_inspected": false,
+      "date": "2026-10-01"
+    },
+    {
+      "event": "NON_SEMANTIC_CLAIMIR_SPLIT_REPAIR",
+      "target_ids": [
+        "RFX11A",
+        "RFX11B"
+      ],
+      "reason": "Repair split-only r4 argument closure: mapping-level role non-gap relation in A does not depend on layered_architecture node, while B includes the frozen Grammar mapping input required by its retained r4 relation. Accepted RFX11A normalized wording and verdict unchanged.",
+      "human_review_decision_recorded": false,
       "downstream_fit_inspected": false,
       "date": "2026-10-01"
     }
