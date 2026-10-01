@@ -1,6 +1,6 @@
 # Paper 2 reflexive-audit author review packet v1
 
-Status: **AUTHOR REVIEW IN PROGRESS — 31 / 35**
+Status: **AUTHOR REVIEW IN PROGRESS — 38 / 41**
 
 Authority: #384
 
@@ -25,6 +25,7 @@ Treat relation-bearing connectives such as **and / but / while / therefore** as 
 - RFX11A/B/C = ACCEPT. RFX11A distinguishes E2 direct intervention from E3 explicit replicated intervention; RFX11B places all 52 PVS relations; RFX11C retains one E3 claim-carrier precision pressure after placement. None claims universal completeness.
 - RFX12A/B/C = ACCEPT after separating held-out AHV-8 frozen-carrier statistics (11/28 relation FULL, 17 GAP, 1/8 full claims), v1 completeness rejection for the tested surface, and L_claim carrier-gap vs. Grammar role-gap boundary.
 - RFX13A/B/C/D = ACCEPT after separating source-grounded auditable records, 60/60 author review, independent extractor agreement not established, and local automated production qualification not established.
+- RFX14A/B/C/D/E/F/G = ACCEPT after separating Paper 2's bounded positive reconstruction conclusion from six independent limitations: complete claim language, ontology of nine primitives, absolute mathematical minimality, universal system boundary, population prevalence, cognition demarcation.
 - Superseded original wording and revision reasons remain in `pre_review_revision_history`.
 
 | ID | Normalized claim candidate | Decision |
@@ -62,9 +63,15 @@ Treat relation-bearing connectives such as **and / but / while / therefore** as 
 | RFX13B | All 60 claims in the frozen reference corpus completed author human review. | ACCEPT |
 | RFX13C | Independent extractor agreement on the source-to-ClaimIR task has not been established for the frozen 60-claim reference corpus. | ACCEPT |
 | RFX13D | Local automated ClaimIR extraction/production qualification has not been established for the frozen 60-claim reference corpus. | ACCEPT |
-| RFX14 | Paper 2's strongest licensed conclusion is a bounded measurement-oriented structural reconstruction; it does not establish a complete scientific claim language, nine ontological primitives, absolute mathematical minimality, a universal system boundary, a representative population estimate, or a demarcation criterion for cognition. | — |
+| RFX14A | Paper 2's licensed positive conclusion is a measurement-oriented structural reconstruction bounded by its declared representation, reference-corpus, and validation contracts. | ACCEPT |
+| RFX14B | The bounded Paper 2 result does not establish a complete scientific claim language. | ACCEPT |
+| RFX14C | The bounded Paper 2 result does not establish the nine Grammar-v0 roles as discovered ontological primitives. | ACCEPT |
+| RFX14D | The bounded Paper 2 result does not prove mathematical absolute minimality of its structural representation. | ACCEPT |
+| RFX14E | The bounded Paper 2 result does not establish a universal boundary criterion for all cognitive systems. | ACCEPT |
+| RFX14F | The designed Paper 2 reference corpus does not license prevalence estimates for structures across cognitive science as a population. | ACCEPT |
+| RFX14G | Grammar v0 is not established as a criterion that defines or demarcates cognition. | ACCEPT |
 | RFX15 | AssertionCarrier v2 is a minimal post-hoc extension derived from the frozen AHV-8 v1 held-out gaps: it retrospectively repairs all 17 of those gaps and closes 28/28 AHV relations, but this is calibration rather than independent v2 validation; a newly admitted post-v2 held-out set is required for an independent validation claim. | — |
 
 Terminal while incomplete:
 
-`RFX35_HUMAN_REVIEW_PENDING`
+`RFX41_HUMAN_REVIEW_PENDING`
