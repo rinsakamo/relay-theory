@@ -99,5 +99,11 @@
     "reconciled_main_before_author_review": "ad1c11789814413b1d9fd3ca8a4cfb6f7316f230",
     "new_authority": "Paper 2 #385 / AssertionCarrier v2 retrospective calibration",
     "action": "Add one unreviewed self-target candidate RFX15 before human review; do not inspect downstream fit."
+  },
+  "atomicity_rule": {
+    "trigger": "Relation-bearing conjunctions or connectives that join independently falsifiable propositions (for example and, but, while, therefore, unless required by one indivisible relation).",
+    "action": "Before review acceptance, test whether each side can be independently accepted, revised, rejected, or falsified. If yes, split into separate ClaimIR targets while preserving the superseded wording in provenance.",
+    "rationale": "Do not let surface grammar hide multiple scientific assertions inside one review unit.",
+    "introduced_from_author_review": "RFX01B split into RFX01B1/RFX01B2 on 2026-10-01."
   }
 }
