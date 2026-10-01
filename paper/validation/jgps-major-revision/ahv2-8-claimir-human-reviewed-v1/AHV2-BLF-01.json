@@ -1,0 +1,165 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "AHV2-BLF-01.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1037/0096-3445.121.2.222",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "PubMed abstract: experiments compare learning when cues are possible causes of a common effect with learning when cues are possible effects of a common cause."
+      },
+      {
+        "span_id": "s2",
+        "locator": "PubMed abstract: predictive and diagnostic reasoning are not symmetrical, contrary to the prediction of purely associative accounts."
+      },
+      {
+        "span_id": "s3",
+        "locator": "PubMed abstract: cue competition occurs among multiple possible causes in predictive learning, whereas multiple possible effects need not compete in diagnostic learning."
+      },
+      {
+        "span_id": "s4",
+        "locator": "PubMed abstract: the reported results favor a causal-model account."
+      }
+    ],
+    "authors": [
+      "M R Waldmann",
+      "K J Holyoak"
+    ],
+    "institutions": [],
+    "venue": "Journal of Experimental Psychology: General",
+    "citation_count": null,
+    "construct_labels": []
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "jgps-ahv2-8-source-grounded-candidate-v1:#390",
+    "extracted_at": "2026-10-01",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "comparison",
+    "modality": "descriptive",
+    "scope": {
+      "conditions": [
+        "predictive versus diagnostic learning with multiple cues"
+      ],
+      "population": [
+        "human participants in three experiments"
+      ],
+      "substrate": [],
+      "task": [
+        "learn responses from possible causes or possible effects"
+      ],
+      "temporal_scope": []
+    },
+    "nodes": [
+      {
+        "id": "predictive_learning",
+        "role": "condition",
+        "description": "learning in which cues are possible causes of a common effect",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "diagnostic_learning",
+        "role": "condition",
+        "description": "learning in which cues are possible effects of a common cause",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "cue_competition",
+        "role": "response_or_outcome",
+        "description": "competition among multiple cues during learning",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "associationist_account",
+        "role": "other",
+        "description": "account predicting symmetry between predictive and diagnostic learning",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "causal_model_account",
+        "role": "other",
+        "description": "account in which causal role structure differentiates predictive from diagnostic learning",
+        "source_span_ids": [
+          "s4"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "differs",
+        "arguments": [
+          "predictive_learning",
+          "diagnostic_learning",
+          "cue_competition"
+        ],
+        "description": "predictive and diagnostic learning show asymmetric cue-competition behavior",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "other",
+        "arguments": [
+          "predictive_learning",
+          "cue_competition"
+        ],
+        "description": "cue competition occurs among multiple possible causes during predictive learning",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "other",
+        "arguments": [
+          "diagnostic_learning",
+          "cue_competition"
+        ],
+        "description": "multiple possible effects need not show cue competition during diagnostic learning",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "other",
+        "arguments": [
+          "causal_model_account",
+          "associationist_account"
+        ],
+        "description": "the experimental results favor the causal-model account over the symmetric associationist account",
+        "source_span_ids": [
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
