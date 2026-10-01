@@ -1,0 +1,448 @@
+{
+  "schema": "relay-theory.paper2.reflexive_stage_d_batch.v1",
+  "status": "FROZEN_PRE_EVIDENCE_JOIN",
+  "authority_issue": 384,
+  "batch": 1,
+  "claim_count": 8,
+  "relation_count": 11,
+  "input_candidate_sha": "50fa50d24f2fbf9f3aef871cdeda08cdc97431a8",
+  "contract_sha": "38f06d98f70f29490efe7360750eb907ac1a3f15",
+  "semantic_spec_shas": [
+    "b78a13c040ba08386148ae380afba1e7eb54b3c1",
+    "ad7a88dacd24d070e44fd3592f8416d849d8f25e"
+  ],
+  "binding_spec_sha": "4a1e6170c61e89481438a38f4dcd89fa0b93130c",
+  "evidence_profile_used": false,
+  "entries": [
+    {
+      "id": "RFX01A",
+      "claim_id": "RFX01A.C1",
+      "relations": [
+        {
+          "relation_id": "r1",
+          "original_kind": "other",
+          "original_arguments": [
+            "same_construct_label",
+            "structural_identity"
+          ],
+          "operator": "LABEL_SAMENESS_NON_ENTAILMENT",
+          "assertion_layer": "L_claim",
+          "context": "HISTORICAL_LABEL_CONTEXT",
+          "bindings": [
+            {
+              "node": "same_construct_label",
+              "layer": "L_ctx",
+              "architecture_refs": []
+            },
+            {
+              "node": "structural_identity",
+              "layer": "L_claim",
+              "architecture_refs": []
+            }
+          ],
+          "layers": [
+            "L_claim",
+            "L_ctx"
+          ],
+          "architecture_objects": [],
+          "placement": "TYPED_LAYER_PLACEMENT_CARRIER_UNTESTED",
+          "carrier_fidelity": "EXACT_CARRIER_NOT_TESTED",
+          "direct_system_relation": false,
+          "system_role_projection": "NOT_STARTED"
+        },
+        {
+          "relation_id": "r2",
+          "original_kind": "other",
+          "original_arguments": [
+            "different_construct_label",
+            "structural_difference"
+          ],
+          "operator": "LABEL_DIFFERENCE_NON_ENTAILMENT",
+          "assertion_layer": "L_claim",
+          "context": "HISTORICAL_LABEL_CONTEXT",
+          "bindings": [
+            {
+              "node": "different_construct_label",
+              "layer": "L_ctx",
+              "architecture_refs": []
+            },
+            {
+              "node": "structural_difference",
+              "layer": "L_claim",
+              "architecture_refs": []
+            }
+          ],
+          "layers": [
+            "L_claim",
+            "L_ctx"
+          ],
+          "architecture_objects": [],
+          "placement": "TYPED_LAYER_PLACEMENT_CARRIER_UNTESTED",
+          "carrier_fidelity": "EXACT_CARRIER_NOT_TESTED",
+          "direct_system_relation": false,
+          "system_role_projection": "NOT_STARTED"
+        }
+      ]
+    },
+    {
+      "id": "RFX01B1",
+      "claim_id": "RFX01B1.C1",
+      "relations": [
+        {
+          "relation_id": "r1",
+          "original_kind": "depends_on",
+          "original_arguments": [
+            "bounded_structural_identity",
+            "declared_structural_representation",
+            "declared_comparison_rule",
+            "equivalence_criterion_satisfied"
+          ],
+          "operator": "CONDITIONED_EQUIVALENCE",
+          "assertion_layer": "L_claim",
+          "context": "DECLARED_COMPARISON_RULE",
+          "bindings": [
+            {
+              "node": "bounded_structural_identity",
+              "layer": "L_claim",
+              "architecture_refs": []
+            },
+            {
+              "node": "declared_structural_representation",
+              "layer": "L_claim",
+              "architecture_refs": []
+            },
+            {
+              "node": "declared_comparison_rule",
+              "layer": "L_ctx",
+              "architecture_refs": []
+            },
+            {
+              "node": "equivalence_criterion_satisfied",
+              "layer": "L_ctx",
+              "architecture_refs": []
+            }
+          ],
+          "layers": [
+            "L_claim",
+            "L_ctx"
+          ],
+          "architecture_objects": [],
+          "placement": "TYPED_LAYER_PLACEMENT_CARRIER_UNTESTED",
+          "carrier_fidelity": "EXACT_CARRIER_NOT_TESTED",
+          "direct_system_relation": false,
+          "system_role_projection": "NOT_STARTED"
+        }
+      ]
+    },
+    {
+      "id": "RFX01B2A",
+      "claim_id": "RFX01B2A.C1",
+      "relations": [
+        {
+          "relation_id": "r1",
+          "original_kind": "depends_on",
+          "original_arguments": [
+            "criterion_relative_nonidentity",
+            "declared_comparison_rule",
+            "equivalence_criterion_failed"
+          ],
+          "operator": "CRITERION_RELATIVE_NON_EQUIVALENCE",
+          "assertion_layer": "L_claim",
+          "context": "DECLARED_COMPARISON_RULE",
+          "bindings": [
+            {
+              "node": "criterion_relative_nonidentity",
+              "layer": "L_claim",
+              "architecture_refs": []
+            },
+            {
+              "node": "declared_comparison_rule",
+              "layer": "L_ctx",
+              "architecture_refs": []
+            },
+            {
+              "node": "equivalence_criterion_failed",
+              "layer": "L_ctx",
+              "architecture_refs": []
+            }
+          ],
+          "layers": [
+            "L_claim",
+            "L_ctx"
+          ],
+          "architecture_objects": [],
+          "placement": "TYPED_LAYER_PLACEMENT_CARRIER_UNTESTED",
+          "carrier_fidelity": "EXACT_CARRIER_NOT_TESTED",
+          "direct_system_relation": false,
+          "system_role_projection": "NOT_STARTED"
+        }
+      ]
+    },
+    {
+      "id": "RFX01B2B",
+      "claim_id": "RFX01B2B.C1",
+      "relations": [
+        {
+          "relation_id": "r2",
+          "original_kind": "other",
+          "original_arguments": [
+            "equivalence_criterion_failed",
+            "unrestricted_structural_difference"
+          ],
+          "operator": "UNRESTRICTED_DIFFERENCE_NON_ENTAILMENT",
+          "assertion_layer": "L_claim",
+          "context": "DECLARED_COMPARISON_RULE",
+          "bindings": [
+            {
+              "node": "equivalence_criterion_failed",
+              "layer": "L_ctx",
+              "architecture_refs": []
+            },
+            {
+              "node": "unrestricted_structural_difference",
+              "layer": "L_claim",
+              "architecture_refs": []
+            }
+          ],
+          "layers": [
+            "L_claim",
+            "L_ctx"
+          ],
+          "architecture_objects": [],
+          "placement": "TYPED_LAYER_PLACEMENT_CARRIER_UNTESTED",
+          "carrier_fidelity": "EXACT_CARRIER_NOT_TESTED",
+          "direct_system_relation": false,
+          "system_role_projection": "NOT_STARTED"
+        }
+      ]
+    },
+    {
+      "id": "RFX01B2C",
+      "claim_id": "RFX01B2C.C1",
+      "relations": [
+        {
+          "relation_id": "r3",
+          "original_kind": "other",
+          "original_arguments": [
+            "equivalence_criterion_failed",
+            "target_individuation"
+          ],
+          "operator": "TARGET_INDIVIDUATION_NON_ENTAILMENT",
+          "assertion_layer": "L_claim",
+          "context": "DECLARED_COMPARISON_RULE",
+          "bindings": [
+            {
+              "node": "equivalence_criterion_failed",
+              "layer": "L_ctx",
+              "architecture_refs": []
+            },
+            {
+              "node": "target_individuation",
+              "layer": "L_claim",
+              "architecture_refs": []
+            }
+          ],
+          "layers": [
+            "L_claim",
+            "L_ctx"
+          ],
+          "architecture_objects": [],
+          "placement": "TYPED_LAYER_PLACEMENT_CARRIER_UNTESTED",
+          "carrier_fidelity": "EXACT_CARRIER_NOT_TESTED",
+          "direct_system_relation": false,
+          "system_role_projection": "NOT_STARTED"
+        }
+      ]
+    },
+    {
+      "id": "RFX02A",
+      "claim_id": "RFX02A.C1",
+      "relations": [
+        {
+          "relation_id": "r1",
+          "original_kind": "depends_on",
+          "original_arguments": [
+            "scientifically_inspectable_object",
+            "reviewed_claimir",
+            "source_local_provenance"
+          ],
+          "operator": "SOURCE_LOCAL_PROVENANCE_REQUIREMENT",
+          "assertion_layer": "L_claim",
+          "context": "SOURCE_REVIEW",
+          "bindings": [
+            {
+              "node": "scientifically_inspectable_object",
+              "layer": "L_claim",
+              "architecture_refs": []
+            },
+            {
+              "node": "reviewed_claimir",
+              "layer": "L_claim",
+              "architecture_refs": []
+            },
+            {
+              "node": "source_local_provenance",
+              "layer": "L_ctx",
+              "architecture_refs": []
+            }
+          ],
+          "layers": [
+            "L_claim",
+            "L_ctx"
+          ],
+          "architecture_objects": [],
+          "placement": "TYPED_LAYER_PLACEMENT_CARRIER_UNTESTED",
+          "carrier_fidelity": "EXACT_CARRIER_NOT_TESTED",
+          "direct_system_relation": false,
+          "system_role_projection": "NOT_STARTED"
+        }
+      ]
+    },
+    {
+      "id": "RFX02B",
+      "claim_id": "RFX02B.C1",
+      "relations": [
+        {
+          "relation_id": "r1",
+          "original_kind": "other",
+          "original_arguments": [
+            "opaque_model_proposal",
+            "scientific_evidential_authority"
+          ],
+          "operator": "MODEL_PROPOSAL_AUTHORITY_LIMIT",
+          "assertion_layer": "L_claim",
+          "context": "SOURCE_REVIEW",
+          "bindings": [
+            {
+              "node": "opaque_model_proposal",
+              "layer": "L_claim",
+              "architecture_refs": []
+            },
+            {
+              "node": "scientific_evidential_authority",
+              "layer": "L_claim",
+              "architecture_refs": []
+            }
+          ],
+          "layers": [
+            "L_claim"
+          ],
+          "architecture_objects": [],
+          "placement": "TYPED_LAYER_PLACEMENT_CARRIER_UNTESTED",
+          "carrier_fidelity": "EXACT_CARRIER_NOT_TESTED",
+          "direct_system_relation": false,
+          "system_role_projection": "NOT_STARTED"
+        }
+      ]
+    },
+    {
+      "id": "RFX03",
+      "claim_id": "RFX03.C1",
+      "relations": [
+        {
+          "relation_id": "r1",
+          "original_kind": "maps_to",
+          "original_arguments": [
+            "designed_claims_60",
+            "unordered_pairs_1770"
+          ],
+          "operator": "PAIR_COUNT",
+          "assertion_layer": "L_claim",
+          "context": "FROZEN_CORPUS_COMPARISON",
+          "bindings": [
+            {
+              "node": "designed_claims_60",
+              "layer": "L_ctx",
+              "architecture_refs": []
+            },
+            {
+              "node": "unordered_pairs_1770",
+              "layer": "L_ctx",
+              "architecture_refs": []
+            }
+          ],
+          "layers": [
+            "L_claim",
+            "L_ctx"
+          ],
+          "architecture_objects": [],
+          "placement": "TYPED_LAYER_PLACEMENT_CARRIER_UNTESTED",
+          "carrier_fidelity": "EXACT_CARRIER_NOT_TESTED",
+          "direct_system_relation": false,
+          "system_role_projection": "NOT_STARTED"
+        },
+        {
+          "relation_id": "r2",
+          "original_kind": "depends_on",
+          "original_arguments": [
+            "incomparable_pairs_1770",
+            "phi_whole_claim_comparison",
+            "unordered_pairs_1770"
+          ],
+          "operator": "INCOMPARABILITY_RESULT",
+          "assertion_layer": "L_claim",
+          "context": "FROZEN_CORPUS_COMPARISON",
+          "bindings": [
+            {
+              "node": "incomparable_pairs_1770",
+              "layer": "L_claim",
+              "architecture_refs": []
+            },
+            {
+              "node": "phi_whole_claim_comparison",
+              "layer": "L_formal",
+              "architecture_refs": []
+            },
+            {
+              "node": "unordered_pairs_1770",
+              "layer": "L_ctx",
+              "architecture_refs": []
+            }
+          ],
+          "layers": [
+            "L_claim",
+            "L_ctx",
+            "L_formal"
+          ],
+          "architecture_objects": [],
+          "placement": "TYPED_LAYER_PLACEMENT_CARRIER_UNTESTED",
+          "carrier_fidelity": "EXACT_CARRIER_NOT_TESTED",
+          "direct_system_relation": false,
+          "system_role_projection": "NOT_STARTED"
+        },
+        {
+          "relation_id": "r3",
+          "original_kind": "other",
+          "original_arguments": [
+            "equivalence_or_refinement_pair",
+            "unordered_pairs_1770"
+          ],
+          "operator": "ABSENCE_OF_EQUIVALENCE_OR_REFINEMENT",
+          "assertion_layer": "L_claim",
+          "context": "FROZEN_CORPUS_COMPARISON",
+          "bindings": [
+            {
+              "node": "equivalence_or_refinement_pair",
+              "layer": "L_claim",
+              "architecture_refs": []
+            },
+            {
+              "node": "unordered_pairs_1770",
+              "layer": "L_ctx",
+              "architecture_refs": []
+            }
+          ],
+          "layers": [
+            "L_claim",
+            "L_ctx"
+          ],
+          "architecture_objects": [],
+          "placement": "TYPED_LAYER_PLACEMENT_CARRIER_UNTESTED",
+          "carrier_fidelity": "EXACT_CARRIER_NOT_TESTED",
+          "direct_system_relation": false,
+          "system_role_projection": "NOT_STARTED"
+        }
+      ]
+    }
+  ]
+}
