@@ -1,6 +1,6 @@
 # Paper 2 reflexive-audit author review packet v1
 
-Status: **UNREVIEWED — 0 / 16**
+Status: **AUTHOR REVIEW IN PROGRESS — 1 / 17**
 
 Authority: #384
 
@@ -8,19 +8,24 @@ Review each normalized self-target claim against its target manuscript/repositor
 
 Allowed decisions are `ACCEPT`, `REVISE`, or `REJECT`. No downstream Evidence Profile, Grammar mapping, layered projection, or reconstruction is authorized until all retained candidates have an explicit author decision.
 
-## Pre-review split provenance
+## Atomicity rule
 
-At the author's request, the original RFX01 was split before any review decision:
+Relation-bearing connectives such as **and / but / while / therefore** are candidate decomposition points whenever they join independently falsifiable propositions. If each side can receive a different review verdict, split them into separate ClaimIR targets and preserve the superseded wording in provenance.
 
-- **RFX01A** — historical label sameness/difference does not entail structural sameness/difference.
-- **RFX01B** — structural identity/difference judgments require an explicit structural representation and comparison rule.
+## Review provenance so far
 
-The original wording remains preserved in the candidate packet's `pre_review_revision_history`. This split is not counted as a review decision and no downstream fit was inspected.
+- Original RFX01 was split pre-review into RFX01A and RFX01B.
+- **RFX01A = ACCEPT.**
+- RFX01B was judged too compound and was superseded by:
+  - **RFX01B1** — positive criterion satisfaction licenses bounded identity/equivalence.
+  - **RFX01B2** — criterion failure licenses bounded non-identity only, not unrestricted difference/individuation.
+- The superseded RFX01B decision is recorded as `REVISE_BY_SPLIT` and is not counted as an active-candidate review completion.
 
 | ID | Normalized claim candidate | Decision |
 |---|---|---|
-| RFX01A | Historical construct-label sameness or difference does not by itself entail structural identity or structural difference. | — |
-| RFX01B | A structural identity or structural-difference judgment within the Paper-2 comparison framework must be licensed by a declared structural representation and comparison rule rather than by construct labels alone. | — |
+| RFX01A | Historical construct-label sameness or difference does not by itself entail structural identity or structural difference. | ACCEPT |
+| RFX01B1 | Within a declared structural representation and comparison rule, satisfaction of the declared equivalence criterion licenses structural identity or equivalence at that comparison level. | — |
+| RFX01B2 | Failure to satisfy the declared equivalence criterion licenses criterion-relative non-identity at that comparison level, but does not by itself license unrestricted structural difference or target individuation. | — |
 | RFX02 | The scientifically inspectable object is the source-grounded, reviewed ClaimIR record with preserved source-local provenance; the opaque model proposal that initiated extraction is not itself scientific authority. | — |
 | RFX03 | Under the frozen whole-claim Phi comparison, all 1,770 unordered pairs among the 60 designed claims were incomparable, with no whole-claim equivalence or refinement. | — |
 | RFX04 | The universal whole-claim incomparability is localized primarily to enriched pre-topology comparison constraints rather than to the eight-axis inventory alone. | — |
@@ -36,14 +41,6 @@ The original wording remains preserved in the candidate packet's `pre_review_rev
 | RFX14 | Paper 2's strongest licensed conclusion is a bounded measurement-oriented structural reconstruction; it does not establish a complete scientific claim language, nine ontological primitives, absolute mathematical minimality, a universal system boundary, a representative population estimate, or a demarcation criterion for cognition. | — |
 | RFX15 | AssertionCarrier v2 is a minimal post-hoc extension derived from the frozen AHV-8 v1 held-out gaps: it retrospectively repairs all 17 of those gaps and closes 28/28 AHV relations, but this is calibration rather than independent v2 validation; a newly admitted post-v2 held-out set is required for an independent validation claim. | — |
 
-## Review boundary
-
-- All active candidates remain `manual_review_status = unreviewed`.
-- Review must not optimize wording for downstream Grammar fit.
-- Rejected or superseded wording remains preserved as provenance.
-- The self-target manuscript is the target surface, not self-validating evidence authority.
-- Frozen repository artifacts remain authority for later support/evidence classification.
-
 Terminal while incomplete:
 
-`RFX16_HUMAN_REVIEW_PENDING`
+`RFX17_HUMAN_REVIEW_PENDING`
