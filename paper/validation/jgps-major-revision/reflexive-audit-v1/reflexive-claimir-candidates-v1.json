@@ -10,7 +10,7 @@
     "manuscript_is_scientific_authority": false,
     "evidence_authority_rule": "repository frozen artifacts and validation commits remain authority for support status"
   },
-  "candidate_count": 21,
+  "candidate_count": 22,
   "candidate_ids": [
     "RFX01A",
     "RFX01B1",
@@ -24,7 +24,8 @@
     "RFX05C",
     "RFX06A",
     "RFX06B",
-    "RFX07",
+    "RFX07A",
+    "RFX07B",
     "RFX08",
     "RFX09",
     "RFX10",
@@ -1575,8 +1576,8 @@
       }
     },
     {
-      "self_target_id": "RFX07",
-      "normalized_claim": "Reverse projection of the frozen 60 claims into Grammar v0 yields 21 FULL, 22 PARTIAL, and 17 RESIDUAL claims; adjudication of residuals finds 13 primary SOURCE_CONTEXT_PARAMETER cases, four RELATION_LANGUAGE_GAP cases, and zero ROLE_GAP cases.",
+      "self_target_id": "RFX07A",
+      "normalized_claim": "Reverse projection of the frozen 60 reviewed claims into Grammar v0 yields 21 FULL, 22 PARTIAL, and 17 RESIDUAL classifications.",
       "target_source": "Paper 2 manuscript / frozen validation-extension claim surface",
       "repository_evidence_authorities": [
         "paper/venues/jgps/main.tex@89b094476137bae12e089e5a794a5e57300f4da1",
@@ -1587,7 +1588,7 @@
       "reflexive_verdict_created": false,
       "claimir": {
         "schema_version": "paper2-claim-ir-v1",
-        "claim_id": "RFX07.C1",
+        "claim_id": "RFX07A.C1",
         "provenance": {
           "paper_id": "SELF:RELAYTHEORY-PAPER2",
           "source_language": "en",
@@ -1679,33 +1680,6 @@
                 "s2"
               ],
               "grounding": "normalized"
-            },
-            {
-              "id": "source_context_13",
-              "role": "response_or_outcome",
-              "description": "13 residual claims primarily classified as source-context parameters",
-              "source_span_ids": [
-                "s2"
-              ],
-              "grounding": "normalized"
-            },
-            {
-              "id": "relation_language_4",
-              "role": "response_or_outcome",
-              "description": "four residual claims primarily classified as relation-language gaps",
-              "source_span_ids": [
-                "s2"
-              ],
-              "grounding": "normalized"
-            },
-            {
-              "id": "role_gap_0",
-              "role": "response_or_outcome",
-              "description": "zero residual claims establish a new top-level cognitive-system role gap",
-              "source_span_ids": [
-                "s2"
-              ],
-              "grounding": "normalized"
             }
           ],
           "relations": [
@@ -1751,7 +1725,108 @@
                 "s2"
               ],
               "grounding": "normalized"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "self_target_id": "RFX07B",
+      "normalized_claim": "Adjudication of the 17 residual claims assigns 13 to the primary SOURCE_CONTEXT_PARAMETER class, four to RELATION_LANGUAGE_GAP, and none to ROLE_GAP.",
+      "target_source": "Paper 2 manuscript / frozen validation-extension claim surface",
+      "repository_evidence_authorities": [
+        "paper/venues/jgps/main.tex@89b094476137bae12e089e5a794a5e57300f4da1",
+        "research/paper2/paper2_result_v1.json@a20d1ae31e1ccc905b891bfb7312285cdcce55b4"
+      ],
+      "grammar_mapping_inspected": false,
+      "evidence_profile_created": false,
+      "reflexive_verdict_created": false,
+      "claimir": {
+        "schema_version": "paper2-claim-ir-v1",
+        "claim_id": "RFX07B.C1",
+        "provenance": {
+          "paper_id": "SELF:RELAYTHEORY-PAPER2",
+          "source_language": "en",
+          "source_spans": [
+            {
+              "span_id": "s1",
+              "locator": "paper/venues/jgps/main.tex — Abstract / reverse-projection result: FULL=21, PARTIAL=22, RESIDUAL=17."
             },
+            {
+              "span_id": "s2",
+              "locator": "research/paper2/paper2_result_v1.json — residual primary taxonomy SOURCE_CONTEXT_PARAMETER=13, RELATION_LANGUAGE_GAP=4, ROLE_GAP=0."
+            }
+          ],
+          "authors": [
+            "Rintaro Sakamoto"
+          ],
+          "institutions": [
+            "Independent Scholar"
+          ],
+          "venue": "Journal for General Philosophy of Science submission surface / RelayTheory validation extension",
+          "citation_count": null,
+          "construct_labels": [
+            "reverse projection",
+            "residual taxonomy"
+          ]
+        },
+        "extraction": {
+          "extractor": "ChatGPT",
+          "extractor_version": "GPT-5.6 Sol",
+          "procedure_version": "paper2-reflexive-audit-candidate-v1:#384",
+          "extracted_at": "2026-10-01",
+          "manual_review_status": "unreviewed"
+        },
+        "claim_core": {
+          "claim_type": "relation",
+          "modality": "descriptive",
+          "scope": {
+            "conditions": [],
+            "population": [],
+            "substrate": [],
+            "task": [],
+            "temporal_scope": []
+          },
+          "nodes": [
+            {
+              "id": "residual_17",
+              "role": "response_or_outcome",
+              "description": "17 claims retain residual structure under the frozen direct mapping",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "source_context_13",
+              "role": "response_or_outcome",
+              "description": "13 residual claims primarily classified as source-context parameters",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "relation_language_4",
+              "role": "response_or_outcome",
+              "description": "four residual claims primarily classified as relation-language gaps",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "role_gap_0",
+              "role": "response_or_outcome",
+              "description": "zero residual claims establish a new top-level cognitive-system role gap",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            }
+          ],
+          "relations": [
             {
               "id": "r4",
               "kind": "maps_to",
@@ -3324,7 +3399,7 @@
       }
     }
   ],
-  "terminal": "RFX21_CANDIDATES_FROZEN_PENDING_AUTHOR_REVIEW",
+  "terminal": "RFX22_CANDIDATES_FROZEN_PENDING_AUTHOR_REVIEW",
   "fresh_authority_reconciliation": {
     "observed_after_initial_candidate_freeze": "ad1c11789814413b1d9fd3ca8a4cfb6f7316f230",
     "reason": "AssertionCarrier v2 became current main before author review started; RFX15 was added before any review or downstream mapping.",
@@ -3407,6 +3482,22 @@
       "decisions": {
         "RFX06A": "ACCEPT",
         "RFX06B": "ACCEPT"
+      },
+      "downstream_fit_inspected": false,
+      "date": "2026-10-01"
+    },
+    {
+      "event": "AUTHOR_ACCEPTED_TWO_WAY_SPLIT",
+      "original_id": "RFX07",
+      "replacements": [
+        "RFX07A",
+        "RFX07B"
+      ],
+      "original_normalized_claim": "Reverse projection of the frozen 60 claims into Grammar v0 yields 21 FULL, 22 PARTIAL, and 17 RESIDUAL claims; adjudication of residuals finds 13 primary SOURCE_CONTEXT_PARAMETER cases, four RELATION_LANGUAGE_GAP cases, and zero ROLE_GAP cases.",
+      "reason": "Separate observed Grammar v0 reverse-projection category counts from adjudicated residual primary class counts.",
+      "decisions": {
+        "RFX07A": "ACCEPT",
+        "RFX07B": "ACCEPT"
       },
       "downstream_fit_inspected": false,
       "date": "2026-10-01"
