@@ -13,7 +13,7 @@ CANDIDATES = ROOT / "reflexive-claimir-candidates-v1.json"
 PROGRESS = ROOT / "human-review-progress-v1.json"
 PACKET = ROOT / "author-review-packet-v1.md"
 
-EXPECTED_IDS = [f"RFX{i:02d}" for i in range(1, 16)]
+EXPECTED_IDS = ["RFX01A", "RFX01B"] + [f"RFX{i:02d}" for i in range(2, 16)]
 
 class ValidationError(ValueError):
     pass
@@ -44,12 +44,12 @@ def validate() -> dict[str, Any]:
         raise ValidationError("candidate packet status drift")
     if c.get("authority_issue") != 384:
         raise ValidationError("candidate packet authority issue drift")
-    if c.get("candidate_count") != 15:
-        raise ValidationError("candidate count is not 15")
+    if c.get("candidate_count") != 16:
+        raise ValidationError("candidate count is not 16")
     if c.get("candidate_ids") != EXPECTED_IDS:
         raise ValidationError("candidate ID surface drift")
-    if len(c.get("candidates", [])) != 15:
-        raise ValidationError("candidate payload count is not 15")
+    if len(c.get("candidates", [])) != 16:
+        raise ValidationError("candidate payload count is not 16")
 
     seen_claim_ids: set[str] = set()
     for expected_id, item in zip(EXPECTED_IDS, c["candidates"]):
@@ -107,7 +107,7 @@ def validate() -> dict[str, Any]:
     if h.get("schema") != "relay-theory.paper2.reflexive_audit_human_review_progress.v1":
         raise ValidationError("review progress schema drift")
     expected_progress = {
-        "total": 15,
+        "total": 16,
         "reviewed": 0,
         "accepted": 0,
         "revised": 0,
@@ -121,10 +121,10 @@ def validate() -> dict[str, Any]:
         raise ValidationError("review decisions exist before author review")
     if h.get("remaining") != EXPECTED_IDS:
         raise ValidationError("review remaining set drift")
-    if h.get("terminal") != "RFX15_HUMAN_REVIEW_0_OF_15_PENDING":
+    if h.get("terminal") != "RFX16_HUMAN_REVIEW_0_OF_16_PENDING":
         raise ValidationError("review terminal drift")
 
-    if "UNREVIEWED" not in review_text or "0 / 15" not in review_text:
+    if "UNREVIEWED" not in review_text or "0 / 16" not in review_text:
         raise ValidationError("review packet status text drift")
     for cid in EXPECTED_IDS:
         if f"| {cid} |" not in review_text:
@@ -134,14 +134,14 @@ def validate() -> dict[str, Any]:
         "schema": "relay-theory.paper2.reflexive_audit_candidate_validation.v1",
         "status": "PASS",
         "authority_issue": 384,
-        "candidate_count": 15,
+        "candidate_count": 16,
         "human_reviewed": 0,
         "all_candidates_unreviewed": True,
         "grammar_mapping_inspected": False,
         "evidence_profile_created": False,
         "reflexive_verdict_created": False,
         "downstream_authorized": False,
-        "terminal": "RFX15_PRE_REVIEW_GATE_VALIDATION_PASS",
+        "terminal": "RFX16_PRE_REVIEW_GATE_VALIDATION_PASS",
     }
 
 def main() -> None:
