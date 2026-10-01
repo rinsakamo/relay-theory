@@ -4,10 +4,10 @@
   "authority_issue": 384,
   "generated_date": "2026-10-01",
   "candidate_packet_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/reflexive-claimir-candidates-v1.json",
-  "candidate_packet_blob_sha": "93ccb17da6da75ffbc353c7f20c05f0460d126c8",
-  "total": 28,
-  "reviewed": 21,
-  "accepted": 21,
+  "candidate_packet_blob_sha": "7976b61e360e0ad4a0106f227fc0da2912f01791",
+  "total": 30,
+  "reviewed": 22,
+  "accepted": 22,
   "revised": 0,
   "rejected": 0,
   "decisions": [
@@ -136,12 +136,19 @@
       "decision": "ACCEPT",
       "decision_date": "2026-10-01",
       "decision_record_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/human-reviewed/RFX10D.json"
+    },
+    {
+      "self_target_id": "RFX11A",
+      "decision": "ACCEPT",
+      "decision_date": "2026-10-01",
+      "decision_record_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/human-reviewed/RFX11A.json"
     }
   ],
   "remaining": [
     "RFX01B1",
     "RFX01B2",
-    "RFX11",
+    "RFX11B",
+    "RFX11C",
     "RFX12",
     "RFX13",
     "RFX14",
@@ -154,7 +161,7 @@
     "LAYERED_ARCHITECTURE_PROJECTION",
     "REFLEXIVE_RECONSTRUCTION_VERDICT"
   ],
-  "terminal": "RFX28_HUMAN_REVIEW_21_OF_28_PENDING",
+  "terminal": "RFX30_HUMAN_REVIEW_22_OF_30_PENDING",
   "authority_reconciliation": "RFX15 added pre-review after fresh main advanced to #385; no human decisions existed at reconciliation time.",
   "pre_review_revision_history": [
     {
@@ -306,6 +313,25 @@
       },
       "downstream_fit_inspected": false,
       "date": "2026-10-01"
+    },
+    {
+      "event": "AUTHOR_APPROVED_RFX11A_AFTER_RUBRIC_CLARIFICATION",
+      "original_id": "RFX11",
+      "replacements": [
+        "RFX11A",
+        "RFX11B",
+        "RFX11C"
+      ],
+      "original_normalized_claim": "In the prospective PVS-16 validation, frozen Grammar-v0 mapping leaves high-evidence E2/E3 pressure without a new top-level role gap, and the pre-existing layered architecture places all 52 relations with zero ARCHITECTURE_GAP and zero ROLE_GAP, while retaining one E3 claim-carrier precision pressure.",
+      "reason": "Separate direct E2/E3 evidence-stratified Grammar-mapping diagnostic from 52-relation layered architecture placement and residual E3 claim-carrier precision pressure. Replace vague 'high evidence' with frozen E2 direct intervention / E3 explicit replicated intervention definitions and preserve non-strict E2/E3 results.",
+      "decisions": {
+        "RFX11A": "ACCEPT",
+        "RFX11B": "PENDING",
+        "RFX11C": "PENDING"
+      },
+      "source_confirmation": "pvs16-evidence-x-grammar-diagnostic-v1.md @ 520845d13fa0e7e806e5e55caff45332e9dbc637; E2 4 PRESERVED / 2 PARTIAL / 2 UNMAPPED; E3 3 PRESERVED / 0 PARTIAL / 1 UNMAPPED; no high-evidence ROLE_GAP",
+      "downstream_fit_inspected": false,
+      "date": "2026-10-01"
     }
   ],
   "superseded_review_events": [
@@ -382,6 +408,16 @@
         "RFX10B",
         "RFX10C",
         "RFX10D"
+      ],
+      "counted_in_active_review_totals": false
+    },
+    {
+      "self_target_id": "RFX11",
+      "decision": "SPLIT_RFX11A_ACCEPTED_RFX11B_C_PENDING",
+      "replacements": [
+        "RFX11A",
+        "RFX11B",
+        "RFX11C"
       ],
       "counted_in_active_review_totals": false
     }
