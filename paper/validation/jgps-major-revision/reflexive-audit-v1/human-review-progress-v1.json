@@ -4,10 +4,10 @@
   "authority_issue": 384,
   "generated_date": "2026-10-01",
   "candidate_packet_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/reflexive-claimir-candidates-v1.json",
-  "candidate_packet_blob_sha": "bd83521bed0d44dabbdb05646d0a91f4d86e3d23",
-  "total": 22,
-  "reviewed": 12,
-  "accepted": 12,
+  "candidate_packet_blob_sha": "628ef66772fbae262e0a14c794553a4ce0888341",
+  "total": 24,
+  "reviewed": 15,
+  "accepted": 15,
   "revised": 0,
   "rejected": 0,
   "decisions": [
@@ -82,12 +82,29 @@
       "decision": "ACCEPT",
       "decision_date": "2026-10-01",
       "decision_record_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/human-reviewed/RFX07B.json"
+    },
+    {
+      "self_target_id": "RFX08A",
+      "decision": "ACCEPT",
+      "decision_date": "2026-10-01",
+      "decision_record_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/human-reviewed/RFX08A.json"
+    },
+    {
+      "self_target_id": "RFX08B",
+      "decision": "ACCEPT",
+      "decision_date": "2026-10-01",
+      "decision_record_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/human-reviewed/RFX08B.json"
+    },
+    {
+      "self_target_id": "RFX08C",
+      "decision": "ACCEPT",
+      "decision_date": "2026-10-01",
+      "decision_record_path": "paper/validation/jgps-major-revision/reflexive-audit-v1/human-reviewed/RFX08C.json"
     }
   ],
   "remaining": [
     "RFX01B1",
     "RFX01B2",
-    "RFX08",
     "RFX09",
     "RFX10",
     "RFX11",
@@ -103,7 +120,7 @@
     "LAYERED_ARCHITECTURE_PROJECTION",
     "REFLEXIVE_RECONSTRUCTION_VERDICT"
   ],
-  "terminal": "RFX22_HUMAN_REVIEW_12_OF_22_PENDING",
+  "terminal": "RFX24_HUMAN_REVIEW_15_OF_24_PENDING",
   "authority_reconciliation": "RFX15 added pre-review after fresh main advanced to #385; no human decisions existed at reconciliation time.",
   "pre_review_revision_history": [
     {
@@ -201,6 +218,24 @@
       },
       "downstream_fit_inspected": false,
       "date": "2026-10-01"
+    },
+    {
+      "event": "AUTHOR_ACCEPTED_THREE_WAY_SPLIT",
+      "original_id": "RFX08",
+      "replacements": [
+        "RFX08A",
+        "RFX08B",
+        "RFX08C"
+      ],
+      "original_normalized_claim": "Under strict direct-preservation comparators, a generic X/K/T view and a POMDP-like view lose distinctions explicitly preserved by the frozen corpus; this is a distinction-loss result, not a proof of mathematical non-encodability.",
+      "reason": "Separately adjudicate the frozen X/K/T comparator, the tested POMDP-like comparator, and the bounded inference excluding any mathematical non-encodability conclusion.",
+      "decisions": {
+        "RFX08A": "ACCEPT",
+        "RFX08B": "ACCEPT",
+        "RFX08C": "ACCEPT"
+      },
+      "downstream_fit_inspected": false,
+      "date": "2026-10-01"
     }
   ],
   "superseded_review_events": [
@@ -247,6 +282,16 @@
       "replacements": [
         "RFX07A",
         "RFX07B"
+      ],
+      "counted_in_active_review_totals": false
+    },
+    {
+      "self_target_id": "RFX08",
+      "decision": "SPLIT_AND_CHILDREN_ACCEPTED",
+      "replacements": [
+        "RFX08A",
+        "RFX08B",
+        "RFX08C"
       ],
       "counted_in_active_review_totals": false
     }
