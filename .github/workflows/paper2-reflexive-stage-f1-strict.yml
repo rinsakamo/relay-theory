@@ -1,0 +1,34 @@
+name: paper2-reflexive-stage-f1-strict
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/paper2-reflexive-stage-f1-strict.yml'
+      - 'paper/validation/jgps-major-revision/reflexive-audit-v1/**'
+      - 'scripts/paper2_reflexive_stage_f1_validate.py'
+  workflow_dispatch:
+
+jobs:
+  frozen-v2-strict-direct-screen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Checkout exact original frozen AssertionCarrier v2
+        uses: actions/checkout@v4
+        with:
+          ref: ad1c11789814413b1d9fd3ca8a4cfb6f7316f230
+          path: frozen-v2
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reverify frozen independent Stage D
+        run: python scripts/paper2_reflexive_stage_d_validate.py
+      - name: Compile preregistered F1 audit validator
+        run: python -m py_compile scripts/paper2_reflexive_stage_f1_validate.py
+      - name: Verify strict direct F1 type-domain screen twice
+        run: |
+          python scripts/paper2_reflexive_stage_f1_validate.py > /tmp/rfx-f1-a.json
+          python scripts/paper2_reflexive_stage_f1_validate.py > /tmp/rfx-f1-b.json
+          cmp /tmp/rfx-f1-a.json /tmp/rfx-f1-b.json
+          cat /tmp/rfx-f1-a.json
