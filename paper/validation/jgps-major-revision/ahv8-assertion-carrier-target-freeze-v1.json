@@ -1,0 +1,374 @@
+{
+  "schema": "relay-theory.paper2.ahv8_assertion_carrier_target_freeze.v1",
+  "status": "FROZEN_PRE_MAPPING_TARGET_SET",
+  "authority_issue": 382,
+  "generated_date": "2026-10-01",
+  "assertion_carrier_schema_path": "paper/validation/jgps-major-revision/l-claim-assertion-carrier-schema-v1.json",
+  "assertion_carrier_schema_blob_sha": "045c44f2055a2579eea89e2f2255b0bd2873c76e",
+  "human_review_main_commit": "55d74403e46e27b56263c61fb744d3046075626d",
+  "selection_rule": "all relations from all eight human-reviewed AHV-8 ClaimIR files, with no relation dropped or sampled",
+  "carrier_mapping_started": false,
+  "schema_tuning_after_target_freeze_forbidden": true,
+  "claims": [
+    {
+      "validation_claim_id": "AHV-MEM-01",
+      "claim_id": "AHV-MEM-01.C1",
+      "reviewed_claimir_blob_sha": "3da4a737bcd6c1dde1948a0b023739c04f447dbf",
+      "relation_count": 3,
+      "relations": [
+        {
+          "assertion_id": "AHV-MEM-01.r1",
+          "source_relation_id": "r1",
+          "source_kind": "other",
+          "source_arguments": [
+            "task_capacity_estimate",
+            "broader_cognitive_measure"
+          ],
+          "description": "the retention estimate is strongly associated with broader cognitive ability in the reviewed evidence"
+        },
+        {
+          "assertion_id": "AHV-MEM-01.r2",
+          "source_relation_id": "r2",
+          "source_kind": "differs",
+          "source_arguments": [
+            "limited_item_account",
+            "divisible_resource_account"
+          ],
+          "description": "the review contrasts a finite-item account with a continuously divisible-resource alternative"
+        },
+        {
+          "assertion_id": "AHV-MEM-01.r3",
+          "source_relation_id": "r3",
+          "source_kind": "other",
+          "source_arguments": [
+            "limited_item_account",
+            "divisible_resource_account"
+          ],
+          "description": "the reviewed empirical and neural-model evidence favors the finite-item account over the continuously divisible alternative"
+        }
+      ]
+    },
+    {
+      "validation_claim_id": "AHV-LRN-01",
+      "claim_id": "AHV-LRN-01.C1",
+      "reviewed_claimir_blob_sha": "059889f9abc5549303dcc2eab2cfbb961d90000c",
+      "relation_count": 4,
+      "relations": [
+        {
+          "assertion_id": "AHV-LRN-01.r1",
+          "source_relation_id": "r1",
+          "source_kind": "depends_on",
+          "source_arguments": [
+            "reward_discrepancy",
+            "obtained_reward",
+            "predicted_reward"
+          ],
+          "description": "the discrepancy quantity is determined by obtained reward relative to what was expected"
+        },
+        {
+          "assertion_id": "AHV-LRN-01.r2",
+          "source_relation_id": "r2",
+          "source_kind": "depends_on",
+          "source_arguments": [
+            "neural_response",
+            "reward_discrepancy"
+          ],
+          "description": "the recorded cue response varies with whether a reward discrepancy occurs"
+        },
+        {
+          "assertion_id": "AHV-LRN-01.r3",
+          "source_relation_id": "r3",
+          "source_kind": "depends_on",
+          "source_arguments": [
+            "learned_behavior",
+            "reward_discrepancy"
+          ],
+          "description": "behavioral learning likewise varies with occurrence of the reward discrepancy"
+        },
+        {
+          "assertion_id": "AHV-LRN-01.r4",
+          "source_relation_id": "r4",
+          "source_kind": "other",
+          "source_arguments": [
+            "conditioned_cue",
+            "predicted_reward",
+            "reward_discrepancy",
+            "neural_response",
+            "learned_behavior"
+          ],
+          "description": "cue-response and behavioral-learning effects are not accounted for by stimulus-reward pairing alone when reward is already predicted"
+        }
+      ]
+    },
+    {
+      "validation_claim_id": "AHV-SKL-01",
+      "claim_id": "AHV-SKL-01.C1",
+      "reviewed_claimir_blob_sha": "8d4207dc65923c68009b3bd53083d51df99ea20c",
+      "relation_count": 4,
+      "relations": [
+        {
+          "assertion_id": "AHV-SKL-01.r1",
+          "source_relation_id": "r1",
+          "source_kind": "changes",
+          "source_arguments": [
+            "exposure_history",
+            "stored_instances"
+          ],
+          "description": "additional practice increases the stock of stored exposure-specific representations"
+        },
+        {
+          "assertion_id": "AHV-SKL-01.r2",
+          "source_relation_id": "r2",
+          "source_kind": "depends_on",
+          "source_arguments": [
+            "retrieval_process",
+            "stored_instances",
+            "environmental_consistency"
+          ],
+          "description": "effective retrieval in later performance depends on stored exposure records being useful in a consistent environment"
+        },
+        {
+          "assertion_id": "AHV-SKL-01.r3",
+          "source_relation_id": "r3",
+          "source_kind": "depends_on",
+          "source_arguments": [
+            "automatic_processing",
+            "retrieval_process"
+          ],
+          "description": "later automatic performance is proposed to rely on retrieval of stored exposure records"
+        },
+        {
+          "assertion_id": "AHV-SKL-01.r4",
+          "source_relation_id": "r4",
+          "source_kind": "changes",
+          "source_arguments": [
+            "exposure_history",
+            "retrieval_speed"
+          ],
+          "description": "retrieval becomes faster as practice accumulates"
+        }
+      ]
+    },
+    {
+      "validation_claim_id": "AHV-ATT-01",
+      "claim_id": "AHV-ATT-01.C1",
+      "reviewed_claimir_blob_sha": "aed34c792161dd6744953a5b6b20e2c6e22797ac",
+      "relation_count": 4,
+      "relations": [
+        {
+          "assertion_id": "AHV-ATT-01.r1",
+          "source_relation_id": "r1",
+          "source_kind": "changes",
+          "source_arguments": [
+            "perceptual_load",
+            "distractor_interference"
+          ],
+          "description": "higher perceptual demand reduces interference from irrelevant stimuli"
+        },
+        {
+          "assertion_id": "AHV-ATT-01.r2",
+          "source_relation_id": "r2",
+          "source_kind": "changes",
+          "source_arguments": [
+            "memory_coordination_load",
+            "distractor_interference"
+          ],
+          "description": "greater memory or coordination demand increases interference from irrelevant stimuli"
+        },
+        {
+          "assertion_id": "AHV-ATT-01.r3",
+          "source_relation_id": "r3",
+          "source_kind": "differs",
+          "source_arguments": [
+            "perceptual_load",
+            "memory_coordination_load",
+            "distractor_interference"
+          ],
+          "description": "the two load types have opposite reported effects on distractor interference"
+        },
+        {
+          "assertion_id": "AHV-ATT-01.r4",
+          "source_relation_id": "r4",
+          "source_kind": "depends_on",
+          "source_arguments": [
+            "priority_maintenance_process",
+            "memory_coordination_load"
+          ],
+          "description": "maintenance of current priorities is limited when concurrent cognitive demand consumes the resources available for that process"
+        }
+      ]
+    },
+    {
+      "validation_claim_id": "AHV-PRD-01",
+      "claim_id": "AHV-PRD-01.C1",
+      "reviewed_claimir_blob_sha": "dccbda6e5f9dc5e020cafe8d6f5ee9473a8dd45f",
+      "relation_count": 2,
+      "relations": [
+        {
+          "assertion_id": "AHV-PRD-01.r1",
+          "source_relation_id": "r1",
+          "source_kind": "depends_on",
+          "source_arguments": [
+            "predicted_next_state",
+            "current_motor_state",
+            "outgoing_motor_command"
+          ],
+          "description": "the next-state prediction depends jointly on the current motor state and the outgoing command"
+        },
+        {
+          "assertion_id": "AHV-PRD-01.r2",
+          "source_relation_id": "r2",
+          "source_kind": "maps_to",
+          "source_arguments": [
+            "predictive_representation",
+            "current_motor_state",
+            "outgoing_motor_command",
+            "predicted_next_state"
+          ],
+          "description": "the predictive representation maps current state and command information into a prediction of the next state"
+        }
+      ]
+    },
+    {
+      "validation_claim_id": "AHV-CTL-01",
+      "claim_id": "AHV-CTL-01.C1",
+      "reviewed_claimir_blob_sha": "aa6231e0c72a5370b972d58efd6ced65b66b577b",
+      "relation_count": 3,
+      "relations": [
+        {
+          "assertion_id": "AHV-CTL-01.r1",
+          "source_relation_id": "r1",
+          "source_kind": "changes",
+          "source_arguments": [
+            "practice_amount",
+            "pathway_strength"
+          ],
+          "description": "processing-pathway strength increases as training accumulates"
+        },
+        {
+          "assertion_id": "AHV-CTL-01.r2",
+          "source_relation_id": "r2",
+          "source_kind": "depends_on",
+          "source_arguments": [
+            "automatic_performance_degree",
+            "pathway_strength"
+          ],
+          "description": "the degree of automatic performance depends on processing-pathway strength"
+        },
+        {
+          "assertion_id": "AHV-CTL-01.r3",
+          "source_relation_id": "r3",
+          "source_kind": "depends_on",
+          "source_arguments": [
+            "automatic_performance_degree",
+            "task_control_input"
+          ],
+          "description": "even highly practiced processing remains sensitive to task-directed control"
+        }
+      ]
+    },
+    {
+      "validation_claim_id": "AHV-BLF-01",
+      "claim_id": "AHV-BLF-01.C1",
+      "reviewed_claimir_blob_sha": "e08abb66a5c46d3a354b65632911ae4ef3ef0ddc",
+      "relation_count": 4,
+      "relations": [
+        {
+          "assertion_id": "AHV-BLF-01.r1",
+          "source_relation_id": "r1",
+          "source_kind": "distinguishes",
+          "source_arguments": [
+            "relation_existence",
+            "relation_strength"
+          ],
+          "description": "the framework distinguishes the existence of a causal relation from its strength"
+        },
+        {
+          "assertion_id": "AHV-BLF-01.r2",
+          "source_relation_id": "r2",
+          "source_kind": "maps_to",
+          "source_arguments": [
+            "contingency_evidence",
+            "structure_assessment"
+          ],
+          "description": "one rational model maps contingency evidence to an assessment of relation existence"
+        },
+        {
+          "assertion_id": "AHV-BLF-01.r3",
+          "source_relation_id": "r3",
+          "source_kind": "maps_to",
+          "source_arguments": [
+            "contingency_evidence",
+            "strength_estimate"
+          ],
+          "description": "other rational measures map contingency evidence to an estimate of relation strength"
+        },
+        {
+          "assertion_id": "AHV-BLF-01.r4",
+          "source_relation_id": "r4",
+          "source_kind": "differs",
+          "source_arguments": [
+            "structure_assessment",
+            "strength_estimate"
+          ],
+          "description": "the source treats structure assessment and strength estimation as different inferential targets"
+        }
+      ]
+    },
+    {
+      "validation_claim_id": "AHV-CNC-01",
+      "claim_id": "AHV-CNC-01.C1",
+      "reviewed_claimir_blob_sha": "1572fe1e01b02ea1e76ab6a34c625e3c58ba3231",
+      "relation_count": 4,
+      "relations": [
+        {
+          "assertion_id": "AHV-CNC-01.r1",
+          "source_relation_id": "r1",
+          "source_kind": "maps_to",
+          "source_arguments": [
+            "probe_item",
+            "stored_exemplars",
+            "similarity_relation",
+            "retrieved_information"
+          ],
+          "description": "the probe retrieves information from stored instances according to their similarity to the probe"
+        },
+        {
+          "assertion_id": "AHV-CNC-01.r2",
+          "source_relation_id": "r2",
+          "source_kind": "depends_on",
+          "source_arguments": [
+            "classification_judgment",
+            "retrieved_information"
+          ],
+          "description": "the classification judgment depends on the retrieved instance information"
+        },
+        {
+          "assertion_id": "AHV-CNC-01.r3",
+          "source_relation_id": "r3",
+          "source_kind": "differs",
+          "source_arguments": [
+            "exemplar_account",
+            "additive_feature_account"
+          ],
+          "description": "the source contrasts an instance-based account with an additive component-feature alternative"
+        },
+        {
+          "assertion_id": "AHV-CNC-01.r4",
+          "source_relation_id": "r4",
+          "source_kind": "other",
+          "source_arguments": [
+            "exemplar_account",
+            "additive_feature_account"
+          ],
+          "description": "across the reported experiments the instance-based account provides a better account of the data than the additive alternative"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "claims": 8,
+    "relations": 28
+  },
+  "terminal": "AHV8_ASSERTION_CARRIER_TARGET_SET_FROZEN_28_RELATIONS_BEFORE_MAPPING"
+}
