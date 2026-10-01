@@ -10,7 +10,7 @@
     "manuscript_is_scientific_authority": false,
     "evidence_authority_rule": "repository frozen artifacts and validation commits remain authority for support status"
   },
-  "candidate_count": 14,
+  "candidate_count": 15,
   "candidate_ids": [
     "RFX01",
     "RFX02",
@@ -25,7 +25,8 @@
     "RFX11",
     "RFX12",
     "RFX13",
-    "RFX14"
+    "RFX14",
+    "RFX15"
   ],
   "guards": {
     "all_manual_review_status_unreviewed": true,
@@ -2612,7 +2613,199 @@
           ]
         }
       }
+    },
+    {
+      "self_target_id": "RFX15",
+      "normalized_claim": "AssertionCarrier v2 is a minimal post-hoc extension derived from the frozen AHV-8 v1 held-out gaps: it retrospectively repairs all 17 of those gaps and closes 28/28 AHV relations, but this is calibration rather than independent v2 validation; a newly admitted post-v2 held-out set is required for an independent validation claim.",
+      "target_source": "Paper 2 validation-extension claim surface",
+      "repository_evidence_authorities": [
+        "commit:ad1c11789814413b1d9fd3ca8a4cfb6f7316f230",
+        "#385"
+      ],
+      "grammar_mapping_inspected": false,
+      "evidence_profile_created": false,
+      "reflexive_verdict_created": false,
+      "claimir": {
+        "schema_version": "paper2-claim-ir-v1",
+        "claim_id": "RFX15.C1",
+        "provenance": {
+          "paper_id": "SELF:RELAYTHEORY-PAPER2",
+          "source_language": "en",
+          "source_spans": [
+            {
+              "span_id": "s1",
+              "locator": "commit ad1c11789814413b1d9fd3ca8a4cfb6f7316f230 — AssertionCarrier v2 minimal extension: +1 TRANSFORMATION family, +1 DISTINCT qualifier, existing L_claim as allowed binding layer, THEORETICAL_ACCOUNT object type, directionality/evaluation modifiers, +0 top-level architecture layers."
+            },
+            {
+              "span_id": "s2",
+              "locator": "same commit — AHV-8 retrospective calibration repairs 17/17 frozen v1 gaps and closes 28/28 relations; independent v2 validation is explicitly not claimed and a new post-v2 held-out set is required."
+            }
+          ],
+          "authors": [
+            "Rintaro Sakamoto"
+          ],
+          "institutions": [
+            "Independent Scholar"
+          ],
+          "venue": "RelayTheory validation extension",
+          "citation_count": null,
+          "construct_labels": [
+            "AssertionCarrier v2",
+            "AHV-8",
+            "held-out validation"
+          ]
+        },
+        "extraction": {
+          "extractor": "ChatGPT",
+          "extractor_version": "GPT-5.6 Sol",
+          "procedure_version": "paper2-reflexive-audit-candidate-v1:#384",
+          "extracted_at": "2026-10-01",
+          "manual_review_status": "unreviewed"
+        },
+        "claim_core": {
+          "claim_type": "relation",
+          "modality": "descriptive",
+          "scope": {
+            "conditions": [],
+            "population": [],
+            "substrate": [],
+            "task": [],
+            "temporal_scope": []
+          },
+          "nodes": [
+            {
+              "id": "assertion_carrier_v1_gaps_17",
+              "role": "state_or_structure",
+              "description": "the 17 held-out AHV relation gaps exposed under the frozen v1 AssertionCarrier",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "assertion_carrier_v2_extension",
+              "role": "state_or_structure",
+              "description": "the minimal compositional extension derived retrospectively from the frozen v1 gap set",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "retrospective_repair_17_of_17",
+              "role": "response_or_outcome",
+              "description": "all 17 frozen v1 AHV gaps are representable under the v2 extension",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "retrospective_closure_28_of_28",
+              "role": "response_or_outcome",
+              "description": "all 28 AHV relations are retrospectively covered under v2",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "independent_v2_validation",
+              "role": "criterion",
+              "description": "validation of v2 on a target surface admitted after the v2 schema was frozen",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "new_post_v2_holdout",
+              "role": "condition",
+              "description": "a newly admitted target set selected after the v2 schema freeze",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            }
+          ],
+          "relations": [
+            {
+              "id": "r1",
+              "kind": "depends_on",
+              "arguments": [
+                "assertion_carrier_v2_extension",
+                "assertion_carrier_v1_gaps_17"
+              ],
+              "description": "the v2 extension is derived from the already-observed frozen v1 held-out gap set",
+              "source_span_ids": [
+                "s1",
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r2",
+              "kind": "maps_to",
+              "arguments": [
+                "assertion_carrier_v2_extension",
+                "retrospective_repair_17_of_17"
+              ],
+              "description": "the calibrated v2 extension repairs all 17 frozen v1 gaps retrospectively",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r3",
+              "kind": "maps_to",
+              "arguments": [
+                "assertion_carrier_v2_extension",
+                "retrospective_closure_28_of_28"
+              ],
+              "description": "the calibrated v2 extension retrospectively closes all 28 AHV relations",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r4",
+              "kind": "depends_on",
+              "arguments": [
+                "independent_v2_validation",
+                "new_post_v2_holdout"
+              ],
+              "description": "an independent v2 validation claim requires a newly admitted post-v2 held-out set",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            },
+            {
+              "id": "r5",
+              "kind": "other",
+              "arguments": [
+                "retrospective_closure_28_of_28",
+                "independent_v2_validation"
+              ],
+              "description": "retrospective 28/28 closure does not itself establish independent v2 validation",
+              "source_span_ids": [
+                "s2"
+              ],
+              "grounding": "normalized"
+            }
+          ]
+        }
+      }
     }
   ],
-  "terminal": "RFX14_CANDIDATES_FROZEN_PENDING_AUTHOR_REVIEW"
+  "terminal": "RFX15_CANDIDATES_FROZEN_PENDING_AUTHOR_REVIEW",
+  "fresh_authority_reconciliation": {
+    "observed_after_initial_candidate_freeze": "ad1c11789814413b1d9fd3ca8a4cfb6f7316f230",
+    "reason": "AssertionCarrier v2 became current main before author review started; RFX15 was added before any review or downstream mapping.",
+    "downstream_fit_inspected": false
+  }
 }
