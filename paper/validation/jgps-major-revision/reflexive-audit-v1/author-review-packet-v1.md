@@ -1,6 +1,6 @@
 # Paper 2 reflexive-audit author review packet v1
 
-Status: **AUTHOR REVIEW IN PROGRESS — 10 / 21**
+Status: **AUTHOR REVIEW IN PROGRESS — 12 / 22**
 
 Authority: #384
 
@@ -14,12 +14,12 @@ Treat relation-bearing connectives such as **and / but / while / therefore** as 
 
 ## Review record
 
-- RFX01A = ACCEPT; original RFX01B was split into RFX01B1 and RFX01B2 (both pending).
-- RFX02A/B = ACCEPT.
-- RFX03 = ACCEPT; RFX04 = ACCEPT following simplification.
-- RFX05A/B/C = ACCEPT after author-approved three-way split; whole-claim failure remains authoritative and control survival is limited to eight declared controls.
-- RFX06A/B = ACCEPT after splitting basis refinement/factorization from the qualified claim that Grammar v0 is not an independent discovery of new top-level primitives.
-- Original wording and revision reasons are preserved in `pre_review_revision_history`.
+- RFX01A = ACCEPT; RFX01B1 and RFX01B2 pending.
+- RFX02A/B, RFX03, RFX04 = ACCEPT.
+- RFX05A/B/C = ACCEPT after the author-approved three-way split; primary whole-claim failure remains preserved, and destructive-control survival is bounded to eight declared controls.
+- RFX06A/B = ACCEPT: basis refinement/factorization and no independent top-level primitive discovery claim.
+- RFX07A/B = ACCEPT: projection category counts and independently reviewed residual primary-class counts for the frozen 60-claim corpus.
+- Original wording and revisions are preserved in `pre_review_revision_history`.
 
 | ID | Normalized claim candidate | Decision |
 |---|---|---|
@@ -35,7 +35,8 @@ Treat relation-bearing connectives such as **and / but / while / therefore** as 
 | RFX05C | The recovered bounded-subobject structure survives the eight declared destructive controls. | ACCEPT |
 | RFX06A | Grammar v0 is a data-constrained refinement or factorization of the declared working basis B_P2. | ACCEPT |
 | RFX06B | Grammar v0 does not constitute an independently discovered inventory of new top-level cognitive primitives. | ACCEPT |
-| RFX07 | Reverse projection of the frozen 60 claims into Grammar v0 yields 21 FULL, 22 PARTIAL, and 17 RESIDUAL claims; adjudication of residuals finds 13 primary SOURCE_CONTEXT_PARAMETER cases, four RELATION_LANGUAGE_GAP cases, and zero ROLE_GAP cases. | — |
+| RFX07A | Reverse projection of the frozen 60 reviewed claims into Grammar v0 yields 21 FULL, 22 PARTIAL, and 17 RESIDUAL classifications. | ACCEPT |
+| RFX07B | Adjudication of the 17 residual claims assigns 13 to the primary SOURCE_CONTEXT_PARAMETER class, four to RELATION_LANGUAGE_GAP, and none to ROLE_GAP. | ACCEPT |
 | RFX08 | Under strict direct-preservation comparators, a generic X/K/T view and a POMDP-like view lose distinctions explicitly preserved by the frozen corpus; this is a distinction-loss result, not a proof of mathematical non-encodability. | — |
 | RFX09 | Paper 2 separates system grammar, scientific-claim semantics, source context, and formal carrier realization into distinct layers; residual claim/context structure is not automatically a missing cognitive-system role. | — |
 | RFX10 | The final architecture separates cognitive system, World, cross-boundary coupling, experimental protocol, and realized run; internal transformation K is not Gamma, intrinsic C is not an experimental condition, and P_in/P_out are not identical to an experimenter's schedule. | — |
@@ -47,4 +48,4 @@ Treat relation-bearing connectives such as **and / but / while / therefore** as 
 
 Terminal while incomplete:
 
-`RFX21_HUMAN_REVIEW_PENDING`
+`RFX22_HUMAN_REVIEW_PENDING`
