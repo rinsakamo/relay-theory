@@ -1,6 +1,6 @@
 # Paper 2 reflexive-audit author review packet v1
 
-Status: **AUTHOR REVIEW IN PROGRESS — 21 / 28**
+Status: **AUTHOR REVIEW IN PROGRESS — 22 / 30**
 
 Authority: #384
 
@@ -16,13 +16,14 @@ Treat relation-bearing connectives such as **and / but / while / therefore** as 
 
 - RFX01A = ACCEPT; RFX01B1 and RFX01B2 pending.
 - RFX02A/B, RFX03, RFX04 = ACCEPT.
-- RFX05A/B/C = ACCEPT; the whole-claim failure remains authoritative and destructive-control survival is restricted to the eight declared tests.
-- RFX06A/B = ACCEPT; basis factorization is distinct from claims about independent top-level primitive discovery.
-- RFX07A/B = ACCEPT; frozen-corpus projection class counts and residual taxonomy are independently stated.
-- RFX08A/B/C = ACCEPT; strict direct-preservation comparator losses do not establish mathematical non-encodability by enriched models.
-- RFX09A/B = ACCEPT; four typed architecture layers and residual/non-entailment limit.
-- RFX10A/B/C/D = ACCEPT; declared system/world/coupling/experiment/run separation and three independent non-identity constraints concerning K/Gamma, C/experimental conditions, and P/interface vs experiment schedule.
-- Original wording and revision provenance remain in `pre_review_revision_history`.
+- RFX05A/B/C = ACCEPT; the primary whole-claim failure remains authoritative; destructive-control survival is bounded to the declared eight controls.
+- RFX06A/B = ACCEPT; data-constrained basis factorization separated from any independent-new-top-level-primitives discovery claim.
+- RFX07A/B = ACCEPT; projection and residual-class counts are limited to the frozen 60-claim reference corpus.
+- RFX08A/B/C = ACCEPT; tested direct-preservation comparator losses do not prove mathematical non-encodability.
+- RFX09A/B = ACCEPT; typed layers and claim/context residual inference limit.
+- RFX10A/B/C/D = ACCEPT; the typed system/World/coupling/experiment/run separation and non-identities K/Gamma, C/experimental condition, P_in/P_out/schedule.
+- RFX11 was split into three claims. Only RFX11A is ACCEPT after source-verified E2/E3 rubric clarification: E2 = direct intervention (4/8 strict preserved, 2 partial, 2 unmapped); E3 = explicit replicated intervention (3/4 strict preserved, 1 unmapped). Their non-preserved relations establish no new top-level ROLE_GAP. RFX11B/C remain pending.
+- Superseded original wording and revision reasons remain in `pre_review_revision_history`.
 
 | ID | Normalized claim candidate | Decision |
 |---|---|---|
@@ -49,7 +50,9 @@ Treat relation-bearing connectives such as **and / but / while / therefore** as 
 | RFX10B | Internal system transformation K is not identical to cross-boundary system-World coupling Gamma. | ACCEPT |
 | RFX10C | System-intrinsic admissibility constraint C is not identical to an experimental condition or protocol. | ACCEPT |
 | RFX10D | System-relative directional interface operations P_in/P_out are not identical to an experimenter's operation or observation schedule. | ACCEPT |
-| RFX11 | In the prospective PVS-16 validation, frozen Grammar-v0 mapping leaves high-evidence E2/E3 pressure without a new top-level role gap, and the pre-existing layered architecture places all 52 relations with zero ARCHITECTURE_GAP and zero ROLE_GAP, while retaining one E3 claim-carrier precision pressure. | — |
+| RFX11A | In the frozen PVS-16 evidence-stratified Grammar-v0 comparison, E2 direct-interventional and E3 explicitly replicated-interventional relations exhibit non-preserved mappings, but their adjudicated residuals do not establish a new top-level cognitive-system ROLE_GAP. | ACCEPT |
+| RFX11B | The pre-existing frozen layered architecture places all 52 PVS-16 relations, with zero ARCHITECTURE_GAP and zero top-level ROLE_GAP under the declared placement rules. | — |
+| RFX11C | One E3 relation, PVS-CNC-02.r2, remains a scientific claim-carrier precision pressure after layered placement despite zero architecture and top-level role gaps. | — |
 | RFX12 | A held-out AHV-8 test rejects completeness of AssertionCarrier v1: only 11 of 28 reviewed relations are FULL and 17 are GAP, with 1 of 8 claims fully covered; the observed gaps are L_claim carrier gaps and do not by themselves establish Grammar-v0 system-role gaps. | — |
 | RFX13 | The 60-claim reference corpus is source-grounded and fully reviewed, but independent extractor agreement and local automated production qualification are not established. | — |
 | RFX14 | Paper 2's strongest licensed conclusion is a bounded measurement-oriented structural reconstruction; it does not establish a complete scientific claim language, nine ontological primitives, absolute mathematical minimality, a universal system boundary, a representative population estimate, or a demarcation criterion for cognition. | — |
@@ -57,4 +60,4 @@ Treat relation-bearing connectives such as **and / but / while / therefore** as 
 
 Terminal while incomplete:
 
-`RFX28_HUMAN_REVIEW_PENDING`
+`RFX30_HUMAN_REVIEW_PENDING`
