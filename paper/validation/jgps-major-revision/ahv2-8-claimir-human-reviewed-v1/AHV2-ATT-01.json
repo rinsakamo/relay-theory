@@ -1,0 +1,172 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "AHV2-ATT-01.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1037/0033-2909.116.2.220",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Public abstract: concurrent performance of two simple tasks reliably produces interference."
+      },
+      {
+        "span_id": "s2",
+        "locator": "Public abstract: psychological-refractory-period evidence supports a stubborn bottleneck encompassing action selection and probably memory retrieval plus some other operations."
+      },
+      {
+        "span_id": "s3",
+        "locator": "Public abstract: limitations in task preparation, sensory-perceptual processing, and timing can produce additional, distinct forms of interference."
+      }
+    ],
+    "authors": [
+      "Harold Pashler"
+    ],
+    "institutions": [],
+    "venue": "Psychological Bulletin",
+    "citation_count": null,
+    "construct_labels": []
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "jgps-ahv2-8-source-grounded-candidate-v1:#390",
+    "extracted_at": "2026-10-01",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "relation",
+    "modality": "descriptive",
+    "scope": {
+      "conditions": [
+        "concurrent performance of two relatively simple tasks"
+      ],
+      "population": [
+        "human participants across reviewed studies"
+      ],
+      "substrate": [],
+      "task": [
+        "dual-task and psychological-refractory-period paradigms"
+      ],
+      "temporal_scope": []
+    },
+    "nodes": [
+      {
+        "id": "dual_task_condition",
+        "role": "condition",
+        "description": "requirement to perform two simple tasks concurrently",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "task_interference",
+        "role": "response_or_outcome",
+        "description": "performance interference observed under concurrent task demands",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "central_bottleneck",
+        "role": "state_or_structure",
+        "description": "processing bottleneck identified by refractory-period evidence",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "action_selection_operation",
+        "role": "state_or_structure",
+        "description": "operation of selecting an action or response",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "memory_retrieval_operation",
+        "role": "state_or_structure",
+        "description": "memory retrieval operation implicated in the bottleneck",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "task_preparation_limit",
+        "role": "state_or_structure",
+        "description": "limitation arising from task preparation",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "sensory_perceptual_limit",
+        "role": "state_or_structure",
+        "description": "limitation arising from sensory or perceptual processing",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "timing_limit",
+        "role": "state_or_structure",
+        "description": "limitation arising from timing constraints",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "changes",
+        "arguments": [
+          "dual_task_condition",
+          "task_interference"
+        ],
+        "description": "concurrent performance increases interference even for relatively simple tasks",
+        "source_span_ids": [
+          "s1"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "other",
+        "arguments": [
+          "central_bottleneck",
+          "action_selection_operation",
+          "memory_retrieval_operation"
+        ],
+        "description": "the identified bottleneck encompasses action selection and probably memory retrieval",
+        "source_span_ids": [
+          "s2"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "other",
+        "arguments": [
+          "task_preparation_limit",
+          "sensory_perceptual_limit",
+          "timing_limit",
+          "task_interference"
+        ],
+        "description": "other preparation, perceptual, and timing limitations can generate additional distinct forms of interference",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
