@@ -2,7 +2,7 @@
 
 **Author adopted v2.3.1 on 2026-10-04. Protocol already documented in this draft PR.** Importing the exact separately tested implementation remains PENDING until the original bytes are independently verified and committed. **The author’s local PC, WSL and LocalCodex are not required scientific or software admission gates**: an authorized cloud-only import is equally allowed. The author may use a local workflow for convenience.
 
-This is compatible with [Paper 2 cloud-first 20+40 operations draft PR #402](https://github.com/rinsakamo/relay-theory/pull/402), which supplies a distinct generic *stage/receipt provenance* CI; it is **not** the exact v2.3.1 scientific C validator and does not qualify P399 science.
+This is compatible with [Paper 2 cloud-first 20+40 operations merged PR #402](https://github.com/rinsakamo/relay-theory/pull/402), which supplies a distinct generic *stage/receipt provenance* CI; it is **not** the exact v2.3.1 scientific C validator and does not qualify P399 science.
 
 ## Exact source bytes — mandatory, independent of transport
 
