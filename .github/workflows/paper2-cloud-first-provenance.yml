@@ -1,0 +1,37 @@
+name: paper2-cloud-first-provenance
+
+on:
+  pull_request:
+    paths:
+      - "research/paper2/cloud60/**"
+      - "scripts/paper2_cloud_gate.py"
+      - "scripts/test_paper2_cloud_gate.py"
+      - ".github/workflows/paper2-cloud-first-provenance.yml"
+  push:
+    branches: [main]
+    paths:
+      - "research/paper2/cloud60/**"
+      - "scripts/paper2_cloud_gate.py"
+      - "scripts/test_paper2_cloud_gate.py"
+      - ".github/workflows/paper2-cloud-first-provenance.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  provenance-selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Syntax check
+        run: python -m py_compile scripts/paper2_cloud_gate.py scripts/test_paper2_cloud_gate.py
+      - name: Offline negative and positive contract tests
+        run: python -m unittest discover -s scripts -p "test_paper2_cloud_gate.py" -v
+      - name: Verify all submitted source-and-phase receipts from pinned Git revisions
+        run: python scripts/paper2_cloud_gate.py --receipts-dir research/paper2/cloud60/receipts
