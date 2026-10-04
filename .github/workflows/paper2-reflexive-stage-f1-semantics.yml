@@ -1,0 +1,30 @@
+name: paper2-reflexive-stage-f1-semantics
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/paper2-reflexive-stage-f1-semantics.yml'
+      - 'paper/validation/jgps-major-revision/reflexive-audit-v1/**'
+      - 'scripts/paper2_reflexive_stage_f1_semantics_validate.py'
+  workflow_dispatch:
+
+jobs:
+  frozen-v2-semantic-adversarial-inventory:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch exact frozen pre-validation v2 authority
+        uses: actions/checkout@v4
+        with:
+          ref: ad1c11789814413b1d9fd3ca8a4cfb6f7316f230
+          path: frozen-v2
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Rerun strict original source-argument carrier audit
+        run: python scripts/paper2_reflexive_stage_f1_validate.py
+      - name: Recheck registered semantic inventory and caveats
+        run: |
+          python -m py_compile scripts/paper2_reflexive_stage_f1_semantics_validate.py
+          python scripts/paper2_reflexive_stage_f1_semantics_validate.py

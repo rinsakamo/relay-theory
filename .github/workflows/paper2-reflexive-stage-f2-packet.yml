@@ -1,0 +1,30 @@
+name: paper2-reflexive-stage-f2-packet
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/paper2-reflexive-stage-f2-packet.yml'
+      - 'paper/validation/jgps-major-revision/reflexive-audit-v1/**'
+      - 'scripts/paper2_reflexive_stage_f2_packet_validate.py'
+  workflow_dispatch:
+
+jobs:
+  blinded-pilot-packet-integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Checkout unchanged pre-validation carrier vocabulary
+        uses: actions/checkout@v4
+        with:
+          ref: ad1c11789814413b1d9fd3ca8a4cfb6f7316f230
+          path: frozen-v2
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run existing strict F1 preregistered audit
+        run: python scripts/paper2_reflexive_stage_f1_validate.py
+      - name: Validate packet integrity WITHOUT administering or grading
+        run: |
+          python -m py_compile scripts/paper2_reflexive_stage_f2_packet_validate.py
+          python scripts/paper2_reflexive_stage_f2_packet_validate.py

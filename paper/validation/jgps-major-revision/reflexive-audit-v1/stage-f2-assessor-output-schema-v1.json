@@ -1,0 +1,46 @@
+{
+  "schema": "blind-typed-carrier-assessment-output.v1",
+  "status": "FORMAT_ONLY_NO_ASSESSOR_SUBMISSION",
+  "allowed_input_document_count": 3,
+  "task": "Encode each blinded card under provided frozen typed-carrier schema, or record a precise representational gap/abstention.",
+  "required_top_level": [
+    "assessor_run_id",
+    "assessor_method",
+    "document_access_declaration",
+    "card_results",
+    "pair_discriminability",
+    "submission_status"
+  ],
+  "assessor_provenance": {
+    "assessor_run_id": "user-defined non-sensitive identifier",
+    "assessor_method": "HUMAN_INDEPENDENT or MODEL_INDEPENDENT_ISOLATED",
+    "document_access_declaration": "Exact accessible file paths and Git blob SHA receipts for cards and schema. Explicit attestation that no source identity key or previous audit transcript was accessed.",
+    "submission_timestamp": "ISO-8601 UTC timestamp from actual assessor environment; do not fabricate"
+  },
+  "card_result_example": {
+    "blind_card_id": "B01",
+    "status": "CLOSED_SCHEMA_FULL_CANDIDATE or EXPLICIT_V2_GAP_WITNESS or ABSTAIN",
+    "source_kind": "other",
+    "source_arguments": [
+      "q1",
+      "q2"
+    ],
+    "proposed_assertions": [],
+    "gap_witness": null,
+    "abstention_reason": null,
+    "justification": "Explain how core semantics rather than opaque token meanings survive the encoding."
+  },
+  "pair_result_example": {
+    "pair_token": "J1",
+    "first_card": "B01",
+    "second_card": "B02",
+    "discriminable_under_v2": "YES or NO or UNDERDETERMINED",
+    "difference_witness": "Specify distinct frozen schema fields/operators or demonstrate missing necessary distinction."
+  },
+  "prohibited_claims": [
+    "An unassessed example is independent validation.",
+    "F1 direct-type obstacle numbers are a final full-coverage or impossibility result.",
+    "A short pilot replaces the exact 68-relation full F2 audit."
+  ],
+  "submission_status": "NOT_SUBMITTED_UNTIL_INDEPENDENT_ASSESSOR_ACTUALLY_PERFORMS_TASK"
+}

@@ -1,0 +1,33 @@
+name: paper2-reflexive-stage-f0-baseline
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/paper2-reflexive-stage-f0-baseline.yml'
+      - 'paper/validation/jgps-major-revision/reflexive-audit-v1/**'
+      - 'scripts/paper2_reflexive_stage_f0_validate.py'
+  workflow_dispatch:
+
+jobs:
+  preregistered-label-suppressed-skeleton:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout audit PR
+        uses: actions/checkout@v4
+      - name: Checkout separately frozen original v2 authority
+        uses: actions/checkout@v4
+        with:
+          ref: ad1c11789814413b1d9fd3ca8a4cfb6f7316f230
+          path: frozen-v2
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify Stage D and scoped Stage E stayed frozen
+        run: |
+          python scripts/paper2_reflexive_stage_d_validate.py
+          python scripts/paper2_reflexive_stage_e_scope_validate.py
+      - name: Compile F0 validator
+        run: python -m py_compile scripts/paper2_reflexive_stage_f0_validate.py
+      - name: Verify blinded skeleton collision and semantic-reference syntax
+        run: python scripts/paper2_reflexive_stage_f0_validate.py
