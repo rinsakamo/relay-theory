@@ -1,0 +1,28 @@
+name: P399 G2-D INT exact backup primary PDF source page index
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g2/int_g2d/backup_critical_page_index.py"
+      - ".github/workflows/p399-g2d-int-critical-source-index.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  int-primary-source-page-index:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install pypdf==6.1.1
+      - name: Independently exact raw SHA reacquire publisher backups and page-index source-native model cues
+        run: python research/paper2/p399/g2/int_g2d/backup_critical_page_index.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g2d-int-backup-page-index-${{ github.run_id }}
+          path: g2d-int-critical-pages/source_native_text_index.json
+          retention-days: 14
+          if-no-files-found: warn

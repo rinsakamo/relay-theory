@@ -1,0 +1,29 @@
+name: P399 G2-D v11 PNAS original 5 distinct legacy routes timed Chromium
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g2/int_g2d/v11_pnas_int03_legacy_distinct_original_timed_chromium.py"
+      - ".github/workflows/p399-g2d-v11-pnas-distinct-publisher-original.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  publisher-only-legacy-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install --disable-pip-version-check pypdf==6.1.1 playwright==1.55.0
+      - run: python -m playwright install --with-deps chromium
+      - name: New PNAS legacy native full PDF routes each <=10s and Chromium last resort <=16s
+        run: python research/paper2/p399/g2/int_g2d/v11_pnas_int03_legacy_distinct_original_timed_chromium.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g2d-v11-pnas-firstparty-distinct-receipts-${{ github.run_id }}
+          path: g2d-v11-legacy-pnas/actual.json
+          if-no-files-found: warn
+          retention-days: 14

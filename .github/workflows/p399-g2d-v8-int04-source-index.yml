@@ -1,0 +1,29 @@
+name: P399 G2-D v8 INT04 exact original media full page locator and bounded image check
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g2/int_g2d/v8_nature_int04_exact_all_page_evidence_and_fig_raster.py"
+      - ".github/workflows/p399-g2d-v8-int04-source-index.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-exact-page-index:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install --disable-pip-version-check pypdf==6.1.1 playwright==1.55.0 PyMuPDF==1.26.4
+      - run: python -m playwright install --with-deps chromium
+      - name: Official exact source 20 plus 9 plus 2 pages SHA and bounded figure renders
+        run: python research/paper2/p399/g2/int_g2d/v8_nature_int04_exact_all_page_evidence_and_fig_raster.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g2d-v8-int04-actual-official-text-page-index-${{ github.run_id }}
+          path: g2d-v8-int04-page-index/executed.json
+          if-no-files-found: warn
+          retention-days: 14

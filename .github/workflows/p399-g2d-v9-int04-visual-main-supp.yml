@@ -1,0 +1,35 @@
+name: P399 G2-D v9 publisher exact INT04 remaining Fig and full supplementary visual review
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g2/int_g2d/v9_int04_remaining_main_supp_exact_original_visual_pages.py"
+      - ".github/workflows/p399-g2d-v9-int04-visual-main-supp.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  bounded-official-visual-originals:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    strategy:
+      fail-fast: false
+      matrix:
+        review_mode: [main,supp]
+    env:
+      INT04_REVIEW_MODE: ${{ matrix.review_mode }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install --disable-pip-version-check pypdf==6.1.1 playwright==1.55.0 PyMuPDF==1.26.4
+      - run: python -m playwright install --with-deps chromium
+      - name: Exact 3 original publisher raw SHA plus targeted remaining main and full supplemental page render
+        run: python research/paper2/p399/g2/int_g2d/v9_int04_remaining_main_supp_exact_original_visual_pages.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g2d-v9-actual-int04-original-pages-${{ matrix.review_mode }}-${{ github.run_id }}
+          path: g2d-v9-int04-figure-review/executed.json
+          if-no-files-found: warn
+          retention-days: 14

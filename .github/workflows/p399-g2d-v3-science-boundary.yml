@@ -1,0 +1,18 @@
+name: P399 G2-D v3 semantic boundary registry plus 16 destructive anti-promotion controls
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g2/int_g2d/G2D_V3_*"
+      - "research/paper2/p399/g2/int_g2d/test_v3_original_source_and_science_boundary.py"
+      - ".github/workflows/p399-g2d-v3-science-boundary.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-source-provenance-failclosed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Immutable source-vs-science ledger checks and 16 mutations
+        run: python3 research/paper2/p399/g2/int_g2d/test_v3_original_source_and_science_boundary.py

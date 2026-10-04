@@ -1,0 +1,18 @@
+name: P399 G2-D v10d exact INT04 INT08 source-only pair family gates
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g2/int_g2d/G2D_V10D_*"
+      - "research/paper2/p399/g2/int_g2d/test_v10d_pair_source_manual_policy_no_global_promotion.py"
+      - ".github/workflows/p399-g2d-v10d-pair-source-anti-promotion.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-primary-original-provenance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Firstparty VOR/source native pair math visual evidence only with 13 destructive guards
+        run: python3 research/paper2/p399/g2/int_g2d/test_v10d_pair_source_manual_policy_no_global_promotion.py

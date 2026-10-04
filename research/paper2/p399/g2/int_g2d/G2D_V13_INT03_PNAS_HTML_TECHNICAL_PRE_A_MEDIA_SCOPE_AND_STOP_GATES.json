@@ -1,0 +1,138 @@
+{
+  "schema": "g2d_int03_pnas_official_html_media_gate_v13",
+  "record_date_jst": "2026-10-05",
+  "original": {
+    "slot": "INT-03",
+    "doi": "10.1073/pnas.95.24.14529",
+    "title": "A neuronal model of a global workspace in effortful cognitive tasks",
+    "journal": "Proceedings of the National Academy of Sciences",
+    "publication_date": "1998-11-24",
+    "volume": 95,
+    "issue": 24,
+    "pages": "14529-14534"
+  },
+  "source_mode": {
+    "priority_rule": "PDF_FIRST_THEN_PUBLISHER_COMPLETE_HTML",
+    "primary_medium": "OFFICIAL_PUBLISHER_COMPLETE_HTML",
+    "primary_url": "https://www.pnas.org/doi/10.1073/pnas.95.24.14529",
+    "medium_selection": "TECHNICAL_PRE_A_BROWSER_MEDIA_SCOPE_SELECTED",
+    "formal_final_source_science_admitted": false,
+    "raw_official_html_acquired": false,
+    "raw_official_pdf_acquired": false,
+    "raw_html_sha256": null,
+    "raw_pdf_sha256": null,
+    "edition_claim": "PNAS website presents the original 1998 publication; independently exhaustive corrections/edition-history check still pending"
+  },
+  "access": [
+    {
+      "route": "local_curl",
+      "timeout_connect_seconds": 5,
+      "timeout_total_seconds": 12,
+      "targets": [
+        "https://www.pnas.org/doi/10.1073/pnas.95.24.14529",
+        "https://www.pnas.org/doi/pdf/10.1073/pnas.95.24.14529"
+      ],
+      "result": "DNS_FAILURE_HTTP_000_ZERO_BYTES_NOT_PNAS_HTTP_403"
+    },
+    {
+      "route": "browser_publisher_html",
+      "url": "https://www.pnas.org/doi/10.1073/pnas.95.24.14529",
+      "result": "FULL_MAIN_TEXT_BROWSER_VISIBLE_ORIGINAL_DOI_SECTIONS_REFERENCES_AND_THREE_FIGURES"
+    },
+    {
+      "route": "browser_publisher_pdf_and_epdf",
+      "targets": [
+        "https://www.pnas.org/doi/pdf/10.1073/pnas.95.24.14529",
+        "https://www.pnas.org/doi/epdf/10.1073/pnas.95.24.14529"
+      ],
+      "result": "COOKIEABSENT_REDIRECT_NO_LIVE_PDF_RAW"
+    },
+    {
+      "route": "historical_independent_github_actions_v11",
+      "run": "https://github.com/rinsakamo/relay-theory/actions/runs/37206599277",
+      "result": "FIVE_OFFICIAL_LEGACY_ENDPOINTS_403_BROWSER_403_RETAIN_UNCHANGED"
+    }
+  ],
+  "html_scope": {
+    "full_text_visible": true,
+    "main_sections": [
+      "THEORETICAL PREMISES",
+      "COMPUTER SIMULATION",
+      "EMPIRICAL TESTS AND PREDICTIONS",
+      "CONCLUSIONS",
+      "REFERENCES"
+    ],
+    "original_figures": [
+      {
+        "figure": 1,
+        "publisher_url": "https://www.pnas.org/cms/10.1073/pnas.95.24.14529/asset/28836ce4-a0d9-49cc-95fe-2e4e165f294d/assets/graphic/pq2483639001.jpeg",
+        "browser_original_image_opened": true,
+        "scope": "workspace plus modular processor categories; schematic not direct measured human connectome"
+      },
+      {
+        "figure": 2,
+        "publisher_url": "https://www.pnas.org/cms/10.1073/pnas.95.24.14529/asset/0f524c94-9440-4cb5-b720-e61d9ea69afe/assets/graphic/pq2483639002.jpeg",
+        "browser_original_image_opened": true,
+        "scope": "Stroop architecture and gating/reward insets, not proof of biological implementation"
+      },
+      {
+        "figure": 3,
+        "publisher_url": "https://www.pnas.org/cms/10.1073/pnas.95.24.14529/asset/438335a8-dd9d-42f4-82ec-b435322ac6fa/assets/graphic/pq2483639003.jpeg",
+        "browser_original_image_opened": true,
+        "scope": "200 simulated trials; drawings of putative brain-imaging correlates are illustrations not actual new measured humans"
+      }
+    ],
+    "model_defining_in_html_locators": [
+      {
+        "section": "Network Architecture and Dynamics",
+        "evidence": "S_INH sigmoid and sigmoid definition"
+      },
+      {
+        "section": "Network Architecture and Dynamics",
+        "evidence": "S_EXC sigmoid with ascending/descending Phi gating; publisher Figure 2 lower inset visual corroboration"
+      },
+      {
+        "section": "Network Architecture and Dynamics",
+        "evidence": "reward-modulated Hebbian delta w; weights bound to 7"
+      },
+      {
+        "section": "Network Architecture and Dynamics",
+        "evidence": "reward-conditioned vigilance update delta V"
+      },
+      {
+        "section": "Network Architecture and Dynamics",
+        "evidence": "short-term multiplier w-prime change conditional on negative reward"
+      },
+      {
+        "section": "Implementation of the Stroop Tasks",
+        "evidence": "two routine tasks and effortful color-with-word-interference"
+      },
+      {
+        "section": "Simulation Results",
+        "evidence": "search / effortful execution / routinization phases and errors"
+      }
+    ],
+    "explicit_adverse_scope": [
+      "authors describe simulation as necessarily partial and incomplete, confined to Stroop",
+      "authors say global architecture does not exhaustively model a conscious workspace",
+      "publisher Figure 3 contains simulated trials, not new human brain imaging measurement",
+      "authors explicitly defer multiple-task initial-connectivity variation, novelty detection and self-representations",
+      "1998 article explicitly extends previous Dehaene/Changeux model lineage"
+    ]
+  },
+  "unresolved": [
+    "publisher PDF true raw bytes/SHA and page-image verification",
+    "full editorial correction/version/Crossmark independent reconciliation",
+    "all equations against print-edition page pixels",
+    "whole-source adversarial semantics, all negative/control coverage and formal science qualification",
+    "final INT03-INT06 and complete G1×MAIN model-family independence"
+  ],
+  "forbidden_promotions": {
+    "selected_original_pdf_physical_count_increment": 0,
+    "selected_original_media_distinct_count_increment": 0,
+    "formal_science_qualification_increment": 0,
+    "backup_activation_increment": 0,
+    "main_authorized": false
+  },
+  "status": "PNAS_FIRSTPARTY_COMPLETE_HTML_BROWSER_MEDIA_SELECTED_ONLY_G2D_PARTIAL_MAIN_NOT_AUTHORIZED"
+}

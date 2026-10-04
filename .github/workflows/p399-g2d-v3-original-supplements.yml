@@ -1,0 +1,28 @@
+name: P399 G2-D v3 actual original INT06 plus official B4 supplementary physical source checks
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g2/int_g2d/v3_official_selected_int06_and_b4_supplements.py"
+      - ".github/workflows/p399-g2d-v3-original-supplements.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  bounded-official-supplement-fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install --disable-pip-version-check 'pypdf==6.1.1'
+      - name: Original PLOS publisher-only INT06 source and B4 S1 exact physical provenance
+        run: python research/paper2/p399/g2/int_g2d/v3_official_selected_int06_and_b4_supplements.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g2d-v3-physical-official-main-and-supplements-${{ github.run_id }}
+          path: g2d-v3-original-supplement/actual_sources.json
+          if-no-files-found: warn
+          retention-days: 14

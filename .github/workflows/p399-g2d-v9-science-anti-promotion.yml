@@ -1,0 +1,18 @@
+name: P399 G2-D v9 actual INT04 7 main 3 supplement and math boundary guard
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g2/int_g2d/G2D_V9_*"
+      - "research/paper2/p399/g2/int_g2d/test_v9_original_math_visual_and_global_hold.py"
+      - ".github/workflows/p399-g2d-v9-science-anti-promotion.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-source-science-claims-exact-bytes-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Figure 7 plus Supplement 3 plus printed math 1-3 and 17 destructive false-global-admissions
+        run: python3 research/paper2/p399/g2/int_g2d/test_v9_original_math_visual_and_global_hold.py

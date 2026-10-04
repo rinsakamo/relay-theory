@@ -1,0 +1,29 @@
+name: P399 G2-D v6 timed official PNAS Nature original with Chromium fallback
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g2/int_g2d/v6_int03_int04_firstparty_timeout_chromium_rescue.py"
+      - ".github/workflows/p399-g2d-v6-timed-browser-originals.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  official-original-pnas-nature:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install --disable-pip-version-check pypdf==6.1.1 playwright==1.55.0
+      - run: python -m playwright install --with-deps chromium
+      - name: Timed 12s external firstparty + 18s Chromium fallback per target
+        run: python research/paper2/p399/g2/int_g2d/v6_int03_int04_firstparty_timeout_chromium_rescue.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g2d-v6-int03-int04-timed-firstparty-${{ github.run_id }}
+          path: g2d-v6-int03-04-rescue/physical_verification.json
+          if-no-files-found: warn
+          retention-days: 14

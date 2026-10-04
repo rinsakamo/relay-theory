@@ -1,0 +1,86 @@
+{
+  "schema": "relaytheory.p399.g2d.int01_original_printed_equation_prepublication_code_adversarial_v16",
+  "date_jst": "2026-10-05",
+  "authority": {
+    "issue": 399,
+    "pr": 430,
+    "no_main_transaction": true,
+    "g1_g3_g4_and_grammar_unchanged": true,
+    "prior_g2d_v1_to_v15_immutable": true
+  },
+  "original_publisher_source": {
+    "doi": "10.1016/j.cognition.2024.105967",
+    "pii": "S0010027724002531",
+    "venue": "Cognition",
+    "issue_date": "2025-01",
+    "first_online_publication": "2024-10-04",
+    "publisher_original_html": "https://www.sciencedirect.com/science/article/pii/S0010027724002531",
+    "user_saved_first_party_webpage_mht_sha256": "32158948f6d1f4ffd7170393c30a5742ce7db1b0a871928f64bd176cf9ab3b64",
+    "embedded_html_sha256": "0c6c2670f715b06e3a9596cf848df9e08bb5b5168d5dd57113730d3d50b8fc52",
+    "publisher_html_locator": "Methods §2.3.1 task-set action-value definition, Algorithm 1; Methods §2.3.4 printed negative-log marginal likelihood",
+    "publisher_printed_expression_readable": "-log(sum_i Pr(TS_i | context; t) * TS_i(state, action; t))",
+    "textual_semantics": "§2.3.1 states task-set TS stores the VALUE of each action for a state, not explicitly defined there as the post-softmax action-choice probability",
+    "independent_pubmed_publication_metadata": "https://pubmed.ncbi.nlm.nih.gov/39368350/"
+  },
+  "authors_public_repo": {
+    "url": "https://github.com/jl3676/learning_hierarchy",
+    "prepublication_file_url": "https://github.com/jl3676/learning_hierarchy/blob/5f0832edb0a9342a9c6100a05a345e3bac063963/modeling.py",
+    "prepublication_commit_sha": "5f0832edb0a9342a9c6100a05a345e3bac063963",
+    "prepublication_commit_author_date_utc": "2024-09-11T00:57:44Z",
+    "published_online_date_utc": "2024-10-04",
+    "github_rest_commit_history_endpoint": "https://api.github.com/repos/jl3676/learning_hierarchy/commits?path=modeling.py&until=2024-10-05T00:00:00Z&per_page=10",
+    "prepublication_git_file_blob_sha": "97104ec77c324654883cd96518d93e6304edb875",
+    "current_git_file_blob_sha": "97104ec77c324654883cd96518d93e6304edb875",
+    "entire_file_exact_blob_identity": true,
+    "module_function": "abstraction_model_nllh",
+    "prepub_line_106": "pchoice_2_full = softmax(beta_2 * Q_full, axis=-1)",
+    "prepub_line_107": "sum over task-set-specific probability of chosen action times PTS_2[:, c_2], then * (1-epsilon) + epsilon/4",
+    "prepub_line_136": "llh += np.log(pchoice_2)",
+    "prepub_line_170": "return -llh",
+    "limits": "GitHub commit author date and blob identity document an unchanged pre-publication file. They do not prove a tagged identical executable environment or that every published empirical fit used precisely that commit."
+  },
+  "controlled_nonempirical_counterexample": {
+    "task_set_1_Q": [
+      0.8,
+      0.1,
+      0.05,
+      0.05
+    ],
+    "task_set_2_Q": [
+      0.2,
+      0.5,
+      0.2,
+      0.1
+    ],
+    "posterior_task_set_weights": [
+      0.7,
+      0.3
+    ],
+    "inverse_temperature_beta": 5,
+    "exploration_epsilon": 0.1,
+    "chosen_action_zero_index": 0,
+    "literal_printed_expression_inner_weighted_value": 0.62,
+    "author_code_softmax_marginal_choice_probability_with_epsilon": 0.647923132,
+    "nonzero_difference": 0.027923132,
+    "not_an_original_dataset_fit_replay": true
+  },
+  "adjudication": {
+    "closed_subquestion": "AUTHOR_PUBLISHED_CODE_FILE_PRESENT_BEFORE_2024_OCT_ONLINE_PUBLICATION_AND_REMAINS_BLOB_IDENTICAL",
+    "resolved_operator_intent_bounded": "The publicly recorded pre-publication and currently identical author's likelihood function softmaxes task-set Q values, marginalizes PTS, includes epsilon, and sums observed-action log probabilities.",
+    "unresolved_publisher_printed_notation": "The printed formula shows TS_i(state,action), while §2.3.1 defines TS_i entries as action values. Even if shorthand for derived selection probabilities was intended, no firstparty article clarification/corrigendum establishing that reinterpretation was verified.",
+    "candidate_researcher_reinterpretation_authorized": false,
+    "exact_printed_model_numeric_fidelity": "HOLD",
+    "source_native_structural_understanding": "QUALIFIED_BOUNDED_ONLY",
+    "publisher_edition_and_correction_exhaustive": "HOLD",
+    "independent_actual_published_fit_replay": "NOT_PERFORMED",
+    "full_all_equations_figures_variants_negative_science_qualification": false,
+    "global_central_model_family_qualification": false,
+    "private_user_mht_custody_external_to_public_repo": true,
+    "main_authorized": false
+  },
+  "next_requirements": [
+    "Seek a first-party published correction, explicit author textual clarification, or preserve ambiguity as an explicitly excluded printed-numeric claim; do not silently replace the publisher expression.",
+    "Confirm publication-era exact fitting environment and original paper likelihood implementation if exact numeric claims become essential.",
+    "Finish all source-native appendix/figure/negative-source semantics and full 16 original family comparison before any global eligibility assertion."
+  ]
+}

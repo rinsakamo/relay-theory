@@ -1,0 +1,18 @@
+name: P399 G2-D v2a bounded science ledger exact bytes and ten fail-closed controls
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g2/int_g2d/G2D_V2A_*"
+      - "research/paper2/p399/g2/int_g2d/test_v2a_bounded_scientific_ledger.py"
+      - ".github/workflows/p399-g2d-v2a-limited-science-consistency.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  bounded-visual-original-source-claims-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: v2a original/variant/negative ledger exact UTF8 receipts and 10 destructive tests (NOT source semantic proof)
+        run: python3 research/paper2/p399/g2/int_g2d/test_v2a_bounded_scientific_ledger.py
