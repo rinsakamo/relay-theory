@@ -23,7 +23,7 @@ if status!=200 or not final.startswith("https://mdpi-res.com/d_attachment/entrop
 reader=PdfReader(BytesIO(data),strict=False)
 assert len(reader.pages)==14
 texts=[page.extract_text() or "" for page in reader.pages]
-fig={str(i):[n+1 for n,t in enumerate(texts) if re.search(r"(?i)\\bFig(?:ure)?\\s*"+str(i)+r"\\b",t)] for i in range(1,10)}
+fig={str(i):[n+1 for n,t in enumerate(texts) if re.search(r"(?i)\bFig(?:ure)?\\s*"+str(i)+r"\b",t)] for i in range(1,10)}
 terms=("planning","counterfactual","mixed model","model bias","beta","risk","precision","baseline","limitations","trade-off")
 out={"schema":"relaytheory.g2d.INT02.actual_publisher_exact_all_page_source_batch.v1","utc":datetime.now(timezone.utc).isoformat(),"runner_head":os.environ.get("GITHUB_SHA"),"batch":batch,"firstparty_url":URL,
 "original_raw_sha256":actual,"raw_bytes":len(data),"main_pages":len(texts),"page_text_sha":[hashlib.sha256(t.encode()).hexdigest() for t in texts],
@@ -36,7 +36,7 @@ for page1 in BATCHES[batch]:
  findings=[]
  for term in terms:
   i=txt.lower().find(term.lower())
-  if i>=0:findings.append({"key":term,"context_normalized":re.sub(r"\\s+"," ",txt[max(0,i-70):i+200])[:260]})
+  if i>=0:findings.append({"key":term,"context_normalized":re.sub(r"\s+"," ",txt[max(0,i-70):i+200])[:260]})
  print("INT02_V13_TEXT_PAGE",json.dumps({"page":page1,"native_characters":len(txt),"witnesses":findings[:7]},ensure_ascii=False),flush=True)
  pg=pdf.load_page(page1-1)
  pix=pg.get_pixmap(matrix=fitz.Matrix(1.1,1.1),alpha=False)
