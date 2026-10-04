@@ -36,6 +36,30 @@ jobs:
         run: python research/paper2/p399/g2/att_a/test_att_a_bounded_guards.py
       - name: Verify actual immutable v8/v8a Git blob ancestry and post-pixel native-science guard; emit per-file raw SHA256 ledger
         run: python research/paper2/p399/g2/att_a/att_a_verify_v2_and_sha.py
+      - name: Confirm permanent SHA256 sidecar against actual checkout and immutable upstream v8/v8a
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, pathlib, re, subprocess
+          d=pathlib.Path("research/paper2/p399/g2/att_a")
+          ledger=d/"ATT_A_FINAL_RAW_UTF8_SHA256_LEDGER_v1.txt"
+          pinned="69748673c80f421605f1c63607472903ac2ed68c"
+          upstream="research/paper2/p399/g2/"
+          count=0
+          for line in ledger.read_text().splitlines():
+              m=re.fullmatch(r"([0-9a-f]{64})  (\\S+)",line)
+              if not m: continue
+              expected,name=m.groups()
+              if name.startswith("ORIGINAL_"): continue
+              if name.startswith("IMMUTABLE_BASE_"):
+                  raw=subprocess.check_output(["git","show",pinned+":"+upstream+name.removeprefix("IMMUTABLE_BASE_")])
+              else: raw=(d/name).read_bytes()
+              got=hashlib.sha256(raw).hexdigest()
+              assert got==expected,(name,expected,got)
+              count+=1
+          assert count==10,count
+          print("PERMANENT_SHA_LEDGER 10/10 EXACT_RAW_MATCH")
+          PY
       - name: Independently try both exact original publisher PDFs with 12s per attempt
         run: python research/paper2/p399/g2/att_a/att_a_independent_source_receipt.py --timeout 12 --out att-a-run
       - name: Explicit scope limitations in job summary
