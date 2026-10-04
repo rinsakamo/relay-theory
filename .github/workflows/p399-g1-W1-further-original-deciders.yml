@@ -1,0 +1,29 @@
+name: P399 G1 W1 additional decisive official original math PDF pages
+on:
+  push:
+    branches:
+      - "paper2/p399-g1-w1-source-adversarial-20261004"
+    paths:
+      - "research/paper2/p399/g1/parallel/W1/w1_further_decisive_original_math_pages.py"
+      - ".github/workflows/p399-g1-W1-further-original-deciders.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  further-original-deciders:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install 'pypdf==6.1.1' 'pymupdf==1.26.4'
+      - run: python research/paper2/p399/g1/parallel/W1/w1_further_decisive_original_math_pages.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: p399-g1-W1-extra-original-pixels-${{ github.run_id }}
+          path: w1-decisive-original-pages/
+          retention-days: 21
+          if-no-files-found: warn
