@@ -12,7 +12,7 @@ import fitz
 from PIL import Image
 URL="https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1006435&type=printable"
 SHA="9d5f8df792c19e88749311dc2f9688705fe3aeaea4eb7bfad7e761ca90e5e6b2"
-req=urllib.request.Request(URL,headers={"User-Agent":"Mozilla/5.0 (RelayTheory P09 visual scientific source inspection)"})
+req=urllib.request.Request(URL,headers={"User-Agent":"Mozilla/5.0 (RelayTheory P09 independent second targeted completion of missing critical original equations figures)"})
 with urllib.request.urlopen(req,timeout=100) as f:b=f.read();url=f.geturl()
 assert b.startswith(b"%PDF"),"not source pdf"
 assert hashlib.sha256(b).hexdigest()==SHA,"published original byte identity MISMATCH stop all review"
@@ -31,7 +31,7 @@ for idx,p in enumerate(pdf.pages):
 # chunks; the researcher will inspect actual source pixels with the model's
 # vision capabilities, independent from the text extraction above.
 f=fitz.open(stream=b,filetype="pdf")
-for page in [2,4,6,8,10,12,14,16]:
+for page in [5,9,11,13,15,17]:
  p=f[page-1]
  pix=p.get_pixmap(matrix=fitz.Matrix(0.85,0.85),colorspace=fitz.csRGB,alpha=False)
  im=Image.frombytes("RGB",(pix.width,pix.height),pix.samples)
@@ -42,4 +42,4 @@ for page in [2,4,6,8,10,12,14,16]:
  print("P09_IMAGE_END",page,flush=True)
 os.makedirs("g1-p09",exist_ok=True)
 with open("g1-p09/p09-pdf-visual-targets-metadata.json","w") as out:
- json.dump({"schema":"p399.g1.p09.original_pdf_exact_physical_and_critical_visual_delivery.v1","prior_source_run":37178895352,"reason_to_reacquire":"visual critical math/fig pre-A qualification only","original_sha256":SHA,"original_bytes":len(b),"original_pages":len(pdf.pages),"page_map":page_meta,"visually_delivered_pages":[2,4,6,8,10,12,14,16],"original_math_figure_semantics_pass_ci":False,"formal_source_admission_automatically_granted":False},out,indent=2)
+ json.dump({"schema":"p399.g1.p09.original_pdf_exact_physical_and_critical_visual_delivery.v1","prior_source_run":37178895352,"reason_to_reacquire":"visual critical math/fig pre-A qualification only","original_sha256":SHA,"original_bytes":len(b),"original_pages":len(pdf.pages),"page_map":page_meta,"visually_delivered_pages":[5,9,11,13,15,17],"original_math_figure_semantics_pass_ci":False,"formal_source_admission_automatically_granted":False},out,indent=2)
