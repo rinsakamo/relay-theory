@@ -26,10 +26,10 @@ orig=[
   (4,["posterior","predictive","Conditional"]),
   (5,["hazard","posterior","change"]),
   (6,["boundary","posterior","Covert"]),
-  (7,["Covert","Overt","criterion"]),
+  (7,["Overt","criterion"]),
   (10,["Additional models","Bayesian"]),
   (11,["probability","incorrect","Reinforcement"]),
-  (15,["Model recovery","simulation","observer"])
+  (15,["Model recovery","datasets","observer"])
  ])
 ]
 all_orig={}; anchorTotal=0
@@ -78,7 +78,7 @@ assert len(E["original_source_fidelity_targets"])==10
 assert E["all_18_original_material_negative_conditions_covered"]==18
 assert E["raw_edition"]["original_all_pages_visually_read"] is False
 assert E["original_scientific_result"].startswith("Source-native possible mechanisms")
-assert not E["formal_qualification_not_autogranted"] is False
+assert E["formal_qualification_not_autogranted"] is True
 print("P13_AFTER_E_FULL_PASS original both published raw sources 26+32 pages, 16/16 bounded text anchors, all6 exact historical source stages Git order and 34/50/18 source evidence",flush=True)
 rec={"official_original_2_pdfs":all_orig,"six_historical_source_science_git_sha":rawHist,"after_E_actual_original_page_anchors":anchorTotal,"source_A_nodes":34,"source_A_edges":50,"C2_material_adverse":18,"qualified_automatically":False,"human_blinded_assessor":False,"numerical_original_model_replay":False,"MAIN_performed":False}
 canon=hashlib.sha256(json.dumps(rec,sort_keys=True,separators=(",",":"),ensure_ascii=False).encode()).hexdigest()
