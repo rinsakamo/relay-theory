@@ -1,0 +1,103 @@
+{
+  "schema": "relay-theory.p399.pf03.secondary_implementation_result.v1",
+  "track": "PF03_APPEND_ONLY_POST_FINAL",
+  "source_authority": "Original publisher PDF remains the ONLY PRE_A/A/B/C primary source and exact PDF SHA256 62d744125034ce834692cdb210065d34e2bbd0f58c9eb3387ed2d75dfb7f77ae",
+  "prior_frozen_final": {
+    "commit": "a9666a9708337d2b27ec8f70aa19e3312441c565",
+    "sha256": "29fb0ade9c4c89e02f4a1b3f42c7ec22b4ef1670086dbc8fb264294fd1163bdf",
+    "changed": false,
+    "verdict": "NOT_FORMALLY_QUALIFIED"
+  },
+  "preregistered_secondary_plan_commit": "8b7dd208b36547828cc5fbc359e70e49c8401330",
+  "author_source_pinning": {
+    "repository": "lpjiang97/dynamic-predictive-coding",
+    "branch": "three_level",
+    "commit": "017556566a0e5eb4a76455b85371737c16fe9b0a",
+    "commit_timestamp_utc": "2023-12-18T22:55:15Z",
+    "publisher_original_published": "2024-02-08",
+    "publication_code_exact_parity_claimed": false,
+    "code_files": [
+      {
+        "path": "models/pc_three.py",
+        "git_blob": "ecfb1d25ba38bebf5dcf477832166e1a59b389de",
+        "actual_sha256": "9ca1f7dfa7c42d03b1af33faffc35d390ec09f19a7fd9df0eb4462c8089d048e"
+      },
+      {
+        "path": "experiments/three/params.json",
+        "git_blob": "ccbdbbf223916b3340a787f3e7fc8a9e74c1926f",
+        "actual_sha256": "cc33f296dd68ca9bfadf48c9f3a1670d5cdf3f4c4f028da2f87d3f5089e44431"
+      },
+      {
+        "path": "analysis/err_dist.ipynb",
+        "git_blob": "394aeb3238fa67279c6da45b7d6077e6bb939605",
+        "sha256_status": "PINNED_GIT_BLOB_NOT_RAW_SHA256_PRINTED"
+      },
+      {
+        "path": "experiments/three/last.pth.tar",
+        "git_blob": "4058c523f5fcb32b9714bacee06ee59a34df2d0d",
+        "bytes": 9259675,
+        "actual_sha256": "70b01bd6389f87ceef0458ff593348600b1e99e50806556d03caad5147fe7dc1"
+      }
+    ]
+  },
+  "source_to_code_reconciliation": {
+    "original_source": "Official PDF p14-15 and p24 Eq37 says a training-set-thresholded FIRST-LEVEL prediction error b_t activates upper temporal loss/state update, 0.73 in in-paper support-information summary but no exact raw scalar formula in main body.",
+    "pinned_author_actual_inference": "After lower-state and intermediary-state MAP-like inference, original source function inf computes score_i = Σ_j [r_lower_posterior(i,j)-f(r_lower_prev(i,:),r2_PRE_INFERENCE(i,:))(j)]², with f=learned weighted mixture of lower transition bases. This is prior-versus-posterior lower-latent temporal mismatch using PRE-inference intermediate state, not pixel spatial reconstruction error and not updated intermediate-state prediction.",
+    "pinned_author_event": "forward compares each sequence sample score_i > self.thres and calls higher-level inf_second only for selected sample indices; resulting r2,r3 values assigned only to selected rows.",
+    "pinned_threshold_provenance": "three/params.json thres=0.73; err_dist.ipynb constructs KDE/CDF of r2_loss and marks rho=0.73 and horizontal squared L2 prior/post lower-latent axis.",
+    "scope_decision": "AUTHOR_IMPLEMENTATION_EXACT_SCALAR_RESOLVED_FOR_PINNED_CODE; MAIN_ARTICLE_ALONE_STILL_UNDERSPECIFIES_EXACT_SCALAR; ORIGINAL C-N01/C-E01'S CONSERVATIVE TYPED FIRST-LEVEL ERROR RELATION REMAINS CORRECT; NEVER overwrite A/B/C, never admit linked S1 silently."
+  },
+  "executions": [
+    {
+      "run_id": 37171444109,
+      "commit": "f0c8af4ee372a9cc8c905b20e7bea674994cb0ca",
+      "scope": "actual pinned author function and historical Git blobs, 4 tests",
+      "result": "PASS_4_OF_4",
+      "notes": "Toy synthetic lower-state values; not original training data"
+    },
+    {
+      "run_id": 37171543137,
+      "commit": "4cf19ab9b71d6daaf6a026788b48b96c3ad0e225",
+      "scope": "Added original author's Git-tracked trained three-layer checkpoint and synthetic gate contrast",
+      "result": "FAIL_1_OF_5_FIXTURE_DIMENSION",
+      "source_of_failure": "Test assumed batch1 prediction retained a leading batch dimension, but author's temporal_prediction_one_ intentionally uses squeeze. Actual author's source and weights unchanged."
+    },
+    {
+      "run_id": 37171600665,
+      "commit": "3054fe626e5722cb84a95b81f7ee7513026c5a4c",
+      "scope": "Corrected batch=2, exact frozen author full checkpoint loading/typed state strict and actual PyTorch inference plus 0.73 gate",
+      "result": "PASS_5_OF_5",
+      "model_output": "Actual trained parameters: difference between intermediate prediction from controlled different third-level states 3.8554527759552 in controlled toy case. Toy event residual 0.25 below 0.73 and 1.0 above 0.73. Neither output reproduces original dataset's numeric scores.",
+      "test_warning": "Two-iteration toy inference does not converge; explicitly nonreplicative."
+    },
+    {
+      "run_id": 37171673935,
+      "commit": "f6329cfd55c88b92f0e40fb28051891001864b07",
+      "scope": "Final hash-printing CI on pinned author original code/params/trained 3L checkpoint + 5 exact-author-function synthetic verification cases",
+      "result": "PASS_5_OF_5",
+      "provenance": "Raw SHA256 above physically calculated in GitHub Actions log; historical test failures retained."
+    }
+  ],
+  "other_existing_pf03_ci": {
+    "source_original_binary_and_stage_provenance": "Prior and current PF03 source preflight jobs PASS",
+    "original_toy_structural_probes": "12_OF_12 prior and current PASS",
+    "generic_lean_ci": "Independent existing RelayTheory Lean CI; not #401 validator",
+    "historical_v231_exact_validator": "NOT_IMPORTED_AND_NOT_EXECUTED"
+  },
+  "fidelity_implication": {
+    "original_3level_structural_gate": "SUFFICIENTLY_DISCRIMINATED_FOR_PINNED_AUTHOR_IMPLEMENTATION",
+    "author_pretrained_high_to_mid_state_dependence": "DIRECT_EXECUTED_CHECKPOINT_EVIDENCE",
+    "unchanged_grammar": "YES",
+    "A0_A1_A2": "Original pretrained higher/transition parameters and optional memory cannot count as newly invented extra A2.",
+    "original_full_numeric_study_replicated": false,
+    "source_original_math_completeness": "Original published PDF has function-level event relation but not exact gate scalar alone. Supplemental source used only as labeled corroboration.",
+    "unresolved_other_behaviors": [
+      "Numerically reproducing original learned hierarchical autocorrelation timescales (natural/white noise)",
+      "Original trained flash-lag predictive/postdictive condition outcomes including trajectory null",
+      "Original episodic recall cue-location asymmetry with original full training",
+      "Original 3-level bounce-type classifier quantitative decoding on original dataset"
+    ]
+  },
+  "status": "POST_FINAL_TARGETED_IMPLEMENTATION_EXCEPTION_RESOLVED_AS_SECONDARY; FORMAL_QUALIFICATION_NOT_AUTOMATIC; QUANTITATIVE_FIDELITY_REMAINING",
+  "official_pilot_increment": 0
+}

@@ -1,0 +1,49 @@
+name: pf03-source-preflight
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/pf03-source-preflight.yml"
+      - "research/paper2/p399/pf03/**"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  pdf-original-byte-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Acquire actual original PLOS PDF and fingerprint without publication
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/pf03
+          URL='https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1011801&type=printable'
+          curl --fail --location --retry 3 --retry-delay 2 --max-time 100 --user-agent 'RelayTheory scientific source admission 2026-10-04' --output /tmp/pf03/original.pdf "$URL"
+          head -c 5 /tmp/pf03/original.pdf | grep -aq '%PDF-'
+          printf 'PF03_SOURCE_URL=%s\n' "$URL"
+          printf 'PF03_SHA256='
+          sha256sum /tmp/pf03/original.pdf | cut -d' ' -f1
+          printf 'PF03_BYTES='
+          stat -c%s /tmp/pf03/original.pdf
+          python -m pip install --disable-pip-version-check -q pypdf
+          python - <<'PY'
+          from pypdf import PdfReader
+          r=PdfReader('/tmp/pf03/original.pdf')
+          t='\n'.join(page.extract_text() or '' for page in r.pages)
+          print('PF03_PAGES='+str(len(r.pages)))
+          print('PF03_TEXT_CHARACTERS='+str(len(t)))
+          print('PF03_PAGE_BODIES='+str(sum(bool(page.extract_text()) for page in r.pages)))
+          open('/tmp/pf03/original.txt','w').write(t)
+          PY
+          for phrase in 'Hierarchical generative model' 'Prediction error minimization' 'Sequence learning and recall simulation' 'Three-level DPC model'; do
+            grep -Fqi "$phrase" /tmp/pf03/original.txt || { echo "MISSING_SECTION=$phrase"; exit 1; }
+            echo "PRESENT_SECTION=$phrase"
+          done
+          printf 'PDF_BIN_NOT_PUBLISHED=true\n'
+          rm -f /tmp/pf03/original.pdf /tmp/pf03/original.txt
+      - name: Hash staged original derived scientific receipts (provenance only)
+        run: |
+          set -euo pipefail
+          echo "PROVENANCE_ONLY_NOT_V231_VALIDATOR=true"
+          find research/paper2/p399/pf03 -maxdepth 1 -type f \( -name '*.json' -o -name '*.md' \) -print0 | sort -z | xargs -0 sha256sum

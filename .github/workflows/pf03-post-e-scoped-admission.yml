@@ -1,0 +1,26 @@
+name: pf03-post-e-source-scoped-9-record-gates
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/pf03/**"
+      - ".github/workflows/pf03-post-e-scoped-admission.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  immutable-original-stage-and-scope-gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Inspect actual old Git commit bytes and source-only scoping
+        run: |
+          set -euo pipefail
+          python research/paper2/p399/pf03/test_pf03_post_e_scope_admission.py
+          echo 'NINE_PROVENANCE_SCOPE_TESTS_NOT_ORIGINAL_401_VALIDATOR=true'
+          echo 'NINE_PROVENANCE_SCOPE_TESTS_NOT_NUMERIC_FIDELITY=true'

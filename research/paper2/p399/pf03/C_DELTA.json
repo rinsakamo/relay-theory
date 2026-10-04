@@ -1,0 +1,104 @@
+{
+  "schema": "relay-theory.p399.pf03.c_append_only_delta.v1",
+  "parent_C_commit": "72834ee3e0d7c3a03439b09dfd73b8ebafe4b419",
+  "frozen_original_A": "dd5dce774780a9a6df854b14fb2943e324734ad0",
+  "source_pdf_sha256": "62d744125034ce834692cdb210065d34e2bbd0f58c9eb3387ed2d75dfb7f77ae",
+  "patches": [
+    {
+      "id": "C-L13",
+      "kind": "SOURCE_LIMITING_CONDITION",
+      "op": "ADD_LIMIT",
+      "scope": "Flash-lag simulation VF only",
+      "source": "original PDF printed p10 (index 9), text after Fig4f and Fig4g",
+      "record": "In the authors' tested simulated flash-lag design, initial motion trajectory versus none had no observed effect on the model illusion. This is a reported model negative result, not universal psychophysical invariance.",
+      "related": [
+        "A-N23",
+        "A-N24",
+        "A-E15",
+        "A-L04"
+      ],
+      "B_objection": "B-O01",
+      "C_decision": "C-O01"
+    },
+    {
+      "id": "C-N01",
+      "kind": "GENERIC_FIRST_LEVEL_PREDICTION_ERROR_TRIGGER",
+      "op": "ADD_NODE_FOR_CONSERVATIVE_ALIAS",
+      "scope": "V3 ONLY",
+      "source": "original PDF printed pp14-15 Fig6 and p24 Eq37",
+      "record": "e^(1)_t is the author's first-level prediction-error quantity on whose threshold the three-level event b_t depends; no formal primary-PDF scalar disambiguation as spatial-only or temporal-only.",
+      "related": [
+        "A-N11",
+        "A-N12",
+        "A-N33"
+      ],
+      "B_objection": "B-O02",
+      "C_decision": "C-O02",
+      "strict_scalar_status": "UNDERDETERMINED"
+    },
+    {
+      "id": "C-E01",
+      "kind": "THRESHOLD_TRIGGER_DEPENDENCY_CORRECTION",
+      "op": "SUPERSEDE_EDGE_WITHOUT_MUTATING_A",
+      "supersedes": "A-E21",
+      "from": [
+        "C-N01",
+        "A-N33"
+      ],
+      "to": "A-N30",
+      "type": "THRESHOLDED_FIRST_LEVEL_PREDICTION_ERROR_TRIGGER",
+      "source": "original PDF p24 Eq37, p14 Fig6",
+      "record": "Use the original first-level error gate; do not claim A-N11 e_s alone drives it. Only when b_t=1 is intermediate temporal prediction residual activated; Eq37 scalar predicate remains not fully specified.",
+      "B_objection": "B-O02",
+      "C_decision": "C-O02"
+    },
+    {
+      "id": "C-N02",
+      "kind": "THREE_LEVEL_VARIANT_LOCAL_OBJECTIVE",
+      "op": "ADD_NODE",
+      "scope": "V3 ONLY",
+      "source": "original PDF printed p24 Eq37",
+      "record": "L3_t = ||I_t-U r^(1)_t||²/(2σ²)+||r^(1)_t-rbar^(1)_t||²/(2σ_r²)+b_t*||r^(2)_t-rbar^(2)_t||²/(2σ_r(2)²)+λ||r^(1)_t||_1; no independently added λ_h||r3||² term is printed in Eq37.",
+      "related": [
+        "A-N14",
+        "A-N30",
+        "A-N32",
+        "A-N33"
+      ],
+      "B_objection": "B-O03",
+      "C_decision": "C-O03"
+    },
+    {
+      "id": "C-E02",
+      "kind": "GATED_HIGHER_LEVEL_INFERENCE_DEPENDENCY",
+      "op": "ADD_EDGE",
+      "scope": "V3 ONLY",
+      "source": "original PDF printed p24 Eqs37-40",
+      "from": [
+        "A-N11",
+        "A-N12",
+        "C-N01",
+        "A-N30",
+        "A-N32",
+        "A-N33"
+      ],
+      "to": "C-N02",
+      "type": "THREE_LEVEL_LOSS_WITH_GATED_UPPER_TEMPORAL_RESIDUAL",
+      "record": "Loss operator is distinct from V2 A-N14; drives inference of second/third latents and subsequent H2 learning in paper's staged procedure, not a generic copy of base loss.",
+      "B_objection": "B-O03",
+      "C_decision": "C-O03"
+    }
+  ],
+  "no_patch": [
+    "B-O04 rejected duplicate after whole original A reread; p(r0) Eq3 can be faithfully recorded in D formal evidence using already captured first-state prior, without adding extra latent/transform"
+  ],
+  "immutability": "Original A/B unchanged; delta is additive and supersession metadata only.",
+  "counts": {
+    "limits": 1,
+    "nodes": 2,
+    "edges": 2,
+    "replaced_historical_edges": 1,
+    "duplicate_patches_rejected": 1,
+    "open_b_objections": 0
+  }
+}
