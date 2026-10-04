@@ -400,5 +400,17 @@ class G3CompletionTests(unittest.TestCase):
             with self.assertRaisesRegex(G3Error,"IMMUTABLE_STAGE_RECEIPT_RAW_BYTES"):
                 verify_exact_freeze_chain(e,repo_path=d,scientific=True)
 
+
+    def test_locked_v11_rubric_preserves_all_controls_and_null_joint_freeze(self):
+        r=json.loads((ROOT/"G3_MEASUREMENT_CONTROL_COMPARISON_RUBRIC_v1.1.json").read_text(encoding="utf-8"))
+        self.assertEqual(set(r["negative_controls"]),{"REMOVE_EDGE","REVERSE_TEMPORAL",
+            "SWAP_BOUNDARY","REMOVE_NATIVE_COORDINATOR","MERGE_VARIANTS",
+            "STATEFUL_TO_STATELESS","REMOVE_NEGATIVE","G_DYN"})
+        self.assertEqual(len(r["negative_controls"]),8)
+        self.assertEqual(len(r["reporting"]["evidence_classes"]),6)
+        self.assertIsNone(r["roster_bindings"]["g1_final_sha256"])
+        self.assertIsNone(r["roster_bindings"]["g2_final_sha256"])
+        self.assertFalse(r["roster_bindings"]["first_main_authorized"])
+
 if __name__=="__main__":
     unittest.main(verbosity=2)
