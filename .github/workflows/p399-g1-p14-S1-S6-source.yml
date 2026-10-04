@@ -1,0 +1,27 @@
+name: P399 G1 P14 source negative S1 and stimuli S6 original publisher
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g1/p14/p14_preA_publisher_original_S1_S6_probe.py"
+      - ".github/workflows/p399-g1-p14-S1-S6-source.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  issuer-original-negative-and-stimuli:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install 'pypdf==6.1.1'
+      - run: python research/paper2/p399/g1/p14/p14_preA_publisher_original_S1_S6_probe.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g1-p14-S1-S6-original-${{ github.run_id }}
+          path: g1-p14-s1s6/real-source.json
+          retention-days: 14
+          if-no-files-found: warn
