@@ -412,7 +412,7 @@ def check_v8(a,b):
     assert q["primary"]["published_firstparty_raw_sha256"]=="8c190f4d6e981061e4ccd67f4797b83ccdeb8f1d47d8368fdafe137f1ef44209"
     assert q["primary"]["pages"]==20 and q["primary"]["bytes"]==1760491
     k=q["mandatory_original_mathematics_companion"]
-    assert "S3_APPENDIX" in k["role"] and k["published_firstparty_raw_sha256"]=="c71313033e52ccbbe5b0b3e8579959dfb7ac75c52ca254a36abca89ac8fcb72f"
+    assert "MODEL_DEFINING_S3_ONLY" in k["role"] and k["published_firstparty_raw_sha256"]=="c71313033e52ccbbe5b0b3e8579959dfb7ac75c52ca254a36abca89ac8fcb72f"
     assert k["pages"]==6 and k["bytes"]==210828 and k["specific_link_from_official_original_html"]
     assert k["all_19_equation_reference_identifiers_in_actual_extract"]
     assert q["other_linked_supplement_S1_S2"].startswith("Not auto-admitted")
