@@ -1,0 +1,64 @@
+{
+  "schema": "G3_NEGATIVE_CONTROL_PLAN_V1",
+  "status": "PRE_FREEZE",
+  "preregister_before_main_mapping": true,
+  "controls": [
+    {
+      "code": "REMOVE_EDGE",
+      "trigger": "Original source has directed nonredundant required dependency",
+      "mutation": "Delete just that typed dependency, preserve all others",
+      "detection": "Loss of reference edge or essential causal pathway"
+    },
+    {
+      "code": "REVERSE_TEMPORAL",
+      "trigger": "Original source provides a noncommuting precedence or update guard",
+      "mutation": "Reverse that obligation only",
+      "detection": "Explicit temporal source contradiction"
+    },
+    {
+      "code": "SWAP_BOUNDARY",
+      "trigger": "Original specifies K versus external coupling Gamma or E_exp",
+      "mutation": "Misplace one required typed edge across boundary",
+      "detection": "Reference boundary placement mismatch"
+    },
+    {
+      "code": "REMOVE_NATIVE_COORDINATOR",
+      "trigger": "Original names a source-native coordinator/link with distinguishable effect",
+      "mutation": "Delete original coordinator connection",
+      "detection": "Missing source original integration path"
+    },
+    {
+      "code": "MERGE_VARIANTS",
+      "trigger": "Original provides distinct identifiable variants",
+      "mutation": "Collapse distinctions between two source declared variants",
+      "detection": "Variant completeness/negative contrast or functional distinction failure"
+    },
+    {
+      "code": "STATEFUL_TO_STATELESS",
+      "trigger": "Original requires different output for identical input under distinct histories",
+      "mutation": "Replace state update with input-only map",
+      "detection": "History witness lost and temporal requirement fails"
+    },
+    {
+      "code": "REMOVE_NEGATIVE",
+      "trigger": "Original source has explicit adverse null, failure or limitation",
+      "mutation": "Delete just one material negative restriction",
+      "detection": "Restriction tally loses that ID"
+    },
+    {
+      "code": "G_DYN",
+      "trigger": "Source has role witness outside X/K/T under existing strict forgetful-map semantics",
+      "mutation": "Fixed G_dyn={X,K,T} direct-preservation competitor",
+      "detection": "Forgotten/merged source distinction recorded; not universal encodability impossibility"
+    }
+  ],
+  "classification": {
+    "INFORMATIVE": "Applicable source witness, valid destructive change, baseline FULL and mutant detected PARTIAL/FAILED",
+    "NON_DISCRIMINATING": "Valid mutation but source has no discriminatory warrant on changed fact; exclude from detection-power denominator",
+    "INVALID": "Inapplicable, invalid input, missing evidence, or baseline unvalidated",
+    "FALSE_POSITIVE_RECONSTRUCTION": "Source-discriminable valid mutation receives unwarranted FULL; report as evaluator defect, not control success"
+  },
+  "original_author_experiment": false,
+  "exposed_QP_cases": "Development regressions only, cannot be reclassified independent",
+  "frozen_hist_comparator": "G_dyn prior 60-claim loss retained as history; new synthetic test only exercises scoring"
+}
