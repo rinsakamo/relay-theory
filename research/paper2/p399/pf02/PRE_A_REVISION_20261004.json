@@ -1,0 +1,313 @@
+{
+  "schema_version": "relay-theory-p399-pf02-prea-revision-v2",
+  "generated_utc_date": "2026-10-04",
+  "append_only_revision_of": "research/paper2/p399/pf02/PRE_A.json",
+  "original_pre_a_sha256": "c5899b1ef7b973a8e54410f3740609a29bd75fa73e9c44ff33baaf9c998ae07e",
+  "frozen_protocol": {
+    "issue": 399,
+    "candidate_pr": 411,
+    "paper_specific_draft_pr": 413,
+    "source_mode": "PDF_FIRST_WITH_OFFICIAL_FULL_HTML_FALLBACK",
+    "abc": "v2.3.1 result-informed source-closed",
+    "scientific_validator_ci": "NOT_DEPLOYED"
+  },
+  "exact_original": {
+    "title": "Stochastic Dynamics Underlying Cognitive Stability and Flexibility",
+    "authors": [
+      "Kai Ueltzhoeffer",
+      "Diana J. N. Armbruster-Genc",
+      "Christian J. Fiebach"
+    ],
+    "doi": "10.1371/journal.pcbi.1004331",
+    "published": "2015-06-12",
+    "publisher": "PLOS Computational Biology",
+    "original_pdf_url": "https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1004331&type=printable",
+    "official_html_crosscheck": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004331",
+    "original_pdf_raw_sha256": "bef58465c56cec93f1cbb0f689c8fcd48cd656f3520d70a6032aaac9caa63655",
+    "original_pdf_raw_bytes": 6293685,
+    "original_pdf_page_count": 46,
+    "original_pdf_text_pages": 46,
+    "original_pdf_text_characters": 273649,
+    "acquisition_run_url": "https://github.com/rinsakamo/relay-theory/actions/runs/37170214903",
+    "private_source_location": "EPHEMERAL_ACTIONS_ARTIFACT_OUTSIDE_GIT",
+    "medium_frozen_for_any_future_A": "PUBLISHER_ORIGINAL_PDF_SHA256_BEF58465",
+    "original_pdf_vs_html_parity_claimed": false
+  },
+  "edition_corrections": {
+    "crossref": {
+      "checked": "2026-10-04",
+      "http_status": 200,
+      "published_date": "2015-06-12",
+      "update_to": null,
+      "updated_by": null,
+      "relation": {},
+      "last_metadata_deposit": "2022-05-12"
+    },
+    "pubmed": {
+      "pmid": "26068119",
+      "http_status": 200,
+      "CommentsCorrectionsList_present": false
+    },
+    "crossmark": {
+      "http_status": 200,
+      "status_display_extracted": false
+    },
+    "publisher_notice_detected": false,
+    "decision": "PASS_BOUNDED_CURRENT_NO_REGISTERED_CORRECTION",
+    "limitation": "No global proof of absence of unregistered errata; Crossmark visual status did not yield substantive text.",
+    "workflow_run": "https://github.com/rinsakamo/relay-theory/actions/runs/37170390235"
+  },
+  "original_pdf_visual_inventory": {
+    "main_section_locations": {
+      "article_and_abstract": "1-2",
+      "introduction": "2-3",
+      "results": "4-19",
+      "discussion": "20-25",
+      "methods_start": "25-26",
+      "task": "26",
+      "network_architecture": "27",
+      "rule_dynamics": "28-30",
+      "decision_dynamics": "30-34",
+      "simulation": "34-35",
+      "parameter_fitting": "35-37",
+      "potential": "37-39",
+      "minimal_action": "39",
+      "fmri_model_measurement": "40-41",
+      "supporting_information": "41",
+      "references": "42-46"
+    },
+    "visual_verified_pages": [
+      1,
+      4,
+      6,
+      12,
+      15,
+      16,
+      19,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      37,
+      38,
+      39,
+      40,
+      41
+    ],
+    "decisive_visual_anchors": [
+      {
+        "id": "V01",
+        "pages": [
+          4,
+          6
+        ],
+        "content": "task Fig2, original circuit and reduced 2D rule plus 3D four-response decision Fig3",
+        "decision": "PASS"
+      },
+      {
+        "id": "V02",
+        "pages": [
+          28,
+          29,
+          30
+        ],
+        "content": "two-rule NMDA recurrent and shared inhibition, rule gate OU Eq3, rule state Eq4",
+        "decision": "PASS"
+      },
+      {
+        "id": "V03",
+        "pages": [
+          31,
+          32,
+          33,
+          34
+        ],
+        "content": "generic five-population decision and 3D tetrahedral reduction, nonlinear Eq7-8, direct r1/r2 coupling and distinct stimulus inputs",
+        "decision": "PASS_WITH_MATH_EXACTNESS_EXCEPTION"
+      },
+      {
+        "id": "V04",
+        "pages": [
+          12,
+          15,
+          16,
+          19,
+          37,
+          38,
+          39
+        ],
+        "content": "Fig5 fMRI model regressor; Fig7-9 generalized potential and fMRI associations; stationary-density generalized potential and minimal action",
+        "decision": "PASS"
+      },
+      {
+        "id": "V05",
+        "pages": [
+          35,
+          40,
+          41
+        ],
+        "content": "Table4-6 stimulus, fitted and fixed parameters; fMRI GLM includes ambiguous-only separate regressors and noncausal associations",
+        "decision": "PASS"
+      }
+    ],
+    "standalone_supplements": "EXCLUDED_FROM_PRIMARY_UNIVERSE_BY_ISSUE399",
+    "full_original_source_after_admission": "PDF byte identity mandatory through A/B/C"
+  },
+  "model_and_task_scope": {
+    "rules": [
+      "parity",
+      "magnitude"
+    ],
+    "rule_model": "two-dimensional OU-stochastic recurrent selective attractor with shared inhibition; noise added to gating variables relative to Wong-Wang",
+    "decision_model": "three-dimensional stochastic nonlinear reduction of four excitatory choice alternatives plus one inhibitory; source-defined near spontaneous bifurcation approximation",
+    "intermodule": "rule rates provide top-down bias; distinct bottom-up stimulus inputs",
+    "trial_conditions_simulated": [
+      "baseline",
+      "distractor",
+      "switch"
+    ],
+    "explicit_neural_model_excludes": "ambiguous trials, although collected and modeled independently as nuisance regressors in fMRI",
+    "measured_vs_model": "individual behavioral choices/RT observed; model subject-wise fitted; BOLD prediction derived from rule-spiking proxy and correlated with measured fMRI",
+    "effective_potential": "negative log of stationary probability density, nonconservative stationary flux permitted",
+    "visualization_scaling": "Figure 7 only subject noise parameter increased by factor 10 for easier trajectory visualization",
+    "high_activity_approx": "3D decision reduction forfeits original high-activity exact stability and physiological parameter identification"
+  },
+  "lineage_screen": {
+    "no_exact_work_duplicates": "PASS",
+    "reviewed_rosters": [
+      "#399 preregistered four pilots and ten MAIN seeds",
+      "#398 MAIN40 and PILOT20 issues and published roster",
+      "both historical Paper2 60-work activated scientific source manifests"
+    ],
+    "direct_ancestry": [
+      {
+        "doi": "10.1016/S0896-6273(02)01092-9",
+        "author": "Wang 2002",
+        "relationship": "recurrent cortical decision ancestor",
+        "target_overlap": "#398 MAIN D06; component-family overlap, not demonstrated same integrated central mechanism"
+      },
+      {
+        "doi": "10.1523/JNEUROSCI.3733-05.2006",
+        "author": "Wong and Wang 2006",
+        "relationship": "two-dimensional recurrent rule-state reduction ancestor",
+        "target_overlap": "not exact #398/#399 work"
+      },
+      {
+        "doi": "10.1371/journal.pcbi.1000046",
+        "author": "Roxin and Ledberg 2008",
+        "relationship": "two-choice nonlinear diffusion reduction extrapolated to four-choice 3D by PF02",
+        "target_overlap": "not exact #398/#399 work"
+      },
+      {
+        "doi": "10.1016/j.neuroimage.2005.01.044",
+        "author": "Stemme et al 2005",
+        "relationship": "original task-switch neural architecture explicitly adapted by PF02",
+        "original_full_text": "published-layout scholarly mirror indexed, runtime download timed out; complete equations/graph comparison pending"
+      },
+      {
+        "doi": "10.1523/JNEUROSCI.1356-13.2013",
+        "author": "Ardid and Wang 2013",
+        "relationship": "parallel rule-biased multi-module task switching model with distinct topology; full PMC original accessible",
+        "target_overlap": "not exact corpus work"
+      },
+      {
+        "doi": "10.1016/j.neuroimage.2012.07.035",
+        "author": "Armbruster et al 2012",
+        "relationship": "human task paradigm antecedent, not exact PF02 central formal model"
+      }
+    ],
+    "judgment": "UNDERDETERMINED",
+    "reason": "Shared component ancestor #398 D06 disclosed; Stemme original direct prior integrated neural model not yet full-model side-by-side compared; cannot certify independent central-model lineage from title distinctness alone.",
+    "secondary_evidence_job": "https://github.com/rinsakamo/relay-theory/actions/runs/37170615908"
+  },
+  "source_math_conflict": {
+    "id": "PF02_E33_OU_PRINTED_FORM",
+    "locator": "original publisher PDF p33, unnumbered decision noise line immediately before Eq7; contrast original PDF p30 Eq3",
+    "source_observation": "The rendered p33 formula visibly contains tau_AMPA equals dI_noise/dt whereas Eq3 p30 uses tau_AMPA multiplying dS_noise/dt.",
+    "competing_explanations": [
+      "p33 inadvertent printed equality instead of a multiplication glyph; follows stated OU analogy and dimensional consistency",
+      "p33 notation intentionally different; not resolved from printed equation"
+    ],
+    "source_local_adjacent": "p33 explicitly states reintroduction of OU noise and p34 Eq8 uses Inoise for X/Y/Z, but cannot prove exact numeric coefficient for literal equation as printed",
+    "attempted_author_code": "SourceForge source archive listed with full tools but independent cloud retrieval HTTP 403; no correction notice found",
+    "decision": "UNDERDETERMINED_EXACT_NUMERICAL_SOURCE_NOTATION",
+    "admissible_claim": "source describes decision OU-type noise qualitatively; exact correction is not source-certified",
+    "targeted_human_review": "Only if exact p33 coefficient/equality becomes load-bearing to source qualification."
+  },
+  "gates": [
+    {
+      "id": "WORK_IDENTITY_PUBLISHER_EDITION",
+      "decision": "PASS",
+      "evidence": "Original publisher PDF metadata/header and matching DOI/title/authors/publication date; raw SHA recorded"
+    },
+    {
+      "id": "ORIGINAL_PDF_RAW_AND_FULL_TEXT",
+      "decision": "PASS",
+      "evidence": "Direct cloud original PDF actual bytes obtained, independently local SHA recheck, 46 pages and text readable on all pages"
+    },
+    {
+      "id": "SOURCE_EDITION_CORRECTION_HISTORY",
+      "decision": "PASS",
+      "evidence": "Crossref no linked update or correction and PubMed no corrections list; publisher no notice; absence claims bounded"
+    },
+    {
+      "id": "SECTIONS_VARIANTS_FIGURES_READING",
+      "decision": "PASS",
+      "evidence": "Original PDF pages1-46 readable; original rule/decision equations and decisive figures rendered and manually checked, exclusions/fig scaling observed"
+    },
+    {
+      "id": "EXACT_WORK_NON_DUPLICATION",
+      "decision": "PASS",
+      "evidence": "#399/#398 and historical two 60-work authority roster bounded exact-work checks"
+    },
+    {
+      "id": "MODEL_ANCESTOR_INTEGRATED_LINEAGE",
+      "decision": "UNDERDETERMINED",
+      "evidence": "#398 D06 Wang 2002 shared component; direct Stemme 2005 integrated source not fully compared; cannot certify central-lineage independence"
+    },
+    {
+      "id": "SOURCE_MATH_ACTUAL_READABILITY",
+      "decision": "PASS",
+      "evidence": "Actual raster equation p30 Eq3 and p33 OU original both visibly deciphered; p33 reveals mathematical inconsistency"
+    },
+    {
+      "id": "SOURCE_MATH_LOAD_BEARING_CONSISTENCY",
+      "decision": "UNDERDETERMINED",
+      "evidence": "Printed p33 decision OU equality contradicts p30 analogous OU form; author code not available to independently confirm exact executable intended normalization"
+    },
+    {
+      "id": "EXPERIMENTAL_CONDITION_MODEL_SCOPE",
+      "decision": "PASS",
+      "evidence": "p4 Fig2, p34 simulation, pp35-37 fitting, p40-41 fMRI; ambiguous condition excluded from explicit neural model"
+    },
+    {
+      "id": "SAME_ORIGINAL_MEDIUM_PROSPECTIVELY_FROZEN",
+      "decision": "PASS",
+      "evidence": "Exact original PDF SHA/bytes recorded before any A; original PRE_A remains unchanged as historical discovery and not backdated"
+    }
+  ],
+  "terminal_decision": "UNDERDETERMINED",
+  "scientific_stop": "PRE_A_FAIL_CLOSED",
+  "required_next_action": [
+    "Resolve source-exact p33 decision OU printing ambiguity or explicitly justify why no decisive mathematical content remains unresolved under #399 without silently rewriting source",
+    "Review complete Stemme 2005 source/model alongside PF02 and Wang/Ardid and record independent central integrated topology versus inherited component lineage before an admission PASS"
+  ],
+  "stage_status": {
+    "PRE_A_original": "IMMUTABLE_OLDER_UNDERDETERMINED",
+    "PRE_A_revision": "FROZEN_UNDERDETERMINED",
+    "A": "NOT_STARTED",
+    "B": "NOT_STARTED",
+    "C": "NOT_STARTED",
+    "D": "NOT_STARTED",
+    "E": "NOT_STARTED",
+    "final": "NOT_QUALIFIED"
+  },
+  "no_source_files_in_git": true,
+  "other_pilots": "UNTOUCHED",
+  "main": "UNAUTHORIZED",
+  "formal_pilot_count": "UNCHANGED"
+}
