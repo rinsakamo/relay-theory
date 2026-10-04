@@ -50,7 +50,7 @@ def check_reference(reference):
     for v in reference["variants"]:
         ids = set()
         for name in ("nodes", "edges", "temporal", "restrictions", "boundaries",
-                     "distinctions", "native_coordination"):
+                     "distinctions", "native_coordination", "source_comparisons"):
             for atom in v[name]:
                 if atom["id"] in ids:
                     raise G3Error("DUPLICATE_REFERENCE_ATOM")
@@ -274,7 +274,7 @@ def check_role_bridge(reference, bridge):
         raise G3Error("MISSING_ROLE_BRIDGE_VARIANT")
     for v_id, v in r_variants.items():
         native = {atom["id"] for k in ("nodes", "edges", "temporal", "restrictions",
-                 "boundaries", "distinctions", "native_coordination") for atom in v[k]}
+                 "boundaries", "distinctions", "native_coordination", "source_comparisons") for atom in v[k]}
         obligations = b_variants[v_id]["role_obligations"]
         if len({o["id"] for o in obligations}) != len(obligations):
             raise G3Error("DUPLICATE_ROLE_OBLIGATION")
@@ -317,3 +317,21 @@ def score_locked(reference, packet, bridge, record):
     report["note"] = ("Signed actual primary source completeness and semantic truth "
                       "require separate real assessor; synthetic checks cannot establish them.")
     return report
+
+def coordination_locked(reference, packet, bridge, record):
+    """H1/H2 cannot be asserted unless the pre-D source-native oracle recorded a
+    contrast relevant to typed mediation/history, respectively. Still a
+    source-conditional *candidate*, not a universal causal necessity theorem.
+    """
+    fidelity = score_locked(reference, packet, bridge, record)
+    requested = record["coordination"]["discrimination"]
+    if requested in ("H1_SOURCE_CONDITIONAL", "H2_SOURCE_CONDITIONAL"):
+        needed = ("TYPE_INTERFACE_CONTRAST" if requested == "H1_SOURCE_CONDITIONAL"
+                  else "HISTORY_DEPENDENCE_CONTRAST")
+        witnesses = [a for v in reference["variants"] if v["included"]
+                     for a in v.get("source_comparisons", []) if a["contrast_kind"] == needed]
+        if not witnesses:
+            return "NON_DISCRIMINATING"
+        if fidelity["paper"] != "FULL":
+            return "UNDERDETERMINED"
+    return coordination(record)
