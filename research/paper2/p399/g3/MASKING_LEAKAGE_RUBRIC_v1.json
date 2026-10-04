@@ -1,0 +1,56 @@
+{
+  "schema": "G3_MASKING_LEAKAGE_RUBRIC_V1",
+  "state": "PRE_FREEZE",
+  "roles": {
+    "reference": "Full original publisher source and source-native oracle only; NOT analyst D/E",
+    "curator": "Unmask identity vault, transformations, completeness attestations and release logging",
+    "analyst": "Masked source packet, full A for B, full A/B for C; NEVER oracle graph or evaluation"
+  },
+  "remove_when_nonessential": [
+    "author identity",
+    "article title",
+    "venue",
+    "citation prestige",
+    "publication year",
+    "DOI",
+    "bibliography prestige",
+    "sampling strata",
+    "original construct names"
+  ],
+  "must_keep": [
+    "load-bearing original symbols/equations",
+    "source-defined mechanism definitions",
+    "causal graph",
+    "temporal guards",
+    "functional variants",
+    "critical figures/legends",
+    "source-defined coordination links",
+    "restrictions and negative findings",
+    "system/world/observation boundary evidence"
+  ],
+  "categorization": [
+    "FULLY_MASKED",
+    "PARTIALLY_IDENTIFIABLE",
+    "DIRECTLY_RECOGNIZABLE",
+    "PREVIOUSLY_EXPOSED",
+    "POTENTIAL_PRETRAINED_RECOGNITION"
+  ],
+  "recognition_question_timing": [
+    "on packet receipt prior to D",
+    "after D before comparator/unmask"
+  ],
+  "forbidden_claims": [
+    "Perfect researcher blindness for famous mathematics",
+    "Independently blind R2 when same prompted model/session",
+    "Hiding model equations to improve apparent masking"
+  ],
+  "audit_fail_closed": [
+    "Decisive figure lost",
+    "original variant collapsed",
+    "original negative omitted",
+    "reference oracle graph transmitted to analyst",
+    "source switched post-A",
+    "FULLY_MASKED claimed alongside direct prior identification"
+  ],
+  "source_release_rule": "Release load-bearing original context through curator; log exact locator + prior/post-recognition leakage; do not replace with source-external supplement."
+}
