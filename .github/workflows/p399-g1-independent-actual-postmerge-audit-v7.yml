@@ -1,0 +1,33 @@
+name: P399 G1 independent ACTUAL postmerge 171/11 source audit no MAIN
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g1/integration/G1_POSTMERGE_INDEPENDENT_AUDIT_PREREGISTERED_CONTRACT_v1.json"
+      - "research/paper2/p399/g1/integration/g1_postmerge_independent_audit_v7.py"
+      - ".github/workflows/p399-g1-independent-actual-postmerge-audit-v7.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  immutable-original-after-actual-merge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Independent original after-merge audit with read-only historical Actions server
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python research/paper2/p399/g1/integration/g1_postmerge_independent_audit_v7.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: independent-g1-original-postmerge-projection-${{ github.run_id }}
+          path: g1-audit-postmerge/actual_original_postmerge_independent_projection.json
+          if-no-files-found: warn
+          retention-days: 45
