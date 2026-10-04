@@ -1,0 +1,264 @@
+{
+  "schema": "p399-pf02-primary-pdf-scope-frozen-v1",
+  "prospective_stage": "FROZEN_BEFORE_SCIENTIFIC_A",
+  "date_utc": "2026-10-04",
+  "authority": "#399 PDF-first publisher exact original primary source; append-only source qualification receipts for PF02",
+  "source": {
+    "doi": "10.1371/journal.pcbi.1004331",
+    "original_publisher_url": "https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1004331&type=printable",
+    "medium": "OFFICIAL_PUBLISHED_ORIGINAL_PDF",
+    "size_bytes": 6293685,
+    "sha256": "bef58465c56cec93f1cbb0f689c8fcd48cd656f3520d70a6032aaac9caa63655",
+    "pages": 46,
+    "nonblank_extracted_text_pages": 46,
+    "pdf_html_parity": "NOT_ASSUMED",
+    "raw_binary_git": "NOT_INCLUDED; privately lawfully held",
+    "editions": "2015-06-12 originally published, no registered correction found in bounded Crossref and PubMed audit"
+  },
+  "lineage_gate_receipt_sha256": "9fea2621fe1859451c0f339329ab588394b976c2c80b6198990866fc37c5ef3e",
+  "prior_math_receipt_sha256": "0b412ad045459a94cbe335bd42c8decb13172becda927e93b2903a5453ef3201",
+  "sections": [
+    [
+      "S01",
+      "abstract_and_preintro",
+      1,
+      2
+    ],
+    [
+      "S02",
+      "introduction_and_explanandum",
+      2,
+      4
+    ],
+    [
+      "S03",
+      "behavioral_task_and_architecture_results",
+      4,
+      8
+    ],
+    [
+      "S04",
+      "decision_reduction_and_fidelity_limits_results",
+      7,
+      9
+    ],
+    [
+      "S05",
+      "behavioral_fit_results",
+      9,
+      11
+    ],
+    [
+      "S06",
+      "rule_module_regressor_and_brain_localization_results",
+      11,
+      14
+    ],
+    [
+      "S07",
+      "attractor_landscape_visualizations_results",
+      13,
+      17
+    ],
+    [
+      "S08",
+      "minimal_action_and_fmri_correlate_results",
+      17,
+      20
+    ],
+    [
+      "S09",
+      "discussion_and_causal_limits",
+      20,
+      25
+    ],
+    [
+      "S10",
+      "behavioral_task_methods",
+      25,
+      27
+    ],
+    [
+      "S11",
+      "network_architecture_methods",
+      27,
+      28
+    ],
+    [
+      "S12",
+      "rule_module_dynamics_methods_eq1_4",
+      28,
+      30
+    ],
+    [
+      "S13",
+      "decision_module_dynamics_methods_eq5_8",
+      30,
+      34
+    ],
+    [
+      "S14",
+      "trial_simulation_and_parameter_tables_methods",
+      34,
+      35
+    ],
+    [
+      "S15",
+      "fitting_behavioral_data_methods",
+      35,
+      37
+    ],
+    [
+      "S16",
+      "attractor_landscape_methods",
+      37,
+      39
+    ],
+    [
+      "S17",
+      "minimal_action_methods",
+      39,
+      40
+    ],
+    [
+      "S18",
+      "fmri_acquisition_and_model_analysis_methods",
+      39,
+      41
+    ],
+    [
+      "S19",
+      "article_embedded_supporting_info_notice",
+      41,
+      42
+    ],
+    [
+      "S20",
+      "references_with_direct_ancestor_lineage",
+      42,
+      46
+    ]
+  ],
+  "figure_pages": {
+    "1": 3,
+    "2": 4,
+    "3": 6,
+    "4": 10,
+    "5": 12,
+    "6": 13,
+    "7": 15,
+    "8": 16,
+    "9": 19
+  },
+  "table_pages": {
+    "1": [
+      12,
+      13
+    ],
+    "2": [
+      17
+    ],
+    "3": [
+      20
+    ],
+    "4": [
+      34,
+      35
+    ],
+    "5": [
+      34,
+      35
+    ],
+    "6": [
+      34,
+      35
+    ]
+  },
+  "critical_rendered_pages": [
+    1,
+    3,
+    4,
+    6,
+    10,
+    12,
+    13,
+    15,
+    16,
+    19,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    37,
+    38,
+    39,
+    40,
+    41
+  ],
+  "conditions": [
+    "baseline",
+    "distractor",
+    "switch",
+    "ambiguous_measured_but_not_explicit_neural_model_simulated"
+  ],
+  "variants": [
+    "biophysical_original_network_architecture",
+    "2D_reduced_rule_dynamics",
+    "3D_4choice_reduced_decision_dynamics",
+    "effective_potential_from_stationary_density_nonconservative",
+    "individual_subject_parameter_fits",
+    "experimental_BOLD_statistical_regressor_comparison"
+  ],
+  "mandatory_negative_and_boundary_checks": [
+    {
+      "id": "N01",
+      "source": "p4 task,p34 simulation,p40 fmri",
+      "condition": "ambiguous observed trial condition excluded from explicit neural simulation and included in fmri as independent regressors"
+    },
+    {
+      "id": "N02",
+      "source": "p7",
+      "condition": "reduced 3D decision process has high-activity stability loss and no invertible physiological fit-parameter identification"
+    },
+    {
+      "id": "N03",
+      "source": "p15 Fig7",
+      "condition": "10-fold increased noise used for illustration trajectories only"
+    },
+    {
+      "id": "N04",
+      "source": "p13-p15,p37-39",
+      "condition": "generalized potential is conditional negative log stationary distribution, dynamics not conservative so not classical potential"
+    },
+    {
+      "id": "N05",
+      "source": "p19-p20 Fig9/Table3",
+      "condition": "association between minimal action and brain signal is correlation, not causal evidence; individual physiological scaling correlations may be non-significant"
+    },
+    {
+      "id": "N06",
+      "source": "p33",
+      "condition": "source printed decision OU expression internally inconsistent, bounded type-level inference only; exclude precise numerical normalization"
+    },
+    {
+      "id": "N07",
+      "source": "p4 and methods",
+      "condition": "Stemme2005 direct integrated architectural ancestor; not a claim of independent genealogical family"
+    },
+    {
+      "id": "N08",
+      "source": "p6-9, p34-37",
+      "condition": "effective fitted nonlinear four-choice reduction is not source-equivalent to fully biophysical original circuit without limitations"
+    }
+  ],
+  "A_scope": "Source-grounded model claims and system/World/experimental-level contexts. Freeze exact evidence per claim, not source-remote missing supplements.",
+  "B_rules": "Receive original byte-exact PDF plus complete immutable A; challenge every A claim and edge, resweep all twenty S section chunks in original order, log B-zero sections and omissions.",
+  "C_rules": "For each B objection, first reopen entire immutable A for duplicate/already-scoped before patch, then original adjacent full source for all material negative and boundary conditions, source-closed decision. Independently resweep S01-S20 including B-zero chunks; exception-only human review.",
+  "standalone_external_supplements": "OUTSIDE_PRIMARY_SOURCE_UNIVERSE_UNLESS_PRESENT_RENDERED_WITHIN_ORIGINAL_PDF",
+  "publication_equations_edited": false,
+  "original_source_bytes_change_forbidden": true
+}
