@@ -1,0 +1,26 @@
+name: PF01 scientific-record and illustrative fidelity tests
+on:
+  push:
+    branches:
+      - paper2/p399-pf01-pre-a-blocked-20261004
+    paths:
+      - "research/paper2/p399/pf01/**"
+      - ".github/workflows/pf01-fidelity-tests.yml"
+  pull_request:
+    paths:
+      - "research/paper2/p399/pf01/**"
+      - ".github/workflows/pf01-fidelity-tests.yml"
+permissions:
+  contents: read
+jobs:
+  pf01-documented-and-illustrative:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate synthetic and recorded structure ONLY - not exact original replication
+        run: python research/paper2/p399/pf01/test_pf01_fidelity_probes.py -v
