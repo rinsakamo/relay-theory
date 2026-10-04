@@ -172,3 +172,63 @@ assert neg_v4(lambda a,b,c:a["count"].update(scientific_source_admitted=35))
 assert neg_v4(lambda a,b,c:a.update(main_authorized=True))
 assert neg_v4(lambda a,b,c:b["official_browser_primary_no_full_original"][1].update(corrected_original_full_text_actual_retrieved=True))
 print("PASS V4: five adversarial false-roster / unowned SHA / false-science / GO / paid-preview tests rejected")
+
+
+# V5: independent publisher original first-party Chromium reacquisition is raw-byte
+# evidence, NOT automatically scientific semantic/figure/variant/lineage qualification.
+d5=(P/"MAIN40_G2_V5_RAW_UTF8_SHA256SUMS_20261004.txt").read_text().splitlines()
+assert len(d5)==4
+for ln in d5:
+    digest,name=ln.split("  ",1)
+    assert hashlib.sha256((P/name).read_bytes()).hexdigest()==digest,("tampered-v5",name)
+v5=json.loads((P/"MAIN40_G2_ADMISSION_WORKING_MANIFEST_v5.json").read_text())
+r5=json.loads((P/"MAIN40_G2_LRN01_FIRST_PARTY_DUAL_PHYSICAL_ACQUISITION_v5.json").read_text())
+e5=json.loads((P/"MAIN40_G2_OBJECTIVE_EVENT_DELTA_v5.json").read_text())
+def check_v5(ww,rr,ee):
+    old=v4["selected_working_roster"];new=ww["selected_working_roster"]
+    assert len(new)==40 and [(x["slot"],x["doi"]) for x in new]==[(x["slot"],x["doi"]) for x in old]
+    assert sum(bool(x["cloud_publisher_pdf_acquired"]) for x in new)==31
+    paper=next(x for x in new if x["slot"]=="LRN-01")
+    original=rr["first_actual"]
+    sha="638c40d95b03e9ed076949c1c17f469bed4e1c3c9959ca8a84dc65c8a0744718"
+    assert paper["cloud_pdf_sha256"]==sha and original["actual_original_pdf_sha256"]==sha
+    assert rr["second_actual"]["actual_original_pdf_sha256"]==sha
+    assert rr["third_formally_successful_reacquisition"]["actual_sha256"]==sha
+    assert rr["second_actual"]["job_status"].startswith("FAIL_DUE_TO_OVERSTRICT_")
+    assert rr["third_formally_successful_reacquisition"]["formal_fixed_workflow_pass"]
+    assert paper["cloud_pdf_bytes"]==59865461 and paper["cloud_pdf_pages"]==20
+    assert paper["publisher_original_full_html_acquired"]
+    assert paper["publisher_original_full_html_sha256"]==original["official_html_actual_response_raw_sha256"]
+    assert rr["second_actual"]["official_html_second_response_sha256"]!=original["official_html_actual_response_raw_sha256"]
+    assert ww["count"]["current_publisher_pdf_byte_receipts"]==31
+    assert ww["count"]["actual_original_primary_media_access_distinct"]==36
+    assert ww["count"]["full_original_access_outstanding"]==4
+    assert set(ww["objective_first_party_media_blockers_remaining"])=={"PRD-01","ATT-03","BLF-01","INT-01"}
+    assert all(not x["source_eligible"] and not x["central_family_independent_certified"] and
+               not x["g3_actual_masked_packet_created"] for x in new)
+    assert ww["count"]["source_visually_semantically_admitted"]==0
+    assert ww["count"]["central_family_admitted"]==0 and ww["count"]["final_joint_frozen"]==0
+    assert not ww["g1_latest_observed_snapshot"]["official_final_pilot20_roster_issued"]
+    assert ww["g1_latest_observed_snapshot"]["source_scoped_qualified"]==7
+    assert len(ee["events"])==5 and ee["count_new_actual_backup_activations"]==0
+    assert not ww["main_authorized"] and not ee["main_authorized"]
+    assert ww["final_scientific_freeze_sha256"] is None
+check_v5(v5,r5,e5)
+print("PASS V5: 4/4 independent raw GitHub UTF8 SHA and unchanged v4 40 identity")
+print("PASS V5: 31/40 actual publisher raw PDF, 36/40 distinct primary media, four blockers")
+print("PASS V5: 3x independent physical 20page 59MB original LRN01 PDF equal SHA256, corrected strict CI")
+print("PASS V5: genuine first FAILED overstrict PDF title CI preserved, fixed PASS separate")
+print("PASS V5: 0 science/lineage admits, 0 unauthorized replacements, 0 G3 packets, MAIN no-go")
+def negative_v5(f):
+    a,b,c=map(copy.deepcopy,(v5,r5,e5))
+    f(a,b,c)
+    try:check_v5(a,b,c)
+    except AssertionError:return True
+    return False
+assert negative_v5(lambda a,b,c:a["selected_working_roster"][0].update(doi="10.0000/outcome-corrupt"))
+assert negative_v5(lambda a,b,c:a["count"].update(current_publisher_pdf_byte_receipts=40))
+assert negative_v5(lambda a,b,c:a["count"].update(source_visually_semantically_admitted=31))
+assert negative_v5(lambda a,b,c:a.update(main_authorized=True))
+assert negative_v5(lambda a,b,c:b["third_formally_successful_reacquisition"].update(actual_sha256="0"*64))
+assert negative_v5(lambda a,b,c:c.update(count_new_actual_backup_activations=1))
+print("PASS V5: six adversarial false identity, false raw provenance, false-science, false-GO, SHA tamper, unauthorized replacement rejected")
