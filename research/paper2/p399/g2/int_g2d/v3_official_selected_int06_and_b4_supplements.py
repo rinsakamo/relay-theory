@@ -6,6 +6,8 @@ Scientific truth, rendered supplementary figures, complete model lineage remain 
 import hashlib,json,os,re,urllib.request,urllib.error,zipfile
 from io import BytesIO
 from datetime import datetime,timezone
+from urllib.parse import urlparse,parse_qs
+
 from pypdf import PdfReader
 PREFIX="https://journals.plos.org/ploscompbiol/article/file?id="
 URLS=[
@@ -32,12 +34,31 @@ for name,doi,kind,identity,expected_sha in URLS:
   req=urllib.request.Request(url,headers={"User-Agent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/126 Safari/537.36","Accept":"application/pdf,application/msword,*/*;q=0.8"})
   with urllib.request.urlopen(req,timeout=12) as resp:
    data=resp.read(12*1024*1024+1)
-   x.update(status=resp.status,final_url=resp.geturl(),media_type=resp.headers.get("Content-Type"),raw_bytes=len(data))
-  x["firstparty_url_verified"]=x["final_url"].split("/")[2] in ("journals.plos.org","content.plos.org","plos.org")
+   final=resp.geturl(); parsed=urlparse(final)
+   x.update(status=resp.status,final_url_without_signed_query=parsed.scheme+"://"+parsed.netloc+parsed.path,
+            media_type=resp.headers.get("Content-Type"),raw_bytes=len(data))
+   direct=parsed.hostname=="journals.plos.org"
+   root=doi.rsplit(".s",1)[0] if ".s" in doi else doi
+   article_id=root.split("/")[-1]
+   suffix=doi.rsplit(".s",1)[-1] if ".s" in doi else None
+   ext="pdf" if kind=="pdf" else "doc"
+   expected_filename="pcbi."+article_id+(".s"+suffix if suffix is not None else "")+"."+ext
+   expected_path_re=r"^/plos-corpus-prod/"+re.escape(root)+r"/[1-9][0-9]*/"+re.escape(expected_filename)+r"$"
+   signed=parse_qs(parsed.query)
+   creds=signed.get("X-Goog-Credential",[""])[0]
+   delegated=(parsed.hostname=="storage.googleapis.com"
+     and bool(re.fullmatch(expected_path_re,parsed.path))
+     and creds.startswith("wombat-sa@plos-prod.iam.gserviceaccount.com/")
+     and bool(signed.get("X-Goog-Signature",[""])[0])
+     and bool(signed.get("X-Goog-Algorithm",[""])[0]=="GOOG4-RSA-SHA256"))
+   x["direct_publisher_host"]=direct
+   x["publisher_delegated_signed_storage_exact_source"]=delegated
+   x["firstparty_url_verified"]=direct or delegated
+   x["publisher_request_origin_verified"]=urlparse(url).hostname=="journals.plos.org"
   if len(data)>12*1024*1024:raise ValueError("12M cap exceeded")
   x["sha256"]=hashlib.sha256(data).hexdigest()
   x["prefix_hex"]=data[:8].hex()
-  if not x["firstparty_url_verified"]:raise ValueError("nonfirstparty redirect")
+  if not x["publisher_request_origin_verified"] or not x["firstparty_url_verified"]:raise ValueError("unexpected redirect or unverified publisher delegated bucket")
   if kind=="pdf":
    if data[:5]!=b"%PDF-":raise ValueError("not pdf despite endpoint")
    reader=PdfReader(BytesIO(data),strict=False)
