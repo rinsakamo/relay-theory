@@ -363,7 +363,7 @@ def check_v7(a,b):
     assert dd["actual_backup_activations"]==0 and not dd["main_authorized"]
     assert not a["cross_lanes"]["g1_final_roster_frozen"]
     assert a["cross_lanes"]["g1_bounded_scientifically_admitted"]==8
-    assert a["cross_lanes"]["g1_mandatory_main_plus_appendix_P13_DOI"]=="10.1371/journal.pcbi.1006681"
+    assert a["cross_lanes"]["g1_new_primary_and_formal_mandatory_original_appendix_P13_DOI"]=="10.1371/journal.pcbi.1006681"
     assert not a["cross_lanes"]["g1_final_roster_frozen"]
     assert len(b["events"])==4
     assert b["new_selected_DOI_replacements"]==0
