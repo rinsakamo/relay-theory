@@ -318,9 +318,19 @@ class G3CompletionTests(unittest.TestCase):
                 data=("SYNTHETIC_RAW_GIT_BYTES_"+e["stage"]).encode()
                 path.write_bytes(data);e["artifact_raw_sha256"]=raw_sha(data)
                 if e["stage"]=="R0":e["prior_raw_sha256"]=events[0]["artifact_raw_sha256"]
-                run("add",path.name);run("commit","-q","-m","synthetic_"+e["stage"])
+                receipt_path=Path(d)/(e["stage"]+".receipt.json")
+                recorded={k:e[k] for k in ("stage","artifact_raw_sha256","prior_raw_sha256",
+                          "primary_source_sha256","protocol_sha256","paper_token",
+                          "authorization_receipt_sha256")}
+                receipt_data=(json.dumps(recorded,sort_keys=True)+"\\n").encode()
+                receipt_path.write_bytes(receipt_data)
+                e["receipt_raw_sha256"]=raw_sha(receipt_data)
+                e["receipt_signed_freeze"]=True # constructed signed-flag, no true signatory
+                run("add",path.name,receipt_path.name)
+                run("commit","-q","-m","synthetic_"+e["stage"])
                 e["git_commit"]=run("rev-parse","HEAD")
                 e["git_artifact_path"]=path.name
+                e["git_receipt_path"]=receipt_path.name
             self.assertTrue(verify_exact_freeze_chain(events,repo_path=d,
                     scientific=True)["scientific_git_verification"])
             events[1]["artifact_raw_sha256"]=H("forged")
@@ -343,6 +353,52 @@ class G3CompletionTests(unittest.TestCase):
         e=fake_main(True)
         with self.assertRaisesRegex(G3Error,"TRUSTED_EXTERNAL"):
             guarded_score(None,None,None,None,e,None)
+
+
+    def test_metadata_preflight_cannot_create_hidden_packet(self):
+        e=envelope("MAIN_METADATA_PREFLIGHT","FINAL_MAIN_ROSTER")
+        e["authorization"]["preflight_scope_receipt"]="FICTIONAL_TEST"
+        e["stage"]="METADATA_ONLY"
+        e["source"]["source_access_state"]="METADATA_ONLY"
+        e["packet_integrity"]["packet_raw_sha256"]=H("surreptitious_packet")
+        with self.assertRaisesRegex(G3Error,"PREFLIGHT_MUST_NOT_GENERATE"):
+            check_authorization(e,lambda *_:True)
+
+    def test_metadata_preflight_cannot_start_silent_reference_assessor(self):
+        e=envelope("MAIN_METADATA_PREFLIGHT","FINAL_MAIN_ROSTER")
+        e["authorization"]["preflight_scope_receipt"]="FICTIONAL_TEST"
+        e["stage"]="METADATA_ONLY"
+        e["source"]["source_access_state"]="METADATA_ONLY"
+        e["actors"]=[actor("REFERENCE_R","fake_r","fake_execution")]
+        with self.assertRaisesRegex(G3Error,"PREFLIGHT_MUST_NOT_GENERATE"):
+            check_authorization(e,lambda *_:True)
+
+    def test_scientific_stage_receipt_hash_tamper_is_caught(self):
+        e=stage_events()[:1]
+        for key in ("g1_final_sha256","g2_final_sha256","authorization_receipt_sha256"):
+            e[0][key]=H("fictional_"+key)
+        e[0]["actual_scientific_authorized"]=True
+        with tempfile.TemporaryDirectory() as d:
+            git=["git","-C",d]
+            def run(*args):
+                return subprocess.check_output([*git,*args],stderr=subprocess.PIPE).strip().decode()
+            run("init","-q");run("config","user.email","fixture@example.invalid")
+            run("config","user.name","FICTIONAL")
+            data=b"synthetic_stage_artifact";Path(d,"S0.dat").write_bytes(data)
+            e[0]["artifact_raw_sha256"]=raw_sha(data)
+            meta={k:e[0][k] for k in ("stage","artifact_raw_sha256","prior_raw_sha256",
+                "primary_source_sha256","protocol_sha256","paper_token","authorization_receipt_sha256")}
+            record=(json.dumps(meta,sort_keys=True)+"\\n").encode()
+            Path(d,"S0.receipt.json").write_bytes(record)
+            run("add","S0.dat","S0.receipt.json")
+            run("commit","-q","-m","fixture")
+            e[0].update(git_commit=run("rev-parse","HEAD"),
+                git_artifact_path="S0.dat",git_receipt_path="S0.receipt.json",
+                receipt_raw_sha256=raw_sha(record),receipt_signed_freeze=True)
+            self.assertTrue(verify_exact_freeze_chain(e,repo_path=d,scientific=True)["scientific_git_verification"])
+            e[0]["receipt_raw_sha256"]=H("mutated_receipt")
+            with self.assertRaisesRegex(G3Error,"IMMUTABLE_STAGE_RECEIPT_RAW_BYTES"):
+                verify_exact_freeze_chain(e,repo_path=d,scientific=True)
 
 if __name__=="__main__":
     unittest.main(verbosity=2)
