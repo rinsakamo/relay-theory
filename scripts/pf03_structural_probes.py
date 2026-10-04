@@ -171,7 +171,10 @@ class PF03FrozenStructuralProbes(unittest.TestCase):
         vm=next(v for v in a["variant_catalog"] if v["id"]=="VM")
         self.assertNotIn("m",v2["parts"])
         self.assertIn("m",vm["parts"])
-        self.assertNotIn("G",v2["parts"])
+        # The A V2 catalog's abbreviated 'G' is a generic generative-graph
+        # label, NOT memory synaptic matrix G. Check typed original-A nodes.
+        typed_g=next(n for n in a["source_defined_nodes"] if n["id"]=="A-N26")
+        self.assertEqual(typed_g["variant"],"VM")
         self.assertIn("G",vm["parts"])
         self.assertTrue(all(x["A2"]=="NOT REQUIRED" or x["A2"].startswith("NOT REQUIRED")
                             for x in d["A0_A1_A2_by_variant"]))
