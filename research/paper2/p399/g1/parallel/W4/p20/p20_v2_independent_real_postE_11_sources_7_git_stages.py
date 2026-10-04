@@ -77,8 +77,8 @@ for key,(ext,n,pages,expect) in SRCS.items():
    for page,t in anchors.items():
     found=t.lower() in " ".join((pdf.pages[page-1].extract_text() or "").split()).lower()
     audit("P20_main_original_text_page_"+str(page),found,{"page":page,"term":t})
-   if page==8:
-    audit("MAIN_PRINTED_CONFLICT_0_944","0.944" in " ".join((pdf.pages[7].extract_text() or "").split()),{"original_main_page":8,"contradicts_direct_original_s006_table_p":0.44})
+   # Page 8 must be checked unconditionally: `page` exits the anchors loop as 19.
+   audit("MAIN_PRINTED_CONFLICT_0_944","0.944" in " ".join((pdf.pages[7].extract_text() or "").split()),{"original_main_page":8,"contradicts_direct_original_s006_table_p":0.44})
   elif ext=="tiff":
    img=Image.open(io.BytesIO(bs));rec["format"]=img.format;rec["dimensions"]=list(img.size);ok=ok and img.format=="TIFF"
   elif ext=="docx":
