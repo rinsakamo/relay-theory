@@ -1,0 +1,26 @@
+name: P399 G1 W4 P20 official original dataset and video supplementary
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g1/parallel/W4/p20/p20_original_issuer_dataset_video_equivalence.py"
+      - ".github/workflows/p399-g1-W4-P20-data-video-source.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  w4-p20-data-video-issuer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python research/paper2/p399/g1/parallel/W4/p20/p20_original_issuer_dataset_video_equivalence.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g1-w4-p20-data-video-${{ github.run_id }}
+          path: g1-w4-p20-data-video/
+          retention-days: 21
+          if-no-files-found: warn

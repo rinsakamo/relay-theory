@@ -1,0 +1,794 @@
+{
+  "schema": "relaytheory.p399.g1.W4.P20.D_v1.unchanged_frozen_Grammar_v0",
+  "stage": "D",
+  "original_C_git": "767d73b8ea868efe150c621e03c9638b3d6f0be6",
+  "original_A_git": "aa5e64fb080870ae81f7deb8428850ae93e4f8a1",
+  "original_full36_claims_47_links": true,
+  "frozen_authority": [
+    "research/paper2/grammar_v0_layered_architecture_v1.json",
+    "research/paper2/skl_grammar_v0_reverse_projection_v1.json",
+    "formal/relay_theory/RelayTheory/UnifiedCognitiveStructuralGrammar.lean"
+  ],
+  "new_roles_created": 0,
+  "role_inventory": [
+    "Pi",
+    "X",
+    "C",
+    "Q",
+    "P_in",
+    "P_out",
+    "K",
+    "T",
+    "rho/O"
+  ],
+  "source_roles": {
+    "Pi": "The source model's 3 independent motor-joint dimensions q1–3 and 2D Cartesian target/outcome distinction, training/test identities; no source evidence human explicit discrete internal skill units from those partitions.",
+    "X": "Actual original synthetic model learned inverse local-linear mapping g:(x,y)→q plus history-dependent values at training step t; source human internal representation not directly measured, all source PCA is external analysis.",
+    "C": "Original source model's realizability task 3 joint→2 endpoint motor redundancy and bounded exploration noise/rate constraints; experimental sample condition H1/H2 stays L_ctx rather than C merely called a condition.",
+    "Q": "Goal-relative model feedback/orientation to externally given x* and original source choice among interpolated subtargets; do not invent internally autonomously discovered new goal value criterion or human brain intrinsic goal setter.",
+    "P_in": "Externally generated selected task target x*, original simulator's actual outcome feedback f(q) presented at accessible model-system boundary. Human displayed goal is a distinct experimental input.",
+    "P_out": "Original synthetic agent produced joint motor command q from local linear inverse output qhat(x*) + slow exploratory e, actual observed endpoint f(q) after physical execution is an output/feedback observation; human measured movement separate.",
+    "K": "Actual source model on-line local-linear inverse correction g informed by goal-related observed execution (fixed η=.2), source-defined subtarget interpolation and bounded explorative q generation. No independent learned forward predictor, invented multilevel supervisor or adaptive-rate law.",
+    "T": "Original subgoal interpolation steps (24 intermediate, 25 motor updates/target), training targets 40/block and trial/block progression (1000 updates/block), retained inverse g and time-varying exploratory noise.",
+    "rho/O": "Original measured human endpoint accuracy, 3-joint traces, posthoc experimenter PCA, motor variability, source statistical null H1/H2 p=.944 and source observed model/human divergences. No implication human neural inverse map literally observed."
+  },
+  "System_World_Experiment": {
+    "System": "Hypothetical artificial agent source defined motor inverse local-linear map g, fixed learning rate η=.2, simple source-defined subtarget interpolation and exploration in motor q. Human motor learning is an experimentally observed system but internal model identity not uniquely identified.",
+    "World": "Original forward task f(q): 3-joint posture to 2D arm endpoint, externally defined 16 training goals, two start postures with same endpoint, exogenous chosen goals x*, simulation task distances. No invented system-learned f.",
+    "Experiment": "Experimenter runs 20 human participants 24×80s blocks and model 100 agents in two fixed source conditions, supplies targets and feedback, computes PCA/statistics from observed behavior, compares actual different strategies, has 4 supplementary tables of source-specific tests.",
+    "boundary_rule": "Human EEG/neural source not measured. The original optimizer fits artificial inverse model via known target/outcome feedback, while author PCA and between-condition p-values are experimenter observations, not human internal Q/K."
+  },
+  "full_original_36_claim_role_mapping": [
+    {
+      "claim": "A01",
+      "original_assertion": "Human participants learn novel 3D finger-posture-to-2D avatar-endpoint relation with three controllable angles and originally generated external visual goal coordinates; no external controller's goal setter is part of human cognitive system.",
+      "source": "main pp2–4,17–19",
+      "source_category": "external experimental world",
+      "grammar_roles": [
+        "Pi",
+        "P_in",
+        "P_out",
+        "rho/O"
+      ],
+      "external_or_claim_overlay": "L_ctx/L_claim/L_exp: source experimental conditions, observed null/mismatch or descriptive ancestry remain outside asserted internal cognitive system"
+    },
+    {
+      "claim": "A02",
+      "original_assertion": "Two researcher-imposed human start postures H1/H2 correspond to approximately identical avatar endpoint with distinct joint configuration; target landscape contains trained and withheld interpolation/extrapolation test goals.",
+      "source": "main pp3–5; Fig1–2; original S4 Fig",
+      "source_category": "world and experiment",
+      "grammar_roles": [
+        "Pi",
+        "C",
+        "P_in",
+        "rho/O"
+      ],
+      "external_or_claim_overlay": "L_ctx/L_claim/L_exp: source experimental conditions, observed null/mismatch or descriptive ancestry remain outside asserted internal cognitive system"
+    },
+    {
+      "claim": "A03",
+      "original_assertion": "Twenty included human subjects practice goal-oriented feedback 24 blocks of 80 seconds; test phases provide selected target cues and measure movement endpoints and kinematics without the same training feedback.",
+      "source": "main pp4–6,17–19",
+      "source_category": "human behavioral intervention",
+      "grammar_roles": [
+        "P_in",
+        "P_out",
+        "T",
+        "rho/O"
+      ],
+      "external_or_claim_overlay": "L_ctx/L_claim/L_exp: source experimental conditions, observed null/mismatch or descriptive ancestry remain outside asserted internal cognitive system"
+    },
+    {
+      "claim": "A04",
+      "original_assertion": "Human subjects learn task-dependent reach accuracy with feedback, demonstrate PCA low-dimensional synergies from posthoc 3DoF movement patterns; PCA is experimenter analysis not a verified trained explicit network implementation.",
+      "source": "main pp5–8 Figs3–5",
+      "source_category": "human observed trace",
+      "grammar_roles": [
+        "P_out",
+        "rho/O",
+        "T"
+      ],
+      "external_or_claim_overlay": "L_ctx/L_claim/L_exp: source experimental conditions, observed null/mismatch or descriptive ancestry remain outside asserted internal cognitive system"
+    },
+    {
+      "claim": "A05",
+      "original_assertion": "Integrated Goal Babbling uses feedback from actual attained sensory endpoint and goal to learn an inverse sensorimotor mapping in parallel with goal-oriented movement, rather than exhaustive premotor babbling only.",
+      "source": "main pp2–3,19–20",
+      "source_category": "candidate mechanism",
+      "grammar_roles": [
+        "X",
+        "K",
+        "T",
+        "Q"
+      ],
+      "external_or_claim_overlay": "Hypothetical original modeled system when explicit; retain evidence restrictions"
+    },
+    {
+      "claim": "A06",
+      "original_assertion": "Agent simulation assumes the world's original forward kinematics f:q∈R3↦(x,y) 2D, implemented by external task; forward motor outcome function is not itself learned or inferred as agent internal forward predictor.",
+      "source": "main p19 Eq1 Fig1",
+      "source_category": "original task forward map",
+      "grammar_roles": [
+        "P_in",
+        "P_out"
+      ],
+      "external_or_claim_overlay": "L_ctx/L_claim/L_exp: source experimental conditions, observed null/mismatch or descriptive ancestry remain outside asserted internal cognitive system"
+    },
+    {
+      "claim": "A07",
+      "original_assertion": "Original synthetic Goal Babbling agent updates a local linear inverse mapping g:(x,y)→q estimated by qhat; η=0.2 online fixed by engineer; this is not an independently emergent cognitive optimal planner.",
+      "source": "main p19 Eq2 and text",
+      "source_category": "original learned inverse map",
+      "grammar_roles": [
+        "X",
+        "K",
+        "C",
+        "T"
+      ],
+      "external_or_claim_overlay": "Hypothetical original modeled system when explicit; retain evidence restrictions"
+    },
+    {
+      "claim": "A08",
+      "original_assertion": "Simulated learning uses a fixed experimenter-defined list of 40 goal targets each block; the source's model did not discover an arbitrary new goal objective from internal rewards.",
+      "source": "main p19 algorithm text",
+      "source_category": "externally imposed training set",
+      "grammar_roles": [
+        "P_in",
+        "T"
+      ],
+      "external_or_claim_overlay": "L_ctx/L_claim/L_exp: source experimental conditions, observed null/mismatch or descriptive ancestry remain outside asserted internal cognitive system"
+    },
+    {
+      "claim": "A09",
+      "original_assertion": "Agent generates 24 linearly interpolated intermediate subgoals between successive externally sampled target points, producing 25 individual motor execution/update steps per training target, 1000 operations/block.",
+      "source": "main p19 task simulation text",
+      "source_category": "generated intermediate subtargets",
+      "grammar_roles": [
+        "K",
+        "T",
+        "P_in"
+      ],
+      "external_or_claim_overlay": "Hypothetical original modeled system when explicit; retain evidence restrictions"
+    },
+    {
+      "claim": "A10",
+      "original_assertion": "The action q(t) is current local linear inverse prediction qhat(x*,t) plus a slowly time-varying stochastic bounded exploratory deviation e(t) in three original motor joints; actual movement can differ from predicted inverse.",
+      "source": "main pp19–20 Eq3; Rolf 2012 borrowed Eqs6.8–6.10",
+      "source_category": "motor generation",
+      "grammar_roles": [
+        "X",
+        "K",
+        "T"
+      ],
+      "external_or_claim_overlay": "Hypothetical original modeled system when explicit; retain evidence restrictions"
+    },
+    {
+      "claim": "A11",
+      "original_assertion": "Source original motor outcome f(q(t)) is observed by the learner after executed exploratory action; inverse model adjusts based on goal/outcome reference and observed motor state, not on an unimplemented autonomous forward-model network.",
+      "source": "main p19–20 original algorithm and refs",
+      "source_category": "outcome and feedback",
+      "grammar_roles": [
+        "P_out",
+        "K",
+        "rho/O"
+      ],
+      "external_or_claim_overlay": "Hypothetical original modeled system when explicit; retain evidence restrictions"
+    },
+    {
+      "claim": "A12",
+      "original_assertion": "Training sequence repeats externally generated goals/subgoals and updates retained local linear inverse mapping across successive simulated trial actions; explorer noise evolves slowly; session/block temporal plots distinct from direct human neural adaptation inference.",
+      "source": "main pp18–20",
+      "source_category": "temporal mechanism",
+      "grammar_roles": [
+        "X",
+        "K",
+        "T"
+      ],
+      "external_or_claim_overlay": "Hypothetical original modeled system when explicit; retain evidence restrictions"
+    },
+    {
+      "claim": "A13",
+      "original_assertion": "Exploration generator and learner are borrowed source-specific Rolf/Steil/Gienger 2010–2012 goal babbling original and Rolf 2012 doctoral pp68 noise formulas; P20 manuscript supplies model identity/parameters but not exact full thesis-derived numerical equation source.",
+      "source": "main p19–20 refs8,24,42–43",
+      "source_category": "original exploration ancestry",
+      "grammar_roles": [
+        "K"
+      ],
+      "external_or_claim_overlay": "Hypothetical original modeled system when explicit; retain evidence restrictions"
+    },
+    {
+      "claim": "A14",
+      "original_assertion": "Two-phase Motor Babbling initially random exhaustive movement then training of sensorimotor inverse goal trajectories versus integrated Goal Babbling concurrent goal-directed outcome-guided exploration; observed human support is relative and source conditions bounded.",
+      "source": "main introduction and discussion",
+      "source_category": "source baseline alternative",
+      "grammar_roles": [
+        "K",
+        "T"
+      ],
+      "external_or_claim_overlay": "L_ctx/L_claim/L_exp: source experimental conditions, observed null/mismatch or descriptive ancestry remain outside asserted internal cognitive system"
+    },
+    {
+      "claim": "A15",
+      "original_assertion": "Original authors use 100 artificial agents evaluated for two start conditions and 20 human subject traces; original source explicitly calls comparison qualitative illustration, not a matched formal original statistical hypothesis that humans execute exact same algorithm.",
+      "source": "main p20 and discussion",
+      "source_category": "original subject/agent correspondence limits",
+      "grammar_roles": [
+        "rho/O"
+      ],
+      "external_or_claim_overlay": "L_ctx/L_claim/L_exp: source experimental conditions, observed null/mismatch or descriptive ancestry remain outside asserted internal cognitive system"
+    },
+    {
+      "claim": "A16",
+      "original_assertion": "Human movement target reaching accuracy generally improves with practice; separately observed human H1 versus H2 first-start adaptation time does not differ, unlike original simulated agent H2 easier early condition.",
+      "source": "main pp6–8 Figs3–4; issuer S1 Table",
+      "source_category": "human observed source result",
+      "grammar_roles": [
+        "rho/O",
+        "T"
+      ],
+      "external_or_claim_overlay": "L_ctx/L_claim/L_exp: source experimental conditions, observed null/mismatch or descriptive ancestry remain outside asserted internal cognitive system"
+    },
+    {
+      "claim": "A17",
+      "original_assertion": "Simulation accelerates in initial H2 vs H1 trials, with final endpoint target improvement; human null H1/H2 condition test makes cross-species identical exploration strategy unsupported.",
+      "source": "main pp7–9 Fig4; original separate S1 Fig/Table",
+      "source_category": "synthetic observed source result",
+      "grammar_roles": [
+        "rho/O",
+        "T"
+      ],
+      "external_or_claim_overlay": "L_ctx/L_claim/L_exp: source experimental conditions, observed null/mismatch or descriptive ancestry remain outside asserted internal cognitive system"
+    },
+    {
+      "claim": "A18",
+      "original_assertion": "Author experimenter measures each q1/q2/q3 variance and relative movement trajectories, not a direct inspection of actual learned neural inverse map; redundancy permits same 2D endpoint through different 3D joint solutions.",
+      "source": "main pp8–12 Figs5–6",
+      "source_category": "original motor redundancy analysis",
+      "grammar_roles": [
+        "Pi",
+        "rho/O"
+      ],
+      "external_or_claim_overlay": "L_ctx/L_claim/L_exp: source experimental conditions, observed null/mismatch or descriptive ancestry remain outside asserted internal cognitive system"
+    },
+    {
+      "claim": "A19",
+      "original_assertion": "Both human and simulated groups can show ~90% total 3-joint movement variance captured by first two experimenter PCA principal components; measured dimension reduction not model proof of equal mathematical internal representation.",
+      "source": "main pp8–11 Figs5–6",
+      "source_category": "measured synergy effect",
+      "grammar_roles": [
+        "rho/O"
+      ],
+      "external_or_claim_overlay": "L_ctx/L_claim/L_exp: source experimental conditions, observed null/mismatch or descriptive ancestry remain outside asserted internal cognitive system"
+    },
+    {
+      "claim": "A20",
+      "original_assertion": "Human participants favor changes in original lower-endpoint-impact/less motor-sensitive joint patterns while simulated inverse model converges toward higher-effectiveness original first joint; average q2 human decrease is nonsignificant.",
+      "source": "main pp11–14 Figs6–7; supplemental original S2/S4 Tables",
+      "source_category": "key mismatch to models",
+      "grammar_roles": [
+        "rho/O",
+        "Pi"
+      ],
+      "external_or_claim_overlay": "L_ctx/L_claim/L_exp: source experimental conditions, observed null/mismatch or descriptive ancestry remain outside asserted internal cognitive system"
+    },
+    {
+      "claim": "A21",
+      "original_assertion": "Humans exhibit high initial motor variability declining during practice, whereas original agents start narrow motor exploration and spread it gradually as perturbations grow, source-reported cross-group difference.",
+      "source": "main pp13–15 Fig7; S3 Figure and S3 Table",
+      "source_category": "variance trajectory original negative",
+      "grammar_roles": [
+        "rho/O",
+        "T"
+      ],
+      "external_or_claim_overlay": "L_ctx/L_claim/L_exp: source experimental conditions, observed null/mismatch or descriptive ancestry remain outside asserted internal cognitive system"
+    },
+    {
+      "claim": "A22",
+      "original_assertion": "Observed human goal-directed learning supports integrated goal-related feedback but cannot exclude rapid motor-babbling within first training block, a competing exploration explanation.",
+      "source": "main pp14–17 Discussion",
+      "source_category": "interpretation ambiguity",
+      "grammar_roles": [
+        "rho/O",
+        "T"
+      ],
+      "external_or_claim_overlay": "L_ctx/L_claim/L_exp: source experimental conditions, observed null/mismatch or descriptive ancestry remain outside asserted internal cognitive system"
+    },
+    {
+      "claim": "A23",
+      "original_assertion": "Original artificial agent η=.2 fixed by source engineer; discussion suggests human learning-rate adjustment as POSSIBLE explanation only; no implemented agent intrinsic rate supervisor, no independent human η measurement.",
+      "source": "main p16 Discussion and p19",
+      "source_category": "unfitted human adaptivity",
+      "grammar_roles": [
+        "C",
+        "K"
+      ],
+      "external_or_claim_overlay": "L_ctx/L_claim/L_exp: source experimental conditions, observed null/mismatch or descriptive ancestry remain outside asserted internal cognitive system"
+    },
+    {
+      "claim": "A24",
+      "original_assertion": "Authors note alternate cost or reinforcement-driven motor exploration could in principle generate observed synergy/variance and cannot globally prove only source original Goal Babbling biological mechanism.",
+      "source": "main pp15–17 Discussion",
+      "source_category": "additional alternative",
+      "grammar_roles": [
+        "rho/O"
+      ],
+      "external_or_claim_overlay": "L_ctx/L_claim/L_exp: source experimental conditions, observed null/mismatch or descriptive ancestry remain outside asserted internal cognitive system"
+    },
+    {
+      "claim": "A25",
+      "original_assertion": "Agent outcomes depend on 3DoF geometry, task goal locations, fixed η=.2, original Rolf noise σ=.5 and σΔ=.005, subgoal interpolation plus initial H1/H2, not universal all robots or human brains.",
+      "source": "main pp19–20; referenced doctoral source",
+      "source_category": "parameter scope",
+      "grammar_roles": [
+        "C",
+        "X",
+        "K"
+      ],
+      "external_or_claim_overlay": "Hypothetical original modeled system when explicit; retain evidence restrictions"
+    },
+    {
+      "claim": "A26",
+      "original_assertion": "Publisher original quantitative p-values, source reported response curves, participant PCA and synthetic trajectories are original published outcomes; no W4 fresh 20-person experiment or exact stochastic agent numerical reproduction.",
+      "source": "main results and published supplementary figures",
+      "source_category": "original fidelity restriction",
+      "grammar_roles": [
+        "rho/O"
+      ],
+      "external_or_claim_overlay": "L_ctx/L_claim/L_exp: source experimental conditions, observed null/mismatch or descriptive ancestry remain outside asserted internal cognitive system"
+    },
+    {
+      "claim": "A27",
+      "original_assertion": "Publisher S1 Table source condition p=.944 null plus significant source practice time; do not replace with observed artificial agent H2 early advantage.",
+      "source": "P20 issuer original S1 Table s006",
+      "source_category": "external table source",
+      "grammar_roles": [
+        "rho/O"
+      ],
+      "external_or_claim_overlay": "L_ctx/L_claim/L_exp: source experimental conditions, observed null/mismatch or descriptive ancestry remain outside asserted internal cognitive system"
+    },
+    {
+      "claim": "A28",
+      "original_assertion": "Publisher S2 Table analyzes source-defined differentiated target/location condition; result p=.046 applies specific table outcome, not an unqualified broad task adaptation difference.",
+      "source": "P20 issuer original S2 Table s007",
+      "source_category": "external table source",
+      "grammar_roles": [
+        "rho/O"
+      ],
+      "external_or_claim_overlay": "L_ctx/L_claim/L_exp: source experimental conditions, observed null/mismatch or descriptive ancestry remain outside asserted internal cognitive system"
+    },
+    {
+      "claim": "A29",
+      "original_assertion": "Publisher S3 Table original motor absolute-variance practice time p=.024 with no strong source condition effect; model-human absolute variance curves opposite source dynamics remain.",
+      "source": "P20 issuer original S3 Table s008",
+      "source_category": "external table source",
+      "grammar_roles": [
+        "rho/O"
+      ],
+      "external_or_claim_overlay": "L_ctx/L_claim/L_exp: source experimental conditions, observed null/mismatch or descriptive ancestry remain outside asserted internal cognitive system"
+    },
+    {
+      "claim": "A30",
+      "original_assertion": "Publisher S4 Table original Friedman joint q2 time p=.907 for its specific source-defined outcome; avoid promoting main discussion nonsignificant p=.167 q2 trend into confirmed core finding.",
+      "source": "P20 issuer original S4 Table s009",
+      "source_category": "external table source",
+      "grammar_roles": [
+        "rho/O"
+      ],
+      "external_or_claim_overlay": "L_ctx/L_claim/L_exp: source experimental conditions, observed null/mismatch or descriptive ancestry remain outside asserted internal cognitive system"
+    },
+    {
+      "claim": "A31",
+      "original_assertion": "Four publisher-original S1–S4 figures show individual 100 agent test target outcomes, human qualitative reach condition, individual motor variance and target-distance split curves; individual target/color extrapolation differences persist.",
+      "source": "issuer original s002–s005 TIFF Figs",
+      "source_category": "supplement original figure conditions",
+      "grammar_roles": [
+        "rho/O",
+        "T"
+      ],
+      "external_or_claim_overlay": "L_ctx/L_claim/L_exp: source experimental conditions, observed null/mismatch or descriptive ancestry remain outside asserted internal cognitive system"
+    },
+    {
+      "claim": "A32",
+      "original_assertion": "Original PLOS S1 Data source ZIP 443 archive entries includes 20 human and 200 agent result histories plus metadata; source receipt direct SHA matches DOI archive, not an independent reanalysis of the 220 original records.",
+      "source": "issuer original s001 ZIP 2026-10-04",
+      "source_category": "original data provenance",
+      "grammar_roles": [
+        "rho/O"
+      ],
+      "external_or_claim_overlay": "L_ctx/L_claim/L_exp: source experimental conditions, observed null/mismatch or descriptive ancestry remain outside asserted internal cognitive system"
+    },
+    {
+      "claim": "A33",
+      "original_assertion": "Original publisher S1 Video MP4 confirms source observational file identity and visual illustration scope; checksum validated but byte signature not behavioral scientist independent qualitative viewing.",
+      "source": "issuer original s010 MP4",
+      "source_category": "original movie provenance",
+      "grammar_roles": [
+        "rho/O"
+      ],
+      "external_or_claim_overlay": "L_ctx/L_claim/L_exp: source experimental conditions, observed null/mismatch or descriptive ancestry remain outside asserted internal cognitive system"
+    },
+    {
+      "claim": "A34",
+      "original_assertion": "External selected goal, observed participant sensorimotor outcome, author calculated PCA and synthetic simulator ground-truth f must not be reclassified as a human intrinsic planner, learned forward predictor or direct neural inverse-map recording.",
+      "source": "main pp2–20",
+      "source_category": "experimenter observation boundary",
+      "grammar_roles": [
+        "Pi",
+        "P_in",
+        "P_out",
+        "rho/O"
+      ],
+      "external_or_claim_overlay": "L_ctx/L_claim/L_exp: source experimental conditions, observed null/mismatch or descriptive ancestry remain outside asserted internal cognitive system"
+    },
+    {
+      "claim": "A35",
+      "original_assertion": "Source published Mar 5 2019 DOI and 27pp primary plus ten same-article issuer originals exact SHA locked; targeted article no visible formal correction; exhaustive absence not independently certified.",
+      "source": "publisher DOI article 2026-10-04",
+      "source_category": "original correction version status",
+      "grammar_roles": [
+        "rho/O"
+      ],
+      "external_or_claim_overlay": "L_ctx/L_claim/L_exp: source experimental conditions, observed null/mismatch or descriptive ancestry remain outside asserted internal cognitive system"
+    },
+    {
+      "claim": "A36",
+      "original_assertion": "Source central on-line locally linear continuous inverse control with goal feedback and slow exploration, direct Rolf Goal Babbling ancestor; shared motor task or objective insufficient to infer family with P19/PF03/G2 SKL papers.",
+      "source": "main cited references and model methods",
+      "source_category": "model genealogy for future comparison",
+      "grammar_roles": [
+        "K",
+        "X",
+        "T"
+      ],
+      "external_or_claim_overlay": "Hypothetical original modeled system when explicit; retain evidence restrictions"
+    }
+  ],
+  "full_original_47_dependency_projection": [
+    {
+      "source_link": 1,
+      "from": "A01",
+      "to": "A02",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 2,
+      "from": "A02",
+      "to": "A03",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 3,
+      "from": "A03",
+      "to": "A04",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 4,
+      "from": "A05",
+      "to": "A06",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 5,
+      "from": "A06",
+      "to": "A07",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 6,
+      "from": "A07",
+      "to": "A08",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 7,
+      "from": "A08",
+      "to": "A09",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 8,
+      "from": "A07",
+      "to": "A10",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 9,
+      "from": "A09",
+      "to": "A10",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 10,
+      "from": "A10",
+      "to": "A11",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 11,
+      "from": "A06",
+      "to": "A11",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 12,
+      "from": "A07",
+      "to": "A11",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 13,
+      "from": "A11",
+      "to": "A12",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 14,
+      "from": "A10",
+      "to": "A12",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 15,
+      "from": "A13",
+      "to": "A10",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 16,
+      "from": "A13",
+      "to": "A07",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 17,
+      "from": "A14",
+      "to": "A15",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 18,
+      "from": "A15",
+      "to": "A16",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 19,
+      "from": "A15",
+      "to": "A17",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 20,
+      "from": "A16",
+      "to": "A17",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 21,
+      "from": "A18",
+      "to": "A19",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 22,
+      "from": "A17",
+      "to": "A18",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 23,
+      "from": "A18",
+      "to": "A20",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 24,
+      "from": "A19",
+      "to": "A20",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 25,
+      "from": "A20",
+      "to": "A21",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 26,
+      "from": "A21",
+      "to": "A22",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 27,
+      "from": "A23",
+      "to": "A22",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 28,
+      "from": "A24",
+      "to": "A22",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 29,
+      "from": "A25",
+      "to": "A07",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 30,
+      "from": "A25",
+      "to": "A10",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 31,
+      "from": "A26",
+      "to": "A27",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 32,
+      "from": "A27",
+      "to": "A16",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 33,
+      "from": "A28",
+      "to": "A18",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 34,
+      "from": "A29",
+      "to": "A21",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 35,
+      "from": "A30",
+      "to": "A20",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 36,
+      "from": "A31",
+      "to": "A17",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 37,
+      "from": "A31",
+      "to": "A21",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 38,
+      "from": "A32",
+      "to": "A26",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 39,
+      "from": "A33",
+      "to": "A26",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 40,
+      "from": "A34",
+      "to": "A04",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 41,
+      "from": "A34",
+      "to": "A07",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 42,
+      "from": "A35",
+      "to": "A32",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 43,
+      "from": "A35",
+      "to": "A33",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 44,
+      "from": "A36",
+      "to": "A13",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 45,
+      "from": "A36",
+      "to": "A07",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 46,
+      "from": "A05",
+      "to": "A14",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    },
+    {
+      "source_link": 47,
+      "from": "A12",
+      "to": "A15",
+      "source_relation": "original-source dependency/experimental scope, B to source-challenge relational direction",
+      "grammar_relation": "only original typed source operator/dependency or source claim/experiment overlay; no new Grammar role or novel coordination inferred"
+    }
+  ],
+  "retained_fidelity_failures": [
+    "Human original between start H1/H2 effect absent original S1 Table p=.944 whereas agents start H2 faster early",
+    "Original humans and agent effective motor joint preference not same despite first two PCA 90% explained variation",
+    "Original humans early movement highly variable then less vs agents early narrow then broader",
+    "Human q2 adaptation p=.167 nonsignificant, original S4 Friedman p=.907 specific measure",
+    "First original human 80-sec block can hide random premotor babbling; exact human biological Goal Babbling engine not proven",
+    "Rolf inherited perturbation Eqs6.8–6.10 original cited outside PLOS manuscript not independently numerically rerun"
+  ],
+  "not_claimed": [
+    "Original article human numeric results rerun",
+    "Source learns new forward predictor or independent planning coordinator",
+    "Model itself selects externally supplied experimental goal set",
+    "Human brain implements engineer fixed η=.2",
+    "General H0/H1/H2 status",
+    "All other G1/G2 families independent"
+  ],
+  "result": "D_FROZEN_SOURCE_RECONSTRUCTION_UNCHANGED_GRAMMAR"
+}

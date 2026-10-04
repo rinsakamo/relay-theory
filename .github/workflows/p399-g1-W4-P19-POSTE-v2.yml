@@ -1,0 +1,29 @@
+name: P399 G1 W4 P19 independent real original source and frozen Git POST E
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g1/parallel/W4/p19/p19_v2_independent_after_E_immutable_source_and_git.py"
+      - ".github/workflows/p399-g1-W4-P19-POSTE-v2.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  p19-real-source-and-six-git-stage-postE:
+    runs-on: ubuntu-latest
+    timeout-minutes: 23
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install "pypdf==6.1.1" "Pillow==11.3.0"
+      - run: python research/paper2/p399/g1/parallel/W4/p19/p19_v2_independent_after_E_immutable_source_and_git.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g1-w4-p19-real-postE-source-git-${{ github.run_id }}
+          path: g1-w4-p19-postE/
+          retention-days: 21
+          if-no-files-found: warn

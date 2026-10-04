@@ -1,0 +1,27 @@
+name: P399 G1 W4 P19 six issuer supplementary original source before restart
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g1/parallel/W4/p19/p19_additional_issuer_original_s1s4_fig_s1s2_tables.py"
+      - ".github/workflows/p399-g1-W4-P19-extra-issuer-prea.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  w4-p19-extra-issuer-before-v2:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install "pypdf==6.1.1" "Pillow==11.3.0"
+      - run: python research/paper2/p399/g1/parallel/W4/p19/p19_additional_issuer_original_s1s4_fig_s1s2_tables.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g1-w4-p19-six-extra-issuer-${{ github.run_id }}
+          path: g1-w4-p19-additional/
+          retention-days: 21
+          if-no-files-found: warn
