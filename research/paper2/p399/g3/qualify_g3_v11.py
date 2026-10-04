@@ -95,12 +95,22 @@ def check_role_isolation(envelope, reference=None, bridge=None):
     if envelope["purpose"] == "MAIN_SCIENTIFIC":
         if not all(k in keyed for k in ("REFERENCE_R", "ROLE_BRIDGE_RB", "CURATOR_P", "GRAMMAR_D")):
             raise G3Error("MISSING_OPERATIONAL_ROLE_ASSIGNMENT")
-        if "ADJUDICATOR_R2" not in keyed and reference and (
+        if reference is not None and (
                 reference["assessor"]["independence_disclosure"] == "INDEPENDENT_R2_COMPLETED"):
-            raise G3Error("FALSE_R2_WITHOUT_DISTINCT_ACTOR")
-        if not all(keyed[k]["actor_id"] != keyed["GRAMMAR_D"]["actor_id"] for k in
-                   ("REFERENCE_R", "ROLE_BRIDGE_RB", "CURATOR_P")):
-            raise G3Error("UNSEPARATED_MAIN_ASSESSOR_AND_ANALYST")
+            if "ADJUDICATOR_R2" not in keyed:
+                raise G3Error("FALSE_R2_WITHOUT_DISTINCT_ACTOR")
+            att = reference["assessor"]["r2_attestation"]
+            if att["assessor_token"] != keyed["ADJUDICATOR_R2"]["actor_id"] or (
+                    att["separate_actor_receipt_sha256"] !=
+                    keyed["ADJUDICATOR_R2"].get("attestation_raw_sha256")):
+                raise G3Error("R2_ATTESTATION_ACTOR_OR_HASH_MISMATCH")
+        distinct_roles = ("REFERENCE_R", "ROLE_BRIDGE_RB", "CURATOR_P", "GRAMMAR_D")
+        if len({keyed[k]["actor_id"] for k in distinct_roles}) != 4 or (
+                len({keyed[k]["execution_id"] for k in distinct_roles}) != 4):
+            raise G3Error("UNSEPARATED_MAIN_REFERENCE_BRIDGE_CURATOR_ANALYST")
+        if reference is not None and (
+                reference["assessor"]["assessor_token"] != keyed["REFERENCE_R"]["actor_id"]):
+            raise G3Error("REFERENCE_ASSESSOR_ID_MISMATCH")
         if envelope["recognition"]["before_D"] == "NOT_COLLECTED":
             raise G3Error("PRE_D_RECOGNITION_NOT_RECORDED")
     if "ADJUDICATOR_R2" in keyed and "REFERENCE_R" in keyed:
@@ -163,17 +173,29 @@ def check_completeness(doc, packet=None):
             raise G3Error("PACKET_INTEGRITY_DECLARATION_FALSE")
     return "BOUNDED_RECORDED_SOURCE_COMPLETENESS_CHECK_ONLY"
 
-def guarded_score(reference, packet, bridge, record, envelope, completeness):
+def guarded_score(reference, packet, bridge, record, envelope, completeness,
+                  trusted_authority_verifier=None):
     if envelope["purpose"] != "MAIN_SCIENTIFIC":
         raise G3Error("SYNTHETIC_OR_PREFLIGHT_CANNOT_ISSUE_MAIN_SCIENTIFIC_FIDELITY")
+    check_authorization(envelope, trusted_authority_verifier)
     check_role_isolation(envelope, reference, bridge)
     check_completeness(completeness, packet)
+    if completeness["native_reference_digest"] != canonical_sha(reference):
+        raise G3Error("SOURCE_COMPLETENESS_NOT_TIED_TO_LOCKED_NATIVE_REFERENCE")
+    if envelope["packet_integrity"]["independent_completeness"] != completeness["second_review"]["status"]:
+        raise G3Error("FALSE_INDEPENDENT_PACKET_COMPLETENESS")
     if envelope["packet_integrity"]["source_completeness_sha256"] != canonical_sha(completeness):
         raise G3Error("SOURCE_COMPLETENESS_NOT_LOCKED")
     if record["reference_state"] == "LOCKED_INDEPENDENT" and (
             reference["assessor"]["independence_disclosure"] != "INDEPENDENT_R2_COMPLETED"):
         raise G3Error("FAKE_INDEPENDENT_REFERENCE_VERDICT")
     return score_locked(reference, packet, bridge, record)
+
+def guarded_coordination(reference, packet, bridge, record, envelope, completeness,
+                         trusted_authority_verifier=None):
+    guarded_score(reference, packet, bridge, record, envelope, completeness,
+                  trusted_authority_verifier=trusted_authority_verifier)
+    return coordination_locked(reference, packet, bridge, record)
 
 def git_run(repo_path, *args):
     res = subprocess.run(["git", "-C", str(repo_path), *args], capture_output=True,
@@ -196,6 +218,16 @@ def verify_exact_freeze_chain(events, repo_path=None, scientific=False,
             "g1_final_sha256", "g2_final_sha256", "packet_sha256",
             "authorization_receipt_sha256")
     base = events[0]
+    if scientific:
+        for name in ("g1_final_sha256", "g2_final_sha256", "packet_sha256",
+                     "authorization_receipt_sha256", "primary_source_sha256"):
+            value = base.get(name)
+            if not isinstance(value, str) or len(value) != 64:
+                raise G3Error("MISSING_FINAL_SCIENTIFIC_BINDING:" + name)
+        if repo_path is None:
+            raise G3Error("REAL_GIT_ANCESTRY_NOT_AVAILABLE")
+        if git_run(repo_path, "rev-parse", "--is-shallow-repository") != "false":
+            raise G3Error("SHALLOW_GIT_HISTORY_CANNOT_VERIFY_ANCESTRY")
     prev = None
     for e in events:
         if any(e.get(k) != base.get(k) for k in keys):
