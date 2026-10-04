@@ -1,0 +1,550 @@
+{
+  "schema": "p399_post_4of4_diversity_working_manifest_v0",
+  "state": "WORKING_CANDIDATE_DISCOVERY_NOT_ADMISSION_NOT_MAIN_GO",
+  "date_jst": "2026-10-04",
+  "authority": {
+    "issue": 399,
+    "qualified_cohort": [
+      "PF01",
+      "PF02",
+      "PF03",
+      "PF04"
+    ],
+    "qualified_count": 4,
+    "qualified_scope": "only original source-grounded structural/procedural",
+    "main_authorized": false,
+    "exact_401_validator_ci_required_for_scientific_admission": false
+  },
+  "denominators": {
+    "first_four_formal_qualified": 4,
+    "overall_pilot_planned": 20,
+    "additional_discovery": 16,
+    "additional_source_admitted": 0,
+    "additional_scientifically_qualified": 0,
+    "main_seed_known": 10,
+    "main_target": 40
+  },
+  "qualified": [
+    {
+      "id": "PF01",
+      "lane": "MEM",
+      "secondary": [
+        "LRN"
+      ],
+      "doi": "10.1371/journal.pcbi.1006928",
+      "title": "Stability of working memory in continuous attractor networks under the control of short-term plasticity",
+      "status": "FORMALLY_QUALIFIED_SOURCE_STRUCTURAL",
+      "authority": "https://github.com/rinsakamo/relay-theory/issues/399#issuecomment-5975975031",
+      "source_sha256": "8531103d577a3249c7edffa06ef2a8a7e85eb01b0a2f02cee2145e187581fbc3",
+      "limitations": [
+        "source Fig2B U numeric conflict",
+        "1000-trial cue count mismatch",
+        "no full original NEST numeric replay"
+      ],
+      "lineage": "continuous attractor/STP; broad attractor ancestry disclosed",
+      "publisher": "PLOS"
+    },
+    {
+      "id": "PF02",
+      "lane": "CTL",
+      "secondary": [
+        "MEM",
+        "PRD"
+      ],
+      "doi": "10.1371/journal.pcbi.1004331",
+      "title": "Stochastic Dynamics Underlying Cognitive Stability and Flexibility",
+      "status": "FORMALLY_QUALIFIED_SOURCE_STRUCTURAL",
+      "authority": "https://github.com/rinsakamo/relay-theory/issues/399#issuecomment-5976277653",
+      "source_sha256": "bef58465c56cec93f1cbb0f689c8fcd48cd656f3520d70a6032aaac9caa63655",
+      "limitations": [
+        "pre-A authorized narrow reading of printed p33 OU",
+        "Stemme et al. 2005 integrated ancestor disclosed",
+        "no original quantitative replay"
+      ],
+      "lineage": "Stemme et al. 2005 integrated rule+decision predecessor reused",
+      "publisher": "PLOS"
+    },
+    {
+      "id": "PF03",
+      "lane": "PRD",
+      "secondary": [
+        "LRN",
+        "SKL"
+      ],
+      "doi": "10.1371/journal.pcbi.1011801",
+      "title": "Dynamic predictive coding: A model of hierarchical sequence learning and prediction in the neocortex",
+      "status": "FORMALLY_QUALIFIED_SOURCE_STRUCTURAL",
+      "authority": "https://github.com/rinsakamo/relay-theory/issues/399#issuecomment-5976117803",
+      "source_sha256": "62d744125034ce834692cdb210065d34e2bbd0f58c9eb3387ed2d75dfb7f77ae",
+      "limitations": [
+        "source-only unresolved precise three-level event scalar",
+        "four original numeric behaviors remain partial"
+      ],
+      "lineage": "Jiang/Rao 2023 same-family direct predecessor disclosed",
+      "publisher": "PLOS"
+    },
+    {
+      "id": "PF04",
+      "lane": "SKL",
+      "secondary": [
+        "CTL",
+        "LRN"
+      ],
+      "doi": "10.1371/journal.pcbi.1003364",
+      "title": "Actions, Action Sequences and Habits: Evidence That Goal-Directed and Habitual Action Control Are Hierarchically Organized",
+      "status": "FORMALLY_QUALIFIED_SOURCE_STRUCTURAL",
+      "authority": "https://github.com/rinsakamo/relay-theory/issues/399#issuecomment-5976104988",
+      "source_sha256": "bc84d4827df202cf5051cf10aa64cc09673b718af2acd31441a3712bcd376df9",
+      "limitations": [
+        "pre-A author-approved analytical Eq10 denominator change",
+        "2013 original fitted likelihoods and Bayesian model evidence excluded"
+      ],
+      "lineage": "Dezfouli/Balleine 2012 direct ancestry; Daw 2005 flat comparator reuse",
+      "publisher": "PLOS"
+    }
+  ],
+  "discovery_candidates": [
+    {
+      "id": "P05",
+      "primary_sampling_lane": "ATT",
+      "doi": "10.1371/journal.pcbi.1010654",
+      "title": "Look twice: A generalist computational model predicts return fixations across tasks and species",
+      "publisher": "PLOS",
+      "publisher_original_html": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010654",
+      "current_evidence": "PUBLISHER_PAGE_DISCOVERED_SEARCH_RESULT_WITH_ORIGINAL_FULL_ARTICLE_CONTENT; NOT SOURCE_ADMITTED",
+      "selected_primary_medium": null,
+      "original_pdf_sha256": null,
+      "edition_correction_closed": false,
+      "central_lineage_pass": false,
+      "pilot_main_disjoint_pass": false,
+      "A_started": false,
+      "structural_outcome": "NOT_TESTED",
+      "architectural_contrast": "finite inhibition-of-return + multiple maps; caution model inherits IVSN",
+      "risks": [],
+      "source_status": "DISCOVERY_ONLY_OUTCOME_BLIND_NOT_FROZEN"
+    },
+    {
+      "id": "P06",
+      "primary_sampling_lane": "ATT",
+      "doi": "10.1371/journal.pcbi.1004375",
+      "title": "Primary Visual Cortex as a Saliency Map: A Parameter-Free Prediction and Its Test by Behavioral Data",
+      "publisher": "PLOS",
+      "publisher_original_html": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004375",
+      "current_evidence": "PUBLISHER_PAGE_DISCOVERED_SEARCH_RESULT_WITH_ORIGINAL_FULL_ARTICLE_CONTENT; NOT SOURCE_ADMITTED",
+      "selected_primary_medium": null,
+      "original_pdf_sha256": null,
+      "edition_correction_closed": false,
+      "central_lineage_pass": false,
+      "pilot_main_disjoint_pass": false,
+      "A_started": false,
+      "structural_outcome": "NOT_TESTED",
+      "architectural_contrast": "V1 salience model + behavior; check model-specification depth vs inference-only",
+      "risks": [],
+      "source_status": "DISCOVERY_ONLY_OUTCOME_BLIND_NOT_FROZEN"
+    },
+    {
+      "id": "P07",
+      "primary_sampling_lane": "BLF",
+      "doi": "10.1371/journal.pcbi.1000254",
+      "title": "Game Theory of Mind",
+      "publisher": "PLOS",
+      "publisher_original_html": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000254",
+      "current_evidence": "PUBLISHER_PAGE_DISCOVERED_SEARCH_RESULT_WITH_ORIGINAL_FULL_ARTICLE_CONTENT; NOT SOURCE_ADMITTED",
+      "selected_primary_medium": null,
+      "original_pdf_sha256": null,
+      "edition_correction_closed": false,
+      "central_lineage_pass": false,
+      "pilot_main_disjoint_pass": false,
+      "A_started": false,
+      "structural_outcome": "NOT_TESTED",
+      "architectural_contrast": "nested intentions / inverse opponent sophistication inference; older model",
+      "risks": [],
+      "source_status": "DISCOVERY_ONLY_OUTCOME_BLIND_NOT_FROZEN"
+    },
+    {
+      "id": "P08",
+      "primary_sampling_lane": "BLF",
+      "doi": "10.1371/journal.pcbi.1005418",
+      "title": "Sequential inference as a mode of cognition and its correlates in fronto-parietal and hippocampal brain regions",
+      "publisher": "PLOS",
+      "publisher_original_html": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005418",
+      "current_evidence": "PUBLISHER_PAGE_DISCOVERED_SEARCH_RESULT_WITH_ORIGINAL_FULL_ARTICLE_CONTENT; NOT SOURCE_ADMITTED",
+      "selected_primary_medium": null,
+      "original_pdf_sha256": null,
+      "edition_correction_closed": false,
+      "central_lineage_pass": false,
+      "pilot_main_disjoint_pass": false,
+      "A_started": false,
+      "structural_outcome": "NOT_TESTED",
+      "architectural_contrast": "state-sequence belief inference vs Bayesian filtering; publisher correction 2017-12-13 MUST resolve",
+      "risks": [
+        "PUBLISHER_CORRECTION_2017_12_13"
+      ],
+      "source_status": "DISCOVERY_ONLY_OUTCOME_BLIND_NOT_FROZEN"
+    },
+    {
+      "id": "P09",
+      "primary_sampling_lane": "CNC",
+      "doi": "10.1371/journal.pcbi.1006435",
+      "title": "Abstract concept learning in a simple neural network inspired by the insect brain",
+      "publisher": "PLOS",
+      "publisher_original_html": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006435",
+      "current_evidence": "PUBLISHER_PAGE_DISCOVERED_SEARCH_RESULT_WITH_ORIGINAL_FULL_ARTICLE_CONTENT; NOT SOURCE_ADMITTED",
+      "selected_primary_medium": null,
+      "original_pdf_sha256": null,
+      "edition_correction_closed": false,
+      "central_lineage_pass": false,
+      "pilot_main_disjoint_pass": false,
+      "A_started": false,
+      "structural_outcome": "NOT_TESTED",
+      "architectural_contrast": "animal mushroom-body concept equivalence; nonhuman neuro-model limits",
+      "risks": [],
+      "source_status": "DISCOVERY_ONLY_OUTCOME_BLIND_NOT_FROZEN"
+    },
+    {
+      "id": "P10",
+      "primary_sampling_lane": "CNC",
+      "doi": "10.1371/journal.pcbi.1010699",
+      "title": "Humans combine value learning and hypothesis testing strategically in multi-dimensional probabilistic reward learning",
+      "publisher": "PLOS",
+      "publisher_original_html": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010699",
+      "current_evidence": "PUBLISHER_PAGE_DISCOVERED_SEARCH_RESULT_WITH_ORIGINAL_FULL_ARTICLE_CONTENT; NOT SOURCE_ADMITTED",
+      "selected_primary_medium": null,
+      "original_pdf_sha256": null,
+      "edition_correction_closed": false,
+      "central_lineage_pass": false,
+      "pilot_main_disjoint_pass": false,
+      "A_started": false,
+      "structural_outcome": "NOT_TESTED",
+      "architectural_contrast": "rule hypothesis test vs value learner; hybrid CNC/LRN/CTL; publisher correction 2022-12-13 MUST resolve",
+      "risks": [
+        "PUBLISHER_CORRECTION_2022_12_13"
+      ],
+      "source_status": "DISCOVERY_ONLY_OUTCOME_BLIND_NOT_FROZEN"
+    },
+    {
+      "id": "P11",
+      "primary_sampling_lane": "CTL",
+      "doi": "10.1371/journal.pcbi.1008971",
+      "title": "Analogous computations in working memory input, output and motor gating: Electrophysiological and computational modeling evidence",
+      "publisher": "PLOS",
+      "publisher_original_html": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008971",
+      "current_evidence": "PUBLISHER_PAGE_DISCOVERED_SEARCH_RESULT_WITH_ORIGINAL_FULL_ARTICLE_CONTENT; NOT SOURCE_ADMITTED",
+      "selected_primary_medium": null,
+      "original_pdf_sha256": null,
+      "edition_correction_closed": false,
+      "central_lineage_pass": false,
+      "pilot_main_disjoint_pass": false,
+      "A_started": false,
+      "structural_outcome": "NOT_TESTED",
+      "architectural_contrast": "gating contrasts, source model vs empirical EEG distinction; Frank computational lineage review",
+      "risks": [],
+      "source_status": "DISCOVERY_ONLY_OUTCOME_BLIND_NOT_FROZEN"
+    },
+    {
+      "id": "P12",
+      "primary_sampling_lane": "CTL",
+      "doi": "10.1371/journal.pcbi.1006043",
+      "title": "Rational metareasoning and the plasticity of cognitive control",
+      "publisher": "PLOS",
+      "publisher_original_html": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006043",
+      "current_evidence": "PUBLISHER_PAGE_DISCOVERED_SEARCH_RESULT_WITH_ORIGINAL_FULL_ARTICLE_CONTENT; NOT SOURCE_ADMITTED",
+      "selected_primary_medium": null,
+      "original_pdf_sha256": null,
+      "edition_correction_closed": false,
+      "central_lineage_pass": false,
+      "pilot_main_disjoint_pass": false,
+      "A_started": false,
+      "structural_outcome": "NOT_TESTED",
+      "architectural_contrast": "LVOC learned control value vs model-free; check EVC source ancestry",
+      "risks": [],
+      "source_status": "DISCOVERY_ONLY_OUTCOME_BLIND_NOT_FROZEN"
+    },
+    {
+      "id": "P13",
+      "primary_sampling_lane": "LRN",
+      "doi": "10.1371/journal.pcbi.1006681",
+      "title": "Human online adaptation to changes in prior probability",
+      "publisher": "PLOS",
+      "publisher_original_html": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006681",
+      "current_evidence": "PUBLISHER_PAGE_DISCOVERED_SEARCH_RESULT_WITH_ORIGINAL_FULL_ARTICLE_CONTENT; NOT SOURCE_ADMITTED",
+      "selected_primary_medium": null,
+      "original_pdf_sha256": null,
+      "edition_correction_closed": false,
+      "central_lineage_pass": false,
+      "pilot_main_disjoint_pass": false,
+      "A_started": false,
+      "structural_outcome": "NOT_TESTED",
+      "architectural_contrast": "Bayesian vs exponential prior updates; bounded model-family explanatory specificity",
+      "risks": [],
+      "source_status": "DISCOVERY_ONLY_OUTCOME_BLIND_NOT_FROZEN"
+    },
+    {
+      "id": "P14",
+      "primary_sampling_lane": "LRN",
+      "doi": "10.1371/journal.pcbi.1008969",
+      "title": "Sequence learning recodes cortical representations instead of strengthening initial ones",
+      "publisher": "PLOS",
+      "publisher_original_html": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008969",
+      "current_evidence": "PUBLISHER_PAGE_DISCOVERED_SEARCH_RESULT_WITH_ORIGINAL_FULL_ARTICLE_CONTENT; NOT SOURCE_ADMITTED",
+      "selected_primary_medium": null,
+      "original_pdf_sha256": null,
+      "edition_correction_closed": false,
+      "central_lineage_pass": false,
+      "pilot_main_disjoint_pass": false,
+      "A_started": false,
+      "structural_outcome": "NOT_TESTED",
+      "architectural_contrast": "associative-strengthening vs representational recoding; distinguish brain data vs learning machinery",
+      "risks": [],
+      "source_status": "DISCOVERY_ONLY_OUTCOME_BLIND_NOT_FROZEN"
+    },
+    {
+      "id": "P15",
+      "primary_sampling_lane": "MEM",
+      "doi": "10.1371/journal.pcbi.1010589",
+      "title": "Correcting the hebbian mistake: Toward a fully error-driven hippocampus",
+      "publisher": "PLOS",
+      "publisher_original_html": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010589",
+      "current_evidence": "PUBLISHER_PAGE_DISCOVERED_SEARCH_RESULT_WITH_ORIGINAL_FULL_ARTICLE_CONTENT; NOT SOURCE_ADMITTED",
+      "selected_primary_medium": null,
+      "original_pdf_sha256": null,
+      "edition_correction_closed": false,
+      "central_lineage_pass": false,
+      "pilot_main_disjoint_pass": false,
+      "A_started": false,
+      "structural_outcome": "NOT_TESTED",
+      "architectural_contrast": "error-driven episodic encoding vs PF01 short-term plasticity; O'Reilly ancestor family checks",
+      "risks": [],
+      "source_status": "DISCOVERY_ONLY_OUTCOME_BLIND_NOT_FROZEN"
+    },
+    {
+      "id": "P16",
+      "primary_sampling_lane": "MEM",
+      "doi": "10.1371/journal.pcbi.1003648",
+      "title": "Place Cell Rate Remapping by CA3 Recurrent Collaterals",
+      "publisher": "PLOS",
+      "publisher_original_html": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003648",
+      "current_evidence": "PUBLISHER_PAGE_DISCOVERED_SEARCH_RESULT_WITH_ORIGINAL_FULL_ARTICLE_CONTENT; NOT SOURCE_ADMITTED",
+      "selected_primary_medium": null,
+      "original_pdf_sha256": null,
+      "edition_correction_closed": false,
+      "central_lineage_pass": false,
+      "pilot_main_disjoint_pass": false,
+      "A_started": false,
+      "structural_outcome": "NOT_TESTED",
+      "architectural_contrast": "spatial-context associative CA3 attractor; NEAR-FAMILY PF01 broad attractor term needs mechanism comparison",
+      "risks": [
+        "NEAR_FAMILY_PF01_CHECK_REQUIRED"
+      ],
+      "source_status": "DISCOVERY_ONLY_OUTCOME_BLIND_NOT_FROZEN"
+    },
+    {
+      "id": "P17",
+      "primary_sampling_lane": "PRD",
+      "doi": "10.1371/journal.pcbi.1009738",
+      "title": "An initial ‘snapshot’ of sensory information biases the likelihood and speed of subsequent changes of mind",
+      "publisher": "PLOS",
+      "publisher_original_html": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1009738",
+      "current_evidence": "PUBLISHER_PAGE_DISCOVERED_SEARCH_RESULT_WITH_ORIGINAL_FULL_ARTICLE_CONTENT; NOT SOURCE_ADMITTED",
+      "selected_primary_medium": null,
+      "original_pdf_sha256": null,
+      "edition_correction_closed": false,
+      "central_lineage_pass": false,
+      "pilot_main_disjoint_pass": false,
+      "A_started": false,
+      "structural_outcome": "NOT_TESTED",
+      "architectural_contrast": "first-choice bias vs corrective evidence; check whole computational model vs empirical comparison",
+      "risks": [],
+      "source_status": "DISCOVERY_ONLY_OUTCOME_BLIND_NOT_FROZEN"
+    },
+    {
+      "id": "P18",
+      "primary_sampling_lane": "PRD",
+      "doi": "10.1371/journal.pcbi.1008552",
+      "title": "Model based planners reflect on their model-free propensities",
+      "publisher": "PLOS",
+      "publisher_original_html": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008552",
+      "current_evidence": "PUBLISHER_PAGE_DISCOVERED_SEARCH_RESULT_WITH_ORIGINAL_FULL_ARTICLE_CONTENT; NOT SOURCE_ADMITTED",
+      "selected_primary_medium": null,
+      "original_pdf_sha256": null,
+      "edition_correction_closed": false,
+      "central_lineage_pass": false,
+      "pilot_main_disjoint_pass": false,
+      "A_started": false,
+      "structural_outcome": "NOT_TESTED",
+      "architectural_contrast": "MB considers own MF propensity; NEAR_FAMILY PF04 MB/MF comparator potential overlap",
+      "risks": [
+        "NEAR_FAMILY_PF04_CHECK_REQUIRED"
+      ],
+      "source_status": "DISCOVERY_ONLY_OUTCOME_BLIND_NOT_FROZEN"
+    },
+    {
+      "id": "P19",
+      "primary_sampling_lane": "SKL",
+      "doi": "10.1371/journal.pcbi.1009866",
+      "title": "Tracking human skill learning with a hierarchical Bayesian sequence model",
+      "publisher": "PLOS",
+      "publisher_original_html": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1009866",
+      "current_evidence": "PUBLISHER_PAGE_DISCOVERED_SEARCH_RESULT_WITH_ORIGINAL_FULL_ARTICLE_CONTENT; NOT SOURCE_ADMITTED",
+      "selected_primary_medium": null,
+      "original_pdf_sha256": null,
+      "edition_correction_closed": false,
+      "central_lineage_pass": false,
+      "pilot_main_disjoint_pass": false,
+      "A_started": false,
+      "structural_outcome": "NOT_TESTED",
+      "architectural_contrast": "variable-depth predictive history during motor skill learning; compare PF03 generic sequence lineage",
+      "risks": [
+        "NEAR_FAMILY_PF03_CHECK_REQUIRED"
+      ],
+      "source_status": "DISCOVERY_ONLY_OUTCOME_BLIND_NOT_FROZEN"
+    },
+    {
+      "id": "P20",
+      "primary_sampling_lane": "SKL",
+      "doi": "10.1371/journal.pcbi.1006676",
+      "title": "Goal-related feedback guides motor exploration and redundancy resolution in human motor skill acquisition",
+      "publisher": "PLOS",
+      "publisher_original_html": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006676",
+      "current_evidence": "PUBLISHER_PAGE_DISCOVERED_SEARCH_RESULT_WITH_ORIGINAL_FULL_ARTICLE_CONTENT; NOT SOURCE_ADMITTED",
+      "selected_primary_medium": null,
+      "original_pdf_sha256": null,
+      "edition_correction_closed": false,
+      "central_lineage_pass": false,
+      "pilot_main_disjoint_pass": false,
+      "A_started": false,
+      "structural_outcome": "NOT_TESTED",
+      "architectural_contrast": "goal-directed motor exploration vs PF04 learned action sequence mechanism",
+      "risks": [],
+      "source_status": "DISCOVERY_ONLY_OUTCOME_BLIND_NOT_FROZEN"
+    }
+  ],
+  "alternate_publisher_leads": [
+    {
+      "id": "P08",
+      "doi": "10.7554/eLife.101157",
+      "title": "Effects of experiencing the COVID-19 pandemic on optimistically biased belief updating",
+      "publisher": "eLife",
+      "url": "https://elifesciences.org/articles/101157",
+      "caveat": "empirical comparison of reused inference families; independent original model eligibility uncertain"
+    },
+    {
+      "id": "P12",
+      "doi": "10.7554/eLife.39497",
+      "title": "Integrated externally and internally generated task predictions jointly guide cognitive control in prefrontal cortex",
+      "publisher": "eLife",
+      "url": "https://elifesciences.org/articles/39497v2",
+      "caveat": "actual accepted vs version-of-record and independently specified mechanism check"
+    },
+    {
+      "id": "P16",
+      "doi": "10.7554/eLife.97894.3",
+      "title": "Adaptive chunking improves effective working memory capacity in a prefrontal cortex and basal ganglia circuit",
+      "publisher": "eLife",
+      "url": "https://elifesciences.org/articles/97894v1",
+      "caveat": "publisher version-of-record URL/DOI match and Frank-lineage with P11 must be checked"
+    },
+    {
+      "id": "P20",
+      "doi": "10.1038/s41467-023-38626-y",
+      "title": "Learning how network structure shapes decision-making for bio-inspired computing",
+      "publisher": "Nature Communications",
+      "url": "https://www.nature.com/articles/s41467-023-38626-y",
+      "caveat": "decision/network engineering model not a proven sensorimotor SKL mechanistic match: do NOT replace P20 absent eligibility review; exploratory source-diversity lead only"
+    }
+  ],
+  "main_existing_seed_reference": [
+    [
+      "ATT-01",
+      "10.1007/s42113-024-00197-6",
+      "Meibodi et al. selection history attention"
+    ],
+    [
+      "BLF-01",
+      "10.1016/j.isci.2025.112844",
+      "Lee et al. belief updating decision-variable space"
+    ],
+    [
+      "CNC-01",
+      "10.1038/s41562-023-01719-1",
+      "Zhao et al. conceptual bootstrapping"
+    ],
+    [
+      "LRN-01",
+      "10.1038/s41467-025-58848-6",
+      "Fang & Sims efficient coding generalizable representations"
+    ],
+    [
+      "MEM-01",
+      "10.1007/s42113-023-00189-y",
+      "Stocco et al. ACT-R declarative memory integrated framework"
+    ],
+    [
+      "PRD-01",
+      "10.1038/s41562-024-01930-8",
+      "Sharp & Eldar forward/backward prediction; publisher correction"
+    ],
+    [
+      "INT-01",
+      "10.1016/j.cognition.2024.105967",
+      "Li & Collins hierarchical decision policy composition"
+    ],
+    [
+      "INT-02",
+      "10.3390/e26060484",
+      "Paul et al. predictive planning counterfactual learning active inference"
+    ],
+    [
+      "INT-03",
+      "10.1073/pnas.95.24.14529",
+      "Dehaene et al. global workspace"
+    ],
+    [
+      "INT-04",
+      null,
+      "Spens & Burgess 2024 generative memory; exact DOI confirm before ID freeze"
+    ]
+  ],
+  "screening": {
+    "checked_exact_doi_appearances": [
+      "#398 issue body and 37 returned issue comments including frozen roster pointers",
+      "#399 current issue full body",
+      "two historical original 60 manifests in main"
+    ],
+    "candidate_16_exact_doi_collisions_found": 0,
+    "warning": "DOI literal screen does not establish absent shared family, hidden ancestor, paper-level admissibility or source bytes; #398 comment roster still conditional historic #398."
+  },
+  "biases": [
+    "All PF01-PF04 original sources are PLOS native-text publication PDFs",
+    "16 provisional discovery papers all PLOS official original page matches: publisher/layout diversity FAILED",
+    "Most PF source-defined results were A0 with non-discriminating general H test, not selected H1/H2 positives",
+    "PDF-only scanned, publisher HTML with inaccessible PDF, other publishers and genuine negative/underdetermined architectures missing"
+  ],
+  "gates": [
+    {
+      "id": "G0",
+      "name": "source-protocol and PF4 scope reconciliation",
+      "status": "PASS_EXISTING_AUTHORITY"
+    },
+    {
+      "id": "G1",
+      "name": "20-PILOT distinct-family and publisher/modality diversity final adjudication",
+      "status": "OPEN; 16 discovery-only"
+    },
+    {
+      "id": "G2",
+      "name": "40 MAIN source identity/version and outcome-blind frozen predeclared manifest",
+      "status": "OPEN; 10 non-admitted seeds only"
+    },
+    {
+      "id": "G3",
+      "name": "preregistered separate independent source assessor, masking, fidelity/null and freeze",
+      "status": "OPEN"
+    },
+    {
+      "id": "MAIN",
+      "name": "scientific MAIN A-E execution",
+      "status": "PROHIBITED_UNTIL_G1_G2_G3_AUTHORIZED"
+    }
+  ]
+}
