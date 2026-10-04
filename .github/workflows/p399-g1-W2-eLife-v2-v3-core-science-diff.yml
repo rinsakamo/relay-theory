@@ -1,0 +1,62 @@
+name: P399 G1 W2 eLife publisher v2-v3 science-core version-difference audit
+on:
+  push:
+    branches: ["paper2/p399-g1-w2-ctl-prd-diversity-20261004"]
+    paths: [".github/workflows/p399-g1-W2-eLife-v2-v3-core-science-diff.yml"]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  publisher-edition-science-core:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: pip install -q requests pymupdf pillow
+      - name: Actual publisher v2 vs v3 per-page text and figure rendered-pixel differences, not assumed editorial
+        shell: bash
+        run: |
+          python - <<'PY'
+          import io,hashlib,requests,json,difflib
+          from PIL import Image,ImageChops
+          import fitz
+          s=requests.Session()
+          s.headers['User-Agent']='Mozilla/5.0 (RelayTheory P399 G1 W2 provenance)'
+          exp={'v2':'69f4746dd13ba8c04cce0af2277e0d6558a6c60eb8ef523b60900d91bad1c954','v3':'c2adddf8d232d851d9decbb304fb02107686cf55a5dad4cbbfd8b0fd7ac7d64a'}
+          pdf={}
+          for v in ['v2','v3']:
+            u='https://cdn.elifesciences.org/articles/39497/elife-39497-'+v+'.pdf'
+            b=s.get(u,timeout=95).content
+            assert hashlib.sha256(b).hexdigest()==exp[v]
+            pdf[v]=fitz.open(stream=b,filetype='pdf')
+            assert len(pdf[v])==23
+          o={'source':'first party updated and first version of record only','sha256':exp,'pages':[],'publisher_latest_supplement_version_certified':False,'exact_G2_reservation_released':False}
+          for i in range(23):
+            a=pdf['v2'][i].get_text('text').splitlines()
+            b=pdf['v3'][i].get_text('text').splitlines()
+            op=difflib.SequenceMatcher(None,a,b,autojunk=True).get_opcodes()
+            chunks=[]
+            for typ,l1,l2,r1,r2 in op:
+              if typ!='equal':
+                chunks.append({'op':typ,'v2':a[l1:l2][:15],'v3':b[r1:r2][:15]})
+            p={'page':i+1,'same_extracted_text':a==b,'original_text_difference_groups':len(chunks),'first_changes':chunks[:13]}
+            if i in (2,4,6,9,12,15,18):
+              q={}
+              for version in ('v2','v3'):
+                pm=pdf[version][i].get_pixmap(matrix=fitz.Matrix(.7,.7),alpha=False)
+                q[version]=Image.open(io.BytesIO(pm.tobytes('png'))).convert('RGB')
+              p['raster_same_exact_pixels']=ImageChops.difference(q['v2'],q['v3']).getbbox() is None
+              p['raster_sha256']={v:hashlib.sha256(q[v].tobytes()).hexdigest() for v in q}
+            o['pages'].append(p)
+            if chunks:print('ORIGINAL_PUBLISHER_V2_V3_PAGE_DELTA',json.dumps(p,ensure_ascii=False)[:9500],flush=True)
+          with open('w2_elife_v2_vs_v3_actual_source_science_core_diff.json','w') as f:json.dump(o,f,indent=2,ensure_ascii=False)
+          print('ELIFE_V2_V3_PAGES_TEXT_DIFFERING',sum(not p['same_extracted_text'] for p in o['pages']),flush=True)
+          print('ELIFE_V2_V3_CORE_RASTER_SAME',[(p['page'],p.get('raster_same_exact_pixels')) for p in o['pages'] if 'raster_same_exact_pixels' in p],flush=True)
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: W2-eLife-actual-v2-v3-original-page-diff
+          path: w2_elife_v2_vs_v3_actual_source_science_core_diff.json
+          if-no-files-found: warn
