@@ -1,0 +1,31 @@
+name: P399 G1 W1 P10 after E original independent source and Git audit
+on:
+  push:
+    branches: 
+      - "paper2/p399-g1-w1-source-adversarial-20261004"
+    paths:
+      - "research/paper2/p399/g1/parallel/W1/w1_independent_postE_real_issuer_all_stage_sha.py"
+      - ".github/workflows/p399-g1-W1-p10-after-E.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  w1-p10-postE-official-original:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install 'pypdf==6.1.1'
+      - run: python research/paper2/p399/g1/parallel/W1/w1_independent_postE_real_issuer_all_stage_sha.py P10
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: p399-g1-W1-p10-afterE-${{ github.run_id }}
+          path: w1-p10-after-E/
+          retention-days: 21
+          if-no-files-found: warn
