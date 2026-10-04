@@ -44,7 +44,7 @@ for kind in PUBLISHER AUTHOR_INSTITUTION; do
       done
       echo "SELECTED_RENDER_COUNT_$kind=$(find "$ROOT/output/$kind-sample-pages" -name '*.jpg' | wc -l)"
     fi
-    # Preserve metadata and page images only. Do not add full copyright source PDF to artifact or Git.
+    # Ephemeral artifact can hold CC-BY PDF temporarily; never put original PDF into Git.
     if [ "$kind" = PUBLISHER ]; then break; fi
   else
     echo "NO_VALID_RAW_PDF=$kind"
@@ -54,6 +54,15 @@ for kind in PUBLISHER AUTHOR_INSTITUTION; do
 done
 if [ ! -f "$ROOT/output/received_medium.txt" ]; then
   echo "PUBLISHER_PDF_NOT_BYTE_VERIFIED"
-  echo "If author-host PDF was obtained it remains SECONDARY until exact-edition check."
+  echo "No source-anchor PASS without the previously frozen exact publisher PDF."
+  exit 2
 fi
-echo "NO_AUTOMATIC_PRE_A_PASS"
+echo "BEGIN_REAL_ORIGINAL_PDF_SOURCE_ANCHOR_TESTS"
+python3 research/paper2/p399/pf01/verify_pf01_original_pdf_source_anchors.py "$ROOT/private/PUBLISHER.pdf"
+RESULT=$?
+echo "SOURCE_ANCHOR_EXIT=$RESULT"
+if [ "$RESULT" -ne 0 ]; then
+  echo "SOURCE_ANCHOR_GATE_FAILED_FAIL_CLOSED"
+  exit "$RESULT"
+fi
+echo "PF01_ORIGINAL_SOURCE_ANCHORS_PASS_BOUNDED_NO_AUTOMATIC_SCIENTIFIC_CERTIFICATION"
