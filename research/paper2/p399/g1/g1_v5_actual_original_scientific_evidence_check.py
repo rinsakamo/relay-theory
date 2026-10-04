@@ -59,7 +59,7 @@ def check(v,r,q,h):
  assert q["independent_after_E_real_dual_original_source_ci"]["two_original_publisher_main_plus_S1_source_page_anchor_checks"]=="16/16"
  assert q["cohort_after_this_decision"]["total_bounded_individually_qualified"]==8
  assert len(q["source_stages"])==6
- assert not q["no_MAIN_authorization"]
+ assert q["no_MAIN_authorization"] is True
  assert q["original_required_math_supplement"]["all32_supplement_pages_pictorially_read"] is False
  assert any("statistically distinguish" in x for x in q["core_source_specific_outcomes"])
  assert h["source_scoped_qualified_before_new_P13"]==7 and h["current_individually_bounded_qualified_after_P13"]==8
