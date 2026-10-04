@@ -30,6 +30,29 @@ SPECS = {
      pages=23, title="Integrated externally and internally generated task predictions",
      critical_pages=[1,3,5,7,9,11,15,19], supplements={})
 }
+# Historical frozen stage-PRE_A issuer-original supplement SHA receipts. Exact raw bytes, not MIME labels, are mandatory.
+EXPECTED_SUP = {
+  "P11": {
+    "s001": "153c857ccf12eacc05a5eaee0dffb45d8bc156a2205f41ea9e22c16a8a90b34f",
+    "s002": "6abb4dee4a92c1f94a28ef993c802e03dde53af15ef6216198df7c5c566b8643",
+    "s003": "d5b928e563b43919f4d91f4c53deab4987112570c7079906fbcb36fcdaed0cca",
+    "s004": "43bf600b853a77a07011201ad935464c2aadc390a18a4be1cd5dfd5dddf99fc4",
+    "s005": "9c1961a7f032f32805c95d958562912abb814673ffc1657cca56d908e18335b5"
+  },
+  "P12": {
+    "s001": "6870d9344bcbecc77aabe9a32335ed9c9820e4d1aefef03f6f59fe64d23c6fb5",
+    "s002": "8ea0198c46a4b78bc6af1bcd4a0fdbb5859a96b76ee0335ba92156ed25931432",
+    "s003": "7fac52d9c530d7627d3065413818e75581f2e02a14dddbf84fd797aef715d9a4"
+  },
+  "P17": {
+    "s001": "5ca2de3cbd46d3c00571c2ae79ab2fe3bdd03d0a30353da4231cdff7b8aebc16",
+    "s002": "f9bcdf77670fb0e2aa155156955512695379547068f03d33904371433eafe5e4",
+    "s003": "8c72ee49d7955b9e388b0a6a8f8a15a0a634d80d53f0d017a1a540eedaf9d5de",
+    "s004": "310264d18535e4f1b1cbb2d2d8fdde104227954883b8b71c1f7acbd35f3858b8",
+    "s005": "8d51d8313d955221fe00be587901397aaa0b5b5573d1ea328e59f80c43aa917b",
+    "s006": "4994dc5c0f5e40e12fac2a42113cb2c3da4a7c5598ac24fa38a84ccdee12f153"
+  }
+}
 def hash_data(data): return hashlib.sha256(data).hexdigest()
 def get(session,url):
     last=None
@@ -88,12 +111,13 @@ def do_paper(paper,phase):
                 response=get(sess,u)
                 b=response.content
                 if extension=="PDF": valid=b.startswith(b"%PDF")
-                elif extension=="TIF": valid=b[:4] in (b"II*\\x00",b"MM\\x00*")
+                elif extension=="TIF": valid=(b[:4] in (bytes.fromhex("49492a00"),bytes.fromhex("4d4d002a"),bytes.fromhex("49492b00"),bytes.fromhex("4d4d002b")))
                 else: valid=b.startswith(b"PK")
                 record["supplementary"][sid]={"url":u,"final_url":response.url,
                    "bytes":len(b),"sha256":hash_data(b),"format_expected":extension,
                    "signature_match":valid}
                 if not valid:record["source_errors"].append(sid+" publisher-format-signature mismatch")
+                if hash_data(b)!=EXPECTED_SUP[paper][sid]:record["source_errors"].append(sid+" historical frozen issuer raw SHA mismatch")
             except Exception as exc:record["source_errors"].append(sid+": "+repr(exc))
     else:
         record["additional_critical_supplement_status"]="NOT_YET_EXHAUSTIVELY_CLASSIFIED"
