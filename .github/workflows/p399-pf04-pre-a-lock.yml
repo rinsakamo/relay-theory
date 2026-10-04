@@ -1,4 +1,4 @@
-name: p399-pf04-pre-a-lock
+name: p399-pf04-historical-v2-regression
 on:
   pull_request:
     branches: [main]
@@ -9,11 +9,11 @@ on:
 permissions:
   contents: read
 jobs:
-  pre-a-negative-stop:
+  historical-negative-stop-regression:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Structural receipt validation and independent arithmetic contradiction test
+      - name: Historical v1/v2 negative case retention (NOT current PF04 gate)
         shell: bash
         run: |
           python3 - <<'PY'
@@ -44,5 +44,7 @@ jobs:
           assert abs(corrected-1)<1e-14
           for p in [v1path,v2path,fpath,root/"FINAL_PRE_A_REPORT_JA.md"]:
               print("PF04_STAGE_SHA256",p,hashlib.sha256(p.read_bytes()).hexdigest(),len(p.read_bytes()))
-          print("PF04_PRE_A_NEGATIVE_GATE_TESTS_PASS gate=UNDERDETERMINED correct_stop=TRUE incorrect_prob_sum",incorrect)
+          current=json.loads((root/"FINAL_QUALIFICATION_v2.json").read_text())
+          assert current["scientific_qualification_verdict"].startswith("SOURCE_SCOPED_STRUCTURE_AND_PROCEDURE_COMPLETED")
+          print("PF04_HISTORICAL_V2_REGRESSION_PASS original_pre_a_stop_preserved; latest_status=in_FINAL_QUALIFICATION_v2",incorrect)
           PY
