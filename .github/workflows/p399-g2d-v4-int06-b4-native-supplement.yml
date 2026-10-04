@@ -1,0 +1,32 @@
+name: P399 G2-D v4 pinned publisher INT06 DOC and B4 S1 bounded native science readout
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g2/int_g2d/v4_supplement_science_readout.py"
+      - ".github/workflows/p399-g2d-v4-int06-b4-native-supplement.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  no-silent-supplement-source-promotion:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install actual source readout tooling
+        run: |
+          sudo apt-get -qq update
+          sudo apt-get -qq install -y antiword
+          python -m pip install --disable-pip-version-check pypdf==6.1.1
+      - name: Source SHA-pinned delegated firstparty supplementary native textual readout
+        run: python research/paper2/p399/g2/int_g2d/v4_supplement_science_readout.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g2d-v4-bounded-supplement-metadata-${{ github.run_id }}
+          path: g2d-v4-supplement-readout/metadata.json
+          if-no-files-found: warn
+          retention-days: 14
