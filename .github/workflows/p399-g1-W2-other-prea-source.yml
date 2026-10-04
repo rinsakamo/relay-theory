@@ -46,7 +46,7 @@ jobs:
               o['official_html']={'bytes':len(rr.content),'sha256':hashlib.sha256(rr.content).hexdigest(),'http_status':rr.status_code}
               links=[]
               for a in soup.find_all('a',href=True):
-                h=a['href'];mt=re.search(re.escape(doi)+r'\\.s(\\d{3})',h,re.I)
+                h=a['href'];mt=re.search(re.escape(doi)+r'\.s(\d{3})',h,re.I)
                 if mt:
                   links.append((doi+'.s'+mt.group(1),a.get_text(' ',strip=True)[:90]))
               links=list(dict.fromkeys(links))
