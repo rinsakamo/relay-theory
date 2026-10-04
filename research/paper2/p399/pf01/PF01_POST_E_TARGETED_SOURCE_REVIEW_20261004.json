@@ -1,0 +1,208 @@
+{
+  "schema": "relay-theory.p399.pf01.post-E-targeted-source-exception-and-lineage-review.v1",
+  "date_tokyo": "2026-10-04",
+  "status": "SOURCE_BOUND_TARGETED_REINSPECTION_COMPLETE; ELIGIBLE_FOR_FORMAL_PILOT_REVIEW_NOT_FORMALLY_QUALIFIED",
+  "source_primary": {
+    "doi": "10.1371/journal.pcbi.1006928",
+    "kind": "PLOS_ORIGINAL_PUBLISHED_PDF",
+    "raw_sha256": "8531103d577a3249c7edffa06ef2a8a7e85eb01b0a2f02cee2145e187581fbc3",
+    "bytes": 4165841,
+    "pages": 48,
+    "source_edition": "2019-04-19 publisher original online; PDF metadata created 2019-04-24; no identified correction notice in publisher/targeted PubMed inspection",
+    "sha_verified_against_retrieved_existing_GitHub_Action_artifact": true,
+    "PDF_frozen_A_B_C_unmodified": true
+  },
+  "frozen_stages": {
+    "PRE_A": "9a9e72d7d0174af1fe9623c15874fbe6fe1a91ba2836312bbad652ab9c294f7b",
+    "A": "79e308cd97ec01bc2456d636422fd66b6279681ff631948959d294f1482c6383",
+    "B": "8baa554cefc97bd773fff78dffb903275e96943a6a9af645f0d81783f6b4f128",
+    "C": "051fa6128cb384338a1767a9a78f6c64ea29eeb63eea9e26e8572368601d6d60",
+    "D": "db0e4652e8fb19900908dce7b48b70a3275e8872d98ff21599c21bdaaec2e8b8",
+    "E": "e2bffee3d9103d5688354bb7bfcced6fa22b7649c492902882f61da041045ba2",
+    "original_A_B_C_D_E_unmodified": true
+  },
+  "original_pdf_targeted_reinspection": [
+    {
+      "id": "RV_FIG2_U",
+      "page_1based": 10,
+      "figure": "Figure 2 A/B/C",
+      "direct_source_observations": [
+        "Top right Fig2A visually labeled facilitation U=0.1",
+        "Middle right Fig2B nearby label and Fig2C right visually consistent with U=0.1",
+        "Fig2 caption B right contains U=0.01",
+        "Fig2 caption B also has contradictory thin dashed-line U=0.1 vs U=0.01 descriptions"
+      ],
+      "strongest_source_only_conclusion": "Publication contains internal numeric caption conflict, source panel/adjacent text favor U=0.1 but original plotted-data provenance cannot be independently established from PDF alone",
+      "formal_core_status": "EXCLUDED_FROM_EXACT_FIG2B_PANEL_NUMERIC_REPLAY; NOT_REQUIRED_TO_IDENTIFY_STP_STATE_TRANSFORM",
+      "exception_id": "U01",
+      "decision": "RETAIN_UNDERDETERMINED_NO_A_B_C_PATCH"
+    },
+    {
+      "id": "RV_DIFFUSION_N",
+      "page_1based": [
+        11,
+        39
+      ],
+      "sections": [
+        "Results: Short-term plasticity controls diffusion",
+        "Materials and methods: Diffusion estimation"
+      ],
+      "direct_source_observations": [
+        "Results says 1000 repetitions across 20 evenly spaced initial cue positions",
+        "Methods says 1000 repetitions, 10 initial cue positions × 100"
+      ],
+      "strongest_source_only_conclusion": "The published original contradicts itself on cue-position count; no source-only selection of unique exact original run grid is licensed",
+      "formal_core_status": "EXCLUDED_FROM_EXACT_PUBLISHED_1000_TRIAL_REPLAY; CONDITIONAL_DIFFUSION_MECHANISM_INTACT",
+      "exception_id": "U02",
+      "decision": "RETAIN_UNDERDETERMINED_NO_A_B_C_PATCH"
+    },
+    {
+      "id": "RV_EQ11",
+      "page_1based": 16,
+      "section": "Fig5 and rendered Eq(11)",
+      "direct_source_observations": [
+        "Direct visual reading shows two separate square-root terms joined by PLUS, not a root of the summed squares",
+        "Equation relates short 1s summary to frozen field magnitude and fast diffusion, not an exact identity for 6.5s MI"
+      ],
+      "formal_core_status": "SOURCE_EQUATION_CONFIRMS_APPEND_ONLY_C_PATCH_P03",
+      "decision": "PASS_IN_SCOPE"
+    },
+    {
+      "id": "RV_NUMERIC_ORDER",
+      "page_1based": [
+        39,
+        40
+      ],
+      "section": "Drift estimation and Numerical integration of Langevin equations",
+      "direct_source_observations": [
+        "Drift estimator: 400 trials, 20×20, circular differences Δt=1.5s with t0=0.5..1.9s; 100 ring bins unless noted",
+        "MI: 100-bin initial/final joint angular histogram and normalization to U=1 no-frozen-noise spiking reference",
+        "Reduced integration: periodic cubic spline interpolation, Euler time increment plus drift/noise increment, then angle wrap; default dt=0.1s"
+      ],
+      "formal_core_status": "SOURCE_METHOD_SUPPORTS_C_P02_AND_P04; DISTINCT_FROM_FULL_SPIKING_MODEL",
+      "decision": "PASS_IN_SCOPE"
+    },
+    {
+      "id": "RV_DISTRACTOR_WIDTH",
+      "page_1based": 18,
+      "figure": "Fig7D",
+      "direct_source_observations": [
+        "Broader bump half-width 0.8rad compared with default 0.5rad changes spatial reach of weak distractor displacement",
+        "This is under the paper's weak-input and approximately fixed bump-shape limitation"
+      ],
+      "formal_core_status": "SOURCE_SUPPORTS_C_PATCH_P01_WITH_EXISTING_L10_L12",
+      "decision": "PASS_IN_SCOPE"
+    }
+  ],
+  "historic_exact_identity_rescreen": [
+    {
+      "git_path": "research/paper2/designed_source_manifest_v1.json",
+      "blob_sha": "dd34e2048020124561477ba8fe53f1e4e1452bb7",
+      "exact_title_author_doi_match": false
+    },
+    {
+      "git_path": "research/paper2/designed_source_capture_manifest_v2.json",
+      "blob_sha": "8a5db3feb1e5e5dee3ed6e5ffbce99d9f2a5bedf",
+      "exact_title_author_doi_match": false
+    },
+    {
+      "git_path": "research/paper2/chatgpt_reference_claimir_v1/manifest.json",
+      "blob_sha": "597f487eef3e49aab440b24894cc5d25869b0d44",
+      "exact_title_author_doi_match": false
+    }
+  ],
+  "other_roster_checks": {
+    "p398_MAIN40_PILOT20": "prior #411 literal comparison plus readback of #398 issue comments found no exact match; main roster issue #398 source identity remains separate and unaltered",
+    "p399_MAIN_and_other_PF": "PR #411 registered PF01 apart from Stocco 2024 ACT-R memory MAIN; PF02 original is noise-driven rule/decision rather than this synaptic-facilitation/depression bump drift/diffusion model",
+    "scope": "bounded exact-work and relevant central mechanism, not universal genealogy certification"
+  },
+  "direct_ancestor_adjudication": [
+    {
+      "original_ref": 11,
+      "ancestor": "Compte et al 2000",
+      "common": "spiking persistent working memory circuit",
+      "critical_difference": "not PF01's joint stochastic STP drift-and-diffusion systematic decomposition"
+    },
+    {
+      "original_ref": 38,
+      "ancestor": "Itskov et al 2011",
+      "common": "facilitation and drift of bump centers",
+      "critical_difference": "PF01 explicitly combines depression, stochastic diffusion and two frozen-noise variants"
+    },
+    {
+      "original_ref": 39,
+      "ancestor": "Burak and Fiete 2012",
+      "common": "noise-driven diffusion of stored memory",
+      "critical_difference": "PF01 studies joint facilitating/depressing STP control of fixed and stochastic displacement"
+    },
+    {
+      "original_ref": 40,
+      "ancestor": "Kilpatrick and Ermentrout 2012",
+      "common": "stochastic bump dynamics",
+      "critical_difference": "not exact complete PF01 combined STP and full spiking approximation"
+    },
+    {
+      "original_ref": 49,
+      "ancestor": "Tsodyks et al 1998",
+      "common": "dynamic synapse equations",
+      "critical_difference": "not same working-memory ring/stochastic projection mechanism"
+    },
+    {
+      "original_ref": 97,
+      "ancestor": "Seeholzer et al 2017 same-author preprint",
+      "common": "same author analytical neural attractor precursor",
+      "critical_difference": "preregistered 2019 published complete target is single exact work; note possible earlier preprint relatedness rather than count it as distinct independent pilot"
+    }
+  ],
+  "secondary_author_code": {
+    "not_primary_scientific_source": true,
+    "source_repo": "https://github.com/EPFL-LCN/pub-seeholzer2018",
+    "pinned_commit": "6d8824235af3a345d33a6cff6c1ede9ea0d4b66f",
+    "source_file": "scripts/run_drift.py",
+    "actual_content_summary": "example run has 10 initial cue positions and 20 reps before overriding reps to 5; cannot establish the exact published 1000-trial source grid",
+    "README_network_preset_file_blob_sha": "4f496e84a62888e3d017854350a3c92ab20dfc3d",
+    "readme_published_presets": "README network presets contain U=0.1 but no U=0.01 literal; this corroborates but cannot conclusively identify the original exact Fig2B plot data",
+    "integrator_repo": "https://github.com/EPFL-LCN/pub-seeholzer2018-langevin",
+    "pinned_integrator_tree": "8e3803ecf99197433a84e03cffff214e73d65867",
+    "pinned_integrator_blob": "1fd129e7a09f8e6f7b03096b45f381d2e3fa0fd9",
+    "integration_contract": "published secondary Cython integrator performs periodic-spline interpolated drift/diffusion Euler-Maruyama update followed by modulo wrap; not original whole-network NEST replication",
+    "adjudication": "SECONDARY_CORROBORATION_ONLY; CAN_NEITHER_PATCH_FROZEN_PRIMARY_SOURCE_NOR_OVERRIDE_PRIMARY_CONTRADICTIONS"
+  },
+  "targeted_exception_closure": {
+    "source_internal_numeric_issues": [
+      "U01",
+      "U02"
+    ],
+    "material_for_reconstructed_core": false,
+    "material_for_excluded_exact_figure_and_1000_trial_replication": true,
+    "no_unresolved_material_original_source_ambiguity_in_claimed_cognitive_structural_core": true,
+    "high_risk_new_H1_H2_assertion": false,
+    "novel_claim": "none; no expanded Grammar primitive and no new stateful coordinator",
+    "routine_human_review_required": false,
+    "review_route_if_scope_later_expands": "targeted review only before attempting exact numeric disputed panel/trial reproduction"
+  },
+  "scientific_boundary": {
+    "structural_source_fidelity": "FULL_WITH_SOURCE_SPECIFIC_APPROXIMATION_LIMITS",
+    "illustrative_test_CI": "18/18 PASS on final recorded chain",
+    "exact_original_PLOS_numeric_replication": "NOT_EXECUTED_AND_NOT_CLAIMED",
+    "original_empirical_validation": "NOT_EXECUTED",
+    "independent_interpreter_accuracy_study": "NOT_ESTABLISHED",
+    "exact_original_v231_validator_import": "UNAVAILABLE_IN_CURRENT_PROJECT_OR_PERSONAL_LIBRARY_SEARCH; NOT_IMPORTED_OR_EXECUTED",
+    "validator_deployment_prerequisite": "NOT_SET_AS_MANDATORY_BY_ADOPTED_PROTOCOL; DO_NOT_MISLABEL_OTHER_CI",
+    "coordination_discrimination": "BOUNDED_NON_DISCRIMINATING_FOR_GENERAL_H0_H1_H2"
+  },
+  "admission_decision": {
+    "source": "PASS",
+    "historical_and_main_exact_identity": "PASS_BOUNDED_NEGATIVE",
+    "central_model_distinctness": "PASS_BOUNDED",
+    "frozen_prospective_A_B_C": "PASS",
+    "v231_documented_C1_C2": "PASS_RECORDED_NOT_ORIGINAL_VALIDATOR_CERTIFIED",
+    "D_source_structural": "PASS_WITH_BOUNDED_COORDINATION",
+    "E_structural": "PASS_WITH_DECLARED_SOURCE_CONDITIONS",
+    "source_exceptions": "NONMATERIAL_TO_STRUCTURAL_CORE_WITH_EXACT_NUMERIC_EXCLUSION",
+    "status": "READY_FOR_FORMAL_PF01_QUALIFICATION_DECISION_ONLY",
+    "formal_qualified": false,
+    "qualified_pilot_count_delta": 0,
+    "MAIN_authorized": false
+  }
+}

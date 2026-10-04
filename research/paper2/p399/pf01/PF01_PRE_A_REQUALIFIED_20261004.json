@@ -1,0 +1,155 @@
+{
+  "schema": "relay-theory.p399.pf01.pre-a-requalification.v1",
+  "paper": "PF01",
+  "date_jst": "2026-10-04",
+  "supersedes_for_forward_admission_only": "PF01_PRE_A_RECEIPT_20261004.json",
+  "original_failed_pre_a_immutable": true,
+  "work": {
+    "doi": "10.1371/journal.pcbi.1006928",
+    "title": "Stability of working memory in continuous attractor networks under the control of short-term plasticity",
+    "authors": [
+      "Alexander Seeholzer",
+      "Moritz Deger",
+      "Wulfram Gerstner"
+    ],
+    "publisher": "PLOS",
+    "journal": "PLOS Computational Biology",
+    "volume": 15,
+    "issue": 4,
+    "article": "e1006928",
+    "published": "2019-04-19",
+    "edition": "publisher original article and original printable published-layout PDF",
+    "original_pdf_creation_utc": "2019-04-24T03:40:48Z",
+    "original_pdf_mod_utc": "2019-04-24T03:41:02Z",
+    "corrections": "NO_PUBLISHER_PAGE_CORRECTION_NOTICE_OR_PUBMED_ERRATUM_LINK_FOUND_AS_OF_ACCESS_DATE;NO_EVIDENCE_OF_REVISED_EDITION",
+    "correction_audit_limit": "absence of notices is bounded evidence; if a later correction is identified, fail close and requalify before advancing any affected source claim"
+  },
+  "one_frozen_primary_source": {
+    "type": "PUBLISHER_ORIGINAL_PDF",
+    "url": "https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1006928&type=printable",
+    "access_date_jst": "2026-10-04",
+    "sha256": "8531103d577a3249c7edffa06ef2a8a7e85eb01b0a2f02cee2145e187581fbc3",
+    "bytes": 4165841,
+    "pages": 48,
+    "pdf_version": "1.6",
+    "page_size": "612 x 792 points",
+    "github_source_only_execution": {
+      "workflow": "PF01 original PDF byte-and-render preflight",
+      "run_id": 37170224353,
+      "job_id": 111341523283,
+      "conclusion": "success",
+      "external_ephemeral_artifact_id": 11289899798,
+      "ephemeral_retention_days": 7
+    },
+    "private_pdf_not_committed_to_git": true,
+    "independent_private_copy_hash_match": true,
+    "all_48_pages_rendered_for_page_inventory": true,
+    "critical_25_formula_pages_rasterized_at_over_1000px": true,
+    "important_figure_locations": {
+      "Fig1": 4,
+      "Fig2": 10,
+      "Fig3": 12,
+      "Fig4": 14,
+      "Fig5": 16,
+      "Fig6": 17,
+      "Fig7": 18
+    },
+    "important_equation_locations": {
+      "Eq3": 5,
+      "Eq4_to_Eq7": 7,
+      "Eq8_to_Eq9": 13,
+      "Eq12_to_Eq19": 24,
+      "Eq20_to_Eq27": "27-29",
+      "Eq29_to_Eq32": "29-30",
+      "long_form_methods": "31-38"
+    },
+    "primary_alternative_rule": "secondary official complete HTML is a locator/cross-check only; no silent source swap"
+  },
+  "source_scope": {
+    "section_inventory": [
+      "Abstract p1",
+      "Author summary p1-2",
+      "Introduction p2-3",
+      "Results p3-19",
+      "Discussion p20-23",
+      "Materials and methods p24-41",
+      "Supporting information in-paper descriptions p41-43",
+      "Acknowledgments and References p43-48"
+    ],
+    "core_model_variants": [
+      "symmetric ring recurrent-excitation/global inhibition rate network with presynaptic facilitating/depressing STP",
+      "one-dimensional noisy ring-bump-center perturbative Langevin reduction",
+      "frozen-heterogeneity instantiations via sparse recurrent synapses and excitatory-leak reversal variability",
+      "conductance-based spiking leaky-integrate-and-fire reference simulations with spike-based STP",
+      "analytic/numerical memory information and distractor susceptibility"
+    ],
+    "visually_checked": "all 48 pages via raster contact sheets, focused original Eq3 p5, Eq4-7 p7, spiking Eqs30-32 p30, plus full PDF source and high-res extraction of 25 equation-bearing pages; page graphics are actual PDF vector/text, not absent HTML image labels",
+    "external_standalone_supplements": "not part of fixed full original published PDF primary universe"
+  },
+  "lineage": {
+    "prior_work_identity": "PR411 pre-A bounded cross-check reports no exact title/DOI collisions in #399 MAIN+PF, #398 MAIN40/PILOT20 and both historical Paper2 60-work manifests; rechecked #398 discussion comments; not claimed as universal negative over all literature",
+    "direct_ancestors": [
+      {
+        "ref": "11",
+        "name": "Compte et al. 2000",
+        "status": "working-memory cortical circuit ancestor, not same joint STP-drift/diffusion model"
+      },
+      {
+        "ref": "38",
+        "name": "Itskov et al. 2011",
+        "status": "short-term facilitation and parametric stability predecessor, narrower mechanism"
+      },
+      {
+        "ref": "39",
+        "name": "Burak and Fiete 2012",
+        "status": "noise-driven continuum diffusion predecessor"
+      },
+      {
+        "ref": "40",
+        "name": "Kilpatrick and Ermentrout 2012",
+        "status": "analytical noise-driven bump diffusion predecessor"
+      },
+      {
+        "ref": "45",
+        "name": "Kilpatrick 2018",
+        "status": "contemporaneous facilitation/interference analysis; narrower than combined facilitation+depression and spiking comparisons"
+      },
+      {
+        "ref": "49",
+        "name": "Tsodyks et al. 1998",
+        "status": "basic dynamic synapses ancestor"
+      },
+      {
+        "ref": "97",
+        "name": "Seeholzer et al. 2017",
+        "status": "same-author low-dimensional attractor approximation methodological ancestor"
+      }
+    ],
+    "against_pr411_main_stocco": "Stocco ACT-R declarative activation model; different central neural/synaptic mechanism",
+    "against_pr411_pf02": "PF02 stochastic cognitive-rule and decision-module model; generic attractor ancestry does not equal PF01 central STP bump drift-and-diffusion mechanism",
+    "status": "NO_IDENTIFIED_CENTRAL_MECHANISM_DUPLICATION_IN_DOCUMENTED_ROSTERS;BOUNDED_RESIDUAL_ON_EXHAUSTIVE_GENEALOGY"
+  },
+  "admission": {
+    "identity": "PASS",
+    "complete_original_pdf_raw": "PASS",
+    "edition_and_negative_correction_screen": "PASS_BOUNDED",
+    "model_critical_math_and_figures": "PASS_RENDERED_PDF",
+    "preregistered_exact_work_and_central_model_distinctness": "PASS_WITH_DOCUMENTED_BOUNDED_LINEAGE",
+    "single_primary_source_frozen": true,
+    "result": "PASS_PRE_A",
+    "authority": "ISSUE_399_LATEST_PDF_FIRST_OFFICIAL_HTML_FALLBACK",
+    "a_before_source_lock": false,
+    "qualified_scientific_pilot": false,
+    "main_authorized": false
+  },
+  "stage_chronology": {
+    "previous_pre_a": "FROZEN_FAIL_CLOSED_NOT_REWRITTEN",
+    "this_pre_a": "NEW_FROZEN_PASS",
+    "A": "NOT_STARTED_AT_THIS_RECEIPT_FREEZE",
+    "B": "NOT_STARTED",
+    "C": "NOT_STARTED",
+    "D": "NOT_STARTED",
+    "E": "NOT_STARTED"
+  },
+  "notes": "PDF acquisition receipt is a 2026-10-04 GitHub Actions workflow result; original paper's PDF created Apr24 after Apr19 online publication, which is not by itself evidence of a correction. Read-only source lock, no change to old source-fail receipt."
+}

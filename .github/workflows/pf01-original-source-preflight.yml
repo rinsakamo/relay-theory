@@ -1,0 +1,39 @@
+name: PF01 original PDF byte-and-render preflight
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - ".github/workflows/pf01-original-source-preflight.yml"
+      - "research/paper2/p399/pf01/PF01_CLOUD_SOURCE_PREFLIGHT.sh"
+      - "research/paper2/p399/pf01/verify_pf01_original_pdf_source_anchors.py"
+  push:
+    branches:
+      - paper2/p399-pf01-pre-a-blocked-20261004
+      - main
+    paths:
+      - ".github/workflows/pf01-original-source-preflight.yml"
+      - "research/paper2/p399/pf01/PF01_CLOUD_SOURCE_PREFLIGHT.sh"
+      - "research/paper2/p399/pf01/verify_pf01_original_pdf_source_anchors.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-pdf-byte-render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Attempt exact publisher source and author-hosted published layout
+        shell: bash
+        run: bash research/paper2/p399/pf01/PF01_CLOUD_SOURCE_PREFLIGHT.sh
+      - name: Preserve only source metadata and inspectable raster crops outside Git
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: PF01-source-preflight-metadata-and-selected-renders
+          path: ${{ runner.temp }}/pf01_source_preflight/output/
+          if-no-files-found: warn
+          retention-days: 7
