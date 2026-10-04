@@ -49,6 +49,7 @@ if __name__=="__main__":
  Path("g1-alt-receipts").mkdir(exist_ok=True)
  Path("g1-alt-receipts/alternatives.json").write_text(json.dumps(out,indent=2,ensure_ascii=False)+"\n")
  for x in rows:
+  print(x["id"],"failed_urls",[(a["url"],a.get("error")) for a in x["attempts"] if a.get("error")])
   print(x["id"],"acquired",x["actual_full_publisher_pdf_acquired"],
         "sha",x.get("publisher_pdf_result",{}).get("raw_sha256"),"pages",
         x.get("publisher_pdf_result",{}).get("pages"),"attempts",len(x["attempts"]))
