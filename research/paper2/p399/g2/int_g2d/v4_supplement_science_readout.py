@@ -20,7 +20,7 @@ out={"schema":"relaytheory.p399.g2d.v4.publisher_supplement_bounded_native_reado
      "supplement_images_visually_inspected_in_this_runner":False,
      "runner_head":os.environ.get("GITHUB_SHA"),"utc":datetime.datetime.now(datetime.timezone.utc).isoformat(),"items":[]}
 def text_windows(text):
- ls=[re.sub(r"\\s+"," ",line).strip() for line in text.splitlines()]
+ ls=[re.sub(r"\s+"," ",line).strip() for line in text.splitlines()]
  ls=[x for x in ls if x]
  hits=[(i,l) for i,l in enumerate(ls) if len(l)>20 and any(k in l.lower() for k in KEYS)]
  return [{"line_number_in_extractor":i+1,"excerpt":v[:280]} for i,v in hits[:65]]
@@ -34,7 +34,7 @@ for slot,doi,kind,sha in FILES:
    final=resp.geturl();row.update(response_status=resp.status,final_url_no_query=final.split("?")[0],bytes=len(data))
   orig=urllib.parse.urlparse(url);dst=urllib.parse.urlparse(final)
   if orig.hostname!="journals.plos.org":raise ValueError("not publisher-origin request")
-  publisher_delegate=dst.hostname=="storage.googleapis.com" and dst.path.startswith("/plos-corpus-prod/"+doi.rsplit(".",1)[0] if False else "/plos-corpus-prod/10.1371/")
+  publisher_delegate=dst.hostname=="storage.googleapis.com" and dst.path.startswith("/plos-corpus-prod/"+doi.split(".s00")[0]+"/")
   if dst.hostname not in ("journals.plos.org","content.plos.org") and not publisher_delegate:raise ValueError("non-publisher non-delegated redirect")
   row.update(actual_sha256=hashlib.sha256(data).hexdigest(),publisher_gateway=True,publisher_delegated_storage=bool(publisher_delegate))
   if len(data)>9*1024*1024 or row["actual_sha256"]!=sha:raise ValueError("publisher original raw SHA changed or size cap")
