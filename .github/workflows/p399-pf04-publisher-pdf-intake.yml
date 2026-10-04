@@ -38,6 +38,24 @@ jobs:
           print('PF04_SOURCE_INTAKE_RECEIPT_END')
           assert s['pdf_magic_ok'] and s['pdf_eof_ok'] and pages==14 and s['original_title_found'] and s['flat_model_section_found'] and s['hierarchical_section_found'] and s['size_bytes']>100000
           PY
+      - name: Crossref and PubMed correction discovery (non-authoritative if unavailable)
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import urllib.request,json
+          endpoints={'crossref':'https://api.crossref.org/works/10.1371%2Fjournal.pcbi.1003364','pubmed':'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=24339762&rettype=xml'}
+          for name,url in endpoints.items():
+              try:
+                  req=urllib.request.Request(url,headers={'User-Agent':'RelayTheoryPF04/1.0 source-correction-audit (scholarly research)'})
+                  data=urllib.request.urlopen(req,timeout=20).read()
+                  if name=='crossref':
+                      msg=json.loads(data)['message']
+                      print('CROSSREF_CORRECTION_FIELDS',json.dumps({k:msg.get(k) for k in ['DOI','type','published','updated-by','update-to','relation','indexed'] if k in msg},ensure_ascii=False))
+                  else:
+                      print('PUBMED_CORRECTION_LINKED',data.count(b'ErratumFor'),data.count(b'ErratumIn'),data.count(b'CorrectedandRepublishedIn'))
+              except Exception as e:
+                  print(name.upper()+'_UNAVAILABLE',str(e))
+          PY
       - name: Archive metadata only (no original source)
         if: always()
         uses: actions/upload-artifact@v4
