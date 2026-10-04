@@ -70,8 +70,8 @@ assert A["original_edge_count"]==len(A["complete_A_source_dependencies"])==36
 assert B["inputs"]["full_original_A_object"]==A
 assert len(B["entire_original_A_claim_by_claim_independent_reread"])==28
 assert len(B["all_original_A_dependencies_reread"])==36
-assert len(C["C1_actual_full_entire_original_A_reopened_before_ANY_patch"]["original_A"]["complete_A_source_claims"])==28
-assert len(C["C1_actual_full_entire_original_A_reopened_before_ANY_patch"]["original_A"]["complete_A_source_dependencies"])==36
+assert len(C["C1_actual_full_entire_original_A_reopened_before_ANY_patch"]["original_A_unchanged"]["complete_A_source_claims"])==28
+assert len(C["C1_actual_full_entire_original_A_reopened_before_ANY_patch"]["original_A_unchanged"]["complete_A_source_dependencies"])==36
 assert C["all_important_material_original_source_negatives_count_once"]
 assert C["C2_unique_condition_count"]==13 and len(C["append_only_accepted_patches"])==3
 assert len(D["complete_corrected_original_claim_mapping"])==28
@@ -81,7 +81,7 @@ assert E["counts"]["unique_adverse_conditions_covered"]==13
 assert E["H_discrimination"]=="NO_GENERAL_H0_H1_H2_RESULT"
 assert E["source"]["all_21_pages_pictorially_reviewed"] is False
 assert E["source"]["original_source_physical_verified_runs"]==[37178895352,37183422420,37183471486]
-print("P09_POSTE_ALL_PASS 13/13 source page anchors, six immutable stage bytes and git ancestry, 28/36 source inventory and 13 negatives",flush=True)
+print("P09_POSTE_ALL_PASS 13/13 source page anchors, six immutable stage bytes and git ancestry, 28/36 source inventory and 13 negatives; historical RED 37183751964 harness wrong C JSON key fixed",flush=True)
 project={"P09_original_published_pdf_sha256":sha,"frozen_stage_git_and_raw_sha256":receipts,"bounded_original_page_anchors":checks,"negative_count":13,"qualified_automatically":False,"no_MAIN":True}
 enc=json.dumps(project,sort_keys=True,separators=(",",":"),ensure_ascii=False).encode()
 digest=hashlib.sha256(enc).hexdigest()
