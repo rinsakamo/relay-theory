@@ -48,7 +48,7 @@ class Exact(unittest.TestCase):
  def test_v8_immutable_actual_source_receipts(self):assert_provenance(self.d)
  def test_original_visual_prose_trace(self):
   txt=R.read_text()
-  for t in ("37200273167","31","20","9","b78a62b28775ec","6f9baebc2f954","a9b713fbc8d39","Fig1","Fig2","not simulated","MAIN_NOT_AUTHORIZED"):
+  for t in ("37200273167","31","20","9","b78a62b28775ec","6f9baebc2f954","a9b713fbc8d39","Fig1","Fig2","capacity constraints","simulationしていない","MAIN_NOT_AUTHORIZED"):
    self.assertIn(t.lower(),txt.lower())
  def test_16_false_promotions_rejected(self):
   edits=[
