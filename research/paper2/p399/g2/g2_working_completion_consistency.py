@@ -416,15 +416,15 @@ def check_v8(a,b):
     assert k["pages"]==6 and k["bytes"]==210828 and k["specific_link_from_official_original_html"]
     assert k["all_19_equation_reference_identifiers_in_actual_extract"]
     assert q["other_linked_supplement_S1_S2"].startswith("Not auto-admitted")
-    assert q["actual_two_run_receipt"]["re_run"]==37189209061
-    assert q["actual_two_run_receipt"]["re_run_metadata_sha256"]=="e08e2394d858211813052a80302f246e92238fb7b5cc2eea3341c0c49bf6df16"
-    assert q["actual_two_run_receipt"]["primary_identical_sha_and_page_count"]
-    assert q["actual_two_run_receipt"]["essential_S3_identical_sha_and_page_count"]
-    assert q["actual_two_run_receipt"]["publisher_pdf_semantic_pixel_all_pages_checked"] is False
-    eq_pages=q["model_defining_original_S3_source_map"]
+    assert a["actual_two_run_receipt"]["re_run"]==37189209061
+    assert a["actual_two_run_receipt"]["re_run_metadata_sha256"]=="e08e2394d858211813052a80302f246e92238fb7b5cc2eea3341c0c49bf6df16"
+    assert a["actual_two_run_receipt"]["primary_identical_sha_and_page_count"]
+    assert a["actual_two_run_receipt"]["essential_S3_identical_sha_and_page_count"]
+    assert a["actual_two_run_receipt"]["publisher_pdf_semantic_pixel_all_pages_checked"] is False
+    eq_pages=a["model_defining_original_S3_source_map"]
     assert [x["pdf_zero_based_page"] for x in eq_pages]==[0,1,2,3,4,5]
     assert set().union(*(set(p["equation_identifiers"]) for p in eq_pages))==set(range(1,20))
-    model=q["source_native_preregistered_claim_boundary"]
+    model=a["source_native_preregistered_claim_boundary"]
     assert model["source_model_alternatives_exact"]==["M1_TARGET_ONLY","M2_DISTRACTOR_ONLY",
       "M3A_SIMULTANEOUS","M3B_FACILITATION_THEN_INHIBITION","M3C_INHIBITION_THEN_FACILITATION"]
     negatives=model["source_negative_boundary_registry"]
@@ -458,10 +458,10 @@ def negative_v8(f):
 assert negative_v8(lambda a,b:a["exact_standby"]["primary"].update(published_firstparty_raw_sha256="0"*64))
 assert negative_v8(lambda a,b:a["exact_standby"]["mandatory_original_mathematics_companion"].update(pages=5))
 assert negative_v8(lambda a,b:a["exact_standby"]["mandatory_original_mathematics_companion"].update(all_19_equation_reference_identifiers_in_actual_extract=False))
-assert negative_v8(lambda a,b:a["exact_standby"]["model_defining_original_S3_source_map"][3].update(equation_identifiers=[6,7,8]))
-assert negative_v8(lambda a,b:a["exact_standby"]["source_native_preregistered_claim_boundary"]["source_negative_boundary_registry"].pop())
+assert negative_v8(lambda a,b:a["model_defining_original_S3_source_map"][3].update(equation_identifiers=[6,7,8]))
+assert negative_v8(lambda a,b:a["source_native_preregistered_claim_boundary"]["source_negative_boundary_registry"].pop())
 assert negative_v8(lambda a,b:a["has_issued_scientific_source_admission"].__class__ if False else a.update(has_issued_scientific_source_admission=True))
 assert negative_v8(lambda a,b:a.update(has_activated_backup=True))
-assert negative_v8(lambda a,b:a["exact_standby"]["actual_two_run_receipt"].update(publisher_pdf_semantic_pixel_all_pages_checked=True))
+assert negative_v8(lambda a,b:a["actual_two_run_receipt"].update(publisher_pdf_semantic_pixel_all_pages_checked=True))
 assert negative_v8(lambda a,b:a.update(main_authorized=True))
 print("PASS V8: nine destructive original/S3 SHA, formulas, missing negatives, invalid science/backup/visual/GO rejected")
