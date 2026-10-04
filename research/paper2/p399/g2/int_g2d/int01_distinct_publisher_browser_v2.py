@@ -26,7 +26,7 @@ def publisher(url):
  return any(h==x or h.endswith("."+x) for x in ("sciencedirect.com","elsevier.com","els-cdn.com"))
 def fullness(s):
  t=s.lower()
- refs={x:bool(re.search(r"\\b"+x+r"\\b",t)) for x in ("abstract","introduction","methods","results","discussion","references")}
+ refs={x:bool(re.search(r"\b"+x+r"\b",t)) for x in ("abstract","introduction","methods","results","discussion","references")}
  return dict(doi_literal=DOI.lower() in t,pii_literal=PII.lower() in t,
              title_identifiers={x:x in t for x in ("algorithmic","efficiently","learn")},
              structural_sections=refs,body_chars=len(s),
