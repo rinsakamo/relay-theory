@@ -1,0 +1,29 @@
+name: P399 G1 P14 after E seven genuine original publisher PDFs and immutable stages
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g1/p14/p14_after_E_seven_exact_original_sources_six_git_stages.py"
+      - ".github/workflows/p399-g1-p14-seven-real-originals-afterE.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  after-E-seven-real-issuer-originals:
+    runs-on: ubuntu-latest
+    timeout-minutes: 19
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install 'pypdf==6.1.1'
+      - run: python research/paper2/p399/g1/p14/p14_after_E_seven_exact_original_sources_six_git_stages.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g1-p14-seven-originals-after-E-immutable-${{ github.run_id }}
+          path: g1-p14-poste/source.json
+          retention-days: 21
+          if-no-files-found: warn
