@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "G3 controlled analyst packet v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "paper_token",
+    "reference_digest_private",
+    "primary_source_digest",
+    "packet_digest",
+    "scope_integrity",
+    "masking",
+    "releases",
+    "approved"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "G3_ANALYST_PACKET_V1"
+    },
+    "paper_token": {
+      "type": "string"
+    },
+    "reference_digest_private": {
+      "type": "string",
+      "description": "One-way opaque digest only; no reference ledger contents"
+    },
+    "primary_source_digest": {
+      "type": "string"
+    },
+    "packet_digest": {
+      "type": "string"
+    },
+    "scope_integrity": {
+      "type": "object",
+      "required": [
+        "equations_kept",
+        "figures_kept",
+        "negative_outcomes_kept",
+        "variant_boundaries_kept",
+        "source_order_kept",
+        "checked_by"
+      ],
+      "properties": {
+        "equations_kept": {
+          "type": "boolean"
+        },
+        "figures_kept": {
+          "type": "boolean"
+        },
+        "negative_outcomes_kept": {
+          "type": "boolean"
+        },
+        "variant_boundaries_kept": {
+          "type": "boolean"
+        },
+        "source_order_kept": {
+          "type": "boolean"
+        },
+        "checked_by": {
+          "type": "string"
+        }
+      }
+    },
+    "masking": {
+      "type": "object",
+      "required": [
+        "removed_fields",
+        "preserved_identity_cues",
+        "leakage_flags",
+        "recognition_pre_D",
+        "recognition_post_D"
+      ],
+      "properties": {
+        "removed_fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "preserved_identity_cues": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "leakage_flags": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "FULLY_MASKED",
+              "PARTIALLY_IDENTIFIABLE",
+              "DIRECTLY_RECOGNIZABLE",
+              "PREVIOUSLY_EXPOSED",
+              "POTENTIAL_PRETRAINED_RECOGNITION"
+            ]
+          }
+        },
+        "recognition_pre_D": {
+          "enum": [
+            "YES",
+            "NO",
+            "UNKNOWN",
+            "NOT_COLLECTED"
+          ]
+        },
+        "recognition_post_D": {
+          "enum": [
+            "YES",
+            "NO",
+            "UNKNOWN",
+            "NOT_COLLECTED"
+          ]
+        }
+      }
+    },
+    "releases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "locator",
+          "reason",
+          "identity_impact"
+        ],
+        "properties": {
+          "locator": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "identity_impact": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "approved": {
+      "type": "boolean"
+    }
+  }
+}

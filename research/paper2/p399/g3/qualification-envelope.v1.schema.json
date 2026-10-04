@@ -1,0 +1,485 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "G3 v1.1 authorization and provenance envelope",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "purpose",
+    "source_class",
+    "paper_token",
+    "real_execution",
+    "stage",
+    "actors",
+    "source",
+    "protocol_sha256",
+    "authorization",
+    "roster_binding",
+    "role_access",
+    "recognition",
+    "packet_integrity",
+    "freeze_artifacts"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "G3_QUALIFICATION_ENVELOPE_V1_1"
+    },
+    "purpose": {
+      "enum": [
+        "DRYRUN_NON_MAIN",
+        "MAIN_METADATA_PREFLIGHT",
+        "MAIN_SCIENTIFIC"
+      ]
+    },
+    "source_class": {
+      "enum": [
+        "CONSTRUCTED_NONMAIN",
+        "EXPOSED_PILOT",
+        "FINAL_MAIN_ROSTER"
+      ]
+    },
+    "paper_token": {
+      "type": "string",
+      "minLength": 1
+    },
+    "real_execution": {
+      "type": "boolean"
+    },
+    "stage": {
+      "enum": [
+        "PREPARED",
+        "METADATA_ONLY",
+        "S0",
+        "R0",
+        "RB0",
+        "P0",
+        "A",
+        "B",
+        "C",
+        "D0",
+        "D1",
+        "D2",
+        "E0",
+        "ATLAS0",
+        "UNMASK"
+      ]
+    },
+    "actors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "role",
+          "actor_id",
+          "execution_id",
+          "actual_separate_from",
+          "independence_status",
+          "prior_exposure"
+        ],
+        "properties": {
+          "role": {
+            "enum": [
+              "REFERENCE_R",
+              "ROLE_BRIDGE_RB",
+              "CURATOR_P",
+              "GRAMMAR_D",
+              "ADJUDICATOR_R2",
+              "COMPLETENESS_REVIEWER"
+            ]
+          },
+          "actor_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "execution_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "actual_separate_from": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string"
+            }
+          },
+          "independence_status": {
+            "enum": [
+              "PROCEDURAL_SEPARATION_ONLY",
+              "ACTUAL_SEPARATE_ASSESSOR",
+              "SINGLE_REFERENCE_UNVALIDATED",
+              "NOT_EXECUTED"
+            ]
+          },
+          "prior_exposure": {
+            "enum": [
+              "KNOWN",
+              "NONE_DECLARED",
+              "UNKNOWN",
+              "NOT_COLLECTED"
+            ]
+          },
+          "attestation_raw_sha256": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primary_medium",
+        "edition_id",
+        "primary_fingerprint",
+        "source_access_state",
+        "source_locator"
+      ],
+      "properties": {
+        "primary_medium": {
+          "enum": [
+            "PUBLISHER_ORIGINAL_PDF",
+            "PUBLISHER_COMPLETE_ORIGINAL_HTML",
+            "CONSTRUCTED_SYNTHETIC"
+          ]
+        },
+        "edition_id": {
+          "type": "string"
+        },
+        "primary_fingerprint": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "source_access_state": {
+          "enum": [
+            "ORIGINAL_ACTUALLY_READ",
+            "METADATA_ONLY",
+            "CONSTRUCTED_FIXTURE",
+            "UNKNOWN"
+          ]
+        },
+        "source_locator": {
+          "type": "string"
+        },
+        "correction_review": {
+          "type": "string"
+        }
+      }
+    },
+    "protocol_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "preflight_scope_receipt",
+        "g4_reaudit_receipt",
+        "joint_manifest_sha256",
+        "joint_protocol_sha256",
+        "author_main_go_receipt",
+        "first_paper_go_receipt",
+        "external_verification"
+      ],
+      "properties": {
+        "preflight_scope_receipt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "g4_reaudit_receipt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "joint_manifest_sha256": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "joint_protocol_sha256": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "author_main_go_receipt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "first_paper_go_receipt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "external_verification": {
+          "enum": [
+            "NOT_PERFORMED",
+            "EXTERNAL_VERIFIED"
+          ]
+        }
+      }
+    },
+    "roster_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "g1_final_sha256",
+        "g2_final_sha256",
+        "slot_id",
+        "locked_before_science"
+      ],
+      "properties": {
+        "g1_final_sha256": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "g2_final_sha256": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "slot_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "locked_before_science": {
+          "type": "boolean"
+        }
+      }
+    },
+    "role_access": {
+      "type": "object",
+      "required": [
+        "r_seen_analyst_result",
+        "rb_seen_analyst_result",
+        "analyst_received_reference",
+        "analyst_received_bridge",
+        "analyst_received_anticipated_H",
+        "b_receives_complete_A_and_original",
+        "c_receives_complete_A_B_and_original"
+      ],
+      "properties": {
+        "r_seen_analyst_result": {
+          "type": "boolean"
+        },
+        "rb_seen_analyst_result": {
+          "type": "boolean"
+        },
+        "analyst_received_reference": {
+          "type": "boolean"
+        },
+        "analyst_received_bridge": {
+          "type": "boolean"
+        },
+        "analyst_received_anticipated_H": {
+          "type": "boolean"
+        },
+        "b_receives_complete_A_and_original": {
+          "type": "boolean"
+        },
+        "c_receives_complete_A_B_and_original": {
+          "type": "boolean"
+        }
+      }
+    },
+    "recognition": {
+      "type": "object",
+      "required": [
+        "before_D",
+        "after_D",
+        "leakage_events",
+        "prior_exposure"
+      ],
+      "properties": {
+        "before_D": {
+          "enum": [
+            "YES",
+            "NO",
+            "UNKNOWN",
+            "NOT_COLLECTED"
+          ]
+        },
+        "after_D": {
+          "enum": [
+            "YES",
+            "NO",
+            "UNKNOWN",
+            "NOT_COLLECTED"
+          ]
+        },
+        "leakage_events": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "type",
+              "source_locator",
+              "disposition"
+            ],
+            "properties": {
+              "type": {
+                "enum": [
+                  "MATH_DIRECT",
+                  "FIGURE_DIRECT",
+                  "PRIOR_EXPOSURE",
+                  "PRETRAINED_POSSIBLE",
+                  "CURATOR_RELEASE",
+                  "UNEXPECTED_LABEL"
+                ]
+              },
+              "source_locator": {
+                "type": "string"
+              },
+              "disposition": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "prior_exposure": {
+          "enum": [
+            "KNOWN",
+            "NONE_DECLARED",
+            "UNKNOWN",
+            "NOT_COLLECTED"
+          ]
+        }
+      }
+    },
+    "packet_integrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_completeness_sha256",
+        "packet_raw_sha256",
+        "curator_assessment",
+        "independent_completeness"
+      ],
+      "properties": {
+        "source_completeness_sha256": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "packet_raw_sha256": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "curator_assessment": {
+          "enum": [
+            "PENDING",
+            "COMPLETE",
+            "FAILED"
+          ]
+        },
+        "independent_completeness": {
+          "enum": [
+            "ACTUAL_SEPARATE_ATTESTED",
+            "CURATOR_ONLY_UNVALIDATED",
+            "NOT_PERFORMED"
+          ]
+        }
+      }
+    },
+    "freeze_artifacts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reference_sha256",
+        "bridge_sha256",
+        "anonymous_atlas_sha256",
+        "label_vault_release_receipt"
+      ],
+      "properties": {
+        "reference_sha256": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "bridge_sha256": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "anonymous_atlas_sha256": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "label_vault_release_receipt": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
