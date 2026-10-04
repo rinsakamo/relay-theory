@@ -29,8 +29,13 @@ try:
  a["matched_G2_frozen_SHA256"]=a["sha256"]==EXPECTED
  r["physical_original_reacquired_exact_G2_sha"]=a["matched_G2_frozen_SHA256"] and a["title_on_first_page"] and len(text)>=8
  a["firstparty_verified"]=r["physical_original_reacquired_exact_G2_sha"]
- a["human_comparison_hand_fixed_end_of_event_encoding_condition"] = any("imposed (by hand)" in t.lower() and "encoding policy" in t.lower() for t in text)
- print("V10_INT08_ACTUAL_RAW_PDF",json.dumps({k:a.get(k) for k in ("status","bytes","sha256","pdf_pages","title_on_first_page","matched_G2_frozen_SHA256","human_comparison_hand_fixed_end_of_event_encoding_condition")},sort_keys=True),flush=True)
+ # v10b strict contiguous-string false negative: publisher PDF extraction splits lines/punctuation. Preserve original run as failed phrase detection.
+ def witnessed_manual_policy(t):
+  norm=" ".join(t.lower().replace("\\xad","").split())
+  return bool(re.search(r"imposed.{0,45}by\\s+hand.{0,90}encoding\\s+policy",norm))
+ a["human_comparison_hand_fixed_end_of_event_encoding_condition"] = any(witnessed_manual_policy(t) for t in text)
+ a["manual_policy_text_witness_1based_pages"]=[i+1 for i,t in enumerate(text) if witnessed_manual_policy(t)]
+ print("V10_INT08_ACTUAL_RAW_PDF",json.dumps({k:a.get(k) for k in ("status","bytes","sha256","pdf_pages","title_on_first_page","matched_G2_frozen_SHA256","human_comparison_hand_fixed_end_of_event_encoding_condition","manual_policy_text_witness_1based_pages")},sort_keys=True),flush=True)
  for page_no in sorted({1,2,3,4,5,6,7,8,min(len(text),12),min(len(text),16),min(len(text),20)}):
   t=text[page_no-1]
   matches=[]
