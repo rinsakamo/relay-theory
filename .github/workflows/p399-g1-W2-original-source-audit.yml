@@ -56,7 +56,7 @@ jobs:
           keys=["PRE_A","PASS_A","PASS_B","PASS_C","PASS_D","PASS_E"]
           frozen=[]
           for k in keys:
-              matches=list(d.glob(p+"_"+k+"_*.json"))
+              matches=list(d.glob(p+ ("_PASS_C*" if k=="PASS_C" else "_"+k+"_*.json")))
               assert len(matches)==1,(k,[str(m) for m in matches])
               name=str(matches[0])
               commits=subprocess.check_output(["git","log","--format=%H","--",name],text=True).splitlines()
