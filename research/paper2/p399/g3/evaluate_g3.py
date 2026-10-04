@@ -105,9 +105,10 @@ def score(record):
     counters = {x: {"numerator": 0, "denominator": 0} for x in METRICS}
     for v in record["variants"]:
         values = {key: _metric(v["metrics"][key]) for key in METRICS}
-        for m in METRICS:
-            counters[m]["numerator"] += values[m]["numerator"]
-            counters[m]["denominator"] += values[m]["denominator"]
+        if v["included"]:
+            for m in METRICS:
+                counters[m]["numerator"] += values[m]["numerator"]
+                counters[m]["denominator"] += values[m]["denominator"]
         if any(set(excluded) & set(v["metrics"][m]["required_ids"]) for m in METRICS):
             raise G3Error("EXCLUDED_QUANTITATIVE_TARGET_IN_STRUCTURAL_DENOMINATOR")
         if not v["included"]:
@@ -218,3 +219,34 @@ def freeze_gate(g1, g2, protocol_test_pass, curator_ready, author_approved):
     # This is an advisory test fixture gate, NOT permission to start MAIN.
     return ("READY_FOR_JOINT_REVIEW" if all((g1, g2, protocol_test_pass, curator_ready,
                                             author_approved)) else "PRE_FREEZE_NO_MAIN")
+
+def check_source_reference_alignment(reference, record):
+    """Check exact source-native denominator against PRE-LOCKED reference, not self-report."""
+    check_reference(reference)
+    schema_check("evaluation", record)
+    if reference["paper_token"] != record["paper_token"]:
+        raise G3Error("REFERENCE_PAPER_TOKEN_SWAP")
+    ref_variants = {v["variant_id"]: v for v in reference["variants"]}
+    if set(ref_variants) != set(record["declared_variant_ids"]):
+        raise G3Error("OMITTED_OR_SUBSTITUTED_SOURCE_VARIANTS")
+    metrics_map = {"nodes": "nodes", "edges": "edges", "temporal": "temporal",
+                   "restrictions": "restrictions", "boundary": "boundaries",
+                   "distinctions": "distinctions"}
+    for actual in record["variants"]:
+        original = ref_variants[actual["variant_id"]]
+        if original["included"] != actual["included"]:
+            raise G3Error("SOURCE_VARIANT_ELIGIBILITY_CHANGED")
+        for m, source_key in metrics_map.items():
+            required = {x["id"] for x in original[source_key]}
+            reported = set(actual["metrics"][m]["required_ids"])
+            if required != reported:
+                raise G3Error("SOURCE_NATIVE_DENOMINATOR_MISMATCH:" + m)
+            needed = {x["id"] for x in original[source_key] if x["critical"]}
+            observed = set(actual["metrics"][m].get("critical_ids", []))
+            if needed != observed:
+                raise G3Error("SOURCE_NATIVE_CRITICALITY_CHANGED:" + m)
+    ref_excluded = {x["id"] for x in reference.get("excluded_quantitative_targets", [])}
+    eval_excluded = {x["id"] for x in record["excluded_quantitative_targets"]}
+    if ref_excluded != eval_excluded:
+        raise G3Error("EXCLUDED_SOURCE_TARGET_PROMOTION_OR_ERASURE")
+    return True
