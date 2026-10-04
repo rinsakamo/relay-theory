@@ -47,7 +47,9 @@ jobs:
           assert E['immutable_D_sha256']==dg('D_GRAMMAR_V0') and E['parent_immutable_E_v1_sha256']==dg('E_SOURCE_FIDELITY_V1') and E['condition_normalization_sha256']==dg('C_V1_CONDITION_NORMALIZATION')
           assert E['claim_coverage']=={'count':43,'mapped':43} and E['edge_coverage']=={'count':31,'mapped':31} and E['condition_coverage']=={'count':33,'all_accounted':True}
           assert not E['main_authorized'] and E['pilot_qualified_increment']==0 and E['qualification_blockers']
-          root='../../../../'
+          # GitHub pathspecs below are repository-relative, not relative to the
+          # pf02 working directory used for the checksum stage.
+          os.chdir(os.path.abspath('../../../..'))
           def file_commit(file):
             result=subprocess.run(['git','log','-1','--format=%H','HEAD','--',file],capture_output=True,text=True,check=True)
             return result.stdout.strip()
