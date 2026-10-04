@@ -37,7 +37,7 @@ def examine(url,status,data,mode):
   t=data.decode("utf-8","replace").lower()
   item["html_doi_present"]=DOI in t
   item["html_title_terms_present"]={x:x in t for x in ("predictive","planning","counterfactual","inference")}
-  item["html_section_witnesses"]={x:bool(re.search(r"\\b"+x+r"\\b",t)) for x in ("abstract","introduction","methods","results","discussion","references")}
+  item["html_section_witnesses"]={x:bool(re.search(r"\b"+x+r"\b",t)) for x in ("abstract","introduction","methods","results","discussion","references")}
   item["publisher_full_html_heuristic"]=DOI in t and len(t)>35000 and sum(item["html_section_witnesses"].values())>=4 and sum(item["html_title_terms_present"].values())>=3
  return item
 async def main():
