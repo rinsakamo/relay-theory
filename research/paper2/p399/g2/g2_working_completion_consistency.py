@@ -465,3 +465,46 @@ assert negative_v8(lambda a,b:a.update(has_activated_backup=True))
 assert negative_v8(lambda a,b:a["actual_two_run_receipt"].update(publisher_pdf_semantic_pixel_all_pages_checked=True))
 assert negative_v8(lambda a,b:a.update(main_authorized=True))
 print("PASS V8: nine destructive original/S3 SHA, formulas, missing negatives, invalid science/backup/visual/GO rejected")
+
+
+# V8A append-only publication-source fit narrative-versus-scalar tension guard:
+# do not silently repair author text or drop an adverse original source variant.
+d8a=(P/"MAIN40_G2_V8A_RAW_UTF8_SHA256SUMS_20261004.txt").read_text().splitlines()
+assert len(d8a)==2
+for line in d8a:
+    digest,name=line.split("  ",1)
+    assert hashlib.sha256((P/name).read_bytes()).hexdigest()==digest,("v8a_source_conflict_evidence_tampered",name)
+c8a=json.loads((P/"MAIN40_G2_V8A_ATT_B1_FIT_NARRATIVE_CONFLICT_APPEND_ONLY.json").read_text())
+def check_v8a(q):
+    assert q["slot"]=="ATT-B1" and q["source_primary_original_DOI"]=="10.1371/journal.pcbi.1011283"
+    x=q["first_observation"]
+    assert x["published_fit_error_M3a_simultaneous_mean"]==0.86
+    assert x["published_fit_error_M3b_facilitation_first_mean"]==0.99
+    assert x["published_fit_error_M3c_inhibition_first_mean"]==0.64
+    assert q["second_observation"]["publisher_prose_says_M3b_led_to_better_simulation_results_than_M3a"] is True
+    n=q["material_source_conflict"]
+    assert n["id"]=="N_ATT_B1_008" and n["classification"]=="UNRESOLVED_NARRATIVE_VERSUS_REPORTED_SCALAR_FIT"
+    assert n["source_science_acceptance_for_specific_relative_ranking"]=="HOLD_UNDERDETERMINED"
+    assert n["requires_exact_primary_figure4B_pixel_read"] and n["requires_exact_fixed_S3_EqS16_19_pixel_read"]
+    assert n["requires_check_whether_simulation_results_reference_different_objective"]
+    assert not n["do_not_select_favorable_interpretation"] is False
+    assert q["other_source_native_bounded_family_evidence"]["literal_common_ancestor_confirmed"]
+    assert not q["other_source_native_bounded_family_evidence"]["no_pairwise_central_family_independence_inferred"] is False
+    assert q["appended_to_preregistered_negative_registry_without_rewriting_v8"]
+    assert q["original_registered_seven_boundaries_unchanged"]
+    assert q["original_v1_to_v8_40_dois_unchanged"]
+    assert not q["main_outcomes_consulted"] and not q["backup_activated"] and not q["main_authorized"]
+check_v8a(c8a)
+print("PASS V8A: original published scalar/prose 3a vs 3b contradiction preserved without author correction guess")
+print("PASS V8A: common literal Mathys2011 predecessor flagged as risk, NOT falsely called identical HGF mechanism")
+def reject_v8a(f):
+    t=copy.deepcopy(c8a)
+    f(t)
+    try:check_v8a(t)
+    except AssertionError:return True
+    return False
+assert reject_v8a(lambda a:a["first_observation"].update(published_fit_error_M3b_facilitation_first_mean=0.60))
+assert reject_v8a(lambda a:a["material_source_conflict"].update(source_science_acceptance_for_specific_relative_ranking="ACCEPT"))
+assert reject_v8a(lambda a:a["other_source_native_bounded_family_evidence"].update(literal_common_ancestor_confirmed=False))
+assert reject_v8a(lambda a:a.update(backup_activated=True))
+print("PASS V8A: four destructive error-normalization, false semantic acceptance, erased lineage, unauthorized backup activation rejected")
