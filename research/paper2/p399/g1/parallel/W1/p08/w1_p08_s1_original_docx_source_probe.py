@@ -22,3 +22,5 @@ receipt={'name':'P08 original publisher S1 Text', 'url':url,'raw_sha256':hashlib
 (OUT/'supplement_original_metadata.json').write_text(json.dumps(receipt,indent=2,ensure_ascii=False)+'\n')
 (OUT/'source_extracted_paragraphs.txt').write_text(text+'\n')
 print(json.dumps(receipt))
+
+# Post-E targeted publisher source recovery attempt; previous 502 executions preserved unchanged.
