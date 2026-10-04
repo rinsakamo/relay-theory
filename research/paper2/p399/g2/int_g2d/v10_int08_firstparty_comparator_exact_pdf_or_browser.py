@@ -29,7 +29,9 @@ try:
  a["matched_G2_frozen_SHA256"]=a["sha256"]==EXPECTED
  r["physical_original_reacquired_exact_G2_sha"]=a["matched_G2_frozen_SHA256"] and a["title_on_first_page"] and len(text)>=8
  a["firstparty_verified"]=r["physical_original_reacquired_exact_G2_sha"]
- for page_no in sorted({1,2,3,4,5,6,7,8,min(len(text),12)}):
+ a["human_comparison_hand_fixed_end_of_event_encoding_condition"] = any("imposed (by hand)" in t.lower() and "encoding policy" in t.lower() for t in text)
+ print("V10_INT08_ACTUAL_RAW_PDF",json.dumps({k:a.get(k) for k in ("status","bytes","sha256","pdf_pages","title_on_first_page","matched_G2_frozen_SHA256","human_comparison_hand_fixed_end_of_event_encoding_condition")},sort_keys=True),flush=True)
+ for page_no in sorted({1,2,3,4,5,6,7,8,min(len(text),12),min(len(text),16),min(len(text),20)}):
   t=text[page_no-1]
   matches=[]
   for q in KEYS:
