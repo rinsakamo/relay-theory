@@ -24,3 +24,7 @@
 ## 合格基準の制限
 
 このレーンの生SHAテストが証明するのはGitコミット済みローカル**記録のバイト整合性**。既存source runnerの先行受領が証明するのは当時の元PDFの物理取得。どちらも今回の元B1 PDF全19ページのピクセル式/図監査、元出版社補足全検査、全版訂正不存在、BLF-02/G1全体での確定独立性を証明しない。科学的最終判定はHOLD、代替採用0、MAIN NO-GO。
+
+## 追記: 提出後の厳密なPython実CI実測（同日）
+
+上の「記録時点で未実施」という時系列記述は保存する。続いて同一のコミット済みPython検証器が実際にGitHub Actionsで走った。[BLF専用push実行 37191252008](https://github.com/rinsakamo/relay-theory/actions/runs/37191252008) はブランチHEAD `02432849d50042992200ade1c7ae92d4c64ca2ba` に対して**SUCCESS**。ジョブ `blf-pre-a-source-receipts` 内の `Exact newly authored raw UTF-8 SHA256 readback`、`Original-candidate false-promotion rejection only`、`Preserve bounded qualification marker` の全3つの実検証ステップをGitHub Actions job APIでそれぞれ明示的に `conclusion=success` と独立確認。前者は元Gitにある新生成3原資料の実バイトと受領SHA、後者はPythonユニット正常系1および破壊的12系、末尾は元40/0代替/NO_MAIN保護を検査する。**独立JS別実13種類＋実Python12種類を混同して合算しない**。実CI成功は元出版社PDF画素、版訂正完全性および全族独立の科学資格を意味しない。ログ追記コミット後の新HEADは再実CIで別途確認する。
