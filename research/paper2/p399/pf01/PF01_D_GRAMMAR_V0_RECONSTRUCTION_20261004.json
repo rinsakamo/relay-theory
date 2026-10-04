@@ -1,0 +1,345 @@
+{
+  "schema": "relay-theory.p399.pf01.pass-D-grammar-v0.v1",
+  "date_jst": "2026-10-04",
+  "inputs": {
+    "original_publisher_pdf_sha256": "8531103d577a3249c7edffa06ef2a8a7e85eb01b0a2f02cee2145e187581fbc3",
+    "A": "79e308cd97ec01bc2456d636422fd66b6279681ff631948959d294f1482c6383",
+    "B": "8baa554cefc97bd773fff78dffb903275e96943a6a9af645f0d81783f6b4f128",
+    "C": "051fa6128cb384338a1767a9a78f6c64ea29eeb63eea9e26e8572368601d6d60",
+    "C_frozen_before_D": true,
+    "unchanged_grammar_v0_issue": "https://github.com/rinsakamo/relay-theory/issues/321",
+    "architecture": "https://github.com/rinsakamo/relay-theory/issues/347",
+    "system_world_boundary": "https://github.com/rinsakamo/relay-theory/issues/349"
+  },
+  "corrected_A_node_and_edge_inventory": {
+    "original_nodes": 25,
+    "delta_nodes": 4,
+    "corrected_nodes": 29,
+    "original_edges": 33,
+    "delta_edges": 8,
+    "corrected_edges": 41,
+    "delta_patches": [
+      "P01",
+      "P02",
+      "P03",
+      "P04"
+    ]
+  },
+  "layers": {
+    "L_sys": {
+      "Pi": [
+        {
+          "id": "PI1",
+          "meaning": "selected recurrent excitatory ring and global inhibitory network; source-defined presynaptic neuron partition",
+          "source": "p3-5 Figs1 Eq1-3"
+        },
+        {
+          "id": "PI2",
+          "meaning": "conditional neutral translational bump-manifold reduction and bumped-center readout, NOT an extra biological entity",
+          "source": "p6-7 p24-26"
+        }
+      ],
+      "X": [
+        {
+          "id": "X_rate",
+          "meaning": "continuous 3N synaptic state s_i(t), u_i(t), x_i(t), with instant rates phi_i=F(weighted s_i+global inhibition)"
+        },
+        {
+          "id": "X_spiking",
+          "meaning": "distinct original conductance-based LIF membrane/spike state with event-triggered STP"
+        },
+        {
+          "id": "X_reduced",
+          "meaning": "conditional projected 1D periodic bump angle varphi(t); not all full states survive reduction"
+        }
+      ],
+      "C": [
+        {
+          "id": "C1",
+          "meaning": "stable symmetric translated bump, damped transverse perturbations, large N and first-order small heterogeneity"
+        },
+        {
+          "id": "C2",
+          "meaning": "source-specific tuning of bump shape and admissible tau_s tau_u tau_x U range; bump-loss and critical depression boundaries"
+        },
+        {
+          "id": "C3",
+          "meaning": "stationary spiking mean-rate/Poisson-to-white-Gaussian proxy and omitted first-order multip noise/correlations"
+        }
+      ],
+      "Q": {
+        "endogenous_system_Q_required": false,
+        "source": "Source supplies no endogenous reward/selection criterion. Stability and observer MI comparison are external L_claim/L_ctx metrics; do not invent a system optimizer."
+      },
+      "P_in": [
+        {
+          "id": "P_cue",
+          "meaning": "experimenter's external initial-cue interface"
+        },
+        {
+          "id": "P_distractor",
+          "meaning": "weak localized transient externally controlled additional rate perturbation"
+        }
+      ],
+      "P_out": [
+        {
+          "id": "P_read",
+          "meaning": "spikes/rates sampled externally and transformed to bump center phase and subsequent ensemble statistics"
+        }
+      ],
+      "K": [
+        {
+          "id": "K_rate",
+          "source": "p3-5 Eq1-3",
+          "meaning": "explicit mutually coupled rate/short-term facilitation/depression ODE with activation through u*x*phi, three distinct recovery constants"
+        },
+        {
+          "id": "K_spk",
+          "source": "p29 Eq29-31",
+          "meaning": "full event-driven spiking network with prearrival efficacy and resources and one presynaptic spike source"
+        },
+        {
+          "id": "K_reduced",
+          "source": "p7 Eq4-7 p24-27",
+          "meaning": "only under C1/C3 stable-manifold projection, dvarphi/dt=A(varphi)+sqrt(B)*eta; same STP-weighted C_i/S influences A and B while A depends on fixed heterogeneity and B on stochastic noise"
+        },
+        {
+          "id": "K_observer",
+          "source": "p15-17 Figs5-6 Eq11 p39-40",
+          "meaning": "external observation transforms matched trajectories to normalized MI and ADDITIVE short-time displacement proxy, not neural update"
+        }
+      ],
+      "T": [
+        {
+          "id": "T_rate",
+          "meaning": "continuous physical synaptic time with tau_s tau_u tau_x"
+        },
+        {
+          "id": "T_spk",
+          "meaning": "prearrival spike-event ordering preserved; rate approximation only conditional"
+        },
+        {
+          "id": "T_reduced",
+          "meaning": "continuous stochastic temporal evolution and finite time delay; discretization is L_formal"
+        }
+      ],
+      "rho/O": [
+        {
+          "id": "O_center",
+          "meaning": "readout phase of population firing first spatial Fourier component"
+        },
+        {
+          "id": "O_drift_diffusion",
+          "meaning": "circular bump position variance and per-realization drift fields; frozen ensemble-mean drift zero does not erase individual fields"
+        },
+        {
+          "id": "O_MI",
+          "meaning": "100-bin joint initial/final center histograms after 6.5s, relative to U=1/no-hetero spiking baseline"
+        },
+        {
+          "id": "O_distractor",
+          "meaning": "short-term expected displacement after weak 250ms distractor, affected by STP and bump width"
+        }
+      ]
+    },
+    "L_claim": {
+      "source_anchored_original_A_claims": [
+        "A01",
+        "A02",
+        "A03",
+        "A04",
+        "A05",
+        "A06",
+        "A07",
+        "A08",
+        "A09",
+        "A10",
+        "A11",
+        "A12",
+        "A13",
+        "A14",
+        "A15",
+        "A16",
+        "A17",
+        "A18",
+        "A19",
+        "A20",
+        "A21",
+        "A22",
+        "A23"
+      ],
+      "append_only_C_claims": [
+        "C_A24",
+        "C_A25",
+        "C_A26",
+        "C_A27"
+      ],
+      "specific_boundaries": [
+        "L01",
+        "L02",
+        "L03",
+        "L04",
+        "L05",
+        "L06",
+        "L07",
+        "L08",
+        "L09",
+        "L10",
+        "L11",
+        "L12",
+        "L13",
+        "L14",
+        "L15",
+        "L16"
+      ],
+      "quantitative_uncertainty": [
+        "U01 exact Fig2B right U=0.01 caption vs U=0.1 neighboring panel/text",
+        "U02 diffusion trial cues 20 Results vs 10 Methods"
+      ],
+      "eq11_exact_source_form": "absDeltaPhi_1s = sqrt(ensemble_mean_Aphi_squared_frozen) * 1s + sqrt(B * 1s); ADDITIVE components, NOT root of summed squares",
+      "source_predictions": "STP facilitation tends suppress noise-driven diffusion and frozen network drift within stable tested regimes; depression antagonistic; strong facil residual remains and Poisson rate approximation has measured failure modes"
+    },
+    "L_ctx": {
+      "source_parameters": [
+        "U",
+        "tau_s",
+        "tau_u",
+        "tau_x",
+        "N",
+        "p",
+        "sigma_L",
+        "sigma_g",
+        "tuned bump profile"
+      ],
+      "experiment_parameters": [
+        "cue/distractor timings locations amplitudes",
+        "sampled heterogeneity realizations",
+        "500ms transient exclusion",
+        "10Hz bump-loss threshold",
+        "100-bin MI and drift estimation",
+        "6.5s mutual-information delay",
+        "conditional 250ms distractor"
+      ],
+      "source_specific_numerical_ambiguities": [
+        "U01",
+        "U02"
+      ],
+      "source_context_parameters_are_not_new_grammar_roles": true
+    },
+    "L_formal": {
+      "full_rate": "rate ODE + synaptic dynamical state",
+      "full_spiking": "conductance-based stochastic spiking LIF with event STP and shared spike noise",
+      "reduction": "first-order neutral eigenmode projection to Langevin SDE on ring; distinct from full model",
+      "numerical_order": "p39 400-trial (20x20) circular delta estimator dt=1.5s then 100 bins; p40 periodic spline drift, Euler update drift + sqrt(dt*B)*Gaussian THEN ring wrap (default dt=0.1s)",
+      "source_derived_measure": "Eq11 square-rooted drift and noise terms ADDED; not approximate equality to 6.5s MI"
+    }
+  },
+  "system_world_experiment": {
+    "system": "recurrent neural mechanism and source STP variables",
+    "W": "external cue/distractor stimulation context; article specifies no internally driven external world-state update",
+    "Gamma_in": "externally scheduled stimuli couple to network through input; distinguish external experimental agency",
+    "Gamma_out": "experimenter records spike/rate traces and computes statistics; source does not model circuit taking independent external actions",
+    "E_exp": "tuning, transient preparation, delay, optional timed distractor, stimulus schedules, data exclusion/readout",
+    "R": "actual stochastic spike or reduced bump-center sample history; observed finite experimental cut does not imply system genesis",
+    "nonprimitive_system_world_coupled_recurrence": "NOT_SOURCE_JUSTIFIED; endogenous recurrent neural K is NOT a cognitive-system-to-World feedback loop"
+  },
+  "dependencies": [
+    {
+      "id": "DP1",
+      "trace": [
+        "A01",
+        "A02",
+        "A03"
+      ],
+      "meaning": "circuit+recurrent gain+coupled short-term states support stationary/evolving bump subject to C"
+    },
+    {
+      "id": "DP2",
+      "trace": [
+        "A05",
+        "A06",
+        "A08",
+        "A09",
+        "A12"
+      ],
+      "meaning": "stability+projection+STP weights map distinct Poisson proxy and fixed heterogeneity into B vs A(varphi)"
+    },
+    {
+      "id": "DP3",
+      "trace": [
+        "A07",
+        "A10",
+        "A13",
+        "A16"
+      ],
+      "meaning": "source-defined full spiking model compared conditionally with reduced periodic diffusion+drift; preserve failure boundaries"
+    },
+    {
+      "id": "DP4",
+      "trace": [
+        "A17",
+        "P02",
+        "P03"
+      ],
+      "meaning": "distinct full/reduced readouts normalized to spiking baseline; one-second additive Eq11 is a descriptive proxy"
+    },
+    {
+      "id": "DP5",
+      "trace": [
+        "A18",
+        "P01"
+      ],
+      "meaning": "externally applied weak distractor plus stationary width and source STP yield bounded radial reach"
+    },
+    {
+      "id": "DP6",
+      "trace": [
+        "P04",
+        "A20"
+      ],
+      "meaning": "physical update distinct from circular numerical estimator/Euler-then-wrap, trial-loss exclusions retained"
+    }
+  ],
+  "coordination_tests_in_prescribed_order": [
+    {
+      "test": "A0",
+      "result": "SOURCE_RELATIVE_DIRECT_COMPOSITION_SUPPORTED",
+      "reason": "rate STP coupled dynamics, original projection and spiking comparisons already defined in the article"
+    },
+    {
+      "test": "A1",
+      "result": "NO_EXTRA_ADAPTER_BEYOND_ORIGINAL_SOURCE",
+      "reason": "source itself supplies rate/spiking conditional approximations and projection; numerical estimator is method not new cognition"
+    },
+    {
+      "test": "A2",
+      "result": "NO_SOURCE_SUPPORTED_NOVEL_PERSISTENT_COORDINATOR",
+      "reason": "presynaptic u,x short-term states and updates are already source-defined; cannot relabel them as additional H2"
+    }
+  ],
+  "H_discrimination": "LIMITED: internal ring circuit+STP is already jointly composed in source; A0 source-relative pass is not discrimination of unknown intermodule coordination or general H0 prevalence",
+  "residuals": [
+    {
+      "id": "U01",
+      "layer": "L_ctx",
+      "status": "UNDERDETERMINED_NUMERICAL_PANEL_CONDITION"
+    },
+    {
+      "id": "U02",
+      "layer": "L_ctx",
+      "status": "UNDERDETERMINED_NUMERICAL_CUE_REPEATS"
+    },
+    {
+      "id": "APPROX",
+      "layer": "L_formal",
+      "status": "PARTIAL_REDUCTION_NOT_FULL_IDENTITY"
+    },
+    {
+      "id": "BIOLOGICAL",
+      "layer": "L_claim",
+      "status": "EXPERIMENTAL_PROOF_OF_PRINCIPLE_NO_DIRECT_BEHAVIORAL_VALIDATION"
+    }
+  ],
+  "grammar_v0_role_gap_claimed": false,
+  "D_disposition": "SOURCE_SUPPORTED_GRAMMAR_V0_STRUCTURAL_RECONSTRUCTION_WITH_BOUNDED_COORDINATION_DISCRIMINATION"
+}
