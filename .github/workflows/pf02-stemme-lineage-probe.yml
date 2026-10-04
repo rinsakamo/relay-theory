@@ -1,0 +1,96 @@
+name: PF02 specific Stemme-2005 lineage source probe
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/pf02-stemme-lineage-probe.yml"
+permissions:
+  contents: read
+jobs:
+  ancestor-evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - name: Bounded lawful public scholarly source probe
+        shell: bash
+        run: |
+          set -eu
+          mkdir -p "$RUNNER_TEMP/lineage-probe"
+          export OUT="$RUNNER_TEMP/lineage-probe"
+          python3 - <<'PY'
+          import os,urllib.request,json,hashlib,time,re
+          base=os.environ['OUT']
+          result={'target_title':'Neurons and the synaptic basis of the fMRI signal associated with cognitive flexibility','doi':'10.1016/j.neuroimage.2005.01.044','raw_full_source':'NOT_VERIFIED','attempts':[],'version':'bounded public scholarly source search only'}
+          sources=[
+          ('openalex','https://api.openalex.org/works/W2045082709'),
+          ('semanticscholar','https://api.semanticscholar.org/graph/v1/paper/DOI:10.1016/j.neuroimage.2005.01.044?fields=title,year,openAccessPdf,externalIds'),
+          ('citeseerx_canonical','https://citeseerx.ist.psu.edu/document?doi=0fbe23ae4255ce69e86b051252e1139f47d335d7&repid=rep1&type=pdf'),
+          ('citeseerx_download','https://citeseerx.ist.psu.edu/viewdoc/download?doi=0fbe23ae4255ce69e86b051252e1139f47d335d7&rep=rep1&type=pdf')]
+          discovered=[]
+          for label,url in sources:
+            attempt={'source':label,'url':url}
+            try:
+              req=urllib.request.Request(url,headers={'User-Agent':'RelayTheory/1.0 scholarly metadata and public source check','Accept':'application/pdf,application/json,*/*'})
+              with urllib.request.urlopen(req,timeout=17) as resp:
+                data=resp.read(12_000_000)
+                attempt.update(status=resp.status,final_url=resp.url,byte_count=len(data),mime=resp.headers.get('Content-Type',''),prefix=data[:9].hex())
+              if label=='openalex':
+                ob=json.loads(data)
+                for k in ['best_oa_location','primary_location']:
+                  loc=ob.get(k) or {}
+                  attempt[k]={j:loc.get(j) for j in ['landing_page_url','pdf_url','version','is_oa']}
+                  if loc.get('pdf_url'): discovered.append((k,loc['pdf_url']))
+              elif label=='semanticscholar':
+                ob=json.loads(data)
+                attempt['paper_title']=ob.get('title')
+                attempt['openAccessPdf']=ob.get('openAccessPdf')
+                if ob.get('openAccessPdf') and ob['openAccessPdf'].get('url'):discovered.append(('semanticscholar_oa',ob['openAccessPdf']['url']))
+              elif data.startswith(b'%PDF-'):
+                import subprocess,tempfile
+                with tempfile.NamedTemporaryFile(suffix='.pdf') as f:
+                  f.write(data);f.flush()
+                  p=subprocess.run(['pdfinfo',f.name],capture_output=True,text=True)
+                  t=subprocess.run(['pdftotext','-f','1','-l','2',f.name,'-'],capture_output=True,text=True)
+                  attempt['pdfinfo']=p.stdout[:1600]
+                  attempt['first_pages_excerpt']=t.stdout[:1500]
+                  correct='Neurons and the synaptic' in t.stdout and 'Stemme' in t.stdout
+                attempt['identity_first_pages']=correct
+                if correct:
+                  result['raw_full_source']='VERIFIED_ORIGINAL_LAYOUT_PDF_BYTES_ACQUIRED'
+                  result['sha256']=hashlib.sha256(data).hexdigest()
+                  result['size']=len(data)
+                  with open(base+'/stemme-2005-original-scholar-mirror.pdf','wb') as f:f.write(data)
+                  result['verified_url']=url
+            except Exception as e: attempt['error']=type(e).__name__+': '+str(e)
+            result['attempts'].append(attempt)
+            if result['raw_full_source'].startswith('VERIFIED'):break
+          if result['raw_full_source']=='NOT_VERIFIED':
+            for label,url in discovered[:2]:
+              attempt={'source':label,'url':url}
+              try:
+                req=urllib.request.Request(url,headers={'User-Agent':'RelayTheory/1.0 scholarly public source check'})
+                with urllib.request.urlopen(req,timeout=15) as resp:data=resp.read(12_000_000);attempt['status']=resp.status
+                attempt['bytes']=len(data)
+                if data.startswith(b'%PDF-'):
+                  import subprocess,tempfile
+                  with tempfile.NamedTemporaryFile(suffix='.pdf') as f:
+                    f.write(data);f.flush()
+                    p=subprocess.run(['pdftotext','-f','1','-l','2',f.name,'-'],capture_output=True,text=True)
+                    correct='Neurons and the synaptic' in p.stdout and 'Stemme' in p.stdout
+                  attempt['identity_first_pages']=correct
+                  if correct:
+                    result.update(raw_full_source='VERIFIED_ORIGINAL_LAYOUT_PDF_BYTES_ACQUIRED',sha256=hashlib.sha256(data).hexdigest(),size=len(data),verified_url=url)
+                    with open(base+'/stemme-2005-original-scholar-mirror.pdf','wb') as f:f.write(data)
+              except Exception as e:attempt['error']=type(e).__name__+': '+str(e)
+              result['attempts'].append(attempt)
+              if result['raw_full_source'].startswith('VERIFIED'):break
+          with open(base+'/probe.json','w') as f:json.dump(result,f,indent=2)
+          print('STEMME_2005_LINEAGE_PROBE='+json.dumps(result,ensure_ascii=True))
+          PY
+      - name: Preserve bounded private probe in 1-day artifact, not Git
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pf02-stemme-2005-evidence
+          path: ${{ runner.temp }}/lineage-probe/
+          retention-days: 1
+          if-no-files-found: warn

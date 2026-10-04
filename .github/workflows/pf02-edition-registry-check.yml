@@ -1,0 +1,44 @@
+name: PF02 edition and correction registry check
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/pf02-edition-registry-check.yml"
+permissions:
+  contents: read
+jobs:
+  edition-registry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Check exact original DOI at public metadata registries
+        shell: bash
+        run: |
+          set -eu
+          python3 - <<'PY'
+          import urllib.request, urllib.parse, json, re, datetime, html
+          refs={
+          'crossref':'https://api.crossref.org/works/10.1371%2Fjournal.pcbi.1004331',
+          'crossmark':'https://crossmark.crossref.org/dialog/?doi=10.1371%2Fjournal.pcbi.1004331&domain=pdf',
+          'pubmed':'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=26068119&retmode=xml'}
+          result={'date_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'doi':'10.1371/journal.pcbi.1004331'}
+          for label,url in refs.items():
+            try:
+              req=urllib.request.Request(url,headers={'User-Agent':'RelayTheory-PF02 scholarly-edition-verification/1.0 (research)'})
+              with urllib.request.urlopen(req,timeout=20) as resp:
+                payload=resp.read(500_000).decode('utf-8','replace')
+                result[label+'_status']=resp.status
+                result[label+'_final_url']=resp.url
+              if label=='crossref':
+                obj=json.loads(payload).get('message',{})
+                result['crossref_metadata']={k:obj.get(k) for k in ('DOI','title','published','created','deposited','updated-by','update-to','relation','type')}
+              elif label=='pubmed':
+                result['pubmed_corrections_xml']=re.findall(r'<CommentsCorrections.*?</CommentsCorrections>',payload,re.I|re.S)
+                result['pubmed_has_comments_corrections_list']='<CommentsCorrectionsList>' in payload
+              else:
+                clean=re.sub(r'\\s+',' ',re.sub('<[^>]+>',' ',payload))
+                result['crossmark_excerpt']=html.unescape(clean[:2400])
+                result['crossmark_keywords']=[w for w in ['current','correction','retraction','updated','no updates','status'] if w in clean.lower()]
+            except Exception as e:
+              result[label+'_error']=type(e).__name__+': '+str(e)
+          print('PF02_EDITION_REGISTRY='+json.dumps(result,ensure_ascii=True))
+          PY

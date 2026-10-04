@@ -1,0 +1,969 @@
+{
+  "schema": "p399-pf02-v231-full-source-closed-c-v1",
+  "date": "2026-10-04",
+  "source_pdf_sha256": "bef58465c56cec93f1cbb0f689c8fcd48cd656f3520d70a6032aaac9caa63655",
+  "immutable_A_V1_sha256": "811262b74cde284ea4033f4a2528def427cb9464ce47fad8b9acd06e8f96fd6b",
+  "immutable_B_V1_sha256": "2cd932a19c1cccffca6acbdb098813858a4332983c101b1cc013fe78cc21a8c3",
+  "authority": "#399 v2.3.1 mandatory C1 entire A before patch, C2 source-local adjacent exceptions and independent full source-order 20-section resweep",
+  "c1_before_any_patch": {
+    "original_a_reopened_entire": true,
+    "original_a_claim_ids": [
+      "A01",
+      "A02",
+      "A03",
+      "A04",
+      "A05",
+      "A06",
+      "A07",
+      "A08",
+      "A09",
+      "A10",
+      "A11",
+      "A12",
+      "A13",
+      "A14",
+      "A15",
+      "A16",
+      "A17",
+      "A18",
+      "A19",
+      "A20",
+      "A21",
+      "A22",
+      "A23",
+      "A24",
+      "A25",
+      "A26",
+      "A27",
+      "A28",
+      "A29",
+      "A30",
+      "A31",
+      "A32",
+      "A33",
+      "A34",
+      "A35",
+      "A36",
+      "A37",
+      "A38",
+      "A39",
+      "A40"
+    ],
+    "original_a_edge_ids": [
+      "E01",
+      "E02",
+      "E03",
+      "E04",
+      "E05",
+      "E06",
+      "E07",
+      "E08",
+      "E09",
+      "E10",
+      "E11",
+      "E12",
+      "E13",
+      "E14",
+      "E15",
+      "E16",
+      "E17",
+      "E18",
+      "E19",
+      "E20",
+      "E21",
+      "E22",
+      "E23",
+      "E24",
+      "E25",
+      "E26",
+      "E27",
+      "E28"
+    ],
+    "claims": 40,
+    "edges": 28,
+    "original_A_immutable": true,
+    "existing_global_limits": [
+      "A05 ambiguous model exclusion",
+      "A17 and A36 source OU p33 strict numerical exclusion",
+      "A20 in-sample subject fit",
+      "A22 GOF tests in-sample",
+      "A24 ambiguous treated separately in neural BOLD GLM",
+      "A27 nonconservative potential",
+      "A34 IFJ IPS speculative role",
+      "A37 colored OU to FP steady approximation",
+      "A40 inherited Stemme lineage"
+    ]
+  },
+  "c2_closed_b_objections": [
+    {
+      "b_id": "B01",
+      "c_id": "C01",
+      "disposition": "SOURCE_SUPPORTED_APPEND_ONLY_PATCH",
+      "original_a_target": "A06",
+      "patch_type": "REVISE_A06",
+      "entire_a_first_checked": true,
+      "already_present_A_ids": [
+        "A05",
+        "A39"
+      ],
+      "original_primary_adjacent_locator": "p26 Task; p27 ambiguous exclusion; p28 static synapses",
+      "strongest_alternate_interpretation_and_source_test": "'over 25 min' might mean extended training rather than timed assertion; but actual exact original says APPROXIMATELY 25 min, initial individual task 90% and then complete excluding ambiguous 80% each.",
+      "exact_allowed_patch": "Replace A06 over 25 with approximately 25 plus stepwise 90/80 task criteria.",
+      "adjacent_negative_boundary_accounting": "Training exclusion of ambiguous is already A05/A39, do not append duplicate.",
+      "material_conditions": [
+        {
+          "id": "CC01",
+          "condition": "training duration approximate",
+          "accounting": "PATCH_C01"
+        },
+        {
+          "id": "CC02",
+          "condition": "ambiguous not trained/modelled",
+          "accounting": "ALREADY_A05"
+        }
+      ]
+    },
+    {
+      "b_id": "B02",
+      "c_id": "C02",
+      "disposition": "SOURCE_SUPPORTED_APPEND_ONLY_PATCH",
+      "original_a_target": "A28",
+      "patch_type": "REVISE_A28",
+      "entire_a_first_checked": true,
+      "already_present_A_ids": [],
+      "original_primary_adjacent_locator": "p15 Fig7 A-F caption; p13-16 U discussion",
+      "strongest_alternate_interpretation_and_source_test": "It is possible only trajectories were rescaled; entire Fig7 caption states individually fitted sigma_rule values multiplied by 10 for easier visualization of plotted potential landscapes and trajectories.",
+      "exact_allowed_patch": "Replace solely trajectories with all Fig7 displayed model-landscape and minimal-path views; separate from original fitted estimates.",
+      "adjacent_negative_boundary_accounting": "No claim that empirical fitted parameters, Fig8 physiological effects, or measured fMRI are x10; such inference excluded.",
+      "material_conditions": [
+        {
+          "id": "CC03",
+          "condition": "Fig7 global display-only factor x10",
+          "accounting": "PATCH_C02"
+        },
+        {
+          "id": "CC04",
+          "condition": "original MAP fitting and neural measures not x10",
+          "accounting": "NARROWED_C02"
+        }
+      ]
+    },
+    {
+      "b_id": "B03",
+      "c_id": "C03",
+      "disposition": "SOURCE_SUPPORTED_APPEND_ONLY_PATCH",
+      "original_a_target": "A32",
+      "patch_type": "REVISE_A32",
+      "entire_a_first_checked": true,
+      "already_present_A_ids": [
+        "A31"
+      ],
+      "original_primary_adjacent_locator": "p20 text following Table3 and Fig9C/D; p18 two corrected search contexts",
+      "strongest_alternate_interpretation_and_source_test": "Could nonsignificance refer to all brain activation? The printed r,p triplet explicitly specifies only eigenvariate of left middle frontal gyrus and Fig9A/C.",
+      "exact_allowed_patch": "Narrow A32 separate parameter nonsignificance exclusively to MFG cluster eigenvariate: sNMDA r=0.40 p=0.08; sGABA r=0.29 p=0.21; sigma_rule r=-0.36 p=0.12. No inference for other clusters.",
+      "adjacent_negative_boundary_accounting": "Separate ROI action correlate in A31 is not a test of separate physiological parameters in that region.",
+      "material_conditions": [
+        {
+          "id": "CC05",
+          "condition": "individual parameter null r,p only MFG cluster",
+          "accounting": "PATCH_C03"
+        },
+        {
+          "id": "CC06",
+          "condition": "thalamo striatal ROI only tested combined action correlate",
+          "accounting": "NARROWED_C03"
+        }
+      ]
+    },
+    {
+      "b_id": "B04",
+      "c_id": "C04",
+      "disposition": "SOURCE_SUPPORTED_APPEND_ONLY_PATCH",
+      "original_a_target": "A24",
+      "patch_type": "REVISE_A24",
+      "entire_a_first_checked": true,
+      "already_present_A_ids": [
+        "A05",
+        "A24"
+      ],
+      "original_primary_adjacent_locator": "p40 model-derived fMRI regressors; p41 separate switch-minus-distractor GLM; p27 ambiguous exception",
+      "strongest_alternate_interpretation_and_source_test": "A24 could be read as applying to all fMRI GLMs; this fails because the second GLM aggregates ambiguity into switch/stay categories and separately uses error trials.",
+      "exact_allowed_patch": "Split first model-derived rule regressor GLM event-wise nuisance for each ambiguous trial and six motion; separate second contrast GLM two ambiguity-category regressors, error regressor, six motion, baseline implicit.",
+      "adjacent_negative_boundary_accounting": "A05/A24 already exclude ambiguous from explicit model; do not add a second ambiguous-no-neural-model patch.",
+      "material_conditions": [
+        {
+          "id": "CC07",
+          "condition": "first rule-derived GLM ambiguity separate per trial",
+          "accounting": "PATCH_C04"
+        },
+        {
+          "id": "CC08",
+          "condition": "second contrast GLM ambiguity switch/stay and errors, implicit baseline",
+          "accounting": "PATCH_C04"
+        },
+        {
+          "id": "CC09",
+          "condition": "ambiguous not simulated",
+          "accounting": "ALREADY_A05"
+        }
+      ]
+    },
+    {
+      "b_id": "B05",
+      "c_id": "C05",
+      "disposition": "SOURCE_SUPPORTED_APPEND_ONLY_PATCH",
+      "original_a_target": "A18",
+      "patch_type": "REVISE_A18",
+      "entire_a_first_checked": true,
+      "already_present_A_ids": [],
+      "original_primary_adjacent_locator": "p34 behavioral simulation; p7 Fig3F and p9 near-threshold behavior",
+      "strongest_alternate_interpretation_and_source_test": "Could decision threshold be arbitrary because process diverges in finite time? Actual implementation picks a 10 Hz projection threshold but source notes relative insensitivity only if far from origin.",
+      "exact_allowed_patch": "Augment A18 with implementation-specific 10 Hz four-direction projected readout, retaining far-from-spontaneous caveat.",
+      "adjacent_negative_boundary_accounting": "Cannot assert universal biological choice threshold or remove bounded sensitivity qualifier already in A18.",
+      "material_conditions": [
+        {
+          "id": "CC10",
+          "condition": "implemented four-choice threshold 10Hz",
+          "accounting": "PATCH_C05"
+        },
+        {
+          "id": "CC11",
+          "condition": "threshold robustness conditional on distance",
+          "accounting": "ALREADY_A18"
+        }
+      ]
+    },
+    {
+      "b_id": "B06",
+      "c_id": "C06",
+      "disposition": "SOURCE_SUPPORTED_APPEND_ONLY_PATCH",
+      "original_a_target": "A30",
+      "patch_type": "REVISE_A30",
+      "entire_a_first_checked": true,
+      "already_present_A_ids": [
+        "A27"
+      ],
+      "original_primary_adjacent_locator": "p39 minimum action derivation, p15 Fig7 directional curves, p18 action covariate",
+      "strongest_alternate_interpretation_and_source_test": "Could original treat reverse and forward directions symmetrically? Fig7 explicitly depicts two directional paths, but covariate in p18 is rule1 to rule2 action; p39 source specifies numerical method.",
+      "exact_allowed_patch": "Specify reported participant covariate one-way parity rule1 to magnitude rule2; Eeff=-V(Smin), longest kinetic time, 50 line segments, penalty 10^5 on variance in segment lengths, MATLAB fminunc. Do not assert reverse symmetry.",
+      "adjacent_negative_boundary_accounting": "Fig7 plots reverse direction for visualization and U is nonconservative per A27, so distinct directions cannot be merged without proof.",
+      "material_conditions": [
+        {
+          "id": "CC12",
+          "condition": "participant covariate rule1-to-rule2 directional minimal action",
+          "accounting": "PATCH_C06"
+        },
+        {
+          "id": "CC13",
+          "condition": "discretization and Eeff optimization choices",
+          "accounting": "PATCH_C06"
+        },
+        {
+          "id": "CC14",
+          "condition": "bidirectional visualization does not prove symmetry",
+          "accounting": "NARROWED_C06"
+        }
+      ]
+    },
+    {
+      "b_id": "B07",
+      "c_id": "C07",
+      "disposition": "SOURCE_SUPPORTED_APPEND_ONLY_PATCH",
+      "original_a_target": "A21",
+      "patch_type": "REVISE_A21",
+      "entire_a_first_checked": true,
+      "already_present_A_ids": [
+        "A20"
+      ],
+      "original_primary_adjacent_locator": "p35-37 Bayesian likelihood, MH and MAP",
+      "strongest_alternate_interpretation_and_source_test": "Could algorithmic numbers be absent because structural model does not require them? They are source-specified implementation and delimit exact goodness-of-fit interpretation, but do not demonstrate any out-of-sample evidence.",
+      "exact_allowed_patch": "Retain 1024 trials/condition and 2x1M MH, add sigma_MH=0.01 Gaussian proposal, 50,000 burn in each, combined chains, locally adaptive KDE MAP.",
+      "adjacent_negative_boundary_accounting": "Posterior sampling code externally linked is excluded as source universe; numerical convergence unverified; A20 already explicitly says in-sample fit.",
+      "material_conditions": [
+        {
+          "id": "CC15",
+          "condition": "MH proposal and 50k each-chain burn",
+          "accounting": "PATCH_C07"
+        },
+        {
+          "id": "CC16",
+          "condition": "KDE MAP from merged chains",
+          "accounting": "PATCH_C07"
+        },
+        {
+          "id": "CC17",
+          "condition": "model is in-sample only",
+          "accounting": "ALREADY_A20"
+        }
+      ]
+    },
+    {
+      "b_id": "B08",
+      "c_id": "C08",
+      "disposition": "SOURCE_SUPPORTED_APPEND_ONLY_PATCH",
+      "original_a_target": "A29",
+      "patch_type": "REVISE_A29",
+      "entire_a_first_checked": true,
+      "already_present_A_ids": [],
+      "original_primary_adjacent_locator": "p17 Fig8 narrative, p18 Table2 adjacency and p20 discussion",
+      "strongest_alternate_interpretation_and_source_test": "Could NMDA, GABA, noise all simply deepen attractors? Source sharply distinguishes directional effects on active and spontaneous basins.",
+      "exact_allowed_patch": "Spell out increased sNMDA stabilizes high-rule basin; sGABA raises spontaneous basin relative stability while destabilizing high-rule; sigma_rule smoothes U and promotes transitions between basins.",
+      "adjacent_negative_boundary_accounting": "Nearby Table2 behavior association does not survive multiplicity correction; handle once via independently identified B11/C11, not additional repeated patch.",
+      "material_conditions": [
+        {
+          "id": "CC18",
+          "condition": "three parameters have contrasting high/spontaneous/noise effects",
+          "accounting": "PATCH_C08"
+        },
+        {
+          "id": "CC19",
+          "condition": "uncorrected behavioral trend not confirmed",
+          "accounting": "REFER_C11"
+        }
+      ]
+    },
+    {
+      "b_id": "B09",
+      "c_id": "C09",
+      "disposition": "SOURCE_SUPPORTED_APPEND_ONLY_PATCH",
+      "original_a_target": "A04",
+      "patch_type": "REVISE_A04",
+      "entire_a_first_checked": true,
+      "already_present_A_ids": [
+        "A05",
+        "A39"
+      ],
+      "original_primary_adjacent_locator": "p26 Task pseudorandomized trial order and p27 ambiguity rationale",
+      "strongest_alternate_interpretation_and_source_test": "At least three could be accurate shorthand, but original also specifies maximum six for critical trial intervals including ambiguous experimental types.",
+      "exact_allowed_patch": "Retain minimum three, append maximum six and pseudorandomized inter-critical order, explicitly task/experimental schedule rather than model's simulation of ambiguity.",
+      "adjacent_negative_boundary_accounting": "Experimental ambiguous events included in this timing regime but neural simulated conditions exclude them per A05/A39.",
+      "material_conditions": [
+        {
+          "id": "CC20",
+          "condition": "min three max six baseline intercritical intervals",
+          "accounting": "PATCH_C09"
+        },
+        {
+          "id": "CC21",
+          "condition": "ambiguous experimentally sampled but no neural simulation",
+          "accounting": "ALREADY_A05"
+        }
+      ]
+    },
+    {
+      "b_id": "B10",
+      "c_id": "C10",
+      "disposition": "SOURCE_SUPPORTED_APPEND_ONLY_PATCH",
+      "original_a_target": "A31",
+      "patch_type": "REVISE_A31",
+      "entire_a_first_checked": true,
+      "already_present_A_ids": [
+        "A31"
+      ],
+      "original_primary_adjacent_locator": "p18-20 Fig9A-D Table3; p41 contrast ROI correction method",
+      "strongest_alternate_interpretation_and_source_test": "Could combined thalamocorticostriatal association be one whole-brain result? Source does a first whole-brain cluster FWE-corrected left MFG analysis, then second anatomically masked ROI-corrected thalamostriatal test.",
+      "exact_allowed_patch": "Differentiate whole-brain FWE-corrected left MFG cluster and anatomically thalamus/caudate ROI-FWE-corrected thalamostriatal cluster, both correlated with subject minimal-action in contrast switch minus distractor.",
+      "adjacent_negative_boundary_accounting": "No random perturbation of action parameter and not experimental causal evidence (already A31). MFG and subcortical ROI must not be combined into one whole-brain corrected result.",
+      "material_conditions": [
+        {
+          "id": "CC22",
+          "condition": "left MFG cluster whole-brain correction",
+          "accounting": "PATCH_C10"
+        },
+        {
+          "id": "CC23",
+          "condition": "thalamus caudate cluster ROI-only correction",
+          "accounting": "PATCH_C10"
+        },
+        {
+          "id": "CC24",
+          "condition": "action BOLD relation noncausal",
+          "accounting": "ALREADY_A31"
+        }
+      ]
+    },
+    {
+      "b_id": "B11",
+      "c_id": "C11",
+      "disposition": "SOURCE_SUPPORTED_APPEND_ONLY_PATCH",
+      "original_a_target": "OMITTED",
+      "patch_type": "ADD_A41",
+      "entire_a_first_checked": true,
+      "already_present_A_ids": [],
+      "original_primary_adjacent_locator": "p17-18 Table2 and full neighboring interpretation",
+      "strongest_alternate_interpretation_and_source_test": "Raw p=0.04 switch reaction time cost might be reported as significant, but narrative explicitly says NO association survived multiple-comparison correction; error-rate trends are far from significant.",
+      "exact_allowed_patch": "Add distinct negative outcome A41: minimal-action/attractor depth tested against conditional RT and errors, none survived multiplicity correction; switch-cost unadjusted r=0.47 p=0.04 only tentative.",
+      "adjacent_negative_boundary_accounting": "Does not overwrite A32, which refers separate physiological-param correlation with MFG, not task-behavior correlation; no new independent evidence for model causality.",
+      "material_conditions": [
+        {
+          "id": "CC25",
+          "condition": "none of Table2 behavioral associations survives correction",
+          "accounting": "PATCH_C11"
+        },
+        {
+          "id": "CC26",
+          "condition": "unadjusted switch RT p=0.04 not corrected significance",
+          "accounting": "PATCH_C11"
+        },
+        {
+          "id": "CC27",
+          "condition": "descriptive error trend far from significance",
+          "accounting": "NARROWED_C11"
+        }
+      ]
+    },
+    {
+      "b_id": "B12",
+      "c_id": "C12",
+      "disposition": "SOURCE_SUPPORTED_APPEND_ONLY_PATCH",
+      "original_a_target": "OMITTED",
+      "patch_type": "ADD_A42",
+      "entire_a_first_checked": true,
+      "already_present_A_ids": [
+        "A27",
+        "A37"
+      ],
+      "original_primary_adjacent_locator": "p37-38 FP Eq9, finite-difference solver and source-local steady limitation",
+      "strongest_alternate_interpretation_and_source_test": "Could A26 already contain this? A26 states mathematical generalized U=-ln Pss and A37 OU-to-white steady approximation, but does not record source's actual stationary solver implementation.",
+      "exact_allowed_patch": "Add distinct computational-method A42: uniform initial density, BTCS implicit finite-difference FP propagation to stationary, fixed P=0 boundary, MATLAB sparse system solution; avoid ungrounded exact transient equivalence.",
+      "adjacent_negative_boundary_accounting": "No duplicate new warning about OU transient approximation: explicitly covered in A37, and no conversion of U to conservative energy since A27 already limits it.",
+      "material_conditions": [
+        {
+          "id": "CC28",
+          "condition": "uniform initial FP implicit BTCS P=0 stationary solver",
+          "accounting": "PATCH_C12"
+        },
+        {
+          "id": "CC29",
+          "condition": "OU stationary white approximation caveat",
+          "accounting": "ALREADY_A37"
+        },
+        {
+          "id": "CC30",
+          "condition": "U nonconservative not literal energy",
+          "accounting": "ALREADY_A27"
+        }
+      ]
+    }
+  ],
+  "independent_c_only": [
+    {
+      "id": "C13",
+      "source": "p26 task; pp26-27 immediately neighboring response-hand counterbalance",
+      "source_order_section": "S10",
+      "distinct_from_B": "B09 concerns 3-6 trial spacing; C13 concerns participant-dependent response-hand mapping, not discovered in B, and is separate from source A03 task rule definitions",
+      "proposed_add": "A43",
+      "new_claim": "Task-to-hand response assignment was counterbalanced across participants; the article's illustrated parity/right and magnitude/left setup is not a universal physiological hand-rule binding. Keep this assignment on the experimental interface, not as fixed decision-module neural wiring.",
+      "material_neighbor_conditions": [
+        {
+          "id": "CC31",
+          "condition": "response rule-to-hand assignment counterbalanced across participants",
+          "account": "C13_ADD_A43"
+        },
+        {
+          "id": "CC32",
+          "condition": "two task response rules and four modeled choice populations should not be equated to invariant left/right motor physiology",
+          "account": "BOUND_C13"
+        },
+        {
+          "id": "CC33",
+          "condition": "ambiguous stimulus first shown inside scanner and not trained",
+          "account": "ALREADY_A05"
+        }
+      ]
+    }
+  ],
+  "original_order_independent_c_section_sweep": [
+    {
+      "id": "S01",
+      "pages_1_based": [
+        1,
+        2
+      ],
+      "original_order_reread": true,
+      "associated_resolved_b_objections": [],
+      "independent_c_only_discovery": [],
+      "b_zero_independently_rechecked": true,
+      "unresolved_additional_omissions": 0,
+      "source_scope_note": "All original in-page model-critical negative and limiting clauses assessed against entire A and assigned to existing A, C patch or expressly excluded limits."
+    },
+    {
+      "id": "S02",
+      "pages_1_based": [
+        2,
+        4
+      ],
+      "original_order_reread": true,
+      "associated_resolved_b_objections": [],
+      "independent_c_only_discovery": [],
+      "b_zero_independently_rechecked": true,
+      "unresolved_additional_omissions": 0,
+      "source_scope_note": "All original in-page model-critical negative and limiting clauses assessed against entire A and assigned to existing A, C patch or expressly excluded limits."
+    },
+    {
+      "id": "S03",
+      "pages_1_based": [
+        4,
+        8
+      ],
+      "original_order_reread": true,
+      "associated_resolved_b_objections": [
+        "B05"
+      ],
+      "independent_c_only_discovery": [],
+      "b_zero_independently_rechecked": false,
+      "unresolved_additional_omissions": 0,
+      "source_scope_note": "All original in-page model-critical negative and limiting clauses assessed against entire A and assigned to existing A, C patch or expressly excluded limits."
+    },
+    {
+      "id": "S04",
+      "pages_1_based": [
+        7,
+        9
+      ],
+      "original_order_reread": true,
+      "associated_resolved_b_objections": [
+        "B05"
+      ],
+      "independent_c_only_discovery": [],
+      "b_zero_independently_rechecked": false,
+      "unresolved_additional_omissions": 0,
+      "source_scope_note": "All original in-page model-critical negative and limiting clauses assessed against entire A and assigned to existing A, C patch or expressly excluded limits."
+    },
+    {
+      "id": "S05",
+      "pages_1_based": [
+        9,
+        11
+      ],
+      "original_order_reread": true,
+      "associated_resolved_b_objections": [
+        "B07"
+      ],
+      "independent_c_only_discovery": [],
+      "b_zero_independently_rechecked": false,
+      "unresolved_additional_omissions": 0,
+      "source_scope_note": "All original in-page model-critical negative and limiting clauses assessed against entire A and assigned to existing A, C patch or expressly excluded limits."
+    },
+    {
+      "id": "S06",
+      "pages_1_based": [
+        11,
+        14
+      ],
+      "original_order_reread": true,
+      "associated_resolved_b_objections": [
+        "B04"
+      ],
+      "independent_c_only_discovery": [],
+      "b_zero_independently_rechecked": false,
+      "unresolved_additional_omissions": 0,
+      "source_scope_note": "All original in-page model-critical negative and limiting clauses assessed against entire A and assigned to existing A, C patch or expressly excluded limits."
+    },
+    {
+      "id": "S07",
+      "pages_1_based": [
+        13,
+        17
+      ],
+      "original_order_reread": true,
+      "associated_resolved_b_objections": [
+        "B02"
+      ],
+      "independent_c_only_discovery": [],
+      "b_zero_independently_rechecked": false,
+      "unresolved_additional_omissions": 0,
+      "source_scope_note": "All original in-page model-critical negative and limiting clauses assessed against entire A and assigned to existing A, C patch or expressly excluded limits."
+    },
+    {
+      "id": "S08",
+      "pages_1_based": [
+        17,
+        20
+      ],
+      "original_order_reread": true,
+      "associated_resolved_b_objections": [
+        "B03",
+        "B10",
+        "B11"
+      ],
+      "independent_c_only_discovery": [],
+      "b_zero_independently_rechecked": false,
+      "unresolved_additional_omissions": 0,
+      "source_scope_note": "All original in-page model-critical negative and limiting clauses assessed against entire A and assigned to existing A, C patch or expressly excluded limits."
+    },
+    {
+      "id": "S09",
+      "pages_1_based": [
+        20,
+        25
+      ],
+      "original_order_reread": true,
+      "associated_resolved_b_objections": [
+        "B03",
+        "B08"
+      ],
+      "independent_c_only_discovery": [],
+      "b_zero_independently_rechecked": false,
+      "unresolved_additional_omissions": 0,
+      "source_scope_note": "All original in-page model-critical negative and limiting clauses assessed against entire A and assigned to existing A, C patch or expressly excluded limits."
+    },
+    {
+      "id": "S10",
+      "pages_1_based": [
+        25,
+        27
+      ],
+      "original_order_reread": true,
+      "associated_resolved_b_objections": [
+        "B01",
+        "B09"
+      ],
+      "independent_c_only_discovery": [
+        "C13"
+      ],
+      "b_zero_independently_rechecked": false,
+      "unresolved_additional_omissions": 0,
+      "source_scope_note": "Found separate hand counterbalance in adjacent original p26 context, C13 source-only new fact."
+    },
+    {
+      "id": "S11",
+      "pages_1_based": [
+        27,
+        28
+      ],
+      "original_order_reread": true,
+      "associated_resolved_b_objections": [],
+      "independent_c_only_discovery": [],
+      "b_zero_independently_rechecked": true,
+      "unresolved_additional_omissions": 0,
+      "source_scope_note": "All original in-page model-critical negative and limiting clauses assessed against entire A and assigned to existing A, C patch or expressly excluded limits."
+    },
+    {
+      "id": "S12",
+      "pages_1_based": [
+        28,
+        30
+      ],
+      "original_order_reread": true,
+      "associated_resolved_b_objections": [],
+      "independent_c_only_discovery": [],
+      "b_zero_independently_rechecked": true,
+      "unresolved_additional_omissions": 0,
+      "source_scope_note": "All original in-page model-critical negative and limiting clauses assessed against entire A and assigned to existing A, C patch or expressly excluded limits."
+    },
+    {
+      "id": "S13",
+      "pages_1_based": [
+        30,
+        34
+      ],
+      "original_order_reread": true,
+      "associated_resolved_b_objections": [
+        "B05"
+      ],
+      "independent_c_only_discovery": [],
+      "b_zero_independently_rechecked": false,
+      "unresolved_additional_omissions": 0,
+      "source_scope_note": "All original in-page model-critical negative and limiting clauses assessed against entire A and assigned to existing A, C patch or expressly excluded limits."
+    },
+    {
+      "id": "S14",
+      "pages_1_based": [
+        34,
+        35
+      ],
+      "original_order_reread": true,
+      "associated_resolved_b_objections": [
+        "B05",
+        "B08"
+      ],
+      "independent_c_only_discovery": [],
+      "b_zero_independently_rechecked": false,
+      "unresolved_additional_omissions": 0,
+      "source_scope_note": "All original in-page model-critical negative and limiting clauses assessed against entire A and assigned to existing A, C patch or expressly excluded limits."
+    },
+    {
+      "id": "S15",
+      "pages_1_based": [
+        35,
+        37
+      ],
+      "original_order_reread": true,
+      "associated_resolved_b_objections": [
+        "B07"
+      ],
+      "independent_c_only_discovery": [],
+      "b_zero_independently_rechecked": false,
+      "unresolved_additional_omissions": 0,
+      "source_scope_note": "All original in-page model-critical negative and limiting clauses assessed against entire A and assigned to existing A, C patch or expressly excluded limits."
+    },
+    {
+      "id": "S16",
+      "pages_1_based": [
+        37,
+        39
+      ],
+      "original_order_reread": true,
+      "associated_resolved_b_objections": [
+        "B12"
+      ],
+      "independent_c_only_discovery": [],
+      "b_zero_independently_rechecked": false,
+      "unresolved_additional_omissions": 0,
+      "source_scope_note": "All original in-page model-critical negative and limiting clauses assessed against entire A and assigned to existing A, C patch or expressly excluded limits."
+    },
+    {
+      "id": "S17",
+      "pages_1_based": [
+        39,
+        40
+      ],
+      "original_order_reread": true,
+      "associated_resolved_b_objections": [
+        "B06"
+      ],
+      "independent_c_only_discovery": [],
+      "b_zero_independently_rechecked": false,
+      "unresolved_additional_omissions": 0,
+      "source_scope_note": "All original in-page model-critical negative and limiting clauses assessed against entire A and assigned to existing A, C patch or expressly excluded limits."
+    },
+    {
+      "id": "S18",
+      "pages_1_based": [
+        39,
+        41
+      ],
+      "original_order_reread": true,
+      "associated_resolved_b_objections": [
+        "B04",
+        "B10"
+      ],
+      "independent_c_only_discovery": [],
+      "b_zero_independently_rechecked": false,
+      "unresolved_additional_omissions": 0,
+      "source_scope_note": "All original in-page model-critical negative and limiting clauses assessed against entire A and assigned to existing A, C patch or expressly excluded limits."
+    },
+    {
+      "id": "S19",
+      "pages_1_based": [
+        41,
+        42
+      ],
+      "original_order_reread": true,
+      "associated_resolved_b_objections": [],
+      "independent_c_only_discovery": [],
+      "b_zero_independently_rechecked": true,
+      "unresolved_additional_omissions": 0,
+      "source_scope_note": "External standalone S1-S4 not imported; original page 41 descriptions only."
+    },
+    {
+      "id": "S20",
+      "pages_1_based": [
+        42,
+        46
+      ],
+      "original_order_reread": true,
+      "associated_resolved_b_objections": [],
+      "independent_c_only_discovery": [],
+      "b_zero_independently_rechecked": true,
+      "unresolved_additional_omissions": 0,
+      "source_scope_note": "Direct Stemme and related ancestor registry inherited A08/A40; no global genealogy independence claim."
+    }
+  ],
+  "condition_ledger": [
+    {
+      "id": "CC01",
+      "condition": "training duration approximate",
+      "accounting": "PATCH_C01"
+    },
+    {
+      "id": "CC02",
+      "condition": "ambiguous not trained/modelled",
+      "accounting": "ALREADY_A05"
+    },
+    {
+      "id": "CC03",
+      "condition": "Fig7 global display-only factor x10",
+      "accounting": "PATCH_C02"
+    },
+    {
+      "id": "CC04",
+      "condition": "original MAP fitting and neural measures not x10",
+      "accounting": "NARROWED_C02"
+    },
+    {
+      "id": "CC05",
+      "condition": "individual parameter null r,p only MFG cluster",
+      "accounting": "PATCH_C03"
+    },
+    {
+      "id": "CC06",
+      "condition": "thalamo striatal ROI only tested combined action correlate",
+      "accounting": "NARROWED_C03"
+    },
+    {
+      "id": "CC07",
+      "condition": "first rule-derived GLM ambiguity separate per trial",
+      "accounting": "PATCH_C04"
+    },
+    {
+      "id": "CC08",
+      "condition": "second contrast GLM ambiguity switch/stay and errors, implicit baseline",
+      "accounting": "PATCH_C04"
+    },
+    {
+      "id": "CC09",
+      "condition": "ambiguous not simulated",
+      "accounting": "ALREADY_A05"
+    },
+    {
+      "id": "CC10",
+      "condition": "implemented four-choice threshold 10Hz",
+      "accounting": "PATCH_C05"
+    },
+    {
+      "id": "CC11",
+      "condition": "threshold robustness conditional on distance",
+      "accounting": "ALREADY_A18"
+    },
+    {
+      "id": "CC12",
+      "condition": "participant covariate rule1-to-rule2 directional minimal action",
+      "accounting": "PATCH_C06"
+    },
+    {
+      "id": "CC13",
+      "condition": "discretization and Eeff optimization choices",
+      "accounting": "PATCH_C06"
+    },
+    {
+      "id": "CC14",
+      "condition": "bidirectional visualization does not prove symmetry",
+      "accounting": "NARROWED_C06"
+    },
+    {
+      "id": "CC15",
+      "condition": "MH proposal and 50k each-chain burn",
+      "accounting": "PATCH_C07"
+    },
+    {
+      "id": "CC16",
+      "condition": "KDE MAP from merged chains",
+      "accounting": "PATCH_C07"
+    },
+    {
+      "id": "CC17",
+      "condition": "model is in-sample only",
+      "accounting": "ALREADY_A20"
+    },
+    {
+      "id": "CC18",
+      "condition": "three parameters have contrasting high/spontaneous/noise effects",
+      "accounting": "PATCH_C08"
+    },
+    {
+      "id": "CC19",
+      "condition": "uncorrected behavioral trend not confirmed",
+      "accounting": "REFER_C11"
+    },
+    {
+      "id": "CC20",
+      "condition": "min three max six baseline intercritical intervals",
+      "accounting": "PATCH_C09"
+    },
+    {
+      "id": "CC21",
+      "condition": "ambiguous experimentally sampled but no neural simulation",
+      "accounting": "ALREADY_A05"
+    },
+    {
+      "id": "CC22",
+      "condition": "left MFG cluster whole-brain correction",
+      "accounting": "PATCH_C10"
+    },
+    {
+      "id": "CC23",
+      "condition": "thalamus caudate cluster ROI-only correction",
+      "accounting": "PATCH_C10"
+    },
+    {
+      "id": "CC24",
+      "condition": "action BOLD relation noncausal",
+      "accounting": "ALREADY_A31"
+    },
+    {
+      "id": "CC25",
+      "condition": "none of Table2 behavioral associations survives correction",
+      "accounting": "PATCH_C11"
+    },
+    {
+      "id": "CC26",
+      "condition": "unadjusted switch RT p=0.04 not corrected significance",
+      "accounting": "PATCH_C11"
+    },
+    {
+      "id": "CC27",
+      "condition": "descriptive error trend far from significance",
+      "accounting": "NARROWED_C11"
+    },
+    {
+      "id": "CC28",
+      "condition": "uniform initial FP implicit BTCS P=0 stationary solver",
+      "accounting": "PATCH_C12"
+    },
+    {
+      "id": "CC29",
+      "condition": "OU stationary white approximation caveat",
+      "accounting": "ALREADY_A37"
+    },
+    {
+      "id": "CC30",
+      "condition": "U nonconservative not literal energy",
+      "accounting": "ALREADY_A27"
+    },
+    {
+      "id": "CC31",
+      "condition": "response rule-to-hand assignment counterbalanced across participants",
+      "account": "C13_ADD_A43"
+    },
+    {
+      "id": "CC32",
+      "condition": "two task response rules and four modeled choice populations should not be equated to invariant left/right motor physiology",
+      "account": "BOUND_C13"
+    },
+    {
+      "id": "CC33",
+      "condition": "ambiguous stimulus first shown inside scanner and not trained",
+      "account": "ALREADY_A05"
+    }
+  ],
+  "results": {
+    "b_objections_fully_source_adjudicated": 12,
+    "existing_a_revisions": 10,
+    "b_only_source_grounded_new_claims": 2,
+    "c_only_new_claims": 1,
+    "total_append_only_patches": 13,
+    "independent_sections": 20,
+    "independently_rechecked_b_zero_sections": [
+      "S01",
+      "S02",
+      "S11",
+      "S12",
+      "S19",
+      "S20"
+    ],
+    "source_local_material_conditions_accounted": 33,
+    "open_b_exceptions": 0,
+    "numeric_formula_exception_inherited_not_silently_corrected": true,
+    "stemme_2005_complete_ancestor_claim": "NOT_VERIFIED_NO_HISTORICAL_INDEPENDENCE_CLAIM"
+  },
+  "no_unattributed_source_claims": true,
+  "original_A_and_B_unchanged": true,
+  "stage": "C_FROZEN_A_V2_NOT_YET_GENERATED",
+  "no_routine_human_review": true,
+  "qualified_pilot_count_increment": 0,
+  "main_authorized": false,
+  "not_semantic_accuracy_metric": true,
+  "not_v231_validator_deployed": true
+}

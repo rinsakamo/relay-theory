@@ -1,0 +1,217 @@
+{
+  "schema": "relay-theory.paper2.p399.pf02.pre_a.v1",
+  "generated_utc_date": "2026-10-04",
+  "authority": {
+    "issue": "https://github.com/rinsakamo/relay-theory/issues/399",
+    "candidate_pr": "https://github.com/rinsakamo/relay-theory/pull/411",
+    "protocol": "v2.3.1 result-informed A-B-C; PDF-first original publisher full-HTML fallback; no structural validator claimed deployed"
+  },
+  "article": {
+    "title": "Stochastic Dynamics Underlying Cognitive Stability and Flexibility",
+    "authors": [
+      "Kai Ueltzhoeffer",
+      "Diana J. N. Armbruster-Genc",
+      "Christian J. Fiebach"
+    ],
+    "publication_date": "2015-06-12",
+    "doi": "10.1371/journal.pcbi.1004331",
+    "publisher": "PLOS Computational Biology",
+    "publisher_original_html": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004331"
+  },
+  "source": {
+    "intended_primary": "PUBLISHER_COMPLETE_ORIGINAL_HTML_FALLBACK",
+    "canonical_url": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004331",
+    "access_date": "2026-10-04",
+    "edition": "publisher original article; correction status not conclusively checked",
+    "medium_lock": "HTML selected for this PRE_A; scientific admission suspended pending gates",
+    "html_body_readable": true,
+    "original_pdf": {
+      "attempted_url": "https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1004331&type=printable",
+      "raw_bytes_obtained": false,
+      "sha256": null,
+      "size_bytes": null,
+      "page_count": null
+    },
+    "section_inventory_status": "BODY_ACCESSIBLE_CRITICAL_SECTIONS_IDENTIFIED_COMPLETE_MODEL_VISUAL_READING_NOT_VERIFIED",
+    "sections_confirmed": [
+      "Abstract",
+      "Author Summary",
+      "Introduction",
+      "Results",
+      "Discussion",
+      "Conclusions",
+      "Methods",
+      "Ethics Statement",
+      "Participants",
+      "Task",
+      "Network Architecture",
+      "Dynamics of the Rule Module",
+      "Dynamics of the Decision Module",
+      "Simulation of Behavioral Data",
+      "Reconstruction of the Individual Attractor Landscape of the Rule Module",
+      "Estimation of the Minimal Action for Transitions between Rules",
+      "fMRI Acquisition and Preprocessing",
+      "Generation and Localization of fMRI Timeseries from Fitted Models"
+    ],
+    "critical_math": {
+      "locators": [
+        "Methods rule equations (1)-(4)",
+        "Methods decision equations (5)-(8)",
+        "Methods generalized potential and Fokker-Planck equation (9)",
+        "Methods minimal-action expression"
+      ],
+      "html_text_context_readable": true,
+      "actual_rendered_equation_glyphs_verified": false
+    },
+    "critical_figures": {
+      "locators": [
+        "Fig 2 experimental conditions",
+        "Fig 3 module architecture and reduced geometry",
+        "Fig 5 model-to-BOLD procedure",
+        "Fig 7 potential and paths",
+        "Fig 8 parameter landscapes",
+        "Fig 9 associations"
+      ],
+      "captions_readable": true,
+      "actual_rendered_figure_pixels_verified": false
+    },
+    "standalone_supplements": "OUTSIDE_PRIMARY_UNIVERSE_UNDER_ISSUE399"
+  },
+  "pre_a_source_scope_notes": [
+    {
+      "locator": "Methods/Task",
+      "finding": "Baseline, task-switch and distractor were explicitly modelled; ambiguous trials were collected but excluded from explicit neural model and handled separately in fMRI regressors."
+    },
+    {
+      "locator": "Methods/Dynamics of Rule Module",
+      "finding": "Two selectively recurrent rule populations with shared inhibition; reduced 2D stochastic maintenance model with OU noise."
+    },
+    {
+      "locator": "Methods/Dynamics of Decision Module",
+      "finding": "Four selective response populations and one shared inhibitory population reduced to 3D near spontaneous bifurcation with OU noise; simplification limits high-activity stability and physiological parameter identification."
+    },
+    {
+      "locator": "Methods/Simulation of Behavioral Data",
+      "finding": "Rule-dependent top-down bias and bottom-up feature-specific input are distinct."
+    },
+    {
+      "locator": "Methods/Reconstruction of Individual Attractor Landscape",
+      "finding": "Generalized potential is minus the log of stationary probability density and is not assumed to be a conservative classical potential."
+    }
+  ],
+  "lineage": {
+    "exact_work_screen": {
+      "decision": "PASS_BOUNDED",
+      "screened": [
+        "Issue 399 MAIN discovered candidates and PF01/PF03/PF04 exact work identities",
+        "Issue 398 MAIN40 and PILOT20 issue roster and acquisition comments",
+        "historical designed source 60-work manifest",
+        "historical reviewed ClaimIR 60-work manifest"
+      ],
+      "result": "No exact PF02 work collision observed; bounded check only"
+    },
+    "direct_ancestor_candidates": [
+      {
+        "work": "Wong and Wang (2006)",
+        "role": "direct recurrent rule-network reduction ancestor",
+        "comparison": "ORIGINAL_MODELS_NOT_FULLY_CROSS_AUDITED"
+      },
+      {
+        "work": "Roxin and Ledberg (2008)",
+        "role": "direct two-choice decision reduction ancestor; 2015 paper extends to four choice",
+        "comparison": "ORIGINAL_MODELS_NOT_FULLY_CROSS_AUDITED"
+      },
+      {
+        "work": "Stemme et al. (2005)",
+        "role": "prior neural task-switching architecture",
+        "comparison": "ORIGINAL_MODELS_NOT_FULLY_CROSS_AUDITED"
+      },
+      {
+        "work": "Ardid and Wang (2013)",
+        "role": "prior closely related task-switch model discussed by original",
+        "comparison": "ORIGINAL_MODELS_NOT_FULLY_CROSS_AUDITED"
+      },
+      {
+        "work": "Armbruster et al. (2012)",
+        "role": "earlier behavioral task experimental provenance",
+        "comparison": "ORIGINAL_MODELS_NOT_FULLY_CROSS_AUDITED"
+      }
+    ],
+    "central_model_lineage_decision": "UNDERDETERMINED",
+    "rationale": "No exact title duplication is not proof of independent central model lineage; original ancestor mathematical architectures and all screened corpus central model identities not exhaustively juxtaposed."
+  },
+  "gates": [
+    {
+      "id": "SOURCE_IDENTITY",
+      "decision": "PASS",
+      "evidence": "PLOS publisher original full article title/DOI/authors/date displayed"
+    },
+    {
+      "id": "PDF_FIRST_ATTEMPT",
+      "decision": "PASS",
+      "evidence": "Actual direct original PDF retrieval attempted; no raw PDF bytes obtained; PDF metrics not asserted"
+    },
+    {
+      "id": "HTML_BODY_ACCESS",
+      "decision": "PASS",
+      "evidence": "Original publisher full in-article HTML and model-critical textual Methods accessible"
+    },
+    {
+      "id": "EDITION_CORRECTION_HISTORY",
+      "decision": "UNDERDETERMINED",
+      "evidence": "No matching correction in bounded targeted search; exhaustive correction/version registry confirmation unavailable"
+    },
+    {
+      "id": "SOURCE_SECTION_VARIANT_COMPLETENESS",
+      "decision": "UNDERDETERMINED",
+      "evidence": "In-page main narrative and model subsections identified, but decisive image-only notation and figures remain unverified"
+    },
+    {
+      "id": "ORIGINAL_EQUATIONS_AND_FIGURES_VISUAL_READABILITY",
+      "decision": "UNDERDETERMINED",
+      "evidence": "Publisher text extracts render critical equation glyphs as image references; figure captions accessible but target rendered image pixels not successfully verified"
+    },
+    {
+      "id": "EXACT_WORK_COLLISION",
+      "decision": "PASS",
+      "evidence": "Bounded GitHub roster/title/DOI screen of identified four pilot candidates, 399 MAIN seeds, 398 roster and two historical 60-work authority manifests"
+    },
+    {
+      "id": "CENTRAL_MODEL_LINEAGE",
+      "decision": "UNDERDETERMINED",
+      "evidence": "Full side-by-side ancestor-model and cross-corpus lineage audit incomplete"
+    },
+    {
+      "id": "MODELED_EXPERIMENTAL_SCOPE",
+      "decision": "PASS",
+      "evidence": "Explicit source text discloses ambiguous condition omitted from neural model and retained separately in fMRI design"
+    },
+    {
+      "id": "PRIMARY_MEDIUM_SELECTION_BEFORE_A",
+      "decision": "PASS",
+      "evidence": "This pre-A freezes official original full HTML as designated fallback candidate; no A performed"
+    }
+  ],
+  "decision": "UNDERDETERMINED",
+  "stop": "PRE_A_FAIL_CLOSED",
+  "no_scientific_processing": true,
+  "stage_history": {
+    "PRE_A": "FROZEN_UNDERDETERMINED",
+    "A": "NOT_STARTED",
+    "B": "NOT_STARTED",
+    "C": "NOT_STARTED",
+    "D": "NOT_STARTED",
+    "E": "NOT_STARTED",
+    "FINAL_FORMAL_QUALIFICATION": "NOT_GRANTED"
+  },
+  "scope_preservation": {
+    "other_pilot_lanes": "UNTOUCHED",
+    "MAIN": "UNAUTHORIZED",
+    "official_qualified_pilot_count": "UNCHANGED"
+  },
+  "blockers": [
+    "Resolve exact original edition/correction history",
+    "Read actual original rendered model-critical formula glyphs and figure pixels in selected primary source",
+    "Complete original-source model genealogy against all required selected/frozen corpora"
+  ]
+}

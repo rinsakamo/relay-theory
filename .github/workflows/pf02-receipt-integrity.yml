@@ -1,0 +1,44 @@
+name: PF02 provenance receipt integrity only
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/pf02-receipt-integrity.yml"
+      - "research/paper2/p399/pf02/PRE_A*.json"
+      - "research/paper2/p399/pf02/PRE_A*.sha256"
+permissions:
+  contents: read
+jobs:
+  receipt-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - name: Independently verify original, first revision and adopted math receipt byte digests and non-scientific stop invariants
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd research/paper2/p399/pf02
+          sha256sum -c PRE_A.sha256
+          sha256sum -c PRE_A_REVISION_20261004.sha256
+          sha256sum -c PRE_A_MATH_ADJUDICATION_20261004.sha256
+          python3 - <<'PY'
+          import json,hashlib
+          old=json.load(open('PRE_A.json'))
+          first=json.load(open('PRE_A_REVISION_20261004.json'))
+          m=json.load(open('PRE_A_MATH_ADJUDICATION_20261004.json'))
+          assert first['terminal_decision']=='UNDERDETERMINED'
+          assert first['original_pre_a_sha256']==hashlib.sha256(open('PRE_A.json','rb').read()).hexdigest()
+          assert m['parent_receipt_sha256']==hashlib.sha256(open('PRE_A_REVISION_20261004.json','rb').read()).hexdigest()
+          assert m['source_conflict']['correction_authorized_by_publisher'] is False
+          assert m['scientific_scope']['original_source_unmodified'] is True
+          assert m['lineage']['decision']=='UNDERDETERMINED'
+          assert m['gates']['total']==10
+          assert m['gates']['structurally_pass_including_bounded_math']==9
+          assert m['gates']['underdetermined']==1
+          assert m['gates']['status']=='STOP_PRE_A'
+          assert all(m['stage_status'][x]=='NOT_STARTED' for x in 'ABCDE')
+          assert m['corpus']['qualified_pilots_added']==0
+          assert m['corpus']['main_authorized'] is False
+          assert m['primary_source']['sha256']=='bef58465c56cec93f1cbb0f689c8fcd48cd656f3520d70a6032aaac9caa63655'
+          print('PF02_METADATA_RECEIPT_CHECKS_PASS; NOT A SOURCE_INTERPRETATION OR V231_VALIDATOR CERTIFICATION')
+          PY
