@@ -152,63 +152,55 @@
           "edges": {
             "type": "array",
             "items": {
-              "allOf": [
-                {
-                  "type": "object",
-                  "additionalProperties": false,
-                  "required": [
-                    "id",
-                    "source_locator",
-                    "witness",
-                    "critical"
-                  ],
-                  "properties": {
-                    "id": {
-                      "type": "string",
-                      "minLength": 1
-                    },
-                    "source_locator": {
-                      "type": "string",
-                      "minLength": 1
-                    },
-                    "witness": {
-                      "type": "string",
-                      "minLength": 1
-                    },
-                    "critical": {
-                      "type": "boolean"
-                    },
-                    "meaning": {
-                      "type": "string"
-                    },
-                    "scope": {
-                      "type": "string"
-                    }
-                  }
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "id",
+                "source_locator",
+                "witness",
+                "critical",
+                "from",
+                "to",
+                "source_type"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1
                 },
-                {
-                  "type": "object",
-                  "properties": {
-                    "from": {
-                      "type": "string"
-                    },
-                    "to": {
-                      "type": "string"
-                    },
-                    "source_type": {
-                      "type": "string"
-                    },
-                    "guard": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "from",
-                    "to",
-                    "source_type"
-                  ]
+                "source_locator": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "witness": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "critical": {
+                  "type": "boolean"
+                },
+                "meaning": {
+                  "type": "string"
+                },
+                "scope": {
+                  "type": "string"
+                },
+                "from": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "to": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "source_type": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "guard": {
+                  "type": "string"
                 }
-              ]
+              }
             }
           },
           "temporal": {
