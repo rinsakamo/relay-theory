@@ -1,0 +1,102 @@
+{
+  "schema": "p399.pf04.targeted_post_E_exception_recheck.v1",
+  "created_on": "2026-10-04",
+  "purpose": "Narrowly address EX1/EX2 without altering any frozen PRE_A, A, B, C, D, E, scientific grammar or publisher source.",
+  "authority": {
+    "pf04_pr": "https://github.com/rinsakamo/relay-theory/pull/415",
+    "original_pdf": "https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1003364&type=printable",
+    "original_publisher_pdf_sha256": "bc84d4827df202cf5051cf10aa64cc09673b718af2acd31441a3712bcd376df9",
+    "original_scope": "Single frozen original 2013 PLOS PDF; outside material is later secondary corroboration, NOT a replacement primary source.",
+    "earlier_final": "FINAL_QUALIFICATION_v2.json"
+  },
+  "independent_followup_source": {
+    "work": "Amir Dezfouli, Hierarchical models of goal-directed and automatic actions, PhD thesis, University of Sydney, March 2015",
+    "url": "https://adezfouli.github.io/materials/thesis/dezofuli-thesis.pdf",
+    "access_date": "2026-10-04",
+    "authority_status": "AUTHOR'S LATER SECONDARY SOURCE ONLY; DIFFERENT 2015 DOCUMENT; no asserted PDF-binary parity",
+    "relevant_passages": [
+      {
+        "section": "Chapter 4, Hierarchical decision-making in humans (same human study)",
+        "pdf_zero_based_pages": [
+          119,
+          120
+        ],
+        "printed_pages": [
+          95,
+          96
+        ],
+        "equations": [
+          "4.10",
+          "4.11",
+          "4.12",
+          "4.13"
+        ],
+        "finding": "Eq4.13 uses P(a'|S0,a') as the singleton weight (correct target a' first-stage index), consistent with original Eq11/12, though thesis human-chapter typesetting retains an ambiguous standalone π(s|S) factor; Eq4.10 still uses omega(a) in denominator and thus does NOT establish EX1."
+      },
+      {
+        "section": "Chapter 5 appendix, Hierarchical decision-making in rats (later model relative, not the 2013 original experiment)",
+        "pdf_zero_based_pages": [
+          173,
+          174
+        ],
+        "printed_pages": [
+          149,
+          150
+        ],
+        "equations": [
+          "5.11",
+          "5.12",
+          "5.13",
+          "5.14",
+          "5.15"
+        ],
+        "finding": "Eq5.13 explicitly states p(a|s) = p(a'|S0,a') * pi(a|s) + p(a'a|S0,a') using BOTH correct singleton first-stage and candidate second-stage indices. Later rat appendix includes an extra interruption parameter I and different exploratory parameterization; not allowed to import to 2013's 16 models."
+      }
+    ]
+  },
+  "EX2": {
+    "old_state": "UNRESOLVED_FOR_EXACT_NUMERIC_REPLICATION",
+    "target": "2013 published PDF p13 Eq13, compare p13 Eq11-12 and adjacent prose.",
+    "original_printed_best_reading": "P(a|s) = P(a|S0,a') * pi(a|s) + P(a'a|S0,a')",
+    "independent_mathematical_test": "For known first-stage action a', P(a'|S0,a') is the single-action-origin posterior in original Eq12, constant across second-stage alternatives a. Printed P(a|S0,a') is undefined or inconsistent for a != a' under original Eq12; assigning zero to impossible single-action-first origins yields sub-normalized second-stage probabilities when single-action and both sequence origins are positive.",
+    "researcher_intended_equation": "P_star(a|s,a' observed) = P(a'|S0,a') * pi(a|s) + P(a'a|S0,a')",
+    "proof": "Condition on three possible source-defined stage-one origins: singleton a', sequence a'A1, sequence a'A2. Let q0+q1+q2=1; pi(A1|s)+pi(A2|s)=1. Sum_a [q0*pi(a|s)+q_(a'a)] = q0+q1+q2=1. Both selected-option dependence and singleton fresh stepwise branch retained.",
+    "secondary_corrob": "Author's 2015 human-study thesis Eq4.13 changes the singleton coefficient to a', and later separate rats appendix Eq5.13 shows full two-stage mixed-choice formula. These are author-authored later evidence, not publisher original correction and not old fit-code.",
+    "scope_decision": "EX2_ANALYTIC_STRUCTURE_RESOLVED_BY_ORIGINAL_EQ11_EQ12_AND_AUTHOR_LATER_CORROBORATION; ORIGINAL_2013_FIT_CODE_EQUIVALENCE_REMAINS_UNVERIFIED",
+    "not_authorized": [
+      "Do not silently edit published 2013 Eq13 or previous PRE_A/A/B/C/D/E files",
+      "Do not add thesis interruption parameter I to 2013 original source model",
+      "Do not call later rat implementation the exact 2013 human code"
+    ]
+  },
+  "EX1": {
+    "old_state": "UNRESOLVED_FOR_EXACT_NUMERIC_REPLICATION",
+    "original_printed": "2013 publisher p13 Eq10 denominator contains option-dependent omega(a) instead of omega(a') under a'-summation.",
+    "author_allowed_analytic_change": "Researcher-authority PRE_A_v3 changes only denominator to omega(a') for structural/model-probe work.",
+    "later_evidence": "2015 thesis Chapter4 Eq4.10 transcribes the same free-index omega(a) denominator. It is NOT a correction; no exact 2013 fitting code/corrigendum authenticated in checked publisher page, author-posted 2013 PDF or public code discovery.",
+    "bounded_code_discovery": [
+      {
+        "repository": "https://github.com/adezfouli/JRLSim",
+        "finding": "Author's README explicitly identifies simulator of 2012 habits/action-sequence paper, not the 2013 human choice/fitting implementation."
+      },
+      {
+        "repository": "https://github.com/adezfouli/rnn_beh",
+        "finding": "Author's README explicitly identifies distinct 2019 ActionFlow model, not 2013 likelihood/fitting code."
+      },
+      {
+        "publication": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003364",
+        "finding": "Publisher full-text computational section provides Eq2-15, not independently verified complete 2013 fitting source in inspected page."
+      }
+    ],
+    "state": "UNDERDETERMINED_AUTHENTIC_2013_CODE_UNAVAILABLE_IN_CHECKED_PUBLIC_SOURCES",
+    "source_specific_next_step": "Acquire verifiable authors' original 2013 fitted model likelihood/optimizer script or explicit author/publisher clarification of Eq10 and Eq13 implementation; match hash/provenance and demonstrate both options (single and sequence) are normalized and exact second-stage likelihoods before authentic original numerical fidelity assertions."
+  },
+  "current_scientific_boundary": {
+    "source_structural_result": "Retains frozen D/E source-scoped A0 reconstruction and 12 source-structural FULL classifications, now stronger author-later interpretive corroboration for Eq13 without replacing primary source.",
+    "exact_numeric_original": "UNDERDETERMINED_EX1_AND_2013_CODE_IDENTITY",
+    "official_qualified_pilot_count_increment": 0,
+    "main_authorized": false,
+    "new_grammar_primitives": 0,
+    "human_review": "Route EX1 exact authentic 2013 implementation only; EX2 mathematical interpretation has secondary author confirmation but code identity shares EX1's unresolved provenance."
+  }
+}
