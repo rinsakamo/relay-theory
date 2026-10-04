@@ -1,6 +1,8 @@
 name: P399 G2 live official publisher browser access diagnostic
 on:
-  pull_request:
+  push:
+    branches:
+      - "paper2/p399-g2-outcome-blind-main40-working-20261004"
     paths:
       - "research/paper2/p399/g2/g2_official_chromium_probe_v5.py"
       - ".github/workflows/p399-g2-official-browser-v5.yml"
