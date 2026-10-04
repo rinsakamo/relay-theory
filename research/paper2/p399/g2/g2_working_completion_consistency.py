@@ -390,3 +390,78 @@ assert neg_v7(lambda a,b:a["cross_lanes"].update(g1_final_roster_frozen=True))
 assert neg_v7(lambda a,b:b.update(new_selected_DOI_replacements=1))
 assert neg_v7(lambda a,b:b.update(main_authorized=True))
 print("PASS V7: nine adversarial S3 auto-promotion/source-SHA/fake PDF visual/backup activation/false-science/fake-G1-final/GO cases rejected")
+
+
+# V8: technical PRE_A first-priority standby source bundle only:
+# a sole frozen published primary PDF + one explicit defining publisher S3;
+# never promote 6-page appendix or 3 first backups to the selected 40.
+s8=(P/"MAIN40_G2_V8_RAW_UTF8_SHA256SUMS_20261004.txt").read_text().splitlines()
+assert len(s8)==3
+for line in s8:
+    sha,name=line.split("  ",1)
+    assert hashlib.sha256((P/name).read_bytes()).hexdigest()==sha,("v8_raw_evidence_tamper",name)
+r8=json.loads((P/"MAIN40_G2_V8_ATT_B1_PRE_A_PRIMARY_PLUS_DEFINING_S3_SOURCE_BUNDLE.json").read_text())
+e8=json.loads((P/"MAIN40_G2_OBJECTIVE_EVENT_DELTA_v8.json").read_text())
+def check_v8(a,b):
+    assert a["prior_v7_not_retroactively_edited"] and a["prior_source_native_preliminary_review_disclosed"]
+    assert a["canonical_preA_fixed_before_any_future_formal_A"]
+    q=a["exact_standby"]
+    assert q["slot"]=="ATT-B1" and q["prospective_original_slot"]=="ATT-03"
+    assert q["single_published_original_doi"]=="10.1371/journal.pcbi.1011283"
+    assert q["primary"]["role"]=="SOLE_PRIMARY_PUBLISHED_ORIGINAL_ARTICLE"
+    assert q["primary"]["published_firstparty_raw_sha256"]=="8c190f4d6e981061e4ccd67f4797b83ccdeb8f1d47d8368fdafe137f1ef44209"
+    assert q["primary"]["pages"]==20 and q["primary"]["bytes"]==1760491
+    k=q["mandatory_original_mathematics_companion"]
+    assert "S3_APPENDIX" in k["role"] and k["published_firstparty_raw_sha256"]=="c71313033e52ccbbe5b0b3e8579959dfb7ac75c52ca254a36abca89ac8fcb72f"
+    assert k["pages"]==6 and k["bytes"]==210828 and k["specific_link_from_official_original_html"]
+    assert k["all_19_equation_reference_identifiers_in_actual_extract"]
+    assert q["other_linked_supplement_S1_S2"].startswith("Not auto-admitted")
+    assert q["actual_two_run_receipt"]["re_run"]==37189209061
+    assert q["actual_two_run_receipt"]["re_run_metadata_sha256"]=="e08e2394d858211813052a80302f246e92238fb7b5cc2eea3341c0c49bf6df16"
+    assert q["actual_two_run_receipt"]["primary_identical_sha_and_page_count"]
+    assert q["actual_two_run_receipt"]["essential_S3_identical_sha_and_page_count"]
+    assert q["actual_two_run_receipt"]["publisher_pdf_semantic_pixel_all_pages_checked"] is False
+    eq_pages=q["model_defining_original_S3_source_map"]
+    assert [x["pdf_zero_based_page"] for x in eq_pages]==[0,1,2,3,4,5]
+    assert set().union(*(set(p["equation_identifiers"]) for p in eq_pages))==set(range(1,20))
+    model=q["source_native_preregistered_claim_boundary"]
+    assert model["source_model_alternatives_exact"]==["M1_TARGET_ONLY","M2_DISTRACTOR_ONLY",
+      "M3A_SIMULTANEOUS","M3B_FACILITATION_THEN_INHIBITION","M3C_INHIBITION_THEN_FACILITATION"]
+    negatives=model["source_negative_boundary_registry"]
+    assert len(negatives)==7 and [x["id"] for x in negatives]==[
+      "N_ATT_B1_001","N_ATT_B1_002","N_ATT_B1_003","N_ATT_B1_004",
+      "N_ATT_B1_005","N_ATT_B1_006","N_ATT_B1_007"]
+    assert negatives[4]["published_best_fit_error_mean_at_65_percent"]==0.64
+    assert negatives[4]["published_error_at_80_percent"]==0.71
+    assert model["cross_selected_family_must_compare"]["central_family_independent_final"] is False
+    assert model["g1_final_whole20_genealogy_cleared"] is False
+    assert a["working_preA_scope_status"]=="TECHNICAL_SOURCE_BUNDLE_FROZEN_FOR_FUTURE_SCIENTIFIC_PRE_A_VISUAL_AUDIT_ONLY"
+    assert not a["has_issued_scientific_source_admission"]
+    assert not a["has_approved_publisher_supplement_promotion_outside_original_defining_exception"]
+    assert not a["has_activated_backup"] and not a["has_replaced_any_of_40_dois"]
+    assert not a["has_inspected_MAIN_outcomes"] and not a["main_authorized"]
+    assert b["original_v1_to_v7_event_history_preserved"] and len(b["events"])==3
+    assert b["selected40_actual_firstparty_media_unchanged"]==36
+    assert b["predeclared_backup_activated"]==0
+    assert b["final_central_family_admitted"]==0 and not b["main_authorized"]
+check_v8(r8,e8)
+print("PASS V8: 3/3 independent SHA UTF8 evidence; exact source main 20pp + defining S3 6pp SHA repeat")
+print("PASS V8: all S1-S19 PDF text anchor references indexed and seven prospectively registered negative conditions")
+print("PASS V8: one sole primary, defining S3 fixed preA but no visual/all-science or central-family qualification")
+print("PASS V8: 36 selected official original media unchanged, 0 replacements, 0 main science, 0 GO")
+def negative_v8(f):
+    a,b=map(copy.deepcopy,(r8,e8))
+    f(a,b)
+    try:check_v8(a,b)
+    except AssertionError:return True
+    return False
+assert negative_v8(lambda a,b:a["exact_standby"]["primary"].update(published_firstparty_raw_sha256="0"*64))
+assert negative_v8(lambda a,b:a["exact_standby"]["mandatory_original_mathematics_companion"].update(pages=5))
+assert negative_v8(lambda a,b:a["exact_standby"]["mandatory_original_mathematics_companion"].update(all_19_equation_reference_identifiers_in_actual_extract=False))
+assert negative_v8(lambda a,b:a["exact_standby"]["model_defining_original_S3_source_map"][3].update(equation_identifiers=[6,7,8]))
+assert negative_v8(lambda a,b:a["exact_standby"]["source_native_preregistered_claim_boundary"]["source_negative_boundary_registry"].pop())
+assert negative_v8(lambda a,b:a["has_issued_scientific_source_admission"].__class__ if False else a.update(has_issued_scientific_source_admission=True))
+assert negative_v8(lambda a,b:a.update(has_activated_backup=True))
+assert negative_v8(lambda a,b:a["exact_standby"]["actual_two_run_receipt"].update(publisher_pdf_semantic_pixel_all_pages_checked=True))
+assert negative_v8(lambda a,b:a.update(main_authorized=True))
+print("PASS V8: nine destructive original/S3 SHA, formulas, missing negatives, invalid science/backup/visual/GO rejected")
