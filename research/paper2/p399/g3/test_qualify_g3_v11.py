@@ -322,7 +322,7 @@ class G3CompletionTests(unittest.TestCase):
                 recorded={k:e[k] for k in ("stage","artifact_raw_sha256","prior_raw_sha256",
                           "primary_source_sha256","protocol_sha256","paper_token",
                           "authorization_receipt_sha256")}
-                receipt_data=(json.dumps(recorded,sort_keys=True)+"\\n").encode()
+                receipt_data=(json.dumps(recorded,sort_keys=True)+"\n").encode()
                 receipt_path.write_bytes(receipt_data)
                 e["receipt_raw_sha256"]=raw_sha(receipt_data)
                 e["receipt_signed_freeze"]=True # constructed signed-flag, no true signatory
@@ -388,7 +388,7 @@ class G3CompletionTests(unittest.TestCase):
             e[0]["artifact_raw_sha256"]=raw_sha(data)
             meta={k:e[0][k] for k in ("stage","artifact_raw_sha256","prior_raw_sha256",
                 "primary_source_sha256","protocol_sha256","paper_token","authorization_receipt_sha256")}
-            record=(json.dumps(meta,sort_keys=True)+"\\n").encode()
+            record=(json.dumps(meta,sort_keys=True)+"\n").encode()
             Path(d,"S0.receipt.json").write_bytes(record)
             run("add","S0.dat","S0.receipt.json")
             run("commit","-q","-m","fixture")
