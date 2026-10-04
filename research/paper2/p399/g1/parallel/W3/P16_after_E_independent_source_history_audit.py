@@ -3,7 +3,7 @@
 This is not external blinded human semantics, full-original quantitative replay,
 or original historical #401 checker deployment. No MAIN material is accessed.
 """
-import hashlib, io, json, os, pathlib, subprocess, sys
+import hashlib, io, json, os, pathlib, subprocess, sys, time, urllib.request
 import requests
 from pypdf import PdfReader
 import fitz
@@ -35,8 +35,17 @@ def test_destroyed(valid):
     assert PAGES_EXPECT+1 != PAGES_EXPECT
 
 def main():
-    source=requests.get(SOURCE,timeout=100,headers={"User-Agent":"P399-W3-original-source-independent-audit"});source.raise_for_status()
-    raw=source.content; sha=hashlib.sha256(raw).hexdigest()
+    raw=None
+    for attempt in range(1,5):
+        try:
+            with urllib.request.urlopen(urllib.request.Request(SOURCE,headers={"User-Agent":"Mozilla/5.0 (RelayTheory P16 independent post-E exact publisher original PDF verification)","Accept":"application/pdf,*/*"}),timeout=130) as response: raw=response.read()
+            if raw.startswith(b"%PDF"): break
+            raise RuntimeError("official source HTTP OK but non-PDF bytes")
+        except Exception as exc:
+            print("P16_OFFICIAL_SOURCE_ACQUISITION_RETRY",attempt,type(exc).__name__,str(exc),flush=True)
+            if attempt==4: raise
+            time.sleep(attempt*5)
+    sha=hashlib.sha256(raw).hexdigest()
     require(raw[:5]==b"%PDF-","original must be PDF")
     require(sha==SHA_EXPECT,"exact previously acquired original publisher raw SHA: "+sha)
     require(len(raw)==BYTES_EXPECT,"original publisher raw byte count")
