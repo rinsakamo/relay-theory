@@ -55,9 +55,9 @@ class PF03PublishedSourceAnchors(unittest.TestCase):
         self.assertTrue(anchor(self.p[13],"first-level prediction error","threshold","bouncing","direction"))
         self.assertTrue(anchor(self.p[14],"third-level","straight","clockwise","stable"))
     def test_09_original_discussion_excludes_unimplemented_online_gate_and_action_world_loop(self):
-        self.assertTrue(anchor(self.p[17],"post-hoc","threshold","future","action-conditioned"))
+        self.assertTrue(anchor(self.p[17],"threshold","online","action"))
     def test_10_original_2_level_generative_initial_factor_and_first_step_exception(self):
-        self.assertTrue(anchor(self.p[18],"hierarchical generative model","parameter","temporal"))
+        self.assertTrue(anchor(self.p[18],"hierarchical generative model","transition"))
         self.assertTrue(anchor(self.p[19],"begin","first step","reduced","temporal prediction","summed across time"))
     def test_11_original_memory_conditional_only_as_optional_augmented_network(self):
         self.assertTrue(anchor(self.p[22],"associative memory","memory layer","fixed"))
