@@ -1,0 +1,320 @@
+{
+  "schema": "p399.g1.w3.P16.B.complete_frozen_A_result_informed_source_review.v1",
+  "stage": "B",
+  "actual_A_fetched_from_own_branch_blob": "5ad91c696576f15144e503b37a7877e13185070e",
+  "A_count": 29,
+  "A_dependencies_count": 35,
+  "review_all_A_claim_ids": [
+    "A01",
+    "A02",
+    "A03",
+    "A04",
+    "A05",
+    "A06",
+    "A07",
+    "A08",
+    "A09",
+    "A10",
+    "A11",
+    "A12",
+    "A13",
+    "A14",
+    "A15",
+    "A16",
+    "A17",
+    "A18",
+    "A19",
+    "A20",
+    "A21",
+    "A22",
+    "A23",
+    "A24",
+    "A25",
+    "A26",
+    "A27",
+    "A28",
+    "A29"
+  ],
+  "review_all_dependency_ids": [
+    "E01",
+    "E02",
+    "E03",
+    "E04",
+    "E05",
+    "E06",
+    "E07",
+    "E08",
+    "E09",
+    "E10",
+    "E11",
+    "E12",
+    "E13",
+    "E14",
+    "E15",
+    "E16",
+    "E17",
+    "E18",
+    "E19",
+    "E20",
+    "E21",
+    "E22",
+    "E23",
+    "E24",
+    "E25",
+    "E26",
+    "E27",
+    "E28",
+    "E29",
+    "E30",
+    "E31",
+    "E32",
+    "E33",
+    "E34",
+    "E35"
+  ],
+  "original_source": "Original official PLOS PDF 10 pp plus same publication complete HTML text crossview",
+  "findings": [
+    {
+      "id": "B01",
+      "claim_id": "A08",
+      "source_section": "Equation2 source publisher PDF p2",
+      "concrete_objection": "Hebbian spatial Gaussian and -1/2 offset are source-defined initial weight setting; if read as dynamically applied activity-dependent STP during morph this is incorrect",
+      "initial_disposition": "preserve one-shot fixed w, reject ongoing STP interpretation"
+    },
+    {
+      "id": "B02",
+      "claim_id": "A11",
+      "source_section": "Methods feedforward control PDF p9",
+      "concrete_objection": "J=0 arm additionally receives I=0.8 feedforward inhibition to maintain sparsity; do not call exact all-other-parameters-identical ablation",
+      "initial_disposition": "already qualified A11; no duplicate patch"
+    },
+    {
+      "id": "B03",
+      "claim_id": "A15",
+      "source_section": "Results Figure2 PDF p4",
+      "concrete_objection": "Feedforward arm remaps rates so remapping alone does not identify memory retrieval, even if source figures show qualitative CA1 comparison",
+      "initial_disposition": "already bounded A15; no duplicate patch"
+    },
+    {
+      "id": "B04",
+      "claim_id": "A16",
+      "source_section": "Figure2 caption/body PDF p4",
+      "concrete_objection": "Publisher descriptive prose may refer to Figure2g/h differently from the figure caption g=orthogonal,h=feedforward,i=overlap; primary actual figure and condition-color legend dominate, preserve explicit source inconsistency if irreconcilable",
+      "initial_disposition": "append original in-article figure-panel cross-reference negative without guessing erratum"
+    },
+    {
+      "id": "B05",
+      "claim_id": "A19",
+      "source_section": "Figure4 PDF p5",
+      "concrete_objection": "Attractor spatial tuning is at cost of stable spatial positions as J increases. Any monotonic improvement in stability would be false",
+      "initial_disposition": "already bounded A19; no duplicate patch"
+    },
+    {
+      "id": "B06",
+      "claim_id": "A20",
+      "source_section": "Figure5 PDF p6",
+      "concrete_objection": "Gradual overlapping population transition persists after resetting states; cannot ascribe this effect to hysteresis or transient STP",
+      "initial_disposition": "already bounded A20; no duplicate patch"
+    },
+    {
+      "id": "B07",
+      "claim_id": "A21",
+      "source_section": "Figure6 PDF p6",
+      "concrete_objection": "Orthogonal-state hysteresis depends on J and prior states, eliminated by explicit reset; not the same as P16 learned synaptic state change",
+      "initial_disposition": "clarify conditional parameter and state meaning; A21 already conditional"
+    },
+    {
+      "id": "B08",
+      "claim_id": "A24",
+      "source_section": "Experimental comparisons Intro/Figure2",
+      "concrete_objection": "Published CA1/CA3 experiment data are inherited and qualitative, not independent causal proof of model network synapse",
+      "initial_disposition": "already present A24 and A27"
+    },
+    {
+      "id": "B09",
+      "claim_id": "A23",
+      "source_section": "Figure8 PDF p7",
+      "concrete_objection": "Nearby-position transition similarity is a distinct untested prediction from the published model, not originally measured in new animals",
+      "initial_disposition": "A23 model prediction; tighten source evidence classification in C"
+    },
+    {
+      "id": "B10",
+      "claim_id": "A25",
+      "source_section": "Discussion alternative STP p8",
+      "concrete_objection": "Article says STP might cause hysteresis in alternatives but emphasizes generic nonlinear attractor dynamics in included model; STP is not P16 central plasticity implementation",
+      "initial_disposition": "A25 already present; keep family distinction explicit"
+    },
+    {
+      "id": "B11",
+      "claim_id": "A07",
+      "source_section": "Methods recurrent weights p9",
+      "concrete_objection": "The original source makes templates generated for both contexts with exact a number of overlapping units; does not model experience-driven acquisition of contexts from raw rat experience",
+      "initial_disposition": "A07 initial pattern construction; add narrow acquisition boundary"
+    },
+    {
+      "id": "B12",
+      "claim_id": "A28",
+      "source_section": "Methods simulations p9",
+      "concrete_objection": "Original outputs are forward Euler and threshold with random template instantiation, not independently reproduced here; no pixel-based graph matching to random seeds",
+      "initial_disposition": "A27/A28 already bound, no patch"
+    }
+  ],
+  "source_order_full_sweep": [
+    {
+      "source_order": 1,
+      "section": "title/abstract/author summary",
+      "objection_ids": [],
+      "zero_new_objection_explicated": true,
+      "review_note": "Original publisher complete article and fixed full A reviewed; no unlisted source-born novelty asserted"
+    },
+    {
+      "source_order": 2,
+      "section": "introduction",
+      "objection_ids": [],
+      "zero_new_objection_explicated": true,
+      "review_note": "Original publisher complete article and fixed full A reviewed; no unlisted source-born novelty asserted"
+    },
+    {
+      "source_order": 3,
+      "section": "network model/Equation1",
+      "objection_ids": [],
+      "zero_new_objection_explicated": true,
+      "review_note": "Original publisher complete article and fixed full A reviewed; no unlisted source-born novelty asserted"
+    },
+    {
+      "source_order": 4,
+      "section": "Equation2 memory construction",
+      "objection_ids": [
+        "B01"
+      ],
+      "zero_new_objection_explicated": true,
+      "review_note": "Original publisher complete article and fixed full A reviewed; no unlisted source-born novelty asserted"
+    },
+    {
+      "source_order": 5,
+      "section": "Equation3 activation",
+      "objection_ids": [],
+      "zero_new_objection_explicated": true,
+      "review_note": "Original publisher complete article and fixed full A reviewed; no unlisted source-born novelty asserted"
+    },
+    {
+      "source_order": 6,
+      "section": "Figure1 architecture",
+      "objection_ids": [],
+      "zero_new_objection_explicated": true,
+      "review_note": "Original publisher complete article and fixed full A reviewed; no unlisted source-born novelty asserted"
+    },
+    {
+      "source_order": 7,
+      "section": "rate-remapping and Figure2",
+      "objection_ids": [],
+      "zero_new_objection_explicated": true,
+      "review_note": "Original publisher complete article and fixed full A reviewed; no unlisted source-born novelty asserted"
+    },
+    {
+      "source_order": 8,
+      "section": "context attractor and Figure3",
+      "objection_ids": [],
+      "zero_new_objection_explicated": true,
+      "review_note": "Original publisher complete article and fixed full A reviewed; no unlisted source-born novelty asserted"
+    },
+    {
+      "source_order": 9,
+      "section": "spatial attractor and Figure4",
+      "objection_ids": [],
+      "zero_new_objection_explicated": true,
+      "review_note": "Original publisher complete article and fixed full A reviewed; no unlisted source-born novelty asserted"
+    },
+    {
+      "source_order": 10,
+      "section": "morph transition and Figures5–7",
+      "objection_ids": [],
+      "zero_new_objection_explicated": true,
+      "review_note": "Original publisher complete article and fixed full A reviewed; no unlisted source-born novelty asserted"
+    },
+    {
+      "source_order": 11,
+      "section": "spatio-contextual position profile and Figure8",
+      "objection_ids": [],
+      "zero_new_objection_explicated": true,
+      "review_note": "Original publisher complete article and fixed full A reviewed; no unlisted source-born novelty asserted"
+    },
+    {
+      "source_order": 12,
+      "section": "Discussion alternatives and model predictions",
+      "objection_ids": [
+        "B10"
+      ],
+      "zero_new_objection_explicated": true,
+      "review_note": "Original publisher complete article and fixed full A reviewed; no unlisted source-born novelty asserted"
+    },
+    {
+      "source_order": 13,
+      "section": "Methods simulations",
+      "objection_ids": [
+        "B02",
+        "B11",
+        "B12"
+      ],
+      "zero_new_objection_explicated": true,
+      "review_note": "Original publisher complete article and fixed full A reviewed; no unlisted source-born novelty asserted"
+    },
+    {
+      "source_order": 14,
+      "section": "Methods network dynamics/feedforward I control",
+      "objection_ids": [
+        "B02",
+        "B11",
+        "B12"
+      ],
+      "zero_new_objection_explicated": true,
+      "review_note": "Original publisher complete article and fixed full A reviewed; no unlisted source-born novelty asserted"
+    },
+    {
+      "source_order": 15,
+      "section": "Methods recurrent weights",
+      "objection_ids": [
+        "B02",
+        "B11",
+        "B12"
+      ],
+      "zero_new_objection_explicated": true,
+      "review_note": "Original publisher complete article and fixed full A reviewed; no unlisted source-born novelty asserted"
+    },
+    {
+      "source_order": 16,
+      "section": "Methods all analysis measures",
+      "objection_ids": [
+        "B02",
+        "B11",
+        "B12"
+      ],
+      "zero_new_objection_explicated": true,
+      "review_note": "Original publisher complete article and fixed full A reviewed; no unlisted source-born novelty asserted"
+    },
+    {
+      "source_order": 17,
+      "section": "Conclusions/references and source genealogy",
+      "objection_ids": [],
+      "zero_new_objection_explicated": true,
+      "review_note": "Original publisher complete article and fixed full A reviewed; no unlisted source-born novelty asserted"
+    }
+  ],
+  "negative_original_register_covered": [
+    "N16_01",
+    "N16_02",
+    "N16_03",
+    "N16_04",
+    "N16_05",
+    "N16_06",
+    "N16_07",
+    "N16_08",
+    "N16_09",
+    "N16_10",
+    "N16_11",
+    "N16_12"
+  ],
+  "additional_adverse_not_duplicate": "N16_13 original Fig2 caption/prose g/h/i references may be internally inconsistent; source screenshot/condition legend necessary before representing exact panel-to-condition match",
+  "no_grammar_used": true,
+  "qualified": false
+}
