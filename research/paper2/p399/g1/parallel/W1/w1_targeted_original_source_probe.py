@@ -18,12 +18,13 @@ ROWS = [
  ("P10-S4FIG","10.1371/journal.pcbi.1010699.s004","supplementary",None,None,"model_alternatives"),
 ]
 anchors = {
-"P06":{0:["Saliency","Zhaoping"],5:["reaction","salien"],10:["reaction","salien"]},
-"P08":{0:["FitzGerald","Sequential inference"],3:["Bayes","sequence"]},
-"P08-CORRECTION":{1:["filtering","optimal"]},
-"P10":{14:["Feature","reinforcement"],15:["Bayesian","hypothesis"],16:["hypothesis","switch"],9:["Fig","Model"]},
+"P06":{0:["Saliency","Zhaoping"],5:["reaction","salien"],6:[],7:[],8:[],9:[],10:["salien"],11:[],12:[],13:[],14:[],15:[],16:[],17:[],18:[],19:[],20:[],21:[],22:[],23:[],24:[],25:[],26:[]},
+"P08":{0:["FitzGerald","Sequential inference"],1:[],2:[],3:[],4:[],5:[],6:[],7:[],8:[],9:[],10:[],11:[],12:[],13:[]},
+"P08-CORRECTION":{0:[],1:["filtering","optimal"],2:[]},
+"P10":{4:[],5:[],6:[],7:[],8:[],9:["Fig","Model"],10:[],11:[],12:[],13:[],14:["Feature","reinforcement"],15:["Bayesian","hypothesis"],16:["hypothesis","switch"],17:[],18:[]},
 "P10-CORRECTION":{0:["Funding","supported"]},
-"P10-S1TEXT":{0:["hypothesis"]},
+"P10-S1TEXT":{0:["hypothesis"],1:[]},
+"P10-S4FIG":{0:[]},
 }
 rows=[]
 ok=True
