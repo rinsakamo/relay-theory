@@ -14,7 +14,7 @@ def check(x):
  assert x["PRD01"]["correction_notice_not_full_original"] and not x["PRD01"]["publisher_corrected_complete_original_obtained"]
  assert x["PRD01"]["correction_final"]=={"trident":.69,"planet":.31}
  assert x["B1"]["sha256"]=="9c17c00fba0985f6f66b8520c6fc971ae5a2c6d3e1bac266d9fba2739c9792fe"
- assert x["B1"]["prediсtion_slot_fit"] if False else x["B1"]["prediction_slot_fit"].startswith("HOLD_")
+ assert x["B1"]["prediction_slot_fit"].startswith("HOLD_")
  assert x["B1"]["model_recovery_success"]==55 and x["B1"]["source_negative_extreme_proprioceptive_noise_ideal_misidentified"]==4
  assert not x["B1"]["activated"] and x["B1"]["central_family_independence"]=="HOLD"
  assert x["B2"]["sha256"]=="7b6e4192bfe1b60d794d197e14822997b77d22e437db89850fc4cddcb79482db"

@@ -20,4 +20,4 @@ PRD-03 Ahilan et al (2019), *Learning to use past evidence in a sophisticated wo
 ## G1との限定交差
 読み取ったG1 Draft #418科学分母は旧PF01–04 + P05/P07/P09/P13/P14 = 9/20個別限定QUALIFIED、新規11件は未実施。G1のPRD P17 DOI 10.1371/journal.pcbi.1009738 は初期観測固定の感覚情報に基づくchange-of-mind accumulator、P18 DOI 10.1371/journal.pcbi.1008552 は将来のmodel-free行動傾向を内包するreflective model-based plannerで、両方とも原著を取得済みでも科学PRE_A→E未了。直接「予測」という語が似ることによる一律重複/独立判定はしない。追加P13はBayesianカテゴリrun-length学習、P14は観測系列のngram/chunk code compressionで、PRD-02の構造学習という広い語と重なるが対象内の実更新・祖先を最終比較するまで保留。旧PF01–04の資格範囲・数値例外も維持。
 
-G1全20科学的名簿の資格・最終代替が未凍結であることから、任意のB1/B2・PRD02/03対G1全80?全組み合わせの中央独立PASSは**HOLD**（正確な全体照合は20×40=800ペアであり、PRD-onlyの20×3の個別対比もこの未決条件に含まれる）。現時点のexact DOI重複0はcentral family独立の証明ではない。BLF/LRNとのB2共有候補の正式予約同期もG2統合者が行う。PRD席採用0、MAIN不許可。
+G1全20科学的名簿の資格・最終代替が未凍結であることから、任意のB1/B2・PRD02/03対G1全組み合わせの中央独立PASSは**HOLD**（正確な全体照合は20×40=800ペアであり、PRD-onlyの20×3の個別対比もこの未決条件に含まれる）。現時点のexact DOI重複0はcentral family独立の証明ではない。BLF/LRNとのB2共有候補の正式予約同期もG2統合者が行う。PRD席採用0、MAIN不許可。
