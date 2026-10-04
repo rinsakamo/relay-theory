@@ -1,0 +1,92 @@
+{
+  "schema": "p399.pf04.final_qualification.v1",
+  "transaction": "PF04 prospective, isolated, stop-at-PRE_A",
+  "authority": {
+    "issue": "https://github.com/rinsakamo/relay-theory/issues/399",
+    "candidate": "https://github.com/rinsakamo/relay-theory/pull/411",
+    "dedicated_pr": "https://github.com/rinsakamo/relay-theory/pull/415",
+    "procedure": "frozen v2.3.1; original PDF primary preferred"
+  },
+  "primary_original": {
+    "title": "Dezfouli & Balleine 2013, Actions, Action Sequences and Habits",
+    "doi": "10.1371/journal.pcbi.1003364",
+    "edition": "PLOS published original 2013-12-05, no registered correction detected as of access date 2026-10-04",
+    "pdf_url": "https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1003364&type=printable",
+    "pdf_sha256": "bc84d4827df202cf5051cf10aa64cc09673b718af2acd31441a3712bcd376df9",
+    "bytes": 377245,
+    "pages": 14,
+    "access": "two independent matched GitHub-cloud physical publisher PDF fetches; source PDF not committed",
+    "same_visual_defect_author_host": "https://adezfouli.github.io/materials/db-plosc-2013/db-plosc-2013.pdf"
+  },
+  "frozen_receipts": [
+    {
+      "stage": "PRE_A_INITIAL_PROVISIONAL",
+      "file": "PRE_A.json",
+      "sha256": "1ec2c0e10746abd974e1725fd8c696030acbf4dfe60f86b17202a833725b2514",
+      "status": "SUPERSEDED_BEFORE_PASS_A"
+    },
+    {
+      "stage": "PRE_A_REAUDITED_FINAL",
+      "file": "PRE_A_v2_source_math_blocker.json",
+      "sha256": "7cf4e78e273bf415ca0b073323f3c881bc49edeae853fec5ed5f2b2f82c28bb4",
+      "status": "UNDERDETERMINED"
+    },
+    {
+      "stage": "A",
+      "status": "NOT_STARTED_FOR_MANDATORY_PRE_A_GATE"
+    },
+    {
+      "stage": "B",
+      "status": "NOT_STARTED"
+    },
+    {
+      "stage": "C",
+      "status": "NOT_STARTED"
+    },
+    {
+      "stage": "D",
+      "status": "NOT_STARTED"
+    },
+    {
+      "stage": "E",
+      "status": "NOT_STARTED"
+    }
+  ],
+  "pre_a_status": {
+    "PREA01": "PASS",
+    "PREA02": "PASS",
+    "PREA03": "PASS_NOT_NEEDED_HTML_FALLBACK",
+    "PREA04": "PASS",
+    "PREA05": "PASS_WITH_INHERITANCE_AND_COMPARATOR_EXPOSURE",
+    "PREA06": "UNDERDETERMINED",
+    "PREA07": "PASS"
+  },
+  "exact_lineage_caveat": "2012 Dezfouli-Balleine is direct hierarchical model ancestor; Daw-Niv-Dayan 2005 comparator is both #398 PD01 and historical 60 CH10. No focal 2013 exact-work collision detected in actually checked rosters. Do not count flat component as independent.",
+  "material_notation_blocker": "Original PDF p13 eq10 prints omega(a) under a-prime denominator summation even though omega is option-type-dependent and first-stage has 2 singles/4 sequences; mathematically non-normalizing as written. Candidate omega(a-prime) fix not publisher authenticated and exact original data-fit implementation not verified.",
+  "other_material_source_condition": "PDF p9 Table1 lists exactly eight family variants each (full plus seven reduced); p12-13 prose says eight simpler models; preserve discrepancy, count only actually compared listed variants.",
+  "executed_tests": [
+    {
+      "test": "Cloud original PLOS PDF physical-byte/source checks",
+      "workflow_run": 37170144284,
+      "result": "SUCCESS"
+    },
+    {
+      "test": "Repeat cloud publisher PDF and Crossref/PubMed amendment checks",
+      "workflow_run": 37170230487,
+      "result": "SUCCESS"
+    },
+    {
+      "test": "CI PRE_A v1/v2 hashes, source-identity consistency, material nonnormalization witness and mandatory stop",
+      "workflow_run": 37170498884,
+      "result": "SUCCESS",
+      "observed_raw_probability_sum": 0.9254999009562278
+    }
+  ],
+  "not_executed": [
+    "No scientific A/B/C/D/E; no A0/A1/A2 tests; no behavioral or numerical replication; no exact v2.3.1 original validator GitHub CI claim"
+  ],
+  "next_allowed_step": "Source-local targeted resolution of eq10 via authoritative corrigendum or verifiable authors' exact original implementation; resolve variant-count discrepancy at Table1 scope; append v3 PRE_A before any scientific A. Same frozen PDF source retained absent explicit source-edition requalification.",
+  "verdict": "PF04_PRE_A_SOURCE_MATH_UNDERDETERMINED_NOT_QUALIFIED",
+  "qualified_pilots_increment": 0,
+  "main_authorized_by_this_transaction": false
+}
