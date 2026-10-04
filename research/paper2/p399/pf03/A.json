@@ -1,0 +1,686 @@
+{
+  "schema": "relay-theory.p399.pf03.original_a.v1",
+  "frozen_authority": {
+    "pre_a_commit": "9298f5c6e9a528c8f44daf5530d40aa4b3c0df47",
+    "primary": {
+      "doi": "10.1371/journal.pcbi.1011801",
+      "kind": "PUBLISHER_ORIGINAL_PDF",
+      "sha256": "62d744125034ce834692cdb210065d34e2bbd0f58c9eb3387ed2d75dfb7f77ae",
+      "url": "https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1011801&type=printable"
+    },
+    "method": "Prospective ORIGINAL source-only A, pre-Grammar and before B/C",
+    "independence_boundary": "Original source decomposition first; no other PF lane results or anticipated Grammar labels used"
+  },
+  "full_source_inventory": [
+    "PDF p1 abstract and article metadata; p2-3 Introduction and disclosed 2023 predecessor",
+    "PDF p3-4 basic DPC, Fig1, Eqs1-2; p4-6 natural video/Fig2",
+    "PDF p6-8 hierarchical timescales/Fig3; p8-11 flash-lag/postdiction/Fig4",
+    "PDF p11-13 explicit optional associative memory/Fig5; p13-16 three-level/higher-order/Fig6",
+    "PDF p16-19 discussion including alternative parameterizations and model limits",
+    "PDF p19 original generative Eqs3-11; p20 inference/learning Eqs12-21",
+    "PDF p21 data and STRF Eq22; p22 autocorrelation Eqs23-26 and flash-lag Eqs27-29",
+    "PDF p23 memory Eq30-35; p24 memory mask Eq36 and three-level Eqs37-40; p25 third-level learning",
+    "PDF p25 original in-article supplementary information inventory and author contributions; p26-30 all original references"
+  ],
+  "variant_catalog": [
+    {
+      "id": "V2",
+      "label": "Basic two-level hierarchical DPC",
+      "parts": [
+        "G",
+        "I",
+        "L"
+      ],
+      "source": "PDF pp3-4,19-20"
+    },
+    {
+      "id": "VN",
+      "label": "Trained two-level DPC natural video/Moving MNIST",
+      "parts": [
+        "V2",
+        "trained U,Vk,Htheta",
+        "applied video inputs"
+      ],
+      "source": "PDF pp4-8,20-22"
+    },
+    {
+      "id": "VF",
+      "label": "Two-level inference trajectory used for flash-lag/postdictive probes",
+      "parts": [
+        "VN",
+        "vary initial higher state",
+        "read early/late iterations"
+      ],
+      "source": "PDF pp8-11,22-23"
+    },
+    {
+      "id": "VM",
+      "label": "OPTIONAL trained-two-level plus additional associative-memory layer",
+      "parts": [
+        "V2 frozen",
+        "m",
+        "G",
+        "mask b for partial cue"
+      ],
+      "source": "PDF pp11-13,23-24"
+    },
+    {
+      "id": "V3",
+      "label": "Distinct three-level, pretraining two second-level transition bases and threshold gate",
+      "parts": [
+        "r1",
+        "r2",
+        "r3",
+        "V1",
+        "V2_1/V2_2 pretrained",
+        "Htheta2",
+        "binary event mask"
+      ],
+      "source": "PDF pp13-15,24-25"
+    }
+  ],
+  "source_defined_nodes": [
+    {
+      "id": "A-N01",
+      "type": "EXTERNAL_OBSERVATION",
+      "definition": "Presented video image frame I_t and sequence I_0:T-1, external stimulus at experiment boundary",
+      "page": 19,
+      "variant": "ALL"
+    },
+    {
+      "id": "A-N02",
+      "type": "INTERNAL_LATENT_STATE",
+      "definition": "Lower-level latent r_t; estimate rhat_t distinguished from predicted rbar_t",
+      "page": 19,
+      "variant": "V2"
+    },
+    {
+      "id": "A-N03",
+      "type": "INTERNAL_LATENT_STATE",
+      "definition": "Higher global latent r^h representing within-sequence transition dynamics; inferred/updated online, not a fixed learned matrix",
+      "page": 19,
+      "variant": "V2"
+    },
+    {
+      "id": "A-N04",
+      "type": "PERSISTENT_LEARNED_PARAMETER",
+      "definition": "Spatial synthesis matrix U generating mean image U r_t",
+      "page": 19,
+      "variant": "V2"
+    },
+    {
+      "id": "A-N05",
+      "type": "PERSISTENT_LEARNED_PARAMETER",
+      "definition": "Finite learned lower-level basis matrices V_1..V_K, K=5 in main two-level experiments",
+      "page": 19,
+      "variant": "V2"
+    },
+    {
+      "id": "A-N06",
+      "type": "PERSISTENT_LEARNED_PARAMETER",
+      "definition": "Hypernetwork H_theta and its persistent weights theta",
+      "page": 19,
+      "variant": "V2"
+    },
+    {
+      "id": "A-N07",
+      "type": "TRANSIENT_COMPUTED_PARAMETER",
+      "definition": "w=H_theta(r^h), top-down predicted modulation coefficients; neither higher latent itself nor independent learned basis",
+      "page": 19,
+      "variant": "V2"
+    },
+    {
+      "id": "A-N08",
+      "type": "TRANSIENT_COMPUTED_PARAMETER",
+      "definition": "V=sum_{k=1..K} w_k V_k; effective per-sequence/per-inference lower-level transition",
+      "page": 19,
+      "variant": "V2"
+    },
+    {
+      "id": "A-N09",
+      "type": "INTERNAL_PREDICTION",
+      "definition": "rbar_t=ReLU(V rhat_{t-1}) for t>=1; no same-form temporal input at first frame",
+      "page": 19,
+      "variant": "V2"
+    },
+    {
+      "id": "A-N10",
+      "type": "INTERNAL_PREDICTION",
+      "definition": "Image prediction U r_t and predicted image from prior state U rbar_t distinguished",
+      "page": 19,
+      "variant": "V2"
+    },
+    {
+      "id": "A-N11",
+      "type": "INTERNAL_ERROR",
+      "definition": "Spatial residual e_s(t)=I_t-U r_t; negative log likelihood weighted ||e_s||²/(2sigma²)",
+      "page": 20,
+      "variant": "V2"
+    },
+    {
+      "id": "A-N12",
+      "type": "INTERNAL_ERROR",
+      "definition": "Temporal residual e_tau(t)=r_t-rbar_t; weighted ||e_tau||²/(2sigma_r²)",
+      "page": 20,
+      "variant": "V2"
+    },
+    {
+      "id": "A-N13",
+      "type": "INTERNAL_CONSTRAINT",
+      "definition": "Laplace-like lower sparsity λ||r_t||_1 and higher Gaussian-prior penalty λ_h||r^h||²",
+      "page": 20,
+      "variant": "V2"
+    },
+    {
+      "id": "A-N14",
+      "type": "INTERNAL_OBJECTIVE",
+      "definition": "L_t sum of spatial error, temporal error, lower sparsity, higher prior; initial L0 excludes temporal term",
+      "page": 20,
+      "variant": "V2"
+    },
+    {
+      "id": "A-N15",
+      "type": "INFERENCE_OPERATION",
+      "definition": "Within-sequence gradient/MAP update rhat_t given observations and past rhat; at each step also update r^h to reduce L_t",
+      "page": 20,
+      "variant": "V2"
+    },
+    {
+      "id": "A-N16",
+      "type": "LEARNING_OPERATION",
+      "definition": "Across-sequence/time parameter optimization of U,V_k,theta minimizing residual objective after latent-state inference",
+      "page": 20,
+      "variant": "VN"
+    },
+    {
+      "id": "A-N17",
+      "type": "ASSUMPTION",
+      "definition": "Generative distributions p(r^h) Gaussian, p(r_t|rprev,rh) Gaussian, p(I_t|r_t) Gaussian; latent r sparse penalty",
+      "page": 19,
+      "variant": "V2"
+    },
+    {
+      "id": "A-N18",
+      "type": "ASSUMPTION",
+      "definition": "Approximate previous posterior as point MAP delta; approximate higher posterior p(rh|I0:t) by unconditional p(rh); r^h one global latent per sequence despite changing online estimate",
+      "page": 20,
+      "variant": "V2"
+    },
+    {
+      "id": "A-N19",
+      "type": "IMPLEMENTATION_HYPOTHESIS",
+      "definition": "Model neuronal activity as latent estimates, weight as parameters, apical top-down gain/basal recurrent effects as proposed possible pyramidal implementation",
+      "page": 4,
+      "variant": "V2"
+    },
+    {
+      "id": "A-N20",
+      "type": "EXPERIMENTAL_PREPARATION",
+      "definition": "Natural-video training sequence 65,520 non-overlapping 16x16 10-frames whitened (58,968 training/6,552 test); Moving MNIST 10k 18x18 10-frames 9k/1k",
+      "page": 21,
+      "variant": "VN"
+    },
+    {
+      "id": "A-N21",
+      "type": "SIMULATION_OUTCOME",
+      "definition": "Natural video learned V1-like separable/inseparable STRFs; higher response autocorrelation slower: natural 5.49 vs 2.18 frames, white noise 3.11 vs 0.18",
+      "page": 6,
+      "variant": "VN"
+    },
+    {
+      "id": "A-N22",
+      "type": "SIMULATION_OUTCOME",
+      "definition": "Moving MNIST r^h encodes motion direction and lower r more digit identity; 73.9% vs 46.5% direction, 20.9% vs 76.1% identity",
+      "page": 8,
+      "variant": "VN"
+    },
+    {
+      "id": "A-N23",
+      "type": "EXPERIMENTAL_PREPARATION",
+      "definition": "Flash-lag synthetic Moving MNIST 134 sequences, with/without trajectory, continuation/stop/reversal/flash; neural-model correction inner-iteration sampling 10% vs 90%",
+      "page": 10,
+      "variant": "VF"
+    },
+    {
+      "id": "A-N24",
+      "type": "SIMULATION_OUTCOME",
+      "definition": "Model prediction early along prior path and late corrected postdictive reversal under reversal, qualitatively compared with separately published human psychophysics",
+      "page": 11,
+      "variant": "VF"
+    },
+    {
+      "id": "A-N25",
+      "type": "OPTIONAL_INTERNAL_STATE",
+      "definition": "Associative memory latent m, distinct from r^h and distinct from primary DPC state",
+      "page": 23,
+      "variant": "VM"
+    },
+    {
+      "id": "A-N26",
+      "type": "OPTIONAL_PERSISTENT_PARAMETER",
+      "definition": "Memory synapses G generate sbar=Gm of concatenated content/dynamics s=[rhat_0;rhat^h]",
+      "page": 23,
+      "variant": "VM"
+    },
+    {
+      "id": "A-N27",
+      "type": "OPTIONAL_MEMORY_OPERATION",
+      "definition": "Memory encoding MAP m then separate G plasticity on ||s-Gm||²+λ_m||m||² while pretrained base DPC weights frozen",
+      "page": 23,
+      "variant": "VM"
+    },
+    {
+      "id": "A-N28",
+      "type": "OPTIONAL_MEMORY_OPERATION",
+      "definition": "Recall uses cue-masked partial lower initial r0; mask excludes missing r^h from residual; predicted stored dynamics drives full lower-level sequence",
+      "page": 24,
+      "variant": "VM"
+    },
+    {
+      "id": "A-N29",
+      "type": "SIMULATION_OUTCOME",
+      "definition": "Recall from start cue strong after conditioning, mid weak, end none; comparisons are model activity versus external existing biological reports",
+      "page": 13,
+      "variant": "VM"
+    },
+    {
+      "id": "A-N30",
+      "type": "THREE_LEVEL_LATENTS",
+      "definition": "Three-level distinct r^(1)_t lower, r^(2)_t intermediate, r^(3) top with top-level estimating second-level transition type",
+      "page": 24,
+      "variant": "V3"
+    },
+    {
+      "id": "A-N31",
+      "type": "THREE_LEVEL_PARAMETERS",
+      "definition": "Two separate pre-trained V^(2)_1,V^(2)_2 for straight and clockwise bouncing and learned H_theta^(2) top-down network",
+      "page": 24,
+      "variant": "V3"
+    },
+    {
+      "id": "A-N32",
+      "type": "THREE_LEVEL_COMPUTATION",
+      "definition": "w^(2)=Htheta2(r3), V^(2)=sum w2_k V2_k, predicted rbar2_t=V2 r2_{t-1}",
+      "page": 24,
+      "variant": "V3"
+    },
+    {
+      "id": "A-N33",
+      "type": "THREE_LEVEL_GATE",
+      "definition": "Binary b_t from FIRST-level prediction error > post-hoc training-set threshold (rho reported 0.73 in in-article S1 description); second-level transition prediction term active only when b_t=1",
+      "page": 24,
+      "variant": "V3"
+    },
+    {
+      "id": "A-N34",
+      "type": "SIMULATION_OUTCOME",
+      "definition": "Three-level discriminates straight vs clockwise bounce sequence after first bounce and encodes higher-order sequence transition class",
+      "page": 15,
+      "variant": "V3"
+    },
+    {
+      "id": "A-N35",
+      "type": "SOURCE_INTERPRETATION",
+      "definition": "Biological neural hierarchy and hippocampal coupling are hypotheses/comparisons motivated by experiments, NOT directly measured proof of model neuronal mechanism",
+      "page": 17,
+      "variant": "ALL"
+    }
+  ],
+  "source_defined_edges": [
+    {
+      "id": "A-E01",
+      "from": [
+        "A-N03",
+        "A-N06"
+      ],
+      "to": "A-N07",
+      "type": "COMPUTES",
+      "loc": "PDF p19 Eq7",
+      "qualification": "r^h is a variable; theta a learned parameter"
+    },
+    {
+      "id": "A-E02",
+      "from": [
+        "A-N07",
+        "A-N05"
+      ],
+      "to": "A-N08",
+      "type": "WEIGHTED_BASIS_COMPOSITION",
+      "loc": "PDF p19 Eq8",
+      "qualification": "not arbitrary generated full matrix"
+    },
+    {
+      "id": "A-E03",
+      "from": [
+        "A-N08",
+        "A-N02"
+      ],
+      "to": "A-N09",
+      "type": "TEMPORAL_PREDICTION",
+      "loc": "PDF p19 Eq9",
+      "qualification": "uses prior rhat at t-1; ReLU"
+    },
+    {
+      "id": "A-E04",
+      "from": [
+        "A-N04",
+        "A-N02"
+      ],
+      "to": "A-N10",
+      "type": "SPATIAL_SYNTHESIS",
+      "loc": "PDF p19 Eq6",
+      "qualification": "I is external generated observation in probabilistic model, not internal actual World production"
+    },
+    {
+      "id": "A-E05",
+      "from": [
+        "A-N01",
+        "A-N04",
+        "A-N02"
+      ],
+      "to": "A-N11",
+      "type": "SPATIAL_RESIDUAL",
+      "loc": "PDF p20 Eq17",
+      "qualification": "actual presented I vs model's U r"
+    },
+    {
+      "id": "A-E06",
+      "from": [
+        "A-N02",
+        "A-N09"
+      ],
+      "to": "A-N12",
+      "type": "TEMPORAL_RESIDUAL",
+      "loc": "PDF p20 Eq17",
+      "qualification": "current posterior candidate minus prior-state-based temporal prediction"
+    },
+    {
+      "id": "A-E07",
+      "from": [
+        "A-N11",
+        "A-N12",
+        "A-N13"
+      ],
+      "to": "A-N14",
+      "type": "MAP_OBJECTIVE",
+      "loc": "PDF p20 Eq17",
+      "qualification": "weights by variances"
+    },
+    {
+      "id": "A-E08",
+      "from": [
+        "A-N14",
+        "A-N02"
+      ],
+      "to": "A-N15",
+      "type": "INFERENCE_GRADIENT",
+      "loc": "PDF p20 Eqs18-19",
+      "qualification": "optimizes latent state r_t and separately higher latent r^h within time step"
+    },
+    {
+      "id": "A-E09",
+      "from": [
+        "A-N14",
+        "A-N04",
+        "A-N05",
+        "A-N06"
+      ],
+      "to": "A-N16",
+      "type": "PARAMETER_LEARNING_GRADIENT",
+      "loc": "PDF p20 after Eq21",
+      "qualification": "across sequences/time with MAP estimates; distinct from inference"
+    },
+    {
+      "id": "A-E10",
+      "from": [
+        "A-N17",
+        "A-N18"
+      ],
+      "to": "A-N14",
+      "type": "APPROXIMATE_NEGATIVE_LOG_POSTERIOR",
+      "loc": "PDF pp19-20 Eqs3-17",
+      "qualification": "bounded MAP Dirac and higher prior approximation"
+    },
+    {
+      "id": "A-E11",
+      "from": [
+        "A-N01",
+        "A-N15"
+      ],
+      "to": "A-N02",
+      "type": "CONDITIONED_ESTIMATION",
+      "loc": "PDF p20 Eqs18-21",
+      "qualification": "external presentation drives latent updates; no sensorimotor feedback loop demonstrated"
+    },
+    {
+      "id": "A-E12",
+      "from": [
+        "A-N12",
+        "A-N15"
+      ],
+      "to": "A-N03",
+      "type": "FEEDFORWARD_ERROR_BASED_STATE_UPDATE",
+      "loc": "PDF p4 Fig1de/p20 Eq19",
+      "qualification": "higher state changes when lower temporal errors grow"
+    },
+    {
+      "id": "A-E13",
+      "from": [
+        "A-N20",
+        "A-N16"
+      ],
+      "to": "A-N21",
+      "type": "TRAINING_AND_SIMULATION",
+      "loc": "PDF pp5-7 Figs2-3",
+      "qualification": "simulated receptive fields and temporal autocorrelations not neural measurements"
+    },
+    {
+      "id": "A-E14",
+      "from": [
+        "A-N20",
+        "A-N15"
+      ],
+      "to": "A-N22",
+      "type": "MOVING_MNIST_ANALYSIS",
+      "loc": "PDF pp7-8 Fig3",
+      "qualification": "classifier decoding simulation"
+    },
+    {
+      "id": "A-E15",
+      "from": [
+        "A-N23",
+        "A-N09",
+        "A-N15"
+      ],
+      "to": "A-N24",
+      "type": "WITHIN_STEP_EARLY_TO_LATE_PERCEPT_SIMULATION",
+      "loc": "PDF pp9-11 Fig4",
+      "qualification": "model 10/90 percent optimization steps, not literal 350/620ms simulation"
+    },
+    {
+      "id": "A-E16",
+      "from": [
+        "A-N02",
+        "A-N03"
+      ],
+      "to": "A-N27",
+      "type": "CONCATENATED_MEMORY_TARGET",
+      "loc": "PDF p23 Eqs31-33",
+      "qualification": "s=[rhat0;rhat^h]"
+    },
+    {
+      "id": "A-E17",
+      "from": [
+        "A-N25",
+        "A-N26"
+      ],
+      "to": "A-N27",
+      "type": "ASSOCIATIVE_ENCODING",
+      "loc": "PDF p23 Eqs31-34",
+      "qualification": "G plasticity distinct from frozen DPC"
+    },
+    {
+      "id": "A-E18",
+      "from": [
+        "A-N01",
+        "A-N26",
+        "A-N25"
+      ],
+      "to": "A-N28",
+      "type": "PARTIAL_CUE_RETRIEVAL",
+      "loc": "PDF pp23-24 Eqs35-36",
+      "qualification": "mask suppresses missing upper-state penalty"
+    },
+    {
+      "id": "A-E19",
+      "from": [
+        "A-N28",
+        "A-N03",
+        "A-N08"
+      ],
+      "to": "A-N29",
+      "type": "RECALLED_SEQUENCE_TRANSITION",
+      "loc": "PDF pp12-13 Fig5",
+      "qualification": "start/mid/end differ; no universal cue recall"
+    },
+    {
+      "id": "A-E20",
+      "from": [
+        "A-N30",
+        "A-N31"
+      ],
+      "to": "A-N32",
+      "type": "THREE_LEVEL_TOPDOWN",
+      "loc": "PDF p24 Eqs38-40",
+      "qualification": "top-layer modulates intermediate-state transitions, not r1 directly"
+    },
+    {
+      "id": "A-E21",
+      "from": [
+        "A-N11",
+        "A-N33"
+      ],
+      "to": "A-N30",
+      "type": "THRESHOLD_TRIGGERED_INTERMEDIATE_CHANGE",
+      "loc": "PDF p24 Eq37/Fig6",
+      "qualification": "b_t set by low-level error threshold, upper transition only event-gated"
+    },
+    {
+      "id": "A-E22",
+      "from": [
+        "A-N32",
+        "A-N33",
+        "A-N30"
+      ],
+      "to": "A-N34",
+      "type": "THREE_LEVEL_HIGHER_ORDER_TRANSITION",
+      "loc": "PDF pp14-15 Fig6",
+      "qualification": "two pre-trained second-level bases; not generic fully learned continuous depth"
+    },
+    {
+      "id": "A-E23",
+      "from": [
+        "A-N19",
+        "A-N35"
+      ],
+      "to": "A-N21",
+      "type": "BIOLOGICAL_ANALOGY_NOT_VALIDATION",
+      "loc": "PDF pp16-18 Discussion",
+      "qualification": "no inference from model morphology alone to proven neocortical mechanism"
+    }
+  ],
+  "temporal_orders": [
+    "V2: rhat_(t-1) and current inferred rh -> w=H(rh) -> V weighted -> rbar_t predicted -> I_t externally presented -> spatial/temporal errors -> iterative r_t and rh inference -> next t",
+    "Within-learning: latent inference within each sequence precedes/accompanies parameter-gradient accumulation for U,V_k,theta across sequences/time; not identical update state",
+    "VF: same discrete t after reversal: initial prediction using earlier estimates -> early 10% gradient trajectory -> later 90% error-corrected postdictive trajectory; no milliseconds time mapping",
+    "VM optional: pretrained DPC encodes estimates -> memory m inference -> G updated 5 times with DPC weights fixed -> later partial-cue retrieval m -> rh replay and inferred sequence",
+    "V3: two transition bases pretrained with distinct bounce types -> later three-level Htheta2 learning; low-level error exceeds b threshold -> r2 transition -> error corrects r3 -> stabilize r3 when learned class fits"
+  ],
+  "limits": [
+    {
+      "id": "A-L01",
+      "pdf": "p4",
+      "text": "K=5 used; more lower matrices gave no significant improvement in authors' analyzed case; supporting Fig A only described in PDF"
+    },
+    {
+      "id": "A-L02",
+      "pdf": "p7",
+      "text": "No hardcoded longer time constant or smoothness constraint for higher r^h; stability learned via model"
+    },
+    {
+      "id": "A-L03",
+      "pdf": "p20",
+      "text": "MAP Dirac previous posterior and unconditional prior approximate p(rh|history); not exact full Bayesian filtering"
+    },
+    {
+      "id": "A-L04",
+      "pdf": "p9-11",
+      "text": "Flash-lag simulation synthetic stimuli and relative correction iterations, compared qualitatively with separately collected human experimental phenomena"
+    },
+    {
+      "id": "A-L05",
+      "pdf": "p13",
+      "text": "Memory extension separately added with new persistent G and latent m; trained DPC parameters frozen"
+    },
+    {
+      "id": "A-L06",
+      "pdf": "p13",
+      "text": "Memory cue order empirical simulation: start strong, mid weak, end absent"
+    },
+    {
+      "id": "A-L07",
+      "pdf": "p13-14",
+      "text": "Two-level sequence-global r^h lacks direct representation of higher-order between-sequence bounce-type transition; three-level required for that task"
+    },
+    {
+      "id": "A-L08",
+      "pdf": "p17-18",
+      "text": "Alternative additive/concatenative top-down parameterization said theoretically equivalent; claimed hypernetwork param advantage conditional not universal"
+    },
+    {
+      "id": "A-L09",
+      "pdf": "p17-18",
+      "text": "Three-level error threshold post-hoc training-set estimate; future online precision learning not part of reported model"
+    },
+    {
+      "id": "A-L10",
+      "pdf": "p18",
+      "text": "Possible added dependence of second-level transitions on position/spatial context discussed as future, not implemented"
+    },
+    {
+      "id": "A-L11",
+      "pdf": "p21-22",
+      "text": "Natural video nonstationarity weakens autocorrelation estimator assumptions; deterministic MAP prevents exact Murray et al neural trial-variability method"
+    },
+    {
+      "id": "A-L12",
+      "pdf": "p16-18",
+      "text": "Neural gain on apical dendrites, hippocampal episodic memory analogy, cortical timescales are model interpretations and comparisons, not direct tests of those mechanisms"
+    }
+  ],
+  "uncertainty_record": [
+    {
+      "id": "A-U01",
+      "severity": "SCOPED",
+      "description": "Standalone S1 supplement/code not separately admitted; detailed optimizer schedules/Algorithm A/B outside primary-source claims even though parent PDF describes them"
+    },
+    {
+      "id": "A-U02",
+      "severity": "INTERPRETIVE",
+      "description": "Equivalent additive/concatenative top-down alternatives are expressly admitted; paper does not establish unique biological implementation"
+    },
+    {
+      "id": "A-U03",
+      "severity": "NO_NUMERIC_REPLICATION",
+      "description": "Source-level model and outcome exposition only; no exact original training reproduction performed during A"
+    }
+  ],
+  "completion": {
+    "node_count": 35,
+    "edge_count": 23,
+    "limit_count": 12,
+    "source_page_coverage": "PDF 1-30 with all scientific sections and reference inventory",
+    "claim": "Original A source-only; grammar assignments deliberately absent",
+    "do_not_mutate": true
+  }
+}
