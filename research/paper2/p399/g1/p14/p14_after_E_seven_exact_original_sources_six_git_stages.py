@@ -15,7 +15,7 @@ ROOT="research/paper2/p399/g1/p14/"
 P=pathlib.Path(__file__).resolve().parent
 doi="10.1371/journal.pcbi.1008969"
 spec=[
- ("MAIN",None,"cca218ddff9764422316f99fe2cf8cf6a5519462a0b38ac25b45999080b79ec0",2551032,34,[(4,["sequence","repeat"]),(5,["representational","associative"]),(7,["presentation","recoding"]),(8,["Table 1","associative"]),(11,["interference","associative"]),(17,["hamming","item"]),(19,["mixture","recency"]),(20,["dirichlet","chunks"]),(21,["mapping","n-gram"]),(22,["optimal","chunk"]),(23,["Fig 8","evidence"]),(25,["noise","item"]) ]),
+ ("MAIN",None,"cca218ddff9764422316f99fe2cf8cf6a5519462a0b38ac25b45999080b79ec0",2551032,34,[(4,["sequence","repeat"]),(5,["associative","learning"]),(7,["presentation","recoding"]),(8,["Table 1","associative"]),(11,["interference","associative"]),(17,["hamming","item"]),(19,["mixture","recency"]),(20,["dirichlet","chunks"]),(21,["mapping","n-gram"]),(22,["optimal","chunk"]),(23,["Fig 8","evidence"]),(25,["noise","item"]) ]),
  ("S1",1,"f2e9bef0fd311132078f8de1e1ef261649c9d540ab93cba541c7d25534322385",368737,2,[(1,["item mixture","noise"]),(2,["Fig A","novel"])]),
  ("S2",2,"80ff7cca0501b3989fd8ba0867b4dea411f1243b5ca094cc2cecd1c34dd0575b",68383,2,[(1,["recency","primacy"])]),
  ("S3",3,"82f2a03519e5718428303158c27caf21b39937b9841a7581a40eb15901eb2be2",104835,3,[(1,["posterior","model evidence"]),(2,["model evidence","complexity"])]),
