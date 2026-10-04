@@ -1,0 +1,253 @@
+{
+  "schema": "PF04_PASS_D_FROZEN_GRAMMAR_v0_RECONSTRUCTION",
+  "after_frozen_C": {
+    "A_git_blob": "09e760744fd24712e474abfa5fabe8abbd3d1736",
+    "C_git_blob": "1b8dc689516b5d72476e56569a294950f245c5e2",
+    "append_only_C_patches": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07"
+    ]
+  },
+  "original_pdf_sha256": "bc84d4827df202cf5051cf10aa64cc09673b718af2acd31441a3712bcd376df9",
+  "grammar": "UNMODIFIED_G_cog = {Pi,X,C,Q,P_in,P_out,K,T,rho/O}; frozen S interpreted as X, no new action-sequence coordinator primitive",
+  "layers": {
+    "L_sys": "Flat MB/MF & source-value combiner; hierarchical source-level GD selector, learned option repertoire and source-defined execution/progress.",
+    "L_claim": "Source assertions distinct from evidence, fit claims and unresolved code assumptions.",
+    "L_ctx": "Two-stage fixed-key experiment, participant samples, reward/reset regimes and task-specific limits.",
+    "L_formal": "Original eq2-15 plus one explicit researcher-only eq10 denominator index normalization; source eq13 exact index binding unresolved."
+  },
+  "role_mapping": [
+    {
+      "role": "Pi",
+      "source_ids": [
+        "A01",
+        "A02",
+        "A08",
+        "A12",
+        "A14"
+      ],
+      "formal_role": "individuation/partition/boundary",
+      "source_bounded_content": "Separate flat MB/MF, compared architecture families, option versus single choices, active versus fresh stage-two action. These are nested partitions of source-described mechanism, not extra entities."
+    },
+    {
+      "role": "X",
+      "source_ids": [
+        "A05",
+        "A06",
+        "A08",
+        "A09",
+        "A10",
+        "A12",
+        "A13"
+      ],
+      "formal_role": "configuration carrier",
+      "source_bounded_content": "Flat: current learned T2, QH(stage/action), parameters, perseveration context. Hierarchy: learned transitions for single/sequence options; source-defined selected option and execution progress until completion; no extra supervisory state."
+    },
+    {
+      "role": "C",
+      "source_ids": [
+        "A03",
+        "A06",
+        "A08",
+        "A18",
+        "A28"
+      ],
+      "formal_role": "realizability/admissibility",
+      "source_bounded_content": "Admissible S0 options 2 singles+4 sequences, per-state eligible actions; eq7 restricted second-stage trigger, reduced-variant parameter equalities, open-loop scheduled next action; distinguish from experimental preparation."
+    },
+    {
+      "role": "Q",
+      "source_ids": [
+        "A05",
+        "A07",
+        "A10",
+        "A11"
+      ],
+      "formal_role": "criterion-conditioned orientation/filter",
+      "source_bounded_content": "Expected terminal reward drives MB/option evaluation; flat w-valued mixture and softmax; hierarchy option-kind weights w/1-w and normalized choice eq10 are existing source criteria."
+    },
+    {
+      "role": "P_in",
+      "source_ids": [
+        "A08",
+        "A11",
+        "A13",
+        "A29"
+      ],
+      "formal_role": "system-to-World action/interface",
+      "source_bounded_content": "Selected individual motor action goes to World, including next predetermined element when active option receives expected stimulus; experimental manipulations of task schedule belong E_exp, not P_in."
+    },
+    {
+      "role": "P_out",
+      "source_ids": [
+        "A03",
+        "A04",
+        "A09",
+        "A13",
+        "A29"
+      ],
+      "formal_role": "World-to-system read/interface",
+      "source_bounded_content": "Observed slot-machine stimulus and terminal reward enter at appropriate stage; during active sequence the expected stimulus may launch next action without fresh reward-based stepwise arbitration."
+    },
+    {
+      "role": "K",
+      "source_ids": [
+        "A05",
+        "A06",
+        "A07",
+        "A09",
+        "A10",
+        "A11",
+        "A12",
+        "A14"
+      ],
+      "formal_role": "internal typed transformation/dependence",
+      "source_bounded_content": "Source MB Bellman/transition update, MF TD/eligibility, flat eq8 stateless combiner, hierarchy option valuation/softmax, option-conditioned stage-two mixture and post-terminal learning. External state transitions are not K."
+    },
+    {
+      "role": "T",
+      "source_ids": [
+        "A09",
+        "A13",
+        "A15",
+        "A29"
+      ],
+      "formal_role": "succession/temporal indexing",
+      "source_bounded_content": "Decision before first action; World transition precedes stage-two stimulus; active option may produce preset second action; terminal feedback precedes next learned-dependent choice. C04 does not artificially total-order abstract handoff vs internal learning."
+    },
+    {
+      "role": "rho/O",
+      "source_ids": [
+        "A03",
+        "A04",
+        "A20",
+        "A21",
+        "A23",
+        "A29"
+      ],
+      "formal_role": "boundary-relative observation/trace",
+      "source_bounded_content": "The agent-accessible state signal, outcome observations, and researcher-measured choice/RT are distinguished. Experimentally recorded RT is not automatically an agent P_out available to its own policy."
+    }
+  ],
+  "architectures": [
+    {
+      "family": "FLAT_SOURCE_FAMILY_8",
+      "source_graph_nodes": [
+        "A01",
+        "A03",
+        "A04",
+        "A05",
+        "A06",
+        "A07",
+        "A18",
+        "A19",
+        "A20",
+        "A21",
+        "A25"
+      ],
+      "original_control": "Flat source-defined MF/MB values are combined using eq8 w weighting; then eq9 softmax with state-specific beta and k perseveration occurs at each stage. No hidden requirement that first-stage control fix stage-two action.",
+      "mapping": {
+        "X": "learned first/second-stage QH and learned stage-two T; MB value and action-perseveration context",
+        "Pi": "MB vs MF source components and action per stage",
+        "C": "two actions available per S0/S1/S2; eq7 eligibility condition; original eight nested parameter configurations",
+        "Q": "reward-based evaluation and w-valued weighting",
+        "K": "eq2-7 learning + Bellman + eq8 mixing + eq9 choice",
+        "P_in": "one selected action per stage",
+        "P_out": "state/reward observations after each World transition",
+        "T": "t_stage1 < t_stateobs < t_stage2 < t_terminal_feedback < t_nextlearned_decision",
+        "rho/O": "measured trial actions, state and terminal reward as appropriate boundary projections"
+      },
+      "coordination": {
+        "A0": "FULL_SOURCE_LEVEL_DIRECT: eq8 is an EXISTING source comparator/combiner; no separately invented coordination process required",
+        "A1": "NOT_NECESSARY_AS_ADDITION: explicit source eq8 is already a typed value-combining interface; code may implement stateless adapters but these are implementation choices, not newly inferred mechanism",
+        "A2": "NOT_REQUIRED: do not invent extra persistent coordination state or reclassify original source's flat arbiter as an inferred A2."
+      },
+      "original_negative": "Original Fig5 changed-machine conditional pattern not captured by fitted flat family; this is original comparative finding, not generic impossibility for every alternative flat model."
+    },
+    {
+      "family": "HIERARCHICAL_SOURCE_FAMILY_8",
+      "source_graph_nodes": [
+        "A02",
+        "A03",
+        "A04",
+        "A08",
+        "A09",
+        "A10",
+        "A11",
+        "A12",
+        "A13",
+        "A14",
+        "A15",
+        "A16",
+        "A17",
+        "A18",
+        "A21",
+        "A23",
+        "A26",
+        "A29",
+        "A30"
+      ],
+      "original_control": "Goal-directed evaluates a single action or full 2-step sequence in S0. A source-defined active sequence has its own next-action identity and completion semantics; it receives expected stimulus to launch next action but need not query new reward/perform fresh arbitration mid-sequence. Source discussion allows GD inhibition; fitted stochastic equations do not specify an additional stop-state model.",
+      "mapping": {
+        "X": "learned transitions for singles/compound options, selected option identity and progress index (source-defined episode memory), perseveration",
+        "Pi": "single vs two-step option identities and latent cause of first action",
+        "C": "six source-enumerated S0 options; expected stimulus trigger; sequence completion; no new supervisory entity",
+        "Q": "goal-directed option value via eq3/4, option-kind weights omega and perseveration in normalized eq10",
+        "K": "eq2 option/single post-terminal update, original eq3 option value, eq10 normalized selection, eq11/12 latent option conditioning, source-qualified eq13 stage-two mixture",
+        "P_in": "first selected physical action followed by predetermined second physical action if active; singleton causes fresh second decision",
+        "P_out": "expected stage-two state trigger and post-terminal outcome with different causal roles",
+        "T": "option selection < first physical step < external state transition/stimulus < second physical step/override < terminal outcome < next choice",
+        "rho/O": "conditional second-stage choices, RT and realized rewards measured at boundary"
+      },
+      "coordination": {
+        "A0": "FULL_AT_SOURCE_STRUCTURAL_LEVEL_WITH_NOTATION_EXCEPTION: author-original goal-directed option selector plus its authored option execution state directly realizes hierarchy; no extra invented coordinator.",
+        "A1": "NOT_NECESSARY_BEYOND_SOURCE_INTERFACES: typed stage-boundary trigger and option-progress representation are already implicit/explicit in original options; an adapter is a code-interface if used, not newly discovered cognitive mechanism.",
+        "A2": "NOT_REQUIRED_BY_THIS_SOURCE: added persistent central coordinator would double count source's existing option-selection and episode-execution state; other untested mechanisms remain possible."
+      },
+      "original_negative": "Source-disabled eq15 family reduces second-stage model fit; conceptually feedback-responsive hierarchy may show flat-like second-stage predictions; source does not falsify all MF or parallel processes."
+    }
+  ],
+  "recurrence": {
+    "status": "DERIVED_SYSTEM_WORLD_COUPLED_RECURRENCE_NOT_NEW_GRAMMAR_PRIMITIVE",
+    "distinct_objects": [
+      "internal system state X",
+      "World W physical task states and reward stochasticity",
+      "Gamma physical/read/write coupling",
+      "E_exp externally imposed protocol and reward resets",
+      "R actual realized trial history"
+    ],
+    "formal": [
+      "O_t = rho_Pi(W_t, Gamma_in, E_exp, t)  (agent-facing state/expected next-step signal; empirical RT separately projected)",
+      "u_t = P_in(Policy_QC(X_t, O_t))  (flat single action each stage OR source-defined hierarchical chosen option's next physical step)",
+      "W_(t+1) = F_W(W_t, Gamma_out(u_t), E_exp,t, xi_t)  (external 70/30 transition and reward process, NOT internal K)",
+      "X_(t+1) = K_C(X_t, P_out(O_(t+1)), terminal_feedback_if_any, active_option_if_any) (typed internal transitions and source terminal updates)",
+      "R = (O_0, u_0, W_1, O_1, u_1, terminal_reward, ...)  (realized history, not identical to model state or experimental preparation)"
+    ],
+    "event_guard": "For active 2-step option, expected state signal triggers stored second action without recomputing its identity from intermediate reward; if source-described inhibition occurs, treat as conceptual alternative not a fitted stop-hazard parameter.",
+    "world_initial_conditions": "World five states and task reward/reset schedule sit in W and E_exp; admissible cognitive configurations C do not literally encode experimenter's condition."
+  },
+  "additive_grammar_primitives": [],
+  "source_exceptions": [
+    {
+      "id": "EX1",
+      "effect": "2013 actual fit code equivalence to normalized eq10 unverified; numerical replication and historical likelihood unsupported."
+    },
+    {
+      "id": "EX2",
+      "effect": "Eq13 exact generic printed coefficient binding unresolved; only mechanistic mixture reconstructed from prose+eq11-12."
+    }
+  ],
+  "claims_not_made": [
+    "No new real cognitive coordinator discovered solely from option-progress variable",
+    "Not asserting flat arbitration is dynamically stateful in the implemented 2013 comparator",
+    "Not asserting original empirical traces regenerated",
+    "Not asserting neural implementation uniquely identified by source model fit",
+    "Not asserting perfect grammatical fidelity at undecidable numerical notation level"
+  ],
+  "coordination_conclusion": "Both architectures can be reconstructed A0 using their OWN source-declared mechanisms; different comparators remain distinct; neither forces extra A1 or A2. This is paper-relative not universal."
+}
