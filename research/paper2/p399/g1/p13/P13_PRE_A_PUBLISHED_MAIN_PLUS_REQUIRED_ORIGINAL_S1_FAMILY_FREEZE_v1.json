@@ -1,0 +1,242 @@
+{
+  "schema": "p399.g1.p13.lrn.frozen_source_edition_and_scoped_genealogy.PRE_A_v1",
+  "timestamp_jst": "2026-10-04",
+  "decision": "BOUNDED_PRE_A_SOURCE_ADMITTED_PUBLISHER_MAIN_PLUS_ESSENTIAL_PUBLISHER_S1_MATH_WITH_FINAL_G2_AND_HISTORICAL_FAMILY_HOLD",
+  "work": {
+    "id": "P13",
+    "primary_lane": "LRN",
+    "title": "Human online adaptation to changes in prior probability",
+    "authors": [
+      "Elyse H. Norton",
+      "Luigi Acerbi",
+      "Wei Ji Ma",
+      "Michael S. Landy"
+    ],
+    "publisher": "PLOS Computational Biology",
+    "received": "2018-11-28",
+    "accepted": "2019-06-20",
+    "published": "2019-07-08",
+    "doi": "10.1371/journal.pcbi.1006681",
+    "article": "15(7):e1006681"
+  },
+  "frozen_main_original": {
+    "primary": "ORIGINAL_PUBLISHER_PUBLISHED_PDF",
+    "url": "https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1006681&type=printable",
+    "raw_sha256": "8e4aef9af81827f0bf5b6a82cd78b3ff9d6f60aa436b3e54156e6143e0c5af07",
+    "bytes": 2109160,
+    "pages": 26,
+    "prior_physical_receipt_run": 37178895352,
+    "fresh_matched_reason": "Cross-validation with critical original S1 appendix pre-A not unnecessary wide reacquisition",
+    "fresh_source_ci_run": 37186199232,
+    "critical_main_pdf_images_directly_reviewed_one_based": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      12,
+      13,
+      14,
+      15
+    ],
+    "full_main_26_individually_pdf_pixel_reviewed": false,
+    "original_complete_publisher_html_noncritical_text_and_references_checked": true,
+    "model_main_equations_visually_reviewed": "Eqs1-9 on original published main PDF p5,7–9; other methods equations 10–16 checked in main full-text narrative, no claim all 26 pages image-reviewed",
+    "main_original_supplement_flag": "Full necessary Bayesian exact recursion not in main alone; direct extra official S1 now frozen"
+  },
+  "frozen_necessary_supplement": {
+    "source": "ORIGINAL_OFFICIAL_PUBLISHER_S1_APPENDIX_PDF; essential to original ideal Bayesian recursion, alternative model identity, and recovery limitations",
+    "url": "https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1006681.s001&type=supplementary",
+    "raw_sha256": "198eb18de66cca150dd233184781923680831f6e59007fec83ab54b5ec36453c",
+    "bytes": 2738609,
+    "pages": 32,
+    "exact_physical_acquisition_run": 37186199232,
+    "full_supplement_publisher_page_extracted_text_page_map": "32/32 separately physically probed without presuming image review every page",
+    "critical_supplement_publisher_original_rendered_pages": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10,
+      11,
+      15
+    ],
+    "actual_original_S1_visual_run": 37186255505,
+    "S1_equations_visually_verified": [
+      "S1–S6 marginalization and recursive predecessor-state posterior",
+      "S7–S13 source conditional category predictive and hazard change point",
+      "S14–S16 exact joint run length/previous state recursion and initial boundary",
+      "S17–S24 covert noisy-observation, lapse and overt criterion distribution",
+      "S25 RL probability-updating variant vs main RL criterion-updating",
+      "S1 p15 recovery partial failure and non-discriminating observer variants"
+    ],
+    "other_supplement_models_and_figures_status": "Publisher original text page map 32/32 physically extracted; selected nine model-critical PDF pages visually rendered; not all 32 supplemental figure pages individually visually audited. Detailed all-person fitting figures beyond sampled scope not claimed complete."
+  },
+  "corrections": {
+    "main_publisher_original_visible_banner": false,
+    "focused_current_original_DOI_correction_search": "NONE_DISCOVERED",
+    "exhaustive_editorial_crossmark_corrections_certified_absent": false,
+    "related_inherited_predecessor": "Source Wilson et al 2013 node approximation cites later correction to that earlier publication; must not mistake inherited correction for P13 own correction.",
+    "fail_close_if_new_substantive_P13_correction": true
+  },
+  "experiment_system_world": {
+    "World": "Externally sample-and-hold category A probability states Sπ={0.2,0.35,0.5,0.65,0.8}; category mean/variance, true stimulus and experimenter category-feedback process. Run lengths actual 80–120 trials, no block-start cue. Experimental reward correctness feedback is explicit, not a participant's internal learned environment hazard.",
+    "participants": "11 human observers (including one author) in measurement then trained covert and overt tasks, 200 training plus 800 experimental trials per categorization session",
+    "task_instruments": "Covert implicit keypress noisy orientation category; overt pre-stimulus explicitly set oriented criterion by mouse (continuous) with adjustment noise, not identical task-dependent observations.",
+    "System": "Candidate internal category-probability estimator or posterior plus criterion readout. Each candidate original model is a competing possible SYSTEM and not a stack of simultaneously demonstrated internal submodules.",
+    "Experiment": "Data 11 observers per task and model-likelihood / group protected exceedance comparison; plotted moving averages and sample/simulated CI are experimenter probe, not participant internal cognition."
+  },
+  "native_variants": [
+    {
+      "id": "BAYES_IDEAL",
+      "math": "Original main Eq1 and exact S1 EqS1–S24; joint posterior over run length r and prior state ξ and Markov dependence on preceding category-prob state after changes; integrate state π to generate predicted category probabilities."
+    },
+    {
+      "id": "BAYES_SINGLE_WRONG",
+      "math": "Original main named Bayes_r wrong expected run-length, Bayes_π wrong allowed category states, Bayes_β equal-prior Beta(β,β) hyperprior; source variants not one undifferentiated Bayes black box."
+    },
+    {
+      "id": "BAYES_FLEX",
+      "math": "Original main Bayes_rπβ flexible five extra free parameters, separate BIC/ELBO fitting. NOT included usual main original Fig3/Table1 due to different fitting and model complexity; S1 separately plots/compares."
+    },
+    {
+      "id": "EXP",
+      "math": "Main Eq3: p_hat1=0.5, p_hat_t+1=α C_t+(1-α)p_hat_t, fixed smoothing."
+    },
+    {
+      "id": "EXP_BIAS",
+      "math": "Main Eq3 then Eq4: tilde_p=w p_hat+(1-w)*0.5, criterion from this mix, source two distinct timescales interpretation not directly measured neuronal storage."
+    },
+    {
+      "id": "WILSON_NODES",
+      "math": "Main Eqs5–6 Wilson et al 2013 approximate hazard-weighted mixture of 3 delta-rule nodes, l1=1 l2 l3/νp free, h=0.01 source model parameter; predecessor publication plus source cites later original erratum."
+    },
+    {
+      "id": "RL_CRITERION",
+      "math": "Main Eq7 update the DECISION CRITERION z only after NEGATIVE feedback, does NOT estimate category probability as Exp does."
+    },
+    {
+      "id": "RL_PROB_S1_ONLY",
+      "math": "Publisher S1 p11 EqS25 separate optional RL updating probability on negative feedback, NOT the main RL Eq7; test does not conflate."
+    },
+    {
+      "id": "BEHRENS_2007",
+      "math": "Main Eqs8–9 cited Behrens et al 2007 state posterior over π, volatility and volatility change, plus bias adaptation; distinct full grid not main Bayes run length."
+    },
+    {
+      "id": "FIXED",
+      "math": "Main Eq2 neutral fixed criterion comparator and one or more source appendix variants; not evidence humans never update."
+    }
+  ],
+  "ancestry": [
+    {
+      "source": "Adams and MacKay 2007 Bayesian online changepoint detection",
+      "relationship": "EXPLICIT_FORMAL_ANCESTOR_TO_P13_IDEAL_JOINT_RUNLENGTH_PREVIOUS_STATE_RECURSION_EXTENDED_WITH_MARKOV_PREVIOUS_PROB_STATE",
+      "not_independent_de_novo_inference": true
+    },
+    {
+      "source": "Wilson et al. 2013 approximating Bayesian inference with a mixture of delta-rules; later corrected paper",
+      "relationship": "EXACT_PREEXISTING_MULTINODE_DELTA_RATES_COMPARATOR_SOURCE_NOT_P13_ORIGINAL_UNIQUE_NEW_LAW"
+    },
+    {
+      "source": "Behrens et al. 2007 uncertainty/volatility learning",
+      "relationship": "EXISTING_BAYES_VOLATILITY_ALTERNATIVE_COMPARATOR_AND_BEHAVIOR_PRECEDENT"
+    },
+    {
+      "source": "Norton et al. previous overt-criterion design",
+      "relationship": "INHERITED_OVERT_CRITERION_EXPERIMENTAL_TASK_NOT_NEWLY_DISCOVERED_DECISION_CRITERION_TECHNIQUE"
+    }
+  ],
+  "negative_scope": [
+    {
+      "id": "L01",
+      "source": "Main p4 Fig1 & Methods pp18–20",
+      "meaning": "Two task response modalities and explicit versus implicit criterion readouts, not identical probe; source common generative environment only."
+    },
+    {
+      "id": "L02",
+      "source": "Main Fig1D Methods",
+      "meaning": "External environment changes 80–120 trials with five π states; source previous task-derived belief not demonstrated identical subjective hazard; Wilson comparison h0.01 approximate expected100."
+    },
+    {
+      "id": "L03",
+      "source": "Main p5 and original S1 pp3–8",
+      "meaning": "Ideal Bayesian recursive exact math explicitly depends on original publisher S1 for EqS1–S24, cannot certify ideal full model from main Eq1 alone."
+    },
+    {
+      "id": "L04",
+      "source": "Main p6 and S1 pp3–6",
+      "meaning": "Bayes ideal joint r_t/ξ_t with Markov previous state/transition after change extends Adams and MacKay prior; cannot classify all Bayes methods as new independent original."
+    },
+    {
+      "id": "L05",
+      "source": "Main p6 Bayesian variants",
+      "meaning": "Wrong-belief Bayes_r, Bayes_π, Bayes_β distinguish different assumptions; flexible Bayes_rπβ compares outside standard 11 main model group under distinct metrics and extra parameters."
+    },
+    {
+      "id": "L06",
+      "source": "Main p7 Eqs3–4",
+      "meaning": "EXP is delta-rule mathematically; Expbias's stable 0.5 mixing w is separate from online α, not biological proof two literal physical storage banks."
+    },
+    {
+      "id": "L07",
+      "source": "Main p8 Eq7 & S1 p11 EqS25",
+      "meaning": "Main RL changes decision criterion only after error; S1 alternate RL_prob changes estimated probability on error; cannot merge as identical comparator."
+    },
+    {
+      "id": "L08",
+      "source": "Main p8 Eqs5–6",
+      "meaning": "Wilson 3-node approximation uses prior exact existing Wilson 2013 and later erratum; not evidence P13 discovered all-node hierarchy."
+    },
+    {
+      "id": "L09",
+      "source": "Main Fig3 and discussion p14–16 plus S1",
+      "meaning": "Expbias LML top among main comparator, but flexible Bayes_rπβ with different fit BIC/ELBO not significantly discriminated from Expbias; not uniquely demonstrated EXP actual internal mechanism."
+    },
+    {
+      "id": "L10",
+      "source": "Main p12 Fig3 and Fig5",
+      "meaning": "Group protected exceedance probabilities 0.96 covert and 0.86 overt concern main model group only; no 0.96/0.86 proven against excluded flexible Bayes."
+    },
+    {
+      "id": "L11",
+      "source": "Main p13–14 Fig5 and S1 recovery",
+      "meaning": "Observer fitted short time constants 4.5 vs environmental run length mean100, not participant's ground-truth knowledge or literal stable neuron bank; recovery not perfect (source S1 p15 ~70% plus RL/Exp confusion)."
+    },
+    {
+      "id": "L12",
+      "source": "Main Methods p18 and S1 p15–16",
+      "meaning": "N11 observer fits (including author), stimulus category feedback fully available; subjective code or exact replication not run by G1; model/pair recovery partial limitations."
+    },
+    {
+      "id": "L13",
+      "source": "Main source availability and S1 recovery",
+      "meaning": "Original published source code on author Github available, but G1 does not run authors' generative or fitting code; source report numeric results only, no independent numerical evidence."
+    },
+    {
+      "id": "L14",
+      "source": "Main p15–16 and S1 model differences",
+      "meaning": "Human perceptual change tracking under explicit category feedback tested; no claim universal motor learning or all context-free continual learning; G2 LRN02 Kalman mechanism final exact original still unqualified."
+    },
+    {
+      "id": "L15",
+      "source": "Main p9–14 original AIC/LML BIC/ELBO",
+      "meaning": "Main set model complexity and separate flexible Bayes complex fit methods cannot be pooled to claim one universal apples-to-apples score or biological necessity."
+    }
+  ],
+  "family_provisional": {
+    "PF_originals": "PF original limited qualified immutable, mere shared retention and Bayesian words do not prove same central dynamics",
+    "P14": "Neural representational sequence recoding original still PENDING science; no automatic independent family clearance",
+    "G2_LRN01": "efficient representational coding current working comparator distinct broad learning label but full original source unfrozen",
+    "G2_LRN02": "volatile Kalman filter learning DOI 10.1371/journal.pcbi.1007963; suspected family-level dynamic uncertainty update overlaps ideal Bayes and existing Behrens comparator; source mathematical original comparison REQUIRED",
+    "G2_LRN03": "trained inhibitory-excitatory RNN DOI10.7554/eLife.21492; mechanism type distinct provisionally; final source-independent ancestry not admitted",
+    "G2_40": "Working 40 DOI IDs historically no exact match, full 800 central family not qualified",
+    "historical_398": "Separate old corpus unchanged; no all-central source genealogy proof"
+  },
+  "NO_MAIN_science": true,
+  "source_critical_supplement_novelty": "New actual publisher S1 32pp physical receipt is narrowly justified because original main delegates complete central Bayesian recursive mathematics and model-recovery counterevidence there."
+}
