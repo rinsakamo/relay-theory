@@ -1,0 +1,105 @@
+{
+  "schema": "p399.pf04.PRE_A_v3_author_scoped_normalization",
+  "state": "PASS_FOR_SOURCE_GROUNDED_STRUCTURAL_RECONSTRUCTION_WITH_ORIGINAL_IMPLEMENTATION_EXCEPTION",
+  "date": "2026-10-04",
+  "supersedes_for_future_stages": "PRE_A_v2_source_math_blocker.json; earlier files preserved immutable",
+  "authorization": "Explicit author request in PF04 lane: 分母を修正して進めて (2026-10-04); authorizes a declared analytical normalization, NOT an emendation of publisher PDF and NOT authentication of authors' 2013 fitting code",
+  "source": {
+    "medium": "original complete published PLOS PDF",
+    "canonical": "https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1003364&type=printable",
+    "sha256": "bc84d4827df202cf5051cf10aa64cc09673b718af2acd31441a3712bcd376df9",
+    "bytes": 377245,
+    "pages": 14,
+    "edition": "2013-12-05 PLOS published original, checked correction registries as previously reported",
+    "frozen_same_source_AB_C": true
+  },
+  "normalization": {
+    "id": "PF04-NORM-01",
+    "original_printed": "pi(a|s) = exp(beta * omega(a) * VG(s,a) + kappa(s,a)) / SUM_[a'] exp(beta * omega(a) * VG(s,a') + kappa(s,a'))",
+    "researcher_adopted": "pi_star(a|s) = exp(beta * omega(a) * VG(s,a) + kappa(s,a)) / SUM_[a'] exp(beta * omega(a') * VG(s,a') + kappa(s,a'))",
+    "scope": "ONLY equation (10) denominator's omega summation index; no other source formulas altered",
+    "justification": "Probability normalization over a set of both single actions omega=w and two-action sequences omega=1-w; source-original Eq9 uses indexed denominator, and source Eq10's own prose requires per-option weights",
+    "recorded_counterexample": {
+      "original_sum": 0.9254999009562278,
+      "normalized_sum": 1,
+      "conditions": "illustrative 2 single +4 option state, beta=1,kappa=0,w=.25,single 1 has V=1, all others V=0"
+    },
+    "epistemic_status": "AUTHOR_AUTHORIZED_ANALYTIC_NORMALIZATION_NOT_AUTHENTICATED_AUTHOR_CODE",
+    "propagate_to": [
+      "PASS_A typed original vs adopted notation separately",
+      "B/C compare against original raster and explicit normalization contract, do NOT invent original corrigendum",
+      "D structural grammar uses pi_star in modeled reconstruction",
+      "E normalized illustrative computational test only; exact original numeric replication and 2013-fit-code identity remain UNDERDETERMINED"
+    ]
+  },
+  "variant_scope": {
+    "source_prose": "Methods says eight simpler models in addition to full",
+    "source_table": "Published Table 1 page 9 displays eight compared variants per family, including the full model",
+    "decision": "Complete observable published compared model-family inventory = 8 rows H + 8 rows F; record internal prose/table mismatch. No invisible ninth variant inferred.",
+    "original_full_family_parameters": {
+      "flat": [
+        "beta1",
+        "beta2",
+        "eta",
+        "alpha1",
+        "lambda",
+        "k",
+        "w"
+      ],
+      "flat_fixed_relation": "alpha2=eta",
+      "hierarchical": [
+        "beta",
+        "eta1",
+        "eta2",
+        "k1",
+        "k2",
+        "w"
+      ]
+    }
+  },
+  "requirements": [
+    {
+      "id": "PREA01",
+      "status": "PASS",
+      "basis": "identity/edition/correction-registration checked prior"
+    },
+    {
+      "id": "PREA02",
+      "status": "PASS",
+      "basis": "actual original publisher PDF bytes twice independently verified, all 14-page visual exam"
+    },
+    {
+      "id": "PREA03",
+      "status": "PASS_NOT_INVOKED",
+      "basis": "HTML alternate unnecessary"
+    },
+    {
+      "id": "PREA04",
+      "status": "PASS",
+      "basis": "one original publisher-PDF source SHA fixed through A/B/C, researcher normalization separate"
+    },
+    {
+      "id": "PREA05",
+      "status": "PASS_WITH_ANCESTRY_DISCLOSED",
+      "basis": "same scoped previously checked current/legacy corpus, 2012 direct lineage and 2005 flat comparator overlap disclosed"
+    },
+    {
+      "id": "PREA06",
+      "status": "PASS_SCOPED_ANALYTIC_NORMALIZATION",
+      "basis": "original mathematical glyphs readable; explicit authorized one-token normalization; code-equivalence kept scientific uncertainty, not falsely upgraded"
+    },
+    {
+      "id": "PREA07",
+      "status": "PASS",
+      "basis": "this append-only machine-readable receipt before any scientific PASS A"
+    }
+  ],
+  "safeguards": [
+    "Prior PRE_A v1/v2 preserved and cited by later phases",
+    "No Grammar v0 modification",
+    "Do not treat original implementation equiv as experimentally verified",
+    "Stages must receive exact source, this normalization note, previous source exception and immutable prior-stage artifacts"
+  ],
+  "qualified_pilot_increment": 0,
+  "main_authorized": false
+}
