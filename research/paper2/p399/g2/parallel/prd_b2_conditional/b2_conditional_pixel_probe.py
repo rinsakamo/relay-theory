@@ -21,5 +21,6 @@ print("PRD_C_B2_FIRSTPARTY_SOURCE",json.dumps({k:v for k,v in r.items() if k!="p
 for p in r["page_map"]:print("PRD_C_B2_PAGE_MAP",json.dumps(p,sort_keys=True))
 Path("prd-c-b2-evidence").mkdir(exist_ok=True)
 Path("prd-c-b2-evidence/B2_CONDITIONAL_PUBLISHER_SOURCE_PIXEL_READBACK.json").write_text(json.dumps(r,sort_keys=True,indent=2)+"\n")
-p=doc[0];pix=p.get_pixmap(matrix=fitz.Matrix(1.25,1.25),alpha=False);im=Image.open(io.BytesIO(pix.tobytes("png"))).convert("RGB");bio=io.BytesIO();im.save(bio,format="JPEG",quality=57,optimize=True)
-print("PRD_C_B2_VISUAL_PAGE0_BASE64="+base64.b64encode(bio.getvalue()).decode("ascii"))
+for idx in [0,4,8,9,11,12,15,18,23]:
+ p=doc[idx];pix=p.get_pixmap(matrix=fitz.Matrix(1.15,1.15),alpha=False);im=Image.open(io.BytesIO(pix.tobytes("png"))).convert("RGB");bio=io.BytesIO();im.save(bio,format="JPEG",quality=56,optimize=True)
+ print("PRD_C_B2_VISUAL_PAGE"+str(idx)+"_BASE64="+base64.b64encode(bio.getvalue()).decode("ascii"))
