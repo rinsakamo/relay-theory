@@ -20,11 +20,12 @@ print("PRD_C_FIRSTPARTY_SOURCE",json.dumps({k:v for k,v in receipt.items() if k!
 for p in receipt["page_text"]: print("PRD_C_PAGE_MAP",json.dumps(p,sort_keys=True))
 Path("prd-c-evidence").mkdir(exist_ok=True)
 Path("prd-c-evidence/B1_OFFICIAL_SOURCE_PIXEL_READBACK.json").write_text(json.dumps(receipt,indent=2,sort_keys=True)+"\n")
-# Limit in-log original-source thumbnail to first printed page, demonstrating visual DOI/title.
-page=doc[0]; pix=page.get_pixmap(matrix=fitz.Matrix(0.95,0.95),alpha=False,colorspace=fitz.csRGB)
-from PIL import Image
-im=Image.open(io.BytesIO(pix.tobytes("png"))).convert("RGB")
-buf=io.BytesIO();im.save(buf,format="JPEG",quality=50,optimize=True)
-print("PRD_C_ORIGINAL_VISUAL_BEGIN page0=0 format=jpeg sha256="+hashlib.sha256(buf.getvalue()).hexdigest())
-print("PRD_C_VISUAL_BASE64="+base64.b64encode(buf.getvalue()).decode("ascii"))
-print("PRD_C_ORIGINAL_VISUAL_END")
+# Narrow bounded original publisher visuals: original p0 and source-critical equations/models/fit/adverse pages.
+for idx in [0,11,12,14,15,18]:
+ page=doc[idx]; pix=page.get_pixmap(matrix=fitz.Matrix(1.25,1.25),alpha=False,colorspace=fitz.csRGB)
+ from PIL import Image
+ im=Image.open(io.BytesIO(pix.tobytes("png"))).convert("RGB")
+ buf=io.BytesIO();im.save(buf,format="JPEG",quality=57,optimize=True)
+ print("PRD_C_ORIGINAL_VISUAL_BEGIN page0="+str(idx)+" format=jpeg sha256="+hashlib.sha256(buf.getvalue()).hexdigest())
+ print("PRD_C_VISUAL_PAGE"+str(idx)+"_BASE64="+base64.b64encode(buf.getvalue()).decode("ascii"))
+ print("PRD_C_ORIGINAL_VISUAL_END")
