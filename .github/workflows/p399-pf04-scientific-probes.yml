@@ -40,6 +40,20 @@ jobs:
               print("PF04_RECEIPT",name,"sha256",hashlib.sha256(raw).hexdigest(),"git_create_commit",c[0])
           for before,after in zip(commits,commits[1:]):
               subprocess.check_call(["git","merge-base","--is-ancestor",before,after])
+          result=json.loads((d/"FINAL_QUALIFICATION_v2.json").read_text())
+          assert len(result["frozen_stage_receipts"])==len(chronological)
+          for name,record in zip(chronological,result["frozen_stage_receipts"]):
+              raw=(d/name).read_bytes()
+              assert record["path"]==name
+              assert hashlib.sha256(raw).hexdigest()==record["sha256"],name
+          assert result["official_qualified_pilot_increment"]==0
+          assert result["main_authorized"] is False
+          old=json.loads((d/"FINAL_QUALIFICATION.json").read_text())
+          assert old["verdict"] == "PF04_PRE_A_SOURCE_MATH_UNDERDETERMINED_NOT_QUALIFIED"
+          jp=d/"FINAL_REPORT_v2_JA.md"
+          assert jp.is_file()
+          print("PF04_FINAL_REPORT_SHA256",hashlib.sha256(jp.read_bytes()).hexdigest())
+          print("PF04_FINAL_SIX_RECEIPTS_MATCH frozen v2 plus historical v1 retained")
           print("PF04_CHRONOLOGY_PASS all six stage source files added in correct immutable order")
           PY
       - name: Run independently defined PF04 structural example probes
