@@ -1,0 +1,27 @@
+name: P399 G1 P14 targeted real original main S2-S5 source integrity before PRE_A
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g1/p14/p14_preA_original_issuer_supplement_source_probe.py"
+      - ".github/workflows/p399-g1-p14-original-supp-before-prea.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  p14-issuer-original-and-material-supplements:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install 'pypdf==6.1.1'
+      - run: python research/paper2/p399/g1/p14/p14_preA_original_issuer_supplement_source_probe.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g1-p14-original-critical-source-prea-${{ github.run_id }}
+          path: g1-p14-source/mandatory-original-math-and-negative-supplements.json
+          retention-days: 21
+          if-no-files-found: warn
