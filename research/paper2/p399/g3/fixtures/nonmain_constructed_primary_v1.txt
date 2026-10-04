@@ -1,0 +1,18 @@
+NON-MAIN CONSTRUCTED CALIBRATION SOURCE — NEVER A PUBLISHED STUDY
+TITLE: Mock State-Coupling Demonstration
+AUTHOR: Synthetic Fixture Author
+VENUE: Fictitious Prestige-Free Journal
+DOI: NONE-NOT-A-PAPER
+SECTION S1: Two distinct synthetic states A and B update in sequence.
+STATE st-A: x carries previous input over two ticks.
+STATE st-B: y is a stateless interface readout of the present x.
+EQUATION eq-1: x[t+1] = 0.5*x[t] + u[t].
+EQUATION eq-2: y[t] = 2*x[t].
+DEPENDENCY dep-1: st-A precedes st-B; B reads state A only after the x update.
+TEMPORAL time-1: update x[t+1] then read y[t+1], not the reverse.
+VARIANT variant-1: persistent state A plus stateless B.
+VARIANT variant-2: B bypasses y and directly reads new x; variant-2 distinct from variant-1.
+FIGURE fig-1: [TEXT ONLY CONSTRUCTED FIGURE] A -> B; original literal text is the figure.
+NEGATIVE neg-1: Reversing st-A/st-B order fails to preserve intended readout.
+BOUNDARY boundary-1: external signal u belongs to constructed WORLD W, x belongs to SYSTEM.
+LIMIT limit-1: This fixture is not neuroscience and has no verified external numeric parameters.
