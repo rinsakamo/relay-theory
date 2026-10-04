@@ -1,0 +1,17 @@
+# QP04 D/E retrospective development report — 2026-10-04
+
+Paper: Flesch et al. (2023), DOI 10.1371/journal.pcbi.1010808.
+Original source: https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010808
+Scope: published complete original HTML only (historical author v2.2.2). This new D/E does not alter historic QP04 A/B/C, Grammar v0, or previously frozen Paper2 science. Historic A=26 items/17 edges, B=3 findings, C=5 append-only patches. Exact old A/B/C JSON was not available to this run, so no claim of per-ID exact replay.
+
+Reconstruction: two task cues plus 25 visual inputs, 100 ReLU hidden units and one sigmoid readout. T/K distinguish trial-indexed EMA context carry, subsequent reward-conditioned SGD, and the separately ordered Oja/Hebbian update of context-to-hidden weights. Learned opposite-sign task weights condition ReLU selective activation. Pi distinguishes input/hidden/output and context-selective learned partitions; Q is the algorithm-defined learning objective; World/coupling/experimenter curriculum are not internal meta-control. Researcher-side RSA and model fits are not participant mechanisms. Preserve baseline SGD, sluggish SGD, hand-set gate, learned SGD+Oja, composite EMA+SGD+Oja, context-known task-only gating, and deeper-tree conditional extension as separate cases.
+
+Critical original-HTML constraints: Main Methods describes task-unit Oja updates, while Discussion describes all-input PC context discovery and explicitly distinguishes context-known task-only gating; preserve the previously source-adjudicated qualifier on old A12/E08 rather than choosing one universal input mask. For the deeper-tree image case, context is not the dominant principal component. Achieving context dominance requires very large scaling, AND TRAINING REMAINS UNSTABLE EVEN THEN. The alternative is task-only Oja updates with known context; do not omit the failed-rescue condition. Methods also has a 10,000 total/5,000 per task versus adjacent 500-first-task textual tension; do not silently amend it. The four Fig7 plotted error classes are distinguishable from five psychophysical fitting parameters, not proof of a contradiction. No extrapolation to many-task lifelong learning.
+
+Bounded fidelity: 34 source-scoped development rows: 26 supported, 4 partially unverified, 2 original-source scope/wording ambiguity, 1 unavailable full historic A/B/C input, 1 unperformed empirical validation. Thirty standard-library developmental algebra, typed-topology and source-boundary probes PASS locally, but are not the original nonlinear PyTorch simulation, original figures numeric replication or human experiment. PLOS inline equation-image exact glyphs and full figure pixels are not independently certified.
+
+Outcome: A0 source-topology **candidate subject to documented conditions**; full model dynamic and empirical fidelity underdetermined. No added H2 coordinator is established; neither full A0 nor universal H0 is established. Historic QP04 is retrospective development, 0/4 new prospectively qualified pilot and MAIN not authorized.
+
+Local chat ZIP: QP04_GRAMMAR_RECONSTRUCTION_DEV_20261004.zip SHA256 241cebf3de14e3a9bb605856f46e875fc0b5d0ea67ae1b6368189cd1ba6dc493; full report, 34-row JSON ledger, Python tests, run receipt, SHA256SUMS. Package/individual member hashes validated locally. This PR contains the metadata report ONLY: do not claim the ZIP or Python tests are Git-tracked/CI run.
+
+Historical receipts are recorded in #399. Cross-refs #321 #399 PR #401 #403 #404 #405.
