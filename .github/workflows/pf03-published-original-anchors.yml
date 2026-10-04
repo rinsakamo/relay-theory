@@ -1,0 +1,31 @@
+name: pf03-published-source-15-original-anchors
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/pf03/**"
+      - ".github/workflows/pf03-published-original-anchors.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  fixed-original-pdf-independent-page-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Download exact original publisher PDF (not author manuscripts/code)
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/pf03_source_anchors
+          curl --fail --location --retry 3 --retry-delay 2 --max-time 100 --user-agent 'RelayTheory fixed-original-PDF source reviewer' --output /tmp/pf03_source_anchors/publisher_original.pdf 'https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1011801&type=printable'
+          echo 'FROZEN_ORIGINAL_PDF_SHA256=62d744125034ce834692cdb210065d34e2bbd0f58c9eb3387ed2d75dfb7f77ae'
+          sha256sum /tmp/pf03_source_anchors/publisher_original.pdf
+          python -m pip install -q pypdf
+          python research/paper2/p399/pf03/verify_pf03_original_pdf_source_anchors.py /tmp/pf03_source_anchors/publisher_original.pdf
+          rm -f /tmp/pf03_source_anchors/publisher_original.pdf
+          echo "15_ACTUAL_SOURCE_PAGE_ANCHORS_ONLY_NOT_NUMERIC_REPLICATION=true"
+          echo "NOT_EXACT_ORIGINAL_401_VALIDATOR=true"
