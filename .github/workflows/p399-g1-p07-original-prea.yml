@@ -1,0 +1,27 @@
+name: P399 G1 P07 targeted original-source scientific pre-A provenance
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g1/p07/**"
+      - ".github/workflows/p399-g1-p07-original-prea.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  p07-original-source-before-A:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install --disable-pip-version-check 'pypdf==6.1.1'
+      - run: python research/paper2/p399/g1/p07/p07_targeted_original_source_probe.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g1-p07-original-prea-metadata-${{ github.run_id }}
+          path: g1-p07/source-pre-a-check.json
+          retention-days: 14
+          if-no-files-found: warn
