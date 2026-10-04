@@ -1,0 +1,63 @@
+name: PF02 metadata receipt and stage order audit
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/pf02-transaction-audit.yml"
+      - "research/paper2/p399/pf02/**"
+permissions:
+  contents: read
+jobs:
+  pf02-records-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify frozen append-only artifact digests, chronology, C1 C2 and D/E coverage
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd research/paper2/p399/pf02
+          for name in PRE_A PRE_A_REVISION_20261004 PRE_A_MATH_ADJUDICATION_20261004 PRE_A_LINEAGE_RELATIVE_20261004 SOURCE_SCOPE_BEFORE_A A_V1 B_V1 C_V1 C_V1_CONDITION_NORMALIZATION A_V2_DERIVED_FROM_C D_GRAMMAR_V0 E_SOURCE_FIDELITY_V1 E_SOURCE_FIDELITY_V2_VALIDATED; do
+            sha256sum -c "$name.sha256"
+          done
+          python3 - <<'PY'
+          import json,hashlib,subprocess,os
+          j=lambda x:json.load(open(x+'.json'))
+          dg=lambda x:hashlib.sha256(open(x+'.json','rb').read()).hexdigest()
+          orig=j('PRE_A');rev=j('PRE_A_REVISION_20261004');math=j('PRE_A_MATH_ADJUDICATION_20261004')
+          lin=j('PRE_A_LINEAGE_RELATIVE_20261004');scope=j('SOURCE_SCOPE_BEFORE_A')
+          A=j('A_V1');B=j('B_V1');C=j('C_V1');normal=j('C_V1_CONDITION_NORMALIZATION')
+          Av=j('A_V2_DERIVED_FROM_C');D=j('D_GRAMMAR_V0');E1=j('E_SOURCE_FIDELITY_V1');E=j('E_SOURCE_FIDELITY_V2_VALIDATED')
+          source='bef58465c56cec93f1cbb0f689c8fcd48cd656f3520d70a6032aaac9caa63655'
+          assert rev['original_pre_a_sha256']==dg('PRE_A')
+          assert math['parent_receipt_sha256']==dg('PRE_A_REVISION_20261004')
+          assert lin['paper']['source_sha256']==source
+          assert scope['source']['sha256']==source and len(scope['sections'])==20
+          assert A['source_pdf_sha256']==source and A['source_scope_sha256']==dg('SOURCE_SCOPE_BEFORE_A') and len(A['claims'])==40 and len(A['edges'])==28
+          assert B['complete_immutable_a_sha256']==dg('A_V1') and len(B['claim_challenge'])==40 and len(B['edge_challenge'])==28 and len(B['objections'])==12 and len(B['source_section_resweep'])==20
+          assert C['immutable_A_V1_sha256']==dg('A_V1') and C['immutable_B_V1_sha256']==dg('B_V1') and C['c1_before_any_patch']['original_a_reopened_entire'] and len(C['c1_before_any_patch']['original_a_claim_ids'])==40
+          assert len(C['c1_before_any_patch']['original_a_edge_ids'])==28 and len(C['c2_closed_b_objections'])==12 and len(C['original_order_independent_c_section_sweep'])==20
+          assert normal['immutable_C_sha256']==dg('C_V1') and normal['source_condition_count']==33 and normal['all_accounted']
+          assert len({a['id'] for a in normal['ledger']})==33 and all(a.get('accounting') for a in normal['ledger'])
+          assert Av['immutable_A1_sha256']==dg('A_V1') and Av['immutable_B1_sha256']==dg('B_V1') and Av['immutable_C1_sha256']==dg('C_V1')
+          assert len(Av['claims'])==43 and len(Av['edges'])==31 and len(Av['source_patch_ledger'])==13
+          assert D['frozen_A_v2_sha256']==dg('A_V2_DERIVED_FROM_C') and len(D['claim_role_mapping'])==43 and len(D['source_edge_mapping'])==31
+          assert E['immutable_D_sha256']==dg('D_GRAMMAR_V0') and E['parent_immutable_E_v1_sha256']==dg('E_SOURCE_FIDELITY_V1') and E['condition_normalization_sha256']==dg('C_V1_CONDITION_NORMALIZATION')
+          assert E['claim_coverage']=={'count':43,'mapped':43} and E['edge_coverage']=={'count':31,'mapped':31} and E['condition_coverage']=={'count':33,'all_accounted':True}
+          assert not E['main_authorized'] and E['pilot_qualified_increment']==0 and E['qualification_blockers']
+          root='../../../../'
+          def file_commit(file):
+            result=subprocess.run(['git','log','-1','--format=%H','HEAD','--',file],capture_output=True,text=True,check=True)
+            return result.stdout.strip()
+          full=lambda name: 'research/paper2/p399/pf02/'+name+'.json'
+          base=subprocess.run(['git','merge-base','HEAD','origin/main'],capture_output=True,text=True,check=True).stdout.strip()
+          order=subprocess.run(['git','rev-list','--reverse',base+'..HEAD'],capture_output=True,text=True,check=True).stdout.splitlines()
+          stages=['SOURCE_SCOPE_BEFORE_A','A_V1','B_V1','C_V1','A_V2_DERIVED_FROM_C','D_GRAMMAR_V0','E_SOURCE_FIDELITY_V1','E_SOURCE_FIDELITY_V2_VALIDATED']
+          commits=[file_commit(full(x)) for x in stages]
+          assert all(z in order for z in commits),(order,commits)
+          assert all(order.index(commits[i])<order.index(commits[i+1]) for i in range(len(commits)-1))
+          print('PF02_RECORD_ONLY_PASS source digest lineage/10 bounded PASS (restricted), ordered 8 stages, C1/C2 12/12, 33/33 normalized, D/E 43/31')
+          print('THIS IS NOT ORIGINAL V2.3.1 SCIENTIFIC VALIDATOR, NOT SOURCE INTERPRETATION PROOF, NOT PILOT QUALIFICATION')
+          PY
