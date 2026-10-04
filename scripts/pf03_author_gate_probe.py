@@ -23,6 +23,7 @@ ORIGINAL_BLOBS={
     "models/pc_three.py":"ecfb1d25ba38bebf5dcf477832166e1a59b389de",
     "experiments/three/params.json":"ccbdbbf223916b3340a787f3e7fc8a9e74c1926f",
     "analysis/err_dist.ipynb":"394aeb3238fa67279c6da45b7d6077e6bb939605",
+    "experiments/three/last.pth.tar":"4058c523f5fcb32b9714bacee06ee59a34df2d0d",
 }
 # The original module uses utils only in its optional inf_first_step call. A
 # minimal dependency stub avoids installing/reimplementing the paper's CLI
@@ -107,5 +108,51 @@ class PF03ActualPinnedAuthorCodeTests(unittest.TestCase):
         self.assertTrue(torch.equal(orig_error>p.thres,expected>0.73))
         print("AUTHOR_NUMERIC_GATE_LOSSES_TOY="+repr(orig_error.detach().tolist()))
         print("SECONDARY_PINNED_ACTUAL_INF_EXECUTED=TRUE")
+    def test_05_load_actual_author_pretrained_three_level_weights_and_probe_both_gates(self):
+        # Existing author-published checkpoint in the pinned 2023 branch, no
+        # synthetic substitution for actual TRAINED parameter tensors.
+        params=json.loads((AUTHOR/"experiments/three/params.json").read_text())
+        p=types.SimpleNamespace(**params)
+        torch.manual_seed(params["seed"])
+        torch.set_num_threads(1)
+        model=module.DynPredNet(p,torch.device("cpu"))
+        checkpoint=torch.load(
+            AUTHOR/"experiments/three/last.pth.tar",
+            map_location="cpu",weights_only=True,
+        )
+        self.assertIn("state_dict",checkpoint)
+        model.load_state_dict(checkpoint["state_dict"],strict=True)
+        model.eval()
+        self.assertEqual(p.thres,0.73)
+        self.assertEqual(model.mix_dim_2,2)
+        # Synthetic intermediate states are NOT original Moving MNIST data.
+        with torch.no_grad():
+            r2=torch.full((1,p.r2_dim),0.2)
+            r3a=torch.zeros((1,p.r3_dim))
+            r3b=torch.ones((1,p.r3_dim))
+            a=model.temporal_prediction_two_(r2,r3a)
+            b=model.temporal_prediction_two_(r2,r3b)
+            self.assertTrue(torch.isfinite(a).all())
+            self.assertTrue(torch.isfinite(b).all())
+            delta=torch.linalg.vector_norm(a-b).item()
+            self.assertGreater(delta,1e-8)
+            # The event-gate score is on inferred/predicted LOWER latent, not
+            # a sensory pixel-space score. Chosen toy posteriors straddle the
+            # published threshold, independent of input dataset.
+            rprev=torch.zeros((1,p.r_dim))
+            r2pre=torch.zeros((1,p.r2_dim))
+            prior_pred=model.temporal_prediction_one_(rprev,r2pre)
+            toy_small=prior_pred.clone()
+            toy_large=prior_pred.clone()
+            toy_small[0,0]+=0.5   # 0.25 < 0.73
+            toy_large[0,0]+=1.0   # 1.00 > 0.73
+            small=(toy_small-prior_pred).pow(2).sum(1)
+            large=(toy_large-prior_pred).pow(2).sum(1)
+            self.assertLess(float(small[0]),p.thres)
+            self.assertGreater(float(large[0]),p.thres)
+        print("PINNED_AUTHOR_TRAINED_CHECKPOINT_LOADED=TRUE")
+        print("TRAINED_UPPER_TO_MIDDLE_TOY_STATE_DIFF="+repr(delta))
+        print("TRAINED_GATE_CONTROL_SCORES="+repr([float(small[0]),float(large[0])]))
+        print("NO_ORIGINAL_MOVING_MNIST_NUMERIC_REPLICATION=true")
 if __name__=="__main__":
     unittest.main(verbosity=2)
