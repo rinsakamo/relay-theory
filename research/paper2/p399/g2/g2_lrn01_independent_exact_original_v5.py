@@ -23,7 +23,7 @@ async def main():
    body=await page.locator("body").inner_text(timeout=10000)
    raw=await resp.body()
    row["html_original"]={"status":resp.status,"url":page.url,"raw_sha256":hashlib.sha256(raw).hexdigest(),"raw_bytes":len(raw),
-     "rendered_full_body_chars":len(body),"doi_found":DOI.lower() in body.lower(),
+     "rendered_full_body_chars":len(body),"doi_found":DOI.lower() in body.lower(),"exact_title_visible":TITLE.lower() in body.lower(),
      "full_original_sections_presence":{k:k in body.lower() for k in ("introduction","methods","results","discussion","references")}}
    row["attempts"].append("official html browser original returned")
    pdf=await c.request.get(URL+".pdf",timeout=55000)
@@ -32,12 +32,12 @@ async def main():
    filesha=hashlib.sha256(data).hexdigest()
    meta={"status":pdf.status,"url":pdf.url,"raw_sha256":filesha,"raw_bytes":len(data),
      "pages":len(reader.pages) if reader else 0,"doi_found":DOI.lower() in text0,
-     "title_found":all(word in text0 for word in ("humans","representations","efficient","coding")),
+     "extracted_pdf_title_tokens":{w:w in text0 for w in ("humans","representations","efficient","coding")},
      "cross_run_sha256_equal":filesha==BASE,"contains_full_pdf_signature":data.startswith(b"%PDF-")}
    row["pdf_publisher"]=meta
    row["published_original_raw_byte_verified"]=all([
-      pdf.status==200,meta["contains_full_pdf_signature"],meta["doi_found"],meta["title_found"],
-      meta["pages"]==20,meta["cross_run_sha256_equal"],row["html_original"]["doi_found"],
+      pdf.status==200,meta["contains_full_pdf_signature"],meta["doi_found"],
+      meta["pages"]==20,meta["cross_run_sha256_equal"],row["html_original"]["doi_found"],row["html_original"]["exact_title_visible"],
       row["html_original"]["rendered_full_body_chars"]>20000,
       all(row["html_original"]["full_original_sections_presence"].values())
    ])
