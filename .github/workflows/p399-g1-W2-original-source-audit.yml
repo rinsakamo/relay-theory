@@ -61,6 +61,9 @@ jobs:
               name=str(matches[0])
               commits=subprocess.check_output(["git","log","--format=%H","--",name],text=True).splitlines()
               assert len(commits)==1,(k,"stage modified after freezing",commits)
+              original_git_bytes=subprocess.check_output(["git","show",commits[0]+":"+name])
+              current_frozen_bytes=matches[0].read_bytes()
+              assert original_git_bytes==current_frozen_bytes,(k,"original intro Git raw bytes differ from current supposedly frozen stage",name)
               frozen.append((k,commits[0],name))
           for left,right in zip(frozen,frozen[1:]):
               check=subprocess.run(["git","merge-base","--is-ancestor",left[1],right[1]])
