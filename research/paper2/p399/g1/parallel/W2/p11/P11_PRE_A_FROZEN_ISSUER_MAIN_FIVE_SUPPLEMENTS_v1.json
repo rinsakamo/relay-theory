@@ -1,0 +1,183 @@
+{
+  "schema": "relaytheory.p399.g1.W2.P11.source_native_PRE_A.v1",
+  "paper": "P11",
+  "scope": "original-source structural procedural prospective qualification; no numerical replay",
+  "doi": "10.1371/journal.pcbi.1008971",
+  "title": "Analogous computations in working memory input, output and motor gating",
+  "publisher": "PLOS Computational Biology",
+  "published": "2021-06-07",
+  "official_original": {
+    "pdf": "https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1008971&type=printable",
+    "raw_sha256": "9291d8bca264a2216467e2254dede69dda71232708d94d10619f6d253458d022",
+    "bytes": 2332597,
+    "pages": 24,
+    "previous_acquisition_run": 37178895352,
+    "independent_success_runs": [
+      37191315123,
+      37191407280,
+      37191981039,
+      37192179071
+    ],
+    "original_full_html_sha256": "7de11a6003f60edc341d9595eb7a58d898e2a601a7cd0537a2c4524495d9be8a",
+    "publisher_supplements": [
+      {
+        "id": "s001",
+        "raw_sha256": "153c857ccf12eacc05a5eaee0dffb45d8bc156a2205f41ea9e22c16a8a90b34f",
+        "meaning": "S1 Fig extended behavioral RT/error plots"
+      },
+      {
+        "id": "s002",
+        "raw_sha256": "6abb4dee4a92c1f94a28ef993c802e03dde53af15ef6216198df7c5c566b8643",
+        "meaning": "S2 Fig HDDM simulation/data density fits"
+      },
+      {
+        "id": "s003",
+        "raw_sha256": "d5b928e563b43919f4d91f4c53deab4987112570c7079906fbcb36fcdaed0cca",
+        "meaning": "S3 Fig original HDDM QQ empirical-vs-posterior predictive"
+      },
+      {
+        "id": "s004",
+        "raw_sha256": "43bf600b853a77a07011201ad935464c2aadc390a18a4be1cd5dfd5dddf99fc4",
+        "meaning": "S4 Fig changing drift-rate posterior across gate conditions"
+      },
+      {
+        "id": "s005",
+        "raw_sha256": "9c1961a7f032f32805c95d958562912abb814673ffc1657cca56d908e18335b5",
+        "meaning": "S1 Text full extended behavioral ANOVA results"
+      }
+    ],
+    "direct_original_main_figures_pixels_reviewed": [
+      "published p3 PBWM adapted schema and ancestry",
+      "published p6 gate contrasts",
+      "published p8 Fig4 actual EEG and scalp temporal",
+      "published p10 model posterior",
+      "published p12 Fig6 model/data fit",
+      "published p11 textual Fig7 claim, Fig7 original plotted panel at adjoining pages and caption source"
+    ],
+    "critical_supplementary_pixels_reviewed": [
+      "s001",
+      "s002",
+      "s003",
+      "s004"
+    ],
+    "actual_complete_s005_text_reviewed": true,
+    "correction_history_status": "PLOS official original full HTML lacks visible correction banner; no exhaustive external correction-absence proof. Any material later correction triggers requalification rather than inferring exhaustive absence."
+  },
+  "source_defined_observables": [
+    "Task cues/trial context: update vs maintain, letter vs symbol, repeat vs switch at input/output/motor levels",
+    "Observed behavioral trial latency RT and correctness/error rate",
+    "Original scalp EEG time courses and time-resolved decoding measures",
+    "Estimated fitted HDDM posterior a decision threshold, v drift and t nondecision time, explicitly NOT directly measured neural/behavioral variables"
+  ],
+  "source_defined_central_model": "Pre-existing PBWM hierarchical PFC/BG gating hierarchy is a theoretical source ancestor. New study sets independent switch demands at input, output and motor levels, compares current human EEG/behavior with fitted hierarchical diffusion parameters; source does not introduce de novo Frank PBWM nor physiologically prove BG/PFC causation.",
+  "original_variants": [
+    "Eight fitted hierarchical DDM alternatives testing condition-specific a,v,t with DIC model comparison",
+    "Main posterior predictive RT density/QQ by update-maintain/switch tasks",
+    "S4 alternate gate-related drift-rate dependence in addition to a threshold",
+    "Time-varying drift/threshold not tested source alternative future work"
+  ],
+  "source_specific_negative_and_limitations": [
+    {
+      "id": "N01",
+      "locator": "original S1 Text 5-factor ANOVA",
+      "claim": "Across full model, none of overall error rate main effects reached significance (F1,29<3.11), even where RT main effects did."
+    },
+    {
+      "id": "N02",
+      "locator": "original S1 Text updating-only RT",
+      "claim": "Updating-only switch RT shows ONLY output-gating significant main effect; input/response switch RT main effects F1,29<1.1 nonsignificant."
+    },
+    {
+      "id": "N03",
+      "locator": "original S1 Text updating-only RT",
+      "claim": "All pairwise RT under-additive interactions survive on updating trials, but update-only 3way F1,29=2.74 p=.21 does NOT."
+    },
+    {
+      "id": "N04",
+      "locator": "original S1 Text updating-only errors",
+      "claim": "Updating errors no switch main effects or other two-way interactions; input×response and 3way only significant."
+    },
+    {
+      "id": "N05",
+      "locator": "original S1 Text maintenance-only errors",
+      "claim": "Input/output/response error main effects significant, but among interactions only input×response was significant; condition dependence."
+    },
+    {
+      "id": "N06",
+      "locator": "original Fig6 and s002/s003",
+      "claim": "HDDM posterior predictive fit is imperfect (especially some long RT/QQ tails); same-time case empirical distributions are not identical to model posterior predictive."
+    },
+    {
+      "id": "N07",
+      "locator": "original S4 Fig visual, original Discussion",
+      "claim": "Drift rate varies with task processing/gating in addition to inferred threshold; exclusive a-only mechanism unsupported."
+    },
+    {
+      "id": "N08",
+      "locator": "original Fig4/Fig5 and analysis",
+      "claim": "EEG scalp GLM pattern/decoding does not directly observe dopamine, BG or causal PFC gate or uniquely distinguish neural latent mechanics."
+    },
+    {
+      "id": "N09",
+      "locator": "original Discussion",
+      "claim": "Parallel and under-additive gating are functional interpretations, not exhaustive proof against alternative simultaneous or time-varying dynamic diffusion accounts."
+    },
+    {
+      "id": "N10",
+      "locator": "original main Fig1/adapted simulation and citations",
+      "claim": "PBWM framework and older published adapted simulations inherit original work; new data/test cannot claim first-invention of core PBWM hierarchical gate."
+    }
+  ],
+  "ancestry_graph": [
+    {
+      "from": "P11",
+      "to": "Frank Loughry O'Reilly 2001 PFC/BG working memory gating",
+      "type": "DIRECT_INHERITED_PBWM_MECHANISTIC_ANCESTOR",
+      "source": "published original bibliography and Fig1 introduction"
+    },
+    {
+      "from": "P11",
+      "to": "O'Reilly Frank 2006 PFC basal ganglia working memory",
+      "type": "DIRECT_PBWM_PREDECESSOR",
+      "source": "published original cited ref"
+    },
+    {
+      "from": "P11",
+      "to": "Frank Badre 2012 hierarchical RL corticostriatal network",
+      "type": "SOURCE_DIRECT_HIERARCHICAL_GATE_FAMILY",
+      "source": "published original introduction/ref"
+    },
+    {
+      "from": "P11",
+      "to": "Chatham Frank Badre 2014 output gating",
+      "type": "SOURCE_DIRECT_OUTPUT_GATE_ANCESTOR",
+      "source": "published original introduction/ref"
+    },
+    {
+      "from": "P11",
+      "to": "G1 P12",
+      "type": "PROVISIONAL_DISTINCT_CURRENT_CENTER",
+      "reason": "P11 fitted gate-demand DDM and EEG test vs P12 learned Bayesian LVOC control-policy optimizer; same word control not proof identity"
+    },
+    {
+      "from": "P11",
+      "to": "G1 P17",
+      "type": "PROVISIONAL_DIFFUSION_FAMILY_SHARED",
+      "reason": "P11 fitted task-threshold dependent HDDM vs P17 first-frame snapshot-anchored postchoice dynamic accumulation; direct model copy not established"
+    },
+    {
+      "from": "P11",
+      "to": "G2 CTL-02 / INT-12",
+      "type": "UNDERDETERMINED_HOLD",
+      "reason": "Working identities not final original-source+model-family admitted; comparison by exact native update and direct ancestors required"
+    }
+  ],
+  "stage_decision": "PRE_A_BOUNDED_PUBLISHED_ISSUER_MAIN_AND_ALL_5_ISSUER_SUPPLEMENTS_SOURCE_LOCKED",
+  "not_complete_claims": [
+    "Not all 24 PDF pages separately inspected pixel by pixel; original model-critical Figures and supplements selectively reviewed",
+    "Full cross-DOI exhaustive correction indexing and final cross-lane model-family independence not claimed",
+    "No independent human blind rater/numerical EEG/HDDM refit"
+  ],
+  "forbid_MAIN": true,
+  "prior_nine_G1_qualified_untouched": true
+}

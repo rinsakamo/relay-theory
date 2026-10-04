@@ -1,0 +1,119 @@
+name: P399 G1 W2 P11 independent pre-A original-source verification
+on:
+  push:
+    branches: ["paper2/p399-g1-w2-ctl-prd-diversity-20261004"]
+    paths:
+      - ".github/workflows/p399-g1-W2-p11-prea-source.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-p11-official:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - run: python -m pip install -q requests pypdf pillow python-docx beautifulsoup4
+      - name: Fetch original publisher edition and official source-critical supplements without Git storage
+        shell: bash
+        run: |
+          python - <<'PY'
+          import requests,hashlib,io,json,sys,re,os
+          from pypdf import PdfReader
+          from PIL import Image
+          from docx import Document
+          from bs4 import BeautifulSoup
+          S=requests.Session()
+          S.headers.update({'User-Agent':'Mozilla/5.0 (RelayTheory G1 source provenance audit; research-use)'})
+          doi='10.1371/journal.pcbi.1008971'
+          root='https://journals.plos.org/ploscompbiol/article/file'
+          targets={
+             'main':('printable','9291d8bca264a2216467e2254dede69dda71232708d94d10619f6d253458d022'),
+             's001':('supplementary',None),'s002':('supplementary',None),
+             's003':('supplementary',None),'s004':('supplementary',None),'s005':('supplementary',None)}
+          out={'source':'official PLOS publisher; exact original edition only','doi':doi,'items':{},'failed':[]}
+          for key,(kind,expect) in targets.items():
+             ident=doi+(('.'+key) if key!='main' else '')
+             try:
+                r=S.get(root,params={'id':ident,'type':kind},timeout=110)
+                r.raise_for_status()
+                b=r.content; h=hashlib.sha256(b).hexdigest(); print('SOURCE_RESPONSE',key,r.status_code,r.url.split('?')[0],r.headers.get('content-type'),'bytes',len(b),'prefix',repr(b[:32]),flush=True)
+                item={'url':r.url.split('?')[0]+'?id='+ident+'&type='+kind,'status':r.status_code,'bytes':len(b),'sha256':h,'media_type':r.headers.get('content-type')}
+                if key=='main':
+                   assert b.startswith(b'%PDF'), 'original is not PDF'
+                   pdf=PdfReader(io.BytesIO(b),strict=False);item['pages']=len(pdf.pages); print('P11_PDF_DIAG',item['pages'],h,flush=True)
+                   assert item['pages']==24,(key,'page mismatch',item['pages'])
+                   assert h==expect,(key,'raw-sha mismatch',h,expect)
+                   page_text=[(p.extract_text() or '') for p in pdf.pages]
+                   joined=' '.join(page_text).lower()
+                   for needle in ['gating','diffusion','threshold','frank']:
+                      assert needle in joined,(key,'source text missing',needle)
+                   item['first_page_title_and_doi_present']=('analogous computations' in joined and '1008971' in joined); print('P11_MAIN_TEXT_DIAG',repr(page_text[0][:280]),item['first_page_title_and_doi_present'],flush=True)
+                   assert item['first_page_title_and_doi_present']
+                   # Per-page source-specific anchors report (do NOT infer any semantic figure validation).
+                   item['page_anchors']=[{'one_based_page':i+1,'text_start':(s[:150]).replace('\\n',' '),'fig_mentions':re.findall(r'Fig(?:ure)?\\s*[1-7]',s,re.I)[:10]} for i,s in enumerate(page_text)]
+                elif key=='s005':
+                   assert b[:2]==b'PK', 'S1 Text not a DOCX zip'
+                   d=Document(io.BytesIO(b))
+                   ps=' '.join(p.text for p in d.paragraphs)
+                   item['paragraphs']=len(d.paragraphs)
+                   item['visible_chars']=len(ps)
+                   assert len(ps)>200,'S1 extended behavioral text incomplete'
+                else:
+                   im=Image.open(io.BytesIO(b))
+                   item.update({'image_format':im.format,'width':im.width,'height':im.height,'frames':getattr(im,'n_frames',1)})
+                   assert im.width>500 and im.height>500, 'official supplementary image too small'
+                out['items'][key]=item
+                print(json.dumps({'fetched':key,**{k:v for k,v in item.items() if k!='page_anchors'}},ensure_ascii=False,sort_keys=True),flush=True)
+             except Exception as ex:
+                msg=f'{key}: {type(ex).__name__}: {str(ex)[:350]}'
+                out['failed'].append(msg)
+                print('BLOCKED: '+msg,flush=True)
+          try:
+             page=S.get('https://journals.plos.org/ploscompbiol/article',params={'id':doi},timeout=60)
+             page.raise_for_status()
+             soup=BeautifulSoup(page.text,'html.parser')
+             plain=soup.get_text(' ',strip=True)
+             out['publisher_html']={'http_status':page.status_code,'raw_html_sha256':hashlib.sha256(page.content).hexdigest(),
+               'raw_html_bytes':len(page.content),'title_visible':'Analogous computations in working memory' in plain,
+               'main_section_methods_present':('Drift diffusion modeling' in plain)}
+             print(json.dumps({'publisher_html':out['publisher_html']}),flush=True)
+          except Exception as ex:
+             out['failed'].append('html: '+repr(ex))
+          with open('w2_p11_prea_cloud_actual_source_receipt.json','w') as f: json.dump(out,f,indent=2)
+          print('SCOPED_SUPPLEMENT_FAILURES',len(out['failed']),flush=True)
+          if out['failed']: sys.exit(1)
+          PY
+      - name: Independent P11 decisive original visual sample receipt (source images in logs only)
+        shell: bash
+        run: |
+          python -m pip install -q pymupdf
+          python - <<'PY'
+          import requests,fitz,io,base64
+          from PIL import Image
+          S=requests.Session()
+          S.headers['User-Agent']='Mozilla/5.0 (RelayTheory G1 source provenance audit; research-use)'
+          base='https://journals.plos.org/ploscompbiol/article/file'
+          doi='10.1371/journal.pcbi.1008971'
+          raw=S.get(base,params={'id':doi,'type':'printable'},timeout=100).content
+          pdf=fitz.open(stream=raw,filetype='pdf')
+          for pi in [2,3,5,6,8,9,11,14,18]:
+            im=Image.open(io.BytesIO(pdf[pi].get_pixmap(matrix=fitz.Matrix(.8,.8),alpha=False).tobytes('jpeg')))
+            im.thumbnail((680,900))
+            b=io.BytesIO();im.convert('RGB').save(b,format='JPEG',quality=52,optimize=True)
+            print('W2_P11_ORIGINAL_PDF_PAGE_'+str(pi+1)+'_B64='+base64.b64encode(b.getvalue()).decode(),flush=True)
+          for si in ['s002','s004']:
+            b=S.get(base,params={'id':doi+'.'+si,'type':'supplementary'},timeout=100).content
+            im=Image.open(io.BytesIO(b)); im.thumbnail((950,850))
+            q=io.BytesIO();im.convert('RGB').save(q,format='JPEG',quality=52,optimize=True)
+            print('W2_P11_ORIGINAL_'+si+'_B64='+base64.b64encode(q.getvalue()).decode(),flush=True)
+          PY
+      - name: Keep actual success or failed diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g1-w2-p11-prea-official-original-metadata
+          path: w2_p11_prea_cloud_actual_source_receipt.json
+          if-no-files-found: warn

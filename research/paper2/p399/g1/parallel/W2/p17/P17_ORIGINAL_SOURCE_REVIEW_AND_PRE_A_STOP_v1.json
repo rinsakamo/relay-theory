@@ -1,0 +1,93 @@
+{
+  "schema": "relaytheory.p399.g1.W2.p17.pre_A_source_research_not_admission.v1",
+  "date_jst": "2026-10-04",
+  "paper": "P17",
+  "doi": "10.1371/journal.pcbi.1009738",
+  "source": {
+    "title": "An initial 'snapshot' of sensory information biases the likelihood and speed of subsequent changes of mind",
+    "published": "2022-01-13",
+    "publisher": "PLOS Computational Biology",
+    "url": "https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1009738&type=printable",
+    "sha256": "e2d28aea56a31501db49aa791158f18771ae3054748d331df2ec26817f16f305",
+    "bytes": 1551349,
+    "pages": 16,
+    "prior_source_run": 37178895352,
+    "new_independent_matching_run": 37191423786,
+    "direct_published_original_visual_pages": [
+      4,
+      8
+    ],
+    "figures_in_primary": [
+      "Fig1 original observed kernel and first-frame behavior",
+      "Fig2 fitted extended DDM predicting sensory usage",
+      "Fig3 original model countervariants including unsuccessful first-frame-independent and nonvarying-drift accounts",
+      "Fig4 task stimulus and timing"
+    ],
+    "original_mandatory_supplements": [
+      "s001 original S1 mixed-effects model tables and marginal effects",
+      "s002 original S2 individual participant effects",
+      "s003 original S3 model predictions and fitted parameters",
+      "s004 original S4 auxiliary whole pre-response evidence",
+      "s005 original S5 incorrect-signal favored cases",
+      "s006 original S6 first 1-200/200-400ms competing evidence model parameters"
+    ],
+    "supplement_status": "current full official article identifies S1-S6; all official required source PDFs not reacquired/read in W2; publisher endpoints latest 502 and indirect unvalidated GCS paths 403; NO complete model variant or adverse audit",
+    "correction_status": "no visible canonical original-article correction banner; exhaustive independent correction registry check pending"
+  },
+  "source_native_prescreen": [
+    {
+      "id": "SRC01",
+      "locator": "published task and Fig4",
+      "evidence": "Four participants made rapid choices from noisy luminance difference stimuli sampled per 13.33ms frame with corrective changes allowed. Initial/final response traces are directly observed, model latent accumulator is unobserved."
+    },
+    {
+      "id": "SRC02",
+      "locator": "published main Fig1 and Results",
+      "evidence": "Source reports changes on 23.91 percent trials (18.53 percent corrected errors; 5.38 spoiled correct) and initial/final correct 66.95/80.10 percent; do not generalize independent N beyond four."
+    },
+    {
+      "id": "SRC03",
+      "locator": "original Fig1 first frame and mixed effects",
+      "evidence": "Strength of very first sensory frame interacts with initial decision correctness in change of mind probability (source chi-square 42.08 and p below 8.75e-11) and speed association is weaker (source chi-square 4.27 p=.039); behavioral association does not directly identify a unique neural snapshot mechanism."
+    },
+    {
+      "id": "SRC04",
+      "locator": "published extended-diffusion computational Methods and Fig2",
+      "evidence": "Initial frame snapshot persistent internal starting/initial-drift contribution to postdecision evidence accumulation plus across-trial drift variability; simulated psychophysical kernels predicted using fit to behavioral responses only, not directly fit to entire measured evidence-stream kernel."
+    },
+    {
+      "id": "SRC05",
+      "locator": "original Fig3 contrasted models",
+      "evidence": "Model without initial snapshot first-frame dependence predicts opposing or absent early signature; version without cross-trial drift variability fails key early differential kernel; retain these source-specific unsuccessful alternative predictions."
+    },
+    {
+      "id": "SRC06",
+      "locator": "original Methods, S1-S6 linked",
+      "evidence": "Empirical psychophysical traces, first-frame statistical tests, modeled latent dynamics and measured motor changes cannot be identified with each other; supplement-only adverse model parameters and individual nulls remain unresolved."
+    }
+  ],
+  "known_limits": [
+    "N=4, unusually many repeated trials; sample-person generalization limited",
+    "rapid first frame fixed presentation plus sensory integration filtering confounds across time",
+    "multiple corrective changes and trial exclusions affect measured kernel",
+    "extended-DMM drift variability and first-frame persistence fit not unique physiological proof",
+    "movement trajectory/response timing are observation boundary, not same latent decision variable",
+    "unacquired model-critical original supplements contain adversarial tests and auxiliary competing variants"
+  ],
+  "ancestry": [
+    "Resulaj et al 2009 and prior change-of-mind continuing accumulation models direct original bibliography require full citation graph",
+    "G1 P11 HDDM is condition-fitted gate-switch threshold estimator vs P17 persistent early snapshot first-frame extended accumulation; diffusion label insufficient identical center",
+    "G2 PRD selected working original model-citation graph/edition pending; compare native causal updates not generic prediction label"
+  ],
+  "status": {
+    "PRE_A": "BLOCKED_MANDATORY_S1_TO_S6_NOT_READ",
+    "A": "NOT_STARTED",
+    "B": "NOT_STARTED",
+    "C": "NOT_STARTED",
+    "D": "NOT_STARTED",
+    "E": "NOT_STARTED",
+    "post_E": "NOT_RUN",
+    "individual_qualification": "NOT_QUALIFIED"
+  },
+  "main_science": false
+}

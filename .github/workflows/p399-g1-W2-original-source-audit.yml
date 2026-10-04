@@ -1,0 +1,81 @@
+name: P399 G1 W2 independent issuer-original source / chronology
+on:
+  push:
+    branches:
+      - paper2/p399-g1-w2-ctl-prd-diversity-20261004
+    paths:
+      - research/paper2/p399/g1/parallel/W2/AUDIT_SELECTION.json
+      - research/paper2/p399/g1/parallel/W2/w2_source_probe.py
+      - .github/workflows/p399-g1-W2-original-source-audit.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  w2-original-issuer-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install source readers
+        run: python -m pip install requests PyMuPDF
+      - name: Read frozen W2 scoped selection
+        id: selection
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json,os
+          d=json.load(open('research/paper2/p399/g1/parallel/W2/AUDIT_SELECTION.json'))
+          assert d['paper'] in ('P11','P12','P17','ELIFE39497')
+          assert d['phase'] in ('preflight','postE')
+          with open(os.environ['GITHUB_OUTPUT'],'a') as out:
+              out.write(f"paper={d['paper']}\nphase={d['phase']}\n")
+          PY
+      - name: Independently reacquire real publisher bytes, supplements and page previews
+        id: source
+        env:
+          PAPER: ${{ steps.selection.outputs.paper }}
+          PHASE: ${{ steps.selection.outputs.phase }}
+        run: |
+          python research/paper2/p399/g1/parallel/W2/w2_source_probe.py "$PAPER" "$PHASE"
+      - name: After-E original six-stage independent Git chronology (only after E)
+        if: always() && steps.selection.outputs.phase == 'postE'
+        shell: bash
+        env:
+          PAPER: ${{ steps.selection.outputs.paper }}
+        run: |
+          python - <<'PY'
+          import os,subprocess,pathlib,json
+          p=os.environ["PAPER"]
+          assert p in ("P11","P12","P17"),"eLife alternative has no G1 scientific stage promotion"
+          d=pathlib.Path("research/paper2/p399/g1/parallel/W2")/p.lower()
+          keys=["PRE_A","PASS_A","PASS_B","PASS_C","PASS_D","PASS_E"]
+          frozen=[]
+          for k in keys:
+              matches=list(d.glob(p+ ("_PASS_C*" if k=="PASS_C" else "_"+k+"_*.json")))
+              assert len(matches)==1,(k,[str(m) for m in matches])
+              name=str(matches[0])
+              commits=subprocess.check_output(["git","log","--format=%H","--",name],text=True).splitlines()
+              assert len(commits)==1,(k,"stage modified after freezing",commits)
+              original_git_bytes=subprocess.check_output(["git","show",commits[0]+":"+name])
+              current_frozen_bytes=matches[0].read_bytes()
+              assert original_git_bytes==current_frozen_bytes,(k,"original intro Git raw bytes differ from current supposedly frozen stage",name)
+              frozen.append((k,commits[0],name))
+          for left,right in zip(frozen,frozen[1:]):
+              check=subprocess.run(["git","merge-base","--is-ancestor",left[1],right[1]])
+              assert check.returncode==0,(left,right,"not chronological")
+              assert left[1]!=right[1],(left,right,"not distinct commits")
+          print(json.dumps({"paper":p,"source_git_stage_chronology":frozen,"six_stages_independent_commits":True},indent=2))
+          PY
+      - name: Preserve genuine source and rendered critical-page evidence even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: w2-issuer-source-${{ steps.selection.outputs.paper }}-${{ steps.selection.outputs.phase }}-${{ github.run_id }}
+          path: w2-source-output/
+          if-no-files-found: warn
+          retention-days: 30

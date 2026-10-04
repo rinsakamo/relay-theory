@@ -1,0 +1,174 @@
+{
+  "schema": "relaytheory.p399.g1.W2.p12.PRE_A.original_source_math_locked.v1",
+  "paper": "P12",
+  "doi": "10.1371/journal.pcbi.1006043",
+  "publisher": "PLOS Computational Biology",
+  "published": "2018-04-25",
+  "authorship": "Lieder, Shenhav, Musslick & Griffiths",
+  "title": "Rational metareasoning and the plasticity of cognitive control",
+  "original_edition": {
+    "source_url": "https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1006043&type=printable",
+    "edition": "canonical published 27-page original PLOS PDF, NOT old rev=1 uncorrected proof",
+    "raw_sha256": "17368c69624bc5e968ccd2f3cc5eeb349070801e3b240cbc50a66d770bae2370",
+    "bytes": 2864504,
+    "pages": 27,
+    "old_issuer_receipt_run": 37178895352,
+    "fresh_issuer_main_run": 37191423786,
+    "official_supplemental_origins": [
+      {
+        "id": "s001",
+        "purpose": "Original complete LVC model Bayesian learning detailed S1 Eqs1–7",
+        "doi": "10.1371/journal.pcbi.1006043.s001",
+        "raw_sha256": "6870d9344bcbecc77aabe9a32335ed9c9820e4d1aefef03f6f59fe64d23c6fb5",
+        "bytes": 19213,
+        "office_math_nodes": 30
+      },
+      {
+        "id": "s002",
+        "purpose": "Original complete integration of EVC/VOC as rational metareasoning S2 Eqs8–13 and four direct original citations",
+        "doi": "10.1371/journal.pcbi.1006043.s002",
+        "raw_sha256": "8ea0198c46a4b78bc6af1bcd4a0fdbb5859a96b76ee0335ba92156ed25931432",
+        "bytes": 164729,
+        "office_math_nodes": 36
+      },
+      {
+        "id": "s003",
+        "purpose": "Explicit speculative neural dACC dopaminergic SARSA approximation, NOT neural measurement",
+        "doi": "10.1371/journal.pcbi.1006043.s003",
+        "raw_sha256": "7fac52d9c530d7627d3065413818e75581f2e02a14dddbf84fd797aef715d9a4",
+        "bytes": 986789,
+        "office_math_nodes": 12
+      }
+    ],
+    "supplement_recovery_success_run": 37191981039,
+    "original_math_complete_text_and_OMML_again_verified_run": 37192179071,
+    "original_supplement_OMML_complete_source_extract": true,
+    "docx_graphic_math_rendering": false,
+    "docx_graphic_limitation": "No available LibreOffice executable on GitHub runner; actual issuer OfficeMath OOXML and linked surrounding complete text were directly extracted, no falsely asserted full pixel rendering of every embedded formula",
+    "canonical_html_issuer": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006043",
+    "correction": "Issuer archived rev=1 specifically identifies itself UNCORRECTED PROOF and links canonical current article; never use old rev=1 as same canonical source, no exhaustive proof absence of postpublication formal corrections"
+  },
+  "native_original_scientific_center": [
+    {
+      "id": "CORE1",
+      "location": "canonical main original Eqs1–5",
+      "mechanism": "Formal resource-bounded optimal control-policy selection allocates limited control computation to maximize expected gain minus time/effort costs"
+    },
+    {
+      "id": "CORE2",
+      "location": "canonical original Eq6",
+      "mechanism": "Learned Value of Control approximate reward-predicting linear features/control-level/control-by-feature interactions, source cost of effort, response latency opportunity cost; do not treat estimation as observed external reward"
+    },
+    {
+      "id": "CORE3",
+      "location": "canonical main original Eq7 and original S1 Eqs1–7",
+      "mechanism": "Normal linear model Gaussian weight shrinkage prior; observed external reward/next state/RT yields noisy EVOC target and Bayes update for approximate values; inference learns estimated option value not exact physical brain weights"
+    },
+    {
+      "id": "CORE4",
+      "location": "canonical main Eq8–9",
+      "mechanism": "Approximately posterior sampling weight draws then choose control c maximizing sampled predicted LVOC; source original stopping/selection criterion relative finite compute and reward-rate opportunity costs not universally demonstrated exact brain algorithm"
+    },
+    {
+      "id": "CORE5",
+      "location": "original S2 Math Eqs8–13 and direct refs",
+      "mechanism": "EVC intensities control a parametrized cognitive process, rational VOC selects strategy with expected utility minus time cost; unified EVOC covers discrete strategies and continuous control settings, not a redefinition of external reward"
+    },
+    {
+      "id": "CORE6",
+      "location": "original S3",
+      "mechanism": "dACC phasic dopamine-mediated SARSA/synaptic eligibility approximation is an explicit speculative biological implementation distinct from tested learning model and direct recorded neural signal"
+    }
+  ],
+  "original_observation_scope": "Across five previously published tasks/datasets (one attention, four Stroop/Flanker control) paper compares model-simulation predicted learning/transfer to published participant behavior; not five new independently recruited participant cohorts and not brain activity recording.",
+  "source_model_variants": [
+    "Bayesian LVOC posterior weighted feature-control integration",
+    "source associative reinforcement / Rescorla–Wagner alternative",
+    "win-stay/lose-shift benchmark",
+    "explicit EVC baseline and learned Bayesian vs a hypothetical biologically plausible non-Bayesian dACC SARSA heuristic",
+    "source failures under nonlinear feature rewards/contexts and generalization restrictions"
+  ],
+  "source_adverse_original": [
+    {
+      "id": "N01",
+      "source": "model Eq6/S1",
+      "negative": "Linear/additive feature approximation is structural assumption and can fail in nonlinear control–context interactions, yielding source maladaptive overexertion in particular reward scenarios."
+    },
+    {
+      "id": "N02",
+      "source": "original five prior empirical datasets and simulated comparison",
+      "negative": "Successful fit to earlier published behavior does not constitute new original human experiments nor direct implementation proof; numerical posterior and human behavior distinct."
+    },
+    {
+      "id": "N03",
+      "source": "original variants Fig3/4",
+      "negative": "RW and WSLS model alternatives can capture portions of learning, LVOC relative improvement is bounded by task and original fitted variant set, not universal strategy selector proof."
+    },
+    {
+      "id": "N04",
+      "source": "S3 title and paragraphs",
+      "negative": "Proposed dopaminergic dACC neural learning is expressly SPECULATION, and SARSA approximate rule is NOT the same algorithm as Gaussian Bayes posterior used in simulations."
+    },
+    {
+      "id": "N05",
+      "source": "source original assumptions and Discussion",
+      "negative": "No direct evidence the mind performs exact posterior sampling, reward priors/cost weights supplied or model-fixed, reward-rate/latency scales task-specific; nonstationarity/generalized planning untested."
+    },
+    {
+      "id": "N06",
+      "source": "publisher old archived rev=1 view",
+      "negative": "Old uncorrected proof is not final canonical scientific version; any source equation change across proofs requires canonical official original PDF only."
+    }
+  ],
+  "direct_original_ancestry_graph": [
+    {
+      "from": "P12",
+      "to": "Shenhav Botvinick Cohen 2013 EVC Neuron 79(2)",
+      "type": "EXPLICIT_DIRECT_NORMATIVE_CONTROL_ANCESTOR",
+      "doi": "10.1016/j.neuron.2013.07.007",
+      "evidence": "Original S2 exact citation1 and Eq8-9 relationship"
+    },
+    {
+      "from": "P12",
+      "to": "Lieder et al 2014 algorithm selection by rational metareasoning",
+      "type": "EXPLICIT_DIRECT_STRATEGY_SELECTION_ANCESTOR",
+      "evidence": "Original S2 exact citation2"
+    },
+    {
+      "from": "P12",
+      "to": "Lieder & Griffiths 2015 when to use which heuristic",
+      "type": "EXPLICIT_DIRECT_VOC_ANCESTOR",
+      "evidence": "Original S2 citation3"
+    },
+    {
+      "from": "P12",
+      "to": "Musslick et al 2015 EVC control allocation",
+      "type": "EXPLICIT_MODEL_BASELINE_PARENT",
+      "evidence": "Original S2 citation4"
+    },
+    {
+      "from": "P12",
+      "to": "P11",
+      "type": "SAME_BROAD_CONTROL_ONLY_NOT_SAME_CENTER",
+      "evidence": "P11 input/output/motor PBWM gating with fitted EEG/HDDM vs P12 formal learned meta-control value"
+    },
+    {
+      "from": "P12",
+      "to": "registered eLife 10.7554/eLife.39497",
+      "type": "EVC_SHARED_ANCESTRY_POTENTIAL_NOT_AUTOMATIC_DOUBLE_MODEL",
+      "evidence": "eLife cue/history predictive blend not P12 Bayes LVOC and same direct high-level EVC concept ancestor; identical original DOI overlap only if same eLife used by both G1/G2"
+    },
+    {
+      "from": "P12",
+      "to": "existing PF02 / G2 working CTL candidates",
+      "type": "UNRESOLVED_FINAL_CENTRAL_INDEPENDENCE",
+      "evidence": "Preserve other lane source-native pending final handoff; do not use preliminary structural outcomes"
+    }
+  ],
+  "stage_decision": "BOUNDED_PRE_A_SOURCE_EDITION_MATH_AND_ANCESTRY_LOCKED",
+  "missing_human_semantic_review": true,
+  "numerical_replication_not_done": true,
+  "final_G2_model_family_clearance": false,
+  "MAIN_science": false,
+  "shared_G1_qualification_baseline_untouched": "9/20"
+}

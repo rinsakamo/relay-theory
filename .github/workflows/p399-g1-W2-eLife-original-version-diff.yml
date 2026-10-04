@@ -1,0 +1,93 @@
+name: P399 G1 W2 eLife v3 original version/supplement closure (no activation)
+on:
+  push:
+    branches: ["paper2/p399-g1-w2-ctl-prd-diversity-20261004"]
+    paths:
+      - ".github/workflows/p399-g1-W2-eLife-original-version-diff.yml"
+  workflow_dispatch:
+permissions: { contents: read }
+jobs:
+  source-research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: python -m pip install -q requests pymupdf pypdf pillow python-docx
+      - name: Acquire independent official eLife v2/v3 version scope and supplement bundles
+        shell: bash
+        run: |
+          python - <<'PY'
+          import requests,io,hashlib,difflib,zipfile,json,base64,re
+          import fitz
+          from PIL import Image
+          from docx import Document
+          s=requests.Session()
+          s.headers['User-Agent']='Mozilla/5.0 (RelayTheory P399 W2 first-party source qualification)'
+          out={'status':'prospective_original_source_only_no_G1_substitution','doi':'10.7554/eLife.39497','sources':{},'supplements':{},'errors':[],'source_only_change_indicators':{}}
+          base='https://cdn.elifesciences.org/articles/39497/elife-39497-'
+          pdfs={}
+          for v in ('v2','v3'):
+            url=base+v+'.pdf'
+            try:
+              r=s.get(url,timeout=90);r.raise_for_status();b=r.content
+              assert b.startswith(b'%PDF')
+              p=fitz.open(stream=b,filetype='pdf')
+              h=hashlib.sha256(b).hexdigest()
+              if v=='v3':assert h=='c2adddf8d232d851d9decbb304fb02107686cf55a5dad4cbbfd8b0fd7ac7d64a'
+              pdftxt='\\n'.join(x.get_text('text') for x in p)
+              out['sources'][v]={'url':url,'sha256':h,'bytes':len(b),'pages':len(p),'actual_full_text_chars':len(pdftxt),
+                'title_found':'externally and internally' in pdftxt.lower() and 'predictions' in pdftxt.lower(),
+                'equation_witness_names':{n:(n in pdftxt) for n in ['joint','internal','proactive','reactive','metareasoning']}}
+              assert out['sources'][v]['title_found']
+              pdfs[v]=pdftxt
+              print('ACTUAL_ELIFE_PUBLISHED_EDITION',v,out['sources'][v],flush=True)
+              if v=='v3':
+                for i in [5,7,8,10,11,13]:
+                  im=Image.open(io.BytesIO(p[i].get_pixmap(matrix=fitz.Matrix(.74,.74),alpha=False).tobytes('jpeg')))
+                  im.thumbnail((680,850))
+                  q=io.BytesIO();im.save(q,format='JPEG',quality=52,optimize=True)
+                  print('W2_ELIFE_V3_NEW_ACTUAL_PAGE_'+str(i+1)+'_B64='+base64.b64encode(q.getvalue()).decode(),flush=True)
+            except Exception as e:out['errors'].append(v+' original '+repr(e)); print('EDITION_NOT_REACQUIRED',v,repr(e),flush=True)
+          if len(pdfs)==2:
+            x=re.sub(r'\\s+',' ',pdfs['v2']).strip();y=re.sub(r'\\s+',' ',pdfs['v3']).strip()
+            d=difflib.SequenceMatcher(None,pdfs['v2'].splitlines(),pdfs['v3'].splitlines(),autojunk=True)
+            out['source_only_change_indicators']={'v2_vs_v3_full_pdf_extracted_text_equal':x==y,'sequence_ratio':round(d.ratio(),5),
+              'page_text_chars_v2':len(x),'page_text_chars_v3':len(y),
+              'note':'Automated text difference does not prove identical figure pixels or absent substantive correction.'}
+            print('OFFICIAL_V2_V3_TEXT_DIFF',out['source_only_change_indicators'],flush=True)
+          for v in ('v3','v2','v1'):
+            url=base+'supp-'+v+'.zip'
+            try:
+              r=s.get(url,timeout=60);r.raise_for_status();b=r.content
+              assert b[:2]==b'PK'
+              arc=zipfile.ZipFile(io.BytesIO(b))
+              names=arc.namelist()
+              rec={'url':url,'sha256':hashlib.sha256(b).hexdigest(),'bytes':len(b),'entries':[]}
+              for name in names[:75]:
+                if name.endswith('/'):continue
+                ent=arc.read(name)
+                z={'path':name,'sha256':hashlib.sha256(ent).hexdigest(),'bytes':len(ent)}
+                if ent[:4]==b'%PDF':
+                  p=fitz.open(stream=ent,filetype='pdf');z['pages']=len(p);z['text_chars']=sum(len(k.get_text()) for k in p)
+                if ent[:2]==b'PK':
+                  try:
+                    doc=Document(io.BytesIO(ent))
+                    z['docx_paragraphs']=len(doc.paragraphs)
+                  except:pass
+                rec['entries'].append(z)
+              out['supplements'][v]=rec
+              print('PUBLISHER_SUPPLEMENTAL_BUNDLE',v,rec,flush=True)
+            except Exception as e:
+              print('PUBLISHER_SUPP_BUNDLE_UNAVAILABLE',v,repr(e),flush=True)
+          with open('w2_elife_v2_v3_official_diff_and_supplement_original_receipt.json','w') as f:json.dump(out,f,indent=2,ensure_ascii=False)
+          print('OFFICIAL_EDITION_ERRORS',len(out['errors']),flush=True)
+          if out['errors']:raise SystemExit(1)
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: W2-eLife-official-v2-v3-and-supplement-receipt
+          path: w2_elife_v2_v3_official_diff_and_supplement_original_receipt.json
+          if-no-files-found: warn

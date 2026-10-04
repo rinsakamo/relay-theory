@@ -1,0 +1,145 @@
+name: P399 G1 W2 P11 independent post-E exact publisher sources and frozen stage git audit
+on:
+  push:
+    branches: ["paper2/p399-g1-w2-ctl-prd-diversity-20261004"]
+    paths:
+      - ".github/workflows/p399-g1-W2-p11-independent-postE-source-history.yml"
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  P11-post-E-independent-qualification-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 23
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: pip install -q requests pypdf pillow python-docx
+      - name: Independent after-E reacquisition of all six official main and critical supplements
+        shell: bash
+        run: |
+          python - <<'PY'
+          import requests,io,hashlib,json,sys,time,re
+          from pypdf import PdfReader
+          from PIL import Image
+          from docx import Document
+          main='10.1371/journal.pcbi.1008971'
+          expected=[
+            (main,'printable','9291d8bca264a2216467e2254dede69dda71232708d94d10619f6d253458d022',2332597,'main'),
+            (main+'.s001','supplementary','153c857ccf12eacc05a5eaee0dffb45d8bc156a2205f41ea9e22c16a8a90b34f',2048718,'tiff'),
+            (main+'.s002','supplementary','6abb4dee4a92c1f94a28ef993c802e03dde53af15ef6216198df7c5c566b8643',990488,'tiff'),
+            (main+'.s003','supplementary','d5b928e563b43919f4d91f4c53deab4987112570c7079906fbcb36fcdaed0cca',994016,'tiff'),
+            (main+'.s004','supplementary','43bf600b853a77a07011201ad935464c2aadc390a18a4be1cd5dfd5dddf99fc4',1038130,'tiff'),
+            (main+'.s005','supplementary','9c1961a7f032f32805c95d958562912abb814673ffc1657cca56d908e18335b5',15195,'docx')]
+          S=requests.Session();S.headers['User-Agent']='Mozilla/5.0 (RelayTheory W2 AFTER E independent PLOS qualification)'
+          out={'paper':'P11','after_E':True,'source_mode':'exact publisher original','verified':[],'failures':[],'scientific_semantic_human_independent':False,'numerical_replication':False}
+          for doi,kind,h,bytes_n,format_n in expected:
+            b=None
+            for retry in range(4):
+              try:
+                r=S.get('https://journals.plos.org/ploscompbiol/article/file',params={'id':doi,'type':kind},timeout=60)
+                if r.status_code!=200:
+                  print('P11_SOURCE_HTTP_RETRY',doi,r.status_code,retry,flush=True)
+                  time.sleep(min(12,2**retry));continue
+                b=r.content;break
+              except Exception as ex:
+                print('P11_SOURCE_NETWORK_RETRY',doi,repr(ex),flush=True)
+                time.sleep(min(12,2**retry))
+            if b is None:
+              out['failures'].append(doi+':REACQUIRE_UNAVAILABLE');continue
+            sha=hashlib.sha256(b).hexdigest()
+            rec={'doi':doi,'sha256':sha,'bytes':len(b),'expected_sha256':h,'expected_bytes':bytes_n,'form':format_n}
+            try:
+              assert sha==h and len(b)==bytes_n,('WRONG_EXACT_PUBLISHED_ORIGINAL',rec)
+              if format_n=='main':
+                assert b.startswith(b'%PDF')
+                pdf=PdfReader(io.BytesIO(b),strict=False)
+                rec['pages']=len(pdf.pages);assert len(pdf.pages)==24
+                pages=[re.sub(r'\s+','',p.extract_text() or '').lower() for p in pdf.pages]
+                checks={'p1_original_title_and_doi':('analogouscomputationsinworkingmemory' in pages[0] and '1008971' in pages[0]),
+                   'p8_original_Fig4_eeg':('fig4' in pages[7] or 'fig.4' in pages[7]),
+                   'p10_original_Fig5_priority':('fig5' in pages[9] or 'fig.5' in pages[9]),
+                   'p12_original_Fig6_fit':('fig6' in pages[11] or 'fig.6' in pages[11]),
+                   'p13_original_Fig7_threshold':('fig7' in pages[12] or 'fig.7' in pages[12])}
+                rec['page_anchors']=checks
+                assert all(checks.values()),('PAGE_ANCHOR_MISSING',rec)
+              if format_n=='tiff':
+                im=Image.open(io.BytesIO(b))
+                rec['pixel_dimensions']=[im.width,im.height]
+                assert im.width>1000 and im.height>1000
+              if format_n=='docx':
+                doc=Document(io.BytesIO(b))
+                rec['paragraph_count']=len(doc.paragraphs)
+                full=' '.join(p.text for p in doc.paragraphs).lower()
+                tests={'full_model_error_nonsignificant':'none of the main effects was significant' in full,
+                       'update_only_threeway_null':'2.74' in full and 'p=.21' in full,
+                       'update_only_input_response_null':'input and response switching did not show a main effect' in full,
+                       'maintenance_accuracy_conditional':'maintenance trials' in full and 'input × response gating' in full}
+                rec['source_adverse_text_anchors']=tests
+                assert all(tests.values()),('UNFAVORABLE_ORIGINAL_SOURCE_ANCHOR_MISSING',tests)
+              out['verified'].append(rec)
+              print('PASS_EXACT_OFFICIAL_SOURCE',json.dumps(rec,sort_keys=True),flush=True)
+            except Exception as ex:
+              out['failures'].append(doi+':'+repr(ex))
+              print('FAIL_SOURCE',doi,repr(ex),flush=True)
+          with open('w2_P11_independent_after_E_sources_receipt.json','w') as f:json.dump(out,f,indent=2)
+          print('P11_POSTE_EXACT_SOURCE_VERIFIED',len(out['verified']),'FAILURES',len(out['failures']),flush=True)
+          if out['failures'] or len(out['verified'])!=6:sys.exit(1)
+          PY
+      - name: Independently validate full PRE_A through E real commit ancestry and original Git blobs
+        shell: bash
+        run: |
+          python - <<'PY'
+          import subprocess,json,hashlib,os,sys
+          prefix='research/paper2/p399/g1/parallel/W2/p11/'
+          stages=[
+           ('PRE_A','394664a01b2d88f6f5eaf9d25195ca3c8acde616','P11_PRE_A_FROZEN_ISSUER_MAIN_FIVE_SUPPLEMENTS_v1.json'),
+           ('A','b3a11b457aef47244b7bcbb99ea72a359ef4d944','P11_PASS_A_SOURCE_FIRST_v1.json'),
+           ('B','52a24d0150e51acb56355424af862f713f448358','P11_PASS_B_ALL_A_SOURCE_INFORMED_ADVERSARIAL_v1.json'),
+           ('C','a8d6752fe3b57df4042eebf28b7e33c4c337ff07','P11_PASS_C1_C2_ORIGINAL_SOURCE_CLOSED_v1.json'),
+           ('D','17804cd3b312335326e7a73203c495545582de08','P11_PASS_D_UNCHANGED_GRAMMAR_v0_v1.json'),
+           ('E','c43f456c9b5c88444024b59a5c518c93f291b774','P11_PASS_E_EXACT_ORIGINAL_SOURCE_FIDELITY_v1.json')]
+          cmd=lambda *a:subprocess.check_output(['git',*a],text=True).strip()
+          base='38c5eb24c61b9e57371084a65fcbcb9fb9c62a4b'
+          receipt={'paper':'P11','scope':'chronology and exact git bytes verification only','frozen_common_base':base,'stages':[],'failures':[]}
+          assert subprocess.run(['git','merge-base','--is-ancestor',base,'HEAD']).returncode==0,'W2 wrong base'
+          for index,(name,commit,file) in enumerate(stages):
+            path=prefix+file
+            intro=cmd('log','--all','--diff-filter=A','--format=%H','--',path).splitlines()
+            assert intro and intro[-1]==commit,('wrong historical introduction',name,intro,commit)
+            assert subprocess.run(['git','merge-base','--is-ancestor',commit,'HEAD']).returncode==0,(name,'commit not actual ancestor')
+            if index:
+              assert subprocess.run(['git','merge-base','--is-ancestor',stages[index-1][1],commit]).returncode==0,(stages[index-1][0],name,'reverse order')
+            original_blob=cmd('rev-parse',commit+':'+path)
+            current_blob=cmd('rev-parse','HEAD:'+path)
+            assert original_blob==current_blob,('frozen bytes changed',name,original_blob,current_blob)
+            blob=cmd('cat-file','-p',original_blob)
+            obj=json.loads(blob)
+            if name=='B':
+              assert len(obj['entire_immutable_A_original_input']['claims'])==24
+              assert obj['A_exact_original_git_blob']==receipt['stages'][1]['actual_git_blob']
+            if name=='C':
+              assert len(obj['C1_complete_original_A_reopened_before_adjudication']['claims'])==24
+              assert obj['original_A_blob']==receipt['stages'][1]['actual_git_blob']
+            if name=='D':
+              assert len(obj['typed_mapping'])==24
+              assert obj['C_intro_commit']==stages[3][1]
+            if name=='E':
+              assert obj['frozen_stages']['D']==stages[4][1]
+              assert len(obj['original_source_fidelity_targets'])==11
+            row={'stage':name,'introduction_commit':commit,'original_git_path':path,'actual_git_blob':original_blob,'identical_frozen_blob_at_HEAD':True,'introduced_in_correct_ancestry_order':True}
+            receipt['stages'].append(row)
+            print('PASS_IMMUTABLE_STAGE',row,flush=True)
+          with open('w2_P11_independent_after_E_git_receipt.json','w') as f:json.dump(receipt,f,indent=2)
+          print('P11_POSTE_GIT_STAGE_VERIFIED',len(receipt['stages']),flush=True)
+          PY
+      - name: Preserve genuine after-E success or partial-source failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: W2-P11-independent-after-E-source-and-git
+          path: |
+            w2_P11_independent_after_E_sources_receipt.json
+            w2_P11_independent_after_E_git_receipt.json
+          if-no-files-found: warn
