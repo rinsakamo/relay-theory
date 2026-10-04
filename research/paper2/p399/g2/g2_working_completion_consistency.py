@@ -232,3 +232,76 @@ assert negative_v5(lambda a,b,c:a.update(main_authorized=True))
 assert negative_v5(lambda a,b,c:b["third_formally_successful_reacquisition"].update(actual_sha256="0"*64))
 assert negative_v5(lambda a,b,c:c.update(count_new_actual_backup_activations=1))
 print("PASS V5: six adversarial false identity, false raw provenance, false-science, false-GO, SHA tamper, unauthorized replacement rejected")
+
+
+# V6 objective pre-main publisher-vs-archive edition and predeclared backup
+# receipts: three standby originals remain EXCLUDED from the 40 MAIN denominator.
+s6=(P/"MAIN40_G2_V6_RAW_UTF8_SHA256SUMS_20261004.txt").read_text().splitlines()
+assert len(s6)==3
+for row in s6:
+    digest, filename=row.split("  ",1)
+    assert hashlib.sha256((P/filename).read_bytes()).hexdigest()==digest,("v6_sha_corrupt",filename)
+assert hashlib.sha256((P/"MAIN40_G2_ADMISSION_WORKING_MANIFEST_v5.json").read_bytes()).hexdigest()=="06df3a52c09f8146571ceb0f18add3d3e0673716ffefb807a7fafea2465b3c5b"
+v6=json.loads((P/"MAIN40_G2_V6_OFFICIAL_SOURCE_VERSUS_ARCHIVE_AND_STANDBY_RECEIPTS.json").read_text())
+e6=json.loads((P/"MAIN40_G2_OBJECTIVE_EVENT_DELTA_v6.json").read_text())
+def check_v6(a,b):
+    counts=a["counts"]
+    assert a["previous_v5_unchanged"] and a["initial_40_unique_working_DOIs_unchanged"]
+    assert counts["selected_working_original_dois"]==40
+    assert counts["selected_original_publisher_PDF_raw_receipts"]==31
+    assert counts["selected_original_primary_full_media_access"]==36
+    assert counts["selected_original_full_media_remaining_unavailable"]==4
+    assert counts["selected_source_full_math_figures_variants_negatives_scientifically_qualified"]==0
+    assert counts["central_family_source_independence_approved"]==0
+    assert counts["publisher_first_backup_real_original_pdf_raw_acquired"]==3
+    assert counts["backup_source_and_family_final_admitted"]==0
+    assert counts["backup_activated"]==0 and not counts["main_authorized"]
+    meta=a["source_version_probe"]["official_elsevier_metadata"]
+    assert len(meta)==3
+    assert {p["slot"] for p in meta}=={"ATT-03","BLF-01","INT-01"}
+    assert all(p["HTTP_status"]==200 and p["doi_verified"] and
+               not p["publisher_full_text_returned"] and
+               not p["official_pdf_fetched"] and not p["source_eligible"] for p in meta)
+    blf=next(p for p in meta if p["slot"]=="BLF-01")
+    assert blf["NLM_archived_fulltext_metadata"]["article_pii"]=="S2589-0042(25)01105-8"
+    assert not blf["NLM_archived_fulltext_metadata"]["published_elsevier_original_bytes_matched"]
+    assert a["source_version_probe"]["PLOS_INT13"]["actual_official_html_explicit_uncorrected_proof_banner"]
+    assert not a["source_version_probe"]["PLOS_INT13"]["final_original_published_edition_qualified"]
+    assert not a["source_version_probe"]["nature_PRD01"]["source_eligible"]
+    standbys=a["predeclared_first_priority_backup_provenance"]["backup_candidate_records"]
+    assert len(standbys)==3
+    assert [x["standby"] for x in standbys]==["ATT-B1","BLF-B1","PRD-B1"]
+    expected={"ATT-B1":("8c190f4d6e981061e4ccd67f4797b83ccdeb8f1d47d8368fdafe137f1ef44209",20),
+             "BLF-B1":("869c8b1a535fcb4a922d677bc0c26ca8959930a7f62208c4bf74701899aa8870",19),
+             "PRD-B1":("9c17c00fba0985f6f66b8520c6fc971ae5a2c6d3e1bac266d9fba2739c9792fe",32)}
+    selected={x["doi"] for x in v5["selected_working_roster"]}
+    assert all(x["raw_publisher_pdf_sha256"]==expected[x["standby"]][0] and
+               x["publisher_pdf_pages"]==expected[x["standby"]][1] and
+               x["HTML_exact_DOI"] and x["publisher_printable_original_raw_acquired"] and
+               x["doi"] not in selected and not x["scientifically_eligible"] and
+               not x["backup_activated"] for x in standbys)
+    assert standbys[1]["publisher_correction"]["doi"]=="10.1371/journal.pcbi.1003952"
+    assert not standbys[2]["PDF_firstpage_visually_confirmed"]
+    assert len(b["events"])==5
+    assert b["new_backup_activations"]==0 and not b["main_authorized"]
+    assert a["no_MAIN_structural_science_executed"]
+check_v6(v6,e6)
+print("PASS V6: three independent raw SHA256 supplementary v6 docs, unchanged 40 selected v5")
+print("PASS V6: actual Elsevier API 200 metadata-only for 3 blocked originals, four true source blocks")
+print("PASS V6: PLOS INT13 still uncorrected proof; 3 separately acquired first-priority PLOS source PDFs NOT MAIN")
+print("PASS V6: zero original/backup source-semantic or central-family approvals, zero backups activated")
+def negative_v6(f):
+    aa,bb=map(copy.deepcopy,(v6,e6))
+    f(aa,bb)
+    try:check_v6(aa,bb)
+    except AssertionError:return True
+    return False
+assert negative_v6(lambda a,b:a["counts"].update(selected_original_primary_full_media_access=39))
+assert negative_v6(lambda a,b:a["source_version_probe"]["official_elsevier_metadata"][0].update(publisher_full_text_returned=True))
+assert negative_v6(lambda a,b:a["source_version_probe"]["PLOS_INT13"].update(actual_official_html_explicit_uncorrected_proof_banner=False))
+assert negative_v6(lambda a,b:a["predeclared_first_priority_backup_provenance"]["backup_candidate_records"][0].update(backup_activated=True))
+assert negative_v6(lambda a,b:a["predeclared_first_priority_backup_provenance"]["backup_candidate_records"][2].update(PDF_firstpage_visually_confirmed=True))
+assert negative_v6(lambda a,b:a["predeclared_first_priority_backup_provenance"]["backup_candidate_records"][1].update(raw_publisher_pdf_sha256="0"*64))
+assert negative_v6(lambda a,b:a["counts"].update(central_family_source_independence_approved=3))
+assert negative_v6(lambda a,b:b.update(new_backup_activations=1))
+print("PASS V6: eight destructive unauthorized official-fulltext/proof/backup/source-fidelity/central-family false promotions rejected")
