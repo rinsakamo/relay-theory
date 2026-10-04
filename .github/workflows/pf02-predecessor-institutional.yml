@@ -1,0 +1,44 @@
+name: PF02 predecessor institutional source check
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/pf02-predecessor-institutional.yml"
+permissions:
+  contents: read
+jobs:
+  institutional:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - name: Verify archival routes for exact 2005 predecessor
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import urllib.request,urllib.parse,json,re,hashlib,time
+          sources=[
+            ("MPG_REST","https://pure.mpg.de/rest/items/item_790699"),
+            ("MPG_REST_V1","https://pure.mpg.de/rest/items/item_790699_1"),
+            ("MPG_ITEM","https://pure.mpg.de/pubman/item/item_790699_1"),
+            ("PUBLIC_MPG_RECORD","https://pure.mpg.de/pubman/faces/ViewItemFullPage.jsp?itemId=item_790699"),
+            ("WEB_ARCHIVE_AVAILABILITY","https://archive.org/wayback/available?url=https%3A%2F%2Fciteseerx.ist.psu.edu%2Fdocument%3Fdoi%3D0fbe23ae4255ce69e86b051252e1139f47d335d7%26repid%3Drep1%26type%3Dpdf")]
+          for name,url in sources:
+            entry={'name':name,'url':url}
+            try:
+              q=urllib.request.Request(url,headers={'User-Agent':'RelayTheory/1.0 scholarly institutional exact-source identity audit','Accept':'application/json,text/html,application/pdf,*/*'})
+              with urllib.request.urlopen(q,timeout=13) as f:
+                b=f.read(1500000)
+                entry.update(status=f.status,final_url=f.url,content_type=f.headers.get('content-type'),bytes_read=len(b),starts_pdf=b.startswith(b'%PDF-'))
+              if b.startswith(b'%PDF-'):
+                entry['raw_sha256']=hashlib.sha256(b).hexdigest()
+                entry['TRUNCATED_PDF']=len(b)>=1500000
+              elif 'json' in (entry['content_type'] or ''):
+                t=b.decode('utf-8','replace')
+                entry['record_excerpt']=t[:6000]
+              else:
+                t=re.sub('<[^>]+>',' ',b.decode('utf-8','replace'))
+                entry['title_present']='Neurons and the synaptic basis' in t
+                entry['matching_files']=re.findall(r'.{0,140}(?:file|\.pdf|download|attachment).{0,160}',t,re.I)[:9]
+            except Exception as exc:
+              entry['error']=type(exc).__name__+': '+str(exc)
+            print('PF02_INSTITUTIONAL_PROBE='+json.dumps(entry,ensure_ascii=True))
+          PY
