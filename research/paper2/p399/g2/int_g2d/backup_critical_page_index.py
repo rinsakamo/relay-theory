@@ -23,11 +23,11 @@ for slot,url,sha,patterns in items:
   rec.update(actual_pdf_sha256=hashlib.sha256(data).hexdigest(),bytes=len(data),pdf_signature=data.startswith(b"%PDF-"))
   if not rec["pdf_signature"] or rec["actual_pdf_sha256"]!=sha:
    rec["error"]="FAIL_CLOSED_OFFICIAL_PDF_SOURCE_SHA_OR_SIGNATURE_MISMATCH";results.append(rec);continue
-  rd=PdfReader(BytesIO(data));pages=[re.sub(r"\\s+"," ",x.extract_text() or "").lower() for x in rd.pages]
+  rd=PdfReader(BytesIO(data));pages=[re.sub(r"\s+"," ",x.extract_text() or "").lower() for x in rd.pages]
   rec["pages"]=len(pages)
   rec["page_index_1_based_by_term"]={p:[i+1 for i,t in enumerate(pages) if p.lower() in t][:20] for p in patterns}
-  rec["candidate_fig_caption_page_indices"]=[i+1 for i,t in enumerate(pages) if re.search(r"(?:fig\\.?|figure)\\s*\\d",t)][:45]
-  rec["candidate_table_page_indices"]=[i+1 for i,t in enumerate(pages) if re.search(r"table\\s*\\d",t)][:30]
+  rec["candidate_fig_caption_page_indices"]=[i+1 for i,t in enumerate(pages) if re.search(r"(?:fig\.?|figure)\s*\d",t)][:45]
+  rec["candidate_table_page_indices"]=[i+1 for i,t in enumerate(pages) if re.search(r"table\s*\d",t)][:30]
   rec["page_text_sha256"]=[hashlib.sha256(s.encode()).hexdigest() for s in pages]
   rec["pages_examined_by_text_extraction"]=len(pages)
   rec["page_index_ONLY_not_semantics"]=True
