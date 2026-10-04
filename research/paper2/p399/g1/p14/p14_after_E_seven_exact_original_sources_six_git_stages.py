@@ -18,7 +18,7 @@ spec=[
  ("MAIN",None,"cca218ddff9764422316f99fe2cf8cf6a5519462a0b38ac25b45999080b79ec0",2551032,34,[(4,["sequence","repeat"]),(5,["associative","learning"]),(7,["presentation","recoding"]),(8,["Table 1","associative"]),(11,["interference","associative"]),(17,["hamming","item"]),(19,["mixture","recency"]),(20,["dirichlet","chunks"]),(21,["mapping","n-gram"]),(22,["optimal","chunk"]),(23,["Fig 8","evidence"]),(25,["noise","item"]) ]),
  ("S1",1,"f2e9bef0fd311132078f8de1e1ef261649c9d540ab93cba541c7d25534322385",368737,2,[(1,["item mixture","noise"]),(2,["Fig A","novel"])]),
  ("S2",2,"80ff7cca0501b3989fd8ba0867b4dea411f1243b5ca094cc2cecd1c34dd0575b",68383,2,[(1,["recency","primacy"])]),
- ("S3",3,"82f2a03519e5718428303158c27caf21b39937b9841a7581a40eb15901eb2be2",104835,3,[(1,["posterior","model evidence"]),(2,["model evidence","complexity"])]),
+ ("S3",3,"82f2a03519e5718428303158c27caf21b39937b9841a7581a40eb15901eb2be2",104835,3,[(1,["posterior","chunking"]),(2,["model evidence","complexity"])]),
  ("S4",4,"044423d324d62b4231f056e704e41582c6bb1e1ab950d196c636322c10046f43",73915,1,[(1,["ABCD","BADC","ABDC"])]),
  ("S5",5,"3aee815baf0f50dcaf4e53f8a3563469ed3d2a89e73038b5e6429ac1aaca51c2",324995,2,[(1,["noise","response times"]),(2,["simulation","noise"])]),
  ("S6",6,"25eddff2e76155d34bd394f97644a6b438154095d72f369830aba239e4cda6d9",51221,1,[(1,["Individual sequences","four"])]),
