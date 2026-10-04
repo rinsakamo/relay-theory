@@ -42,7 +42,7 @@ for name,doi,kind,identity,expected_sha in URLS:
    article_id=root.split("/")[-1]
    suffix=doi.rsplit(".s",1)[-1] if ".s" in doi else None
    ext="pdf" if kind=="pdf" else "doc"
-   expected_filename="pcbi."+article_id+(".s"+suffix if suffix is not None else "")+"."+ext
+   expected_filename="pcbi."+article_id.split(".")[-1]+(".s"+suffix if suffix is not None else "")+"."+ext
    expected_path_re=r"^/plos-corpus-prod/"+re.escape(root)+r"/[1-9][0-9]*/"+re.escape(expected_filename)+r"$"
    signed=parse_qs(parsed.query)
    creds=signed.get("X-Goog-Credential",[""])[0]
