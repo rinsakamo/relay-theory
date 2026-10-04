@@ -5,7 +5,7 @@ No MAIN scientific reconstruction, G2 study or independent human review.
 """
 import ast, hashlib, itertools, json, os, pathlib, subprocess, sys, urllib.request
 R=pathlib.Path(__file__).resolve().parents[1]
-ROOT=R.parent.parent.parent.parent.parent
+ROOT=R.parents[3]
 BASE="38c5eb24c61b9e57371084a65fcbcb9fb9c62a4b"
 PRE=R/"integration"
 M=json.loads((PRE/"G1_FOUR_LANE_EXACT_PREMERGE_PROVENANCE_AND_CONDITIONAL_SCOPE_FREEZE_v1.json").read_text())
