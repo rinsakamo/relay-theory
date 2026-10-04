@@ -57,7 +57,7 @@ jobs:
           assert F['formal_disposition']=='QUALIFIED_ONLY_ORIGINAL_PUBLISHED_PDF_SOURCE_GROUNDED_STRUCTURAL_AND_PROCEDURAL_SCOPE'
           assert F['qualification_evidence']['actual_post_E_independent_pdf_review']['verified_distinct_original_page_source_anchor_count']==21
           assert F['qualification_evidence']['actual_post_E_independent_pdf_review']['blind_independent_human_rater'] is False
-          assert F['qualification_evidence']['stage_metadata_checks']['native_exact_v231_validator_imported'] is False
+          assert F['qualification_evidence']['stage_metadata_checks']['native_original_v231_validator_imported'] is False
           assert len(F['scientific_adjudication']['bounded_excluded_quantitative_or_historical_claims'])>=5
           assert F['scientific_adjudication']['generic_H0_H1_H2'].startswith('NON_DISCRIMINATING')
           assert F['cohort_reconciliation']['prior_issue_399_formal_prospective_count']==3
