@@ -14,6 +14,7 @@ SCHEMA_FILES = {
     "packet": "analyst-packet.v1.schema.json",
     "evaluation": "evaluation.v1.schema.json",
     "receipt": "stage-receipt.v1.schema.json",
+    "bridge": "role-bridge.v1.schema.json",
 }
 
 
@@ -52,6 +53,10 @@ def check_reference(reference):
         nodes = {n["id"] for n in v["nodes"]}
         if any(e["from"] not in nodes or e["to"] not in nodes for e in v["edges"]):
             raise G3Error("DANGLING_REFERENCE_EDGE")
+    material_limits = {x["id"] for x in reference["original_limitations"]}
+    allocated_limits = {x["id"] for v in reference["variants"] for x in v["restrictions"]}
+    if not material_limits <= allocated_limits:
+        raise G3Error("UNALLOCATED_NATIVE_SOURCE_LIMITATION")
     return True
 
 
@@ -250,3 +255,60 @@ def check_source_reference_alignment(reference, record):
     if ref_excluded != eval_excluded:
         raise G3Error("EXCLUDED_SOURCE_TARGET_PROMOTION_OR_ERASURE")
     return True
+
+def check_role_bridge(reference, bridge):
+    """Independent R is source-native; role obligations are a DIFFERENT post-R, pre-D artifact."""
+    check_reference(reference)
+    schema_check("bridge", bridge)
+    if bridge["paper_token"] != reference["paper_token"] or (
+            bridge["source_reference_canonical_sha256"] != canonical_sha(reference)):
+        raise G3Error("ROLE_BRIDGE_REFERENCE_SWAP")
+    r_variants = {x["variant_id"]: x for x in reference["variants"]}
+    b_variants = {x["variant_id"]: x for x in bridge["variants"]}
+    if len(b_variants) != len(bridge["variants"]) or set(r_variants) != set(b_variants):
+        raise G3Error("MISSING_ROLE_BRIDGE_VARIANT")
+    for v_id, v in r_variants.items():
+        native = {atom["id"] for k in ("nodes", "edges", "temporal", "restrictions",
+                 "boundaries", "distinctions", "native_coordination") for atom in v[k]}
+        obligations = b_variants[v_id]["role_obligations"]
+        if len({o["id"] for o in obligations}) != len(obligations):
+            raise G3Error("DUPLICATE_ROLE_OBLIGATION")
+        if any(not set(o["source_atom_ids"]) <= native for o in obligations):
+            raise G3Error("ROLE_OBLIGATION_WITHOUT_NATIVE_SOURCE")
+        if any(not set(g["source_atom_ids"]) <= native for g in b_variants[v_id]["role_gaps"]):
+            raise G3Error("ROLE_GAP_WITHOUT_NATIVE_SOURCE")
+    return True
+
+
+def score_locked(reference, packet, bridge, record):
+    """Only admissible entry for scientific scoring, after independent pre-D freezes.
+
+    Actual semantic source truth / genuine assessor independence still requires human
+    evidence; structural tests here alone do not establish either.
+    """
+    check_reference(reference)
+    check_packet(packet)
+    check_source_reference_alignment(reference, record)
+    check_role_bridge(reference, bridge)
+    if packet["paper_token"] != reference["paper_token"] or (
+            packet["reference_digest_private"] != canonical_sha(reference)) or (
+            packet["primary_source_digest"] != reference["source"]["source_fingerprint"]):
+        raise G3Error("SOURCE_OR_REFERENCE_PACKET_DIGEST_MISMATCH")
+    if (reference["source"]["primary_kind"] == "PUBLISHER_ORIGINAL_PDF"
+            and record["source_state"] != "VERIFIED_PDF") or (
+            reference["source"]["primary_kind"] == "PUBLISHER_COMPLETE_ORIGINAL_HTML"
+            and record["source_state"] != "VERIFIED_HTML"):
+        raise G3Error("ORIGINAL_PRIMARY_MEDIUM_SWAP")
+    b_variants = {v["variant_id"]: v for v in bridge["variants"]}
+    for v in record["variants"]:
+        expected = {x["id"] for x in b_variants[v["variant_id"]]["role_obligations"]}
+        actual = set(v["metrics"]["roles"]["required_ids"])
+        if expected != actual:
+            raise G3Error("ROLE_DENOMINATOR_NOT_PREDECLARED")
+    report = score(record)
+    report["source_reference_alignment_checked"] = True
+    report["role_bridge_pre_D_checked"] = True
+    report["packet_digest_checked"] = True
+    report["note"] = ("Signed actual primary source completeness and semantic truth "
+                      "require separate real assessor; synthetic checks cannot establish them.")
+    return report
