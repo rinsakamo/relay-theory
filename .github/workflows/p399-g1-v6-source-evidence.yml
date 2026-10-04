@@ -1,0 +1,30 @@
+name: P399 G1 v6 nine source-bounded originals actual raw Git evidence not MAIN
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g1/g1_v6_actual_issuer_original_scoped_science_evidence_check.py"
+      - "research/paper2/p399/g1/G1_PILOT20_SCIENTIFIC_ADMISSION_AND_DENOMINATORS_v6.json"
+      - "research/paper2/p399/g1/G1_REMAINING_11_INDEPENDENT_SCIENCE_BLOCKERS_v6.json"
+      - "research/paper2/p399/g1/G1_G2_V6_P14_SECOND_LRN_ORIGINAL_FAMILY_HANDOFF.json"
+      - "research/paper2/p399/g1/G1_P14_SECOND_LRN_COMPLETION_V6_DENOMINATORS_JA_20261004.md"
+      - "research/paper2/p399/g1/p14/**"
+      - ".github/workflows/p399-g1-v6-source-evidence.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-nine-of-twenty-actual:
+    runs-on: ubuntu-latest
+    timeout-minutes: 11
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: python3 research/paper2/p399/g1/g1_v6_actual_issuer_original_scoped_science_evidence_check.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g1-v6-nine-source-selected-immutable-evidence-${{ github.run_id }}
+          path: g1-v6/projection.json
+          retention-days: 21
+          if-no-files-found: warn
