@@ -1,0 +1,91 @@
+{
+  "schema": "RELAY_P399_G3_G4_REMEDIATION_EXECUTION_RECEIPT_V1_1",
+  "status": "G3_PARTIAL_PRE_FREEZE_MAIN_NOT_AUTHORIZED",
+  "version": "1.1.0",
+  "date_jst": "2026-10-04",
+  "authority": {
+    "issue": "https://github.com/rinsakamo/relay-theory/issues/399",
+    "g4_readonly": "https://github.com/rinsakamo/relay-theory/pull/420",
+    "g3_draft": "https://github.com/rinsakamo/relay-theory/pull/417",
+    "g1_snapshot": {
+      "pr": 418,
+      "observed_head": "40ec6c3d8cf96fb9cd2697b8382f39a989be6910",
+      "status": "PARTIAL_AT_OBSERVATION"
+    },
+    "g2_snapshot": {
+      "pr": 419,
+      "observed_head": "c0b6dc2c9762e5f6c9bedc0ffd89ed8a54a26905",
+      "status": "PARTIAL_AT_OBSERVATION"
+    },
+    "g3_original_head": "21f49e23248e7e68c138ac5040129afeba37982a",
+    "tested_commit": "4c38b9c0daa0f17fc5150eba70b46e70e4c601b9"
+  },
+  "actual_execution": {
+    "github_actions_run_id": 37181238354,
+    "url": "https://github.com/rinsakamo/relay-theory/actions/runs/37181238354",
+    "job_id": 111374092512,
+    "conclusion": "SUCCESS",
+    "baseline_old_synthetic_tests": 69,
+    "new_v11_procedural_and_adversarial_tests": 42,
+    "total": 111,
+    "failures": 0,
+    "executed_constructed_nonmain_packet_transport": true,
+    "protected_constructed_source_witnesses": 12,
+    "original_constructed_fixture_sha256": "599915b31cbc065caafbedd69ce0c904c691048b7271a6decbae1a48309f6231",
+    "masked_constructed_packet_sha256": "d428c2e56b5c93ede7936980887288e9667b4597061c06ac52f3c44866a1e1be",
+    "actual_real_independent_source_assessors": 0,
+    "actual_final_main_source_R0": 0,
+    "actual_final_main_source_P0": 0,
+    "main_grammar_or_h_results_inspected": false,
+    "actual_MAIN_source_scientific_processing": false,
+    "historical_401_exact_byte_checker_imported": false
+  },
+  "tested_raw_utf8_sha256": {
+    "QUALIFICATION_PROTOCOL_v1.1.0_PRE_FREEZE.md": "7db2ca3df39fceea4f7849d57932da9a2a3046642272ad87af2bc94484a672cb",
+    "G3_MEASUREMENT_CONTROL_COMPARISON_RUBRIC_v1.1.json": "df7add35504d6fc44f614c19c485f3e390563222400f5f6d7bbf63629200856a",
+    "qualify_g3_v11.py": "40eb0d8ce0cbe7adddd45b80212d416ead2862cf85364463ebdcdebbd008114a",
+    "test_qualify_g3_v11.py": "f4aca68e50418fca5de169ff374bd2c0c6fa68cc1295efa413b1cf5e3cdee3f6",
+    "qualification-envelope.v1.schema.json": "a5a9297a9af4bafc5b64fda41f607f35091fd0b7cb48dafe84e3ae47cec223e6",
+    "source-completeness.v1.schema.json": "80ea8fd6a39626b0ac88206b0bda0e33d3633c5bc140bcc0193cf750cdaacdd3",
+    "nonmain_dryrun.py": "335fdf68e961bf7a6dc69b74e4966b1dd8d2543ec94b9e19ebfa08d7bae8a172",
+    "fixtures/nonmain_constructed_primary_v1.txt": "599915b31cbc065caafbedd69ce0c904c691048b7271a6decbae1a48309f6231"
+  },
+  "baseline_frozen_preexisting": {
+    "original_69_test_receipt": "research/paper2/p399/g3/G3_EXECUTION_RECEIPT_v1.json",
+    "grammar_v0": "UNCHANGED",
+    "pilot_qualifications": "PF01/PF02/PF03/PF04_UNCHANGED_SCOPE_BOUND",
+    "historical_comparator": "UNCHANGED",
+    "historical_401_exact_checker": "NOT_IMPORTED_OPTIONAL"
+  },
+  "coverage": {
+    "G4_B06": {
+      "design_and_fail_closed_synthetic_controls": "COMPLETED",
+      "real_roster_specific_reference_assessor": "PENDING_POSTAUTHORIZATION",
+      "real_curator_and_packet": "PENDING_POSTAUTHORIZATION",
+      "real_independent_R2": "UNAVAILABLE_NOT_CLAIMED",
+      "real_final_per_variant_source_denominator": "PENDING_G2_FINAL_ADMITTED_ORIGINALS",
+      "actual_signed_native_R_and_role_bridge": "PENDING_POSTAUTHORIZATION"
+    },
+    "G4_B08": {
+      "preauthorization_boundary": "TESTED_FAIL_CLOSED",
+      "separate_main_metadata_prefight_approval": "NOT_RECEIVED",
+      "joint_MAIN_GO": "NOT_RECEIVED",
+      "first_paper_approval": "NOT_RECEIVED"
+    }
+  },
+  "freeze_readiness": {
+    "g1_final_signed_pilot_diversity_sha256": null,
+    "g2_final_signed_main40_source_roster_sha256": null,
+    "g4_joint_protocol_sha256": null,
+    "actual_final_R_role_packet_hashes": null,
+    "actual_main_source_access_authorization": null,
+    "actual_first_paper_approval": null,
+    "MAIN_authorized": false
+  },
+  "executed_test_scope": "Synthetic procedural and prior-known PF historical compatibility only; a test lambda simulating G4 signoff does not authenticate a GitHub/author signature",
+  "known_regression_history": [
+    "Initial v1.1 suite exposed fixture required/preserved alias; corrected and rerun",
+    "Strict raw stage-receipt Git test exposed fixture literal-backslash-newline JSON; corrected and rerun"
+  ],
+  "separate_software_operation": "Original #401 exact-byte historical v2.3.1 validator integration remains optional and unperformed; new G3 qualification helper not a substitution"
+}
