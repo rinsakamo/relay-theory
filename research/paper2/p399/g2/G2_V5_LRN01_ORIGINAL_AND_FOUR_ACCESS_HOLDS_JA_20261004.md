@@ -41,3 +41,7 @@ Nature Communications `10.1038/s41467-025-58848-6`（Fang & Sims 2025; 2025-04-2
 G1独立PR #418の観測HEAD `9d45aa277aa148d3f8c1a3b5bf5adf38166e7fc4`では、PF4＋P05＋P07＋P09のsource-scoped限定資格で**7/20**。ただし最終科学20名簿・中央系譜とのG2跨ぎ判定は未凍結、G1外部更新後は再照合必須。G2によるG1/PF科学を一切変更しない。
 
 新たに `MAIN40_G2_LRN01_FIRST_PARTY_DUAL_PHYSICAL_ACQUISITION_v5.json` と `MAIN40_G2_ADMISSION_WORKING_MANIFEST_v5.json`、今後のv5追加objective events、raw evidence SHA台帳、fail-closedテストをappend-onlyで保管。**G2_PARTIAL・MAIN_NO_GO 維持。**
+
+## 追記：独立再取得の正式な修正版テストPASS
+
+過度に厳密なPDF文字列連結条件だけを修正した公式ワークフロー [37185663924](https://github.com/rinsakamo/relay-theory/actions/runs/37185663924) は **PASS**。初回・非該当の厳格テストFALSE-negative回・修正後PASS回の**3つの実際の出版社原著PDF**のSHAはすべて `638c40d95b03e9ed076949c1c17f469bed4e1c3c9959ca8a84dc65c8a0744718`、59,865,461bytes、20pages完全一致。PDFの行分割で`efficient`だけ文中連結一致しない一方、原著HTMLに完全題名が実表示され、正規DOIと二重原著生SHAが一致することを検査。修正後HTMLはdynamic raw response 589,798bytesでSHA `7bdf30b55aecc0a677d1c3ed42e27d240a174cf1e6b659f0e1fdea06a7f5d0c2`、表示完全本文116,965文字・5節は維持。旧FAILED runを偽ってPASSと改記しない。科学的全本文審査PASSを意味しない。
