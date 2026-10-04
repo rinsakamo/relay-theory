@@ -75,6 +75,18 @@ def physical_pdf(data, spec, output, label):
       exact_raw_sha_match=hash_data(data)==spec["sha"],
       page_match=len(doc)==spec["pages"],title_first_page_match=matched,
       first_page_text_prefix=source_title[:500])
+    if spec["doi"]=="10.1371/journal.pcbi.1009738":
+        # Specific, visually selected anchors for the actual publisher original edition.
+        critical={0:["An initial","changes of mind"],
+                  5:["Fig 3","100,000","drift"],
+                  12:["Computational modeling","externalVar","firstFrame"]}
+        receipt["actual_original_specific_page_text_anchors"]={}
+        for page_idx,words in critical.items():
+            pg_text=doc[page_idx].get_text().lower()
+            observations={w:w.lower() in pg_text for w in words}
+            receipt["actual_original_specific_page_text_anchors"][str(page_idx+1)]=observations
+        receipt["critical_page_anchors_all_present"]=all(
+            all(v.values()) for v in receipt["actual_original_specific_page_text_anchors"].values())
     p=output/"previews"
     p.mkdir(parents=True,exist_ok=True)
     for one_based in spec["critical_pages"]:
@@ -113,7 +125,18 @@ def do_paper(paper,phase):
                 if extension=="PDF": valid=b.startswith(b"%PDF")
                 elif extension=="TIF": valid=(b[:4] in (bytes.fromhex("49492a00"),bytes.fromhex("4d4d002a"),bytes.fromhex("49492b00"),bytes.fromhex("4d4d002b")))
                 else: valid=b.startswith(b"PK")
-                record["supplementary"][sid]={"url":u,"final_url":response.url,
+                source_specific_supplement_pdf=None
+                if paper=="P17" and valid:
+                    expected_pages={"s001":2,"s002":3,"s003":2,"s004":1,"s005":1,"s006":1}
+                    src=fitz.open(stream=b,filetype="pdf")
+                    source_specific_supplement_pdf={"actual_pages":len(src),
+                       "expected_pages":expected_pages[sid],
+                       "pages_match":len(src)==expected_pages[sid],
+                       "first_page_has_extracted_original_text":len(src[0].get_text())>100}
+                    src.close()
+                    if not source_specific_supplement_pdf["pages_match"] or not source_specific_supplement_pdf["first_page_has_extracted_original_text"]:
+                        record["source_errors"].append(sid+" exact P17 original supplement page/text source anchor mismatch")
+                record["supplementary"][sid]={"source_specific_supplement_pdf":source_specific_supplement_pdf,"url":u,"final_url":response.url,
                    "bytes":len(b),"sha256":hash_data(b),"format_expected":extension,
                    "signature_match":valid}
                 if not valid:record["source_errors"].append(sid+" publisher-format-signature mismatch")
@@ -124,6 +147,8 @@ def do_paper(paper,phase):
         record["source_errors"].append("eLife v3 issuer supplementary and amendment/negative-source full audit pending")
     if "primary" in record:
         p=record["primary"]
+        if paper=="P17" and not p.get("critical_page_anchors_all_present",False):
+            record["source_errors"].append("P17 publisher original visually-selected page-specific textual anchors mismatch")
         if not all([p["exact_raw_sha_match"],p["page_match"],p["title_first_page_match"]]):
             record["source_errors"].append("official raw primary SHA/pages/title mismatch")
     else:record["source_errors"].append("no physical verified original primary")
