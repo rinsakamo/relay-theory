@@ -1,0 +1,26 @@
+name: P399 G1 W3 P15 P18 exact original math source witness
+on:
+  push:
+    branches:
+      - paper2/p399-g1-w3-mem-prd-family-20261004
+    paths:
+      - .github/workflows/p399-g1-W3-P15-P18-math-source-witness.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  genuine_primary_math_witness_not_science:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - run: python -m pip install --quiet pypdf pymupdf pillow
+      - name: Pin exact P15 original and supplements and P18 math original; index page images
+        run: python research/paper2/p399/g1/parallel/W3/W3_P15_P18_original_math_and_figure_source_index_probe.py
+      - name: Retain bounded source-page and equation locator receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: W3-P15-P18-original-math-witness-${{ github.run_id }}
+          path: ${{ runner.temp }}/W3_P15_P18_original_math_and_figure_source_index.json
+          if-no-files-found: error
