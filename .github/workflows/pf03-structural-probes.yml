@@ -1,0 +1,24 @@
+name: pf03-original-topology-illustrative-probes
+on:
+  pull_request:
+    paths:
+      - "scripts/pf03_structural_probes.py"
+      - "research/paper2/p399/pf03/**"
+      - ".github/workflows/pf03-structural-probes.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  structural-contract-and-destructive-toy-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Source/phase receipts and illustrative destructive topology probes
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "SCIENTIFIC_VALIDATOR_V231=NOT_IMPORTED"
+          echo "NUMERIC_ORIGINAL_AUTHOR_REPLICATION=NOT_PERFORMED"
+          python -m py_compile scripts/pf03_structural_probes.py
+          python -m unittest discover -s scripts -p 'pf03_structural_probes.py' -v
