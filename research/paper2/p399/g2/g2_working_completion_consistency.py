@@ -305,3 +305,88 @@ assert negative_v6(lambda a,b:a["predeclared_first_priority_backup_provenance"][
 assert negative_v6(lambda a,b:a["counts"].update(central_family_source_independence_approved=3))
 assert negative_v6(lambda a,b:b.update(new_backup_activations=1))
 print("PASS V6: eight destructive unauthorized official-fulltext/proof/backup/source-fidelity/central-family false promotions rejected")
+
+
+# V7 strictly non-promotional source-native PRE_A contrasts and two actual
+# additional first-party PDF receipts (one same-original defining supplement).
+v7sums=(P/"MAIN40_G2_V7_RAW_UTF8_SHA256SUMS_20261004.txt").read_text().splitlines()
+assert len(v7sums)==3
+for ln in v7sums:
+    digest,name=ln.split("  ",1)
+    assert hashlib.sha256((P/name).read_bytes()).hexdigest()==digest,("v7_sha_mismatch",name)
+v7=json.loads((P/"MAIN40_G2_V7_BACKUP_SOURCE_NATIVE_BOUNDED_FAMILY_AND_SCOPE_PREA.json").read_text())
+e7=json.loads((P/"MAIN40_G2_OBJECTIVE_EVENT_DELTA_v7.json").read_text())
+def check_v7(a,b):
+    assert a["previous_intake_v5_immutable_sha256"]=="06df3a52c09f8146571ceb0f18add3d3e0673716ffefb807a7fafea2465b3c5b"
+    assert a["original_40_DOI_order_unchanged"]
+    original=a["new_real_official_physical_source_run"]
+    assert original["run"]==37188410375
+    assert original["metadata_sha256"]=="c5ee50004ce35e76516f3575d872727638985a6c3ac588b873e25ec4ad3776d7"
+    assert not original["original_publisher_pdf_bytes_stored_public_git"]
+    media=original["records"]
+    assert [x["item"] for x in media]==["ATT-B1-DEFINING-S3","PRD-B2-SECOND-PREDECLARED"]
+    att,prd=media
+    assert att["is_second_original_paper"] is False
+    assert att["actual_original_publisher_supplement_sha256"]=="c71313033e52ccbbe5b0b3e8579959dfb7ac75c52ca254a36abca89ac8fcb72f"
+    assert att["bytes"]==210828 and att["pages"]==6
+    assert att["eq_s1_text_detected"] and att["eq_s19_text_detected"]
+    assert not att["source_scope_preA_exception_authorized"] and not att["source_semantic_visual_audit_complete"]
+    assert prd["source_sha256"]=="7b6e4192bfe1b60d794d197e14822997b77d22e437db89850fc4cddcb79482db"
+    assert prd["bytes"]==2306402 and prd["pages"]==39 and prd["pdf_signature_verified"]
+    assert prd["official_canonical_source"].startswith("https://journals.plos.org/")
+    assert prd["first_page_original_doi_visual_audit_pending"]
+    assert prd["shared_standby_other_strata"]==["BLF-B2","LRN-B2"]
+    assert not prd["source_scientific_eligible"] and not prd["backup_activated"]
+    decisions=a["source_native_prospective_comparisons"]
+    assert [x["standby"] for x in decisions]==["ATT-B1","BLF-B1","PRD-B1","PRD-B2"]
+    assert [x["decision"] for x in decisions]==[
+        "HOLD_PRIMARY_SOURCE_SCOPE_PLUS_FAMILY",
+        "PROVISIONAL_DIFFERENT_EXACT_FORMALISM_FAMILY_NOT_CLEARED",
+        "HOLD_SLOT_MECHANISM_FIT_PROVISIONAL_MISMATCH",
+        "HOLD_SLOT_MECHANISM_FIT_AND_SHARED_BACKUP_UNIQUENESS"]
+    assert all(not x["activated"] for x in decisions)
+    assert decisions[0]["bounded_evidence"]["standby_self_disclosed_ancestry"].startswith("Explicitly extends")
+    assert decisions[1]["bounded_evidence"]["standby_mechanism"].startswith("Three-level hierarchical Gaussian filter")
+    assert "CONFIDENCE" in decisions[2]["bounded_evidence"]["standby_actual_target"]
+    assert "ANALYTIC" in decisions[3]["bounded_evidence"]["standby_actual_target"]
+    dd=a["denominators"]
+    assert dd["original_selected_distinct_dois"]==40
+    assert dd["original_selected_actual_firstparty_complete_media"]==36
+    assert dd["original_selected_firstparty_unacquired"]==4
+    assert dd["original_selected_raw_publisher_pdf_sha"]==31
+    assert dd["three_first_priority_standby_raw_pdf_source_acquired"]==3
+    assert dd["ATT_B1_formal_defining_supplement_raw_acquired"]==1
+    assert dd["second_priority_PRD_B2_firstparty_raw_pdf_acquired"]==1
+    assert dd["standby_scientific_final_qualified"]==0
+    assert dd["main40_all_scientifically_source_qualified"]==0
+    assert dd["central_family_independence_final"]==0
+    assert dd["actual_backup_activations"]==0 and not dd["main_authorized"]
+    assert not a["cross_lanes"]["g1_final_roster_frozen"]
+    assert a["cross_lanes"]["g1_bounded_scientifically_admitted"]==8
+    assert a["cross_lanes"]["g1_mandatory_main_plus_appendix_P13_DOI"]=="10.1371/journal.pcbi.1006681"
+    assert not a["cross_lanes"]["g1_final_roster_frozen"]
+    assert len(b["events"])==4
+    assert b["new_selected_DOI_replacements"]==0
+    assert b["new_G3_masked_packets"]==0 and not b["main_authorized"]
+    assert b["selected_original_source_media_access_denominator_unchanged"]==36
+    assert b["new_scientifically_source_admitted_originals"]==0
+check_v7(v7,e7)
+print("PASS V7: 3/3 raw UTF8 evidence SHA, publisher raw S3 6pp / PLOS PRD-B2 39pp actual scoped receipts")
+print("PASS V7: 4 preA bound source-native dispositions; S3 scope and BLF family still HOLD")
+print("PASS V7: 36/40 selected first-party source unchanged; 0 substitutions, 0 fully scientific source or central-family admissions")
+def neg_v7(changer):
+    a,b=map(copy.deepcopy,(v7,e7))
+    changer(a,b)
+    try:check_v7(a,b)
+    except AssertionError:return True
+    return False
+assert neg_v7(lambda a,b:a["new_real_official_physical_source_run"]["records"][0].update(source_scope_preA_exception_authorized=True))
+assert neg_v7(lambda a,b:a["new_real_official_physical_source_run"]["records"][0].update(actual_original_publisher_supplement_sha256="f"*64))
+assert neg_v7(lambda a,b:a["new_real_official_physical_source_run"]["records"][1].update(first_page_original_doi_visual_audit_pending=False))
+assert neg_v7(lambda a,b:a["new_real_official_physical_source_run"]["records"][1].update(backup_activated=True))
+assert neg_v7(lambda a,b:a["source_native_prospective_comparisons"][2].update(decision="QUALIFIED"))
+assert neg_v7(lambda a,b:a["denominators"].update(original_selected_actual_firstparty_complete_media=40))
+assert neg_v7(lambda a,b:a["cross_lanes"].update(g1_final_roster_frozen=True))
+assert neg_v7(lambda a,b:b.update(new_selected_DOI_replacements=1))
+assert neg_v7(lambda a,b:b.update(main_authorized=True))
+print("PASS V7: nine adversarial S3 auto-promotion/source-SHA/fake PDF visual/backup activation/false-science/fake-G1-final/GO cases rejected")
