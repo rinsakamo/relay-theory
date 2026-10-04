@@ -1,0 +1,66 @@
+{
+  "schema": "p399_g2d_int13_edition_append_only_firstparty_receipt_20261005.v1",
+  "utc_recheck": "2026-10-04T15:05:30Z",
+  "jst_date": "2026-10-05",
+  "source_slot": "INT-13",
+  "doi": "10.1371/journal.pcbi.1014796",
+  "authoritative_baseline": {
+    "pr": 430,
+    "head": "fff4641feeab6d29a3ede55be3989d713a9b2e79",
+    "publisher_20261004_uncorrected_html_sha256": "057e12d6c60605f3f5344b3411e6038397c3f823e09274c4929da9af1afaaca0",
+    "publisher_20261004_uncorrected_pdf_sha256": "5f313f8690f377faaea6b9a3610013c71b880af86634c97dbd4a5344bede9258"
+  },
+  "live_publisher_bounded_sources": {
+    "official_article": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1014796",
+    "html": {
+      "status": 200,
+      "actual_response_bytes": 356026,
+      "actual_sha256": "057e12d6c60605f3f5344b3411e6038397c3f823e09274c4929da9af1afaaca0",
+      "identical_to_baseline": true,
+      "explicit_proof_banner": true,
+      "original_fulltext_title_doi_sections_verified": true
+    },
+    "pdf": {
+      "status": 200,
+      "actual_response_bytes": 2581474,
+      "actual_sha256": "5f313f8690f377faaea6b9a3610013c71b880af86634c97dbd4a5344bede9258",
+      "pages": 31,
+      "identical_to_baseline": true,
+      "original_pdf_signature_title_and_page_count_verified": true
+    },
+    "chromium": {
+      "nav_timeout_ms": 18000,
+      "visible_explicit_uncorrected_proof": true,
+      "renderer_dom_bytes": 963304,
+      "renderer_dom_sha256": "1f6d04e0f753faa7de74d027a84165ff7f2d7baade6b77b86b3c8466cfd66a84",
+      "renderer_DOM_is_NOT_raw_publisher_HTML": true,
+      "chromium_context_pdf_raw_sha256": "5f313f8690f377faaea6b9a3610013c71b880af86634c97dbd4a5344bede9258",
+      "chromium_context_pdf_identical_to_direct": true
+    }
+  },
+  "independent_cloud_ci": {
+    "run_id": 37211673439,
+    "run_url": "https://github.com/rinsakamo/relay-theory/actions/runs/37211673439",
+    "job_id": 111463949402,
+    "run_conclusion": "success",
+    "raw_receipt_artifact_id": 11306697049,
+    "artifact_ephemeral_days": 14
+  },
+  "local_probe_limitation": "Separate container probe hit resolver/DNS failure at 5s for PLOS and Crossmark; this is NOT a publisher edition observation.",
+  "edition_decision": "HOLD_FINAL_VOR",
+  "reasons": [
+    "Publisher current HTML continues displaying uncorrected proof",
+    "Independent current raw publisher HTML and 31p PDF exactly match 2026-10-04 uncorrected baseline",
+    "No corrected final publication original and proof-to-final equivalence verified"
+  ],
+  "no_scientific_promotion": {
+    "final_vor_verified": false,
+    "proof_final_content_equivalence_verified": false,
+    "critical_math_figures_variants_corrections_exhaustively_audited": false,
+    "global_central_model_family_independence_admitted": false,
+    "backup_activated": false,
+    "roster_modified": false,
+    "main_authorized": false
+  },
+  "next_allowed_event": "Publisher replaces proof with official corrected publication original, then independent raw download+edition and source-critical comparison; do not infer final version from metadata date or different renderer DOM checksum."
+}
