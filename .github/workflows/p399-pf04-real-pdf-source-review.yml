@@ -1,0 +1,30 @@
+name: p399-pf04-real-original-pdf-scientific-review
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/p399-pf04-real-pdf-source-review.yml"
+      - "scripts/p399_pf04_original_pdf_source_anchors.py"
+      - "research/paper2/p399/pf04/**"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-original-and-bounded-source-anchors:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Acquire actual original published primary PDF, no substitutes
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/pf04_publisher
+          curl --fail --location --silent --show-error --retry 3 --max-time 120 'https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1003364&type=printable' -o /tmp/pf04_publisher/publisher_original.pdf
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq poppler-utils >/dev/null
+          printf '%s  %s\n' bc84d4827df202cf5051cf10aa64cc09673b718af2acd31441a3712bcd376df9 /tmp/pf04_publisher/publisher_original.pdf | sha256sum -c -
+      - name: Independent actual-publisher PDF source-specific anchors
+        run: python scripts/p399_pf04_original_pdf_source_anchors.py
