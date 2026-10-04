@@ -1,0 +1,170 @@
+{
+  "schema": "relaytheory.p399.g2.objective_backup_rules.v1",
+  "state": "WORKING_NOT_ADMITTED",
+  "backups": [
+    {
+      "id": "ATT-B1",
+      "stratum": "ATT",
+      "doi": "10.1371/journal.pcbi.1011283",
+      "title": "Makwana et al. 2023 selection history and continuous reach",
+      "gate": "selection-history near ATT-01; admit only if lineage distinct",
+      "status": "UNVERIFIED_BACKUP"
+    },
+    {
+      "id": "ATT-B2",
+      "stratum": "ATT",
+      "doi": "10.1371/journal.pcbi.1004770",
+      "title": "Miconi 2016 feedback attention",
+      "gate": "same selected ATT-02; NOT independent candidate; blocked as backup",
+      "status": "BLOCKED_CONDITIONAL"
+    },
+    {
+      "id": "BLF-B1",
+      "stratum": "BLF",
+      "doi": "10.1371/journal.pcbi.1003810",
+      "title": "Diaconescu et al. 2014 hierarchical inference of intentions",
+      "gate": "2014 published correction; check BLF-02 hierarchical-family distinction",
+      "status": "UNVERIFIED_BACKUP"
+    },
+    {
+      "id": "BLF-B2",
+      "stratum": "BLF",
+      "doi": "10.1371/journal.pcbi.1009557",
+      "title": "Lange and Haefner 2022 approximate Bayesian learning and inference",
+      "gate": "original independent mechanism eligibility pending",
+      "status": "UNVERIFIED_BACKUP"
+    },
+    {
+      "id": "CNC-B1",
+      "stratum": "CNC",
+      "doi": "10.1371/journal.pcbi.1000858",
+      "title": "Phillips and Wilson 2010 systematicity",
+      "gate": "mechanistic paper-level eligibility unverified",
+      "status": "UNVERIFIED_BACKUP"
+    },
+    {
+      "id": "CNC-B2",
+      "stratum": "CNC",
+      "doi": "10.7554/eLife.59360",
+      "title": "Tracking prototype and exemplar representations in the brain across learning",
+      "gate": "model may reuse prior prototype/exemplar families; new mechanism eligibility pending",
+      "status": "UNVERIFIED_BACKUP"
+    },
+    {
+      "id": "CTL-B1",
+      "stratum": "CTL",
+      "doi": "10.7554/eLife.57244",
+      "title": "Integrative frontal-parietal dynamics supporting cognitive control",
+      "gate": "check direct Nee and D'Esposito ancestry near CTL-03",
+      "status": "UNVERIFIED_BACKUP"
+    },
+    {
+      "id": "CTL-B2",
+      "stratum": "CTL",
+      "doi": "10.7554/eLife.39497",
+      "title": "Jiang, Wagner and Egner 2018 externally/internally guided control",
+      "gate": "G1 P12 alternate; blocked until G1 relinquishes this candidate",
+      "status": "BLOCKED_CONDITIONAL"
+    },
+    {
+      "id": "LRN-B1",
+      "stratum": "LRN",
+      "doi": "10.1371/journal.pcbi.1003425",
+      "title": "Task-Specific Response Strategy Selection on the Basis of Recent Training Experience",
+      "gate": "verify new model family and SKL overlap",
+      "status": "UNVERIFIED_BACKUP"
+    },
+    {
+      "id": "LRN-B2",
+      "stratum": "LRN",
+      "doi": "10.1371/journal.pcbi.1009557",
+      "title": "Approximate Bayesian learning and inference",
+      "gate": "BLF backup conflict if simultaneously activated",
+      "status": "UNVERIFIED_BACKUP"
+    },
+    {
+      "id": "MEM-B1",
+      "stratum": "MEM",
+      "doi": "10.1371/journal.pcbi.1003939",
+      "title": "Statistical Computations Underlying the Dynamics of Memory Updating",
+      "gate": "check probabilistic mechanism vs MEM-02",
+      "status": "UNVERIFIED_BACKUP"
+    },
+    {
+      "id": "MEM-B2",
+      "stratum": "MEM",
+      "doi": "10.7554/eLife.69499",
+      "title": "Continuous attractors for dynamic memories",
+      "gate": "near PF01 recurrent attractor family; lineage clearance required",
+      "status": "UNVERIFIED_BACKUP"
+    },
+    {
+      "id": "PRD-B1",
+      "stratum": "PRD",
+      "doi": "10.1371/journal.pcbi.1010740",
+      "title": "Feeling lucky? Prospective and retrospective cues for sensorimotor confidence",
+      "gate": "central predictive mechanism and independence pending",
+      "status": "UNVERIFIED_BACKUP"
+    },
+    {
+      "id": "PRD-B2",
+      "stratum": "PRD",
+      "doi": "10.1371/journal.pcbi.1009557",
+      "title": "Approximate Bayesian inference",
+      "gate": "shared cross-lane backup; only if not activated elsewhere",
+      "status": "UNVERIFIED_BACKUP"
+    },
+    {
+      "id": "SKL-B1",
+      "stratum": "SKL",
+      "doi": "10.1371/journal.pcbi.1014196",
+      "title": "Perceptual prediction error supports implicit process in motor learning",
+      "gate": "near PF03 generic prediction only; compare SKL selected motor families",
+      "status": "UNVERIFIED_BACKUP"
+    },
+    {
+      "id": "SKL-B2",
+      "stratum": "SKL",
+      "doi": "10.1371/journal.pcbi.1003425",
+      "title": "Training-dependent response strategy selection",
+      "gate": "shared cross-lane backup; only one activation",
+      "status": "UNVERIFIED_BACKUP"
+    },
+    {
+      "id": "INT-B1",
+      "stratum": "INT",
+      "doi": "10.1371/journal.pcbi.1007720",
+      "title": "Franklin and Frank 2020 flexible compositional and conjunctive generalization",
+      "gate": "direct descendant INT-12 Franklin and Frank 2018; BLOCKED if INT-12 remains",
+      "status": "BLOCKED_CONDITIONAL"
+    },
+    {
+      "id": "INT-B2",
+      "stratum": "INT",
+      "doi": "10.7554/eLife.39497",
+      "title": "Externally and internally generated control predictions",
+      "gate": "G1 P12 alternative; blocked while reserved",
+      "status": "BLOCKED_CONDITIONAL"
+    },
+    {
+      "id": "INT-B3",
+      "stratum": "INT",
+      "doi": "10.7554/eLife.57244",
+      "title": "Integrative frontal-parietal dynamics",
+      "gate": "also CTL standby; uniqueness check",
+      "status": "UNVERIFIED_BACKUP"
+    }
+  ],
+  "deterministic_rule": [
+    "1 Preserve the initially selected forty slots; prohibit substitution after a slot is exposed to MAIN Grammar analysis.",
+    "2 Before first MAIN scientific transaction, replace only on publisher original PDF/complete-HTML original accessibility or unreadable decisive model material, paper/model noneligibility, published correction material ambiguity, proven exact or central-family collision, or failure of preregistered lane/family diversity.",
+    "3 For each affected slot, scan its backup_priority in listed order. Skip DOI selected in any MAIN or current/future G1 PILOT, any identified direct derivative central-family duplicate, any incomplete/unverifiable original edition, or a backup lacking a completely explicit source-native mechanistic model.",
+    "4 If a backup is shared by multiple strata, process slots in canonical manifest order and allow that DOI only once; later slots skip it.",
+    "5 If same-rank independently eligible backups exist, select earliest sorted lexicographic canonical DOI, not predicted reconstruction outcome.",
+    "6 Prior published source correction may require explicit one fixed corrected version; alternative manuscripts are ineligible absent separate authorization and model-content equivalence; no standalone supplements required unless original itself makes them defining.",
+    "7 Record every candidate rejection, DOI collision, correction, source retrieval failure, cross-lane unresolved G1 candidate reservation and owner decision in append-only events.",
+    "8 Unfilled backup queue or unresolved conflict prevents FINAL_FROZEN; remain WORKING or READY_FOR_JOINT_FREEZE conditional.",
+    "9 No replacement based on predicted or observed H0/H1/H2, reconstruction difficulty, coverage, Grammar residual or fidelity."
+  ],
+  "notes": "Backups are prospective leads, NOT preadmitted sources. B2 blocked tags never bypass collision screening."
+}
