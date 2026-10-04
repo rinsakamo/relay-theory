@@ -1,0 +1,3 @@
+# Independent original-source recovery delta
+
+CI run 37191981039: publisher origin reacquired P11 original supplemental s002/s004/s005; P12 s001/s002/s003 official mathematics; P17 s001–s006 original PDF sources. Required-source fetch failures in this run: 0. Run 37192179071: P11 original figure and unfavorable S4 drift-rate figure visually inspected, exact full S1 behavioral text read; P12 original S1/S2 OfficeMath text extracted, but LibreOffice graphical rendering unavailable. Prior genuine failed attempts remain in history; earlier preliminary stop report is a prior-state record superseded for physical access only. No scientific PRE_A/A/B/C/D/E/post-E qualification inferred solely from acquisition. G1 shared formal qualification stays 9/20; MAIN not authorized.
