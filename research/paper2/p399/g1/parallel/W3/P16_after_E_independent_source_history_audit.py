@@ -70,7 +70,7 @@ def main():
     previous=None; original=[]
     for stage,name,commit in STAGES:
       filepath=PFX+name
-      source_git=git("show",f"{commit}:{filepath}").encode()
+      source_git=subprocess.check_output(["git","show",f"{commit}:{filepath}"])
       work_bytes=(ROOT/name).read_bytes()
       require(source_git==work_bytes,"frozen scientific bytes must equal first stage introduction: "+stage)
       intro=git("log","--diff-filter=A","--format=%H","HEAD","--",filepath).splitlines()
@@ -79,11 +79,11 @@ def main():
       require(subprocess.run(["git","merge-base","--is-ancestor",commit,"HEAD"]).returncode==0,"stage commit must be in current branch ancestry")
       original.append({"stage":stage,"intro_commit":commit,"raw_sha256":hashlib.sha256(work_bytes).hexdigest(),"bytes":len(work_bytes)})
       previous=commit
-    A=json.loads((ROOT+pathlib.Path("P16_A_source_native_v1.json")).read_text())
-    B=json.loads((ROOT+pathlib.Path("P16_B_reaudit_complete_frozen_A_v1.json")).read_text())
-    C=json.loads((ROOT+pathlib.Path("P16_C1C2_source_closed_v1.json")).read_text())
-    D=json.loads((ROOT+pathlib.Path("P16_D_unchanged_grammar_v0_v1.json")).read_text())
-    E=json.loads((ROOT+pathlib.Path("P16_E_original_source_fidelity_v1.json")).read_text())
+    A=json.loads((ROOT/pathlib.Path("P16_A_source_native_v1.json")).read_text())
+    B=json.loads((ROOT/pathlib.Path("P16_B_reaudit_complete_frozen_A_v1.json")).read_text())
+    C=json.loads((ROOT/pathlib.Path("P16_C1C2_source_closed_v1.json")).read_text())
+    D=json.loads((ROOT/pathlib.Path("P16_D_unchanged_grammar_v0_v1.json")).read_text())
+    E=json.loads((ROOT/pathlib.Path("P16_E_original_source_fidelity_v1.json")).read_text())
     require(len(A["original_claims"])==29 and len(A["source_local_dependencies"])==35,"original A inventory")
     require(set(B["review_all_A_claim_ids"])=={v["id"] for v in A["original_claims"]},"B covered exact full A")
     require(len(C["adjacent_negative_C2_unique"])==13 and len(C["append_only_source_supported_deltas"])==1,"C13 original adverse+new B04 only")
