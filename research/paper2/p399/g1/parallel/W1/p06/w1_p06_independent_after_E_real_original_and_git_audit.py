@@ -25,7 +25,7 @@ def check(cond, message):
 r={"scope":"AFTER E independent exact primary issuer raw PDF and original chronological frozen stages, no numeric replay","source":{},"stages":[],"scientific_qualification_implied":False}
 try:
     url="https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1004375&type=printable"
-    req=urllib.request.Request(url,headers={"User-Agent":"RelayTheory-W1-original-source-after-E/1.0"})
+    req=urllib.request.Request(url,headers={"User-Agent":"RelayTheory-W1-original-science-source-qualification/1.0"})
     raw=None
     source_http_failures=[]
     for attempt in range(1,5):
