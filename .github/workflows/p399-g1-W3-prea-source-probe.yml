@@ -1,5 +1,10 @@
 name: P399 G1 W3 source-scope supplemental probe
 on:
+  pull_request:
+    branches:
+      - paper2/p399-g1-pilot20-diversity-audit-20261004
+    paths:
+      - .github/workflows/p399-g1-W3-prea-source-probe.yml
   push:
     branches:
       - paper2/p399-g1-w3-mem-prd-family-20261004
@@ -29,12 +34,21 @@ jobs:
             ("P15_S2_table", "10.1371/journal.pcbi.1010589.s004", "supplementary", None, None, None),
             ("P18_publisher_primary_original", "10.1371/journal.pcbi.1008552", "printable", "cb75481590c34686eeeb8635dcb8a381283bcbe3e7f8ed9f0ee246fa95e419d1", 1872932, 28),
           ]
-          s=requests.Session();s.headers.update({"User-Agent":"RelayTheory-P399-W3-source-verification/1.0"})
+          s=requests.Session();s.headers.update({"User-Agent":"Mozilla/5.0 (RelayTheory W3 original publisher source verification)","Accept":"application/pdf,*/*"})
           for label,doi,kind,prior_sha,prior_size,prior_pages in sources:
             url=f"https://journals.plos.org/ploscompbiol/article/file?id={doi}&type={kind}"
             info={"id":label,"official_url":url}
             try:
-              response=s.get(url, timeout=95);response.raise_for_status()
+              response=None
+              for attempt in range(1,5):
+                try:
+                  response=s.get(url, timeout=125);response.raise_for_status()
+                  if response.content.startswith(b"%PDF-"): break
+                  raise RuntimeError("publisher returned non-PDF")
+                except Exception as err:
+                  print("W3_ORIGINAL_RETRY",label,attempt,str(err),flush=True)
+                  if attempt==4: raise
+                  time.sleep(attempt*5)
               b=response.content;info.update({"http":response.status_code,"content_type":response.headers.get("content-type",""),"sha256":hashlib.sha256(b).hexdigest(),"bytes":len(b),"pdf_signature":b.startswith(b"%PDF-"),"effective_url":response.url})
               if not b.startswith(b"%PDF-"): raise RuntimeError("NON_PDF_STOP")
               reader=PdfReader(io.BytesIO(b), strict=False);info["pages"]=len(reader.pages)
