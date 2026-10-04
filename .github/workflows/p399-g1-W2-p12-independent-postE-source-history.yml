@@ -1,0 +1,124 @@
+name: P399 G1 W2 P12 independent post-E original LVOC equations and frozen six-stage git audit
+on:
+  push:
+    branches: ["paper2/p399-g1-w2-ctl-prd-diversity-20261004"]
+    paths: [".github/workflows/p399-g1-W2-p12-independent-postE-source-history.yml"]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  P12-original-independent-afterE:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: pip install -q requests pypdf python-docx
+      - name: Fresh original published PLOS PDF and all three original DOCX supplements exact source verification
+        shell: bash
+        run: |
+          python - <<'PY'
+          import requests,io,hashlib,re,json,time,sys
+          from pypdf import PdfReader
+          from docx import Document
+          doi='10.1371/journal.pcbi.1006043'
+          T=[
+           (doi,'printable','17368c69624bc5e968ccd2f3cc5eeb349070801e3b240cbc50a66d770bae2370',2864504,27),
+           (doi+'.s001','supplementary','6870d9344bcbecc77aabe9a32335ed9c9820e4d1aefef03f6f59fe64d23c6fb5',19213,30),
+           (doi+'.s002','supplementary','8ea0198c46a4b78bc6af1bcd4a0fdbb5859a96b76ee0335ba92156ed25931432',164729,36),
+           (doi+'.s003','supplementary','7fac52d9c530d7627d3065413818e75581f2e02a14dddbf84fd797aef715d9a4',986789,12)]
+          s=requests.Session();s.headers['User-Agent']='Mozilla/5.0 (RelayTheory G1 W2 P12 independent after E scientific provenance)'
+          o={'paper':'P12','verified':[],'failures':[],'original_required_sources':4,'source_text_invariant_only_not_numerical_replay':True}
+          for uri,kind,h,expected_bytes,n in T:
+            b=None
+            for k in range(4):
+              try:
+                r=s.get('https://journals.plos.org/ploscompbiol/article/file',params={'id':uri,'type':kind},timeout=55)
+                if r.status_code==200:b=r.content;break
+                print('P12_ISSUER_RETRY',uri,k,r.status_code,flush=True)
+              except Exception as e:print('P12_ISSUER_ERROR',uri,repr(e),flush=True)
+              time.sleep(min(12,2**k))
+            if b is None:
+              o['failures'].append(uri+':PUBLISHER_UNAVAILABLE');continue
+            actual_hash=hashlib.sha256(b).hexdigest()
+            rec={'uri':uri,'bytes':len(b),'raw_sha256':actual_hash,'expected_raw_sha256':h}
+            try:
+              assert actual_hash==h and len(b)==expected_bytes,('raw source mismatch',rec)
+              if kind=='printable':
+                pdf=PdfReader(io.BytesIO(b),strict=False); assert len(pdf.pages)==27
+                full=' '.join((p.extract_text() or '') for p in pdf.pages).lower()
+                rec['pages']=len(pdf.pages)
+                anchors={'first_page_title':'rational metareasoning' in (pdf.pages[0].extract_text() or '').lower(),
+                'main_eq_model':'control' in full and 'learning' in full,
+                'original_experiment':'stroop' in full and 'flanker' in full,
+                'original_model_comparison':'win-stay' in full or 'win stay' in full,
+                'original_direct_control_reference':'shenhav' in full}
+                rec['source_text_anchors']=anchors
+                assert all(anchors.values()),('source document text anchor failure',anchors)
+              else:
+                d=Document(io.BytesIO(b));xml=d.part.blob.decode('utf-8','replace')
+                rec['docx_paragraph_count']=len(d.paragraphs)
+                rec['embedded_original_officemath_nodes']=xml.count('<m:oMath')
+                assert rec['embedded_original_officemath_nodes']>=n
+                full=' '.join(p.text for p in d.paragraphs).lower()
+                if uri.endswith('s001'):
+                  anchors={'learning_document':'learning mechanism' in full,'Gaussian_shrinkage':'shrinkage prior' in full,'original_design':'predictors in equation 6' in full}
+                elif uri.endswith('s002'):
+                  anchors={'EVC_and_VOC':'expected value of control' in full and 'value of computation' in full,'original_joint':'unifies' in full,'original_2013_ancestry':'10.1016/j.neuron.2013.07.007' in full}
+                else:
+                  anchors={'explicit_speculation':'speculations about how' in full,'alternate_Bayesian_not_credentialed':'sarsa' in full.lower() or 'prediction error' in full}
+                rec['unfavorable_and_source_critical_anchors']=anchors
+                assert all(anchors.values()),('original S source missing',uri,anchors)
+              o['verified'].append(rec);print('PASS_P12_EXACT_ISSUER_ORIGINAL',rec,flush=True)
+            except Exception as e:
+              o['failures'].append(uri+':'+repr(e));print('P12_SOURCE_FAILED',uri,repr(e),flush=True)
+          with open('w2_P12_afterE_issuer_receipt.json','w') as f:json.dump(o,f,indent=2)
+          print('P12_EXACT_ISSUER_COUNT',len(o['verified']),'SOURCE_FAILURES',len(o['failures']),flush=True)
+          assert len(o['verified'])==4 and not o['failures']
+          PY
+      - name: Inspect real historical full six-stage git ancestor and original immutable intro blobs
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json,subprocess
+          root='research/paper2/p399/g1/parallel/W2/p12/'
+          stages=[
+           ('PRE_A','443b45e799a487befda5c19ce40e864ec18eeab1','P12_PRE_A_FROZEN_PUBLISHER_LVOC_MATH_AND_ANCESTRY_v1.json'),
+           ('A','a1abde6c4f1fddd6c56bae4c17059b9e5cd63425','P12_PASS_A_SOURCE_FIRST_v1.json'),
+           ('B','e96c56fc25db6f412835fb85d88a2941fb297b49','P12_PASS_B_COMPLETE_A_SOURCE_ADVERSARIAL_v1.json'),
+           ('C','8cd10dc3f164aaea2f3900c61231d830ab5f0a24','P12_PASS_C_SOURCE_CLOSED_APPEND_ONLY_v1.json'),
+           ('D','1ddc8a06995a95dd23365f9570a655a0277d5fbf','P12_PASS_D_UNCHANGED_GRAMMAR_v0_v1.json'),
+           ('E','1d118a57d4b10b3113c7d3e1d042835011b17f8c','P12_PASS_E_ORIGINAL_EQUATIONS_SUPPS_FIDELITY_v1.json')]
+          git=lambda *a:subprocess.check_output(['git',*a],text=True).strip()
+          def ancestor(a,b):assert subprocess.run(['git','merge-base','--is-ancestor',a,b]).returncode==0,(a,b,'wrong ancestor')
+          ancestor('38c5eb24c61b9e57371084a65fcbcb9fb9c62a4b','HEAD')
+          o={'paper':'P12','independent_after_E_git_stage_audit':[],'status':'SOURCE_AND_CHRONOLOGY_ONLY'}
+          blobs={}
+          for i,(name,sha,f) in enumerate(stages):
+            path=root+f; ancestor(sha,'HEAD')
+            if i:ancestor(stages[i-1][1],sha)
+            intro=git('log','--all','--diff-filter=A','--format=%H','--',path).splitlines()
+            assert intro and intro[-1]==sha,('wrong original introduction',name,intro)
+            orig=git('rev-parse',sha+':'+path);current=git('rev-parse','HEAD:'+path)
+            assert orig==current,('immutable file modified',name)
+            obj=json.loads(git('cat-file','-p',orig))
+            if name=='A':assert len(obj['all_source_original_claims'])==25 and len(obj['source_native_dependencies'])==34
+            if name=='B':assert obj['A_original_git_blob']==blobs['A'] and len(obj['complete_immutable_A_original_object']['all_source_original_claims'])==25
+            if name=='C':assert obj['original_A_git_blob']==blobs['A'] and len(obj['complete_original_immutable_A_reopened_before_any_patch']['all_source_original_claims'])==25
+            if name=='D':assert obj['stage_introduction_commits']['C']==stages[3][1] and len(obj['all_25_source_claims_mapped'])==25
+            if name=='E':assert obj['frozen_stage_commits']['D']==stages[4][1] and len(obj['original_source_fidelity_targets'])==11
+            blobs[name]=orig
+            o['independent_after_E_git_stage_audit'].append({'stage':name,'introduction_commit':sha,'actual_git_blob':orig,'original_equals_HEAD':True,'correct_frozen_chronology':True})
+            print('PASS_P12_ORIGINAL_GIT_STAGE',name,sha,orig,flush=True)
+          with open('w2_P12_afterE_original_git_receipt.json','w') as f:json.dump(o,f,indent=2)
+          print('P12_ORIGINAL_GIT_STAGES_PASS',len(stages),flush=True)
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: W2-P12-independent-afterE-issuer-and-real-Git
+          path: |
+            w2_P12_afterE_issuer_receipt.json
+            w2_P12_afterE_original_git_receipt.json
+          if-no-files-found: warn
