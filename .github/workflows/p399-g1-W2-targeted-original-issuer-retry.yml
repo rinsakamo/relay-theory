@@ -1,0 +1,127 @@
+name: P399 G1 W2 targeted missing issuer originals with HTTP 502 retry (NO stage promotion)
+on:
+  push:
+    branches: ["paper2/p399-g1-w2-ctl-prd-diversity-20261004"]
+    paths: [".github/workflows/p399-g1-W2-targeted-original-issuer-retry.yml"]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  missing-originals-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: pip install -q requests pypdf pymupdf python-docx pillow
+      - name: Target uninspected issuer PDFs/supplementary originals exclusively; keep every HTTP source failure
+        shell: bash
+        run: |
+          python - <<'PY'
+          import requests,hashlib,io,json,base64,time,zipfile
+          from pypdf import PdfReader
+          from docx import Document
+          import fitz
+          from PIL import Image
+          S=requests.Session()
+          S.headers['User-Agent']='Mozilla/5.0 (RelayTheory W2 original research and issuer supplement audit)'
+          endpoints=[
+            ('P11','10.1371/journal.pcbi.1008971',['s005','s004','s002'],'main_fig7_visual'),
+            ('P12','10.1371/journal.pcbi.1006043',['s001','s002','s003'],None),
+            ('P17','10.1371/journal.pcbi.1009738',['s003','s004','s005','s006','s001','s002'],'main_fig2_fig3_visual')]
+          base='https://journals.plos.org/ploscompbiol/article/file'
+          manifest={'source':'PLOS official issuer original endpoints ONLY; no GCS unsigned substitution','papers':{},'failures':[],'source_science_qualifications':0}
+          def get(doi,kind):
+            last=None
+            for attempt in range(3):
+              try:
+                u=base
+                params={'id':doi,'type':kind}
+                r=S.get(u,params=params,timeout=45)
+                if r.status_code in [502,503,504,429]:
+                  print('ISSUER_TRANSIENT_RETRY',doi,kind,attempt,r.status_code,flush=True)
+                  last='HTTP'+str(r.status_code)
+                  time.sleep((attempt+1)*3)
+                  continue
+                r.raise_for_status()
+                return r.content,r.url,r.headers.get('content-type','')
+              except Exception as e:
+                last=repr(e)
+                print('ISSUER_EXCEPTION_RETRY',doi,kind,attempt,last,flush=True)
+                time.sleep((attempt+1)*3)
+            raise RuntimeError(str(last))
+          def b64(p,idx,ref):
+            im=Image.open(io.BytesIO(p.get_pixmap(matrix=fitz.Matrix(.8,.8),alpha=False).tobytes('jpeg')))
+            im.thumbnail((720,930))
+            q=io.BytesIO();im.save(q,format='JPEG',quality=54,optimize=True)
+            print(ref+'_B64='+base64.b64encode(q.getvalue()).decode(),flush=True)
+          for pid,doi,sups,extra in endpoints:
+            obj={'doi':doi,'supplements':{},'extra':extra}
+            manifest['papers'][pid]=obj
+            # No extra reacquisition except paper-specific missing decisive figure.
+            if extra:
+              try:
+                b,url,typ=get(doi,'printable')
+                h=hashlib.sha256(b).hexdigest()
+                assert h=={'P11':'9291d8bca264a2216467e2254dede69dda71232708d94d10619f6d253458d022','P17':'e2d28aea56a31501db49aa791158f18771ae3054748d331df2ec26817f16f305'}[pid]
+                p=fitz.open(stream=b,filetype='pdf')
+                obj['main_reacquisition_for_specific_missing_figure']={'sha256':h,'pages':len(p),'bytes':len(b)}
+                for i,pg in enumerate(p):
+                  page=pg.get_text().lower()
+                  if pid=='P11' and ('fig 7' in page or 'fig. 7' in page):
+                    b64(pg,i,pid+'_ORIGINAL_MAIN_FIG7_PAGE_'+str(i+1))
+                    obj['main_reacquisition_for_specific_missing_figure']['fig7_page_one_based']=i+1
+                    break
+                if pid=='P17':
+                  for figure in ['fig 2','fig 3']:
+                    for i,pg in enumerate(p):
+                      if figure in pg.get_text().lower():
+                        b64(pg,i,pid+'_ORIGINAL_MAIN_'+figure.replace(' ','')+'_PAGE_'+str(i+1))
+                        break
+              except Exception as e:
+                msg=pid+'_MISSING_DECISIVE_FIG '+repr(e);manifest['failures'].append(msg);print('REQUIRED_ORIGINAL_BLOCKED',msg,flush=True)
+            for sid in sups:
+              key=doi+'.'+sid
+              try:
+                b,url,ct=get(key,'supplementary')
+                v={'original_doi':key,'publisher_redirect_final_url':url.split('?')[0],'raw_sha256':hashlib.sha256(b).hexdigest(),'bytes':len(b),'content_type':ct}
+                assert len(b)>1000 and not b.lstrip().startswith(b'<html')
+                if b.startswith(b'%PDF'):
+                  p=fitz.open(stream=b,filetype='pdf')
+                  v['pages']=len(p)
+                  # For actual source-native adverse findings: sample first page visual on key originals.
+                  b64(p[0],0,pid+'_SUP_'+sid+'_FIRST_PG')
+                  print(pid+'_SUP_'+sid+'_SOURCE_TEXT_HEAD',p[0].get_text()[:2900],flush=True)
+                elif b.startswith(b'PK'):
+                  d=Document(io.BytesIO(b))
+                  v['docx_paragraphs']=len(d.paragraphs)
+                  print(pid+'_SUP_'+sid+'_ORIGINAL_TEXT_START',flush=True)
+                  for i,para in enumerate(d.paragraphs):
+                    if para.text.strip():print(pid+'_SUP_'+sid+'_PARA'+str(i)+'='+para.text[:600],flush=True)
+                  print(pid+'_SUP_'+sid+'_ORIGINAL_TEXT_END',flush=True)
+                  if pid=='P11' and sid=='s005':
+                    assert v['raw_sha256']=='9c1961a7f032f32805c95d958562912abb814673ffc1657cca56d908e18335b5','P11 S1 text original changed'
+                  # Important DOCX OMML math excluded from naive paragraph text.
+                  xml=d.part.blob.decode('utf-8','replace')
+                  v['embedded_math_oMath_count']=xml.count('<m:oMath')
+                  if v['embedded_math_oMath_count']:
+                    import re,html
+                    mtxt=re.findall(r'<m:t(?: [^>]+)?>([^<]*)</m:t>',xml)
+                    print(pid+'_SUP_'+sid+'_OMML_SYMBOLS',' '.join(html.unescape(x) for x in mtxt)[:4200],flush=True)
+                else:
+                  im=Image.open(io.BytesIO(b))
+                  v['original_image_size']=[im.width,im.height]
+                obj['supplements'][sid]=v
+                print('OFFICIAL_MISSING_ORIGINAL_ACQUIRED',pid,sid,v,flush=True)
+              except Exception as e:
+                msg=pid+'_'+sid+' '+repr(e);manifest['failures'].append(msg);print('REQUIRED_ORIGINAL_BLOCKED',msg,flush=True)
+          with open('w2_only_missing_originals_recovery_receipt.json','w') as f:json.dump(manifest,f,indent=2,ensure_ascii=False)
+          print('REQUIRED_ORIGINAL_STILL_MISSING',len(manifest['failures']),flush=True)
+          if manifest['failures']:raise SystemExit(1)
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: W2-targeted-only-official-source-retry-metadata
+          path: w2_only_missing_originals_recovery_receipt.json
+          if-no-files-found: warn
