@@ -55,7 +55,7 @@ def assemble_constructed_packet():
     doc = dict(schema_version="G3_SOURCE_COMPLETENESS_V1_1",
         paper_token="NONMAIN_CONSTRUCTED_ONLY", source_fingerprint=fingerprints["source_raw_sha256"],
         native_reference_digest="f"*64, source_locked_before_D=True,
-        required=required, preserved=required, redactions=redactions,
+        required=required, preserved={k:list(v) for k,v in required.items()}, redactions=redactions,
         curator=dict(actor_id="SCRIPTED_MOCK_CURATOR", execution_id="NONMAIN_SCRIPT_ONLY",
                      attestation_raw_sha256=None),
         second_review=dict(status="CURATOR_ONLY_UNVALIDATED", actor_id=None,
