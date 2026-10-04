@@ -56,3 +56,50 @@ assert negtest(lambda:mutate(lambda aa,bbx,ccx,backup,*extras:backup.update(repl
 assert negtest(lambda:mutate(lambda *args:args[4]["per_work"][0].update(analyst_masked_packet_ready=True)))
 print("PASS: six negative controls refuse denominator loss, DOI duplicate, false lineage, false independent pair, unadmitted backup, forged G3 packet")
 print("RESULT: METADATA_CONSISTENCY_ONLY_NO_SEMANTIC_SOURCE_ELIGIBILITY_NO_MAIN_GO")
+
+
+# Versioned, immutable v3 addendum checks; do NOT modify historical v1/v2 artifacts.
+checklist=(P/"MAIN40_G2_V3_RAW_UTF8_SHA256SUMS.txt").read_text().splitlines()
+assert len(checklist)==3
+for ln in checklist:
+    digest,filename=ln.split("  ",1)
+    assert hashlib.sha256((P/filename).read_bytes()).hexdigest()==digest,("v3-digest",filename)
+n=json.loads((P/"MAIN40_G2_ADMISSION_WORKING_MANIFEST_v3.json").read_text())
+r3=json.loads((P/"MAIN40_G2_EIGHT_FIRST_PARTY_RETRY_APPEND_ONLY_v3.json").read_text())
+g13=json.loads((P/"MAIN40_G2_G1_CURRENT_BOUNDED_P07_RECONCILIATION_v3.json").read_text())
+def check_v3(vv,ee,gg):
+    old=m["selected_working_roster"];new=vv["selected_working_roster"]
+    assert len(new)==len(old)==40
+    assert [(x["slot"],x["doi"]) for x in new]==[(x["slot"],x["doi"]) for x in old]
+    assert len(ee["results"])==8 and sum(bool(x["actual_primary_received"]) for x in ee["results"])==1
+    result=[x for x in ee["results"] if x["actual_primary_received"]]
+    assert len(result)==1 and result[0]["id"]=="INT-02"
+    pdf=result[0]["official_publisher_raw_pdf"]
+    assert pdf["sha256"]=="a1e644c826bf1b356187bc556d5947eb23638f3f9bc6c61835d46850b4f1cc37"
+    assert pdf["bytes"]==2814783 and pdf["pages"]==14 and pdf["original_doi_exact_found_in_pdf"]
+    working=[x for x in new if x["slot"]=="INT-02"][0]
+    assert working["cloud_publisher_pdf_acquired"] and working["cloud_pdf_sha256"]==pdf["sha256"]
+    assert sum(bool(x["cloud_publisher_pdf_acquired"]) for x in new)==30
+    assert vv["count"]["actual_original_primary_media_access_distinct"]==33
+    assert vv["count"]["full_original_access_outstanding"]==7
+    assert vv["count"]["source_visually_semantically_admitted"]==0
+    assert vv["count"]["central_family_admitted"]==0 and vv["count"]["final_joint_frozen"]==0
+    assert vv["final_scientific_freeze_sha256"] is None and not vv["main_authorized"]
+    assert all(not x["source_eligible"] for x in new)
+    assert gg["p07_qualified_source_scoped"] and not gg["final20_scientific_roster_is_frozen"]
+    assert not gg["g2_frozen_selected_exact_doi_collision_with_p07"]
+check_v3(n,r3,g13)
+print("PASS V3: 3/3 independently raw hashed supplementary working artifacts")
+print("PASS V3: one truly new original publisher PDF; 30/40 raw original and 33/40 distinct first-party access")
+print("PASS V3: unchanged 40 DOI allocation, 7 access failures, 0 scientific pass, no final freeze")
+def neg_v3(f):
+    n2,e2,g2=map(copy.deepcopy,(n,r3,g13))
+    f(n2,e2,g2)
+    try:check_v3(n2,e2,g2)
+    except AssertionError:return True
+    return False
+assert neg_v3(lambda a,b,c:a["selected_working_roster"][0].update(doi="10.0000/forged"))
+assert neg_v3(lambda a,b,c:a["count"].update(source_visually_semantically_admitted=30))
+assert neg_v3(lambda a,b,c:a["count"].update(full_original_access_outstanding=0))
+assert neg_v3(lambda a,b,c:a.update(main_authorized=True))
+print("PASS V3: four additional false-promotion/collision/availability/MAIN-GO negative tests rejected")
