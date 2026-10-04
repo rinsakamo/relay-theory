@@ -1,0 +1,29 @@
+name: P399 G1 v3 scientific evidence 6/20 raw receipts not semantic proof
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g1/g1_v3_scientific_evidence_check.py"
+      - "research/paper2/p399/g1/G1_PILOT20_SCIENTIFIC_ADMISSION_AND_DENOMINATORS_v3.json"
+      - "research/paper2/p399/g1/G1_REMAINING_14_SCIENCE_BLOCKERS_v3.json"
+      - "research/paper2/p399/g1/G1_G2_LATEST_V3_P09_CNC_CROSS_LANE_DELTA.json"
+      - "research/paper2/p399/g1/G1_P09_CNC_EXECUTED_AND_CURRENT_DENOMINATORS_JA_20261004.md"
+      - "research/paper2/p399/g1/p09/**"
+      - ".github/workflows/p399-g1-v3-evidence.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  g1-v3-evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: python3 research/paper2/p399/g1/g1_v3_scientific_evidence_check.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g1-v3-immutable-stage-metadata-${{ github.run_id }}
+          path: g1-v3-receipt/science-projection.json
+          retention-days: 14
+          if-no-files-found: warn
