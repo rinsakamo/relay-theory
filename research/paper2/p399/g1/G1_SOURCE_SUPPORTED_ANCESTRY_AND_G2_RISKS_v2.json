@@ -1,0 +1,139 @@
+{
+  "schema": "relaytheory.p399.g1.source_specific.prospective_ancestry_remediation.v2",
+  "g4_blockers": [
+    "G4-B01",
+    "G4-B02",
+    "G4-B03"
+  ],
+  "analysis_rule": "Different DOIs/shared topic do not prove independence; cited ancestral reuse alone does not prove duplicate",
+  "central_model_relations": [
+    {
+      "id": "R01",
+      "a": "P05",
+      "b": "Zhang et al 2018 IVSN predecessor",
+      "classification": "DIRECT_DERIVATIVE",
+      "central_mechanism": "P05 inherits invariant visual search network and adds inhibitory return fixation dynamics and transfer scope; does NOT invent IVSN",
+      "evidence": [
+        "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010654"
+      ],
+      "source_scope": "P05 article explicit original IVSN ancestry; exact predecessor and math implementation restudy before P05 pre-A",
+      "accept_independent_as_original_invention": false
+    },
+    {
+      "id": "R02",
+      "a": "P16",
+      "b": "PF01",
+      "classification": "SHARED_ANCESTRY_DISTINCT_CENTRAL_MECHANISM",
+      "central_mechanism": "Original P16 local context CA3 attractor memories embedded in spatial continuous attractor, context rate remapping and hysteresis vs PF01 stabilized recurrent working-memory bump via dynamic short-term plasticity/noise",
+      "evidence": [
+        "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003648",
+        "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006928"
+      ],
+      "direct_model_copy_proven": false,
+      "bounded": "P16 publisher introduction expressly earlier combining continuous/discrete attractor refs 14–16; PF01 has other dynamic STP mechanism. Full cited ancestor graph still pending so not FINAL_CLEARED."
+    },
+    {
+      "id": "R03",
+      "a": "P18",
+      "b": "PF04",
+      "classification": "SHARED_MB_MF_ANCESTRY_DISTINCT_CENTRAL_MECHANISM",
+      "central_mechanism": "P18 self-reflective MB planner predicts its own MF future propensities when planning rewards vs PF04 goal-directed sequence/option hierarchy compared against weighted flat MB/MF choices",
+      "evidence": [
+        "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008552",
+        "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003364"
+      ],
+      "bounded": "Source-native center differs; same Daw MB/MF comparator vocabulary no duplication proof; PF04 inherited flat Daw original."
+    },
+    {
+      "id": "R04",
+      "a": "P18",
+      "b": "G2_INT-15",
+      "classification": "SHARED_MB_MF_ANCESTRY_DISTINCT_CENTRAL_FORMULATION_PROVISIONAL",
+      "central_mechanism": "P18 planner predicts future MF-driven deviations in own reward planning vs G2 INT15 explicitly models trial-by-trial conflict and competition of MB/MF control. Must check exact quantitative update graph and direct citations before final G2 final roster.",
+      "evidence": [
+        "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008552",
+        "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010047"
+      ],
+      "bounded": "Final source/edition and mutual direct ancestry G2 owner; not independent H-fit evidence."
+    },
+    {
+      "id": "R05",
+      "a": "P19",
+      "b": "PF03",
+      "classification": "SHARED_BROAD_HIERARCHICAL_TEMPORAL_EXPLANANDUM_DISTINCT_CENTRAL_MECHANISM",
+      "central_mechanism": "P19 hierarchical Bayesian variable-depth sequence context under stochastic Pitman-Yor learning applied to motor skill prediction vs PF03 hierarchical neurally implemented event-gated predictive coding with learned multi-layer weight matrices",
+      "evidence": [
+        "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1009866",
+        "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1011801"
+      ],
+      "bounded": "Same word hierarchy not mechanistic duplicate; exact original citations and descendant graph remain before final gate."
+    },
+    {
+      "id": "R06",
+      "a": "P07",
+      "b": "P08",
+      "classification": "DISTINCT_CENTRAL_MECHANISM_SHARED_AUTHOR_THEORETICAL_BACKGROUND",
+      "central_mechanism": "P07 bounded rational recursive inference over an opponent's policy order in a sequential game vs P08 corrected suboptimal sequential hidden-state inference with matching Bayes filter optimal predictions in its task",
+      "evidence": [
+        "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000254",
+        "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005418",
+        "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005908"
+      ],
+      "bounded": "Common Friston/Dolan authors and broad Bayes do not establish duplicate. Preserve P08 original substantive correction."
+    },
+    {
+      "id": "R07",
+      "a": "P07",
+      "b": "G2_BLF-B1_BACKUP",
+      "classification": "UNDERDETERMINED_POTENTIAL_DIRECT_INTENTION_INFERENCE",
+      "central_mechanism": "G2 Diaconescu 2014 hierarchical intention inference backup and P07 older ToM strategic hierarchy potentially closer ancestry than working MAIN40. G2 backup blocked conditionally until original comparison.",
+      "evidence": [
+        "https://doi.org/10.1371/journal.pcbi.1003810",
+        "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000254"
+      ],
+      "bounded": "G2 reservation only; G1 does not activate/replace."
+    },
+    {
+      "id": "R08",
+      "a": "G1_P12_ELIFE_ALTERNATE",
+      "b": "G2_CTL-B2_AND_INT-B2",
+      "classification": "EXACT_WORK_DUPLICATE_IF_BOTH_ACTIVATED",
+      "central_mechanism": "Identical 10.7554/eLife.39497 original published 23pp alternative double reserved; G1 has physical PDF but did NOT select it; G2 two backups blocked conditional pending priority resolution.",
+      "evidence": [
+        "https://cdn.elifesciences.org/articles/39497/elife-39497-v3.pdf",
+        "https://github.com/rinsakamo/relay-theory/pull/419"
+      ],
+      "bounded": "Double reservation not actual selected G1/G2 collision; do not silently alter either roster."
+    },
+    {
+      "id": "R09",
+      "a": "P20",
+      "b": "G2_SKL-03",
+      "classification": "UNDERDETERMINED_BROAD_SENSORIMOTOR_REWARD",
+      "central_mechanism": "P20 goal-related feedback in human motor exploration based on goal babbling predecessor vs G2 SKL03 reinforcement landscape gradients. Exact direct implementation dependence not source verified.",
+      "evidence": [
+        "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006676",
+        "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006839"
+      ],
+      "bounded": "Cannot grant collision-free admission before complete original comparison."
+    },
+    {
+      "id": "R10",
+      "a": "P19",
+      "b": "G2_SKL-02",
+      "classification": "DISTINCT_CENTRAL_FORMALISM_PROVISIONAL",
+      "central_mechanism": "P19 nonparametric hierarchical Bayesian context depth vs G2 SKL02 motor sequence STDP plasticity neural circuit, share task domain but formal mechanistic core differs",
+      "evidence": [
+        "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1009866",
+        "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005632"
+      ],
+      "bounded": "G2 roster final ancestry not closed"
+    }
+  ],
+  "fully_final_independence_pass": false,
+  "exact_identity_status": "20 current PILOT x 40 G2 working main pairwise 800, no exact DOI collision; full list in handoff v2",
+  "unresolved_and_historical": "#398 and two prior 60-work full central model source comparisons incomplete; historical bounded DOI-only exact no duplicates in G2 working scan, not genealogy proof",
+  "nonPLOS": "eLife P12 original bytes physically acquired but ORIGINAL 23pp math/fig visual not independently fully admitted, plus G2 double backup reservation; no replacement",
+  "proposal_result_independence": "All findings source-native; no MAIN Grammar/model score seen or executed",
+  "final_status": "BOUNDED_PARTIAL_FAMILY_REMEDIATION_NOT_FINAL_CLEARED"
+}
