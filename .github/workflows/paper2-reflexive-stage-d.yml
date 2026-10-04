@@ -1,0 +1,28 @@
+name: paper2-reflexive-stage-d
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/paper2-reflexive-stage-d.yml'
+      - 'paper/validation/jgps-major-revision/reflexive-audit-v1/**'
+      - 'scripts/paper2_reflexive_stage_d_validate.py'
+  workflow_dispatch:
+
+jobs:
+  frozen-evidence-blind-typing:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify frozen prior author-review gate
+        run: python scripts/paper2_reflexive_audit_candidates_validate.py
+      - name: Compile isolated Stage D validator
+        run: python -m py_compile scripts/paper2_reflexive_stage_d_validate.py
+      - name: Deterministic Stage D verification without importing Evidence Profile
+        run: |
+          python scripts/paper2_reflexive_stage_d_validate.py --output /tmp/rfx-d-a.json
+          python scripts/paper2_reflexive_stage_d_validate.py --output /tmp/rfx-d-b.json
+          cmp /tmp/rfx-d-a.json /tmp/rfx-d-b.json
+          cat /tmp/rfx-d-a.json

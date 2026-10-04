@@ -1,0 +1,95 @@
+{
+  "schema": "relay-theory.paper2.reflexive_evidence_rubric.v1",
+  "status": "FROZEN_BEFORE_RELATION_ANNOTATION",
+  "authority_issue": 384,
+  "date": "2026-10-01",
+  "stage": "C_EVIDENCE_PROFILE",
+  "input_gate": {
+    "author_review_total": 47,
+    "author_review_accepted": 47,
+    "author_review_pending": 0,
+    "candidate_packet_git_blob_sha": "50fa50d24f2fbf9f3aef871cdeda08cdc97431a8",
+    "author_review_ledger_status": "AUTHOR_REVIEW_COMPLETE",
+    "downstream_fit_read_for_new_annotations": false
+  },
+  "lineage": {
+    "reference_rubric": "paper/validation/jgps-major-revision/pvs16-evidence-profile-rubric-v1.json",
+    "reference_rubric_git_blob_sha": "712b0487ff5ae3d0adaa03e3180eed1eb9e9a2b5",
+    "reuse_policy": "Preserve E0-E3 directness/perturbation distinctions. Grades refer to frozen support for reflexive methodological and computational claims themselves. The E2/E3 grades of source-study relations appearing inside RFX11A must NOT be copied onto RFX11A. This rubric is not a population-wide truth-quality scale and is not interchangeable with the PVS empirical-source profile."
+  },
+  "evidence_levels": {
+    "E0": {
+      "label": "DECLARATION_OR_INFERENTIAL_BOUNDARY",
+      "rule": "A method, scope, negative entailment, or ontology/logic limitation is defined or inferred without a direct test in frozen evidence for that exact claim relation. E0 does not imply falsehood or low quality."
+    },
+    "E1": {
+      "label": "DIRECT_NONINTERVENTIONAL_FROZEN_WITNESS",
+      "rule": "The frozen repository authority directly reports a concrete audit, count, observed mapping, source-review state, or analogous noninterventional diagnostic relevant to this exact reflexive relation. E1 does not mean an independent scientific replication."
+    },
+    "E2": {
+      "label": "DIRECT_DECLARED_INTERVENTIONAL_CONTROL",
+      "rule": "Frozen evidence directly reports an explicitly declared perturbation or destructive manipulation of the target representation or criterion and its outcome for this same tested relation; a merely held-out test of an unchanged carrier is not automatically an intervention."
+    },
+    "E3": {
+      "label": "EXPLICIT_REPEATED_COMPARABLE_INTERVENTIONS",
+      "rule": "E2 is met and frozen evidence explicitly demonstrates confirmation across multiple comparable interventions or target contexts for the SAME target relation; the presence of multiple heterogeneous control categories alone is insufficient. No E3 claim is presumed."
+    }
+  },
+  "additional_axes": {
+    "warrant_kind": [
+      "METHOD_DECLARATION",
+      "SCOPE_OR_NON_ENTAILMENT",
+      "SOURCE_GROUNDED_AUTHOR_REVIEW",
+      "FROZEN_DETERMINISTIC_OBSERVATION",
+      "FROZEN_COMPARATIVE_DIAGNOSTIC",
+      "FROZEN_DESTRUCTIVE_CONTROL",
+      "FROZEN_PROVENANCE_AUDIT",
+      "PROSPECTIVE_EVIDENCE_STRATIFIED_DIAGNOSTIC",
+      "FROZEN_HELDOUT_CARRIER_TEST",
+      "FROZEN_LAYERED_PLACEMENT",
+      "RETROSPECTIVE_IN_SAMPLE_CALIBRATION",
+      "DOCUMENTED_NOT_ESTABLISHED"
+    ],
+    "support_directness": [
+      "DECLARED_OR_INFERRED",
+      "SOURCE_LOCAL_AUDIT",
+      "FROZEN_ARTIFACT_DIRECT",
+      "FROZEN_CONTROL_DIRECT"
+    ],
+    "validation_timing": [
+      "METHODOLOGICAL",
+      "FROZEN_REFERENCE_CORPUS",
+      "FROZEN_DECLARED_CONTROL",
+      "PROSPECTIVE_PVS16",
+      "FROZEN_HELDOUT_V1",
+      "RETROSPECTIVE_POST_HOC_V2",
+      "DOCUMENTED_RELIABILITY_BOUNDARY"
+    ],
+    "evidence_access": [
+      "FROZEN_REPOSITORY_ARTIFACT",
+      "FROZEN_MANUSCRIPT_DECLARATION",
+      "REVIEWED_DECISION_RECORDS"
+    ],
+    "independent_replication_status": [
+      "NOT_TESTED",
+      "NOT_ESTABLISHED",
+      "NOT_CLAIMED",
+      "NOT_APPLICABLE"
+    ]
+  },
+  "negative_claim_rule": "A documented NOT_ESTABLISHED state is evidence for an explicit reporting/qualification boundary, not evidence proving no agreement or that a method can never work.",
+  "relation_unit": "(self_target_id, ClaimIR relation id) from exact frozen 47-target candidate packet; do not collapse relations or infer grading from overall source-paper experimental methods.",
+  "claim_aggregation": "Report relation-level min and max (E0<E1<E2<E3); do not compute a single claim evidence score.",
+  "freezing": "Profile may be drafted only after this rubric is committed. Lock exact evidence artifact blob SHAs and per-relation provenance locators before layered decomposition or Grammar fit.",
+  "forbidden": [
+    "Use manuscript self-description as independent evidence of its empirical success",
+    "Infer E2/E3 grade merely because a reflexive claim discusses PVS source E2/E3 relations",
+    "Treat retrospective v2 AHV-8 calibration as independent v2 held-out validation",
+    "Treat author review as independent extractor agreement",
+    "Infer causal experimental evidence solely from deterministic computational comparisons",
+    "Inspect or optimize reflexive Grammar fit, layered mapping, or reconstruction before evidence profile is frozen",
+    "Assign E3 from eight heterogeneous controls without multiple comparable interventions supporting the exact same relation",
+    "Change frozen source ClaimIR, B_P2, Phi, Grammar v0, Archetype identities, or review decisions"
+  ],
+  "stage_exit": "Freeze annotated profile and deterministic evidence-only validation; stop without reflexive layered/mapping/verdict. A subsequent issue/commit may initiate stage D."
+}
