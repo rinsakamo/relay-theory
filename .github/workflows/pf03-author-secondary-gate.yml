@@ -45,5 +45,5 @@ jobs:
           echo "NOT_V231_SCIENTIFIC_VALIDATOR=true"
           git -C _pf03_author_checkout rev-parse HEAD
           git -C _pf03_author_checkout hash-object models/pc_three.py
-          sha256sum _pf03_author_checkout/models/pc_three.py
+          sha256sum _pf03_author_checkout/models/pc_three.py _pf03_author_checkout/experiments/three/last.pth.tar _pf03_author_checkout/experiments/three/params.json
           python scripts/pf03_author_gate_probe.py
