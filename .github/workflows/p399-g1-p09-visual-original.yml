@@ -1,0 +1,27 @@
+name: P399 G1 P09 original PDF critical page visual pre-A
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g1/p09/p09_source_visual_inspection_probe.py"
+      - ".github/workflows/p399-g1-p09-visual-original.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  p09-original-math-visual:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install --disable-pip-version-check 'pypdf==6.1.1' 'pymupdf==1.26.5' 'pillow==11.3.0'
+      - run: python research/paper2/p399/g1/p09/p09_source_visual_inspection_probe.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g1-p09-source-visual-metadata-${{ github.run_id }}
+          path: g1-p09/p09-pdf-visual-targets-metadata.json
+          retention-days: 14
+          if-no-files-found: warn
