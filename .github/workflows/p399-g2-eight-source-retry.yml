@@ -1,0 +1,28 @@
+name: P399 G2 eight missing originals first-party retry
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g2/**"
+      - ".github/workflows/p399-g2-eight-source-retry.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  first-party-source-retry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 28
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --disable-pip-version-check 'pypdf==6.1.1'
+      - run: python research/paper2/p399/g2/g2_eight_first_party_retry.py
+      - name: Store only source receipt metadata, no copyrighted full originals
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: p399-g2-eight-source-retry-${{ github.run_id }}
+          path: g2-primary-retry/eight-source-retry-metadata.json
+          if-no-files-found: warn
+          retention-days: 14
