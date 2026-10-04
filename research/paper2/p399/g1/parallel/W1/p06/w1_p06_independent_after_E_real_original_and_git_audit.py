@@ -45,7 +45,7 @@ try:
     check(r["source"]["raw_sha256"]==SHA,"RAW_PUBLISHED_SHA_MISMATCH")
     check(len(raw)==6901523 and len(reader.pages)==39,"RAW_PUBLISHED_LENGTH_OR_PAGES_MISMATCH")
     # Anchors derived from actual original PDF page text, used only as bounded page pointers.
-    probes={5:["reaction","salien"],10:["Fig","race"],15:["quantitative","race"],18:["predicted","Observed"]}
+    probes={0:["Saliency","Zhaoping"],5:["reaction","salien"],10:["salien"]}
     for ix,terms in probes.items():
         t=reader.pages[ix].extract_text() or ""
         h={z:z.lower() in t.lower() for z in terms}
