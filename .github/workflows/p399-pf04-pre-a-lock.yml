@@ -1,0 +1,42 @@
+name: p399-pf04-pre-a-lock
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "research/paper2/p399/pf04/**"
+      - ".github/workflows/p399-pf04-pre-a-lock.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  pre-a-negative-stop:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Structural receipt validation and independent arithmetic contradiction test
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json,hashlib,math,pathlib
+          root=pathlib.Path("research/paper2/p399/pf04")
+          v1path=root/"PRE_A.json"
+          v2path=root/"PRE_A_v2_source_math_blocker.json"
+          v1=json.loads(v1path.read_bytes())
+          v2=json.loads(v2path.read_bytes())
+          assert v1["source"]["sha256"] == v2["source"]["sha256"]
+          assert v1["source"]["pages"] == v2["source"]["pages"] == 14
+          assert v1["source"]["size_bytes"] == v2["source"]["size_bytes"] == 377245
+          assert v2["gate"] == "UNDERDETERMINED"
+          assert len(v2["requirements"]) == 7
+          assert {x["id"]:x["status"] for x in v2["requirements"]}["PREA06"] == "UNDERDETERMINED"
+          assert all(x == "NOT_STARTED" for x in v2["scientific_stages"].values())
+          e=math.exp
+          incorrect=(e(0.25)+1)/(e(0.25)+5)+4/(e(0.75)+5)
+          corrected=(e(0.25)+1+4)/(e(0.25)+5)
+          assert abs(incorrect-v2["decisive_blocker"]["contradiction_test"]["sum_as_printed"])<1e-14
+          assert abs(incorrect-1)>0.07
+          assert abs(corrected-1)<1e-14
+          for p in [v1path,v2path]:
+              print("PF04_STAGE_SHA256",p,hashlib.sha256(p.read_bytes()).hexdigest(),len(p.read_bytes()))
+          print("PF04_PRE_A_NEGATIVE_GATE_TESTS_PASS gate=UNDERDETERMINED correct_stop=TRUE incorrect_prob_sum",incorrect)
+          PY
