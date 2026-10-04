@@ -42,6 +42,11 @@ def check_reference(reference):
     schema_check("reference", reference)
     if reference["freeze_state"] != "LOCKED":
         raise G3Error("REFERENCE_NOT_LOCKED")
+    assessor = reference["assessor"]
+    if assessor["independence_disclosure"] == "INDEPENDENT_R2_COMPLETED":
+        att = assessor["r2_attestation"]
+        if att["assessor_token"] == assessor["assessor_token"]:
+            raise G3Error("R2_NOT_ACTUALLY_SEPARATE")
     for v in reference["variants"]:
         ids = set()
         for name in ("nodes", "edges", "temporal", "restrictions", "boundaries",
