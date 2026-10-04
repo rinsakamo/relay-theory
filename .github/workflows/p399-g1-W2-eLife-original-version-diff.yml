@@ -52,7 +52,7 @@ jobs:
             except Exception as e:out['errors'].append(v+' original '+repr(e)); print('EDITION_NOT_REACQUIRED',v,repr(e),flush=True)
           if len(pdfs)==2:
             x=re.sub(r'\\s+',' ',pdfs['v2']).strip();y=re.sub(r'\\s+',' ',pdfs['v3']).strip()
-            d=difflib.SequenceMatcher(None,x,y,autojunk=False)
+            d=difflib.SequenceMatcher(None,pdfs['v2'].splitlines(),pdfs['v3'].splitlines(),autojunk=True)
             out['source_only_change_indicators']={'v2_vs_v3_full_pdf_extracted_text_equal':x==y,'sequence_ratio':round(d.ratio(),5),
               'page_text_chars_v2':len(x),'page_text_chars_v3':len(y),
               'note':'Automated text difference does not prove identical figure pixels or absent substantive correction.'}
