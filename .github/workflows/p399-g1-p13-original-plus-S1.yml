@@ -1,0 +1,27 @@
+name: P399 G1 P13 required original publisher S1 math qualification probe
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g1/p13/p13_preA_mandatory_math_supplement_original_probe.py"
+      - ".github/workflows/p399-g1-p13-original-plus-S1.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  p13-original-plus-s1:
+    runs-on: ubuntu-latest
+    timeout-minutes: 13
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install 'pypdf==6.1.1'
+      - run: python research/paper2/p399/g1/p13/p13_preA_mandatory_math_supplement_original_probe.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: p13-publisher-original-plus-math-S1-${{ github.run_id }}
+          path: g1-p13-original/publisher-original-and-source-mandatory-supplement-metadata.json
+          retention-days: 21
+          if-no-files-found: warn
