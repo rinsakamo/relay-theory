@@ -65,6 +65,21 @@ jobs:
           subprocess.check_call(["git","merge-base","--is-ancestor",commits[-1],exc_commits[0]])
           print("PF04_POST_E_EXCEPTION_RECEIPT_SHA256",hashlib.sha256(later.read_bytes()).hexdigest(),"git_commit",exc_commits[0])
           print("PF04_POST_E_EXCEPTION_CHRONOLOGY_PASS original_A_E_preserved")
+          latest=d/"FINAL_QUALIFICATION_v3_EXCEPTIONS.json"
+          lv=json.loads(latest.read_bytes())
+          assert lv["new_verdict"].startswith("PF04_SOURCE_STRUCTURAL_REVIEW_READY")
+          assert lv["post_E_additions"][0]["sha256"]==hashlib.sha256(later.read_bytes()).hexdigest()
+          assert lv["original_source"]["only_primary_pdf_sha256"]==result["source"]["original_pdf_sha256"]
+          assert lv["author_followup_secondary"]["sha256_cloud_actual"]=="e1635681b4126502991949d481d63640430e9cdfae3d603ca5b4ac11954cb72d"
+          assert lv["formal_decision"]["official_pilot_count_increment"]==0
+          assert lv["formal_decision"]["main_authorized"] is False
+          assert lv["science"]["frozen_E_not_retroactively_edited"] is True
+          latest_commits=subprocess.check_output(["git","log","--format=%H","--diff-filter=A","--",str(latest)],text=True).strip().splitlines()
+          assert len(latest_commits)==1
+          subprocess.check_call(["git","merge-base","--is-ancestor",exc_commits[0],latest_commits[0]])
+          print("PF04_FINAL_V3_SHA256",hashlib.sha256(latest.read_bytes()).hexdigest())
+          print("PF04_FINAL_V3_CHRONOLOGY_PASS all_previous_stages_unchanged")
+
 
           print("PF04_CHRONOLOGY_PASS all six stage source files added in correct immutable order")
           PY
