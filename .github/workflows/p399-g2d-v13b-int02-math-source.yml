@@ -1,0 +1,28 @@
+name: P399 G2-D v13b INT02 corrected exact Fig1-8 locators and highres official equations
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g2/int_g2d/v13b_int02_corrected_caption_and_original_math_crop.py"
+      - ".github/workflows/p399-g2d-v13b-int02-math-source.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-original-equations-source-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install --disable-pip-version-check pypdf==6.1.1 PyMuPDF==1.26.4
+      - name: Original exact SHA, corrected all 8 figure locators, render math in higher resolution
+        run: python research/paper2/p399/g2/int_g2d/v13b_int02_corrected_caption_and_original_math_crop.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g2d-int02-v13b-corrected-exact-publisher-math-${{ github.run_id }}
+          path: g2d-int02-v13b/receipt.json
+          if-no-files-found: warn
+          retention-days: 14
