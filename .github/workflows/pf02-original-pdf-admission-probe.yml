@@ -1,0 +1,73 @@
+name: PF02 isolated original PDF admission probe
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/pf02-original-pdf-admission-probe.yml"
+      - "research/paper2/p399/pf02/**"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  pf02-source-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Fetch and characterize original PDF (no source committed)
+        shell: bash
+        run: |
+          set -eu
+          python3 -m pip install --user --quiet pymupdf
+          mkdir -p "$RUNNER_TEMP/pf02-private" "$RUNNER_TEMP/pf02-public-metadata"
+          export PRIVATE_DIR="$RUNNER_TEMP/pf02-private"
+          export PUBLIC_DIR="$RUNNER_TEMP/pf02-public-metadata"
+          python3 - <<'PY'
+          import os, hashlib, urllib.request, datetime, json, sys
+          url='https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1004331&type=printable'
+          out=os.environ['PUBLIC_DIR']; private=os.environ['PRIVATE_DIR']
+          receipt={'date_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'doi':'10.1371/journal.pcbi.1004331','source_url':url,'gate':'PDF_RAW_NOT_OBTAINED','raw_bytes':None,'raw_sha256':None,'page_count':None,'rendered_page_metadata':[]}
+          try:
+              req=urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0 (RelayTheory PF02 source audit; scholarly research)','Accept':'application/pdf'})
+              with urllib.request.urlopen(req,timeout=35) as resp:
+                  data=resp.read(30_000_000)
+                  receipt['final_url']=resp.url
+                  receipt['http_code']=resp.status
+                  receipt['content_type']=resp.headers.get('Content-Type')
+              if not data.startswith(b'%PDF-'): raise ValueError('original response is not raw PDF: '+repr(data[:80]))
+              path=private+'/official-original.pdf'
+              with open(path,'wb') as f: f.write(data)
+              receipt['raw_bytes']=len(data)
+              receipt['raw_sha256']=hashlib.sha256(data).hexdigest()
+              import fitz
+              doc=fitz.open(stream=data,filetype='pdf')
+              receipt['page_count']=doc.page_count
+              receipts=[]
+              for i,page in enumerate(doc):
+                  txt=page.get_text()
+                  terms=['Dynamics of the Rule Module','Dynamics of the Decision Module','Reconstruction of the Individual Attractor Landscape','Estimation of the Minimal Action','Fig 2.','Fig 3.','Fig 7.','Fig 8.','Fig 9.','Table 4.','Table 5.','Table 6.']
+                  hits=[k for k in terms if k.lower() in txt.lower()]
+                  if hits: receipts.append({'page_1_based':i+1,'text_chars':len(txt),'hits':hits})
+              receipt['text_anchor_pages']=receipts
+              pages={0}
+              for a in receipts:
+                  if any(x.lower() in ('dynamics of the rule module','dynamics of the decision module','reconstruction of the individual attractor landscape','estimation of the minimal action','fig 3.','fig 7.') for x in a['hits']):pages.add(a['page_1_based']-1)
+              for i in sorted(pages)[:9]:
+                  page=doc[i]
+                  pix=page.get_pixmap(matrix=fitz.Matrix(1.4,1.4),alpha=False)
+                  png=os.path.join(out,'original_page_%02d.png'%(i+1))
+                  pix.save(png)
+                  receipt['rendered_page_metadata'].append({'page_1_based':i+1,'pixels':[pix.width,pix.height],'sha256_png':hashlib.sha256(open(png,'rb').read()).hexdigest(),'text_chars':len(page.get_text())})
+              receipt['gate']='PDF_RAW_OBTAINED_AND_RENDERED'
+          except Exception as exc:
+              receipt['error']=type(exc).__name__+': '+str(exc)
+          with open(os.path.join(out,'probe.json'),'w') as f:json.dump(receipt,f,indent=2,ensure_ascii=True)
+          print('PF02_PROBE_JSON='+json.dumps(receipt,sort_keys=True,ensure_ascii=True))
+          print('PF02_SOURCE_PROBE_GATE='+receipt['gate'])
+          PY
+      - name: Save metadata and selected render proofs outside Git
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pf02-source-admission-probe
+          path: ${{ runner.temp }}/pf02-public-metadata/
+          retention-days: 1
+          if-no-files-found: warn
