@@ -1,0 +1,27 @@
+# PF02 PRE_A lineage follow-up — 2026-10-04
+
+Status: **lineage UNDERDETERMINED; PRE_A STOP.** This is append-only and not an A/B/C result. The author-adopted, structure-only p33 OU adjudication is separately frozen in `PRE_A_MATH_ADJUDICATION_20261004.json` (SHA-256 `0b412ad045459a94cbe335bd42c8decb13172becda927e93b2903a5453ef3201`). Latest structural PRE_A ledger is **9 bounded PASS, 1 UNDERDETERMINED**; exact numerical OU normalization is excluded, not repaired in the original.
+
+## Source-defined lineage (direct target primary)
+
+Frozen PF02 publisher PDF SHA-256 `bef58465c56cec93f1cbb0f689c8fcd48cd656f3520d70a6032aaac9caa63655`, 46 pages:
+
+- **p4 (published results, ref [34]):** explicitly says that PF02 **adapted a network model of task switching from Stemme et al. (2005)** for a task-switching plus distractor-inhibition human paradigm. This is affirmative **central integrated architectural ancestry**, not just distant thematic citation. Original bibliographic ancestor doi `10.1016/j.neuroimage.2005.01.044`.
+- **pp4–6 Fig3:** two competitive rule-selective excitatory populations with common inhibition provide top-down bias to four competitive choice-populations receiving bottom-up stimulus inputs. Explicit architecture is source-defined; not independent of all prior rule-to-choice architectures.
+- **pp5, 28–30:** 2D reduced stochastic rule dynamics use Wong & Wang (2006) and shift OU stochastic noise injection relative to its prior model. No claim of novel two-rule recurrent circuit.
+- **pp8, 30–34:** 3D nonlinear reduction of four-choice decision extends Roxin & Ledberg (2008)'s 2-choice 1D reduction (new derived reduction in PF02). This derivation, including exact source math exceptions, is independently specified by PF02 and does not require assuming it was already in Stemme (2005).
+- **pp9–19, 20–25, 35–41:** individual behavioral fitting, model-predicted rule-module BOLD, generalized stationary-density potential and minimal action quantify and contextualize original PF02 empirical findings. Neither modeled subject-specific results nor causal claims can be attributed automatically to Stemme.
+- **p23:** PF02 expressly discusses the parallel Ardid & Wang (2013) dual-module task-cue model, distinguishing its perceptual ring-attractor and behavioral-output pathways from PF02's one-to-one four-action mapping.
+- **Historical #398 MAIN D06:** Wang (2002) is a common **recurrent decision network component lineage**; it is neither the exact Stemme (2005) article nor the exact PF02 integrated implementation. Historical #398 MAIN scientific universe and prospective new #399 corpus/denominator remain distinct.
+
+## Separate independent predecessor evidence and bounded limitations
+
+- Exact predecessor: Stemme, Deco, Busch & Schneider (2005), *Neurons and the synaptic basis of the fMRI signal associated with cognitive flexibility*, *NeuroImage* 26(2):454–470, DOI `10.1016/j.neuroimage.2005.01.044`, PMID 15907303. Publisher shows abstract/preview; complete original source not lawfully acquired in session.
+- Same authors' **subsequent distinct 2007** full original: Stemme, Deco & Busch, *The neurodynamics underlying attentional control in set shifting tasks*, `https://pmc.ncbi.nlm.nih.gov/articles/PMC2267676/`, DOI `10.1007/s11571-007-9019-8`. Its introduction and model section explicitly refer to the earlier 2005 neurodynamical/fMRI model and describe Brunel-Wang biophysical excitatory/inhibitory AMPA/NMDA/GABA pools. This confirms inherited model **family**, but 2007 is a distinct successor under a different experimental design; it is **not an edition/content-equivalent surrogate** for the 2005 original.
+- Exact original 2005 publisher copy remains access-gated. **Independent cloud acquisition probe:** `https://github.com/rinsakamo/relay-theory/actions/runs/37171504581`: OpenAlex W2045082709 publishedVersion `is_oa=false` and no PDF OA location; Semantic Scholar DOI `openAccessPdf.status=CLOSED`; indexed CiteSeerX published-layout mirror raw PDF GET timed out; alternate CiteSeerX download 404. Probe job itself succeeded; acquiring the paper **did not** succeed. Older independent mirror cloud probe `https://github.com/rinsakamo/relay-theory/actions/runs/37170615908` also timed out. No PDF hash, page count, complete math/diagrams, or exact 2005-side model comparison is therefore recorded.
+
+## Safe current inference
+
+The historical direct ancestor is real and nontrivial. PF02 contains a documented 4-choice reduction, shifted rule-noise location, empirical subject-level fits, and attractor-landscape/minimal-action analysis beyond **what has been demonstrated for the earlier abstract/secondary description**. **Do not infer that these are all absent from the unread original 2005 source**, nor call PF02 completely independent of its ancestor. Assign the working **Stemme-descended rule/decision family** without claiming either exact central-model duplication with Wang (2002) or final family independence. No exact-work collision detected in the checked candidate manifests; near-family census requires final source- and architecture-level comparison before admission.
+
+**Stop condition:** no source-independent central family certification yet; **PRE_A UNDERDETERMINED; A/B/C/D/E NOT STARTED; PR DRAFT; no qualified-pilot increment and no MAIN permission**. Primary-source mathematical reading may be structurally used only *after* lineage pre-A clears, under the adopted p33 bounded interpretation. Exception-only human review does not replace unavailable predecessor source.
