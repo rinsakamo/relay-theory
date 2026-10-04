@@ -32,7 +32,7 @@ assert len(A["original_claims"])==29 and len(A["source_local_dependencies"])==35
 assert set(B["review_all_A_claim_ids"])=={x["id"] for x in A["original_claims"]}
 assert set(B["review_all_dependency_ids"])=={x["id"] for x in A["source_local_dependencies"]}
 assert len(B["findings"])==12 and len(B["source_order_full_sweep"])==17
-assert C["before_any_patch_reopen_complete_original_A"]["A_git_blob"]==records[1]["first_introduction_commit"] or C["before_any_patch_reopen_complete_original_A"]["A_git_blob"]
+assert C["before_any_patch_reopen_complete_original_A"]["A_git_blob"]==git("hash-object",str(ROOT/stages[1][1])).decode().strip()
 assert len(C["adjudications"])==12 and len(C["adjacent_negative_C2_unique"])==13 and len(C["append_only_source_supported_deltas"])==1
 assert len(D["complete_A_roles"])==29 and len(D["all_source_dependencies_preserved"])==35
 assert {x["claim_id"] for x in D["complete_A_roles"]}=={x["id"] for x in A["original_claims"]}
