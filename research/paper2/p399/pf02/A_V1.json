@@ -1,0 +1,512 @@
+{
+  "schema": "p399-pf02-a-v1-original-source-first",
+  "paper": "10.1371/journal.pcbi.1004331",
+  "date": "2026-10-04",
+  "protocol": "#399 v2.3.1 PDF-first",
+  "source_pdf_sha256": "bef58465c56cec93f1cbb0f689c8fcd48cd656f3520d70a6032aaac9caa63655",
+  "source_scope_sha256": "09fca1826bc9b064a4ad2ecddcf2784ebebfe8446970bc9c6452fd2fa1070b2b",
+  "pre_a_lineage_receipt_sha256": "9fea2621fe1859451c0f339329ab588394b976c2c80b6198990866fc37c5ef3e",
+  "math_exception_receipt_sha256": "0b412ad045459a94cbe335bd42c8decb13172becda927e93b2903a5453ef3201",
+  "method": "SOURCE_FIRST_A; no Grammar-v0 success verdict or H0/H1/H2 verdict. B receives this entire frozen A plus exactly the same original PDF.",
+  "source_universe": "PLOS original published PDF all 46 pages; externally linked S1-S4 independent PDFs out of scope",
+  "claim_schema": [
+    "id",
+    "scope",
+    "original_source_paraphrase",
+    "exact_pdf_locator",
+    "evidence_type"
+  ],
+  "claims": [
+    {
+      "id": "A01",
+      "scope": "experiment",
+      "original_source_paraphrase": "Original enrollment was 26, with one response-recording failure and five additional fMRI error-rate exclusions, leaving 20 final modeled fMRI participants.",
+      "exact_pdf_locator": "PDF pp25-26 Participants",
+      "evidence_type": "EMPIRICAL_CONDITION"
+    },
+    {
+      "id": "A02",
+      "scope": "experiment",
+      "original_source_paraphrase": "Task stimuli are digits 1-9 excluding 5; an 80 percent one-digit upper parity baseline and remaining two-digit critical trial class with brightness-dependent instruction.",
+      "exact_pdf_locator": "PDF p26 Task, Fig2 p4",
+      "evidence_type": "EMPIRICAL_CONDITION"
+    },
+    {
+      "id": "A03",
+      "scope": "experiment",
+      "original_source_paraphrase": "Baseline asks upper-stimulus odd/even; distractor keeps parity rule under stronger upper cue, switch moves to lower brighter digit magnitude greater/less than five.",
+      "exact_pdf_locator": "PDF pp26-27 Task, Fig2 p4",
+      "evidence_type": "EMPIRICAL_CONDITION"
+    },
+    {
+      "id": "A04",
+      "scope": "experiment",
+      "original_source_paraphrase": "Trial lasts 2000 ms, visual input 900 ms, response window entire trial; at least three baseline trials separate critical trials.",
+      "exact_pdf_locator": "PDF pp26-27 Task",
+      "evidence_type": "EMPIRICAL_CONDITION"
+    },
+    {
+      "id": "A05",
+      "scope": "negative_scope",
+      "original_source_paraphrase": "Ambiguous-condition trials were collected but excluded from explicit neural model because cue lacks unambiguous correct answer, was untrained and may recruit learning/higher control; handled in fMRI separately.",
+      "exact_pdf_locator": "PDF pp26-27 Task, pp11-12,40-41",
+      "evidence_type": "EXPLICIT_EXCLUSION"
+    },
+    {
+      "id": "A06",
+      "scope": "system_assumption",
+      "original_source_paraphrase": "Fixed static synaptic weights model well-trained already acquired parity and magnitude rules in short 10-minute experiment after over 25-minute task training, not within-experiment learning.",
+      "exact_pdf_locator": "PDF pp26-28",
+      "evidence_type": "SOURCE_ASSUMPTION"
+    },
+    {
+      "id": "A07",
+      "scope": "architecture",
+      "original_source_paraphrase": "Integrated architecture contains distinct rule-representing working-memory module and four-choice decision module with top-down rule-to-decision synaptic projection and bottom-up stimulus input.",
+      "exact_pdf_locator": "PDF Fig3 pp5-7, Methods pp27-28",
+      "evidence_type": "MODEL_CORE"
+    },
+    {
+      "id": "A08",
+      "scope": "lineage",
+      "original_source_paraphrase": "Authors explicitly adapt Stemme 2005 integrated task-switching network; reductions additionally use Wong/Wang 2006 rule dynamics and extend Roxin/Ledberg 2008 two-choice decision reduction.",
+      "exact_pdf_locator": "PDF pp4-5,8,20,28,30; refs pp42-46",
+      "evidence_type": "SOURCE_LIMIT"
+    },
+    {
+      "id": "A09",
+      "scope": "rule_model",
+      "original_source_paraphrase": "Rule circuit comprises two strongly recurrent rule-selective pyramidal pools, shared inhibitory and nonselective populations; competition yields a spontaneous state and two high-rule attractors.",
+      "exact_pdf_locator": "PDF Fig3 pp5-7, Methods pp27-30 Eq1-2",
+      "evidence_type": "MODEL_CORE"
+    },
+    {
+      "id": "A10",
+      "scope": "rule_model",
+      "original_source_paraphrase": "Reduced rule state uses synaptic gating vector S=(S1,S2) with rates r1,r2 determined by effective nonlinear transfer functions and physiological scaling connections.",
+      "exact_pdf_locator": "PDF pp28-30 Eq1-2, Fig3C",
+      "evidence_type": "MODEL_CORE"
+    },
+    {
+      "id": "A11",
+      "scope": "rule_model",
+      "original_source_paraphrase": "Rule-specific external currents encode relative brightness to bias the competing rule populations; current task rule persists under sufficient attractor stability.",
+      "exact_pdf_locator": "PDF p8, pp27-30, p35 Table4",
+      "evidence_type": "MODEL_CORE"
+    },
+    {
+      "id": "A12",
+      "scope": "rule_model",
+      "original_source_paraphrase": "Finite-size rule noise modeled by OU variables added directly to synaptic gating dynamics rather than presynaptic currents as in Wong/Wang; p30 Eq3-4.",
+      "exact_pdf_locator": "PDF pp5,30 Eq3-4",
+      "evidence_type": "MODEL_CORE"
+    },
+    {
+      "id": "A13",
+      "scope": "decision_model",
+      "original_source_paraphrase": "Full generic decision ancestor is five rate populations: four choice-selective excitatory units and one shared inhibitory population with recurrent excitation and feedback inhibition.",
+      "exact_pdf_locator": "PDF Fig3A p6, Methods pp30-31 Eq5",
+      "evidence_type": "MODEL_CORE"
+    },
+    {
+      "id": "A14",
+      "scope": "decision_model",
+      "original_source_paraphrase": "At near-bifurcation loss of spontaneous-state stability, three zero-eigenvalue modes of five-population linearization give 3D reduced variables X,Y,Z; remaining modes decay.",
+      "exact_pdf_locator": "PDF pp8,31-33 Eq5-6",
+      "evidence_type": "MODEL_CORE"
+    },
+    {
+      "id": "A15",
+      "scope": "decision_model",
+      "original_source_paraphrase": "Four selective choice growth directions embed as corners of symmetric tetrahedron around reduced spontaneous origin; quadratic nonlinear terms yield winner-take-all diverging trajectories.",
+      "exact_pdf_locator": "PDF Fig3 pp6-9, Methods pp31-34 Eq6-8",
+      "evidence_type": "MODEL_CORE"
+    },
+    {
+      "id": "A16",
+      "scope": "coupling",
+      "original_source_paraphrase": "Decision forcing is sum of rule population top-down rates r1/r2 weighted c_plus and bottom-up stimulus input Dij for correct/wrong feature under parity/magnitude; four separate choice channels.",
+      "exact_pdf_locator": "PDF p8, pp27-28, p34 Simulation",
+      "evidence_type": "MODEL_CORE"
+    },
+    {
+      "id": "A17",
+      "scope": "decision_model",
+      "original_source_paraphrase": "Reduced decision evolution adds OU-type stochastic noise to X,Y,Z and is written as three coupled nonlinear drift terms in Eq7-8; exact p33 printed noise-time coefficient is excluded.",
+      "exact_pdf_locator": "PDF p33 printed OU expression and Eq7, p34 Eq8; PRE_A_MATH_ADJUDICATION",
+      "evidence_type": "BOUNDED_MATH"
+    },
+    {
+      "id": "A18",
+      "scope": "decision_model",
+      "original_source_paraphrase": "Decision is threshold crossing of projected choice direction from spontaneous origin; nonlinear divergence makes reaction time relatively threshold-insensitive only for sufficiently distant thresholds.",
+      "exact_pdf_locator": "PDF Fig3F p7, pp9,34 Simulation",
+      "evidence_type": "MODEL_BOUND"
+    },
+    {
+      "id": "A19",
+      "scope": "temporal_protocol",
+      "original_source_paraphrase": "Each simulated trial initializes rule to parity high attractor and decision to X=Y=Z=0; rules propagate 900 ms with input followed by 1100 ms with input removed.",
+      "exact_pdf_locator": "PDF pp8,34 Simulation",
+      "evidence_type": "IMPLEMENTED_PROTOCOL"
+    },
+    {
+      "id": "A20",
+      "scope": "behavior_fit",
+      "original_source_paraphrase": "All 20 analyzed individuals had subject-specific fits of choice frequencies and response-time distributions across modeled baseline/distractor/switch; this is fit to observed behavior, not out-of-sample prediction.",
+      "exact_pdf_locator": "PDF pp9-10 Fig4, pp35-37 fitting",
+      "evidence_type": "OBSERVATION_BOUND"
+    },
+    {
+      "id": "A21",
+      "scope": "behavior_fit",
+      "original_source_paraphrase": "Fitting used 1024 model trials per condition, multinomial decision likelihood, two-sample KS probabilities for conditional RT CDFs, Gaussian shrinkage priors, 2 Metropolis-Hastings chains of 1M steps.",
+      "exact_pdf_locator": "PDF pp35-37 Bayesian posterior and MAP",
+      "evidence_type": "METHOD"
+    },
+    {
+      "id": "A22",
+      "scope": "behavior_fit",
+      "original_source_paraphrase": "Paper reports 10 of 300 goodness-of-fit tests significant at conventional 0.05 with many high p values; failure to reject is not proof of model identity or independent generalization.",
+      "exact_pdf_locator": "PDF p9, Fig4 p10, pp36-37",
+      "evidence_type": "EMPIRICAL_BOUND"
+    },
+    {
+      "id": "A23",
+      "scope": "fmri_prediction",
+      "original_source_paraphrase": "Behavior-fitted model's condition/choice-dependent rule-module sum-spike-rate integral is normalized, aligned to individual trial logs, z-scaled and convolved with canonical HRF as BOLD regressor.",
+      "exact_pdf_locator": "PDF pp11-12 Fig5, pp40-41",
+      "evidence_type": "METHOD"
+    },
+    {
+      "id": "A24",
+      "scope": "fmri_prediction",
+      "original_source_paraphrase": "fMRI GLM includes motion regressors and individually modeled ambiguous-trial regressors; ambiguous events are included as nuisance but are NOT simulated by explicit neural model.",
+      "exact_pdf_locator": "PDF pp12,40-41 Fig5E",
+      "evidence_type": "EXPLICIT_EXCLUSION"
+    },
+    {
+      "id": "A25",
+      "scope": "fmri_result",
+      "original_source_paraphrase": "Rule-module BOLD regressor statistically associates with IFJ and IPS activation plus weaker other foci at stated group-corrected thresholds; this localization does not prove unique physical implementation.",
+      "exact_pdf_locator": "PDF pp12-13 Fig6/Table1, pp40-41",
+      "evidence_type": "OBSERVATION_BOUND"
+    },
+    {
+      "id": "A26",
+      "scope": "potential",
+      "original_source_paraphrase": "For source-defined rule dynamics, numerical Fokker-Planck stationary probability Pss over (S1,S2) defines generalized U=-ln Pss, conditioned by fitted NMDA/GABA/noise parameters.",
+      "exact_pdf_locator": "PDF pp13-14,37-38 Eq9 and FP",
+      "evidence_type": "MODEL_CORE"
+    },
+    {
+      "id": "A27",
+      "scope": "potential",
+      "original_source_paraphrase": "Rule dynamics are nonconservative and can retain nonzero divergence-free steady current Jss; U captures stationary density only, not a classical conservative energy nor all directional path dynamics.",
+      "exact_pdf_locator": "PDF pp13-14, pp37-38",
+      "evidence_type": "MODEL_BOUND"
+    },
+    {
+      "id": "A28",
+      "scope": "visual_boundary",
+      "original_source_paraphrase": "Fig7 uses a tenfold increase in an individual noise parameter solely for trajectory visualization; fitted model parameter and measured neural outcomes are not asserted to be scaled.",
+      "exact_pdf_locator": "PDF p15 Fig7 caption",
+      "evidence_type": "SOURCE_BOUND"
+    },
+    {
+      "id": "A29",
+      "scope": "physiological_parameters",
+      "original_source_paraphrase": "Rule NMDA and GABA scaling and rule OU diffusion affect relative depth of rule/stochastic basins, including spontaneous basin; effects depend on combinations and individual fitted parameters.",
+      "exact_pdf_locator": "PDF pp17-18 Fig8, pp23-25, Table5",
+      "evidence_type": "MODEL_CORE"
+    },
+    {
+      "id": "A30",
+      "scope": "minimal_action",
+      "original_source_paraphrase": "Dominant transition path and minimal path-integral action between fitted high-rule attractors quantify a model-based barrier to spontaneous rule switching under source's Hamilton-Jacobi approximation.",
+      "exact_pdf_locator": "PDF pp14,17,39 Estimation of Minimal Action",
+      "evidence_type": "MODEL_CORE"
+    },
+    {
+      "id": "A31",
+      "scope": "fmri_result",
+      "original_source_paraphrase": "Across modeled subjects, source reports association of minimal action with thalamocorticostriatal BOLD switch-minus-distractor contrast; association is statistical, not experimental causal modulation.",
+      "exact_pdf_locator": "PDF pp17-20 Fig9/Table3, p41",
+      "evidence_type": "OBSERVATION_BOUND"
+    },
+    {
+      "id": "A32",
+      "scope": "statistics_boundary",
+      "original_source_paraphrase": "Individual sNMDA,sGABA and sigma_rule separate brain activation associations are individually nonsignificant; model-derived minimal action combines their effects and is the main reported correlate.",
+      "exact_pdf_locator": "PDF p20 Discussion after Fig9/Table3",
+      "evidence_type": "OBSERVATION_BOUND"
+    },
+    {
+      "id": "A33",
+      "scope": "physiological_loss",
+      "original_source_paraphrase": "The reduced 3D decision implementation sacrifices stability of high-activity decision attractors and invertible mapping of fitted effective decision parameters to physiological ones; no decision-module energy inference.",
+      "exact_pdf_locator": "PDF pp7,20-21",
+      "evidence_type": "MODEL_BOUND"
+    },
+    {
+      "id": "A34",
+      "scope": "interpretation_boundary",
+      "original_source_paraphrase": "Source does not distinguish IFJ and IPS internal functional division; proposed maintenance-versus-representation allocations are speculative alternatives compatible with but not tested by this analysis.",
+      "exact_pdf_locator": "PDF p24 Discussion",
+      "evidence_type": "AUTHOR_HYPOTHESIS_ONLY"
+    },
+    {
+      "id": "A35",
+      "scope": "causal_boundary",
+      "original_source_paraphrase": "Dopamine to AMPA/NMDA/GABA mechanisms are prior-grounded physiologically motivated explanatory proposals; this study did not directly perturb individual dopamine receptors in these participants.",
+      "exact_pdf_locator": "PDF pp23-25 Discussion and Methods",
+      "evidence_type": "AUTHOR_INFERENCE_BOUND"
+    },
+    {
+      "id": "A36",
+      "scope": "numerical_bound",
+      "original_source_paraphrase": "Printed p33 tau_AMPA equality contradicts p30 Eq3 multiplication; use OU structural noise identity only, exclude exact numeric p33 normalization unless separate approved source confirms it.",
+      "exact_pdf_locator": "PDF pp30,33; SHA-locked pre-A math adjudication",
+      "evidence_type": "MATH_EXCEPTION"
+    },
+    {
+      "id": "A37",
+      "scope": "steady_state_bound",
+      "original_source_paraphrase": "The white-noise diffusion and FP treatment approximates colored OU gating noise near its steady state; p37 Eq9 should not be presented as literal numerical equivalence for arbitrary transient times.",
+      "exact_pdf_locator": "PDF p37 Eq9, pp37-38",
+      "evidence_type": "MODEL_BOUND"
+    },
+    {
+      "id": "A38",
+      "scope": "observability",
+      "original_source_paraphrase": "Human model fitted individual behavior; functional activation regressor is indirect boundary-relative trace, and microscopic synaptic parameters remain inferred through model rather than directly human-measured.",
+      "exact_pdf_locator": "PDF pp1,11-13,25,35-41",
+      "evidence_type": "OBSERVATION_BOUND"
+    },
+    {
+      "id": "A39",
+      "scope": "model_scope",
+      "original_source_paraphrase": "Behavioral simulation tests a fixed, pretrained network in baseline/distractor/switch only; does not reconstruct learning, the ambiguous high-uncertainty choice mechanism, or every human executive process.",
+      "exact_pdf_locator": "PDF pp26-28,40-41",
+      "evidence_type": "EXPLICIT_EXCLUSION"
+    },
+    {
+      "id": "A40",
+      "scope": "lineage_bound",
+      "original_source_paraphrase": "PF02 is Stemme-2005-descended at integrated task-switch architecture level; relative central-family nonduplication with scoped #399 pilot slate is judged bounded, not globally independent historical novelty.",
+      "exact_pdf_locator": "PDF pp4-5; bounded pre-A lineage receipt",
+      "evidence_type": "SOURCE_BOUND"
+    }
+  ],
+  "edges": [
+    {
+      "id": "E01",
+      "from": "A02",
+      "to": "A03",
+      "source_defined_dependency": "task cues impose rule-dependent parity/magnitude requirement"
+    },
+    {
+      "id": "E02",
+      "from": "A03",
+      "to": "A11",
+      "source_defined_dependency": "brightness cue determines rule-selective input drive"
+    },
+    {
+      "id": "E03",
+      "from": "A06",
+      "to": "A09",
+      "source_defined_dependency": "pretraining permits static existing selective rule pools"
+    },
+    {
+      "id": "E04",
+      "from": "A09",
+      "to": "A10",
+      "source_defined_dependency": "competition is represented by 2D gating approximation"
+    },
+    {
+      "id": "E05",
+      "from": "A10",
+      "to": "A12",
+      "source_defined_dependency": "rule dynamical states receive gating-level OU stochastic term"
+    },
+    {
+      "id": "E06",
+      "from": "A10",
+      "to": "A16",
+      "source_defined_dependency": "rule firing rates mediate top-down choice bias"
+    },
+    {
+      "id": "E07",
+      "from": "A13",
+      "to": "A14",
+      "source_defined_dependency": "five-rate population linearization yields near-critical 3D center space"
+    },
+    {
+      "id": "E08",
+      "from": "A14",
+      "to": "A15",
+      "source_defined_dependency": "nullspace selective growth directions define tetrahedral choice modes"
+    },
+    {
+      "id": "E09",
+      "from": "A15",
+      "to": "A18",
+      "source_defined_dependency": "nonlinear divergence enables threshold-based choice and RT readout"
+    },
+    {
+      "id": "E10",
+      "from": "A16",
+      "to": "A15",
+      "source_defined_dependency": "sum of rule-biased and stimulus bottom-up currents biases choice branch"
+    },
+    {
+      "id": "E11",
+      "from": "A17",
+      "to": "A15",
+      "source_defined_dependency": "independent structural decision-noise channel perturbs winner-take-all process"
+    },
+    {
+      "id": "E12",
+      "from": "A19",
+      "to": "A10",
+      "source_defined_dependency": "trial input schedule and reset initialize modeled rule trajectory"
+    },
+    {
+      "id": "E13",
+      "from": "A19",
+      "to": "A14",
+      "source_defined_dependency": "decision reset creates spontaneous initial reduced state"
+    },
+    {
+      "id": "E14",
+      "from": "A19",
+      "to": "A20",
+      "source_defined_dependency": "subject trial simulation yields conditional decisions and RT"
+    },
+    {
+      "id": "E15",
+      "from": "A20",
+      "to": "A21",
+      "source_defined_dependency": "simulation statistics enter subject posterior likelihood"
+    },
+    {
+      "id": "E16",
+      "from": "A21",
+      "to": "A22",
+      "source_defined_dependency": "MAP model and empirical distributions subjected to in-sample GOF tests"
+    },
+    {
+      "id": "E17",
+      "from": "A20",
+      "to": "A23",
+      "source_defined_dependency": "subject fitted parameters and event logs give rule-spike predictions"
+    },
+    {
+      "id": "E18",
+      "from": "A23",
+      "to": "A25",
+      "source_defined_dependency": "modeled normalized HRF regressor compared to empirical BOLD"
+    },
+    {
+      "id": "E19",
+      "from": "A05",
+      "to": "A24",
+      "source_defined_dependency": "ambiguous trials excluded from model but kept as nuisance regressors"
+    },
+    {
+      "id": "E20",
+      "from": "A10",
+      "to": "A26",
+      "source_defined_dependency": "source-defined rule drift and noise induce FP stationary density"
+    },
+    {
+      "id": "E21",
+      "from": "A27",
+      "to": "A26",
+      "source_defined_dependency": "nonconservative steady flux limits informational scope of potential U"
+    },
+    {
+      "id": "E22",
+      "from": "A29",
+      "to": "A26",
+      "source_defined_dependency": "fitted parameters shape U and basin geometry"
+    },
+    {
+      "id": "E23",
+      "from": "A26",
+      "to": "A30",
+      "source_defined_dependency": "rule attractor basins define endpoints of path-minimization action"
+    },
+    {
+      "id": "E24",
+      "from": "A29",
+      "to": "A30",
+      "source_defined_dependency": "combined fitted physiological parameters determine path action"
+    },
+    {
+      "id": "E25",
+      "from": "A30",
+      "to": "A31",
+      "source_defined_dependency": "per-subject model minimal action entered into switch-vs-distractor FMRI GLM covariate"
+    },
+    {
+      "id": "E26",
+      "from": "A33",
+      "to": "A38",
+      "source_defined_dependency": "decision reduction constrains physiological inference and observability"
+    },
+    {
+      "id": "E27",
+      "from": "A25",
+      "to": "A34",
+      "source_defined_dependency": "empirical IFJ/IPS correlation does not identify unique internal role split"
+    },
+    {
+      "id": "E28",
+      "from": "A08",
+      "to": "A40",
+      "source_defined_dependency": "ancestral architecture lineage remains explicit and prevents genealogical-novelty inference"
+    }
+  ],
+  "explicit_model_structure": {
+    "system": "fixed, previously trained rule and decision neural model",
+    "world": "physical digit stimuli, task cues, scanner and participants; neural participants and world not inferred identical to simulation",
+    "experiment": "baseline/distractor/switch behavioral logs and BOLD; ambiguity experimental nuisance only",
+    "state_carriers": [
+      "S1",
+      "S2",
+      "X",
+      "Y",
+      "Z",
+      "stochastic OU gating variables",
+      "subject-specific fitted parameters"
+    ],
+    "intermodule_coupling": "rule rates r1/r2 weighted c_plus provide four typed top-down decision currents; external digit feature inputs supply bottom-up currents",
+    "temporal_order": "reset then 900ms stimulus forcing, decision threshold response, further 1100ms input-off propagation; separate fitted fMRI timecourse integration"
+  },
+  "source_coverage": {
+    "sections": "S01-S20 all listed source chunks checked against original 46-page text and visual figures; primary A focus structural/load-bearing claims; refs used only genealogy",
+    "figures": "Fig1-Fig9 inventoried and principal original math visual checked",
+    "table_bounds": "Table1-6 source boundaries, no human biological mechanism inferred from exploratory statistical association",
+    "negative_source_conditions": [
+      "A05",
+      "A06",
+      "A22",
+      "A24",
+      "A27",
+      "A28",
+      "A32",
+      "A33",
+      "A34",
+      "A35",
+      "A36",
+      "A37",
+      "A39",
+      "A40"
+    ]
+  },
+  "assertion_strength": "bounded source-text claims, not independent numerical reproduction",
+  "no_external_supplement_claims": true,
+  "stage": "A_FROZEN_PENDING_INDEPENDENT_RESULT_INFORMED_B",
+  "qualified_pilot_count_increment": 0
+}
