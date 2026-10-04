@@ -1,0 +1,94 @@
+name: PF02 exact publisher PDF post-E independent source review
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/pf02-post-e-primary-source-review.yml'
+      - 'research/paper2/p399/pf02/PF02_POST_E_PRIMARY_SOURCE_*'
+      - 'research/paper2/p399/pf02/PF02_FORMAL_*'
+permissions:
+  contents: read
+jobs:
+  exact-original-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - name: Independently reacquire and verify original published PDF, 21 local anchors and negative source clauses
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m pip install --quiet 'pymupdf>=1.24,<1.27'
+          mkdir -p "$RUNNER_TEMP/pf02-original-independent-review"
+          export SRC_ARTIFACT="$RUNNER_TEMP/pf02-original-independent-review"
+          cd research/paper2/p399/pf02
+          sha256sum -c PF02_POST_E_PRIMARY_SOURCE_ANCHORS_20261004.sha256
+          python3 - <<'PY'
+          import json,os,hashlib,urllib.request,time,re,unicodedata
+          import fitz
+          m=json.load(open('PF02_POST_E_PRIMARY_SOURCE_ANCHORS_20261004.json'))
+          url=m['publisher_pdf']
+          expected=m['source_sha256']
+          pdf=None
+          errors=[]
+          for attempt in range(3):
+            try:
+              req=urllib.request.Request(url,headers={'Accept':'application/pdf','User-Agent':'Mozilla/5.0 (RelayTheory PF02 independent scholarly source audit)'})
+              with urllib.request.urlopen(req,timeout=40) as resp:
+                pdf=resp.read(30000000)
+                assert resp.status==200
+              if not pdf.startswith(b'%PDF-'): raise AssertionError('Not a publisher PDF')
+              break
+            except Exception as e:
+              errors.append(type(e).__name__+':'+str(e))
+              if attempt<2:time.sleep(3)
+          assert pdf is not None and pdf.startswith(b'%PDF-'),errors
+          assert len(pdf)==m['source_bytes'],(len(pdf),m['source_bytes'])
+          actual=hashlib.sha256(pdf).hexdigest()
+          assert actual==expected,(actual,expected)
+          doc=fitz.open(stream=pdf,filetype='pdf')
+          assert doc.page_count==m['source_pages']==46,doc.page_count
+          assert len(m['anchors'])==21
+          assert len({a['id'] for a in m['anchors']})==21
+          assert len({a['page_1_based'] for a in m['anchors']})==21
+          def norm(s):
+            return re.sub(r'\s+',' ',unicodedata.normalize('NFKC',s).casefold())
+          checks=[]
+          for entry in m['anchors']:
+            page=entry['page_1_based']
+            text=norm(doc[page-1].get_text())
+            for term in entry['required_substrings']:
+              assert norm(term) in text,(entry['id'],page,term)
+            checks.append({'id':entry['id'],'page':page,'required_phrase_count':len(entry['required_substrings']),'source_status':'PASS'})
+          # Adversarial checks must demand both branches of original negative/conjunctive cases.
+          assert {'P07_REDUCTION_LOSS','P17_NEGATIVE_BEHAVIOUR','P19_TWO_INFERENCE_DOMAINS','P26_REAL_TASK_BOUNDARY','P27_UNMODELLED_AMBIGUITY','P33_DECISION_NOISE_SOURCE_LIMIT'}.issubset({x['id'] for x in m['anchors']})
+          # Guard tests below are illustrative validator regressions, not independent experiments.
+          strict=lambda entry,t:all(norm(term) in norm(t) for term in entry['required_substrings'])
+          a=next(x for x in m['anchors'] if x['id']=='P26_REAL_TASK_BOUNDARY')
+          genuine=doc[25].get_text()
+          assert strict(a,genuine)
+          for deleted in a['required_substrings']:
+            damaged=norm(genuine).replace(norm(deleted),'',1)
+            assert not strict(a,damaged),deleted
+          assert hashlib.sha256(pdf+b'\x00').hexdigest()!=expected
+          assert not strict(a,doc[24].get_text())
+          artefact=os.environ['SRC_ARTIFACT']
+          os.makedirs(artefact,exist_ok=True)
+          # Publisher original exact pages, rendered for direct visual p30/p33 mathematical-glyph checks.
+          for page in (30,33):
+            pix=doc[page-1].get_pixmap(matrix=fitz.Matrix(2.0,2.0),alpha=False)
+            pix.save(os.path.join(artefact,f'original_page_{page:02d}.png'))
+          receipt={'stage':'independent original-PDF post-E targeted SOURCE evidence','url':url,'pdf_sha256':actual,'size':len(pdf),'pages':doc.page_count,'source_anchor_checks':checks,'strict_adverse_condition_ids':['P07_REDUCTION_LOSS','P17_NEGATIVE_BEHAVIOUR','P19_TWO_INFERENCE_DOMAINS','P26_REAL_TASK_BOUNDARY','P27_UNMODELLED_AMBIGUITY','P33_DECISION_NOISE_SOURCE_LIMIT'],'illustrative_mutation_controls':5,'visual_math_pages':[30,33],'mathematical_visual_interpretation':'separately human-inspected publisher-original matching exact SHA; this CI cannot OCR/certify equation glyphs','qualification_scope':'original-source structural/procedural only, no exact p33 numeric normalization or model simulation','is_original_401_validator':False,'is_independent_blinded_rater':False}
+          with open(os.path.join(artefact,'receipt.json'),'w') as f:json.dump(receipt,f,indent=2)
+          print('PF02_POST_E_PRIMARY_SOURCE_21_OF_21_PASS')
+          print('PF02_ADVERSE_CONJUNCTIVE_GUARDS_PASS')
+          print('PF02_ORIGINAL_PDF_SHA256='+actual)
+          print('PF02_MUTATION_CONTROLS_5_ILLUSTRATIVE_PASS')
+          PY
+      - name: Keep verification receipt and mathematical glyph render separately from repository
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pf02-post-e-independent-original-pdf-review
+          path: ${{ runner.temp }}/pf02-original-independent-review/
+          retention-days: 3
+          if-no-files-found: warn
