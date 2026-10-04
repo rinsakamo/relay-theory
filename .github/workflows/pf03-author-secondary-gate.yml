@@ -1,0 +1,49 @@
+name: pf03-pinned-author-secondary-gate-probe
+on:
+  pull_request:
+    paths:
+      - "scripts/pf03_author_gate_probe.py"
+      - ".github/workflows/pf03-author-secondary-gate.yml"
+      - "research/paper2/p399/pf03/**"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  published-source-secondary-code-separation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Fetch PF03 derived receipts and test only
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Fetch original authors' historical three-level branch at EXACT immutable commit
+        uses: actions/checkout@v4
+        with:
+          repository: lpjiang97/dynamic-predictive-coding
+          ref: 017556566a0e5eb4a76455b85371737c16fe9b0a
+          path: _pf03_author_checkout
+          persist-credentials: false
+      - name: Configure Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Ensure CPU PyTorch is available for actual-author-function test
+        run: |
+          python -m pip --version
+          python - <<'PY' || python -m pip install --disable-pip-version-check --index-url https://download.pytorch.org/whl/cpu torch
+          import torch
+          print("TORCH_VERSION="+torch.__version__)
+          PY
+      - name: Validate frozen author code and execute ORIGINAL author inference on toy-only inputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "AUTHOR_CODE_SECONDARY_ONLY=true"
+          echo "ORIGINAL_PUBLISHED_PDF_SHA256=62d744125034ce834692cdb210065d34e2bbd0f58c9eb3387ed2d75dfb7f77ae"
+          echo "NOT_ORIGINAL_AUTHOR_NUMERIC_REPLICATION=true"
+          echo "NOT_V231_SCIENTIFIC_VALIDATOR=true"
+          git -C _pf03_author_checkout rev-parse HEAD
+          git -C _pf03_author_checkout hash-object models/pc_three.py
+          sha256sum _pf03_author_checkout/models/pc_three.py
+          python scripts/pf03_author_gate_probe.py
