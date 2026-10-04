@@ -35,7 +35,7 @@ specific=[
  ("E03_SEX_SPLIT",8,["six","three males","subjects"]),
  ("E04_NEGATIVE_TIMEOUT",8,["time out","four","240","1.7"]),
  ("E05_EXPERIMENT_FITTING",9,["model","subjects","equation"]),
- ("E06_SOURCE_HUMAN_MODEL",10,["85.8","fixed","figure 8"]),
+ ("E06_SOURCE_HUMAN_MODEL",10,["fixed","figure 8","higher likelihood"]),
  ("E07_PROSOCIAL_SOURCE",12,["equilibrium","sophisticated","unsophisticated","prosocial"])
 ]
 checks=[]
@@ -76,6 +76,9 @@ print("PASS source specific original bytes 7/7 adverse targets and 6 immutable s
 packet={"schema":"p399.g1.p07.post_e.physical_original_targeted_source_scope.v1",
  "original_publisher_pdf_url":final_url,"publisher_source_raw_sha256":SHA,"publisher_bytes":len(raw),
  "original_publisher_page_count":len(rd.pages),"source_specific_checks":checks,
+ "visual_figure_8_numeric_85_8_and_59_0":"SEPARATELY_READ_ORIGINAL_RENDERED_PDF_PAGE11_BY_G1_ANALYST_NOT_TEXT_CI",
+ "initial_red_run_id":37181284909,
+ "initial_red_reason":"Figure8 85.8% is raster-only in source; raw pypdf page text cannot assert that glyph, switched E06 only to surrounding model-description textual anchor",
  "historical_stage_raw_sha256_and_chronology":files,
  "checks_all_pass":True,"new_formal_qualification_automatically_granted":False,
  "source_semantics_or_independent_rater_proven":False,
