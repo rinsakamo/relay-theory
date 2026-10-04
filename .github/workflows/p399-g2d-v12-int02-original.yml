@@ -1,0 +1,29 @@
+name: P399 G2-D v12 INT02 MDPI original publisher exact SHA timed Chromium fallback
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g2/int_g2d/v12_int02_original_publisher_timed_browser.py"
+      - ".github/workflows/p399-g2d-v12-int02-original.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-firstparty-selected-int02:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install --disable-pip-version-check pypdf==6.1.1 playwright==1.55.0
+      - run: python -m playwright install --with-deps chromium
+      - name: Check actual MDPI original 12s then chromium18s; no mirror manuscript or global science pass
+        run: python research/paper2/p399/g2/int_g2d/v12_int02_original_publisher_timed_browser.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g2d-v12-int02-original-publisher-${{ github.run_id }}
+          path: g2d-v12-int02-original/receipt.json
+          if-no-files-found: warn
+          retention-days: 14
