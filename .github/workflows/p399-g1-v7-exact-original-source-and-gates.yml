@@ -1,0 +1,22 @@
+name: P399 G1 v7 independently validate 20 source records but joint hold
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g1/G1_FOUR_LANE_SOURCE_EVIDENCE_INTEGRATED_GLOBAL_ADMISSION_HOLDS_v7.json"
+      - "research/paper2/p399/g1/integration/g1_v7_integrated_individual_source_evidence_failclosed_validator.py"
+      - ".github/workflows/p399-g1-v7-exact-original-source-and-gates.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  v7-original-source-cohort-not-MAIN:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python research/paper2/p399/g1/integration/g1_v7_integrated_individual_source_evidence_failclosed_validator.py

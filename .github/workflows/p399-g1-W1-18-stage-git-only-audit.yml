@@ -1,0 +1,30 @@
+name: P399 G1 W1 exact 18 original chronological source science Git stage audit
+on:
+  push:
+    branches:
+      - "paper2/p399-g1-w1-source-adversarial-20261004"
+    paths:
+      - "research/paper2/p399/g1/parallel/W1/w1_verify_all_18_exact_original_science_stage_git.py"
+      - ".github/workflows/p399-g1-W1-18-stage-git-only-audit.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  all-original-18-stage-historical-integrity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python research/paper2/p399/g1/parallel/W1/w1_verify_all_18_exact_original_science_stage_git.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: p399-g1-W1-exact-18-original-stage-only-${{ github.run_id }}
+          path: w1-git-original-history/
+          retention-days: 21
+          if-no-files-found: warn

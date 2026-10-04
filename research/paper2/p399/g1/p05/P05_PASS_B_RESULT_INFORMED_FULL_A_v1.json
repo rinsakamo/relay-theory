@@ -1,0 +1,1192 @@
+{
+  "schema": "p399.g1.att.p05.independent_complete_immutable_A_and_source_B.v1",
+  "source_pdf_sha256": "80900fab574c1bf17c0bb65f81c87c1bdb6ba0dbbbbadfa31dcd2c8522735c7c",
+  "PRE_A_commit": "bc08fc4714f4658600e8f74ef2e0af80fd9bc111",
+  "A_introduction_commit": "bb92bec572afe080dc1467ea836c41dda1199e62",
+  "A_git_blob": "797b04afaeb85b0958a5f5f11cebe792e629ad16",
+  "entire_immutable_A_original_input": {
+    "schema": "p399.g1.att.p05.original_source_first_frozen_A.v1",
+    "source_pdf_original_sha": "80900fab574c1bf17c0bb65f81c87c1bdb6ba0dbbbbadfa31dcd2c8522735c7c",
+    "PRE_A_commit": "bc08fc4714f4658600e8f74ef2e0af80fd9bc111",
+    "method": "Before any frozen Grammar v0 or expected H outcome; full publisher original article narrative and model-critical original PDF equations figures inspected, other pages not falsely claimed pixel-complete",
+    "original_claim_count": 30,
+    "original_source_relation_count": 42,
+    "source_first_claims": [
+      {
+        "id": "A01",
+        "locator": "PDF p4 Fig1 and p5 Fig2",
+        "source_claim": "Human/monkey return fixation defined as revisiting 1dva vicinity of ANY earlier fixation, not just immediately preceding one",
+        "classifier": "O"
+      },
+      {
+        "id": "A02",
+        "locator": "PDF p3 Abstract,p20 Discussion",
+        "source_claim": "All eight original behavioral datasets pooled 44,328 return of 217,440 fixations (20.4%); denominator is source observational pooled, not modeled-six simulation total",
+        "classifier": "O"
+      },
+      {
+        "id": "A03",
+        "locator": "PDF p5 Fig2; p26 Computational model",
+        "source_claim": "Only six static-image datasets modeled: human visual search 1/2/3, human free viewing, monkey free viewing 1/2; two egocentric video tasks only empirically characterized",
+        "classifier": "C"
+      },
+      {
+        "id": "A04",
+        "locator": "PDF pp13–14 Results and original ref8",
+        "source_claim": "Direct inherited Zhang et al 2018 IVSN VGG16 + top-down target similarity + 3 prior human visual-search experiments; added finite IOR+saliency+empirical saccade prior",
+        "classifier": "ancestry"
+      },
+      {
+        "id": "A05",
+        "locator": "PDF p15 Fig7A/B and p26",
+        "source_claim": "Five proposed components source distinction feature extractor, bottom-up saliency, target template similarity, finite spatial IOR and saccade amplitude prior",
+        "classifier": "system"
+      },
+      {
+        "id": "A06",
+        "locator": "PDF p26 Eq1,p27",
+        "source_claim": "Target similarity M_sim uses pretrained ImageNet VGG16 target layer31 as top-down convolution on visual search image layer30; no retraining on current eye movement samples",
+        "classifier": "K"
+      },
+      {
+        "id": "A07",
+        "locator": "PDF p27 Eq2",
+        "source_claim": "Free viewing saliency M_sal uses same pretrained conv features and uniform all-ones activation pooling, with no task target template",
+        "classifier": "K"
+      },
+      {
+        "id": "A08",
+        "locator": "PDF p27 Methods",
+        "source_claim": "Empirical saccade size prior M_sac,t conditional on current fixation and condition-specific original observed saccade amplitude; dynamic map differs from fixed saliency",
+        "classifier": "K"
+      },
+      {
+        "id": "A09",
+        "locator": "PDF p27 Eq3",
+        "source_claim": "M_mem,t finite inhibition uses source fixation-age clipped exponential alpha=0.92 and floor beta=0.5, not infinite IOR or perfect forgetting",
+        "classifier": "T"
+      },
+      {
+        "id": "A10",
+        "locator": "PDF p27 Eq4",
+        "source_claim": "Each past fixation generates source Gaussian spatial memory trace whose sigma VS1=0.08 and other datasets=0.02; current memory takes maximum across these past traces",
+        "classifier": "X"
+      },
+      {
+        "id": "A11",
+        "locator": "PDF p27–28",
+        "source_claim": "On a return fixation a new recent Gaussian trace overwrites lower decayed memory at earlier spatial location via max; this is source-defined history-dependent reuse, not an extra learned belief",
+        "classifier": "T"
+      },
+      {
+        "id": "A12",
+        "locator": "PDF p28 Eq5",
+        "source_claim": "Four normalized attention maps linear combination with w_mem=-0.93, w_sac=0.2346 and task-gated w_sim/w_sal; winner-take-all argmax selects next fixation",
+        "classifier": "K"
+      },
+      {
+        "id": "A13",
+        "locator": "PDF p28 Methods",
+        "source_claim": "Visual search has w_sim=1,w_sal=0; free-view w_sim=0,w_sal=1, not both concurrently active original modes",
+        "classifier": "C"
+      },
+      {
+        "id": "A14",
+        "locator": "PDF pp14–15 Fig7 and p28",
+        "source_claim": "M_sim and M_sal static for a given image; M_sac,t and M_mem,t update after each fixation; origin vs boundary temporal indices distinguishable",
+        "classifier": "T"
+      },
+      {
+        "id": "A15",
+        "locator": "PDF p28 Methods",
+        "source_claim": "Visual search object recognition uses same pretrained VGG16 top classification features cosine distance with 1dva crop; source thresholds 0.5 for object arrays/Waldo and 0.3 natural",
+        "classifier": "C"
+      },
+      {
+        "id": "A16",
+        "locator": "PDF p28 Methods",
+        "source_claim": "When recognition distance crosses per-task specified criterion visual search stops; free-viewing instead stops at corresponding dataset's average subject fixation count N_c",
+        "classifier": "P"
+      },
+      {
+        "id": "A17",
+        "locator": "PDF pp25–26",
+        "source_claim": "Input world includes static image I_s and optional target I_T, original measured gaze and dataset-specific empirical motor prior; task/eye tracking is experimental interface not internal brain coordinator",
+        "classifier": "world"
+      },
+      {
+        "id": "A18",
+        "locator": "PDF p26–28",
+        "source_claim": "Source model has no motion temporal video integration, 3D egocentric memory or cooking policy; empirical human naturalistic behavior not predicted by implemented original model",
+        "classifier": "neg"
+      },
+      {
+        "id": "A19",
+        "locator": "PDF p21 Discussion and p27–28",
+        "source_claim": "Alpha/beta/sigma and relative two map weights set from original Visual Search 2 then held fixed for other five modeled datasets; not zero original calibration",
+        "classifier": "neg"
+      },
+      {
+        "id": "A20",
+        "locator": "PDF pp16–17 Fig8",
+        "source_claim": "Source model return-fixation rate over six modeled static cases spans 5.5±0.4% to 25.3±1%; observational 8 datasets remains distinct",
+        "classifier": "O"
+      },
+      {
+        "id": "A21",
+        "locator": "PDF pp17–18 Fig8/9",
+        "source_claim": "Modeled short-offset return distributions and approximately 180-degree turning peak; model's VS2/VS3 prior-saccade trend differs from human source",
+        "classifier": "O"
+      },
+      {
+        "id": "A22",
+        "locator": "PDF p19 Table1, p28 Ablated",
+        "source_claim": "Removing memory module increases simulated return proportion; infinite IOR by definition prevents returns; both not uniquely prove biology",
+        "classifier": "neg"
+      },
+      {
+        "id": "A23",
+        "locator": "PDF p19 Table1",
+        "source_claim": "Removing saliency/similarity map alters both fixation-map signal and chooser to stochastic sampling in source tests, not a one-variable unchanged-chooser intervention",
+        "classifier": "neg"
+      },
+      {
+        "id": "A24",
+        "locator": "PDF p19 Table1",
+        "source_claim": "Ablating saccade prior has less effect on return count than saccade-size distribution/offset; source metrics show mixed/no worsening for some properties",
+        "classifier": "neg"
+      },
+      {
+        "id": "A25",
+        "locator": "PDF p29 null model",
+        "source_claim": "Source null draws random movements from empirical saccade distribution and same stopping rule, so memoryless does not mean uniform pixel sampling or no motor prior",
+        "classifier": "neg"
+      },
+      {
+        "id": "A26",
+        "locator": "PDF p21 Discussion",
+        "source_claim": "Original source no learning in present model and no fixation duration, saccade duration or momentum; cannot add these imagined cognitive states in reconstruction",
+        "classifier": "neg"
+      },
+      {
+        "id": "A27",
+        "locator": "PDF p21 Discussion",
+        "source_claim": "Original model assumes constant visual acuity across field and limited recognition, context integrated across multiple saccades absent, quantitative match not uniformly good",
+        "classifier": "neg"
+      },
+      {
+        "id": "A28",
+        "locator": "PDF p20–21",
+        "source_claim": "Proposed multi-mechanism sufficiency is source proof of principle, not unique neural localization/necessity or universal species and task transfer",
+        "classifier": "neg"
+      },
+      {
+        "id": "A29",
+        "locator": "PDF p25 psychophysics",
+        "source_claim": "Separate original new 20-worker two-choice psychophysics target-feature similarity used observations, with 412 object-array and 1,041 natural patch pairs; not computational model trained on these pairs",
+        "classifier": "O"
+      },
+      {
+        "id": "A30",
+        "locator": "PDF p20–21",
+        "source_claim": "Source 2018 IVSN inherited same target feature selection and historical experiments; only composite finite IOR and free-view saliency is new paper central scope; direct genealogy must remain visible",
+        "classifier": "ancestry"
+      }
+    ],
+    "original_source_relations": [
+      {
+        "id": "E01",
+        "from": "A01",
+        "to": "A02",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      },
+      {
+        "id": "E02",
+        "from": "A02",
+        "to": "A03",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      },
+      {
+        "id": "E03",
+        "from": "A04",
+        "to": "A05",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      },
+      {
+        "id": "E04",
+        "from": "A04",
+        "to": "A06",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      },
+      {
+        "id": "E05",
+        "from": "A05",
+        "to": "A06",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      },
+      {
+        "id": "E06",
+        "from": "A05",
+        "to": "A07",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      },
+      {
+        "id": "E07",
+        "from": "A05",
+        "to": "A08",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      },
+      {
+        "id": "E08",
+        "from": "A05",
+        "to": "A09",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      },
+      {
+        "id": "E09",
+        "from": "A09",
+        "to": "A10",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      },
+      {
+        "id": "E10",
+        "from": "A09",
+        "to": "A11",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      },
+      {
+        "id": "E11",
+        "from": "A10",
+        "to": "A11",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      },
+      {
+        "id": "E12",
+        "from": "A06",
+        "to": "A12",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      },
+      {
+        "id": "E13",
+        "from": "A07",
+        "to": "A12",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      },
+      {
+        "id": "E14",
+        "from": "A08",
+        "to": "A12",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      },
+      {
+        "id": "E15",
+        "from": "A11",
+        "to": "A12",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      },
+      {
+        "id": "E16",
+        "from": "A12",
+        "to": "A13",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      },
+      {
+        "id": "E17",
+        "from": "A12",
+        "to": "A14",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      },
+      {
+        "id": "E18",
+        "from": "A13",
+        "to": "A15",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      },
+      {
+        "id": "E19",
+        "from": "A13",
+        "to": "A16",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      },
+      {
+        "id": "E20",
+        "from": "A15",
+        "to": "A16",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      },
+      {
+        "id": "E21",
+        "from": "A14",
+        "to": "A16",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      },
+      {
+        "id": "E22",
+        "from": "A17",
+        "to": "A18",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      },
+      {
+        "id": "E23",
+        "from": "A17",
+        "to": "A08",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      },
+      {
+        "id": "E24",
+        "from": "A19",
+        "to": "A09",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      },
+      {
+        "id": "E25",
+        "from": "A19",
+        "to": "A10",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      },
+      {
+        "id": "E26",
+        "from": "A19",
+        "to": "A12",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      },
+      {
+        "id": "E27",
+        "from": "A12",
+        "to": "A20",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      },
+      {
+        "id": "E28",
+        "from": "A16",
+        "to": "A20",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      },
+      {
+        "id": "E29",
+        "from": "A20",
+        "to": "A21",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      },
+      {
+        "id": "E30",
+        "from": "A22",
+        "to": "A28",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      },
+      {
+        "id": "E31",
+        "from": "A23",
+        "to": "A28",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      },
+      {
+        "id": "E32",
+        "from": "A24",
+        "to": "A28",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      },
+      {
+        "id": "E33",
+        "from": "A25",
+        "to": "A28",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      },
+      {
+        "id": "E34",
+        "from": "A26",
+        "to": "A28",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      },
+      {
+        "id": "E35",
+        "from": "A27",
+        "to": "A28",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      },
+      {
+        "id": "E36",
+        "from": "A18",
+        "to": "A28",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      },
+      {
+        "id": "E37",
+        "from": "A04",
+        "to": "A30",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      },
+      {
+        "id": "E38",
+        "from": "A06",
+        "to": "A30",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      },
+      {
+        "id": "E39",
+        "from": "A07",
+        "to": "A30",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      },
+      {
+        "id": "E40",
+        "from": "A09",
+        "to": "A30",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      },
+      {
+        "id": "E41",
+        "from": "A28",
+        "to": "A30",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      },
+      {
+        "id": "E42",
+        "from": "A29",
+        "to": "A28",
+        "interpretation": "source-local conditional model dependency or explicit evidence/limitation; not universal causal equivalence"
+      }
+    ],
+    "full_source_section_inventory": [
+      {
+        "index": 1,
+        "source_section": "Article original edition and received/accepted dates",
+        "original_scope": "Official same DOI complete publisher HTML, plus original publisher 38pp PDF directly viewed model-critical visual pages explicitly inventoried PRE_A; no claim all 38 PDF pixels read"
+      },
+      {
+        "index": 2,
+        "source_section": "Abstract author scope & observational pooled denominator",
+        "original_scope": "Official same DOI complete publisher HTML, plus original publisher 38pp PDF directly viewed model-critical visual pages explicitly inventoried PRE_A; no claim all 38 PDF pixels read"
+      },
+      {
+        "index": 3,
+        "source_section": "Introduction IVSN and earlier IOR mechanism",
+        "original_scope": "Official same DOI complete publisher HTML, plus original publisher 38pp PDF directly viewed model-critical visual pages explicitly inventoried PRE_A; no claim all 38 PDF pixels read"
+      },
+      {
+        "index": 4,
+        "source_section": "Fig1+Fig2 eight observational datasets",
+        "original_scope": "Official same DOI complete publisher HTML, plus original publisher 38pp PDF directly viewed model-critical visual pages explicitly inventoried PRE_A; no claim all 38 PDF pixels read"
+      },
+      {
+        "index": 5,
+        "source_section": "Experimental return offset, duration, turning and human tasks",
+        "original_scope": "Official same DOI complete publisher HTML, plus original publisher 38pp PDF directly viewed model-critical visual pages explicitly inventoried PRE_A; no claim all 38 PDF pixels read"
+      },
+      {
+        "index": 6,
+        "source_section": "Fig6 target location psychophysics",
+        "original_scope": "Official same DOI complete publisher HTML, plus original publisher 38pp PDF directly viewed model-critical visual pages explicitly inventoried PRE_A; no claim all 38 PDF pixels read"
+      },
+      {
+        "index": 7,
+        "source_section": "Fig7 five proposed mechanism architecture",
+        "original_scope": "Official same DOI complete publisher HTML, plus original publisher 38pp PDF directly viewed model-critical visual pages explicitly inventoried PRE_A; no claim all 38 PDF pixels read"
+      },
+      {
+        "index": 8,
+        "source_section": "Fig8 six simulated static source tasks",
+        "original_scope": "Official same DOI complete publisher HTML, plus original publisher 38pp PDF directly viewed model-critical visual pages explicitly inventoried PRE_A; no claim all 38 PDF pixels read"
+      },
+      {
+        "index": 9,
+        "source_section": "Fig9 and Table1 negative ablations per metric",
+        "original_scope": "Official same DOI complete publisher HTML, plus original publisher 38pp PDF directly viewed model-critical visual pages explicitly inventoried PRE_A; no claim all 38 PDF pixels read"
+      },
+      {
+        "index": 10,
+        "source_section": "Discussion source caveats and direct IVSN ancestry",
+        "original_scope": "Official same DOI complete publisher HTML, plus original publisher 38pp PDF directly viewed model-critical visual pages explicitly inventoried PRE_A; no claim all 38 PDF pixels read"
+      },
+      {
+        "index": 11,
+        "source_section": "Methods eight empirical sampling and threshold",
+        "original_scope": "Official same DOI complete publisher HTML, plus original publisher 38pp PDF directly viewed model-critical visual pages explicitly inventoried PRE_A; no claim all 38 PDF pixels read"
+      },
+      {
+        "index": 12,
+        "source_section": "Methods visual network original equations 1–2",
+        "original_scope": "Official same DOI complete publisher HTML, plus original publisher 38pp PDF directly viewed model-critical visual pages explicitly inventoried PRE_A; no claim all 38 PDF pixels read"
+      },
+      {
+        "index": 13,
+        "source_section": "Methods finite memory/saccade original equations 3–5",
+        "original_scope": "Official same DOI complete publisher HTML, plus original publisher 38pp PDF directly viewed model-critical visual pages explicitly inventoried PRE_A; no claim all 38 PDF pixels read"
+      },
+      {
+        "index": 14,
+        "source_section": "Methods threshold and ablated/null implementation",
+        "original_scope": "Official same DOI complete publisher HTML, plus original publisher 38pp PDF directly viewed model-critical visual pages explicitly inventoried PRE_A; no claim all 38 PDF pixels read"
+      },
+      {
+        "index": 15,
+        "source_section": "Original complete reference list and supplemental inventory",
+        "original_scope": "Official same DOI complete publisher HTML, plus original publisher 38pp PDF directly viewed model-critical visual pages explicitly inventoried PRE_A; no claim all 38 PDF pixels read"
+      }
+    ],
+    "prior_frozen_preA_material_negative_count": 14,
+    "source_model_variants": [
+      "Original inherited 2018 IVSN infinite IOR baseline",
+      "New static visual-search mode with finite memory, inherited target map and empirically defined motor distribution",
+      "New static free-viewing mode with target absent and VGG saliency map",
+      "Ablated memory model changed random w_mem",
+      "Ablated target/salience model additionally stochastic next fixation, not fixed WTA",
+      "Ablated saccade model w_sac=0",
+      "Memoryless empirical motor distribution null; infinite IOR no-return logical extreme",
+      "Eight actual behavioral datasets versus six modeled static datasets"
+    ],
+    "main_reconstruction_done": false,
+    "scientific_authority": "P05 source-only no final cross-family joint go"
+  },
+  "original_A_claim_independent_reread": [
+    {
+      "id": "A01",
+      "source": "PDF p4 Fig1 and p5 Fig2",
+      "source_relative": "RETAIN_WITH_EXPLICIT_B_OBJECTION_OR_SOURCE_NEGATIVE",
+      "B_source_objections": []
+    },
+    {
+      "id": "A02",
+      "source": "PDF p3 Abstract,p20 Discussion",
+      "source_relative": "RETAIN_WITH_EXPLICIT_B_OBJECTION_OR_SOURCE_NEGATIVE",
+      "B_source_objections": []
+    },
+    {
+      "id": "A03",
+      "source": "PDF p5 Fig2; p26 Computational model",
+      "source_relative": "RETAIN_WITH_EXPLICIT_B_OBJECTION_OR_SOURCE_NEGATIVE",
+      "B_source_objections": [
+        "B05"
+      ]
+    },
+    {
+      "id": "A04",
+      "source": "PDF pp13–14 Results and original ref8",
+      "source_relative": "RETAIN_WITH_EXPLICIT_B_OBJECTION_OR_SOURCE_NEGATIVE",
+      "B_source_objections": [
+        "B04"
+      ]
+    },
+    {
+      "id": "A05",
+      "source": "PDF p15 Fig7A/B and p26",
+      "source_relative": "RETAIN_WITH_EXPLICIT_B_OBJECTION_OR_SOURCE_NEGATIVE",
+      "B_source_objections": []
+    },
+    {
+      "id": "A06",
+      "source": "PDF p26 Eq1,p27",
+      "source_relative": "RETAIN_WITH_EXPLICIT_B_OBJECTION_OR_SOURCE_NEGATIVE",
+      "B_source_objections": []
+    },
+    {
+      "id": "A07",
+      "source": "PDF p27 Eq2",
+      "source_relative": "RETAIN_WITH_EXPLICIT_B_OBJECTION_OR_SOURCE_NEGATIVE",
+      "B_source_objections": []
+    },
+    {
+      "id": "A08",
+      "source": "PDF p27 Methods",
+      "source_relative": "RETAIN_WITH_EXPLICIT_B_OBJECTION_OR_SOURCE_NEGATIVE",
+      "B_source_objections": []
+    },
+    {
+      "id": "A09",
+      "source": "PDF p27 Eq3",
+      "source_relative": "RETAIN_WITH_EXPLICIT_B_OBJECTION_OR_SOURCE_NEGATIVE",
+      "B_source_objections": []
+    },
+    {
+      "id": "A10",
+      "source": "PDF p27 Eq4",
+      "source_relative": "RETAIN_WITH_EXPLICIT_B_OBJECTION_OR_SOURCE_NEGATIVE",
+      "B_source_objections": [
+        "B01"
+      ]
+    },
+    {
+      "id": "A11",
+      "source": "PDF p27–28",
+      "source_relative": "RETAIN_WITH_EXPLICIT_B_OBJECTION_OR_SOURCE_NEGATIVE",
+      "B_source_objections": []
+    },
+    {
+      "id": "A12",
+      "source": "PDF p28 Eq5",
+      "source_relative": "RETAIN_WITH_EXPLICIT_B_OBJECTION_OR_SOURCE_NEGATIVE",
+      "B_source_objections": []
+    },
+    {
+      "id": "A13",
+      "source": "PDF p28 Methods",
+      "source_relative": "RETAIN_WITH_EXPLICIT_B_OBJECTION_OR_SOURCE_NEGATIVE",
+      "B_source_objections": []
+    },
+    {
+      "id": "A14",
+      "source": "PDF pp14–15 Fig7 and p28",
+      "source_relative": "RETAIN_WITH_EXPLICIT_B_OBJECTION_OR_SOURCE_NEGATIVE",
+      "B_source_objections": []
+    },
+    {
+      "id": "A15",
+      "source": "PDF p28 Methods",
+      "source_relative": "RETAIN_WITH_EXPLICIT_B_OBJECTION_OR_SOURCE_NEGATIVE",
+      "B_source_objections": []
+    },
+    {
+      "id": "A16",
+      "source": "PDF p28 Methods",
+      "source_relative": "RETAIN_WITH_EXPLICIT_B_OBJECTION_OR_SOURCE_NEGATIVE",
+      "B_source_objections": []
+    },
+    {
+      "id": "A17",
+      "source": "PDF pp25–26",
+      "source_relative": "RETAIN_WITH_EXPLICIT_B_OBJECTION_OR_SOURCE_NEGATIVE",
+      "B_source_objections": []
+    },
+    {
+      "id": "A18",
+      "source": "PDF p26–28",
+      "source_relative": "RETAIN_WITH_EXPLICIT_B_OBJECTION_OR_SOURCE_NEGATIVE",
+      "B_source_objections": [
+        "B05"
+      ]
+    },
+    {
+      "id": "A19",
+      "source": "PDF p21 Discussion and p27–28",
+      "source_relative": "RETAIN_WITH_EXPLICIT_B_OBJECTION_OR_SOURCE_NEGATIVE",
+      "B_source_objections": [
+        "B01",
+        "B06"
+      ]
+    },
+    {
+      "id": "A20",
+      "source": "PDF pp16–17 Fig8",
+      "source_relative": "RETAIN_WITH_EXPLICIT_B_OBJECTION_OR_SOURCE_NEGATIVE",
+      "B_source_objections": []
+    },
+    {
+      "id": "A21",
+      "source": "PDF pp17–18 Fig8/9",
+      "source_relative": "RETAIN_WITH_EXPLICIT_B_OBJECTION_OR_SOURCE_NEGATIVE",
+      "B_source_objections": []
+    },
+    {
+      "id": "A22",
+      "source": "PDF p19 Table1, p28 Ablated",
+      "source_relative": "RETAIN_WITH_EXPLICIT_B_OBJECTION_OR_SOURCE_NEGATIVE",
+      "B_source_objections": []
+    },
+    {
+      "id": "A23",
+      "source": "PDF p19 Table1",
+      "source_relative": "RETAIN_WITH_EXPLICIT_B_OBJECTION_OR_SOURCE_NEGATIVE",
+      "B_source_objections": [
+        "B03"
+      ]
+    },
+    {
+      "id": "A24",
+      "source": "PDF p19 Table1",
+      "source_relative": "RETAIN_WITH_EXPLICIT_B_OBJECTION_OR_SOURCE_NEGATIVE",
+      "B_source_objections": [
+        "B07"
+      ]
+    },
+    {
+      "id": "A25",
+      "source": "PDF p29 null model",
+      "source_relative": "RETAIN_WITH_EXPLICIT_B_OBJECTION_OR_SOURCE_NEGATIVE",
+      "B_source_objections": [
+        "B02"
+      ]
+    },
+    {
+      "id": "A26",
+      "source": "PDF p21 Discussion",
+      "source_relative": "RETAIN_WITH_EXPLICIT_B_OBJECTION_OR_SOURCE_NEGATIVE",
+      "B_source_objections": [
+        "B06"
+      ]
+    },
+    {
+      "id": "A27",
+      "source": "PDF p21 Discussion",
+      "source_relative": "RETAIN_WITH_EXPLICIT_B_OBJECTION_OR_SOURCE_NEGATIVE",
+      "B_source_objections": []
+    },
+    {
+      "id": "A28",
+      "source": "PDF p20–21",
+      "source_relative": "RETAIN_WITH_EXPLICIT_B_OBJECTION_OR_SOURCE_NEGATIVE",
+      "B_source_objections": []
+    },
+    {
+      "id": "A29",
+      "source": "PDF p25 psychophysics",
+      "source_relative": "RETAIN_WITH_EXPLICIT_B_OBJECTION_OR_SOURCE_NEGATIVE",
+      "B_source_objections": []
+    },
+    {
+      "id": "A30",
+      "source": "PDF p20–21",
+      "source_relative": "RETAIN_WITH_EXPLICIT_B_OBJECTION_OR_SOURCE_NEGATIVE",
+      "B_source_objections": [
+        "B04"
+      ]
+    }
+  ],
+  "original_A_all_source_edges_review": [
+    {
+      "id": "E01",
+      "from": "A01",
+      "to": "A02",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    },
+    {
+      "id": "E02",
+      "from": "A02",
+      "to": "A03",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    },
+    {
+      "id": "E03",
+      "from": "A04",
+      "to": "A05",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    },
+    {
+      "id": "E04",
+      "from": "A04",
+      "to": "A06",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    },
+    {
+      "id": "E05",
+      "from": "A05",
+      "to": "A06",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    },
+    {
+      "id": "E06",
+      "from": "A05",
+      "to": "A07",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    },
+    {
+      "id": "E07",
+      "from": "A05",
+      "to": "A08",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    },
+    {
+      "id": "E08",
+      "from": "A05",
+      "to": "A09",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    },
+    {
+      "id": "E09",
+      "from": "A09",
+      "to": "A10",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    },
+    {
+      "id": "E10",
+      "from": "A09",
+      "to": "A11",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    },
+    {
+      "id": "E11",
+      "from": "A10",
+      "to": "A11",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    },
+    {
+      "id": "E12",
+      "from": "A06",
+      "to": "A12",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    },
+    {
+      "id": "E13",
+      "from": "A07",
+      "to": "A12",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    },
+    {
+      "id": "E14",
+      "from": "A08",
+      "to": "A12",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    },
+    {
+      "id": "E15",
+      "from": "A11",
+      "to": "A12",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    },
+    {
+      "id": "E16",
+      "from": "A12",
+      "to": "A13",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    },
+    {
+      "id": "E17",
+      "from": "A12",
+      "to": "A14",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    },
+    {
+      "id": "E18",
+      "from": "A13",
+      "to": "A15",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    },
+    {
+      "id": "E19",
+      "from": "A13",
+      "to": "A16",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    },
+    {
+      "id": "E20",
+      "from": "A15",
+      "to": "A16",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    },
+    {
+      "id": "E21",
+      "from": "A14",
+      "to": "A16",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    },
+    {
+      "id": "E22",
+      "from": "A17",
+      "to": "A18",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    },
+    {
+      "id": "E23",
+      "from": "A17",
+      "to": "A08",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    },
+    {
+      "id": "E24",
+      "from": "A19",
+      "to": "A09",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    },
+    {
+      "id": "E25",
+      "from": "A19",
+      "to": "A10",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    },
+    {
+      "id": "E26",
+      "from": "A19",
+      "to": "A12",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    },
+    {
+      "id": "E27",
+      "from": "A12",
+      "to": "A20",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    },
+    {
+      "id": "E28",
+      "from": "A16",
+      "to": "A20",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    },
+    {
+      "id": "E29",
+      "from": "A20",
+      "to": "A21",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    },
+    {
+      "id": "E30",
+      "from": "A22",
+      "to": "A28",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    },
+    {
+      "id": "E31",
+      "from": "A23",
+      "to": "A28",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    },
+    {
+      "id": "E32",
+      "from": "A24",
+      "to": "A28",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    },
+    {
+      "id": "E33",
+      "from": "A25",
+      "to": "A28",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    },
+    {
+      "id": "E34",
+      "from": "A26",
+      "to": "A28",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    },
+    {
+      "id": "E35",
+      "from": "A27",
+      "to": "A28",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    },
+    {
+      "id": "E36",
+      "from": "A18",
+      "to": "A28",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    },
+    {
+      "id": "E37",
+      "from": "A04",
+      "to": "A30",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    },
+    {
+      "id": "E38",
+      "from": "A06",
+      "to": "A30",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    },
+    {
+      "id": "E39",
+      "from": "A07",
+      "to": "A30",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    },
+    {
+      "id": "E40",
+      "from": "A09",
+      "to": "A30",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    },
+    {
+      "id": "E41",
+      "from": "A28",
+      "to": "A30",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    },
+    {
+      "id": "E42",
+      "from": "A29",
+      "to": "A28",
+      "source_edge_scope": "Conditional source relation, not independent causal validation"
+    }
+  ],
+  "full_original_source_section_resweep": [
+    {
+      "index": 1,
+      "source_section": "Article original edition and received/accepted dates",
+      "original_scope": "Official same DOI complete publisher HTML, plus original publisher 38pp PDF directly viewed model-critical visual pages explicitly inventoried PRE_A; no claim all 38 PDF pixels read",
+      "B_source_reopened": true,
+      "negative_and_zero_objection_sections_retained": true
+    },
+    {
+      "index": 2,
+      "source_section": "Abstract author scope & observational pooled denominator",
+      "original_scope": "Official same DOI complete publisher HTML, plus original publisher 38pp PDF directly viewed model-critical visual pages explicitly inventoried PRE_A; no claim all 38 PDF pixels read",
+      "B_source_reopened": true,
+      "negative_and_zero_objection_sections_retained": true
+    },
+    {
+      "index": 3,
+      "source_section": "Introduction IVSN and earlier IOR mechanism",
+      "original_scope": "Official same DOI complete publisher HTML, plus original publisher 38pp PDF directly viewed model-critical visual pages explicitly inventoried PRE_A; no claim all 38 PDF pixels read",
+      "B_source_reopened": true,
+      "negative_and_zero_objection_sections_retained": true
+    },
+    {
+      "index": 4,
+      "source_section": "Fig1+Fig2 eight observational datasets",
+      "original_scope": "Official same DOI complete publisher HTML, plus original publisher 38pp PDF directly viewed model-critical visual pages explicitly inventoried PRE_A; no claim all 38 PDF pixels read",
+      "B_source_reopened": true,
+      "negative_and_zero_objection_sections_retained": true
+    },
+    {
+      "index": 5,
+      "source_section": "Experimental return offset, duration, turning and human tasks",
+      "original_scope": "Official same DOI complete publisher HTML, plus original publisher 38pp PDF directly viewed model-critical visual pages explicitly inventoried PRE_A; no claim all 38 PDF pixels read",
+      "B_source_reopened": true,
+      "negative_and_zero_objection_sections_retained": true
+    },
+    {
+      "index": 6,
+      "source_section": "Fig6 target location psychophysics",
+      "original_scope": "Official same DOI complete publisher HTML, plus original publisher 38pp PDF directly viewed model-critical visual pages explicitly inventoried PRE_A; no claim all 38 PDF pixels read",
+      "B_source_reopened": true,
+      "negative_and_zero_objection_sections_retained": true
+    },
+    {
+      "index": 7,
+      "source_section": "Fig7 five proposed mechanism architecture",
+      "original_scope": "Official same DOI complete publisher HTML, plus original publisher 38pp PDF directly viewed model-critical visual pages explicitly inventoried PRE_A; no claim all 38 PDF pixels read",
+      "B_source_reopened": true,
+      "negative_and_zero_objection_sections_retained": true
+    },
+    {
+      "index": 8,
+      "source_section": "Fig8 six simulated static source tasks",
+      "original_scope": "Official same DOI complete publisher HTML, plus original publisher 38pp PDF directly viewed model-critical visual pages explicitly inventoried PRE_A; no claim all 38 PDF pixels read",
+      "B_source_reopened": true,
+      "negative_and_zero_objection_sections_retained": true
+    },
+    {
+      "index": 9,
+      "source_section": "Fig9 and Table1 negative ablations per metric",
+      "original_scope": "Official same DOI complete publisher HTML, plus original publisher 38pp PDF directly viewed model-critical visual pages explicitly inventoried PRE_A; no claim all 38 PDF pixels read",
+      "B_source_reopened": true,
+      "negative_and_zero_objection_sections_retained": true
+    },
+    {
+      "index": 10,
+      "source_section": "Discussion source caveats and direct IVSN ancestry",
+      "original_scope": "Official same DOI complete publisher HTML, plus original publisher 38pp PDF directly viewed model-critical visual pages explicitly inventoried PRE_A; no claim all 38 PDF pixels read",
+      "B_source_reopened": true,
+      "negative_and_zero_objection_sections_retained": true
+    },
+    {
+      "index": 11,
+      "source_section": "Methods eight empirical sampling and threshold",
+      "original_scope": "Official same DOI complete publisher HTML, plus original publisher 38pp PDF directly viewed model-critical visual pages explicitly inventoried PRE_A; no claim all 38 PDF pixels read",
+      "B_source_reopened": true,
+      "negative_and_zero_objection_sections_retained": true
+    },
+    {
+      "index": 12,
+      "source_section": "Methods visual network original equations 1–2",
+      "original_scope": "Official same DOI complete publisher HTML, plus original publisher 38pp PDF directly viewed model-critical visual pages explicitly inventoried PRE_A; no claim all 38 PDF pixels read",
+      "B_source_reopened": true,
+      "negative_and_zero_objection_sections_retained": true
+    },
+    {
+      "index": 13,
+      "source_section": "Methods finite memory/saccade original equations 3–5",
+      "original_scope": "Official same DOI complete publisher HTML, plus original publisher 38pp PDF directly viewed model-critical visual pages explicitly inventoried PRE_A; no claim all 38 PDF pixels read",
+      "B_source_reopened": true,
+      "negative_and_zero_objection_sections_retained": true
+    },
+    {
+      "index": 14,
+      "source_section": "Methods threshold and ablated/null implementation",
+      "original_scope": "Official same DOI complete publisher HTML, plus original publisher 38pp PDF directly viewed model-critical visual pages explicitly inventoried PRE_A; no claim all 38 PDF pixels read",
+      "B_source_reopened": true,
+      "negative_and_zero_objection_sections_retained": true
+    },
+    {
+      "index": 15,
+      "source_section": "Original complete reference list and supplemental inventory",
+      "original_scope": "Official same DOI complete publisher HTML, plus original publisher 38pp PDF directly viewed model-critical visual pages explicitly inventoried PRE_A; no claim all 38 PDF pixels read",
+      "B_source_reopened": true,
+      "negative_and_zero_objection_sections_retained": true
+    }
+  ],
+  "original_source_objections": [
+    {
+      "id": "B01",
+      "A_ids": [
+        "A10",
+        "A19"
+      ],
+      "source": "Original published PDF p27 Eq4 and following original calibration paragraph",
+      "finding": "Original claims σ=0.08 for VS1 and σ=0.02 other tasks, notwithstanding prose that alpha/beta/sigma were optimized on VS2 then fixed elsewhere; A19 wording could erase explicit VS1 sigma dataset-conditioned special case. Must add original exact conditional; avoid unsupported identical σ across all six.",
+      "kind": "MATERIAL_C_SOURCE_CONDITIONAL",
+      "C": "C01"
+    },
+    {
+      "id": "B02",
+      "A_ids": [
+        "A25"
+      ],
+      "source": "Original PDF p29 null model alternative paragraph",
+      "finding": "A25 correctly captures implemented empirical-size-only stochastic memoryless null, but original explicitly identifies a different salience+similarity+motor without memory hypothetical which oscillates among two top peaks; that counterexample must be preserved without reporting that alternate null as empirically tested result.",
+      "kind": "MATERIAL_ADVERSE_ALTERNATE_NULL",
+      "C": "C02"
+    },
+    {
+      "id": "B03",
+      "A_ids": [
+        "A23"
+      ],
+      "source": "Original PDF p28 ablation implementation + p19 Table1",
+      "finding": "Source ablated similarity/salience changes winner-take-all to probabilistic sampling so ablation cannot isolate feature loss. A23 already says this; prohibit duplicate patch.",
+      "kind": "ALREADY_COVERED_NO_PATCH",
+      "C": null
+    },
+    {
+      "id": "B04",
+      "A_ids": [
+        "A04",
+        "A30"
+      ],
+      "source": "Original publisher paper p14 IVSN previous ref8 + original Nature Communications 2018 DOI10.1038/s41467-018-06217-x",
+      "finding": "A04/A30 already state direct IVSN inherited base/three prior human tasks. Final cohort independence cannot be declared based on no DOI overlap; prohibit retroactive family clearance.",
+      "kind": "ALREADY_COVERED_HOLD",
+      "C": null
+    },
+    {
+      "id": "B05",
+      "A_ids": [
+        "A03",
+        "A18"
+      ],
+      "source": "Original 2022 PDF p26 explicit no video cross-frame integration",
+      "finding": "A03/A18 already distinguish observed eight vs modeled static six and no motion/video/cooking model. Retain adverse.",
+      "kind": "ALREADY_COVERED_NO_PATCH",
+      "C": null
+    },
+    {
+      "id": "B06",
+      "A_ids": [
+        "A19",
+        "A26"
+      ],
+      "source": "Original PDF p21 limitations and p27 finite memory fit",
+      "finding": "Source fixed AFTER calibration is not no tuning at all. A19 already states VS2 calibration but C01 must refine σ discrepancy. No new generalized adaptation allowed.",
+      "kind": "SOURCE_SCOPE_NOTE_VIA_C01",
+      "C": null
+    },
+    {
+      "id": "B07",
+      "A_ids": [
+        "A24"
+      ],
+      "source": "Original Table1 exact per-row numbers PDF p19",
+      "finding": "A24 says mixed results but does not preserve actual negative differences: return-angle ablated-memory 0.75 versus full 0.73, return-proportion ablated-saccade 0.75 vs full 0.74. Avoid false each metric strictly worse claim; C03 add exact metric nonmonotonic counterexample.",
+      "kind": "MATERIAL_NUMERIC_NEGATIVE",
+      "C": "C03"
+    }
+  ],
+  "summary": {
+    "original_A_source_nodes_reviewed": 30,
+    "source_edges_reviewed": 42,
+    "original_source_sections_checked": 15,
+    "B_obj_total": 7,
+    "C1_material_patches": 3,
+    "already_covered_or_scope_only": 4
+  },
+  "B_numerical_original_source": "PDF p19 Table1 actual text pixels not invented; no simulation rerun",
+  "source_methods": "Entire official original 2022 full HTML + visually inspected PDF p19 Table1/p27 Eq3–4/p28 Eq5 etc, all supplementary standalone files not physically certified",
+  "no_MAIN_science": true
+}

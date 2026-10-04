@@ -1,0 +1,33 @@
+name: P399 G1 W3 P16 frozen history only
+on:
+  pull_request:
+    branches:
+      - paper2/p399-g1-pilot20-diversity-audit-20261004
+    paths:
+      - research/paper2/p399/g1/parallel/W3/P16_history_only_independent_audit.py
+      - .github/workflows/p399-g1-W3-P16-history-only.yml
+  push:
+    branches:
+      - paper2/p399-g1-w3-mem-prd-family-20261004
+    paths:
+      - .github/workflows/p399-g1-W3-P16-history-only.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  w3_p16_frozen_science_history_only:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Independently verify original immutable P16 stage introductions and coverage only
+        run: python research/paper2/p399/g1/parallel/W3/P16_history_only_independent_audit.py
+      - name: Retain chronological evidence only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: P399-W3-P16-history-only-${{ github.run_id }}
+          path: w3-p16-history-only/receipt.json
+          if-no-files-found: warn
+          retention-days: 30

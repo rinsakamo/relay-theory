@@ -1,0 +1,126 @@
+{
+  "schema": "relaytheory.p399.g1.W1.P10.PRE_A.original_and_funding_correction_source_freeze.v1",
+  "id": "P10",
+  "date_jst": "2026-10-04",
+  "scientific_status": "SOURCE_BOUNDED_PRE_A_ONLY_NO_QUALIFICATION",
+  "original": {
+    "doi": "10.1371/journal.pcbi.1010699",
+    "title": "Humans combine value learning and hypothesis testing strategically in multi-dimensional probabilistic reward learning",
+    "published": "2022-11-23",
+    "url": "https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1010699&type=printable",
+    "sha256": "36839ae5557a296d73903089523328d75b5e0300fc3e6fca3be18d53a2c9c5d4",
+    "bytes": 1543382,
+    "pages": 22,
+    "prior_raw_physical_run": 37178895352,
+    "new_real_same_original_raw_run": 37191138347,
+    "expanded_pdf_render_run": 37191293323,
+    "mathematical_pdf_pages_personally_visually_inspected_1based": [
+      10,
+      15,
+      16,
+      17
+    ],
+    "additional_inspected_pdf_pages_1based": [
+      6,
+      8,
+      12
+    ],
+    "all22_pages_pixel_inspected": false,
+    "complete_original_official_html": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010699"
+  },
+  "correction": {
+    "doi": "10.1371/journal.pcbi.1010775",
+    "published": "2022-12-13",
+    "url": "https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1010775&type=printable",
+    "sha256": "eb4c593d9c4c43e6f2dc33d80ed393bf9cc5b79f191d076afbfb5f9fc3771daa",
+    "bytes": 202516,
+    "pages": 1,
+    "actually_visually_inspected": [
+      1
+    ],
+    "actual_raw_physical_run": 37191138347,
+    "scope": "FUNDING_ACKNOWLEDGEMENT_ONLY; no change to model scientific equations, empirical fit or original conclusions"
+  },
+  "necessary_official_supplements": [
+    {
+      "doi": "10.1371/journal.pcbi.1010699.s005",
+      "name": "S1 Text",
+      "sha256": "fb5526948449edc4535550f6c0ca9faa31bc5920e36fa2a41812b1920dd6d2a5",
+      "bytes": 155753,
+      "pages": 2,
+      "all_two_pages_visually_inspected": [
+        1,
+        2
+      ],
+      "mathematical_role": "Run-length/change-point posterior and serial hypothesis space generative choice model",
+      "published_source_defect": "S1 Text p2 contains literal unresolved Equation ?? cross-references; interpret relevant policy only where exact main Eqs8–10 explicitly support it, do not invent missing source math"
+    },
+    {
+      "doi": "10.1371/journal.pcbi.1010699.s004",
+      "name": "S4 Fig",
+      "sha256": "d427f7dedf601214a0f6acdd9c0f0be23d92023056e234e6d432006d9a26950e",
+      "bytes": 146146,
+      "pages": 1,
+      "visually_inspected": [
+        1
+      ],
+      "source_role": "Full SHT variant comparison changed stay policy/test/random vs value switch/feature lapse. Full model gains average .033 ± .006 crossvalidation likelihood per trial but does not predict number of attended/selected features adequately."
+    }
+  ],
+  "direct_original_model_native": [
+    "FeatureRL values on nine available categorical visual features: expected choice reward sums selected dimensional feature values Eq1; softmax decision Eq2; reward prediction-error feature-specific update and unchosen decay Eq3",
+    "Bayesian rule/hypothesis distribution over finite 9,27,27 dimensional conjunctive hypotheses, Eq4 posterior updated by trial outcomes and Eq5 marginal expected reward. Greedy maximises immediately expected choice reward, not known full 30trial reward optimum",
+    "Serial hypothesis testing posterior over tested hidden hypothesis using run-length/change-point recursion official S1 Text and main Eq6, task dimensionality-weighted priors Eq7",
+    "Logistic stay probability from smoothed reward frequency main Eq8, random switching main Eq9, hybrid value-based switching using accumulated feature RL values main Eq10; not equivalent to globally optimal Bayes policy"
+  ],
+  "original_model_alternatives": [
+    "Greedy Bayesian rule model",
+    "Standalone feature RL with two learning rates/decay",
+    "Serial hypothesis testing with random switch and behavioral noise",
+    "Hybrid feature RL plus value-guided SHT switch",
+    "Full S4 Fig test/stay/switch/lapse variant search and its adverse number-of-features prediction",
+    "Approximate ideal DQN benchmark trained to maximize experimental game reward, not mathematically global optimum"
+  ],
+  "original_empirical_scope": [
+    "106 finished, 4 excluded due poor performance (<.468 reward), 102 analyzed",
+    "18 games of 30 trials, six known-vs-unknown × dimension combinations, randomized three games of each type",
+    "9 single-feature, 27 dual and 27 triple conjunctive hypotheses: 63 source total only when dimension unknown",
+    "Leave-one-game-out source fit reported, not new numerical rerun"
+  ],
+  "negative_source_register_before_A": [
+    "N01: Greedy Bayesian comparator optimizes immediate prediction, not full-horizon optimal reward policy",
+    "N02: SHT latent tested hypothesis only inferred indirectly from choices; no direct observed internal agent beliefs",
+    "N03: Fixed finite source hypotheses, 30-trial games, task-specific original dimension instructions, no universal rules",
+    "N04: Hybrid wins among limited source candidate algorithms, not an unbounded family or uniquely identified neuronal implementation",
+    "N05: Original Fig4C hybrid and S4 fuller variant fail to accurately predict observed number of considered reward-relevant features",
+    "N06: Original 1D easy benefits serial SHT, complex 2D/3D benefit RL component; not uniform across all games",
+    "N07: S4 full variant .033±.006 crossvalidation gain per trial still feature-count misfit; main simpler hybrid remains scoped",
+    "N08: Source 4/106 poor performers excluded and n102 used; report cohort and denominator",
+    "N09: Original S1 Text contains unfixed literal Equation ?? references; cannot silently repair mathematics",
+    "N10: Only funding correction; no scientific equation changes implied",
+    "N11: Learned feature value and switch hypothesis share previously developed RL and Wilson/Niv change-point lineage, original novelty not independent invention",
+    "N12: Behavioral crossvalidation not independent causal neural feature/hypothesis testing proof",
+    "N13: DQN is approximate benchmark, not exact global optimality certificate",
+    "N14: P09 insect circuit novelty/associative learning may differ architecture but label/domain alone cannot certify family disjointness"
+  ],
+  "direct_mathematical_ancestry": [
+    "Niv et al 2015 feature-selective reinforcement learning in multidimensional task",
+    "Wilson & Niv 2012 change-point inference/latent relevant rule testing from S1 Text original refs",
+    "Original Bayesian finite-rule posterior and serial inference from source-cited prior cognitive reward-task literatures"
+  ],
+  "family_provisional": {
+    "qualified_P09": "Insect KC repetition accommodation–PCT novelty inhibitory loop and KC-to-EN association in original P09; distinct native variables from P10 human latent hypothesis/value learner, but final model-family clearance HELD",
+    "G2_CNC01": "conceptual bootstrapping metadata only",
+    "G2_CNC02": "trained network relational inference metadata only",
+    "G2_CNC03": "hippocampal category network metadata only",
+    "G2_INT15": "competing MB/MF metadata only; central ancestry overlap provisional",
+    "FINAL": "UNQUALIFIED_CENTRAL_G2_HOLD"
+  },
+  "scope_limits": [
+    "Extended publisher PDF pages18–22 not presently pixel reviewed; original full official publisher HTML used for bounded remaining passages",
+    "Publisher transient HTTP502 after initial official actual reacquisition run; post-E independent physical reacquisition must independently PASS",
+    "S1 original unresolved Equation ?? cross refs registered; no unwarranted independent exact equation provenance from broken pointers"
+  ],
+  "no_MAIN": true,
+  "no_grammar_before_A": true
+}

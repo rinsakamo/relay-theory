@@ -1,0 +1,29 @@
+name: P399 G1 v5 dual-original P13 8 of 20 scoped raw evidence audit
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g1/g1_v5_actual_original_scientific_evidence_check.py"
+      - "research/paper2/p399/g1/G1_PILOT20_SCIENTIFIC_ADMISSION_AND_DENOMINATORS_v5.json"
+      - "research/paper2/p399/g1/G1_REMAINING_12_INDEPENDENT_SCIENCE_BLOCKERS_v5.json"
+      - "research/paper2/p399/g1/G1_G2_P13_LRN_SOURCE_PLUS_MANDATORY_S1_FAMILY_HANDOFF_v5.json"
+      - "research/paper2/p399/g1/G1_P13_LRN_REAL_MAIN_S1_QUALIFICATION_AND_V5_DENOMINATORS_JA_20261004.md"
+      - "research/paper2/p399/g1/p13/**"
+      - ".github/workflows/p399-g1-v5-evidence.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-real-selected-8of20:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: python3 research/paper2/p399/g1/g1_v5_actual_original_scientific_evidence_check.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: p399-g1-v5-selected-actual-original-provenance-${{ github.run_id }}
+          path: g1-v5/evidence.json
+          retention-days: 21
+          if-no-files-found: warn

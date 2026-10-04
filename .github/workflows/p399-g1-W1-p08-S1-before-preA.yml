@@ -1,0 +1,28 @@
+name: P399 G1 W1 P08 official original S1 DOCX before PREA
+on:
+  push:
+    branches:
+      - "paper2/p399-g1-w1-source-adversarial-20261004"
+    paths:
+      - "research/paper2/p399/g1/parallel/W1/p08/w1_p08_s1_original_docx_source_probe.py"
+      - ".github/workflows/p399-g1-W1-p08-S1-before-preA.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  p08-real-original-s1:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python research/paper2/p399/g1/parallel/W1/p08/w1_p08_s1_original_docx_source_probe.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: p399-g1-W1-p08-official-S1-${{ github.run_id }}
+          path: w1-p08-s1-original/
+          retention-days: 21
+          if-no-files-found: warn

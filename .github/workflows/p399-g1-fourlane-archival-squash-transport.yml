@@ -1,0 +1,28 @@
+name: P399 G1 fourlane archived-original squash-transport independent source audit
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g1/integration/**"
+      - ".github/workflows/p399-g1-fourlane-archival-squash-transport.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-original-archival-allowed-transport:
+    runs-on: ubuntu-latest
+    timeout-minutes: 19
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python research/paper2/p399/g1/integration/g1_four_lane_archival_original_squash_transport_preflight.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g1-fourlane-archived-source-squash-independent-${{ github.run_id }}
+          path: g1-fourlane-preflight/original_disposable_merge_projection.json
+          retention-days: 30
+          if-no-files-found: warn

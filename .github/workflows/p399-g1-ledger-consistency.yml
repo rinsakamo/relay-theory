@@ -1,0 +1,16 @@
+name: P399 G1 machine-ledger consistency only
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g1/**"
+      - ".github/workflows/p399-g1-ledger-consistency.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  g1-ledger-metadata:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check frozen original PF and G1 receipts (NOT scientific source interpretation)
+        run: python3 research/paper2/p399/g1/g1_gate_metadata_consistency.py

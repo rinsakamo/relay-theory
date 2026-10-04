@@ -1,0 +1,30 @@
+name: P399 G1 scientific receipt v2 consistency (NOT independent semantic correctness)
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g1/G1_PILOT20_SCIENTIFIC_ADMISSION_AND_DENOMINATORS_v2.json"
+      - "research/paper2/p399/g1/G1_ACTUAL_CLOUD_ORIGINAL_PDF_SHA_RECEIPTS_20261004.json"
+      - "research/paper2/p399/g1/G1_ACTUAL_PUBLISHER_HTML_BIBLIOGRAPHY_AND_CORRECTION_RECEIPT_20261004.json"
+      - "research/paper2/p399/g1/G1_TO_G2_G4_WORKING_20X40_COLLISION_HANDOFF_v2.json"
+      - "research/paper2/p399/g1/G1_SOURCE_SUPPORTED_ANCESTRY_AND_G2_RISKS_v2.json"
+      - "research/paper2/p399/g1/p07/**"
+      - "research/paper2/p399/g1/g1_v2_scientific_evidence_check.py"
+      - ".github/workflows/p399-g1-v2-evidence.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  g1-v2-evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: python3 research/paper2/p399/g1/g1_v2_scientific_evidence_check.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g1-v2-evidence-metadata-${{ github.run_id }}
+          path: g1-evidence-v2/receipt.json
+          retention-days: 14
+          if-no-files-found: warn

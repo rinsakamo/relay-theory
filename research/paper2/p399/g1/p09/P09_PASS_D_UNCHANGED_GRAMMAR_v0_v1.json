@@ -1,0 +1,768 @@
+{
+  "schema": "p399.g1.p09.frozen_unchanged_grammar_v0_D.v1",
+  "inputs": {
+    "PRE_A_commit": "d8daabe86c03cf02c8a88fbe897b8b0b3c8f5615",
+    "A_commit": "69c443902e59a5bb11882721ca0230919f370375",
+    "A_blob": "c0c07b3fb948a84138204078cb0142799de26219",
+    "B_commit": "df633e25ee235cd34eca34f0b95ae32a63f16e21",
+    "C_commit": "ac58188798295f19f05bf55d27291e7788d65687",
+    "C_blob": "93034f572b6ce1ebd1ae591dd22dd53f87401b6c",
+    "source_original_sha256": "9d5f8df792c19e88749311dc2f9688705fe3aeaea4eb7bfad7e761ca90e5e6b2",
+    "C_originally_frozen_before_D": true
+  },
+  "frozen_unchanged_grammar_v0_roles": [
+    "Pi",
+    "X",
+    "C",
+    "Q",
+    "P_in",
+    "P_out",
+    "K",
+    "T",
+    "rho/O"
+  ],
+  "L_sys": {
+    "Pi": [
+      "IN sensory cells, sparse KCs, high-threshold PCT cells, separate GO/NOGO EN",
+      "Reduced S1/S2/I is explicitly a coarse model variant; no unlicensed equivalence to full biology"
+    ],
+    "X": [
+      "KC stimulus-specific current response and per-stimulus adaptation",
+      "KC→EN stimulus-specific associative synaptic weights",
+      "PCT→EN novelty-based inhibitory synaptic weights",
+      "PCT delayed activity history conditional on source ten simulation iterations"
+    ],
+    "C": [
+      "fixed probability 0.02 IN→KC sparse connections, source thresholds and bound weights",
+      "repeated stimulus model activity factor 0.7, source manual learning ratios",
+      "one sensory input at a time in reduced stimulus-choice task",
+      "original reduced/fuller versions are distinct mathematical implementations"
+    ],
+    "Q": [
+      "original reward R and Rb synaptic plasticity orientation and source go/no-go choice",
+      "Source published learning-vs-transfer success is observer scoring, not a second invented internal Q"
+    ],
+    "P_in": [
+      "entrance sample stimuli, successive choice stimuli, external reward, external decision opportunities programmed by experiment"
+    ],
+    "P_out": [
+      "modeled bee GO/NOGO motor choice observable by the Y-maze interface",
+      "experimenter output learning curves and transfer scores are downstream observer quantities"
+    ],
+    "K": [
+      "reduced Eq1–7 pooled novelty and inhibitory reward-dependent learning",
+      "full Eq8–14 KC sensory readout + separately plastic PCT high-threshold output; PCT loop has exact ten-iteration delay",
+      "source-dependent original KC path necessary for PER/patterning while PCT path conditional for new-stimulus transfer"
+    ],
+    "T": [
+      "sequential sample then one-at-a-time choice stimulus; transient KC adaptation bounds delays",
+      "source discrete choice waiting bias changes after repeated NO-GO, full source internal PCT recurrence ten iterations",
+      "reward-dependent acquisition, reversal and separate unrewarded transfer tests"
+    ],
+    "rho/O": [
+      "subject-specific input/output transfer accuracy original model sample n=338 vs n=360 (not all plotted groups 360)",
+      "source-only Fig2 plasticity frozen negative controls and Fig3 other tasks; Giurfa empirical comparators come from external prior study"
+    ]
+  },
+  "L_claim": {
+    "original_source_claims": 28,
+    "dependencies": 36,
+    "original_pdf": "publisher-published exact-raw-SHA 21 pages",
+    "C_accepted_patches": [
+      "C01",
+      "C02",
+      "C03"
+    ],
+    "negatives": [
+      "L01",
+      "L02",
+      "L03",
+      "L04",
+      "L05",
+      "L06",
+      "L07",
+      "L08",
+      "L09",
+      "L10",
+      "L11",
+      "L12",
+      "L13"
+    ],
+    "simulation_not_empirical_causation": true,
+    "genetic_neural_necessity_claims_excluded": true,
+    "long_delay_universal_transfer_excluded": true
+  },
+  "L_ctx": {
+    "initial_simulated_model_bees": 360,
+    "Fig2_fulldmts_reported_n": 338,
+    "Fig2_reduceddmts_n": 360,
+    "Fig2_dnmts_full_reduced_n": 360,
+    "original_figure_numbers_are_source_report_only": true,
+    "prior_bee_biological_curves_origin": "Giurfa 2001 and other original published older data, not independent new P09 measured animals",
+    "parameters": "suppression 0.7 and two learning ratios 2:1 plus thresholds; source constrained but tuned"
+  },
+  "L_formal": {
+    "reduced": "Eq1–7 per source (time-increasing stochastic GO)",
+    "full": "Eq8–14 per source (sparse IN/KC/EN, high threshold PCT and 10-step PCT star term, distinct excitatory/inhibitory learning)",
+    "experiment": "External Python Y-maze state engine controlled navigation, not modeled neural internal world-state update",
+    "source_specific_ablations": "Plasticity frozen while original pathway activation remains intact; source Table1 preserves KC-only conventional learning versus PCT-only new-stimulus transfer conditional"
+  },
+  "system_world_experiment": {
+    "System": "IN/KC/PCT/EN and their source specified sensory adaptation and synaptic update",
+    "World": "experimental Y-maze location, stimulus and programmed reward, with subject actions GO/NOGO changing external maze state only through scripted interface",
+    "Experiment": "External original published model-vs-historical-bee comparisons and task protocol; 360 initial random-seeded variants not homogeneous across reported sample strata",
+    "Coupling": "Original artificial state engine is not cognitive PCT comparator or extra innate supervisory operator"
+  },
+  "complete_corrected_original_claim_mapping": [
+    {
+      "source_claim_id": "A01",
+      "source_page": "PDF p2–3 Introduction",
+      "source_native_roles": [
+        "Pi",
+        "O",
+        "C"
+      ],
+      "C_source_nuance": [],
+      "interpretation_constraint": "SOURCE_NATIVE_BOUNDED",
+      "source_relative": "No new cognitive state or recurrent operator beyond original equations"
+    },
+    {
+      "source_claim_id": "A02",
+      "source_page": "PDF pp2–3 Introduction",
+      "source_native_roles": [
+        "O",
+        "C"
+      ],
+      "C_source_nuance": [],
+      "interpretation_constraint": "SOURCE_PARAMETERS_AND_OBSERVATIONS_ONLY",
+      "source_relative": "No new cognitive state or recurrent operator beyond original equations"
+    },
+    {
+      "source_claim_id": "A03",
+      "source_page": "PDF p4 Fig1A/C",
+      "source_native_roles": [
+        "Pi",
+        "X",
+        "C"
+      ],
+      "C_source_nuance": [],
+      "interpretation_constraint": "SOURCE_NATIVE_BOUNDED",
+      "source_relative": "No new cognitive state or recurrent operator beyond original equations"
+    },
+    {
+      "source_claim_id": "A04",
+      "source_page": "PDF p5 + p12",
+      "source_native_roles": [
+        "X",
+        "K",
+        "T",
+        "C"
+      ],
+      "C_source_nuance": [],
+      "interpretation_constraint": "SOURCE_NATIVE_BOUNDED",
+      "source_relative": "No new cognitive state or recurrent operator beyond original equations"
+    },
+    {
+      "source_claim_id": "A05",
+      "source_page": "PDF pp4–5 Fig1",
+      "source_native_roles": [
+        "Pi",
+        "K",
+        "C"
+      ],
+      "C_source_nuance": [],
+      "interpretation_constraint": "SOURCE_NATIVE_BOUNDED",
+      "source_relative": "No new cognitive state or recurrent operator beyond original equations"
+    },
+    {
+      "source_claim_id": "A06",
+      "source_page": "PDF p5 + p6 Fig2",
+      "source_native_roles": [
+        "K",
+        "Q",
+        "P_out"
+      ],
+      "C_source_nuance": [],
+      "interpretation_constraint": "SOURCE_NATIVE_BOUNDED",
+      "source_relative": "No new cognitive state or recurrent operator beyond original equations"
+    },
+    {
+      "source_claim_id": "A07",
+      "source_page": "PDF p12 Eq1–3 Fig1B p4",
+      "source_native_roles": [
+        "X",
+        "K",
+        "Pi",
+        "C"
+      ],
+      "C_source_nuance": [],
+      "interpretation_constraint": "SOURCE_NATIVE_BOUNDED",
+      "source_relative": "No new cognitive state or recurrent operator beyond original equations"
+    },
+    {
+      "source_claim_id": "A08",
+      "source_page": "PDF p12 Eq4–6",
+      "source_native_roles": [
+        "Q",
+        "K",
+        "T",
+        "P_out"
+      ],
+      "C_source_nuance": [],
+      "interpretation_constraint": "SOURCE_NATIVE_BOUNDED",
+      "source_relative": "No new cognitive state or recurrent operator beyond original equations"
+    },
+    {
+      "source_claim_id": "A09",
+      "source_page": "PDF p12 Eq7",
+      "source_native_roles": [
+        "K",
+        "Q",
+        "T"
+      ],
+      "C_source_nuance": [],
+      "interpretation_constraint": "SOURCE_NATIVE_BOUNDED",
+      "source_relative": "No new cognitive state or recurrent operator beyond original equations"
+    },
+    {
+      "source_claim_id": "A10",
+      "source_page": "PDF p13 Methods",
+      "source_native_roles": [
+        "Pi",
+        "C"
+      ],
+      "C_source_nuance": [],
+      "interpretation_constraint": "SOURCE_NATIVE_BOUNDED",
+      "source_relative": "No new cognitive state or recurrent operator beyond original equations"
+    },
+    {
+      "source_claim_id": "A11",
+      "source_page": "PDF pp13–14 Eq8–10",
+      "source_native_roles": [
+        "X",
+        "K",
+        "C"
+      ],
+      "C_source_nuance": [],
+      "interpretation_constraint": "SOURCE_NATIVE_BOUNDED",
+      "source_relative": "No new cognitive state or recurrent operator beyond original equations"
+    },
+    {
+      "source_claim_id": "A12",
+      "source_page": "PDF pp13–14 Eq11–13",
+      "source_native_roles": [
+        "X",
+        "K",
+        "T",
+        "C"
+      ],
+      "C_source_nuance": [
+        "C01"
+      ],
+      "interpretation_constraint": "SOURCE_NATIVE_BOUNDED",
+      "source_relative": "No new cognitive state or recurrent operator beyond original equations"
+    },
+    {
+      "source_claim_id": "A13",
+      "source_page": "PDF p14 Eq14 and p12 Eq7",
+      "source_native_roles": [
+        "K",
+        "Q",
+        "T"
+      ],
+      "C_source_nuance": [],
+      "interpretation_constraint": "SOURCE_NATIVE_BOUNDED",
+      "source_relative": "No new cognitive state or recurrent operator beyond original equations"
+    },
+    {
+      "source_claim_id": "A14",
+      "source_page": "PDF p4 Fig1B/C, pp6–7 Fig2",
+      "source_native_roles": [
+        "Pi",
+        "K",
+        "C"
+      ],
+      "C_source_nuance": [],
+      "interpretation_constraint": "SOURCE_NATIVE_BOUNDED",
+      "source_relative": "No new cognitive state or recurrent operator beyond original equations"
+    },
+    {
+      "source_claim_id": "A15",
+      "source_page": "PDF p4 Table1 and p6 Fig2C",
+      "source_native_roles": [
+        "K",
+        "C",
+        "O"
+      ],
+      "C_source_nuance": [
+        "C03"
+      ],
+      "interpretation_constraint": "SOURCE_NATIVE_BOUNDED",
+      "source_relative": "No new cognitive state or recurrent operator beyond original equations"
+    },
+    {
+      "source_claim_id": "A16",
+      "source_page": "PDF p6 Fig2A/B",
+      "source_native_roles": [
+        "P_in",
+        "P_out",
+        "O",
+        "T"
+      ],
+      "C_source_nuance": [
+        "C02"
+      ],
+      "interpretation_constraint": "SOURCE_NATIVE_BOUNDED",
+      "source_relative": "No new cognitive state or recurrent operator beyond original equations"
+    },
+    {
+      "source_claim_id": "A17",
+      "source_page": "PDF p6 Fig2D/E and p7",
+      "source_native_roles": [
+        "K",
+        "T",
+        "O",
+        "C"
+      ],
+      "C_source_nuance": [],
+      "interpretation_constraint": "SOURCE_NATIVE_BOUNDED",
+      "source_relative": "No new cognitive state or recurrent operator beyond original equations"
+    },
+    {
+      "source_claim_id": "A18",
+      "source_page": "PDF p9 Fig3",
+      "source_native_roles": [
+        "O",
+        "C"
+      ],
+      "C_source_nuance": [
+        "C03"
+      ],
+      "interpretation_constraint": "SOURCE_NATIVE_BOUNDED",
+      "source_relative": "No new cognitive state or recurrent operator beyond original equations"
+    },
+    {
+      "source_claim_id": "A19",
+      "source_page": "PDF p11 Table2",
+      "source_native_roles": [
+        "C",
+        "K",
+        "Q"
+      ],
+      "C_source_nuance": [],
+      "interpretation_constraint": "SOURCE_PARAMETERS_AND_OBSERVATIONS_ONLY",
+      "source_relative": "No new cognitive state or recurrent operator beyond original equations"
+    },
+    {
+      "source_claim_id": "A20",
+      "source_page": "PDF p14–16 Fig4",
+      "source_native_roles": [
+        "P_in",
+        "P_out",
+        "C",
+        "T"
+      ],
+      "C_source_nuance": [],
+      "interpretation_constraint": "EXOGENOUS_EXPERIMENT_NOT_NEW_INTERNAL_COGNITION",
+      "source_relative": "No new cognitive state or recurrent operator beyond original equations"
+    },
+    {
+      "source_claim_id": "A21",
+      "source_page": "PDF p15 Methods",
+      "source_native_roles": [
+        "P_in",
+        "T",
+        "C"
+      ],
+      "C_source_nuance": [],
+      "interpretation_constraint": "SOURCE_PARAMETERS_AND_OBSERVATIONS_ONLY",
+      "source_relative": "No new cognitive state or recurrent operator beyond original equations"
+    },
+    {
+      "source_claim_id": "A22",
+      "source_page": "PDF p15 Models as animals",
+      "source_native_roles": [
+        "Pi",
+        "C",
+        "O"
+      ],
+      "C_source_nuance": [
+        "C02"
+      ],
+      "interpretation_constraint": "SOURCE_PARAMETERS_AND_OBSERVATIONS_ONLY",
+      "source_relative": "No new cognitive state or recurrent operator beyond original equations"
+    },
+    {
+      "source_claim_id": "A23",
+      "source_page": "PDF p17 Software",
+      "source_native_roles": [
+        "C"
+      ],
+      "C_source_nuance": [],
+      "interpretation_constraint": "SOURCE_PARAMETERS_AND_OBSERVATIONS_ONLY",
+      "source_relative": "No new cognitive state or recurrent operator beyond original equations"
+    },
+    {
+      "source_claim_id": "A24",
+      "source_page": "PDF p10 Discussion",
+      "source_native_roles": [
+        "K",
+        "C",
+        "Q",
+        "O"
+      ],
+      "C_source_nuance": [],
+      "interpretation_constraint": "SOURCE_NATIVE_BOUNDED",
+      "source_relative": "No new cognitive state or recurrent operator beyond original equations"
+    },
+    {
+      "source_claim_id": "A25",
+      "source_page": "PDF p10 Discussion",
+      "source_native_roles": [
+        "T",
+        "C"
+      ],
+      "C_source_nuance": [],
+      "interpretation_constraint": "SOURCE_NATIVE_BOUNDED",
+      "source_relative": "No new cognitive state or recurrent operator beyond original equations"
+    },
+    {
+      "source_claim_id": "A26",
+      "source_page": "PDF p9–10 Discussion",
+      "source_native_roles": [
+        "C",
+        "O"
+      ],
+      "C_source_nuance": [],
+      "interpretation_constraint": "SOURCE_NATIVE_BOUNDED",
+      "source_relative": "No new cognitive state or recurrent operator beyond original equations"
+    },
+    {
+      "source_claim_id": "A27",
+      "source_page": "PDF pp11–14 and p10",
+      "source_native_roles": [
+        "Pi",
+        "K",
+        "C"
+      ],
+      "C_source_nuance": [],
+      "interpretation_constraint": "SOURCE_NATIVE_BOUNDED",
+      "source_relative": "No new cognitive state or recurrent operator beyond original equations"
+    },
+    {
+      "source_claim_id": "A28",
+      "source_page": "PDF p6 Fig2 and p11",
+      "source_native_roles": [
+        "O",
+        "C"
+      ],
+      "C_source_nuance": [],
+      "interpretation_constraint": "SOURCE_NATIVE_BOUNDED",
+      "source_relative": "No new cognitive state or recurrent operator beyond original equations"
+    }
+  ],
+  "all_original_source_dependencies": [
+    {
+      "edge": 1,
+      "from": "A01",
+      "to": "A02",
+      "source_scope": "source-relative directed dependency or evidence qualifier; not a proven causal necessity outside original model",
+      "C_precisions": []
+    },
+    {
+      "edge": 2,
+      "from": "A03",
+      "to": "A05",
+      "source_scope": "source-relative directed dependency or evidence qualifier; not a proven causal necessity outside original model",
+      "C_precisions": []
+    },
+    {
+      "edge": 3,
+      "from": "A04",
+      "to": "A05",
+      "source_scope": "source-relative directed dependency or evidence qualifier; not a proven causal necessity outside original model",
+      "C_precisions": []
+    },
+    {
+      "edge": 4,
+      "from": "A05",
+      "to": "A06",
+      "source_scope": "source-relative directed dependency or evidence qualifier; not a proven causal necessity outside original model",
+      "C_precisions": []
+    },
+    {
+      "edge": 5,
+      "from": "A03",
+      "to": "A07",
+      "source_scope": "source-relative directed dependency or evidence qualifier; not a proven causal necessity outside original model",
+      "C_precisions": []
+    },
+    {
+      "edge": 6,
+      "from": "A07",
+      "to": "A08",
+      "source_scope": "source-relative directed dependency or evidence qualifier; not a proven causal necessity outside original model",
+      "C_precisions": []
+    },
+    {
+      "edge": 7,
+      "from": "A08",
+      "to": "A09",
+      "source_scope": "source-relative directed dependency or evidence qualifier; not a proven causal necessity outside original model",
+      "C_precisions": []
+    },
+    {
+      "edge": 8,
+      "from": "A03",
+      "to": "A10",
+      "source_scope": "source-relative directed dependency or evidence qualifier; not a proven causal necessity outside original model",
+      "C_precisions": []
+    },
+    {
+      "edge": 9,
+      "from": "A10",
+      "to": "A11",
+      "source_scope": "source-relative directed dependency or evidence qualifier; not a proven causal necessity outside original model",
+      "C_precisions": []
+    },
+    {
+      "edge": 10,
+      "from": "A11",
+      "to": "A12",
+      "source_scope": "source-relative directed dependency or evidence qualifier; not a proven causal necessity outside original model",
+      "C_precisions": [
+        "C01"
+      ]
+    },
+    {
+      "edge": 11,
+      "from": "A12",
+      "to": "A13",
+      "source_scope": "source-relative directed dependency or evidence qualifier; not a proven causal necessity outside original model",
+      "C_precisions": [
+        "C01"
+      ]
+    },
+    {
+      "edge": 12,
+      "from": "A09",
+      "to": "A13",
+      "source_scope": "source-relative directed dependency or evidence qualifier; not a proven causal necessity outside original model",
+      "C_precisions": []
+    },
+    {
+      "edge": 13,
+      "from": "A07",
+      "to": "A14",
+      "source_scope": "source-relative directed dependency or evidence qualifier; not a proven causal necessity outside original model",
+      "C_precisions": []
+    },
+    {
+      "edge": 14,
+      "from": "A10",
+      "to": "A14",
+      "source_scope": "source-relative directed dependency or evidence qualifier; not a proven causal necessity outside original model",
+      "C_precisions": []
+    },
+    {
+      "edge": 15,
+      "from": "A13",
+      "to": "A14",
+      "source_scope": "source-relative directed dependency or evidence qualifier; not a proven causal necessity outside original model",
+      "C_precisions": []
+    },
+    {
+      "edge": 16,
+      "from": "A04",
+      "to": "A15",
+      "source_scope": "source-relative directed dependency or evidence qualifier; not a proven causal necessity outside original model",
+      "C_precisions": [
+        "C03"
+      ]
+    },
+    {
+      "edge": 17,
+      "from": "A06",
+      "to": "A15",
+      "source_scope": "source-relative directed dependency or evidence qualifier; not a proven causal necessity outside original model",
+      "C_precisions": [
+        "C03"
+      ]
+    },
+    {
+      "edge": 18,
+      "from": "A13",
+      "to": "A15",
+      "source_scope": "source-relative directed dependency or evidence qualifier; not a proven causal necessity outside original model",
+      "C_precisions": [
+        "C03"
+      ]
+    },
+    {
+      "edge": 19,
+      "from": "A14",
+      "to": "A16",
+      "source_scope": "source-relative directed dependency or evidence qualifier; not a proven causal necessity outside original model",
+      "C_precisions": [
+        "C02"
+      ]
+    },
+    {
+      "edge": 20,
+      "from": "A15",
+      "to": "A16",
+      "source_scope": "source-relative directed dependency or evidence qualifier; not a proven causal necessity outside original model",
+      "C_precisions": [
+        "C02",
+        "C03"
+      ]
+    },
+    {
+      "edge": 21,
+      "from": "A04",
+      "to": "A17",
+      "source_scope": "source-relative directed dependency or evidence qualifier; not a proven causal necessity outside original model",
+      "C_precisions": []
+    },
+    {
+      "edge": 22,
+      "from": "A13",
+      "to": "A17",
+      "source_scope": "source-relative directed dependency or evidence qualifier; not a proven causal necessity outside original model",
+      "C_precisions": []
+    },
+    {
+      "edge": 23,
+      "from": "A19",
+      "to": "A17",
+      "source_scope": "source-relative directed dependency or evidence qualifier; not a proven causal necessity outside original model",
+      "C_precisions": []
+    },
+    {
+      "edge": 24,
+      "from": "A17",
+      "to": "A18",
+      "source_scope": "source-relative directed dependency or evidence qualifier; not a proven causal necessity outside original model",
+      "C_precisions": [
+        "C03"
+      ]
+    },
+    {
+      "edge": 25,
+      "from": "A13",
+      "to": "A18",
+      "source_scope": "source-relative directed dependency or evidence qualifier; not a proven causal necessity outside original model",
+      "C_precisions": [
+        "C03"
+      ]
+    },
+    {
+      "edge": 26,
+      "from": "A19",
+      "to": "A18",
+      "source_scope": "source-relative directed dependency or evidence qualifier; not a proven causal necessity outside original model",
+      "C_precisions": [
+        "C03"
+      ]
+    },
+    {
+      "edge": 27,
+      "from": "A20",
+      "to": "A16",
+      "source_scope": "source-relative directed dependency or evidence qualifier; not a proven causal necessity outside original model",
+      "C_precisions": [
+        "C02"
+      ]
+    },
+    {
+      "edge": 28,
+      "from": "A20",
+      "to": "A21",
+      "source_scope": "source-relative directed dependency or evidence qualifier; not a proven causal necessity outside original model",
+      "C_precisions": []
+    },
+    {
+      "edge": 29,
+      "from": "A21",
+      "to": "A22",
+      "source_scope": "source-relative directed dependency or evidence qualifier; not a proven causal necessity outside original model",
+      "C_precisions": [
+        "C02"
+      ]
+    },
+    {
+      "edge": 30,
+      "from": "A22",
+      "to": "A28",
+      "source_scope": "source-relative directed dependency or evidence qualifier; not a proven causal necessity outside original model",
+      "C_precisions": [
+        "C02"
+      ]
+    },
+    {
+      "edge": 31,
+      "from": "A16",
+      "to": "A24",
+      "source_scope": "source-relative directed dependency or evidence qualifier; not a proven causal necessity outside original model",
+      "C_precisions": [
+        "C02"
+      ]
+    },
+    {
+      "edge": 32,
+      "from": "A25",
+      "to": "A24",
+      "source_scope": "source-relative directed dependency or evidence qualifier; not a proven causal necessity outside original model",
+      "C_precisions": []
+    },
+    {
+      "edge": 33,
+      "from": "A26",
+      "to": "A24",
+      "source_scope": "source-relative directed dependency or evidence qualifier; not a proven causal necessity outside original model",
+      "C_precisions": []
+    },
+    {
+      "edge": 34,
+      "from": "A23",
+      "to": "A27",
+      "source_scope": "source-relative directed dependency or evidence qualifier; not a proven causal necessity outside original model",
+      "C_precisions": []
+    },
+    {
+      "edge": 35,
+      "from": "A27",
+      "to": "A24",
+      "source_scope": "source-relative directed dependency or evidence qualifier; not a proven causal necessity outside original model",
+      "C_precisions": []
+    },
+    {
+      "edge": 36,
+      "from": "A28",
+      "to": "A24",
+      "source_scope": "source-relative directed dependency or evidence qualifier; not a proven causal necessity outside original model",
+      "C_precisions": []
+    }
+  ],
+  "A0_A1_A2_original_specific_tests": [
+    {
+      "level": "A0",
+      "result": "SOURCE_NATIVE_DIRECT_COMPOSITION_SUPPORTED",
+      "explanation": "Original source already directly integrates KC novelty adaptation and PCT+KC two-path synaptic influence on full EN. This is a source-defined circuit and interface, not discovery of extra generalized coordinating state."
+    },
+    {
+      "level": "A1",
+      "result": "NOT_NEEDED_TO_EXPLAIN_SOURCE_REPORTED_MODELED_TRANSFER",
+      "explanation": "No novel stateless adapter beyond original source's pooling, threshold and reward learning necessary; external experiment world controller stays outside cognitive System."
+    },
+    {
+      "level": "A2",
+      "result": "NOT_SOURCE_SUPPORTED",
+      "explanation": "Ten-iteration PCT delayed activity and KC adaptation are source's already included internal mechanisms; cannot rename or count as additional new enduring coordinator."
+    }
+  ],
+  "source_specific_H_scope": "NON_DISCRIMINATING_GENERAL_H0_H1_H2; original demonstrates one source-native proposed sufficiency mechanism with model-specific ablations and short-delay limits, not necessary biological PCT in bees or all concept learning",
+  "source_grammar_gap_claimed": false,
+  "untouched_frozen_Grammar_v0": true,
+  "no_main_science": true
+}

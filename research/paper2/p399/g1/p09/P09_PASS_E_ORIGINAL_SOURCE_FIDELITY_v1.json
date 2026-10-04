@@ -1,0 +1,195 @@
+{
+  "schema": "p399.g1.p09.original_source_fidelity_E.v1",
+  "date_jst": "2026-10-04",
+  "source": {
+    "doi": "10.1371/journal.pcbi.1006435",
+    "published_pdf_sha256": "9d5f8df792c19e88749311dc2f9688705fe3aeaea4eb7bfad7e761ca90e5e6b2",
+    "bytes": 3283055,
+    "pages": 21,
+    "published": "2018-09-17",
+    "critical_original_pdf_pixels_visually_inspected": [
+      4,
+      5,
+      6,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ],
+    "original_source_physical_verified_runs": [
+      37178895352,
+      37183422420,
+      37183471486
+    ],
+    "all_21_pages_pictorially_reviewed": false,
+    "entire_narrative_and_references_separately_checked_using_official_original_complete_html": true
+  },
+  "stages": {
+    "PRE_A": "d8daabe86c03cf02c8a88fbe897b8b0b3c8f5615",
+    "A": "69c443902e59a5bb11882721ca0230919f370375",
+    "B": "df633e25ee235cd34eca34f0b95ae32a63f16e21",
+    "C": "ac58188798295f19f05bf55d27291e7788d65687",
+    "D": "8d11eabcf8bdf026284aeab5e38f1b8bbe24dc25",
+    "D_original_git_blob": "317d895c78c0430bd4b61e45796486ee7a3f1951",
+    "original_C1_C2_first": true
+  },
+  "original_fidelity_targets": [
+    {
+      "id": "E01",
+      "orig": "PDF p4 Fig1 A/B/C and Table1",
+      "scope": "Full vs reduced circuit source original, not node count same or PCT necessity universal",
+      "claims": [
+        "A03",
+        "A05",
+        "A07",
+        "A14",
+        "A15"
+      ],
+      "neg": [
+        "L03",
+        "L04",
+        "L13"
+      ],
+      "structural": "SOURCE_FULL_WITH_CONDITIONAL_TASK_SUBSET"
+    },
+    {
+      "id": "E02",
+      "orig": "PDF p5/p12 KC sensory accommodation",
+      "scope": "Source original assumes 0.7 stimulus-specific reduction phenomenologically; biological mechanism unverified",
+      "claims": [
+        "A04",
+        "A06"
+      ],
+      "neg": [
+        "L01",
+        "L09"
+      ],
+      "structural": "SOURCE_FULL_WITH_PHENOMENOLOGICAL_ASSUMPTION"
+    },
+    {
+      "id": "E03",
+      "orig": "PDF p6 Fig2A–E",
+      "scope": "PCT plasticity ablation within original full model, unrewarded new-stimulus transfer; sample counts full DMTS338 vs reduced DMTS360, DNMTS360",
+      "claims": [
+        "A15",
+        "A16",
+        "A17",
+        "A22",
+        "A28"
+      ],
+      "neg": [
+        "L03",
+        "L04",
+        "L05",
+        "L06",
+        "L12",
+        "L13"
+      ],
+      "structural": "SOURCE_FULL_ORIGINAL_FIGURE_SCOPE_ONLY"
+    },
+    {
+      "id": "E04",
+      "orig": "PDF p9 Fig3",
+      "scope": "Source trained original model PER/reversal/patterning outcomes rely on conventional associative KC while PCT not needed for these subtasks, historical biological data comparison",
+      "claims": [
+        "A18",
+        "A26"
+      ],
+      "neg": [
+        "L02",
+        "L10",
+        "L13"
+      ],
+      "structural": "SOURCE_FULL_WITH_NEGATIVE_TASK_CONSTRAINT"
+    },
+    {
+      "id": "E05",
+      "orig": "PDF p11 Table2, p12 Eqs1–7",
+      "scope": "Original parameters, reduced model winner probability with time-increasing bias, conditional original adaptation",
+      "claims": [
+        "A08",
+        "A09",
+        "A19"
+      ],
+      "neg": [
+        "L01",
+        "L09"
+      ],
+      "structural": "SOURCE_FULL_NO_NUMERIC_BEHAVIORAL_REPLAY"
+    },
+    {
+      "id": "E06",
+      "orig": "PDF pp13–14 Eqs8–14",
+      "scope": "Original full sparse IN KC EN and PCT output; 10 simulation iteration delayed starred PCT, distinct excit/inhib plasticity rules",
+      "claims": [
+        "A10",
+        "A11",
+        "A12",
+        "A13"
+      ],
+      "neg": [
+        "L11"
+      ],
+      "structural": "SOURCE_FULL_WITH_NONINSTANT_PCT_HISTORY"
+    },
+    {
+      "id": "E07",
+      "orig": "PDF p15 Models as animals and p16 Fig4",
+      "scope": "Externally scripted World-maze behavior/stimuli/reward, original 60 trial training, no-reward transfer and random 360 model seeds, external navigation not brain controller",
+      "claims": [
+        "A01",
+        "A20",
+        "A21",
+        "A23"
+      ],
+      "neg": [
+        "L08",
+        "L12"
+      ],
+      "structural": "SOURCE_FULL_EXPERIMENT_WORLD_SEPARATE"
+    },
+    {
+      "id": "E08",
+      "orig": "PDF pp9–11 Introduction/Discussion/Methods",
+      "scope": "Prior Arena and Giurfa original source references, no biological PCT manipulation observed in P09, short repeated sample delay limits transfer scope",
+      "claims": [
+        "A02",
+        "A24",
+        "A25",
+        "A27"
+      ],
+      "neg": [
+        "L02",
+        "L07",
+        "L10"
+      ],
+      "structural": "SOURCE_RELATIVE_AMBIGUOUS_BIOLOGICAL_NECESSITY"
+    }
+  ],
+  "counts": {
+    "original_claim_coverage": 28,
+    "original_dependencies_coverage": 36,
+    "unique_adverse_conditions_covered": 13,
+    "accepted_C_addenda": 3,
+    "source_bounded_structural_targets": 8,
+    "original_strict_numeric_replay_pass": 0,
+    "distinct_source_critic_review_personnel": 0
+  },
+  "meta_negative_claims": [
+    "Source original 2018 model is a computational mechanistic proposal, no direct genetic manipulation proving PCT necessity in living bees",
+    "Original 2018 source reused prior 2001 bee learning datasets; do not label as new P09 biological collection",
+    "Original stimulus-specific KC accommodation 0.7 externally tuned, short delay required",
+    "External maze world engine and iterative GO bias are external protocol and source artifacts, not extra cognitive regulator",
+    "Fig2 different N338 vs N360 reported conditional without guessing attrition cause",
+    "PCT necessity for novelty transfer in source full model does not apply all KC-dependent PER/patterning tasks"
+  ],
+  "E_scope_disposition": "BOUNDED_ORIGINAL_SOURCE_STRUCTURAL_FIDELITY_ON_REAL_MODEL_CRITICAL_MATH_FIGURES; post-E targeted independent source receipt required before separate qualification",
+  "H_discrimination": "NO_GENERAL_H0_H1_H2_RESULT",
+  "MAIN_outcome_exposed": false
+}

@@ -1,0 +1,471 @@
+{
+  "schema": "relaytheory.p399.g1.W4.P19.full_published_source_claim_inventory.A.v1",
+  "stage": "A",
+  "source_first_not_grammar": true,
+  "source_PRE_A": "P19_PRE_A_OFFICIAL_MAIN_S1_S2_SOURCE_FAMILY_FREEZE_v1.json",
+  "claim_count": 32,
+  "dependency_count": 50,
+  "claims": [
+    {
+      "id": "A01",
+      "kind": "external experiment",
+      "claim": "ASRT visual instructions present four locations, participant selects one of four corresponding key responses each trial; 8-element alternating deterministic/random design produces controlled context-specific trigram probabilities.",
+      "source": "main pp4-5 Fig1 Methods"
+    },
+    {
+      "id": "A02",
+      "kind": "external experiment",
+      "claim": "Participants practice over ten sessions, first eight original sequence, session9 interference new alternating sequence, session10 switches old/new epochs; session1-8 and changed condition not a spontaneously selected model goal.",
+      "source": "main pp3-5,15-17 Fig1 Fig7"
+    },
+    {
+      "id": "A03",
+      "kind": "observation",
+      "claim": "Trial t external required visual event e_t and participant actual key press k_t must be distinct on error trials; observed RT is experimental latency, not a predicted action command.",
+      "source": "main pp5-6; S1 p1"
+    },
+    {
+      "id": "A04",
+      "kind": "observed boundary",
+      "claim": "Model obtains the externally generated complete e_1:t sequence, observed k_t and response latency for participant fitting, rather than predicting future real-world action outcomes with closed motor loop.",
+      "source": "main pp5-6; S1 p1"
+    },
+    {
+      "id": "A05",
+      "kind": "inherited model",
+      "claim": "Nonparametric DP distribution over categorical labels, prior strength alpha and base H, uses probability-reinforcing reuse for observed categories.",
+      "source": "main pp7-8 Eq1 Table1 Fig3a"
+    },
+    {
+      "id": "A06",
+      "kind": "forgetting rule",
+      "claim": "ddCRP extends DP with exponential trial-distance-dependent customer-link weights, lambda level-specific; recency of samples affects memory and prediction.",
+      "source": "main p8 Eq2 Fig3b; S1 p2"
+    },
+    {
+      "id": "A07",
+      "kind": "hierarchical prior",
+      "claim": "ddHDP for context u_t=(e_t-n,...,e_t-1), with strength alpha_|u|, decay lambda_|u| and suffix parent predictive distribution G_pi(u).",
+      "source": "main p8 Eq3 Fig3c; S1 p2"
+    },
+    {
+      "id": "A08",
+      "kind": "base distribution",
+      "claim": "Prediction recursion at exhausted context n=0 returns 1/L uniform categorical label distribution, not a learned world-model transition system.",
+      "source": "S1 p2"
+    },
+    {
+      "id": "A09",
+      "kind": "parameter constraint",
+      "claim": "Maximum depth N and hierarchy of N+1 levels are imposed by analyst/model specification; individual restaurants for observed contexts arise from sequence history.",
+      "source": "main pp8-9; S1 pp1-3"
+    },
+    {
+      "id": "A10",
+      "kind": "internal retention",
+      "claim": "Customer-seating c indexed by context u, candidate label l and timestamps; local old-label strength sums exp(-delta/lambda_|u|) across past same-context events.",
+      "source": "S1 pp1-3"
+    },
+    {
+      "id": "A11",
+      "kind": "prediction operator",
+      "claim": "CUSTOMER_PROB starts from longest available suffix context, combines recency-weighted old label mass with alpha_n times recursively backed-off suffix probability; normalized by all customers plus alpha_n.",
+      "source": "S1 p2 S1.B; main pp8-9"
+    },
+    {
+      "id": "A12",
+      "kind": "learning/update operator",
+      "claim": "After observing actual event e_t, ADD_CUSTOMER inserts a new timestamp-labelled customer in the corresponding restaurant and stochastically terminates or propagates to suffix lower level according to weighted old vs alpha_n times suffix label probability.",
+      "source": "S1 pp1,3 S1.A/C"
+    },
+    {
+      "id": "A13",
+      "kind": "prediction/update asymmetry",
+      "claim": "At each trial, prediction scores the actually pressed key k_t first, but updates customer seating using instructed event e_t, not the possibly mistaken key k_t.",
+      "source": "S1 p1 S1.A"
+    },
+    {
+      "id": "A14",
+      "kind": "sample-based inference",
+      "claim": "Published parser uses five stochastic seating samples to estimate prediction probabilities; their numerical stability tests are limited to the sampled original data, not an exact analytic posterior proof.",
+      "source": "main pp9-10; S2 p1 FigA/B"
+    },
+    {
+      "id": "A15",
+      "kind": "representation",
+      "claim": "Individual categorical press/event labels are not executed multistep motor options; n-gram predictive context and seating hierarchy provide task-conditioned 'chunks', not a demonstrated motor-controller macro-executor.",
+      "source": "main pp5-9; S1 algorithms"
+    },
+    {
+      "id": "A16",
+      "kind": "emergent depth",
+      "claim": "The model can adapt effective prediction context weighting as counts, recency and fitted hyperparameters change; finite levels and backoff architecture are designed in advance; no new unbounded type of cognitive coordinator learned.",
+      "source": "main pp8-13; S1 pp1-3"
+    },
+    {
+      "id": "A17",
+      "kind": "behavioral fitting",
+      "claim": "Log response time is modeled by a prediction-probability term and low-level repetition/spatial-distance/error/posterror covariates in a joint participant-specific regression; observed RT is not model-produced action.",
+      "source": "main pp5-6,9-10 Fig2"
+    },
+    {
+      "id": "A18",
+      "kind": "fitting protocol",
+      "claim": "Random search over strength/decay parameters (1000 draws), repeated fits and MAP selection with session/epoch priors and OLS coefficients; withheld RT may occur mid-epoch while model still sees actual sequence events.",
+      "source": "main pp9-10 Fig2"
+    },
+    {
+      "id": "A19",
+      "kind": "time horizons",
+      "claim": "Short context is last up to N e-events; long-term evidence remains as decaying timestamped customer memories, not independently learned persistent declarative skill objects.",
+      "source": "main pp8-10; S1 p2"
+    },
+    {
+      "id": "A20",
+      "kind": "model alternatives",
+      "claim": "Source S2 compares direct trigram ddCRP, uniform interpolation of independent n-level ddCRPs, deterministic stacked Katz-like backoff and ddHCRP main; all forget via distance dependence.",
+      "source": "S2 pp3-6 Eq1-4 TableA FigD-F"
+    },
+    {
+      "id": "A21",
+      "kind": "alternative limitation",
+      "claim": "ddUCRP reproduces observed smoothing but underestimates trigram effect; ddSCRP and trigram baseline lack smoothing; HCRP fits selected combined criteria better, not a proof only hierarchy can cause behavior.",
+      "source": "S2 p4 TableA FigD; p6 FigF"
+    },
+    {
+      "id": "A22",
+      "kind": "model/experiment comparison",
+      "claim": "Model matches session-scale inferred context gain and forgetting dynamics, but fitted parameters, inferred representations and subject behavior remain inferential and model-dependent.",
+      "source": "main pp11-15 Fig4-6"
+    },
+    {
+      "id": "A23",
+      "kind": "adverse WM inference",
+      "claim": "Uncorrected complex/spatial WM hyperparameter correlations reported p=.01/.02 but neither survives BH over 24 comparisons (adjusted .09/.28); verbal WM none.",
+      "source": "main pp12-13 Fig5"
+    },
+    {
+      "id": "A24",
+      "kind": "model failure",
+      "claim": "Human old/new skill maintenance jointly stable with positive cross-ability during interference; single forgetful HCRP trades old for new and incorrectly predicts zig-zag when epochs alternate.",
+      "source": "main pp15-17 Fig7 Table3"
+    },
+    {
+      "id": "A25",
+      "kind": "future alternative only",
+      "claim": "Paper suggests TWO independent HCRPs plus an arbiter might rescue parallel old/new stability, but does not implement or fit such arbiter in original model.",
+      "source": "main p17 discussion of Fig7"
+    },
+    {
+      "id": "A26",
+      "kind": "adverse >2 trial effect",
+      "claim": "Source first-session group >2 effect nonsignificant for measured RT p=.084 and HCRP p=.199; session8 mean p=.080/.076, despite some individual variability fits.",
+      "source": "main p17 Fig7"
+    },
+    {
+      "id": "A27",
+      "kind": "underdetermination",
+      "claim": "Stationary trigram and HCRP explain similar overall response-time variance; additional selected behavioral probes are required to distinguish hidden context hierarchy.",
+      "source": "main p17 Fig7g"
+    },
+    {
+      "id": "A28",
+      "kind": "independent error analysis",
+      "claim": "Error RT patterns include response/pattern/recency errors and original observation-bound motor covariates, not direct proof underlying individual cognitive representation matches fitted seating states.",
+      "source": "main pp17-20 Figs9-10"
+    },
+    {
+      "id": "A29",
+      "kind": "numerical scope",
+      "claim": "Original published fits, individual fitted alpha/lambda, p-values and figure trajectories are author reports; no W4 exact code/data or original numerical rerun is claimed.",
+      "source": "main pp10-20 S2"
+    },
+    {
+      "id": "A30",
+      "kind": "ancestry",
+      "claim": "Paper explicitly adapts hierarchical language sequence priors and ddCRP plus ASRT experimental literature; does not invent the DP or the motor task.",
+      "source": "main pp3-8 citations 14,23; S2 p3"
+    },
+    {
+      "id": "A31",
+      "kind": "negative correction status",
+      "claim": "Publisher article visually displayed no correction banner and targeted title search found no separate public correction hit at this check; definitive correction-free history remains not proven.",
+      "source": "publisher article 2026-10-04"
+    },
+    {
+      "id": "A32",
+      "kind": "source scope",
+      "claim": "Defining S1 S1.A-C and S2 four alternative equations+model comparison figures are part of P19 original published source; omitting them would misrepresent generative/update and unfavorable findings.",
+      "source": "main Supporting information; first-party S1/S2 raw"
+    }
+  ],
+  "dependencies": [
+    {
+      "from": "A01",
+      "to": "A02",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A01",
+      "to": "A03",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A03",
+      "to": "A04",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A05",
+      "to": "A06",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A05",
+      "to": "A07",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A06",
+      "to": "A07",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A07",
+      "to": "A08",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A07",
+      "to": "A09",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A07",
+      "to": "A10",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A08",
+      "to": "A11",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A09",
+      "to": "A11",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A10",
+      "to": "A11",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A07",
+      "to": "A12",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A10",
+      "to": "A12",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A11",
+      "to": "A13",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A12",
+      "to": "A13",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A01",
+      "to": "A15",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A07",
+      "to": "A15",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A09",
+      "to": "A16",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A10",
+      "to": "A16",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A11",
+      "to": "A16",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A12",
+      "to": "A16",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A11",
+      "to": "A17",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A13",
+      "to": "A17",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A03",
+      "to": "A17",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A17",
+      "to": "A18",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A18",
+      "to": "A22",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A11",
+      "to": "A19",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A12",
+      "to": "A19",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A19",
+      "to": "A22",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A06",
+      "to": "A20",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A20",
+      "to": "A21",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A11",
+      "to": "A21",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A22",
+      "to": "A23",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A22",
+      "to": "A24",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A19",
+      "to": "A24",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A24",
+      "to": "A25",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A16",
+      "to": "A26",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A17",
+      "to": "A27",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A26",
+      "to": "A27",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A13",
+      "to": "A28",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A17",
+      "to": "A28",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A22",
+      "to": "A29",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A18",
+      "to": "A29",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A05",
+      "to": "A30",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A07",
+      "to": "A30",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A20",
+      "to": "A30",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A31",
+      "to": "A32",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A14",
+      "to": "A29",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    },
+    {
+      "from": "A21",
+      "to": "A27",
+      "relation": "source-defined dependency or scoped interpretation; review B for direction specificity"
+    }
+  ],
+  "source_sections_audited": [
+    "Abstract/introduction and direct ancestors",
+    "1. ASRT experiment/modeling 1.1–1.5",
+    "2. behavioral and model result subsections 2.1–2.8 including invalidated/nonsignificant conditions",
+    "3. discussion and cited ancestry",
+    "methods and references original primary",
+    "S1 pp1–3 PARSE and exact mathematical recursions",
+    "S2 pp1–6 simulation variability, full alternatives/ablation and FigD–F"
+  ],
+  "known_open_source_scope": [
+    "PLOS correction exhaustion not independently established",
+    "Do not equate model fitted chunks with autonomous motor program code",
+    "Multiple numeric effects original publisher reported not independently reproduced",
+    "No new hierarchical supervisor inferred from model hierarchy",
+    "PF03/P14 comparisons deferred until own P19 scientific A–E freeze"
+  ],
+  "output": "source-defined inventory NOT grammar / NOT H classification"
+}

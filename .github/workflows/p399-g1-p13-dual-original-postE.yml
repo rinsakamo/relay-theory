@@ -1,0 +1,29 @@
+name: P399 G1 P13 after E dual exact published originals and frozen history
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g1/p13/p13_postE_independent_two_original_pdfs_six_stages.py"
+      - ".github/workflows/p399-g1-p13-dual-original-postE.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  p13-published-main-and-S1-afterE:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install 'pypdf==6.1.1'
+      - run: python research/paper2/p399/g1/p13/p13_postE_independent_two_original_pdfs_six_stages.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: p13-original-publisher-main-and-S1-after-E-${{ github.run_id }}
+          path: g1-p13-poste/real-dual-original-and-six-git-history.json
+          retention-days: 21
+          if-no-files-found: warn

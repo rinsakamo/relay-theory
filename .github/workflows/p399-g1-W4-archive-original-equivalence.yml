@@ -1,0 +1,27 @@
+name: P399 G1 W4 independent NLM archive issuer-source identity investigation
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g1/parallel/W4/w4_pmc_publisher_deposit_equivalence_probe.py"
+      - ".github/workflows/p399-g1-W4-archive-original-equivalence.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  w4-archive-source-equivalence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install "pypdf==6.1.1" "Pillow==11.3.0" "python-docx==1.2.0"
+      - run: python research/paper2/p399/g1/parallel/W4/w4_pmc_publisher_deposit_equivalence_probe.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: w4-publisher-original-archive-equivalence-${{ github.run_id }}
+          path: g1-w4-public-archive-investigation/
+          retention-days: 21
+          if-no-files-found: warn

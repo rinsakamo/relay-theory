@@ -1,0 +1,1134 @@
+{
+  "schema": "relaytheory.p399.g1.W1.P10.B.full_original_A_and_original_source_adversarial.v1",
+  "source_shas": {
+    "main": "36839ae5557a296d73903089523328d75b5e0300fc3e6fca3be18d53a2c9c5d4",
+    "correction": "eb4c593d9c4c43e6f2dc33d80ed393bf9cc5b79f191d076afbfb5f9fc3771daa",
+    "S1": "fb5526948449edc4535550f6c0ca9faa31bc5920e36fa2a41812b1920dd6d2a5",
+    "S4": "d427f7dedf601214a0f6acdd9c0f0be23d92023056e234e6d432006d9a26950e"
+  },
+  "A_intro_commit": "f06a31987d9261e7a2c2682280c89136d7df4d5c",
+  "A_git_blob": "5a9bf423b4a0846b3ff626f66e8aca368881f98d",
+  "exact_entire_immutable_A_input": {
+    "schema": "relaytheory.p399.g1.W1.P10.A.source_first_v1",
+    "PRE_A_commit": "339c7d87e04903148322e51a959c58d2b906d33a",
+    "main_original_sha256": "36839ae5557a296d73903089523328d75b5e0300fc3e6fca3be18d53a2c9c5d4",
+    "funding_correction_sha256": "eb4c593d9c4c43e6f2dc33d80ed393bf9cc5b79f191d076afbfb5f9fc3771daa",
+    "supplement_S1_text_sha256": "fb5526948449edc4535550f6c0ca9faa31bc5920e36fa2a41812b1920dd6d2a5",
+    "supplement_S4_fig_sha256": "d427f7dedf601214a0f6acdd9c0f0be23d92023056e234e6d432006d9a26950e",
+    "original_source_first_claims": [
+      {
+        "id": "A01",
+        "original_source": "original p2–3 Abstract/Intro",
+        "claim": "Human learning task combines feature reward estimation with hypothesis or rule testing rather than presupposing a unique pure algorithm."
+      },
+      {
+        "id": "A02",
+        "original_source": "p15 Methods experimental task",
+        "claim": "18 individual 30-trial games, with known vs unknown numbers of relevant stimulus dimensions and dimension counts one through three."
+      },
+      {
+        "id": "A03",
+        "original_source": "p15 Methods population",
+        "claim": "106 finished, 4 poor-performance excluded (threshold <0.468 reward), 102 analyzed; no separate causal neural recording."
+      },
+      {
+        "id": "A04",
+        "original_source": "pp3–5 Fig1/Fig2",
+        "claim": "Task stimuli choices use three multidimensional categorical visual features and probabilistic feedback on an unknown fixed conjunctive rewarding rule per game."
+      },
+      {
+        "id": "A05",
+        "original_source": "p15 and p16 Eq4–5",
+        "claim": "Nine one-dimensional, 27 two-dimensional and 27 three-dimensional hypotheses, unknown-D space 63; known-D restricts support to 9 or 27."
+      },
+      {
+        "id": "A06",
+        "original_source": "p15 Eq1",
+        "claim": "RL choice expected reward is the sum of learned feature values along corresponding object dimensions."
+      },
+      {
+        "id": "A07",
+        "original_source": "p15 Eq2",
+        "claim": "RL/other candidate choices via softmax inverse temperature β; fit probabilistic choice observations."
+      },
+      {
+        "id": "A08",
+        "original_source": "p16 Eq3",
+        "claim": "Feature value Rescorla–Wagner prediction error update selected feature; non-selected feature decay d, source alternative learning-rate distinctions."
+      },
+      {
+        "id": "A09",
+        "original_source": "p16 Eq4",
+        "claim": "Bayesian rule learning updates posterior p(h|choice/reward) over task-constrained full-rule hypotheses."
+      },
+      {
+        "id": "A10",
+        "original_source": "p16 Eq5",
+        "claim": "Bayesian rule learner choice expected reward integrates per-hypothesis reward likelihood; greedy for current trial only, not global game optimum."
+      },
+      {
+        "id": "A11",
+        "original_source": "p16 Eq6 and S1 Text p1",
+        "claim": "Serial hypothesis tester latent currently tested hypothesis inferred from prior choices and reward observations using hidden-state/run-length posterior."
+      },
+      {
+        "id": "A12",
+        "original_source": "p16 Eq7",
+        "claim": "Known/unknown dimension instructions affect SHT initial hypothesis prior with dimensionality weights w_l and w_h."
+      },
+      {
+        "id": "A13",
+        "original_source": "p17 Eq8",
+        "claim": "Original SHT stay policy logistic in smoothed estimate (successes+1)/(tested+2) and choice noise; retain exact original conditional source units."
+      },
+      {
+        "id": "A14",
+        "original_source": "p17 Eq9",
+        "claim": "Random SHT alternate rule switch draws from task-prior alternatives under source exclusion conditions, no learned value-guided switch."
+      },
+      {
+        "id": "A15",
+        "original_source": "p17 Eq10",
+        "claim": "Hybrid guided SHT switches hypothesis based on learned featureRL values, coupling value learning and latent rule switching in source native original."
+      },
+      {
+        "id": "A16",
+        "original_source": "p4–6 Fig2/Fig3",
+        "claim": "Original behavioral learning dynamics differ by number of relevant dimensions; no uniform strategy across 1D/2D/3D games."
+      },
+      {
+        "id": "A17",
+        "original_source": "p5–8 Fig3/4",
+        "claim": "Main original model candidate comparison: Bayesian rule, feature RL, random SHT, value-guided hybrid and approximate DQN benchmark."
+      },
+      {
+        "id": "A18",
+        "original_source": "p6 Fig4 model comparison",
+        "claim": "Original main leave-one-game-out group predictive fit source values Bayesian .045±.003, featureRL .118±.008, random SHT .160±.009, hybrid .202±.009."
+      },
+      {
+        "id": "A19",
+        "original_source": "p7 Fig4C and Discussion",
+        "claim": "Even winning baseline hybrid does not reproduce participants' inferred number of relevant considered features accurately."
+      },
+      {
+        "id": "A20",
+        "original_source": "S4 Fig complete original page1",
+        "claim": "Full SHT variant joint optimization stay/testing/lapse/switch further improves test game predictive per-trial likelihood .033±.006 but retains number-of-features prediction failure."
+      },
+      {
+        "id": "A21",
+        "original_source": "p15 Methods approx optimal agent",
+        "claim": "Original source DQN trained on task to approximate reward maximum, not exact finite-horizon normative value iteration or global mathematical optimality."
+      },
+      {
+        "id": "A22",
+        "original_source": "p9–12 Discussion",
+        "claim": "Value-learning plus hypothesis-testing hybrid is limited, subject-level source fit does not uniquely prove human neural implementations or an exhaustive strategy search."
+      },
+      {
+        "id": "A23",
+        "original_source": "p16–17 plus S1 Text p1–2",
+        "claim": "Supplement S1 Text models hidden hypothesis/run length recursion; p2 includes literal unresolved 'Equation ??' link, only confidently connect to main text Eqs8–10 by original prose."
+      },
+      {
+        "id": "A24",
+        "original_source": "official correction p1",
+        "claim": "Actual Dec 2022 correction changes funding acknowledgements only, retains November 2022 scientific equations, results and original mathematical interpretability."
+      },
+      {
+        "id": "A25",
+        "original_source": "p3–5 and p8–10",
+        "claim": "Rule hypothesis testing accelerates learning in 1D; feature value learning contributes more when multidimensional reward structure makes exhaustive testing inefficient."
+      },
+      {
+        "id": "A26",
+        "original_source": "source original refs; S1 Text refs",
+        "claim": "Source direct ancestors include Niv et al feature RL and Wilson & Niv latent change-point model; assembled original hybrid is not uninherited entirely novel mechanism."
+      },
+      {
+        "id": "A27",
+        "original_source": "P09 qualified original PRE_A; G2 working roster only",
+        "claim": "P09 KC adaptation–PCT novelty mechanism plus KC associative plasticity and P10 feature values plus serial hypothesis switching share broad concept/learning goal, not source-proven identical native model; joint G2 final independence held."
+      }
+    ],
+    "original_native_dependencies": [
+      {
+        "id": "R01",
+        "source_upstream": "A02",
+        "source_downstream": "A04",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R02",
+        "source_upstream": "A04",
+        "source_downstream": "A05",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R03",
+        "source_upstream": "A05",
+        "source_downstream": "A09",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R04",
+        "source_upstream": "A05",
+        "source_downstream": "A11",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R05",
+        "source_upstream": "A04",
+        "source_downstream": "A06",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R06",
+        "source_upstream": "A06",
+        "source_downstream": "A07",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R07",
+        "source_upstream": "A06",
+        "source_downstream": "A08",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R08",
+        "source_upstream": "A07",
+        "source_downstream": "A17",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R09",
+        "source_upstream": "A08",
+        "source_downstream": "A15",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R10",
+        "source_upstream": "A09",
+        "source_downstream": "A10",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R11",
+        "source_upstream": "A10",
+        "source_downstream": "A17",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R12",
+        "source_upstream": "A11",
+        "source_downstream": "A12",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R13",
+        "source_upstream": "A11",
+        "source_downstream": "A13",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R14",
+        "source_upstream": "A12",
+        "source_downstream": "A14",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R15",
+        "source_upstream": "A13",
+        "source_downstream": "A14",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R16",
+        "source_upstream": "A12",
+        "source_downstream": "A15",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R17",
+        "source_upstream": "A08",
+        "source_downstream": "A15",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R18",
+        "source_upstream": "A06",
+        "source_downstream": "A15",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R19",
+        "source_upstream": "A14",
+        "source_downstream": "A17",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R20",
+        "source_upstream": "A15",
+        "source_downstream": "A17",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R21",
+        "source_upstream": "A02",
+        "source_downstream": "A16",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R22",
+        "source_upstream": "A04",
+        "source_downstream": "A16",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R23",
+        "source_upstream": "A16",
+        "source_downstream": "A25",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R24",
+        "source_upstream": "A17",
+        "source_downstream": "A18",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R25",
+        "source_upstream": "A18",
+        "source_downstream": "A22",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R26",
+        "source_upstream": "A15",
+        "source_downstream": "A19",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R27",
+        "source_upstream": "A19",
+        "source_downstream": "A22",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R28",
+        "source_upstream": "A15",
+        "source_downstream": "A20",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R29",
+        "source_upstream": "A20",
+        "source_downstream": "A22",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R30",
+        "source_upstream": "A21",
+        "source_downstream": "A17",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R31",
+        "source_upstream": "A23",
+        "source_downstream": "A11",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R32",
+        "source_upstream": "A23",
+        "source_downstream": "A13",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R33",
+        "source_upstream": "A23",
+        "source_downstream": "A15",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R34",
+        "source_upstream": "A24",
+        "source_downstream": "A01",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R35",
+        "source_upstream": "A26",
+        "source_downstream": "A08",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R36",
+        "source_upstream": "A26",
+        "source_downstream": "A11",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R37",
+        "source_upstream": "A26",
+        "source_downstream": "A15",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R38",
+        "source_upstream": "A03",
+        "source_downstream": "A18",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R39",
+        "source_upstream": "A03",
+        "source_downstream": "A20",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R40",
+        "source_upstream": "A05",
+        "source_downstream": "A10",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R41",
+        "source_upstream": "A25",
+        "source_downstream": "A22",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R42",
+        "source_upstream": "A26",
+        "source_downstream": "A27",
+        "dependency_not_neural_causation": true
+      },
+      {
+        "id": "R43",
+        "source_upstream": "A27",
+        "source_downstream": "A22",
+        "dependency_not_neural_causation": true
+      }
+    ],
+    "source_sections_order": [
+      "published original+funding correction identity",
+      "Intro multi-dimensional reward and candidate model hypotheses",
+      "Fig1 task world/known unknown dimensions",
+      "Fig2 task learning behavior",
+      "Fig3 original behavior complexity negative",
+      "Fig4 model alternatives and crossvalidation",
+      "Fig4C source feature number misfit",
+      "Discussion conditional hybrid and nonunique explanation",
+      "Methods human cohort/exclusions",
+      "Methods 18 games of30 and dimensional instructions",
+      "Methods approximate DQN comparator",
+      "Methods feature RL equations1–3",
+      "Methods Bayesian rule Eqs4–5",
+      "Methods serial random SHT Eqs6–9",
+      "Methods value-based hybrid Eq10",
+      "S1 Text actual run-length posterior recursion both pages including unresolved source crossref",
+      "S4 Fig full variant panel and negative feature prediction",
+      "official Dec funding-only correction full one page",
+      "original prior refs Niv and Wilson/Niv and separate qualified P09 comparison"
+    ],
+    "original_competitors": [
+      "Bayesian finite rule Eq4–5 greedy not global",
+      "Stand-alone featureRL Eq1–3",
+      "Serial SHT random switch Eq6–9",
+      "Hybrid RL informed switch Eq10",
+      "Full S4 Fig SHT stay/lapse/test/switch alternative",
+      "Approximate DQN empirically simulated benchmark"
+    ],
+    "source_original_negative_conditions": [
+      "no full-horizon optimal Bayesian agent",
+      "not actual observed hypothesis brain state",
+      "P10 S1 Text broken equation crossrefs",
+      "source fitted only finite tested families",
+      "hybrid fails exact feature-dimension count",
+      "S4 fuller still fails number considered feature despite better likelihood",
+      "106 completed but analysis n102 after 4 exclusions",
+      "DQN approximate benchmark not exact ground truth",
+      "published correction funding-only",
+      "original source numeric values not independently rerun",
+      "original source prior models inherited",
+      "concept family novelty not proven from label difference"
+    ],
+    "source_claim_count": 27,
+    "source_dependency_count": 43,
+    "grammar_roles_not_applied": true,
+    "MAIN_prohibited": true
+  },
+  "all_claim_reviews": [
+    {
+      "id": "A01",
+      "original_locator": "original p2–3 Abstract/Intro",
+      "adversarial_result": [],
+      "reviewed": "Original complete publisher HTML with previously SHA-matched critically rendered PDF and exact necessary issuer S1/S4 pages; unrendered p18–22 explicitly not pixel certified; no new numerical fit claimed"
+    },
+    {
+      "id": "A02",
+      "original_locator": "p15 Methods experimental task",
+      "adversarial_result": [
+        "B04"
+      ],
+      "reviewed": "Original complete publisher HTML with previously SHA-matched critically rendered PDF and exact necessary issuer S1/S4 pages; unrendered p18–22 explicitly not pixel certified; no new numerical fit claimed"
+    },
+    {
+      "id": "A03",
+      "original_locator": "p15 Methods population",
+      "adversarial_result": [
+        "B04"
+      ],
+      "reviewed": "Original complete publisher HTML with previously SHA-matched critically rendered PDF and exact necessary issuer S1/S4 pages; unrendered p18–22 explicitly not pixel certified; no new numerical fit claimed"
+    },
+    {
+      "id": "A04",
+      "original_locator": "pp3–5 Fig1/Fig2",
+      "adversarial_result": [],
+      "reviewed": "Original complete publisher HTML with previously SHA-matched critically rendered PDF and exact necessary issuer S1/S4 pages; unrendered p18–22 explicitly not pixel certified; no new numerical fit claimed"
+    },
+    {
+      "id": "A05",
+      "original_locator": "p15 and p16 Eq4–5",
+      "adversarial_result": [],
+      "reviewed": "Original complete publisher HTML with previously SHA-matched critically rendered PDF and exact necessary issuer S1/S4 pages; unrendered p18–22 explicitly not pixel certified; no new numerical fit claimed"
+    },
+    {
+      "id": "A06",
+      "original_locator": "p15 Eq1",
+      "adversarial_result": [
+        "B05"
+      ],
+      "reviewed": "Original complete publisher HTML with previously SHA-matched critically rendered PDF and exact necessary issuer S1/S4 pages; unrendered p18–22 explicitly not pixel certified; no new numerical fit claimed"
+    },
+    {
+      "id": "A07",
+      "original_locator": "p15 Eq2",
+      "adversarial_result": [],
+      "reviewed": "Original complete publisher HTML with previously SHA-matched critically rendered PDF and exact necessary issuer S1/S4 pages; unrendered p18–22 explicitly not pixel certified; no new numerical fit claimed"
+    },
+    {
+      "id": "A08",
+      "original_locator": "p16 Eq3",
+      "adversarial_result": [
+        "B05"
+      ],
+      "reviewed": "Original complete publisher HTML with previously SHA-matched critically rendered PDF and exact necessary issuer S1/S4 pages; unrendered p18–22 explicitly not pixel certified; no new numerical fit claimed"
+    },
+    {
+      "id": "A09",
+      "original_locator": "p16 Eq4",
+      "adversarial_result": [],
+      "reviewed": "Original complete publisher HTML with previously SHA-matched critically rendered PDF and exact necessary issuer S1/S4 pages; unrendered p18–22 explicitly not pixel certified; no new numerical fit claimed"
+    },
+    {
+      "id": "A10",
+      "original_locator": "p16 Eq5",
+      "adversarial_result": [
+        "B02"
+      ],
+      "reviewed": "Original complete publisher HTML with previously SHA-matched critically rendered PDF and exact necessary issuer S1/S4 pages; unrendered p18–22 explicitly not pixel certified; no new numerical fit claimed"
+    },
+    {
+      "id": "A11",
+      "original_locator": "p16 Eq6 and S1 Text p1",
+      "adversarial_result": [
+        "B01"
+      ],
+      "reviewed": "Original complete publisher HTML with previously SHA-matched critically rendered PDF and exact necessary issuer S1/S4 pages; unrendered p18–22 explicitly not pixel certified; no new numerical fit claimed"
+    },
+    {
+      "id": "A12",
+      "original_locator": "p16 Eq7",
+      "adversarial_result": [],
+      "reviewed": "Original complete publisher HTML with previously SHA-matched critically rendered PDF and exact necessary issuer S1/S4 pages; unrendered p18–22 explicitly not pixel certified; no new numerical fit claimed"
+    },
+    {
+      "id": "A13",
+      "original_locator": "p17 Eq8",
+      "adversarial_result": [
+        "B01"
+      ],
+      "reviewed": "Original complete publisher HTML with previously SHA-matched critically rendered PDF and exact necessary issuer S1/S4 pages; unrendered p18–22 explicitly not pixel certified; no new numerical fit claimed"
+    },
+    {
+      "id": "A14",
+      "original_locator": "p17 Eq9",
+      "adversarial_result": [
+        "B01"
+      ],
+      "reviewed": "Original complete publisher HTML with previously SHA-matched critically rendered PDF and exact necessary issuer S1/S4 pages; unrendered p18–22 explicitly not pixel certified; no new numerical fit claimed"
+    },
+    {
+      "id": "A15",
+      "original_locator": "p17 Eq10",
+      "adversarial_result": [
+        "B01",
+        "B05"
+      ],
+      "reviewed": "Original complete publisher HTML with previously SHA-matched critically rendered PDF and exact necessary issuer S1/S4 pages; unrendered p18–22 explicitly not pixel certified; no new numerical fit claimed"
+    },
+    {
+      "id": "A16",
+      "original_locator": "p4–6 Fig2/Fig3",
+      "adversarial_result": [],
+      "reviewed": "Original complete publisher HTML with previously SHA-matched critically rendered PDF and exact necessary issuer S1/S4 pages; unrendered p18–22 explicitly not pixel certified; no new numerical fit claimed"
+    },
+    {
+      "id": "A17",
+      "original_locator": "p5–8 Fig3/4",
+      "adversarial_result": [],
+      "reviewed": "Original complete publisher HTML with previously SHA-matched critically rendered PDF and exact necessary issuer S1/S4 pages; unrendered p18–22 explicitly not pixel certified; no new numerical fit claimed"
+    },
+    {
+      "id": "A18",
+      "original_locator": "p6 Fig4 model comparison",
+      "adversarial_result": [
+        "B03",
+        "B04"
+      ],
+      "reviewed": "Original complete publisher HTML with previously SHA-matched critically rendered PDF and exact necessary issuer S1/S4 pages; unrendered p18–22 explicitly not pixel certified; no new numerical fit claimed"
+    },
+    {
+      "id": "A19",
+      "original_locator": "p7 Fig4C and Discussion",
+      "adversarial_result": [
+        "B03",
+        "B07"
+      ],
+      "reviewed": "Original complete publisher HTML with previously SHA-matched critically rendered PDF and exact necessary issuer S1/S4 pages; unrendered p18–22 explicitly not pixel certified; no new numerical fit claimed"
+    },
+    {
+      "id": "A20",
+      "original_locator": "S4 Fig complete original page1",
+      "adversarial_result": [
+        "B03",
+        "B07"
+      ],
+      "reviewed": "Original complete publisher HTML with previously SHA-matched critically rendered PDF and exact necessary issuer S1/S4 pages; unrendered p18–22 explicitly not pixel certified; no new numerical fit claimed"
+    },
+    {
+      "id": "A21",
+      "original_locator": "p15 Methods approx optimal agent",
+      "adversarial_result": [
+        "B02"
+      ],
+      "reviewed": "Original complete publisher HTML with previously SHA-matched critically rendered PDF and exact necessary issuer S1/S4 pages; unrendered p18–22 explicitly not pixel certified; no new numerical fit claimed"
+    },
+    {
+      "id": "A22",
+      "original_locator": "p9–12 Discussion",
+      "adversarial_result": [
+        "B07"
+      ],
+      "reviewed": "Original complete publisher HTML with previously SHA-matched critically rendered PDF and exact necessary issuer S1/S4 pages; unrendered p18–22 explicitly not pixel certified; no new numerical fit claimed"
+    },
+    {
+      "id": "A23",
+      "original_locator": "p16–17 plus S1 Text p1–2",
+      "adversarial_result": [
+        "B01"
+      ],
+      "reviewed": "Original complete publisher HTML with previously SHA-matched critically rendered PDF and exact necessary issuer S1/S4 pages; unrendered p18–22 explicitly not pixel certified; no new numerical fit claimed"
+    },
+    {
+      "id": "A24",
+      "original_locator": "official correction p1",
+      "adversarial_result": [
+        "B06"
+      ],
+      "reviewed": "Original complete publisher HTML with previously SHA-matched critically rendered PDF and exact necessary issuer S1/S4 pages; unrendered p18–22 explicitly not pixel certified; no new numerical fit claimed"
+    },
+    {
+      "id": "A25",
+      "original_locator": "p3–5 and p8–10",
+      "adversarial_result": [
+        "B05"
+      ],
+      "reviewed": "Original complete publisher HTML with previously SHA-matched critically rendered PDF and exact necessary issuer S1/S4 pages; unrendered p18–22 explicitly not pixel certified; no new numerical fit claimed"
+    },
+    {
+      "id": "A26",
+      "original_locator": "source original refs; S1 Text refs",
+      "adversarial_result": [
+        "B08"
+      ],
+      "reviewed": "Original complete publisher HTML with previously SHA-matched critically rendered PDF and exact necessary issuer S1/S4 pages; unrendered p18–22 explicitly not pixel certified; no new numerical fit claimed"
+    },
+    {
+      "id": "A27",
+      "original_locator": "P09 qualified original PRE_A; G2 working roster only",
+      "adversarial_result": [
+        "B08"
+      ],
+      "reviewed": "Original complete publisher HTML with previously SHA-matched critically rendered PDF and exact necessary issuer S1/S4 pages; unrendered p18–22 explicitly not pixel certified; no new numerical fit claimed"
+    }
+  ],
+  "all_original_dependencies_review": [
+    {
+      "id": "R01",
+      "from": "A02",
+      "to": "A04",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R02",
+      "from": "A04",
+      "to": "A05",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R03",
+      "from": "A05",
+      "to": "A09",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R04",
+      "from": "A05",
+      "to": "A11",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R05",
+      "from": "A04",
+      "to": "A06",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R06",
+      "from": "A06",
+      "to": "A07",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R07",
+      "from": "A06",
+      "to": "A08",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R08",
+      "from": "A07",
+      "to": "A17",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R09",
+      "from": "A08",
+      "to": "A15",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R10",
+      "from": "A09",
+      "to": "A10",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R11",
+      "from": "A10",
+      "to": "A17",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R12",
+      "from": "A11",
+      "to": "A12",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R13",
+      "from": "A11",
+      "to": "A13",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R14",
+      "from": "A12",
+      "to": "A14",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R15",
+      "from": "A13",
+      "to": "A14",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R16",
+      "from": "A12",
+      "to": "A15",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R17",
+      "from": "A08",
+      "to": "A15",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R18",
+      "from": "A06",
+      "to": "A15",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R19",
+      "from": "A14",
+      "to": "A17",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R20",
+      "from": "A15",
+      "to": "A17",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R21",
+      "from": "A02",
+      "to": "A16",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R22",
+      "from": "A04",
+      "to": "A16",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R23",
+      "from": "A16",
+      "to": "A25",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R24",
+      "from": "A17",
+      "to": "A18",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R25",
+      "from": "A18",
+      "to": "A22",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R26",
+      "from": "A15",
+      "to": "A19",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R27",
+      "from": "A19",
+      "to": "A22",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R28",
+      "from": "A15",
+      "to": "A20",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R29",
+      "from": "A20",
+      "to": "A22",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R30",
+      "from": "A21",
+      "to": "A17",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R31",
+      "from": "A23",
+      "to": "A11",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R32",
+      "from": "A23",
+      "to": "A13",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R33",
+      "from": "A23",
+      "to": "A15",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R34",
+      "from": "A24",
+      "to": "A01",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R35",
+      "from": "A26",
+      "to": "A08",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R36",
+      "from": "A26",
+      "to": "A11",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R37",
+      "from": "A26",
+      "to": "A15",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R38",
+      "from": "A03",
+      "to": "A18",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R39",
+      "from": "A03",
+      "to": "A20",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R40",
+      "from": "A05",
+      "to": "A10",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R41",
+      "from": "A25",
+      "to": "A22",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R42",
+      "from": "A26",
+      "to": "A27",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    },
+    {
+      "id": "R43",
+      "from": "A27",
+      "to": "A22",
+      "assessment": "Original source-conditional dependence reviewed; not new neuroscientific causation"
+    }
+  ],
+  "complete_source_section_resweep": [
+    {
+      "order": 1,
+      "name": "published original+funding correction identity",
+      "source_scope": "original article main + correction+necessary S1/S4 as applicable; bounded rendered original critical pages; excluded unknown supplement-only source"
+    },
+    {
+      "order": 2,
+      "name": "Intro multi-dimensional reward and candidate model hypotheses",
+      "source_scope": "original article main + correction+necessary S1/S4 as applicable; bounded rendered original critical pages; excluded unknown supplement-only source"
+    },
+    {
+      "order": 3,
+      "name": "Fig1 task world/known unknown dimensions",
+      "source_scope": "original article main + correction+necessary S1/S4 as applicable; bounded rendered original critical pages; excluded unknown supplement-only source"
+    },
+    {
+      "order": 4,
+      "name": "Fig2 task learning behavior",
+      "source_scope": "original article main + correction+necessary S1/S4 as applicable; bounded rendered original critical pages; excluded unknown supplement-only source"
+    },
+    {
+      "order": 5,
+      "name": "Fig3 original behavior complexity negative",
+      "source_scope": "original article main + correction+necessary S1/S4 as applicable; bounded rendered original critical pages; excluded unknown supplement-only source"
+    },
+    {
+      "order": 6,
+      "name": "Fig4 model alternatives and crossvalidation",
+      "source_scope": "original article main + correction+necessary S1/S4 as applicable; bounded rendered original critical pages; excluded unknown supplement-only source"
+    },
+    {
+      "order": 7,
+      "name": "Fig4C source feature number misfit",
+      "source_scope": "original article main + correction+necessary S1/S4 as applicable; bounded rendered original critical pages; excluded unknown supplement-only source"
+    },
+    {
+      "order": 8,
+      "name": "Discussion conditional hybrid and nonunique explanation",
+      "source_scope": "original article main + correction+necessary S1/S4 as applicable; bounded rendered original critical pages; excluded unknown supplement-only source"
+    },
+    {
+      "order": 9,
+      "name": "Methods human cohort/exclusions",
+      "source_scope": "original article main + correction+necessary S1/S4 as applicable; bounded rendered original critical pages; excluded unknown supplement-only source"
+    },
+    {
+      "order": 10,
+      "name": "Methods 18 games of30 and dimensional instructions",
+      "source_scope": "original article main + correction+necessary S1/S4 as applicable; bounded rendered original critical pages; excluded unknown supplement-only source"
+    },
+    {
+      "order": 11,
+      "name": "Methods approximate DQN comparator",
+      "source_scope": "original article main + correction+necessary S1/S4 as applicable; bounded rendered original critical pages; excluded unknown supplement-only source"
+    },
+    {
+      "order": 12,
+      "name": "Methods feature RL equations1–3",
+      "source_scope": "original article main + correction+necessary S1/S4 as applicable; bounded rendered original critical pages; excluded unknown supplement-only source"
+    },
+    {
+      "order": 13,
+      "name": "Methods Bayesian rule Eqs4–5",
+      "source_scope": "original article main + correction+necessary S1/S4 as applicable; bounded rendered original critical pages; excluded unknown supplement-only source"
+    },
+    {
+      "order": 14,
+      "name": "Methods serial random SHT Eqs6–9",
+      "source_scope": "original article main + correction+necessary S1/S4 as applicable; bounded rendered original critical pages; excluded unknown supplement-only source"
+    },
+    {
+      "order": 15,
+      "name": "Methods value-based hybrid Eq10",
+      "source_scope": "original article main + correction+necessary S1/S4 as applicable; bounded rendered original critical pages; excluded unknown supplement-only source"
+    },
+    {
+      "order": 16,
+      "name": "S1 Text actual run-length posterior recursion both pages including unresolved source crossref",
+      "source_scope": "original article main + correction+necessary S1/S4 as applicable; bounded rendered original critical pages; excluded unknown supplement-only source"
+    },
+    {
+      "order": 17,
+      "name": "S4 Fig full variant panel and negative feature prediction",
+      "source_scope": "original article main + correction+necessary S1/S4 as applicable; bounded rendered original critical pages; excluded unknown supplement-only source"
+    },
+    {
+      "order": 18,
+      "name": "official Dec funding-only correction full one page",
+      "source_scope": "original article main + correction+necessary S1/S4 as applicable; bounded rendered original critical pages; excluded unknown supplement-only source"
+    },
+    {
+      "order": 19,
+      "name": "original prior refs Niv and Wilson/Niv and separate qualified P09 comparison",
+      "source_scope": "original article main + correction+necessary S1/S4 as applicable; bounded rendered original critical pages; excluded unknown supplement-only source"
+    }
+  ],
+  "original_source_objections": [
+    {
+      "id": "B01",
+      "source": "original pp15–17 Eqs1–10 plus complete S1 Text pp1–2",
+      "ids": [
+        "A11",
+        "A13",
+        "A14",
+        "A15",
+        "A23"
+      ],
+      "challenge": "Original S1 Text Eq ?? unresolved; exact hidden-state likelihood/run-length mapping MUST NOT be imputed beyond printed source. Distinguish random switch Eq9 and value guided switch Eq10.",
+      "proposed": "LIMIT_C01"
+    },
+    {
+      "id": "B02",
+      "source": "original p16 Eq5, p15 DQN paragraph",
+      "ids": [
+        "A10",
+        "A21"
+      ],
+      "challenge": "Original Bayesian rule is current-trial greedy and DQN approximate, not fully normative dynamic optimality benchmark.",
+      "proposed": "LIMIT_C02"
+    },
+    {
+      "id": "B03",
+      "source": "original Fig4C p7, complete S4 Fig p1",
+      "ids": [
+        "A18",
+        "A19",
+        "A20"
+      ],
+      "challenge": "S4 additional .033 ± .006 heldout fit gain doesn't repair inferred number-of-features predictive miss; source model selection not full explanatory fit.",
+      "proposed": "LIMIT_C03"
+    },
+    {
+      "id": "B04",
+      "source": "original p15 experimental methods; original Fig4",
+      "ids": [
+        "A02",
+        "A03",
+        "A18"
+      ],
+      "challenge": "102 analyzed after four poor excluded of 106 who completed; 18 games/person ×30, not 106 valid analyzed; no new replication.",
+      "proposed": "LIMIT_C04"
+    },
+    {
+      "id": "B05",
+      "source": "original Eqs1–3 p15–16 versus Eq10 p17",
+      "ids": [
+        "A06",
+        "A08",
+        "A15",
+        "A25"
+      ],
+      "challenge": "Original hybrid selectively uses featureRL value to guide hypothesis switching, not full concurrent value choice against SHT at each action; not arbitrary integrated dual-module executive.",
+      "proposed": "LIMIT_C05"
+    },
+    {
+      "id": "B06",
+      "source": "official funding correction complete one-page original vs scientific main",
+      "ids": [
+        "A24"
+      ],
+      "challenge": "Correction does not modify equations or fitted results; reject generic requalification of mathematical structure.",
+      "proposed": "REJECT_DUPLICATE_PRE_A"
+    },
+    {
+      "id": "B07",
+      "source": "original Fig4C and full S4 Fig",
+      "ids": [
+        "A19",
+        "A20",
+        "A22"
+      ],
+      "challenge": "Negative feature dimensionality prediction already original A19/A20, no additive patch.",
+      "proposed": "REJECT_DUPLICATE_A"
+    },
+    {
+      "id": "B08",
+      "source": "original citations Niv2015 WilsonNiv2012 + qualified P09 original",
+      "ids": [
+        "A26",
+        "A27"
+      ],
+      "challenge": "Architecture descent shares reward/policy and latent hypothesis machinery with precedents, exact P09 insect novelty circuit may differ but cannot certify global G2 independent family.",
+      "proposed": "LIMIT_C06"
+    }
+  ],
+  "original_unfavorable_maintained": [
+    "no full-horizon optimal Bayesian agent",
+    "not actual observed hypothesis brain state",
+    "P10 S1 Text broken equation crossrefs",
+    "source fitted only finite tested families",
+    "hybrid fails exact feature-dimension count",
+    "S4 fuller still fails number considered feature despite better likelihood",
+    "106 completed but analysis n102 after 4 exclusions",
+    "DQN approximate benchmark not exact ground truth",
+    "published correction funding-only",
+    "original source numeric values not independently rerun",
+    "original source prior models inherited",
+    "concept family novelty not proven from label difference"
+  ],
+  "exact_original_A_claims_count": 27,
+  "exact_original_A_dependencies_count": 43,
+  "not_blinded_to_frozen_A": true,
+  "not_new_model_or_H_claim": true,
+  "MAIN_prohibited": true
+}

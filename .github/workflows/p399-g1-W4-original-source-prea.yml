@@ -1,0 +1,27 @@
+name: P399 G1 W4 original source PRE-A integrity only
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g1/parallel/W4/**"
+      - ".github/workflows/p399-g1-W4-original-source-prea.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  w4-prea-publisher-source-receipts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install "pypdf==6.1.1"
+      - run: python research/paper2/p399/g1/parallel/W4/w4_preA_independent_original_source_probe.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g1-w4-original-sources-preA-${{ github.run_id }}
+          path: g1-w4-source/
+          retention-days: 21
+          if-no-files-found: warn

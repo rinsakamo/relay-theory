@@ -1,0 +1,104 @@
+{
+  "schema": "relaytheory.p399.g1.W4.P19.original_source_PRE_A.v1",
+  "stage": "PRE_A",
+  "commit_rule": "freeze before A",
+  "paper": {
+    "id": "P19",
+    "title": "Tracking human skill learning with a hierarchical Bayesian sequence model",
+    "authors": [
+      "Noémi Éltető",
+      "Dezső Nemeth",
+      "Karolina Janacsek",
+      "Peter Dayan"
+    ],
+    "doi": "10.1371/journal.pcbi.1009866",
+    "published": "2022-11-30",
+    "primary_edition": "PLOS published printable original"
+  },
+  "source_bundle": [
+    {
+      "id": "main",
+      "url": "https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1009866&type=printable",
+      "raw_sha256": "4ee1e89bb1d0bc0961c86185cee7bb851a25033c2f8f71270212fd6b313deee4",
+      "bytes": 2080943,
+      "pages": 28,
+      "existing_first_acquisition_run": 37178895352,
+      "reacquired_run": 37191438517,
+      "original_page_visual_examined_1_based": [
+        5,
+        6,
+        8,
+        9,
+        10,
+        11,
+        13,
+        16,
+        17,
+        20
+      ],
+      "note": "bounded original math, modeling and unfavorable source sections; entire 28-page text sections reviewed; not all 28 pages visually rendered"
+    },
+    {
+      "id": "S1_model_defining",
+      "url": "https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1009866.s001&type=supplementary",
+      "raw_sha256": "c45ab7072bfcbbe91e8e77c83091293cd43d3dc133c94dfb74be89f7de729ab4",
+      "bytes": 98095,
+      "pages": 3,
+      "reacquired_run": 37191438517,
+      "original_page_visual_examined_1_based": [
+        1,
+        2,
+        3
+      ],
+      "role": "mandatory publisher original explicit PARSE/CUSTOMER_PROB/ADD_CUSTOMER algorithms"
+    },
+    {
+      "id": "S2_alternatives",
+      "url": "https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1009866.s002&type=supplementary",
+      "raw_sha256": "a82c34c729e533566c516ad95f08c9403be86dc837874aec85b00e338c958596",
+      "bytes": 974481,
+      "pages": 6,
+      "reacquired_run": 37191438517,
+      "original_page_visual_examined_1_based": [
+        1,
+        4,
+        6
+      ],
+      "role": "mandatory original simulation and alternative trigram/UCRP/SCRP/HCRP source figures and ablation equations; other pages text reviewed"
+    }
+  ],
+  "acquisition": {
+    "actual_new_independent_success": "https://github.com/rinsakamo/relay-theory/actions/runs/37191438517",
+    "artifact_id": 11298753413,
+    "mechanical_scope": "real first-party original four-file source acquisition for W4, NOT semantic independent blind review, original study replication or after-E audit",
+    "first_preA_text_probe_failure": "Original P19 main page11 requested literal 'Fitted parameter' false; optional non-fail heuristic text probe, original SHA/pages unaffected; do not rewrite original run."
+  },
+  "original_model_identities": [
+    "hierarchical distance-dependent Dirichlet process (ddHDP), represented by distance-dependent hierarchical Chinese restaurant process (ddHCRP)",
+    "finite experimental chosen maximum context levels N and level-specific alpha_n/lambda_n",
+    "old/new suffix-weighted predictive recursion over required events and action-key RT observation; distinct actual key vs instructed event",
+    "model response timing and baseline covariates, fitted epoch/session hyperparameters",
+    "S2 alternatives stationary trigram ddCRP, uniform multilevel ddUCRP, deterministic stacked ddSCRP"
+  ],
+  "direct_source_ancestors": [
+    "hierarchical Bayesian language-model HCRP original Teh 2006 (direct mathematical background)",
+    "distance-dependent CRP original Blei/Frazier 2011",
+    "Katz deterministic backoff as S2 SCRP ablation",
+    "ASRT alternating-sequence behavioral paradigm; not novel author created action controller"
+  ],
+  "correction_history": {
+    "observed_original_article_html": "no publisher correction banner on 2026-10-04 article page, targeted public title/correction search no substantive correction hit",
+    "certified_exhaustively_absent": false,
+    "future_new_correction_response": "fail closed and amended prospectivity if substantive original issue discovered"
+  },
+  "frozen_negatives_to_retain": [
+    "P19 main p12 uncorrected working-memory correlations do not survive 24-comparison BH adjustment p=.09/.28",
+    "P19 main p16-17 human positive old/new parallel sequence coexistence correlation r=.73 versus HCRP model r=.16 p=.438; model predicts false old/new time alternation zigzag",
+    "P19 main p17 first-session >2 order group mean measured p=.084 and model p=.199, final session measured p=.080 and predicted p=.076 despite individual correlations",
+    "P19 main p17 optimized stationary trigram comparator explained similar total RT variance even though HCRP accounts more specific order/individual dynamics",
+    "P19 S2 p4 uniform UCRP also reproduces smoothing; SCRP and trigram fail smoothing; HCRP mildly underestimates trigram magnitude",
+    "P19 S2 p1 five-sample Monte Carlo approx and repeat hyperparameter searches, not exact posterior identity or original numeric independent reproduction"
+  ],
+  "lineage_scope": "PF03/P14 original frozen decisions consulted as external comparators, not changed; G2 metadata only, its MAIN scientific outcomes untouched",
+  "stage_status": "SOURCE_FROZEN_FOR_P19_A_NOT_QUALIFIED"
+}

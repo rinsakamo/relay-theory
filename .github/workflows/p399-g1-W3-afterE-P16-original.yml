@@ -1,0 +1,29 @@
+name: P399 G1 W3 P16 independent original source post-E
+on:
+  push:
+    branches:
+      - paper2/p399-g1-w3-mem-prd-family-20261004
+    paths:
+      - .github/workflows/p399-g1-W3-afterE-P16-original.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  w3_P16_independent_original_post_E:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Install bounded publisher-original verifier
+        run: python -m pip install --quiet requests pypdf pymupdf
+      - name: Real original publisher PDF raw SHA, pages, source anchors, and frozen six Git stages
+        run: python research/paper2/p399/g1/parallel/W3/P16_after_E_independent_source_history_audit.py
+      - name: Retain independent bounded audit receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: P399-G1-W3-P16-original-post-E-${{ github.run_id }}
+          path: ${{ runner.temp }}/P16_W3_post_E_real_source_audit_receipt.json
+          if-no-files-found: warn
+          retention-days: 30

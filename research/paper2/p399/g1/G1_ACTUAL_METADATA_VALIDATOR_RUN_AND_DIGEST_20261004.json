@@ -1,0 +1,31 @@
+{
+  "schema": "relay-theory.p399.g1.metadata-ci-and-negative-controls.v1",
+  "date_utc": "2026-10-04",
+  "ci_run_id": 37179167449,
+  "ci_url": "https://github.com/rinsakamo/relay-theory/actions/runs/37179167449",
+  "ci_conclusion": "SUCCESS",
+  "checks": [
+    "4 original PF source hashes match immutable prior receipts in working ledger",
+    "16 unique additional candidate identities and publisher original PDF SHA, byte, page metadata",
+    "P08/P10 publisher correction page fetch success",
+    "all 16 must remain NOT_SOURCE_ADMITTED NOT_SCIENTIFICALLY_QUALIFIED in working ledger",
+    "every 16 x 4 PF and 16 choose 2 pilot pair accounted for as named provisional or explicit UNDERDETERMINED",
+    "16 x 10 current #399 MAIN discovery seeds remain explicit UNDERDETERMINED",
+    "one eLife 39497 original PDF physically acquired and none prospectively replaced"
+  ],
+  "negative_controls_executed_and_rejected": [
+    "invalid source SHA-256",
+    "faked source admission",
+    "suppressed P08 correction request",
+    "duplicate underlying source SHA-256"
+  ],
+  "machine_source_receipt_projection_sha256": "5695a5d3b7ee075c01d84aa65339a69b7aa7e0f59e2ca105013001ea86ee830a",
+  "hash_contract": "Python script g1_gate_metadata_consistency.py canonical sort_keys JSON of PF original source sha, sixteen added raw original source sha/pages, two known correction DOI and eLife PDF SHA + G1_PARTIAL; use exact source code/run to reproduce",
+  "semantic_source_interpretation_certified": false,
+  "numerical_replication_certified": false,
+  "main_authorization": false,
+  "first_run_failure_preserved": {
+    "run_id": 37179110593,
+    "reason": "metadata validator Python variable name typo (alternatives vs alternates), corrected after red run; scientific evidence itself unchanged"
+  }
+}

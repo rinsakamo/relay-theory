@@ -1,0 +1,93 @@
+name: P399 G1 W2 P12 P17 eLife publisher intake (NO scientific admission)
+on:
+  push:
+    branches: ["paper2/p399-g1-w2-ctl-prd-diversity-20261004"]
+    paths:
+      - ".github/workflows/p399-g1-W2-other-prea-source.yml"
+  workflow_dispatch:
+permissions: { contents: read }
+jobs:
+  original-intake:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - run: python -m pip install -q requests pypdf beautifulsoup4 python-docx pillow
+      - name: Verify known original PDFs; discover and re-acquire linked original supplements
+        shell: bash
+        run: |
+          python - <<'PY'
+          import requests,io,json,hashlib,re,sys
+          from pypdf import PdfReader
+          from bs4 import BeautifulSoup
+          from docx import Document
+          from PIL import Image
+          sess=requests.Session()
+          sess.headers['User-Agent']='Mozilla/5.0 (RelayTheory P399 W2 genuine publisher evidence)'
+          M={'P12':('10.1371/journal.pcbi.1006043',27,2864504,'17368c69624bc5e968ccd2f3cc5eeb349070801e3b240cbc50a66d770bae2370'),
+          'P17':('10.1371/journal.pcbi.1009738',16,1551349,'e2d28aea56a31501db49aa791158f18771ae3054748d331df2ec26817f16f305')}
+          result={'status':'INTAKE_ONLY_NO_SCIENTIFIC_QUALIFICATION','sources':{},'errors':[]}
+          root='https://journals.plos.org/ploscompbiol/article/file'
+          for pid,(doi,pg,sz,sha) in M.items():
+            o={'doi':doi,'main':{},'supplements':[]}
+            result['sources'][pid]=o
+            try:
+              r=sess.get(root,params={'id':doi,'type':'printable'},timeout=100);r.raise_for_status()
+              b=r.content;pd=PdfReader(io.BytesIO(b),strict=False)
+              o['main']={'sha256':hashlib.sha256(b).hexdigest(),'bytes':len(b),'pages':len(pd.pages),'first_page_excerpt':(pd.pages[0].extract_text() or '')[:360]}
+              assert (len(b),len(pd.pages),o['main']['sha256'])==(sz,pg,sha),('original mismatch',pid,o['main'])
+              print(pid+'_MAIN_SUCCESS',o['main'],flush=True)
+            except Exception as e: result['errors'].append(pid+'_MAIN '+repr(e));print('FAIL '+pid+'_MAIN '+repr(e),flush=True)
+            try:
+              rr=sess.get('https://journals.plos.org/ploscompbiol/article',params={'id':doi},timeout=50);rr.raise_for_status()
+              soup=BeautifulSoup(rr.text,'html.parser')
+              o['official_html']={'bytes':len(rr.content),'sha256':hashlib.sha256(rr.content).hexdigest(),'http_status':rr.status_code}
+              links=[]
+              for a in soup.find_all('a',href=True):
+                h=a['href'];mt=re.search(re.escape(doi)+r'\.s(\d{3})',h,re.I)
+                if mt:
+                  links.append((doi+'.s'+mt.group(1),a.get_text(' ',strip=True)[:90]))
+              links=list(dict.fromkeys(links))
+              print(pid+'_SUPPLEMENT_LINKS',links,flush=True)
+              for i,(ident,caption) in enumerate(links):
+                if i>=14:break
+                try:
+                  sr=sess.get(root,params={'id':ident,'type':'supplementary'},timeout=90);sr.raise_for_status()
+                  b=sr.content;item={'id':ident,'caption':caption,'url':sr.url.split('?')[0],'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest(),'content_type':sr.headers.get('content-type')}
+                  if b.startswith(b'%PDF'):
+                    dp=PdfReader(io.BytesIO(b),strict=False);item['pages']=len(dp.pages)
+                  elif b.startswith(b'PK'):
+                    try:
+                      d=Document(io.BytesIO(b));item['docx_paragraphs']=len(d.paragraphs);item['docx_chars']=sum(len(p.text) for p in d.paragraphs)
+                    except Exception as e:item['zipped_unparsed_reason']=repr(e)
+                  else:
+                    try:
+                      im=Image.open(io.BytesIO(b));item['image_wh']=[im.width,im.height]
+                    except: item['nonpdf_nonimage']=True
+                  o['supplements'].append(item);print(pid+'_SUPPLEMENT_ACQUIRED',item,flush=True)
+                except Exception as e:
+                  result['errors'].append(pid+'_SUP '+ident+' '+repr(e));print(pid+'_SUP_FAIL',ident,repr(e),flush=True)
+            except Exception as e:result['errors'].append(pid+'_HTML '+repr(e))
+          try:
+            url='https://cdn.elifesciences.org/articles/39497/elife-39497-v3.pdf'
+            r=sess.get(url,timeout=100);r.raise_for_status();b=r.content
+            ep=PdfReader(io.BytesIO(b),strict=False)
+            item={'url':url,'publisher_sha256':hashlib.sha256(b).hexdigest(),'bytes':len(b),'pages':len(ep.pages),'first_text':(ep.pages[0].extract_text() or '')[:280]}
+            assert item['publisher_sha256']=='c2adddf8d232d851d9decbb304fb02107686cf55a5dad4cbbfd8b0fd7ac7d64a'
+            assert item['pages']==23
+            result['sources']['P12_eLife_backup']={'main':item,'scientific_eligibility':'NOT_INFERRED','activated':False,'G2_reserved':['CTL-B2','INT-B2']}
+            print('ELIFE_MAIN_ACQUIRED',item,flush=True)
+          except Exception as e: result['errors'].append('eLife_v3 '+repr(e));print('ELIFE_FAIL',repr(e),flush=True)
+          with open('w2_other_publisher_original_intake_receipt.json','w') as f:json.dump(result,f,indent=2,ensure_ascii=False)
+          print('INTAKE_FAILURES',len(result['errors']),flush=True)
+          if result['errors']:sys.exit(1)
+          PY
+      - name: Preserve authentic intake and failures without publisher source binaries
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: W2-P12-P17-eLife-official-intake-metadata
+          path: w2_other_publisher_original_intake_receipt.json
+          if-no-files-found: warn

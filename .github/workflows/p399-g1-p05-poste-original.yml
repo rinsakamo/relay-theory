@@ -1,0 +1,29 @@
+name: P399 G1 P05 post-E original source and immutable stage audit
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g1/p05/p05_post_e_original_source_and_frozen_stage_audit.py"
+      - ".github/workflows/p399-g1-p05-poste-original.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  real-p05-after-e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install 'pypdf==6.1.1'
+      - run: python research/paper2/p399/g1/p05/p05_post_e_original_source_and_frozen_stage_audit.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: p05-original-source-after-e-${{ github.run_id }}
+          path: g1-p05-poste/source-receipt.json
+          retention-days: 14
+          if-no-files-found: warn

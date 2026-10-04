@@ -1,0 +1,27 @@
+name: P399 G1 W4 P20 eight original figure and table source before A
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g1/parallel/W4/p20/p20_preA_eight_issuer_fig_tables_original.py"
+      - ".github/workflows/p399-g1-W4-P20-issuer-prea.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  w4-p20-issuer-original-prea:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install "Pillow==11.3.0" "python-docx==1.2.0"
+      - run: python research/paper2/p399/g1/parallel/W4/p20/p20_preA_eight_issuer_fig_tables_original.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: w4-p20-original-issuer-supp-${{ github.run_id }}
+          path: g1-w4-p20-supplements/
+          retention-days: 21
+          if-no-files-found: warn

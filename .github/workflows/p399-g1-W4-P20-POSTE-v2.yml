@@ -1,0 +1,29 @@
+name: P399 G1 W4 P20 corrected independent real eleven publisher originals POST E
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g1/parallel/W4/p20/p20_v2_independent_real_postE_11_sources_7_git_stages.py"
+      - ".github/workflows/p399-g1-W4-P20-POSTE-v2.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  p20-original-eleven-afterE-seven-frozen-stages:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install "pypdf==6.1.1" "Pillow==11.3.0" "python-docx==1.2.0"
+      - run: python research/paper2/p399/g1/parallel/W4/p20/p20_v2_independent_real_postE_11_sources_7_git_stages.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g1-w4-p20-corrected-real-postE-11originals-${{ github.run_id }}
+          path: g1-w4-p20-postE/
+          retention-days: 21
+          if-no-files-found: warn

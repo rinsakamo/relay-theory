@@ -1,0 +1,185 @@
+{
+  "schema": "p399.g1.att.p05.source_bounded.pre_A.v1",
+  "asof_jst": "2026-10-04",
+  "candidate": {
+    "id": "P05",
+    "lane": "ATT",
+    "title": "Look twice: A generalist computational model predicts return fixations across tasks and species",
+    "author": "Zhang, Armendariz, Xiao, Rose, Bendtz, Livingstone, Ponce & Kreiman",
+    "published": "2022-11-22",
+    "received": "2021-07-22",
+    "accepted": "2022-10-13",
+    "doi": "10.1371/journal.pcbi.1010654",
+    "publisher": "PLOS Computational Biology 18(11) e1010654"
+  },
+  "original_source": {
+    "locked_medium": "2022_PUBLISHED_PLOS_ORIGINAL_PDF",
+    "url": "https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1010654&type=printable",
+    "raw_sha256": "80900fab574c1bf17c0bb65f81c87c1bdb6ba0dbbbbadfa31dcd2c8522735c7c",
+    "raw_bytes": 4726900,
+    "pages": 38,
+    "physical_publisher_original_SHA_source_run": 37178895352,
+    "prior_matching_original_HTML_issuer_receipt": "f2e493ff6902a3e39d2b6747344315ec0421cf5cc2b99d404dccf017503070c5",
+    "read_publisher_original_full_html_now": true,
+    "direct_original_PDF_visually_inspected_pages_one_based": [
+      4,
+      8,
+      14,
+      15,
+      17,
+      18,
+      19,
+      20,
+      21,
+      25,
+      26,
+      27,
+      28,
+      29
+    ],
+    "original_PDF_original_mathematical_equations": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "original_figures_directly_seen": [
+      "Fig1 image fixation/empirical example",
+      "Fig7 full five-module network/attention maps",
+      "Fig8 modeled six original static tasks",
+      "Fig9 modeled turning angle/saliency",
+      "Table1 source model ablations",
+      "Methods original Eqs1-5"
+    ],
+    "supplemental_S9_S21": "Identified original referenced separate supplementary figures; adopted published 38pp primary PDF only. Supplementary mathematical figures remain explicitly outside fully pixel-certified input: do not fabricate inspection of supplemental originals.",
+    "all38_original_PDF_pages_individually_pixel_read": false,
+    "remaining_original_narrative_read_using_official_complete_publisher_HTML": true,
+    "publisher_visible_correction_link": "NO_CORRECTION_VISIBLE_IN_OFFICIAL_PRIMARY_LANDING_PAGE_AND_FOCUSED_TITLE_SEARCH",
+    "complete_historical_corrections_absence_certified": false,
+    "fail_close_if_substantive_new_original_correction": true
+  },
+  "source_empirical_vs_model": {
+    "original_human_monkey_observational_experiments": 8,
+    "source_total_all_eight_original_fixations": 217440,
+    "source_total_original_return_fixations": 44328,
+    "source_model_evaluated_static_image_experiments": 6,
+    "not_modeled_original_egocentric_video_experiments": 2,
+    "source_return_threshold": "1 degree visual angle overlap with any earlier fixation",
+    "source_model_has_no_video_motion_or_frame_integration": true,
+    "training_holdout": "source Visual Search 2 calibrates alpha/beta/sigma and w_mem/w_sac then fixed for other original five modeled static datasets, NOT universal zero-calibration nor independently fitted each task",
+    "source_model_no_new_online_learning": true
+  },
+  "direct_ancestry": [
+    {
+      "type": "DIRECT_ARCHITECTURAL_INHERITANCE",
+      "work": "Zhang, Feng, Ma, Lim, Zhao & Kreiman (2018), Finding any Waldo with zero-shot invariant and efficient visual search",
+      "doi": "10.1038/s41467-018-06217-x",
+      "model": "invariant visual search network IVSN pre-trained VGG16 target similarity, winner-take-all, original infinite IOR, prior three original human VS experiments reused",
+      "determination": "KNOWN_DIRECT_SHARED_BASE_NOT_INDEPENDENT_ORIGINAL_MODEL_FAMILY_FROM_2018_IVSN; new finite-IOR map + saliency/free-viewing + empirical per-task saccade priors are substantive extensions"
+    },
+    {
+      "type": "GENERAL_PRECEDENT_NOT_UNIQUE_SOURCE",
+      "work": "pre-2022 finite inhibition-of-return / saliency and saccade constraint cited original refs17,53,54,57,58,59",
+      "determination": "prior concept generality, not proof the 2022 combination first-ever or biologically unique"
+    }
+  ],
+  "new_central_native_model": {
+    "inherited": "pretrained ImageNet VGG-16 same weights from earlier 2018 IVSN, target template top-down search similarity",
+    "added": "free-view bottom-up feature saliency, empirical dataset-specific saccade prior, finite decaying spatial inhibition-of-return map",
+    "equations": [
+      "Eq1 pretrained target feature convolution between target layer31 and scene layer30",
+      "Eq2 salience by uniform modulation/aggregate VGG16 scene features",
+      "Eq3 clipped exponential previous-fixation memory a_tau=max(alpha^(t-tau),beta), source alpha 0.92 beta 0.5",
+      "Eq4 fixation-centered Gaussian sigma spatial map original VS1 sigma0.08 rest0.02 and max over past fixation-specific maps including overwrite on revisit",
+      "Eq5 normalized linear final attention map w_mem=-0.93 w_sac=0.2346 w_sim=1,w_sal=0 during search; reversed w_sim=0 w_sal=1 during free viewing; argmax winner-take-all, plus recognition stop only for search"
+    ],
+    "world_vs_internal": "External static input/target/eye tracking empirical saccade distribution is experimental World; internal source system contains inherited visual convolution plus 4 maps, finite memory/saccade update and winner-take-all; egocentric videos are external analyzed outcomes but not modeled dynamic World."
+  },
+  "prospective_material_source_negative_conditions": [
+    {
+      "id": "L01",
+      "source": "PDF pp14–16,25–28",
+      "condition": "Model is direct 2018 IVSN extension; inherited 2018 code, target feature map and three visual-search human datasets must not be claimed independent invented model family"
+    },
+    {
+      "id": "L02",
+      "source": "PDF Fig2 & pp14/26",
+      "condition": "Eight original behavioral datasets are NOT eight modeled conditions; only six static-image experiments modeled; 2 egocentric-video tasks no optical flow, no 3D memory, no cooking task model"
+    },
+    {
+      "id": "L03",
+      "source": "PDF p27 Eq3, Methods",
+      "condition": "Source finite IOR is clipped exponential per fixation alpha0.92 floor beta0.5, not unbounded perfect erasure; max over all past locations including repeat overwrite"
+    },
+    {
+      "id": "L04",
+      "source": "PDF pp14–15,27 Eq5",
+      "condition": "Time-constant target similarity/salience maps versus fixation-updated memory/saccade maps; full online learning is absent"
+    },
+    {
+      "id": "L05",
+      "source": "PDF pp20–21,27–28",
+      "condition": "Source free parameters alpha/beta/sigma and two map weights tuned on Visual Search 2 and then fixed on other five; no per-task/species fine tuning is not parameter-free or sample-independent holdout for VS2"
+    },
+    {
+      "id": "L06",
+      "source": "PDF pp26–28",
+      "condition": "Source original saccade prior is empirical measured dataset-specific distribution, not one universal parameters/motor mechanistic prior across all species or conditions"
+    },
+    {
+      "id": "L07",
+      "source": "PDF pp19–20 Table1 & p28",
+      "condition": "Feature salience removal changes next-fixation procedure to stochastic sampling; original ablation is not pure one-module deletion with fixed optimizer"
+    },
+    {
+      "id": "L08",
+      "source": "PDF p19 Table1",
+      "condition": "Removing saccade prior has less impact on total return proportion but degrades saccade size/return offset; partial mixed per-metric original ablation results not every metric worse"
+    },
+    {
+      "id": "L09",
+      "source": "PDF pp17–18 & p21",
+      "condition": "Model quantitatively mismatches human return-fixation and saccade preceding return VS2/VS3 trend; no unconditional model fit or perfect species generalization"
+    },
+    {
+      "id": "L10",
+      "source": "PDF pp16–17 & 21",
+      "condition": "Original model has no duration of fixations or saccades, no learned task-dependent adaptation, no saccade momentum, unmodeled visual field acuity"
+    },
+    {
+      "id": "L11",
+      "source": "PDF p28",
+      "condition": "Source visual recognition uses empirically different recognition cosine thresholds: 0.5 object-array/Waldo vs 0.3 natural images; no fully shared downstream original recognition criterion"
+    },
+    {
+      "id": "L12",
+      "source": "PDF pp4,8,20 & Methods",
+      "condition": "Eight-task data include partially previously published original 2018 behavioral data and natural egocentric task; 44,328/217,440 is all source behavioral observations not computed six-model denominator"
+    },
+    {
+      "id": "L13",
+      "source": "PDF p29 null paragraph",
+      "condition": "Source memoryless null still respects observed saccade amplitude and stochastic stop; do not present as total behavior-free uniform random across all image pixels"
+    },
+    {
+      "id": "L14",
+      "source": "PDF p19 Table1 and p21",
+      "condition": "Original proof-of-principle and comparative ablations do not prove that exact finite inhibition circuit is biologically causal, uniquely necessary, or generalized stateful H2"
+    }
+  ],
+  "cross_family_status": {
+    "old_4PF_P07_P09": "Source native gaze map / finite spatial memory differs provisionally from PF and P07/P09 objectives; broad working memory overlap does NOT automatically imply central mechanism equivalence",
+    "P06": "V1 population salience empirical candidate source-original math NOT YET AUDITED",
+    "G2_ATT01": "History-modulated attention working DOI10.1007/s42113-024-00197-6; central mechanism similarity not all-original-assessed, cannot clear final",
+    "G2_ATT02": "Lateral inhibitory cortical attention feedback candidate DOI10.1371/journal.pcbi.1004770; top-level attention common but not source-native family clearance",
+    "G2_ATT03": "Visual divisive normalization candidate DOI10.1016/j.neuron.2009.01.002; source native normalization might overlap but exact full-original genealogy not audited",
+    "G2_main_full_reconstruction": "NOT_VIEWED",
+    "no_same_Doi_with_G2_current40": true,
+    "final_800_pairs_central_family_clearance": false
+  },
+  "PRE_A_decision": "ELIGIBLE_TO_PROSPECTIVE_SOURCE_FIRST_A_WITH_NONFINAL_DIRECT_IVSN_ANCESTRY_HOLD",
+  "full_PILOT20_qualification": false,
+  "main_science": false,
+  "prior_immutable_PF_P07_P09_unchanged": true
+}

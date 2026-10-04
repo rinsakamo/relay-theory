@@ -1,0 +1,20 @@
+name: P399 G1 P14 original publisher negative S1 and stimulus S6 visuals
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g1/p14/p14_original_negative_S1_and_stimulus_S6_visual.py"
+      - ".github/workflows/p399-g1-p14-original-S1S6-visual.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  visually-original-S1S6:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install 'pymupdf==1.26.5' 'pillow==11.3.0'
+      - run: python research/paper2/p399/g1/p14/p14_original_negative_S1_and_stimulus_S6_visual.py

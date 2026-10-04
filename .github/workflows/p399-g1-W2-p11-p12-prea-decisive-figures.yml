@@ -1,0 +1,98 @@
+name: P399 G1 W2 final pre-A decisive figure and OMML visual validation
+on:
+  push:
+    branches: ["paper2/p399-g1-w2-ctl-prd-diversity-20261004"]
+    paths: [".github/workflows/p399-g1-W2-p11-p12-prea-decisive-figures.yml"]
+  workflow_dispatch:
+permissions: { contents: read }
+jobs:
+  bound-source-visual:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: pip install -q requests pymupdf pillow python-docx
+      - name: Exact P11 source decisive figures and complete S1 Text
+        shell: bash
+        run: |
+          python - <<'PY'
+          import io,hashlib,requests,base64
+          import fitz
+          from PIL import Image
+          from docx import Document
+          S=requests.Session();S.headers['User-Agent']='Mozilla/5.0 (RelayTheory publisher equation original figure qualification)'
+          root='https://journals.plos.org/ploscompbiol/article/file'
+          targets=[('MAIN','10.1371/journal.pcbi.1008971','printable','9291d8bca264a2216467e2254dede69dda71232708d94d10619f6d253458d022'),
+            ('S4_DRIFT','10.1371/journal.pcbi.1008971.s004','supplementary','43bf600b853a77a07011201ad935464c2aadc390a18a4be1cd5dfd5dddf99fc4'),
+            ('S2_FIT','10.1371/journal.pcbi.1008971.s002','supplementary','6abb4dee4a92c1f94a28ef993c802e03dde53af15ef6216198df7c5c566b8643'),
+            ('S1_TEXT','10.1371/journal.pcbi.1008971.s005','supplementary','9c1961a7f032f32805c95d958562912abb814673ffc1657cca56d908e18335b5')]
+          def emit(im,key):
+            im.thumbnail((880,1100));b=io.BytesIO()
+            im.convert('RGB').save(b,format='JPEG',quality=58,optimize=True)
+            print('W2_PREA_VISUAL_'+key+'_B64='+base64.b64encode(b.getvalue()).decode(),flush=True)
+          for label,doi,typ,expect in targets:
+            data=None
+            for tryid in range(3):
+              r=S.get(root,params={'id':doi,'type':typ},timeout=70)
+              if r.status_code==200:data=r.content;break
+              print('SOURCE_RETRY',doi,r.status_code,tryid,flush=True)
+              import time;time.sleep((tryid+1)*3)
+            assert data is not None,doi
+            h=hashlib.sha256(data).hexdigest();assert h==expect,(label,h,expect)
+            print('EXACT_ISSUER_SOURCE_VERIFIED',label,doi,len(data),h,flush=True)
+            if label=='MAIN':
+              p=fitz.open(stream=data,filetype='pdf')
+              for i in [2,5,8,9,11,12]:
+                z=p[i].get_pixmap(matrix=fitz.Matrix(.82,.82),alpha=False)
+                emit(Image.open(io.BytesIO(z.tobytes('jpeg'))),'P11_PDF_P'+str(i+1))
+            if label in ('S4_DRIFT','S2_FIT'):emit(Image.open(io.BytesIO(data)),'P11_'+label)
+            if label=='S1_TEXT':
+              d=Document(io.BytesIO(data))
+              for i,p in enumerate(d.paragraphs):
+                if p.text.strip():print('ORIGINAL_COMPLETE_S1PARA'+str(i)+'='+p.text,flush=True)
+          PY
+      - name: P12 publisher mathematical DOCX original full text and optional equation figure rendering
+        shell: bash
+        run: |
+          python - <<'PY'
+          import requests,hashlib,io,os,subprocess,tempfile,base64,re,html
+          from docx import Document
+          import fitz
+          from PIL import Image
+          S=requests.Session();S.headers['User-Agent']='Mozilla/5.0 (RelayTheory original equations inspection)'
+          targets=[('S1','10.1371/journal.pcbi.1006043.s001','6870d9344bcbecc77aabe9a32335ed9c9820e4d1aefef03f6f59fe64d23c6fb5'),
+            ('S2','10.1371/journal.pcbi.1006043.s002','8ea0198c46a4b78bc6af1bcd4a0fdbb5859a96b76ee0335ba92156ed25931432')]
+          cv=subprocess.run(['bash','-lc','command -v libreoffice || true'],capture_output=True,text=True).stdout.strip()
+          print('LIBREOFFICE_RENDER_BIN',cv or 'ABSENT',flush=True)
+          for name,doi,expect in targets:
+            b=None
+            for i in range(3):
+              r=S.get('https://journals.plos.org/ploscompbiol/article/file',params={'id':doi,'type':'supplementary'},timeout=70)
+              if r.status_code==200:b=r.content;break
+              import time;print('P12_RETRY',name,r.status_code,flush=True);time.sleep((i+1)*3)
+            assert b is not None,doi
+            h=hashlib.sha256(b).hexdigest();assert h==expect,(doi,h)
+            d=Document(io.BytesIO(b))
+            for i,p in enumerate(d.paragraphs):
+              if p.text.strip():print(name+'_COMPLETE_PARA'+str(i)+'='+p.text,flush=True)
+            xml=d.part.blob.decode('utf-8','replace')
+            texts=re.findall(r'<m:t(?: [^>]+)?>([^<]*)</m:t>',xml)
+            print(name+'_EXACT_ORIGINAL_OFFICE_MATH_TEXT',' '.join(html.unescape(x) for x in texts),flush=True)
+            print(name+'_MATH_NODE_COUNT',xml.count('<m:oMath'),flush=True)
+            if cv:
+              with tempfile.TemporaryDirectory() as tmp:
+                f=os.path.join(tmp,name+'.docx');open(f,'wb').write(b)
+                cmd=[cv,'-env:UserInstallation=file:///tmp/w2_lo_'+name,'--headless','--convert-to','pdf','--outdir',tmp,f]
+                q=subprocess.run(cmd,capture_output=True,text=True,timeout=55)
+                pf=os.path.join(tmp,name+'.pdf')
+                if os.path.exists(pf):
+                  p=fitz.open(pf)
+                  print(name+'_PUBLISHER_DOCX_RENDERED_PAGES',len(p),flush=True)
+                  for i in range(min(3,len(p))):
+                    im=Image.open(io.BytesIO(p[i].get_pixmap(matrix=fitz.Matrix(.9,.9),alpha=False).tobytes('jpeg')))
+                    im.thumbnail((920,1150));v=io.BytesIO();im.save(v,format='JPEG',quality=56)
+                    print('W2_PREA_'+name+'_SOURCE_MATH_PAGE_'+str(i+1)+'_B64='+base64.b64encode(v.getvalue()).decode(),flush=True)
+                else:print(name+'_DOCX_PIXEL_RENDER_FAILED',q.stderr[:200],flush=True)
+          PY

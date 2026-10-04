@@ -1,0 +1,24 @@
+name: P399 G1 W3 P18 original S5 S6 TIFF source
+on:
+  push:
+    branches:
+      - paper2/p399-g1-w3-mem-prd-family-20261004
+    paths:
+      - .github/workflows/p399-g1-W3-P18-original-TIFF-model-visual.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original_PLOS_S5_S6_visual_integrity_not_model_recovery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - run: python -m pip install --quiet pillow
+      - run: python research/paper2/p399/g1/parallel/W3/P18_S5_S6_original_TIFF_source_visual_probe.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: W3-P18-original-S5-S6-source-${{ github.run_id }}
+          path: ${{ runner.temp }}/W3_P18_original_S5_S6_image_pixel_receipt.json
+          if-no-files-found: error

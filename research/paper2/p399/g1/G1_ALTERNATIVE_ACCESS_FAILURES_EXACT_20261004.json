@@ -1,0 +1,58 @@
+{
+  "schema": "relay-theory.p399.g1.actual-cross-publisher-failed-url-attempts.v1",
+  "run_id": 37179110616,
+  "run_url": "https://github.com/rinsakamo/relay-theory/actions/runs/37179110616",
+  "timestamp_utc": "2026-10-04T05:10:36Z",
+  "proof": "Exact publisher-URL error strings captured in GitHub Actions logs; not generalized to all lawful originals or full HTML",
+  "records": [
+    {
+      "id": "ALT_P08_ELIFE101157_VOR3",
+      "attempts": [
+        {
+          "url": "https://cdn.elifesciences.org/articles/101157/elife-101157-v3.pdf",
+          "result": "HTTP 404 Not Found"
+        },
+        {
+          "url": "https://elifesciences.org/articles/101157.pdf",
+          "result": "response did not begin with PDF signature"
+        }
+      ],
+      "conclusion": "NO_RAW_PDF_AT_TRIED_URLS; OFFICIAL_FULL_HTML_OR_OTHER_EDITION_MAY_EXIST"
+    },
+    {
+      "id": "ALT_P12_ELIFE39497_UPDATED_VOR",
+      "attempts": [
+        {
+          "url": "https://cdn.elifesciences.org/articles/39497/elife-39497-v3.pdf",
+          "result": "RAW_PDF_ACQUIRED_PAGES_23_SHA_C2ADDDF8..."
+        }
+      ],
+      "conclusion": "ACTUAL_PUBLISHER_V3_ORIGINAL_AVAILABLE; NOT_ADMITTED"
+    },
+    {
+      "id": "ALT_P16_ELIFE97894_VOR3",
+      "attempts": [
+        {
+          "url": "https://cdn.elifesciences.org/articles/97894/elife-97894-v3.pdf",
+          "result": "HTTP 404 Not Found"
+        },
+        {
+          "url": "https://elifesciences.org/articles/97894.pdf",
+          "result": "response did not begin with PDF signature"
+        }
+      ],
+      "conclusion": "NO_RAW_PDF_AT_TRIED_URLS; OFFICIAL_FULL_HTML_OR_OTHER_EDITION_MAY_EXIST"
+    },
+    {
+      "id": "ALT_P20_NATURE2023",
+      "attempts": [
+        {
+          "url": "https://www.nature.com/articles/s41467-023-38626-y.pdf",
+          "result": "response did not begin with PDF signature"
+        }
+      ],
+      "conclusion": "NO_RAW_PDF_AT_TRIED_URL; SCIENTIFIC_MOTOR_SKILL_ELIGIBILITY_NOT_ESTABLISHED"
+    }
+  ],
+  "no_replacement_from_access_failures": true
+}

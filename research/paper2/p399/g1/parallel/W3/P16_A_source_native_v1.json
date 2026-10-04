@@ -1,0 +1,400 @@
+{
+  "schema": "p399.g1.w3.P16.source-first.A.v1",
+  "stage": "A",
+  "frozen_PRE_A": "P16_PRE_A_original_source_freeze_v1.json",
+  "source_first_no_grammar": true,
+  "original_in_scope_sections": [
+    "title/abstract/author summary",
+    "introduction",
+    "network model/Equation1",
+    "Equation2 memory construction",
+    "Equation3 activation",
+    "Figure1 architecture",
+    "rate-remapping and Figure2",
+    "context attractor and Figure3",
+    "spatial attractor and Figure4",
+    "morph transition and Figures5–7",
+    "spatio-contextual position profile and Figure8",
+    "Discussion alternatives and model predictions",
+    "Methods simulations",
+    "Methods network dynamics/feedforward I control",
+    "Methods recurrent weights",
+    "Methods all analysis measures",
+    "Conclusions/references and source genealogy"
+  ],
+  "original_claims": [
+    {
+      "id": "A01",
+      "kind": "Network",
+      "claim": "Rate CA3 recurrent model; 225 positions times 18 units = 4050 model units; periodic 75x75cm environment",
+      "source": "original p2 and Methods Simulations"
+    },
+    {
+      "id": "A02",
+      "kind": "States",
+      "claim": "r_i(t) is recurrent CA3 model-unit firing-rate state, not directly measured biological CA3 membrane dynamics",
+      "source": "original Eq1 p2"
+    },
+    {
+      "id": "A03",
+      "kind": "ExternallySupplied",
+      "claim": "MEC s_i(t) supplies spatial Gaussian stimulus following prescribed synthetic rat route and is identical across contexts",
+      "source": "original Fig1/Methods"
+    },
+    {
+      "id": "A04",
+      "kind": "ExternallySupplied",
+      "claim": "LEC h_i supplies spatially homogeneous context-dependent activation; linear six-step square-to-circle morph imposed by experiment",
+      "source": "original Fig1/Results morph"
+    },
+    {
+      "id": "A05",
+      "kind": "Dynamics",
+      "claim": "Original Eq1 recurrent rate dynamics combine -r_i, nonlinearity f, recurrent gain J and Hebbian weight sum with mixture E s_i+(1-E)h_i",
+      "source": "original Eq1 p2"
+    },
+    {
+      "id": "A06",
+      "kind": "Constraint",
+      "claim": "E=0.8 sets relative MEC/LEC contributions in stated standard configuration",
+      "source": "original network model"
+    },
+    {
+      "id": "A07",
+      "kind": "Memory",
+      "claim": "M=2 contextual templates are constructed as ξ^1,ξ^2 with experimental overlap a at each positional cell group",
+      "source": "original Eq2/Methods"
+    },
+    {
+      "id": "A08",
+      "kind": "Memory",
+      "claim": "One-shot Hebbian recurrent w_ij contains stored template outer products weighted by Gaussian place-field distance, with subtractive inhibitory offset -1/2",
+      "source": "original Eq2 p2"
+    },
+    {
+      "id": "A09",
+      "kind": "Constraint",
+      "claim": "Spatial Gaussian recurrent scale ν=0.3L and MEC spatial input σ=0.3L; parameters are assumed simulation settings",
+      "source": "original Eq2 and MEC text"
+    },
+    {
+      "id": "A10",
+      "kind": "Transform",
+      "claim": "Eq3 rectifies and divisively normalizes activity; network inhibition also acts via recurrent offset",
+      "source": "original Eq3 and Methods"
+    },
+    {
+      "id": "A11",
+      "kind": "Control",
+      "claim": "J=0 comparator has deliberately added I=0.8 feedforward inhibition, not otherwise identical no-recurrence ablation",
+      "source": "original Methods network dynamics"
+    },
+    {
+      "id": "A12",
+      "kind": "Variant",
+      "claim": "Orthogonal a=0 stored context activity vectors versus overlap a=12 out of 18 compared for two stored contexts",
+      "source": "original Results/Methods"
+    },
+    {
+      "id": "A13",
+      "kind": "Trajectory",
+      "claim": "Each environment input walks each of 225 positions once under periodic boundary, waiting for model rate convergence",
+      "source": "original Methods Simulations"
+    },
+    {
+      "id": "A14",
+      "kind": "Observation",
+      "claim": "Rate maps, population vector correlation and distributions read out r under supplied morph sequence",
+      "source": "original Results Fig2/Methods Analysis"
+    },
+    {
+      "id": "A15",
+      "kind": "Finding",
+      "claim": "Feedforward J=0 also displays rate remapping; same observation is not specific identification of recurrent memory",
+      "source": "original Results Fig2"
+    },
+    {
+      "id": "A16",
+      "kind": "Finding",
+      "claim": "Recurrent overlap a12 yields graded population mean but heterogeneous position-dependent transition points and a mixture of gradual and sharp single unit curves",
+      "source": "original Figs2 and 8"
+    },
+    {
+      "id": "A17",
+      "kind": "Finding",
+      "claim": "Orthogonal a0 yields sharp coherent morph shifts consistent with separate global-map regime",
+      "source": "original Figs2,6"
+    },
+    {
+      "id": "A18",
+      "kind": "Test",
+      "claim": "Random-context LEC and fixed/arbitrary MEC probes produce correlation-to-stored-pattern estimates and pattern completion in overlapping and orthogonal recurrent models",
+      "source": "original Fig3"
+    },
+    {
+      "id": "A19",
+      "kind": "Negative",
+      "claim": "Increasing J strengthens spatial tuning but decreases number of stable spatial positions in no-MEC random LEC test",
+      "source": "original Fig4"
+    },
+    {
+      "id": "A20",
+      "kind": "Finding",
+      "claim": "Reset between morph steps marginally changes overlap a12 population transition; smooth means need not arise from hysteresis",
+      "source": "original Fig5"
+    },
+    {
+      "id": "A21",
+      "kind": "Negative",
+      "claim": "Orthogonal a0 morph exhibits strong recurrent history dependence at high J; reset eliminates population-level hysteresis",
+      "source": "original Fig6"
+    },
+    {
+      "id": "A22",
+      "kind": "Finding",
+      "claim": "Single-unit hysteresis fraction increases with J and decreases with overlap; exact random template also affects it",
+      "source": "original Fig7"
+    },
+    {
+      "id": "A23",
+      "kind": "Prediction",
+      "claim": "Nearby positional groups' morph transitions should be more similar than distant groups in overlapping recurrent model, absent in feedforward control",
+      "source": "original Fig8"
+    },
+    {
+      "id": "A24",
+      "kind": "Evidence",
+      "claim": "Original published rat CA1/CA3 recordings are from cited prior work; present model is an explanatory simulation not new neural acquisition",
+      "source": "original Introduction/Fig2/Methods"
+    },
+    {
+      "id": "A25",
+      "kind": "Alternative",
+      "claim": "STP is mentioned as a possible explanation of hysteresis but is NOT implemented as a modeled evolving synapse in P16 Eq1-3",
+      "source": "original morph dynamics Discussion"
+    },
+    {
+      "id": "A26",
+      "kind": "Alternative",
+      "claim": "Published source names alternative continuous/episodic attractor predecessors and experimentally unresolved mechanisms; inherited families must be evaluated separately",
+      "source": "original Intro refs14-16 Discussion"
+    },
+    {
+      "id": "A27",
+      "kind": "Scope",
+      "claim": "No original published exact Matlab implementation, random seeds or quantitative per-trial replication run was independently reconstructed for W3",
+      "source": "original Methods; W3 execution boundary"
+    },
+    {
+      "id": "A28",
+      "kind": "Constraint",
+      "claim": "Mean timestep converged under original 3e-5 threshold; forward Euler Matlab2012b original reported, not independently run",
+      "source": "original Methods"
+    },
+    {
+      "id": "A29",
+      "kind": "ExperimentalBoundary",
+      "claim": "Rat location, context shapes, feedforward compensation, stored pattern overlap and replay/reset are experimental external conditions and not newly modeled cognition",
+      "source": "original full paper"
+    }
+  ],
+  "source_local_dependencies": [
+    {
+      "id": "E01",
+      "from": "A03",
+      "to": "A05"
+    },
+    {
+      "id": "E02",
+      "from": "A04",
+      "to": "A05"
+    },
+    {
+      "id": "E03",
+      "from": "A06",
+      "to": "A05"
+    },
+    {
+      "id": "E04",
+      "from": "A07",
+      "to": "A08"
+    },
+    {
+      "id": "E05",
+      "from": "A09",
+      "to": "A08"
+    },
+    {
+      "id": "E06",
+      "from": "A08",
+      "to": "A05"
+    },
+    {
+      "id": "E07",
+      "from": "A10",
+      "to": "A05"
+    },
+    {
+      "id": "E08",
+      "from": "A05",
+      "to": "A02"
+    },
+    {
+      "id": "E09",
+      "from": "A07",
+      "to": "A12"
+    },
+    {
+      "id": "E10",
+      "from": "A11",
+      "to": "A15"
+    },
+    {
+      "id": "E11",
+      "from": "A12",
+      "to": "A16"
+    },
+    {
+      "id": "E12",
+      "from": "A05",
+      "to": "A16"
+    },
+    {
+      "id": "E13",
+      "from": "A12",
+      "to": "A17"
+    },
+    {
+      "id": "E14",
+      "from": "A08",
+      "to": "A18"
+    },
+    {
+      "id": "E15",
+      "from": "A05",
+      "to": "A18"
+    },
+    {
+      "id": "E16",
+      "from": "A05",
+      "to": "A19"
+    },
+    {
+      "id": "E17",
+      "from": "A20",
+      "to": "A16"
+    },
+    {
+      "id": "E18",
+      "from": "A21",
+      "to": "A17"
+    },
+    {
+      "id": "E19",
+      "from": "A05",
+      "to": "A22"
+    },
+    {
+      "id": "E20",
+      "from": "A12",
+      "to": "A22"
+    },
+    {
+      "id": "E21",
+      "from": "A05",
+      "to": "A23"
+    },
+    {
+      "id": "E22",
+      "from": "A13",
+      "to": "A14"
+    },
+    {
+      "id": "E23",
+      "from": "A14",
+      "to": "A24"
+    },
+    {
+      "id": "E24",
+      "from": "A28",
+      "to": "A13"
+    },
+    {
+      "id": "E25",
+      "from": "A29",
+      "to": "A04"
+    },
+    {
+      "id": "E26",
+      "from": "A29",
+      "to": "A07"
+    },
+    {
+      "id": "E27",
+      "from": "A29",
+      "to": "A20"
+    },
+    {
+      "id": "E28",
+      "from": "A29",
+      "to": "A21"
+    },
+    {
+      "id": "E29",
+      "from": "A15",
+      "to": "A25"
+    },
+    {
+      "id": "E30",
+      "from": "A25",
+      "to": "A26"
+    },
+    {
+      "id": "E31",
+      "from": "A27",
+      "to": "A24"
+    },
+    {
+      "id": "E32",
+      "from": "A08",
+      "to": "A16"
+    },
+    {
+      "id": "E33",
+      "from": "A09",
+      "to": "A19"
+    },
+    {
+      "id": "E34",
+      "from": "A10",
+      "to": "A15"
+    },
+    {
+      "id": "E35",
+      "from": "A11",
+      "to": "A24"
+    }
+  ],
+  "source_specific_negative_condition_registry": [
+    "N16_01",
+    "N16_02",
+    "N16_03",
+    "N16_04",
+    "N16_05",
+    "N16_06",
+    "N16_07",
+    "N16_08",
+    "N16_09",
+    "N16_10",
+    "N16_11",
+    "N16_12"
+  ],
+  "distinguish": {
+    "internal": "Fixed w Hebb construction; dynamical r(t) recurrent feedback and current representation retrieval",
+    "world_supplied": "MEC location/trajectory and LEC context stimuli, morph order",
+    "experiment": "J and a variant assignments, model readout and inherited CA1/CA3 published recordings",
+    "inferred": "Model interpretation of population phenomena and predicted spatial transition signature; not independently validated unique mechanism"
+  },
+  "quantitative_scope": "Author-paper reported figures and comparison only; no Matlab replay; preserve parameter/family adverse conditions.",
+  "MAIN_science_inspected": false
+}

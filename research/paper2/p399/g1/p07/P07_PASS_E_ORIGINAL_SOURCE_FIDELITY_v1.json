@@ -1,0 +1,162 @@
+{
+  "schema": "relaytheory.p399.g1.p07.source-original.fidelity-E.v1",
+  "source": {
+    "doi": "10.1371/journal.pcbi.1000254",
+    "original_pdf_sha256": "2b6cb16c821e937f712586ef52ac8edb895bf4f019d2c86b181aae805eb31959",
+    "publisher_pdf_pages": 14,
+    "original_source_visual_page_read": "all 14 original publisher PDF pages prior to D",
+    "independent_cloud_targeted_reacquisition_preA_run": 37180982558
+  },
+  "stage_inputs": {
+    "PRE_A_git_sha": "5ecf5893f09e3d10ca0b791bda3d0a2cfb25bacc",
+    "A_git_sha": "ed01ae9a231db362a2aad372a16a9ae451a8cab1",
+    "B_git_sha": "7de912b5084fd9d68fe4b977ca25a496ad90df57",
+    "C_git_sha": "f2b5c4cced5bdc17675ca95db2ed4959b19b540b",
+    "D_git_sha": "0a8144525976c2bb91bfa7ee319576033e9a211a",
+    "D_blob": "d9e296c6ea6d927530ae567e4ee9ec2956dedad1",
+    "immutable_order_preserved": true
+  },
+  "source_grounded_fidelity_targets": [
+    {
+      "id": "E01",
+      "original": "original PDF p2 Eq1–4",
+      "compare": "A01–A04 source Markov value, conditional P0-weighted policy Eq3 and control cost assumption, value iteration",
+      "claim_ids": [
+        "A01",
+        "A02",
+        "A03",
+        "A04"
+      ],
+      "conditions": [
+        "L01",
+        "L11"
+      ],
+      "structural": "FULL_WITH_SOURCE_OPTIMALITY_CONDITION",
+      "numeric": "EXCLUDED_ORIGINAL_NUMERIC_REPLAY"
+    },
+    {
+      "id": "E02",
+      "original": "original p3–5 Fig1/2 Eq5–8 stag-hunt Table1",
+      "compare": "toy configuration and joint sequential actor action; original actor partition/recursive policies, no invented World coupling",
+      "claim_ids": [
+        "A05",
+        "A06",
+        "A07",
+        "A08",
+        "A09",
+        "A10",
+        "A11"
+      ],
+      "conditions": [
+        "L02"
+      ],
+      "structural": "FULL_WITH_SOURCE_TASK_SCOPE",
+      "numeric": "ILLUSTRATIVE_ORIGINAL_REPORTED_ONLY"
+    },
+    {
+      "id": "E03",
+      "original": "original pp6–7 Eq9–12 Fig3/4",
+      "compare": "source posterior update over fixed rival type and bounded recursive strategy, known own strategy, fixed pure opponent and prior upper bound K",
+      "claim_ids": [
+        "A12",
+        "A13",
+        "A14",
+        "A15",
+        "A16"
+      ],
+      "conditions": [
+        "L03",
+        "L04"
+      ],
+      "structural": "FULL_WITH_PREDECLARED_BOUNDED_FAMILY",
+      "numeric": "ILLUSTRATIVE_ORIGINAL_REPORTED_ONLY"
+    },
+    {
+      "id": "E04",
+      "original": "original p8 Fig5",
+      "compare": "source reports K1=4 K2=3 and 94.5% versus 0.008% in synthetic test; full behavioral numeric reproduction not claimed",
+      "claim_ids": [
+        "A17"
+      ],
+      "conditions": [
+        "L05"
+      ],
+      "structural": "FULL_SOURCE_REPORTED_ILLUSTRATIVE",
+      "numeric": "NOT_ORIGINAL_NUMERIC_REPLAY"
+    },
+    {
+      "id": "E05",
+      "original": "original p9 Fig6 Experimental Procedures",
+      "compare": "ACTUAL source SIX subjects THREE male, human/computer/stag task, 4 blocks×10 rounds and total 240 rounds, 4 timeouts/240, not six male; corrections C-P01/C-P03 retained",
+      "claim_ids": [
+        "A18",
+        "A19"
+      ],
+      "conditions": [
+        "L06",
+        "L10"
+      ],
+      "structural": "FULL_ONLY_WITH_C_CORRECTED_A19",
+      "numeric": "NO_HUMAN_BEHAVIORAL_REPLAY"
+    },
+    {
+      "id": "E06",
+      "original": "original pp10–11 Eq13/14 and Fig8A–B",
+      "compare": "three-player source fitting eight fixed/eight ToM, original marginal 85.8% versus conditional Ksub5 59.0%, does not establish unique or across-game ToM",
+      "claim_ids": [
+        "A20",
+        "A21",
+        "A22"
+      ],
+      "conditions": [
+        "L07",
+        "L12"
+      ],
+      "structural": "FULL_SOURCE_REPORTED_SEPARATE_CONDITIONAL_SCORES",
+      "numeric": "NO_ORIGINAL_HUMAN_FIT_REANALYSIS"
+    },
+    {
+      "id": "E07",
+      "original": "original pp12–13 Eq15–18 prosocial",
+      "compare": "At equilibrium low-sophistication prosocial utility yields same equilibrium as ToM, BUT transient strategies may differ. Negative alternative retained rather than declaring necessary ToM.",
+      "claim_ids": [
+        "A23",
+        "A24",
+        "A25",
+        "A26",
+        "A27"
+      ],
+      "conditions": [
+        "L08",
+        "L09"
+      ],
+      "structural": "FULL_SOURCE_CONSTRAINED_AMBIGUOUS_GENERAL_H",
+      "numeric": "NOT_COMPARATIVE_RE_ESTIMATION"
+    }
+  ],
+  "original_claim_coverage_count": 27,
+  "original_source_edge_coverage_count": 30,
+  "material_condition_coverage_count": 12,
+  "source_bounded_structural_targets_full": 7,
+  "exact_original_numerical_targets_qualified": 0,
+  "model_family_ancestry": "P07 inherits Todorov/recursive game theory; relative PF novelty only; G2 BLF-B1 backup cross-conflict remains pending",
+  "source_specific_adversarial_evidence": [
+    "B caught erroneous original A19 all-six-male claim; corrected to six participants including three men",
+    "B/C newly accounted original four out of 240 time-out rounds",
+    "B/C added source-required divergence control cost condition to policy Eq3 optimum interpretation",
+    "prosocial optimal utility counterexample same equilibrium; original ToM uniqueness/universal necessity cannot be inferred",
+    "original marginal 85.8 and source subtype 59.0 separated"
+  ],
+  "boundaries": {
+    "source_structural": "SOURCE_RELATIVE_FULL_WITH_CORRECTED_DEMOGRAPHY_AND_DECLARED_CONDITIONS",
+    "exact_empirical_numerical_reproduction": "NOT_PERFORMED_NOT_QUALIFIED",
+    "source_mechanism_generalization": "NO_UNIVERSAL_H0_H1_H2_CONCLUSION",
+    "novel_stateful_cognitive_coordinator": "NO_ADDED_A2_FROM_SOURCE",
+    "source_full_visual_coverage": "ORIGINAL_14_PAGE_PUBLISHED_PDF_VISUALLY_INSPECTED",
+    "semantic_independence": "same AI G1 source auditor; post-E independent byte/page anchored cloud check planned separately, NOT blind independent human",
+    "other_publication_media": "same original PDF throughout; official HTML only corroborative, not primary, no supplement"
+  },
+  "decision": "BOUNDED_STRUCTURAL_FIDELITY_PASS_WITH_DECLARED_SOURCE_LIMITS_NOT_YET_SEPARATE_FORMAL_QUALIFICATION",
+  "post_E_source_specific_original_PDF_adverse_independent_CI": "PENDING_NOT_CLAIMED",
+  "no_main_science": true
+}
