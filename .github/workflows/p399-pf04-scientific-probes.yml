@@ -5,6 +5,7 @@ on:
     paths:
       - ".github/workflows/p399-pf04-scientific-probes.yml"
       - "scripts/p399_pf04_source_probes.py"
+      - "scripts/p399_pf04_exception_probes.py"
       - "research/paper2/p399/pf04/**"
   workflow_dispatch:
 permissions:
@@ -23,7 +24,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python -m py_compile scripts/p399_pf04_source_probes.py
+          python -m py_compile scripts/p399_pf04_source_probes.py scripts/p399_pf04_exception_probes.py
           python - <<'PY'
           import pathlib,hashlib,json,subprocess
           d=pathlib.Path("research/paper2/p399/pf04")
@@ -54,7 +55,20 @@ jobs:
           assert jp.is_file()
           print("PF04_FINAL_REPORT_SHA256",hashlib.sha256(jp.read_bytes()).hexdigest())
           print("PF04_FINAL_SIX_RECEIPTS_MATCH frozen v2 plus historical v1 retained")
+          later=d/"EXCEPTIONS_EX1_EX2_SOURCE_RECHECK_v1.json"
+          er=json.loads(later.read_bytes())
+          assert er["authority"]["original_publisher_pdf_sha256"]==result["source"]["original_pdf_sha256"]
+          assert er["current_scientific_boundary"]["official_qualified_pilot_count_increment"]==0
+          assert er["EX1"]["state"].startswith("UNDERDETERMINED")
+          exc_commits=subprocess.check_output(["git","log","--format=%H","--diff-filter=A","--",str(later)],text=True).strip().splitlines()
+          assert len(exc_commits)==1
+          subprocess.check_call(["git","merge-base","--is-ancestor",commits[-1],exc_commits[0]])
+          print("PF04_POST_E_EXCEPTION_RECEIPT_SHA256",hashlib.sha256(later.read_bytes()).hexdigest(),"git_commit",exc_commits[0])
+          print("PF04_POST_E_EXCEPTION_CHRONOLOGY_PASS original_A_E_preserved")
+
           print("PF04_CHRONOLOGY_PASS all six stage source files added in correct immutable order")
           PY
       - name: Run independently defined PF04 structural example probes
         run: python scripts/p399_pf04_source_probes.py
+      - name: Run 2015 author-thesis secondary-corroboration EX2 algebra tests
+        run: python scripts/p399_pf04_exception_probes.py
