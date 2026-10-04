@@ -35,7 +35,7 @@ try:
   r["source_text_anchor_present"]={k:v in whole for k,v in anchors.items()}
   # Ambiguous numeric format is recorded as candidate and never used to assert semantic proof.
   r["candidate_reduced_smoothing_page_numbers"]=[i+1 for i,t in enumerate(texts) if "smoothing" in t.lower() and ("reduced" in t.lower() or "4 mm" in t.lower())]
-  r["candidate_figure8_page_numbers"]=[i+1 for i,t in enumerate(texts) if re.search(r"figure\\s*8",t,re.I)]
+  r["candidate_figure8_page_numbers"]=[i+1 for i,t in enumerate(texts) if re.search(r"figure\s*8",t,re.I)]
   r["full_original_source_reproduced"]=True
 except Exception as e:
  r["failure"]=type(e).__name__+":"+str(e)[:180]
