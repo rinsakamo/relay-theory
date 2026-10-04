@@ -44,7 +44,13 @@ def check_authorization(envelope, trusted_authority_verifier=None):
     if mode == "MAIN_METADATA_PREFLIGHT":
         if envelope["stage"] != "METADATA_ONLY":
             raise G3Error("PREFLIGHT_CANNOT_RUN_MAIN_SCIENTIFIC_STAGE")
-        if any(v is not None for v in envelope["freeze_artifacts"].values()):
+        if (any(v is not None for v in envelope["freeze_artifacts"].values()) or
+                envelope["packet_integrity"]["packet_raw_sha256"] is not None or
+                envelope["packet_integrity"]["source_completeness_sha256"] is not None or
+                envelope["packet_integrity"]["curator_assessment"] != "PENDING" or
+                any(a["role"] in ("REFERENCE_R", "ROLE_BRIDGE_RB", "CURATOR_P",
+                                  "GRAMMAR_D", "ADJUDICATOR_R2")
+                    for a in envelope["actors"])):
             raise G3Error("PREFLIGHT_MUST_NOT_GENERATE_SCIENTIFIC_R_P")
         if envelope["source"]["source_access_state"] not in ("METADATA_ONLY", "UNKNOWN"):
             raise G3Error("PREFLIGHT_SOURCE_ANALYSIS_PROHIBITED")
@@ -184,6 +190,14 @@ def guarded_score(reference, packet, bridge, record, envelope, completeness,
         raise G3Error("SOURCE_COMPLETENESS_NOT_TIED_TO_LOCKED_NATIVE_REFERENCE")
     if envelope["packet_integrity"]["independent_completeness"] != completeness["second_review"]["status"]:
         raise G3Error("FALSE_INDEPENDENT_PACKET_COMPLETENESS")
+    if len({envelope["source"]["primary_fingerprint"], completeness["source_fingerprint"],
+            reference["source"]["source_fingerprint"], packet["primary_source_digest"]}) != 1:
+        raise G3Error("QUALIFICATION_ORIGINAL_SOURCE_IDENTITY_MISMATCH")
+    if envelope["freeze_artifacts"]["reference_sha256"] != canonical_sha(reference) or (
+            envelope["freeze_artifacts"]["bridge_sha256"] != canonical_sha(bridge)):
+        raise G3Error("QUALIFICATION_REFERENCE_OR_BRIDGE_NOT_LOCKED")
+    if envelope["packet_integrity"]["packet_raw_sha256"] != packet["packet_digest"]:
+        raise G3Error("QUALIFICATION_PACKET_BYTES_NOT_LOCKED")
     if envelope["packet_integrity"]["source_completeness_sha256"] != canonical_sha(completeness):
         raise G3Error("SOURCE_COMPLETENESS_NOT_LOCKED")
     if record["reference_state"] == "LOCKED_INDEPENDENT" and (
@@ -266,7 +280,8 @@ def verify_exact_freeze_chain(events, repo_path=None, scientific=False,
             raise G3Error("LABEL_UNMASK_BEFORE_FROZEN_ATLAS")
         if scientific:
             if not e.get("actual_scientific_authorized") or not e.get("git_commit") or (
-                    not e.get("git_artifact_path")):
+                    not e.get("git_artifact_path")) or not e.get("git_receipt_path") or (
+                    not e.get("receipt_raw_sha256")) or not e.get("receipt_signed_freeze"):
                 raise G3Error("SCIENTIFIC_STAGE_MISSING_REAL_AUTHORITY_OR_GIT_ARTIFACT")
             if repo_path is None:
                 raise G3Error("REAL_GIT_ANCESTRY_NOT_AVAILABLE")
@@ -278,6 +293,20 @@ def verify_exact_freeze_chain(events, repo_path=None, scientific=False,
                                  capture_output=True, check=False)
             if raw.returncode or raw_sha(raw.stdout) != e["artifact_raw_sha256"]:
                 raise G3Error("GIT_BLOB_RAW_BYTES_DO_NOT_MATCH")
+            receipt = subprocess.run(["git", "-C", str(repo_path), "show",
+                                      sha + ":" + e["git_receipt_path"]],
+                                     capture_output=True, check=False)
+            if receipt.returncode or raw_sha(receipt.stdout) != e["receipt_raw_sha256"]:
+                raise G3Error("IMMUTABLE_STAGE_RECEIPT_RAW_BYTES_DO_NOT_MATCH")
+            try:
+                recorded = json.loads(receipt.stdout.decode("utf-8"))
+            except (UnicodeDecodeError, ValueError):
+                raise G3Error("INVALID_IMMUTABLE_STAGE_RECEIPT_JSON")
+            bound = ("stage", "artifact_raw_sha256", "prior_raw_sha256",
+                     "primary_source_sha256", "protocol_sha256", "paper_token",
+                     "authorization_receipt_sha256")
+            if any(recorded.get(k) != e.get(k) for k in bound):
+                raise G3Error("IMMUTABLE_RECEIPT_DOES_NOT_BIND_STAGE_OR_AUTHORITY")
             if prev is not None:
                 if sha == prev["git_commit"]:
                     raise G3Error("SCIENTIFIC_STAGES_NOT_IN_DISTINCT_COMMITS")
