@@ -26,10 +26,16 @@ jobs:
           sha256sum /tmp/pf03/original.pdf | cut -d' ' -f1
           printf 'PF03_BYTES='
           stat -c%s /tmp/pf03/original.pdf
-          pdfinfo /tmp/pf03/original.pdf | grep -E 'Pages:|Page size:|Creator:|Producer:|CreationDate:|ModDate:'
-          pdftotext -layout /tmp/pf03/original.pdf /tmp/pf03/original.txt
-          printf 'PF03_TEXT_CHARACTERS='
-          wc -m < /tmp/pf03/original.txt
+          python -m pip install --disable-pip-version-check -q pypdf
+          python - <<'PY'
+          from pypdf import PdfReader
+          r=PdfReader('/tmp/pf03/original.pdf')
+          t='\n'.join(page.extract_text() or '' for page in r.pages)
+          print('PF03_PAGES='+str(len(r.pages)))
+          print('PF03_TEXT_CHARACTERS='+str(len(t)))
+          print('PF03_PAGE_BODIES='+str(sum(bool(page.extract_text()) for page in r.pages)))
+          open('/tmp/pf03/original.txt','w').write(t)
+          PY
           for phrase in 'Hierarchical generative model' 'Prediction error minimization' 'Sequence learning and recall simulation' 'Three-level DPC model'; do
             grep -Fqi "$phrase" /tmp/pf03/original.txt || { echo "MISSING_SECTION=$phrase"; exit 1; }
             echo "PRESENT_SECTION=$phrase"
