@@ -70,7 +70,7 @@ class FixedOriginalAnchorTests(unittest.TestCase):
         self.assertIn("expected displacement in 1s",s)
         self.assertIn("1s",s)
         self.assertIn("hA2 ifrozen",s)  # poppler's extraction of sqrt(<A^2>_frozen)
-        self.assertIn("dt",s.lower().replace("Δt","dt"))
+        self.assertIn("differential equation for a time interval",s)
         # Mathematical glyph fidelity was separately confirmed by rendering
         # the exact PDF's page 16. PDF text extraction is NOT its sole proof.
 
