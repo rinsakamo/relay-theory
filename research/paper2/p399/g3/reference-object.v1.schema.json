@@ -82,8 +82,50 @@
             "SINGLE_REFERENCE_UNVALIDATED",
             "PRIOR_EXPOSURE_DISCLOSED"
           ]
+        },
+        "r2_attestation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "assessor_token",
+            "full_original_read",
+            "blind_to_D_E",
+            "separate_actor_receipt_sha256"
+          ],
+          "properties": {
+            "assessor_token": {
+              "type": "string",
+              "minLength": 1
+            },
+            "full_original_read": {
+              "const": true
+            },
+            "blind_to_D_E": {
+              "const": true
+            },
+            "separate_actor_receipt_sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          }
         }
-      }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "independence_disclosure": {
+                "const": "INDEPENDENT_R2_COMPLETED"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "r2_attestation"
+            ]
+          }
+        }
+      ]
     },
     "variants": {
       "type": "array",
