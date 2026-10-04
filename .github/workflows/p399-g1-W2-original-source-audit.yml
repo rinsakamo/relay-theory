@@ -5,6 +5,7 @@ on:
       - paper2/p399-g1-w2-ctl-prd-diversity-20261004
     paths:
       - research/paper2/p399/g1/parallel/W2/AUDIT_SELECTION.json
+      - research/paper2/p399/g1/parallel/W2/w2_source_probe.py
       - .github/workflows/p399-g1-W2-original-source-audit.yml
   workflow_dispatch:
 permissions:
@@ -51,7 +52,7 @@ jobs:
           import os,subprocess,pathlib,json
           p=os.environ["PAPER"]
           assert p in ("P11","P12","P17"),"eLife alternative has no G1 scientific stage promotion"
-          d=pathlib.Path("research/paper2/p399/g1/parallel/W2")/p
+          d=pathlib.Path("research/paper2/p399/g1/parallel/W2")/p.lower()
           keys=["PRE_A","PASS_A","PASS_B","PASS_C","PASS_D","PASS_E"]
           frozen=[]
           for k in keys:
