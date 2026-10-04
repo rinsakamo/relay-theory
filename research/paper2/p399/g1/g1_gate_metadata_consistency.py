@@ -39,7 +39,7 @@ def check(ledger,physical,ancestry,alternates):
  assert len(main["pairs"])==16*10 and main["default_classification"]=="UNDERDETERMINED"
  assert alternatives["actual"]["P12_eLife39497"]["real_raw_bytes_acquired"] is True
  assert alternatives["actual"]["P12_eLife39497"]["pdf_pages"]==23
- assert len([x for x in alternatives["actual"].values() if x["real_raw_bytes_acquired"]])==1
+ assert len([x for x in alternatives["actual"].values() if x.get("real_raw_bytes_acquired",False)])==1
  assert all(x["prospective_replacement"]=="NOT_ADOPTED" for x in alternatives["actual"].values())
  return True
 
