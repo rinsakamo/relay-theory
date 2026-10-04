@@ -41,7 +41,7 @@ def classify(slot,url,status,raw,mode):
  else:
   page=raw.decode("utf-8","replace").lower()
   token={s:s in page for s in x["title_words"]}
-  sections={s:bool(re.search(r"\\b"+s+r"\\b",page)) for s in ("abstract","introduction","methods","results","references")}
+  sections={s:bool(re.search(r"\b"+s+r"\b",page)) for s in ("abstract","introduction","methods","results","references")}
   d.update(media="html",title_token_witnesses=token,section_indicators=sections)
   if len(page)>27000 and sum(token.values())>=3 and sum(sections.values())>=3 and (x["doi"].lower() in page):
    d["accepted_full_publisher_original"]=True
