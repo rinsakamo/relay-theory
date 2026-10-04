@@ -30,13 +30,19 @@ jobs:
           assert len(v2["requirements"]) == 7
           assert {x["id"]:x["status"] for x in v2["requirements"]}["PREA06"] == "UNDERDETERMINED"
           assert all(x == "NOT_STARTED" for x in v2["scientific_stages"].values())
+          fpath=root/"FINAL_QUALIFICATION.json"
+          final=json.loads(fpath.read_bytes())
+          assert final["verdict"] == "PF04_PRE_A_SOURCE_MATH_UNDERDETERMINED_NOT_QUALIFIED"
+          assert final["frozen_receipts"][0]["sha256"] == hashlib.sha256(v1path.read_bytes()).hexdigest()
+          assert final["frozen_receipts"][1]["sha256"] == hashlib.sha256(v2path.read_bytes()).hexdigest()
+          assert all(x["status"] == "NOT_STARTED" for x in final["frozen_receipts"][3:])
           e=math.exp
           incorrect=(e(0.25)+1)/(e(0.25)+5)+4/(e(0.75)+5)
           corrected=(e(0.25)+1+4)/(e(0.25)+5)
           assert abs(incorrect-v2["decisive_blocker"]["contradiction_test"]["sum_as_printed"])<1e-14
           assert abs(incorrect-1)>0.07
           assert abs(corrected-1)<1e-14
-          for p in [v1path,v2path]:
+          for p in [v1path,v2path,fpath,root/"FINAL_PRE_A_REPORT_JA.md"]:
               print("PF04_STAGE_SHA256",p,hashlib.sha256(p.read_bytes()).hexdigest(),len(p.read_bytes()))
           print("PF04_PRE_A_NEGATIVE_GATE_TESTS_PASS gate=UNDERDETERMINED correct_stop=TRUE incorrect_prob_sum",incorrect)
           PY
