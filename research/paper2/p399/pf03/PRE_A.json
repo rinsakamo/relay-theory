@@ -1,0 +1,142 @@
+{
+  "schema": "relay-theory.p399.pf03.pre_a.v1",
+  "candidate": "PF03",
+  "record_date": "2026-10-04",
+  "status": "PASS",
+  "authority": {
+    "issue": 399,
+    "amendment": "PDF-first actual published original / official complete full HTML fallback",
+    "pr": 411,
+    "scientific_grammar": "UNCHANGED Grammar v0",
+    "validator_401": "NOT_IMPORTED; no scientific CI success claimed"
+  },
+  "frozen_primary": {
+    "kind": "PUBLISHER_ORIGINAL_PDF",
+    "edition": "Published PLOS Computational Biology original, 2024-02-08, exact retrieved byte edition",
+    "canonical_doi": "10.1371/journal.pcbi.1011801",
+    "pdf_url": "https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1011801&type=printable",
+    "official_html_secondary_only": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1011801",
+    "accessed_on": "2026-10-04",
+    "sha256": "62d744125034ce834692cdb210065d34e2bbd0f58c9eb3387ed2d75dfb7f77ae",
+    "byte_length": 3333319,
+    "page_count": 30,
+    "extracted_text_characters": 108594,
+    "text_bearing_pages": 30,
+    "source_byte_evidence_ci_run": 37169961151,
+    "source_byte_first_attempt_run": 37169915549,
+    "source_not_committed": true
+  },
+  "gates": [
+    {
+      "id": "P0-1",
+      "requirement": "Exact identity, publisher original, date, correction history and whole-article completeness",
+      "decision": "PASS",
+      "evidence": [
+        "PLOS published original title/authors/DOI + 2024-02-08 on article and PDF p1",
+        "PubMed PMID 38330098/PMCID PMC10880975 confirms identical original bibliographic metadata",
+        "Publisher original current landing and targeted DOI/title correction searches as of 2026-10-04 surfaced no listed correction/retraction; snapshot is bounded and does not claim exhaustive future/global absence",
+        "PDF spans 30 pages including full article main text, Methods, supporting information notice and References; standalone supplement is outside selected primary scope"
+      ],
+      "qualification": "No correction notice found in the publisher original/PubMed/targeted searches as of access; DOI registry API not accessible and global undiscovered notices cannot be excluded."
+    },
+    {
+      "id": "P0-2",
+      "requirement": "Obtain and verify real complete original publisher PDF, actual bytes, page/text/math/figure visibility",
+      "decision": "PASS",
+      "evidence": [
+        "Cloud Actions run 37169961151 physically downloaded official printable PDF and output exact SHA256/3333319 bytes/30 pages/108594 extracted characters/30 text-bearing pages",
+        "Publisher PDF 30 pages independently opened in browser, visually inspected p4 Fig1, p6 Fig2, p8 Fig3, p10 Fig4, p12 Fig5, p14 Fig6, p19 Eqs3-11, p20 Eqs12-21, p23 Eqs31-35, p24 Eqs36-40",
+        "No original raw byte uploaded to Git"
+      ],
+      "qualification": "Rendered original mathematical glyphs, not merely plain-HTML equation references, were checked at decisive locations."
+    },
+    {
+      "id": "P0-3",
+      "requirement": "Fallback if actual PDF inaccessible",
+      "decision": "PASS",
+      "evidence": [
+        "Not triggered: actual complete original PDF obtained and read; no HTML substitution required"
+      ],
+      "qualification": "Original publisher HTML was secondary orientation/cross-check only, not selected primary A/B/C authority."
+    },
+    {
+      "id": "P0-4",
+      "requirement": "Freeze exactly one original primary medium and edition ahead of A",
+      "decision": "PASS",
+      "evidence": [
+        "PUBLISHER_ORIGINAL_PDF SHA256 62d744...f77ae pinned in this PRE_A; A/B/C must cite original rendered PDF page/equation/figure anchors"
+      ],
+      "qualification": "Any later material source-versus-HTML conflict is a separately tracked edition exception, never silent hybridization."
+    },
+    {
+      "id": "P0-5",
+      "requirement": "Exact-work and central-model lineage: #399 MAIN ten, PF01/02/04, #398 MAIN40/PILOT20, both historical 60 manifests and disclosed ancestors",
+      "decision": "PASS",
+      "evidence": [
+        "#399 preregistration PR411 bounded source slate; exact all four new candidate titles checked against #398 issue/comment roster and both historical scientific manifests",
+        "Independent #398 ISSUE 398 canonical MAIN40 v1 SHA 76f34e864993ea0eafd6da859ddfecf756157dc68d2e1105330481d2a77efcd1 and PILOT20 v1 DOI/title roster; no DOI or exact work identity overlap",
+        "Independently fetched historical research/paper2/designed_source_web_fulltext_manifest_v1.json entries=60 and research/paper2/chatgpt_reference_claimir_v1/manifest.json entries=60: literal DOI/author Jiang/Rao absent both",
+        "#399 MAIN candidates Meibodi/Lee/Zhao/Fang-Sims/Stocco/Sharp-Eldar/Li-Collins/Paul-Isomura-Razi/Dehaene/Spens-Burgess; PF01 synaptic plasticity continuous attractor, PF02 stochastic rule/decision module, PF04 hierarchical habits: no matching central top-down hypernetwork modulation of learned temporal basis matrices in nominated identity/design descriptions",
+        "Disclosed mechanistic ancestors: Rao-Ballard 1999 classical spatial predictive coding, Ha-Dai-Le 2017 HyperNetworks, Rao 1999 nonhierarchical temporal Kalman, Singer et al prior temporal hierarchy, Lotter et al PredNet, HHMM for 3-level gating, Xu et al experimental recall, predictive-coding associative memory",
+        "Direct same-family earlier Jiang-Rao CogSci 2023 Dynamic Predictive Coding Explains Both Prediction and Postdiction in Visual Motion Perception: explicitly disclosed overlap of 2-level DPC/flash-lag. Prior 2023 paper is NOT an independent unrelated mechanism and is NOT a reserved roster identity"
+      ],
+      "qualification": "PASS for roster-based nonduplication, not a global novelty claim: 2023 same-authors same-family predecessor and broad predictive-coding/hypernetwork ancestry are expressly retained."
+    },
+    {
+      "id": "P0-6",
+      "requirement": "Critical original generative equations, errors, inference/learning, top-down and variants legible",
+      "decision": "PASS",
+      "evidence": [
+        "Original PDF p3 Eqs1-2/p19 Eqs3-9: w=H_theta(rh), V=sum(wk Vk), rbar=ReLU(V rprev), image Ur",
+        "p19-20 Eqs10-21: Bayesian filter, Dirac previous MAP approximation, losses spatial/temporal/prior and distinct state/parameter updates",
+        "p10 and p22 predictive/postdictive constraints and tests",
+        "p12-13 and p23-24 Eq31-36 explicit optional memory layer m,G, masking and separate G learning",
+        "p14-15 and p24-25 Eq37-40 distinct three-level states, threshold gating, two pretrained level-2 matrices, level-3 generated transition weights"
+      ],
+      "qualification": "Primary PDF in-page math readable for source-critical mechanisms; no assumed replacement formula."
+    }
+  ],
+  "source_section_inventory": [
+    "Abstract/author summary PDF p1-2",
+    "Introduction p2-3",
+    "Results: basic dynamic predictive coding + Fig1 Eqs1-2 p3-4",
+    "Results: natural-video predictive coding + Fig2 p4-6",
+    "Results: temporal hierarchy + Fig3 p6-8",
+    "Results: predictive/postdictive effects + Fig4 p8-11",
+    "Results: episodic memory optional extension + Fig5 p11-13",
+    "Results: higher-order three-level + Fig6 p13-16",
+    "Discussion/negative limits p16-19",
+    "Methods: hierarchical generative model Eqs3-9 p19",
+    "Methods: prediction-error minimization Eqs10-21 p19-20",
+    "Methods: data/preprocessing p21",
+    "Methods: STRF Eq22 and autocorrelation Eqs23-26 p21-22",
+    "Methods: flash-lag Eqs27-30 p22-23",
+    "Methods: associative memory Eqs31-36 p23-24",
+    "Methods: three-level Eqs37-40 p24-25",
+    "Supporting information descriptive in-article notice p25; standalone PDF not independent primary",
+    "Acknowledgments/References p25-30"
+  ],
+  "variants": [
+    "BASIC_2_LEVEL",
+    "NATURAL_VIDEO_TRAINED_2_LEVEL",
+    "MOVING_MNIST_TRAINED_2_LEVEL",
+    "FLASH_LAG_PROBE_2_LEVEL",
+    "OPTIONAL_ASSOCIATIVE_MEMORY_EXTENSION",
+    "THREE_LEVEL_WITH_PRETRAINED_LEVEL2_TRANSITIONS_AND_ERROR_THRESHOLD"
+  ],
+  "uncertainties": [
+    "No standalone supplementary S1 Text/code admitted as primary; details of supplementary-only optimizer rates/algorithms outside scoped primary and cannot be inferred",
+    "Original article's independent correction status checked against publicly surfaced publisher/PubMed evidence only; no global absolute guarantee",
+    "Further exact numeric replication unavailable absent admitted implementation, does not affect original equation and mechanism readability"
+  ],
+  "strict_stage_order": [
+    "PRE_A",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "FINAL"
+  ],
+  "stage_gate": "A may start only from a distinct descendant commit after this PRE_A original-source receipt is frozen."
+}
