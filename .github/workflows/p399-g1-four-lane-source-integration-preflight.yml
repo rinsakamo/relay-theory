@@ -1,0 +1,28 @@
+name: P399 G1 four-lane original PREMERGE independent disposable source audit
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g1/integration/**"
+      - ".github/workflows/p399-g1-four-lane-source-integration-preflight.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  independent-original-four-lane-source-merge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 17
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python research/paper2/p399/g1/integration/g1_four_lane_original_science_temporary_merge_preflight.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g1-fourlane-original-disposable-integration-${{ github.run_id }}
+          path: g1-fourlane-preflight/original_disposable_merge_projection.json
+          retention-days: 30
+          if-no-files-found: warn
