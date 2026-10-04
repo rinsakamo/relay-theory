@@ -56,7 +56,7 @@ jobs:
                 assert b.startswith(b'%PDF')
                 pdf=PdfReader(io.BytesIO(b),strict=False)
                 rec['pages']=len(pdf.pages);assert len(pdf.pages)==24
-                pages=[re.sub(r'\\s+','',p.extract_text() or '').lower() for p in pdf.pages]
+                pages=[re.sub(r'\s+','',p.extract_text() or '').lower() for p in pdf.pages]
                 checks={'p1_original_title_and_doi':('analogouscomputationsinworkingmemory' in pages[0] and '1008971' in pages[0]),
                    'p8_original_Fig4_eeg':('fig4' in pages[7] or 'fig.4' in pages[7]),
                    'p10_original_Fig5_priority':('fig5' in pages[9] or 'fig.5' in pages[9]),
