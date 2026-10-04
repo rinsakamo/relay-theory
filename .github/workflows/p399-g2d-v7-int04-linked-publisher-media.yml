@@ -1,0 +1,29 @@
+name: P399 G2-D v7 publisher-anchored INT04 source links and exact original
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g2/int_g2d/v7_nature_int04_official_page_link_originals.py"
+      - ".github/workflows/p399-g2d-v7-int04-linked-publisher-media.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  publisher-linked-originals:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install --disable-pip-version-check 'pypdf==6.1.1' 'playwright==1.55.0'
+      - run: python -m playwright install --with-deps chromium
+      - name: Official browser main HTML raw-body and linked official PDFs 12s bounded
+        run: python research/paper2/p399/g2/int_g2d/v7_nature_int04_official_page_link_originals.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g2d-int04-publisher-anchored-links-${{ github.run_id }}
+          path: g2d-v7-nature-official-links/receipt.json
+          if-no-files-found: warn
+          retention-days: 14
