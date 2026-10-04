@@ -30,3 +30,4 @@ jobs:
           git rev-parse HEAD
           sha256sum research/paper2/p399/g3/evaluate_g3.py
           sha256sum research/paper2/p399/g3/fixtures/*.json
+          find research/paper2/p399/g3 -type f \( -name '*.py' -o -name '*.json' -o -name '*.md' \) | LC_ALL=C sort | xargs sha256sum
