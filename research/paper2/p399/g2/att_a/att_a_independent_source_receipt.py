@@ -95,9 +95,9 @@ def check_pdf(item, spec, outdir, timeout):
                 "page_number_1_based":n+1,"render_png_sha256":sha256(raw),
                 "width":pix.width,"height":pix.height})
         if item.endswith("S3"):
-            full="\\n".join(page.get_text() for page in doc)
+            full="\n".join(page.get_text() for page in doc)
             result["s3_equation_text_identifiers_detected"]=[n for n in range(1,20) if
-                re.search(rf"\\bS{n}\\b",full)]
+                re.search(rf"\bS{n}\b",full)]
             result["s3_equation_pixel_semantics_pass"]=False
         result["verified"]=True
         result["disposition"]="EXACT_ORIGINAL_BYTES_AND_PAGES_AND_PIXELS_RENDERED_NO_AUTOMATIC_SEMANTIC_QUALIFICATION"
@@ -118,7 +118,7 @@ def run(out,offline=False,timeout=12,fixture=None):
     if not offline:
         for name,spec in FILES.items():
             report["records"].append(check_pdf(name,spec,out,timeout))
-    (out / "ATT_A_ACTUAL_RUNTIME_RECEIPT.json").write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
+    (out / "ATT_A_ACTUAL_RUNTIME_RECEIPT.json").write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     print(json.dumps({k:v for k,v in report.items() if k!="records"},sort_keys=True))
     for result in report["records"]:
         print(result["role"],result["disposition"],result.get("observed_sha256","NO_BYTES"),result.get("observed_pages","NO_PAGES"))
