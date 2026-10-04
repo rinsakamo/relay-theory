@@ -99,12 +99,12 @@ jobs:
           doi='10.1371/journal.pcbi.1008971'
           raw=S.get(base,params={'id':doi,'type':'printable'},timeout=100).content
           pdf=fitz.open(stream=raw,filetype='pdf')
-          for pi in [1,4,7,10,13,16,19]:
+          for pi in [2,3,5,6,8,9,11,14,18]:
             im=Image.open(io.BytesIO(pdf[pi].get_pixmap(matrix=fitz.Matrix(.8,.8),alpha=False).tobytes('jpeg')))
             im.thumbnail((680,900))
             b=io.BytesIO();im.convert('RGB').save(b,format='JPEG',quality=52,optimize=True)
             print('W2_P11_ORIGINAL_PDF_PAGE_'+str(pi+1)+'_B64='+base64.b64encode(b.getvalue()).decode(),flush=True)
-          for si in ['s001','s003']:
+          for si in ['s002','s004']:
             b=S.get(base,params={'id':doi+'.'+si,'type':'supplementary'},timeout=100).content
             im=Image.open(io.BytesIO(b)); im.thumbnail((950,850))
             q=io.BytesIO();im.convert('RGB').save(q,format='JPEG',quality=52,optimize=True)
