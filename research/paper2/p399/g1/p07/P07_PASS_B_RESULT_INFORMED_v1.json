@@ -1,0 +1,1238 @@
+{
+  "schema": "relaytheory.p399.g1.p07.immutable.result_informed_B.v1",
+  "authority": "Issue399 adopted v2.3.1 B original same selected publisher full PDF + FULL immutable A",
+  "source": {
+    "doi": "10.1371/journal.pcbi.1000254",
+    "primary_pdf_sha256": "2b6cb16c821e937f712586ef52ac8edb895bf4f019d2c86b181aae805eb31959",
+    "pages": 14,
+    "url": "https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1000254&type=printable",
+    "original_full_14_publisher_pages_read": true
+  },
+  "input_full_frozen_A": {
+    "path": "P07_PASS_A_SOURCE_FIRST_v1.json",
+    "git_commit": "ed01ae9a231db362a2aad372a16a9ae451a8cab1",
+    "git_blob_sha": "824988c06efaf42fd290a7e779edfb787c71a0eb",
+    "complete_original_A_object": {
+      "schema": "relaytheory.p399.g1.p07.source-first.immutable-A.v1",
+      "PRE_A_commit": "5ecf5893f09e3d10ca0b791bda3d0a2cfb25bacc",
+      "date_jst": "2026-10-04",
+      "protocol": "source first A original published PDF, NO GRAMMAR v0 ROLE MAPPING YET",
+      "P07": {
+        "doi": "10.1371/journal.pcbi.1000254",
+        "primary_pdf_sha256": "2b6cb16c821e937f712586ef52ac8edb895bf4f019d2c86b181aae805eb31959",
+        "pages": 14,
+        "edition": "PUBLISHED ORIGINAL DEC 2008",
+        "scope": "original article only; standalone supplemental image downloads not mandatory"
+      },
+      "A_claims": [
+        {
+          "id": "A01",
+          "original_pdf_location": "original p2, Policies and Value Functions",
+          "source_grounded_claim": "Markov state set S with transition matrix P and source-defined uncontrolled kernel P(0), required admissibility condition",
+          "claim_kind": "SYSTEM_CONFIG_C",
+          "confidence": "ORIGINAL_SOURCE_TEXT_AND_VISUAL_SCOPE",
+          "source_domain": "ORIGINAL_PUBLISHED_PDF_ONLY"
+        },
+        {
+          "id": "A02",
+          "original_pdf_location": "original p2, Eq1–2",
+          "source_grounded_claim": "Value v for a fixed policy equals immediate payoff ℓ plus expected future return; nonlinear Bellman because policy depends on v",
+          "claim_kind": "SOURCE_VALUE_RECURSION",
+          "confidence": "ORIGINAL_SOURCE_TEXT_AND_VISUAL_SCOPE",
+          "source_domain": "ORIGINAL_PUBLISHED_PDF_ONLY"
+        },
+        {
+          "id": "A03",
+          "original_pdf_location": "original p2, Eq3a–3b",
+          "source_grounded_claim": "Value-conditioned stochastic policy reweights allowed uncontrolled transitions using inverse temperature λ; source treats logit rule as related form",
+          "claim_kind": "POLICY_OUTPUT",
+          "confidence": "ORIGINAL_SOURCE_TEXT_AND_VISUAL_SCOPE",
+          "source_domain": "ORIGINAL_PUBLISHED_PDF_ONLY"
+        },
+        {
+          "id": "A04",
+          "original_pdf_location": "original p2, Eq4",
+          "source_grounded_claim": "Source obtains source-defined optimum value by Robbins–Monro value iteration; assumes convergence for examples",
+          "claim_kind": "ALGORITHM_ASSUMPTION",
+          "confidence": "ORIGINAL_SOURCE_TEXT_AND_VISUAL_SCOPE",
+          "source_domain": "ORIGINAL_PUBLISHED_PDF_ONLY"
+        },
+        {
+          "id": "A05",
+          "original_pdf_location": "original p3, Fig1A–E",
+          "source_grounded_claim": "16-state one-agent illustration local vs global payoff maxima, restricted adjacent moves, source reported convergence and ensemble mass focus",
+          "claim_kind": "SOURCE_ILLUSTRATION",
+          "confidence": "ORIGINAL_SOURCE_TEXT_AND_VISUAL_SCOPE",
+          "source_domain": "ORIGINAL_PUBLISHED_PDF_ONLY"
+        },
+        {
+          "id": "A06",
+          "original_pdf_location": "original p3, Games and Multiple Agents",
+          "source_grounded_claim": "Two-agent joint state space S1×S2 and agent-specific payoffs ℓ1/ℓ2 in joint configurations",
+          "claim_kind": "JOINT_STATE",
+          "confidence": "ORIGINAL_SOURCE_TEXT_AND_VISUAL_SCOPE",
+          "source_domain": "ORIGINAL_PUBLISHED_PDF_ONLY"
+        },
+        {
+          "id": "A07",
+          "original_pdf_location": "original p3–4, Eq5",
+          "source_grounded_claim": "In sequential games only active agent transitions per turn, other remains fixed; factored source joint-transition operators use Kronecker product",
+          "claim_kind": "SEQUENTIAL_FACTOR",
+          "confidence": "ORIGINAL_SOURCE_TEXT_AND_VISUAL_SCOPE",
+          "source_domain": "ORIGINAL_PUBLISHED_PDF_ONLY"
+        },
+        {
+          "id": "A08",
+          "original_pdf_location": "original p4, Eq6",
+          "source_grounded_claim": "Agent-indexed recursively nested player-specific value functions indexed by sophistication order, conditional on modeled opponent's order",
+          "claim_kind": "RECURSIVE_NESTING",
+          "confidence": "ORIGINAL_SOURCE_TEXT_AND_VISUAL_SCOPE",
+          "source_domain": "ORIGINAL_PUBLISHED_PDF_ONLY"
+        },
+        {
+          "id": "A09",
+          "original_pdf_location": "original p4–5, Table1 and Fig2A",
+          "source_grounded_claim": "Stag-hunt has risk-dominant unilateral low payoff vs payoff-dominant cooperative high payoff; constraints of joint state remain",
+          "claim_kind": "EXTERNAL_GAME",
+          "confidence": "ORIGINAL_SOURCE_TEXT_AND_VISUAL_SCOPE",
+          "source_domain": "ORIGINAL_PUBLISHED_PDF_ONLY"
+        },
+        {
+          "id": "A10",
+          "original_pdf_location": "original p5, Fig2B–C",
+          "source_grounded_claim": "First-to-fourth-order 2-agent source simulations yield distinct strategy-conditioned fields and resulting ensemble equilibria in chosen task",
+          "claim_kind": "SOURCE_SIMULATION",
+          "confidence": "ORIGINAL_SOURCE_TEXT_AND_VISUAL_SCOPE",
+          "source_domain": "ORIGINAL_PUBLISHED_PDF_ONLY"
+        },
+        {
+          "id": "A11",
+          "original_pdf_location": "original p4–6, Eq7",
+          "source_grounded_claim": "Likelihood of observed joint-state history under a proposed strategy model factors by Markov transition probabilities",
+          "claim_kind": "OBSERVED_TRACE_PROBE",
+          "confidence": "ORIGINAL_SOURCE_TEXT_AND_VISUAL_SCOPE",
+          "source_domain": "ORIGINAL_PUBLISHED_PDF_ONLY"
+        },
+        {
+          "id": "A12",
+          "original_pdf_location": "original p6, Eq8–9",
+          "source_grounded_claim": "Fixed-unknown opponent strategy/order inferred from action trajectories via model posterior conditional on fixed known self strategy; original source assumes flat model prior at this stage",
+          "claim_kind": "FIXED_INFERENCE",
+          "confidence": "ORIGINAL_SOURCE_TEXT_AND_VISUAL_SCOPE",
+          "source_domain": "ORIGINAL_PUBLISHED_PDF_ONLY"
+        },
+        {
+          "id": "A13",
+          "original_pdf_location": "original p6, Fig3A–B",
+          "source_grounded_claim": "Original synthetic four 32-move trials compare known matched and mismatched opponent strategies; inference improves after reported evidence, not proof of universality",
+          "claim_kind": "SOURCE_SYNTHETIC_TEST",
+          "confidence": "ORIGINAL_SOURCE_TEXT_AND_VISUAL_SCOPE",
+          "source_domain": "ORIGINAL_PUBLISHED_PDF_ONLY"
+        },
+        {
+          "id": "A14",
+          "original_pdf_location": "original p6–7, Bounded Rationality",
+          "source_grounded_claim": "Each agent sets point estimate and prior-supported upper bound K on opponent sophistication; truncated hierarchy prevents infinite regress",
+          "claim_kind": "BOUNDARY_PRIOR",
+          "confidence": "ORIGINAL_SOURCE_TEXT_AND_VISUAL_SCOPE",
+          "source_domain": "ORIGINAL_PUBLISHED_PDF_ONLY"
+        },
+        {
+          "id": "A15",
+          "original_pdf_location": "original p7, Eq10 and Fig4",
+          "source_grounded_claim": "Posterior update of inferred opponent policy order drives own next-order strategy update, using K-bounded support; source policy order and uncertainty must not be collapsed",
+          "claim_kind": "ADAPTIVE_INFERENCE",
+          "confidence": "ORIGINAL_SOURCE_TEXT_AND_VISUAL_SCOPE",
+          "source_domain": "ORIGINAL_PUBLISHED_PDF_ONLY"
+        },
+        {
+          "id": "A16",
+          "original_pdf_location": "original p7–8, Eq11–12",
+          "source_grounded_claim": "Fixed-model vs opponent-learning ToM-model trajectory evidence differ in whether each player's own policy/order is updated during ongoing game",
+          "claim_kind": "SOURCE_MODEL_VARIANT",
+          "confidence": "ORIGINAL_SOURCE_TEXT_AND_VISUAL_SCOPE",
+          "source_domain": "ORIGINAL_PUBLISHED_PDF_ONLY"
+        },
+        {
+          "id": "A17",
+          "original_pdf_location": "original p8, Fig5A–B",
+          "source_grounded_claim": "Simulated asymmetrical bounds K1=4,K2=3 distinguish fixed and dynamically inferred models in that source simulation; reported 94.5% vs 0.008% is not RelayTheory reproduction",
+          "claim_kind": "SOURCE_REPORTED_SIMULATION",
+          "confidence": "ORIGINAL_SOURCE_TEXT_AND_VISUAL_SCOPE",
+          "source_domain": "ORIGINAL_PUBLISHED_PDF_ONLY"
+        },
+        {
+          "id": "A18",
+          "original_pdf_location": "original p8–9, Results and Fig6",
+          "source_grounded_claim": "Original human experiment is three-agent computer-mediated stag-hunt (subject/computer/stag), not identical to two-player toy; movement order stag→subject→computer with bounded task conditions",
+          "claim_kind": "EXTERNAL_EXPERIMENT",
+          "confidence": "ORIGINAL_SOURCE_TEXT_AND_VISUAL_SCOPE",
+          "source_domain": "ORIGINAL_PUBLISHED_PDF_ONLY"
+        },
+        {
+          "id": "A19",
+          "original_pdf_location": "original p9, Experimental Procedures",
+          "source_grounded_claim": "Source reports 6 healthy male participants, two computer-agent types, four blocks of 10 rounds, randomized move limit 15±5, rewards and actions per source; do not infer population generalization",
+          "claim_kind": "EXPERIMENT_SAMPLE",
+          "confidence": "ORIGINAL_SOURCE_TEXT_AND_VISUAL_SCOPE",
+          "source_domain": "ORIGINAL_PUBLISHED_PDF_ONLY"
+        },
+        {
+          "id": "A20",
+          "original_pdf_location": "original p10, Eq13 and Fig7",
+          "source_grounded_claim": "Actual experimental adaptation extends multi-agent recurrent value-functions to source three-agent setup; stag order fixed while subject/computer strategy type considered",
+          "claim_kind": "THREE_AGENT_GENERALIZATION",
+          "confidence": "ORIGINAL_SOURCE_TEXT_AND_VISUAL_SCOPE",
+          "source_domain": "ORIGINAL_PUBLISHED_PDF_ONLY"
+        },
+        {
+          "id": "A21",
+          "original_pdf_location": "original p10–11, Eq14a–14b",
+          "source_grounded_claim": "Fitting compares original eight fixed vs eight inference-updating ToM models over behavioral subject choices, with source-defined opponent/stag fixed nuisance orders",
+          "claim_kind": "SOURCE_EXPERIMENT_FIT",
+          "confidence": "ORIGINAL_SOURCE_TEXT_AND_VISUAL_SCOPE",
+          "source_domain": "ORIGINAL_PUBLISHED_PDF_ONLY"
+        },
+        {
+          "id": "A22",
+          "original_pdf_location": "original p11, Fig8A–B",
+          "source_grounded_claim": "Source reports original pooled/model marginal posterior ToM 85.8% and selected type 5, plus representative inferred opponent trajectories; these are model-dependent source outputs, not original quantitative replay",
+          "claim_kind": "SOURCE_REPORTED_HUMAN_RESULT",
+          "confidence": "ORIGINAL_SOURCE_TEXT_AND_VISUAL_SCOPE",
+          "source_domain": "ORIGINAL_PUBLISHED_PDF_ONLY"
+        },
+        {
+          "id": "A23",
+          "original_pdf_location": "original p12, Discussion",
+          "source_grounded_claim": "Authors distinguish their recursive policy model from teaching/reputation and general cognitive hierarchy; reference inheritance must remain disclosed",
+          "claim_kind": "SOURCE_INTERPRETIVE_COMPARISON",
+          "confidence": "ORIGINAL_SOURCE_TEXT_AND_VISUAL_SCOPE",
+          "source_domain": "ORIGINAL_PUBLISHED_PDF_ONLY"
+        },
+        {
+          "id": "A24",
+          "original_pdf_location": "original p12–13, Eq15–18",
+          "source_grounded_claim": "At equilibrium, optimal prosocial utility transformation may yield same choices as high-order opponent inference without each agent explicitly inferring an opponent; source counterexample to unique-mechanism inference",
+          "claim_kind": "ADVERSE_ALTERNATIVE",
+          "confidence": "ORIGINAL_SOURCE_TEXT_AND_VISUAL_SCOPE",
+          "source_domain": "ORIGINAL_PUBLISHED_PDF_ONLY"
+        },
+        {
+          "id": "A25",
+          "original_pdf_location": "original p13, Prosocial Utility and Conclusion",
+          "source_grounded_claim": "Observed identical equilibrium does not imply identical transient trajectories for sophisticated ToM and prosocial low-sophistication agents; do not silently merge these levels",
+          "claim_kind": "SCOPE_DIFFERENCE",
+          "confidence": "ORIGINAL_SOURCE_TEXT_AND_VISUAL_SCOPE",
+          "source_domain": "ORIGINAL_PUBLISHED_PDF_ONLY"
+        },
+        {
+          "id": "A26",
+          "original_pdf_location": "original p13, Conclusion",
+          "source_grounded_claim": "Opponent strategies are assumed rational, pure and fixed for model inference; later adaptation/mixed strategy models are proposed as future work, not original measured success",
+          "claim_kind": "EXCLUDED_VARIANT",
+          "confidence": "ORIGINAL_SOURCE_TEXT_AND_VISUAL_SCOPE",
+          "source_domain": "ORIGINAL_PUBLISHED_PDF_ONLY"
+        },
+        {
+          "id": "A27",
+          "original_pdf_location": "original p2–3 and p13",
+          "source_grounded_claim": "Source assumes value-conditioned policy and does not model the learning machinery that acquires it, causal neurobiology, across-game predictive type stability, or exact human refit in RelayTheory",
+          "claim_kind": "EXCLUDED_CLAIMS",
+          "confidence": "ORIGINAL_SOURCE_TEXT_AND_VISUAL_SCOPE",
+          "source_domain": "ORIGINAL_PUBLISHED_PDF_ONLY"
+        }
+      ],
+      "A_source_edges": [
+        {
+          "from": "A01",
+          "to": "A02",
+          "meaning": "state and transitions enable value",
+          "relation": "SOURCE_DEFINED_DEPENDENCE_NOT_AUTO_GRAMMAR"
+        },
+        {
+          "from": "A02",
+          "to": "A03",
+          "meaning": "value conditions policy",
+          "relation": "SOURCE_DEFINED_DEPENDENCE_NOT_AUTO_GRAMMAR"
+        },
+        {
+          "from": "A03",
+          "to": "A04",
+          "meaning": "fixed-form policy supports value iteration",
+          "relation": "SOURCE_DEFINED_DEPENDENCE_NOT_AUTO_GRAMMAR"
+        },
+        {
+          "from": "A01",
+          "to": "A05",
+          "meaning": "toy uses admissibility",
+          "relation": "SOURCE_DEFINED_DEPENDENCE_NOT_AUTO_GRAMMAR"
+        },
+        {
+          "from": "A03",
+          "to": "A05",
+          "meaning": "toy policy",
+          "relation": "SOURCE_DEFINED_DEPENDENCE_NOT_AUTO_GRAMMAR"
+        },
+        {
+          "from": "A01",
+          "to": "A06",
+          "meaning": "joint agent states",
+          "relation": "SOURCE_DEFINED_DEPENDENCE_NOT_AUTO_GRAMMAR"
+        },
+        {
+          "from": "A06",
+          "to": "A07",
+          "meaning": "joint sequential transition",
+          "relation": "SOURCE_DEFINED_DEPENDENCE_NOT_AUTO_GRAMMAR"
+        },
+        {
+          "from": "A02",
+          "to": "A08",
+          "meaning": "player value",
+          "relation": "SOURCE_DEFINED_DEPENDENCE_NOT_AUTO_GRAMMAR"
+        },
+        {
+          "from": "A07",
+          "to": "A08",
+          "meaning": "other player policy dependence",
+          "relation": "SOURCE_DEFINED_DEPENDENCE_NOT_AUTO_GRAMMAR"
+        },
+        {
+          "from": "A08",
+          "to": "A10",
+          "meaning": "order-indexed simulated value",
+          "relation": "SOURCE_DEFINED_DEPENDENCE_NOT_AUTO_GRAMMAR"
+        },
+        {
+          "from": "A09",
+          "to": "A10",
+          "meaning": "stag hunt payoff",
+          "relation": "SOURCE_DEFINED_DEPENDENCE_NOT_AUTO_GRAMMAR"
+        },
+        {
+          "from": "A07",
+          "to": "A11",
+          "meaning": "Markov history transition",
+          "relation": "SOURCE_DEFINED_DEPENDENCE_NOT_AUTO_GRAMMAR"
+        },
+        {
+          "from": "A11",
+          "to": "A12",
+          "meaning": "likelihood for model posterior",
+          "relation": "SOURCE_DEFINED_DEPENDENCE_NOT_AUTO_GRAMMAR"
+        },
+        {
+          "from": "A12",
+          "to": "A13",
+          "meaning": "fixed order synthetic inference",
+          "relation": "SOURCE_DEFINED_DEPENDENCE_NOT_AUTO_GRAMMAR"
+        },
+        {
+          "from": "A14",
+          "to": "A15",
+          "meaning": "bound inferred sophistication",
+          "relation": "SOURCE_DEFINED_DEPENDENCE_NOT_AUTO_GRAMMAR"
+        },
+        {
+          "from": "A12",
+          "to": "A15",
+          "meaning": "posterior over order informs policy",
+          "relation": "SOURCE_DEFINED_DEPENDENCE_NOT_AUTO_GRAMMAR"
+        },
+        {
+          "from": "A15",
+          "to": "A16",
+          "meaning": "adaptive vs fixed controls",
+          "relation": "SOURCE_DEFINED_DEPENDENCE_NOT_AUTO_GRAMMAR"
+        },
+        {
+          "from": "A10",
+          "to": "A17",
+          "meaning": "simulated choice landscape",
+          "relation": "SOURCE_DEFINED_DEPENDENCE_NOT_AUTO_GRAMMAR"
+        },
+        {
+          "from": "A15",
+          "to": "A17",
+          "meaning": "adaptive policy synthetic",
+          "relation": "SOURCE_DEFINED_DEPENDENCE_NOT_AUTO_GRAMMAR"
+        },
+        {
+          "from": "A18",
+          "to": "A19",
+          "meaning": "human task sample and design",
+          "relation": "SOURCE_DEFINED_DEPENDENCE_NOT_AUTO_GRAMMAR"
+        },
+        {
+          "from": "A07",
+          "to": "A20",
+          "meaning": "third actor generalization",
+          "relation": "SOURCE_DEFINED_DEPENDENCE_NOT_AUTO_GRAMMAR"
+        },
+        {
+          "from": "A08",
+          "to": "A20",
+          "meaning": "nested value functions extend",
+          "relation": "SOURCE_DEFINED_DEPENDENCE_NOT_AUTO_GRAMMAR"
+        },
+        {
+          "from": "A19",
+          "to": "A21",
+          "meaning": "behavioral observations",
+          "relation": "SOURCE_DEFINED_DEPENDENCE_NOT_AUTO_GRAMMAR"
+        },
+        {
+          "from": "A20",
+          "to": "A21",
+          "meaning": "model-predicted likelihood",
+          "relation": "SOURCE_DEFINED_DEPENDENCE_NOT_AUTO_GRAMMAR"
+        },
+        {
+          "from": "A16",
+          "to": "A21",
+          "meaning": "fixed/ToM comparison",
+          "relation": "SOURCE_DEFINED_DEPENDENCE_NOT_AUTO_GRAMMAR"
+        },
+        {
+          "from": "A21",
+          "to": "A22",
+          "meaning": "source empirical model fit",
+          "relation": "SOURCE_DEFINED_DEPENDENCE_NOT_AUTO_GRAMMAR"
+        },
+        {
+          "from": "A08",
+          "to": "A24",
+          "meaning": "optimal recursive equilibrium comparator",
+          "relation": "SOURCE_DEFINED_DEPENDENCE_NOT_AUTO_GRAMMAR"
+        },
+        {
+          "from": "A24",
+          "to": "A25",
+          "meaning": "equilibrium ambiguity limit",
+          "relation": "SOURCE_DEFINED_DEPENDENCE_NOT_AUTO_GRAMMAR"
+        },
+        {
+          "from": "A14",
+          "to": "A26",
+          "meaning": "source bounds rationality",
+          "relation": "SOURCE_DEFINED_DEPENDENCE_NOT_AUTO_GRAMMAR"
+        },
+        {
+          "from": "A02",
+          "to": "A27",
+          "meaning": "acquisition not modeled",
+          "relation": "SOURCE_DEFINED_DEPENDENCE_NOT_AUTO_GRAMMAR"
+        }
+      ],
+      "source_section_sweep": [
+        {
+          "original_published_pdf_page": 1,
+          "name": "Introduction and model overview",
+          "node_ids": [
+            "A01",
+            "A02",
+            "A06"
+          ],
+          "scope": "sets problem rather than unique empirical solution"
+        },
+        {
+          "original_published_pdf_page": 2,
+          "name": "Policies and Value Functions Eq1–4",
+          "node_ids": [
+            "A01",
+            "A02",
+            "A03",
+            "A04",
+            "A27"
+          ]
+        },
+        {
+          "original_published_pdf_page": 3,
+          "name": "Toy example and multi-player generalization Fig1",
+          "node_ids": [
+            "A05",
+            "A06",
+            "A07"
+          ]
+        },
+        {
+          "original_published_pdf_page": 4,
+          "name": "Recursive agent joint values Eq5–8 and Table1",
+          "node_ids": [
+            "A07",
+            "A08",
+            "A09",
+            "A11"
+          ]
+        },
+        {
+          "original_published_pdf_page": 5,
+          "name": "Stag hunt source Fig2 and fixed-model setup",
+          "node_ids": [
+            "A09",
+            "A10",
+            "A11"
+          ]
+        },
+        {
+          "original_published_pdf_page": 6,
+          "name": "Fixed-order posterior Eq9, synthetic Fig3 and bounded rationality",
+          "node_ids": [
+            "A12",
+            "A13",
+            "A14"
+          ]
+        },
+        {
+          "original_published_pdf_page": 7,
+          "name": "Opponent representation Eq10–12 Fig4",
+          "node_ids": [
+            "A15",
+            "A16"
+          ]
+        },
+        {
+          "original_published_pdf_page": 8,
+          "name": "Source simulation Fig5 and original human Results",
+          "node_ids": [
+            "A17",
+            "A18"
+          ]
+        },
+        {
+          "original_published_pdf_page": 9,
+          "name": "Original human task and exclusions Fig6",
+          "node_ids": [
+            "A18",
+            "A19"
+          ]
+        },
+        {
+          "original_published_pdf_page": 10,
+          "name": "Three-agent model Eq13 Fig7, setup Eq14",
+          "node_ids": [
+            "A20",
+            "A21"
+          ]
+        },
+        {
+          "original_published_pdf_page": 11,
+          "name": "Observed original study Fig8, caveats",
+          "node_ids": [
+            "A21",
+            "A22"
+          ]
+        },
+        {
+          "original_published_pdf_page": 12,
+          "name": "Alternatives and prosocial comparison Eq15–17",
+          "node_ids": [
+            "A23",
+            "A24"
+          ]
+        },
+        {
+          "original_published_pdf_page": 13,
+          "name": "Pro-social counterexample Eq18 and future limits",
+          "node_ids": [
+            "A24",
+            "A25",
+            "A26",
+            "A27"
+          ]
+        },
+        {
+          "original_published_pdf_page": 14,
+          "name": "Original references and in-article supplement descriptions only",
+          "node_ids": [],
+          "zero_additional_core_mechanism": true
+        }
+      ],
+      "original_claim_count": 27,
+      "original_edge_count": 30,
+      "original_sections_checked": 14,
+      "important_source_defined_variants": [
+        "single agent baseline Eq1–4",
+        "recursive two-agent stag hunt Eq5/6",
+        "known self/fixed other strategy posterior Eq7–9",
+        "bounded mutual adaptation Eq10–12",
+        "actual three-agent human data Eq13–14",
+        "equilibrium-equivalent prosocial control Eq15–18"
+      ],
+      "material_conditions_captured_in_A": [
+        "L01",
+        "L02",
+        "L03",
+        "L04",
+        "L05",
+        "L06",
+        "L07",
+        "L08",
+        "L09"
+      ],
+      "negative_findings_preserved": [
+        "source does not model acquisition of value-function",
+        "pure fixed opponent + bounded sophistication assumptions",
+        "synthetic and human sources distinguished",
+        "prosocial utility creates same equilibrium without ToM, but possible differential trajectories",
+        "source 2008 small original sample not cross-game validation"
+      ],
+      "World_system_boundary": "Task's computer opponents/reward/stag/trial timing and human observations are World/experiment; each source agent's internally modeled state/policy/posterior belongs to modeled cognitive system; other actual agent's unseen mental states are not mistaken for direct internal system state; feedforward equations of one simulated actor are source specified not invented universal coordinator",
+      "numeric_data_replay_performed": false,
+      "qualifier": "IMMUTABLE_PASS_A_SOURCE_FIRST_NO_SCIENCE_QUALIFICATION_YET",
+      "main_read_or_evaluated": false
+    }
+  },
+  "full_A_review": [
+    {
+      "original_A_id": "A01",
+      "source_locator": "original p2, Policies and Value Functions",
+      "status": "B_RETAIN_SOURCE_RELATIVE",
+      "findings": []
+    },
+    {
+      "original_A_id": "A02",
+      "source_locator": "original p2, Eq1–2",
+      "status": "B_RETAIN_SOURCE_RELATIVE",
+      "findings": []
+    },
+    {
+      "original_A_id": "A03",
+      "source_locator": "original p2, Eq3a–3b",
+      "status": "B_MISSING_SCOPE_QUALIFIER",
+      "findings": [
+        "B02"
+      ]
+    },
+    {
+      "original_A_id": "A04",
+      "source_locator": "original p2, Eq4",
+      "status": "B_RETAIN_SOURCE_RELATIVE",
+      "findings": []
+    },
+    {
+      "original_A_id": "A05",
+      "source_locator": "original p3, Fig1A–E",
+      "status": "B_RETAIN_SOURCE_RELATIVE",
+      "findings": []
+    },
+    {
+      "original_A_id": "A06",
+      "source_locator": "original p3, Games and Multiple Agents",
+      "status": "B_RETAIN_SOURCE_RELATIVE",
+      "findings": []
+    },
+    {
+      "original_A_id": "A07",
+      "source_locator": "original p3–4, Eq5",
+      "status": "B_RETAIN_SOURCE_RELATIVE",
+      "findings": []
+    },
+    {
+      "original_A_id": "A08",
+      "source_locator": "original p4, Eq6",
+      "status": "B_RETAIN_SOURCE_RELATIVE",
+      "findings": []
+    },
+    {
+      "original_A_id": "A09",
+      "source_locator": "original p4–5, Table1 and Fig2A",
+      "status": "B_RETAIN_SOURCE_RELATIVE",
+      "findings": []
+    },
+    {
+      "original_A_id": "A10",
+      "source_locator": "original p5, Fig2B–C",
+      "status": "B_RETAIN_SOURCE_RELATIVE",
+      "findings": []
+    },
+    {
+      "original_A_id": "A11",
+      "source_locator": "original p4–6, Eq7",
+      "status": "B_RETAIN_SOURCE_RELATIVE",
+      "findings": []
+    },
+    {
+      "original_A_id": "A12",
+      "source_locator": "original p6, Eq8–9",
+      "status": "B_RETAIN_SOURCE_RELATIVE",
+      "findings": []
+    },
+    {
+      "original_A_id": "A13",
+      "source_locator": "original p6, Fig3A–B",
+      "status": "B_RETAIN_SOURCE_RELATIVE",
+      "findings": []
+    },
+    {
+      "original_A_id": "A14",
+      "source_locator": "original p6–7, Bounded Rationality",
+      "status": "B_RETAIN_SOURCE_RELATIVE",
+      "findings": []
+    },
+    {
+      "original_A_id": "A15",
+      "source_locator": "original p7, Eq10 and Fig4",
+      "status": "B_RETAIN_SOURCE_RELATIVE",
+      "findings": []
+    },
+    {
+      "original_A_id": "A16",
+      "source_locator": "original p7–8, Eq11–12",
+      "status": "B_RETAIN_SOURCE_RELATIVE",
+      "findings": []
+    },
+    {
+      "original_A_id": "A17",
+      "source_locator": "original p8, Fig5A–B",
+      "status": "B_RETAIN_SOURCE_RELATIVE",
+      "findings": []
+    },
+    {
+      "original_A_id": "A18",
+      "source_locator": "original p8–9, Results and Fig6",
+      "status": "B_RETAIN_SOURCE_RELATIVE",
+      "findings": [
+        "B04"
+      ]
+    },
+    {
+      "original_A_id": "A19",
+      "source_locator": "original p9, Experimental Procedures",
+      "status": "B_SOURCE_DEFECT",
+      "findings": [
+        "B01",
+        "B03"
+      ]
+    },
+    {
+      "original_A_id": "A20",
+      "source_locator": "original p10, Eq13 and Fig7",
+      "status": "B_RETAIN_SOURCE_RELATIVE",
+      "findings": [
+        "B04"
+      ]
+    },
+    {
+      "original_A_id": "A21",
+      "source_locator": "original p10–11, Eq14a–14b",
+      "status": "B_RETAIN_SOURCE_RELATIVE",
+      "findings": []
+    },
+    {
+      "original_A_id": "A22",
+      "source_locator": "original p11, Fig8A–B",
+      "status": "B_RETAIN_SOURCE_RELATIVE",
+      "findings": []
+    },
+    {
+      "original_A_id": "A23",
+      "source_locator": "original p12, Discussion",
+      "status": "B_RETAIN_SOURCE_RELATIVE",
+      "findings": []
+    },
+    {
+      "original_A_id": "A24",
+      "source_locator": "original p12–13, Eq15–18",
+      "status": "B_RETAIN_SOURCE_RELATIVE",
+      "findings": [
+        "B05"
+      ]
+    },
+    {
+      "original_A_id": "A25",
+      "source_locator": "original p13, Prosocial Utility and Conclusion",
+      "status": "B_RETAIN_SOURCE_RELATIVE",
+      "findings": [
+        "B05"
+      ]
+    },
+    {
+      "original_A_id": "A26",
+      "source_locator": "original p13, Conclusion",
+      "status": "B_RETAIN_SOURCE_RELATIVE",
+      "findings": []
+    },
+    {
+      "original_A_id": "A27",
+      "source_locator": "original p2–3 and p13",
+      "status": "B_ADJACENT_MODEL_SCOPE_CHECK",
+      "findings": [
+        "B02"
+      ]
+    }
+  ],
+  "edge_review": [
+    {
+      "edge_index": 1,
+      "from": "A01",
+      "to": "A02",
+      "review": "EXACT_ORIGINAL_A_EDGE_READ_WITH_SAME_PUBLISHER_SOURCE; RETAIN_CONDITIONAL_SOURCE_DEPENDENCE",
+      "scope": "Not evidence of independent causal necessity; B02 optimality scope may constrain A02→A03 and A03→A04"
+    },
+    {
+      "edge_index": 2,
+      "from": "A02",
+      "to": "A03",
+      "review": "EXACT_ORIGINAL_A_EDGE_READ_WITH_SAME_PUBLISHER_SOURCE; RETAIN_CONDITIONAL_SOURCE_DEPENDENCE",
+      "scope": "Not evidence of independent causal necessity; B02 optimality scope may constrain A02→A03 and A03→A04"
+    },
+    {
+      "edge_index": 3,
+      "from": "A03",
+      "to": "A04",
+      "review": "EXACT_ORIGINAL_A_EDGE_READ_WITH_SAME_PUBLISHER_SOURCE; RETAIN_CONDITIONAL_SOURCE_DEPENDENCE",
+      "scope": "Not evidence of independent causal necessity; B02 optimality scope may constrain A02→A03 and A03→A04"
+    },
+    {
+      "edge_index": 4,
+      "from": "A01",
+      "to": "A05",
+      "review": "EXACT_ORIGINAL_A_EDGE_READ_WITH_SAME_PUBLISHER_SOURCE; RETAIN_CONDITIONAL_SOURCE_DEPENDENCE",
+      "scope": "Not evidence of independent causal necessity; B02 optimality scope may constrain A02→A03 and A03→A04"
+    },
+    {
+      "edge_index": 5,
+      "from": "A03",
+      "to": "A05",
+      "review": "EXACT_ORIGINAL_A_EDGE_READ_WITH_SAME_PUBLISHER_SOURCE; RETAIN_CONDITIONAL_SOURCE_DEPENDENCE",
+      "scope": "Not evidence of independent causal necessity; B02 optimality scope may constrain A02→A03 and A03→A04"
+    },
+    {
+      "edge_index": 6,
+      "from": "A01",
+      "to": "A06",
+      "review": "EXACT_ORIGINAL_A_EDGE_READ_WITH_SAME_PUBLISHER_SOURCE; RETAIN_CONDITIONAL_SOURCE_DEPENDENCE",
+      "scope": "Not evidence of independent causal necessity; B02 optimality scope may constrain A02→A03 and A03→A04"
+    },
+    {
+      "edge_index": 7,
+      "from": "A06",
+      "to": "A07",
+      "review": "EXACT_ORIGINAL_A_EDGE_READ_WITH_SAME_PUBLISHER_SOURCE; RETAIN_CONDITIONAL_SOURCE_DEPENDENCE",
+      "scope": "Not evidence of independent causal necessity; B02 optimality scope may constrain A02→A03 and A03→A04"
+    },
+    {
+      "edge_index": 8,
+      "from": "A02",
+      "to": "A08",
+      "review": "EXACT_ORIGINAL_A_EDGE_READ_WITH_SAME_PUBLISHER_SOURCE; RETAIN_CONDITIONAL_SOURCE_DEPENDENCE",
+      "scope": "Not evidence of independent causal necessity; B02 optimality scope may constrain A02→A03 and A03→A04"
+    },
+    {
+      "edge_index": 9,
+      "from": "A07",
+      "to": "A08",
+      "review": "EXACT_ORIGINAL_A_EDGE_READ_WITH_SAME_PUBLISHER_SOURCE; RETAIN_CONDITIONAL_SOURCE_DEPENDENCE",
+      "scope": "Not evidence of independent causal necessity; B02 optimality scope may constrain A02→A03 and A03→A04"
+    },
+    {
+      "edge_index": 10,
+      "from": "A08",
+      "to": "A10",
+      "review": "EXACT_ORIGINAL_A_EDGE_READ_WITH_SAME_PUBLISHER_SOURCE; RETAIN_CONDITIONAL_SOURCE_DEPENDENCE",
+      "scope": "Not evidence of independent causal necessity; B02 optimality scope may constrain A02→A03 and A03→A04"
+    },
+    {
+      "edge_index": 11,
+      "from": "A09",
+      "to": "A10",
+      "review": "EXACT_ORIGINAL_A_EDGE_READ_WITH_SAME_PUBLISHER_SOURCE; RETAIN_CONDITIONAL_SOURCE_DEPENDENCE",
+      "scope": "Not evidence of independent causal necessity; B02 optimality scope may constrain A02→A03 and A03→A04"
+    },
+    {
+      "edge_index": 12,
+      "from": "A07",
+      "to": "A11",
+      "review": "EXACT_ORIGINAL_A_EDGE_READ_WITH_SAME_PUBLISHER_SOURCE; RETAIN_CONDITIONAL_SOURCE_DEPENDENCE",
+      "scope": "Not evidence of independent causal necessity; B02 optimality scope may constrain A02→A03 and A03→A04"
+    },
+    {
+      "edge_index": 13,
+      "from": "A11",
+      "to": "A12",
+      "review": "EXACT_ORIGINAL_A_EDGE_READ_WITH_SAME_PUBLISHER_SOURCE; RETAIN_CONDITIONAL_SOURCE_DEPENDENCE",
+      "scope": "Not evidence of independent causal necessity; B02 optimality scope may constrain A02→A03 and A03→A04"
+    },
+    {
+      "edge_index": 14,
+      "from": "A12",
+      "to": "A13",
+      "review": "EXACT_ORIGINAL_A_EDGE_READ_WITH_SAME_PUBLISHER_SOURCE; RETAIN_CONDITIONAL_SOURCE_DEPENDENCE",
+      "scope": "Not evidence of independent causal necessity; B02 optimality scope may constrain A02→A03 and A03→A04"
+    },
+    {
+      "edge_index": 15,
+      "from": "A14",
+      "to": "A15",
+      "review": "EXACT_ORIGINAL_A_EDGE_READ_WITH_SAME_PUBLISHER_SOURCE; RETAIN_CONDITIONAL_SOURCE_DEPENDENCE",
+      "scope": "Not evidence of independent causal necessity; B02 optimality scope may constrain A02→A03 and A03→A04"
+    },
+    {
+      "edge_index": 16,
+      "from": "A12",
+      "to": "A15",
+      "review": "EXACT_ORIGINAL_A_EDGE_READ_WITH_SAME_PUBLISHER_SOURCE; RETAIN_CONDITIONAL_SOURCE_DEPENDENCE",
+      "scope": "Not evidence of independent causal necessity; B02 optimality scope may constrain A02→A03 and A03→A04"
+    },
+    {
+      "edge_index": 17,
+      "from": "A15",
+      "to": "A16",
+      "review": "EXACT_ORIGINAL_A_EDGE_READ_WITH_SAME_PUBLISHER_SOURCE; RETAIN_CONDITIONAL_SOURCE_DEPENDENCE",
+      "scope": "Not evidence of independent causal necessity; B02 optimality scope may constrain A02→A03 and A03→A04"
+    },
+    {
+      "edge_index": 18,
+      "from": "A10",
+      "to": "A17",
+      "review": "EXACT_ORIGINAL_A_EDGE_READ_WITH_SAME_PUBLISHER_SOURCE; RETAIN_CONDITIONAL_SOURCE_DEPENDENCE",
+      "scope": "Not evidence of independent causal necessity; B02 optimality scope may constrain A02→A03 and A03→A04"
+    },
+    {
+      "edge_index": 19,
+      "from": "A15",
+      "to": "A17",
+      "review": "EXACT_ORIGINAL_A_EDGE_READ_WITH_SAME_PUBLISHER_SOURCE; RETAIN_CONDITIONAL_SOURCE_DEPENDENCE",
+      "scope": "Not evidence of independent causal necessity; B02 optimality scope may constrain A02→A03 and A03→A04"
+    },
+    {
+      "edge_index": 20,
+      "from": "A18",
+      "to": "A19",
+      "review": "EXACT_ORIGINAL_A_EDGE_READ_WITH_SAME_PUBLISHER_SOURCE; RETAIN_CONDITIONAL_SOURCE_DEPENDENCE",
+      "scope": "Not evidence of independent causal necessity; B02 optimality scope may constrain A02→A03 and A03→A04"
+    },
+    {
+      "edge_index": 21,
+      "from": "A07",
+      "to": "A20",
+      "review": "EXACT_ORIGINAL_A_EDGE_READ_WITH_SAME_PUBLISHER_SOURCE; RETAIN_CONDITIONAL_SOURCE_DEPENDENCE",
+      "scope": "Not evidence of independent causal necessity; B02 optimality scope may constrain A02→A03 and A03→A04"
+    },
+    {
+      "edge_index": 22,
+      "from": "A08",
+      "to": "A20",
+      "review": "EXACT_ORIGINAL_A_EDGE_READ_WITH_SAME_PUBLISHER_SOURCE; RETAIN_CONDITIONAL_SOURCE_DEPENDENCE",
+      "scope": "Not evidence of independent causal necessity; B02 optimality scope may constrain A02→A03 and A03→A04"
+    },
+    {
+      "edge_index": 23,
+      "from": "A19",
+      "to": "A21",
+      "review": "EXACT_ORIGINAL_A_EDGE_READ_WITH_SAME_PUBLISHER_SOURCE; RETAIN_CONDITIONAL_SOURCE_DEPENDENCE",
+      "scope": "Not evidence of independent causal necessity; B02 optimality scope may constrain A02→A03 and A03→A04"
+    },
+    {
+      "edge_index": 24,
+      "from": "A20",
+      "to": "A21",
+      "review": "EXACT_ORIGINAL_A_EDGE_READ_WITH_SAME_PUBLISHER_SOURCE; RETAIN_CONDITIONAL_SOURCE_DEPENDENCE",
+      "scope": "Not evidence of independent causal necessity; B02 optimality scope may constrain A02→A03 and A03→A04"
+    },
+    {
+      "edge_index": 25,
+      "from": "A16",
+      "to": "A21",
+      "review": "EXACT_ORIGINAL_A_EDGE_READ_WITH_SAME_PUBLISHER_SOURCE; RETAIN_CONDITIONAL_SOURCE_DEPENDENCE",
+      "scope": "Not evidence of independent causal necessity; B02 optimality scope may constrain A02→A03 and A03→A04"
+    },
+    {
+      "edge_index": 26,
+      "from": "A21",
+      "to": "A22",
+      "review": "EXACT_ORIGINAL_A_EDGE_READ_WITH_SAME_PUBLISHER_SOURCE; RETAIN_CONDITIONAL_SOURCE_DEPENDENCE",
+      "scope": "Not evidence of independent causal necessity; B02 optimality scope may constrain A02→A03 and A03→A04"
+    },
+    {
+      "edge_index": 27,
+      "from": "A08",
+      "to": "A24",
+      "review": "EXACT_ORIGINAL_A_EDGE_READ_WITH_SAME_PUBLISHER_SOURCE; RETAIN_CONDITIONAL_SOURCE_DEPENDENCE",
+      "scope": "Not evidence of independent causal necessity; B02 optimality scope may constrain A02→A03 and A03→A04"
+    },
+    {
+      "edge_index": 28,
+      "from": "A24",
+      "to": "A25",
+      "review": "EXACT_ORIGINAL_A_EDGE_READ_WITH_SAME_PUBLISHER_SOURCE; RETAIN_CONDITIONAL_SOURCE_DEPENDENCE",
+      "scope": "Not evidence of independent causal necessity; B02 optimality scope may constrain A02→A03 and A03→A04"
+    },
+    {
+      "edge_index": 29,
+      "from": "A14",
+      "to": "A26",
+      "review": "EXACT_ORIGINAL_A_EDGE_READ_WITH_SAME_PUBLISHER_SOURCE; RETAIN_CONDITIONAL_SOURCE_DEPENDENCE",
+      "scope": "Not evidence of independent causal necessity; B02 optimality scope may constrain A02→A03 and A03→A04"
+    },
+    {
+      "edge_index": 30,
+      "from": "A02",
+      "to": "A27",
+      "review": "EXACT_ORIGINAL_A_EDGE_READ_WITH_SAME_PUBLISHER_SOURCE; RETAIN_CONDITIONAL_SOURCE_DEPENDENCE",
+      "scope": "Not evidence of independent causal necessity; B02 optimality scope may constrain A02→A03 and A03→A04"
+    }
+  ],
+  "source_order_independent_sweep": [
+    {
+      "p": 1,
+      "source_section": "Introduction and model overview",
+      "complete_original_A_ids": [
+        "A01",
+        "A02",
+        "A06"
+      ],
+      "B_objection_ids": [],
+      "B_zero": true
+    },
+    {
+      "p": 2,
+      "source_section": "Policies and Value Functions Eq1–4",
+      "complete_original_A_ids": [
+        "A01",
+        "A02",
+        "A03",
+        "A04",
+        "A27"
+      ],
+      "B_objection_ids": [
+        "B02"
+      ],
+      "B_zero": false
+    },
+    {
+      "p": 3,
+      "source_section": "Toy example and multi-player generalization Fig1",
+      "complete_original_A_ids": [
+        "A05",
+        "A06",
+        "A07"
+      ],
+      "B_objection_ids": [],
+      "B_zero": true
+    },
+    {
+      "p": 4,
+      "source_section": "Recursive agent joint values Eq5–8 and Table1",
+      "complete_original_A_ids": [
+        "A07",
+        "A08",
+        "A09",
+        "A11"
+      ],
+      "B_objection_ids": [],
+      "B_zero": true
+    },
+    {
+      "p": 5,
+      "source_section": "Stag hunt source Fig2 and fixed-model setup",
+      "complete_original_A_ids": [
+        "A09",
+        "A10",
+        "A11"
+      ],
+      "B_objection_ids": [],
+      "B_zero": true
+    },
+    {
+      "p": 6,
+      "source_section": "Fixed-order posterior Eq9, synthetic Fig3 and bounded rationality",
+      "complete_original_A_ids": [
+        "A12",
+        "A13",
+        "A14"
+      ],
+      "B_objection_ids": [],
+      "B_zero": true
+    },
+    {
+      "p": 7,
+      "source_section": "Opponent representation Eq10–12 Fig4",
+      "complete_original_A_ids": [
+        "A15",
+        "A16"
+      ],
+      "B_objection_ids": [],
+      "B_zero": true
+    },
+    {
+      "p": 8,
+      "source_section": "Source simulation Fig5 and original human Results",
+      "complete_original_A_ids": [
+        "A17",
+        "A18"
+      ],
+      "B_objection_ids": [],
+      "B_zero": true
+    },
+    {
+      "p": 9,
+      "source_section": "Original human task and exclusions Fig6",
+      "complete_original_A_ids": [
+        "A18",
+        "A19"
+      ],
+      "B_objection_ids": [
+        "B01",
+        "B03"
+      ],
+      "B_zero": false
+    },
+    {
+      "p": 10,
+      "source_section": "Three-agent model Eq13 Fig7, setup Eq14",
+      "complete_original_A_ids": [
+        "A20",
+        "A21"
+      ],
+      "B_objection_ids": [
+        "B04"
+      ],
+      "B_zero": false
+    },
+    {
+      "p": 11,
+      "source_section": "Observed original study Fig8, caveats",
+      "complete_original_A_ids": [
+        "A21",
+        "A22"
+      ],
+      "B_objection_ids": [],
+      "B_zero": true
+    },
+    {
+      "p": 12,
+      "source_section": "Alternatives and prosocial comparison Eq15–17",
+      "complete_original_A_ids": [
+        "A23",
+        "A24"
+      ],
+      "B_objection_ids": [
+        "B05"
+      ],
+      "B_zero": false
+    },
+    {
+      "p": 13,
+      "source_section": "Pro-social counterexample Eq18 and future limits",
+      "complete_original_A_ids": [
+        "A24",
+        "A25",
+        "A26",
+        "A27"
+      ],
+      "B_objection_ids": [
+        "B05"
+      ],
+      "B_zero": false
+    },
+    {
+      "p": 14,
+      "source_section": "Original references and in-article supplement descriptions only",
+      "complete_original_A_ids": [],
+      "B_objection_ids": [],
+      "B_zero": true
+    }
+  ],
+  "objections": [
+    {
+      "id": "B01",
+      "affected_A": [
+        "A19"
+      ],
+      "source": "Original publisher PDF p9 Experimental Procedures, rendered original p9",
+      "objection": "A19 incorrectly specifies 6 healthy MALE participants; actual original says SIX normal young subjects, THREE males. Replace 6 male with 6 subjects including 3 males.",
+      "severity": "MATERIAL_FALSE_DEMOGRAPHY",
+      "proposed": "APPEND_ONLY_SOURCE_CORRECTION_NOT_OVERWRITE_A",
+      "alternate": "Could six refer to only male subgroup? Original grammar unambiguously says three males out of six; rejected.",
+      "adverse_neighbor_ids": [
+        "CAND_NEG_01_4_OF_240_TIMEOUTS",
+        "L06_TASK_SPECIFIC_HUMAN_SAMPLE"
+      ],
+      "source_reopened": true
+    },
+    {
+      "id": "B02",
+      "affected_A": [
+        "A03",
+        "A27"
+      ],
+      "source": "Original publisher PDF p2 Eq3a p2 immediately after paragraph beginning Equation 3a intuitive",
+      "objection": "A03 describes value conditioned softmax but original optimum claim is ONLY under source-defined control cost of divergence between controlled and uncontrolled transitions; λ=1 in simulations. Original A lacks explicit condition for calling Eq3 optimal.",
+      "severity": "MATERIAL_OPTIMALITY_SCOPE",
+      "proposed": "EXPLICIT_CONDITION_SCOPE_APPEND_ONLY",
+      "alternate": "Maybe A03 already says source-conditioned value policy and does not literally assert universal optimality; nevertheless original A02/A04 refer to optimal solution and no control-cost condition is recorded in A03/27, adding source conditional precision is justified.",
+      "adverse_neighbor_ids": [
+        "CAND_NEG_02_CONTROL_COST_CONDITIONAL_OPTIMALITY",
+        "CAND_NEG_03_UNCONTROLLED_KERNEL_ADMISSIBILITY"
+      ],
+      "source_reopened": true
+    },
+    {
+      "id": "B03",
+      "affected_A": [
+        "A19"
+      ],
+      "source": "Original publisher PDF p9 paragraph Experimental Procedures immediately preceding six subjects",
+      "objection": "Original paper reports FOUR time-out rounds out of 240 (1.7%) because move limit expired. A19 and original A experimental condition summary omitted this observed source-local adverse outcome.",
+      "severity": "MATERIAL_SOURCE_NEGATIVE_OMISSION",
+      "proposed": "EXPLICIT_CONDITION_APPEND_ONLY",
+      "alternate": "Could omit as non-mechanistic? Original source uses this to bound task and actual behavior and our section fidelity must retain adverse cases.",
+      "adverse_neighbor_ids": [
+        "CAND_NEG_01_4_OF_240_TIMEOUTS"
+      ],
+      "source_reopened": true
+    },
+    {
+      "id": "B04",
+      "affected_A": [
+        "A18",
+        "A20"
+      ],
+      "source": "Original publisher PDF pp9–10 Fig6 and Eq13",
+      "objection": "Concern: two-agent toy generalized to three-agent human might have been omitted.",
+      "review": "ALREADY_QUALIFIED_IN_A_NO_PATCH",
+      "evidence": "Full A A18 original human three-agent, A20 Eq13 three-agent, and A06/A07 original two-agent toy explicitly separate.",
+      "source_reopened": true,
+      "adverse_neighbor_ids": [
+        "L06_TASK_SPECIFIC_HUMAN_SAMPLE"
+      ]
+    },
+    {
+      "id": "B05",
+      "affected_A": [
+        "A24",
+        "A25"
+      ],
+      "source": "Original PDF pp12–13 Eq15–18 and prosocial discussion",
+      "objection": "Concern: prosocial equilibrium counterexample might be lost as ToM uniqueness conclusion.",
+      "review": "ALREADY_QUALIFIED_IN_A_NO_PATCH",
+      "evidence": "Full original A24 and A25 explicitly retain equilibrium observational equivalence and possible trajectory difference.",
+      "source_reopened": true,
+      "adverse_neighbor_ids": [
+        "L08_PROSOCIAL_COUNTEREXAMPLE"
+      ]
+    }
+  ],
+  "summary": {
+    "frozen_full_A_claims_seen": 27,
+    "all_original_A_edges_seen": 30,
+    "source_sections_reopened": 14,
+    "zero_objection_sections": 9,
+    "new_source_gap_or_correction_candidates": [
+      "B01",
+      "B02",
+      "B03"
+    ],
+    "original_A_duplicates_rejected_preemptively": [
+      "B04",
+      "B05"
+    ],
+    "C_must_independently_recheck_and_decide": true,
+    "old_A_unchanged": true
+  },
+  "not_blind_rater": true,
+  "no_grammar_v0_mapping_here": true,
+  "no_main_science": true
+}
