@@ -84,6 +84,7 @@ rejected("DOI_ONLY_FALSE_GENEALOGY",lambda:verify(e,pdf,html,bad,qual))
 bad=copy.deepcopy(e);bad["replacement_history"]["executed_replacements"]=["P12_ALT_ELIFE"]
 rejected("UNAUTHORIZED_ELIFE_BACKUP_REPLACEMENT",lambda:verify(bad,pdf,html,g2,qual))
 checksums={alias:sha(filename) for alias,filename in evidence.items()}
+for alias,h in sorted(checksums.items()):print("G1_V2_RAW_FILE_SHA256",alias,h)
 projection={"schema":"relaytheory.p399.g1.scientific_receipt_projection.v2","raw_git_file_sha256":checksums,
  "p07_immutable_stage_proofs":files,"original_P07_pdf_sha256":qual["source"]["sha256"],
  "new_qualified":1,"old_qualified":4,"G1":"G1_PARTIAL","MAIN_authorized":False}
