@@ -413,5 +413,23 @@ class G3SyntheticTests(unittest.TestCase):
         r["assumptions"]=[dict(id="a1",level="A1",source_grounded=True,necessity_test="PASS")]
         self.assertEqual(coordination_locked(native,pkt,bridge,r),"NON_DISCRIMINATING")
 
+
+    def test_machine_readable_predeclared_rubrics_and_no_go(self):
+        for name in ("MASKING_LEAKAGE_RUBRIC_v1.json","A0_A1_A2_DECISION_TREE_v1.json",
+                     "NEGATIVE_CONTROL_PLAN_v1.json","FREEZE_READINESS_v1.json"):
+            obj=json.loads((P/name).read_text(encoding="utf-8"))
+            self.assertEqual(obj["status" if "status" in obj else "state"],"PRE_FREEZE")
+        ready=json.loads((P/"FREEZE_READINESS_v1.json").read_text(encoding="utf-8"))
+        self.assertFalse(ready["MAIN_authorized"])
+        self.assertIn("G2 qualified original complete source MAIN40/backup lineage pre-A roster locked",
+                      ready["pending_before_actual_main"])
+
+    def test_complete_synthetic_full_chain_is_clearly_fake(self):
+        chain=json.loads((P/"fixtures/synthetic_stage_chain.v1.json").read_text(encoding="utf-8"))
+        self.assertTrue(chain["status"].startswith("FAKE_DETERMINISTIC"))
+        self.assertTrue(verify_receipt_chain(chain["receipts"]))
+        self.assertFalse(any(receipt["real_execution"] or receipt["main_authorized"]
+                             for receipt in chain["receipts"]))
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
