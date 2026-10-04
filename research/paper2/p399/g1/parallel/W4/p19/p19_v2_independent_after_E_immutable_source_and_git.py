@@ -81,7 +81,7 @@ try:
                         chk("S1_actual_original_algorithm_page_"+str(i+1),ok,{"page":i+1,"anchor":text})
                 if key=="s007":
                     joined=" ".join(p.extract_text() or "" for p in pdf.pages)
-                    chk("S1_table_real_prior_source",("0.0125" in joined or "1.25" in joined) and ("0.0005" in joined or "10" in joined),{"page":1,"tokens_check":"truncated original prior"})
+                    chk("S1_table_real_prior_source",("1.25" in joined and "error RT" in joined and "all RT" in joined and "forgetful" in joined),{"page":1,"tokens_check":"truncated original prior"})
             else:
                 img=Image.open(io.BytesIO(data));fields["dimensions"]=list(img.size);fields["format"]=img.format
                 valid=valid and img.format=="TIFF"
