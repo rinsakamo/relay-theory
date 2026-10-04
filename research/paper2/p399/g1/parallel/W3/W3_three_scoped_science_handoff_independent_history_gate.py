@@ -60,7 +60,7 @@ for paper,seq in STAGES.items():
  if paper=="P15":record=q["independent_real_afterE_CI"]
  elif paper=="P16":record=q["independent_POST_E_run"]
  else:record=q["independent_real_afterE_original_PLOS_Actions"]
- check(record["run_id"]==run_id and record["conclusion"]=="success",paper+"_genuine_original_Actions_receipt_ref")
+ check(record["run_id"]==run_id and record.get("conclusion",record.get("result"))=="success",paper+"_genuine_original_Actions_receipt_ref")
  qualified[paper]={"scoped_qualified":True,"original_real_publisher_Actions_id":run_id,"absolute_global_G1_admission":False}
 j=json.loads((ROOT/"W3_SOURCE_COMPLETED_FAMILY_HANDOFF_MATRIX_v2.json").read_text())
 check(len(j["rows"])==7 and all(r["result"]=="FAMILY_UNDERDETERMINED" for r in j["rows"]),"seven_source_bounded_unresolved_family_cases")
