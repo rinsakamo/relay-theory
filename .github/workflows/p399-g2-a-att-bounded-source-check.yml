@@ -1,0 +1,49 @@
+name: P399 G2-A ATT source receipts and destructive controls
+on:
+  push:
+    branches:
+      - "paper2/p399-g2-a-att-original-qualification-20261004"
+    paths:
+      - "research/paper2/p399/g2/att_a/**"
+      - ".github/workflows/p399-g2-a-att-bounded-source-check.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  att-a-bounded-not-admission:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Restrict modifications to isolated ATT lane and this workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --name-only 69748673c80f421605f1c63607472903ac2ed68c HEAD > /tmp/att_delta.txt
+          cat /tmp/att_delta.txt
+          if grep -Ev '^(research/paper2/p399/g2/att_a/|.github/workflows/p399-g2-a-att-bounded-source-check.yml$)' /tmp/att_delta.txt; then
+            echo "FORBIDDEN_NON_ATT_MODIFICATION"
+            exit 1
+          fi
+      - name: Install immutable extraction and render dependency
+        run: python -m pip install --disable-pip-version-check pymupdf==1.26.4
+      - name: Run strict source-ledger negatives
+        run: python research/paper2/p399/g2/att_a/test_att_a_bounded_guards.py
+      - name: Independently try both exact original publisher PDFs with 12s per attempt
+        run: python research/paper2/p399/g2/att_a/att_a_independent_source_receipt.py --timeout 12 --out att-a-run
+      - name: Explicit scope limitations in job summary
+        shell: bash
+        run: |
+          echo 'Procedural guard PASS does not imply S3 equation pixel audit or ATT-B1 family clearance.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Inspect att-a-run/ATT_A_ACTUAL_RUNTIME_RECEIPT.json for independent raw first-party download success. Failure means browser manual fallback and HOLD.' >> "$GITHUB_STEP_SUMMARY"
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: G2-A-ATT-bounded-physical-receipt-${{ github.run_id }}
+          path: att-a-run/
+          retention-days: 14
