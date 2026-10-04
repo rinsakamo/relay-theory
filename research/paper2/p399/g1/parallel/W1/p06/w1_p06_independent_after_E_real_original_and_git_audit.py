@@ -26,7 +26,20 @@ r={"scope":"AFTER E independent exact primary issuer raw PDF and original chrono
 try:
     url="https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1004375&type=printable"
     req=urllib.request.Request(url,headers={"User-Agent":"RelayTheory-W1-original-source-after-E/1.0"})
-    raw=urllib.request.urlopen(req, timeout=85).read()
+    raw=None
+    source_http_failures=[]
+    for attempt in range(1,5):
+        try:
+            raw=urllib.request.urlopen(req, timeout=85).read()
+            if not raw.startswith(b"%PDF"): raise ValueError("NOT_ORIGINAL_PDF")
+            break
+        except Exception as e:
+            source_http_failures.append({"attempt":attempt,"error":repr(e)})
+            if attempt<4:
+                import time
+                time.sleep(attempt*3)
+    check(raw is not None,"REPEATED_PUBLISHER_HTTP_UNAVAILABLE_"+repr(source_http_failures))
+    r["source_prior_http_attempts"]=source_http_failures
     reader=PdfReader(BytesIO(raw))
     r["source"]={"url":url,"raw_sha256":hashlib.sha256(raw).hexdigest(),"raw_bytes":len(raw),"pages":len(reader.pages),"publisher_pdf_signature":raw[:4].decode(errors="replace")}
     check(r["source"]["raw_sha256"]==SHA,"RAW_PUBLISHED_SHA_MISMATCH")
