@@ -1,0 +1,31 @@
+name: P399 G1 v7 independent source-scoped ledger no false GO
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g1/G1_PILOT20_SCIENTIFIC_ADMISSION_AND_DENOMINATORS_v7.json"
+      - "research/paper2/p399/g1/integration/G1_INDEPENDENT_POSTMERGE_ORIGINAL_SOURCE_NATIVE_190_PAIR_AUDIT_MATRIX_v7.json"
+      - "research/paper2/p399/g1/integration/g1_v7_independent_ledger_and_family_consistency.py"
+      - ".github/workflows/p399-g1-v7-independent-ledger.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  independent-scoped-science-ledger-validator:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Compare v7 against immutable v6 and original bounded W3/W4 family evidence, reject 8 false promotions
+        run: python research/paper2/p399/g1/integration/g1_v7_independent_ledger_and_family_consistency.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g1-v7-independent-20-scoped-190-pair-audit-${{ github.run_id }}
+          path: g1-audit-v7/validated_v7_scoped_original_provenance.json
+          retention-days: 45
+          if-no-files-found: warn
