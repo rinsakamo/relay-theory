@@ -21,7 +21,7 @@ for p in receipt["page_text"]: print("PRD_C_PAGE_MAP",json.dumps(p,sort_keys=Tru
 Path("prd-c-evidence").mkdir(exist_ok=True)
 Path("prd-c-evidence/B1_OFFICIAL_SOURCE_PIXEL_READBACK.json").write_text(json.dumps(receipt,indent=2,sort_keys=True)+"\n")
 # Narrow bounded original publisher visuals: original p0 and source-critical equations/models/fit/adverse pages.
-for idx in [0,10,11,12,13,14,15,17,18,19,20]:
+for idx in [0,9,10,11,12,13,14,15,17,18,19,20]:
  page=doc[idx]; pix=page.get_pixmap(matrix=fitz.Matrix(1.25,1.25),alpha=False,colorspace=fitz.csRGB)
  from PIL import Image
  im=Image.open(io.BytesIO(pix.tobytes("png"))).convert("RGB")
