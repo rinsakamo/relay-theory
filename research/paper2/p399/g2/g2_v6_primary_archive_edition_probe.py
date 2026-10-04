@@ -43,6 +43,10 @@ def scan_one(item):
   try:
    b,real,ct,stat=req(u)
    entry.update(actual_url=real,status=stat,content_type=ct,raw=fingerprint(b,doi))
+   if "api.elsevier.com" in u and not b.startswith(b"%PDF-"):
+    ss=b.decode("utf-8","replace").lower()
+    entry["api_response_diagnostic_only"]={"contains_fulltext_tag":"<ce:para" in ss or "<ce:section" in ss or "<xocs:rawtext" in ss,"service_error":"service-error" in ss or "api key" in ss or "authorization" in ss,"doi_literal":doi.lower() in ss,"content_length":len(b),"xml_element_names":sorted(set(re.findall(r"</?([a-zA-Z][a-zA-Z0-9:_-]+)",ss)))[:14]}
+   if "api.elsevier.com" in u:print("G2_V6_API_OFFICIAL_DETAIL",name,entry.get("api_response_diagnostic_only"),entry.get("status"),entry.get("content_type"))
    if entry["raw"]["pdf"] and entry["raw"].get("doi_found_first_2_pdf_pages"):
     entry["publisher_first_party_original_pdf_candidate"]=True
     # DOI and PDF signature alone do not certify corrected edition.
