@@ -1,0 +1,43 @@
+{
+  "schema": "relay-theory.p399.pf03.secondary_implementation_audit.v1",
+  "candidate": "PF03",
+  "primary_original_pdf_sha256": "62d744125034ce834692cdb210065d34e2bbd0f58c9eb3387ed2d75dfb7f77ae",
+  "primary_A_B_C_unchanged": true,
+  "relationship_to_frozen_final": "Append-only post-FINAL targeted exception resolution; no retrospective change to previously frozen stages or promotion of author code to selected A/B/C primary source.",
+  "secondary_source": {
+    "owner_repo": "lpjiang97/dynamic-predictive-coding",
+    "branch": "three_level",
+    "pinned_commit": "017556566a0e5eb4a76455b85371737c16fe9b0a",
+    "commit_date_utc": "2023-12-18T22:55:15Z",
+    "date_precedes_publisher_release": "2024-02-08",
+    "source_code": {
+      "models/pc_three.py": "ecfb1d25ba38bebf5dcf477832166e1a59b389de",
+      "experiments/three/params.json": "ccbdbbf223916b3340a787f3e7fc8a9e74c1926f",
+      "analysis/err_dist.ipynb": "394aeb3238fa67279c6da45b7d6077e6bb939605"
+    },
+    "source_role": "SECONDARY_AUTHOR_IMPLEMENTATION_EVIDENCE_NOT_PRIMARY_PUBLISHED_ARTICLE; exact source-to-publication code equivalence not independently proven, code commit predates publication."
+  },
+  "original_primary_source_scope": {
+    "eq37": "Original p24 defines b_t=1 when first-level prediction error exceeds train-derived threshold but does not give a standalone exact scalar operation.",
+    "s1_fig_c_inside_primary": "Original p25 caption contains reported rho=0.73 at approx .75 cumulative density; separately linked S1 full file NOT admitted.",
+    "source_supported_bounded_dependency": "First-level prediction error event-gates intermediate temporal loss/upper-state update; exact numeric scalar undecided from selected primary alone."
+  },
+  "secondary_evidence": {
+    "author_model_file": "models/pc_three.py DynPredNet.inf computes r2_loss = sum_i (r_inferred_t[i] - temporal_prediction_one_(r_prev, orig_r2)[i])^2 after inference; orig_r2 is pre-inference current intermediate state; score per sample (no batch mean). DynPredNet.forward compares r2_loss > self.thres and calls inf_second only on selected indices, then updates r2 and r3 at those indices.",
+    "three_level_config": "experiments/three/params.json contains thres=0.73.",
+    "notebook": "analysis/err_dist.ipynb loads first-level temporal error r2_loss on 3-level training data from pretrained 2-level model and estimates KDE/CDF, marks rho=0.73 and x-axis squared L2 first-level latent temporal prediction error; uses 0.73 on test event arrows.",
+    "not_same_as": "Spatial pixel reconstruction ||x-U r||² or current-updated higher-state re-prediction ||r - f(rprev, updated_r2)||²; do not conflate these."
+  },
+  "interpretation": "The numeric trigger is now exact for a pinned disclosed prepublication author implementation, while original-primary-only scalar remains underdetermined unless a separately approved evidence upgrade is made. The source-defined structural edge C-E01 and three-layer loss C-N02/C-E02 remain valid without modifying original A/B/C.",
+  "tests_planned": [
+    "Physical fixed author git checkout and exact pinned commit+model/config/notebook git blob comparison",
+    "Actual pinned DynPredNet.inf PyTorch small-dimension controlled input; compare code return to independently computed squared Euclidean residual against ORIGINAL r2",
+    "Compare low/high threshold behavior and verify original forward selection predicate and masked update path",
+    "Document that small model probes are not original trained weights, dataset replication or paper's physiological results."
+  ],
+  "test_results": "PENDING_NEW_CI",
+  "scientific_implication": "Targeted implementation-precision uncertainty can be resolved as secondary-source evidence only; quantitative original simulation outcomes remain explicitly unreplicated.",
+  "authorization": "No expanded standalone supplement admission, no generic CI retroactively called exact v2.3.1 validator.",
+  "old_final_sha256": "29fb0ade9c4c89e02f4a1b3f42c7ec22b4ef1670086dbc8fb264294fd1163bdf",
+  "official_count_change": 0
+}
