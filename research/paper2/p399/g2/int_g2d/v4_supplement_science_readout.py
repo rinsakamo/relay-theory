@@ -48,6 +48,7 @@ for slot,doi,kind,sha in FILES:
     row["page_readouts"].append({"page":i+1,"native_text_sha256":hashlib.sha256(text.encode()).hexdigest(),
                                 "native_text_chars":len(text),"bounded_key_windows":w[:15]})
     print("SOURCE_NATIVE_B4_SUPP_PAGE",i+1,json.dumps({"text_chars":len(text),"key_windows":w[:11]},ensure_ascii=False),flush=True)
+    if i+1 in (3,4,5,8,9,10,11):print("BOUNDED_CRITICAL_S1_NATIVE_TEXT",i+1,json.dumps({"native_text_excerpt":text[:2100]},ensure_ascii=False),flush=True)
   else:
    if not data.startswith(bytes.fromhex("d0cf11e0a1b11ae1")):raise ValueError("not authentic original DOC")
    binary=shutil.which("antiword")
@@ -59,6 +60,7 @@ for slot,doi,kind,sha in FILES:
    row.update(doc_extracted_native_utf8_sha256=hashlib.sha256(decoded.encode()).hexdigest(),
               extracted_native_text_chars=len(decoded),bounded_key_windows=text_windows(decoded))
    print("SOURCE_NATIVE_DOC",slot,json.dumps({"text_chars":len(decoded),"key_windows":row["bounded_key_windows"][:60]},ensure_ascii=False),flush=True)
+   print("BOUNDED_CRITICAL_DOC_NATIVE_TEXT",slot,json.dumps({"native_text_excerpt":decoded[:1400]},ensure_ascii=False),flush=True)
   row["published_original_resolved"]=True
  except Exception as e:
   row["source_or_extraction_failure"]=type(e).__name__+":"+str(e)[:190]
