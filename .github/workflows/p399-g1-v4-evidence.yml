@@ -1,0 +1,29 @@
+name: P399 G1 v4 evidence checks 7/20 scoped source original not MAIN
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g1/g1_v4_source_science_evidence_check.py"
+      - "research/paper2/p399/g1/G1_PILOT20_SCIENTIFIC_ADMISSION_AND_DENOMINATORS_v4.json"
+      - "research/paper2/p399/g1/G1_REMAINING_13_SCIENCE_BLOCKERS_v4.json"
+      - "research/paper2/p399/g1/G1_G2_P05_ATT_FAMILY_HANDOFF_v4.json"
+      - "research/paper2/p399/g1/G1_P05_ATT_COMPLETION_AND_V4_DENOMINATORS_JA_20261004.md"
+      - "research/paper2/p399/g1/p05/**"
+      - ".github/workflows/p399-g1-v4-evidence.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  evidence-7of20:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: python3 research/paper2/p399/g1/g1_v4_source_science_evidence_check.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g1-v4-selected-original-evidence-${{ github.run_id }}
+          path: g1-v4/receipt.json
+          retention-days: 14
+          if-no-files-found: warn
