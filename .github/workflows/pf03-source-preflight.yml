@@ -1,0 +1,38 @@
+name: pf03-source-preflight
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/pf03-source-preflight.yml"
+      - "research/paper2/p399/pf03/**"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  pdf-original-byte-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Acquire actual original PLOS PDF and fingerprint without publication
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/pf03
+          URL='https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1011801&type=printable'
+          curl --fail --location --retry 3 --retry-delay 2 --max-time 100 --user-agent 'RelayTheory scientific source admission 2026-10-04' --output /tmp/pf03/original.pdf "$URL"
+          head -c 5 /tmp/pf03/original.pdf | grep -aq '%PDF-'
+          printf 'PF03_SOURCE_URL=%s\n' "$URL"
+          printf 'PF03_SHA256='
+          sha256sum /tmp/pf03/original.pdf | cut -d' ' -f1
+          printf 'PF03_BYTES='
+          stat -c%s /tmp/pf03/original.pdf
+          pdfinfo /tmp/pf03/original.pdf | grep -E 'Pages:|Page size:|Creator:|Producer:|CreationDate:|ModDate:'
+          pdftotext -layout /tmp/pf03/original.pdf /tmp/pf03/original.txt
+          printf 'PF03_TEXT_CHARACTERS='
+          wc -m < /tmp/pf03/original.txt
+          for phrase in 'Hierarchical generative model' 'Prediction error minimization' 'Sequence learning and recall simulation' 'Three-level DPC model'; do
+            grep -Fqi "$phrase" /tmp/pf03/original.txt || { echo "MISSING_SECTION=$phrase"; exit 1; }
+            echo "PRESENT_SECTION=$phrase"
+          done
+          printf 'PDF_BIN_NOT_PUBLISHED=true\n'
+          rm -f /tmp/pf03/original.pdf /tmp/pf03/original.txt
