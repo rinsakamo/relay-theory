@@ -103,3 +103,72 @@ assert neg_v3(lambda a,b,c:a["count"].update(source_visually_semantically_admitt
 assert neg_v3(lambda a,b,c:a["count"].update(full_original_access_outstanding=0))
 assert neg_v3(lambda a,b,c:a.update(main_authorized=True))
 print("PASS V3: four additional false-promotion/collision/availability/MAIN-GO negative tests rejected")
+
+
+# Addendum v4: independent raw UTF8 evidence; downloaded PDF bytes versus
+# browser-only official publisher PDF must NEVER be collapsed into a fake SHA.
+d4=(P/"MAIN40_G2_V4_RAW_UTF8_SHA256SUMS_20261004.txt").read_text().splitlines()
+assert len(d4)==4
+for ln in d4:
+    digest, filename=ln.split("  ",1)
+    assert hashlib.sha256((P/filename).read_bytes()).hexdigest()==digest,("v4-raw-evidence-tamper",filename)
+v4=json.loads((P/"MAIN40_G2_ADMISSION_WORKING_MANIFEST_v4.json").read_text())
+r4=json.loads((P/"MAIN40_G2_NATURE_PUBLISHER_BROWSER_AND_SECOND_OFFICIAL_RETRY_v4.json").read_text())
+e4=json.loads((P/"MAIN40_G2_OBJECTIVE_EVENT_DELTA_v4.json").read_text())
+def check_v4(ww,rr,ee):
+    previous=n["selected_working_roster"];latest=ww["selected_working_roster"]
+    assert len(latest)==40
+    assert [(z["slot"],z["doi"]) for z in latest]==[(z["slot"],z["doi"]) for z in previous]
+    assert len(rr["new_actual_official_browser_media"])==2
+    assert {z["slot"] for z in rr["new_actual_official_browser_media"]}=={"CNC-01","INT-04"}
+    assert {z["original_PDF_pages_tool_rendered"] for z in rr["new_actual_official_browser_media"]}=={15,20}
+    assert all(z["original_pdf_browser_opened"] and
+               z["identity_on_original_page0"]["doi_exact"] and
+               z["cloud_actual_raw_pdf_bytes_sha256"] is None and
+               not z["full_page_by_page_visual_inspection"] and
+               not z["source_eligible"] for z in rr["new_actual_official_browser_media"])
+    assert sum(bool(z["cloud_publisher_pdf_acquired"]) for z in latest)==30
+    for sid in ("CNC-01","INT-04"):
+        paper=[x for x in latest if x["slot"]==sid][0]
+        assert paper["publisher_owned_complete_original_pdf_opened_in_browser"]
+        assert not paper["original_full_publisher_pdf_raw_sha256_acquired"]
+        assert not paper["all_model_critical_math_figures_variants_negatives_verified"]
+    assert rr["counts"]["remaining_no_complete_original_first_party_media"]==5
+    assert set(rr["counts"]["remaining_slots"])=={"LRN-01","PRD-01","ATT-03","BLF-01","INT-01"}
+    assert ww["count"]["full_original_access_outstanding"]==5
+    assert ww["count"]["actual_original_primary_media_access_distinct"]==35
+    assert ww["count"]["current_publisher_pdf_byte_receipts"]==30
+    assert ww["count"]["new_browser_first_party_pdf_opened_verified"]==2
+    prd=[z for z in rr["official_browser_primary_no_full_original"] if z["slot"]=="PRD-01"][0]
+    assert prd["corrected_p_trident"]==.69 and prd["corrected_p_planet"]==.31
+    assert not prd["corrected_original_full_text_actual_retrieved"]
+    assert len(rr["second_official_elsevier_retry"])==3
+    assert all(z["no_first_party_complete_original"] for z in rr["second_official_elsevier_retry"])
+    assert rr["counts"]["fully_scientifically_edition_variant_source_admitted"]==0
+    assert rr["counts"]["central_model_family_independence_admitted"]==0
+    assert ww["count"]["scientific_source_admitted"]==0
+    assert ww["count"]["central_family_admitted"]==0 and ww["count"]["final_joint_frozen"]==0
+    assert ww["g1_latest_observed_snapshot"]["source_scoped_qualified"]==6
+    assert not ww["g1_latest_observed_snapshot"]["official_final_pilot20_roster_issued"]
+    assert not any(z["source_eligible"] or z["central_family_independent_certified"] or
+                   z["g3_actual_masked_packet_created"] for z in latest)
+    assert ee["backups_activated"]==0 and len(ee["events"])==3
+    assert not ww["main_authorized"] and not rr["main_authorized"]
+    assert ww["final_scientific_freeze_sha256"] is None
+check_v4(v4,r4,e4)
+print("PASS V4: 4/4 independently raw-hashed immutable new evidence docs")
+print("PASS V4: source identity 40 unchanged, raw original PDF 30 distinct; new 2 browser-only originals")
+print("PASS V4: 35 actual original first-party access, 5 still blocked, 0 fully scientific qualified")
+print("PASS V4: PRD corrected 0.69/0.31 figure labels NOT substitute for subscription original")
+def neg_v4(f):
+    a,b,c=map(copy.deepcopy,(v4,r4,e4))
+    f(a,b,c)
+    try:check_v4(a,b,c)
+    except AssertionError:return True
+    return False
+assert neg_v4(lambda a,b,c:a["selected_working_roster"][0].update(doi="10.0000/fake"))
+assert neg_v4(lambda a,b,c:a["count"].update(current_publisher_pdf_byte_receipts=32))
+assert neg_v4(lambda a,b,c:a["count"].update(scientific_source_admitted=35))
+assert neg_v4(lambda a,b,c:a.update(main_authorized=True))
+assert neg_v4(lambda a,b,c:b["official_browser_primary_no_full_original"][1].update(corrected_original_full_text_actual_retrieved=True))
+print("PASS V4: five adversarial false-roster / unowned SHA / false-science / GO / paid-preview tests rejected")
