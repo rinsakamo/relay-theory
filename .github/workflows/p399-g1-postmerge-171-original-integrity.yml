@@ -1,0 +1,28 @@
+name: P399 G1 actual postmerge fourlane exact original science evidence only
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g1/integration/g1_fourlane_actual_postmerge_exact_source_171_verifier.py"
+      - ".github/workflows/p399-g1-postmerge-171-original-integrity.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-postmerge-evidence-not-main:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python research/paper2/p399/g1/integration/g1_fourlane_actual_postmerge_exact_source_171_verifier.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g1-fourlane-actual-postmerge-171-original-evidence-${{ github.run_id }}
+          path: g1-fourlane-real-postmerge/original_evidence.json
+          retention-days: 30
+          if-no-files-found: warn
