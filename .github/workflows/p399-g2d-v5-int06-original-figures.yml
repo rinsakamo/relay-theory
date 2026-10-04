@@ -1,0 +1,28 @@
+name: P399 G2-D v5 INT06 all 6 publisher TIFF supplemental source identity receipts
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g2/int_g2d/v5_int06_6_publisher_original_figure_tiffs.py"
+      - ".github/workflows/p399-g2d-v5-int06-original-figures.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-source-identities:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install --disable-pip-version-check Pillow==11.3.0
+      - name: Physical original publisher signed supplementary figure TIFFs only
+        run: python research/paper2/p399/g2/int_g2d/v5_int06_6_publisher_original_figure_tiffs.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g2d-v5-int06-original-s1-s6-tiff-metadata-${{ github.run_id }}
+          path: g2d-v5-int06-all-six-original-figures/receipts.json
+          if-no-files-found: warn
+          retention-days: 14
