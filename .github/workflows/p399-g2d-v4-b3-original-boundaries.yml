@@ -1,0 +1,33 @@
+name: P399 G2-D v4 B3 VOR source recheck and 03-06 fail-closed science boundaries
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g2/int_g2d/G2D_V4_*"
+      - "research/paper2/p399/g2/int_g2d/v4_b3_official_vor_reproduction.py"
+      - "research/paper2/p399/g2/int_g2d/test_v4_b3_0306_boundaries.py"
+      - ".github/workflows/p399-g2d-v4-b3-original-boundaries.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  publisher-b3-firstparty-raw-verification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Test v4 negative and qualification-ledger fail-closed invariants
+        run: python3 research/paper2/p399/g2/int_g2d/test_v4_b3_0306_boundaries.py
+      - name: Install independent source parser
+        run: pip install --disable-pip-version-check pypdf==6.1.1
+      - name: Independently reobtain exact raw official 35-page eLife VOR (not scientific validation)
+        run: python3 research/paper2/p399/g2/int_g2d/v4_b3_official_vor_reproduction.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g2d-v4-b3-first-party-only-receipt-${{ github.run_id }}
+          path: g2d-v4-b3-evidence/actual_source_receipt.json
+          if-no-files-found: warn
+          retention-days: 14
