@@ -1,0 +1,283 @@
+{
+  "explicit_status": "SYNTHETIC_NOT_SCIENTIFIC_VALIDATION",
+  "reference": {
+    "schema_version": "G3_REFERENCE_V1",
+    "paper_token": "SYNTHETIC-ONLY-01",
+    "source": {
+      "primary_kind": "PUBLISHER_ORIGINAL_PDF",
+      "edition": "SYNTHETIC_NOT_PUBLISHER",
+      "source_fingerprint": "syntheticfixturefake",
+      "correction_review": "NOT_A_REAL_STUDY",
+      "complete_verified": true,
+      "pre_a_analytic_exception": null
+    },
+    "assessor": {
+      "assessor_token": "FIXTURE-R",
+      "access_to_full_primary": true,
+      "grammar_outcomes_inaccessible": true,
+      "independence_disclosure": "SINGLE_REFERENCE_UNVALIDATED"
+    },
+    "variants": [
+      {
+        "variant_id": "V_SYNTH",
+        "native_name_vault_ref": "FIXTURE-PRIVATE",
+        "included": true,
+        "nodes": [
+          {
+            "id": "n1",
+            "source_locator": "SYNTHETIC:fixture-eq-1",
+            "witness": "Constructed fixture; NOT an original study",
+            "critical": true
+          },
+          {
+            "id": "n2",
+            "source_locator": "SYNTHETIC:fixture-eq-1",
+            "witness": "Constructed fixture; NOT an original study",
+            "critical": true
+          }
+        ],
+        "edges": [
+          {
+            "id": "e1",
+            "source_locator": "SYNTHETIC:fixture-eq-1",
+            "witness": "Constructed fixture; NOT an original study",
+            "critical": true,
+            "from": "n1",
+            "to": "n2",
+            "source_type": "typed_dynamic_dependency",
+            "guard": "when input a"
+          }
+        ],
+        "temporal": [
+          {
+            "id": "t1",
+            "source_locator": "SYNTHETIC:fixture-eq-1",
+            "witness": "Constructed fixture; NOT an original study",
+            "critical": true
+          }
+        ],
+        "restrictions": [
+          {
+            "id": "r1",
+            "source_locator": "SYNTHETIC:fixture-eq-1",
+            "witness": "Constructed fixture; NOT an original study",
+            "critical": true
+          }
+        ],
+        "boundaries": [
+          {
+            "id": "b1",
+            "source_locator": "SYNTHETIC:fixture-eq-1",
+            "witness": "Constructed fixture; NOT an original study",
+            "critical": true
+          }
+        ],
+        "distinctions": [
+          {
+            "id": "m1",
+            "source_locator": "SYNTHETIC:fixture-eq-1",
+            "witness": "Constructed fixture; NOT an original study",
+            "critical": true
+          }
+        ],
+        "native_coordination": []
+      }
+    ],
+    "original_limitations": [
+      {
+        "id": "r1",
+        "source_locator": "SYNTHETIC:fixture-eq-1",
+        "witness": "Constructed fixture; NOT an original study",
+        "critical": true
+      }
+    ],
+    "excluded_quantitative_targets": [
+      {
+        "id": "q_exact",
+        "reason": "Intentionally excluded synthetic numeric target",
+        "source_locator": "SYNTHETIC:appendix",
+        "status": "EXCLUDED_SOURCE_UNRESOLVED"
+      }
+    ],
+    "freeze_state": "LOCKED"
+  },
+  "packet": {
+    "schema_version": "G3_ANALYST_PACKET_V1",
+    "paper_token": "SYNTHETIC-ONLY-01",
+    "reference_digest_private": "PRIVATE_FIXTURE_DIGEST_NO_LEDGER",
+    "primary_source_digest": "SYNTHETIC_PRIMARY_ONLY",
+    "packet_digest": "SYNTHETIC_PACKET_ONLY",
+    "scope_integrity": {
+      "equations_kept": true,
+      "figures_kept": true,
+      "negative_outcomes_kept": true,
+      "variant_boundaries_kept": true,
+      "source_order_kept": true,
+      "checked_by": "FIXTURE_GENERATOR_NOT_REAL_ASSESSOR"
+    },
+    "masking": {
+      "removed_fields": [
+        "authors",
+        "venue",
+        "construct_labels"
+      ],
+      "preserved_identity_cues": [],
+      "leakage_flags": [
+        "POTENTIAL_PRETRAINED_RECOGNITION"
+      ],
+      "recognition_pre_D": "UNKNOWN",
+      "recognition_post_D": "UNKNOWN"
+    },
+    "releases": [],
+    "approved": true
+  },
+  "baseline_evaluation": {
+    "schema_version": "G3_EVALUATION_V1",
+    "paper_token": "SYNTHETIC-ONLY-01",
+    "attempted": true,
+    "source_state": "VERIFIED_PDF",
+    "reference_state": "SINGLE_REFERENCE_UNVALIDATED",
+    "packet_state": "VALID",
+    "declared_variant_ids": [
+      "V_SYNTH"
+    ],
+    "variants": [
+      {
+        "variant_id": "V_SYNTH",
+        "included": true,
+        "metrics": {
+          "nodes": {
+            "required_ids": [
+              "n1",
+              "n2"
+            ],
+            "matched_ids": [
+              "n1",
+              "n2"
+            ],
+            "critical_ids": [
+              "n1",
+              "n2"
+            ],
+            "unresolved_ids": [],
+            "evidence_witnesses": {
+              "n1": "SYNTHETIC:fixture-eq-1",
+              "n2": "SYNTHETIC:fixture-eq-1"
+            }
+          },
+          "edges": {
+            "required_ids": [
+              "e1"
+            ],
+            "matched_ids": [
+              "e1"
+            ],
+            "critical_ids": [
+              "e1"
+            ],
+            "unresolved_ids": [],
+            "evidence_witnesses": {
+              "e1": "SYNTHETIC:fixture-eq-1"
+            }
+          },
+          "roles": {
+            "required_ids": [
+              "role_obligation_1"
+            ],
+            "matched_ids": [
+              "role_obligation_1"
+            ],
+            "critical_ids": [
+              "role_obligation_1"
+            ],
+            "unresolved_ids": [],
+            "evidence_witnesses": {
+              "role_obligation_1": "SYNTHETIC:fixture-eq-1"
+            }
+          },
+          "temporal": {
+            "required_ids": [
+              "t1"
+            ],
+            "matched_ids": [
+              "t1"
+            ],
+            "critical_ids": [
+              "t1"
+            ],
+            "unresolved_ids": [],
+            "evidence_witnesses": {
+              "t1": "SYNTHETIC:fixture-eq-1"
+            }
+          },
+          "restrictions": {
+            "required_ids": [
+              "r1"
+            ],
+            "matched_ids": [
+              "r1"
+            ],
+            "critical_ids": [
+              "r1"
+            ],
+            "unresolved_ids": [],
+            "evidence_witnesses": {
+              "r1": "SYNTHETIC:fixture-eq-1"
+            }
+          },
+          "boundary": {
+            "required_ids": [
+              "b1"
+            ],
+            "matched_ids": [
+              "b1"
+            ],
+            "critical_ids": [
+              "b1"
+            ],
+            "unresolved_ids": [],
+            "evidence_witnesses": {
+              "b1": "SYNTHETIC:fixture-eq-1"
+            }
+          },
+          "distinctions": {
+            "required_ids": [
+              "m1"
+            ],
+            "matched_ids": [
+              "m1"
+            ],
+            "critical_ids": [
+              "m1"
+            ],
+            "unresolved_ids": [],
+            "evidence_witnesses": {
+              "m1": "SYNTHETIC:fixture-eq-1"
+            }
+          }
+        },
+        "contradictions": [],
+        "essential_losses": [],
+        "unresolved_material": [],
+        "independent_semantic_audit": false
+      }
+    ],
+    "excluded_quantitative_targets": [
+      {
+        "id": "q_exact",
+        "reason": "Unknown exact numeric target not counted",
+        "status": "EXCLUDED_SOURCE_UNRESOLVED"
+      }
+    ],
+    "assumptions": [],
+    "coordination": {
+      "a0": "SUPPORTED",
+      "a1": "NOT_ASSESSABLE",
+      "a2": "NOT_ASSESSABLE",
+      "discrimination": "NON_DISCRIMINATING",
+      "source_defined_functions_exhausted": false,
+      "additional_state_source_grounded": false
+    },
+    "comparisons": []
+  }
+}
