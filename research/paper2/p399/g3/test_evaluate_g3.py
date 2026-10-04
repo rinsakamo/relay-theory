@@ -349,5 +349,31 @@ class G3SyntheticTests(unittest.TestCase):
         with self.assertRaisesRegex(G3Error,"INCOMPLETE_OR_UNAPPROVED"):
             score_locked(native,pkt,bridge,r)
 
+
+    def test_fake_R2_independence_without_actual_receipt_rejected(self):
+        native=ref()
+        native["assessor"]["independence_disclosure"]="INDEPENDENT_R2_COMPLETED"
+        with self.assertRaises(G3Error):check_reference(native)
+
+    def test_same_actor_fake_R2_independence_rejected(self):
+        native=ref()
+        actor=native["assessor"]
+        actor["independence_disclosure"]="INDEPENDENT_R2_COMPLETED"
+        actor["r2_attestation"]=dict(assessor_token=actor["assessor_token"],
+                                     full_original_read=True,blind_to_D_E=True,
+                                     separate_actor_receipt_sha256="a"*64)
+        with self.assertRaisesRegex(G3Error,"R2_NOT_ACTUALLY_SEPARATE"):
+            check_reference(native)
+
+    def test_R2_bounded_structural_record_not_automatic_source_truth(self):
+        native=ref()
+        actor=native["assessor"]
+        actor["independence_disclosure"]="INDEPENDENT_R2_COMPLETED"
+        actor["r2_attestation"]=dict(assessor_token="DIFFERENT_SYNTHETIC_ACTOR",
+                                     full_original_read=True,blind_to_D_E=True,
+                                     separate_actor_receipt_sha256="b"*64)
+        self.assertTrue(check_reference(native))
+        # This constructed test cannot establish a genuine separate real-world reader.
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
