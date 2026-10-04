@@ -1,0 +1,27 @@
+name: P399 G2 original-source second-party-route rescue
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g2/g2_second_official_source_rescue.py"
+      - ".github/workflows/p399-g2-second-source-rescue.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-media-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --disable-pip-version-check pypdf==6.1.1
+      - run: python research/paper2/p399/g2/g2_second_official_source_rescue.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g2-second-official-source-retry-${{ github.run_id }}
+          path: g2-second-rescue/metadata.json
+          if-no-files-found: warn
+          retention-days: 14
