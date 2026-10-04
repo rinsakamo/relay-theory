@@ -44,12 +44,12 @@ for name,doi,kind,identity,expected_sha in URLS:
    x["pdf_pages"]=len(reader.pages)
    texts=[p.extract_text() or "" for p in reader.pages]
    x["each_page_native_text_sha256"]=[hashlib.sha256(t.encode()).hexdigest() for t in texts]
-   x["firsttwo_title_identity_anchor"]=all(t in ("brain","router") for t in re.findall(r"[a-z]+",(" ".join(texts[:2])).lower())) if name.startswith("INT06") else None
+   x["firsttwo_title_identity_anchor"]=all(t in (" ".join(texts[:2])).lower() for t in ("brain","router")) if name.startswith("INT06") else None
    if name.startswith("INT06"):
     if x["sha256"]!=expected_sha:raise ValueError("original INT06 main SHA differs from frozen G2")
    else:
     full=" ".join(texts)
-    x["supplemental_figure_letter_page_locator"]={a:[i+1 for i,t in enumerate(texts) if re.search(r"(?im)\\bfig(?:ure)?\\s+"+a+r"\\b",t)] for a in "ABCDEFG"}
+    x["supplemental_figure_letter_page_locator"]={a:[i+1 for i,t in enumerate(texts) if re.search(r"(?im)\bfig(?:ure)?\s+"+a+r"\b",t)] for a in "ABCDEFG"}
     x["supplement_terms_page_locator"]={w:[i+1 for i,t in enumerate(texts) if w.lower() in t.lower()] for w in ("model recovery","parameter recovery","bias","depression","exclusion")}
     x["figure_letter_all_A_through_G_candidate_coverage"]=all(bool(v) for v in x["supplemental_figure_letter_page_locator"].values())
    x["firstparty_binary_verified"]=True
