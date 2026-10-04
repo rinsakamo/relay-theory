@@ -1,0 +1,55 @@
+name: PF02 secondary ancestor and author-code checks
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/pf02-secondary-evidence-probe.yml"
+permissions:
+  contents: read
+jobs:
+  secondary:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Fetch read-only secondary evidence outside git
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import urllib.request,hashlib,zipfile,io,re,json
+          urls={
+          'author_code':'https://downloads.sourceforge.net/project/mcmc-mp/Software_Release.zip',
+          'stemme_original_mirror':'https://citeseerx.ist.psu.edu/document?doi=0fbe23ae4255ce69e86b051252e1139f47d335d7&repid=rep1&type=pdf'}
+          for kind,url in urls.items():
+            result={'name':kind,'url':url}
+            try:
+              req=urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0','Accept':'application/pdf,application/zip,*/*'})
+              with urllib.request.urlopen(req,timeout=22) as resp:
+                data=resp.read(10000000)
+                result.update({'http_status':resp.status,'final_url':resp.url,'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest(),'header':data[:12].hex()})
+              if kind=='author_code' and data.startswith(b'PK'):
+                with zipfile.ZipFile(io.BytesIO(data)) as z:
+                  names=z.namelist()
+                  result['zip_members']=len(names)
+                  result['matching_filenames']=[x for x in names if re.search(r'(noise|sim|kernel|model|cu$|\.cpp$|\.h$)',x,re.I)][:50]
+                  matches=[]
+                  for name in names:
+                    if not re.search(r'\.(cu|c|cpp|h|hpp|txt|m)$',name,re.I):continue
+                    s=z.read(name).decode('utf-8','replace')
+                    for i,line in enumerate(s.splitlines(),1):
+                      if re.search(r'(tau_?AMPA|I_?noise|s_?noise|sigma_decision|SIGMA_DECISION|noiseDecision|noise_decision)',line,re.I):
+                        matches.append({'member':name,'line':i,'snippet':line[:200]})
+                  result['noise_source_matches']=matches[:60]
+              if kind=='stemme_original_mirror' and data.startswith(b'%PDF-'):
+                import subprocess,tempfile,os
+                with tempfile.NamedTemporaryFile(suffix='.pdf') as tmp:
+                  tmp.write(data);tmp.flush()
+                  p=subprocess.run(['pdftotext','-layout',tmp.name,'-'],capture_output=True,text=True,timeout=10)
+                  t=p.stdout
+                  result['pdf_text_chars']=len(t)
+                  terms=['rule','decision','network','module','synap','task switching','attractor','Fig. 1','Fig. 2']
+                  result['keywords']={w:len(re.findall(re.escape(w),t,re.I)) for w in terms}
+                  result['opening']=t[:1750]
+                  result['original_model_mentions']=[t[max(0,m.start()-200):m.end()+200] for m in list(re.finditer(r'(decision module|rule module|neural network model)',t,re.I))[:8]]
+            except Exception as e:
+              result['error']=type(e).__name__+': '+str(e)
+            print('PF02_SECONDARY='+json.dumps(result,ensure_ascii=True,sort_keys=True))
+          PY
