@@ -424,6 +424,50 @@
                 }
               }
             }
+          },
+          "source_comparisons": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "id",
+                "source_locator",
+                "witness",
+                "critical",
+                "contrast_kind"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "source_locator": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "witness": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "critical": {
+                  "type": "boolean"
+                },
+                "meaning": {
+                  "type": "string"
+                },
+                "scope": {
+                  "type": "string"
+                },
+                "contrast_kind": {
+                  "enum": [
+                    "TYPE_INTERFACE_CONTRAST",
+                    "HISTORY_DEPENDENCE_CONTRAST",
+                    "OTHER_SOURCE_DEFINED"
+                  ]
+                }
+              }
+            }
           }
         }
       }
