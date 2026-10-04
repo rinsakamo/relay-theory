@@ -431,5 +431,32 @@ class G3SyntheticTests(unittest.TestCase):
         self.assertFalse(any(receipt["real_execution"] or receipt["main_authorized"]
                              for receipt in chain["receipts"]))
 
+
+    def test_forged_source_anchor_rejected_even_if_id_matches(self):
+        native,pkt,bridge,r=self.locked_fixture()
+        r["variants"][0]["metrics"]["edges"]["evidence_witnesses"]["e1"]="SYNTHETIC:invented-elsewhere"
+        with self.assertRaisesRegex(G3Error,"WITNESS_ANCHOR_NOT_IN_LOCKED_SOURCE"):
+            score_locked(native,pkt,bridge,r)
+
+    def test_approved_source_alias_fixed_pre_D_can_pass(self):
+        native,pkt,bridge,r=self.locked_fixture()
+        native["variants"][0]["edges"][0]["alternative_locators"]=["SYNTHETIC:approved-alt"]
+        bridge["source_reference_canonical_sha256"]=canonical_sha(native)
+        pkt["reference_digest_private"]=canonical_sha(native)
+        r["variants"][0]["metrics"]["edges"]["evidence_witnesses"]["e1"]="SYNTHETIC:approved-alt"
+        self.assertEqual(score_locked(native,pkt,bridge,r)["paper"],"FULL")
+
+    def test_forged_grammar_role_anchor_rejected(self):
+        native,pkt,bridge,r=self.locked_fixture()
+        r["variants"][0]["metrics"]["roles"]["evidence_witnesses"]["role_obligation_1"]="SYNTHETIC:fake"
+        with self.assertRaisesRegex(G3Error,"ROLE_WITNESS_LOCATOR"):
+            score_locked(native,pkt,bridge,r)
+
+    def test_duplicate_native_variant_rejected(self):
+        native,pkt,bridge,r=self.locked_fixture()
+        native["variants"].append(copy.deepcopy(native["variants"][0]))
+        with self.assertRaisesRegex(G3Error,"DUPLICATE_NATIVE_VARIANT"):
+            check_reference(native)
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
