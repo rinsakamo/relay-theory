@@ -11,14 +11,6 @@
       "status": "UNVERIFIED_BACKUP"
     },
     {
-      "id": "ATT-B2",
-      "stratum": "ATT",
-      "doi": "10.1371/journal.pcbi.1004770",
-      "title": "Miconi 2016 feedback attention",
-      "gate": "same selected ATT-02; NOT independent candidate; blocked as backup",
-      "status": "BLOCKED_CONDITIONAL"
-    },
-    {
       "id": "BLF-B1",
       "stratum": "BLF",
       "doi": "10.1371/journal.pcbi.1003810",
@@ -153,6 +145,14 @@
       "title": "Integrative frontal-parietal dynamics",
       "gate": "also CTL standby; uniqueness check",
       "status": "UNVERIFIED_BACKUP"
+    },
+    {
+      "id": "INT-B4",
+      "stratum": "INT",
+      "doi": "10.1371/journal.pcbi.1012872",
+      "title": "Dual process impairments in reinforcement learning and working memory systems underlie learning deficits in physiological anxiety",
+      "gate": "2025 complete source available but central RLWM Collins/Frank ancestry overlaps INT-13 and other historical RLWM; central novelty and corrected publisher edition require audit",
+      "status": "UNVERIFIED_BACKUP"
     }
   ],
   "deterministic_rule": [
@@ -164,7 +164,8 @@
     "6 Prior published source correction may require explicit one fixed corrected version; alternative manuscripts are ineligible absent separate authorization and model-content equivalence; no standalone supplements required unless original itself makes them defining.",
     "7 Record every candidate rejection, DOI collision, correction, source retrieval failure, cross-lane unresolved G1 candidate reservation and owner decision in append-only events.",
     "8 Unfilled backup queue or unresolved conflict prevents FINAL_FROZEN; remain WORKING or READY_FOR_JOINT_FREEZE conditional.",
-    "9 No replacement based on predicted or observed H0/H1/H2, reconstruction difficulty, coverage, Grammar residual or fidelity."
+    "9 No replacement based on predicted or observed H0/H1/H2, reconstruction difficulty, coverage, Grammar residual or fidelity.",
+    "10.1371/journal.pcbi.1014796 INT-13 current 2026-09-30 PLOS article is explicitly marked uncorrected proof; cannot be primary until final published version is located and audited. If no final original before joint freeze, substitute eligible predeclared backup according to source and family gates; NO MAIN analysis."
   ],
   "notes": "Backups are prospective leads, NOT preadmitted sources. B2 blocked tags never bypass collision screening."
 }
