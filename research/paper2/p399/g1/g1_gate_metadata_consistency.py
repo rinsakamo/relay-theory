@@ -37,10 +37,10 @@ def check(ledger,physical,ancestry,alternates):
  assert len(pf["pairs"])+sum(1 for x in ancestry["named_source_grounded_relations"] if x["a"] in names and x["b"].startswith("PF"))==16*4
  assert len(inter["pairs"])+sum(1 for x in ancestry["named_source_grounded_relations"] if x["a"] in names and x["b"] in names)==16*15//2
  assert len(main["pairs"])==16*10 and main["default_classification"]=="UNDERDETERMINED"
- assert alternatives["actual"]["P12_eLife39497"]["real_raw_bytes_acquired"] is True
- assert alternatives["actual"]["P12_eLife39497"]["pdf_pages"]==23
- assert len([x for x in alternatives["actual"].values() if x.get("real_raw_bytes_acquired",False)])==1
- assert all(x["prospective_replacement"]=="NOT_ADOPTED" for x in alternatives["actual"].values())
+ assert alternates["actual"]["P12_eLife39497"]["real_raw_bytes_acquired"] is True
+ assert alternates["actual"]["P12_eLife39497"]["pdf_pages"]==23
+ assert len([x for x in alternates["actual"].values() if x.get("real_raw_bytes_acquired",False)])==1
+ assert all(x["prospective_replacement"]=="NOT_ADOPTED" for x in alternates["actual"].values())
  return True
 
 if __name__=="__main__":
