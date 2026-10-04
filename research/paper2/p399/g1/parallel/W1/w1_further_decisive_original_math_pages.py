@@ -38,3 +38,5 @@ for name,doi,sha,pages,render in S:
     print(json.dumps(row),flush=True)
 (D/'real_targeted_pages_metadata.json').write_text(json.dumps(result,indent=2)+'\n')
 assert all(x['success'] for x in result), 'BOUNDED_RENDER_MISSING_OR_HTTP_SOURCE_BLOCKER'
+
+# Post-E targeted publisher source recovery attempt; previous 502 executions preserved unchanged.
