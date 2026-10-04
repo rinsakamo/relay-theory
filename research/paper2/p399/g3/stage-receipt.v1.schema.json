@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "G3 immutable stage receipt v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "paper_token",
+    "stage",
+    "protocol_sha256",
+    "primary_source_id",
+    "prior_raw_sha256",
+    "artifact_raw_sha256",
+    "git_commit",
+    "actor",
+    "runtime",
+    "real_execution",
+    "signed_freeze",
+    "main_authorized"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "G3_STAGE_RECEIPT_V1"
+    },
+    "paper_token": {
+      "type": "string"
+    },
+    "stage": {
+      "enum": [
+        "S0",
+        "R0",
+        "P0",
+        "A",
+        "B",
+        "C",
+        "D0",
+        "D1",
+        "D2",
+        "E0",
+        "ATLAS0",
+        "UNMASK"
+      ]
+    },
+    "protocol_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "primary_source_id": {
+      "type": "string"
+    },
+    "prior_raw_sha256": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "artifact_raw_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "git_commit": {
+      "type": "string"
+    },
+    "actor": {
+      "type": "string"
+    },
+    "runtime": {
+      "type": "string"
+    },
+    "real_execution": {
+      "type": "boolean"
+    },
+    "signed_freeze": {
+      "type": "boolean"
+    },
+    "main_authorized": {
+      "const": false
+    },
+    "method_notes": {
+      "type": "string"
+    },
+    "independence_claim": {
+      "enum": [
+        "NONE",
+        "ACTUAL_SEPARATE_ASSESSOR",
+        "PROCEDURAL_SEPARATION_ONLY"
+      ]
+    }
+  }
+}
