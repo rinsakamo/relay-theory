@@ -1,0 +1,59 @@
+name: PF02 published v2.3.1 protocol-field preflight
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/pf02-v231-protocol-preflight.yml"
+      - "research/paper2/p399/pf02/C_V231_PUBLISHED_PROTOCOL_BRIDGE.*"
+permissions:
+  contents: read
+jobs:
+  pf02-published-protocol-metadata-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify complete A-relative C1 gap tests and C2 four-class condition ledger
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd research/paper2/p399/pf02
+          for f in A_V1 B_V1 C_V1 C_V1_CONDITION_NORMALIZATION C_V231_PUBLISHED_PROTOCOL_BRIDGE; do
+            sha256sum -c "$f.sha256"
+          done
+          python3 - <<'PY'
+          import json,hashlib
+          load=lambda x:json.load(open(x+'.json'))
+          digest=lambda x:hashlib.sha256(open(x+'.json','rb').read()).hexdigest()
+          A=load('A_V1'); B=load('B_V1'); C=load('C_V1'); N=load('C_V1_CONDITION_NORMALIZATION'); P=load('C_V231_PUBLISHED_PROTOCOL_BRIDGE')
+          assert P['parent_sha256']=={'A':digest('A_V1'),'B':digest('B_V1'),'C':digest('C_V1'),'normalized':digest('C_V1_CONDITION_NORMALIZATION')}
+          a_ids={x['id'] for x in A['claims']}
+          b_ids={x['id'] for x in B['objections']}
+          c_ids={x['b_id'] for x in C['c2_closed_b_objections']}
+          assert len(a_ids)==40 and len(A['edges'])==28 and len(b_ids)==len(c_ids)==12
+          assert set(P['C1']['original_A_all_claim_ids'])==a_ids
+          assert set(P['C1']['original_A_all_edge_ids'])=={x['id'] for x in A['edges']}
+          gaps=P['C1']['per_B_explicit_gap_tests']
+          assert len(gaps)==12 and {x['b_id'] for x in gaps}==b_ids
+          assert all(x['entire_A_reopened_first'] and x['c1_gap_verdict']=='SOURCE_GAP_CONFIRMED' and x['exact_source_locator'] and x['source_vs_original_A_gap'] and x['alternate_and_contradiction'] for x in gaps)
+          for x in gaps:
+            b=next(z for z in B['objections'] if z['id']==x['b_id'])
+            assert x['closest_original_A']==(None if b['against_a_id']=='OMITTED' else b['against_a_id'])
+            if x['closest_original_A']:
+              assert x['original_A_actual_scope']==next(z['original_source_paraphrase'] for z in A['claims'] if z['id']==x['closest_original_A'])
+          ledger=P['C2']['source_local_condition_ledger']
+          assert len(ledger)==33 and len({x['id'] for x in ledger})==33
+          assert {x['id'] for x in ledger}=={x['id'] for x in N['ledger']}
+          assert {x['canonical_treatment'] for x in ledger}=={'IN_PATCH','ALREADY_IN_A','CLAIM_LIMITED'}
+          assert all(x['source_locator'] and x['condition'] and x['binding'] for x in ledger)
+          assert all(x['binding'] in a_ids for x in ledger if x['canonical_treatment']=='ALREADY_IN_A')
+          assert set(x['binding'] for x in ledger if x['canonical_treatment']=='IN_PATCH').issubset({'C%02d'%i for i in range(1,14)})
+          assert next(x for x in ledger if x['id']=='CC19')['deduplicates_to']=='CC25'
+          assert len(P['C2']['independent_source_section_sweep'])==20
+          assert sum(bool(x['B_zero']) for x in P['C2']['independent_source_section_sweep'])==6
+          assert P['C2']['independent_C_only']['id']=='C13'
+          assert P['status']['original_validator_run'] is False
+          assert P['status']['formal_pilot_qualified'] is False
+          assert P['status']['main_authorized'] is False
+          print('PF02_PUBLISHED_PROTOCOL_METADATA_PREFLIGHT_PASS 12/12 GAP TESTS, 33/33 TYPED MATERIAL CONDITIONS, 20/20 C SOURCE SECTIONS, 6 B-ZERO')
+          print('NOT ORIGINAL SHA-LOCKED V231 VALIDATOR; NOT SOURCE INTERPRETATION CERTIFICATION')
+          PY
