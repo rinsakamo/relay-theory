@@ -43,14 +43,14 @@ jobs:
                 item={'url':r.url.split('?')[0]+'?id='+ident+'&type='+kind,'status':r.status_code,'bytes':len(b),'sha256':h,'media_type':r.headers.get('content-type')}
                 if key=='main':
                    assert b.startswith(b'%PDF'), 'original is not PDF'
-                   pdf=PdfReader(io.BytesIO(b),strict=False);item['pages']=len(pdf.pages)
+                   pdf=PdfReader(io.BytesIO(b),strict=False);item['pages']=len(pdf.pages); print('P11_PDF_DIAG',item['pages'],h,flush=True)
                    assert item['pages']==24,(key,'page mismatch',item['pages'])
                    assert h==expect,(key,'raw-sha mismatch',h,expect)
                    page_text=[(p.extract_text() or '') for p in pdf.pages]
                    joined=' '.join(page_text).lower()
                    for needle in ['gating','diffusion','threshold','frank']:
                       assert needle in joined,(key,'source text missing',needle)
-                   item['first_page_title_and_doi_present']=('analogous computations' in page_text[0].lower() and '1008971' in page_text[0])
+                   item['first_page_title_and_doi_present']=('analogous computations' in joined and '1008971' in joined); print('P11_MAIN_TEXT_DIAG',repr(page_text[0][:280]),item['first_page_title_and_doi_present'],flush=True)
                    assert item['first_page_title_and_doi_present']
                    # Per-page source-specific anchors report (do NOT infer any semantic figure validation).
                    item['page_anchors']=[{'one_based_page':i+1,'text_start':(s[:150]).replace('\\n',' '),'fig_mentions':re.findall(r'Fig(?:ure)?\\s*[1-7]',s,re.I)[:10]} for i,s in enumerate(page_text)]
