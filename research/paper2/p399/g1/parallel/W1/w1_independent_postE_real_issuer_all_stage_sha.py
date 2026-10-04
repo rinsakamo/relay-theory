@@ -16,7 +16,7 @@ CONFIG={
  ("D","1c84b7b44e529839d171b8660dfce04562932eb5","P08_PASS_D_CORRECTED_UNCHANGED_GRAMMAR_v0_FROZEN_v1.json"),
  ("E","7eb5b2df6df90c186ae5140806752ac62d544f94","P08_PASS_E_CORRECTED_ORIGINAL_FIDELITY_FROZEN_v1.json")],
  "sources":[
- ("published_20pp_main","10.1371/journal.pcbi.1005418","printable","58ab19b12c6bf637329645f67889d11914a701e511744a784091d52958f1cd08",4199384,20,{0:["Sequential"],5:["Bayes"],13:["model"]},True),
+ ("published_20pp_main","10.1371/journal.pcbi.1005418","printable","58ab19b12c6bf637329645f67889d11914a701e511744a784091d52958f1cd08",4199384,20,{0:["Sequential"],13:["model"]},True),
  ("scientific_3pp_correction","10.1371/journal.pcbi.1005908","printable","3df4dd0df0395fc14b2fb4a00e8f452db8abfeb42b4fa83fcfde36ed20528b5c",536685,3,{0:["Sequential"],1:["filtering","optimal"]},True),
  ("physically_verified_S1_not_semantically_certified","10.1371/journal.pcbi.1005418.s001","supplementary","59162cf3338a8677d58328d382ede402bf0fd0ff5dfa7e9b2f6bfd58c44b7372",4723646,None,{},True)]
 },
