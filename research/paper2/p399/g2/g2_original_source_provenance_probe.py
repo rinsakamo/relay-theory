@@ -74,12 +74,14 @@ if __name__=="__main__":
        git_sha=os.environ.get("GITHUB_SHA"),scope="PHYSICAL_PROVENANCE_ONLY_NO_SCIENTIFIC_ADMISSION",
        publisher_original_copyrighted_bytes_uploaded=False,rows=results)
     out=Path("g2-receipts");out.mkdir(exist_ok=True)
-    raw=(json.dumps(packet,sort_keys=True,separators=(",",":"),ensure_ascii=False)+"\\n").encode("utf-8")
+    raw=(json.dumps(packet,sort_keys=True,separators=(",",":"),ensure_ascii=False)+chr(10)).encode("utf-8")
     (out/"publisher-original-provenance.json").write_bytes(raw)
     print("SOURCE_RECEIPT_CANONICAL_SHA256 "+hashlib.sha256(raw).hexdigest())
     for r in results:
         print("G2_RAW",r["id"],"PDF",str(r["pdf_bytes"] or "FAILED"),"PAGES",r["pdf_pages"] or "-","PDF_SHA256",r["pdf_sha256"] or "-",
         "HTML",int(r["html_open"]),"HTML_SHA256",r["html_sha256"] or "-","ERROR_COUNT",len(r["errors"]))
+    for r in results:
+        print("G2_DETAILS",json.dumps({"id":r["id"],"doi":r["doi"],"html_final_url":r["html_final_url"],"pdf_final_url":r["pdf_final_url"],"html_headings":r["html_headings"][:18],"html_math_tags":r["html_math_tags"],"html_figure_tags":r["html_figure_tags"],"html_publication_meta":r["html_publication_meta"][:5],"html_correction_link_hints":r["html_correction_link_hints"][:3],"errors":r["errors"][:3]},ensure_ascii=False,separators=(",",":")))
     print("COUNTS physical-original-pdf",sum(x["pdf_bytes_acquired"] for x in results),
           "publisher-html-pages-accessed",sum(x["html_open"] for x in results),
           "independently-scientifically-source-admitted",0)
