@@ -1,0 +1,82 @@
+name: PF02 formal bounded decision and source ancestry guard
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/pf02-formal-decision-guard.yml'
+      - 'research/paper2/p399/pf02/PF02_FORMAL_*'
+      - 'research/paper2/p399/pf02/PF02_POST_E_PRIMARY_SOURCE_*'
+permissions:
+  contents: read
+jobs:
+  immutable-formal-scope:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify all exact frozen original source and decision receipt bytes, chronology and fail-closed exclusions
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd research/paper2/p399/pf02
+          for name in PRE_A PRE_A_REVISION_20261004 PRE_A_MATH_ADJUDICATION_20261004 PRE_A_LINEAGE_RELATIVE_20261004 SOURCE_SCOPE_BEFORE_A A_V1 B_V1 C_V1 C_V1_CONDITION_NORMALIZATION A_V2_DERIVED_FROM_C D_GRAMMAR_V0 E_SOURCE_FIDELITY_V1 E_SOURCE_FIDELITY_V2_VALIDATED C_V231_PUBLISHED_PROTOCOL_BRIDGE PF02_POST_E_PRIMARY_SOURCE_ANCHORS_20261004 PF02_FORMAL_SCIENTIFIC_QUALIFICATION_DECISION_20261004 PF02_FORMAL_QUALIFICATION_JA_20261004; do
+            sha256sum -c "$name.sha256"
+          done
+          python3 - <<'PY'
+          import json,hashlib,subprocess,os
+          def load(x):
+            with open(x+'.json','rb') as f:return json.load(f)
+          def hashfile(x):
+            return hashlib.sha256(open(x,'rb').read()).hexdigest()
+          source='bef58465c56cec93f1cbb0f689c8fcd48cd656f3520d70a6032aaac9caa63655'
+          A=load('A_V1');B=load('B_V1');C=load('C_V1');Av=load('A_V2_DERIVED_FROM_C')
+          D=load('D_GRAMMAR_V0');E=load('E_SOURCE_FIDELITY_V2_VALIDATED');M=load('PF02_POST_E_PRIMARY_SOURCE_ANCHORS_20261004')
+          F=load('PF02_FORMAL_SCIENTIFIC_QUALIFICATION_DECISION_20261004')
+          assert F['candidate']['source_sha256']==M['source_sha256']==source
+          assert F['candidate']['source_bytes']==M['source_bytes']==6293685
+          assert F['candidate']['pages']==M['source_pages']==46
+          assert len(M['anchors'])==21 and len({e['page_1_based'] for e in M['anchors']})==21
+          assert F['qualification_evidence']['actual_post_E_independent_pdf_review']['source_anchor_manifest_sha256']==hashfile('PF02_POST_E_PRIMARY_SOURCE_ANCHORS_20261004.json')
+          assert F['qualification_evidence']['prospective_stage_frozen']['A_40_claims_28_edges_sha256']==hashfile('A_V1.json')
+          assert F['qualification_evidence']['prospective_stage_frozen']['B_12_adverse_findings_sha256']==hashfile('B_V1.json')
+          assert F['qualification_evidence']['prospective_stage_frozen']['C_12_resolutions_20_source_sections_sha256']==hashfile('C_V1.json')
+          assert F['qualification_evidence']['prospective_stage_frozen']['post_C_Av2_43_claims_31_edges_sha256']==hashfile('A_V2_DERIVED_FROM_C.json')
+          assert F['qualification_evidence']['prospective_stage_frozen']['D_grammar_v0_43_31_sha256']==hashfile('D_GRAMMAR_V0.json')
+          assert F['qualification_evidence']['prospective_stage_frozen']['E_source_fidelity_43_31_33_sha256']==hashfile('E_SOURCE_FIDELITY_V2_VALIDATED.json')
+          assert A['source_pdf_sha256']==Av['primary_pdf_sha256']==source
+          assert len(A['claims'])==40 and len(A['edges'])==28
+          assert len(B['objections'])==12 and len(C['c2_closed_b_objections'])==12
+          assert len(C['original_order_independent_c_section_sweep'])==20
+          assert len(Av['claims'])==43 and len(Av['edges'])==31
+          assert len(D['claim_role_mapping'])==43 and len(D['source_edge_mapping'])==31
+          assert E['claim_coverage']=={'count':43,'mapped':43}
+          assert E['edge_coverage']=={'count':31,'mapped':31}
+          assert E['condition_coverage']=={'count':33,'all_accounted':True}
+          assert F['scientific_adjudication']['open_decisive_original_source_exception_affecting_INCLUDED_claims']==0
+          assert F['formal_disposition']=='QUALIFIED_ONLY_ORIGINAL_PUBLISHED_PDF_SOURCE_GROUNDED_STRUCTURAL_AND_PROCEDURAL_SCOPE'
+          assert F['qualification_evidence']['actual_post_E_independent_pdf_review']['verified_distinct_original_page_source_anchor_count']==21
+          assert F['qualification_evidence']['actual_post_E_independent_pdf_review']['blind_independent_human_rater'] is False
+          assert F['qualification_evidence']['stage_metadata_checks']['native_exact_v231_validator_imported'] is False
+          assert len(F['scientific_adjudication']['bounded_excluded_quantitative_or_historical_claims'])>=5
+          assert F['scientific_adjudication']['generic_H0_H1_H2'].startswith('NON_DISCRIMINATING')
+          assert F['cohort_reconciliation']['prior_issue_399_formal_prospective_count']==3
+          assert F['cohort_reconciliation']['PF02_increment_this_decision']==1
+          assert F['cohort_reconciliation']['new_four_pilot_formal_count']==4
+          assert set(F['cohort_reconciliation']['new_four_original_qualified_names'])=={'PF01','PF02','PF03','PF04'}
+          assert F['remaining_separate_gates']['MAIN_authorized'] is False
+          assert F['remaining_separate_gates']['overall_20_pilot_diversity_review']=='PENDING'
+          assert F['remaining_separate_gates']['outcome_blind_MAIN_source_queue_freeze']=='PENDING'
+          os.chdir(os.path.abspath('../../../..'))
+          base=subprocess.run(['git','merge-base','HEAD','origin/main'],check=True,capture_output=True,text=True).stdout.strip()
+          seq=subprocess.run(['git','rev-list','--reverse',base+'..HEAD'],check=True,capture_output=True,text=True).stdout.splitlines()
+          def stage(name):
+            r=subprocess.run(['git','log','-1','--format=%H','HEAD','--','research/paper2/p399/pf02/'+name+'.json'],check=True,capture_output=True,text=True)
+            return r.stdout.strip()
+          sequence=['SOURCE_SCOPE_BEFORE_A','A_V1','B_V1','C_V1','A_V2_DERIVED_FROM_C','D_GRAMMAR_V0','E_SOURCE_FIDELITY_V1','PF02_POST_E_PRIMARY_SOURCE_ANCHORS_20261004','PF02_FORMAL_SCIENTIFIC_QUALIFICATION_DECISION_20261004']
+          observed=[stage(x) for x in sequence]
+          assert all(x in seq for x in observed),(seq,observed)
+          assert all(seq.index(observed[i])<seq.index(observed[i+1]) for i in range(len(observed)-1)),observed
+          print('PF02_FORMAL_DECISION_SCOPE_AND_FROZEN_ANCESTRY_PASS source 46 pages; A/B/C/D/E; independent 21 source anchor evidence; limited 4/4 and MAIN NO')
+          print('This receipt guard alone is NOT a scientific review, original full model numerical replication or native #401 code test.')
+          PY
