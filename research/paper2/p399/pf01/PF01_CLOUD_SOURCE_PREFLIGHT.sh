@@ -29,7 +29,11 @@ for kind in PUBLISHER AUTHOR_INSTITUTION; do
     echo "SOURCE_SHA256_$kind=$(sha256sum "$DEST" | cut -d' ' -f1)"
     pdfinfo "$DEST" | grep -E 'Pages:|PDF version:|Page size:|CreationDate:|ModDate:|Title:' || true
     pdftotext -f 1 -l 2 "$DEST" "$ROOT/output/$kind-title.txt" || true
-    if [ "$kind" = PUBLISHER ]; then echo "$kind" > "$ROOT/output/received_medium.txt"; fi
+    if [ "$kind" = PUBLISHER ]; then
+      echo "$kind" > "$ROOT/output/received_medium.txt"
+      # Temporary GitHub Actions artifact only (7-day retention), never Git; PLOS CC BY and attribution retained.
+      cp "$DEST" "$ROOT/output/PUBLISHER-original.pdf"
+    fi
     if command -v pdftoppm >/dev/null; then
       mkdir -p "$ROOT/output/$kind-sample-pages"
       for page in 4 5 6 7 8 19 20 21 22 23 25 30 34; do
