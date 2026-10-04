@@ -125,11 +125,11 @@ class PF03ActualPinnedAuthorCodeTests(unittest.TestCase):
         model.eval()
         self.assertEqual(p.thres,0.73)
         self.assertEqual(model.mix_dim_2,2)
-        # Synthetic intermediate states are NOT original Moving MNIST data.
+        # Use batch=2: original temporal_prediction_one_() unconditionally\n        # squeezes output, so batch=1 drops its batch dimension. This is\n        # a controlled shape fixture, not a change to authors' code.\n        # Synthetic intermediate states are NOT original Moving MNIST data.
         with torch.no_grad():
-            r2=torch.full((1,p.r2_dim),0.2)
-            r3a=torch.zeros((1,p.r3_dim))
-            r3b=torch.ones((1,p.r3_dim))
+            r2=torch.full((2,p.r2_dim),0.2)
+            r3a=torch.zeros((2,p.r3_dim))
+            r3b=torch.ones((2,p.r3_dim))
             a=model.temporal_prediction_two_(r2,r3a)
             b=model.temporal_prediction_two_(r2,r3b)
             self.assertTrue(torch.isfinite(a).all())
@@ -139,8 +139,8 @@ class PF03ActualPinnedAuthorCodeTests(unittest.TestCase):
             # The event-gate score is on inferred/predicted LOWER latent, not
             # a sensory pixel-space score. Chosen toy posteriors straddle the
             # published threshold, independent of input dataset.
-            rprev=torch.zeros((1,p.r_dim))
-            r2pre=torch.zeros((1,p.r2_dim))
+            rprev=torch.zeros((2,p.r_dim))
+            r2pre=torch.zeros((2,p.r2_dim))
             prior_pred=model.temporal_prediction_one_(rprev,r2pre)
             toy_small=prior_pred.clone()
             toy_large=prior_pred.clone()
