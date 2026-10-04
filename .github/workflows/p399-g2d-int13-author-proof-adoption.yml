@@ -1,0 +1,21 @@
+name: P399 G2-D INT13 author-frozen proof edition gates
+on:
+  push:
+    branches:
+      - paper2/p399-g2d-int13-edition-witness-20261005
+    paths:
+      - "research/paper2/p399/g2/int_g2d/G2D_INT13_AUTHOR_ADOPTED_UNCORRECTED_PROOF_STUDY_EDITION_DELTA_v2.json"
+      - "research/paper2/p399/g2/int_g2d/G2D_INT13_AUTHOR_ADOPTED_PROOF_EDITION_DECISION_JA_20261005.md"
+      - "research/paper2/p399/g2/int_g2d/test_int13_author_proof_edition_exception.py"
+      - ".github/workflows/p399-g2d-int13-author-proof-adoption.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  frozen-edition-vs-science-gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - name: Immutable original proof receipts and 12 false-promotion controls
+        run: python3 research/paper2/p399/g2/int_g2d/test_int13_author_proof_edition_exception.py
