@@ -47,6 +47,8 @@ def check_reference(reference):
         att = assessor["r2_attestation"]
         if att["assessor_token"] == assessor["assessor_token"]:
             raise G3Error("R2_NOT_ACTUALLY_SEPARATE")
+    if len({v["variant_id"] for v in reference["variants"]}) != len(reference["variants"]):
+        raise G3Error("DUPLICATE_NATIVE_VARIANT")
     for v in reference["variants"]:
         ids = set()
         for name in ("nodes", "edges", "temporal", "restrictions", "boundaries",
@@ -255,6 +257,12 @@ def check_source_reference_alignment(reference, record):
             observed = set(actual["metrics"][m].get("critical_ids", []))
             if needed != observed:
                 raise G3Error("SOURCE_NATIVE_CRITICALITY_CHANGED:" + m)
+            approved_locators = {a["id"]: {a["source_locator"], *a.get("alternative_locators", [])}
+                                 for a in original[source_key]}
+            anchors = actual["metrics"][m].get("evidence_witnesses", {})
+            for matched in actual["metrics"][m]["matched_ids"]:
+                if anchors.get(matched) not in approved_locators.get(matched, set()):
+                    raise G3Error("WITNESS_ANCHOR_NOT_IN_LOCKED_SOURCE:" + m)
     ref_excluded = {x["id"] for x in reference.get("excluded_quantitative_targets", [])}
     eval_excluded = {x["id"] for x in record["excluded_quantitative_targets"]}
     if ref_excluded != eval_excluded:
@@ -310,6 +318,11 @@ def score_locked(reference, packet, bridge, record):
         actual = set(v["metrics"]["roles"]["required_ids"])
         if expected != actual:
             raise G3Error("ROLE_DENOMINATOR_NOT_PREDECLARED")
+        obligations = {o["id"]: o["source_locator"] for o in b_variants[v["variant_id"]]["role_obligations"]}
+        roles = v["metrics"]["roles"]
+        for matched in roles["matched_ids"]:
+            if roles.get("evidence_witnesses", {}).get(matched) != obligations.get(matched):
+                raise G3Error("ROLE_WITNESS_LOCATOR_NOT_PREDECLARED")
     report = score(record)
     report["source_reference_alignment_checked"] = True
     report["role_bridge_pre_D_checked"] = True
