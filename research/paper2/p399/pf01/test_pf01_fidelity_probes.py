@@ -64,6 +64,15 @@ class MetadataAndReportedStructure(unittest.TestCase):
         self.assertEqual(self.d["inputs"]["original_publisher_pdf_sha256"], SOURCE_SHA)
 
     def test_git_chronology_frozen_separately(self):
+        # Main uses squash-only merge. The immutable stage commits MUST remain
+        # reachable via a dedicated long-lived audit ref even after PR branch deletion.
+        # CI uses checkout fetch-depth: 0 so remote refs are available.
+        anchor = "refs/remotes/origin/audit/p399-pf01-chronology-20261004"
+        expected = "21ca1cbae4d27bb22e54cfe7816fbd11a6588cf7"
+        p = subprocess.run(["git", "rev-parse", "--verify", anchor], cwd=REPO,
+                           capture_output=True, text=True)
+        self.assertEqual(p.returncode, 0, "Missing permanent PF01 audit branch; fetch full history")
+        self.assertEqual(p.stdout.strip(), expected, "Frozen audit ref moved: STOP")
         for older, newer in zip(LOCK_COMMITS, LOCK_COMMITS[1:]):
             with self.subTest(older=older, newer=newer):
                 p = subprocess.run(["git", "merge-base", "--is-ancestor", older, newer],
