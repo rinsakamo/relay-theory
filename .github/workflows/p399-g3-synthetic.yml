@@ -1,0 +1,32 @@
+name: P399 G3 synthetic protocol guards (NOT MAIN scientific validation)
+on:
+  push:
+    branches:
+      - protocol/p399-g3-measurement-blinding-v1-20261004
+    paths:
+      - 'research/paper2/p399/g3/**'
+      - '.github/workflows/p399-g3-synthetic.yml'
+  pull_request:
+    paths:
+      - 'research/paper2/p399/g3/**'
+      - '.github/workflows/p399-g3-synthetic.yml'
+  workflow_dispatch:
+jobs:
+  g3-synthetic:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install isolated G3 schema dependency
+        run: python -m pip install jsonschema==4.23.0
+      - name: Run fail-closed G3 synthetic and exposed-compatibility tests only
+        run: python research/paper2/p399/g3/test_evaluate_g3.py -v
+      - name: Show exact G3 code/fixture SHA256 and commit
+        run: |
+          git rev-parse HEAD
+          sha256sum research/paper2/p399/g3/evaluate_g3.py
+          sha256sum research/paper2/p399/g3/fixtures/*.json
