@@ -1,0 +1,56 @@
+{
+  "schema": "P399-PF02-PRE_A-MATH-ADJUDICATION-V1",
+  "date": "2026-10-04",
+  "authority": "User explicitly adopted minimal p33 OU typographical correction as a structural interpretation only",
+  "parent_receipt_sha256": "4f0424e572136fcced637180bfc718058d00ff2939c2df5579f6e43d24cc64ff",
+  "primary_source": {
+    "doi": "10.1371/journal.pcbi.1004331",
+    "medium": "original publisher PDF",
+    "sha256": "bef58465c56cec93f1cbb0f689c8fcd48cd656f3520d70a6032aaac9caa63655",
+    "bytes": 6293685,
+    "pages": 46,
+    "visual_pages": [
+      30,
+      33
+    ]
+  },
+  "source_conflict": {
+    "id": "PF02_E33_OU_PRINTED_FORM",
+    "original_printed_p33": "tau_AMPA = dI_noise,i(t)/dt = -I_noise,i(t) + xi(t)*sqrt(tau_AMPA*sigma_decision^2)",
+    "original_p30_eq3": "tau_AMPA * dS_noise,i(t)/dt = -S_noise,i(t) + xi(t)*sqrt(tau_AMPA*sigma_rule^2)",
+    "prose_p33": "OU noise reintroduced for stochastic diffusion",
+    "adopted_minimal_candidate": "tau_AMPA * dI_noise,i(t)/dt = -I_noise,i(t) + xi(t)*sqrt(tau_AMPA*sigma_decision^2)",
+    "correction_authorized_by_publisher": false,
+    "confidence": "high internal source consistency; not an official erratum"
+  },
+  "scientific_scope": {
+    "structural": "PASS_BOUNDED: an OU-type stochastic noise state enters the 3D four-choice decision dynamics",
+    "numerical": "EXCLUDE exact numeric normalization, coefficients, simulation reproduction and repaired source-literal claims pending direct independent source/code confirmation",
+    "original_source_unmodified": true
+  },
+  "lineage": {
+    "decision": "UNDERDETERMINED",
+    "required": "side-by-side complete 2005 Stemme original and PF02 integrated architecture, including historical MAIN D06 Wang 2002 family separation",
+    "secondary": "Stemme et al 2007 DOI 10.1007/s11571-007-9019-8 confirms author-reported reuse of 2005 neural/fMRI predecessor but does not replace 2005 source"
+  },
+  "gates": {
+    "total": 10,
+    "structurally_pass_including_bounded_math": 9,
+    "underdetermined": 1,
+    "only_current_pre_a_blocker": "MODEL_ANCESTOR_INTEGRATED_LINEAGE",
+    "status": "STOP_PRE_A"
+  },
+  "stage_status": {
+    "A": "NOT_STARTED",
+    "B": "NOT_STARTED",
+    "C": "NOT_STARTED",
+    "D": "NOT_STARTED",
+    "E": "NOT_STARTED"
+  },
+  "corpus": {
+    "qualified_pilots_added": 0,
+    "main_authorized": false,
+    "other_pilots_touched": false
+  },
+  "append_only": true
+}
