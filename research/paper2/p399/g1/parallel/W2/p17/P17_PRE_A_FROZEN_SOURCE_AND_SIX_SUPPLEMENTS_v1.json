@@ -1,0 +1,197 @@
+{
+  "schema": "relaytheory.p399.g1.W2.P17.original_source_and_negative_PRE_A_frozen.v1",
+  "paper": "P17",
+  "doi": "10.1371/journal.pcbi.1009738",
+  "published": "2022-01-13",
+  "authors": "Turner, Feuerriegel, Hester, Bode",
+  "publisher": "PLOS Computational Biology",
+  "original_publisher_main": {
+    "url": "https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1009738&type=printable",
+    "raw_sha256": "e2d28aea56a31501db49aa791158f18771ae3054748d331df2ec26817f16f305",
+    "bytes": 1551349,
+    "pages": 16,
+    "prior_original_issuer_receipt_run": 37178895352,
+    "independent_reacquisition_runs": [
+      37191423786,
+      37191981039
+    ],
+    "official_complete_original_HTML": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1009738",
+    "canonical_original_correction_scope": "current publisher canonical original and original PDF, no visible correction banner. Exhaustive external correction index unproved."
+  },
+  "official_essential_supplementals": [
+    {
+      "id": "s001",
+      "doi": "10.1371/journal.pcbi.1009738.s001",
+      "raw_sha256": "5ca2de3cbd46d3c00571c2ae79ab2fe3bdd03d0a30353da4231cdff7b8aebc16",
+      "bytes": 194996,
+      "pages": 2,
+      "source_content": "S1 Text full mixed-effects models, main first frame likelihood and speed"
+    },
+    {
+      "id": "s002",
+      "doi": "10.1371/journal.pcbi.1009738.s002",
+      "raw_sha256": "f9bcdf77670fb0e2aa155156955512695379547068f03d33904371433eafe5e4",
+      "bytes": 1277417,
+      "pages": 3,
+      "source_content": "S2 Text individual N4 participant kernels and asymmetries/rare response caveats"
+    },
+    {
+      "id": "s003",
+      "doi": "10.1371/journal.pcbi.1009738.s003",
+      "raw_sha256": "8c72ee49d7955b9e388b0a6a8f8a15a0a634d80d53f0d017a1a540eedaf9d5de",
+      "bytes": 391666,
+      "pages": 2,
+      "source_content": "S3 Text model predictions, complete fitted extended DDM parameters"
+    },
+    {
+      "id": "s004",
+      "doi": "10.1371/journal.pcbi.1009738.s004",
+      "raw_sha256": "310264d18535e4f1b1cbb2d2d8fdde104227954883b8b71c1f7acbd35f3858b8",
+      "bytes": 166001,
+      "pages": 1,
+      "source_content": "S4 Text excluding first-frame later pre-response evidence aux effects"
+    },
+    {
+      "id": "s005",
+      "doi": "10.1371/journal.pcbi.1009738.s005",
+      "raw_sha256": "8d51d8313d955221fe00be587901397aaa0b5b5573d1ea328e59f80c43aa917b",
+      "bytes": 49402,
+      "pages": 1,
+      "source_content": "S5 Text source countercheck mean sensory evidence favored incorrect on only ~2.9% trials"
+    },
+    {
+      "id": "s006",
+      "doi": "10.1371/journal.pcbi.1009738.s006",
+      "raw_sha256": "4994dc5c0f5e40e12fac2a42113cb2c3da4a7c5598ac24fa38a84ccdee12f153",
+      "bytes": 59832,
+      "pages": 1,
+      "source_content": "S6 Text 1–200 vs200–400ms independent mean evidence GLMM parameter table"
+    }
+  ],
+  "source_acquisition_success_run": 37191981039,
+  "original_visual_material_inspected": [
+    "original main Fig1 behavioral psychophysical kernels",
+    "original main Fig2 model simulated kernels",
+    "original main Fig3 original competing source models",
+    "source original s001 mixed effects p1",
+    "source original s002 original participant-specific p1 and later paragraph text",
+    "source original s003 model prediction and full fitted variant table p1",
+    "source original s004 p1",
+    "source original s005 p1 full author's rare incorrect evidence analysis",
+    "source original s006 p1 complete early vs late predictor table"
+  ],
+  "source_original_center": [
+    {
+      "id": "CORE1",
+      "locator": "main task Methods and Fig4",
+      "fact": "N=4 high-trial repeated measurement two independent flickering luminance squares; residual difference fluctuations randomized each 13.33ms, initial two-choice decision then stimuli continue for 1.5 seconds allowing redecision. Experiment input is luminance stream, not model latent accumulator."
+    },
+    {
+      "id": "CORE2",
+      "locator": "original Fig1/s001 and s002",
+      "fact": "Psychophysical reverse-correlation of residual framewise evidence conditioned on initial correct/error and final reversal; observer results first-frame strength associated with later change probability and weak latency, while later evidence significantly contributes, participant-wise variable effects."
+    },
+    {
+      "id": "CORE3",
+      "locator": "original Methods extended DDM direct ancestor [3]",
+      "fact": "Original prior Resulaj et al 2009 postdecision accumulator crosses initial bound then optionally opposite change-of-mind bound; conventional matched difficulty constant across-trial drift predicts no condition-controlled first-frame effect."
+    },
+    {
+      "id": "CORE4",
+      "locator": "main novel original Fig2/3 computational methods",
+      "fact": "Current extension has source first-frame residual luminance difference contributing EXTERNALLY stimulus-driven across-trial drift offset that DECAYS LINEARLY with time, plus independently additive INTERNAL/endogenous trial drift offset and moment-wise external/internal noise."
+    },
+    {
+      "id": "CORE5",
+      "locator": "main original Fig2/3/s003",
+      "fact": "Fit model using initial/final behavioral response probabilities and initial/change-of-mind RT quantiles, then PREDICT visual evidence psychophysical kernels not used to fit; simulation 100,000 trials for diagnostic pattern, not independent human data."
+    },
+    {
+      "id": "CORE6",
+      "locator": "main original Fig3 original model variants",
+      "fact": "Actual augmented externally linked early drift+internal variability reproduces initial-frame psychophysical kernel; same drift variability but stimulus-decoupled predicts WRONG early direction, no across-trial drift predicts NO systematic first-frame effect. Preserve both explicit unfavorable original predictions."
+    }
+  ],
+  "original_empirical_source_reported": [
+    "Change-of-mind occurred in 23.91% of source trials, 18.53% correcting errors and 5.38% spoiling correct responses",
+    "Initial choice correctly predicted on 66.95%, final correctness80.10%, original behavioral observed proportions not recreated from simulation",
+    "First-frame interaction with initial accuracy predicts change likelihood chi²(1)42.08 p<8.75e-11, change latency chi²(1)4.27 p=.039",
+    "Non-first-frame mean pre-response evidence predicts reversal probability chi²(1)192.36 p<2.20e-16 and speed chi²(1)82.36 p=2.20e-16",
+    "Mean evidence 200–400ms more predictive of change likelihood than 0–200ms in current task AIC14961 vs15039 original s006; first frame is NOT sole or best predictor"
+  ],
+  "source_specific_negative_and_limits": [
+    {
+      "id": "N01",
+      "locator": "main source sample Methods and s002",
+      "fact": "Only four heavily sampled participants; rare spoilt-correct and individual heterogeneity weaken cohort generalization."
+    },
+    {
+      "id": "N02",
+      "locator": "main original Fig3 C,G",
+      "fact": "Identical drift variability decoupled from initial stimulus leads source model wrong-sign first-frame kernel, falsifying source-incompatible variant."
+    },
+    {
+      "id": "N03",
+      "locator": "main original Fig3 D,H",
+      "fact": "Constant across-trial drift yields no first-frame difference; any apparent tiny fast/slow spoilt-correct difference is rare-trial simulation noise, explicitly source not real effect."
+    },
+    {
+      "id": "N04",
+      "locator": "main full source and s004/s006",
+      "fact": "First frame NOT sole or strongest source of later change: later mean evidence especially 200–400ms often stronger predictive empirical signal. Retain contrary stronger late effect."
+    },
+    {
+      "id": "N05",
+      "locator": "official supplemental s005 original",
+      "fact": "Trial group where mean entire pre/post sensory evidence favors incorrect response extremely rare around 2.9%; original auxiliary analysis argues source first-frame effect not solely mean-signal confound, small group limits broad inference."
+    },
+    {
+      "id": "N06",
+      "locator": "main Discussion source limitations",
+      "fact": "Stimulus onset predictable, low-level visual task favors onset attention; unknown transfer to slower multimodal real-world integration."
+    },
+    {
+      "id": "N07",
+      "locator": "source Methods",
+      "fact": "Sensory-motor delays and choice button timing differ from latent accumulator boundary crossing; measured movement/response trace cannot be equated with unobserved latent decision state."
+    },
+    {
+      "id": "N08",
+      "locator": "source model Methods",
+      "fact": "Extended DDM model fit from behavior does not prove unique physiological internal snapshot representation or source-only external sensory gain."
+    }
+  ],
+  "direct_original_ancestry": [
+    {
+      "to": "Resulaj Kiani Wolpert Shadlen (2009) Changes of mind in decision-making",
+      "relationship": "DIRECT_EXTENDED_DDM_PARENT",
+      "source": "P17 original reference3 and model sections"
+    },
+    {
+      "to": "Ratcliff McKoon 2008 two-choice DDM theory",
+      "relationship": "EXPLICIT_GENERAL_ACCUMULATOR_PARENT",
+      "source": "P17 original ref1"
+    },
+    {
+      "to": "van den Berg et al 2016 eLife e12192 confidence/change of mind",
+      "relationship": "SOURCE_DIRECT_COMPARATIVE_ANCHOR",
+      "source": "P17 source original ref5"
+    },
+    {
+      "to": "P11 source original",
+      "relationship": "BROAD_DDM_MODEL_SIMILARITY_NOT_CENTRAL_IDENTITY",
+      "reason": "P11 fits hierarchical threshold a vs independent gating conditions; P17 fits first-stimulus-dependent decaying drift/postdecision reversal, not same state update by name DDM"
+    },
+    {
+      "to": "G2 working PRD original identities",
+      "relationship": "JOINT_POSTFREEZE_MODEL_GRAPH_HOLD",
+      "reason": "Do not inspect concurrent MAIN structure or claim unknown full G2 model independence"
+    }
+  ],
+  "stage_decision": "PUBLISHER_MAIN_SIX_FULL_ISSUER_SUPPLEMENT_SOURCE_BOUNDED_PRE_A_LOCKED",
+  "not_entire_source_numerical_replication": true,
+  "not_exhaustive_correction_registry": true,
+  "no_blinded_human_audit": true,
+  "MAIN_not_inspected": true,
+  "common_G1_nine_of_twenty_preserved": true
+}
