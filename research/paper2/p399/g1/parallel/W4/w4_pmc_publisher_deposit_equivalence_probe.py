@@ -36,9 +36,9 @@ for pmc,doi in [("PMC9744313","10.1371/journal.pcbi.1009866"),("PMC6420027","10.
             raw=archive.read(name);low=Path(name).name.lower()
             ext=Path(low).suffix
             item={"archive_member":name,"bytes":len(raw),"raw_sha256":hashlib.sha256(raw).hexdigest(),"ext":ext}
-            match=re.search(r"pcbi\\.?(1009866|1006676)\\.s(\\d{3})",low)
+            match=re.search(r"pcbi\.?(1009866|1006676)\.s(\d{3})",low)
             if not match:
-                match=re.search(r"(1009866|1006676)\\.s(\\d{3})",low)
+                match=re.search(r"(1009866|1006676)\.s(\d{3})",low)
             item["looks_like_same_DOI_supplement"]=bool(match)
             exact=known.get(low)
             if exact:item["independently_existing_publisher_same_bytes"]=item["raw_sha256"]==exact
