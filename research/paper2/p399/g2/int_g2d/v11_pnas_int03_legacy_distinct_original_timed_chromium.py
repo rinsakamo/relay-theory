@@ -35,7 +35,7 @@ def check(url,status,raw):
   except Exception as e:r["reason"]="PDF parsing failed "+str(e)[:140]
  else:
   t=raw.decode("utf-8","replace").lower()
-  anchors={k:bool(re.search(r"\\b"+k+r"\\b",t)) for k in ("abstract","workspace","stroop","introduction","model","discussion","references")}
+  anchors={k:bool(re.search(r"\b"+k+r"\b",t)) for k in ("abstract","workspace","stroop","introduction","model","discussion","references")}
   r.update(kind="HTML_OR_CHALLENGE",title_token_count=sum(k in t for k in ("neuronal","model","global","workspace")),required_sections=anchors)
   if len(t)>30000 and DOI.lower() in t and r["title_token_count"]>=4 and sum(anchors.values())>=5 and ("stroop" in t):
    r["publisher_full_original_physically_qualified"]=True
