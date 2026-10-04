@@ -1,0 +1,46 @@
+name: p399-pf04-source-fidelity-probes
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/p399-pf04-scientific-probes.yml"
+      - "scripts/p399_pf04_source_probes.py"
+      - "research/paper2/p399/pf04/**"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  illustrative-source-fidelity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Syntax and file receipt provenance
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/p399_pf04_source_probes.py
+          python - <<'PY'
+          import pathlib,hashlib,json,subprocess
+          d=pathlib.Path("research/paper2/p399/pf04")
+          chronological=["PRE_A_v3_author_scoped_normalization.json","PASS_A_original.json","PASS_B_reaudit.json","PASS_C_adjudication.json","PASS_D_grammar_v0.json"]
+          commits=[]
+          for name in chronological:
+              p=d/name
+              assert p.is_file(),name
+              c=subprocess.check_output(["git","log","--format=%H","--diff-filter=A","--",str(p)],text=True).strip().splitlines()
+              assert len(c)==1,(name,c)
+              commits.append(c[0])
+              raw=p.read_bytes()
+              json.loads(raw)
+              print("PF04_RECEIPT",name,"sha256",hashlib.sha256(raw).hexdigest(),"git_create_commit",c[0])
+          for before,after in zip(commits,commits[1:]):
+              subprocess.check_call(["git","merge-base","--is-ancestor",before,after])
+          print("PF04_CHRONOLOGY_PASS all five stage source files added in correct immutable order")
+          PY
+      - name: Run independently defined PF04 structural example probes
+        run: python scripts/p399_pf04_source_probes.py
