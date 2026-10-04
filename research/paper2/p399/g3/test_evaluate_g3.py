@@ -10,6 +10,7 @@ sys.path.insert(0, str(P))
 from evaluate_g3 import (G3Error, METRICS, check_packet, check_reference,
                          check_source_reference_alignment, destructive_control,
                          score, coordination, verify_receipt_chain, freeze_gate,
+                         score_locked, check_role_bridge,
                          schema_check, canonical_sha)
 
 FIXTURE = json.loads((P / "fixtures/synthetic.v1.json").read_text(encoding="utf-8"))
@@ -261,6 +262,92 @@ class G3SyntheticTests(unittest.TestCase):
         self.assertEqual({p["id"] for p in cases["pilots"]},{"PF01","PF02","PF03","PF04"})
         self.assertTrue(any("omega(a')" in x for x in cases["pilots"][3]["conditions"]))
         self.assertEqual(cases["status"],"EXPOSED_COMPATIBILITY_REGRESSION_ONLY")
+
+
+    def locked_fixture(self):
+        native=ref()
+        pkt=packet()
+        bridge=json.loads((P/"fixtures/synthetic_role_bridge_template.v1.json").read_text(encoding="utf-8"))["bridge"]
+        bridge["source_reference_canonical_sha256"]=canonical_sha(native)
+        pkt["reference_digest_private"]=canonical_sha(native)
+        pkt["primary_source_digest"]=native["source"]["source_fingerprint"]
+        return native,pkt,bridge,fresh()
+
+    def test_formal_source_locked_only_entry(self):
+        native,pkt,bridge,r=self.locked_fixture()
+        report=score_locked(native,pkt,bridge,r)
+        self.assertEqual(report["paper"],"FULL")
+        self.assertTrue(report["source_reference_alignment_checked"])
+        self.assertTrue(report["role_bridge_pre_D_checked"])
+        self.assertTrue(report["packet_digest_checked"])
+
+    def test_formal_scoring_blocks_self_serving_edge_denominator(self):
+        native,pkt,bridge,r=self.locked_fixture()
+        edge=r["variants"][0]["metrics"]["edges"]
+        edge["required_ids"]=[];edge["matched_ids"]=[];edge["critical_ids"]=[]
+        self.assertEqual(score(r)["paper"],"FULL")
+        with self.assertRaisesRegex(G3Error,"SOURCE_NATIVE_DENOMINATOR"):
+            score_locked(native,pkt,bridge,r)
+
+    def test_formal_scoring_blocks_hidden_negative_denominator(self):
+        native,pkt,bridge,r=self.locked_fixture()
+        negative=r["variants"][0]["metrics"]["restrictions"]
+        negative["required_ids"]=[];negative["matched_ids"]=[];negative["critical_ids"]=[]
+        with self.assertRaisesRegex(G3Error,"SOURCE_NATIVE_DENOMINATOR"):
+            score_locked(native,pkt,bridge,r)
+
+    def test_formal_scoring_blocks_unfrozen_grammar_role_denominator(self):
+        native,pkt,bridge,r=self.locked_fixture()
+        roles=r["variants"][0]["metrics"]["roles"]
+        roles["required_ids"]=[];roles["matched_ids"]=[];roles["critical_ids"]=[]
+        with self.assertRaisesRegex(G3Error,"ROLE_DENOMINATOR"):
+            score_locked(native,pkt,bridge,r)
+
+    def test_formal_scoring_prevents_oracle_packet_swap(self):
+        native,pkt,bridge,r=self.locked_fixture()
+        pkt["reference_digest_private"]="incorrect"
+        with self.assertRaisesRegex(G3Error,"SOURCE_OR_REFERENCE_PACKET_DIGEST"):
+            score_locked(native,pkt,bridge,r)
+
+    def test_formal_scoring_prevents_source_medium_swap(self):
+        native,pkt,bridge,r=self.locked_fixture()
+        native["source"]["primary_kind"]="PUBLISHER_COMPLETE_ORIGINAL_HTML"
+        bridge["source_reference_canonical_sha256"]=canonical_sha(native)
+        pkt["reference_digest_private"]=canonical_sha(native)
+        with self.assertRaisesRegex(G3Error,"ORIGINAL_PRIMARY_MEDIUM"):
+            score_locked(native,pkt,bridge,r)
+        r["source_state"]="VERIFIED_HTML"
+        self.assertEqual(score_locked(native,pkt,bridge,r)["paper"],"FULL")
+
+    def test_role_bridge_cannot_be_post_grammar(self):
+        native,pkt,bridge,r=self.locked_fixture()
+        bridge["bridge_frozen_before_D"]=False
+        with self.assertRaises(G3Error):check_role_bridge(native,bridge)
+
+    def test_role_bridge_must_be_source_grounded(self):
+        native,pkt,bridge,r=self.locked_fixture()
+        bridge["variants"][0]["role_obligations"][0]["source_atom_ids"]=["invented_source_n"]
+        with self.assertRaisesRegex(G3Error,"ROLE_OBLIGATION_WITHOUT_NATIVE_SOURCE"):
+            check_role_bridge(native,bridge)
+
+    def test_role_bridge_reference_digest_change_detected(self):
+        native,pkt,bridge,r=self.locked_fixture()
+        bridge["source_reference_canonical_sha256"]="f"*64
+        with self.assertRaisesRegex(G3Error,"ROLE_BRIDGE_REFERENCE_SWAP"):
+            check_role_bridge(native,bridge)
+
+    def test_reference_limit_unallocated_blocks_source_freeze(self):
+        native,pkt,bridge,r=self.locked_fixture()
+        native["original_limitations"].append(dict(id="neg_unallocated",source_locator="synthetic",
+                                                   witness="not actually allocated",critical=True))
+        with self.assertRaisesRegex(G3Error,"UNALLOCATED_NATIVE_SOURCE_LIMITATION"):
+            check_reference(native)
+
+    def test_locked_scoring_invalid_packet_is_not_allowed(self):
+        native,pkt,bridge,r=self.locked_fixture()
+        pkt["scope_integrity"]["variant_boundaries_kept"]=False
+        with self.assertRaisesRegex(G3Error,"INCOMPLETE_OR_UNAPPROVED"):
+            score_locked(native,pkt,bridge,r)
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
