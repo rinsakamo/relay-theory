@@ -14,6 +14,7 @@ def guard(x):
  assert a["publisher_science_supp_figure_ids_visually_reviewed"]==[1,2,3]
  assert a["publisher_supp_printed_eqs_visually_reviewed"]==[1,2,3]
  assert not a["code_independent_training_reproduced"] and not a["science_full_global_family_qualified"]
+ assert b["first_raw_independent_source_verified_run"]==37206108178
  assert b["publisher_original_pages"]==43 and b["publisher_original_bytes"]==4476771
  assert b["exact_G2_inherited_raw_sha256"]=="89f8846ab34dbc5af0d4079423ff51e00c1873b6149c48217b547b1bdcb678da"
  assert [b[k] for k in ("strict_false_negative_literal_run","strict_false_negative_regexp_double_escape_run","corrected_exact_same_original_run")]==[37206213517,37206294340,37206404322]
@@ -33,7 +34,7 @@ class T(unittest.TestCase):
  def test_authoritative_limited_original_provenance(self):guard(self.x)
  def test_source_correction_note(self):
   s=D.read_text()
-  for x in ("37206108178","37206213517","37206294340","37206404322","4,476,771","[6]","false"):
+  for x in ("37206213517","37206294340","37206404322","4,476,771","[6]","false"):
    self.assertIn(x.lower(),s.lower())
  def test_thirteen_destructive_false_promotions(self):
   cases=[
