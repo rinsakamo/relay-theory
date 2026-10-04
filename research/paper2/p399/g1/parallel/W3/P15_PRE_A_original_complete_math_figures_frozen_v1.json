@@ -1,0 +1,82 @@
+{
+  "schema": "p399.g1.w3.P15.preA.publisher_original_complete_source_scope.freeze.v1",
+  "phase": "PRE_A_SOURCE_FROZEN",
+  "work_id": "P15",
+  "doi": "10.1371/journal.pcbi.1010589",
+  "original_publisher_article": "Zheng et al. (2022) Correcting the hebbian mistake: Toward a fully error-driven hippocampus",
+  "article_published": "2022-10-11",
+  "source_edition": "publisher article PDF and same-article original publisher supplementary assets as verified in independent 2026-10-04 CI",
+  "source_acquisition_witness": {
+    "original_publisher_and_supplement_ci": "https://github.com/rinsakamo/relay-theory/actions/runs/37198042557",
+    "supplement_first_new_probe": "https://github.com/rinsakamo/relay-theory/actions/runs/37197851068",
+    "source_EPS_visual_ci": "https://github.com/rinsakamo/relay-theory/actions/runs/37198125975",
+    "EPS_visual_artifact_id": 11300754851
+  },
+  "pinned_sources": [
+    {
+      "role": "main_article_final_publication",
+      "url": "https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1010589&type=printable",
+      "sha256": "591339de97a02abc1faeb276b48b8dfc73b518aca2d8ad1c36a10ba96038e002",
+      "pages": 27,
+      "source": "direct PLOS",
+      "visual_review": "original publisher pp5,7 diagrams/Eq5 and bounded original methods/results; full original selected page raster and extracted text archived in CI receipt"
+    },
+    {
+      "role": "defining_math_S1_appendix",
+      "url": "https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1010589.s001&type=supplementary",
+      "sha256": "cc407ed073633a3aff3719ef4ceb0d97446026b771fd15f5bb6cd74d99dff074",
+      "pages": 5,
+      "source": "direct PLOS",
+      "scope": "Leabra activation conductance/inhibition/time averages and XCAL mixed error/BCM learning; literal printed original appendix page source excerpt logged"
+    },
+    {
+      "role": "experiment_S1_input_pattern_EPS",
+      "url": "https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1010589.s002&type=supplementary",
+      "sha256": "5d1c4070af7452c691029aee2ff08c2b6b70f2180900ff8b1e3f68db7d3e9400",
+      "bytes": 458175,
+      "source": "direct PLOS",
+      "visual": "EPS magic and BoundingBox confirmed, Ghostscript successful raster render, artifact retained; not claiming blinded manual input figure panel verification"
+    },
+    {
+      "role": "network_sizes_S1_table",
+      "url": "https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1010589.s003&type=supplementary",
+      "sha256": "a1d5cb779afd0a918f7c1102720e03aadd2ef1bed57327aafec60ef4d3975a3a",
+      "pages": 1,
+      "source": "direct PLOS",
+      "scope": "fixed EC pool 7x7, DG 44x44/67x67/89x89, CA3 20x20/30x30/40x40, CA1 pool sizes 10x10/15x15/20x20"
+    },
+    {
+      "role": "nondefault_parameters_S2_table",
+      "url": "https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1010589.s004&type=supplementary",
+      "sha256": "58c1963db4a3770c65fc9dc5d9973f7a397fd61401c350a4a20537eaabc646b3",
+      "pages": 1,
+      "source": "direct PLOS",
+      "scope": "inhibition and selective connections Hebb factors, explicitly not all zero-Hebbian"
+    }
+  ],
+  "source_native_scientific_boundaries": [
+    "Actual paper includes non-zero BCM Hebbian XCAL term, Hebbian-only pathways and nondefault remaining .01 Hebb in CA3 related projections; paper title 'fully error-driven' must not erase these implementation qualifications",
+    "Direct target ECin→CA3 and CA3 recurrent error-driven signal from ECin pre-DG and DG-late state contrast (publisher main Eq5); Leabra XCAL actual update uses super-short/short/medium/long averages and mixed error-plus-Hebb terms",
+    "DG provides teacher-like late target; external training AB-AC context patterns, pool sizes, task schedule are experimenter set; don't reify model as producing world conditions",
+    "Capacity/learning advantage vs prior Hebbian comparator is reported numerical simulation, not externally independent numerical replay nor direct biological proof",
+    "Original Appendix points to Leabra broader prior software mechanisms and earlier Ketz et al 2013 CA1 theta model; important prior-family risk if compared to PF01/PF03/P14",
+    "Exact author repository hip-edl and emergent framework are disclosed but historical version/code numerical replication not executed"
+  ],
+  "correction_version_register": "bounded PLOS publisher final published article and same-article assets inspected; no separately authenticated correction affecting equations identified in bounded search; cannot prove universal absence of any future/past metadata changes",
+  "family_comparison_risk": [
+    "PF01 separate STP ring bump versus P15 mixed XCAL-trained hippocampal CA3 error/BCM",
+    "PF03 neural predictive-coding comparison must use source implemented update, not generic error label",
+    "P14 learned n-gram visual sequential model; common prior hierarchy/regularizer requires direct inspection"
+  ],
+  "negatives": [
+    "not an entirely zero-Hebbian update",
+    "not evidence of neurophysiological causal identification",
+    "not an exact Leabra code replay",
+    "not proof of abstract memory family independence",
+    "not source evidence of global publisher diversity: same publisher PLOS",
+    "not G1 cohort admission or MAIN authorization"
+  ],
+  "grammar_not_applied": true,
+  "other_W_results_not_inspected": true,
+  "main_outcome_never_inspected": true
+}
