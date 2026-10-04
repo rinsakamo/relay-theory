@@ -51,7 +51,7 @@ def check_reference(reference):
         ids = set()
         for name in ("nodes", "edges", "temporal", "restrictions", "boundaries",
                      "distinctions", "native_coordination", "source_comparisons"):
-            for atom in v[name]:
+            for atom in v.get(name, []):
                 if atom["id"] in ids:
                     raise G3Error("DUPLICATE_REFERENCE_ATOM")
                 ids.add(atom["id"])
@@ -274,7 +274,7 @@ def check_role_bridge(reference, bridge):
         raise G3Error("MISSING_ROLE_BRIDGE_VARIANT")
     for v_id, v in r_variants.items():
         native = {atom["id"] for k in ("nodes", "edges", "temporal", "restrictions",
-                 "boundaries", "distinctions", "native_coordination", "source_comparisons") for atom in v[k]}
+                 "boundaries", "distinctions", "native_coordination", "source_comparisons") for atom in v.get(k, [])}
         obligations = b_variants[v_id]["role_obligations"]
         if len({o["id"] for o in obligations}) != len(obligations):
             raise G3Error("DUPLICATE_ROLE_OBLIGATION")
