@@ -1,0 +1,69 @@
+name: P399 G1 W3 source-scope supplemental probe
+on:
+  push:
+    branches:
+      - paper2/p399-g1-w3-mem-prd-family-20261004
+    paths:
+      - .github/workflows/p399-g1-W3-prea-source-probe.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  w3_official_source_scope:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Acquire only genuinely missing P15 official supplements and independently inspect P18 inaccessible original
+        shell: bash
+        run: |
+          python -m pip install --quiet requests pypdf pymupdf
+          cat > /tmp/p399_w3_preA_probe.py <<'PY'
+          import requests, hashlib, io, json, pathlib, time
+          from pypdf import PdfReader
+          import fitz
+          root=pathlib.Path("/tmp/p399_w3_source_probe"); root.mkdir(exist_ok=True)
+          records=[]
+          sources=[
+            ("P15_S1_appendix", "10.1371/journal.pcbi.1010589.s001", "supplementary", None, None, None),
+            ("P15_S1_table", "10.1371/journal.pcbi.1010589.s003", "supplementary", None, None, None),
+            ("P15_S2_table", "10.1371/journal.pcbi.1010589.s004", "supplementary", None, None, None),
+            ("P18_publisher_primary_original", "10.1371/journal.pcbi.1008552", "printable", "cb75481590c34686eeeb8635dcb8a381283bcbe3e7f8ed9f0ee246fa95e419d1", 1872932, 28),
+          ]
+          s=requests.Session();s.headers.update({"User-Agent":"RelayTheory-P399-W3-source-verification/1.0"})
+          for label,doi,kind,prior_sha,prior_size,prior_pages in sources:
+            url=f"https://journals.plos.org/ploscompbiol/article/file?id={doi}&type={kind}"
+            info={"id":label,"official_url":url}
+            try:
+              response=s.get(url, timeout=95);response.raise_for_status()
+              b=response.content;info.update({"http":response.status_code,"content_type":response.headers.get("content-type",""),"sha256":hashlib.sha256(b).hexdigest(),"bytes":len(b),"pdf_signature":b.startswith(b"%PDF-"),"effective_url":response.url})
+              if not b.startswith(b"%PDF-"): raise RuntimeError("NON_PDF_STOP")
+              reader=PdfReader(io.BytesIO(b), strict=False);info["pages"]=len(reader.pages)
+              info["page_text_anchors"]=[{"page_1based":i+1,"prefix":(reader.pages[i].extract_text() or "")[:320]} for i in sorted(set([0,len(reader.pages)//2,len(reader.pages)-1]))]
+              if prior_sha:
+                info["prior_exact_sha_matches"]=info["sha256"]==prior_sha
+                info["prior_exact_size_matches"]=len(b)==prior_size
+                info["prior_exact_pages_matches"]=info["pages"]==prior_pages
+                if not all([info["prior_exact_sha_matches"], info["prior_exact_size_matches"], info["prior_exact_pages_matches"]]): info["status"]="INHERITED_ORIGINAL_MISMATCH_STOP"
+              doc=fitz.open(stream=b,filetype="pdf")
+              for i in sorted(set([0,min(2,len(doc)-1),len(doc)//2,len(doc)-1])):
+                page=doc[i]
+                info.setdefault("rendered_page_anchors",[]).append({"page_1based":i+1,"image_dimensions":list(page.get_pixmap(matrix=fitz.Matrix(1,1)).irect)})
+                if label=="P18_publisher_primary_original":
+                  page.get_pixmap(matrix=fitz.Matrix(1.2,1.2)).save(str(root/f"P18_page_{i+1}.png"))
+              if label.startswith("P15"): (root/f"{label}.pdf").write_bytes(b)
+            except Exception as e: info.update({"error":str(e),"status":"SOURCE_PROBE_HOLD"})
+            print(json.dumps(info,sort_keys=True,ensure_ascii=False),flush=True)
+            records.append(info)
+          (root/"source_probe_receipt.json").write_text(json.dumps({"category":"pre_A_source_probe_only_NOT_scientific_admission","records":records},sort_keys=True,indent=2),encoding="utf-8")
+          assert all(r.get("pdf_signature") for r in records), "physical original or necessary supplement acquisition unresolved"
+          assert records[-1].get("prior_exact_sha_matches"), "P18 exact previously frozen original did not match"
+          PY
+          python /tmp/p399_w3_preA_probe.py
+      - name: Retain receipts and rendered P18 pages, including after failed attempt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: p399-g1-W3-original-supplement-and-P18-probe-${{ github.run_id }}
+          path: /tmp/p399_w3_source_probe/
+          if-no-files-found: warn
+          retention-days: 30
