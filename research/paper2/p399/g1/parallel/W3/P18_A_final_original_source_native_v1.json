@@ -1,0 +1,448 @@
+{
+  "schema": "p399.g1.w3.P18.A.original_final_publisher_source_native.v1",
+  "stage": "A",
+  "PRE_A_original_commit": "07b4e732461b350eb6aef8dddb94394c59260c1d",
+  "source": "final PLOS 2021 direct exact 28pp and official final HTML; original TIFF model recovery S5 and validation S6 plus original S1 percentile table",
+  "original_claims": [
+    {
+      "id": "A01",
+      "claim": "30 human participants were trained on four person-to-animal-and-vegetable deterministic association mapping; each person has unique vegetable and one shared animal for a pair",
+      "original_primary_locator": "Original final Fig2 and task Methods",
+      "evidence": "PUBLISHED_SOURCE_NATIVE_QUALITATIVE_OR_AUTHOR_REPORTED_QUANTITY_NOT_W3_REPRODUCED"
+    },
+    {
+      "id": "A02",
+      "claim": "Each bandit choice presents a random pair of people with 2s choice limit and observed animal/vegetable rewards weighted 3 and 1 respectively",
+      "original_primary_locator": "Original final Fig2/Methods",
+      "evidence": "PUBLISHED_SOURCE_NATIVE_QUALITATIVE_OR_AUTHOR_REPORTED_QUANTITY_NOT_W3_REPRODUCED"
+    },
+    {
+      "id": "A03",
+      "claim": "Across 300 bandit trials, every 10 bandit trials is followed by two reward-settings, total 60 reward-setting trials, allowing choice of .75/.25 vegetable probability among same-animal shared-person pair",
+      "original_primary_locator": "Original final Fig2/Methods",
+      "evidence": "PUBLISHED_SOURCE_NATIVE_QUALITATIVE_OR_AUTHOR_REPORTED_QUANTITY_NOT_W3_REPRODUCED"
+    },
+    {
+      "id": "A04",
+      "claim": "Animal and vegetable reward probabilities externally drift via independent Gaussian random walks reflected in [.25,.75], following subject's immediate setting of two vegetable probabilities",
+      "original_primary_locator": "Original final Fig2",
+      "evidence": "PUBLISHED_SOURCE_NATIVE_QUALITATIVE_OR_AUTHOR_REPORTED_QUANTITY_NOT_W3_REPRODUCED"
+    },
+    {
+      "id": "A05",
+      "claim": "Fixed MF caches Q^MF value of each person and updates only selected person's Q based on total animal+vegetable reward prediction error; unchosen persons decay toward default",
+      "original_primary_locator": "Original Computational models",
+      "evidence": "PUBLISHED_SOURCE_NATIVE_QUALITATIVE_OR_AUTHOR_REPORTED_QUANTITY_NOT_W3_REPRODUCED"
+    },
+    {
+      "id": "A06",
+      "claim": "MB maintains learned outcome-specific animal and vegetable Q^MB and recomputes person value via their two associated outcomes; observed animal updates generalize to another same-animal person",
+      "original_primary_locator": "Original Figs3/Methods",
+      "evidence": "PUBLISHED_SOURCE_NATIVE_QUALITATIVE_OR_AUTHOR_REPORTED_QUANTITY_NOT_W3_REPRODUCED"
+    },
+    {
+      "id": "A07",
+      "claim": "MB outcome values of unobserved animals/vegetables decay toward original initialized defaults, and reward-setting chosen vegetable probability updates MB Q after setting",
+      "original_primary_locator": "Original Computational models",
+      "evidence": "PUBLISHED_SOURCE_NATIVE_QUALITATIVE_OR_AUTHOR_REPORTED_QUANTITY_NOT_W3_REPRODUCED"
+    },
+    {
+      "id": "A08",
+      "claim": "Bandit choice net value combines MB and MF contributions with weighted choice trace and constant three individual-specific biases, then softmax",
+      "original_primary_locator": "Original Computational models",
+      "evidence": "PUBLISHED_SOURCE_NATIVE_QUALITATIVE_OR_AUTHOR_REPORTED_QUANTITY_NOT_W3_REPRODUCED"
+    },
+    {
+      "id": "A09",
+      "claim": "Bandit choice traces C(person) update recency/frequency after each bandit and permit perseverance or novelty according to sign of trace weight",
+      "original_primary_locator": "Original Computational models",
+      "evidence": "PUBLISHED_SOURCE_NATIVE_QUALITATIVE_OR_AUTHOR_REPORTED_QUANTITY_NOT_W3_REPRODUCED"
+    },
+    {
+      "id": "A10",
+      "claim": "MF reward-setting system maintains two cached setting Q^MF,rs values; all ten subsequent bandit total rewards update selected setting Q with lambda^(i−1) decay, plus independent reward-setting trace",
+      "original_primary_locator": "Original Computational models",
+      "evidence": "PUBLISHED_SOURCE_NATIVE_QUALITATIVE_OR_AUTHOR_REPORTED_QUANTITY_NOT_W3_REPRODUCED"
+    },
+    {
+      "id": "A11",
+      "claim": "An MF-ignorant Bellman planner is indifferent between the tested exchange-symmetric same-animal paired vegetable reward settings under identical future opportunity assumptions",
+      "original_primary_locator": "Original Fig4A, main Results",
+      "evidence": "PUBLISHED_SOURCE_NATIVE_QUALITATIVE_OR_AUTHOR_REPORTED_QUANTITY_NOT_W3_REPRODUCED"
+    },
+    {
+      "id": "A12",
+      "claim": "The proposed self-reflective MB planner uses relative Q^MF preference for future bandit people when preferring to set .75 vegetable reward for person with stronger MF disposition",
+      "original_primary_locator": "Original Fig4B, Methods net reward-setting Q",
+      "evidence": "PUBLISHED_SOURCE_NATIVE_QUALITATIVE_OR_AUTHOR_REPORTED_QUANTITY_NOT_W3_REPRODUCED"
+    },
+    {
+      "id": "A13",
+      "claim": "A lazy MB encoder prefers reward setting aligned to currently high MB vegetable value, avoiding expected remapping/encoding cost and is modeled separately from reflection",
+      "original_primary_locator": "Original Fig4C, Methods",
+      "evidence": "PUBLISHED_SOURCE_NATIVE_QUALITATIVE_OR_AUTHOR_REPORTED_QUANTITY_NOT_W3_REPRODUCED"
+    },
+    {
+      "id": "A14",
+      "claim": "Reward-setting net Q additionally includes MF reward-setting Q, lazy encoder, self-reflective planning, reward-setting trace, individual bandit trace, constant bandit bias, followed by softmax",
+      "original_primary_locator": "Original Fig4E, Methods",
+      "evidence": "PUBLISHED_SOURCE_NATIVE_QUALITATIVE_OR_AUTHOR_REPORTED_QUANTITY_NOT_W3_REPRODUCED"
+    },
+    {
+      "id": "A15",
+      "claim": "Bandit population signatures: immediate same-animal repetition favors previous animal reward MF effect while same-animal different-person generalization after controlling outcome probability supports MB",
+      "original_primary_locator": "Original Fig3",
+      "evidence": "PUBLISHED_SOURCE_NATIVE_QUALITATIVE_OR_AUTHOR_REPORTED_QUANTITY_NOT_W3_REPRODUCED"
+    },
+    {
+      "id": "A16",
+      "claim": "Experimental high/low/unrelated bandit trial categories are relative to the preceding reward-setting label, not guaranteed continuously higher/lower true vegetable probabilities under drift",
+      "original_primary_locator": "Original Fig5/Results",
+      "evidence": "PUBLISHED_SOURCE_NATIVE_QUALITATIVE_OR_AUTHOR_REPORTED_QUANTITY_NOT_W3_REPRODUCED"
+    },
+    {
+      "id": "A17",
+      "claim": "For animal reward among the ten post-setting trials the self-reflective path predicts High>Unrelated>Low effect on later repeat setting while direct MF reward-setting path boosts all categories and lazy MB is isolated by animal-only analysis",
+      "original_primary_locator": "Original Fig5, model-agnostic regression",
+      "evidence": "PUBLISHED_SOURCE_NATIVE_QUALITATIVE_OR_AUTHOR_REPORTED_QUANTITY_NOT_W3_REPRODUCED"
+    },
+    {
+      "id": "A18",
+      "claim": "Original empirically observed fixed-effect contrasts show High vs Low and High vs Unrelated differences; raw participant trials and exact regressions not reproduced by W3",
+      "original_primary_locator": "Original Fig5B/Results",
+      "evidence": "PUBLISHED_SOURCE_NATIVE_QUALITATIVE_OR_AUTHOR_REPORTED_QUANTITY_NOT_W3_REPRODUCED"
+    },
+    {
+      "id": "A19",
+      "claim": "Full fitted RL and no-self-reflective gamma_selfref=0 nested variant generate different synthetic reward-setting contrast profiles in original reported model simulations",
+      "original_primary_locator": "Original Fig5C,D and S6 Fig",
+      "evidence": "PUBLISHED_SOURCE_NATIVE_QUALITATIVE_OR_AUTHOR_REPORTED_QUANTITY_NOT_W3_REPRODUCED"
+    },
+    {
+      "id": "A20",
+      "claim": "Original fitting used 200 initial points/person two waves: nine bandit parameters fit from bandit choices first then seven setting parameters conditional on first-wave fits",
+      "original_primary_locator": "Original Methods Model fitting and comparison",
+      "evidence": "PUBLISHED_SOURCE_NATIVE_QUALITATIVE_OR_AUTHOR_REPORTED_QUANTITY_NOT_W3_REPRODUCED"
+    },
+    {
+      "id": "A21",
+      "claim": "Original nested BGLRT assessed pure MF, pure MB and other separate ablations plus no self reflection, simulated parametric null likelihood distributions with 1001 subject-specific samples and 10,000 group resamples",
+      "original_primary_locator": "Original Methods and Fig6 S5 Fig",
+      "evidence": "PUBLISHED_SOURCE_NATIVE_QUALITATIVE_OR_AUTHOR_REPORTED_QUANTITY_NOT_W3_REPRODUCED"
+    },
+    {
+      "id": "A22",
+      "claim": "Original reports group bootstrapped rejection of gamma_selfref=0 within tested family at p<.001 and simulated minimum power >=.92 for six reward-setting submodels; neither tests all imaginable heuristics nor independently recreates exact analysis",
+      "original_primary_locator": "Original Fig6 and original S5 model recovery",
+      "evidence": "PUBLISHED_SOURCE_NATIVE_QUALITATIVE_OR_AUTHOR_REPORTED_QUANTITY_NOT_W3_REPRODUCED"
+    },
+    {
+      "id": "A23",
+      "claim": "Original S6 full versus no-self-reflective model-validation simulated high/low/unrelated contrast distribution from 1001 synthetic 30-subject datasets, source reported not W3-replayed",
+      "original_primary_locator": "S6 original publisher 1028x1498 TIFF and Methods",
+      "evidence": "PUBLISHED_SOURCE_NATIVE_QUALITATIVE_OR_AUTHOR_REPORTED_QUANTITY_NOT_W3_REPRODUCED"
+    },
+    {
+      "id": "A24",
+      "claim": "Original correlation between fitted gamma_selfref and median reward-setting RT Spearman rho=.5 p=.005 is convergent correlation not direct direct measurement of internal self-model content",
+      "original_primary_locator": "Original Fig5E and Methods",
+      "evidence": "PUBLISHED_SOURCE_NATIVE_QUALITATIVE_OR_AUTHOR_REPORTED_QUANTITY_NOT_W3_REPRODUCED"
+    },
+    {
+      "id": "A25",
+      "claim": "Original parameter-tradeoff bootstrap preserved fitted gamma_selfref vs MF contribution p=.002 but MB contribution p=.06, so latter not significant after parameter-tradeoff check",
+      "original_primary_locator": "Original S4 and Results",
+      "evidence": "PUBLISHED_SOURCE_NATIVE_QUALITATIVE_OR_AUTHOR_REPORTED_QUANTITY_NOT_W3_REPRODUCED"
+    },
+    {
+      "id": "A26",
+      "claim": "Paper explicitly notes formation, maintenance, mental/brain instantiation and potential cheaper heuristics for inferred self-model remain unresolved; no direct self model formation mechanism specified",
+      "original_primary_locator": "Original Discussion",
+      "evidence": "PUBLISHED_SOURCE_NATIVE_QUALITATIVE_OR_AUTHOR_REPORTED_QUANTITY_NOT_W3_REPRODUCED"
+    },
+    {
+      "id": "A27",
+      "claim": "Paper explicitly traces earlier 2019 same-author retrospective MB inference helping MF credit assignment and Daw/Niv/Dayan 2005 generic MB/MF competition, but future environment reward-setting differs mechanistically from retrospective updates",
+      "original_primary_locator": "Original references and discussion",
+      "evidence": "PUBLISHED_SOURCE_NATIVE_QUALITATIVE_OR_AUTHOR_REPORTED_QUANTITY_NOT_W3_REPRODUCED"
+    },
+    {
+      "id": "A28",
+      "claim": "Final published source main 28pp plus actual same-article S5/S6 visual model recovery and S1 fit percentile table are physically verified; original task instruction PPTX are excluded from exact participant fidelity scope",
+      "original_primary_locator": "W3 PRE_A source freeze/direct PLOS assets",
+      "evidence": "PUBLISHED_SOURCE_NATIVE_QUALITATIVE_OR_AUTHOR_REPORTED_QUANTITY_NOT_W3_REPRODUCED"
+    }
+  ],
+  "source_local_dependencies": [
+    {
+      "id": "D01",
+      "from": "A01",
+      "to": "A02",
+      "source_relation": "task training conditions",
+      "scope": "source-reported mechanistic/experimental linkage only"
+    },
+    {
+      "id": "D02",
+      "from": "A02",
+      "to": "A03",
+      "source_relation": "periodic future-setting trial design",
+      "scope": "source-reported mechanistic/experimental linkage only"
+    },
+    {
+      "id": "D03",
+      "from": "A03",
+      "to": "A04",
+      "source_relation": "setting changes subsequent probabilistic environment",
+      "scope": "source-reported mechanistic/experimental linkage only"
+    },
+    {
+      "id": "D04",
+      "from": "A01",
+      "to": "A05",
+      "source_relation": "person identity defines cached MF person value",
+      "scope": "source-reported mechanistic/experimental linkage only"
+    },
+    {
+      "id": "D05",
+      "from": "A01",
+      "to": "A06",
+      "source_relation": "task mappings define MB outcome assignments",
+      "scope": "source-reported mechanistic/experimental linkage only"
+    },
+    {
+      "id": "D06",
+      "from": "A05",
+      "to": "A08",
+      "source_relation": "MF contributes bandit choice",
+      "scope": "source-reported mechanistic/experimental linkage only"
+    },
+    {
+      "id": "D07",
+      "from": "A06",
+      "to": "A08",
+      "source_relation": "MB contributes bandit choice",
+      "scope": "source-reported mechanistic/experimental linkage only"
+    },
+    {
+      "id": "D08",
+      "from": "A09",
+      "to": "A08",
+      "source_relation": "bandit trace enters choice",
+      "scope": "source-reported mechanistic/experimental linkage only"
+    },
+    {
+      "id": "D09",
+      "from": "A05",
+      "to": "A10",
+      "source_relation": "past MF person versus independent MF setting memories",
+      "scope": "source-reported mechanistic/experimental linkage only"
+    },
+    {
+      "id": "D10",
+      "from": "A03",
+      "to": "A11",
+      "source_relation": "symmetric reward setting design imposes benchmark indifference",
+      "scope": "source-reported mechanistic/experimental linkage only"
+    },
+    {
+      "id": "D11",
+      "from": "A05",
+      "to": "A12",
+      "source_relation": "MF person current preference is planner prediction input",
+      "scope": "source-reported mechanistic/experimental linkage only"
+    },
+    {
+      "id": "D12",
+      "from": "A06",
+      "to": "A11",
+      "source_relation": "symmetry in MB outcome model",
+      "scope": "source-reported mechanistic/experimental linkage only"
+    },
+    {
+      "id": "D13",
+      "from": "A11",
+      "to": "A12",
+      "source_relation": "task discriminates reflection from baseline",
+      "scope": "source-reported mechanistic/experimental linkage only"
+    },
+    {
+      "id": "D14",
+      "from": "A06",
+      "to": "A13",
+      "source_relation": "lazy MB consistency comparator",
+      "scope": "source-reported mechanistic/experimental linkage only"
+    },
+    {
+      "id": "D15",
+      "from": "A12",
+      "to": "A14",
+      "source_relation": "reflection contribution to reward setting",
+      "scope": "source-reported mechanistic/experimental linkage only"
+    },
+    {
+      "id": "D16",
+      "from": "A13",
+      "to": "A14",
+      "source_relation": "lazy alternative reward settings",
+      "scope": "source-reported mechanistic/experimental linkage only"
+    },
+    {
+      "id": "D17",
+      "from": "A10",
+      "to": "A14",
+      "source_relation": "direct MF reward setting alternative",
+      "scope": "source-reported mechanistic/experimental linkage only"
+    },
+    {
+      "id": "D18",
+      "from": "A09",
+      "to": "A14",
+      "source_relation": "bandit habit/novelty confound",
+      "scope": "source-reported mechanistic/experimental linkage only"
+    },
+    {
+      "id": "D19",
+      "from": "A05",
+      "to": "A15",
+      "source_relation": "MF specific repetition",
+      "scope": "source-reported mechanistic/experimental linkage only"
+    },
+    {
+      "id": "D20",
+      "from": "A06",
+      "to": "A15",
+      "source_relation": "MB sharing generalization",
+      "scope": "source-reported mechanistic/experimental linkage only"
+    },
+    {
+      "id": "D21",
+      "from": "A03",
+      "to": "A16",
+      "source_relation": "setting defines high low categories",
+      "scope": "source-reported mechanistic/experimental linkage only"
+    },
+    {
+      "id": "D22",
+      "from": "A04",
+      "to": "A16",
+      "source_relation": "drift breaks fixed high probability assumption",
+      "scope": "source-reported mechanistic/experimental linkage only"
+    },
+    {
+      "id": "D23",
+      "from": "A05",
+      "to": "A17",
+      "source_relation": "MF person reinforcement alters relative propensity",
+      "scope": "source-reported mechanistic/experimental linkage only"
+    },
+    {
+      "id": "D24",
+      "from": "A10",
+      "to": "A17",
+      "source_relation": "direct MF uniformly raises setting repeat",
+      "scope": "source-reported mechanistic/experimental linkage only"
+    },
+    {
+      "id": "D25",
+      "from": "A17",
+      "to": "A18",
+      "source_relation": "trial-class animal effect test",
+      "scope": "source-reported mechanistic/experimental linkage only"
+    },
+    {
+      "id": "D26",
+      "from": "A14",
+      "to": "A19",
+      "source_relation": "ablation no-self-reflection",
+      "scope": "source-reported mechanistic/experimental linkage only"
+    },
+    {
+      "id": "D27",
+      "from": "A20",
+      "to": "A21",
+      "source_relation": "two-stage subject fit precedes nested tests",
+      "scope": "source-reported mechanistic/experimental linkage only"
+    },
+    {
+      "id": "D28",
+      "from": "A19",
+      "to": "A21",
+      "source_relation": "nested alternative BGLRT",
+      "scope": "source-reported mechanistic/experimental linkage only"
+    },
+    {
+      "id": "D29",
+      "from": "A21",
+      "to": "A22",
+      "source_relation": "group inference limited tested models",
+      "scope": "source-reported mechanistic/experimental linkage only"
+    },
+    {
+      "id": "D30",
+      "from": "A21",
+      "to": "A23",
+      "source_relation": "synthetic model validation",
+      "scope": "source-reported mechanistic/experimental linkage only"
+    },
+    {
+      "id": "D31",
+      "from": "A22",
+      "to": "A26",
+      "source_relation": "inference not direct latent identification",
+      "scope": "source-reported mechanistic/experimental linkage only"
+    },
+    {
+      "id": "D32",
+      "from": "A12",
+      "to": "A24",
+      "source_relation": "fitted contribution relates RT",
+      "scope": "source-reported mechanistic/experimental linkage only"
+    },
+    {
+      "id": "D33",
+      "from": "A20",
+      "to": "A25",
+      "source_relation": "parameter tradeoff reanalysis",
+      "scope": "source-reported mechanistic/experimental linkage only"
+    },
+    {
+      "id": "D34",
+      "from": "A27",
+      "to": "A26",
+      "source_relation": "existing ancestors and open mechanism",
+      "scope": "source-reported mechanistic/experimental linkage only"
+    },
+    {
+      "id": "D35",
+      "from": "A28",
+      "to": "A23",
+      "source_relation": "source figure audit includes model-validation TIFF",
+      "scope": "source-reported mechanistic/experimental linkage only"
+    }
+  ],
+  "original_source_sections": [
+    "Publisher final Abstract, Introduction, Fig1 benchmark",
+    "Fig2 300 bandit+60 reward setting and probability drift",
+    "Fig3 MB/MF behavior, matched trial pattern signatures",
+    "Fig4 separate latent reward-setting planners, alternatives",
+    "Fig5 High Low Unrelated empirical and synthetic validation",
+    "Fig6 and S5 BGLRT group comparative rejection and model recovery",
+    "S6 original TIFF independent valid nonblank pixel source",
+    "Methods computational choice and value update equations (final actual publisher article)",
+    "Methods two-wave fmincon 200 restarts, 1001-by-10000 bootstrap",
+    "S1 original publisher parameter percentile table",
+    "Discussion limitations and actual ancestor citations"
+  ],
+  "original_adverse_scope": [
+    "Reflective self model only fitted theory; no direct brain self-model mechanistic observation",
+    "Authors test finite specified alternative model family, not all possible compact heuristics",
+    "MB gamma_ref correlation p=.06 after tradeoff bootstrap (not significant)",
+    "High/Low nomenclature refers set-time category; real probabilities continue drifting",
+    "No full exact MATLAB/fmincon/rng or OSF original data physical replay",
+    "S1/S2 original participant instructions PPTX excluded from full exact subject-instruction fidelity",
+    "Only model-recovery TIFF original integrity and provenance independent verified; full plotted points not individually numerically digitized",
+    "Shared Daw2005 MB/MF ancestry means full PF04/G2 INT15 independence unresolved"
+  ],
+  "grammar_not_applied": true,
+  "MAIN_outcomes_never_inspected": true
+}
