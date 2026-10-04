@@ -1,0 +1,141 @@
+{
+  "schema": "relaytheory.p399.g2d.publisher_original_physical_receipts.v1",
+  "observed_jst": "2026-10-04",
+  "frozen_g2_start_head": "69748673c80f421605f1c63607472903ac2ed68c",
+  "first_runner": {
+    "run_id": 37196467277,
+    "url": "https://github.com/rinsakamo/relay-theory/actions/runs/37196467277",
+    "conclusion": "success",
+    "notes": "All 9 calls completed with individual source failures preserved; 2 deterministic metadata tests passed; this CI success does not mean each source was acquired or scientifically qualified."
+  },
+  "b1_identity_runner": {
+    "run_id": 37196543162,
+    "url": "https://github.com/rinsakamo/relay-theory/actions/runs/37196543162",
+    "conclusion": "success",
+    "targeted_source_identity_pass": true,
+    "original_false_negative_preserved": "Initial 37196467277 contiguous first-two-page DOI text extractor reported false; later independent reacquisition of identical original publisher PDF and publisher complete HTML title/DOI closed physical identity only."
+  },
+  "records": [
+    {
+      "slot": "INT-01",
+      "doi": "10.1016/j.cognition.2024.105967",
+      "publisher_html": {
+        "status": 403,
+        "acquired": false
+      },
+      "publisher_pdf": {
+        "status": 403,
+        "acquired": false
+      },
+      "official_elsevier_api_core_metadata": {
+        "status": 200,
+        "bytes": 2057,
+        "sha256": "3ece3bdfa18844196688279b9bb9374da5fd83229af9a1a49225bab15e4815d0",
+        "full_published_original": false
+      },
+      "full_publisher_original_access": false,
+      "final_original_semantic_admitted": false
+    },
+    {
+      "slot": "INT-13",
+      "doi": "10.1371/journal.pcbi.1014796",
+      "publisher_html": {
+        "status": 200,
+        "bytes": 356026,
+        "sha256": "057e12d6c60605f3f5344b3411e6038397c3f823e09274c4929da9af1afaaca0",
+        "same_as_inherited_g2": true,
+        "explicit_uncorrected_proof": true
+      },
+      "publisher_pdf": {
+        "status": 200,
+        "bytes": 2581474,
+        "pages": 31,
+        "sha256": "5f313f8690f377faaea6b9a3610013c71b880af86634c97dbd4a5344bede9258",
+        "same_as_inherited_g2": true
+      },
+      "final_publisher_version_confirmed": false,
+      "full_published_original_semantic_admitted": false
+    },
+    {
+      "slot": "INT-B1",
+      "doi": "10.1371/journal.pcbi.1007720",
+      "publisher_pdf": {
+        "status": 200,
+        "bytes": 2231490,
+        "pages": 33,
+        "sha256": "0a79da7e5504e1e970332a65401d3da2c6282bb48ad640f760c17f4bc06a3fcf",
+        "same_sha_independently_reacquired": true,
+        "source_identity_verified_by_targeted_PDF_HTML_check": true
+      },
+      "publisher_html": {
+        "complete_publisher_page": true,
+        "sha256_from_targeted_run": "c0b11144dacf8fa91d4d4ee119651d41e6e1be279ee2549550a08f97248cbb34",
+        "doi_title_cross_check": true
+      },
+      "model_family_direct_INT12_descendant": true,
+      "full_source_semantic_admitted": false,
+      "central_family_independent": false,
+      "backup_activated": false
+    },
+    {
+      "slot": "INT-B2",
+      "doi": "10.7554/eLife.39497",
+      "publisher_pdf": {
+        "status": 200,
+        "bytes": 1480961,
+        "pages": 23,
+        "sha256": "c2adddf8d232d851d9decbb304fb02107686cf55a5dad4cbbfd8b0fd7ac7d64a",
+        "url": "https://cdn.elifesciences.org/articles/39497/elife-39497-v3.pdf",
+        "first_pages_Doi_valid": true
+      },
+      "source_release": "2018-10-19 official VOR",
+      "g1_reserved_alternative": true,
+      "shared_backup_with": "CTL-B2",
+      "full_source_semantic_admitted": false,
+      "backup_activated": false
+    },
+    {
+      "slot": "INT-B3",
+      "doi": "10.7554/eLife.57244",
+      "publisher_pdf": {
+        "status": 200,
+        "bytes": 2552352,
+        "pages": 35,
+        "sha256": "9e13535592ff1cf36c9eb4a9a1daae23cb6dfa8a916a40586a6cc5c651b80d35",
+        "url": "https://cdn.elifesciences.org/articles/57244/elife-57244-v2.pdf",
+        "first_pages_Doi_valid": true
+      },
+      "source_release": "2021-03-16 official VOR",
+      "shared_backup_with": "CTL-B1",
+      "full_source_semantic_admitted": false,
+      "backup_activated": false
+    },
+    {
+      "slot": "INT-B4",
+      "doi": "10.1371/journal.pcbi.1012872",
+      "publisher_pdf": {
+        "status": 200,
+        "bytes": 2483998,
+        "pages": 26,
+        "sha256": "67fe0d5aaed06474e53344716de73050f08e1e900420fb078712921312fb5ef6",
+        "first_pages_DOI_valid": true
+      },
+      "source_release": "2025-09-26 PLOS published article",
+      "full_source_semantic_admitted": false,
+      "global_central_family_independent": false,
+      "backup_activated": false
+    }
+  ],
+  "denominators_this_lane": {
+    "probed_candidates_including_originals_and_standbys": 6,
+    "firstparty_official_pdf_distinct_DOI_physical_acquired": 5,
+    "firstparty_VOR_backup_PDF_identity_verified": 4,
+    "original_INT13_reacquired_uncorrected_not_final": true,
+    "original_INT01_publisher_fulltext_unacquired": true,
+    "newly_globally_independent_scientific_model_qualifications": 0,
+    "activated_backups": 0
+  },
+  "full_source_visual_math_fig_variant_negative_audit_completed": false,
+  "physical_source_SHA_does_not_imply_semantic_admission": true,
+  "main_authorized": false
+}
