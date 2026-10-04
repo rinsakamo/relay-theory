@@ -1,0 +1,88 @@
+{
+  "schema": "relaytheory.p399.g1.W1.P08.PRE_A.corrected_published_original_source_bounded.v1",
+  "date_jst": "2026-10-04",
+  "qualification": "SOURCE_BOUNDED_PRE_A_ONLY; SUPPLEMENTAL_S1_EXACT_DETAILS_OUTSIDE_SCOPE",
+  "original": {
+    "doi": "10.1371/journal.pcbi.1005418",
+    "title": "Sequential inference as a mode of cognition and its correlates in fronto-parietal and hippocampal brain regions",
+    "authors": "FitzGerald et al.",
+    "publication_date": "2017-05-09",
+    "url": "https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1005418&type=printable",
+    "raw_sha256": "58ab19b12c6bf637329645f67889d11914a701e511744a784091d52958f1cd08",
+    "bytes": 4199384,
+    "pages": 20,
+    "prior_issuer_run": 37178895352,
+    "independent_issuer_new_run": 37191138347,
+    "independent_raster_run": 37191293323,
+    "original_pdf_directly_visually_seen_1based": [
+      3,
+      4,
+      6,
+      10,
+      12,
+      14
+    ],
+    "all20pages_pixel_seen": false,
+    "complete_official_publisher_HTML": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005418"
+  },
+  "correction": {
+    "doi": "10.1371/journal.pcbi.1005908",
+    "publication_date": "2017-12-13",
+    "url": "https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1005908&type=printable",
+    "publisher_official_full_HTML": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005908",
+    "raw_sha256": "3df4dd0df0395fc14b2fb4a00e8f452db8abfeb42b4fa83fcfde36ed20528b5c",
+    "bytes": 536685,
+    "pages": 3,
+    "actual_issuer_independent_run": 37191138347,
+    "all_three_correction_pdf_pages_visually_seen": [
+      1,
+      2,
+      3
+    ],
+    "nature": "SUBSTANTIVE_SCIENTIFIC_MODEL_NORMATIVITY_CORRECTION"
+  },
+  "correction_effects": [
+    "Original joint window recursion C3 repeatedly used already-smoothed boundary p(x_(t-n)|o_(1:t-1)) and double-counted earlier information; suboptimal in original first-order HMM.",
+    "Corrected optimal sequential recursion C5 instead uses p(x_(t-n)|o_(1:t-n)) separately computed by filtering at sequence boundary.",
+    "Under corrected C5, marginal belief in present x_t and current-state task choice in original first-order HMM task equal Bayesian filtering C1; optimal sequential versus filter not behaviorally identifiable.",
+    "All original fitted likelihoods and actual VBM numerical analyses remain as reported; normative interpretation and specific source-level causal strategy identification do not.",
+    "Eleven of 79 source L=1 subjects can implement optimal sequential rather than filtering; ΔLL is ambiguous between suboptimal vs optimal and sequential-vs-filter contrasts.",
+    "NEVER qualify superseded claim of equally optimal but behaviorally distinct sequential strategy."
+  ],
+  "official_S1": {
+    "doi": "10.1371/journal.pcbi.1005418.s001",
+    "url": "https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1005418.s001&type=supplementary",
+    "raw_sha256": "59162cf3338a8677d58328d382ede402bf0fd0ff5dfa7e9b2f6bfd58c44b7372",
+    "bytes": 4723646,
+    "physical_issuer_verified_run": 37191138347,
+    "standalone_content": "post hoc VBM and original preliminary model comparison supplemental tables and figures",
+    "semantic_full_text_and_figures": "NOT_FULLY_INSPECTED; fresh additional source attempt 37191640992 failed HTTP 502",
+    "qualification_exclusion": "Exclude S1-only exact VBM values, posthoc figures, independently unverified table-specific claims; original full main published article and complete official correction remain sufficient for registered core equation source structure"
+  },
+  "source_native_cognitive_model": [
+    "Hidden binary task-state face/house evolves as Markov reversal HMM with subjective switch r, feedback validity v, observed probabilistic feedback and current-state softmax precision gamma.",
+    "Original fitted comparison S1 filter and S2–S5 suboptimal sequential window inference from source original Eqs1–8 plus corrected C3.",
+    "Q1 simple action values, Q2 simultaneously updating all pairs, Q3 separate positive/negative rates; preliminary alternatives to native HMM.",
+    "World/external: actual reversal schedules, scanned adult groups, brain anatomical statistics; neither VBM GLM nor structural cortex is an internal source algorithm.",
+    "Ancestry: HMM/Bishop filtering, Viterbi offline path methods, prior probabilistic reversal learning, Friston/Ashburner VBM methods."
+  ],
+  "original_source_negatives": [
+    "Corrected optimum equal current-state predictions as filtering",
+    "Original deployed sequential model suboptimal",
+    "ΔLL and L1 interpretation ambiguity despite numerical results unchanged",
+    "Model fits cannot uniquely prove neurobiological sequential mechanism",
+    "Underlying original task explicitly Markovian, not empirical evidence for claimed non-Markovian benefits",
+    "Fixed softmax gamma is confounded with subjective r/v; older/younger comparisons limited",
+    "Structural MRI correlations not causal neuronal implementation",
+    "Original n=79 and separate technical exclusions counted distinctly",
+    "Only original main+correction science in qualified core; exact S1-only tables withheld"
+  ],
+  "source_model_family": {
+    "P07": "Friston/Dolan-related broad Bayesian inference heritage; P07 Game Theory of Mind opponent recursion differs source target from P08 HMM temporal window, final genetic independence held",
+    "G2_BLf02": "working hierarchical confidence only",
+    "G2_BLf03": "working volatility evidence accumulator only",
+    "joint_clearance": "HELD"
+  },
+  "no_grammar_before_A": true,
+  "no_MAIN_science": true
+}

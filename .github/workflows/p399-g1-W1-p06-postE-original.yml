@@ -1,0 +1,31 @@
+name: P399 G1 W1 P06 after E exact original publisher and stage chronology
+on:
+  push:
+    branches:
+      - "paper2/p399-g1-w1-source-adversarial-20261004"
+    paths:
+      - "research/paper2/p399/g1/parallel/W1/p06/w1_p06_independent_after_E_real_original_and_git_audit.py"
+      - ".github/workflows/p399-g1-W1-p06-postE-original.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  p06-real-afterE-source-frozen-stages:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install 'pypdf==6.1.1'
+      - run: python research/paper2/p399/g1/parallel/W1/p06/w1_p06_independent_after_E_real_original_and_git_audit.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: p399-g1-W1-p06-real-post-E-${{ github.run_id }}
+          path: w1-p06-after-E/
+          retention-days: 21
+          if-no-files-found: warn
