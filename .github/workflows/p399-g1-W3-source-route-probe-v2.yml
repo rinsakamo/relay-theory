@@ -1,0 +1,26 @@
+name: P399 W3 timed original and alternate source transport probe
+on:
+  push:
+    branches:
+      - paper2/p399-g1-w3-mem-prd-family-20261004
+    paths:
+      - .github/workflows/p399-g1-W3-source-route-probe-v2.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  timed_transport_only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - name: Attempt original and alternate sources with 18-second per request timeout
+        run: python research/paper2/p399/g1/parallel/W3/W3_timed_source_route_probe_v2.py
+      - name: Preserve transport hash evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: P399-W3-source-route-v2
+          path: w3-source-route-probe-v2/receipt.json
+          if-no-files-found: warn
+          retention-days: 30

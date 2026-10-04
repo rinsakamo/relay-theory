@@ -1,0 +1,564 @@
+{
+  "schema": "p399.g1.w3.P18.D.original_A_to_frozen_grammar_v0.v1",
+  "stage": "D",
+  "original_A_git_blob": "4944aac42bb44d5ebc1ea6b0aaabe8161c9187ae",
+  "source_closed_C_git_blob": "0dbc271daf571889bf098a33f9ed36493f41be9d",
+  "grammar_v0_frozen_primitive_roles": [
+    "S/Pi",
+    "X",
+    "C",
+    "Q",
+    "P",
+    "K",
+    "T",
+    "rho/O"
+  ],
+  "original_frozen_role_definitions": {
+    "Pi": "experimental source/person and observation-individuation boundary, no ontological plurality from task labels",
+    "X": "configuration carrier of model-fitted MF person values, MB outcomes, setting caches and choice traces",
+    "C": "exogenous task conditions, parameter constraints and model-comparator exclusions",
+    "Q": "source criterion-conditioned choice maximization, likelihood fit or empirical contrast filtering, not extra internal homunculus",
+    "P": "P_in external bandit/outcome, reward-setting task and test ablation; P_out choice/RT/likelihood measurements and synthetic comparisons",
+    "K": "typed source Rescorla-Wagner updates, MB person-value sum, future MF-preference-sensitive setting Q computation and softmax interface",
+    "T": "source succession of preceding rewards, 10 post-setting bandit trials, time-indexed MF Q updates and drift",
+    "O": "boundary-relative 30-person task choices and author simulated synthetic effect traces, explicitly provenance separated"
+  },
+  "complete_original_A_roles": [
+    {
+      "claim_id": "A01",
+      "source_original_kind": "30 human participants were trained on four person-to-animal-and-vegetable deterministic association mapping; each person has unique vegetable and one shared animal for a pair",
+      "roles": [
+        "Pi",
+        "P_in",
+        "C"
+      ],
+      "scope": null
+    },
+    {
+      "claim_id": "A02",
+      "source_original_kind": "Each bandit choice presents a random pair of people with 2s choice limit and observed animal/vegetable rewards weighted 3 and 1 respectively",
+      "roles": [
+        "P_in",
+        "T",
+        "C"
+      ],
+      "scope": null
+    },
+    {
+      "claim_id": "A03",
+      "source_original_kind": "Across 300 bandit trials, every 10 bandit trials is followed by two reward-settings, total 60 reward-setting trials, allowing choice of .75/.25 vegetable probability among same-animal shared-person pair",
+      "roles": [
+        "P_in",
+        "T",
+        "Pi",
+        "C"
+      ],
+      "scope": null
+    },
+    {
+      "claim_id": "A04",
+      "source_original_kind": "Animal and vegetable reward probabilities externally drift via independent Gaussian random walks reflected in [.25,.75], following subject's immediate setting of two vegetable probabilities",
+      "roles": [
+        "C",
+        "P_in",
+        "T"
+      ],
+      "scope": null
+    },
+    {
+      "claim_id": "A05",
+      "source_original_kind": "Fixed MF caches Q^MF value of each person and updates only selected person's Q based on total animal+vegetable reward prediction error; unchosen persons decay toward default",
+      "roles": [
+        "X",
+        "K",
+        "T"
+      ],
+      "scope": null
+    },
+    {
+      "claim_id": "A06",
+      "source_original_kind": "MB maintains learned outcome-specific animal and vegetable Q^MB and recomputes person value via their two associated outcomes; observed animal updates generalize to another same-animal person",
+      "roles": [
+        "X",
+        "K",
+        "T"
+      ],
+      "scope": null
+    },
+    {
+      "claim_id": "A07",
+      "source_original_kind": "MB outcome values of unobserved animals/vegetables decay toward original initialized defaults, and reward-setting chosen vegetable probability updates MB Q after setting",
+      "roles": [
+        "K",
+        "C"
+      ],
+      "scope": null
+    },
+    {
+      "claim_id": "A08",
+      "source_original_kind": "Bandit choice net value combines MB and MF contributions with weighted choice trace and constant three individual-specific biases, then softmax",
+      "roles": [
+        "K",
+        "Q",
+        "P_out"
+      ],
+      "scope": null
+    },
+    {
+      "claim_id": "A09",
+      "source_original_kind": "Bandit choice traces C(person) update recency/frequency after each bandit and permit perseverance or novelty according to sign of trace weight",
+      "roles": [
+        "X",
+        "T",
+        "K"
+      ],
+      "scope": null
+    },
+    {
+      "claim_id": "A10",
+      "source_original_kind": "MF reward-setting system maintains two cached setting Q^MF,rs values; all ten subsequent bandit total rewards update selected setting Q with lambda^(i−1) decay, plus independent reward-setting trace",
+      "roles": [
+        "X",
+        "K",
+        "T"
+      ],
+      "scope": null
+    },
+    {
+      "claim_id": "A11",
+      "source_original_kind": "An MF-ignorant Bellman planner is indifferent between the tested exchange-symmetric same-animal paired vegetable reward settings under identical future opportunity assumptions",
+      "roles": [
+        "Q",
+        "C",
+        "Pi"
+      ],
+      "scope": null
+    },
+    {
+      "claim_id": "A12",
+      "source_original_kind": "The proposed self-reflective MB planner uses relative Q^MF preference for future bandit people when preferring to set .75 vegetable reward for person with stronger MF disposition",
+      "roles": [
+        "X",
+        "K",
+        "T",
+        "Q"
+      ],
+      "scope": "No novel self-model learner: model fitted planner reads existing MF cached Q and sets future environment"
+    },
+    {
+      "claim_id": "A13",
+      "source_original_kind": "A lazy MB encoder prefers reward setting aligned to currently high MB vegetable value, avoiding expected remapping/encoding cost and is modeled separately from reflection",
+      "roles": [
+        "Q",
+        "C"
+      ],
+      "scope": null
+    },
+    {
+      "claim_id": "A14",
+      "source_original_kind": "Reward-setting net Q additionally includes MF reward-setting Q, lazy encoder, self-reflective planning, reward-setting trace, individual bandit trace, constant bandit bias, followed by softmax",
+      "roles": [
+        "X",
+        "K",
+        "P_out",
+        "Q"
+      ],
+      "scope": null
+    },
+    {
+      "claim_id": "A15",
+      "source_original_kind": "Bandit population signatures: immediate same-animal repetition favors previous animal reward MF effect while same-animal different-person generalization after controlling outcome probability supports MB",
+      "roles": [
+        "P_out",
+        "O",
+        "Q"
+      ],
+      "scope": null
+    },
+    {
+      "claim_id": "A16",
+      "source_original_kind": "Experimental high/low/unrelated bandit trial categories are relative to the preceding reward-setting label, not guaranteed continuously higher/lower true vegetable probabilities under drift",
+      "roles": [
+        "Pi",
+        "T",
+        "P_in",
+        "C"
+      ],
+      "scope": null
+    },
+    {
+      "claim_id": "A17",
+      "source_original_kind": "For animal reward among the ten post-setting trials the self-reflective path predicts High>Unrelated>Low effect on later repeat setting while direct MF reward-setting path boosts all categories and lazy MB is isolated by animal-only analysis",
+      "roles": [
+        "X",
+        "K",
+        "T",
+        "Q"
+      ],
+      "scope": null
+    },
+    {
+      "claim_id": "A18",
+      "source_original_kind": "Original empirically observed fixed-effect contrasts show High vs Low and High vs Unrelated differences; raw participant trials and exact regressions not reproduced by W3",
+      "roles": [
+        "P_out",
+        "O",
+        "Q"
+      ],
+      "scope": null
+    },
+    {
+      "claim_id": "A19",
+      "source_original_kind": "Full fitted RL and no-self-reflective gamma_selfref=0 nested variant generate different synthetic reward-setting contrast profiles in original reported model simulations",
+      "roles": [
+        "P_in",
+        "K",
+        "O",
+        "Q"
+      ],
+      "scope": null
+    },
+    {
+      "claim_id": "A20",
+      "source_original_kind": "Original fitting used 200 initial points/person two waves: nine bandit parameters fit from bandit choices first then seven setting parameters conditional on first-wave fits",
+      "roles": [
+        "P_in",
+        "C",
+        "K"
+      ],
+      "scope": null
+    },
+    {
+      "claim_id": "A21",
+      "source_original_kind": "Original nested BGLRT assessed pure MF, pure MB and other separate ablations plus no self reflection, simulated parametric null likelihood distributions with 1001 subject-specific samples and 10,000 group resamples",
+      "roles": [
+        "K",
+        "O",
+        "Q"
+      ],
+      "scope": null
+    },
+    {
+      "claim_id": "A22",
+      "source_original_kind": "Original reports group bootstrapped rejection of gamma_selfref=0 within tested family at p<.001 and simulated minimum power >=.92 for six reward-setting submodels; neither tests all imaginable heuristics nor independently recreates exact analysis",
+      "roles": [
+        "O",
+        "Q",
+        "C"
+      ],
+      "scope": "Statistical rejection within tested family, not metaphysical introspection proof"
+    },
+    {
+      "claim_id": "A23",
+      "source_original_kind": "Original S6 full versus no-self-reflective model-validation simulated high/low/unrelated contrast distribution from 1001 synthetic 30-subject datasets, source reported not W3-replayed",
+      "roles": [
+        "P_in",
+        "O",
+        "Q"
+      ],
+      "scope": null
+    },
+    {
+      "claim_id": "A24",
+      "source_original_kind": "Original correlation between fitted gamma_selfref and median reward-setting RT Spearman rho=.5 p=.005 is convergent correlation not direct direct measurement of internal self-model content",
+      "roles": [
+        "P_out",
+        "O",
+        "Q"
+      ],
+      "scope": null
+    },
+    {
+      "claim_id": "A25",
+      "source_original_kind": "Original parameter-tradeoff bootstrap preserved fitted gamma_selfref vs MF contribution p=.002 but MB contribution p=.06, so latter not significant after parameter-tradeoff check",
+      "roles": [
+        "O",
+        "Q",
+        "C"
+      ],
+      "scope": null
+    },
+    {
+      "claim_id": "A26",
+      "source_original_kind": "Paper explicitly notes formation, maintenance, mental/brain instantiation and potential cheaper heuristics for inferred self-model remain unresolved; no direct self model formation mechanism specified",
+      "roles": [
+        "C"
+      ],
+      "scope": null
+    },
+    {
+      "claim_id": "A27",
+      "source_original_kind": "Paper explicitly traces earlier 2019 same-author retrospective MB inference helping MF credit assignment and Daw/Niv/Dayan 2005 generic MB/MF competition, but future environment reward-setting differs mechanistically from retrospective updates",
+      "roles": [
+        "C",
+        "K"
+      ],
+      "scope": null
+    },
+    {
+      "claim_id": "A28",
+      "source_original_kind": "Final published source main 28pp plus actual same-article S5/S6 visual model recovery and S1 fit percentile table are physically verified; original task instruction PPTX are excluded from exact participant fidelity scope",
+      "roles": [
+        "Pi",
+        "C"
+      ],
+      "scope": null
+    }
+  ],
+  "preserve_original_A_source_dependencies": [
+    {
+      "original_id": "D01",
+      "from": "A01",
+      "to": "A02",
+      "source_native_relation": "task training conditions",
+      "status": "PRESERVED_EXACT_SOURCE_DEPENDENCE_NOT_NEW_CAUSAL_OPERATOR"
+    },
+    {
+      "original_id": "D02",
+      "from": "A02",
+      "to": "A03",
+      "source_native_relation": "periodic future-setting trial design",
+      "status": "PRESERVED_EXACT_SOURCE_DEPENDENCE_NOT_NEW_CAUSAL_OPERATOR"
+    },
+    {
+      "original_id": "D03",
+      "from": "A03",
+      "to": "A04",
+      "source_native_relation": "setting changes subsequent probabilistic environment",
+      "status": "PRESERVED_EXACT_SOURCE_DEPENDENCE_NOT_NEW_CAUSAL_OPERATOR"
+    },
+    {
+      "original_id": "D04",
+      "from": "A01",
+      "to": "A05",
+      "source_native_relation": "person identity defines cached MF person value",
+      "status": "PRESERVED_EXACT_SOURCE_DEPENDENCE_NOT_NEW_CAUSAL_OPERATOR"
+    },
+    {
+      "original_id": "D05",
+      "from": "A01",
+      "to": "A06",
+      "source_native_relation": "task mappings define MB outcome assignments",
+      "status": "PRESERVED_EXACT_SOURCE_DEPENDENCE_NOT_NEW_CAUSAL_OPERATOR"
+    },
+    {
+      "original_id": "D06",
+      "from": "A05",
+      "to": "A08",
+      "source_native_relation": "MF contributes bandit choice",
+      "status": "PRESERVED_EXACT_SOURCE_DEPENDENCE_NOT_NEW_CAUSAL_OPERATOR"
+    },
+    {
+      "original_id": "D07",
+      "from": "A06",
+      "to": "A08",
+      "source_native_relation": "MB contributes bandit choice",
+      "status": "PRESERVED_EXACT_SOURCE_DEPENDENCE_NOT_NEW_CAUSAL_OPERATOR"
+    },
+    {
+      "original_id": "D08",
+      "from": "A09",
+      "to": "A08",
+      "source_native_relation": "bandit trace enters choice",
+      "status": "PRESERVED_EXACT_SOURCE_DEPENDENCE_NOT_NEW_CAUSAL_OPERATOR"
+    },
+    {
+      "original_id": "D09",
+      "from": "A05",
+      "to": "A10",
+      "source_native_relation": "past MF person versus independent MF setting memories",
+      "status": "PRESERVED_EXACT_SOURCE_DEPENDENCE_NOT_NEW_CAUSAL_OPERATOR"
+    },
+    {
+      "original_id": "D10",
+      "from": "A03",
+      "to": "A11",
+      "source_native_relation": "symmetric reward setting design imposes benchmark indifference",
+      "status": "PRESERVED_EXACT_SOURCE_DEPENDENCE_NOT_NEW_CAUSAL_OPERATOR"
+    },
+    {
+      "original_id": "D11",
+      "from": "A05",
+      "to": "A12",
+      "source_native_relation": "MF person current preference is planner prediction input",
+      "status": "PRESERVED_EXACT_SOURCE_DEPENDENCE_NOT_NEW_CAUSAL_OPERATOR"
+    },
+    {
+      "original_id": "D12",
+      "from": "A06",
+      "to": "A11",
+      "source_native_relation": "symmetry in MB outcome model",
+      "status": "PRESERVED_EXACT_SOURCE_DEPENDENCE_NOT_NEW_CAUSAL_OPERATOR"
+    },
+    {
+      "original_id": "D13",
+      "from": "A11",
+      "to": "A12",
+      "source_native_relation": "task discriminates reflection from baseline",
+      "status": "PRESERVED_EXACT_SOURCE_DEPENDENCE_NOT_NEW_CAUSAL_OPERATOR"
+    },
+    {
+      "original_id": "D14",
+      "from": "A06",
+      "to": "A13",
+      "source_native_relation": "lazy MB consistency comparator",
+      "status": "PRESERVED_EXACT_SOURCE_DEPENDENCE_NOT_NEW_CAUSAL_OPERATOR"
+    },
+    {
+      "original_id": "D15",
+      "from": "A12",
+      "to": "A14",
+      "source_native_relation": "reflection contribution to reward setting",
+      "status": "PRESERVED_EXACT_SOURCE_DEPENDENCE_NOT_NEW_CAUSAL_OPERATOR"
+    },
+    {
+      "original_id": "D16",
+      "from": "A13",
+      "to": "A14",
+      "source_native_relation": "lazy alternative reward settings",
+      "status": "PRESERVED_EXACT_SOURCE_DEPENDENCE_NOT_NEW_CAUSAL_OPERATOR"
+    },
+    {
+      "original_id": "D17",
+      "from": "A10",
+      "to": "A14",
+      "source_native_relation": "direct MF reward setting alternative",
+      "status": "PRESERVED_EXACT_SOURCE_DEPENDENCE_NOT_NEW_CAUSAL_OPERATOR"
+    },
+    {
+      "original_id": "D18",
+      "from": "A09",
+      "to": "A14",
+      "source_native_relation": "bandit habit/novelty confound",
+      "status": "PRESERVED_EXACT_SOURCE_DEPENDENCE_NOT_NEW_CAUSAL_OPERATOR"
+    },
+    {
+      "original_id": "D19",
+      "from": "A05",
+      "to": "A15",
+      "source_native_relation": "MF specific repetition",
+      "status": "PRESERVED_EXACT_SOURCE_DEPENDENCE_NOT_NEW_CAUSAL_OPERATOR"
+    },
+    {
+      "original_id": "D20",
+      "from": "A06",
+      "to": "A15",
+      "source_native_relation": "MB sharing generalization",
+      "status": "PRESERVED_EXACT_SOURCE_DEPENDENCE_NOT_NEW_CAUSAL_OPERATOR"
+    },
+    {
+      "original_id": "D21",
+      "from": "A03",
+      "to": "A16",
+      "source_native_relation": "setting defines high low categories",
+      "status": "PRESERVED_EXACT_SOURCE_DEPENDENCE_NOT_NEW_CAUSAL_OPERATOR"
+    },
+    {
+      "original_id": "D22",
+      "from": "A04",
+      "to": "A16",
+      "source_native_relation": "drift breaks fixed high probability assumption",
+      "status": "PRESERVED_EXACT_SOURCE_DEPENDENCE_NOT_NEW_CAUSAL_OPERATOR"
+    },
+    {
+      "original_id": "D23",
+      "from": "A05",
+      "to": "A17",
+      "source_native_relation": "MF person reinforcement alters relative propensity",
+      "status": "PRESERVED_EXACT_SOURCE_DEPENDENCE_NOT_NEW_CAUSAL_OPERATOR"
+    },
+    {
+      "original_id": "D24",
+      "from": "A10",
+      "to": "A17",
+      "source_native_relation": "direct MF uniformly raises setting repeat",
+      "status": "PRESERVED_EXACT_SOURCE_DEPENDENCE_NOT_NEW_CAUSAL_OPERATOR"
+    },
+    {
+      "original_id": "D25",
+      "from": "A17",
+      "to": "A18",
+      "source_native_relation": "trial-class animal effect test",
+      "status": "PRESERVED_EXACT_SOURCE_DEPENDENCE_NOT_NEW_CAUSAL_OPERATOR"
+    },
+    {
+      "original_id": "D26",
+      "from": "A14",
+      "to": "A19",
+      "source_native_relation": "ablation no-self-reflection",
+      "status": "PRESERVED_EXACT_SOURCE_DEPENDENCE_NOT_NEW_CAUSAL_OPERATOR"
+    },
+    {
+      "original_id": "D27",
+      "from": "A20",
+      "to": "A21",
+      "source_native_relation": "two-stage subject fit precedes nested tests",
+      "status": "PRESERVED_EXACT_SOURCE_DEPENDENCE_NOT_NEW_CAUSAL_OPERATOR"
+    },
+    {
+      "original_id": "D28",
+      "from": "A19",
+      "to": "A21",
+      "source_native_relation": "nested alternative BGLRT",
+      "status": "PRESERVED_EXACT_SOURCE_DEPENDENCE_NOT_NEW_CAUSAL_OPERATOR"
+    },
+    {
+      "original_id": "D29",
+      "from": "A21",
+      "to": "A22",
+      "source_native_relation": "group inference limited tested models",
+      "status": "PRESERVED_EXACT_SOURCE_DEPENDENCE_NOT_NEW_CAUSAL_OPERATOR"
+    },
+    {
+      "original_id": "D30",
+      "from": "A21",
+      "to": "A23",
+      "source_native_relation": "synthetic model validation",
+      "status": "PRESERVED_EXACT_SOURCE_DEPENDENCE_NOT_NEW_CAUSAL_OPERATOR"
+    },
+    {
+      "original_id": "D31",
+      "from": "A22",
+      "to": "A26",
+      "source_native_relation": "inference not direct latent identification",
+      "status": "PRESERVED_EXACT_SOURCE_DEPENDENCE_NOT_NEW_CAUSAL_OPERATOR"
+    },
+    {
+      "original_id": "D32",
+      "from": "A12",
+      "to": "A24",
+      "source_native_relation": "fitted contribution relates RT",
+      "status": "PRESERVED_EXACT_SOURCE_DEPENDENCE_NOT_NEW_CAUSAL_OPERATOR"
+    },
+    {
+      "original_id": "D33",
+      "from": "A20",
+      "to": "A25",
+      "source_native_relation": "parameter tradeoff reanalysis",
+      "status": "PRESERVED_EXACT_SOURCE_DEPENDENCE_NOT_NEW_CAUSAL_OPERATOR"
+    },
+    {
+      "original_id": "D34",
+      "from": "A27",
+      "to": "A26",
+      "source_native_relation": "existing ancestors and open mechanism",
+      "status": "PRESERVED_EXACT_SOURCE_DEPENDENCE_NOT_NEW_CAUSAL_OPERATOR"
+    },
+    {
+      "original_id": "D35",
+      "from": "A28",
+      "to": "A23",
+      "source_native_relation": "source figure audit includes model-validation TIFF",
+      "status": "PRESERVED_EXACT_SOURCE_DEPENDENCE_NOT_NEW_CAUSAL_OPERATOR"
+    }
+  ],
+  "source_supported_C_append_only_new_claims": [],
+  "system_world_experiment": {
+    "System": "original RL MF Q values for offered persons, MB outcome Q values for animal/vegetable, cached MF setting Q, bandit and setting choice traces, original weighted and softmax reward setting prospective-reflection rule",
+    "World": "actual task participants and exogenous random-walk animal/vegetable reward landscape; this model does not autonomously create measured world",
+    "Experiment": "30-person training on fixed person-outcome associations, animal/vegetable reward magnitudes 3/1, sampled pair choices, 2s bandit decision deadline, every ten bandit choices two 0.75/0.25 setting trials, BGLRT fitted counterfactual submodels"
+  },
+  "not_introduce_new_learned_self_model": true,
+  "no_MAIN_grammar_outcome_touched": true,
+  "no_global_H_classification": true
+}

@@ -1,0 +1,547 @@
+{
+  "schema": "p399.g1.w3.P16.D.frozen_unchanged_grammar_v0.v1",
+  "stage": "D",
+  "original_A_git_blob": "5ad91c696576f15144e503b37a7877e13185070e",
+  "source_closed_C_git_blob": "b595b1ddfb15ea5a78eef7b9985195eb928d27c7",
+  "source_native_A_covered_exactly": [
+    "A01",
+    "A02",
+    "A03",
+    "A04",
+    "A05",
+    "A06",
+    "A07",
+    "A08",
+    "A09",
+    "A10",
+    "A11",
+    "A12",
+    "A13",
+    "A14",
+    "A15",
+    "A16",
+    "A17",
+    "A18",
+    "A19",
+    "A20",
+    "A21",
+    "A22",
+    "A23",
+    "A24",
+    "A25",
+    "A26",
+    "A27",
+    "A28",
+    "A29"
+  ],
+  "grammar_v0_frozen_primitive_roles": [
+    "S/Pi",
+    "X",
+    "C",
+    "Q",
+    "P",
+    "K",
+    "T",
+    "rho/O"
+  ],
+  "role_definitions": {
+    "Pi": "individual source/observation and experiment boundaries",
+    "X": "configuration carrier (originally frozen S)",
+    "C": "source-defined admissibility/initial and variant constraints",
+    "Q": "source criterion conditioned selection/metric; not extra learned value coordinator",
+    "P": "interface P_in imposed experimental sensory/condition inputs; P_out measurements/probes",
+    "K": "typed source-defined transformations including fixed Hebbian template construction and original recurrent input-output mapping",
+    "T": "original model's actual state succession/Euler activity dynamics and imposed morph sequence",
+    "O": "boundary-relative model and cited empirical observation/trace, distinguished by provenance"
+  },
+  "complete_A_roles": [
+    {
+      "claim_id": "A01",
+      "original_claim_kind": "Network",
+      "roles": [
+        "Pi",
+        "X"
+      ],
+      "comment": null
+    },
+    {
+      "claim_id": "A02",
+      "original_claim_kind": "States",
+      "roles": [
+        "X",
+        "T"
+      ],
+      "comment": null
+    },
+    {
+      "claim_id": "A03",
+      "original_claim_kind": "ExternallySupplied",
+      "roles": [
+        "P_in",
+        "C"
+      ],
+      "comment": "World/experiment-provided sensory drive; not internal autonomous retained mechanism"
+    },
+    {
+      "claim_id": "A04",
+      "original_claim_kind": "ExternallySupplied",
+      "roles": [
+        "P_in",
+        "C"
+      ],
+      "comment": "World/experiment-provided sensory drive; not internal autonomous retained mechanism"
+    },
+    {
+      "claim_id": "A05",
+      "original_claim_kind": "Dynamics",
+      "roles": [
+        "K",
+        "T"
+      ],
+      "comment": null
+    },
+    {
+      "claim_id": "A06",
+      "original_claim_kind": "Constraint",
+      "roles": [
+        "C"
+      ],
+      "comment": null
+    },
+    {
+      "claim_id": "A07",
+      "original_claim_kind": "Memory",
+      "roles": [
+        "X",
+        "C"
+      ],
+      "comment": null
+    },
+    {
+      "claim_id": "A08",
+      "original_claim_kind": "Memory",
+      "roles": [
+        "X",
+        "K"
+      ],
+      "comment": null
+    },
+    {
+      "claim_id": "A09",
+      "original_claim_kind": "Constraint",
+      "roles": [
+        "C"
+      ],
+      "comment": null
+    },
+    {
+      "claim_id": "A10",
+      "original_claim_kind": "Transform",
+      "roles": [
+        "K"
+      ],
+      "comment": null
+    },
+    {
+      "claim_id": "A11",
+      "original_claim_kind": "Control",
+      "roles": [
+        "C",
+        "P_in"
+      ],
+      "comment": null
+    },
+    {
+      "claim_id": "A12",
+      "original_claim_kind": "Variant",
+      "roles": [
+        "Pi",
+        "C"
+      ],
+      "comment": null
+    },
+    {
+      "claim_id": "A13",
+      "original_claim_kind": "Trajectory",
+      "roles": [
+        "T",
+        "P_in"
+      ],
+      "comment": null
+    },
+    {
+      "claim_id": "A14",
+      "original_claim_kind": "Observation",
+      "roles": [
+        "P_out",
+        "O",
+        "Q"
+      ],
+      "comment": null
+    },
+    {
+      "claim_id": "A15",
+      "original_claim_kind": "Finding",
+      "roles": [
+        "O",
+        "Q"
+      ],
+      "comment": null
+    },
+    {
+      "claim_id": "A16",
+      "original_claim_kind": "Finding",
+      "roles": [
+        "O",
+        "T"
+      ],
+      "comment": null
+    },
+    {
+      "claim_id": "A17",
+      "original_claim_kind": "Finding",
+      "roles": [
+        "O",
+        "T"
+      ],
+      "comment": null
+    },
+    {
+      "claim_id": "A18",
+      "original_claim_kind": "Test",
+      "roles": [
+        "P_in",
+        "K",
+        "P_out",
+        "O",
+        "Q"
+      ],
+      "comment": null
+    },
+    {
+      "claim_id": "A19",
+      "original_claim_kind": "Negative",
+      "roles": [
+        "Q",
+        "O",
+        "C"
+      ],
+      "comment": null
+    },
+    {
+      "claim_id": "A20",
+      "original_claim_kind": "Finding",
+      "roles": [
+        "T",
+        "P_in",
+        "O"
+      ],
+      "comment": null
+    },
+    {
+      "claim_id": "A21",
+      "original_claim_kind": "Negative",
+      "roles": [
+        "T",
+        "P_in",
+        "O"
+      ],
+      "comment": null
+    },
+    {
+      "claim_id": "A22",
+      "original_claim_kind": "Finding",
+      "roles": [
+        "O",
+        "Q"
+      ],
+      "comment": null
+    },
+    {
+      "claim_id": "A23",
+      "original_claim_kind": "Prediction",
+      "roles": [
+        "O",
+        "Q"
+      ],
+      "comment": null
+    },
+    {
+      "claim_id": "A24",
+      "original_claim_kind": "Evidence",
+      "roles": [
+        "O"
+      ],
+      "comment": "cited empirical measurement outside model; no biological acquisition mechanism introduced"
+    },
+    {
+      "claim_id": "A25",
+      "original_claim_kind": "Alternative",
+      "roles": [
+        "C"
+      ],
+      "comment": null
+    },
+    {
+      "claim_id": "A26",
+      "original_claim_kind": "Alternative",
+      "roles": [
+        "C"
+      ],
+      "comment": null
+    },
+    {
+      "claim_id": "A27",
+      "original_claim_kind": "Scope",
+      "roles": [
+        "C"
+      ],
+      "comment": null
+    },
+    {
+      "claim_id": "A28",
+      "original_claim_kind": "Constraint",
+      "roles": [
+        "T",
+        "C"
+      ],
+      "comment": null
+    },
+    {
+      "claim_id": "A29",
+      "original_claim_kind": "ExperimentalBoundary",
+      "roles": [
+        "Pi",
+        "C"
+      ],
+      "comment": null
+    }
+  ],
+  "all_source_dependencies_preserved": [
+    {
+      "original_edge": "E01",
+      "from": "A03",
+      "to": "A05",
+      "typed_relation": "original source-native dependency retained, not a newly established extra causal layer"
+    },
+    {
+      "original_edge": "E02",
+      "from": "A04",
+      "to": "A05",
+      "typed_relation": "original source-native dependency retained, not a newly established extra causal layer"
+    },
+    {
+      "original_edge": "E03",
+      "from": "A06",
+      "to": "A05",
+      "typed_relation": "original source-native dependency retained, not a newly established extra causal layer"
+    },
+    {
+      "original_edge": "E04",
+      "from": "A07",
+      "to": "A08",
+      "typed_relation": "original source-native dependency retained, not a newly established extra causal layer"
+    },
+    {
+      "original_edge": "E05",
+      "from": "A09",
+      "to": "A08",
+      "typed_relation": "original source-native dependency retained, not a newly established extra causal layer"
+    },
+    {
+      "original_edge": "E06",
+      "from": "A08",
+      "to": "A05",
+      "typed_relation": "original source-native dependency retained, not a newly established extra causal layer"
+    },
+    {
+      "original_edge": "E07",
+      "from": "A10",
+      "to": "A05",
+      "typed_relation": "original source-native dependency retained, not a newly established extra causal layer"
+    },
+    {
+      "original_edge": "E08",
+      "from": "A05",
+      "to": "A02",
+      "typed_relation": "original source-native dependency retained, not a newly established extra causal layer"
+    },
+    {
+      "original_edge": "E09",
+      "from": "A07",
+      "to": "A12",
+      "typed_relation": "original source-native dependency retained, not a newly established extra causal layer"
+    },
+    {
+      "original_edge": "E10",
+      "from": "A11",
+      "to": "A15",
+      "typed_relation": "original source-native dependency retained, not a newly established extra causal layer"
+    },
+    {
+      "original_edge": "E11",
+      "from": "A12",
+      "to": "A16",
+      "typed_relation": "original source-native dependency retained, not a newly established extra causal layer"
+    },
+    {
+      "original_edge": "E12",
+      "from": "A05",
+      "to": "A16",
+      "typed_relation": "original source-native dependency retained, not a newly established extra causal layer"
+    },
+    {
+      "original_edge": "E13",
+      "from": "A12",
+      "to": "A17",
+      "typed_relation": "original source-native dependency retained, not a newly established extra causal layer"
+    },
+    {
+      "original_edge": "E14",
+      "from": "A08",
+      "to": "A18",
+      "typed_relation": "original source-native dependency retained, not a newly established extra causal layer"
+    },
+    {
+      "original_edge": "E15",
+      "from": "A05",
+      "to": "A18",
+      "typed_relation": "original source-native dependency retained, not a newly established extra causal layer"
+    },
+    {
+      "original_edge": "E16",
+      "from": "A05",
+      "to": "A19",
+      "typed_relation": "original source-native dependency retained, not a newly established extra causal layer"
+    },
+    {
+      "original_edge": "E17",
+      "from": "A20",
+      "to": "A16",
+      "typed_relation": "original source-native dependency retained, not a newly established extra causal layer"
+    },
+    {
+      "original_edge": "E18",
+      "from": "A21",
+      "to": "A17",
+      "typed_relation": "original source-native dependency retained, not a newly established extra causal layer"
+    },
+    {
+      "original_edge": "E19",
+      "from": "A05",
+      "to": "A22",
+      "typed_relation": "original source-native dependency retained, not a newly established extra causal layer"
+    },
+    {
+      "original_edge": "E20",
+      "from": "A12",
+      "to": "A22",
+      "typed_relation": "original source-native dependency retained, not a newly established extra causal layer"
+    },
+    {
+      "original_edge": "E21",
+      "from": "A05",
+      "to": "A23",
+      "typed_relation": "original source-native dependency retained, not a newly established extra causal layer"
+    },
+    {
+      "original_edge": "E22",
+      "from": "A13",
+      "to": "A14",
+      "typed_relation": "original source-native dependency retained, not a newly established extra causal layer"
+    },
+    {
+      "original_edge": "E23",
+      "from": "A14",
+      "to": "A24",
+      "typed_relation": "original source-native dependency retained, not a newly established extra causal layer"
+    },
+    {
+      "original_edge": "E24",
+      "from": "A28",
+      "to": "A13",
+      "typed_relation": "original source-native dependency retained, not a newly established extra causal layer"
+    },
+    {
+      "original_edge": "E25",
+      "from": "A29",
+      "to": "A04",
+      "typed_relation": "original source-native dependency retained, not a newly established extra causal layer"
+    },
+    {
+      "original_edge": "E26",
+      "from": "A29",
+      "to": "A07",
+      "typed_relation": "original source-native dependency retained, not a newly established extra causal layer"
+    },
+    {
+      "original_edge": "E27",
+      "from": "A29",
+      "to": "A20",
+      "typed_relation": "original source-native dependency retained, not a newly established extra causal layer"
+    },
+    {
+      "original_edge": "E28",
+      "from": "A29",
+      "to": "A21",
+      "typed_relation": "original source-native dependency retained, not a newly established extra causal layer"
+    },
+    {
+      "original_edge": "E29",
+      "from": "A15",
+      "to": "A25",
+      "typed_relation": "original source-native dependency retained, not a newly established extra causal layer"
+    },
+    {
+      "original_edge": "E30",
+      "from": "A25",
+      "to": "A26",
+      "typed_relation": "original source-native dependency retained, not a newly established extra causal layer"
+    },
+    {
+      "original_edge": "E31",
+      "from": "A27",
+      "to": "A24",
+      "typed_relation": "original source-native dependency retained, not a newly established extra causal layer"
+    },
+    {
+      "original_edge": "E32",
+      "from": "A08",
+      "to": "A16",
+      "typed_relation": "original source-native dependency retained, not a newly established extra causal layer"
+    },
+    {
+      "original_edge": "E33",
+      "from": "A09",
+      "to": "A19",
+      "typed_relation": "original source-native dependency retained, not a newly established extra causal layer"
+    },
+    {
+      "original_edge": "E34",
+      "from": "A10",
+      "to": "A15",
+      "typed_relation": "original source-native dependency retained, not a newly established extra causal layer"
+    },
+    {
+      "original_edge": "E35",
+      "from": "A11",
+      "to": "A24",
+      "typed_relation": "original source-native dependency retained, not a newly established extra causal layer"
+    }
+  ],
+  "source_supported_C_delta_roles": [
+    {
+      "delta_id": "C16_D01",
+      "role": "O",
+      "scope": "exact original Figure2 panel cross-reference ambiguity in the publication; use actual printed plot/legend; no new model state"
+    }
+  ],
+  "System_World_Experiment": {
+    "System": "original 4050 model CA3 rate units r(t), source-defined recurrent weights w, input transformation and memory retrieval; w constructed once under externally specified templates",
+    "World": "not generated by this model: physical rat position/environment square-circle contextual states and real prior published empirical recordings",
+    "Experiment": "modeler-provided MEC/LEC stimulus fields, two stored context vectors overlap settings, J gain, reset/random probes, curve similarity measures and prior-data comparison"
+  },
+  "no_new_coordinator_no_new_memory_operator": true,
+  "no_MAIN_model_mapped": true,
+  "no_global_H_classification": true
+}

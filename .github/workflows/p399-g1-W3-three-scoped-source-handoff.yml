@@ -1,0 +1,29 @@
+name: P399 G1 W3 exact three scoped science handoff gate
+on:
+  push:
+    branches:
+      - paper2/p399-g1-w3-mem-prd-family-20261004
+    paths:
+      - .github/workflows/p399-g1-W3-three-scoped-source-handoff.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  W3_frozen_source_science_handoff_not_global_G1_GO:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Test exact 18 Git science introductions, isolated paths, three verified post-E source receipts, no global family claim
+        run: python research/paper2/p399/g1/parallel/W3/W3_three_scoped_science_handoff_independent_history_gate.py
+      - name: Retain handoff audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: W3-three-scoped-handoff-${{ github.run_id }}
+          path: W3_handoff_receipt/receipt.json
+          if-no-files-found: error
+
+# Rerun: normalise historical P16 result-key receipt without altering frozen scientific bytes

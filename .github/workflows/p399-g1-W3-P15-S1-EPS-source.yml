@@ -1,0 +1,27 @@
+name: P399 G1 W3 P15 publisher S1 figure EPS source
+on:
+  push:
+    branches:
+      - paper2/p399-g1-w3-mem-prd-family-20261004
+    paths:
+      - .github/workflows/p399-g1-W3-P15-S1-EPS-source.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact_S1_EPS_source_only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ghostscript
+      - run: python research/paper2/p399/g1/parallel/W3/P15_S1_original_EPS_input_pattern_source_probe.py
+      - name: Retain original image SHA and raster proof
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: W3-P15-S1-EPS-original-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/W3_P15_original_S1_EPS_source_receipt.json
+            ${{ runner.temp }}/w3_p15_s1_original.png
+          if-no-files-found: error
