@@ -1,0 +1,915 @@
+{
+  "schema": "PF04_PASS_A_SOURCE_NATIVE_v1",
+  "freeze_contract": "SOURCE_FIRST_NO_GRAMMAR_ASSIGNMENTS",
+  "frozen_source": {
+    "url": "https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1003364&type=printable",
+    "sha256": "bc84d4827df202cf5051cf10aa64cc09673b718af2acd31441a3712bcd376df9",
+    "page_count": 14
+  },
+  "pre_a": "PRE_A_v3_author_scoped_normalization.json",
+  "sections": [
+    {
+      "id": "S01",
+      "pdf_printed_page": 1,
+      "title": "Abstract/Introduction",
+      "coverage": "Scope, ancestors, two competing architectures, open-loop and control return",
+      "inspected": true
+    },
+    {
+      "id": "S02",
+      "pdf_printed_page": 3,
+      "title": "Task/first-stage results Fig2-4",
+      "coverage": "15 participants, 270 trials, fixed 70/30 transitions and varying rewards, similar first-stage family fits",
+      "inspected": true
+    },
+    {
+      "id": "S03",
+      "pdf_printed_page": 5,
+      "title": "Second-stage results Fig5-6",
+      "coverage": "Changed machine interactions distinguish, same-machine subgroup and negative main effects",
+      "inspected": true
+    },
+    {
+      "id": "S04",
+      "pdf_printed_page": 6,
+      "title": "Reaction time Fig7-8",
+      "coverage": "Reward-conditional RT, null result after no reward, conditional tree",
+      "inspected": true
+    },
+    {
+      "id": "S05",
+      "pdf_printed_page": 7,
+      "title": "Bayesian comparison Table1-2",
+      "coverage": "Subject-fit, hierarchy and sequence influence exceedance results, full reduced inventories",
+      "inspected": true
+    },
+    {
+      "id": "S06",
+      "pdf_printed_page": 8,
+      "title": "Discussion and hierarchy variants",
+      "coverage": "Original scope, feedback-responsive HRL negative comparison, MF-sequence valuation not settled",
+      "inspected": true
+    },
+    {
+      "id": "S07",
+      "pdf_printed_page": 10,
+      "title": "Discussion deviations/alternative/confound",
+      "coverage": "Two negative deviations, potential previous-outcome biases, task-generalization limits",
+      "inspected": true
+    },
+    {
+      "id": "S08",
+      "pdf_printed_page": 10,
+      "title": "Discussion inhibition/SR/option discovery",
+      "coverage": "Expected stimulus triggers pending option, possible inhibition, combinatorial scaling limit",
+      "inspected": true
+    },
+    {
+      "id": "S09",
+      "pdf_printed_page": 11,
+      "title": "Methods subjects/task and statistical tests",
+      "coverage": "R mixed effects, per-subject model simulation 3000 trials, five task states",
+      "inspected": true
+    },
+    {
+      "id": "S10",
+      "pdf_printed_page": 12,
+      "title": "Methods flat eq2-9",
+      "coverage": "MB transition/V, MF TD eligibility, value mixing, per-stage softmax",
+      "inspected": true
+    },
+    {
+      "id": "S11",
+      "pdf_printed_page": 13,
+      "title": "Methods hierarchical eq10-15",
+      "coverage": "Option/single decision, transition learning, latent option probability and second-stage dependence, RT",
+      "inspected": true
+    },
+    {
+      "id": "S12",
+      "pdf_printed_page": 13,
+      "title": "Methods Bayesian model selection",
+      "coverage": "Priors, MAP, Laplace Hessian, spm_compare_families, spm_BMS",
+      "inspected": true
+    },
+    {
+      "id": "S13",
+      "pdf_printed_page": 13,
+      "title": "References",
+      "coverage": "2012 same-author, 2005 Daw comparator, 2011 Daw two-stage antecedents",
+      "inspected": true
+    }
+  ],
+  "nodes": [
+    {
+      "id": "A01",
+      "source_native_type": "architecture",
+      "statement": "Flat: MB and MF evaluate individual actions at each decision point; source-defined arbitration or combined action values, independent stage decisions",
+      "pdf_printed_page": 1,
+      "source_location": "Intro Fig1B",
+      "status": "SOURCE_GROUNDED_OR_SCOPED_NOTATION_AS_STATED"
+    },
+    {
+      "id": "A02",
+      "source_native_type": "architecture",
+      "statement": "Hierarchy: existing goal-directed selector evaluates singles and whole action sequences; executed sequences may be open-loop; control returns when done",
+      "pdf_printed_page": 2,
+      "source_location": "Intro Fig1A",
+      "status": "SOURCE_GROUNDED_OR_SCOPED_NOTATION_AS_STATED"
+    },
+    {
+      "id": "A03",
+      "source_native_type": "task",
+      "statement": "Human fixed-key modified two-stage task: 15 people, 270 trials, common transitions .7, rare .3, two second-stage states and terminal reward states",
+      "pdf_printed_page": 3,
+      "source_location": "Fig2; Methods p11",
+      "status": "SOURCE_GROUNDED_OR_SCOPED_NOTATION_AS_STATED"
+    },
+    {
+      "id": "A04",
+      "source_native_type": "environment",
+      "statement": "Second-stage reward probabilities .2 or .7 are re-randomized at each trial at rate 1/7; actual feedback follows second stage",
+      "pdf_printed_page": 3,
+      "source_location": "Fig2; Methods p11",
+      "status": "SOURCE_GROUNDED_OR_SCOPED_NOTATION_AS_STATED"
+    },
+    {
+      "id": "A05",
+      "source_native_type": "flat_MB",
+      "statement": "Stage-one transitions fixed, stage-two terminal transitions updated by eta (eq2); prospective VG uses learned transition function and terminal rewards (eq3-4)",
+      "pdf_printed_page": 12,
+      "source_location": "eq2-4",
+      "status": "SOURCE_GROUNDED_OR_SCOPED_NOTATION_AS_STATED"
+    },
+    {
+      "id": "A06",
+      "source_native_type": "flat_MF",
+      "statement": "Stage-specific MF TD update QH with alpha1, alpha2=eta (eq5-6), delayed first-stage eligibility lambda after second-stage outcome (eq7)",
+      "pdf_printed_page": 12,
+      "source_location": "eq5-7",
+      "status": "SOURCE_GROUNDED_OR_SCOPED_NOTATION_AS_STATED"
+    },
+    {
+      "id": "A07",
+      "source_native_type": "flat_combine",
+      "statement": "Source-defined flat combination V=w*VG+(1-w)*QH (eq8); per-state softmax beta1/beta2 and perseveration k (eq9)",
+      "pdf_printed_page": 12,
+      "source_location": "eq8-9",
+      "status": "SOURCE_GROUNDED_OR_SCOPED_NOTATION_AS_STATED"
+    },
+    {
+      "id": "A08",
+      "source_native_type": "hierarchy_options",
+      "statement": "Initial S0 choice among two single actions and four two-action sequences A1A1,A1A2,A2A1,A2A2; second-stage actions A1/A2",
+      "pdf_printed_page": 13,
+      "source_location": "Methods hierarchical intro",
+      "status": "SOURCE_GROUNDED_OR_SCOPED_NOTATION_AS_STATED"
+    },
+    {
+      "id": "A09",
+      "source_native_type": "hierarchy_learning",
+      "statement": "At terminal, separately update sequence and its component/single transition representations with eta2 and eta1 via original eq2",
+      "pdf_printed_page": 13,
+      "source_location": "hierarchy paragraph before eq10",
+      "status": "SOURCE_GROUNDED_OR_SCOPED_NOTATION_AS_STATED"
+    },
+    {
+      "id": "A10",
+      "source_native_type": "hierarchy_value",
+      "statement": "Existing goal-directed system values all single and compound options using learned transition functions by eq3-4",
+      "pdf_printed_page": 13,
+      "source_location": "hierarchy eq3 cross-reference",
+      "status": "SOURCE_GROUNDED_OR_SCOPED_NOTATION_AS_STATED"
+    },
+    {
+      "id": "A11",
+      "source_native_type": "hierarchy_policy",
+      "statement": "Initial option probability uses eq10 with omega(single)=w, omega(sequence)=1-w and kappa_single=k1, kappa_sequence=k2; research normalized denominator omega(a') only, original author code unknown",
+      "pdf_printed_page": 13,
+      "source_location": "eq10, PRE_A_v3",
+      "status": "SOURCE_GROUNDED_OR_SCOPED_NOTATION_AS_STATED"
+    },
+    {
+      "id": "A12",
+      "source_native_type": "latent_initiation",
+      "statement": "An observed first A1 may arise from single A1 or sequences A1A1/A1A2, conditioned by first-stage option probabilities (eq11-12)",
+      "pdf_printed_page": 13,
+      "source_location": "eq11-12",
+      "status": "SOURCE_GROUNDED_OR_SCOPED_NOTATION_AS_STATED"
+    },
+    {
+      "id": "A13",
+      "source_native_type": "execution",
+      "statement": "After hierarchical option starts its second action is preset and can be triggered by expected stimulus despite intervening environment transition; fast GD stop can still inhibit",
+      "pdf_printed_page": 2,
+      "source_location": "Introduction and Discussion inhibition p10",
+      "status": "SOURCE_GROUNDED_OR_SCOPED_NOTATION_AS_STATED"
+    },
+    {
+      "id": "A14",
+      "source_native_type": "second_stage",
+      "statement": "Second-stage probability is conditioned by first-stage latent selected option; mixture of sequenced preset second action versus fresh GD stage-two action, as source eq11-13 and prose",
+      "pdf_printed_page": 13,
+      "source_location": "eq11-13",
+      "status": "SOURCE_GROUNDED_OR_SCOPED_NOTATION_AS_STATED"
+    },
+    {
+      "id": "A15",
+      "source_native_type": "completion",
+      "statement": "Natural completion or successful override transfers control back to the already modeled goal-directed selector, not a new general coordinator",
+      "pdf_printed_page": 2,
+      "source_location": "Fig1A and inhibition discussion",
+      "status": "SOURCE_GROUNDED_OR_SCOPED_NOTATION_AS_STATED"
+    },
+    {
+      "id": "A16",
+      "source_native_type": "RT",
+      "statement": "Model RT inverse relation to inferred matching first-stage action-sequence initiation probability (eq14), an explanatory/model assumption",
+      "pdf_printed_page": 13,
+      "source_location": "eq14 Fig7",
+      "status": "SOURCE_GROUNDED_OR_SCOPED_NOTATION_AS_STATED"
+    },
+    {
+      "id": "A17",
+      "source_native_type": "sequence_disabled",
+      "statement": "Source negative family eq15 removes first-stage sequence effect on stage-two choices while keeping hierarchical model nested set",
+      "pdf_printed_page": 13,
+      "source_location": "eq15",
+      "status": "SOURCE_GROUNDED_OR_SCOPED_NOTATION_AS_STATED"
+    },
+    {
+      "id": "A18",
+      "source_native_type": "variants",
+      "statement": "Table1 lists eight compared hierarchical and eight flat models (full + seven reductions per family); Methods' eight simpler wording is discrepant",
+      "pdf_printed_page": 9,
+      "source_location": "Table1, Methods p12-13",
+      "status": "SOURCE_GROUNDED_OR_SCOPED_NOTATION_AS_STATED"
+    },
+    {
+      "id": "A19",
+      "source_native_type": "fit_procedure",
+      "statement": "15 individual subject model fits, Laplace approximation, MAP, Hessian, priors Beta(1.1,1.1), Gamma(1.2,5), Normal(0,1) and SPM family BMS",
+      "pdf_printed_page": 13,
+      "source_location": "Methods model selection",
+      "status": "SOURCE_GROUNDED_OR_SCOPED_NOTATION_AS_STATED"
+    },
+    {
+      "id": "A20",
+      "source_native_type": "first_result",
+      "statement": "First-stage stay previous-reward coefficient .61 SE .09 and reward-transition interaction .41 SE .11; both families qualitatively match first stage",
+      "pdf_printed_page": 4,
+      "source_location": "Fig3-4",
+      "status": "SOURCE_GROUNDED_OR_SCOPED_NOTATION_AS_STATED"
+    },
+    {
+      "id": "A21",
+      "source_native_type": "second_result",
+      "statement": "Changed second-stage state: reward×same-first-action coefficient 1.02 SE .38 p<.008; main reward and action effects nonsignificant; flat simulation misses direction vs hierarchy",
+      "pdf_printed_page": 5,
+      "source_location": "Fig5",
+      "status": "SOURCE_GROUNDED_OR_SCOPED_NOTATION_AS_STATED"
+    },
+    {
+      "id": "A22",
+      "source_native_type": "conditional_result",
+      "statement": "When stage one repeats, same vs different second-stage state interacts with previous reward; if stage one switches, previous reward main effect absent",
+      "pdf_printed_page": 5,
+      "source_location": "Fig6",
+      "status": "SOURCE_GROUNDED_OR_SCOPED_NOTATION_AS_STATED"
+    },
+    {
+      "id": "A23",
+      "source_native_type": "RT_result",
+      "statement": "Rewarded/first-action-repeat/different-machine completed sequence associated with faster RT (coefficient -1.66 SE .45); no reward condition nonsignificant; tree requires reward+same first+low RT",
+      "pdf_printed_page": 6,
+      "source_location": "Fig7-8",
+      "status": "SOURCE_GROUNDED_OR_SCOPED_NOTATION_AS_STATED"
+    },
+    {
+      "id": "A24",
+      "source_native_type": "family_result",
+      "statement": "Reported hierarchical versus flat family exceedance .99; sequence-dependent versus sequence-disabled hierarchical family exceedance .99; family-relative model-fit evidence only",
+      "pdf_printed_page": 7,
+      "source_location": "Table1 and family results",
+      "status": "SOURCE_GROUNDED_OR_SCOPED_NOTATION_AS_STATED"
+    },
+    {
+      "id": "A25",
+      "source_native_type": "negative_cases",
+      "statement": "Both families fail two observed contrasts: below-.5 second repeat after reward+first switch, and unequal first-stage common-rare gaps after rewarded versus unrewarded history; no ad hoc fit repairs",
+      "pdf_printed_page": 10,
+      "source_location": "Discussion deviations",
+      "status": "SOURCE_GROUNDED_OR_SCOPED_NOTATION_AS_STATED"
+    },
+    {
+      "id": "A26",
+      "source_native_type": "scope_limit",
+      "statement": "Findings do NOT universally exclude model-free accounts, MF option-level valuations, or parallel flat+hierarchical models; earlier symbol-moving task transfer conditional",
+      "pdf_printed_page": 9,
+      "source_location": "Discussion hierarchical task",
+      "status": "SOURCE_GROUNDED_OR_SCOPED_NOTATION_AS_STATED"
+    },
+    {
+      "id": "A27",
+      "source_native_type": "confound",
+      "statement": "Strong persistent value bias can create reward×transition first-stage interaction without goal-directed control; rapid outcome resets mitigate this task-specific confound",
+      "pdf_printed_page": 10,
+      "source_location": "Discussion deviations; Methods p11",
+      "status": "SOURCE_GROUNDED_OR_SCOPED_NOTATION_AS_STATED"
+    },
+    {
+      "id": "A28",
+      "source_native_type": "formation_limit",
+      "statement": "Short task enumerates four sequences; large-action option discovery combinatorial and not evaluated here; earlier 2012 theory is inheritance",
+      "pdf_printed_page": 11,
+      "source_location": "Discussion option discovery",
+      "status": "SOURCE_GROUNDED_OR_SCOPED_NOTATION_AS_STATED"
+    },
+    {
+      "id": "A29",
+      "source_native_type": "timeline",
+      "statement": "GD source-selected option/first action -> World transition -> expected trigger and preset second action OR fresh stage-2 action/stop -> reward -> terminal learning -> control return/next trial",
+      "pdf_printed_page": 2,
+      "source_location": "Introduction/Methods p11-13",
+      "status": "SOURCE_GROUNDED_OR_SCOPED_NOTATION_AS_STATED"
+    },
+    {
+      "id": "A30",
+      "source_native_type": "notation_limit",
+      "statement": "Printed eq10 denominator omega(a) fails normalization generally; author-authorized one-index analytical correction, not authenticated original data-fit implementation; eq13 uses condensed source shorthand",
+      "pdf_printed_page": 13,
+      "source_location": "eq10-13",
+      "status": "SOURCE_GROUNDED_OR_SCOPED_NOTATION_AS_STATED"
+    }
+  ],
+  "edges": [
+    {
+      "id": "AE01",
+      "from": "A03",
+      "to": "A05",
+      "type": "SOURCE_DEPENDENCE_OR_EXPLANATORY_QUALIFIER",
+      "support": [
+        "Fig2; Methods p11",
+        "eq2-4"
+      ]
+    },
+    {
+      "id": "AE02",
+      "from": "A04",
+      "to": "A05",
+      "type": "SOURCE_DEPENDENCE_OR_EXPLANATORY_QUALIFIER",
+      "support": [
+        "Fig2; Methods p11",
+        "eq2-4"
+      ]
+    },
+    {
+      "id": "AE03",
+      "from": "A04",
+      "to": "A06",
+      "type": "SOURCE_DEPENDENCE_OR_EXPLANATORY_QUALIFIER",
+      "support": [
+        "Fig2; Methods p11",
+        "eq5-7"
+      ]
+    },
+    {
+      "id": "AE04",
+      "from": "A05",
+      "to": "A07",
+      "type": "SOURCE_DEPENDENCE_OR_EXPLANATORY_QUALIFIER",
+      "support": [
+        "eq2-4",
+        "eq8-9"
+      ]
+    },
+    {
+      "id": "AE05",
+      "from": "A06",
+      "to": "A07",
+      "type": "SOURCE_DEPENDENCE_OR_EXPLANATORY_QUALIFIER",
+      "support": [
+        "eq5-7",
+        "eq8-9"
+      ]
+    },
+    {
+      "id": "AE06",
+      "from": "A07",
+      "to": "A01",
+      "type": "SOURCE_DEPENDENCE_OR_EXPLANATORY_QUALIFIER",
+      "support": [
+        "eq8-9",
+        "Intro Fig1B"
+      ]
+    },
+    {
+      "id": "AE07",
+      "from": "A08",
+      "to": "A09",
+      "type": "SOURCE_DEPENDENCE_OR_EXPLANATORY_QUALIFIER",
+      "support": [
+        "Methods hierarchical intro",
+        "hierarchy paragraph before eq10"
+      ]
+    },
+    {
+      "id": "AE08",
+      "from": "A09",
+      "to": "A10",
+      "type": "SOURCE_DEPENDENCE_OR_EXPLANATORY_QUALIFIER",
+      "support": [
+        "hierarchy paragraph before eq10",
+        "hierarchy eq3 cross-reference"
+      ]
+    },
+    {
+      "id": "AE09",
+      "from": "A10",
+      "to": "A11",
+      "type": "SOURCE_DEPENDENCE_OR_EXPLANATORY_QUALIFIER",
+      "support": [
+        "hierarchy eq3 cross-reference",
+        "eq10, PRE_A_v3"
+      ]
+    },
+    {
+      "id": "AE10",
+      "from": "A11",
+      "to": "A12",
+      "type": "SOURCE_DEPENDENCE_OR_EXPLANATORY_QUALIFIER",
+      "support": [
+        "eq10, PRE_A_v3",
+        "eq11-12"
+      ]
+    },
+    {
+      "id": "AE11",
+      "from": "A12",
+      "to": "A14",
+      "type": "SOURCE_DEPENDENCE_OR_EXPLANATORY_QUALIFIER",
+      "support": [
+        "eq11-12",
+        "eq11-13"
+      ]
+    },
+    {
+      "id": "AE12",
+      "from": "A13",
+      "to": "A14",
+      "type": "SOURCE_DEPENDENCE_OR_EXPLANATORY_QUALIFIER",
+      "support": [
+        "Introduction and Discussion inhibition p10",
+        "eq11-13"
+      ]
+    },
+    {
+      "id": "AE13",
+      "from": "A13",
+      "to": "A15",
+      "type": "SOURCE_DEPENDENCE_OR_EXPLANATORY_QUALIFIER",
+      "support": [
+        "Introduction and Discussion inhibition p10",
+        "Fig1A and inhibition discussion"
+      ]
+    },
+    {
+      "id": "AE14",
+      "from": "A12",
+      "to": "A16",
+      "type": "SOURCE_DEPENDENCE_OR_EXPLANATORY_QUALIFIER",
+      "support": [
+        "eq11-12",
+        "eq14 Fig7"
+      ]
+    },
+    {
+      "id": "AE15",
+      "from": "A03",
+      "to": "A13",
+      "type": "SOURCE_DEPENDENCE_OR_EXPLANATORY_QUALIFIER",
+      "support": [
+        "Fig2; Methods p11",
+        "Introduction and Discussion inhibition p10"
+      ]
+    },
+    {
+      "id": "AE16",
+      "from": "A04",
+      "to": "A09",
+      "type": "SOURCE_DEPENDENCE_OR_EXPLANATORY_QUALIFIER",
+      "support": [
+        "Fig2; Methods p11",
+        "hierarchy paragraph before eq10"
+      ]
+    },
+    {
+      "id": "AE17",
+      "from": "A17",
+      "to": "A14",
+      "type": "SOURCE_DEPENDENCE_OR_EXPLANATORY_QUALIFIER",
+      "support": [
+        "eq15",
+        "eq11-13"
+      ]
+    },
+    {
+      "id": "AE18",
+      "from": "A18",
+      "to": "A19",
+      "type": "SOURCE_DEPENDENCE_OR_EXPLANATORY_QUALIFIER",
+      "support": [
+        "Table1, Methods p12-13",
+        "Methods model selection"
+      ]
+    },
+    {
+      "id": "AE19",
+      "from": "A20",
+      "to": "A24",
+      "type": "SOURCE_DEPENDENCE_OR_EXPLANATORY_QUALIFIER",
+      "support": [
+        "Fig3-4",
+        "Table1 and family results"
+      ]
+    },
+    {
+      "id": "AE20",
+      "from": "A21",
+      "to": "A24",
+      "type": "SOURCE_DEPENDENCE_OR_EXPLANATORY_QUALIFIER",
+      "support": [
+        "Fig5",
+        "Table1 and family results"
+      ]
+    },
+    {
+      "id": "AE21",
+      "from": "A22",
+      "to": "A24",
+      "type": "SOURCE_DEPENDENCE_OR_EXPLANATORY_QUALIFIER",
+      "support": [
+        "Fig6",
+        "Table1 and family results"
+      ]
+    },
+    {
+      "id": "AE22",
+      "from": "A23",
+      "to": "A16",
+      "type": "SOURCE_DEPENDENCE_OR_EXPLANATORY_QUALIFIER",
+      "support": [
+        "Fig7-8",
+        "eq14 Fig7"
+      ]
+    },
+    {
+      "id": "AE23",
+      "from": "A25",
+      "to": "A24",
+      "type": "SOURCE_DEPENDENCE_OR_EXPLANATORY_QUALIFIER",
+      "support": [
+        "Discussion deviations",
+        "Table1 and family results"
+      ]
+    },
+    {
+      "id": "AE24",
+      "from": "A26",
+      "to": "A24",
+      "type": "SOURCE_DEPENDENCE_OR_EXPLANATORY_QUALIFIER",
+      "support": [
+        "Discussion hierarchical task",
+        "Table1 and family results"
+      ]
+    },
+    {
+      "id": "AE25",
+      "from": "A27",
+      "to": "A20",
+      "type": "SOURCE_DEPENDENCE_OR_EXPLANATORY_QUALIFIER",
+      "support": [
+        "Discussion deviations; Methods p11",
+        "Fig3-4"
+      ]
+    },
+    {
+      "id": "AE26",
+      "from": "A28",
+      "to": "A08",
+      "type": "SOURCE_DEPENDENCE_OR_EXPLANATORY_QUALIFIER",
+      "support": [
+        "Discussion option discovery",
+        "Methods hierarchical intro"
+      ]
+    },
+    {
+      "id": "AE27",
+      "from": "A29",
+      "to": "A13",
+      "type": "SOURCE_DEPENDENCE_OR_EXPLANATORY_QUALIFIER",
+      "support": [
+        "Introduction/Methods p11-13",
+        "Introduction and Discussion inhibition p10"
+      ]
+    },
+    {
+      "id": "AE28",
+      "from": "A29",
+      "to": "A09",
+      "type": "SOURCE_DEPENDENCE_OR_EXPLANATORY_QUALIFIER",
+      "support": [
+        "Introduction/Methods p11-13",
+        "hierarchy paragraph before eq10"
+      ]
+    },
+    {
+      "id": "AE29",
+      "from": "A30",
+      "to": "A11",
+      "type": "SOURCE_DEPENDENCE_OR_EXPLANATORY_QUALIFIER",
+      "support": [
+        "eq10-13",
+        "eq10, PRE_A_v3"
+      ]
+    },
+    {
+      "id": "AE30",
+      "from": "A11",
+      "to": "A19",
+      "type": "SOURCE_DEPENDENCE_OR_EXPLANATORY_QUALIFIER",
+      "support": [
+        "eq10, PRE_A_v3",
+        "Methods model selection"
+      ]
+    }
+  ],
+  "compared_variants": {
+    "hierarchy": [
+      {
+        "id": "H1",
+        "free": [
+          "beta",
+          "eta1",
+          "k1"
+        ],
+        "original_table1_row": 1
+      },
+      {
+        "id": "H2",
+        "free": [
+          "beta",
+          "eta1",
+          "k1",
+          "w"
+        ],
+        "original_table1_row": 2
+      },
+      {
+        "id": "H3",
+        "free": [
+          "beta",
+          "eta1",
+          "k1",
+          "k2"
+        ],
+        "original_table1_row": 3
+      },
+      {
+        "id": "H4",
+        "free": [
+          "beta",
+          "eta1",
+          "k1",
+          "eta2"
+        ],
+        "original_table1_row": 4
+      },
+      {
+        "id": "H5",
+        "free": [
+          "beta",
+          "eta1",
+          "k1",
+          "w",
+          "k2"
+        ],
+        "original_table1_row": 5
+      },
+      {
+        "id": "H6",
+        "free": [
+          "beta",
+          "eta1",
+          "k1",
+          "w",
+          "eta2"
+        ],
+        "original_table1_row": 6
+      },
+      {
+        "id": "H7",
+        "free": [
+          "beta",
+          "eta1",
+          "k1",
+          "k2",
+          "eta2"
+        ],
+        "original_table1_row": 7
+      },
+      {
+        "id": "H8",
+        "free": [
+          "beta",
+          "eta1",
+          "k1",
+          "w",
+          "k2",
+          "eta2"
+        ],
+        "original_table1_row": 8
+      }
+    ],
+    "flat": [
+      {
+        "id": "F1",
+        "free": [
+          "beta1",
+          "eta",
+          "k",
+          "w"
+        ],
+        "original_table1_row": 9
+      },
+      {
+        "id": "F2",
+        "free": [
+          "beta1",
+          "eta",
+          "k",
+          "w",
+          "beta2"
+        ],
+        "original_table1_row": 10
+      },
+      {
+        "id": "F3",
+        "free": [
+          "beta1",
+          "eta",
+          "k",
+          "w",
+          "lambda"
+        ],
+        "original_table1_row": 11
+      },
+      {
+        "id": "F4",
+        "free": [
+          "beta1",
+          "eta",
+          "k",
+          "w",
+          "alpha1"
+        ],
+        "original_table1_row": 12
+      },
+      {
+        "id": "F5",
+        "free": [
+          "beta1",
+          "eta",
+          "k",
+          "w",
+          "beta2",
+          "lambda"
+        ],
+        "original_table1_row": 13
+      },
+      {
+        "id": "F6",
+        "free": [
+          "beta1",
+          "eta",
+          "k",
+          "w",
+          "beta2",
+          "alpha1"
+        ],
+        "original_table1_row": 14
+      },
+      {
+        "id": "F7",
+        "free": [
+          "beta1",
+          "eta",
+          "k",
+          "w",
+          "lambda",
+          "alpha1"
+        ],
+        "original_table1_row": 15
+      },
+      {
+        "id": "F8",
+        "free": [
+          "beta1",
+          "eta",
+          "k",
+          "w",
+          "beta2",
+          "lambda",
+          "alpha1"
+        ],
+        "original_table1_row": 16
+      }
+    ],
+    "total_displayed": 16,
+    "count_discrepancy": "Methods says eight simpler models, published Table1 shows eight rows INCLUDING full per family"
+  },
+  "equations": [
+    {
+      "number": 2,
+      "printed_page": 12,
+      "status": "ORIGINAL_RENDERED_READABLE"
+    },
+    {
+      "number": 3,
+      "printed_page": 12,
+      "status": "ORIGINAL_RENDERED_READABLE"
+    },
+    {
+      "number": 4,
+      "printed_page": 12,
+      "status": "ORIGINAL_RENDERED_READABLE"
+    },
+    {
+      "number": 5,
+      "printed_page": 12,
+      "status": "ORIGINAL_RENDERED_READABLE"
+    },
+    {
+      "number": 6,
+      "printed_page": 12,
+      "status": "ORIGINAL_RENDERED_READABLE"
+    },
+    {
+      "number": 7,
+      "printed_page": 12,
+      "status": "ORIGINAL_RENDERED_READABLE"
+    },
+    {
+      "number": 8,
+      "printed_page": 12,
+      "status": "ORIGINAL_RENDERED_READABLE"
+    },
+    {
+      "number": 9,
+      "printed_page": 12,
+      "status": "ORIGINAL_RENDERED_READABLE"
+    },
+    {
+      "number": 10,
+      "printed_page": 13,
+      "status": "AS_PRINTED_PLUS_ONE_EXPLICIT_AUTHOR_APPROVED_INDEX_FIX"
+    },
+    {
+      "number": 11,
+      "printed_page": 13,
+      "status": "ORIGINAL_RENDERED_READABLE"
+    },
+    {
+      "number": 12,
+      "printed_page": 13,
+      "status": "ORIGINAL_RENDERED_READABLE"
+    },
+    {
+      "number": 13,
+      "printed_page": 13,
+      "status": "PROSE_AND_EQ11_12_CONSTRAIN_SHORTHAND"
+    },
+    {
+      "number": 14,
+      "printed_page": 13,
+      "status": "ORIGINAL_RENDERED_READABLE"
+    },
+    {
+      "number": 15,
+      "printed_page": 13,
+      "status": "ORIGINAL_RENDERED_READABLE"
+    }
+  ],
+  "source_constraints": [
+    "Open-loop relative to intermediate environmental outcome is NOT absence of exogenous slot-machine trigger or possible GD inhibition",
+    "The flat original source HAS an explicit value-combination arbitration mechanism; hierarchy DOES NOT require importing the flat arbiter",
+    "Terminal-feedback updates are distinct from continuous within-sequence action control",
+    "Two first-stage models can look alike; second-stage changed-machine choices discriminate within compared source models",
+    "Reported model-family .99 exceedance probabilities are model/prior-comparison conditional; original fit code not verified after research-only eq10 normalization",
+    "No action-sequence discovery for arbitrarily large action spaces; only enumerated four two-action sequences",
+    "No universal falsification of MF systems or parallel MF alternative",
+    "Original two negative cases and null RT/reward contrasts preserved",
+    "Eq13 original shorthand bounded by eq11/12/prose, no exact-original-code replication asserted"
+  ],
+  "chronology": "A must be committed before B may receive full A and exact original PDF; A immutable thereafter"
+}

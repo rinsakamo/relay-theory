@@ -1,0 +1,23 @@
+name: p399-pf04-final-scoped-formal-qualification-receipt
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "research/paper2/p399/pf04/**"
+      - "scripts/p399_pf04_formal_receipt_check.py"
+      - ".github/workflows/p399-pf04-formal-qualification.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  formal-scoped-qualification-record:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify immutable raw stages and excluded historic-original numeric uncertainties
+        run: python scripts/p399_pf04_formal_receipt_check.py

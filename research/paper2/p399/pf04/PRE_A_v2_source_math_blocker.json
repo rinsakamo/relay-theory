@@ -1,0 +1,95 @@
+{
+  "schema": "p399.pf04.pre_a.v2",
+  "reassessed_from": "research/paper2/p399/pf04/PRE_A.json (original committed 1739771acb2ccb682ea65cb2876ec7bda2b6b563)",
+  "revision_reason": "Decisive ORIGINAL PUBLISHED PDF notation defect discovered in continued pre-A original raster scrutiny BEFORE PASS A. Immutable initial provisional PASS receipt superseded; no scientific A or later stage has begun.",
+  "authority": "Issue #399 PDF-first and exact-decisive-mathematical-source stop rule; author-adopted v2.3.1",
+  "paper": "Dezfouli & Balleine (2013), PLOS Computational Biology 9(12):e1003364 DOI 10.1371/journal.pcbi.1003364",
+  "source": {
+    "url": "https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1003364&type=printable",
+    "medium": "original publisher PDF",
+    "version": "original publication 2013-12-05; no correction linked in inspected publisher/Crossref/PubMed",
+    "sha256": "bc84d4827df202cf5051cf10aa64cc09673b718af2acd31441a3712bcd376df9",
+    "size_bytes": 377245,
+    "pages": 14,
+    "matching_cloud_runs": [
+      37170144284,
+      37170230487
+    ],
+    "raster_evidence": "original PDF printed page 13 eq(10), original PDF printed page 12 eq(9), printed page 9 Table 1"
+  },
+  "gate": "UNDERDETERMINED",
+  "decisive_blocker": {
+    "id": "PF04-PREA-MATH-01",
+    "finding": "Original eq(10) hierarchy's first-stage softmax denominator sums over a-prime, but printed omega(a) depends on free numerator action a, whereas V^G(s,a-prime) and kappa(s,a-prime) depend on the summed action. Under mixed single-action and sequence choice and w different from 1/2 this printed expression does not normalize to one.",
+    "as_printed_form": "pi(a|s) = exp(beta*omega(a)*VG(s,a)+kappa(s,a)) / sum_{a_prime} exp(beta*omega(a)*VG(s,a_prime)+kappa(s,a_prime))",
+    "intended_candidate_not_authorized": "replace ONLY denominator omega(a) by omega(a_prime) as in ordinary weighted softmax",
+    "contradiction_test": {
+      "space": "S0: two single options, four sequence options; beta=1,kappa=0,w=0.25; value first single=1; all other values=0",
+      "sum_as_printed": 0.9254999009562278,
+      "sum_if_inferred_fix": 1,
+      "source_context": "eq(10) defines omega(single)=w and omega(sequence)=1-w; Table 2 shows fitted w not fixed at 0.5; eq(11-13) depend on first-stage choice probability"
+    },
+    "evidence_scope": "PDF raster makes original symbols legible: this is a source-defined mathematics/implementation ambiguity, not corrupted extraction or inability to retrieve PDF.",
+    "resolution": "No publisher correction or exact original fitting code establishing the intended denominator was verified in the accepted original source. The mathematically natural substitution cannot be asserted as an authenticated original implementation.",
+    "review_route": "Targeted resolution from author/publisher corrigendum or verifiable exact original implementation, then a prospective pre-A v3 restart on the SAME frozen original PDF; alternative editions require separate explicit source-admission authority."
+  },
+  "secondary_condition": {
+    "id": "PF04-PREA-VARIANTS-01",
+    "source": "PDF p12 and p13 prose versus Table1 p9",
+    "finding": "Prose says each family generated eight simpler models plus most-general form, while Table1 actually lists eight total rows per family (one full plus seven reduced if combinations of 3 independent equalities). Table1 supports the eight actually compared models, but the 'eight simpler' wording is inconsistent.",
+    "disposition": "Narrow paper variant inventory to eight displayed rows per family; retain source wording discrepancy until primary blocker resolved."
+  },
+  "lineage_ruling": {
+    "status": "PASS_WITH_DISCLOSED_ANCESTRY",
+    "exact_duplicate": "No PF04 exact DOI/title among #399 current candidates PF01-PF03, #398 MAIN40/PILOT20, both historical 60 source manifests",
+    "direct_ancestor": "Dezfouli & Balleine 2012 same hierarchical-action-sequence theoretical ancestry, not independent new invention; Daw/Niv/Dayan 2005 flat comparator in #398 PD01 and historic Paper2 CH10; Daw et al 2011 two-stage-task lineage; Sutton-Precup-Singh options/HRL",
+    "scope": "New published PF04 empirical contrast is distinct, but flat comparator cannot count as unseen linearly independent component."
+  },
+  "requirements": [
+    {
+      "id": "PREA01",
+      "status": "PASS",
+      "evidence": "exact publisher work/date, negative publisher/Crossref/PubMed registered-correction checks"
+    },
+    {
+      "id": "PREA02",
+      "status": "PASS",
+      "evidence": "two matching actually downloaded publisher PDF byte SHA/page/text checks and visual all-page original review"
+    },
+    {
+      "id": "PREA03",
+      "status": "PASS",
+      "evidence": "fallback not invoked since original PDF obtained"
+    },
+    {
+      "id": "PREA04",
+      "status": "PASS",
+      "evidence": "one published publisher PDF pinned; do not switch to HTML for A/B/C"
+    },
+    {
+      "id": "PREA05",
+      "status": "PASS",
+      "evidence": "all specified checked rosters, direct inheritance disclosed without claiming flat comparator novelty"
+    },
+    {
+      "id": "PREA06",
+      "status": "UNDERDETERMINED",
+      "evidence": "eq(10) printed omega(a) denominator vs omega(a_prime) expected for normalized model; correct original fitted implementation not established"
+    },
+    {
+      "id": "PREA07",
+      "status": "PASS",
+      "evidence": "this versioned append-only receipt retains old provisional version and exact blocker"
+    }
+  ],
+  "scientific_stages": {
+    "A": "NOT_STARTED",
+    "B": "NOT_STARTED",
+    "C": "NOT_STARTED",
+    "D": "NOT_STARTED",
+    "E": "NOT_STARTED"
+  },
+  "qualification": "PF04_NOT_QUALIFIED_PRE_A_DECISIVE_MATH_BLOCKER",
+  "qualified_pilots_increment": 0,
+  "main_authorized": false
+}

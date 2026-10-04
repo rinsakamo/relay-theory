@@ -1,0 +1,95 @@
+{
+  "schema": "p399.pf04.final_qualification.v3_post_E_exception_audit",
+  "audit_date": "2026-10-04",
+  "supersedes_for_current_pf04_verdict": "FINAL_QUALIFICATION_v2.json; underlying finalized v2 and prior stages immutable",
+  "previous_verdict": "SOURCE_SCOPED_STRUCTURE_AND_PROCEDURE_COMPLETED_BUT_FORMAL_PILOT_QUALIFICATION_PENDING_AUTHENTIC_NUMERIC_EXCEPTION_ADJUDICATION",
+  "new_verdict": "PF04_SOURCE_STRUCTURAL_REVIEW_READY_EQ13_ANALYTIC_RESOLVED_EX1_AUTHENTIC_NUMERIC_UNDERDETERMINED",
+  "original_source": {
+    "work": "Dezfouli & Balleine, PLOS Computational Biology 2013 DOI 10.1371/journal.pcbi.1003364",
+    "only_primary_pdf_sha256": "bc84d4827df202cf5051cf10aa64cc09673b718af2acd31441a3712bcd376df9",
+    "size_bytes": 377245,
+    "pages": 14,
+    "unchanged_editions": "publisher original as in PRE_A v3 and frozen A/B/C/D/E"
+  },
+  "author_followup_secondary": {
+    "work": "Dezfouli March 2015, University of Sydney PhD thesis Hierarchical models of goal-directed and automatic actions",
+    "url": "https://adezfouli.github.io/materials/thesis/dezofuli-thesis.pdf",
+    "sha256_cloud_actual": "e1635681b4126502991949d481d63640430e9cdfae3d603ca5b4ac11954cb72d",
+    "size_bytes": 10477672,
+    "pages": 204,
+    "cloud_run_id": 37172425887,
+    "published_original_editions_equivalence": "NOT_CLAIMED",
+    "role": "SECONDARY_AUTHOR_AUTHORED_CORROBORATION_ONLY_NOT_PRIMARY_SOURCE_OR_2013_FIT_CODE"
+  },
+  "material_exception_reassessment": [
+    {
+      "id": "EX2",
+      "status": "ANALYTIC_INTENT_SOURCE_CLOSED_HUMAN_CHAPTER_AND_LATER_RAT_CHAPTER_CORROBORATE",
+      "original_pdf": "p13 Eq11-13",
+      "external_pdf": "Thesis 2015, PDF p120 printed96 Eq4.13 same original human experiment; PDF p174 printed150 Eq5.13 later separate rat model",
+      "intended_singleton_coefficient": "P(a_prime | S0, a_prime) with a_prime the observed first-stage action; multiplied by pi(a|s), plus P(a_prime,a | S0,a_prime) source-existing sequence initiation probability",
+      "algebraic_validation": "sum_a Pstar(a|s)=1 for p_single+p_seq1+p_seq2=1, sum_a pi(a|s)=1",
+      "boundary": "This source-supported intent is NOT publisher original equation replacement and does NOT prove 2013 fitted implementation identity; 2015 rat-specific interruption parameter I NOT imported"
+    },
+    {
+      "id": "EX1",
+      "status": "UNDERDETERMINED_AUTHENTIC_2013_FIT_IMPLEMENTATION",
+      "original_pdf": "p13 Eq10",
+      "supplement": "2015 thesis same-human Chapter4 p119 Eq4.10 repeats original omega(a) denominator issue, NOT independent correction; author later rat Eq5.10 different model so NOT authenticated human Eq10 implementation",
+      "author_approved_research_normalization": "omega(a_prime) in denominator only via PRE_A v3",
+      "code_discovery": "Author's public JRLSim explicitly 2012 simulation, public rnn_beh explicitly 2019, inspected publisher full article has equations not authenticated raw 2013 fit-code",
+      "precisely_needed": "Authoritative original likelihood/optimization script, original-code provenance, or direct author/publisher implementation clarification; source-specific rather than routine human rereview"
+    }
+  ],
+  "frozen_prior_stages": [
+    "PRE_A_v3_author_scoped_normalization.json",
+    "PASS_A_original.json",
+    "PASS_B_reaudit.json",
+    "PASS_C_adjudication.json",
+    "PASS_D_grammar_v0.json",
+    "PASS_E_fidelity.json"
+  ],
+  "post_E_additions": [
+    {
+      "path": "EXCEPTIONS_EX1_EX2_SOURCE_RECHECK_v1.json",
+      "sha256": "7ab33a5ca8669b8b5c183024ac04144a613b3a278a0b1d5ec6ef8f1d34f15934",
+      "git_commit": "0d29cf7ea744b43c96bfa64c1f17a9bf610ef212"
+    },
+    {
+      "path": "EXCEPTIONS_RECHECK_REPORT_JA_v1.md",
+      "status": "committed append-only, CI hash to be produced"
+    }
+  ],
+  "executed_illustrative_and_provenance_tests": {
+    "run_id": 37172376187,
+    "prior_probe_tests_pass": 12,
+    "new_secondary_math_tests_pass": 8,
+    "total_passed": 20,
+    "source_code_identity_tests": "NOT_RUN_OR_NOT_AUTHENTICATED",
+    "actual_original_numerical_replication": "NOT_PERFORMED",
+    "source_receipt_run_id": 37172425887,
+    "source_receipt_run_status": "SUCCESS"
+  },
+  "science": {
+    "original_v0_grammar_unchanged": true,
+    "A0_flat": "SOURCE_LEVEL_FULL",
+    "A0_hierarchical": "SOURCE_LEVEL_FULL_WITH_RESEARCHER_NORMALIZATION",
+    "A1_extra": "NOT_SOURCE_REQUIRED_FOR_BOTH",
+    "A2_extra_stateful": "NOT_SOURCE_REQUIRED_FOR_BOTH",
+    "source_structural_items_full": 12,
+    "source_structural_items_total": 13,
+    "original_fit_numeric": "UNDERDETERMINED",
+    "frozen_E_not_retroactively_edited": true
+  },
+  "formal_decision": {
+    "source_scoped_structural_candidate": "READY_FOR_OWNER_REVIEW",
+    "full_unqualified_numeric_historical_equivalence": "UNDERDETERMINED_EX1",
+    "official_pilot_count_increment": 0,
+    "main_authorized": false,
+    "owner_question": "Clarify whether source-scoped structural qualification may be approved with exact 2013 fitting-code fidelity held as an explicit E-level uncertainty. If original authentic implementation is mandatory, remain blocked pending the targeted EX1 evidence. Do not retroactively relax a prespecified gate merely because structural results are favorable."
+  },
+  "link": {
+    "draft_pr": "https://github.com/rinsakamo/relay-theory/pull/415",
+    "owner_issue": "https://github.com/rinsakamo/relay-theory/issues/399"
+  }
+}

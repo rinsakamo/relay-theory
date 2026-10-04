@@ -1,0 +1,89 @@
+name: p399-pf04-source-fidelity-probes
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/p399-pf04-scientific-probes.yml"
+      - "scripts/p399_pf04_source_probes.py"
+      - "scripts/p399_pf04_exception_probes.py"
+      - "research/paper2/p399/pf04/**"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  illustrative-source-fidelity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Syntax and file receipt provenance
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/p399_pf04_source_probes.py scripts/p399_pf04_exception_probes.py
+          python - <<'PY'
+          import pathlib,hashlib,json,subprocess
+          d=pathlib.Path("research/paper2/p399/pf04")
+          chronological=["PRE_A_v3_author_scoped_normalization.json","PASS_A_original.json","PASS_B_reaudit.json","PASS_C_adjudication.json","PASS_D_grammar_v0.json","PASS_E_fidelity.json"]
+          commits=[]
+          for name in chronological:
+              p=d/name
+              assert p.is_file(),name
+              c=subprocess.check_output(["git","log","--format=%H","--diff-filter=A","--",str(p)],text=True).strip().splitlines()
+              assert len(c)==1,(name,c)
+              commits.append(c[0])
+              raw=p.read_bytes()
+              json.loads(raw)
+              print("PF04_RECEIPT",name,"sha256",hashlib.sha256(raw).hexdigest(),"git_create_commit",c[0])
+          for before,after in zip(commits,commits[1:]):
+              subprocess.check_call(["git","merge-base","--is-ancestor",before,after])
+          result=json.loads((d/"FINAL_QUALIFICATION_v2.json").read_text())
+          assert len(result["frozen_stage_receipts"])==len(chronological)
+          for name,record in zip(chronological,result["frozen_stage_receipts"]):
+              raw=(d/name).read_bytes()
+              assert record["path"]==name
+              assert hashlib.sha256(raw).hexdigest()==record["sha256"],name
+          assert result["official_qualified_pilot_increment"]==0
+          assert result["main_authorized"] is False
+          old=json.loads((d/"FINAL_QUALIFICATION.json").read_text())
+          assert old["verdict"] == "PF04_PRE_A_SOURCE_MATH_UNDERDETERMINED_NOT_QUALIFIED"
+          jp=d/"FINAL_REPORT_v2_JA.md"
+          assert jp.is_file()
+          print("PF04_FINAL_REPORT_SHA256",hashlib.sha256(jp.read_bytes()).hexdigest())
+          print("PF04_FINAL_SIX_RECEIPTS_MATCH frozen v2 plus historical v1 retained")
+          later=d/"EXCEPTIONS_EX1_EX2_SOURCE_RECHECK_v1.json"
+          er=json.loads(later.read_bytes())
+          assert er["authority"]["original_publisher_pdf_sha256"]==result["source"]["original_pdf_sha256"]
+          assert er["current_scientific_boundary"]["official_qualified_pilot_count_increment"]==0
+          assert er["EX1"]["state"].startswith("UNDERDETERMINED")
+          exc_commits=subprocess.check_output(["git","log","--format=%H","--diff-filter=A","--",str(later)],text=True).strip().splitlines()
+          assert len(exc_commits)==1
+          subprocess.check_call(["git","merge-base","--is-ancestor",commits[-1],exc_commits[0]])
+          print("PF04_POST_E_EXCEPTION_RECEIPT_SHA256",hashlib.sha256(later.read_bytes()).hexdigest(),"git_commit",exc_commits[0])
+          print("PF04_POST_E_EXCEPTION_CHRONOLOGY_PASS original_A_E_preserved")
+          latest=d/"FINAL_QUALIFICATION_v3_EXCEPTIONS.json"
+          lv=json.loads(latest.read_bytes())
+          assert lv["new_verdict"].startswith("PF04_SOURCE_STRUCTURAL_REVIEW_READY")
+          assert lv["post_E_additions"][0]["sha256"]==hashlib.sha256(later.read_bytes()).hexdigest()
+          assert lv["original_source"]["only_primary_pdf_sha256"]==result["source"]["original_pdf_sha256"]
+          assert lv["author_followup_secondary"]["sha256_cloud_actual"]=="e1635681b4126502991949d481d63640430e9cdfae3d603ca5b4ac11954cb72d"
+          assert lv["formal_decision"]["official_pilot_count_increment"]==0
+          assert lv["formal_decision"]["main_authorized"] is False
+          assert lv["science"]["frozen_E_not_retroactively_edited"] is True
+          latest_commits=subprocess.check_output(["git","log","--format=%H","--diff-filter=A","--",str(latest)],text=True).strip().splitlines()
+          assert len(latest_commits)==1
+          subprocess.check_call(["git","merge-base","--is-ancestor",exc_commits[0],latest_commits[0]])
+          print("PF04_FINAL_V3_SHA256",hashlib.sha256(latest.read_bytes()).hexdigest())
+          print("PF04_FINAL_V3_CHRONOLOGY_PASS all_previous_stages_unchanged")
+
+
+          print("PF04_CHRONOLOGY_PASS all six stage source files added in correct immutable order")
+          PY
+      - name: Run independently defined PF04 structural example probes
+        run: python scripts/p399_pf04_source_probes.py
+      - name: Run 2015 author-thesis secondary-corroboration EX2 algebra tests
+        run: python scripts/p399_pf04_exception_probes.py

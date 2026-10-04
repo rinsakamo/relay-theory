@@ -1,0 +1,65 @@
+name: p399-pf04-publisher-pdf-intake
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/p399-pf04-publisher-pdf-intake.yml"
+      - "research/paper2/p399/pf04/**"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  publisher-original-pre-a:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Retrieve exact PLOS original; parse and report metadata only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/pf04_private
+          url="https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1003364&type=printable"
+          curl --fail --location --silent --show-error --retry 2 --max-time 90 --user-agent "Mozilla/5.0 (research source verification)" "$url" -o /tmp/pf04_private/original.pdf
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq poppler-utils >/dev/null
+          file /tmp/pf04_private/original.pdf
+          pdfinfo /tmp/pf04_private/original.pdf
+          pdftotext -layout /tmp/pf04_private/original.pdf /tmp/pf04_private/original.txt
+          python3 - <<'PY'
+          import hashlib,json,pathlib,subprocess
+          p=pathlib.Path('/tmp/pf04_private/original.pdf')
+          b=p.read_bytes()
+          t=pathlib.Path('/tmp/pf04_private/original.txt').read_text(errors='replace')
+          info=subprocess.check_output(['pdfinfo',str(p)],text=True)
+          pages=next((int(line.split(':',1)[1].strip()) for line in info.splitlines() if line.startswith('Pages:')),None)
+          s={'source_url':'https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1003364&type=printable','doi':'10.1371/journal.pcbi.1003364','sha256':hashlib.sha256(b).hexdigest(),'size_bytes':len(b),'pages':pages,'pdf_magic_ok':b.startswith(b'%PDF'),'pdf_eof_ok':b'%%EOF' in b[-1024:],'extracted_characters':len(t),'original_title_found':'Actions, Action Sequences and Habits' in t,'flat_model_section_found':'Model-based, model-free RL hybrid' in t,'hierarchical_section_found':'Hierarchical model-based, sequence-based RL' in t,'critical_equation_labels_found':{str(n):('('+str(n)+')' in t) for n in range(2,16)},'figure8_found':'Figure 8' in t,'table1_found':'Table 1' in t,'table2_found':'Table 2' in t}
+          pathlib.Path('pf04-cloud-pdf-metadata.json').write_text(json.dumps(s,ensure_ascii=False,indent=2)+'\n')
+          print('PF04_SOURCE_INTAKE_RECEIPT_BEGIN')
+          print(json.dumps(s,ensure_ascii=False,sort_keys=True))
+          print('PF04_SOURCE_INTAKE_RECEIPT_END')
+          assert s['pdf_magic_ok'] and s['pdf_eof_ok'] and pages==14 and s['original_title_found'] and s['flat_model_section_found'] and s['hierarchical_section_found'] and s['size_bytes']>100000
+          PY
+      - name: Crossref and PubMed correction discovery (non-authoritative if unavailable)
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import urllib.request,json
+          endpoints={'crossref':'https://api.crossref.org/works/10.1371%2Fjournal.pcbi.1003364','pubmed':'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=24339762&rettype=xml'}
+          for name,url in endpoints.items():
+              try:
+                  req=urllib.request.Request(url,headers={'User-Agent':'RelayTheoryPF04/1.0 source-correction-audit (scholarly research)'})
+                  data=urllib.request.urlopen(req,timeout=20).read()
+                  if name=='crossref':
+                      msg=json.loads(data)['message']
+                      print('CROSSREF_CORRECTION_FIELDS',json.dumps({k:msg.get(k) for k in ['DOI','type','published','updated-by','update-to','relation','indexed'] if k in msg},ensure_ascii=False))
+                  else:
+                      print('PUBMED_CORRECTION_LINKED',data.count(b'ErratumFor'),data.count(b'ErratumIn'),data.count(b'CorrectedandRepublishedIn'))
+              except Exception as e:
+                  print(name.upper()+'_UNAVAILABLE',str(e))
+          PY
+      - name: Archive metadata only (no original source)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pf04-cloud-publisher-pdf-metadata
+          path: pf04-cloud-pdf-metadata.json
+          if-no-files-found: ignore

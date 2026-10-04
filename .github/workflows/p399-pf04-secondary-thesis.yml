@@ -1,0 +1,63 @@
+name: p399-pf04-secondary-author-thesis-evidence
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/p399-pf04-secondary-thesis.yml"
+      - "research/paper2/p399/pf04/EXCEPTIONS_EX1_EX2_SOURCE_RECHECK_v1.json"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  post-E-secondary-receipt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Source-identity and non-substitution precheck
+        run: |
+          python3 - <<'PY'
+          import json,pathlib
+          root=pathlib.Path('research/paper2/p399/pf04')
+          original=json.loads((root/'PRE_A_v3_author_scoped_normalization.json').read_text())
+          recheck=json.loads((root/'EXCEPTIONS_EX1_EX2_SOURCE_RECHECK_v1.json').read_text())
+          assert original['source']['sha256']==recheck['authority']['original_publisher_pdf_sha256']
+          assert '2015' in recheck['independent_followup_source']['work']
+          assert recheck['current_scientific_boundary']['official_qualified_pilot_count_increment']==0
+          print('PF04_ORIGINAL_SOURCE_UNCHANGED; 2015_THESIS_SECONDARY_ONLY')
+          PY
+      - name: Obtain author-hosted 2015 thesis privately, store metadata only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/pf04_author_thesis
+          url='https://adezfouli.github.io/materials/thesis/dezofuli-thesis.pdf'
+          curl --fail --location --silent --show-error --retry 2 --max-time 100 "$url" -o /tmp/pf04_author_thesis/thesis.pdf
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq poppler-utils >/dev/null
+          pdfinfo /tmp/pf04_author_thesis/thesis.pdf >/tmp/pf04_author_thesis/pdfinfo.txt
+          pdftotext -layout /tmp/pf04_author_thesis/thesis.pdf /tmp/pf04_author_thesis/extracted.txt
+          python3 - <<'PY'
+          import pathlib,json,hashlib
+          p=pathlib.Path('/tmp/pf04_author_thesis/thesis.pdf')
+          raw=p.read_bytes()
+          info=pathlib.Path('/tmp/pf04_author_thesis/pdfinfo.txt').read_text()
+          txt=pathlib.Path('/tmp/pf04_author_thesis/extracted.txt').read_text(errors='replace')
+          pages=next(int(l.split(':',1)[1]) for l in info.splitlines() if l.startswith('Pages:'))
+          assert raw.startswith(b'%PDF') and b'%%EOF' in raw[-1024:] and pages==204 and len(raw)>100000
+          assert 'Hierarchical decision-making in humans' in txt
+          assert 'Hierarchical decision-making in rats' in txt
+          receipt=dict(secondary_only=True,doi_original='10.1371/journal.pcbi.1003364',
+             url='https://adezfouli.github.io/materials/thesis/dezofuli-thesis.pdf',
+             title='Hierarchical models of goal-directed and automatic actions',author='Amir Dezfouli',
+             thesis_year=2015,raw_sha256=hashlib.sha256(raw).hexdigest(),
+             bytes=len(raw),pages=pages,has_human_chapter=True,has_rats_chapter=True,
+             originals_pdf_sha256='bc84d4827df202cf5051cf10aa64cc09673b718af2acd31441a3712bcd376df9',
+             exclusion='Never treat later thesis or its rat-model interruption parameter as the 2013 primary original or code equivalence.')
+          pathlib.Path('pf04_author_thesis_metadata.json').write_text(json.dumps(receipt,indent=2)+'\n')
+          print('PF04_SECONDARY_AUTHOR_THESIS_METADATA',json.dumps(receipt,sort_keys=True))
+          PY
+      - name: Archive metadata only
+        uses: actions/upload-artifact@v4
+        with:
+          name: pf04-secondary-author-thesis-metadata-only
+          path: pf04_author_thesis_metadata.json
