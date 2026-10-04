@@ -26,7 +26,7 @@ jobs:
           from docx import Document
           from bs4 import BeautifulSoup
           S=requests.Session()
-          S.headers.update({'User-Agent':'RelayTheory-P399-G1-W2-independent-original-source-audit/1.0 (scientific-source-verification)'})
+          S.headers.update({'User-Agent':'Mozilla/5.0 (RelayTheory G1 source provenance audit; research-use)'})
           doi='10.1371/journal.pcbi.1008971'
           root='https://journals.plos.org/ploscompbiol/article/file'
           targets={
@@ -39,11 +39,11 @@ jobs:
              try:
                 r=S.get(root,params={'id':ident,'type':kind},timeout=110)
                 r.raise_for_status()
-                b=r.content; h=hashlib.sha256(b).hexdigest()
+                b=r.content; h=hashlib.sha256(b).hexdigest(); print('SOURCE_RESPONSE',key,r.status_code,r.url.split('?')[0],r.headers.get('content-type'),'bytes',len(b),'prefix',repr(b[:32]),flush=True)
                 item={'url':r.url.split('?')[0]+'?id='+ident+'&type='+kind,'status':r.status_code,'bytes':len(b),'sha256':h,'media_type':r.headers.get('content-type')}
                 if key=='main':
                    assert b.startswith(b'%PDF'), 'original is not PDF'
-                   pdf=PdfReader(io.BytesIO(b));item['pages']=len(pdf.pages)
+                   pdf=PdfReader(io.BytesIO(b),strict=False);item['pages']=len(pdf.pages)
                    assert item['pages']==24,(key,'page mismatch',item['pages'])
                    assert h==expect,(key,'raw-sha mismatch',h,expect)
                    page_text=[(p.extract_text() or '') for p in pdf.pages]
