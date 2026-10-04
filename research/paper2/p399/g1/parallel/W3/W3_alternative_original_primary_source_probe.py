@@ -60,7 +60,7 @@ for key,ext,expected,pages,locations in sources:
     if raw[:5]!=b"%PDF-":raise ValueError("not_pdf_magic")
     source["pages"]=len(PdfReader(io.BytesIO(raw),strict=False).pages)
    if ext=="tif":
-    if raw[:4] not in [b"II*\\x00",b"MM\\x00*"]:raise ValueError("not_tiff_magic")
+    if raw[:4] not in [b"II*\x00",b"MM\x00*"]:raise ValueError("not_tiff_magic")
    source["validated_file_type"]=True
    source["exact_prior_original_sha_match"]=None if not expected else source["sha256"]==expected
    source["exact_prior_page_count_match"]=None if not pages else source.get("pages")==pages
