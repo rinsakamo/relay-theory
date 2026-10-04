@@ -1,0 +1,431 @@
+{
+  "schema": "relay-theory.p399.pf03.source_closed_c.v2.3.1",
+  "primary_source": {
+    "kind": "PUBLISHER_ORIGINAL_PDF",
+    "sha256": "62d744125034ce834692cdb210065d34e2bbd0f58c9eb3387ed2d75dfb7f77ae",
+    "edition": "PLOS 2024-02-08 original 30-page PDF only",
+    "external_supplements_admitted": false
+  },
+  "frozen_inputs": {
+    "pre_a_commit": "9298f5c6e9a528c8f44daf5530d40aa4b3c0df47",
+    "pre_a_sha256": "1c499d46dd545ed2508a8bebb73f0617e620b1846e475719948200eeca70f91e",
+    "A_commit": "dd5dce774780a9a6df854b14fb2943e324734ad0",
+    "A_sha256": "ef1ce05d8b05d6d9d489b052ec2a5941d8a569975560c12a6b4c9d00e0b1e633",
+    "B_commit": "3784da529f317e28798038f8a41ba8e98805ab61",
+    "B_sha256": "8a1b21c7825ca4617af9b17e28ddd11bc71726d6780097ddd4750ad5f648111b"
+  },
+  "C1_entire_original_A_reopened": {
+    "actually_fetched_from_git": true,
+    "nodes_checked": "A-N01..A-N35 all 35",
+    "edges_checked": "A-E01..A-E23 all 23",
+    "limits_checked": "A-L01..A-L12 all 12",
+    "variant_ids_checked": [
+      "V2",
+      "VN",
+      "VF",
+      "VM",
+      "V3"
+    ],
+    "source_sections_checked": 9,
+    "method": "Whole frozen original A reread and compared with every B gap before deciding amendments; duplicate graph patches disallowed"
+  },
+  "C2_source_local_conditions_unique": [
+    {
+      "id": "C-LC01",
+      "loc": "PDF p9-10 Fig4f/g",
+      "condition": "Four flash-lag continuations differ but initial trajectory present/absent did not change the model effect",
+      "disposition": "APPEND_LIMIT C-L13",
+      "owner": "B-O01"
+    },
+    {
+      "id": "C-LC02",
+      "loc": "PDF p10-11 Fig4h-l",
+      "condition": "Early-versus-late measured inside one discrete model step (10%/90% optimization progress); human 350/620ms comparators are separate experimental data",
+      "disposition": "ALREADY_A_L04_A_N24",
+      "owner": "B-O01"
+    },
+    {
+      "id": "C-LC03",
+      "loc": "PDF p9 Fig4e",
+      "condition": "Flashed/stopped movement modeled as static sequence; no generic biological mechanism deduced",
+      "disposition": "ALREADY_A_N24_A_N35",
+      "owner": "B-O01"
+    },
+    {
+      "id": "C-LC04",
+      "loc": "PDF p13-15 Fig6b/c and p24 Eq37",
+      "condition": "Original calls thresholded trigger first-level prediction error but gives no exact primary-text formula distinguishing first-level spatial and temporal residual",
+      "disposition": "APPEND_REPLACE_EDGE C-E01; SCALAR_UNDERDETERMINED",
+      "owner": "B-O02"
+    },
+    {
+      "id": "C-LC05",
+      "loc": "PDF p17-18 Discussion and p25 original in-article Fig C synopsis",
+      "condition": "Threshold estimated post hoc from training-set first-level error, rho=0.73 at 75th percentile; online precision adaptation not in reported method",
+      "disposition": "ALREADY_A_L09_A_N33",
+      "owner": "B-O02"
+    },
+    {
+      "id": "C-LC06",
+      "loc": "PDF p13-15 Fig6c/d",
+      "condition": "Third-level correction driven by newly gated second-level prediction residual after a changed bounce class; third-layer dynamics stable when error becomes small",
+      "disposition": "ALREADY_A_N30_A_E20_A_E22; EXPANDED_BY_C_E02",
+      "owner": "B-O03"
+    },
+    {
+      "id": "C-LC07",
+      "loc": "PDF p24 Eq37",
+      "condition": "Three-level objective has lower image term, lower temporal term, gated second-level temporal term, lower sparsity; unlike two-level Eq17 no explicit higher-Gaussian term in displayed three-level equation",
+      "disposition": "APPEND_OBJECTIVE C-N01_C-E02",
+      "owner": "B-O03"
+    },
+    {
+      "id": "C-LC08",
+      "loc": "PDF p24 Eqs38-40",
+      "condition": "Upper predicted second-level state is linear V2 r2prev, not apply lower-layer ReLU to upper layer by analogy",
+      "disposition": "ALREADY_A_N32",
+      "owner": "B-O03"
+    },
+    {
+      "id": "C-LC09",
+      "loc": "PDF p24 Methods",
+      "condition": "Two upper basis transitions were pretrained separately for straight/clockwise sequences before final H2 training; not an invented emergent A2 mechanism",
+      "disposition": "ALREADY_A_N31_A_N34",
+      "owner": "B-O03"
+    },
+    {
+      "id": "C-LC10",
+      "loc": "PDF p19 Eq3 and p20 Eq20/21",
+      "condition": "Explicit initial prior factor p(r0); initial first-step objective has lower sparsity and image residual, excludes previous-step temporal error/higher explicit prior term",
+      "disposition": "ALREADY_A_N13_A_N14_A_N17_A_N18",
+      "owner": "B-O04"
+    },
+    {
+      "id": "C-LC11",
+      "loc": "PDF p19-20 Eqs10-19",
+      "condition": "Previous posterior approximated Dirac MAP, higher posterior replaced by unconditional prior; r_t and r^h estimated per time step",
+      "disposition": "ALREADY_A_N15_A_N18_A_L03",
+      "owner": "B-O04"
+    },
+    {
+      "id": "C-LC12",
+      "loc": "PDF p20 after Eq21",
+      "condition": "Learning U,Vk,theta sums same loss across times and averages sequences using latent MAP; not within-sequence update of all parameters",
+      "disposition": "ALREADY_A_N16_A_E09",
+      "owner": "B-O04"
+    },
+    {
+      "id": "C-LC13",
+      "loc": "PDF p12-13 Fig5 and p23 Eqs31-36",
+      "condition": "Optional memory m,G only; base DPC frozen conditioning; starting cue strong, middle weak, ending absent",
+      "disposition": "ALREADY_A_N25_TO_A_N29_A_L05_A_L06",
+      "owner": "C_SOURCE_SWEEP_B_ZERO"
+    },
+    {
+      "id": "C-LC14",
+      "loc": "PDF p16-17 Discussion",
+      "condition": "Alternative additive/concat top-down theoretically equivalent; parameter efficiency conditional not unique brain-level truth",
+      "disposition": "ALREADY_A_L08",
+      "owner": "C_SOURCE_SWEEP_B_ZERO"
+    },
+    {
+      "id": "C-LC15",
+      "loc": "PDF p17-18 Discussion",
+      "condition": "Position-conditioned second-level transitions and action-conditioned closed-loop planning only discussed as possible extensions, not implemented",
+      "disposition": "ALREADY_A_L10_A_N01",
+      "owner": "C_SOURCE_SWEEP_B_ZERO"
+    },
+    {
+      "id": "C-LC16",
+      "loc": "PDF p21-22 Eq23-26",
+      "condition": "Natural video autocorrelation stationary-mean/variance assumption less valid; biological cited data not model empirical measurement",
+      "disposition": "ALREADY_A_L11_A_N21_A_N35",
+      "owner": "C_SOURCE_SWEEP_B_ZERO"
+    },
+    {
+      "id": "C-LC17",
+      "loc": "PDF p4 and p25 in-article S1 Fig A synopsis",
+      "condition": "More than five lower transition bases not significant in original setting; S1 external figure data not admitted",
+      "disposition": "ALREADY_A_L01",
+      "owner": "C_SOURCE_SWEEP_B_ZERO"
+    },
+    {
+      "id": "C-LC18",
+      "loc": "PDF p4 Fig1 and p17 Discussion",
+      "condition": "Dendritic gain circuit is proposed neural implementation, not evidence of actual cortical parameter-generating network",
+      "disposition": "ALREADY_A_N19_A_N35_A_L12",
+      "owner": "C_SOURCE_SWEEP_B_ZERO"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "C-O01",
+      "B_id": "B-O01",
+      "reopened_source": "PLOS original PDF printed p9-11 original Fig4f/g text and figure caption; source exact PDF indexed lines 340-386 reopened for this objection",
+      "original_a": {
+        "nodes": [
+          "A-N23",
+          "A-N24"
+        ],
+        "edges": [
+          "A-E15"
+        ],
+        "limits": [
+          "A-L04"
+        ]
+      },
+      "source_evidence": "Figure 4g-associated original text explicitly says initial moving trajectory presence has no effect on simulated flash-lag, within compared original conditions.",
+      "strongest_alternative": "Two initial-trajectory experimental conditions already present A-N23 and generic A-N24 results might implicitly cover the null.",
+      "contradiction_test": "A-N23 registers manipulation, not the null observation; A-N24 only positive early/late predicted-versus-postdicted outcome; the explicit tested null is absent.",
+      "typed_decision": "ACCEPT_PRECISION_QUALIFIER",
+      "justified_delta_ids": [
+        "C-L13"
+      ],
+      "material_adjacent_condition_ids": [
+        "C-LC01",
+        "C-LC02",
+        "C-LC03"
+      ],
+      "limits_disposition": "C-LC01 new scope-limited negative; C-LC02/03 retained original A; original reported p-value positive three-conditions is not contradicted.",
+      "human_review": "NONE_NEEDED"
+    },
+    {
+      "id": "C-O02",
+      "B_id": "B-O02",
+      "reopened_source": "PLOS original PDF printed pp14-15 Fig6 caption and p24 Eq37 plus p25 original in-article Fig C synopsis, reopened specifically",
+      "original_a": {
+        "nodes": [
+          "A-N11",
+          "A-N12",
+          "A-N30",
+          "A-N33"
+        ],
+        "edges": [
+          "A-E05",
+          "A-E06",
+          "A-E21"
+        ],
+        "limits": [
+          "A-L09"
+        ]
+      },
+      "source_evidence": "Eq37 defines first-level prediction error exceeds training-derived threshold for b_t but within this admitted original body does not give unequivocal scalar e_s alone; A-E21 specifically takes A-N11 e_s-only input.",
+      "strongest_alternative": "The original model diagram's feedforward input error and alternative first-level visual error definition may imply e_s; source still does not explicitly disambiguate the conditional norm in primary PDF.",
+      "contradiction_test": "Try to derive e_s-only gate from p24 Eq37 and p14 Fig6 caption: threshold noun not formal scalar expression, both first-level sensory and first-level temporal errors occur in Eq37. A-E21 e_s-only has narrower attribution than demonstrated. Source uncertainty cannot be cured by invented derivative expression.",
+      "typed_decision": "ACCEPT_CORRECTION_WITH_EXACT_SCALAR_UNDERDETERMINED",
+      "justified_delta_ids": [
+        "C-N01",
+        "C-E01"
+      ],
+      "superseded_original_edge": "A-E21 retained unchanged as historical original A but DISABLED_IN_D: C-E01 substitutes conservative relation; not revise A bytes",
+      "material_adjacent_condition_ids": [
+        "C-LC04",
+        "C-LC05"
+      ],
+      "limits_disposition": "C-LC04 conservative first-level error gate and scalar underdetermined; C-LC05 already A-L09 includes posthoc threshold and forbidden online precision interpretation.",
+      "human_review": "NOT_ROUTINELY_REQUIRED; targeted only if strict e_s-vs-temporal gate is material to an asserted exact replica. This exact scalar remains UNDERDETERMINED."
+    },
+    {
+      "id": "C-O03",
+      "B_id": "B-O03",
+      "reopened_source": "PLOS original PDF printed p24 Eqs37-40 and p13-15 Fig6/METHODS as same primary PDF, separately reopened for this B objection",
+      "original_a": {
+        "nodes": [
+          "A-N14",
+          "A-N30",
+          "A-N32",
+          "A-N33"
+        ],
+        "edges": [
+          "A-E07",
+          "A-E20",
+          "A-E21",
+          "A-E22"
+        ],
+        "limits": [
+          "A-L07",
+          "A-L09"
+        ]
+      },
+      "source_evidence": "Eq37 explicitly defines a variant-local objective whose higher residual is weighted by b_t/(2sigma_r2²); only this gated loss couples new upper-state transitions to upper error and higher-state inference.",
+      "strongest_alternative": "A-N33 says the higher term becomes active when b=1 and A-E21/E22 represent event-driven upper dependence, so recording an objective might restate these ideas.",
+      "contradiction_test": "A-N14 defines different two-level objective with lambda_h rh prior and no b_t upper term; A-N33 mentions gate but no 3L joint objective/operator or gated gradient reliance. Reconstructing three levels by blindly repeating A-N14 would add wrong prior and miss b_t loss. One variant-local objective and dependence justified; do not duplicate latent r2, third-level state or upper basis A-N30..32.",
+      "typed_decision": "ACCEPT_ADDITION",
+      "justified_delta_ids": [
+        "C-N02",
+        "C-E02"
+      ],
+      "material_adjacent_condition_ids": [
+        "C-LC06",
+        "C-LC07",
+        "C-LC08",
+        "C-LC09"
+      ],
+      "limits_disposition": "C-LC06 existing state/update and new objective dependence; C-LC07 new Eq37 loss; C-LC08 remains linear upper state, C-LC09 two separately pretrained bases already in A.",
+      "human_review": "NONE_NEEDED"
+    },
+    {
+      "id": "C-O04",
+      "B_id": "B-O04",
+      "reopened_source": "PLOS original PDF printed p19 Eq3 and p20 Eqs17-21, independently reopened for this B objection",
+      "original_a": {
+        "nodes": [
+          "A-N13",
+          "A-N14",
+          "A-N17",
+          "A-N18"
+        ],
+        "edges": [
+          "A-E07",
+          "A-E10"
+        ],
+        "limits": [
+          "A-L03"
+        ]
+      },
+      "source_evidence": "Eq3 explicitly contains p(r0); reduced initial objective Eq20 is spatial likelihood plus sparse lower-state initial penalty, not a t>=1 transition.",
+      "strongest_alternative": "Missing literal p(r0) label in A-N17 warrants a fresh prior node/edge and revised initial transition.",
+      "contradiction_test": "Full A-N13 records lower latent sparsity, A-N14 explicitly distinguishes initial L0 and no temporal term, A-N17 enumerates generative priors, and A-E10 maps approximated posterior to loss; a distinct added factor node does not preserve any currently missing executable/structural distinction.",
+      "typed_decision": "REJECT_DUPLICATE_OR_NONLOADBEARING_PATCH",
+      "justified_delta_ids": [],
+      "material_adjacent_condition_ids": [
+        "C-LC10",
+        "C-LC11",
+        "C-LC12"
+      ],
+      "limits_disposition": "Record exact Eq3 prior mention here and in D factorization evidence with original A IDs, no A patch; MAP/prior approximations and distinct learning already original A.",
+      "human_review": "NONE_NEEDED"
+    }
+  ],
+  "full_original_source_order_independent_c_sweep": [
+    {
+      "pdf": "1-3",
+      "review": "Article identity, abstract, intro, 2023 proceedings predecessor and broad ancestry",
+      "zero_B": true,
+      "new_findings": []
+    },
+    {
+      "pdf": "3-4",
+      "review": "Fig1 and Eqs1-2 top-down weight mixture and neural hypothesis",
+      "zero_B": true,
+      "new_findings": [
+        "C-LC18"
+      ]
+    },
+    {
+      "pdf": "4-6",
+      "review": "Natural-video STRFs, K saturation; S1 text not imported",
+      "zero_B": true,
+      "new_findings": [
+        "C-LC17"
+      ]
+    },
+    {
+      "pdf": "6-8",
+      "review": "Natural/white-noise autocorrelation and digit-vs-motion decoder findings",
+      "zero_B": true,
+      "new_findings": []
+    },
+    {
+      "pdf": "8-11",
+      "review": "Flash-lag manipulated initial/continuation/reversal and early/late within-step effects",
+      "zero_B": false,
+      "new_findings": [
+        "C-LC01",
+        "C-LC02",
+        "C-LC03"
+      ]
+    },
+    {
+      "pdf": "11-13",
+      "review": "Memory m and G as additional original components, frozen base during G updates, cue negatives",
+      "zero_B": true,
+      "new_findings": [
+        "C-LC13"
+      ]
+    },
+    {
+      "pdf": "13-16",
+      "review": "Three-level higher dynamics, trained separate bounce types, error mask and class transition",
+      "zero_B": false,
+      "new_findings": [
+        "C-LC04",
+        "C-LC06"
+      ]
+    },
+    {
+      "pdf": "16-19",
+      "review": "Discussion alternative hypernetwork equivalent parameterizations, posthoc gate, possible future world/action couplings, prior-art limitations",
+      "zero_B": true,
+      "new_findings": [
+        "C-LC05",
+        "C-LC14",
+        "C-LC15"
+      ]
+    },
+    {
+      "pdf": "19-20",
+      "review": "Exact two-level Eqs3-21 first initial prior, MAP Dirac/higher prior approximation, distinct parameter updates",
+      "zero_B": false,
+      "new_findings": [
+        "C-LC10",
+        "C-LC11",
+        "C-LC12"
+      ]
+    },
+    {
+      "pdf": "20-23",
+      "review": "Dataset preprocessing, sampled receptive fields, nonstationarity autocorr, flash-lag CoM eqs22-30",
+      "zero_B": true,
+      "new_findings": [
+        "C-LC16"
+      ]
+    },
+    {
+      "pdf": "23-24",
+      "review": "Memory Eqs31-36 and 3L Eq37; two distinct b masks (memory cue b_i vs 3L event b_t)",
+      "zero_B": false,
+      "new_findings": [
+        "C-LC07"
+      ]
+    },
+    {
+      "pdf": "24-25",
+      "review": "3L Eqs38-40 linear intermediate dynamics, pretrained matrices, in-article S1 description, no external supplement",
+      "zero_B": false,
+      "new_findings": [
+        "C-LC08",
+        "C-LC09"
+      ]
+    },
+    {
+      "pdf": "25-30",
+      "review": "Original article acknowledgment/references, 2023 proceedings, no additional original full-body model variants",
+      "zero_B": true,
+      "new_findings": []
+    }
+  ],
+  "append_only_delta_contract": {
+    "patch_file": "research/paper2/p399/pf03/C_DELTA.json",
+    "allowed_patch_ids": [
+      "C-L13",
+      "C-N01",
+      "C-E01",
+      "C-N02",
+      "C-E02"
+    ],
+    "original_a_mutated": false,
+    "unresolved_exact_error_scalar": "UNDERDETERMINED without external S1 or independently admitted original exact specification"
+  },
+  "checks": {
+    "B_objections_closed": 4,
+    "original_a_full_checked": true,
+    "source_context_per_objection_reopened": true,
+    "material_conditions_unique": 18,
+    "condition_dispositions_complete": true,
+    "independent_source_order_sweep": true,
+    "exact_v231_historical_validator": "NOT_IMPORTED_OR_EXECUTED",
+    "semantic_truth": "Evidence-bound audit judgement, NOT independently validated accuracy"
+  },
+  "freeze": "C frozen separately after B, before D; append-only delta only"
+}
