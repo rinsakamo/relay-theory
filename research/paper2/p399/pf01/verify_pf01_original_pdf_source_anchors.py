@@ -92,7 +92,8 @@ class FixedOriginalAnchorTests(unittest.TestCase):
         self.assertIn("distractor",s.lower())
 
     def test_10_original_drift_estimator(self):
-        s=self.pages[39]
+        # The drift-estimation paragraph crosses PDF pp39->40; its dt is on p40.
+        s=self.pages[39] + " " + self.pages[40]
         self.assertIn("400 repetitions",s)
         self.assertIn("20 initial cue positions, 20 repetitions",s)
         self.assertIn("1.5s",s)
