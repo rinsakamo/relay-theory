@@ -86,6 +86,30 @@ jobs:
           print('SCOPED_SUPPLEMENT_FAILURES',len(out['failed']),flush=True)
           if out['failed']: sys.exit(1)
           PY
+      - name: Independent P11 decisive original visual sample receipt (source images in logs only)
+        shell: bash
+        run: |
+          python -m pip install -q pymupdf
+          python - <<'PY'
+          import requests,fitz,io,base64
+          from PIL import Image
+          S=requests.Session()
+          S.headers['User-Agent']='Mozilla/5.0 (RelayTheory G1 source provenance audit; research-use)'
+          base='https://journals.plos.org/ploscompbiol/article/file'
+          doi='10.1371/journal.pcbi.1008971'
+          raw=S.get(base,params={'id':doi,'type':'printable'},timeout=100).content
+          pdf=fitz.open(stream=raw,filetype='pdf')
+          for pi in [1,4,7,10,13,16,19]:
+            im=Image.open(io.BytesIO(pdf[pi].get_pixmap(matrix=fitz.Matrix(.8,.8),alpha=False).tobytes('jpeg')))
+            im.thumbnail((680,900))
+            b=io.BytesIO();im.convert('RGB').save(b,format='JPEG',quality=52,optimize=True)
+            print('W2_P11_ORIGINAL_PDF_PAGE_'+str(pi+1)+'_B64='+base64.b64encode(b.getvalue()).decode(),flush=True)
+          for si in ['s001','s003']:
+            b=S.get(base,params={'id':doi+'.'+si,'type':'supplementary'},timeout=100).content
+            im=Image.open(io.BytesIO(b)); im.thumbnail((950,850))
+            q=io.BytesIO();im.convert('RGB').save(q,format='JPEG',quality=52,optimize=True)
+            print('W2_P11_ORIGINAL_'+si+'_B64='+base64.b64encode(q.getvalue()).decode(),flush=True)
+          PY
       - name: Keep actual success or failed diagnostics
         if: always()
         uses: actions/upload-artifact@v4
