@@ -10,7 +10,7 @@ sys.path.insert(0, str(P))
 from evaluate_g3 import (G3Error, METRICS, check_packet, check_reference,
                          check_source_reference_alignment, destructive_control,
                          score, coordination, verify_receipt_chain, freeze_gate,
-                         score_locked, check_role_bridge,
+                         score_locked, check_role_bridge, coordination_locked,
                          schema_check, canonical_sha)
 
 FIXTURE = json.loads((P / "fixtures/synthetic.v1.json").read_text(encoding="utf-8"))
@@ -374,6 +374,44 @@ class G3SyntheticTests(unittest.TestCase):
                                      separate_actor_receipt_sha256="b"*64)
         self.assertTrue(check_reference(native))
         # This constructed test cannot establish a genuine separate real-world reader.
+
+
+    def test_h2_raw_claim_cannot_bypass_locked_missing_source_comparison(self):
+        native,pkt,bridge,r=self.locked_fixture()
+        h=r["coordination"]
+        h.update(a0="FAILED",a1="FAILED",a2="SUPPORTED",discrimination="H2_SOURCE_CONDITIONAL",
+                 source_defined_functions_exhausted=True,additional_state_source_grounded=True)
+        r["assumptions"]=[dict(id="a2",level="A2",source_grounded=True,necessity_test="PASS")]
+        self.assertEqual(coordination(r),"H2_SOURCE_CONDITIONAL")  # Untrusted self-report.
+        self.assertEqual(coordination_locked(native,pkt,bridge,r),"NON_DISCRIMINATING")
+
+    def test_h2_source_native_history_comparison_is_necessary_not_proof(self):
+        native,pkt,bridge,r=self.locked_fixture()
+        native["variants"][0]["source_comparisons"]=[dict(
+            id="native_history_difference",source_locator="SYNTHETIC:fictional-test",
+            witness="synthetic same input, distinct histories",critical=True,
+            contrast_kind="HISTORY_DEPENDENCE_CONTRAST")]
+        pkt["reference_digest_private"]=canonical_sha(native)
+        bridge["source_reference_canonical_sha256"]=canonical_sha(native)
+        h=r["coordination"]
+        h.update(a0="FAILED",a1="FAILED",a2="SUPPORTED",discrimination="H2_SOURCE_CONDITIONAL",
+                 source_defined_functions_exhausted=True,additional_state_source_grounded=True)
+        r["assumptions"]=[dict(id="a2",level="A2",source_grounded=True,necessity_test="PASS")]
+        self.assertEqual(coordination_locked(native,pkt,bridge,r),"H2_SOURCE_CONDITIONAL")
+        # Only checks structured predeclared SOURCE witness; no real scientific H2 proof.
+
+    def test_h1_incompatible_source_history_only_contrast_is_nondiscriminating(self):
+        native,pkt,bridge,r=self.locked_fixture()
+        native["variants"][0]["source_comparisons"]=[dict(
+            id="native_history_difference",source_locator="SYNTHETIC:fictional-test",
+            witness="synthetic history comparison",critical=True,
+            contrast_kind="HISTORY_DEPENDENCE_CONTRAST")]
+        pkt["reference_digest_private"]=canonical_sha(native)
+        bridge["source_reference_canonical_sha256"]=canonical_sha(native)
+        h=r["coordination"]
+        h.update(a0="FAILED",a1="SUPPORTED",discrimination="H1_SOURCE_CONDITIONAL")
+        r["assumptions"]=[dict(id="a1",level="A1",source_grounded=True,necessity_test="PASS")]
+        self.assertEqual(coordination_locked(native,pkt,bridge,r),"NON_DISCRIMINATING")
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
