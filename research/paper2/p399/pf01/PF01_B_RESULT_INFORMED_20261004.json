@@ -1,0 +1,1328 @@
+{
+  "schema": "relay-theory.p399.pf01.pass-B-result-informed.v1",
+  "stage": "B",
+  "date_jst": "2026-10-04",
+  "input": {
+    "same_primary_pdf_sha256": "8531103d577a3249c7edffa06ef2a8a7e85eb01b0a2f02cee2145e187581fbc3",
+    "complete_immutable_a_sha256": "79e308cd97ec01bc2456d636422fd66b6279681ff631948959d294f1482c6383",
+    "original_A_file": "research/paper2/p399/pf01/PF01_A_ORIGINAL_SOURCE_20261004.json",
+    "original_A_freeze_sidecar_commit": "2cf93d7c7564a5156dadefb639b9c3fdf52ae207",
+    "same_source_pdf_across_A_B_C": true,
+    "source_first_unchanged_A": true
+  },
+  "procedure": "B received complete source-first original A and same publisher original PDF. Challenge all A items then independent prespecified source-order traversal; no A modifications or Grammar outcome input.",
+  "per_original_A_claim": [
+    {
+      "original_id": "A01",
+      "original_source_locator": "p3-4 Eqs1-2 Fig1",
+      "audit_status": "CONFIRMED_NO_B_OBJECTION",
+      "b_findings": [],
+      "checked_claim_scope": "ring model has local symmetric E-E excitation and uniform global inhibition"
+    },
+    {
+      "original_id": "A02",
+      "original_source_locator": "p3 Eqs1-2",
+      "audit_status": "CONFIRMED_NO_B_OBJECTION",
+      "b_findings": [],
+      "checked_claim_scope": "neural firing is F(recurrent excitation + uniform inhibition), and recurrent excitation sums weighted presynaptic s_j"
+    },
+    {
+      "original_id": "A03",
+      "original_source_locator": "p5 Eq3",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B07"
+      ],
+      "checked_claim_scope": "source-specific rate STP is coupled s,u,x ODE, with baseline U, tau_s, tau_u, tau_x and products u*x*phi"
+    },
+    {
+      "original_id": "A04",
+      "original_source_locator": "p5 Eq3 and prose",
+      "audit_status": "CONFIRMED_NO_B_OBJECTION",
+      "b_findings": [],
+      "checked_claim_scope": "smaller U and longer tau_u produce greater facilitation effects in the authors' convention; U=1 corresponds to absent facilitation"
+    },
+    {
+      "original_id": "A05",
+      "original_source_locator": "p6-7; p25 Eq13-15",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B07"
+      ],
+      "checked_claim_scope": "source assumes continuous neutrally shifted stationary symmetric bump, large N and small fixed heterogeneity; other modes decay"
+    },
+    {
+      "original_id": "A06",
+      "original_source_locator": "p6-7; p27 Eq20-23",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B06"
+      ],
+      "checked_claim_scope": "Poisson spike count variability is replaced by mean/autocorrelation-matched Gaussian white noise for large network projection"
+    },
+    {
+      "original_id": "A07",
+      "original_source_locator": "p7 Eq4",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B12"
+      ],
+      "checked_claim_scope": "near stationary bump, reduced center obeys dvarphi/dt = sqrt(B)*eta(t)+A(varphi) with ring periodic boundary"
+    },
+    {
+      "original_id": "A08",
+      "original_source_locator": "p7 Eq5-6 and footnote",
+      "audit_status": "CONFIRMED_NO_B_OBJECTION",
+      "b_findings": [],
+      "checked_claim_scope": "B is a source-defined spatially weighted sum of baseline rates with factors (C_i/S)^2*(dJ0i/dvarphi)^2; conventional Brownian D=B/2"
+    },
+    {
+      "original_id": "A09",
+      "original_source_locator": "p7 Eq7; p9 Eq8",
+      "audit_status": "CONFIRMED_NO_B_OBJECTION",
+      "b_findings": [],
+      "checked_claim_scope": "drift field A(varphi) weighted sum of center-dependent first-order rate perturbations times C_i/S and input-profile derivative"
+    },
+    {
+      "original_id": "A10",
+      "original_source_locator": "p7-9; p34-37 Eq56",
+      "audit_status": "CONFIRMED_NO_B_OBJECTION",
+      "b_findings": [],
+      "checked_claim_scope": "source distinguishes fixed network-specific directional drift fields from zero ensemble-mean drift and location-invariant diffusion"
+    },
+    {
+      "original_id": "A11",
+      "original_source_locator": "p8 Eq7 limits and text",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B07"
+      ],
+      "checked_claim_scope": "very strong facilitation leaves nonzero residual drift/diffusion; vanishing facilitation plus increasing depression drives normalization toward zero at configuration-dependent critical tau_x"
+    },
+    {
+      "original_id": "A12",
+      "original_source_locator": "p24-28 Eqs12-26",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B09"
+      ],
+      "checked_claim_scope": "rate-model reduction via neutral translation mode uses left eigenvector; fast stable transverse dynamics assumed; multiplicative spike noise omitted at first order"
+    },
+    {
+      "original_id": "A13",
+      "original_source_locator": "p28-33 Eqs27-41",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B06",
+        "B08"
+      ],
+      "checked_claim_scope": "spiking LIF comparison uses event-triggered STP with pre-spike efficacy/resources, one presynaptic spike train driving shared s,u,x updates; average steady-state rate gain is conditional"
+    },
+    {
+      "original_id": "A14",
+      "original_source_locator": "p9-15 Figs2-4; p34-37 Eqs47-56",
+      "audit_status": "CONFIRMED_NO_B_OBJECTION",
+      "b_findings": [],
+      "checked_claim_scope": "fixed heterogeneity variants are sparse Bernoulli E-E recurrent connections and Gaussian-distributed excitatory leak potentials, analyzed by first-order rate response"
+    },
+    {
+      "original_id": "A15",
+      "original_source_locator": "p10-15 Figs2-4",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B05",
+        "B07"
+      ],
+      "checked_claim_scope": "simulation comparisons report facilitation decreases diffusion and field magnitude while longer depression increases both over tested stable regimes"
+    },
+    {
+      "original_id": "A16",
+      "original_source_locator": "p9 p11-15 p20-23",
+      "audit_status": "CONFIRMED_NO_B_OBJECTION",
+      "b_findings": [],
+      "checked_claim_scope": "approximation underestimates/overestimates particular conditions: high heterogeneity over-predicts drift; strong facilitation may over-predict diffusion due to altered spiking irregularity"
+    },
+    {
+      "original_id": "A17",
+      "original_source_locator": "p16-17 Figs5-6; p39-40",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B02",
+        "B03",
+        "B12"
+      ],
+      "checked_claim_scope": "initial/final circular center distributions over 6.5s generate normalized mutual information; reduced and spiking predictions compared separately"
+    },
+    {
+      "original_id": "A18",
+      "original_source_locator": "p18 Fig7; p20-23 limitations",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B01",
+        "B11"
+      ],
+      "checked_claim_scope": "weak external distractor enters as firing-rate perturbation inducing drift, predicting 250ms displacement only while bump shape is approximately fixed"
+    },
+    {
+      "original_id": "A19",
+      "original_source_locator": "p19 Table1; p37-38 Eqs57-59",
+      "audit_status": "CONFIRMED_NO_B_OBJECTION",
+      "b_findings": [],
+      "checked_claim_scope": "system-size extrapolation starts from spiking-reference N_E=800, applies distinct size scaling for fast vs frozen noise and biological parameter estimates; is proof of principle"
+    },
+    {
+      "original_id": "A20",
+      "original_source_locator": "p7-8 p38-39 numerical methods",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B03",
+        "B05",
+        "B07",
+        "B10",
+        "B12"
+      ],
+      "checked_claim_scope": "bump-loss trials excluded before estimates, especially weak facilitation/strong depression; finite ring diffusion cannot grow unbounded"
+    },
+    {
+      "original_id": "A21",
+      "original_source_locator": "p18-23 Discussion",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B09",
+        "B11"
+      ],
+      "checked_claim_scope": "simulated attractor circuit is not shown by this paper to be the biological cortical mechanism; unmodeled noisy STP, heterogeneity, adaptation, inhibitory topology and upstream/downstream noise remain"
+    },
+    {
+      "original_id": "A22",
+      "original_source_locator": "p3 p9-19; p20-23",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B09"
+      ],
+      "checked_claim_scope": "theoretical validation is against original spiking computational simulations and reduced Langevin comparisons, not exact direct behavioral empirical validation"
+    },
+    {
+      "original_id": "A23",
+      "original_source_locator": "p9-10 Fig2 caption/labels",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B04"
+      ],
+      "checked_claim_scope": "source has reported Fig2 right-panel parameter inconsistency: main text and panel labels U=0.1 versus one sentence of Fig2B caption U=0.01; do not infer exact value from caption alone"
+    }
+  ],
+  "per_original_A_node": [
+    {
+      "original_id": "N01",
+      "source_locator": "p3-4 Fig1A",
+      "audit_status": "CONFIRMED_NO_B_OBJECTION",
+      "b_findings": [],
+      "checked_role_description": "symmetric one-dimensional excitatory ring with global uniform inhibitory population"
+    },
+    {
+      "original_id": "N02",
+      "source_locator": "p3 Eq1-2; p30 Eq32",
+      "audit_status": "CONFIRMED_NO_B_OBJECTION",
+      "b_findings": [],
+      "checked_role_description": "neuronal angular positions, symmetric distance-dependent recurrent weights w_ij"
+    },
+    {
+      "original_id": "N03",
+      "source_locator": "p5 Eq3",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B06"
+      ],
+      "checked_role_description": "presynaptic rate-network synaptic activation s_j(t)"
+    },
+    {
+      "original_id": "N04",
+      "source_locator": "p5 Eq3",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B06"
+      ],
+      "checked_role_description": "facilitation efficacy u_j(t) with rest U and recovery tau_u"
+    },
+    {
+      "original_id": "N05",
+      "source_locator": "p5 Eq3",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B06",
+        "B07"
+      ],
+      "checked_role_description": "available synaptic fraction x_j(t) with recovery tau_x"
+    },
+    {
+      "original_id": "N06",
+      "source_locator": "p3 Eq1-2",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B08"
+      ],
+      "checked_role_description": "input-output gain F and recurrent sum J_i(t) plus global inhibition"
+    },
+    {
+      "original_id": "N07",
+      "source_locator": "p6-7; p24-25 Eq12",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B01",
+        "B07"
+      ],
+      "checked_role_description": "stationary bump firing-rate and synaptic-input profiles phi_0i(varphi), J_0i(varphi)"
+    },
+    {
+      "original_id": "N08",
+      "source_locator": "p4 Fig1; p7 Eq4",
+      "audit_status": "CONFIRMED_NO_B_OBJECTION",
+      "b_findings": [],
+      "checked_role_description": "bump-center angle varphi(t) in periodic ring [-pi,pi)"
+    },
+    {
+      "original_id": "N09",
+      "source_locator": "p6-7; p27 Eq20-23",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B06"
+      ],
+      "checked_role_description": "per-neuron spiking variability: Poisson counts approximated by Gaussian white noise"
+    },
+    {
+      "original_id": "N10",
+      "source_locator": "p9 Eq8; p34-37 Eq51-56",
+      "audit_status": "CONFIRMED_NO_B_OBJECTION",
+      "b_findings": [],
+      "checked_role_description": "sparse random E-E connectivity p or static heterogeneous leak-reversal sigma_L"
+    },
+    {
+      "original_id": "N11",
+      "source_locator": "p6-7; p24-26 Eq12-19",
+      "audit_status": "CONFIRMED_NO_B_OBJECTION",
+      "b_findings": [],
+      "checked_role_description": "first-order linearization about stable one-dimensional bump manifold"
+    },
+    {
+      "original_id": "N12",
+      "source_locator": "p25-26 Eq14-19",
+      "audit_status": "CONFIRMED_NO_B_OBJECTION",
+      "b_findings": [],
+      "checked_role_description": "zero-mode right/left eigenvectors and normalizer S"
+    },
+    {
+      "original_id": "N13",
+      "source_locator": "p7 Eq5-7; p25-27",
+      "audit_status": "CONFIRMED_NO_B_OBJECTION",
+      "b_findings": [],
+      "checked_role_description": "shared STP-sensitive spatial weighting C_i/S"
+    },
+    {
+      "original_id": "N14",
+      "source_locator": "p7 Eq5-6; p27 Eq23",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B03"
+      ],
+      "checked_role_description": "diffusion strength B, independent of bump position for cyclic symmetric baseline"
+    },
+    {
+      "original_id": "N15",
+      "source_locator": "p7 Eq7; p9 Eq8; p27-28",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B03"
+      ],
+      "checked_role_description": "center-dependent drift A(varphi) due to frozen heterogeneities"
+    },
+    {
+      "original_id": "N16",
+      "source_locator": "p7 Eq4",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B12"
+      ],
+      "checked_role_description": "one-dimensional stochastic bump-center Langevin equation"
+    },
+    {
+      "original_id": "N17",
+      "source_locator": "p5; p28-33 Eq27-41",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B04",
+        "B08"
+      ],
+      "checked_role_description": "conductance-based spiking LIF ring network with spike-triggered STP"
+    },
+    {
+      "original_id": "N18",
+      "source_locator": "p4 Fig1; p18 Fig7",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B01",
+        "B11"
+      ],
+      "checked_role_description": "initial cue and weak transient spatial distractor"
+    },
+    {
+      "original_id": "N19",
+      "source_locator": "p9-15 Figs2-4; p38-39 numerical methods",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B04",
+        "B05",
+        "B10",
+        "B12"
+      ],
+      "checked_role_description": "bump center trajectories, diffusion slopes and fitted drift fields"
+    },
+    {
+      "original_id": "N20",
+      "source_locator": "p16-17 Figs5-6; p39-40",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B02"
+      ],
+      "checked_role_description": "normalized mutual information between initial and delayed center position"
+    },
+    {
+      "original_id": "N21",
+      "source_locator": "p18-19 Fig7; p19 Eq11",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B01",
+        "B03",
+        "B11"
+      ],
+      "checked_role_description": "mean distractor displacement and expected short-interval memory displacement"
+    },
+    {
+      "original_id": "N22",
+      "source_locator": "p19 Table1; p37-38 Eqs57-59",
+      "audit_status": "CONFIRMED_NO_B_OBJECTION",
+      "b_findings": [],
+      "checked_role_description": "network size N and extrapolation from N_E=800 reference"
+    },
+    {
+      "original_id": "N23",
+      "source_locator": "p5-6; p11-13",
+      "audit_status": "CONFIRMED_NO_B_OBJECTION",
+      "b_findings": [],
+      "checked_role_description": "separately tuned stationary bump shape across STP parameter comparisons"
+    },
+    {
+      "original_id": "N24",
+      "source_locator": "p29 Eq29",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B06"
+      ],
+      "checked_role_description": "spike-triggered presynaptic changes use pre-arrival u minus and x minus"
+    },
+    {
+      "original_id": "N25",
+      "source_locator": "p18-23 Discussion",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B09"
+      ],
+      "checked_role_description": "simulated network behavior versus proof-of-principle behavioral link, not observed human validation"
+    }
+  ],
+  "per_original_A_edge": [
+    {
+      "original_id": "E01",
+      "source_locator": "p3 Eq1-2",
+      "audit_status": "CONFIRMED_NO_B_OBJECTION",
+      "b_findings": [],
+      "checked_relation": "recurrent weighted inputs determine rate gain"
+    },
+    {
+      "original_id": "E02",
+      "source_locator": "p3 Eq1-2; p5 Eq3",
+      "audit_status": "CONFIRMED_NO_B_OBJECTION",
+      "b_findings": [],
+      "checked_relation": "presynaptic rates and s_j enter coupled rate-synapse dynamics"
+    },
+    {
+      "original_id": "E03",
+      "source_locator": "p5 Eq3",
+      "audit_status": "CONFIRMED_NO_B_OBJECTION",
+      "b_findings": [],
+      "checked_relation": "facilitation scales activation gain"
+    },
+    {
+      "original_id": "E04",
+      "source_locator": "p5 Eq3",
+      "audit_status": "CONFIRMED_NO_B_OBJECTION",
+      "b_findings": [],
+      "checked_relation": "available resources scale activation gain"
+    },
+    {
+      "original_id": "E05",
+      "source_locator": "p5 Eq3",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B07"
+      ],
+      "checked_relation": "facilitation and depression coupled via use u*x*rate"
+    },
+    {
+      "original_id": "E06",
+      "source_locator": "p6",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B07"
+      ],
+      "checked_relation": "symmetric ring admits stationary shifted bump manifold under assumptions"
+    },
+    {
+      "original_id": "E07",
+      "source_locator": "p6 Fig1C",
+      "audit_status": "CONFIRMED_NO_B_OBJECTION",
+      "b_findings": [],
+      "checked_relation": "bump profile translations indexed by center position"
+    },
+    {
+      "original_id": "E08",
+      "source_locator": "p24-25 Eq12-13",
+      "audit_status": "CONFIRMED_NO_B_OBJECTION",
+      "b_findings": [],
+      "checked_relation": "linearization performed about numerically determined stationary bump"
+    },
+    {
+      "original_id": "E09",
+      "source_locator": "p25-26 Eq14-19",
+      "audit_status": "CONFIRMED_NO_B_OBJECTION",
+      "b_findings": [],
+      "checked_relation": "project linear dynamics along neutral translation zero mode"
+    },
+    {
+      "original_id": "E10",
+      "source_locator": "p24-25 Eq12-13",
+      "audit_status": "CONFIRMED_NO_B_OBJECTION",
+      "b_findings": [],
+      "checked_relation": "3N synaptic state s,u,x retained in linearized full system"
+    },
+    {
+      "original_id": "E11",
+      "source_locator": "p7 Eq6",
+      "audit_status": "CONFIRMED_NO_B_OBJECTION",
+      "b_findings": [],
+      "checked_relation": "facilitation parameters enter projection weights"
+    },
+    {
+      "original_id": "E12",
+      "source_locator": "p7 Eq6",
+      "audit_status": "CONFIRMED_NO_B_OBJECTION",
+      "b_findings": [],
+      "checked_relation": "depression parameters enter projection weights"
+    },
+    {
+      "original_id": "E13",
+      "source_locator": "p7 Eq4-6; p27 Eq20-23",
+      "audit_status": "CONFIRMED_NO_B_OBJECTION",
+      "b_findings": [],
+      "checked_relation": "spike noise after large-population approximation yields B"
+    },
+    {
+      "original_id": "E14",
+      "source_locator": "p7 Eq5",
+      "audit_status": "CONFIRMED_NO_B_OBJECTION",
+      "b_findings": [],
+      "checked_relation": "spatial weights and bump input derivative yield diffusion coefficient"
+    },
+    {
+      "original_id": "E15",
+      "source_locator": "p7 Eq7; p9 Eq8",
+      "audit_status": "CONFIRMED_NO_B_OBJECTION",
+      "b_findings": [],
+      "checked_relation": "first-order fixed heterogeneity induces center-dependent drift field"
+    },
+    {
+      "original_id": "E16",
+      "source_locator": "p7 Eq7",
+      "audit_status": "CONFIRMED_NO_B_OBJECTION",
+      "b_findings": [],
+      "checked_relation": "same STP-sensitive projection weights determine drift"
+    },
+    {
+      "original_id": "E17",
+      "source_locator": "p7 Eq4",
+      "audit_status": "CONFIRMED_NO_B_OBJECTION",
+      "b_findings": [],
+      "checked_relation": "Gaussian stochastic diffusion term sqrt(B)*eta"
+    },
+    {
+      "original_id": "E18",
+      "source_locator": "p7 Eq4",
+      "audit_status": "CONFIRMED_NO_B_OBJECTION",
+      "b_findings": [],
+      "checked_relation": "position-dependent directed drift term"
+    },
+    {
+      "original_id": "E19",
+      "source_locator": "p5; p31-33",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B08"
+      ],
+      "checked_relation": "stationary spiking firing-rate approximation maps to rate gain, conditional only"
+    },
+    {
+      "original_id": "E20",
+      "source_locator": "p29 Eq29",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B06"
+      ],
+      "checked_relation": "spike updates are event-triggered rather than continuous rate ODE updates"
+    },
+    {
+      "original_id": "E21",
+      "source_locator": "p29-30 Eq29-31",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B06"
+      ],
+      "checked_relation": "same presynaptic event updates STP-scaled activation"
+    },
+    {
+      "original_id": "E22",
+      "source_locator": "p4 Fig1",
+      "audit_status": "CONFIRMED_NO_B_OBJECTION",
+      "b_findings": [],
+      "checked_relation": "initial cue produces bump that persists after cue offset in selected regimes"
+    },
+    {
+      "original_id": "E23",
+      "source_locator": "p9-10 Fig2",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B04",
+        "B12"
+      ],
+      "checked_relation": "integrated reduced dynamics compared with spiking center trajectories"
+    },
+    {
+      "original_id": "E24",
+      "source_locator": "p10-15 Figs2-4",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B04",
+        "B05",
+        "B10",
+        "B12"
+      ],
+      "checked_relation": "full spiking simulation supplies distinct numerical trajectory and coefficient checks"
+    },
+    {
+      "original_id": "E25",
+      "source_locator": "p16-17 Figs5-6",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B02"
+      ],
+      "checked_relation": "initial/final distributions determine empirical-model normalized mutual information"
+    },
+    {
+      "original_id": "E26",
+      "source_locator": "p16 Fig5",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B02"
+      ],
+      "checked_relation": "Langevin simulations supply separate MI predictions"
+    },
+    {
+      "original_id": "E27",
+      "source_locator": "p18 Fig7",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B01",
+        "B11"
+      ],
+      "checked_relation": "weak distractor treated as added rate perturbation generating drift"
+    },
+    {
+      "original_id": "E28",
+      "source_locator": "p18 Fig7",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B01",
+        "B03",
+        "B11"
+      ],
+      "checked_relation": "integrate drift/diffusion during 250 ms distractor presentation"
+    },
+    {
+      "original_id": "E29",
+      "source_locator": "p37-38 Eq57-59",
+      "audit_status": "CONFIRMED_NO_B_OBJECTION",
+      "b_findings": [],
+      "checked_relation": "B changes with population-size extrapolation, subject to assumptions"
+    },
+    {
+      "original_id": "E30",
+      "source_locator": "p37-38 Eq59",
+      "audit_status": "CONFIRMED_NO_B_OBJECTION",
+      "b_findings": [],
+      "checked_relation": "different random-connection and leak-heterogeneity scalings"
+    },
+    {
+      "original_id": "E31",
+      "source_locator": "p5-6",
+      "audit_status": "CONFIRMED_NO_B_OBJECTION",
+      "b_findings": [],
+      "checked_relation": "stable-bump shape retuned to compare baseline synaptic settings"
+    },
+    {
+      "original_id": "E32",
+      "source_locator": "p18-23",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B09"
+      ],
+      "checked_relation": "behavioral relevance interpreted as proof of principle, not validation"
+    },
+    {
+      "original_id": "E33",
+      "source_locator": "p27 Eq20-22",
+      "audit_status": "CHALLENGED_REVIEW_NEEDS_C",
+      "b_findings": [
+        "B06"
+      ],
+      "checked_relation": "per-neuron synaptic variables share one presynaptic noise source"
+    }
+  ],
+  "original_A_limits_checked": [
+    {
+      "id": "L01",
+      "source_locator": "p5 after Eq3",
+      "existing_A_links": [
+        "A03",
+        "A05"
+      ],
+      "checked": true,
+      "preserved_as_original_A_not_new_B_detection": true
+    },
+    {
+      "id": "L02",
+      "source_locator": "p5-6",
+      "existing_A_links": [
+        "A03",
+        "A15"
+      ],
+      "checked": true,
+      "preserved_as_original_A_not_new_B_detection": true
+    },
+    {
+      "id": "L03",
+      "source_locator": "p6-7",
+      "existing_A_links": [
+        "A05",
+        "A06",
+        "A12"
+      ],
+      "checked": true,
+      "preserved_as_original_A_not_new_B_detection": true
+    },
+    {
+      "id": "L04",
+      "source_locator": "p8",
+      "existing_A_links": [
+        "A11"
+      ],
+      "checked": true,
+      "preserved_as_original_A_not_new_B_detection": true
+    },
+    {
+      "id": "L05",
+      "source_locator": "p8",
+      "existing_A_links": [
+        "A11"
+      ],
+      "checked": true,
+      "preserved_as_original_A_not_new_B_detection": true
+    },
+    {
+      "id": "L06",
+      "source_locator": "p8",
+      "existing_A_links": [
+        "A11",
+        "A12"
+      ],
+      "checked": true,
+      "preserved_as_original_A_not_new_B_detection": true
+    },
+    {
+      "id": "L07",
+      "source_locator": "p9-10",
+      "existing_A_links": [
+        "A14",
+        "A16"
+      ],
+      "checked": true,
+      "preserved_as_original_A_not_new_B_detection": true
+    },
+    {
+      "id": "L08",
+      "source_locator": "p11-13",
+      "existing_A_links": [
+        "A06",
+        "A16"
+      ],
+      "checked": true,
+      "preserved_as_original_A_not_new_B_detection": true
+    },
+    {
+      "id": "L09",
+      "source_locator": "p16-17",
+      "existing_A_links": [
+        "A17"
+      ],
+      "checked": true,
+      "preserved_as_original_A_not_new_B_detection": true
+    },
+    {
+      "id": "L10",
+      "source_locator": "p18-23",
+      "existing_A_links": [
+        "A18",
+        "A21",
+        "A22"
+      ],
+      "checked": true,
+      "preserved_as_original_A_not_new_B_detection": true
+    },
+    {
+      "id": "L11",
+      "source_locator": "p20-23",
+      "existing_A_links": [
+        "A12",
+        "A21"
+      ],
+      "checked": true,
+      "preserved_as_original_A_not_new_B_detection": true
+    },
+    {
+      "id": "L12",
+      "source_locator": "p20-23",
+      "existing_A_links": [
+        "A21"
+      ],
+      "checked": true,
+      "preserved_as_original_A_not_new_B_detection": true
+    },
+    {
+      "id": "L13",
+      "source_locator": "p31-33",
+      "existing_A_links": [
+        "A13"
+      ],
+      "checked": true,
+      "preserved_as_original_A_not_new_B_detection": true
+    },
+    {
+      "id": "L14",
+      "source_locator": "p37-38",
+      "existing_A_links": [
+        "A19"
+      ],
+      "checked": true,
+      "preserved_as_original_A_not_new_B_detection": true
+    },
+    {
+      "id": "L15",
+      "source_locator": "p38-39",
+      "existing_A_links": [
+        "A20"
+      ],
+      "checked": true,
+      "preserved_as_original_A_not_new_B_detection": true
+    },
+    {
+      "id": "L16",
+      "source_locator": "p7 p39",
+      "existing_A_links": [
+        "A07",
+        "A20"
+      ],
+      "checked": true,
+      "preserved_as_original_A_not_new_B_detection": true
+    }
+  ],
+  "original_A_uncertainties_checked": [
+    {
+      "id": "U01",
+      "source": "p10 Fig2 and adjacent p9 prose",
+      "existing_original_A_record": "right panel A and C and prose explicitly U=0.1; a Fig2B caption clause states U=0.01",
+      "checked": true
+    },
+    {
+      "id": "U02",
+      "source": "p39 diffusion repetition definitions, p11 Results",
+      "existing_original_A_record": "Results and Methods mention different initial cue-position counts for nominal 1000 diffusion trajectories; exact numerical protocol requires source reconciliation",
+      "checked": true
+    },
+    {
+      "id": "U03",
+      "source": "p25-27 and separate cited S1 Text",
+      "existing_original_A_record": "complete original published PDF includes reported reduced equations but refers to separate S1 for certain detailed proofs",
+      "checked": true
+    }
+  ],
+  "original_source_order_coverage": [
+    {
+      "section_id": "COV01",
+      "section": "Abstract/Author summary p1-2",
+      "original_order_reviewed": true,
+      "reopened_original_source": true,
+      "objections": [],
+      "zero_objection_explicit": true,
+      "source_coverage_crosscheck": "claims A15 A18 A22"
+    },
+    {
+      "section_id": "COV02",
+      "section": "Introduction p2-3",
+      "original_order_reviewed": true,
+      "reopened_original_source": true,
+      "objections": [],
+      "zero_objection_explicit": true,
+      "source_coverage_crosscheck": "claim A01 contextual ancestors"
+    },
+    {
+      "section_id": "COV03",
+      "section": "Results model construction p3-6",
+      "original_order_reviewed": true,
+      "reopened_original_source": true,
+      "objections": [
+        "B07"
+      ],
+      "zero_objection_explicit": false,
+      "source_coverage_crosscheck": "A01 A02 A03 A04 A05"
+    },
+    {
+      "section_id": "COV04",
+      "section": "Results theory diffusion/drift p6-9",
+      "original_order_reviewed": true,
+      "reopened_original_source": true,
+      "objections": [],
+      "zero_objection_explicit": true,
+      "source_coverage_crosscheck": "A05 A06 A07 A08 A09 A10 A11"
+    },
+    {
+      "section_id": "COV05",
+      "section": "Results prediction trajectories p9-10",
+      "original_order_reviewed": true,
+      "reopened_original_source": true,
+      "objections": [
+        "B04"
+      ],
+      "zero_objection_explicit": false,
+      "source_coverage_crosscheck": "A14 A15 A16 A23"
+    },
+    {
+      "section_id": "COV06",
+      "section": "Results controlled diffusion p11-13",
+      "original_order_reviewed": true,
+      "reopened_original_source": true,
+      "objections": [
+        "B05"
+      ],
+      "zero_objection_explicit": false,
+      "source_coverage_crosscheck": "A15 A16"
+    },
+    {
+      "section_id": "COV07",
+      "section": "Results controlled drift p13-15",
+      "original_order_reviewed": true,
+      "reopened_original_source": true,
+      "objections": [],
+      "zero_objection_explicit": true,
+      "source_coverage_crosscheck": "A14 A15 A16"
+    },
+    {
+      "section_id": "COV08",
+      "section": "Results mutual information p15-17",
+      "original_order_reviewed": true,
+      "reopened_original_source": true,
+      "objections": [
+        "B02",
+        "B03"
+      ],
+      "zero_objection_explicit": false,
+      "source_coverage_crosscheck": "A17"
+    },
+    {
+      "section_id": "COV09",
+      "section": "Results distractor and N scaling p17-19",
+      "original_order_reviewed": true,
+      "reopened_original_source": true,
+      "objections": [
+        "B01",
+        "B11"
+      ],
+      "zero_objection_explicit": false,
+      "source_coverage_crosscheck": "A18 A19 A22"
+    },
+    {
+      "section_id": "COV10",
+      "section": "Discussion p20-23",
+      "original_order_reviewed": true,
+      "reopened_original_source": true,
+      "objections": [
+        "B09"
+      ],
+      "zero_objection_explicit": false,
+      "source_coverage_crosscheck": "A11 A16 A20 A21 A22"
+    },
+    {
+      "section_id": "COV11",
+      "section": "Methods attractor projection p24-28",
+      "original_order_reviewed": true,
+      "reopened_original_source": true,
+      "objections": [],
+      "zero_objection_explicit": true,
+      "source_coverage_crosscheck": "A05 A06 A07 A08 A09 A12"
+    },
+    {
+      "section_id": "COV12",
+      "section": "Methods spiking variants p28-34",
+      "original_order_reviewed": true,
+      "reopened_original_source": true,
+      "objections": [
+        "B06",
+        "B08"
+      ],
+      "zero_objection_explicit": false,
+      "source_coverage_crosscheck": "A03 A13"
+    },
+    {
+      "section_id": "COV13",
+      "section": "Methods frozen noise and size scaling p34-38",
+      "original_order_reviewed": true,
+      "reopened_original_source": true,
+      "objections": [],
+      "zero_objection_explicit": true,
+      "source_coverage_crosscheck": "A10 A14 A19"
+    },
+    {
+      "section_id": "COV14",
+      "section": "Methods numerical protocols p38-41",
+      "original_order_reviewed": true,
+      "reopened_original_source": true,
+      "objections": [
+        "B10",
+        "B12"
+      ],
+      "zero_objection_explicit": false,
+      "source_coverage_crosscheck": "A16 A17 A20 U02"
+    },
+    {
+      "section_id": "COV15",
+      "section": "In-paper supplement descriptions p41-43",
+      "original_order_reviewed": true,
+      "reopened_original_source": true,
+      "objections": [],
+      "zero_objection_explicit": true,
+      "source_coverage_crosscheck": "U03 only; standalone materials out of primary"
+    },
+    {
+      "section_id": "COV16",
+      "section": "Acknowledgments and References p43-48",
+      "original_order_reviewed": true,
+      "reopened_original_source": true,
+      "objections": [],
+      "zero_objection_explicit": true,
+      "source_coverage_crosscheck": "lineage bibliographic cross-check; no new critical original model claim"
+    }
+  ],
+  "findings": [
+    {
+      "id": "B01",
+      "section_id": "COV09",
+      "original_source_locator": "p18-19 Fig7D and adjacent paragraph",
+      "objection": "A18/E27/E28 omit explicit source relationship: broader stationary bump changes spatial reach of distractor displacement; Fig7D varies sigma_g=0.5 vs 0.8 rad",
+      "nearest_A_claim_ids": [
+        "A18"
+      ],
+      "nearest_A_node_ids": [
+        "N07",
+        "N18",
+        "N21"
+      ],
+      "nearest_A_edge_ids": [
+        "E27",
+        "E28"
+      ],
+      "provisional_b_type": "GAP_CANDIDATE",
+      "adjudication": "PENDING_C",
+      "requires_full_A_C1_check": true,
+      "requires_adjacent_negative_source_C2_census": true
+    },
+    {
+      "id": "B02",
+      "section_id": "COV08",
+      "original_source_locator": "p15-16 Fig5B caption and p39-40 Mutual information measure",
+      "objection": "A17 does not specify reference denominator U=1 tau_u=650ms tau_x=150ms p=1 sigma_L=0 mV or 100-bin joint distribution; risk of unfaithful normalized-MI reconstruction",
+      "nearest_A_claim_ids": [
+        "A17"
+      ],
+      "nearest_A_node_ids": [
+        "N20"
+      ],
+      "nearest_A_edge_ids": [
+        "E25",
+        "E26"
+      ],
+      "provisional_b_type": "GAP_CANDIDATE",
+      "adjudication": "PENDING_C",
+      "requires_full_A_C1_check": true,
+      "requires_adjacent_negative_source_C2_census": true
+    },
+    {
+      "id": "B03",
+      "section_id": "COV08",
+      "original_source_locator": "p16 Eq11, Fig5C-E and p17 Fig6",
+      "objection": "Source combined short-window 1s expected displacement derives from <A(phi)^2> frozen mean field and B, not the full long-delay MI itself; A's observable N21 names it but A claims/edges do not preserve this explicit composition",
+      "nearest_A_claim_ids": [
+        "A17",
+        "A20"
+      ],
+      "nearest_A_node_ids": [
+        "N14",
+        "N15",
+        "N21"
+      ],
+      "nearest_A_edge_ids": [
+        "E28"
+      ],
+      "provisional_b_type": "GAP_CANDIDATE",
+      "adjudication": "PENDING_C",
+      "requires_full_A_C1_check": true,
+      "requires_adjacent_negative_source_C2_census": true
+    },
+    {
+      "id": "B04",
+      "section_id": "COV05",
+      "original_source_locator": "p9-10 Fig2 A-C labels and Fig2B caption",
+      "objection": "Caption has U=0.01 on one right-panel B sentence whereas accompanying labels and prose say U=0.1; does A23 fix quantitative panel assignment or hide contradiction?",
+      "nearest_A_claim_ids": [
+        "A23"
+      ],
+      "nearest_A_node_ids": [
+        "N17",
+        "N19"
+      ],
+      "nearest_A_edge_ids": [
+        "E23",
+        "E24"
+      ],
+      "provisional_b_type": "ALREADY_QUALIFIED_CHECK",
+      "adjudication": "PENDING_C",
+      "requires_full_A_C1_check": true,
+      "requires_adjacent_negative_source_C2_census": true
+    },
+    {
+      "id": "B05",
+      "section_id": "COV06",
+      "original_source_locator": "p11 Results versus p39 Diffusion estimation",
+      "objection": "One Results sentence assigns 1000 trials over 20 cue centers; Methods says 10 centers x100, creating exact original-method inconsistency; verify original A U02's scope",
+      "nearest_A_claim_ids": [
+        "A15",
+        "A20"
+      ],
+      "nearest_A_node_ids": [
+        "N19"
+      ],
+      "nearest_A_edge_ids": [
+        "E24"
+      ],
+      "provisional_b_type": "ALREADY_QUALIFIED_CHECK",
+      "adjudication": "PENDING_C",
+      "requires_full_A_C1_check": true,
+      "requires_adjacent_negative_source_C2_census": true
+    },
+    {
+      "id": "B06",
+      "section_id": "COV12",
+      "original_source_locator": "p27 Eq20-22, p29 Eq29 and p31-32 spiking approximation",
+      "objection": "Shared per-presynaptic spike noise simultaneously drives s,u,x; factorization of mean ux is approximation not full spike system; ensure original A does not falsely split noise sources",
+      "nearest_A_claim_ids": [
+        "A06",
+        "A13"
+      ],
+      "nearest_A_node_ids": [
+        "N03",
+        "N04",
+        "N05",
+        "N09",
+        "N24"
+      ],
+      "nearest_A_edge_ids": [
+        "E20",
+        "E21",
+        "E33"
+      ],
+      "provisional_b_type": "ALREADY_QUALIFIED_CHECK",
+      "adjudication": "PENDING_C",
+      "requires_full_A_C1_check": true,
+      "requires_adjacent_negative_source_C2_census": true
+    },
+    {
+      "id": "B07",
+      "section_id": "COV03",
+      "original_source_locator": "p5 post Eq3 and p8 depression limit",
+      "objection": "Without depression original authors could not sustain low-rate stable bump in this tuned network, and critical high depression threshold is setting-specific; check if A15's increasing-depression generality loses these negatives",
+      "nearest_A_claim_ids": [
+        "A03",
+        "A05",
+        "A11",
+        "A15",
+        "A20"
+      ],
+      "nearest_A_node_ids": [
+        "N05",
+        "N07"
+      ],
+      "nearest_A_edge_ids": [
+        "E05",
+        "E06"
+      ],
+      "provisional_b_type": "ALREADY_QUALIFIED_CHECK",
+      "adjudication": "PENDING_C",
+      "requires_full_A_C1_check": true,
+      "requires_adjacent_negative_source_C2_census": true
+    },
+    {
+      "id": "B08",
+      "section_id": "COV12",
+      "original_source_locator": "p31-33 spiking reduction paragraphs",
+      "objection": "Conditional steady-state spiking rate approximation approximately factorizes STP variables and neglects correlations; is A13 sufficiently qualified?",
+      "nearest_A_claim_ids": [
+        "A13"
+      ],
+      "nearest_A_node_ids": [
+        "N17",
+        "N06"
+      ],
+      "nearest_A_edge_ids": [
+        "E19"
+      ],
+      "provisional_b_type": "ALREADY_QUALIFIED_CHECK",
+      "adjudication": "PENDING_C",
+      "requires_full_A_C1_check": true,
+      "requires_adjacent_negative_source_C2_census": true
+    },
+    {
+      "id": "B09",
+      "section_id": "COV10",
+      "original_source_locator": "p20-23 Discussion",
+      "objection": "Unmodeled noisy STP, initial transient and cell-intrinsic adaptation vs absent exact biological-circuit validation may limit A21's interpretation; check full A and L11-L12",
+      "nearest_A_claim_ids": [
+        "A12",
+        "A21",
+        "A22"
+      ],
+      "nearest_A_node_ids": [
+        "N25"
+      ],
+      "nearest_A_edge_ids": [
+        "E32"
+      ],
+      "provisional_b_type": "ALREADY_QUALIFIED_CHECK",
+      "adjudication": "PENDING_C",
+      "requires_full_A_C1_check": true,
+      "requires_adjacent_negative_source_C2_census": true
+    },
+    {
+      "id": "B10",
+      "section_id": "COV14",
+      "original_source_locator": "p38-39 Exclusion and Diffusion estimation",
+      "objection": "A20 omits explicit transient-window 500ms and hard exclusion threshold 10Hz from the claim itself, though L15/L16 carry the issue; audit coverage before patch",
+      "nearest_A_claim_ids": [
+        "A20"
+      ],
+      "nearest_A_node_ids": [
+        "N19"
+      ],
+      "nearest_A_edge_ids": [
+        "E24"
+      ],
+      "provisional_b_type": "ALREADY_QUALIFIED_CHECK",
+      "adjudication": "PENDING_C",
+      "requires_full_A_C1_check": true,
+      "requires_adjacent_negative_source_C2_census": true
+    },
+    {
+      "id": "B11",
+      "section_id": "COV09",
+      "original_source_locator": "p18-19 Fig7 and p23 Discussion",
+      "objection": "Weak distractor modeled as fixed added firing-rate perturbation, ignoring feedback inhibition driven bump deformation; A18/L10 may already state valid boundary",
+      "nearest_A_claim_ids": [
+        "A18",
+        "A21"
+      ],
+      "nearest_A_node_ids": [
+        "N18",
+        "N21"
+      ],
+      "nearest_A_edge_ids": [
+        "E27",
+        "E28"
+      ],
+      "provisional_b_type": "ALREADY_QUALIFIED_CHECK",
+      "adjudication": "PENDING_C",
+      "requires_full_A_C1_check": true,
+      "requires_adjacent_negative_source_C2_census": true
+    },
+    {
+      "id": "B12",
+      "section_id": "COV14",
+      "original_source_locator": "p39 Drift estimation and p40 Langevin numerical integration",
+      "objection": "A node N19 reports fitted drift and reduced integration but lacks source-defined numerical inference and numerical update order: 400 spiking repetitions/20 cue centers, circular short-delta difference, 100 angular bins, periodic cubic interpolation, Euler step then ring wrap",
+      "nearest_A_claim_ids": [
+        "A07",
+        "A17",
+        "A20"
+      ],
+      "nearest_A_node_ids": [
+        "N16",
+        "N19"
+      ],
+      "nearest_A_edge_ids": [
+        "E23",
+        "E24"
+      ],
+      "provisional_b_type": "GAP_CANDIDATE",
+      "adjudication": "PENDING_C",
+      "requires_full_A_C1_check": true,
+      "requires_adjacent_negative_source_C2_census": true
+    }
+  ],
+  "zero_objection_sections": [
+    "COV01",
+    "COV02",
+    "COV04",
+    "COV07",
+    "COV11",
+    "COV13",
+    "COV15",
+    "COV16"
+  ],
+  "coverage_totals": {
+    "A_claims": 23,
+    "A_nodes": 25,
+    "A_edges": 33,
+    "A_existing_conditions": 16,
+    "A_uncertainties": 3,
+    "original_source_sections": 16,
+    "sections_with_findings": 8,
+    "zero_objection_sections": 8,
+    "total_objections": 12
+  },
+  "source_uncertainty": "B observations and challenges are not accepted corrections; original Fig2 and cue count remain unresolved unless independent original provenance establishes intended values",
+  "immutable_before_C": true
+}
