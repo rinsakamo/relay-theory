@@ -69,38 +69,79 @@ def unique_legacy(rows, key_fn, expected, label):
 
 
 def load_profiles(data, g2, g1):
-    if set(data) - {"schema", "profiles"}:
+    """Admission to indexed limited-source *triage*, never final science."""
+    allowed = {"schema", "profiles", "roster_reference", "science_method"}
+    if set(data) - allowed:
         raise InputMismatch("Profile file has unrecognized top-level keys")
     profiles = {}
+    known = {**g2, **g1}
+    sha256 = __import__("re").compile(r"^[0-9a-f]{64}$")
+    gitsha = __import__("re").compile(r"^[0-9a-f]{40}$")
     for item in data.get("profiles", []):
         ident = item.get("id")
-        if ident in profiles or ident not in (set(g2) | set(g1)):
+        if ident in profiles or ident not in known:
             raise InputMismatch(f"Unknown/duplicate profile {ident}")
-        if not item.get("original_source_evidence"):
-            raise InputMismatch(f"Profile {ident} requires original-source evidence")
-        if not isinstance(item.get("native_core_operators"), list):
-            raise InputMismatch(f"Profile {ident} missing native_core_operators list")
-        if not isinstance(item.get("direct_model_ancestors"), list):
-            raise InputMismatch(f"Profile {ident} missing direct_model_ancestors list")
-        if not isinstance(item.get("edition_sha256"), str) or len(item["edition_sha256"]) != 64:
-            raise InputMismatch(f"Profile {ident}: edition digest required")
+        if normalized_doi(item.get("doi")) != known[ident]:
+            raise InputMismatch(f"Profile {ident} DOI does not match exact frozen roster")
+        if item.get("profile_state") != "LEDGER_DERIVED_BOUNDED_NO_NEW_SOURCE_QUALIFICATION":
+            raise InputMismatch(f"Profile {ident} exceeds permitted original science scope")
+        if item.get("global_family_independence_certified") is not False:
+            raise InputMismatch(f"Profile {ident} false final science promotion")
+        if item.get("ancestry_exhaustiveness") != "NOT_ATTESTED":
+            raise InputMismatch(f"Profile {ident} must not claim ancestry exhaustiveness")
+        if not sha256.fullmatch(str(item.get("edition_sha256", ""))):
+            raise InputMismatch(f"Profile {ident} missing real hex edition digest")
+        ops = item.get("native_core_operators")
+        descriptions = item.get("operator_source_descriptions")
+        if not isinstance(ops, list) or not ops or len(ops) != len(set(ops)):
+            raise InputMismatch(f"Profile {ident} missing/duplicate source-defined core operators")
+        if any(not isinstance(v, str) or not v.startswith(ident + ":") for v in ops):
+            raise InputMismatch(f"Profile {ident} core operators must use paper-local IDs")
+        if not isinstance(descriptions, dict) or set(descriptions) != set(ops) or not all(
+            isinstance(v, str) and len(v.strip()) >= 20 for v in descriptions.values()
+        ):
+            raise InputMismatch(f"Profile {ident} operator descriptions ungrounded")
+        ancestry = item.get("direct_model_ancestors")
+        if not isinstance(ancestry, list) or len(ancestry) != len(set(ancestry)):
+            raise InputMismatch(f"Profile {ident} invalid direct DOI ancestry list")
+        for doi in ancestry:
+            if not normalized_doi(doi).startswith("10."):
+                raise InputMismatch(f"Profile {ident} ancestor must be DOI not slot name")
+        evidence = item.get("original_source_evidence")
+        if not isinstance(evidence, list) or not evidence:
+            raise InputMismatch(f"Profile {ident} source ledger evidence missing")
+        for ev in evidence:
+            if ev.get("source_audit_kind") != "PREEXISTING_FROZEN_BOUNDED_LEDGER_NOT_NEW_INDEPENDENT_READING":
+                raise InputMismatch("Evidence grade may not imply new original science")
+            if ev.get("original_primary_sha256") != item["edition_sha256"]:
+                raise InputMismatch("Primary original hash not coherent with profile edition")
+            if not gitsha.fullmatch(str(ev.get("repository_git_blob_sha1", ""))):
+                raise InputMismatch("Source ledger exact Git blob is required")
+            if not isinstance(ev.get("repository_path"), str) or not ev["repository_path"].startswith("research/paper2/p399/"):
+                raise InputMismatch("Explicit existing source ledger repository path needed")
+            if not gitsha.fullmatch(str(ev.get("source_repository_ref", ""))):
+                raise InputMismatch("Pin the precise upstream source-bearing Git commit")
+            if not isinstance(ev.get("source_loci"), list) or not ev["source_loci"]:
+                raise InputMismatch("Original source-locus index required")
+        for doc in item.get("additional_edition_bundle", []):
+            # P13 math appendix and PRD01 corrected notice must not disappear
+            if not sha256.fullmatch(str(doc.get("sha256", ""))):
+                raise InputMismatch(f"Profile {ident} invalid necessary source bundle digest")
         profiles[ident] = item
     return profiles
 
 
-def source_hints(a, b, profile_a, profile_b):
-    """Hints only: missing edges, absent citations or nonshared ops prove nothing."""
+def source_hints(doi_a, doi_b, profile_a, profile_b):
+    """DOI-based ancestry only. Paper-local operator names never auto-match."""
     hints = []
-    if profile_a and profile_b:
-        ops_a = set(profile_a["native_core_operators"])
-        ops_b = set(profile_b["native_core_operators"])
-        # Explicit source-grounded stable IDs, NOT lexical name similarity.
-        if ops_a & ops_b:
-            hints.append("VERIFIED_PROFILE_SHARED_CORE_OPERATOR_CANDIDATE")
-    if profile_a and b in profile_a["direct_model_ancestors"]:
-        hints.append("PROFILE_A_DIRECT_ANCESTOR_CANDIDATE")
-    if profile_b and a in profile_b["direct_model_ancestors"]:
-        hints.append("PROFILE_B_DIRECT_ANCESTOR_CANDIDATE")
+    if profile_a and normalized_doi(doi_b) in {
+        normalized_doi(d) for d in profile_a["direct_model_ancestors"]
+    }:
+        hints.append("DECLARED_DIRECT_ANCESTOR_DOI_SOURCE_REVIEW")
+    if profile_b and normalized_doi(doi_a) in {
+        normalized_doi(d) for d in profile_b["direct_model_ancestors"]
+    }:
+        hints.append("DECLARED_DIRECT_ANCESTOR_DOI_SOURCE_REVIEW")
     return hints
 
 
@@ -229,7 +270,8 @@ def generate(g2_data, g1_data, legacy, profile_data, source_native_v20=None):
         "g2_slots": 40, "g1_slots": 20,
         "g2_internal_pairs_checked": 780, "g2_g1_pairs_checked": 800,
         "full_pair_count": 1580,
-        "original_source_grounded_profiles": len(profiles),
+        "source_ledger_derived_bounded_profiles": len(profiles),
+        "new_full_original_scientific_qualifications_from_profiles": 0,
         "prior_indexed_native_scoped_pairs_reused": len(scoped),
         "priority_categories": categories,
         "global_final_independent_pairs": 0,
