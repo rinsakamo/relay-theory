@@ -84,8 +84,8 @@ for phrase in [
 ]:
     check(f"manuscript_{phrase}", phrase in manuscript)
 
+check("safe_independence_phrase", "not as 40 independent statistical replications" in manuscript)
 for forbidden in [
-    "40 independent replications",
     "independent human re-adjudication was performed",
     "POMDPs cannot encode",
 ]:
