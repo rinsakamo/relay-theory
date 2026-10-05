@@ -1,0 +1,182 @@
+{
+  "schema": "W8A_FOUR_PAPER_ANCESTRY_RESOLUTION_v1",
+  "authority": {
+    "issue": 399,
+    "w7_draft_pr": 447,
+    "w7_frozen_head": "4325a9a4cba4da651e7cdf2617f7bc8b08c90f54"
+  },
+  "frozen_lane_sources": [
+    {
+      "paper": "CNC-01",
+      "lane": "W1",
+      "lane_head": "7a5a46aa39c81be4ceb863ff0f57cbe641d508dc",
+      "path": "research/paper2/p399/g4/genealogy_w1_att_blf_cnc/W1_SOURCE_NATIVE_PROFILE_FRAGMENTS_v1.json"
+    },
+    {
+      "paper": "MEM-01",
+      "lane": "W3",
+      "lane_head": "b132104b79c5f799107328e0f8d634dcffcf930d",
+      "path": "research/paper2/p399/g4/genealogy_w3_mem_prd_skl/W3_SOURCE_NATIVE_PROFILE_FRAGMENTS_v1.json"
+    },
+    {
+      "paper": "INT-03",
+      "lane": "W4",
+      "lane_head": "abb07cef7542ffb9809d924ab05ede702bac9a20",
+      "path": "research/paper2/p399/g4/genealogy_w4_int_02_03_05_06_07/W4_SOURCE_NATIVE_PROFILE_FRAGMENTS_v1.json"
+    },
+    {
+      "paper": "INT-06",
+      "lane": "W4",
+      "lane_head": "abb07cef7542ffb9809d924ab05ede702bac9a20",
+      "path": "research/paper2/p399/g4/genealogy_w4_int_02_03_05_06_07/W4_SOURCE_NATIVE_PROFILE_FRAGMENTS_v1.json"
+    }
+  ],
+  "papers": [
+    {
+      "id": "CNC-01",
+      "doi": "10.1038/s41562-023-01719-1",
+      "status": "ANCESTRY_RESOLVED_NON_DOI_NODE_REQUIRED",
+      "source_edition": "Nature Human Behaviour Version of Record / complete official article HTML, published 2023-10-16",
+      "central_mechanism": "Bayesian-symbolic conceptual bootstrapping using adaptor-grammar cache/reuse, combinatory-logic program structure, and a dynamically updated latent concept library under bounded search.",
+      "determination": "The paper explicitly says that it adapts the algorithm of Liang, Jordan & Klein (2010). The inherited operator is the combinatory-logic/adaptor-grammar program-sharing and cache/reuse machinery; CNC-01 changes it into a process-level conceptual-bootstrapping model with a dynamic latent concept library.",
+      "direct_edges": [
+        {
+          "ancestor": "rt-biblio-liang-jordan-klein-2010-learning-programs-fb673590fbc7",
+          "edge_type": "DIRECT_ADAPTATION",
+          "mechanism": "combinatory-logic program representation plus cache/share/reuse inference machinery used as the basis of the dynamic concept-library process model"
+        }
+      ],
+      "bounded_non_direct_notes": [
+        "Liang 2010 itself builds on combinatory logic and hierarchical nonparametric Bayesian sharing; these are constituent intellectual ancestors, but W8-A does not invent transitive direct CNC-01 edges to them.",
+        "DOI absence no longer makes this ancestry underdetermined because the predecessor is uniquely identified by exact proceedings metadata and stable ICML/DBLP records."
+      ]
+    },
+    {
+      "id": "MEM-01",
+      "doi": "10.1007/s42113-023-00189-y",
+      "status": "ANCESTRY_RESOLVED_NON_DOI_NODE_REQUIRED",
+      "source_edition": "Computational Brain & Behavior Version of Record / complete official Springer HTML, published 2023-12-28; volume 7, pages 129-149 (2024)",
+      "central_mechanism": "The inherited ACT-R declarative-memory operator family: activation B+S, trace/base-level decay, spacing-sensitive trace decay, retrieval competition/partial matching, and reconstructive blending.",
+      "determination": "The paper is not constructing an unrelated memory model; it explicitly analyzes ACT-R declarative memory inherited across prior ACT-R work. Exact source-level origins can be bounded without reconstructing all ACT-R history.",
+      "direct_edges": [
+        {
+          "ancestor": "doi:10.1093/acprof:oso/9780195324259.001.0001",
+          "edge_type": "DIRECT_IMPLEMENTATION_DESCENT",
+          "mechanism": "ACT-R declarative-memory algorithmic implementation used as the paper's operative formalism"
+        },
+        {
+          "ancestor": "doi:10.1111/j.1467-9280.1991.tb00174.x",
+          "edge_type": "DIRECT_IMPLEMENTATION_DESCENT",
+          "mechanism": "base-level activation power-law trace accumulation reproduced as equation 3"
+        },
+        {
+          "ancestor": "doi:10.1207/s15516709cog0000_14",
+          "edge_type": "DIRECT_IMPLEMENTATION_DESCENT",
+          "mechanism": "trace-specific decay modification used in equations 4-5 to obtain spacing effects"
+        },
+        {
+          "ancestor": "rt-biblio-lebiere-1999-actr-blending-b876f955be9a",
+          "edge_type": "DIRECT_IMPLEMENTATION_DESCENT",
+          "mechanism": "ACT-R blending mechanism used for reconstructive aggregate retrieval and equation 8"
+        }
+      ],
+      "bounded_non_direct_notes": [
+        "Anderson, Reder & Lebiere 1996 is a source-backed ACT-R constituent for source activation and partial matching, but MEM-01 does not locally attribute equation 7 to it as a unique origin; W8-A records SHARED_CONSTITUENT rather than manufacturing an exact direct edge.",
+        "Anderson et al. 2004 is a source-backed ACT-R architecture reference and is kept as SHARED_FRAMEWORK.",
+        "A non-DOI book node is not required for this bounded resolution: Anderson 2007 has a verified book-level DOI. A non-DOI proceedings node is nevertheless scientifically necessary because the paper explicitly attributes blending to Lebiere 1999."
+      ]
+    },
+    {
+      "id": "INT-03",
+      "doi": "10.1073/pnas.95.24.14529",
+      "status": "ANCESTRY_RESOLVED_DIRECT_EDGE",
+      "source_edition": "PNAS published article / official PNAS-PMC full text, 1998-11-24, volume 95(24), pages 14529-14534",
+      "central_mechanism": "Long-range recurrent global-workspace gating with reward/vigilance modulation and reward-modulated synaptic update in an effortful-task architecture.",
+      "determination": "The 1998 paper explicitly states that its minimal scheme extends four earlier Dehaene/Changeux task models (delayed response, card sorting, numerical processing, planning) and specifies a common architectural principle. The exact cited editions and DOI edges can therefore be represented without relying on shared authorship.",
+      "direct_edges": [
+        {
+          "ancestor": "doi:10.1162/jocn.1989.1.3.244",
+          "edge_type": "DIRECT_EXTENSION",
+          "mechanism": "predecessor delayed-response neuronal model; reward-modulated Hebbian and reward-linked stability mechanisms are explicitly referred back to this model"
+        },
+        {
+          "ancestor": "doi:10.1093/cercor/1.1.62",
+          "edge_type": "DIRECT_EXTENSION",
+          "mechanism": "predecessor card-sorting neuronal model within the explicit four-model extension family; also cited for reward-linked short-term stability"
+        },
+        {
+          "ancestor": "doi:10.1162/jocn.1993.5.4.390",
+          "edge_type": "DIRECT_EXTENSION",
+          "mechanism": "predecessor number-processing neuronal model named in the explicit extension statement and unified by the common architecture"
+        },
+        {
+          "ancestor": "doi:10.1073/pnas.94.24.13293",
+          "edge_type": "DIRECT_EXTENSION",
+          "mechanism": "predecessor planning neuronal model; reward-linked workspace stability mechanism is reused and generalized"
+        }
+      ],
+      "bounded_non_direct_notes": [
+        "The direct edges are admitted because the descendant itself says the scheme extends these named prior task models; same authorship is not used as evidence.",
+        "No additional earlier transitive lineage is promoted unless each intermediate relation is separately source-supported."
+      ]
+    },
+    {
+      "id": "INT-06",
+      "doi": "10.1371/journal.pcbi.1000765",
+      "status": "ANCESTRY_RESOLVED_DIRECT_EDGE",
+      "source_edition": "PLOS Computational Biology Version of Record main article plus the already-frozen official supplement bundle; published 2010-04-29",
+      "adopted_main_sha256": "c276294fa7a111e5df98f35aa0da933af28d45a1e1347940a1b57753c0980706",
+      "central_mechanism": "Spiking-neuron task-set router with NMDA-mediated recurrent integration, accumulation-to-threshold response gating, inhibitory reset, and sensory buffering.",
+      "determination": "INT-06 explicitly says that the model capitalizes on existing elements but that the novel contribution is their integration into a global functional architecture. Exact implementation descent is source-explicit for the local recurrent module/parameters and the motor threshold circuit; this does not license a direct edge to INT-03.",
+      "direct_edges": [
+        {
+          "ancestor": "doi:10.1023/A:1011204814320",
+          "edge_type": "DIRECT_IMPLEMENTATION_DESCENT",
+          "mechanism": "local sensory/router recurrent module and synaptic efficacies; INT-06 states that local efficacies are the same as this predecessor"
+        },
+        {
+          "ancestor": "doi:10.1038/nn1722",
+          "edge_type": "DIRECT_IMPLEMENTATION_DESCENT",
+          "mechanism": "motor response selection and cortico-basal-ganglia threshold-detection circuit explicitly modeled from Lo & Wang"
+        }
+      ],
+      "bounded_non_direct_relations": [
+        {
+          "ancestor": "doi:10.1016/S0896-6273(02)01092-9",
+          "edge_type": "SHARED_CONSTITUENT",
+          "mechanism": "recurrent decision/integration module family used among prior local-module studies"
+        },
+        {
+          "ancestor": "doi:10.1073/pnas.1332574100",
+          "edge_type": "SHARED_CONSTITUENT",
+          "mechanism": "reciprocal/feedback recurrent workspace-style modulation cited as a previous model, not an exact descendant identity"
+        },
+        {
+          "ancestor": "doi:10.1073/pnas.94.24.13293",
+          "edge_type": "SHARED_CONSTITUENT",
+          "mechanism": "inhibitory reset is described as similar to the predecessor's termination signal"
+        },
+        {
+          "ancestor": "doi:10.1073/pnas.95.24.14529",
+          "edge_type": "SHARED_FRAMEWORK",
+          "mechanism": "same broader Dehaene workspace/recurrent lineage, but INT-06 does not source-explicitly claim descent from the 1998 INT-03 model and its central task-set/NMDA router is a distinct implementation"
+        }
+      ],
+      "bounded_non_direct_notes": [
+        "The phrase 'capitalizes on existing elements' is not converted wholesale into direct ancestry; direct edges are limited to loci that say the implementation/parameters are modeled as or the same as a predecessor.",
+        "INT-03 ↔ INT-06 remains a shared-framework relation, not a direct model edge."
+      ]
+    }
+  ],
+  "summary": {
+    "four_profile_blockers_resolved": 4,
+    "four_profile_blockers_remaining_underdetermined": 0,
+    "direct_ancestry_edges_resolved": 11,
+    "non_doi_nodes_required": 2,
+    "schema_extension_scientifically_necessary": true,
+    "w7_profile_count_rewritten": false,
+    "w7_pair_matrix_rewritten": false,
+    "global_independent_count_promoted": false,
+    "main_scientific_authorization": false
+  }
+}
