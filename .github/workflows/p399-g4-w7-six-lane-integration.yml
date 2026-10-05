@@ -1,0 +1,153 @@
+name: P399 G4 W7 six-lane genealogy integration (MAIN NO-GO)
+
+on:
+  push:
+    branches:
+      - "paper2/p399-g4-w7-six-lane-integration-20261005"
+    paths:
+      - "research/paper2/p399/g4/genealogy_w7_integration_v1/w7_integrate.py"
+      - "research/paper2/p399/g4/genealogy_w7_integration_v1/test_w7_fail_closed.py"
+      - ".github/workflows/p399-g4-w7-six-lane-integration.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  w7-fail-closed-integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Fetch immutable W7 authorities
+        shell: bash
+        run: |
+          set -euo pipefail
+          refs=(
+            ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a
+            7a5a46aa39c81be4ceb863ff0f57cbe641d508dc
+            005209c82fcbaf3d70f545488fd11cc15676a315
+            b132104b79c5f799107328e0f8d634dcffcf930d
+            abb07cef7542ffb9809d924ab05ede702bac9a20
+            72b4a9d3b89d49148d1787910b75163843490019
+            be50aee8c49331fe7bb24591fc1bd7cd49c37aec
+            c7317da41b15159864c014b8dc53449121c34a2c
+            012f9fc2209bc06b3c82f4ebedb70a9ce52ee3ce
+            4abf6c229ff893fb51b56b7127a8d26f184d787d
+            15ee0a2a74b7e47adb439d8b30f499103d1f7eb1
+          )
+          for ref in "${refs[@]}"; do
+            git cat-file -e "${ref}^{commit}" 2>/dev/null || git fetch --no-tags origin "${ref}"
+            git cat-file -e "${ref}^{commit}"
+          done
+
+      - name: Destructive synthetic tests first
+        run: |
+          python -m unittest             research/paper2/p399/g4/genealogy_w7_integration_v1/test_w7_fail_closed.py             -v
+
+      - name: Generate real W7 reconciliation
+        run: |
+          python research/paper2/p399/g4/genealogy_w7_integration_v1/w7_integrate.py
+
+      - name: Verify real generated receipts fail closed
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          w = Path("research/paper2/p399/g4/genealogy_w7_integration_v1")
+          a = Path("research/paper2/p399/g4/genealogy_accelerator_v1")
+          required = [
+              w/"W7_SIX_LANE_INTAKE_RECEIPT_v1.json",
+              w/"W7_60_PROFILE_RECONCILIATION_v1.json",
+              w/"W7_CROSS_LANE_PAIR_ADJUDICATIONS_v1.json",
+              w/"W7_1580_GENEALOGY_AUDIT_v1.json",
+              w/"W7_FALSE_PROMOTION_ADVERSE_AUDIT_v1.json",
+              w/"W7_FINAL_GENEALOGY_STATUS_JA.md",
+              a/"ORIGINAL_NATIVE_PROFILES_v1.json",
+              a/"PAIR_TRIAGE_MATRIX.json",
+              a/"PRIORITIZED_REVIEW_QUEUE.json",
+              a/"PAIR_TRIAGE_SUMMARY.json",
+              a/"REMAINING_PROFILE_EVIDENCE_QUEUE.json",
+          ]
+          missing = [str(p) for p in required if not p.exists()]
+          assert not missing, missing
+
+          intake=json.loads((w/"W7_SIX_LANE_INTAKE_RECEIPT_v1.json").read_text())
+          recon=json.loads((w/"W7_60_PROFILE_RECONCILIATION_v1.json").read_text())
+          cross=json.loads((w/"W7_CROSS_LANE_PAIR_ADJUDICATIONS_v1.json").read_text())
+          audit=json.loads((w/"W7_1580_GENEALOGY_AUDIT_v1.json").read_text())
+          adverse=json.loads((w/"W7_FALSE_PROMOTION_ADVERSE_AUDIT_v1.json").read_text())
+          profiles=json.loads((a/"ORIGINAL_NATIVE_PROFILES_v1.json").read_text())
+          matrix=json.loads((a/"PAIR_TRIAGE_MATRIX.json").read_text())
+          summary=json.loads((a/"PAIR_TRIAGE_SUMMARY.json").read_text())
+
+          assert intake["base_head"] == "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a"
+          assert len(intake["lanes"]) == 6
+          assert all(x["status"] == "VALID" for x in intake["lanes"])
+          assert intake["quarantined_lane_count"] == 0
+          assert intake["main_authorized"] is False
+
+          assert recon["starting_profiles"] == 26
+          assert recon["attempted_additions"] == 34
+          assert recon["successfully_imported"] == 25
+          assert recon["source_blocked"] == 5
+          assert recon["ancestry_underdetermined"] == 4
+          assert recon["final_profile_count"] == 51
+          assert len(profiles["profiles"]) == 51
+          assert len({p["id"] for p in profiles["profiles"]}) == 51
+          assert all(p["global_family_independence_certified"] is False for p in profiles["profiles"])
+
+          assert cross["count"] == 475
+          assert len(cross["pairs"]) == 475
+          assert len(matrix) == 1580
+          assert sum(r["cohort"] == "G2_G2" for r in matrix) == 780
+          assert sum(r["cohort"] == "G2_G1" for r in matrix) == 800
+          keys={(r["cohort"],r["a"],r["b"]) for r in matrix}
+          assert len(keys) == 1580
+          assert all(r["global_independence_certified"] is False for r in matrix)
+
+          assert audit["g2_g2"] == 780 and audit["g2_g1"] == 800 and audit["total"] == 1580
+          assert audit["global_final_independent_count"] == 0
+          assert audit["main_authorized"] is False
+          assert summary["global_final_independent_pairs"] == 0
+          assert summary["scientific_main_authorized"] is False
+          assert adverse["test_count"] == 10
+          assert len(adverse["tests"]) == 10
+          assert all(t["result"] == "PASS" for t in adverse["tests"])
+          PY
+          git diff --check
+
+      - name: Freeze generated W7 outputs on the W7 branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add             research/paper2/p399/g4/genealogy_w7_integration_v1/W7_*             research/paper2/p399/g4/genealogy_accelerator_v1/ORIGINAL_NATIVE_PROFILES_v1.json             research/paper2/p399/g4/genealogy_accelerator_v1/PAIR_TRIAGE_MATRIX.json             research/paper2/p399/g4/genealogy_accelerator_v1/PRIORITIZED_REVIEW_QUEUE.json             research/paper2/p399/g4/genealogy_accelerator_v1/PAIR_TRIAGE_SUMMARY.json             research/paper2/p399/g4/genealogy_accelerator_v1/REMAINING_PROFILE_EVIDENCE_QUEUE.json
+          if git diff --cached --quiet; then
+            echo "Generated outputs already frozen."
+          else
+            git commit -m "P399 W7 freeze six-lane genealogy reconciliation [skip ci]"
+            git push origin HEAD:paper2/p399-g4-w7-six-lane-integration-20261005
+          fi
+
+      - name: Upload W7 audit artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: p399-g4-w7-genealogy-audit
+          path: |
+            research/paper2/p399/g4/genealogy_w7_integration_v1/W7_*
+            research/paper2/p399/g4/genealogy_accelerator_v1/ORIGINAL_NATIVE_PROFILES_v1.json
+            research/paper2/p399/g4/genealogy_accelerator_v1/PAIR_TRIAGE_MATRIX.json
+            research/paper2/p399/g4/genealogy_accelerator_v1/PRIORITIZED_REVIEW_QUEUE.json
+            research/paper2/p399/g4/genealogy_accelerator_v1/PAIR_TRIAGE_SUMMARY.json
+            research/paper2/p399/g4/genealogy_accelerator_v1/REMAINING_PROFILE_EVIDENCE_QUEUE.json
