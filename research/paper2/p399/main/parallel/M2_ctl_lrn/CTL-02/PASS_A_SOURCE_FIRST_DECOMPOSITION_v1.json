@@ -1,0 +1,75 @@
+{
+  "schema": "relaytheory.p399.main.m2.pass_a_source_first_decomposition_v1",
+  "slot": "CTL-02",
+  "doi": "10.7554/eLife.12029",
+  "stage": "A_SOURCE_FIRST_DECOMPOSITION",
+  "protocol": "RIR v2.3.1 source-closed-C",
+  "source_scope": "adopted publisher Version of Record full HTML; no standalone external material used as new Stage-A evidence",
+  "grammar_mapping_performed": false,
+  "result_informed_adjudication_performed": false,
+  "source_loci": [
+    "Abstract three-level modeling claim",
+    "neural feedback/TAN pause results",
+    "algorithmic OpAL extension",
+    "Bayesian uncertainty model",
+    "Discussion predictions and biological interpretation"
+  ],
+  "internal_state": [
+    "critic/value estimate",
+    "Go and NoGo opponent actor weights",
+    "neural-model striatal population state and TAN pause state",
+    "Bayesian reward-probability beliefs represented by Beta parameters",
+    "uncertainty/entropy-derived quantity used to regulate flexibility/decay"
+  ],
+  "observed_or_input_variables": [
+    "chosen action and received reward/outcome",
+    "stochastic outcome contingencies and change points",
+    "trial history used to update reward beliefs"
+  ],
+  "action_or_control_variables": [
+    "action selected from opponent Go/NoGo action values; source-defined TAN/uncertainty feedback changes effective plasticity/flexibility"
+  ],
+  "update_operators": [
+    "reward prediction-error update of critic and Go/NoGo weights",
+    "multiplicative actor-weight decay toward naive prior",
+    "Beta-belief update from outcomes",
+    "uncertainty/entropy computation and feedback modulation of decay/TAN pause"
+  ],
+  "value_or_policy_quantities": [
+    "critic value and reward prediction error",
+    "opponent Go/NoGo action weights entering choice probability",
+    "Beta posterior reward beliefs and uncertainty"
+  ],
+  "gating_or_selection_rules": [
+    "opponent action selection",
+    "uncertainty-responsive feedback determines source-defined flexibility/decay strength; fixed-decay variants are comparators"
+  ],
+  "learning_rule": [
+    "actor-critic/OpAL reward learning plus uncertainty-responsive regulation; inherited OpAL machinery distinguished from the paper-specific feedback contribution"
+  ],
+  "temporal_ordering": [
+    "select action",
+    "receive outcome",
+    "compute prediction error and update critic/actors and reward belief",
+    "derive uncertainty/population signal",
+    "adjust TAN pause/decay/effective learning for subsequent behavior"
+  ],
+  "environmental_or_task_variables": [
+    "stochastic reward contingencies and change points are external task dynamics, not internal controller state"
+  ],
+  "model_alternatives": [
+    "biophysical basal-ganglia/TAN network",
+    "Bayesian uncertainty learner",
+    "algorithmic OpAL extension",
+    "fixed versus uncertainty-responsive decay/pause"
+  ],
+  "source_defined_controller_hierarchy": "three Marr-level models are explanatory counterparts rather than three serial cognitive controllers; the feedback loop is itself the source-defined control mechanism",
+  "negative_or_adverse_results": [
+    "OpAL is explicitly inherited",
+    "correspondence across Marr levels is not direct empirical proof that a neural correlate is a biological controller",
+    "source identifies experimental testing of new uncertainty predictions as future work"
+  ],
+  "reset_or_reinitialization_boundary": "task/reversal changes can reset external contingencies; no extra persistent coordinator is inferred from those changes",
+  "stage_a_complete": true,
+  "stage_a_frozen_before_b": true
+}
