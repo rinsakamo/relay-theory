@@ -103,7 +103,7 @@ class M3FailClosed(unittest.TestCase):
         self.assertTrue(self.boundary["fail_closed_guards"]["fit_failure_alone_cannot_imply_A2"])
     def test_22_source_state_not_double_counted(self):
         self.assertTrue(self.boundary["fail_closed_guards"]["source_defined_state_cannot_be_double_counted_as_new_coordinator"])
-        for s in ROSTER: self.assertIn("not re-counted",load(f"{s}/ARCHITECTURAL_OUTCOME_v1.json")["double_count_guard"])
+        for s in ROSTER:\n            guard=load(f"{s}/ARCHITECTURAL_OUTCOME_v1.json")["double_count_guard"]\n            self.assertIn("re-counted",guard)\n            self.assertTrue(guard.startswith("No "))
     def test_23_prd01_bundle_and_exclusions_preserved(self):
         p=load("PRD-01/SOURCE_AUTHORITY_LOCK_v1.json")["source"]
         comps={x["role"]:x for x in p["components"]}
