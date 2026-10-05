@@ -200,7 +200,8 @@ def matchedTower : LiftTower Contract R0Obj R1Obj R2Obj where
     rfl
   commute12 := by
     intro r
-    cases r.kind <;> rfl
+    rcases r with ⟨family, kind⟩
+    cases kind <;> rfl
 
 private def directContract (f : Family) : Contract :=
   ⟨f, Requirement.direct⟩
@@ -234,8 +235,14 @@ private theorem stateful_has_no_R1_lift (f : Family) :
     ¬ matchedTower.HasLift1 (statefulContract f) := by
   intro h
   rcases h with ⟨r, hr⟩
-  have hreq := congrArg Contract.requirement hr
-  cases r.kind <;> cases hreq
+  rcases r with ⟨family, kind⟩
+  cases kind with
+  | direct =>
+      have hreq := congrArg Contract.requirement hr
+      cases hreq
+  | stateless =>
+      have hreq := congrArg Contract.requirement hr
+      cases hreq
 
 private theorem stateful_has_R2_lift (f : Family) :
     matchedTower.HasLift2 (statefulContract f) := by
