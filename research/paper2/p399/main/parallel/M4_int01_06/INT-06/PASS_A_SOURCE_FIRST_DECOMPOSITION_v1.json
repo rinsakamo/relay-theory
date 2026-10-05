@@ -1,0 +1,98 @@
+{
+  "schema": "relaytheory.p399.main.m4.pass_a_source_first_decomposition_v1",
+  "slot": "INT-06",
+  "doi": "10.1371/journal.pcbi.1000765",
+  "source_lock": "research/paper2/p399/main/parallel/M4_int01_06/INT-06/SOURCE_AUTHORITY_LOCK_v1.json",
+  "stage_sequence": {
+    "source_lock_freeze_commit": "a4ef8fbdafc3870ef100bafbfaed20f46adbe87f",
+    "result_informed_architecture_used": false
+  },
+  "grammar_mapping_performed": false,
+  "architecture_outcome_assigned": false,
+  "component_mechanisms": [
+    "parallel sensory/local recurrent modules and buffers",
+    "task-setting/task-set populations",
+    "NMDA-mediated spiking router",
+    "evidence accumulation/response-threshold motor circuit",
+    "inhibitory reset",
+    "task-order network as distinct source-defined component"
+  ],
+  "component_local_state": [
+    "sensory buffer activity",
+    "task-set population state",
+    "recurrent router activity",
+    "response evidence/threshold state",
+    "task-order state when present"
+  ],
+  "shared_state": "Task-setting/router/evidence states are explicit source-defined coordinating circuit state.",
+  "message_information_flow": [
+    "parallel sensory -> buffer",
+    "task-setting populations gate router",
+    "router -> response circuit",
+    "threshold -> action",
+    "inhibitory reset limits/clears router while peripheral processing can continue"
+  ],
+  "ordering": [
+    "parallel peripheral processing",
+    "serial central routing/response",
+    "reset then later routing",
+    "task-order network not necessary for PRP serial bottleneck"
+  ],
+  "gating": [
+    "task-set gating",
+    "response threshold",
+    "inhibitory reset"
+  ],
+  "control_dependencies": [
+    "serial bottleneck arises from source router/task-set dynamics, not inferred executive"
+  ],
+  "learning_dependencies": [
+    "configured spiking circuitry; no M4 learning controller added"
+  ],
+  "memory_dependencies": [
+    "short-term buffer and recurrent/task-set activity"
+  ],
+  "prediction_dependencies": [
+    "PRP/SOA/difficulty behavior"
+  ],
+  "task_world_variables": [
+    "dual-task stimuli",
+    "SOA",
+    "task rules",
+    "response mappings"
+  ],
+  "readout_action_stage": "thresholded motor response",
+  "explicit_arbitration_routing": [
+    "serial bottleneck arises from source router/task-set dynamics, not inferred executive"
+  ],
+  "model_variants": [
+    "dual-task PRP",
+    "task-order ablation",
+    "difficulty/SOA variants",
+    "experiment-limited router populations"
+  ],
+  "adverse_null_results": [
+    "task-order ablation retains typical PRP",
+    "some supplementary RT conditions null",
+    "irrelevant router populations folded into background"
+  ],
+  "integration_question": {
+    "A": "parallel sensory/local processors",
+    "B": "task-set/NMDA router plus response-threshold circuit",
+    "extra": [
+      "buffers",
+      "reset",
+      "task-order network"
+    ],
+    "shared": "source-defined task-set/router/evidence/buffer state",
+    "exchange": "buffered sensory evidence, task-set gating, routed evidence, reset",
+    "temporal": "parallel peripheral + serial central routing/reset",
+    "update": "recurrent evidence integration to threshold then reset",
+    "interaction": "mediated",
+    "mediator": "source-defined task-set/NMDA router",
+    "mediator_state": "STATEFUL_SOURCE_DEFINED",
+    "origin": "SOURCE"
+  },
+  "source_ordered_omission_sweep": "COMPLETED_AT_STAGE_A_SOURCE_FIRST_SCOPE",
+  "frozen": true
+}
