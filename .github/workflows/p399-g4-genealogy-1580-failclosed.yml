@@ -62,6 +62,14 @@ jobs:
           python research/paper2/p399/g4/genealogy_accelerator_v1/verify_profile_ledger.py \
             --profiles research/paper2/p399/g4/genealogy_accelerator_v1/ORIGINAL_NATIVE_PROFILES_v1.json \
             --output p399-g4-genealogy-audit/PROFILE_GIT_PROVENANCE_RECEIPT.json
+      - name: Pin G2-D v15b/v16b original-limited pair ledgers (no family promotion)
+        shell: bash
+        run: |
+          set -euo pipefail
+          V15=research/paper2/p399/g2/int_g2d/G2D_V15B_SELECTED_INT15_INT16_VS_G1_P18_P09_NATIVE_OPERATOR_BOUNDED_PAIR_AUDIT.json
+          V16=research/paper2/p399/g2/int_g2d/G2D_V16B_INT01_INT14_FIRSTPARTY_CRP_NATIVE_FAMILY_20261005.json
+          test "$(git rev-parse "HEAD:${V15}")" = "63296efe609a52f33e84dc58411c96a20ca62a09"
+          test "$(git rev-parse "HEAD:${V16}")" = "609a4fbd32fc832d86910dfa24e797cc6e09cee3"
       - name: Real 780+800 historic register + independent current G1 cross-check
         shell: bash
         run: |
@@ -73,6 +81,8 @@ jobs:
             --profiles research/paper2/p399/g4/genealogy_accelerator_v1/ORIGINAL_NATIVE_PROFILES_v1.json \
             --source-native-v20 research/paper2/p399/g2/int_g2d/G2D_V20_INT01_THREE_ADDITIONAL_PAIRS_INT09_OFFICIAL_FIG9_CORRIGENDUM_AND_35_QUEUE.json \
             --source-native-int04-int08 research/paper2/p399/g2/int_g2d/G2D_V10D_CORRECTED_PAIR_SOURCE_NATIVE_MACHINE_GATES.json \
+            --source-native-v15b research/paper2/p399/g2/int_g2d/G2D_V15B_SELECTED_INT15_INT16_VS_G1_P18_P09_NATIVE_OPERATOR_BOUNDED_PAIR_AUDIT.json \
+            --source-native-v16b research/paper2/p399/g2/int_g2d/G2D_V16B_INT01_INT14_FIRSTPARTY_CRP_NATIVE_FAMILY_20261005.json \
             --output p399-g4-genealogy-audit
           python - <<'PY'
           import json
@@ -83,7 +93,7 @@ jobs:
           assert len(rows) == summary["full_pair_count"] == 1580
           assert sum(r["cohort"] == "G2_G2" for r in rows) == 780
           assert sum(r["cohort"] == "G2_G1" for r in rows) == 800
-          assert summary["prior_indexed_native_scoped_pairs_reused"] == 10
+          assert summary["prior_indexed_native_scoped_pairs_reused"] == 13
           assert summary["source_ledger_derived_bounded_profiles"] == 26
           assert summary["missing_profiles_from_current_60_working_roster"] == 34
           gap = json.loads((folder / "REMAINING_PROFILE_EVIDENCE_QUEUE.json").read_text())
