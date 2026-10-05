@@ -1,0 +1,143 @@
+{
+  "schema": "relaytheory.p399.main.m5.pass_a.v1",
+  "slot": "INT-11",
+  "doi": "10.1371/journal.pcbi.1014093",
+  "chronology": {
+    "stage": "A",
+    "result_informed": false,
+    "frozen_for_B": true
+  },
+  "source_native_integrated_model": {
+    "components": [
+      [
+        "A11-M1",
+        "feature inference (FI)"
+      ],
+      [
+        "A11-M2",
+        "outcome inference (OI)"
+      ],
+      [
+        "A11-M3",
+        "joint FI+OI context estimate"
+      ],
+      [
+        "A11-M4",
+        "context-conditioned TD/action-value map"
+      ],
+      [
+        "A11-M5",
+        "manual early-learning interaction schedule"
+      ]
+    ],
+    "local_state": {
+      "FI": "successor-feature maps + FI posterior",
+      "OI": "outcome/reward maps + OI posterior",
+      "joint": "joint prior/context estimate during configured phase",
+      "action": "context-conditioned TD/action values"
+    },
+    "shared": "Source explicitly forms joint context estimate/prior from FI/OI evidence; source-defined mediator, not reconstruction workspace.",
+    "inputs": [
+      "environmental features/transitions",
+      "behavioral outcomes/reward",
+      "task location"
+    ],
+    "outputs": [
+      "FI/OI/joint context posterior",
+      "context-conditioned action"
+    ],
+    "flow": [
+      "features -> FI",
+      "outcomes -> OI",
+      "FI+OI posteriors/prior -> joint context estimate during configured phase",
+      "inferred context -> TD/action-value map -> action"
+    ],
+    "temporal": [
+      "context evidence updates over trials",
+      "central T-maze joint interaction first 200 trials",
+      "then reverts to FI-only"
+    ],
+    "learning": [
+      "maps/TD values update from evidence",
+      "interaction schedule itself is manually set, not learned"
+    ],
+    "memory": [
+      "maps/posterior carry history; no episodic retrieval gate"
+    ],
+    "control": [
+      "inferred context indexes action/value representation"
+    ],
+    "gating": [
+      "manual source/modeler schedule determines when OI supports FI; confidence threshold is exploratory, not canonical"
+    ],
+    "decision": [
+      "context-conditioned TD/action-value map drives action"
+    ],
+    "world": [
+      "maze location",
+      "features",
+      "actions",
+      "reward",
+      "block/trial schedule"
+    ],
+    "reset": "task/block/pretraining schedules and priors are source-defined; no autonomous switch policy inferred",
+    "offline_online": {
+      "learning": [
+        "FI/OI/map/TD updates during task"
+      ],
+      "experimenter_control": [
+        "joint interaction phase schedule"
+      ]
+    },
+    "variants": [
+      "joint central",
+      "FI-only",
+      "OI-only",
+      "confidence/switching alternatives noncanonical"
+    ],
+    "negative": [
+      "FI/OI inherited",
+      "latent context distinct from learned maps/world",
+      "joint timing manually defined",
+      "confidence threshold preliminary",
+      "do not promote manual schedule to learned gate"
+    ]
+  },
+  "integration_questions": {
+    "components_integrated": [
+      "feature inference (FI)",
+      "outcome inference (OI)",
+      "joint FI+OI context estimate",
+      "context-conditioned TD/action-value map",
+      "manual early-learning interaction schedule"
+    ],
+    "information_crossing_boundaries": [
+      "features -> FI",
+      "outcomes -> OI",
+      "FI+OI posteriors/prior -> joint context estimate during configured phase",
+      "inferred context -> TD/action-value map -> action"
+    ],
+    "shared_state": "Source explicitly forms joint context estimate/prior from FI/OI evidence; source-defined mediator, not reconstruction workspace.",
+    "shared_state_source_defined": true,
+    "temporal_order": [
+      "context evidence updates over trials",
+      "central T-maze joint interaction first 200 trials",
+      "then reverts to FI-only"
+    ],
+    "gating": [
+      "manual source/modeler schedule determines when OI supports FI; confidence threshold is exploratory, not canonical"
+    ],
+    "mediator_explicit_in_source": "Source explicitly forms joint context estimate/prior from FI/OI evidence; source-defined mediator, not reconstruction workspace.",
+    "online_vs_offline": {
+      "learning": [
+        "FI/OI/map/TD updates during task"
+      ],
+      "experimenter_control": [
+        "joint interaction phase schedule"
+      ]
+    },
+    "experimenter_imposed": "joint-interaction phase schedule",
+    "coupling_removal_failure": "FI and OI evidence cannot form the tested joint context estimate"
+  },
+  "freeze_status": "FROZEN_STAGE_A"
+}
