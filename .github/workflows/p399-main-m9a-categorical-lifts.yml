@@ -89,5 +89,6 @@ jobs:
           set -euo pipefail
           cd formal/relay_theory
           lean --version | grep -F "version 4.33.1"
+          lake build RelayTheory.GrammarComparatorViews
           lake env lean RelayTheory/ReconstructionLiftHierarchy.lean
           lake env leanchecker RelayTheory.ReconstructionLiftHierarchy
