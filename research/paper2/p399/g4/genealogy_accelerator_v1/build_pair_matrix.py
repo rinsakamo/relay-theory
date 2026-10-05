@@ -240,7 +240,62 @@ def int04_int08_bounded_witness(source, g2, profiles):
     }
 
 
-def generate(g2_data, g1_data, legacy, profile_data, source_native_v20=None, source_native_int04_int08=None):
+def additional_g2d_bounded_pairs(v15b, v16b, g2, g1, profiles):
+    """Pinned existing G2-D original-native comparisons; never new GLOBAL science."""
+    extra = {}
+    if v15b is not None:
+        gov = v15b["governance"]
+        if gov["all_800_central_family_cleared"] is not False or gov["main_science"] is not False:
+            raise InputMismatch("v15b global cross-family false promotion")
+        expected = {("INT-15", "P18"), ("INT-16", "P09")}
+        rows = v15b["pairs"]
+        if len(rows) != 2:
+            raise InputMismatch("v15b exact original limited pair count drift")
+        found = set()
+        for r in rows:
+            a, b = r["pair"]
+            if not a.startswith("G2_") or not b.startswith("G1_"):
+                raise InputMismatch("v15b G2/G1 pair taxonomy corrupted")
+            a, b = a[3:].replace("INT", "INT-"), b[3:]
+            if (a, b) not in expected or (a, b) in found:
+                raise InputMismatch("v15b unexpected or repeated source-scoped pair")
+            found.add((a, b))
+            if (normalized_doi(r["source"]["int_doi"]) != g2[a]
+                or normalized_doi(r["source"]["g1_doi"]) != g1[b]
+                or r["official_final_independent"] is not False
+                or not r["bounded_judgment"].endswith("full formal learning-rule and ancestry equivalence review held") 
+                    and "PROVISIONAL" not in r["bounded_judgment"]):
+                raise InputMismatch("v15b source DOI/scope/final scientific decision mismatch")
+            extra[("G2_G1", a, b)] = {
+                "bounded_original_evidence_id": "G2D_V15B_" + a + "_" + b,
+                "bounded_original_outcome": r["bounded_judgment"],
+                "evidence_scope": "SOURCE_SCOPED_ONLY_NOT_GLOBAL_INDEPENDENCE"
+            }
+        if found != expected:
+            raise InputMismatch("v15b exactly two source-bounded pair witnesses required")
+    if v16b is not None:
+        x, y, comp, gates = (v16b[k] for k in (
+            "source_int01", "source_int14", "comparison", "gates"
+        ))
+        if (normalized_doi(x["doi"]) != g2["INT-01"]
+            or normalized_doi(y["doi"]) != g2["INT-14"]
+            or comp["pair_bounded_nonidentical_core_operator_judgment"] != "SUPPORTED"
+            or comp["whole_historical_family_final_judgment"] != "UNDERDETERMINED"
+            or comp["direct_mathematical_descendant_relation_demonstrated"] is not False
+            or gates["all_16_global_family_independence"] is not False
+            or gates["main_authorized"] is not False):
+            raise InputMismatch("v16b INT01 vs INT14 scope or DOI false promotion")
+        if profiles.get("INT-01") and x["mht_sha"] != profiles["INT-01"]["edition_sha256"]:
+            raise InputMismatch("v16b INT01 private original source version drift")
+        extra[("G2_G2", "INT-01", "INT-14")] = {
+            "bounded_original_evidence_id": "G2D_V16B_INT01_INT14",
+            "bounded_original_outcome": "SHARED_CRP_BUT_BOUNDED_DISTINCT_TASKSET_POLICY_VS_GRAPH_HIERARCHY_OPERATORS",
+            "evidence_scope": "SOURCE_SCOPED_ONLY_NOT_GLOBAL_INDEPENDENCE"
+        }
+    return extra
+
+
+def generate(g2_data, g1_data, legacy, profile_data, source_native_v20=None, source_native_int04_int08=None, source_native_v15b=None, source_native_v16b=None):
     g2 = roster(g2_data["selected_working_roster"], "slot")
     g1 = roster(g1_data["roster_snapshot"], "id")
     if len(g2) != 40 or len(g1) != 20 or set(g2) & set(g1):
@@ -269,6 +324,7 @@ def generate(g2_data, g1_data, legacy, profile_data, source_native_v20=None, sou
     profiles = load_profiles(profile_data, g2, g1)
     scoped = existing_scoped_comparisons(source_native_v20, g2, g1)
     extra = int04_int08_bounded_witness(source_native_int04_int08, g2, profiles)
+    more = additional_g2d_bounded_pairs(source_native_v15b, source_native_v16b, g2, g1, profiles)
     rows = []
     for a, b in itertools.combinations(g2, 2):
         row = archival_internal[key_internal(a, b)]
@@ -278,6 +334,11 @@ def generate(g2_data, g1_data, legacy, profile_data, source_native_v20=None, sou
             if witness:
                 raise InputMismatch("Duplicate bounded source witness")
             witness = extra
+        additional = more.get(("G2_G2", *key_internal(a, b)))
+        if additional:
+            if witness:
+                raise InputMismatch("Duplicate differently indexed bounded original source witness")
+            witness = additional
         if witness:
             outcome["prior_source_scoped_comparison"] = witness
             if outcome["priority"] > 3:
@@ -288,6 +349,11 @@ def generate(g2_data, g1_data, legacy, profile_data, source_native_v20=None, sou
         row = archival_external[(a, b)]
         outcome = candidate(row, a, b, g2[a], g1[b], profiles)
         witness = scoped.get(("G1", b)) if a == "INT-01" else None
+        additional = more.get(("G2_G1", a, b))
+        if additional:
+            if witness:
+                raise InputMismatch("Duplicate cross-cohort source witness")
+            witness = additional
         if witness:
             outcome["prior_source_scoped_comparison"] = witness
             if outcome["priority"] > 3:
@@ -306,7 +372,7 @@ def generate(g2_data, g1_data, legacy, profile_data, source_native_v20=None, sou
         "full_pair_count": 1580,
         "source_ledger_derived_bounded_profiles": len(profiles),
         "new_full_original_scientific_qualifications_from_profiles": 0,
-        "prior_indexed_native_scoped_pairs_reused": len(scoped) + int(extra is not None),
+        "prior_indexed_native_scoped_pairs_reused": len(scoped) + int(extra is not None) + len(more),
         "priority_categories": categories,
         "global_final_independent_pairs": 0,
         "scientific_main_authorized": False,
@@ -320,6 +386,8 @@ def main():
     p.add_argument("--focus", help="Output incident pairs ONLY for one changed slot; not a global receipt")
     p.add_argument("--source-native-v20", help="Optional pinned G2-D INT01 35-pair limited native evidence; cannot promote science")
     p.add_argument("--source-native-int04-int08", help="Optional pinned v10d INT04-INT08 bounded original-native contrast")
+    p.add_argument("--source-native-v15b", help="Pinned two INT15/INT16 vs G1 source-native bounded comparisons")
+    p.add_argument("--source-native-v16b", help="Pinned shared-CRP but local-different operator comparison INT01/INT14")
     args = p.parse_args()
     paths = {k: Path(getattr(args, k.replace("-", "_"))) for k in
              ("g2-manifest", "g1-roster", "legacy-pairs", "profiles")}
@@ -327,12 +395,18 @@ def main():
         load(paths["g2-manifest"]), load(paths["g1-roster"]),
         load(paths["legacy-pairs"]), load(paths["profiles"]),
         load(args.source_native_v20) if args.source_native_v20 else None,
-        load(args.source_native_int04_int08) if args.source_native_int04_int08 else None
+        load(args.source_native_int04_int08) if args.source_native_int04_int08 else None,
+        load(args.source_native_v15b) if args.source_native_v15b else None,
+        load(args.source_native_v16b) if args.source_native_v16b else None
     )
     if args.source_native_v20:
         paths["source-native-v20"] = Path(args.source_native_v20)
     if args.source_native_int04_int08:
         paths["source-native-int04-int08"] = Path(args.source_native_int04_int08)
+    if args.source_native_v15b:
+        paths["source-native-v15b"] = Path(args.source_native_v15b)
+    if args.source_native_v16b:
+        paths["source-native-v16b"] = Path(args.source_native_v16b)
     # Complete, deterministic next-source queue: ranking aids curator scheduling ONLY.
     # A zero-risk incident count is NEVER absence of common ancestry or evidence.
     known_profiles = {p["id"] for p in load(paths["profiles"])["profiles"]}
