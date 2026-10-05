@@ -124,8 +124,10 @@ def load_profiles(data, g2, g1):
             if not isinstance(ev.get("source_loci"), list) or not ev["source_loci"]:
                 raise InputMismatch("Original source-locus index required")
         for doc in item.get("additional_edition_bundle", []):
-            # P13 math appendix and PRD01 corrected notice must not disappear
-            if not sha256.fullmatch(str(doc.get("sha256", ""))):
+            if doc.get("role") == "author_adopted_prepublication_code":
+                if ident != "INT-01" or not gitsha.fullmatch(str(doc.get("git_commit", ""))) or not gitsha.fullmatch(str(doc.get("git_blob", ""))):
+                    raise InputMismatch("Only INT01 exact author-adopted prepublication code reference allowed")
+            elif not sha256.fullmatch(str(doc.get("sha256", ""))):
                 raise InputMismatch(f"Profile {ident} invalid necessary source bundle digest")
         profiles[ident] = item
     return profiles
