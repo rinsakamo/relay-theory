@@ -1,0 +1,92 @@
+{
+  "schema": "relaytheory.p399.main.m6.pass-b-result-informed-reaudit.v1",
+  "date_jst": "2026-10-05",
+  "slot": "INT-13",
+  "frozen_A": {
+    "path": "PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json",
+    "blob_sha1": "cef479e0c2e0d5c40f391ba35d09644627fd26aa",
+    "stage_a_final_lane_head": "949347fa32ddb4af51832d25d3d9dca5ba3f79f2"
+  },
+  "challenge_rule": "Challenge A without changing source edition or using INT-family expectations.",
+  "challenges": [
+    {
+      "id": "B01",
+      "objection": "RL/WM arbitration mistaken for added state",
+      "source_reaudit_result": "Final policy is explicitly a weighted source-defined mixture of RL and WM policies; WM engagement/capacity determines the weight.",
+      "disposition": "REJECT_AS_A2_COUNT"
+    },
+    {
+      "id": "B02",
+      "objection": "LBA accumulator mistaken for coordinator",
+      "source_reaudit_result": "Accumulator state is source-defined decision dynamics; first crossing determines action/RT.",
+      "disposition": "REJECT_FALSE_COORDINATOR"
+    },
+    {
+      "id": "B03",
+      "objection": "WM recurrent/persistent state mistaken for extra executive",
+      "source_reaudit_result": "Capacity-limited WM Q/state is an explicit source component and cannot be counted again.",
+      "disposition": "REJECT_DOUBLE_COUNT"
+    },
+    {
+      "id": "B04",
+      "objection": "set-size control variable mistaken for meta-controller",
+      "source_reaudit_result": "Set size is task context disclosed at block onset; it parameterizes a source-defined decision threshold.",
+      "disposition": "REJECT_CONFLATION"
+    },
+    {
+      "id": "B05",
+      "objection": "proactive bound treated as reconstruction addition",
+      "source_reaudit_result": "Linear set-size threshold modulation and its static-bound ablation are source-defined.",
+      "disposition": "REJECT_AS_RECONSTRUCTION_ADD"
+    },
+    {
+      "id": "B06",
+      "objection": "fitting/posterior state mistaken for cognition",
+      "source_reaudit_result": "Bayesian parameter-fitting machinery and posterior samples are analysis state unless the source identifies a cognitive variable.",
+      "disposition": "REJECT_CONFLATION"
+    },
+    {
+      "id": "B07",
+      "objection": "reactive-control alternative omitted",
+      "source_reaudit_result": "Reactive/collapsing-bound variants were tested; relevant source result favors proactive account within this model family.",
+      "disposition": "CONFIRM_VARIANT_NEGATIVE"
+    },
+    {
+      "id": "B08",
+      "objection": "proof silently normalized",
+      "source_reaudit_result": "Publisher page explicitly labels the adopted source an uncorrected proof; frozen proof status retained.",
+      "disposition": "CONFIRM_EDITION_LIMIT"
+    },
+    {
+      "id": "B09",
+      "objection": "clinical fit overread causally",
+      "source_reaudit_result": "Group fitted mechanisms do not establish causal neural implementation.",
+      "disposition": "CONFIRM_LIMIT"
+    }
+  ],
+  "complete_source_ordered_omission_sweep": {
+    "performed": true,
+    "sections": [
+      "proof-status header",
+      "task/RLWM architecture",
+      "weighted mixture equations",
+      "PADDL LBA decision process",
+      "learning-rate ablation",
+      "proactive set-size threshold",
+      "reactive/collapsing-bound alternatives",
+      "held-out prediction",
+      "Discussion/clinical interpretation"
+    ],
+    "omission_detected": false
+  },
+  "variants_rechecked": [
+    "PADDL",
+    "choice-only softmax RLWM",
+    "static-bound",
+    "reactive/collapsing-bound",
+    "held-out prediction"
+  ],
+  "negative_evidence_preserved": true,
+  "stage_A_modified": false,
+  "stage_B_status": "FROZEN"
+}
