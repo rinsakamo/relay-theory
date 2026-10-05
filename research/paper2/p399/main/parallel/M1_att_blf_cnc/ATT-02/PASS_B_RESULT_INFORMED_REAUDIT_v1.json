@@ -1,0 +1,78 @@
+{
+  "schema": "relaytheory.p399.main.m1.pass_b_result_informed_reaudit_v1",
+  "slot": "ATT-02",
+  "doi": "10.1371/journal.pcbi.1004770",
+  "chronology": {
+    "stage": "B",
+    "stage_a_exact_commit": "541b9a269b31b21dbea595b172dda4f37be19f78",
+    "received_complete_frozen_stage_a": true,
+    "stage_a_was_frozen_before_b": true,
+    "same_adopted_source_package_as_stage_a": true
+  },
+  "challenge_rule": "Do not reward agreement; challenge material Stage-A nodes, edges, boundary placements, variants, negatives and temporal claims against the adopted source universe.",
+  "objection_ledger": [
+    {
+      "id": "ATT02-B01",
+      "target": "temporal_order",
+      "challenge": "Did Stage A turn numerical settling order into a biological timing claim?",
+      "finding": "No; Stage A explicitly restricts this to computational ordering and retains the source's temporal omissions.",
+      "stage_b_status": "ALREADY_QUALIFIED_IN_A",
+      "decisive_source_loci": [
+        "Model implementation",
+        "Discussion temporal limitations"
+      ],
+      "comparator_target_boundary_checked": true,
+      "system_world_boundary_checked": true,
+      "temporal_order_checked": true,
+      "adverse_negative_context_checked": true
+    },
+    {
+      "id": "ATT02-B02",
+      "target": "system_world_boundary",
+      "challenge": "Was the origin of top-down attention incorrectly internalized into the two-layer circuit?",
+      "finding": "No; Stage A marks the attention source external/unspecified.",
+      "stage_b_status": "ALREADY_QUALIFIED_IN_A",
+      "decisive_source_loci": [
+        "Model description",
+        "Discussion"
+      ],
+      "comparator_target_boundary_checked": true,
+      "system_world_boundary_checked": true,
+      "temporal_order_checked": true,
+      "adverse_negative_context_checked": true
+    },
+    {
+      "id": "ATT02-B03",
+      "target": "negative_adverse_findings",
+      "challenge": "Was the source-visible +20% parameter fragility omitted?",
+      "finding": "No; it is retained explicitly.",
+      "stage_b_status": "ALREADY_QUALIFIED_IN_A",
+      "decisive_source_loci": [
+        "S1 parameter sensitivity"
+      ],
+      "comparator_target_boundary_checked": true,
+      "system_world_boundary_checked": true,
+      "temporal_order_checked": true,
+      "adverse_negative_context_checked": true
+    }
+  ],
+  "separate_source_ordered_omission_sweep": {
+    "performed": true,
+    "sweep_order": [
+      "Eqs.1-9",
+      "Fig.6 normalization comparison",
+      "Discussion limitations",
+      "S1 parameter sensitivity"
+    ],
+    "newly_identified_omissions": [],
+    "retained_negative_or_boundary_conditions": [
+      "fine temporal/synchrony/noise-correlation effects omitted",
+      "surround suppression omitted",
+      "top-down origin unspecified",
+      "+20% perturbation failure"
+    ]
+  },
+  "broad_verbal_description_substituted_for_math": false,
+  "alternate_model_space_checked": true,
+  "stage_b_status": "FROZEN_RESULT_INFORMED_REAUDIT"
+}

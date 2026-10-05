@@ -1,0 +1,83 @@
+{
+  "schema": "relaytheory.p399.main.m1.pass_b_result_informed_reaudit_v1",
+  "slot": "ATT-01",
+  "doi": "10.1007/s42113-024-00197-6",
+  "chronology": {
+    "stage": "B",
+    "stage_a_exact_commit": "541b9a269b31b21dbea595b172dda4f37be19f78",
+    "received_complete_frozen_stage_a": true,
+    "stage_a_was_frozen_before_b": true,
+    "same_adopted_source_package_as_stage_a": true
+  },
+  "challenge_rule": "Do not reward agreement; challenge material Stage-A nodes, edges, boundary placements, variants, negatives and temporal claims against the adopted source universe.",
+  "objection_ledger": [
+    {
+      "id": "ATT01-B01",
+      "target": "explicitly_modeled_interfaces",
+      "challenge": "Did Stage A preserve the distinct goal-relevant response-likelihood path as well as the ex-Gaussian RT path?",
+      "finding": "Stage A mentions both output families but under-specifies the distinct goal-relevant one-hot/input-to-response branch.",
+      "stage_b_status": "SOURCE_GAP_CONFIRMED",
+      "decisive_source_loci": [
+        "Eq.4 RT mapping",
+        "Eq.5 joint fit/goal-relevant response branch",
+        "source model output description"
+      ],
+      "comparator_target_boundary_checked": true,
+      "system_world_boundary_checked": true,
+      "temporal_order_checked": true,
+      "adverse_negative_context_checked": true
+    },
+    {
+      "id": "ATT01-B02",
+      "target": "learning_update_rules",
+      "challenge": "Was learned selection history collapsed into one-trial intertrial priming?",
+      "finding": "No. Stage A separates learned history-map content from the previous-trial feature-dimension marker.",
+      "stage_b_status": "ALREADY_QUALIFIED_IN_A",
+      "decisive_source_loci": [
+        "Eq.3",
+        "Table 1 variants",
+        "Appendix C GLM"
+      ],
+      "comparator_target_boundary_checked": true,
+      "system_world_boundary_checked": true,
+      "temporal_order_checked": true,
+      "adverse_negative_context_checked": true
+    },
+    {
+      "id": "ATT01-B03",
+      "target": "system_world_boundary",
+      "challenge": "Was task demand converted into a persistent internal coordinator?",
+      "finding": "No. Task/goal information remains an external/interface criterion that weights source-defined maps.",
+      "stage_b_status": "ALREADY_QUALIFIED_IN_A",
+      "decisive_source_loci": [
+        "Algorithmic Model",
+        "Eq.3"
+      ],
+      "comparator_target_boundary_checked": true,
+      "system_world_boundary_checked": true,
+      "temporal_order_checked": true,
+      "adverse_negative_context_checked": true
+    }
+  ],
+  "separate_source_ordered_omission_sweep": {
+    "performed": true,
+    "sweep_order": [
+      "Algorithmic Model map construction",
+      "response-time and response-likelihood readouts",
+      "seven variant definitions/model evidence",
+      "Appendix B distributions",
+      "Appendix C intertrial analysis"
+    ],
+    "newly_identified_omissions": [
+      "ATT01-B01 only"
+    ],
+    "retained_negative_or_boundary_conditions": [
+      "no raw publisher byte hash",
+      "no exhaustive correction-registry proof",
+      "variant/model evidence does not establish universal cognitive necessity"
+    ]
+  },
+  "broad_verbal_description_substituted_for_math": false,
+  "alternate_model_space_checked": true,
+  "stage_b_status": "FROZEN_RESULT_INFORMED_REAUDIT"
+}

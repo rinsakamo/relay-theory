@@ -1,0 +1,81 @@
+{
+  "schema": "relaytheory.p399.main.m1.pass_b_result_informed_reaudit_v1",
+  "slot": "BLF-02",
+  "doi": "10.1371/journal.pcbi.1006972",
+  "chronology": {
+    "stage": "B",
+    "stage_a_exact_commit": "541b9a269b31b21dbea595b172dda4f37be19f78",
+    "received_complete_frozen_stage_a": true,
+    "stage_a_was_frozen_before_b": true,
+    "same_adopted_source_package_as_stage_a": true
+  },
+  "challenge_rule": "Do not reward agreement; challenge material Stage-A nodes, edges, boundary placements, variants, negatives and temporal claims against the adopted source universe.",
+  "objection_ledger": [
+    {
+      "id": "BLF02-B01",
+      "target": "source_defined_model_variants",
+      "challenge": "Was the flat leaky-beta model stated to be universally identical to a delta rule?",
+      "finding": "No. Stage A preserves the W8-S qualification: persistent nonzero prior counts distinguish them; zero-prior large-n gives asymptotic identity.",
+      "stage_b_status": "ALREADY_QUALIFIED_IN_A",
+      "decisive_source_loci": [
+        "S1 Supplementary Results 1 Eq.7-8",
+        "main flat-model discussion"
+      ],
+      "comparator_target_boundary_checked": true,
+      "system_world_boundary_checked": true,
+      "temporal_order_checked": true,
+      "adverse_negative_context_checked": true
+    },
+    {
+      "id": "BLF02-B02",
+      "target": "internal_representations",
+      "challenge": "Was confidence collapsed into the first-order probability estimate?",
+      "finding": "No; posterior mean and precision/log-precision remain separate readouts.",
+      "stage_b_status": "ALREADY_QUALIFIED_IN_A",
+      "decisive_source_loci": [
+        "probability/confidence model sections"
+      ],
+      "comparator_target_boundary_checked": true,
+      "system_world_boundary_checked": true,
+      "temporal_order_checked": true,
+      "adverse_negative_context_checked": true
+    },
+    {
+      "id": "BLF02-B03",
+      "target": "negative_adverse_findings",
+      "challenge": "Was apparent adaptive learning in the flat comparator omitted?",
+      "finding": "No; Stage A retains flat-model apparent learning-rate modulation and the stronger confidence-reset discriminator.",
+      "stage_b_status": "ALREADY_QUALIFIED_IN_A",
+      "decisive_source_loci": [
+        "S1 Result 2",
+        "main comparison"
+      ],
+      "comparator_target_boundary_checked": true,
+      "system_world_boundary_checked": true,
+      "temporal_order_checked": true,
+      "adverse_negative_context_checked": true
+    }
+  ],
+  "separate_source_ordered_omission_sweep": {
+    "performed": true,
+    "sweep_order": [
+      "hierarchical model",
+      "flat model Eqs.2-4",
+      "probability/confidence readouts",
+      "uncoupled control",
+      "S1 Result 1 delta relation",
+      "S1 Result 2 apparent learning rate",
+      "S1 robustness/negative controls"
+    ],
+    "newly_identified_omissions": [],
+    "retained_negative_or_boundary_conditions": [
+      "conditional not universal delta equivalence",
+      "flat/hierarchical first-order correlation",
+      "instructed task structure",
+      "moderate single-subject identifiability"
+    ]
+  },
+  "broad_verbal_description_substituted_for_math": false,
+  "alternate_model_space_checked": true,
+  "stage_b_status": "FROZEN_RESULT_INFORMED_REAUDIT"
+}
