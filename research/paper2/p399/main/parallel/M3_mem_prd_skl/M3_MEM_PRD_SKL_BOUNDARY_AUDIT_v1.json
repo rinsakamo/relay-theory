@@ -1,0 +1,61 @@
+{
+  "schema": "relaytheory.p399.main.m3.mem_prd_skl_boundary_audit.v1",
+  "tests": [
+    {
+      "boundary": "memory state vs predictive latent state",
+      "finding": "DISTINGUISHED",
+      "evidence": "MEM-02 episode latent and semantic parameters remain memory/model representations; PRD-03 posterior latent-state belief is state estimation, not episodic storage."
+    },
+    {
+      "boundary": "retained model vs learned parameter",
+      "finding": "DISTINGUISHED",
+      "evidence": "MEM-02 semantic-model parameters, PRD-01 SR/PR parameters, SKL-01 forward/inverse parameters and SKL-02 recurrent weights remain source-defined learned structure; none is auto-promoted to active coordinator."
+    },
+    {
+      "boundary": "prediction vs retrieval",
+      "finding": "DISTINGUISHED",
+      "evidence": "MEM-01/MEM-03 retrieval queries read retained memory; PRD-01/PRD-03 predictive/state-estimation operations compute consequences/posteriors. Shared mathematical readout form is not family identity."
+    },
+    {
+      "boundary": "skill policy vs action-selection interface",
+      "finding": "DISTINGUISHED",
+      "evidence": "SKL-01 inverse controller and SKL-03 aim-cache/exploration are source-defined skill/action mechanisms; P_out execution/query interface does not itself become a persistent policy."
+    },
+    {
+      "boundary": "replay vs planning",
+      "finding": "NO_CONFLATION_OBSERVED",
+      "evidence": "None of the nine central models requires offline replay to be reclassified as an online planner; M3 introduces no replay coordinator."
+    },
+    {
+      "boundary": "learned transition model vs episodic trace",
+      "finding": "DISTINGUISHED",
+      "evidence": "PRD-01 learned occupancy/transition-related representations and PRD-03 experiment-defined HMM transition structure are not episodic traces; MEM retained traces/codes remain separately typed."
+    },
+    {
+      "boundary": "offline consolidation vs online control",
+      "finding": "DISTINGUISHED",
+      "evidence": "MEM-02 delayed compression variants do not establish within-trace consolidation; SKL source-defined online execution/plasticity is not inferred from offline delay schedules."
+    },
+    {
+      "boundary": "prediction error vs learning signal",
+      "finding": "DISTINGUISHED",
+      "evidence": "PRD-01 TD error and SKL-01 forward/control errors are transient source-defined update signals, not persistent prediction/coordinator state."
+    },
+    {
+      "boundary": "external trajectory vs internal memory",
+      "finding": "DISTINGUISHED",
+      "evidence": "PRD-01/PRD-03/SKL-02/SKL-03 task histories and trajectories remain outside; only source-defined learned beliefs/weights/caches are internal."
+    }
+  ],
+  "fail_closed_guards": {
+    "external_history_cannot_auto_become_memory_state": true,
+    "fitted_latent_cannot_auto_become_stored_memory": true,
+    "prediction_error_cannot_auto_become_coordinator_state": true,
+    "learned_parameter_cannot_auto_become_active_controller": true,
+    "motor_target_cannot_auto_become_internal_skill_state": true,
+    "offline_replay_cannot_auto_become_online_coordination": true,
+    "fit_failure_alone_cannot_imply_A2": true,
+    "source_defined_state_cannot_be_double_counted_as_new_coordinator": true
+  },
+  "conclusion": "M3 preserves source-specific boundaries; no cross-domain homogenization is used to obtain A0 fidelity."
+}
