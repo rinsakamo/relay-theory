@@ -197,3 +197,8 @@ M9-A does **not** establish that MAIN40 papers are independent, that Grammar v0 
 The repository does not currently depend on a category-theory library. The Lean module therefore kernel-checks the **object-level consequences** of the categorical construction: a commuting nested lift tower, monotonic lift existence, pairwise-disjoint least-lift outcomes, six matched A-state witnesses, the A1 typed-adapter witness, the A2 stateless-obstruction/stateful-realizer witness, and the POMDP-like-to-Dynamic transition factorization.
 
 The category-theoretic statement above is the mathematical presentation; the Lean object-level theorem is a conservative formal shadow of its essential-image logic, not a claim that the repository has formalized general category theory.
+
+## 10. Validation boundary
+
+This matched synthetic reachability result does **not** replace independent human re-adjudication of a stratified MAIN40 subset. It addresses a different hostile-review question: whether the frozen A-state outcome vocabulary and reconstruction hierarchy can, in principle and in executable matched witnesses, return A1 and A2 rather than collapsing every admissible case to A0.
+
