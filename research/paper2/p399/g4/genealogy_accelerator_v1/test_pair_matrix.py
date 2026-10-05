@@ -85,5 +85,57 @@ class MatrixTests(unittest.TestCase):
         self.assertEqual(summary["global_final_independent_pairs"], 0)
 
 
+    def native_fixture(self):
+        g2_data, g1_data, legacy, profiles = fixture()
+        id_map = {}
+        for i in range(16):
+            old = g2_data["selected_working_roster"][i]["slot"]
+            new = f"INT-{i+1:02d}"
+            g2_data["selected_working_roster"][i]["slot"] = new
+            id_map[old] = new
+        for row in legacy["main_main_pairs"]:
+            row["a"] = id_map.get(row["a"], row["a"])
+            row["b"] = id_map.get(row["b"], row["b"])
+        for row in legacy["main_vs_g1_pairs"]:
+            row["main_id"] = id_map.get(row["main_id"], row["main_id"])
+        subject_doi = g2_data["selected_working_roster"][0]["doi"]
+        pairs = []
+        for item in g2_data["selected_working_roster"][1:16]:
+            pairs.append({"other_lane": "G2_INT", "other_slot": item["slot"],
+                          "doi": item["doi"], "source_scoped_only": False,
+                          "final_central_family_independent_certified": False,
+                          "original_family_analysis": "NOT_YET_EXECUTED"})
+        for item in g1_data["roster_snapshot"]:
+            pairs.append({"other_lane": "G1", "other_slot": item["id"], "doi": item["doi"],
+                          "final_central_family_independent_certified": False,
+                          "original_family_analysis": "NOT_YET_EXECUTED"})
+        for row in (pairs[0], pairs[15]):
+            row["source_scoped_evidence_id"] = "SOURCE_TEST_PIN"
+            row["source_scoped_only"] = True
+            row["original_family_analysis"] = "BOUNDED_DIFFERENT_TEST"
+        native = {"updated_original35_matrix": {
+            "subject": {"slot": "INT-01", "doi": subject_doi}, "pairs": pairs
+        }}
+        return (g2_data, g1_data, legacy, profiles, native)
+
+    def test_bounded_native_reuse_without_global_clearance(self):
+        rows, summary = generate(*self.native_fixture())
+        self.assertEqual(summary["prior_indexed_native_scoped_pairs_reused"], 2)
+        self.assertEqual(sum(r.get("prior_source_scoped_comparison") is not None for r in rows), 2)
+        self.assertEqual(summary["global_final_independent_pairs"], 0)
+
+    def test_native_peer_doi_drift_hard_error(self):
+        args = list(self.native_fixture())
+        args[4]["updated_original35_matrix"]["pairs"][0]["doi"] = "10.1000/WRONG"
+        with self.assertRaises(InputMismatch):
+            generate(*args)
+
+    def test_native_false_global_promotion_hard_error(self):
+        args = list(self.native_fixture())
+        args[4]["updated_original35_matrix"]["pairs"][0]["final_central_family_independent_certified"] = True
+        with self.assertRaises(InputMismatch):
+            generate(*args)
+
+
 if __name__ == "__main__":
     unittest.main()
