@@ -1,0 +1,53 @@
+{
+  "schema": "relaytheory.p399.main.m4.cross_paper_consistency_audit_v1",
+  "papers": [
+    "INT-01",
+    "INT-02",
+    "INT-03",
+    "INT-04",
+    "INT-05",
+    "INT-06"
+  ],
+  "forced_single_integration_template": false,
+  "architecture_diversity": [
+    {
+      "slot": "INT-01",
+      "pattern": "hierarchical task-set/policy inference plus meta-policy weighting"
+    },
+    {
+      "slot": "INT-02",
+      "pattern": "state-dependent weighting/pooling of planning and counterfactual policies"
+    },
+    {
+      "slot": "INT-03",
+      "pattern": "source-defined recurrent global-workspace coordination"
+    },
+    {
+      "slot": "INT-04",
+      "pattern": "offline teacher-student replay/training between distinct memory systems"
+    },
+    {
+      "slot": "INT-05",
+      "pattern": "embodied decision-action closed loop across explicit System/World boundary"
+    },
+    {
+      "slot": "INT-06",
+      "pattern": "source-defined task-set/NMDA spiking router with peripheral parallelism and central bottleneck"
+    }
+  ],
+  "common_false_conflation_results": {
+    "shared state vs communication interface": "DISTINGUISHED_6_OF_6",
+    "gating vs coordination": "DISTINGUISHED_6_OF_6",
+    "recurrent activity vs coordinator memory": "DISTINGUISHED_6_OF_6",
+    "hierarchy vs coordinator": "DISTINGUISHED_6_OF_6",
+    "workspace vs newly added H2 mechanism": "DISTINGUISHED_6_OF_6",
+    "replay vs sequencing": "DISTINGUISHED_6_OF_6",
+    "Bayesian inference vs control": "DISTINGUISHED_6_OF_6",
+    "model-based planning vs arbitration": "DISTINGUISHED_6_OF_6",
+    "embodiment/world feedback vs internal coordination": "DISTINGUISHED_6_OF_6",
+    "learned task set vs controller state": "DISTINGUISHED_6_OF_6"
+  },
+  "stateful_source_coordination_does_not_imply_A2": true,
+  "all_A0_results_source_scoped": true,
+  "overall_H_conclusion_forbidden": true
+}
