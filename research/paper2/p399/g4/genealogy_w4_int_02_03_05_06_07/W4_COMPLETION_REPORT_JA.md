@@ -41,3 +41,12 @@ Material blockers are INT-03's DOI-level predecessor genealogy/edition reconcili
 `test_w4_fail_closed.py` enforces exact identities, provenance, hash retention, local operator IDs, no global independence, no ancestry-exhaustiveness promotion, no broad-workspace auto-promotion, no bounded-difference-to-independence promotion, shared-manifest immutability, W4-only path isolation and MAIN authorization=false.
 
 Draft PR metadata and final HEAD/CI are reported at lane completion after the PR is opened.
+
+
+## Draft PR and verification receipt
+
+Draft PR: **#444** (`https://github.com/rinsakamo/relay-theory/pull/444`).
+
+A connector-side fail-closed replay against the committed JSON and exact Git blobs passed all 14 checked invariants: exact five DOI identities; comparison-only slot exclusion; unique paper-local operator IDs; source Git blob/ref identity; mandatory main-source hashes; no global-independence promotion; ancestry exhaustiveness fixed to `NOT_ATTESTED`; INT-03×INT-06 broad-workspace anti-promotion; bounded-difference anti-promotion; exact 140-row unique pair registry; shared 26-profile manifest blob unchanged; W4-only diff; status counts; and explicit INT-07 S1–S4 source blocker.
+
+The inherited workflow `.github/workflows/p399-g4-genealogy-1580-failclosed.yml` listens only to pushes on `paper2/p399-g4-genealogy-pair-accelerator-20261005` and only to `genealogy_accelerator_v1/**` changes (plus the workflow file). Because W4 is intentionally isolated and shared CI was prohibited from modification absent a schema defect, PR #444 has **no W4 GitHub Actions run**. The W4-specific executable test file is committed for integration-lane/authorized execution; CI absence is reported, not silently treated as PASS.
