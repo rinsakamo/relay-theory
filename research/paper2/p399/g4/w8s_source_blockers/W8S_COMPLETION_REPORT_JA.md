@@ -52,3 +52,23 @@ BLF-02↔BLF-03 は W7 で missing S1 が pair-undertermination の一因だっ�
 - MAIN authorization: **false**
 - selected MAIN40 roster: unchanged
 - backups: not activated
+
+## Tests / CI
+
+W8-S専用 `test_w8s_fail_closed.py` と read-only CI `.github/workflows/w8s_source_blockers_ci.yml` を追加した。
+
+検証内容:
+
+- exact five target DOIs only
+- exact required supplement identifiers
+- READYにはraw SHA256と実raw fileが必須
+- SHA256をraw bytesから再計算してreceiptと照合
+- mandatory supplement欠落を模擬するとREADY validationが失敗すること
+- SKL-03 S2/S3の2/2必須
+- INT-07 Text S1-S4の4/4必須
+- PLOS公式endpoint以外へのsource substitutionなし
+- `global_family_independence_certified=true` が成果物内に存在しないこと
+- MAIN authorization=false
+- W7 shared registry / pair science / G1 / Grammar-v0 / H0-H2 / MAIN scienceが未変更であること
+
+検証run `37267450061` は head `0b9587a876257f1cbb381fb0ba746fc7646a5a50` に対して SUCCESS。以後のcompletion-report-only更新後も同一test suiteを再実行する。
