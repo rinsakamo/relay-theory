@@ -1,0 +1,90 @@
+{
+  "schema": "relaytheory.p399.main.m4.pass_a_source_first_decomposition_v1",
+  "slot": "INT-01",
+  "doi": "10.1016/j.cognition.2024.105967",
+  "source_lock": "research/paper2/p399/main/parallel/M4_int01_06/INT-01/SOURCE_AUTHORITY_LOCK_v1.json",
+  "stage_sequence": {
+    "source_lock_freeze_commit": "a4ef8fbdafc3870ef100bafbfaed20f46adbe87f",
+    "result_informed_architecture_used": false
+  },
+  "grammar_mapping_performed": false,
+  "architecture_outcome_assigned": false,
+  "component_mechanisms": [
+    "CRP context/task-set posterior",
+    "task-set Q/value representations plus repeated-action mask",
+    "three source policy classes: stage1-compressed, stage2-compressed, full hierarchy",
+    "Bayesian meta-policy weights/forgetting",
+    "author-approved prepublication-softmax action likelihood"
+  ],
+  "component_local_state": [
+    "context/task-set posterior",
+    "task-set Q/value tables",
+    "policy-class weights and forgetting state"
+  ],
+  "shared_state": "Source-defined posterior and policy-class weights are reused across choice; no separate generic coordinator state.",
+  "message_information_flow": [
+    "task/state/reward -> context posterior",
+    "posterior+reward -> task-set value update",
+    "task-set representations + policy-class evidence -> meta-policy weighting",
+    "per-task-set softmax -> context marginal -> lapse/policy mixture -> action"
+  ],
+  "ordering": [
+    "two-stage task order",
+    "forward vs backward stage indexing",
+    "learning before transfer/composition tests"
+  ],
+  "gating": [
+    "repeated-action working-memory mask",
+    "posterior/meta-policy weighting"
+  ],
+  "control_dependencies": [
+    "CRP clustering is inference, not a general controller",
+    "meta-policy contribution is source-defined"
+  ],
+  "learning_dependencies": [
+    "reward-conditioned Q/value updates",
+    "Bayesian policy-class evidence/weight update"
+  ],
+  "memory_dependencies": [
+    "retained task sets/chunks and learned policy-class weights"
+  ],
+  "prediction_dependencies": [
+    "choice likelihood under alternative hierarchical/compressed policies"
+  ],
+  "task_world_variables": [
+    "two-stage task states/actions",
+    "constrained feedback/transition structure"
+  ],
+  "readout_action_stage": "action/key probability and choice",
+  "explicit_arbitration_routing": [
+    "CRP clustering is inference, not a general controller",
+    "meta-policy contribution is source-defined"
+  ],
+  "model_variants": [
+    "full-hierarchical-only comparator",
+    "fixed/no-Bayes policy weights",
+    "forward-indexed vs backward-indexed"
+  ],
+  "adverse_null_results": [
+    "repeat V1/V2 forward-backward difference nonsignificant",
+    "V3 advantages not uniform across batches/comparisons",
+    "parameter recovery uneven"
+  ],
+  "integration_question": {
+    "A": "context/task-set inference and retained policies",
+    "B": "hierarchical/compressed policy selection and composition",
+    "extra": [
+      "action likelihood/readout"
+    ],
+    "shared": "source-defined posterior and policy-class weights",
+    "exchange": "context probabilities, values, class weights",
+    "temporal": "stage-indexed learning then transfer/composition",
+    "update": "reward updates later context/policy choice",
+    "interaction": "mediated",
+    "mediator": "source-defined Bayesian posterior/meta-policy",
+    "mediator_state": "STATEFUL_SOURCE_DEFINED",
+    "origin": "SOURCE"
+  },
+  "source_ordered_omission_sweep": "COMPLETED_AT_STAGE_A_SOURCE_FIRST_SCOPE",
+  "frozen": true
+}
