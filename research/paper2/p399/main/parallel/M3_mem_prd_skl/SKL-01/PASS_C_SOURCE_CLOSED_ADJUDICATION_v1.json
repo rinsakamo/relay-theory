@@ -1,0 +1,111 @@
+{
+  "schema": "relaytheory.p399.main.m3.pass_c_source_closed.v1",
+  "slot": "SKL-01",
+  "doi": "10.1371/journal.pcbi.1012455",
+  "chronology": {
+    "stage": "C",
+    "input_a": "PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json",
+    "input_b": "PASS_B_RESULT_INFORMED_REAUDIT_v1.json",
+    "source_universe_unchanged": true
+  },
+  "c1_original_a_gap_test": [
+    {
+      "objection_id": "B01",
+      "nearest_original_a_scope": "No: Stage A places target/body/environment outside the modeled internal controller.",
+      "source_locus": "task definition and system/world boundary",
+      "strongest_alternate_reading": "Could the external motor target be mislabeled as internal skill state?",
+      "finding": "ALREADY_QUALIFIED_IN_A",
+      "decision": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": "NO_PATCH"
+    },
+    {
+      "objection_id": "B02",
+      "nearest_original_a_scope": "No: it is a source-defined learning signal for parameter updates.",
+      "source_locus": "forward-error gradient update",
+      "strongest_alternate_reading": "Could prediction error be promoted to persistent coordinator state?",
+      "finding": "ALREADY_QUALIFIED_IN_A",
+      "decision": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": "NO_PATCH"
+    },
+    {
+      "objection_id": "B03",
+      "nearest_original_a_scope": "No: it is a forward consequence model readout from current state/command.",
+      "source_locus": "forward-map equations",
+      "strongest_alternate_reading": "Could the forward prediction be conflated with memory retrieval?",
+      "finding": "ALREADY_QUALIFIED_IN_A",
+      "decision": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": "NO_PATCH"
+    },
+    {
+      "objection_id": "B04",
+      "nearest_original_a_scope": "No: Stage A explicitly records every source condition and stochastic-noise limitation.",
+      "source_locus": "S1 stability/convergence proof",
+      "strongest_alternate_reading": "Could convergence be stated unconditionally?",
+      "finding": "ALREADY_QUALIFIED_IN_A",
+      "decision": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": "NO_PATCH"
+    },
+    {
+      "objection_id": "B05",
+      "nearest_original_a_scope": "No: they are source-defined forward/inverse model state.",
+      "source_locus": "forward/inverse update equations",
+      "strongest_alternate_reading": "Could fitted learned parameters be counted again as a novel coordinator?",
+      "finding": "ALREADY_QUALIFIED_IN_A",
+      "decision": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": "NO_PATCH"
+    },
+    {
+      "objection_id": "B06",
+      "nearest_original_a_scope": "No: source caution is preserved.",
+      "source_locus": "discussion/generalization limitation",
+      "strongest_alternate_reading": "Could adaptation evidence be generalized automatically to de-novo skill learning?",
+      "finding": "ALREADY_QUALIFIED_IN_A",
+      "decision": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": "NO_PATCH"
+    }
+  ],
+  "c2_material_condition_ledger": [
+    {
+      "condition_id": "C2-01",
+      "source_locus": "S1 exact-convergence theorem",
+      "condition": "requires zero inverse exploration noise",
+      "treatment": "CLAIM_LIMITED"
+    },
+    {
+      "condition_id": "C2-02",
+      "source_locus": "S1 exact-convergence theorem",
+      "condition": "requires persistently exciting perceptual/motion input",
+      "treatment": "CLAIM_LIMITED"
+    },
+    {
+      "condition_id": "C2-03",
+      "source_locus": "S1 exact-convergence theorem",
+      "condition": "requires sufficiently small gamma^2/(eta k_P) and initialization in Omega_c",
+      "treatment": "CLAIM_LIMITED"
+    },
+    {
+      "condition_id": "C2-04",
+      "source_locus": "stochastic exploration locus",
+      "condition": "convergence is to an O(|sigma_u|) neighborhood, not exact zero",
+      "treatment": "CLAIM_LIMITED"
+    },
+    {
+      "condition_id": "C2-05",
+      "source_locus": "discussion de-novo/generalization locus",
+      "condition": "adaptation evidence does not automatically establish de-novo skill mechanism",
+      "treatment": "CLAIM_LIMITED"
+    }
+  ],
+  "independent_source_order_resweep": {
+    "performed": true,
+    "duplicate_patching": false,
+    "silent_repair": false,
+    "unresolved_ambiguity_preserved": true
+  },
+  "adjudicated_reconstruction_frozen": true,
+  "unresolved": [
+    "Neural implementation is not directly measured.",
+    "Exact convergence is conditional; stochastic exploration has bounded-neighborhood rather than zero convergence.",
+    "De-novo skill-learning generalization remains source-qualified."
+  ]
+}
