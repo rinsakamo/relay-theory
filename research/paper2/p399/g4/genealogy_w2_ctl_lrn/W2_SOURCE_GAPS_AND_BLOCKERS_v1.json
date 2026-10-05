@@ -1,0 +1,111 @@
+{
+  "schema": "relaytheory.p399.g4.w2_ctl_lrn.source_gaps_and_blockers_v1",
+  "date_jst": "2026-10-05",
+  "authority": {
+    "issue": 399,
+    "accelerator_pr": 438,
+    "starting_head": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a"
+  },
+  "allowed_completion_statuses": [
+    "PROFILE_FRAGMENT_READY",
+    "SOURCE_BLOCKED",
+    "SCIENTIFIC_ANCESTRY_UNDERDETERMINED"
+  ],
+  "blocking_count": 0,
+  "nonblocking_gap_count": 9,
+  "source_blocked_papers": [],
+  "scientifically_ancestry_underdetermined_papers": [],
+  "ready_papers": [
+    "CTL-01",
+    "CTL-02",
+    "CTL-03",
+    "LRN-01",
+    "LRN-02",
+    "LRN-03"
+  ],
+  "gaps": [
+    {
+      "id": "GAP-CTL01-SUPPLEMENT-RAW-SHA",
+      "paper_id": "CTL-01",
+      "kind": "REQUIRED_SUPPLEMENT_RAW_SHA_NOT_REPOSITORY_FROZEN",
+      "blocking": false,
+      "must_preserve_bundle_ids": [
+        "S1_APPENDIX",
+        "S2_APPENDIX"
+      ],
+      "detail": "Official PLOS S1/S2 supplement identities and mathematical roles are source-confirmed and retained, but their raw bytes were not separately SHA256-frozen in the inherited G2 receipts. The main Version of Record raw SHA256 is frozen."
+    },
+    {
+      "id": "GAP-LRN01-SUPPLEMENT-RAW-SHA",
+      "paper_id": "LRN-01",
+      "kind": "REQUIRED_SUPPLEMENT_RAW_SHA_NOT_REPOSITORY_FROZEN",
+      "blocking": false,
+      "must_preserve_bundle_ids": [
+        "SUPPLEMENTARY_INFORMATION"
+      ],
+      "detail": "Official Nature Supplementary Information is required and explicitly retained, but its raw bytes were not separately SHA256-frozen in the inherited G2 receipts. The main publisher PDF was independently reproduced twice and its raw SHA256 is frozen."
+    },
+    {
+      "id": "GAP-LRN02-SUPPLEMENT-RAW-SHA",
+      "paper_id": "LRN-02",
+      "kind": "REQUIRED_SUPPLEMENT_RAW_SHA_NOT_REPOSITORY_FROZEN",
+      "blocking": false,
+      "must_preserve_bundle_ids": [
+        "S1_APPENDIX",
+        "S2_APPENDIX"
+      ],
+      "detail": "Official PLOS S1/S2 Appendix identities and roles are source-confirmed and retained, but their raw bytes were not separately SHA256-frozen in the inherited G2 receipts. The main Version of Record PDF and publisher HTML hashes are frozen."
+    },
+    {
+      "id": "GAP-CTL-01-ANCESTRY-NOT-EXHAUSTIVE",
+      "paper_id": "CTL-01",
+      "kind": "ANCESTRY_EXHAUSTIVENESS_NOT_ATTESTED",
+      "blocking": false,
+      "must_preserve_bundle_ids": [],
+      "detail": "Recorded ancestor DOI links are positive, source-supported links only. Absence of any additional direct or indirect model ancestor is not certified; ancestry_exhaustiveness must remain NOT_ATTESTED."
+    },
+    {
+      "id": "GAP-CTL-02-ANCESTRY-NOT-EXHAUSTIVE",
+      "paper_id": "CTL-02",
+      "kind": "ANCESTRY_EXHAUSTIVENESS_NOT_ATTESTED",
+      "blocking": false,
+      "must_preserve_bundle_ids": [],
+      "detail": "Recorded ancestor DOI links are positive, source-supported links only. Absence of any additional direct or indirect model ancestor is not certified; ancestry_exhaustiveness must remain NOT_ATTESTED."
+    },
+    {
+      "id": "GAP-CTL-03-ANCESTRY-NOT-EXHAUSTIVE",
+      "paper_id": "CTL-03",
+      "kind": "ANCESTRY_EXHAUSTIVENESS_NOT_ATTESTED",
+      "blocking": false,
+      "must_preserve_bundle_ids": [],
+      "detail": "Recorded ancestor DOI links are positive, source-supported links only. Absence of any additional direct or indirect model ancestor is not certified; ancestry_exhaustiveness must remain NOT_ATTESTED."
+    },
+    {
+      "id": "GAP-LRN-01-ANCESTRY-NOT-EXHAUSTIVE",
+      "paper_id": "LRN-01",
+      "kind": "ANCESTRY_EXHAUSTIVENESS_NOT_ATTESTED",
+      "blocking": false,
+      "must_preserve_bundle_ids": [],
+      "detail": "Recorded ancestor DOI links are positive, source-supported links only. Absence of any additional direct or indirect model ancestor is not certified; ancestry_exhaustiveness must remain NOT_ATTESTED."
+    },
+    {
+      "id": "GAP-LRN-02-ANCESTRY-NOT-EXHAUSTIVE",
+      "paper_id": "LRN-02",
+      "kind": "ANCESTRY_EXHAUSTIVENESS_NOT_ATTESTED",
+      "blocking": false,
+      "must_preserve_bundle_ids": [],
+      "detail": "Recorded ancestor DOI links are positive, source-supported links only. Absence of any additional direct or indirect model ancestor is not certified; ancestry_exhaustiveness must remain NOT_ATTESTED."
+    },
+    {
+      "id": "GAP-LRN-03-ANCESTRY-NOT-EXHAUSTIVE",
+      "paper_id": "LRN-03",
+      "kind": "ANCESTRY_EXHAUSTIVENESS_NOT_ATTESTED",
+      "blocking": false,
+      "must_preserve_bundle_ids": [],
+      "detail": "Recorded ancestor DOI links are positive, source-supported links only. Absence of any additional direct or indirect model ancestor is not certified; ancestry_exhaustiveness must remain NOT_ATTESTED."
+    }
+  ],
+  "global_family_independence_certified": false,
+  "main_scientific_authorization": false,
+  "explicit_scope_note": "Nonblocking supplement-hash gaps do not mean the official supplements are missing; they mean inherited repository receipts did not separately freeze their raw bytes. No global genealogy exhaustiveness is claimed."
+}

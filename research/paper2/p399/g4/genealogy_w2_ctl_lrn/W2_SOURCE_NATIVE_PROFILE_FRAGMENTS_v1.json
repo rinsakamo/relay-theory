@@ -1,0 +1,549 @@
+{
+  "schema": "relaytheory.p399.g4.w2_ctl_lrn.source_native_profile_fragments_v1",
+  "date_jst": "2026-10-05",
+  "authority": {
+    "issue": 399,
+    "accelerator_pr": 438,
+    "starting_head": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a"
+  },
+  "lane_branch": "paper2/p399-g4-w2-ctl-lrn-native-20261005",
+  "scope_exact_dois": [
+    "10.1371/journal.pcbi.1012228",
+    "10.7554/eLife.12029",
+    "10.7554/eLife.28040",
+    "10.1038/s41467-025-58848-6",
+    "10.1371/journal.pcbi.1007963",
+    "10.7554/eLife.21492"
+  ],
+  "shared_profile_file_modified": false,
+  "main_scientific_authorization": false,
+  "profiles": [
+    {
+      "id": "CTL-01",
+      "doi": "10.1371/journal.pcbi.1012228",
+      "status": "PROFILE_FRAGMENT_READY",
+      "title": "Joint modeling of choices and reaction times based on Bayesian contextual behavioral control",
+      "primary_lane": "CTL",
+      "adopted_edition": {
+        "kind": "FINAL_PUBLISHER_VERSION_OF_RECORD",
+        "publisher": "PLOS Computational Biology",
+        "publication_date": "2024-07-05",
+        "official_url": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1012228",
+        "raw_sha256": "c1fa496ad08d6e482770ba23ec3a0670df8147adc2eb10d160c293e0da0d7cee",
+        "pages": 33,
+        "receipt_run_id": 37180958785
+      },
+      "source_provenance": [
+        {
+          "repository_path": "research/paper2/p399/g2/MAIN40_G2_ACTUAL_SOURCE_RECEIPTS_AND_DECISIONS_v2.json",
+          "repository_git_blob_sha1": "ac3ffa59fcdc078550df587bc972632b7ca5ff7f",
+          "source_repository_ref": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a"
+        },
+        {
+          "repository_path": "research/paper2/p399/g2/MAIN40_G2_ADMISSION_WORKING_MANIFEST_v5.json",
+          "repository_git_blob_sha1": "b97b67a34ad9c2858745dfa6aa60444520eaab13",
+          "source_repository_ref": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a"
+        },
+        {
+          "repository_path": "research/paper2/p399/g2/MAIN40_G2_780_MAIN_AND_800_G1_FAMILY_RECONCILIATION_v2.json",
+          "repository_git_blob_sha1": "2ffc0e2056e1185d99f5f8f3cc4e24814a6ec286",
+          "source_repository_ref": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a"
+        }
+      ],
+      "required_bundle_ids": [
+        "S1_APPENDIX",
+        "S2_APPENDIX"
+      ],
+      "supplement_bundle": [
+        {
+          "id": "S1_APPENDIX",
+          "doi": "10.1371/journal.pcbi.1012228.s001",
+          "role": "detailed mathematical derivation of BCC generative model and variational equations",
+          "required_for_profile": true,
+          "raw_sha256": null,
+          "availability": "OFFICIAL_PUBLISHER_LINK_CONFIRMED"
+        },
+        {
+          "id": "S2_APPENDIX",
+          "doi": "10.1371/journal.pcbi.1012228.s002",
+          "role": "mathematical relation to DDM; guards against false DDM identity",
+          "required_for_profile": true,
+          "raw_sha256": null,
+          "availability": "OFFICIAL_PUBLISHER_LINK_CONFIRMED"
+        },
+        {
+          "id": "S3_APPENDIX",
+          "doi": "10.1371/journal.pcbi.1012228.s003",
+          "role": "flanker ablation",
+          "required_for_profile": false,
+          "raw_sha256": null,
+          "availability": "OFFICIAL_PUBLISHER_LINK_CONFIRMED"
+        },
+        {
+          "id": "S4_APPENDIX",
+          "doi": "10.1371/journal.pcbi.1012228.s004",
+          "role": "task-switching context ablation",
+          "required_for_profile": false,
+          "raw_sha256": null,
+          "availability": "OFFICIAL_PUBLISHER_LINK_CONFIRMED"
+        }
+      ],
+      "correction_bundle": [],
+      "correction_state": "NO_SEPARATE_CORRECTION_IDENTIFIED_IN_BOUNDED_PUBLISHER_REVIEW_NOT_EXHAUSTIVE",
+      "source_native_structure": {
+        "central_claim_boundary": "Behavioral joint choice/RT model; task manipulations are World/input structure and no neural association is promoted to a mechanistic controller.",
+        "paper_specific_operators": [
+          "CTL-01:context-conditioned-policy-posterior",
+          "CTL-01:context-specific-policy-prior-learning",
+          "CTL-01:independent-mcmc-policy-sampler",
+          "CTL-01:dirichlet-precision-stopping-rt"
+        ],
+        "decisive_equations_or_updates": [
+          "p(pi|c,R,alpha) is proportional to p(R|pi,c) times the context-specific adaptive policy prior p(pi|c,alpha)",
+          "policy likelihood is evaluated through the context-conditioned MDP/variational predicted-free-energy machinery",
+          "Bayesian independent MCMC samples policies and a precision/entropy stopping criterion controls the sample count used for RT",
+          "reaction time is derived from number of samples plus non-decision time"
+        ],
+        "variants_and_comparators": [
+          "value-only versus automatism+value",
+          "flanker and task-switch mappings",
+          "DDM is an explicit comparator boundary, not an asserted identity"
+        ],
+        "inherited_constituents": [
+          "planning-as-inference",
+          "active-inference variational planning",
+          "MDP representation"
+        ],
+        "direct_model_ancestor_dois": [
+          "10.1016/j.jmp.2020.102472"
+        ]
+      },
+      "adverse_limits": [
+        "The base BCC model is inherited from previous work and is not de novo here.",
+        "Cross-task results are simulations of established effects, not a universal participant-level fit.",
+        "The DDM comparison does not license identifying the MCMC stopping process with DDM evidence accumulation."
+      ],
+      "global_family_independence_certified": false,
+      "ancestry_exhaustiveness": "NOT_ATTESTED",
+      "main_scientific_authorization": false
+    },
+    {
+      "id": "CTL-02",
+      "doi": "10.7554/eLife.12029",
+      "status": "PROFILE_FRAGMENT_READY",
+      "title": "A cholinergic feedback circuit to regulate striatal population uncertainty and optimize reinforcement learning",
+      "primary_lane": "CTL",
+      "adopted_edition": {
+        "kind": "FINAL_PUBLISHER_VERSION_OF_RECORD",
+        "publisher": "eLife",
+        "version": "v3 / Version of Record",
+        "version_of_record_date": "2016-02-10",
+        "official_url": "https://elifesciences.org/articles/12029",
+        "raw_sha256": "02a4dedae7f653e232e8e83d8301ef1a9788a7f183b8d72481ddbf704f916ec4",
+        "pages": 66,
+        "receipt_run_id": 37180958785
+      },
+      "source_provenance": [
+        {
+          "repository_path": "research/paper2/p399/g2/MAIN40_G2_ACTUAL_SOURCE_RECEIPTS_AND_DECISIONS_v2.json",
+          "repository_git_blob_sha1": "ac3ffa59fcdc078550df587bc972632b7ca5ff7f",
+          "source_repository_ref": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a"
+        },
+        {
+          "repository_path": "research/paper2/p399/g2/MAIN40_G2_ADMISSION_WORKING_MANIFEST_v5.json",
+          "repository_git_blob_sha1": "b97b67a34ad9c2858745dfa6aa60444520eaab13",
+          "source_repository_ref": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a"
+        }
+      ],
+      "required_bundle_ids": [],
+      "supplement_bundle": [],
+      "correction_bundle": [],
+      "correction_state": "NO_SEPARATE_CORRECTION_IDENTIFIED_IN_BOUNDED_PUBLISHER_REVIEW_NOT_EXHAUSTIVE",
+      "source_native_structure": {
+        "central_claim_boundary": "Neural-network, Bayesian and algorithmic levels are separated; TAN/striatal correlates and modeled feedback are not direct empirical proof of a biological controller.",
+        "paper_specific_operators": [
+          "CTL-02:tan-pause-uncertainty-feedback",
+          "CTL-02:opal-opponent-actor-decay",
+          "CTL-02:beta-belief-uncertainty-decay-control"
+        ],
+        "decisive_equations_or_updates": [
+          "critic prediction error delta=r-V updates critic and Go/NoGo actor weights",
+          "choice p(a) is proportional to exp(beta_G G_a - beta_N N_a)",
+          "actor weights are multiplicatively decayed toward a naive prior; gamma is fixed or uncertainty-responsive",
+          "Bayesian level uses Beta beliefs and logit(gamma)=gamma_0+gamma_1*DeltaH"
+        ],
+        "variants_and_comparators": [
+          "biophysical basal-ganglia/TAN network",
+          "Bayesian uncertainty learner",
+          "algorithmic OpAL extension",
+          "fixed versus uncertainty-responsive decay"
+        ],
+        "inherited_constituents": [
+          "actor-critic RL",
+          "opponent Go/NoGo actor",
+          "Beta reward beliefs"
+        ],
+        "direct_model_ancestor_dois": [
+          "10.1037/a0037015"
+        ]
+      },
+      "adverse_limits": [
+        "OpAL is explicitly inherited; the paper-specific contribution is the TAN/uncertainty modulation.",
+        "The three Marr-level models are explanatory analogues, not evidence that a neural correlate is itself the controller.",
+        "The source states that experimental testing of new uncertainty predictions is a next step."
+      ],
+      "global_family_independence_certified": false,
+      "ancestry_exhaustiveness": "NOT_ATTESTED",
+      "main_scientific_authorization": false
+    },
+    {
+      "id": "CTL-03",
+      "doi": "10.7554/eLife.28040",
+      "status": "PROFILE_FRAGMENT_READY",
+      "title": "Causal evidence for lateral prefrontal cortex dynamics supporting cognitive control",
+      "primary_lane": "CTL",
+      "adopted_edition": {
+        "kind": "FINAL_PUBLISHER_VERSION_OF_RECORD",
+        "publisher": "eLife",
+        "version": "v2 / Version of Record",
+        "version_of_record_date": "2017-10-13",
+        "official_url": "https://elifesciences.org/articles/28040",
+        "raw_sha256": "76a6333f76e5981b9f569390a982a7a47bbcc33afe499296a4766d7d54e5b36f",
+        "pages": 19,
+        "receipt_run_id": 37180958785
+      },
+      "source_provenance": [
+        {
+          "repository_path": "research/paper2/p399/g2/MAIN40_G2_ACTUAL_SOURCE_RECEIPTS_AND_DECISIONS_v2.json",
+          "repository_git_blob_sha1": "ac3ffa59fcdc078550df587bc972632b7ca5ff7f",
+          "source_repository_ref": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a"
+        },
+        {
+          "repository_path": "research/paper2/p399/g2/MAIN40_G2_ADMISSION_WORKING_MANIFEST_v5.json",
+          "repository_git_blob_sha1": "b97b67a34ad9c2858745dfa6aa60444520eaab13",
+          "source_repository_ref": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a"
+        }
+      ],
+      "required_bundle_ids": [],
+      "supplement_bundle": [
+        {
+          "id": "ELIFE_ADDITIONAL_FILES",
+          "role": "publisher-linked additional/source files; not required for the central DCM operators frozen here",
+          "required_for_profile": false,
+          "raw_sha256": null,
+          "availability": "PUBLISHER_PAGE_LINKED"
+        }
+      ],
+      "correction_bundle": [],
+      "correction_state": "NO_SEPARATE_CORRECTION_IDENTIFIED_IN_BOUNDED_PUBLISHER_REVIEW_NOT_EXHAUSTIVE",
+      "source_native_structure": {
+        "central_claim_boundary": "cTBS/control-demand manipulations are interventions; DCM is the fitted effective-connectivity model; behavioral/fMRI associations are not promoted to a generic controller.",
+        "paper_specific_operators": [
+          "CTL-03:bayesian-dcm-model-selection",
+          "CTL-03:ctbs-guided-dcm-refinement",
+          "CTL-03:sfs-to-mfg-temporal-feedforward",
+          "CTL-03:mfg-to-sfs-temporal-feedback"
+        ],
+        "decisive_equations_or_updates": [
+          "group-level Bayesian model comparison over DCM effective-connectivity structures",
+          "unexpected SFS cTBS effect on Temporal Control triggers model-space revision",
+          "winning revised structure adds fixed SFS-MFG connectivity with positive Temporal-Control SFS→MFG modulation and negative MFG→SFS feedback"
+        ],
+        "variants_and_comparators": [
+          "original Nee & D'Esposito 2016 DCM",
+          "913 revised DCMs in present sample with 19 top plausible models",
+          "20-model adjudication in previous sample",
+          "eight additional alternative bidirectional modulation models"
+        ],
+        "inherited_constituents": [
+          "dynamic causal modeling",
+          "Bayesian model selection"
+        ],
+        "direct_model_ancestor_dois": [
+          "10.7554/eLife.12112"
+        ]
+      },
+      "adverse_limits": [
+        "The present-sample 913-model search did not yield one uniquely dominant model; 19 remained similarly plausible before prior-sample adjudication.",
+        "Unexamined modulations may fit better; superiority is bounded to the tested model spaces.",
+        "The prior association with trait higher-level cognitive ability was not reproduced.",
+        "The SFS Temporal-Control effect was unpredicted by the original DCM and triggered revision."
+      ],
+      "global_family_independence_certified": false,
+      "ancestry_exhaustiveness": "NOT_ATTESTED",
+      "main_scientific_authorization": false
+    },
+    {
+      "id": "LRN-01",
+      "doi": "10.1038/s41467-025-58848-6",
+      "status": "PROFILE_FRAGMENT_READY",
+      "title": "Humans learn generalizable representations through efficient coding",
+      "primary_lane": "LRN",
+      "adopted_edition": {
+        "kind": "FINAL_PUBLISHER_VERSION_OF_RECORD",
+        "publisher": "Nature Communications",
+        "version_of_record_date": "2025-04-29",
+        "official_url": "https://www.nature.com/articles/s41467-025-58848-6",
+        "raw_sha256": "638c40d95b03e9ed076949c1c17f469bed4e1c3c9959ca8a84dc65c8a0744718",
+        "pages": 20,
+        "publisher_full_html_sha256": "615b87a820b1d499df54cad3afdaad3d2771a9fbaf536f29982b31e64336c883",
+        "independent_raw_pdf_runs": [
+          37185492865,
+          37185593074
+        ]
+      },
+      "source_provenance": [
+        {
+          "repository_path": "research/paper2/p399/g2/MAIN40_G2_ADMISSION_WORKING_MANIFEST_v5.json",
+          "repository_git_blob_sha1": "b97b67a34ad9c2858745dfa6aa60444520eaab13",
+          "source_repository_ref": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a"
+        },
+        {
+          "repository_path": "research/paper2/p399/g2/MAIN40_G2_LRN01_FIRST_PARTY_DUAL_PHYSICAL_ACQUISITION_v5.json",
+          "repository_git_blob_sha1": "cf4914465563d62644a6f7d94d2db631c6ccc635",
+          "source_repository_ref": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a"
+        }
+      ],
+      "required_bundle_ids": [
+        "SUPPLEMENTARY_INFORMATION"
+      ],
+      "supplement_bundle": [
+        {
+          "id": "SUPPLEMENTARY_INFORMATION",
+          "role": "same-article derivation, architecture, parameter, recovery and control details referenced by the Version of Record",
+          "required_for_profile": true,
+          "raw_sha256": null,
+          "availability": "OFFICIAL_PUBLISHER_SUPPLEMENT_LINK_CONFIRMED"
+        }
+      ],
+      "correction_bundle": [],
+      "correction_state": "NO_SEPARATE_CORRECTION_IDENTIFIED_IN_BOUNDED_PUBLISHER_REVIEW_NOT_EXHAUSTIVE",
+      "source_native_structure": {
+        "central_claim_boundary": "Generic policy-gradient update, latent representation structure, task schedule and comparator models are separated; the paper-specific center is efficient-coding compression coupled to reward.",
+        "paper_specific_operators": [
+          "LRN-01:reward-minus-mutual-information-objective",
+          "LRN-01:latent-encoder-decoder-policy",
+          "LRN-01:encoder-decoder-policy-gradient",
+          "LRN-01:feature-efficient-coding-extension"
+        ],
+        "decisive_equations_or_updates": [
+          "ECPG maximizes expected reward above baseline minus lambda I(S;Z)",
+          "policy factorizes through encoder psi(z|s) and decoder rho(a|z)",
+          "encoder and decoder parameters are policy-gradient optimized under the coupled reward/compression objective",
+          "CPG is lambda=0; RLPG omits latent compression; feature variants add experimenter-defined feature embeddings"
+        ],
+        "variants_and_comparators": [
+          "RLPG and CPG",
+          "fRLPG/fECPG/fCPG",
+          "latent-cause, memory-association and ACL models",
+          "L1PG, L2PG, DCPG and random-regularizer controls"
+        ],
+        "inherited_constituents": [
+          "policy-gradient reinforcement learning",
+          "softmax policy",
+          "efficient-coding/information-compression principle"
+        ],
+        "direct_model_ancestor_dois": []
+      },
+      "adverse_limits": [
+        "Generic policy-gradient RL is inherited and is not counted as a novel learning rule.",
+        "Model fitting used all training and testing behavioral data without cross-validation because block count was insufficient.",
+        "Feature-based variants use an experimenter-defined feature embedding.",
+        "The source supports a tested computational account, not a direct neural implementation claim."
+      ],
+      "global_family_independence_certified": false,
+      "ancestry_exhaustiveness": "NOT_ATTESTED",
+      "main_scientific_authorization": false
+    },
+    {
+      "id": "LRN-02",
+      "doi": "10.1371/journal.pcbi.1007963",
+      "status": "PROFILE_FRAGMENT_READY",
+      "title": "A simple model for learning in volatile environments",
+      "primary_lane": "LRN",
+      "adopted_edition": {
+        "kind": "FINAL_PUBLISHER_VERSION_OF_RECORD",
+        "publisher": "PLOS Computational Biology",
+        "publication_date": "2020-07-01",
+        "official_url": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007963",
+        "raw_sha256": "52d15abd9b826a58536c4f7a5eacd07404dd9cebd6bb965aae855ee83840226c",
+        "pages": 26,
+        "publisher_html_sha256": "6a026e334f57915a93dae86c3a85e64167c3b0b6480824c5e95d33d9496b7015",
+        "receipt_run_id": 37180958785
+      },
+      "source_provenance": [
+        {
+          "repository_path": "research/paper2/p399/g2/MAIN40_G2_ACTUAL_SOURCE_RECEIPTS_AND_DECISIONS_v2.json",
+          "repository_git_blob_sha1": "ac3ffa59fcdc078550df587bc972632b7ca5ff7f",
+          "source_repository_ref": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a"
+        },
+        {
+          "repository_path": "research/paper2/p399/g2/MAIN40_G2_ADMISSION_WORKING_MANIFEST_v5.json",
+          "repository_git_blob_sha1": "b97b67a34ad9c2858745dfa6aa60444520eaab13",
+          "source_repository_ref": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a"
+        }
+      ],
+      "required_bundle_ids": [
+        "S1_APPENDIX",
+        "S2_APPENDIX"
+      ],
+      "supplement_bundle": [
+        {
+          "id": "S1_TEXT",
+          "doi": "10.1371/journal.pcbi.1007963.s001",
+          "role": "supplementary results",
+          "required_for_profile": false,
+          "raw_sha256": null,
+          "availability": "OFFICIAL_PUBLISHER_LINK_CONFIRMED"
+        },
+        {
+          "id": "S1_APPENDIX",
+          "doi": "10.1371/journal.pcbi.1007963.s002",
+          "role": "formal treatment of VKF generative model and inference",
+          "required_for_profile": true,
+          "raw_sha256": null,
+          "availability": "OFFICIAL_PUBLISHER_LINK_CONFIRMED"
+        },
+        {
+          "id": "S2_APPENDIX",
+          "doi": "10.1371/journal.pcbi.1007963.s003",
+          "role": "formal treatment of implied observation-space learning rate",
+          "required_for_profile": true,
+          "raw_sha256": null,
+          "availability": "OFFICIAL_PUBLISHER_LINK_CONFIRMED"
+        },
+        {
+          "id": "S1_FIG",
+          "doi": "10.1371/journal.pcbi.1007963.s004",
+          "role": "volatility and learning-rate control visualization",
+          "required_for_profile": false,
+          "raw_sha256": null,
+          "availability": "OFFICIAL_PUBLISHER_LINK_CONFIRMED"
+        }
+      ],
+      "correction_bundle": [],
+      "correction_state": "NO_SEPARATE_CORRECTION_IDENTIFIED_IN_BOUNDED_PUBLISHER_REVIEW_NOT_EXHAUSTIVE",
+      "source_native_structure": {
+        "central_claim_boundary": "Learning/inference rule is separated from exogenous switching schedule and softmax choice readout; generic Kalman/Bayesian machinery is inherited.",
+        "paper_specific_operators": [
+          "LRN-02:volatile-kalman-mean-update",
+          "LRN-02:volatility-error-correction",
+          "LRN-02:binary-moment-matching-update",
+          "LRN-02:latent-space-volatility-learning-rate"
+        ],
+        "decisive_equations_or_updates": [
+          "state mean/variance update follows Kalman filtering with fixed process variance replaced by estimated volatility v_(t-1)",
+          "volatility update corrects E[(x_t-x_(t-1))^2]-v_(t-1) with lambda as volatility update rate",
+          "lambda=0 gives a standard Kalman-filter special case",
+          "binary VKF uses Bernoulli-sigmoid observations and moment matching with inference noise omega",
+          "latent-space learning rate tracks inferred volatility whereas observation-space implied rate can change even with fixed volatility"
+        ],
+        "variants_and_comparators": [
+          "continuous VKF",
+          "binary VKF",
+          "Kalman special case",
+          "HGF and particle-filter benchmarks",
+          "Rescorla-Wagner/Pearce-Hall structural relation",
+          "softmax choice mapping"
+        ],
+        "inherited_constituents": [
+          "Kalman filtering",
+          "structured variational inference",
+          "Bayesian volatility inference"
+        ],
+        "direct_model_ancestor_dois": [
+          "10.1038/nn1954",
+          "10.3389/fnhum.2014.00825"
+        ]
+      },
+      "adverse_limits": [
+        "The full two-chain VKF still requires structured variational approximation.",
+        "Binary outcomes require additional moment matching and an inference-only noise parameter.",
+        "Several simulations use switching dynamics that do not exactly match the Gaussian-random-walk generative assumptions.",
+        "Latent-space and observation-space learning-rate signals are not equivalent and must not be collapsed."
+      ],
+      "global_family_independence_certified": false,
+      "ancestry_exhaustiveness": "NOT_ATTESTED",
+      "main_scientific_authorization": false
+    },
+    {
+      "id": "LRN-03",
+      "doi": "10.7554/eLife.21492",
+      "status": "PROFILE_FRAGMENT_READY",
+      "title": "Reward-based training of recurrent neural networks for cognitive and value-based tasks",
+      "primary_lane": "LRN",
+      "adopted_edition": {
+        "kind": "FINAL_PUBLISHER_VERSION_OF_RECORD",
+        "publisher": "eLife",
+        "version": "v2 / Version of Record",
+        "version_of_record_date": "2017-02-06",
+        "official_url": "https://elifesciences.org/articles/21492",
+        "raw_sha256": "da2f5a896439d79a36f4beef9b772458ea19a734b08dbf62565daa3d722ec069",
+        "pages": 24,
+        "receipt_run_id": 37180958785
+      },
+      "source_provenance": [
+        {
+          "repository_path": "research/paper2/p399/g2/MAIN40_G2_ACTUAL_SOURCE_RECEIPTS_AND_DECISIONS_v2.json",
+          "repository_git_blob_sha1": "ac3ffa59fcdc078550df587bc972632b7ca5ff7f",
+          "source_repository_ref": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a"
+        },
+        {
+          "repository_path": "research/paper2/p399/g2/MAIN40_G2_ADMISSION_WORKING_MANIFEST_v5.json",
+          "repository_git_blob_sha1": "b97b67a34ad9c2858745dfa6aa60444520eaab13",
+          "source_repository_ref": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a"
+        }
+      ],
+      "required_bundle_ids": [],
+      "supplement_bundle": [
+        {
+          "id": "IN_ARTICLE_FIGURE_SUPPLEMENTS",
+          "role": "publisher-integrated figure supplements; no separate external mathematical appendix required for the central learning rule",
+          "required_for_profile": false,
+          "raw_sha256": null,
+          "availability": "PUBLISHER_ARTICLE_INTEGRATED"
+        }
+      ],
+      "correction_bundle": [],
+      "correction_state": "NO_SEPARATE_CORRECTION_IDENTIFIED_IN_BOUNDED_PUBLISHER_REVIEW_NOT_EXHAUSTIVE",
+      "source_native_structure": {
+        "central_claim_boundary": "Reward learning rule and network representation are separated from task/environment schedule and biological interpretation; recurrent policy gradient is inherited.",
+        "paper_specific_operators": [
+          "LRN-03:recurrent-policy-gradient-decision-network",
+          "LRN-03:value-network-reward-baseline",
+          "LRN-03:reward-based-rnn-weight-update",
+          "LRN-03:policy-only-task-execution"
+        ],
+        "decisive_equations_or_updates": [
+          "decision RNN defines a stochastic recurrent policy optimized by REINFORCE/recurrent policy gradient",
+          "value RNN reads decision activity plus selected actions to predict future return and supplies a variance-reducing baseline",
+          "value network guides learning but task execution after learning depends on decision network",
+          "weights are optimized by gradient methods through recurrent networks while environment fixes observations, rewards and action timing"
+        ],
+        "variants_and_comparators": [
+          "perceptual decision, multisensory, working-memory and economic-choice tasks",
+          "with versus without value-network baseline",
+          "supervised-trained recurrent network comparisons"
+        ],
+        "inherited_constituents": [
+          "REINFORCE",
+          "recurrent policy gradient",
+          "actor-critic/value baseline",
+          "backpropagation through recurrent networks"
+        ],
+        "direct_model_ancestor_dois": [
+          "10.1093/jigpal/jzp049"
+        ]
+      },
+      "adverse_limits": [
+        "The source explicitly builds on recurrent policy-gradient/REINFORCE; that training method is not de novo.",
+        "Biological constraints on architecture, dynamics and synaptic plasticity are weak; the learning rule is not biologically plausible.",
+        "The network is a modeling tool, not direct evidence that the brain implements the same gradient algorithm.",
+        "The value network improves learning reliability but is dispensable for task execution after learning."
+      ],
+      "global_family_independence_certified": false,
+      "ancestry_exhaustiveness": "NOT_ATTESTED",
+      "main_scientific_authorization": false
+    }
+  ]
+}
