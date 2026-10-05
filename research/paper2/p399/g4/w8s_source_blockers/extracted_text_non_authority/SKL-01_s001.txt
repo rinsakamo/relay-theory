@@ -1,0 +1,398 @@
+                     Human motor learning dynamics in high-dimensional tasks:
+                     Supporting information
+                     Ankur Kamboj1* , Rajiv Ranganathan2 , Xiaobo Tan1 , Vaibhav Srivastava1
+
+                     1 Department of Electrical and Computer Engineering, Michigan State University, East
+                     Lansing, Michigan, United States of America
+                     2 Department of Kinesiology, Michigan State University, East Lansing, Michigan,
+                     United States of America
+
+                     * ankurank@msu.edu
+
+
+                     1     Model
+                     1.1    Human perception model of BoMI
+                     The BoMI mapping
+                                                              ẋ = Cu                                       (1)
+                     is described in terms of finger joint velocities u and cursor velocities ẋ. However, we
+                     hypothesize that humans interacting with the BoMI perceive these velocities as
+                     increments in cursor positions and finger joint angles. Consequently, we adopt a
+                     standard technique from adaptive control that allows us to rewrite the BoMI mapping
+                     equation using filtered joint and cursor position data [1]. We write the dynamics (Eq
+                     (1)) using a mixed frequency-time notation as sx = Cu, where s denotes the Laplace
+                     (frequency) variable. Dividing both sides by s + a, for some sufficiently large a > 0,
+                     yields
+                                                 s       a        1
+                                                    x=−     x+x=     Cu.                                    (2)
+                                                s+a     s+a      s+a
+                     Define the signals filtered cursor position χ = x/(s + a), and filtered change in hand
+                     joint angles δq = u/(s + a). Equivalently
+
+                                                        χ̇ = −aχ + x,
+                                                        ˙ = −aδq + u + ξ ,
+                                                       δq                                                   (3)
+                                                                           q
+
+                     where we add the perceptual noise ξ q to capture the inaccuracies in the filtering process.
+                     Then, in the time-domain (Eq (2)) reduces to −aχ + x = Cδq. Defining δx = −aχ + x,
+                     we get the system equation as
+
+                                                            δx = Cδq.                                       (4)
+
+                     δx and δq are termed filtered increments in cursor positions, and filtered increments in
+                     joint angles, respectively.
+
+
+
+
+September 16, 2024                                                                                         1/7
+                     1.2    The inverse learning model
+                     We postulate that the participant determines the joint angle velocities through
+                     gradient-based learning on a regularized quadratic error function,
+                                                                                
+                                                       1 ˙          2    µ     2
+                                         u̇ = −η∇u        x̂ − kP ex + ∥u∥ + ξ u ,                            (5)
+                                                       2                 2
+
+                     where u ∈ Rm , x̂ is the estimated cursor position based on the participant’s estimate of
+                     mapping matrix Ĉ, η > 0 is the inverse learning rate, and ξ u is the exploration noise.
+                       Upon simplification, the gradient in (Eq (5)),
+                                                                            
+                                                   1 ˙           2   µ     2
+                                             ∇u       x̂ − kP ex + ∥u∥
+                                                   2                  2
+                                                                                    
+                                                          1              2    µ    2
+                                                  = ∇u       Ĉu − kP ex + ∥u∥
+                                                          2                   2
+                                                 = Ĉ ⊤ (Ĉu − kP ex ) + µu
+                                                 = (Ĉ ⊤ Ĉ + µI)u − kP Ĉ ⊤ ex ,                             (6)
+
+                     which results in
+                                                                            
+                                        u̇ = − η (Ĉ ⊤ Ĉ + µI)u − kP Ĉ ⊤ ex + ξ u
+                                                                                    
+                                           = − η (Φ⊤ Ŵ ⊤ Ŵ Φ + µI)u − kP Φ⊤ Ŵ ⊤ ex + ξ u .                 (7)
+
+                     1.3    Sufficiently rich perceptual noise
+                     Definition 1 (Sufficiently Rich Signal). A stationary signal ω(t) is called sufficiently
+                     rich of order n if the support of the spectral measure of ω, defined by,
+                                                             Z ∞
+                                                    Sω (θ) =      e−jθτ Rω (τ )dτ,
+                                                              −∞
+                                                                              RT
+                     contains at least n points, where Rω (τ ) = limT →∞ T1    0
+                                                                                    ω(t)ω(t + τ )dt is the
+                     autocovariance of ω [2].
+                        The perceptual noise ξ q in the filtered increment in joint angle dynamics (Eq (3)) is
+                     a sufficiently rich noise satisfying Definition 1.
+                     Remark 1. For purposes of simulation and model fitting, ξ q is treated as white noise
+                     with intensity σq . ξ q is a stationary signal as per [2, Definition 5.2.2], with a flat
+                     spectral power density Sω (θ). ξ q is thus sufficiently rich of any order.
+
+
+                     2     Analysis of adaptive control-based HML model
+                     This section is dedicated to the analysis of the following proposed model of HML from a
+                     control-theoretic perspective.
+                                             ˙ = − aδq + u + ξ
+                                            δq                                                               (8a)
+                                                               q
+                                              ˙
+                                             C̃ = − γ C̃δqδq ⊤
+                                                                                                             (8b)
+                                            ėx = − Cu                                                       (8c)
+                                                                                 
+                                             u̇ = − η (Ĉ ⊤ Ĉ + µI)u − kP Ĉ ⊤ ex + ξ u ,                   (8d)
+
+
+
+
+September 16, 2024                                                                                           2/7
+                                                                      ˙
+                     where C̃ = Ĉ − C, and we have used C̃˙ = Ĉ We aim to show that the mathematical
+                     model of human forward and inverse learning proposed here, under certain viable
+                     assumptions, evolves in a stable fashion and converges to equilibrium exponentially.
+                          The motor learning literature suggests that the forward learning dynamics evolve on
+                     a slower timescale than the inverse learning dynamics (refer to the Discussion section in
+                     the main text). Consistent with the literature, our parameter fits suggest γ ≪ η, kP ,
+                     i.e., C̃ dynamics evolve on a slower timescale, and u, ex dynamics evolve on a faster
+                     timescale.
+                          Decomposing (Eq (1)) and δx   c = Ĉδq into n equations (one for each cursor motion
+                     axis), we obtain δxi = Ĉi δq for all i ∈ {1, . . . , n}. A similar expression can be written
+                                       c
+                     for (Eq (1)). We analyze these equations separately, and for ease of notation, we will
+                     drop the index i.
+                          Defining the slow variable ēx = kP ex ∈ R, we get the modified reaching error
+                     dynamics as
+                                                   ē˙ x = kP (ẋdes − ẋ) = −kP Cu.                            (9)
+                     Let f : Rm × R1×m 7→ R1×m , g1 : Rm × R × R1×m 7→ Rm , g2 : Rm 7→ R be defined by
+
+                                                      f (C̃) = − C̃δqδq ⊤ ,
+                                              g1 (u, ēx , Ĉ) = − ((Ĉ ⊤ Ĉ + µI)u − Ĉ ⊤ ēx ),
+                                                     g2 (u) = − Cu.
+
+                     Then the HML model dynamics in (Eqs (8b), (8d), (9)) can be equivalently written as
+                                                          ˙
+                                                         Ĉ = γ f (C̃),                                       (10a)
+                                                          u̇ = η g1 (u, ēx , Ĉ) + ξ u                       (10b)
+                                                        ē˙ x = kP g2 (u),                                     (10c)
+
+                     where we treat δq as an exogenous input for the purpose of analysis. Rewriting system
+                     (Eq (10)) in the new timescale t 7→ γt, we get the singularly perturbed system defined
+                     by
+
+                                                C̃˙ = f (C̃),                                                 (11a)
+                                                                                         
+                                                          u̇  εe g1 (u, ēx , C̃) + εξ u /γ
+                                              ερ˙u = ε ˙ =                                    ,               (11b)
+                                                         ēx           εu g2 (u)
+
+                     where ε = εu εe , εu = γ/η, and εe = γ/kP . ε = γ 2 /ηkP ≪ 1 and thus u, ēx are the fast
+                     variables.
+                         It can be verified that under the persistency of excitation of δq, (u, ēx , C̃) = (0, 0, 0)
+                     is an isolated equilibrium of system (Eq (11)) in the absence of exploration noise ξ u .
+                     Moreover, the functions f, g1 , g2 are locally Lipschitz, and their partial derivatives up to
+                     the second-order are bounded in their respective domains containing the origin.
+
+                     2.1    Slower-timescale forward learning dynamics
+                     The reduced system associated with (Eq (11)) is
+
+                                                         C̃˙ = f (C̃) = −C̃δqδq ⊤ ,                             (12)
+
+                     where the fast-varying states are settled at the isolated equilibrium (u, ēx ) = (0, 0).
+                     Lemma 1 (Stability of the Reduced System (Eq (12))). The solution of the
+                     reduced system (Eq (12)) converges globally exponentially to the origin.
+
+
+
+
+September 16, 2024                                                                                              3/7
+                     Proof. δq dynamics with added sufficiently rich noise ξ q at the equilibrium value of
+                     fast-varying states is
+                                                                        ˙ = −aδq + ξ ,
+                                                                       δq           q
+                                                                             1
+                                                      or equivalently, δq =     ξ .                                          (13)
+                                                                            s+a q
+                     Invoking [3, Theorem 4.2], with Q(s) = 1 and p(s) = s + a, δq is persistently exciting.
+                     The lemma is then proved using standard adaptive control techniques [2], which
+                     leverage the radially unbounded Lyapunov function Vr (C̃) = 12 C̃ C̃ ⊤ and persistency of
+                     excitation of δq.
+
+                     2.2     Faster-timescale inverse learning dynamics
+                     Ignoring the noise term ξ u in u dynamics, the boundary layer system associated with
+                     (Eq (11)) is defined in the new timescale τu = t/ε as
+                                                " # "                                        #
+                                                  dū                  ⊤
+                                        dρu              −1/ε  u   (Ĉ   Ĉ + µI)ū − Ĉ ē x
+                                             = dτdēx =
+                                                    u
+                                                                                                 ,   (14a)
+                                         dτu     dτu                 −1/εe (C ū)
+
+                     where u is replaced by noise-free joint velocities ū, and the slow-varying state
+                     Ĉ = C̃ + C is frozen in time.
+                     Lemma 2 (Stability of the Boundary Layer System (Eq (14))). For the
+                     boundary layer system (Eq (14)), the equilibrium point at the origin is globally
+                     exponentially stable, given that the frozen state C̃ satisfies C̃ < min {µ, θc }, where
+                     θc ≥ 0 is the largest value
+                                                that satisfies the cubic inequality
+                      3    2                        2                        2
+                     θc − θc (2 ∥C∥ + 1) + θc ∥C∥ + 2 ∥C∥ + µ − ∥C∥ < 0.
+
+                     Proof. Consider the radially unbounded Lyapunov function
+                                                              εu
+                                                Vb (ū, ēx ) =  (ū − u∗ )⊤ (ū − u∗ ) + εe ē2x ,
+                                                               2
+                                                              1
+                                                             = ρ⊤  P ρu ,
+                                                              2 u
+
+                     where u∗ = C̄ −1 Ĉ ⊤ ēx , ρu = [ū⊤ , ēx ]⊤ , 
+                                εu I               −εu C̄ −1 Ĉ ⊤
+                     P =                                                   ≻ 0, and C̄ = (Ĉ ⊤ Ĉ + µI). We thus have
+                            −εu Ĉ C̄ −1 (2εe + εu Ĉ C̄ −1 C̄ −1 Ĉ ⊤ )
+                                     2                                   2
+                     λmin (P ) ∥ρu ∥ ≤ Vb (ū, ēx ) ≤ λmax (P ) ∥ρu ∥ , where λmin (·) and λmax (·) are the
+                     minimum and maximum eigenvalues of the matrix in the argument.
+                        The time-derivative ( dτdu ) of Vb along the boundary layer system trajectories (Eq
+                     (14)) is
+
+                                dVb
+                                    = εu (ū − u∗ )⊤ ū
+                                                     ˙ + 2εe ēx ē˙ x ,
+                                dτu
+                                    = −(ū − u∗ )⊤ (C̄ ū − Ĉ ⊤ ēx ) − 2ēx C ū,
+                                     = −ū⊤ C̄ ū + ū⊤ Ĉ ⊤ ēx + ēx Ĉ C̄ −1 C̄ ū − ēx Ĉ C̄ −1 Ĉ ⊤ ēx − 2ēx C ū,
+                                     = −ū⊤ C̄ ū − ēx Ĉ C̄ −1 Ĉ ⊤ ēx + ēx (2Ĉ − 2C)ū,
+                                     = −ρ⊤
+                                         u Qρu + 2ēx C̃ ū,
+                                                            2
+                                     ≤ −λmin (Q) ∥ρu ∥ + 2 ∥ēx ∥ C̃ ∥ū∥ ,                                                  (15)
+
+
+
+
+September 16, 2024                                                                                                           4/7
+                                                 
+                                 C̄         0                                         2        2        2
+                     where, Q =                        ≻ 0. Using the fact that ∥ρu ∥ = ∥ū∥ + ∥ēx ∥ , we get
+                                  0     Ĉ C̄ −1 Ĉ ⊤
+                        dVb                  
+                                                    2         2
+                                                                
+                            ≤ −λmin (Q) ∥ū∥ + ∥ēx ∥ + 2 ∥ēx ∥ C̃ ∥ū∥ = −ψ(ū, ēx )⊤ Λψ(ū, ēx ), (16)
+                        dτu
+                                                                                      
+                                                                     λmin (Q) − C̃
+                     where ψ(ū, ēx ) = [∥ū∥ , ∥ēx ∥]⊤ , and Λ =                   .
+                                                                      − C̃     λmin (Q)
+                        Note that λmin (Q) = min{λmin (C̄), Ĉ C̄ −1 Ĉ ⊤ }, where λmin (C̄) = µ. Since
+                     Ĉ = C + C̃, we have ∥C∥ − C̃ ≤ Ĉ , which gives us
+
+                            Ĉ C̄ −1 Ĉ ⊤ = Ĉ(Ĉ ⊤ Ĉ + µI)−1 Ĉ ⊤ = Ĉ Ĉ ⊤ (Ĉ Ĉ ⊤ + µ)−1
+                                                                                2                    2
+                                                                            Ĉ               ∥C∥ − C̃
+                                                                    =        2        ≥            2    > 0.
+                                                                        Ĉ + µ            ∥C∥ − C̃     +µ
+
+                     Since λmin (Q) > 0, andΛ is a symmetricmatrix, it is positive definite if
+                                                                2
+                                                    (∥C∥−∥C̃ ∥)
+                      C̃ < λmin (Q) = min µ,                  2    . The second bound gives us
+                                                   (∥C∥−∥C̃ ∥) +µ
+                                          2
+                              (∥C∥−∥C̃ ∥)
+                      C̃ <              2    , which is always satisfied for the largest value θc that satisfies the
+                             (∥C∥−∥C̃ ∥) +µ
+                     cubic inequality
+                                                                                   
+                                                                      2                      2
+                                    θc3 − θc2 (2 ∥C∥ + 1) + θc ∥C∥ + 2 ∥C∥ + µ − ∥C∥ < 0.                       (17)
+
+                                                           dVb
+                     Therefore, if C̃ ≤ min{µ, θc } then dτ  u
+                                                               is negative definite, and the boundary layer
+                     system is globally exponentially stable.
+
+
+                     Remark 2. Inequality (17) is satisfied for θc = 0. By continuity of the cubic equation
+                     in θc , there exists a non-zero measure set where this inequality is satisfied.
+
+                     2.3    Coupled forward-inverse motor learning dynamics
+                     We now show the stability and convergence
+                                                         n of our proposed HML model using singular
+                                                                                               o
+                     perturbation arguments. Define Ωc =    C̃, ū, ēx ∈ R1×m × Rm × R C̃ ≤ δc ,
+                     where δc = min {µ, θc }, and θc is the largest value that satisfies the cubic inequality (Eq
+                     (17)).
+                     Theorem 1 (Stability of the HML Model (Eq (10))). In the absence of exploration
+                     noise ξ u , there exists sufficiently small ε∗ such that         2            ∗
+                                                                             for all γ /ηkP ∈ (0, ε ), Ωc is
+                     positively invariant, and for all C̃(0), ū(0), ēx (0) ∈ Ωc , the trajectories of the
+                     proposed HML model in Eq 9 exponentially converge to the origin.
+                     Proof. From the proof of Lemma 1, we have
+                                           ⊤
+                      C̃(t) ≤ e−γλmin (δqδq )t C̃(0) ≤ C̃(0) , implying C̃(t) is non-increasing. Thus,
+                      C̃(0) < δc = min{µ, θc } implies C̃(t) < δc for all t > 0. Therefore, from Lemma 2,
+                     the boundary layer system is globally exponentially stable. Using similar techniques as
+                     in [4, Theorem 11.4], the exponential stability of the system can be proved by
+                     constructing a composite Lyapunov function using the Lyapunov functions Vr (C̃) and
+                     Vb (ū, ēx ), for (C̃, ū, ēx ) starting in the set Ωc .
+
+
+
+
+September 16, 2024                                                                                               5/7
+                     Remark 3. We show exponential convergence of HML model states (Eq (10)) to the
+                     origin in the absence of exploration noise in Theorem 1. With the stochastic exploration
+                     noise ξ u added to the model, using ideas similar to [5, Section 8.6], it can be shown that
+                     the HML model trajectories enter and stay in a ball of radius O(|σu |) centered around
+                     the origin.
+
+
+                     3     HML model-based investigation into motor
+                           learning behavior
+                     3.1     Exploration versus exploitation trade-off
+                     Apart from the inverse learning parameter η which had the most significant effect on
+                     the exploration versus exploitation trade-off, we also show how the exploration noise
+                     intensity affects this performance metric in Fig 1.
+
+
+
+
+                     Fig 1. Effort variation with σu . Distribution of driving and exploratory effort across trials as σu is
+                     varied around its fit value 0.8764. Driving effort is highest around the fitted value of σu (p< 0.01),
+                     while exploratory effort increases monotonically with σu .
+
+
+
+
+                               (a)                         (b)                                               (c)
+                                                                                        Subject 6                                                     Subject 6
+                                                                            2.5                              Straightness of Trajectory   0.8
+
+                                                                             2
+                                                                                                                                          0.6
+                                                           Reaching Error
+
+
+
+
+                                                                            1.5
+                                                                                                                                          0.4
+                                                                             1
+                                                                                                                                          0.2
+                                                                            0.5
+
+                                                                             0                                                             0
+                                                                              0   100   200      300   400                                  0   100   200      300   400
+                                                                                          Trials                                                        Trials
+
+
+
+                     Fig 2. Comparing HML model with Ref [6] model. (a) Comparing the FME curves from the
+                     model in Ref [6] to the HML model shows that the model in Ref [6] is not as accurate as HML model in
+                     capturing the human skill state (represented by the participant’s estimate of BoMI mapping matrix Ĉ)
+                     for this motor learning task. (b) and (c) show the RE and SoT evolution curves for Subject 6.
+
+
+
+
+                     3.2     Comparative analysis of HML model’s efficacy in explaining
+                             the motor learning
+                     Fig 2 shows the evolution of FME from the HML model and the model in Ref [6], both
+                     fitted on the experimental data of Subject 6. Looking at Fig 2, FME from our proposed
+                     model aligns more closely to the RE and SoT observed from the experimental data for
+                     Subject 6 as compared to the FME from the Ref [6] model. There’s a sharp initial
+                     decrease in FME out of HML model Fig 2, and also in the RE and the SoT Fig 2c, 2b for
+
+
+
+
+September 16, 2024                                                                                                                                                         6/7
+                     Subject 6. Whereas, FME out of the Ref [6] shows a slow initial decrease, followed by a
+                     fast decay much later in the game trials.
+
+
+                     References
+                       1. Sastry S, Bodson M. Adaptive Control: Stability, Convergence, and Robustness.
+                          Prentice-Hall, Inc.; 1989.
+                       2. Ioannou PA, Sun J. Robust Adaptive Control. vol. 1. PTR Prentice-Hall Upper
+                          Saddle River, NJ; 1996.
+                       3. Mareels IM, Gevers M. Persistency of excitation criteria for linear, multivariable,
+                          time-varying systems. Mathematics of Control, Signals and Systems.
+                          1988;1:203–226.
+
+                       4. Khalil HK. Nonlinear Systems. 3rd ed. Prentice Hall; 2002.
+                       5. Kushner HJ. Introduction to Stochastic Control. Holt, Rinehart and Winston New
+                          York; 1971.
+                       6. Pierella C, Casadio M, Mussa-Ivaldi FA, Solla SA. The dynamics of motor
+                          learning through the formation of internal models. PLoS Computational Biology.
+                          2019;15(12):e1007118.
+
+
+
+
+September 16, 2024                                                                                       7/7
+

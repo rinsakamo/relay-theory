@@ -1,0 +1,93 @@
+S3 DATA
+Best-fit Parameters of the Learning model
+
+The reinforcement-based state-space model has three free parameters: α, σm , and σe .
+To ﬁnd the best-ﬁt parameters and their corresponding conﬁdence intervals, we per-
+formed a bootstrap optimization ﬁtting procedure. Fitting was done using a two-step
+process. For all optimizations, we used a Nelder-Mead optimization routine contained
+in the SciPy module (optimize, minimization) in Python.
+
+
+Step 1: Finding Initial Guesses with Behavioural Estimates and ‘Warm-start’ Optimization
+We used a ‘warm-start’ bootstrap optimization procedure to ﬁnd an initial guess of α,
+where σm and σe were held as constants (0.85 and 0.99, respectively). Estimates of σm
+and σe were found using a trial-by-trial analysis (see S2 DATA).
+     For each bootstrap (N = 1000), we resampled with replacement separately for
+participants experiencing a steep landscape and participants experiencing a shallow
+landscape. For each group, we averaged across participants to ﬁnd the mean reach an-
+gle of each trial. Then we ﬁt an exponential function (Eq. 6) to these two experimental
+groups. Consequently, we obtained a time-constant that deﬁnes the rate of learning
+for participants experiencing the steep reinforcement landscape (λbehaviour
+                                                                  steep     ) and a time-
+constant for participants experiencing the shallow reinforcement landscape (λbehaviour
+                                                                             shallow ).
+
+For each exponential function, we also found the best-ﬁt term that deﬁnes the asymp-
+totic reach angle (a).
+
+     Simultaneously, with our learning model (Eq. 1) we simulated 2000 ’individuals’
+experiencing the steep reinforcement landscape and another 2000 ’individuals’ expe-
+riencing the shallow reinforcement landscape. Like the behavioural data, we averaged
+across simulated individuals to obtain the mean reach angle for each trial. We then ﬁt an
+exponential function to the simulated individuals that experienced the steep reinforce-
+ment landscape and the simulated individuals that experienced a shallow reinforcement
+
+
+                                            1
+landscape. This yielded a time-constant that deﬁnes the rate of learning for simulated
+individuals experiencing the steep reinforcement landscape (λmodel
+                                                             steep ) and a time-constant
+
+for simulated individuals experiencing the shallow reinforcement landscape (λmodel
+                                                                             shallow ).
+
+We also found the best-ﬁt term that deﬁnes the asymptotic reach angle (a) for each ex-
+ponential function.
+
+        For each bootstrap (i), we then found the best-ﬁt αi by minimizing error between
+the behavioural time-constants and model time-constants according to following equa-
+tion:
+
+
+           αi = arg min{|(λbehaviour
+                           steep        steep )| + |(λshallow − λshallow )| }
+                                     − λmodel   2     behaviour  model     2
+                                                                                      (C1).
+                    α
+
+
+
+This process produces a single best-ﬁt αi per bootstrap.
+
+        Repeating this process 1000 times yields a distribution of αi . We then took the
+mean of this distribution to ﬁnd a single α, which was then used as the initial guess for
+the best-ﬁt optimization procedure described below.
+
+
+Step 2: Finding the Best-ﬁt parameters and their 95th percentile conﬁdence intervals
+
+The procedure for ﬁnding the best-ﬁt parameters was the same as described above,
+except that all three parameters (α, σm , σe ) of the model were free to vary:
+
+
+  αopti , σm
+           opti
+                , σeopti = arg min{|(λbehaviour
+                                      steep     − λmodel
+                                                   steep )| + |(λshallow − λshallow )| }
+                                                           2     behaviour  model     2
+                                                                                              (C2).
+                        α,σm ,σe
+
+
+
+        From each of the resulting parameter distributions, we used the mean as the best-
+ﬁt value for each parameter. Further, an advantage of this bootstrap optimization pro-
+cedure is that conﬁdence intervals can be found from these parameter distributions. The
+best-ﬁt values (and corresponding 95th percentile conﬁdence intervals) of α, σm , and σe
+were 0.40(0.25, 0.63), 0.9(0.813, 1.02), and 0.81(0.63, 0.97), respectively.
+
+
+
+                                                  2
+
