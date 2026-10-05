@@ -1,0 +1,83 @@
+{
+  "schema": "relaytheory.p399.main.m3.cross_paper_consistency_audit.v1",
+  "terms": {
+    "state": {
+      "invariant": "time-indexed internal configuration only when source-grounded",
+      "paper_specific": [
+        "ACT-R traces/activation",
+        "beta-VAE latent + learned semantic parameters",
+        "palimpsest population state",
+        "Bayesian belief/HMM posterior",
+        "SR/PR learned representations",
+        "motor controller/network/cache states"
+      ],
+      "forbidden_collapse": "Do not treat all states as the same computational or biological object."
+    },
+    "memory": {
+      "invariant": "retained source-defined structure accessible across relevant succession",
+      "paper_specific": [
+        "ACT-R declarative traces",
+        "compressed episodic latent / semantic model distinction",
+        "shared visual population code",
+        "SORN weights/cached aim only where source treats persistence"
+      ],
+      "forbidden_collapse": "External history, delay or latent state-estimation posterior is not automatically memory."
+    },
+    "prediction": {
+      "invariant": "source-defined generation/estimation of not-currently-observed structure or consequence",
+      "paper_specific": [
+        "SR future occupancy / PR predecessor relation",
+        "HMM state estimate",
+        "SKL-01 forward-model consequence"
+      ],
+      "forbidden_collapse": "Prediction error, retrieval output and likelihood are not automatically prediction state."
+    },
+    "policy": {
+      "invariant": "source-defined action mapping/selection rule, not the generic P interface",
+      "paper_specific": [
+        "PRD-02 belief-state action selection",
+        "SKL-01 inverse controller",
+        "SKL-03 local aim/exploration update"
+      ],
+      "forbidden_collapse": "Execution interface alone is not a persistent policy."
+    },
+    "representation": {
+      "invariant": "source-defined internal carrier; type and persistence vary by paper",
+      "paper_specific": [
+        "chunk/trace",
+        "latent code",
+        "population activity",
+        "belief distribution",
+        "occupancy representation",
+        "recurrent synaptic structure",
+        "aim cache"
+      ],
+      "forbidden_collapse": "Shared label does not imply shared mechanism."
+    },
+    "skill": {
+      "invariant": "source-defined learned action/execution competence or motor mapping",
+      "paper_specific": [
+        "SKL-01 forward/inverse maps",
+        "SKL-02 sequence-sensitive recurrent state + supervised readout",
+        "SKL-03 reinforced intended-aim cache/exploration"
+      ],
+      "forbidden_collapse": "External target/body is not skill state."
+    },
+    "replay": {
+      "invariant": "requires source-explicit reactivation/replay process",
+      "paper_specific": [],
+      "forbidden_collapse": "No replay mechanism is invented in M3; retrieval, reconstruction or repeated training is not relabeled replay."
+    },
+    "model": {
+      "invariant": "source-defined generative/transition/control structure; distinguish fixed world structure, learned parameters and current latent state",
+      "paper_specific": [
+        "MEM-02 learned semantic generative model",
+        "PRD-03 experiment-defined transition model plus internal posterior",
+        "SKL-01 forward/inverse learned maps"
+      ],
+      "forbidden_collapse": "A model parameter is not automatically an online controller."
+    }
+  },
+  "grammar_roles_unchanged": true,
+  "cross_paper_result": "CONSISTENT_WITH_SOURCE_SPECIFIC_MEANINGS"
+}
