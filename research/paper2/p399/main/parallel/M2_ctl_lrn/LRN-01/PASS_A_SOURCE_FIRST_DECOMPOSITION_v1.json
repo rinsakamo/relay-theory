@@ -1,0 +1,75 @@
+{
+  "schema": "relaytheory.p399.main.m2.pass_a_source_first_decomposition_v1",
+  "slot": "LRN-01",
+  "doi": "10.1038/s41467-025-58848-6",
+  "stage": "A_SOURCE_FIRST_DECOMPOSITION",
+  "protocol": "RIR v2.3.1 source-closed-C",
+  "source_scope": "adopted publisher Version of Record full HTML; standalone Supplementary Information identity retained but its unseen standalone content is not new Stage-A evidence",
+  "grammar_mapping_performed": false,
+  "result_informed_adjudication_performed": false,
+  "source_loci": [
+    "Abstract/Introduction efficient-coding RL objective",
+    "training-versus-testing design",
+    "Methods ECPG objective and latent encoder/decoder policy",
+    "model comparisons and feature variants",
+    "Discussion interpretation/limitations"
+  ],
+  "internal_state": [
+    "learned encoder parameters mapping environmental state to latent representation",
+    "learned decoder/action-policy parameters mapping latent representation to action",
+    "learned compressed representation; test-time retention is not reclassified as a coordinator"
+  ],
+  "observed_or_input_variables": [
+    "training stimuli/states",
+    "reward feedback during training",
+    "novel test stimuli/states in the generalization phase"
+  ],
+  "action_or_control_variables": [
+    "action sampled/chosen from decoder policy conditioned on latent representation"
+  ],
+  "update_operators": [
+    "policy-gradient optimization of encoder and decoder under coupled reward/compression objective",
+    "representation compression driven by mutual-information penalty",
+    "source-defined initialization/pretraining where used is distinct from task learning"
+  ],
+  "value_or_policy_quantities": [
+    "expected reward above baseline",
+    "mutual-information cost I(S;Z)",
+    "combined efficient-coding objective: reward minus lambda-weighted representational information"
+  ],
+  "gating_or_selection_rules": [
+    "latent encoder determines which compressed representation reaches the action decoder; lambda is a model hyperparameter, not a separate controller"
+  ],
+  "learning_rule": [
+    "policy-gradient parameter learning under reward-plus-compression objective; generic policy-gradient machinery is inherited"
+  ],
+  "temporal_ordering": [
+    "training state presentation",
+    "latent encoding",
+    "action selection",
+    "reward feedback",
+    "parameter update over training",
+    "testing on new states using learned representation/policy without introducing online coordination state"
+  ],
+  "environmental_or_task_variables": [
+    "training/test split and stimulus associations are experimenter-defined",
+    "feature-based variants use experimenter-defined feature embeddings and are not autonomous feature-learning evidence"
+  ],
+  "model_alternatives": [
+    "RLPG",
+    "CPG relation at zero compression penalty",
+    "feature-based RLPG/ECPG/CPG",
+    "latent-cause, memory-association and ACL comparators",
+    "L1PG/L2PG/DCPG/random-regularizer controls"
+  ],
+  "source_defined_controller_hierarchy": "encoder and decoder compose the source policy; no additional meta-controller is asserted",
+  "negative_or_adverse_results": [
+    "generic policy-gradient RL is inherited",
+    "feature variants rely on experimenter-defined embedding",
+    "model fitting does not establish an independently cross-validated neural implementation",
+    "computational success is not direct neural-mechanism evidence"
+  ],
+  "reset_or_reinitialization_boundary": "training-to-test phase change is experimenter-defined; learned representation is retained but active learning during test is not inferred merely from continued performance",
+  "stage_a_complete": true,
+  "stage_a_frozen_before_b": true
+}
