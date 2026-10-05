@@ -1,0 +1,45 @@
+                                                                                                           1
+
+
+Text S4: Forward and Backward Inference in Spatial Cognition
+Will D. Penny, Peter Zeidman and Neil Burgess
+
+
+Combining path integration with sensory input
+Several studies have explored how head direction cells respond when information from landmark sources
+conflicts with self-motion signals [59]. Most studies have found that when well-established and promi-
+nent visual cues are placed in conflict with self-motion cues, the spatial information derived from visual
+landmarks prevails. During spatial localisation these two types of information are optimally combined
+using Bayes rule.
+   After a path integration update, the uncertainty on the state variables is Qn and the uncertainty of the
+sensory information is R. The relative values of R−1 and Q−1  n then determine which source dominates,
+with the higher precision source primarily determining the subsequent state estimate. This can be seen
+more easily by writing equation 24 in the main text in a different but mathematically equivalent form
+
+                                   P −1
+                                     n    = GT RG + Q−1 n                                                (1)
+                                    mn    = P n (GT R−1 y n + Q−1
+                                                               n µn )
+
+If, for example, path integration is exceptionally noisy then Q−1
+                                                               n = 0 and mn = W y n where W =
+(GT RG)−1 GT R−1 is the weighted least squares operator. That is, state variables are determined solely
+by sensory input.
+
+
+Relative precisions of sensory input
+The model we have described in the main text assumes that the different modalities are independent given
+the state. This gives the observation noise covariance a block diagonal structure R = blkdiag(R0 , Rt , Rv ).
+The precision will have a similar structure R−1 = blkdiag(R0−1 , Rt−1 , R−1
+                                                                         v ). The values of the covariance
+parameters R0 , Rt ,Rv therefore determine the weight W that is given to the different sensory modalities.
+For example, setting Rt to a very high value effectively switches off somatosensory input.
+    During the experiments in this paper we found, for example, that somatosensory inputs are only useful
+during route and motor planning. Somatosensory input is necessary here so that the route plans avoids
+walls in the environment. However, somatosensory input was found to be deleterious for the tasks of
+localisation and decision making. In the brain, the precision of sensory input is hypothesised to be mod-
+ified by changing its gain. This could happen either by changes in synaptic plasticity or in the temporal
+synchronization of input activity [120]. Thus, we expect that the different modes of computation (locali-
+sation, route planning etc), are accompanied by large scale changes in effective connectivity in the brain.
+This point is addressed further in the discussion (see ‘localisation’ under ‘Neuronal Implementation’).
+

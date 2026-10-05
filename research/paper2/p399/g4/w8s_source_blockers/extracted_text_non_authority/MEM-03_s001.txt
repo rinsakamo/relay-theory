@@ -1,0 +1,215 @@
+                                                                                                               1
+
+
+
+    Supplementary Text S1
+
+1    Derivation of large population limit for Fisher information
+Starting from Equation (8) in the main text, assuming uniform coverage with density ρ for the population
+code.
+
+                                                 M
+                               τ12              X
+                                                   sin2 (φ − θi ) exp 2τ1 cos(φ − θi ) + 2τ2 cos(ψ − γi )
+                                                                                                         
+            [IF ]φφ =2    4         2         2
+                    σ 16π I0 (τ1 ) I0 (τ2 ) i=1
+                                                Z 2π Z 2π
+                              τ12 ρ
+                                                           dγdθ sin2 (φ − γ) exp 2τ1 cos(φ − γ)
+                                                                                 
+                   ≈ 2    4         2         2
+                    σ 16π I0 (τ1 ) I0 (τ2 ) 0         0
+                                           
+                     + 2τ2 cos(ψ − θ)
+                                                Z 2π
+                              τ12 ρ
+                   = 2                               dγ sin2 (φ − γ) exp (2τ1 cos(φ − γ))
+                    σ 16π 4 I0 (τ1 )2 I0 (τ2 )2 0
+                       Z 2π
+                     ·       exp (2τ2 cos(ψ − θ)) dθ
+                        0
+                                                              Z 2π
+                        τ12 ρI0 (2τ2 )
+                                                                                                       
+                                                                          2
+                   = 2 3                        2πI0 (2τ1 ) −       dγ cos (φ − γ) exp (2τ1 cos(φ − γ))
+                    σ 8π I0 (τ1 )2 I0 (τ2 )2                    0
+
+    With:
+                   Z 2π                                                   Z 2π
+                            dγ cos2 (φ − γ) exp (2τ1 cos(φ − γ)) =               cos2 (v) exp(2τ1 cos v)dv
+                        0                                                   0
+                                             d2
+                   Introduce γ, and let          exp(2γτ1 cos v) = 4τ12 cos2 v exp(2γτ1 cos v)
+                                            dγ 2
+                       Z 2π                                      Z 2π 2
+                                                             1        d
+                    ⇒       cos2 (v) exp(2τ1 cos v)dv =        2        2
+                                                                           exp(2γτ1 cos v)dv
+                        0                                   4τ 1 0   dγ                      γ=1
+                                Z 2π
+                        1 d2                                   π d2
+                    = 2 2             exp(2γτ1 cos v)dv = 2 2 I0 (2γτ1 )
+                      4τ1 dγ 0                                2τ1 dγ
+                              2
+                        π 4τ1
+                    =           (I0 (2γτ1 ) + I2 (2γτ1 ))     = π(I0 (2τ1 ) + I2 (2τ1 ))                      (1)
+                       2τ12 2                             γ=1
+
+    Hence obtaining
+
+                                                         τ12 ρ
+                            lim [IF1 ]φφ ≈                                I0 (2τ2 ) (I0 (2τ1 ) − I2 (2τ1 ))   (2)
+                            M →∞             σ 2 8π 2 I0 (τ1 )2 I0 (τ2 )2
+
+2    Relation between memory fidelity and Fisher information
+In the “Fisher information analysis” main text section, we mentioned that the memory fidelity is approx-
+imately half of the Fisher information, which is the expected curvature of the log-posterior.
+                                                                                                           2
+
+
+   Assume that we store an item with a single feature θ in a memory comprising M units whose activities
+are denoted collectively by y. Storage is noisy. We perform recall by constructing and then sampling
+from the posterior distribution p(θ | y). The mode of this distribution, t (y) is a function of y, and in the
+cases of interest, will often be an an unbiased estimator of θ, saturating the Cramer-Rao bound, so that
+
+
+                                            E [t (y) | θ] = θ                                            (3)
+                                                                1
+                                          Var [t (y) | θ] =                                              (4)
+                                                              F I(θ)
+
+   If the prior over θ is flat, then the posterior distribution, given y, will, in these circumstances, be
+                                                                                           1
+well approximated by a Gaussian distribution with mean t(y) and the same variance F I(θ)      . If we take a
+sample θ̂ from this, then we have
+
+                 h i       h h i i
+               E θ̂|θ = E E θ̂|y |θ = E [t(y)|θ] = θ by iterated expectations                            (5)
+         h            i    h                             i
+        E (θ̂ − θ)2 |θ = E (θ̂ − t(y))2 + (t(y) − θ)2 |θ   since θ̂ is sampled independently of y        (6)
+                           h    h i i
+                        = E V ar θ̂|y |θ + V ar [t(y)|θ]                                                 (7)
+                             1      1        2
+                       =         +       =                                                               (8)
+                           F I(θ) F I(θ)   F I(θ)
+
+    as claimed.
+
+
+3     Stimuli separation analysis for Hierarchical population code
+We perform a similar analysis as for the mixed population code in “The canary” main text section, in
+which the patterns of error were used to make inferences about the underlying size of the receptive fields of
+the units in the population (under various assumptions). See Figure 1 in Text S1 for the results. For most
+conjunctivity ratios, the separation between target and non-target recall occurs for a minimum distance
+of 0.2. However, the performance saturates at a level that depends on the conjunctivity. Hence for a
+given hierarchical conjunctivity, moving the stimuli further apart does not improve recall arbitrarily. This
+can be interpreted as being caused by the non-locality of the conjunctive information in the hierarchical
+code. Increasing the distance between the stimuli does not change the probability that it falls into a
+conjunctive receptive field.
+
+
+4     Relation between conjunctivity ratio and population size
+A reviewer noted that our parameterisation of the mixed population code creates a dependence between
+the population size M and the ratio of conjunctivity required to achieve a particular precision. For
+instance, the fidelity of feature-selective neurons scales as M , while the precision of conjunctive neurons
+scales as M 2 (for two features). Hence from a purely theoretical point of view, the ratio of conjunctivity
+should scale with M .
+    We tested this hypothesis by looking at storage and recall of just a single item in a mixed population
+code, modifying the population size M and the ratio of conjunctivity. The results are shown in Figure 2
+                                                                                                          3
+
+
+
+
+Figure 1. Patterns of errors as a function of stimulus separation for different proportions
+of conjunctive units in the hierarchical population code.
+This figure is a version of Figure 16 in the main text, but for a hierarchical rather than mixed
+population code. It shows the ratios between the target mixture proportion and the sum of the target
+and non-target mixture proportions (in blue), or the same for a non-target mixture proportion (in
+green) as a function of the separation in radians between stimuli in the diagonal pattern, for three
+hierarchical population codes, with 30%, 50% and 80% conjunctive units. See Supplementary
+information 3 for analysis.
+
+
+in Text S1 in terms of the precision (quantified by the memory error since, as explained in the paper, the
+circular standard deviation is too sensitive to outliers). This surface is based on an interpolation between
+a set of discrete values of M that fit with the homogeneity of the code.
+    The ratio necessary to achieve a given κ = κ̂ = 580 did indeed scale with M , at least for most values.
+Increasing the population size further led to precisions that were too high, even when increasing the
+conjunctivity to its maximum value (hence our target κ̂ is not reachable).
+    Note that we kept M fixed almost throughout the paper, and also that it may not be that human
+performance is best fit by using the M that achieves the best precision. Indeed, in our ongoing work on
+this, it currently seems as if suboptimality holds.
+    We also reconfirmed the good fit of the Fisher information to (twice) the memory fidelity κ. Figure 3
+in Text S1 shows the ratio of the Fisher information to the value that corresponds to the same κ̂ shown
+in Figure 2 in Text S1; it follows exactly the same trend. Unfortunately, as the Fisher information is a
+complex function of the ratio of conjunctivity in the mixed population code, its evolution with M does
+not follow any simple relationship.
+
+
+5    Relation between ratio of conjunctivity when increasing num-
+     ber of features
+For similar reasons, the required fraction of conjunctive units for a given κ is also linked to the number
+R of feature dimensions. As noted in the main text, although N R conjunctive units are required to cover
+the space evenly, only N · R feature units are required. This comes at the cost of misbinding. Hence it
+can be expected than the ratio of conjunctive units that keeps κ fixed should decrease as R increases.
+    Figure 4 in Text S1 shows the effect of varying R, keeping the population size M fixed (to M = 356
+in this experiment), and adjusting the ratio of conjunctivity. We tried cueing all the features apart from
+                                                                                                          4
+
+
+
+
+Figure 2. Precision as a function of M and the ratio of conjunctivity.
+The plot shows the dependence of the precision (measured, for convenience, as the ratio κ/κ̂ relative to
+a specific value κ̂ = 580) for a single item as a function of the size of the population code, M , and the
+ratio of conjunctivity. White corresponds to a ratio κ/κ̂ of 1; we clamped the ratios between 0.5 and 1.5
+for visualisation purposes (ratios smaller than 0.5 are visualized as = 0.5, ratios larger than 1.5 are
+visualized as = 1.5). This surface is an interpolation between the points that are possible (to maintain
+the homogeneity of the population representation). We see that the white equal-ratio ridge does not
+reach the top-right corner and instead seems to “reverse”. This is due to the impossibility to match the
+specific value of κ̂ for large population sizes.
+
+
+the one to be recalled (hence simplifying the problem to be trivially similar to the situation with R = 2)
+and also tried to cue a single feature (doing Gibbs sampling on all the remaining ones). As no clear
+qualitative difference was found, except that the single cued feature case was (as expected) less efficient,
+we only report our results for the fully cued case.
+    We found that the overall precision achievable by the network decreases with R. Hence to achieve
+a given precision level, it makes it appear as a smaller ratio is required. However, this does not take
+misbinding errors into account.
+    To show how misbinding occurs, we also checked how the mixture proportion associated with on-
+target response changed. As shown in Figure 4 in Text S1 (bottom row), responses were on target for
+highly conjunctive populations, decreasing as the ratio of conjunctivity decreased. It can also be seen
+that increasing the number of features has an effect, requiring a greater degree of conjunctivity as the
+number of features increases. There does not seem to be a simple relationship between the probability
+of correctly binding the features together and the number of features and conjunctivity.
+    We found it quite complicated to construct a single metric that would appropriately combine the
+statistics shown in the top and bottom of Figure 4 in Text S1. The precision of the errors, however
+promising, is too sensitive to outliers, as discussed in the main text. Hence we keep the two metrics
+separate for this current work.
+                                                                                                     5
+
+
+
+
+Figure 3. Fisher information as a predictor of memory fidelity
+The plot shows the Fisher information calculated using exactly the same parameters and cases as in
+Figure 2 in Text S1. The two figures match closely. Unfortunately, the Fisher information is a complex
+function of the ratio of conjunctivity in the mixed population code, and it does not follow an obvious
+closed-form relationship with M .
+                                                                                                     6
+
+
+
+
+Figure 4. Effect of R > 2 on the precision.
+We simulated the model for 1, 2 and 3 items, and for various numbers of features R and ratios of
+conjunctivity, for a fixed size of network (M = 356; for illustration). Top row: Ratio of the obtained
+memory precision/fidelity κ to an arbitrary target precision of κ̂ = 580. As the overall precision κ
+decreases with R, the ratio required to achieve a give precision also decreases with R. Bottom row:
+Mixture proportion associated with responses to the target. This decreases dramatically as the number
+of items or features increases.
+

@@ -1,0 +1,42 @@
+                                                                                                        1
+
+
+Text S1: Forward and Backward Inference in Spatial Cognition
+Will D. Penny, Peter Zeidman and Neil Burgess
+
+
+Local Linearisation
+If the deterministic part of the dynamics evolve according to a linear differential equation
+
+                                               ẋ = Ax + Bu                                            (1)
+
+then a discrete time update is given by
+                                                    Z t
+                            x(t) = exp(At)x(0) +          exp(A(t − τ ))Bu(τ )dτ                       (2)
+                                                     0
+
+For time step n, if we assume that u(t) = 0 except at t = t(n) then we have
+
+                                       xn = exp(Adt)xn−1 + Bun                                         (3)
+
+where dt is the time step. If un is not changing quickly we have un = un−1 . For nonlinear dynamics
+
+                                                ẋ = f (x, u)                                          (4)
+
+then we can write
+                                          xn = F n xn−1 + H n un−1                                     (5)
+where the flow matrices are given by
+
+                                          Fn   =   exp (J (f , x)dt)                                   (6)
+                                          Hn   =   J (f , v)dt
+
+and J (f , x) is the Jacobian matrix of the function f with respect to x (matrix of first derivatives). In
+forward inference, these are evaluated at x = mn−1 and u = un−1 (for known causes) or u = r n−1 (for
+estimated causes).
+    However, our evaluations of the above approximations for F n and H n showed considerable inaccu-
+racies for a range of angles, φ. We therefore adopted the following ‘local regression’ approach which is
+similar to that proposed by Schaal [28]. This used multiple, typically 10, expansion points sampled from
+the previous posterior (mn−1 , P n−1 ). For each, we evaluated the gradient f (x, u) and estimated the
+next state based on a first order Euler method. We then regressed the next states onto previous states
+and computed F n and H n using least squares regression.
+

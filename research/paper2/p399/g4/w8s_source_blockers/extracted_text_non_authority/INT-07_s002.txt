@@ -1,0 +1,102 @@
+                                                                                                               1
+
+
+Text S2: Forward and Backward Inference in Spatial Cognition
+Will D. Penny, Peter Zeidman and Neil Burgess
+
+
+Forward and Backward Inference: General Formulation
+In this section, for brevity we drop the dependence on un and E in our notation, but this is nevertheless
+implied. Probabilistic path integration can be implemented by computing
+                                            Z
+                             p(xn |Y n−1 ) = p(xn |xn−1 )p(xn−1 |Y n−1 )dxn−1                         (1)
+
+To optimally combine path integration with sensory input we compute
+
+                                                     p(y n |xn )p(xn |Y n−1 )
+                                     p(xn |Y n ) =                                                           (2)
+                                                          p(y n |Y n−1 )
+
+which is Bayes rule with prior p(xn |Y n−1 ) from probabilistic path integration, likelihood p(y n |xn ) from
+sensory input, and the normalisation term is given by
+                                                Z
+                               p(y n |Y n−1 ) = p(y n |xn )p(xn |Y n−1 )dxn                                (3)
+
+which is also known as the predictive density. Equations 1 and 2 together update p(xn−1 |Y n−1 ) to
+p(xn |Y n ). This procedure is referred to as forward inference and is also known as filtering [38]. The
+goals of forward inference are to (i) produce the ‘filtering density’ p(xn |Y n ) and (ii) compute the likelihood
+p(Y n ). The likelihood of a data sequence can be computed using the product of predictive densities
+                                                           N
+                                                           Y
+                                       p(Y n ) = p(y 1 )         p(y n |Y n−1 )                              (4)
+                                                           n=2
+
+    If forward inference runs up until time index N then it is possible to run a backward inference
+procedure which produces the posterior density p(xn |Y N ). This is the probability of the state xn given
+observations up to time index N . This includes observations after time index n and so corresponds to a
+retrospective update. This can be computed recursively using
+                                        Z
+                           p(xn |Y N ) = p(xn |xn+1 , Y n )p(xn+1 |Y N )dxn+1                         (5)
+
+The first term in the integral can be thought of as a reverse flow term and is computed using Bayes rule
+
+                                                      p(xn+1 |xn , Y n )p(xn |Y n )
+                            p(xn |xn+1 , Y n ) = R                                                           (6)
+                                                     p(xn+1 |xn , Y n )p(xn |Y n )dxn
+
+Equations 5 and 6 implement an online algorithm for backward inference in the sense that there is no
+need to store the time series of observations, Y n . In signal processing these updates are known as the
+gammma recursions [38] and it is these which we envisage could be implemented in the brain.
+    There is an alternative procedure for backward inference known as the beta recursions. We include
+this for completeness below, as there is an interesting connection to optimal control theory which we will
+also refer to in the discussion. However, the beta recursions require storage of the observations and so
+are not an online algorithm.
+                                                                                                         2
+
+
+Alpha-Beta Decomposition
+The distribution of hidden states xn given an observed trajectory Y N
+                                                                    1 can be expressed using Bayes rule
+
+                                                p(Y N
+                                                    1 |xn )p(xn )
+                              p(xn |Y N
+                                      1 )   =                                                          (7)
+                                                    p(Y N1 )
+                                                p(Y n−1
+                                                    1   |xn )p(Y N
+                                                                 n |xn )p(xn )
+                                            =                  N
+                                                           p(Y 1 )
+                                                p(Y n−1
+                                                    1   , xn )p(Y N
+                                                                  n |xn )
+                                            =                 N
+                                                        p(Y 1 )
+                                                α(xn )β(xn )
+                                            =
+                                                  p(Y N1 )
+
+where α(xn ) = p(Y n−1
+                     1   , xn ) and β(xn ) = p(Y N
+                                                 n |xn ). In offline applications, where an agent may store
+the time series of observations, the alpha and beta recursions can therefore be run in parallel. The alpha-
+beta algorithm is also therefore known as the parallel update [118]. The alpha and beta updates can
+then be combined to estimate the posterior probability of the hidden states given both past and future
+observations, as described above.
+
+
+Beta recursions
+Following on from the previous section we have
+
+                                            β(xn ) = p(Y N
+                                                         n |xn )                                       (8)
+
+This can be computed recursively using
+                                                    Z
+                             β(xn ) = p(y n |xn )       p(xn+1 |xn )β(xn+1 )dxn+1                      (9)
+
+The beta recursions operate on future data and are the time-reversed equivalent of the alpha recursions.
+Under weak assumptions this is equivalent to Bellman’s equation for recursively computing the optimal
+value of a state [119].
+
