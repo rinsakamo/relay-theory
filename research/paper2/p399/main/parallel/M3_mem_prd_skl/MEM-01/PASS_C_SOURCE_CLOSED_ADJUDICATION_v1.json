@@ -1,0 +1,89 @@
+{
+  "schema": "relaytheory.p399.main.m3.pass_c_source_closed.v1",
+  "slot": "MEM-01",
+  "doi": "10.1007/s42113-023-00189-y",
+  "chronology": {
+    "stage": "C",
+    "input_a": "PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json",
+    "input_b": "PASS_B_RESULT_INFORMED_REAUDIT_v1.json",
+    "source_universe_unchanged": true
+  },
+  "c1_original_a_gap_test": [
+    {
+      "objection_id": "B01",
+      "nearest_original_a_scope": "Trace creation times/chunks are source-defined internal state; the external retention interval remains outside.",
+      "source_locus": "Base-Level Activation, Traces, and Memories; Eqs 3-5",
+      "strongest_alternate_reading": "Could elapsed task history have been mistaken for memory state?",
+      "finding": "ALREADY_QUALIFIED_IN_A",
+      "decision": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": "NO_PATCH"
+    },
+    {
+      "objection_id": "B02",
+      "nearest_original_a_scope": "No: Stage A explicitly separates retained traces from current activation/availability.",
+      "source_locus": "Base-Level Activation and retrieval-control sections",
+      "strongest_alternate_reading": "Could activation have been mistaken for storage?",
+      "finding": "ALREADY_QUALIFIED_IN_A",
+      "decision": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": "NO_PATCH"
+    },
+    {
+      "objection_id": "B03",
+      "nearest_original_a_scope": "No: blending is a readout/reconstruction operator over candidate memories.",
+      "source_locus": "Blending; Eq 8",
+      "strongest_alternate_reading": "Could blended output be mistaken for a persistent representation?",
+      "finding": "ALREADY_QUALIFIED_IN_A",
+      "decision": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": "NO_PATCH"
+    },
+    {
+      "objection_id": "B04",
+      "nearest_original_a_scope": "No: inheritance is explicitly carried as genealogy/provenance.",
+      "source_locus": "Introduction; The ACT-R Theory of Long-term Memory; Algorithmic Implementation",
+      "strongest_alternate_reading": "Could ACT-R inheritance be mistaken for paper-specific architecture?",
+      "finding": "ALREADY_QUALIFIED_IN_A",
+      "decision": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": "NO_PATCH"
+    },
+    {
+      "objection_id": "B05",
+      "nearest_original_a_scope": "No: Stage A/negative ledger states no agreed ACT-R encoding-interference mechanism.",
+      "source_locus": "Memory encoding / interference discussion",
+      "strongest_alternate_reading": "Was encoding-interference uncertainty omitted?",
+      "finding": "ALREADY_QUALIFIED_IN_A",
+      "decision": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": "NO_PATCH"
+    }
+  ],
+  "c2_material_condition_ledger": [
+    {
+      "condition_id": "C2-01",
+      "source_locus": "Base-Level Activation locus",
+      "condition": "decay biological interpretation remains underdetermined",
+      "treatment": "CLAIM_LIMITED"
+    },
+    {
+      "condition_id": "C2-02",
+      "source_locus": "Encoding/interference locus",
+      "condition": "no agreed encoding-interference mechanism",
+      "treatment": "CLAIM_LIMITED"
+    },
+    {
+      "condition_id": "C2-03",
+      "source_locus": "Neurobiology mapping locus",
+      "condition": "mapping is interpretive rather than direct measurement",
+      "treatment": "CLAIM_LIMITED"
+    }
+  ],
+  "independent_source_order_resweep": {
+    "performed": true,
+    "duplicate_patching": false,
+    "silent_repair": false,
+    "unresolved_ambiguity_preserved": true
+  },
+  "adjudicated_reconstruction_frozen": true,
+  "unresolved": [
+    "No frozen raw publisher PDF hash; official complete VoR HTML is the adopted source medium.",
+    "Biological mechanism behind some ACT-R decay/interference parameters remains underdetermined."
+  ]
+}
