@@ -1,0 +1,80 @@
+{
+  "schema": "relaytheory.p399.main.m6.pass-a-source-first.v1",
+  "date_jst": "2026-10-05",
+  "slot": "INT-12",
+  "doi": "10.1371/journal.pcbi.1006116",
+  "method": "RIR_v2.3.1 Stage A source-first",
+  "architectural_expectation_used": false,
+  "source_loci": [
+    "Models/Fig1 independent reward and mapping clusters bound by planning",
+    "meta-learning/model-evidence arbitration",
+    "Discussion open independent/joint/mixture question"
+  ],
+  "decomposition": {
+    "integrated_component_mechanisms": [
+      "independent reward-function CRP clustering",
+      "independent mapping/transition-function CRP clustering",
+      "planning binds inferred components into policy",
+      "joint-clustering comparator",
+      "source-defined model-evidence meta-agent extension"
+    ],
+    "local_component_states": [
+      "reward-cluster assignment/statistics",
+      "mapping-cluster assignment/statistics",
+      "learned reward/mapping functions",
+      "planned policy/value",
+      "meta-agent model evidence in extension"
+    ],
+    "source_defined_shared_state": [
+      "planned policy/value",
+      "meta-agent model evidence in extension"
+    ],
+    "observation_channels": [
+      "context/state tuple",
+      "transition/action consequence",
+      "reward"
+    ],
+    "action_readout_channels": [
+      "planned primitive action",
+      "meta-agent strategy/policy sample in extension"
+    ],
+    "value_policy_quantities": [
+      "optimal value/policy",
+      "predicted reward/model evidence"
+    ],
+    "learning_plasticity_operators": [
+      "Bayesian CRP reward update",
+      "Bayesian CRP mapping update",
+      "joint CRP comparator update",
+      "meta-agent evidence update"
+    ],
+    "memory_working_memory_state": "cross-context cluster sufficient statistics; no separate WM executive",
+    "planning_search": "source-defined planning composes reward and mapping knowledge",
+    "decision_dynamics": "policy action selection; meta-agent uses model evidence/Thompson sampling in extension",
+    "gating_routing": "meta-agent arbitration is source-defined, not reconstruction-added",
+    "hierarchy": "latent task clusters are source representations; no generic coordinator",
+    "temporal_order": "observe -> infer/update clusters -> bind -> plan -> act -> reward/evidence update",
+    "offline_online": "No reconstruction-added offline executive; preserve source-specific training/test or inference/planning separation only where explicitly defined.",
+    "environment_world_variables": [
+      "context",
+      "grid state",
+      "primitive/cardinal actions",
+      "reward/goal",
+      "environment mapping/transition"
+    ],
+    "model_variants": [
+      "independent clustering",
+      "joint clustering",
+      "flat/no-clustering",
+      "model-evidence meta-agent",
+      "unknown-transition S1 noncanonical"
+    ],
+    "negative_adverse_evidence": [
+      "Human independent vs joint vs mixture remains open.",
+      "S1 unknown-transition bytes are not frozen/canonical.",
+      "Control/hierarchy vocabulary does not establish extra executive or genealogy."
+    ]
+  },
+  "freeze_state": "FROZEN_BY_THIS_COMMIT_BEFORE_STAGE_B",
+  "architectural_outcome_not_yet_adjudicated": true
+}
