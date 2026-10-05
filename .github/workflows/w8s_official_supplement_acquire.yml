@@ -6,6 +6,14 @@ on:
       - paper2/p399-g4-w8s-source-blockers-20261005
     paths:
       - research/paper2/p399/g4/w8s_source_blockers/W8S_ACQUIRE_TRIGGER
+  pull_request:
+    types: [opened, synchronize]
+    branches:
+      - paper2/p399-g4-w7-six-lane-integration-20261005
+    paths:
+      - research/paper2/p399/g4/w8s_source_blockers/W8S_ACQUIRE_TRIGGER
+      - research/paper2/p399/g4/w8s_source_blockers/acquire_official_supplements.py
+      - .github/workflows/w8s_official_supplement_acquire.yml
   workflow_dispatch:
 
 permissions:
@@ -13,6 +21,7 @@ permissions:
 
 jobs:
   acquire:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
       - name: Checkout exact W8-S branch
