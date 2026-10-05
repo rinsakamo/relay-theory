@@ -70,19 +70,66 @@ class MatrixTests(unittest.TestCase):
         with self.assertRaises(InputMismatch):
             generate(*self.args)
 
-    def test_grounded_common_operator_still_not_independence_or_collision(self):
-        common = dict(native_core_operators=["SOURCE_DEFINED_OPERATOR_X"],
-                      direct_model_ancestors=[], edition_sha256="a"*64,
-                      original_source_evidence=[{"locator": "source page", "claim": "bounded"}])
+    def bounded_profile(self, ident, doi, ancestors=None):
+        return {
+            "id": ident, "doi": doi,
+            "profile_state": "LEDGER_DERIVED_BOUNDED_NO_NEW_SOURCE_QUALIFICATION",
+            "global_family_independence_certified": False,
+            "ancestry_exhaustiveness": "NOT_ATTESTED",
+            "native_core_operators": [ident + ":local-core"],
+            "operator_source_descriptions": {
+                ident + ":local-core": "Source-recorded narrow operator description, not a general-family label"
+            },
+            "direct_model_ancestors": ancestors or [],
+            "edition_sha256": "a" * 64,
+            "original_source_evidence": [{
+                "source_audit_kind": "PREEXISTING_FROZEN_BOUNDED_LEDGER_NOT_NEW_INDEPENDENT_READING",
+                "original_primary_sha256": "a" * 64,
+                "repository_git_blob_sha1": "b" * 40,
+                "source_repository_ref": "c" * 40,
+                "repository_path": "research/paper2/p399/synthetic_source.json",
+                "source_loci": ["synthetic test page"]
+            }]
+        }
+
+    def test_local_operator_strings_do_not_auto_match(self):
         self.args[3]["profiles"] = [
-            dict({"id": "MAIN-00"}, **common),
-            dict({"id": "MAIN-01"}, **common),
+            self.bounded_profile("MAIN-00", "10.1000/main0"),
+            self.bounded_profile("MAIN-01", "10.1000/main1")
         ]
         rows, summary = generate(*self.args)
         pair = next(r for r in rows if {r["a"], r["b"]} == {"MAIN-00", "MAIN-01"})
-        self.assertEqual(pair["triage"], "PROFILE_STRUCTURAL_CANDIDATE_REVIEW")
-        self.assertEqual(pair["scientific_family_decision"], "UNDERDETERMINED")
+        self.assertEqual(pair["priority"], 4)
         self.assertEqual(summary["global_final_independent_pairs"], 0)
+
+    def test_direct_declared_doi_ancestor_is_priority_only(self):
+        self.args[3]["profiles"] = [
+            self.bounded_profile("MAIN-00", "10.1000/main0", ["10.1000/main1"]),
+            self.bounded_profile("MAIN-01", "10.1000/main1")
+        ]
+        rows, _ = generate(*self.args)
+        pair = next(r for r in rows if {r["a"], r["b"]} == {"MAIN-00", "MAIN-01"})
+        self.assertEqual(pair["triage"], "PROFILE_STRUCTURAL_CANDIDATE_REVIEW")
+        self.assertFalse(pair["global_independence_certified"])
+
+    def test_profile_roster_doi_drift_hard_error(self):
+        self.args[3]["profiles"] = [self.bounded_profile("MAIN-00", "10.1000/other")]
+        with self.assertRaises(InputMismatch):
+            generate(*self.args)
+
+    def test_source_ledger_reference_sha_validation_hard_error(self):
+        p = self.bounded_profile("MAIN-00", "10.1000/main0")
+        p["original_source_evidence"][0]["repository_git_blob_sha1"] = "not_sha"
+        self.args[3]["profiles"] = [p]
+        with self.assertRaises(InputMismatch):
+            generate(*self.args)
+
+    def test_unattested_scientific_qualification_hard_error(self):
+        p = self.bounded_profile("MAIN-00", "10.1000/main0")
+        p["global_family_independence_certified"] = True
+        self.args[3]["profiles"] = [p]
+        with self.assertRaises(InputMismatch):
+            generate(*self.args)
 
 
     def native_fixture(self):
