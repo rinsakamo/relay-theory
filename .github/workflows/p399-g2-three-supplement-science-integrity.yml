@@ -1,0 +1,21 @@
+name: P399 G2 three supplemental originals fail-closed scientific-status integrity
+on:
+  push:
+    branches:
+      - 'paper2/p399-g2-three-supplements-science-*'
+      - 'paper2/p399-g2-outcome-blind-main40-working-*'
+  pull_request:
+    paths:
+      - 'research/paper2/p399/g2/supplement_20261005/**'
+      - '.github/workflows/p399-g2-three-supplement-science-integrity.yml'
+jobs:
+  verify-supplement-source-and-no-main-promotion:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify immutable source edition exact hashes and 16 negative false-science controls
+        run: python3 research/paper2/p399/g2/supplement_20261005/test_three_supplement_no_false_promotion.py
+      - name: Audit scope
+        run: echo 'Status/provenance integrity ONLY. Original physical evidence and selected source pixels checked in separate actual Actions runs. Study2 Fig S2 conflict must not be hidden. No G2 GLOBAL SCIENCE, family or MAIN GO.'
