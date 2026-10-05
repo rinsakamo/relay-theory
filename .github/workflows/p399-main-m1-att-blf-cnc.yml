@@ -1,0 +1,18 @@
+name: P399 MAIN M1 fail-closed
+on:
+  pull_request:
+    branches:
+      - paper2/p399-main-go-kickoff-20261005
+    paths:
+      - 'research/paper2/p399/main/parallel/M1_att_blf_cnc/**'
+      - '.github/workflows/p399-main-m1-att-blf-cnc.yml'
+  workflow_dispatch:
+jobs:
+  m1-fail-closed:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Run 25 fail-closed checks
+        run: python research/paper2/p399/main/parallel/M1_att_blf_cnc/test_m1_fail_closed.py
