@@ -68,3 +68,30 @@ jobs:
           grep -F "Independent human re-adjudication was not performed" paper/venues/jgps/main.tex
           grep -F "procedural auditability under a single-adjudicator design rather than inter-rater reliability" paper/venues/jgps/main.tex
           ! grep -Fi "independently validated" paper/venues/jgps/main.tex
+
+
+      - name: Install LaTeX build tools
+        run: |
+          sudo apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            texlive-latex-base texlive-latex-recommended texlive-latex-extra \
+            texlive-fonts-recommended texlive-bibtex-extra texlive-pictures \
+            poppler-utils
+
+      - name: Build revised JGPS manuscript fail-closed
+        run: |
+          set -euo pipefail
+          cd paper/venues/jgps
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          bibtex main
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          test -s main.pdf
+          if grep -En 'LaTeX Warning:|Package .* Warning:|Overfull \\hbox|Citation .* undefined|Reference .* undefined' main.log; then exit 1; fi
+          pdftotext main.pdf main.txt
+          tr '\n' ' ' < main.txt | tr -s '[:space:]' ' ' > main.flat.txt
+          grep -F "Post-hoc falsifiability calibration of the A-state rule" main.flat.txt
+          grep -F "Independent human re-adjudication was not performed" main.flat.txt
+          grep -F "uniform descriptive compatibility with direct composition" main.flat.txt
+          echo "M9B_JGPS_BUILD_PASS" >> "$GITHUB_STEP_SUMMARY"
