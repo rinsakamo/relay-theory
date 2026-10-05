@@ -1,0 +1,88 @@
+{
+  "schema": "relaytheory.p399.main.m3.pass_a_source_first.v1",
+  "slot": "MEM-01",
+  "doi": "10.1007/s42113-023-00189-y",
+  "chronology": {
+    "stage": "A",
+    "source_lock": "SOURCE_AUTHORITY_LOCK_v1.json",
+    "source_first": true,
+    "frozen": true,
+    "result_informed": false
+  },
+  "native_model": "Inherited ACT-R declarative-memory system as integrated/reviewed by this paper",
+  "modeled_internal_state": [
+    "declarative chunks/memories",
+    "trace creation times and base-level activation terms",
+    "current context/source activation",
+    "retrieval activation/competition state"
+  ],
+  "memory_representation_state": [
+    "persistent declarative chunk/trace structure is source-defined retained state",
+    "activation is availability/retrievability, not a second storage substrate"
+  ],
+  "prediction_state": [],
+  "learned_parameters": [
+    "decay/activation/noise/similarity parameters where instantiated; do not relabel as active controller state"
+  ],
+  "action_skill_variables": [],
+  "observations": [
+    "encoding events",
+    "current cue/context features",
+    "retrieval request and returned content"
+  ],
+  "update_transition_rules": [
+    "encoding adds/reinforces traces",
+    "base-level contribution changes with elapsed time",
+    "context adds spreading activation",
+    "partial-matching mismatch changes retrieval activation"
+  ],
+  "retrieval_readout_rules": [
+    "activation-based competition",
+    "partial matching",
+    "blending returns probability-weighted reconstructive value"
+  ],
+  "prediction_generation_operators": [],
+  "learning_plasticity_rules": [
+    "trace creation/update is inherited ACT-R declarative-memory machinery; encoding-interference mechanism is not fully specified"
+  ],
+  "temporal_ordering": [
+    "encoding/trace creation",
+    "elapsed-time activation evolution",
+    "query/context application",
+    "retrieval competition",
+    "optional blended reconstruction"
+  ],
+  "system_world_boundary": {
+    "inside": [
+      "ACT-R declarative store",
+      "activation/retrieval machinery"
+    ],
+    "outside": [
+      "stimulus presentation",
+      "experimenter task timing",
+      "external cue content"
+    ]
+  },
+  "explicit_interfaces": [
+    "encoding/write into declarative memory",
+    "retrieval query/readout"
+  ],
+  "model_variants": [
+    "exact retrieval",
+    "partial matching",
+    "blended retrieval"
+  ],
+  "negative_adverse_results": [
+    "Integrative ACT-R framework paper; constituent mechanisms are not all new contributions.",
+    "ACT-R does not commit to a precise biological temporal-versus-interference mechanism for decay.",
+    "The source reports no agreed ACT-R mechanism for interference during encoding; retrieval interference is handled separately.",
+    "Neurobiological mappings are proposed interpretations, not direct measurements.",
+    "Publisher PDF raw bytes were not frozen; adopted authority is complete official VoR HTML."
+  ],
+  "anti_conflation_assertions": [
+    "task delay is not itself a storage operator",
+    "activation/availability is distinct from the retained trace",
+    "blended retrieval output is not an additional persistent memory store",
+    "inherited ACT-R architecture is provenance, not a newly inferred coordinator"
+  ]
+}
