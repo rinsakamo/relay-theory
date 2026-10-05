@@ -1,0 +1,133 @@
+{
+  "schema": "relaytheory.p399.g4.w8s.five_profile_resolution_v1",
+  "date_jst": "2026-10-05",
+  "authority": {
+    "issue": 399,
+    "w7_frozen_head": "4325a9a4cba4da651e7cdf2617f7bc8b08c90f54",
+    "w8s_pr": 448
+  },
+  "exact_target_count": 5,
+  "allowed_states": [
+    "PROFILE_FRAGMENT_READY",
+    "SOURCE_BLOCKED",
+    "SOURCE_CONFLICT_REQUIRES_ADJUDICATION"
+  ],
+  "papers": [
+    {
+      "id": "BLF-02",
+      "doi": "10.1371/journal.pcbi.1006972",
+      "status": "PROFILE_FRAGMENT_READY",
+      "required_supplements": [
+        "10.1371/journal.pcbi.1006972.s005"
+      ],
+      "scientific_effect": {
+        "supplement_mandatory_reason": "Main article delegates model-comparison/adverse-detail closure to S1; W7 could not qualify the bounded profile without the raw source.",
+        "central_model": "CONFIRMED",
+        "model_definition_change": "NARROWED_COMPARATOR_SEMANTICS",
+        "required_new_operator": false,
+        "direct_model_ancestor_identified": false,
+        "source_conflict": false,
+        "variants": "S1 confirms the flat leaky-beta comparator is delta-rule-like; exact asymptotic equivalence requires zero prior counts. It separately tests hierarchical vs flat confidence and apparent-learning-rate signatures.",
+        "narrowed_statement": "Do not equate the flat model unconditionally with a delta rule: persistent prior counts distinguish them; zero-prior large-n is the equivalence regime."
+      },
+      "ancestry_handoff": "BLF-02↔BLF-03 remains a downstream genealogy question; W8-S does not adjudicate independence.",
+      "downstream_pair_rereview": [
+        [
+          "BLF-02",
+          "BLF-03"
+        ]
+      ]
+    },
+    {
+      "id": "MEM-03",
+      "doi": "10.1371/journal.pcbi.1004003",
+      "status": "PROFILE_FRAGMENT_READY",
+      "required_supplements": [
+        "10.1371/journal.pcbi.1004003.s001"
+      ],
+      "scientific_effect": {
+        "supplement_mandatory_reason": "S1 supplies mathematical derivations needed to close the main article's Fisher-information/fidelity claims and hierarchical-code analyses.",
+        "central_model": "CONFIRMED",
+        "model_definition_change": "NO_CORE_OPERATOR_CHANGE; ASSUMPTIONS_AND_SCALING_NARROWED",
+        "required_new_operator": false,
+        "direct_model_ancestor_identified": false,
+        "source_conflict": false,
+        "variants": "S1 extends hierarchical-code stimulus-separation analysis and relates conjunctivity to population size and number of feature dimensions.",
+        "narrowed_statement": "The Fisher-information/fidelity relation is approximation/assumption dependent; hierarchical-code performance can saturate with stimulus separation and depends on conjunctivity/population-size parameterization."
+      },
+      "ancestry_handoff": "Whole model ancestry remains NOT_ATTESTED; no new DOI-level direct ancestor is promoted.",
+      "downstream_pair_rereview": []
+    },
+    {
+      "id": "SKL-01",
+      "doi": "10.1371/journal.pcbi.1012455",
+      "status": "PROFILE_FRAGMENT_READY",
+      "required_supplements": [
+        "10.1371/journal.pcbi.1012455.s001"
+      ],
+      "scientific_effect": {
+        "supplement_mandatory_reason": "S1 contains the HML equations and the stability/convergence analysis expressly deferred from the main text.",
+        "central_model": "CONFIRMED",
+        "model_definition_change": "CONVERGENCE_CLAIM_NARROWED_TO_STATED_CONDITIONS",
+        "required_new_operator": false,
+        "direct_model_ancestor_identified": false,
+        "source_conflict": false,
+        "variants": "Forward-map learning and inverse-control learning remain coupled on separated time scales; exploration noise is analyzed separately from the deterministic theorem.",
+        "narrowed_statement": "Exponential convergence is not unconditional: Theorem 1 assumes no inverse exploration noise, persistently exciting δq, sufficiently small γ²/(ηkP), and initial state inside Ωc. With stochastic exploration noise, the supplement states trajectories enter/stay in an O(|σu|) ball rather than converge exactly to the origin."
+      },
+      "ancestry_handoff": "Existing W3 direct-ancestor entries are retained; W8-S makes no independence claim.",
+      "downstream_pair_rereview": []
+    },
+    {
+      "id": "SKL-03",
+      "doi": "10.1371/journal.pcbi.1006839",
+      "status": "PROFILE_FRAGMENT_READY",
+      "required_supplements": [
+        "10.1371/journal.pcbi.1006839.s002",
+        "10.1371/journal.pcbi.1006839.s003"
+      ],
+      "scientific_effect": {
+        "supplement_mandatory_reason": "S2 and S3 close the parameter-estimation provenance chain used to initialize and fit the published learning model.",
+        "central_model": "CONFIRMED",
+        "model_definition_change": "NO_CORE_OPERATOR_CHANGE; FIT_PROVENANCE_CLOSED",
+        "required_new_operator": false,
+        "direct_model_ancestor_identified": false,
+        "source_conflict": false,
+        "variants": "S2 estimates motor/exploratory variability from behavioral trial structure and uses them only as initial guesses; S3 fits the three free parameters α, σm, σe by two-step bootstrap optimization with all three free in the final step.",
+        "narrowed_statement": "S2/S3 are data/estimation artifacts, not mathematical model definitions. Final fitting frees σm and σe rather than fixing the S2 behavioral estimates."
+      },
+      "ancestry_handoff": "Existing direct-ancestor notes are retained; no new family-independence conclusion follows from fitted data.",
+      "downstream_pair_rereview": []
+    },
+    {
+      "id": "INT-07",
+      "doi": "10.1371/journal.pcbi.1003383",
+      "status": "PROFILE_FRAGMENT_READY",
+      "required_supplements": [
+        "10.1371/journal.pcbi.1003383.s001",
+        "10.1371/journal.pcbi.1003383.s002",
+        "10.1371/journal.pcbi.1003383.s003",
+        "10.1371/journal.pcbi.1003383.s004"
+      ],
+      "scientific_effect": {
+        "supplement_mandatory_reason": "Text S1-S4 supply the implementation details for nonlinear local linearization, general forward/backward recursions, augmented input inference, and cue-precision weighting required for full model definition.",
+        "central_model": "CONFIRMED_WITH_OPERATOR_DESCRIPTIONS_NARROWED",
+        "model_definition_change": "IMPLEMENTATION_AND_VARIANT_BOUNDARIES_NARROWED",
+        "required_new_operator": false,
+        "direct_model_ancestor_identified": false,
+        "source_conflict": false,
+        "variants": "S2 keeps gamma backward inference distinct from the offline alpha-beta alternative; S3 treats unknown controls via augmented-state inference; S4 parameterizes path-integration/sensory weighting by precision.",
+        "narrowed_statement": "For nonlinear dynamics, S1 reports simple Jacobian flow approximations were inaccurate and adopts posterior-sampled local regression to estimate F_n/H_n. Gamma recursions are the general online backward method; RTS is the linear-Gaussian specialization. Inferred controls are posterior latent inputs, not a new closed-loop policy operator."
+      },
+      "ancestry_handoff": "Generic state-space/KF/RTS or local-regression method references are not promoted to whole-model direct ancestry here.",
+      "downstream_pair_rereview": []
+    }
+  ],
+  "ready_count": 5,
+  "source_blocked_count": 0,
+  "source_conflict_count": 0,
+  "proposed_profile_denominator_after_import": "56/60",
+  "pair_matrix_decisions_modified": false,
+  "global_family_independence_certified": false,
+  "main_authorized": false
+}
