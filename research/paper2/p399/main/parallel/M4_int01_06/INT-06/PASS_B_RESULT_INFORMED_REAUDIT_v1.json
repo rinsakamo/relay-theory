@@ -1,0 +1,69 @@
+{
+  "schema": "relaytheory.p399.main.m4.pass_b_result_informed_reaudit_v1",
+  "slot": "INT-06",
+  "doi": "10.1371/journal.pcbi.1000765",
+  "frozen_stage_a": {
+    "commit": "0992a46f38f4beefb4bf6f29a69a4b9637390e12",
+    "path": "research/paper2/p399/main/parallel/M4_int01_06/INT-06/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json"
+  },
+  "stage_b_received_frozen_a": true,
+  "stage_a_mutated": false,
+  "objections": [
+    {
+      "id": "B01",
+      "challenge": "Task-set/router recurrence could auto-create reconstruction-added A2.",
+      "alternate": "Task-setting populations, recurrent NMDA router, evidence state and reset are source-defined.",
+      "result": "SOURCE_DEFINED_COORDINATION"
+    },
+    {
+      "id": "B02",
+      "challenge": "Workspace language could imply a new central executive beyond the actual spiking router.",
+      "alternate": "Keep the specific task-set/router implementation; no extra workspace object.",
+      "result": "NO_ADDED_COORDINATOR"
+    },
+    {
+      "id": "B03",
+      "challenge": "Task-order network could be mistaken for the serial bottleneck coordinator.",
+      "alternate": "Source ablation retains typical PRP; order network is not necessary for serial behavior.",
+      "result": "NEGATIVE_EVIDENCE_RETAIN"
+    },
+    {
+      "id": "B04",
+      "challenge": "Parallel sensory buffer could be mistaken for a separate routing controller.",
+      "alternate": "Buffer is source-defined local/peripheral state feeding the router.",
+      "result": "RETAIN_A_BOUNDARY"
+    },
+    {
+      "id": "B05",
+      "challenge": "Broad workspace ancestry could become direct INT03 descent.",
+      "alternate": "Only two resolved implementation ancestors are direct; INT03 is shared framework only.",
+      "result": "GENEALOGY_SEPARATED"
+    }
+  ],
+  "source_ordered_omission_sweep": {
+    "completed": true,
+    "coverage": [
+      "sensory/local modules",
+      "task-setting network",
+      "router/NMDA dynamics",
+      "response threshold and reset",
+      "task-order ablation",
+      "supplementary PRP/SOA/null conditions",
+      "ancestry notes"
+    ]
+  },
+  "common_false_conflations_audited": [
+    "shared state vs communication interface",
+    "gating vs added coordination",
+    "recurrent activity vs coordinator memory",
+    "hierarchy vs coordinator",
+    "workspace vs newly added A2",
+    "replay vs online sequencing",
+    "Bayesian inference vs control",
+    "model-based planning vs arbitration",
+    "embodiment/world feedback vs internal coordination",
+    "learned task set vs controller state"
+  ],
+  "negative_evidence_disappearance": false,
+  "frozen": true
+}
