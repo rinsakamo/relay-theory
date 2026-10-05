@@ -1,0 +1,346 @@
+{
+  "schema": "relaytheory.p399.g4.w6.source_native_profile_fragments.v1",
+  "date_jst": "2026-10-05",
+  "authority": {
+    "issue": 399,
+    "parent_pr": 438,
+    "parent_exact_head": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a",
+    "branch": "paper2/p399-g4-w6-int13-14-15-16-native-20261005",
+    "frozen_g2_manifest_path": "research/paper2/p399/g2/MAIN40_G2_ADMISSION_WORKING_MANIFEST_v5.json",
+    "frozen_g2_manifest_git_blob_sha1": "b97b67a34ad9c2858745dfa6aa60444520eaab13",
+    "frozen_g2_manifest_ref": "15ee0a2a74b7e47adb439d8b30f499103d1f7eb1",
+    "shared_profile_file_modified": false,
+    "main_science_performed": false,
+    "main_authorized": false
+  },
+  "profile_count": 4,
+  "profiles": [
+    {
+      "id": "INT-13",
+      "doi": "10.1371/journal.pcbi.1014796",
+      "completion_status": "PROFILE_FRAGMENT_READY",
+      "adopted_edition": {
+        "status": "AUTHOR_APPROVED_FROZEN_PUBLISHER_UNCORRECTED_PROOF",
+        "medium": "publisher-hosted PLOS printable PDF",
+        "sha256": "5f313f8690f377faaea6b9a3610013c71b880af86634c97dbd4a5344bede9258",
+        "bytes": 2581474,
+        "pages": 31,
+        "final_corrected_vor": false,
+        "firstparty_html_sha256": "057e12d6c60605f3f5344b3411e6038397c3f823e09274c4929da9af1afaaca0",
+        "firstparty_live_recheck_2026_10_05": "PLOS page still explicitly labels article 'uncorrected proof'; no silent edition upgrade"
+      },
+      "profile_state": "W6_SOURCE_NATIVE_FRAGMENT_READY_NOT_GLOBAL_FAMILY_CLEARANCE",
+      "source_scope": "Exact author-adopted publisher proof + prior G2-D source science + 2026-10-05 first-party PLOS HTML recheck. Proof is the study edition, not a corrected final VoR.",
+      "source_native_structure": {
+        "latent_computational_state": "Parallel capacity-limited WM and slower RL action-value states; final trial policy supplies action evidence to multiple accumulators.",
+        "update_or_learning_rule": "RL and WM prediction-error/value updates inherited from RLWM; WM is fast/capacity-limited and decays/interferes, while RL updates incrementally.",
+        "decision_or_control_operator": "Linear ballistic accumulation with collapsing bounds; accumulator rates are driven by the RL/WM policy and the decision bound is allowed to vary with set size as a proactive-control term.",
+        "model_variants": [
+          "PADDL joint choice+RT model with collapsing LBA bounds",
+          "choice-only softmax RLWM comparator",
+          "fixed-bound / decision-bound ablation variants",
+          "held-out test-phase prediction using RL values learned during training"
+        ]
+      },
+      "native_core_operators": [
+        "INT-13:parallel-rlwm-update-mixture",
+        "INT-13:lba-choice-rt-accumulation",
+        "INT-13:setsize-proactive-bound"
+      ],
+      "operator_source_descriptions": {
+        "INT-13:parallel-rlwm-update-mixture": "Parallel RL and working-memory value updates form the source policy; WM provides rapid capacity-limited learning while RL is slower and incremental.",
+        "INT-13:lba-choice-rt-accumulation": "The source augments RLWM with a linear ballistic accumulator so action values drive multiple response accumulators and both choice and reaction-time distributions are fit jointly.",
+        "INT-13:setsize-proactive-bound": "The decision threshold is modeled as a function of set size, with collapsing-bound and fixed-bound alternatives used to test proactive response caution."
+      },
+      "direct_model_ancestors": [
+        "10.1038/s41467-025-61099-0",
+        "10.3758/s13423-020-01774-z"
+      ],
+      "direct_ancestry_basis": [
+        "The source states that modeling began from a recent RLWM model identified as Westbrook et al. 2025, DOI 10.1038/s41467-025-61099-0.",
+        "The source explicitly frames the joint RLWM/RT construction as extending prior McDougle & Collins work, DOI 10.3758/s13423-020-01774-z."
+      ],
+      "ancestry_exhaustiveness": "NOT_ATTESTED",
+      "original_source_evidence": [
+        {
+          "repository_path": "research/paper2/p399/g2/int_g2d/G2D_INT13_AUTHOR_ADOPTED_UNCORRECTED_PROOF_STUDY_EDITION_DELTA_v2.json",
+          "repository_git_blob_sha1": "8bf8c411dcd3c4d314265be56d85276bb1451fb6",
+          "source_repository_ref": "15ee0a2a74b7e47adb439d8b30f499103d1f7eb1",
+          "source_loci": [
+            "selected_source.canonical_main_reference",
+            "state_delta",
+            "prospective_version_policy"
+          ],
+          "medium_access_class": "FIRSTPARTY_PUBLISHER_PROOF_EXACT_SHA",
+          "source_audit_kind": "PREEXISTING_FROZEN_BOUNDED_LEDGER_PLUS_W6_FIRSTPARTY_HTML_RECHECK",
+          "original_primary_sha256": "5f313f8690f377faaea6b9a3610013c71b880af86634c97dbd4a5344bede9258"
+        },
+        {
+          "repository_path": "research/paper2/p399/g2/int_g2d/G2D_V16C_SELECTED_INT13_VS_RESERVED_INTB4_RLWM_FIRSTPARTY_BOUNDED_FAMILY_20261005.json",
+          "repository_git_blob_sha1": "dc245ae924fa1c4302ae296db1f78dd57678935b",
+          "source_repository_ref": "15ee0a2a74b7e47adb439d8b30f499103d1f7eb1",
+          "source_loci": [
+            "INT13.source_native_operations",
+            "INT13.inherited_nonoriginal_constituents",
+            "INT13.source_adverse"
+          ],
+          "medium_access_class": "FIRSTPARTY_PLOS_PROOF_BOUNDED_SCIENCE",
+          "source_audit_kind": "PREEXISTING_FROZEN_BOUNDED_LEDGER_PLUS_W6_FIRSTPARTY_HTML_RECHECK",
+          "original_primary_sha256": "5f313f8690f377faaea6b9a3610013c71b880af86634c97dbd4a5344bede9258"
+        }
+      ],
+      "correction_and_supplement_bundle": {
+        "correction_status": "NO_CORRECTED_FINAL_VOR_IDENTIFIED; current first-party page remains an uncorrected proof as of 2026-10-05",
+        "corrections": [],
+        "supplements": [
+          {
+            "role": "S1 Text supplementary material",
+            "doi": "10.1371/journal.pcbi.1014796.s001",
+            "sha256": null,
+            "byte_freeze_status": "FIRSTPARTY_LINK_CONFIRMED; BYTE_SHA_NOT_CAPTURED_IN_W6"
+          }
+        ]
+      },
+      "adverse_source_limits": [
+        "Adopted edition is an uncorrected publisher proof and must never be relabeled as a corrected final VoR.",
+        "RLWM and LBA are inherited constituents; the paper is not treated as first invention of either.",
+        "Clinical fitted mechanisms do not establish a causal neural implementation.",
+        "S1 Text was identified first-party but its raw byte SHA was not obtained in W6.",
+        "Direct ancestry list is source-supported but not exhaustive."
+      ],
+      "global_family_independence_certified": false
+    },
+    {
+      "id": "INT-14",
+      "doi": "10.1371/journal.pcbi.1007594",
+      "completion_status": "PROFILE_FRAGMENT_READY",
+      "adopted_edition": {
+        "status": "INHERITED_FIRSTPARTY_PLOS_PUBLISHED_ARTICLE_RAW_PDF",
+        "medium": "PLOS publisher PDF",
+        "sha256": "52611f861e4bdf9e568b11332d4890c01506156607f81a50fd87178f82ce0fbb",
+        "bytes": 2990826,
+        "pages": 42,
+        "firstparty_live_recheck_2026_10_05": "Publisher HTML identifies published 2020 article and S1 Appendix."
+      },
+      "profile_state": "W6_SOURCE_NATIVE_FRAGMENT_READY_NOT_GLOBAL_FAMILY_CLEARANCE",
+      "source_scope": "Inherited exact PLOS raw PDF receipt, existing INT01×INT14 source-native audit, and current first-party HTML review of theoretical model, inference, planning, limits and S1 Appendix.",
+      "source_native_structure": {
+        "latent_computational_state": "A latent hierarchy H partitions low-level graph states into connected clusters with high-level graph nodes and bridge edges; graph topology, task distribution and rewards constrain the hierarchy.",
+        "update_or_learning_rule": "Bayesian inversion of a generative environment model; posterior P(H|D) is approximated with Metropolis-within-Gibbs MCMC, updating hierarchy components conditionally.",
+        "decision_or_control_operator": "The inferred hierarchy supports hierarchical planning with HBFS/shortest-path operations; different experiments use hierarchy-conditioned choices, expected reward, or posterior-entropy reduction.",
+        "model_variants": [
+          "topology-driven hierarchy discovery",
+          "task-distribution-driven hierarchy discovery",
+          "reward-driven hierarchy discovery",
+          "HBFS hierarchical planner versus flat BFS / alternative accounts",
+          "posterior-distribution exploration in experiment eight"
+        ]
+      },
+      "native_core_operators": [
+        "INT-14:connected-crp-graph-hierarchy",
+        "INT-14:mcmc-hierarchy-posterior",
+        "INT-14:hierarchical-bfs-planning"
+      ],
+      "operator_source_descriptions": {
+        "INT-14:connected-crp-graph-hierarchy": "A CRP prior clusters graph states subject to a connected-cluster constraint, yielding a hierarchical graph with bridge structure rather than task-set/action-policy clusters.",
+        "INT-14:mcmc-hierarchy-posterior": "The source estimates the posterior over latent hierarchies with Metropolis-within-Gibbs sampling because exact posterior inference is intractable.",
+        "INT-14:hierarchical-bfs-planning": "The inferred hierarchy is used for hierarchical shortest-path planning with HBFS and for hierarchy-conditioned behavioral predictions."
+      },
+      "direct_model_ancestors": [],
+      "direct_ancestry_basis": [],
+      "ancestry_exhaustiveness": "NOT_ATTESTED",
+      "original_source_evidence": [
+        {
+          "repository_path": "research/paper2/p399/g2/int_g2d/G2D_V16B_INT01_INT14_FIRSTPARTY_CRP_NATIVE_FAMILY_20261005.json",
+          "repository_git_blob_sha1": "609a4fbd32fc832d86910dfa24e797cc6e09cee3",
+          "source_repository_ref": "15ee0a2a74b7e47adb439d8b30f499103d1f7eb1",
+          "source_loci": [
+            "source_int14",
+            "comparison.shared_component",
+            "comparison.int14_clustered_object",
+            "comparison.int14_update",
+            "comparison.int14_target",
+            "adverse.int14"
+          ],
+          "medium_access_class": "FIRSTPARTY_PLOS_RAW_PDF_PLUS_HTML_BOUNDED_SCIENCE",
+          "source_audit_kind": "PREEXISTING_FROZEN_BOUNDED_LEDGER_PLUS_W6_FIRSTPARTY_HTML_RECHECK",
+          "original_primary_sha256": "52611f861e4bdf9e568b11332d4890c01506156607f81a50fd87178f82ce0fbb"
+        }
+      ],
+      "correction_and_supplement_bundle": {
+        "correction_status": "NO_CORRECTION IDENTIFIED IN W6 FIRSTPARTY ARTICLE-PAGE REVIEW; NOT AN EXHAUSTIVE PUBLISHER CORRECTION INDEX CLAIM",
+        "corrections": [],
+        "supplements": [
+          {
+            "role": "S1 Appendix supplemental results, methods, and discussion",
+            "doi": "10.1371/journal.pcbi.1007594.s001",
+            "sha256": null,
+            "byte_freeze_status": "FIRSTPARTY_LINK_CONFIRMED; BYTE_SHA_NOT_CAPTURED_IN_W6"
+          }
+        ]
+      },
+      "adverse_source_limits": [
+        "Shared CRP with INT-01 is a constituent only; clustered object, posterior/update and planning target differ.",
+        "The paper does not establish global optimality of the whole generative model.",
+        "HBFS is used as a planning realization without a strong claim that it is the unique cognitively plausible planner.",
+        "Large-graph exact posterior inference is intractable and approximated by MCMC.",
+        "No direct ancestor DOI is promoted from thematic or experimental predecessor citations alone."
+      ],
+      "global_family_independence_certified": false
+    },
+    {
+      "id": "INT-15",
+      "doi": "10.1371/journal.pcbi.1010047",
+      "completion_status": "PROFILE_FRAGMENT_READY",
+      "adopted_edition": {
+        "status": "INHERITED_FIRSTPARTY_PLOS_PUBLISHED_ARTICLE_RAW_PDF",
+        "medium": "PLOS publisher PDF",
+        "sha256": "5ec5b75247face8d05574ea60549a8717b707b96f61cc60078d5a76dafbfa597",
+        "bytes": 2432675,
+        "pages": 22,
+        "firstparty_live_recheck_2026_10_05": "Publisher HTML identifies the 2022 research article and S1 Text."
+      },
+      "profile_state": "W6_SOURCE_NATIVE_FRAGMENT_READY_NOT_GLOBAL_FAMILY_CLEARANCE",
+      "source_scope": "Inherited PLOS raw PDF, prior bounded G1 P18 comparison, INT01 source-scoped comparison, and current first-party HTML review of MB/MF value computation, conflict-sensitive drift diffusion, variants and adverse limits.",
+      "source_native_structure": {
+        "latent_computational_state": "Parallel model-based and model-free action values plus between-system and within-system conflict quantities at two stages of the task.",
+        "update_or_learning_rule": "Standard two-step MB/MF reinforcement-learning values are estimated first; conflict measures derived from those values enter a second-stage diffusion fit.",
+        "decision_or_control_operator": "A drift-diffusion decision layer maps value terms and conflict regressors to drift, starting preference and boundary separation, allowing conflict effects on controller influence and decision caution to be separated.",
+        "model_variants": [
+          "between-system conflict model",
+          "within-system conflict alternatives",
+          "one-step reduced Bayesian fit",
+          "absolute-value versus squared conflict forms",
+          "first- and second-stage decision fits"
+        ]
+      },
+      "native_core_operators": [
+        "INT-15:mb-mf-value-computation",
+        "INT-15:conflict-sensitive-ddm",
+        "INT-15:boundary-caution-modulation"
+      ],
+      "operator_source_descriptions": {
+        "INT-15:mb-mf-value-computation": "Model-based and model-free reinforcement-learning values are computed for the two-step task and provide the value inputs and conflict quantities used by the decision layer.",
+        "INT-15:conflict-sensitive-ddm": "A drift-diffusion model uses MB/MF value and conflict regressors to explain choices and reaction times, separating value influence from decision-process effects.",
+        "INT-15:boundary-caution-modulation": "Decision boundary separation changes with value conflict, operationalizing a conflict-related change in response caution rather than a new value-learning rule."
+      },
+      "direct_model_ancestors": [],
+      "direct_ancestry_basis": [],
+      "ancestry_exhaustiveness": "NOT_ATTESTED",
+      "original_source_evidence": [
+        {
+          "repository_path": "research/paper2/p399/g2/int_g2d/G2D_V15B_SELECTED_INT15_INT16_VS_G1_P18_P09_NATIVE_OPERATOR_BOUNDED_PAIR_AUDIT.json",
+          "repository_git_blob_sha1": "63296efe609a52f33e84dc58411c96a20ca62a09",
+          "source_repository_ref": "15ee0a2a74b7e47adb439d8b30f499103d1f7eb1",
+          "source_loci": [
+            "pairs[G2_INT15,G1_P18].native_int",
+            "pairs[G2_INT15,G1_P18].shared_ancestry",
+            "pairs[G2_INT15,G1_P18].adverse"
+          ],
+          "medium_access_class": "FIRSTPARTY_PLOS_SOURCE_NATIVE_BOUNDED_PAIR",
+          "source_audit_kind": "PREEXISTING_FROZEN_BOUNDED_LEDGER_PLUS_W6_FIRSTPARTY_HTML_RECHECK",
+          "original_primary_sha256": "5ec5b75247face8d05574ea60549a8717b707b96f61cc60078d5a76dafbfa597"
+        },
+        {
+          "repository_path": "research/paper2/p399/g2/int_g2d/G2D_V20_INT01_THREE_ADDITIONAL_PAIRS_INT09_OFFICIAL_FIG9_CORRIGENDUM_AND_35_QUEUE.json",
+          "repository_git_blob_sha1": "886bed52531abec3457f3b9976f39236b8899007",
+          "source_repository_ref": "15ee0a2a74b7e47adb439d8b30f499103d1f7eb1",
+          "source_loci": [
+            "updated_original35_matrix.pairs.INT-15"
+          ],
+          "medium_access_class": "FIRSTPARTY_SOURCE_SCOPED_COMPARISON",
+          "source_audit_kind": "PREEXISTING_FROZEN_BOUNDED_LEDGER_PLUS_W6_FIRSTPARTY_HTML_RECHECK",
+          "original_primary_sha256": "5ec5b75247face8d05574ea60549a8717b707b96f61cc60078d5a76dafbfa597"
+        }
+      ],
+      "correction_and_supplement_bundle": {
+        "correction_status": "NO_CORRECTION IDENTIFIED IN W6 FIRSTPARTY ARTICLE-PAGE REVIEW; NOT AN EXHAUSTIVE PUBLISHER CORRECTION INDEX CLAIM",
+        "corrections": [],
+        "supplements": [
+          {
+            "role": "S1 Text parameter estimates and auxiliary analyses",
+            "doi": "10.1371/journal.pcbi.1010047.s001",
+            "sha256": null,
+            "byte_freeze_status": "FIRSTPARTY_LINK_CONFIRMED; BYTE_SHA_NOT_CAPTURED_IN_W6"
+          }
+        ]
+      },
+      "adverse_source_limits": [
+        "Within-system and between-system conflict are substantially correlated, and the task does not empirically identify a unique exact conflict form.",
+        "The paper explicitly describes the combined DDM as a statistical approximation rather than a mechanistic account of the full cognitive decision process.",
+        "Generic MB/MF components and standard RL are inherited constituents, not evidence of a globally independent family.",
+        "Bounded difference from G1 P18 concerns tested operators only and does not certify genealogical independence."
+      ],
+      "global_family_independence_certified": false
+    },
+    {
+      "id": "INT-16",
+      "doi": "10.1371/journal.pcbi.1004060",
+      "completion_status": "PROFILE_FRAGMENT_READY",
+      "adopted_edition": {
+        "status": "INHERITED_FIRSTPARTY_PLOS_PUBLISHED_ARTICLE_RAW_PDF",
+        "medium": "PLOS publisher PDF",
+        "sha256": "c36f0e8fd352dac013741edf8803f5432443ad5c2a85a43c78ffb087450ab105",
+        "bytes": 2675160,
+        "pages": 34,
+        "firstparty_live_recheck_2026_10_05": "Publisher HTML identifies the 2015 research article; W6 did not identify a paper-specific supporting-information object on the current page."
+      },
+      "profile_state": "W6_SOURCE_NATIVE_FRAGMENT_READY_NOT_GLOBAL_FAMILY_CLEARANCE",
+      "source_scope": "Inherited PLOS raw PDF, prior bounded G1 P09 comparison, and current first-party HTML review of AuGMEnT learning equations, attentional feedback tags, traces, RPE-gated plasticity, SARSA(lambda) correspondence and source limits.",
+      "source_native_structure": {
+        "latent_computational_state": "Association-network regular and memory units carry current and persistent task-relevant activity; synaptic traces/tags retain credit information across delayed response and reward events.",
+        "update_or_learning_rule": "Response-selection feedback converts local traces into tags; a globally broadcast reward-prediction-error/neuromodulatory signal changes tagged synapses. Tag decay is shown to correspond to SARSA(lambda) eligibility traces under a parameter mapping.",
+        "decision_or_control_operator": "The network selects responses and feeds the selected response back to earlier processing/memory layers, providing the attentional credit-assignment signal that creates or transforms tags.",
+        "model_variants": [
+          "regular-unit versus memory-unit learning rules",
+          "linear and nonlinear stimulus-response tasks",
+          "category, analog-memory and probabilistic-evidence tasks",
+          "AuGMEnT correspondence to SARSA(lambda)"
+        ]
+      },
+      "native_core_operators": [
+        "INT-16:response-feedback-synaptic-tags",
+        "INT-16:neuromodulated-tagged-plasticity",
+        "INT-16:sarsa-lambda-tag-correspondence"
+      ],
+      "operator_source_descriptions": {
+        "INT-16:response-feedback-synaptic-tags": "Selected responses send attentional feedback to earlier association/memory stages, turning locally maintained traces into synaptic tags for delayed credit assignment.",
+        "INT-16:neuromodulated-tagged-plasticity": "A global reward-prediction-error neuromodulatory signal interacts with tagged synapses to determine plasticity while tag formation itself depends on local information.",
+        "INT-16:sarsa-lambda-tag-correspondence": "The source derives a precise correspondence between AuGMEnT tag decay and SARSA(lambda) eligibility traces under alpha = 1 - lambda gamma."
+      },
+      "direct_model_ancestors": [],
+      "direct_ancestry_basis": [],
+      "ancestry_exhaustiveness": "NOT_ATTESTED",
+      "original_source_evidence": [
+        {
+          "repository_path": "research/paper2/p399/g2/int_g2d/G2D_V15B_SELECTED_INT15_INT16_VS_G1_P18_P09_NATIVE_OPERATOR_BOUNDED_PAIR_AUDIT.json",
+          "repository_git_blob_sha1": "63296efe609a52f33e84dc58411c96a20ca62a09",
+          "source_repository_ref": "15ee0a2a74b7e47adb439d8b30f499103d1f7eb1",
+          "source_loci": [
+            "pairs[G2_INT16,G1_P09].native_int",
+            "pairs[G2_INT16,G1_P09].shared_ancestry",
+            "pairs[G2_INT16,G1_P09].adverse"
+          ],
+          "medium_access_class": "FIRSTPARTY_PLOS_SOURCE_NATIVE_BOUNDED_PAIR",
+          "source_audit_kind": "PREEXISTING_FROZEN_BOUNDED_LEDGER_PLUS_W6_FIRSTPARTY_HTML_RECHECK",
+          "original_primary_sha256": "c36f0e8fd352dac013741edf8803f5432443ad5c2a85a43c78ffb087450ab105"
+        }
+      ],
+      "correction_and_supplement_bundle": {
+        "correction_status": "NO CORRECTION OR PAPER-SPECIFIC SUPPORTING FILE IDENTIFIED IN W6 FIRSTPARTY ARTICLE-PAGE REVIEW; NOT AN EXHAUSTIVE PUBLISHER INDEX CLAIM",
+        "corrections": [],
+        "supplements": []
+      },
+      "adverse_source_limits": [
+        "The model does not specify a unique biological mechanism generating persistent activity; recurrent activity is one of several possible implementations discussed.",
+        "Synaptic tags correspond to eligibility traces and AuGMEnT maps to SARSA(lambda), so generic reinforcement-plasticity language cannot establish an independent family.",
+        "The source is a biologically plausible network simulation, not direct in-vivo confirmation of the proposed synapse-specific mechanism.",
+        "Generic neuromodulatory plasticity is insufficient to identify it with G1 P09's bee mushroom-body relational categorization model."
+      ],
+      "global_family_independence_certified": false
+    }
+  ],
+  "global_family_independence_certified": false,
+  "ancestry_exhaustiveness": "NOT_ATTESTED",
+  "main_authorized": false
+}
