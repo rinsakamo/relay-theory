@@ -1,0 +1,66 @@
+name: P399 G4-B03 exhaustive 1580-pair triage (no scientific promotion)
+on:
+  push:
+    branches:
+      - "paper2/p399-g4-genealogy-pair-accelerator-20261005"
+    paths:
+      - "research/paper2/p399/g4/genealogy_accelerator_v1/**"
+      - ".github/workflows/p399-g4-genealogy-1580-failclosed.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  full-pair-matrix-no-false-clearance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Destructive synthetic tests first
+        run: python -m unittest discover -s research/paper2/p399/g4/genealogy_accelerator_v1 -p "test_*.py" -v
+      - name: Fetch immutable independent G1 source and verify Git blob
+        shell: bash
+        run: |
+          set -euo pipefail
+          G1_REF=c7317da41b15159864c014b8dc53449121c34a2c
+          G1_PATH=research/paper2/p399/g1/G1_PILOT20_SCIENTIFIC_ADMISSION_AND_DENOMINATORS_v7.json
+          G1_BLOB=7771759aa0fb8fd5e03f99a63b355c7503d095c2
+          git fetch --no-tags origin "$G1_REF" || git fetch --no-tags origin paper2/p399-g1-independent-postmerge-audit-v7-20261004
+          test "$(git rev-parse "${G1_REF}:${G1_PATH}")" = "$G1_BLOB"
+          git show "${G1_REF}:${G1_PATH}" > /tmp/P399_G1_PINNED_V7.json
+      - name: Real 780+800 historic register + independent current G1 cross-check
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/paper2/p399/g4/genealogy_accelerator_v1/build_pair_matrix.py \
+            --g2-manifest research/paper2/p399/g2/MAIN40_G2_ADMISSION_WORKING_MANIFEST_v5.json \
+            --g1-roster /tmp/P399_G1_PINNED_V7.json \
+            --legacy-pairs research/paper2/p399/g2/MAIN40_G2_780_MAIN_AND_800_G1_FAMILY_RECONCILIATION_v2.json \
+            --profiles research/paper2/p399/g4/genealogy_accelerator_v1/ORIGINAL_NATIVE_PROFILES_v1.json \
+            --output p399-g4-genealogy-audit
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          folder = Path("p399-g4-genealogy-audit")
+          summary = json.loads((folder / "PAIR_TRIAGE_SUMMARY.json").read_text())
+          rows = json.loads((folder / "PAIR_TRIAGE_MATRIX.json").read_text())
+          assert len(rows) == summary["full_pair_count"] == 1580
+          assert sum(r["cohort"] == "G2_G2" for r in rows) == 780
+          assert sum(r["cohort"] == "G2_G1" for r in rows) == 800
+          assert summary["global_final_independent_pairs"] == 0
+          assert summary["scientific_main_authorized"] is False
+          assert all(not r["global_independence_certified"] for r in rows)
+          assert all(r["scientific_family_decision"] == "UNDERDETERMINED" for r in rows)
+          print("REAL_REGISTER_FAIL_CLOSED_PASS: 780+800=1580, ZERO final independence")
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: p399-g4-triage-all-1580-${{ github.run_id }}
+          path: p399-g4-genealogy-audit/
+          retention-days: 21
+          if-no-files-found: warn
