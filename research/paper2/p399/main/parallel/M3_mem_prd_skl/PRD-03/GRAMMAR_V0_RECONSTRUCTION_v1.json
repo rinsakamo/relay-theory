@@ -1,0 +1,32 @@
+{
+  "schema": "relaytheory.p399.main.m3.grammar_v0_reconstruction.v1",
+  "slot": "PRD-03",
+  "doi": "10.1371/journal.pcbi.1007093",
+  "chronology": {
+    "after_stage_c": true,
+    "source_adjudication_frozen": true
+  },
+  "frozen_grammar_authority": {
+    "blob": "a688edb063c0ad43c25df15f497918817e8b74cd",
+    "roles_modified": false
+  },
+  "mapping": {
+    "Pi": "individuate hidden-state belief, transition/world specification, observation likelihood and response roles",
+    "X": "time-indexed internal posterior/belief configuration",
+    "C": "probability, transition and observation-likelihood admissibility constraints",
+    "Q": "posterior evidence/response-likelihood orientation among latent-state/response alternatives",
+    "P_in": "current observation likelihood input",
+    "P_out": "posterior/response query",
+    "K": "HMM belief propagation and observation update, including source-defined gamma uncertainty relation",
+    "T": "past belief to transition prediction to current observation update to response",
+    "rho_O": "behavioral response likelihood/response trace"
+  },
+  "distinctions": {
+    "learned_parameter_vs_current_latent": "PRESERVED",
+    "retained_structure_vs_external_history": "PRESERVED",
+    "prediction_or_error_vs_memory": "PRESERVED",
+    "motor_target_vs_internal_skill": "PRESERVED",
+    "source_defined_state_not_hidden_in_generic_X_or_K": true
+  },
+  "reconstruction": "DIRECT_SOURCE_GROUNDED"
+}
