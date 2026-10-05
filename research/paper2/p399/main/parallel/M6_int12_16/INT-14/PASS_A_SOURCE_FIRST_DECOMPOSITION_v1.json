@@ -1,0 +1,80 @@
+{
+  "schema": "relaytheory.p399.main.m6.pass-a-source-first.v1",
+  "date_jst": "2026-10-05",
+  "slot": "INT-14",
+  "doi": "10.1371/journal.pcbi.1007594",
+  "method": "RIR_v2.3.1 Stage A source-first",
+  "architectural_expectation_used": false,
+  "source_loci": [
+    "generative P(G,H) and connected hierarchy",
+    "posterior P(H|D), MCMC",
+    "HBFS hierarchical planning"
+  ],
+  "decomposition": {
+    "integrated_component_mechanisms": [
+      "low-level graph G",
+      "connected CRP partition H",
+      "high-level graph/bridge edges",
+      "posterior over H",
+      "Metropolis-within-Gibbs MCMC",
+      "HBFS planning"
+    ],
+    "local_component_states": [
+      "low-level vertices/edges",
+      "partition assignments",
+      "high-level graph/bridges",
+      "MCMC hierarchy sample/posterior approximation",
+      "HBFS planner-local search state"
+    ],
+    "source_defined_shared_state": [
+      "MCMC hierarchy sample/posterior approximation"
+    ],
+    "observation_channels": [
+      "graph topology",
+      "task/start-goal distribution",
+      "reward information by experiment"
+    ],
+    "action_readout_channels": [
+      "planned path/navigation choice",
+      "hierarchy-conditioned readout"
+    ],
+    "value_policy_quantities": [
+      "posterior P(H|D)",
+      "task/reward likelihood",
+      "planning/behavioral quantities"
+    ],
+    "learning_plasticity_operators": [
+      "Bayesian hierarchy inference",
+      "MCMC sampling/update"
+    ],
+    "memory_working_memory_state": "H is source-defined representation; no WM executive",
+    "planning_search": "HBFS/shortest-path planning over source-defined hierarchy; flat BFS comparator",
+    "decision_dynamics": "planner-local search/path choice; search frontier is not coordinator state",
+    "gating_routing": "high-level route/bridge structure constrains source-defined search, not added executive routing",
+    "hierarchy": "H itself is the source representation, not a new coordinator",
+    "temporal_order": "graph/task evidence -> infer/sample H -> construct/use hierarchy -> HBFS/BFS -> path/readout",
+    "offline_online": "No reconstruction-added offline executive; preserve source-specific training/test or inference/planning separation only where explicitly defined.",
+    "environment_world_variables": [
+      "graph G",
+      "low-level states/edges",
+      "start/goal",
+      "task distribution",
+      "reward distribution"
+    ],
+    "model_variants": [
+      "topology-driven",
+      "task-distribution-driven",
+      "reward-driven",
+      "HBFS vs flat BFS",
+      "posterior exploration"
+    ],
+    "negative_adverse_evidence": [
+      "CRP sharing with INT-01 is constituent reuse only.",
+      "Exact posterior is intractable; MCMC is approximation.",
+      "HBFS is a realization, not uniquely established cognitive planner.",
+      "Whole-family genealogy remains unresolved."
+    ]
+  },
+  "freeze_state": "FROZEN_BY_THIS_COMMIT_BEFORE_STAGE_B",
+  "architectural_outcome_not_yet_adjudicated": true
+}
