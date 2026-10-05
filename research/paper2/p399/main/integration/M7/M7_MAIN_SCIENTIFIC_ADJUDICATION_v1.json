@@ -1,11 +1,11 @@
 {
   "schema": "relaytheory.p399.main.m7.main_scientific_adjudication.v1",
-  "status": "BLOCKED_NO_40_OF_40_MAIN_SCIENTIFIC_RESULT",
-  "blocking_reason": "M6 lacks required successful final CI and is quarantined.",
+  "status": "CERTIFIED_EXACT_MAIN40_SCIENTIFIC_RESULT",
+  "blocking_reason": null,
   "exact_main_denominator": 40,
   "roster_reconciled": 40,
-  "scientifically_imported_into_M7": 35,
-  "quarantined_unconsumed": 5,
+  "scientifically_imported_into_M7": 40,
+  "quarantined_unconsumed": 0,
   "lane_reported_40_state_snapshot": {
     "A0_FIDELITY": 40,
     "A1_FIDELITY": 0,
@@ -13,10 +13,10 @@
     "FAILURE_LOCALIZED": 0,
     "UNDERDETERMINED": 0,
     "SOURCE_INELIGIBLE": 0,
-    "certification": "NOT_AN_M7_40_PAPER_RESULT"
+    "certification": "M7_CERTIFIED_40_PAPER_RESULT"
   },
   "m7_accepted_state_counts": {
-    "A0_FIDELITY": 35,
+    "A0_FIDELITY": 40,
     "A1_FIDELITY": 0,
     "A2_FIDELITY": 0,
     "FAILURE_LOCALIZED": 0,
@@ -29,10 +29,10 @@
       "A0_FIDELITY": 24
     },
     "integrated": {
-      "accepted": 11,
+      "accepted": 16,
       "frozen_denominator": 16,
-      "A0_FIDELITY": 11,
-      "quarantined": 5
+      "A0_FIDELITY": 16,
+      "quarantined": 0
     }
   },
   "repeated_reconstruction_additions": {
@@ -41,24 +41,24 @@
   },
   "surviving_A2_after_M7_adverse_audit": [],
   "hypothesis_adjudication": {
-    "H0": "PROVISIONALLY_SUPPORTED_ONLY_IN_ACCEPTED_35_SOURCE_SCOPES",
-    "H1": "NO_POSITIVE_SUPPORT_IN_ACCEPTED_SCOPE",
-    "H2": "NO_POSITIVE_SUPPORT_IN_ACCEPTED_SCOPE",
+    "H0": "SUPPORTED_IN_EXACT_MAIN40_SOURCE_SCOPES",
+    "H1": "NO_POSITIVE_SUPPORT_IN_EXACT_MAIN40",
+    "H2": "NO_POSITIVE_SUPPORT_IN_EXACT_MAIN40",
     "overall": "INSUFFICIENT_FOR_GLOBAL_H_DISCRIMINATION"
   },
-  "architecture_dependence": "Accepted evidence uniformly A0; MAIN40 homogeneity not certified while M6 is quarantined.",
+  "architecture_dependence": "Exact MAIN40 is uniformly A0 across component 24/24 and integrated 16/16; this does not license universal architecture or independent-replicate claims.",
   "genealogy_constraint": "W9 MAIN40 670/780 UD, 85/780 bounded difference, 25/780 shared constituent, 0/780 direct/shared model ancestry; clearance=0.",
   "final_answers": {
-    "1": "M7 imports 35/40 source-faithful A0; M6 lane reports 5/5 A0 but quarantined.",
-    "2": "Accepted: A0=35, A1=0, A2=0, failure=0, underdetermined=0, source-ineligible=0; five M6 lane-reported A0 unconsumed.",
-    "3": "No reconstruction-added structures recur in accepted scope.",
-    "4": "Neither stateless nor persistent additions were required in accepted scope.",
-    "5": "Surviving A2=0 in accepted scope.",
-    "6": "H0 has strong source-scoped evidence across accepted component 24/24 and integrated 11/11, not a MAIN40 verdict.",
-    "7": "H1 has no positive evidence in accepted scope.",
-    "8": "H2 has no positive evidence in accepted scope.",
-    "9": "Accepted evidence is uniformly A0; full homogeneity not certified due M6 quarantine.",
+    "1": "M7 imports and certifies 40/40 source-faithful reconstructions.",
+    "2": "MAIN40: A0=40, A1=0, A2=0, failure=0, underdetermined=0, source-ineligible=0.",
+    "3": "No reconstruction-added structures recur in exact MAIN40.",
+    "4": "Neither stateless nor persistent reconstruction additions were required in exact MAIN40.",
+    "5": "Surviving A2=0 in exact MAIN40.",
+    "6": "H0 is supported descriptively across component 24/24 and integrated 16/16 within exact frozen MAIN40; this is not a universal population claim.",
+    "7": "H1 has no positive evidence in exact MAIN40.",
+    "8": "H2 has no positive evidence in exact MAIN40.",
+    "9": "Exact MAIN40 is uniformly A0 across both corpus arms.",
     "10": "Genealogy prevents independent-replicate inference, independence-based p-values/binomial inference, and unmodeled effective sample size.",
-    "11": "Need verifiable successful final M6 CI, or explicit authority revision, before 40/40 adjudication."
+    "11": "M6 intake blocker resolved by verifiable CI at baa033088191286962332d84fc04349d3d1604dd, run 37296888771; no M6 scientific artifact changed in the CI-only successor."
   }
 }

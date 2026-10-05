@@ -1,17 +1,17 @@
 {
   "schema": "relaytheory.p399.main.m7.failure_and_underdetermination_decomposition.v1",
   "accepted_scope": {
-    "papers": 35,
+    "papers": 40,
     "FAILURE_LOCALIZED": 0,
     "UNDERDETERMINED": 0,
     "SOURCE_INELIGIBLE": 0
   },
   "quarantined_lane_reported_scope": {
-    "papers": 5,
+    "papers": 0,
     "FAILURE_LOCALIZED": 0,
     "UNDERDETERMINED": 0,
     "SOURCE_INELIGIBLE": 0,
-    "not_m7_adjudicated": true
+    "not_m7_adjudicated": false
   },
   "primary_reason_counts": {
     "source_insufficiency": 0,
@@ -25,14 +25,7 @@
     "actual_reconstruction_failure": 0,
     "other": 0
   },
-  "integration_level_blockers": [
-    {
-      "category": "immutable-input validation failure",
-      "lane": "M6",
-      "reason": "successful final CI unavailable",
-      "does_not_imply_H2": true
-    }
-  ],
+  "integration_level_blockers": [],
   "retained_local_limitations": true,
   "rule": "Local source ambiguity/limitation is retained without being promoted to paper-level UNDERDETERMINED unless the frozen lane issued that final state. M7 does not silently rewrite lane states."
 }

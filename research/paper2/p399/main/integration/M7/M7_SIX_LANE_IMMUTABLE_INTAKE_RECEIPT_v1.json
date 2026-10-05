@@ -136,13 +136,16 @@
       "lane": "M6",
       "branch": "paper2/p399-main-m6-int12-16-20261005",
       "pr": 456,
-      "exact_final_head": "a444cd326bd75c6b1990ad6b03289597896e5d7b",
+      "exact_final_head": "baa033088191286962332d84fc04349d3d1604dd",
       "successful_final_ci": {
-        "run_id": null,
-        "conclusion": null,
-        "workflow_runs_observed": 0,
-        "commit_statuses_observed": 0,
-        "committed_fail_closed_receipt": "34/34 PASS at 6c2037762968361f56467f648812376674f388f9; not an Actions CI receipt"
+        "run_id": 37296888771,
+        "push_run_id": 37296882264,
+        "conclusion": "success",
+        "tested_head": "baa033088191286962332d84fc04349d3d1604dd",
+        "job_id": 111720121606,
+        "job_name": "m6-fail-closed",
+        "terminal_log": "M6_FAIL_CLOSED_PASS 34/34",
+        "certification_scope": "CI-only successor of prior M6 head; scientific artifacts unchanged"
       },
       "expected_papers": 5,
       "outcome_registry_blob": "d22e1eea260522417f722e0f475387f5098a09a7",
@@ -155,16 +158,16 @@
       "grammar_v0_unchanged": true,
       "g1_pilot20_excluded": true,
       "genealogy_independence_promoted": false,
-      "disposition": "QUARANTINE",
-      "quarantine_reason": "successful final CI cannot be validated"
+      "disposition": "ACCEPT",
+      "quarantine_reason": null
     }
   ],
-  "accepted_lane_count": 5,
-  "quarantined_lane_count": 1,
+  "accepted_lane_count": 6,
+  "quarantined_lane_count": 0,
   "rejected_lane_count": 0,
-  "accepted_scientific_rows": 35,
-  "quarantined_scientific_rows": 5,
-  "integration_authorized": false,
-  "terminal_disposition": "M7_FAIL_CLOSED_AT_SIX_LANE_INTAKE",
-  "blocker": "M6 lacks a verifiable successful final CI receipt; no 40/40 integrated scientific result is issued."
+  "accepted_scientific_rows": 40,
+  "quarantined_scientific_rows": 0,
+  "integration_authorized": true,
+  "terminal_disposition": "M7_SIX_LANE_INTAKE_ACCEPTED",
+  "blocker": null
 }
