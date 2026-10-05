@@ -1,0 +1,90 @@
+{
+  "schema": "relaytheory.p399.main.m4.pass_a_source_first_decomposition_v1",
+  "slot": "INT-03",
+  "doi": "10.1073/pnas.95.24.14529",
+  "source_lock": "research/paper2/p399/main/parallel/M4_int01_06/INT-03/SOURCE_AUTHORITY_LOCK_v1.json",
+  "stage_sequence": {
+    "source_lock_freeze_commit": "a4ef8fbdafc3870ef100bafbfaed20f46adbe87f",
+    "result_informed_architecture_used": false
+  },
+  "grammar_mapping_performed": false,
+  "architecture_outcome_assigned": false,
+  "component_mechanisms": [
+    "specialized processors",
+    "long-range recurrent workspace neurons",
+    "ascending/descending gating and excitatory/inhibitory dynamics",
+    "reward-conditioned vigilance/short-term gain",
+    "reward-modulated Hebbian synaptic update"
+  ],
+  "component_local_state": [
+    "processor activity",
+    "workspace recurrent activity",
+    "bounded synaptic weights",
+    "vigilance/gain"
+  ],
+  "shared_state": "Workspace recurrent/activity/synaptic state is explicitly source-defined global coordination state.",
+  "message_information_flow": [
+    "specialized processors -> workspace",
+    "recurrent workspace mobilization/coactivation",
+    "workspace -> descending selective activation/suppression",
+    "reward/vigilance -> persistence/plasticity"
+  ],
+  "ordering": [
+    "search/configuration",
+    "effortful execution",
+    "routinization"
+  ],
+  "gating": [
+    "ascending/descending Phi-like gating",
+    "recurrent excitation/inhibition"
+  ],
+  "control_dependencies": [
+    "workspace routing is source-defined; no new central executive inferred"
+  ],
+  "learning_dependencies": [
+    "reward-modulated Hebbian update",
+    "reward-linked short-term gain"
+  ],
+  "memory_dependencies": [
+    "persistent/recurrent activity and modified weights"
+  ],
+  "prediction_dependencies": [
+    "Stroop simulation behavior"
+  ],
+  "task_world_variables": [
+    "Stroop stimuli/task demand",
+    "reward/error feedback"
+  ],
+  "readout_action_stage": "task-specific response/simulated Stroop output",
+  "explicit_arbitration_routing": [
+    "workspace routing is source-defined; no new central executive inferred"
+  ],
+  "model_variants": [
+    "routine word/color tasks",
+    "effortful interference",
+    "search/effortful/routinized phases"
+  ],
+  "adverse_null_results": [
+    "partial/incomplete Stroop-confined simulation",
+    "not exhaustive conscious-workspace model",
+    "Figure3 simulated/illustrative, not new human imaging"
+  ],
+  "integration_question": {
+    "A": "specialized processors",
+    "B": "long-range recurrent global workspace",
+    "extra": [
+      "reward/vigilance",
+      "plastic update"
+    ],
+    "shared": "workspace activation and synaptic state",
+    "exchange": "processor activation, broadcast/feedback, reward signals",
+    "temporal": "recurrent mobilization over task phases",
+    "update": "reward modifies gains/weights",
+    "interaction": "mediated",
+    "mediator": "source-defined global workspace",
+    "mediator_state": "STATEFUL_SOURCE_DEFINED",
+    "origin": "SOURCE"
+  },
+  "source_ordered_omission_sweep": "COMPLETED_AT_STAGE_A_SOURCE_FIRST_SCOPE",
+  "frozen": true
+}
