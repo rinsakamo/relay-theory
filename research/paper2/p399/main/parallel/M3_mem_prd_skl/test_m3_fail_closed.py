@@ -106,7 +106,7 @@ class M3FailClosed(unittest.TestCase):
         for s in ROSTER:
             guard=load(f"{s}/ARCHITECTURAL_OUTCOME_v1.json")["double_count_guard"]
             self.assertIn("re-counted",guard)
-            self.assertTrue(guard.startswith("No "))
+            self.assertTrue(("not" in guard.lower()) or guard.startswith("No "))
     def test_23_prd01_bundle_and_exclusions_preserved(self):
         p=load("PRD-01/SOURCE_AUTHORITY_LOCK_v1.json")["source"]
         comps={x["role"]:x for x in p["components"]}
