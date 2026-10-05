@@ -1,0 +1,84 @@
+{
+  "schema": "relaytheory.p399.main.m6.pass-b-result-informed-reaudit.v1",
+  "date_jst": "2026-10-05",
+  "slot": "INT-12",
+  "frozen_A": {
+    "path": "PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json",
+    "blob_sha1": "e67810a4c89d3cd6a0635817bdd00da3455ca807",
+    "stage_a_final_lane_head": "949347fa32ddb4af51832d25d3d9dca5ba3f79f2"
+  },
+  "challenge_rule": "Challenge A without changing source edition or using INT-family expectations.",
+  "challenges": [
+    {
+      "id": "B01",
+      "objection": "hierarchy mistaken for coordinator",
+      "source_reaudit_result": "CRP cluster assignments are source-defined latent representations; no extra executive follows.",
+      "disposition": "REJECT_FALSE_COORDINATOR"
+    },
+    {
+      "id": "B02",
+      "objection": "planner hidden as coordinator",
+      "source_reaudit_result": "Planning is explicitly the source mechanism binding reward and mapping components into a policy.",
+      "disposition": "REJECT_SOURCE_DEFINED_PLANNER"
+    },
+    {
+      "id": "B03",
+      "objection": "meta-agent mistaken for reconstruction A2",
+      "source_reaudit_result": "The model-evidence meta-agent is explicitly proposed by the source as an extension and therefore, if represented, is source-defined coordination rather than reconstruction-added state.",
+      "disposition": "REJECT_AS_A2_COUNT"
+    },
+    {
+      "id": "B04",
+      "objection": "task context mistaken for control state",
+      "source_reaudit_result": "Context is an observed/partially observed task/world variable constraining task statistics, not a newly inferred generic controller.",
+      "disposition": "REJECT_CONFLATION"
+    },
+    {
+      "id": "B05",
+      "objection": "CRP clustering mistaken for meta-control",
+      "source_reaudit_result": "Independent/joint CRP assignments organize learned task statistics; the separate source meta-agent is the only model-selection mechanism in the extension.",
+      "disposition": "REJECT_CONFLATION"
+    },
+    {
+      "id": "B06",
+      "objection": "outcome metrics mistaken for cognitive state",
+      "source_reaudit_result": "simulation performance, information gain and model evidence analyses are separated from persistent agent state except where the source explicitly uses evidence in the meta-agent.",
+      "disposition": "QUALIFY"
+    },
+    {
+      "id": "B07",
+      "objection": "open human account omitted",
+      "source_reaudit_result": "Source says independent vs joint vs mixture remains open.",
+      "disposition": "CONFIRM_NEGATIVE"
+    },
+    {
+      "id": "B08",
+      "objection": "supplement variant silently canonicalized",
+      "source_reaudit_result": "Unknown-transition S1 bytes were not frozen and remain noncanonical.",
+      "disposition": "CONFIRM_LIMIT"
+    }
+  ],
+  "complete_source_ordered_omission_sweep": {
+    "performed": true,
+    "sections": [
+      "Abstract/Introduction compositional motivation",
+      "Models: MDP assumptions and context clustering",
+      "independent versus joint clustering",
+      "planning/value construction",
+      "information-theoretic analysis",
+      "meta-learning/model-evidence extension",
+      "Discussion including open human-account question"
+    ],
+    "omission_detected": false
+  },
+  "variants_rechecked": [
+    "independent",
+    "joint",
+    "flat",
+    "meta-agent",
+    "unknown-transition S1 noncanonical"
+  ],
+  "negative_evidence_preserved": true,
+  "stage_A_modified": false,
+  "stage_B_status": "FROZEN"
+}
