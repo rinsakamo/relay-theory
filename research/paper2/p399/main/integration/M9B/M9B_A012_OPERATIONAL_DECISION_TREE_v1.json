@@ -1,0 +1,53 @@
+{
+  "schema": "relaytheory.p399.main.m9b.a012_operational_decision_tree.v1",
+  "status": "FROZEN_OPERATIONAL_DECISION_TREE",
+  "base_m9a_head": "1938a09e119860dc3d4325b86b1ce5b8bab62fd5",
+  "decision_variable": "least reconstruction-added structure required for source-faithful reconstruction",
+  "nodes": [
+    {
+      "id": "E0",
+      "question": "Eligible exact source package under frozen admission contract?",
+      "yes": "E1",
+      "no": "SOURCE_INELIGIBLE"
+    },
+    {
+      "id": "E1",
+      "question": "Sufficient source evidence to decide the relevant structural requirement?",
+      "yes": "A0",
+      "no": "UNDERDETERMINED"
+    },
+    {
+      "id": "A0",
+      "question": "Faithful reconstruction using Grammar v0 plus source-defined mechanisms only, with no reconstruction-added coordination-specific structure?",
+      "yes": "A0_FIDELITY",
+      "no": "A1"
+    },
+    {
+      "id": "A1",
+      "question": "Can fidelity be restored with only reconstruction-added typed/stateless interface, translation, sequencing, or execution-order structure?",
+      "yes": "A1_FIDELITY",
+      "no": "A2"
+    },
+    {
+      "id": "A2",
+      "question": "Is a reconstruction-added load-bearing persistent/stateful mechanism required after accounting for all source-defined mechanisms and possible stateless adaptation?",
+      "yes": "A2_FIDELITY",
+      "no": "NL"
+    },
+    {
+      "id": "NL",
+      "question": "Is non-lift established under the frozen source contract rather than merely unresolved?",
+      "yes": "FAILURE_LOCALIZED",
+      "no": "UNDERDETERMINED"
+    }
+  ],
+  "guardrails": [
+    "source-defined state, memory, belief state, planner/search state, accumulators, gating, hierarchy, recurrence, or interfaces do not by themselves trigger A1/A2",
+    "A1 adapter must be reconstruction-added, stateless, required for fidelity, and not mere notation",
+    "A2 mechanism must be reconstruction-added, persistent/stateful, load-bearing, and not reducible to existing source-defined CTL/state",
+    "complexity, reconstruction difficulty, or failure alone cannot license A2",
+    "when source evidence does not decide the required distinction, return UNDERDETERMINED",
+    "opaque universal interpreters and arbitrary model code hidden inside generic roles are inadmissible"
+  ],
+  "relation_to_m9a": "M9-A proves A1/A2 reachability with matched Dynamic/POMDP-like witnesses; M9-B performs no MAIN40 re-adjudication."
+}
