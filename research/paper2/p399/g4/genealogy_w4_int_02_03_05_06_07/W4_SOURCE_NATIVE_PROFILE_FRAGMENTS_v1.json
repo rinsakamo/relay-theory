@@ -1,0 +1,452 @@
+{
+  "schema": "relaytheory.p399.g4.w4.source_native_profile_fragments.v1",
+  "branch_base": {
+    "pr": 438,
+    "head": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a",
+    "shared_manifest_path": "research/paper2/p399/g4/genealogy_accelerator_v1/ORIGINAL_NATIVE_PROFILES_v1.json",
+    "shared_manifest_blob": "903f8db6e1569ed27507cf47e668f7599a08cd98"
+  },
+  "scope": {
+    "only_profile_ids": [
+      "INT-02",
+      "INT-03",
+      "INT-05",
+      "INT-06",
+      "INT-07"
+    ],
+    "main_science_inspected": false,
+    "grammar_v0_performed": false,
+    "hypothesis_classification_performed": false,
+    "main_authorized": false
+  },
+  "profiles": [
+    {
+      "id": "INT-02",
+      "doi": "10.3390/e26060484",
+      "completion_status": "PROFILE_FRAGMENT_READY",
+      "adopted_edition": {
+        "kind": "PUBLISHER_VERSION_OF_RECORD_PDF",
+        "publisher": "MDPI / Entropy",
+        "published": "2024-05-31",
+        "pages": 14,
+        "bytes": 2814783,
+        "raw_sha256": "a1e644c826bf1b356187bc556d5947eb23638f3f9bc6c61835d46850b4f1cc37",
+        "source_url": "https://mdpi-res.com/d_attachment/entropy/entropy-26-00484/article_deploy/entropy-26-00484.pdf"
+      },
+      "edition_sha256": "a1e644c826bf1b356187bc556d5947eb23638f3f9bc6c61835d46850b4f1cc37",
+      "source_hash_required": true,
+      "source_scope": "Publisher VoR 14/14 pages; main equations (1)-(17) and figures 1-8 already bounded-visually reviewed in G2-D; W4 reuses that exact frozen ledger.",
+      "computational_state": "POMDP/active-inference state posterior and action distributions inherited from constituent DPEFE and counterfactual-learning components.",
+      "native_core_operators": [
+        "INT-02:entropy-difference-beta-update",
+        "INT-02:cl-dpefe-geometric-policy-pool",
+        "INT-02:conditional-logistic-beta-derivation"
+      ],
+      "operator_source_descriptions": {
+        "INT-02:entropy-difference-beta-update": "Eq. 8 updates state-conditioned mixing weight beta from relative entropy of the two action distributions.",
+        "INT-02:cl-dpefe-geometric-policy-pool": "Eq. 9 multiplicatively pools counterfactual-learning and DPEFE action distributions; the printed equation omits an explicit normalizer while separately released historical author code applies softmax.",
+        "INT-02:conditional-logistic-beta-derivation": "Eq. 16 yields logistic beta only under the stated derivation conditions; Eq. 8 is a local approximation for small entropy differences."
+      },
+      "model_variants": [
+        "pure counterfactual-learning constituent",
+        "pure DPEFE constituent",
+        "mixed beta-weighted model",
+        "planning-depth conditions N=5/25/50"
+      ],
+      "direct_model_ancestors": [],
+      "unresolved_direct_ancestry": [
+        "The paper explicitly inherits prior Paul et al. DPEFE and Isomura/Friston counterfactual-learning models, but W4 does not promote author-name/reference-number mentions to DOI ancestry without exact source-pinned DOI resolution."
+      ],
+      "ancestry_exhaustiveness": "NOT_ATTESTED",
+      "required_supplements_or_corrections": [],
+      "separate_nonedition_artifacts": [
+        {
+          "role": "AUTHOR_LINKED_HISTORICAL_CODE_NOT_VOR",
+          "commit": "9922288952a4f999d0e272e6ab7416ba433b1923",
+          "blob": "e50c062847dd779e17077d6bda20ceb7dec92395"
+        }
+      ],
+      "original_source_evidence": [
+        {
+          "repository_path": "research/paper2/p399/g2/int_g2d/G2D_V14_INT02_PUBLISHER_ALL_MATH_FIGURES_AND_CODE_TYPED_DECISIONS.json",
+          "repository_git_blob_sha1": "956d3626ea527b1977d17a5710094bc7dd327b14",
+          "source_repository_ref": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a",
+          "historical_source_ref": "69748673c80f421605f1c63607472903ac2ed68c",
+          "original_primary_sha256": "a1e644c826bf1b356187bc556d5947eb23638f3f9bc6c61835d46850b4f1cc37",
+          "source_loci": [
+            "published_original",
+            "full_original_main_page_visual_review",
+            "scientific_source_native_model",
+            "material_original_negatives"
+          ],
+          "source_audit_kind": "PREEXISTING_FROZEN_BOUNDED_LEDGER_REUSED_AND_W4_REVIEWED"
+        }
+      ],
+      "firstparty_semantic_crosscheck": {
+        "url": "https://www.mdpi.com/1099-4300/26/6/484",
+        "checked_jst": "2026-10-05",
+        "role": "CURRENT_FIRSTPARTY_METADATA_CROSSCHECK_ONLY"
+      },
+      "adverse_source_limits": [
+        "Printed Eq. 9 lacks an explicit normalization symbol; do not infer an implementation bug.",
+        "Historical author code is separate from the publisher VoR and was not numerically re-executed in W4.",
+        "Eq. 8 and Eq. 16 are not globally identical.",
+        "Task-specific simulation performance does not establish universal RL superiority.",
+        "No independent human causal fit or global family independence is established.",
+        "Exhaustive post-publication correction absence is not attested."
+      ],
+      "global_family_independence_certified": false
+    },
+    {
+      "id": "INT-03",
+      "doi": "10.1073/pnas.95.24.14529",
+      "completion_status": "SCIENTIFIC_ANCESTRY_UNDERDETERMINED",
+      "adopted_edition": {
+        "kind": "OFFICIAL_PUBLISHER_COMPLETE_HTML",
+        "publisher": "PNAS",
+        "published": "1998-11-24",
+        "pages_print": "14529-14534",
+        "raw_sha256": null,
+        "source_url": "https://www.pnas.org/doi/10.1073/pnas.95.24.14529",
+        "fallback_reason": "Publisher raw PDF unavailable in frozen G2-D acquisition; bounded first-party complete HTML adopted."
+      },
+      "edition_sha256": null,
+      "source_hash_required": false,
+      "source_hash_status": "UNAVAILABLE_FOR_BROWSER_ONLY_FIRSTPARTY_HTML; NO HASH INVENTED",
+      "source_scope": "Official PNAS complete HTML with all main sections and three publisher figures visible; raw official PDF/HTML bytes and final correction-history reconciliation remain unavailable.",
+      "computational_state": "Activities of specialist processors and long-range workspace units in the paper's partial neuronal workspace/Stroop simulation.",
+      "native_core_operators": [
+        "INT-03:long-range-recurrent-workspace-gating",
+        "INT-03:reward-modulated-hebbian-workspace-update",
+        "INT-03:reward-conditioned-vigilance-shortterm-gain"
+      ],
+      "operator_source_descriptions": {
+        "INT-03:long-range-recurrent-workspace-gating": "Sigmoidal inhibitory/excitatory dynamics with ascending/descending gating Phi and long-range recurrent workspace mobilization.",
+        "INT-03:reward-modulated-hebbian-workspace-update": "Reward-modulated Hebbian synaptic update with bounded weights in the simulated workspace.",
+        "INT-03:reward-conditioned-vigilance-shortterm-gain": "Reward-conditioned vigilance and short-term weight multiplier alter subsequent routing/activation."
+      },
+      "model_variants": [
+        "routine Stroop tasks",
+        "effortful color-with-word-interference",
+        "search/effortful execution/routinization phases"
+      ],
+      "direct_model_ancestors": [],
+      "unresolved_direct_ancestry": [
+        "The article explicitly extends prior Dehaene/Changeux model lineage, but the exact direct predecessor DOI is not pinned in the frozen source; broad workspace ancestry is retained without DOI promotion."
+      ],
+      "ancestry_exhaustiveness": "NOT_ATTESTED",
+      "required_supplements_or_corrections": [],
+      "original_source_evidence": [
+        {
+          "repository_path": "research/paper2/p399/g2/int_g2d/G2D_V13_INT03_PNAS_HTML_TECHNICAL_PRE_A_MEDIA_SCOPE_AND_STOP_GATES.json",
+          "repository_git_blob_sha1": "bc28569f6a79ea4adef00ceb4f02361f57646272",
+          "source_repository_ref": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a",
+          "historical_source_ref": "69748673c80f421605f1c63607472903ac2ed68c",
+          "original_primary_sha256": null,
+          "source_loci": [
+            "source_mode",
+            "html_scope.model_defining_in_html_locators",
+            "html_scope.explicit_adverse_scope",
+            "unresolved"
+          ],
+          "source_audit_kind": "PREEXISTING_FIRSTPARTY_COMPLETE_HTML_LEDGER_REUSED_AND_W4_REVIEWED"
+        }
+      ],
+      "adverse_source_limits": [
+        "Raw publisher PDF and HTML bytes/SHA unavailable; browser-rendered first-party HTML is the adopted bounded medium.",
+        "Correction/version history is not exhaustively reconciled.",
+        "Simulation is explicitly partial/incomplete and Stroop-confined.",
+        "Figure 3 is simulated output, not a new human neuroimaging measurement.",
+        "Broad workspace ancestry does not prove exact identity with INT-06."
+      ],
+      "global_family_independence_certified": false
+    },
+    {
+      "id": "INT-05",
+      "doi": "10.1371/journal.pcbi.1004110",
+      "completion_status": "PROFILE_FRAGMENT_READY",
+      "adopted_edition": {
+        "kind": "PUBLISHER_PLOS_PUBLISHED_ARTICLE_PDF_WITH_FIRSTPARTY_HTML_CROSSCHECK",
+        "publisher": "PLOS Computational Biology",
+        "published": "2015-04-07",
+        "pages": 22,
+        "bytes": 840915,
+        "raw_sha256": "6a0445b1569b98af90615f5d78664e4935fea4a9e0a8a14799c22da8bf5fbb95",
+        "source_url": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004110"
+      },
+      "edition_sha256": "6a0445b1569b98af90615f5d78664e4935fea4a9e0a8a14799c22da8bf5fbb95",
+      "source_hash_required": true,
+      "source_scope": "Frozen PLOS publisher PDF identity from G2 plus current first-party article HTML used in W4 to recover source-native definitions; external code ZIP is not treated as the article edition.",
+      "computational_state": "Drift-diffusion accumulated evidence z together with current action position relative to two targets; environment/body trajectory remain distinct from the computational variables.",
+      "native_core_operators": [
+        "INT-05:drift-diffusion-evidence-update",
+        "INT-05:evidence-conditioned-action-focus",
+        "INT-05:position-feedback-commitment"
+      ],
+      "operator_source_descriptions": {
+        "INT-05:drift-diffusion-evidence-update": "The decision layer accumulates sensory evidence in a diffusion-to-bound process shared across compared variants.",
+        "INT-05:evidence-conditioned-action-focus": "Action preparation maps ongoing accumulated evidence to an intermediate focus between targets; choice terminates by action completion in parallel/embodied variants.",
+        "INT-05:position-feedback-commitment": "The embodied variant adds a position-dependent distance term to accumulated information, creating explicit action-to-decision feedback and commitment."
+      },
+      "model_variants": [
+        "serial decision-then-action",
+        "parallel/change-of-mind",
+        "action-preparation model",
+        "action-preparation-plus-commitment embodied model"
+      ],
+      "direct_model_ancestors": [],
+      "unresolved_direct_ancestry": [
+        "Diffusion-to-bound, continuous-flow and change-of-mind precedents are discussed, but conceptual/reference similarity is not promoted to a direct DOI ancestry edge."
+      ],
+      "ancestry_exhaustiveness": "NOT_ATTESTED",
+      "required_supplements_or_corrections": [],
+      "separate_nonedition_artifacts": [
+        {
+          "role": "EXTERNAL_DATA_CODE_LINK_NOT_ADOPTED_AS_VOR",
+          "url": "http://www.lepora.com/publications/lepora_pezzulo2014_code.zip"
+        }
+      ],
+      "original_source_evidence": [
+        {
+          "repository_path": "research/paper2/p399/g2/int_g2d/G2D_INT_OTHER13_SOURCE_GATES_v1.json",
+          "repository_git_blob_sha1": "c2a46cdceea3e9aba89b94a6c4f9347f85f32047",
+          "source_repository_ref": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a",
+          "historical_source_ref": "69748673c80f421605f1c63607472903ac2ed68c",
+          "original_primary_sha256": "6a0445b1569b98af90615f5d78664e4935fea4a9e0a8a14799c22da8bf5fbb95",
+          "source_loci": [
+            "originals[INT-05].doi",
+            "originals[INT-05].inherited_pdf_sha256",
+            "originals[INT-05].original_publisher_pdf_RAW_SHA_physically_acquired_in_g2_v5"
+          ],
+          "source_audit_kind": "PREEXISTING_FROZEN_BOUNDED_LEDGER_REUSED_AND_W4_REVIEWED"
+        }
+      ],
+      "firstparty_semantic_crosscheck": {
+        "url": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004110",
+        "checked_jst": "2026-10-05",
+        "source_loci": [
+          "Abstract",
+          "Model 3: Action preparation",
+          "Model 4: Action preparation and commitment",
+          "Discussion"
+        ]
+      },
+      "adverse_source_limits": [
+        "Physical embodiment itself is not promoted as a computational operator; only formal evidence, action-focus and feedback terms are profiled.",
+        "Action dynamics are simplified and richer biomechanics/action costs are outside the presented formalism.",
+        "No direct DOI genealogy edge is asserted from generic diffusion/continuous-flow terminology.",
+        "External code is a separate artifact, not silently equated with the publisher article."
+      ],
+      "global_family_independence_certified": false
+    },
+    {
+      "id": "INT-06",
+      "doi": "10.1371/journal.pcbi.1000765",
+      "completion_status": "SCIENTIFIC_ANCESTRY_UNDERDETERMINED",
+      "adopted_edition": {
+        "kind": "PUBLISHER_PLOS_MAIN_PLUS_8_OFFICIAL_SUPPLEMENTS",
+        "publisher": "PLOS Computational Biology",
+        "pages": 23,
+        "bytes": 3127883,
+        "raw_sha256": "c276294fa7a111e5df98f35aa0da933af28d45a1e1347940a1b57753c0980706",
+        "source_url": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000765"
+      },
+      "edition_sha256": "c276294fa7a111e5df98f35aa0da933af28d45a1e1347940a1b57753c0980706",
+      "source_hash_required": true,
+      "source_scope": "Publisher main article plus all eight official supplementary media physically frozen in G2-D; source-native family comparison to INT-03 remains bounded.",
+      "computational_state": "Spiking sensory/task-set/router populations with accumulated evidence, task-set gating state and buffered peripheral sensory activity.",
+      "native_core_operators": [
+        "INT-06:taskset-nmda-spiking-router",
+        "INT-06:evidence-threshold-response-gate",
+        "INT-06:inhibitory-router-reset",
+        "INT-06:parallel-sensory-buffer"
+      ],
+      "operator_source_descriptions": {
+        "INT-06:taskset-nmda-spiking-router": "Task-set populations gate routing through an NMDA-mediated spiking router rather than an abstract unbounded global workspace.",
+        "INT-06:evidence-threshold-response-gate": "Routed sensory evidence accumulates to a response threshold/action gate.",
+        "INT-06:inhibitory-router-reset": "Control-network inhibition/reset limits serial central routing after response selection.",
+        "INT-06:parallel-sensory-buffer": "Peripheral sensory processing/buffering can proceed in parallel while the central router produces the dual-task serial bottleneck."
+      },
+      "model_variants": [
+        "dual-task PRP simulations",
+        "task-order-network ablation",
+        "difficulty/SOA variants",
+        "router populations limited to experiment-relevant tasks"
+      ],
+      "direct_model_ancestors": [],
+      "unresolved_direct_ancestry": [
+        "Source records broad workspace/recurrent ancestry and pre-existing sensory-attractor, threshold/BG-inspired action-gating and rule-gated router motifs, but no exact DOI-level direct ancestor set is pinned.",
+        "The INT-03 relation is broad ancestry with a distinct task-set/NMDA router implementation; exact same central mathematical model is not demonstrated."
+      ],
+      "ancestry_exhaustiveness": "NOT_ATTESTED",
+      "required_supplements_or_corrections": [
+        {
+          "doi": "10.1371/journal.pcbi.1000765.s001",
+          "role": "official_figure",
+          "sha256": "7923010b6449f00ff37807358af1a2ae46927dbeed142821a7225cec3b494bdb"
+        },
+        {
+          "doi": "10.1371/journal.pcbi.1000765.s002",
+          "role": "official_figure",
+          "sha256": "d01181c75eb525c713935ffe6aad1229e0c0307af20398d2af2c7088159b411c"
+        },
+        {
+          "doi": "10.1371/journal.pcbi.1000765.s003",
+          "role": "official_figure",
+          "sha256": "6f102a9de2ecd3aae3c8de0fbe3fa9ca947a65002156d7252cddeb427c108524"
+        },
+        {
+          "doi": "10.1371/journal.pcbi.1000765.s004",
+          "role": "official_figure",
+          "sha256": "5b6be0840536fd9e21c0082e1dae0393258a32bcac942411b127285d0b5fa3ad"
+        },
+        {
+          "doi": "10.1371/journal.pcbi.1000765.s005",
+          "role": "official_figure",
+          "sha256": "498c5cdfefb764ad8d3eb11d378d12a3179d3dcd7ceecdf6a606580703f5bc66"
+        },
+        {
+          "doi": "10.1371/journal.pcbi.1000765.s006",
+          "role": "official_figure",
+          "sha256": "e3e2247e2676d97bedfe7cc83da3ab8b081e81a93dc26434516d771fc0d39049"
+        },
+        {
+          "doi": "10.1371/journal.pcbi.1000765.s007",
+          "role": "official_text_doc",
+          "sha256": "ceec10ca95ae7bd2207d95c1ddb45098f2dc9741697c3608497dc2efd9b33bb5"
+        },
+        {
+          "doi": "10.1371/journal.pcbi.1000765.s008",
+          "role": "official_table_doc",
+          "sha256": "0813b44b5770f03b833a0623da876a76dde6e2ee5cd8dcbaf5ec8257fa04b504"
+        }
+      ],
+      "original_source_evidence": [
+        {
+          "repository_path": "research/paper2/p399/g2/int_g2d/G2D_V5_INT06_ALL_EIGHT_PUBLISHER_SUPPLEMENTS_AND_STOP_GATES.json",
+          "repository_git_blob_sha1": "db2f91eb09eb373d57e9b417dbf5a9af8cd70363",
+          "source_repository_ref": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a",
+          "historical_source_ref": "69748673c80f421605f1c63607472903ac2ed68c",
+          "original_primary_sha256": "c276294fa7a111e5df98f35aa0da933af28d45a1e1347940a1b57753c0980706",
+          "source_loci": [
+            "main_original",
+            "source_supplements",
+            "bounded_science_adverse"
+          ],
+          "source_audit_kind": "PREEXISTING_FROZEN_BOUNDED_LEDGER_REUSED_AND_W4_REVIEWED"
+        }
+      ],
+      "adverse_source_limits": [
+        "Unmodeled irrelevant router populations are folded into background; do not infer an unbounded task repertoire.",
+        "Task-order-network ablation retains a typical PRP effect.",
+        "Some supplementary RT conditions are null and table alignment is not fully visually qualified.",
+        "All supplementary raw media are frozen, but every pixel-level scientific semantic is not exhaustively certified.",
+        "Shared broad workspace ancestry with INT-03 is neither exact model identity nor global independence."
+      ],
+      "global_family_independence_certified": false
+    },
+    {
+      "id": "INT-07",
+      "doi": "10.1371/journal.pcbi.1003383",
+      "completion_status": "SOURCE_BLOCKED",
+      "adopted_edition": {
+        "kind": "PUBLISHER_PLOS_MAIN_PDF_WITH_FIRSTPARTY_HTML_CROSSCHECK",
+        "publisher": "PLOS Computational Biology",
+        "published": "2013-12-12",
+        "pages": 22,
+        "bytes": 1164313,
+        "raw_sha256": "a22b6e5ff2822a62b471cb8141529b7ed3350cb2f5b3f2be61ea45b464b56698",
+        "source_url": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003383"
+      },
+      "edition_sha256": "a22b6e5ff2822a62b471cb8141529b7ed3350cb2f5b3f2be61ea45b464b56698",
+      "source_hash_required": true,
+      "source_scope": "Main publisher PDF identity is frozen and first-party HTML exposes core state-space equations, but four model-defining Text S1-S4 PDFs are not raw-frozen in current repository evidence; W4 fails closed as SOURCE_BLOCKED.",
+      "computational_state": "Continuous hidden state (allocentric location, speed, direction), control inputs, and modality-specific sensory observations in a nonlinear state-space generative model; environment-generated signals remain distinct from the agent observation model.",
+      "native_core_operators": [
+        "INT-07:state-transition-observation-model",
+        "INT-07:ekf-forward-filter",
+        "INT-07:rts-gamma-backward-smoother",
+        "INT-07:augmented-state-control-inference"
+      ],
+      "operator_source_descriptions": {
+        "INT-07:state-transition-observation-model": "Separate dynamical transition and observation mappings define a nonlinear state-space generative model over hidden state, controls and sensory observations.",
+        "INT-07:ekf-forward-filter": "Local-linearisation forward inference uses EKF prediction/correction and Kalman gain to combine path integration with sensory evidence.",
+        "INT-07:rts-gamma-backward-smoother": "Retrospective backward inference uses gamma recursions; in the LDS case this is the RTS smoother. Beta recursions are an alternative requiring stored data.",
+        "INT-07:augmented-state-control-inference": "Unknown control inputs are inferred via an augmented state-space model using forward/backward inference to obtain state trajectories and controls consistent with sensory goals."
+      },
+      "model_variants": [
+        "forward hidden-state inference",
+        "likelihood-based decision/model selection",
+        "gamma backward smoothing",
+        "beta-recursion alternative",
+        "augmented input/control inference"
+      ],
+      "direct_model_ancestors": [],
+      "unresolved_direct_ancestry": [
+        "The source places the algorithms in the broad KF/EKF/RTS/state-space literature and cites earlier localisation/context models, but W4 does not collapse generic Bayesian/state-space machinery into a direct DOI model-family ancestry edge."
+      ],
+      "ancestry_exhaustiveness": "NOT_ATTESTED",
+      "required_supplements_or_corrections": [
+        {
+          "doi": "10.1371/journal.pcbi.1003383.s001",
+          "role": "Text S1 local linearisation derivation",
+          "sha256": null,
+          "status": "REQUIRED_RAW_NOT_FROZEN"
+        },
+        {
+          "doi": "10.1371/journal.pcbi.1003383.s002",
+          "role": "Text S2 general forward/backward density recursions",
+          "sha256": null,
+          "status": "REQUIRED_RAW_NOT_FROZEN"
+        },
+        {
+          "doi": "10.1371/journal.pcbi.1003383.s003",
+          "role": "Text S3 augmented state-space inference over inputs",
+          "sha256": null,
+          "status": "REQUIRED_RAW_NOT_FROZEN"
+        },
+        {
+          "doi": "10.1371/journal.pcbi.1003383.s004",
+          "role": "Text S4 relative precision of path integration and sensory cues",
+          "sha256": null,
+          "status": "REQUIRED_RAW_NOT_FROZEN"
+        }
+      ],
+      "original_source_evidence": [
+        {
+          "repository_path": "research/paper2/p399/g2/int_g2d/G2D_INT_OTHER13_SOURCE_GATES_v1.json",
+          "repository_git_blob_sha1": "c2a46cdceea3e9aba89b94a6c4f9347f85f32047",
+          "source_repository_ref": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a",
+          "historical_source_ref": "69748673c80f421605f1c63607472903ac2ed68c",
+          "original_primary_sha256": "a22b6e5ff2822a62b471cb8141529b7ed3350cb2f5b3f2be61ea45b464b56698",
+          "source_loci": [
+            "originals[INT-07].doi",
+            "originals[INT-07].inherited_pdf_sha256",
+            "originals[INT-07].original_publisher_pdf_RAW_SHA_physically_acquired_in_g2_v5"
+          ],
+          "source_audit_kind": "PREEXISTING_FROZEN_BOUNDED_LEDGER_REUSED_AND_W4_REVIEWED"
+        }
+      ],
+      "firstparty_semantic_crosscheck": {
+        "url": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003383",
+        "checked_jst": "2026-10-05",
+        "source_loci": [
+          "Probabilistic Model",
+          "Forward inference over hidden states",
+          "Likelihood",
+          "Backward inference over hidden states",
+          "Inference over inputs",
+          "Supporting Information Text S1-S4"
+        ]
+      },
+      "adverse_source_limits": [
+        "Required Text S1-S4 raw bytes/SHA are missing from frozen repository evidence, so HTML summaries do not silently replace the PDFs.",
+        "Environment dynamics are not collapsed into the agent observation model.",
+        "Forward filtering, backward smoothing, observation mapping and control inference remain distinct operators.",
+        "Inferred controls in the presented formulation are not silently promoted to a closed-loop policy layer.",
+        "Generic Bayesian/state-space terminology is not evidence of identity with another profile."
+      ],
+      "global_family_independence_certified": false
+    }
+  ]
+}
