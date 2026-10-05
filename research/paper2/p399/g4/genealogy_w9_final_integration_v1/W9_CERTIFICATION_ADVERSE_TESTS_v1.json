@@ -1,0 +1,97 @@
+{
+  "schema": "relaytheory.p399.g4.w9.certification_adverse_tests_v1",
+  "authority": {
+    "criterion_freeze_commit": "15e7541fc5e55ce9c5f1043b05a262e5f4978ac9",
+    "synthetic_prefreeze_commit": "30307d04caf17392536a6d262131f405ba184c9b"
+  },
+  "prefreeze_synthetic": {
+    "path": "research/paper2/p399/g4/genealogy_w9_final_integration_v1/W9_CERTIFICATION_SYNTHETIC_PREFREEZE_TESTS_v1.json",
+    "pass_count": 15,
+    "total": 15,
+    "real_pair_results_consulted": false
+  },
+  "global_adverse_audit": {
+    "tests": [
+      {
+        "id": "lexical_similarity_no_promotion",
+        "pass": true,
+        "basis": "No pair is promoted by lexical/model-label similarity; bounded clearance is zero."
+      },
+      {
+        "id": "doi_only_assumptions_rejected",
+        "pass": true,
+        "basis": "Identity-safe non-DOI ancestors are retained with doi=null; no fabricated DOI is used."
+      },
+      {
+        "id": "missing_graph_path_not_independence",
+        "pass": true,
+        "basis": "Criterion explicitly treats NO_PATH_FOUND as non-evidence; nonpositive rows remain fail-closed."
+      },
+      {
+        "id": "shared_authorship_not_descent",
+        "pass": true,
+        "basis": "No admission rule treats shared authorship alone as descent."
+      },
+      {
+        "id": "same_experimental_domain_not_ancestry",
+        "pass": true,
+        "basis": "No admission rule uses experimental-domain overlap."
+      },
+      {
+        "id": "local_operator_difference_not_clearance",
+        "pass": true,
+        "basis": "All 210 bounded-difference rows remain non-clearance."
+      },
+      {
+        "id": "absent_citation_not_clearance",
+        "pass": true,
+        "basis": "Citation absence is non-evidence under frozen Criterion v1."
+      },
+      {
+        "id": "graph_traversal_artifacts_blocked",
+        "pass": true,
+        "basis": "W9 graph authority uses explicit source-attested edges only; no automatic transitive closure."
+      },
+      {
+        "id": "source_edition_mismatch_fail_closed",
+        "pass": true,
+        "basis": "Criterion has BLOCKED_BY_EDITION_CONFLICT and W9 preserves prior edition/correction exceptions without silent normalization."
+      },
+      {
+        "id": "incomplete_supplement_fail_closed",
+        "pass": true,
+        "basis": "Synthetic pre-freeze case maps missing mandatory supplement to BLOCKED_BY_INCOMPLETE_SOURCE."
+      },
+      {
+        "id": "broad_framework_label_not_direct_descent",
+        "pass": true,
+        "basis": "INT-03↔INT-06 remains SHARED_CONSTITUENT_ONLY with SHARED_FRAMEWORK subreason, not direct descent."
+      },
+      {
+        "id": "weak_edge_transitive_closure_forbidden",
+        "pass": true,
+        "basis": "SHARED_FRAMEWORK/SHARED_CONSTITUENT/HISTORICAL_INSPIRATION do not generate direct edges transitively."
+      },
+      {
+        "id": "different_terminology_does_not_hide_positive_ancestry",
+        "pass": true,
+        "basis": "All explicit positive ancestry rows are blocked regardless of terminology."
+      },
+      {
+        "id": "positive_shared_ancestry_overrides_clearance",
+        "pass": true,
+        "basis": "Both positive-ancestry rows are blocked."
+      },
+      {
+        "id": "global_independence_never_promoted",
+        "pass": true,
+        "basis": "All 1,770 rows have global_independence_certified=false."
+      }
+    ],
+    "pass_count": 15,
+    "total": 15,
+    "all_pass": true
+  },
+  "destructive_test_execution": "test_w9_fail_closed.py performs the required 28 invariants plus additional exactness checks; exact final GitHub Actions run is reported externally because a commit cannot self-contain the run created for itself.",
+  "scientific_main_authorized": false
+}
