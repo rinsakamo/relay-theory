@@ -213,7 +213,34 @@ def existing_scoped_comparisons(v20, g2, g1):
     return bounded
 
 
-def generate(g2_data, g1_data, legacy, profile_data, source_native_v20=None):
+def int04_int08_bounded_witness(source, g2, profiles):
+    """Reuse actual exact-source native *local* differences; no final family claim."""
+    if source is None:
+        return None
+    docs = source["official_sources"]
+    for ident in ("INT-04", "INT-08"):
+        if normalized_doi(docs[ident]["doi"]) != g2[ident]:
+            raise InputMismatch("INT04/08 source-specific DOI drift")
+        profile = profiles.get(ident)
+        source_hash = docs[ident]["raw_main20_sha256"] if ident == "INT-04" else docs[ident]["exact_G2_inherited_raw_sha256"]
+        if profile is not None and profile["edition_sha256"] != source_hash:
+            raise InputMismatch("INT04/08 profile and source source-original digest mismatch")
+    witness = source["source_native_pairwise_delta"]
+    if (witness["distinct_local_primary_learning_target_and_operations_source_confirmed"] is not True
+        or witness["pairwise_all_figures_math_complete_qualified"] is not False
+        or witness["full_G1_20_G2_40_independent_family_cleared"] is not False
+        or source["MAIN_authorized"] is not False):
+        raise InputMismatch("Invalid v10d limited source witness/false global promotion")
+    if not docs["INT-08"]["manual_policy_hand_imposed_detected_on_corrected_run"]:
+        raise InputMismatch("INT08 adverse source boundary was not preserved")
+    return {
+        "bounded_original_evidence_id": "G2D_V10D_INT04_INT08",
+        "bounded_original_outcome": "BOUNDED_DIFFERENT_OFFLINE_REPLAY_VS_LEARNED_ONLINE_RETRIEVAL_GATING",
+        "evidence_scope": "SOURCE_SCOPED_ONLY_NOT_GLOBAL_INDEPENDENCE"
+    }
+
+
+def generate(g2_data, g1_data, legacy, profile_data, source_native_v20=None, source_native_int04_int08=None):
     g2 = roster(g2_data["selected_working_roster"], "slot")
     g1 = roster(g1_data["roster_snapshot"], "id")
     if len(g2) != 40 or len(g1) != 20 or set(g2) & set(g1):
@@ -241,11 +268,16 @@ def generate(g2_data, g1_data, legacy, profile_data, source_native_v20=None):
             raise InputMismatch(f"Cross-cohort DOI identity drift: {a}, {b}")
     profiles = load_profiles(profile_data, g2, g1)
     scoped = existing_scoped_comparisons(source_native_v20, g2, g1)
+    extra = int04_int08_bounded_witness(source_native_int04_int08, g2, profiles)
     rows = []
     for a, b in itertools.combinations(g2, 2):
         row = archival_internal[key_internal(a, b)]
         outcome = candidate(row, a, b, g2[a], g2[b], profiles)
         witness = scoped.get(("G2_INT", b if a == "INT-01" else a)) if "INT-01" in (a, b) else None
+        if extra and {a, b} == {"INT-04", "INT-08"}:
+            if witness:
+                raise InputMismatch("Duplicate bounded source witness")
+            witness = extra
         if witness:
             outcome["prior_source_scoped_comparison"] = witness
             if outcome["priority"] > 3:
@@ -274,7 +306,7 @@ def generate(g2_data, g1_data, legacy, profile_data, source_native_v20=None):
         "full_pair_count": 1580,
         "source_ledger_derived_bounded_profiles": len(profiles),
         "new_full_original_scientific_qualifications_from_profiles": 0,
-        "prior_indexed_native_scoped_pairs_reused": len(scoped),
+        "prior_indexed_native_scoped_pairs_reused": len(scoped) + int(extra is not None),
         "priority_categories": categories,
         "global_final_independent_pairs": 0,
         "scientific_main_authorized": False,
@@ -287,16 +319,20 @@ def main():
         p.add_argument("--" + opt, required=True)
     p.add_argument("--focus", help="Output incident pairs ONLY for one changed slot; not a global receipt")
     p.add_argument("--source-native-v20", help="Optional pinned G2-D INT01 35-pair limited native evidence; cannot promote science")
+    p.add_argument("--source-native-int04-int08", help="Optional pinned v10d INT04-INT08 bounded original-native contrast")
     args = p.parse_args()
     paths = {k: Path(getattr(args, k.replace("-", "_"))) for k in
              ("g2-manifest", "g1-roster", "legacy-pairs", "profiles")}
     rows, summary = generate(
         load(paths["g2-manifest"]), load(paths["g1-roster"]),
         load(paths["legacy-pairs"]), load(paths["profiles"]),
-        load(args.source_native_v20) if args.source_native_v20 else None
+        load(args.source_native_v20) if args.source_native_v20 else None,
+        load(args.source_native_int04_int08) if args.source_native_int04_int08 else None
     )
     if args.source_native_v20:
         paths["source-native-v20"] = Path(args.source_native_v20)
+    if args.source_native_int04_int08:
+        paths["source-native-int04-int08"] = Path(args.source_native_int04_int08)
     summary["raw_input_sha256"] = {k: digest(v) for k, v in sorted(paths.items())}
     if args.focus:
         if args.focus not in ({r["a"] for r in rows} | {r["b"] for r in rows}):
