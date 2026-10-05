@@ -81,18 +81,21 @@ Checked against the Journal for General Philosophy of Science author instruction
 ## Prospective MAIN40 composition extension
 
 - [x] The original 60-claim failure/recovery study remains the primary historical analysis and is not overwritten by P399.
-- [x] A separately frozen prospective 40-paper composition test is reported.
+- [x] A separately frozen single-adjudicator, source-identity-separated prospective 40-paper compatibility test is reported.
 - [x] Exact DOI overlap between MAIN40 and the original 60-claim source manifest is 0.
 - [x] DOI disjointness is not described as genealogical or statistical independence.
-- [x] A0/A1/A2 are defined in the predeclared direct → stateless-adapter → stateful-mechanism order.
+- [x] A0/A1/A2 are defined in the predeclared direct → stateless-adapter → stateful-mechanism order and operationalized as a fail-closed decision tree.
 - [x] MAIN40 result is reported exactly as A0=40, A1=0, A2=0.
 - [x] Component arm is 24/24 A0 and integrated arm is 16/16 A0.
 - [x] Source-defined gating, hierarchy, memory, belief, planners, accumulators, recurrence, and temporal order are not double-counted as reconstruction-added A2.
 - [x] W9/M7 genealogy limitations remain explicit; 40 papers are not treated as independent statistical replications.
 - [x] No naive binomial significance, independence-based p-value, or unmodeled effective sample size is claimed.
 - [x] Zero A1/A2 does not become a universal impossibility claim.
+- [x] M9-A post-hoc matched Dynamic/POMDP-like calibration demonstrates A0/A1/A2 reachability without re-adjudicating MAIN40.
+- [x] Independent human re-adjudication is explicitly reported as not performed; procedural auditability is not presented as inter-rater reliability.
+- [x] M9-B exposes a 40-paper audit table and repository freeze chronology.
 - [x] M7 exact integration head and successful 40/40 fail-closed CI receipt are identified in the reproducibility section.
-- [x] The title remains unchanged; the prospective result strengthens validation without changing the paper into an empirical prevalence study.
+- [x] The title remains unchanged; the prospective result is framed as source-scoped compatibility evidence rather than independent or population-level validation.
 
 ## Files for Editorial Manager
 
