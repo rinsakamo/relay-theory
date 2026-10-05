@@ -1,0 +1,79 @@
+{
+  "schema": "relaytheory.p399.main.m3.pass_a_source_first.v1",
+  "slot": "MEM-03",
+  "doi": "10.1371/journal.pcbi.1004003",
+  "chronology": {
+    "stage": "A",
+    "source_lock": "SOURCE_AUTHORITY_LOCK_v1.json",
+    "source_first": true,
+    "frozen": true,
+    "result_informed": false
+  },
+  "native_model": "Probabilistic restricted palimpsest model of visual short-term memory in a shared population code",
+  "modeled_internal_state": [
+    "shared noisy population activity encoding multiple simultaneously presented items",
+    "cue-conditioned posterior over target feature"
+  ],
+  "memory_representation_state": [
+    "overlaid population response is the source-defined short-term retained representation"
+  ],
+  "prediction_state": [],
+  "learned_parameters": [
+    "population-code/noise parameters used by the model; not an online control state"
+  ],
+  "action_skill_variables": [],
+  "observations": [
+    "simultaneously presented item features",
+    "retrieval cue",
+    "reported target feature"
+  ],
+  "update_transition_rules": [
+    "item-evoked population responses are superposed into a shared noisy state",
+    "noise/coding assumptions determine fidelity"
+  ],
+  "retrieval_readout_rules": [
+    "Bayesian cue-conditioned inference/posterior over target feature"
+  ],
+  "prediction_generation_operators": [],
+  "learning_plasticity_rules": [
+    "no generic indefinite sequential storage-learning rule is claimed by the restricted model"
+  ],
+  "temporal_ordering": [
+    "simultaneous presentation/encoding",
+    "short retention of overlaid population state",
+    "cue",
+    "Bayesian recall"
+  ],
+  "system_world_boundary": {
+    "inside": [
+      "shared population memory state",
+      "Bayesian readout"
+    ],
+    "outside": [
+      "presented item list",
+      "cue delivery",
+      "experimenter delay"
+    ]
+  },
+  "explicit_interfaces": [
+    "population write/superposition at encoding",
+    "cue-conditioned readout"
+  ],
+  "model_variants": [
+    "mixed/conjunctive population code",
+    "hierarchical code",
+    "parameter/scaling analyses in S1"
+  ],
+  "negative_adverse_results": [
+    "The model is deliberately simplified/exploratory and is not direct evidence for a measured biological storage implementation.",
+    "Behavioral short-term-memory effects are not themselves a generic storage operator; the source-defined store is the overlaid population state.",
+    "Fisher-information/fidelity equivalence is approximation/assumption dependent.",
+    "Hierarchical saturation and mixed-code precision depend on conjunctivity, population size, feature count and receptive-field assumptions."
+  ],
+  "anti_conflation_assertions": [
+    "external simultaneously presented items are not the internal memory state",
+    "the internal retained state is the overlaid population activity",
+    "retrieval posterior is a readout, not a second persistent store",
+    "S1 mathematical derivations extend analysis but do not create a new coordinator"
+  ]
+}

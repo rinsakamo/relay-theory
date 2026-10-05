@@ -1,0 +1,90 @@
+{
+  "schema": "relaytheory.p399.main.m3.pass_a_source_first.v1",
+  "slot": "PRD-01",
+  "doi": "10.1038/s41562-024-01930-8",
+  "chronology": {
+    "stage": "A",
+    "source_lock": "SOURCE_AUTHORITY_LOCK_v1.json",
+    "source_first": true,
+    "frozen": true,
+    "result_informed": false
+  },
+  "native_model": "Adaptive deployment/comparison of successor representation (forward predictive occupancy) and predecessor representation (backward/predecessor occupancy), with model-based comparator",
+  "modeled_internal_state": [
+    "learned SR occupancy representation",
+    "learned PR/predecessor occupancy representation",
+    "state/reward association used for value readout"
+  ],
+  "memory_representation_state": [
+    "learned occupancy representations are retained model structure; external experienced transition sequence is not itself the internal store"
+  ],
+  "prediction_state": [
+    "forward SR and backward PR occupancy-derived predictions/values"
+  ],
+  "learned_parameters": [
+    "source-defined TD-updated SR/PR representation weights; distinct from transient prediction error"
+  ],
+  "action_skill_variables": [
+    "choice/planning response derived from representation-dependent values; not a new motor skill state"
+  ],
+  "observations": [
+    "experienced state transitions during learning",
+    "reward/goal information at query/planning phase"
+  ],
+  "update_transition_rules": [
+    "SR and PR have distinct source-defined on-policy temporal-difference learning updates",
+    "MDP comparator uses source-defined model-based transition structure"
+  ],
+  "retrieval_readout_rules": [
+    "representation-weighted value/readout for decisions"
+  ],
+  "prediction_generation_operators": [
+    "SR predicts future/successor occupancy",
+    "PR represents predecessor/past occupancy relative to goal/reward readout"
+  ],
+  "learning_plasticity_rules": [
+    "supplement Eqs 4-5 provide distinct TD updates; prediction error is a transient learning signal, not persistent coordinator state"
+  ],
+  "temporal_ordering": [
+    "experience transitions / representation learning",
+    "task context establishes prediction direction demand",
+    "representation-based value computation",
+    "decision/readout"
+  ],
+  "system_world_boundary": {
+    "inside": [
+      "SR/PR learned representations and update/value machinery"
+    ],
+    "outside": [
+      "task graph",
+      "experienced trajectory",
+      "reward placement",
+      "experimenter condition"
+    ]
+  },
+  "explicit_interfaces": [
+    "experience/transition update interface",
+    "reward/goal-conditioned value query",
+    "choice/readout"
+  ],
+  "model_variants": [
+    "SR",
+    "PR",
+    "full model-based/MDP comparator",
+    "study-specific task contexts"
+  ],
+  "negative_adverse_results": [
+    "The adopted manuscript is not the corrected final publisher Version of Record.",
+    "Official Fig S2 Study2 contains an unresolved internal and main-figure numeric conflict and is excluded from unsupported quantitative claims.",
+    "An isolated manuscript Discussion SR/PR direction inversion is unresolved and excluded rather than silently repaired.",
+    "Malformed Study2 HDI and unreconciled total N remain excluded from audited quantitative claims.",
+    "PR/SR representations and TD ingredients have prior ancestry; this paper's contribution is not invention of every constituent."
+  ],
+  "anti_conflation_assertions": [
+    "experienced trajectory is external input/history, not automatically memory state",
+    "learned SR/PR parameters are retained model structure, not an added active coordinator",
+    "TD prediction error is a transient learning signal, not persistent prediction/coordinator state",
+    "formal correction is applied once; manuscript is not silently normalized into a corrected VoR",
+    "Fig S2 conflict remains adverse evidence and cannot be numerically patched"
+  ]
+}

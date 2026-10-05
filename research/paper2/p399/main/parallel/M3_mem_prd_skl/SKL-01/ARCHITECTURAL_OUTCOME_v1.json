@@ -1,0 +1,38 @@
+{
+  "schema": "relaytheory.p399.main.m3.architectural_outcome.v1",
+  "slot": "SKL-01",
+  "doi": "10.1371/journal.pcbi.1012455",
+  "source_fidelity": "SOURCE_CLOSED_WITH_EXPLICIT_LIMITATIONS",
+  "attempts": {
+    "A0": {
+      "attempted": true,
+      "result": "PASS",
+      "reason": "All load-bearing source-defined state, transformation, interface, criterion and readout structure is representable directly under frozen Grammar v0."
+    },
+    "A1": {
+      "attempted": false,
+      "result": "NOT_REQUIRED_AFTER_A0_PASS",
+      "stateless_additions": []
+    },
+    "A2": {
+      "attempted": false,
+      "result": "NOT_PERMITTED_OR_REQUIRED_AFTER_A0_PASS",
+      "stateful_additions": []
+    }
+  },
+  "final_state": "A0_FIDELITY",
+  "added_adapter_type": "NONE",
+  "added_adapter_count": 0,
+  "added_stateful_mechanism_type": "NONE",
+  "added_stateful_mechanism_count": 0,
+  "double_count_guard": "Source-defined predictive/skill state and learned parameters are not re-counted as new coordinator state.",
+  "unresolved_issues": [
+    "Neural implementation is not directly measured.",
+    "Exact convergence is conditional; stochastic exploration has bounded-neighborhood rather than zero convergence.",
+    "De-novo skill-learning generalization remains source-qualified."
+  ],
+  "genealogy_annotation": [
+    "direct model ancestors include 10.1371/journal.pcbi.1007118 and 10.1207/s15516709cog1603_1; global genealogy independence not certified"
+  ],
+  "overall_h0_h1_h2_verdict": "NOT_ISSUED_BY_M3"
+}

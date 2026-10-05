@@ -1,0 +1,32 @@
+{
+  "schema": "relaytheory.p399.main.m3.grammar_v0_reconstruction.v1",
+  "slot": "SKL-01",
+  "doi": "10.1371/journal.pcbi.1012455",
+  "chronology": {
+    "after_stage_c": true,
+    "source_adjudication_frozen": true
+  },
+  "frozen_grammar_authority": {
+    "blob": "a688edb063c0ad43c25df15f497918817e8b74cd",
+    "roles_modified": false
+  },
+  "mapping": {
+    "Pi": "individuate forward-model, inverse-controller, perceptual-state, motor-command and external target/body roles",
+    "X": "time-indexed internal configuration carrying source-defined perceptual and learned map states",
+    "C": "task, factorization, stability and convergence admissibility conditions",
+    "Q": "task/control-error criterion orienting motor-command alternatives",
+    "P_in": "perceptual feedback/error input and learning update interface",
+    "P_out": "motor-command/execution interface and forward prediction readout",
+    "K": "perceptual dynamics plus forward/inverse learned transformations",
+    "T": "perception to command/prediction to outcome/error to parameter update",
+    "rho_O": "observable motor trajectory/task outcome"
+  },
+  "distinctions": {
+    "learned_parameter_vs_current_latent": "PRESERVED",
+    "retained_structure_vs_external_history": "PRESERVED",
+    "prediction_or_error_vs_memory": "PRESERVED",
+    "motor_target_vs_internal_skill": "PRESERVED",
+    "source_defined_state_not_hidden_in_generic_X_or_K": true
+  },
+  "reconstruction": "DIRECT_SOURCE_GROUNDED"
+}

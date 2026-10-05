@@ -1,0 +1,85 @@
+{
+  "schema": "relaytheory.p399.main.m3.pass_a_source_first.v1",
+  "slot": "MEM-02",
+  "doi": "10.1371/journal.pcbi.1008367",
+  "chronology": {
+    "stage": "A",
+    "source_lock": "SOURCE_AUTHORITY_LOCK_v1.json",
+    "source_first": true,
+    "frozen": true,
+    "result_informed": false
+  },
+  "native_model": "Generative semantic-compression account of episodic memory using rate-distortion / beta-VAE machinery",
+  "modeled_internal_state": [
+    "episode-conditioned latent posterior/latent z",
+    "learned semantic generative model parameters",
+    "compression-control hyperparameter beta"
+  ],
+  "memory_representation_state": [
+    "episode-specific compressed latent representation",
+    "learned semantic model is retained model knowledge distinct from the episode latent"
+  ],
+  "prediction_state": [
+    "decoder-generated reconstruction is a generative readout, not a separate online coordination state"
+  ],
+  "learned_parameters": [
+    "encoder/decoder/generative parameters learned during model training"
+  ],
+  "action_skill_variables": [],
+  "observations": [
+    "episode/input x",
+    "reconstruction target/data statistics"
+  ],
+  "update_transition_rules": [
+    "encode x to q_phi(z|x)",
+    "sample/use z",
+    "decode via p_theta(x|z)",
+    "different beta settings alter rate-distortion tradeoff"
+  ],
+  "retrieval_readout_rules": [
+    "reconstruction from latent through learned decoder"
+  ],
+  "prediction_generation_operators": [
+    "generative decoder produces reconstruction conditional on z"
+  ],
+  "learning_plasticity_rules": [
+    "offline/model training learns theta/phi; delayed-memory simulations use distinct compression settings rather than proven within-trace consolidation"
+  ],
+  "temporal_ordering": [
+    "model training/semantic learning",
+    "episode encoding",
+    "retention condition interpreted via compression setting",
+    "reconstruction/readout"
+  ],
+  "system_world_boundary": {
+    "inside": [
+      "learned generative model",
+      "episode latent/posterior"
+    ],
+    "outside": [
+      "raw episode/input",
+      "experimenter-imposed delay",
+      "dataset/training schedule"
+    ]
+  },
+  "explicit_interfaces": [
+    "episode encoding",
+    "latent readout/decoder reconstruction"
+  ],
+  "model_variants": [
+    "multiple beta/compression levels",
+    "task/domain implementations used for qualitative phenomena"
+  ],
+  "negative_adverse_results": [
+    "Several hyperparameters are chosen for qualitative comparison rather than uniquely identifying a biological mechanism.",
+    "Delayed recall is modeled with separate compression levels/models; this is not a demonstrated within-trace biological storage/consolidation update.",
+    "Information already lost at stronger compression cannot necessarily be recovered by converting representations.",
+    "Delay-to-beta mapping is an interpretive/calibration bridge, not a measured neural variable."
+  ],
+  "anti_conflation_assertions": [
+    "latent z is a model representation and is not automatically a biological storage variable",
+    "delay condition is not a learning operator",
+    "decoder output is not the retained representation itself",
+    "learned model parameters are distinct from the current episode latent"
+  ]
+}

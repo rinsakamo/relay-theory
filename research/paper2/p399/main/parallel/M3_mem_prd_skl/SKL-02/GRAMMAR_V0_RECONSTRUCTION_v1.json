@@ -1,0 +1,32 @@
+{
+  "schema": "relaytheory.p399.main.m3.grammar_v0_reconstruction.v1",
+  "slot": "SKL-02",
+  "doi": "10.1371/journal.pcbi.1005632",
+  "chronology": {
+    "after_stage_c": true,
+    "source_adjudication_frozen": true
+  },
+  "frozen_grammar_authority": {
+    "blob": "a688edb063c0ad43c25df15f497918817e8b74cd",
+    "roles_modified": false
+  },
+  "mapping": {
+    "Pi": "individuate recurrent neural state, synaptic weights, thresholds, readout and external sequence/target roles",
+    "X": "time-indexed SORN configuration carrying recurrent activity and learned plastic state",
+    "C": "network connectivity, plasticity, normalization and task admissibility constraints",
+    "Q": "task/readout criterion used for supervised output selection; not a generic coordinator objective",
+    "P_in": "external stimulus-sequence input and supervised training signal",
+    "P_out": "motor/output readout query",
+    "K": "recurrent state transition plus STDP/IP/SN learned transformations",
+    "T": "input-state-transition-plasticity-readout succession",
+    "rho_O": "observable/readout motor-sequence response"
+  },
+  "distinctions": {
+    "learned_parameter_vs_active_controller": "PRESERVED",
+    "motor_target_vs_internal_skill": "PRESERVED",
+    "external_trajectory_vs_internal_memory": "PRESERVED",
+    "data_or_training_artifact_vs_model_operator": "PRESERVED",
+    "source_defined_state_not_hidden_in_generic_X_or_K": true
+  },
+  "reconstruction": "DIRECT_SOURCE_GROUNDED"
+}

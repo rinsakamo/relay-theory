@@ -1,0 +1,61 @@
+{
+  "schema": "relaytheory.p399.main.m3.pass_b_reaudit.v1",
+  "slot": "MEM-02",
+  "doi": "10.1371/journal.pcbi.1008367",
+  "chronology": {
+    "stage": "B",
+    "input_stage_a": "PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json",
+    "stage_a_frozen_input": true,
+    "source_universe_unchanged": true
+  },
+  "objections": [
+    {
+      "id": "B01",
+      "challenge": "Could the fitted/learned latent be mislabeled as a directly observed memory store?",
+      "stage_a_response_under_challenge": "No: Stage A calls it a model representation and preserves the biological interpretation limit.",
+      "source_locus": "beta-VAE latent-variable framework and Methods",
+      "result": "NO_SILENT_REPAIR"
+    },
+    {
+      "id": "B02",
+      "challenge": "Could experimenter delay be mistaken for a consolidation transition?",
+      "stage_a_response_under_challenge": "No: source uses separate compression settings/models and does not establish a within-trace consolidation operator.",
+      "source_locus": "Delayed-forgetting analysis",
+      "result": "NO_SILENT_REPAIR"
+    },
+    {
+      "id": "B03",
+      "challenge": "Could decoder output be mistaken for stored representation?",
+      "stage_a_response_under_challenge": "No: reconstruction is readout from latent via learned semantic model.",
+      "source_locus": "latent posterior reconstruction / generative decoder",
+      "result": "NO_SILENT_REPAIR"
+    },
+    {
+      "id": "B04",
+      "challenge": "Could learned semantic parameters be mistaken for an online coordinator?",
+      "stage_a_response_under_challenge": "No: they are retained learned model parameters; no added coordinator is inferred.",
+      "source_locus": "semantic generative model and training description",
+      "result": "NO_SILENT_REPAIR"
+    },
+    {
+      "id": "B05",
+      "challenge": "Was irreversibility of lost information omitted?",
+      "stage_a_response_under_challenge": "No: preserved as negative evidence.",
+      "source_locus": "delayed compression discussion",
+      "result": "NO_SILENT_REPAIR"
+    }
+  ],
+  "required_conflation_sweep": {
+    "task_history_vs_internal_memory": "AUDITED",
+    "fitted_latent_vs_storage": "AUDITED",
+    "model_output_vs_representation": "AUDITED",
+    "delay_schedule_vs_learning_operator": "AUDITED",
+    "inherited_mechanism_vs_new_contribution": "AUDITED",
+    "negative_or_boundary_material": "AUDITED"
+  },
+  "source_ordered_omission_sweep": {
+    "performed": true,
+    "new_omissions_found": 0,
+    "notes": "Stage A already contained the material source-local limits reopened in B; C must still independently adjudicate each objection."
+  }
+}

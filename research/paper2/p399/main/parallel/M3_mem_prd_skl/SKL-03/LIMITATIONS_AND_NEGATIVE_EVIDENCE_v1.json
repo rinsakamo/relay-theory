@@ -1,0 +1,33 @@
+{
+  "schema": "relaytheory.p399.main.m3.limitations_negative_evidence.v1",
+  "slot": "SKL-03",
+  "doi": "10.1371/journal.pcbi.1006839",
+  "negative_evidence": [
+    "The model is explicitly phenomenological and local: it requires a non-zero reward gradient within natural movement variability and is limited to small workspace regions.",
+    "It caches one successful aim and uses local exploration; it does not learn or store a full reinforcement landscape.",
+    "The modeled intended aim is latent and fitted from behavior, not a directly measured neural state.",
+    "S2 behavioral estimates of sigma_m and sigma_e are initial guesses; S3 final bootstrap optimization frees alpha, sigma_m and sigma_e. These data/fitting artifacts do not add a new core model operator."
+  ],
+  "unresolved_issues": [
+    "Model remains phenomenological/local and latent intended aim is not directly measured.",
+    "S2/S3 support fit provenance but do not independently define the mathematical model."
+  ],
+  "genealogy": {
+    "annotation": [
+      "direct ancestors include 10.1523/JNEUROSCI.3244-14.2015 and 10.1523/ENEURO.0050-18.2018; global genealogy independence not certified"
+    ],
+    "global_independence_assumed": false,
+    "bounded_clearance": 0
+  },
+  "preserved_noninferences": [
+    "motor target/body/environment cannot automatically become internal skill or coordinator state",
+    "training schedule cannot automatically become learning operator",
+    "fitted latent variable cannot automatically become stored memory",
+    "learned parameter cannot automatically become an additional active controller",
+    "offline/training plasticity cannot automatically become online coordinator",
+    "complexity or fit failure cannot imply A2",
+    "no genealogy path/citation is not independence"
+  ],
+  "denominator_retained": true,
+  "replacement_triggered": false
+}

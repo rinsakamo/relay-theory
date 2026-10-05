@@ -1,0 +1,68 @@
+{
+  "schema": "relaytheory.p399.main.m3.pass_b_reaudit.v1",
+  "slot": "PRD-03",
+  "doi": "10.1371/journal.pcbi.1007093",
+  "chronology": {
+    "stage": "B",
+    "input_stage_a": "PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json",
+    "stage_a_frozen_input": true,
+    "source_universe_unchanged": true
+  },
+  "objections": [
+    {
+      "id": "B01",
+      "challenge": "Could raw past observations be mistaken for an internal memory store?",
+      "stage_a_response_under_challenge": "No: Stage A distinguishes external history from the posterior/belief that summarizes evidence.",
+      "source_locus": "HMM state-estimation formulation",
+      "result": "NO_SILENT_REPAIR"
+    },
+    {
+      "id": "B02",
+      "challenge": "Could the experiment-defined transition matrix be mistaken for learned internal structure?",
+      "stage_a_response_under_challenge": "No: the transition structure is explicitly placed in the task/world specification.",
+      "source_locus": "task structure / HMM transition model",
+      "result": "NO_SILENT_REPAIR"
+    },
+    {
+      "id": "B03",
+      "challenge": "Could gamma be interpreted as a stored episodic trace or coordinator?",
+      "stage_a_response_under_challenge": "No: it is a fitted uncertainty/use-of-past-evidence parameter.",
+      "source_locus": "intermediate B/gamma model",
+      "result": "NO_SILENT_REPAIR"
+    },
+    {
+      "id": "B04",
+      "challenge": "Could improved use of past evidence be mislabeled as learning the world model itself?",
+      "stage_a_response_under_challenge": "No: source does not model initial acquisition of the overall transition structure.",
+      "source_locus": "training-tertile analysis and discussion",
+      "result": "NO_SILENT_REPAIR"
+    },
+    {
+      "id": "B05",
+      "challenge": "Could the asymmetric B variant be silently promoted to the central model?",
+      "stage_a_response_under_challenge": "No: Stage A preserves it as a variant helping some subjects but not the average central choice.",
+      "source_locus": "alternative/asymmetric B model comparison",
+      "result": "NO_SILENT_REPAIR"
+    },
+    {
+      "id": "B06",
+      "challenge": "Was gamma-sigma identifiability tension omitted?",
+      "stage_a_response_under_challenge": "No: anticorrelation is retained as negative evidence.",
+      "source_locus": "parameter recovery/fit discussion",
+      "result": "NO_SILENT_REPAIR"
+    }
+  ],
+  "required_conflation_sweep": {
+    "external_history_vs_internal_state": "AUDITED",
+    "fitted_parameter_vs_storage": "AUDITED",
+    "prediction_error_vs_prediction_state": "AUDITED",
+    "motor_target_vs_skill_state": "AUDITED",
+    "training_or_task_schedule_vs_learning_operator": "AUDITED",
+    "source_variant_and_negative_material": "AUDITED"
+  },
+  "source_ordered_omission_sweep": {
+    "performed": true,
+    "new_omissions_found": 0,
+    "notes": "All decisive source-local negative conditions were already represented in frozen A and are re-accounted in C."
+  }
+}

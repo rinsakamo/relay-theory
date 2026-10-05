@@ -1,0 +1,70 @@
+{
+  "schema": "relaytheory.p399.main.m3.source_authority_lock.v1",
+  "slot": "PRD-01",
+  "doi": "10.1038/s41562-024-01930-8",
+  "lane": "PRD",
+  "authority": {
+    "issue": 399,
+    "kickoff_head": "3c2761ac13b04203aa7dbd8f47a1d687d506bf7b",
+    "main40_manifest_blob": "b97b67a34ad9c2858745dfa6aa60444520eaab13",
+    "w9_head": "71aab1c485446223bc8951ea3b8978aaeece3279",
+    "rir_head": "7f8750c5f4b1b87095f7dfdfbb558bba8e1c4157",
+    "grammar_blob": "a688edb063c0ad43c25df15f497918817e8b74cd"
+  },
+  "source": {
+    "edition": "Author-accepted bounded source bundle: NIH/PMC postpublication author manuscript + formal 2024 publisher correction + official publisher supplement; NOT relabeled as corrected final publisher VoR.",
+    "source_decision": {
+      "pr": 440,
+      "head": "7c76a18353da1ba4942df388aec9cb9c1a917121",
+      "blob": "e323ad5b38c0ca02ec25bc6c4feb2437af2ff9f3",
+      "verdict": "QUALIFIED_WITH_REGISTERED_EXCLUSIONS"
+    },
+    "components": [
+      {
+        "role": "author_manuscript",
+        "filename": "nihms-2053848.pdf",
+        "sha256": "abb8287b752c4d53480ecc8daefe2802b26c2ed1b48c69067e61d8caea838e38",
+        "pages": 26
+      },
+      {
+        "role": "formal_publisher_correction",
+        "doi": "10.1038/s41562-024-01978-6",
+        "sha256": "c05578f6ce33078a45ec97195405f0f8fcb2f1f8c4f9564447d6790ccf395302",
+        "pages": 1
+      },
+      {
+        "role": "official_publisher_supplement",
+        "sha256": "10f5d55f971060fb325e3e5a0bb4be2df015407ecb1428af9ebd17a4bea6298c",
+        "pages": 17
+      }
+    ],
+    "loci": [
+      "supplement Eqs 1-7: MDP comparator, distinct SR/PR occupancies, TD updates and values",
+      "main manuscript prediction/planning studies",
+      "formal correction to main Figs 2a/4a",
+      "official supplement Fig S2 Study2 conflict"
+    ],
+    "permanent_exclusions": [
+      "Fig S2 Study2 diagram .33/.67 conflicts with its caption .67/.33 and corrected main .69/.31; do not use its uncorrected numeric labels as task-design evidence.",
+      "isolated manuscript Discussion SR/PR direction inversion remains excluded/unresolved literal prose",
+      "Study2 HDI [0.29,99] remains excluded from audited numeric claims",
+      "abstract N=1299 versus simple six-Methods arithmetic 1309 remains unreconciled/excluded from audited total-N claims"
+    ]
+  },
+  "genealogy": {
+    "annotation": [
+      "SR/PR/TD constituents have prior ancestry; global genealogical independence is not certified"
+    ],
+    "global_independence_certified": false,
+    "bounded_clearance": 0,
+    "may_not_change_roster": true
+  },
+  "guards": {
+    "slot_exact": true,
+    "doi_exact": true,
+    "manifest_member": true,
+    "source_package_preserved": true,
+    "no_source_normalization": true,
+    "no_backup": true
+  }
+}

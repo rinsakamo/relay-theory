@@ -1,0 +1,61 @@
+{
+  "schema": "relaytheory.p399.main.m3.pass_b_reaudit.v1",
+  "slot": "MEM-03",
+  "doi": "10.1371/journal.pcbi.1004003",
+  "chronology": {
+    "stage": "B",
+    "input_stage_a": "PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json",
+    "stage_a_frozen_input": true,
+    "source_universe_unchanged": true
+  },
+  "objections": [
+    {
+      "id": "B01",
+      "challenge": "Could the external stimulus array be mistaken for internal memory?",
+      "stage_a_response_under_challenge": "No: Stage A explicitly places the array outside and the population superposition inside.",
+      "source_locus": "main model / encoding description",
+      "result": "NO_SILENT_REPAIR"
+    },
+    {
+      "id": "B02",
+      "challenge": "Could behavioral delay dependency be mistaken for a storage operator?",
+      "stage_a_response_under_challenge": "No: storage is the overlaid source-defined population state.",
+      "source_locus": "main model and retention interpretation",
+      "result": "NO_SILENT_REPAIR"
+    },
+    {
+      "id": "B03",
+      "challenge": "Could posterior recall be mistaken for persistent memory?",
+      "stage_a_response_under_challenge": "No: it is cue-conditioned readout from retained population state.",
+      "source_locus": "Bayesian recall section",
+      "result": "NO_SILENT_REPAIR"
+    },
+    {
+      "id": "B04",
+      "challenge": "Were S1 mathematical assumptions/variant limits omitted?",
+      "stage_a_response_under_challenge": "No: Stage A includes S1 and condition-dependence of fidelity/scaling results.",
+      "source_locus": "S1 Fisher-information/fidelity and hierarchical/mixed-code derivations",
+      "result": "NO_SILENT_REPAIR"
+    },
+    {
+      "id": "B05",
+      "challenge": "Could the restricted palimpsest be generalized to indefinite sequential overwriting?",
+      "stage_a_response_under_challenge": "No: Stage A limits it to the source's simultaneous/restricted setting.",
+      "source_locus": "main palimpsest model description",
+      "result": "NO_SILENT_REPAIR"
+    }
+  ],
+  "required_conflation_sweep": {
+    "task_history_vs_internal_memory": "AUDITED",
+    "fitted_latent_vs_storage": "AUDITED",
+    "model_output_vs_representation": "AUDITED",
+    "delay_schedule_vs_learning_operator": "AUDITED",
+    "inherited_mechanism_vs_new_contribution": "AUDITED",
+    "negative_or_boundary_material": "AUDITED"
+  },
+  "source_ordered_omission_sweep": {
+    "performed": true,
+    "new_omissions_found": 0,
+    "notes": "Stage A already contained the material source-local limits reopened in B; C must still independently adjudicate each objection."
+  }
+}

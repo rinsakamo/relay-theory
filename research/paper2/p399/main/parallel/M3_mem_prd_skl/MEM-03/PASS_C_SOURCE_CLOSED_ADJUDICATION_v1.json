@@ -1,0 +1,88 @@
+{
+  "schema": "relaytheory.p399.main.m3.pass_c_source_closed.v1",
+  "slot": "MEM-03",
+  "doi": "10.1371/journal.pcbi.1004003",
+  "chronology": {
+    "stage": "C",
+    "input_a": "PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json",
+    "input_b": "PASS_B_RESULT_INFORMED_REAUDIT_v1.json",
+    "source_universe_unchanged": true
+  },
+  "c1_original_a_gap_test": [
+    {
+      "objection_id": "B01",
+      "nearest_original_a_scope": "No: Stage A explicitly places the array outside and the population superposition inside.",
+      "source_locus": "main model / encoding description",
+      "strongest_alternate_reading": "Could the external stimulus array be mistaken for internal memory?",
+      "finding": "ALREADY_QUALIFIED_IN_A",
+      "decision": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": "NO_PATCH"
+    },
+    {
+      "objection_id": "B02",
+      "nearest_original_a_scope": "No: storage is the overlaid source-defined population state.",
+      "source_locus": "main model and retention interpretation",
+      "strongest_alternate_reading": "Could behavioral delay dependency be mistaken for a storage operator?",
+      "finding": "ALREADY_QUALIFIED_IN_A",
+      "decision": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": "NO_PATCH"
+    },
+    {
+      "objection_id": "B03",
+      "nearest_original_a_scope": "No: it is cue-conditioned readout from retained population state.",
+      "source_locus": "Bayesian recall section",
+      "strongest_alternate_reading": "Could posterior recall be mistaken for persistent memory?",
+      "finding": "ALREADY_QUALIFIED_IN_A",
+      "decision": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": "NO_PATCH"
+    },
+    {
+      "objection_id": "B04",
+      "nearest_original_a_scope": "No: Stage A includes S1 and condition-dependence of fidelity/scaling results.",
+      "source_locus": "S1 Fisher-information/fidelity and hierarchical/mixed-code derivations",
+      "strongest_alternate_reading": "Were S1 mathematical assumptions/variant limits omitted?",
+      "finding": "ALREADY_QUALIFIED_IN_A",
+      "decision": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": "NO_PATCH"
+    },
+    {
+      "objection_id": "B05",
+      "nearest_original_a_scope": "No: Stage A limits it to the source's simultaneous/restricted setting.",
+      "source_locus": "main palimpsest model description",
+      "strongest_alternate_reading": "Could the restricted palimpsest be generalized to indefinite sequential overwriting?",
+      "finding": "ALREADY_QUALIFIED_IN_A",
+      "decision": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": "NO_PATCH"
+    }
+  ],
+  "c2_material_condition_ledger": [
+    {
+      "condition_id": "C2-01",
+      "source_locus": "S1 Fisher-information locus",
+      "condition": "equivalence/fidelity claims are approximation-dependent",
+      "treatment": "CLAIM_LIMITED"
+    },
+    {
+      "condition_id": "C2-02",
+      "source_locus": "variant-scaling locus",
+      "condition": "precision/saturation depend on population coding assumptions",
+      "treatment": "CLAIM_LIMITED"
+    },
+    {
+      "condition_id": "C2-03",
+      "source_locus": "main biological interpretation locus",
+      "condition": "simplified model is not direct biological measurement",
+      "treatment": "CLAIM_LIMITED"
+    }
+  ],
+  "independent_source_order_resweep": {
+    "performed": true,
+    "duplicate_patching": false,
+    "silent_repair": false,
+    "unresolved_ambiguity_preserved": true
+  },
+  "adjudicated_reconstruction_frozen": true,
+  "unresolved": [
+    "Biological implementation is not directly established; fidelity/scaling conclusions remain assumption-dependent."
+  ]
+}

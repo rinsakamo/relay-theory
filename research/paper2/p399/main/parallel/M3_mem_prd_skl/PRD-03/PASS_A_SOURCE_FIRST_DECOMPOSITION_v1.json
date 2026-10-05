@@ -1,0 +1,87 @@
+{
+  "schema": "relaytheory.p399.main.m3.pass_a_source_first.v1",
+  "slot": "PRD-03",
+  "doi": "10.1371/journal.pcbi.1007093",
+  "chronology": {
+    "stage": "A",
+    "source_lock": "SOURCE_AUTHORITY_LOCK_v1.json",
+    "source_first": true,
+    "frozen": true,
+    "result_informed": false
+  },
+  "native_model": "Hidden-Markov/state-estimation account of learning to use past evidence in an experiment-defined world model",
+  "modeled_internal_state": [
+    "posterior belief over hidden trial state",
+    "past-state evidence propagated through transition model",
+    "gamma-parameterized uncertainty/gating of past evidence",
+    "observation-noise parameter sigma"
+  ],
+  "memory_representation_state": [
+    "internal posterior/belief summarizes past evidence; raw past observations and experiment-defined sequence remain external history/world"
+  ],
+  "prediction_state": [
+    "posterior distribution over latent current trial state and response likelihood derived from it"
+  ],
+  "learned_parameters": [
+    "gamma and sigma are fitted/estimated parameters; their change across training summarizes use of evidence, not a source-demonstrated stored episodic trace"
+  ],
+  "action_skill_variables": [
+    "behavioral response generated from posterior response likelihood"
+  ],
+  "observations": [
+    "frequency/price observations supplying likelihood evidence"
+  ],
+  "update_transition_rules": [
+    "HMM transition prior propagates hidden-state belief",
+    "observation likelihood updates posterior",
+    "intermediate B/gamma degrades/preserves past-state information"
+  ],
+  "retrieval_readout_rules": [
+    "posterior belief is mapped to response likelihood"
+  ],
+  "prediction_generation_operators": [
+    "state-estimation/prediction from transition prior plus current observations"
+  ],
+  "learning_plasticity_rules": [
+    "paper fits gamma across training tertiles; it does not model initial acquisition of the overall transition structure"
+  ],
+  "temporal_ordering": [
+    "previous-state posterior",
+    "experiment-defined transition propagation",
+    "current observation likelihood",
+    "posterior state estimate",
+    "response likelihood"
+  ],
+  "system_world_boundary": {
+    "inside": [
+      "posterior hidden-state belief",
+      "B/gamma uncertainty operation",
+      "response mapping"
+    ],
+    "outside": [
+      "experiment-defined cyclic transition structure as task world specification",
+      "raw observation sequence"
+    ]
+  },
+  "explicit_interfaces": [
+    "observation-likelihood input",
+    "posterior response readout"
+  ],
+  "model_variants": [
+    "central symmetric B/gamma model",
+    "more complex asymmetric B variant for some subjects",
+    "comparison/fit variants"
+  ],
+  "negative_adverse_results": [
+    "The latent transition structure is experiment-defined; the fitted HMM is not evidence that this transition structure was learned neurally by the same operator.",
+    "The paper does not model initial acquisition of the overall world-model structure; changes in gamma characterize improved use of past evidence.",
+    "Gamma and sigma can be moderately anticorrelated, limiting unique mechanistic interpretation.",
+    "A more complex asymmetric B variant helps some subjects but is not adopted as the average central model."
+  ],
+  "anti_conflation_assertions": [
+    "external past observations are not themselves internal memory state",
+    "state estimation is not the same as learning the transition model",
+    "fitted gamma/sigma are parameters, not automatically stored memory or coordinator state",
+    "posterior response output is distinct from retained model/belief state"
+  ]
+}

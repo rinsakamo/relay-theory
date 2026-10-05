@@ -1,0 +1,61 @@
+{
+  "schema": "relaytheory.p399.main.m3.pass_b_reaudit.v1",
+  "slot": "PRD-02",
+  "doi": "10.1371/journal.pcbi.1001003",
+  "chronology": {
+    "stage": "B",
+    "input_stage_a": "PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json",
+    "stage_a_frozen_input": true,
+    "source_universe_unchanged": true
+  },
+  "objections": [
+    {
+      "id": "B01",
+      "challenge": "Could trial history be mislabeled as internal memory?",
+      "stage_a_response_under_challenge": "No: internal belief/posterior is separated from external observed reward history.",
+      "source_locus": "Bayesian reward and structure update",
+      "result": "NO_SILENT_REPAIR"
+    },
+    {
+      "id": "B02",
+      "challenge": "Could experimenter-defined coupling alternatives be mistaken for learned internal structure itself?",
+      "stage_a_response_under_challenge": "No: alternatives are world/task hypotheses; posterior probability over them is internal state.",
+      "source_locus": "graphical reward-generation model section",
+      "result": "NO_SILENT_REPAIR"
+    },
+    {
+      "id": "B03",
+      "challenge": "Could Q-learning comparator be folded into central structure-learning mechanism?",
+      "stage_a_response_under_challenge": "No: preserved as explicit comparator.",
+      "source_locus": "model comparison / Q-learning with softmax",
+      "result": "NO_SILENT_REPAIR"
+    },
+    {
+      "id": "B04",
+      "challenge": "Could posterior predictive value be treated as a separate persistent coordinator?",
+      "stage_a_response_under_challenge": "No: it is computed/read from belief state.",
+      "source_locus": "belief-state optimal action selection",
+      "result": "NO_SILENT_REPAIR"
+    },
+    {
+      "id": "B05",
+      "challenge": "Were omitted temporal dependencies and fit failures retained?",
+      "stage_a_response_under_challenge": "Yes: both are explicit Stage A negative evidence.",
+      "source_locus": "discussion/model limitations",
+      "result": "NO_SILENT_REPAIR"
+    }
+  ],
+  "required_conflation_sweep": {
+    "external_history_vs_memory": "AUDITED",
+    "fitted_latent_vs_storage": "AUDITED",
+    "prediction_error_vs_prediction_state": "AUDITED",
+    "model_output_vs_learned_representation": "AUDITED",
+    "comparator_vs_target": "AUDITED",
+    "negative_variant_or_reset": "AUDITED"
+  },
+  "source_ordered_omission_sweep": {
+    "performed": true,
+    "new_omissions_found": 0,
+    "notes": "No C patch may erase or normalize the source-local limitations already frozen in A."
+  }
+}

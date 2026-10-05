@@ -1,0 +1,37 @@
+{
+  "schema": "relaytheory.p399.main.m3.architectural_outcome.v1",
+  "slot": "MEM-03",
+  "doi": "10.1371/journal.pcbi.1004003",
+  "source_fidelity": "SOURCE_CLOSED_WITH_MANDATORY_S1_AND_EXPLICIT_LIMITATIONS",
+  "attempts": {
+    "A0": {
+      "attempted": true,
+      "result": "PASS",
+      "reason": "The source-defined shared population memory state, cue-conditioned readout and variant constraints map directly to frozen Grammar v0 without added coordination-specific structure."
+    },
+    "A1": {
+      "attempted": false,
+      "result": "NOT_REQUIRED_AFTER_A0_PASS",
+      "stateless_additions": []
+    },
+    "A2": {
+      "attempted": false,
+      "result": "NOT_PERMITTED_OR_REQUIRED_AFTER_A0_PASS",
+      "stateful_additions": []
+    }
+  },
+  "final_state": "A0_FIDELITY",
+  "added_adapter_type": "NONE",
+  "added_adapter_count": 0,
+  "added_stateful_mechanism_type": "NONE",
+  "added_stateful_mechanism_count": 0,
+  "double_count_guard": "The source-defined population memory state is not re-counted as a new coordinator.",
+  "unresolved_issues": [
+    "Biological implementation is not directly established; fidelity/scaling conclusions remain assumption-dependent."
+  ],
+  "genealogy_annotation": [
+    "population-coding/Bayesian predecessors acknowledged",
+    "global genealogy independence not certified"
+  ],
+  "overall_h0_h1_h2_verdict": "NOT_ISSUED_BY_M3"
+}

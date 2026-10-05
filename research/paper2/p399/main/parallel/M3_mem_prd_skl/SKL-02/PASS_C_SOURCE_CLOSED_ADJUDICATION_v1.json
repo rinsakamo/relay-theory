@@ -1,0 +1,98 @@
+{
+  "schema": "relaytheory.p399.main.m3.pass_c_source_closed.v1",
+  "slot": "SKL-02",
+  "doi": "10.1371/journal.pcbi.1005632",
+  "chronology": {
+    "stage": "C",
+    "input_a": "PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json",
+    "input_b": "PASS_B_RESULT_INFORMED_REAUDIT_v1.json",
+    "source_universe_unchanged": true
+  },
+  "c1_original_a_gap_test": [
+    {
+      "objection_id": "B01",
+      "nearest_original_a_scope": "No: Stage A places sequence/schedule outside and identifies STDP/IP/SN as the internal learning rules.",
+      "source_locus": "Methods: SORN architecture and plasticity; training protocol",
+      "strongest_alternate_reading": "Could the training sequence/schedule be mistaken for an internal memory state or learning operator?",
+      "finding": "ALREADY_QUALIFIED_IN_A",
+      "decision": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": "NO_PATCH"
+    },
+    {
+      "objection_id": "B02",
+      "nearest_original_a_scope": "No: output labels are external and readout weights are separately source-defined.",
+      "source_locus": "supervised motor readout",
+      "strongest_alternate_reading": "Could supervised motor target/readout be mislabeled as endogenous skill representation?",
+      "finding": "ALREADY_QUALIFIED_IN_A",
+      "decision": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": "NO_PATCH"
+    },
+    {
+      "objection_id": "B03",
+      "nearest_original_a_scope": "No: they are the source-defined retained SORN state.",
+      "source_locus": "STDP and normalization equations",
+      "strongest_alternate_reading": "Could recurrent weights be double-counted as a new coordinator?",
+      "finding": "ALREADY_QUALIFIED_IN_A",
+      "decision": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": "NO_PATCH"
+    },
+    {
+      "objection_id": "B04",
+      "nearest_original_a_scope": "No: no separate source-defined forward model exists; dynamics remain SORN state evolution.",
+      "source_locus": "recurrent state transition",
+      "strongest_alternate_reading": "Could recurrent prediction-like dynamics be mistaken for a separate forward prediction module?",
+      "finding": "ALREADY_QUALIFIED_IN_A",
+      "decision": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": "NO_PATCH"
+    },
+    {
+      "objection_id": "B05",
+      "nearest_original_a_scope": "No: inherited ancestry is explicit.",
+      "source_locus": "discussion and frozen genealogy profile",
+      "strongest_alternate_reading": "Could interference/facilitation be treated as evidence of new SORN invention?",
+      "finding": "ALREADY_QUALIFIED_IN_A",
+      "decision": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": "NO_PATCH"
+    },
+    {
+      "objection_id": "B06",
+      "nearest_original_a_scope": "No: Stage A preserves the implementation/measurement limitation.",
+      "source_locus": "model-to-human interpretation",
+      "strongest_alternate_reading": "Could qualitative behavioral fit establish neural STDP/IP/SN?",
+      "finding": "ALREADY_QUALIFIED_IN_A",
+      "decision": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": "NO_PATCH"
+    }
+  ],
+  "c2_material_condition_ledger": [
+    {
+      "condition_id": "C2-01",
+      "source_locus": "human-model interpretation",
+      "condition": "network plasticity variables are not directly measured in participants",
+      "treatment": "CLAIM_LIMITED"
+    },
+    {
+      "condition_id": "C2-02",
+      "source_locus": "supervised output locus",
+      "condition": "motor readout is task-specific and supervised",
+      "treatment": "CLAIM_LIMITED"
+    },
+    {
+      "condition_id": "C2-03",
+      "source_locus": "genealogy/model-family locus",
+      "condition": "SORN architecture is inherited; paper does not independently invent it",
+      "treatment": "CLAIM_LIMITED"
+    }
+  ],
+  "independent_source_order_resweep": {
+    "performed": true,
+    "duplicate_patching": false,
+    "silent_repair": false,
+    "unresolved_ambiguity_preserved": true
+  },
+  "adjudicated_reconstruction_frozen": true,
+  "unresolved": [
+    "Computational account does not directly establish participant-level synaptic implementation.",
+    "Inherited SORN family ancestry remains explicit."
+  ]
+}

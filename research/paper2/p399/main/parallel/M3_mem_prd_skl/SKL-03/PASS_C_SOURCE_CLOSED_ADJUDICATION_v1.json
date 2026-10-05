@@ -1,0 +1,104 @@
+{
+  "schema": "relaytheory.p399.main.m3.pass_c_source_closed.v1",
+  "slot": "SKL-03",
+  "doi": "10.1371/journal.pcbi.1006839",
+  "chronology": {
+    "stage": "C",
+    "input_a": "PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json",
+    "input_b": "PASS_B_RESULT_INFORMED_REAUDIT_v1.json",
+    "source_universe_unchanged": true
+  },
+  "c1_original_a_gap_test": [
+    {
+      "objection_id": "B01",
+      "nearest_original_a_scope": "No: Stage A places landscape/trajectory outside and retains only the source-defined last-success cache internally.",
+      "source_locus": "Learning model and system/world boundary",
+      "strongest_alternate_reading": "Could external reward landscape or trajectory be mistaken for internal memory?",
+      "finding": "ALREADY_QUALIFIED_IN_A",
+      "decision": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": "NO_PATCH"
+    },
+    {
+      "objection_id": "B02",
+      "nearest_original_a_scope": "No: Stage A explicitly limits storage to one successful aim/local exploration.",
+      "source_locus": "local reinforcement learning model and discussion",
+      "strongest_alternate_reading": "Could cached aim be inflated into a full learned reinforcement landscape?",
+      "finding": "ALREADY_QUALIFIED_IN_A",
+      "decision": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": "NO_PATCH"
+    },
+    {
+      "objection_id": "B03",
+      "nearest_original_a_scope": "No: it remains latent/fitted.",
+      "source_locus": "model fitting / intended aim inference",
+      "strongest_alternate_reading": "Could fitted intended aim be treated as directly measured skill state?",
+      "finding": "ALREADY_QUALIFIED_IN_A",
+      "decision": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": "NO_PATCH"
+    },
+    {
+      "objection_id": "B04",
+      "nearest_original_a_scope": "No: they are variability/parameter-fit provenance; mathematical definition remains in the main source.",
+      "source_locus": "S2/S3 Data declarations and main Learning model Eq 1",
+      "strongest_alternate_reading": "Could S2/S3 data files be treated as defining additional model operators?",
+      "finding": "ALREADY_QUALIFIED_IN_A",
+      "decision": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": "NO_PATCH"
+    },
+    {
+      "objection_id": "B05",
+      "nearest_original_a_scope": "No: nonzero local reward gradient and limited workspace conditions are preserved.",
+      "source_locus": "discussion / reinforcement landscape limits",
+      "strongest_alternate_reading": "Could the local phenomenological model be generalized to arbitrary workspace?",
+      "finding": "ALREADY_QUALIFIED_IN_A",
+      "decision": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": "NO_PATCH"
+    },
+    {
+      "objection_id": "B06",
+      "nearest_original_a_scope": "No: external boundary is explicit.",
+      "source_locus": "task/model interface",
+      "strongest_alternate_reading": "Could physical body/target be promoted to internal coordinator state?",
+      "finding": "ALREADY_QUALIFIED_IN_A",
+      "decision": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": "NO_PATCH"
+    }
+  ],
+  "c2_material_condition_ledger": [
+    {
+      "condition_id": "C2-01",
+      "source_locus": "reinforcement-landscape limitation",
+      "condition": "requires nonzero reward gradient within natural movement variability and is local/small-workspace",
+      "treatment": "CLAIM_LIMITED"
+    },
+    {
+      "condition_id": "C2-02",
+      "source_locus": "cache interpretation",
+      "condition": "stores one successful aim, not a full reinforcement landscape",
+      "treatment": "CLAIM_LIMITED"
+    },
+    {
+      "condition_id": "C2-03",
+      "source_locus": "intended-aim measurement",
+      "condition": "latent/fitted from behavior, not directly measured neural state",
+      "treatment": "CLAIM_LIMITED"
+    },
+    {
+      "condition_id": "C2-04",
+      "source_locus": "S2/S3 provenance",
+      "condition": "initial estimates and bootstrap-fitted parameters are evidence/fit artifacts, not new model operators",
+      "treatment": "CLAIM_LIMITED"
+    }
+  ],
+  "independent_source_order_resweep": {
+    "performed": true,
+    "duplicate_patching": false,
+    "silent_repair": false,
+    "unresolved_ambiguity_preserved": true
+  },
+  "adjudicated_reconstruction_frozen": true,
+  "unresolved": [
+    "Model remains phenomenological/local and latent intended aim is not directly measured.",
+    "S2/S3 support fit provenance but do not independently define the mathematical model."
+  ]
+}
