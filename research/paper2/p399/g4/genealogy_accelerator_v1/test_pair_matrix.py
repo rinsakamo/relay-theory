@@ -226,5 +226,45 @@ class MatrixTests(unittest.TestCase):
             generate(*args, limited)
 
 
+    def test_source_native_v15b_two_pair_limited_reuse(self):
+        args = self.native_fixture()
+        g2 = {x["slot"]: x["doi"] for x in args[0]["selected_working_roster"]}
+        g1 = {x["id"]: x["doi"] for x in args[1]["roster_snapshot"]}
+        rows = [
+            {"pair": ["G2_INT15", "G1_P18"], "source": {"int_doi": g2["INT-15"], "g1_doi": g1["P18"]},
+             "official_final_independent": False, "bounded_judgment": "DIFFERENT_SPECIFIC_TESTED_NATIVE_OPERATORS_PROVISIONAL"},
+            {"pair": ["G2_INT16", "G1_P09"], "source": {"int_doi": g2["INT-16"], "g1_doi": g1["P09"]},
+             "official_final_independent": False, "bounded_judgment": "DISTINCT_TARGET_AND_NATIVE_PLASTICITY_ARCHITECTURE_PROVISIONAL"}
+        ]
+        v15 = {"governance": {"all_800_central_family_cleared": False, "main_science": False},
+               "pairs": rows}
+        out, summary = generate(*args, None, v15, None)
+        self.assertEqual(summary["prior_indexed_native_scoped_pairs_reused"], 4)
+        self.assertEqual(sum("G2D_V15B_" in r.get("prior_source_scoped_comparison", {}).get(
+            "bounded_original_evidence_id", "") for r in out), 2)
+        self.assertEqual(summary["global_final_independent_pairs"], 0)
+        rows[0]["official_final_independent"] = True
+        with self.assertRaises(InputMismatch):
+            generate(*args, None, v15, None)
+
+    def test_v16b_int01_int14_shared_crp_is_never_global_independence(self):
+        args = self.native_fixture()
+        g2 = {x["slot"]: x["doi"] for x in args[0]["selected_working_roster"]}
+        v16 = {"source_int01": {"doi": g2["INT-01"], "mht_sha": "a"*64},
+               "source_int14": {"doi": g2["INT-14"]},
+               "comparison": {"pair_bounded_nonidentical_core_operator_judgment": "SUPPORTED",
+                              "whole_historical_family_final_judgment": "UNDERDETERMINED",
+                              "direct_mathematical_descendant_relation_demonstrated": False},
+               "gates": {"all_16_global_family_independence": False, "main_authorized": False}}
+        out, summary = generate(*args, None, None, v16)
+        self.assertEqual(summary["prior_indexed_native_scoped_pairs_reused"], 3)
+        self.assertTrue(any({r["a"], r["b"]} == {"INT-01", "INT-14"} and
+                            r["triage"] == "BOUNDED_SOURCE_COMPARISON_GLOBAL_REVIEW_PENDING"
+                            and not r["global_independence_certified"] for r in out))
+        v16["gates"]["all_16_global_family_independence"] = True
+        with self.assertRaises(InputMismatch):
+            generate(*args, None, None, v16)
+
+
 if __name__ == "__main__":
     unittest.main()
