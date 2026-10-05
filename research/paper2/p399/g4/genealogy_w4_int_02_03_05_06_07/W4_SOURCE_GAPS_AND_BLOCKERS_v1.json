@@ -1,0 +1,108 @@
+{
+  "schema": "relaytheory.p399.g4.w4.source_gaps_and_blockers.v1",
+  "base_head": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a",
+  "main_authorized": false,
+  "counts": {
+    "PROFILE_FRAGMENT_READY": 2,
+    "SOURCE_BLOCKED": 1,
+    "SCIENTIFIC_ANCESTRY_UNDERDETERMINED": 2
+  },
+  "records": [
+    {
+      "id": "INT-02",
+      "completion_status": "PROFILE_FRAGMENT_READY",
+      "gaps": [
+        {
+          "kind": "UNRESOLVED_DIRECT_ANCESTRY",
+          "severity": "NONBLOCKING_FOR_FRAGMENT",
+          "detail": "Explicit constituent predecessors are source-described but exact DOI-level direct ancestry was not pinned; no DOI invented."
+        },
+        {
+          "kind": "CORRECTION_HISTORY_NOT_EXHAUSTIVE",
+          "severity": "NONBLOCKING_FOR_BOUNDED_FRAGMENT",
+          "detail": "Global absence of later correction/version changes is not attested."
+        }
+      ]
+    },
+    {
+      "id": "INT-03",
+      "completion_status": "SCIENTIFIC_ANCESTRY_UNDERDETERMINED",
+      "gaps": [
+        {
+          "kind": "RAW_PUBLISHER_PDF_UNAVAILABLE",
+          "severity": "MEDIUM",
+          "detail": "Allowed first-party complete HTML adopted; raw publisher PDF/HTML SHA remains unavailable."
+        },
+        {
+          "kind": "UNRESOLVED_DIRECT_ANCESTRY",
+          "severity": "BLOCKING_GENEALOGY",
+          "detail": "Explicit Dehaene/Changeux predecessor lineage lacks an exact frozen DOI edge."
+        },
+        {
+          "kind": "EDITION_HISTORY_UNRESOLVED",
+          "severity": "MEDIUM",
+          "detail": "Exhaustive correction/version reconciliation not completed."
+        }
+      ]
+    },
+    {
+      "id": "INT-05",
+      "completion_status": "PROFILE_FRAGMENT_READY",
+      "gaps": [
+        {
+          "kind": "UNRESOLVED_DIRECT_ANCESTRY",
+          "severity": "NONBLOCKING_FOR_FRAGMENT",
+          "detail": "Diffusion/continuous-flow/change-of-mind precedents are not promoted to direct DOI ancestry without explicit derivation evidence."
+        },
+        {
+          "kind": "EXTERNAL_CODE_NOT_EDITION",
+          "severity": "BOUNDARY",
+          "detail": "Linked code/data ZIP is separate from the PLOS article."
+        }
+      ]
+    },
+    {
+      "id": "INT-06",
+      "completion_status": "SCIENTIFIC_ANCESTRY_UNDERDETERMINED",
+      "gaps": [
+        {
+          "kind": "BROAD_WORKSPACE_ANCESTRY_ONLY",
+          "severity": "BLOCKING_GENEALOGY",
+          "detail": "INT-03/06 share broad workspace/recurrent ancestry, but exact same central model and exact DOI-level direct ancestry are not established."
+        },
+        {
+          "kind": "SUPPLEMENT_SEMANTICS_NOT_EXHAUSTIVE",
+          "severity": "MEDIUM",
+          "detail": "All eight raw supplements are frozen, but not every figure/table pixel has full semantic qualification."
+        }
+      ]
+    },
+    {
+      "id": "INT-07",
+      "completion_status": "SOURCE_BLOCKED",
+      "gaps": [
+        {
+          "kind": "MISSING_REQUIRED_SUPPLEMENT_RAW",
+          "severity": "BLOCKING_SOURCE",
+          "required_dois": [
+            "10.1371/journal.pcbi.1003383.s001",
+            "10.1371/journal.pcbi.1003383.s002",
+            "10.1371/journal.pcbi.1003383.s003",
+            "10.1371/journal.pcbi.1003383.s004"
+          ],
+          "detail": "PLOS first-party HTML identifies all four model-defining Text S1-S4 PDFs, but their raw bytes/SHA are not frozen in current repository evidence."
+        },
+        {
+          "kind": "STATE_SPACE_FAMILY_COLLAPSE_FORBIDDEN",
+          "severity": "BOUNDARY",
+          "detail": "Generic EKF/RTS/Bayesian/state-space terms do not create an identity/ancestry edge to another profile."
+        }
+      ]
+    }
+  ],
+  "unresolved_source_or_genealogy_blockers": [
+    "INT-03 exact DOI-level predecessor ancestry and final edition-history reconciliation",
+    "INT-06 exact DOI-level workspace/router ancestry relative to INT-03 and other families",
+    "INT-07 required official Text S1-S4 raw source media/SHA"
+  ]
+}
