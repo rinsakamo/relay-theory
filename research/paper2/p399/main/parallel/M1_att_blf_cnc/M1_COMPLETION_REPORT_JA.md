@@ -16,7 +16,12 @@
   - Stage B: `ea298e106fe2dd800ffdc8f26479d1f09be5864a`
   - Stage C: `9e597539244d161a7f20320ecf22ece1bf32b400`
 
-Draft PR number、scientific HEAD、CI run は GitHub 上の Draft PR 作成・CI 完了後に、このレポートの metadata-only follow-up で追記する。
+- Draft PR: **#453** — `P399 MAIN M1 — ATT/BLF/CNC source-closed reconstruction and architectural adjudication`
+- Exact scientific HEAD: `fddeefaaa209623c95858e578fa3d31a3389e672`
+- CI run: **37283369126 SUCCESS** on exact scientific HEAD `fddeefaaa209623c95858e578fa3d31a3389e672`
+- CI job: `m1-fail-closed` / **25/25 PASS**
+
+この追記自体は metadata-only commit とするため、最終 branch ref は self-referential に本文へ埋め込まず、GitHub ref/PR を authority とする。
 
 ## 9-paper status
 
@@ -73,7 +78,9 @@ ATT-01 の Stage C correction 1件は、既に source-defined な response-likel
 
 ## Fail-closed
 
-CI 用 `test_m1_fail_closed.py` は要求された 25 条件を個別に検査する。PR CI 完了後に exact run receipt を追記する。
+`test_m1_fail_closed.py` は要求された 25 条件を個別に検査し、GitHub Actions run **37283369126** で **25/25 PASS / SUCCESS**。
+
+CI は exact scientific HEAD `fddeefaaa209623c95858e578fa3d31a3389e672` に対して実行された。
 
 ## Boundary confirmations
 
