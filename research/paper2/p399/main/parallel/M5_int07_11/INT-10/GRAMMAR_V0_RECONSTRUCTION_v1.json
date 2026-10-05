@@ -1,0 +1,55 @@
+{
+  "schema": "relaytheory.p399.main.m5.grammar_v0.v1",
+  "slot": "INT-10",
+  "doi": "10.1371/journal.pcbi.1011024",
+  "authority": {
+    "grammar_roles": {
+      "Pi": "individuation / partition / boundary",
+      "X": "configuration carrier",
+      "C": "realizability / admissibility constraint",
+      "Q": "criterion-conditioned filtering / orientation",
+      "P_in": "intervention/write interface",
+      "P_out": "probe/query/read interface",
+      "K": "typed transformation / dependence",
+      "T": "succession / temporal indexing",
+      "rho/O": "boundary-relative observation / trace"
+    },
+    "layered_grammar_blob": "150fbb166541ba52abbe07124924fab63a1ad575",
+    "lean_blob": "a688edb063c0ad43c25df15f497918817e8b74cd",
+    "stage_c_commit": "17c49300c649e9bc33964a57f6de604e786201d0",
+    "stage_c_blob": "d4c073f303b9d530cce8213f64ea98a63cc4788f"
+  },
+  "system_world": {
+    "system": [
+      "BG activity/weights",
+      "cerebellar reservoir/weights",
+      "CPG state"
+    ],
+    "world": [
+      "robotic arm/joints",
+      "target",
+      "perturbation",
+      "endpoint"
+    ],
+    "experiment_context": "task motor goal/perturbation/plant setup"
+  },
+  "mapping": {
+    "Pi": "BG/cerebellum/CPG boundaries",
+    "X": "source-local BG/cerebellar/CPG state",
+    "C": "motor/learning admissibility",
+    "Q": "goal/novelty/endpoint-error criterion",
+    "P_in": "motor program/learning write",
+    "P_out": "endpoint/error read",
+    "K": "BG update, cerebellar correction, pipeline dependence",
+    "T": "reach/trial succession",
+    "rho/O": "endpoint/error trace"
+  },
+  "guardrails": [
+    "T distinct from K",
+    "recurrence/persistence derived",
+    "L_ctx not auto-C"
+  ],
+  "invented_generic_integration_node": false,
+  "additional_state_required": false,
+  "freeze_status": "FROZEN_GRAMMAR_RECONSTRUCTION"
+}

@@ -1,0 +1,24 @@
+{
+  "schema": "relaytheory.p399.main.m5.integration_mechanism_audit.v1",
+  "slot": "INT-10",
+  "doi": "10.1371/journal.pcbi.1011024",
+  "answers": {
+    "q1_components_integrated": "cortex-BG goal/action learning + CPG execution + cerebellar reservoir error correction in serial pipeline",
+    "q2_information_crosses": "motor goal, BG-selected action/CPG parameters, endpoint/error, cerebellar correction",
+    "q3_shared_state": "source-defined goal/action/CPG interface variables; no global workspace",
+    "q4_shared_state_origin": "SOURCE_DEFINED; reconstruction-added shared state = 0",
+    "q5_temporal_order": "BG action selection -> cerebellar fine-tuning -> open-loop CPG execution",
+    "q6_gating": "no independent integration gate; BG selection is source-local",
+    "q7_mediator": "explicit BG->cerebellum pipeline",
+    "q8_online_vs_offline": "learning across reaches; within-reach execution open-loop",
+    "q9_experimenter_imposed": "task motor goal/perturbation/plant setup",
+    "q10_failure_without_coupling": "cerebellum cannot refine BG-derived motor program"
+  },
+  "boundary": {
+    "source_defined_coupling": true,
+    "source_defined_gate": null,
+    "reconstruction_added_stateless_adapter": false,
+    "reconstruction_added_stateful_mechanism": false,
+    "experimenter_imposed": "task motor goal/perturbation/plant setup"
+  }
+}
