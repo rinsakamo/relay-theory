@@ -46,7 +46,7 @@ jobs:
           P=research/paper2/p399/g2/three_primary_review_20261005/THREE_PRIMARY_SOURCE_FREEZE_AND_BOUNDED_SCIENCE_v1.json
           git fetch --no-tags origin "$G2_LATE" || git fetch --no-tags origin paper2/p399-g2-outcome-blind-main40-working-20261004
           test "$(git rev-parse "${G2_LATE}:${P}")" = "021dd2856510a4ac04fbbb3221d93b103067bb17"
-      - name: Cross-check all bounded profiles against exact frozen upstream ledger bytes
+      - name: Cross-check ten bounded profiles against exact frozen upstream ledger bytes
         shell: bash
         run: |
           set -euo pipefail
@@ -63,6 +63,7 @@ jobs:
             --legacy-pairs research/paper2/p399/g2/MAIN40_G2_780_MAIN_AND_800_G1_FAMILY_RECONCILIATION_v2.json \
             --profiles research/paper2/p399/g4/genealogy_accelerator_v1/ORIGINAL_NATIVE_PROFILES_v1.json \
             --source-native-v20 research/paper2/p399/g2/int_g2d/G2D_V20_INT01_THREE_ADDITIONAL_PAIRS_INT09_OFFICIAL_FIG9_CORRIGENDUM_AND_35_QUEUE.json \
+            --source-native-int04-int08 research/paper2/p399/g2/int_g2d/G2D_V10D_CORRECTED_PAIR_SOURCE_NATIVE_MACHINE_GATES.json \
             --output p399-g4-genealogy-audit
           python - <<'PY'
           import json
@@ -73,8 +74,8 @@ jobs:
           assert len(rows) == summary["full_pair_count"] == 1580
           assert sum(r["cohort"] == "G2_G2" for r in rows) == 780
           assert sum(r["cohort"] == "G2_G1" for r in rows) == 800
-          assert summary["prior_indexed_native_scoped_pairs_reused"] == 9
-          assert summary["source_ledger_derived_bounded_profiles"] == 7
+          assert summary["prior_indexed_native_scoped_pairs_reused"] == 10
+          assert summary["source_ledger_derived_bounded_profiles"] == 10
           assert summary["new_full_original_scientific_qualifications_from_profiles"] == 0
           assert summary["global_final_independent_pairs"] == 0
           assert summary["scientific_main_authorized"] is False
