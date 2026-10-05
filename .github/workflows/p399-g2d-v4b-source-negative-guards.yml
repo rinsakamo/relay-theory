@@ -1,0 +1,18 @@
+name: P399 G2-D v4b publisher source-native negative science bytes and 12 false promotion guards
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g2/int_g2d/G2D_V4*"
+      - "research/paper2/p399/g2/int_g2d/test_v4b_source_native_adverse_ledger.py"
+      - ".github/workflows/p399-g2d-v4b-source-negative-guards.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-native-ledger-no-semantic-overpromotion:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check publisher source-native bounded truth/negative gates (metadata CI, NOT human figure semantics)
+        run: python3 research/paper2/p399/g2/int_g2d/test_v4b_source_native_adverse_ledger.py

@@ -1,0 +1,21 @@
+name: P399 G2 PRD01 formal bounded final qualification excludes incorrect supplemental Fig S2 numbers
+on:
+  push:
+    branches:
+      - 'paper2/p399-g2-prd01-final-bounded-science-decision-*'
+      - 'paper2/p399-g2-outcome-blind-main40-working-*'
+  pull_request:
+    paths:
+      - 'research/paper2/p399/g2/prd01_final_bounded_decision_20261005/**'
+      - '.github/workflows/p399-g2-prd01-final-bounded-qualifying-decision.yml'
+jobs:
+  frozen-source-version-and-scoped-science-decision:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Source/decision invariants and false promotion adversarial suite
+        run: python3 research/paper2/p399/g2/prd01_final_bounded_decision_20261005/test_prd01_final_bounded_decision_guard.py
+      - name: Qualifying scope statement
+        run: echo 'PASS means original exact evidence hashes and qualification limits are honored, not full science, participant replay, uncorrected publisher Figure S2 rectification, global family or MAIN GO.'

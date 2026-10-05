@@ -1,0 +1,56 @@
+{
+  "schema": "relaytheory.p399.g2b.independently_read_back_raw_utf8_sha256_v1",
+  "date_jst": "2026-10-04",
+  "actual_source": "GitHub fetch_file of committed dedicated BLF branch, independent UTF-8 SHA-256 implementation",
+  "start_sha": "69748673c80f421605f1c63607472903ac2ed68c",
+  "method": "Re-read committed GitHub raw file texts; independently compute SHA-256 over UTF-8 bytes; validate SHA-256 implementation against empty string and abc known vectors; do NOT claim publisher PDF was freshly re-downloaded",
+  "vectors_pass": true,
+  "generated_files_sha256": [
+    {
+      "path": "research/paper2/p399/g2/blf/BLF_BOUNDED_ORIGINAL_AND_FAMILY_DECISION_v1.json",
+      "sha256": "d56a6ae0fe5bb9f7286c8e0c4c1b498e10d849dc98dda6099ea7065dd9151dcd",
+      "bytes": 9596,
+      "git_blob_sha": "5f9d8dba3516b4757a207e8f0eb5d423f9f93858"
+    },
+    {
+      "path": "research/paper2/p399/g2/blf/BLF_ORIGINAL_SOURCE_AND_MATHYS_AUDIT_JA_20261004.md",
+      "sha256": "2747e456beec1efa1afffe0f6f204cd0e38dec1facda2f9170ccd37e1ff5fce8",
+      "bytes": 13140,
+      "git_blob_sha": "acd75a7994fba11d5427396ef82972596fe6066e"
+    },
+    {
+      "path": "research/paper2/p399/g2/blf/blf_evidence_fail_closed.py",
+      "sha256": "33d518057248ddd630631065c43502d334ed3aa5b4a0338de0187ee6aad2de96",
+      "bytes": 6840,
+      "git_blob_sha": "1408692c35ff89f9fef2e66dba72433ee6b9fea9"
+    }
+  ],
+  "publisher_original_raw_receipts_reused_not_current_reacquired": [
+    {
+      "id": "BLF-B1",
+      "previous_run": 37186367137,
+      "source_raw_sha256": "869c8b1a535fcb4a922d677bc0c26ca8959930a7f62208c4bf74701899aa8870",
+      "pages": 19
+    },
+    {
+      "id": "BLF-B2",
+      "previous_run": 37188410375,
+      "source_raw_sha256": "7b6e4192bfe1b60d794d197e14822997b77d22e437db89850fc4cddcb79482db",
+      "pages": 39
+    },
+    {
+      "id": "BLF-01-ARCHIVE_ONLY",
+      "source_raw_sha256": "68369c258b53098c934f6f3c8c2c29d1c16c8236df50e61040fd55b3b6b76c52",
+      "is_publisher_original": false
+    }
+  ],
+  "metadata_only_test": {
+    "environment": "independent JS against GitHub readback real committed record, distinct from committed Python CI script",
+    "real_valid_record_pass": true,
+    "destructive_mutations_tested": 13,
+    "destructive_mutations_rejected": 13,
+    "source_semantic_scientific_validation": false,
+    "all_original_pdf_pixels_verified": false
+  },
+  "expected_future_ci": "Run committed blf_evidence_fail_closed.py on checkout. Tests are metadata safety controls only."
+}

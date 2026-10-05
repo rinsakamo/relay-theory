@@ -1,0 +1,30 @@
+name: P399 G2 live official publisher browser access diagnostic
+on:
+  push:
+    branches:
+      - "paper2/p399-g2-outcome-blind-main40-working-20261004"
+    paths:
+      - "research/paper2/p399/g2/g2_official_chromium_probe_v5.py"
+      - ".github/workflows/p399-g2-official-browser-v5.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  official-only-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --disable-pip-version-check 'playwright==1.55.0' 'pypdf==6.1.1'
+      - run: python -m playwright install --with-deps chromium
+      - run: python research/paper2/p399/g2/g2_official_chromium_probe_v5.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g2-v5-official-browser-metadata-${{ github.run_id }}
+          path: g2-v5-browser/diagnostic.json
+          if-no-files-found: warn
+          retention-days: 14

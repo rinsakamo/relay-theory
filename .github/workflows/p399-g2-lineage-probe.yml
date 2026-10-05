@@ -1,0 +1,29 @@
+name: P399 G2 original-source bibliography ancestry probe (NOT scientific independence)
+on:
+  push:
+    branches:
+      - "paper2/p399-g2-outcome-blind-main40-working-20261004"
+    paths:
+      - "research/paper2/p399/g2/g2_publisher_bibliography_direct_doi_probe.py"
+      - ".github/workflows/p399-g2-lineage-probe.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  g2-lineage-literal-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python research/paper2/p399/g2/g2_publisher_bibliography_direct_doi_probe.py
+      - name: Upload citation-only metadata; original HTML is not stored
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: p399-g2-lineage-${{ github.run_id }}
+          path: g2-lineage/doi_literal_reference_probe.json
+          if-no-files-found: warn
+          retention-days: 14

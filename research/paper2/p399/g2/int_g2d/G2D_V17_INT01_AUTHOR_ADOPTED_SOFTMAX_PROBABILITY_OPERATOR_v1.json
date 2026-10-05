@@ -1,0 +1,104 @@
+{
+  "schema": "relaytheory.p399.g2d.int01_author_adopted_softmax_source_interpretation.v17",
+  "date_jst": "2026-10-05",
+  "authority": {
+    "type": "EXPLICIT_AUTHOR_INSTRUCTION",
+    "directive_ja": "softmaxの方を採用とする",
+    "applicability": "INT-01 ONLY; select research study model's action likelihood computation / model reference operator, not retroactive publisher erratum or automatic science admission",
+    "primary_issue": 399,
+    "independent_g2d_pr": 430
+  },
+  "identities": {
+    "slot": "INT-01",
+    "doi": "10.1016/j.cognition.2024.105967",
+    "pii": "S0010027724002531",
+    "selected_research_primary_media": "User-saved official ScienceDirect complete HTML MHT",
+    "mht_sha256": "32158948f6d1f4ffd7170393c30a5742ce7db1b0a871928f64bd176cf9ab3b64",
+    "embedded_publisher_html_part_sha256": "0c6c2670f715b06e3a9596cf848df9e08bb5b5168d5dd57113730d3d50b8fc52",
+    "raw_publisher_response_sha_proven": false,
+    "raw_publisher_pdf_sha_proven": false
+  },
+  "immutable_author_implementation_reference": {
+    "repo": "https://github.com/jl3676/learning_hierarchy",
+    "path": "modeling.py",
+    "prepublication_commit": "5f0832edb0a9342a9c6100a05a345e3bac063963",
+    "file_git_blob_sha": "97104ec77c324654883cd96518d93e6304edb875",
+    "date_recorded_utc": "2024-09-11T00:57:44Z",
+    "same_git_blob_as_current_author_main_at_audit": true,
+    "function": "abstraction_model_nllh",
+    "main_anchors": {
+      "per_task_set_value_to_action_distribution": "L106: softmax(beta_2 * Q_full, axis=-1)",
+      "task_set_uncertainty_and_lapse": "L107: sum task-set chosen-action probability weighted by PTS_2[:,c_2], then (1-epsilon)+epsilon/4",
+      "compressed_policy_paths": "L123-126: same probability procedure for each compressed Q",
+      "policy_class_mixture": "L128-130: p_policies_softmax weighted sum of two compressed and one full hierarchical choice probabilities",
+      "observed_action_loglikelihood": "L133-136: fallback full choice policy and llh += log(pchoice_2)",
+      "negative_loglikelihood": "L170: return -llh"
+    },
+    "source_code_executable_behavior_is_normative_for_adopted_study_operator": true
+  },
+  "adopted_model_operator": {
+    "status": "AUTHOR_APPROVED_FROZEN_SOURCE_NATIVE_SOFTMAX_MARGINAL_ACTION_LIKELIHOOD",
+    "order": [
+      "Compute trial-specific task-set choice Q values, masking previously attempted actions per author code",
+      "For each task-set, compute softmax(beta_2 * task-set action Q vector) over current action set",
+      "Marginalize the observed action's conditional softmax probability over context-indexed task-set posterior PTS_2[:, c_2]",
+      "Apply exploration-lapse mixture to each full/compressed choice probability: (1-epsilon)*marginal + epsilon/4 in the original four-action implementation",
+      "If meta_learning active, combine two compressed and one hierarchical full policy choice probabilities with p_policies_softmax, otherwise use hierarchical full only",
+      "Accumulate log chosen-action probability for each observed trial and return negative sum"
+    ],
+    "math_literal_for_four_actions": "p_k(a|s,c)=(1-epsilon) * sum_i w_i(c) * softmax(beta_2 * Q_{k,i}(s,all_actions))[a] + epsilon/4; p(a|s,c)=sum_{k in {compress1,compress2,full}} omega_k * p_k(a|s,c) (if meta_learning else full); NLL=-sum_t ln(p_t(a_t|s_t,c_t))",
+    "w_i_context_definition": "PTS_2[i,c_2] normalized posterior over task-sets",
+    "omega_definition": "p_policies_softmax normalized policy-class posterior used when meta_learning is on",
+    "code_authority_over_researcher_derived_formula": "For edge cases, exact historical cited modeling.py file and algorithm branch ordering prevail. Do not improvise a corrected paper equation."
+  },
+  "printed_publisher_record": {
+    "location": "ScienceDirect published Methods §2.3.4 marginal likelihood, §2.3.1 task-set value definition",
+    "original_source_preserved_verbatim_in_original_private_MHT": true,
+    "issue": "Printed likelihood can be read as weight*TS_i raw task-set action value without explicit softmax or epsilon and therefore differs from the adopted code-defined selection probability.",
+    "adjudication": "NOT_SELECTED_AS_EXECUTABLE_RESEARCH_LIKELIHOOD",
+    "retained_as_source_variant": true,
+    "proven_publisher_erratum": false,
+    "publisher_formally_corrected_proven": false,
+    "publisher_author_confirmed_typo": false,
+    "require_publication_correction_before_using_author_selected_code": false,
+    "forbid_assert_exact_literal_printed_formula_implemented": true,
+    "publication_text_semantics_status": "HISTORICALLY_UNRESOLVED_BUT_NO_LONGER_BLOCKS_AUTHOR_CHOSEN_STUDY_OPERATOR"
+  },
+  "changes_from_v16": {
+    "research_study_likelihood_selection": "FROM_CONFLICT_HOLD_TO_AUTHOR_APPROVED_FROZEN_CODE_SOFTMAX",
+    "exact_literal_printed_equation_fidelity": "REMAINS_EXCLUDED",
+    "full_source_science": "REMAINS_HOLD",
+    "cross_model_global_genealogy": "REMAINS_HOLD"
+  },
+  "future_procedure": {
+    "pre_a_requirements": [
+      "Lock the MHT private archive SHA and in-archive official publisher HTML SHA; arrange accessible private read input for future independent original-source reviewers",
+      "Lock author pre-publication Git commit and file blob SHA as a separate interpretation-side evidence object, not as a replacement for publisher primary article",
+      "Explicitly log published printed expression as an adverse source/implementation delta and author's later override in any source fidelity scoring",
+      "Evaluate source-native main+appendix model equations, all figures, variants, negatives, and publisher version/correction history on frozen inputs",
+      "Keep this source-specific choice invariant across blinded A/B/C; any subsequent reinterpretation requires separate prospective authority"
+    ],
+    "media_selection_provisional": "FIRSTPARTY_FULL_HTML_MHT_PRIVATE_CAPTURE",
+    "source_custody_accessible_to_future_reviewers_proven": false,
+    "full_fidelity_or_empirical_refit_executed": false
+  },
+  "independent_status": {
+    "source_native_implementation_operator_adopted": true,
+    "all_original_model_critical_source_semantics_qualified": false,
+    "whole_selected_INT01_formal_full_scientific_admission": false,
+    "all_16_INT_scientific_admission": false,
+    "all_16_global_family_independence": false,
+    "backup_formal_activation_count": 0,
+    "main_authorized": false,
+    "g2d_status": "G2D_PARTIAL_SOFTMAX_OPERATOR_ADOPTED"
+  },
+  "provenance": {
+    "previous_v16": "G2D_V16_INT01_PREPUBLICATION_AUTHOR_CODE_AND_PRINTED_EQUATION_ADVERSARIAL_DECISION.json",
+    "int01_user_source_v14": "G2D_V14_INT01_USER_PUBLISHER_MHT_FULL_HTML_MEDIA_RECEIPT_20261005.json",
+    "historical_source_discrepancy_preserved": true,
+    "g1_g3_g4_published_decisions_unchanged": true,
+    "g2_working_original_40_slot_doi_roster_unchanged": true,
+    "grammar_v0_unchanged": true,
+    "main_h_results_not_inspected": true
+  }
+}

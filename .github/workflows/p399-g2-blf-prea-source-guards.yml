@@ -1,0 +1,55 @@
+name: "P399 G2-B BLF PRE-A evidence guards"
+
+on:
+  push:
+    branches:
+      - "paper2/p399-g2-blf-source-family-qualification-20261004"
+  pull_request:
+    branches:
+      - "paper2/p399-g2-outcome-blind-main40-working-20261004"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  blf-pre-a-source-receipts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout submitted BLF evidence
+        uses: actions/checkout@v4
+      - name: Exact newly authored raw UTF-8 SHA256 readback
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+          root = Path(".")
+          receipt_path = root / "research/paper2/p399/g2/blf/BLF_INDEPENDENT_RAW_SHA256_READBACK_RECEIPT_v1.json"
+          receipt = json.loads(receipt_path.read_bytes())
+          assert receipt["vectors_pass"] is True
+          assert receipt["start_sha"] == "69748673c80f421605f1c63607472903ac2ed68c"
+          for item in receipt["generated_files_sha256"]:
+              path = root / item["path"]
+              source_bytes = path.read_bytes()
+              digest = hashlib.sha256(source_bytes).hexdigest()
+              assert len(source_bytes) == item["bytes"], item["path"] + " bytes"
+              assert digest == item["sha256"], item["path"] + " sha256"
+              print("PASS_SOURCE_RECORD_SHA256", item["path"], digest)
+          print("PASS_3_COMMITTED_SOURCE_RECORD_HASHES")
+          PY
+      - name: Original-candidate false-promotion rejection only
+        run: python research/paper2/p399/g2/blf/blf_evidence_fail_closed.py
+      - name: Preserve bounded qualification marker
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path("research/paper2/p399/g2/blf/BLF_BOUNDED_ORIGINAL_AND_FAMILY_DECISION_v1.json").read_bytes())
+          assert not d["global"]["author_GO"]
+          assert not d["scope"]["MAIN_scientific_execution"]
+          assert d["global"]["backup_activations"] == 0
+          print("METADATA_ONLY_PASS__NO_MAIN_NO_ADOPTION_NO_SCIENTIFIC_CERTIFICATION")
+          PY

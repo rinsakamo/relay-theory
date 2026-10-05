@@ -1,0 +1,146 @@
+{
+  "schema": "relaytheory.p399.g2.eight_missing_first_party_retry_append_only.v3",
+  "date_jst": "2026-10-04",
+  "provenance": {
+    "run_id": 37183403951,
+    "job_id": 111380325127,
+    "git_head": "bad739e658abcf964a221081c36adfc8c37fae85",
+    "github_actions_url": "https://github.com/rinsakamo/relay-theory/actions/runs/37183403951",
+    "metadata_artifact_internal_sha256_from_runner": "bd989fb33e120f44556e0ae4026463ee31cb86f17279a083e16fd8fbaba402f3",
+    "previous_initial_receipt_register": "MAIN40_G2_ACTUAL_SOURCE_RECEIPTS_AND_DECISIONS_v2.json"
+  },
+  "purpose": "Only primary-publisher infrastructure retry and work identity fingerprint, NOT original model semantic/figures/variant/correction admission",
+  "old_working_metadata_immutable": true,
+  "proposed_identites_unchanged": true,
+  "results": [
+    {
+      "id": "ATT-03",
+      "doi": "10.1016/j.neuron.2009.01.002",
+      "tried": [
+        "cell.com/neuron/pdf/S0896-6273(09)00003-8.pdf",
+        "cell.com/neuron/fulltext/S0896-6273(09)00003-8",
+        "sciencedirect.com/science/article/pii/S0896627309000038"
+      ],
+      "failure": "403 all official Elsevier PDF/fulltext",
+      "actual_primary_received": false
+    },
+    {
+      "id": "BLF-01",
+      "doi": "10.1016/j.isci.2025.112844",
+      "tried": [
+        "cell.com/iscience/pdf/S2589-0042(25)01105-8.pdf",
+        "cell.com/iscience/fulltext/S2589-0042(25)01105-8",
+        "sciencedirect.com/science/article/pii/S2589004225011058"
+      ],
+      "failure": "403 all official Elsevier PDF/fulltext",
+      "actual_primary_received": false
+    },
+    {
+      "id": "CNC-01",
+      "doi": "10.1038/s41562-023-01719-1",
+      "tried": [
+        "link.springer.com/content/pdf/10.1038/s41562-023-01719-1.pdf",
+        "nature.com/articles/s41562-023-01719-1.pdf",
+        "nature.com/articles/s41562-023-01719-1"
+      ],
+      "failure": "Official PDF routes return HTML response, article route page does not pass complete-original DOI-and-content check; indexed nature page open-access not yet byte-verified",
+      "actual_primary_received": false,
+      "publisher_indexed_full_original_but_not_downloaded": true
+    },
+    {
+      "id": "LRN-01",
+      "doi": "10.1038/s41467-025-58848-6",
+      "tried": [
+        "link.springer.com/content/pdf/10.1038/s41467-025-58848-6.pdf",
+        "nature.com/articles/s41467-025-58848-6.pdf",
+        "nature.com/articles/s41467-025-58848-6"
+      ],
+      "failure": "Official PDF routes returned non-PDF and fetched HTML not verified original complete; indexed open-access Nature result not source-frozen",
+      "actual_primary_received": false,
+      "publisher_indexed_full_original_but_not_downloaded": true
+    },
+    {
+      "id": "PRD-01",
+      "doi": "10.1038/s41562-024-01930-8",
+      "tried": [
+        "link.springer.com/content/pdf/10.1038/s41562-024-01930-8.pdf",
+        "nature.com/articles/s41562-024-01930-8.pdf",
+        "nature.com/articles/s41562-024-01930-8",
+        "nature.com/articles/s41562-024-01978-6"
+      ],
+      "failure": "PDF routes return non-PDF and correction/original page do not pass complete original check; 2024-08-08 material figure labels must be confirmed in updated published version",
+      "actual_primary_received": false,
+      "publisher_correction_known": "10.1038/s41562-024-01978-6"
+    },
+    {
+      "id": "INT-01",
+      "doi": "10.1016/j.cognition.2024.105967",
+      "tried": [
+        "sciencedirect.com/science/article/pii/S0010027724002531/pdfft",
+        "sciencedirect.com/science/article/pii/S0010027724002531"
+      ],
+      "failure": "403 Elsevier PDF and full HTML; indexed publisher lists Open Access full-length published original but inaccessible to actual acquisition",
+      "actual_primary_received": false
+    },
+    {
+      "id": "INT-02",
+      "doi": "10.3390/e26060484",
+      "tried": [
+        "mdpi-res.com/d_attachment/entropy/entropy-26-00484/article_deploy/entropy-26-00484.pdf",
+        "mdpi.com/1099-4300/26/6/484/htm",
+        "mdpi.com/1099-4300/26/6/484/xml"
+      ],
+      "failure": "Other MDPI HTML/XML original routes not positively verified; first-party MDPI PDF SUCCESS",
+      "actual_primary_received": true,
+      "official_publisher_raw_pdf": {
+        "url": "https://mdpi-res.com/d_attachment/entropy/entropy-26-00484/article_deploy/entropy-26-00484.pdf",
+        "bytes": 2814783,
+        "pages": 14,
+        "sha256": "a1e644c826bf1b356187bc556d5947eb23638f3f9bc6c61835d46850b4f1cc37",
+        "original_doi_exact_found_in_pdf": true,
+        "title_keywords_found_in_pdf": 6
+      },
+      "publisher_date_from_official_page": "2024-05-31",
+      "source_native_candidate_central_mechanism": "POMDP active inference combining dynamic programming EFE planning and counterfactual learning with time/state-dependent bias beta",
+      "original_indexed_sections": [
+        "2.2 POMDP-based generative model Eq3",
+        "2.3.1 DPEFE Eq4",
+        "2.3.2 CL risk and update Eqs5–7",
+        "3.3 mixed model entropy beta Eq8 and product distribution Eq9",
+        "3.4 interpretation Eqs11–17",
+        "Figure5 schematic; Figures7–8 environment adaptation and β dynamics"
+      ],
+      "source_native_variants": [
+        "DPEFE planning-only",
+        "counterfactual learning-only",
+        "mixed planning and experience"
+      ],
+      "negative_scope_note": "Planning-time-vs-data-efficiency tradeoff and model bias bounded beta∈[0,1], no full visual PDF page sweep or equation-label correction closure yet",
+      "visual_scientific_source_admission": false
+    },
+    {
+      "id": "INT-04",
+      "doi": "10.1038/s41562-023-01799-z",
+      "tried": [
+        "link.springer.com/content/pdf/10.1038/s41562-023-01799-z.pdf",
+        "nature.com/articles/s41562-023-01799-z.pdf",
+        "nature.com/articles/s41562-023-01799-z"
+      ],
+      "failure": "Publisher first-party alternative original PDF routes returned HTML and publisher article response did not pass original-completeness check; Nature indexed full OA but not a verified actual acquired original",
+      "actual_primary_received": false,
+      "publisher_indexed_full_original_but_not_downloaded": true
+    }
+  ],
+  "counts": {
+    "previous_distinct_working_originals_accessible": 32,
+    "previous_publisher_pdf_raw_file_receipts": 29,
+    "publisher_new_first_party_pdf_source_acquired": 1,
+    "updated_distinct_originals_with_actual_pdf_or_html_access": 33,
+    "updated_publisher_pdf_raw_file_receipts": 30,
+    "remaining_without_actual_full_original_access": 7,
+    "complete_math_figures_variants_and_edition_source_admitted": 0,
+    "scientifically_central_family_admitted": 0
+  },
+  "outcome_blind": true,
+  "final_hash_issued": false
+}

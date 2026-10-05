@@ -1,0 +1,19 @@
+name: P399 G2 PRD-C bounded provenance anti-promotion
+on:
+  push:
+    branches:
+      - "paper2/p399-g2-prd-c-independent-20261004"
+    paths:
+      - "research/paper2/p399/g2/parallel/prd_c/PRD_C_BOUNDED_VERDICTS_AND_OWNER_ESCALATIONS_v1.json"
+      - "research/paper2/p399/g2/parallel/prd_c/prd_c_safeguard_check.py"
+      - ".github/workflows/p399-g2-prd-c-verdict-integrity.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  prd-c-negative-gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - run: python research/paper2/p399/g2/parallel/prd_c/prd_c_safeguard_check.py

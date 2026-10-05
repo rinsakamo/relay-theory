@@ -1,0 +1,18 @@
+name: P399 G2-D v8 exact INT04 publisher media and 16 destructive science guards
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g2/int_g2d/G2D_V8_*"
+      - "research/paper2/p399/g2/int_g2d/test_v8_nature_raw_original_and_16_false_science_promotions.py"
+      - ".github/workflows/p399-g2d-v8-boundary-gates.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  published-original-versus-science:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Exact published source counters and 16 negative fake-admission mutations
+        run: python3 research/paper2/p399/g2/int_g2d/test_v8_nature_raw_original_and_16_false_science_promotions.py

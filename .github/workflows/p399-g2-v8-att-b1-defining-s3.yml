@@ -1,0 +1,28 @@
+name: P399 G2 exact official ATT-B1 article and defining S3 PRE_A
+on:
+  push:
+    branches:
+      - "paper2/p399-g2-outcome-blind-main40-working-20261004"
+    paths:
+      - "research/paper2/p399/g2/g2_v8_ATT_B1_article_plus_S3_preA.py"
+      - ".github/workflows/p399-g2-v8-att-b1-defining-s3.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-locked-att-b1:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --disable-pip-version-check pypdf==6.1.1
+      - run: python research/paper2/p399/g2/g2_v8_ATT_B1_article_plus_S3_preA.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: G2-V8-ATT-B1-PRE-A-dual-official-source-${{ github.run_id }}
+          path: g2-v8-att/ATT_B1_PROSPECTIVE_PRIMARY_PLUS_DEFINING_S3_PRE_A.json
+          retention-days: 14

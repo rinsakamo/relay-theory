@@ -1,0 +1,29 @@
+name: P399 G2-D INT01 distinct official publisher Chromium source rescue
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g2/int_g2d/int01_distinct_publisher_browser_v2.py"
+      - ".github/workflows/p399-g2d-int01-chromium.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  int01-publisher-original:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install --disable-pip-version-check playwright==1.55.0 pypdf==6.1.1
+      - run: python -m playwright install --with-deps chromium
+      - name: Distinct first-party full-body/actual publisher-PDF access attempts only
+        run: python research/paper2/p399/g2/int_g2d/int01_distinct_publisher_browser_v2.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g2d-int01-distinct-official-browser-${{ github.run_id }}
+          path: g2d-int01-browser/source_paths.json
+          if-no-files-found: warn
+          retention-days: 14

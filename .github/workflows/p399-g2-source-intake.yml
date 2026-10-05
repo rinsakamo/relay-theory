@@ -1,0 +1,31 @@
+name: P399 G2 original-source acquisition PROVENANCE ONLY
+on:
+  push:
+    branches:
+      - "paper2/p399-g2-outcome-blind-main40-working-20261004"
+    paths:
+      - "research/paper2/p399/g2/g2_original_source_provenance_probe.py"
+      - ".github/workflows/p399-g2-source-intake.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  g2-source-intake:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install --disable-pip-version-check pypdf==6.1.1
+      - name: Physically probe publisher originals without retaining originals
+        run: python research/paper2/p399/g2/g2_original_source_provenance_probe.py
+      - name: Upload ONLY receipt JSON
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: p399-g2-provenance-${{ github.run_id }}
+          path: g2-receipts/publisher-original-provenance.json
+          if-no-files-found: warn
+          retention-days: 14

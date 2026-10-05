@@ -1,0 +1,21 @@
+name: P399 G2 three user-supplied primary source freeze anti-promotion guard
+on:
+  push:
+    branches:
+      - 'paper2/p399-g2-three-original-freeze-science-*'
+      - 'paper2/p399-g2-outcome-blind-main40-working-*'
+  pull_request:
+    paths:
+      - 'research/paper2/p399/g2/three_primary_review_20261005/**'
+      - '.github/workflows/p399-g2-three-original-frozen-source-guard.yml'
+jobs:
+  immutable-source-status-guards:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Metadata and ancestor-exact immutable source verdict guards
+        run: python3 research/paper2/p399/g2/three_primary_review_20261005/three_primary_science_receipt_guard.py
+      - name: Provenance limitation
+        run: echo 'PASS here proves immutable Git/source hash declarations and anti-promotion ONLY. Actual uploaded PDFs were reviewed locally with physical hashes; not stored in Git or downloaded by this workflow. No mathematical, full-supplement, final-family or MAIN approval.'

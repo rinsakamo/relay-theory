@@ -1,0 +1,19 @@
+name: P399 G2 four-lane independent provenance and false-promotion audit
+on:
+  push:
+    branches: [paper2/p399-g2-four-lane-preserving-integration-20261005]
+  pull_request:
+    branches: [paper2/p399-g2-outcome-blind-main40-working-20261004]
+  workflow_dispatch:
+jobs:
+  independent-integrity:
+    name: Exact four-source Git history, 40 DOI, family denominators and destructive anti-promotion
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Execute independent provenance and ledger adversarial audit
+        run: python3 research/paper2/p399/g2/integration_20261005/g2_four_lane_integrity_audit.py

@@ -1,0 +1,28 @@
+name: P399 G2 PRD original prepublication Study2 Study4 native task-frequencies proof
+on:
+  push:
+    branches:
+      - 'paper2/p399-g2-three-supplements-science-*'
+      - 'paper2/p399-g2-outcome-blind-main40-working-*'
+  pull_request:
+    paths:
+      - 'research/paper2/p399/g2/supplement_20261005/**'
+      - '.github/workflows/p399-g2-prd-prepub-task-design-original-source-proof.yml'
+jobs:
+  local-freeze-no-false-promotion:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify code metadata against immutable earlier observed source contradiction
+        run: python3 research/paper2/p399/g2/supplement_20261005/test_prd_prepublication_task_numeric_delta.py
+  independent-original-git-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Re-fetch exact original May-2024 author code+data and count independent trial frequencies
+        run: python3 research/paper2/p399/g2/supplement_20261005/test_prd_prepublication_task_numeric_delta.py --remote

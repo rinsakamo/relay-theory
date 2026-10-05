@@ -1,0 +1,34 @@
+name: P399 G2-D v13 INT02 all 14-page exact official source visual scientific audit batches
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g2/int_g2d/v13_int02_original_page_visual_batch.py"
+      - ".github/workflows/p399-g2d-v13-int02-pages.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-official-int02-source-pages:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    strategy:
+      fail-fast: false
+      matrix:
+        batch: [0, 1, 2, 3, 4]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install --disable-pip-version-check pypdf==6.1.1 PyMuPDF==1.26.4
+      - name: Firstparty exact SHA plus audit subset rendered from published pages
+        env:
+          BATCH: ${{ matrix.batch }}
+        run: python research/paper2/p399/g2/int_g2d/v13_int02_original_page_visual_batch.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g2d-v13-int02-source-batch-${{ matrix.batch }}-${{ github.run_id }}
+          path: g2d-v13-int02-source-index/*.json
+          if-no-files-found: warn
+          retention-days: 14

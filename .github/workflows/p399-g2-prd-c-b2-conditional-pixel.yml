@@ -1,0 +1,29 @@
+name: P399 G2 PRD-C second standby CONDITIONAL original pixel
+on:
+  push:
+    branches:
+      - "paper2/p399-g2-prd-c-independent-20261004"
+    paths:
+      - "research/paper2/p399/g2/parallel/prd_b2_conditional/**"
+      - ".github/workflows/p399-g2-prd-c-b2-conditional-pixel.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  prd-c-b2-conditional:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --disable-pip-version-check PyMuPDF==1.26.5 pillow==11.3.0
+      - name: Conditional official B2 PDF byte and page-0 visual identity only
+        run: python research/paper2/p399/g2/parallel/prd_b2_conditional/b2_conditional_pixel_probe.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: G2-PRD-C-B2-conditional-${{ github.run_id }}
+          path: prd-c-b2-evidence/
+          retention-days: 14

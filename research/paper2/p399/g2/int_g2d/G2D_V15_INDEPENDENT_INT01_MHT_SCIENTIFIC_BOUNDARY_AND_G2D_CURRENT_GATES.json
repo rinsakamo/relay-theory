@@ -1,0 +1,269 @@
+{
+  "schema": "relaytheory.p399.g2d.int01_independent_source_native_boundary_and_global_gates.v15",
+  "date_jst": "2026-10-05",
+  "branch": "paper2/p399-g2-d-int-family-20261004",
+  "governance": {
+    "issue": 399,
+    "g2d_pr": 430,
+    "int13_author_study_edition_pr": 434,
+    "g1_pr": 418,
+    "main_analysis_performed": false,
+    "grammar_v0_modified": false,
+    "g2_main40_roster_modified": false,
+    "old_g2_v1_v14_preserved": true
+  },
+  "selected_INT01": {
+    "doi": "10.1016/j.cognition.2024.105967",
+    "pii": "S0010027724002531",
+    "source_class": "USER_SAVED_OFFICIAL_PUBLISHER_COMPLETE_HTML_MHT_REPLAYABLE_BY_EXACT_UPLOAD_HASH",
+    "raw_user_archive": {
+      "bytes": 5754741,
+      "sha256": "32158948f6d1f4ffd7170393c30a5742ce7db1b0a871928f64bd176cf9ab3b64",
+      "original_publisher_http_response_equivalent_proven": false,
+      "source_private_user_attachment_not_committed": true
+    },
+    "main_html_part": {
+      "bytes": 1250747,
+      "sha256": "0c6c2670f715b06e3a9596cf848df9e08bb5b5168d5dd57113730d3d50b8fc52",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0010027724002531"
+    },
+    "scoped_section_and_assets": {
+      "main_sections": [
+        "Introduction",
+        "Methods",
+        "Results",
+        "Discussion",
+        "Conclusions"
+      ],
+      "same_page_appendices": [
+        "Appendix A Supplementary Methods",
+        "Appendix B Supplementary Figures"
+      ],
+      "main_figure_ids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "appendix_figure_ids": [
+        "B.1",
+        "B.2",
+        "B.3",
+        "B.4",
+        "B.5",
+        "B.6",
+        "B.7",
+        "B.8"
+      ],
+      "algorithm_ids": [
+        1,
+        2
+      ],
+      "main_tables_count": 2,
+      "article_figure_jpegs": 15,
+      "inline_symbol_jpegs": 26,
+      "all_47_article_img_src_present_in_mime": true,
+      "all_41_jpegs_decode": true,
+      "all_15_figures_contact_sheet_visually_screened": true,
+      "all_individual_panels_original_high_resolution_exhaustive_verified": false,
+      "algorithm_1_2_independently_visually_inspected_in_author_hosted_publisher_layout_pdf": true,
+      "publisher_pdf_raw_acquired": false
+    },
+    "model_sources": [
+      {
+        "id": "INT01_MOD_01",
+        "locator": "publisher HTML §2.3.1, Algorithm1; author-hosted publisher layout PDF p4",
+        "claim": "hierarchical task-set repertoire with Chinese restaurant process prior, contextual pairing, softmax+noise response, task-set learning",
+        "ancestry": "explicit Xia & Collins 2021 extension; represent task-sets in place of options; prior operator mechanisms not de novo"
+      },
+      {
+        "id": "INT01_MOD_02",
+        "locator": "publisher HTML §2.3.2, Algorithm2",
+        "claim": "Bayesian meta-learning over two compressed and one hierarchical policy; off-policy compressed choices are weighted at decision time",
+        "limitations": "Do not claim each component is new; beta_meta fixed at 5; inferential purpose limited to observed task"
+      },
+      {
+        "id": "INT01_MOD_03",
+        "locator": "publisher HTML §2.3.3, Fig5, Fig6",
+        "claim": "forward/backward equal-complexity models differ by contextual indexing and consequent chunk recomposition; V3 and mixed V1/V2 conditions discriminate",
+        "limitations": "do not claim backward always dominates"
+      },
+      {
+        "id": "INT01_MOD_04",
+        "locator": "publisher HTML §2.3.4–2.3.5, current author public modeling.py",
+        "claim": "participant-level fitted choice likelihood with marginalized task-set uncertainty; model comparison AIC when complexity differs",
+        "limitations": "printed displayed likelihood expression uses TS_i(s,a) whereas author code uses softmax action probability mixture, then log; verify meaning without rewriting publisher expression"
+      }
+    ],
+    "material_negative_cases": [
+      {
+        "id": "INT01_NEG_01",
+        "source": "publisher HTML Fig7 B/C and Appendix Fig B.2",
+        "detail": "repeat V1-V1 and V2-V2 forward/backward choices show non-significant comparison; some mid-performer V3-V1 and cross conditions also nonsignificant"
+      },
+      {
+        "id": "INT01_NEG_02",
+        "source": "publisher HTML Fig B.6B",
+        "detail": "parameter recovery stronger for some (beta) and weaker for eta; no universal parameter identifiability"
+      },
+      {
+        "id": "INT01_NEG_03",
+        "source": "publisher HTML Fig B.8",
+        "detail": "fixed policy priors without Bayesian updates form adverse ablation and underperform; separates mere mixture from updating"
+      },
+      {
+        "id": "INT01_NEG_04",
+        "source": "publisher HTML §2.3.1 and §2.3.3",
+        "detail": "Xia & Collins 2021 explicit antecedent; stage-1 policies deliberately skipped from this model"
+      },
+      {
+        "id": "INT01_NEG_05",
+        "source": "publisher HTML §3.2.1 and Fig B.7",
+        "detail": "fixed fully compressed policies alone and fixed no-Bayes mixture not sufficient for learning/error profile"
+      },
+      {
+        "id": "INT01_NEG_06",
+        "source": "publisher HTML §4 discussion",
+        "detail": "Berkeley online participant sample introduces sampling/generalization limitations; do not claim universal human mechanism"
+      },
+      {
+        "id": "INT01_NEG_07",
+        "source": "publisher HTML §2.3.4; author publisher-layout p6 and published author code lines~106-136",
+        "detail": "printed illustrative marginal likelihood TS-value vs source code normalized action-probability difference unresolved for exact formula fidelity"
+      },
+      {
+        "id": "INT01_NEG_08",
+        "source": "publisher HTML §2.3.3–3.2.2",
+        "detail": "author conclusions refer to context-specific task transfer, not free-form arbitrary human policy or causal neural validation"
+      }
+    ],
+    "cross_family": [
+      {
+        "other": "INT-12",
+        "other_doi": "10.1371/journal.pcbi.1006116",
+        "native_int01": "CRP task-set chunks plus Bayesian policy-class meta-learning and backward contextual indexing",
+        "native_int12": "independent/joint reward-transition-function CRP clustering and strategy arbitation",
+        "bounded": "DISTINCT_NATIVE_MECHANISMS_VISIBLE_BUT_SHARED_HIERARCHICAL_BAYESIAN_CLUSTERING_ANCESTRY_GLOBAL_NOT_CERTIFIED"
+      },
+      {
+        "other": "Xia & Collins 2021",
+        "other_doi": "10.1037/rev0000295",
+        "bounded": "DIRECT_REPRESENTATIONAL_HIERARCHICAL_ANCESTOR_TO_INT01_ALGORITHM1"
+      },
+      {
+        "other": "INT-14",
+        "bounded": "GLOBAL_COMPARE_NOT_EXECUTED"
+      }
+    ],
+    "printed_likelihood_source_conflict": {
+      "firstparty_official_html_locator": "§2.3.4 illustrative trial likelihood printed sum_i Pr(TS_i|c_t;t)*TS_i(s_t,a_t;t)",
+      "author_host_publisher_layout_pdf": "https://jl3676.github.io/assets/pdf/learning_hierarchy.pdf#page=6",
+      "author_public_code": "https://github.com/jl3676/learning_hierarchy/blob/main/modeling.py",
+      "author_code_blob_sha": "97104ec77c324654883cd96518d93e6304edb875",
+      "code_implementation_locator": "abstraction_model_nllh lines ~106-136; softmax(beta*Q_full) per task-set, mixture by PTS, then log pchoice",
+      "adjudication": "MATERIAL_SOURCE_MATH_NOTATION_VS_CODE_DIFFERENCE; no unapproved erratum or printed equation silent correction; excludes exact printed quantitative identity claim until source reconciliation",
+      "exact_quantitative_numeric_replay_performed": false
+    },
+    "source_scope_gate": "TECHNICALLY_READABLE_USER_SUPPLIED_FIRSTPARTY_FULL_HTML_MHT_HASH_REPLAYABLE",
+    "study_reference_edition_freeze": "PROVISIONAL_HTML_CAPTURE_HASH; publisher Crossmark/correction exhaustive check missing",
+    "structural_scientific_disposition": "BOUNDED_SOURCE_NATIVE_OPERATORS_AND_ADVERSE_CASES_DOCUMENTED_WITH_EQUATION_CONFLICT_HOLD",
+    "full_source_science_qualified": false,
+    "global_model_family_independence": false
+  },
+  "selected_INT13": {
+    "doi": "10.1371/journal.pcbi.1014796",
+    "study_edition_status": "AUTHOR_APPROVED_FROZEN_PUBLISHER_UNCORRECTED_PROOF",
+    "authority_pr": 434,
+    "publisher_pdf_sha256": "5f313f8690f377faaea6b9a3610013c71b880af86634c97dbd4a5344bede9258",
+    "publisher_final_corrected_vor_verified": false,
+    "author_edition_exception_applies_only_to_proof_as_study_reference": true,
+    "remaining_source_math_fig_adverse_family_science_qualified": false
+  },
+  "selected_INT03": {
+    "doi": "10.1073/pnas.95.24.14529",
+    "official_complete_html_browser_media_selected": true,
+    "official_fig1_to3_web_opened": true,
+    "raw_publisher_original_pdf_acquired": false,
+    "full_source_semantics_and_edit_history_qualified": false
+  },
+  "selected_INT04": {
+    "doi": "10.1038/s41562-023-01799-z",
+    "published_main_scientific_supplement_reporting_summary_raw_sha_reacquired": true,
+    "all_main_figures_and_suppfigs_visually_bounded_reviewed": true,
+    "global_family_independent": false
+  },
+  "selected_INT06": {
+    "doi": "10.1371/journal.pcbi.1000765",
+    "official_main_plus_eight_supplement_media_acquired": true,
+    "source_native_negative_ablation_registered": true,
+    "central_family_with_INT03_final": false
+  },
+  "remaining_other_selected_orig_source_semantics_gate": [
+    "INT-02",
+    "INT-05",
+    "INT-07",
+    "INT-08",
+    "INT-09",
+    "INT-10",
+    "INT-11",
+    "INT-12",
+    "INT-14",
+    "INT-15",
+    "INT-16"
+  ],
+  "backups": [
+    {
+      "id": "INT-B1",
+      "status": "BLOCKED_WHILE_INT12_SELECTED_DIRECT_DESCENDANT",
+      "activated": false
+    },
+    {
+      "id": "INT-B2",
+      "status": "RESERVED_G1_P12_AND_SHARED_CTL_B2",
+      "activated": false
+    },
+    {
+      "id": "INT-B3",
+      "status": "HOLD_SHARED_CTL_B1_AND_EXISTING_SPECTRAL_DCM_NEW_NATIVE_MECHANISM_NOT_PROVEN",
+      "activated": false
+    },
+    {
+      "id": "INT-B4",
+      "status": "HOLD_RLWM_ANCESTRY_SPLIT_GATE_BOUNDARY_AT_NS_EQUALS_K_UNDEFINED",
+      "activated": false
+    }
+  ],
+  "global": {
+    "g1_current_individual_evidence_records": "20/20",
+    "g1_global_cohort_scientific_acceptance": false,
+    "g1_all_original_primary_papers_plos": true,
+    "g1_publication_diversity_block": true,
+    "g1_p10_sht_full_optional_variant_gap": true,
+    "g1_family_unresolved": true,
+    "g2d_all_16_new_full_scientific_admission": false,
+    "independent_all_16_global_family_qualification": false,
+    "formal_backup_activations": 0,
+    "shared_original_main40_science_manifest_unchanged": true,
+    "global_g2_working_original_pdf_count_not_changed_here": true,
+    "g3_g4_author_gate_pending": true,
+    "main_authorized": false,
+    "status": "G2D_BOUNDED_PROGRESS_GLOBAL_HOLD"
+  },
+  "local_executable_verification": {
+    "same_archive_12_of_12_pass": true,
+    "single_byte_tamper_rejected_exit_code": 2,
+    "not_scientific_semantic_test": true,
+    "source_archive_committed": false
+  },
+  "next_priority": [
+    "Preserve private original MHT bytes accessible to later A and B; confirm official correction/edition source",
+    "Reconcile printed INT01 2.3.4 likelihood expression vs cited author-code without researcher silent edit",
+    "Independently complete full source math/figures/variants/negative science for selected INT02/05/07/08/09/10/11/12/14/15/16 and INT03/13/06 remaining",
+    "Adjudicate 16 INT central-family internal plus complete G120 and G2 component cross-family",
+    "Bring INT13 narrow author edition authority PR434 into G2-D integrator handoff",
+    "Perform fresh independent G4 and G3 approved final joint protocol and secure separate author MAIN GO"
+  ]
+}

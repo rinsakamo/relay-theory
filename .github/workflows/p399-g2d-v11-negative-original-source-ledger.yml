@@ -1,0 +1,18 @@
+name: P399 G2-D v11 PNAS actual failed raw-source and ten anti-promotion guards
+on:
+  pull_request:
+    paths:
+      - "research/paper2/p399/g2/int_g2d/G2D_V11_*"
+      - "research/paper2/p399/g2/int_g2d/test_v11_pnas_actual_failures_no_false_promotion.py"
+      - ".github/workflows/p399-g2d-v11-negative-original-source-ledger.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  pnas-official-negative-original-provenance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Actual source 403 truth guards with ten mutation rejects
+        run: python3 research/paper2/p399/g2/int_g2d/test_v11_pnas_actual_failures_no_false_promotion.py
