@@ -1,0 +1,96 @@
+{
+  "schema": "relaytheory.p399.main.m2.pass_b_result_informed_reaudit_v1",
+  "slot": "LRN-02",
+  "doi": "10.1371/journal.pcbi.1007963",
+  "stage_a_input": {
+    "path": "research/paper2/p399/main/parallel/M2_ctl_lrn/LRN-02/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json",
+    "freeze_head": "935c5c9b12949758148a32f16ce52cddb64661e3",
+    "complete_a_received": true
+  },
+  "source_reopened": "publisher Version of Record full HTML",
+  "result_informed": true,
+  "objections": [
+    {
+      "id": "B01",
+      "test": "environmental state vs learned state",
+      "challenge": "True hidden contingency/switching process could be represented as the learner's internal state.",
+      "finding": "Source distinguishes external latent generative state from posterior mean/variance and inferred volatility maintained by the learner."
+    },
+    {
+      "id": "B02",
+      "test": "policy execution vs policy acquisition",
+      "challenge": "Softmax response rule could be mistaken for the learning operator.",
+      "finding": "Source feeds VKF predictions/action values into a separate softmax choice mapping; softmax beta is response noise."
+    },
+    {
+      "id": "B03",
+      "test": "control update vs learning update",
+      "challenge": "Volatility-dependent learning rate could be redescribed as a separate controller.",
+      "finding": "It arises within source VKF inference/update; no separate control module is specified."
+    },
+    {
+      "id": "B04",
+      "test": "learning-rate conflation",
+      "challenge": "Latent-space learning rate and implied observation-space learning rate could be collapsed.",
+      "finding": "Source explicitly shows they differ; observation-space implied rate can change even when volatility is fixed."
+    },
+    {
+      "id": "B05",
+      "test": "inference-only parameter mistaken for world state",
+      "challenge": "Binary noise parameter omega could be treated as a generative environmental variable.",
+      "finding": "Source states omega is relevant only to the inference model, not the generative process."
+    },
+    {
+      "id": "B06",
+      "test": "externally imposed switching schedule mistaken for model dynamics",
+      "challenge": "Simulation change-points could be read as endogenous VKF state transitions.",
+      "finding": "Source notes some switching dynamics do not match its Gaussian-random-walk assumptions; schedule remains external."
+    },
+    {
+      "id": "B07",
+      "test": "inherited machinery mistaken for new contribution",
+      "challenge": "Kalman/HGF/Bayesian machinery could be counted as de novo architecture.",
+      "finding": "Source positions VKF relative to Kalman, Behrens/HGF and approximate Bayesian inference; inherited basis is retained."
+    },
+    {
+      "id": "B08",
+      "test": "missing negative/identifiability evidence",
+      "challenge": "Parameter recovery might be summarized as uniformly strong.",
+      "finding": "Source reports volatility update rate and initial volatility are more prone to recovery error."
+    }
+  ],
+  "source_ordered_omission_sweep": [
+    {
+      "order": 1,
+      "locus": "generative/inference model",
+      "result": "external latent state and learner posterior state separated."
+    },
+    {
+      "order": 2,
+      "locus": "volatility update",
+      "result": "error-correction and fixed-volatility special case retained."
+    },
+    {
+      "order": 3,
+      "locus": "binary approximation",
+      "result": "moment matching and inference-only omega retained."
+    },
+    {
+      "order": 4,
+      "locus": "learning-rate analysis",
+      "result": "latent versus observation-space distinction retained."
+    },
+    {
+      "order": 5,
+      "locus": "choice/model fitting",
+      "result": "softmax readout and parameter-recovery limits retained."
+    },
+    {
+      "order": 6,
+      "locus": "Discussion",
+      "result": "generative mismatch and mechanistic/approximation limits retained."
+    }
+  ],
+  "negative_evidence_retained": true,
+  "stage_b_complete": true
+}
