@@ -1,0 +1,380 @@
+{
+  "schema": "relaytheory.p399.g4.w5.source_native_profile_fragments.v1",
+  "authority": {
+    "issue": 399,
+    "parent_pr": 438,
+    "parent_head": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a",
+    "source_freeze_path": "research/paper2/p399/g4/genealogy_w5_int_09_10_11_12/W5_SOURCE_EVIDENCE_FREEZE_v1.json",
+    "source_freeze_git_blob_sha1": "4e453eb63c662f167735ed929aa14d3cff88ddf6",
+    "source_freeze_ref": "4abf6c229ff893fb51b56b7127a8d26f184d787d"
+  },
+  "profile_count": 4,
+  "profiles": [
+    {
+      "id": "INT-09",
+      "doi": "10.1371/journal.pcbi.1005190",
+      "completion_status": "PROFILE_FRAGMENT_READY",
+      "adopted_edition": "2016 PLOS article plus 2017 publisher Fig9-legend correction",
+      "edition_sha256": "78e5d19dcfcae200349e719fd1c80f8f9cb00b58e71a0699fb71cdb2522a26e2",
+      "profile_state": "W5_SOURCE_NATIVE_BOUNDED_PROFILE_FRAGMENT",
+      "source_scope": "Central main-article state/control/estimation equations and official Fig9 correction; S1 mathematical support is listed but its bytes were not independently frozen in W5.",
+      "native_core_operators": [
+        "INT-09:state-dependent-observation-estimator",
+        "INT-09:affine-feedback-feedforward-controller",
+        "INT-09:alternating-control-estimation-optimization"
+      ],
+      "operator_source_descriptions": {
+        "INT-09:state-dependent-observation-estimator": "Kalman-style state estimator whose sensory observation reliability depends on movement state/visibility, so observation noise is state dependent.",
+        "INT-09:affine-feedback-feedforward-controller": "Optimal controller has an affine control law; feedback acts on estimated state while a nonzero feedforward term appears when sensory reliability depends affinely on state.",
+        "INT-09:alternating-control-estimation-optimization": "Control sequence and estimator gain are alternately updated to convergence because signal- and state-dependent noise breaks the classical separation of controller and estimator."
+      },
+      "central_computational_state": "Physical hand/arm state plus its estimated state under signal-dependent motor noise and state-dependent sensory noise.",
+      "transition_update_rule": "Linear stochastic plant update together with Kalman-style state-estimate update; control and estimator gains are iteratively co-optimized.",
+      "control_decision_operator": "Affine optimal motor command combining state-feedback and feedforward terms.",
+      "inference_planning_operator": "Optimal stochastic control/estimation iteration minimizes expected movement cost while exploiting actions that improve future sensory information.",
+      "learned_task_fitted_outcome_distinctions": {
+        "learned_variables": "No experience-trained latent task policy is central; time-indexed controller/estimator quantities are solved from the specified model.",
+        "task_world_variables": "arm/hand state, control signal, velocity/direction, cursor-visibility rule, motor and sensory noise",
+        "fitted_latent_variables": "noise/cost/participant parameterization; not a hidden task-set state",
+        "experimental_outcomes": "human/model reach trajectories and direction-dependent kinematic statistics"
+      },
+      "model_variants": [
+        {
+          "name": "state-dependent active-sensing controller",
+          "role": "CENTRAL_TESTED_MODEL",
+          "canonical": true,
+          "verification": "VERIFIED_IN_MAIN_SOURCE"
+        },
+        {
+          "name": "state-independent sensory-feedback limiting/comparator model",
+          "role": "COMPARATOR",
+          "canonical": false,
+          "verification": "VERIFIED_IN_MAIN_SOURCE"
+        }
+      ],
+      "direct_model_ancestors": [
+        "10.1162/0899766053491887"
+      ],
+      "ancestry_exhaustiveness": "NOT_ATTESTED",
+      "original_source_evidence": [
+        {
+          "repository_path": "research/paper2/p399/g4/genealogy_w5_int_09_10_11_12/W5_SOURCE_EVIDENCE_FREEZE_v1.json",
+          "repository_git_blob_sha1": "4e453eb63c662f167735ed929aa14d3cff88ddf6",
+          "source_repository_ref": "4abf6c229ff893fb51b56b7127a8d26f184d787d",
+          "original_primary_sha256": "78e5d19dcfcae200349e719fd1c80f8f9cb00b58e71a0699fb71cdb2522a26e2",
+          "source_loci": [
+            "source_records[INT-09].publisher_source_loci",
+            "source_records[INT-09].central_source_native_mechanism",
+            "source_records[INT-09].direct_ancestor_evidence"
+          ],
+          "medium_access_class": "PINNED_G2_FIRSTPARTY_RAW_RECEIPT_PLUS_W5_PUBLIC_PUBLISHER_SOURCE_READING",
+          "source_audit_kind": "W5_INDEPENDENT_SOURCE_NATIVE_PROFILE_FRAGMENT_READING"
+        }
+      ],
+      "correction_supplement_bundle": [
+        {
+          "role": "PUBLISHER_CORRECTION_REQUIRED_FOR_CURRENT_FIG9_READING",
+          "doi": "10.1371/journal.pcbi.1005370",
+          "raw_sha256": null,
+          "canonical_model_change": false,
+          "provenance_preserved": true
+        },
+        {
+          "role": "MATHEMATICAL_SUPPORTING_TEXT_NOT_BYTE_FROZEN_IN_W5",
+          "doi": "10.1371/journal.pcbi.1005190.s001",
+          "raw_sha256": null,
+          "canonical_model_change": false,
+          "provenance_preserved": true
+        }
+      ],
+      "adverse_source_limits": [
+        "Original live Fig9 caption remains historically distinct from the publisher correction; W5 never overwrites the original record.",
+        "The correction repairs only the Fig9 legend panel relation and is not evidence for a different central model.",
+        "S1 Text bytes were not independently frozen; no claim of exhaustive model mathematics is made."
+      ],
+      "global_family_independence_certified": false
+    },
+    {
+      "id": "INT-10",
+      "doi": "10.1371/journal.pcbi.1011024",
+      "completion_status": "PROFILE_FRAGMENT_READY",
+      "adopted_edition": "2023 current PLOS article; Funding-only correction recorded separately",
+      "edition_sha256": "c4d62ae1256259a3aeefc6378c677a911970fc4b15954ae9987fb42cdbfbaa1c",
+      "profile_state": "W5_SOURCE_NATIVE_BOUNDED_PROFILE_FRAGMENT",
+      "source_scope": "Central BG motor-selection/novelty-learning and cerebellar reservoir/CPG mechanisms from the publisher article; earlier proof and Funding correction remain separate editions.",
+      "native_core_operators": [
+        "INT-10:bg-novelty-hebbian-goal-action-map",
+        "INT-10:cerebellar-reservoir-error-correction",
+        "INT-10:bg-cerebellum-serial-motor-learning"
+      ],
+      "operator_source_descriptions": {
+        "INT-10:bg-novelty-hebbian-goal-action-map": "Motor basal ganglia select concrete actions and learn goal-to-action associations with dopamine-modulated three-factor Hebbian plasticity driven by movement novelty.",
+        "INT-10:cerebellar-reservoir-error-correction": "A recurrent reservoir learns endpoint-error-dependent corrections to CPG motor-program parameters, refining actions selected by the basal-ganglia system.",
+        "INT-10:bg-cerebellum-serial-motor-learning": "The central full model composes strategic/concrete BG action selection with cerebellar correction of motor execution rather than treating either subsystem alone as the complete learner."
+      },
+      "central_computational_state": "Motor goal, selected concrete action/CPG parameters, BG activity/association state, cerebellar reservoir state and reached endpoint/error.",
+      "transition_update_rule": "Novelty-modulated three-factor BG synaptic update plus perturbation/error-driven cerebellar reservoir output update across reaches.",
+      "control_decision_operator": "BG direct-pathway disinhibition selects a concrete action; cerebellar output modifies CPG parameters to reduce endpoint error.",
+      "inference_planning_operator": "Hierarchical upstream planning is inherited conceptually, but this paper's tested model focuses on motor-loop goal-to-action selection and execution correction.",
+      "learned_task_fitted_outcome_distinctions": {
+        "learned_variables": "BG goal/action association weights and cerebellar reservoir output corrections/projection weights",
+        "task_world_variables": "motor goals, joint/hand state, CPG parameters, target endpoint, perturbations and sensed reach outcome",
+        "fitted_latent_variables": "simulation learning rates/noise/reservoir and perturbation hyperparameters; not a behavioral hidden context",
+        "experimental_outcomes": "endpoint error, adaptation/generalization, after-effects and performance curves"
+      },
+      "model_variants": [
+        {
+          "name": "combined BG plus cerebellar CPG model",
+          "role": "CENTRAL_TESTED_MODEL",
+          "canonical": true,
+          "verification": "VERIFIED_IN_MAIN_SOURCE"
+        },
+        {
+          "name": "cerebellar/reservoir-only reaching",
+          "role": "ABLATION_OR_COMPARATOR",
+          "canonical": false,
+          "verification": "VERIFIED_IN_MAIN_SOURCE"
+        },
+        {
+          "name": "reservoir directly driving joint-angle changes without CPG",
+          "role": "CONTROL_VARIANT",
+          "canonical": false,
+          "verification": "VERIFIED_IN_MAIN_SOURCE"
+        }
+      ],
+      "direct_model_ancestors": [
+        "10.1111/ejn.14730",
+        "10.1523/JNEUROSCI.0874-18.2018",
+        "10.1111/ejn.12434"
+      ],
+      "ancestry_exhaustiveness": "NOT_ATTESTED",
+      "original_source_evidence": [
+        {
+          "repository_path": "research/paper2/p399/g4/genealogy_w5_int_09_10_11_12/W5_SOURCE_EVIDENCE_FREEZE_v1.json",
+          "repository_git_blob_sha1": "4e453eb63c662f167735ed929aa14d3cff88ddf6",
+          "source_repository_ref": "4abf6c229ff893fb51b56b7127a8d26f184d787d",
+          "original_primary_sha256": "c4d62ae1256259a3aeefc6378c677a911970fc4b15954ae9987fb42cdbfbaa1c",
+          "source_loci": [
+            "source_records[INT-10].publisher_source_loci",
+            "source_records[INT-10].central_source_native_mechanism",
+            "source_records[INT-10].direct_ancestor_evidence"
+          ],
+          "medium_access_class": "PINNED_G2_FIRSTPARTY_RAW_RECEIPT_PLUS_W5_PUBLIC_PUBLISHER_SOURCE_READING",
+          "source_audit_kind": "W5_INDEPENDENT_SOURCE_NATIVE_PROFILE_FRAGMENT_READING"
+        }
+      ],
+      "correction_supplement_bundle": [
+        {
+          "role": "PUBLISHER_CORRECTION_FUNDING_ONLY",
+          "doi": "10.1371/journal.pcbi.1011243",
+          "raw_sha256": null,
+          "canonical_model_change": false,
+          "provenance_preserved": true
+        },
+        {
+          "role": "EARLIER_UNCORRECTED_PROOF",
+          "doi": null,
+          "raw_sha256": null,
+          "canonical_model_change": false,
+          "provenance_preserved": true
+        }
+      ],
+      "adverse_source_limits": [
+        "The June 2023 correction is Funding-only and cannot be promoted into a scientific model revision.",
+        "The prior BG papers are direct ancestors of the BG constituent; this does not make the full BG+cerebellum model identical to those ancestors.",
+        "W5 does not silently equate the earlier proof with the current publisher article."
+      ],
+      "global_family_independence_certified": false
+    },
+    {
+      "id": "INT-11",
+      "doi": "10.1371/journal.pcbi.1014093",
+      "completion_status": "PROFILE_FRAGMENT_READY",
+      "adopted_edition": "2026 PLOS Version of Record/current publisher article",
+      "edition_sha256": "49fada41a4536f5ec231c591ab00da88cd4885e026dc0e8bb2773cabdeaa2953",
+      "profile_state": "W5_SOURCE_NATIVE_BOUNDED_PROFILE_FRAGMENT",
+      "source_scope": "Publisher main article central FI, OI and joint inference mechanisms and explicit inherited model references; no exhaustive correction registry claim.",
+      "native_core_operators": [
+        "INT-11:feature-successor-context-inference",
+        "INT-11:outcome-map-context-inference",
+        "INT-11:joint-feature-outcome-context-integration"
+      ],
+      "operator_source_descriptions": {
+        "INT-11:feature-successor-context-inference": "Feature inference maintains context-specific successor-feature maps and a Bayesian belief over latent contexts using prediction mismatch and a sticky-CRP prior.",
+        "INT-11:outcome-map-context-inference": "Outcome inference reuses an existing transfer-learning model with context-specific outcome/reward predictive maps to infer latent context from behavioral outcomes.",
+        "INT-11:joint-feature-outcome-context-integration": "The tested joint strategy combines feature-based and outcome-based contextual evidence, then uses context-conditioned learned action/value representations for choice."
+      },
+      "central_computational_state": "Latent context belief over z together with context-specific successor-feature, outcome/reward and TD/action-value maps.",
+      "transition_update_rule": "Bayesian/Kalman-style context-conditioned map updates with sticky-CRP prior/particle inference; context-specific TD/action-value maps update for behavior.",
+      "control_decision_operator": "Action selection uses the representation/value map associated with the inferred context after joint or component context inference.",
+      "inference_planning_operator": "Bayesian hidden-context inference integrates environmental feature prediction and behavioral outcome evidence; feature and outcome modules are separable inherited components.",
+      "learned_task_fitted_outcome_distinctions": {
+        "learned_variables": "successor-feature maps, outcome/reward predictive maps and context-conditioned TD/action-value maps",
+        "task_world_variables": "maze location, cues/features, actions, reward contingencies, transitions and trial/block schedule",
+        "fitted_latent_variables": "latent context z and its posterior/belief plus separately tuned model hyperparameters",
+        "experimental_outcomes": "attempt counts/performance, context inference accuracy and simulated representational/splitter measures"
+      },
+      "model_variants": [
+        {
+          "name": "joint feature-plus-outcome inference",
+          "role": "CENTRAL_TESTED_MODEL",
+          "canonical": true,
+          "verification": "VERIFIED_IN_MAIN_SOURCE"
+        },
+        {
+          "name": "feature inference only",
+          "role": "CENTRAL_COMPONENT_AND_COMPARATOR",
+          "canonical": false,
+          "verification": "VERIFIED_IN_MAIN_SOURCE"
+        },
+        {
+          "name": "outcome inference only",
+          "role": "CENTRAL_COMPONENT_AND_COMPARATOR",
+          "canonical": false,
+          "verification": "VERIFIED_IN_MAIN_SOURCE"
+        },
+        {
+          "name": "confidence/switching and other control variants",
+          "role": "ALTERNATIVE_OR_ABLATION",
+          "canonical": false,
+          "verification": "SOURCE_REPORTED_VARIANT_NOT_CANONICALIZED"
+        }
+      ],
+      "direct_model_ancestors": [
+        "10.1037/rev0000414",
+        "10.48550/arXiv.1906.07663"
+      ],
+      "ancestry_exhaustiveness": "NOT_ATTESTED",
+      "original_source_evidence": [
+        {
+          "repository_path": "research/paper2/p399/g4/genealogy_w5_int_09_10_11_12/W5_SOURCE_EVIDENCE_FREEZE_v1.json",
+          "repository_git_blob_sha1": "4e453eb63c662f167735ed929aa14d3cff88ddf6",
+          "source_repository_ref": "4abf6c229ff893fb51b56b7127a8d26f184d787d",
+          "original_primary_sha256": "49fada41a4536f5ec231c591ab00da88cd4885e026dc0e8bb2773cabdeaa2953",
+          "source_loci": [
+            "source_records[INT-11].publisher_source_loci",
+            "source_records[INT-11].central_source_native_mechanism",
+            "source_records[INT-11].direct_ancestor_evidence"
+          ],
+          "medium_access_class": "PINNED_G2_FIRSTPARTY_RAW_RECEIPT_PLUS_W5_PUBLIC_PUBLISHER_SOURCE_READING",
+          "source_audit_kind": "W5_INDEPENDENT_SOURCE_NATIVE_PROFILE_FRAGMENT_READING"
+        }
+      ],
+      "correction_supplement_bundle": [],
+      "adverse_source_limits": [
+        "Feature inference and outcome inference are explicitly inherited components; W5 does not claim de-novo invention of either.",
+        "Latent context belief is distinct from learned maps, task/world variables and empirical outcome measures.",
+        "Source-reported switching/control variants remain noncanonical."
+      ],
+      "global_family_independence_certified": false
+    },
+    {
+      "id": "INT-12",
+      "doi": "10.1371/journal.pcbi.1006116",
+      "completion_status": "PROFILE_FRAGMENT_READY",
+      "adopted_edition": "2018 PLOS Version of Record/current publisher article",
+      "edition_sha256": "fbd6c2395c7e59b4eb5e8f6640898c1724f80dd23c0e91c2bc504e7dea3a626b",
+      "profile_state": "W5_SOURCE_NATIVE_BOUNDED_PROFILE_FRAGMENT",
+      "source_scope": "Publisher main article independent/joint clustering, CRP inference, planning and meta-agent; S1 unknown-transition implementation is retained as noncanonical because W5 did not byte-freeze it.",
+      "native_core_operators": [
+        "INT-12:independent-reward-mapping-crp",
+        "INT-12:component-binding-planning",
+        "INT-12:joint-task-clustering-comparator"
+      ],
+      "operator_source_descriptions": {
+        "INT-12:independent-reward-mapping-crp": "Independent clustering assigns a context separately to reward-function and mapping/transition-function clusters under CRP priors, enabling recombination across contexts.",
+        "INT-12:component-binding-planning": "Separately learned reward and mapping/transition functions are bound through planning to construct a policy for the current context.",
+        "INT-12:joint-task-clustering-comparator": "Joint clustering assigns each context to one holistic cluster governing both functions and serves as the explicit non-compositional comparison inherited from prior task-structure models."
+      },
+      "central_computational_state": "Bayesian posterior/MAP hypotheses over reward and mapping clusters (independent agent) or joint task clusters, together with learned component functions and planned policy.",
+      "transition_update_rule": "Bayesian/CRP cluster-assignment updates from observed reward and mapping/transition data; learned component functions feed value iteration/planning and optional model-evidence meta-arbitration.",
+      "control_decision_operator": "Policy generated from bound component functions is selected with the paper's action-selection rule; the extension meta-agent samples independent versus joint policy by model evidence.",
+      "inference_planning_operator": "Nonparametric Bayesian task-structure inference separates or couples reward and mapping clusters; planning recomposes independent components into action policy.",
+      "learned_task_fitted_outcome_distinctions": {
+        "learned_variables": "reward functions, mapping/transition functions, cluster sufficient statistics and resulting policies",
+        "task_world_variables": "context, grid state, primitive/cardinal actions, rewards/goals and environmental mapping/transition structure",
+        "fitted_latent_variables": "reward-cluster and mapping-cluster assignments or joint task-cluster assignment; CRP/model-evidence latent structure",
+        "experimental_outcomes": "simulated steps/performance, transfer/generalization, information gain/model evidence and policy-selection behavior"
+      },
+      "model_variants": [
+        {
+          "name": "independent compositional clustering",
+          "role": "CENTRAL_TESTED_MODEL",
+          "canonical": true,
+          "verification": "VERIFIED_IN_MAIN_SOURCE"
+        },
+        {
+          "name": "joint clustering",
+          "role": "CENTRAL_COMPARATOR_WITH_EXPLICIT_ANCESTRY",
+          "canonical": false,
+          "verification": "VERIFIED_IN_MAIN_SOURCE"
+        },
+        {
+          "name": "flat/no-clustering agent",
+          "role": "COMPARATOR",
+          "canonical": false,
+          "verification": "VERIFIED_IN_MAIN_SOURCE"
+        },
+        {
+          "name": "model-evidence meta-agent",
+          "role": "EXTENSION_VARIANT",
+          "canonical": false,
+          "verification": "VERIFIED_IN_MAIN_SOURCE"
+        },
+        {
+          "name": "unknown-transition-function implementation",
+          "role": "SUPPLEMENT_VARIANT",
+          "canonical": false,
+          "verification": "UNVERIFIED_W5_SUPPLEMENT_BYTES"
+        }
+      ],
+      "direct_model_ancestors": [
+        "10.1037/a0030852",
+        "10.1016/j.cognition.2016.04.002"
+      ],
+      "ancestry_exhaustiveness": "NOT_ATTESTED",
+      "original_source_evidence": [
+        {
+          "repository_path": "research/paper2/p399/g4/genealogy_w5_int_09_10_11_12/W5_SOURCE_EVIDENCE_FREEZE_v1.json",
+          "repository_git_blob_sha1": "4e453eb63c662f167735ed929aa14d3cff88ddf6",
+          "source_repository_ref": "4abf6c229ff893fb51b56b7127a8d26f184d787d",
+          "original_primary_sha256": "fbd6c2395c7e59b4eb5e8f6640898c1724f80dd23c0e91c2bc504e7dea3a626b",
+          "source_loci": [
+            "source_records[INT-12].publisher_source_loci",
+            "source_records[INT-12].central_source_native_mechanism",
+            "source_records[INT-12].direct_ancestor_evidence"
+          ],
+          "medium_access_class": "PINNED_G2_FIRSTPARTY_RAW_RECEIPT_PLUS_W5_PUBLIC_PUBLISHER_SOURCE_READING",
+          "source_audit_kind": "W5_INDEPENDENT_SOURCE_NATIVE_PROFILE_FRAGMENT_READING"
+        }
+      ],
+      "correction_supplement_bundle": [
+        {
+          "role": "UNKNOWN_TRANSITION_FUNCTION_S1_TEXT_NONCANONICAL",
+          "doi": "10.1371/journal.pcbi.1006116.s003",
+          "raw_sha256": null,
+          "canonical_model_change": false,
+          "provenance_preserved": true
+        },
+        {
+          "role": "CRP_TASK_STRUCTURE_S2_TEXT_NONCANONICAL",
+          "doi": "10.1371/journal.pcbi.1006116.s004",
+          "raw_sha256": null,
+          "canonical_model_change": false,
+          "provenance_preserved": true
+        }
+      ],
+      "adverse_source_limits": [
+        "The paper explicitly leaves open whether human learning is better described by independent, joint or a mixture of the two.",
+        "The unknown-transition S1 variant is not byte-frozen and cannot be promoted to W5 canonical.",
+        "Control/gating/hierarchy vocabulary alone is not ancestry evidence for P11, P12 or other CTL papers."
+      ],
+      "global_family_independence_certified": false
+    }
+  ],
+  "lane_gates": {
+    "global_family_independence_certified": false,
+    "ancestry_exhaustiveness": "NOT_ATTESTED",
+    "main_authorized": false
+  }
+}
