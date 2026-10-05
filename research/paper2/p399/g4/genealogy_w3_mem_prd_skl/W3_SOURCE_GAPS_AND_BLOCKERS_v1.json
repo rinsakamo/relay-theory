@@ -1,0 +1,113 @@
+{
+  "schema": "relaytheory.p399.g4.w3.source_gaps_and_blockers.v1",
+  "created_date_jst": "2026-10-05",
+  "branch": "paper2/p399-g4-w3-mem-prd-skl-native-20261005",
+  "base_pr_438_head": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a",
+  "authority": "Issue #399; W3 source-native genealogy only",
+  "exact_statuses": {
+    "MEM-01": "SCIENTIFIC_ANCESTRY_UNDERDETERMINED",
+    "MEM-02": "PROFILE_FRAGMENT_READY",
+    "MEM-03": "SOURCE_BLOCKED",
+    "PRD-02": "PROFILE_FRAGMENT_READY",
+    "PRD-03": "PROFILE_FRAGMENT_READY",
+    "SKL-01": "SOURCE_BLOCKED",
+    "SKL-02": "PROFILE_FRAGMENT_READY",
+    "SKL-03": "SOURCE_BLOCKED"
+  },
+  "blocking_gaps": [
+    {
+      "id": "MEM-03",
+      "doi": "10.1371/journal.pcbi.1004003",
+      "status": "SOURCE_BLOCKED",
+      "kind": "MISSING_MATHEMATICALLY_REQUIRED_SUPPLEMENT_FREEZE",
+      "required_material": [
+        {
+          "role": "S1 Text additional mathematical derivations",
+          "doi": "10.1371/journal.pcbi.1004003.s001",
+          "raw_sha256": null
+        }
+      ],
+      "evidence": "Publisher main article declares S1 Text with model-relevant derivations including large-population/Fisher-information and fidelity relations; current G2 receipt freezes the main VoR PDF but no raw S1 hash.",
+      "resolution_condition": "Acquire/freeze the exact official S1 bytes (or an exact publisher-designated complete equivalent), audit the model-relevant derivations and preserve any conflicts before changing status."
+    },
+    {
+      "id": "SKL-01",
+      "doi": "10.1371/journal.pcbi.1012455",
+      "status": "SOURCE_BLOCKED",
+      "kind": "MISSING_MATHEMATICALLY_REQUIRED_SUPPLEMENT_FREEZE",
+      "required_material": [
+        {
+          "role": "S1 File HML model details and convergence analysis",
+          "doi": "10.1371/journal.pcbi.1012455.s001",
+          "raw_sha256": null
+        }
+      ],
+      "evidence": "Main VoR identifies S1 as containing additional HML model details/convergence material; the existing G2 source receipt freezes only the main PDF bytes.",
+      "resolution_condition": "Freeze official S1 bytes and audit the detailed model/convergence statements against the main-paper equations without silently reconciling discrepancies."
+    },
+    {
+      "id": "SKL-03",
+      "doi": "10.1371/journal.pcbi.1006839",
+      "status": "SOURCE_BLOCKED",
+      "kind": "MISSING_MODEL_FIT_SUPPLEMENT_FREEZE",
+      "required_material": [
+        {
+          "role": "S2 Data trial-by-trial motor/exploratory variability estimates",
+          "doi": "10.1371/journal.pcbi.1006839.s002",
+          "raw_sha256": null
+        },
+        {
+          "role": "S3 Data bootstrap/best-fit model parameters",
+          "doi": "10.1371/journal.pcbi.1006839.s003",
+          "raw_sha256": null
+        }
+      ],
+      "evidence": "The model-fit chain uses variability estimates and bootstrap-fitted parameters reported in S2/S3 Data; the current G2 receipt contains only the main VoR raw hash.",
+      "resolution_condition": "Freeze official S2/S3 bytes and preserve exact parameter/variance provenance; any main-versus-supplement mismatch must remain explicit."
+    }
+  ],
+  "scientific_ancestry_gaps": [
+    {
+      "id": "MEM-01",
+      "doi": "10.1007/s42113-023-00189-y",
+      "status": "SCIENTIFIC_ANCESTRY_UNDERDETERMINED",
+      "kind": "UNCLEAR_EXHAUSTIVE_DIRECT_DOI_ANCESTRY",
+      "evidence": "The source explicitly treats the ACT-R declarative-memory system as an inherited architecture with a long historical development, but the adopted source does not provide one exhaustively source-pinned DOI-only chain for all central trace/activation/retrieval/blending mechanisms.",
+      "prohibited_inference": "Do not invent DOI ancestors from books, generic ACT-R terminology, or historical familiarity; ancestry_exhaustiveness remains NOT_ATTESTED."
+    }
+  ],
+  "nonblocking_source_gaps": [
+    {
+      "id": "MEM-01",
+      "kind": "NO_RAW_PUBLISHER_PDF_HASH",
+      "evidence": "Existing G2 receipt did not acquire the Springer publisher PDF bytes. W3 adopted the publisher Version-of-Record complete HTML as the source edition and records raw_sha256=null rather than fabricating byte equivalence.",
+      "effect": "Does not convert the profile to READY because ancestry remains independently underdetermined."
+    },
+    {
+      "id": "PRD-03",
+      "kind": "SUPPORTING_FIGURES_NOT_RAW_FROZEN",
+      "evidence": "Publisher supporting figures exist, but the source-native central HMM/B/gamma operator identity is specified in the main VoR. They remain listed as nonmandatory, not silently treated as absent.",
+      "effect": "No source block for the bounded profile; no global genealogy clearance."
+    },
+    {
+      "id": "SKL-02",
+      "kind": "SUPPORTING_PARAMETER_SENSITIVITY_FIGURES_NOT_RAW_FROZEN",
+      "evidence": "S1-S6 supporting figures extend parameter-sensitivity analyses, while the central SORN architecture, STDP, intrinsic plasticity, synaptic normalization and supervised output are specified in the main VoR.",
+      "effect": "No source block for the bounded profile; parameter-sensitivity figures are not claimed fully audited."
+    }
+  ],
+  "correction_and_edition_sweep": {
+    "result": "NO_W3_CORRECTION_OR_CORRIGENDUM_LOCATED_IN_THE_OFFICIAL_PUBLISHER_ARTICLE_SWEEP_AS_OF_2026-10-05",
+    "epistemic_limit": "This is a bounded W3 publisher-page/source sweep, not a claim that no future or unindexed correction can exist.",
+    "edition_rule": "No author manuscript, proof, preprint, supplement, or corrigendum is silently treated as byte/content-equivalent to the adopted Version of Record."
+  },
+  "fail_closed_rules": {
+    "blocked_source_cannot_become_ready": true,
+    "unresolved_ancestry_cannot_become_exhaustive": true,
+    "missing_mandatory_supplement_cannot_disappear": true,
+    "source_conflicts_must_not_be_silently_repaired": true,
+    "bounded_pair_difference_is_not_global_independence": true,
+    "global_family_independence_certified": false,
+    "main_scientific_authorization": false
+  }
+}
