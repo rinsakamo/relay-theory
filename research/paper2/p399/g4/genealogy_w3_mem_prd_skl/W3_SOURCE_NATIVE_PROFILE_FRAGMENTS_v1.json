@@ -1,0 +1,584 @@
+{
+  "schema": "relaytheory.p399.g4.w3.source_native_profile_fragments.v1",
+  "created_date_jst": "2026-10-05",
+  "authority": "Issue #399; independent W3 from Draft PR #438 exact head",
+  "branch": "paper2/p399-g4-w3-mem-prd-skl-native-20261005",
+  "base_pr_438_head": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a",
+  "scope_ids": [
+    "MEM-01",
+    "MEM-02",
+    "MEM-03",
+    "PRD-02",
+    "PRD-03",
+    "SKL-01",
+    "SKL-02",
+    "SKL-03"
+  ],
+  "profile_count": 8,
+  "main_scientific_authorization": false,
+  "global_family_independence_certified": false,
+  "ancestry_exhaustiveness": "NOT_ATTESTED",
+  "profiles": [
+    {
+      "id": "MEM-01",
+      "doi": "10.1007/s42113-023-00189-y",
+      "lane": "MEM",
+      "status": "SCIENTIFIC_ANCESTRY_UNDERDETERMINED",
+      "adopted_source_edition": {
+        "kind": "PUBLISHER_VERSION_OF_RECORD_COMPLETE_HTML",
+        "publisher": "Springer Nature",
+        "version_of_record_date": "2023-12-28",
+        "official_url": "https://link.springer.com/article/10.1007/s42113-023-00189-y",
+        "raw_sha256": null,
+        "raw_sha_unavailable_reason": "Existing G2 receipt did not acquire publisher PDF bytes; official complete Version-of-Record HTML was inspected. No byte hash was invented."
+      },
+      "native_core_operators": [
+        "MEM-01:trace-creation-and-base-level-decay",
+        "MEM-01:contextual-spreading-activation",
+        "MEM-01:retrieval-competition-and-partial-matching",
+        "MEM-01:blended-reconstructive-retrieval"
+      ],
+      "operator_source_descriptions": {
+        "MEM-01:trace-creation-and-base-level-decay": "Repeated encoding adds creation times/traces for a single declarative memory representation; trace availability decays by a power function and trace-specific decay can depend on activation at trace creation (Eq. 5). This is ACT-R declarative long-term memory state, not an experimenter-imposed retention interval.",
+        "MEM-01:contextual-spreading-activation": "Current-context features provide weighted spreading activation S(m)=W/N sum_q S(q->m) (Eq. 6), changing retrieval activation; W indexes contextual attention/working-memory control rather than storage itself.",
+        "MEM-01:retrieval-competition-and-partial-matching": "Retrieval is selected from declarative memories under activation, cue constraints, similarity/mismatch and competition; the source explicitly distinguishes retrieval interference from encoding interference.",
+        "MEM-01:blended-reconstructive-retrieval": "Blending returns feature values minimizing expected dissimilarity across candidate memories weighted by retrieval probability (Eq. 8), providing a reconstructive retrieval operator."
+      },
+      "direct_model_ancestors": [],
+      "direct_ancestor_note": "The paper explicitly analyzes an inherited ACT-R declarative-memory system developed over decades, but W3 did not pin an exhaustive paper-level DOI chain for that historical architecture. Books/non-DOI sources must not be converted into invented DOI ancestors.",
+      "ancestry_exhaustiveness": "NOT_ATTESTED",
+      "original_source_evidence": [
+        {
+          "repository_path": "research/paper2/p399/g2/MAIN40_G2_ACTUAL_SOURCE_RECEIPTS_AND_DECISIONS_v2.json",
+          "repository_git_blob_sha1": "ac3ffa59fcdc078550df587bc972632b7ca5ff7f",
+          "source_repository_ref": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a",
+          "original_primary_sha256": null,
+          "source_loci": [
+            "records row for MEM-01",
+            "Springer Version of Record: base-level activation/traces Eqs. 3-5; spreading activation Eq. 6; blending Eq. 8; encoding/retrieval neurobiology sections"
+          ],
+          "medium_access_class": "PUBLISHER_VERSION_OF_RECORD_COMPLETE_HTML",
+          "source_audit_kind": "W3_REPOSITORY_RECEIPT_PLUS_OFFICIAL_PUBLISHER_SOURCE_NATIVE_REVIEW"
+        },
+        {
+          "repository_path": "research/paper2/p399/g2/MAIN40_G2_ADMISSION_WORKING_MANIFEST_v5.json",
+          "repository_git_blob_sha1": "b97b67a34ad9c2858745dfa6aa60444520eaab13",
+          "source_repository_ref": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a",
+          "original_primary_sha256": null,
+          "source_loci": [
+            "selected_working_roster slot MEM-01"
+          ],
+          "medium_access_class": "FROZEN_G2_MAIN40_ROSTER",
+          "source_audit_kind": "IDENTITY_AND_ROSTER_FREEZE"
+        }
+      ],
+      "additional_edition_bundle": [],
+      "adverse_source_limits": [
+        "Integrative ACT-R framework paper, not evidence that all constituent mechanisms are newly introduced here.",
+        "ACT-R does not commit to a precise temporal-versus-interference biological mechanism underlying the decay-rate parameter.",
+        "The source states there is no agreed ACT-R mechanism for interference during encoding; retrieval interference is handled separately.",
+        "Neurobiological mappings are proposed interpretations of ACT-R operators and are not direct biological measurements of those operators.",
+        "Publisher PDF raw bytes were not frozen by the existing G2 receipt."
+      ],
+      "global_family_independence_certified": false
+    },
+    {
+      "id": "MEM-02",
+      "doi": "10.1371/journal.pcbi.1008367",
+      "lane": "MEM",
+      "status": "PROFILE_FRAGMENT_READY",
+      "adopted_source_edition": {
+        "kind": "PUBLISHER_VERSION_OF_RECORD_PDF",
+        "publisher": "PLOS Computational Biology",
+        "publication_date": "2020-10-15",
+        "official_url": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008367",
+        "raw_sha256": "cc49abdaee5acc73983074e1a1a65ff3bec69c3808616fa28725991a80f99def"
+      },
+      "native_core_operators": [
+        "MEM-02:semantic-generative-model",
+        "MEM-02:beta-vae-rate-distortion-encoding",
+        "MEM-02:latent-posterior-reconstruction",
+        "MEM-02:delay-indexed-compression-variant"
+      ],
+      "operator_source_descriptions": {
+        "MEM-02:semantic-generative-model": "A learned latent-variable generative model of environmental statistics is assigned to semantic memory and supplies the decoder/prior used to reconstruct compressed episodes.",
+        "MEM-02:beta-vae-rate-distortion-encoding": "A beta-VAE approximate posterior q_phi(z|x), generative likelihood p_theta(x|z), and prior p_theta(z) instantiate a rate-distortion trade-off; beta scales the information/capacity regularization.",
+        "MEM-02:latent-posterior-reconstruction": "Episode-specific information is represented through latent z and reconstructed through the learned decoder, producing gist/prototype-biased recall under compression.",
+        "MEM-02:delay-indexed-compression-variant": "Delayed forgetting is represented by moving toward lower rate/higher beta; in the experiments separate models/compression settings are used for levels of delay rather than a demonstrated within-trace biological consolidation operator."
+      },
+      "direct_model_ancestors": [],
+      "direct_ancestor_note": "The source explicitly builds on beta-VAE and information-bottleneck/rate-distortion work, but the cited foundational beta-VAE/IB items used for this lineage are conference works without a source-pinned DOI here; W3 does not fabricate DOI identifiers.",
+      "ancestry_exhaustiveness": "NOT_ATTESTED",
+      "original_source_evidence": [
+        {
+          "repository_path": "research/paper2/p399/g2/MAIN40_G2_ACTUAL_SOURCE_RECEIPTS_AND_DECISIONS_v2.json",
+          "repository_git_blob_sha1": "ac3ffa59fcdc078550df587bc972632b7ca5ff7f",
+          "source_repository_ref": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a",
+          "original_primary_sha256": "cc49abdaee5acc73983074e1a1a65ff3bec69c3808616fa28725991a80f99def",
+          "source_loci": [
+            "records row for MEM-02",
+            "PLOS theoretical framework: rate-distortion theory, VAE/beta-VAE, information bottleneck; Materials and Methods model architectures; delayed-forgetting analysis"
+          ],
+          "medium_access_class": "PUBLISHER_VERSION_OF_RECORD_PDF",
+          "source_audit_kind": "W3_REPOSITORY_RECEIPT_PLUS_OFFICIAL_PUBLISHER_SOURCE_NATIVE_REVIEW"
+        },
+        {
+          "repository_path": "research/paper2/p399/g2/MAIN40_G2_ADMISSION_WORKING_MANIFEST_v5.json",
+          "repository_git_blob_sha1": "b97b67a34ad9c2858745dfa6aa60444520eaab13",
+          "source_repository_ref": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a",
+          "original_primary_sha256": null,
+          "source_loci": [
+            "selected_working_roster slot MEM-02"
+          ],
+          "medium_access_class": "FROZEN_G2_MAIN40_ROSTER",
+          "source_audit_kind": "IDENTITY_AND_ROSTER_FREEZE"
+        }
+      ],
+      "additional_edition_bundle": [],
+      "adverse_source_limits": [
+        "The work targets qualitative memory phenomena; several hyperparameters are chosen to place reconstructions in an experimentally comparable regime rather than uniquely fit a biological mechanism.",
+        "For delayed recall, forgetting is modeled with separate compression levels/models; this does not establish a biological storage or consolidation update acting on one persisting trace.",
+        "The paper notes that converting a lower-beta representation to a higher-beta representation is not guaranteed when required information has already been lost.",
+        "Delay-to-beta mapping is a model calibration/interpretive bridge, not a measured neural variable."
+      ],
+      "global_family_independence_certified": false
+    },
+    {
+      "id": "MEM-03",
+      "doi": "10.1371/journal.pcbi.1004003",
+      "lane": "MEM",
+      "status": "SOURCE_BLOCKED",
+      "adopted_source_edition": {
+        "kind": "PUBLISHER_VERSION_OF_RECORD_PDF",
+        "publisher": "PLOS Computational Biology",
+        "publication_date": "2015-01-22",
+        "official_url": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004003",
+        "raw_sha256": "5d350123ef76970d0c44705c5d3338bbd06ca8cfcaea4655094643a3ce96107a"
+      },
+      "native_core_operators": [
+        "MEM-03:population-superposition-storage",
+        "MEM-03:noisy-population-state",
+        "MEM-03:cue-conditioned-bayesian-recall",
+        "MEM-03:mixed-vs-hierarchical-code-variants"
+      ],
+      "operator_source_descriptions": {
+        "MEM-03:population-superposition-storage": "Multiple simultaneously presented visual items are overlaid in a shared population activity state; the model is a restricted palimpsest and does not model indefinite sequential overwriting.",
+        "MEM-03:noisy-population-state": "The final memory population is a noisy combination of item-evoked population responses; representational precision depends on population code and noise.",
+        "MEM-03:cue-conditioned-bayesian-recall": "Given a cue to one feature, recall samples/infers the posterior for the target feature from the final noisy population state; apparent guessing arises from posterior uncertainty rather than a separate random-guess state.",
+        "MEM-03:mixed-vs-hierarchical-code-variants": "The source compares mixed/conjunctive and hierarchical population coding organizations and analyzes binding/fidelity consequences."
+      },
+      "direct_model_ancestors": [],
+      "direct_ancestor_note": "Population-coding and Bayesian-recall predecessors are discussed, but no single source-explicit paper-level DOI was frozen by W3 as a direct ancestor of the full palimpsest model.",
+      "ancestry_exhaustiveness": "NOT_ATTESTED",
+      "original_source_evidence": [
+        {
+          "repository_path": "research/paper2/p399/g2/MAIN40_G2_ACTUAL_SOURCE_RECEIPTS_AND_DECISIONS_v2.json",
+          "repository_git_blob_sha1": "ac3ffa59fcdc078550df587bc972632b7ca5ff7f",
+          "source_repository_ref": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a",
+          "original_primary_sha256": "5d350123ef76970d0c44705c5d3338bbd06ca8cfcaea4655094643a3ce96107a",
+          "source_loci": [
+            "records row for MEM-03",
+            "PLOS main model and Methods; Supporting Information declaration for additional derivations"
+          ],
+          "medium_access_class": "PUBLISHER_VERSION_OF_RECORD_PDF",
+          "source_audit_kind": "W3_REPOSITORY_RECEIPT_PLUS_OFFICIAL_PUBLISHER_SOURCE_NATIVE_REVIEW"
+        },
+        {
+          "repository_path": "research/paper2/p399/g2/MAIN40_G2_ADMISSION_WORKING_MANIFEST_v5.json",
+          "repository_git_blob_sha1": "b97b67a34ad9c2858745dfa6aa60444520eaab13",
+          "source_repository_ref": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a",
+          "original_primary_sha256": null,
+          "source_loci": [
+            "selected_working_roster slot MEM-03"
+          ],
+          "medium_access_class": "FROZEN_G2_MAIN40_ROSTER",
+          "source_audit_kind": "IDENTITY_AND_ROSTER_FREEZE"
+        }
+      ],
+      "additional_edition_bundle": [
+        {
+          "role": "mathematical_supplement_required_for_full_variant_closure",
+          "doi": "10.1371/journal.pcbi.1004003.s001",
+          "sha256": null,
+          "mandatory_for_profile_closure": true,
+          "blocker": "Existing G2 repository receipt does not freeze raw S1 Text bytes; S1 contains additional derivations including large-population Fisher-information and fidelity relations."
+        }
+      ],
+      "adverse_source_limits": [
+        "The model is deliberately simplified/exploratory and does not by itself establish a measured biological storage implementation.",
+        "The central store is an overlaid population representation; behavioral short-term-memory effects must not be relabeled as a generic computational storage operator.",
+        "The paper's S1 Text contains model-relevant derivations not frozen by raw SHA in the current repository evidence, so full mathematical-variant closure is blocked."
+      ],
+      "global_family_independence_certified": false
+    },
+    {
+      "id": "PRD-02",
+      "doi": "10.1371/journal.pcbi.1001003",
+      "lane": "PRD",
+      "status": "PROFILE_FRAGMENT_READY",
+      "adopted_source_edition": {
+        "kind": "PUBLISHER_VERSION_OF_RECORD_PDF",
+        "publisher": "PLOS Computational Biology",
+        "publication_date": "2010-12-02",
+        "official_url": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1001003",
+        "raw_sha256": "0e812158b939a8eb78cbe84cbbf731058a67b9c79fb612ad5722dea65043fc2f"
+      },
+      "native_core_operators": [
+        "PRD-02:reward-structure-belief-state",
+        "PRD-02:bayesian-reward-and-structure-update",
+        "PRD-02:belief-state-optimal-action-selection",
+        "PRD-02:fixed-structure-and-q-learning-comparators"
+      ],
+      "operator_source_descriptions": {
+        "PRD-02:reward-structure-belief-state": "The Bayesian RL state includes uncertainty over reward probabilities and a hidden binary coupling structure (independent versus coupled reward generation).",
+        "PRD-02:bayesian-reward-and-structure-update": "Observed reward histories update posterior probability over reward parameters and coupling structure; structure uncertainty gates how evidence transfers between options.",
+        "PRD-02:belief-state-optimal-action-selection": "Actions are valued from the belief state under Bayesian reinforcement learning, balancing information gathering/exploration with reward rather than applying a fixed predictive-coding error rule.",
+        "PRD-02:fixed-structure-and-q-learning-comparators": "Fixed independent, fixed coupled, and model-free Q-learning/softmax are explicit comparison variants, not components to merge into the central structure-learning model."
+      },
+      "direct_model_ancestors": [],
+      "direct_ancestor_note": "The source extends Bayesian reinforcement-learning and graphical-structure-learning traditions, but its cited foundational BRL sources are conference/book works in the source record; no DOI-only direct ancestor is asserted.",
+      "ancestry_exhaustiveness": "NOT_ATTESTED",
+      "original_source_evidence": [
+        {
+          "repository_path": "research/paper2/p399/g2/MAIN40_G2_ACTUAL_SOURCE_RECEIPTS_AND_DECISIONS_v2.json",
+          "repository_git_blob_sha1": "ac3ffa59fcdc078550df587bc972632b7ca5ff7f",
+          "source_repository_ref": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a",
+          "original_primary_sha256": "0e812158b939a8eb78cbe84cbbf731058a67b9c79fb612ad5722dea65043fc2f",
+          "source_loci": [
+            "records row for PRD-02",
+            "PLOS Structure learning model with Bayesian reinforcement learning; graphical reward-generation models; belief-state action selection; model comparison; Methods"
+          ],
+          "medium_access_class": "PUBLISHER_VERSION_OF_RECORD_PDF",
+          "source_audit_kind": "W3_REPOSITORY_RECEIPT_PLUS_OFFICIAL_PUBLISHER_SOURCE_NATIVE_REVIEW"
+        },
+        {
+          "repository_path": "research/paper2/p399/g2/MAIN40_G2_ADMISSION_WORKING_MANIFEST_v5.json",
+          "repository_git_blob_sha1": "b97b67a34ad9c2858745dfa6aa60444520eaab13",
+          "source_repository_ref": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a",
+          "original_primary_sha256": null,
+          "source_loci": [
+            "selected_working_roster slot PRD-02"
+          ],
+          "medium_access_class": "FROZEN_G2_MAIN40_ROSTER",
+          "source_audit_kind": "IDENTITY_AND_ROSTER_FREEZE"
+        }
+      ],
+      "additional_edition_bundle": [],
+      "adverse_source_limits": [
+        "The task's independent/coupled reward-generation alternatives are experimenter-defined candidate structures; they are not evidence of a universal internal generative model.",
+        "The authors explicitly ignore dependencies across trials and note that reward-structure learning ultimately must be integrated with temporal-dependency learning.",
+        "A nontrivial subset of choices is not captured by the compared models; behavioral fit does not establish a neural implementation.",
+        "Q-learning with softmax is a comparator and must not be treated as the paper's source-native central family."
+      ],
+      "global_family_independence_certified": false
+    },
+    {
+      "id": "PRD-03",
+      "doi": "10.1371/journal.pcbi.1007093",
+      "lane": "PRD",
+      "status": "PROFILE_FRAGMENT_READY",
+      "adopted_source_edition": {
+        "kind": "PUBLISHER_VERSION_OF_RECORD_PDF",
+        "publisher": "PLOS Computational Biology",
+        "publication_date": "2019-06-24",
+        "official_url": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007093",
+        "raw_sha256": "d12dfd455fbbd43a5580a0a349f0dd9b9439a0f914eabc026a90f3ae0b80452a"
+      },
+      "native_core_operators": [
+        "PRD-03:hidden-trial-state-transition",
+        "PRD-03:observation-likelihood-integration",
+        "PRD-03:past-evidence-uncertainty-gate",
+        "PRD-03:posterior-response-likelihood"
+      ],
+      "operator_source_descriptions": {
+        "PRD-03:hidden-trial-state-transition": "A Hidden Markov Model represents latent trial type and the experiment-defined cyclic transition structure across lead/test/trail states.",
+        "PRD-03:observation-likelihood-integration": "Frequency and price observations supply likelihood evidence for latent trial state and are integrated with prior/past-state evidence.",
+        "PRD-03:past-evidence-uncertainty-gate": "Intermediate matrix B, parameterized by gamma, degrades use of past evidence: gamma=0 preserves past-state determination and gamma=1 ignores past information.",
+        "PRD-03:posterior-response-likelihood": "Posterior state certainty is mapped to observed response likelihood for fitting; gamma and observation-noise sigma are estimated across training tertiles."
+      },
+      "direct_model_ancestors": [],
+      "direct_ancestor_note": "The source uses the HMM formalism and cognitive-map background but W3 found no source-explicit DOI-level direct ancestor for this exact task model.",
+      "ancestry_exhaustiveness": "NOT_ATTESTED",
+      "original_source_evidence": [
+        {
+          "repository_path": "research/paper2/p399/g2/MAIN40_G2_ACTUAL_SOURCE_RECEIPTS_AND_DECISIONS_v2.json",
+          "repository_git_blob_sha1": "ac3ffa59fcdc078550df587bc972632b7ca5ff7f",
+          "source_repository_ref": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a",
+          "original_primary_sha256": "d12dfd455fbbd43a5580a0a349f0dd9b9439a0f914eabc026a90f3ae0b80452a",
+          "source_loci": [
+            "records row for PRD-03",
+            "PLOS HMM model, intermediate B/gamma uncertainty matrix, alternative model comparison, Eqs. 5-8 parameter-fit methods; S1-S4 figure declarations"
+          ],
+          "medium_access_class": "PUBLISHER_VERSION_OF_RECORD_PDF",
+          "source_audit_kind": "W3_REPOSITORY_RECEIPT_PLUS_OFFICIAL_PUBLISHER_SOURCE_NATIVE_REVIEW"
+        },
+        {
+          "repository_path": "research/paper2/p399/g2/MAIN40_G2_ADMISSION_WORKING_MANIFEST_v5.json",
+          "repository_git_blob_sha1": "b97b67a34ad9c2858745dfa6aa60444520eaab13",
+          "source_repository_ref": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a",
+          "original_primary_sha256": null,
+          "source_loci": [
+            "selected_working_roster slot PRD-03"
+          ],
+          "medium_access_class": "FROZEN_G2_MAIN40_ROSTER",
+          "source_audit_kind": "IDENTITY_AND_ROSTER_FREEZE"
+        }
+      ],
+      "additional_edition_bundle": [
+        {
+          "role": "supporting_figures_not_required_for_central_operator_identity",
+          "doi": "10.1371/journal.pcbi.1007093.s001",
+          "sha256": null,
+          "mandatory_for_profile_closure": false
+        },
+        {
+          "role": "supporting_response_likelihood_illustration",
+          "doi": "10.1371/journal.pcbi.1007093.s003",
+          "sha256": null,
+          "mandatory_for_profile_closure": false
+        }
+      ],
+      "adverse_source_limits": [
+        "The latent transition structure is experiment-defined; the fitted HMM describes subjects' inference within that world and is not itself evidence that the transition structure was neurally learned by the same operator.",
+        "The paper does not model initial acquisition of the overall world-model structure; changes in gamma characterize improved use of past evidence.",
+        "Gamma and sigma can be moderately anticorrelated, limiting unique mechanistic interpretation.",
+        "A more complex asymmetric B variant helps some subjects but is not adopted as the average central model."
+      ],
+      "global_family_independence_certified": false
+    },
+    {
+      "id": "SKL-01",
+      "doi": "10.1371/journal.pcbi.1012455",
+      "lane": "SKL",
+      "status": "SOURCE_BLOCKED",
+      "adopted_source_edition": {
+        "kind": "PUBLISHER_VERSION_OF_RECORD_PDF",
+        "publisher": "PLOS Computational Biology",
+        "publication_date": "2024-10-14",
+        "official_url": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1012455",
+        "raw_sha256": "db472e9df24747b8a79e24b94e583076e835b21e6e252e809264203b406040bc"
+      },
+      "native_core_operators": [
+        "SKL-01:synergy-factorized-forward-map",
+        "SKL-01:perceptual-recency-dynamics",
+        "SKL-01:forward-error-gradient-update",
+        "SKL-01:inverse-control-gradient-update-with-exploration"
+      ],
+      "operator_source_descriptions": {
+        "SKL-01:synergy-factorized-forward-map": "The body-machine mapping C is factorized as W Phi using participant-derived motor synergies, providing a lower-dimensional learned representation of a high-dimensional motor mapping.",
+        "SKL-01:perceptual-recency-dynamics": "A continuous-feedback perception model filters recent joint-motion information before forward/inverse learning; this is an internal perceptual state, distinct from the externally imposed target task.",
+        "SKL-01:forward-error-gradient-update": "The forward mapping estimate is updated by gradient descent on a forward/sensory-prediction error with forward learning rate gamma.",
+        "SKL-01:inverse-control-gradient-update-with-exploration": "Nominal joint velocity is updated by gradient descent on a cost combining target/task error and control energy, with exploratory noise; the paper interprets this as de-novo controller acquisition rather than mere motor adaptation."
+      },
+      "direct_model_ancestors": [
+        "10.1371/journal.pcbi.1007118",
+        "10.1207/s15516709cog1603_1"
+      ],
+      "direct_ancestor_note": "The source states that its forward/inverse formulation follows Pierella et al. 2019 and that removing the perception model and task-error regularization exactly recovers that episodic model; it also states the convention was originally introduced by Jordan & Rumelhart 1992.",
+      "ancestry_exhaustiveness": "NOT_ATTESTED",
+      "original_source_evidence": [
+        {
+          "repository_path": "research/paper2/p399/g2/MAIN40_G2_ACTUAL_SOURCE_RECEIPTS_AND_DECISIONS_v2.json",
+          "repository_git_blob_sha1": "ac3ffa59fcdc078550df587bc972632b7ca5ff7f",
+          "source_repository_ref": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a",
+          "original_primary_sha256": "db472e9df24747b8a79e24b94e583076e835b21e6e252e809264203b406040bc",
+          "source_loci": [
+            "records row for SKL-01",
+            "PLOS Model Eqs. 6-9; HML parameter discussion; explicit Pierella/Jordan-Rumelhart lineage; Supporting S1 declaration"
+          ],
+          "medium_access_class": "PUBLISHER_VERSION_OF_RECORD_PDF",
+          "source_audit_kind": "W3_REPOSITORY_RECEIPT_PLUS_OFFICIAL_PUBLISHER_SOURCE_NATIVE_REVIEW"
+        },
+        {
+          "repository_path": "research/paper2/p399/g2/MAIN40_G2_ADMISSION_WORKING_MANIFEST_v5.json",
+          "repository_git_blob_sha1": "b97b67a34ad9c2858745dfa6aa60444520eaab13",
+          "source_repository_ref": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a",
+          "original_primary_sha256": null,
+          "source_loci": [
+            "selected_working_roster slot SKL-01"
+          ],
+          "medium_access_class": "FROZEN_G2_MAIN40_ROSTER",
+          "source_audit_kind": "IDENTITY_AND_ROSTER_FREEZE"
+        }
+      ],
+      "additional_edition_bundle": [
+        {
+          "role": "mathematical_supplement_required_for_full_model_closure",
+          "doi": "10.1371/journal.pcbi.1012455.s001",
+          "sha256": null,
+          "mandatory_for_profile_closure": true,
+          "blocker": "S1 contains supplementary HML model details and convergence analysis; existing G2 receipt freezes only the main PDF."
+        },
+        {
+          "role": "supporting_figure",
+          "doi": "10.1371/journal.pcbi.1012455.s002",
+          "sha256": null,
+          "mandatory_for_profile_closure": false
+        }
+      ],
+      "adverse_source_limits": [
+        "The model is a fitted/normative computational account; human behavioral trajectories do not directly measure forward-map or inverse-controller neural states.",
+        "The paper explicitly cautions that forward/inverse coevolution is well established in adaptation but generalization to de-novo skill learning requires care.",
+        "Motor synergies are a representation/factorization choice and must not be confused with the externally imposed target-capture task.",
+        "S1 contains model details and convergence proofs not raw-frozen in the current repository evidence, so full mathematical closure is blocked."
+      ],
+      "global_family_independence_certified": false
+    },
+    {
+      "id": "SKL-02",
+      "doi": "10.1371/journal.pcbi.1005632",
+      "lane": "SKL",
+      "status": "PROFILE_FRAGMENT_READY",
+      "adopted_source_edition": {
+        "kind": "PUBLISHER_VERSION_OF_RECORD_PDF",
+        "publisher": "PLOS Computational Biology",
+        "publication_date": "2017-08-02",
+        "official_url": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005632",
+        "raw_sha256": "d710a6c1c4902dc33522bf9a4c1158714fc6923596629f66d615a3a7e93b8d26"
+      },
+      "native_core_operators": [
+        "SKL-02:sorn-recurrent-state-transition",
+        "SKL-02:stdp-recurrent-weight-update",
+        "SKL-02:intrinsic-plasticity-threshold-update",
+        "SKL-02:synaptic-normalization",
+        "SKL-02:supervised-motor-readout"
+      ],
+      "operator_source_descriptions": {
+        "SKL-02:sorn-recurrent-state-transition": "Sparse recurrent excitatory/inhibitory threshold units form a SORN reservoir whose activity state is driven by sequence-specific external input.",
+        "SKL-02:stdp-recurrent-weight-update": "Temporally asymmetric STDP modifies recurrent excitatory connections and supports learned sequence-specific trajectories.",
+        "SKL-02:intrinsic-plasticity-threshold-update": "Intrinsic plasticity changes excitability/thresholds to regulate firing statistics; it is a distinct homeostatic mechanism from STDP.",
+        "SKL-02:synaptic-normalization": "Incoming recurrent weights are normalized, stabilizing the adaptive reservoir jointly with intrinsic plasticity.",
+        "SKL-02:supervised-motor-readout": "A separate motor/output layer is trained from reservoir states; the human motor task is an imposed simulation mapping and must not be conflated with a biological inverse controller."
+      },
+      "direct_model_ancestors": [
+        "10.3389/neuro.10.023.2009"
+      ],
+      "direct_ancestor_note": "The paper explicitly identifies its architecture as belonging to the SORN family and cites the original SORN paper by Lazar, Pipa & Triesch (2009).",
+      "ancestry_exhaustiveness": "NOT_ATTESTED",
+      "original_source_evidence": [
+        {
+          "repository_path": "research/paper2/p399/g2/MAIN40_G2_ACTUAL_SOURCE_RECEIPTS_AND_DECISIONS_v2.json",
+          "repository_git_blob_sha1": "ac3ffa59fcdc078550df587bc972632b7ca5ff7f",
+          "source_repository_ref": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a",
+          "original_primary_sha256": "d710a6c1c4902dc33522bf9a4c1158714fc6923596629f66d615a3a7e93b8d26",
+          "source_loci": [
+            "records row for SKL-02",
+            "PLOS Methods: SORN network architecture and plasticity; Results sequence-learning simulations; Supporting S1-S6 parameter-sensitivity figures"
+          ],
+          "medium_access_class": "PUBLISHER_VERSION_OF_RECORD_PDF",
+          "source_audit_kind": "W3_REPOSITORY_RECEIPT_PLUS_OFFICIAL_PUBLISHER_SOURCE_NATIVE_REVIEW"
+        },
+        {
+          "repository_path": "research/paper2/p399/g2/MAIN40_G2_ADMISSION_WORKING_MANIFEST_v5.json",
+          "repository_git_blob_sha1": "b97b67a34ad9c2858745dfa6aa60444520eaab13",
+          "source_repository_ref": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a",
+          "original_primary_sha256": null,
+          "source_loci": [
+            "selected_working_roster slot SKL-02"
+          ],
+          "medium_access_class": "FROZEN_G2_MAIN40_ROSTER",
+          "source_audit_kind": "IDENTITY_AND_ROSTER_FREEZE"
+        }
+      ],
+      "additional_edition_bundle": [
+        {
+          "role": "parameter_sensitivity_supporting_figures_s001_to_s006",
+          "doi_prefix": "10.1371/journal.pcbi.1005632.s00",
+          "sha256": null,
+          "mandatory_for_profile_closure": false
+        }
+      ],
+      "adverse_source_limits": [
+        "The SORN is a computational neural-network model fitted qualitatively to multiple human sequence-learning experiments; it is not a direct measurement of synaptic STDP/IP/SN in those participants.",
+        "The task-specific motor output/readout is supervised and externally defined; the recurrent network should not be mislabeled as an endogenous inverse motor model.",
+        "Interference/facilitation emerge from the inherited SORN plasticity architecture; they are not evidence that the paper independently invented the SORN family."
+      ],
+      "global_family_independence_certified": false
+    },
+    {
+      "id": "SKL-03",
+      "doi": "10.1371/journal.pcbi.1006839",
+      "lane": "SKL",
+      "status": "SOURCE_BLOCKED",
+      "adopted_source_edition": {
+        "kind": "PUBLISHER_VERSION_OF_RECORD_PDF",
+        "publisher": "PLOS Computational Biology",
+        "publication_date": "2019-03-04",
+        "official_url": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006839",
+        "raw_sha256": "8c9a3c927f471855a91b6e42837b17898ed72c235fb0d3c7fc4965b57b284dc1"
+      },
+      "native_core_operators": [
+        "SKL-03:last-success-aim-cache",
+        "SKL-03:reinforcement-gated-aim-update",
+        "SKL-03:outcome-dependent-exploration-variance",
+        "SKL-03:local-reinforcement-landscape-sampling"
+      ],
+      "operator_source_descriptions": {
+        "SKL-03:last-success-aim-cache": "The model retains a single intended aim associated with the most recent successful reach rather than a full action-value/reinforcement landscape representation.",
+        "SKL-03:reinforcement-gated-aim-update": "After success, intended aim moves by proportion alpha toward the successful reach; after failure, intended aim is retained rather than directly shifted.",
+        "SKL-03:outcome-dependent-exploration-variance": "Trial movement variance combines motor/execution variance and an added exploratory component after unsuccessful outcomes.",
+        "SKL-03:local-reinforcement-landscape-sampling": "Movement variability samples a spatially local region of the continuous action space; learning uses temporally recent local reward information and does not construct a global expected-value table."
+      },
+      "direct_model_ancestors": [
+        "10.1523/JNEUROSCI.3244-14.2015",
+        "10.1523/ENEURO.0050-18.2018"
+      ],
+      "direct_ancestor_note": "The source says Pekny et al. 2015 provided motivation for outcome-dependent variability and that the resulting formulation is similar to Therrien et al. 2018, while explicitly distinguishing its aim-update rule. Haith & Krakauer 2014 is also named as a motivating MCMC model but the cited conference item has no source-pinned DOI, so no DOI is invented for it.",
+      "ancestry_exhaustiveness": "NOT_ATTESTED",
+      "original_source_evidence": [
+        {
+          "repository_path": "research/paper2/p399/g2/MAIN40_G2_ACTUAL_SOURCE_RECEIPTS_AND_DECISIONS_v2.json",
+          "repository_git_blob_sha1": "ac3ffa59fcdc078550df587bc972632b7ca5ff7f",
+          "source_repository_ref": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a",
+          "original_primary_sha256": "8c9a3c927f471855a91b6e42837b17898ed72c235fb0d3c7fc4965b57b284dc1",
+          "source_loci": [
+            "records row for SKL-03",
+            "PLOS Learning model Eq. 1 and best-fit parameter section; discussion of Haith/Krakauer, Pekny, Therrien lineage; Supporting S2/S3 Data declarations"
+          ],
+          "medium_access_class": "PUBLISHER_VERSION_OF_RECORD_PDF",
+          "source_audit_kind": "W3_REPOSITORY_RECEIPT_PLUS_OFFICIAL_PUBLISHER_SOURCE_NATIVE_REVIEW"
+        },
+        {
+          "repository_path": "research/paper2/p399/g2/MAIN40_G2_ADMISSION_WORKING_MANIFEST_v5.json",
+          "repository_git_blob_sha1": "b97b67a34ad9c2858745dfa6aa60444520eaab13",
+          "source_repository_ref": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a",
+          "original_primary_sha256": null,
+          "source_loci": [
+            "selected_working_roster slot SKL-03"
+          ],
+          "medium_access_class": "FROZEN_G2_MAIN40_ROSTER",
+          "source_audit_kind": "IDENTITY_AND_ROSTER_FREEZE"
+        }
+      ],
+      "additional_edition_bundle": [
+        {
+          "role": "model_variability_estimation_required",
+          "doi": "10.1371/journal.pcbi.1006839.s002",
+          "sha256": null,
+          "mandatory_for_profile_closure": true,
+          "blocker": "S2 Data contains trial-by-trial motor/exploratory variability estimates used to initialize/model variance; raw bytes are not frozen in current G2 receipt."
+        },
+        {
+          "role": "model_parameter_fit_required",
+          "doi": "10.1371/journal.pcbi.1006839.s003",
+          "sha256": null,
+          "mandatory_for_profile_closure": true,
+          "blocker": "S3 Data contains bootstrap best-fit parameter procedure/results; raw bytes are not frozen in current G2 receipt."
+        },
+        {
+          "role": "supporting_variability_figure",
+          "doi": "10.1371/journal.pcbi.1006839.s006",
+          "sha256": null,
+          "mandatory_for_profile_closure": false
+        }
+      ],
+      "adverse_source_limits": [
+        "The model is explicitly phenomenological and local: it requires a non-zero reward gradient within the range of natural movement variability and is limited to small workspace regions.",
+        "It caches one successful aim and uses local exploration; it does not learn or store a full reinforcement landscape.",
+        "The modeled intended aim is latent and fitted from behavior, not a directly measured neural state.",
+        "S2/S3 Data are part of the parameter-estimation chain and are not raw-frozen by the current repository receipt, so exact model-fit provenance remains blocked."
+      ],
+      "global_family_independence_certified": false
+    }
+  ]
+}
