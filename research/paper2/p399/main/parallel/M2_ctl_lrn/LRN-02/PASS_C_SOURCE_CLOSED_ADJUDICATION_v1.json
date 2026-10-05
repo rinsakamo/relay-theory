@@ -1,0 +1,148 @@
+{
+  "schema": "relaytheory.p399.main.m2.pass_c_source_closed_adjudication_v1",
+  "slot": "LRN-02",
+  "doi": "10.1371/journal.pcbi.1007963",
+  "inputs": {
+    "stage_a_path": "research/paper2/p399/main/parallel/M2_ctl_lrn/LRN-02/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json",
+    "stage_a_freeze_head": "935c5c9b12949758148a32f16ce52cddb64661e3",
+    "stage_b_path": "research/paper2/p399/main/parallel/M2_ctl_lrn/LRN-02/PASS_B_RESULT_INFORMED_REAUDIT_v1.json",
+    "stage_b_commit": "44ea9f64304fcc137258c74de0b9b6f08c7c04ed"
+  },
+  "safeguards": {
+    "C1_original_a_coverage_and_overpatch": true,
+    "C2_material_negative_limit_enumeration": true
+  },
+  "adjudications": [
+    {
+      "objection_id": "B01",
+      "source_locus": "source loci already enumerated in Stage A",
+      "strongest_alternate_reading": "True hidden contingency/switching process could be represented as the learner's internal state.",
+      "original_a_gap_test": "ALREADY_QUALIFIED_IN_A",
+      "disposition": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": null,
+      "material_conditions": [
+        {
+          "id": "LRN02-B01-COND",
+          "treatment": "ALREADY_IN_A",
+          "note": "Source distinguishes external latent generative state from posterior mean/variance and inferred volatility maintained by the learner."
+        }
+      ]
+    },
+    {
+      "objection_id": "B02",
+      "source_locus": "Results/Methods: softmax response model",
+      "strongest_alternate_reading": "Softmax response rule could be mistaken for the learning operator.",
+      "original_a_gap_test": "ALREADY_QUALIFIED_IN_A",
+      "disposition": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": null,
+      "material_conditions": [
+        {
+          "id": "LRN02-B02-COND",
+          "treatment": "ALREADY_IN_A",
+          "note": "Source feeds VKF predictions/action values into a separate softmax choice mapping; softmax beta is response noise."
+        }
+      ]
+    },
+    {
+      "objection_id": "B03",
+      "source_locus": "source loci already enumerated in Stage A",
+      "strongest_alternate_reading": "Volatility-dependent learning rate could be redescribed as a separate controller.",
+      "original_a_gap_test": "ALREADY_QUALIFIED_IN_A",
+      "disposition": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": null,
+      "material_conditions": [
+        {
+          "id": "LRN02-B03-COND",
+          "treatment": "ALREADY_IN_A",
+          "note": "It arises within source VKF inference/update; no separate control module is specified."
+        }
+      ]
+    },
+    {
+      "objection_id": "B04",
+      "source_locus": "Results: Effects of volatility on learning rate for binary outcomes",
+      "strongest_alternate_reading": "Latent-space learning rate and implied observation-space learning rate could be collapsed.",
+      "original_a_gap_test": "ALREADY_QUALIFIED_IN_A",
+      "disposition": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": null,
+      "material_conditions": [
+        {
+          "id": "LRN02-B04-COND",
+          "treatment": "CLAIM_LIMITED",
+          "note": "Source explicitly shows they differ; observation-space implied rate can change even when volatility is fixed."
+        }
+      ]
+    },
+    {
+      "objection_id": "B05",
+      "source_locus": "source loci already enumerated in Stage A",
+      "strongest_alternate_reading": "Binary noise parameter omega could be treated as a generative environmental variable.",
+      "original_a_gap_test": "ALREADY_QUALIFIED_IN_A",
+      "disposition": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": null,
+      "material_conditions": [
+        {
+          "id": "LRN02-B05-COND",
+          "treatment": "ALREADY_IN_A",
+          "note": "Source states omega is relevant only to the inference model, not the generative process."
+        }
+      ]
+    },
+    {
+      "objection_id": "B06",
+      "source_locus": "simulation switching-task discussion",
+      "strongest_alternate_reading": "Simulation change-points could be read as endogenous VKF state transitions.",
+      "original_a_gap_test": "ALREADY_QUALIFIED_IN_A",
+      "disposition": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": null,
+      "material_conditions": [
+        {
+          "id": "LRN02-B06-COND",
+          "treatment": "CLAIM_LIMITED",
+          "note": "Source notes some switching dynamics do not match its Gaussian-random-walk assumptions; schedule remains external."
+        }
+      ]
+    },
+    {
+      "objection_id": "B07",
+      "source_locus": "source loci already enumerated in Stage A",
+      "strongest_alternate_reading": "Kalman/HGF/Bayesian machinery could be counted as de novo architecture.",
+      "original_a_gap_test": "ALREADY_QUALIFIED_IN_A",
+      "disposition": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": null,
+      "material_conditions": [
+        {
+          "id": "LRN02-B07-COND",
+          "treatment": "ALREADY_IN_A",
+          "note": "Source positions VKF relative to Kalman, Behrens/HGF and approximate Bayesian inference; inherited basis is retained."
+        }
+      ]
+    },
+    {
+      "objection_id": "B08",
+      "source_locus": "source loci already enumerated in Stage A",
+      "strongest_alternate_reading": "Parameter recovery might be summarized as uniformly strong.",
+      "original_a_gap_test": "ALREADY_QUALIFIED_IN_A",
+      "disposition": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": null,
+      "material_conditions": [
+        {
+          "id": "LRN02-B08-COND",
+          "treatment": "CLAIM_LIMITED",
+          "note": "Source reports volatility update rate and initial volatility are more prone to recovery error."
+        }
+      ]
+    }
+  ],
+  "standalone_supplement_rule": "S1/S2 Appendix identities remain locked as profile provenance, but standalone unseen contents are not used to repair C under RIR v2.3.1.",
+  "c_only_omission_sweep": {
+    "performed": true,
+    "new_source_gap_confirmed": 0,
+    "unresolved_new_defect": 0
+  },
+  "append_only_patches": [],
+  "duplicate_patching": false,
+  "adjudicated_source_reconstruction": "Stage A survives. External switching dynamics, internal volatility inference, and downstream softmax response are kept distinct; no extra coordinator is introduced.",
+  "negative_evidence_retained": true,
+  "stage_c_complete": true
+}

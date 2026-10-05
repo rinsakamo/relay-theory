@@ -1,0 +1,62 @@
+{
+  "schema": "relaytheory.p399.main.m2.architectural_outcome_v1",
+  "slot": "CTL-03",
+  "doi": "10.7554/eLife.28040",
+  "source_fidelity": "SOURCE_CLOSED_ADJUDICATED",
+  "attempt_trace": {
+    "A0": {
+      "attempted": true,
+      "result": "PASS",
+      "reason": "The adjudicated best-tested revised DCM is expressible directly as typed regional dynamics plus intervention/readout. Nonunique model evidence limits the claim but does not require added coordination state."
+    },
+    "A1": {
+      "attempted": false,
+      "result": "NOT_NEEDED_AFTER_A0_PASS",
+      "permitted_addition_types": [
+        "typed interface",
+        "value/action translation",
+        "observation-to-controller mapping",
+        "sequencing",
+        "execution-order constraint",
+        "read/write contract",
+        "stateless routing"
+      ]
+    },
+    "A2": {
+      "attempted": false,
+      "result": "NOT_PERMITTED_OR_NEEDED_AFTER_A0_PASS",
+      "precondition_requires_documented_A0_and_A1_failure": true
+    }
+  },
+  "final_architectural_state": "A0_FIDELITY",
+  "added_stateless_adapters": {
+    "count": 0,
+    "types": []
+  },
+  "added_stateful_mechanisms": {
+    "count": 0,
+    "types": []
+  },
+  "source_defined_state_not_counted_as_added_stateful_mechanism": true,
+  "unresolved_issues": [
+    "913-model current-sample search left 19 similarly plausible candidates before prior-sample adjudication",
+    "unexamined modulations may fit better",
+    "prior trait cognitive-ability association was not reproduced",
+    "unexpected caudal Temporal-Control effect forced revision",
+    "source result is bounded to tested model spaces",
+    "ancestry exhaustiveness NOT_ATTESTED"
+  ],
+  "genealogy_annotation": {
+    "direct_model_ancestors": [
+      "10.7554/eLife.12112"
+    ],
+    "pair_category_counts_across_59_other_profiles": {
+      "UNDERDETERMINED": 51,
+      "BOUNDED_SOURCE_NATIVE_DIFFERENCE": 8,
+      "SHARED_CONSTITUENT_ONLY": 0
+    },
+    "global_genealogical_independence_assumed": false,
+    "ancestry_exhaustiveness": "NOT_ATTESTED"
+  },
+  "overall_h0_h1_h2_implication": "NONE_FROM_M2_PER_PAPER_OUTCOME_ALONE"
+}

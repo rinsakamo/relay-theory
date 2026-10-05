@@ -1,0 +1,133 @@
+{
+  "schema": "relaytheory.p399.main.m2.pass_c_source_closed_adjudication_v1",
+  "slot": "LRN-01",
+  "doi": "10.1038/s41467-025-58848-6",
+  "inputs": {
+    "stage_a_path": "research/paper2/p399/main/parallel/M2_ctl_lrn/LRN-01/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json",
+    "stage_a_freeze_head": "935c5c9b12949758148a32f16ce52cddb64661e3",
+    "stage_b_path": "research/paper2/p399/main/parallel/M2_ctl_lrn/LRN-01/PASS_B_RESULT_INFORMED_REAUDIT_v1.json",
+    "stage_b_commit": "987ef6a89c53500b7cb7c2db691bad50b9805982"
+  },
+  "safeguards": {
+    "C1_original_a_coverage_and_overpatch": true,
+    "C2_material_negative_limit_enumeration": true
+  },
+  "adjudications": [
+    {
+      "objection_id": "B01",
+      "source_locus": "source loci already enumerated in Stage A",
+      "strongest_alternate_reading": "Encoder/decoder parameters or latent representation could be reified as a persistent coordination mechanism.",
+      "original_a_gap_test": "ALREADY_QUALIFIED_IN_A",
+      "disposition": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": null,
+      "material_conditions": [
+        {
+          "id": "LRN01-B01-COND",
+          "treatment": "ALREADY_IN_A",
+          "note": "They are the source-defined learned representation/policy parameters; test-time retention does not add a distinct coordinator."
+        }
+      ]
+    },
+    {
+      "objection_id": "B02",
+      "source_locus": "source loci already enumerated in Stage A",
+      "strongest_alternate_reading": "Compression of latent state and reward-policy optimization could be collapsed to one undifferentiated learner.",
+      "original_a_gap_test": "ALREADY_QUALIFIED_IN_A",
+      "disposition": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": null,
+      "material_conditions": [
+        {
+          "id": "LRN01-B02-COND",
+          "treatment": "ALREADY_IN_A",
+          "note": "Source objective couples reward and mutual-information compression, while encoder and decoder roles remain distinguishable."
+        }
+      ]
+    },
+    {
+      "objection_id": "B03",
+      "source_locus": "source loci already enumerated in Stage A",
+      "strongest_alternate_reading": "Training/test schedule and held-out stimulus structure could be modeled as internal adaptation.",
+      "original_a_gap_test": "ALREADY_QUALIFIED_IN_A",
+      "disposition": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": null,
+      "material_conditions": [
+        {
+          "id": "LRN01-B03-COND",
+          "treatment": "ALREADY_IN_A",
+          "note": "Schedule/stimulus associations are experimenter-defined World structure; parameter changes during training are internal learning."
+        }
+      ]
+    },
+    {
+      "objection_id": "B04",
+      "source_locus": "Methods/model variants: feature-based models",
+      "strongest_alternate_reading": "Feature-based model variants may appear to discover their feature basis.",
+      "original_a_gap_test": "ALREADY_QUALIFIED_IN_A",
+      "disposition": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": null,
+      "material_conditions": [
+        {
+          "id": "LRN01-B04-COND",
+          "treatment": "ALREADY_IN_A",
+          "note": "Their feature embedding is experimenter-defined; only subsequent source-defined parameter learning is internal."
+        }
+      ]
+    },
+    {
+      "objection_id": "B05",
+      "source_locus": "Methods ECPG/policy-gradient objective",
+      "strongest_alternate_reading": "Generic policy-gradient update could be counted as a new learning mechanism.",
+      "original_a_gap_test": "ALREADY_QUALIFIED_IN_A",
+      "disposition": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": null,
+      "material_conditions": [
+        {
+          "id": "LRN01-B05-COND",
+          "treatment": "ALREADY_IN_A",
+          "note": "Generic policy-gradient RL is inherited; paper-specific center is the efficient-coding compression objective coupled to reward."
+        }
+      ]
+    },
+    {
+      "objection_id": "B06",
+      "source_locus": "Experiment training/testing design",
+      "strongest_alternate_reading": "Generalization performance in test could be treated as ongoing representation learning.",
+      "original_a_gap_test": "ALREADY_QUALIFIED_IN_A",
+      "disposition": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": null,
+      "material_conditions": [
+        {
+          "id": "LRN01-B06-COND",
+          "treatment": "ALREADY_IN_A",
+          "note": "Test is used to assay the already learned representation/policy; Stage A does not infer a new active coordinator or learning state."
+        }
+      ]
+    },
+    {
+      "objection_id": "B07",
+      "source_locus": "source loci already enumerated in Stage A",
+      "strongest_alternate_reading": "Human-level generalization could be promoted beyond tested computational account.",
+      "original_a_gap_test": "ALREADY_QUALIFIED_IN_A",
+      "disposition": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": null,
+      "material_conditions": [
+        {
+          "id": "LRN01-B07-COND",
+          "treatment": "ALREADY_IN_A",
+          "note": "Source supports a tested computational account; feature embedding/model-fitting boundaries and lack of direct neural implementation remain explicit."
+        }
+      ]
+    }
+  ],
+  "standalone_supplement_rule": "Supplementary Information identity remains in authority lock, but standalone unseen content is not used to repair or extend C under RIR v2.3.1.",
+  "c_only_omission_sweep": {
+    "performed": true,
+    "new_source_gap_confirmed": 0,
+    "unresolved_new_defect": 0
+  },
+  "append_only_patches": [],
+  "duplicate_patching": false,
+  "adjudicated_source_reconstruction": "Stage A survives. Learned encoder/decoder state remains source-defined learning/representation state, not an added persistent coordinator.",
+  "negative_evidence_retained": true,
+  "stage_c_complete": true
+}

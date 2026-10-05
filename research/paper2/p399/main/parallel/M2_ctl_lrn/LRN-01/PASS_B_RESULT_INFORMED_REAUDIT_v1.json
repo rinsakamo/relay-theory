@@ -1,0 +1,85 @@
+{
+  "schema": "relaytheory.p399.main.m2.pass_b_result_informed_reaudit_v1",
+  "slot": "LRN-01",
+  "doi": "10.1038/s41467-025-58848-6",
+  "stage_a_input": {
+    "path": "research/paper2/p399/main/parallel/M2_ctl_lrn/LRN-01/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json",
+    "freeze_head": "935c5c9b12949758148a32f16ce52cddb64661e3",
+    "complete_a_received": true
+  },
+  "source_reopened": "publisher Version of Record full HTML",
+  "result_informed": true,
+  "objections": [
+    {
+      "id": "B01",
+      "test": "learned parameter cannot auto-become persistent coordinator",
+      "challenge": "Encoder/decoder parameters or latent representation could be reified as a persistent coordination mechanism.",
+      "finding": "They are the source-defined learned representation/policy parameters; test-time retention does not add a distinct coordinator."
+    },
+    {
+      "id": "B02",
+      "test": "representation learning vs policy learning",
+      "challenge": "Compression of latent state and reward-policy optimization could be collapsed to one undifferentiated learner.",
+      "finding": "Source objective couples reward and mutual-information compression, while encoder and decoder roles remain distinguishable."
+    },
+    {
+      "id": "B03",
+      "test": "environmental adaptation vs internal learning",
+      "challenge": "Training/test schedule and held-out stimulus structure could be modeled as internal adaptation.",
+      "finding": "Schedule/stimulus associations are experimenter-defined World structure; parameter changes during training are internal learning."
+    },
+    {
+      "id": "B04",
+      "test": "experimenter feature embedding mistaken for learned representation",
+      "challenge": "Feature-based model variants may appear to discover their feature basis.",
+      "finding": "Their feature embedding is experimenter-defined; only subsequent source-defined parameter learning is internal."
+    },
+    {
+      "id": "B05",
+      "test": "inherited RL mistaken for paper-specific mechanism",
+      "challenge": "Generic policy-gradient update could be counted as a new learning mechanism.",
+      "finding": "Generic policy-gradient RL is inherited; paper-specific center is the efficient-coding compression objective coupled to reward."
+    },
+    {
+      "id": "B06",
+      "test": "test-phase execution mistaken for active learning",
+      "challenge": "Generalization performance in test could be treated as ongoing representation learning.",
+      "finding": "Test is used to assay the already learned representation/policy; Stage A does not infer a new active coordinator or learning state."
+    },
+    {
+      "id": "B07",
+      "test": "missing adverse/model-fit boundary",
+      "challenge": "Human-level generalization could be promoted beyond tested computational account.",
+      "finding": "Source supports a tested computational account; feature embedding/model-fitting boundaries and lack of direct neural implementation remain explicit."
+    }
+  ],
+  "source_ordered_omission_sweep": [
+    {
+      "order": 1,
+      "locus": "Abstract/Introduction",
+      "result": "reward-plus-efficient-coding claim retained without neural-mechanism promotion."
+    },
+    {
+      "order": 2,
+      "locus": "task training/testing design",
+      "result": "training feedback and test generalization phases separated."
+    },
+    {
+      "order": 3,
+      "locus": "ECPG model",
+      "result": "encoder/decoder, mutual-information penalty and policy-gradient updates retained."
+    },
+    {
+      "order": 4,
+      "locus": "feature/model variants",
+      "result": "experimenter feature embedding and comparators retained."
+    },
+    {
+      "order": 5,
+      "locus": "Results/Discussion",
+      "result": "computational-fit and interpretation limits retained."
+    }
+  ],
+  "negative_evidence_retained": true,
+  "stage_b_complete": true
+}

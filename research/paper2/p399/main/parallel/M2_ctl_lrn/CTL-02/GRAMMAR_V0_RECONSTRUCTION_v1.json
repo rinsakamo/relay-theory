@@ -1,0 +1,60 @@
+{
+  "schema": "relaytheory.p399.main.m2.grammar_v0_reconstruction_v1",
+  "slot": "CTL-02",
+  "doi": "10.7554/eLife.12029",
+  "input_adjudication_freeze_head": "e563741558c2ceb2e1b4017018a1a87901fbd6f4",
+  "grammar_version": "frozen Grammar v0",
+  "roles_unchanged": true,
+  "role_mapping": {
+    "Pi": [
+      "critic/value subsystem",
+      "opponent Go/NoGo actor subsystem",
+      "source-defined uncertainty/TAN-feedback subsystem"
+    ],
+    "X": [
+      "critic value",
+      "Go/NoGo weights",
+      "Beta reward beliefs",
+      "uncertainty/entropy signal",
+      "TAN/neural-model feedback state"
+    ],
+    "C": [
+      "probabilistic reward-belief constraints",
+      "source actor/critic and neural-model admissibility conditions"
+    ],
+    "Q": [
+      "reward/action-value orientation",
+      "uncertainty criterion regulating flexibility/decay"
+    ],
+    "P_in": [
+      "action outcome/reward and contingency evidence"
+    ],
+    "P_out": [
+      "action choice/readout"
+    ],
+    "K": [
+      "prediction-error actor/critic update",
+      "Beta belief update",
+      "actor decay",
+      "uncertainty-responsive feedback update"
+    ],
+    "T": [
+      "trial-by-trial choice/outcome/update succession"
+    ],
+    "rho_O": [
+      "choice/performance trace and modeled neural/population response"
+    ]
+  },
+  "system_world_boundary": {
+    "system": [
+      "actor/critic, reward beliefs, source feedback loop"
+    ],
+    "world": [
+      "stochastic reward contingencies and change points"
+    ],
+    "boundary_note": "three Marr-level models are explanatory counterparts, not a serial controller stack"
+  },
+  "arbitrary_procedural_logic_hidden_in_X_or_K": false,
+  "extra_coordinator_state_introduced": false,
+  "reconstruction_status": "DIRECT_SOURCE_GROUNDED_RECONSTRUCTION_COMPLETE"
+}

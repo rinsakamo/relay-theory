@@ -1,0 +1,147 @@
+{
+  "schema": "relaytheory.p399.main.m2.pass_c_source_closed_adjudication_v1",
+  "slot": "CTL-03",
+  "doi": "10.7554/eLife.28040",
+  "inputs": {
+    "stage_a_path": "research/paper2/p399/main/parallel/M2_ctl_lrn/CTL-03/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json",
+    "stage_a_freeze_head": "935c5c9b12949758148a32f16ce52cddb64661e3",
+    "stage_b_path": "research/paper2/p399/main/parallel/M2_ctl_lrn/CTL-03/PASS_B_RESULT_INFORMED_REAUDIT_v1.json",
+    "stage_b_commit": "d96ac283bbd2e826675552e9832283868b26755c"
+  },
+  "safeguards": {
+    "C1_original_a_coverage_and_overpatch": true,
+    "C2_material_negative_limit_enumeration": true
+  },
+  "adjudications": [
+    {
+      "objection_id": "B01",
+      "source_locus": "source loci already enumerated in Stage A",
+      "strongest_alternate_reading": "Feature/Contextual/Temporal Control regressors could be treated as internal controller variables.",
+      "original_a_gap_test": "ALREADY_QUALIFIED_IN_A",
+      "disposition": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": null,
+      "material_conditions": [
+        {
+          "id": "CTL03-B01-COND",
+          "treatment": "ALREADY_IN_A",
+          "note": "They are task-demand conditions/regressors; source DCM models how regional dynamics are modulated by them."
+        }
+      ]
+    },
+    {
+      "objection_id": "B02",
+      "source_locus": "source loci already enumerated in Stage A",
+      "strongest_alternate_reading": "Regional activation or an LPFC label could be promoted to generic control operator.",
+      "original_a_gap_test": "ALREADY_QUALIFIED_IN_A",
+      "disposition": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": null,
+      "material_conditions": [
+        {
+          "id": "CTL03-B02-COND",
+          "treatment": "ALREADY_IN_A",
+          "note": "Only source-estimated directed effective-connectivity relations are retained as model operators; activation alone is not."
+        }
+      ]
+    },
+    {
+      "objection_id": "B03",
+      "source_locus": "source loci already enumerated in Stage A",
+      "strongest_alternate_reading": "DCM hidden state/connectivity estimates might be treated as learned persistent coordinator state.",
+      "original_a_gap_test": "ALREADY_QUALIFIED_IN_A",
+      "disposition": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": null,
+      "material_conditions": [
+        {
+          "id": "CTL03-B03-COND",
+          "treatment": "ALREADY_IN_A",
+          "note": "They are states/parameters of a fitted neural dynamics model; model inversion occurs at analysis level, not within-agent learning."
+        }
+      ]
+    },
+    {
+      "objection_id": "B04",
+      "source_locus": "Results/Materials and methods: DCM model-space comparison",
+      "strongest_alternate_reading": "Winning revised DCM could be reported as uniquely identified by current sample.",
+      "original_a_gap_test": "ALREADY_QUALIFIED_IN_A",
+      "disposition": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": null,
+      "material_conditions": [
+        {
+          "id": "CTL03-B04-COND",
+          "treatment": "CLAIM_LIMITED",
+          "note": "Current-sample 913-model search left 19 similarly plausible candidates; prior-sample adjudication was used. Nonuniqueness must remain explicit."
+        }
+      ]
+    },
+    {
+      "objection_id": "B05",
+      "source_locus": "Results/Discussion: unexpected caudal effect and revised pathway",
+      "strongest_alternate_reading": "Causal test might be summarized as simple confirmation of prior DCM.",
+      "original_a_gap_test": "ALREADY_QUALIFIED_IN_A",
+      "disposition": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": null,
+      "material_conditions": [
+        {
+          "id": "CTL03-B05-COND",
+          "treatment": "ALREADY_IN_A",
+          "note": "Unexpected caudal/SFS effect on Temporal Control contradicted the original model and triggered revision; Stage A retains it."
+        }
+      ]
+    },
+    {
+      "objection_id": "B06",
+      "source_locus": "visible article figure-supplement/replication analysis",
+      "strongest_alternate_reading": "Earlier trait cognitive-ability association could be carried forward.",
+      "original_a_gap_test": "ALREADY_QUALIFIED_IN_A",
+      "disposition": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": null,
+      "material_conditions": [
+        {
+          "id": "CTL03-B06-COND",
+          "treatment": "ALREADY_IN_A",
+          "note": "Source did not reproduce that association; it remains adverse evidence."
+        }
+      ]
+    },
+    {
+      "objection_id": "B07",
+      "source_locus": "source loci already enumerated in Stage A",
+      "strongest_alternate_reading": "Best tested DCM might be generalized to globally best architecture.",
+      "original_a_gap_test": "ALREADY_QUALIFIED_IN_A",
+      "disposition": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": null,
+      "material_conditions": [
+        {
+          "id": "CTL03-B07-COND",
+          "treatment": "CLAIM_LIMITED",
+          "note": "Source allows unexamined modulations to fit better; conclusion is bounded to tested model spaces."
+        }
+      ]
+    },
+    {
+      "objection_id": "B08",
+      "source_locus": "source loci already enumerated in Stage A",
+      "strongest_alternate_reading": "Scientific model-space refinement could be mapped as an online learner update.",
+      "original_a_gap_test": "ALREADY_QUALIFIED_IN_A",
+      "disposition": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": null,
+      "material_conditions": [
+        {
+          "id": "CTL03-B08-COND",
+          "treatment": "ALREADY_IN_A",
+          "note": "Revision/model selection is analyst-level chronology and not an in-agent learning rule."
+        }
+      ]
+    }
+  ],
+  "c_only_omission_sweep": {
+    "performed": true,
+    "new_source_gap_confirmed": 0,
+    "unresolved_new_defect": 0
+  },
+  "append_only_patches": [],
+  "duplicate_patching": false,
+  "adjudicated_source_reconstruction": "Retain the source's revised DCM as its adjudicated best-tested model while explicitly preserving present-sample nonuniqueness and untested-model-space limitation. No task-demand proxy, neural activation, or fitted parameter is upgraded into a generic coordinator.",
+  "negative_evidence_retained": true,
+  "stage_c_complete": true
+}

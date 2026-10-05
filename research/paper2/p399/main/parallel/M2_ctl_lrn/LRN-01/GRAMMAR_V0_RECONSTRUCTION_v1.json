@@ -1,0 +1,53 @@
+{
+  "schema": "relaytheory.p399.main.m2.grammar_v0_reconstruction_v1",
+  "slot": "LRN-01",
+  "doi": "10.1038/s41467-025-58848-6",
+  "input_adjudication_freeze_head": "e563741558c2ceb2e1b4017018a1a87901fbd6f4",
+  "grammar_version": "frozen Grammar v0",
+  "roles_unchanged": true,
+  "role_mapping": {
+    "Pi": [
+      "encoder/representation subsystem",
+      "decoder/action-policy subsystem"
+    ],
+    "X": [
+      "encoder parameters",
+      "latent representation state z",
+      "decoder/policy parameters"
+    ],
+    "C": [
+      "probability/admissibility constraints and source training/test task constraints"
+    ],
+    "Q": [
+      "expected reward minus lambda-weighted mutual-information representation cost"
+    ],
+    "P_in": [
+      "training state/stimulus and reward-feedback writes",
+      "test stimulus input without inventing test-time learning"
+    ],
+    "P_out": [
+      "action/choice and generalization readout"
+    ],
+    "K": [
+      "encoder/decoder policy-gradient updates under coupled reward/compression objective"
+    ],
+    "T": [
+      "training succession followed by test succession; learned parameters persist into test"
+    ],
+    "rho_O": [
+      "training choices/rewards and test generalization behavior"
+    ]
+  },
+  "system_world_boundary": {
+    "system": [
+      "learned encoder/decoder and latent representation"
+    ],
+    "world": [
+      "experimenter-defined stimulus associations, training/test schedule, feature embeddings in feature variants"
+    ],
+    "boundary_note": "static learned representation during test is not active coordination state"
+  },
+  "arbitrary_procedural_logic_hidden_in_X_or_K": false,
+  "extra_coordinator_state_introduced": false,
+  "reconstruction_status": "DIRECT_SOURCE_GROUNDED_RECONSTRUCTION_COMPLETE"
+}

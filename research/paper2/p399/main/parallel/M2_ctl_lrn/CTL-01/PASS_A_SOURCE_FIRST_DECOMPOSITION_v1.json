@@ -1,0 +1,84 @@
+{
+  "schema": "relaytheory.p399.main.m2.pass_a_source_first_decomposition_v1",
+  "slot": "CTL-01",
+  "doi": "10.1371/journal.pcbi.1012228",
+  "stage": "A_SOURCE_FIRST_DECOMPOSITION",
+  "protocol": "RIR v2.3.1 source-closed-C",
+  "source_scope": "adopted publisher Version of Record full HTML; standalone linked supplement content excluded from new Stage-A evidence unless embedded",
+  "grammar_mapping_performed": false,
+  "result_informed_adjudication_performed": false,
+  "source_loci": [
+    "Abstract/Introduction integrated BCC+MCMC claim",
+    "Methods: Bayesian contextual control model",
+    "Methods: Planning and reaction times",
+    "Methods: Certainty-based stopping criterion",
+    "Methods: Generation of reaction times from sampling steps",
+    "Results/Discussion model-comparison and simulation boundaries"
+  ],
+  "internal_state": [
+    "posterior beliefs over latent context",
+    "context-specific MDP beliefs about transition/outcome contingencies",
+    "context-specific policy-prior counts alpha",
+    "posterior distribution over deterministic action-sequence policies",
+    "within-decision MCMC chain plus Dirichlet pseudo-counts eta used to approximate the policy posterior",
+    "Dirichlet entropy used as current sampling-certainty quantity"
+  ],
+  "observed_or_input_variables": [
+    "context cues",
+    "experienced states and rewards/outcomes",
+    "current episode/task contingencies as experienced by the agent",
+    "desired/preferred outcomes represented in the source model"
+  ],
+  "action_or_control_variables": [
+    "deterministic action-sequence policy pi; the last accepted sample at stopping determines the executed policy"
+  ],
+  "update_operators": [
+    "Bayesian/context inference from cues and experienced contingencies",
+    "episode-wise update of task/MDP beliefs",
+    "Bayesian count update of context-specific prior over policies",
+    "within-decision independent Metropolis-Hastings sampling and accepted-chain update",
+    "Dirichlet pseudo-count update and entropy recomputation during planning"
+  ],
+  "value_or_policy_quantities": [
+    "reward likelihood p(R|pi,c)",
+    "predicted-free-energy approximation used to evaluate a policy",
+    "context-specific policy prior p(pi|c,alpha)",
+    "policy posterior p(pi|R,c,alpha)"
+  ],
+  "gating_or_selection_rules": [
+    "latent-context posterior mixes context-specific policy posteriors",
+    "prior-guided sampling prioritizes policies",
+    "sampling stops when Dirichlet entropy crosses the source threshold; then the last sample selects policy"
+  ],
+  "learning_rule": [
+    "across-episode Bayesian updating of task contingencies and policy-prior counts; distinct from within-decision MCMC posterior approximation"
+  ],
+  "temporal_ordering": [
+    "observe cue/experience",
+    "infer context/task beliefs",
+    "form policy prior and reward likelihood/posterior target",
+    "iteratively sample/evaluate policies and update eta",
+    "stop on certainty threshold/time-pressure rule",
+    "execute selected policy",
+    "observe episode outcomes",
+    "update across-episode task representation and policy prior"
+  ],
+  "environmental_or_task_variables": [
+    "task/context schedule, actual transitions/outcome contingencies, flanker/task-switch mappings, and simulation settings are task/world conditions rather than extra hidden controller modules"
+  ],
+  "model_alternatives": [
+    "base BCC without the new RT sampler",
+    "RL/value model coupled to DDM as explicit comparator",
+    "value-only versus automatism+value configurations",
+    "flanker and task-switching simulation configurations"
+  ],
+  "source_defined_controller_hierarchy": "context-dependent planning, learned repetition prior, and sampling/stopping are source-defined interacting mechanisms; no additional coordinator is posited",
+  "negative_or_adverse_results": [
+    "base BCC is inherited from earlier work",
+    "cross-task demonstrations are simulations of established effects, not a universal participant-level fit",
+    "DDM comparison does not identify the MCMC stopping process with DDM evidence accumulation"
+  ],
+  "reset_or_reinitialization_boundary": "sampling-specific chain/eta is decision-local and must not be conflated with the across-episode alpha policy prior; reset details not explicit in visible source are not invented",
+  "stage_a_complete": true,
+  "stage_a_frozen_before_b": true
+}

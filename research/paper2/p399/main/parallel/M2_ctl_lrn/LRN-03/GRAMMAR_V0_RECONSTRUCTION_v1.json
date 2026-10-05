@@ -1,0 +1,55 @@
+{
+  "schema": "relaytheory.p399.main.m2.grammar_v0_reconstruction_v1",
+  "slot": "LRN-03",
+  "doi": "10.7554/eLife.21492",
+  "input_adjudication_freeze_head": "e563741558c2ceb2e1b4017018a1a87901fbd6f4",
+  "grammar_version": "frozen Grammar v0",
+  "roles_unchanged": true,
+  "role_mapping": {
+    "Pi": [
+      "decision RNN",
+      "value RNN during learning"
+    ],
+    "X": [
+      "decision recurrent state/weights",
+      "value recurrent state/weights during learning"
+    ],
+    "C": [
+      "task/environment transition and stochastic-policy constraints as represented by source"
+    ],
+    "Q": [
+      "expected future return/value baseline and received reward objective"
+    ],
+    "P_in": [
+      "task observation/stimulus and reward feedback"
+    ],
+    "P_out": [
+      "stochastic action policy/readout"
+    ],
+    "K": [
+      "recurrent state evolution",
+      "decision-network policy-gradient weight update",
+      "value-network return-prediction update"
+    ],
+    "T": [
+      "within-trial recurrent succession",
+      "across-trial/episode training succession",
+      "post-training execution phase"
+    ],
+    "rho_O": [
+      "actions, rewards, task performance and modeled activity patterns"
+    ]
+  },
+  "system_world_boundary": {
+    "system": [
+      "decision/value networks during learning; decision network at execution"
+    ],
+    "world": [
+      "task schedule, observation stream, rewards and action timing"
+    ],
+    "boundary_note": "value network is a learning aid, not a mandatory execution-time coordinator"
+  },
+  "arbitrary_procedural_logic_hidden_in_X_or_K": false,
+  "extra_coordinator_state_introduced": false,
+  "reconstruction_status": "DIRECT_SOURCE_GROUNDED_RECONSTRUCTION_COMPLETE"
+}

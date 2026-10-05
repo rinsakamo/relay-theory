@@ -1,0 +1,29 @@
+name: P399 MAIN M2 CTL-LRN source-closed reconstruction
+
+on:
+  push:
+    branches:
+      - paper2/p399-main-m2-ctl-lrn-20261005
+    paths:
+      - research/paper2/p399/main/parallel/M2_ctl_lrn/**
+      - .github/workflows/p399-main-m2-ctl-lrn.yml
+  pull_request:
+    branches:
+      - paper2/p399-main-go-kickoff-20261005
+    paths:
+      - research/paper2/p399/main/parallel/M2_ctl_lrn/**
+      - .github/workflows/p399-main-m2-ctl-lrn.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  fail-closed:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: M2 fail-closed validation
+        run: python research/paper2/p399/main/parallel/M2_ctl_lrn/test_m2_fail_closed.py
