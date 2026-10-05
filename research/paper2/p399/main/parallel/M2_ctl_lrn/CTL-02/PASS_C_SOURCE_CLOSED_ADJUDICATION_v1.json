@@ -1,0 +1,132 @@
+{
+  "schema": "relaytheory.p399.main.m2.pass_c_source_closed_adjudication_v1",
+  "slot": "CTL-02",
+  "doi": "10.7554/eLife.12029",
+  "inputs": {
+    "stage_a_path": "research/paper2/p399/main/parallel/M2_ctl_lrn/CTL-02/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json",
+    "stage_a_freeze_head": "935c5c9b12949758148a32f16ce52cddb64661e3",
+    "stage_b_path": "research/paper2/p399/main/parallel/M2_ctl_lrn/CTL-02/PASS_B_RESULT_INFORMED_REAUDIT_v1.json",
+    "stage_b_commit": "d66f0a1f1a21a93a483675b7e6c8502d27bc8b40"
+  },
+  "safeguards": {
+    "C1_original_a_coverage_and_overpatch": true,
+    "C2_material_negative_limit_enumeration": true
+  },
+  "adjudications": [
+    {
+      "objection_id": "B01",
+      "source_locus": "Abstract/Discussion neural-model interpretation",
+      "strongest_alternate_reading": "TAN physiology could be read as direct proof of a biological controller.",
+      "original_a_gap_test": "ALREADY_QUALIFIED_IN_A",
+      "disposition": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": null,
+      "material_conditions": [
+        {
+          "id": "CTL02-B01-COND",
+          "treatment": "ALREADY_IN_A",
+          "note": "The source uses a neural computational model plus cross-level analogues; biological implementation remains a modeled proposal."
+        }
+      ]
+    },
+    {
+      "objection_id": "B02",
+      "source_locus": "source loci already enumerated in Stage A",
+      "strongest_alternate_reading": "Uncertainty-feedback loop might be redescribed as an added coordinator.",
+      "original_a_gap_test": "ALREADY_QUALIFIED_IN_A",
+      "disposition": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": null,
+      "material_conditions": [
+        {
+          "id": "CTL02-B02-COND",
+          "treatment": "ALREADY_IN_A",
+          "note": "The uncertainty-responsive TAN/decay feedback is already the source-defined mechanism; no extra coordinating state is licensed."
+        }
+      ]
+    },
+    {
+      "objection_id": "B03",
+      "source_locus": "source loci already enumerated in Stage A",
+      "strongest_alternate_reading": "Go/NoGo weights or Beta beliefs could be mislabeled as persistent coordinator state.",
+      "original_a_gap_test": "ALREADY_QUALIFIED_IN_A",
+      "disposition": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": null,
+      "material_conditions": [
+        {
+          "id": "CTL02-B03-COND",
+          "treatment": "ALREADY_IN_A",
+          "note": "They are source learning/belief state updated from outcomes; they do not coordinate independently of source action-learning machinery."
+        }
+      ]
+    },
+    {
+      "objection_id": "B04",
+      "source_locus": "source loci already enumerated in Stage A",
+      "strongest_alternate_reading": "Entropy-dependent flexibility could collapse learning-rate regulation and reward learning into one operator.",
+      "original_a_gap_test": "ALREADY_QUALIFIED_IN_A",
+      "disposition": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": null,
+      "material_conditions": [
+        {
+          "id": "CTL02-B04-COND",
+          "treatment": "ALREADY_IN_A",
+          "note": "Actor/critic/Beta updates and uncertainty-responsive modulation are distinct source operations and remain separated."
+        }
+      ]
+    },
+    {
+      "objection_id": "B05",
+      "source_locus": "algorithmic OpAL model ancestry",
+      "strongest_alternate_reading": "OpAL/actor-critic could be counted as paper-specific control architecture.",
+      "original_a_gap_test": "ALREADY_QUALIFIED_IN_A",
+      "disposition": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": null,
+      "material_conditions": [
+        {
+          "id": "CTL02-B05-COND",
+          "treatment": "ALREADY_IN_A",
+          "note": "Source explicitly inherits OpAL; paper-specific contribution is uncertainty/TAN modulation across levels."
+        }
+      ]
+    },
+    {
+      "objection_id": "B06",
+      "source_locus": "source loci already enumerated in Stage A",
+      "strongest_alternate_reading": "Model success might conceal lack of direct experimental test of new predictions.",
+      "original_a_gap_test": "ALREADY_QUALIFIED_IN_A",
+      "disposition": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": null,
+      "material_conditions": [
+        {
+          "id": "CTL02-B06-COND",
+          "treatment": "ALREADY_IN_A",
+          "note": "Source identifies experimental testing of uncertainty predictions as a next step; Stage A retains this adverse boundary."
+        }
+      ]
+    },
+    {
+      "objection_id": "B07",
+      "source_locus": "source loci already enumerated in Stage A",
+      "strongest_alternate_reading": "Three Marr levels could be mistaken for a serial controller hierarchy.",
+      "original_a_gap_test": "ALREADY_QUALIFIED_IN_A",
+      "disposition": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "patch": null,
+      "material_conditions": [
+        {
+          "id": "CTL02-B07-COND",
+          "treatment": "ALREADY_IN_A",
+          "note": "They are explanatory models at different levels, not serial cognitive modules."
+        }
+      ]
+    }
+  ],
+  "c_only_omission_sweep": {
+    "performed": true,
+    "new_source_gap_confirmed": 0,
+    "unresolved_new_defect": 0
+  },
+  "append_only_patches": [],
+  "duplicate_patching": false,
+  "adjudicated_source_reconstruction": "Stage A survives; source-defined uncertainty feedback remains CTL content but is not promoted to an additional coordinator or direct biological proof.",
+  "negative_evidence_retained": true,
+  "stage_c_complete": true
+}
