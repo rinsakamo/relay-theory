@@ -38,7 +38,7 @@ def validate(freeze,res):
                 r=receipts[sid]
                 assert r["raw_bytes_frozen"] is True
                 assert HEX64.match(r["sha256"])
-                raw=ROOT.parents[0] / pathlib.Path(r["raw_repository_path"]).relative_to("research/paper2/p399/g4/w8s_source_blockers")
+                raw=ROOT / pathlib.Path(r["raw_repository_path"]).relative_to("research/paper2/p399/g4/w8s_source_blockers")
                 assert raw.exists(), raw
                 assert hashlib.sha256(raw.read_bytes()).hexdigest()==r["sha256"]
     return True
@@ -73,8 +73,17 @@ class W8SFailClosed(unittest.TestCase):
         for obj in (RES,IMP,CON):
             self.assertIs(obj.get("global_family_independence_certified"),False)
             self.assertIs(obj.get("main_authorized"),False)
-        for p in IMP["import_fragments"]:
-            self.assertIs(p["global_family_independence_certified"],False)
+        def walk(x):
+            if isinstance(x,dict):
+                for k,v in x.items():
+                    if k=="global_family_independence_certified":
+                        self.assertIs(v,False)
+                    if k in {"main_authorized","scientific_main_authorized"}:
+                        self.assertIs(v,False)
+                    walk(v)
+            elif isinstance(x,list):
+                for v in x: walk(v)
+        for obj in (RES,IMP,CON): walk(obj)
     def test_only_ready_imported(self):
         ready={p["id"] for p in RES["papers"] if p["status"]=="PROFILE_FRAGMENT_READY"}
         self.assertEqual({p["id"] for p in IMP["import_fragments"]},ready)
