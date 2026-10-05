@@ -1,0 +1,73 @@
+{
+  "schema": "relaytheory.p399.main.m4.grammar_v0_reconstruction_v1",
+  "slot": "INT-05",
+  "doi": "10.1371/journal.pcbi.1004110",
+  "authority": {
+    "stage_c_exact_commit": "873031d8d45e7b41e6c89fb3c73c879d42e05900",
+    "grammar": "frozen Grammar v0",
+    "grammar_role_set": [
+      "Pi",
+      "X",
+      "C",
+      "Q",
+      "P_in",
+      "P_out",
+      "K",
+      "T",
+      "rho/O"
+    ]
+  },
+  "role_mapping": {
+    "Pi": [
+      "decision subsystem",
+      "action-preparation subsystem",
+      "target alternatives",
+      "source model variants"
+    ],
+    "X": [
+      "accumulated decision evidence z",
+      "source-defined action-focus/internal preparation state"
+    ],
+    "C": [
+      "decision-bound/termination conditions",
+      "target geometry/model-variant constraints"
+    ],
+    "Q": [
+      "target/choice orientation from evidence",
+      "commitment criterion in the embodied-feedback variant"
+    ],
+    "P_in": [
+      "sensory evidence",
+      "source-defined current body/action position feedback"
+    ],
+    "P_out": [
+      "movement/action-focus command",
+      "final target/choice"
+    ],
+    "K": [
+      "drift-diffusion evidence update",
+      "evidence-to-action-focus mapping",
+      "movement evolution at interface",
+      "position-dependent feedback into subsequent decision evidence"
+    ],
+    "T": [
+      "continuous/overlapping decision and action evolution",
+      "action completion/termination"
+    ],
+    "rho/O": [
+      "current physical position/trajectory as boundary trace",
+      "choice",
+      "reaction time",
+      "change-of-mind/trajectory signatures"
+    ]
+  },
+  "system_world_experiment_distinction": "Physical trajectory/position is kept at the embodied System/World boundary via P_in/rho/O rather than silently retyped as a new internal coordinator memory.",
+  "system_world_experiment_distinction_preserved": true,
+  "opaque_coordination_object_used": false,
+  "opaque_universal_interpreter_used": false,
+  "arbitrary_model_code_packed_into_X_or_K": false,
+  "new_grammar_role_added": false,
+  "added_assumptions": [],
+  "source_defined_persistent_state_is_not_relabelled_as_new_coordinator": true,
+  "reconstruction_status": "DIRECT_FROZEN_GRAMMAR_V0_RECONSTRUCTION"
+}

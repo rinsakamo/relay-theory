@@ -1,0 +1,87 @@
+{
+  "schema": "relaytheory.p399.main.m4.pass_a_source_first_decomposition_v1",
+  "slot": "INT-05",
+  "doi": "10.1371/journal.pcbi.1004110",
+  "source_lock": "research/paper2/p399/main/parallel/M4_int01_06/INT-05/SOURCE_AUTHORITY_LOCK_v1.json",
+  "stage_sequence": {
+    "source_lock_freeze_commit": "a4ef8fbdafc3870ef100bafbfaed20f46adbe87f",
+    "result_informed_architecture_used": false
+  },
+  "grammar_mapping_performed": false,
+  "architecture_outcome_assigned": false,
+  "component_mechanisms": [
+    "drift-diffusion evidence z",
+    "evidence-to-action-focus mapping",
+    "body/action trajectory and current position",
+    "position-dependent commitment feedback in embodied Model4"
+  ],
+  "component_local_state": [
+    "evidence z",
+    "action focus/current movement position",
+    "body/world trajectory at boundary"
+  ],
+  "shared_state": "No added shared internal coordinator; current position is source-defined body/action state sampled by feedback.",
+  "message_information_flow": [
+    "sensory evidence -> z",
+    "z -> action focus",
+    "action focus -> movement/position",
+    "Model4 position/distance -> feedback into subsequent decision evidence"
+  ],
+  "ordering": [
+    "decision and movement overlap in parallel variants",
+    "action completion terminates response",
+    "feedback closes loop in Model4"
+  ],
+  "gating": [
+    "decision bound/action completion conditions termination"
+  ],
+  "control_dependencies": [
+    "Model4 movement position influences later decision through explicit source term"
+  ],
+  "learning_dependencies": [
+    "not central integration mechanism"
+  ],
+  "memory_dependencies": [
+    "momentary evidence/movement states only; no invented coordinator memory"
+  ],
+  "prediction_dependencies": [
+    "choice/RT/trajectory/change-of-mind signatures"
+  ],
+  "task_world_variables": [
+    "target geometry",
+    "sensory evidence",
+    "physical movement/position"
+  ],
+  "readout_action_stage": "continuous trajectory and final target/choice",
+  "explicit_arbitration_routing": [
+    "Model4 movement position influences later decision through explicit source term"
+  ],
+  "model_variants": [
+    "Model1 serial",
+    "Model2 parallel/change-of-mind",
+    "Model3 action preparation",
+    "Model4 action preparation + commitment feedback"
+  ],
+  "adverse_null_results": [
+    "some conditions do not clearly adjudicate variants",
+    "biomechanics/action costs simplified",
+    "embodiment not automatically internal cognitive state"
+  ],
+  "integration_question": {
+    "A": "decision/evidence dynamics",
+    "B": "action preparation/movement dynamics",
+    "extra": [
+      "position feedback in Model4"
+    ],
+    "shared": "source-defined body/action position, not reconstruction-added shared state",
+    "exchange": "evidence-dependent action focus and position feedback",
+    "temporal": "overlapping decision/action with feedback",
+    "update": "position modifies later evidence/commitment",
+    "interaction": "direct closed loop",
+    "mediator": "source-defined action-focus/position feedback relation",
+    "mediator_state": "BODY_ACTION_STATE_SOURCE_DEFINED",
+    "origin": "SOURCE"
+  },
+  "source_ordered_omission_sweep": "COMPLETED_AT_STAGE_A_SOURCE_FIRST_SCOPE",
+  "frozen": true
+}

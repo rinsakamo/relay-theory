@@ -1,0 +1,68 @@
+{
+  "schema": "relaytheory.p399.main.m4.pass_b_result_informed_reaudit_v1",
+  "slot": "INT-02",
+  "doi": "10.3390/e26060484",
+  "frozen_stage_a": {
+    "commit": "0992a46f38f4beefb4bf6f29a69a4b9637390e12",
+    "path": "research/paper2/p399/main/parallel/M4_int01_06/INT-02/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json"
+  },
+  "stage_b_received_frozen_a": true,
+  "stage_a_mutated": false,
+  "objections": [
+    {
+      "id": "B01",
+      "challenge": "Adaptive beta(s,t) could be mislabeled as reconstruction-added arbitration.",
+      "alternate": "beta is explicitly source-defined state coupling DPEFE and CL.",
+      "result": "SOURCE_DEFINED_COORDINATION"
+    },
+    {
+      "id": "B02",
+      "challenge": "Generic active-inference/planning formalism could be promoted to a new central coordinator.",
+      "alternate": "Keep DPEFE, CL, beta update and pooling as separate source terms only.",
+      "result": "RETAIN_A_BOUNDARY"
+    },
+    {
+      "id": "B03",
+      "challenge": "Printed Eq.9 lack of Z could invite silent repair.",
+      "alternate": "Preserve printed omission; normalization in separate historical code is supporting provenance, not a publisher correction.",
+      "result": "SOURCE_AMBIGUITY_MUST_REMAIN"
+    },
+    {
+      "id": "B04",
+      "challenge": "Eq.8 and Eq.16 could be collapsed into global identity.",
+      "alternate": "Eq.8 remains a local approximation under source-stated conditions.",
+      "result": "NEGATIVE_EVIDENCE_RETAIN"
+    },
+    {
+      "id": "B05",
+      "challenge": "Simulation performance could be read as universal arbitration superiority.",
+      "alternate": "Retain task/regime-specific mixed outcomes and lack of human causal validation.",
+      "result": "NEGATIVE_EVIDENCE_RETAIN"
+    }
+  ],
+  "source_ordered_omission_sweep": {
+    "completed": true,
+    "coverage": [
+      "generative/planning definitions",
+      "CL risk definition",
+      "Eq.8 beta update",
+      "Eq.9 mixed policy",
+      "Eq.16 derivation",
+      "simulation comparisons and limitations"
+    ]
+  },
+  "common_false_conflations_audited": [
+    "shared state vs communication interface",
+    "gating vs added coordination",
+    "recurrent activity vs coordinator memory",
+    "hierarchy vs coordinator",
+    "workspace vs newly added A2",
+    "replay vs online sequencing",
+    "Bayesian inference vs control",
+    "model-based planning vs arbitration",
+    "embodiment/world feedback vs internal coordination",
+    "learned task set vs controller state"
+  ],
+  "negative_evidence_disappearance": false,
+  "frozen": true
+}

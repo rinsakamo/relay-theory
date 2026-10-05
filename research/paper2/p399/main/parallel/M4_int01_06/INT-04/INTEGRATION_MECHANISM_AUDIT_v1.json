@@ -1,0 +1,39 @@
+{
+  "schema": "relaytheory.p399.main.m4.integration_mechanism_audit_v1",
+  "slot": "INT-04",
+  "doi": "10.1038/s41562-023-01799-z",
+  "question": "What exactly integrates what?",
+  "A": "hippocampal/MHN rapid-memory teacher",
+  "B": "cortical VAE/generative student",
+  "additional": [
+    "offline replay/training flow",
+    "extended novelty/prediction-residual path"
+  ],
+  "shared_state": "no separate generic shared state; component memories persist and replay samples are transferred data",
+  "exchange": "replayed/generated samples, cortical predictions, sensory residuals",
+  "temporal": "rapid online encoding -> offline replay/training -> later generative recall",
+  "update": "replay updates cortical model parameters",
+  "interaction": "mediated",
+  "mediator": "source-defined replay/training flow",
+  "mediator_state": "no separate persistent coordinator state",
+  "mediator_origin": "original source",
+  "source_defined_coordination": [
+    "teacher/student coupling through offline replay",
+    "extended novelty/prediction-residual reconstruction path"
+  ],
+  "source_defined_coordination_double_counted_as_added_mechanism": false,
+  "reconstruction_added_stateless_interfaces": [],
+  "reconstruction_added_stateless_interface_count": 0,
+  "reconstruction_added_stateful_mechanisms": [],
+  "reconstruction_added_stateful_mechanism_count": 0,
+  "shared_state_vs_interface_audited": true,
+  "gating_vs_coordination_audited": true,
+  "recurrent_activity_vs_coordinator_memory_audited": true,
+  "hierarchy_vs_coordinator_audited": true,
+  "workspace_vs_new_A2_audited": true,
+  "replay_vs_sequencing_audited": true,
+  "bayesian_inference_vs_control_audited": true,
+  "planning_vs_arbitration_audited": true,
+  "embodiment_vs_internal_coordination_audited": true,
+  "learned_task_set_vs_controller_state_audited": true
+}

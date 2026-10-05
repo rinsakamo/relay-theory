@@ -1,0 +1,95 @@
+{
+  "schema": "relaytheory.p399.main.m4.pass_c_source_closed_adjudication_v1",
+  "slot": "INT-04",
+  "doi": "10.1038/s41562-023-01799-z",
+  "inputs": {
+    "frozen_A_commit": "0992a46f38f4beefb4bf6f29a69a4b9637390e12",
+    "frozen_B_commit": "cc1228ff16a612165e0d35caaa7d89c86ad556ae",
+    "a_path": "research/paper2/p399/main/parallel/M4_int01_06/INT-04/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json",
+    "b_path": "research/paper2/p399/main/parallel/M4_int01_06/INT-04/PASS_B_RESULT_INFORMED_REAUDIT_v1.json"
+  },
+  "safeguards": {
+    "C1_entire_original_A_reopened_before_patch": true,
+    "C2_source_local_negative_limit_enumeration": true
+  },
+  "adjudications": [
+    {
+      "objection_id": "B01",
+      "decisive_source_locus": "Nature Fig.1 teacher/student replay flow and science supplement",
+      "strongest_alternate_interpretation": "Replay is temporally offline training flow, not a persistent online executive.",
+      "adjacent_limit_or_negative": "online/offline phase distinction",
+      "original_A_gap_test": "ALREADY_QUALIFIED_IN_A",
+      "disposition": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "append_only_patch": null
+    },
+    {
+      "objection_id": "B02",
+      "decisive_source_locus": "Fig.1 MHN teacher -> VAE student architecture",
+      "strongest_alternate_interpretation": "Teacher/student coupling is explicit; a third coordinator is unsupported.",
+      "adjacent_limit_or_negative": "MHN/VAE/teacher-student primitives pre-exist article",
+      "original_A_gap_test": "NO_IN_SCOPE_SOURCE_DEFECT",
+      "disposition": "NO_PATCH",
+      "append_only_patch": null
+    },
+    {
+      "objection_id": "B03",
+      "decisive_source_locus": "replay/sample transfer description",
+      "strongest_alternate_interpretation": "Samples are exchanged data; persistent state remains in source MHN/VAE components.",
+      "adjacent_limit_or_negative": "capacity/decay not simulated",
+      "original_A_gap_test": "ALREADY_QUALIFIED_IN_A",
+      "disposition": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "append_only_patch": null
+    },
+    {
+      "objection_id": "B04",
+      "decisive_source_locus": "Nature Fig.2 extended novelty architecture",
+      "strongest_alternate_interpretation": "Extended residual mechanism cannot be silently assigned to basic model.",
+      "adjacent_limit_or_negative": "basic event-level selective encoding not explicitly simulated",
+      "original_A_gap_test": "ALREADY_QUALIFIED_IN_A",
+      "disposition": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "append_only_patch": null
+    },
+    {
+      "objection_id": "B05",
+      "decisive_source_locus": "main limitations plus supplement/reporting-summary boundaries",
+      "strongest_alternate_interpretation": "Described mechanisms are not all simulated/semantically exhaustively certified.",
+      "adjacent_limit_or_negative": "supplement not pixel-exhaustive",
+      "original_A_gap_test": "ALREADY_QUALIFIED_IN_A",
+      "disposition": "REJECT_ALREADY_QUALIFIED_IN_A",
+      "append_only_patch": null
+    }
+  ],
+  "condition_ledger": [
+    {
+      "condition_id": "INT-04-C01",
+      "condition": "offline replay versus online coordination",
+      "treatment": "ALREADY_IN_A",
+      "binding": "Stage A ordering/control boundary"
+    },
+    {
+      "condition_id": "INT-04-C02",
+      "condition": "decay/deletion/capacity not simulated",
+      "treatment": "ALREADY_IN_A",
+      "binding": "Stage A adverse evidence"
+    },
+    {
+      "condition_id": "INT-04-C03",
+      "condition": "basic vs extended novelty distinction",
+      "treatment": "ALREADY_IN_A",
+      "binding": "Stage A variants/adverse evidence"
+    },
+    {
+      "condition_id": "INT-04-C04",
+      "condition": "supplement semantic audit incomplete",
+      "treatment": "CLAIM_LIMITED",
+      "binding": "Authority/source limitation retained"
+    }
+  ],
+  "condition_ledger_reconciled_exactly_once": true,
+  "duplicate_patching": false,
+  "patches": [],
+  "unresolved_decisive_new_coordinator_issue": false,
+  "adjudicated_reconstruction": "Hippocampal/MHN rapid memory and cortical generative learning integrate via source-defined offline replay/training; extended novelty adds a source-defined residual path. No online coordinator is introduced.",
+  "negative_evidence_preserved": true,
+  "frozen": true
+}
