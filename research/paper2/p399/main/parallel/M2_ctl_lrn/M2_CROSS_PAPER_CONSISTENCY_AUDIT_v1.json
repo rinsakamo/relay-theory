@@ -1,0 +1,167 @@
+{
+  "schema": "relaytheory.p399.main.m2.cross_paper_consistency_audit_v1",
+  "common_term_checks": [
+    {
+      "term": "uncertainty",
+      "distinctions": [
+        "CTL-01 policy/context/sampling uncertainty",
+        "CTL-02 reward/population uncertainty regulating feedback",
+        "LRN-02 inferred environmental volatility/uncertainty"
+      ],
+      "same_mechanism_assumed": false
+    },
+    {
+      "term": "policy",
+      "distinctions": [
+        "CTL-01 deterministic action-sequence policy sampled from posterior",
+        "CTL-02 opponent actor-derived action policy",
+        "LRN-01 encoder-decoder policy",
+        "LRN-03 recurrent stochastic decision policy"
+      ],
+      "same_mechanism_assumed": false
+    },
+    {
+      "term": "value",
+      "distinctions": [
+        "CTL-01 reward likelihood/predicted free energy",
+        "CTL-02 critic/action values",
+        "LRN-03 future-return baseline"
+      ],
+      "same_mechanism_assumed": false
+    },
+    {
+      "term": "learning rate",
+      "distinctions": [
+        "CTL-02 effective plasticity/flexibility regulation",
+        "LRN-02 latent-space update gain related to inferred volatility"
+      ],
+      "same_mechanism_assumed": false
+    },
+    {
+      "term": "context",
+      "distinctions": [
+        "CTL-01 latent task context inferred by agent",
+        "CTL-03 experimenter-defined cognitive-control condition"
+      ],
+      "same_mechanism_assumed": false
+    },
+    {
+      "term": "neural state",
+      "distinctions": [
+        "CTL-02 biophysical network model state",
+        "CTL-03 DCM hidden neural dynamics",
+        "LRN-03 trained RNN activity"
+      ],
+      "same_mechanism_assumed": false
+    },
+    {
+      "term": "representation",
+      "distinctions": [
+        "CTL-01 context-specific MDP/task representation",
+        "LRN-01 learned compressed latent representation"
+      ],
+      "same_mechanism_assumed": false
+    },
+    {
+      "term": "feedback",
+      "distinctions": [
+        "CTL-02 source-defined uncertainty/TAN feedback",
+        "LRN-03 environmental reward feedback used for learning"
+      ],
+      "same_mechanism_assumed": false
+    }
+  ],
+  "w9_intra_m2_pair_annotations": [
+    {
+      "a": "CTL-01",
+      "b": "CTL-02",
+      "category": "BOUNDED_SOURCE_NATIVE_DIFFERENCE",
+      "independence_inferred": false
+    },
+    {
+      "a": "CTL-01",
+      "b": "CTL-03",
+      "category": "BOUNDED_SOURCE_NATIVE_DIFFERENCE",
+      "independence_inferred": false
+    },
+    {
+      "a": "CTL-01",
+      "b": "LRN-01",
+      "category": "BOUNDED_SOURCE_NATIVE_DIFFERENCE",
+      "independence_inferred": false
+    },
+    {
+      "a": "CTL-01",
+      "b": "LRN-02",
+      "category": "SHARED_CONSTITUENT_ONLY",
+      "independence_inferred": false
+    },
+    {
+      "a": "CTL-01",
+      "b": "LRN-03",
+      "category": "BOUNDED_SOURCE_NATIVE_DIFFERENCE",
+      "independence_inferred": false
+    },
+    {
+      "a": "CTL-02",
+      "b": "CTL-03",
+      "category": "BOUNDED_SOURCE_NATIVE_DIFFERENCE",
+      "independence_inferred": false
+    },
+    {
+      "a": "CTL-02",
+      "b": "LRN-01",
+      "category": "SHARED_CONSTITUENT_ONLY",
+      "independence_inferred": false
+    },
+    {
+      "a": "CTL-02",
+      "b": "LRN-02",
+      "category": "SHARED_CONSTITUENT_ONLY",
+      "independence_inferred": false
+    },
+    {
+      "a": "CTL-02",
+      "b": "LRN-03",
+      "category": "SHARED_CONSTITUENT_ONLY",
+      "independence_inferred": false
+    },
+    {
+      "a": "CTL-03",
+      "b": "LRN-01",
+      "category": "BOUNDED_SOURCE_NATIVE_DIFFERENCE",
+      "independence_inferred": false
+    },
+    {
+      "a": "CTL-03",
+      "b": "LRN-02",
+      "category": "BOUNDED_SOURCE_NATIVE_DIFFERENCE",
+      "independence_inferred": false
+    },
+    {
+      "a": "CTL-03",
+      "b": "LRN-03",
+      "category": "BOUNDED_SOURCE_NATIVE_DIFFERENCE",
+      "independence_inferred": false
+    },
+    {
+      "a": "LRN-01",
+      "b": "LRN-02",
+      "category": "BOUNDED_SOURCE_NATIVE_DIFFERENCE",
+      "independence_inferred": false
+    },
+    {
+      "a": "LRN-01",
+      "b": "LRN-03",
+      "category": "SHARED_CONSTITUENT_ONLY",
+      "independence_inferred": false
+    },
+    {
+      "a": "LRN-02",
+      "b": "LRN-03",
+      "category": "BOUNDED_SOURCE_NATIVE_DIFFERENCE",
+      "independence_inferred": false
+    }
+  ],
+  "conclusion": "Lexical overlap is not mechanism identity. W9 bounded differences/shared constituents are retained as genealogy limitations and do not change roster or architectural outcomes."
+}
