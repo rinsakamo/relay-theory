@@ -10,6 +10,8 @@ jobs:
     timeout-minutes: 7
     steps:
       - uses: actions/checkout@v4
+      - name: Install PDF structural tools on runner
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils
       - name: Physical primary supplement byte retrieval and source page text anchors
         run: python3 research/paper2/p399/g2/supplement_20261005/fetch_three_official_supplements.py
       - name: Preserve independently acquired raw PDFs for reviewer audit without public Git commit
