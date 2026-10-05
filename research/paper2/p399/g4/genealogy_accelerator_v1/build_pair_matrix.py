@@ -148,7 +148,7 @@ def generate(g2_data, g1_data, legacy, profile_data):
         lambda r: key_internal(r["a"], r["b"]), 780, "MAIN-MAIN"
     )
     archival_external = unique_legacy(
-        legacy["main_g1_pairs"],
+        legacy["main_vs_g1_pairs"],
         lambda r: key_external(r["main_id"], r["g1_id"]), 800, "MAIN-G1"
     )
     expected_internal = {key_internal(a, b) for a, b in itertools.combinations(g2, 2)}
