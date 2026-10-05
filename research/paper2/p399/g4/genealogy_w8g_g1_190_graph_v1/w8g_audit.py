@@ -303,7 +303,7 @@ def build_graph(all_roster: dict[str, str], profiles: dict[str, dict], unresolve
     }
 
 def adjacency(graph: dict, ancestry_only=True):
-    rels = {"DIRECT_ADAPTATION", "DIRECT_EXTENSION", "DIRECT_IMPLEMENTATION_DESCENT", "EXPLICIT_SHARED_ANCESTOR"}
+    rels = {"DIRECT_MODEL_ANCESTOR", "DIRECT_ADAPTATION", "DIRECT_EXTENSION", "DIRECT_IMPLEMENTATION_DESCENT", "EXPLICIT_SHARED_ANCESTOR"}
     out = {}
     for n in graph["nodes"]:
         out[n["node_id"]] = []
