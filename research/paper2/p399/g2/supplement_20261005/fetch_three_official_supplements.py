@@ -6,12 +6,15 @@ committed. Exact complete source SHA/pages and bounded original-text anchors
 are recorded in Actions logs and generated private runner artifact.
 Source acquisition is not a scientific proof or an independent visual read.
 """
-import hashlib,json,os,re,subprocess,sys,urllib.request,urllib.error,xml.etree.ElementTree as ET
+import hashlib,json,os,re,subprocess,sys,urllib.request,urllib.error,xml.etree.ElementTree as ET,zipfile,io
 from pathlib import Path
 SPECS={
 "ATT03":{"pmc":"PMC2752446","name":"NIHMS107478-supplement.pdf","min":18000,"max":400000,
   "extra":["https://www.cell.com/neuron/supplemental/S0896-6273(09)00003-8",
-   "https://www.cns.nyu.edu/heegerlab/content/publications/Reynolds-Neuron2009-Supplement.pdf"]},
+   "https://www.cns.nyu.edu/heegerlab/content/publications/Reynolds-Neuron2009-Supplement.pdf",
+          "https://ars.els-cdn.com/content/image/1-s2.0-S0896627309000038-mmc1.pdf",
+          "https://ars.els-cdn.com/content/image/1-s2.0-S0896627309000038-sup1.pdf",
+          "https://www.cell.com/cms/10.1016/j.neuron.2009.01.002/attachment/2da36605-687f-4587-99b9-87d60081d61b/mmc1.pdf"]},
 "BLF01":{"pmc":"PMC12221758","name":"mmc1.pdf","min":35000,"max":1200000,
  "extra":["https://www.cell.com/cms/10.1016/j.isci.2025.112844/attachment/","https://www.cell.com/cms/10.1016/j.isci.2025.112844/mmc1.pdf"]},
 "PRD01":{"pmc":"PMC11878374","name":"NIHMS2053848-supplement-Supplementary.pdf","min":100000,"max":4000000,
@@ -75,6 +78,14 @@ for k,s in SPECS.items():
     for url in candidate_urls(s):
         try:
             b,ctype,actual=retrieve(url)
+            if b.startswith(b"PK\\x03\\x04") or b[:4] == bytes([80,75,3,4]):
+                with zipfile.ZipFile(io.BytesIO(b)) as z:
+                    entries=[n for n in z.namelist() if n.lower().endswith(".pdf")]
+                    print("ZIP", k, "available_pdf_entries", entries[:25],flush=True)
+                    same=[n for n in entries if n.rsplit("/",1)[-1].lower()==s["name"].lower()]
+                    if not same and k=="BLF01":same=[n for n in entries if n.lower().endswith("/mmc1.pdf")]
+                    if same:
+                        b=z.read(same[0]);actual += "#zip-member:"+same[0];ctype="application/pdf"
             if ispdf(b) and s["min"]<=len(b)<=s["max"]:
                 found=inspect_pdf(k,b,s,actual,attempts)
                 break
