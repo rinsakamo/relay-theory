@@ -1,0 +1,87 @@
+{
+  "schema": "relaytheory.p399.main.m1.pass_a_source_first_decomposition_v1",
+  "slot": "BLF-01",
+  "doi": "10.1016/j.isci.2025.112844",
+  "chronology": {
+    "stage": "A",
+    "source_authority_lock_commit": "6c35a8a531aa0d5eeb9dbf5f5dd26ae3becd7350",
+    "stage_a_frozen_before_stage_b": true,
+    "result_informed_material_seen_before_freeze": false
+  },
+  "adopted_source_universe": "exact SOURCE_AUTHORITY_LOCK_v1 package only",
+  "source_loci": [
+    "stimulus-space posterior/prior update",
+    "DV-space previous-choice-conditioned update with smoothing/leak",
+    "stimulus-to-DV quantile transform using stimulus-prior CDF",
+    "standard six-parameter two-prior generative algorithm",
+    "Fig.8 and Table2 alternative-model identities"
+  ],
+  "source_native_decomposition": {
+    "modeled_state_variables": [
+      "stimulus-space prior/posterior",
+      "decision-variable-space prior/posterior conditioned on previous choice",
+      "history/smoothing state",
+      "source model parameters"
+    ],
+    "observation_input_variables": [
+      "current stimulus",
+      "previous remembered sensory measurement",
+      "previous choice/decision variable",
+      "task/source identity"
+    ],
+    "internal_representations": [
+      "stimulus-space belief",
+      "decision-variable-space belief",
+      "quantile-mapped stimulus-to-DV coordinate"
+    ],
+    "transformation_update_operators": [
+      "stimulus-space Bayesian-like prior/posterior update",
+      "previous-choice-conditioned DV-space update",
+      "stimulus-prior CDF/quantile transform",
+      "smoothing/leak of prior influence",
+      "generative response simulation"
+    ],
+    "temporal_order": [
+      "previous trial belief/choice -> current prior -> current stimulus evidence -> posterior -> response"
+    ],
+    "learning_update_rules": [
+      "trial-history propagation of priors in stimulus and DV spaces; no separate meta-belief coordinator is source-defined"
+    ],
+    "decision_readout_rules": [
+      "reproduction/scaling responses generated from source-defined posterior/DV accounts"
+    ],
+    "constraints": [
+      "tested DV stability is ordinal",
+      "task/source-specific effects remain distinct",
+      "source-defined main model and published alternatives"
+    ],
+    "gating_selection_operations": [
+      "choice-conditioned DV prior and task/source conditions select which history influences current inference"
+    ],
+    "explicitly_modeled_interfaces": [
+      "input: stimulus and previous-trial history",
+      "output: behavioral reproduction/scaling response and summary-regression predictions"
+    ],
+    "system_world_boundary_assumptions": [
+      "stimulus/task/source are external; stimulus-space and DV-space beliefs are internal"
+    ],
+    "source_defined_model_variants": [
+      "standard model plus four explicitly enumerated alternatives in Fig.8/Table2"
+    ],
+    "negative_adverse_findings": [
+      "cross-source consecutive trials lack the within-source granularity effect",
+      "reproduction task lacks significant previous-DV-choice influence seen in scaling",
+      "prior-trial rather than current-trial granularity drives the effect",
+      "alternatives fail the full joint target in supplied simulations but are not mathematically excluded in all forms",
+      "transfer beyond ordinal DV spaces is not established"
+    ],
+    "unresolved_source_ambiguity": [
+      "source says 12 vs Fig.8 caption 16 coefficients",
+      "Methods says three alternatives while Fig.8/Table2 enumerate four",
+      "Supplementary Fig S1 is not frozen"
+    ]
+  },
+  "premature_grammar_mapping_performed": false,
+  "arbitrary_opaque_code_packed_into_generic_role": false,
+  "stage_a_status": "FROZEN_SOURCE_FIRST_DECOMPOSITION"
+}
