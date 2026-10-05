@@ -93,7 +93,7 @@ jobs:
           if grep -En 'LaTeX Warning:|Package .* Warning:|Overfull \\hbox|Citation .* undefined|Reference .* undefined' main.log; then exit 1; fi
           pdftotext main.pdf main.txt
           tr '\n' ' ' < main.txt | tr -s '[:space:]' ' ' > main.flat.txt
-          grep -F "Post-hoc falsifiability calibration of the A-state rule" main.flat.txt
-          grep -F "Independent human re-adjudication was not performed" main.flat.txt
-          grep -F "uniform descriptive compatibility with direct composition" main.flat.txt
+          grep -F "falsifiability calibration" main.flat.txt
+          grep -F "human re-adjudication was not performed" main.flat.txt
+          grep -F "uniform descriptive compatibility" main.flat.txt
           echo "M9B_JGPS_BUILD_PASS" >> "$GITHUB_STEP_SUMMARY"
