@@ -1,0 +1,116 @@
+{
+  "schema": "relaytheory.p399.g4.w1.source_gaps_and_blockers.v1",
+  "date_jst": "2026-10-05",
+  "authority": {
+    "issue": 399,
+    "pr438_head": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a"
+  },
+  "paper_status": [
+    {
+      "id": "ATT-01",
+      "status": "PROFILE_FRAGMENT_READY",
+      "source_gaps": [
+        "No raw SHA256 for publisher VoR HTML/PDF at PR #438 baseline.",
+        "No exhaustive correction-registry proof."
+      ],
+      "genealogy_gaps": [
+        "Whole ancestry NOT_ATTESTED; no direct DOI ancestor frozen."
+      ],
+      "blocking": false
+    },
+    {
+      "id": "ATT-02",
+      "status": "PROFILE_FRAGMENT_READY",
+      "source_gaps": [
+        "No exhaustive correction-registry proof."
+      ],
+      "genealogy_gaps": [
+        "ATT-03 direct citation/shared normalization constituent does not resolve whole ancestry."
+      ],
+      "blocking": false
+    },
+    {
+      "id": "BLF-02",
+      "status": "SOURCE_BLOCKED",
+      "source_gaps": [
+        "Required PLOS S1 File DOI 10.1371/journal.pcbi.1006972.s005 is source-linked but its raw bytes/SHA256 are absent from PR #438 baseline; W1 fetch followed a publisher redirect to an inaccessible time-limited object."
+      ],
+      "genealogy_gaps": [
+        "BLF-02↔BLF-03 remains UNDERDETERMINED beyond bounded main-article differences because the required supplement is not frozen."
+      ],
+      "blocking": true
+    },
+    {
+      "id": "BLF-03",
+      "status": "PROFILE_FRAGMENT_READY",
+      "source_gaps": [],
+      "genealogy_gaps": [
+        "BLF-03↔P08 switching-state filtering relationship remains UNDERDETERMINED; ancestry exhaustive audit not attempted."
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CNC-01",
+      "status": "SCIENTIFIC_ANCESTRY_UNDERDETERMINED",
+      "source_gaps": [
+        "No raw SHA256 for the publisher VoR PDF/HTML at PR #438 baseline."
+      ],
+      "genealogy_gaps": [
+        "Source explicitly adapts Liang, Jordan & Klein 2010 ICML algorithm, but the source bibliography provides no DOI; W1 will not invent one."
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CNC-02",
+      "status": "PROFILE_FRAGMENT_READY",
+      "source_gaps": [],
+      "genealogy_gaps": [
+        "No direct ancestry to C-HORSE or another selected MAIN paper is source-attested; whole ancestry NOT_ATTESTED."
+      ],
+      "blocking": false
+    },
+    {
+      "id": "CNC-03",
+      "status": "PROFILE_FRAGMENT_READY",
+      "source_gaps": [],
+      "genealogy_gaps": [
+        "Inherited C-HORSE lineage is explicit; shared Ketz 2013 ancestor with P15 prevents any independence promotion.",
+        "Only Schapiro 2017b DOI is frozen as immediate direct_model_ancestors entry; whole lineage remains NOT_ATTESTED."
+      ],
+      "blocking": false
+    }
+  ],
+  "unresolved_pair_blockers": [
+    {
+      "pair": [
+        "BLF-02",
+        "BLF-03"
+      ],
+      "state": "UNDERDETERMINED",
+      "reason": "Direct citation plus dynamic-environment Bayesian overlap; BLF-02 required S1 source gap remains."
+    },
+    {
+      "pair": [
+        "BLF-03",
+        "P08"
+      ],
+      "state": "UNDERDETERMINED",
+      "reason": "Both use switching-state/HMM-like Bayesian filtering; unique direct shared ancestor not frozen."
+    },
+    {
+      "pair": [
+        "CNC-03",
+        "P15"
+      ],
+      "state": "SHARED_LINEAGE_ANCESTOR_SUPPORTED",
+      "reason": "Both evidence chains support Ketz et al. 2013 DOI 10.1371/journal.pcbi.1003067 as lineage ancestor; this is a positive shared-ancestry signal."
+    }
+  ],
+  "nonblocking_but_unresolved": [
+    "ATT-01 and CNC-01 lack frozen publisher raw-byte SHA256; exact official Version-of-Record HTML identity is nevertheless source-readable and separately recorded.",
+    "No W1 paper has ancestry_exhaustiveness beyond NOT_ATTESTED.",
+    "No pair judgment is global genealogical independence."
+  ],
+  "main_authorized": false,
+  "global_family_independence_certified": false
+}

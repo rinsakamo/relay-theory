@@ -1,0 +1,257 @@
+{
+  "schema": "relaytheory.p399.g4.w1.external_source_inspection_ledger.v1",
+  "date_jst": "2026-10-05",
+  "authority": {
+    "issue": 399,
+    "pr438_head": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a",
+    "branch": "paper2/p399-g4-w1-att-blf-cnc-native-20261005"
+  },
+  "scope": {
+    "papers": [
+      "ATT-01",
+      "ATT-02",
+      "BLF-02",
+      "BLF-03",
+      "CNC-01",
+      "CNC-02",
+      "CNC-03"
+    ],
+    "main_science": false,
+    "grammar_v0": false,
+    "h_classification": false,
+    "backup_activation": false,
+    "shared_profile_edit": false
+  },
+  "repository_anchors": {
+    "frozen_g2_manifest": {
+      "path": "research/paper2/p399/g2/MAIN40_G2_ADMISSION_WORKING_MANIFEST_v5.json",
+      "blob_sha1": "b97b67a34ad9c2858745dfa6aa60444520eaab13",
+      "ref": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a"
+    },
+    "source_receipts": {
+      "path": "research/paper2/p399/g2/MAIN40_G2_ACTUAL_SOURCE_RECEIPTS_AND_DECISIONS_v2.json",
+      "blob_sha1": "ac3ffa59fcdc078550df587bc972632b7ca5ff7f",
+      "ref": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a"
+    }
+  },
+  "method": "Repository-first. Publisher Version of Record or complete publisher HTML was inspected only where existing repository evidence was not enough to freeze source-native central operators. No preliminary MAIN structural outcomes were inspected.",
+  "sources": [
+    {
+      "id": "ATT-01",
+      "doi": "10.1007/s42113-024-00197-6",
+      "adopted_edition": "Springer Nature Version of Record, published 2024-02-29, complete publisher HTML",
+      "official_locator": "https://link.springer.com/article/10.1007/s42113-024-00197-6",
+      "raw_sha256": null,
+      "raw_sha256_unavailable_reason": "PR #438 baseline contains no publisher PDF/HTML raw-byte acquisition for ATT-01; the official complete publisher VoR HTML is source-readable but raw transport bytes were not available to this lane.",
+      "source_loci": [
+        "Algorithmic Model: integrated priority map Eq.3",
+        "ex-Gaussian response-time mapping Eq.4",
+        "joint fitting loss Eq.5",
+        "Laplace model evidence Eq.8",
+        "Table 1 model variants",
+        "Appendix B distributions",
+        "Appendix C GLM"
+      ],
+      "bounded_native_findings": [
+        "Feature-specific saliency, learned selection-history, task weights and previous-trial feature-dimension effects are combined into an integrated priority map followed by softmax-like priority selection.",
+        "Priority is mapped to ex-Gaussian response-time parameters; seven source-defined model variants/ablations are compared.",
+        "The source-native target is behavioral selection-history integration, not a divisive visual-cortical normalization network."
+      ],
+      "direct_ancestry_notes": [
+        "Existing ATT audit found no direct citation to Makwana ATT-B1; non-citation is explicitly not treated as independence evidence.",
+        "No DOI-qualified direct model ancestor is asserted by W1."
+      ],
+      "correction_or_supplement_bundle": [],
+      "adverse_limits": [
+        "No raw publisher byte hash is frozen in the PR #438 baseline.",
+        "Complete correction-registry nonexistence is not claimed.",
+        "Whole model-family ancestry remains non-exhaustive."
+      ]
+    },
+    {
+      "id": "ATT-02",
+      "doi": "10.1371/journal.pcbi.1004770",
+      "adopted_edition": "PLOS Computational Biology publisher Version of Record PDF/complete HTML, published 2016-02-18",
+      "official_locator": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004770",
+      "raw_sha256": "3a1e6986fba88aed8554ab164eb8499954c5d2b6f08455c876b0356781836232",
+      "source_loci": [
+        "Model architecture and Eqs.1-9",
+        "bottom/top layer divisive normalization Eqs.2-3 and Eqs.5-6",
+        "top-down attention fields Eqs.7-8",
+        "modulatory feedback Eq.9",
+        "Fig.6 normalization-model comparison",
+        "S1 Fig parameter sensitivity"
+      ],
+      "bounded_native_findings": [
+        "Two reciprocally connected visual layers use local untuned divisive inhibition; top-down attention is applied to the higher layer and redistributed to the lower layer by modulatory feedback.",
+        "The model explicitly cites Reynolds & Heeger 2009 (ATT-03) as a detailed normalization model, while arguing for a distinct higher-area feedback architecture.",
+        "The model is instantaneous and omits fine temporal dynamics, synchrony/noise-correlation effects and surround suppression."
+      ],
+      "direct_ancestry_notes": [
+        "ATT-03 is a direct theory comparison/citation and shared normalization constituent; W1 does not assert that ATT-02 is a direct mathematical descendant of the full ATT-03 model."
+      ],
+      "correction_or_supplement_bundle": [],
+      "adverse_limits": [
+        "S1 parameter sensitivity shows +20% changes can eliminate many modeled effects.",
+        "Top-down source is deliberately unspecified.",
+        "No exhaustive correction-registry proof."
+      ]
+    },
+    {
+      "id": "BLF-02",
+      "doi": "10.1371/journal.pcbi.1006972",
+      "adopted_edition": "PLOS Computational Biology publisher Version of Record PDF/complete HTML, published 2019-04-09",
+      "official_locator": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006972",
+      "raw_sha256": "1f7da5bbc224b16748a1e868f5f266578e7d89f8068d620bbf594cd28a06d3ba",
+      "source_loci": [
+        "Fig.1-4 hierarchical versus flat model",
+        "Methods Eqs.2-4 flat posterior and leaky counts",
+        "hierarchical model change-point level p_c",
+        "Fig.4 coupled-change confidence reset",
+        "Fig.5 uncoupled control",
+        "S1 File Supplementary Results referenced by main article"
+      ],
+      "bounded_native_findings": [
+        "The hierarchical learner tracks two transition probabilities plus a shared global change-point variable, allowing confidence about an unobserved transition to reset when the other transition signals a coupled change.",
+        "The flat comparator uses leaky beta-count inference and can approximate first-order probability estimates but lacks coupled confidence transfer.",
+        "The paper directly cites Glaze et al. 2015 (BLF-03) when discussing leaky integration and prior adaptive-learning work; citation alone is not a direct-descendant proof."
+      ],
+      "direct_ancestry_notes": [
+        "Glaze 2015 is an explicit source citation but is used as background/comparator evidence; no direct derivation of the BLF-02 hierarchical coupled-transition model from BLF-03 is asserted."
+      ],
+      "correction_or_supplement_bundle": [
+        {
+          "role": "model_variant_and_adverse_detail_required",
+          "doi": "10.1371/journal.pcbi.1006972.s005",
+          "sha256": null,
+          "note": "PLOS S1 File; main text explicitly points to Supplementary Results for flat-model/delta-rule equivalence and heuristic controls. Raw supplement bytes are not frozen in PR #438 baseline."
+        }
+      ],
+      "adverse_limits": [
+        "Task structure is instructed rather than discovered by the model.",
+        "Correct task structure is only moderately identifiable from one subject's observations.",
+        "Flat and hierarchical first-order estimates can be highly correlated; confidence is the stronger discriminator.",
+        "S1 File raw hash remains unavailable in the PR #438 baseline."
+      ]
+    },
+    {
+      "id": "BLF-03",
+      "doi": "10.7554/eLife.08825",
+      "adopted_edition": "eLife Version of Record, published 2015-09-28; repository receipt targets publisher v2 PDF",
+      "official_locator": "https://elifesciences.org/articles/08825",
+      "raw_sha256": "d7cc51a4c05f01aa9da561e6b1b0175ab493da026e7e420ce3698c1887fd2dca",
+      "source_loci": [
+        "Version history distinguishing Accepted Manuscript 2015-08-31 from Version of Record 2015-09-28",
+        "Results Eqs.1-3 hazard-sensitive log-odds recursion",
+        "Materials and methods discrete-time Eq.5",
+        "continuous-time formulation Eq.4",
+        "Fig.1-2 hazard-dependent leak and stabilizing boundary"
+      ],
+      "bounded_native_findings": [
+        "Belief is updated in log posterior odds by adding current LLR to a hazard-dependent nonlinear prior transform of the previous belief.",
+        "Expected instability produces adaptive leak near uncertain beliefs and a hazard-dependent non-absorbing stabilizing bound at stronger beliefs; H=0 gives perfect integration and H=0.5 discards history.",
+        "Discrete- and continuous-time formulations are source-defined; suboptimal leaky-only and bounded-only approximations are compared."
+      ],
+      "direct_ancestry_notes": [
+        "The article derives its rule from Bayesian switching-state inference and cites earlier dynamic-learning and sequential-sampling work; W1 does not promote generic Bayesian/HMM background to a unique direct model ancestor."
+      ],
+      "correction_or_supplement_bundle": [],
+      "adverse_limits": [
+        "Human subjects learn hazard rates imperfectly, overestimating low rates and underestimating high rates.",
+        "Suboptimal approximations capture some regimes but not the full data.",
+        "Accepted-manuscript and Version-of-Record dates are distinct and must not be silently conflated."
+      ]
+    },
+    {
+      "id": "CNC-01",
+      "doi": "10.1038/s41562-023-01719-1",
+      "adopted_edition": "Nature Human Behaviour Version of Record, published online 2023-10-16, complete open-access publisher HTML",
+      "official_locator": "https://www.nature.com/articles/s41562-023-01719-1",
+      "raw_sha256": null,
+      "raw_sha256_unavailable_reason": "PR #438 baseline records a 15-page publisher PDF opened in-browser but no frozen raw publisher PDF/HTML SHA256. W1 uses the exact open-access Version-of-Record HTML for bounded semantic qualification without inventing a byte hash.",
+      "source_loci": [
+        "Concept library/adaptor grammar model",
+        "Gibbs/Pitman-Yor cache-and-reuse inference",
+        "Methods Eq.1 lambda1/lambda2 sharing-reuse weights",
+        "resource-bounded search depth penalty",
+        "AGR reprocessing mixture",
+        "RR/similarity/regression/GP comparators"
+      ],
+      "bounded_native_findings": [
+        "A dynamic latent concept library is coupled to an adaptor grammar; favored programs and subparts are cached and reused as primitives in later composition.",
+        "Inference samples programs/libraries with Pitman-Yor/Gibbs machinery and applies explicit resource bounds to composition/search.",
+        "AGR mixes forward and backward phase predictions; rational-rules and subsymbolic comparators are separate model variants."
+      ],
+      "direct_ancestry_notes": [
+        "The source explicitly says it adapts Liang, Jordan & Klein (ICML 2010), 'Learning programs: a hierarchical Bayesian approach'.",
+        "The source reference has no DOI; W1 therefore does not fabricate a DOI-valued direct_model_ancestor entry."
+      ],
+      "correction_or_supplement_bundle": [],
+      "adverse_limits": [
+        "Deterministic likelihood cannot efficiently represent vague concepts.",
+        "No conditional primitive is included, so some divide-and-conquer reports are inexpressible.",
+        "Raw publisher byte hash remains unavailable in the PR #438 baseline.",
+        "Exact DOI-qualified identity of the explicitly adapted Liang 2010 ancestor is unavailable in the source bibliography."
+      ]
+    },
+    {
+      "id": "CNC-02",
+      "doi": "10.1371/journal.pcbi.1011954",
+      "adopted_edition": "PLOS Computational Biology publisher Version of Record PDF/complete HTML, published 2024-04-25",
+      "official_locator": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1011954",
+      "raw_sha256": "a1f6a705b83033742fa2ab1a688d23ea8c0ff16d5a3b7a8303c8d6cd5c7ad1f0",
+      "source_loci": [
+        "Model architectures: RNN, logistic regression, MLP",
+        "RNN variants f-RNN/r-RNN/ff-RNN",
+        "five constraint regimes Table 1",
+        "delay-task dynamics and linear readout",
+        "Tables 2-3 and supplementary variant analyses"
+      ],
+      "bounded_native_findings": [
+        "The study trains recurrent neural networks for transitive inference and systematically varies which feedforward/recurrent weights are trainable and the regularization/initial-connectivity constraint regime.",
+        "Feedforward logistic-regression and single-hidden-layer MLP comparators test whether recurrence/working-memory dynamics are required.",
+        "Multiple trained RNN solutions generalize with distinct behavioral and population-dynamics predictions; network training is not claimed as a literal brain learning algorithm."
+      ],
+      "direct_ancestry_notes": [
+        "Prior task-trained RNN and transitive-inference literature is cited, but W1 found no source statement of direct descent from CNC-03/C-HORSE or another selected MAIN model."
+      ],
+      "correction_or_supplement_bundle": [],
+      "adverse_limits": [
+        "Some RNNs fit all training trials yet fail to generalize.",
+        "Several qualitatively different RNN solutions remain viable; further neural data are required to distinguish them.",
+        "The paper explicitly does not interpret RNN optimization as the brain's task-learning mechanism."
+      ]
+    },
+    {
+      "id": "CNC-03",
+      "doi": "10.7554/eLife.77185",
+      "adopted_edition": "eLife Version of Record, published 2023-12-11; repository receipt targets publisher v1 PDF",
+      "official_locator": "https://elifesciences.org/articles/77185",
+      "raw_sha256": "b9a14a8b72a6e680630612cb21b0fb15433c5a885c2110f984f072ec44def5ff",
+      "source_loci": [
+        "C-HORSE architecture Fig.1",
+        "Methods model architecture",
+        "TSP rapid binding/pattern separation",
+        "MSP distributed representation/slower learning",
+        "autoencoder training across three category tasks",
+        "explicit C-HORSE lineage discussion"
+      ],
+      "bounded_native_findings": [
+        "C-HORSE maps EC input/output through DG, CA3 and CA1 with two complementary pathways: a sparse highly plastic trisynaptic pathway and a more distributed slower-learning monosynaptic pathway.",
+        "TSP specializes in exemplar-specific rapid binding/pattern separation; MSP learns category regularities and generalizes to novel exemplars.",
+        "The model is trained as an autoencoder and evaluated on three category-learning paradigms; pathway lesions isolate complementary contributions."
+      ],
+      "direct_ancestry_notes": [
+        "The source states that this C-HORSE variant was developed for statistical learning in Schapiro et al. 2017b and Zhou et al. 2023.",
+        "Schapiro et al. 2017b is DOI 10.1098/rstb.2016.0049 and is adopted as a DOI-supported direct model ancestor.",
+        "The broader lineage explicitly includes Ketz et al. 2013, DOI 10.1371/journal.pcbi.1003067, plus earlier Norman/O'Reilly models; this is recorded as shared lineage rather than all being promoted to immediate direct ancestors."
+      ],
+      "correction_or_supplement_bundle": [],
+      "adverse_limits": [
+        "The model isolates hippocampal contributions and omits interactions with basal ganglia, prefrontal cortex and other cortex.",
+        "The model architecture is inherited C-HORSE lineage rather than an independent-from-scratch network family.",
+        "Version of Record must not be conflated with peer-review/revision artifacts."
+      ]
+    }
+  ]
+}
