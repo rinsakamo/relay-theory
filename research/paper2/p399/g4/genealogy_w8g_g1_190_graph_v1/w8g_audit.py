@@ -268,7 +268,7 @@ def build_graph(all_roster: dict[str, str], profiles: dict[str, dict], unresolve
             if target == "paper:":
                 raise W8GError("selected ancestor resolution failure")
             add_edge(
-                f"paper:{pid}", target, "DIRECT_ADAPTATION",
+                f"paper:{pid}", target, "DIRECT_MODEL_ANCESTOR",
                 [{
                     "repository_path": PROFILES_PATH.as_posix(),
                     "repository_git_blob_sha1": profile_blob,
