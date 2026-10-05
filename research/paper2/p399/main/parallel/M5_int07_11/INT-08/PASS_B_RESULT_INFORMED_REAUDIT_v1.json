@@ -1,0 +1,111 @@
+{
+  "schema": "relaytheory.p399.main.m5.pass_b_result_informed_reaudit.v1",
+  "slot": "INT-08",
+  "doi": "10.7554/eLife.74445",
+  "chronology": {
+    "stage": "B",
+    "frozen_stage_a_commit": "986b1447c9d50bd65ef8acfb06277e7f692d9197",
+    "frozen_stage_a_blob": "7a4be2ffd8d3def1e21bee3062911c24b780e126",
+    "frozen_stage_a_path": "research/paper2/p399/main/parallel/M5_int07_11/INT-08/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json",
+    "stage_a_modified": false
+  },
+  "challenge_ledger": [
+    {
+      "id": "B08-01",
+      "objection": "experimenter-imposed end-event encoding mistaken for learned writing policy",
+      "status": "REJECTED",
+      "reason": "Frozen source witness says human RM/DM/NM encoding is hand configured."
+    },
+    {
+      "id": "B08-02",
+      "objection": "source-defined retrieval gate double-counted as reconstruction-added A2",
+      "status": "REJECTED",
+      "reason": "EM gate layer is explicitly part of the source architecture and trained with the neocortical network."
+    },
+    {
+      "id": "B08-03",
+      "objection": "LCA accumulator state mistaken for shared executive workspace",
+      "status": "REJECTED",
+      "reason": "LCA activations implement episodic retrieval competition and return a weighted memory vector."
+    },
+    {
+      "id": "B08-04",
+      "objection": "LSTM recurrence mistaken for independent coordination state",
+      "status": "REJECTED",
+      "reason": "Persistent LSTM state is source-defined component-local recurrent state."
+    },
+    {
+      "id": "B08-05",
+      "objection": "A2C/meta-training mistaken for online cognitive coordinator",
+      "status": "REJECTED",
+      "reason": "Training adjusts weights offline/meta-training; online deployment uses trained gate and recurrent dynamics."
+    },
+    {
+      "id": "B08-06",
+      "objection": "retrieval gating generalized into learned encoding gating",
+      "status": "REJECTED",
+      "reason": "Learning evidence is for retrieval; encoding manipulations remain separately imposed in relevant human simulations."
+    },
+    {
+      "id": "B08-07",
+      "objection": "retrieved memory return treated as reconstruction adapter",
+      "status": "REJECTED",
+      "reason": "Source Figure 1 explicitly adds activation-weighted retrieved memory back into LSTM cell state."
+    },
+    {
+      "id": "B08-08",
+      "objection": "decision layer treated as controller of episodic memory independent of source gate",
+      "status": "REJECTED",
+      "reason": "Decision/LSTM projections jointly feed the source-defined EM gate; no extra executive is needed."
+    },
+    {
+      "id": "B08-09",
+      "objection": "inherited LSTM/A2C/LCA constituents treated as paper-specific inventions",
+      "status": "REJECTED",
+      "reason": "W9 adverse evidence explicitly retains inherited status."
+    },
+    {
+      "id": "B08-10",
+      "objection": "broader memory-system ancestry converted to independence/exclusion",
+      "status": "REJECTED",
+      "reason": "Shared ancestry is provenance limitation; no global independence is licensed."
+    }
+  ],
+  "source_loci_reaudited": [
+    "eLife v3 Figure 1 and Results: neocortical-hippocampal model",
+    "eLife Methods: supervised initialization and A2C training",
+    "frozen G2D v10d page-specific manual encoding witness"
+  ],
+  "source_ordered_omission_sweep": {
+    "complete": true,
+    "order": [
+      "Model overview/Figure 1",
+      "neocortical LSTM and decision layer",
+      "EM gate",
+      "LCA retrieval",
+      "encoding operation",
+      "supervised initialization",
+      "A2C training",
+      "human RM/DM/NM encoding manipulation",
+      "retrieval/encoding ablations",
+      "limitations/inherited constituents"
+    ],
+    "omitted_material_claims_found": 0,
+    "note": "No omission licensed a silent variant merge or new coordinator; retained limitations are carried forward."
+  },
+  "required_false_promotion_checks": {
+    "experimenter_manipulation_to_internal_mechanism": "PASS",
+    "precision_to_control_policy": "PASS",
+    "latent_inference_to_coordinator": "PASS",
+    "retrieval_gate_to_new_A2": "PASS",
+    "recurrence_to_A2": "PASS",
+    "temporal_dependence_to_memory": "PASS",
+    "offline_training_to_online_cognition": "PASS",
+    "external_boundary_to_learned_gate": "PASS",
+    "accumulator_to_controller": "PASS",
+    "inherited_constituent_to_new_mechanism": "PASS",
+    "comparator_to_target": "PASS",
+    "negative_or_variant_omission": "PASS"
+  },
+  "freeze_status": "FROZEN_STAGE_B"
+}

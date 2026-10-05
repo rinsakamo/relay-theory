@@ -1,0 +1,112 @@
+{
+  "schema": "relaytheory.p399.main.m5.pass_b_result_informed_reaudit.v1",
+  "slot": "INT-09",
+  "doi": "10.1371/journal.pcbi.1005190",
+  "chronology": {
+    "stage": "B",
+    "frozen_stage_a_commit": "986b1447c9d50bd65ef8acfb06277e7f692d9197",
+    "frozen_stage_a_blob": "2223adc79fc6e485b3c1f7823a8de614caddc5dc",
+    "frozen_stage_a_path": "research/paper2/p399/main/parallel/M5_int07_11/INT-09/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json",
+    "stage_a_modified": false
+  },
+  "challenge_ledger": [
+    {
+      "id": "B09-01",
+      "objection": "alternating u/K optimization mistaken for online cognitive coordination",
+      "status": "REJECTED",
+      "reason": "It is the algorithm used to solve controller/estimator gains to convergence, not an extra online controller."
+    },
+    {
+      "id": "B09-02",
+      "objection": "state-dependent sensory precision mistaken for policy selector",
+      "status": "REJECTED",
+      "reason": "Observation reliability is a source-defined sensory-noise relation that shapes the optimal control solution."
+    },
+    {
+      "id": "B09-03",
+      "objection": "observer threshold switch mistaken for persistent executive gate",
+      "status": "REJECTED",
+      "reason": "It is a state-conditioned switch between observation-noise forms around a detectability threshold."
+    },
+    {
+      "id": "B09-04",
+      "objection": "state estimator mistaken for shared workspace",
+      "status": "REJECTED",
+      "reason": "Estimated state is the source-defined estimator carrier supplied to the controller."
+    },
+    {
+      "id": "B09-05",
+      "objection": "feedforward term mistaken for separate controller mechanism requiring A2",
+      "status": "REJECTED",
+      "reason": "Affine controller contains the feedforward term within the source-defined optimal controller."
+    },
+    {
+      "id": "B09-06",
+      "objection": "Figure 9 correction treated as new model/parameterization",
+      "status": "REJECTED",
+      "reason": "Official correction changes only panel cross-reference in the legend."
+    },
+    {
+      "id": "B09-07",
+      "objection": "stale original Figure 9 caption silently normalized",
+      "status": "REJECTED",
+      "reason": "Original and 2017 correction must remain a two-document provenance bundle."
+    },
+    {
+      "id": "B09-08",
+      "objection": "unfrozen S1 Text ignored",
+      "status": "RETAIN_LIMITATION",
+      "reason": "S1 is identified but not byte-frozen in W5; reconstruction remains bounded to qualified main article plus correction."
+    },
+    {
+      "id": "B09-09",
+      "objection": "Todorov ancestor converted into exclusion or independence conclusion",
+      "status": "REJECTED",
+      "reason": "Ancestor is provenance for the control/estimation algorithm only."
+    },
+    {
+      "id": "B09-10",
+      "objection": "state-independent comparator merged with target active-sensing model",
+      "status": "REJECTED",
+      "reason": "Comparator remains a separate limiting/control variant."
+    }
+  ],
+  "source_loci_reaudited": [
+    "PLOS Methods: state dynamics/observation/state estimate",
+    "PLOS Methods: alternating u/K optimization and affine controller Eq.7",
+    "PLOS observer state-dependent noise threshold",
+    "PLOS 2017 correction DOI 10.1371/journal.pcbi.1005370"
+  ],
+  "source_ordered_omission_sweep": {
+    "complete": true,
+    "order": [
+      "state dynamics",
+      "state-dependent observation model",
+      "state estimator",
+      "alternating control/estimation optimization",
+      "affine controller Eq.7",
+      "observer threshold rule",
+      "active-sensing results",
+      "state-independent comparator",
+      "original Figure 9",
+      "2017 Figure 9 correction"
+    ],
+    "omitted_material_claims_found": 0,
+    "note": "No omission licensed a silent variant merge or new coordinator; retained limitations are carried forward."
+  },
+  "required_false_promotion_checks": {
+    "experimenter_manipulation_to_internal_mechanism": "PASS",
+    "precision_to_control_policy": "PASS",
+    "latent_inference_to_coordinator": "PASS",
+    "retrieval_gate_to_new_A2": "PASS",
+    "recurrence_to_A2": "PASS",
+    "temporal_dependence_to_memory": "PASS",
+    "offline_training_to_online_cognition": "PASS",
+    "external_boundary_to_learned_gate": "PASS",
+    "accumulator_to_controller": "PASS",
+    "inherited_constituent_to_new_mechanism": "PASS",
+    "comparator_to_target": "PASS",
+    "negative_or_variant_omission": "PASS"
+  },
+  "freeze_status": "FROZEN_STAGE_B"
+}

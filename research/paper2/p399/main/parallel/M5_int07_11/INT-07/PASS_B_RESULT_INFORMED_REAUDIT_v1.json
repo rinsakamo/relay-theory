@@ -1,0 +1,113 @@
+{
+  "schema": "relaytheory.p399.main.m5.pass_b_result_informed_reaudit.v1",
+  "slot": "INT-07",
+  "doi": "10.1371/journal.pcbi.1003383",
+  "chronology": {
+    "stage": "B",
+    "frozen_stage_a_commit": "986b1447c9d50bd65ef8acfb06277e7f692d9197",
+    "frozen_stage_a_blob": "2328d3ad2c2c735aeeb851326c770cc3fd57dfdc",
+    "frozen_stage_a_path": "research/paper2/p399/main/parallel/M5_int07_11/INT-07/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json",
+    "stage_a_modified": false
+  },
+  "challenge_ledger": [
+    {
+      "id": "B07-01",
+      "objection": "latent-state/input inference mistaken for control policy",
+      "status": "REJECTED",
+      "reason": "Source solves open-loop control; state-to-action policy is described as an additional closed-loop augmentation, not the tested operator."
+    },
+    {
+      "id": "B07-02",
+      "objection": "cue precision mistaken for executive policy selection",
+      "status": "REJECTED",
+      "reason": "S4 precision/covariance changes evidence weighting only."
+    },
+    {
+      "id": "B07-03",
+      "objection": "backward recurrence mistaken for extra coordinator state",
+      "status": "REJECTED",
+      "reason": "Gamma/RTS backward quantities belong to source-defined inference over the same hidden-state model."
+    },
+    {
+      "id": "B07-04",
+      "objection": "temporal dependence mistaken for persistent memory module",
+      "status": "REJECTED",
+      "reason": "Gamma is expressly online; offline beta/alpha-beta storage remains a distinct variant."
+    },
+    {
+      "id": "B07-05",
+      "objection": "nonlinear local regression mistaken for new cognitive learning mechanism",
+      "status": "REJECTED",
+      "reason": "S1 local regression is numerical approximation of local flow matrices after simple Jacobian approximation proved inaccurate."
+    },
+    {
+      "id": "B07-06",
+      "objection": "environment dynamics collapsed into observation model",
+      "status": "REJECTED",
+      "reason": "Source and W8-S preserve separate transition and observation mappings."
+    },
+    {
+      "id": "B07-07",
+      "objection": "Gamma and offline alpha-beta silently merged",
+      "status": "REJECTED",
+      "reason": "Variant distinction is source-required and retained."
+    },
+    {
+      "id": "B07-08",
+      "objection": "generic state-space ancestry promoted to paper-specific coordinator",
+      "status": "REJECTED",
+      "reason": "W9 records no direct model ancestor and ancestry exhaustiveness remains NOT_ATTESTED."
+    },
+    {
+      "id": "B07-09",
+      "objection": "likelihood-based decision readout mistaken for independent executive",
+      "status": "REJECTED",
+      "reason": "Readout is a use of forward likelihoods, not a separate source mechanism."
+    },
+    {
+      "id": "B07-10",
+      "objection": "future-goal backward pass assumed to imply closed-loop feedback",
+      "status": "REJECTED",
+      "reason": "The resulting controls are ballistic/open-loop in the source."
+    }
+  ],
+  "source_loci_reaudited": [
+    "PLOS Methods: Forward inference over hidden states",
+    "PLOS Methods: Backward inference over hidden states",
+    "PLOS Methods: Inference over inputs",
+    "PLOS Discussion: Open-Loop Control",
+    "W8-S Text S1-S4 frozen source package"
+  ],
+  "source_ordered_omission_sweep": {
+    "complete": true,
+    "order": [
+      "Probabilistic Model",
+      "Forward inference over hidden states",
+      "Likelihood/model selection",
+      "Backward inference over hidden states",
+      "Inference over inputs",
+      "Open-Loop Control discussion",
+      "Text S1",
+      "Text S2",
+      "Text S3",
+      "Text S4"
+    ],
+    "omitted_material_claims_found": 0,
+    "note": "No omission licensed a silent variant merge or new coordinator; retained limitations are carried forward."
+  },
+  "required_false_promotion_checks": {
+    "experimenter_manipulation_to_internal_mechanism": "PASS",
+    "precision_to_control_policy": "PASS",
+    "latent_inference_to_coordinator": "PASS",
+    "retrieval_gate_to_new_A2": "PASS",
+    "recurrence_to_A2": "PASS",
+    "temporal_dependence_to_memory": "PASS",
+    "offline_training_to_online_cognition": "PASS",
+    "external_boundary_to_learned_gate": "PASS",
+    "accumulator_to_controller": "PASS",
+    "inherited_constituent_to_new_mechanism": "PASS",
+    "comparator_to_target": "PASS",
+    "negative_or_variant_omission": "PASS"
+  },
+  "freeze_status": "FROZEN_STAGE_B"
+}
