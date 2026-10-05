@@ -38,7 +38,7 @@ for lane,(url,sha,raw_n,pages) in EXPECTED.items():
     meta={"url":url,"sha256":sha,"size":raw_n,"pages":pages,"page_text_sha256":[],"page_bitmap_sha256":[],"required_source_anchors_found":[],"critical_page_images_encoded_in_action_logs":CRITICAL[lane],"human_visual_status":"PENDING_INDEPENDENT_IMAGE_OPEN"}
     phrase_patterns={
       "ATT03":[r"Figure 4C",r"Figure 4E",r"Figure 6C",r"equation",r"contrast gain"],
-      "BLF01":[r"Figure S1",r"inter-trial interval",r"2 s",r"8 s"],
+      "BLF01":[r"Figure S1",r"inter-trial interval",r"2\s+s",r"8\s+s"],
       "PRD01":[r"forward and backward planning",r"SR",r"PR",r"Table S6",r"Note S3"]
     }[lane]
     for q in phrase_patterns:
