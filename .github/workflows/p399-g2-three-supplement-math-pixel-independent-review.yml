@@ -1,0 +1,16 @@
+name: P399 G2 exact three supplemental original math and page pixel audit
+on:
+  push:
+    branches:
+      - 'paper2/p399-g2-three-supplements-science-*'
+  workflow_dispatch:
+jobs:
+  independently_reacquire_originals_and_render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install PDF page rasterizer and text extractor
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils
+      - name: Reacquire same SHA original supplemental PDFs and render every page
+        run: python3 research/paper2/p399/g2/supplement_20261005/audit_exact_three_supplement_pixels_and_math.py
