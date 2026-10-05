@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify exact source-ledger Git provenance of fifteen PREVIOUS bounded audits.
+"""Verify exact source-ledger Git provenance of twenty PREVIOUS bounded audits.
 
 This cannot reverify non-Git original PDF/MHT bytes or mathematical semantics.
 New paper IDs MUST receive an explicit evidence-mapping code review.
@@ -40,6 +40,11 @@ TRUSTED = {
     "P08": (G1_SCIENCE_REF, "research/paper2/p399/g1/parallel/W1/p08/P08_PRE_A_CORRECTED_PUBLISHED_MAIN_SOURCE_BOUNDED_v1.json", "79133e2017b30f568bef1705d5e78ee911ce2c39"),
     "P11": (G1_SCIENCE_REF, "research/paper2/p399/g1/parallel/W2/p11/P11_PRE_A_FROZEN_ISSUER_MAIN_FIVE_SUPPLEMENTS_v1.json", "1cafaca7c1d939697f3985a14c080fc18ced25d4"),
     "P12": (G1_SCIENCE_REF, "research/paper2/p399/g1/parallel/W2/p12/P12_PRE_A_FROZEN_PUBLISHER_LVOC_MATH_AND_ANCESTRY_v1.json", "43c35dc82599dfe6d751ed7618330858149468d0"),
+    "P17": (G1_SCIENCE_REF, "research/paper2/p399/g1/parallel/W2/p17/P17_PRE_A_FROZEN_SOURCE_AND_SIX_SUPPLEMENTS_v1.json", "106c304fcfdc8be0d186b2832fce72382aa8fabd"),
+    "P15": (G1_SCIENCE_REF, "research/paper2/p399/g1/parallel/W3/P15_PRE_A_original_complete_math_figures_frozen_v1.json", "167242480661661e8aa2ce4441fb80ba65b7abca"),
+    "P18": (G1_SCIENCE_REF, "research/paper2/p399/g1/parallel/W3/P18_PRE_A_publisher_original_final_and_model_recovery_sources_frozen_v1.json", "3dc0d5272e39824e44a25e18387802ce06272b22"),
+    "P19": (G1_SCIENCE_REF, "research/paper2/p399/g1/parallel/W4/p19/P19_PRE_A_v2_COMPLETE_ISSUER_DEPOSIT_ORIGINAL_SOURCE_FREEZE.json", "81dcd3cf891018e8c024bb8df511324745ef763f"),
+    "P20": (G1_SCIENCE_REF, "research/paper2/p399/g1/parallel/W4/p20/P20_PRE_A_COMPLETE_ORIGINAL_MAIN_S1_S10_FREEZE.json", "b25ce5a79d731cef1abe8ed627446ac4e698b383"),
 }
 
 
@@ -76,6 +81,30 @@ def primary_identity(ident, data):
     if ident == "P05":
         row = data["original_source"]
         return data["candidate"]["doi"], row["raw_sha256"], []
+    if ident == "P17":
+        return data["doi"], data["original_publisher_main"]["raw_sha256"], [
+            s["raw_sha256"] for s in data["official_essential_supplementals"]
+        ]
+    if ident == "P15":
+        return data["doi"], data["pinned_sources"][0]["sha256"], [
+            s["sha256"] for s in data["pinned_sources"][1:]
+        ]
+    if ident == "P18":
+        if "uncorrected proof" not in data["original_edition_note"]:
+            raise InputMismatch("P18 source version correction caution lost")
+        return data["doi"], data["publisher_final_pdf"]["sha256"], [
+            s["sha256"] for s in data["publisher_original_same_article_supplements"]
+        ]
+    if ident == "P19":
+        if data["status"] == "FULL_GLOBAL_MODEL_FAMILY_CLEAR":
+            raise InputMismatch("P19 G1 source profile false scientific promotion")
+        return data["article"]["doi"], data["sources"][0]["sha256"], [
+            s["sha256"] for s in data["sources"][1:]
+        ]
+    if ident == "P20":
+        return data["paper"]["doi"], data["source_files"][0]["sha256"], [
+            s["sha256"] for s in data["source_files"][1:]
+        ]
     if ident == "P06":
         return data["edition"]["doi"], data["edition"]["sha256"], []
     if ident == "P07":
@@ -113,8 +142,8 @@ def primary_identity(ident, data):
 
 
 def verify(profiles, loader=git_blob):
-    if set(profiles) != set(TRUSTED) or len(profiles) != 15:
-        raise InputMismatch("This snapshot's exact fifteen auditable profiles must be present")
+    if set(profiles) != set(TRUSTED) or len(profiles) != 20:
+        raise InputMismatch("This snapshot's exact twenty auditable profiles must be present")
     seen = {}
     for profile in profiles.values():
         ident = profile["id"]
@@ -141,6 +170,30 @@ def verify(profiles, loader=git_blob):
                            if x["role"] != "author_adopted_prepublication_code"]
         if sorted(profiles_supps) != sorted(supplements):
             raise InputMismatch(f"{ident}: mandatory original/correction bundle mismatch")
+        if ident == "P20":
+            deps = profile.get("additional_source_ledger_dependencies")
+            if not isinstance(deps, list) or len(deps) != 1:
+                raise InputMismatch("P20 critical S1 published disagreement ledger absent")
+            dep = deps[0]
+            if (dep.get("source_repository_ref") != G1_SCIENCE_REF
+                or dep.get("repository_path") != ROOT + "g1/parallel/W4/p20/P20_PRE_A_v2_SOURCE_CONFLICT_ADDENDUM_AND_V1_HISTORICAL_RETIRE.json"
+                or dep.get("repository_git_blob_sha1") != "c5410f5d45d455235cea9603fa916b8b41ee787b"):
+                raise InputMismatch("P20 original v2 corrective scientific ledger not pinned")
+            pair = (G1_SCIENCE_REF, dep["repository_path"])
+            if pair not in seen:
+                seen[pair] = loader(*pair)
+            dep_blob, source_conflict = seen[pair]
+            if dep_blob != dep["repository_git_blob_sha1"]:
+                raise InputMismatch("P20 source correction Git blob drift")
+            if (source_conflict["original_main_pdf_sha"] != profile["edition_sha256"]
+                or source_conflict["original_same_article_direct_S1_DOCX_sha"] !=
+                    next(s["sha256"] for s in profile["additional_edition_bundle"]
+                         if s["role"] == "publisher_same_article_s006")
+                or source_conflict["defining_source_conflict"]["source_numeric_consistency"] !=
+                    "MAIN_VS_SUPPLEMENT_p_CONFLICT_DO_NOT_SELECT_WINNER"
+                or source_conflict["historical_P20_first_A_E_status"] !=
+                    "RETIRED_AS_INCOMPLETE_SOURCE_CONFLICT_RESOLUTION_DO_NOT_RETRO_EDIT"):
+                raise InputMismatch("P20 unresolved publication discrepancy silently resolved or lost")
         if ident == "P12":
             original_ancestors = [x["doi"].lower() for x in doc["direct_original_ancestry_graph"] if x.get("doi") and x["type"] == "EXPLICIT_DIRECT_NORMATIVE_CONTROL_ANCESTOR"]
             if [x.lower() for x in profile["direct_model_ancestors"]] != original_ancestors:
