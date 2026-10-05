@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify exact source-ledger Git provenance of seven PREVIOUS bounded audits.
+"""Verify exact source-ledger Git provenance of ten PREVIOUS bounded audits.
 
 This cannot reverify non-Git original PDF/MHT bytes or mathematical semantics.
 New paper IDs MUST receive an explicit evidence-mapping code review.
@@ -19,6 +19,9 @@ INT01 = ROOT + "g2/int_g2d/G2D_V18_INT01_FULL_PRIVATE_PUBLISHER_HTML_SOURCE_SCIE
 INT04 = ROOT + "g2/int_g2d/G2D_V8_INT04_EXACT_ORIGINAL_RAW_AND_BOUNDED_FIGURES_MACHINE_GATES.json"
 P05 = ROOT + "g1/p05/P05_PRE_A_ORIGINAL_SOURCE_EDITION_AND_ANCESTRY_v1.json"
 P13 = ROOT + "g1/p13/P13_PRE_A_PUBLISHED_MAIN_PLUS_REQUIRED_ORIGINAL_S1_FAMILY_FREEZE_v1.json"
+P09 = ROOT + "g1/p09/P09_SEPARATE_BOUNDED_SCIENTIFIC_QUALIFICATION_20261004.json"
+P14 = ROOT + "g1/p14/P14_SEPARATE_BOUNDED_ORIGINAL_SCIENCE_QUALIFICATION_20261004.json"
+INT08 = ROOT + "g2/int_g2d/G2D_V10D_CORRECTED_PAIR_SOURCE_NATIVE_MACHINE_GATES.json"
 
 # Cross-checked actual Git blobs in the research repository, not raw external PDFs.
 TRUSTED = {
@@ -29,6 +32,9 @@ TRUSTED = {
     "INT-04": (G2_INTEGRATED_REF, INT04, "71a562480903591c61ce2133f3f8637e4f190d94"),
     "P05": (G1_SCIENCE_REF, P05, "68ff9016d51382d8295607d49e8dee5e3060d024"),
     "P13": (G1_SCIENCE_REF, P13, "90244cd348524ff37a7715e8a03acb3f33271c8c"),
+    "P09": (G1_SCIENCE_REF, P09, "09e682b93a27f8e7c08eb754e83f67ada2fbcfe7"),
+    "P14": (G1_SCIENCE_REF, P14, "1e063c0779b0a90ad499320bad612791f74fe8fb"),
+    "INT-08": (G2_INTEGRATED_REF, INT08, "4ccb0f762a20b396afbcdf69e8e8211d2a7872bf"),
 }
 
 
@@ -65,6 +71,18 @@ def primary_identity(ident, data):
     if ident == "P05":
         row = data["original_source"]
         return data["candidate"]["doi"], row["raw_sha256"], []
+    if ident == "P09":
+        return data["candidate"]["doi"], data["primary_original"]["sha256"], []
+    if ident == "P14":
+        items = data["adopted_original_sources"]
+        return data["paper"]["doi"], items["main"]["raw_sha256"], [
+            doc["sha256"] for doc in items["six_same_original_publisher_supplement_receipts"]
+        ]
+    if ident == "INT-08":
+        record = data["official_sources"]["INT-08"]
+        if not record["source_reacquired_on_corrected_run"] or not record["manual_policy_hand_imposed_detected_on_corrected_run"]:
+            raise InputMismatch("INT08 corrected official source witness missing")
+        return record["doi"], record["exact_G2_inherited_raw_sha256"], []
     if ident == "P13":
         row = data["frozen_main_original"]
         return data["work"]["doi"], row["raw_sha256"], [
@@ -74,8 +92,8 @@ def primary_identity(ident, data):
 
 
 def verify(profiles, loader=git_blob):
-    if set(profiles) != set(TRUSTED) or len(profiles) != 7:
-        raise InputMismatch("This snapshot's exact seven auditable profiles must be present")
+    if set(profiles) != set(TRUSTED) or len(profiles) != 10:
+        raise InputMismatch("This snapshot's exact ten auditable profiles must be present")
     seen = {}
     for profile in profiles.values():
         ident = profile["id"]
