@@ -1,0 +1,67 @@
+name: P399 MAIN M8 JGPS manuscript integration
+
+on:
+  push:
+    branches:
+      - paper2/p399-main-m8-jgps-integration-20261005
+  pull_request:
+    branches:
+      - paper2/p399-main-m7-six-lane-integration-20261005
+    paths:
+      - "paper/venues/jgps/**"
+      - "research/paper2/p399/main/integration/M8/**"
+      - ".github/workflows/p399-main-m8-jgps-integration.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  m8-jgps:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
+
+      - name: Run M8 manuscript guardrails
+        run: python research/paper2/p399/main/integration/M8/test_m8_manuscript_guardrails.py
+
+      - name: Install LaTeX build tools
+        run: |
+          sudo apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            texlive-latex-base texlive-latex-recommended texlive-latex-extra \
+            texlive-fonts-recommended texlive-bibtex-extra texlive-pictures \
+            poppler-utils
+
+      - name: Build manuscript and title page fail-closed
+        run: |
+          set -euo pipefail
+          cd paper/venues/jgps
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          bibtex main
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          test -s main.pdf
+          pdflatex -interaction=nonstopmode -halt-on-error title-page.tex
+          pdflatex -interaction=nonstopmode -halt-on-error title-page.tex
+          test -s title-page.pdf
+          if grep -En 'LaTeX Warning:|Package .* Warning:|Overfull \\hbox|Citation .* undefined|Reference .* undefined' main.log; then exit 1; fi
+          if grep -En 'LaTeX Warning:|Package .* Warning:|Overfull \\hbox|Citation .* undefined|Reference .* undefined' title-page.log; then exit 1; fi
+          pdftotext main.pdf main.txt
+          tr '\n' ' ' < main.txt | tr -s '[:space:]' ' ' > main.flat.txt
+          grep -F "Prospective composition test" main.flat.txt
+          grep -E '40[[:space:]]*/[[:space:]]*40' main.flat.txt
+          grep -E '24[[:space:]]*/[[:space:]]*24' main.flat.txt
+          grep -E '16[[:space:]]*/[[:space:]]*16' main.flat.txt
+          grep -F "not as 40 independent statistical replications" main.flat.txt
+          echo "M8_JGPS_BUILD_PASS" >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: p399-m8-jgps-manuscript
+          path: paper/venues/jgps/main.pdf
+          if-no-files-found: error
+          retention-days: 14
