@@ -1,0 +1,57 @@
+{
+  "schema": "relaytheory.p399.g4.w1.failclosed_test_receipt.v1",
+  "date_jst": "2026-10-05",
+  "execution_mode": "CONNECTOR_FETCHED_BRANCH_JSON_INDEPENDENT_REPLAY",
+  "note": "A direct local git clone was attempted first but the execution container could not resolve github.com. This receipt therefore records an independent replay against files fetched from the actual W1 Git branch. The committed Python verifier/unittest remain the canonical runnable W1 tests.",
+  "fetched_blob_sha1": {
+    "profiles": "881f4a6d2d9ce584d9f580f4ba7467a2469937e2",
+    "pairs": "69fb10578a2fa8e952ba0e675f69c0d4a8fc9309",
+    "gaps": "bcf82f91cf3e9a71f26372c5e0c3781f5cdd985a",
+    "verifier": "ccf7c5b07e7f47cd75582140c7b285cdf8b67ac4",
+    "unittest": "636c47710c64c1c98a88fc944d3018108857acef"
+  },
+  "results": [
+    {
+      "test": "current_bundle_passes",
+      "result": "PASS"
+    },
+    {
+      "test": "exact_seven_doi_identity_mutation",
+      "result": "PASS_REJECTED"
+    },
+    {
+      "test": "duplicate_profile_mutation",
+      "result": "PASS_REJECTED"
+    },
+    {
+      "test": "malformed_git_blob_mutation",
+      "result": "PASS_REJECTED"
+    },
+    {
+      "test": "global_independence_true_mutation",
+      "result": "PASS_REJECTED"
+    },
+    {
+      "test": "ancestry_exhaustiveness_promotion_mutation",
+      "result": "PASS_REJECTED"
+    },
+    {
+      "test": "required_BLF02_S1_bundle_removal",
+      "result": "PASS_REJECTED"
+    },
+    {
+      "test": "missing_original_source_evidence_mutation",
+      "result": "PASS_REJECTED"
+    },
+    {
+      "test": "BLF02_false_ready_promotion",
+      "result": "PASS_REJECTED"
+    },
+    {
+      "test": "pair_global_independence_promotion",
+      "result": "PASS_REJECTED"
+    }
+  ],
+  "overall": "PASS",
+  "false_positive_note": "An initial JavaScript replay attempt used an unavailable structuredClone primitive; those expected-exception results were discarded and are not counted here. This receipt records only the corrected JSON-clone replay."
+}
