@@ -1,0 +1,71 @@
+{
+  "schema": "relaytheory.p399.main.m4.grammar_v0_reconstruction_v1",
+  "slot": "INT-02",
+  "doi": "10.3390/e26060484",
+  "authority": {
+    "stage_c_exact_commit": "873031d8d45e7b41e6c89fb3c73c879d42e05900",
+    "grammar": "frozen Grammar v0",
+    "grammar_role_set": [
+      "Pi",
+      "X",
+      "C",
+      "Q",
+      "P_in",
+      "P_out",
+      "K",
+      "T",
+      "rho/O"
+    ]
+  },
+  "role_mapping": {
+    "Pi": [
+      "environment states",
+      "actions",
+      "DPEFE and CL source-policy components"
+    ],
+    "X": [
+      "state posterior/generative-model configuration",
+      "counterfactual risk quantities",
+      "source-defined beta(s,t) weighting state"
+    ],
+    "C": [
+      "source generative/transition admissibility",
+      "beta bounds/derivation conditions",
+      "tested planning-horizon/task constraints"
+    ],
+    "Q": [
+      "relative action-entropy criterion orienting beta toward DPEFE or CL"
+    ],
+    "P_in": [
+      "current observation/state posterior",
+      "task/environment feedback"
+    ],
+    "P_out": [
+      "mixed action distribution",
+      "selected action"
+    ],
+    "K": [
+      "DPEFE expected-future transform",
+      "CL counterfactual-risk transform",
+      "entropy-difference beta update",
+      "geometric/product-of-experts pooling"
+    ],
+    "T": [
+      "state/time-local inference -> beta update -> action",
+      "learning/update across simulated interaction"
+    ],
+    "rho/O": [
+      "action probabilities",
+      "simulation performance/cost traces"
+    ]
+  },
+  "system_world_experiment_distinction": "Environment transitions remain world variables; active-inference formalism itself is not introduced as a coordinator.",
+  "system_world_experiment_distinction_preserved": true,
+  "opaque_coordination_object_used": false,
+  "opaque_universal_interpreter_used": false,
+  "arbitrary_model_code_packed_into_X_or_K": false,
+  "new_grammar_role_added": false,
+  "added_assumptions": [],
+  "source_defined_persistent_state_is_not_relabelled_as_new_coordinator": true,
+  "reconstruction_status": "DIRECT_FROZEN_GRAMMAR_V0_RECONSTRUCTION"
+}
