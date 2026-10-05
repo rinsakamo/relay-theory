@@ -1,0 +1,55 @@
+{
+  "schema": "relaytheory.p399.main.m2.grammar_v0_reconstruction_v1",
+  "slot": "LRN-02",
+  "doi": "10.1371/journal.pcbi.1007963",
+  "input_adjudication_freeze_head": "e563741558c2ceb2e1b4017018a1a87901fbd6f4",
+  "grammar_version": "frozen Grammar v0",
+  "roles_unchanged": true,
+  "role_mapping": {
+    "Pi": [
+      "latent-state inference subsystem",
+      "volatility inference subsystem",
+      "separate empirical choice readout when present"
+    ],
+    "X": [
+      "posterior state mean/variance",
+      "inferred volatility",
+      "binary approximate posterior quantities"
+    ],
+    "C": [
+      "source generative assumptions and approximation/admissibility conditions"
+    ],
+    "Q": [
+      "no separate coordinator objective in core VKF; empirical action values orient downstream softmax choice when fitted to behavior"
+    ],
+    "P_in": [
+      "trial outcome/observation"
+    ],
+    "P_out": [
+      "state/reward prediction and, in empirical fits, softmax choice readout"
+    ],
+    "K": [
+      "Kalman-like posterior update",
+      "volatility error-correction",
+      "binary moment-matching update"
+    ],
+    "T": [
+      "trial-by-trial observation/inference/update succession"
+    ],
+    "rho_O": [
+      "predicted outcome probability, latent volatility/learning-rate traces, empirical choice"
+    ]
+  },
+  "system_world_boundary": {
+    "system": [
+      "posterior state/volatility inference"
+    ],
+    "world": [
+      "true hidden contingency, observation generation and experimenter switching schedule"
+    ],
+    "boundary_note": "external change points are not internal volatility state; softmax is readout, not learning"
+  },
+  "arbitrary_procedural_logic_hidden_in_X_or_K": false,
+  "extra_coordinator_state_introduced": false,
+  "reconstruction_status": "DIRECT_SOURCE_GROUNDED_RECONSTRUCTION_COMPLETE"
+}
