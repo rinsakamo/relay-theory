@@ -1,0 +1,115 @@
+name: P399 G4-B03 exhaustive 1580-pair triage (no scientific promotion)
+on:
+  push:
+    branches:
+      - "paper2/p399-g4-genealogy-pair-accelerator-20261005"
+    paths:
+      - "research/paper2/p399/g4/genealogy_accelerator_v1/**"
+      - ".github/workflows/p399-g4-genealogy-1580-failclosed.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  full-pair-matrix-no-false-clearance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Destructive synthetic tests first
+        run: python -m unittest discover -s research/paper2/p399/g4/genealogy_accelerator_v1 -p "test_*.py" -v
+      - name: Fetch immutable independent G1 source and verify Git blob
+        shell: bash
+        run: |
+          set -euo pipefail
+          G1_REF=c7317da41b15159864c014b8dc53449121c34a2c
+          G1_PATH=research/paper2/p399/g1/G1_PILOT20_SCIENTIFIC_ADMISSION_AND_DENOMINATORS_v7.json
+          G1_BLOB=7771759aa0fb8fd5e03f99a63b355c7503d095c2
+          git fetch --no-tags origin "$G1_REF" || git fetch --no-tags origin paper2/p399-g1-independent-postmerge-audit-v7-20261004
+          test "$(git rev-parse "${G1_REF}:${G1_PATH}")" = "$G1_BLOB"
+          git show "${G1_REF}:${G1_PATH}" > /tmp/P399_G1_PINNED_V7.json
+      - name: Verify archived G2-D v20 native bounded source-ledger Git blob
+        shell: bash
+        run: |
+          set -euo pipefail
+          P=research/paper2/p399/g2/int_g2d/G2D_V20_INT01_THREE_ADDITIONAL_PAIRS_INT09_OFFICIAL_FIG9_CORRIGENDUM_AND_35_QUEUE.json
+          test "$(git rev-parse "HEAD:${P}")" = "886bed52531abec3457f3b9976f39236b8899007"
+      - name: Independently pin later G2 three-primary bounded ledgers without branch rewrite
+        shell: bash
+        run: |
+          set -euo pipefail
+          G2_LATE=b9b238fe786cba2ae9df9efb26febc78ccd67486
+          P=research/paper2/p399/g2/three_primary_review_20261005/THREE_PRIMARY_SOURCE_FREEZE_AND_BOUNDED_SCIENCE_v1.json
+          git fetch --no-tags origin "$G2_LATE" || git fetch --no-tags origin paper2/p399-g2-outcome-blind-main40-working-20261004
+          test "$(git rev-parse "${G2_LATE}:${P}")" = "021dd2856510a4ac04fbbb3221d93b103067bb17"
+      - name: Fetch four isolated PF formally-qualified immutable original branches
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin \
+            c6b6b9cae2599cb91883c97dbf8992fe5500a44e \
+            3dae6f5fcc0e386717463471cb394b49625a8bb2 \
+            cb83c78b687dfd6a334dc86b279df31a1f3a4013 \
+            ea1ab4175e07c4abade290bc7730816855671be3
+      - name: Cross-check all 26 source-scoped G1/G2 profiles against exact frozen ledger bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/paper2/p399/g4/genealogy_accelerator_v1/verify_profile_ledger.py \
+            --profiles research/paper2/p399/g4/genealogy_accelerator_v1/ORIGINAL_NATIVE_PROFILES_v1.json \
+            --output p399-g4-genealogy-audit/PROFILE_GIT_PROVENANCE_RECEIPT.json
+      - name: Pin G2-D v15b/v16b original-limited pair ledgers (no family promotion)
+        shell: bash
+        run: |
+          set -euo pipefail
+          V15=research/paper2/p399/g2/int_g2d/G2D_V15B_SELECTED_INT15_INT16_VS_G1_P18_P09_NATIVE_OPERATOR_BOUNDED_PAIR_AUDIT.json
+          V16=research/paper2/p399/g2/int_g2d/G2D_V16B_INT01_INT14_FIRSTPARTY_CRP_NATIVE_FAMILY_20261005.json
+          test "$(git rev-parse "HEAD:${V15}")" = "63296efe609a52f33e84dc58411c96a20ca62a09"
+          test "$(git rev-parse "HEAD:${V16}")" = "609a4fbd32fc832d86910dfa24e797cc6e09cee3"
+      - name: Real 780+800 historic register + independent current G1 cross-check
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/paper2/p399/g4/genealogy_accelerator_v1/build_pair_matrix.py \
+            --g2-manifest research/paper2/p399/g2/MAIN40_G2_ADMISSION_WORKING_MANIFEST_v5.json \
+            --g1-roster /tmp/P399_G1_PINNED_V7.json \
+            --legacy-pairs research/paper2/p399/g2/MAIN40_G2_780_MAIN_AND_800_G1_FAMILY_RECONCILIATION_v2.json \
+            --profiles research/paper2/p399/g4/genealogy_accelerator_v1/ORIGINAL_NATIVE_PROFILES_v1.json \
+            --source-native-v20 research/paper2/p399/g2/int_g2d/G2D_V20_INT01_THREE_ADDITIONAL_PAIRS_INT09_OFFICIAL_FIG9_CORRIGENDUM_AND_35_QUEUE.json \
+            --source-native-int04-int08 research/paper2/p399/g2/int_g2d/G2D_V10D_CORRECTED_PAIR_SOURCE_NATIVE_MACHINE_GATES.json \
+            --source-native-v15b research/paper2/p399/g2/int_g2d/G2D_V15B_SELECTED_INT15_INT16_VS_G1_P18_P09_NATIVE_OPERATOR_BOUNDED_PAIR_AUDIT.json \
+            --source-native-v16b research/paper2/p399/g2/int_g2d/G2D_V16B_INT01_INT14_FIRSTPARTY_CRP_NATIVE_FAMILY_20261005.json \
+            --output p399-g4-genealogy-audit
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          folder = Path("p399-g4-genealogy-audit")
+          summary = json.loads((folder / "PAIR_TRIAGE_SUMMARY.json").read_text())
+          rows = json.loads((folder / "PAIR_TRIAGE_MATRIX.json").read_text())
+          assert len(rows) == summary["full_pair_count"] == 1580
+          assert sum(r["cohort"] == "G2_G2" for r in rows) == 780
+          assert sum(r["cohort"] == "G2_G1" for r in rows) == 800
+          assert summary["prior_indexed_native_scoped_pairs_reused"] == 13
+          assert summary["source_ledger_derived_bounded_profiles"] == 26
+          assert summary["missing_profiles_from_current_60_working_roster"] == 34
+          gap = json.loads((folder / "REMAINING_PROFILE_EVIDENCE_QUEUE.json").read_text())
+          assert len(gap) == 34 and len({r["id"] for r in gap}) == 34
+          assert all(r["status"] == "PROFILE_NOT_YET_IMPORTED_SOURCE_SCIENCE_AVAILABILITY_UNDETERMINED" for r in gap)
+          assert summary["new_full_original_scientific_qualifications_from_profiles"] == 0
+          assert summary["global_final_independent_pairs"] == 0
+          assert summary["scientific_main_authorized"] is False
+          assert all(not r["global_independence_certified"] for r in rows)
+          assert all(r["scientific_family_decision"] == "UNDERDETERMINED" for r in rows)
+          print("REAL_REGISTER_FAIL_CLOSED_PASS: 780+800=1580, ZERO final independence")
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: p399-g4-triage-all-1580-${{ github.run_id }}
+          path: p399-g4-genealogy-audit/
+          retention-days: 21
+          if-no-files-found: warn
