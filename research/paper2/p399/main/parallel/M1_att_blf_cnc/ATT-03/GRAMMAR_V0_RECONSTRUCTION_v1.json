@@ -1,0 +1,66 @@
+{
+  "schema": "relaytheory.p399.main.m1.grammar_v0_reconstruction_v1",
+  "slot": "ATT-03",
+  "doi": "10.1016/j.neuron.2009.01.002",
+  "authority": {
+    "stage_c_exact_commit": "9e597539244d161a7f20320ecf22ece1bf32b400",
+    "grammar_v0_blob": "a688edb063c0ad43c25df15f497918817e8b74cd",
+    "grammar_role_set": [
+      "Pi",
+      "X",
+      "C",
+      "Q",
+      "P",
+      "K",
+      "T",
+      "rho/O"
+    ]
+  },
+  "role_mapping": {
+    "Pi": [
+      "stimulus/feature/location channels",
+      "normalization-pool partitions"
+    ],
+    "X": [
+      "stimulus drive E",
+      "attention field A",
+      "modulated drive S=A*E",
+      "suppressive drive",
+      "normalized response"
+    ],
+    "C": [
+      "normalization/pooling constraints",
+      "main-text attention-field/stimulus-size limiting conditions"
+    ],
+    "Q": [
+      "attention-field-conditioned orientation of stimulus channels"
+    ],
+    "P": {
+      "in": [
+        "stimulus drive",
+        "attention field"
+      ],
+      "out": [
+        "normalized neuronal response probe"
+      ]
+    },
+    "K": [
+      "multiplicative A*E modulation",
+      "pooling",
+      "divisive normalization"
+    ],
+    "T": [
+      "algebraic evaluation order; no added persistent temporal state"
+    ],
+    "rho/O": [
+      "contrast-response/tuning traces"
+    ]
+  },
+  "system_world_experiment_distinction_preserved": true,
+  "opaque_universal_interpreter_used": false,
+  "arbitrary_model_code_packed_into_X_or_K": false,
+  "new_grammar_role_added": false,
+  "added_assumptions": [],
+  "source_defined_persistent_state_is_not_relabelled_as_new_coordinator": true,
+  "reconstruction_status": "DIRECT_FROZEN_GRAMMAR_V0_RECONSTRUCTION"
+}

@@ -1,0 +1,87 @@
+{
+  "schema": "relaytheory.p399.main.m1.pass_a_source_first_decomposition_v1",
+  "slot": "CNC-03",
+  "doi": "10.7554/eLife.77185",
+  "chronology": {
+    "stage": "A",
+    "source_authority_lock_commit": "6c35a8a531aa0d5eeb9dbf5f5dd26ae3becd7350",
+    "stage_a_frozen_before_stage_b": true,
+    "result_informed_material_seen_before_freeze": false
+  },
+  "adopted_source_universe": "exact SOURCE_AUTHORITY_LOCK_v1 package only",
+  "source_loci": [
+    "C-HORSE architecture Fig.1",
+    "Methods architecture",
+    "TSP rapid binding/pattern separation",
+    "MSP distributed/slower learning",
+    "autoencoder training",
+    "pathway lesion analyses",
+    "lineage discussion"
+  ],
+  "source_native_decomposition": {
+    "modeled_state_variables": [
+      "EC input/output activity",
+      "DG activity",
+      "CA3 activity/recurrent state",
+      "CA1 activity",
+      "TSP/MSP pathway weights"
+    ],
+    "observation_input_variables": [
+      "feature-coded exemplars",
+      "training repetitions across three category tasks"
+    ],
+    "internal_representations": [
+      "sparse pattern-separated TSP representations",
+      "distributed overlapping MSP representations",
+      "reconstructed exemplar/category representation"
+    ],
+    "transformation_update_operators": [
+      "EC->DG->CA3->CA1 trisynaptic propagation",
+      "CA3 recurrent/pattern-completion operation",
+      "EC->CA1 monosynaptic propagation",
+      "pathway-specific learning",
+      "autoencoder reconstruction"
+    ],
+    "temporal_order": [
+      "exemplar presentation -> pathway propagation -> reconstruction/update",
+      "repeated training -> generalization/recognition evaluation"
+    ],
+    "learning_update_rules": [
+      "TSP uses rapid/high plasticity; MSP uses slower incremental learning of category regularities"
+    ],
+    "decision_readout_rules": [
+      "category/generalization and exemplar-recognition performance from reconstructed features/pathway contributions"
+    ],
+    "constraints": [
+      "TSP sparsity/pattern-separation regime",
+      "MSP overlap/slower-learning regime",
+      "hippocampal-only modeled scope"
+    ],
+    "gating_selection_operations": [
+      "intact/lesion conditions selectively include TSP/MSP pathway contributions"
+    ],
+    "explicitly_modeled_interfaces": [
+      "input: EC feature representation",
+      "output: EC reconstruction/category/recognition probes"
+    ],
+    "system_world_boundary_assumptions": [
+      "basal ganglia, PFC and other cortical interactions remain outside modeled System; EC mediates modeled input/output"
+    ],
+    "source_defined_model_variants": [
+      "intact C-HORSE",
+      "TSP lesion",
+      "MSP lesion",
+      "three category-learning paradigms"
+    ],
+    "negative_adverse_findings": [
+      "architecture is inherited C-HORSE lineage",
+      "non-hippocampal interactions are omitted by design"
+    ],
+    "unresolved_source_ambiguity": [
+      "whole-brain generalization is outside source scope"
+    ]
+  },
+  "premature_grammar_mapping_performed": false,
+  "arbitrary_opaque_code_packed_into_generic_role": false,
+  "stage_a_status": "FROZEN_SOURCE_FIRST_DECOMPOSITION"
+}

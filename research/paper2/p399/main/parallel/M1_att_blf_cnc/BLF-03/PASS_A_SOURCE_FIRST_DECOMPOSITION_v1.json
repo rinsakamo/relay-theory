@@ -1,0 +1,81 @@
+{
+  "schema": "relaytheory.p399.main.m1.pass_a_source_first_decomposition_v1",
+  "slot": "BLF-03",
+  "doi": "10.7554/eLife.08825",
+  "chronology": {
+    "stage": "A",
+    "source_authority_lock_commit": "6c35a8a531aa0d5eeb9dbf5f5dd26ae3becd7350",
+    "stage_a_frozen_before_stage_b": true,
+    "result_informed_material_seen_before_freeze": false
+  },
+  "adopted_source_universe": "exact SOURCE_AUTHORITY_LOCK_v1 package only",
+  "source_loci": [
+    "Results Eq.1 log-odds update",
+    "Eq.2 hazard-conditioned prior transform",
+    "Eq.3 leak/bound approximation",
+    "Eq.4 continuous-time formulation",
+    "Methods Eq.5 discrete Bayes recursion",
+    "approximation comparison figures"
+  ],
+  "source_native_decomposition": {
+    "modeled_state_variables": [
+      "belief L_n as log posterior odds",
+      "hazard/instability condition H or lambda",
+      "hazard-conditioned prior expectation psi(L_{n-1},H)"
+    ],
+    "observation_input_variables": [
+      "current sensory evidence summarized as LLR_n",
+      "environmental hazard condition"
+    ],
+    "internal_representations": [
+      "posterior log-odds belief",
+      "hazard-conditioned prior log-odds"
+    ],
+    "transformation_update_operators": [
+      "nonlinear hazard-conditioned prior transform",
+      "additive evidence accumulation",
+      "continuous-time switching analogue",
+      "leaky-only/bounded-only approximation operators"
+    ],
+    "temporal_order": [
+      "belief at n-1 -> hazard-conditioned prior -> current LLR -> belief at n"
+    ],
+    "learning_update_rules": [
+      "normative recursive Bayesian belief update; hazard condition is not converted into a new hidden coordinator"
+    ],
+    "decision_readout_rules": [
+      "belief sign/magnitude supports source-choice and certainty predictions"
+    ],
+    "constraints": [
+      "H=0 gives perfect integration",
+      "H=0.5 discards history",
+      "intermediate H gives nonlinear leak/stabilizing boundary"
+    ],
+    "gating_selection_operations": [
+      "hazard condition determines how much prior evidence is retained versus reset"
+    ],
+    "explicitly_modeled_interfaces": [
+      "input: LLR and hazard condition",
+      "output: choice/belief prediction"
+    ],
+    "system_world_boundary_assumptions": [
+      "environmental switching/hazard generates observations; L is internal belief state"
+    ],
+    "source_defined_model_variants": [
+      "discrete normative model",
+      "continuous-time formulation",
+      "leaky approximation",
+      "bounded approximation"
+    ],
+    "negative_adverse_findings": [
+      "human hazard estimates are biased",
+      "leaky-only/bounded-only approximations fit restricted regimes but not full data"
+    ],
+    "unresolved_source_ambiguity": [
+      "genealogy exhaustiveness is not established"
+    ]
+  },
+  "premature_grammar_mapping_performed": false,
+  "arbitrary_opaque_code_packed_into_generic_role": false,
+  "stage_a_status": "FROZEN_SOURCE_FIRST_DECOMPOSITION"
+}

@@ -1,0 +1,85 @@
+{
+  "schema": "relaytheory.p399.main.m1.pass_a_source_first_decomposition_v1",
+  "slot": "ATT-02",
+  "doi": "10.1371/journal.pcbi.1004770",
+  "chronology": {
+    "stage": "A",
+    "source_authority_lock_commit": "6c35a8a531aa0d5eeb9dbf5f5dd26ae3becd7350",
+    "stage_a_frozen_before_stage_b": true,
+    "result_informed_material_seen_before_freeze": false
+  },
+  "adopted_source_universe": "exact SOURCE_AUTHORITY_LOCK_v1 package only",
+  "source_loci": [
+    "Model architecture Eqs.1-9",
+    "bottom/top divisive normalization Eqs.2-3 and 5-6",
+    "top-down attention Eqs.7-8",
+    "modulatory feedback Eq.9",
+    "Fig.6 normalization comparison",
+    "S1 parameter-sensitivity figure"
+  ],
+  "source_native_decomposition": {
+    "modeled_state_variables": [
+      "bottom-layer activities",
+      "top-layer activities",
+      "top-down attention field",
+      "modulatory feedback signal"
+    ],
+    "observation_input_variables": [
+      "image/Gabor-filter drive",
+      "spatial or feature-based attention applied to the higher layer"
+    ],
+    "internal_representations": [
+      "two reciprocally connected orientation-selective visual maps",
+      "locally normalized population responses"
+    ],
+    "transformation_update_operators": [
+      "feedforward Gaussian-weighted excitation",
+      "local untuned divisive normalization",
+      "multiplicative higher-layer attention",
+      "modulatory backprojection proportional to feedforward weights",
+      "iterative numerical settling"
+    ],
+    "temporal_order": [
+      "bottom input -> higher-layer feedforward drive -> higher-layer attentional modulation -> modulatory feedback -> recomputation/settling",
+      "the ordering is computational; fine biological timing is not claimed"
+    ],
+    "learning_update_rules": [
+      "no central cognitive learning rule; parameters/connectivity are fixed across modeled experiments after calibration"
+    ],
+    "decision_readout_rules": [
+      "modeled firing rates and receptive-field effects are direct outputs; no separate behavioral decision controller"
+    ],
+    "constraints": [
+      "short-range untuned inhibition",
+      "feedback is modulatory rather than independently driving",
+      "higher-layer receptive-field scale exceeds lower-layer scale",
+      "fixed source parameter regime"
+    ],
+    "gating_selection_operations": [
+      "spatial/feature attention multiplicatively modulates selected higher-layer cells"
+    ],
+    "explicitly_modeled_interfaces": [
+      "input: image drive plus externally supplied attention field",
+      "output: firing-rate/receptive-field response probes"
+    ],
+    "system_world_boundary_assumptions": [
+      "the origin of top-down attention is outside/unspecified by the modeled two-layer circuit"
+    ],
+    "source_defined_model_variants": [
+      "spatial vs feature attention",
+      "attention-field position/size regimes",
+      "source parameter-sensitivity perturbation"
+    ],
+    "negative_adverse_findings": [
+      "fine temporal dynamics, synchrony/noise correlations and late-phase effects omitted",
+      "surround suppression omitted",
+      "common +20% parameter perturbation can eliminate many modeled effects"
+    ],
+    "unresolved_source_ambiguity": [
+      "upstream source of the attention signal is deliberately unspecified"
+    ]
+  },
+  "premature_grammar_mapping_performed": false,
+  "arbitrary_opaque_code_packed_into_generic_role": false,
+  "stage_a_status": "FROZEN_SOURCE_FIRST_DECOMPOSITION"
+}

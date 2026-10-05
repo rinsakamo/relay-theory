@@ -1,0 +1,86 @@
+{
+  "schema": "relaytheory.p399.main.m1.pass_a_source_first_decomposition_v1",
+  "slot": "BLF-02",
+  "doi": "10.1371/journal.pcbi.1006972",
+  "chronology": {
+    "stage": "A",
+    "source_authority_lock_commit": "6c35a8a531aa0d5eeb9dbf5f5dd26ae3becd7350",
+    "stage_a_frozen_before_stage_b": true,
+    "result_informed_material_seen_before_freeze": false
+  },
+  "adopted_source_universe": "exact SOURCE_AUTHORITY_LOCK_v1 package only",
+  "source_loci": [
+    "Fig.1-4 hierarchical vs flat model",
+    "Methods Eqs.2-4 leaky beta counts",
+    "shared change-point level p_c",
+    "Fig.4 cross-variable confidence reset",
+    "Fig.5 uncoupled control",
+    "official S1 Supplementary Results 1-5"
+  ],
+  "source_native_decomposition": {
+    "modeled_state_variables": [
+      "two transition-probability posteriors",
+      "shared higher-level change-point probability p_c",
+      "posterior confidence/precision for each transition",
+      "flat-model leaky beta counts"
+    ],
+    "observation_input_variables": [
+      "sequential A/B observations/transition identity",
+      "instructed coupled-vs-uncoupled task structure"
+    ],
+    "internal_representations": [
+      "hierarchical joint posterior",
+      "flat independent beta posteriors",
+      "transition-specific confidence"
+    ],
+    "transformation_update_operators": [
+      "hierarchical Bayesian update",
+      "global-change evidence transfer/reset across transitions",
+      "flat exponentially decayed beta-count update",
+      "posterior mean and log-precision readouts"
+    ],
+    "temporal_order": [
+      "past transition evidence -> current observation -> posterior update -> probability/confidence report"
+    ],
+    "learning_update_rules": [
+      "hierarchical coupled-change update and flat leaky-count comparator are distinct source-defined update rules"
+    ],
+    "decision_readout_rules": [
+      "probability report from posterior mean",
+      "confidence report from posterior precision/log-precision"
+    ],
+    "constraints": [
+      "coupled hierarchy vs uncoupled control",
+      "flat prior-count and decay regime",
+      "task structure is instructed"
+    ],
+    "gating_selection_operations": [
+      "previous-stimulus identity determines directly relevant transition; shared p_c can reset confidence in both"
+    ],
+    "explicitly_modeled_interfaces": [
+      "input: observed transitions/task condition",
+      "output: probability and confidence reports"
+    ],
+    "system_world_boundary_assumptions": [
+      "observed sequence/task condition external; beliefs/change-point/confidence states internal"
+    ],
+    "source_defined_model_variants": [
+      "hierarchical coupled model",
+      "flat leaky-beta model",
+      "uncoupled change-point control",
+      "supplementary heuristic/robustness controls"
+    ],
+    "negative_adverse_findings": [
+      "flat and hierarchical first-order estimates can correlate strongly",
+      "correct task structure is only moderately identifiable from one subject",
+      "flat model can show apparent learning-rate modulation without hierarchy",
+      "nonzero persistent priors prevent universal flat/delta identity"
+    ],
+    "unresolved_source_ambiguity": [
+      "whole ancestry remains non-exhaustive"
+    ]
+  },
+  "premature_grammar_mapping_performed": false,
+  "arbitrary_opaque_code_packed_into_generic_role": false,
+  "stage_a_status": "FROZEN_SOURCE_FIRST_DECOMPOSITION"
+}

@@ -1,0 +1,91 @@
+{
+  "schema": "relaytheory.p399.main.m1.pass_a_source_first_decomposition_v1",
+  "slot": "ATT-01",
+  "doi": "10.1007/s42113-024-00197-6",
+  "chronology": {
+    "stage": "A",
+    "source_authority_lock_commit": "6c35a8a531aa0d5eeb9dbf5f5dd26ae3becd7350",
+    "stage_a_frozen_before_stage_b": true,
+    "result_informed_material_seen_before_freeze": false
+  },
+  "adopted_source_universe": "exact SOURCE_AUTHORITY_LOCK_v1 package only",
+  "source_loci": [
+    "Algorithmic Model Eq.3 integrated priority map",
+    "Eq.4 ex-Gaussian RT mapping",
+    "Eq.5 joint fitting loss / response branch",
+    "Eq.8 Laplace model evidence",
+    "Table 1 seven model variants",
+    "Appendix B distributions",
+    "Appendix C GLM"
+  ],
+  "source_native_decomposition": {
+    "modeled_state_variables": [
+      "learned selection-history map and fitted weights",
+      "feature-specific saliency maps",
+      "task-demand weights",
+      "previous-trial feature-dimension marker",
+      "integrated priority map over candidate locations"
+    ],
+    "observation_input_variables": [
+      "coded current-trial feature values/candidate locations",
+      "task/goal information",
+      "previous-trial response-relevant feature dimension"
+    ],
+    "internal_representations": [
+      "feature-specific saliency maps",
+      "learned selection-history map",
+      "integrated priority distribution"
+    ],
+    "transformation_update_operators": [
+      "weighted integration of saliency, task and selection-history terms",
+      "softmax-like priority normalization/selection",
+      "priority-to-ex-Gaussian response-time transform",
+      "joint likelihood/loss fitting",
+      "Laplace model-evidence comparison"
+    ],
+    "temporal_order": [
+      "learning history is established before its use in test selection",
+      "trial n-1 feature-dimension information modulates trial n",
+      "priority computation precedes behavioral readout"
+    ],
+    "learning_update_rules": [
+      "history map captures learned response-predictive features; fitted weights are source-defined model parameters",
+      "one-trial intertrial modulation remains distinct from learned history"
+    ],
+    "decision_readout_rules": [
+      "priority-map values parameterize ex-Gaussian response-time predictions",
+      "source model also contains a goal-relevant response-likelihood branch"
+    ],
+    "constraints": [
+      "coded feature representation rather than raw sensory pixels",
+      "normalized priority probabilities",
+      "seven source-defined variant/ablation definitions"
+    ],
+    "gating_selection_operations": [
+      "task weights and intertrial marker condition which feature dimensions contribute",
+      "softmax favors higher integrated priority"
+    ],
+    "explicitly_modeled_interfaces": [
+      "input: coded stimulus/task/history",
+      "output: RT distribution and response likelihood"
+    ],
+    "system_world_boundary_assumptions": [
+      "stimulus/task/history presentation are external interface conditions",
+      "maps and fitted weights are internal modeled quantities"
+    ],
+    "source_defined_model_variants": [
+      "seven source-defined variants/ablations M1-M7; full variant retains saliency, intertrial and learned-history contributions"
+    ],
+    "negative_adverse_findings": [
+      "no raw publisher transport-byte SHA is frozen",
+      "variant superiority is task/model-comparison evidence, not universal cognitive necessity",
+      "genealogy remains non-exhaustive"
+    ],
+    "unresolved_source_ambiguity": [
+      "complete correction-registry absence is not established"
+    ]
+  },
+  "premature_grammar_mapping_performed": false,
+  "arbitrary_opaque_code_packed_into_generic_role": false,
+  "stage_a_status": "FROZEN_SOURCE_FIRST_DECOMPOSITION"
+}
