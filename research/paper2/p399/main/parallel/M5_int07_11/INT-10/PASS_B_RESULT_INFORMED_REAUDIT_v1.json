@@ -1,0 +1,112 @@
+{
+  "schema": "relaytheory.p399.main.m5.pass_b_result_informed_reaudit.v1",
+  "slot": "INT-10",
+  "doi": "10.1371/journal.pcbi.1011024",
+  "chronology": {
+    "stage": "B",
+    "frozen_stage_a_commit": "986b1447c9d50bd65ef8acfb06277e7f692d9197",
+    "frozen_stage_a_blob": "82e3af1b3c6f00b33dcc7ab4747f4969a38bafaa",
+    "frozen_stage_a_path": "research/paper2/p399/main/parallel/M5_int07_11/INT-10/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json",
+    "stage_a_modified": false
+  },
+  "challenge_ledger": [
+    {
+      "id": "B10-01",
+      "objection": "cerebellar reservoir recurrence mistaken for coordinator state",
+      "status": "REJECTED",
+      "reason": "Reservoir dynamics are source-defined component-local cerebellar state."
+    },
+    {
+      "id": "B10-02",
+      "objection": "BG action selection mistaken for generic executive controller",
+      "status": "REJECTED",
+      "reason": "BG source mechanism selects concrete motor action/CPG parameters for a goal."
+    },
+    {
+      "id": "B10-03",
+      "objection": "BG->cerebellum pipeline reified as hidden integration node",
+      "status": "REJECTED",
+      "reason": "Source explicitly states cerebellum uses BG results in a pipeline organization."
+    },
+    {
+      "id": "B10-04",
+      "objection": "within-reach open-loop execution mistaken for feedback controller",
+      "status": "REJECTED",
+      "reason": "Source explicitly adopts open-loop control for modeled reaching."
+    },
+    {
+      "id": "B10-05",
+      "objection": "across-trial learning mistaken for within-reach online coordination",
+      "status": "REJECTED",
+      "reason": "BG/cerebellar learning updates occur across reach outcomes; execution remains open-loop."
+    },
+    {
+      "id": "B10-06",
+      "objection": "Funding correction treated as model revision",
+      "status": "REJECTED",
+      "reason": "Correction is Funding-only."
+    },
+    {
+      "id": "B10-07",
+      "objection": "earlier proof silently equated with current article",
+      "status": "REJECTED",
+      "reason": "Frozen edition decision keeps them distinct."
+    },
+    {
+      "id": "B10-08",
+      "objection": "BG direct ancestors treated as ancestry of the entire integrated model",
+      "status": "REJECTED",
+      "reason": "Ancestors apply to the BG constituent; the full BG+cerebellar model is not thereby identical."
+    },
+    {
+      "id": "B10-09",
+      "objection": "cerebellar-only and direct-joint-angle variants merged into target",
+      "status": "REJECTED",
+      "reason": "They remain ablation/control variants."
+    },
+    {
+      "id": "B10-10",
+      "objection": "motor goal/common input mistaken for reconstruction-added shared workspace",
+      "status": "REJECTED",
+      "reason": "Goal and CPG parameters are explicit source interface variables."
+    }
+  ],
+  "source_loci_reaudited": [
+    "PLOS model architecture/Fig1",
+    "PLOS BG and cerebellar learning sections",
+    "PLOS Discussion: pipeline organization/open-loop scope",
+    "Funding correction DOI 10.1371/journal.pcbi.1011243"
+  ],
+  "source_ordered_omission_sweep": {
+    "complete": true,
+    "order": [
+      "systems architecture",
+      "BG motor loop",
+      "novelty/Hebbian learning",
+      "CPG open-loop execution",
+      "cerebellar reservoir/error correction",
+      "BG-cerebellum pipeline",
+      "combined model results",
+      "cerebellar-only ablation",
+      "direct-joint-angle control variant",
+      "Funding correction/edition boundary"
+    ],
+    "omitted_material_claims_found": 0,
+    "note": "No omission licensed a silent variant merge or new coordinator; retained limitations are carried forward."
+  },
+  "required_false_promotion_checks": {
+    "experimenter_manipulation_to_internal_mechanism": "PASS",
+    "precision_to_control_policy": "PASS",
+    "latent_inference_to_coordinator": "PASS",
+    "retrieval_gate_to_new_A2": "PASS",
+    "recurrence_to_A2": "PASS",
+    "temporal_dependence_to_memory": "PASS",
+    "offline_training_to_online_cognition": "PASS",
+    "external_boundary_to_learned_gate": "PASS",
+    "accumulator_to_controller": "PASS",
+    "inherited_constituent_to_new_mechanism": "PASS",
+    "comparator_to_target": "PASS",
+    "negative_or_variant_omission": "PASS"
+  },
+  "freeze_status": "FROZEN_STAGE_B"
+}

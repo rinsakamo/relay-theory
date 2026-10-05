@@ -1,0 +1,158 @@
+{
+  "schema": "relaytheory.p399.main.m5.pass_a.v1",
+  "slot": "INT-08",
+  "doi": "10.7554/eLife.74445",
+  "chronology": {
+    "stage": "A",
+    "result_informed": false,
+    "frozen_for_B": true
+  },
+  "source_native_integrated_model": {
+    "components": [
+      [
+        "A08-M1",
+        "neocortical LSTM situation representation"
+      ],
+      [
+        "A08-M2",
+        "nonlinear next-state decision/readout"
+      ],
+      [
+        "A08-M3",
+        "learned episodic-memory retrieval gate"
+      ],
+      [
+        "A08-M4",
+        "episodic memory store"
+      ],
+      [
+        "A08-M5",
+        "LCA retrieval dynamics"
+      ],
+      [
+        "A08-M6",
+        "A2C training objective"
+      ]
+    ],
+    "local_state": {
+      "neocortical": "LSTM hidden/cell state",
+      "episodic": "stored hidden-state snapshots",
+      "lca": "temporary accumulator activations",
+      "parameters": "trained LSTM/decision/gate weights"
+    },
+    "shared": "LCA activation-weighted retrieved vector is added back to source-defined LSTM cell state; no reconstruction-only workspace.",
+    "inputs": [
+      "current environmental state",
+      "familiarity/uncertainty-related signals where source-defined",
+      "retrieved episodic content"
+    ],
+    "outputs": [
+      "next-state prediction",
+      "EM gate value",
+      "retrieved memory vector",
+      "don't-know/value outputs where applicable"
+    ],
+    "flow": [
+      "state -> LSTM/decision -> prediction",
+      "LSTM/decision -> EM gate -> LCA excitation",
+      "memory similarity + gated LCA -> weighted retrieval -> LSTM cell state"
+    ],
+    "temporal": [
+      "recurrent event processing",
+      "online retrieval during event",
+      "encoding conditions applied at experimenter-defined event positions"
+    ],
+    "learning": [
+      "supervised initialization before A2C meta-training",
+      "A2C learns weights/retrieval policy",
+      "offline training is not online coordination"
+    ],
+    "memory": [
+      "encoding copies hidden state to episodic store",
+      "source-defined gate controls LCA retrieval",
+      "LCA return enters LSTM"
+    ],
+    "control": [
+      "retrieval gate is source-defined memory-control mechanism; not reconstruction A2"
+    ],
+    "gating": [
+      "EM retrieval gate is learned/source-defined; momentary gate value is not a new persistent coordinator",
+      "human RM/DM/NM end-event encoding condition is imposed"
+    ],
+    "decision": [
+      "decision layer predicts; LCA is memory accumulator, not executive"
+    ],
+    "world": [
+      "event/state sequence",
+      "RM/DM/NM condition",
+      "experiment-defined event boundaries"
+    ],
+    "reset": "event/trial setup is externally/source defined; no endogenous reset policy is inferred without source evidence",
+    "offline_online": {
+      "offline": [
+        "supervised initialization",
+        "A2C/meta-training"
+      ],
+      "online": [
+        "LSTM",
+        "retrieval gate",
+        "LCA retrieval",
+        "memory read/write under imposed encoding schedule"
+      ]
+    },
+    "variants": [
+      "retrieval learned with A2C",
+      "retrieval/encoding ablations",
+      "RM/DM/NM imposed encoding conditions",
+      "EM-off pretraining"
+    ],
+    "negative": [
+      "end-event encoding manipulation is not learned writing policy",
+      "LSTM/A2C/LCA are inherited constituents",
+      "not all 43 pages/figures/math pixel-certified in prior audit",
+      "source-defined retrieval gate cannot be double-counted as A2"
+    ]
+  },
+  "integration_questions": {
+    "components_integrated": [
+      "neocortical LSTM situation representation",
+      "nonlinear next-state decision/readout",
+      "learned episodic-memory retrieval gate",
+      "episodic memory store",
+      "LCA retrieval dynamics",
+      "A2C training objective"
+    ],
+    "information_crossing_boundaries": [
+      "state -> LSTM/decision -> prediction",
+      "LSTM/decision -> EM gate -> LCA excitation",
+      "memory similarity + gated LCA -> weighted retrieval -> LSTM cell state"
+    ],
+    "shared_state": "LCA activation-weighted retrieved vector is added back to source-defined LSTM cell state; no reconstruction-only workspace.",
+    "shared_state_source_defined": true,
+    "temporal_order": [
+      "recurrent event processing",
+      "online retrieval during event",
+      "encoding conditions applied at experimenter-defined event positions"
+    ],
+    "gating": [
+      "EM retrieval gate is learned/source-defined; momentary gate value is not a new persistent coordinator",
+      "human RM/DM/NM end-event encoding condition is imposed"
+    ],
+    "mediator_explicit_in_source": "LCA activation-weighted retrieved vector is added back to source-defined LSTM cell state; no reconstruction-only workspace.",
+    "online_vs_offline": {
+      "offline": [
+        "supervised initialization",
+        "A2C/meta-training"
+      ],
+      "online": [
+        "LSTM",
+        "retrieval gate",
+        "LCA retrieval",
+        "memory read/write under imposed encoding schedule"
+      ]
+    },
+    "experimenter_imposed": "human RM/DM/NM event-boundary encoding condition",
+    "coupling_removal_failure": "episodic content cannot modulate recurrent prediction"
+  },
+  "freeze_status": "FROZEN_STAGE_A"
+}

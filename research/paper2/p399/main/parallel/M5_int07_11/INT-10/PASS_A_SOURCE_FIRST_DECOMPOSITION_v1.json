@@ -1,0 +1,127 @@
+{
+  "schema": "relaytheory.p399.main.m5.pass_a.v1",
+  "slot": "INT-10",
+  "doi": "10.1371/journal.pcbi.1011024",
+  "chronology": {
+    "stage": "A",
+    "result_informed": false,
+    "frozen_for_B": true
+  },
+  "source_native_integrated_model": {
+    "components": [
+      [
+        "A10-M1",
+        "cortex-BG motor loop"
+      ],
+      [
+        "A10-M2",
+        "CPG motor program"
+      ],
+      [
+        "A10-M3",
+        "cerebellar reservoir/error correction"
+      ],
+      [
+        "A10-M4",
+        "BG->cerebellum serial pipeline"
+      ]
+    ],
+    "local_state": {
+      "bg": "activity + goal-action weights",
+      "cerebellum": "reservoir dynamics + correction weights",
+      "cpg": "movement phase/parameters",
+      "plant": "arm/joint state + endpoint"
+    },
+    "shared": "Motor goal and concrete action/CPG parameters are source-defined interface variables; cerebellum consumes BG results; no global coordinator.",
+    "inputs": [
+      "motor goal",
+      "novelty/prediction error",
+      "endpoint error",
+      "plant outcome/perturbation"
+    ],
+    "outputs": [
+      "BG-selected action/CPG params",
+      "cerebellar correction",
+      "open-loop reach"
+    ],
+    "flow": [
+      "goal -> BG -> concrete action/CPG params",
+      "BG result + error -> cerebellum -> CPG correction",
+      "CPG -> open-loop movement -> endpoint/error -> learning"
+    ],
+    "temporal": [
+      "BG establishes action/parameters",
+      "cerebellum fine-tunes from BG result/error",
+      "CPG executes reach open-loop"
+    ],
+    "learning": [
+      "BG novelty-modulated three-factor Hebbian update",
+      "cerebellar error/perturbation-driven correction"
+    ],
+    "memory": [
+      "learned weights retain training history; no episodic retrieval"
+    ],
+    "control": [
+      "BG selects concrete action; cerebellum reduces residual endpoint error; within-reach control open-loop"
+    ],
+    "gating": [
+      "BG action selection is source-defined selection, not a reconstruction executive"
+    ],
+    "decision": [
+      "BG selection outputs CPG parameters; cerebellum modifies them"
+    ],
+    "world": [
+      "motor target",
+      "robotic arm/joints",
+      "perturbation",
+      "endpoint"
+    ],
+    "reset": "each reach starts task-defined state/goal; learned weights persist across trials",
+    "offline_online": {
+      "learning": "across reaches",
+      "execution": "within-reach open-loop"
+    },
+    "variants": [
+      "combined BG+cerebellar CPG",
+      "cerebellar-only",
+      "reservoir direct joint-angle control"
+    ],
+    "negative": [
+      "Funding correction not model revision",
+      "BG ancestors apply to BG constituent only",
+      "proof not silently equated to current article",
+      "reservoir recurrence is local state, not coordinator"
+    ]
+  },
+  "integration_questions": {
+    "components_integrated": [
+      "cortex-BG motor loop",
+      "CPG motor program",
+      "cerebellar reservoir/error correction",
+      "BG->cerebellum serial pipeline"
+    ],
+    "information_crossing_boundaries": [
+      "goal -> BG -> concrete action/CPG params",
+      "BG result + error -> cerebellum -> CPG correction",
+      "CPG -> open-loop movement -> endpoint/error -> learning"
+    ],
+    "shared_state": "Motor goal and concrete action/CPG parameters are source-defined interface variables; cerebellum consumes BG results; no global coordinator.",
+    "shared_state_source_defined": true,
+    "temporal_order": [
+      "BG establishes action/parameters",
+      "cerebellum fine-tunes from BG result/error",
+      "CPG executes reach open-loop"
+    ],
+    "gating": [
+      "BG action selection is source-defined selection, not a reconstruction executive"
+    ],
+    "mediator_explicit_in_source": "Motor goal and concrete action/CPG parameters are source-defined interface variables; cerebellum consumes BG results; no global coordinator.",
+    "online_vs_offline": {
+      "learning": "across reaches",
+      "execution": "within-reach open-loop"
+    },
+    "experimenter_imposed": null,
+    "coupling_removal_failure": "cerebellar fine-tuning cannot consume BG-selected action results"
+  },
+  "freeze_status": "FROZEN_STAGE_A"
+}

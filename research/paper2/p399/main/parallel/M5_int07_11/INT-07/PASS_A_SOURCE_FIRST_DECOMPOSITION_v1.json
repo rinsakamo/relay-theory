@@ -1,0 +1,151 @@
+{
+  "schema": "relaytheory.p399.main.m5.pass_a.v1",
+  "slot": "INT-07",
+  "doi": "10.1371/journal.pcbi.1003383",
+  "chronology": {
+    "stage": "A",
+    "result_informed": false,
+    "frozen_for_B": true
+  },
+  "source_native_integrated_model": {
+    "components": [
+      [
+        "A07-M1",
+        "state-transition model"
+      ],
+      [
+        "A07-M2",
+        "observation mapping"
+      ],
+      [
+        "A07-M3",
+        "EKF/Gaussian forward filtering"
+      ],
+      [
+        "A07-M4",
+        "gamma backward inference / RTS specialization"
+      ],
+      [
+        "A07-M5",
+        "augmented-state latent-input inference"
+      ],
+      [
+        "A07-M6",
+        "precision/covariance cue combination"
+      ]
+    ],
+    "local_state": {
+      "hidden": "allocentric location, speed, direction posterior/trajectory",
+      "forward": "filtered posterior",
+      "backward": "backward/smoothed quantities",
+      "input": "latent input posterior"
+    },
+    "shared": "Source-defined hidden-state trajectory/posterior is the common carrier; no separate coordinator state.",
+    "inputs": [
+      "path-integration prediction",
+      "olfactory/somatosensory/visual observations",
+      "sensory goal"
+    ],
+    "outputs": [
+      "state posterior",
+      "likelihoods",
+      "smoothed trajectory",
+      "open-loop control trajectory"
+    ],
+    "flow": [
+      "transition -> predicted hidden state -> sensory correction -> filtered posterior",
+      "filtered/future evidence -> gamma/RTS backward pass -> refined trajectory",
+      "sensory goal + augmented model -> forward/backward inference -> latent controls"
+    ],
+    "temporal": [
+      "forward recursion over time",
+      "backward retrospective refinement",
+      "planning uses forward trajectory then backward refinement"
+    ],
+    "learning": [
+      "central model performs inference over specified dynamics/observations",
+      "S1 local regression approximates nonlinear flow matrices; it is not coordinator learning"
+    ],
+    "memory": [
+      "gamma is online and does not require stored observation sequence",
+      "offline beta/alpha-beta requires stored observations"
+    ],
+    "control": [
+      "input inference recovers open-loop ballistic commands",
+      "closed-loop state-to-action policy is explicitly a separate augmentation"
+    ],
+    "gating": [
+      "precision weights evidence; not a policy gate"
+    ],
+    "decision": [
+      "likelihood comparisons support decisions; no independent executive"
+    ],
+    "world": [
+      "environment dynamics",
+      "location/orientation",
+      "sensory-generating world state"
+    ],
+    "reset": "initial prior/state and task sensory goal initialize inference episode",
+    "offline_online": {
+      "online": [
+        "forward",
+        "gamma backward"
+      ],
+      "offline": [
+        "beta/alpha-beta alternative"
+      ]
+    },
+    "variants": [
+      "gamma",
+      "offline beta/alpha-beta",
+      "RTS linear specialization",
+      "nonlinear local-regression approximation",
+      "augmented input inference"
+    ],
+    "negative": [
+      "do not collapse environment dynamics into observation mapping",
+      "simple Jacobian approximation was inadequate; retain posterior-sampled local regression",
+      "latent-input inference is not policy",
+      "gamma and offline beta/alpha-beta distinct",
+      "precision weighting is not executive control"
+    ]
+  },
+  "integration_questions": {
+    "components_integrated": [
+      "state-transition model",
+      "observation mapping",
+      "EKF/Gaussian forward filtering",
+      "gamma backward inference / RTS specialization",
+      "augmented-state latent-input inference",
+      "precision/covariance cue combination"
+    ],
+    "information_crossing_boundaries": [
+      "transition -> predicted hidden state -> sensory correction -> filtered posterior",
+      "filtered/future evidence -> gamma/RTS backward pass -> refined trajectory",
+      "sensory goal + augmented model -> forward/backward inference -> latent controls"
+    ],
+    "shared_state": "Source-defined hidden-state trajectory/posterior is the common carrier; no separate coordinator state.",
+    "shared_state_source_defined": true,
+    "temporal_order": [
+      "forward recursion over time",
+      "backward retrospective refinement",
+      "planning uses forward trajectory then backward refinement"
+    ],
+    "gating": [
+      "precision weights evidence; not a policy gate"
+    ],
+    "mediator_explicit_in_source": "Source-defined hidden-state trajectory/posterior is the common carrier; no separate coordinator state.",
+    "online_vs_offline": {
+      "online": [
+        "forward",
+        "gamma backward"
+      ],
+      "offline": [
+        "beta/alpha-beta alternative"
+      ]
+    },
+    "experimenter_imposed": null,
+    "coupling_removal_failure": "future sensory goals cannot be converted into refined trajectories/latent controls"
+  },
+  "freeze_status": "FROZEN_STAGE_A"
+}

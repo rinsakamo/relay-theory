@@ -1,0 +1,112 @@
+{
+  "schema": "relaytheory.p399.main.m5.pass_b_result_informed_reaudit.v1",
+  "slot": "INT-11",
+  "doi": "10.1371/journal.pcbi.1014093",
+  "chronology": {
+    "stage": "B",
+    "frozen_stage_a_commit": "986b1447c9d50bd65ef8acfb06277e7f692d9197",
+    "frozen_stage_a_blob": "3900d6b8460c8a5a401715d7e9ed194b89fc758f",
+    "frozen_stage_a_path": "research/paper2/p399/main/parallel/M5_int07_11/INT-11/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json",
+    "stage_a_modified": false
+  },
+  "challenge_ledger": [
+    {
+      "id": "B11-01",
+      "objection": "manual first-200-trial interaction schedule mistaken for learned gate",
+      "status": "REJECTED",
+      "reason": "Source explicitly says current implementation manually determines when OI supports FI."
+    },
+    {
+      "id": "B11-02",
+      "objection": "joint context estimate mistaken for reconstruction-added A2 workspace",
+      "status": "REJECTED",
+      "reason": "Source explicitly defines joint prior/estimate by integrating FI and OI evidence."
+    },
+    {
+      "id": "B11-03",
+      "objection": "latent context belief mistaken for coordination-specific new state",
+      "status": "REJECTED",
+      "reason": "Belief over z is source-defined inferential state of FI/OI/joint models."
+    },
+    {
+      "id": "B11-04",
+      "objection": "FI/OI recurrence/learning history mistaken for extra coordinator persistence",
+      "status": "REJECTED",
+      "reason": "Persistence resides in source-defined maps/posteriors/TD values."
+    },
+    {
+      "id": "B11-05",
+      "objection": "confidence-threshold exploratory analysis promoted to canonical learned gate",
+      "status": "REJECTED",
+      "reason": "Source presents it as preliminary/future route to automation, not central implementation."
+    },
+    {
+      "id": "B11-06",
+      "objection": "OI support interpreted as direct OI->FI input",
+      "status": "REJECTED",
+      "reason": "Source states FI receives no direct OI input; integration occurs through joint estimate/prior arrangement."
+    },
+    {
+      "id": "B11-07",
+      "objection": "training-phase coupling generalized to permanent online coordinator",
+      "status": "REJECTED",
+      "reason": "Central T-maze interaction is confined to configured early-learning phase, then FI-only."
+    },
+    {
+      "id": "B11-08",
+      "objection": "FI/OI inherited models treated as de-novo paper-specific mechanisms",
+      "status": "REJECTED",
+      "reason": "W5/W9 record explicit direct ancestors for both constituents."
+    },
+    {
+      "id": "B11-09",
+      "objection": "joint posterior averaging treated as mere statistical association",
+      "status": "REJECTED",
+      "reason": "It is an explicit mechanistic algorithmic coupling used to choose context-specific TD map and update component maps."
+    },
+    {
+      "id": "B11-10",
+      "objection": "manual task/block schedule retyped as cognitive state",
+      "status": "REJECTED",
+      "reason": "It belongs to source context/experimental control layer, not Grammar-v0 X coordinator state."
+    }
+  ],
+  "source_loci_reaudited": [
+    "PLOS Materials and methods: FI/OI/joint inference",
+    "PLOS Results Fig5: first 200 trials and joint estimate",
+    "PLOS Discussion: manual determination of OI support",
+    "PLOS S15/preliminary confidence-threshold analysis"
+  ],
+  "source_ordered_omission_sweep": {
+    "complete": true,
+    "order": [
+      "task/context model",
+      "FI algorithm",
+      "OI algorithm",
+      "joint inference architecture",
+      "joint prior/context estimate",
+      "first-200-trial schedule",
+      "context-conditioned TD action selection",
+      "ablation/comparators",
+      "confidence-threshold preliminary variant",
+      "Discussion manual-interaction limitation"
+    ],
+    "omitted_material_claims_found": 0,
+    "note": "No omission licensed a silent variant merge or new coordinator; retained limitations are carried forward."
+  },
+  "required_false_promotion_checks": {
+    "experimenter_manipulation_to_internal_mechanism": "PASS",
+    "precision_to_control_policy": "PASS",
+    "latent_inference_to_coordinator": "PASS",
+    "retrieval_gate_to_new_A2": "PASS",
+    "recurrence_to_A2": "PASS",
+    "temporal_dependence_to_memory": "PASS",
+    "offline_training_to_online_cognition": "PASS",
+    "external_boundary_to_learned_gate": "PASS",
+    "accumulator_to_controller": "PASS",
+    "inherited_constituent_to_new_mechanism": "PASS",
+    "comparator_to_target": "PASS",
+    "negative_or_variant_omission": "PASS"
+  },
+  "freeze_status": "FROZEN_STAGE_B"
+}

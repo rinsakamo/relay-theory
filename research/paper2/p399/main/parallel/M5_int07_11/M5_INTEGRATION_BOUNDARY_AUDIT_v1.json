@@ -1,0 +1,57 @@
+{
+  "schema": "relaytheory.p399.main.m5.integration_boundary_audit.v1",
+  "categories": {
+    "source_defined_coupling": [
+      [
+        "INT-07",
+        "shared state-space posterior/trajectory"
+      ],
+      [
+        "INT-08",
+        "EM gate + LCA memory return"
+      ],
+      [
+        "INT-09",
+        "estimator -> affine controller"
+      ],
+      [
+        "INT-10",
+        "BG -> cerebellum pipeline"
+      ],
+      [
+        "INT-11",
+        "FI/OI -> joint context estimate/prior"
+      ]
+    ],
+    "source_defined_gate": [
+      [
+        "INT-08",
+        "learned episodic-memory retrieval gate"
+      ]
+    ],
+    "stateless_reconstruction_adapter": [],
+    "reconstruction_added_stateful_mechanism": [],
+    "experimenter_imposed_coupling": [
+      [
+        "INT-08",
+        "human RM/DM/NM event-boundary encoding condition"
+      ],
+      [
+        "INT-11",
+        "manual early-learning OI-support window"
+      ]
+    ]
+  },
+  "cross_int_tests": {
+    "inference_vs_control": "PASS: INT-07 latent-input inference is not policy; INT-09 has explicit controller.",
+    "retrieval_gating_vs_executive": "PASS: INT-08 EM gate is source memory gate, not generic executive.",
+    "memory_state_vs_coordination_state": "PASS: source memory/context/component states remain their native carriers.",
+    "recurrence_vs_coordinator": "PASS: LSTM/reservoir recurrence remains component-local.",
+    "accumulator_vs_workspace": "PASS: INT-08 LCA is retrieval dynamics.",
+    "precision_weighting_vs_policy": "PASS: INT-07 precision and INT-09 sensory reliability are not executive policy selection.",
+    "offline_learning_vs_online_integration": "PASS: INT-08 meta-training and INT-09 solver iteration are kept separate from deployment.",
+    "source_gate_vs_reconstruction_A2": "PASS: INT-08 source gate is not double-counted.",
+    "experimenter_boundary_vs_learned_gate": "PASS: INT-08 encoding and INT-11 interaction schedule stay experiment/source context."
+  },
+  "result": "NO_RECONSTRUCTION_ADDED_INTERFACE_OR_STATE_REQUIRED_IN_M5"
+}

@@ -1,0 +1,24 @@
+{
+  "schema": "relaytheory.p399.main.m5.integration_mechanism_audit.v1",
+  "slot": "INT-09",
+  "doi": "10.1371/journal.pcbi.1005190",
+  "answers": {
+    "q1_components_integrated": "plant/dynamics + state-dependent observation + estimator + affine feedback/feedforward controller",
+    "q2_information_crosses": "sensory reliability/observation, estimated state, motor command, solved gains",
+    "q3_shared_state": "source-defined estimated motor state",
+    "q4_shared_state_origin": "SOURCE_DEFINED; reconstruction-added shared state = 0",
+    "q5_temporal_order": "alternating u/K solve to convergence; online estimation/control over movement time",
+    "q6_gating": "observer threshold switch is stateless state-conditioned rule",
+    "q7_mediator": "source-defined estimator",
+    "q8_online_vs_offline": "online estimator/controller; alternating optimization is solving/fitting",
+    "q9_experimenter_imposed": "cursor-visibility relation/movement protocol",
+    "q10_failure_without_coupling": "state-dependent sensory estimates cannot shape active-sensing control"
+  },
+  "boundary": {
+    "source_defined_coupling": true,
+    "source_defined_gate": null,
+    "reconstruction_added_stateless_adapter": false,
+    "reconstruction_added_stateful_mechanism": false,
+    "experimenter_imposed": "cursor-visibility relation/movement protocol"
+  }
+}

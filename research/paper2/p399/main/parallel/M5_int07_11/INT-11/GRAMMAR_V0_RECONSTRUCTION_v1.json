@@ -1,0 +1,56 @@
+{
+  "schema": "relaytheory.p399.main.m5.grammar_v0.v1",
+  "slot": "INT-11",
+  "doi": "10.1371/journal.pcbi.1014093",
+  "authority": {
+    "grammar_roles": {
+      "Pi": "individuation / partition / boundary",
+      "X": "configuration carrier",
+      "C": "realizability / admissibility constraint",
+      "Q": "criterion-conditioned filtering / orientation",
+      "P_in": "intervention/write interface",
+      "P_out": "probe/query/read interface",
+      "K": "typed transformation / dependence",
+      "T": "succession / temporal indexing",
+      "rho/O": "boundary-relative observation / trace"
+    },
+    "layered_grammar_blob": "150fbb166541ba52abbe07124924fab63a1ad575",
+    "lean_blob": "a688edb063c0ad43c25df15f497918817e8b74cd",
+    "stage_c_commit": "17c49300c649e9bc33964a57f6de604e786201d0",
+    "stage_c_blob": "947ff931ec11833ed31a8d5f4a26926c0dbabbfa"
+  },
+  "system_world": {
+    "system": [
+      "FI maps/posterior",
+      "OI maps/posterior",
+      "joint estimate/prior",
+      "TD/action values"
+    ],
+    "world": [
+      "maze location",
+      "features",
+      "reward/outcome",
+      "trial/block schedule"
+    ],
+    "experiment_context": "first-200-trial/training-phase OI-support schedule"
+  },
+  "mapping": {
+    "Pi": "FI/OI/joint/action-map boundaries",
+    "X": "maps, context beliefs, action values",
+    "C": "Bayesian/model admissibility; task schedule not auto-C",
+    "Q": "posterior/confidence/action-value criterion",
+    "P_in": "map/value updates",
+    "P_out": "feature/outcome read",
+    "K": "Bayesian update/joint integration/action dependence",
+    "T": "trial/within-trial succession",
+    "rho/O": "feature/outcome traces"
+  },
+  "guardrails": [
+    "T distinct from K",
+    "recurrence/persistence derived",
+    "L_ctx not auto-C"
+  ],
+  "invented_generic_integration_node": false,
+  "additional_state_required": false,
+  "freeze_status": "FROZEN_GRAMMAR_RECONSTRUCTION"
+}

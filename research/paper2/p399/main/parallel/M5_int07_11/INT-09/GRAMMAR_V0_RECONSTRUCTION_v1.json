@@ -1,0 +1,54 @@
+{
+  "schema": "relaytheory.p399.main.m5.grammar_v0.v1",
+  "slot": "INT-09",
+  "doi": "10.1371/journal.pcbi.1005190",
+  "authority": {
+    "grammar_roles": {
+      "Pi": "individuation / partition / boundary",
+      "X": "configuration carrier",
+      "C": "realizability / admissibility constraint",
+      "Q": "criterion-conditioned filtering / orientation",
+      "P_in": "intervention/write interface",
+      "P_out": "probe/query/read interface",
+      "K": "typed transformation / dependence",
+      "T": "succession / temporal indexing",
+      "rho/O": "boundary-relative observation / trace"
+    },
+    "layered_grammar_blob": "150fbb166541ba52abbe07124924fab63a1ad575",
+    "lean_blob": "a688edb063c0ad43c25df15f497918817e8b74cd",
+    "stage_c_commit": "17c49300c649e9bc33964a57f6de604e786201d0",
+    "stage_c_blob": "984e1538e2ee6970b3bcba855e1326149a551812"
+  },
+  "system_world": {
+    "system": [
+      "state estimate",
+      "controller gains/command",
+      "observer state"
+    ],
+    "world": [
+      "hand/arm state",
+      "cursor visibility",
+      "target"
+    ],
+    "experiment_context": "cursor-visibility relation/movement protocol"
+  },
+  "mapping": {
+    "Pi": "plant-interface/observer/controller/solver boundaries",
+    "X": "estimated state/source controller variables",
+    "C": "dynamics/cost/noise admissibility",
+    "Q": "motor-cost minimization",
+    "P_in": "motor command",
+    "P_out": "sensory read",
+    "K": "estimation and affine-control dependence",
+    "T": "movement succession + separate solver iteration",
+    "rho/O": "sensory trace"
+  },
+  "guardrails": [
+    "T distinct from K",
+    "recurrence/persistence derived, not primitive coordinator",
+    "L_ctx context not auto-C"
+  ],
+  "invented_generic_integration_node": false,
+  "additional_state_required": false,
+  "freeze_status": "FROZEN_GRAMMAR_RECONSTRUCTION"
+}

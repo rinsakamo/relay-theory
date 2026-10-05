@@ -1,0 +1,144 @@
+{
+  "schema": "relaytheory.p399.main.m5.pass_a.v1",
+  "slot": "INT-09",
+  "doi": "10.1371/journal.pcbi.1005190",
+  "chronology": {
+    "stage": "A",
+    "result_informed": false,
+    "frozen_for_B": true
+  },
+  "source_native_integrated_model": {
+    "components": [
+      [
+        "A09-M1",
+        "plant/state dynamics"
+      ],
+      [
+        "A09-M2",
+        "state-dependent observation model"
+      ],
+      [
+        "A09-M3",
+        "state estimator"
+      ],
+      [
+        "A09-M4",
+        "affine feedback+feedforward controller"
+      ],
+      [
+        "A09-M5",
+        "alternating controller/estimator optimization"
+      ]
+    ],
+    "local_state": {
+      "plant": "position/velocity/force/muscle-related state + endpoint",
+      "estimator": "estimated state and gain",
+      "controller": "time-indexed control/gains",
+      "optimization": "u/K solution variables"
+    },
+    "shared": "Source-defined estimated motor state couples observation/estimation to control; no extra workspace.",
+    "inputs": [
+      "state-dependent cursor visibility/noise",
+      "state-independent noise",
+      "position/velocity/force observations"
+    ],
+    "outputs": [
+      "motor command",
+      "estimated state",
+      "reach trajectories"
+    ],
+    "flow": [
+      "plant -> state-dependent observation -> estimator -> estimated state -> controller -> motor command -> plant",
+      "dynamics/cost + observation model -> alternating u/K optimization -> gains"
+    ],
+    "temporal": [
+      "u/K optimization iterates to convergence",
+      "during movement state estimation feeds feedback command updates",
+      "affine controller also carries feedforward term"
+    ],
+    "learning": [
+      "alternating optimization is solution/fitting, not experience-trained online cognition"
+    ],
+    "memory": [
+      "no episodic retrieval; time-indexed estimator/controller variables are not a memory module"
+    ],
+    "control": [
+      "action changes future sensory informativeness; controller combines feedback/feedforward"
+    ],
+    "gating": [
+      "observer switches affine/constant noise around source-defined threshold; stateless state-conditioned rule, not executive"
+    ],
+    "decision": [
+      "continuous motor command; no controller-of-controller"
+    ],
+    "world": [
+      "hand/arm state",
+      "visibility direction",
+      "cursor environment",
+      "target endpoint"
+    ],
+    "reset": "movement trials initialize physical/estimated state and target",
+    "offline_online": {
+      "offline_or_solution": [
+        "alternating optimization"
+      ],
+      "online": [
+        "state estimation",
+        "motor execution"
+      ]
+    },
+    "variants": [
+      "state-dependent active-sensing central model",
+      "state-independent comparator"
+    ],
+    "correction": {
+      "original": "(C)-(D) same as (A)-(B)",
+      "corrected": "(B),(D) same as (A),(C)",
+      "published": "2017-02-03",
+      "scope": "Fig9 legend panel relation only",
+      "central_model_changed": false
+    },
+    "negative": [
+      "correction does not create new model family",
+      "S1 bytes not frozen; bound scope to main+correction",
+      "optimization is not online executive",
+      "estimator state is not shared workspace"
+    ]
+  },
+  "integration_questions": {
+    "components_integrated": [
+      "plant/state dynamics",
+      "state-dependent observation model",
+      "state estimator",
+      "affine feedback+feedforward controller",
+      "alternating controller/estimator optimization"
+    ],
+    "information_crossing_boundaries": [
+      "plant -> state-dependent observation -> estimator -> estimated state -> controller -> motor command -> plant",
+      "dynamics/cost + observation model -> alternating u/K optimization -> gains"
+    ],
+    "shared_state": "Source-defined estimated motor state couples observation/estimation to control; no extra workspace.",
+    "shared_state_source_defined": true,
+    "temporal_order": [
+      "u/K optimization iterates to convergence",
+      "during movement state estimation feeds feedback command updates",
+      "affine controller also carries feedforward term"
+    ],
+    "gating": [
+      "observer switches affine/constant noise around source-defined threshold; stateless state-conditioned rule, not executive"
+    ],
+    "mediator_explicit_in_source": "Source-defined estimated motor state couples observation/estimation to control; no extra workspace.",
+    "online_vs_offline": {
+      "offline_or_solution": [
+        "alternating optimization"
+      ],
+      "online": [
+        "state estimation",
+        "motor execution"
+      ]
+    },
+    "experimenter_imposed": null,
+    "coupling_removal_failure": "state-dependent sensory estimates cannot shape active-sensing motor control"
+  },
+  "freeze_status": "FROZEN_STAGE_A"
+}
