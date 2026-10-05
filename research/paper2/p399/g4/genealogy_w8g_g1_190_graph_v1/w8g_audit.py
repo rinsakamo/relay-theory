@@ -16,7 +16,7 @@ from pathlib import Path
 W7_HEAD = "4325a9a4cba4da651e7cdf2617f7bc8b08c90f54"
 G1_REF = "c7317da41b15159864c014b8dc53449121c34a2c"
 BRANCH = "paper2/p399-g4-w8g-g1-190-genealogy-graph-20261005"
-PR_NUMBER = 0
+PR_NUMBER = 449
 ROOT = Path("research/paper2/p399/g4/genealogy_w8g_g1_190_graph_v1")
 PROFILES_PATH = Path("research/paper2/p399/g4/genealogy_accelerator_v1/ORIGINAL_NATIVE_PROFILES_v1.json")
 RECON_PATH = Path("research/paper2/p399/g4/genealogy_w7_integration_v1/W7_60_PROFILE_RECONCILIATION_v1.json")
