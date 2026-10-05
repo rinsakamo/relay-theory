@@ -1,0 +1,63 @@
+name: P399 G4 W8-A ancestry resolution (MAIN NO-GO)
+
+on:
+  push:
+    branches:
+      - "paper2/p399-g4-w8a-ancestry-resolution-20261005"
+    paths:
+      - "research/paper2/p399/g4/genealogy_w8a_ancestry_resolution_v1/**"
+      - ".github/workflows/p399-g4-w8a-ancestry-resolution.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  w8a-fail-closed-ancestry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify exact W7 base is in ancestry
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor 4325a9a4cba4da651e7cdf2617f7bc8b08c90f54 HEAD
+      - name: Run W8-A fail-closed tests
+        run: |
+          python -m unittest research/paper2/p399/g4/genealogy_w8a_ancestry_resolution_v1/test_w8a_fail_closed.py -v
+      - name: Verify JSON and isolation
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=Path("research/paper2/p399/g4/genealogy_w8a_ancestry_resolution_v1")
+          names=[
+            "W8A_ANCESTRY_NODE_SCHEMA_PROPOSAL_v1.json",
+            "W8A_FOUR_PAPER_ANCESTRY_RESOLUTION_v1.json",
+            "W8A_ANCESTRY_EDGE_RECEIPTS_v1.json",
+            "W8A_W9_IMPORT_FRAGMENT_v1.json",
+          ]
+          objs={n:json.loads((d/n).read_text()) for n in names}
+          r=objs["W8A_FOUR_PAPER_ANCESTRY_RESOLUTION_v1.json"]
+          e=objs["W8A_ANCESTRY_EDGE_RECEIPTS_v1.json"]
+          w=objs["W8A_W9_IMPORT_FRAGMENT_v1.json"]
+          assert r["authority"]["w7_frozen_head"]=="4325a9a4cba4da651e7cdf2617f7bc8b08c90f54"
+          assert len(r["papers"])==4
+          assert r["summary"]["four_profile_blockers_resolved"]==4
+          assert r["summary"]["direct_ancestry_edges_resolved"]==11
+          assert r["summary"]["non_doi_nodes_required"]==2
+          assert e["counts"]["direct_candidate_edges"]==11
+          assert all(x["global_independence_evidence"] is False for x in e["receipts"])
+          assert w["isolation"]["global_independence_fields_promoted"]==0
+          assert w["isolation"]["main_scientific_authorization"] is False
+          assert w["isolation"]["modifies_w7_pair_triage_matrix"] is False
+          PY
+          git diff --check
