@@ -1,0 +1,59 @@
+{
+  "schema": "relaytheory.p399.main.m2.architectural_outcome_v1",
+  "slot": "LRN-01",
+  "doi": "10.1038/s41467-025-58848-6",
+  "source_fidelity": "SOURCE_CLOSED_ADJUDICATED",
+  "attempt_trace": {
+    "A0": {
+      "attempted": true,
+      "result": "PASS",
+      "reason": "Encoder, decoder, learned representation and objective are source-defined and map directly. Test-time parameter retention is persistence of learned state, not an additional coordinator."
+    },
+    "A1": {
+      "attempted": false,
+      "result": "NOT_NEEDED_AFTER_A0_PASS",
+      "permitted_addition_types": [
+        "typed interface",
+        "value/action translation",
+        "observation-to-controller mapping",
+        "sequencing",
+        "execution-order constraint",
+        "read/write contract",
+        "stateless routing"
+      ]
+    },
+    "A2": {
+      "attempted": false,
+      "result": "NOT_PERMITTED_OR_NEEDED_AFTER_A0_PASS",
+      "precondition_requires_documented_A0_and_A1_failure": true
+    }
+  },
+  "final_architectural_state": "A0_FIDELITY",
+  "added_stateless_adapters": {
+    "count": 0,
+    "types": []
+  },
+  "added_stateful_mechanisms": {
+    "count": 0,
+    "types": []
+  },
+  "source_defined_state_not_counted_as_added_stateful_mechanism": true,
+  "unresolved_issues": [
+    "generic policy-gradient RL is inherited",
+    "feature-based variants use experimenter-defined feature embedding",
+    "computational fit does not establish direct neural implementation",
+    "standalone Supplementary Information raw SHA is not repository-frozen and unseen content was not used for new M2 A/B/C",
+    "ancestry exhaustiveness NOT_ATTESTED"
+  ],
+  "genealogy_annotation": {
+    "direct_model_ancestors": [],
+    "pair_category_counts_across_59_other_profiles": {
+      "UNDERDETERMINED": 50,
+      "BOUNDED_SOURCE_NATIVE_DIFFERENCE": 7,
+      "SHARED_CONSTITUENT_ONLY": 2
+    },
+    "global_genealogical_independence_assumed": false,
+    "ancestry_exhaustiveness": "NOT_ATTESTED"
+  },
+  "overall_h0_h1_h2_implication": "NONE_FROM_M2_PER_PAPER_OUTCOME_ALONE"
+}
