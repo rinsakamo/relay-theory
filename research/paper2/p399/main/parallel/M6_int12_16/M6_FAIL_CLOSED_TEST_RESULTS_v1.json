@@ -1,0 +1,231 @@
+{
+  "schema": "relaytheory.p399.main.m6.fail-closed-test-results.v1",
+  "date_jst": "2026-10-05",
+  "tested_scientific_head": "6c2037762968361f56467f648812376674f388f9",
+  "stage_heads": {
+    "stage_A_final": "949347fa32ddb4af51832d25d3d9dca5ba3f79f2",
+    "stage_B_final": "6343c736266b5cbe6eb0202b4503888459ba02a1",
+    "stage_C_final": "b2b7a022bdd78bad1ac2d93b2f33e6b337c38521",
+    "grammar_outcomes_final": "daff12a534bad89f4b3a10a0d4e7e5a30c421b8e",
+    "lane_registries_final": "6c2037762968361f56467f648812376674f388f9"
+  },
+  "isolation_compare": {
+    "base": "3c2761ac13b04203aa7dbd8f47a1d687d506bf7b",
+    "head": "6c2037762968361f56467f648812376674f388f9",
+    "changed_files": 45,
+    "outside_isolation_root": 0
+  },
+  "count": {
+    "total": 34,
+    "pass": 34,
+    "fail": 0
+  },
+  "checks": [
+    {
+      "id": 1,
+      "name": "exact 5-paper assignment",
+      "result": "PASS",
+      "evidence": "intake assignment_count=5 exact INT-12..INT-16"
+    },
+    {
+      "id": 2,
+      "name": "exact DOI identity",
+      "result": "PASS",
+      "evidence": "intake/source locks match five exact DOIs"
+    },
+    {
+      "id": 3,
+      "name": "no paper outside M6",
+      "result": "PASS",
+      "evidence": "kickoff..6c203 compare: 45/45 changed files under M6 root"
+    },
+    {
+      "id": 4,
+      "name": "exact kickoff HEAD ancestry",
+      "result": "PASS",
+      "evidence": "branch started at exact kickoff; compare status ahead"
+    },
+    {
+      "id": 5,
+      "name": "exact frozen manifest blob",
+      "result": "PASS",
+      "evidence": "manifest blob b97b67a34ad9c2858745dfa6aa60444520eaab13"
+    },
+    {
+      "id": 6,
+      "name": "no duplicate paper",
+      "result": "PASS",
+      "evidence": "unique five slots and DOIs"
+    },
+    {
+      "id": 7,
+      "name": "no roster substitution",
+      "result": "PASS",
+      "evidence": "intake roster_substitution=false"
+    },
+    {
+      "id": 8,
+      "name": "no backup activation",
+      "result": "PASS",
+      "evidence": "intake backup_activation=false"
+    },
+    {
+      "id": 9,
+      "name": "Stage A before B",
+      "result": "PASS",
+      "evidence": "Stage A final 949347f is ancestor of Stage B final 6343c73"
+    },
+    {
+      "id": 10,
+      "name": "B receives frozen A",
+      "result": "PASS",
+      "evidence": "each B stores committed A blob SHA"
+    },
+    {
+      "id": 11,
+      "name": "C objections source-traced",
+      "result": "PASS",
+      "evidence": "each C adjudication stores source_reopened_locus and full-A reopen"
+    },
+    {
+      "id": 12,
+      "name": "negative evidence cannot disappear",
+      "result": "PASS",
+      "evidence": "Stage A negatives + per-paper limitation artifacts + lane negative register"
+    },
+    {
+      "id": 13,
+      "name": "Grammar roles cannot silently change",
+      "result": "PASS",
+      "evidence": "each grammar artifact declares exact frozen roles and modified=false"
+    },
+    {
+      "id": 14,
+      "name": "hierarchy cannot auto-create coordinator",
+      "result": "PASS",
+      "evidence": "integration boundary audit PASS_NO_AUTO_PROMOTION"
+    },
+    {
+      "id": 15,
+      "name": "CRP clustering cannot auto-create meta-controller",
+      "result": "PASS",
+      "evidence": "integration boundary audit CRP/meta-controller PASS"
+    },
+    {
+      "id": 16,
+      "name": "graph abstraction cannot auto-create executive state",
+      "result": "PASS",
+      "evidence": "integration boundary audit abstraction/controller PASS"
+    },
+    {
+      "id": 17,
+      "name": "decision accumulator cannot auto-create coordinator",
+      "result": "PASS",
+      "evidence": "integration boundary audit accumulator/coordinator PASS"
+    },
+    {
+      "id": 18,
+      "name": "model-based/model-free combination cannot auto-create A2",
+      "result": "PASS",
+      "evidence": "INT-15 A0, no stateful addition; boundary audit preserves value-combination distinction"
+    },
+    {
+      "id": 19,
+      "name": "source-defined RL/WM interaction cannot be double-counted as reconstruction-added A2",
+      "result": "PASS",
+      "evidence": "INT-13 source mixture retained; added stateful count=0"
+    },
+    {
+      "id": 20,
+      "name": "global neuromodulatory signal cannot auto-create executive control",
+      "result": "PASS",
+      "evidence": "INT-16 source neuromodulatory gate retained; added stateful count=0"
+    },
+    {
+      "id": 21,
+      "name": "recurrent working-memory state cannot auto-create additional coordinator",
+      "result": "PASS",
+      "evidence": "INT-13/INT-16 source WM states retained without extra coordinator"
+    },
+    {
+      "id": 22,
+      "name": "A2 requires documented A0+A1 failure",
+      "result": "PASS",
+      "evidence": "no A2 outcomes issued; A2 gate therefore not bypassed"
+    },
+    {
+      "id": 23,
+      "name": "fit difficulty alone cannot imply A2",
+      "result": "PASS",
+      "evidence": "all five stateful-addition counts=0"
+    },
+    {
+      "id": 24,
+      "name": "INT-13 frozen proof status cannot be silently upgraded to corrected final VoR",
+      "result": "PASS",
+      "evidence": "INT-13 source lock AUTHOR_APPROVED_FROZEN_PUBLISHER_PROOF and corrected_final_vor=false"
+    },
+    {
+      "id": 25,
+      "name": "INT-14 bounded CRP genealogy distinction cannot become independence",
+      "result": "PASS",
+      "evidence": "INT-14 lock retains SHARED_CONSTITUENT_ONLY/whole-family unresolved and no independence"
+    },
+    {
+      "id": 26,
+      "name": "INT-15/P18 bounded difference cannot become independence",
+      "result": "PASS",
+      "evidence": "INT-15 lock retains BOUNDED_SOURCE_NATIVE_DIFFERENCE and no independence"
+    },
+    {
+      "id": 27,
+      "name": "INT-16/P09 bounded difference cannot become independence",
+      "result": "PASS",
+      "evidence": "INT-16 lock retains BOUNDED_SOURCE_NATIVE_DIFFERENCE and no independence"
+    },
+    {
+      "id": 28,
+      "name": "UNDERDETERMINED preserved",
+      "result": "PASS",
+      "evidence": "negative register retains INT-14 genealogy and INT-15 conflict-form underdetermination"
+    },
+    {
+      "id": 29,
+      "name": "SOURCE_INELIGIBLE cannot trigger replacement",
+      "result": "PASS",
+      "evidence": "SOURCE_INELIGIBLE count=0; no replacement/backup"
+    },
+    {
+      "id": 30,
+      "name": "genealogy cannot alter roster",
+      "result": "PASS",
+      "evidence": "outcome registry exact same five rows as intake"
+    },
+    {
+      "id": 31,
+      "name": "no genealogy-independence promotion",
+      "result": "PASS",
+      "evidence": "all outcomes genealogy_independence_claimed=false"
+    },
+    {
+      "id": 32,
+      "name": "G1 PILOT20 excluded",
+      "result": "PASS",
+      "evidence": "intake g1_pilot20_excluded=true and authority main_evidence=false"
+    },
+    {
+      "id": 33,
+      "name": "final outcome count = 5",
+      "result": "PASS",
+      "evidence": "outcome registry rows=5,total=5"
+    },
+    {
+      "id": 34,
+      "name": "M6 cannot issue overall H0/H1/H2 conclusion",
+      "result": "PASS",
+      "evidence": "outcome registry overall_H_verdict=null; per-paper H verdict false"
+    }
+  ],
+  "terminal_result": "PASS_34_OF_34",
+  "note": "Receipt records structural fail-closed checks over frozen M6 artifacts; it is not an independent proof of scientific truth."
+}
