@@ -26,7 +26,7 @@ The chronology also preserves historical states rather than retroactively relabe
 
 We agree with the reviewer that independent human re-adjudication was not established.
 
-It was not performed in the present single-author study. We now state this directly and do not treat LLM-assisted checking, separate model sessions, deterministic CI, Lean formal verification, synthetic calibration, genealogy analysis, or source-identity separation as substitutes for an independent human coder.
+Independent human re-adjudication was not performed. It was not performed in the present single-author study. We now state this directly and do not treat LLM-assisted checking, separate model sessions, deterministic CI, Lean formal verification, synthetic calibration, genealogy analysis, or source-identity separation as substitutes for an independent human coder.
 
 Accordingly, the manuscript now describes the result as establishing **procedural auditability rather than inter-rater reliability**. We provide the complete audit surface so that an external researcher can perform an independent re-adjudication without relying on the aggregate labels reported here.
 
