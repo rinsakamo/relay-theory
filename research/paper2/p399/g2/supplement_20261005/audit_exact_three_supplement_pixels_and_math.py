@@ -11,7 +11,7 @@ EXPECTED={
 "ATT03":("https://ars.els-cdn.com/content/image/1-s2.0-S0896627309000038-mmc1.pdf","4d75c5cf6b2e896e45072edf7ef588101dae6a005d59b74d497fdf6e250acf5e",74000,5),
 "BLF01":("https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12221758/supplementaryFiles","dfe031097a03fa013aff88b1e1f5ddcfe41dc4d0bb231cc291b3dc1d92415d53",241964,2),
 "PRD01":("https://static-content.springer.com/esm/art%3A10.1038%2Fs41562-024-01930-8/MediaObjects/41562_2024_1930_MOESM1_ESM.pdf","10f5d55f971060fb325e3e5a0bb4be2df015407ecb1428af9ebd17a4bea6298c",1077373,17)}
-CRITICAL={"ATT03":[2,3,4],"BLF01":[2],"PRD01":[3,4,5]}
+CRITICAL={"ATT03":[2,3,4],"BLF01":[2],"PRD01":[3,4,5,6]}
 ROOT=Path(tempfile.mkdtemp(prefix="supp_exact_"))
 def run(cmd):
     p=subprocess.run(cmd,text=True,capture_output=True,timeout=40)
