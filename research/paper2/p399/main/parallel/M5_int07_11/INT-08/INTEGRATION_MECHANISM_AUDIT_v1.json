@@ -1,0 +1,24 @@
+{
+  "schema": "relaytheory.p399.main.m5.integration_mechanism_audit.v1",
+  "slot": "INT-08",
+  "doi": "10.7554/eLife.74445",
+  "answers": {
+    "q1_components_integrated": "LSTM/decision + source-defined EM retrieval gate + episodic store + LCA",
+    "q2_information_crosses": "gate value/excitation, memory activation, retrieved weighted vector to LSTM",
+    "q3_shared_state": "retrieved episodic vector enters source-defined LSTM cell state",
+    "q4_shared_state_origin": "SOURCE_DEFINED; reconstruction-added shared state = 0",
+    "q5_temporal_order": "recurrent event processing; online retrieval; imposed encoding positions",
+    "q6_gating": "source-defined learned retrieval gate; momentary gate value is not reconstruction state",
+    "q7_mediator": "EM gate and LCA return path explicit",
+    "q8_online_vs_offline": "online recurrence/retrieval after offline supervised+A2C training",
+    "q9_experimenter_imposed": "human RM/DM/NM end-event encoding manipulation",
+    "q10_failure_without_coupling": "episodic content cannot modulate prediction"
+  },
+  "boundary": {
+    "source_defined_coupling": true,
+    "source_defined_gate": "learned episodic-memory retrieval gate",
+    "reconstruction_added_stateless_adapter": false,
+    "reconstruction_added_stateful_mechanism": false,
+    "experimenter_imposed": "human RM/DM/NM end-event encoding manipulation"
+  }
+}

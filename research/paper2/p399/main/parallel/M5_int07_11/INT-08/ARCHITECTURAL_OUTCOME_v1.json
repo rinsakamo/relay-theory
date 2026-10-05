@@ -1,0 +1,50 @@
+{
+  "schema": "relaytheory.p399.main.m5.architectural_outcome.v1",
+  "slot": "INT-08",
+  "doi": "10.7554/eLife.74445",
+  "source_fidelity": "SOURCE_CLOSED_BOUNDED_FIDELITY",
+  "final_architectural_state": "A0_FIDELITY",
+  "trace": {
+    "A0": {
+      "attempted": true,
+      "result": "PASS",
+      "reason": "Source-defined mechanisms/dependencies map directly to frozen Grammar v0 with no added coordination structure."
+    },
+    "A1": {
+      "attempted": false,
+      "result": "NOT_NEEDED_AFTER_A0_PASS",
+      "reconstruction_added_stateless_interfaces": []
+    },
+    "A2": {
+      "attempted": false,
+      "result": "NOT_NEEDED_AFTER_A0_PASS",
+      "documented_A0_A1_failure": false,
+      "reconstruction_added_stateful_mechanisms": []
+    }
+  },
+  "source_defined_gate": "learned episodic-memory retrieval gate",
+  "source_defined_mediator": "LCA weighted memory return to LSTM",
+  "reconstruction_added_stateless_interface_type_count": {
+    "types": [],
+    "count": 0
+  },
+  "reconstruction_added_stateful_mechanism_type_count": {
+    "types": [],
+    "count": 0
+  },
+  "shared_state": "retrieved episodic vector enters source-defined LSTM cell state",
+  "shared_state_source_defined": true,
+  "unresolved_issues": [
+    "encoding schedule imposed, not learned writing policy",
+    "source gate not A2",
+    "LCA not executive workspace",
+    "offline A2C not online coordinator",
+    "prior audit not full 43-page pixel certification",
+    "no genealogy independence"
+  ],
+  "genealogy": {
+    "ancestry_exhaustiveness": "NOT_ATTESTED",
+    "global_independence_assumed": false
+  },
+  "overall_H_verdict": null
+}

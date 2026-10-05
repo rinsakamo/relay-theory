@@ -1,0 +1,49 @@
+{
+  "schema": "relaytheory.p399.main.m5.architectural_outcome.v1",
+  "slot": "INT-07",
+  "doi": "10.1371/journal.pcbi.1003383",
+  "source_fidelity": "SOURCE_CLOSED_BOUNDED_FIDELITY",
+  "final_architectural_state": "A0_FIDELITY",
+  "trace": {
+    "A0": {
+      "attempted": true,
+      "result": "PASS",
+      "reason": "Source-defined mechanisms/dependencies map directly to frozen Grammar v0 with no added coordination structure."
+    },
+    "A1": {
+      "attempted": false,
+      "result": "NOT_NEEDED_AFTER_A0_PASS",
+      "reconstruction_added_stateless_interfaces": []
+    },
+    "A2": {
+      "attempted": false,
+      "result": "NOT_NEEDED_AFTER_A0_PASS",
+      "documented_A0_A1_failure": false,
+      "reconstruction_added_stateful_mechanisms": []
+    }
+  },
+  "source_defined_gate": null,
+  "source_defined_mediator": "hidden-state trajectory/posterior",
+  "reconstruction_added_stateless_interface_type_count": {
+    "types": [],
+    "count": 0
+  },
+  "reconstruction_added_stateful_mechanism_type_count": {
+    "types": [],
+    "count": 0
+  },
+  "shared_state": "source-defined hidden-state posterior/trajectory",
+  "shared_state_source_defined": true,
+  "unresolved_issues": [
+    "open-loop, not closed-loop policy",
+    "gamma vs offline beta/alpha-beta distinct",
+    "posterior-sampled local regression retained after Jacobian inadequacy",
+    "precision not executive control",
+    "ancestry NOT_ATTESTED"
+  ],
+  "genealogy": {
+    "ancestry_exhaustiveness": "NOT_ATTESTED",
+    "global_independence_assumed": false
+  },
+  "overall_H_verdict": null
+}
