@@ -333,6 +333,41 @@ def main():
         paths["source-native-v20"] = Path(args.source_native_v20)
     if args.source_native_int04_int08:
         paths["source-native-int04-int08"] = Path(args.source_native_int04_int08)
+    # Complete, deterministic next-source queue: ranking aids curator scheduling ONLY.
+    # A zero-risk incident count is NEVER absence of common ancestry or evidence.
+    known_profiles = {p["id"] for p in load(paths["profiles"])["profiles"]}
+    all_g2 = roster(load(paths["g2-manifest"])["selected_working_roster"], "slot")
+    all_g1 = roster(load(paths["g1-roster"])["roster_snapshot"], "id")
+    incident = Counter()
+    limited_incident = Counter()
+    for r in rows:
+        if r["priority"] < 4:
+            incident[r["a"]] += 1
+            incident[r["b"]] += 1
+        if r.get("prior_source_scoped_comparison"):
+            limited_incident[r["a"]] += 1
+            limited_incident[r["b"]] += 1
+    profile_gaps = []
+    for ident, doi in {**all_g2, **all_g1}.items():
+        if ident in known_profiles:
+            continue
+        profile_gaps.append({
+            "id": ident, "doi": doi,
+            "cohort": "G2_WORKING" if ident in all_g2 else "G1_SOURCE_SCOPED_WORKING",
+            "incident_positive_triage_pairs": incident[ident],
+            "existing_source_bounded_comparison_incidents": limited_incident[ident],
+            "total_incident_comparisons": 59 if ident in all_g2 else 40,
+            "status": "PROFILE_NOT_YET_IMPORTED_SOURCE_SCIENCE_AVAILABILITY_UNDETERMINED",
+            "sorting_is_science_outcome_blind": True
+        })
+    profile_gaps.sort(key=lambda r: (
+        -r["incident_positive_triage_pairs"], -r["existing_source_bounded_comparison_incidents"],
+        r["cohort"], r["id"]
+    ))
+    summary["missing_profiles_from_current_60_working_roster"] = len(profile_gaps)
+    summary["priority_queue_profile_gap_ranking_is_NOT_independence_evidence"] = True
+    if len(profile_gaps) + summary["source_ledger_derived_bounded_profiles"] != 60:
+        raise InputMismatch("Working 60-profile accounting drift")
     summary["raw_input_sha256"] = {k: digest(v) for k, v in sorted(paths.items())}
     if args.focus:
         if args.focus not in ({r["a"] for r in rows} | {r["b"] for r in rows}):
@@ -355,6 +390,9 @@ def main():
     )
     (output / "PAIR_TRIAGE_MATRIX.json").write_text(
         json.dumps(rows, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+    (output / "REMAINING_PROFILE_EVIDENCE_QUEUE.json").write_text(
+        json.dumps(profile_gaps, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
     (output / "PRIORITIZED_REVIEW_QUEUE.json").write_text(
         json.dumps([r for r in rows if r["priority"] < 4], ensure_ascii=False, indent=2) + "\n",
