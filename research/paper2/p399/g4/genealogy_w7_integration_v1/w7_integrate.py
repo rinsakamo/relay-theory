@@ -134,9 +134,11 @@ def normalize_category(x):
 def pair_category(r): return normalize_category(r.get("judgment_class") or r.get("judgment") or r.get("result") or r.get("adjudication"))
 def pkey(a,b,cohort): return (cohort,a,b) if cohort=="G2_G1" else (cohort,*sorted((a,b)))
 def lane_pair_record(r,lane,m,path,blob,roster,g2ids,g1ids):
-    a,b=r.get("a"),r.get("b")
+    a,b=r.get("a") or r.get("left"),r.get("b") or r.get("right")
     if not a or not b or a==b or a not in roster or b not in roster: raise W7Error("bad pair IDs")
-    da,db=normdoi(r.get("doi_a") or roster[a]),normdoi(r.get("doi_b") or roster[b])
+    left_source=r.get("left_source") or {}
+    right_source=r.get("right_source") or {}
+    da,db=normdoi(r.get("doi_a") or left_source.get("doi") or roster[a]),normdoi(r.get("doi_b") or right_source.get("doi") or roster[b])
     if da!=roster[a] or db!=roster[b]: raise W7Error("pair DOI drift")
     cohort="G2_G1" if ((a in g2ids and b in g1ids) or (b in g2ids and a in g1ids)) else "G2_G2"
     if cohort=="G2_G1" and a in g1ids: a,b,da,db=b,a,db,da
