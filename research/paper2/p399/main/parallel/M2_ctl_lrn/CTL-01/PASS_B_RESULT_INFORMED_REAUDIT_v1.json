@@ -1,0 +1,85 @@
+{
+  "schema": "relaytheory.p399.main.m2.pass_b_result_informed_reaudit_v1",
+  "slot": "CTL-01",
+  "doi": "10.1371/journal.pcbi.1012228",
+  "stage_a_input": {
+    "path": "research/paper2/p399/main/parallel/M2_ctl_lrn/CTL-01/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json",
+    "freeze_head": "935c5c9b12949758148a32f16ce52cddb64661e3",
+    "complete_a_received": true
+  },
+  "source_reopened": "publisher Version of Record full HTML",
+  "result_informed": true,
+  "objections": [
+    {
+      "id": "B01",
+      "test": "external task demand accidentally represented as internal controller",
+      "challenge": "Context/task rules could be read as a controller state.",
+      "finding": "Source separates environmental contingencies from the agent's inferred posterior over latent context; Stage A already preserves both."
+    },
+    {
+      "id": "B02",
+      "test": "experimenter policy mistaken for learned policy",
+      "challenge": "Initial policy bias/free parameters could be mistaken for learned automatism.",
+      "finding": "Source distinguishes alpha_init/free initialization from experience-updated context-specific policy-prior counts; Stage A already separates learned prior."
+    },
+    {
+      "id": "B03",
+      "test": "value mistaken for control",
+      "challenge": "Predicted free energy/reward likelihood could be promoted to a controller.",
+      "finding": "They score/evaluate policies; selection additionally requires the source-defined sampler/stopping process."
+    },
+    {
+      "id": "B04",
+      "test": "readout mistaken for learning",
+      "challenge": "MCMC pseudo-count updates could be conflated with across-episode policy-prior learning.",
+      "finding": "eta updates approximate a posterior within a decision; alpha updates the prior across experience. Distinction retained."
+    },
+    {
+      "id": "B05",
+      "test": "inherited machinery mistaken for new contribution",
+      "challenge": "Base BCC/planning-as-inference could be counted as new.",
+      "finding": "Source explicitly builds on prior BCC/planning-as-inference; paper-specific addition is integrated sampling/RT mechanism."
+    },
+    {
+      "id": "B06",
+      "test": "comparator/negative omitted",
+      "challenge": "DDM relation might license identity.",
+      "finding": "Source frames DDM as comparison and Stage A preserves non-identity and simulation-only generality limits."
+    },
+    {
+      "id": "B07",
+      "test": "timescale/reset omission",
+      "challenge": "Decision-local sampler state could be read as persistent control memory.",
+      "finding": "Stage A separates decision-local eta/chain from across-episode alpha; exact reset implementation not explicit in visible source remains bounded rather than invented."
+    }
+  ],
+  "source_ordered_omission_sweep": [
+    {
+      "order": 1,
+      "locus": "Abstract/Introduction",
+      "result": "No omitted distinct source mechanism; inherited base and simulation scope retained."
+    },
+    {
+      "order": 2,
+      "locus": "BCC generative model",
+      "result": "Context inference, MDP learning, policy prior and goal-directed likelihood all present in A."
+    },
+    {
+      "order": 3,
+      "locus": "Planning/MCMC/stopping",
+      "result": "Sampler, pseudo-count, entropy threshold, last-sample execution and RT mapping all present in A."
+    },
+    {
+      "order": 4,
+      "locus": "task simulations/results",
+      "result": "World manipulations not converted to internal controller; comparator boundaries retained."
+    },
+    {
+      "order": 5,
+      "locus": "Discussion/limitations",
+      "result": "No universal fit or DDM identity added."
+    }
+  ],
+  "negative_evidence_retained": true,
+  "stage_b_complete": true
+}
