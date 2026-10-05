@@ -1,0 +1,75 @@
+{
+  "schema": "relaytheory.p399.main.m6.pass-a-source-first.v1",
+  "date_jst": "2026-10-05",
+  "slot": "INT-13",
+  "doi": "10.1371/journal.pcbi.1014796",
+  "method": "RIR_v2.3.1 Stage A source-first",
+  "architectural_expectation_used": false,
+  "source_loci": [
+    "PLOS explicit uncorrected-proof notice",
+    "Fig1/PADDL parallel RL+WM weighted mixture and LBA",
+    "proactive set-size decision-bound section"
+  ],
+  "decomposition": {
+    "integrated_component_mechanisms": [
+      "parallel RL module",
+      "capacity-limited WM module",
+      "source-defined weighted RL/WM policy mixture",
+      "LBA response accumulators",
+      "set-size-dependent decision-threshold modulation"
+    ],
+    "local_component_states": [
+      "RL Q-values",
+      "WM Q-values with decay/interference/capacity",
+      "within-trial accumulators"
+    ],
+    "source_defined_shared_state": [],
+    "observation_channels": [
+      "stimulus",
+      "reward/correctness feedback",
+      "set-size cue",
+      "delay/history"
+    ],
+    "action_readout_channels": [
+      "first LBA accumulator crossing threshold determines action and RT"
+    ],
+    "value_policy_quantities": [
+      "RL policy",
+      "WM policy",
+      "WM engagement/mixture weight",
+      "final mixed policy driving drift"
+    ],
+    "learning_plasticity_operators": [
+      "RL prediction-error update",
+      "WM one-shot update/decay/interference"
+    ],
+    "memory_working_memory_state": "explicit source WM state is capacity limited; it is not an added coordinator",
+    "planning_search": "no separate planner/search required",
+    "decision_dynamics": "final policy drives LBA drifts; threshold is source-defined function of set size",
+    "gating_routing": "RL/WM mixture and proactive threshold modulation are source-defined coordination/control",
+    "hierarchy": "none inferred",
+    "temporal_order": "cue/stimulus -> RL+WM policies -> weighted mixture -> accumulation -> threshold crossing -> feedback -> updates",
+    "offline_online": "No reconstruction-added offline executive; preserve source-specific training/test or inference/planning separation only where explicitly defined.",
+    "environment_world_variables": [
+      "stimulus-response block",
+      "set size",
+      "feedback",
+      "trial/delay"
+    ],
+    "model_variants": [
+      "PADDL joint choice+RT",
+      "choice-only softmax RLWM",
+      "static-bound ablation",
+      "reactive/collapsing-bound alternatives",
+      "held-out test prediction"
+    ],
+    "negative_adverse_evidence": [
+      "Adopted edition is the frozen uncorrected publisher proof; never upgrade silently.",
+      "RLWM and LBA are inherited constituents.",
+      "Clinical fitted mechanisms do not establish causal neural implementation.",
+      "S1 Text raw byte SHA was not captured."
+    ]
+  },
+  "freeze_state": "FROZEN_BY_THIS_COMMIT_BEFORE_STAGE_B",
+  "architectural_outcome_not_yet_adjudicated": true
+}

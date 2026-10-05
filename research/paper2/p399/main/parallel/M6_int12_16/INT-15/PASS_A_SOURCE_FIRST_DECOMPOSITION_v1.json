@@ -1,0 +1,73 @@
+{
+  "schema": "relaytheory.p399.main.m6.pass-a-source-first.v1",
+  "date_jst": "2026-10-05",
+  "slot": "INT-15",
+  "doi": "10.1371/journal.pcbi.1010047",
+  "method": "RIR_v2.3.1 Stage A source-first",
+  "architectural_expectation_used": false,
+  "source_loci": [
+    "conflict-sensitive DDM",
+    "within-vs-between conflict analysis",
+    "Discussion statistical-approximation limitation"
+  ],
+  "decomposition": {
+    "integrated_component_mechanisms": [
+      "MB value computation",
+      "MF value computation",
+      "derived value/action conflict quantities",
+      "conflict-sensitive DDM",
+      "boundary/caution modulation"
+    ],
+    "local_component_states": [
+      "MB action values",
+      "MF action values",
+      "DDM evidence state"
+    ],
+    "source_defined_shared_state": [
+      "DDM evidence state"
+    ],
+    "observation_channels": [
+      "two-step states/transitions/rewards",
+      "choice/RT observations"
+    ],
+    "action_readout_channels": [
+      "DDM choice/RT readout"
+    ],
+    "value_policy_quantities": [
+      "MB/MF values",
+      "value-conflict regressors",
+      "drift/boundary quantities"
+    ],
+    "learning_plasticity_operators": [
+      "standard MB/MF RL updates; downstream decision fit"
+    ],
+    "memory_working_memory_state": "RL values persist; no separate WM/executive state",
+    "planning_search": "MB computation is source-defined; no added planner",
+    "decision_dynamics": "value/conflict terms enter DDM drift/start/boundary directly",
+    "gating_routing": "conflict modulation is source-defined parameter dependence; no persistent arbitration state added",
+    "hierarchy": "dual-system language alone does not establish hierarchy",
+    "temporal_order": "update/estimate MB+MF values -> derive conflict -> DDM accumulation -> choice/RT -> later task update",
+    "offline_online": "No reconstruction-added offline executive; preserve source-specific training/test or inference/planning separation only where explicitly defined.",
+    "environment_world_variables": [
+      "two-step state",
+      "transitions",
+      "rewards",
+      "actions"
+    ],
+    "model_variants": [
+      "between-system conflict",
+      "within-system alternatives",
+      "one-step reduced Bayesian fit",
+      "absolute/squared conflict",
+      "stage-specific fits"
+    ],
+    "negative_adverse_evidence": [
+      "Within/between conflict are strongly correlated and exact conflict form is not empirically disambiguated.",
+      "Combined DDM is explicitly a statistical approximation, not full mechanistic cognitive account.",
+      "Action-conflict effects are weaker/opposite in some datasets.",
+      "P18 bounded difference is not genealogical independence."
+    ]
+  },
+  "freeze_state": "FROZEN_BY_THIS_COMMIT_BEFORE_STAGE_B",
+  "architectural_outcome_not_yet_adjudicated": true
+}

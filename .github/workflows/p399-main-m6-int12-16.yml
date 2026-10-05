@@ -1,0 +1,19 @@
+name: P399 MAIN M6 fail-closed
+on:
+  pull_request:
+    branches: [paper2/p399-main-go-kickoff-20261005]
+    paths:
+      - 'research/paper2/p399/main/parallel/M6_int12_16/**'
+      - '.github/workflows/p399-main-m6-int12-16.yml'
+  push:
+    branches: [paper2/p399-main-m6-int12-16-20261005]
+
+jobs:
+  m6-fail-closed:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Run M6 34-check fail-closed suite
+        run: python research/paper2/p399/main/parallel/M6_int12_16/test_m6_fail_closed.py

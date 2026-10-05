@@ -1,0 +1,84 @@
+{
+  "schema": "relaytheory.p399.main.m6.grammar-v0-reconstruction.v1",
+  "date_jst": "2026-10-05",
+  "slot": "INT-12",
+  "doi": "10.1371/journal.pcbi.1006116",
+  "input_C": {
+    "path": "PASS_C_SOURCE_CLOSED_ADJUDICATION_v1.json",
+    "blob_sha1": "2cdf7c42d5aa6c9a132c2e33a4ce0af55d7271c5"
+  },
+  "grammar_authority": {
+    "roles": [
+      "Pi",
+      "X",
+      "C",
+      "Q",
+      "P_in",
+      "P_out",
+      "K",
+      "T",
+      "rho/O"
+    ],
+    "modified": false,
+    "layered_presentation": true
+  },
+  "L_sys": {
+    "Pi": [
+      "source CRP partitions contexts separately for reward-function clusters and mapping/transition-function clusters; joint model supplies holistic task partition comparator"
+    ],
+    "X": [
+      "context/state representation",
+      "reward/mapping cluster assignments and sufficient statistics",
+      "learned reward/mapping functions",
+      "planned values/policies",
+      "source meta-agent model evidence in extension"
+    ],
+    "C": [
+      "source MDP/spatial-map assumptions under which learned reward and mapping components can be composed into a policy; generic task context is retained in L_ctx rather than retyped as C"
+    ],
+    "Q": [
+      "expected discounted reward/value orientation",
+      "model-evidence/predicted-reward criterion used by source meta-agent"
+    ],
+    "P_in": [
+      "observed context/state, transition consequences and reward update the learner"
+    ],
+    "P_out": [
+      "planned primitive action/policy; extension emits sampled independent/joint strategy policy"
+    ],
+    "K": [
+      "reward-CRP Bayesian update",
+      "mapping-CRP Bayesian update",
+      "explicit component-binding planning/value computation",
+      "joint-cluster update",
+      "source meta-agent evidence update and strategy selection"
+    ],
+    "T": [
+      "trial/context succession and within-trial observe-infer-plan-act-update order"
+    ],
+    "rho/O": [
+      "reward/transition observations",
+      "action/policy readout",
+      "simulation/transfer performance traces kept distinct from system state"
+    ]
+  },
+  "L_ctx": "Source task/experimental conditions remain explicit and are not retyped into C solely because they are called conditions.",
+  "L_claim": "Negative, null, approximation, genealogy and epistemic qualifications remain claim-layer assertions rather than added system roles.",
+  "L_formal": "Algorithmic inference/search/fitting carriers are kept distinct from source-supported cognitive state; formal plumbing cannot create a coordinator.",
+  "system_world_experiment": {
+    "system": "cluster assignments/statistics, learned reward/mapping functions, planning and optional source meta-agent",
+    "world": "grid state/context, action consequences, rewards/goals and environmental mapping/transition",
+    "boundary": "observations enter through P_in; actions/policies leave through P_out; environment statistics are not silently internalized"
+  },
+  "explicit_source_operators_preserved": true,
+  "opaque_K_X_hiding_of_planning_or_search": false,
+  "source_defined_coordination_or_gating": [
+    "planning binds separately inferred reward and mapping components",
+    "explicit meta-agent extension arbitrates independent vs joint using source model evidence"
+  ],
+  "grammar_role_gap_claimed": false,
+  "reconstruction_additions": {
+    "stateless_interfaces": [],
+    "stateful_mechanisms": []
+  }
+}

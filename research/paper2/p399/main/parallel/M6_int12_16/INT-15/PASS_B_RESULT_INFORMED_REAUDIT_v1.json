@@ -1,0 +1,84 @@
+{
+  "schema": "relaytheory.p399.main.m6.pass-b-result-informed-reaudit.v1",
+  "date_jst": "2026-10-05",
+  "slot": "INT-15",
+  "frozen_A": {
+    "path": "PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json",
+    "blob_sha1": "12c65c87b717f9b0963aa6631c5ba9480804e7ff",
+    "stage_a_final_lane_head": "949347fa32ddb4af51832d25d3d9dca5ba3f79f2"
+  },
+  "challenge_rule": "Challenge A without changing source edition or using INT-family expectations.",
+  "challenges": [
+    {
+      "id": "B01",
+      "objection": "MB/MF combination mistaken for arbitration state",
+      "source_reaudit_result": "MB and MF values plus derived conflict regressors feed the source-defined decision model; no separate persistent arbiter is required by the source.",
+      "disposition": "REJECT_FALSE_A2"
+    },
+    {
+      "id": "B02",
+      "objection": "DDM accumulator mistaken for coordinator",
+      "source_reaudit_result": "Decision accumulation is the source readout dynamics, not an executive coordinator.",
+      "disposition": "REJECT_FALSE_COORDINATOR"
+    },
+    {
+      "id": "B03",
+      "objection": "two-stage fitting mistaken for cognitive state",
+      "source_reaudit_result": "Sequential estimation/fitting is analysis procedure, not modeled online cognitive state.",
+      "disposition": "REJECT_CONFLATION"
+    },
+    {
+      "id": "B04",
+      "objection": "conflict variable promoted to executive state",
+      "source_reaudit_result": "Conflict is derived from value relations and used as a regressor/modulator; it need not persist as an independent controller state.",
+      "disposition": "REJECT_FALSE_COORDINATOR"
+    },
+    {
+      "id": "B05",
+      "objection": "statistical DDM interpreted mechanistically",
+      "source_reaudit_result": "Source explicitly says combined DDM is a statistical approximation, not the full mechanistic cognitive decision process.",
+      "disposition": "CONFIRM_LIMIT"
+    },
+    {
+      "id": "B06",
+      "objection": "exact conflict form overidentified",
+      "source_reaudit_result": "Within- and between-system conflict are strongly correlated; current task cannot disambiguate exact conflict form.",
+      "disposition": "CONFIRM_UNDERDETERMINATION"
+    },
+    {
+      "id": "B07",
+      "objection": "action-conflict result overgeneralized",
+      "source_reaudit_result": "Action-conflict effect is weaker and in opposite direction in some datasets; retained as adverse evidence.",
+      "disposition": "CONFIRM_NEGATIVE"
+    },
+    {
+      "id": "B08",
+      "objection": "P18 bounded difference promoted to independence",
+      "source_reaudit_result": "Different tested operators remain only bounded evidence; global genealogy clearance is absent.",
+      "disposition": "CONFIRM_GENEALOGY_LIMIT"
+    }
+  ],
+  "complete_source_ordered_omission_sweep": {
+    "performed": true,
+    "sections": [
+      "two-step MB/MF value model",
+      "value/action conflict definitions",
+      "DDM mapping",
+      "boundary-separation result",
+      "within-system alternative analyses",
+      "reduced Bayesian variant",
+      "Discussion limitations"
+    ],
+    "omission_detected": false
+  },
+  "variants_rechecked": [
+    "between-system",
+    "within-system",
+    "reduced one-step Bayesian",
+    "absolute/squared conflict",
+    "first/second-stage fits"
+  ],
+  "negative_evidence_preserved": true,
+  "stage_A_modified": false,
+  "stage_B_status": "FROZEN"
+}

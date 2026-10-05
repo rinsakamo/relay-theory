@@ -1,0 +1,93 @@
+{
+  "schema": "relaytheory.p399.main.m6.pass-b-result-informed-reaudit.v1",
+  "date_jst": "2026-10-05",
+  "slot": "INT-14",
+  "frozen_A": {
+    "path": "PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json",
+    "blob_sha1": "5b0c33f878b9ede39ce230f4d3345d9f21e50bc7",
+    "stage_a_final_lane_head": "949347fa32ddb4af51832d25d3d9dca5ba3f79f2"
+  },
+  "challenge_rule": "Challenge A without changing source edition or using INT-family expectations.",
+  "challenges": [
+    {
+      "id": "B01",
+      "objection": "high-level partition mistaken for coordinator",
+      "source_reaudit_result": "Latent H is the source-defined representation being inferred; it is not an extra executive.",
+      "disposition": "REJECT_FALSE_COORDINATOR"
+    },
+    {
+      "id": "B02",
+      "objection": "graph abstraction mistaken for executive control",
+      "source_reaudit_result": "Low-to-high graph abstraction/bridge structure is representational content of H.",
+      "disposition": "REJECT_CONFLATION"
+    },
+    {
+      "id": "B03",
+      "objection": "CRP clustering mistaken for meta-controller",
+      "source_reaudit_result": "CRP is a clustering prior over graph-state partitions subject to connectivity constraints.",
+      "disposition": "REJECT_FALSE_META_CONTROLLER"
+    },
+    {
+      "id": "B04",
+      "objection": "MCMC chain state mistaken for cognitive coordinator",
+      "source_reaudit_result": "Metropolis-within-Gibbs is source inference machinery approximating P(H|D); chain bookkeeping is not promoted to an executive state.",
+      "disposition": "REJECT_CONFLATION"
+    },
+    {
+      "id": "B05",
+      "objection": "HBFS search frontier/order mistaken for persistent coordinator",
+      "source_reaudit_result": "HBFS is explicit planner-local algorithmic state/order, not an independent persistent coordination mechanism.",
+      "disposition": "REJECT_FALSE_COORDINATOR"
+    },
+    {
+      "id": "B06",
+      "objection": "external graph internalized without support",
+      "source_reaudit_result": "G is task/world graph; only source-defined internal hierarchy H and planning representations are internal model state.",
+      "disposition": "CONFIRM_SYSTEM_WORLD_BOUNDARY"
+    },
+    {
+      "id": "B07",
+      "objection": "shared CRP with INT-01 treated as identity/independence",
+      "source_reaudit_result": "W9 class is SHARED_CONSTITUENT_ONLY; clustered object/update/target differ, whole-family genealogy remains unresolved.",
+      "disposition": "CONFIRM_GENEALOGY_LIMIT"
+    },
+    {
+      "id": "B08",
+      "objection": "exact inference/optimality overclaimed",
+      "source_reaudit_result": "Exact posterior is intractable and approximated by MCMC; no global optimality of whole generative model is established.",
+      "disposition": "CONFIRM_LIMIT"
+    },
+    {
+      "id": "B09",
+      "objection": "HBFS uniqueness overclaimed",
+      "source_reaudit_result": "HBFS is a planning realization, not established as the unique cognitively plausible planner.",
+      "disposition": "CONFIRM_LIMIT"
+    }
+  ],
+  "complete_source_ordered_omission_sweep": {
+    "performed": true,
+    "sections": [
+      "graph/BFS background",
+      "hierarchy representation and CRP prior",
+      "generative environment model",
+      "topology/task/reward hierarchy variants",
+      "posterior over H",
+      "Metropolis-within-Gibbs inference",
+      "HBFS planning",
+      "experimental predictions",
+      "Discussion limitations/S1 status"
+    ],
+    "omission_detected": false
+  },
+  "variants_rechecked": [
+    "topology-driven",
+    "task-distribution-driven",
+    "reward-driven",
+    "HBFS",
+    "flat BFS/alternatives",
+    "posterior exploration"
+  ],
+  "negative_evidence_preserved": true,
+  "stage_A_modified": false,
+  "stage_B_status": "FROZEN"
+}

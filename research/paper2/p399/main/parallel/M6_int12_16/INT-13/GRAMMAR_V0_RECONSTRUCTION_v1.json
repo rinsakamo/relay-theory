@@ -1,0 +1,84 @@
+{
+  "schema": "relaytheory.p399.main.m6.grammar-v0-reconstruction.v1",
+  "date_jst": "2026-10-05",
+  "slot": "INT-13",
+  "doi": "10.1371/journal.pcbi.1014796",
+  "input_C": {
+    "path": "PASS_C_SOURCE_CLOSED_ADJUDICATION_v1.json",
+    "blob_sha1": "d538bd65c6bfd5761520b79e1d825594e676f40a"
+  },
+  "grammar_authority": {
+    "roles": [
+      "Pi",
+      "X",
+      "C",
+      "Q",
+      "P_in",
+      "P_out",
+      "K",
+      "T",
+      "rho/O"
+    ],
+    "modified": false,
+    "layered_presentation": true
+  },
+  "L_sys": {
+    "Pi": [
+      "source separates RL and WM learning components and response alternatives/accumulators"
+    ],
+    "X": [
+      "RL Q-values",
+      "WM Q-values with capacity/decay/interference",
+      "source mixture weight/final policy",
+      "LBA accumulator state",
+      "decision threshold configuration"
+    ],
+    "C": [
+      "WM capacity constrains source WM contribution; set size remains source task context L_ctx rather than a new primitive C unless used as explicit threshold parameter"
+    ],
+    "Q": [
+      "RL/WM action policies and final mixture policy orient response evidence",
+      "decision threshold is source-defined choice criterion, not generic executive"
+    ],
+    "P_in": [
+      "stimulus, reward/correctness feedback and block set-size cue"
+    ],
+    "P_out": [
+      "selected response and RT from first accumulator crossing"
+    ],
+    "K": [
+      "RL update",
+      "WM one-shot update/decay",
+      "weighted RL/WM policy mixture",
+      "final-policy to accumulator-drift map",
+      "LBA accumulation",
+      "set-size to threshold modulation"
+    ],
+    "T": [
+      "trial sequence, within-block delay, accumulation time and learning-update order"
+    ],
+    "rho/O": [
+      "choice and RT",
+      "learning/accuracy traces; fitted posterior summaries remain L_claim/L_formal analysis rather than cognitive state"
+    ]
+  },
+  "L_ctx": "Source task/experimental conditions remain explicit and are not retyped into C solely because they are called conditions.",
+  "L_claim": "Negative, null, approximation, genealogy and epistemic qualifications remain claim-layer assertions rather than added system roles.",
+  "L_formal": "Algorithmic inference/search/fitting carriers are kept distinct from source-supported cognitive state; formal plumbing cannot create a coordinator.",
+  "system_world_experiment": {
+    "system": "RL state, WM state, source mixture, decision accumulators and threshold",
+    "world": "stimulus-response block, set-size cue and reinforcement feedback",
+    "boundary": "task cues/reward enter P_in; response/RT leave P_out; fit posterior is not internal system state"
+  },
+  "explicit_source_operators_preserved": true,
+  "opaque_K_X_hiding_of_planning_or_search": false,
+  "source_defined_coordination_or_gating": [
+    "source-defined weighted RL/WM interaction",
+    "source-defined proactive set-size decision-bound modulation"
+  ],
+  "grammar_role_gap_claimed": false,
+  "reconstruction_additions": {
+    "stateless_interfaces": [],
+    "stateful_mechanisms": []
+  }
+}
