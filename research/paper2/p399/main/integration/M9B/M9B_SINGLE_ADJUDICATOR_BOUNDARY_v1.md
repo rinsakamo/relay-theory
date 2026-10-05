@@ -4,7 +4,7 @@ Independent human re-adjudication was **not performed**.
 
 The study therefore establishes **procedural auditability rather than inter-rater reliability**. No Cohen's kappa, independent-coder agreement, or equivalent reliability statistic is claimed.
 
-The following are explicitly **not** substitutes for independent human adjudication:
+The following are explicitly not substitutes for independent human adjudication:
 - LLM-assisted checks or separate model sessions,
 - deterministic CI,
 - Lean formal verification,
