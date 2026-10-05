@@ -1,3 +1,13 @@
+# Execution receipt
+
+- Branch: `paper2/p399-g4-w8a-ancestry-resolution-20261005`
+- Draft PR: **#450**
+- Exact frozen W7 base: `4325a9a4cba4da651e7cdf2617f7bc8b08c90f54`
+- CI-qualified W8-A science/test HEAD before this completion-metadata commit: `9d512df88c00a571bf54860349a82138c60aabb7`
+- Passing CI: **run 37267455283 — SUCCESS**
+- Tests: **20/20 PASS** plus JSON/isolation verification
+- Note on exact final branch HEAD: a commit cannot contain its own Git SHA. The final PR HEAD after this metadata-only report update is therefore recorded in PR #450 metadata and in the external completion response; this report records the immediately preceding, fully CI-qualified science/test freeze.
+
 # RelayTheory Paper 2 — G4 W8-A 完了報告
 
 ## Authority / isolation
