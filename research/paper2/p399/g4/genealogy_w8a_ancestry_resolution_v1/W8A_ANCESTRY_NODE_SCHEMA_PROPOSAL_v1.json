@@ -1,0 +1,111 @@
+{
+  "schema": "W8A_ANCESTRY_NODE_SCHEMA_PROPOSAL_v1",
+  "authority": {
+    "issue": 399,
+    "w7_draft_pr": 447,
+    "w7_frozen_head": "4325a9a4cba4da651e7cdf2617f7bc8b08c90f54"
+  },
+  "scope": "Bounded extension of W7 DOI-oriented ancestry representation; proposal only for W9 integration.",
+  "scientific_rationale": "Absence of a DOI is not evidence of absence of ancestry. A source-explicit predecessor with an unambiguous bibliographic identity must be representable without fabricating DOI metadata.",
+  "node_types": {
+    "DOI_WORK": {
+      "required": [
+        "node_type",
+        "doi",
+        "title",
+        "authors",
+        "year",
+        "venue",
+        "bibliographic_locator",
+        "publisher_or_proceedings_authority",
+        "descendant_citation_locus"
+      ],
+      "rules": [
+        "node_type must equal DOI_WORK",
+        "doi must match a DOI syntax and be source-verified",
+        "node_id may be doi:<normalized DOI>"
+      ]
+    },
+    "NON_DOI_BIBLIOGRAPHIC_WORK": {
+      "required": [
+        "node_type",
+        "local_node_id",
+        "doi",
+        "doi_status",
+        "title",
+        "authors",
+        "year",
+        "venue",
+        "bibliographic_locator",
+        "publisher_or_proceedings_authority",
+        "stable_locators",
+        "descendant_citation_locus",
+        "identity_basis"
+      ],
+      "rules": [
+        "node_type must equal NON_DOI_BIBLIOGRAPHIC_WORK",
+        "doi must be null",
+        "doi_status must explicitly record that no DOI was established from the authoritative records checked and that none may be invented",
+        "title alone is never sufficient identity",
+        "authors, year, venue/proceedings, and pages/article number when applicable are mandatory",
+        "at least one stable bibliographic locator or an immutable local source artifact receipt is required",
+        "local_node_id is repository-local only and must start rt-biblio-",
+        "local_node_id must not match DOI syntax and must never be exported as an external identifier"
+      ]
+    }
+  },
+  "local_id_rule": {
+    "construction": "rt-biblio-<human-readable-slug>-<12-hex sha256 prefix of normalized bibliographic identity>",
+    "external_semantics": false,
+    "doi_masquerade_forbidden": true
+  },
+  "edge_vocabulary": [
+    "DIRECT_ADAPTATION",
+    "DIRECT_EXTENSION",
+    "DIRECT_IMPLEMENTATION_DESCENT",
+    "SHARED_FRAMEWORK",
+    "SHARED_CONSTITUENT",
+    "HISTORICAL_INSPIRATION",
+    "RELATED_CITATION_ONLY",
+    "UNDERDETERMINED"
+  ],
+  "direct_ancestry_candidate_types": [
+    "DIRECT_ADAPTATION",
+    "DIRECT_EXTENSION",
+    "DIRECT_IMPLEMENTATION_DESCENT"
+  ],
+  "direct_edge_admission_rule": {
+    "all_required": [
+      "ancestor bibliographic identity is unambiguous",
+      "descendant contains an explicit adaptation/extension/implementation-descended relation, not citation alone",
+      "a specific inherited operator, mechanism, architecture, or parameterization is named",
+      "source edition and citation locus are recorded"
+    ],
+    "disallowed_shortcuts": [
+      "shared authorship",
+      "terminology overlap",
+      "broad framework membership",
+      "citation without a relation statement",
+      "transitivity without each intermediate edge being independently supported"
+    ]
+  },
+  "fail_closed_rules": [
+    "Never fabricate DOI metadata or a missing edition.",
+    "Reject title-only non-DOI nodes.",
+    "Reject a repository-local node identifier that resembles a DOI.",
+    "Citation alone cannot become direct ancestry.",
+    "Shared authorship cannot become direct ancestry.",
+    "Broad framework membership cannot become exact model descent.",
+    "UNDERDETERMINED edges cannot be used as independence evidence.",
+    "No W8-A artifact may set global independence true.",
+    "MAIN scientific authorization remains false.",
+    "W8-A does not rewrite W7 ORIGINAL_NATIVE_PROFILES_v1.json or PAIR_TRIAGE_MATRIX.json."
+  ],
+  "w9_isolation_contract": {
+    "backward_compatible": true,
+    "shared_w7_matrix_rewritten": false,
+    "import_requires_independent_w9_validation": true,
+    "profile_or_pair_independence_promoted": false,
+    "main_scientific_authorization": false
+  }
+}
