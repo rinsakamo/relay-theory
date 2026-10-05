@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify exact source-ledger Git provenance of ten PREVIOUS bounded audits.
+"""Verify exact source-ledger Git provenance of fifteen PREVIOUS bounded audits.
 
 This cannot reverify non-Git original PDF/MHT bytes or mathematical semantics.
 New paper IDs MUST receive an explicit evidence-mapping code review.
@@ -35,6 +35,11 @@ TRUSTED = {
     "P09": (G1_SCIENCE_REF, P09, "09e682b93a27f8e7c08eb754e83f67ada2fbcfe7"),
     "P14": (G1_SCIENCE_REF, P14, "1e063c0779b0a90ad499320bad612791f74fe8fb"),
     "INT-08": (G2_INTEGRATED_REF, INT08, "4ccb0f762a20b396afbcdf69e8e8211d2a7872bf"),
+    "P07": (G1_SCIENCE_REF, "research/paper2/p399/g1/p07/P07_PRE_A_ORIGINAL_SOURCE_AND_LINEAGE_FREEZE_v1.json", "c93f3faf6dc01691ca276407e22ff2027543d911"),
+    "P06": (G1_SCIENCE_REF, "research/paper2/p399/g1/parallel/W1/p06/P06_PRE_A_ORIGINAL_PUBLISHED_SOURCE_FREEZE_v1.json", "3d915bede76507a14666a8e47924f779cfa2d83e"),
+    "P08": (G1_SCIENCE_REF, "research/paper2/p399/g1/parallel/W1/p08/P08_PRE_A_CORRECTED_PUBLISHED_MAIN_SOURCE_BOUNDED_v1.json", "79133e2017b30f568bef1705d5e78ee911ce2c39"),
+    "P11": (G1_SCIENCE_REF, "research/paper2/p399/g1/parallel/W2/p11/P11_PRE_A_FROZEN_ISSUER_MAIN_FIVE_SUPPLEMENTS_v1.json", "1cafaca7c1d939697f3985a14c080fc18ced25d4"),
+    "P12": (G1_SCIENCE_REF, "research/paper2/p399/g1/parallel/W2/p12/P12_PRE_A_FROZEN_PUBLISHER_LVOC_MATH_AND_ANCESTRY_v1.json", "43c35dc82599dfe6d751ed7618330858149468d0"),
 }
 
 
@@ -71,6 +76,22 @@ def primary_identity(ident, data):
     if ident == "P05":
         row = data["original_source"]
         return data["candidate"]["doi"], row["raw_sha256"], []
+    if ident == "P06":
+        return data["edition"]["doi"], data["edition"]["sha256"], []
+    if ident == "P07":
+        return data["source"]["doi"], data["source"]["original_pdf_raw_sha256"], []
+    if ident == "P08":
+        return data["original"]["doi"], data["original"]["raw_sha256"], [
+            data["correction"]["raw_sha256"], data["official_S1"]["raw_sha256"]
+        ]
+    if ident == "P11":
+        return data["doi"], data["official_original"]["raw_sha256"], [
+            item["raw_sha256"] for item in data["official_original"]["publisher_supplements"]
+        ]
+    if ident == "P12":
+        return data["doi"], data["original_edition"]["raw_sha256"], [
+            item["raw_sha256"] for item in data["original_edition"]["official_supplemental_origins"]
+        ]
     if ident == "P09":
         return data["candidate"]["doi"], data["primary_original"]["sha256"], []
     if ident == "P14":
@@ -92,8 +113,8 @@ def primary_identity(ident, data):
 
 
 def verify(profiles, loader=git_blob):
-    if set(profiles) != set(TRUSTED) or len(profiles) != 10:
-        raise InputMismatch("This snapshot's exact ten auditable profiles must be present")
+    if set(profiles) != set(TRUSTED) or len(profiles) != 15:
+        raise InputMismatch("This snapshot's exact fifteen auditable profiles must be present")
     seen = {}
     for profile in profiles.values():
         ident = profile["id"]
@@ -120,6 +141,13 @@ def verify(profiles, loader=git_blob):
                            if x["role"] != "author_adopted_prepublication_code"]
         if sorted(profiles_supps) != sorted(supplements):
             raise InputMismatch(f"{ident}: mandatory original/correction bundle mismatch")
+        if ident == "P12":
+            original_ancestors = [x["doi"].lower() for x in doc["direct_original_ancestry_graph"] if x.get("doi") and x["type"] == "EXPLICIT_DIRECT_NORMATIVE_CONTROL_ANCESTOR"]
+            if [x.lower() for x in profile["direct_model_ancestors"]] != original_ancestors:
+                raise InputMismatch("P12 direct EVC source ancestor modified")
+        if ident == "P08":
+            if doc["correction"]["nature"] != "SUBSTANTIVE_SCIENTIFIC_MODEL_NORMATIVITY_CORRECTION":
+                raise InputMismatch("P08 official normative correction absent")
         if ident == "P05":
             source_ancestors = [x["doi"].lower() for x in doc["direct_ancestry"] if x.get("doi")]
             if [x.lower() for x in profile["direct_model_ancestors"]] != source_ancestors:
