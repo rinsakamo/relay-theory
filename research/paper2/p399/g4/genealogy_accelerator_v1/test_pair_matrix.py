@@ -16,7 +16,7 @@ def fixture():
           "g1_doi": y["doi"], "source_citation": None, "prior_risk": None}
          for x, y in itertools.product(g2, g1)]
     return {"selected_working_roster": g2}, {"roster_snapshot": g1}, {
-        "main_main_pairs": m, "main_g1_pairs": e
+        "main_main_pairs": m, "main_vs_g1_pairs": e
     }, {"schema": "blank", "profiles": []}
 
 
@@ -35,7 +35,7 @@ class MatrixTests(unittest.TestCase):
 
     def test_existing_risks_citations_prioritized_without_clearance(self):
         self.args[2]["main_main_pairs"][0]["prior_logged_risk"] = {"kind": "SHARED_CORE"}
-        self.args[2]["main_g1_pairs"][0]["source_citation"] = "archived original"
+        self.args[2]["main_vs_g1_pairs"][0]["source_citation"] = "archived original"
         rows, _ = generate(*self.args)
         self.assertEqual(sum(r["priority"] == 1 for r in rows), 1)
         self.assertEqual(sum(r["priority"] == 2 for r in rows), 1)
@@ -44,7 +44,7 @@ class MatrixTests(unittest.TestCase):
     def test_known_exact_doi_collision_is_not_silently_admitted(self):
         # Synthetic same DOI across cohorts is detected rather than lost.
         self.args[1]["roster_snapshot"][0]["doi"] = self.args[0]["selected_working_roster"][0]["doi"]
-        for row in self.args[2]["main_g1_pairs"]:
+        for row in self.args[2]["main_vs_g1_pairs"]:
             if row["g1_id"] == "P00":
                 row["g1_doi"] = self.args[1]["roster_snapshot"][0]["doi"]
         rows, _ = generate(*self.args)
@@ -56,7 +56,7 @@ class MatrixTests(unittest.TestCase):
             generate(*self.args)
 
     def test_duplicate_pair_is_a_hard_error(self):
-        self.args[2]["main_g1_pairs"][1] = copy.deepcopy(self.args[2]["main_g1_pairs"][0])
+        self.args[2]["main_vs_g1_pairs"][1] = copy.deepcopy(self.args[2]["main_vs_g1_pairs"][0])
         with self.assertRaises(InputMismatch):
             generate(*self.args)
 
