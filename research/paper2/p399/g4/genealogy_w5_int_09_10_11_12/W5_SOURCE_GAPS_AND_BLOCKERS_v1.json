@@ -1,0 +1,102 @@
+{
+  "schema": "relaytheory.p399.g4.w5.source_gaps_and_blockers.v1",
+  "authority": {
+    "issue": 399,
+    "parent_pr": 438,
+    "parent_head": "ae044a8f475fb0dc9140a91e360e1ff26a0b5e3a",
+    "source_freeze_path": "research/paper2/p399/g4/genealogy_w5_int_09_10_11_12/W5_SOURCE_EVIDENCE_FREEZE_v1.json",
+    "source_freeze_git_blob_sha1": "4e453eb63c662f167735ed929aa14d3cff88ddf6",
+    "source_freeze_ref": "4abf6c229ff893fb51b56b7127a8d26f184d787d",
+    "pair_ledger_path": "research/paper2/p399/g4/genealogy_w5_int_09_10_11_12/W5_BOUNDED_PAIR_ADJUDICATIONS_v1.json",
+    "pair_ledger_git_blob_sha1": "8ce90f79de39bf584f8e0ea1d7cf79f994a0ba86",
+    "pair_ledger_ref": "2364ef51cd7c898bf05f2245e31b75cc590eaa12"
+  },
+  "status_by_paper": [
+    {
+      "slot": "INT-09",
+      "doi": "10.1371/journal.pcbi.1005190",
+      "status": "PROFILE_FRAGMENT_READY",
+      "missing_original": false,
+      "incomplete_correction": false,
+      "missing_supplement": true,
+      "unresolved_model_variant": false,
+      "unresolved_mathematical_ancestry": false,
+      "insufficient_pair_evidence": false,
+      "details": [
+        "Main first-party raw SHA is frozen and the official 2017 Fig9-legend correction is preserved as a required edition bundle.",
+        "S1 Text is officially identified but its raw bytes/SHA were not independently frozen in W5; central operators are nevertheless explicit in the main article.",
+        "No claim of ancestry exhaustiveness or global independence is made."
+      ]
+    },
+    {
+      "slot": "INT-10",
+      "doi": "10.1371/journal.pcbi.1011024",
+      "status": "PROFILE_FRAGMENT_READY",
+      "missing_original": false,
+      "incomplete_correction": false,
+      "missing_supplement": false,
+      "unresolved_model_variant": false,
+      "unresolved_mathematical_ancestry": false,
+      "insufficient_pair_evidence": false,
+      "details": [
+        "Main first-party raw SHA is frozen.",
+        "Official correction DOI 10.1371/journal.pcbi.1011243 changes Funding only and therefore is kept separate without altering the central model.",
+        "The earlier uncorrected proof is not silently equated with the current article; the inherited raw SHA is not asserted to fingerprint both editions."
+      ]
+    },
+    {
+      "slot": "INT-11",
+      "doi": "10.1371/journal.pcbi.1014093",
+      "status": "PROFILE_FRAGMENT_READY",
+      "missing_original": false,
+      "incomplete_correction": false,
+      "missing_supplement": false,
+      "unresolved_model_variant": false,
+      "unresolved_mathematical_ancestry": false,
+      "insufficient_pair_evidence": false,
+      "details": [
+        "Main first-party raw SHA is frozen and the current publisher article states the inherited FI and OI models explicitly.",
+        "The exact FI ancestor DOI 10.1037/rev0000414 and OI ancestor DataCite arXiv DOI 10.48550/arXiv.1906.07663 are safely resolved.",
+        "No exhaustive publisher correction-registry claim is made; no model-relevant correction was identified during W5 source review."
+      ]
+    },
+    {
+      "slot": "INT-12",
+      "doi": "10.1371/journal.pcbi.1006116",
+      "status": "PROFILE_FRAGMENT_READY",
+      "missing_original": false,
+      "incomplete_correction": false,
+      "missing_supplement": true,
+      "unresolved_model_variant": true,
+      "unresolved_mathematical_ancestry": false,
+      "insufficient_pair_evidence": false,
+      "details": [
+        "Main first-party raw SHA is frozen and central independent/joint clustering is fully identifiable from the main article.",
+        "S1/S2 supporting-text bytes are not W5-frozen; the S1 unknown-transition implementation is explicitly noncanonical and cannot be promoted.",
+        "Joint-clustering predecessors 10.1037/a0030852 and 10.1016/j.cognition.2016.04.002 are recorded only for the inherited joint comparator, not as proof that the novel independent decomposition is identical."
+      ]
+    }
+  ],
+  "lane_blockers": {
+    "source_blocked_count": 0,
+    "scientific_ancestry_underdetermined_count": 0,
+    "profile_fragment_ready_count": 4,
+    "blocking_items": [],
+    "nonblocking_source_completeness_gaps": [
+      "INT-09 S1 Text raw bytes/SHA not independently frozen in W5.",
+      "INT-12 S1/S2 Text raw bytes/SHA not independently frozen in W5; unknown-transition variant remains noncanonical.",
+      "INT-10 uncorrected-proof bytes are not asserted identical to the current article; correction is Funding-only.",
+      "INT-11 correction-registry absence is not claimed exhaustive."
+    ],
+    "genealogy_scope_limit": "Required W5 comparison set is bounded-adjudicated, but ancestry_exhaustiveness remains NOT_ATTESTED for every profile and no result is a global historical-family proof."
+  },
+  "fail_closed_gates": {
+    "all_statuses_in_allowed_set": true,
+    "correction_loss_would_fail": true,
+    "unverified_variant_canonicalization_would_fail": true,
+    "global_family_independence_certified": false,
+    "ancestry_exhaustiveness": "NOT_ATTESTED",
+    "bounded_pair_difference_can_promote_independence": false,
+    "main_authorized": false
+  }
+}
