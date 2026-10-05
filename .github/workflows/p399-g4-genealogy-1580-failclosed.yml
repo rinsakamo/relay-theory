@@ -38,6 +38,21 @@ jobs:
           set -euo pipefail
           P=research/paper2/p399/g2/int_g2d/G2D_V20_INT01_THREE_ADDITIONAL_PAIRS_INT09_OFFICIAL_FIG9_CORRIGENDUM_AND_35_QUEUE.json
           test "$(git rev-parse "HEAD:${P}")" = "886bed52531abec3457f3b9976f39236b8899007"
+      - name: Independently pin later G2 three-primary bounded ledgers without branch rewrite
+        shell: bash
+        run: |
+          set -euo pipefail
+          G2_LATE=b9b238fe786cba2ae9df9efb26febc78ccd67486
+          P=research/paper2/p399/g2/three_primary_review_20261005/THREE_PRIMARY_SOURCE_FREEZE_AND_BOUNDED_SCIENCE_v1.json
+          git fetch --no-tags origin "$G2_LATE" || git fetch --no-tags origin paper2/p399-g2-outcome-blind-main40-working-20261004
+          test "$(git rev-parse "${G2_LATE}:${P}")" = "021dd2856510a4ac04fbbb3221d93b103067bb17"
+      - name: Cross-check all bounded profiles against exact frozen upstream ledger bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/paper2/p399/g4/genealogy_accelerator_v1/verify_profile_ledger.py \
+            --profiles research/paper2/p399/g4/genealogy_accelerator_v1/ORIGINAL_NATIVE_PROFILES_v1.json \
+            --output p399-g4-genealogy-audit/PROFILE_GIT_PROVENANCE_RECEIPT.json
       - name: Real 780+800 historic register + independent current G1 cross-check
         shell: bash
         run: |
@@ -58,7 +73,9 @@ jobs:
           assert len(rows) == summary["full_pair_count"] == 1580
           assert sum(r["cohort"] == "G2_G2" for r in rows) == 780
           assert sum(r["cohort"] == "G2_G1" for r in rows) == 800
-          assert summary["prior_indexed_native_scoped_pairs_reused"] > 0
+          assert summary["prior_indexed_native_scoped_pairs_reused"] == 9
+          assert summary["source_ledger_derived_bounded_profiles"] == 7
+          assert summary["new_full_original_scientific_qualifications_from_profiles"] == 0
           assert summary["global_final_independent_pairs"] == 0
           assert summary["scientific_main_authorized"] is False
           assert all(not r["global_independence_certified"] for r in rows)
