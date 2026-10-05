@@ -1,0 +1,79 @@
+{
+  "schema": "relaytheory.p399.main.m6.grammar-v0-reconstruction.v1",
+  "date_jst": "2026-10-05",
+  "slot": "INT-14",
+  "doi": "10.1371/journal.pcbi.1007594",
+  "input_C": {
+    "path": "PASS_C_SOURCE_CLOSED_ADJUDICATION_v1.json",
+    "blob_sha1": "06ca6519e0a9a6d7a36be29df59a87c01a5172d9"
+  },
+  "grammar_authority": {
+    "roles": [
+      "Pi",
+      "X",
+      "C",
+      "Q",
+      "P_in",
+      "P_out",
+      "K",
+      "T",
+      "rho/O"
+    ],
+    "modified": false,
+    "layered_presentation": true
+  },
+  "L_sys": {
+    "Pi": [
+      "latent connected partition H individuates low-level graph states into source-defined high-level clusters"
+    ],
+    "X": [
+      "low-level graph representation",
+      "hierarchy H/high-level graph/bridge structure",
+      "posterior over H",
+      "planner-local HBFS search state"
+    ],
+    "C": [
+      "connected-cluster constraint and graph-consistency/admissibility conditions on H; generic experimental task conditions remain L_ctx"
+    ],
+    "Q": [
+      "posterior probability/likelihood over H",
+      "shortest-path/planning objective and hierarchy-conditioned behavioral criteria"
+    ],
+    "P_in": [
+      "graph topology, start-goal/task distribution and reward evidence"
+    ],
+    "P_out": [
+      "planned path/navigation choice and hierarchy-conditioned readout"
+    ],
+    "K": [
+      "low-to-high source abstraction induced by H",
+      "Metropolis-within-Gibbs posterior update/sampling",
+      "explicit HBFS planning over high-level and relevant low-level graph structure"
+    ],
+    "T": [
+      "MCMC iteration and source-defined planning/search order"
+    ],
+    "rho/O": [
+      "path/choice behavior, inferred hierarchy/readout and experiment-specific observations"
+    ]
+  },
+  "L_ctx": "Source task/experimental conditions remain explicit and are not retyped into C solely because they are called conditions.",
+  "L_claim": "Negative, null, approximation, genealogy and epistemic qualifications remain claim-layer assertions rather than added system roles.",
+  "L_formal": "Algorithmic inference/search/fitting carriers are kept distinct from source-supported cognitive state; formal plumbing cannot create a coordinator.",
+  "system_world_experiment": {
+    "system": "inferred internal hierarchy H, posterior representation and planning process",
+    "world": "environment graph G, low-level states/edges, start/goal/task/reward distribution",
+    "boundary": "world graph is observed/model input; H is source-defined internal representation; MCMC/HBFS bookkeeping is not promoted beyond source role"
+  },
+  "explicit_source_operators_preserved": true,
+  "opaque_K_X_hiding_of_planning_or_search": false,
+  "source_defined_coordination_or_gating": [
+    "hierarchy H supplies source-defined abstraction shared by inference and planning",
+    "HBFS uses bridge/high-level structure for source-defined route planning"
+  ],
+  "grammar_role_gap_claimed": false,
+  "reconstruction_additions": {
+    "stateless_interfaces": [],
+    "stateful_mechanisms": []
+  }
+}
