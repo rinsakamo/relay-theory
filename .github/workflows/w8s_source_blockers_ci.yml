@@ -1,0 +1,27 @@
+name: W8S source blockers fail-closed
+
+on:
+  push:
+    branches:
+      - paper2/p399-g4-w8s-source-blockers-20261005
+    paths:
+      - research/paper2/p399/g4/w8s_source_blockers/**
+      - .github/workflows/w8s_source_blockers_ci.yml
+  pull_request:
+    branches:
+      - paper2/p399-g4-w7-six-lane-integration-20261005
+    paths:
+      - research/paper2/p399/g4/w8s_source_blockers/**
+      - .github/workflows/w8s_source_blockers_ci.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  fail-closed:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: W8-S fail-closed validation
+        run: python research/paper2/p399/g4/w8s_source_blockers/test_w8s_fail_closed.py
