@@ -1,0 +1,31 @@
+{
+  "schema": "relaytheory.p399.main.m3.grammar_v0_reconstruction.v1",
+  "slot": "MEM-02",
+  "doi": "10.1371/journal.pcbi.1008367",
+  "chronology": {
+    "after_stage_c": true,
+    "source_adjudication_frozen": true
+  },
+  "frozen_grammar_authority": {
+    "blob": "a688edb063c0ad43c25df15f497918817e8b74cd",
+    "roles_modified": false
+  },
+  "mapping": {
+    "Pi": "individuate semantic-model parameters, episode latent, and boundary input/output without conflating them",
+    "X": "time-indexed configuration containing current episode latent plus retained learned generative parameters",
+    "C": "rate-distortion and source model admissibility constraints",
+    "Q": "rate-distortion objective/orientation over coding alternatives",
+    "P_in": "episode encoding/input",
+    "P_out": "reconstruction/read query",
+    "K": "encoding and decoder/latent transformation relations plus learned-parameter training relation",
+    "T": "training-before-encoding-before-reconstruction; delay condition indexes variant use",
+    "rho_O": "reconstructed episode/output trace"
+  },
+  "distinctions": {
+    "learned_parameter_vs_current_latent": "PRESERVED",
+    "retained_structure_vs_external_history": "PRESERVED",
+    "observation_trace_vs_internal_state": "PRESERVED",
+    "source_defined_state_not_hidden_in_generic_X_or_K": true
+  },
+  "reconstruction": "DIRECT_SOURCE_GROUNDED"
+}
