@@ -3,6 +3,10 @@
 - Branch: paper2/p399-g4-w8g-g1-190-genealogy-graph-20261005
 - Draft PR: #449
 - frozen W7 base: 4325a9a4cba4da651e7cdf2617f7bc8b08c90f54
+- scientific-output freeze commit: `82c4a056beb41f8855d11449a83e52cbbcb5fb83`
+- destructive tests: **24/24 PASS**
+- final successful CI: **run 37267496395 — SUCCESS**
+- CI-tested generator HEAD: `324b550dd78ce90f360f21e33262643507510efe`
 - G1×G1: **190/190**
 - categories: {"BOUNDED_SOURCE_NATIVE_DIFFERENCE": 6, "DIRECT_OR_EXPLICIT_SHARED_MODEL_ANCESTRY": 1, "SHARED_CONSTITUENT_ONLY": 3, "UNDERDETERMINED": 180}
 - direct/shared-risk: **4**
