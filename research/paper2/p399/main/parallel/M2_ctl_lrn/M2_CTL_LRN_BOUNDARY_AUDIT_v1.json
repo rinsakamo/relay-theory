@@ -1,0 +1,62 @@
+{
+  "schema": "relaytheory.p399.main.m2.ctl_lrn_boundary_audit_v1",
+  "audit_count": 6,
+  "findings": [
+    {
+      "boundary": "controller state vs learned parameter",
+      "status": "PASS_SEPARATED",
+      "examples": [
+        "CTL-02 actor weights/Beta beliefs are learned/belief state, not added coordinator",
+        "LRN-01 encoder/decoder parameters are learned representation/policy",
+        "LRN-03 weights/recurrent states are source network state"
+      ]
+    },
+    {
+      "boundary": "control update vs learning update",
+      "status": "PASS_SEPARATED",
+      "examples": [
+        "CTL-02 uncertainty feedback regulates source learning but is distinct from prediction-error update",
+        "CTL-01 MCMC posterior approximation is distinct from across-episode alpha learning",
+        "LRN-02 volatility/state update is learning/inference, not a new CTL module"
+      ]
+    },
+    {
+      "boundary": "policy execution vs policy acquisition",
+      "status": "PASS_SEPARATED",
+      "examples": [
+        "CTL-01 last stopped sample executes policy; alpha learns prior across episodes",
+        "LRN-01 test decoder executes learned mapping without inferred test-time learning",
+        "LRN-03 decision RNN executes; value network supports acquisition"
+      ]
+    },
+    {
+      "boundary": "value computation vs control",
+      "status": "PASS_SEPARATED",
+      "examples": [
+        "CTL-01 predicted free energy/reward likelihood evaluates policies but does not itself select/coordinate",
+        "CTL-02 critic value is not a separate controller",
+        "LRN-03 value network is a training baseline, not execution controller"
+      ]
+    },
+    {
+      "boundary": "environmental adaptation vs internal learning",
+      "status": "PASS_SEPARATED",
+      "examples": [
+        "CTL-03 cTBS/control demand are experimenter interventions",
+        "LRN-02 switching schedule/true contingency is World; posterior volatility is System",
+        "LRN-01 training/test schedule and feature embeddings are experimenter-defined"
+      ]
+    },
+    {
+      "boundary": "meta-control vs task instruction",
+      "status": "PASS_SEPARATED",
+      "examples": [
+        "CTL-03 task labels/regressors are not meta-control state",
+        "CTL-01 task cues/contexts drive inference but external rule schedule is not a coordinator",
+        "CTL-02 source-defined uncertainty feedback is retained without inventing a superordinate controller"
+      ]
+    }
+  ],
+  "conclusion": "No CTL/LRN conflation forces an added stateless adapter or persistent A2 mechanism.",
+  "new_coordinator_inferred": false
+}
