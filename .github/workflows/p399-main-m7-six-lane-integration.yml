@@ -1,0 +1,18 @@
+name: P399 MAIN M7 fail-closed
+on:
+  pull_request:
+    branches:
+      - paper2/p399-main-go-kickoff-20261005
+    paths:
+      - 'research/paper2/p399/main/integration/M7/**'
+      - '.github/workflows/p399-main-m7-six-lane-integration.yml'
+  workflow_dispatch:
+jobs:
+  m7-fail-closed:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Run 40 destructive fail-closed checks
+        run: python research/paper2/p399/main/integration/M7/test_m7_fail_closed.py
