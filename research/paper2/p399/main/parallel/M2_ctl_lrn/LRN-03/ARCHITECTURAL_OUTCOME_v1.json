@@ -1,0 +1,61 @@
+{
+  "schema": "relaytheory.p399.main.m2.architectural_outcome_v1",
+  "slot": "LRN-03",
+  "doi": "10.7554/eLife.21492",
+  "source_fidelity": "SOURCE_CLOSED_ADJUDICATED",
+  "attempt_trace": {
+    "A0": {
+      "attempted": true,
+      "result": "PASS",
+      "reason": "The source already defines the decision/value training interfaces and execution boundary. Grammar represents them directly, with no extra persistent coordinator."
+    },
+    "A1": {
+      "attempted": false,
+      "result": "NOT_NEEDED_AFTER_A0_PASS",
+      "permitted_addition_types": [
+        "typed interface",
+        "value/action translation",
+        "observation-to-controller mapping",
+        "sequencing",
+        "execution-order constraint",
+        "read/write contract",
+        "stateless routing"
+      ]
+    },
+    "A2": {
+      "attempted": false,
+      "result": "NOT_PERMITTED_OR_NEEDED_AFTER_A0_PASS",
+      "precondition_requires_documented_A0_and_A1_failure": true
+    }
+  },
+  "final_architectural_state": "A0_FIDELITY",
+  "added_stateless_adapters": {
+    "count": 0,
+    "types": []
+  },
+  "added_stateful_mechanisms": {
+    "count": 0,
+    "types": []
+  },
+  "source_defined_state_not_counted_as_added_stateful_mechanism": true,
+  "unresolved_issues": [
+    "REINFORCE/recurrent policy gradient is inherited",
+    "biological constraints and exact learning-rule plausibility are weak",
+    "trained RNN is a modeling tool rather than direct proof of brain gradient implementation",
+    "value representation is essential for learning but not executing learned task",
+    "ancestry exhaustiveness NOT_ATTESTED"
+  ],
+  "genealogy_annotation": {
+    "direct_model_ancestors": [
+      "10.1093/jigpal/jzp049"
+    ],
+    "pair_category_counts_across_59_other_profiles": {
+      "UNDERDETERMINED": 49,
+      "BOUNDED_SOURCE_NATIVE_DIFFERENCE": 7,
+      "SHARED_CONSTITUENT_ONLY": 3
+    },
+    "global_genealogical_independence_assumed": false,
+    "ancestry_exhaustiveness": "NOT_ATTESTED"
+  },
+  "overall_h0_h1_h2_implication": "NONE_FROM_M2_PER_PAPER_OUTCOME_ALONE"
+}
