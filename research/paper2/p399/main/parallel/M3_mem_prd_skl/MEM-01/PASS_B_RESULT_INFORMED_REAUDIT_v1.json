@@ -1,0 +1,61 @@
+{
+  "schema": "relaytheory.p399.main.m3.pass_b_reaudit.v1",
+  "slot": "MEM-01",
+  "doi": "10.1007/s42113-023-00189-y",
+  "chronology": {
+    "stage": "B",
+    "input_stage_a": "PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json",
+    "stage_a_frozen_input": true,
+    "source_universe_unchanged": true
+  },
+  "objections": [
+    {
+      "id": "B01",
+      "challenge": "Could elapsed task history have been mistaken for memory state?",
+      "stage_a_response_under_challenge": "Trace creation times/chunks are source-defined internal state; the external retention interval remains outside.",
+      "source_locus": "Base-Level Activation, Traces, and Memories; Eqs 3-5",
+      "result": "NO_SILENT_REPAIR"
+    },
+    {
+      "id": "B02",
+      "challenge": "Could activation have been mistaken for storage?",
+      "stage_a_response_under_challenge": "No: Stage A explicitly separates retained traces from current activation/availability.",
+      "source_locus": "Base-Level Activation and retrieval-control sections",
+      "result": "NO_SILENT_REPAIR"
+    },
+    {
+      "id": "B03",
+      "challenge": "Could blended output be mistaken for a persistent representation?",
+      "stage_a_response_under_challenge": "No: blending is a readout/reconstruction operator over candidate memories.",
+      "source_locus": "Blending; Eq 8",
+      "result": "NO_SILENT_REPAIR"
+    },
+    {
+      "id": "B04",
+      "challenge": "Could ACT-R inheritance be mistaken for paper-specific architecture?",
+      "stage_a_response_under_challenge": "No: inheritance is explicitly carried as genealogy/provenance.",
+      "source_locus": "Introduction; The ACT-R Theory of Long-term Memory; Algorithmic Implementation",
+      "result": "NO_SILENT_REPAIR"
+    },
+    {
+      "id": "B05",
+      "challenge": "Was encoding-interference uncertainty omitted?",
+      "stage_a_response_under_challenge": "No: Stage A/negative ledger states no agreed ACT-R encoding-interference mechanism.",
+      "source_locus": "Memory encoding / interference discussion",
+      "result": "NO_SILENT_REPAIR"
+    }
+  ],
+  "required_conflation_sweep": {
+    "task_history_vs_internal_memory": "AUDITED",
+    "fitted_latent_vs_storage": "AUDITED",
+    "model_output_vs_representation": "AUDITED",
+    "delay_schedule_vs_learning_operator": "AUDITED",
+    "inherited_mechanism_vs_new_contribution": "AUDITED",
+    "negative_or_boundary_material": "AUDITED"
+  },
+  "source_ordered_omission_sweep": {
+    "performed": true,
+    "new_omissions_found": 0,
+    "notes": "Stage A already contained the material source-local limits reopened in B; C must still independently adjudicate each objection."
+  }
+}
