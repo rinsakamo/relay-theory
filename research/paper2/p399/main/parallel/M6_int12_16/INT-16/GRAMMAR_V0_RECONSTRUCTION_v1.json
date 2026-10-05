@@ -1,0 +1,82 @@
+{
+  "schema": "relaytheory.p399.main.m6.grammar-v0-reconstruction.v1",
+  "date_jst": "2026-10-05",
+  "slot": "INT-16",
+  "doi": "10.1371/journal.pcbi.1004060",
+  "input_C": {
+    "path": "PASS_C_SOURCE_CLOSED_ADJUDICATION_v1.json",
+    "blob_sha1": "72a1a160d724c89674e11225671a4852c5b23445"
+  },
+  "grammar_authority": {
+    "roles": [
+      "Pi",
+      "X",
+      "C",
+      "Q",
+      "P_in",
+      "P_out",
+      "K",
+      "T",
+      "rho/O"
+    ],
+    "modified": false,
+    "layered_presentation": true
+  },
+  "L_sys": {
+    "Pi": [
+      "source network layers/units and synapse-local tagged versus untagged loci are individuated without positing a new executive boundary"
+    ],
+    "X": [
+      "input activity",
+      "regular and persistent memory-unit activity",
+      "Q/action values",
+      "synaptic traces/tags",
+      "weights",
+      "RPE delta"
+    ],
+    "C": [
+      "plasticity is admissible only through source-defined local activity/tag and neuromodulatory gating conditions; generic task condition is not automatically C"
+    ],
+    "Q": [
+      "action Q-values orient response selection",
+      "RPE delta orients sign/strength of plasticity"
+    ],
+    "P_in": [
+      "stimulus/state vector and reward/terminal feedback"
+    ],
+    "P_out": [
+      "selected response; selected action also participates in the source feedback pathway"
+    ],
+    "K": [
+      "feedforward processing to association/action values",
+      "selected-response feedback transforms traces/tags",
+      "global RPE interacts with tagged synapses to update weights",
+      "tag decay/eligibility transformation"
+    ],
+    "T": [
+      "stimulus -> response selection -> feedback/tag formation -> delayed reward/RPE -> plasticity; trace/tag decay and trial reset ordering"
+    ],
+    "rho/O": [
+      "selected actions, network activity/working-memory readouts and task performance"
+    ]
+  },
+  "L_ctx": "Source task/experimental conditions remain explicit and are not retyped into C solely because they are called conditions.",
+  "L_claim": "Negative, null, approximation, genealogy and epistemic qualifications remain claim-layer assertions rather than added system roles.",
+  "L_formal": "Algorithmic inference/search/fitting carriers are kept distinct from source-supported cognitive state; formal plumbing cannot create a coordinator.",
+  "system_world_experiment": {
+    "system": "association/memory/action network, Q values, traces/tags, weights, source feedback and RPE-gated plasticity",
+    "world": "external stimulus/state and reward/terminal events",
+    "boundary": "stimuli/rewards enter P_in and actions leave P_out; global neuromodulator is internal source coupling, not a generic World controller"
+  },
+  "explicit_source_operators_preserved": true,
+  "opaque_K_X_hiding_of_planning_or_search": false,
+  "source_defined_coordination_or_gating": [
+    "selected-response feedback gates tag formation",
+    "global neuromodulatory/RPE signal gates plasticity of tagged synapses"
+  ],
+  "grammar_role_gap_claimed": false,
+  "reconstruction_additions": {
+    "stateless_interfaces": [],
+    "stateful_mechanisms": []
+  }
+}
