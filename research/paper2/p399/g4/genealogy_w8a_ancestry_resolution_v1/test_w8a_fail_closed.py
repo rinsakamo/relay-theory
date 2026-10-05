@@ -22,7 +22,7 @@ def validate_non_doi(n):
     if not n["title"] or not n["authors"] or not n["year"] or not n["venue"]: raise ValueError("title-only/partial identity")
     if not n["stable_locators"]: raise ValueError("missing stable locator")
     if not all(x.get("url") and x.get("value") for x in n["stable_locators"]): raise ValueError("incomplete stable locator")
-    if "DO NOT INVENT" not in n["doi_status"]: raise ValueError("non-DOI status not fail-closed")
+    if "DO NOT INVENT" not in n["doi_status"].replace("_", " "): raise ValueError("non-DOI status not fail-closed")
     return True
 
 def validate_edge(r):
