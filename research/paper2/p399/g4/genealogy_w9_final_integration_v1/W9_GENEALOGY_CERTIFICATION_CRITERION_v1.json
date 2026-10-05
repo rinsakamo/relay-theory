@@ -1,0 +1,114 @@
+{
+  "schema": "relaytheory.p399.g4.w9.genealogy_certification_criterion_v1",
+  "authority": {
+    "issue": 399,
+    "w7_frozen_head": "4325a9a4cba4da651e7cdf2617f7bc8b08c90f54"
+  },
+  "freeze": {
+    "sequence": 1,
+    "phase": "PRE_REAL_1770_APPLICATION",
+    "frozen_before_final_1770_application": true,
+    "pre_result_defensibility": "This file is committed before generation/application of the final 1,770-pair certification results."
+  },
+  "criterion_core": {
+    "name": "Genealogy Certification Criterion v1",
+    "version": "1.0",
+    "purpose": "Determine whether a selected pair has sufficient bounded genealogy clearance for Paper 2 without equating search failure with historical independence.",
+    "frozen_scope": {
+      "corpus": "exact frozen selected 60-paper corpus",
+      "sources": "adopted publication editions plus mandatory supplements/corrections and source-attested bibliography/ancestry evidence frozen in G4",
+      "horizon": "central source-native operator/model genealogy; explicit direct ancestry; explicit common ancestors; central shared constituents; model-family/variant relations; and separately source-attested intermediate relations available in the frozen source horizon",
+      "excluded_claim": "No metaphysical, universal, or exhaustive proof of historical nonexistence."
+    },
+    "normalized_certification_states": [
+      "NOT_CERTIFIED",
+      "BLOCKED_BY_POSITIVE_ANCESTRY",
+      "BLOCKED_BY_SHARED_CONSTITUENT",
+      "BLOCKED_BY_INCOMPLETE_SOURCE",
+      "BLOCKED_BY_UNRESOLVED_ANCESTRY",
+      "BLOCKED_BY_EDITION_CONFLICT",
+      "BOUNDED_GENEALOGY_CLEARANCE"
+    ],
+    "evidence_dimensions": [
+      "source_profile_completeness",
+      "explicit_direct_ancestry_search",
+      "explicit_common_ancestor_search",
+      "shared_constituent_search",
+      "model_family_or_variant_relation",
+      "bibliography_and_source_coverage",
+      "known_edition_completeness",
+      "unresolved_ancestor_nodes",
+      "bounded_search_horizon",
+      "residual_uncertainty"
+    ],
+    "decision_precedence": [
+      {
+        "order": 1,
+        "condition": "source-attested direct ancestry, explicit common model ancestor, or nested model/variant descent",
+        "state": "BLOCKED_BY_POSITIVE_ANCESTRY"
+      },
+      {
+        "order": 2,
+        "condition": "source-attested central shared constituent without sufficient support for a stronger positive-ancestry class",
+        "state": "BLOCKED_BY_SHARED_CONSTITUENT"
+      },
+      {
+        "order": 3,
+        "condition": "either selected profile lacks mandatory genealogy-relevant source material",
+        "state": "BLOCKED_BY_INCOMPLETE_SOURCE"
+      },
+      {
+        "order": 4,
+        "condition": "decisive genealogy-relevant publication edition/correction conflict remains unresolved",
+        "state": "BLOCKED_BY_EDITION_CONFLICT"
+      },
+      {
+        "order": 5,
+        "condition": "ancestry coverage is not positively attested sufficient within the bounded search horizon, or an identity-relevant ancestor remains unresolved",
+        "state": "BLOCKED_BY_UNRESOLVED_ANCESTRY"
+      },
+      {
+        "order": 6,
+        "condition": "all bounded-clearance prerequisites are positively satisfied",
+        "state": "BOUNDED_GENEALOGY_CLEARANCE"
+      },
+      {
+        "order": 7,
+        "condition": "otherwise",
+        "state": "NOT_CERTIFIED"
+      }
+    ],
+    "bounded_clearance_prerequisites": [
+      "both source-native selected-paper profiles complete",
+      "all mandatory genealogy-relevant supplements and correction/corrigendum decisions incorporated",
+      "explicit direct ancestry search completed for both papers",
+      "explicit common-ancestor search completed against source-attested named ancestors",
+      "central shared-constituent and model-family/variant search completed",
+      "bibliography/source coverage positively attested sufficient for central operator genealogy within the frozen horizon",
+      "no unresolved identity-safe ancestor node connected to the pair",
+      "no source-attested direct/shared ancestry",
+      "no source-attested central shared constituent requiring block",
+      "residual uncertainty and bounded horizon explicitly recorded"
+    ],
+    "non_evidence_rules": [
+      "NO_DIRECT_EDGE != NO_SHARED_ANCESTRY",
+      "NO_PATH_FOUND never implies independence",
+      "citation absence never implies independence",
+      "lexical similarity or dissimilarity never establishes family relation or clearance",
+      "shared authorship alone never establishes descent",
+      "different authorship alone never establishes independence",
+      "same experimental domain alone never establishes ancestry",
+      "local source-native operator difference alone never establishes genealogy clearance",
+      "BOUNDED_SOURCE_NATIVE_DIFFERENCE never automatically becomes independence"
+    ],
+    "positive_evidence_rules": [
+      "source-explicit adaptation/extension/implementation descent blocks clearance even when terminology or mathematics changed",
+      "an identity-safe non-DOI ancestor blocks clearance exactly as a DOI ancestor does",
+      "positive shared ancestry overrides any otherwise satisfied clearance condition",
+      "a central shared constituent blocks clearance unless stronger source evidence supports a positive-ancestry class"
+    ],
+    "fail_closed": true,
+    "interpretation_boundary": "BOUNDED_GENEALOGY_CLEARANCE, if awarded, means only clearance under the frozen corpus/source/search horizon. It is not GLOBAL_GENEALOGICAL_INDEPENDENCE."
+  },
+  "scientific_main_authorized": false
+}

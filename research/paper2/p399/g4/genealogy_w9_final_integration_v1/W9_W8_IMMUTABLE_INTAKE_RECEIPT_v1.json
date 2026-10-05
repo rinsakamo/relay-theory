@@ -1,0 +1,154 @@
+{
+  "schema": "relaytheory.p399.g4.w9.w8_immutable_intake_receipt_v1",
+  "authority": {
+    "issue": 399,
+    "w7_pr": 447,
+    "w7_frozen_head": "4325a9a4cba4da651e7cdf2617f7bc8b08c90f54"
+  },
+  "generated_date_jst": "2026-10-05",
+  "lanes": [
+    {
+      "lane": "W8-S",
+      "pr": 448,
+      "expected_branch": "paper2/p399-g4-w8s-source-blockers-20261005",
+      "exact_head": "de35eba01d214a8dc42f9880371c264566965970",
+      "exact_base": "4325a9a4cba4da651e7cdf2617f7bc8b08c90f54",
+      "scope": "exactly BLF-02, MEM-03, SKL-01, SKL-03, INT-07 source blockers and required PLOS supplements",
+      "ci": {
+        "run_id": 37267531226,
+        "status": "SUCCESS",
+        "head_sha": "de35eba01d214a8dc42f9880371c264566965970",
+        "exact_head_ci_match": true
+      },
+      "validation": {
+        "base_match": true,
+        "branch_match": true,
+        "head_match": true,
+        "draft_open": true,
+        "scope_valid": true,
+        "no_foreign_scientific_work": true,
+        "no_main_result_access": true,
+        "no_grammar_h_analysis": true,
+        "no_roster_change": true,
+        "no_backup_activation": true,
+        "no_independence_promotion": true,
+        "main_authorization_false": true,
+        "required_ci_passed": true,
+        "profile_fragment_ready": 5,
+        "official_supplement_raw_files": 9,
+        "sha256_freezes": 9,
+        "source_blocked": 0,
+        "source_conflict": 0
+      },
+      "quarantine": false,
+      "status": "VALID"
+    },
+    {
+      "lane": "W8-A",
+      "pr": 450,
+      "expected_branch": "paper2/p399-g4-w8a-ancestry-resolution-20261005",
+      "exact_head": "fceb4170930b35b54c40439efedb15e906452d09",
+      "exact_base": "4325a9a4cba4da651e7cdf2617f7bc8b08c90f54",
+      "scope": "exactly CNC-01, MEM-01, INT-03, INT-06 ancestry blockers; non-DOI schema proposal",
+      "ci": {
+        "run_id": 37267514277,
+        "status": "SUCCESS",
+        "head_sha": "fceb4170930b35b54c40439efedb15e906452d09",
+        "exact_head_ci_match": true
+      },
+      "validation": {
+        "base_match": true,
+        "branch_match": true,
+        "head_match": true,
+        "draft_open": true,
+        "scope_valid": true,
+        "no_foreign_scientific_work": true,
+        "no_main_result_access": true,
+        "no_grammar_h_analysis": true,
+        "no_roster_change": true,
+        "no_backup_activation": true,
+        "no_fabricated_doi": true,
+        "no_independence_promotion": true,
+        "main_authorization_false": true,
+        "required_ci_passed": true,
+        "direct_candidate_edges": 11,
+        "non_doi_nodes": 2,
+        "total_edge_receipts": 17
+      },
+      "quarantine": false,
+      "status": "VALID"
+    },
+    {
+      "lane": "W8-G",
+      "pr": 449,
+      "expected_branch": "paper2/p399-g4-w8g-g1-190-genealogy-graph-20261005",
+      "exact_head": "f0f2ebba474ae89c433e0fac8ad18abc397f11d2",
+      "exact_base": "4325a9a4cba4da651e7cdf2617f7bc8b08c90f54",
+      "scope": "G1 internal 190-pair registry and source-ancestry graph accelerator",
+      "reported_ci": {
+        "run_id": 37267496395,
+        "status": "SUCCESS",
+        "actual_head_sha": "324b550dd78ce90f360f21e33262643507510efe",
+        "exact_head_ci_match": false
+      },
+      "post_ci_chain": [
+        {
+          "sha": "82c4a056beb41f8855d11449a83e52cbbcb5fb83",
+          "skip_ci": true,
+          "effect": "source-attested graph relation labels DIRECT_ADAPTATION -> DIRECT_MODEL_ANCESTOR; topology, targets, and G1 pair registry unchanged"
+        },
+        {
+          "sha": "f0f2ebba474ae89c433e0fac8ad18abc397f11d2",
+          "skip_ci": true,
+          "effect": "completion-report metadata only"
+        }
+      ],
+      "exact_head_w9_revalidation": {
+        "pair_count": 190,
+        "category_counts": {
+          "DIRECT_OR_EXPLICIT_SHARED_MODEL_ANCESTRY": 1,
+          "SHARED_CONSTITUENT_ONLY": 3,
+          "BOUNDED_SOURCE_NATIVE_DIFFERENCE": 6,
+          "UNDERDETERMINED": 180
+        },
+        "graph_nodes": 81,
+        "graph_edges": 31,
+        "no_duplicate_pairs": true,
+        "no_self_pairs": true,
+        "global_independence_certified": false,
+        "main_authorized": false,
+        "status": "PASS"
+      },
+      "validation": {
+        "base_match": true,
+        "branch_match": true,
+        "head_match": true,
+        "draft_open": true,
+        "scope_valid": true,
+        "no_foreign_scientific_work": true,
+        "no_main_result_access": true,
+        "no_grammar_h_analysis": true,
+        "no_roster_change": true,
+        "no_backup_activation": true,
+        "no_independence_promotion": true,
+        "main_authorization_false": true,
+        "reported_generator_ci_passed": true,
+        "exact_final_head_revalidated_by_w9": true
+      },
+      "quarantine": false,
+      "status": "VALID_WITH_EXPLICIT_EXACT_HEAD_W9_REVALIDATION",
+      "caveat": "Run 37267496395 is not exact-final-head CI evidence. W9 independently revalidated the immutable final pair/graph outputs and records, rather than hiding, the post-CI [skip ci] relation-label normalization."
+    }
+  ],
+  "common_prohibitions_verified": {
+    "preliminary_main_artifacts": false,
+    "grammar_v0": false,
+    "h0_h1_h2": false,
+    "selected_roster_changes": false,
+    "backup_activation": false,
+    "unsupported_global_independence": false
+  },
+  "intake_result": "ALL_THREE_LANES_ADMISSIBLE",
+  "quarantine_count": 0,
+  "scientific_main_authorized": false
+}

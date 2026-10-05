@@ -1,0 +1,196 @@
+{
+  "schema": "relaytheory.p399.g4.w9.certification_synthetic_prefreeze_tests_v1",
+  "authority": {
+    "issue": 399,
+    "criterion_commit": "15e7541fc5e55ce9c5f1043b05a262e5f4978ac9"
+  },
+  "execution_order": "AFTER_CRITERION_FREEZE_BEFORE_REAL_1770_APPLICATION",
+  "real_pair_results_consulted": false,
+  "tests": [
+    {
+      "ordinal": 1,
+      "id": "direct_descendant_with_different_terminology",
+      "input": {
+        "positiveAncestry": true,
+        "sourceComplete": true,
+        "ancestryCoverageComplete": true,
+        "clearancePrereqs": true
+      },
+      "expected": "BLOCKED_BY_POSITIVE_ANCESTRY",
+      "observed": "BLOCKED_BY_POSITIVE_ANCESTRY",
+      "pass": true
+    },
+    {
+      "ordinal": 2,
+      "id": "same_broad_vocabulary_with_unrelated_models",
+      "input": {
+        "sourceComplete": true,
+        "ancestryCoverageComplete": false
+      },
+      "expected": "BLOCKED_BY_UNRESOLVED_ANCESTRY",
+      "observed": "BLOCKED_BY_UNRESOLVED_ANCESTRY",
+      "pass": true
+    },
+    {
+      "ordinal": 3,
+      "id": "same_ancestor_but_different_descendant_operator",
+      "input": {
+        "positiveAncestry": true,
+        "sourceComplete": true,
+        "ancestryCoverageComplete": true,
+        "clearancePrereqs": true
+      },
+      "expected": "BLOCKED_BY_POSITIVE_ANCESTRY",
+      "observed": "BLOCKED_BY_POSITIVE_ANCESTRY",
+      "pass": true
+    },
+    {
+      "ordinal": 4,
+      "id": "shared_generic_mathematical_tool_only",
+      "input": {
+        "sourceComplete": true,
+        "ancestryCoverageComplete": false
+      },
+      "expected": "BLOCKED_BY_UNRESOLVED_ANCESTRY",
+      "observed": "BLOCKED_BY_UNRESOLVED_ANCESTRY",
+      "pass": true
+    },
+    {
+      "ordinal": 5,
+      "id": "shared_central_constituent",
+      "input": {
+        "sharedCentralConstituent": true,
+        "sourceComplete": true,
+        "ancestryCoverageComplete": true,
+        "clearancePrereqs": true
+      },
+      "expected": "BLOCKED_BY_SHARED_CONSTITUENT",
+      "observed": "BLOCKED_BY_SHARED_CONSTITUENT",
+      "pass": true
+    },
+    {
+      "ordinal": 6,
+      "id": "local_operator_difference_with_unresolved_higher_ancestry",
+      "input": {
+        "sourceComplete": true,
+        "ancestryCoverageComplete": false
+      },
+      "expected": "BLOCKED_BY_UNRESOLVED_ANCESTRY",
+      "observed": "BLOCKED_BY_UNRESOLVED_ANCESTRY",
+      "pass": true
+    },
+    {
+      "ordinal": 7,
+      "id": "missing_supplement",
+      "input": {
+        "sourceComplete": false,
+        "ancestryCoverageComplete": false
+      },
+      "expected": "BLOCKED_BY_INCOMPLETE_SOURCE",
+      "observed": "BLOCKED_BY_INCOMPLETE_SOURCE",
+      "pass": true
+    },
+    {
+      "ordinal": 8,
+      "id": "missing_ancestor_edition",
+      "input": {
+        "sourceComplete": true,
+        "ancestryCoverageComplete": false,
+        "unresolvedAncestor": true
+      },
+      "expected": "BLOCKED_BY_UNRESOLVED_ANCESTRY",
+      "observed": "BLOCKED_BY_UNRESOLVED_ANCESTRY",
+      "pass": true
+    },
+    {
+      "ordinal": 9,
+      "id": "legitimate_non_doi_ancestor",
+      "input": {
+        "positiveAncestry": true,
+        "sourceComplete": true,
+        "ancestryCoverageComplete": true,
+        "clearancePrereqs": true
+      },
+      "expected": "BLOCKED_BY_POSITIVE_ANCESTRY",
+      "observed": "BLOCKED_BY_POSITIVE_ANCESTRY",
+      "pass": true
+    },
+    {
+      "ordinal": 10,
+      "id": "no_citation_no_graph_path",
+      "input": {
+        "sourceComplete": true,
+        "ancestryCoverageComplete": false
+      },
+      "expected": "BLOCKED_BY_UNRESOLVED_ANCESTRY",
+      "observed": "BLOCKED_BY_UNRESOLVED_ANCESTRY",
+      "pass": true
+    },
+    {
+      "ordinal": 11,
+      "id": "correction_changes_decisive_science",
+      "input": {
+        "sourceComplete": true,
+        "ancestryCoverageComplete": true,
+        "editionConflict": true,
+        "clearancePrereqs": true
+      },
+      "expected": "BLOCKED_BY_EDITION_CONFLICT",
+      "observed": "BLOCKED_BY_EDITION_CONFLICT",
+      "pass": true
+    },
+    {
+      "ordinal": 12,
+      "id": "same_authors_but_no_direct_descent",
+      "input": {
+        "sourceComplete": true,
+        "ancestryCoverageComplete": false
+      },
+      "expected": "BLOCKED_BY_UNRESOLVED_ANCESTRY",
+      "observed": "BLOCKED_BY_UNRESOLVED_ANCESTRY",
+      "pass": true
+    },
+    {
+      "ordinal": 13,
+      "id": "shared_theory_but_distinct_model_implementation",
+      "input": {
+        "sharedCentralConstituent": true,
+        "sourceComplete": true,
+        "ancestryCoverageComplete": true
+      },
+      "expected": "BLOCKED_BY_SHARED_CONSTITUENT",
+      "observed": "BLOCKED_BY_SHARED_CONSTITUENT",
+      "pass": true
+    },
+    {
+      "ordinal": 14,
+      "id": "nested_model_variant",
+      "input": {
+        "positiveAncestry": true,
+        "sourceComplete": true,
+        "ancestryCoverageComplete": true,
+        "clearancePrereqs": true
+      },
+      "expected": "BLOCKED_BY_POSITIVE_ANCESTRY",
+      "observed": "BLOCKED_BY_POSITIVE_ANCESTRY",
+      "pass": true
+    },
+    {
+      "ordinal": 15,
+      "id": "explicit_adaptation_with_changed_mathematics",
+      "input": {
+        "positiveAncestry": true,
+        "sourceComplete": true,
+        "ancestryCoverageComplete": true,
+        "clearancePrereqs": true
+      },
+      "expected": "BLOCKED_BY_POSITIVE_ANCESTRY",
+      "observed": "BLOCKED_BY_POSITIVE_ANCESTRY",
+      "pass": true
+    }
+  ],
+  "pass_count": 15,
+  "total": 15,
+  "all_pass": true,
+  "scientific_main_authorized": false
+}
