@@ -1,0 +1,109 @@
+name: P399 G4 W8-G G1 190 genealogy graph (MAIN NO-GO)
+
+on:
+  push:
+    branches:
+      - "paper2/p399-g4-w8g-g1-190-genealogy-graph-20261005"
+    paths:
+      - "research/paper2/p399/g4/genealogy_w8g_g1_190_graph_v1/w8g_audit.py"
+      - "research/paper2/p399/g4/genealogy_w8g_g1_190_graph_v1/test_w8g_fail_closed.py"
+      - ".github/workflows/p399-g4-w8g-g1-190-genealogy-graph.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  w8g-source-genealogy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Fetch immutable W8-G authorities
+        shell: bash
+        run: |
+          set -euo pipefail
+          refs=(
+            4325a9a4cba4da651e7cdf2617f7bc8b08c90f54
+            c7317da41b15159864c014b8dc53449121c34a2c
+            c6b6b9cae2599cb91883c97dbf8992fe5500a44e
+            ea1ab4175e07c4abade290bc7730816855671be3
+          )
+          for ref in "${refs[@]}"; do
+            git cat-file -e "${ref}^{commit}" 2>/dev/null || git fetch --no-tags origin "${ref}"
+            git cat-file -e "${ref}^{commit}"
+          done
+
+      - name: Run destructive fail-closed tests
+        run: |
+          python -m unittest research/paper2/p399/g4/genealogy_w8g_g1_190_graph_v1/test_w8g_fail_closed.py -v
+
+      - name: Generate G1 190 registry and graph accelerator
+        run: |
+          python research/paper2/p399/g4/genealogy_w8g_g1_190_graph_v1/w8g_audit.py
+
+      - name: Verify generated scientific boundaries
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=Path("research/paper2/p399/g4/genealogy_w8g_g1_190_graph_v1")
+          reg=json.loads((d/"W8G_G1_190_PAIR_REGISTRY_v1.json").read_text())
+          summ=json.loads((d/"W8G_G1_190_SUMMARY_v1.json").read_text())
+          graph=json.loads((d/"W8G_SOURCE_ANCESTRY_GRAPH_v1.json").read_text())
+          sig=json.loads((d/"W8G_GRAPH_DERIVED_REVIEW_SIGNALS_v1.json").read_text())
+          plan=json.loads((d/"W8G_W9_1770_ENUMERATION_PLAN_v1.json").read_text())
+          assert reg["pair_count"] == 190 and len(reg["pairs"]) == 190
+          assert len({x["pair_id"] for x in reg["pairs"]}) == 190
+          assert summ["category_counts"] == {
+              "BOUNDED_SOURCE_NATIVE_DIFFERENCE": 6,
+              "DIRECT_OR_EXPLICIT_SHARED_MODEL_ANCESTRY": 1,
+              "SHARED_CONSTITUENT_ONLY": 3,
+              "UNDERDETERMINED": 180,
+          }
+          assert summ["direct_or_shared_risk_count"] == 4
+          assert summ["underdetermined_count"] == 180
+          assert all(x["global_independence_certified"] is False for x in reg["pairs"])
+          assert all(x["main_authorized"] is False for x in reg["pairs"])
+          assert graph["global_independence_certified"] is False
+          assert graph["main_authorized"] is False
+          assert len(graph["nodes"]) == 81
+          assert len(graph["edges"]) == 31
+          assert len(graph["incomplete_node_ids"]) == 10
+          assert sig["count"] == 190
+          assert sig["global_independence_certified"] is False
+          assert plan["total"] == 1770
+          assert plan["g1_g1"] + plan["g2_g2"] + plan["g2_g1"] == 190 + 780 + 800
+          assert plan["main_authorized"] is False
+          assert (d/"W8G_COMPLETION_REPORT_JA.md").exists()
+          PY
+          git diff --check
+
+      - name: Freeze generated W8-G outputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/paper2/p399/g4/genealogy_w8g_g1_190_graph_v1/W8G_*
+          if git diff --cached --quiet; then
+            echo "Generated outputs already frozen."
+          else
+            git commit -m "P399 W8-G freeze G1 190 genealogy graph outputs [skip ci]"
+            git push origin HEAD:paper2/p399-g4-w8g-g1-190-genealogy-graph-20261005
+          fi
+
+      - name: Upload W8-G audit artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: p399-g4-w8g-g1-190-genealogy-graph
+          path: research/paper2/p399/g4/genealogy_w8g_g1_190_graph_v1/W8G_*
