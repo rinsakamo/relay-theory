@@ -1,0 +1,22 @@
+name: P399 MAIN M3 fail-closed
+
+on:
+  push:
+    branches:
+      - paper2/p399-main-m3-mem-prd-skl-20261005
+  pull_request:
+    branches:
+      - paper2/p399-main-go-kickoff-20261005
+
+permissions:
+  contents: read
+
+jobs:
+  m3-fail-closed:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify kickoff ancestry and 31 fail-closed guards
+        run: python research/paper2/p399/main/parallel/M3_mem_prd_skl/test_m3_fail_closed.py
