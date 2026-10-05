@@ -1,0 +1,85 @@
+{
+  "schema": "relaytheory.p399.main.m2.pass_b_result_informed_reaudit_v1",
+  "slot": "LRN-03",
+  "doi": "10.7554/eLife.21492",
+  "stage_a_input": {
+    "path": "research/paper2/p399/main/parallel/M2_ctl_lrn/LRN-03/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json",
+    "freeze_head": "935c5c9b12949758148a32f16ce52cddb64661e3",
+    "complete_a_received": true
+  },
+  "source_reopened": "publisher Version of Record full HTML",
+  "result_informed": true,
+  "objections": [
+    {
+      "id": "B01",
+      "test": "value computation vs control",
+      "challenge": "Value network could be promoted to an execution controller.",
+      "finding": "Source uses value network to predict return and reduce training variance; decision network can execute learned tasks without value network."
+    },
+    {
+      "id": "B02",
+      "test": "learned parameter cannot auto-become persistent coordinator",
+      "challenge": "Decision/value RNN recurrent states or weights could be labeled an added coordinator.",
+      "finding": "They are source-defined network and learning state; no distinct coordinating mechanism is required."
+    },
+    {
+      "id": "B03",
+      "test": "policy execution vs policy acquisition",
+      "challenge": "Decision policy at execution could be conflated with reward-based weight acquisition.",
+      "finding": "Source separates stochastic decision policy from reward-gradient updates used during training."
+    },
+    {
+      "id": "B04",
+      "test": "inherited machinery mistaken for new contribution",
+      "challenge": "REINFORCE/recurrent policy gradient could be treated as paper-specific invention.",
+      "finding": "Source explicitly builds on inherited policy-gradient/actor-critic methods; application to trained recurrent cognitive networks is the target construction."
+    },
+    {
+      "id": "B05",
+      "test": "environment schedule mistaken for internal learning",
+      "challenge": "Task timing/reward schedule could be placed inside learner state.",
+      "finding": "Environment supplies observations, actions consequences and rewards; network weights/states carry internal adaptation."
+    },
+    {
+      "id": "B06",
+      "test": "neural correlate/model mistaken for biological mechanism",
+      "challenge": "Task-like neural dynamics could be claimed as direct brain implementation of gradient learning.",
+      "finding": "Source presents trained RNN as a modeling framework and notes weak biological constraints/learning-rule plausibility."
+    },
+    {
+      "id": "B07",
+      "test": "timescale/reset distinction",
+      "challenge": "Training-only value system could be assumed to persist as an active execution-time module.",
+      "finding": "Source's key prediction is that value representation is essential for learning but not executing a learned task."
+    }
+  ],
+  "source_ordered_omission_sweep": [
+    {
+      "order": 1,
+      "locus": "Abstract/Introduction",
+      "result": "reward-training motivation and learning-vs-execution value distinction retained."
+    },
+    {
+      "order": 2,
+      "locus": "decision/value architecture",
+      "result": "two-network roles, information flow and environment boundary retained."
+    },
+    {
+      "order": 3,
+      "locus": "reward-based training",
+      "result": "policy-gradient and value-baseline updates retained."
+    },
+    {
+      "order": 4,
+      "locus": "task results/comparators",
+      "result": "cross-task modeling and supervised comparisons retained without universal biological inference."
+    },
+    {
+      "order": 5,
+      "locus": "Discussion",
+      "result": "inherited algorithm and biological-plausibility limits retained."
+    }
+  ],
+  "negative_evidence_retained": true,
+  "stage_b_complete": true
+}
