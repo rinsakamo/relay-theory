@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify exact source-ledger Git provenance of twenty PREVIOUS bounded audits.
+"""Verify exact source-ledger Git provenance of twenty-six PREVIOUS bounded audits.
 
 This cannot reverify non-Git original PDF/MHT bytes or mathematical semantics.
 New paper IDs MUST receive an explicit evidence-mapping code review.
@@ -45,6 +45,12 @@ TRUSTED = {
     "P18": (G1_SCIENCE_REF, "research/paper2/p399/g1/parallel/W3/P18_PRE_A_publisher_original_final_and_model_recovery_sources_frozen_v1.json", "3dc0d5272e39824e44a25e18387802ce06272b22"),
     "P19": (G1_SCIENCE_REF, "research/paper2/p399/g1/parallel/W4/p19/P19_PRE_A_v2_COMPLETE_ISSUER_DEPOSIT_ORIGINAL_SOURCE_FREEZE.json", "81dcd3cf891018e8c024bb8df511324745ef763f"),
     "P20": (G1_SCIENCE_REF, "research/paper2/p399/g1/parallel/W4/p20/P20_PRE_A_COMPLETE_ORIGINAL_MAIN_S1_S10_FREEZE.json", "b25ce5a79d731cef1abe8ed627446ac4e698b383"),
+    "P10": ("c7317da41b15159864c014b8dc53449121c34a2c", "research/paper2/p399/g1/parallel/W1/p10/P10_PRE_A_MAIN_FUNDING_CORRECTION_SUPPLEMENTS_v1.json", "04d8eafaef8fa9ad79a58b26f82c85fb14c2f727"),
+    "P16": ("c7317da41b15159864c014b8dc53449121c34a2c", "research/paper2/p399/g1/parallel/W3/P16_PRE_A_original_source_freeze_v1.json", "21821f31e6fa38049bcfab6ffbf929655c7c4e38"),
+    "PF01": ("c6b6b9cae2599cb91883c97dbf8992fe5500a44e", "research/paper2/p399/pf01/PF01_FORMAL_SCIENTIFIC_QUALIFICATION_DECISION_20261004.json", "6dac9b9243ef8562aabc2672895f12c917da1c51"),
+    "PF02": ("3dae6f5fcc0e386717463471cb394b49625a8bb2", "research/paper2/p399/pf02/PF02_FORMAL_SCIENTIFIC_QUALIFICATION_DECISION_20261004.json", "57729fa7296a0849fda08589bcac0b55e5aa181e"),
+    "PF03": ("cb83c78b687dfd6a334dc86b279df31a1f3a4013", "research/paper2/p399/pf03/PF03_FORMAL_SCIENTIFIC_QUALIFICATION_DECISION_20261004.json", "9c0d6facf5686070e6b66f8586a290a4f5cd8c81"),
+    "PF04": ("ea1ab4175e07c4abade290bc7730816855671be3", "research/paper2/p399/pf04/PF04_FORMAL_SCIENTIFIC_QUALIFICATION_DECISION_20261004.json", "9c2fed03635e25082595bd4d84fad4ac02bb2356"),
 }
 
 
@@ -81,6 +87,25 @@ def primary_identity(ident, data):
     if ident == "P05":
         row = data["original_source"]
         return data["candidate"]["doi"], row["raw_sha256"], []
+    if ident == "P10":
+        return data["original"]["doi"], data["original"]["sha256"], [
+            data["correction"]["sha256"],
+            *[s["sha256"] for s in data["necessary_official_supplements"]]
+        ]
+    if ident == "P16":
+        return data["work"]["doi"], data["frozen_primary"]["physical_raw_sha256"], []
+    if ident == "PF01":
+        return "10.1371/journal.pcbi.1006928", data["frozen_prior_evidence"]["original_pdf"]["sha256"], []
+    if ident == "PF02":
+        if "QUALIFIED_ONLY" not in data["formal_disposition"]:
+            raise InputMismatch("PF02 formal source status drift")
+        return data["candidate"]["doi"], data["candidate"]["source_sha256"], []
+    if ident == "PF03":
+        return data["frozen_original_source"]["doi"], data["frozen_original_source"]["raw_sha256"], []
+    if ident == "PF04":
+        if "FORMALLY_QUALIFIED" not in data["decision"]["qualification"]:
+            raise InputMismatch("PF04 restricted author exception missing")
+        return data["frozen_primary"]["doi"], data["frozen_primary"]["original_sha256"], []
     if ident == "P17":
         return data["doi"], data["original_publisher_main"]["raw_sha256"], [
             s["raw_sha256"] for s in data["official_essential_supplementals"]
@@ -142,8 +167,8 @@ def primary_identity(ident, data):
 
 
 def verify(profiles, loader=git_blob):
-    if set(profiles) != set(TRUSTED) or len(profiles) != 20:
-        raise InputMismatch("This snapshot's exact twenty auditable profiles must be present")
+    if set(profiles) != set(TRUSTED) or len(profiles) != 26:
+        raise InputMismatch("This snapshot's exact twenty-six auditable profiles must be present")
     seen = {}
     for profile in profiles.values():
         ident = profile["id"]
@@ -170,6 +195,20 @@ def verify(profiles, loader=git_blob):
                            if x["role"] != "author_adopted_prepublication_code"]
         if sorted(profiles_supps) != sorted(supplements):
             raise InputMismatch(f"{ident}: mandatory original/correction bundle mismatch")
+        if ident == "P10":
+            if data_is_funding_only := (doc["correction"]["scope"] == "FUNDING_ACKNOWLEDGEMENT_ONLY; no change to model scientific equations, empirical fit or original conclusions"):
+                pass
+            else:
+                raise InputMismatch("P10 official funding-only correction unexpectedly changes science")
+        if ident == "PF04":
+            if "after_author_instruction" not in doc["review_authority"] or "Eq10" not in doc["review_authority"]["after_author_instruction"]:
+                raise InputMismatch("PF04 user-author authorized Eq10 denominator exception lost")
+        if ident == "PF01":
+            if doc["post_E_epistemic_source_limitation"]["numerical_strict_theorem_proven"] is not False:
+                raise InputMismatch("PF01 conditional drift limit falsely promoted")
+        if ident == "PF02":
+            if "Stemme" not in doc["qualification_evidence"]["pre_A"]["direct_historical_lineage"]:
+                raise InputMismatch("PF02 direct predecessor disclosure missing")
         if ident == "P20":
             deps = profile.get("additional_source_ledger_dependencies")
             if not isinstance(deps, list) or len(deps) != 1:
