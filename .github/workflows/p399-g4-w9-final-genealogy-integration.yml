@@ -1,0 +1,44 @@
+name: P399 G4 W9 final genealogy integration (MAIN NO-GO)
+
+on:
+  push:
+    branches:
+      - paper2/p399-g4-w9-final-genealogy-integration-20261005
+    paths:
+      - research/paper2/p399/g4/genealogy_w9_final_integration_v1/**
+      - research/paper2/p399/g4/GENEALOGY_CURRENT_PROFILE_AUTHORITY.json
+      - research/paper2/p399/g4/GENEALOGY_CURRENT_PAIR_AUTHORITY.json
+      - .github/workflows/p399-g4-w9-final-genealogy-integration.yml
+  pull_request:
+    branches:
+      - paper2/p399-g4-w7-six-lane-integration-20261005
+    paths:
+      - research/paper2/p399/g4/genealogy_w9_final_integration_v1/**
+      - research/paper2/p399/g4/GENEALOGY_CURRENT_PROFILE_AUTHORITY.json
+      - research/paper2/p399/g4/GENEALOGY_CURRENT_PAIR_AUTHORITY.json
+      - .github/workflows/p399-g4-w9-final-genealogy-integration.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  fail-closed:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch sibling W8 refs only as transport for exact immutable SHA validation
+        run: |
+          git fetch --no-tags origin paper2/p399-g4-w8s-source-blockers-20261005
+          git fetch --no-tags origin paper2/p399-g4-w8a-ancestry-resolution-20261005
+          git fetch --no-tags origin paper2/p399-g4-w8g-g1-190-genealogy-graph-20261005
+          git cat-file -e de35eba01d214a8dc42f9880371c264566965970^{commit}
+          git cat-file -e fceb4170930b35b54c40439efedb15e906452d09^{commit}
+          git cat-file -e f0f2ebba474ae89c433e0fac8ad18abc397f11d2^{commit}
+
+      - name: W9 destructive and synthetic fail-closed validation
+        run: |
+          python research/paper2/p399/g4/genealogy_w9_final_integration_v1/test_w9_fail_closed.py
