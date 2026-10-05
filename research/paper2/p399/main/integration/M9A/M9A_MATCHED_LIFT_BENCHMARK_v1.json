@@ -1,0 +1,135 @@
+{
+  "schema": "relaytheory.p399.main.m9a.matched_lift_benchmark.v1",
+  "status": "PROPOSED_FROZEN_MATCHED_A_STATE_REACHABILITY_BENCHMARK",
+  "base_head": "3e0c82fb090bc0fc2f66ed3c4e65df282779f4eb",
+  "authority": {
+    "m8_pr": 460,
+    "m7_head": "48b2cf3c627e030e7131af485206b0013d7e02f1",
+    "grammar_minimality_blob": "8d0588f2a7a5d53d1c7d32b3b48ea3d03db90fee",
+    "grammar_forgetful_maps_blob": "2c6b61333a528d1093c5b26c4c9d70cbd521f6b0",
+    "grammar_comparator_lean_blob": "34e4e595797694ca707d64c22584214bd3d44e87",
+    "m7_a1_adverse_blob": "78d5d5624e904d7a7f51948676e7ccbb804b532e",
+    "m7_a2_adverse_blob": "b8b37e7ba82ed9c8a11b4e10444170c73bcea04f",
+    "m7_scientific_adjudication_blob": "bb3b0dc06fa5dc937b574917a366a5e50f9b3e87"
+  },
+  "reconstruction_tower": {
+    "R0": "Grammar v0 plus source-defined mechanisms only; no reconstruction-added mechanism",
+    "R1": "R0 plus reconstruction-added typed stateless interface/sequencing/translation",
+    "R2": "R1 plus reconstruction-added load-bearing persistent/stateful coordination",
+    "nesting": ["R0_to_R1", "R1_to_R2"],
+    "least_lift_rule": {
+      "A0": "faithful lift exists in R0",
+      "A1": "no faithful lift in R0 and faithful lift exists in R1",
+      "A2": "no faithful lift in R1 and faithful lift exists in R2"
+    },
+    "pre_A_states": ["SOURCE_INELIGIBLE", "UNDERDETERMINED"],
+    "post_R2_nonlift": "FAILURE_LOCALIZED_OR_EXPLICIT_NONLIFT_UNDER_FROZEN_SCOPE"
+  },
+  "matched_cases": [
+    {
+      "case_id": "DYN-0",
+      "family": "DYNAMIC",
+      "expected": "A0",
+      "source_defined_state_allowed": true,
+      "obstruction": "NONE",
+      "positive_witness": "source-native typed interfaces already compose",
+      "reconstruction_added_stateless": false,
+      "reconstruction_added_persistent": false
+    },
+    {
+      "case_id": "DYN-1",
+      "family": "DYNAMIC",
+      "expected": "A1",
+      "source_defined_state_allowed": true,
+      "obstruction": "TYPED_PORT_MISMATCH",
+      "positive_witness": "bit -> tagged-bit map b |-> Some(b)",
+      "A0_failure_witness": "direct-composition contract requires matching declared port types",
+      "reconstruction_added_stateless": true,
+      "reconstruction_added_persistent": false
+    },
+    {
+      "case_id": "DYN-2",
+      "family": "DYNAMIC",
+      "expected": "A2",
+      "source_defined_state_allowed": true,
+      "obstruction": "HISTORY_DEPENDENT_BRIDGE",
+      "positive_witness": "one-bit bridge state z_(t+1)=x_t, y_t=z_t",
+      "A1_failure_witness": "same current input with two prior histories requires two different outputs; no f(current) can satisfy both",
+      "reconstruction_added_stateless": false,
+      "reconstruction_added_persistent": true
+    },
+    {
+      "case_id": "POM-0",
+      "family": "POMDP_LIKE",
+      "expected": "A0",
+      "source_defined_state_allowed": true,
+      "obstruction": "NONE",
+      "positive_witness": "source-defined latent/belief state and interfaces already close composition",
+      "reconstruction_added_stateless": false,
+      "reconstruction_added_persistent": false
+    },
+    {
+      "case_id": "POM-1",
+      "family": "POMDP_LIKE",
+      "expected": "A1",
+      "source_defined_state_allowed": true,
+      "obstruction": "OBSERVATION_ACTION_CODEC_MISMATCH",
+      "positive_witness": "stateless observation/action code translation",
+      "A0_failure_witness": "declared exposed port codomains do not match under direct composition",
+      "reconstruction_added_stateless": true,
+      "reconstruction_added_persistent": false
+    },
+    {
+      "case_id": "POM-2",
+      "family": "POMDP_LIKE",
+      "expected": "A2",
+      "source_defined_state_allowed": true,
+      "obstruction": "FORGOTTEN_HISTORY_DISTINCTION",
+      "positive_witness": "persistent bridge retains the omitted previous-history bit",
+      "A1_failure_witness": "two histories collapse to the same current exposed view but require different bridge outputs",
+      "reconstruction_added_stateless": false,
+      "reconstruction_added_persistent": true
+    }
+  ],
+  "expected_counts": {
+    "total": 6,
+    "A0": 2,
+    "A1": 2,
+    "A2": 2,
+    "DYNAMIC": 3,
+    "POMDP_LIKE": 3
+  },
+  "frozen_comparator_constraints": {
+    "G_dyn": {
+      "roles": ["X", "K", "T"],
+      "strict_full_direct_preservation_count": 0,
+      "claims_requiring_at_least_one_role_beyond": 59,
+      "interpretation": "strict direct-preservation comparator, not a non-encodability theorem"
+    },
+    "G_pomdp_like": {
+      "roles": ["X", "P", "K", "rho/O", "Q", "T"],
+      "missing_first_class_roles": ["Pi", "C"],
+      "claims_hit_by_missing_Pi_or_C_or_collapsed_P_direction": 44,
+      "interpretation": "partial competitor with documented distinction loss"
+    }
+  },
+  "m7_result_preserved": {
+    "MAIN40_A0": 40,
+    "MAIN40_A1": 0,
+    "MAIN40_A2": 0,
+    "re_adjudicated_by_m9a": false
+  },
+  "claims_allowed_if_pass": [
+    "A0/A1/A2 are non-vacuous least-lift classes under the frozen reconstruction-addition semantics.",
+    "A1 and A2 are reachable on matched counterfactual architecture witnesses.",
+    "A0 is not forced by the outcome vocabulary or by the mere presence of source-defined state.",
+    "POMDP-like and Dynamic views are evaluated for direct distinction preservation, not generic encoding capacity."
+  ],
+  "claims_forbidden": [
+    "The synthetic witnesses prove MAIN40 independent adjudication reliability.",
+    "POMDPs cannot encode the tested cognitive models.",
+    "Grammar v0 is a universal or absolutely minimal cognitive ontology.",
+    "The categorical foundation converts MAIN40 into 40 independent replications.",
+    "Synthetic reachability alone replaces independent human re-adjudication."
+  ]
+}

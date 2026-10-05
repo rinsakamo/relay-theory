@@ -1,0 +1,92 @@
+name: P399 MAIN M9A categorical lifts
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - paper2/p399-main-m9a-categorical-lifts-20261005
+  pull_request:
+    branches:
+      - paper2/p399-main-m8-jgps-integration-20261005
+
+permissions:
+  contents: read
+
+concurrency:
+  group: p399-main-m9a-categorical-lifts-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  m9a-categorical-lifts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out exact transaction head
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Verify exact M9A base ancestry
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE="3e0c82fb090bc0fc2f66ed3c4e65df282779f4eb"
+          git merge-base --is-ancestor "$BASE" HEAD
+          test "$(git rev-list --count "${BASE}..HEAD")" -ge 1
+
+      - name: Enforce M9A isolation boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE="3e0c82fb090bc0fc2f66ed3c4e65df282779f4eb"
+          cat > "$RUNNER_TEMP/expected-m9a-paths.txt" <<'EOF'
+          .github/workflows/p399-main-m9a-categorical-lifts.yml
+          formal/relay_theory/RelayTheory/ReconstructionLiftHierarchy.lean
+          research/paper2/p399/main/integration/M9A/M9A_CATEGORICAL_LIFT_FOUNDATION_v1.md
+          research/paper2/p399/main/integration/M9A/M9A_MATCHED_LIFT_BENCHMARK_v1.json
+          research/paper2/p399/main/integration/M9A/test_m9a_categorical_lifts.py
+          EOF
+          git diff --name-only "${BASE}..HEAD" | sort > "$RUNNER_TEMP/actual-m9a-paths.txt"
+          diff -u "$RUNNER_TEMP/expected-m9a-paths.txt" "$RUNNER_TEMP/actual-m9a-paths.txt"
+
+      - name: Run M9A deterministic guardrails
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/paper2/p399/main/integration/M9A/test_m9a_categorical_lifts.py
+
+      - name: Audit banned Lean proof shortcuts
+        shell: bash
+        run: |
+          set -euo pipefail
+          if grep -R --include='*.lean' -nE '(^|[^[:alnum:]_])(sorry|admit|native_decide|axiom)([^[:alnum:]_]|$)' formal/relay_theory; then
+            echo "Banned Lean proof shortcut or project-local axiom declaration found." >&2
+            exit 1
+          fi
+
+      - name: Install pinned Lean toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          ELAN_VERSION="v4.2.4"
+          ELAN_SHA256="42b94d4244e8353142c456ec0e4ca6528fd898a6c604d4059f494e706e431f63"
+          ELAN_ARCHIVE="$RUNNER_TEMP/elan-x86_64-unknown-linux-gnu.tar.gz"
+          ELAN_DIR="$RUNNER_TEMP/elan-bootstrap"
+          curl --fail --location --retry 3             "https://github.com/leanprover/elan/releases/download/${ELAN_VERSION}/elan-x86_64-unknown-linux-gnu.tar.gz"             --output "$ELAN_ARCHIVE"
+          echo "${ELAN_SHA256}  ${ELAN_ARCHIVE}" | sha256sum --check --strict
+          mkdir -p "$ELAN_DIR"
+          tar -xzf "$ELAN_ARCHIVE" -C "$ELAN_DIR"
+          TOOLCHAIN="$(tr -d '\r\n' < formal/relay_theory/lean-toolchain)"
+          "$ELAN_DIR/elan-init" -y --no-modify-path --default-toolchain none
+          "$HOME/.elan/bin/elan" toolchain install "$TOOLCHAIN"
+          "$HOME/.elan/bin/elan" default "$TOOLCHAIN"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Build and kernel-check formal core
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd formal/relay_theory
+          lean --version | grep -F "version 4.33.1"
+          lake env lean RelayTheory/ReconstructionLiftHierarchy.lean
+          lake env leanchecker RelayTheory.ReconstructionLiftHierarchy
