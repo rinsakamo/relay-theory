@@ -1,0 +1,99 @@
+{
+  "schema": "relaytheory.p399.g4.w9.non_doi_ancestry_schema_decision_v1",
+  "authority": {
+    "issue": 399,
+    "w7_frozen_head": "4325a9a4cba4da651e7cdf2617f7bc8b08c90f54",
+    "w8a_head": "fceb4170930b35b54c40439efedb15e906452d09"
+  },
+  "decision": "ACCEPT_WITH_DOCUMENTED_MODIFICATIONS",
+  "principle": "absence of DOI != absence of ancestry",
+  "accepted_node_types": [
+    "DOI_WORK",
+    "NON_DOI_BIBLIOGRAPHIC_WORK"
+  ],
+  "identity_requirements": {
+    "required": [
+      "exact_title",
+      "exact_authors",
+      "year",
+      "venue_or_proceedings_book_workshop",
+      "publisher_or_proceedings_authority",
+      "exact_descendant_citation_locus",
+      "repository_local_node_id",
+      "source_provenance"
+    ],
+    "conditional_required": [
+      "page_or_article_locator_if_applicable",
+      "stable_bibliographic_locator_if_available"
+    ],
+    "rejected": [
+      "title_only_identity",
+      "ambiguous_author_year_identity",
+      "invented_doi",
+      "fake_doi_shaped_repository_id",
+      "source_unsupported_inferred_ancestor"
+    ]
+  },
+  "local_id_rule": {
+    "prefix": "rt-biblio-",
+    "construction": "normalized bibliographic identity slug plus deterministic hash suffix",
+    "external_semantics": false,
+    "doi_masquerade_forbidden": true
+  },
+  "accepted_nodes": [
+    {
+      "local_node_id": "rt-biblio-liang-jordan-klein-2010-learning-programs-fb673590fbc7",
+      "doi": null,
+      "title": "Learning Programs: A Hierarchical Bayesian Approach",
+      "authors": [
+        "Percy Liang",
+        "Michael I. Jordan",
+        "Dan Klein"
+      ],
+      "year": 2010,
+      "venue": "Proceedings of the 27th International Conference on Machine Learning (ICML-10)",
+      "locator": {
+        "pages": "639-646",
+        "paper_id": "568",
+        "conference_location": "Haifa, Israel"
+      },
+      "publishing_authority": "International Conference on Machine Learning official 2010 proceedings",
+      "stable_locators": [
+        "DBLP conf/icml/LiangJK10",
+        "ICML paper 568"
+      ],
+      "descendant_citation_locus": {
+        "descendant": "CNC-01",
+        "locator": "formalization/model description and reference 35"
+      },
+      "treatment": "DIRECT_ADAPTATION_ANCESTOR"
+    },
+    {
+      "local_node_id": "rt-biblio-lebiere-1999-actr-blending-b876f955be9a",
+      "doi": null,
+      "title": "Blending: An ACT-R Mechanism for Aggregate Retrievals",
+      "authors": [
+        "Christian Lebiere"
+      ],
+      "year": 1999,
+      "venue": "Proceedings of the Sixth Annual ACT-R Workshop",
+      "locator": {
+        "workshop_location": "George Mason University",
+        "event_year": 1999
+      },
+      "publishing_authority": "Official ACT-R workshop archive / Carnegie Mellon University",
+      "stable_locators": [
+        "Sixth Annual ACT-R Workshop 1999 archive"
+      ],
+      "descendant_citation_locus": {
+        "descendant": "MEM-01",
+        "locator": "Blending section, equation 8, bibliography Lebiere (1999)"
+      },
+      "treatment": "DIRECT_IMPLEMENTATION_DESCENT_ANCESTOR"
+    }
+  ],
+  "cnc01_treatment": "Retain source-attested Liang/Jordan/Klein 2010 ancestry with the identity-safe non-DOI node; do not invent a DOI.",
+  "mem01_treatment": "Retain source-attested Lebiere 1999 blending ancestry with the identity-safe non-DOI node; do not invent a DOI.",
+  "opaque_identity_policy": "If sources attest shared ancestry but do not provide enough exact bibliographic fields for identity-safe resolution, retain an explicitly unresolved opaque bibliographic ancestor; never erase the ancestry and never manufacture an identifier.",
+  "scientific_main_authorized": false
+}
