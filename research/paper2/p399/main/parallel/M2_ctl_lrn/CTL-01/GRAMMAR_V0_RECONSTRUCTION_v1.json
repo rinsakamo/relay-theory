@@ -1,0 +1,65 @@
+{
+  "schema": "relaytheory.p399.main.m2.grammar_v0_reconstruction_v1",
+  "slot": "CTL-01",
+  "doi": "10.1371/journal.pcbi.1012228",
+  "input_adjudication_freeze_head": "e563741558c2ceb2e1b4017018a1a87901fbd6f4",
+  "grammar_version": "frozen Grammar v0",
+  "roles_unchanged": true,
+  "role_mapping": {
+    "Pi": [
+      "context-specific task/MDP representation",
+      "policy-prior subsystem",
+      "decision-local sampler/stopping subsystem"
+    ],
+    "X": [
+      "context posterior",
+      "MDP/task beliefs",
+      "alpha policy-prior counts",
+      "policy posterior target",
+      "MCMC chain/eta/entropy during a decision"
+    ],
+    "C": [
+      "source-defined valid state-transition/outcome contingencies",
+      "probability normalization and admissible policy/action sequences",
+      "certainty/time-pressure stopping conditions as specified"
+    ],
+    "Q": [
+      "policy orientation by reward likelihood/predicted-free-energy and posterior probability",
+      "certainty criterion for terminating sampling without inventing a new controller"
+    ],
+    "P_in": [
+      "context cue and experienced state/reward/outcome writes into inference/learning"
+    ],
+    "P_out": [
+      "selected policy/action execution and reaction-time readout"
+    ],
+    "K": [
+      "context inference",
+      "MDP/contingency update",
+      "alpha prior update",
+      "MCMC accepted-chain/eta update"
+    ],
+    "T": [
+      "within-decision sampling succession",
+      "within-episode state succession",
+      "across-episode learning succession"
+    ],
+    "rho_O": [
+      "choice/policy trace",
+      "reaction time derived from sample count plus nondecision component",
+      "observed simulated task behavior"
+    ]
+  },
+  "system_world_boundary": {
+    "system": [
+      "agent beliefs, priors, sampler, learned task representation"
+    ],
+    "world": [
+      "actual task contingencies, cues, task schedule, experimental mappings"
+    ],
+    "boundary_note": "external task demand is not an extra internal controller"
+  },
+  "arbitrary_procedural_logic_hidden_in_X_or_K": false,
+  "extra_coordinator_state_introduced": false,
+  "reconstruction_status": "DIRECT_SOURCE_GROUNDED_RECONSTRUCTION_COMPLETE"
+}
