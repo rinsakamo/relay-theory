@@ -1,0 +1,59 @@
+{
+  "schema": "relaytheory.p399.g4.w7.false_promotion_adverse_audit_v1",
+  "test_count": 10,
+  "tests": [
+    {
+      "test": "same_broad_term_unrelated_math",
+      "result": "PASS",
+      "finding": "No lexical similarity rule is used."
+    },
+    {
+      "test": "different_terminology_direct_common_ancestor",
+      "result": "PASS",
+      "finding": "DOI ancestry is checked independently of terminology."
+    },
+    {
+      "test": "shared_constituent_different_complete_systems",
+      "result": "PASS",
+      "finding": "Shared constituent never sets global independence."
+    },
+    {
+      "test": "local_operator_difference_unresolved_shared_ancestry",
+      "result": "PASS",
+      "finding": "Bounded difference remains local."
+    },
+    {
+      "test": "exact_direct_descendant_relation",
+      "result": "PASS",
+      "finding": "Direct DOI ancestry is a risk category, not independence."
+    },
+    {
+      "test": "source_correction_changes_decisive_equation",
+      "result": "PASS",
+      "finding": "Edition-sensitive baseline profiles are append-preserved."
+    },
+    {
+      "test": "absent_citation_as_independence",
+      "result": "PASS",
+      "finding": "No positive evidence remains UNDERDETERMINED."
+    },
+    {
+      "test": "incomplete_supplement_as_complete_model",
+      "result": "PASS",
+      "finding": "Required bundle disappearance fails validation; SOURCE_BLOCKED is not imported."
+    },
+    {
+      "test": "proof_manuscript_as_final_vor",
+      "result": "PASS",
+      "finding": "INT-13 remains author-approved uncorrected proof."
+    },
+    {
+      "test": "lane_local_to_global_independence",
+      "result": "PASS",
+      "finding": "Every row has global_independence_certified=false."
+    }
+  ],
+  "reversals": [],
+  "global_independence_certified": false,
+  "main_authorized": false
+}
