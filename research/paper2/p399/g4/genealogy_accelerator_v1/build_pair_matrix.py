@@ -136,7 +136,41 @@ def candidate(row, a, b, doi_a, doi_b, profiles):
     }
 
 
-def generate(g2_data, g1_data, legacy, profile_data):
+def existing_scoped_comparisons(v20, g2, g1):
+    """Reuse only individually indexed bounded witnesses, never their final status."""
+    if v20 is None:
+        return {}
+    matrix = v20["updated_original35_matrix"]
+    subject = matrix["subject"]
+    if subject["slot"] != "INT-01" or normalized_doi(subject["doi"]) != g2["INT-01"]:
+        raise InputMismatch("V20 source-native comparison subject drift")
+    rows = matrix["pairs"]
+    expected = ({("G2_INT", ident) for ident in g2 if ident.startswith("INT-") and ident != "INT-01"}
+                | {("G1", ident) for ident in g1})
+    got = [(row["other_lane"], row["other_slot"]) for row in rows]
+    if len(rows) != 35 or set(got) != expected or len(got) != len(set(got)):
+        raise InputMismatch("V20 full 35 comparison peers not faithfully preserved")
+    bounded = {}
+    for row in rows:
+        ident = row["other_slot"]
+        cohort = row["other_lane"]
+        expected_doi = g1[ident] if cohort == "G1" else g2[ident]
+        if normalized_doi(row["doi"]) != expected_doi:
+            raise InputMismatch("V20 source-native comparison peer DOI drift")
+        if row.get("final_central_family_independent_certified") is not False:
+            raise InputMismatch("V20 must not silently promote any global-family decision")
+        if row.get("source_scoped_evidence_id"):
+            if row.get("source_scoped_only") is not True:
+                raise InputMismatch("V20 indexed comparison must remain bounded")
+            bounded[(cohort, ident)] = {
+                "bounded_original_evidence_id": row["source_scoped_evidence_id"],
+                "bounded_original_outcome": row["original_family_analysis"],
+                "evidence_scope": "SOURCE_SCOPED_ONLY_NOT_GLOBAL_INDEPENDENCE",
+            }
+    return bounded
+
+
+def generate(g2_data, g1_data, legacy, profile_data, source_native_v20=None):
     g2 = roster(g2_data["selected_working_roster"], "slot")
     g1 = roster(g1_data["roster_snapshot"], "id")
     if len(g2) != 40 or len(g1) != 20 or set(g2) & set(g1):
@@ -163,14 +197,27 @@ def generate(g2_data, g1_data, legacy, profile_data):
         if normalized_doi(row["main_doi"]) != g2[a] or normalized_doi(row["g1_doi"]) != g1[b]:
             raise InputMismatch(f"Cross-cohort DOI identity drift: {a}, {b}")
     profiles = load_profiles(profile_data, g2, g1)
+    scoped = existing_scoped_comparisons(source_native_v20, g2, g1)
     rows = []
     for a, b in itertools.combinations(g2, 2):
         row = archival_internal[key_internal(a, b)]
         outcome = candidate(row, a, b, g2[a], g2[b], profiles)
+        witness = scoped.get(("G2_INT", b if a == "INT-01" else a)) if "INT-01" in (a, b) else None
+        if witness:
+            outcome["prior_source_scoped_comparison"] = witness
+            if outcome["priority"] > 3:
+                outcome["priority"] = 3
+                outcome["triage"] = "BOUNDED_SOURCE_COMPARISON_GLOBAL_REVIEW_PENDING"
         rows.append({"cohort": "G2_G2", "a": a, "b": b, "doi_a": g2[a], "doi_b": g2[b], **outcome})
     for a, b in itertools.product(g2, g1):
         row = archival_external[(a, b)]
         outcome = candidate(row, a, b, g2[a], g1[b], profiles)
+        witness = scoped.get(("G1", b)) if a == "INT-01" else None
+        if witness:
+            outcome["prior_source_scoped_comparison"] = witness
+            if outcome["priority"] > 3:
+                outcome["priority"] = 3
+                outcome["triage"] = "BOUNDED_SOURCE_COMPARISON_GLOBAL_REVIEW_PENDING"
         rows.append({"cohort": "G2_G1", "a": a, "b": b, "doi_a": g2[a], "doi_b": g1[b], **outcome})
     if len(rows) != 1580:
         raise InputMismatch("All 1580 comparisons mandatory")
@@ -183,6 +230,7 @@ def generate(g2_data, g1_data, legacy, profile_data):
         "g2_internal_pairs_checked": 780, "g2_g1_pairs_checked": 800,
         "full_pair_count": 1580,
         "original_source_grounded_profiles": len(profiles),
+        "prior_indexed_native_scoped_pairs_reused": len(scoped),
         "priority_categories": categories,
         "global_final_independent_pairs": 0,
         "scientific_main_authorized": False,
@@ -194,13 +242,17 @@ def main():
     for opt in ("g2-manifest", "g1-roster", "legacy-pairs", "profiles", "output"):
         p.add_argument("--" + opt, required=True)
     p.add_argument("--focus", help="Output incident pairs ONLY for one changed slot; not a global receipt")
+    p.add_argument("--source-native-v20", help="Optional pinned G2-D INT01 35-pair limited native evidence; cannot promote science")
     args = p.parse_args()
     paths = {k: Path(getattr(args, k.replace("-", "_"))) for k in
              ("g2-manifest", "g1-roster", "legacy-pairs", "profiles")}
     rows, summary = generate(
         load(paths["g2-manifest"]), load(paths["g1-roster"]),
-        load(paths["legacy-pairs"]), load(paths["profiles"])
+        load(paths["legacy-pairs"]), load(paths["profiles"]),
+        load(args.source_native_v20) if args.source_native_v20 else None
     )
+    if args.source_native_v20:
+        paths["source-native-v20"] = Path(args.source_native_v20)
     summary["raw_input_sha256"] = {k: digest(v) for k, v in sorted(paths.items())}
     if args.focus:
         if args.focus not in ({r["a"] for r in rows} | {r["b"] for r in rows}):
