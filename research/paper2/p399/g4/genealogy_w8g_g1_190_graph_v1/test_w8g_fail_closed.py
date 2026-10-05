@@ -118,7 +118,8 @@ class W8GDestructiveTests(unittest.TestCase):
     def test_13_p08_substantive_scientific_correction_survives(self):
         text = json.dumps(self.profiles["P08"], ensure_ascii=False)
         self.assertIn("mandatory_official_normative_correction", text)
-        self.assertIn("suboptimal", text.lower())
+        self.assertIn("original normative optimal distinct claim superseded", text)
+        self.assertIn("corrected-sequential-recursion", text)
 
     def test_14_p10_funding_only_correction_not_scientific_model_change(self):
         text = json.dumps(self.profiles["P10"], ensure_ascii=False)
