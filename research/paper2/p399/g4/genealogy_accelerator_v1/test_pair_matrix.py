@@ -184,5 +184,47 @@ class MatrixTests(unittest.TestCase):
             generate(*args)
 
 
+    def test_pair_local_int04_int08_source_reuse_only(self):
+        args = list(self.native_fixture())
+        g2 = {x["slot"]: x["doi"] for x in args[0]["selected_working_roster"]}
+        limited = {
+            "official_sources": {
+                "INT-04": {"doi": g2["INT-04"], "raw_main20_sha256": "a"*64},
+                "INT-08": {"doi": g2["INT-08"], "exact_G2_inherited_raw_sha256": "b"*64,
+                           "manual_policy_hand_imposed_detected_on_corrected_run": True}
+            },
+            "source_native_pairwise_delta": {
+                "distinct_local_primary_learning_target_and_operations_source_confirmed": True,
+                "pairwise_all_figures_math_complete_qualified": False,
+                "full_G1_20_G2_40_independent_family_cleared": False
+            },
+            "MAIN_authorized": False
+        }
+        rows, summary = generate(*args, limited)
+        self.assertEqual(summary["prior_indexed_native_scoped_pairs_reused"], 3)
+        pair = next(r for r in rows if {r["a"], r["b"]} == {"INT-04", "INT-08"})
+        self.assertEqual(pair["triage"], "BOUNDED_SOURCE_COMPARISON_GLOBAL_REVIEW_PENDING")
+        self.assertFalse(pair["global_independence_certified"])
+
+    def test_pair_local_native_false_full_family_promotion_rejected(self):
+        args = list(self.native_fixture())
+        g2 = {x["slot"]: x["doi"] for x in args[0]["selected_working_roster"]}
+        limited = {
+            "official_sources": {
+                "INT-04": {"doi": g2["INT-04"], "raw_main20_sha256": "a"*64},
+                "INT-08": {"doi": g2["INT-08"], "exact_G2_inherited_raw_sha256": "b"*64,
+                           "manual_policy_hand_imposed_detected_on_corrected_run": True}
+            },
+            "source_native_pairwise_delta": {
+                "distinct_local_primary_learning_target_and_operations_source_confirmed": True,
+                "pairwise_all_figures_math_complete_qualified": False,
+                "full_G1_20_G2_40_independent_family_cleared": True
+            },
+            "MAIN_authorized": False
+        }
+        with self.assertRaises(InputMismatch):
+            generate(*args, limited)
+
+
 if __name__ == "__main__":
     unittest.main()
