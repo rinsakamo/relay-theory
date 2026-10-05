@@ -1,0 +1,68 @@
+{
+  "schema": "relaytheory.p399.main.m4.pass_b_result_informed_reaudit_v1",
+  "slot": "INT-04",
+  "doi": "10.1038/s41562-023-01799-z",
+  "frozen_stage_a": {
+    "commit": "0992a46f38f4beefb4bf6f29a69a4b9637390e12",
+    "path": "research/paper2/p399/main/parallel/M4_int01_06/INT-04/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json"
+  },
+  "stage_b_received_frozen_a": true,
+  "stage_a_mutated": false,
+  "objections": [
+    {
+      "id": "B01",
+      "challenge": "Offline replay could be converted into an online sequencing/coordinator state.",
+      "alternate": "Replay is source-defined offline training information flow.",
+      "result": "RETAIN_OFFLINE_BOUNDARY"
+    },
+    {
+      "id": "B02",
+      "challenge": "Teacher/student relation could imply a new central controller.",
+      "alternate": "MHN and VAE are the source-defined coupled components; no separate executive is specified.",
+      "result": "NO_ADDED_COORDINATOR"
+    },
+    {
+      "id": "B03",
+      "challenge": "Replay samples could be mistaken for shared persistent cognitive state.",
+      "alternate": "They are transferred training data; persistence belongs to MHN/VAE component states.",
+      "result": "INTERFACE_NOT_SHARED_STATE"
+    },
+    {
+      "id": "B04",
+      "challenge": "Extended novelty residual could be projected backward into the basic model.",
+      "alternate": "Keep basic and extended variants distinct.",
+      "result": "VARIANT_BOUNDARY_RETAIN"
+    },
+    {
+      "id": "B05",
+      "challenge": "Described decay/capacity mechanisms could be treated as demonstrated simulation results.",
+      "alternate": "Retain not-simulated limitation and incomplete supplement semantic audit.",
+      "result": "NEGATIVE_EVIDENCE_RETAIN"
+    }
+  ],
+  "source_ordered_omission_sweep": {
+    "completed": true,
+    "coverage": [
+      "main Fig.1 basic architecture",
+      "main Fig.2 extended architecture",
+      "teacher/student replay description",
+      "science supplement",
+      "reporting summary boundary",
+      "limitations on decay/capacity and simulation"
+    ]
+  },
+  "common_false_conflations_audited": [
+    "shared state vs communication interface",
+    "gating vs added coordination",
+    "recurrent activity vs coordinator memory",
+    "hierarchy vs coordinator",
+    "workspace vs newly added A2",
+    "replay vs online sequencing",
+    "Bayesian inference vs control",
+    "model-based planning vs arbitration",
+    "embodiment/world feedback vs internal coordination",
+    "learned task set vs controller state"
+  ],
+  "negative_evidence_disappearance": false,
+  "frozen": true
+}
