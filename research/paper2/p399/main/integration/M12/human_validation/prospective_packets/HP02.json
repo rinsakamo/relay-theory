@@ -1,0 +1,101 @@
+{
+  "schema": "relaytheory.p399.main.m12.human_prospective_packet_case.v1",
+  "case_id": "HP02",
+  "doi": "10.1371/journal.pcbi.1007963",
+  "arm": "component",
+  "source_first_artifact_path": "research/paper2/p399/main/parallel/M2_ctl_lrn/LRN-02/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json",
+  "source_first_lane_head": "a4bada35d9bdc8b4868570efca44293300d82dd8",
+  "source_first_artifact": {
+    "schema": "relaytheory.p399.main.m2.pass_a_source_first_decomposition_v1",
+    "slot": "LRN-02",
+    "doi": "10.1371/journal.pcbi.1007963",
+    "stage": "A_SOURCE_FIRST_DECOMPOSITION",
+    "protocol": "RIR v2.3.1 source-closed-C",
+    "source_scope": "adopted publisher Version of Record full HTML; standalone appendices logged but not imported as unseen new Stage-A evidence",
+    "grammar_mapping_performed": false,
+    "result_informed_adjudication_performed": false,
+    "source_loci": [
+      "continuous VKF generative/inference model",
+      "volatility error-correction update",
+      "binary VKF moment-matching approximation",
+      "latent versus observation-space learning-rate analysis",
+      "empirical softmax response model and parameter recovery",
+      "Discussion generative mismatch/mechanistic limits"
+    ],
+    "internal_state": [
+      "posterior mean and variance over latent environmental state",
+      "inferred volatility/process-variance state",
+      "binary-VKF approximate posterior state",
+      "source parameters including volatility update rate, initial volatility and binary inference noise omega"
+    ],
+    "observed_or_input_variables": [
+      "continuous or binary outcomes/observations",
+      "trial-by-trial feedback",
+      "external probabilistic contingency sequence"
+    ],
+    "action_or_control_variables": [
+      "core VKF is an inference/learning model; empirical choice analyses feed learned predictions/action values into a separate softmax response rule"
+    ],
+    "update_operators": [
+      "Kalman-like posterior mean/variance update with inferred process variance",
+      "volatility error-correction update using expected squared state change minus prior volatility",
+      "binary moment-matching update for Bernoulli/sigmoid observations"
+    ],
+    "value_or_policy_quantities": [
+      "predicted reward/outcome probability and action value used by empirical response model; softmax beta is response noise, not learning state"
+    ],
+    "gating_or_selection_rules": [
+      "no extra coordinator; inferred volatility modulates latent-space learning rate through the source VKF update"
+    ],
+    "learning_rule": [
+      "joint online inference of state and volatility; lambda=0 is the source fixed-volatility/Kalman special case"
+    ],
+    "temporal_ordering": [
+      "observe outcome",
+      "update posterior state estimate",
+      "compute state-change/prediction-error statistic",
+      "update inferred volatility",
+      "form next-trial prediction",
+      "when fitting choices, pass prediction/value to softmax response model"
+    ],
+    "environmental_or_task_variables": [
+      "true hidden contingency and experimenter-generated switching/change points are external; some switching simulations deliberately differ from Gaussian-random-walk assumptions"
+    ],
+    "model_alternatives": [
+      "continuous VKF",
+      "binary VKF",
+      "fixed-volatility Kalman special case",
+      "HGF and particle-filter benchmarks",
+      "Rescorla-Wagner/Pearce-Hall structural relations",
+      "softmax response mapping"
+    ],
+    "source_defined_controller_hierarchy": "state/volatility inference and optional choice readout are distinct source components; neither is promoted to a new coordinator",
+    "negative_or_adverse_results": [
+      "exact inference is unavailable and approximation is required",
+      "binary outcomes require moment matching and an inference-only noise parameter",
+      "some switching dynamics do not match source random-walk generative assumptions",
+      "latent-space and observation-space implied learning rates are not equivalent",
+      "volatility-rate and initial-volatility recovery are comparatively error-prone"
+    ],
+    "reset_or_reinitialization_boundary": "trial/block schedule belongs to experiment design; no hidden reset operator is invented where the source does not specify one",
+    "stage_a_complete": true,
+    "stage_a_frozen_before_b": true
+  },
+  "prohibited_during_blind_coding": [
+    "Do not inspect ARCHITECTURAL_OUTCOME artifacts or M9B answer table.",
+    "Do not inspect M12 reference keys."
+  ],
+  "decision_rule": {
+    "A0": "Source-defined mechanisms suffice; no reconstruction-added load-bearing mechanism.",
+    "A1": "A0 fails; reconstruction-added load-bearing stateless mediation is necessary.",
+    "A2": "A0 and A1 fail; reconstruction-added load-bearing persistent/stateful structure is necessary.",
+    "UNDERDETERMINED": "Source evidence does not decide.",
+    "FAILURE": "No faithful A0/A1/A2 reconstruction is supported."
+  },
+  "coder_tasks": {
+    "state": "A0/A1/A2/UNDERDETERMINED/FAILURE",
+    "stateless_added": "TRUE/FALSE/UNDETERMINED",
+    "persistent_added": "TRUE/FALSE/UNDETERMINED",
+    "notes": "Cite source-first evidence fields."
+  }
+}

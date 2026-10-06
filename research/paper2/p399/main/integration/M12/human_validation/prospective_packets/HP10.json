@@ -1,0 +1,112 @@
+{
+  "schema": "relaytheory.p399.main.m12.human_prospective_packet_case.v1",
+  "case_id": "HP10",
+  "doi": "10.1038/s41562-023-01799-z",
+  "arm": "integrated",
+  "source_first_artifact_path": "research/paper2/p399/main/parallel/M4_int01_06/INT-04/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json",
+  "source_first_lane_head": "e04e7758bc85939a782b3ebc16972ba0401b5bde",
+  "source_first_artifact": {
+    "schema": "relaytheory.p399.main.m4.pass_a_source_first_decomposition_v1",
+    "slot": "INT-04",
+    "doi": "10.1038/s41562-023-01799-z",
+    "source_lock": "research/paper2/p399/main/parallel/M4_int01_06/INT-04/SOURCE_AUTHORITY_LOCK_v1.json",
+    "stage_sequence": {
+      "source_lock_freeze_commit": "a4ef8fbdafc3870ef100bafbfaed20f46adbe87f",
+      "result_informed_architecture_used": false
+    },
+    "grammar_mapping_performed": false,
+    "architecture_outcome_assigned": false,
+    "component_mechanisms": [
+      "hippocampal-style MHN rapid teacher memory",
+      "cortical VAE/generative student",
+      "offline replay/sample flow for student training",
+      "extended novelty/prediction-residual pathway"
+    ],
+    "component_local_state": [
+      "MHN stored patterns",
+      "VAE/generative parameters and latent representation",
+      "extended predicted/residual representations"
+    ],
+    "shared_state": "No generic shared coordinator state; replayed/generated samples are transferred training content.",
+    "message_information_flow": [
+      "experience -> rapid MHN storage",
+      "offline MHN replay -> VAE training",
+      "trained cortical generator -> later reconstruction/imagination",
+      "extended prediction + sensory residual -> hippocampal association/reconstruction"
+    ],
+    "ordering": [
+      "online rapid encoding",
+      "offline replay/training",
+      "later generative recall",
+      "extended novelty handling"
+    ],
+    "gating": [
+      "novelty/residual can condition storage/reconstruction; replay schedule is not online control"
+    ],
+    "control_dependencies": [
+      "teacher/student relation is source-defined; replay is not invented executive"
+    ],
+    "learning_dependencies": [
+      "replay updates cortical generative parameters"
+    ],
+    "memory_dependencies": [
+      "fast hippocampal storage distinct from cortical learned parameters"
+    ],
+    "prediction_dependencies": [
+      "cortical generative prediction and novelty residual"
+    ],
+    "task_world_variables": [
+      "experience patterns",
+      "Shapes3D/source examples",
+      "online/offline phase"
+    ],
+    "readout_action_stage": "memory reconstruction/generation",
+    "explicit_arbitration_routing": [
+      "teacher/student relation is source-defined; replay is not invented executive"
+    ],
+    "model_variants": [
+      "basic teacher-student model",
+      "extended novelty/residual model"
+    ],
+    "adverse_null_results": [
+      "decay/deletion/capacity limits described not simulated",
+      "extended novelty does not prove basic-model event-level selective encoding",
+      "component primitives pre-exist article"
+    ],
+    "integration_question": {
+      "A": "hippocampal/MHN rapid memory teacher",
+      "B": "cortical VAE/generative student",
+      "extra": [
+        "offline replay",
+        "extended novelty residual"
+      ],
+      "shared": "none beyond component states; replay samples are data",
+      "exchange": "replayed samples, latent predictions, sensory residuals",
+      "temporal": "fast encoding -> offline replay/training -> later recall",
+      "update": "replay updates cortical parameters",
+      "interaction": "mediated",
+      "mediator": "source-defined replay/training flow",
+      "mediator_state": "STATELESS_FLOW_BETWEEN_STATEFUL_SOURCE_COMPONENTS",
+      "origin": "SOURCE"
+    },
+    "source_ordered_omission_sweep": "COMPLETED_AT_STAGE_A_SOURCE_FIRST_SCOPE",
+    "frozen": true
+  },
+  "prohibited_during_blind_coding": [
+    "Do not inspect ARCHITECTURAL_OUTCOME artifacts or M9B answer table.",
+    "Do not inspect M12 reference keys."
+  ],
+  "decision_rule": {
+    "A0": "Source-defined mechanisms suffice; no reconstruction-added load-bearing mechanism.",
+    "A1": "A0 fails; reconstruction-added load-bearing stateless mediation is necessary.",
+    "A2": "A0 and A1 fail; reconstruction-added load-bearing persistent/stateful structure is necessary.",
+    "UNDERDETERMINED": "Source evidence does not decide.",
+    "FAILURE": "No faithful A0/A1/A2 reconstruction is supported."
+  },
+  "coder_tasks": {
+    "state": "A0/A1/A2/UNDERDETERMINED/FAILURE",
+    "stateless_added": "TRUE/FALSE/UNDETERMINED",
+    "persistent_added": "TRUE/FALSE/UNDETERMINED",
+    "notes": "Cite source-first evidence fields."
+  }
+}
