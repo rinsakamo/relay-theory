@@ -120,6 +120,7 @@ assert "Strict coder export" in readme
 assert "paper2_m12_export_strict_blind_packet.py" in readme
 
 # Main manuscript philosophical foreground and validation boundary.
+m14 = (ROOT / "research/paper2/p399/main/integration/M14/M14_SPEC_v1.json").exists()
 assert "When Does Structural Comparison Support Cognitive-Capacity Individuation?" in main
 assert "terminological carryover inference" in main
 assert "reconstruction-to-identity inference" in main
@@ -127,9 +128,15 @@ assert "local-invariance promotion" in main
 assert "The capacity thesis remains open, but it now carries explicit preservation debt." in main
 assert "does \\emph{not} show that semantic memory is not one capacity" in main
 assert "objective or non-pragmatic perspicuity" in main
-assert "Successful reconstruction therefore cannot, by itself" in main
-assert "representation diagnostic rather than as new empirical validation" in main
-assert "conceptually blind to construct identity" in main
+if m14:
+    assert "Successful direct reconstruction therefore does not select the exact role inventory." in main
+    assert "representation diagnostic" in main
+    assert "conceptually blind to construct identity" in main
+    assert "cross-model source reconstruction" in main
+else:
+    assert "Successful reconstruction therefore cannot, by itself" in main
+    assert "representation diagnostic rather than as new empirical validation" in main
+    assert "conceptually blind to construct identity" in main
 assert "Independent human re-adjudication was not performed." in main
 assert "Procedural auditability is established; inter-rater reliability remains unmeasured." in main
 assert "Paper 2" not in main
