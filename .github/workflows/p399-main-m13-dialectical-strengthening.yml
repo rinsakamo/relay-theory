@@ -78,9 +78,9 @@ jobs:
           if grep -En 'LaTeX Warning:|Package .* Warning:|Overfull \\hbox|Citation .* undefined|Reference .* undefined' main.log; then exit 1; fi
           pdftotext main.pdf main.txt
           tr '\n' ' ' < main.txt | tr -s '[:space:]' ' ' > main.flat.txt
-          grep -F 'From specification to identity-relevant warrant' main.flat.txt
-          grep -F 'A live dialectical target' main.flat.txt
-          grep -F 'End-to-end worked example' main.flat.txt
+          grep -F 'Structural comparison can bear evidential weight' main.flat.txt
+          grep -F 'structural unification and kind individuation' main.flat.txt
+          grep -F 'source evidence' main.flat.txt
           grep -F 'inter-rater reliability remains unmeasured' main.flat.txt
           PAGES="$(pdfinfo main.pdf | awk -F: '/^Pages:/ {gsub(/ /,"",$2); print $2}')"
           echo "JGPS manuscript pages: $PAGES" | tee main-page-count.txt
