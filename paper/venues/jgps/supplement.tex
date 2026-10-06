@@ -360,6 +360,48 @@ The licensed conclusion is limited: a label-only route to structural identity is
 
 Authority: \path{research/paper2/p399/main/integration/M12/M12_SEMANTIC_MEMORY_DOWNSTREAM_APPLICATION_v1.json}.
 
+
+\section{Constructed A-state reachability and perturbation controls}
+
+These controls are preserved here because they test the classification rule rather than supply observed corpus frequencies.
+
+\subsection{Matched synthetic reachability}
+
+A post hoc matched calibration used a strict dynamical family and a POMDP-like family, each with a direct case, a typed stateless-bridge case, and a history-sensitive persistent-bridge case. The constructed expected outcomes were therefore two A0, two A1, and two A2 cases, and all six were reached as designed.
+
+The A1 construction uses incompatible declared port types that can be repaired by an explicit stateless map. The A2 construction requires bridge output to depend on the immediately preceding binary input; a present-input-only function is insufficient, while a one-bit persistent bridge realizes the requirement. The associated Lean formalization verifies the declared minimal-reconstruction partition and the stateful obstruction. This is a reachability/control result, not an empirical frequency estimate or independent adjudication.
+
+\subsection{Real-source-derived perturbations}
+
+Two source-derived structures were damaged counterfactually without changing their certified source outcomes.
+
+\begin{center}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.12\textwidth} >{\raggedright\arraybackslash}p{0.38\textwidth} >{\raggedright\arraybackslash}X}
+\toprule
+Source & Declared ablation & Least faithful repair \\
+\midrule
+INT-10 & Hide the source-defined BG-selected action/CPG-parameter mediator while retaining the requirement that cerebellar fine-tuning consume the BG result. & A1: one reconstruction-added stateless typed bridge restores the source-declared transfer; no new persistent state is required. \\
+INT-16 & Hide source-defined traces/tags while retaining delayed eligibility-dependent plasticity and the source requirement that traces/tags bridge the delay. & A2: present-input-only repair is insufficient; faithful reconstruction requires added history-bearing eligibility/tag state. \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+These are constructed counterfactual controls. They do not modify the certified prospective result A0=40, A1=0, A2=0 and do not support prevalence inference.
+
+\section{System--environment--experiment typing}
+
+The structural comparison distinguishes the modeled cognitive system \(G_{\mathrm{cog}}\), environment \(W\), cross-boundary coupling \(\Gamma\), experimental protocol \(E_{\mathrm{exp}}\), and a realized finite run/history \(R\). Three non-identities are preserved:
+
+\[
+K\neq\Gamma,\qquad
+C\neq\text{experimental condition},\qquad
+P_{\mathrm{in}}/P_{\mathrm{out}}\neq\text{experimental schedule}.
+\]
+
+The distinction is architectural rather than isolationist. A dynamical, embodied, enactive, or extended model may draw the system boundary broadly and may treat environment coupling as constitutive. The method requires the selected boundary to be stated so that an experimental manipulation or environmental carrier is not automatically redescribed as an internal cognitive-system role.
+
+A finite experiment is also treated as a cut \(t_0\) through a potentially longer history rather than as the beginning of the cognitive system. Admissibility of \(X_{t_0}\), the realized state at the cut, and the experimental preparation that helped produce it are kept distinct. Earlier system history, environment coupling, retained structure, and preparation may all contribute. This prevents an initialization primitive from being inferred merely from the presence of an experimental start.
+
 \section{Repository-only provenance}
 
 The following materials remain repository-native rather than reproduced line-by-line in this PDF:
