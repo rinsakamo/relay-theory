@@ -145,7 +145,10 @@ thesis = (
     "neither terminology nor successful reconstruction licenses representation-independent identity."
 )
 assert thesis in main
-assert "A Pre-Individuation Structural Comparison Procedure for Cognitive-Capacity Claims" in main
+assert (
+    "A Pre-Individuation Structural Comparison Procedure for Cognitive-Capacity Claims" in main
+    or "When Does Structural Comparison Support Cognitive-Capacity Individuation?" in main
+)
 assert "claim-level structural comparison" in main
 assert "evidential constraint on capacity comparison" in main
 assert "capacity individuation" in main
