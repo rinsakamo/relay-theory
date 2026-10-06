@@ -1,0 +1,70 @@
+{
+  "schema": "relaytheory.p399.main.m11.lossy_rival_spec.v1",
+  "status": "FROZEN_BEFORE_LOSSY_RIVAL_RESULT_MATERIALIZATION",
+  "authority_issue": 399,
+  "base_m10_head": "095c6f41bc7ca6a08bf423137bbf3b8f7bc068e5",
+  "purpose": "Test whether the bounded reuse conclusions retain nontrivial structure under an independently motivated, deliberately lossy process-graph representation rather than an invertible tagged recoding.",
+  "rival_name": "Coarse Process-Constraint Graph (CPCG)",
+  "source_artifact": {
+    "path": "research/paper2/bounded_xlike_reconstruction_v1.json",
+    "blob": "43066b6825b67e2a2e1726b08b7092016d0051de",
+    "frozen_objects": 206,
+    "frozen_cross_lane_families": 99
+  },
+  "motivation": "A generic process-model view that tracks carriers/components, guards/goals, interfaces, transformations, and temporal ordering while intentionally discarding the finer epistemic role distinctions used by the working basis.",
+  "coarse_families": {
+    "N": "carrier/component node; merges S/X-like state/structure and Pi boundary/partition",
+    "G": "guard/orientation; merges C constraint and Q criterion",
+    "I": "interface event; merges P probe/intervention and O/rho observation/readout",
+    "E": "transformation/dependence edge; absorbs K and collapses non-temporal relation labels",
+    "T": "temporal presence/order; collapses detailed temporal subtypes"
+  },
+  "axis_map": {
+    "S": "N",
+    "X": "N",
+    "Pi": "N",
+    "C": "G",
+    "Q": "G",
+    "P": "I",
+    "O": "I",
+    "rho/O": "I",
+    "K": "E",
+    "T": "T"
+  },
+  "canonicalization": [
+    "Map every active axis and node axis through axis_map; node role strings and historical labels are discarded.",
+    "Represent node content only by the multiset of coarse family counts.",
+    "Map every non-temporal structural edge to E while retaining arity and ordered-versus-unordered status; discard original edge family/kind names.",
+    "Map any temporal-order edge or any present temporal metadata to T; retain only temporal presence plus the number of explicitly temporal edges, not temporal subtype names.",
+    "Discard working-basis control subtype names (partition_Pi, criterion_Q, probe_P, and analogous tags).",
+    "Sort the resulting coarse signature canonically and group original archetypes by exact coarse-signature equality."
+  ],
+  "deliberate_information_loss": [
+    "S/Pi distinction is not recoverable.",
+    "C/Q distinction is not recoverable.",
+    "P/O distinction is not recoverable.",
+    "non-temporal relation-family and relation-kind distinctions are not recoverable.",
+    "temporal subtype distinctions such as persistence, recurrence, horizon, and history-window are not recoverable."
+  ],
+  "predeclared_outputs": [
+    "prove the mapping is non-injective by exhibiting at least one collision among original role/axis distinctions and, if present, among original 206 archetypes",
+    "number of distinct CPCG signatures induced by the 206 frozen bounded objects",
+    "number of CPCG signatures with support from more than one sampling lane",
+    "number and proportion of the original 99 cross-lane bounded families that collapse with another family under CPCG",
+    "number of corpus claims supported by at least one cross-lane CPCG signature",
+    "whether the frozen ATT01-BLF01 cross-label bounded-reuse witness remains shared after CPCG projection"
+  ],
+  "no_pass_threshold": "No retention threshold is declared. The result is descriptive sensitivity: survival, collapse, or failure are all reportable outcomes.",
+  "forbidden_claims": [
+    "CPCG is the true ontology.",
+    "CPCG robustness establishes representation neutrality.",
+    "survival under CPCG proves natural-kind identity.",
+    "failure under CPCG refutes the working basis.",
+    "this single lossy rival exhausts plausible alternative representations."
+  ],
+  "prefreeze_disclosure": {
+    "lossy_projection_result_computed_before_freeze": false,
+    "same_label_candidate_pairs_were_explored_before_freeze": true,
+    "consequence": "Same-label examples are expository post hoc witnesses and are not counted as blinded CPCG tests."
+  }
+}

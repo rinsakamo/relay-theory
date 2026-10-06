@@ -1,0 +1,142 @@
+{
+  "schema": "relaytheory.p399.main.m11.encoding_permissive_composition_baseline_spec.v1",
+  "status": "FROZEN_BEFORE_ENCODING_PERMISSIVE_RESULT_MATERIALIZATION",
+  "authority_issue": 399,
+  "parent_head": "df50240d8ee89b5ae630817b584d3f82a22eaf21",
+  "motivation": "Direct-preservation closure and the original A0 composition question are different tests. This control asks the hostile-review question literally: if source-defined mechanisms remain admissible and a weaker basis may encode omitted distinctions inside retained generic source structure without requiring a new mechanism, does MAIN40 still remain A0?",
+  "chronology_disclosure": [
+    "The direct-preservation comparator result was already materialized before this specification.",
+    "The manuscript had already been edited to report that direct-preservation result.",
+    "This second control was added during hostile self-review specifically to avoid conflating direct distinction preservation with the original reconstruction-added-structure semantics.",
+    "No encoding-permissive result artifact existed when this specification was committed."
+  ],
+  "frozen_inputs": {
+    "matrix": "research/paper2/p399/main/integration/M7/M7_40_PAPER_ARCHITECTURAL_MATRIX_v1.json",
+    "decision_tree": "research/paper2/p399/main/integration/M9B/M9B_A012_OPERATIONAL_DECISION_TREE_v1.json",
+    "direct_preservation_spec": "research/paper2/p399/main/integration/M11/M11_PROSPECTIVE_COMPARATOR_SPEC_v1.json"
+  },
+  "comparator_arms": [
+    {
+      "id": "G_FULL",
+      "roles": [
+        "Pi",
+        "X",
+        "C",
+        "Q",
+        "P",
+        "K",
+        "T",
+        "rho/O"
+      ]
+    },
+    {
+      "id": "G_DYN",
+      "roles": [
+        "X",
+        "K",
+        "T"
+      ]
+    },
+    {
+      "id": "G_POMDP_LIKE",
+      "roles": [
+        "X",
+        "P",
+        "K",
+        "Q",
+        "T",
+        "rho/O"
+      ]
+    },
+    {
+      "id": "G_MINUS_PI",
+      "roles": [
+        "X",
+        "C",
+        "Q",
+        "P",
+        "K",
+        "T",
+        "rho/O"
+      ]
+    },
+    {
+      "id": "G_MINUS_C",
+      "roles": [
+        "Pi",
+        "X",
+        "Q",
+        "P",
+        "K",
+        "T",
+        "rho/O"
+      ]
+    },
+    {
+      "id": "G_MINUS_P",
+      "roles": [
+        "Pi",
+        "X",
+        "C",
+        "Q",
+        "K",
+        "T",
+        "rho/O"
+      ]
+    },
+    {
+      "id": "G_MINUS_T",
+      "roles": [
+        "Pi",
+        "X",
+        "C",
+        "Q",
+        "P",
+        "K",
+        "rho/O"
+      ]
+    }
+  ],
+  "original_A_state_semantics": {
+    "decision_variable": "least reconstruction-added structure required for source-faithful reconstruction",
+    "source_defined_mechanisms_retained": true,
+    "representation_only_retyping_is_not_a_mechanism_addition": true,
+    "A0": "No reconstruction-added stateless or persistent mechanism is required after source-defined mechanisms are retained, even if the comparator makes some distinctions non-first-class.",
+    "A1": "A new load-bearing stateless adapter/interface/translation/sequencing mechanism is required beyond representation-only recoding.",
+    "A2": "A new load-bearing persistent/stateful mechanism is required beyond representation-only recoding and source-defined mechanisms."
+  },
+  "encoding_contract": {
+    "G_DYN": [
+      "Every frozen source-defined entity, parameter, boundary marker, criterion value, interface value, observation, and other carrier may be embedded as a typed component of X.",
+      "Every frozen source-defined transformation, dependency, guard application, interface mapping, readout, or update may be embedded as typed K structure.",
+      "Temporal order/indexing remains T.",
+      "The embedding may lose first-class role identity but must not add a new scientific mechanism, hidden coordinator, or new persistent state."
+    ],
+    "G_POMDP_LIKE": [
+      "Retain X/P/K/Q/T/rho-O directly.",
+      "Embed Pi and C as source-defined typing/admissibility information on retained state/interface/transition structure without introducing a new mechanism."
+    ],
+    "single_role_ablation": "Embed the omitted role distinction as source-defined typing/metadata or retained generic structure; charge A1/A2 only if this requires a new load-bearing mechanism rather than a representation-only recoding."
+  },
+  "rowwise_algorithm": [
+    "Start from each frozen certified MAIN40 A0 row and its source-defined mechanisms.",
+    "Apply the comparator encoding contract without deleting or altering source-defined mechanisms.",
+    "If the recoding introduces no new load-bearing stateless or persistent mechanism, classify encoding-permissive closure as A0.",
+    "If a new stateless load-bearing mechanism is unavoidable, classify A1.",
+    "If persistent added state is unavoidable after stateless options, classify A2.",
+    "If the available frozen artifacts cannot decide whether a generic encoding exists, return UNDERDETERMINED rather than borrowing the direct-preservation result."
+  ],
+  "interpretive_split": {
+    "encoding_permissive_question": "Does the weaker basis plus unchanged source mechanisms still reconstruct without added coordination?",
+    "direct_preservation_question": "Does the weaker basis keep the declared distinctions first-class without stateless re-exposure?",
+    "rule": "Do not use a direct-preservation A1 result as evidence that encoding-permissive A0 fails."
+  },
+  "allowed_inference": "This control may show that prospective A0 composition is or is not discriminative among representation bases under the original reconstruction-addition semantics.",
+  "forbidden_inference": [
+    "A0 under a weak basis means the weak basis preserves the same first-class distinctions.",
+    "Generic encodability licenses representation-independent identity.",
+    "Failure of basis discrimination invalidates the prospective no-added-coordinator result.",
+    "Any result establishes a unique ontology or a non-encodability theorem."
+  ],
+  "result_not_materialized_here": true
+}

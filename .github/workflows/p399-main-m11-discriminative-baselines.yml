@@ -1,0 +1,109 @@
+name: P399 MAIN M11 discriminative-baseline guards
+
+on:
+  pull_request:
+    paths:
+      - 'research/paper2/p399/main/integration/M11/**'
+      - 'scripts/paper2_m11_discriminative_baselines_audit.py'
+      - 'paper/venues/jgps/**'
+      - '.github/workflows/p399-main-m11-discriminative-baselines.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  m11-guards:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Verify exact head and run deterministic M11 guards
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          python scripts/paper2_m11_discriminative_baselines_audit.py
+          ! grep -F '\\paragraph{' paper/venues/jgps/main.tex
+          ! grep -F 'Paper 2' paper/venues/jgps/main.tex
+          ! grep -Fi 'construct-label-neutral' paper/venues/jgps/main.tex
+          ! grep -F 'M11' paper/venues/jgps/main.tex
+          grep -F 'Construct-based individuation is evidentially incomplete unless the comparison representation, preservation criterion, and granularity are independently stated' paper/venues/jgps/main.tex
+          grep -F 'Procedural auditability is established; inter-rater reliability remains unmeasured.' paper/venues/jgps/main.tex
+
+      - name: Install strict LaTeX build tools
+        run: |
+          sudo apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            texlive-latex-base texlive-latex-recommended texlive-latex-extra \
+            texlive-fonts-recommended texlive-bibtex-extra texlive-pictures \
+            poppler-utils
+
+      - name: Strict build main JGPS manuscript
+        run: |
+          set -euo pipefail
+          cd paper/venues/jgps
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          bibtex main
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          test -s main.pdf
+          if grep -En 'LaTeX Warning:|Package .* Warning:|Overfull \\hbox|Citation .* undefined|Reference .* undefined' main.log; then
+            exit 1
+          fi
+          pdftotext main.pdf main.txt
+          tr '\n' ' ' < main.txt | tr -s '[:space:]' ' ' > main.flat.txt
+          grep -F 'Construct-based individuation is evidentially incomplete' main.flat.txt
+          grep -E '1,?770' main.flat.txt
+          grep -F '206 reusable structural' main.flat.txt
+          grep -F '143' main.flat.txt
+          grep -F '62 cross-stratum' main.flat.txt
+          grep -F '58/60' main.flat.txt
+          grep -F 'A0=40' main.flat.txt
+          grep -F 'inter-rater reliability remains unmeasured' main.flat.txt
+          PAGES="$(pdfinfo main.pdf | awk -F: '/^Pages:/ {gsub(/ /,"",$2); print $2}')"
+          echo "JGPS manuscript pages: $PAGES" | tee main-page-count.txt
+          echo "JGPS manuscript pages: $PAGES" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Strict build supplementary methods
+        run: |
+          set -euo pipefail
+          cd paper/venues/jgps
+          pdflatex -interaction=nonstopmode -halt-on-error supplement.tex
+          pdflatex -interaction=nonstopmode -halt-on-error supplement.tex
+          test -s supplement.pdf
+          if grep -En 'LaTeX Warning:|Package .* Warning:|Overfull \\hbox|Reference .* undefined' supplement.log; then
+            exit 1
+          fi
+          pdftotext supplement.pdf supplement.txt
+          tr '\n' ' ' < supplement.txt | tr -s '[:space:]' ' ' > supplement.flat.txt
+          grep -F '40 & 0 & 0' supplement.tex
+          grep -F '206 bounded objects' supplement.flat.txt
+          grep -F '143 CPCG signatures' supplement.flat.txt
+          grep -F '63/99' supplement.flat.txt
+          grep -F '62 CPCG signatures' supplement.flat.txt
+          grep -F '58/60 claims' supplement.flat.txt
+          grep -F 'inter-rater reliability remains unmeasured' supplement.flat.txt
+          PAGES="$(pdfinfo supplement.pdf | awk -F: '/^Pages:/ {gsub(/ /,"",$2); print $2}')"
+          echo "Supplement pages: $PAGES" | tee supplement-page-count.txt
+          echo "Supplement pages: $PAGES" >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: paper-2-m11-jgps-manuscript-and-supplement
+          path: |
+            paper/venues/jgps/main.pdf
+            paper/venues/jgps/supplement.pdf
+            paper/venues/jgps/main-page-count.txt
+            paper/venues/jgps/supplement-page-count.txt
+          if-no-files-found: error
+          retention-days: 14

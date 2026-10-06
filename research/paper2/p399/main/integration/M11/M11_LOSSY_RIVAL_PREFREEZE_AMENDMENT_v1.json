@@ -1,0 +1,16 @@
+{
+  "schema": "relaytheory.p399.main.m11.lossy_rival_prefreeze_amendment.v1",
+  "status": "FROZEN_BEFORE_LOSSY_RIVAL_RESULT_MATERIALIZATION",
+  "parent_prefreeze_commit": "a212820d225050bbc10d395685e74cd2fb0d9912",
+  "reason": "The frozen bounded-object schema permits auxiliary nodes with axis=null. The original CPCG spec did not state how such nodes are canonicalized.",
+  "clarification": {
+    "null_node_axis": "N",
+    "interpretation": "generic carrier/component node",
+    "node_role_string_used": false,
+    "effect": "Preserves the declared rule that historical labels and fine node-role strings are discarded."
+  },
+  "disclosure": {
+    "cpcg_result_materialized_before_this_amendment": false,
+    "comparator_result_materialized_before_this_amendment": false
+  }
+}
