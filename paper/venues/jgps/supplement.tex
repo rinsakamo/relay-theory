@@ -61,8 +61,14 @@ No comparator-result or CPCG-result artifact existed in this commit. \\
 Pre-result CPCG clarification &
 Maps auxiliary \texttt{axis=null} nodes to generic CPCG family \(N\); no result had yet been materialized. \\
 \texttt{1c22fcb177c434d2900ffb3af9ef6baee2af73ff} &
-Execute frozen controls &
-Materializes prospective comparator, CPCG, and same-label expository artifacts. \\
+Execute frozen direct-preservation and CPCG controls &
+Materializes direct-preservation comparator, CPCG, and same-label expository artifacts. \\
+\texttt{5769537203b452e0c86c69fabf9a7d3240ca4909} &
+Freeze encoding-permissive composition baseline &
+Separates the original A-state composition semantics from direct distinction preservation; no result artifact yet exists. \\
+\texttt{38d4b5a13e04127a945d31374924dd089cfffca6} &
+Execute encoding-permissive baseline &
+Materializes the literal weak-basis A-state comparison under unchanged source mechanisms. \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -108,27 +114,50 @@ Source-defined hierarchy, recurrence, gating, planner state, memory, or belief s
 A0=40,\qquad A1=0,\qquad A2=0.
 \]
 
-\section{Prospective discriminative closure control}
+\section{Two prospective representation baselines}
 
-\subsection{Frozen representations}
+The central hostile-review question has two readings. The first uses the original A0/A1/A2 decision variable: does a weaker representation require a \emph{new mechanism} once source-defined mechanisms remain available? The second uses the stricter direct-preservation objective: does a weaker representation keep the selected distinctions first-class without explicit re-exposure? These are not equivalent.
 
-The M11 prospective control evaluates the same frozen 40 structural records without rereading sources. The arms are:
-\[
-\begin{aligned}
-G_{\mathrm{full}}&=\{\Pi,X,C,Q,P,K,T,\rho/O\},\\
-G_{\mathrm{dyn}}&=\{X,K,T\},\\
-G_{\mathrm{pomdp}}&=\{X,P,K,Q,T,\rho/O\},
-\end{aligned}
-\]
-plus four single-role ablations of \(G_{\mathrm{full}}\) removing \(\Pi\), \(C\), \(P\), or \(T\).
+\subsection{Encoding-permissive composition baseline}
 
-A preservation debt is the set of frozen source-required roles absent from the tested comparator. A0 requires no such debt. A1 is assigned when every debt item can be re-exposed by a load-bearing but stateless structure whose semantic content is already source-defined: typed boundary exposure for \(\Pi\), admissibility guard for \(C\), criterion exposure for \(Q\), interface exposure for \(P\), observation exposure for \(\rho/O\), or explicit source-defined ordering for \(T\). The control forbids hiding omitted distinctions inside opaque universal interpreters or inventing new scientific semantics.
+The tested arms are the full working basis, the dynamic backbone \(\{X,K,T\}\), the POMDP-like view \(\{X,P,K,Q,T,\rho/O\}\), and four single-role ablations removing \(\Pi\), \(C\), \(P\), or \(T\).
 
-\subsection{Result}
+Under the original A-state semantics, representation-only recoding is not a reconstruction-added mechanism. The frozen encoding contract permits source-defined boundaries, constraints, criteria, interfaces, observations, and temporal markers to remain scientifically unchanged while being represented inside more generic state/transition/interface structure. For example, a boundary can be carried as source-defined typing on \(X\), a criterion as source-defined parameterization of \(X/K\), and an observation as a typed carrier plus source-defined readout mapping. Such recoding may destroy first-class role identity, but it does not add a coordinator, adapter, or persistent state.
+
+The result is:
+\begin{table}[htbp]
+\centering
+\caption{Encoding-permissive A-state closure.}
+\begin{tabular}{lrrr}
+\toprule
+Arm & A0 & A1 & A2 \\
+\midrule
+Full & 40 & 0 & 0 \\
+Dynamic & 40 & 0 & 0 \\
+POMDP-like & 40 & 0 & 0 \\
+Minus \(\Pi\) & 40 & 0 & 0 \\
+Minus \(C\) & 40 & 0 & 0 \\
+Minus \(P\) & 40 & 0 & 0 \\
+Minus \(T\) & 40 & 0 & 0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+This confirms the reviewer-level triviality concern in the relevant sense: prospective 40/40 A0 does not discriminate the exact comparison basis. It supports the narrower claim that no reconstruction-added coordination mechanism is required for the 40 source models under any tested encoding-capable view.
+
+Machine-readable authority:
+\begin{itemize}[leftmargin=*]
+\item \path{research/paper2/p399/main/integration/M11/M11_ENCODING_PERMISSIVE_COMPOSITION_BASELINE_SPEC_v1.json};
+\item \path{research/paper2/p399/main/integration/M11/M11_ENCODING_PERMISSIVE_COMPOSITION_BASELINE_RESULTS_v1.json}.
+\end{itemize}
+
+\subsection{Direct-preservation closure control}
+
+The separately frozen direct-preservation control uses the same arms but charges preservation debt when a declared source distinction is no longer first-class. A0 requires no preservation debt. A1 is assigned when every omitted distinction can be re-exposed by a load-bearing but stateless structure whose semantic content is already source-defined. This contract forbids hiding the distinction inside an opaque generic state/transition encoding.
 
 \begin{table}[htbp]
 \centering
-\caption{Frozen 40-row closure-control result.}
+\caption{Direct-preservation closure result on the same frozen 40 rows.}
 \begin{tabular}{lrrr}
 \toprule
 Arm & A0 & A1 & A2 \\
@@ -144,9 +173,9 @@ Minus \(T\) & 0 & 40 & 0 \\
 \end{tabular}
 \end{table}
 
-The control is deterministic given the already frozen role usage and preservation rule. It establishes non-vacuity of A0 relative to this direct-preservation criterion: none of the six weaker tested bases inherits 40/40 A0. It does not establish generic non-encodability of the weaker formalisms or unique ontological status for the full basis.
+The two baselines jointly delimit the inference. Generic encodability is broad enough that all tested views can remain A0, but only the full working basis keeps the declared distinctions directly available without stateless re-exposure. The prospective no-added-coordinator result and the basis-selection argument are therefore supported by different evidence.
 
-Machine-readable specification and result:
+Direct-preservation machine-readable authority:
 \begin{itemize}[leftmargin=*]
 \item \path{research/paper2/p399/main/integration/M11/M11_PROSPECTIVE_COMPARATOR_SPEC_v1.json};
 \item \path{research/paper2/p399/main/integration/M11/M11_PROSPECTIVE_COMPARATOR_RESULTS_v1.json}.
