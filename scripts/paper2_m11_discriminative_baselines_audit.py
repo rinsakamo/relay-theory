@@ -18,6 +18,8 @@ def load(path: Path):
 prefreeze = load(M11 / "M11_PREFREEZE_RECEIPT_v1.json")
 comp_spec = load(M11 / "M11_PROSPECTIVE_COMPARATOR_SPEC_v1.json")
 comp = load(M11 / "M11_PROSPECTIVE_COMPARATOR_RESULTS_v1.json")
+enc_spec = load(M11 / "M11_ENCODING_PERMISSIVE_COMPOSITION_BASELINE_SPEC_v1.json")
+enc = load(M11 / "M11_ENCODING_PERMISSIVE_COMPOSITION_BASELINE_RESULTS_v1.json")
 loss_spec = load(M11 / "M11_LOSSY_RIVAL_SPEC_v1.json")
 loss = load(M11 / "M11_LOSSY_RIVAL_RESULTS_v1.json")
 same = load(M11 / "M11_SAME_LABEL_WORKED_EXAMPLE_v1.json")
@@ -93,6 +95,24 @@ assert comp["basis_sensitive_under_direct_preservation"] is True
 assert len(comp["row_results"]) == 40 * 7
 assert comp["human_boundary"] == "Independent human re-adjudication remains NOT PERFORMED."
 
+# Encoding-permissive composition baseline: original A-state semantics do not select the basis.
+assert enc_spec["status"] == "FROZEN_BEFORE_ENCODING_PERMISSIVE_RESULT_MATERIALIZATION"
+assert enc_spec["result_not_materialized_here"] is True
+assert enc["status"] == "DETERMINISTIC_ENCODING_PERMISSIVE_BASELINE_COMPLETE"
+assert enc["source_re_adjudication"] is False
+assert enc["source_defined_mechanisms_changed"] is False
+assert enc["all_tested_arms_40_of_40_A0"] is True
+assert enc["weaker_arms_40_of_40_A0"] is True
+for arm in expected:
+    counts = enc["comparator_summary"][arm]["counts"]
+    assert counts["A0"] == 40, (arm, counts)
+    assert counts["A1"] == 0, (arm, counts)
+    assert counts["A2"] == 0, (arm, counts)
+    assert counts["UNDERDETERMINED"] == 0, (arm, counts)
+assert len(enc["row_results"]) == 40 * 7
+assert enc["independent_human_readjudication"] == "NOT_PERFORMED"
+assert "does not by itself discriminate" in enc["constructive_encoding_boundary"]["consequence"]
+
 # Lossy CPCG exact results.
 assert loss["status"] == "DETERMINISTIC_LOSSY_SENSITIVITY_COMPLETE"
 assert loss["rival_name"] == "Coarse Process-Constraint Graph (CPCG)"
@@ -133,7 +153,11 @@ assert "Coarse Process--Constraint Graph (CPCG)" in main
 assert "206 bounded structural objects collapse to 143 distinct CPCG signatures" in main
 assert "Sixty-two CPCG signatures" in main
 assert "58 of the 60 source claims" in main
-assert "No tested weaker basis inherits the \\(40/40\\) A0 result." in main
+assert "Under the encoding-permissive baseline" in main
+assert "every tested weaker representation also remains 40/40 A0" in main
+assert "Under direct preservation" in main
+assert "0 A0/40 A1" in main
+assert "Prospective A0 therefore supports the absence of reconstruction-added coordination" in main
 assert "semantic memory" in main and "MEM04" in main and "CNC05" in main
 assert "Procedural auditability is established; inter-rater reliability remains unmeasured." in main
 assert "Independent human re-adjudication was not performed." in main
@@ -151,6 +175,10 @@ assert "143 CPCG signatures" in supp
 assert "63/99" in supp
 assert "62 CPCG signatures" in supp
 assert "58/60 claims" in supp
+assert "Encoding-permissive A-state closure" in supp
+assert "Dynamic & 40 & 0 & 0" in supp
+assert "Direct-preservation closure result" in supp
+assert "Dynamic & 0 & 40 & 0" in supp
 assert "Procedural auditability is established; inter-rater reliability remains unmeasured." in supp
 assert "\\paragraph{" not in supp
 
