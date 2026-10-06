@@ -1,0 +1,478 @@
+{
+  "schema": "relaytheory.p399.main.m12.human_claim_packet_case.v1",
+  "case_id": "HC04",
+  "metadata_masking": {
+    "original_slot_withheld": true,
+    "doi_withheld": true,
+    "authors_withheld": true,
+    "venue_withheld": true,
+    "construct_labels_withheld": true,
+    "conceptual_blindness_established": false,
+    "note": "Metadata/lexical masking only; source-grounded semantic content remains."
+  },
+  "source_spans": [
+    {
+      "span_id": "s1",
+      "locator": "Science 274, published p.1926, Abstract/opening: two-minute continuous-speech exposure and source-level claim about extracting recurring units from neighboring-sound statistics"
+    },
+    {
+      "span_id": "s2",
+      "locator": "Science 274, published p.1927, Experiment 1 setup: 24 eight-month-old infants; four recurring three-syllable units; 2-minute monotone continuous stream; no pause/stress/prosodic boundaries; within-unit adjacent-pair conditional probability 1.0 versus cross-boundary 0.33"
+    },
+    {
+      "span_id": "s3",
+      "locator": "Science 274, published p.1927, Experiment 1 test/results: recurring units versus reordered strings never occurring in that order; longer listening to reordered strings; Table 1"
+    },
+    {
+      "span_id": "s4",
+      "locator": "Science 274, published pp.1927-1928, Experiment 2 setup/results: recurring units versus boundary-spanning part-units that had occurred during exposure; longer listening to part-units; Table 1"
+    },
+    {
+      "span_id": "s5",
+      "locator": "Science 274, published p.1928, notes 12, 14, 16-21: conditional-probability definition, familiarization-preference procedure, counterbalancing, exact test construction, and no condition-A/B differences"
+    },
+    {
+      "span_id": "s6",
+      "locator": "Science 274, published p.1928, Discussion: authors infer rapid acquisition/retention of particular recurring groupings; language-specific versus domain-general mechanism remains unresolved"
+    }
+  ],
+  "claim_core": {
+    "claim_type": "comparison",
+    "modality": "comparative",
+    "scope": {
+      "conditions": [
+        "continuous synthesized speech containing four recurring three-syllable units concatenated in random order, with no pauses, stress differences, or other acoustic/prosodic boundary markers",
+        "within each recurring unit, each adjacent syllable deterministically predicts the next syllable; across unit boundaries, a given following unit occurs with one-third conditional probability",
+        "two counterbalanced artificial-stream inventories were used, and the source reports no test difference between those inventories within either experiment"
+      ],
+      "population": [
+        "24 eight-month-old infants from an American-English environment in Experiment 1 and a different 24 infants of the same age/environment in Experiment 2"
+      ],
+      "substrate": [],
+      "task": [
+        "listen for two minutes to a continuous artificial speech stream and then complete an immediate familiarization-preference test",
+        "Experiment 1 compares recurring three-syllable units with reordered strings whose adjacent order did not occur during exposure",
+        "Experiment 2 compares recurring units with boundary-spanning three-syllable strings that did occur during exposure but contained a low-probability boundary transition"
+      ],
+      "temporal_scope": [
+        "two-minute familiarization followed immediately by 12 self-terminated auditory test trials"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "continuous_exposure_protocol",
+        "role": "intervention",
+        "description": "two-minute exposure to a monotone continuous stream of four recurring three-syllable units without acoustic boundary cues",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "within_unit_pair_contingency",
+        "role": "available_information",
+        "description": "adjacent syllable relation inside each recurring three-syllable unit, with conditional probability 1.0 in the exposure corpus",
+        "source_span_ids": [
+          "s2",
+          "s5"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "cross_boundary_pair_contingency",
+        "role": "available_information",
+        "description": "adjacent syllable relation crossing a recurring-unit boundary, with conditional probability 0.33 in the exposure corpus",
+        "source_span_ids": [
+          "s2",
+          "s5"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "recurring_unit_test_class",
+        "role": "condition",
+        "description": "three-syllable test strings corresponding to recurring units from the exposure stream",
+        "source_span_ids": [
+          "s3",
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "reordered_unseen_test_class",
+        "role": "condition",
+        "description": "Experiment 1 control strings made from familiar syllables but arranged in adjacent orders absent from the exposure corpus",
+        "source_span_ids": [
+          "s3",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "boundary_spanning_test_class",
+        "role": "condition",
+        "description": "Experiment 2 control strings consisting of the final syllable of one recurring unit followed by the first two syllables of another, so the full string had been heard but crossed a low-probability boundary",
+        "source_span_ids": [
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "post_exposure_orientation_probe",
+        "role": "probe",
+        "description": "immediate auditory preference procedure in which a test string repeats while sustained fixation on a blinking side light controls trial duration",
+        "source_span_ids": [
+          "s3",
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "listening_duration",
+        "role": "response_or_outcome",
+        "description": "duration of sustained orienting/listening during each test trial",
+        "source_span_ids": [
+          "s3",
+          "s4",
+          "s5"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "between_class_difference_criterion",
+        "role": "criterion",
+        "description": "reliable within-infant difference in listening duration between recurring-unit trials and the relevant comparison-string trials",
+        "source_span_ids": [
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "inferred_recurring_grouping",
+        "role": "state_or_structure",
+        "description": "source-inferred post-exposure organization in which recurring three-syllable groupings are represented differently from strings containing absent or boundary-crossing adjacent relations",
+        "source_span_ids": [
+          "s3",
+          "s4",
+          "s6"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "constrains",
+        "arguments": [
+          "continuous_exposure_protocol",
+          "within_unit_pair_contingency",
+          "cross_boundary_pair_contingency"
+        ],
+        "description": "the familiarization stream supplies high within-unit and lower cross-boundary adjacent-pair contingencies while withholding acoustic boundary markers",
+        "source_span_ids": [
+          "s2",
+          "s5"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "r2",
+        "kind": "differs",
+        "arguments": [
+          "recurring_unit_test_class",
+          "reordered_unseen_test_class",
+          "listening_duration"
+        ],
+        "description": "in Experiment 1 infants listen longer to reordered strings than to recurring units, showing discrimination of familiar versus absent adjacent orderings after the brief exposure",
+        "source_span_ids": [
+          "s3"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "r3",
+        "kind": "differs",
+        "arguments": [
+          "recurring_unit_test_class",
+          "boundary_spanning_test_class",
+          "listening_duration"
+        ],
+        "description": "in Experiment 2 infants listen longer to boundary-spanning strings than to recurring units even though the boundary-spanning strings had occurred during familiarization",
+        "source_span_ids": [
+          "s4",
+          "s5"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "r4",
+        "kind": "distinguishes",
+        "arguments": [
+          "within_unit_pair_contingency",
+          "cross_boundary_pair_contingency",
+          "recurring_unit_test_class",
+          "boundary_spanning_test_class"
+        ],
+        "description": "the Experiment 2 recurring-versus-boundary-spanning contrast differs in whether the first adjacent transition is a high-probability within-unit relation or a lower-probability boundary relation",
+        "source_span_ids": [
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "maps_to",
+        "arguments": [
+          "post_exposure_orientation_probe",
+          "listening_duration"
+        ],
+        "description": "the familiarization-preference procedure supplies the listening-duration outcome",
+        "source_span_ids": [
+          "s3",
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r6",
+        "kind": "satisfies",
+        "arguments": [
+          "listening_duration",
+          "between_class_difference_criterion"
+        ],
+        "description": "both experiments meet the source's behavioral discrimination criterion through significant within-infant listening-time differences",
+        "source_span_ids": [
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r7",
+        "kind": "precedes",
+        "arguments": [
+          "continuous_exposure_protocol",
+          "post_exposure_orientation_probe"
+        ],
+        "description": "the two-minute exposure ends immediately before the test phase",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s4",
+          "s5"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "r8",
+        "kind": "maps_to",
+        "arguments": [
+          "listening_duration",
+          "inferred_recurring_grouping"
+        ],
+        "description": "the source interprets the differential listening pattern, especially the recurring-versus-boundary-spanning result, as evidence that infants acquired and retained particular recurring groupings from the exposure structure",
+        "source_span_ids": [
+          "s4",
+          "s6"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  },
+  "candidate_bounded_objects": [
+    {
+      "candidate_id": "A",
+      "structural_object": {
+        "active_axes": [
+          "K",
+          "O",
+          "P",
+          "Q",
+          "T"
+        ],
+        "basis_version": "paper2-working-basis-v1",
+        "controls": {
+          "criterion_Q": {
+            "state": "present"
+          },
+          "probe_P": {
+            "state": "present"
+          }
+        },
+        "edges": [
+          {
+            "arguments": [
+              "n0",
+              "n3"
+            ],
+            "conditional_on": [],
+            "family": "basis_relation",
+            "kind": "other",
+            "ordered_arguments": true,
+            "temporal_direction": "unspecified"
+          },
+          {
+            "arguments": [
+              "n2",
+              "n1"
+            ],
+            "conditional_on": [],
+            "family": "basis_relation",
+            "kind": "maps_to",
+            "ordered_arguments": true,
+            "temporal_direction": "unspecified"
+          }
+        ],
+        "nodes": {
+          "n0": {
+            "axis": "O",
+            "required": true,
+            "role": "response_or_outcome",
+            "space": "basis_coordinate"
+          },
+          "n1": {
+            "axis": "O",
+            "required": true,
+            "role": "response_or_outcome",
+            "space": "basis_coordinate"
+          },
+          "n2": {
+            "axis": "P",
+            "required": true,
+            "role": "probe",
+            "space": "basis_coordinate"
+          },
+          "n3": {
+            "axis": "Q",
+            "required": true,
+            "role": "criterion",
+            "space": "basis_coordinate"
+          },
+          "n4": {
+            "axis": null,
+            "required": true,
+            "role": "condition",
+            "space": "basis_coordinate"
+          },
+          "n5": {
+            "axis": null,
+            "required": true,
+            "role": "condition",
+            "space": "basis_coordinate"
+          }
+        },
+        "schema_version": "paper2-basis-subobject-v1",
+        "source_skeleton_version": "paper2-basis-structural-skeleton-v1",
+        "temporal": {
+          "future_horizon": {
+            "state": "present"
+          },
+          "time_index": {
+            "state": "present"
+          }
+        }
+      }
+    },
+    {
+      "candidate_id": "B",
+      "structural_object": {
+        "active_axes": [
+          "K",
+          "O",
+          "P",
+          "Q",
+          "T"
+        ],
+        "basis_version": "paper2-working-basis-v1",
+        "controls": {
+          "criterion_Q": {
+            "state": "present"
+          },
+          "probe_P": {
+            "state": "present"
+          }
+        },
+        "edges": [
+          {
+            "arguments": [
+              "n2",
+              "n0"
+            ],
+            "conditional_on": [],
+            "family": "basis_relation",
+            "kind": "maps_to",
+            "ordered_arguments": true,
+            "temporal_direction": "unspecified"
+          }
+        ],
+        "nodes": {
+          "n0": {
+            "axis": "O",
+            "required": true,
+            "role": "response_or_outcome",
+            "space": "basis_coordinate"
+          },
+          "n1": {
+            "axis": "P",
+            "required": true,
+            "role": "intervention",
+            "space": "basis_coordinate"
+          },
+          "n2": {
+            "axis": "P",
+            "required": true,
+            "role": "probe",
+            "space": "basis_coordinate"
+          },
+          "n3": {
+            "axis": "Q",
+            "required": true,
+            "role": "criterion",
+            "space": "basis_coordinate"
+          },
+          "n4": {
+            "axis": null,
+            "required": true,
+            "role": "condition",
+            "space": "basis_coordinate"
+          },
+          "n5": {
+            "axis": null,
+            "required": true,
+            "role": "condition",
+            "space": "basis_coordinate"
+          }
+        },
+        "schema_version": "paper2-basis-subobject-v1",
+        "source_skeleton_version": "paper2-basis-structural-skeleton-v1",
+        "temporal": {
+          "future_horizon": {
+            "state": "present"
+          },
+          "history_window": {
+            "state": "present"
+          },
+          "persistence": {
+            "state": "present"
+          },
+          "time_index": {
+            "state": "present"
+          }
+        }
+      }
+    }
+  ],
+  "coder_tasks": {
+    "grammar_role_set": "Pi;X;C;Q;P_in;P_out;K;T;rho/O",
+    "projection_verdict": "FULL/PARTIAL/RESIDUAL",
+    "candidate_membership": "SUPPORTED/NOT_SUPPORTED/UNDERDETERMINED"
+  }
+}
