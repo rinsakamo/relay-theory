@@ -6,6 +6,7 @@ on:
       - 'research/paper2/p399/main/integration/M12/**'
       - 'scripts/paper2_m12_dialectical_consolidation_audit.py'
       - 'scripts/paper2_m12_score_human_readjudication.py'
+      - 'scripts/paper2_m12_export_strict_blind_packet.py'
       - 'scripts/paper2_m11_discriminative_baselines_audit.py'
       - 'paper/venues/jgps/**'
       - '.github/workflows/p399-main-m12-dialectical-consolidation.yml'
@@ -55,6 +56,26 @@ jobs:
             echo "ERROR: blank human forms unexpectedly produced a score"
             exit 1
           fi
+
+      - name: Export strict blind human re-adjudication packet
+        run: |
+          set -euo pipefail
+          rm -rf m12-human-blind
+          python scripts/paper2_m12_export_strict_blind_packet.py --out m12-human-blind
+          test "$(find m12-human-blind/claims -name 'HC*.json' | wc -l)" -eq 20
+          test "$(find m12-human-blind/prospective -name 'HP*.json' | wc -l)" -eq 10
+          ! grep -R '"doi"' m12-human-blind/claims
+          ! grep -R '"role"' m12-human-blind/claims
+          ! grep -R '"kind"' m12-human-blind/claims
+          ! grep -R '"doi"' m12-human-blind/prospective
+          ! grep -R '"slot"' m12-human-blind/prospective
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: paper-2-m12-strict-human-readjudication-packet
+          path: m12-human-blind
+          if-no-files-found: error
+          retention-days: 14
 
       - name: Install strict LaTeX build tools
         run: |
