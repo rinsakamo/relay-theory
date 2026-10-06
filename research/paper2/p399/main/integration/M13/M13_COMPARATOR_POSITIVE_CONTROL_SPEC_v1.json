@@ -1,0 +1,27 @@
+{
+  "schema": "relaytheory.p399.main.m13.comparator_positive_control_spec.v1",
+  "status": "FROZEN_BEFORE_M13_CONTROL_EXECUTION",
+  "epistemic_class": "CONSTRUCTED_CONTROL",
+  "base_fixture": "research/paper2/structural_signature_v1.example.json",
+  "comparator": "scripts/paper2_phi_compare.py",
+  "controls": [
+    {
+      "id": "PC1",
+      "intervention": "rename source-local node/relation/coordinate/attempt identifiers while preserving projected structure",
+      "expected": "EQUIVALENT"
+    },
+    {
+      "id": "PC2",
+      "intervention": "vary presentation-only source metadata excluded by the frozen Phi projection while preserving scientific structure",
+      "expected": "EQUIVALENT"
+    },
+    {
+      "id": "PC3",
+      "intervention": "add one authorized fixed resource_C structural distinction",
+      "expected": "RIGHT_STRICT_REFINEMENT_OF_LEFT",
+      "required_forgetting_witness": "C/resource_C"
+    }
+  ],
+  "purpose": "Demonstrate that the comparator can reach positive equivalence and refinement states under authorized constructed controls.",
+  "nonclaim": "These controls do not validate a cognitive taxonomy and are not new corpus evidence."
+}

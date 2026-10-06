@@ -1,0 +1,26 @@
+{
+  "schema": "relaytheory.p399.main.m13.human_source_extraction_protocol.v1",
+  "status": "PROTOCOL_FROZEN_HUMAN_EXTRACTION_NOT_PERFORMED",
+  "exact_sampling_parent": "cbf9240b7188776748af07f847b3002af55aefe7",
+  "population": "Frozen 60-source claim corpus",
+  "sample_design": "1 source from each of ATT/BLF/CNC/CTL/LRN/MEM/PRD/SKL plus 2 challenge sources",
+  "selection_algorithm": "For each primary stratum choose the slot with lexicographically smallest SHA256(exact_parent_head + '|' + salt + '|' + slot_id). For challenge slots choose the two smallest digests globally.",
+  "salt": "M13_HUMAN_SOURCE_EXTRACTION_SAMPLE_v1",
+  "independence_contract": [
+    "Coder must be a real human who did not produce the retained source extraction.",
+    "Coder starts from the original source identified by DOI/edition and does not receive the frozen ClaimIR, structural adjudication, bounded-object memberships, grammar verdict, capacity-case result, or answer key during extraction.",
+    "Coder independently identifies one focal source-grounded cognitive claim and constructs a structured claim record: scope/modality, typed nodes, typed relations, temporal information, and source locators.",
+    "No ChatGPT/LLM/CI/Lean output counts as an independent human judgment.",
+    "Only after the completed records are frozen may agreement/disagreement with the retained records be computed."
+  ],
+  "reporting_if_performed": [
+    "record-level completion and source-locator audit",
+    "claim-type/modality agreement",
+    "role-wise node and relation alignment after an explicit matching rule",
+    "structured disagreement ledger",
+    "no reliability statistic before all required human records are supplied"
+  ],
+  "m12_package_preserved": true,
+  "result": "NOT_PERFORMED",
+  "mandatory_limitation": "Procedural auditability is established; inter-rater reliability remains unmeasured."
+}
