@@ -1,0 +1,110 @@
+{
+  "schema": "relaytheory.p399.postmain.self_s4_handoff.v1",
+  "status": "POST_MAIN_ENGINEERING_QUALIFICATION_HANDOFF",
+  "upstream": {
+    "m7_head": "48b2cf3c627e030e7131af485206b0013d7e02f1",
+    "r1_reintegration_head": "b60cd3fe4960e84e5ffb007f747ac43a6063c2c8",
+    "r2_blueprint_head": "4ae4833c103f1cbeb6617be681dab4e183c69aa0",
+    "r3_s2_handoff_head": "31da772f19dfb447fd5cb9f6b092967e436e334f",
+    "r4_s3_handoff_head": "ac5303dfb98f88de2307405b9550e9ba9663faec"
+  },
+  "relayself": {
+    "repo": "rinsakamo/relay-self",
+    "s4_pr": 340,
+    "s4_branch": "self/postmain-capability-s4-profile-qualification-20261006",
+    "s4_exact_head": "5cc6b1b3cdcbafe3ccdc86d96d4de54e1cc8a302",
+    "base_s3_head": "303dbc7f6fb6e7ea8edb3ce60636079b909ac048"
+  },
+  "qualified_profiles": [
+    "MEM",
+    "CTL",
+    "CTL+SKL",
+    "TALK",
+    "MEM+CTL+SKL",
+    "MEM+TALK"
+  ],
+  "qualified_existing_seams": {
+    "MEM": [
+      "PersistentCognition.retain_memory"
+    ],
+    "CTL": [
+      "RelayEngine.__call__ bounded path"
+    ],
+    "SKL": [
+      "SkillExecution.start",
+      "ActionLifecycle.propose"
+    ],
+    "TALK": [
+      "RelayEngine.open"
+    ]
+  },
+  "positive_qualification": {
+    "memory_owner_transition": "PASS",
+    "bounded_cognition_exactly_once": "PASS",
+    "open_cognition_exactly_once": "PASS",
+    "skill_start_preserves_current_intent_association": "PASS",
+    "action_proposal_preserves_skill_and_intent_association": "PASS",
+    "mem_talk_orders_owner_transition_before_final_cognition": "PASS"
+  },
+  "negative_authority_qualification": {
+    "ctl_skl_does_not_auto_authorize_action": "PASS",
+    "ctl_skl_does_not_auto_issue_action": "PASS",
+    "talk_does_not_create_action_authority": "PASS",
+    "capability_off_does_not_delete_retained_memory": "PASS",
+    "talk_off_makes_zero_provider_calls": "PASS"
+  },
+  "toggle_isolation": {
+    "mem_off_talk_on": {
+      "mem_due_work": "SUPPRESSED",
+      "talk_due_work": "EXECUTED",
+      "existing_memory": "PRESERVED",
+      "open_provider_calls": 1
+    },
+    "mem_on_talk_off": {
+      "mem_due_work": "EXECUTED",
+      "talk_due_work": "SUPPRESSED",
+      "provider_calls": 0
+    }
+  },
+  "ci": {
+    "workflow_run": 37404709146,
+    "exact_head": "5cc6b1b3cdcbafe3ccdc86d96d4de54e1cc8a302",
+    "repository_contracts": "SUCCESS",
+    "pytest": "SUCCESS",
+    "lint": "SUCCESS",
+    "mineflayer_adapter": "SUCCESS"
+  },
+  "licensed_interpretation": "The bounded existing MEM/CTL/SKL/TALK substrate supports compositional profile execution and selective capability route suppression without transferring semantic ownership, creating action authority, deleting retained state, or introducing a persistent central scheduler.",
+  "not_qualified": [
+    "ATT",
+    "BLF",
+    "CNC",
+    "PRD",
+    "PLAN",
+    "LRN",
+    "HABIT"
+  ],
+  "next_slice_constraints": {
+    "slice": "S5",
+    "goal": "add one new cognitive mechanism at a time",
+    "recommended_order": [
+      "ATT",
+      "BLF",
+      "CNC",
+      "PRD",
+      "PLAN",
+      "LRN",
+      "HABIT"
+    ],
+    "first_candidate": "ATT",
+    "must_preserve": [
+      "new mechanisms use explicit owner-local state if state is required",
+      "no central executive owner",
+      "no persistent scheduler state",
+      "capability OFF preserves retained state",
+      "Action proposal remains distinct from authorization",
+      "generated cognition remains non-authoritative until explicitly integrated",
+      "new criteria must distinguish contract guards from cognitive orientation"
+    ]
+  }
+}
