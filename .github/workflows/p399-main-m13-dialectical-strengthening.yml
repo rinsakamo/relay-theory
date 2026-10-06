@@ -1,0 +1,116 @@
+name: P399 MAIN M13 dialectical-strengthening guards
+
+on:
+  pull_request:
+    paths:
+      - 'research/paper2/p399/main/integration/M13/**'
+      - 'scripts/paper2_m13_*.py'
+      - 'scripts/paper2_m12_dialectical_consolidation_audit.py'
+      - 'scripts/paper2_m11_discriminative_baselines_audit.py'
+      - 'paper/venues/jgps/**'
+      - '.github/workflows/p399-main-m13-dialectical-strengthening.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  m13-guards:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run M13 controls and compatibility guards
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          python scripts/paper2_m13_comparator_positive_controls.py
+          python scripts/paper2_m13_dialectical_strengthening_audit.py
+          python scripts/paper2_m12_dialectical_consolidation_audit.py
+          python scripts/paper2_m11_discriminative_baselines_audit.py
+          python scripts/paper2_m10_major_revision_audit.py
+          python scripts/paper2_phi_compare.py --self-test
+          ! grep -F '\\paragraph{' paper/venues/jgps/main.tex
+          ! grep -F 'Paper 2' paper/venues/jgps/main.tex
+          ! grep -Fi 'construct-label-neutral' paper/venues/jgps/main.tex
+
+      - name: Verify human-validation boundary and package protocol
+        run: |
+          set -euo pipefail
+          grep -F '"status": "PROTOCOL_FROZEN_HUMAN_EXTRACTION_NOT_PERFORMED"' research/paper2/p399/main/integration/M13/M13_HUMAN_SOURCE_EXTRACTION_PROTOCOL_v1.json
+          rm -rf m13-source-extraction-protocol
+          mkdir -p m13-source-extraction-protocol
+          cp research/paper2/p399/main/integration/M13/M13_HUMAN_SOURCE_EXTRACTION_PROTOCOL_v1.json m13-source-extraction-protocol/
+          cp research/paper2/p399/main/integration/M13/M13_HUMAN_SOURCE_EXTRACTION_SAMPLE_v1.json m13-source-extraction-protocol/
+          printf '%s\n' 'M13 independent source extraction packet' 'Status: PROTOCOL_FROZEN_HUMAN_EXTRACTION_NOT_PERFORMED' 'No independent human records are included.' > m13-source-extraction-protocol/README.txt
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: paper-2-m13-independent-source-extraction-protocol
+          path: m13-source-extraction-protocol
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Install strict LaTeX build tools
+        run: |
+          sudo apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-bibtex-extra texlive-pictures poppler-utils
+
+      - name: Strict build JGPS manuscript
+        run: |
+          set -euo pipefail
+          cd paper/venues/jgps
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          bibtex main
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          test -s main.pdf
+          if grep -En 'LaTeX Warning:|Package .* Warning:|Overfull \\hbox|Citation .* undefined|Reference .* undefined' main.log; then exit 1; fi
+          pdftotext main.pdf main.txt
+          tr '\n' ' ' < main.txt | tr -s '[:space:]' ' ' > main.flat.txt
+          grep -F 'Structural comparison can bear evidential weight' main.flat.txt
+          grep -F 'kind individuation' main.flat.txt
+          grep -F 'source evidence' main.flat.txt
+          grep -F 'inter-rater reliability remains unmeasured' main.flat.txt
+          PAGES="$(pdfinfo main.pdf | awk -F: '/^Pages:/ {gsub(/ /,"",$2); print $2}')"
+          echo "JGPS manuscript pages: $PAGES" | tee main-page-count.txt
+          echo "JGPS manuscript pages: $PAGES" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Strict build supplementary methods
+        run: |
+          set -euo pipefail
+          cd paper/venues/jgps
+          pdflatex -interaction=nonstopmode -halt-on-error supplement.tex
+          pdflatex -interaction=nonstopmode -halt-on-error supplement.tex
+          pdflatex -interaction=nonstopmode -halt-on-error supplement.tex
+          test -s supplement.pdf
+          if grep -En 'LaTeX Warning:|Package .* Warning:|Overfull \\hbox|Reference .* undefined' supplement.log; then exit 1; fi
+          pdftotext supplement.pdf supplement.txt
+          tr '\n' ' ' < supplement.txt | tr -s '[:space:]' ' ' > supplement.flat.txt
+          grep -F 'Comparator positive controls and capacity-level cases' supplement.flat.txt
+          grep -F 'Independent 10-source extraction protocol' supplement.flat.txt
+          grep -F 'inter-rater reliability remains unmeasured' supplement.flat.txt
+          PAGES="$(pdfinfo supplement.pdf | awk -F: '/^Pages:/ {gsub(/ /,"",$2); print $2}')"
+          echo "Supplement pages: $PAGES" | tee supplement-page-count.txt
+          echo "Supplement pages: $PAGES" >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: paper-2-m13-jgps-manuscript-and-supplement
+          path: |
+            paper/venues/jgps/main.pdf
+            paper/venues/jgps/supplement.pdf
+            paper/venues/jgps/main-page-count.txt
+            paper/venues/jgps/supplement-page-count.txt
+          if-no-files-found: error
+          retention-days: 14
