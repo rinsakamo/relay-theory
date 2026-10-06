@@ -1,0 +1,32 @@
+{
+  "schema": "relaytheory.p399.main.m14.cross_model_replication_protocol.v1",
+  "status": "PROTOCOL_FROZEN_CROSS_MODEL_REPLICATION_NOT_YET_PERFORMED",
+  "purpose": "Test whether a different model family can independently reconstruct the same source-level structural content from the original sources under a public frozen procedure.",
+  "epistemic_class": "CROSS_MODEL_REPLICATION",
+  "not_equivalent_to": [
+    "independent human source extraction",
+    "human inter-rater reliability",
+    "proof of representation neutrality",
+    "proof that the retained ClaimIR is uniquely correct"
+  ],
+  "sample_authority": "research/paper2/p399/main/integration/M13/M13_HUMAN_SOURCE_EXTRACTION_SAMPLE_v1.json",
+  "n_sources": 10,
+  "execution_contract": [
+    "Use a model family distinct from the model family used for the retained reconstruction pipeline when feasible.",
+    "For each source, expose only the original source, this protocol, the frozen prompt, and the blank output schema.",
+    "Do not expose retained ClaimIR, bounded-object memberships, grammar verdicts, capacity-case outcomes, comparison answers, or prior model outputs before all ten new records are frozen.",
+    "Permit ABSTAIN or UNDERDETERMINED rather than forcing a reconstruction.",
+    "Record exact provider, model name/version, access date, decoding or sampling settings when available, context/tool settings, and whether web or file retrieval was used.",
+    "Save the raw model response verbatim before normalization.",
+    "Complete all ten records before opening the retained reference records for comparison.",
+    "After freeze, compare by the separately frozen comparison rules; do not tune the extraction prompt after seeing disagreement."
+  ],
+  "public_replay_contract": [
+    "Any third party may replay the same packet with another model family.",
+    "A replay remains informative whether it agrees, disagrees, or abstains.",
+    "Agreement supports cross-model reproducibility of the extraction procedure under the tested models.",
+    "Disagreement identifies model- or judgment-sensitive fields and does not by itself establish that either output is false."
+  ],
+  "human_boundary": "Cross-model replication is reported separately from human validation. Procedural auditability is established; inter-rater reliability remains unmeasured.",
+  "result": "NOT_PERFORMED"
+}
