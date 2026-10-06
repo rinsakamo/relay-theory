@@ -77,8 +77,8 @@ for phrase in [
     check(f"main_concept_{phrase}", phrase in MAIN or phrase in RESPONSE)
 
 # No hidden restoration of independent-validation claims.
+check("safe_extraction_validation_disclaimer", "automated extraction was not independently validated" in MAIN)
 for forbidden in [
-    "independently validated",
     "40 independent replications prove",
     "POMDPs cannot encode the tested cognitive models",
     "independent human re-adjudication was performed",
