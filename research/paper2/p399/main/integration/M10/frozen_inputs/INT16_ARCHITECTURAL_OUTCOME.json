@@ -1,0 +1,39 @@
+{
+  "schema": "relaytheory.p399.main.m6.architectural-outcome.v1",
+  "date_jst": "2026-10-05",
+  "slot": "INT-16",
+  "doi": "10.1371/journal.pcbi.1004060",
+  "tests": [
+    {
+      "test": "A0_DIRECT_COMPOSITION",
+      "result": "PASS",
+      "reason": "All required integration/state/update/readout structure is source-defined and can be represented with frozen Grammar v0 roles while keeping named source operators explicit."
+    },
+    {
+      "test": "A1_STATELESS_INTERFACE_COMPOSITION",
+      "result": "NOT_REACHED_AFTER_A0_PASS",
+      "added_interfaces": 0
+    },
+    {
+      "test": "A2_ADDITIONAL_STATEFUL_MECHANISM",
+      "result": "NOT_REACHED_AFTER_A0_PASS",
+      "added_stateful_mechanisms": 0
+    }
+  ],
+  "final_architectural_state": "A0_FIDELITY",
+  "source_fidelity": "SOURCE_CLOSED_FIDELITY_WITH_EXPLICIT_LIMITATIONS",
+  "reconstruction_added_stateless_interface_count": 0,
+  "reconstruction_added_stateful_mechanism_count": 0,
+  "source_defined_coordination_or_gating": [
+    "selected-response feedback gates tag formation",
+    "global neuromodulatory/RPE signal gates plasticity of tagged synapses"
+  ],
+  "limitations_retained": [
+    "biophysical persistent-activity mechanism not uniquely specified",
+    "simulation is not direct in-vivo validation",
+    "SARSA(lambda) correspondence limits novelty interpretation",
+    "P09 comparison not independence"
+  ],
+  "genealogy_independence_claimed": false,
+  "h0_h1_h2_conclusion_issued": false
+}

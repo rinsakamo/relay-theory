@@ -1,0 +1,57 @@
+{
+  "schema": "relaytheory.p399.main.m10.real_source_perturbation_spec.v1",
+  "status": "FROZEN_BEFORE_PERTURBATION_RESULT",
+  "authority_issue": 399,
+  "base_m9e_head": "84eb5d62a3dd58f291bd9aaa99b500aa0a3cf8c7",
+  "purpose": "Counterfactual controls on frozen real-source-derived structures; never re-adjudicate certified MAIN40 outcomes.",
+  "decision_semantics": "least reconstruction-added structure required to restore the explicitly retained source-fidelity obligation after the declared ablation",
+  "controls": [
+    {
+      "id": "M10D-INT10-INTERFACE-ABLATION",
+      "paper_id": "INT-10",
+      "doi": "10.1371/journal.pcbi.1011024",
+      "source_head": "521972f2a05efa3de559583d388a9c81c36ba424",
+      "source_snapshot": "research/paper2/p399/main/integration/M10/frozen_inputs/INT10_PASS_A.json",
+      "untouched_outcome_snapshot": "research/paper2/p399/main/integration/M10/frozen_inputs/INT10_ARCHITECTURAL_OUTCOME.json",
+      "ablation": {
+        "remove_only": [
+          "source-defined BG-selected action/CPG-parameter interface between BG result and cerebellar correction"
+        ],
+        "retain_obligations": [
+          "goal -> BG -> concrete action/CPG params",
+          "BG result + error -> cerebellum -> CPG correction",
+          "cerebellar fine-tuning must consume BG-selected action results"
+        ],
+        "preserve_all_other_source_defined_state": true
+      },
+      "evaluator_rule": "If the source-defined mediator is absent but the cross-component typed transfer obligation is retained and no new persistent history is needed, direct A0 fails and the least repair is a reconstruction-added stateless typed interface."
+    },
+    {
+      "id": "M10D-INT16-HISTORY-ABLATION",
+      "paper_id": "INT-16",
+      "doi": "10.1371/journal.pcbi.1004060",
+      "source_head": "baa033088191286962332d84fc04349d3d1604dd",
+      "source_snapshot": "research/paper2/p399/main/integration/M10/frozen_inputs/INT16_PASS_A.json",
+      "untouched_outcome_snapshot": "research/paper2/p399/main/integration/M10/frozen_inputs/INT16_ARCHITECTURAL_OUTCOME.json",
+      "ablation": {
+        "remove_only": [
+          "source-defined synaptic traces/tags as the delay-bridging eligibility state"
+        ],
+        "retain_obligations": [
+          "response-selection feedback contributes to tag formation",
+          "later reward/RPE gates plasticity at previously eligible synapses",
+          "the source temporal order explicitly states that traces/tags bridge delay"
+        ],
+        "forbid_silent_retyping_of_other_source_state_as_eligibility_state": true
+      },
+      "evaluator_rule": "If the source-defined history-bearing eligibility state is absent while delayed eligibility-dependent plasticity remains required, A0 fails; a present-input-only stateless repair cannot preserve the history dependence, so the least repair requires reconstruction-added persistent state."
+    }
+  ],
+  "guards": [
+    "untouched MAIN40 A0/A1/A2 counts remain 40/0/0",
+    "counterfactual controls are reported separately from empirical MAIN40 outcomes",
+    "no control frequency is interpreted as prevalence",
+    "independent human re-adjudication remains NOT_PERFORMED"
+  ],
+  "outcome_not_inspected_or_recorded_here": true
+}
