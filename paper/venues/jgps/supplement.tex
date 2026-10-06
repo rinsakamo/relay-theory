@@ -24,7 +24,7 @@ When Does Structural Comparison Support Cognitive-Capacity Individuation?}
 
 \section{Purpose and evidential boundary}
 
-This supplement reproduces the compact rosters, evidence index, freeze identifiers, and validation materials promised in the main article. Detailed source-first artifacts, blob hashes, per-paper receipts, and full analysis ancestry remain repository-native materials and are identified by path rather than reproduced in full.
+This supplement reproduces the compact rosters, evidence index, freeze identifiers, validation materials, and public replay package promised in the main article. M14 intentionally moves technical detail out of the article so that the philosophical argument can be read independently of the full audit apparatus. Detailed source-first artifacts, blob hashes, per-paper receipts, and full analysis ancestry remain repository-native materials and are identified by path rather than reproduced in full.
 
 The scientific invariants carried into this revision remain:
 \begin{itemize}[leftmargin=*]
@@ -34,7 +34,8 @@ The scientific invariants carried into this revision remain:
 \item residuals requiring a new top-level role: 0/17;
 \item prospective source result: A0=40, A1=0, A2=0, with 24/24 component and 16/16 integrated papers at A0;
 \item global genealogical independence: not claimed;
-\item independent human re-adjudication: not performed.
+\item independent human re-adjudication: not performed;
+\item cross-model source reconstruction: protocol frozen, not yet performed.
 \end{itemize}
 
 The supported reliability statement is unchanged:
@@ -71,6 +72,8 @@ JGPS manuscript consolidation & \path{5dd13a26cfbe7c00dc9918a45194c0fe3e950525};
 \end{longtable}
 
 No independent human response file exists at these checkpoints.
+
+M14 is layered on exact M13 HEAD \path{dfbd7e8292cb95052ecb1d3c3d28613a43d2757a} on branch \path{paper2/p399-main-m14-inference-warrant-replication-20261006}. Its prefreeze artifacts fix the licensed-inference thesis, the model-agnostic ten-source replay protocol, the blank structured-record schema, and the comparison classes before any M14 cross-model result is observed. The M14 protocol status is \texttt{PROTOCOL\_FROZEN\_CROSS\_MODEL\_REPLICATION\_NOT\_YET\_PERFORMED}.
 
 For ancestry of the M11 representation controls, the principal pre-result checkpoints are
 \path{a212820d225050bbc10d395685e74cd2fb0d9912} (initial direct-preservation/CPCG specification freeze),
@@ -453,6 +456,41 @@ Challenge & CH12 & \url{https://doi.org/10.1037/0033-295X.111.4.1036} \\
 
 The independent coder must identify one focal source-grounded cognitive claim and record its source locators, scope and modality, typed nodes, typed relations, and temporal information. Only after all ten records are frozen may alignment with the retained records be scored. No human extraction result currently exists. Procedural auditability is established; inter-rater reliability remains unmeasured.
 
+\section{Public cross-model source reconstruction replay}
+
+M14 adds a model-agnostic replay protocol over the same ten-source sample. This is a separate validation lane from independent human extraction. It is designed to test whether a different model family can reconstruct the source-level structural content under the same public procedure; it does \emph{not} convert model agreement into human inter-rater reliability.
+
+For each case, the replicating model receives only:
+\begin{itemize}[leftmargin=*]
+\item the original source;
+\item \path{M14_CROSS_MODEL_REPLICATION_PROTOCOL_v1.json};
+\item \path{M14_CROSS_MODEL_PROMPT_v1.md};
+\item \path{M14_CROSS_MODEL_BLANK_RECORD_v1.json}.
+\end{itemize}
+The retained ClaimIR, bounded-object memberships, grammar verdicts, capacity-case outcomes, and comparison answers remain withheld until all ten new outputs are frozen. ABSTAIN and UNDERDETERMINED are permitted. Exact provider/model identity, version or snapshot when available, sampling/decoding settings, tool or retrieval configuration, raw response, and output hash must be retained.
+
+The input manifest is fixed as XM01--XM10 and reuses the exact M13 ten-source sample. Comparison is performed only after freeze under four predeclared classes:
+\begin{enumerate}[leftmargin=*]
+\item \texttt{EXACT\_OR\_NORMALIZED\_RECOVERY};
+\item \texttt{COMPATIBLE\_ALTERNATIVE\_DECOMPOSITION};
+\item \texttt{SUBSTANTIVE\_DISAGREEMENT};
+\item \texttt{ABSTENTION\_OR\_UNDERDETERMINED}.
+\end{enumerate}
+Only identifier renaming, presentation order, formatting, and synonymous labels with unchanged typed roles/relations may be normalized away. Missing scientific relations, conflicting temporal dependencies, and altered system/environment/experiment boundaries may not be repaired during scoring.
+
+This protocol is intentionally replayable by third parties using other model families. Agreement would support cross-model reproducibility for the tested models; disagreement would identify model- or judgment-sensitive fields; abstention would remain an admissible result. At this revision stage no M14 cross-model output exists and no agreement statistic is reported. Cross-model reproducibility, if later measured, must remain separate from independent human inter-rater reliability.
+
+Machine-readable authority:
+\begin{itemize}[leftmargin=*]
+\item \path{research/paper2/p399/main/integration/M14/M14_CROSS_MODEL_REPLICATION_PROTOCOL_v1.json};
+\item \path{research/paper2/p399/main/integration/M14/M14_CROSS_MODEL_INPUT_MANIFEST_v1.json};
+\item \path{research/paper2/p399/main/integration/M14/M14_CROSS_MODEL_BLANK_RECORD_v1.json};
+\item \path{research/paper2/p399/main/integration/M14/M14_CROSS_MODEL_COMPARISON_RULES_v1.json};
+\item \path{research/paper2/p399/main/integration/M14/M14_CROSS_MODEL_PROMPT_v1.md}.
+\end{itemize}
+
+Procedural auditability is established; inter-rater reliability remains unmeasured.
+
 \section{Repository-only provenance}
 
 The following materials remain repository-native rather than reproduced line-by-line in this PDF:
@@ -463,7 +501,8 @@ The following materials remain repository-native rather than reproduced line-by-
 \item exact source-first decomposition JSON for all 40 prospective papers;
 \item per-paper architectural outcome artifacts;
 \item complete blob-hash and workflow ancestry;
-\item reference keys for the human re-adjudication packet.
+\item reference keys for the human re-adjudication packet;
+\item frozen M14 cross-model replay inputs, raw outputs if later supplied, and comparison ledgers.
 \end{itemize}
 
 This separation is intentional: the PDF supplement contains the rosters and compact index promised by the main article, while the repository preserves the complete executable provenance.
