@@ -1,0 +1,114 @@
+{
+  "schema": "relaytheory.p399.postmain.reintegration.architecture.v1",
+  "status": "POST_MAIN_EXPLORATORY_SYNTHESIS",
+  "authority": {
+    "m7_pr": 459,
+    "m7_exact_head": "48b2cf3c627e030e7131af485206b0013d7e02f1",
+    "main40_count": 40,
+    "component_arm": 24,
+    "integrated_arm": 16,
+    "m7_A0": 40,
+    "m7_A1": 0,
+    "m7_A2": 0,
+    "reconstruction_added_stateless_adapters": 0,
+    "reconstruction_added_persistent_stateful_coordinators": 0,
+    "global_genealogical_independence_claimed": false
+  },
+  "common_execution_substrate": {
+    "typed_individuation": {
+      "grammar_roles": ["Pi", "C"],
+      "function": "Define what entities, alternatives, states, parameters, actions, traces and admissible configurations are distinct."
+    },
+    "configuration_carrier": {
+      "grammar_role": "X",
+      "function": "Carry current and, where source-defined, persistent internal configuration.",
+      "persistent_substructure_optional": true,
+      "examples": ["belief/posterior", "memory trace", "learned weight", "value", "map", "task-set/context", "cache", "accumulator", "recurrent state"]
+    },
+    "typed_transformation": {
+      "grammar_role": "K",
+      "function": "Update, infer, transform, propagate, retrieve, predict, learn, plan, accumulate, normalize or otherwise relate typed configurations.",
+      "universal_hidden_interpreter": false
+    },
+    "criterion_orientation": {
+      "grammar_role": "Q",
+      "function": "Orient alternatives by source-defined criteria such as posterior probability, value, error, reward, likelihood, priority, novelty, cost or threshold."
+    },
+    "interface": {
+      "grammar_role": "P",
+      "subroles": ["P_in", "P_out"],
+      "function": "Write/receive evidence, context, reward or feedback and emit/read actions, choices, predictions, retrievals or probes."
+    },
+    "succession": {
+      "grammar_role": "T",
+      "function": "Order within-decision, within-trial, across-trial, learning, replay, planning, feedback and readout steps.",
+      "persistent_scheduler_state_required": false
+    },
+    "observation_trace": {
+      "grammar_role": "rho/O",
+      "function": "Expose boundary-relative behavioral, neural, predictive, retrieval or task-performance traces without conflating them with internal state."
+    }
+  },
+  "recurring_source_defined_motifs": [
+    {
+      "motif": "retention",
+      "status": "OPTIONAL_SOURCE_DEFINED_SPECIALIZATION_OF_X",
+      "examples": ["belief/posterior persistence", "memory traces", "learned parameters", "maps", "cached aims", "workspace/recurrent state", "synaptic tags"]
+    },
+    {
+      "motif": "evidence_or_state_update",
+      "status": "SOURCE_DEFINED_SPECIALIZATION_OF_K",
+      "examples": ["Bayesian update", "prediction-error update", "recurrent transition", "plasticity", "belief propagation", "actor/critic update"]
+    },
+    {
+      "motif": "selection_or_control",
+      "status": "Q_PLUS_K_PLUS_P_COMPOSITION",
+      "examples": ["softmax/action selection", "threshold crossing", "priority selection", "policy choice", "motor command"]
+    },
+    {
+      "motif": "prediction_or_internal_rollout",
+      "status": "SOURCE_DEFINED_REPEATED_K_UNDER_Q_AND_T",
+      "examples": ["forward model", "planning/search", "successor/predictive representation", "generative reconstruction", "counterfactual evaluation"]
+    },
+    {
+      "motif": "routing_or_gating",
+      "status": "SOURCE_DEFINED_Q_K_P_COMPOSITION_NOT_NEW_UNIVERSAL_PRIMITIVE",
+      "examples": ["attention modulation", "task-set routing", "feedback gating", "neuromodulatory plasticity gating", "hierarchy-conditioned planning"]
+    },
+    {
+      "motif": "feedback_and_learning",
+      "status": "P_IN_PLUS_K_PLUS_T_WITH_OPTIONAL_PERSISTENT_X_UPDATE",
+      "examples": ["reward/error feedback", "RPE-gated plasticity", "movement feedback", "policy-gradient learning", "Hebbian update"]
+    }
+  ],
+  "domain_projections": {
+    "ATT": ["Pi/C candidate structure", "X priority/saliency state", "Q orientation", "K modulation/normalization/routing", "P readout"],
+    "BLF": ["X retained belief/posterior", "K evidence update", "Q posterior criterion", "T recursive propagation", "P report/action query"],
+    "CNC": ["Pi structured hypothesis/representation units", "X reusable representation", "K composition/recurrence/reconstruction", "Q fit or predictive criterion", "P predictive/readout interface"],
+    "CTL": ["X state/value/context", "Q control/value/uncertainty criterion", "K policy/control update", "P action interface", "T feedback loop"],
+    "LRN": ["X retained parameters/representation", "Q objective/error/reward criterion", "K parameter update", "T train-to-test persistence", "P feedback/readout"],
+    "MEM": ["X retained trace/latent/configuration", "P_in write/encode", "K retention/retrieval/decoding relation", "T encode-delay-retrieve", "P_out read/query"],
+    "PRD": ["X learned model/belief/predictive representation", "K transition/inference/value relation", "Q expected value/evidence criterion", "T prediction/planning order", "P prediction/action query"],
+    "SKL": ["X retained maps/weights/cache", "K forward/inverse/recurrent/control transform", "Q task/error/reinforcement criterion", "P action/readout", "T outcome-feedback-update loop"]
+  },
+  "integrated_arm_result": {
+    "observation": "The 16 integrated papers reuse the same substrate while combining source-defined belief, memory, value, planning, routing, accumulation, hierarchy, feedback and plasticity mechanisms.",
+    "new_common_persistent_coordinator_required": false,
+    "new_common_stateless_adapter_required": false,
+    "new_ninth_cognitive_module_supported": false
+  },
+  "minimal_reintegrated_architecture": {
+    "core": [
+      "typed configuration carrier",
+      "typed transformation/update",
+      "criterion/orientation",
+      "input/output interface",
+      "temporal succession",
+      "boundary-relative observation"
+    ],
+    "optional_retained_structure": "Persistent source-defined substate inside X, not a universal executive store.",
+    "coordination": "Emerges from source-defined dependencies, ordering, gating and feedback; no additional universal persistent coordinator is introduced.",
+    "central_executive_required": false
+  },
+  "strongest_licensed_conclusion": "Within exact frozen MAIN40 source scope, the decomposed models can be reintegrated as compositions over one common typed execution substrate with optional source-defined persistent substructure; the integrated arm does not force an additional universal stateful coordination mechanism."
+}
