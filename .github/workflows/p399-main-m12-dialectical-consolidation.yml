@@ -64,11 +64,27 @@ jobs:
           python scripts/paper2_m12_export_strict_blind_packet.py --out m12-human-blind
           test "$(find m12-human-blind/claims -name 'HC*.json' | wc -l)" -eq 20
           test "$(find m12-human-blind/prospective -name 'HP*.json' | wc -l)" -eq 10
-          ! grep -R '"doi"' m12-human-blind/claims
-          ! grep -R '"role"' m12-human-blind/claims
-          ! grep -R '"kind"' m12-human-blind/claims
-          ! grep -R '"doi"' m12-human-blind/prospective
-          ! grep -R '"slot"' m12-human-blind/prospective
+          if grep -R '"doi"' m12-human-blind/claims; then
+            echo "ERROR: DOI leaked into strict claim packet"
+            exit 1
+          fi
+          if grep -R '"doi"' m12-human-blind/prospective; then
+            echo "ERROR: DOI leaked into strict prospective packet"
+            exit 1
+          fi
+          if grep -R '"slot"' m12-human-blind/prospective; then
+            echo "ERROR: source slot leaked into strict prospective packet"
+            exit 1
+          fi
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          for p in Path("m12-human-blind/claims").glob("HC*.json"):
+              v=json.loads(p.read_text())
+              assert all("role" not in n for n in v["claim_record"]["nodes"]), p
+              assert all("kind" not in r for r in v["claim_record"]["relations"]), p
+          print("M12_STRICT_BLIND_STRUCTURE_GUARDS_PASS")
+          PY
 
       - uses: actions/upload-artifact@v4
         with:
