@@ -1,0 +1,62 @@
+name: P399 MAIN M15 claim-anchored replay prefreeze guards
+
+on:
+  pull_request:
+    paths:
+      - 'research/paper2/p399/main/integration/M15/**'
+      - 'scripts/paper2_m15_*.py'
+      - '.github/workflows/p399-main-m15-claim-anchored-replay.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  m15-prefreeze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Audit claim anchors and prefreeze boundary
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          python scripts/paper2_m15_claim_anchored_prefreeze_audit.py
+          python scripts/paper2_m14_inference_warrant_replication_audit.py
+
+      - name: Build result-free M15 v2 blind packet
+        run: |
+          set -euo pipefail
+          rm -rf m15-claim-anchored-blind
+          mkdir -p m15-claim-anchored-blind
+          cp research/paper2/p399/main/integration/M15/M15_CLAIM_ANCHORS_v1.json m15-claim-anchored-blind/
+          cp research/paper2/p399/main/integration/M15/M15_CLAIM_ANCHORED_REPLAY_PROTOCOL_v1.json m15-claim-anchored-blind/
+          cp research/paper2/p399/main/integration/M15/M15_CLAIM_ANCHORED_BLANK_RECORD_v1.json m15-claim-anchored-blind/
+          cp research/paper2/p399/main/integration/M15/M15_CLAIM_ANCHORED_COMPARISON_RULES_v1.json m15-claim-anchored-blind/
+          cp research/paper2/p399/main/integration/M15/M15_CLAIM_ANCHORED_PROMPT_v1.md m15-claim-anchored-blind/
+          cp research/paper2/p399/main/integration/M15/M15_RUN_PLAN_v1.json m15-claim-anchored-blind/
+          cp research/paper2/p399/main/integration/M15/M15_PUBLIC_PACKET_README_FROZEN_v1.md m15-claim-anchored-blind/README.md
+          printf '%s\n' \
+            'M15 claim-anchored v2 blind packet.' \
+            'No M15 replay output or comparison result is included.' \
+            'The supplied anchors intentionally identify the focal claim but do not contain retained structural decomposition.' \
+            'Do not expose M14 v1 outputs or another M15 replay before this run is frozen.' \
+            > m15-claim-anchored-blind/STATUS.txt
+
+          ! grep -R -E 'M14_REPLAY_COMPARISON_RESULTS|M15_TWO_REPLAYS|SUBSTANTIVE 8|EXACT 0' m15-claim-anchored-blind
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: paper-2-m15-claim-anchored-v2-blind-packet
+          path: m15-claim-anchored-blind
+          if-no-files-found: error
+          retention-days: 30
