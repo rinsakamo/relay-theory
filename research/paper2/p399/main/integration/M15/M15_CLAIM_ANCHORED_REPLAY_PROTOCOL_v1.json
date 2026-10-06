@@ -1,0 +1,51 @@
+{
+  "schema": "relaytheory.p399.main.m15.claim_anchored_replay_protocol.v1",
+  "status": "PROTOCOL_FROZEN_M15_REPLAYS_NOT_PERFORMED",
+  "purpose": "Isolate claim decomposition from claim selection by fixing the focal source-grounded claim before reconstruction.",
+  "required_inputs": [
+    "original scientific source",
+    "M15_CLAIM_ANCHORS_v1.json",
+    "M15_CLAIM_ANCHORED_PROMPT_v1.md",
+    "M15_CLAIM_ANCHORED_BLANK_RECORD_v1.json"
+  ],
+  "forbidden_inputs_before_run_freeze": [
+    "retained ClaimIR or structural adjudication",
+    "retained node/relation/temporal/boundary answers",
+    "M14 v1 Astra replay outputs",
+    "M14 v1 GPT-6.1 Sol replay outputs",
+    "M14 comparison results",
+    "another M15 replay output",
+    "bounded-object memberships",
+    "role-grammar verdicts",
+    "capacity-case results",
+    "manuscript passages reporting replay outcomes"
+  ],
+  "execution_rules": [
+    "Use exactly the source and anchor specified for each case.",
+    "Treat the supplied anchor as the target claim; do not replace it with another salient claim from the same source.",
+    "Use the original source as evidence for every structured commitment.",
+    "Do not infer retained structure from the wording of the anchor beyond what the source supports.",
+    "ABSTAIN if adequate full text cannot be obtained.",
+    "UNDERDETERMINED if the anchored claim cannot be stably decomposed from the source without unsupported extrapolation.",
+    "Preserve the first completed structured output as RAW before normalization.",
+    "Normalization may change serialization only, never scientific content.",
+    "Freeze all ten records for one named-model run before exposing that run to any retained answer, prior replay, or comparison result.",
+    "Execute the two named-model runs in separate fresh conversations and do not pass run A outputs to run B."
+  ],
+  "model_plan": [
+    {
+      "order": 1,
+      "product_level_configuration": "GPT-6 Astra / Medium",
+      "exact_backend_snapshot": "UNVERIFIED unless independently exposed",
+      "fresh_conversation_required": true
+    },
+    {
+      "order": 2,
+      "product_level_configuration": "GPT-6.1 Sol / Medium",
+      "exact_backend_snapshot": "UNVERIFIED unless independently exposed",
+      "fresh_conversation_required": true
+    }
+  ],
+  "result": "NOT_PERFORMED",
+  "human_boundary": "Procedural auditability may be measured separately; human inter-rater reliability remains unmeasured."
+}
