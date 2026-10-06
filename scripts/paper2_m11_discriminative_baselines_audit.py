@@ -139,31 +139,49 @@ assert same["cpcg_sensitivity"]["projected_signature_intersection_count"] == 0
 assert same["cpcg_sensitivity"]["remains_disjoint_under_CPCG"] is True
 
 # Manuscript philosophical and editorial boundary.
-thesis = (
-    "Construct-based individuation is evidentially incomplete unless the comparison "
-    "representation, preservation criterion, and granularity are independently stated; "
-    "neither terminology nor successful reconstruction licenses representation-independent identity."
-)
-assert thesis in main
-assert (
-    "A Pre-Individuation Structural Comparison Procedure for Cognitive-Capacity Claims" in main
-    or "When Does Structural Comparison Support Cognitive-Capacity Individuation?" in main
-)
-assert "claim-level structural comparison" in main
-assert "evidential constraint on capacity comparison" in main
-assert "capacity individuation" in main
-assert "Coarse Process--Constraint Graph (CPCG)" in main
-assert "206 bounded structural objects collapse to 143 distinct CPCG signatures" in main
-assert "Sixty-two CPCG signatures" in main
-assert "58 of the 60 source claims" in main
-assert "Under the encoding-permissive baseline" in main
-assert "every tested weaker representation also remains 40/40 A0" in main
-assert "Under direct preservation" in main
-assert ("0 A0/40 A1" in main or "producing A1 for all 40 rows" in main)
-assert ("Prospective A0 therefore supports the absence of reconstruction-added coordination" in main or "required no reconstruction-added coordinator under any of the tested encoding-capable views" in main)
-assert "semantic memory" in main and "MEM04" in main and "CNC05" in main
-assert "Procedural auditability is established; inter-rater reliability remains unmeasured." in main
-assert "Independent human re-adjudication was not performed." in main
+m14 = (ROOT / "research/paper2/p399/main/integration/M14/M14_SPEC_v1.json").exists()
+if m14:
+    thesis = (
+        "An inference from structural comparison to cognitive-capacity identity is "
+        "epistemically licensed only if the comparison representation, preservation "
+        "criterion, and granularity are specified and warranted for that inferential use."
+    )
+    assert thesis in main
+    assert "When Does Structural Comparison Support Cognitive-Capacity Individuation?" in main
+    assert "claim-level structural comparison" in main
+    assert "capacity individuation" in main
+    assert "TAIF" in main and "CPCG" in main
+    assert "40/40 A0" in main
+    assert "semantic memory" in main and "MEM04" in main and "CNC05" in main
+    assert "Procedural auditability is established; inter-rater reliability remains unmeasured." in main
+    assert "Independent human re-adjudication was not performed." in main
+else:
+    thesis = (
+        "Construct-based individuation is evidentially incomplete unless the comparison "
+        "representation, preservation criterion, and granularity are independently stated; "
+        "neither terminology nor successful reconstruction licenses representation-independent identity."
+    )
+    assert thesis in main
+    assert (
+        "A Pre-Individuation Structural Comparison Procedure for Cognitive-Capacity Claims" in main
+        or "When Does Structural Comparison Support Cognitive-Capacity Individuation?" in main
+    )
+    assert "claim-level structural comparison" in main
+    assert "evidential constraint on capacity comparison" in main
+    assert "capacity individuation" in main
+    assert "Coarse Process--Constraint Graph (CPCG)" in main
+    assert "206 bounded structural objects collapse to 143 distinct CPCG signatures" in main
+    assert "Sixty-two CPCG signatures" in main
+    assert "58 of the 60 source claims" in main
+    assert "Under the encoding-permissive baseline" in main
+    assert "every tested weaker representation also remains 40/40 A0" in main
+    assert "Under direct preservation" in main
+    assert ("0 A0/40 A1" in main or "producing A1 for all 40 rows" in main)
+    assert ("Prospective A0 therefore supports the absence of reconstruction-added coordination" in main or "required no reconstruction-added coordinator under any of the tested encoding-capable views" in main)
+    assert "semantic memory" in main and "MEM04" in main and "CNC05" in main
+    assert "Procedural auditability is established; inter-rater reliability remains unmeasured." in main
+    assert "Independent human re-adjudication was not performed." in main
+
 assert "Paper 2" not in main
 assert "construct-label-neutral" not in main.lower()
 assert "M11" not in main

@@ -1,21 +1,19 @@
-name: P399 MAIN M13 dialectical-strengthening guards
+name: P399 MAIN M14 licensed-inference and cross-model-replay guards
 
 on:
   pull_request:
     paths:
-      - 'research/paper2/p399/main/integration/M13/**'
-      - 'scripts/paper2_m13_*.py'
-      - 'scripts/paper2_m12_dialectical_consolidation_audit.py'
-      - 'scripts/paper2_m11_discriminative_baselines_audit.py'
+      - 'research/paper2/p399/main/integration/M14/**'
+      - 'scripts/paper2_m14_*.py'
       - 'paper/venues/jgps/**'
-      - '.github/workflows/p399-main-m13-dialectical-strengthening.yml'
+      - '.github/workflows/p399-main-m14-inference-warrant-replication.yml'
   workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  m13-guards:
+  m14-guards:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -27,38 +25,64 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Run M13 controls and compatibility guards
+      - name: Run M14 authority and replay guards
         env:
           EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
         run: |
           set -euo pipefail
           test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
-          python scripts/paper2_m13_comparator_positive_controls.py
-          python scripts/paper2_m13_dialectical_strengthening_audit.py
-          python scripts/paper2_m12_dialectical_consolidation_audit.py
-          python scripts/paper2_m11_discriminative_baselines_audit.py
-          python scripts/paper2_m10_major_revision_audit.py
+          python scripts/paper2_m14_inference_warrant_replication_audit.py
           python scripts/paper2_phi_compare.py --self-test
-          ! grep -F '\\paragraph{' paper/venues/jgps/main.tex
-          ! grep -F 'Paper 2' paper/venues/jgps/main.tex
+          ! grep -F '\paragraph{' paper/venues/jgps/main.tex
           ! grep -Fi 'construct-label-neutral' paper/venues/jgps/main.tex
 
-      - name: Verify human-validation boundary and package protocol
+      - name: Package public cross-model replay inputs
         run: |
           set -euo pipefail
-          grep -F '"status": "PROTOCOL_FROZEN_HUMAN_EXTRACTION_NOT_PERFORMED"' research/paper2/p399/main/integration/M13/M13_HUMAN_SOURCE_EXTRACTION_PROTOCOL_v1.json
-          rm -rf m13-source-extraction-protocol
-          mkdir -p m13-source-extraction-protocol
-          cp research/paper2/p399/main/integration/M13/M13_HUMAN_SOURCE_EXTRACTION_PROTOCOL_v1.json m13-source-extraction-protocol/
-          cp research/paper2/p399/main/integration/M13/M13_HUMAN_SOURCE_EXTRACTION_SAMPLE_v1.json m13-source-extraction-protocol/
-          printf '%s\n' 'M13 independent source extraction packet' 'Status: PROTOCOL_FROZEN_HUMAN_EXTRACTION_NOT_PERFORMED' 'No independent human records are included.' > m13-source-extraction-protocol/README.txt
+          rm -rf m14-cross-model-replay
+          mkdir -p m14-cross-model-replay
+          cp research/paper2/p399/main/integration/M14/M14_CROSS_MODEL_REPLICATION_PROTOCOL_v1.json m14-cross-model-replay/
+          cp research/paper2/p399/main/integration/M14/M14_CROSS_MODEL_INPUT_MANIFEST_v1.json m14-cross-model-replay/
+          cp research/paper2/p399/main/integration/M14/M14_CROSS_MODEL_BLANK_RECORD_v1.json m14-cross-model-replay/
+          cp research/paper2/p399/main/integration/M14/M14_CROSS_MODEL_COMPARISON_RULES_v1.json m14-cross-model-replay/
+          cp research/paper2/p399/main/integration/M14/M14_CROSS_MODEL_PROMPT_v1.md m14-cross-model-replay/
+          cp research/paper2/p399/main/integration/M14/M14_CROSS_MODEL_REPLAY_README_FROZEN_v1.md m14-cross-model-replay/README.md
+          printf '%s\n' \
+            'This is the blind pre-result replay packet.' \
+            'No replay output or comparison result is included in this artifact.' \
+            'Human inter-rater validation remains unperformed.' \
+            'Freeze all ten model outputs before opening retained references.' \
+            > m14-cross-model-replay/STATUS.txt
 
       - uses: actions/upload-artifact@v4
         with:
-          name: paper-2-m13-independent-source-extraction-protocol
-          path: m13-source-extraction-protocol
+          name: paper-2-m14-public-cross-model-replay-packet
+          path: m14-cross-model-replay
           if-no-files-found: error
-          retention-days: 14
+          retention-days: 30
+
+      - name: Package post-freeze replay comparison authority
+        run: |
+          set -euo pipefail
+          rm -rf m14-replay-comparison
+          mkdir -p m14-replay-comparison
+          cp research/paper2/p399/main/integration/M14/M14_ASTRA_UI_PROVENANCE_SUPPLEMENT_v1.json m14-replay-comparison/
+          cp research/paper2/p399/main/integration/M14/M14_REPLAY_COMPARISON_RESULTS_v1.json m14-replay-comparison/
+          cp research/paper2/p399/main/integration/M14/M14_REPLAY_COMPARISON_RECEIPT_v1.json m14-replay-comparison/
+          cp research/paper2/p399/main/integration/M14/M14_REPLAY_COMPARISON_REPORT_v1.md m14-replay-comparison/
+          cp research/paper2/p399/main/integration/M14/README.md m14-replay-comparison/
+          printf '%s\n' \
+            'Post-freeze comparison authority.' \
+            'This artifact MUST NOT be supplied to a blinded v1 replay.' \
+            'Procedural auditability is established; inter-rater reliability remains unmeasured.' \
+            > m14-replay-comparison/STATUS.txt
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: paper-2-m14-postfreeze-replay-comparison
+          path: m14-replay-comparison
+          if-no-files-found: error
+          retention-days: 30
 
       - name: Install strict LaTeX build tools
         run: |
@@ -79,12 +103,12 @@ jobs:
           pdftotext main.pdf main.txt
           tr '\n' ' ' < main.txt | tr -s '[:space:]' ' ' > main.flat.txt
           grep -F 'epistemically licensed only if' main.flat.txt
-          grep -F 'kind individuation' main.flat.txt
-          grep -F 'source evidence' main.flat.txt
+          grep -F 'which invariance can individuate' main.flat.txt
+          grep -F 'ATT03' main.flat.txt
           grep -F 'inter-rater reliability remains unmeasured' main.flat.txt
           PAGES="$(pdfinfo main.pdf | awk -F: '/^Pages:/ {gsub(/ /,"",$2); print $2}')"
           echo "JGPS manuscript pages: $PAGES" | tee main-page-count.txt
-          echo "JGPS manuscript pages: $PAGES" >> "$GITHUB_STEP_SUMMARY"
+          test "$PAGES" -le 22
 
       - name: Strict build supplementary methods
         run: |
@@ -97,20 +121,18 @@ jobs:
           if grep -En 'LaTeX Warning:|Package .* Warning:|Overfull \\hbox|Reference .* undefined' supplement.log; then exit 1; fi
           pdftotext supplement.pdf supplement.txt
           tr '\n' ' ' < supplement.txt | tr -s '[:space:]' ' ' > supplement.flat.txt
-          grep -F 'Comparator positive controls and capacity-level cases' supplement.flat.txt
-          grep -F 'Independent 10-source extraction protocol' supplement.flat.txt
+          grep -F 'Public cross-model source reconstruction replay' supplement.flat.txt
           grep -F 'inter-rater reliability remains unmeasured' supplement.flat.txt
           PAGES="$(pdfinfo supplement.pdf | awk -F: '/^Pages:/ {gsub(/ /,"",$2); print $2}')"
           echo "Supplement pages: $PAGES" | tee supplement-page-count.txt
-          echo "Supplement pages: $PAGES" >> "$GITHUB_STEP_SUMMARY"
 
       - uses: actions/upload-artifact@v4
         with:
-          name: paper-2-m13-jgps-manuscript-and-supplement
+          name: paper-2-m14-jgps-manuscript-and-supplement
           path: |
             paper/venues/jgps/main.pdf
             paper/venues/jgps/supplement.pdf
             paper/venues/jgps/main-page-count.txt
             paper/venues/jgps/supplement-page-count.txt
           if-no-files-found: error
-          retention-days: 14
+          retention-days: 30

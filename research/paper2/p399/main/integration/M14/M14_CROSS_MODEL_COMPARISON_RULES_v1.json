@@ -1,0 +1,30 @@
+{
+  "schema": "relaytheory.p399.main.m14.cross_model_comparison_rules.v1",
+  "status": "FROZEN_BEFORE_ANY_CROSS_MODEL_OUTPUT",
+  "unit": "source-level structured record",
+  "classes": {
+    "EXACT_OR_NORMALIZED_RECOVERY": "After only predeclared normalization of identifiers and presentation order, the focal claim and all identity-relevant typed nodes, relations, temporal commitments, and boundary commitments align with the retained record.",
+    "COMPATIBLE_ALTERNATIVE_DECOMPOSITION": "The new record preserves the same source-level commitments but partitions or names intermediate structure differently without changing the relevant dependency or temporal content.",
+    "SUBSTANTIVE_DISAGREEMENT": "The new record asserts, omits, or reverses at least one source-level commitment that changes an identity-relevant role, relation, temporal dependency, or system-boundary judgment.",
+    "ABSTENTION_OR_UNDERDETERMINED": "The model declines or cannot resolve the focal claim or required structural content from the source."
+  },
+  "normalization_allowed": [
+    "identifier renaming",
+    "ordering of commutative lists",
+    "whitespace and presentation-only formatting",
+    "synonymous labels when the typed role and relation are unchanged"
+  ],
+  "normalization_forbidden": [
+    "adding a missing scientific relation",
+    "deleting a conflicting temporal dependency",
+    "changing system/environment/experiment boundaries",
+    "consulting the retained answer before classification"
+  ],
+  "reporting": [
+    "case-level class",
+    "field-level disagreement ledger",
+    "raw-output hash",
+    "model metadata",
+    "no single aggregate score without the case ledger"
+  ]
+}
