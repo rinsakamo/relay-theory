@@ -37,3 +37,14 @@ Do not inspect the corresponding `ARCHITECTURAL_OUTCOME` while coding.
 The scoring script is permitted only after independent responses exist. It reports exact categorical agreement, Cohen's kappa when defined, role-wise precision/recall/F1, candidate-membership agreement, and a disagreement ledger.
 
 No agreement statistic is a result of M12 until an actual independent human response file is supplied.
+
+
+## Strict coder export
+
+For actual coder distribution, do **not** distribute the repository case files directly. Generate the stricter blind surface with:
+
+`python scripts/paper2_m12_export_strict_blind_packet.py --out <output-dir>`
+
+The strict export additionally removes original normalized node-role labels, relation-kind labels, source identity locators, and explicit prospective DOI/slot/path/lane metadata. Candidate bounded objects remain visible because judging those supplied candidates is one of the coding tasks.
+
+The strict export still does not establish conceptual blindness: scientific descriptions can themselves reveal domain identity. It also does not convert downstream re-adjudication into independent source extraction.
