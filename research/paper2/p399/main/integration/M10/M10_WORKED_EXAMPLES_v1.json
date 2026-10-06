@@ -1,0 +1,126 @@
+{
+  "schema": "relaytheory.p399.main.m10.worked_examples.v1",
+  "status": "ASSEMBLED_FROM_FROZEN_EVIDENCE",
+  "boundary": {
+    "new_scientific_adjudication": false,
+    "source_rereading": false,
+    "frozen_inputs_modified": false,
+    "quotations_added": false
+  },
+  "examples": [
+    {
+      "id": "M10B-CROSS-LABEL",
+      "type": "different historical labels / shared bounded structure",
+      "claim_a": {
+        "slot": "ATT01",
+        "labels": [
+          "object-based attention",
+          "visual attention",
+          "focal attention"
+        ],
+        "source_evidence": "source-local spans s1-s4 in frozen ClaimIR; manuscript exposition must paraphrase"
+      },
+      "claim_b": {
+        "slot": "BLF01",
+        "labels": [
+          "learning",
+          "volatility",
+          "value of information",
+          "Bayesian learning"
+        ],
+        "source_evidence": "source-local spans s1-s3 in frozen ClaimIR; manuscript exposition must paraphrase"
+      },
+      "whole_claim_result": "INCOMPARABLE under the frozen 1770/1770 whole-claim result",
+      "bounded_subobject": {
+        "id": "A-3b814de4da04",
+        "active_axes": [
+          "K",
+          "O",
+          "P"
+        ],
+        "structure": "a probe P maps_to a response/outcome O through a typed K relation",
+        "direct_origin_lanes": [
+          "ATT",
+          "BLF"
+        ],
+        "derived_support_lanes": [
+          "ATT",
+          "BLF",
+          "CNC",
+          "CTL",
+          "LRN",
+          "MEM",
+          "SKL"
+        ]
+      },
+      "grammar_projection": {
+        "ATT01": {
+          "roles": [
+            "Pi",
+            "Q",
+            "P_out",
+            "K",
+            "rho/O"
+          ],
+          "verdict": "PARTIAL"
+        },
+        "BLF01": {
+          "roles": [
+            "X",
+            "Q",
+            "P_in",
+            "P_out",
+            "K",
+            "T",
+            "rho/O"
+          ],
+          "verdict": "FULL"
+        }
+      },
+      "philosophical_point": "Different inherited labels do not block recovery of a shared bounded structural object, while the complete claims remain non-identical and incomparable."
+    },
+    {
+      "id": "M10B-RESIDUAL",
+      "type": "source context does not entail a new system role",
+      "claim": {
+        "slot": "MEM06",
+        "labels": [
+          "visual long-term memory",
+          "storage capacity",
+          "object details"
+        ]
+      },
+      "source_supported_description": "The frozen claim varies foil-similarity condition in a paired-recognition task and relates recognition accuracy to that experimental condition.",
+      "frozen_structural_fact": "foil_similarity_condition maps to required null-axis condition basis.cnd1; resource_C is not required",
+      "grammar_result": {
+        "verdict": "RESIDUAL",
+        "primary": "SOURCE_CONTEXT_PARAMETER",
+        "secondary": [
+          "RELATION_LANGUAGE_GAP",
+          "FORMAL_CARRIER_GAP"
+        ],
+        "role_gap": false
+      },
+      "rationale": "The experimental/context factor remains scientifically meaningful but is not licensed as C, Q, Pi, P, X, T, or O merely because it conditions the result; the residual also contains relation/carrier pressure. None establishes an additional top-level cognitive-system role."
+    },
+    {
+      "id": "M10B-INTEGRATED-A0",
+      "type": "prospective integrated source with hierarchy and planning",
+      "paper_id": "INT-14",
+      "doi": "10.1371/journal.pcbi.1007594",
+      "source_snapshot": "research/paper2/p399/main/integration/M10/frozen_inputs/INT14_PASS_A.json",
+      "source_supported_description": "The frozen source-first decomposition contains a low-level graph, connected partition hierarchy H, high-level bridge structure, posterior inference over H using MCMC, and HBFS planning. H is shared source-defined structure for inference and planning, while planner-local search state is not promoted to a new coordinator.",
+      "source_temporal_order": "graph/task evidence -> infer/sample H -> construct/use hierarchy -> HBFS/BFS -> path/readout",
+      "A_state": "A0_FIDELITY",
+      "A0_reason": "all required integration/state/update/readout structure is source-defined and representable with the frozen grammar while named source operators remain explicit",
+      "added_stateless_interfaces": 0,
+      "added_stateful_mechanisms": 0,
+      "limitations": [
+        "exact posterior is intractable and MCMC is approximate",
+        "HBFS is not uniquely established as the cognitive planner",
+        "whole-family genealogy remains unresolved"
+      ],
+      "philosophical_point": "A0 does not mean absence of hierarchy, planning, or state; it means no reconstruction-added coordination-specific structure was required once the source-defined mechanisms were faithfully retained."
+    }
+  ]
+}

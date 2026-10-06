@@ -1,0 +1,38 @@
+{
+  "schema": "relaytheory.p399.main.m6.architectural-outcome.v1",
+  "date_jst": "2026-10-05",
+  "slot": "INT-14",
+  "doi": "10.1371/journal.pcbi.1007594",
+  "tests": [
+    {
+      "test": "A0_DIRECT_COMPOSITION",
+      "result": "PASS",
+      "reason": "All required integration/state/update/readout structure is source-defined and can be represented with frozen Grammar v0 roles while keeping named source operators explicit."
+    },
+    {
+      "test": "A1_STATELESS_INTERFACE_COMPOSITION",
+      "result": "NOT_REACHED_AFTER_A0_PASS",
+      "added_interfaces": 0
+    },
+    {
+      "test": "A2_ADDITIONAL_STATEFUL_MECHANISM",
+      "result": "NOT_REACHED_AFTER_A0_PASS",
+      "added_stateful_mechanisms": 0
+    }
+  ],
+  "final_architectural_state": "A0_FIDELITY",
+  "source_fidelity": "SOURCE_CLOSED_FIDELITY_WITH_EXPLICIT_LIMITATIONS",
+  "reconstruction_added_stateless_interface_count": 0,
+  "reconstruction_added_stateful_mechanism_count": 0,
+  "source_defined_coordination_or_gating": [
+    "hierarchy H supplies source-defined abstraction shared by inference and planning",
+    "HBFS uses bridge/high-level structure for source-defined route planning"
+  ],
+  "limitations_retained": [
+    "exact posterior intractable/MCMC approximate",
+    "HBFS not uniquely established cognitive planner",
+    "INT01 CRP sharing remains genealogy limitation"
+  ],
+  "genealogy_independence_claimed": false,
+  "h0_h1_h2_conclusion_issued": false
+}

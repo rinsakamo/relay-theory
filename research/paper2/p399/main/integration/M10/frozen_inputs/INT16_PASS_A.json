@@ -1,0 +1,81 @@
+{
+  "schema": "relaytheory.p399.main.m6.pass-a-source-first.v1",
+  "date_jst": "2026-10-05",
+  "slot": "INT-16",
+  "doi": "10.1371/journal.pcbi.1004060",
+  "method": "RIR_v2.3.1 Stage A source-first",
+  "architectural_expectation_used": false,
+  "source_loci": [
+    "model overview response feedback + global neuromodulation",
+    "attentional feedback and neuromodulators",
+    "SARSA(lambda) correspondence",
+    "persistent-activity mechanism limitation"
+  ],
+  "decomposition": {
+    "integrated_component_mechanisms": [
+      "sensory/input layer",
+      "association regular+memory units",
+      "Q/action response-selection layer",
+      "response-selection feedback",
+      "synaptic traces/tags",
+      "global RPE/neuromodulatory signal",
+      "tag-gated plasticity"
+    ],
+    "local_component_states": [
+      "input activity",
+      "regular association activity",
+      "persistent memory-unit activity",
+      "Q/action values",
+      "traces",
+      "tags",
+      "weights"
+    ],
+    "source_defined_shared_state": [
+      "tags"
+    ],
+    "observation_channels": [
+      "external stimulus/state vector",
+      "reward/terminal feedback"
+    ],
+    "action_readout_channels": [
+      "Q/action selection plus selected-action feedback"
+    ],
+    "value_policy_quantities": [
+      "action Q-values",
+      "RPE delta"
+    ],
+    "learning_plasticity_operators": [
+      "trace formation",
+      "feedback trace-to-tag conversion",
+      "neuromodulatory/RPE gated plasticity",
+      "SARSA(lambda)-equivalent tag decay"
+    ],
+    "memory_working_memory_state": "persistent memory-unit activity is source state; biological persistence mechanism is intentionally unspecified",
+    "planning_search": "no planner/search module",
+    "decision_dynamics": "Q/action layer selects response; no independent accumulator/executive coordinator",
+    "gating_routing": "selected-action feedback and global RPE are two source-defined plasticity gates, not added executive control",
+    "hierarchy": "network layers do not imply a new coordinator",
+    "temporal_order": "stimulus -> action selection -> feedback tags -> reward/RPE broadcast -> tagged plasticity; traces/tags bridge delay",
+    "offline_online": "No reconstruction-added offline executive; preserve source-specific training/test or inference/planning separation only where explicitly defined.",
+    "environment_world_variables": [
+      "external stimulus/state",
+      "reward",
+      "terminal events",
+      "task sequence"
+    ],
+    "model_variants": [
+      "regular vs memory-unit rules",
+      "linear/nonlinear mappings",
+      "category/analog/probabilistic-evidence tasks",
+      "SARSA(lambda) correspondence"
+    ],
+    "negative_adverse_evidence": [
+      "Persistent-activity biological mechanism is not uniquely specified.",
+      "Tags correspond eligibility traces and AuGMEnT maps to SARSA(lambda).",
+      "Biologically plausible simulation is not direct in-vivo validation.",
+      "P09 bounded difference is not independence."
+    ]
+  },
+  "freeze_state": "FROZEN_BY_THIS_COMMIT_BEFORE_STAGE_B",
+  "architectural_outcome_not_yet_adjudicated": true
+}
