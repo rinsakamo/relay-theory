@@ -1,0 +1,92 @@
+name: P399 MAIN M9D reviewer terminology
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - paper2/p399-main-m9d-deinternalize-20261006
+  pull_request:
+    branches:
+      - paper2/p399-main-m9c-review-response-20261005
+
+permissions:
+  contents: read
+
+concurrency:
+  group: p399-main-m9d-reviewer-terminology-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  m9d-reviewer-terminology:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out exact transaction head
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Verify exact M9D base ancestry
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE="0366a51457d2d7d997ab0f4cd097fe8268359172"
+          git merge-base --is-ancestor "$BASE" HEAD
+          test "$(git rev-list --count "${BASE}..HEAD")" -ge 1
+
+      - name: Enforce terminology-only isolation boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE="0366a51457d2d7d997ab0f4cd097fe8268359172"
+          cat > "$RUNNER_TEMP/expected-m9d-paths.txt" <<'EOF'
+          .github/workflows/p399-main-m9d-reviewer-terminology.yml
+          paper/venues/jgps/cover-letter.md
+          paper/venues/jgps/main.tex
+          paper/venues/jgps/response-to-reviewers.md
+          paper/venues/jgps/submission-checklist.md
+          research/paper2/p399/main/integration/M9D/M9D_MANUSCRIPT_TERMINOLOGY_AUDIT_v1.json
+          research/paper2/p399/main/integration/M9D/M9D_MANUSCRIPT_TERMINOLOGY_AUDIT_v1.md
+          research/paper2/p399/main/integration/M9D/test_m9d_reviewer_terminology.py
+          EOF
+          git diff --name-only "${BASE}..HEAD" | sort > "$RUNNER_TEMP/actual-m9d-paths.txt"
+          diff -u "$RUNNER_TEMP/expected-m9d-paths.txt" "$RUNNER_TEMP/actual-m9d-paths.txt"
+
+      - name: Run reviewer-facing terminology guard
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/paper2/p399/main/integration/M9D/test_m9d_reviewer_terminology.py
+
+      - name: Install LaTeX build tools
+        run: |
+          sudo apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            texlive-latex-base texlive-latex-recommended texlive-latex-extra \
+            texlive-fonts-recommended texlive-bibtex-extra texlive-pictures \
+            poppler-utils
+
+      - name: Build reviewer-facing manuscript fail-closed
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd paper/venues/jgps
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          bibtex main
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          test -s main.pdf
+          if grep -En 'LaTeX Warning:|Package .* Warning:|Overfull \\hbox|Citation .* undefined|Reference .* undefined' main.log; then exit 1; fi
+          pdfinfo main.pdf | grep -F "Pages:"
+          pdftotext main.pdf main.txt
+          ! grep -Ei 'Archetype|XLike|ClaimIR|MAIN40|ROLE_GAP|Grammar v0|M7_FAIL|PAPER2_RESULT|EXTRACTION_UNDERDETERMINED' main.txt
+
+      - name: Upload reviewer-facing manuscript PDF
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: relay-theory-paper2-jgps-m9d
+          path: paper/venues/jgps/main.pdf
+          if-no-files-found: error
+          retention-days: 14
