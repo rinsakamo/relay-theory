@@ -57,8 +57,8 @@ assert classes["1770/1770 whole-claim incomparable"] == "REPRESENTATION_DIAGNOST
 assert classes["206 bounded objects / 99 cross-stratum families"] == "SOURCE_GROUNDED_FINDING"
 assert classes["MAIN40 A0=40/A1=0/A2=0"] == "SOURCE_GROUNDED_FINDING"
 assert classes["encoding-permissive weaker views 40/40 A0"] == "REPRESENTATION_DIAGNOSTIC"
-assert classes["direct-preservation weaker views 0/40 A0, 40/40 A1"] == "REPRESENTATION_DIAGNOSTIC"
-assert classes["INT-10 A1 / INT-16 A2 perturbations"] == "CONSTRUCTED_CONTROL"
+assert classes["direct-preservation weaker views 0/40 A0 and 40/40 A1"] == "REPRESENTATION_DIAGNOSTIC"
+assert classes["INT-10 A1 and INT-16 A2 perturbations"] == "CONSTRUCTED_CONTROL"
 assert tax["lexical_coding_boundary"]["author_source_coding_concept_blindness"] == "NOT_ESTABLISHED"
 
 # Human validation sample and packet completeness, with NO human results.
