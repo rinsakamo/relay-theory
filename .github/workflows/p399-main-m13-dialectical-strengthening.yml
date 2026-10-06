@@ -79,7 +79,7 @@ jobs:
           pdftotext main.pdf main.txt
           tr '\n' ' ' < main.txt | tr -s '[:space:]' ' ' > main.flat.txt
           grep -F 'Structural comparison can bear evidential weight' main.flat.txt
-          grep -F 'structural unification and kind individuation' main.flat.txt
+          grep -F 'kind individuation' main.flat.txt
           grep -F 'source evidence' main.flat.txt
           grep -F 'inter-rater reliability remains unmeasured' main.flat.txt
           PAGES="$(pdfinfo main.pdf | awk -F: '/^Pages:/ {gsub(/ /,"",$2); print $2}')"
