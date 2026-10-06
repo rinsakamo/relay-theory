@@ -1,0 +1,21 @@
+name: P399 post-MAIN reintegration
+
+on:
+  push:
+    branches:
+      - paper2/p399-postmain-reintegration-20261006
+  pull_request:
+    paths:
+      - 'research/paper2/p399/postmain/reintegration/R1/**'
+      - '.github/workflows/p399-postmain-reintegration.yml'
+
+jobs:
+  reintegration:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate frozen post-MAIN reintegration
+        run: python research/paper2/p399/postmain/reintegration/R1/test_postmain_reintegration.py
