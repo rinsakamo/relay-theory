@@ -109,6 +109,16 @@ scorer = (ROOT / "scripts/paper2_m12_score_human_readjudication.py").read_text(e
 assert "require_complete" in scorer
 assert "COMPUTED_FROM_SUPPLIED_COMPLETED_HUMAN_FORMS" in scorer
 
+exporter = (ROOT / "scripts/paper2_m12_export_strict_blind_packet.py").read_text(encoding="utf-8")
+assert "normalized_node_roles_withheld" in exporter
+assert "normalized_relation_kinds_withheld" in exporter
+assert "paper_id_withheld" in exporter
+assert "doi_withheld" in exporter
+assert "M12_STRICT_BLIND_EXPORT_PASS" in exporter
+readme = (HV / "README.md").read_text(encoding="utf-8")
+assert "Strict coder export" in readme
+assert "paper2_m12_export_strict_blind_packet.py" in readme
+
 # Main manuscript philosophical foreground and validation boundary.
 assert "When Does Structural Comparison Support Cognitive-Capacity Individuation?" in main
 assert "terminological carryover inference" in main
@@ -172,6 +182,9 @@ assert "Dynamic & 40 & 0 & 0" in supp
 assert "Direct-preservation closure result" in supp
 assert "Dynamic & 0 & 40 & 0" in supp
 assert "Procedural auditability is established; inter-rater reliability remains unmeasured." in supp
+assert "paper2_m12_export_strict_blind_packet.py" in supp
+assert "normalized node-role labels" in supp
+assert "explicit paper ID, DOI, corpus arm" in supp
 assert "\\paragraph{" not in supp
 
 print("M12_DIALECTICAL_CONSOLIDATION_GUARDS_PASS")
