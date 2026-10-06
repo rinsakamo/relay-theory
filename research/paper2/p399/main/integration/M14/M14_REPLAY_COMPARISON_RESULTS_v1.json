@@ -1,0 +1,337 @@
+{
+  "schema": "relaytheory.p399.main.m14.replay_comparison_results.v1",
+  "status": "POSTFREEZE_COMPARISON_COMPLETE",
+  "comparison_started_from_head": "fb50f5a83a48f8227f214678634fba1cb8a0e8da",
+  "frozen_authority": {
+    "rules_file": "research/paper2/p399/main/integration/M14/M14_CROSS_MODEL_COMPARISON_RULES_v1.json",
+    "rules_sha256": "eb54f84a6b4d38ea645f7d93db8b950a960776b90a6d2f2302e3dfc3e9f247b1",
+    "input_packet_sha256": "3b7c1ae0d981415d065bf1c841089f4bdffeeab8b1e0f374ae9d3b20e6890cf5",
+    "allowed_classes": [
+      "EXACT_OR_NORMALIZED_RECOVERY",
+      "COMPATIBLE_ALTERNATIVE_DECOMPOSITION",
+      "SUBSTANTIVE_DISAGREEMENT",
+      "ABSTENTION_OR_UNDERDETERMINED"
+    ]
+  },
+  "replay_inputs": {
+    "astra_medium": {
+      "package_sha256": "3b7911f2288c6a1f9ee4ab6cd033cc6eaba5c10fedf5b002170562b6ca531d04",
+      "receipt_sha256": "c148424f3cc12ce0911a6e1ad02793fbb35b12857b9b4c37c1c9715f0dc5f435",
+      "product_level_provenance": "GPT-6 Astra / Medium",
+      "exact_backend_snapshot": "UNVERIFIED",
+      "complete": 9,
+      "abstain": 1,
+      "contaminated": 0
+    },
+    "gpt61_sol_medium": {
+      "package_sha256": "b09ed20aa54c302843e069d10f9ad925ad1bf0f43b8832d96085df6bcf52dd73",
+      "receipt_sha256": "68446ebab712cc7b648524c528661195a18929914d7f4c903c3cffe19f2579d1",
+      "product_level_provenance": "GPT-6.1 Sol / Medium",
+      "exact_backend_snapshot": "UNVERIFIED",
+      "complete": 10,
+      "abstain": 0,
+      "contaminated": 0
+    }
+  },
+  "interpretation_boundary": {
+    "human_inter_rater_reliability": "UNMEASURED",
+    "independent_human_validation": "NOT_PERFORMED",
+    "cross_provider_replication": "NOT_PERFORMED",
+    "model_family_independence": "NOT_CLAIMED",
+    "aggregate_match_rate_is_primary_result": false,
+    "reason": "The v1 replay allowed the model to select one focal claim from each source. Therefore substantive classifications combine focal-claim selection divergence with decomposition divergence."
+  },
+  "cases": [
+    {
+      "case_id": "XM01",
+      "slot_id": "ATT03",
+      "retained_claim_id": "ATT03.C1",
+      "retained_claimir_blob_sha": "bf85517eb1d1b8b00765d92425f6c2441a110c62",
+      "retained_adjudication_blob_sha": "ad133bc8f05bb93f6fddf616a362385d4dee92d4",
+      "astra": {
+        "class": "SUBSTANTIVE_DISAGREEMENT",
+        "record_sha256": "3a0cef6652aaa756039cb1042f60e0d82aa6d913f85457a0ed4695546417eae5",
+        "ledger": [
+          "Recovered the trial-wise conflict -> control -> attention mechanism.",
+          "Focal claim narrowed to Eriksen Simulation 2A rather than the retained broader conflict-monitoring claim.",
+          "Retained distinct monitoring-subsystem role, behavioral-output relation, and simulation-probe commitment are not all preserved as typed commitments."
+        ]
+      },
+      "sol": {
+        "class": "SUBSTANTIVE_DISAGREEMENT",
+        "record_sha256": "7e02384c6edef680f9a9ad7f4bb8ce07c89edf9847adf4cff05dba0f4e07738a",
+        "ledger": [
+          "Recovered the trial-wise conflict-history -> control -> spatial-attention -> performance chain.",
+          "Focal claim remains narrower than the retained multi-task conflict-monitoring claim.",
+          "Retained monitoring-subsystem and explicit source-declared probe commitments are not preserved as distinct typed commitments."
+        ]
+      },
+      "posthoc_model_model_note": "SAME_FOCAL_REGION; descriptive only, not a frozen comparison class."
+    },
+    {
+      "case_id": "XM02",
+      "slot_id": "BLF04",
+      "retained_claim_id": "BLF04.C1",
+      "retained_claimir_blob_sha": "58df23a5bf15db0071531fe627a65db7f06a7341",
+      "retained_adjudication_blob_sha": "2a10793b084e0a43c06fd01055b6f634358bfc59",
+      "astra": {
+        "class": "SUBSTANTIVE_DISAGREEMENT",
+        "record_sha256": "487e8012d2029ac084b1458f8980c1c0a605bf81dfc78ba43bc49851cbe4c6d8",
+        "ledger": [
+          "Selected a think-aloud/process-orientation claim about conclusion focus versus premise-to-conclusion reasoning.",
+          "Retained reference instead centers the crossed validity x believability acceptance effect and its explicit logical-necessity criterion.",
+          "The retained probe and criterion are therefore not preserved by alternative naming alone."
+        ]
+      },
+      "sol": {
+        "class": "SUBSTANTIVE_DISAGREEMENT",
+        "record_sha256": "2f1ecb8649b2a7873bf0eca12f060f460a3096cbd2af5ddd051b0d8e3f530058",
+        "ledger": [
+          "Selected the same process-protocol region as the Astra replay.",
+          "Retained reference centers factorial validity/believability effects on acceptance and the normative task criterion.",
+          "This is focal-claim selection divergence, not merely identifier or decomposition variation."
+        ]
+      },
+      "posthoc_model_model_note": "SAME_FOCAL_REGION; exact same source bytes."
+    },
+    {
+      "case_id": "XM03",
+      "slot_id": "CNC01",
+      "retained_claim_id": "CNC01.C1",
+      "retained_claimir_blob_sha": "c39365a62f2b88d31446a3a8dbe4ac54f6b75391",
+      "retained_adjudication_blob_sha": "f76f484f622b880577d8be93f568a9e8961e05b5",
+      "astra": {
+        "class": "ABSTENTION_OR_UNDERDETERMINED",
+        "record_sha256": "cdbe885f1633d0bd082f7a8d47ab155058b14ba1ffdba5cda56befa7c2038e39",
+        "ledger": [
+          "Original full text was not obtained; the replay correctly abstained rather than reconstructing from snippets or metadata."
+        ]
+      },
+      "sol": {
+        "class": "SUBSTANTIVE_DISAGREEMENT",
+        "record_sha256": "d243b7b7cff0ae942282d783c7ec910ae725d7ed01cbfe42eb0ae33231790f2f",
+        "ledger": [
+          "Recovered a concrete causal-feature clustering example from the source.",
+          "Retained reference centers the broader claim that class coherence depends on background explanatory knowledge, internal relational structure, external knowledge fit, and constraint of alternative groupings.",
+          "The replay is a narrower source-supported claim but does not preserve the retained claim's full identity-relevant commitments."
+        ]
+      },
+      "posthoc_model_model_note": "NOT_COMPARABLE because Astra abstained."
+    },
+    {
+      "case_id": "XM04",
+      "slot_id": "CTL01",
+      "retained_claim_id": "CTL01.C1",
+      "retained_claimir_blob_sha": "3835859fe26fb45487eca8cf4e136df934257996",
+      "retained_adjudication_blob_sha": "146a9b1ea4ea6c617c0a4ed9a2d0c5a76e4a9a2b",
+      "astra": {
+        "class": "SUBSTANTIVE_DISAGREEMENT",
+        "record_sha256": "2cc1e595c3a4613eef655f035b3c0b69ae5a0c86587b69eb70bfa4df9bc1ee70",
+        "ledger": [
+          "Recovered delayed/noisy state estimation, forward-model integration, and feedback control.",
+          "Retained reference centers minimal intervention: task-relevant versus redundant deviations, cost-to-go, and the perturbation probe.",
+          "Those selective-correction commitments are omitted, so the focal claim is materially different."
+        ]
+      },
+      "sol": {
+        "class": "SUBSTANTIVE_DISAGREEMENT",
+        "record_sha256": "85bcc7784910b9a759f392e6979be1ec13c18a466e29dd32dba4b056b524f542",
+        "ledger": [
+          "Recovered the same state-estimation/forward-model subclaim as Astra.",
+          "Retained selective-correction distinction and external perturbation probe are not reconstructed.",
+          "The difference is not presentation-only because it changes the identity-relevant control relation being compared."
+        ]
+      },
+      "posthoc_model_model_note": "SAME_FOCAL_REGION; exact same source bytes."
+    },
+    {
+      "case_id": "XM05",
+      "slot_id": "LRN03",
+      "retained_claim_id": "LRN03.C1",
+      "retained_claimir_blob_sha": "352eb21488fa75587ecd06b63857f3fe4308cfd3",
+      "retained_adjudication_blob_sha": "7b243aca3fc6f29e7915e71db4a88e690918c901",
+      "astra": {
+        "class": "SUBSTANTIVE_DISAGREEMENT",
+        "record_sha256": "159bf95fc31a6c2ed0d0cc120ff20572e93019b385f4cd0c75247283b5a79c65",
+        "ledger": [
+          "Recovered the Experiment 1 retrieval-practice advantage over open-book concept mapping after one week.",
+          "Retained reference also commits to Experiment 2, a memory-based relational-diagram final probe, and robustness across source/final-test structures.",
+          "The replay narrows the experimental boundary enough to omit retained probe/outcome commitments."
+        ]
+      },
+      "sol": {
+        "class": "COMPATIBLE_ALTERNATIVE_DECOMPOSITION",
+        "record_sha256": "9aab461d2e6e0d60eab6b052542f052d3ab00f1945f5737f22618e68ca447819",
+        "ledger": [
+          "Preserves the retrieval-practice versus open-book concept-mapping contrast, matched learning time, one-week delay, short-answer outcomes, and Experiment 2 memory-based concept-map outcome.",
+          "Also preserves the non-reduction to uniformly greater initial output in boundary notes.",
+          "Text-structure and scoring details are partitioned less explicitly, but no retained dependency or temporal commitment is reversed."
+        ]
+      },
+      "posthoc_model_model_note": "SAME_FOCAL_REGION; Sol uses broader evidence than Astra; exact same source bytes."
+    },
+    {
+      "case_id": "XM06",
+      "slot_id": "MEM02",
+      "retained_claim_id": "MEM02.C1",
+      "retained_claimir_blob_sha": "f82d34b334c74efde7ffc81ab12111aa8355b9ae",
+      "retained_adjudication_blob_sha": "d18153cedcb6cf8f36d3757e34a5f339ed00273f",
+      "astra": {
+        "class": "COMPATIBLE_ALTERNATIVE_DECOMPOSITION",
+        "record_sha256": "bf32e50c2c2772fca557b75fd46c381e84fdbb00bb3224c13a3ed261a7c238d0",
+        "ledger": [
+          "Preserves a capacity-limited focus/store of about four chunks under qualifying conditions.",
+          "Preserves the boundary that refilling/rehearsal/supplementary accessible information can inflate total report beyond simultaneous capacity.",
+          "The store, count, boundary conditions, and measurement guard are partitioned differently rather than contradicted."
+        ]
+      },
+      "sol": {
+        "class": "COMPATIBLE_ALTERNATIVE_DECOMPOSITION",
+        "record_sha256": "90e4eb926c15b5b3fc1714f2e48402382d7e7fc9477a76303cdfce8126d16d5f",
+        "ledger": [
+          "Preserves the same approximately four-chunk simultaneous capacity claim.",
+          "Explicitly preserves supplementary activated-memory sources, sequential refilling, and the pure-capacity measurement guard.",
+          "Uses a focus/activated-memory decomposition rather than the retained store/count/probe decomposition without changing the core constraint."
+        ]
+      },
+      "posthoc_model_model_note": "SAME_FOCAL_REGION; exact same source bytes."
+    },
+    {
+      "case_id": "XM07",
+      "slot_id": "PRD05",
+      "retained_claim_id": "PRD05.C1",
+      "retained_claimir_blob_sha": "17f65234a5edfa8fc5e1a81684af667a66be5644",
+      "retained_adjudication_blob_sha": "ae376a9da5bf4610d0dd0d6b077cdb1f0b6f5281",
+      "astra": {
+        "class": "SUBSTANTIVE_DISAGREEMENT",
+        "record_sha256": "ca0533298b31a33da84ec0b41fc5b5eac3e08baf40fb8a76c84fc7cf77abf83f",
+        "ledger": [
+          "Preserves reciprocal hierarchical prediction/error dynamics.",
+          "Does not preserve the retained explicit precision/covariance weighting and joint weighted-discrepancy criterion as identity-relevant commitments.",
+          "The omission changes the retained inference objective rather than only its labels."
+        ]
+      },
+      "sol": {
+        "class": "COMPATIBLE_ALTERNATIVE_DECOMPOSITION",
+        "record_sha256": "1adb7e1ded5475215cdf1c17ee13a96db4b466be8035027f3183c067f559f04f",
+        "ledger": [
+          "Preserves upper-level backward prediction, same- and lower-level prediction errors, forward/lateral error-driven updates, reciprocal inference dynamics, and the objective F.",
+          "Covariance/error interaction is represented within the error dynamics rather than as a separate precision node.",
+          "No retained temporal or boundary commitment is reversed."
+        ]
+      },
+      "posthoc_model_model_note": "SAME_FOCAL_REGION; Sol preserves more of the retained objective structure; exact same source bytes."
+    },
+    {
+      "case_id": "XM08",
+      "slot_id": "SKL06",
+      "retained_claim_id": "SKL06.C1",
+      "retained_claimir_blob_sha": "3a370520d82a9b444eb9c6d75737e2adb3d5d83f",
+      "retained_adjudication_blob_sha": "db10f0c34f31df5c15d2ce78413933ddab32587f",
+      "astra": {
+        "class": "SUBSTANTIVE_DISAGREEMENT",
+        "record_sha256": "d8fa4c1c86ab4b7242b8e2deffb27b6139a4171260f6614fac9bc511469e3686",
+        "ledger": [
+          "Preserves familiar-configuration chunking, game-versus-random skill advantage, within-chunk relations, brief exposure, and placement-timing segmentation.",
+          "Retained reference also treats the visible-reconstruction probe, glance duration, pieces per glance, group size, and retained-group count as required evidence/structure.",
+          "Those source-declared probe and outcome commitments are omitted."
+        ]
+      },
+      "sol": {
+        "class": "SUBSTANTIVE_DISAGREEMENT",
+        "record_sha256": "917634203413697f820cffee96ec71c1b893fbd0ca7be744dc78b2f4dfeab3e0",
+        "ledger": [
+          "Preserves familiar-pattern LTM, larger chunks with skill, STM retention, placement-timing segmentation, and the failure of invariant retained chunk count.",
+          "Still omits the retained visible-reconstruction probe and several associated outcome relations.",
+          "The resulting record is a narrower theoretical chunking claim rather than the full retained multi-probe claim."
+        ]
+      },
+      "posthoc_model_model_note": "SAME_FOCAL_REGION; exact same source bytes."
+    },
+    {
+      "case_id": "XM09",
+      "slot_id": "CH03",
+      "retained_claim_id": "CH03.C1",
+      "retained_claimir_blob_sha": "de909e15f638c985d9c5168df298c9a723c45356",
+      "retained_adjudication_blob_sha": "1c88d55c9637cf7ca2134a07f048f8c623699e39",
+      "astra": {
+        "class": "SUBSTANTIVE_DISAGREEMENT",
+        "record_sha256": "7a7f7fea3bfcf2e3594f862604d7ecd3908ad2edf9de57f9406cc88c6e582703",
+        "ledger": [
+          "Selected the room/friend embedded-cognition example and the dependence-does-not-entail-constitution lesson.",
+          "Retained reference centers the general system-boundary criterion, stable system individuation, state attribution, and taxonomy-failure consequence.",
+          "The example supports part of the retained argument but does not preserve its full boundary/criterion structure."
+        ]
+      },
+      "sol": {
+        "class": "SUBSTANTIVE_DISAGREEMENT",
+        "record_sha256": "22751172c4bbcd6e530786823175acbfd556851dde49613c9911a2c7049f84b3",
+        "ledger": [
+          "Selected the developmental historical-integrity argument for a persisting cognitive subject across changing external objects.",
+          "This preserves persistence concerns but omits the retained relevance-based inclusion rule, taxonomy-failure consequence, and general state-attribution criterion.",
+          "It is a different focal claim from both the retained record and the Astra replay."
+        ]
+      },
+      "posthoc_model_model_note": "DIFFERENT_FOCAL_CLAIMS despite exact same source bytes."
+    },
+    {
+      "case_id": "XM10",
+      "slot_id": "CH12",
+      "retained_claim_id": "CH12.C1",
+      "retained_claimir_blob_sha": "c422f4485fc92856cd90272711ad2fb177bd08fd",
+      "retained_adjudication_blob_sha": "8b7b4d09fb3213d76a5d8686520a8776ac4e0923",
+      "astra": {
+        "class": "SUBSTANTIVE_DISAGREEMENT",
+        "record_sha256": "90dc1860bc3f2cae101e017894540abc81b3f58b36bda4b722dc7e689cbee7e5",
+        "ledger": [
+          "Preserves specialized modules, one-chunk buffers, central pattern matching, one production per cycle, updates, recurrence, and parallel/asynchronous module processing.",
+          "Retained reference additionally requires cycle-specific noisy utility/value selection and an explicit direct subsystem bypass pathway.",
+          "Omitting both changes the retained criterion and system-boundary commitments."
+        ]
+      },
+      "sol": {
+        "class": "SUBSTANTIVE_DISAGREEMENT",
+        "record_sha256": "dcbfe2c2f47666732bbf26b6a5bc4a0d0448c298f257313d0478a7f10a82c5d5",
+        "ledger": [
+          "Preserves the same buffer-mediated recurring coordination cycle and serial bottlenecks.",
+          "Does not preserve the retained noisy utility criterion for rule selection or the source-acknowledged direct bypass path.",
+          "The omission is substantive under the frozen identity-relevant criterion/boundary rule."
+        ]
+      },
+      "posthoc_model_model_note": "SAME_FOCAL_REGION; exact same source bytes."
+    }
+  ],
+  "aggregate": {
+    "astra_medium": {
+      "EXACT_OR_NORMALIZED_RECOVERY": 0,
+      "COMPATIBLE_ALTERNATIVE_DECOMPOSITION": 1,
+      "SUBSTANTIVE_DISAGREEMENT": 8,
+      "ABSTENTION_OR_UNDERDETERMINED": 1
+    },
+    "gpt61_sol_medium": {
+      "EXACT_OR_NORMALIZED_RECOVERY": 0,
+      "COMPATIBLE_ALTERNATIVE_DECOMPOSITION": 3,
+      "SUBSTANTIVE_DISAGREEMENT": 7,
+      "ABSTENTION_OR_UNDERDETERMINED": 0
+    }
+  },
+  "posthoc_descriptive_checks": {
+    "status": "NOT_A_PREFROZEN_SCORE",
+    "both_models_complete_cases": 9,
+    "same_focal_region_among_both_complete": "8/9",
+    "exact_same_source_bytes_and_both_complete_cases": 8,
+    "same_focal_region_with_exact_same_source_bytes": "7/8",
+    "exact_same_source_bytes_cases": [
+      "XM02",
+      "XM04",
+      "XM05",
+      "XM06",
+      "XM07",
+      "XM08",
+      "XM09",
+      "XM10"
+    ],
+    "interpretation": "The dominant substantive class cannot be read as a pure decomposition-failure rate. The v1 prompt allowed independent focal-claim selection, and the two replay configurations often converged on the same salient focal region even when that region differed from the retained reference."
+  },
+  "terminal_state": "M14_TWO_REPLAYS_COMPARED_FOCAL_CLAIM_SELECTION_CONFOUND_IDENTIFIED"
+}
