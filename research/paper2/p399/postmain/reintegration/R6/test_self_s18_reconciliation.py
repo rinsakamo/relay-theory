@@ -81,7 +81,7 @@ for row_id in ("R13", "R14", "R17", "R18"):
     assert by_id[row_id]["status"] == "IMPLEMENTATION_SPECIFIC_ADDITION"
 
 assert "Do not attribute the exact ladder to MAIN40 empirical adjudication." == by_id["R13"]["limitation"]
-assert "MAIN remains 40/0/0" in by_id["R14"]["limitation"]
+assert "MAIN40 remains 40/0/0" in by_id["R14"]["limitation"]
 assert "not all corpus measurements" in by_id["R17"]["limitation"]
 assert "RelaySelf as a whole is not model-free" in by_id["R18"]["limitation"]
 
