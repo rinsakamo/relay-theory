@@ -1,0 +1,192 @@
+{
+  "schema": "relaytheory.p399.main.m11.prospective_comparator_spec.v1",
+  "status": "FROZEN_BEFORE_M11_COMPARATOR_RESULT_MATERIALIZATION",
+  "authority_issue": 399,
+  "base_m10_head": "095c6f41bc7ca6a08bf423137bbf3b8f7bc068e5",
+  "purpose": "Test whether the frozen MAIN40 40/40 A0 result remains A0 under deliberately weaker comparison representations when the same direct-preservation and least-reconstruction semantics are applied.",
+  "scientific_boundary": [
+    "This is a comparator closure control over the frozen MAIN40 representation, not a re-adjudication of source truth.",
+    "The certified MAIN40 outcomes remain immutable: A0=40, A1=0, A2=0 under the full frozen working basis.",
+    "Source-defined mechanisms are retained exactly; comparator arms may only change which source distinctions remain first-class at the comparison representation.",
+    "No population/prevalence inference, universal minimality claim, or non-encodability theorem is licensed."
+  ],
+  "frozen_inputs": {
+    "main40_matrix": {
+      "path": "research/paper2/p399/main/integration/M7/M7_40_PAPER_ARCHITECTURAL_MATRIX_v1.json",
+      "blob": "2a5f22d4d437afea025167ba57b8e866a183790d"
+    },
+    "paper_level_evidence": {
+      "path": "research/paper2/p399/main/integration/M9B/M9B_MAIN40_PAPER_LEVEL_EVIDENCE_v1.json",
+      "blob": "c47dd5bc58f3e45fbf4634175d6168ac8239db9b"
+    },
+    "decision_tree": {
+      "path": "research/paper2/p399/main/integration/M9B/M9B_A012_OPERATIONAL_DECISION_TREE_v1.json",
+      "blob": "2b05e3fa1ae7528602f904188409f5e170547e12"
+    }
+  },
+  "denominator": 40,
+  "frozen_working_roles": [
+    "Pi",
+    "X",
+    "C",
+    "Q",
+    "P",
+    "K",
+    "T",
+    "rho/O"
+  ],
+  "least_lift_semantics": {
+    "A0": "All source-required preserved distinctions remain directly available in the comparator representation using source-defined mechanisms only; no reconstruction-added preservation structure.",
+    "A1": "A0 fails, but every lost source-required distinction can be re-exposed using only reconstruction-added stateless typed boundary/interface/guard/criterion/observation/sequencing structure whose content is already source-defined.",
+    "A2": "A1 fails and fidelity requires reconstruction-added load-bearing persistent/stateful preservation structure.",
+    "nonlift": "If fidelity cannot be restored within A2 without adding source semantics or hiding arbitrary model code, return explicit non-lift/underdetermination rather than promoting A2."
+  },
+  "stateless_restoration_contract": {
+    "Pi": "typed boundary exposure over an already source-defined partition",
+    "C": "stateless admissibility/constraint guard exposing an already source-defined constraint",
+    "Q": "stateless criterion/orientation exposure over an already source-defined criterion",
+    "P": "typed probe/intervention/interface exposure over an already source-defined port or intervention",
+    "rho/O": "typed observation/output exposure over an already source-defined readout",
+    "T": "stateless explicit sequencing/execution-order edge over already source-defined order"
+  },
+  "prohibited_restorations": [
+    "inventing a new scientific variable, mechanism, objective, partition, criterion, or state",
+    "encoding omitted distinctions inside opaque generic model code or universal interpreters",
+    "using historical construct labels as comparison features",
+    "changing the source-defined mechanisms or the frozen paper identity/provenance",
+    "counting notation-only relabeling as a scientific A1 witness unless it is load-bearing for the declared preservation test"
+  ],
+  "comparator_arms": [
+    {
+      "id": "G_FULL",
+      "roles": [
+        "Pi",
+        "X",
+        "C",
+        "Q",
+        "P",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "kind": "frozen_full_working_basis_anchor"
+    },
+    {
+      "id": "G_DYN",
+      "roles": [
+        "X",
+        "K",
+        "T"
+      ],
+      "kind": "coarse_dynamic_backbone",
+      "omits": [
+        "Pi",
+        "C",
+        "Q",
+        "P",
+        "rho/O"
+      ]
+    },
+    {
+      "id": "G_POMDP_LIKE",
+      "roles": [
+        "X",
+        "P",
+        "K",
+        "Q",
+        "T",
+        "rho/O"
+      ],
+      "kind": "pomdp_like_direct_preservation_view",
+      "omits": [
+        "Pi",
+        "C"
+      ]
+    },
+    {
+      "id": "G_MINUS_PI",
+      "roles": [
+        "X",
+        "C",
+        "Q",
+        "P",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "kind": "single_role_ablation",
+      "omits": [
+        "Pi"
+      ]
+    },
+    {
+      "id": "G_MINUS_C",
+      "roles": [
+        "Pi",
+        "X",
+        "Q",
+        "P",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "kind": "single_role_ablation",
+      "omits": [
+        "C"
+      ]
+    },
+    {
+      "id": "G_MINUS_P",
+      "roles": [
+        "Pi",
+        "X",
+        "C",
+        "Q",
+        "K",
+        "T",
+        "rho/O"
+      ],
+      "kind": "single_role_ablation",
+      "omits": [
+        "P"
+      ]
+    },
+    {
+      "id": "G_MINUS_T",
+      "roles": [
+        "Pi",
+        "X",
+        "C",
+        "Q",
+        "P",
+        "K",
+        "rho/O"
+      ],
+      "kind": "single_role_ablation",
+      "omits": [
+        "T"
+      ]
+    }
+  ],
+  "rowwise_algorithm": [
+    "Read only Grammar_roles_used and immutable metadata from the frozen M7 matrix; do not reread sources.",
+    "For an arm, preservation debt is the set difference Grammar_roles_used minus arm.roles.",
+    "If preservation debt is empty, classify comparator closure as A0.",
+    "If every debt role is in stateless_restoration_contract, classify comparator closure as A1 and record the exact restoration types.",
+    "If a debt role requires a new persistent/history-bearing object after source-defined state is retained, classify A2.",
+    "Otherwise return NONLIFT_OR_UNDERDETERMINED; do not force a class."
+  ],
+  "aggregate_outputs": [
+    "A0/A1/A2/nonlift counts by comparator arm",
+    "component versus integrated arm counts",
+    "exact per-paper preservation debt and restoration class",
+    "whether any weaker comparator also obtains 40/40 A0",
+    "whether the full-basis 40/40 A0 result is basis-sensitive under this direct-preservation criterion"
+  ],
+  "interpretation_rule": "A failure of weaker comparators to remain A0 supports discriminative validity only relative to the declared direct-preservation criterion. It does not show that weaker formalisms lack generic encoding power or that the full role inventory is a unique ontology.",
+  "prefreeze_disclosure": {
+    "main40_all_eight_roles_usage_known_before_freeze": true,
+    "consequence": "Some closure-control outcomes are logically anticipatable from the frozen matrix. This is therefore a predeclared deterministic control, not a blinded empirical experiment.",
+    "result_artifact_materialized_before_freeze": false
+  }
+}
