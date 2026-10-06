@@ -1,0 +1,61 @@
+{
+  "schema": "relaytheory.p399.main.m15.external_run_freeze_receipt.v1",
+  "run_id": "M15-A",
+  "status": "FROZEN_COMPARISON_NOT_PERFORMED",
+  "exact_repo_head_before_receipt": "51b18f87521e0cbf82d1c3ef04c42a33f798a101",
+  "product_level_configuration": "GPT-6 Astra / Medium",
+  "configuration_provenance": "User-reported product-level setting; exact backend snapshot and internal routing unverified.",
+  "input_packet_sha256": "edeb5aaae862dd240def175dddf87d112e6768517b33192b99e2688f8468d9c3",
+  "external_package": {
+    "filename": "M15-A_FROZEN.zip",
+    "sha256": "ca6f1d557915777ae59e9846fd80ac90134c10e85b76ec9ae3e2ef53c1d22fb3",
+    "sidecar_verified": true,
+    "package_file_count": 40
+  },
+  "freeze_receipt": {
+    "sha256": "586a0efc084df891ceb72518f906438f115bbc07928845e6a21888a5035b60c9",
+    "manifest_sha256": "6adc96c2769abe777d592f51ecf9d851081f410c20de9b134c22c01db64e3eec",
+    "raw_files": 10,
+    "record_files": 10,
+    "complete": 10,
+    "abstain": 0,
+    "underdetermined": 0,
+    "contaminated": 0,
+    "all_first_completed_raw_preserved": true,
+    "scientific_content_changed_during_normalization": false,
+    "all_ten_frozen_before_any_comparison": true,
+    "comparison_performed": false,
+    "backend_snapshot": "UNVERIFIED",
+    "attestation_type": "Local procedural receipt; no independent timestamp or signature."
+  },
+  "independent_integrity_check": {
+    "performed_without_opening_scientific_raw_or_record_bodies": true,
+    "manifest_listed_file_hashes_checked": 37,
+    "manifest_hash_mismatches": 0,
+    "internal_freeze_receipt_matches_uploaded_receipt": true,
+    "source_hash_verification_reported_by_run": "PASS"
+  },
+  "source_caveats": [
+    {
+      "case_id": "XM01",
+      "note": "Full original-article transcription used; publisher PDF not obtained. Source hash refers to UTF-8 numbered capture, not a publisher PDF."
+    },
+    {
+      "case_id": "XM05",
+      "note": "Main PDF and supplement separately hashed; run metadata records an exact time-matching discrepancy in uncertainty."
+    },
+    {
+      "case_id": "XM09",
+      "note": "Author-hosted manuscript used; exact final-version equivalence unverified."
+    }
+  ],
+  "blindness_boundary": {
+    "retained_answers_opened": false,
+    "m14_v1_outputs_opened": false,
+    "m14_comparison_opened": false,
+    "m15_b_output_exists": false,
+    "m15_pairwise_comparison_performed": false
+  },
+  "terminal_state": "M15_ASTRA_MEDIUM_CLAIM_ANCHORED_REPLAY_FROZEN_COMPARISON_NOT_PERFORMED",
+  "next_authorized_step": "Execute M15-B in a fresh GPT-6.1 Sol / Medium conversation using only the unchanged frozen M15 blind packet and original sources."
+}
