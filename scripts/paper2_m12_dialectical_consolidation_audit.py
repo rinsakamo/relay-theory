@@ -94,7 +94,8 @@ claim_form = (HV / "M12_HUMAN_CLAIM_CODER_FORM_v1.csv").read_text(encoding="utf-
 pro_form = (HV / "M12_HUMAN_PROSPECTIVE_CODER_FORM_v1.csv").read_text(encoding="utf-8")
 assert claim_form.count("\n") >= 21
 assert pro_form.count("\n") >= 11
-assert "NOT_PERFORMED" in (HV / "README.md").read_text(encoding="utf-8").upper().replace("-", "_") or "NO HUMAN RESULTS" in (HV / "README.md").read_text(encoding="utf-8").upper()
+readme_upper = (HV / "README.md").read_text(encoding="utf-8").upper().replace("-", "_")
+assert ("NOT_PERFORMED" in readme_upper or "NO HUMAN RESULTS" in readme_upper or "NO INDEPENDENT HUMAN RESULT HAS BEEN OBTAINED" in readme_upper)
 
 # No synthetic/completed response or scored-result artifact is permitted in M12 authority.
 for p in HV.rglob("*"):

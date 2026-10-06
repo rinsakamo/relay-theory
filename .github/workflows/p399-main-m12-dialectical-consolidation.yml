@@ -1,0 +1,122 @@
+name: P399 MAIN M12 dialectical-consolidation guards
+
+on:
+  pull_request:
+    paths:
+      - 'research/paper2/p399/main/integration/M12/**'
+      - 'scripts/paper2_m12_dialectical_consolidation_audit.py'
+      - 'scripts/paper2_m12_score_human_readjudication.py'
+      - 'scripts/paper2_m11_discriminative_baselines_audit.py'
+      - 'paper/venues/jgps/**'
+      - '.github/workflows/p399-main-m12-dialectical-consolidation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  m12-guards:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Verify exact head and run M12 plus legacy scientific guards
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          python scripts/paper2_m12_dialectical_consolidation_audit.py
+          python scripts/paper2_m11_discriminative_baselines_audit.py
+          python scripts/paper2_m10_major_revision_audit.py
+          ! grep -F '\\paragraph{' paper/venues/jgps/main.tex
+          ! grep -F 'Paper 2' paper/venues/jgps/main.tex
+          ! grep -Fi 'construct-label-neutral' paper/venues/jgps/main.tex
+          grep -F 'When Does Structural Comparison Support Cognitive-Capacity Individuation?' paper/venues/jgps/main.tex
+          grep -F 'terminological carryover inference' paper/venues/jgps/main.tex
+          grep -F 'reconstruction-to-identity inference' paper/venues/jgps/main.tex
+          grep -F 'local-invariance promotion' paper/venues/jgps/main.tex
+          grep -F 'The capacity thesis remains open, but it now carries explicit preservation debt.' paper/venues/jgps/main.tex
+          grep -F 'Procedural auditability is established; inter-rater reliability remains unmeasured.' paper/venues/jgps/main.tex
+
+      - name: Verify human scorer refuses blank forms
+        run: |
+          set -euo pipefail
+          if python scripts/paper2_m12_score_human_readjudication.py \
+            --claim-csv research/paper2/p399/main/integration/M12/human_validation/M12_HUMAN_CLAIM_CODER_FORM_v1.csv \
+            --prospective-csv research/paper2/p399/main/integration/M12/human_validation/M12_HUMAN_PROSPECTIVE_CODER_FORM_v1.csv; then
+            echo "ERROR: blank human forms unexpectedly produced a score"
+            exit 1
+          fi
+
+      - name: Install strict LaTeX build tools
+        run: |
+          sudo apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            texlive-latex-base texlive-latex-recommended texlive-latex-extra \
+            texlive-fonts-recommended texlive-bibtex-extra texlive-pictures \
+            poppler-utils
+
+      - name: Strict build JGPS manuscript
+        run: |
+          set -euo pipefail
+          cd paper/venues/jgps
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          bibtex main
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          test -s main.pdf
+          if grep -En 'LaTeX Warning:|Package .* Warning:|Overfull \\hbox|Citation .* undefined|Reference .* undefined' main.log; then
+            exit 1
+          fi
+          pdftotext main.pdf main.txt
+          tr '\n' ' ' < main.txt | tr -s '[:space:]' ' ' > main.flat.txt
+          grep -F 'When Does Structural Comparison Support Cognitive-Capacity Individuation?' main.flat.txt
+          grep -F 'terminological carryover inference' main.flat.txt
+          grep -F 'preservation debt' main.flat.txt
+          grep -F 'inter-rater reliability remains unmeasured' main.flat.txt
+          PAGES="$(pdfinfo main.pdf | awk -F: '/^Pages:/ {gsub(/ /,"",$2); print $2}')"
+          echo "JGPS manuscript pages: $PAGES" | tee main-page-count.txt
+          echo "JGPS manuscript pages: $PAGES" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Strict build supplementary methods
+        run: |
+          set -euo pipefail
+          cd paper/venues/jgps
+          pdflatex -interaction=nonstopmode -halt-on-error supplement.tex
+          pdflatex -interaction=nonstopmode -halt-on-error supplement.tex
+          pdflatex -interaction=nonstopmode -halt-on-error supplement.tex
+          test -s supplement.pdf
+          if grep -En 'LaTeX Warning:|Package .* Warning:|Overfull \\hbox|Reference .* undefined' supplement.log; then
+            exit 1
+          fi
+          pdftotext supplement.pdf supplement.txt
+          tr '\n' ' ' < supplement.txt | tr -s '[:space:]' ' ' > supplement.flat.txt
+          grep -F 'Complete 60-claim source roster' supplement.flat.txt
+          grep -F 'Compact 40-paper prospective evidence index' supplement.flat.txt
+          grep -F 'Frozen 20-claim human re-adjudication sample' supplement.flat.txt
+          grep -F 'Frozen 10-paper prospective re-adjudication sample' supplement.flat.txt
+          grep -F 'NOT PERFORMED' supplement.flat.txt
+          grep -F 'inter-rater reliability remains unmeasured' supplement.flat.txt
+          PAGES="$(pdfinfo supplement.pdf | awk -F: '/^Pages:/ {gsub(/ /,"",$2); print $2}')"
+          echo "Supplement pages: $PAGES" | tee supplement-page-count.txt
+          echo "Supplement pages: $PAGES" >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: paper-2-m12-jgps-manuscript-and-supplement
+          path: |
+            paper/venues/jgps/main.pdf
+            paper/venues/jgps/supplement.pdf
+            paper/venues/jgps/main-page-count.txt
+            paper/venues/jgps/supplement-page-count.txt
+          if-no-files-found: error
+          retention-days: 14
