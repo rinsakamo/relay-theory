@@ -1,0 +1,410 @@
+{
+  "schema": "relaytheory.p399.main.m12.human_claim_packet_case.v1",
+  "case_id": "HC06",
+  "metadata_masking": {
+    "original_slot_withheld": true,
+    "doi_withheld": true,
+    "authors_withheld": true,
+    "venue_withheld": true,
+    "construct_labels_withheld": true,
+    "conceptual_blindness_established": false,
+    "note": "Metadata/lexical masking only; source-grounded semantic content remains."
+  },
+  "source_spans": [
+    {
+      "span_id": "s1",
+      "locator": "Psychonomic Bulletin & Review 9(2), published p.185, Abstract and opening: low-demand situations can benefit from added challenge whereas extremely high-demand situations can benefit from reduced load"
+    },
+    {
+      "span_id": "s2",
+      "locator": "Psychonomic Bulletin & Review 9(2), published pp.186-187, task-complexity and processing-capacity discussion: functional demand varies with task and performer experience; learning is distinguished from acquisition performance by later test performance; added demands may compete for limited processing capacity"
+    },
+    {
+      "span_id": "s3",
+      "locator": "Psychonomic Bulletin & Review 9(2), published pp.193-194, feedback discussion and summary: demand-increasing feedback schedules can degrade acquisition/learning of higher-demand tasks, whereas frequent or blocked feedback can facilitate them"
+    },
+    {
+      "span_id": "s4",
+      "locator": "Psychonomic Bulletin & Review 9(2), published pp.195-196, Physical Assistance: assistance can reduce task demands to a manageable level and can transfer to later unassisted performance, but the benefit is task-dependent rather than universal"
+    },
+    {
+      "span_id": "s5",
+      "locator": "Psychonomic Bulletin & Review 9(2), published pp.198-204, attentional-focus and observational-practice sections: some practice conditions reduce attentional, control, or execution demands and can improve later performance on demanding tasks"
+    },
+    {
+      "span_id": "s6",
+      "locator": "Psychonomic Bulletin & Review 9(2), published pp.206-207, Task Difficulty as a Mediating Factor and final synthesis: effects can vary with task difficulty and practice stage; low-demand situations favor added load/challenge, whereas extremely high-demand acquisition favors load reduction"
+    }
+  ],
+  "claim_core": {
+    "claim_type": "comparison",
+    "modality": "comparative",
+    "scope": {
+      "conditions": [
+        "training situations spanning low to extremely high cognitive, attentional, and motor demands",
+        "functional demand varies with task characteristics, performer experience, and stage of practice"
+      ],
+      "population": [
+        "human learners and performers of motor tasks"
+      ],
+      "substrate": [],
+      "task": [
+        "motor tasks differing in functional demand, degrees of freedom, coordination requirements, and time needed to reach stable performance"
+      ],
+      "temporal_scope": [
+        "during acquisition, with learning distinguished from immediate practice performance by later retention, transfer, or test performance where available",
+        "effects of a practice manipulation may change as experience accumulates"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "functional_task_demand",
+        "role": "condition",
+        "description": "current cognitive, attentional, and motor demand of the training situation",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "experience_stage",
+        "role": "condition",
+        "description": "performer expertise or stage of practice that can alter the functional demand of a task and the effect of practice conditions",
+        "source_span_ids": [
+          "s2",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "processing_load_state",
+        "role": "state_or_structure",
+        "description": "degree to which current task and practice demands load or overload the performer's limited processing resources",
+        "source_span_ids": [
+          "s2",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "demand_increasing_practice",
+        "role": "intervention",
+        "description": "practice manipulation that adds cognitive effort, processing demand, or challenge",
+        "source_span_ids": [
+          "s1",
+          "s3",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "demand_reducing_practice",
+        "role": "intervention",
+        "description": "practice manipulation that reduces otherwise excessive cognitive, attentional, control, or execution demands",
+        "source_span_ids": [
+          "s1",
+          "s3",
+          "s4",
+          "s5",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "learning_assessment",
+        "role": "probe",
+        "description": "later retention, transfer, or other test condition used where available to distinguish learning from immediate acquisition performance",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "later_learning_performance",
+        "role": "response_or_outcome",
+        "description": "performance on a later assessment used as evidence about what was learned during practice",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "depends_on",
+        "arguments": [
+          "functional_task_demand",
+          "experience_stage",
+          "processing_load_state"
+        ],
+        "description": "functional task difficulty is relative to performer experience and to the degree that current demands load available processing resources",
+        "source_span_ids": [
+          "s2",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "depends_on",
+        "arguments": [
+          "later_learning_performance",
+          "functional_task_demand",
+          "demand_increasing_practice"
+        ],
+        "description": "the review-level synthesis favors added challenge for learning when the current training situation imposes relatively low demands",
+        "source_span_ids": [
+          "s1",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "depends_on",
+        "arguments": [
+          "later_learning_performance",
+          "functional_task_demand",
+          "demand_reducing_practice"
+        ],
+        "description": "the review-level synthesis favors demand reduction for learning when acquisition already imposes extremely high demands",
+        "source_span_ids": [
+          "s1",
+          "s3",
+          "s4",
+          "s5",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "depends_on",
+        "arguments": [
+          "later_learning_performance",
+          "experience_stage",
+          "functional_task_demand"
+        ],
+        "description": "the effect of a practice condition may change across practice as functional task demands change",
+        "source_span_ids": [
+          "s2",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "maps_to",
+        "arguments": [
+          "learning_assessment",
+          "later_learning_performance"
+        ],
+        "description": "later retention, transfer, or test performance is used where available to assess learning rather than equating immediate acquisition performance with learning",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  },
+  "candidate_bounded_objects": [
+    {
+      "candidate_id": "A",
+      "structural_object": {
+        "active_axes": [
+          "K",
+          "O",
+          "P",
+          "S",
+          "T"
+        ],
+        "basis_version": "paper2-working-basis-v1",
+        "controls": {
+          "probe_P": {
+            "state": "present"
+          }
+        },
+        "edges": [
+          {
+            "arguments": [
+              "n2",
+              "n0"
+            ],
+            "conditional_on": [],
+            "family": "basis_relation",
+            "kind": "other",
+            "ordered_arguments": true,
+            "temporal_direction": "unspecified"
+          }
+        ],
+        "nodes": {
+          "n0": {
+            "axis": "O",
+            "required": true,
+            "role": "response_or_outcome",
+            "space": "basis_coordinate"
+          },
+          "n1": {
+            "axis": "O",
+            "required": true,
+            "role": "response_or_outcome",
+            "space": "basis_coordinate"
+          },
+          "n2": {
+            "axis": "P",
+            "required": true,
+            "role": "intervention",
+            "space": "basis_coordinate"
+          },
+          "n3": {
+            "axis": "P",
+            "required": true,
+            "role": "probe",
+            "space": "basis_coordinate"
+          },
+          "n4": {
+            "axis": "S",
+            "required": true,
+            "role": "state_or_structure",
+            "space": "basis_coordinate"
+          },
+          "n5": {
+            "axis": null,
+            "required": true,
+            "role": "condition",
+            "space": "basis_coordinate"
+          }
+        },
+        "schema_version": "paper2-basis-subobject-v1",
+        "source_skeleton_version": "paper2-basis-structural-skeleton-v1",
+        "temporal": {
+          "future_horizon": {
+            "state": "present"
+          },
+          "history_window": {
+            "state": "present"
+          },
+          "recurrence": {
+            "state": "present"
+          },
+          "time_index": {
+            "state": "present"
+          }
+        }
+      }
+    },
+    {
+      "candidate_id": "B",
+      "structural_object": {
+        "active_axes": [
+          "K",
+          "O",
+          "P",
+          "S",
+          "T"
+        ],
+        "basis_version": "paper2-working-basis-v1",
+        "controls": {
+          "probe_P": {
+            "state": "present"
+          }
+        },
+        "edges": [
+          {
+            "arguments": [
+              "n1",
+              "n2"
+            ],
+            "conditional_on": [],
+            "family": "temporal_order",
+            "kind": "precedes",
+            "ordered_arguments": true,
+            "temporal_direction": "forward"
+          },
+          {
+            "arguments": [
+              "n2",
+              "n0"
+            ],
+            "conditional_on": [],
+            "family": "basis_relation",
+            "kind": "maps_to",
+            "ordered_arguments": true,
+            "temporal_direction": "unspecified"
+          }
+        ],
+        "nodes": {
+          "n0": {
+            "axis": "O",
+            "required": true,
+            "role": "response_or_outcome",
+            "space": "basis_coordinate"
+          },
+          "n1": {
+            "axis": "P",
+            "required": true,
+            "role": "intervention",
+            "space": "basis_coordinate"
+          },
+          "n2": {
+            "axis": "P",
+            "required": true,
+            "role": "probe",
+            "space": "basis_coordinate"
+          },
+          "n3": {
+            "axis": "S",
+            "required": true,
+            "role": "state_or_structure",
+            "space": "basis_coordinate"
+          },
+          "n4": {
+            "axis": null,
+            "required": true,
+            "role": "condition",
+            "space": "basis_coordinate"
+          },
+          "n5": {
+            "axis": null,
+            "required": true,
+            "role": "condition",
+            "space": "basis_coordinate"
+          }
+        },
+        "schema_version": "paper2-basis-subobject-v1",
+        "source_skeleton_version": "paper2-basis-structural-skeleton-v1",
+        "temporal": {
+          "future_horizon": {
+            "state": "present"
+          },
+          "history_window": {
+            "state": "present"
+          },
+          "persistence": {
+            "state": "present"
+          },
+          "time_index": {
+            "state": "present"
+          }
+        }
+      }
+    }
+  ],
+  "coder_tasks": {
+    "grammar_role_set": "Pi;X;C;Q;P_in;P_out;K;T;rho/O",
+    "projection_verdict": "FULL/PARTIAL/RESIDUAL",
+    "candidate_membership": "SUPPORTED/NOT_SUPPORTED/UNDERDETERMINED"
+  }
+}
