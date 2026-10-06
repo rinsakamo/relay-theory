@@ -1,0 +1,21 @@
+name: P399 post-MAIN Self blueprint
+
+on:
+  push:
+    branches:
+      - paper2/p399-postmain-self-blueprint-20261006
+  pull_request:
+    paths:
+      - 'research/paper2/p399/postmain/reintegration/R2/**'
+      - '.github/workflows/p399-postmain-self-blueprint.yml'
+
+jobs:
+  blueprint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate minimal Self blueprint
+        run: python research/paper2/p399/postmain/reintegration/R2/test_self_minimal_blueprint.py
