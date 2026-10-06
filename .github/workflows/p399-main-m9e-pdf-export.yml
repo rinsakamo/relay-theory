@@ -23,14 +23,14 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          BASE="75532d1529906beb77258351bf2967510a0e35b0"
+          BASE="8585f93fdf1d37181fd42e53e93365cc6020b90a"
           git merge-base --is-ancestor "$BASE" HEAD
 
       - name: Verify scope sentence and terminology guard
         shell: bash
         run: |
           set -euo pipefail
-          grep -F "This is a literature-based structural comparison study, not an experimental study or a statistical prevalence analysis." paper/venues/jgps/main.tex
+          grep -F "This is a literature-based structural comparison, not an experiment or prevalence study." paper/venues/jgps/main.tex
           python research/paper2/p399/main/integration/M9D/test_m9d_reviewer_terminology.py
 
       - name: Install LaTeX build tools
@@ -55,7 +55,7 @@ jobs:
           if grep -En 'LaTeX Warning:|Package .* Warning:|Overfull \\hbox|Citation .* undefined|Reference .* undefined' main.log; then exit 1; fi
           pdfinfo main.pdf | grep -F "Pages:"
           pdftotext main.pdf main.txt
-          grep -F "This is a literature-based structural comparison study, not an experimental study or a statistical prevalence analysis." main.txt
+          grep -F "This is a literature-based structural comparison, not an experiment or prevalence study." main.txt
 
       - name: Upload M9E manuscript PDF
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
