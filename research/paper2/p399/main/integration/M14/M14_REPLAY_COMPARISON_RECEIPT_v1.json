@@ -1,0 +1,25 @@
+{
+  "schema": "relaytheory.p399.main.m14.replay_comparison_receipt.v1",
+  "status": "COMPARISON_COMPLETE",
+  "comparison_authority_head": "fb50f5a83a48f8227f214678634fba1cb8a0e8da",
+  "rules_sha256": "eb54f84a6b4d38ea645f7d93db8b950a960776b90a6d2f2302e3dfc3e9f247b1",
+  "comparison_inputs": {
+    "astra_package_sha256": "3b7911f2288c6a1f9ee4ab6cd033cc6eaba5c10fedf5b002170562b6ca531d04",
+    "astra_receipt_sha256": "c148424f3cc12ce0911a6e1ad02793fbb35b12857b9b4c37c1c9715f0dc5f435",
+    "gpt61_sol_package_sha256": "b09ed20aa54c302843e069d10f9ad925ad1bf0f43b8832d96085df6bcf52dd73",
+    "gpt61_sol_receipt_sha256": "68446ebab712cc7b648524c528661195a18929914d7f4c903c3cffe19f2579d1"
+  },
+  "guarantees": [
+    "No replay record was modified during comparison.",
+    "Frozen four-class rules were used without adding a new scored class.",
+    "Post hoc focal-region alignment is labeled descriptive-only and is not substituted for the frozen case classes.",
+    "Astra postfreeze UI provenance supplements product-level model labeling only; it does not modify the original receipt or prove backend routing."
+  ],
+  "limitations": [
+    "Comparison adjudication is not an independent human rating.",
+    "The replay v1 protocol did not anchor a particular focal claim, so retained-vs-replay classes conflate claim selection and decomposition.",
+    "Exact backend snapshots for the two replay configurations remain unverified.",
+    "No cross-provider replication was performed."
+  ],
+  "terminal_state": "M14_TWO_REPLAYS_COMPARED_FOCAL_CLAIM_SELECTION_CONFOUND_IDENTIFIED"
+}
