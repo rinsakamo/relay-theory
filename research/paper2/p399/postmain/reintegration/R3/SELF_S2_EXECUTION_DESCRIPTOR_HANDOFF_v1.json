@@ -1,0 +1,53 @@
+{
+  "schema": "relaytheory.p399.postmain.self_s2_handoff.v1",
+  "status": "POST_MAIN_ENGINEERING_HANDOFF",
+  "upstream": {
+    "m7_head": "48b2cf3c627e030e7131af485206b0013d7e02f1",
+    "r1_reintegration_head": "b60cd3fe4960e84e5ffb007f747ac43a6063c2c8",
+    "r2_blueprint_head": "4ae4833c103f1cbeb6617be681dab4e183c69aa0"
+  },
+  "relayself": {
+    "repo": "rinsakamo/relay-self",
+    "s1_pr": 337,
+    "s2_pr": 338,
+    "s2_branch": "self/postmain-capability-s2-descriptors-20261006",
+    "s2_exact_head": "40b83d9012dc1bcc8e1dc2c74664a7d0e0ffb172",
+    "base_s1_head": "e56ba8388d21638434eb95693424c832445e887a"
+  },
+  "s2_scope": {
+    "capabilities": ["MEM", "CTL", "SKL", "TALK"],
+    "runtime_dispatch_added": false,
+    "new_semantic_owner_added": false,
+    "hidden_persistent_operator_state_allowed": false,
+    "criterion_state_mutation_allowed": false,
+    "all_current_criteria_kind": "CONTRACT_GUARD"
+  },
+  "mapped_existing_seams": [
+    "PersistentCognition.retain_memory",
+    "coordinate_decision_epoch",
+    "RelayEngine.__call__",
+    "SkillExecution.start",
+    "ActionLifecycle.propose",
+    "RelayEngine.open"
+  ],
+  "ci": {
+    "workflow_run": 37399855964,
+    "exact_head": "40b83d9012dc1bcc8e1dc2c74664a7d0e0ffb172",
+    "repository_contracts": "SUCCESS",
+    "pytest": "SUCCESS",
+    "lint": "SUCCESS"
+  },
+  "licensed_interpretation": "S2 operationalizes the post-MAIN composition vocabulary as non-executing metadata over already-existing RelaySelf seams. It does not add a central coordinator, universal mutable state store, or new cognitive objective.",
+  "next_slice_constraints": {
+    "slice": "S3",
+    "goal": "stateless epoch-plan compilation",
+    "must_preserve": [
+      "Action supervision remains deadline-first",
+      "all semantic state remains owner-local",
+      "descriptors do not auto-import or dispatch implementation_ref",
+      "cognition is invoked only through explicit admitted requests",
+      "no persistent scheduler state",
+      "no LLM-per-tick loop"
+    ]
+  }
+}
