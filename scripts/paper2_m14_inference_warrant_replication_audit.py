@@ -199,7 +199,7 @@ assert "focal-claim-selection confound" in readme
 assert "pre-result frozen replay protocol" in readme
 assert "must not be retroactively rewritten" in readme
 assert "public replay artifact must package the frozen README" in readme
-assert "focal-claim-selection confound" in comparison_report
+assert "focal-claim selection is a confound" in comparison_report
 assert "not interpreted as ordinary reliability or recovery rates" in comparison_report
 
 print("M14_INFERENCE_WARRANT_REPLAY_COMPARISON_GUARDS_PASS")
