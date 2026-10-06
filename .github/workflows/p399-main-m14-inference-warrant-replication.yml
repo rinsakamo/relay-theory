@@ -46,13 +46,41 @@ jobs:
           cp research/paper2/p399/main/integration/M14/M14_CROSS_MODEL_BLANK_RECORD_v1.json m14-cross-model-replay/
           cp research/paper2/p399/main/integration/M14/M14_CROSS_MODEL_COMPARISON_RULES_v1.json m14-cross-model-replay/
           cp research/paper2/p399/main/integration/M14/M14_CROSS_MODEL_PROMPT_v1.md m14-cross-model-replay/
-          cp research/paper2/p399/main/integration/M14/README.md m14-cross-model-replay/
-          printf '%s\n'             'No cross-model result is included in this artifact.'             'Human inter-rater validation remains unperformed.'             'Freeze all ten model outputs before opening retained references.'             > m14-cross-model-replay/STATUS.txt
+          cp research/paper2/p399/main/integration/M14/M14_CROSS_MODEL_REPLAY_README_FROZEN_v1.md m14-cross-model-replay/README.md
+          printf '%s\n' \
+            'This is the blind pre-result replay packet.' \
+            'No replay output or comparison result is included in this artifact.' \
+            'Human inter-rater validation remains unperformed.' \
+            'Freeze all ten model outputs before opening retained references.' \
+            > m14-cross-model-replay/STATUS.txt
 
       - uses: actions/upload-artifact@v4
         with:
           name: paper-2-m14-public-cross-model-replay-packet
           path: m14-cross-model-replay
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Package post-freeze replay comparison authority
+        run: |
+          set -euo pipefail
+          rm -rf m14-replay-comparison
+          mkdir -p m14-replay-comparison
+          cp research/paper2/p399/main/integration/M14/M14_ASTRA_UI_PROVENANCE_SUPPLEMENT_v1.json m14-replay-comparison/
+          cp research/paper2/p399/main/integration/M14/M14_REPLAY_COMPARISON_RESULTS_v1.json m14-replay-comparison/
+          cp research/paper2/p399/main/integration/M14/M14_REPLAY_COMPARISON_RECEIPT_v1.json m14-replay-comparison/
+          cp research/paper2/p399/main/integration/M14/M14_REPLAY_COMPARISON_REPORT_v1.md m14-replay-comparison/
+          cp research/paper2/p399/main/integration/M14/README.md m14-replay-comparison/
+          printf '%s\n' \
+            'Post-freeze comparison authority.' \
+            'This artifact MUST NOT be supplied to a blinded v1 replay.' \
+            'Procedural auditability is established; inter-rater reliability remains unmeasured.' \
+            > m14-replay-comparison/STATUS.txt
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: paper-2-m14-postfreeze-replay-comparison
+          path: m14-replay-comparison
           if-no-files-found: error
           retention-days: 30
 
