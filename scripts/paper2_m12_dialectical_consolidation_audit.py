@@ -132,7 +132,11 @@ if m14:
     assert "Successful direct reconstruction therefore does not select the exact role inventory." in main
     assert "representation diagnostic" in main
     assert "conceptually blind to construct identity" in main
-    assert "cross-model source reconstruction" in main
+    if (ROOT / "research/paper2/p399/main/integration/M14/M14_REPLAY_COMPARISON_RESULTS_v1.json").exists():
+        assert "Blinded named-model replay: claim selection and decomposition separate" in main
+        assert "focal-claim anchor" in main
+    else:
+        assert "cross-model source reconstruction" in main
 else:
     assert "Successful reconstruction therefore cannot, by itself" in main
     assert "representation diagnostic rather than as new empirical validation" in main
