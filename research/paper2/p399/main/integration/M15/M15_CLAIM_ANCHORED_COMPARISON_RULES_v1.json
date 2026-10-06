@@ -1,0 +1,32 @@
+{
+  "schema": "relaytheory.p399.main.m15.claim_anchored_comparison_rules.v1",
+  "status": "FROZEN_BEFORE_ANY_M15_REPLAY_OUTPUT",
+  "comparison_unit": "anchored source-level claim decomposition",
+  "classes": {
+    "EXACT_OR_NORMALIZED_RECOVERY": "After only predeclared normalization, the anchored claim and all identity-relevant source-supported typed nodes, relations, temporal commitments, and boundary commitments align with the retained record.",
+    "COMPATIBLE_ALTERNATIVE_DECOMPOSITION": "The replay targets the supplied anchor and preserves the same identity-relevant source commitments, but partitions, labels, or factors intermediate structure differently without changing the relevant dependencies, temporal commitments, criteria, probes, or boundaries.",
+    "SUBSTANTIVE_DISAGREEMENT": "The replay targets or purports to target the supplied anchor but adds, omits, reverses, or shifts at least one identity-relevant source commitment, or replaces the anchored claim with a different focal claim.",
+    "ABSTENTION_OR_UNDERDETERMINED": "The replay cannot obtain adequate source evidence or cannot stably decompose the supplied anchor without unsupported extrapolation."
+  },
+  "normalization_allowed": [
+    "identifier renaming",
+    "ordering of commutative lists",
+    "whitespace and presentation-only formatting",
+    "synonymous labels when typed scientific role and relation are unchanged"
+  ],
+  "normalization_forbidden": [
+    "adding a missing source-supported scientific relation",
+    "removing a conflicting relation or temporal dependency",
+    "changing system/environment/experiment boundaries",
+    "repairing an omitted criterion or probe after seeing the retained answer",
+    "switching to another focal claim",
+    "consulting M14 or another M15 replay before classification"
+  ],
+  "summaries": {
+    "primary": "(EXACT_OR_NORMALIZED_RECOVERY + COMPATIBLE_ALTERNATIVE_DECOMPOSITION) / 10",
+    "secondary_evaluable": "(EXACT_OR_NORMALIZED_RECOVERY + COMPATIBLE_ALTERNATIVE_DECOMPOSITION) / non-abstained cases",
+    "report_all_four_counts": true,
+    "no_single_score_without_case_ledger": true,
+    "pairwise_replay_A_vs_B": "apply the same four classes to the two frozen M15 records for each anchored case"
+  }
+}
