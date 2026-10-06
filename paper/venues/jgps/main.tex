@@ -206,7 +206,7 @@ This was a single-adjudicator prospective compatibility test under a pre-specifi
 
 The repository chronology makes the prospective boundary inspectable without requiring repository-internal milestone names in the manuscript. The source-closed protocol, genealogy criterion, bounded genealogy audit, and explicit prospective-study authorization were committed before the six scientific analysis streams produced their final outcomes. That authorization fixed the exact 40-paper denominator, no-substitution rule, structural role grammar, adopted method reference, and A0/A1/A2 classification boundary. Full commit identifiers and timestamps are provided in the supplementary provenance ledger. The earlier roster artifact retains its historical working/outcome-blind designation; later authorization fixed that exact roster as the no-substitution denominator rather than retroactively rewriting its earlier state.
 
-Each prospective paper followed a source-first staged audit before reconstruction: source decomposition, result-informed re-audit using held-fixed prior artifacts, source-closed objection adjudication, and only then reconstruction with the held-fixed structural role grammar and architectural adjudication. Per-paper architectural outcomes were attempted in a predeclared order. \(A0\) denotes direct composition faithful to the source model using the pre-specified grammar roles together with mechanisms already defined by the source. \(A1\) is reached only if \(A0\) fails and fidelity requires a reconstruction-added typed but stateless interface, sequencing, or data-translation contract. \(A2\) is reached only if both \(A0\) and \(A1\) fail and fidelity requires an additional load-bearing persistent stateful mechanism that is not reducible to source-defined mechanisms, pre-specified grammar roles, or an already modeled control function.
+Each prospective paper followed a source-first staged audit before reconstruction: source decomposition, result-informed re-audit using held-fixed prior artifacts, source-closed objection adjudication, and only then reconstruction with the held-fixed structural role grammar and architectural adjudication. Per-paper architectural outcomes were attempted in a predeclared order. \(A0\) denotes direct composition faithful to the source model using the pre-specified grammar roles together with mechanisms already defined by the source. \(A1\) is reached only if \(A0\) fails and fidelity requires a reconstruction-added typed but stateless interface, sequencing, or data-translation contract. \(A2\) is reached only if both \(A0\) and \(A1\) fail and fidelity requires an additional load-bearing persistent stateful mechanism that is not reducible to mechanisms specified by the source model, pre-specified grammar roles, or an already modeled control function.
 
 Equivalently, let \(\mathcal R_0\hookrightarrow\mathcal R_1\hookrightarrow\mathcal R_2\) be nested reconstruction classes permitting, respectively, no reconstruction-added mechanism, stateless reconstruction-added mediation, and persistent/stateful reconstruction-added mediation. If \(E_i\) denotes the source contracts admitting a faithful lift from \(\mathcal R_i\), then
 \[
@@ -214,7 +214,7 @@ A0=E_0,\qquad
 A1=E_1\setminus E_0,\qquad
 A2=E_2\setminus E_1.
 \]
-This minimal-faithful-reconstruction formulation makes the classes mutually exclusive under the declared nesting. Eligibility and evidential sufficiency are tested first; an ineligible source is \texttt{SOURCE\_INELIGIBLE}, and unresolved source evidence remains \texttt{UNDERDETERMINED}. If no faithful lift exists even after the allowed A2 extension and that non-lift is source-supported rather than merely unresolved, the result is \texttt{FAILURE\_LOCALIZED}.
+This minimal-faithful-reconstruction formulation makes the classes mutually exclusive under the declared nesting. Eligibility and evidential sufficiency are tested first; ineligible sources are classified as source ineligible, while unresolved source evidence is classified as underdetermined. If no faithful reconstruction exists even after the allowed A2 extension and that non-reconstruction is supported by the source evidence rather than merely unresolved, the result is classified as a localized failure.
 
 \begin{table}[htbp]
 \centering
@@ -233,7 +233,7 @@ Underdetermined & The source does not decide the structural fact needed to choos
 \end{tabularx}
 \end{table}
 
-Source-defined hierarchy, gating, belief or memory state, planner/search state, learned parameters, recurrence, accumulators, temporal ordering, routing metadata, and environment state were therefore not automatically counted as \(A2\). A difficult fit or localized failure was likewise not sufficient evidence for \(A2\). No paper could be replaced because of an unfavorable reconstruction result.
+Hierarchy, gating, belief or memory state, planner/search state, learned parameters, recurrence, accumulators, temporal ordering, routing metadata, and environment state were therefore not automatically counted as \(A2\). A difficult fit or localized failure was likewise not sufficient evidence for \(A2\). No paper could be replaced because of an unfavorable reconstruction result.
 
 The 40 papers were analyzed in six isolated analysis streams and combined only after exact version ancestry, versioned outcome artifacts, and conservative integration checks were verified. At the study level, three possibilities were distinguished: direct composition without reconstruction-added coordination-specific structure; recurring reconstruction-added stateless mediation; and recurring reconstruction-added persistent coordination. Per-paper \(A0/A1/A2\) categories provide evidence about these possibilities rather than automatic population-level verdicts.
 
@@ -246,7 +246,7 @@ A separate source-genealogy audit was retained as an inferential constraint. Its
 
 The pre-specified whole-claim result was:
 \[
-1770/1770=\text{INCOMPARABLE}.
+1770/1770=\text{incomparable}.
 \]
 
 Across 3,540 directed comparisons, 3,518 failed at the scalar stage, six reached node-count comparison, 16 reached node-label multiset comparison, and none reached topology or embedding. Universal incomparability was therefore localized primarily to the enriched pre-topology comparison surface rather than to graph topology itself.
@@ -267,15 +267,15 @@ with 188 distinct support signatures. Fifty-nine of 60 claims are covered by at 
 
 Notably, 1,304 whole-claim pairs share at least one surviving reusable structural subobject despite every whole-claim pair being held as incomparable. Whole-claim identity and reusable substructure are therefore distinct questions on the same corpus.
 
-\subsection{Structural-role-grammar reverse projection}
+\subsection{Structural role grammar: reverse projection}
 
 The 60-claim reverse projection yields:
 \[
-\text{FULL}=21,
+\text{full}=21,
 \qquad
-\text{PARTIAL}=22,
+\text{partial}=22,
 \qquad
-\text{RESIDUAL}=17.
+\text{residual}=17.
 \]
 
 \begin{table}[htbp]
@@ -354,7 +354,7 @@ An adversarial calibration performed after the prospective 40-paper analysis tes
 
 The A0/A1/A2 rule was expressed in terms of the minimal faithful reconstruction level within the nested reconstruction classes above and tested on two matched synthetic families: a strict dynamical family and a POMDP-like family. Each family contains one direct case, one typed stateless-bridge case, and one history-sensitive persistent-bridge case. The six expected outcomes are therefore two A0, two A1, and two A2 cases, and all six classes were reached as constructed.
 
-The A1 witness uses incompatible declared port types: direct composition fails, while an explicit stateless map repairs the mismatch. The A2 witness requires the bridge output to depend on the immediately preceding binary input. No current-input-only function can satisfy both histories that share the same present input but require different outputs; a one-bit persistent bridge can. The corresponding Lean module kernel-checks the minimal-reconstruction partition, the positive A1 witness, the stateless obstruction for A2, the stateful A2 realization, and the factorization of structural-role-grammar forgetting through the POMDP-like view to the strict dynamical transition view.
+The A1 witness uses incompatible declared port types: direct composition fails, while an explicit stateless map repairs the mismatch. The A2 witness requires the bridge output to depend on the immediately preceding binary input. No current-input-only function can satisfy both histories that share the same present input but require different outputs; a one-bit persistent bridge can. The corresponding Lean formalization verifies the minimal-reconstruction partition, the positive A1 witness, the stateless obstruction for A2, the stateful A2 realization, and the factorization of structural role grammar forgetting through the POMDP-like view to the strict dynamical transition view.
 
 This calibration establishes reachability of A1 and A2 under the pre-specified reconstruction-addition semantics. It does not establish independent-human adjudication reliability, empirical frequency of the three outcomes, or non-encodability of the tested structures in richer dynamical or POMDP formalisms.
 
@@ -365,7 +365,7 @@ All six analysis streams passed immutable-input validation, and a separate integ
 
 \begin{table}[htbp]
 \centering
-\caption{Prospective 40-paper mechanism-composition result. A1 and A2 count only reconstruction-added structure; source-defined coordination remains part of A0 when faithfully preserved.}
+\caption{Prospective 40-paper mechanism-composition result. A1 and A2 count only reconstruction-added structure; coordination already specified by the source model remains part of A0 when faithfully preserved.}
 \label{tab:prospective40}
 \begin{tabular}{lrrrr}
 \toprule
@@ -488,7 +488,7 @@ The \(X/K/T\) backbone has clear precedent in dynamical approaches to cognition 
 
 \subsection{Category-theoretic and compositional formalisms}
 
-Category theory has already been used to explain structural systematicity in cognition \citep{PhillipsWilson2010CategorialCompositionality}. Categorical cybernetics and Bayesian-lens-style formalisms provide prior mathematical machinery for bidirectional open systems \citep{StClereSmithe2021CyberKittens}. These are plausible realization languages for parts of the structural role grammar, not evidential sources from which the role inventory was derived. More broadly, none of the individual structural-role-grammar roles is claimed as a novel generic system primitive; the contribution concerns their corpus-grounded recovery, preservation relations, residual behavior, and losses under coarser projections.
+Category theory has already been used to explain structural systematicity in cognition \citep{PhillipsWilson2010CategorialCompositionality}. Categorical cybernetics and Bayesian-lens-style formalisms provide prior mathematical machinery for bidirectional open systems \citep{StClereSmithe2021CyberKittens}. These are plausible realization languages for parts of the structural role grammar, not evidential sources from which the role inventory was derived. More broadly, none of the individual roles in the structural role grammar is claimed as a novel generic system primitive; the contribution concerns their corpus-grounded recovery, preservation relations, residual behavior, and losses under coarser projections.
 
 
 \subsection{A recent structural-realist neighbor in JGPS}
@@ -503,7 +503,7 @@ Second, both empirical surfaces are designed rather than probability samples. Th
 
 Third, the basis and forgetting operator are representation choices. The present controls show that reusable structure survives under these held-fixed choices; they do not establish that those choices are uniquely optimal. Alternative basis construction and alternative forgetting operators remain important future adversarial tests.
 
-Fourth, Structural-role-grammar granularity is non-unique. Equivalent factorizations may preserve the same distinctions. The strict-preservation result establishes nontriviality of the current inventory relative to the held-fixed corpora, not absolute mathematical minimality.
+Fourth, the granularity of the structural role grammar is non-unique. Equivalent factorizations may preserve the same distinctions. The strict-preservation result establishes nontriviality of the current inventory relative to the held-fixed corpora, not absolute mathematical minimality.
 
 Fifth, the system grammar is not a complete scientific claim language. Statements about evidence, model rejection, non-entailment, latent inference, comparison, and scientific uncertainty may require a separate assertion layer even when the underlying system roles are sufficient.
 
@@ -511,9 +511,9 @@ Sixth, the Lean formalization verifies declared typing and dependency structure,
 
 Seventh, the prospective 40-paper corpus is exact-DOI-disjoint from the original 60-claim corpus, but it is not an independent random holdout. The roster was purposively fixed for architectural coverage, and the genealogy audit did not certify pairwise independence. Exact DOI disjointness therefore supports source-identity separation from the original analysis surface but does not license binomial significance, independence-based population inference, or a claim that the 40 papers are independent discoveries.
 
-Eighth, \(A0\) is a structural-fidelity result under source-defined mechanisms. It is not a numerical replay of every model, a matched predictive-performance benchmark, or a proof that the source mechanism is empirically correct. Conversely, zero observed \(A1\) and \(A2\) cases does not show that stateless adapters or additional stateful coordinators are impossible in other architectures.
+Eighth, \(A0\) is a structural-fidelity result under mechanisms specified by the source model. It is not a numerical replay of every model, a matched predictive-performance benchmark, or a proof that the source mechanism is empirically correct. Conversely, zero observed \(A1\) and \(A2\) cases does not show that stateless adapters or additional stateful coordinators are impossible in other architectures.
 
-Finally, independent human re-adjudication was not performed. The prospective 40-paper corpus result therefore establishes procedural auditability under a single-adjudicator design rather than inter-rater reliability. Language-model checks, deterministic CI, formal verification, and the post-hoc matched calibration test different properties and are not substitutes for an independent human coder. The supplementary paper-level evidence table exposes the exact analysis-stream version, outcome artifact, source-loci ledger, unresolved evidence, and genealogy limitation for all 40 papers so that external re-adjudication is possible without relying on the aggregate label. Population-scale replication across fresh source families and a universal criterion for selecting the cognitive-system boundary also remain unestablished.
+Finally, independent human re-adjudication was not performed. The prospective 40-paper corpus result therefore establishes procedural auditability under a single-adjudicator design rather than inter-rater reliability. Language-model checks, deterministic CI, formal verification, and the post hoc matched calibration test different properties and are not substitutes for an independent human coder. The supplementary paper-level evidence table exposes the exact analysis stream version, outcome artifact, source evidence ledger, unresolved evidence, and genealogy limitation for all 40 papers so that external re-adjudication is possible without relying on the aggregate label. Population-scale replication across fresh source families and a universal criterion for selecting the cognitive-system boundary also remain unestablished.
 
 \section{Discussion}
 
@@ -521,11 +521,11 @@ The main empirical pattern begins with a failure/recovery sequence. At the whole
 
 The secondary bounded reconstruction changes the question from \emph{are these complete scientific claims the same?} to \emph{do these claims contain recoverable reusable substructure under a pre-specified forgetting rule?} Under that question, cross-label recurrence appears without deleting the whole-claim failure. The reusable structural subobject result is therefore not a repaired primary atlas. It is a different, explicitly motivated level of analysis.
 
-The structural-role-grammar reconstruction then asks whether surviving structures can be expressed through a compact recurring role inventory. The answer is positive on the bounded corpus, but it is not a universal ontology. Role counts show broad recurrence, residual analysis fails to establish an additional top-level role, and comparator tests show that coarser natural projections forget distinctions. Together these results support a structural comparison grammar under a declared preservation contract.
+The structural role grammar reconstruction then asks whether surviving structures can be expressed through a compact recurring role inventory. The answer is positive on the bounded corpus, but it is not a universal ontology. Role counts show broad recurrence, residual analysis fails to establish an additional top-level role, and comparator tests show that coarser natural projections forget distinctions. Together these results support a structural comparison grammar under a declared preservation contract.
 
 The single-adjudicator prospective 40-paper corpus compatibility test adds a distinct test: whether the pre-specified structural role grammar can reconstruct mechanism composition specified by the source models outside the original 60-claim source identities without adding a new coordination layer. The exact DOI overlap between the two corpora is zero. Under the predeclared \(A0\rightarrow A1\rightarrow A2\) order, all 40 prospective papers remained \(A0\), including all 16 integrated papers. No reconstruction-added stateless adapter and no reconstruction-added persistent coordinator was required.
 
-This result should not be read as evidence that cognitive systems contain no stateful coordination. Many tested sources explicitly contain gating, hierarchy, workspace-like state, learned state, planners, accumulators, recurrent dynamics, or other coordinating mechanisms. The methodological result is narrower: when those mechanisms are retained as source-defined structure, the reconstruction did not need to posit an additional generic coordinator merely to make heterogeneous mechanisms compose. Complexity by itself did not force \(A2\).
+This result should not be read as evidence that cognitive systems contain no stateful coordination. Many tested sources explicitly contain gating, hierarchy, workspace-like state, learned state, planners, accumulators, recurrent dynamics, or other coordinating mechanisms. The methodological result is narrower: when those mechanisms are retained as structure specified by the source model, the reconstruction did not need to posit an additional generic coordinator merely to make heterogeneous mechanisms compose. Complexity by itself did not force \(A2\).
 
 The study-level interpretation is therefore asymmetric. The pre-specified 40-paper corpus is uniformly descriptively compatible with direct composition under a reconstruction contract faithful to each source model, while supplying no positive case requiring added stateless mediation or added persistent coordination. But the purposive roster and unresolved genealogy prevent the \(40/40\) count from becoming a population-frequency estimate or a universal hypothesis verdict. Exact DOI disjointness from the original 60 claims strengthens the prospective separation of the two analysis surfaces; it does not establish lineage independence.
 
@@ -572,7 +572,7 @@ Whole-claim comparison failed universally:
 \[
 1770/1770\ \text{pairs were incomparable}.
 \]
-A secondary bounded-subobject reconstruction then recovered 206 unique reusable structural subobjects, including 99 cross-stratum families. Reverse projection of the held-fixed 60 claims into the structural role grammar yielded 21 FULL, 22 PARTIAL, and 17 RESIDUAL cases. Residual adjudication established that none of the 17 residual claims required an additional top-level system role.
+A secondary bounded-subobject reconstruction then recovered 206 unique reusable structural subobjects, including 99 cross-stratum families. Reverse projection of the held-fixed 60 claims into the structural role grammar yielded 21 full, 22 partial, and 17 residual cases. Residual adjudication established that none of the 17 residual claims required an additional top-level system role.
 
 A separately pre-specified single-adjudicator prospective compatibility corpus then tested 40 cognitive-model papers, using mechanisms specified by the sources, with zero exact DOI overlap with the original 60-claim source manifest. The predeclared composition order yielded
 \[
@@ -606,7 +606,7 @@ The next scientific tests are fresh outcome-blind source waves and dynamic quest
 
 \section*{Reproducibility and provenance}
 
-The public repository versions the reviewed structured claim corpus, whole-claim comparison artifacts, reusable-subobject reconstruction, structural-role-grammar reverse projections, residual adjudication, comparator views, system--environment distinction, and deterministic audits. A supplementary provenance ledger records the exact commit identifiers, blob hashes, workflow runs, analysis-stream outputs, and the pre-specified 40-paper roster. These records establish repository-state consistency and analysis chronology; they are not independent proofs of empirical truth.
+The public repository versions the reviewed structured claim corpus, whole-claim comparison artifacts, reusable-subobject reconstruction, structural role grammar reverse projections, residual adjudication, comparator views, system--environment distinction, and deterministic audits. A supplementary provenance ledger records the exact commit identifiers, blob hashes, workflow runs, analysis-stream outputs, and the pre-specified 40-paper roster. These records establish repository-state consistency and analysis chronology; they are not independent proofs of empirical truth.
 
 The extraction and review boundary is documented in the same provenance materials: automated extraction was not independently validated, whereas every retained claim in the reference corpus was reviewed against source text. The manuscript is the object submitted for scholarly review. Its empirical and formal claims are grounded in versioned machine-readable research artifacts and formal modules, which provide auditable provenance for the reported results.
 
