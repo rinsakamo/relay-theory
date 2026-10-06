@@ -1,0 +1,114 @@
+{
+  "schema": "relaytheory.p399.main.m12.human_prospective_packet_case.v1",
+  "case_id": "HP07",
+  "doi": "10.3390/e26060484",
+  "arm": "integrated",
+  "source_first_artifact_path": "research/paper2/p399/main/parallel/M4_int01_06/INT-02/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json",
+  "source_first_lane_head": "e04e7758bc85939a782b3ebc16972ba0401b5bde",
+  "source_first_artifact": {
+    "schema": "relaytheory.p399.main.m4.pass_a_source_first_decomposition_v1",
+    "slot": "INT-02",
+    "doi": "10.3390/e26060484",
+    "source_lock": "research/paper2/p399/main/parallel/M4_int01_06/INT-02/SOURCE_AUTHORITY_LOCK_v1.json",
+    "stage_sequence": {
+      "source_lock_freeze_commit": "a4ef8fbdafc3870ef100bafbfaed20f46adbe87f",
+      "result_informed_architecture_used": false
+    },
+    "grammar_mapping_performed": false,
+    "architecture_outcome_assigned": false,
+    "component_mechanisms": [
+      "DPEFE planning/action distribution",
+      "counterfactual-learning risk/action distribution",
+      "action-entropy comparison",
+      "adaptive beta(s,t)",
+      "geometric/product-of-experts policy pooling"
+    ],
+    "component_local_state": [
+      "generative/state posterior",
+      "counterfactual risk map",
+      "beta(s,t)"
+    ],
+    "shared_state": "beta(s,t) is a source-defined state-dependent weighting variable; not reconstruction-added.",
+    "message_information_flow": [
+      "state/generative quantities -> DPEFE policy",
+      "risk mapping -> CL policy",
+      "policy entropies -> beta update",
+      "beta + two policies -> mixed action distribution -> action"
+    ],
+    "ordering": [
+      "current-state planning and counterfactual quantities",
+      "entropy-difference beta update",
+      "mixed action readout"
+    ],
+    "gating": [
+      "beta weights DPEFE vs CL contribution"
+    ],
+    "control_dependencies": [
+      "active-inference formalism is not a separate coordinator",
+      "pooling is source-defined"
+    ],
+    "learning_dependencies": [
+      "CL/risk and beta dynamics retained as source-defined"
+    ],
+    "memory_dependencies": [
+      "posterior/risk/beta states as source-defined"
+    ],
+    "prediction_dependencies": [
+      "expected-future and counterfactual-risk policies"
+    ],
+    "task_world_variables": [
+      "environment state/transition/generative model",
+      "maze/cart-pole variables"
+    ],
+    "readout_action_stage": "normalized mixed action distribution",
+    "explicit_arbitration_routing": [
+      "active-inference formalism is not a separate coordinator",
+      "pooling is source-defined"
+    ],
+    "model_variants": [
+      "pure DPEFE",
+      "pure CL",
+      "mixed"
+    ],
+    "adverse_null_results": [
+      "Eq.9 lacks printed normalization symbol",
+      "Eq.8 only local approximation to Eq.16 under stated conditions",
+      "mixed policy not uniformly best across tested regimes"
+    ],
+    "integration_question": {
+      "A": "DPEFE planning policy",
+      "B": "CL counterfactual-risk policy",
+      "extra": [
+        "entropy comparison",
+        "adaptive beta"
+      ],
+      "shared": "beta(s,t) and state posterior",
+      "exchange": "two action distributions and entropies",
+      "temporal": "state/time-local update then pooling",
+      "update": "entropy difference changes beta",
+      "interaction": "mediated",
+      "mediator": "source-defined beta-weighted pooling",
+      "mediator_state": "STATEFUL_SOURCE_DEFINED",
+      "origin": "SOURCE"
+    },
+    "source_ordered_omission_sweep": "COMPLETED_AT_STAGE_A_SOURCE_FIRST_SCOPE",
+    "frozen": true
+  },
+  "prohibited_during_blind_coding": [
+    "Do not inspect ARCHITECTURAL_OUTCOME artifacts or M9B answer table.",
+    "Do not inspect M12 reference keys."
+  ],
+  "decision_rule": {
+    "A0": "Source-defined mechanisms suffice; no reconstruction-added load-bearing mechanism.",
+    "A1": "A0 fails; reconstruction-added load-bearing stateless mediation is necessary.",
+    "A2": "A0 and A1 fail; reconstruction-added load-bearing persistent/stateful structure is necessary.",
+    "UNDERDETERMINED": "Source evidence does not decide.",
+    "FAILURE": "No faithful A0/A1/A2 reconstruction is supported."
+  },
+  "coder_tasks": {
+    "state": "A0/A1/A2/UNDERDETERMINED/FAILURE",
+    "stateless_added": "TRUE/FALSE/UNDETERMINED",
+    "persistent_added": "TRUE/FALSE/UNDETERMINED",
+    "notes": "Cite source-first evidence fields."
+  }
+}

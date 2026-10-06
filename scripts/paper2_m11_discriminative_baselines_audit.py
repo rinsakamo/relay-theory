@@ -145,7 +145,10 @@ thesis = (
     "neither terminology nor successful reconstruction licenses representation-independent identity."
 )
 assert thesis in main
-assert "A Pre-Individuation Structural Comparison Procedure for Cognitive-Capacity Claims" in main
+assert (
+    "A Pre-Individuation Structural Comparison Procedure for Cognitive-Capacity Claims" in main
+    or "When Does Structural Comparison Support Cognitive-Capacity Individuation?" in main
+)
 assert "claim-level structural comparison" in main
 assert "evidential constraint on capacity comparison" in main
 assert "capacity individuation" in main
@@ -156,8 +159,8 @@ assert "58 of the 60 source claims" in main
 assert "Under the encoding-permissive baseline" in main
 assert "every tested weaker representation also remains 40/40 A0" in main
 assert "Under direct preservation" in main
-assert "0 A0/40 A1" in main
-assert "Prospective A0 therefore supports the absence of reconstruction-added coordination" in main
+assert ("0 A0/40 A1" in main or "producing A1 for all 40 rows" in main)
+assert ("Prospective A0 therefore supports the absence of reconstruction-added coordination" in main or "required no reconstruction-added coordinator under any of the tested encoding-capable views" in main)
 assert "semantic memory" in main and "MEM04" in main and "CNC05" in main
 assert "Procedural auditability is established; inter-rater reliability remains unmeasured." in main
 assert "Independent human re-adjudication was not performed." in main

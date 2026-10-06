@@ -1,0 +1,204 @@
+{
+  "schema": "relaytheory.p399.main.m12.human_claim_packet_case.v1",
+  "case_id": "HC01",
+  "metadata_masking": {
+    "original_slot_withheld": true,
+    "doi_withheld": true,
+    "authors_withheld": true,
+    "venue_withheld": true,
+    "construct_labels_withheld": true,
+    "conceptual_blindness_established": false,
+    "note": "Metadata/lexical masking only; source-grounded semantic content remains."
+  },
+  "source_spans": [
+    {
+      "span_id": "s1",
+      "locator": "Behavioral and Brain Sciences 24, PDF p.1 / published p.87, abstract: central capacity limit averaging about four chunks"
+    },
+    {
+      "span_id": "s2",
+      "locator": "Behavioral and Brain Sciences 24, PDF p.1 / published p.87, abstract: four boundary-condition classes for observing pure capacity"
+    },
+    {
+      "span_id": "s3",
+      "locator": "Behavioral and Brain Sciences 24, PDF p.2 / published p.88, sec. 1.1-1.2: pure versus compound capacity and constrained observation procedures"
+    }
+  ],
+  "claim_core": {
+    "claim_type": "constraint",
+    "modality": "probabilistic",
+    "scope": {
+      "conditions": [
+        "experimental conditions that permit retained units to be identified",
+        "procedures that prevent recoding or refilling from supplementary non-limited sources"
+      ],
+      "population": [
+        "humans"
+      ],
+      "substrate": [
+        "central limited temporary store"
+      ],
+      "task": [
+        "temporary-store limit tasks under pure-limit boundary conditions"
+      ],
+      "temporal_scope": []
+    },
+    "nodes": [
+      {
+        "id": "central_limited_store",
+        "role": "state_or_structure",
+        "description": "central limited store implicated by the converging evidence",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "retained_unit_count",
+        "role": "response_or_outcome",
+        "description": "number of separately retained units supported under qualifying conditions",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "qualifying_limit_conditions",
+        "role": "condition",
+        "description": "boundary conditions that prevent unknown grouping, rehearsal, or refilling from supplementary non-limited sources",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "limit_probe_family",
+        "role": "probe",
+        "description": "procedures for revealing the pure limit, including overload, recoding-block, discontinuity, and indirect-effect methods",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "constrains",
+        "arguments": [
+          "central_limited_store",
+          "retained_unit_count"
+        ],
+        "description": "the central store constrains the number of simultaneously retained units to an average near four under the qualifying conditions",
+        "source_span_ids": [
+          "s1",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "depends_on",
+        "arguments": [
+          "retained_unit_count",
+          "qualifying_limit_conditions",
+          "limit_probe_family"
+        ],
+        "description": "a pure-limit estimate is interpretable only under source-declared boundary conditions and revealing procedures",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  },
+  "candidate_bounded_objects": [
+    {
+      "candidate_id": "A",
+      "structural_object": {
+        "active_axes": [
+          "O",
+          "P"
+        ],
+        "basis_version": "paper2-working-basis-v1",
+        "controls": {
+          "probe_P": {
+            "state": "present"
+          }
+        },
+        "edges": [],
+        "nodes": {
+          "n0": {
+            "axis": "O",
+            "required": true,
+            "role": "response_or_outcome",
+            "space": "basis_coordinate"
+          }
+        },
+        "schema_version": "paper2-basis-subobject-v1",
+        "source_skeleton_version": "paper2-basis-structural-skeleton-v1",
+        "temporal": {}
+      }
+    },
+    {
+      "candidate_id": "B",
+      "structural_object": {
+        "active_axes": [
+          "Pi",
+          "S",
+          "T"
+        ],
+        "basis_version": "paper2-working-basis-v1",
+        "controls": {
+          "partition_Pi": {
+            "state": "present"
+          }
+        },
+        "edges": [],
+        "nodes": {
+          "n0": {
+            "axis": "Pi",
+            "required": true,
+            "role": "partition",
+            "space": "basis_coordinate"
+          },
+          "n1": {
+            "axis": "S",
+            "required": true,
+            "role": "state_or_structure",
+            "space": "basis_coordinate"
+          },
+          "n2": {
+            "axis": "S",
+            "required": true,
+            "role": "state_or_structure",
+            "space": "basis_coordinate"
+          },
+          "n3": {
+            "axis": "S",
+            "required": true,
+            "role": "state_or_structure",
+            "space": "basis_coordinate"
+          }
+        },
+        "schema_version": "paper2-basis-subobject-v1",
+        "source_skeleton_version": "paper2-basis-structural-skeleton-v1",
+        "temporal": {
+          "time_index": {
+            "state": "present"
+          }
+        }
+      }
+    }
+  ],
+  "coder_tasks": {
+    "grammar_role_set": "Pi;X;C;Q;P_in;P_out;K;T;rho/O",
+    "projection_verdict": "FULL/PARTIAL/RESIDUAL",
+    "candidate_membership": "SUPPORTED/NOT_SUPPORTED/UNDERDETERMINED"
+  }
+}

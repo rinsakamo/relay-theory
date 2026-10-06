@@ -1,19 +1,20 @@
 \documentclass[11pt]{article}
 
-\usepackage[margin=1in]{geometry}
+\usepackage[margin=0.8in]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,amssymb}
 \usepackage{booktabs}
 \usepackage{tabularx}
+\usepackage{longtable}
 \usepackage{array}
 \usepackage{enumitem}
 \usepackage{xurl}
 \usepackage[hidelinks]{hyperref}
 \emergencystretch=3em
 
-\title{Supplementary Methods and Provenance\\
-A Pre-Individuation Structural Comparison Procedure for Cognitive-Capacity Claims}
+\title{Supplementary Methods, Evidence Index, and Validation Materials\\
+When Does Structural Comparison Support Cognitive-Capacity Individuation?}
 \author{Rintaro Sakamoto}
 \date{}
 
@@ -23,111 +24,186 @@ A Pre-Individuation Structural Comparison Procedure for Cognitive-Capacity Claim
 
 \section{Purpose and evidential boundary}
 
-This supplement records pre-specification chronology, immutable repository authority, source-adjudication boundaries, comparator definitions, and deterministic audit rules that are intentionally compressed in the main article. These materials establish inspectable provenance and internal consistency. They do not constitute independent empirical validation, an independent second coding, or a claim that the repository state is itself philosophical evidence.
+This supplement reproduces the compact rosters, evidence index, freeze identifiers, and validation materials promised in the main article. Detailed source-first artifacts, blob hashes, per-paper receipts, and full analysis ancestry remain repository-native materials and are identified by path rather than reproduced in full.
 
-The direct analytical objects are source-grounded scientific claims about cognitive capacities. The scientific invariants carried into the present revision are:
+The scientific invariants carried into this revision remain:
 \begin{itemize}[leftmargin=*]
 \item whole-claim comparison: 1,770/1,770 incomparable;
-\item bounded reconstruction: 206 reusable structural subobjects and 99 cross-stratum families;
+\item bounded reconstruction: 206 bounded objects, including 99 cross-stratum families;
 \item reverse projection: 21 full, 22 partial, and 17 residual;
 \item residuals requiring a new top-level role: 0/17;
-\item prospective 40-paper result: A0=40, A1=0, A2=0;
-\item component arm: 24/24 A0; integrated arm: 16/16 A0;
+\item prospective source result: A0=40, A1=0, A2=0, with 24/24 component and 16/16 integrated papers at A0;
 \item global genealogical independence: not claimed;
-\item population or prevalence inference: not licensed;
 \item independent human re-adjudication: not performed.
 \end{itemize}
 
-\section{Revision authority and freeze chronology}
+The supported reliability statement is unchanged:
 
-The present revision starts from exact manuscript/research HEAD
-\[
-\texttt{095c6f41bc7ca6a08bf423137bbf3b8f7bc068e5}.
-\]
-That state is the final M10 authority and is the exact parent of the M11 branch.
+\begin{quote}
+Procedural auditability is established; inter-rater reliability remains unmeasured.
+\end{quote}
 
-\begin{table}[htbp]
-\centering
-\small
-\caption{M11 freeze and execution chronology.}
-\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.19\textwidth} >{\raggedright\arraybackslash}p{0.29\textwidth} >{\raggedright\arraybackslash}X}
+\section{Principal revision authority}
+
+The exact M11 parent of M12 is
+
+\begin{center}
+\path{e6b01717129b5f924e489dd8b89d3ee647d252a1}
+\end{center}
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.28\textwidth} >{\raggedright\arraybackslash}p{0.64\textwidth}}
+\caption{Principal M12 freeze and construction identifiers.}\label{tab:m12-freezes}\\
 \toprule
-Commit & Function & Boundary \\
+Checkpoint & Commit / meaning \\
 \midrule
-\path{a212820d225050bbc10d395685e74cd2fb0d9912} &
-Freeze prospective comparator and CPCG specifications &
-No comparator-result or CPCG-result artifact existed in this commit. \\
-\path{b31f670f31d2f015b65d8bbf2e4fb12178b46694} &
-Pre-result CPCG clarification &
-Maps auxiliary \texttt{axis=null} nodes to generic CPCG family \(N\); no result had yet been materialized. \\
-\path{1c22fcb177c434d2900ffb3af9ef6baee2af73ff} &
-Execute frozen direct-preservation and CPCG controls &
-Materializes direct-preservation comparator, CPCG, and same-label expository artifacts. \\
-\path{5769537203b452e0c86c69fabf9a7d3240ca4909} &
-Freeze encoding-permissive composition baseline &
-Separates the original A-state composition semantics from direct distinction preservation; no result artifact yet exists. \\
-\path{38d4b5a13e04127a945d31374924dd089cfffca6} &
-Execute encoding-permissive baseline &
-Materializes the literal weak-basis A-state comparison under unchanged source mechanisms. \\
+\endfirsthead
+\toprule
+Checkpoint & Commit / meaning \\
+\midrule
+\endhead
+M12 dialectical/validation prefreeze & \path{a083dbc27e5a11d4e58363ccfed83c37c6a3a7b8}; freezes inference targets, result-status taxonomy, semantic-memory application contract, supplement contract, and the prohibition on fabricating human validation. \\
+Human sample freeze & \path{218867d0d49613fc5559c7472f55c08777c9e936}; fixes the 20-claim and 10-prospective-paper re-adjudication samples and blank coder forms. \\
+Prospective packet completion & \path{f7f771b7e129da6bdaf448000b78fc4806821531}; copies only frozen source-first artifacts into the 10 human-coding packets, with answer keys separate. \\
+Agreement scorer & \path{103272ef179e83f468ee7ecbbef1ce7f527aa745}; adds the scorer that refuses incomplete forms and produces agreement statistics only from supplied completed responses. \\
+Dialectical application freeze & \path{5f57bc410e6ed3046284af6ab1114956f35ebf34}; freezes the semantic-memory downstream application and result epistemic classes. \\
+JGPS manuscript consolidation & \path{5dd13a26cfbe7c00dc9918a45194c0fe3e950525}; foregrounds the three inference forms, semantic-memory preservation debt, and the discovery/diagnostic distinction. \\
 \bottomrule
-\end{tabularx}
-\end{table}
+\end{longtable}
 
-The comparator freeze explicitly records two non-blind facts known before result materialization. First, the frozen prospective matrix already showed all eight working-basis coordinates in all 40 accepted rows, so some closure outcomes were logically anticipatable. Second, candidate same-label pairs had been explored before the freeze; the MEM04--CNC05 example is therefore expository rather than a predeclared inferential test.
+No independent human response file exists at these checkpoints.
 
-\section{Original 60-claim staging}
+For ancestry of the M11 representation controls, the principal pre-result checkpoints are
+\path{a212820d225050bbc10d395685e74cd2fb0d9912} (initial direct-preservation/CPCG specification freeze),
+\path{b31f670f31d2f015b65d8bbf2e4fb12178b46694} (pre-result CPCG null-axis clarification), and
+\path{1c22fcb177c434d2900ffb3af9ef6baee2af73ff} (first materialization of the direct-preservation and CPCG results).
 
-The 60-claim analysis used reviewed source-grounded structured records. Historical construct labels, author identity, institution, venue, and citation count were excluded from structural similarity logic. The working basis, whole-claim projection, and bounded-reconstruction operator were fixed before later role-grammar interpretation.
 
-The universal whole-claim failure was preserved rather than rewritten:
-\[
-\binom{60}{2}=1770,\qquad 1770/1770\ \text{incomparable}.
-\]
-The subsequent bounded reconstruction changed the unit of reuse rather than the earlier verdict. It recovered 206 bounded objects, of which 99 had cross-stratum support. The later reverse projection was performed on the fixed records and produced 21 full, 22 partial, and 17 residual cases. Residual adjudication found no case requiring an additional top-level cognitive-system role.
+\section{Original 60-claim source roster}
 
-Machine-readable authority includes:
-\begin{itemize}[leftmargin=*]
-\item \path{research/paper2/reference_global_phi_freeze_v1.json};
-\item \path{research/paper2/bounded_xlike_reconstruction_v1.json};
-\item \path{research/paper2/grammar_v0_reverse_projection_aggregate_v1.json}.
-\end{itemize}
+Table~\ref{tab:claim-roster} reproduces the complete frozen 60-claim source roster by slot and DOI. Historical construct labels are intentionally not reproduced in this roster.
 
-\section{Prospective 40-paper source and adjudication workflow}
+\begingroup
+\small
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.08\textwidth} >{\raggedright\arraybackslash}p{0.37\textwidth} >{\raggedright\arraybackslash}p{0.08\textwidth} >{\raggedright\arraybackslash}p{0.37\textwidth}}
+\caption{Complete 60-claim source roster.}\label{tab:claim-roster}\\
+\toprule
+Slot & DOI & Slot & DOI \\
+\midrule
+\endfirsthead
+\toprule
+Slot & DOI & Slot & DOI \\
+\midrule
+\endhead
+MEM01 & \path{10.1037/0033-295X.99.2.195} & CTL01 & \path{10.1038/nn963} \\
+MEM02 & \path{10.1017/S0140525X01003922} & CTL02 & \path{10.1146/annurev.neuro.24.1.167} \\
+MEM03 & \path{10.1111/j.1467-9280.2006.01693.x} & CTL03 & \path{10.1037/0096-3445.121.4.480} \\
+MEM04 & \path{10.1146/annurev.psych.53.100901.135114} & CTL04 & \path{10.1162/089976606775093909} \\
+MEM05 & \path{10.1126/science.287.5451.248} & CTL05 & \path{10.1037/0033-295X.91.3.295} \\
+MEM06 & \path{10.1073/pnas.0803390105} & CTL06 & \path{10.1016/S1364-6613(03)00028-7} \\
+LRN01 & \path{10.1126/science.273.5280.1399} & BLF01 & \path{10.1038/nn1954} \\
+LRN02 & \path{10.1126/science.275.5306.1593} & BLF02 & \path{10.1037/0033-295X.111.1.3} \\
+LRN03 & \path{10.1126/science.1199327} & BLF03 & \path{10.1146/annurev.neuro.29.051605.113038} \\
+LRN04 & \path{10.1038/377155a0} & BLF04 & \path{10.3758/BF03196976} \\
+LRN05 & \path{10.1126/science.274.5294.1926} & BLF05 & \path{10.1016/S1053-8119(03)00230-1} \\
+LRN06 & \path{10.1037/0096-3445.115.1.39} & BLF06 & \path{10.1038/nn.2949} \\
+SKL01 & \path{10.3758/BF03196276} & CNC01 & \path{10.1037/0033-295X.92.3.289} \\
+SKL02 & \path{10.1037/0033-295X.89.4.369} & CNC02 & \path{10.1016/0010-0285(75)90024-9} \\
+SKL03 & \path{10.1152/jn.00856.2011} & CNC03 & \path{10.1207/s15516709cog0702_3} \\
+SKL04 & \path{10.1016/0010-0285(87)90002-8} & CNC04 & \path{10.1037/0278-7393.14.1.12} \\
+SKL05 & \path{10.1073/pnas.88.11.4966} & CNC05 & \path{10.1038/nrn2277} \\
+SKL06 & \path{10.1016/0010-0285(73)90004-2} & CNC06 & \path{10.1037/0033-295X.114.2.245} \\
+ATT01 & \path{10.1037/0096-3445.113.4.501} & CH01 & \path{10.1038/nrn2762} \\
+ATT02 & \path{10.1037/0096-1523.21.3.451} & CH02 & \path{10.1038/nn1790} \\
+ATT03 & \path{10.1037/0033-295X.108.3.624} & CH03 & \path{10.5840/jphil2004101826} \\
+ATT04 & \path{10.1080/00335558008248231} & CH04 & \path{10.1016/0004-3702(90)90007-M} \\
+ATT05 & \path{10.1037/0096-1523.18.3.849} & CH05 & \path{10.3758/BF03196322} \\
+ATT06 & \path{10.1038/44134} & CH06 & \path{10.1038/nrn2787} \\
+PRD01 & \path{10.1038/415429a} & CH07 & \path{10.1146/annurev-psych-122414-033625} \\
+PRD02 & \path{10.1126/science.7569931} & CH08 & \path{10.1016/j.neuroscience.2005.08.023} \\
+PRD03 & \path{10.1038/nrn3838} & CH09 & \path{10.1111/j.2044-8295.1975.tb01468.x} \\
+PRD04 & \path{10.1126/science.1144161} & CH10 & \path{10.1038/nn1560} \\
+PRD05 & \path{10.1098/rstb.2005.1622} & CH11 & \path{10.1007/BF00122574} \\
+PRD06 & \path{10.1111/j.1469-8986.2007.00531.x} & CH12 & \path{10.1037/0033-295X.111.4.1036} \\
+\bottomrule
+\end{longtable}
+\endgroup
 
-The prospective denominator contains exactly 40 cognitive-model papers: 24 component-oriented papers and 16 integrated papers. No unfavorable result could trigger source substitution. Exact DOI overlap with the original 60-claim corpus is zero, but DOI separation is not treated as genealogy independence.
+Machine-readable authority: \path{research/paper2/chatgpt_reference_claimir_v1/manifest.json}.
 
-Each paper retained source-first decomposition and a paper-level architectural outcome. The aggregate frozen matrix is
-\path{research/paper2/p399/main/integration/M7/M7_40_PAPER_ARCHITECTURAL_MATRIX_v1.json}.
-The paper-level evidence table is
+\section{Prospective 40-paper evidence index}
+
+Table~\ref{tab:prospective-index} reproduces a compact index for every prospective paper. The full machine-readable paper-level evidence table remains repository-native at
 \path{research/paper2/p399/main/integration/M9B/M9B_MAIN40_PAPER_LEVEL_EVIDENCE_v1.json}.
+Each evidence path below identifies the corresponding source-first decomposition; architectural outcome artifacts and lane-head hashes remain in the machine-readable table.
 
-The least-reconstruction decision variable is:
-\[
-A0=E_0,\qquad
-A1=E_1\setminus E_0,\qquad
-A2=E_2\setminus E_1,
-\]
-where \(E_0\subseteq E_1\subseteq E_2\) are source contracts faithfully realizable with, respectively, source-defined mechanisms only, reconstruction-added stateless mediation, and reconstruction-added persistent/stateful mediation.
+\begingroup
+\scriptsize
+\setlength\tabcolsep{3pt}
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.075\textwidth} >{\raggedright\arraybackslash}p{0.18\textwidth} >{\raggedright\arraybackslash}p{0.09\textwidth} >{\raggedright\arraybackslash}p{0.055\textwidth} >{\raggedright\arraybackslash}p{0.475\textwidth}}
+\caption{Compact 40-paper prospective evidence index.}\label{tab:prospective-index}\\
+\toprule
+ID & DOI & Arm & State & Source-first evidence artifact path \\
+\midrule
+\endfirsthead
+\toprule
+ID & DOI & Arm & State & Source-first evidence artifact path \\
+\midrule
+\endhead
+ATT-01 & \path{10.1007/s42113-024-00197-6} & component & A0 & \path{research/paper2/p399/main/parallel/M1_att_blf_cnc/ATT-01/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json} \\
+ATT-02 & \path{10.1371/journal.pcbi.1004770} & component & A0 & \path{research/paper2/p399/main/parallel/M1_att_blf_cnc/ATT-02/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json} \\
+ATT-03 & \path{10.1016/j.neuron.2009.01.002} & component & A0 & \path{research/paper2/p399/main/parallel/M1_att_blf_cnc/ATT-03/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json} \\
+BLF-01 & \path{10.1016/j.isci.2025.112844} & component & A0 & \path{research/paper2/p399/main/parallel/M1_att_blf_cnc/BLF-01/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json} \\
+BLF-02 & \path{10.1371/journal.pcbi.1006972} & component & A0 & \path{research/paper2/p399/main/parallel/M1_att_blf_cnc/BLF-02/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json} \\
+BLF-03 & \path{10.7554/eLife.08825} & component & A0 & \path{research/paper2/p399/main/parallel/M1_att_blf_cnc/BLF-03/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json} \\
+CNC-01 & \path{10.1038/s41562-023-01719-1} & component & A0 & \path{research/paper2/p399/main/parallel/M1_att_blf_cnc/CNC-01/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json} \\
+CNC-02 & \path{10.1371/journal.pcbi.1011954} & component & A0 & \path{research/paper2/p399/main/parallel/M1_att_blf_cnc/CNC-02/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json} \\
+CNC-03 & \path{10.7554/eLife.77185} & component & A0 & \path{research/paper2/p399/main/parallel/M1_att_blf_cnc/CNC-03/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json} \\
+CTL-01 & \path{10.1371/journal.pcbi.1012228} & component & A0 & \path{research/paper2/p399/main/parallel/M2_ctl_lrn/CTL-01/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json} \\
+CTL-02 & \path{10.7554/eLife.12029} & component & A0 & \path{research/paper2/p399/main/parallel/M2_ctl_lrn/CTL-02/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json} \\
+CTL-03 & \path{10.7554/eLife.28040} & component & A0 & \path{research/paper2/p399/main/parallel/M2_ctl_lrn/CTL-03/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json} \\
+LRN-01 & \path{10.1038/s41467-025-58848-6} & component & A0 & \path{research/paper2/p399/main/parallel/M2_ctl_lrn/LRN-01/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json} \\
+LRN-02 & \path{10.1371/journal.pcbi.1007963} & component & A0 & \path{research/paper2/p399/main/parallel/M2_ctl_lrn/LRN-02/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json} \\
+LRN-03 & \path{10.7554/eLife.21492} & component & A0 & \path{research/paper2/p399/main/parallel/M2_ctl_lrn/LRN-03/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json} \\
+MEM-01 & \path{10.1007/s42113-023-00189-y} & component & A0 & \path{research/paper2/p399/main/parallel/M3_mem_prd_skl/MEM-01/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json} \\
+MEM-02 & \path{10.1371/journal.pcbi.1008367} & component & A0 & \path{research/paper2/p399/main/parallel/M3_mem_prd_skl/MEM-02/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json} \\
+MEM-03 & \path{10.1371/journal.pcbi.1004003} & component & A0 & \path{research/paper2/p399/main/parallel/M3_mem_prd_skl/MEM-03/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json} \\
+PRD-01 & \path{10.1038/s41562-024-01930-8} & component & A0 & \path{research/paper2/p399/main/parallel/M3_mem_prd_skl/PRD-01/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json} \\
+PRD-02 & \path{10.1371/journal.pcbi.1001003} & component & A0 & \path{research/paper2/p399/main/parallel/M3_mem_prd_skl/PRD-02/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json} \\
+PRD-03 & \path{10.1371/journal.pcbi.1007093} & component & A0 & \path{research/paper2/p399/main/parallel/M3_mem_prd_skl/PRD-03/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json} \\
+SKL-01 & \path{10.1371/journal.pcbi.1012455} & component & A0 & \path{research/paper2/p399/main/parallel/M3_mem_prd_skl/SKL-01/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json} \\
+SKL-02 & \path{10.1371/journal.pcbi.1005632} & component & A0 & \path{research/paper2/p399/main/parallel/M3_mem_prd_skl/SKL-02/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json} \\
+SKL-03 & \path{10.1371/journal.pcbi.1006839} & component & A0 & \path{research/paper2/p399/main/parallel/M3_mem_prd_skl/SKL-03/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json} \\
+INT-01 & \path{10.1016/j.cognition.2024.105967} & integrated & A0 & \path{research/paper2/p399/main/parallel/M4_int01_06/INT-01/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json} \\
+INT-02 & \path{10.3390/e26060484} & integrated & A0 & \path{research/paper2/p399/main/parallel/M4_int01_06/INT-02/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json} \\
+INT-03 & \path{10.1073/pnas.95.24.14529} & integrated & A0 & \path{research/paper2/p399/main/parallel/M4_int01_06/INT-03/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json} \\
+INT-04 & \path{10.1038/s41562-023-01799-z} & integrated & A0 & \path{research/paper2/p399/main/parallel/M4_int01_06/INT-04/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json} \\
+INT-05 & \path{10.1371/journal.pcbi.1004110} & integrated & A0 & \path{research/paper2/p399/main/parallel/M4_int01_06/INT-05/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json} \\
+INT-06 & \path{10.1371/journal.pcbi.1000765} & integrated & A0 & \path{research/paper2/p399/main/parallel/M4_int01_06/INT-06/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json} \\
+INT-07 & \path{10.1371/journal.pcbi.1003383} & integrated & A0 & \path{research/paper2/p399/main/parallel/M5_int07_11/INT-07/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json} \\
+INT-08 & \path{10.7554/eLife.74445} & integrated & A0 & \path{research/paper2/p399/main/parallel/M5_int07_11/INT-08/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json} \\
+INT-09 & \path{10.1371/journal.pcbi.1005190} & integrated & A0 & \path{research/paper2/p399/main/parallel/M5_int07_11/INT-09/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json} \\
+INT-10 & \path{10.1371/journal.pcbi.1011024} & integrated & A0 & \path{research/paper2/p399/main/parallel/M5_int07_11/INT-10/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json} \\
+INT-11 & \path{10.1371/journal.pcbi.1014093} & integrated & A0 & \path{research/paper2/p399/main/parallel/M5_int07_11/INT-11/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json} \\
+INT-12 & \path{10.1371/journal.pcbi.1006116} & integrated & A0 & \path{research/paper2/p399/main/parallel/M6_int12_16/INT-12/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json} \\
+INT-13 & \path{10.1371/journal.pcbi.1014796} & integrated & A0 & \path{research/paper2/p399/main/parallel/M6_int12_16/INT-13/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json} \\
+INT-14 & \path{10.1371/journal.pcbi.1007594} & integrated & A0 & \path{research/paper2/p399/main/parallel/M6_int12_16/INT-14/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json} \\
+INT-15 & \path{10.1371/journal.pcbi.1010047} & integrated & A0 & \path{research/paper2/p399/main/parallel/M6_int12_16/INT-15/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json} \\
+INT-16 & \path{10.1371/journal.pcbi.1004060} & integrated & A0 & \path{research/paper2/p399/main/parallel/M6_int12_16/INT-16/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json} \\
+\bottomrule
+\end{longtable}
+\endgroup
 
-Source-defined hierarchy, recurrence, gating, planner state, memory, or belief state is compatible with A0. A1 and A2 count only reconstruction-added structure. The certified prospective result remains immutable:
-\[
-A0=40,\qquad A1=0,\qquad A2=0.
-\]
+The 40 exact DOIs have zero overlap with the original 60-claim source manifest. DOI disjointness is not treated as genealogical independence.
 
-\section{Two prospective representation baselines}
+\section{Prospective representation baselines}
 
-The central hostile-review question has two readings. The first uses the original A0/A1/A2 decision variable: does a weaker representation require a \emph{new mechanism} once source-defined mechanisms remain available? The second uses the stricter direct-preservation objective: does a weaker representation keep the selected distinctions first-class without explicit re-exposure? These are not equivalent.
+The original A-state semantics and direct-preservation semantics answer different questions. These tables are retained because the distinction is central to the manuscript's negative result.
 
-\subsection{Encoding-permissive composition baseline}
+\subsection{Encoding-permissive A-state closure}
 
-The tested arms are the full working basis, the dynamic backbone \(\{X,K,T\}\), the POMDP-like view \(\{X,P,K,Q,T,\rho/O\}\), and four single-role ablations removing \(\Pi\), \(C\), \(P\), or \(T\).
+Under the original A-state semantics, representation-only recoding does not count as a reconstruction-added mechanism.
 
-Under the original A-state semantics, representation-only recoding is not a reconstruction-added mechanism. The frozen encoding contract permits source-defined boundaries, constraints, criteria, interfaces, observations, and temporal markers to remain scientifically unchanged while being represented inside more generic state/transition/interface structure. For example, a boundary can be carried as source-defined typing on \(X\), a criterion as source-defined parameterization of \(X/K\), and an observation as a typed carrier plus source-defined readout mapping. Such recoding may destroy first-class role identity, but it does not add a coordinator, adapter, or persistent state.
-
-The result is:
-\begin{table}[htbp]
-\centering
-\caption{Encoding-permissive A-state closure.}
+\begin{center}
 \begin{tabular}{lrrr}
 \toprule
 Arm & A0 & A1 & A2 \\
@@ -141,23 +217,15 @@ Minus \(P\) & 40 & 0 & 0 \\
 Minus \(T\) & 40 & 0 & 0 \\
 \bottomrule
 \end{tabular}
-\end{table}
+\end{center}
 
-This confirms the reviewer-level triviality concern in the relevant sense: prospective 40/40 A0 does not discriminate the exact comparison basis. It supports the narrower claim that no reconstruction-added coordination mechanism is required for the 40 source models under any tested encoding-capable view.
+Thus prospective 40/40 A0 does not select the exact role inventory. It supports the narrower no-reconstruction-added-coordinator claim under the tested encoding-capable views.
 
-Machine-readable authority:
-\begin{itemize}[leftmargin=*]
-\item \path{research/paper2/p399/main/integration/M11/M11_ENCODING_PERMISSIVE_COMPOSITION_BASELINE_SPEC_v1.json};
-\item \path{research/paper2/p399/main/integration/M11/M11_ENCODING_PERMISSIVE_COMPOSITION_BASELINE_RESULTS_v1.json}.
-\end{itemize}
+\subsection{Direct-preservation closure result}
 
-\subsection{Direct-preservation closure control}
+Here a declared distinction must remain first-class or be explicitly re-exposed.
 
-The separately frozen direct-preservation control uses the same arms but charges preservation debt when a declared source distinction is no longer first-class. A0 requires no preservation debt. A1 is assigned when every omitted distinction can be re-exposed by a load-bearing but stateless structure whose semantic content is already source-defined. This contract forbids hiding the distinction inside an opaque generic state/transition encoding.
-
-\begin{table}[htbp]
-\centering
-\caption{Direct-preservation closure result on the same frozen 40 rows.}
+\begin{center}
 \begin{tabular}{lrrr}
 \toprule
 Arm & A0 & A1 & A2 \\
@@ -171,76 +239,183 @@ Minus \(P\) & 0 & 40 & 0 \\
 Minus \(T\) & 0 & 40 & 0 \\
 \bottomrule
 \end{tabular}
-\end{table}
+\end{center}
 
-The two baselines jointly delimit the inference. Generic encodability is broad enough that all tested views can remain A0, but only the full working basis keeps the declared distinctions directly available without stateless re-exposure. The prospective no-added-coordinator result and the basis-selection argument are therefore supported by different evidence.
+This is a representation diagnostic under the declared preservation rule, not independent empirical validation.
 
-Direct-preservation machine-readable authority:
+\section{Lossless and lossy representation controls}
+
+TAIF is a lossless invertible non-uniqueness control. CPCG is the deliberately lossy rival. Under CPCG, 206 bounded objects become 143 CPCG signatures; 63/99 original cross-stratum families collide; 62 CPCG signatures retain cross-stratum support; and 58/60 claims participate in at least one cross-stratum CPCG signature. The ATT01--BLF01 shared bounded-reuse witness survives.
+
+These counts show both collapse and survival under one lossy rival. They do not establish representation neutrality.
+
+Machine-readable authority:
 \begin{itemize}[leftmargin=*]
-\item \path{research/paper2/p399/main/integration/M11/M11_PROSPECTIVE_COMPARATOR_SPEC_v1.json};
-\item \path{research/paper2/p399/main/integration/M11/M11_PROSPECTIVE_COMPARATOR_RESULTS_v1.json}.
-\end{itemize}
-
-\section{Representation-sensitivity controls}
-
-\subsection{TAIF: lossless non-uniqueness}
-
-The Tagged Admissibility--Interface Factorization maps the original role distinctions into five first-class families \(\{X,A,I,K,T\}\), retaining subtype tags that make the map invertible. It round-trips the nine role atoms, all eight working-basis axes, all 60 reverse projections, and all 206 bounded objects. Its scientific role is to demonstrate that the exact first-class factorization is not unique. Because it is invertible, it is not treated as the principal robustness test.
-
-\subsection{CPCG: non-invertible coarse process representation}
-
-The Coarse Process--Constraint Graph uses:
-\[
-\{N,G,I,E,T\},
-\]
-where \(N\) merges state/carrier and partition/boundary roles, \(G\) merges constraints and criteria, \(I\) merges probe/intervention and observation/readout, \(E\) collapses non-temporal transformation/dependence kinds, and \(T\) collapses detailed temporal subtypes to temporal presence/order.
-
-The projection deliberately discards fine role strings, control subtype names, non-temporal relation kinds, and temporal subtype distinctions. It is therefore non-injective.
-
-The frozen result is:
-\begin{itemize}[leftmargin=*]
-\item 206 bounded objects \(\rightarrow\) 143 CPCG signatures;
-\item 37 CPCG collision groups among originally distinct archetypes;
-\item 63/99 original cross-stratum families collide with another family;
-\item 62 CPCG signatures still have cross-stratum support;
-\item 58/60 claims participate in at least one cross-stratum CPCG signature;
-\item the ATT01--BLF01 different-label/shared-structure witness remains shared.
-\end{itemize}
-
-The result is descriptive sensitivity under one lossy rival. It is not representation neutrality and does not identify a true five-family ontology.
-
-Machine-readable specification and result:
-\begin{itemize}[leftmargin=*]
+\item \path{research/paper2/p399/main/integration/M10/M10_RIVAL_BASIS_SENSITIVITY_v1.json} (lossless TAIF result);
 \item \path{research/paper2/p399/main/integration/M11/M11_LOSSY_RIVAL_SPEC_v1.json};
-\item \path{research/paper2/p399/main/integration/M11/M11_LOSSY_RIVAL_PREFREEZE_AMENDMENT_v1.json};
 \item \path{research/paper2/p399/main/integration/M11/M11_LOSSY_RIVAL_RESULTS_v1.json}.
 \end{itemize}
 
-\section{Two-way label witness}
+\section{Independent-human re-adjudication materials}
 
-The different-label direction is illustrated by ATT01 and BLF01, which retain a shared bounded object despite different historical labels. The converse direction is illustrated by MEM04 and CNC05. Both frozen records include the historical label \emph{semantic memory}, but their bounded support sets are disjoint. MEM04 supports partition/state/temporal and history-indexed state objects; CNC05 supports state-to-outcome dependence objects. Their CPCG signature sets also remain disjoint.
+Independent human re-adjudication remains \textbf{NOT PERFORMED}. M12 prepares a deterministic validation sample and scoring infrastructure but reports no agreement statistic.
 
-This pair was selected after same-label candidates had been inspected and is therefore an expository witness, not a predeclared prevalence or hypothesis test. Authority:
-\path{research/paper2/p399/main/integration/M11/M11_SAME_LABEL_WORKED_EXAMPLE_v1.json}.
+The frozen sampling rule is SHA256 ascending rank under
+\path{M12-HUMAN-v1|<M11-parent>|<tag>|<id>|<doi>}.
+The claim module selects two cases from each of the eight primary strata plus four challenge cases. The prospective module selects six component and four integrated papers.
 
-\section{Single-adjudicator and reproducibility boundary}
+\subsection{Twenty metadata-masked claim cases}
 
-Independent human re-adjudication was not performed. Language-model checks, Lean proofs, deterministic continuous integration, synthetic reachability tests, real-source counterfactual perturbations, and comparator controls test different properties. None is counted as an independent human coder.
+The repository HCxx preparation files withhold original slot, DOI, authors, venue, and historical construct labels. For actual coder distribution, a stricter export is generated by \path{scripts/paper2_m12_export_strict_blind_packet.py}: it additionally removes original normalized node-role labels, relation-kind labels, and source identity locators while retaining scientific descriptions and the supplied bounded candidates. This is still downstream metadata/lexical masking rather than independent source extraction, and scientific content can itself reveal topic identity; conceptual blindness is therefore not established.
 
-The supported claim is:
-\begin{quote}
-Procedural auditability is established; inter-rater reliability remains unmeasured.
-\end{quote}
+\begingroup
+\small
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.09\textwidth} >{\raggedright\arraybackslash}p{0.12\textwidth} >{\raggedright\arraybackslash}p{0.48\textwidth} >{\raggedright\arraybackslash}p{0.16\textwidth}}
+\caption{Frozen 20-claim human re-adjudication sample.}\label{tab:human-claims}\\
+\toprule
+Case & Source slot & DOI & Module \\
+\midrule
+\endfirsthead
+\toprule
+Case & Source slot & DOI & Module \\
+\midrule
+\endhead
+HC01 & MEM02 & \path{10.1017/S0140525X01003922} & claim \\
+HC02 & MEM01 & \path{10.1037/0033-295X.99.2.195} & claim \\
+HC03 & LRN03 & \path{10.1126/science.1199327} & claim \\
+HC04 & LRN05 & \path{10.1126/science.274.5294.1926} & claim \\
+HC05 & SKL03 & \path{10.1152/jn.00856.2011} & claim \\
+HC06 & SKL01 & \path{10.3758/BF03196276} & claim \\
+HC07 & ATT03 & \path{10.1037/0033-295X.108.3.624} & claim \\
+HC08 & ATT02 & \path{10.1037/0096-1523.21.3.451} & claim \\
+HC09 & PRD02 & \path{10.1126/science.7569931} & claim \\
+HC10 & PRD03 & \path{10.1038/nrn3838} & claim \\
+HC11 & CTL01 & \path{10.1038/nn963} & claim \\
+HC12 & CTL04 & \path{10.1162/089976606775093909} & claim \\
+HC13 & BLF02 & \path{10.1037/0033-295X.111.1.3} & claim \\
+HC14 & BLF06 & \path{10.1038/nn.2949} & claim \\
+HC15 & CNC03 & \path{10.1207/s15516709cog0702_3} & claim \\
+HC16 & CNC06 & \path{10.1037/0033-295X.114.2.245} & claim \\
+HC17 & CH08 & \path{10.1016/j.neuroscience.2005.08.023} & claim \\
+HC18 & CH11 & \path{10.1007/BF00122574} & claim \\
+HC19 & CH05 & \path{10.3758/BF03196322} & claim \\
+HC20 & CH12 & \path{10.1037/0033-295X.111.4.1036} & claim \\
+\bottomrule
+\end{longtable}
+\endgroup
 
-Accordingly, exact counts should be read as results under the frozen source review and structural adjudication, not as estimates of inter-rater agreement. External re-adjudication remains a separate validation opportunity.
+Coder tasks are: Grammar-v0 role set, FULL/PARTIAL/RESIDUAL verdict, and supplied bounded-candidate membership. Reference answers are stored separately and must not be distributed during blind coding.
 
-\section{Repository and continuous-integration role}
+\subsection{Ten prospective source-first cases}
 
-Deterministic scripts verify arithmetic, immutable scientific invariants, comparator counts, CPCG counts, manuscript claim boundaries, and strict LaTeX compilation. Continuous integration establishes that the reported artifacts are mutually consistent at an exact repository state. It does not establish empirical adequacy or philosophical correctness.
+\begingroup
+\small
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.09\textwidth} >{\raggedright\arraybackslash}p{0.13\textwidth} >{\raggedright\arraybackslash}p{0.49\textwidth} >{\raggedright\arraybackslash}p{0.16\textwidth}}
+\caption{Frozen 10-paper prospective re-adjudication sample.}\label{tab:human-prospective}\\
+\toprule
+Case & Paper ID & DOI & Arm \\
+\midrule
+\endfirsthead
+\toprule
+Case & Paper ID & DOI & Arm \\
+\midrule
+\endhead
+HP01 & CNC-03 & \path{10.7554/eLife.77185} & component \\
+HP02 & LRN-02 & \path{10.1371/journal.pcbi.1007963} & component \\
+HP03 & PRD-01 & \path{10.1038/s41562-024-01930-8} & component \\
+HP04 & PRD-02 & \path{10.1371/journal.pcbi.1001003} & component \\
+HP05 & CTL-02 & \path{10.7554/eLife.12029} & component \\
+HP06 & SKL-03 & \path{10.1371/journal.pcbi.1006839} & component \\
+HP07 & INT-02 & \path{10.3390/e26060484} & integrated \\
+HP08 & INT-07 & \path{10.1371/journal.pcbi.1003383} & integrated \\
+HP09 & INT-11 & \path{10.1371/journal.pcbi.1014093} & integrated \\
+HP10 & INT-04 & \path{10.1038/s41562-023-01799-z} & integrated \\
+\bottomrule
+\end{longtable}
+\endgroup
 
-The final revision workflow is
-\path{.github/workflows/p399-main-m11-discriminative-baselines.yml}.
-Its audit script is
-\path{scripts/paper2_m11_discriminative_baselines_audit.py}.
+Each repository HPxx preparation file contains the frozen source-first decomposition copied from the paper's exact lane head while withholding the architectural-outcome answer. For coder distribution, the strict export also removes explicit paper ID, DOI, corpus arm, repository path, lane head, and source-lock identifiers. The scientific decomposition itself is retained, so topic or lineage inference can still occur. The coder chooses A0/A1/A2/UNDERDETERMINED/FAILURE and separately records whether reconstruction-added stateless or persistent structure is required.
+
+Materials:
+\begin{itemize}[leftmargin=*]
+\item sample: \path{research/paper2/p399/main/integration/M12/M12_HUMAN_READJUDICATION_SAMPLE_v1.json};
+\item instructions: \path{research/paper2/p399/main/integration/M12/human_validation/README.md};
+\item blank forms: \path{research/paper2/p399/main/integration/M12/human_validation/M12_HUMAN_CLAIM_CODER_FORM_v1.csv} and \path{research/paper2/p399/main/integration/M12/human_validation/M12_HUMAN_PROSPECTIVE_CODER_FORM_v1.csv};
+\item strict coder export: \path{scripts/paper2_m12_export_strict_blind_packet.py};
+\item scorer: \path{scripts/paper2_m12_score_human_readjudication.py}.
+\end{itemize}
+
+The scorer refuses incomplete forms. It can compute exact agreement, Cohen's kappa when defined, role-wise precision/recall/F1, bounded-candidate agreement, prospective-state agreement, and a disagreement ledger only after actual completed responses are supplied.
+
+\section{Label suppression and conceptual-blindness boundary}
+
+Historical construct labels are excluded from the structural comparison calculation. This prevents direct lexical identity from deciding similarity. It does \emph{not} show that the author who constructed and reviewed the source-grounded records was conceptually blind to the scientific constructs under discussion.
+
+Accordingly, the M12 claim packets test downstream agreement and metadata/lexical leakage after source coding has already been frozen. A stronger conceptual-blindness study would require a second human to read the original sources independently and construct new structured claim records under a separately frozen extraction rubric. That study has not been performed.
+
+\section{Semantic-memory downstream application}
+
+MEM04 and CNC05 are both historically indexed by \emph{semantic memory}, but they use that label in different claim roles. Their frozen bounded-archetype overlap is zero, and their CPCG projected-signature overlap is also zero.
+
+The licensed conclusion is limited: a label-only route to structural identity is evidentially insufficient for this pair. A unified semantic-memory capacity remains open. It would require additional target alignment, granularity alignment, a declared cross-source preservation map, rival-representation or perspicuity warrant, and independent capacity-level mechanistic, functional, or invariance evidence.
+
+Authority: \path{research/paper2/p399/main/integration/M12/M12_SEMANTIC_MEMORY_DOWNSTREAM_APPLICATION_v1.json}.
+
+
+\section{Constructed A-state reachability and perturbation controls}
+
+These controls are preserved here because they test the classification rule rather than supply observed corpus frequencies.
+
+\subsection{Matched synthetic reachability}
+
+A post hoc matched calibration used a strict dynamical family and a POMDP-like family, each with a direct case, a typed stateless-bridge case, and a history-sensitive persistent-bridge case. The constructed expected outcomes were therefore two A0, two A1, and two A2 cases, and all six were reached as designed.
+
+The A1 construction uses incompatible declared port types that can be repaired by an explicit stateless map. The A2 construction requires bridge output to depend on the immediately preceding binary input; a present-input-only function is insufficient, while a one-bit persistent bridge realizes the requirement. The associated Lean formalization verifies the declared minimal-reconstruction partition and the stateful obstruction. This is a reachability/control result, not an empirical frequency estimate or independent adjudication.
+
+\subsection{Real-source-derived perturbations}
+
+Two source-derived structures were damaged counterfactually without changing their certified source outcomes.
+
+\begin{center}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.12\textwidth} >{\raggedright\arraybackslash}p{0.38\textwidth} >{\raggedright\arraybackslash}X}
+\toprule
+Source & Declared ablation & Least faithful repair \\
+\midrule
+INT-10 & Hide the source-defined BG-selected action/CPG-parameter mediator while retaining the requirement that cerebellar fine-tuning consume the BG result. & A1: one reconstruction-added stateless typed bridge restores the source-declared transfer; no new persistent state is required. \\
+INT-16 & Hide source-defined traces/tags while retaining delayed eligibility-dependent plasticity and the source requirement that traces/tags bridge the delay. & A2: present-input-only repair is insufficient; faithful reconstruction requires added history-bearing eligibility/tag state. \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+These are constructed counterfactual controls. They do not modify the certified prospective result A0=40, A1=0, A2=0 and do not support prevalence inference.
+
+\section{System--environment--experiment typing}
+
+The structural comparison distinguishes the modeled cognitive system \(G_{\mathrm{cog}}\), environment \(W\), cross-boundary coupling \(\Gamma\), experimental protocol \(E_{\mathrm{exp}}\), and a realized finite run/history \(R\). Three non-identities are preserved:
+
+\[
+K\neq\Gamma,\qquad
+C\neq\text{experimental condition},\qquad
+P_{\mathrm{in}}/P_{\mathrm{out}}\neq\text{experimental schedule}.
+\]
+
+The distinction is architectural rather than isolationist. A dynamical, embodied, enactive, or extended model may draw the system boundary broadly and may treat environment coupling as constitutive. The method requires the selected boundary to be stated so that an experimental manipulation or environmental carrier is not automatically redescribed as an internal cognitive-system role.
+
+A finite experiment is also treated as a cut \(t_0\) through a potentially longer history rather than as the beginning of the cognitive system. Admissibility of \(X_{t_0}\), the realized state at the cut, and the experimental preparation that helped produce it are kept distinct. Earlier system history, environment coupling, retained structure, and preparation may all contribute. This prevents an initialization primitive from being inferred merely from the presence of an experimental start.
+
+\section{Repository-only provenance}
+
+The following materials remain repository-native rather than reproduced line-by-line in this PDF:
+
+\begin{itemize}[leftmargin=*]
+\item complete machine-readable structured claim records and source locators;
+\item the full 40-row M9B paper-level evidence object, including lane heads, architectural outcome blobs, unresolved evidence, and genealogy annotations;
+\item exact source-first decomposition JSON for all 40 prospective papers;
+\item per-paper architectural outcome artifacts;
+\item complete blob-hash and workflow ancestry;
+\item reference keys for the human re-adjudication packet.
+\end{itemize}
+
+This separation is intentional: the PDF supplement contains the rosters and compact index promised by the main article, while the repository preserves the complete executable provenance.
 
 \end{document}

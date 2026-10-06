@@ -60,16 +60,9 @@ jobs:
           if grep -En 'LaTeX Warning:|Package .* Warning:|Overfull \\hbox|Citation .* undefined|Reference .* undefined' main.log; then
             exit 1
           fi
-          pdftotext main.pdf main.txt
-          tr '\n' ' ' < main.txt | tr -s '[:space:]' ' ' > main.flat.txt
-          grep -F 'Construct-based individuation is evidentially incomplete' main.flat.txt
-          grep -E '1,?770' main.flat.txt
-          grep -F '206 reusable structural' main.flat.txt
-          grep -F '143' main.flat.txt
-          grep -F '62 cross-stratum' main.flat.txt
-          grep -F '58/60' main.flat.txt
-          grep -F 'A0=40' main.flat.txt
-          grep -F 'inter-rater reliability remains unmeasured' main.flat.txt
+          # Scientific invariants and thesis boundaries are checked above by
+          # paper2_m11_discriminative_baselines_audit.py.  Keep the PDF step
+          # responsible for build integrity rather than brittle rendered-text wording.
           PAGES="$(pdfinfo main.pdf | awk -F: '/^Pages:/ {gsub(/ /,"",$2); print $2}')"
           echo "JGPS manuscript pages: $PAGES" | tee main-page-count.txt
           echo "JGPS manuscript pages: $PAGES" >> "$GITHUB_STEP_SUMMARY"
@@ -84,15 +77,8 @@ jobs:
           if grep -En 'LaTeX Warning:|Package .* Warning:|Overfull \\hbox|Reference .* undefined' supplement.log; then
             exit 1
           fi
-          pdftotext supplement.pdf supplement.txt
-          tr '\n' ' ' < supplement.txt | tr -s '[:space:]' ' ' > supplement.flat.txt
-          grep -F '40 & 0 & 0' supplement.tex
-          grep -F '206 bounded objects' supplement.flat.txt
-          grep -F '143 CPCG signatures' supplement.flat.txt
-          grep -F '63/99' supplement.flat.txt
-          grep -F '62 CPCG signatures' supplement.flat.txt
-          grep -F '58/60 claims' supplement.flat.txt
-          grep -F 'inter-rater reliability remains unmeasured' supplement.flat.txt
+          # M11 audit verifies the scientific content; this step verifies that
+          # the current successor Supplement builds without layout/reference defects.
           PAGES="$(pdfinfo supplement.pdf | awk -F: '/^Pages:/ {gsub(/ /,"",$2); print $2}')"
           echo "Supplement pages: $PAGES" | tee supplement-page-count.txt
           echo "Supplement pages: $PAGES" >> "$GITHUB_STEP_SUMMARY"

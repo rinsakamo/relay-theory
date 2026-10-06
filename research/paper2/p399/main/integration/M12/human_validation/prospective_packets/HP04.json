@@ -1,0 +1,108 @@
+{
+  "schema": "relaytheory.p399.main.m12.human_prospective_packet_case.v1",
+  "case_id": "HP04",
+  "doi": "10.1371/journal.pcbi.1001003",
+  "arm": "component",
+  "source_first_artifact_path": "research/paper2/p399/main/parallel/M3_mem_prd_skl/PRD-02/PASS_A_SOURCE_FIRST_DECOMPOSITION_v1.json",
+  "source_first_lane_head": "904d0ea3921a93617cef19d275f4adafbbbb6220",
+  "source_first_artifact": {
+    "schema": "relaytheory.p399.main.m3.pass_a_source_first.v1",
+    "slot": "PRD-02",
+    "doi": "10.1371/journal.pcbi.1001003",
+    "chronology": {
+      "stage": "A",
+      "source_lock": "SOURCE_AUTHORITY_LOCK_v1.json",
+      "source_first": true,
+      "frozen": true,
+      "result_informed": false
+    },
+    "native_model": "Bayesian reinforcement-learning account that maintains uncertainty over reward parameters and latent reward-coupling structure",
+    "modeled_internal_state": [
+      "posterior/belief over reward probabilities",
+      "posterior probability over independent versus coupled reward-generation structure",
+      "belief-state action values"
+    ],
+    "memory_representation_state": [
+      "belief sufficient statistics/posterior encode accumulated evidence; raw trial history remains external input history"
+    ],
+    "prediction_state": [
+      "posterior predictive reward/value consequences conditional on structure belief"
+    ],
+    "learned_parameters": [
+      "updated reward and structure beliefs; distinct from fixed experimenter candidate-model definitions"
+    ],
+    "action_skill_variables": [
+      "chosen option/action under belief-state value; not a motor-skill representation"
+    ],
+    "observations": [
+      "choice outcome/reward observations"
+    ],
+    "update_transition_rules": [
+      "Bayesian update of reward parameters and structure probability from observed rewards"
+    ],
+    "retrieval_readout_rules": [
+      "belief state is read to compute action values"
+    ],
+    "prediction_generation_operators": [
+      "posterior predictive reward/value calculation under structure uncertainty"
+    ],
+    "learning_plasticity_rules": [
+      "Bayesian evidence update; Q-learning is a comparator, not central update rule"
+    ],
+    "temporal_ordering": [
+      "observe reward",
+      "update reward/structure belief",
+      "compute belief-state values/information benefit",
+      "select next action"
+    ],
+    "system_world_boundary": {
+      "inside": [
+        "reward/structure belief state",
+        "Bayesian update/value machinery"
+      ],
+      "outside": [
+        "experimenter-defined candidate reward-generating task",
+        "actual reward observations"
+      ]
+    },
+    "explicit_interfaces": [
+      "reward observation/update",
+      "action-value query/selection"
+    ],
+    "model_variants": [
+      "central structure-learning BRL",
+      "fixed independent structure",
+      "fixed coupled structure",
+      "model-free Q-learning comparator"
+    ],
+    "negative_adverse_results": [
+      "Independent/coupled reward-generation alternatives are experimenter-defined candidate structures, not evidence of a universal internal generative model.",
+      "The model explicitly ignores dependencies across trials and the source says reward-structure learning ultimately must integrate temporal-dependency learning.",
+      "A nontrivial subset of choices is not captured by the compared models; fit does not establish neural implementation.",
+      "Q-learning with softmax is a comparator and must not be merged into the central model."
+    ],
+    "anti_conflation_assertions": [
+      "raw reward history is not identical to internal posterior state",
+      "experimenter-defined hypothesis space is distinct from subject/model belief over that space",
+      "posterior prediction is not a persistent coordinator separate from belief state",
+      "Q-learning comparator is not part of the target architecture"
+    ]
+  },
+  "prohibited_during_blind_coding": [
+    "Do not inspect ARCHITECTURAL_OUTCOME artifacts or M9B answer table.",
+    "Do not inspect M12 reference keys."
+  ],
+  "decision_rule": {
+    "A0": "Source-defined mechanisms suffice; no reconstruction-added load-bearing mechanism.",
+    "A1": "A0 fails; reconstruction-added load-bearing stateless mediation is necessary.",
+    "A2": "A0 and A1 fail; reconstruction-added load-bearing persistent/stateful structure is necessary.",
+    "UNDERDETERMINED": "Source evidence does not decide.",
+    "FAILURE": "No faithful A0/A1/A2 reconstruction is supported."
+  },
+  "coder_tasks": {
+    "state": "A0/A1/A2/UNDERDETERMINED/FAILURE",
+    "stateless_added": "TRUE/FALSE/UNDETERMINED",
+    "persistent_added": "TRUE/FALSE/UNDETERMINED",
+    "notes": "Cite source-first evidence fields."
+  }
+}
