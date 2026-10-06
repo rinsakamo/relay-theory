@@ -71,7 +71,9 @@ def main():
     assert sum(r["final_state"]=="A0_FIDELITY" for r in rows)==40
     assert sum(r["corpus_arm"]=="component" and r["final_state"]=="A0_FIDELITY" for r in rows)==24
     assert sum(r["corpus_arm"]=="integrated" and r["final_state"]=="A0_FIDELITY" for r in rows)==16
-    assert m9b["independent_human_readjudication"]=="NOT_PERFORMED"
+    assert m9b["independent_human_readjudication"]["performed"] is False
+    assert m9b["independent_human_readjudication"]["claim"] == "NOT_CLAIMED"
+    assert all(r["independent_human_readjudication"] == "NOT_PERFORMED" for r in rows)
 
     i10=load(M10/"frozen_inputs/INT10_PASS_A.json")
     i10o=load(M10/"frozen_inputs/INT10_ARCHITECTURAL_OUTCOME.json")
