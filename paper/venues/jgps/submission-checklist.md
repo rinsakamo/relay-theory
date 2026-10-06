@@ -50,51 +50,51 @@ Checked against the Journal for General Philosophy of Science author instruction
 - [x] Human source review and author accountability stated explicitly.
 - [x] Manuscript is not simultaneously submitted elsewhere.
 
-## Deep Research hostile review and final framing correction
+## Major-revision framing correction
 
 - [x] MAJOR REVISION review adjudicated.
-- [x] Freeze chronology / anti-circularity made explicit.
+- [x] Pre-specification chronology / anti-circularity made explicit.
 - [x] Whole-claim failure and secondary post-atlas reconstruction separated epistemically.
-- [x] ROLE_GAP=0 clarified as an observed zero in an admissible residual class.
+- [x] The zero additional-role residual outcome is clarified as an observed result in an admissible residual class.
 - [x] Dynamics/POMDP comparator clarified as representational distinction-loss testing, not model-performance benchmarking.
-- [x] System/World boundary clarified as application-relative and compatible with environmentally coupled cognition.
+- [x] System--environment boundary clarified as application-relative and compatible with environmentally coupled cognition.
 - [x] JGPS/general-philosophy significance strengthened.
 - [x] Peer-reviewed literature added: Janssen et al. (2017), Raja et al. (2021), Favela & Raja (2026).
-- [x] Genericity/triviality objection answered without claiming novelty for individual Grammar-v0 roles.
-- [x] Grammar v0 explicitly stated not to be a demarcation criterion for cognition.
+- [x] Genericity/triviality objection answered without claiming novelty for individual structural-role-grammar roles.
+- [x] The structural role grammar is explicitly stated not to be a demarcation criterion for cognition.
 - [x] Failure/recovery sequence retained as the core methodological result.
 
 ## Scientific guardrails
 
 - [x] 1770/1770 whole-claim failure preserved prominently.
-- [x] Archetype recovery labeled secondary post-atlas reconstruction.
-- [x] Grammar-v0 role granularity not claimed unique.
-- [x] ROLE_GAP=0 reported as corpus-relative residual result.
+- [x] Reusable-subobject recovery labeled secondary post-atlas reconstruction.
+- [x] Structural-role-grammar granularity not claimed unique.
+- [x] The zero additional-role residual result is reported as corpus-relative.
 - [x] Comparator results described as strict direct-preservation tests, not non-encodability theorems.
-- [x] System/World boundary described as application-relative.
+- [x] System--environment boundary described as application-relative.
 - [x] Independent extraction agreement explicitly not established.
 - [x] No universal ontology / absolute mathematical minimality claim.
 - [x] No full measurement-theory claim (no quantitative scale, calibration, error-model, identifiability, or invariance theorem is asserted).
 - [x] Structural comparison basis terminology is used consistently where full measurement-theory obligations would otherwise be implied.
 
 
-## Prospective MAIN40 composition extension
+## Prospective 40-paper composition extension
 
-- [x] The original 60-claim failure/recovery study remains the primary historical analysis and is not overwritten by P399.
-- [x] A separately frozen single-adjudicator, source-identity-separated prospective 40-paper compatibility test is reported.
-- [x] Exact DOI overlap between MAIN40 and the original 60-claim source manifest is 0.
+- [x] The original 60-claim failure/recovery study remains the primary historical analysis and is not overwritten by the prospective extension.
+- [x] A separately pre-specified single-adjudicator, source-identity-separated prospective 40-paper compatibility test is reported.
+- [x] Exact DOI overlap between the prospective 40-paper corpus and the original 60-claim source manifest is 0.
 - [x] DOI disjointness is not described as genealogical or statistical independence.
-- [x] A0/A1/A2 are defined in the predeclared direct → stateless-adapter → stateful-mechanism order and operationalized as a fail-closed decision tree.
-- [x] MAIN40 result is reported exactly as A0=40, A1=0, A2=0.
+- [x] A0/A1/A2 are defined in the predeclared direct → stateless-adapter → stateful-mechanism order and operationalized as a conservative decision tree.
+- [x] The prospective 40-paper result is reported exactly as A0=40, A1=0, A2=0.
 - [x] Component arm is 24/24 A0 and integrated arm is 16/16 A0.
 - [x] Source-defined gating, hierarchy, memory, belief, planners, accumulators, recurrence, and temporal order are not double-counted as reconstruction-added A2.
-- [x] W9/M7 genealogy limitations remain explicit; 40 papers are not treated as independent statistical replications.
+- [x] Genealogy limitations remain explicit; 40 papers are not treated as independent statistical replications.
 - [x] No naive binomial significance, independence-based p-value, or unmodeled effective sample size is claimed.
 - [x] Zero A1/A2 does not become a universal impossibility claim.
-- [x] M9-A post-hoc matched Dynamic/POMDP-like calibration demonstrates A0/A1/A2 reachability without re-adjudicating MAIN40.
+- [x] The post hoc matched Dynamic/POMDP-like calibration demonstrates A0/A1/A2 reachability without re-adjudicating the prospective corpus.
 - [x] Independent human re-adjudication is explicitly reported as not performed; procedural auditability is not presented as inter-rater reliability.
-- [x] M9-B exposes a 40-paper audit table and repository freeze chronology.
-- [x] M7 exact integration head and successful 40/40 fail-closed CI receipt are identified in the reproducibility section.
+- [x] The revision exposes a 40-paper audit table and repository pre-specification chronology.
+- [x] Exact repository provenance is retained in supplementary materials rather than exposed as manuscript jargon.
 - [x] The title remains unchanged; the prospective result is framed as source-scoped compatibility evidence rather than independent or population-level validation.
 
 ## Files for Editorial Manager
