@@ -1,0 +1,270 @@
+{
+  "schema": "relaytheory.p399.postmain.self_capability_composition.v1",
+  "status": "POST_MAIN_ENGINEERING_BLUEPRINT",
+  "authority": {
+    "main_m7_head": "48b2cf3c627e030e7131af485206b0013d7e02f1",
+    "reintegration_parent_head": "b60cd3fe4960e84e5ffb007f747ac43a6063c2c8",
+    "main40_A0": 40,
+    "main40_A1": 0,
+    "main40_A2": 0
+  },
+  "execution_interfaces": {
+    "state_access": {
+      "kind": "typed_fabric_over_existing_owners",
+      "semantic_owner": false,
+      "universal_mutable_dictionary": false,
+      "scopes": [
+        "durable",
+        "present",
+        "execution",
+        "operator_local",
+        "external_evidence"
+      ]
+    },
+    "operator": {
+      "hidden_persistent_state_allowed": false,
+      "declares_reads_and_writes": true,
+      "may_request_cognition": "only through an admitted explicit cognition port"
+    },
+    "criterion": {
+      "semantic_owner": false,
+      "hidden_mutation_allowed": false
+    },
+    "port": {
+      "directions": ["P_in", "P_out"],
+      "observation_is_belief": false,
+      "action_proposal_is_execution": false
+    },
+    "scheduler": {
+      "persistent_coordinator": false,
+      "owns_clock": false,
+      "owns_goal": false,
+      "owns_belief": false,
+      "owns_intent": false,
+      "owns_world_model": false
+    }
+  },
+  "capabilities": {
+    "ATT": {
+      "label": "Attention",
+      "kind": "corpus_component",
+      "reads": ["external_evidence", "present"],
+      "writes": ["present.attention_projection"],
+      "operators": ["attention_gate", "priority_normalize", "route_projection"],
+      "criteria": ["relevance", "priority"],
+      "ports": ["observation_in", "selected_projection_out"],
+      "triggers": ["admitted_observation", "present_reprojection"],
+      "dependencies": [],
+      "disable_semantics": "stop routing operators; preserve source state",
+      "relayself_status": "DESIGN_GAP_GENERAL"
+    },
+    "BLF": {
+      "label": "Belief",
+      "kind": "corpus_component",
+      "reads": ["external_evidence", "durable.belief", "present"],
+      "writes": ["durable.belief_or_present_belief"],
+      "operators": ["belief_infer", "belief_update"],
+      "criteria": ["posterior", "confidence"],
+      "ports": ["evidence_in", "belief_query_out"],
+      "triggers": ["new_evidence", "explicit_query"],
+      "dependencies": [],
+      "disable_semantics": "stop inference/update routes; preserve belief state",
+      "relayself_status": "ONTOLOGY_ONLY_GENERAL"
+    },
+    "CNC": {
+      "label": "Concept",
+      "kind": "corpus_component",
+      "reads": ["durable.representation", "present", "external_evidence"],
+      "writes": ["durable.representation_or_present_structure"],
+      "operators": ["compose_representation", "classify_or_reconstruct"],
+      "criteria": ["fit", "predictive_adequacy"],
+      "ports": ["example_in", "structured_readout_out"],
+      "triggers": ["novel_input", "explicit_query", "learning_admission"],
+      "dependencies": [],
+      "disable_semantics": "stop composition/classification routes; preserve retained representation",
+      "relayself_status": "DESIGN_GAP_GENERAL"
+    },
+    "CTL": {
+      "label": "Control",
+      "kind": "corpus_component",
+      "reads": ["present", "execution.intent", "execution.skill", "external_evidence"],
+      "writes": ["execution.intent_or_skill_or_action_transition"],
+      "operators": ["control_select", "action_propose"],
+      "criteria": ["value", "viability", "admissibility"],
+      "ports": ["boundary_state_in", "action_proposal_out"],
+      "triggers": ["decision_epoch", "reconsideration", "skill_feedback"],
+      "dependencies": [],
+      "disable_semantics": "no new embodied control path; existing lifecycle state remains intact",
+      "relayself_status": "PARTIAL_EXISTING"
+    },
+    "LRN": {
+      "label": "Learning",
+      "kind": "corpus_component",
+      "reads": ["external_evidence", "durable.learnable_structure", "execution"],
+      "writes": ["durable.learnable_structure"],
+      "operators": ["governed_parameter_or_structure_update"],
+      "criteria": ["objective", "error", "reward", "validation"],
+      "ports": ["feedback_in", "candidate_update_out"],
+      "triggers": ["governed_learning_event"],
+      "dependencies": [],
+      "disable_semantics": "no durable learning update; source cognition remains available",
+      "relayself_status": "OFF_BY_DEFAULT_REQUIRES_AUTHORITY"
+    },
+    "MEM": {
+      "label": "Memory",
+      "kind": "corpus_component",
+      "reads": ["durable.memory", "present"],
+      "writes": ["durable.memory", "present.retrieval_projection"],
+      "operators": ["memory_retain", "memory_retrieve"],
+      "criteria": ["retrieval_relevance", "retention_admissibility"],
+      "ports": ["memory_write_in", "retrieval_out"],
+      "triggers": ["governed_retention", "retrieval_request"],
+      "dependencies": [],
+      "disable_semantics": "stop memory routes; do not delete retained memory",
+      "relayself_status": "PARTIAL_EXISTING"
+    },
+    "PRD": {
+      "label": "Prediction",
+      "kind": "corpus_component",
+      "reads": ["present", "durable.model_or_predictive_structure", "external_evidence"],
+      "writes": ["operator_local.rollout", "present.prediction"],
+      "operators": ["predict", "rollout", "value_projection"],
+      "criteria": ["expected_value", "evidence", "prediction_error"],
+      "ports": ["state_or_query_in", "prediction_or_value_out"],
+      "triggers": ["explicit_prediction_request", "planning_request", "control_uncertainty"],
+      "dependencies": [],
+      "disable_semantics": "stop predictive routes; preserve learned model state",
+      "relayself_status": "MODEL_SPECIFIC_ONLY"
+    },
+    "SKL": {
+      "label": "Skill",
+      "kind": "corpus_component",
+      "reads": ["execution.intent", "present", "external_evidence", "durable.skill_structure"],
+      "writes": ["execution.skill", "execution.action"],
+      "operators": ["skill_select", "skill_step", "action_propose"],
+      "criteria": ["applicability", "progress", "success_failure"],
+      "ports": ["skill_feedback_in", "action_proposal_out"],
+      "triggers": ["current_intent", "skill_feedback", "decision_epoch"],
+      "dependencies": ["CTL"],
+      "disable_semantics": "do not start new Skill execution; preserve definitions and existing governed state",
+      "relayself_status": "PARTIAL_EXISTING"
+    },
+    "PLAN": {
+      "label": "Planning",
+      "kind": "derived_application",
+      "reads": ["present", "durable.model_or_predictive_structure"],
+      "writes": ["operator_local.planner_state", "present.plan_candidate"],
+      "operators": ["iterative_rollout", "search_expand", "plan_select"],
+      "criteria": ["goal_value", "cost", "constraint"],
+      "ports": ["planning_problem_in", "plan_candidate_out"],
+      "triggers": ["explicit_planning_request", "control_uncertainty"],
+      "dependencies": ["PRD"],
+      "disable_semantics": "stop internal rollout/search; no effect on retained predictive structure",
+      "relayself_status": "DESIGN_GAP_GENERAL"
+    },
+    "HABIT": {
+      "label": "Habit",
+      "kind": "derived_application",
+      "reads": ["durable.habit_structure", "present"],
+      "writes": ["present.action_or_skill_candidate"],
+      "operators": ["direct_policy_or_cached_mapping"],
+      "criteria": ["applicability", "confidence", "viability"],
+      "ports": ["cue_in", "candidate_out"],
+      "triggers": ["compatible_cue"],
+      "dependencies": ["CTL"],
+      "disable_semantics": "bypass habit route and use ordinary control/cognition; preserve retained mapping",
+      "relayself_status": "OFF_BY_DEFAULT_REQUIRES_QUALIFICATION"
+    },
+    "TALK": {
+      "label": "Talk",
+      "kind": "derived_application",
+      "reads": ["present", "durable.memory", "durable.identity"],
+      "writes": ["present.expression"],
+      "operators": ["open_cognition", "expression_render"],
+      "criteria": ["expression_policy", "admissibility"],
+      "ports": ["cognition_context_in", "expression_out"],
+      "triggers": ["explicit_expression_request"],
+      "dependencies": [],
+      "disable_semantics": "no expression generation; no durable state deletion",
+      "relayself_status": "PARTIAL_EXISTING_RELAYENGINE_OPEN"
+    }
+  },
+  "profiles": {
+    "OBSERVER": {
+      "ATT": true,
+      "BLF": true,
+      "CNC": true,
+      "CTL": false,
+      "LRN": false,
+      "MEM": false,
+      "PRD": false,
+      "SKL": false,
+      "PLAN": false,
+      "HABIT": false,
+      "TALK": false
+    },
+    "CONVERSATIONAL_SELF": {
+      "ATT": true,
+      "BLF": true,
+      "CNC": true,
+      "CTL": false,
+      "LRN": false,
+      "MEM": true,
+      "PRD": false,
+      "SKL": false,
+      "PLAN": false,
+      "HABIT": false,
+      "TALK": true
+    },
+    "REACTIVE_EMBODIED_SELF": {
+      "ATT": true,
+      "BLF": true,
+      "CNC": false,
+      "CTL": true,
+      "LRN": false,
+      "MEM": true,
+      "PRD": false,
+      "SKL": true,
+      "PLAN": false,
+      "HABIT": false,
+      "TALK": false
+    },
+    "DELIBERATIVE_EMBODIED_SELF": {
+      "ATT": true,
+      "BLF": true,
+      "CNC": true,
+      "CTL": true,
+      "LRN": false,
+      "MEM": true,
+      "PRD": true,
+      "SKL": true,
+      "PLAN": true,
+      "HABIT": false,
+      "TALK": true
+    },
+    "ADAPTIVE_EMBODIED_SELF": {
+      "ATT": true,
+      "BLF": true,
+      "CNC": true,
+      "CTL": true,
+      "LRN": true,
+      "MEM": true,
+      "PRD": true,
+      "SKL": true,
+      "PLAN": true,
+      "HABIT": true,
+      "TALK": true
+    }
+  },
+  "global_invariants": [
+    "capability toggle is not semantic ownership",
+    "capability OFF never deletes durable state",
+    "scheduler owns no hidden persistent cognition",
+    "operator hidden persistent state is forbidden",
+    "observation is not belief",
+    "action proposal is not authorization or execution",
+    "talk output is not memory, belief, intent or authority",
+    "learning requires target-owner authority and provenance",
+    "habit never bypasses action authorization or consequence monitoring"
+  ]
+}

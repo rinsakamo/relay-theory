@@ -1,0 +1,157 @@
+{
+  "schema": "relaytheory.p399.postmain.relayself_mapping.v1",
+  "status": "ENGINEERING_HANDOFF",
+  "target_repo": "rinsakamo/relay-self",
+  "target_reference": "main",
+  "upstream_blueprint_branch": "paper2/p399-postmain-self-blueprint-20261006",
+  "existing_seams": [
+    {
+      "blueprint": "durable state scope",
+      "relayself": "relay_self.persistent_cognition.PersistentCognition",
+      "status": "IMPLEMENTED_BOUNDED",
+      "notes": "Identity, Memory and appraisal dispositions exist; this must not be replaced by a universal mutable store."
+    },
+    {
+      "blueprint": "present projection",
+      "relayself": "docs/architecture.md Present Projection plus experiment-local projections",
+      "status": "PARTIAL",
+      "notes": "Architectural owner exists conceptually; general executable Present owner is not introduced by this handoff."
+    },
+    {
+      "blueprint": "execution state",
+      "relayself": [
+        "relay_self.intent.IntentCommitment",
+        "relay_self.skill.SkillExecution",
+        "relay_self.action.ActionLifecycle"
+      ],
+      "status": "IMPLEMENTED_BOUNDED",
+      "notes": "Keep owner-local lifecycle linearity."
+    },
+    {
+      "blueprint": "cognition port",
+      "relayself": "relay_self.relay_engine.RelayEngine",
+      "status": "IMPLEMENTED_BOUNDED",
+      "notes": "BOUNDED/THINK/OPEN are execution paths, not persistent cognition owners."
+    },
+    {
+      "blueprint": "scheduler",
+      "relayself": "relay_self.runtime_coordination.coordinate_decision_epoch",
+      "status": "MINIMAL_EXISTING",
+      "notes": "Already explicitly does not own a clock, Present, Intent or Skill state; preserve this boundary."
+    },
+    {
+      "blueprint": "environment port",
+      "relayself": "qualified Mineflayer adapter and environment seams",
+      "status": "TARGET_LOCAL_BOUNDED",
+      "notes": "Adapter evidence remains observation/attestation, not Self-owned world truth."
+    }
+  ],
+  "implementation_slices": [
+    {
+      "id": "S1",
+      "title": "Declarative capability plan",
+      "change_type": "ADDITIVE_METADATA_ONLY",
+      "new_semantic_owner": false,
+      "runtime_behavior_change": false,
+      "deliverables": [
+        "immutable CapabilitySpec",
+        "immutable CapabilityPlan",
+        "dependency validation",
+        "on/off validation",
+        "no state deletion semantics"
+      ],
+      "first_profiles": ["MEM", "CTL", "SKL", "TALK"],
+      "must_not_add": [
+        "generic state dictionary",
+        "global latest state registry",
+        "persistent scheduler state",
+        "automatic capability discovery"
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Concrete operator and criterion descriptors",
+      "change_type": "WRAP_EXISTING_PATHS_FIRST",
+      "new_semantic_owner": false,
+      "runtime_behavior_change": false,
+      "deliverables": [
+        "descriptors around existing Memory retrieval paths",
+        "descriptors around Intent/Skill/Action decision seams",
+        "descriptors around RelayEngine BOUNDED and OPEN calls"
+      ],
+      "must_not_add": [
+        "generic missing-capability implementations",
+        "hidden operator persistence",
+        "unrestricted callback execution"
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Stateless epoch plan compilation",
+      "change_type": "BOUNDED_COORDINATION_EXTENSION",
+      "new_semantic_owner": false,
+      "runtime_behavior_change": true,
+      "deliverables": [
+        "compile enabled declared routes into ordered due work",
+        "keep Action supervision deadline-first",
+        "preserve caller/source-owned state",
+        "invoke cognition only through explicit admitted requests"
+      ],
+      "must_not_add": [
+        "scheduler-owned intent",
+        "scheduler-owned world model",
+        "scheduler-owned belief",
+        "LLM-per-tick loop"
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "Existing-path capability qualification",
+      "change_type": "TEST_AND_QUALIFY",
+      "new_semantic_owner": false,
+      "runtime_behavior_change": "profile-dependent",
+      "deliverables": [
+        "MEM toggle test",
+        "CTL toggle test",
+        "SKL toggle test",
+        "TALK toggle test",
+        "combined reactive/conversational profile tests"
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "New cognitive mechanisms",
+      "change_type": "ONE_MECHANISM_AT_A_TIME",
+      "new_semantic_owner": "only if separately justified",
+      "runtime_behavior_change": true,
+      "order": [
+        "ATT",
+        "BLF",
+        "CNC",
+        "PRD",
+        "PLAN",
+        "LRN",
+        "HABIT"
+      ],
+      "notes": "LRN/HABIT are deliberately late because persistent self-modification requires stronger authority, rollback and invalidation evidence."
+    }
+  ],
+  "grand_null_constraints": [
+    "Do not create a new semantic owner merely because several capabilities need read access.",
+    "Do not create a general Scheduler state owner because execution order exists.",
+    "Do not create a universal Criterion registry with semantic authority.",
+    "Do not promote a capability descriptor into the state it describes.",
+    "Do not make RelayEngine output authority.",
+    "Do not let capability composition bypass existing Intent, Skill and Action lifecycle boundaries."
+  ],
+  "first_code_target": {
+    "repo": "rinsakamo/relay-self",
+    "recommended_slice": "S1",
+    "reason": "S1 makes capability ON/OFF composition executable while adding no new cognitive state owner and no behavior change.",
+    "suggested_files": [
+      "src/relay_self/capability.py",
+      "tests/test_capability.py",
+      "docs/capability-composition.md"
+    ]
+  }
+}
