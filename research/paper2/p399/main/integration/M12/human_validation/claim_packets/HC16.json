@@ -1,0 +1,381 @@
+{
+  "schema": "relaytheory.p399.main.m12.human_claim_packet_case.v1",
+  "case_id": "HC16",
+  "metadata_masking": {
+    "original_slot_withheld": true,
+    "doi_withheld": true,
+    "authors_withheld": true,
+    "venue_withheld": true,
+    "construct_labels_withheld": true,
+    "conceptual_blindness_established": false,
+    "note": "Metadata/lexical masking only; source-grounded semantic content remains."
+  },
+  "source_spans": [
+    {
+      "span_id": "s1",
+      "locator": "Psychological Review 114(2), published pp.245-246, abstract and opening framework: inference from one or a few positive examples by combining prior plausibility with statistical structure; graded uncertainty and sampling context are emphasized"
+    },
+    {
+      "span_id": "s2",
+      "locator": "same article, published pp.250-251, computational-level framework and Equations 1-4: candidate extensions, prior and likelihood terms, posterior weighting, and posterior-weighted probability for applying the label to a new item"
+    },
+    {
+      "span_id": "s3",
+      "locator": "same article, published p.252, probabilistic components and Equation 5: under independent random sampling from the true extension, smaller consistent candidates assign greater likelihood to the same examples, with the relative preference increasing exponentially with sample count; applicability depends on the sampling assumption"
+    },
+    {
+      "span_id": "s4",
+      "locator": "same article, published pp.253-255, Experiment 1: adult one-example versus three-example label-extension task, novel-item test set, and response-frequency pattern across subordinate/basic/superordinate matches"
+    },
+    {
+      "span_id": "s5",
+      "locator": "same article, published pp.256-260, Experiments 2-3: preschool-age participants, simplified label-extension tests, one-example versus three-example evidence, and graded versus sharpened response patterns"
+    },
+    {
+      "span_id": "s6",
+      "locator": "same article, published p.263, Figure 8 and Model Results: predicted probabilities compared with adult and child response frequencies; adult fit changes with an added basic-level prior bias, whereas child data do not require the same added bias"
+    },
+    {
+      "span_id": "s7",
+      "locator": "same article, published pp.263-266, Comparison With Other Models: separate contributions of repeated-sample likelihood weighting and posterior-weighted prediction averaging, plus limits of single-best-candidate and weak-likelihood alternatives"
+    }
+  ],
+  "claim_core": {
+    "claim_type": "mapping",
+    "modality": "probabilistic",
+    "scope": {
+      "conditions": [
+        "one or a few positive labeled examples are evaluated within a structured set of candidate extensions",
+        "likelihood-based sharpening across repeated examples is conditional on the assumed process by which labeled examples were sampled"
+      ],
+      "population": [
+        "adults",
+        "preschool-age children"
+      ],
+      "substrate": [],
+      "task": [
+        "infer which candidate extension a novel label may denote and decide which new objects should also receive that label"
+      ],
+      "temporal_scope": [
+        "conditioning is defined over the currently observed example set; the formal account does not require a particular sequential psychological update algorithm"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "candidate_extension_hypotheses",
+        "role": "state_or_structure",
+        "description": "structured set of candidate subsets of entities that could be the extension of the novel label",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "prior_candidate_weights",
+        "role": "state_or_structure",
+        "description": "probability weights over candidate extensions before conditioning on the currently observed examples",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "observed_positive_examples",
+        "role": "available_information",
+        "description": "one or more observed items that have been positively labeled",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3",
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "sampling_model",
+        "role": "condition",
+        "description": "assumption about the process that generated the positively labeled examples under each candidate extension",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "candidate_likelihood_weights",
+        "role": "state_or_structure",
+        "description": "probabilities assigned to the observed example set under each candidate extension and the assumed sampling process",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "posterior_candidate_weights",
+        "role": "state_or_structure",
+        "description": "probability weights over candidate extensions after conditioning prior weights on the observed example set through the candidate likelihoods",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "novel_item_probe",
+        "role": "probe",
+        "description": "set of previously unlabeled test objects spanning multiple levels of the candidate category hierarchy",
+        "source_span_ids": [
+          "s4",
+          "s5",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "predicted_label_extension_probability",
+        "role": "response_or_outcome",
+        "description": "model-computed probability that the novel label should be applied to a particular new test object",
+        "source_span_ids": [
+          "s2",
+          "s6",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "observed_label_extension_frequency",
+        "role": "response_or_outcome",
+        "description": "empirical frequency with which participants apply the novel label to test objects at each hierarchical level",
+        "source_span_ids": [
+          "s4",
+          "s5",
+          "s6"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "depends_on",
+        "arguments": [
+          "candidate_likelihood_weights",
+          "observed_positive_examples",
+          "sampling_model",
+          "candidate_extension_hypotheses"
+        ],
+        "description": "the probability assigned to the observed examples under a candidate depends on which extension is proposed and on how examples are assumed to have been sampled",
+        "source_span_ids": [
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "depends_on",
+        "arguments": [
+          "posterior_candidate_weights",
+          "prior_candidate_weights",
+          "candidate_likelihood_weights"
+        ],
+        "description": "conditioned candidate weights depend jointly on prior plausibility and the likelihood assigned to the observed examples",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "changes",
+        "arguments": [
+          "observed_positive_examples",
+          "sampling_model",
+          "posterior_candidate_weights"
+        ],
+        "description": "under independent random sampling from the true extension, additional mutually consistent examples increase relative support for smaller consistent candidate extensions, sharpening the conditioned distribution",
+        "source_span_ids": [
+          "s3",
+          "s4",
+          "s5",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r4",
+        "kind": "maps_to",
+        "arguments": [
+          "posterior_candidate_weights",
+          "candidate_extension_hypotheses",
+          "novel_item_probe",
+          "predicted_label_extension_probability"
+        ],
+        "description": "for a new test object, the predicted application probability is the summed conditioned weight of candidate extensions that contain that object",
+        "source_span_ids": [
+          "s2",
+          "s6",
+          "s7"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "maps_to",
+        "arguments": [
+          "novel_item_probe",
+          "observed_label_extension_frequency"
+        ],
+        "description": "the behavioral test yields response frequencies for applying the novel label to new objects at different hierarchical levels",
+        "source_span_ids": [
+          "s4",
+          "s5",
+          "s6"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r6",
+        "kind": "predicts",
+        "arguments": [
+          "predicted_label_extension_probability",
+          "observed_label_extension_frequency"
+        ],
+        "description": "the model-computed probabilities reproduce major graded and sharpened response patterns in the adult and child data, while fitted prior structure differs between the reported adult and child comparisons",
+        "source_span_ids": [
+          "s6",
+          "s7"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  },
+  "candidate_bounded_objects": [
+    {
+      "candidate_id": "A",
+      "structural_object": {
+        "active_axes": [
+          "K",
+          "O",
+          "S"
+        ],
+        "basis_version": "paper2-working-basis-v1",
+        "controls": {},
+        "edges": [
+          {
+            "arguments": [
+              "n2",
+              "n0"
+            ],
+            "conditional_on": [],
+            "family": "basis_relation",
+            "kind": "other",
+            "ordered_arguments": true,
+            "temporal_direction": "unspecified"
+          }
+        ],
+        "nodes": {
+          "n0": {
+            "axis": "O",
+            "required": true,
+            "role": "response_or_outcome",
+            "space": "basis_coordinate"
+          },
+          "n1": {
+            "axis": "O",
+            "required": true,
+            "role": "response_or_outcome",
+            "space": "basis_coordinate"
+          },
+          "n2": {
+            "axis": "S",
+            "required": true,
+            "role": "state_or_structure",
+            "space": "basis_coordinate"
+          },
+          "n3": {
+            "axis": "S",
+            "required": true,
+            "role": "state_or_structure",
+            "space": "basis_coordinate"
+          },
+          "n4": {
+            "axis": "S",
+            "required": true,
+            "role": "state_or_structure",
+            "space": "basis_coordinate"
+          },
+          "n5": {
+            "axis": "S",
+            "required": true,
+            "role": "state_or_structure",
+            "space": "basis_coordinate"
+          }
+        },
+        "schema_version": "paper2-basis-subobject-v1",
+        "source_skeleton_version": "paper2-basis-structural-skeleton-v1",
+        "temporal": {}
+      }
+    },
+    {
+      "candidate_id": "B",
+      "structural_object": {
+        "active_axes": [
+          "O",
+          "P",
+          "S"
+        ],
+        "basis_version": "paper2-working-basis-v1",
+        "controls": {
+          "probe_P": {
+            "state": "present"
+          }
+        },
+        "edges": [],
+        "nodes": {
+          "n0": {
+            "axis": "O",
+            "required": true,
+            "role": "response_or_outcome",
+            "space": "basis_coordinate"
+          },
+          "n1": {
+            "axis": "P",
+            "required": true,
+            "role": "probe",
+            "space": "basis_coordinate"
+          },
+          "n2": {
+            "axis": "S",
+            "required": true,
+            "role": "state_or_structure",
+            "space": "basis_coordinate"
+          },
+          "n3": {
+            "axis": "S",
+            "required": true,
+            "role": "state_or_structure",
+            "space": "basis_coordinate"
+          }
+        },
+        "schema_version": "paper2-basis-subobject-v1",
+        "source_skeleton_version": "paper2-basis-structural-skeleton-v1",
+        "temporal": {}
+      }
+    }
+  ],
+  "coder_tasks": {
+    "grammar_role_set": "Pi;X;C;Q;P_in;P_out;K;T;rho/O",
+    "projection_verdict": "FULL/PARTIAL/RESIDUAL",
+    "candidate_membership": "SUPPORTED/NOT_SUPPORTED/UNDERDETERMINED"
+  }
+}
