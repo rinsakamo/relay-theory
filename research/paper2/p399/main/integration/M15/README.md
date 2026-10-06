@@ -30,8 +30,23 @@ The same ten sources are reused so that v1 versus v2 can isolate the effect of c
 
 Neither run may see M14 v1 outputs, M14 comparison results, retained structural answers, or the other M15 run before its ten records are frozen.
 
-## Current status
+## Current execution status
 
-`M15_CLAIM_ANCHORED_V2_PROTOCOL_FROZEN_REPLAYS_NOT_PERFORMED`
+The frozen public packet and pre-result protocol remain unchanged.
 
-No M15 replay or comparison result exists at this freeze.
+M15-A:
+- GPT-6 Astra / Medium: **FROZEN**
+- 10 COMPLETE / 0 ABSTAIN / 0 UNDERDETERMINED
+- package SHA256: `ca6f1d557915777ae59e9846fd80ac90134c10e85b76ec9ae3e2ef53c1d22fb3`
+- retained comparison: NOT PERFORMED
+- exact backend snapshot: UNVERIFIED
+- external receipt: `M15_A_EXTERNAL_FREEZE_RECEIPT_v1.json`
+
+M15-B:
+- GPT-6.1 Sol / Medium: NOT YET PERFORMED
+
+Current execution state:
+
+`M15_ASTRA_MEDIUM_CLAIM_ANCHORED_REPLAY_FROZEN_COMPARISON_NOT_PERFORMED`
+
+Do not open M15-A scientific records for comparison before M15-B has independently frozen all ten cases.
