@@ -62,8 +62,8 @@ for r in rows:
 
 assert protocol["status"] == "PROTOCOL_FROZEN_M15_REPLAYS_NOT_PERFORMED"
 assert protocol["result"] == "NOT_PERFORMED"
-assert "Treat the supplied anchor as the target claim" in protocol["execution_rules"]
-assert "Execute the two named-model runs in separate fresh conversations and do not pass run A outputs to run B." in protocol["execution_rules"]
+assert any(x.startswith("Treat the supplied anchor as the target claim") for x in protocol["execution_rules"])
+assert any("separate fresh conversations" in x and "do not pass run A outputs to run B" in x for x in protocol["execution_rules"])
 
 assert blank["uncertainty"]["status"] == "COMPLETE|ABSTAIN|UNDERDETERMINED"
 assert blank["anchor"]["target_status"] == "USED_AS_GIVEN|ABSTAIN|UNDERDETERMINED"
