@@ -1,0 +1,66 @@
+name: P399 MAIN M9E PDF export
+
+on:
+  push:
+    branches:
+      - paper2/p399-main-m9e-pdf-export-20261006
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  export-pdf:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out exact export head
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
+
+      - name: Verify exact M9E scientific ancestry
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE="75532d1529906beb77258351bf2967510a0e35b0"
+          git merge-base --is-ancestor "$BASE" HEAD
+
+      - name: Verify scope sentence and terminology guard
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -F "This is a literature-based structural comparison study, not an experimental study or a statistical prevalence analysis." paper/venues/jgps/main.tex
+          python research/paper2/p399/main/integration/M9D/test_m9d_reviewer_terminology.py
+
+      - name: Install LaTeX build tools
+        run: |
+          sudo apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            texlive-latex-base texlive-latex-recommended texlive-latex-extra \
+            texlive-fonts-recommended texlive-bibtex-extra texlive-pictures \
+            poppler-utils
+
+      - name: Build M9E manuscript PDF
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd paper/venues/jgps
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          bibtex main
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          test -s main.pdf
+          if grep -En 'LaTeX Warning:|Package .* Warning:|Overfull \\hbox|Citation .* undefined|Reference .* undefined' main.log; then exit 1; fi
+          pdfinfo main.pdf | grep -F "Pages:"
+          pdftotext main.pdf main.txt
+          grep -F "This is a literature-based structural comparison study, not an experimental study or a statistical prevalence analysis." main.txt
+
+      - name: Upload M9E manuscript PDF
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: relay-theory-paper2-jgps-m9e
+          path: paper/venues/jgps/main.pdf
+          if-no-files-found: error
+          retention-days: 14
