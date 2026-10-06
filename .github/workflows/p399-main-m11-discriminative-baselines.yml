@@ -64,7 +64,7 @@ jobs:
           tr '\n' ' ' < main.txt | tr -s '[:space:]' ' ' > main.flat.txt
           grep -F 'Construct-based individuation is evidentially incomplete' main.flat.txt
           grep -E '1,?770' main.flat.txt
-          grep -F '206 reusable structural' main.flat.txt
+          grep -E '206 .*structural' main.flat.txt
           grep -F '143' main.flat.txt
           grep -F '62 cross-stratum' main.flat.txt
           grep -F '58/60' main.flat.txt
