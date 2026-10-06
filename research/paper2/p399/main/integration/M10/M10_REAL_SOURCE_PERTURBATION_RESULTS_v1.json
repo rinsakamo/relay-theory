@@ -1,0 +1,44 @@
+{
+  "schema": "relaytheory.p399.main.m10.real_source_perturbation_results.v1",
+  "status": "COUNTERFACTUAL_CONTROLS_PASS",
+  "frozen_spec_commit": "0268ad7876613b580f60a97dc891be25ab09b1e7",
+  "untouched_MAIN40": {
+    "A0": 40,
+    "A1": 0,
+    "A2": 0,
+    "component_A0": "24/24",
+    "integrated_A0": "16/16"
+  },
+  "controls": [
+    {
+      "id": "M10D-INT10-INTERFACE-ABLATION",
+      "paper_id": "INT-10",
+      "doi": "10.1371/journal.pcbi.1011024",
+      "untouched_source_state": "A0_FIDELITY",
+      "perturbation": "hide only the source-defined BG-selected action/CPG-parameter mediator while retaining the source-declared transfer and coupling obligation",
+      "A0_after_perturbation": "FAILS_BY_DECLARED_ABLATION",
+      "counterfactual_state": "A1_FIDELITY_CONTROL",
+      "least_repair": "reconstruction-added stateless typed bridge carrying BG-selected action/CPG parameters to the cerebellar correction stage",
+      "added_stateless_adapter_count": 1,
+      "added_persistent_state_count": 0,
+      "prevalence_claim": false
+    },
+    {
+      "id": "M10D-INT16-HISTORY-ABLATION",
+      "paper_id": "INT-16",
+      "doi": "10.1371/journal.pcbi.1004060",
+      "untouched_source_state": "A0_FIDELITY",
+      "perturbation": "hide only source-defined traces/tags while retaining delayed eligibility-dependent plasticity and the source-declared delay-bridging obligation",
+      "A0_after_perturbation": "FAILS_BY_DECLARED_ABLATION",
+      "A1_after_perturbation": "INSUFFICIENT_PRESENT_INPUT_ONLY_REPAIR",
+      "stateless_repair_sufficient": false,
+      "counterfactual_state": "A2_FIDELITY_CONTROL",
+      "least_repair": "reconstruction-added history-bearing eligibility/tag state",
+      "added_stateless_adapter_count": 0,
+      "added_persistent_state_count": 1,
+      "prevalence_claim": false
+    }
+  ],
+  "interpretation": "The classifier leaves A0 on realistic source-derived structures when a load-bearing source-defined distinction is deliberately removed. These are counterfactual controls, not re-adjudications of the certified prospective corpus.",
+  "independent_human_readjudication": "NOT_PERFORMED"
+}

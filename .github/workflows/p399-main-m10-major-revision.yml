@@ -1,0 +1,21 @@
+name: P399 MAIN M10 major-revision guards
+
+on:
+  pull_request:
+    paths:
+      - 'research/paper2/p399/main/integration/M10/**'
+      - 'scripts/paper2_m10_major_revision_audit.py'
+      - 'paper/venues/jgps/**'
+      - '.github/workflows/p399-main-m10-major-revision.yml'
+  workflow_dispatch:
+
+jobs:
+  m10-guards:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run deterministic M10 guards
+        run: python scripts/paper2_m10_major_revision_audit.py
