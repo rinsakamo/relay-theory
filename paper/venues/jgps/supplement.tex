@@ -458,18 +458,9 @@ The independent coder must identify one focal source-grounded cognitive claim an
 
 \section{Public cross-model source reconstruction replay}
 
-M14 adds a model-agnostic replay protocol over the same ten-source sample. This is a separate validation lane from independent human extraction. It is designed to test whether a different model family can reconstruct the source-level structural content under the same public procedure; it does \emph{not} convert model agreement into human inter-rater reliability.
+M14 froze a model-agnostic replay protocol over the same ten-source sample before any replay output or comparison result existed. This is a separate validation lane from independent human extraction. A replay model receives only the original source, frozen prompt, protocol, and blank schema; retained ClaimIR, bounded-object memberships, grammar verdicts, capacity-case outcomes, comparison answers, and prior-model outputs remain withheld until the replay output is frozen. ABSTAIN and UNDERDETERMINED are permitted.
 
-For each case, the replicating model receives only:
-\begin{itemize}[leftmargin=*]
-\item the original source;
-\item \path{M14_CROSS_MODEL_REPLICATION_PROTOCOL_v1.json};
-\item \path{M14_CROSS_MODEL_PROMPT_v1.md};
-\item \path{M14_CROSS_MODEL_BLANK_RECORD_v1.json}.
-\end{itemize}
-The retained ClaimIR, bounded-object memberships, grammar verdicts, capacity-case outcomes, and comparison answers remain withheld until all ten new outputs are frozen. ABSTAIN and UNDERDETERMINED are permitted. Exact provider/model identity, version or snapshot when available, sampling/decoding settings, tool or retrieval configuration, raw response, and output hash must be retained.
-
-The input manifest is fixed as XM01--XM10 and reuses the exact M13 ten-source sample. Comparison is performed only after freeze under four predeclared classes:
+The frozen four case classes are:
 \begin{enumerate}[leftmargin=*]
 \item \texttt{EXACT\_OR\_NORMALIZED\_RECOVERY};
 \item \texttt{COMPATIBLE\_ALTERNATIVE\_DECOMPOSITION};
@@ -478,18 +469,54 @@ The input manifest is fixed as XM01--XM10 and reuses the exact M13 ten-source sa
 \end{enumerate}
 Only identifier renaming, presentation order, formatting, and synonymous labels with unchanged typed roles/relations may be normalized away. Missing scientific relations, conflicting temporal dependencies, and altered system/environment/experiment boundaries may not be repaired during scoring.
 
-This protocol is intentionally replayable by third parties using other model families. Agreement would support cross-model reproducibility for the tested models; disagreement would identify model- or judgment-sensitive fields; abstention would remain an admissible result. At this revision stage no M14 cross-model output exists and no agreement statistic is reported. Cross-model reproducibility, if later measured, must remain separate from independent human inter-rater reliability.
+Two named-model product configurations were subsequently run under that frozen procedure. The first replay used the user-visible GPT-6 Astra / Medium configuration. Its original manifest could not verify an exact Astra backend identity, but a post-freeze screenshot from the same replay conversation shows the UI label \emph{6 Astra} with reasoning level \emph{Medium}; the exact backend snapshot and routing remain unverified. This run froze nine complete records and one source-access abstention (XM03). The second replay used the user-visible GPT-6.1 Sol / Medium configuration and froze ten complete records. Its exact backend snapshot and routing also remain unverified. Neither replay is independent human validation, and no cross-provider replication is claimed.
+
+The two frozen package hashes are:
+\begin{itemize}[leftmargin=*]
+\item Astra / Medium package: \texttt{3b7911f2288c6a1f9ee4ab6cd033cc6eaba5c10fedf5b002170562b6ca531d04};
+\item GPT-6.1 Sol / Medium package: \texttt{b09ed20aa54c302843e069d10f9ad925ad1bf0f43b8832d96085df6bcf52dd73}.
+\end{itemize}
+Both packages contain the same frozen comparison-rules file, SHA256 \texttt{eb54f84a6b4d38ea645f7d93db8b950a960776b90a6d2f2302e3dfc3e9f247b1}.
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.10\textwidth} >{\raggedright\arraybackslash}p{0.12\textwidth} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X}
+\toprule
+Case & Slot & Astra / Medium & GPT-6.1 Sol / Medium \\
+\midrule
+XM01 & ATT03 & SUBSTANTIVE & SUBSTANTIVE \\
+XM02 & BLF04 & SUBSTANTIVE & SUBSTANTIVE \\
+XM03 & CNC01 & ABSTENTION & SUBSTANTIVE \\
+XM04 & CTL01 & SUBSTANTIVE & SUBSTANTIVE \\
+XM05 & LRN03 & SUBSTANTIVE & COMPATIBLE \\
+XM06 & MEM02 & COMPATIBLE & COMPATIBLE \\
+XM07 & PRD05 & SUBSTANTIVE & COMPATIBLE \\
+XM08 & SKL06 & SUBSTANTIVE & SUBSTANTIVE \\
+XM09 & CH03 & SUBSTANTIVE & SUBSTANTIVE \\
+XM10 & CH12 & SUBSTANTIVE & SUBSTANTIVE \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+Thus Astra / Medium yields 0 exact, 1 compatible, 8 substantive, and 1 abstention; GPT-6.1 Sol / Medium yields 0 exact, 3 compatible, 7 substantive, and 0 abstentions. These totals are not interpreted as ordinary reliability or recovery rates.
+
+The dominant reason is a protocol-level confound. The v1 prompt instructs the model to identify one focal cognitive claim from each source but does not anchor that claim to the retained reference. Consequently, the replay can produce a valid source-grounded record for a different claim. BLF04 illustrates this directly: both replays select the think-aloud/process-orientation analysis, whereas the retained reference centers the crossed validity-by-believability acceptance effect. CTL01 shows the same pattern: both replays reconstruct delayed/noisy state estimation, whereas the retained record centers minimal intervention and selective correction. CH03 shows that claim selection can also diverge between replays: Astra selects the room/friend embedded-cognition example, Sol selects the developmental historical-integrity argument, and the retained reference centers the general system-boundary criterion.
+
+A post hoc descriptive check is therefore reported separately from the frozen classes. Among the nine cases completed by both replay configurations, the two runs select the same broad focal region in eight. Eight cases use byte-identical source files in both runs (XM02 and XM04--XM10); within that subset, the same focal region is selected in seven. This descriptive check is not a predeclared score and does not replace the frozen case labels. It shows why the high substantive count cannot be read as a pure decomposition-instability rate.
+
+The appropriate methodological conclusion is that the v1 replay demonstrates public auditability but does not isolate claim decomposition from claim selection. A future decomposition-reliability replay should freeze a source-grounded claim anchor while continuing to withhold the retained structured answer. The present results are not rescored under such a post hoc protocol.
 
 Machine-readable authority:
 \begin{itemize}[leftmargin=*]
 \item \path{research/paper2/p399/main/integration/M14/M14_CROSS_MODEL_REPLICATION_PROTOCOL_v1.json};
-\item \path{research/paper2/p399/main/integration/M14/M14_CROSS_MODEL_INPUT_MANIFEST_v1.json};
-\item \path{research/paper2/p399/main/integration/M14/M14_CROSS_MODEL_BLANK_RECORD_v1.json};
 \item \path{research/paper2/p399/main/integration/M14/M14_CROSS_MODEL_COMPARISON_RULES_v1.json};
-\item \path{research/paper2/p399/main/integration/M14/M14_CROSS_MODEL_PROMPT_v1.md}.
+\item \path{research/paper2/p399/main/integration/M14/M14_ASTRA_UI_PROVENANCE_SUPPLEMENT_v1.json};
+\item \path{research/paper2/p399/main/integration/M14/M14_REPLAY_COMPARISON_RESULTS_v1.json};
+\item \path{research/paper2/p399/main/integration/M14/M14_REPLAY_COMPARISON_RECEIPT_v1.json};
+\item \path{research/paper2/p399/main/integration/M14/M14_REPLAY_COMPARISON_REPORT_v1.md}.
 \end{itemize}
 
-Procedural auditability is established; inter-rater reliability remains unmeasured.
+Cross-model replay remains distinct from independent human coding. Procedural auditability is established; inter-rater reliability remains unmeasured.
 
 \section{Repository-only provenance}
 
