@@ -18,7 +18,7 @@ The purpose is not to create a second adjudication. It is to make the original a
 
 ## 3. Prospective chronology
 
-We added a repository pre-specification chronology with exact commits and timestamps. It distinguishes the adopted source-closed method reference, genealogy criterion, bounded genealogy audit, explicit prospective-study authorization, six analysis-stream outcomes, integration, manuscript preparation, and the later review-response work.
+We added a repository pre-specification chronology with exact commits and timestamps. It distinguishes the adopted method reference restricting adjudication to source-supported evidence, genealogy criterion, bounded genealogy audit, explicit prospective-study authorization, six analysis-stream outcomes, integration, manuscript preparation, and the later review-response work.
 
 The chronology preserves historical states rather than retroactively relabeling them. An earlier roster remains historically designated as a working/outcome-blind artifact; later prospective authorization fixed that exact roster as the no-substitution denominator. Exact commit identifiers and timestamps are provided in the supplementary provenance ledger rather than repeated in the manuscript.
 
