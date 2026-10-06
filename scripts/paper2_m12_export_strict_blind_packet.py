@@ -124,10 +124,33 @@ def assert_strict_claim(obj):
     assert "locator" not in json.dumps(obj["source_span_aliases"])
 
 
+def _all_keys(obj):
+    if isinstance(obj, list):
+        out = set()
+        for x in obj:
+            out |= _all_keys(x)
+        return out
+    if isinstance(obj, dict):
+        out = set(obj)
+        for v in obj.values():
+            out |= _all_keys(v)
+        return out
+    return set()
+
+
 def assert_strict_prospective(obj):
-    text = json.dumps(obj)
-    for forbidden in ['"doi"', '"slot"', "source_first_artifact_path", "source_first_lane_head", "architectural_outcome"]:
-        assert forbidden not in text, forbidden
+    keys = _all_keys(obj)
+    for forbidden in {
+        "doi",
+        "slot",
+        "source_first_artifact_path",
+        "source_first_lane_head",
+        "architectural_outcome",
+        "architectural_outcome_blob",
+        "lane_head",
+        "lane_pr",
+    }:
+        assert forbidden not in keys, forbidden
 
 
 def main():
