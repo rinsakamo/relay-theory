@@ -1,0 +1,44 @@
+name: P399 MAIN M9E2 PDF export
+
+on:
+  push:
+    branches:
+      - paper2/p399-main-m9e2-pdf-export-20261006
+
+permissions:
+  contents: read
+
+jobs:
+  export-pdf:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
+      - name: Verify scope sentence
+        run: |
+          grep -F "This is a literature-based structural comparison, not an experiment or prevalence study." paper/venues/jgps/main.tex
+      - name: Install LaTeX
+        run: |
+          sudo apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-bibtex-extra texlive-pictures poppler-utils
+      - name: Build PDF
+        run: |
+          set -euo pipefail
+          cd paper/venues/jgps
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          bibtex main
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          test -s main.pdf
+          if grep -En 'LaTeX Warning:|Package .* Warning:|Overfull \\hbox|Citation .* undefined|Reference .* undefined' main.log; then exit 1; fi
+          pdfinfo main.pdf | grep -F "Pages:"
+      - name: Upload PDF
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: relay-theory-paper2-jgps-m9e2
+          path: paper/venues/jgps/main.pdf
+          if-no-files-found: error
+          retention-days: 14
