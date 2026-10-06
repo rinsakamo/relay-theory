@@ -1,0 +1,268 @@
+{
+  "schema": "relaytheory.p399.main.m12.human_claim_packet_case.v1",
+  "case_id": "HC17",
+  "metadata_masking": {
+    "original_slot_withheld": true,
+    "doi_withheld": true,
+    "authors_withheld": true,
+    "venue_withheld": true,
+    "construct_labels_withheld": true,
+    "conceptual_blindness_established": false,
+    "note": "Metadata/lexical masking only; source-grounded semantic content remains."
+  },
+  "source_spans": [
+    {
+      "span_id": "s1",
+      "locator": "Neuroscience 139(1), published p.201 / PDF p.1, abstract and introduction: the two familiar source constructs each comprise dissociable phenomena; selection operates at perceptual and postperceptual stages and maintenance mechanisms differ by information type"
+    },
+    {
+      "span_id": "s2",
+      "locator": "Neuroscience 139(1), published pp.202-203 / PDF pp.2-3, late-selection evidence: goal-driven selection determines which already perceptually and semantically processed items gain access to the severely capacity-limited online store"
+    },
+    {
+      "span_id": "s3",
+      "locator": "Neuroscience 139(1), published pp.204-205 / PDF pp.4-5, delay-period spatial-maintenance evidence: interrupting or redirecting spatial selection away from remembered locations selectively impairs retention, while the authors caution against generalizing the same relation to all maintained information"
+    },
+    {
+      "span_id": "s4",
+      "locator": "Neuroscience 139(1), published p.207 / PDF p.7, Conclusions: the relationship is explicitly characterized as multifaceted, with distinct gatekeeping, active-maintenance, and executive-manipulation interactions and unresolved boundaries across information types"
+    }
+  ],
+  "claim_core": {
+    "claim_type": "relation",
+    "modality": "descriptive",
+    "scope": {
+      "conditions": [
+        "goal-directed visual processing in which selection can operate at multiple processing stages and the active-maintenance system can retain different kinds of information by functionally dissociable mechanisms"
+      ],
+      "population": [],
+      "substrate": [
+        "visual information-processing and capacity-limited active-maintenance systems"
+      ],
+      "task": [
+        "prioritize behaviorally relevant visual information for processing or storage and maintain or manipulate selected representations"
+      ],
+      "temporal_scope": [
+        "interaction modes span early sensory processing, later admission to an online store, delay-period maintenance, and active manipulation or updating"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "selection_subtype",
+        "role": "state_or_structure",
+        "description": "a particular form of goal-directed selection distinguished by the stage or operation at which it influences processing",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "maintenance_subtype",
+        "role": "state_or_structure",
+        "description": "a particular active-maintenance mechanism distinguished by the kind of information maintained or the operation performed on stored representations",
+        "source_span_ids": [
+          "s1",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "processing_stage_partition",
+        "role": "partition",
+        "description": "distinction among early sensory selection, postperceptual admission control, delay-period maintenance-related selection, and executive manipulation or updating",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "information_type_partition",
+        "role": "partition",
+        "description": "distinction among different kinds of maintained information for which the source reports or leaves open functionally different maintenance-selection relations",
+        "source_span_ids": [
+          "s1",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "interaction_profile",
+        "role": "response_or_outcome",
+        "description": "the specific functional relation observed between a selection subtype and an active-maintenance subtype in a given task",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "distinguishes",
+        "arguments": [
+          "processing_stage_partition",
+          "selection_subtype"
+        ],
+        "description": "selection effects must be distinguished by the processing stage or operation at which they occur rather than treated as one unitary mechanism",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r2",
+        "kind": "distinguishes",
+        "arguments": [
+          "information_type_partition",
+          "maintenance_subtype"
+        ],
+        "description": "active-maintenance mechanisms and their interaction with selection differ with the kind of information or maintenance operation under consideration",
+        "source_span_ids": [
+          "s1",
+          "s3",
+          "s4"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r3",
+        "kind": "depends_on",
+        "arguments": [
+          "interaction_profile",
+          "selection_subtype",
+          "maintenance_subtype",
+          "processing_stage_partition",
+          "information_type_partition"
+        ],
+        "description": "the nature of the observed interaction depends on which selection process and which active-maintenance process are instantiated in the task",
+        "source_span_ids": [
+          "s1",
+          "s4"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  },
+  "candidate_bounded_objects": [
+    {
+      "candidate_id": "A",
+      "structural_object": {
+        "active_axes": [
+          "O",
+          "Pi",
+          "S"
+        ],
+        "basis_version": "paper2-working-basis-v1",
+        "controls": {
+          "partition_Pi": {
+            "state": "present"
+          }
+        },
+        "edges": [],
+        "nodes": {
+          "n0": {
+            "axis": "O",
+            "required": true,
+            "role": "response_or_outcome",
+            "space": "basis_coordinate"
+          },
+          "n1": {
+            "axis": "Pi",
+            "required": true,
+            "role": "partition",
+            "space": "basis_coordinate"
+          },
+          "n2": {
+            "axis": "S",
+            "required": true,
+            "role": "state_or_structure",
+            "space": "basis_coordinate"
+          },
+          "n3": {
+            "axis": "S",
+            "required": true,
+            "role": "state_or_structure",
+            "space": "basis_coordinate"
+          }
+        },
+        "schema_version": "paper2-basis-subobject-v1",
+        "source_skeleton_version": "paper2-basis-structural-skeleton-v1",
+        "temporal": {}
+      }
+    },
+    {
+      "candidate_id": "B",
+      "structural_object": {
+        "active_axes": [
+          "O",
+          "Q",
+          "S",
+          "T"
+        ],
+        "basis_version": "paper2-working-basis-v1",
+        "controls": {
+          "criterion_Q": {
+            "state": "present"
+          }
+        },
+        "edges": [],
+        "nodes": {
+          "n0": {
+            "axis": "O",
+            "required": true,
+            "role": "information",
+            "space": "basis_coordinate"
+          },
+          "n1": {
+            "axis": "O",
+            "required": true,
+            "role": "response_or_outcome",
+            "space": "basis_coordinate"
+          },
+          "n2": {
+            "axis": "Q",
+            "required": true,
+            "role": "criterion",
+            "space": "basis_coordinate"
+          },
+          "n3": {
+            "axis": "S",
+            "required": true,
+            "role": "state_or_structure",
+            "space": "basis_coordinate"
+          },
+          "n4": {
+            "axis": "S",
+            "required": true,
+            "role": "state_or_structure",
+            "space": "basis_coordinate"
+          }
+        },
+        "schema_version": "paper2-basis-subobject-v1",
+        "source_skeleton_version": "paper2-basis-structural-skeleton-v1",
+        "temporal": {
+          "time_index": {
+            "state": "present"
+          }
+        }
+      }
+    }
+  ],
+  "coder_tasks": {
+    "grammar_role_set": "Pi;X;C;Q;P_in;P_out;K;T;rho/O",
+    "projection_verdict": "FULL/PARTIAL/RESIDUAL",
+    "candidate_membership": "SUPPORTED/NOT_SUPPORTED/UNDERDETERMINED"
+  }
+}
