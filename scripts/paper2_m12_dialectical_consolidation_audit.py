@@ -48,7 +48,7 @@ assert app["adjudication"]["label_only_route"] == "EVIDENTIALLY_INSUFFICIENT_FOR
 assert app["adjudication"]["unified_capacity_thesis"] == "OPEN_NOT_REJECTED"
 assert app["frozen_tests"]["bounded_archetype_overlap"] == 0
 assert app["frozen_tests"]["CPCG_projected_signature_overlap"] == 0
-assert "Semantic memory is not a capacity" in app["prohibited_conclusion"]
+assert "Semantic memory is not a capacity" in spec["downstream_application"]["prohibited_conclusion"]
 assert len(app["preservation_debt_for_unified_capacity_thesis"]) >= 5
 
 # Epistemic classification must explicitly demote design-driven results.
