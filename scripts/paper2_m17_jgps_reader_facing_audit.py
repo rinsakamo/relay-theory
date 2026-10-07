@@ -15,6 +15,7 @@ MAP=json.loads((ROOT/"paper/venues/jgps/reader-facing-source-map.json").read_tex
 INDEX=(ROOT/"paper/venues/jgps/supplementary-materials-index.md").read_text(encoding="utf-8")
 
 assert M17["exact_parent_head"]=="8ccdcc73ed578386e5e003254a1f7bec82c0f86e"
+assert M17["status"]=="COMPLETE"
 assert M17["terminal_state"]=="M17_JGPS_PHILOSOPHY_FIRST_READER_FACING_CONSOLIDATION_COMPLETE"
 assert M16["terminal_state"]=="M16_LRN03_CORRECTION_STRUCTURALLY_INVARIANT"
 assert M16["headline_results"]["material_change"] is False
