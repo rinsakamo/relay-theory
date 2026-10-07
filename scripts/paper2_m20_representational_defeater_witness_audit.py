@@ -10,6 +10,7 @@ MAIN=(ROOT/"paper/venues/jgps/main.tex").read_text(encoding="utf-8")
 SUPP=(ROOT/"paper/venues/jgps/supplement.tex").read_text(encoding="utf-8")
 M20=json.loads((ROOT/"research/paper2/p399/main/integration/M20/M20_SPEC_v1.json").read_text(encoding="utf-8"))
 BENI=json.loads((ROOT/"research/paper2/p399/main/integration/M20/M20_BENI_SOURCE_PIN_v1.json").read_text(encoding="utf-8"))
+POS=json.loads((ROOT/"research/paper2/p399/main/integration/M20/M20_POSITIVE_MINICASE_SOURCE_PIN_v1.json").read_text(encoding="utf-8"))
 WIT=json.loads((ROOT/"research/paper2/p399/main/integration/M20/M20_CENTRAL_WITNESS_AUDIT_v1.json").read_text(encoding="utf-8"))
 M19=json.loads((ROOT/"research/paper2/p399/main/integration/M19/M19_SPEC_v1.json").read_text(encoding="utf-8"))
 M16=json.loads((ROOT/"research/paper2/p399/main/integration/M16/M16_LRN03_SENSITIVITY_RESULT_v1.json").read_text(encoding="utf-8"))
@@ -38,6 +39,9 @@ assert BENI["status"]=="PUBLISHER_SOURCE_VERIFIED"
 assert BENI["doi"]=="10.1007/s10838-025-09759-z"
 assert BENI["verified_locations"][0]["publisher_pdf_page"]==8
 assert BENI["verified_locations"][1]["publisher_pdf_pages"]==[8,9]
+assert BENI["publisher_article_url"]=="https://link.springer.com/article/10.1007/s10838-025-09759-z"
+assert BENI["publisher_pdf_url"]=="https://link.springer.com/content/pdf/10.1007/s10838-025-09759-z.pdf"
+assert BENI["external_reverification_date"]=="2026-10-07"
 for phrase in [
     "objective criterion for kind individuation",
     "publisher PDF p.~8",
@@ -57,7 +61,12 @@ for phrase in [
 assert CPCG["projection"]["distinct_CPCG_signatures"]==143
 assert CPCG["projection"]["original_99_cross_lane_families_collapsed_with_another_original_family"]==63
 
-# Positive mini-case is an evidential illustration, not a capacity-identity verdict.
+# Positive mini-case is publisher-pinned as an evidential illustration, not a capacity-identity verdict.
+assert POS["status"]=="PUBLISHER_SOURCE_VERIFIED"
+assert POS["doi"]=="10.1038/nrn2277"
+assert POS["publisher_article_url"]=="https://www.nature.com/articles/nrn2277"
+assert POS["external_reverification_date"]=="2026-10-07"
+assert len(POS["supported_points"])==2
 for phrase in [
     "A limited positive illustration already occurs within the analyzed literature.",
     "differential lesion prediction",
