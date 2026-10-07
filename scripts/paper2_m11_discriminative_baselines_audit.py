@@ -139,9 +139,21 @@ assert same["cpcg_sensitivity"]["projected_signature_intersection_count"] == 0
 assert same["cpcg_sensitivity"]["remains_disjoint_under_CPCG"] is True
 
 # Manuscript philosophical and editorial boundary.
+m19 = (ROOT / "research/paper2/p399/main/integration/M19/M19_SPEC_v1.json").exists()
 m17 = (ROOT / "research/paper2/p399/main/integration/M17/M17_SPEC_v1.json").exists()
 m14 = (ROOT / "research/paper2/p399/main/integration/M14/M14_SPEC_v1.json").exists()
-if m17:
+if m19:
+    for phrase in [
+        "The Discrimination Requirement",
+        "Structural invariance as a live target",
+        "Critical representation-sensitivity tests",
+        "Capacity-level consequences",
+        "semantic memory",
+        "Procedural auditability is established; inter-rater reliability remains unmeasured.",
+        "Independent human re-adjudication was not performed.",
+    ]:
+        assert phrase in main, phrase
+elif m17:
     thesis = (
         "An inference from structural comparison to cognitive-capacity identity is "
         "epistemically licensed only if the comparison representation, preservation "
