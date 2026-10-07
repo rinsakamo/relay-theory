@@ -42,7 +42,7 @@ required_main = [
     "exponentially weighted history",
     "source-compatible at the disputed granularity",
     "constructed calibration cases reach direct, stateless-repair, and history-bearing-repair classes",
-    "mechanistic or other routes to capacity identity that do not rely on this structural promotion are not claimed to satisfy the requirement",
+    "Mechanistic or other routes to capacity identity that do not rely on this structural promotion are not claimed to satisfy the requirement",
 ]
 for phrase in required_main:
     assert phrase in MAIN, phrase
