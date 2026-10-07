@@ -105,11 +105,20 @@ for forbidden in [
 ]:
     assert forbidden not in frozen_readme
 
-# No result-bearing M15 files are allowed at prefreeze.
-for p in M15.iterdir():
-    upper = p.name.upper()
-    assert "RESULT" not in upper
-    assert "OUTPUT" not in upper
-    assert "COMPARISON_RECEIPT" not in upper
+# Historical prefreeze authority remains immutable even after successor result
+# artifacts are added. The blind public packet uses only the frozen input files
+# above and M15_PUBLIC_PACKET_README_FROZEN_v1.md.
+result_file = M15 / "M15_COMPARISON_RESULTS_v1.json"
+if result_file.exists():
+    assert (M15 / "M15_COMPARISON_RECEIPT_v1.json").exists()
+    assert (M15 / "M15_COMPARISON_REPORT_v1.md").exists()
+    assert (M15 / "M15_A_EXTERNAL_FREEZE_RECEIPT_v1.json").exists()
+    assert (M15 / "M15_B_EXTERNAL_FREEZE_RECEIPT_v1.json").exists()
+else:
+    for p in M15.iterdir():
+        upper = p.name.upper()
+        assert "RESULT" not in upper
+        assert "OUTPUT" not in upper
+        assert "COMPARISON_RECEIPT" not in upper
 
 print("M15_CLAIM_ANCHORED_PREFREEZE_GUARDS_PASS")
