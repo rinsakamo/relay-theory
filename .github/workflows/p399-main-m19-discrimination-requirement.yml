@@ -1,0 +1,65 @@
+name: P399 MAIN M19 Discrimination Requirement guards
+
+on:
+  pull_request:
+    paths:
+      - 'paper/venues/jgps/**'
+      - 'research/paper2/p399/main/integration/M19/**'
+      - 'scripts/paper2_m19_discrimination_requirement_audit.py'
+      - '.github/workflows/p399-main-m19-discrimination-requirement.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  m19:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Audit philosophical consolidation and scientific invariance
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          python scripts/paper2_m19_discrimination_requirement_audit.py
+          python scripts/paper2_m16_lrn03_source_correction_sensitivity.py --output /tmp/m16-computed.json
+          diff -u research/paper2/p399/main/integration/M16/M16_LRN03_SENSITIVITY_RESULT_v1.json /tmp/m16-computed.json
+
+      - name: Install LaTeX
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-bibtex-extra poppler-utils
+
+      - name: Build JGPS PDFs
+        run: |
+          set -euo pipefail
+          cd paper/venues/jgps
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          bibtex main
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          pdflatex -interaction=nonstopmode -halt-on-error supplement.tex
+          pdflatex -interaction=nonstopmode -halt-on-error supplement.tex
+          ! grep -E 'Overfull \\hbox|Undefined control sequence|Citation .* undefined|There were undefined references' main.log
+          ! grep -E 'Overfull \\hbox|Undefined control sequence|There were undefined references' supplement.log
+          pdfinfo main.pdf | grep '^Pages:'
+          pdfinfo supplement.pdf | grep '^Pages:'
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: paper-2-m19-jgps-discrimination-requirement-pdfs
+          path: |
+            paper/venues/jgps/main.pdf
+            paper/venues/jgps/supplement.pdf
+          if-no-files-found: error
+          retention-days: 30
