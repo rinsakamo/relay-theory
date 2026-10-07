@@ -1,0 +1,71 @@
+{
+  "schema": "relaytheory.p399.main.m15.spec.v1",
+  "status": "PREFROZEN_BEFORE_ANY_M15_REPLAY_OUTPUT",
+  "authority": {
+    "issue": 399,
+    "m14_pr": 475,
+    "exact_parent_head": "6662e2760fff259f55455d17a225fd5527921f8f",
+    "branch": "paper2/p399-main-m15-claim-anchored-replay-20261007"
+  },
+  "objective": "Measure decomposition reproducibility for the same source-grounded claims by fixing claim identity with source locators plus minimally identifying propositions while withholding retained structured answers.",
+  "relation_to_m14_v1": {
+    "v1_result": "FOCAL_CLAIM_SELECTION_CONFOUND_IDENTIFIED",
+    "v2_is_repair_followup": true,
+    "v2_is_independent_of_v1_results": false,
+    "v2_is_prospective_relative_to_its_own_outputs": true,
+    "same_sources": true,
+    "interpretation": "v2 can test whether claim anchoring reduces v1 disagreement on these same sources; it does not independently establish generalization to unseen sources."
+  },
+  "fixed_sample": "XM01-XM10 exactly, no substitutions",
+  "fixed_named_model_plan": [
+    {
+      "order": 1,
+      "product_level_configuration": "GPT-6 Astra / Medium",
+      "exact_backend_snapshot": "UNVERIFIED unless independently exposed",
+      "fresh_conversation_required": true
+    },
+    {
+      "order": 2,
+      "product_level_configuration": "GPT-6.1 Sol / Medium",
+      "exact_backend_snapshot": "UNVERIFIED unless independently exposed",
+      "fresh_conversation_required": true
+    }
+  ],
+  "blindness": {
+    "retained_claim_identity": "INTENTIONALLY_REVEALED_ONLY_BY_SOURCE_LOCATOR_AND_MINIMAL_ANCHOR",
+    "retained_structural_decomposition": "WITHHELD",
+    "m14_v1_replay_outputs": "WITHHELD",
+    "m14_v1_comparison_results": "WITHHELD",
+    "other_m15_model_outputs": "WITHHELD_UNTIL_THAT_RUN_IS_FROZEN",
+    "repository_answer_search": "PROHIBITED"
+  },
+  "primary_question": "Given the same anchored scientific claim, does an independently executed named-model replay recover a structurally compatible source-grounded decomposition?",
+  "primary_summary": {
+    "denominator": 10,
+    "compatible_reconstruction_count": "EXACT_OR_NORMALIZED_RECOVERY + COMPATIBLE_ALTERNATIVE_DECOMPOSITION",
+    "report_exact_count": true,
+    "report_compatible_count": true,
+    "report_substantive_count": true,
+    "report_abstention_count": true,
+    "conservative_primary_fraction": "compatible_reconstruction_count / 10",
+    "secondary_evaluable_fraction": "compatible_reconstruction_count / (10 - abstention_count)",
+    "no_null_hypothesis_test": true,
+    "no_kappa_claim": true
+  },
+  "secondary_pairwise_summary": {
+    "compare_replay_A_to_replay_B": true,
+    "same_four_classes": true,
+    "interpretation": "descriptive model-model structural alignment under a common anchored claim; not human reliability and not cross-provider replication"
+  },
+  "prohibited_claims": [
+    "v2 is independent confirmatory evidence relative to v1",
+    "human inter-rater reliability",
+    "independent human validation",
+    "cross-provider replication",
+    "model-family independence from product labels alone",
+    "representation-neutral decomposition",
+    "unique correctness of retained or replay structure",
+    "generalization to unseen sources from this same-source repair test"
+  ],
+  "target_state": "M15_CLAIM_ANCHORED_V2_PROTOCOL_FROZEN_REPLAYS_NOT_PERFORMED"
+}
