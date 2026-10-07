@@ -120,10 +120,22 @@ assert "Strict coder export" in readme
 assert "paper2_m12_export_strict_blind_packet.py" in readme
 
 # Main manuscript philosophical foreground and validation boundary.
+m19 = (ROOT / "research/paper2/p399/main/integration/M19/M19_SPEC_v1.json").exists()
 m17 = (ROOT / "research/paper2/p399/main/integration/M17/M17_SPEC_v1.json").exists()
 m14 = (ROOT / "research/paper2/p399/main/integration/M14/M14_SPEC_v1.json").exists()
 assert "When Does Structural Comparison Support Cognitive-Capacity Individuation?" in main
-if m17:
+if m19:
+    for phrase in [
+        "The Discrimination Requirement",
+        "Structural invariance as a live target",
+        "target alignment",
+        "capacity-relevant bridge warrant",
+        "representational discrimination",
+        "Secondary procedural robustness diagnostics",
+        "The capacity thesis remains open, but the preservation debt is explicit.",
+    ]:
+        assert phrase in main, phrase
+elif m17:
     for phrase in [
         "From reconstruction success to licensed identity inference",
         "The argument can be stated directly",
@@ -154,7 +166,9 @@ assert "\\paragraph{" not in main
 abstract = main.split("\\begin{abstract}",1)[1].split("\\end{abstract}",1)[0]
 for forbidden in ["1,770","206","99 cross","143","63 of 99","62 cross","58/60","0/40"]:
     assert forbidden not in abstract, forbidden
-if m17:
+if m19:
+    assert "Discrimination Requirement" in abstract and "Beni" in abstract
+elif m17:
     assert "Beni" in abstract and "representation-sensitivity" in abstract
 else:
     assert "60-claim" in abstract
@@ -173,7 +187,7 @@ if m17:
     for phrase in [
         "Independent human-coding boundary",
         "Prospective representation baselines",
-        "Named-model reconstruction validation",
+        ("Named-model procedural robustness diagnostics" if m19 else "Named-model reconstruction validation"),
         "Procedural auditability is established; inter-rater reliability remains unmeasured.",
     ]:
         assert phrase in supp, phrase
