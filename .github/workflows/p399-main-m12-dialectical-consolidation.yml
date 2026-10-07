@@ -40,7 +40,11 @@ jobs:
           ! grep -F '\\paragraph{' paper/venues/jgps/main.tex
           ! grep -F 'Paper 2' paper/venues/jgps/main.tex
           ! grep -Fi 'construct-label-neutral' paper/venues/jgps/main.tex
-          grep -F 'When Does Structural Comparison Support Cognitive-Capacity Individuation?' paper/venues/jgps/main.tex
+          if test -f research/paper2/p399/main/integration/M21/M21_SPEC_v1.json; then
+            grep -F 'A Discrimination Requirement for Structural Approaches to Cognitive-Capacity Individuation' paper/venues/jgps/main.tex
+          else
+            grep -F 'When Does Structural Comparison Support Cognitive-Capacity Individuation?' paper/venues/jgps/main.tex
+          fi
           if test -f research/paper2/p399/main/integration/M19/M19_SPEC_v1.json; then
             grep -F 'The Discrimination Requirement' paper/venues/jgps/main.tex
             grep -F 'Structural invariance as a live target' paper/venues/jgps/main.tex
@@ -104,6 +108,7 @@ jobs:
           retention-days: 14
 
       - name: Install strict LaTeX build tools
+        if: ${{ hashFiles('research/paper2/p399/main/integration/M21/M21_SPEC_v1.json') == '' }}
         run: |
           sudo apt-get update
           sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
@@ -112,6 +117,7 @@ jobs:
             poppler-utils
 
       - name: Strict build JGPS manuscript
+        if: ${{ hashFiles('research/paper2/p399/main/integration/M21/M21_SPEC_v1.json') == '' }}
         run: |
           set -euo pipefail
           cd paper/venues/jgps
@@ -126,7 +132,11 @@ jobs:
           fi
           pdftotext main.pdf main.txt
           tr '\n' ' ' < main.txt | tr -s '[:space:]' ' ' > main.flat.txt
-          grep -F 'When Does Structural Comparison Support Cognitive-Capacity Individuation?' main.flat.txt
+          if test -f ../../../research/paper2/p399/main/integration/M21/M21_SPEC_v1.json; then
+            grep -F 'A Discrimination Requirement for Structural Approaches to Cognitive-Capacity Individuation' main.flat.txt
+          else
+            grep -F 'When Does Structural Comparison Support Cognitive-Capacity Individuation?' main.flat.txt
+          fi
           if test -f ../../../research/paper2/p399/main/integration/M19/M19_SPEC_v1.json; then
             grep -F 'Discrimination Requirement' main.flat.txt
             grep -F 'preservation debt' main.flat.txt
@@ -143,6 +153,7 @@ jobs:
           echo "JGPS manuscript pages: $PAGES" >> "$GITHUB_STEP_SUMMARY"
 
       - name: Strict build supplementary methods
+        if: ${{ hashFiles('research/paper2/p399/main/integration/M21/M21_SPEC_v1.json') == '' }}
         run: |
           set -euo pipefail
           cd paper/venues/jgps
@@ -178,6 +189,7 @@ jobs:
           echo "Supplement pages: $PAGES" >> "$GITHUB_STEP_SUMMARY"
 
       - uses: actions/upload-artifact@v4
+        if: ${{ hashFiles('research/paper2/p399/main/integration/M21/M21_SPEC_v1.json') == '' }}
         with:
           name: paper-2-m12-jgps-manuscript-and-supplement
           path: |
