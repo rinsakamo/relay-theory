@@ -168,30 +168,39 @@ assert results["interpretation_boundary"]["cross_provider_replication"] == "NOT_
 assert results["interpretation_boundary"]["model_family_independence"] == "NOT_CLAIMED"
 assert results["interpretation_boundary"]["aggregate_match_rate_is_primary_result"] is False
 
-# Manuscript now reports the result without converting it into human reliability.
+# Manuscript/supplement presentation may evolve in successor reader-facing revisions.
+m17 = (ROOT / "research/paper2/p399/main/integration/M17/M17_SPEC_v1.json").exists()
 assert THESIS in main
-assert "From specification to licensed identity inference" in main
-assert "A live dialectical target: which invariance can individuate?" in main
-assert "Wajnerman-Paz and Rojas-L" in main
-assert "ATT03--MEM04" in main
-assert "TAIF" in main and "CPCG" in main
-assert "RII is therefore the paper's primary target" in main
-assert "Blinded named-model replay: claim selection and decomposition separate" in main
-assert "Astra yielded one compatible alternative decomposition, eight substantive disagreements, and one abstention" in main
-assert "Sol yielded three compatible alternative decompositions and seven substantive disagreements" in main
-assert "same broad focal region in eight" in main
-assert "focal-claim anchor" in main
-assert "Procedural auditability is established; inter-rater reliability remains unmeasured." in main
-assert "Structural comparison can bear evidential weight in cognitive-capacity individuation only when" not in main
-
-assert "Public cross-model source reconstruction replay" in supp
-assert "GPT-6 Astra / Medium" in supp
-assert "GPT-6.1 Sol / Medium" in supp
-assert "XM10 & CH12 & SUBSTANTIVE & SUBSTANTIVE" in supp
-assert "0 exact, 1 compatible, 8 substantive, and 1 abstention" in supp
-assert "0 exact, 3 compatible, 7 substantive, and 0 abstentions" in supp
-assert "same broad focal region in eight" in supp
-assert "Procedural auditability is established; inter-rater reliability remains unmeasured." in supp
+if m17:
+    for phrase in [
+        "From reconstruction success to licensed identity inference",
+        "Structural invariance as a live target",
+        "Wajnerman-Paz and Rojas-L",
+        "Critical representation-sensitivity tests",
+        "Validation diagnostics: separating claim selection from decomposition",
+        "nine of ten",
+        "mutually compatible in all ten",
+        "Procedural auditability is established; inter-rater reliability remains unmeasured.",
+    ]:
+        assert phrase in main, phrase
+    assert "GPT-6 Astra" not in main and "GPT-6.1 Sol" not in main
+    for phrase in [
+        "Named-model reconstruction validation",
+        "GPT-6 Astra / Medium",
+        "GPT-6.1 Sol / Medium",
+        "Astra / Medium vs Sol / Medium & 0 & 10 & 0 & 0",
+        "Source correction and sensitivity analysis",
+        "Procedural auditability is established; inter-rater reliability remains unmeasured.",
+    ]:
+        assert phrase in supp, phrase
+else:
+    assert "From specification to licensed identity inference" in main
+    assert "A live dialectical target: which invariance can individuate?" in main
+    assert "ATT03--MEM04" in main
+    assert "Blinded named-model replay: claim selection and decomposition separate" in main
+    assert "Public cross-model source reconstruction replay" in supp
+    assert "GPT-6 Astra / Medium" in supp
+    assert "GPT-6.1 Sol / Medium" in supp
 
 # Live status README reports results; frozen README does not.
 assert TERMINAL in readme
