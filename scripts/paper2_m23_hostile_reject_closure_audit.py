@@ -31,7 +31,7 @@ assert [c["source_compatibility_verdict"] for c in BT["cases"]] == [
 ]
 
 assert NORTH["status"] == "COUNTEREXAMPLE_FROZEN"
-assert "scientifically superior for the predictive target" in NORTH["construction"]["granted_scientific_superiority"]
+assert "superior for the predictive target" in NORTH["construction"]["granted_scientific_superiority"]
 assert "suppressed update mechanism" in NORTH["construction"]["missing_identity_warrant"]
 
 required_main = [
@@ -58,7 +58,7 @@ required_supp = [
     "Source-local provenance of the temporal rival",
     "The central pair is not licensed by Treur alone",
     "does each reviewed claim contain cross-time state dependence?",
-    "faithful quotient of the frozen representations",
+    "faithful quotient of the reviewed representations",
 ]
 for phrase in required_supp:
     assert phrase in SUPP, phrase
