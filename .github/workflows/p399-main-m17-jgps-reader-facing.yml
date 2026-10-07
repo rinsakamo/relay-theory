@@ -36,7 +36,7 @@ jobs:
       - name: Install LaTeX
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y -qq texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-bibtex-extra
+          sudo apt-get install -y -qq texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-bibtex-extra poppler-utils
 
       - name: Build JGPS PDFs
         run: |
