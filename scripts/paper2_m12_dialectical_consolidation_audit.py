@@ -120,27 +120,31 @@ assert "Strict coder export" in readme
 assert "paper2_m12_export_strict_blind_packet.py" in readme
 
 # Main manuscript philosophical foreground and validation boundary.
+m17 = (ROOT / "research/paper2/p399/main/integration/M17/M17_SPEC_v1.json").exists()
 m14 = (ROOT / "research/paper2/p399/main/integration/M14/M14_SPEC_v1.json").exists()
 assert "When Does Structural Comparison Support Cognitive-Capacity Individuation?" in main
-assert "terminological carryover inference" in main
-assert "reconstruction-to-identity inference" in main
-assert "local-invariance promotion" in main
-assert "The capacity thesis remains open, but it now carries explicit preservation debt." in main
-assert "does \\emph{not} show that semantic memory is not one capacity" in main
-assert "objective or non-pragmatic perspicuity" in main
-if m14:
-    assert "Successful direct reconstruction therefore does not select the exact role inventory." in main
-    assert "representation diagnostic" in main
-    assert "conceptually blind to construct identity" in main
-    if (ROOT / "research/paper2/p399/main/integration/M14/M14_REPLAY_COMPARISON_RESULTS_v1.json").exists():
-        assert "Blinded named-model replay: claim selection and decomposition separate" in main
-        assert "focal-claim anchor" in main
-    else:
-        assert "cross-model source reconstruction" in main
+if m17:
+    for phrase in [
+        "From reconstruction success to licensed identity inference",
+        "The argument can be stated directly",
+        "Structural invariance as a live target",
+        "Beni's structural-realist proposal",
+        "North's defense of objective or non-pragmatic perspicuity",
+        "The present claim adds a non-circularity constraint",
+        "The capacity thesis remains open, but the preservation debt is explicit.",
+        "Validation diagnostics: separating claim selection from decomposition",
+    ]:
+        assert phrase in main, phrase
 else:
-    assert "Successful reconstruction therefore cannot, by itself" in main
-    assert "representation diagnostic rather than as new empirical validation" in main
-    assert "conceptually blind to construct identity" in main
+    assert "terminological carryover inference" in main
+    assert "reconstruction-to-identity inference" in main
+    assert "local-invariance promotion" in main
+    assert "The capacity thesis remains open, but it now carries explicit preservation debt." in main
+    assert "objective or non-pragmatic perspicuity" in main
+    if m14:
+        assert "Successful direct reconstruction therefore does not select the exact role inventory." in main
+        assert "representation diagnostic" in main
+
 assert "Independent human re-adjudication was not performed." in main
 assert "Procedural auditability is established; inter-rater reliability remains unmeasured." in main
 assert "Paper 2" not in main
@@ -148,54 +152,58 @@ assert "construct-label-neutral" not in main.lower()
 assert "\\paragraph{" not in main
 
 abstract = main.split("\\begin{abstract}",1)[1].split("\\end{abstract}",1)[0]
-# M12 abstract deliberately avoids the old numerical catalogue.
 for forbidden in ["1,770","206","99 cross","143","63 of 99","62 cross","58/60","0/40"]:
     assert forbidden not in abstract, forbidden
-assert "60-claim" in abstract
-assert "40-paper" in abstract
+if m17:
+    assert "Beni" in abstract and "representation-sensitivity" in abstract
+else:
+    assert "60-claim" in abstract
+    assert "40-paper" in abstract
 
-# Supplement promise/contents equality.
 assert len(manifest["entries"]) == 60
 assert len(m9b["rows"]) == 40
-for e in manifest["entries"]:
-    doi = e["stable_identity"].replace("DOI:","")
-    assert e["slot_id"] in supp
-    assert doi in supp
-for r in m9b["rows"]:
-    assert r["paper_id"] in supp
-    assert r["doi"] in supp
-    assert r["evidence"]["source_loci_artifact_path"] in supp
-for c in sample["claim_cases"]:
-    assert c["case_id"] in supp and c["original_claim_id"] in supp and c["doi"] in supp
-for c in sample["prospective_cases"]:
-    assert c["case_id"] in supp and c["original_paper_id"] in supp and c["doi"] in supp
+if m17:
+    source_map = json.loads((ROOT / "paper/venues/jgps/reader-facing-source-map.json").read_text(encoding="utf-8"))
+    assert len(source_map["original_60"]) == 60
+    assert len(source_map["prospective_40"]) == 40
+    for e in manifest["entries"]:
+        assert e["stable_identity"].replace("DOI:","") in supp
+    for r in m9b["rows"]:
+        assert r["doi"] in supp
+    for phrase in [
+        "Independent human-coding boundary",
+        "Prospective representation baselines",
+        "Named-model reconstruction validation",
+        "Procedural auditability is established; inter-rater reliability remains unmeasured.",
+    ]:
+        assert phrase in supp, phrase
+    assert "paper2_m12_export_strict_blind_packet.py" not in supp
+else:
+    for e in manifest["entries"]:
+        doi = e["stable_identity"].replace("DOI:","")
+        assert e["slot_id"] in supp and doi in supp
+    for r in m9b["rows"]:
+        assert r["paper_id"] in supp
+        assert r["doi"] in supp
+        assert r["evidence"]["source_loci_artifact_path"] in supp
+    for c in sample["claim_cases"]:
+        assert c["case_id"] in supp and c["original_claim_id"] in supp and c["doi"] in supp
+    for c in sample["prospective_cases"]:
+        assert c["case_id"] in supp and c["original_paper_id"] in supp and c["doi"] in supp
+    for required in [
+        "a083dbc27e5a11d4e58363ccfed83c37c6a3a7b8",
+        "218867d0d49613fc5559c7472f55c08777c9e936",
+        "f7f771b7e129da6bdaf448000b78fc4806821531",
+        "103272ef179e83f468ee7ecbbef1ce7f527aa745",
+        "5f57bc410e6ed3046284af6ab1114956f35ebf34",
+        "5dd13a26cfbe7c00dc9918a45194c0fe3e950525",
+        "a212820d225050bbc10d395685e74cd2fb0d9912",
+        "b31f670f31d2f015b65d8bbf2e4fb12178b46694",
+        "1c22fcb177c434d2900ffb3af9ef6baee2af73ff",
+    ]:
+        assert required in supp
+    assert "paper2_m12_export_strict_blind_packet.py" in supp
 
-for required in [
-    "a083dbc27e5a11d4e58363ccfed83c37c6a3a7b8",
-    "218867d0d49613fc5559c7472f55c08777c9e936",
-    "f7f771b7e129da6bdaf448000b78fc4806821531",
-    "103272ef179e83f468ee7ecbbef1ce7f527aa745",
-    "5f57bc410e6ed3046284af6ab1114956f35ebf34",
-    "5dd13a26cfbe7c00dc9918a45194c0fe3e950525",
-    "a212820d225050bbc10d395685e74cd2fb0d9912",
-    "b31f670f31d2f015b65d8bbf2e4fb12178b46694",
-    "1c22fcb177c434d2900ffb3af9ef6baee2af73ff",
-]:
-    assert required in supp
-
-assert "206 bounded objects" in supp
-assert "143 CPCG signatures" in supp
-assert "63/99" in supp
-assert "62 CPCG signatures" in supp
-assert "58/60 claims" in supp
-assert "Encoding-permissive A-state closure" in supp
-assert "Dynamic & 40 & 0 & 0" in supp
-assert "Direct-preservation closure result" in supp
-assert "Dynamic & 0 & 40 & 0" in supp
-assert "Procedural auditability is established; inter-rater reliability remains unmeasured." in supp
-assert "paper2_m12_export_strict_blind_packet.py" in supp
-assert "normalized node-role labels" in supp
-assert "explicit paper ID, DOI, corpus arm" in supp
 assert "\\paragraph{" not in supp
 
 print("M12_DIALECTICAL_CONSOLIDATION_GUARDS_PASS")

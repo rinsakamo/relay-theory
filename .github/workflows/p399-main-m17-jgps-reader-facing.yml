@@ -1,0 +1,71 @@
+name: P399 MAIN M17 JGPS reader-facing consolidation
+
+on:
+  pull_request:
+    paths:
+      - 'paper/venues/jgps/**'
+      - 'research/paper2/p399/main/integration/M17/**'
+      - 'scripts/paper2_m17_jgps_reader_facing_audit.py'
+      - '.github/workflows/p399-main-m17-jgps-reader-facing.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  m17-reader-facing:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit reader-facing terminology and scientific invariance
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          python scripts/paper2_m17_jgps_reader_facing_audit.py
+          python scripts/paper2_m10_major_revision_audit.py
+          python scripts/paper2_m11_discriminative_baselines_audit.py
+          python scripts/paper2_m12_dialectical_consolidation_audit.py
+          python scripts/paper2_m13_dialectical_strengthening_audit.py
+          python scripts/paper2_m14_inference_warrant_replication_audit.py
+          python scripts/paper2_m15_claim_anchored_prefreeze_audit.py
+          python scripts/paper2_m15_claim_anchored_comparison_audit.py
+          python scripts/paper2_phi_compare.py --self-test
+          python scripts/paper2_m16_lrn03_source_correction_sensitivity.py --output /tmp/m16-computed.json
+          diff -u research/paper2/p399/main/integration/M16/M16_LRN03_SENSITIVITY_RESULT_v1.json /tmp/m16-computed.json
+
+      - name: Install LaTeX
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-bibtex-extra poppler-utils
+
+      - name: Build JGPS PDFs
+        run: |
+          set -euo pipefail
+          cd paper/venues/jgps
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          bibtex main
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          pdflatex -interaction=nonstopmode -halt-on-error supplement.tex
+          pdflatex -interaction=nonstopmode -halt-on-error supplement.tex
+          ! grep -E 'Overfull \\hbox|Undefined control sequence|Citation .* undefined|There were undefined references' main.log
+          ! grep -E 'Overfull \\hbox|Undefined control sequence|There were undefined references' supplement.log
+          pdfinfo main.pdf | grep '^Pages:'
+          pdfinfo supplement.pdf | grep '^Pages:'
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: paper-2-m17-jgps-reader-facing-pdfs
+          path: |
+            paper/venues/jgps/main.pdf
+            paper/venues/jgps/supplement.pdf
+          if-no-files-found: error
+          retention-days: 30

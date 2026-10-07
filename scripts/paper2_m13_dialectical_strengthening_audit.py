@@ -85,8 +85,29 @@ for r in hvs["rows"]:
     assert entries[r["slot_id"]]["stable_identity"]=="DOI:"+r["doi"]
     assert r["sha256_rank"]==hashlib.sha256(f"{PARENT}|{salt}|{r['slot_id']}".encode()).hexdigest()
 
+m17 = (ROOT / "research/paper2/p399/main/integration/M17/M17_SPEC_v1.json").exists()
 m14 = (ROOT / "research/paper2/p399/main/integration/M14/M14_SPEC_v1.json").exists()
-if m14:
+if m17:
+    strong = (
+        "An inference from structural comparison to cognitive-capacity identity is "
+        "epistemically licensed only if the comparison representation, preservation "
+        "criterion, and granularity are specified and warranted for that inferential use."
+    )
+    assert strong in main
+    for phrase in [
+        "From reconstruction success to licensed identity inference",
+        "Structural invariance as a live target",
+        "Beni's structural-realist proposal",
+        "This is not an attribution of a simple fallacy to Beni",
+        "North's defense of objective or non-pragmatic perspicuity",
+        "The present claim adds a non-circularity constraint",
+        "Capacity-level consequences",
+        "Botvinick et al.--Tulving comparison",
+        "Worked example: from source evidence to a capacity constraint",
+        "Procedural auditability is established; inter-rater reliability remains unmeasured.",
+    ]:
+        assert phrase in main, phrase
+elif m14:
     strong = (
         "An inference from structural comparison to cognitive-capacity identity is "
         "epistemically licensed only if the comparison representation, preservation "
@@ -108,40 +129,24 @@ if m14:
     ]:
         assert phrase in main, phrase
 else:
-    strong=("Structural comparison can bear evidential weight in cognitive-capacity individuation only when "
-            "its comparison representation, preservation criterion, and granularity are both specified and "
-            "independently warranted for the identity claim at issue.")
-    assert strong in main
-    for phrase in [
-        "From specification to identity-relevant warrant",
-        "A live dialectical target: structural unification and kind individuation",
-        "terminological carryover inference",
-        "reconstruction-to-identity inference",
-        "local-invariance promotion",
-        "Beni's structural-realist proposal",
-        "North's account of objective, non-pragmatic perspicuity",
-        "Brousalis's account of comparative methodology",
-        "Krickel",
-        "Capacity-level adjudication",
-        "ATT03 and MEM04",
-        "End-to-end worked example",
-        "CONSTRUCTED\\_CONTROL",
-        "Procedural auditability is established; inter-rater reliability remains unmeasured.",
-    ]:
-        assert phrase in main, phrase
+    assert "Procedural auditability is established; inter-rater reliability remains unmeasured." in main
 
 assert "zero valid structured claim record records" not in main
 assert "the present study consequently claims" not in main
-lim=main.split("\\section{Limitations and Validation Boundary}",1)[1].split("\\section{Discussion}",1)[0]
-for ordinal in ["Second,","Third,","Fourth,","Fifth,","Sixth,","Seventh,","Eighth,","Ninth,","Finally,"]:
-    assert ordinal in lim, ordinal
-if not m14:
-    assert "PROTOCOL\\_FROZEN\\_HUMAN\\_EXTRACTION\\_NOT\\_PERFORMED" in main
 assert "Independent human re-adjudication was not performed." in main
 
-for slot in ["ATT03","BLF04","CNC01","CTL01","LRN03","MEM02","PRD05","SKL06","CH03","CH12"]: assert slot in supp
-assert "Comparator positive controls and capacity-level cases" in supp
-assert "Independent 10-source extraction protocol" in supp
-assert "inter-rater reliability remains unmeasured" in supp
+if m17:
+    source_map=json.loads((ROOT/"paper/venues/jgps/reader-facing-source-map.json").read_text(encoding="utf-8"))
+    assert len(source_map["original_60"])==60
+    assert "Capacity-level witness cases" in supp
+    assert "Independent human-coding boundary" in supp
+    assert "inter-rater reliability remains unmeasured" in supp
+else:
+    for slot in ["ATT03","BLF04","CNC01","CTL01","LRN03","MEM02","PRD05","SKL06","CH03","CH12"]:
+        assert slot in supp
+    assert "Comparator positive controls and capacity-level cases" in supp
+    assert "Independent 10-source extraction protocol" in supp
+
 assert "Krickel2024CognitiveOntology" in bib and "Kohar2025ScalingUp" in bib
+
 print("M13_DIALECTICAL_STRENGTHENING_GUARDS_PASS")

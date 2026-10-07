@@ -103,8 +103,13 @@ jobs:
           pdftotext main.pdf main.txt
           tr '\n' ' ' < main.txt | tr -s '[:space:]' ' ' > main.flat.txt
           grep -F 'epistemically licensed only if' main.flat.txt
-          grep -F 'which invariance can individuate' main.flat.txt
-          grep -F 'ATT03' main.flat.txt
+          if test -f ../../../research/paper2/p399/main/integration/M17/M17_SPEC_v1.json; then
+            grep -F 'Structural invariance as a live target' main.flat.txt
+            grep -F 'Botvinick' main.flat.txt
+          else
+            grep -F 'which invariance can individuate' main.flat.txt
+            grep -F 'ATT03' main.flat.txt
+          fi
           grep -F 'inter-rater reliability remains unmeasured' main.flat.txt
           PAGES="$(pdfinfo main.pdf | awk -F: '/^Pages:/ {gsub(/ /,"",$2); print $2}')"
           echo "JGPS manuscript pages: $PAGES" | tee main-page-count.txt
@@ -121,7 +126,11 @@ jobs:
           if grep -En 'LaTeX Warning:|Package .* Warning:|Overfull \\hbox|Reference .* undefined' supplement.log; then exit 1; fi
           pdftotext supplement.pdf supplement.txt
           tr '\n' ' ' < supplement.txt | tr -s '[:space:]' ' ' > supplement.flat.txt
-          grep -F 'Public cross-model source reconstruction replay' supplement.flat.txt
+          if test -f ../../../research/paper2/p399/main/integration/M17/M17_SPEC_v1.json; then
+            grep -F 'Named-model reconstruction validation' supplement.flat.txt
+          else
+            grep -F 'Public cross-model source reconstruction replay' supplement.flat.txt
+          fi
           grep -F 'inter-rater reliability remains unmeasured' supplement.flat.txt
           PAGES="$(pdfinfo supplement.pdf | awk -F: '/^Pages:/ {gsub(/ /,"",$2); print $2}')"
           echo "Supplement pages: $PAGES" | tee supplement-page-count.txt
