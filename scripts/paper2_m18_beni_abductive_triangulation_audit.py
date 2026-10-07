@@ -1,0 +1,77 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import json
+import re
+from pathlib import Path
+
+ROOT=Path(__file__).resolve().parents[1]
+MAIN=(ROOT/"paper/venues/jgps/main.tex").read_text(encoding="utf-8")
+SUPP=(ROOT/"paper/venues/jgps/supplement.tex").read_text(encoding="utf-8")
+M18=json.loads((ROOT/"research/paper2/p399/main/integration/M18/M18_SPEC_v1.json").read_text(encoding="utf-8"))
+M16=json.loads((ROOT/"research/paper2/p399/main/integration/M16/M16_LRN03_SENSITIVITY_RESULT_v1.json").read_text(encoding="utf-8"))
+
+assert M18["exact_parent_head"]=="907ceadccc4daeb71888aecdf9582bf5cf4e1b63"
+assert M18["terminal_state"]=="M18_BENI_ABDUCTIVE_EVIDENCE_AND_SOURCE_FIRST_TRIANGULATION_COMPLETE"
+assert M16["terminal_state"]=="M16_LRN03_CORRECTION_STRUCTURALLY_INVARIANT"
+assert M16["headline_results"]["material_change"] is False
+assert M16["whole_claim_recalculation"]["matrix_relation_change_count"] == 0
+
+# Preserve the externally readable thesis while refining its evidential interpretation.
+thesis=(
+    "An inference from structural comparison to cognitive-capacity identity is "
+    "epistemically licensed only if the comparison representation, preservation "
+    "criterion, and granularity are specified and warranted for that inferential use."
+)
+assert thesis in MAIN
+
+for phrase in [
+    "explanatory or unificatory success is genuine abductive evidence",
+    "source-of-invariance",
+    "The central claim is not that reconstruction success is epistemically inert.",
+    "successful unification is compatible with at least three possibilities",
+    "The success of \\(R\\) alone cannot discriminate among those possibilities.",
+    "This is not an attribution of a simple fallacy to Beni",
+    "The present reconstruction supplies a complementary route.",
+    "source-first",
+    "the method is not framework-free or representation-neutral",
+    "This yields a triangulation strategy",
+    "Convergence between the two routes",
+    "a systematic alignment with PP--FEP is a further comparative test, not a result presupposed here",
+    "The present claim adds a non-circularity constraint",
+    "The contribution is thus a method for epistemic triangulation around structural invariance.",
+    "The paper therefore rejects neither inference to the best explanation nor explanatory evidence",
+]:
+    assert phrase in MAIN, phrase
+
+# Do not slip into a stronger neutrality claim than the method supports.
+assert "concept-neutral" not in MAIN
+assert "framework-neutral" not in MAIN
+assert "representation-neutral cognitive ontology" not in MAIN
+assert "systematic alignment with PP--FEP is a further comparative test" in MAIN
+
+# The article should not state that explanatory success is evidence-free.
+for forbidden in [
+    "explanatory success is not evidence",
+    "reconstruction success is not evidence",
+    "successful unification is epistemically inert",
+]:
+    assert forbidden not in MAIN.lower()
+
+# Journal-facing internal-code boundary remains intact.
+for name,text in [("main",MAIN),("supplement",SUPP)]:
+    assert re.search(r"\bM(?:1[0-9]|[0-9])\b",text) is None, name
+    assert "ClaimIR" not in text, name
+    assert re.search(r"\bA[012]\b",text) is None, name
+    assert re.search(r"\bINT-\d+\b",text) is None, name
+    assert re.search(r"\b(?:ATT|BLF|CNC|CTL|LRN|MEM|PRD|SKL|CH)\d{2}\b",text) is None, name
+    assert re.search(r"\bfrozen\b",text,re.I) is None, name
+
+# Scientific/validation boundaries remain unchanged.
+assert "Procedural auditability is established; inter-rater reliability remains unmeasured." in MAIN
+assert "population prevalence" in MAIN
+assert "independent coding reliability" in MAIN
+assert "nine of ten" in MAIN
+assert "mutually compatible in all ten" in MAIN
+
+print("M18_BENI_ABDUCTIVE_TRIANGULATION_GUARDS_PASS")
