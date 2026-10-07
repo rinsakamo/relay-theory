@@ -1,0 +1,100 @@
+{
+  "schema": "relaytheory.p399.main.m23.bt_source_compatibility_audit.v1",
+  "status": "SOURCE_LOCAL_LIVE_RIVAL_AUDIT_COMPLETE",
+  "authority_parent": "a25339a42306c134fcda159a7b6d80fb858c19bd",
+  "scientific_results_changed": false,
+  "treur_role": {
+    "authority": "research/paper2/p399/main/integration/M21/M21_TEMPORAL_ABSTRACTION_SOURCE_PIN_v1.json",
+    "licensed_role": "INDEPENDENT_SCIENTIFIC_MOTIVATION_ONLY",
+    "explicitly_not_licensed": [
+      "equivalence of Botvinick persistence and Tulving history-window organization",
+      "source-specific compatibility by itself",
+      "capacity identity",
+      "unique correctness of CPCG"
+    ]
+  },
+  "cases": [
+    {
+      "source": "Botvinick et al. 2001",
+      "doi": "10.1037/0033-295X.108.3.624",
+      "claim_ir": "research/paper2/chatgpt_reference_claimir_v1/ATT03.json",
+      "structural_adjudication": "research/paper2/reference_structural_adjudication_v1/ATT03.json",
+      "decisive_source_spans": [
+        "s3",
+        "s4"
+      ],
+      "source_commitment": "Conflict accumulated across preceding trials is retained in an exponentially weighted history and affects subsequent control.",
+      "adjudicated_temporal_features": {
+        "time_index": "present",
+        "history_window": "present",
+        "future_horizon": "present",
+        "recurrence": "present",
+        "persistence": "present"
+      },
+      "selected_fine_family": "A-53b16535e1c2",
+      "fine_family_object": {
+        "active_axes": [
+          "S",
+          "T"
+        ],
+        "temporal": [
+          "persistence",
+          "time_index"
+        ]
+      },
+      "bounded_membership_authority": "research/paper2/bounded_xlike_reconstruction_v1.json",
+      "membership_kind": "derived bounded support; not a complete description of the source model",
+      "coarse_preservation": "generic temporally extended state dependence",
+      "source_compatibility_verdict": "PASS_AT_WEAK_TEMPORAL_GRANULARITY",
+      "boundary": "The coarse quotient omits weighted-history and control-update details; it does not deny them and is not licensed for temporal-implementation identity."
+    },
+    {
+      "source": "Tulving 2002",
+      "doi": "10.1146/annurev.psych.53.100901.135114",
+      "claim_ir": "research/paper2/chatgpt_reference_claimir_v1/MEM04.json",
+      "structural_adjudication": "research/paper2/reference_structural_adjudication_v1/MEM04.json",
+      "decisive_source_spans": [
+        "s1",
+        "s3"
+      ],
+      "source_commitment": "Episodic memory is past-oriented and characterized through personally experienced past events, subjective time, self, and autonoetic awareness.",
+      "adjudicated_temporal_features": {
+        "time_index": "present",
+        "history_window": "present",
+        "future_horizon": "not_required",
+        "recurrence": "not_required",
+        "persistence": "not_required"
+      },
+      "selected_fine_family": "A-af97ed649c6f",
+      "fine_family_object": {
+        "active_axes": [
+          "S",
+          "T"
+        ],
+        "temporal": [
+          "history_window",
+          "time_index"
+        ]
+      },
+      "bounded_membership_authority": "research/paper2/bounded_xlike_reconstruction_v1.json",
+      "membership_kind": "bounded temporal-state support; not a complete theory of episodic memory",
+      "coarse_preservation": "generic temporally extended state dependence",
+      "source_compatibility_verdict": "PASS_AT_WEAK_TEMPORAL_GRANULARITY",
+      "boundary": "The coarse quotient retains past-directed temporal dependence while omitting the source's richer self/awareness/system structure."
+    }
+  ],
+  "live_alternative_test": {
+    "independently_scientifically_motivated": true,
+    "source_compatible_at_disputed_weak_granularity": true,
+    "changes_identity_relevant_overlap_verdict": true,
+    "ruled_out_by_examined_target_relevant_evidence": false,
+    "unique_or_globally_best_representation_claimed": false,
+    "verdict": "LIVE_ALTERNATIVE_ESTABLISHED_WITH_EXPLICIT_INQUIRY_INDEXED_BOUNDARY"
+  },
+  "anti_overclaim": [
+    "Source compatibility means the coarse claim is a weaker consequence of each frozen reviewed representation, not that either author endorses the cross-source equivalence.",
+    "The audit does not establish that temporal implementation is irrelevant to capacity identity.",
+    "The audit does not turn positive coarse overlap into evidence that conflict monitoring and episodic memory are one capacity.",
+    "If the inquiry is temporal implementation rather than generic cross-time dependence, the fine representation may be preferable."
+  ]
+}
