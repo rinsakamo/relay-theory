@@ -80,8 +80,8 @@ assert "RETAINED_REFERENCE_CORRECTION_REQUIRED" in xm05_case["descriptive_flags"
 
 assert xm05["status"] == "SOURCE_GROUNDED_REFERENCE_CONFLICT_IDENTIFIED_POSTFREEZE"
 assert xm05["retained_commitment"]["node"] == "matched_initial_activity_time"
-assert "5+20 = 25" in xm05["source_check"]["experiment_2"]
-assert "5+7+5+7 = 24" in xm05["source_check"]["experiment_2"]
+assert "20-min mapping = 25 min" in xm05["source_check"]["experiment_2"]
+assert "7-min recall + 5-min reread + 7-min recall = 24 min" in xm05["source_check"]["experiment_2"]
 assert xm05["frozen_comparison_effect"]["astra_vs_retained"] == "SUBSTANTIVE_DISAGREEMENT"
 assert xm05["frozen_comparison_effect"]["sol_vs_retained"] == "SUBSTANTIVE_DISAGREEMENT"
 assert xm05["independent_replay_behavior"]["pairwise_class"] == "COMPATIBLE_ALTERNATIVE_DECOMPOSITION"
