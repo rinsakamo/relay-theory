@@ -1,0 +1,20 @@
+{
+  "schema": "relaytheory.p399.main.m16.spec.v1",
+  "status": "COMPLETE",
+  "exact_parent_head": "6b5948711bd0994d8a830d077fef4eb0fc5931ac",
+  "branch": "paper2/p399-main-m16-lrn03-source-correction-sensitivity-20261007",
+  "purpose": "Correct the XM05/LRN03 study-time overstatement by successor overlay and deterministically quantify downstream structural sensitivity without mutating frozen authorities.",
+  "correction_target": "LRN03.C1 matched_initial_activity_time / relation r3 scope",
+  "source_correction": "Experiment 1 remains exactly time matched; Experiment 2 is 25 min concept mapping versus 24 min retrieval and is not represented as exactly matched.",
+  "frozen_parent_authorities_immutable": true,
+  "decision_rule": {
+    "no_material_structural_change": "corrected Phi is exactly equal to original Phi and all 1,770 whole-claim relations are unchanged; bounded and role-projection headline counts remain invariant",
+    "material_structural_change": "any Phi change, pairwise relation change, bounded membership/count change, reverse-projection verdict change, or headline MAIN result change"
+  },
+  "terminal_states": [
+    "M16_LRN03_CORRECTION_STRUCTURALLY_INVARIANT",
+    "M16_LRN03_CORRECTION_MATERIAL_STRUCTURAL_CHANGE"
+  ],
+  "terminal_state": "M16_LRN03_CORRECTION_STRUCTURALLY_INVARIANT",
+  "material_structural_change": false
+}

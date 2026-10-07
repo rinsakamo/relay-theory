@@ -1,0 +1,376 @@
+{
+  "schema_version": "paper2-claim-ir-v1",
+  "claim_id": "LRN03.C1",
+  "provenance": {
+    "paper_id": "DOI:10.1126/science.1199327",
+    "source_language": "en",
+    "source_spans": [
+      {
+        "span_id": "s1",
+        "locator": "Science 331, published p.772, Abstract/opening and Experiment 1 setup: focal active conditions and paper-level comparative claim"
+      },
+      {
+        "span_id": "s2",
+        "locator": "Science 331, published p.773, Experiment 1: matched total initial activity time, one-week verbatim/inference short-answer test, initial-output check, and delayed results"
+      },
+      {
+        "span_id": "s3",
+        "locator": "Science 331 Supporting Online Material, pp.1-4, Experiment 1 Materials and Methods/Results: exact study, closed-book recall, restudy, diagramming, scoring, and final-test procedures"
+      },
+      {
+        "span_id": "s4",
+        "locator": "Science 331, published pp.773-774, Experiment 2: enumeration/sequence texts, short-answer versus diagram final tests, initial-output asymmetry, delayed results, and participant-level comparison"
+      },
+      {
+        "span_id": "s5",
+        "locator": "Science 331 Supporting Online Material, pp.6-9, Experiment 2 Materials and Methods/Results: within-participant study-condition manipulation, counterbalancing, final-test formats, scoring, and effect estimates"
+      },
+      {
+        "span_id": "s6",
+        "locator": "Science 331, published p.774, Discussion: reconstruction is interpreted as changing later retention; cue-diagnosticity account is proposed rather than directly measured"
+      }
+    ],
+    "authors": [
+      "Jeffrey D. Karpicke",
+      "Janell R. Blunt"
+    ],
+    "institutions": [
+      "Purdue University"
+    ],
+    "venue": "Science",
+    "citation_count": null,
+    "construct_labels": [
+      "retrieval practice",
+      "concept mapping",
+      "meaningful learning",
+      "learning"
+    ]
+  },
+  "extraction": {
+    "extractor": "ChatGPT",
+    "extractor_version": "GPT-5.6 Sol",
+    "procedure_version": "chatgpt-primary-decomposition-v1:5857260823",
+    "extracted_at": "2026-09-28",
+    "manual_review_status": "reviewed"
+  },
+  "claim_core": {
+    "claim_type": "comparison",
+    "modality": "comparative",
+    "scope": {
+      "conditions": [
+        "Experiment 1 used four randomized between-participant study conditions; the focal contrast compared a closed-book reconstruction protocol with an open-book relational-diagram protocol",
+        "Experiment 2 manipulated the two focal study protocols within participants with task order counterbalanced, while text structure and final-test format were varied between participants",
+        "Experiment 1 explicitly matched total initial activity time between the closed-book reconstruction protocol and the open-book relational-diagram protocol; in Experiment 2 the scheduled activity time was 24 minutes for the closed-book reconstruction protocol and 25 minutes for the open-book relational-diagram protocol, so exact total-time matching is not asserted for Experiment 2."
+      ],
+      "population": [
+        "undergraduate students: 80 participants in Experiment 1 and 120 different participants in Experiment 2"
+      ],
+      "substrate": [],
+      "task": [
+        "study brief expository expository academic texts, complete one of the focal active study protocols, and return for delayed content assessments",
+        "Experiment 2 crossed enumeration versus sequence text structures with short-answer versus memory-based relational-diagram final assessments"
+      ],
+      "temporal_scope": [
+        "same-session initial study phase followed by a final assessment one week later",
+        "the closed-book protocol contained an initial study period, a free-reconstruction attempt, a restudy period, and a second free-reconstruction attempt before the delay"
+      ]
+    },
+    "nodes": [
+      {
+        "id": "closed_book_reconstruction_protocol",
+        "role": "intervention",
+        "description": "study the source text, reconstruct as much content as possible without viewing it, restudy the text, and reconstruct again",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "open_book_relational_diagram_protocol",
+        "role": "intervention",
+        "description": "study the source text and then create a diagram of concepts and their relations while the source material remains available",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s3",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "matched_initial_activity_time",
+        "role": "condition",
+        "description": "exact matching of total initial activity time between the two focal protocols in Experiment 1, with an explicit Experiment 2 timing qualification (24 minutes for the closed-book reconstruction protocol versus 25 minutes for the open-book relational-diagram protocol)",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s5"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "initial_idea_unit_output",
+        "role": "response_or_outcome",
+        "description": "proportion of source-text idea units produced during the initial diagram or reconstruction activity",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "text_structure_condition",
+        "role": "condition",
+        "description": "enumeration-structured versus sequence-structured expository texts in Experiment 2",
+        "source_span_ids": [
+          "s4",
+          "s5"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "one_week_short_answer_probe",
+        "role": "probe",
+        "description": "one-week delayed short-answer assessment containing direct-content and inference questions",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "one_week_relational_diagram_probe",
+        "role": "probe",
+        "description": "one-week delayed assessment requiring construction of a relational diagram from memory without viewing the source text",
+        "source_span_ids": [
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "delayed_short_answer_performance",
+        "role": "response_or_outcome",
+        "description": "proportion of correctly scored content on the delayed short-answer assessment",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "delayed_diagram_performance",
+        "role": "response_or_outcome",
+        "description": "proportion of correctly represented source-text ideas on the delayed memory-based diagram assessment",
+        "source_span_ids": [
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "content_scoring_criterion",
+        "role": "criterion",
+        "description": "source-defined correct idea units or correct answer content used to score initial and delayed responses",
+        "source_span_ids": [
+          "s3",
+          "s5"
+        ],
+        "grounding": "normalized"
+      }
+    ],
+    "relations": [
+      {
+        "id": "r1",
+        "kind": "differs",
+        "arguments": [
+          "closed_book_reconstruction_protocol",
+          "open_book_relational_diagram_protocol",
+          "delayed_short_answer_performance"
+        ],
+        "description": "the closed-book reconstruction protocol yields higher one-week short-answer performance than the open-book relational-diagram protocol in both experiments",
+        "source_span_ids": [
+          "s1",
+          "s2",
+          "s4",
+          "s5"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "r2",
+        "kind": "differs",
+        "arguments": [
+          "closed_book_reconstruction_protocol",
+          "open_book_relational_diagram_protocol",
+          "delayed_diagram_performance"
+        ],
+        "description": "in Experiment 2 the closed-book reconstruction protocol also yields higher one-week performance when the final assessment itself requires constructing a relational diagram from memory",
+        "source_span_ids": [
+          "s1",
+          "s4",
+          "s5"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "r3",
+        "kind": "constrains",
+        "arguments": [
+          "matched_initial_activity_time",
+          "closed_book_reconstruction_protocol",
+          "open_book_relational_diagram_protocol"
+        ],
+        "description": "Experiment 1 evaluates the focal intervention comparison under exactly matched total initial activity time; Experiment 2 uses near-matched but unequal scheduled activity time (24 versus 25 minutes), so exact time matching is not a cross-experiment constraint",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s5"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "r4",
+        "kind": "differs",
+        "arguments": [
+          "closed_book_reconstruction_protocol",
+          "open_book_relational_diagram_protocol",
+          "initial_idea_unit_output"
+        ],
+        "description": "initial output is approximately equal across the focal conditions in Experiment 1 but favors the diagram condition in Experiment 2, so the delayed advantage is not reducible to uniformly greater initial output in the reconstruction condition",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r5",
+        "kind": "maps_to",
+        "arguments": [
+          "one_week_short_answer_probe",
+          "delayed_short_answer_performance"
+        ],
+        "description": "the delayed short-answer probe supplies the direct-content and inference outcome used for the focal comparison",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r6",
+        "kind": "maps_to",
+        "arguments": [
+          "one_week_relational_diagram_probe",
+          "delayed_diagram_performance"
+        ],
+        "description": "the delayed memory-based diagram probe supplies a second outcome format for the focal comparison",
+        "source_span_ids": [
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r7",
+        "kind": "satisfies",
+        "arguments": [
+          "initial_idea_unit_output",
+          "content_scoring_criterion"
+        ],
+        "description": "initial outputs are scored using source-defined idea-unit criteria",
+        "source_span_ids": [
+          "s3",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r8",
+        "kind": "satisfies",
+        "arguments": [
+          "delayed_short_answer_performance",
+          "content_scoring_criterion"
+        ],
+        "description": "delayed short-answer responses are scored against source-defined correct content",
+        "source_span_ids": [
+          "s3",
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r9",
+        "kind": "satisfies",
+        "arguments": [
+          "delayed_diagram_performance",
+          "content_scoring_criterion"
+        ],
+        "description": "delayed relational diagrams are scored using source-defined idea units",
+        "source_span_ids": [
+          "s5"
+        ],
+        "grounding": "normalized"
+      },
+      {
+        "id": "r10",
+        "kind": "precedes",
+        "arguments": [
+          "closed_book_reconstruction_protocol",
+          "one_week_short_answer_probe"
+        ],
+        "description": "the focal reconstruction intervention occurs during the initial session before the one-week delayed assessment",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s5"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "r11",
+        "kind": "precedes",
+        "arguments": [
+          "open_book_relational_diagram_protocol",
+          "one_week_short_answer_probe"
+        ],
+        "description": "the focal diagram intervention occurs during the initial session before the one-week delayed assessment",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s5"
+        ],
+        "grounding": "explicit"
+      },
+      {
+        "id": "r12",
+        "kind": "constrains",
+        "arguments": [
+          "text_structure_condition",
+          "delayed_short_answer_performance",
+          "delayed_diagram_performance"
+        ],
+        "description": "Experiment 2 tests the focal delayed-performance difference across both enumeration and sequence text structures and across both final-assessment formats",
+        "source_span_ids": [
+          "s4",
+          "s5"
+        ],
+        "grounding": "normalized"
+      }
+    ]
+  }
+}
