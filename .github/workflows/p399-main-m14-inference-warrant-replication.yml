@@ -102,8 +102,12 @@ jobs:
           if grep -En 'LaTeX Warning:|Package .* Warning:|Overfull \\hbox|Citation .* undefined|Reference .* undefined' main.log; then exit 1; fi
           pdftotext main.pdf main.txt
           tr '\n' ' ' < main.txt | tr -s '[:space:]' ' ' > main.flat.txt
-          grep -F 'epistemically licensed only if' main.flat.txt
-          if test -f ../../../research/paper2/p399/main/integration/M17/M17_SPEC_v1.json; then
+          if test -f ../../../research/paper2/p399/main/integration/M19/M19_SPEC_v1.json; then
+            grep -F 'Discrimination Requirement' main.flat.txt
+            grep -F 'Structural invariance as a live target' main.flat.txt
+            grep -F 'Botvinick' main.flat.txt
+          elif test -f ../../../research/paper2/p399/main/integration/M17/M17_SPEC_v1.json; then
+            grep -F 'epistemically licensed only if' main.flat.txt
             grep -F 'Structural invariance as a live target' main.flat.txt
             grep -F 'Botvinick' main.flat.txt
           else
@@ -126,7 +130,9 @@ jobs:
           if grep -En 'LaTeX Warning:|Package .* Warning:|Overfull \\hbox|Reference .* undefined' supplement.log; then exit 1; fi
           pdftotext supplement.pdf supplement.txt
           tr '\n' ' ' < supplement.txt | tr -s '[:space:]' ' ' > supplement.flat.txt
-          if test -f ../../../research/paper2/p399/main/integration/M17/M17_SPEC_v1.json; then
+          if test -f ../../../research/paper2/p399/main/integration/M19/M19_SPEC_v1.json; then
+            grep -F 'Named-model procedural robustness diagnostics' supplement.flat.txt
+          elif test -f ../../../research/paper2/p399/main/integration/M17/M17_SPEC_v1.json; then
             grep -F 'Named-model reconstruction validation' supplement.flat.txt
           else
             grep -F 'Public cross-model source reconstruction replay' supplement.flat.txt
