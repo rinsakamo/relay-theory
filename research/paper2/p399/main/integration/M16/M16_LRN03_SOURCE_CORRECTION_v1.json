@@ -1,0 +1,46 @@
+{
+  "schema": "relaytheory.p399.main.m16.lrn03_source_correction.v1",
+  "status": "SUCCESSOR_CORRECTION_OVERLAY_FROZEN_BASES_UNMODIFIED",
+  "exact_parent_head": "6b5948711bd0994d8a830d077fef4eb0fc5931ac",
+  "target": {
+    "slot_id": "LRN03",
+    "claim_id": "LRN03.C1",
+    "doi": "10.1126/science.1199327",
+    "frozen_claimir_blob_sha": "352eb21488fa75587ecd06b63857f3fe4308cfd3",
+    "frozen_adjudication_blob_sha": "7b243aca3fc6f29e7915e71db4a88e690918c901"
+  },
+  "source_basis": {
+    "authority": "M15_XM05_REFERENCE_CONFLICT_v1.json plus the two independently frozen M15 source reconstructions",
+    "experiment_1": "Concept mapping 5+25 = 30 min; retrieval 5+10+5+10 = 30 min; exact matching retained.",
+    "experiment_2": "Concept mapping 5+20 = 25 min; retrieval 5+7+5+7 = 24 min; exact matching removed.",
+    "correction_scope": "Only the cross-experiment overstatement of matched initial activity time is corrected. Retrieval-practice outcome claims, probes, scoring, text-structure factors, and temporal ordering are unchanged."
+  },
+  "mutation_boundary": {
+    "frozen_claimir_modified": false,
+    "frozen_adjudication_modified": false,
+    "m15_anchor_modified": false,
+    "successor_overlay_only": true
+  },
+  "intended_claimir_changes": [
+    "claim_core.scope.conditions[2]: exact matching narrowed to Experiment 1, with Experiment 2 25-vs-24 minute qualification",
+    "node matched_initial_activity_time: description and source spans narrowed/qualified",
+    "relation r3: exact matched-time constraint narrowed to Experiment 1, with Experiment 2 qualification"
+  ],
+  "intended_structural_hypothesis": {
+    "resource_C_remains_present": true,
+    "reason": "Exact matched time remains a source-declared admissibility/resource condition for Experiment 1.",
+    "coordinate_inventory_expected_unchanged": true,
+    "relation_kind_and_arguments_expected_unchanged": true,
+    "phi_expected_identical": true,
+    "canonical_semantic_structural_digest_expected_changed": true
+  },
+  "required_sensitivity_checks": [
+    "validate corrected ClaimIR and adjudication under existing contracts",
+    "compile original and corrected structural records",
+    "test exact Phi equality",
+    "recompute all 1,770 whole-claim Phi comparisons with corrected LRN03",
+    "check bounded XLike invariance implied by exact Phi equality",
+    "check LRN03 Grammar v0 role inventory and FULL verdict under scoped C correction",
+    "check M14/M15 immutable headline results for material change"
+  ]
+}
