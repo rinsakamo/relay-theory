@@ -41,7 +41,11 @@ jobs:
           ! grep -F 'Paper 2' paper/venues/jgps/main.tex
           ! grep -Fi 'construct-label-neutral' paper/venues/jgps/main.tex
           grep -F 'When Does Structural Comparison Support Cognitive-Capacity Individuation?' paper/venues/jgps/main.tex
-          if test -f research/paper2/p399/main/integration/M17/M17_SPEC_v1.json; then
+          if test -f research/paper2/p399/main/integration/M19/M19_SPEC_v1.json; then
+            grep -F 'The Discrimination Requirement' paper/venues/jgps/main.tex
+            grep -F 'Structural invariance as a live target' paper/venues/jgps/main.tex
+            grep -F 'The capacity thesis remains open, but the preservation debt is explicit.' paper/venues/jgps/main.tex
+          elif test -f research/paper2/p399/main/integration/M17/M17_SPEC_v1.json; then
             grep -F 'From reconstruction success to licensed identity inference' paper/venues/jgps/main.tex
             grep -F 'Structural invariance as a live target' paper/venues/jgps/main.tex
             grep -F 'The capacity thesis remains open, but the preservation debt is explicit.' paper/venues/jgps/main.tex
@@ -123,7 +127,10 @@ jobs:
           pdftotext main.pdf main.txt
           tr '\n' ' ' < main.txt | tr -s '[:space:]' ' ' > main.flat.txt
           grep -F 'When Does Structural Comparison Support Cognitive-Capacity Individuation?' main.flat.txt
-          if test -f ../../../research/paper2/p399/main/integration/M17/M17_SPEC_v1.json; then
+          if test -f ../../../research/paper2/p399/main/integration/M19/M19_SPEC_v1.json; then
+            grep -F 'Discrimination Requirement' main.flat.txt
+            grep -F 'preservation debt' main.flat.txt
+          elif test -f ../../../research/paper2/p399/main/integration/M17/M17_SPEC_v1.json; then
             grep -F 'reconstruction success' main.flat.txt
             grep -F 'preservation debt' main.flat.txt
           else
@@ -148,7 +155,12 @@ jobs:
           fi
           pdftotext supplement.pdf supplement.txt
           tr '\n' ' ' < supplement.txt | tr -s '[:space:]' ' ' > supplement.flat.txt
-          if test -f ../../../research/paper2/p399/main/integration/M17/M17_SPEC_v1.json; then
+          if test -f ../../../research/paper2/p399/main/integration/M19/M19_SPEC_v1.json; then
+            grep -F 'Complete 60-source evidence index' supplement.flat.txt
+            grep -F 'Prospective 40-paper source index' supplement.flat.txt
+            grep -F 'Independent human-coding boundary' supplement.flat.txt
+            grep -F 'Named-model procedural robustness diagnostics' supplement.flat.txt
+          elif test -f ../../../research/paper2/p399/main/integration/M17/M17_SPEC_v1.json; then
             grep -F 'Complete 60-source evidence index' supplement.flat.txt
             grep -F 'Prospective 40-paper source index' supplement.flat.txt
             grep -F 'Independent human-coding boundary' supplement.flat.txt
