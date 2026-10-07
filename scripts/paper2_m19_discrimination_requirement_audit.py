@@ -73,7 +73,7 @@ for phrase in [
 ]:
     assert phrase in MAIN, phrase
 assert "not presented as the uniquely correct representation" in MAIN
-assert "the coarse representation is correct" not in MAIN
+assert "nor that the coarse representation is correct" in MAIN
 
 # Large diagnostics are subordinate in the journal-facing main text.
 assert "Secondary procedural robustness diagnostics" in MAIN
