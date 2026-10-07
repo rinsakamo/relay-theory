@@ -43,10 +43,17 @@ M15-A:
 - external receipt: `M15_A_EXTERNAL_FREEZE_RECEIPT_v1.json`
 
 M15-B:
-- GPT-6.1 Sol / Medium: NOT YET PERFORMED
+- GPT-6.1 Sol / Medium: **FROZEN**
+- 10 COMPLETE / 0 ABSTAIN / 0 UNDERDETERMINED / 0 CONTAMINATED
+- package SHA256: `9399e3333b58800d89946ffc0926b4ea55360b6ee9dbe6b35c0f63bdd05a3a7f`
+- freeze receipt SHA256: `c8adaa662b2ec49a58ea6a430dfc8fc921725e647dd0cd0e90cf0a097f63f191`
+- retained comparison: NOT PERFORMED
+- exact backend snapshot / internal routing: UNVERIFIED
+- external receipt: `M15_B_EXTERNAL_FREEZE_RECEIPT_v1.json`
+- non-scientific packaging caveat: manifest/SHA256SUMS list one generated `__pycache__/acquire.cpython-312.pyc` entry that is absent from the ZIP; all 10 RAW and 10 RECORD scientific payloads are present and their listed hashes are intact.
 
 Current execution state:
 
-`M15_ASTRA_MEDIUM_CLAIM_ANCHORED_REPLAY_FROZEN_COMPARISON_NOT_PERFORMED`
+`M15_A_AND_B_CLAIM_ANCHORED_REPLAYS_FROZEN_COMPARISON_AUTHORIZED`
 
-Do not open M15-A scientific records for comparison before M15-B has independently frozen all ten cases.
+Both named-model runs are now independently frozen. Retained and pairwise M15 comparison may begin under the predeclared M15 comparison rules. Do not rewrite either frozen replay package.
