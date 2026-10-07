@@ -1,0 +1,26 @@
+{
+  "schema": "relaytheory.p399.main.m15.claim_anchored_comparison_receipt.v1",
+  "status": "COMPARISON_COMPLETE",
+  "exact_head_before_comparison": "6cd8b0110bccab62a360149fcf3ba51b17b844d0",
+  "frozen_inputs": {
+    "blind_packet_sha256": "edeb5aaae862dd240def175dddf87d112e6768517b33192b99e2688f8468d9c3",
+    "comparison_rules_sha256": "75c2e1f5d760875e72ad1f9dfc17ac421b3ba6d403bd8dcd3aebc24d3e4c605f",
+    "m15_a_package_sha256": "ca6f1d557915777ae59e9846fd80ac90134c10e85b76ec9ae3e2ef53c1d22fb3",
+    "m15_b_package_sha256": "9399e3333b58800d89946ffc0926b4ea55360b6ee9dbe6b35c0f63bdd05a3a7f"
+  },
+  "guarantees": [
+    "Both M15 runs were frozen before retained or pairwise comparison.",
+    "Only the four predeclared M15 comparison classes are scored.",
+    "ANCHOR_SOURCE_CONFLICT is descriptive metadata, not a fifth scored class.",
+    "Neither frozen replay package is modified post hoc.",
+    "M15-A and M15-B scientific records are compared only after both external freeze receipts were recorded."
+  ],
+  "limitations": [
+    "Comparison adjudication is not an independent human rating.",
+    "M15 is a repair test designed after observing M14 v1 and is not independent confirmation of v1.",
+    "The same ten sources are reused; unseen-source generalization is not established.",
+    "Exact backend snapshots are unverified.",
+    "XM05 exposes a retained/anchor source conflict whose downstream structural sensitivity is not yet adjudicated."
+  ],
+  "terminal_state": "M15_CLAIM_ANCHORED_V2_COMPARISON_COMPLETE_XM05_REFERENCE_CORRECTION_REQUIRED"
+}
