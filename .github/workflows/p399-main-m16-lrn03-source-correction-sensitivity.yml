@@ -33,6 +33,9 @@ jobs:
           rm -rf m16-computed
           python scripts/paper2_m16_lrn03_source_correction_sensitivity.py \
             --output m16-computed/M16_LRN03_SENSITIVITY_COMPUTED_v1.json
+          diff -u \
+            research/paper2/p399/main/integration/M16/M16_LRN03_SENSITIVITY_RESULT_v1.json \
+            m16-computed/M16_LRN03_SENSITIVITY_COMPUTED_v1.json
           python scripts/paper2_m15_claim_anchored_prefreeze_audit.py
           python scripts/paper2_m15_claim_anchored_comparison_audit.py
           python scripts/paper2_m14_inference_warrant_replication_audit.py
