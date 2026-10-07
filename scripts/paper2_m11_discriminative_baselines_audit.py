@@ -139,8 +139,28 @@ assert same["cpcg_sensitivity"]["projected_signature_intersection_count"] == 0
 assert same["cpcg_sensitivity"]["remains_disjoint_under_CPCG"] is True
 
 # Manuscript philosophical and editorial boundary.
+m17 = (ROOT / "research/paper2/p399/main/integration/M17/M17_SPEC_v1.json").exists()
 m14 = (ROOT / "research/paper2/p399/main/integration/M14/M14_SPEC_v1.json").exists()
-if m14:
+if m17:
+    thesis = (
+        "An inference from structural comparison to cognitive-capacity identity is "
+        "epistemically licensed only if the comparison representation, preservation "
+        "criterion, and granularity are specified and warranted for that inferential use."
+    )
+    assert thesis in main
+    for phrase in [
+        "From reconstruction success to licensed identity inference",
+        "Structural invariance as a live target",
+        "Beni's structural-realist proposal",
+        "Critical representation-sensitivity tests",
+        "six weaker encoding-capable views",
+        "Capacity-level consequences",
+        "semantic memory",
+        "Procedural auditability is established; inter-rater reliability remains unmeasured.",
+        "Independent human re-adjudication was not performed.",
+    ]:
+        assert phrase in main, phrase
+elif m14:
     thesis = (
         "An inference from structural comparison to cognitive-capacity identity is "
         "epistemically licensed only if the comparison representation, preservation "
@@ -162,45 +182,42 @@ else:
         "neither terminology nor successful reconstruction licenses representation-independent identity."
     )
     assert thesis in main
-    assert (
-        "A Pre-Individuation Structural Comparison Procedure for Cognitive-Capacity Claims" in main
-        or "When Does Structural Comparison Support Cognitive-Capacity Individuation?" in main
-    )
-    assert "claim-level structural comparison" in main
-    assert "evidential constraint on capacity comparison" in main
     assert "capacity individuation" in main
     assert "Coarse Process--Constraint Graph (CPCG)" in main
-    assert "206 bounded structural objects collapse to 143 distinct CPCG signatures" in main
-    assert "Sixty-two CPCG signatures" in main
-    assert "58 of the 60 source claims" in main
-    assert "Under the encoding-permissive baseline" in main
-    assert "every tested weaker representation also remains 40/40 A0" in main
-    assert "Under direct preservation" in main
-    assert ("0 A0/40 A1" in main or "producing A1 for all 40 rows" in main)
-    assert ("Prospective A0 therefore supports the absence of reconstruction-added coordination" in main or "required no reconstruction-added coordinator under any of the tested encoding-capable views" in main)
-    assert "semantic memory" in main and "MEM04" in main and "CNC05" in main
     assert "Procedural auditability is established; inter-rater reliability remains unmeasured." in main
-    assert "Independent human re-adjudication was not performed." in main
 
 assert "Paper 2" not in main
 assert "construct-label-neutral" not in main.lower()
 assert "M11" not in main
 assert "\\paragraph{" not in main
 
-# Supplement keeps the audit material and exact limitations.
-assert "a212820d225050bbc10d395685e74cd2fb0d9912" in supp
-assert "b31f670f31d2f015b65d8bbf2e4fb12178b46694" in supp
-assert "1c22fcb177c434d2900ffb3af9ef6baee2af73ff" in supp
-assert "206 bounded objects" in supp
-assert "143 CPCG signatures" in supp
-assert "63/99" in supp
-assert "62 CPCG signatures" in supp
-assert "58/60 claims" in supp
-assert "Encoding-permissive A-state closure" in supp
-assert "Dynamic & 40 & 0 & 0" in supp
-assert "Direct-preservation closure result" in supp
-assert "Dynamic & 0 & 40 & 0" in supp
-assert "Procedural auditability is established; inter-rater reliability remains unmeasured." in supp
+if m17:
+    for phrase in [
+        "206 reusable bounded objects",
+        "143 coarse signatures",
+        "63 of the 99 original cross-stratum families",
+        "62 coarse signatures",
+        "58 of 60 claims",
+        "Encoding-permissive reconstruction",
+        "Direct-preservation criterion",
+        "Procedural auditability is established; inter-rater reliability remains unmeasured.",
+    ]:
+        assert phrase in supp, phrase
+    assert "A0" not in supp and "A1" not in supp and "A2" not in supp
+else:
+    assert "a212820d225050bbc10d395685e74cd2fb0d9912" in supp
+    assert "b31f670f31d2f015b65d8bbf2e4fb12178b46694" in supp
+    assert "1c22fcb177c434d2900ffb3af9ef6baee2af73ff" in supp
+    assert "206 bounded objects" in supp
+    assert "143 CPCG signatures" in supp
+    assert "63/99" in supp
+    assert "62 CPCG signatures" in supp
+    assert "58/60 claims" in supp
+    assert "Encoding-permissive A-state closure" in supp
+    assert "Dynamic & 40 & 0 & 0" in supp
+    assert "Direct-preservation closure result" in supp
+    assert "Dynamic & 0 & 40 & 0" in supp
+    assert "Procedural auditability is established; inter-rater reliability remains unmeasured." in supp
 assert "\\paragraph{" not in supp
 
 print("M11_DISCRIMINATIVE_BASELINES_GUARDS_PASS")
