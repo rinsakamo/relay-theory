@@ -1,0 +1,56 @@
+{
+  "schema": "relaytheory.p399.main.m16.lrn03_role_projection_successor.v1",
+  "status": "SUCCESSOR_SENSITIVITY_OVERLAY",
+  "frozen_parent": "research/paper2/lrn_grammar_v0_reverse_projection_v1.json",
+  "claim_id": "LRN03.C1",
+  "verdict": "FULL",
+  "grammar_roles_instantiated": [
+    "C",
+    "Q",
+    "P_in",
+    "P_out",
+    "T",
+    "rho/O"
+  ],
+  "corrected_C_mapping": {
+    "status": "SUPPORTED",
+    "mapping": [
+      "matched_initial_activity_time"
+    ],
+    "scope": "Experiment 1 exact matched total learning time only; Experiment 2 carries a 25-minute versus 24-minute timing qualification and is not treated as exactly matched.",
+    "evidence": [
+      {
+        "artifact": "M16_LRN03_CORRECTED_CLAIMIR_v1.json",
+        "kind": "node",
+        "id": "matched_initial_activity_time",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s5"
+        ]
+      },
+      {
+        "artifact": "M16_LRN03_CORRECTED_CLAIMIR_v1.json",
+        "kind": "relation",
+        "id": "r3",
+        "source_span_ids": [
+          "s2",
+          "s3",
+          "s5"
+        ]
+      },
+      {
+        "artifact": "M16_LRN03_CORRECTED_ADJUDICATION_v1.json",
+        "kind": "field",
+        "id": "controls.resource_C",
+        "description": "present",
+        "claim_node_ids": [
+          "matched_initial_activity_time"
+        ]
+      }
+    ]
+  },
+  "other_role_mappings_changed": false,
+  "residual_changed": false,
+  "interpretation": "The source correction narrows the scope of C but does not remove the source-declared resource/admissibility role from the claim."
+}
