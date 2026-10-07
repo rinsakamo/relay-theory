@@ -1,0 +1,31 @@
+{
+  "schema": "relaytheory.p399.main.m15.xm05_reference_conflict.v1",
+  "status": "SOURCE_GROUNDED_REFERENCE_CONFLICT_IDENTIFIED_POSTFREEZE",
+  "case_id": "XM05",
+  "slot_id": "LRN03",
+  "doi": "10.1126/science.1199327",
+  "frozen_anchor_text": "Reconstruct the paper's comparative claim that closed-book retrieval practice produces better delayed learning than open-book concept mapping under matched study time, including the second experiment's comparison across text structure and final-test format.",
+  "retained_commitment": {
+    "claim_id": "LRN03.C1",
+    "node": "matched_initial_activity_time",
+    "description": "source-stated matching of total initial activity time between the two focal protocols",
+    "relation": "constrains the focal intervention comparison"
+  },
+  "source_check": {
+    "experiment_1": "Concept mapping: initial 5-min study + 25-min mapping; retrieval: 5-min study + 10-min recall + 5-min restudy + 10-min recall = 30 min. SOM explicitly states total learning time was identical.",
+    "experiment_2": "Concept mapping: 5-min study + 20-min mapping = 25 min. Retrieval: 5-min study + 7-min recall + 5-min reread + 7-min recall = 24 min.",
+    "conclusion": "Exact time matching is supported for Experiment 1 but not for Experiment 2 as specified in the Supporting Online Material."
+  },
+  "independent_replay_behavior": {
+    "astra": "COMPLETE; uncertainty note explicitly reports 25 versus 24 minutes in Experiment 2.",
+    "sol": "COMPLETE; boundary note explicitly declines to assert exact equality across both experiments.",
+    "pairwise_class": "COMPATIBLE_ALTERNATIVE_DECOMPOSITION"
+  },
+  "frozen_comparison_effect": {
+    "astra_vs_retained": "SUBSTANTIVE_DISAGREEMENT",
+    "sol_vs_retained": "SUBSTANTIVE_DISAGREEMENT",
+    "reason": "The retained/anchor matched-time commitment is not source-supported across Experiment 2."
+  },
+  "mutation_boundary": "Do not silently edit the frozen M13/M14 retained ClaimIR or M15 anchor. Any correction must be represented as a successor correction/sensitivity lane with downstream impact assessed.",
+  "next_required_action": "Assess downstream structural sensitivity of correcting LRN03 matched_initial_activity_time before treating the manuscript/corpus as source-corrected."
+}
