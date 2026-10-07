@@ -169,9 +169,30 @@ assert results["interpretation_boundary"]["model_family_independence"] == "NOT_C
 assert results["interpretation_boundary"]["aggregate_match_rate_is_primary_result"] is False
 
 # Manuscript/supplement presentation may evolve in successor reader-facing revisions.
+m19 = (ROOT / "research/paper2/p399/main/integration/M19/M19_SPEC_v1.json").exists()
 m17 = (ROOT / "research/paper2/p399/main/integration/M17/M17_SPEC_v1.json").exists()
-assert THESIS in main
-if m17:
+if m19:
+    for phrase in [
+        "The Discrimination Requirement",
+        "Structural invariance as a live target",
+        "Wajnerman-Paz and Rojas-L",
+        "Critical representation-sensitivity tests",
+        "Secondary procedural robustness diagnostics",
+        "Procedural auditability is established; inter-rater reliability remains unmeasured.",
+    ]:
+        assert phrase in main, phrase
+    assert "GPT-6 Astra" not in main and "GPT-6.1 Sol" not in main
+    for phrase in [
+        "Named-model procedural robustness diagnostics",
+        "GPT-6 Astra / Medium",
+        "GPT-6.1 Sol / Medium",
+        "Astra / Medium vs Sol / Medium & 0 & 10 & 0 & 0",
+        "Source correction and sensitivity analysis",
+        "Procedural auditability is established; inter-rater reliability remains unmeasured.",
+    ]:
+        assert phrase in supp, phrase
+elif m17:
+    assert THESIS in main
     for phrase in [
         "From reconstruction success to licensed identity inference",
         "Structural invariance as a live target",
@@ -194,6 +215,7 @@ if m17:
     ]:
         assert phrase in supp, phrase
 else:
+    assert THESIS in main
     assert "From specification to licensed identity inference" in main
     assert "A live dialectical target: which invariance can individuate?" in main
     assert "ATT03--MEM04" in main
