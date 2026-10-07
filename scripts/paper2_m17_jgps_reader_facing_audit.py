@@ -75,7 +75,10 @@ else:
 
 # Corpus is not sold as prevalence evidence.
 assert "not a probability sample" in MAIN
-assert "witnesses and stress tests, not prevalence estimates" in MAIN
+if m19:
+    assert "supporting diagnostics rather than the philosophical contribution" in MAIN
+else:
+    assert "witnesses and stress tests, not prevalence estimates" in MAIN
 assert "population prevalence" in MAIN
 
 # Supplement state is current and reader-facing.
