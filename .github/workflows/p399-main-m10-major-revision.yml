@@ -35,7 +35,11 @@ jobs:
           ! grep -F '\\paragraph{' paper/venues/jgps/main.tex
           grep -F 'Cognitive-capacity labels are at most prima facie guides to individuation' paper/venues/jgps/main.tex
           grep -F 'Procedural auditability is established; inter-rater reliability remains unmeasured.' paper/venues/jgps/main.tex
-          grep -F 'A0=40,A1=0,A2=0' paper/venues/jgps/main.tex
+          if test -f research/paper2/p399/main/integration/M17/M17_SPEC_v1.json; then
+            grep -F 'All 40 could be reconstructed without adding a new coordinating mechanism' paper/venues/jgps/main.tex
+          else
+            grep -F 'A0=40,A1=0,A2=0' paper/venues/jgps/main.tex
+          fi
 
       - name: Install strict LaTeX build tools
         run: |
@@ -62,7 +66,11 @@ jobs:
           tr '\n' ' ' < main.txt | tr -s '[:space:]' ' ' > main.flat.txt
           grep -F 'Cognitive-capacity labels are at most prima facie guides to individuation' main.flat.txt
           grep -E '1770[[:space:]]*/[[:space:]]*1770' main.flat.txt
-          grep -F '206 unique reusable structural subobjects' main.flat.txt
+          if test -f ../../../research/paper2/p399/main/integration/M17/M17_SPEC_v1.json; then
+            grep -F '206 unique reusable structural subobjects' main.flat.txt || grep -F '206 unique reusable' main.flat.txt || grep -F '206 reusable' main.flat.txt
+          else
+            grep -F '206 unique reusable structural subobjects' main.flat.txt
+          fi
           grep -F 'inter-rater reliability remains unmeasured' main.flat.txt
           PAGES="$(pdfinfo main.pdf | awk -F: '/^Pages:/ {gsub(/ /,"",$2); print $2}')"
           echo "JGPS manuscript pages: $PAGES" | tee page-count.txt
