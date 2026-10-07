@@ -85,9 +85,22 @@ for r in hvs["rows"]:
     assert entries[r["slot_id"]]["stable_identity"]=="DOI:"+r["doi"]
     assert r["sha256_rank"]==hashlib.sha256(f"{PARENT}|{salt}|{r['slot_id']}".encode()).hexdigest()
 
+m19 = (ROOT / "research/paper2/p399/main/integration/M19/M19_SPEC_v1.json").exists()
 m17 = (ROOT / "research/paper2/p399/main/integration/M17/M17_SPEC_v1.json").exists()
 m14 = (ROOT / "research/paper2/p399/main/integration/M14/M14_SPEC_v1.json").exists()
-if m17:
+if m19:
+    for phrase in [
+        "The Discrimination Requirement",
+        "Structural invariance as a live target",
+        "clearest contemporary application of the Discrimination Requirement",
+        "Capacity-level consequences",
+        "target alignment",
+        "Botvinick et al.--Tulving comparison",
+        "Worked example: from source evidence to a capacity constraint",
+        "Procedural auditability is established; inter-rater reliability remains unmeasured.",
+    ]:
+        assert phrase in main, phrase
+elif m17:
     strong = (
         "An inference from structural comparison to cognitive-capacity identity is "
         "epistemically licensed only if the comparison representation, preservation "
