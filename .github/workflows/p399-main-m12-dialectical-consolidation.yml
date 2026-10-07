@@ -41,10 +41,16 @@ jobs:
           ! grep -F 'Paper 2' paper/venues/jgps/main.tex
           ! grep -Fi 'construct-label-neutral' paper/venues/jgps/main.tex
           grep -F 'When Does Structural Comparison Support Cognitive-Capacity Individuation?' paper/venues/jgps/main.tex
-          grep -F 'terminological carryover inference' paper/venues/jgps/main.tex
-          grep -F 'reconstruction-to-identity inference' paper/venues/jgps/main.tex
-          grep -F 'local-invariance promotion' paper/venues/jgps/main.tex
-          grep -F 'The capacity thesis remains open, but it now carries explicit preservation debt.' paper/venues/jgps/main.tex
+          if test -f research/paper2/p399/main/integration/M17/M17_SPEC_v1.json; then
+            grep -F 'From reconstruction success to licensed identity inference' paper/venues/jgps/main.tex
+            grep -F 'Structural invariance as a live target' paper/venues/jgps/main.tex
+            grep -F 'The capacity thesis remains open, but the preservation debt is explicit.' paper/venues/jgps/main.tex
+          else
+            grep -F 'terminological carryover inference' paper/venues/jgps/main.tex
+            grep -F 'reconstruction-to-identity inference' paper/venues/jgps/main.tex
+            grep -F 'local-invariance promotion' paper/venues/jgps/main.tex
+            grep -F 'The capacity thesis remains open, but it now carries explicit preservation debt.' paper/venues/jgps/main.tex
+          fi
           grep -F 'Procedural auditability is established; inter-rater reliability remains unmeasured.' paper/venues/jgps/main.tex
 
       - name: Verify human scorer refuses blank forms
@@ -117,8 +123,13 @@ jobs:
           pdftotext main.pdf main.txt
           tr '\n' ' ' < main.txt | tr -s '[:space:]' ' ' > main.flat.txt
           grep -F 'When Does Structural Comparison Support Cognitive-Capacity Individuation?' main.flat.txt
-          grep -F 'terminological carryover inference' main.flat.txt
-          grep -F 'preservation debt' main.flat.txt
+          if test -f ../../../research/paper2/p399/main/integration/M17/M17_SPEC_v1.json; then
+            grep -F 'reconstruction success' main.flat.txt
+            grep -F 'preservation debt' main.flat.txt
+          else
+            grep -F 'terminological carryover inference' main.flat.txt
+            grep -F 'preservation debt' main.flat.txt
+          fi
           grep -F 'inter-rater reliability remains unmeasured' main.flat.txt
           PAGES="$(pdfinfo main.pdf | awk -F: '/^Pages:/ {gsub(/ /,"",$2); print $2}')"
           echo "JGPS manuscript pages: $PAGES" | tee main-page-count.txt
@@ -137,11 +148,18 @@ jobs:
           fi
           pdftotext supplement.pdf supplement.txt
           tr '\n' ' ' < supplement.txt | tr -s '[:space:]' ' ' > supplement.flat.txt
-          grep -F 'Complete 60-claim source roster' supplement.flat.txt
-          grep -F 'Compact 40-paper prospective evidence index' supplement.flat.txt
-          grep -F 'Frozen 20-claim human re-adjudication sample' supplement.flat.txt
-          grep -F 'Frozen 10-paper prospective re-adjudication sample' supplement.flat.txt
-          grep -F 'NOT PERFORMED' supplement.flat.txt
+          if test -f ../../../research/paper2/p399/main/integration/M17/M17_SPEC_v1.json; then
+            grep -F 'Complete 60-source evidence index' supplement.flat.txt
+            grep -F 'Prospective 40-paper source index' supplement.flat.txt
+            grep -F 'Independent human-coding boundary' supplement.flat.txt
+            grep -F 'Named-model reconstruction validation' supplement.flat.txt
+          else
+            grep -F 'Complete 60-claim source roster' supplement.flat.txt
+            grep -F 'Compact 40-paper prospective evidence index' supplement.flat.txt
+            grep -F 'Frozen 20-claim human re-adjudication sample' supplement.flat.txt
+            grep -F 'Frozen 10-paper prospective re-adjudication sample' supplement.flat.txt
+            grep -F 'NOT PERFORMED' supplement.flat.txt
+          fi
           grep -F 'inter-rater reliability remains unmeasured' supplement.flat.txt
           PAGES="$(pdfinfo supplement.pdf | awk -F: '/^Pages:/ {gsub(/ /,"",$2); print $2}')"
           echo "Supplement pages: $PAGES" | tee supplement-page-count.txt
