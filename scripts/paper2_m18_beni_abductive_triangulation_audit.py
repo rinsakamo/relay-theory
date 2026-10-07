@@ -17,38 +17,53 @@ assert M16["terminal_state"]=="M16_LRN03_CORRECTION_STRUCTURALLY_INVARIANT"
 assert M16["headline_results"]["material_change"] is False
 assert M16["whole_claim_recalculation"]["matrix_relation_change_count"] == 0
 
-# Preserve the externally readable thesis while refining its evidential interpretation.
-thesis=(
-    "An inference from structural comparison to cognitive-capacity identity is "
-    "epistemically licensed only if the comparison representation, preservation "
-    "criterion, and granularity are specified and warranted for that inferential use."
-)
-assert thesis in MAIN
-
-for phrase in [
-    "explanatory or unificatory success is genuine abductive evidence",
-    "source-of-invariance",
-    "The central claim is not that reconstruction success is epistemically inert.",
-    "successful unification is compatible with at least three possibilities",
-    "The success of \\(R\\) alone cannot discriminate among those possibilities.",
-    "This is not an attribution of a simple fallacy to Beni",
-    "The present reconstruction supplies a complementary route.",
-    "source-first",
-    "the method is not framework-free or representation-neutral",
-    "This yields a triangulation strategy",
-    "Convergence between the two routes",
-    "a systematic alignment with PP--FEP is a further comparative test, not a result presupposed here",
-    "The present claim adds a non-circularity constraint",
-    "The contribution is thus a method for epistemic triangulation around structural invariance.",
-    "The paper therefore rejects neither inference to the best explanation nor explanatory evidence",
-]:
-    assert phrase in MAIN, phrase
+# Preserve the abductive-evidence interpretation while allowing successor M19
+# to name the more precise Discrimination Requirement.
+m19=(ROOT/"research/paper2/p399/main/integration/M19/M19_SPEC_v1.json").exists()
+if m19:
+    for phrase in [
+        "genuine abductive evidence",
+        "The Discrimination Requirement",
+        "source-side recurrence",
+        "framework-enabled commonality",
+        "source-first",
+        "not framework-free or representation-neutral",
+        "A systematic alignment with PP--FEP would be an especially probative application",
+        "not a premise of the general argument",
+        "objective perspicuity",
+    ]:
+        assert phrase in MAIN, phrase
+else:
+    thesis=(
+        "An inference from structural comparison to cognitive-capacity identity is "
+        "epistemically licensed only if the comparison representation, preservation "
+        "criterion, and granularity are specified and warranted for that inferential use."
+    )
+    assert thesis in MAIN
+    for phrase in [
+        "explanatory or unificatory success is genuine abductive evidence",
+        "source-of-invariance",
+        "The central claim is not that reconstruction success is epistemically inert.",
+        "successful unification is compatible with at least three possibilities",
+        "The success of \\(R\\) alone cannot discriminate among those possibilities.",
+        "This is not an attribution of a simple fallacy to Beni",
+        "The present reconstruction supplies a complementary route.",
+        "source-first",
+        "the method is not framework-free or representation-neutral",
+        "This yields a triangulation strategy",
+        "Convergence between the two routes",
+        "a systematic alignment with PP--FEP is a further comparative test, not a result presupposed here",
+        "The present claim adds a non-circularity constraint",
+        "The contribution is thus a method for epistemic triangulation around structural invariance.",
+        "The paper therefore rejects neither inference to the best explanation nor explanatory evidence",
+    ]:
+        assert phrase in MAIN, phrase
 
 # Do not slip into a stronger neutrality claim than the method supports.
 assert "concept-neutral" not in MAIN
 assert "framework-neutral" not in MAIN
 assert "representation-neutral cognitive ontology" not in MAIN
-assert "systematic alignment with PP--FEP is a further comparative test" in MAIN
+assert ("systematic alignment with PP--FEP" in MAIN or "systematic alignment with PP--FEP would be an especially probative application" in MAIN)
 
 # The article should not state that explanatory success is evidence-free.
 for forbidden in [
@@ -71,7 +86,12 @@ for name,text in [("main",MAIN),("supplement",SUPP)]:
 assert "Procedural auditability is established; inter-rater reliability remains unmeasured." in MAIN
 assert "population prevalence" in MAIN
 assert "independent coding reliability" in MAIN
-assert "nine of ten" in MAIN
-assert "mutually compatible in all ten" in MAIN
+if m19:
+    assert "Secondary procedural robustness diagnostics" in MAIN
+    assert "nine of ten" not in MAIN
+    assert "mutually compatible in all ten" not in MAIN
+else:
+    assert "nine of ten" in MAIN
+    assert "mutually compatible in all ten" in MAIN
 
 print("M18_BENI_ABDUCTIVE_TRIANGULATION_GUARDS_PASS")
