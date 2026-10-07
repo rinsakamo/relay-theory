@@ -106,7 +106,7 @@ def main() -> None:
     # Compile the full 60-claim corpus and replace only LRN03 with its corrected successor.
     original_phi: dict[str, dict[str, Any]] = {}
     corrected_phi: dict[str, dict[str, Any]] = {}
-    claim_files = sorted(CLAIM_DIR.glob("*.json"))
+    claim_files = sorted(p for p in CLAIM_DIR.glob("*.json") if p.name != "manifest.json")
     assert len(claim_files) == 60, len(claim_files)
     for claim_path in claim_files:
         stem = claim_path.stem
