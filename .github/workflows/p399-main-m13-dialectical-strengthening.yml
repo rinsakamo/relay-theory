@@ -97,8 +97,13 @@ jobs:
           if grep -En 'LaTeX Warning:|Package .* Warning:|Overfull \\hbox|Reference .* undefined' supplement.log; then exit 1; fi
           pdftotext supplement.pdf supplement.txt
           tr '\n' ' ' < supplement.txt | tr -s '[:space:]' ' ' > supplement.flat.txt
-          grep -F 'Comparator positive controls and capacity-level cases' supplement.flat.txt
-          grep -F 'Independent 10-source extraction protocol' supplement.flat.txt
+          if test -f ../../../research/paper2/p399/main/integration/M17/M17_SPEC_v1.json; then
+            grep -F 'Capacity-level witness cases' supplement.flat.txt
+            grep -F 'Independent human-coding boundary' supplement.flat.txt
+          else
+            grep -F 'Comparator positive controls and capacity-level cases' supplement.flat.txt
+            grep -F 'Independent 10-source extraction protocol' supplement.flat.txt
+          fi
           grep -F 'inter-rater reliability remains unmeasured' supplement.flat.txt
           PAGES="$(pdfinfo supplement.pdf | awk -F: '/^Pages:/ {gsub(/ /,"",$2); print $2}')"
           echo "Supplement pages: $PAGES" | tee supplement-page-count.txt
