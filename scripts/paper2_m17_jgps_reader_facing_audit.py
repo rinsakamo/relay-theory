@@ -30,27 +30,48 @@ for name,text in [("main",MAIN),("supplement",SUPP)]:
     assert re.search(r"\b(?:ATT|BLF|CNC|CTL|LRN|MEM|PRD|SKL|CH)\d{2}\b",text) is None, name
     assert re.search(r"\bfrozen\b",text,re.I) is None, name
 
-# Philosophy-first argumentative surface.
-for phrase in [
-    "From reconstruction success to licensed identity inference",
-    "The argument can be stated directly",
-    "Structural invariance as a live target",
-    "Beni's structural-realist proposal",
-    "This is not an attribution of a simple fallacy to Beni",
-    "North's defense of objective or non-pragmatic perspicuity",
-    "The present claim adds a non-circularity constraint",
-    "Critical representation-sensitivity tests",
-    "Botvinick et al.--Tulving comparison",
-    "The corpus is purposive and diagnostic",
-]:
-    assert phrase in MAIN, phrase
+# Philosophy-first argumentative surface. Successor M19 may sharpen the
+# named thesis while preserving the reader-facing boundary.
+m19=(ROOT/"research/paper2/p399/main/integration/M19/M19_SPEC_v1.json").exists()
+if m19:
+    for phrase in [
+        "The Discrimination Requirement",
+        "Structural invariance as a live target",
+        "clearest contemporary application of the Discrimination Requirement",
+        "Critical representation-sensitivity tests",
+        "Capacity-level consequences",
+        "target alignment",
+        "capacity-relevant bridge warrant",
+        "representational discrimination",
+        "Procedural auditability is established; inter-rater reliability remains unmeasured.",
+    ]:
+        assert phrase in MAIN, phrase
+else:
+    for phrase in [
+        "From reconstruction success to licensed identity inference",
+        "The argument can be stated directly",
+        "Structural invariance as a live target",
+        "Beni's structural-realist proposal",
+        "This is not an attribution of a simple fallacy to Beni",
+        "North's defense of objective or non-pragmatic perspicuity",
+        "The present claim adds a non-circularity constraint",
+        "Critical representation-sensitivity tests",
+        "Botvinick et al.--Tulving comparison",
+        "The corpus is purposive and diagnostic",
+    ]:
+        assert phrase in MAIN, phrase
 
 assert "Decisive representation tests" not in MAIN
 assert "GPT-6 Astra" not in MAIN
 assert "GPT-6.1 Sol" not in MAIN
-assert "named-model configurations" in MAIN
-assert "nine of ten" in MAIN
-assert "mutually compatible in all ten" in MAIN
+if m19:
+    assert "Secondary procedural robustness diagnostics" in MAIN
+    for forbidden in ["40/40","9/10","10/10","nine of ten","mutually compatible in all ten"]:
+        assert forbidden not in MAIN
+else:
+    assert "named-model configurations" in MAIN
+    assert "nine of ten" in MAIN
+    assert "mutually compatible in all ten" in MAIN
 
 # Corpus is not sold as prevalence evidence.
 assert "not a probability sample" in MAIN
@@ -59,10 +80,10 @@ assert "population prevalence" in MAIN
 
 # Supplement state is current and reader-facing.
 assert "protocol frozen, not yet performed" not in SUPP.lower()
-assert "named-model validation: both the unanchored and claim-anchored replay analyses have been completed" in SUPP
+assert ("named-model procedural robustness diagnostics: both the unanchored and claim-anchored replay analyses have been completed" in SUPP if m19 else "named-model validation: both the unanchored and claim-anchored replay analyses have been completed" in SUPP)
 assert "Versioned study materials" in SUPP
 assert "reader-facing supplementary-materials index" in SUPP
-assert "Named-model reconstruction validation" in SUPP
+assert ("Named-model procedural robustness diagnostics" in SUPP if m19 else "Named-model reconstruction validation" in SUPP)
 assert "Source correction and sensitivity analysis" in SUPP
 assert "The index connects each reported analysis to its versioned supporting records" in SUPP
 assert re.search(r"\b[0-9a-f]{40,64}\b",SUPP) is None
