@@ -63,7 +63,7 @@ assert "Versioned study materials" in SUPP
 assert "reader-facing supplementary-materials index" in SUPP
 assert "Named-model reconstruction validation" in SUPP
 assert "Source correction and sensitivity analysis" in SUPP
-assert "internal workflow terminology" in SUPP.lower()
+assert "The index connects each reported analysis to its versioned supporting records" in SUPP
 assert re.search(r"\b[0-9a-f]{40,64}\b",SUPP) is None
 
 # Reader-facing indexes are complete.
