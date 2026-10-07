@@ -67,7 +67,12 @@ jobs:
           pdftotext main.pdf main.txt
           tr '\n' ' ' < main.txt | tr -s '[:space:]' ' ' > main.flat.txt
           grep -F 'Cognitive-capacity labels are at most prima facie guides to individuation' main.flat.txt
-          grep -E '1770[[:space:]]*/[[:space:]]*1770' main.flat.txt
+          if test -f ../../../research/paper2/p399/main/integration/M21/M21_SPEC_v1.json; then
+            grep -E '1,770[[:space:]]+unordered pairs as incomparable' main.flat.txt
+            grep -F '206 reusable structural subobjects' main.flat.txt
+          else
+            grep -E '1770[[:space:]]*/[[:space:]]*1770' main.flat.txt
+          fi
           if test -f ../../../research/paper2/p399/main/integration/M19/M19_SPEC_v1.json; then
             grep -F 'Discrimination Requirement' main.flat.txt
           elif test -f ../../../research/paper2/p399/main/integration/M17/M17_SPEC_v1.json; then
