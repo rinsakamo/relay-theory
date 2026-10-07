@@ -1,0 +1,45 @@
+name: P399 MAIN M16 LRN03 source-correction sensitivity
+
+on:
+  pull_request:
+    paths:
+      - 'research/paper2/p399/main/integration/M16/**'
+      - 'scripts/paper2_m16_lrn03_source_correction_sensitivity.py'
+      - '.github/workflows/p399-main-m16-lrn03-source-correction-sensitivity.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  m16-sensitivity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Recalculate corrected LRN03 structural sensitivity
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          rm -rf m16-computed
+          python scripts/paper2_m16_lrn03_source_correction_sensitivity.py \
+            --output m16-computed/M16_LRN03_SENSITIVITY_COMPUTED_v1.json
+          python scripts/paper2_m15_claim_anchored_prefreeze_audit.py
+          python scripts/paper2_m15_claim_anchored_comparison_audit.py
+          python scripts/paper2_m14_inference_warrant_replication_audit.py
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: paper-2-m16-lrn03-source-correction-sensitivity-computed
+          path: m16-computed
+          if-no-files-found: error
+          retention-days: 30
