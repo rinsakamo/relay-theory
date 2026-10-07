@@ -19,5 +19,6 @@ This reader-facing index maps the scientific descriptions used in the JGPS manus
 | Independent-human coding protocol | `research/paper2/p399/main/integration/M13/M13_HUMAN_SOURCE_EXTRACTION_PROTOCOL_v1.json` |
 | Beni publisher-source pin | `research/paper2/p399/main/integration/M20/M20_BENI_SOURCE_PIN_v1.json` |
 | Central witness source-to-verdict audit map | `research/paper2/p399/main/integration/M20/M20_CENTRAL_WITNESS_AUDIT_v1.json` |
+| Positive mini-case publisher-source pin | `research/paper2/p399/main/integration/M20/M20_POSITIVE_MINICASE_SOURCE_PIN_v1.json` |
 
 The public repository preserves pre-result inputs separately from post-result comparison outputs. Exact hashes, commit ancestry, and workflow receipts remain available in the repository but are intentionally omitted from the journal-facing PDF unless they are scientifically relevant.
