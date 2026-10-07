@@ -36,7 +36,11 @@ jobs:
           ! grep -F 'Paper 2' paper/venues/jgps/main.tex
           ! grep -Fi 'construct-label-neutral' paper/venues/jgps/main.tex
           ! grep -F 'M11' paper/venues/jgps/main.tex
-          grep -F 'An inference from structural comparison to cognitive-capacity identity is epistemically licensed only if' paper/venues/jgps/main.tex
+          if test -f research/paper2/p399/main/integration/M19/M19_SPEC_v1.json; then
+            grep -F 'Discrimination Requirement' paper/venues/jgps/main.tex
+          else
+            grep -F 'An inference from structural comparison to cognitive-capacity identity is epistemically licensed only if' paper/venues/jgps/main.tex
+          fi
           grep -F 'Procedural auditability is established; inter-rater reliability remains unmeasured.' paper/venues/jgps/main.tex
 
       - name: Install strict LaTeX build tools
