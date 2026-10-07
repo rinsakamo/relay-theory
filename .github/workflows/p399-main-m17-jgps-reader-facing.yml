@@ -30,6 +30,14 @@ jobs:
           set -euo pipefail
           test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
           python scripts/paper2_m17_jgps_reader_facing_audit.py
+          python scripts/paper2_m10_major_revision_audit.py
+          python scripts/paper2_m11_discriminative_baselines_audit.py
+          python scripts/paper2_m12_dialectical_consolidation_audit.py
+          python scripts/paper2_m13_dialectical_strengthening_audit.py
+          python scripts/paper2_m14_inference_warrant_replication_audit.py
+          python scripts/paper2_m15_claim_anchored_prefreeze_audit.py
+          python scripts/paper2_m15_claim_anchored_comparison_audit.py
+          python scripts/paper2_phi_compare.py --self-test
           python scripts/paper2_m16_lrn03_source_correction_sensitivity.py --output /tmp/m16-computed.json
           diff -u research/paper2/p399/main/integration/M16/M16_LRN03_SENSITIVITY_RESULT_v1.json /tmp/m16-computed.json
 
