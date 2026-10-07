@@ -19,3 +19,5 @@ Discrimination Requirement -> Representational Defeater -> Beni -> representatio
 
 Terminal:
 `M20_REPRESENTATIONAL_DEFEATER_PINNED_CENTRAL_WITNESSES_AUDITABLE`
+
+Current publisher-source reverification (2026-10-07) records the Springer Nature article/PDF URLs for Beni and the Nature Reviews Neuroscience article URL for Patterson--Nestor--Rogers. These pins support locators and the limited positive illustration; they do not add independent human coding or alter any structural result.
