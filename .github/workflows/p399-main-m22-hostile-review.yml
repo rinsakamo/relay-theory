@@ -1,0 +1,40 @@
+name: P399 MAIN M22 hostile-review guards
+
+on:
+  pull_request:
+    paths:
+      - 'research/paper2/p399/main/integration/M22/**'
+      - 'scripts/paper2_m22_hostile_review_audit.py'
+      - '.github/workflows/p399-main-m22-hostile-review.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  m22:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Verify review-only scope and hostile-review authority
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+          M21_PARENT: 23ffc91c4be057d6564bf7f92944a3ea96335b61
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          git diff --name-only "$M21_PARENT"...HEAD | tee /tmp/m22-files.txt
+          if grep -Ev '^(research/paper2/p399/main/integration/M22/|scripts/paper2_m22_hostile_review_audit.py$|\.github/workflows/p399-main-m22-hostile-review.yml$)' /tmp/m22-files.txt | grep -q .; then
+            echo "ERROR: M22 modified files outside review-only scope"
+            exit 1
+          fi
+          python scripts/paper2_m22_hostile_review_audit.py
