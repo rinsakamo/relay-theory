@@ -120,10 +120,14 @@ assert "Strict coder export" in readme
 assert "paper2_m12_export_strict_blind_packet.py" in readme
 
 # Main manuscript philosophical foreground and validation boundary.
+m21 = (ROOT / "research/paper2/p399/main/integration/M21/M21_SPEC_v1.json").exists()
 m19 = (ROOT / "research/paper2/p399/main/integration/M19/M19_SPEC_v1.json").exists()
 m17 = (ROOT / "research/paper2/p399/main/integration/M17/M17_SPEC_v1.json").exists()
 m14 = (ROOT / "research/paper2/p399/main/integration/M14/M14_SPEC_v1.json").exists()
-assert "When Does Structural Comparison Support Cognitive-Capacity Individuation?" in main
+if m21:
+    assert "A Discrimination Requirement for Structural Approaches to Cognitive-Capacity Individuation" in main
+else:
+    assert "When Does Structural Comparison Support Cognitive-Capacity Individuation?" in main
 if m19:
     for phrase in [
         "The Discrimination Requirement",
