@@ -72,7 +72,8 @@ for phrase in [
     "Neither result establishes equal adequacy of the rivals.",
 ]:
     assert phrase in MAIN, phrase
-assert "uniquely correct representation" not in MAIN
+assert "not presented as the uniquely correct representation" in MAIN
+assert "the coarse representation is correct" not in MAIN
 
 # Large diagnostics are subordinate in the journal-facing main text.
 assert "Secondary procedural robustness diagnostics" in MAIN
