@@ -103,4 +103,20 @@ assert "independent coding reliability" in MAIN
 assert "population prevalence" in MAIN
 assert "M21_TEMPORAL_ABSTRACTION_SOURCE_PIN_v1.json" in INDEX
 
+# M21 is the journal-facing successor to the M12 PDF-level reader-facing contract.
+# Preserve the substantive M12 guarantees here so the legacy workflow need not
+# reinstall TeX and rebuild the same PDFs once an M21 authority exists.
+for phrase in [
+    "The capacity thesis remains open, but the preservation debt is explicit.",
+]:
+    assert phrase in MAIN, phrase
+for phrase in [
+    "Complete 60-source evidence index",
+    "Prospective 40-paper source index",
+    "Independent human-coding boundary",
+    "Named-model procedural robustness diagnostics",
+    "inter-rater reliability remains unmeasured",
+]:
+    assert phrase in SUPP, phrase
+
 print("M21_REVIEW_CORE_SHARPENING_GUARDS_PASS")
