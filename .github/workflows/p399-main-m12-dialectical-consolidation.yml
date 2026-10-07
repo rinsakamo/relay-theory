@@ -108,7 +108,6 @@ jobs:
           retention-days: 14
 
       - name: Install strict LaTeX build tools
-        if: ${{ hashFiles('research/paper2/p399/main/integration/M21/M21_SPEC_v1.json') == '' }}
         run: |
           sudo apt-get update
           sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
@@ -117,7 +116,6 @@ jobs:
             poppler-utils
 
       - name: Strict build JGPS manuscript
-        if: ${{ hashFiles('research/paper2/p399/main/integration/M21/M21_SPEC_v1.json') == '' }}
         run: |
           set -euo pipefail
           cd paper/venues/jgps
@@ -153,7 +151,6 @@ jobs:
           echo "JGPS manuscript pages: $PAGES" >> "$GITHUB_STEP_SUMMARY"
 
       - name: Strict build supplementary methods
-        if: ${{ hashFiles('research/paper2/p399/main/integration/M21/M21_SPEC_v1.json') == '' }}
         run: |
           set -euo pipefail
           cd paper/venues/jgps
@@ -189,7 +186,6 @@ jobs:
           echo "Supplement pages: $PAGES" >> "$GITHUB_STEP_SUMMARY"
 
       - uses: actions/upload-artifact@v4
-        if: ${{ hashFiles('research/paper2/p399/main/integration/M21/M21_SPEC_v1.json') == '' }}
         with:
           name: paper-2-m12-jgps-manuscript-and-supplement
           path: |
