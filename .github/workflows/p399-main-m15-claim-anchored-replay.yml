@@ -1,4 +1,4 @@
-name: P399 MAIN M15 claim-anchored replay prefreeze guards
+name: P399 MAIN M15 claim-anchored replay guards
 
 on:
   pull_request:
@@ -31,6 +31,7 @@ jobs:
           set -euo pipefail
           test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
           python scripts/paper2_m15_claim_anchored_prefreeze_audit.py
+          python scripts/paper2_m15_claim_anchored_comparison_audit.py
           python scripts/paper2_m14_inference_warrant_replication_audit.py
 
       - name: Build result-free M15 v2 blind packet
@@ -58,5 +59,30 @@ jobs:
         with:
           name: paper-2-m15-claim-anchored-v2-blind-packet
           path: m15-claim-anchored-blind
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Package post-freeze M15 comparison authority
+        run: |
+          set -euo pipefail
+          rm -rf m15-claim-anchored-comparison
+          mkdir -p m15-claim-anchored-comparison
+          cp research/paper2/p399/main/integration/M15/M15_A_EXTERNAL_FREEZE_RECEIPT_v1.json m15-claim-anchored-comparison/
+          cp research/paper2/p399/main/integration/M15/M15_B_EXTERNAL_FREEZE_RECEIPT_v1.json m15-claim-anchored-comparison/
+          cp research/paper2/p399/main/integration/M15/M15_COMPARISON_RESULTS_v1.json m15-claim-anchored-comparison/
+          cp research/paper2/p399/main/integration/M15/M15_COMPARISON_REPORT_v1.md m15-claim-anchored-comparison/
+          cp research/paper2/p399/main/integration/M15/M15_COMPARISON_RECEIPT_v1.json m15-claim-anchored-comparison/
+          cp research/paper2/p399/main/integration/M15/M15_XM05_REFERENCE_CONFLICT_v1.json m15-claim-anchored-comparison/
+          cp research/paper2/p399/main/integration/M15/README.md m15-claim-anchored-comparison/
+          printf '%s\n' \
+            'Post-freeze M15 comparison authority.' \
+            'Do not supply this artifact to a blinded replay.' \
+            'XM05 source correction sensitivity remains pending.' \
+            > m15-claim-anchored-comparison/STATUS.txt
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: paper-2-m15-claim-anchored-v2-comparison
+          path: m15-claim-anchored-comparison
           if-no-files-found: error
           retention-days: 30
