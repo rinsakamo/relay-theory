@@ -15,12 +15,15 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - name: Verify scientific source and inferential scope
         run: |
           set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha || github.sha }}"
           python scripts/paper2_m33_representation_measurement_audit.py
           python scripts/paper2_m32_evidential_promotion_audit.py
           python scripts/paper2_m31_semantic_hub_application_audit.py
