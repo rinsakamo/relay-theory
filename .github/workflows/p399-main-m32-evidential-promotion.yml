@@ -1,0 +1,67 @@
+name: P399 MAIN M32 Evidential Promotion Guard
+
+on:
+  pull_request:
+    paths:
+      - 'paper/venues/jgps/**'
+      - 'research/paper2/p399/main/integration/M32/**'
+      - 'scripts/paper2_m32_evidential_promotion_audit.py'
+      - '.github/workflows/p399-main-m32-evidential-promotion.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  m32:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit exact revision and frozen scientific inheritance
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          python scripts/paper2_m32_evidential_promotion_audit.py
+          python scripts/paper2_m31_semantic_hub_application_audit.py
+          python scripts/paper2_m30_provenance_identifiability_audit.py
+          python scripts/paper2_m29_finite_pair_law_audit.py
+          python scripts/paper2_m28_evidential_calibration_audit.py
+          python scripts/paper2_m27_representation_provenance_audit.py
+          python scripts/paper2_m26_activated_undercutting_audit.py
+          python scripts/paper2_m16_lrn03_source_correction_sensitivity.py --output /tmp/m16-computed.json
+          diff -u research/paper2/p399/main/integration/M16/M16_LRN03_SENSITIVITY_RESULT_v1.json /tmp/m16-computed.json
+      - name: Install TeX
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-bibtex-extra poppler-utils
+      - name: Strict article and supplement PDFs
+        run: |
+          set -euo pipefail
+          cd paper/venues/jgps
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          bibtex main
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          pdflatex -interaction=nonstopmode -halt-on-error supplement.tex
+          pdflatex -interaction=nonstopmode -halt-on-error supplement.tex
+          ! grep -E 'Overfull \\hbox|Undefined control sequence|Citation .* undefined|There were undefined references' main.log
+          ! grep -E 'Overfull \\hbox|Undefined control sequence|There were undefined references' supplement.log
+          pdfinfo main.pdf | grep '^Pages:'
+          test "$(pdfinfo main.pdf | awk -F: '/^Pages:/ {gsub(/ /,"",$2); print $2}')" -le 22
+          pdfinfo supplement.pdf | grep '^Pages:'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: paper-2-m32-evidential-promotion-pdfs
+          path: |
+            paper/venues/jgps/main.pdf
+            paper/venues/jgps/supplement.pdf
+          if-no-files-found: error
+          retention-days: 30

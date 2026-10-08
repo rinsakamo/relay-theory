@@ -40,7 +40,7 @@ The public repository preserves pre-result inputs separately from post-result co
 | Conditional same-Q,C likelihood-ratio example and frozen scientific authority | `research/paper2/p399/main/integration/M28/M28_EVIDENTIAL_CALIBRATION_v1.json` |
 | Bounded-overlap/event formalization and review-response rationale | `research/paper2/p399/main/integration/M28/README.md` |
 
-Reader-facing source paths are version-pinned when unavailable on the default branch: [M27 supplementary-materials index](https://github.com/rinsakamo/relay-theory/blob/dd043ce1312d658fdd3d47a8875114b59c19e096/paper/venues/jgps/supplementary-materials-index.md) and [M27 reader-facing source map](https://github.com/rinsakamo/relay-theory/blob/dd043ce1312d658fdd3d47a8875114b59c19e096/paper/venues/jgps/reader-facing-source-map.json). Their scientific authority is unchanged; the present manuscript supplies additional philosophical qualifications.
+The historical public source-map authority was pinned at commit `dd043ce1312d658fdd3d47a8875114b59c19e096`; that legacy pointer remains for reproducibility while later finite-model and semantic-hub audit material is indexed below. The most recent frozen reproducibility baseline is [M31 supplementary-materials index](https://github.com/rinsakamo/relay-theory/blob/4e1b5141baf64ba7283011aca0681e5c730e0f74/paper/venues/jgps/supplementary-materials-index.md) and [M31 reader-facing source map](https://github.com/rinsakamo/relay-theory/blob/4e1b5141baf64ba7283011aca0681e5c730e0f74/paper/venues/jgps/reader-facing-source-map.json). M32 exact-head proof/PDF links are separately qualified in Draft PR receipts; the older M27 links must not be mistaken for an index of later M29–M32 additions.
 
 | M29 finite pair-law probability model and expected calculations | `research/paper2/p399/main/integration/M29/M29_FINITE_PAIR_LAW_v1.json` |
 | M29 executable exhaustive audit | `scripts/paper2_m29_finite_pair_law_audit.py` |
@@ -53,3 +53,7 @@ Reader-facing source paths are version-pinned when unavailable on the default br
 | M31 Patterson–Gainotti source-anchored application and explicit Q/C conditionality | `research/paper2/p399/main/integration/M31/M31_SEMANTIC_HUB_APPLICATION_v1.json` |
 | M31 scope qualification and review response | `research/paper2/p399/main/integration/M31/README.md` |
 | M31 source-vs-stipulation audit | `scripts/paper2_m31_semantic_hub_application_audit.py` |
+
+| M32 known-map warrant promotion, D/U versus x/y and fixed-question application | `research/paper2/p399/main/integration/M32/M32_EVIDENTIAL_PROMOTION_AUDIT_v1.json` |
+| M32 source/promotion scope, review response and published baseline | `research/paper2/p399/main/integration/M32/README.md` |
+| M32 deterministic promotion-error and frozen-authority audit | `scripts/paper2_m32_evidential_promotion_audit.py` |
