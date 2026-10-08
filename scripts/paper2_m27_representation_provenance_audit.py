@@ -65,7 +65,7 @@ for phrase in [
     r"\phi_{\mathrm{cross}}",
     "Nothing is unobserved in this toy construction",
     "ordinary scientific adequacy of the two representations is held fixed",
-    "logical possibility is insufficient",
+    "Mere logical possibility is not enough.",
     "Support-changing.",
     "input-qualification rule",
     "provenance qualification",
