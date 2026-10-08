@@ -68,6 +68,23 @@ assert CEX["systems"]["A"]["ordinary_response"]=="r[t+1] = x[t+1]"
 assert CEX["systems"]["B"]["ordinary_response"]=="r[t+1] = u[t+1]"
 assert CEX["criterion_C"]=="Includes the relevant update and intervention profile."
 
+M26_PATH=ROOT/"research/paper2/p399/main/integration/M26/M26_SPEC_v1.json"
+if M26_PATH.exists():
+    M26=json.loads(M26_PATH.read_text(encoding="utf-8"))
+    M26_DR=json.loads((ROOT/"research/paper2/p399/main/integration/M26/M26_ACTIVATED_DR_v1.json").read_text(encoding="utf-8"))
+    M26_CEX=json.loads((ROOT/"research/paper2/p399/main/integration/M26/M26_UNDERCUTTING_COUNTEREXAMPLE_v1.json").read_text(encoding="utf-8"))
+    assert M26["terminal_state"]=="M26_ACTIVATED_UNDERCUTTING_AND_GENERAL_PROVENANCE_SEPARATED"
+    assert M26_DR["general_provenance_condition"]["actual_rival_required"] is False
+    assert M26_DR["activated_condition"]["requires_specific_rival"] is True
+    assert M26_CEX["intervention_family_J"]["performed"] is False
+    assert M26_CEX["inferential_status"]["H_id"]=="OPEN"
+    assert "Activated Representational-Defeater Trigger" in MAIN
+    assert "general provenance condition" in MAIN
+    assert "has not been performed" in MAIN
+    assert "System A has one internal bit" not in MAIN
+    print("M25_QUESTION_RELATIVE_DEFEATER_GUARDS_PASS_VIA_M26_SUCCESSOR")
+    raise SystemExit(0)
+
 for phrase in [
     r"\title{Structural Similarity and Cognitive-Capacity Identity: A Discrimination Requirement}",
     "substantial evidential role",
