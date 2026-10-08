@@ -22,6 +22,22 @@ assert DATA["counterexample"]["no_single_map_specific_LR_from_thin_record"] is T
 # Reconstruct the original finite sampling distribution independently.
 states = list(product((0, 1), repeat=3))
 assert len(states) == 8
+# Derive a shared, nontrivial ordinary predictive task under either hypothesis.
+task = DATA["ordinary_task_control"]
+scores = {}
+for predictor in ("x", "y"):
+    score = Q(0)
+    for c,x,y,j in product((0,1), repeat=4):
+        target = x if j == 0 else y
+        guess = x if predictor == "x" else y
+        if guess == target:
+            score += Q(1,16)
+    scores[predictor] = score
+assert scores == {"x":Q(3,4), "y":Q(3,4)}
+assert scores["x"] > Q(task["admissibility_threshold"]) == Q(2,3)
+assert scores["x"] == Q(task["accuracy_phi_x"]) and scores["y"] == Q(task["accuracy_phi_y"])
+assert task["same_ordinary_task"] is True and task["empirical_validation"] is False
+
 def event_prob(h, which):
     q = Q(4, 5) if h else Q(1, 5)
     total = Q(0)
@@ -76,6 +92,7 @@ for phrase in (
     "thin appraisal record",
     "no function of the thin record alone",
     "The five positive and negative appraisal controls",
+    "equally and nontrivially predictive for the same toy task",
     "correctly calibrated",
     "standard appraisal already identifies",
     "not a new axiom of confirmation",
@@ -84,6 +101,7 @@ for phrase in (
 for phrase in (
     "Provenance non-identifiability",
     r"\label{tab:provenance-controls}",
+    r"\Pr(T=x)",
     "complete reporting record",
     "thin record",
     "can return the correct map-specific likelihood ratio",
