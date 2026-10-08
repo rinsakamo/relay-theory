@@ -1,0 +1,44 @@
+{
+  "schema": "relaytheory.p399.main.m27.provenance_qualification.v1",
+  "status": "FROZEN",
+  "minimal_normative_premise": {
+    "name": "MINIMAL_CONTRASTIVE_SUPPORT_NORM",
+    "statement": "If evidence E is offered as a reason to favor H over relevant alternatives, mere compatibility with H is insufficient; E must have some contrastive bearing on H relative to the live alternatives.",
+    "claimed_novel": false
+  },
+  "representation_mediation": {
+    "fine_space": "F",
+    "representation_map": "phi_R: F -> S_R",
+    "represented_match": "I_R(f_A,f_B)=1 iff phi_R(f_A)=phi_R(f_B)",
+    "key_fact": "The match is generated after the preservation map has retained some distinctions and discarded others."
+  },
+  "fiber_definitions": {
+    "live_set": "L subset F",
+    "C_homogeneous": "All members of phi_R^{-1}(s) intersect L fall in the same C-class.",
+    "C_crossing": "The relevant fiber contains live fine structures from more than one C-class."
+  },
+  "discrimination_requirement": {
+    "trigger_use": "I_R is offered as positive evidence for same capacity type under declared C.",
+    "qualified_if_one_of": [
+      "Relevant preservation fibers are discriminating with respect to the live C-alternatives.",
+      "Independent evidence restricts or differentially weights the C-crossing alternatives so that the identity-support attributed to I_R is warranted."
+    ],
+    "argumentative_indispensability_required": false,
+    "evidential_strength_threshold_required": false,
+    "exhaustive_redescription_elimination_required": false
+  },
+  "activated_defeater": {
+    "logical_possibility_alone_sufficient": false,
+    "requirements": [
+      "scientifically motivated rival",
+      "same Q and C",
+      "live C-relevant distinction",
+      "current background evidence does not already neutralize the distinction",
+      "admitting the rival changes the stated reason for treating I_R as favoring H_C"
+    ],
+    "direct_nonidentity_result": "REBUTTING_NOT_UNDERCUTTING"
+  },
+  "novelty_scope": "METHODOLOGICAL_SPECIALIZATION_NOT_FOUNDATIONAL_CONFIRMATION_THEORY",
+  "novelty_claim": "Structural comparison has a specific evidence-construction step: a preservation map can silently destroy the contrastive diagnosticity later attributed to the resulting match.",
+  "terminal_state": "M27_FIBER_BASED_PROVENANCE_QUALIFICATION_FROZEN"
+}
