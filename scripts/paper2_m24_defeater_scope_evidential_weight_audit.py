@@ -52,7 +52,7 @@ if M27_PATH.exists():
         "Behrens--Friston",
         "analyst-imposed representation of past-directedness",
         "rebutting",
-        "C-crossing",
+        "\\(C\\)-crossing",
     ]:
         assert phrase in MAIN, phrase
     print("M24_DEFEATER_SCOPE_EVIDENTIAL_WEIGHT_GUARDS_PASS_VIA_M27_SUCCESSOR")
