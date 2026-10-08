@@ -116,7 +116,7 @@ for fragment in [
     r"\citep{DawEtAl2011ModelBasedInfluences}",
 ]:
     assert fragment in MAIN, f"missing main: {fragment}"
-for fragment in ["Finite pair-law derivation", "16 pairs", "The unlabelled-report mixture", "M28 numerical", "normalized"]:
+for fragment in ["Finite pair-law derivation", "16 pairs", "The unlabelled-report mixture", "The preceding numerical", "normalized"]:
     assert fragment in SUPP, f"missing supplement: {fragment}"
 assert "@article{DawEtAl2011ModelBasedInfluences," in BIB
 assert "10.1016/j.neuron.2011.02.027" in BIB
