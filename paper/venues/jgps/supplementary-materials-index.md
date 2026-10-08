@@ -49,3 +49,7 @@ Reader-facing source paths are version-pinned when unavailable on the default br
 | M30 thin-record non-identifiability and positive/negative appraisal controls | `research/paper2/p399/main/integration/M30/M30_PROVENANCE_IDENTIFIABILITY_v1.json` |
 | M30 deterministic support/provenance audit | `scripts/paper2_m30_provenance_identifiability_audit.py` |
 | M30 review scope and control interpretations | `research/paper2/p399/main/integration/M30/README.md` |
+
+| M31 Patterson–Gainotti source-anchored application and explicit Q/C conditionality | `research/paper2/p399/main/integration/M31/M31_SEMANTIC_HUB_APPLICATION_v1.json` |
+| M31 scope qualification and review response | `research/paper2/p399/main/integration/M31/README.md` |
+| M31 source-vs-stipulation audit | `scripts/paper2_m31_semantic_hub_application_audit.py` |
