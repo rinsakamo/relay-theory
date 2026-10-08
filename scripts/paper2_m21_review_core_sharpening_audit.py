@@ -22,6 +22,22 @@ assert M21["terminal_state"] == "M21_REVIEW_CORE_SHARPENED_TEMPORAL_RIVAL_INDEPE
 assert M21["scientific_authority_unchanged"] is True
 assert M20["terminal_state"] == "M20_REPRESENTATIONAL_DEFEATER_PINNED_CENTRAL_WITNESSES_AUDITABLE"
 
+M26_PATH=ROOT/"research/paper2/p399/main/integration/M26/M26_SPEC_v1.json"
+if M26_PATH.exists():
+    M26=json.loads(M26_PATH.read_text(encoding="utf-8"))
+    assert M26["terminal_state"]=="M26_ACTIVATED_UNDERCUTTING_AND_GENERAL_PROVENANCE_SEPARATED"
+    assert r"\title{Structural Similarity and Cognitive-Capacity Identity: A Discrimination Requirement}" in MAIN
+    assert "North's objective perspicuity" in MAIN
+    assert "Brousalis makes epistemically relevant similarities and differences" in MAIN
+    assert "Same question and criterion." in MAIN
+    assert "Evidence-compatible." in MAIN
+    assert "Activated Representational-Defeater Trigger" in MAIN
+    assert "10.1016/j.cogsys.2006.08.002" in SUPP
+    assert CPCG["projection"]["distinct_CPCG_signatures"] == 143
+    assert CPCG["projection"]["original_99_cross_lane_families_collapsed_with_another_original_family"] == 63
+    print("M21_REVIEW_CORE_SHARPENING_GUARDS_PASS_VIA_M26_SUCCESSOR")
+    raise SystemExit(0)
+
 M25_PATH=ROOT/"research/paper2/p399/main/integration/M25/M25_SPEC_v1.json"
 if M25_PATH.exists():
     M25=json.loads(M25_PATH.read_text(encoding="utf-8"))
