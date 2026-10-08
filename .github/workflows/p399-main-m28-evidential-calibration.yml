@@ -1,0 +1,25 @@
+name: P399 MAIN M28 Dedicated Audit
+
+on:
+  pull_request:
+    paths:
+      - 'paper/venues/jgps/**'
+      - 'research/paper2/p399/main/integration/M28/**'
+      - 'scripts/paper2_m28_evidential_calibration_audit.py'
+      - '.github/workflows/p399-main-m28-evidential-calibration.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  m28:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run M28 dedicated audit
+        run: python scripts/paper2_m28_evidential_calibration_audit.py
