@@ -24,15 +24,27 @@ assert M16["terminal_state"]=="M16_LRN03_CORRECTION_STRUCTURALLY_INVARIANT"
 assert M16["headline_results"]["material_change"] is False
 assert M16["whole_claim_recalculation"]["matrix_relation_change_count"]==0
 
-# Representational Defeater is a named, restricted corollary.
-for phrase in [
-    "A useful corollary is a \\emph{Representational Defeater}",
-    "\\textbf{Representational Defeater.}",
-    "This is not a global skeptical defeater.",
-    "live, scientifically motivated alternative",
-    "identity-relevant verdict",
-]:
-    assert phrase in MAIN, phrase
+# Representational Defeater remains named and restricted. M24 separates
+# the empirical trigger condition from the undercutting defeater itself.
+m24=(ROOT/"research/paper2/p399/main/integration/M24/M24_SPEC_v1.json").exists()
+if m24:
+    for phrase in [
+        "A useful corollary separates a \\emph{trigger} from the defeater itself",
+        "\\textbf{Representational-Defeater Trigger.}",
+        "\\textbf{Representational Defeater.}",
+        "The defeater is therefore \\emph{undercutting}, not rebutting",
+        "This is not a global skeptical defeater.",
+    ]:
+        assert phrase in MAIN, phrase
+else:
+    for phrase in [
+        "A useful corollary is a \\emph{Representational Defeater}",
+        "\\textbf{Representational Defeater.}",
+        "This is not a global skeptical defeater.",
+        "live, scientifically motivated alternative",
+        "identity-relevant verdict",
+    ]:
+        assert phrase in MAIN, phrase
 
 # Beni's strongest published claims are pinned rather than paraphrased vaguely.
 assert BENI["status"]=="PUBLISHER_SOURCE_VERIFIED"
@@ -71,9 +83,12 @@ for phrase in [
     "A limited positive illustration already occurs within the analyzed literature.",
     "differential lesion prediction",
     "semantic-dementia evidence",
-    "This does not by itself establish a cross-source capacity identity.",
 ]:
     assert phrase in MAIN, phrase
+if m24:
+    assert "This is not a successful cross-source capacity-identity verdict and is not presented as one." in MAIN
+else:
+    assert "This does not by itself establish a cross-source capacity identity." in MAIN
 
 # Source records for central witnesses remain reviewed and source-local.
 records={}

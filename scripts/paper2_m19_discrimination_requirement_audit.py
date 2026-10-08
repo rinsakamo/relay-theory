@@ -20,7 +20,13 @@ assert M16["headline_results"]["material_change"] is False
 assert M16["whole_claim_recalculation"]["matrix_relation_change_count"]==0
 
 dr=M19["central_contribution"]["statement"]
-assert dr in MAIN
+m24=(ROOT/"research/paper2/p399/main/integration/M24/M24_SPEC_v1.json").exists()
+if m24:
+    assert "When an invariant exposed by structural comparison is assigned material evidential weight in support of cognitive-capacity identity" in MAIN
+    assert "individuative evidential weight" in MAIN
+    assert "not evidential relevance simpliciter" in MAIN
+else:
+    assert dr in MAIN
 assert MAIN.count("Discrimination Requirement") >= 10
 
 # Named novelty claim is visible early and remains the conclusion.
