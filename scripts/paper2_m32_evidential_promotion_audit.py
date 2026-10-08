@@ -68,7 +68,7 @@ checks={
     "qualif",
     "a separate reporting procedure",
     "interchangeable",
-    "M31 frozen baseline",
+    "latest pinned index",
  ],
  "index":[
     "M32_EVIDENTIAL_PROMOTION_AUDIT_v1.json",
