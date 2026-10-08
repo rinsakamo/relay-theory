@@ -60,10 +60,10 @@ for phrase in (
     "seven",
     "eight",
     "the same battery",
-    "post-measurement",
+    "after the original measurement",
     r"\phi_{\rm aggregate}",
     r"\phi_{\rm profile}",
-    "not an observed instance",
+    "neither establishes an observed activated defeater",
 ):
     assert phrase in supp, f"supplement missing {phrase}"
 assert "M33_MATCHED_SEMANTIC_PRIMARY_CASE_v1.json" in idx
