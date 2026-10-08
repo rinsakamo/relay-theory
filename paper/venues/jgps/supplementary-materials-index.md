@@ -57,3 +57,7 @@ The historical public source-map authority was pinned at commit `dd043ce1312d658
 | M32 known-map warrant promotion, D/U versus x/y and fixed-question application | `research/paper2/p399/main/integration/M32/M32_EVIDENTIAL_PROMOTION_AUDIT_v1.json` |
 | M32 source/promotion scope, review response and published baseline | `research/paper2/p399/main/integration/M32/README.md` |
 | M32 deterministic promotion-error and frozen-authority audit | `scripts/paper2_m32_evidential_promotion_audit.py` |
+
+| M33 matched 2006 and 2009 patient-cohort primary-source facts, fixed-data maps and overclaim boundaries | `research/paper2/p399/main/integration/M33/M33_MATCHED_SEMANTIC_PRIMARY_CASE_v1.json` |
+| M33 reviewer response and explicit representation / measurement distinction | `research/paper2/p399/main/integration/M33/README.md` |
+| M33 deterministic cohort, evidence routing and source-limit audit | `scripts/paper2_m33_matched_semantic_case_audit.py` |
