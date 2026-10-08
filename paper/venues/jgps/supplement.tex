@@ -435,12 +435,29 @@ A deterministic sensitivity analysis then recomputed every potentially affected 
 
 This analysis separates source fidelity from structural sensitivity. The correction is scientifically real at the source-description level but terminates below the granularity used by the whole-claim comparator.
 
+
+\section{Conditional evidence calibration and motif-event audit}
+
+The worked same-question example in the main article is deliberately \emph{conditional}. It supplies no empirical likelihood estimates and does not classify any source in the reviewed corpus. The question concerns type identity for transition-sensitive choice updating under a provisional mechanistic criterion \(C\). The coarse observed event \(E\) is equality of stable-choice signatures. The two conditional likelihood specifications are:
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+Condition & \(\Pr(E\mid H_C,B)\) & \(\Pr(E\mid\neg H_C,B)\)\\
+\midrule
+\(D\): diagnostic coarse preservation & \(0.8\) & \(0.2\)\\
+\(U\): mechanism-sensitive live rival & \(0.5\) & \(0.5\)\\
+\bottomrule
+\end{tabular}
+\end{center}
+All four entries are stipulated for conceptual analysis. Under a common weight \(w\) for condition \(D\) on either hypothesis, the marginal likelihood ratio is \((0.5+0.3w)/(0.5-0.3w)\). It is \(4\), \(13/7\), or \(1\) for \(w=1\), \(1/2\), or \(0\), respectively. If admissible conditional model weights differ by hypothesis, the marginal formula changes and requires explicit justification. Without such support, the earlier unconditional claim of a ratio \(4\) is unwarranted even though positive evidence is not ruled out. This is an audit of an inferential entitlement, not an empirical posterior calculation or a claim that the two illustrative mechanisms exhaust the scientifically relevant competitors.
+
+Complete-signature equality and bounded reuse refer to different binary events. In the first case equality of \(\phi_R(f_A)\) and \(\phi_R(f_B)\) creates a genuine equivalence relation. In the second, \(\exists m\in M_R(f_A)\cap M_R(f_B)\) establishes a shared typed motif. The latter need not be transitive and therefore cannot be treated as an equality fiber. In particular, one pair may share motif \(m_1\), another pair \(m_2\), and their outer pair none. A pair-level inverse-image audit can examine overlap under live identity and nonidentity alternatives, but the present corpus does not establish a distribution over such pairs conditional on cognitive-capacity type.
+
+The individuation criterion is declared procedurally for a fixed identity question rather than inferred as a uniquely true taxonomy. The example establishes no actual same-question defeater among the source papers, changes no corpus count, and does not add independent human recoding.
+
 \section{Reproducibility materials}
 
-Machine-readable materials, exact versions, hashes, and workflow receipts remain in the public repository. The journal-facing mapping is provided in
-\path{paper/venues/jgps/supplementary-materials-index.md},
-and the reader-facing source mapping is provided in
-\path{paper/venues/jgps/reader-facing-source-map.json}.
+Machine-readable materials, exact versions, hashes, and workflow receipts remain in the public repository. Because the relevant files are not yet present on the default branch, this revision pins a verified immutable source snapshot: \href{https://github.com/rinsakamo/relay-theory/blob/dd043ce1312d658fdd3d47a8875114b59c19e096/paper/venues/jgps/supplementary-materials-index.md}{supplementary-materials index (pinned)} and \href{https://github.com/rinsakamo/relay-theory/blob/dd043ce1312d658fdd3d47a8875114b59c19e096/paper/venues/jgps/reader-facing-source-map.json}{reader-facing source map (pinned)}. A final archival deposit should separately pin the completed manuscript revision.
 
 The index connects each reported analysis to its versioned supporting records, comparison procedures, and procedural-robustness materials.
 
