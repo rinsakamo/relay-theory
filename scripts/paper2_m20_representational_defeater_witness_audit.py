@@ -24,6 +24,29 @@ assert M16["terminal_state"]=="M16_LRN03_CORRECTION_STRUCTURALLY_INVARIANT"
 assert M16["headline_results"]["material_change"] is False
 assert M16["whole_claim_recalculation"]["matrix_relation_change_count"]==0
 
+M25_PATH=ROOT/"research/paper2/p399/main/integration/M25/M25_SPEC_v1.json"
+if M25_PATH.exists():
+    M25=json.loads(M25_PATH.read_text(encoding="utf-8"))
+    assert M25["terminal_state"]=="M25_QUESTION_RELATIVE_DEFEATER_AND_PROCESS_WITNESS_CLARIFIED"
+    assert CPCG["projection"]["distinct_CPCG_signatures"]==143
+    assert CPCG["projection"]["original_99_cross_lane_families_collapsed_with_another_original_family"]==63
+    for phrase in [
+        "Representational-Defeater Trigger",
+        "same identity question",
+        "Behrens--Friston",
+        "206 fine-grained reusable objects to 143 coarse signatures",
+        "63 of the 99 fine cross-stratum families",
+    ]:
+        assert phrase in MAIN, phrase
+    for phrase in [
+        "Behrens--Friston: process-level representation sensitivity",
+        "Botvinick--Tulving: a same-question boundary case",
+        "These tables do not constitute independent human recoding",
+    ]:
+        assert phrase in SUPP, phrase
+    print("M20_REPRESENTATIONAL_DEFEATER_WITNESS_AUDIT_GUARDS_PASS_VIA_M25_SUCCESSOR")
+    raise SystemExit(0)
+
 # Representational Defeater remains named and restricted. M24 separates
 # the empirical trigger condition from the undercutting defeater itself.
 m24=(ROOT/"research/paper2/p399/main/integration/M24/M24_SPEC_v1.json").exists()

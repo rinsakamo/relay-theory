@@ -1,0 +1,82 @@
+{
+  "schema": "relaytheory.p399.main.m25.process_witness_audit.v1",
+  "status": "PREEXISTING_RESULT_RECLASSIFIED_FOR_EXPOSITION",
+  "witness": "Behrens--Friston",
+  "cases": [
+    {
+      "reader_name": "Behrens et al. 2007 volatility learning",
+      "claim_id": "BLF01",
+      "doi": "10.1038/nn1954",
+      "claim_ir": "research/paper2/chatgpt_reference_claimir_v1/BLF01.json",
+      "structural_adjudication": "research/paper2/reference_structural_adjudication_v1/BLF01.json",
+      "source_dynamic_commitments": [
+        "recent outcome history updates a current volatility-sensitive weighting",
+        "new outcomes change inferred environmental change rate and subsequent updating",
+        "subsequent choice depends on weighted recent-outcome history"
+      ],
+      "adjudicated_temporal_present": [
+        "time_index",
+        "history_window",
+        "future_horizon",
+        "recurrence"
+      ],
+      "selected_fine_family": "A-af97ed649c6f",
+      "selected_fine_temporal": [
+        "history_window",
+        "time_index"
+      ]
+    },
+    {
+      "reader_name": "Friston 2005 predictive coding",
+      "claim_id": "PRD05",
+      "doi": "10.1098/rstb.2005.1622",
+      "claim_ir": "research/paper2/chatgpt_reference_claimir_v1/PRD05.json",
+      "structural_adjudication": "research/paper2/reference_structural_adjudication_v1/PRD05.json",
+      "source_dynamic_commitments": [
+        "mismatch drives recurrent changes in current-level cause estimates",
+        "descending predictions and ascending mismatch are reciprocally organized during inference",
+        "recurrent local updates continue until weighted discrepancies are reduced"
+      ],
+      "adjudicated_temporal_present": [
+        "time_index",
+        "recurrence",
+        "persistence"
+      ],
+      "selected_fine_family": "A-53b16535e1c2",
+      "selected_fine_temporal": [
+        "persistence",
+        "time_index"
+      ]
+    }
+  ],
+  "existing_authorities": {
+    "bounded": "research/paper2/bounded_xlike_reconstruction_v1.json",
+    "cpcg": "research/paper2/p399/main/integration/M11/M11_LOSSY_RIVAL_RESULTS_v1.json"
+  },
+  "scientific_result": {
+    "fine_exact_shared_bounded_object_count": 0,
+    "coarse_overlap_positive": true,
+    "coarse_signature": {
+      "active_families": [
+        "N",
+        "T"
+      ],
+      "node_counts": {
+        "N": 1,
+        "G": 0,
+        "I": 0,
+        "E": 0,
+        "T": 0
+      },
+      "edges": [],
+      "temporal_present": true,
+      "temporal_edge_count": 0
+    }
+  },
+  "selection_boundary": "Selected after the M24 review from already-computed M11 CPCG collision results to avoid a past-content/process conflation in the journal-facing exposition.",
+  "new_corpus_run": false,
+  "new_recoding": false,
+  "licensed_role": "PROCESS_LEVEL_SOURCE_CLAIM_REPRESENTATION_SENSITIVITY_DIAGNOSTIC_NOT_DEFEATER_TRIGGER",
+  "botvinick_tulving_m25_role": "SAME_QUESTION_BOUNDARY_CASE_NOT_TRIGGER_EVIDENCE",
+  "terminal_state": "M25_PROCESS_LEVEL_SENSITIVITY_WITNESS_PINNED"
+}

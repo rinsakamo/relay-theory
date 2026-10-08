@@ -1,0 +1,44 @@
+{
+  "schema": "relaytheory.p399.main.m25.counterexample.v1",
+  "status": "CONCEPTUAL_COUNTEREXAMPLE_FROZEN",
+  "purpose": "Instantiate a full same-question undercutting defeater without relying on the corpus to supply a disputed capacity-identity inference.",
+  "systems": {
+    "A": {
+      "state": [
+        "x"
+      ],
+      "update": [
+        "x[t+1] = o[t]"
+      ],
+      "ordinary_response": "r[t+1] = x[t+1]"
+    },
+    "B": {
+      "state": [
+        "u",
+        "v"
+      ],
+      "update": [
+        "u[t+1] = o[t]",
+        "v[t+1] = u[t] XOR v[t]"
+      ],
+      "ordinary_response": "r[t+1] = u[t+1]"
+    }
+  },
+  "ordinary_equivalence": "For every ordinary binary input history, both systems implement the same next-response mapping o[t] -> r[t+1].",
+  "representations": {
+    "R_pred": "Preserves only the ordinary predictive mapping and is adequate for the forecasting target.",
+    "R_mech": "Preserves B's extra state and update coupling."
+  },
+  "diagnostic_perturbation": {
+    "label": "P_star",
+    "A_response": "x[t+1]",
+    "B_response": "u[t+1] XOR v[t+1]",
+    "consequence": "The systems have different counterfactual profiles under the diagnostic perturbation."
+  },
+  "fixed_identity_question": "Are these the same capacity type under criterion C?",
+  "criterion_C": "Includes the relevant update and intervention profile.",
+  "undercutting_logic": "If ordinary predictive similarity is a substantial premise for a positive identity answer under this C, the mechanistic representation undercuts that evidential use until the update/intervention difference is shown irrelevant.",
+  "criterion_relativization": "Under a narrower C defined only by ordinary input-output mapping, the same mechanistic difference need not count against identity.",
+  "empirical_claim": false,
+  "terminal_state": "M25_CONCRETE_SAME_Q_SAME_C_UNDERCUTTING_COUNTEREXAMPLE_FROZEN"
+}

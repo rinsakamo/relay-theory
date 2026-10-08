@@ -34,6 +34,25 @@ assert NORTH["status"] == "COUNTEREXAMPLE_FROZEN"
 assert "superior for the predictive target" in NORTH["construction"]["granted_scientific_superiority"]
 assert "suppressed update mechanism" in NORTH["construction"]["missing_identity_warrant"]
 
+M25_PATH=ROOT/"research/paper2/p399/main/integration/M25/M25_SPEC_v1.json"
+if M25_PATH.exists():
+    M25=json.loads(M25_PATH.read_text(encoding="utf-8"))
+    PROC=json.loads((ROOT/"research/paper2/p399/main/integration/M25/M25_PROCESS_WITNESS_AUDIT_v1.json").read_text(encoding="utf-8"))
+    assert M25["terminal_state"]=="M25_QUESTION_RELATIVE_DEFEATER_AND_PROCESS_WITNESS_CLARIFIED"
+    assert PROC["botvinick_tulving_m25_role"]=="SAME_QUESTION_BOUNDARY_CASE_NOT_TRIGGER_EVIDENCE"
+    for phrase in [
+        "same identity question",
+        "substantial role",
+        "System A has one internal bit",
+        "System B has two internal bits",
+        "Behrens--Friston",
+        "past-directed subjective time",
+    ]:
+        assert phrase in MAIN, phrase
+    assert "Botvinick--Tulving: a same-question boundary case" in SUPP
+    print("M23_HOSTILE_REJECT_CLOSURE_GUARDS_PASS_VIA_M25_SUCCESSOR")
+    raise SystemExit(0)
+
 required_main = [
     "structurally supported capacity-individuation inferences",
     "same predictive-state dynamics",

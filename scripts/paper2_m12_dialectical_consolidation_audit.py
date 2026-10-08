@@ -119,6 +119,26 @@ readme = (HV / "README.md").read_text(encoding="utf-8")
 assert "Strict coder export" in readme
 assert "paper2_m12_export_strict_blind_packet.py" in readme
 
+M25_PATH=ROOT/"research/paper2/p399/main/integration/M25/M25_SPEC_v1.json"
+if M25_PATH.exists():
+    M25=load(M25_PATH)
+    assert M25["terminal_state"]=="M25_QUESTION_RELATIVE_DEFEATER_AND_PROCESS_WITNESS_CLARIFIED"
+    assert "Structural Similarity and Cognitive-Capacity Identity: A Discrimination Requirement" in main
+    for phrase in [
+        "The Discrimination Requirement",
+        "Structural invariance as a live target",
+        "target alignment",
+        "capacity-relevant bridge warrant",
+        "representational discrimination",
+        "Secondary procedural robustness diagnostics",
+        "The capacity thesis remains open, but the preservation debt is explicit.",
+    ]:
+        assert phrase in main, phrase
+    assert "Independent human re-adjudication was not performed." in main
+    assert "Procedural auditability is established; inter-rater reliability remains unmeasured." in main
+    print("M12_DIALECTICAL_CONSOLIDATION_GUARDS_PASS_VIA_M25_SUCCESSOR")
+    raise SystemExit(0)
+
 # Main manuscript philosophical foreground and validation boundary.
 m21 = (ROOT / "research/paper2/p399/main/integration/M21/M21_SPEC_v1.json").exists()
 m19 = (ROOT / "research/paper2/p399/main/integration/M19/M19_SPEC_v1.json").exists()

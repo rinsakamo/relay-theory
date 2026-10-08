@@ -168,6 +168,30 @@ assert results["interpretation_boundary"]["cross_provider_replication"] == "NOT_
 assert results["interpretation_boundary"]["model_family_independence"] == "NOT_CLAIMED"
 assert results["interpretation_boundary"]["aggregate_match_rate_is_primary_result"] is False
 
+M25_PATH=ROOT/"research/paper2/p399/main/integration/M25/M25_SPEC_v1.json"
+if M25_PATH.exists():
+    M25=load(M25_PATH)
+    assert M25["terminal_state"]=="M25_QUESTION_RELATIVE_DEFEATER_AND_PROCESS_WITNESS_CLARIFIED"
+    for phrase in [
+        "The Discrimination Requirement",
+        "Structural invariance as a live target",
+        "Wajnerman-Paz and Rojas-L",
+        "What corpus representation sensitivity does---and does not---show",
+        "Secondary procedural robustness diagnostics",
+        "Procedural auditability is established; inter-rater reliability remains unmeasured.",
+    ]:
+        assert phrase in main, phrase
+    for phrase in [
+        "Named-model procedural robustness diagnostics",
+        "GPT-6 Astra / Medium",
+        "GPT-6.1 Sol / Medium",
+        "Source correction and sensitivity analysis",
+        "Procedural auditability is established; inter-rater reliability remains unmeasured.",
+    ]:
+        assert phrase in supp, phrase
+    print("M14_INFERENCE_WARRANT_REPLAY_COMPARISON_GUARDS_PASS_VIA_M25_SUCCESSOR")
+    raise SystemExit(0)
+
 # Manuscript/supplement presentation may evolve in successor reader-facing revisions.
 m19 = (ROOT / "research/paper2/p399/main/integration/M19/M19_SPEC_v1.json").exists()
 m17 = (ROOT / "research/paper2/p399/main/integration/M17/M17_SPEC_v1.json").exists()

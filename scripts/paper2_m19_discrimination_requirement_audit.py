@@ -19,6 +19,25 @@ assert M16["terminal_state"]=="M16_LRN03_CORRECTION_STRUCTURALLY_INVARIANT"
 assert M16["headline_results"]["material_change"] is False
 assert M16["whole_claim_recalculation"]["matrix_relation_change_count"]==0
 
+M25_PATH=ROOT/"research/paper2/p399/main/integration/M25/M25_SPEC_v1.json"
+if M25_PATH.exists():
+    M25=json.loads(M25_PATH.read_text(encoding="utf-8"))
+    assert M25["terminal_state"]=="M25_QUESTION_RELATIVE_DEFEATER_AND_PROCESS_WITNESS_CLARIFIED"
+    for phrase in [
+        "When a structurally identified similarity plays a substantial evidential role",
+        "same identity question",
+        "individuation criterion",
+        "substantial role",
+        "claim-level recurrent structure",
+        "capacity-relevant bridge warrant",
+        "representational discrimination",
+        "Behrens--Friston",
+        "not a Representational-Defeater Trigger",
+    ]:
+        assert phrase in MAIN, phrase
+    print("M19_DISCRIMINATION_REQUIREMENT_GUARDS_PASS_VIA_M25_SUCCESSOR")
+    raise SystemExit(0)
+
 dr=M19["central_contribution"]["statement"]
 m24=(ROOT/"research/paper2/p399/main/integration/M24/M24_SPEC_v1.json").exists()
 if m24:

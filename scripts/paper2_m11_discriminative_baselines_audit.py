@@ -138,6 +138,24 @@ assert same["frozen_bounded_overlap"]["count"] == 0
 assert same["cpcg_sensitivity"]["projected_signature_intersection_count"] == 0
 assert same["cpcg_sensitivity"]["remains_disjoint_under_CPCG"] is True
 
+M25_PATH=ROOT/"research/paper2/p399/main/integration/M25/M25_SPEC_v1.json"
+if M25_PATH.exists():
+    M25=load(M25_PATH)
+    assert M25["terminal_state"]=="M25_QUESTION_RELATIVE_DEFEATER_AND_PROCESS_WITNESS_CLARIFIED"
+    for phrase in [
+        "The Discrimination Requirement",
+        "Structural invariance as a live target",
+        "What corpus representation sensitivity does---and does not---show",
+        "Capacity-level consequences",
+        "semantic memory",
+        "Procedural auditability is established; inter-rater reliability remains unmeasured.",
+    ]:
+        assert phrase in main, phrase
+    assert "M25" not in main
+    assert "frozen" not in main.lower()
+    print("M11_DISCRIMINATIVE_BASELINES_GUARDS_PASS_VIA_M25_SUCCESSOR")
+    raise SystemExit(0)
+
 # Manuscript philosophical and editorial boundary.
 m19 = (ROOT / "research/paper2/p399/main/integration/M19/M19_SPEC_v1.json").exists()
 m17 = (ROOT / "research/paper2/p399/main/integration/M17/M17_SPEC_v1.json").exists()

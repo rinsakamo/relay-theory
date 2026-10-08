@@ -41,6 +41,27 @@ assert BENI["status"]=="PUBLISHER_HTML_REVERIFIED"
 assert BENI["verified_date"]=="2026-10-08"
 assert BENI["source"]["doi"]=="10.1007/s10838-025-09759-z"
 
+M25_PATH=ROOT/"research/paper2/p399/main/integration/M25/M25_SPEC_v1.json"
+if M25_PATH.exists():
+    M25=json.loads(M25_PATH.read_text(encoding="utf-8"))
+    QREL=json.loads((ROOT/"research/paper2/p399/main/integration/M25/M25_QUESTION_RELATIVE_DEFEATER_v1.json").read_text(encoding="utf-8"))
+    PROC=json.loads((ROOT/"research/paper2/p399/main/integration/M25/M25_PROCESS_WITNESS_AUDIT_v1.json").read_text(encoding="utf-8"))
+    assert M25["terminal_state"]=="M25_QUESTION_RELATIVE_DEFEATER_AND_PROCESS_WITNESS_CLARIFIED"
+    assert QREL["defeater_type"]=="UNDERCUTTING_NOT_REBUTTING"
+    assert QREL["trigger"]["same_Q_required"] is True
+    assert QREL["trigger"]["same_C_required"] is True
+    assert PROC["botvinick_tulving_m25_role"]=="SAME_QUESTION_BOUNDARY_CASE_NOT_TRIGGER_EVIDENCE"
+    for phrase in [
+        "substantial evidential role",
+        "Representational-Defeater Trigger",
+        "Same question and criterion.",
+        "Behrens--Friston",
+        "analyst-imposed representation of past-directedness",
+    ]:
+        assert phrase in MAIN, phrase
+    print("M24_DEFEATER_SCOPE_EVIDENTIAL_WEIGHT_GUARDS_PASS_VIA_M25_SUCCESSOR")
+    raise SystemExit(0)
+
 for phrase in [
     "material evidential weight",
     "individuative evidential weight",
