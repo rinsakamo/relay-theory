@@ -1,0 +1,65 @@
+{
+  "schema": "relaytheory.p399.main.m27.matched_cases.v1",
+  "status": "CONCEPTUAL_MATCHED_CASE_FROZEN",
+  "purpose": "Isolate representation-provenance failure from missing-data underdetermination.",
+  "fine_space": [
+    "a1",
+    "a2",
+    "b1",
+    "b2"
+  ],
+  "criterion_C": {
+    "type_A": [
+      "a1",
+      "a2"
+    ],
+    "type_B": [
+      "b1",
+      "b2"
+    ],
+    "independently_declared": true
+  },
+  "ordinary_scientific_adequacy": {
+    "phi_align": "stipulated adequate for the same ordinary scientific target",
+    "phi_cross": "stipulated adequate for the same ordinary scientific target",
+    "held_fixed": true
+  },
+  "maps": {
+    "phi_align": {
+      "fibers": [
+        [
+          "a1",
+          "a2"
+        ],
+        [
+          "b1",
+          "b2"
+        ]
+      ],
+      "C_homogeneous": true,
+      "identity_signature_equality": "QUALIFIED_ON_LIVE_SET"
+    },
+    "phi_cross": {
+      "fibers": [
+        [
+          "a1",
+          "b1"
+        ],
+        [
+          "a2",
+          "b2"
+        ]
+      ],
+      "C_homogeneous": false,
+      "C_crossing": true,
+      "identity_signature_equality": "NOT_QUALIFIED_WITHOUT_ADDITIONAL_RESTRICTION"
+    }
+  },
+  "missing_data": false,
+  "unknown_parameter": false,
+  "unperformed_intervention": false,
+  "result": "The two cases differ only in the preservation map's relation to the independently declared identity criterion.",
+  "ordinary_underdetermination_required": false,
+  "empirical_claim": false,
+  "terminal_state": "M27_MATCHED_PROVENANCE_CASES_FROZEN"
+}
