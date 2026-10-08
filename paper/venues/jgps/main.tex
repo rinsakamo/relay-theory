@@ -185,6 +185,42 @@ The ratio is \(4\) at \(w=1\), \(13/7>1\) at \(w=1/2\), and \(1\) at \(w=0\). Cr
 
 This is a \emph{constructed activated undercutting of a support attribution}, not an observed case of a cognitive-capacity identity defeater. The relevant inferential trace is: conditional \(4\) under \(D\); a live, same-question mechanism-sensitive alternative \(U\); withdrawal or qualification of the unsupported unconditional \(4\); and, depending on independently justified weights, a positive, neutral, or presently uncalibrated evidential assessment. If later mechanistic observations instead establish \(\neg H_C\), the case becomes rebutting evidence. In the present example no such conclusion is asserted.
 
+
+\subsection{A finite pair law: derived support under preservation maps}
+\label{sec:finite-pair-law}
+
+The likelihoods in the preceding conditional example were stipulated. A single finite pair law can instead generate the evidential contrast explicitly. Let \(\mathcal F=\{(c,x,y):c,x,y\in\{0,1\}\}\), with eight fine states and individuation criterion \(C(c,x,y)=c\). The feature \(x\) represents a transition-sensitive response signature and \(y\) a stable-choice signature. This abstraction is motivated by work documenting interacting model-based and model-free influences on choice \citep{DawEtAl2011ModelBasedInfluences}, but that work does not establish this binary ontology or the stipulated probabilities. The question \(Q\) remains whether two structures share the same \(C\)-type.
+
+Construct normalized conditional distributions over ordered pairs \(f_A,f_B\in\mathcal F\). Draw \(c_A,x_A,y_A\) independently and uniformly. Under \(H_C\) set \(c_B=c_A\), and under \(\neg H_C\) set \(c_B=1-c_A\). Independently draw a fair bit \(\eta_y\) and let
+\[
+\Pr(\eta_x=0\mid H_C)=4/5,\qquad
+\Pr(\eta_x=0\mid\neg H_C)=1/5.
+\]
+Put \(x_B=x_A\oplus\eta_x\) and \(y_B=y_A\oplus\eta_y\), with exclusive-or \(\oplus\). Each conditional measure has 32 supported pairs. The different noise distributions are an explicit \emph{premise} about possible paired systems, not a finding from the corpus.
+
+The two many-to-one maps \(\phi_x(c,x,y)=x\) and \(\phi_y(c,x,y)=y\) have \(C\)-crossing fibers, yet their match events satisfy \(E_x\iff\eta_x=0\) and \(E_y\iff\eta_y=0\). Their contrastive probabilities are thus derived from the same sampling law:
+\begin{table}[t]
+\centering\small
+\begin{tabular}{lccc}
+\toprule
+Represented event & \(\Pr(E\mid H_C)\) & \(\Pr(E\mid\neg H_C)\) & Ratio\\
+\midrule
+\(E_x\): equality under \(\phi_x\) & \(4/5\) & \(1/5\) & \(4\)\\
+\(E_y\): equality under \(\phi_y\) & \(1/2\) & \(1/2\) & \(1\)\\
+\(E_x\lor E_y\): shared motif & \(9/10\) & \(3/5\) & \(3/2\)\\
+Unlabelled map, \(w=1/2\) & \(13/20\) & \(7/20\) & \(13/7\)\\
+\bottomrule
+\end{tabular}
+\caption{Exact values induced by one constructed finite pair law, not empirical estimates.}
+\label{tab:finite-pair}
+\end{table}
+
+For a bounded event, define the typed motif set \(M(f)=\{m^x_{x(f)},m^y_{y(f)}\}\). Its overlap event \(M(f_A)\cap M(f_B)\ne\varnothing\) is exactly \(E_x\lor E_y\). Independence gives \(1-(1-4/5)(1-1/2)=9/10\) under \(H_C\), and \(1-(1-1/5)(1-1/2)=3/5\) under \(\neg H_C\). Its likelihood ratio is \(3/2\). This event is not transitive: \((0,0,0)\) shares an \(x\)-motif with \((0,0,1)\), the latter shares a \(y\)-motif with \((0,1,1)\), and the outer pair shares neither. Bounded-overlap evidence therefore has a pair-level preimage, not an equivalence fiber.
+
+Finally, if a reporting procedure selects \(\phi_x\) with hypothesis-independent weight \(w\) and returns only whether the chosen signatures match, its unlabelled match event has probabilities \(1/2+3w/10\) and \(1/2-3w/10\), reproducing Eq.~\eqref{eq:m28-mixture}. At \(w=1/2\), the ratio is \(13/7\). This conditional calculation requires uncertainty about the event's reporting provenance. If the map identity is known, an observed \((R=x,E_x)\) retains ratio \(4\) and \((R=y,E_y)\) retains ratio \(1\), regardless of the existence of the other map. \emph{A rival map alone does not undercut correctly calibrated, map-specific support.} Only the unsupported promotion of an unlabelled or map-general match to the \(x\)-specific ratio is undercut. Map sensitivity itself holds without such uncertainty, but an activated undercutter requires the additional warrant failure. The earlier constructed example must be interpreted with this explicit limitation.
+
+The audit sequence is: declare \(Q,C\) and a justified pair law, identify the map-induced event, evaluate its preimage under identity and nonidentity, and only then attach evidential weight. This is a methodological specialization of ordinary contrastive support, not a distinct theory of confirmation. The example remains constructed and supplies no actual corpus-level capacity identity or same-\(Q,C\) defeater.
+
 \subsection{Contested criteria and the scope of the audit}
 
 Independently \emph{declaring} \(C\) is procedural independence from the match under examination, not epistemic proof that the chosen criterion identifies a true cognitive kind. A mechanistic \(C_1\) and a functional \(C_2\) may yield different conditional answers; each must be audited against its own \(Q,C_i\)-relative alternatives. The Discrimination Requirement does not select a universal individuation theory or license unconditional identity from a favorable choice of criterion. Justifying \(C_i\) remains part of substantive cognitive ontology. Different criteria are not automatically activated rivals for the same identity question.

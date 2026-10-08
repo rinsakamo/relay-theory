@@ -1,0 +1,105 @@
+{
+  "schema": "relaytheory.p399.main.m29.finite_pair_law.v1",
+  "status": "IMPLEMENTED_PENDING_VALIDATION",
+  "parent_m28_head": "fb689ce586be1cf1d2d9b87a75eb385c2674ffda",
+  "parent_m28_draft_pr": 490,
+  "source_justification": {
+    "doi": "10.1016/j.neuron.2011.02.027",
+    "role": "motivates mixed model-based/model-free choice influences only, not toy probabilities or binary mechanism ontology"
+  },
+  "proof_model": {
+    "fine_state_space": "F={(c,x,y):c,x,y in {0,1}}",
+    "cardinality": 8,
+    "criterion": "C(c,x,y)=c",
+    "ordered_pair_distribution": {
+      "draw_initial": [
+        "c_A uniform bit",
+        "x_A uniform bit",
+        "y_A uniform bit"
+      ],
+      "identity": "under H c_B=c_A; under nonH c_B=1-c_A",
+      "q_eta_x_match_given_H": "4/5",
+      "q_eta_x_match_given_nonH": "1/5",
+      "eta_y_equal_probability_both_hypotheses": "1/2",
+      "x_B": "x_A xor eta_x",
+      "y_B": "y_A xor eta_y",
+      "independent": [
+        "initial bits",
+        "eta_y",
+        "eta_x conditional on hypothesis"
+      ],
+      "supported_ordered_pairs_per_hypothesis": 32
+    },
+    "maps": {
+      "phi_x": "x",
+      "phi_y": "y"
+    },
+    "both_maps_C_crossing": true,
+    "events": {
+      "Ex": {
+        "given_same": "4/5",
+        "given_different": "1/5",
+        "LR": "4"
+      },
+      "Ey": {
+        "given_same": "1/2",
+        "given_different": "1/2",
+        "LR": "1"
+      },
+      "bounded_union": {
+        "given_same": "9/10",
+        "given_different": "3/5",
+        "LR": "3/2"
+      },
+      "map_unlabelled_weight_half": {
+        "given_same": "13/20",
+        "given_different": "7/20",
+        "LR": "13/7"
+      }
+    },
+    "bounded_motifs": "M(f)={m^x_x(f),m^y_y(f)}",
+    "nontransitive_witness": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        1
+      ]
+    ],
+    "provenance": "R chosen independent of H, hidden in unlabelled report; R retained gives phi_x-specific LR4",
+    "no_automatic_defeater_from_rival_map": true,
+    "limits": [
+      "stipulated pair law, not a scientific estimate",
+      "correctness of C not established",
+      "real choice mechanisms may be hybrid",
+      "no real corpus Q,C undercutter"
+    ]
+  },
+  "frozen_science": {
+    "whole_pairs": "1770/1770 INCOMPARABLE",
+    "bounded_objects": 206,
+    "cross_stratum_families": 99,
+    "cpcg_signatures": 143,
+    "cpcg_collisions": "63/99",
+    "reverse": "21 FULL / 22 PARTIAL / 17 RESIDUAL",
+    "residual_new_role": "0/17",
+    "human_inter_rater": "unmeasured"
+  },
+  "new_corpus_run": false,
+  "new_human_coding": false,
+  "qualification": {
+    "dedicated_ci": "PENDING",
+    "inherited_workflows": "PENDING",
+    "strict_PDF_build": "PENDING",
+    "review": "PENDING"
+  }
+}
