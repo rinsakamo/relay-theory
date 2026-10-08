@@ -455,6 +455,28 @@ Complete-signature equality and bounded reuse refer to different binary events. 
 
 The individuation criterion is declared procedurally for a fixed identity question rather than inferred as a uniquely true taxonomy. The example establishes no actual same-question defeater among the source papers, changes no corpus count, and does not add independent human recoding.
 
+
+\section{Finite pair-law derivation and representation-specific events}
+
+The new finite example is an exact constructed probability model, not a source-based empirical estimate. There are eight fine states \(\mathcal F=\{0,1\}^3\), with \(f=(c,x,y)\) and provisional individuation \(C(f)=c\). For either hypothesis \(h\in\{H_C,\neg H_C\}\), take independent uniform \(c_A,x_A,y_A,\eta_y\), and a conditional bit \(\eta_x\) with match probability \(q_h\), where \(q_{H_C}=4/5\) and \(q_{\neg H_C}=1/5\). Set \(c_B=c_A\) under \(H_C\), \(c_B=1-c_A\) under \(\neg H_C\), and set \(x_B=x_A\oplus\eta_x\), \(y_B=y_A\oplus\eta_y\).
+
+This gives an explicit mass for every supported ordered pair:
+\[
+\Pr(f_A,f_B\mid h)=
+\begin{cases}
+q_h/16,&x_A=x_B\ \text{and the specified }c_B,y_B,\\
+(1-q_h)/16,&x_A\ne x_B\ \text{and the specified }c_B,y_B,\\
+0,&\text{otherwise}.
+\end{cases}
+\]
+Here the specified \(c_B\) means equality or complement according to \(h\), and the \(y_B\) outcome is either fair-bit possibility. For each \(h\), exactly 16 pairs satisfy \(x_A=x_B\) and 16 satisfy \(x_A\ne x_B\), so the total mass is \(16q_h/16+16(1-q_h)/16=1\). The pointwise mass is not the marginal probability of a match. The pair law deliberately stipulates \(q_h\); the subsequent probabilities are derived from that rule rather than inserted as independent likelihoods.
+
+Both preservation maps \(\phi_x(f)=x\) and \(\phi_y(f)=y\) have two fibers of size four, each containing two \(c=0\) and two \(c=1\) states. For \(E_x\) the pair probabilities are \(q_h\); for \(E_y\), they are \(1/2\). Define distinct motif symbols \(m^x_0,m^x_1,m^y_0,m^y_1\) and \(M(f)=\{m^x_{x(f)},m^y_{y(f)}\}\). The shared-motif event is \(E_x\cup E_y\), which has probability \(q_h+1/2-q_h/2\), hence \(9/10\) under \(H_C\) and \(3/5\) under \(\neg H_C\), with a likelihood ratio \(3/2\). Nontransitivity is witnessed by \((0,0,0),(0,0,1),(0,1,1)\), whose adjacent pairs share respectively \(x\)- and \(y\)-motifs, but whose outer pair shares none.
+
+The unlabelled-report mixture is a \emph{different evidential event}. Draw a reporting-map indicator \(R=x\) with weight \(w\), independent of the two identity hypotheses, or \(R=y\) otherwise. If the indicator is discarded and only the selected signature-match event \(E_R\) is reported, then \(\Pr(E_R\mid h)=wq_h+(1-w)/2\). This yields ratio \((1/2+3w/10)/(1/2-3w/10)\), including \(13/7\) when \(w=1/2\). If the indicator is observed, the joint report \((R=x,E_x)\) has probabilities \(w(4/5)\) and \(w(1/5)\), and therefore ratio \(4\) when \(w>0\). A legitimate rival map does not erase that support. The M28 numerical \(D/U\) conditional-model illustration and the present map-indexed construction share the same arithmetic but must not be identified without the explicit reporting provenance law; one compares conditional models and the other compares map-generated events under a common pair law.
+
+The example does not establish that \(\phi_x\) and \(\phi_y\) are equally adequate for the \emph{identity} target, identify the correct \(C\), or estimate how real systems distribute over the stipulated eight structures. Empirical mechanisms may combine model-based and model-free strategies. The construction is a finite audit of a conditional inferential form, not evidence that any analyzed literature pair instantiates a same-question undercutting defeater.
+
 \section{Reproducibility materials}
 
 Machine-readable materials, exact versions, hashes, and workflow receipts remain in the public repository. Because the relevant files are not yet present on the default branch, this revision pins a verified immutable source snapshot: \href{https://github.com/rinsakamo/relay-theory/blob/dd043ce1312d658fdd3d47a8875114b59c19e096/paper/venues/jgps/supplementary-materials-index.md}{supplementary-materials index (pinned)} and \href{https://github.com/rinsakamo/relay-theory/blob/dd043ce1312d658fdd3d47a8875114b59c19e096/paper/venues/jgps/reader-facing-source-map.json}{reader-facing source map (pinned)}. A final archival deposit should separately pin the completed manuscript revision.
