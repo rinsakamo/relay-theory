@@ -57,3 +57,9 @@ The historical public source-map authority was pinned at commit `dd043ce1312d658
 | M32 known-map warrant promotion, D/U versus x/y and fixed-question application | `research/paper2/p399/main/integration/M32/M32_EVIDENTIAL_PROMOTION_AUDIT_v1.json` |
 | M32 source/promotion scope, review response and published baseline | `research/paper2/p399/main/integration/M32/README.md` |
 | M32 deterministic promotion-error and frozen-authority audit | `scripts/paper2_m32_evidential_promotion_audit.py` |
+
+| M33 four-operation representation / measurement / explanatory-model / type-identity boundary | `research/paper2/p399/main/integration/M33/M33_REPRESENTATION_MEASUREMENT_BOUNDARY_v1.json` |
+| M33 review response and journal format provenance | `research/paper2/p399/main/integration/M33/README.md` |
+| M33 exact-source and frozen-science scope checker | `scripts/paper2_m33_representation_measurement_audit.py` |
+
+For the currently completed scientific and reproducibility authority, use the [M32 immutable supplementary-materials index](https://github.com/rinsakamo/relay-theory/blob/23edd6a088b34a3b70cbffe9a80505ff7534c5b1/paper/venues/jgps/supplementary-materials-index.md). M33 exact-head CI and PDF artifacts will be pinned in this Draft PR and Issue #399 after the checks complete; until then the present branch is provisional.
