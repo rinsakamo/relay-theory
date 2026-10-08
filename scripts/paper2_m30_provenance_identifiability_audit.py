@@ -85,7 +85,7 @@ for phrase in (
     "Provenance non-identifiability",
     "complete reporting record",
     "thin record",
-    "cannot return the correct map-specific likelihood ratio",
+    "can return the correct map-specific likelihood ratio",
     "not automatically a positive defeater",
 ):
     assert phrase in SUPP, f"Supplement missing {phrase}"
