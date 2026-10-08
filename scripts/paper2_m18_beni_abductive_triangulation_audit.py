@@ -17,6 +17,23 @@ assert M16["terminal_state"]=="M16_LRN03_CORRECTION_STRUCTURALLY_INVARIANT"
 assert M16["headline_results"]["material_change"] is False
 assert M16["whole_claim_recalculation"]["matrix_relation_change_count"] == 0
 
+M25_PATH=ROOT/"research/paper2/p399/main/integration/M25/M25_SPEC_v1.json"
+if M25_PATH.exists():
+    M25=json.loads(M25_PATH.read_text(encoding="utf-8"))
+    assert M25["terminal_state"]=="M25_QUESTION_RELATIVE_DEFEATER_AND_PROCESS_WITNESS_CLARIFIED"
+    for phrase in [
+        "genuine abductive evidence",
+        "The Discrimination Requirement",
+        "target organization",
+        "comparison framework",
+        "source-first",
+        "not framework-free or representation-neutral",
+        "objective perspicuity",
+    ]:
+        assert phrase in MAIN, phrase
+    print("M18_BENI_ABDUCTIVE_TRIANGULATION_GUARDS_PASS_VIA_M25_SUCCESSOR")
+    raise SystemExit(0)
+
 # Preserve the abductive-evidence interpretation while allowing successor M19
 # to name the more precise Discrimination Requirement.
 m19=(ROOT/"research/paper2/p399/main/integration/M19/M19_SPEC_v1.json").exists()
