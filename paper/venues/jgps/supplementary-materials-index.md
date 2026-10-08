@@ -31,5 +31,8 @@ This reader-facing index maps the scientific descriptions used in the JGPS manus
 | M25 concrete counterexample | `research/paper2/p399/main/integration/M25/M25_COUNTEREXAMPLE_v1.json` |
 | M26 general / activated DR scope | `research/paper2/p399/main/integration/M26/M26_ACTIVATED_DR_v1.json` |
 | M26 pure undercutting counterexample | `research/paper2/p399/main/integration/M26/M26_UNDERCUTTING_COUNTEREXAMPLE_v1.json` |
+| M27 representation-provenance qualification | `research/paper2/p399/main/integration/M27/M27_PROVENANCE_QUALIFICATION_v1.json` |
+| M27 matched preservation-map cases | `research/paper2/p399/main/integration/M27/M27_MATCHED_CASES_v1.json` |
+| M27 prior-art delta | `research/paper2/p399/main/integration/M27/M27_PRIOR_ART_DELTA_v1.json` |
 
 The public repository preserves pre-result inputs separately from post-result comparison outputs. Exact hashes, commit ancestry, and workflow receipts remain available in the repository but are intentionally omitted from the journal-facing PDF unless they are scientifically relevant.
