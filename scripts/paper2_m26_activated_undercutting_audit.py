@@ -45,6 +45,38 @@ assert "equally compatible with E" in CEX["inferential_status"]["undercutting_re
 assert CEX["empirical_claim"] is False
 assert CEX["terminal_state"] == "M26_PURE_UNDERCUTTING_COUNTEREXAMPLE_FROZEN"
 
+M27_PATH=ROOT/"research/paper2/p399/main/integration/M27/M27_SPEC_v1.json"
+if M27_PATH.exists():
+    M27=json.loads(M27_PATH.read_text(encoding="utf-8"))
+    PROV=json.loads((ROOT/"research/paper2/p399/main/integration/M27/M27_PROVENANCE_QUALIFICATION_v1.json").read_text(encoding="utf-8"))
+    MATCH=json.loads((ROOT/"research/paper2/p399/main/integration/M27/M27_MATCHED_CASES_v1.json").read_text(encoding="utf-8"))
+    assert M27["terminal_state"]=="M27_REPRESENTATION_PROVENANCE_AND_MATCHED_DISCRIMINATION_CLARIFIED"
+    assert PROV["minimal_normative_premise"]["claimed_novel"] is False
+    assert PROV["activated_defeater"]["logical_possibility_alone_sufficient"] is False
+    assert MATCH["missing_data"] is False
+    assert MATCH["unknown_parameter"] is False
+    assert MATCH["unperformed_intervention"] is False
+    assert MATCH["ordinary_underdetermination_required"] is False
+    for phrase in [
+        "minimal contrastive norm for evidential support",
+        "C-homogeneous",
+        "C-crossing fiber",
+        "matched comparison",
+        "Nothing is unobserved in this toy construction",
+        "methodological corollary",
+        "Support-changing.",
+    ]:
+        assert phrase in MAIN, phrase
+    for forbidden in [
+        "externally manipulable binary channel",
+        "same-profile completion",
+        "different-profile completion",
+        "p_t\\leftarrow 1",
+    ]:
+        assert forbidden not in MAIN, forbidden
+    print("M26_ACTIVATED_UNDERCUTTING_GUARDS_PASS_VIA_M27_SUCCESSOR")
+    raise SystemExit(0)
+
 for phrase in [
     "general provenance condition",
     "stronger \\emph{activated condition}",
