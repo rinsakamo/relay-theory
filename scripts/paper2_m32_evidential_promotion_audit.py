@@ -30,7 +30,7 @@ assert m29["proof_model"]["events"]["Ey"]["LR"] == "1"
 assert m29["proof_model"]["events"]["Ex"]["LR"] == "4"
 
 d=spec["distinctions"]
-assert "same" in d["D_U"] and "Two different" in d["x_y"]
+assert "One coarse match event" in d["D_U"] and "Two different" in d["x_y"]
 assert "QUALIFIED" in d["partial_knowledge"]
 assert "ACTIVATED_UNDERCUTTING" in d["partial_knowledge"]
 q=spec["patterson_gainotti_fixed_question"]
