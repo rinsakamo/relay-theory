@@ -21,6 +21,27 @@ assert M16["terminal_state"]=="M16_LRN03_CORRECTION_STRUCTURALLY_INVARIANT"
 assert M16["headline_results"]["material_change"] is False
 assert M16["whole_claim_recalculation"]["matrix_relation_change_count"]==0
 
+M25_PATH=ROOT/"research/paper2/p399/main/integration/M25/M25_SPEC_v1.json"
+if M25_PATH.exists():
+    M25=json.loads(M25_PATH.read_text(encoding="utf-8"))
+    assert M25["terminal_state"]=="M25_QUESTION_RELATIVE_DEFEATER_AND_PROCESS_WITNESS_CLARIFIED"
+    for phrase in [
+        "The Discrimination Requirement",
+        "Structural invariance as a live target",
+        "What corpus representation sensitivity does---and does not---show",
+        "Capacity-level consequences",
+        "target alignment",
+        "capacity-relevant bridge warrant",
+        "representational discrimination",
+        "Procedural auditability is established; inter-rater reliability remains unmeasured.",
+    ]:
+        assert phrase in MAIN, phrase
+    for name,text in [("main",MAIN),("supplement",SUPP)]:
+        assert re.search(r"\bM(?:2[0-9]|1[0-9]|[0-9])\b",text) is None, name
+        assert re.search(r"\bfrozen\b",text,re.I) is None, name
+    print("M17_JGPS_READER_FACING_GUARDS_PASS_VIA_M25_SUCCESSOR")
+    raise SystemExit(0)
+
 # Journal-facing PDFs must not expose repository workflow codes or analysis slot IDs.
 for name,text in [("main",MAIN),("supplement",SUPP)]:
     assert re.search(r"\bM(?:1[0-9]|[0-9])\b",text) is None, name
