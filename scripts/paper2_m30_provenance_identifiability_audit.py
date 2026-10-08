@@ -75,7 +75,7 @@ for phrase in (
     r"\label{sec:provenance-identifiability}",
     "thin appraisal record",
     "no function of the thin record alone",
-    r"\label{tab:provenance-controls}",
+    "The five positive and negative appraisal controls",
     "correctly calibrated",
     "standard appraisal already identifies",
     "not a new axiom of confirmation",
@@ -83,6 +83,7 @@ for phrase in (
     assert phrase in MAIN, f"Main missing {phrase}"
 for phrase in (
     "Provenance non-identifiability",
+    r"\label{tab:provenance-controls}",
     "complete reporting record",
     "thin record",
     "can return the correct map-specific likelihood ratio",
