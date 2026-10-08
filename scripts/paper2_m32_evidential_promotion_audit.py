@@ -52,7 +52,7 @@ checks={
     r"\Pr(E_y\mid H_C)=\Pr(E_y\mid\neg H_C)=1/2",
     "identity-specific",
     "conditional illustration of how a support attribution can be undercut",
-    "different epistemic situations",
+    "two epistemic situations",
     r"C_{\mathrm{role}}",
     r"Q_{\mathrm{role}}",
     r"C_{\mathrm{id}}",
@@ -67,7 +67,7 @@ checks={
     "clinical",
     "qualif",
     "a separate reporting procedure",
-    "not interchangeable",
+    "interchangeable",
     "M31 frozen baseline",
  ],
  "index":[
