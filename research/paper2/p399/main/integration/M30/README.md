@@ -8,7 +8,7 @@ M29 derived the likelihood ratio of two represented matches from one finite pair
 
 ### Minimal counterexample
 
-Fix the same pair-generating distribution, same question Q, same provisional capacity criterion C, and a **stipulated** ordinary-task admissibility flag A_T=1 for both report protocols. Under R=x a reported match has LR 4; under R=y it has LR 1. A thin record which contains Q, C, A_T=1, and "match=yes", but discards map identity/event semantics, is identical under both. No function of this thin record can yield the *correct map-specific* LR for both. This is an insufficiency theorem about a particular report projection, not a claim that all standard statistical appraisals make this mistake.
+Fix the same pair-generating distribution, question Q and provisional capacity criterion C. Under a common constructed prediction task T (report x or y with an independent fair selector), both maps attain **exactly 3/4 predictive accuracy**, above the same declared 2/3 admissibility threshold. Under R=x a reported match has LR 4; under R=y it has LR 1. A thin record which contains Q, C, A_T=1, and "match=yes", but discards map identity/event semantics, is identical under both. No function of this thin record can yield the *correct map-specific* LR for both. This is an insufficiency theorem about a particular report projection, not a claim that all standard statistical appraisals make this mistake.
 
 ### Adversarial controls
 
@@ -26,7 +26,7 @@ The **five fields** for assessment are: question and criterion; exact preservati
 
 ### Scientific and methodological limitations
 
-- Ordinary-task adequacy equality is stipulated for the logical diagnostic; **it was not independently measured** for the two maps in any source.
+- Ordinary-task **equal accuracy 3/4 is derived for one explicitly constructed task**, not measured or scientifically validated for real cognitive systems.
 - The 8-state law and C-classification are schematic rather than independently validated representations of cognitive mechanisms.
 - The existence of the rival map alone cannot undercut properly calibrated x-specific support.
 - Normal measurement-resolution, aggregation, and identifiability reviews can discharge the full DR; event-construction specificity is the methodological deliverable.
