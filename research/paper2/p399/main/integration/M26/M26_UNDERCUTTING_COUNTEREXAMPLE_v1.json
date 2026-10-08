@@ -1,0 +1,49 @@
+{
+  "schema": "relaytheory.p399.main.m26.undercutting_counterexample.v1",
+  "status": "CONCEPTUAL_COUNTEREXAMPLE_FROZEN",
+  "purpose": "Provide a pure undercutting example in which identity remains undecided and only the evidential role of coarse structural similarity is defeated.",
+  "observed_evidence_E": {
+    "baseline_constraint": "p[t] = 0 for every observed trial",
+    "systems": [
+      "A",
+      "B"
+    ],
+    "observed_response": "r_i[t+1] = o[t] for both systems and every observed input history",
+    "consequence": "Observed data do not constrain response sensitivity to p because the channel is inactive throughout E."
+  },
+  "representations": {
+    "R_pred": {
+      "role": "coarse predictive representation",
+      "preserved_mapping": "o[t] -> r[t+1]",
+      "quotients_away": "inactive intervention channel p",
+      "coarse_similarity_I": "A and B have the same observed predictive mapping"
+    },
+    "R_fine": {
+      "role": "fine representation preserving intervention sensitivity",
+      "parameterization": "r_i[t+1] = o[t] XOR (theta_i AND p[t])",
+      "parameter_domain": "theta_i in {0,1}",
+      "evidence_status": "E leaves theta_A and theta_B unconstrained"
+    }
+  },
+  "live_completions": {
+    "same_profile": "theta_A = theta_B",
+    "different_profile": "theta_A != theta_B",
+    "both_compatible_with_E": true
+  },
+  "identity_question_Q": "Do A and B instantiate the same cognitive-capacity type?",
+  "criterion_C": "Capacity type is individuated partly by stable counterfactual organization over a declared intervention family J.",
+  "intervention_family_J": {
+    "includes": "P_star",
+    "P_star": "Apply the same external operation p[t] <- 1 to either system under the matched test condition.",
+    "performed": false,
+    "reason_common": "The operation changes the same externally manipulable channel p in both systems; no system-specific output rule is introduced."
+  },
+  "inferential_status": {
+    "H_id": "OPEN",
+    "not_rebutting_reason": "R_fine does not establish theta_A != theta_B and P_star has not been performed.",
+    "undercutting_reason": "R_pred's coarse similarity I cannot discriminate two C-relevant counterfactual completions that are equally compatible with E.",
+    "consequence": "If I plays a substantial role in support of H_id, its evidential contribution is undercut until P_star or an equivalent discriminating consideration resolves the live alternative."
+  },
+  "empirical_claim": false,
+  "terminal_state": "M26_PURE_UNDERCUTTING_COUNTEREXAMPLE_FROZEN"
+}

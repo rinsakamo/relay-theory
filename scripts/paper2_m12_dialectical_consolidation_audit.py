@@ -119,6 +119,26 @@ readme = (HV / "README.md").read_text(encoding="utf-8")
 assert "Strict coder export" in readme
 assert "paper2_m12_export_strict_blind_packet.py" in readme
 
+M26_PATH=ROOT/"research/paper2/p399/main/integration/M26/M26_SPEC_v1.json"
+if M26_PATH.exists():
+    M26=load(M26_PATH)
+    assert M26["terminal_state"]=="M26_ACTIVATED_UNDERCUTTING_AND_GENERAL_PROVENANCE_SEPARATED"
+    assert "Structural Similarity and Cognitive-Capacity Identity: A Discrimination Requirement" in main
+    for phrase in [
+        "The Discrimination Requirement",
+        "general provenance condition",
+        "Activated Representational-Defeater Trigger",
+        "target alignment",
+        "capacity-relevant bridge warrant",
+        "representational discrimination",
+        "outstanding justificatory burden concerning preservation remains",
+    ]:
+        assert phrase in main, phrase
+    assert "Independent human re-adjudication was not performed." in main
+    assert "Procedural auditability is established; inter-rater reliability remains unmeasured." in main
+    print("M12_DIALECTICAL_CONSOLIDATION_GUARDS_PASS_VIA_M26_SUCCESSOR")
+    raise SystemExit(0)
+
 M25_PATH=ROOT/"research/paper2/p399/main/integration/M25/M25_SPEC_v1.json"
 if M25_PATH.exists():
     M25=load(M25_PATH)

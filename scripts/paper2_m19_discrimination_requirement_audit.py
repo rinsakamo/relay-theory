@@ -19,6 +19,27 @@ assert M16["terminal_state"]=="M16_LRN03_CORRECTION_STRUCTURALLY_INVARIANT"
 assert M16["headline_results"]["material_change"] is False
 assert M16["whole_claim_recalculation"]["matrix_relation_change_count"]==0
 
+M26_PATH=ROOT/"research/paper2/p399/main/integration/M26/M26_SPEC_v1.json"
+if M26_PATH.exists():
+    M26=json.loads(M26_PATH.read_text(encoding="utf-8"))
+    DR=json.loads((ROOT/"research/paper2/p399/main/integration/M26/M26_ACTIVATED_DR_v1.json").read_text(encoding="utf-8"))
+    CEX=json.loads((ROOT/"research/paper2/p399/main/integration/M26/M26_UNDERCUTTING_COUNTEREXAMPLE_v1.json").read_text(encoding="utf-8"))
+    assert M26["terminal_state"]=="M26_ACTIVATED_UNDERCUTTING_AND_GENERAL_PROVENANCE_SEPARATED"
+    assert DR["general_provenance_condition"]["actual_rival_required"] is False
+    assert DR["activated_condition"]["requires_specific_rival"] is True
+    assert CEX["inferential_status"]["H_id"]=="OPEN"
+    for phrase in [
+        "When a structurally identified similarity plays a substantial evidential role",
+        "general provenance condition",
+        "Activated Representational-Defeater Trigger",
+        "representation sensitivity is not yet an activated defeater trigger",
+        "Behrens--Friston",
+        "corpus-anchored demonstration of representation sensitivity",
+    ]:
+        assert phrase in MAIN, phrase
+    print("M19_DISCRIMINATION_REQUIREMENT_GUARDS_PASS_VIA_M26_SUCCESSOR")
+    raise SystemExit(0)
+
 M25_PATH=ROOT/"research/paper2/p399/main/integration/M25/M25_SPEC_v1.json"
 if M25_PATH.exists():
     M25=json.loads(M25_PATH.read_text(encoding="utf-8"))

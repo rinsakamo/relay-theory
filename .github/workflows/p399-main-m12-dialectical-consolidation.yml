@@ -40,14 +40,20 @@ jobs:
           ! grep -F '\\paragraph{' paper/venues/jgps/main.tex
           ! grep -F 'Paper 2' paper/venues/jgps/main.tex
           ! grep -Fi 'construct-label-neutral' paper/venues/jgps/main.tex
-          if test -f research/paper2/p399/main/integration/M25/M25_SPEC_v1.json; then
+          if test -f research/paper2/p399/main/integration/M26/M26_SPEC_v1.json; then
+            grep -F 'Structural Similarity and Cognitive-Capacity Identity: A Discrimination Requirement' paper/venues/jgps/main.tex
+          elif test -f research/paper2/p399/main/integration/M25/M25_SPEC_v1.json; then
             grep -F 'Structural Similarity and Cognitive-Capacity Identity: A Discrimination Requirement' paper/venues/jgps/main.tex
           elif test -f research/paper2/p399/main/integration/M21/M21_SPEC_v1.json; then
             grep -F 'A Discrimination Requirement for Structural Approaches to Cognitive-Capacity Individuation' paper/venues/jgps/main.tex
           else
             grep -F 'When Does Structural Comparison Support Cognitive-Capacity Individuation?' paper/venues/jgps/main.tex
           fi
-          if test -f research/paper2/p399/main/integration/M19/M19_SPEC_v1.json; then
+          if test -f research/paper2/p399/main/integration/M26/M26_SPEC_v1.json; then
+            grep -F 'The Discrimination Requirement' paper/venues/jgps/main.tex
+            grep -F 'Structural invariance as a live target' paper/venues/jgps/main.tex
+            grep -F 'outstanding justificatory burden concerning preservation remains' paper/venues/jgps/main.tex
+          elif test -f research/paper2/p399/main/integration/M19/M19_SPEC_v1.json; then
             grep -F 'The Discrimination Requirement' paper/venues/jgps/main.tex
             grep -F 'Structural invariance as a live target' paper/venues/jgps/main.tex
             grep -F 'The capacity thesis remains open, but the preservation debt is explicit.' paper/venues/jgps/main.tex
@@ -134,14 +140,19 @@ jobs:
           fi
           pdftotext main.pdf main.txt
           tr '\n' ' ' < main.txt | tr -s '[:space:]' ' ' > main.flat.txt
-          if test -f ../../../research/paper2/p399/main/integration/M25/M25_SPEC_v1.json; then
+          if test -f ../../../research/paper2/p399/main/integration/M26/M26_SPEC_v1.json; then
+            grep -F 'Structural Similarity and Cognitive-Capacity Identity: A Discrimination Requirement' main.flat.txt
+          elif test -f ../../../research/paper2/p399/main/integration/M25/M25_SPEC_v1.json; then
             grep -F 'Structural Similarity and Cognitive-Capacity Identity: A Discrimination Requirement' main.flat.txt
           elif test -f ../../../research/paper2/p399/main/integration/M21/M21_SPEC_v1.json; then
             grep -F 'A Discrimination Requirement for Structural Approaches to Cognitive-Capacity Individuation' main.flat.txt
           else
             grep -F 'When Does Structural Comparison Support Cognitive-Capacity Individuation?' main.flat.txt
           fi
-          if test -f ../../../research/paper2/p399/main/integration/M19/M19_SPEC_v1.json; then
+          if test -f ../../../research/paper2/p399/main/integration/M26/M26_SPEC_v1.json; then
+            grep -F 'Discrimination Requirement' main.flat.txt
+            grep -F 'outstanding justificatory burden concerning preservation' main.flat.txt
+          elif test -f ../../../research/paper2/p399/main/integration/M19/M19_SPEC_v1.json; then
             grep -F 'Discrimination Requirement' main.flat.txt
             grep -F 'preservation debt' main.flat.txt
           elif test -f ../../../research/paper2/p399/main/integration/M17/M17_SPEC_v1.json; then

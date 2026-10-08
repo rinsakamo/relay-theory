@@ -34,6 +34,26 @@ assert NORTH["status"] == "COUNTEREXAMPLE_FROZEN"
 assert "superior for the predictive target" in NORTH["construction"]["granted_scientific_superiority"]
 assert "suppressed update mechanism" in NORTH["construction"]["missing_identity_warrant"]
 
+M26_PATH=ROOT/"research/paper2/p399/main/integration/M26/M26_SPEC_v1.json"
+if M26_PATH.exists():
+    M26=json.loads(M26_PATH.read_text(encoding="utf-8"))
+    CEX=json.loads((ROOT/"research/paper2/p399/main/integration/M26/M26_UNDERCUTTING_COUNTEREXAMPLE_v1.json").read_text(encoding="utf-8"))
+    assert M26["terminal_state"]=="M26_ACTIVATED_UNDERCUTTING_AND_GENERAL_PROVENANCE_SEPARATED"
+    assert CEX["intervention_family_J"]["performed"] is False
+    assert CEX["inferential_status"]["H_id"]=="OPEN"
+    for phrase in [
+        "same identity question",
+        "substantial role",
+        "externally manipulable binary channel",
+        "has not been performed",
+        "Behrens--Friston",
+        "past-directed subjective time",
+    ]:
+        assert phrase in MAIN, phrase
+    assert "Botvinick--Tulving: a same-question boundary case" in SUPP
+    print("M23_HOSTILE_REJECT_CLOSURE_GUARDS_PASS_VIA_M26_SUCCESSOR")
+    raise SystemExit(0)
+
 M25_PATH=ROOT/"research/paper2/p399/main/integration/M25/M25_SPEC_v1.json"
 if M25_PATH.exists():
     M25=json.loads(M25_PATH.read_text(encoding="utf-8"))
