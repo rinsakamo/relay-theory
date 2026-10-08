@@ -68,6 +68,22 @@ assert CEX["systems"]["A"]["ordinary_response"]=="r[t+1] = x[t+1]"
 assert CEX["systems"]["B"]["ordinary_response"]=="r[t+1] = u[t+1]"
 assert CEX["criterion_C"]=="Includes the relevant update and intervention profile."
 
+M27_PATH=ROOT/"research/paper2/p399/main/integration/M27/M27_SPEC_v1.json"
+if M27_PATH.exists():
+    M27=json.loads(M27_PATH.read_text(encoding="utf-8"))
+    PROV=json.loads((ROOT/"research/paper2/p399/main/integration/M27/M27_PROVENANCE_QUALIFICATION_v1.json").read_text(encoding="utf-8"))
+    MATCH=json.loads((ROOT/"research/paper2/p399/main/integration/M27/M27_MATCHED_CASES_v1.json").read_text(encoding="utf-8"))
+    assert M27["terminal_state"]=="M27_REPRESENTATION_PROVENANCE_AND_MATCHED_DISCRIMINATION_CLARIFIED"
+    assert PROV["discrimination_requirement"]["argumentative_indispensability_required"] is False
+    assert MATCH["ordinary_scientific_adequacy"]["held_fixed"] is True
+    assert MATCH["unperformed_intervention"] is False
+    assert "Activated Representational-Defeater Trigger" in MAIN
+    assert "general provenance condition" in MAIN
+    assert "Nothing is unobserved in this toy construction" in MAIN
+    assert "System A has one internal bit" not in MAIN
+    print("M25_QUESTION_RELATIVE_DEFEATER_GUARDS_PASS_VIA_M27_SUCCESSOR")
+    raise SystemExit(0)
+
 M26_PATH=ROOT/"research/paper2/p399/main/integration/M26/M26_SPEC_v1.json"
 if M26_PATH.exists():
     M26=json.loads(M26_PATH.read_text(encoding="utf-8"))
