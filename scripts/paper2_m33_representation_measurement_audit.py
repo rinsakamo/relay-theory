@@ -79,8 +79,8 @@ for literal in (
     r"\phi_{\mathrm{deficit}}", "not a pure change of map",
     "Two genuinely",
     "same-input representation comparison",
-    "PattersonNestorRogers2007Semantic",
-    "Gainotti2012SemanticFormat",
+    "Patterson et al. (2007)",
+    "Gainotti (2012)",
     "not a reported head-to-head experiment",
 ):
     # Case-insensitive only where English prose varies.
