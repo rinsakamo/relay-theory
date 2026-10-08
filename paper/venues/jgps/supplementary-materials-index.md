@@ -36,3 +36,8 @@ This reader-facing index maps the scientific descriptions used in the JGPS manus
 | M27 prior-art delta | `research/paper2/p399/main/integration/M27/M27_PRIOR_ART_DELTA_v1.json` |
 
 The public repository preserves pre-result inputs separately from post-result comparison outputs. Exact hashes, commit ancestry, and workflow receipts remain available in the repository but are intentionally omitted from the journal-facing PDF unless they are scientifically relevant.
+
+| Conditional same-Q,C likelihood-ratio example and frozen scientific authority | `research/paper2/p399/main/integration/M28/M28_EVIDENTIAL_CALIBRATION_v1.json` |
+| Bounded-overlap/event formalization and review-response rationale | `research/paper2/p399/main/integration/M28/README.md` |
+
+Reader-facing source paths are version-pinned when unavailable on the default branch: [M27 supplementary-materials index](https://github.com/rinsakamo/relay-theory/blob/dd043ce1312d658fdd3d47a8875114b59c19e096/paper/venues/jgps/supplementary-materials-index.md) and [M27 reader-facing source map](https://github.com/rinsakamo/relay-theory/blob/dd043ce1312d658fdd3d47a8875114b59c19e096/paper/venues/jgps/reader-facing-source-map.json). Their scientific authority is unchanged; the present manuscript supplies additional philosophical qualifications.
