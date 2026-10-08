@@ -41,6 +41,23 @@ assert BENI["status"]=="PUBLISHER_HTML_REVERIFIED"
 assert BENI["verified_date"]=="2026-10-08"
 assert BENI["source"]["doi"]=="10.1007/s10838-025-09759-z"
 
+M27_PATH=ROOT/"research/paper2/p399/main/integration/M27/M27_SPEC_v1.json"
+if M27_PATH.exists():
+    M27=json.loads(M27_PATH.read_text(encoding="utf-8"))
+    PROV=json.loads((ROOT/"research/paper2/p399/main/integration/M27/M27_PROVENANCE_QUALIFICATION_v1.json").read_text(encoding="utf-8"))
+    assert M27["terminal_state"]=="M27_REPRESENTATION_PROVENANCE_AND_MATCHED_DISCRIMINATION_CLARIFIED"
+    assert PROV["activated_defeater"]["logical_possibility_alone_sufficient"] is False
+    for phrase in [
+        "Activated Representational-Defeater Trigger",
+        "Behrens--Friston",
+        "analyst-imposed representation of past-directedness",
+        "rebutting",
+        "\\(C\\)-crossing",
+    ]:
+        assert phrase in MAIN, phrase
+    print("M24_DEFEATER_SCOPE_EVIDENTIAL_WEIGHT_GUARDS_PASS_VIA_M27_SUCCESSOR")
+    raise SystemExit(0)
+
 M25_PATH=ROOT/"research/paper2/p399/main/integration/M25/M25_SPEC_v1.json"
 if M25_PATH.exists():
     M25=json.loads(M25_PATH.read_text(encoding="utf-8"))
