@@ -59,8 +59,8 @@ if M27_PATH.exists():
     assert MATCH["ordinary_underdetermination_required"] is False
     for phrase in [
         "minimal contrastive norm for evidential support",
-        "C-homogeneous",
-        "C-crossing fiber",
+        "\\(C\\)-homogeneous",
+        "\\(C\\)-crossing fiber",
         "matched comparison",
         "Nothing is unobserved in this toy construction",
         "methodological corollary",
