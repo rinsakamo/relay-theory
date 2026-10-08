@@ -1,0 +1,138 @@
+{
+  "schema": "relaytheory.p399.main.m30.provenance_identifiability.v1",
+  "status": "IMPLEMENTED_PENDING_CI",
+  "parent_m29_exact_head": "513ac238a3f94b1723270ac52c659962e052d613",
+  "branch": "paper2/p399-main-m30-provenance-identifiability-20261008",
+  "claim": "A thin appraisal record retaining (Q,C, ordinary-task admissibility, match=yes) but discarding R does not identify the map-specific LR for the M29 law.",
+  "record_fields": [
+    "Q",
+    "C",
+    "ordinary_task_admissibility",
+    "representation_map_R",
+    "exact_match_event",
+    "calibrated_contrast",
+    "claimed_LR"
+  ],
+  "thin_record": {
+    "Q": "same C-type under stipulated mechanism criterion",
+    "C": "C(c,x,y)=c",
+    "ordinary_task_admissibility": "Derived: both maps have accuracy 3/4 on the same constructed ordinary prediction target, passing declared threshold 2/3; not verified empirically",
+    "match": true,
+    "omits": [
+      "representation_map_R",
+      "exact_match_event_id"
+    ]
+  },
+  "full_records": [
+    {
+      "R": "x",
+      "event": "E_x",
+      "match": true,
+      "p_same": "4/5",
+      "p_diff": "1/5",
+      "lr": "4",
+      "thin_key": "Q_C_A_T_match"
+    },
+    {
+      "R": "y",
+      "event": "E_y",
+      "match": true,
+      "p_same": "1/2",
+      "p_diff": "1/2",
+      "lr": "1",
+      "thin_key": "Q_C_A_T_match"
+    }
+  ],
+  "counterexample": {
+    "same_thin_record": true,
+    "distinct_LRs": true,
+    "no_single_map_specific_LR_from_thin_record": true
+  },
+  "controls": [
+    {
+      "id": "P1",
+      "available": "R=x, exact E_x, calibrated pair law",
+      "classification": "QUALIFIED_POSITIVE",
+      "lr": "4",
+      "rival_y_automatically_undercuts": false
+    },
+    {
+      "id": "N1",
+      "available": "R=y, exact E_y, calibrated pair law",
+      "classification": "QUALIFIED_NEUTRAL",
+      "lr": "1"
+    },
+    {
+      "id": "P2",
+      "available": "R unknown, justified independent selection w=1/2",
+      "classification": "QUALIFIED_POSITIVE",
+      "lr": "13/7"
+    },
+    {
+      "id": "N2",
+      "available": "R unknown, weight w unknown",
+      "classification": "UNDERQUALIFIED",
+      "lr": "NOT_IDENTIFIED"
+    },
+    {
+      "id": "P3",
+      "available": "bounded typed motif event E_x OR E_y",
+      "classification": "QUALIFIED_POSITIVE",
+      "lr": "3/2",
+      "equivalence_relation": false
+    },
+    {
+      "id": "P4",
+      "available": "complete standard measurement audit with R,E,contrast calibration",
+      "classification": "DR_SATISFIED",
+      "added_foundational_norm": false
+    },
+    {
+      "id": "N3",
+      "available": "different Q or different C compared as purported rival",
+      "classification": "OUT_OF_SCOPE",
+      "active_defeater": false
+    }
+  ],
+  "conclusion_scope": "methodological specialization of ordinary evidential appraisal; no independently novel confirmation axiom",
+  "limitations": [
+    "shared 3/4 ordinary-task accuracy is constructed and not demonstrated in a real scientific task",
+    "scientific individuation C not validated",
+    "finite pair law is stipulated, not measured",
+    "missing R is not by itself an activated undercutter",
+    "real-world cognitive science capacity identity not established",
+    "generic evidence appraisals with complete map provenance already satisfy DR"
+  ],
+  "scientific_authority_unchanged": {
+    "whole_pairs": "1770/1770 INCOMPARABLE",
+    "bounded_objects": 206,
+    "cross_stratum_families": 99,
+    "cpcg_signatures": 143,
+    "cpcg_collisions": "63/99",
+    "reverse": "21 FULL / 22 PARTIAL / 17 RESIDUAL",
+    "residual_new_top_level_role": "0/17",
+    "inter_rater_reliability": "unmeasured"
+  },
+  "new_corpus_run": false,
+  "new_human_recoding": false,
+  "gates": {
+    "formal_thin_record": "IMPLEMENTED",
+    "positive_negative_controls": "IMPLEMENTED",
+    "philosophical_scope_limits": "IMPLEMENTED",
+    "exhaustive_test": "PENDING",
+    "strict_pdf": "PENDING"
+  },
+  "ordinary_task_control": {
+    "source_marginal": "c,x,y mutually independent fair bits under H_C and non-H_C",
+    "reporter_selector": "J independent fair bit",
+    "target": "T=x if J=0, else y",
+    "prediction_phi_x": "x",
+    "prediction_phi_y": "y",
+    "accuracy_phi_x": "3/4",
+    "accuracy_phi_y": "3/4",
+    "admissibility_threshold": "2/3",
+    "baseline_constant_prediction_accuracy": "1/2",
+    "same_ordinary_task": true,
+    "empirical_validation": false
+  }
+}
