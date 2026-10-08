@@ -41,3 +41,7 @@ The public repository preserves pre-result inputs separately from post-result co
 | Bounded-overlap/event formalization and review-response rationale | `research/paper2/p399/main/integration/M28/README.md` |
 
 Reader-facing source paths are version-pinned when unavailable on the default branch: [M27 supplementary-materials index](https://github.com/rinsakamo/relay-theory/blob/dd043ce1312d658fdd3d47a8875114b59c19e096/paper/venues/jgps/supplementary-materials-index.md) and [M27 reader-facing source map](https://github.com/rinsakamo/relay-theory/blob/dd043ce1312d658fdd3d47a8875114b59c19e096/paper/venues/jgps/reader-facing-source-map.json). Their scientific authority is unchanged; the present manuscript supplies additional philosophical qualifications.
+
+| M29 finite pair-law probability model and expected calculations | `research/paper2/p399/main/integration/M29/M29_FINITE_PAIR_LAW_v1.json` |
+| M29 executable exhaustive audit | `scripts/paper2_m29_finite_pair_law_audit.py` |
+| M29 reviewer-facing mathematical scope and residuals | `research/paper2/p399/main/integration/M29/README.md` |
