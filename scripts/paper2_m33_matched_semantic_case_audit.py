@@ -51,7 +51,7 @@ for phrase in (
     r"\citep{JefferiesEtAl2009Nonverbal}",
     r"\phi_{\mathrm{aggregate}}",
     r"\phi_{\mathrm{profile}}",
-    "same existing observations",
+    "same recorded test evidence",
     "not a sampled pair of systems",
 ):
     assert phrase in main, f"main missing {phrase}"
