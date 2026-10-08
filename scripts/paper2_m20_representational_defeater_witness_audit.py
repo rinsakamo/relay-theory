@@ -83,9 +83,12 @@ for phrase in [
     "A limited positive illustration already occurs within the analyzed literature.",
     "differential lesion prediction",
     "semantic-dementia evidence",
-    "This does not by itself establish a cross-source capacity identity.",
 ]:
     assert phrase in MAIN, phrase
+if m24:
+    assert "This is not a successful cross-source capacity-identity verdict and is not presented as one." in MAIN
+else:
+    assert "This does not by itself establish a cross-source capacity identity." in MAIN
 
 # Source records for central witnesses remain reviewed and source-local.
 records={}
