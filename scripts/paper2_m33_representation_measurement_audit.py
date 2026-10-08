@@ -81,7 +81,7 @@ for literal in (
     "same-input representation comparison",
     "PattersonNestorRogers2007Semantic",
     "Gainotti2012SemanticFormat",
-    "not a published",
+    "not a reported head-to-head experiment",
 ):
     # Case-insensitive only where English prose varies.
     if literal == "Two genuinely":
