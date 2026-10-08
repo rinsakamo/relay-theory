@@ -22,5 +22,9 @@ This reader-facing index maps the scientific descriptions used in the JGPS manus
 | Positive mini-case publisher-source pin | `research/paper2/p399/main/integration/M20/M20_POSITIVE_MINICASE_SOURCE_PIN_v1.json` |
 | Independent motivation for temporal abstraction | `research/paper2/p399/main/integration/M21/M21_TEMPORAL_ABSTRACTION_SOURCE_PIN_v1.json` |
 | Botvinick--Tulving source-local live-rival audit | `research/paper2/p399/main/integration/M23/M23_BT_SOURCE_COMPATIBILITY_AUDIT_v1.json` |
+| Defeater trigger / undercutting-scope authority | `research/paper2/p399/main/integration/M24/M24_DEFEATER_SCOPE_v1.json` |
+| Botvinick--Tulving trigger-role reclassification | `research/paper2/p399/main/integration/M24/M24_BT_TRIGGER_RECLASSIFICATION_v1.json` |
+| Tulving source-content / history-window encoding boundary | `research/paper2/p399/main/integration/M24/M24_TULVING_ENCODING_BOUNDARY_v1.json` |
+| Beni strongest-reply / empirical-discharge authority | `research/paper2/p399/main/integration/M24/M24_BENI_STRONG_REPLY_v1.json` |
 
 The public repository preserves pre-result inputs separately from post-result comparison outputs. Exact hashes, commit ancestry, and workflow receipts remain available in the repository but are intentionally omitted from the journal-facing PDF unless they are scientifically relevant.
