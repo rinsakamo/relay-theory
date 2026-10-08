@@ -45,3 +45,7 @@ Reader-facing source paths are version-pinned when unavailable on the default br
 | M29 finite pair-law probability model and expected calculations | `research/paper2/p399/main/integration/M29/M29_FINITE_PAIR_LAW_v1.json` |
 | M29 executable exhaustive audit | `scripts/paper2_m29_finite_pair_law_audit.py` |
 | M29 reviewer-facing mathematical scope and residuals | `research/paper2/p399/main/integration/M29/README.md` |
+
+| M30 thin-record non-identifiability and positive/negative appraisal controls | `research/paper2/p399/main/integration/M30/M30_PROVENANCE_IDENTIFIABILITY_v1.json` |
+| M30 deterministic support/provenance audit | `scripts/paper2_m30_provenance_identifiability_audit.py` |
+| M30 review scope and control interpretations | `research/paper2/p399/main/integration/M30/README.md` |
