@@ -1,0 +1,23 @@
+name: P399 post-MAIN R7 Self S-M-G basis role audit
+
+on:
+  push:
+    branches:
+      - paper2/p399-postmain-r7-self-smg-role-audit-20261015
+  pull_request:
+    paths:
+      - 'research/paper2/p399/postmain/reintegration/R7/**'
+      - '.github/workflows/p399-postmain-r7-self-smg-audit.yml'
+
+jobs:
+  r7-fail-closed:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate frozen R7 interpretation and negative controls
+        run: python research/paper2/p399/postmain/reintegration/R7/test_self_smg_basis_role_audit.py
